@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1532,
+    "total_problems": 1537,
     "source_total_problems": 1742,
-    "filtered_out_problems": 210,
-    "with_statement_brief": 1532,
-    "with_editorial_brief": 1307,
-    "with_solution_brief": 1308,
+    "filtered_out_problems": 205,
+    "with_statement_brief": 1537,
+    "with_editorial_brief": 1312,
+    "with_solution_brief": 1313,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 469,
+    "ai_override_count": 474,
     "primary_topic_count": 13,
-    "contest_count": 245,
+    "contest_count": 246,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,10 +45,10 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 63,
-    "构造与贪心": 498,
+    "构造与贪心": 501,
     "图论与网络流": 94,
     "动态规划与状态设计": 155,
-    "数论与同余": 143,
+    "数论与同余": 145,
     "组合计数与概率": 116,
     "数据结构": 121,
     "几何": 33,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 399,
-    "ai_generated_partial_editorial": 17,
+    "ai_generated_with_editorial": 403,
+    "ai_generated_partial_editorial": 18,
     "missing_editorial": 224,
     "manual_override": 891,
     "statement_derived": 1
@@ -36417,6 +36417,167 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1884,
+      "name": "Codeforces Round 904 (Div. 2)",
+      "date": "2023-10-22",
+      "url": "https://codeforces.com/contest/1884",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1884A",
+          "index": "A",
+          "slot": "A",
+          "title": "Simple Design",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1884/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/121618",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $x$ 和 $k$。若一个数的十进制各位数字之和能被 $k$ 整除，则称其为 $k$-beautiful；要求找出最小的满足 $y\\ge x$ 的 $k$-beautiful 数。",
+          "transformedStatement": "把问题转化为从 $x$ 开始线性检查候选数的数位和。连续十个高位相同、个位依次变化的数会产生连续十个数位和，覆盖模 $1$ 到模 $10$ 的所有余数需求，因此搜索范围最多延伸 $18$。",
+          "keyObservations": [
+            "判定条件只依赖十进制各位数字之和，因此每个候选数都可直接计算数位和并检查其对 $k$ 的余数。",
+            "任意连续的十个个位不同且高位相同的数，其数位和连续覆盖十个整数；这十个数中必有一个数位和能被 $k\\le 10$ 整除。",
+            "从 $x$ 向上检查时，至多经过 $18$ 次即可进入这样的十数区间并找到答案，因此无需复杂搜索。"
+          ],
+          "solutionBrief": "从 $y=x$ 开始逐个递增，计算每个数的十进制数位和；首次满足数位和能被 $k$ 整除的候选数即为答案。由连续十数的性质，答案满足 $y-x\\le18$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1884B",
+          "index": "B",
+          "slot": "B",
+          "title": "Haunted House",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1884/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/121618",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的、允许含前导零的二进制串。对每个 $i=1\\ldots n$ 独立处理，可以任意次交换相邻位，要求用最少交换把数变成 $2^i$ 的倍数；若无法做到则输出 $-1$。",
+          "transformedStatement": "把字符串反转后，整除 $2^i$ 等价于让前 $i$ 位全为零。问题转化为：将这段前缀中的每个 $1$ 与后方的零交换匹配，并最小化所有匹配位置距离之和。",
+          "keyObservations": [
+            "要被 $2^i$ 整除，二进制末尾 $i$ 位必须全为 $0$；相邻交换不改变零的总数，因此若全串零数少于 $i$，答案必为 $-1$。",
+            "反转字符串后，目标变成把前 $i$ 位中的所有 $1$ 移出，并用后方最近的若干个 $0$ 填入；这样每个 $1$ 与对应 $0$ 的位置差之和就是交换次数。",
+            "从左到右维护前缀中 $1$ 的数量及位置和，并用指针取得当前位置之后最近的同数量 $0$ 的位置和，答案可直接写成 `$sum\\_zero-sum\\_one$`。",
+            "先把前缀中的 $1$ 贪心移到前缀末端，再把后方的 $0$ 移回这些位置，两阶段的中间位置代价相互抵消，因此该距离和既是下界也是可实现的最优值。"
+          ],
+          "solutionBrief": "反转二进制串，将末尾连续 $i$ 个零的要求转为前缀全零。若零数不足则输出 $-1$；否则扫描前缀，累计其中 $1$ 的位置和，并匹配后方最近的等量零，答案为两者位置和之差。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1884C",
+          "index": "C",
+          "slot": "C",
+          "title": "Medium Design",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1884/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/121618",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $m$ 的全零数组和 $n$ 条不同线段。任选一个线段子集，将每条被选线段覆盖的位置都加 $1$，数组代价为最大元素减最小元素；求所有子集中的最大代价。",
+          "transformedStatement": "把目标改写为最大化某个位置的覆盖数与端点覆盖数之差。固定最大值位置后补选所有覆盖它的线段，问题等价于分别求不覆盖左端点或右端点的线段的最大重叠数。",
+          "keyObservations": [
+            "固定最优数组的最大值位置为 $x$ 后，所有覆盖 $x$ 的线段都应选取：最小值在段外时贡献增加，在段内时不会变差。",
+            "因此最小值必在位置 $1$ 或 $m$，否则可通过上述补选逻辑把分析转化到数组端点。",
+            "若最小值在 $1$，答案就是不覆盖 $1$ 的线段在某个位置的最大重叠数；对 $m$ 同理，最终取两种情况的较大值。",
+            "将每条线段拆成开启和关闭事件并按位置扫描，即可维护当前重叠数并求最大值，复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "分别假设最小值位于 $1$ 或 $m$，只考虑不覆盖该端点的线段，求它们的最大覆盖数。对线段端点做事件扫描，维护开放线段数，取两种端点情况的最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1884D",
+          "index": "D",
+          "slot": "D",
+          "title": "Counting Rhyme",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1884/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/121618",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个整数数组，位置对 $(i,j)$（$i<j$）称为 good，当不存在某个位置 $k$ 使得 $a_k$ 同时整除 $a_i$ 和 $a_j$。对每组测试数据，求所有 good 位置对的数量。",
+          "transformedStatement": "将每个位置对按 $g=\\gcd(a_i,a_j)$ 分类：若数组中存在某个值 $x$ 且 $x\\mid g$，该类中的 pair 全部不合格；否则该类的 pair 全部合格。",
+          "keyObservations": [
+            "若某个数组值能同时整除一对元素，则它也整除这对元素的最大公约数，因此好坏性质只需按最大公约数分类判断。",
+            "令 $s_g$ 为数组中能被 $g$ 整除的元素个数，则其中任意两项的数量为 $s_g(s_g-1)/2$；从中减去最大公约数为 $2g,3g,\u0011$ 的配对即可得到恰好为 $g$ 的数量。",
+            "只要数组中出现 $x$，所有能被 $x$ 整除的最大公约数都不可能对应好 pair，因此可直接筛出允许累加的 $g$。",
+            "按 $g$ 从大到小处理时，所有更大的倍数对应的配对数已经确定，故能用倍数求和在 $O(n\\log n)$ 内完成互斥计数。"
+          ],
+          "solutionBrief": "统计每个值的出现次数。对每个 $g$ 求数组中 $g$ 的倍数总数，并按倍数递推得到最大公约数恰为 $g$ 的 pair 数；再标记被某个出现值整除的 $g$，只累加未标记者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1884E",
+          "index": "E",
+          "slot": "E",
+          "title": "Hard Design",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1884/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/121618",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "代数、矩阵与多项式",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定数组，并对它的每个循环移位分别处理：按题面规定反复对连续区间执行操作，使所有元素相等；先最少化操作次数，再在这些方案中最大化获得的硬币数，输出次数及硬币数模 $10^9+7$。原始记录截断，未完整提供单次操作和硬币收益规则。",
+          "transformedStatement": "令 $b_i=\\max(a)-a_i$，把“全部变为最大值”重述为对区间减 $1$ 直到全零。递归按最小值分割，并将每个位置在循环边界变化下的贡献表示为若干移位区间上的常数或二次函数。",
+          "keyObservations": [
+            "将目标值固定为数组最大值，并令 $b_i=\\max(a)-a_i$，原问题等价于对区间反复减 $1$，最终把所有 $b_i$ 变为 $0$。",
+            "取 $b$ 的最小值位置作为递归分界点，先对整段执行该高度次数，再独立处理左右部分；对位置 $i$，其递归贡献可由左侧最近的不大于它的元素和右侧最近的小于它的元素确定。",
+            "循环移位时，这两个最近位置要么保持不变，要么越过边界而不存在；因此每个位置对所有移位的贡献只需拆成常数个区间处理，而不必逐个移位重算。",
+            "操作收益中的区间长度平方可展开为关于移位起点 $s$ 的二次式 $A s^2+B s+C$，于是对移位区间分别维护三个系数的差分，最后用前缀累加得到所有答案。"
+          ],
+          "solutionBrief": "把数组转为到最大值的差值，利用最近较小元素确定递归分治贡献。对循环移位，将每个位置的贡献拆成常数个移位区间；计数直接做区间差分，收益因区间长度平方展开成二次多项式后维护三个系数，整体按题解可在线性时间处理。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
