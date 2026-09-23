@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1537,
+    "total_problems": 1542,
     "source_total_problems": 1742,
-    "filtered_out_problems": 205,
-    "with_statement_brief": 1537,
-    "with_editorial_brief": 1312,
-    "with_solution_brief": 1313,
+    "filtered_out_problems": 200,
+    "with_statement_brief": 1542,
+    "with_editorial_brief": 1317,
+    "with_solution_brief": 1318,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 474,
+    "ai_override_count": 479,
     "primary_topic_count": 13,
-    "contest_count": 246,
+    "contest_count": 247,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 63,
-    "构造与贪心": 501,
-    "图论与网络流": 94,
+    "构造与贪心": 502,
+    "图论与网络流": 96,
     "动态规划与状态设计": 155,
     "数论与同余": 145,
     "组合计数与概率": 116,
-    "数据结构": 121,
+    "数据结构": 123,
     "几何": 33,
     "树结构": 107,
     "交互": 69,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 403,
+    "ai_generated_with_editorial": 408,
     "ai_generated_partial_editorial": 18,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -36417,6 +36417,164 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1887,
+      "name": "Codeforces Round 905 (Div. 1)",
+      "date": "2023-10-22",
+      "url": "https://codeforces.com/contest/1887",
+      "type": "Div. 1",
+      "problemCount": 5,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1887B",
+          "index": "B",
+          "slot": "B",
+          "title": "Time Travel",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1887/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "有 $n$ 个城市和按时刻编号的道路记录；时间机器会依次把你送到给定序列 $a_1,\u0002cldots,a_k$ 的时刻，抵达每个时刻后只能从此前所在城市沿当时存在的一条道路走一步。你从城市 1 出发，要求最少进行多少次时间旅行（包括第一次）才能到达城市 $n$。",
+          "transformedStatement": "把每座城市的状态压缩为到达它所需的最早序列位置 $d_v$。沿记录 $x$ 的道路从 $v$ 转移到 $u$ 时，代价不是固定值，而是序列中记录 $x$ 在 $d_v$ 之后的第一次出现位置。",
+          "keyObservations": [
+            "到达城市 $v$ 的最早时刻记为 $d_v$；若记录 $x$ 中有边 $(v,u)$，只能选择序列中满足 $i>d_v$ 且 $a_i=x$ 的最早位置，才能在该次旅行后到达 $u$。",
+            "每条边的转移代价取决于序列中记录编号的下一次出现位置，因此可将城市视为带有“下一出现位置”转移的图，并按最小 $d_v$ 依次确定最优标签。",
+            "预先保存每个记录编号在 $a$ 中的所有出现位置后，下一次出现位置可二分查找；这样无需逐次扫描时间序列，单条道路的处理复杂度为 $O(\\log k)$。"
+          ],
+          "solutionBrief": "令 $d_1=0$，其余为无穷大，按最小 $d_v$ 处理城市。对记录 $x$ 中的每条边，二分查找序列 $a$ 中第一个满足 $i>d_v$ 且 $a_i=x$ 的位置，并用它更新相邻城市。总复杂度为 $O(m(\\log k+\\log n))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1887C",
+          "index": "C",
+          "slot": "C",
+          "title": "Minimum Array",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1887/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "hashing",
+            "two pointers"
+          ],
+          "statementBrief": "给定整数数组，按顺序执行 $q$ 次操作；每次选择区间 $[l,r]$，将其中所有元素加上 $x$。需要在初始数组及每次操作后的数组 $b_0,b_1,b_q$ 中，输出字典序最小的数组。",
+          "transformedStatement": "把每个中间数组改写成差分数组，并将操作序列转化为对差分数组两个端点的修改；于是问题变成寻找字典序最小的差分状态对应的操作前缀。",
+          "keyObservations": [
+            "将数组替换为差分数组后，原数组的字典序比较等价于差分数组的字典序比较，因为首个不同位置的差值也在该位置首次不同。",
+            "区间 $[l,r]$ 加上 $x$ 只会让差分数组的 $l$ 位置加 $x$、$r+1$ 位置减 $x$，因此每次操作只需维护两个下标的变化。",
+            "比较两个前缀时，只需查看它们差分数组变化中下标最小的非零项：该项为负则后者更小，为正则后者更大。",
+            "维护相对当前最优前缀的变化字典；若新操作使最小非零项为负，就把当前前缀更新为最优并清空相对变化，否则继续累积变化。"
+          ],
+          "solutionBrief": "维护数组差分形式和当前最优前缀。每个区间加法只更新两个差分位置；在变化字典中找下标最小的非零项，根据其符号判断当前前缀是否更优，若更优则清空字典并更新答案，最后还原数组。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1887D",
+          "index": "D",
+          "slot": "D",
+          "title": "Split",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1887/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "divide and conquer",
+            "dsu",
+            "math",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个由互不相同整数构成的数组。对每个区间 $[l,r]$，判断能否选择一个切分点，使左半段的每个元素都严格小于右半段的每个元素，并输出 Yes 或 No。",
+          "transformedStatement": "把每个可能作为左半段最大值的位置 $i$ 单独考虑，用其左右最近的较大值及后续较小值确定 $l,r$ 的范围；于是每个 $i$ 产生一个覆盖合法查询的矩形，问题转为矩形覆盖点查询。",
+          "keyObservations": [
+            "固定位置 $i$ 作为左半段最大值时，左端点必须满足 $x_l<l\\le i$，其中 $x_l$ 是左侧最近的、更大的元素位置；这精确限制了左半段不含更大值。",
+            "右侧最近的大于 $a_i$ 的位置 $x_r$ 必须被包含，而从它右侧到最近的小于 $a_i$ 的位置 $y_r$ 之前不能截断，即需满足 $x_r\\le r<y_r$，从而保证右半段所有元素都大于左半段最大值。",
+            "因此每个 $i$ 对应的所有合法查询点 $(l,r)$ 构成矩形，原问题等价于判断查询点是否落入至少一个矩形，避免逐查询寻找切分位置。",
+            "按值递增处理元素可在 $O(\\log n)$ 时间得到三个边界；再用扫描线和线段树判断矩形覆盖，整体复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "对每个位置 $i$ 求左侧最近大于 $a_i$ 的位置 $x_l$、右侧最近大于它的位置 $x_r$，以及 $x_r$ 右侧最近小于它的位置 $y_r$。由 $x_l<l\\le i$、$x_r\\le r<y_r$ 得到一个合法矩形，最后用扫描线和线段树回答所有矩形覆盖查询。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1887E",
+          "index": "E",
+          "slot": "E",
+          "title": "Good Colorings",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1887/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "交互",
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "graphs",
+            "interactive"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 网格，已有恰好 $2n$ 个格子分别染成颜色 $1$ 到 $2n$。每次可询问一个未染色格子，Alice 会任选一种颜色染上并告知；最多询问 $10$ 次后，输出两行两列组成的四个格子，使它们的颜色两两不同。",
+          "transformedStatement": "把行和列视为二分图的顶点、格子视为边，则要找的是一个四边形环，其四条边颜色互异；通过已知边构造更长的异色偶环，再用查询逐半缩短到四环。",
+          "keyObservations": [
+            "将棋盘建模为行点与列点组成的二分图，格子对应边；目标四格正好是一个长度为 $4$ 的环，且四条边颜色互异。",
+            "图中有 $2n$ 个顶点和 $2n$ 条颜色互异的已知边，因此必然存在一个边颜色互异的偶环；这是从环出发继续缩短的基础。",
+            "对长度为 $2k$ 的目标环添加对称弦，可将其划分为 $k-1$ 个四边形环；查询中间分隔边的颜色后，总能排除一半候选环。",
+            "每次查询都把候选环数量缩小约一半，最多进行 $\u0000lceil log_2(k-1) \u0000rceil\\le 10$ 次查询即可得到颜色互异的四环。"
+          ],
+          "solutionBrief": "把格子视为二分图边。先利用颜色互异的 $2n$ 条边找到一个偶环，再用对称弦划分候选四环；查询中间边并二分缩短环，最多 $10$ 次得到四条颜色互异的边。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1887F",
+          "index": "F",
+          "slot": "F",
+          "title": "Minimum Segments",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1887/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个长度为 $n$、元素取值在 $[1,n]$ 的整数序列特征 $r_1,\u0011dots,r_n$，需要判断是否存在符合该特征的序列，并在存在时构造它。题目要求输出一个合适的原序列（无解时报告无解），而不是只判断可行性。",
+          "transformedStatement": "把原数组改写为每个位置到右侧最近相同元素的位置 $nxt_i$；特征条件等价于对这些位置施加固定值、区间取值、互异性以及覆盖 $[r_1+1,n]$ 的约束，问题转为构造满足约束的 $nxt$。",
+          "keyObservations": [
+            "用 $nxt_i$ 表示位置 $i$ 之后第一次出现相同数的位置；只要确定全部 $nxt_i$，原数组的相等关系及其特征序列就能唯一恢复。",
+            "当 $r_i<r_{i+1}$ 时必须有 $nxt_i=r_{i+1}$；当 $r_i=r_{i+1}$ 时，$nxt_i$ 只需落在区间 $[i+1,r_i]$，从而把构造转成区间分配问题。",
+            "除 $n+1$ 外的所有 $nxt_i$ 必须互不相同，且每个 $i>r_1$ 都要被某个 $nxt_j$ 覆盖；因此需要覆盖全部目标位置 $[r_1+1,n]$。",
+            "可取 $n+1$ 的区间彼此嵌套，固定使用次数 $k$ 后应把它放在最右侧的 $k$ 个区间，再从右向左给其余区间分配最大的未用值；随着 $k$ 增大，可覆盖的目标位置数不增，所以只需检查不考虑覆盖条件时的最小可行 $k$。"
+          ],
+          "solutionBrief": "先依据 $r$ 固定部分 $nxt_i$，并为其余位置建立允许区间。求出忽略覆盖条件时的最小 $k$，将 $n+1$ 放入最右侧 $k$ 个嵌套区间，再从右向左贪心分配最大的未用值；若覆盖所有 $[r_1+1,n]$，即可由 $nxt$ 恢复数组，否则无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
