@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1506,
+    "total_problems": 1513,
     "source_total_problems": 1742,
-    "filtered_out_problems": 236,
-    "with_statement_brief": 1506,
-    "with_editorial_brief": 1281,
-    "with_solution_brief": 1282,
+    "filtered_out_problems": 229,
+    "with_statement_brief": 1513,
+    "with_editorial_brief": 1288,
+    "with_solution_brief": 1289,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 442,
+    "ai_override_count": 449,
     "primary_topic_count": 13,
-    "contest_count": 241,
+    "contest_count": 242,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -46,8 +46,8 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "字符串": 62,
     "构造与贪心": 495,
-    "图论与网络流": 91,
-    "动态规划与状态设计": 149,
+    "图论与网络流": 92,
+    "动态规划与状态设计": 154,
     "数论与同余": 139,
     "组合计数与概率": 114,
     "数据结构": 118,
@@ -55,11 +55,11 @@ window.CF_INSIGHTS_DATA = {
     "树结构": 106,
     "交互": 69,
     "基础实现与模拟": 62,
-    "博弈": 54,
+    "博弈": 55,
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 373,
+    "ai_generated_with_editorial": 380,
     "ai_generated_partial_editorial": 17,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -36452,6 +36452,227 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1874,
+      "name": "Codeforces Round 901 (Div. 1)",
+      "date": "2023-09-30",
+      "url": "https://codeforces.com/contest/1874",
+      "type": "Div. 1",
+      "problemCount": 7,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1874A",
+          "index": "A",
+          "slot": "A",
+          "title": "Jellyfish and Game",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1874/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/120943",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "games",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "Jellyfish 和 Gellyfish 分别拥有两组苹果，双方轮流进行 $k$ 轮操作，Jellyfish 先手：当前行动者可交换两组中的一个苹果，也可以不交换，并都希望自己手中苹果总价值最大。求双方最优行动后 Jellyfish 手中苹果的总价值。",
+          "transformedStatement": "把每轮决策压缩为两组中的极值交换：Jellyfish 只需考虑 $a$ 的最小值和 $b$ 的最大值，Gellyfish 只需考虑 $a$ 的最大值和 $b$ 的最小值；第一轮后全局两端点在双方之间交替，故只需区分 $k$ 的奇偶。",
+          "keyObservations": [
+            "轮到 Jellyfish 时，只有当当前 $a$ 的最小值小于当前 $b$ 的最大值才交换这两个苹果；否则交换会降低她的收益，因此应停手。",
+            "轮到 Gellyfish 时，只有当当前 $a$ 的最大值大于当前 $b$ 的最小值才交换这两个苹果；这同样是其最大化自身总和的唯一有效改进。",
+            "第一轮后，全局最大值归 Jellyfish、全局最小值归 Gellyfish；之后两人只会反复交换这两个极值，因此状态每两轮重复。",
+            "所以只需执行第一轮，并在原轮数为偶数时再执行一次第二轮，最终累加 Jellyfish 数组即可。"
+          ],
+          "solutionBrief": "找出 $a$ 的最小值与 $b$ 的最大值并按条件交换；若 $k$ 为偶数，再交换当前 $a$ 的最大值与 $b$ 的最小值。由于之后每两轮重复，累加 $a$ 即得答案，复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1874B",
+          "index": "B",
+          "slot": "B",
+          "title": "Jellyfish and Math",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1874/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/120943",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余",
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定初始二元组 $(x,y)=(a,b)$、目标 $(c,d)$ 和整数 $m$。每次可执行 $x riangleq x\\&y$、$x\\triangleq x|y$、$y\\triangleq x\\oplus y$ 或 $y\\triangleq y\\oplus m$ 中的一种操作，求变到目标所需的最少次数；无法达到则输出 $-1$。",
+          "transformedStatement": "把所有数拆成二进制位，并按每一位的 $(a_i,b_i,m_i)$ 归为 8 类；同类位必须同步变化。于是用 8 个类别槽位描述目标二元组，通过四种操作在这些槽位上的统一转移求最短路。",
+          "keyObservations": [
+            "每个二进制位独立演化；若两位的初始三元组 $(a_i,b_i,m_i)$ 相同，它们始终保持相同的 $(x_i,y_i)$，因此目标二元组不同就必然无解。",
+            "初始三元组只有 $8$ 种，把每种类型当前对应的目标二元组记为 $4$ 种取值之一，未出现的类型记为通配状态，整体状态数仅为 $5^8$。",
+            "四种操作会同时、确定性地更新这 $8$ 个类型的二元组，原问题因此等价于这些状态之间的无权最短路，可预处理从初始状态出发的最少操作数。",
+            "未出现的初始类型不会约束答案，可以分别赋予任意目标二元组并取最小距离；出现过的类型若对应多个不同目标则立即判定无解。"
+          ],
+          "solutionBrief": "将每一位按 $(a_i,b_i,m_i)$ 分成 8 类，用 8 个槽位记录其目标二元组或通配状态。预处理 $5^8$ 个状态：四种操作对应确定性转移，用 BFS 求最短路；每组测试按位填槽，检查冲突并枚举通配槽取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1874C",
+          "index": "C",
+          "slot": "C",
+          "title": "Jellyfish and EVA",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1874/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/120943",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "dp",
+            "graphs",
+            "greedy",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "有 $n$ 个城市和只允许从较小编号驶向较大编号的有向道路，两人从城市 $1$ 出发前往城市 $n$。每轮两人各选一条当前未毁坏的出边；若终点相同则前进，否则两条道路被毁且留在原地，Asuka 随机选路，求 Jellyfish 最优选择时最终到达城市 $n$ 的最大概率。",
+          "transformedStatement": "令 $f_u$ 表示从城市 $u$ 出发的最大成功概率。对出度为 $k$ 的城市，只需研究 Jellyfish 如何将不同概率分配到按 $f_v$ 排序的后继，并预处理一个只依赖 $k$ 的前缀支配分布 $g_k$。",
+          "keyObservations": [
+            "由于所有道路都满足起点小于终点，城市构成按编号递增的 DAG，因此可从城市 $n$ 向前计算各城市的最优成功概率。",
+            "固定城市的出边后，应按终点成功概率降序排列；相同的选择概率分配给更优终点，期望值不会降低。",
+            "若一个概率数组的任意前缀和都不小于另一个数组，则对所有非增的后继概率数组，其期望都不小；这将自适应选择转化为寻找唯一的前缀支配分布。",
+            "第一次选择失败会同时销毁两条道路，使剩余问题只含 $k-2$ 条边；据此可由 $g_{k-2}$ 递推并预处理每个出度 $k$ 的最优概率分布。"
+          ],
+          "solutionBrief": "预处理每个出度 $k$ 下按优先级排列的最优概率分布 $g_k$，由 $g_{k-2}$ 递推得到。对每个城市按后继的 $f$ 降序排序，用 $g_k$ 加权求和；因图按编号递增，可逆序计算 $f$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1874D",
+          "index": "D",
+          "slot": "D",
+          "title": "Jellyfish and Miku",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1874/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/120943",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "divide and conquer",
+            "dp",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "有 $n$ 条道路依次连接城市 $0$ 到城市 $n$，第 $i$ 条道路的正整数美观值为 $a_i$。Jellyfish 从城市 $0$ 出发，在当前城市按相连道路美观值占总和的比例随机移动，抵达城市 $n$ 即停止；要求在总美观值不超过 $m$ 的条件下选择各道路美观值，使期望移动天数最小。",
+          "transformedStatement": "把随机移动过程的期望写成道路美观值比值的优化目标：若 $s_i=\\sum_{j=1}^i a_j$，则需最小化 $\\sum_{i=1}^n s_{i-1}/a_i$。最优序列可限制为非递减，于是按道路数和当前前缀和建立 DP。",
+          "keyObservations": [
+            "固定道路美观值后，令相邻期望差为 $g_i=f_i-f_{i-1}$，可展开为 $g_i=1+2\\sum_{j<i}a_j/a_i$，从而把随机游走期望转成相邻道路比值之和。",
+            "总期望等于 $n+2\\sum_{i=1}^n s_{i-1}/a_i$，其中 $s_i$ 是前 $i$ 条道路美观值之和；因此新增道路只需知道当前前缀和。",
+            "若存在 $a_i>a_{i+1}$，交换这两个值会使目标更优，所以最优序列非递减，并得到 $a_i\\le m/(n-i+1)$，显著缩小转移枚举范围。",
+            "令 $dp_{i,x}$ 表示前 $i$ 条道路总美观值为 $x$ 时的最小比值和，加入值为 $y$ 的下一条道路后转移代价为 $x/y$。"
+          ],
+          "solutionBrief": "先将期望步数化为 $n+2\\sum s_{i-1}/a_i$。利用最优美观值序列非递减，枚举满足剩余道路可填满预算的 $y$，用 $dp_{i,x}$ 转移并求 $dp_{n,m}$，答案为 $n+2dp_{n,m}$；复杂度为 $O(m^2\\log m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1874E",
+          "index": "E",
+          "slot": "E",
+          "title": "Jellyfish and Hack",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1874/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/120943",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定 $[1,2,\u0000hellip,n]$ 的一个排列。快速排序每次固定选择当前数组的第一个元素作为枢轴，将其余元素按小于或大于枢轴分到左右子数组并递归处理；每次调用的代价为当前数组长度。求所有使总耗时至少为 $lim$ 的不同排列数量，答案对 $10^9+7$ 取模。",
+          "transformedStatement": "把排列递归过程视为一棵二叉树：规模为 $i$ 的根贡献 $i$，首元素的排名决定左右子树规模，左右子树的排列通过组合数交错。用多项式 $F_i(x)$ 的系数记录总耗时分布，再通过多点求值和插值恢复答案。",
+          "keyObservations": [
+            "对长度为 $i$ 的子数组，首元素的相对排名为 $j$ 时，左右部分分别含有 $j-1$ 和 $i-j$ 个元素，原序列的交错方式有 $C(i-1,j-1)$ 种，因此两侧排列可以独立计数。",
+            "每次递归调用长度为 $i$ 的数组都会贡献 $i$，所以总耗时等于递归树各节点大小之和，能够按左右子问题的耗时做卷积合并。",
+            "将固定耗时的计数改成多项式 $F_i(x)$ 后，递推变为 $F_i(x)=x^i\\sum_j C(i-1,j-1)F_{j-1}(x)F_{i-j}(x)$；固定 $x$ 时只需进行标量 DP。",
+            "总耗时不超过 $L=n(n+1)/2$，在 $0$ 到 $L$ 共 $L+1$ 个点计算 $F_n(x)$ 后，可用拉格朗日插值恢复各耗时系数并累加阈值以上的部分。"
+          ],
+          "solutionBrief": "令 $dp_{i,a}$ 表示规模为 $i$ 的排列产生耗时 $a$ 的数量。用首元素排名划分左右子问题并进行组合计数；再把耗时作为多项式指数，逐点计算多项式值，最后用拉格朗日插值恢复 $F_n$ 的系数并求耗时至少为 $lim$ 的总数。复杂度为 $O(n^4)$，空间复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1874F",
+          "index": "F",
+          "slot": "F",
+          "title": "Jellyfish and OEIS",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1874/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/120943",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定长度为 $n$ 的排列和数组 $m$，要求统计所有排列 $p$，使任意满足 $l\\le r\\le m_l$ 的连续子数组 $p_l,\\ldots,p_r$ 都不能恰好由数值集合 $[l,r]$ 组成。答案对 $10^9+7$ 取模。",
+          "transformedStatement": "把违反条件的区间称为坏区间，再把不包含任何更小坏区间的坏区间称为原始区间。目标转化为对两两不交的原始坏区间进行容斥，并统计剩余未覆盖位置的任意排列数。",
+          "keyObservations": [
+            "任意两个原始坏区间不能相交；若出现交错相交，交集区间也会是坏区间，从而至少一个外层区间不是原始的。",
+            "固定若干个原始坏区间后，未被覆盖的位置可以任意排列；若剩余位置数为 $x$，其贡献就是 $x!$，因此只需按覆盖区间的奇偶性和 $x$ 计数。",
+            "$g(l,r,x)$ 通过两种情况递推：位置 $r$ 未被覆盖，或最后一个原始坏区间从某个位置开始；后者只有在对应的 $r\\le m_i$ 时才允许。",
+            "$f(l,r)$ 对所有原始坏区间方案乘以未覆盖位置的阶乘并求和；由于 $f(l,r)$ 会反过来贡献到 $g(l,r,0)$，需要按区间顺序更新并扣除这部分自贡献。"
+          ],
+          "solutionBrief": "将满足条件的区间称为坏区间，并只考虑其中不包含更小坏区间的原始区间。利用原始区间两两不交的性质做容斥，$f(l,r)$ 统计原始区间方案，$g(l,r,x)$ 按奇偶性和未覆盖位置数聚合，未覆盖位置贡献 $x!$。按 $l$ 递减、$r$ 递增计算，复杂度为 $O(n^4)$，空间复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1874G",
+          "index": "G",
+          "slot": "G",
+          "title": "Jellyfish and Inscryption",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1874/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/120943",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "在从顶点 $1$ 到顶点 $n$ 的 DAG 路径上，访问顶点会获得一张属性为生命值和伤害的卡、给一张已有卡增加生命值或伤害，或获得一个道具。到达终点后可将至多一张卡的伤害乘以 $10^9$，目标是最大化所有卡的生命值乘伤害之和及道具力量之和。",
+          "transformedStatement": "把终点的巨额增益视为选择一张闪卡，并按路径上闪卡出现前后分治：前段优化各类增益如何分配给非闪卡，后段固定闪卡后只维护其生命值、伤害和其余收益。沿 DAG 的拓扑顺序合并这些状态。",
+          "keyObservations": [
+            "乘上 $10^9$ 的闪卡贡献超过其余所有卡牌与道具总贡献，因此最优解一定可以先确定唯一闪卡，再分别处理它出现前后的决策。",
+            "闪卡确定后，后半段只需记录它的当前生命值、最终伤害及其余物品贡献；前两者构成状态，沿 DAG 转移即可。",
+            "在闪卡出现前，同类增益的最优分配具有前缀最大值结构，可只记录未来承接生命值增益和伤害增益的代表卡，以及两者是否为同一张卡。",
+            "非闪卡若最终生命值和伤害都大于 $k$，就能改造成更优的闪卡；因此非闪卡的相关最大值至少有一个不超过 $k$，用 $g_a,g_b$ 分别记录另一维的有限增量后，状态规模降至 $O(mk^2)$。"
+          ],
+          "solutionBrief": "利用 $10^9$ 倍增益锁定闪卡，按其出现位置将路径分成前后两段。后段 DP 维护闪卡属性；前段用前缀代表卡、$f/g/g_a/g_b$ 状态压缩增益分配，沿 DAG 转移，整体复杂度为 $O(m(nk+k^2))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
