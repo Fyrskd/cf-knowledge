@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-23T20:30:11+00:00",
+  "updated_at": "2026-09-23T20:37:00+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -14556,6 +14556,190 @@
         "source_provenance": "依据题面中的时间序列与道路规则、完整 editorial，以及 tags 中的图论、最短路和二分提示。",
         "quality_flags": [
           "statement_truncated_after_k"
+        ]
+      }
+    },
+    "1888F": {
+      "problem_key": "1888F",
+      "title": "Minimum Array",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1888/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/121621",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "5893bae059b00e3e3fde47dc3fad53ad8abecdfeaad2dca91faccb075ea6a290",
+      "generated_at": "2026-09-23T20:33:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的整数数组，按固定顺序执行 $q$ 次区间加法：每次选择 $[l,r]$ 和整数 $x$，将该区间所有元素加上 $x$。要求在初始数组及每次操作完成后的所有数组中，找出字典序最小的一个。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text；editorial_text 为空，tags 仅用于题目分类，未据此补写算法。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1888E": {
+      "problem_key": "1888E",
+      "title": "Time Travel",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1888/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/121621",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "d36392900e832b1d45b99ad2d185cf25e65805110a1269e51f182388e29a4f7a",
+      "generated_at": "2026-09-23T20:33:56+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个城市和多个历史时刻，每个时刻给出一组双向道路。时间机器按固定序列依次把你送到这些时刻；到达每个时刻后，最多沿该时刻的一条道路移动一次，也可以不动，要求从城市 $1$ 到达城市 $n$ 所需的最少时间旅行次数，无法到达则输出 $-1$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，仅使用题面可直接推出的分层模型。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1888D2": {
+      "problem_key": "1888D2",
+      "title": "Dances (Hard Version)",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1888/problem/D2",
+      "editorial_url": "https://codeforces.com/blog/entry/121621",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "2b9a945c2f51704f9b36f1e12023c6596bcebe358c4f583a3cf7a62f8fe1aaf2",
+      "generated_at": "2026-09-23T20:34:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度均为 $n$ 的数组，可先任意重排；每次操作必须同时从两数组各删除一个元素。对数组 $a$ 的第一个元素依次替换为 $1$ 到 $m$，分别求使剩余元素逐项满足 $a_i<b_i$ 所需的最少操作数，并输出总和。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和题目标签整理；editorial_text 为空，仅提供 editorial URL。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "1888D1": {
+      "problem_key": "1888D1",
+      "title": "Dances (Easy version)",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1888/problem/D1",
+      "editorial_url": "https://codeforces.com/blog/entry/121621",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "ed26e7fbcb83bb56382c6cdeed7a849dbd6af971ded57e9748ae50d51ca6e67b",
+      "generated_at": "2026-09-23T20:35:24+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组 $a$ 和 $b$，先将 $a$ 的首元素替换为 $1$ 得到唯一数组 $c$。每次操作必须从两个数组各删除一个元素，删除前可任意重排；求经过最少操作后，能否让剩余数组逐位满足 $c_i<b_i$，并输出该最少操作次数。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，editorial_url 仅为链接。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1888C": {
+      "problem_key": "1888C",
+      "title": "You Are So Beautiful",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1888/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/121621",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "ba06de7b33230522d71d1f1a9f9ae88143e0da30e97dd4f18d6e042917857050",
+      "generated_at": "2026-09-23T20:36:07+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数数组，任选一个连续子数组作为序列 $b$。要求统计这样的区间数量：在原数组中按严格递增下标选择元素，使选出的子序列等于 $b$ 的方式恰好有一种。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 提取题意与等价定义；codeforces_tags 仅提供“data structures”标签，editorial_text 为空。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "1888B": {
+      "problem_key": "1888B",
+      "title": "Raspberries",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1888/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/121621",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "73f039071597eaa8cde1ba48560087a8ae0d99b5e034b7bd5b78c864c4a8eb1b",
+      "generated_at": "2026-09-23T20:36:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组和 $k$（$2\\le k\\le5$）。每次可任选一个元素加一，求使数组所有元素乘积能被 $k$ 整除所需的最少操作次数。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_url 仅为链接，editorial_text 缺失。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1888A": {
+      "problem_key": "1888A",
+      "title": "Chemistry",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1888/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/121621",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "6e97d7659709c927832fa22bd94733d4d8667b98e7fd38fd012c0d7379528910",
+      "generated_at": "2026-09-23T20:37:00+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由小写字母组成、长度为 $n$ 的字符串，以及整数 $k$。必须恰好删除 $k$ 个字符，再任意重排剩余字符；若能组成回文串则输出 YES，否则输出 NO。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "字符串",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面与 tags；editorial_url 仅有链接，未提供题解正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
         ]
       }
     }

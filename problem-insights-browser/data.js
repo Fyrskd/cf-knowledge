@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1542,
-    "source_total_problems": 1742,
+    "total_problems": 1549,
+    "source_total_problems": 1749,
     "filtered_out_problems": 200,
-    "with_statement_brief": 1542,
+    "with_statement_brief": 1549,
     "with_editorial_brief": 1317,
     "with_solution_brief": 1318,
-    "missing_editorial_brief": 224,
+    "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 479,
+    "ai_override_count": 486,
     "primary_topic_count": 13,
-    "contest_count": 247,
+    "contest_count": 248,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 63,
-    "构造与贪心": 502,
-    "图论与网络流": 96,
+    "字符串": 64,
+    "构造与贪心": 504,
+    "图论与网络流": 97,
     "动态规划与状态设计": 155,
-    "数论与同余": 145,
+    "数论与同余": 146,
     "组合计数与概率": 116,
-    "数据结构": 123,
+    "数据结构": 124,
     "几何": 33,
     "树结构": 107,
     "交互": 69,
-    "基础实现与模拟": 64,
+    "基础实现与模拟": 65,
     "博弈": 55,
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
     "ai_generated_with_editorial": 408,
     "ai_generated_partial_editorial": 18,
-    "missing_editorial": 224,
+    "missing_editorial": 231,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -36417,6 +36417,169 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1888,
+      "name": "Codeforces Round 905 (Div. 2)",
+      "date": "2023-10-22",
+      "url": "https://codeforces.com/contest/1888",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1888A",
+          "index": "A",
+          "slot": "A",
+          "title": "Chemistry",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1888/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写字母组成、长度为 $n$ 的字符串，以及整数 $k$。必须恰好删除 $k$ 个字符，再任意重排剩余字符；若能组成回文串则输出 YES，否则输出 NO。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1888B",
+          "index": "B",
+          "slot": "B",
+          "title": "Raspberries",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1888/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组和 $k$（$2\\le k\\le5$）。每次可任选一个元素加一，求使数组所有元素乘积能被 $k$ 整除所需的最少操作次数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1888C",
+          "index": "C",
+          "slot": "C",
+          "title": "You Are So Beautiful",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1888/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures"
+          ],
+          "statementBrief": "给定整数数组，任选一个连续子数组作为序列 $b$。要求统计这样的区间数量：在原数组中按严格递增下标选择元素，使选出的子序列等于 $b$ 的方式恰好有一种。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1888D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Dances (Easy version)",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1888/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy"
+          ],
+          "statementBrief": "给定数组 $a$ 和 $b$，先将 $a$ 的首元素替换为 $1$ 得到唯一数组 $c$。每次操作必须从两个数组各删除一个元素，删除前可任意重排；求经过最少操作后，能否让剩余数组逐位满足 $c_i<b_i$，并输出该最少操作次数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1888D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Dances (Hard Version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1888/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定两个长度均为 $n$ 的数组，可先任意重排；每次操作必须同时从两数组各删除一个元素。对数组 $a$ 的第一个元素依次替换为 $1$ 到 $m$，分别求使剩余元素逐项满足 $a_i<b_i$ 所需的最少操作数，并输出总和。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1888E",
+          "index": "E",
+          "slot": "E",
+          "title": "Time Travel",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1888/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "graphs",
+            "implementation",
+            "shortest paths"
+          ],
+          "statementBrief": "有 $n$ 个城市和多个历史时刻，每个时刻给出一组双向道路。时间机器按固定序列依次把你送到这些时刻；到达每个时刻后，最多沿该时刻的一条道路移动一次，也可以不动，要求从城市 $1$ 到达城市 $n$ 所需的最少时间旅行次数，无法到达则输出 $-1$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1888F",
+          "index": "F",
+          "slot": "F",
+          "title": "Minimum Array",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1888/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组，按固定顺序执行 $q$ 次区间加法：每次选择 $[l,r]$ 和整数 $x$，将该区间所有元素加上 $x$。要求在初始数组及每次操作完成后的所有数组中，找出字典序最小的一个。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     },

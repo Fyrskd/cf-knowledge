@@ -142401,5 +142401,94 @@
     "tags": [
       "math"
     ]
+  },
+  {
+    "contestId": 1888,
+    "index": "A",
+    "name": "Chemistry",
+    "type": "PROGRAMMING",
+    "points": 250.0,
+    "rating": 900,
+    "tags": [
+      "strings"
+    ]
+  },
+  {
+    "contestId": 1888,
+    "index": "B",
+    "name": "Raspberries",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "rating": 1000,
+    "tags": [
+      "math",
+      "number theory"
+    ]
+  },
+  {
+    "contestId": 1888,
+    "index": "C",
+    "name": "You Are So Beautiful",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "rating": 1400,
+    "tags": [
+      "data structures"
+    ]
+  },
+  {
+    "contestId": 1888,
+    "index": "D1",
+    "name": "Dances (Easy version)",
+    "type": "PROGRAMMING",
+    "points": 750.0,
+    "rating": 1400,
+    "tags": [
+      "binary search",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 1888,
+    "index": "D2",
+    "name": "Dances (Hard Version)",
+    "type": "PROGRAMMING",
+    "points": 1250.0,
+    "rating": 1900,
+    "tags": [
+      "binary search",
+      "brute force",
+      "greedy",
+      "math"
+    ]
+  },
+  {
+    "contestId": 1888,
+    "index": "E",
+    "name": "Time Travel",
+    "type": "PROGRAMMING",
+    "points": 2250.0,
+    "rating": 1900,
+    "tags": [
+      "binary search",
+      "data structures",
+      "graphs",
+      "implementation",
+      "shortest paths"
+    ]
+  },
+  {
+    "contestId": 1888,
+    "index": "F",
+    "name": "Minimum Array",
+    "type": "PROGRAMMING",
+    "points": 2750.0,
+    "rating": 2400,
+    "tags": [
+      "binary search",
+      "data structures",
+      "greedy",
+      "math"
+    ]
   }
 ]
