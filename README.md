@@ -8,7 +8,7 @@ CF补完计划是一个面向 Codeforces 题目复习的静态知识页面。项
 
 ## 本地运行
 
-项目根目录就是当前仓库，不需要再进入 `data/cf-knowledge`。项目只依赖 Python 3.x 和浏览器；Node.js 仅用于 JavaScript 语法检查。
+项目根目录就是当前仓库，数据文件和构建脚本直接位于根目录。项目只依赖 Python 3.x 和浏览器；Node.js 仅用于 JavaScript 语法检查。
 
 构建发布数据：
 
