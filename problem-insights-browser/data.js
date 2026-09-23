@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1490,
+    "total_problems": 1492,
     "source_total_problems": 1742,
-    "filtered_out_problems": 252,
-    "with_statement_brief": 1490,
-    "with_editorial_brief": 1265,
-    "with_solution_brief": 1266,
+    "filtered_out_problems": 250,
+    "with_statement_brief": 1492,
+    "with_editorial_brief": 1267,
+    "with_solution_brief": 1268,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 426,
+    "ai_override_count": 428,
     "primary_topic_count": 13,
-    "contest_count": 238,
+    "contest_count": 239,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 487,
+    "构造与贪心": 488,
     "图论与网络流": 90,
     "动态规划与状态设计": 148,
     "数论与同余": 138,
     "组合计数与概率": 114,
     "数据结构": 116,
-    "几何": 32,
+    "几何": 33,
     "树结构": 105,
     "交互": 69,
     "基础实现与模拟": 61,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 358,
+    "ai_generated_with_editorial": 360,
     "ai_generated_partial_editorial": 16,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -36647,6 +36647,72 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1869,
+      "name": "Codeforces Round 896 (Div. 2)",
+      "date": "2023-09-10",
+      "url": "https://codeforces.com/contest/1869",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1869A",
+          "index": "A",
+          "slot": "A",
+          "title": "Make It Zero",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1869/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116642",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定长度至少为 $2$ 的整数数组，每次选择一个连续区间，并将区间内每个元素替换为该区间所有元素的异或值。最多操作 $8$ 次，要求输出一组操作顺序，使最终数组所有元素都为 $0$。",
+          "transformedStatement": "利用偶数个相同值异或为 $0$：只需把数组划分为若干偶数长度区间，并对每个区间连续操作两次。偶数长度数组可整体处理；奇数长度数组则先处理前 $n-1$ 项，再单独处理最后两项。",
+          "keyObservations": [
+            "一次操作会把所选区间的每个元素都替换成该区间元素的异或值；因此，区间长度为偶数时，该异或值再异或自身会变成 $0$。",
+            "对偶数长度区间连续操作两次后，区间内所有元素都变为 $0$，且不受原数组数值影响，因此可以直接用固定区间构造。",
+            "当 $n$ 为奇数时，先将前 $n-1$ 个元素归零，再处理末尾两个元素；这两个操作区间均为偶数长度，且总操作数不超过 $4$。"
+          ],
+          "solutionBrief": "若 $n$ 为偶数，对整个数组操作两次即可归零。若 $n$ 为奇数，先对区间 $[1,n-1]$ 操作两次，再对区间 $[n-1,n]$ 操作两次；每个区间长度均为偶数，故两次操作后该区间归零，最多用 $4$ 次操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1869B",
+          "index": "B",
+          "slot": "B",
+          "title": "2D Traveling",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1869/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/116642",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "geometry",
+            "math",
+            "shortest paths",
+            "sortings"
+          ],
+          "statementBrief": "平面上有 $n$ 座城市，前 $k$ 座是主要城市；任意两城都可乘飞机，若两城都是主要城市则票价为零，否则票价是曼哈顿距离。给定起点和终点，允许中途按任意顺序访问城市，要求最小化总票价。",
+          "transformedStatement": "最优路线可化为直飞，或先从起点飞到一座主要城市、利用主要城市间的免费航程，再从另一座主要城市飞到终点；因此只需分别优化路线两端的接入费用，而不必枚举主要城市对。",
+          "keyObservations": [
+            "连续经过三个或更多主要城市时，可以直接从其中第一个飞到最后一个且费用仍为零，因此最优路线不需要经过超过两个主要城市。",
+            "若两个主要城市之间插入普通城市，相关航程费用为正，而两座主要城市之间直飞免费，所以最优路线中的主要城市应相邻。",
+            "经过的两个主要城市分别只影响起点接入费用和终点接出费用，选择可以拆开独立优化，从而避免枚举所有城市对。"
+          ],
+          "solutionBrief": "若没有主要城市，直接计算起点到终点的曼哈顿距离。否则比较直飞费用与“起点接入某个主要城市、主要城市间免费、再从主要城市接到终点”的最小费用；两端主要城市可分别独立选择，总复杂度为 $O(n+k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
