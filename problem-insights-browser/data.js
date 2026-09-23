@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1513,
+    "total_problems": 1516,
     "source_total_problems": 1742,
-    "filtered_out_problems": 229,
-    "with_statement_brief": 1513,
-    "with_editorial_brief": 1288,
-    "with_solution_brief": 1289,
+    "filtered_out_problems": 226,
+    "with_statement_brief": 1516,
+    "with_editorial_brief": 1291,
+    "with_solution_brief": 1292,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 449,
+    "ai_override_count": 452,
     "primary_topic_count": 13,
-    "contest_count": 242,
+    "contest_count": 243,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,10 +45,10 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 495,
+    "构造与贪心": 496,
     "图论与网络流": 92,
-    "动态规划与状态设计": 154,
-    "数论与同余": 139,
+    "动态规划与状态设计": 155,
+    "数论与同余": 140,
     "组合计数与概率": 114,
     "数据结构": 118,
     "几何": 33,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 380,
+    "ai_generated_with_editorial": 383,
     "ai_generated_partial_editorial": 17,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -36452,6 +36452,97 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1875,
+      "name": "Codeforces Round 901 (Div. 2)",
+      "date": "2023-09-30",
+      "url": "https://codeforces.com/contest/1875",
+      "type": "Div. 2",
+      "problemCount": 3,
+      "maxRating": 1600,
+      "problems": [
+        {
+          "key": "1875A",
+          "index": "A",
+          "slot": "A",
+          "title": "Jellyfish and Undertale",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1875/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/120943",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "炸弹计时器初始为 $b$，每秒减少 $1$；有 $n$ 个工具，每个最多使用一次，可让计时器增加 $x_i$，但计时器超过上限 $a$ 时会被截为 $a$。需要安排工具的使用时机，使炸弹尽可能晚爆炸，并求最大持续秒数。",
+          "transformedStatement": "把每个工具单独看作对最终时间的增量：若在计时器为 $c$ 时使用，它最多增加 $a-c$。因此应统一延迟到计时器为 $1$ 时使用，每个工具的有效增量就是 $\\min(x_i,a-1)$。",
+          "keyObservations": [
+            "工具在计时器为 $c$ 时最多只能贡献 $a-c$，因为超过上限 $a$ 的部分会被截去。",
+            "每个工具都应等到计时器为 $1$ 时使用，此时可获得最大有效贡献 $\u00024\\min(x_i,a-1)\\u00024$，且不会因计时器归零而来不及使用。",
+            "各工具的有效贡献彼此独立，先后顺序不影响总和，因此答案是初始时间加上所有工具的截断贡献。"
+          ],
+          "solutionBrief": "将每个工具都安排在计时器为 $1$ 时使用，其贡献为 $\\min(x_i,a-1)$。答案直接计算 $b+\\sum_i\\min(x_i,a-1)$，每组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1875C",
+          "index": "C",
+          "slot": "C",
+          "title": "Jellyfish and Green Apple",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1875/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/120943",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 个重量均为 $1$ 的苹果块，要分给 $m$ 个人，使每人获得的总重量相同。每次可将一个苹果块等重切成两半，求达到等分所需的最少切分次数；若有限次切分无法实现则输出 $-1$。",
+          "transformedStatement": "把无需切分即可按整块分出的苹果先去掉，只研究 $r=n\\bmod m$ 个苹果在 $m$ 人间的分配。每人的目标重量是 $r/m$，问题转化为用最少的二进制单位分数表示它，并计算所有人的最终苹果块数。",
+          "keyObservations": [
+            "先无操作地分掉完整的 $m$ 个苹果组，只需处理 $r=n\\bmod m$ 个剩余苹果，目标份额为 $r/m$。",
+            "每次切分都会使苹果块数恰好增加 $1$；因此最小操作数等价于构造总块数最少的等额分配。",
+            "令 $g=\\gcd(r,m)$，若 $m/g$ 不是 $2$ 的幂，则 $r/m$ 不能表示为有限个二进制单位分数之和，答案为 $-1$。",
+            "当 $m/g$ 是 $2$ 的幂时，$r/m$ 的唯一二进制表示含有 $\\operatorname{popcount}(r/g)$ 项，最终块数为 $m\\operatorname{popcount}(r/g)$，所以操作数为该值减去 $r$。"
+          ],
+          "solutionBrief": "令 $r=n\\bmod m$、$g=\\gcd(r,m)$。若 $m/g$ 不是 $2$ 的幂则输出 $-1$；否则答案为 $m\\times\\operatorname{popcount}(r/g)-r$，可在 $O(\\log m)$ 时间内计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1875D",
+          "index": "D",
+          "slot": "D",
+          "title": "Jellyfish and Mex",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1875/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/120943",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定一个非负整数数组，初始令 $m=0$。重复 $n$ 次，每次选择并删除一个仍在数组中的元素，然后把删除后数组的 MEX 加到 $m$ 上；要求通过安排删除顺序，使最终的 $m$ 最小。",
+          "transformedStatement": "只考虑 MEX 仍大于 $0$ 的阶段：当前 MEX 为 $i$ 时，删除一个小于 $i$ 的数值 $j$ 的最后一个出现位置会使 MEX 降为 $j$，而删除它的其他副本只产生代价 $i$。于是问题转化为在 MEX 状态间选择递减路径。",
+          "keyObservations": [
+            "当当前 MEX 为正数时，删除当前 MEX 以上的数不会改变它，因此这些操作可延后到 MEX 变为 $0$ 后执行。",
+            "在 MEX 变为 $0$ 前，若当前 MEX 为 $i$，想让它变为 $j<i$，必须删除全部 $j$；前 $c_j-1$ 次代价为 $i$，最后一次代价为 $j$。",
+            "因此状态可按 MEX 建模：从状态 $i$ 转移到 $j<i$ 的代价是 $i(c_j-1)+j$，只需在所有较小 MEX 间做最优转移。",
+            "MEX 一旦变为 $0$，后续每次操作增加的值都为 $0$，所以只需优化到达状态 $0$ 的代价。"
+          ],
+          "solutionBrief": "统计各数值出现次数，求初始 MEX 为 $M$。令状态表示当前 MEX，初始化 $dp[M]=0$，对每个 $j<i$ 用 $i(c_j-1)+j$ 转移到 $j$；最终答案为 $dp[0]$。代码采用等价的势能写法，输出 $dp[0]-M$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },

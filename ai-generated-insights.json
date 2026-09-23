@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-23T19:35:50+00:00",
+  "updated_at": "2026-09-23T19:40:17+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -13648,6 +13648,93 @@
         "quality_flags": [
           "statement_operation_text_incomplete"
         ]
+      }
+    },
+    "1875D": {
+      "problem_key": "1875D",
+      "title": "Jellyfish and Mex",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1875/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/120943",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "326b2c697bbbb7b3741d544046c4a81b4a401ea476ac976af949caea80be1367",
+      "generated_at": "2026-09-23T19:38:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个非负整数数组，初始令 $m=0$。重复 $n$ 次，每次选择并删除一个仍在数组中的元素，然后把删除后数组的 MEX 加到 $m$ 上；要求通过安排删除顺序，使最终的 $m$ 最小。",
+        "transformed_statement": "只考虑 MEX 仍大于 $0$ 的阶段：当前 MEX 为 $i$ 时，删除一个小于 $i$ 的数值 $j$ 的最后一个出现位置会使 MEX 降为 $j$，而删除它的其他副本只产生代价 $i$。于是问题转化为在 MEX 状态间选择递减路径。",
+        "key_observations": [
+          "当当前 MEX 为正数时，删除当前 MEX 以上的数不会改变它，因此这些操作可延后到 MEX 变为 $0$ 后执行。",
+          "在 MEX 变为 $0$ 前，若当前 MEX 为 $i$，想让它变为 $j<i$，必须删除全部 $j$；前 $c_j-1$ 次代价为 $i$，最后一次代价为 $j$。",
+          "因此状态可按 MEX 建模：从状态 $i$ 转移到 $j<i$ 的代价是 $i(c_j-1)+j$，只需在所有较小 MEX 间做最优转移。",
+          "MEX 一旦变为 $0$，后续每次操作增加的值都为 $0$，所以只需优化到达状态 $0$ 的代价。"
+        ],
+        "solution_brief": "统计各数值出现次数，求初始 MEX 为 $M$。令状态表示当前 MEX，初始化 $dp[M]=0$，对每个 $j<i$ 用 $i(c_j-1)+j$ 转移到 $j$；最终答案为 $dp[0]$。代码采用等价的势能写法，输出 $dp[0]-M$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、题面示例及 tags；题面中的具体操作描述存在缺失，部分规则由示例和题解补全。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1875C": {
+      "problem_key": "1875C",
+      "title": "Jellyfish and Green Apple",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1875/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/120943",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "538c2b58b0b06a1a664a31f4810f13345e87df2a4e4884efbffa2b00b82dd3b7",
+      "generated_at": "2026-09-23T19:39:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个重量均为 $1$ 的苹果块，要分给 $m$ 个人，使每人获得的总重量相同。每次可将一个苹果块等重切成两半，求达到等分所需的最少切分次数；若有限次切分无法实现则输出 $-1$。",
+        "transformed_statement": "把无需切分即可按整块分出的苹果先去掉，只研究 $r=n\\bmod m$ 个苹果在 $m$ 人间的分配。每人的目标重量是 $r/m$，问题转化为用最少的二进制单位分数表示它，并计算所有人的最终苹果块数。",
+        "key_observations": [
+          "先无操作地分掉完整的 $m$ 个苹果组，只需处理 $r=n\\bmod m$ 个剩余苹果，目标份额为 $r/m$。",
+          "每次切分都会使苹果块数恰好增加 $1$；因此最小操作数等价于构造总块数最少的等额分配。",
+          "令 $g=\\gcd(r,m)$，若 $m/g$ 不是 $2$ 的幂，则 $r/m$ 不能表示为有限个二进制单位分数之和，答案为 $-1$。",
+          "当 $m/g$ 是 $2$ 的幂时，$r/m$ 的唯一二进制表示含有 $\\operatorname{popcount}(r/g)$ 项，最终块数为 $m\\operatorname{popcount}(r/g)$，所以操作数为该值减去 $r$。"
+        ],
+        "solution_brief": "令 $r=n\\bmod m$、$g=\\gcd(r,m)$。若 $m/g$ 不是 $2$ 的幂则输出 $-1$；否则答案为 $m\\times\\operatorname{popcount}(r/g)-r$，可在 $O(\\log m)$ 时间内计算。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 及其代码；tags 仅用于主题辅助判断。",
+        "quality_flags": []
+      }
+    },
+    "1875A": {
+      "problem_key": "1875A",
+      "title": "Jellyfish and Undertale",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1875/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/120943",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "9a51fda0334ffdc2a0525f615249e15eb491d822c38abd4235870ce217b628f5",
+      "generated_at": "2026-09-23T19:40:17+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "炸弹计时器初始为 $b$，每秒减少 $1$；有 $n$ 个工具，每个最多使用一次，可让计时器增加 $x_i$，但计时器超过上限 $a$ 时会被截为 $a$。需要安排工具的使用时机，使炸弹尽可能晚爆炸，并求最大持续秒数。",
+        "transformed_statement": "把每个工具单独看作对最终时间的增量：若在计时器为 $c$ 时使用，它最多增加 $a-c$。因此应统一延迟到计时器为 $1$ 时使用，每个工具的有效增量就是 $\\min(x_i,a-1)$。",
+        "key_observations": [
+          "工具在计时器为 $c$ 时最多只能贡献 $a-c$，因为超过上限 $a$ 的部分会被截去。",
+          "每个工具都应等到计时器为 $1$ 时使用，此时可获得最大有效贡献 $\u00024\\min(x_i,a-1)\\u00024$，且不会因计时器归零而来不及使用。",
+          "各工具的有效贡献彼此独立，先后顺序不影响总和，因此答案是初始时间加上所有工具的截断贡献。"
+        ],
+        "solution_brief": "将每个工具都安排在计时器为 $1$ 时使用，其贡献为 $\\min(x_i,a-1)$。答案直接计算 $b+\\sum_i\\min(x_i,a-1)$，每组复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text，以及 tags 中的 greedy/brute force；核心公式和正确性理由来自 editorial。",
+        "quality_flags": []
       }
     }
   }
