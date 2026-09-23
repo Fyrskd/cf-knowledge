@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-23T17:22:37+00:00",
+  "updated_at": "2026-09-23T18:48:00+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -12690,6 +12690,32 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial_text，以及 tags 中的 games、greedy、math。",
         "quality_flags": []
+      }
+    },
+    "2007C": {
+      "problem_key": "2007C",
+      "title": "Dora and C++",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/2007/problem/C",
+      "editorial_url": null,
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "52f0769538d0c91cbda401f1a4ebdc4885913bd62437707460caf0c53961deb5",
+      "generated_at": "2026-09-23T18:48:00+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组和两个常数 $a,b$。每次可任选一个位置，将该元素增加 $a$ 或增加 $b$，操作次数可为任意非负整数；求操作后数组最大值与最小值之差的最小可能值。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，仅能提炼题意与直接等价模型。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
       }
     }
   }

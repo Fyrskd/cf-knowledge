@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 418,
+    "ai_override_count": 419,
     "primary_topic_count": 13,
     "contest_count": 237,
     "rating_min": 800,
@@ -31243,15 +31243,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2007/problem/C",
           "editorialUrl": "",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "博弈",
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Dora and C++；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $n$ 的数组和两个常数 $a,b$。每次可任选一个位置，将该元素增加 $a$ 或增加 $b$，操作次数可为任意非负整数；求操作后数组最大值与最小值之差的最小可能值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

@@ -24,7 +24,7 @@
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 418,
+    "ai_override_count": 419,
     "primary_topic_count": 13
   },
   "records": [
@@ -21367,15 +21367,12 @@
       "editorial_url": null,
       "editorial_quality": "url_only",
       "primary_topic": "数论与同余",
-      "secondary_topics": [
-        "博弈",
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Dora and C++；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的数组和两个常数 $a,b$。每次可任选一个位置，将该元素增加 $a$ 或增加 $b$，操作次数可为任意非负整数；求操作后数组最大值与最小值之差的最小可能值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21383,9 +21380,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-23T18:48:00+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 789,
