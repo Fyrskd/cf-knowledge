@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1549,
+    "total_problems": 1556,
     "source_total_problems": 1749,
-    "filtered_out_problems": 200,
-    "with_statement_brief": 1549,
-    "with_editorial_brief": 1317,
-    "with_solution_brief": 1318,
+    "filtered_out_problems": 193,
+    "with_statement_brief": 1556,
+    "with_editorial_brief": 1324,
+    "with_solution_brief": 1325,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 486,
+    "ai_override_count": 493,
     "primary_topic_count": 13,
-    "contest_count": 248,
+    "contest_count": 249,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,9 +45,9 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 64,
-    "构造与贪心": 504,
-    "图论与网络流": 97,
-    "动态规划与状态设计": 155,
+    "构造与贪心": 507,
+    "图论与网络流": 99,
+    "动态规划与状态设计": 157,
     "数论与同余": 146,
     "组合计数与概率": 116,
     "数据结构": 124,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 408,
-    "ai_generated_partial_editorial": 18,
+    "ai_generated_with_editorial": 412,
+    "ai_generated_partial_editorial": 21,
     "missing_editorial": 231,
     "manual_override": 891,
     "statement_derived": 1
@@ -36417,6 +36417,225 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1889,
+      "name": "Codeforces Round 906 (Div. 1)",
+      "date": "2023-10-28",
+      "url": "https://codeforces.com/contest/1889",
+      "type": "Div. 1",
+      "problemCount": 7,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1889A",
+          "index": "A",
+          "slot": "A",
+          "title": "Qingshan Loves Strings 2",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1889/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/121813",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个只含 `0` 和 `1` 的字符串，每次可以在当前字符串的开头，或任意一个字符之后插入子串 `01`，最多操作 300 次。需要判断能否将字符串变成 good；若能，则输出操作序列，但本地题面缺失了 good 的定义。",
+          "transformedStatement": "题解把构造过程转化为处理字符串两端：首尾不同就将它们从待处理范围中剥离，首尾相同时则通过在一端插入 `01`，等价地移动一个字符。整个构造保留 `0`、`1` 数量差，因此数量相等是必要条件。",
+          "keyObservations": [
+            "插入的 `01` 不改变字符串中 `0` 与 `1` 的数量差，因此两种字符数量不相等时必定无解。",
+            "若当前首尾字符不同，题解将它们视为可忽略的一对并缩短处理区间；若首尾相同，则在相应一端插入 `01`，等价于把一个 `1` 移到前端或把一个 `0` 移到末端。",
+            "一次操作涉及的两个字符中至多有一个需要移动，因此可将移动次数控制在至多约 `n/2`，满足操作次数限制。"
+          ],
+          "solutionBrief": "先检查 `0` 和 `1` 的数量是否相等；不相等则无解。相等时按题解规则反复缩短首尾不同的区间，或在首尾相同的一端插入 `01`，输出操作位置；题面中的 good 字符串定义缺失，无法进一步说明终止条件。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1889B",
+          "index": "B",
+          "slot": "B",
+          "title": "Doremy's Connecting Plan",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1889/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/121813",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个城市，初始互不连通，第 $i$ 个城市有 $a_i$ 人。每次可在城市 $i,j$ 之间加边，但两者所在连通分量的人口总和必须至少为 $i j c$；判断能否通过若干次加边使所有城市连通。",
+          "transformedStatement": "无需尝试任意连边：可以把问题化为从城市 $1$ 出发逐步吸收其他城市。每个待接入城市的优先级由 $a_i-i c$ 决定，核心是判断按优先级接入时，当前分量人口能否逐步满足门槛。",
+          "keyObservations": [
+            "对两个编号都大于 $1$ 的点，若它们所在分量之和满足连边条件，则至少有一侧分量的人口总数足以覆盖该点的编号门槛；因此总能改为把这一侧与点 $1$ 相连。",
+            "合并分量只会增加分量人口总数，不会让原本可连的边失效，所以可以始终围绕点 $1$ 扩展，只需安排其余点的接入顺序。",
+            "点 $i$ 接入点 $1$ 所在分量的条件取决于当前总人口与 $a_i-i c$；按该值从大到小处理，能优先接入最容易满足条件的点。"
+          ],
+          "solutionBrief": "将人口和条件统一按 $c$ 缩放，按 $a_i-i c$ 从大到小排列编号 $2$ 到 $n$ 的城市，并依次尝试把它们接入城市 $1$ 所在分量。若过程中某个城市不满足连边条件，则无法按此策略完成；由锚点化观察可知，其他连边方式也不能提供更优可能性。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1889C1",
+          "index": "C1",
+          "slot": "C",
+          "title": "Doremy's Drying Plan (Easy Version)",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1889/problem/C1",
+          "editorialUrl": "https://codeforces.com/blog/entry/121813",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个城市和 $m$ 天降雨预报，每天的雨会覆盖一个连续城市区间。Doremy 可以任选两天阻止降雨，要求计算最多能让多少个城市在这 $m$ 天内一次雨也不受。",
+          "transformedStatement": "把每个城市按原始降雨覆盖次数分类：原本覆盖次数为 $0$ 的城市直接计入答案；取消两天降雨带来的收益，则由所选两个区间中覆盖次数为 $1$ 或 $2$ 的城市决定。",
+          "keyObservations": [
+            "先统计每个城市被多少个降雨区间覆盖；原本未被覆盖的城市始终干燥，因此只需计算取消两天降雨新增的干燥城市数。",
+            "取消两个互不相交的区间时，新增干燥城市只来自各自区间内原本恰好被覆盖一次的位置，所以只需选取贡献最大的两个区间。",
+            "若两个区间相交，它们的交集中原本被恰好覆盖两次的位置也会变干；这样的区间对必定对应某个恰好被两个区间覆盖的位置，因此只需考察至多 $n$ 个相关区间对。"
+          ],
+          "solutionBrief": "用差分统计各城市的覆盖次数，并计数原本干燥的位置。枚举互不相交的两个区间时，按区间内恰好覆盖一次的位置数选取最佳组合；对相交情形，利用覆盖次数恰为 $2$ 的位置找出可能有贡献的区间对，再计算新增干燥城市数。题解给出的总复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1889C2",
+          "index": "C2",
+          "slot": "C",
+          "title": "Doremy's Drying Plan (Hard Version)",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1889/problem/C2",
+          "editorialUrl": "https://codeforces.com/blog/entry/121813",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "有 $n$ 个城市和连续 $m$ 天的降雨计划，第 $i$ 天会覆盖区间 $[l_i,r_i]$。她可以选择 $k$ 天阻止整天降雨，要求最大化剩余计划中从未被雨覆盖的城市数量。",
+          "transformedStatement": "把每个降雨日视为一个可删除的区间，问题变成删除至多 $k$ 个区间后最大化未被覆盖的位置数；按最后一个未覆盖位置建立前缀 DP。",
+          "keyObservations": [
+            "把被阻止下雨的天看成删除对应雨区间；删除后未被任何剩余区间覆盖的城市就是干燥城市，因此目标转为用至多 $k$ 次删除最大化未覆盖点数。",
+            "令 $dp_{i,j}$ 表示前缀 $[1,i]$ 中的干燥城市数、最后一个干燥城市为 $i$ 且删除 $j$ 个区间时的最优值，固定前一个干燥位置 $t$ 后，转移只需删除覆盖 $i$ 且满足 $t<l$ 的区间。",
+            "对固定的 $i$，所需删除数 $d_t$ 随 $t$ 单调变化且不超过 $k$，所以所有前驱位置可按相同 $d_t$ 划分为至多 $k+1$ 段，避免逐个枚举前驱。",
+            "每段内转移使用对应 $dp_{t,j-d_t}$ 的区间最大值，借助稀疏表加速；总复杂度为 $O(nk^2)$，空间复杂度为 $O(kn\\log n)$。"
+          ],
+          "solutionBrief": "将雨天视为可删除的区间，设 $dp_{i,j}$ 记录最后一个干燥位置为 $i$ 时的最优干燥城市数。固定前驱 $t$ 后计算需删除的区间数 $d_t$；利用其单调性把前驱分成至多 $k+1$ 段，并用稀疏表维护段内最大值，将转移优化到 $O(nk^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1889D",
+          "index": "D",
+          "slot": "D",
+          "title": "Game of Stacks",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1889/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/121813",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "graphs",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定 $n$ 个栈，第 $i$ 个栈按从底到顶的顺序存放若干个 $1$ 到 $n$ 的整数，需要输出 $init(1)$ 到 $init(n)$ 的返回值。当前题面片段没有提供 $init$ 的具体操作定义；题解表明该过程与反复处理栈顶指向关系中的环有关。",
+          "transformedStatement": "将每个栈当前的栈顶元素视为一条有向边 $i\\to p_i$，把问题转化为动态函数图上的环消除：删除环后栈顶改变，继续处理新图，直到剩下有根森林并读取各点所属树根。",
+          "keyObservations": [
+            "当每个栈只有一个元素时，将栈编号 $i$ 指向其元素 $p_i$ 得到函数图；每个连通部分至多包含一个环，环上的继续追踪会回到已访问节点，因此环边可以被消除。",
+            "一般情况下只需把 $p_i$ 替换为栈 $i$ 的当前栈顶元素，仍可使用函数图结构分析当前状态，而不必直接展开所有栈操作。",
+            "消除当前图中的环后，栈顶会发生变化并产生新的图，因此必须反复进行环消除，直到图中无环；最终森林中的根对应各个 $init(i)$ 的返回值。"
+          ],
+          "solutionBrief": "把每个栈的当前栈顶作为有向边的终点，反复寻找并消除图中的环。环消除后更新栈顶，直到形成森林；森林根即对应的 $init(i)$ 结果，整体复杂度为 $O(n+\\sum k_i)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1889E",
+          "index": "E",
+          "slot": "E",
+          "title": "Doremy's Swapping Trees",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1889/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/121813",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定两棵都含有编号为 $1$ 到 $n$ 个节点的树，题目允许反复执行题面规定的交换操作，使两棵树中满足相似关系的边集互换。需要计算经过任意次操作后，第一棵树可能得到的不同边集数量，并对 $10^9+7$ 取模；但当前记录缺失了相似关系和交换操作的完整定义。",
+          "transformedStatement": "把两棵树的每条边分别作为依赖图中的节点：一棵树中的边指向另一棵树中连接其两个端点的整条路径上的所有边。可达边集等价于依赖图的闭合子图，答案由其中大小大于 $2$ 的强连通分量独立开关决定。",
+          "keyObservations": [
+            "把两棵树的每条边都视为一个节点；若一条边的端点在另一棵树中的路径经过若干边，就建立指向这些边的依赖边。",
+            "一次操作后可保留的边集合必须是依赖图中的闭合子图，且任意闭合子图都能通过操作得到，因此问题转化为统计闭合选择。",
+            "依赖关系形成的每个非平凡强连通分量只能整体选择或整体不选；大小不超过 $2$ 的分量不产生独立选择，所以答案为 $2^t$。",
+            "路径上的整段加边不能逐条枚举，可用树上路径数据结构批量连边，从而将构图复杂度降到 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "将两棵树的边建成依赖有向图：边对应的跨树路径产生依赖。求图中大小大于 $2$ 的强连通分量数 $t$，答案为 $2^t\\bmod 10^9+7$；用树上路径批量连边实现 $O(n\\log n)$ 构图。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1889F",
+          "index": "F",
+          "slot": "F",
+          "title": "Doremy's Average Tree",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1889/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/121813",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以$r$为根的树，顶点$i$上有数值$w_i$；可以选择顶点执行题面所述操作，最多执行$k$次，最后输出所选顶点序列，使操作后的数组按顶点编号排列后字典序最小。当前记录未包含该操作的具体定义。",
+          "transformedStatement": "题解将问题重述为：对每个顶点$i$和操作预算$j$，求其子树内部能得到的最小字典序数组$f_{i,j}$，并仅比较相邻预算状态首次发生变化的位置及关键元素，而不保存完整数组。",
+          "keyObservations": [
+            "对每个顶点的子树定义“至多使用$j$次操作所得的最小字典序数组”$f_{i,j}$，从而把全树选择问题分解为子树状态比较。",
+            "只需记录$f_{i,j}$与$f_{i,j-1}$首次不同的位置$g_{i,j}$，即可判断增加一次操作对字典序的实际影响，避免保存完整数组。",
+            "除首次元素及其顶点编号外，再记录数组中第一个不同于首次元素的元素及编号，题解据此比较是否应在顶点$i$执行操作。",
+            "状态总数为$O(nk)$，因此在给定约束下可通过子树上的状态转移恢复一组操作顶点。"
+          ],
+          "solutionBrief": "在每个子树上维护使用至多$j$次操作时的最小字典序结果，并用首次变化位置及少量首元素信息比较相邻状态；按子树转移并记录决策，复杂度为$O(nk)$。但给定题面未提供操作定义，无法补全具体转移。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
