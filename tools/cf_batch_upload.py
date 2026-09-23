@@ -38,6 +38,10 @@ class BatchUploadError(RuntimeError):
     """批量上传编排失败。"""
 
 
+class RunNotFoundError(BatchUploadError):
+    """断点中的 GitHub Actions run 已不存在，通常是仓库迁移后的旧 ID。"""
+
+
 @dataclass(frozen=True)
 class Contest:
     contest_id: int
@@ -293,15 +297,20 @@ class GhWorkflowClient:
             time.sleep(min(poll_seconds, remaining))
 
     def get_run(self, run_id: int) -> WorkflowRun:
-        payload = self._json(
-            [
-                "run",
-                "view",
-                str(run_id),
-                "--json",
-                "status,conclusion,url",
-            ]
-        )
+        try:
+            payload = self._json(
+                [
+                    "run",
+                    "view",
+                    str(run_id),
+                    "--json",
+                    "status,conclusion,url",
+                ]
+            )
+        except BatchUploadError as exc:
+            if "HTTP 404" in str(exc) or "404: Not Found" in str(exc):
+                raise RunNotFoundError(f"run {run_id} 不存在，丢弃旧断点并重新派发") from exc
+            raise
         if not isinstance(payload, dict):
             raise BatchUploadError(f"run {run_id} 返回格式不是对象")
         return WorkflowRun(
@@ -439,6 +448,14 @@ class BatchUploader:
                     self._mark_success(entry, run)
                     return "success"
                 self._mark_failure(entry, run, "恢复等待时 Action 失败")
+            except RunNotFoundError as exc:
+                print(
+                    f"RESUME_STALE contest={contest.contest_id} run={existing_run_id} "
+                    f"error={exc}",
+                    flush=True,
+                )
+                entry["last_run_id"] = None
+                entry["last_run_url"] = ""
             except BatchUploadError as exc:
                 self._record_error(entry, str(exc))
 
@@ -527,6 +544,8 @@ class BatchUploader:
             try:
                 run = self.client.get_run(run_id)
                 transient_errors = 0
+            except RunNotFoundError:
+                raise
             except BatchUploadError as exc:
                 transient_errors += 1
                 print(

@@ -12,7 +12,14 @@ from pathlib import Path
 from typing import Any
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from cf_batch_upload import BatchUploadError, BatchUploader, Contest, WorkflowRun, load_candidates
+from cf_batch_upload import (
+    BatchUploadError,
+    BatchUploader,
+    Contest,
+    RunNotFoundError,
+    WorkflowRun,
+    load_candidates,
+)
 
 
 class FakeWorkflowClient:
@@ -63,6 +70,17 @@ class TransientPollingClient(FakeWorkflowClient):
         if self.poll_errors:
             self.poll_errors -= 1
             raise BatchUploadError("temporary EOF")
+        return super().get_run(run_id)
+
+
+class StaleRunClient(FakeWorkflowClient):
+    def __init__(self) -> None:
+        super().__init__([True])
+        self.stale_run_id = 999
+
+    def get_run(self, run_id: int) -> WorkflowRun:
+        if run_id == self.stale_run_id:
+            raise RunNotFoundError(f"run {run_id} 不存在，丢弃旧断点并重新派发")
         return super().get_run(run_id)
 
 
@@ -181,6 +199,40 @@ class BatchUploadTests(unittest.TestCase):
                 max_retries=1,
                 retry_delay_seconds=0,
                 poll_seconds=0.01,
+                sleep=lambda _: None,
+            )
+            result = uploader.run([Contest(1778, "Round 848", dt.date(2023, 2, 1))])
+        self.assertEqual(result, ([1778], [], []))
+        self.assertEqual(client.dispatches, [1778])
+
+    def test_stale_resume_run_is_discarded_and_replaced(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            state_path = Path(directory) / "state.json"
+            state_path.write_text(
+                json.dumps(
+                    {
+                        "version": 1,
+                        "contests": {
+                            "1778": {
+                                "contest_id": 1778,
+                                "name": "Round 848",
+                                "date": "2023-02-01",
+                                "status": "running",
+                                "attempts": 1,
+                                "last_run_id": 999,
+                                "last_run_url": "https://github.com/Fyrskd/XCPC/actions/runs/999",
+                            }
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            client = StaleRunClient()
+            uploader = BatchUploader(
+                client=client,
+                state_path=state_path,
+                max_retries=1,
+                retry_delay_seconds=0,
                 sleep=lambda _: None,
             )
             result = uploader.run([Contest(1778, "Round 848", dt.date(2023, 2, 1))])
