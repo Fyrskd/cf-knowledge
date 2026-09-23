@@ -1,0 +1,55 @@
+{
+  "ai": {
+    "provider": "openai",
+    "base_url": "https://api.zhehentiaohe.cn/v1",
+    "api_key_env": "OPENAI_API_KEY",
+    "model": "gpt-6-luna",
+    "max_output_tokens": 1400,
+    "timeout_seconds": 240,
+    "retry": {
+      "max_attempts": 5,
+      "initial_delay_seconds": 2,
+      "max_delay_seconds": 60
+    },
+    "max_statement_chars": 12000,
+    "max_editorial_chars": 24000,
+    "organization": "",
+    "project": ""
+  },
+  "crawler": {
+    "delay_seconds": 0.7,
+    "retries": 3,
+    "timeout_seconds": 30,
+    "checkpoint_every": 25
+  },
+  "auto_update": {
+    "lookback_days": 30,
+    "ai_limit": -1,
+    "require_ai": false,
+    "refresh_ai": false,
+    "skip_editorial_enrich": false,
+    "crawler": {
+      "delay_seconds": 1.0,
+      "retries": 4,
+      "timeout_seconds": 45,
+      "checkpoint_every": 10
+    }
+  },
+  "batch_upload": {
+    "from_date": "2023-01-01",
+    "max_contests": 0,
+    "max_retries": 3,
+    "poll_seconds": 15,
+    "run_timeout_seconds": 2700,
+    "discovery_timeout_seconds": 90,
+    "retry_delay_seconds": 60,
+    "state_file": "batch-upload-state.local.json",
+    "workflow": "cf-auto-update.yml",
+    "ref": "main",
+    "repo": "Fyrskd/cf-knowledge"
+  },
+  "deployment": {
+    "pages_repository": "Fyrskd/Fyrskd.github.io",
+    "pages_ref": "main"
+  }
+}

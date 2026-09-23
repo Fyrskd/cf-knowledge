@@ -97,6 +97,26 @@ class AutoUpdateTests(unittest.TestCase):
         self.assertEqual(config.model, "gpt-6-luna")
         self.assertEqual(config.timeout_seconds, 240)
 
+    def test_saving_ai_config_does_not_persist_api_key(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            public_path = root / "config.json"
+            local_path = root / "config.local.json"
+            legacy_path = root / "ai-config.local.json"
+            public_path.write_text(
+                json.dumps({"ai": {"model": "public", "api_key": "old-key"}}),
+                encoding="utf-8",
+            )
+            with patch.object(ai_manager, "CONFIG_PATH", public_path), \
+                    patch.object(ai_manager, "AI_CONFIG_PATH", local_path), \
+                    patch.object(ai_manager, "LEGACY_AI_CONFIG_PATH", legacy_path), \
+                    patch.dict(ai_manager.os.environ, {"OPENAI_API_KEY": "env-key"}, clear=False):
+                config = ai_manager.save_config_from_payload({"model": "local"})
+                self.assertEqual(config.resolved_api_key(), "env-key")
+            saved = json.loads(local_path.read_text(encoding="utf-8"))
+        self.assertEqual(config.model, "local")
+        self.assertNotIn("api_key", saved["ai"])
+
     def test_problem_keys_and_incremental_new_count(self) -> None:
         before = updater.problem_keys([
             {"contest_id": 2262, "index": "A"},

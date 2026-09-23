@@ -15,6 +15,32 @@ Codeforces API / 题面镜像 / Tutorial
 
 `cftracker.netlify.app/contests` 是浏览界面，不是稳定的数据接口。自动任务使用 Codeforces 官方 `contest.list`、`problemset.problems` 和已有的题面/Tutorial 抓取逻辑作为数据源，网页继续保留 CFTracker 链接作为入口。
 
+## 配置来源
+
+公共默认配置位于仓库根目录的 `config.json`，本机覆盖使用被 `.gitignore` 忽略的 `config.local.json`。配置分组如下：
+
+- `ai`：API 地址、模型、请求超时、输出长度和重试策略；
+- `crawler`：抓取间隔、重试次数、请求超时和断点保存频率；
+- `auto_update`：回看天数、AI 数量、是否强制 AI、是否重生成和是否跳过题解补抓；
+- `batch_upload`：日期范围、Action 轮询/重试、状态文件、工作流、分支和源仓库；
+- `deployment`：Pages 仓库和分支。
+
+本机覆盖只需要写要调整的字段，并保持分组结构，例如：
+
+```json
+{
+  "ai": {
+    "model": "gpt-6-luna",
+    "timeout_seconds": 240
+  },
+  "batch_upload": {
+    "from_date": "2023-01-01"
+  }
+}
+```
+
+配置文件合并优先级为 `config.local.json` > 旧版 `ai-config.local.json` > `config.json`，具体命令行参数再覆盖对应配置。`AI_BASE_URL`、`AI_MODEL` 和 `AI_TIMEOUT_SECONDS` 仍兼容读取，但只是旧脚本的临时覆盖。API key 不放入公开配置：本地使用 `OPENAI_API_KEY`，GitHub Actions 使用 `OPENAI_API_KEY` 和 `PAGES_DEPLOY_TOKEN` Secrets。旧版 `ai-config.local.json` 是平铺 AI 配置，仅用于兼容；不要把它直接改名为 `config.local.json`。
+
 题面抓取遵循宁缺毋滥，并按来源回退：先尝试 `cf-problemset.herokuapp.com`，如果它只返回比赛元数据、提交列表或导航，再尝试 Codeforces 官方题目页的 `problem-statement` 区块。任何来源都必须通过题面校验才会保存；元数据页不会被当作题面。每条记录会写入 `statement_source`、`statement_source_url` 和 `statement_source_attempts`，便于复核来源和失败原因。
 
 旧版本记录如果已经保存了可靠题面但没有来源字段，离线归一化会依据历史 `statement_url` 补回镜像或官方来源；无法从 URL 确定的自定义来源保持未标注，不会强行猜测。
@@ -48,7 +74,7 @@ python3 tools/cf_auto_update.py --lookback-days 30 --ai-limit -1 --refresh-ai --
 python3 tools/cf_auto_update.py --lookback-days 30 --ai-limit 0 --skip-editorial-enrich
 ```
 
-需要自动生成摘要时，在当前 shell 设置 `OPENAI_API_KEY`；当前默认使用 `https://api.zhehentiaohe.cn/v1` 的 `gpt-6-luna`，也可以通过 `AI_BASE_URL`、`AI_MODEL` 和 `AI_TIMEOUT_SECONDS` 覆盖。`--ai-limit -1` 表示处理全部待生成题目，`0` 只适合本地调试；`--refresh-ai` 表示重生成已有 AI 摘要。正式工作流使用 `--require-ai`：缺少 key 或本批次全部 AI 生成失败时阻止提交；单题 AI 调用失败、输出质量校验失败时只保留该题待重试，其他成功题目照常提交，避免一题失败阻塞整场比赛。题解抓取失败仍会保留已有数据并在下一轮重试。
+需要自动生成摘要时，在当前 shell 设置 `OPENAI_API_KEY`；默认 API 地址、模型和请求参数见根目录 `config.json` 的 `ai` 分组。`--ai-limit -1` 表示处理全部待生成题目，`0` 只适合本地调试；`--refresh-ai` 表示重生成已有 AI 摘要。正式工作流使用 `--require-ai`：缺少 key 或本批次全部 AI 生成失败时阻止提交；单题 AI 调用失败、输出质量校验失败时只保留该题待重试，其他成功题目照常提交，避免一题失败阻塞整场比赛。题解抓取失败仍会保留已有数据并在下一轮重试。
 
 GitHub Actions 文件是 `.github/workflows/cf-auto-update.yml`，默认每 6 小时运行一次，也支持 `workflow_dispatch` 手动运行。需要在 `Fyrskd/cf-knowledge` 仓库配置两个 Secrets：
 
@@ -66,9 +92,13 @@ git push origin main
 
 ## 批量逐场提交和失败重试
 
-`tools/cf_batch_upload.py` 会读取本地比赛、题目和发布数据，默认找出 2023-01-01
-之后仍有题目没有进入 `problem-insights.json` 的比赛，然后按比赛日期串行触发
+`tools/cf_batch_upload.py` 会读取本地比赛、题目和发布数据，默认从
+`batch_upload.from_date`（当前为 `2023-01-01`）之后找出仍有题目没有进入 `problem-insights.json` 的比赛，然后按比赛日期串行触发
 `cf-auto-update.yml`。每场比赛默认允许失败后重试 3 次；成功后写入本地状态并自动跳过。
+
+批量上传的默认日期、重试次数、轮询间隔、等待超时、状态文件、workflow、ref 和仓库从
+`config.json` 的 `batch_upload` 分组读取；命令行参数（例如 `--from-date`、`--repo` 和
+`--max-retries`）可以临时覆盖配置。
 
 先用 dry-run 检查候选列表：
 

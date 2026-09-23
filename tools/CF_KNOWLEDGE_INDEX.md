@@ -27,6 +27,23 @@ Codeforces API（比赛、题号、rating、tags）
 
 ## 使用
 
+### 配置
+
+抓取器默认从仓库根目录的 `config.json` 读取 `crawler` 分组：
+
+```json
+{
+  "crawler": {
+    "delay_seconds": 0.7,
+    "retries": 3,
+    "timeout_seconds": 30,
+    "checkpoint_every": 25
+  }
+}
+```
+
+本机可以在被忽略的 `config.local.json` 中只覆盖需要调整的字段。命令行参数仍然优先，例如 `--delay`、`--retries`、`--timeout` 和 `--checkpoint-every` 会覆盖配置文件值。`cf_auto_update.py` 还会把 `auto_update.crawler` 作为自动更新专用覆盖；未设置时回退到顶层 `crawler`。旧的 `ai-config.local.json` 只用于 AI 配置兼容，不影响抓取器参数。
+
 只抓一场比赛做测试：
 
 ```bash

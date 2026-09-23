@@ -6,7 +6,7 @@ on:
       lookback_days:
         description: "回看多少天，默认 30 天"
         required: false
-        default: "30"
+        default: ""
       contest_id:
         description: "只处理指定比赛 ID；留空按日期窗口抓取"
         required: false
@@ -14,7 +14,7 @@ on:
       ai_limit:
         description: "本轮最多生成多少道 AI 摘要，-1 表示全部，0 表示跳过"
         required: false
-        default: "-1"
+        default: ""
       skip_editorial_enrich:
         description: "是否跳过 Tutorial 补抓"
         type: boolean
@@ -25,22 +25,6 @@ on:
         type: boolean
         required: false
         default: false
-      request_delay:
-        description: "手动运行时的请求间隔秒数"
-        required: false
-        default: "0.2"
-      request_retries:
-        description: "手动运行时的请求重试次数"
-        required: false
-        default: "1"
-      request_timeout:
-        description: "手动运行时的单请求超时秒数"
-        required: false
-        default: "8"
-      ai_timeout_seconds:
-        description: "AI 单次请求超时秒数"
-        required: false
-        default: "240"
   schedule:
     - cron: "17 */6 * * *"
 
@@ -64,22 +48,39 @@ jobs:
         with:
           python-version: "3.x"
 
+      - name: Load project configuration
+        id: project_config
+        run: |
+          python3 - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          config = json.loads(Path("config.json").read_text(encoding="utf-8"))
+          deployment = config.get("deployment", {})
+          pages_repository = str(deployment.get("pages_repository") or "Fyrskd/Fyrskd.github.io")
+          pages_ref = str(deployment.get("pages_ref") or "main")
+          with Path(os.environ["GITHUB_OUTPUT"]).open("a", encoding="utf-8") as output:
+              output.write(f"pages_repository={pages_repository}\n")
+              output.write(f"pages_ref={pages_ref}\n")
+          PY
+
       - name: Crawl contests, build outputs, and refresh AI summaries
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          AI_BASE_URL: https://api.zhehentiaohe.cn/v1
-          AI_MODEL: gpt-6-luna
-          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '30' }}
+          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '' }}
           CONTEST_ID: ${{ github.event.inputs.contest_id || '' }}
-          AI_LIMIT: ${{ github.event.inputs.ai_limit || '-1' }}
+          AI_LIMIT: ${{ github.event.inputs.ai_limit || '' }}
           SKIP_EDITORIAL_ENRICH: ${{ github.event.inputs.skip_editorial_enrich || 'false' }}
           REFRESH_AI: ${{ github.event.inputs.refresh_ai || 'false' }}
-          REQUEST_DELAY: ${{ github.event.inputs.request_delay || '1.0' }}
-          REQUEST_RETRIES: ${{ github.event.inputs.request_retries || '4' }}
-          REQUEST_TIMEOUT: ${{ github.event.inputs.request_timeout || '45' }}
-          AI_TIMEOUT_SECONDS: ${{ github.event.inputs.ai_timeout_seconds || '240' }}
         run: |
-          args=(--lookback-days "$LOOKBACK_DAYS" --ai-limit "$AI_LIMIT" --delay "$REQUEST_DELAY" --retries "$REQUEST_RETRIES" --timeout "$REQUEST_TIMEOUT")
+          args=()
+          if [ -n "$LOOKBACK_DAYS" ]; then
+            args+=(--lookback-days "$LOOKBACK_DAYS")
+          fi
+          if [ -n "$AI_LIMIT" ]; then
+            args+=(--ai-limit "$AI_LIMIT")
+          fi
           if [ -n "$CONTEST_ID" ]; then
             args+=(--contest-id "$CONTEST_ID")
           fi
@@ -93,8 +94,9 @@ jobs:
 
       - name: Validate generated outputs
         run: |
-          python3 -m py_compile tools/cf_knowledge_index.py tools/cf_auto_update.py tools/cf_ai_manager.py
-          python3 -m unittest tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py
+          python3 -m json.tool config.json >/dev/null
+          python3 -m py_compile tools/cf_config.py tools/cf_knowledge_index.py tools/cf_auto_update.py tools/cf_ai_manager.py
+          python3 -m unittest tools/test_cf_config.py tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py
           python3 -m json.tool problem-insights.json >/dev/null
           python3 -m json.tool statement-gaps.json >/dev/null
           python3 -m json.tool auto-update-status.json >/dev/null
@@ -171,8 +173,8 @@ jobs:
       - name: Checkout GitHub Pages repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
-          repository: Fyrskd/Fyrskd.github.io
-          ref: main
+          repository: ${{ steps.project_config.outputs.pages_repository }}
+          ref: ${{ steps.project_config.outputs.pages_ref }}
           token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
           path: .pages
 

@@ -21,6 +21,8 @@ import sys
 from pathlib import Path
 from typing import Any, Sequence
 
+from cf_config import get_bool, get_float, get_int, load_config, section
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 TOOLS_DIR = Path(__file__).resolve().parent
@@ -259,29 +261,51 @@ def pending_ai_count() -> int:
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--lookback-days", type=int, default=30)
+    parser.add_argument("--lookback-days", type=int, default=None)
     parser.add_argument("--contest-id", type=int, default=None, help="只处理指定的 Codeforces 比赛")
-    parser.add_argument("--ai-limit", type=int, default=-1)
-    parser.add_argument("--delay", type=float, default=1.0)
-    parser.add_argument("--retries", type=int, default=4)
-    parser.add_argument("--timeout", type=int, default=45)
-    parser.add_argument("--require-ai", action="store_true")
-    parser.add_argument("--refresh-ai", action="store_true", help="重生成已有 AI 摘要，默认只处理没有当前摘要的题目")
-    parser.add_argument("--skip-editorial-enrich", action="store_true")
+    parser.add_argument("--ai-limit", type=int, default=None)
+    parser.add_argument("--delay", type=float, default=None)
+    parser.add_argument("--retries", type=int, default=None)
+    parser.add_argument("--timeout", type=int, default=None)
+    parser.add_argument("--require-ai", dest="require_ai", action="store_true", default=None)
+    parser.add_argument("--no-require-ai", dest="require_ai", action="store_false")
+    parser.add_argument(
+        "--refresh-ai",
+        action=argparse.BooleanOptionalAction,
+        default=None,
+        help="重生成已有 AI 摘要，默认只处理没有当前摘要的题目",
+    )
+    parser.add_argument("--skip-editorial-enrich", action=argparse.BooleanOptionalAction, default=None)
     args = parser.parse_args()
+    config = load_config()
+    auto_update = section(config, "auto_update")
+    crawler = section(auto_update, "crawler") or section(config, "crawler")
+    lookback_days = args.lookback_days if args.lookback_days is not None else get_int(auto_update, "lookback_days", 30)
+    ai_limit = args.ai_limit if args.ai_limit is not None else get_int(auto_update, "ai_limit", -1)
+    delay = args.delay if args.delay is not None else get_float(crawler, "delay_seconds", 1.0)
+    retries = args.retries if args.retries is not None else get_int(crawler, "retries", 4)
+    timeout = args.timeout if args.timeout is not None else get_int(crawler, "timeout_seconds", 45)
+    checkpoint_every = get_int(crawler, "checkpoint_every", 10)
+    require_ai = args.require_ai if args.require_ai is not None else get_bool(auto_update, "require_ai", False)
+    refresh_ai = args.refresh_ai if args.refresh_ai is not None else get_bool(auto_update, "refresh_ai", False)
+    skip_editorial_enrich = (
+        args.skip_editorial_enrich
+        if args.skip_editorial_enrich is not None
+        else get_bool(auto_update, "skip_editorial_enrich", False)
+    )
     global RUN_CONTEXT
     RUN_CONTEXT = {
         "started_at": utc_now(),
-        "lookback_days": args.lookback_days,
+        "lookback_days": lookback_days,
         "contest_id": args.contest_id,
-        "ai_limit": args.ai_limit,
-        "skip_editorial_enrich": args.skip_editorial_enrich,
-        "refresh_ai": args.refresh_ai,
+        "ai_limit": ai_limit,
+        "skip_editorial_enrich": skip_editorial_enrich,
+        "refresh_ai": refresh_ai,
     }
-    if args.lookback_days < 1 or args.ai_limit < -1 or (args.contest_id is not None and args.contest_id < 1):
+    if lookback_days < 1 or ai_limit < -1 or (args.contest_id is not None and args.contest_id < 1):
         raise AutoUpdateError("lookback-days 必须大于 0，ai-limit 只能为 -1、0 或正整数，contest-id 必须为正整数")
 
-    since, until = sync_window(args.lookback_days)
+    since, until = sync_window(lookback_days)
     RUN_CONTEXT["window"] = {"since": since.isoformat(), "until": until.isoformat()}
     before_records = RECORDS_PATH.read_bytes() if RECORDS_PATH.exists() else b""
     before_keys = problem_keys(read_json(RECORDS_PATH, []))
@@ -299,20 +323,20 @@ def main() -> int:
         "--out",
         str(DATA_DIR),
         "--delay",
-        str(args.delay),
+        str(delay),
         "--retries",
-        str(args.retries),
+        str(retries),
         "--timeout",
-        str(args.timeout),
+        str(timeout),
         "--checkpoint-every",
-        "10",
+        str(checkpoint_every),
     ]
     if args.contest_id is not None:
         crawl_command.extend(["--contest-id", str(args.contest_id)])
     run_command(crawl_command)
     merge_contests(before_contests, read_json(CONTESTS_PATH, []))
 
-    if not args.skip_editorial_enrich:
+    if not skip_editorial_enrich:
         enrich_command = [
             sys.executable,
             str(REPO_ROOT / "tools" / "cf_knowledge_index.py"),
@@ -322,13 +346,13 @@ def main() -> int:
             "--only-incomplete",
             "--skip-missing-contests",
             "--delay",
-            str(args.delay),
+            str(delay),
             "--retries",
-            str(args.retries),
+            str(retries),
             "--timeout",
-            str(args.timeout),
+            str(timeout),
             "--checkpoint-every",
-            "10",
+            str(checkpoint_every),
         ]
         if args.contest_id is not None:
             enrich_command.extend(["--contest-id", str(args.contest_id)])
@@ -346,9 +370,9 @@ def main() -> int:
         print("BUILD_SKIPPED records unchanged", flush=True)
 
     selected_pending, success, failed = generate_pending(
-        args.ai_limit,
-        args.require_ai,
-        args.refresh_ai,
+        ai_limit,
+        require_ai,
+        refresh_ai,
         args.contest_id,
     )
     if success:

@@ -1,4 +1,5 @@
 ai-config.local.json
+config.local.json
 ai-review-queue.md
 ai-run-log.jsonl
 auto-update-status.json

@@ -31,13 +31,21 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import parse_qs, urlparse
 from urllib.request import Request, urlopen
 
+from cf_config import (
+    CONFIG_PATH,
+    LEGACY_AI_CONFIG_PATH,
+    LOCAL_CONFIG_PATH,
+    load_config as load_project_config,
+    section,
+)
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 TOOLS_DIR = Path(__file__).resolve().parent
 KNOWLEDGE_DIR = REPO_ROOT
 RECORDS_PATH = KNOWLEDGE_DIR / "records.json"
 PROBLEM_INSIGHTS_PATH = KNOWLEDGE_DIR / "problem-insights.json"
-AI_CONFIG_PATH = KNOWLEDGE_DIR / "ai-config.local.json"
+AI_CONFIG_PATH = LOCAL_CONFIG_PATH
 AI_GENERATED_PATH = KNOWLEDGE_DIR / "ai-generated-insights.json"
 AI_RUN_LOG_PATH = KNOWLEDGE_DIR / "ai-run-log.jsonl"
 AI_REVIEW_QUEUE_PATH = KNOWLEDGE_DIR / "ai-review-queue.md"
@@ -335,8 +343,7 @@ HTML_PAGE = r"""<!doctype html>
             <label>Base URL <input id="baseUrl" placeholder="https://api.openai.com/v1" /></label>
             <label>Model <input id="model" placeholder="gpt-5-mini" /></label>
             <label>API Key 环境变量 <input id="apiKeyEnv" placeholder="OPENAI_API_KEY" /></label>
-            <label>API Key（留空表示不覆盖已保存值） <input id="apiKey" type="password" autocomplete="off" /></label>
-            <label><span><input id="clearKey" type="checkbox" style="width:auto;min-height:auto" /> 清空已保存的明文 key</span></label>
+            <p class="small">API key 不保存在配置文件中；请在启动管理器的 shell 中设置上面的环境变量。</p>
             <div class="row">
               <label>输出 token <input id="maxOutputTokens" type="number" min="200" max="4000" /></label>
               <label>请求超时秒 <input id="timeoutSeconds" type="number" min="10" max="300" /></label>
@@ -477,9 +484,7 @@ HTML_PAGE = r"""<!doctype html>
         $("timeoutSeconds").value = c.timeout_seconds || 90;
         $("maxStatementChars").value = c.max_statement_chars || 12000;
         $("maxEditorialChars").value = c.max_editorial_chars || 24000;
-        $("configHint").textContent = c.api_key_saved
-          ? `已保存 key：${c.api_key_preview}；也会优先读取环境变量 ${c.api_key_env || "未设置"}。`
-          : `未保存明文 key；将读取环境变量 ${c.api_key_env || "未设置"}。`;
+        $("configHint").textContent = `API key 只从环境变量 ${c.api_key_env || "未设置"} 读取。`;
       }
 
       async function loadProblems() {
@@ -498,16 +503,12 @@ HTML_PAGE = r"""<!doctype html>
           base_url: $("baseUrl").value,
           model: $("model").value,
           api_key_env: $("apiKeyEnv").value,
-          api_key: $("apiKey").value,
-          clear_api_key: $("clearKey").checked,
           max_output_tokens: Number($("maxOutputTokens").value || 900),
           timeout_seconds: Number($("timeoutSeconds").value || 90),
           max_statement_chars: Number($("maxStatementChars").value || 12000),
           max_editorial_chars: Number($("maxEditorialChars").value || 24000),
         };
         await request("/api/config", { method: "POST", body: JSON.stringify(payload) });
-        $("apiKey").value = "";
-        $("clearKey").checked = false;
         await loadStatus();
         log("配置已保存");
       }
@@ -662,8 +663,6 @@ class AiConfig:
         return {
             "base_url": self.base_url,
             "api_key_env": self.api_key_env,
-            "api_key_saved": bool(self.api_key),
-            "api_key_preview": mask_key(self.api_key),
             "model": self.model,
             "max_output_tokens": self.max_output_tokens,
             "timeout_seconds": self.timeout_seconds,
@@ -680,7 +679,6 @@ class AiConfig:
             "provider": "openai",
             "base_url": self.base_url,
             "api_key_env": self.api_key_env,
-            "api_key": self.api_key,
             "model": self.model,
             "max_output_tokens": self.max_output_tokens,
             "timeout_seconds": self.timeout_seconds,
@@ -716,14 +714,6 @@ def utc_now() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
 
 
-def mask_key(value: str) -> str:
-    if not value:
-        return ""
-    if len(value) <= 8:
-        return "***"
-    return f"{value[:4]}...{value[-4:]}"
-
-
 def read_json(path: Path, default: Any) -> Any:
     if not path.exists():
         return default
@@ -738,9 +728,12 @@ def write_json(path: Path, data: Any) -> None:
 
 
 def load_config() -> AiConfig:
-    raw = read_json(AI_CONFIG_PATH, {})
-    if not isinstance(raw, dict):
-        raise ManagerError(f"配置文件格式错误：{AI_CONFIG_PATH}")
+    project_config = load_project_config(
+        public_path=CONFIG_PATH,
+        local_path=AI_CONFIG_PATH,
+        legacy_ai_path=LEGACY_AI_CONFIG_PATH,
+    )
+    raw = section(project_config, "ai")
     # CI can provide non-secret endpoint/model overrides without committing a local config file.
     if os.environ.get("AI_BASE_URL"):
         raw["base_url"] = os.environ["AI_BASE_URL"]
@@ -754,6 +747,7 @@ def load_config() -> AiConfig:
 def save_config_from_payload(payload: dict[str, Any]) -> AiConfig:
     current = load_config()
     merged = current.to_file_dict()
+    # API key 只允许通过环境变量提供，不写入本机配置文件。
     for key in (
         "base_url",
         "api_key_env",
@@ -765,12 +759,12 @@ def save_config_from_payload(payload: dict[str, Any]) -> AiConfig:
     ):
         if key in payload:
             merged[key] = payload[key]
-    if payload.get("clear_api_key"):
-        merged["api_key"] = ""
-    elif str(payload.get("api_key") or "").strip():
-        merged["api_key"] = str(payload["api_key"]).strip()
     config = AiConfig.from_mapping(merged)
-    write_json(AI_CONFIG_PATH, config.to_file_dict())
+    local_payload = read_json(AI_CONFIG_PATH, {})
+    if not isinstance(local_payload, dict):
+        local_payload = {}
+    local_payload["ai"] = config.to_file_dict()
+    write_json(AI_CONFIG_PATH, local_payload)
     try:
         AI_CONFIG_PATH.chmod(0o600)
     except OSError:
@@ -1423,7 +1417,7 @@ def filter_rows(rows: list[dict[str, Any]], filter_name: str, query: str, limit:
 def generate_many(problem_keys: list[str], rebuild: bool) -> dict[str, Any]:
     config = load_config()
     if not config.resolved_api_key():
-        raise ManagerError("未配置 API key：请在页面填写 key，或设置 OPENAI_API_KEY。")
+        raise ManagerError(f"未配置 API key：请设置环境变量 {config.api_key_env or 'OPENAI_API_KEY'}。")
     records_by_key = {problem_key(record): record for record in load_records()}
     store = load_ai_store()
     generated_records = store.setdefault("records", {})

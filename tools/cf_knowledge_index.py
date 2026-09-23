@@ -37,6 +37,8 @@ from urllib.error import HTTPError, URLError
 from urllib.parse import quote, urlencode, urljoin, urlparse
 from urllib.request import HTTPCookieProcessor, Request, build_opener
 
+from cf_config import get_float, get_int, load_config, section
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 API = "https://codeforces.com/api"
@@ -2731,10 +2733,10 @@ def main() -> None:
         p.add_argument("--since", default=(dt.date.today() - dt.timedelta(days=730)).isoformat())
         p.add_argument("--until", default=(dt.date.today() + dt.timedelta(days=1)).isoformat())
         p.add_argument("--out", default=str(PROJECT_ROOT))
-        p.add_argument("--delay", type=float, default=0.7)
-        p.add_argument("--retries", type=int, default=3)
-        p.add_argument("--timeout", type=int, default=30)
-        p.add_argument("--checkpoint-every", type=int, default=25, help="write state every N problems")
+        p.add_argument("--delay", type=float, default=None)
+        p.add_argument("--retries", type=int, default=None)
+        p.add_argument("--timeout", type=int, default=None)
+        p.add_argument("--checkpoint-every", type=int, default=None, help="write state every N problems")
         p.add_argument("--editorials", help="JSON/TSV mapping contest id to official editorial URL")
         p.add_argument("--contest-id", type=int, help="only process this Codeforces contest")
     p = sub.add_parser("crawl", help="fetch contests, statements and editorials")
@@ -2745,10 +2747,10 @@ def main() -> None:
     p.add_argument("--data", default=str(PROJECT_ROOT)); p.set_defaults(func=reindex_data)
     p = sub.add_parser("enrich", help="resolve and split Tutorial/editorial links in an existing dataset")
     p.add_argument("--data", default=str(PROJECT_ROOT))
-    p.add_argument("--delay", type=float, default=0.7)
-    p.add_argument("--retries", type=int, default=3)
-    p.add_argument("--timeout", type=int, default=30)
-    p.add_argument("--checkpoint-every", type=int, default=25)
+    p.add_argument("--delay", type=float, default=None)
+    p.add_argument("--retries", type=int, default=None)
+    p.add_argument("--timeout", type=int, default=None)
+    p.add_argument("--checkpoint-every", type=int, default=None)
     p.add_argument("--editorials", help="JSON/TSV mapping contest id to official editorial URL")
     p.add_argument("--contest-id", type=int, help="only enrich this Codeforces contest")
     p.add_argument("--refresh-statements", action="store_true", help="refetch mirror pages lacking Tutorial links")
@@ -2773,13 +2775,24 @@ def main() -> None:
         help="re-fetch linked Codeforces blogs and repair per-problem sections without URL search",
     )
     p.add_argument("--data", default=str(PROJECT_ROOT))
-    p.add_argument("--delay", type=float, default=0.7)
-    p.add_argument("--retries", type=int, default=3)
-    p.add_argument("--timeout", type=int, default=30)
+    p.add_argument("--delay", type=float, default=None)
+    p.add_argument("--retries", type=int, default=None)
+    p.add_argument("--timeout", type=int, default=None)
     p.set_defaults(func=repair_editorial_sections)
     p = sub.add_parser("all", help="crawl then build index")
     common(p); p.add_argument("--no-search", action="store_true"); p.set_defaults(func=lambda a: (crawl(a), build_index(argparse.Namespace(data=a.out))))
     args = ap.parse_args()
+    crawler = section(load_config(), "crawler")
+    if hasattr(args, "delay"):
+        args.delay = args.delay if args.delay is not None else get_float(crawler, "delay_seconds", 0.7)
+        args.retries = args.retries if args.retries is not None else get_int(crawler, "retries", 3)
+        args.timeout = args.timeout if args.timeout is not None else get_int(crawler, "timeout_seconds", 30)
+    if hasattr(args, "checkpoint_every"):
+        args.checkpoint_every = (
+            args.checkpoint_every
+            if args.checkpoint_every is not None
+            else get_int(crawler, "checkpoint_every", 25)
+        )
     try:
         args.func(args)
     except KeyboardInterrupt:

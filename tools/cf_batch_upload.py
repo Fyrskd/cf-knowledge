@@ -24,6 +24,8 @@ from pathlib import Path
 from typing import Any, Callable, Protocol, Sequence
 from urllib.parse import urlparse
 
+from cf_config import get_float, get_int, get_str, load_config, section
+
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
 DATA_DIR = REPO_ROOT
@@ -672,18 +674,18 @@ class BatchUploader:
 
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--from-date", default="2023-01-01", help="默认从该日期开始扫描")
+    parser.add_argument("--from-date", default=None, help="默认从该日期开始扫描")
     parser.add_argument("--until-date", default=None, help="扫描截止日期，包含当天")
     parser.add_argument("--contest-id", action="append", type=int, help="只处理指定比赛，可重复")
-    parser.add_argument("--max-contests", type=int, default=0, help="最多处理多少场，0 表示全部")
-    parser.add_argument("--max-retries", type=int, default=3, help="每场失败后的重试次数")
-    parser.add_argument("--poll-seconds", type=float, default=15.0, help="Action 状态轮询间隔")
-    parser.add_argument("--run-timeout-seconds", type=float, default=2700.0, help="单个 run 最大等待时间")
-    parser.add_argument("--discovery-timeout-seconds", type=float, default=90.0, help="触发后发现 run 的最大等待时间")
-    parser.add_argument("--retry-delay-seconds", type=float, default=60.0, help="两次尝试之间的等待时间")
-    parser.add_argument("--state-file", type=Path, default=DEFAULT_STATE_PATH)
-    parser.add_argument("--workflow", default=DEFAULT_WORKFLOW)
-    parser.add_argument("--ref", default="main")
+    parser.add_argument("--max-contests", type=int, default=None, help="最多处理多少场，0 表示全部")
+    parser.add_argument("--max-retries", type=int, default=None, help="每场失败后的重试次数")
+    parser.add_argument("--poll-seconds", type=float, default=None, help="Action 状态轮询间隔")
+    parser.add_argument("--run-timeout-seconds", type=float, default=None, help="单个 run 最大等待时间")
+    parser.add_argument("--discovery-timeout-seconds", type=float, default=None, help="触发后发现 run 的最大等待时间")
+    parser.add_argument("--retry-delay-seconds", type=float, default=None, help="两次尝试之间的等待时间")
+    parser.add_argument("--state-file", type=Path, default=None)
+    parser.add_argument("--workflow", default=None)
+    parser.add_argument("--ref", default=None)
     parser.add_argument("--repo", default=None, help="GitHub 仓库，默认使用当前 gh 上下文")
     parser.add_argument("--dry-run", action="store_true", help="只扫描和展示候选比赛，不触发 Action")
     return parser
@@ -691,13 +693,39 @@ def build_parser() -> argparse.ArgumentParser:
 
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
-    if args.max_contests < 0:
+    config = section(load_config(), "batch_upload")
+    from_date_value = args.from_date if args.from_date is not None else get_str(config, "from_date", "2023-01-01")
+    max_contests = args.max_contests if args.max_contests is not None else get_int(config, "max_contests", 0)
+    max_retries = args.max_retries if args.max_retries is not None else get_int(config, "max_retries", 3)
+    poll_seconds = args.poll_seconds if args.poll_seconds is not None else get_float(config, "poll_seconds", 15.0)
+    run_timeout_seconds = (
+        args.run_timeout_seconds
+        if args.run_timeout_seconds is not None
+        else get_float(config, "run_timeout_seconds", 2700.0)
+    )
+    discovery_timeout_seconds = (
+        args.discovery_timeout_seconds
+        if args.discovery_timeout_seconds is not None
+        else get_float(config, "discovery_timeout_seconds", 90.0)
+    )
+    retry_delay_seconds = (
+        args.retry_delay_seconds
+        if args.retry_delay_seconds is not None
+        else get_float(config, "retry_delay_seconds", 60.0)
+    )
+    state_file_value = args.state_file or Path(get_str(config, "state_file", str(DEFAULT_STATE_PATH.name)))
+    state_file = state_file_value if state_file_value.is_absolute() else REPO_ROOT / state_file_value
+    workflow = args.workflow or get_str(config, "workflow", DEFAULT_WORKFLOW)
+    ref = args.ref or get_str(config, "ref", "main")
+    configured_repo = get_str(config, "repo", "") or None
+    repository = current_repository_slug(args.repo or configured_repo)
+    if max_contests < 0:
         raise BatchUploadError("max-contests 不能小于 0")
-    if args.max_retries < 0:
+    if max_retries < 0:
         raise BatchUploadError("max-retries 不能小于 0")
-    if args.poll_seconds <= 0 or args.run_timeout_seconds <= 0 or args.discovery_timeout_seconds <= 0:
+    if poll_seconds <= 0 or run_timeout_seconds <= 0 or discovery_timeout_seconds <= 0:
         raise BatchUploadError("等待时间必须大于 0")
-    from_date = parse_date(args.from_date)
+    from_date = parse_date(from_date_value)
     until_date = parse_date(args.until_date)
     if from_date and until_date and from_date > until_date:
         raise BatchUploadError("from-date 不能晚于 until-date")
@@ -707,24 +735,24 @@ def main(argv: Sequence[str] | None = None) -> int:
         until_date=until_date,
         contest_ids=args.contest_id,
     )
-    if args.max_contests:
-        contests = contests[: args.max_contests]
+    if max_contests:
+        contests = contests[:max_contests]
     print(f"CANDIDATES count={len(contests)}", flush=True)
     if not contests:
         return 0
 
-    client = GhWorkflowClient(repo=args.repo)
+    client = GhWorkflowClient(repo=args.repo or configured_repo)
     uploader = BatchUploader(
         client=client,
-        state_path=args.state_file,
-        workflow=args.workflow,
-        ref=args.ref,
-        max_retries=args.max_retries,
-        poll_seconds=args.poll_seconds,
-        run_timeout_seconds=args.run_timeout_seconds,
-        discovery_timeout_seconds=args.discovery_timeout_seconds,
-        retry_delay_seconds=args.retry_delay_seconds,
-        repository=current_repository_slug(args.repo),
+        state_path=state_file,
+        workflow=workflow,
+        ref=ref,
+        max_retries=max_retries,
+        poll_seconds=poll_seconds,
+        run_timeout_seconds=run_timeout_seconds,
+        discovery_timeout_seconds=discovery_timeout_seconds,
+        retry_delay_seconds=retry_delay_seconds,
+        repository=repository,
     )
     _, failed, _ = uploader.run(contests, dry_run=args.dry_run)
     return 1 if failed else 0

@@ -44,11 +44,14 @@ flowchart LR
 
 ```text
 AGENTS.md
+config.json                    # 可提交的公开默认配置
 .github/workflows/cf-auto-update.yml
 tools/
+  cf_config.py                 # 公共、本机和旧版配置合并
   cf_knowledge_index.py       # Codeforces 抓取、题面校验、题解补抓
   cf_auto_update.py           # 定时任务编排入口
   cf_ai_manager.py            # AI 摘要管理和本地管理页
+  test_cf_config.py           # 配置合并测试
   test_cf_knowledge_index.py  # 抓取器测试
   test_cf_auto_update.py      # 发布门和自动更新测试
   CF_KNOWLEDGE_INDEX.md       # 抓取器使用说明
@@ -267,21 +270,27 @@ python3 tools/cf_auto_update.py \
 - `OPENAI_API_KEY`：AI 摘要生成所需的 API key；
 - `PAGES_DEPLOY_TOKEN`：对 `Fyrskd/Fyrskd.github.io` 具有 Contents Read and write 权限的 fine-grained token。
 
-本地可通过环境变量覆盖 AI 配置：
+公开默认配置位于 `config.json`，本机覆盖位于被 `.gitignore` 忽略的 `config.local.json`。覆盖文件必须使用分组结构，例如：
 
-- `OPENAI_API_KEY`；
-- `AI_BASE_URL`；
-- `AI_MODEL`。
+```json
+{
+  "ai": {"model": "gpt-6-luna"},
+  "crawler": {"timeout_seconds": 30}
+}
+```
 
-`ai-config.local.json` 仅供本机使用，不能提交真实 key。不要在日志、测试输出、提交信息或页面数据中打印 token。
+AI 地址、模型、超时、抓取参数、自动更新参数、批量上传参数和 Pages 目标都应优先在配置文件中维护。API key 不写入 `config.json` 或提交内容；本地通过 `OPENAI_API_KEY` 提供，Actions 通过 `OPENAI_API_KEY` 和 `PAGES_DEPLOY_TOKEN` Secrets 提供。
+
+配置文件合并优先级为 `config.local.json` > 旧版 `ai-config.local.json` > `config.json`，具体命令行参数再覆盖对应配置。`AI_BASE_URL`、`AI_MODEL`、`AI_TIMEOUT_SECONDS` 仅作为旧脚本的兼容覆盖，不应作为新的配置入口。`ai-config.local.json` 仍可读取旧版平铺 AI 配置，但新建或修改本机配置时必须使用 `config.local.json` 的嵌套 `ai` 分组。不要在日志、测试输出、提交信息或页面数据中打印 token。
 
 ## 11. 测试和上线前检查
 
 修改抓取器、发布门、AI 管理器或前端后，在仓库根目录运行：
 
 ```bash
-python3 -m unittest tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py
+python3 -m unittest tools/test_cf_config.py tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py
 python3 -m py_compile \
+  tools/cf_config.py \
   tools/cf_knowledge_index.py \
   tools/cf_auto_update.py \
   tools/cf_ai_manager.py \
