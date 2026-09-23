@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1525,
+    "total_problems": 1532,
     "source_total_problems": 1742,
-    "filtered_out_problems": 217,
-    "with_statement_brief": 1525,
-    "with_editorial_brief": 1300,
-    "with_solution_brief": 1301,
+    "filtered_out_problems": 210,
+    "with_statement_brief": 1532,
+    "with_editorial_brief": 1307,
+    "with_solution_brief": 1308,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 461,
+    "ai_override_count": 469,
     "primary_topic_count": 13,
     "contest_count": 245,
     "rating_min": 800,
@@ -37,29 +37,29 @@ window.CF_INSIGHTS_DATA = {
     "树结构",
     "图论与网络流",
     "交互",
-    "字符串",
     "基础实现与模拟",
+    "字符串",
     "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 62,
-    "构造与贪心": 497,
+    "字符串": 63,
+    "构造与贪心": 498,
     "图论与网络流": 94,
     "动态规划与状态设计": 155,
-    "数论与同余": 142,
+    "数论与同余": 143,
     "组合计数与概率": 116,
-    "数据结构": 119,
+    "数据结构": 121,
     "几何": 33,
     "树结构": 107,
     "交互": 69,
-    "基础实现与模拟": 62,
+    "基础实现与模拟": 64,
     "博弈": 55,
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 392,
+    "ai_generated_with_editorial": 399,
     "ai_generated_partial_editorial": 17,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -36426,9 +36426,165 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-10-22",
       "url": "https://codeforces.com/contest/1883",
       "type": "Div. 3",
-      "problemCount": 1,
-      "maxRating": 1400,
+      "problemCount": 8,
+      "maxRating": 1900,
       "problems": [
+        {
+          "key": "1883A",
+          "index": "A",
+          "slot": "A",
+          "title": "Morning",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1883/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "设备上的数字按 $1,2,9,0$ 排列，光标初始在 $1$。每秒可以将光标移到相邻数字或按下当前数字，需要按顺序输入给定的四位密码，求最少需要多少秒。",
+          "transformedStatement": "把按键排列拉直为位置 $1$ 到 $10$，其中数字 $0$ 对应位置 $10$；问题转化为从位置 $1$ 依次访问四个目标位置，并为每位目标额外支付一次按键时间。",
+          "keyObservations": [
+            "将数字按键视为环上的顺序 $1,2,9,0$，把 $0$ 映射为位置 $10$ 后，任意两键间的最短移动距离就是位置差的绝对值。",
+            "输入四位密码时，移动代价只由相邻目标数字的位置差决定，因此总移动时间为 $|a-1|+|b-a|+|c-b|+|d-c|$。",
+            "四个数字都必须分别按下，按键本身贡献固定的 $4$ 秒，所以只需在移动距离之和上加 $4$。"
+          ],
+          "solutionBrief": "从起点位置 $1$ 出发，依次处理四位数字，将 $0$ 当作位置 $10$。答案初始化为 $4$，每位加入当前数字与上一位置的绝对差，再更新上一位置。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1883B",
+          "index": "B",
+          "slot": "B",
+          "title": "Chemistry",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1883/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写字母组成的字符串，必须恰好删除 $k$ 个字符，再任意重排剩余字符。判断能否将其排列成回文串。",
+          "transformedStatement": "把字符串视为字符计数的多重集合，只研究每种字符计数的奇偶性：最终最多允许一种字符出现奇数次，并判断 $k$ 次删除能否达到这一条件。",
+          "keyObservations": [
+            "可重排成回文当且仅当出现奇数次的字符种类数不超过 $1$，因此只需关注各字符计数的奇偶性。",
+            "一次删除最多只能让奇数计数种类数减少 $1$，所以若初始奇数种类数 $x>k+1$，删除 $k$ 次后不可能满足回文条件。",
+            "若 $x\\le k+1$，优先删除出现奇数次的字符即可逐步减少奇数种类数；不足的删除次数再选择任意字符，仍能保持最终至多一个奇数计数。"
+          ],
+          "solutionBrief": "统计字符串中出现奇数次的字符种类数 $x$。若 $x\\le k+1$ 输出 YES，否则输出 NO；充分性来自优先删除奇数计数字符并完成剩余删除。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1883C",
+          "index": "C",
+          "slot": "C",
+          "title": "Raspberries",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1883/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定整数数组和 $k\\in[2,5]$，每次可选择一个元素并将其增加 $1$。求使数组所有元素乘积能被 $k$ 整除所需的最少操作次数。",
+          "transformedStatement": "把目标转化为两类局部条件：让某一个元素成为 $k$ 的倍数，或在 $k=4$ 时制造两个偶数；分别计算这两类条件的最小代价后取最小值。",
+          "keyObservations": [
+            "当 $k$ 为 $2、3、5$ 时，乘积可整除 $k$ 等价于至少一个元素可整除 $k$，因此所有操作集中在同一个元素上即可达到最优。",
+            "对单个元素，使其变成 $k$ 的倍数所需操作数为 $(k-a_i\\bmod k)\\bmod k$，取所有元素中的最小值即可。",
+            "当 $k=4$ 时，乘积可被 $4$ 整除有两种来源：一个元素变成 $4$ 的倍数，或数组中出现两个偶数；后者只需补足缺少的偶数，代价为 $\\max(0,2-cnt)$。"
+          ],
+          "solutionBrief": "逐个计算把某个元素增加到 $k$ 的倍数所需的最少操作。$k=2,3,5$ 直接取最小值；$k=4$ 再与补足两个偶数的代价 $\\max(0,2-cnt)$ 取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1883D",
+          "index": "D",
+          "slot": "D",
+          "title": "In Love",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1883/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "维护一个初始为空的区间多重集合，依次加入区间或删除一个指定区间（允许重复区间）。每次操作后，判断集合中是否存在两个没有公共点的闭区间，并输出是否存在。",
+          "transformedStatement": "把“是否存在不相交区间对”转化为全体区间的极值判定：比较最大左端点与最小右端点。前者大于后者当且仅当可以找到一对区间彼此分离。",
+          "keyObservations": [
+            "若存在不相交的两个闭区间，取所有区间中右端点最小者与左端点最大者即可；因此只需判断最小右端点是否小于最大左端点。",
+            "当最小右端点 $r<l$（最大左端点）时，两区间之间存在空隙，答案为“YES”；否则所有区间都包含公共范围 $[l,r]$，答案为“NO”。",
+            "区间的具体配对关系不必显式维护，只保存所有左端点和右端点的多重集合，就能通过两端极值完成判定，并支持重复区间的增删。"
+          ],
+          "solutionBrief": "分别维护左端点和右端点的多重集合。每次加入或删除一个区间后，取最大左端点 $l$ 与最小右端点 $r$；若 $r<l$ 输出“YES”，否则输出“NO”。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1883E",
+          "index": "E",
+          "slot": "E",
+          "title": "Look Back",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1883/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy"
+          ],
+          "statementBrief": "给定正整数数组，每次操作可选择一个位置并将该位置的数乘以 $2$；可重复操作，目标是在保持数组顺序的前提下，使所有相邻元素满足前者不大于后者，并求最少操作次数。",
+          "transformedStatement": "不直接改变数组，而是为每个位置设置非负整数 $x_i$，把最终值抽象为 $a_i2^{x_i}$；问题转化为在所有相邻约束成立时最小化 $\\sum x_i$。",
+          "keyObservations": [
+            "把第 $i$ 个数表示为 $a_i\\cdot2^{x_i}$，其中 $x_i$ 就是对它执行操作的次数，从而避免显式维护可能迅速变大的数值。",
+            "从左到右处理时，只需保证当前数不小于前一个数；在不改变前缀的前提下，为当前元素选择满足条件的最小非负 $x_i$，因此局部最优会累加出全局最少操作次数。",
+            "若 $a_{i-1}>a_i$，当前指数需在 $x_{i-1}$ 基础上增加，直到 $a_i2^k\\ge a_{i-1}$；若 $a_{i-1}\\le a_i$，则可尽量减少当前指数，但不能低于 $0$，直到继续减小会破坏相邻非降关系。",
+            "指数相同的相邻元素只需比较原始值；指数差异可通过比较 $a_{i-1}\\cdot2$ 与 $a_i$ 逐次调整，整个过程只维护指数和答案，不修改原数组。"
+          ],
+          "solutionBrief": "令每个元素的实际值为 $a_i2^{x_i}$，其中 $x_i$ 是操作次数。按顺序贪心选取当前元素的最小合法指数：前值较大时递增指数，前值不大时尽量递减但不低于零，累加所有指数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1883F",
+          "index": "F",
+          "slot": "F",
+          "title": "You Are So Beautiful",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1883/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures"
+          ],
+          "statementBrief": "给定整数数组，需要统计连续子数组 $[l,r]$ 的数量：左端元素必须是其数值在整个数组中的第一次出现，右端元素必须是其数值在整个数组中的最后一次出现。对所有满足条件的端点组合输出计数。",
+          "transformedStatement": "把每个位置分成两类：可作为左端点的全局首次出现位置，以及可作为右端点的全局末次出现位置。问题等价于统计满足 $l\\le r$ 的“首次位置—末次位置”配对数。",
+          "keyObservations": [
+            "子数组是否合法只取决于两个端点：$a_l$ 必须是该数在整个数组中的首次出现，$a_r$ 必须是该数的末次出现，因此中间元素完全不会影响判断。",
+            "将所有末次出现的位置标记为 $1$，则固定一个合法左端点 $l$ 后，答案贡献就是区间 $[l,n]$ 内标记为 $1$ 的位置数，从而把子数组计数转化为后缀计数。",
+            "只有首次出现的位置才能作为左端点；预先统计每个位置是否为末次出现，再维护右端点后缀数量即可避免枚举所有区间。"
+          ],
+          "solutionBrief": "记录每个值的首次和末次出现位置。标记所有末次出现位置并计算后缀和；遍历每个首次出现的位置 $l$，累加后缀中位置不少于 $l$ 的末次出现数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1883G1",
           "index": "G1",
@@ -36436,22 +36592,51 @@ window.CF_INSIGHTS_DATA = {
           "title": "Dances (Easy version)",
           "rating": 1400,
           "problemUrl": "https://codeforces.com/contest/1883/problem/G1",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈"
-          ],
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "greedy",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Dances (Easy version)；本地暂无可用题解正文。",
+          "statementBrief": "给定两个整数数组，操作前可以分别任意重排它们；题目要求通过题面规定的操作，使最终两个等长数组满足所有对应位置都有 $a_i<b_i$，并求达到条件所需的最少操作次数。本地题面未显示具体操作步骤，也未完整给出数组 $c_i$ 的构造规则。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1883G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Dances (Hard Version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1883/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/121621",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定两个长度均为 $n$ 的数组，先可任意重排；每次操作同时从两个数组各删除一个元素，目标是使剩余数组逐位满足 $a_i<b_i$，求最少操作数。再令 $a_1$ 依次取 $1$ 到 $m$，其余 $a_2,\\ldots,a_n$ 与数组 $b$ 固定，求这 $m$ 个数组对的最少操作数之和。",
+          "transformedStatement": "对固定的 $a_1$，问题转化为：删除相同数量的元素后，排序后的剩余 $a$ 与 $b$ 能否逐位严格匹配。把答案记为首元素取值的函数 $f(i)$，它只在一个阈值处下降 $1$，因此总和可由二分阈值求出。",
+          "keyObservations": [
+            "将两个数组分别排序后，若删除 $k$ 个元素，最有利的选择是删去 $a$ 中最大的 $k$ 个和 $b$ 中最小的 $k$ 个；剩余数组逐位比较即可判断是否满足 $a_i<b_i$。",
+            "固定首元素值后，可行性随删除数量增加而保持，因此最少操作数能通过二分删除数量并进行匹配检查得到。",
+            "只改变 $a_1$ 时，答案最多因该元素变化而改变 $1$；因此存在阈值 $x$，使 $f(1),\\ldots,f(x)$ 相同，而 $f(x+1),\\ldots,f(m)$ 都比前者少 $1$。",
+            "利用上述阈值结构，只需二分定位 $x$，即可将对全部 $m$ 个首元素取值的求和转化为两段答案的计数。"
+          ],
+          "solutionBrief": "固定 $a_1=i$ 后排序两数组；删除 $k$ 个元素时删 $a$ 的最大值和 $b$ 的最小值，并检查剩余位置是否逐一满足 $a_j<b_j$，通过二分求最少删除数。答案函数只有一个阈值变化，二分该阈值后统计两段总和，复杂度为 $O(n\\log n\\log m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
