@@ -1,0 +1,194 @@
+name: Update Codeforces knowledge pages
+
+on:
+  workflow_dispatch:
+    inputs:
+      lookback_days:
+        description: "回看多少天，默认 30 天"
+        required: false
+        default: "30"
+      contest_id:
+        description: "只处理指定比赛 ID；留空按日期窗口抓取"
+        required: false
+        default: ""
+      ai_limit:
+        description: "本轮最多生成多少道 AI 摘要，-1 表示全部，0 表示跳过"
+        required: false
+        default: "-1"
+      skip_editorial_enrich:
+        description: "是否跳过 Tutorial 补抓"
+        type: boolean
+        required: false
+        default: false
+      refresh_ai:
+        description: "是否重生成已有 AI 摘要（默认只生成新增题目）"
+        type: boolean
+        required: false
+        default: false
+      request_delay:
+        description: "手动运行时的请求间隔秒数"
+        required: false
+        default: "0.2"
+      request_retries:
+        description: "手动运行时的请求重试次数"
+        required: false
+        default: "1"
+      request_timeout:
+        description: "手动运行时的单请求超时秒数"
+        required: false
+        default: "8"
+      ai_timeout_seconds:
+        description: "AI 单次请求超时秒数"
+        required: false
+        default: "240"
+  schedule:
+    - cron: "17 */6 * * *"
+
+concurrency:
+  group: cf-auto-update
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.x"
+
+      - name: Crawl contests, build outputs, and refresh AI summaries
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          AI_BASE_URL: https://api.zhehentiaohe.cn/v1
+          AI_MODEL: gpt-5.6-luna
+          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '30' }}
+          CONTEST_ID: ${{ github.event.inputs.contest_id || '' }}
+          AI_LIMIT: ${{ github.event.inputs.ai_limit || '-1' }}
+          SKIP_EDITORIAL_ENRICH: ${{ github.event.inputs.skip_editorial_enrich || 'false' }}
+          REFRESH_AI: ${{ github.event.inputs.refresh_ai || 'false' }}
+          REQUEST_DELAY: ${{ github.event.inputs.request_delay || '1.0' }}
+          REQUEST_RETRIES: ${{ github.event.inputs.request_retries || '4' }}
+          REQUEST_TIMEOUT: ${{ github.event.inputs.request_timeout || '45' }}
+          AI_TIMEOUT_SECONDS: ${{ github.event.inputs.ai_timeout_seconds || '240' }}
+        run: |
+          args=(--lookback-days "$LOOKBACK_DAYS" --ai-limit "$AI_LIMIT" --delay "$REQUEST_DELAY" --retries "$REQUEST_RETRIES" --timeout "$REQUEST_TIMEOUT")
+          if [ -n "$CONTEST_ID" ]; then
+            args+=(--contest-id "$CONTEST_ID")
+          fi
+          if [ "$SKIP_EDITORIAL_ENRICH" = "true" ]; then
+            args+=(--skip-editorial-enrich)
+          fi
+          if [ "$REFRESH_AI" = "true" ]; then
+            args+=(--refresh-ai)
+          fi
+          python3 tools/cf_auto_update.py "${args[@]}" --require-ai
+
+      - name: Validate generated outputs
+        run: |
+          python3 -m py_compile tools/cf_knowledge_index.py tools/cf_auto_update.py tools/cf_ai_manager.py
+          python3 -m unittest tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py
+          python3 -m json.tool problem-insights.json >/dev/null
+          python3 -m json.tool statement-gaps.json >/dev/null
+          python3 -m json.tool auto-update-status.json >/dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          records = json.loads(Path("records.json").read_text(encoding="utf-8"))
+          insights = json.loads(Path("problem-insights.json").read_text(encoding="utf-8"))
+          record_keys = {
+              f"{row.get('contest_id')}{row.get('index')}"
+              for row in records
+              if row.get("contest_id") is not None and row.get("index")
+          }
+          published_keys = {row.get("problem_key") for row in insights["records"]}
+          assert published_keys <= record_keys, "发布数据包含 records.json 之外的题目"
+          assert len(published_keys) == insights["summary"]["total_problems"]
+          assert insights["summary"].get("filtered_out_problems", 0) == len(records) - len(published_keys)
+          pending = [
+              row.get("problem_key")
+              for row in insights["records"]
+              if row.get("extraction_status") == "pending_ai"
+          ]
+          assert not pending, f"未完成 AI 摘要，不允许上线: {pending[:10]}"
+          missing_statement_summary = [
+              row.get("problem_key")
+              for row in insights["records"]
+              if not str(row.get("statement_brief") or "").strip()
+          ]
+          assert not missing_statement_summary, f"发布数据存在缺少题面总结的题目: {missing_statement_summary[:10]}"
+          missing_solution_summary = [
+              row.get("problem_key")
+              for row in insights["records"]
+              if row.get("solution_brief")
+              and row.get("extraction_status") in {"missing_editorial", "pending_ai"}
+          ]
+          assert not missing_solution_summary, f"无题解总结的记录仍带有题解内容: {missing_solution_summary[:10]}"
+          bad = [
+              row.get("problem_key")
+              for row in records
+              if "codeforces search problemset" in str(row.get("statement_text") or "").lower()
+          ]
+          assert not bad, f"metadata page stored as statement: {bad[:5]}"
+          PY
+          node --check problem-insights-browser/app.js
+          node --check problem-insights-browser/data.js
+          git diff --check
+
+      - name: Commit refreshed source data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            ai-generated-insights.json \
+            contests.json \
+            editorials.json \
+            problem-insights-browser/data.js \
+            problem-insights.json \
+            problems.json \
+            records.json \
+            state.json
+          if git diff --cached --quiet; then
+            echo "No source data changes."
+          else
+            git commit -m "chore(cf): sync latest contests"
+            git push
+          fi
+
+      - name: Check Pages deploy token
+        env:
+          PAGES_DEPLOY_TOKEN: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+        run: test -n "$PAGES_DEPLOY_TOKEN"
+
+      - name: Checkout GitHub Pages repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          repository: Fyrskd/Fyrskd.github.io
+          ref: main
+          token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          path: .pages
+
+      - name: Publish problem insights page
+        run: |
+          cp problem-insights-browser/index.html .pages/index.html
+          cp problem-insights-browser/app.js .pages/app.js
+          cp problem-insights-browser/data.js .pages/data.js
+          cp problem-insights-browser/styles.css .pages/styles.css
+          touch .pages/.nojekyll
+          git -C .pages config user.name "github-actions[bot]"
+          git -C .pages config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git -C .pages add index.html app.js data.js styles.css .nojekyll
+          if git -C .pages diff --cached --quiet; then
+            echo "Pages output unchanged."
+          else
+            git -C .pages commit -m "chore: update CF insights page"
+            git -C .pages push origin HEAD:main
+          fi

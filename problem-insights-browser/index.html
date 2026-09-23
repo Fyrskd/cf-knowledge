@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CF补完计划</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <a class="brand" href="./">
+        <span class="brand-mark">CF</span>
+        <span>CF补完计划</span>
+      </a>
+      <nav class="nav-links" aria-label="视图">
+        <button class="nav-button is-active" type="button" data-view="contests">Contests</button>
+        <button class="nav-button" type="button" data-view="topics">Topics</button>
+        <button class="nav-button" id="accountsButton" type="button">绑定账号</button>
+      </nav>
+    </header>
+
+    <main class="app">
+      <section class="filters" aria-label="筛选">
+        <label>
+          <span>大知识点</span>
+          <select id="topicSelect"></select>
+        </label>
+        <label>
+          <span>难度下限</span>
+          <input id="minRatingInput" type="number" min="0" step="100" inputmode="numeric" placeholder="不限" />
+        </label>
+        <label>
+          <span>难度上限</span>
+          <input id="maxRatingInput" type="number" min="0" step="100" inputmode="numeric" placeholder="不限" />
+        </label>
+        <label class="checkbox-label">
+          <input id="hasEditorialCheckbox" type="checkbox" />
+          <span>只看有题解</span>
+        </label>
+        <label class="checkbox-label">
+          <input id="unsolvedOnlyCheckbox" type="checkbox" />
+          <span>只看未通过</span>
+        </label>
+        <button id="randomButton" class="random-button" type="button">随机题目</button>
+      </section>
+
+      <section class="contest-types" id="contestTypes" aria-label="竞赛类型"></section>
+
+      <section class="content-grid">
+        <section class="table-panel">
+          <div class="table-toolbar">
+            <div>
+              <div class="result-title" id="resultTitle">Contests</div>
+              <div class="result-subtitle" id="resultSubtitle"></div>
+            </div>
+            <label class="compact-label">
+              <span>排序</span>
+              <select id="sortSelect">
+                <option value="date-desc">日期新到旧</option>
+                <option value="date-asc">日期旧到新</option>
+                <option value="max-rating">最高难度</option>
+                <option value="problem-count">题目数</option>
+              </select>
+            </label>
+          </div>
+          <div class="table-scroll">
+            <table class="contest-table" id="contestTable"></table>
+          </div>
+        </section>
+
+        <aside class="detail-panel" id="detailPanel" aria-label="题目详情"></aside>
+      </section>
+    </main>
+
+    <dialog id="accountsDialog" class="accounts-dialog">
+      <div class="dialog-header">
+        <div>
+          <h2>Codeforces 账号</h2>
+          <p>只保存公开 handle，并从 Codeforces API 读取通过记录。</p>
+        </div>
+        <button id="closeAccountsButton" class="dialog-close" type="button" aria-label="关闭">关闭</button>
+      </div>
+      <div class="account-add-row">
+        <input id="accountHandleInput" type="text" placeholder="例如 tourist" autocomplete="off" />
+        <button id="addAccountButton" class="random-button" type="button">添加</button>
+      </div>
+      <div id="accountList" class="account-list"></div>
+      <p id="accountStatus" class="account-status"></p>
+      <div class="dialog-actions">
+        <button id="syncAccountsButton" class="random-button" type="button">同步通过记录</button>
+      </div>
+    </dialog>
+
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+    <script src="./data.js"></script>
+    <script src="./app.js?v=20260924-1"></script>
+  </body>
+</html>
