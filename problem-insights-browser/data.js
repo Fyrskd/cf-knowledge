@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1483,
+    "total_problems": 1490,
     "source_total_problems": 1742,
-    "filtered_out_problems": 259,
-    "with_statement_brief": 1483,
-    "with_editorial_brief": 1258,
-    "with_solution_brief": 1259,
+    "filtered_out_problems": 252,
+    "with_statement_brief": 1490,
+    "with_editorial_brief": 1265,
+    "with_solution_brief": 1266,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 419,
+    "ai_override_count": 426,
     "primary_topic_count": 13,
-    "contest_count": 237,
+    "contest_count": 238,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,11 +45,11 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 483,
+    "构造与贪心": 487,
     "图论与网络流": 90,
-    "动态规划与状态设计": 147,
-    "数论与同余": 137,
-    "组合计数与概率": 113,
+    "动态规划与状态设计": 148,
+    "数论与同余": 138,
+    "组合计数与概率": 114,
     "数据结构": 116,
     "几何": 32,
     "树结构": 105,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 351,
+    "ai_generated_with_editorial": 358,
     "ai_generated_partial_editorial": 16,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -36647,6 +36647,235 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1868,
+      "name": "Codeforces Round 896 (Div. 1)",
+      "date": "2023-09-10",
+      "url": "https://codeforces.com/contest/1868",
+      "type": "Div. 1",
+      "problemCount": 7,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1868A",
+          "index": "A",
+          "slot": "A",
+          "title": "Fill in the Matrix",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1868/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116642",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 矩阵，要求每一行都是 $0$ 到 $m-1$ 的排列。先求每列元素的 MEX，再求这些列 MEX 的 MEX，构造矩阵使最终 beauty 最大。",
+          "transformedStatement": "把目标转化为让列 MEX 尽量包含连续的非负整数：先证明答案上界为 $\\min(n+1,m)$（但 $m=1$ 是特殊例外），再用循环移位排列安排各列的缺失值。",
+          "keyObservations": [
+            "每个列 MEX 不超过 $n$，因此最终 MEX 不超过 $n+1$；而最终序列只有 $m$ 个元素，故上界是 $\\min(n+1,m)$。",
+            "当 $m=1$ 时矩阵只能全为 $0$，唯一列的 MEX 为 $1$，所以最终 beauty 为 $0$，这是上界讨论之外的特殊情况。",
+            "当 $m\\ge n+1$ 时让每一行成为向右循环移位的排列，可使列 MEX 覆盖 $0,1,\\ldots,n$，从而达到 $n+1$。",
+            "当 $1<m<n+1$ 时，前 $m-1$ 行使用循环移位排列，剩余行使用固定排列，可使列 MEX 包含 $0,1,\\ldots,m-1$，从而达到 $m$。"
+          ],
+          "solutionBrief": "先处理 $m=1$，答案为 $0$。否则按 $m\\ge n+1$ 与 $m<n+1$ 分情况构造：前者所有行使用循环移位，后者前 $m-1$ 行循环移位、其余行使用固定排列，均达到上界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1868B1",
+          "index": "B1",
+          "slot": "B",
+          "title": "Candy Party (Easy Version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1868/problem/B1",
+          "editorialUrl": "https://codeforces.com/blog/entry/116642",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个人各持有 $a_i$ 颗糖。每个人恰好向一人给出一份、并从一人收到一份，给出和收到的糖果数均为某个 $2$ 的幂；要求判断能否安排这些交换，使所有人最终糖果数相同。",
+          "transformedStatement": "将共同的最终糖果数记为平均值 $s$。对每个人只需决定给出的指数 $x_i$ 和收到的指数 $y_i$，使 $a_i-2^{x_i}+2^{y_i}=s$，再检查所有给出指数与收到指数是否能逐项配平。",
+          "keyObservations": [
+            "平均值 $s$ 必须是整数，否则总糖果数无法平均分配，答案必为 No。",
+            "对 $a_i\\ne s$，交换量必须满足 $a_i-s=2^{x_i}-2^{y_i}$；不同的 $(x_i,y_i)$ 对应不同差值，因此解至多一个，无解即可判 No。",
+            "把每个人给出的指数放入多重集合 $S$、收到的指数放入 $T$；所有人恰好给出和收到一次等价于 $S=T$。",
+            "满足 $S=T$ 时可将转移组织成若干环，并从环中最大糖果数的人开始安排，使其不会给出超过现有糖果；$a_i=s$ 的人可插入环中。"
+          ],
+          "solutionBrief": "先检查总和能否被 $n$ 整除。令平均数为 $s$，对每个 $a_i\\ne s$ 求唯一的 $a_i-s=2^x-2^y$，分别统计给出和收到的指数；若两多重集合相同则为 Yes，否则为 No。$a_i=s$ 时取 $x=y$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1868B2",
+          "index": "B2",
+          "slot": "B",
+          "title": "Candy Party (Hard Version)",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1868/problem/B2",
+          "editorialUrl": "https://codeforces.com/blog/entry/116642",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个人，第 $i$ 人初始有 $a_i$ 颗糖。每个人至多向一个人转出糖、至多从一个人收到糖，转移的糖数按题目规则取幂次形式；要求判断能否安排这些交换，使每个人最终糖数相同。",
+          "transformedStatement": "把最终糖数固定为平均值 $s$，将每个人相对 $s$ 的差值表示成一次转出幂次与一次转入幂次之差，并把转移关系视为每个点入度、出度均不超过一的链环图；问题转为逐幂次平衡两类计数。",
+          "keyObservations": [
+            "共同糖果数必须是平均值 $s=\\sum a_i/n$，且每个人的差值要由一次给出和一次接收的幂次糖果抵消；因此先检查总和能否被 $n$ 整除。",
+            "每个人至多有一条转出边和一条转入边，交换关系的连通分量只能是链或环；链端点只能出现在 $|a_i-s|=2^d$ 的特殊位置。",
+            "对 $|a_i-s|\\ne2^d$ 的人，给出与接收的幂次选择唯一，可分别计入集合 $S,T$；可行的核心条件转化为所有幂次上的计数满足 $cntS_k=cntT_k$。",
+            "特殊位置有两种编码方式，可按最高幂次向下决定选择：最高位的 $cntDS$ 必须使用不会产生更高位的方式，再确定对应 $cntDT$ 的选择，最终只需检查 $cntS_0=cntT_0$。"
+          ],
+          "solutionBrief": "先检查总和是否能均分，令目标为平均值；将普通人的差值唯一编码为给出、接收的幂次并统计 $S,T$。对差值为幂次的特殊人，从高位到低位贪心选择两种编码，最后检查各幂次计数是否完全匹配。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1868C",
+          "index": "C",
+          "slot": "C",
+          "title": "Travel Plan",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1868/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/116642",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "implementation",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "有 $n$ 个城市，它们构成编号堆式二叉树（城市 $i$ 的父节点为 $\\lfloor i/2\\rfloor$）。给每个城市独立赋一个 $1$ 到 $m$ 的整数；对每对满足 $i\\le j$ 的城市，取其树上简单路径上的最大赋值，求所有赋值方案的这些最大值总和。",
+          "transformedStatement": "把每条树上路径按包含的城市数 $t$ 分组：只需统计长度为 $t$ 的路径数量，并乘以一条固定 $t$ 点路径在全部赋值下的最大值总贡献；后者可由最大值恰为 $k$ 的赋值数作差分得到。",
+          "keyObservations": [
+            "固定一条含 $t$ 个城市的路径时，最大值不超过 $k$ 的赋值数为 $k^t$，因此该路径对所有方案的总贡献可化为 $m^{t+1}-\\sum_{k=1}^{m-1}k^t$。",
+            "总答案只依赖树中各长度路径的数量；先统计每种 $t$ 的路径数，再与对应的最大值总贡献相乘即可。",
+            "编号堆式二叉树的子树形态只有 $O(\\log n)$ 种：每层至多出现一个含额外叶子的非完整子树，其余子树都是完整二叉树。",
+            "对这些子树记忆化计算“子树内路径数”和“以指定端点结尾的路径数”，即可合并不同长度路径；涉及额外叶子的路径还可按两个端点是否落在额外叶子上分类。"
+          ],
+          "solutionBrief": "按路径包含的城市数 $t$ 分组。固定路径的总贡献为 $m^{t+1}-\\sum_{k=1}^{m-1}k^t$；再利用堆式二叉树仅有 $O(\\log n)$ 种子树形态，记忆化统计各长度路径数并合并，最后求和取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1868D",
+          "index": "D",
+          "slot": "D",
+          "title": "Flower-like Pseudotree",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1868/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/116642",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "树结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定每个顶点的度数，要求构造一个允许重边但无自环的连通图，使其恰有一个环；删去环上的边后，每个连通树都以原环顶点为根且深度相同。若能构造则输出任意满足度数的图，否则判定无解。",
+          "transformedStatement": "利用伪树必有 $n$ 条边，将问题先化为度数和为 $2n$ 的判定，再把度数为 $1$ 的顶点视为可挂接的枝叶；剩余核心顶点按度数排序，通过 $cnt$ 奇偶和最大度数决定环形骨架及等深分支。",
+          "keyObservations": [
+            "伪树恰有 $n$ 条边，所以度数和必须为 $2n$；不满足时无需尝试构造即可判定无解。",
+            "除全为 $2$ 的情况外，度数为 $1$ 的顶点可作为枝叶挂到其他顶点下，核心只需处理度数大于 $1$ 的顶点。",
+            "将核心顶点按度数降序排列后，$cnt$ 的奇偶性决定主要构造：$cnt$ 为偶数时可用前两个顶点组成二重边环，并让两侧链长相等。",
+            "$cnt$ 为奇数时只有少数边界情形可行：$d_1>3$ 且 $cnt\\ge5$ 可调整为偶数情形，$cnt=3$ 需满足 $d_3>2$；$d_1=3$ 时还需分别检查 $cnt\\ge7$、$cnt=5$ 和 $cnt=3$ 的特例。"
+          ],
+          "solutionBrief": "先检查度数和是否为 $2n$，再排序并统计 $d_i>1$ 的顶点数。全为 $2$ 时直接构成环；其余情况按 $cnt$ 奇偶、$d_1$ 和少数边界条件选择环及等深分支的构造，同时把度数为 $1$ 的顶点挂入分支；不满足条件则输出无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1868E",
+          "index": "E",
+          "slot": "E",
+          "title": "Min-Sum-Max",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1868/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/116642",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个整数数组，需要将其划分为若干个连续、互不重叠且覆盖全数组的子段。对任意连续的一组子段，其段和总和必须介于这些段和的最小值与最大值之间，求满足条件时最多能划分出的子段数。",
+          "transformedStatement": "把每个分割点表示为前缀和序列中的一个点；每组连续子段的合法性转化为所选分割点之间的差值约束，并利用相邻极大值、极小值分割点递归拆成两个区间子问题。",
+          "keyObservations": [
+            "在一个合法连续块中，选取的分割点前缀和的最大值与最小值可安排为相邻分割点；否则两者之间的部分必然不合法，从而能递归拆分。",
+            "固定这对相邻极值分割点后，左侧与右侧成为相互独立的子问题，其他分割点的前缀和必须落在这两个极值之间。",
+            "四维状态只会在边界等于某个前缀和值时参与转移，因此压缩为 $f_{i,j,k}$ 与 $g_{i,j,k}$ 两类状态，状态数降至 $O(n^3)$。",
+            "转移时固定另一端的极值，最优的同值边界可取目标位置左右最近的出现位置；结合坐标压缩后，总复杂度为 $O(n^3)$。"
+          ],
+          "solutionBrief": "将分割点转为前缀和，利用合法块中相邻极值分割点的结构递归划分。设计带前缀和值区间约束的区间 DP，再只保留一侧边界固定的状态，并用最近同值位置转移，复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1868F",
+          "index": "F",
+          "slot": "F",
+          "title": "LIS?",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1868/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/116642",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "几何"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定整数数组；每次选择当前和最大的连续区间，并把该区间内的每个元素减去 $1$。求使所有数组元素都严格小于 $0$ 所需的最少操作次数。",
+          "transformedStatement": "把每次会被处理的连续区间抽象为 good interval：它没有负的前缀和或后缀和，且不能向左右扩展为仍满足条件的候选区间。操作过程中只需维护这些区间的包含树，以及它们因阈值变化产生的分裂。",
+          "keyObservations": [
+            "满足“没有负前缀和或负后缀和”的区间可作为候选；从中无法向左右扩展的区间称为 good interval，且至少存在一个这样的区间。",
+            "两个 good interval 不会发生交叉，只可能互不相交或一方包含另一方，因此每次操作影响的区间可组织成树，并可递归处理。",
+            "对一个 good interval 操作后，它要么仍保持 good，要么能拆成若干更短的 good interval；每次拆分使区间数量增加 $1$，故总拆分次数至多为 $n$。",
+            "判断区间何时被拆分可转化为前缀和点的斜率比较：所需阈值对应凸包上的首个相关点，用线段树维护区间凸包并在凸包上搜索即可。"
+          ],
+          "solutionBrief": "始终处理一个满足条件的 good interval。若操作后仍满足条件，就继续处理它；否则根据前缀和凸包找出分裂位置，拆成多个 good interval。用线段树维护区间凸包并搜索阈值，整体复杂度为 $O(n\\log^2 n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
