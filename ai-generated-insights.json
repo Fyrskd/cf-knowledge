@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-23T19:49:44+00:00",
+  "updated_at": "2026-09-23T19:52:27+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -13952,6 +13952,60 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整 statement_text、editorial_text，以及 tags 中的 greedy 和 sortings。",
+        "quality_flags": []
+      }
+    },
+    "1877C": {
+      "problem_key": "1877C",
+      "title": "Joyboard",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1877/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/121200",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "b7f4b72ddaa375bccb828c0ad940dab96878a3bc4979c39fc87ef68fa9818cf7",
+      "generated_at": "2026-09-23T19:52:02+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n+1$ 个槽位，先将最后一项 $a_{n+1}$ 设为 $[0,m]$ 中的整数，再从右到左按 $a_i=a_{i+1}\\bmod i$ 确定其余项。求有多少种末项选择，使整个数组恰好包含 $k$ 个不同值。",
+        "transformed_statement": "将问题重述为分类统计末项 $x$ 的三种情况：$x=0$、$1\\le x\\le n$，以及 $x>n$ 时是否被 $n$ 整除；每类对应固定的不同值数量，再统计 $[0,m]$ 中各类元素个数。",
+        "key_observations": [
+          "取末项为 $0$ 时，所有前项都为 $0$，因此恰有 $1$ 个不同值；这直接确定了 $k=1$ 的唯一方案。",
+          "当 $1\\le a_{n+1}\\le n$ 时，末项及其右侧保持为该值，左侧全变为 $0$，所以恰有 $2$ 个不同值。",
+          "当 $a_{n+1}>n$ 时，若它被 $n$ 整除则整个前缀归零、得到 $2$ 个不同值；否则 $a_n$ 落在 $1$ 到 $n-1$，前 $n$ 项已有两个值，总计得到 $3$ 个不同值。",
+          "因此只需按末项区间及是否能被 $n$ 整除分类计数，无需实际生成数组；可行的不同值数量最多为 $3$。"
+        ],
+        "solution_brief": "令末项为 $x$。$x=0$ 对应 $k=1$；$1\\le x\\le n$ 对应 $k=2$；$x>n$ 时，$n\\mid x$ 仍对应 $k=2$，否则对应 $k=3$。据此用区间长度和整除数直接计算：$O(1)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，辅以 tags 中的 math、number theory。",
+        "quality_flags": []
+      }
+    },
+    "1877A": {
+      "problem_key": "1877A",
+      "title": "Goals of Victory",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1877/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/121200",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "5d3712b265d7067db24bb5cf7867b5d0b5853a112fdd8d87ecadb470bf22d875",
+      "generated_at": "2026-09-23T19:52:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "足球联赛有 $n$ 支球队，每两队比赛一次；球队效率是其所有比赛进球数减去对手进球数。已知其中 $n-1$ 支球队的效率，求剩余球队的效率。",
+        "transformed_statement": "将所有比赛的进球贡献汇总到全体球队：每个进球同时产生一个 $+1$ 和一个 $-1$，因此问题转化为利用全体效率总和为 $0$，补出缺失项。",
+        "key_observations": [
+          "每个进球会让进球方效率增加 $1$、对手效率减少 $1$，因此全体球队效率总和始终不变且为 $0$。",
+          "缺失球队的效率必须抵消其余 $n-1$ 支球队的效率，所以答案等于已知效率之和的相反数。"
+        ],
+        "solution_brief": "对给出的 $n-1$ 个效率求和，输出其相反数。因为所有比赛中的每个进球对全体效率的总贡献为 $+1-1=0$，所以所有球队效率之和为 $0$；每组数据耗时 $O(n)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的效率定义与 editorial_text 的总和不变量结论，tags 仅标注为 math。",
         "quality_flags": []
       }
     }

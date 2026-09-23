@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1523,
+    "total_problems": 1525,
     "source_total_problems": 1742,
-    "filtered_out_problems": 219,
-    "with_statement_brief": 1523,
-    "with_editorial_brief": 1298,
-    "with_solution_brief": 1299,
+    "filtered_out_problems": 217,
+    "with_statement_brief": 1525,
+    "with_editorial_brief": 1300,
+    "with_solution_brief": 1301,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 459,
+    "ai_override_count": 461,
     "primary_topic_count": 13,
-    "contest_count": 244,
+    "contest_count": 245,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -48,7 +48,7 @@ window.CF_INSIGHTS_DATA = {
     "构造与贪心": 497,
     "图论与网络流": 94,
     "动态规划与状态设计": 155,
-    "数论与同余": 140,
+    "数论与同余": 142,
     "组合计数与概率": 116,
     "数据结构": 119,
     "几何": 33,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 390,
+    "ai_generated_with_editorial": 392,
     "ai_generated_partial_editorial": 17,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -36452,6 +36452,66 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1877,
+      "name": "Codeforces Round 902 (Div. 2, based on COMPFEST 15 - Final Round)",
+      "date": "2023-10-08",
+      "url": "https://codeforces.com/contest/1877",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1200,
+      "problems": [
+        {
+          "key": "1877A",
+          "index": "A",
+          "slot": "A",
+          "title": "Goals of Victory",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1877/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/121200",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "足球联赛有 $n$ 支球队，每两队比赛一次；球队效率是其所有比赛进球数减去对手进球数。已知其中 $n-1$ 支球队的效率，求剩余球队的效率。",
+          "transformedStatement": "将所有比赛的进球贡献汇总到全体球队：每个进球同时产生一个 $+1$ 和一个 $-1$，因此问题转化为利用全体效率总和为 $0$，补出缺失项。",
+          "keyObservations": [
+            "每个进球会让进球方效率增加 $1$、对手效率减少 $1$，因此全体球队效率总和始终不变且为 $0$。",
+            "缺失球队的效率必须抵消其余 $n-1$ 支球队的效率，所以答案等于已知效率之和的相反数。"
+          ],
+          "solutionBrief": "对给出的 $n-1$ 个效率求和，输出其相反数。因为所有比赛中的每个进球对全体效率的总贡献为 $+1-1=0$，所以所有球队效率之和为 $0$；每组数据耗时 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1877C",
+          "index": "C",
+          "slot": "C",
+          "title": "Joyboard",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1877/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/121200",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n+1$ 个槽位，先将最后一项 $a_{n+1}$ 设为 $[0,m]$ 中的整数，再从右到左按 $a_i=a_{i+1}\\bmod i$ 确定其余项。求有多少种末项选择，使整个数组恰好包含 $k$ 个不同值。",
+          "transformedStatement": "将问题重述为分类统计末项 $x$ 的三种情况：$x=0$、$1\\le x\\le n$，以及 $x>n$ 时是否被 $n$ 整除；每类对应固定的不同值数量，再统计 $[0,m]$ 中各类元素个数。",
+          "keyObservations": [
+            "取末项为 $0$ 时，所有前项都为 $0$，因此恰有 $1$ 个不同值；这直接确定了 $k=1$ 的唯一方案。",
+            "当 $1\\le a_{n+1}\\le n$ 时，末项及其右侧保持为该值，左侧全变为 $0$，所以恰有 $2$ 个不同值。",
+            "当 $a_{n+1}>n$ 时，若它被 $n$ 整除则整个前缀归零、得到 $2$ 个不同值；否则 $a_n$ 落在 $1$ 到 $n-1$，前 $n$ 项已有两个值，总计得到 $3$ 个不同值。",
+            "因此只需按末项区间及是否能被 $n$ 整除分类计数，无需实际生成数组；可行的不同值数量最多为 $3$。"
+          ],
+          "solutionBrief": "令末项为 $x$。$x=0$ 对应 $k=1$；$1\\le x\\le n$ 对应 $k=2$；$x>n$ 时，$n\\mid x$ 仍对应 $k=2$，否则对应 $k=3$。据此用区间长度和整除数直接计算：$O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
