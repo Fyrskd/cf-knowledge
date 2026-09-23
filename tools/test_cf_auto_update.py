@@ -88,13 +88,13 @@ class AutoUpdateTests(unittest.TestCase):
                 ai_manager.os.environ,
                 {
                     "AI_BASE_URL": "https://api.zhehentiaohe.cn/v1",
-                    "AI_MODEL": "gpt-5.6-luna",
+                    "AI_MODEL": "gpt-6-luna",
                     "AI_TIMEOUT_SECONDS": "240",
                 },
             ):
                 config = ai_manager.load_config()
         self.assertEqual(config.base_url, "https://api.zhehentiaohe.cn/v1")
-        self.assertEqual(config.model, "gpt-5.6-luna")
+        self.assertEqual(config.model, "gpt-6-luna")
         self.assertEqual(config.timeout_seconds, 240)
 
     def test_problem_keys_and_incremental_new_count(self) -> None:

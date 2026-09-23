@@ -48,7 +48,7 @@ python3 tools/cf_auto_update.py --lookback-days 30 --ai-limit -1 --refresh-ai --
 python3 tools/cf_auto_update.py --lookback-days 30 --ai-limit 0 --skip-editorial-enrich
 ```
 
-需要自动生成摘要时，在当前 shell 设置 `OPENAI_API_KEY`；当前默认使用 `https://api.zhehentiaohe.cn/v1` 的 `gpt-5.6-luna`，也可以通过 `AI_BASE_URL`、`AI_MODEL` 和 `AI_TIMEOUT_SECONDS` 覆盖。`--ai-limit -1` 表示处理全部待生成题目，`0` 只适合本地调试；`--refresh-ai` 表示重生成已有 AI 摘要。正式工作流使用 `--require-ai`：缺少 key 或本批次全部 AI 生成失败时阻止提交；单题 AI 调用失败、输出质量校验失败时只保留该题待重试，其他成功题目照常提交，避免一题失败阻塞整场比赛。题解抓取失败仍会保留已有数据并在下一轮重试。
+需要自动生成摘要时，在当前 shell 设置 `OPENAI_API_KEY`；当前默认使用 `https://api.zhehentiaohe.cn/v1` 的 `gpt-6-luna`，也可以通过 `AI_BASE_URL`、`AI_MODEL` 和 `AI_TIMEOUT_SECONDS` 覆盖。`--ai-limit -1` 表示处理全部待生成题目，`0` 只适合本地调试；`--refresh-ai` 表示重生成已有 AI 摘要。正式工作流使用 `--require-ai`：缺少 key 或本批次全部 AI 生成失败时阻止提交；单题 AI 调用失败、输出质量校验失败时只保留该题待重试，其他成功题目照常提交，避免一题失败阻塞整场比赛。题解抓取失败仍会保留已有数据并在下一轮重试。
 
 GitHub Actions 文件是 `.github/workflows/cf-auto-update.yml`，默认每 6 小时运行一次，也支持 `workflow_dispatch` 手动运行。需要在 `Fyrskd/cf-knowledge` 仓库配置两个 Secrets：
 

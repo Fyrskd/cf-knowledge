@@ -68,7 +68,7 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           AI_BASE_URL: https://api.zhehentiaohe.cn/v1
-          AI_MODEL: gpt-5.6-luna
+          AI_MODEL: gpt-6-luna
           LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '30' }}
           CONTEST_ID: ${{ github.event.inputs.contest_id || '' }}
           AI_LIMIT: ${{ github.event.inputs.ai_limit || '-1' }}
