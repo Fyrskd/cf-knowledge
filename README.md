@@ -1,52 +1,67 @@
 # CF补完计划
 
-CF补完计划是一个面向 Codeforces 题目复习的静态知识页面。项目会抓取比赛、题面和 Tutorial，生成中文题意、建模转换、关键观察与题解摘要，并通过 GitHub Pages 发布浏览器页面。
+一个面向 Codeforces 题目复习的知识页面。
 
-- 在线页面：<https://fyrskd.github.io/>
-- 源代码仓库：<https://github.com/Fyrskd/cf-knowledge>
-- 页面仓库：<https://github.com/Fyrskd/Fyrskd.github.io>
+CF补完计划把比赛题目整理成可复习的知识卡片，集中展示中文题意、建模转换、关键观察和简要题解，帮助你按比赛、知识点和难度重新阅读做过的题。
 
-## 本地运行
+**在线使用：** [fyrskd.github.io](https://fyrskd.github.io/)
 
-项目根目录就是当前仓库，数据文件和构建脚本直接位于根目录。项目只依赖 Python 3.x 和浏览器；Node.js 仅用于 JavaScript 语法检查。
+## 能做什么
 
-构建发布数据：
+- 按比赛或知识点浏览题目；
+- 按竞赛类型、难度和题解状态筛选；
+- 查看题意、原始标签、建模转换、关键观察和简要题解；
+- 直接跳转到 Codeforces 原题、比赛页和题解来源；
+- 随机抽题；
+- 在浏览器中绑定多个公开 Codeforces handle，同步通过记录并标记已完成题目。
+
+题目详情默认只展示题意；转换、关键观察和题解分别单独展开，适合先自己思考，再逐层查看提示。
+
+## 数据说明
+
+本仓库同时保存抓取快照、结构化摘要和浏览器发布数据：
+
+```text
+Codeforces API / 题面 / Tutorial
+                ↓
+          records.json
+                ↓
+      结构化摘要与发布门
+                ↓
+problem-insights-browser/data.js
+```
+
+抓取器会保留来源 URL、来源类型和质量信息。没有可靠题面或题解正文时，项目不会用模型猜测内容来填补缺口。AI 摘要用于辅助复习，不等同于 Codeforces 官方题解。
+
+## 本地预览
+
+项目不需要安装第三方 Python 包。直接启动静态服务器即可预览页面：
 
 ```bash
+python3 -m http.server 8000 --directory problem-insights-browser
+```
+
+然后打开 <http://localhost:8000/>。
+
+## 开发与构建
+
+抓取器、摘要构建器和浏览器前端都在同一个仓库中。常用入口如下：
+
+```bash
+# 构建发布数据
 python3 build_problem_insights.py
 python3 build_problem_insights_browser_data.py
-```
 
-增量更新和批量补传：
-
-```bash
+# 增量更新比赛、题面、题解和摘要
 python3 tools/cf_auto_update.py --lookback-days 30 --ai-limit -1 --require-ai
-python3 tools/cf_batch_upload.py --from-date 2023-01-01
 ```
 
-抓取器也可以单独运行，输出目录使用项目根目录：
+完整的抓取参数、批量补传、AI 配置和 GitHub Actions 说明见：
 
-```bash
-python3 tools/cf_knowledge_index.py all \
-  --since 2024-09-05 \
-  --until 2026-09-22 \
-  --out .
-```
+- [`tools/CF_KNOWLEDGE_INDEX.md`](tools/CF_KNOWLEDGE_INDEX.md)
+- [`tools/CF_AUTO_UPDATE.md`](tools/CF_AUTO_UPDATE.md)
 
-## 自动更新与发布
-
-`.github/workflows/cf-auto-update.yml` 每 6 小时运行一次，也支持手动触发。工作流会抓取 Codeforces 数据、生成并校验 AI 摘要、提交源数据，然后把 `problem-insights-browser/` 下的四个静态文件发布到 `Fyrskd/Fyrskd.github.io`。
-
-在 `Fyrskd/cf-knowledge` 的仓库设置中配置：
-
-- `OPENAI_API_KEY`：生成中文摘要；
-- `PAGES_DEPLOY_TOKEN`：对 `Fyrskd/Fyrskd.github.io` 具有 Contents Read and write 权限的 fine-grained token。
-
-不要提交 `ai-config.local.json`、批量上传状态、运行日志或其他本地缓存；这些文件已经加入 `.gitignore`。
-
-## 验证
-
-提交前运行：
+提交修改前可以运行：
 
 ```bash
 python3 -m unittest tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py
@@ -58,7 +73,12 @@ python3 -m py_compile \
   build_problem_insights_browser_data.py
 node --check problem-insights-browser/app.js
 node --check problem-insights-browser/data.js
-git diff --check
 ```
 
-更多抓取器和自动更新说明见 `tools/CF_KNOWLEDGE_INDEX.md` 与 `tools/CF_AUTO_UPDATE.md`。
+## 仓库关系
+
+- 源码、抓取快照和构建流程：[`Fyrskd/cf-knowledge`](https://github.com/Fyrskd/cf-knowledge)
+- GitHub Pages 发布镜像：[`Fyrskd/Fyrskd.github.io`](https://github.com/Fyrskd/Fyrskd.github.io)
+- 在线页面：[`fyrskd.github.io`](https://fyrskd.github.io/)
+
+本项目目前没有声明开源许可证；如需基于项目再分发，请先联系仓库维护者。
