@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1492,
+    "total_problems": 1500,
     "source_total_problems": 1742,
-    "filtered_out_problems": 250,
-    "with_statement_brief": 1492,
-    "with_editorial_brief": 1267,
-    "with_solution_brief": 1268,
+    "filtered_out_problems": 242,
+    "with_statement_brief": 1500,
+    "with_editorial_brief": 1275,
+    "with_solution_brief": 1276,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 428,
+    "ai_override_count": 436,
     "primary_topic_count": 13,
-    "contest_count": 239,
+    "contest_count": 240,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 488,
-    "图论与网络流": 90,
-    "动态规划与状态设计": 148,
-    "数论与同余": 138,
+    "构造与贪心": 490,
+    "图论与网络流": 91,
+    "动态规划与状态设计": 149,
+    "数论与同余": 139,
     "组合计数与概率": 114,
-    "数据结构": 116,
+    "数据结构": 118,
     "几何": 33,
     "树结构": 105,
     "交互": 69,
-    "基础实现与模拟": 61,
+    "基础实现与模拟": 62,
     "博弈": 54,
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 360,
+    "ai_generated_with_editorial": 368,
     "ai_generated_partial_editorial": 16,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -36452,6 +36452,252 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1870,
+      "name": "CodeTON Round 6 (Div. 1 + Div. 2, Rated, Prizes!)",
+      "date": "2023-09-18",
+      "url": "https://codeforces.com/contest/1870",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1870A",
+          "index": "A",
+          "slot": "A",
+          "title": "MEXanized Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1870/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/120524",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n,k,x$，构造一个长度为 $n$ 的非负整数数组，要求数组 MEX 恰为 $k$，且每个元素不超过 $x$。求所有合法数组中的最大元素和；若无法构造则输出 $-1$。",
+          "transformedStatement": "MEX 为 $k$ 等价于必须包含 $0$ 到 $k-1$ 且不能包含 $k$；先固定这些必需元素，再把剩余位置填入不破坏 MEX 的最大允许值。",
+          "keyObservations": [
+            "MEX 为 $k$ 强制数组至少包含 $0,1,\u0002dots,k-1$，因此当 $\\min(n,x+1)<k$ 时无法同时满足长度和上界限制。",
+            "必须避免出现 $k$；当 $x=k$ 时，剩余位置不能填 $x$，只能填最大安全值 $k-1$。",
+            "当 $x\\ne k$ 且条件可行时，剩余位置都填 $x$ 不会改变 MEX，并使总和最大。",
+            "固定必需元素 $0$ 到 $k-1$ 后，答案就是其和加上剩余 $n-k$ 个位置的统一填充值。"
+          ],
+          "solutionBrief": "先判断 $\\min(n,x+1)<k$，不满足则输出 $-1$。否则必放入 $0$ 到 $k-1$；若 $x=k$，其余位置填 $k-1$，否则填 $x$，直接计算总和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1870B",
+          "index": "B",
+          "slot": "B",
+          "title": "Friendly Arrays",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1870/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/120524",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定数组 $a$ 和 $b$，每次可选一个 $b_j$，并把它与数组 $a$ 的每个元素逐一按位或；操作可进行任意次。求操作结束后所有 $a_i$ 的按位 XOR 能取得的最小值和最大值。",
+          "transformedStatement": "把所有实际选取的 $b_j$ 合并为一个按位或掩码，问题转化为选择是否将该掩码施加到全部 $a_i$；每个比特在最终 XOR 中的表现只由 $n$ 的奇偶性决定。",
+          "keyObservations": [
+            "所有被选中的 $b_j$ 可合并为它们的按位或掩码；对 $a$ 中每个元素依次应用这些操作，效果等价于统一或上这个掩码。",
+            "当 $n$ 为偶数时，掩码中的每个置位最终都会在偶数个数中出现，使对应 XOR 位变为 $0$，因此操作只会清除原 XOR 的置位。",
+            "当 $n$ 为奇数时，掩码中的每个置位最终都会在奇数个数中出现，使对应 XOR 位变为 $1$，因此操作只会设置原 XOR 中未置位的比特。",
+            "所以偶数时应应用所有 $b_j$ 取得最小值、完全不操作取得最大值；奇数时两者作用相反。"
+          ],
+          "solutionBrief": "先计算所有 $a_i$ 的初始 XOR，以及所有 $b_j$ 的按位或掩码。若 $n$ 为偶数，最小值是将该掩码或到每个 $a_i$ 后的 XOR，最大值为初始 XOR；若 $n$ 为奇数则交换两者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1870C",
+          "index": "C",
+          "slot": "C",
+          "title": "Colorful Table",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1870/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/120524",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "implementation",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$，构造矩阵 $b$，其中 $b_{i,j}=\\min(a_i,a_j)$。对每种颜色 $1$ 到 $k$，找出包含矩阵中所有该颜色单元格的最小轴对齐矩形，并输出其宽度与高度之和。",
+          "transformedStatement": "固定颜色 $x$：若 $x$ 在数组中出现，矩阵中颜色 $x$ 的行列边界分别由数组中首个和末个满足 $a_i\\ge x$ 的位置决定；于是答案转化为两倍的这段位置长度。",
+          "keyObservations": [
+            "若数组中不存在颜色 $x$，则矩阵中不可能出现 $x$，答案直接为 $0$。",
+            "颜色 $x$ 的最上、最左边界等于首个满足 $a_i\\ge x$ 的位置，因为它可与某个 $a_j=x$ 配对形成颜色 $x$；末边界同理取末个满足条件的位置。",
+            "因此只需记录满足 $a_i\\ge x$ 的首尾位置，矩形边长均为 $r-l+1$，答案为 $2(r-l+1)$。",
+            "所有颜色的“首个满足 $a_i\\ge x$ 的位置”随 $x$ 增大具有单调性，后缀边界也同样单调，所以可分别用一次扫描处理全部颜色。"
+          ],
+          "solutionBrief": "对每个出现过的颜色 $x$，寻找数组中首个和末个满足 $a_i\\ge x$ 的位置 $l,r$，输出 $2(r-l+1)$；未出现的颜色输出 $0$。利用边界随颜色单调变化，前后缀位置可分别扫描求出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1870D",
+          "index": "D",
+          "slot": "D",
+          "title": "Prefix Purchase",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1870/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/120524",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的全零数组和价格数组 $c$，每次可支付 $c_i$，将数组前 $i$ 个元素都加一，且可重复购买但不能透支金币。要求在初始拥有 $k$ 枚金币时，求所有可得到数组中字典序最大的结果。",
+          "transformedStatement": "将每次购买看作一个覆盖前缀的单位，并把每个价格替换成从该位置到末尾的最小价格，使价格单调不降。答案的第 $i$ 项表示仍能延伸到位置 $i$ 的购买单位数，问题转化为从短前缀向长前缀逐层升级这些单位。",
+          "keyObservations": [
+            "若较短前缀的价格不低于某个更长前缀，就可将前者购买全部替换为后者而不变差，因此 $c_i$ 可改为后缀最小值，使其单调不降。",
+            "归一化后，首项最多等于购买长度 $1$ 前缀的次数，即 $a_1=\\lfloor k/c_1\\rfloor$；先固定它能保证字典序第一位最优。",
+            "把一次长度 $i-1$ 的购买升级为长度 $i$ 只需额外支付 $c_i-c_{i-1}$，且升级次数不能超过已有购买数，所以可逐层贪心决定 $a_i$。",
+            "处理到第 $i-1$ 项后，最多能升级的次数为 $\\min(a_{i-1},\\lfloor k/(c_i-c_{i-1})\\rfloor)$；升级后扣除对应花费，所得正是下一项的值。"
+          ],
+          "solutionBrief": "先从右向左将价格改为后缀最小值，再购买尽可能多的最短前缀。随后按长度递增，把已有购买逐层升级为更长前缀，每层受剩余金币和上一层购买数限制，并扣除升级费用。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1870E",
+          "index": "E",
+          "slot": "E",
+          "title": "Another MEX Problem",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1870/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/120524",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "shortest paths"
+          ],
+          "statementBrief": "给定数组，可选择若干互不重叠的连续子数组，未被选中的元素允许保留。每个选中子数组贡献其 MEX，要求最大化所有贡献的按位异或值。",
+          "transformedStatement": "将过程视为从左到右处理数组的 DP：元素可以跳过，或作为一个连续区间的起点与终点，并把该区间的 MEX 作为一次异或转移；只保留 MEX 不可由内部更短区间替代的区间。",
+          "keyObservations": [
+            "用 $dp[i][x]$ 表示处理到位置 $i$ 前、当前异或值为 $x$ 是否可达，从而同时容纳跳过元素和选择区间。",
+            "固定左端点逐步扩展右端点时，区间 MEX 可递推维护；若选取 $[l,r]$，就把此前状态的异或值与该区间 MEX 异或。",
+            "若区间内部存在更短且 MEX 相同的子区间，则原区间可被替换而不改变结果，因此只需保留不可替代区间。",
+            "对每个端点元素，作为区间两端较大值或较小值的不可替代区间各至多一个，所以不可替代区间总数至多为 $2n$。"
+          ],
+          "solutionBrief": "用异或值作为 DP 状态，枚举区间并维护 MEX；跳过元素直接转移，选区间则异或其 MEX。利用不可替代区间至多 $2n$，将转移降至 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1870F",
+          "index": "F",
+          "slot": "F",
+          "title": "Lazy Numbers",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1870/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/120524",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n,k$，将 $1$ 到 $n$ 写成不带前导零的 $k$ 进制字符串并按字典序排序。求有多少个数 $i$ 的表示在排序后的第 $i$ 个位置。",
+          "transformedStatement": "把所有进制表示建成按数字升序连接的字典树：目标位置是节点的 DFS 编号，而数值本身等于节点的 BFS 编号；问题转化为统计满足 $dfs(x)=bfs(x)=x$ 的节点。",
+          "keyObservations": [
+            "把所有数的进制表示看成一棵按数字升序展开的字典树：DFS 顺序就是字符串字典序，BFS 顺序则按表示长度分层，因此数值 $x$ 的 BFS 编号恰为 $x$。",
+            "同一表示长度内，按数值递增的相邻两个数满足 DFS 编号增量至少为 $1$，而 BFS 编号增量恰为 $1$，所以 $dfs(x)-bfs(x)$ 单调不减。",
+            "固定表示长度后，只需在该层二分寻找 $dfs(x)-x=0$ 的位置；单调性保证每层至多贡献一个答案。",
+            "从表示对应的树节点向根回溯，累加 DFS 中排在目标子树之前的兄弟子树大小，即可计算 $dfs(x)$，无需显式生成全部表示。"
+          ],
+          "solutionBrief": "将数的进制表示组织成字典树，用 DFS 得到字典序位置、BFS 得到数值编号。对每个表示长度利用 $dfs(x)-x$ 的单调性二分零点，并通过回溯累加前置子树大小计算 DFS 编号，复杂度为 $O(\\log^3 n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1870G",
+          "index": "G",
+          "slot": "G",
+          "title": "MEXanization",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1870/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/120524",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures"
+          ],
+          "statementBrief": "给定非负整数多重集合，每次可选取任意非空子集删除，并把该子集的 MEX 加回集合；重复操作直到只剩一个数。对数组每个前缀，求最终剩余数字可能达到的最大值。",
+          "transformedStatement": "将当前前缀改用计数数组 $cnt$ 表示，把问题转化为：能否通过生成目标值、将不需要的数归零并清除其余元素，最终只留下该目标值；判定过程等价于从右侧缺失位置向左满足数量需求。",
+          "keyObservations": [
+            "把多重集合压缩为出现次数数组 $cnt$；大于 $n$ 的数都可视为 $0$，因为将单个数替换为 MEX 后得到 $0$，不会妨碍最优结果。",
+            "只需考虑三类规范操作：用 $0,1,\\dots,x-1$ 生成 $x$、把单个 $x$ 变为 $0$，以及生成 $x$ 后清除其余元素；题目的任意最优操作序列都可化为这些操作。",
+            "判定能否生成并最终保留 $k$ 时，从最右侧缺失值向左追踪；维护需求量 $p$，若某位置的 $cnt[i]<p$，就把不足量转化为更小位置的需求，并用剩余元素补足对 $0$ 的需求。",
+            "追踪过程中维护元素总和 $sm$，每次在位置 $i$ 补一个缺口至少使 $sm$ 减少 $i-1$，因此被实际更新的位置只有 $O(\\sqrt n)$ 个；用线段树快速寻找下一个满足 $cnt[i]<p$ 的位置。"
+          ],
+          "solutionBrief": "维护每个前缀的计数数组和线段树，逐步判断当前答案能否增加。判定时从右向左处理缺失值，用 $p$ 与总和 $sm$ 跳过无效位置；答案单调增加且最多检查 $2n$ 次，总复杂度为 $O(n\\sqrt n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1870H",
+          "index": "H",
+          "slot": "H",
+          "title": "Standard Graph Problem",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1870/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/120524",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "graphs",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定带权有向图，顶点可被标记为高亮或普通；选择若干条边，使每个普通顶点都能仅沿所选边到达至少一个高亮顶点，代价为所选边权总和，不可行时为 $-1$。初始无高亮点，查询用“+v”高亮顶点 $v$、用“-v”取消高亮，并输出每次查询后的最小代价。",
+          "transformedStatement": "先把图通过 Edmonds 算法的边权调整与环压缩转成一棵压缩树：原顶点是叶子，压缩过程产生内部节点并赋予节点代价。动态高亮等价于在叶子上放置标记，答案转为所有不含标记叶子的子树根代价之和。",
+          "keyObservations": [
+            "将所有边展开后，问题可转为为每个未选顶点提供到某个选中顶点的可达关系，其最小代价由有向最小树形结构决定。",
+            "在 Edmonds 算法中加入高权值虚拟环边后，各轮压缩基本与根的选择无关，因此可先统一完成压缩，再处理动态选点。",
+            "每次压缩生成一个新节点，原图顶点成为叶子；节点代价是该压缩阶段从该节点出发的最小边代价。",
+            "答案等于压缩树中所有“不含选中叶子”的子树根节点代价之和；选中或取消一个叶子只影响其祖先链，可用线段树维护。"
+          ],
+          "solutionBrief": "先用带虚拟高权边的 Edmonds 算法完成与根无关的边压缩，建立压缩树并记录每个节点的最小出边代价。将选中顶点视为叶子，维护不含选中叶子的子树代价和；每次修改沿祖先关系更新，线段树维护答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
