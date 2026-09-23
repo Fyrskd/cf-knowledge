@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1516,
+    "total_problems": 1523,
     "source_total_problems": 1742,
-    "filtered_out_problems": 226,
-    "with_statement_brief": 1516,
-    "with_editorial_brief": 1291,
-    "with_solution_brief": 1292,
+    "filtered_out_problems": 219,
+    "with_statement_brief": 1523,
+    "with_editorial_brief": 1298,
+    "with_solution_brief": 1299,
     "missing_editorial_brief": 224,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 452,
+    "ai_override_count": 459,
     "primary_topic_count": 13,
-    "contest_count": 243,
+    "contest_count": 244,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 62,
-    "构造与贪心": 496,
-    "图论与网络流": 92,
+    "构造与贪心": 497,
+    "图论与网络流": 94,
     "动态规划与状态设计": 155,
     "数论与同余": 140,
-    "组合计数与概率": 114,
-    "数据结构": 118,
+    "组合计数与概率": 116,
+    "数据结构": 119,
     "几何": 33,
-    "树结构": 106,
+    "树结构": 107,
     "交互": 69,
     "基础实现与模拟": 62,
     "博弈": 55,
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 383,
+    "ai_generated_with_editorial": 390,
     "ai_generated_partial_editorial": 17,
     "missing_editorial": 224,
     "manual_override": 891,
@@ -36452,6 +36452,227 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1876,
+      "name": "Codeforces Round 902 (Div. 1, based on COMPFEST 15 - Final Round)",
+      "date": "2023-10-08",
+      "url": "https://codeforces.com/contest/1876",
+      "type": "Div. 1",
+      "problemCount": 7,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1876A",
+          "index": "A",
+          "slot": "A",
+          "title": "Helmets in Night Light",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1876/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/121200",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 名居民，Pak Chanek 可花费 $p$ 直接通知任意居民；被通知的居民 $i$ 最多还能通知 $a_i$ 人，每次花费 $b_i$。可控制通知顺序，目标是让所有居民收到消息并使总花费最小。",
+          "transformedStatement": "将居民分享拆成 $a_i$ 个单价为 $b_i$ 的分享名额，并将直接通知视为无限个单价为 $p$ 的名额。固定第一次直接通知后，从这些名额中选择成本最低的 $n-1$ 个完成传播。",
+          "keyObservations": [
+            "通知全部 $n$ 人必须进行 $n$ 次分享，其中第一次只能由 Pak Chanek 直接通知；因此固定支付一次 $p$ 后，只需为剩余 $n-1$ 次分享选择最低成本。",
+            "把居民 $i$ 的能力视为 $a_i$ 个单价为 $b_i$ 的分享名额，再加入无限个单价为 $p$ 的直接分享，问题转化为选出最便宜的 $n-1$ 个名额。",
+            "按 $b_i$ 从小到大处理时，已通知居民始终能提供至少一次分享，因为所有 $a_i\\ge1$；所以选出的低价名额总能按顺序实际执行。",
+            "居民分享成本高于直接通知时无需使用其名额，处理居民 $i$ 时最多选取剩余次数中的 $a_i$ 次，单价可视为 $\\min(b_i,p)$，不足部分由直接分享补足。"
+          ],
+          "solutionBrief": "先支付一次 $p$ 通知首位居民，再按 $b_i$ 升序处理居民。对每人取至多 $a_i$ 次、单价为 $\\min(b_i,p)$ 的分享，直到覆盖剩余 $n-1$ 次；若仍不足则用单价 $p$ 的直接分享补齐。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1876B",
+          "index": "B",
+          "slot": "B",
+          "title": "Effects of Anti Pimples",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1876/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/121200",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定数组，先任选一个或多个不同下标染黑；随后把所有下标是某个黑色下标倍数的白色元素染绿。一次选择的得分是所有黑色和绿色元素的最大值，要求对全部 $2^n-1$ 种黑色下标选择求得分总和，并对 $998244353$ 取模。",
+          "transformedStatement": "对阈值 $w$ 统计得分不超过 $w$ 的选择：所有满足 $a_i>w$ 的位置都必须既不被选黑，也不能被黑色下标的倍数规则染绿。因此，禁止选择那些能整除任一高值位置的下标，剩余下标任意选但不能全空。",
+          "keyObservations": [
+            "将“得分不超过 $w$”转化为所有 $a_i>w$ 的位置都不能成为黑色或绿色，从而把最大值条件变成禁止覆盖条件。",
+            "若某个高值位置为绿色，则至少有一个被选黑色下标是它的因数；因此只需统计所有高值下标的因数并集大小 $c$，合法选择数为 $2^{n-c}-1$。",
+            "按 $a_i$ 从大到小加入位置并标记其全部因数，可增量维护 $c$；再用 $f(w)=g(w)-g(w-1)$ 将不超过阈值的方案数还原为恰好得分的方案数。"
+          ],
+          "solutionBrief": "定义 $g(w)$ 为得分不超过 $w$ 的选法数。将所有 $a_i>w$ 的位置加入禁用覆盖集合，集合大小为 $c$ 时答案为 $2^{n-c}-1$；按值降序枚举并标记因数，利用差分累加各得分贡献，复杂度 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1876C",
+          "index": "C",
+          "slot": "C",
+          "title": "Autosynthesis",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1876/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/121200",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定数组 $a$，每次可选择任意位置将其圈起，且同一位置可以重复选择。操作结束后，按下标顺序取所有未被圈起元素的值组成 $r$，再按操作顺序记录被圈起的位置组成 $p$；要求构造操作使 $r=p$，否则输出无解。",
+          "transformedStatement": "把每个位置 $i$ 看作函数图顶点并连边 $i\\to a_i$，将被圈位置视为黑点、未被圈位置视为白点。题目等价于寻找满足“每个黑点有白色子节点、每个白点没有白色子节点”的染色，并由白点的数组值生成操作序列。",
+          "keyObservations": [
+            "把位置分为黑色（最终被圈起）和白色（最终未被圈起）：黑色位置必须有白色位置的值等于它的下标，白色位置则不能有白色子节点。",
+            "建立边 $i\\to a_i$ 的函数图后，顶点 $i$ 的子节点就是所有满足 $a_j=i$ 的位置，因此一个顶点有白色子节点当且仅当它必须染成黑色，否则染成白色。",
+            "从入度为零的叶子开始删除并确定颜色；一旦处理出白色子节点，其父节点即可确定为黑色，从而避免等待其余子节点。",
+            "删除树枝后只剩若干有向环；偶环可交替染黑白，奇环无法满足相邻颜色约束，因此直接判定无解。"
+          ],
+          "solutionBrief": "在函数图上用队列处理所有非环部分，按“有白色子节点则黑，否则白”确定颜色；剩余环交替染色，奇环输出 $-1$。将所有白色位置的 $a_i$ 按下标顺序作为操作序列即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1876D",
+          "index": "D",
+          "slot": "D",
+          "title": "Lexichromatography",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1876/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/121200",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "图论与网络流",
+            "字符串"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组，需把每个元素染成蓝色或红色，使题目规定的所有子数组失衡条件成立，并比较按原顺序取得的蓝色子序列和红色子序列的字典序；求蓝色子序列严格小于红色子序列的合法染色数，答案模 $998244353$。",
+          "transformedStatement": "将每个不同数值的染色视为一个二元起始相位；先统计满足子数组条件的全部相位方案，再扣除蓝、红子序列相等的方案。相等方案被长度平衡点切成若干段，段间共享数值产生起始相位相同的连通约束。",
+          "keyObservations": [
+            "忽略字典序条件时，同一数值的出现位置必须按蓝红交替染色，因此每个不同数值只有两种起始颜色选择，总数为 $2^c$。",
+            "把蓝色子序列与红色子序列按字典序分为 less、equal、more；交换两种颜色会互换 less 和 more，所以目标数量为 $(2^c-\\text{equal})/2$。",
+            "扫描过程中，在两条子序列长度再次相等前，首次出现的数值只能放入较长序列，重复出现的数值必须放入较短序列且与对应元素匹配；任何一次不匹配都会使 equal 为 $0$。",
+            "长度相等的位置将数组分成若干段；每段的起始颜色原本有两种，但共享数值的段必须保持相同起始颜色，因此将共享数值的段连边后，equal 等于 $2^{\\text{连通分量数}}$。"
+          ],
+          "solutionBrief": "先利用同值位置交替的性质得到总数 $2^c$，再扫描计算蓝、红子序列相等的染色数。按长度相等点分段，并用共享数值建立段之间的约束图，若扫描匹配失败则 equal 为 $0$；最终答案为 $(2^c-\\text{equal})/2$，全程取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1876E",
+          "index": "E",
+          "slot": "E",
+          "title": "Ball-Stackable",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1876/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/121200",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵边可能已定向或未定向的树，先为所有未定向边选择方向并给每条边染色。随后任意选择起点和终点行走，边可顺着或逆着方向经过且允许重复；每次逆向经过边都必须从非空球栈取出与该边同色的球，要求所有满足非空栈条件的行走都满足颜色条件，并最大化使用的颜色数。",
+          "transformedStatement": "把根到顶点的栈大小抽象为路径上的有向势值：顺着边增加 $1$，逆着边减少 $1$。选择使势值非负且让向外边最多的根，将无向边全部向外定向，再按根路径上的入栈、出栈关系确定颜色。",
+          "keyObservations": [
+            "从根到顶点的栈大小只由路径上“顺向边数减逆向边数”决定，与具体走法无关，因此可用每个顶点的势值表示栈状态。",
+            "把势值最小的顶点选为根并将无向边全部朝远离根的方向定向后，所有顶点势值都非负，从而不会出现可行行走时从空栈取球的情况。",
+            "沿根到各顶点的路径模拟栈：顺向经过一条边时压入新颜色，逆向经过一条边时弹出栈顶并令该边使用弹出颜色，这已覆盖所有必须匹配的颜色关系。",
+            "每条远离根的边都能贡献一个新颜色，朝向根的边不会贡献新颜色；因此应选择使远离根的原有有向边数量最大的顶点作为根。"
+          ],
+          "solutionBrief": "对每个顶点计算相对根的有向势值，并通过换根找到使原有有向边向外数量最大的根；无向边全部向外定向。再 DFS 维护颜色栈，向外边使用新色并入栈，向内边使用栈顶色并出栈，得到最大颜色数的构造，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1876F",
+          "index": "F",
+          "slot": "F",
+          "title": "Indefinite Clownfish",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1876/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/121200",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "graphs"
+          ],
+          "statementBrief": "商店按下标顺序逐条询问是否购买；购买时必须立即给鱼指定雌性或雄性。恰好购买 $k$ 条，使雌鱼按原顺序的尺寸连续递增、雄鱼连续递减且两组均值相同，求所购鱼的最大与最小下标之差的最小值。",
+          "transformedStatement": "将两种性别看成一条连续递增链和一条连续递减链，要求它们总长度为 $k$ 且端点和相等。围绕两次出现的共享尺寸建立四条向不同方向延伸的连续值路径，再优化路径长度和覆盖区间。",
+          "keyObservations": [
+            "两种性别的选中序列分别是值连续递增和连续递减，且均值相同等价于两者的最大值与最小值之和相等，从而必须共享一个值。",
+            "取共享值的两次出现且令下标距离最小后，四种性别与方向组合都可表示为同值端点伸出的四条连续值路径，四条路径之间不会互相冲突。",
+            "等均值条件使左右两组路径的元素数相等，因此总数为奇数时不可能；当 $k$ 为偶数时，每组必须恰好包含 $(k-2)/2$ 个端点之外的元素。",
+            "对每个位置连接左右最近的 $a_i-1$ 和 $a_i+1$，二进制提升可快速跳过连续值路径；再二分两条路径的分配长度以最大化左端点、最小化右端点。"
+          ],
+          "solutionBrief": "枚举同值的相邻出现及四种方向组合，把路径扩展转为四条图上的连续值链。用二进制提升查询第 $d$ 个父节点，并二分两条路径的长度分配，求每种方案的最小跨度，整体复杂度为 $O(n\\log^2 n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1876G",
+          "index": "G",
+          "slot": "G",
+          "title": "Clubstep",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1876/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/121200",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "树结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定各部件熟悉度。一次尝试选择在部件 $p$ 死亡，耗时 $p$ 秒，并使死亡部件提升 $2$、此前到达的每个部件提升 $1$；对每个区间 $[l,r]$ 和目标值 $x$，求用若干次尝试使区间内所有熟悉度至少为 $x$ 的最小总耗时。",
+          "transformedStatement": "只考虑区间内死亡位置，并从右端点向左处理：若当前右端点不足 $x$，在此处进行 $t=\\lceil(x-a_r)/2\\rceil$ 次尝试，付出 $rt$，同时把左侧目标降为 $x-t$；所有查询共享这些递归状态。",
+          "keyObservations": [
+            "最优策略不会让尝试死在区间外；处理右端点时，若 $a_r<x$，必须在 $r$ 死亡恰好 $\\lceil(x-a_r)/2\\rceil$ 次，代价为 $r$ 乘该次数。",
+            "在 $r$ 死亡一次会使更左侧所有部件各增加 $1$，因此处理完右端点后，问题等价于缩短右端点并降低目标值，形成状态 $(r',x')$ 的递归链。",
+            "把所有查询产生的 $(r,x)$ 状态合并后，按 $r$ 从右向左维护有序的 $x$；相邻值之间的间隔会反复折半，故状态总数为 $O(n+q\\log X)$。",
+            "递归状态可连成父子树；在 DFS 中维护路径上的 $r$ 值，查询某状态只需在该路径上二分定位区间左端点，从而避免对整棵状态树逐次跳跃。"
+          ],
+          "solutionBrief": "从右向左生成并合并递归状态，用栈和优先队列维护所有 $(r,x)$，再建状态树；DFS 时在路径栈上二分回答查询，总复杂度为 $O(n+q(\\log X+\\log n))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
