@@ -22,6 +22,7 @@ import time
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any, Callable, Protocol, Sequence
+from urllib.parse import urlparse
 
 
 REPO_ROOT = Path(__file__).resolve().parents[1]
@@ -114,6 +115,54 @@ def parse_date(value: str | None) -> dt.date | None:
 
 def parse_timestamp(value: str) -> dt.datetime:
     return dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
+def normalize_repository(value: str | None) -> str | None:
+    """将 GitHub URL、SSH 地址或 owner/repo 统一为 owner/repo。"""
+    if not value:
+        return None
+    text = value.strip()
+    if text.startswith("git@github.com:"):
+        text = text.removeprefix("git@github.com:")
+    elif "://" in text:
+        parsed = urlparse(text)
+        if parsed.netloc.lower() != "github.com":
+            return None
+        text = parsed.path
+    text = text.strip("/")
+    if text.endswith(".git"):
+        text = text[:-4]
+    parts = [part for part in text.split("/") if part]
+    if len(parts) != 2:
+        return None
+    return "/".join(parts).lower()
+
+
+def repository_from_run_url(value: str | None) -> str | None:
+    if not value:
+        return None
+    parsed = urlparse(value)
+    if parsed.netloc.lower() != "github.com":
+        return None
+    parts = [part for part in parsed.path.split("/") if part]
+    if len(parts) < 2:
+        return None
+    return normalize_repository("/".join(parts[:2]))
+
+
+def current_repository_slug(explicit: str | None = None) -> str | None:
+    repository = normalize_repository(explicit)
+    if repository:
+        return repository
+    completed = subprocess.run(
+        ["git", "config", "--get", "remote.origin.url"],
+        cwd=str(REPO_ROOT),
+        check=False,
+        text=True,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+    )
+    return normalize_repository((completed.stdout or "").strip())
 
 
 def problem_key(row: dict[str, Any]) -> str | None:
@@ -369,6 +418,7 @@ class BatchUploader:
         retry_delay_seconds: float = 60.0,
         sleep: Callable[[float], None] = time.sleep,
         clock: Callable[[], dt.datetime] = utc_now,
+        repository: str | None = None,
     ) -> None:
         if max_retries < 0:
             raise BatchUploadError("max-retries 不能小于 0")
@@ -383,6 +433,7 @@ class BatchUploader:
         self.retry_delay_seconds = retry_delay_seconds
         self.sleep = sleep
         self.clock = clock
+        self.repository = normalize_repository(repository)
         self.state = load_state(state_path)
 
     def run(self, contests: Sequence[Contest], dry_run: bool = False) -> tuple[list[int], list[int], list[int]]:
@@ -433,8 +484,31 @@ class BatchUploader:
         entry["updated_at"] = self.clock().isoformat()
         save_state(self.state_path, self.state)
 
+    def _run_belongs_to_current_repository(self, entry: dict[str, Any]) -> bool:
+        if not self.repository:
+            return True
+        run_repository = repository_from_run_url(str(entry.get("last_run_url") or ""))
+        return run_repository in {None, self.repository}
+
+    def _reset_stale_entry(self, contest: Contest, entry: dict[str, Any]) -> None:
+        old_run_id = entry.get("last_run_id")
+        old_repository = repository_from_run_url(str(entry.get("last_run_url") or ""))
+        print(
+            f"RESET_STALE_STATE contest={contest.contest_id} run={old_run_id or '-'} "
+            f"repository={old_repository or '-'} current={self.repository or '-'}",
+            flush=True,
+        )
+        entry["status"] = "pending"
+        entry["attempts"] = 0
+        entry["last_run_id"] = None
+        entry["last_run_url"] = ""
+        entry["last_error"] = ""
+        self._save_entry(entry)
+
     def _upload_one(self, contest: Contest) -> str:
         entry = self._entry(contest)
+        if not self._run_belongs_to_current_repository(entry):
+            self._reset_stale_entry(contest, entry)
         if entry.get("status") == "success":
             print(f"SKIP contest={contest.contest_id} status=success", flush=True)
             return "skipped"
@@ -650,6 +724,7 @@ def main(argv: Sequence[str] | None = None) -> int:
         run_timeout_seconds=args.run_timeout_seconds,
         discovery_timeout_seconds=args.discovery_timeout_seconds,
         retry_delay_seconds=args.retry_delay_seconds,
+        repository=current_repository_slug(args.repo),
     )
     _, failed, _ = uploader.run(contests, dry_run=args.dry_run)
     return 1 if failed else 0

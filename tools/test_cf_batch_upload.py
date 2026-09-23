@@ -239,6 +239,41 @@ class BatchUploadTests(unittest.TestCase):
         self.assertEqual(result, ([1778], [], []))
         self.assertEqual(client.dispatches, [1778])
 
+    def test_success_from_another_repository_is_not_trusted(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            state_path = Path(directory) / "state.json"
+            state_path.write_text(
+                json.dumps(
+                    {
+                        "version": 1,
+                        "contests": {
+                            "1778": {
+                                "contest_id": 1778,
+                                "name": "Round 848",
+                                "date": "2023-02-01",
+                                "status": "success",
+                                "attempts": 1,
+                                "last_run_id": 999,
+                                "last_run_url": "https://github.com/Fyrskd/XCPC/actions/runs/999",
+                            }
+                        },
+                    }
+                ),
+                encoding="utf-8",
+            )
+            client = FakeWorkflowClient([True])
+            uploader = BatchUploader(
+                client=client,
+                state_path=state_path,
+                repository="Fyrskd/cf-knowledge",
+                max_retries=1,
+                retry_delay_seconds=0,
+                sleep=lambda _: None,
+            )
+            result = uploader.run([Contest(1778, "Round 848", dt.date(2023, 2, 1))])
+        self.assertEqual(result, ([1778], [], []))
+        self.assertEqual(client.dispatches, [1778])
+
 
 if __name__ == "__main__":
     unittest.main()
