@@ -4,10 +4,12 @@
 from __future__ import annotations
 
 import datetime as dt
+import io
 import json
 import sys
 import tempfile
 import unittest
+from contextlib import redirect_stdout
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +21,7 @@ from cf_batch_upload import (
     RunNotFoundError,
     WorkflowRun,
     load_candidates,
+    summarize_failed_log,
 )
 
 
@@ -84,7 +87,48 @@ class StaleRunClient(FakeWorkflowClient):
         return super().get_run(run_id)
 
 
+class DetailedFailureClient(FakeWorkflowClient):
+    def failed_log(self, run_id: int) -> str:
+        return (
+            "update\tUNKNOWN STEP\t2026-09-25T00:00:00Z\tRunner output\n"
+            "update\tCrawl contests, build outputs, and refresh AI summaries\t"
+            "2026-09-25T00:00:01Z\tAUTO_UPDATE_FAILED 命令失败（2）\n"
+            "update\tCrawl contests, build outputs, and refresh AI summaries\t"
+            "2026-09-25T00:00:02Z\tError: Process completed with exit code 1.\n"
+        )
+
+
 class BatchUploadTests(unittest.TestCase):
+    def test_summarize_failed_log_extracts_workflow_step_and_error(self) -> None:
+        step, excerpt = summarize_failed_log(
+            "update\tUNKNOWN STEP\t2026-09-25T00:00:00Z\tRunner output\n"
+            "update\tBuild outputs\t2026-09-25T00:00:01Z\tAUTO_UPDATE_FAILED command failed\n"
+            "update\tBuild outputs\t2026-09-25T00:00:02Z\tError: Process completed with exit code 1.\n"
+        )
+        self.assertEqual(step, "Build outputs")
+        self.assertIn("AUTO_UPDATE_FAILED", excerpt)
+        self.assertIn("exit code 1", excerpt)
+
+    def test_failed_console_log_identifies_phase_step_and_run_url(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            output = io.StringIO()
+            uploader = BatchUploader(
+                client=DetailedFailureClient([False]),
+                state_path=Path(directory) / "state.json",
+                max_retries=0,
+                retry_delay_seconds=0,
+                sleep=lambda _: None,
+            )
+            with redirect_stdout(output):
+                result = uploader.run([Contest(1778, "Round 848", dt.date(2023, 2, 1))])
+        self.assertEqual(result, ([], [1778], []))
+        text = output.getvalue()
+        self.assertIn("CONTEST_FAILED contest=1778", text)
+        self.assertIn("phase=workflow", text)
+        self.assertIn("workflow_step=Crawl contests, build outputs, and refresh AI summaries", text)
+        self.assertIn("CONTEST_FAILED_URL contest=1778", text)
+        self.assertIn("exit code 1", text)
+
     def test_load_candidates_only_returns_incomplete_contests(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

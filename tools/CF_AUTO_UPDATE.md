@@ -121,6 +121,18 @@ python3 tools/cf_batch_upload.py --contest-id 1778 --contest-id 1788
 状态文件默认是 `batch-upload-state.local.json`，已加入 `.gitignore`。
 脚本中断后重新运行会等待仍在运行的 Action；已成功的比赛会跳过，失败的比赛会重新开始
 本轮重试。某场达到重试上限后会继续处理后续比赛，脚本最后以非零状态退出并保留失败日志摘要。
+
+批量上传的控制台日志按阶段打印。重点关注以下几类行：
+
+- `CONTEST_START` / `CANDIDATE_LIST`：本轮候选比赛和当前进度；
+- `DISPATCH_START`：正在触发哪一个 workflow、分支和比赛；
+- `RUN_DISCOVERY_START` / `RUN_DISCOVERY_SUCCESS`：是否找到对应的 Actions run；
+- `RUN_POLL_START` / `RUN_STATUS`：当前 run 的轮询状态；
+- `RUN_FAILURE_LOG`：失败 run 对应的 workflow step 和错误片段；
+- `RETRY`：失败发生在哪个本地阶段、哪个 workflow step，以及下一次重试等待时间；
+- `CONTEST_FAILED` / `CONTEST_FAILED_URL`：最终失败原因、run ID 和可直接打开的 Actions 链接。
+
+如果手动按 `Ctrl-C` 中断，脚本会打印 `BATCH_UPLOAD_INTERRUPTED`；状态文件会保留当前 run，下一次运行会先恢复等待，不会立即重复触发。
 如果项目迁移了源仓库，旧状态文件中的 Actions run ID 可能在新仓库中不存在；脚本会识别
 GitHub 的 404，自动丢弃旧断点并为该比赛重新派发一次工作流。旧仓库 URL 对应的 `success`
 状态也不会在新仓库中被信任，会自动重置后重新处理。

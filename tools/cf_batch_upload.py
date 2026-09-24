@@ -16,6 +16,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import re
 import subprocess
 import sys
 import time
@@ -35,6 +36,13 @@ INSIGHTS_PATH = DATA_DIR / "problem-insights.json"
 DEFAULT_STATE_PATH = DATA_DIR / "batch-upload-state.local.json"
 DEFAULT_WORKFLOW = "cf-auto-update.yml"
 MAX_TRANSIENT_GH_ERRORS = 5
+ANSI_ESCAPE_RE = re.compile(r"\x1b\[[0-?]*[ -/]*[@-~]")
+FAILURE_LINE_RE = re.compile(
+    r"(?:##\[error\]|\bError:|AUTO_UPDATE_FAILED|Process completed with exit code|"
+    r"Traceback \(most recent call last\)|\bfailed\b|\bFAILED\b|exception|not found|"
+    r"permission denied|timed out)",
+    re.IGNORECASE,
+)
 
 
 class BatchUploadError(RuntimeError):
@@ -117,6 +125,47 @@ def parse_date(value: str | None) -> dt.date | None:
 
 def parse_timestamp(value: str) -> dt.datetime:
     return dt.datetime.fromisoformat(value.replace("Z", "+00:00"))
+
+
+def clean_log_line(value: str) -> str:
+    """去掉 GitHub Actions 日志中的 ANSI 控制符，避免终端输出不可读。"""
+    return ANSI_ESCAPE_RE.sub("", value).strip()
+
+
+def summarize_failed_log(log: str, max_lines: int = 24, max_chars: int = 3600) -> tuple[str, str]:
+    """从 Actions 失败日志中提取工作流步骤和可读错误片段。"""
+    lines = [clean_log_line(line) for line in log.splitlines() if clean_log_line(line)]
+    if not lines:
+        return "", ""
+
+    matches: list[tuple[str, str]] = []
+    for line in lines:
+        fields = line.split("\t", 3)
+        message = fields[3] if len(fields) == 4 else line
+        if FAILURE_LINE_RE.search(message):
+            step = fields[1] if len(fields) == 4 else ""
+            matches.append((step.strip(), line))
+
+    step = next((item[0] for item in matches if item[0] and item[0] != "UNKNOWN STEP"), "")
+    selected = [line for _, line in matches]
+    if not selected:
+        selected = lines[-min(max_lines, len(lines)) :]
+    selected = selected[-max_lines:]
+
+    excerpt_lines: list[str] = []
+    size = 0
+    for line in selected:
+        rendered = f"  {line}"
+        if size + len(rendered) + 1 > max_chars:
+            break
+        excerpt_lines.append(rendered)
+        size += len(rendered) + 1
+    return step, "\n".join(excerpt_lines)
+
+
+def shorten(value: str, limit: int = 320) -> str:
+    text = " ".join(value.split())
+    return text if len(text) <= limit else f"{text[: limit - 3]}..."
 
 
 def normalize_repository(value: str | None) -> str | None:
@@ -452,7 +501,15 @@ class BatchUploader:
         succeeded: list[int] = []
         failed: list[int] = []
         skipped: list[int] = []
-        for contest in contests:
+        total = len(contests)
+        for position, contest in enumerate(contests, start=1):
+            entry = self._entry(contest)
+            print(
+                f"CONTEST_START index={position}/{total} contest={contest.contest_id} "
+                f"date={contest.date or '-'} status={entry.get('status', 'pending')} "
+                f"name={contest.name}",
+                flush=True,
+            )
             result = self._upload_one(contest)
             if result == "success":
                 succeeded.append(contest.contest_id)
@@ -480,11 +537,18 @@ class BatchUploader:
         entry.setdefault("attempts", 0)
         entry.setdefault("total_attempts", 0)
         entry.setdefault("run_ids", [])
+        entry.setdefault("phase", "pending")
+        entry.setdefault("failed_phase", "")
+        entry.setdefault("workflow_step", "")
         return entry
 
     def _save_entry(self, entry: dict[str, Any]) -> None:
         entry["updated_at"] = self.clock().isoformat()
         save_state(self.state_path, self.state)
+
+    def _set_phase(self, entry: dict[str, Any], phase: str) -> None:
+        entry["phase"] = phase
+        self._save_entry(entry)
 
     def _run_belongs_to_current_repository(self, entry: dict[str, Any]) -> bool:
         if not self.repository:
@@ -505,6 +569,9 @@ class BatchUploader:
         entry["last_run_id"] = None
         entry["last_run_url"] = ""
         entry["last_error"] = ""
+        entry["phase"] = "pending"
+        entry["failed_phase"] = ""
+        entry["workflow_step"] = ""
         self._save_entry(entry)
 
     def _upload_one(self, contest: Contest) -> str:
@@ -512,13 +579,22 @@ class BatchUploader:
         if not self._run_belongs_to_current_repository(entry):
             self._reset_stale_entry(contest, entry)
         if entry.get("status") == "success":
-            print(f"SKIP contest={contest.contest_id} status=success", flush=True)
+            print(
+                f"CONTEST_SKIP contest={contest.contest_id} reason=state_success "
+                f"run={entry.get('last_run_id') or '-'} url={entry.get('last_run_url') or '-'}",
+                flush=True,
+            )
             return "skipped"
 
         existing_run_id = entry.get("last_run_id") if entry.get("status") != "success" else None
         if existing_run_id:
             try:
-                print(f"RESUME contest={contest.contest_id} run={existing_run_id}", flush=True)
+                self._set_phase(entry, "resume_poll")
+                print(
+                    f"RESUME_START contest={contest.contest_id} run={existing_run_id} "
+                    f"timeout={self.run_timeout_seconds:g}s",
+                    flush=True,
+                )
                 run = self._wait_for_run(int(existing_run_id))
                 if run.completed_successfully:
                     self._mark_success(entry, run)
@@ -526,18 +602,24 @@ class BatchUploader:
                 self._mark_failure(entry, run, "恢复等待时 Action 失败")
             except RunNotFoundError as exc:
                 print(
-                    f"RESUME_STALE contest={contest.contest_id} run={existing_run_id} "
-                    f"error={exc}",
+                    f"RESUME_STALE contest={contest.contest_id} run={existing_run_id} error={exc}",
                     flush=True,
                 )
                 entry["last_run_id"] = None
                 entry["last_run_url"] = ""
             except BatchUploadError as exc:
-                self._record_error(entry, str(exc))
+                self._record_error(entry, str(exc), phase="resume_poll")
+                print(
+                    f"RESUME_ERROR contest={contest.contest_id} run={existing_run_id} "
+                    f"phase=resume_poll error={shorten(str(exc))}",
+                    flush=True,
+                )
 
         entry["status"] = "pending"
         entry["attempts"] = 0
         entry["last_run_id"] = None
+        entry["failed_phase"] = ""
+        entry["workflow_step"] = ""
         self._save_entry(entry)
 
         while int(entry["attempts"]) <= self.max_retries:
@@ -546,9 +628,11 @@ class BatchUploader:
             entry["total_attempts"] = int(entry.get("total_attempts", 0)) + 1
             entry["status"] = "running"
             entry["last_error"] = ""
+            entry["failed_phase"] = ""
+            entry["workflow_step"] = ""
             self._save_entry(entry)
             print(
-                f"DISPATCH contest={contest.contest_id} attempt={attempt}/{self.max_retries + 1}",
+                f"ATTEMPT_START contest={contest.contest_id} attempt={attempt}/{self.max_retries + 1}",
                 flush=True,
             )
 
@@ -556,17 +640,30 @@ class BatchUploader:
             try:
                 dispatched_at = self.clock()
                 dispatch_error: BatchUploadError | None = None
+                self._set_phase(entry, "dispatch")
+                print(
+                    f"DISPATCH_START contest={contest.contest_id} workflow={self.workflow} "
+                    f"ref={self.ref}",
+                    flush=True,
+                )
                 try:
                     self.client.dispatch(self.workflow, self.ref, contest.contest_id)
+                    print(f"DISPATCH_ACCEPTED contest={contest.contest_id}", flush=True)
                 except BatchUploadError as exc:
                     # 请求可能已经被 GitHub 接收，只是客户端没有拿到响应。
                     # 先查找新 run，避免重复触发同一场比赛。
                     dispatch_error = exc
                     print(
-                        f"DISPATCH_RESPONSE_RETRY contest={contest.contest_id} "
-                        f"error={str(exc)[:240]}",
+                        f"DISPATCH_RESPONSE_ERROR contest={contest.contest_id} "
+                        f"error={shorten(str(exc))}",
                         flush=True,
                     )
+                self._set_phase(entry, "run_discovery")
+                print(
+                    f"RUN_DISCOVERY_START contest={contest.contest_id} workflow={self.workflow} "
+                    f"ref={self.ref} timeout={self.discovery_timeout_seconds:g}s",
+                    flush=True,
+                )
                 run = self.client.find_run(
                     self.workflow,
                     self.ref,
@@ -576,39 +673,68 @@ class BatchUploader:
                 )
                 if dispatch_error:
                     print(
-                        f"DISPATCH_ACCEPTED_AFTER_ERROR contest={contest.contest_id} run={run.run_id}",
+                        f"RUN_DISCOVERY_AFTER_DISPATCH_ERROR contest={contest.contest_id} "
+                        f"run={run.run_id}",
+                        flush=True,
+                    )
+                else:
+                    print(
+                        f"RUN_DISCOVERY_SUCCESS contest={contest.contest_id} run={run.run_id} "
+                        f"url={run.url}",
                         flush=True,
                     )
                 entry["last_run_id"] = run.run_id
                 entry["last_run_url"] = run.url
                 entry["run_ids"] = [*entry.get("run_ids", []), run.run_id][-20:]
                 self._save_entry(entry)
+                self._set_phase(entry, "run_poll")
+                print(
+                    f"RUN_POLL_START contest={contest.contest_id} run={run.run_id} "
+                    f"timeout={self.run_timeout_seconds:g}s interval={self.poll_seconds:g}s",
+                    flush=True,
+                )
                 run = self._wait_for_run(run.run_id)
                 if run.completed_successfully:
                     self._mark_success(entry, run)
                     return "success"
                 self._mark_failure(entry, run, "Action 结束但未成功")
             except BatchUploadError as exc:
-                self._record_error(entry, str(exc))
+                phase = str(entry.get("phase") or "unknown")
+                self._record_error(entry, str(exc), phase=phase)
+                print(
+                    f"ATTEMPT_ERROR contest={contest.contest_id} run={run.run_id if run else '-'} "
+                    f"phase={phase} error={shorten(str(exc))}",
+                    flush=True,
+                )
                 if run is not None:
                     entry["last_run_id"] = run.run_id
 
             if attempt <= self.max_retries:
                 entry["status"] = "retrying"
+                entry["phase"] = "retry_wait"
                 self._save_entry(entry)
                 print(
                     f"RETRY contest={contest.contest_id} after={self.retry_delay_seconds:g}s "
-                    f"error={entry.get('last_error', '')[:240]}",
+                    f"failed_phase={entry.get('failed_phase') or '-'} "
+                    f"workflow_step={entry.get('workflow_step') or '-'} "
+                    f"error={shorten(str(entry.get('last_error') or ''))}",
                     flush=True,
                 )
                 self.sleep(self.retry_delay_seconds)
             else:
                 entry["status"] = "failed"
+                entry["phase"] = "failed"
                 self._save_entry(entry)
                 print(
-                    f"FAILED contest={contest.contest_id} error={entry.get('last_error', '')[:500]}",
+                    f"CONTEST_FAILED contest={contest.contest_id} run={entry.get('last_run_id') or '-'} "
+                    f"phase={entry.get('failed_phase') or entry.get('phase') or '-'} "
+                    f"workflow_step={entry.get('workflow_step') or '-'} "
+                    f"attempt={attempt}/{self.max_retries + 1} "
+                    f"error={shorten(str(entry.get('last_error') or ''), 700)}",
                     flush=True,
                 )
+                if entry.get("last_run_url"):
+                    print(f"CONTEST_FAILED_URL contest={contest.contest_id} url={entry['last_run_url']}", flush=True)
                 return "failed"
         return "failed"
 
@@ -626,7 +752,7 @@ class BatchUploader:
                 transient_errors += 1
                 print(
                     f"RUN_POLL_RETRY run={run_id} attempt={transient_errors}/{MAX_TRANSIENT_GH_ERRORS} "
-                    f"error={str(exc)[:240]}",
+                    f"error={shorten(str(exc))}",
                     flush=True,
                 )
                 if transient_errors >= MAX_TRANSIENT_GH_ERRORS:
@@ -651,24 +777,48 @@ class BatchUploader:
 
     def _mark_success(self, entry: dict[str, Any], run: WorkflowRun) -> None:
         entry["status"] = "success"
+        entry["phase"] = "completed"
         entry["last_run_id"] = run.run_id
         entry["last_run_url"] = run.url
         entry["last_error"] = ""
+        entry["failed_phase"] = ""
+        entry["workflow_step"] = ""
         self._save_entry(entry)
-        print(f"SUCCESS contest={entry['contest_id']} run={run.run_id}", flush=True)
+        print(
+            f"CONTEST_SUCCESS contest={entry['contest_id']} run={run.run_id} url={run.url}",
+            flush=True,
+        )
 
     def _mark_failure(self, entry: dict[str, Any], run: WorkflowRun, prefix: str) -> None:
+        self._set_phase(entry, "failure_log")
+        print(f"RUN_FAILURE_LOG_START contest={entry['contest_id']} run={run.run_id}", flush=True)
         detail = f"{prefix}: conclusion={run.conclusion or '-'}"
         try:
             log = self.client.failed_log(run.run_id).strip()
         except BatchUploadError as exc:
             log = f"获取失败日志时 gh 命令失败：{exc}"
-        if log:
-            detail = f"{detail}\n{log[-6000:]}"
-        self._record_error(entry, detail)
+        workflow_step, excerpt = summarize_failed_log(log)
+        entry["workflow_step"] = workflow_step
+        if workflow_step:
+            detail = f"{detail}; workflow_step={workflow_step}"
+        if excerpt:
+            detail = f"{detail}\n{excerpt}"
+            print(
+                f"RUN_FAILURE_LOG contest={entry['contest_id']} run={run.run_id} "
+                f"workflow_step={workflow_step or '-'}\n{excerpt}",
+                flush=True,
+            )
+        else:
+            print(
+                f"RUN_FAILURE_LOG_EMPTY contest={entry['contest_id']} run={run.run_id} "
+                "未获取到可读的失败日志",
+                flush=True,
+            )
+        self._record_error(entry, detail, phase="workflow")
 
-    def _record_error(self, entry: dict[str, Any], error: str) -> None:
+    def _record_error(self, entry: dict[str, Any], error: str, phase: str | None = None) -> None:
         entry["last_error"] = error[-7000:]
+        entry["failed_phase"] = phase or str(entry.get("phase") or "unknown")
         self._save_entry(entry)
 
 
@@ -737,7 +887,19 @@ def main(argv: Sequence[str] | None = None) -> int:
     )
     if max_contests:
         contests = contests[:max_contests]
-    print(f"CANDIDATES count={len(contests)}", flush=True)
+    print(
+        f"CANDIDATES count={len(contests)} from_date={from_date_value} "
+        f"until_date={until_date or '-'} repo={repository or '-'} workflow={workflow} ref={ref}",
+        flush=True,
+    )
+    if contests:
+        print(
+            "CANDIDATE_LIST "
+            + ", ".join(
+                f"{contest.contest_id}({contest.date or '-'}):{contest.name}" for contest in contests
+            ),
+            flush=True,
+        )
     if not contests:
         return 0
 
@@ -761,6 +923,12 @@ def main(argv: Sequence[str] | None = None) -> int:
 if __name__ == "__main__":
     try:
         raise SystemExit(main())
+    except KeyboardInterrupt:
+        print(
+            "BATCH_UPLOAD_INTERRUPTED 已停止；当前比赛的断点已保留，重新运行会继续等待或恢复该 run。",
+            file=sys.stderr,
+        )
+        raise SystemExit(130) from None
     except (BatchUploadError, OSError, subprocess.SubprocessError) as exc:
-        print(f"BATCH_UPLOAD_FAILED {exc}", file=sys.stderr)
+        print(f"BATCH_UPLOAD_FAILED error={shorten(str(exc), 1200)}", file=sys.stderr)
         raise SystemExit(1) from exc
