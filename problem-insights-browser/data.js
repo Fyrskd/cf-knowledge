@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1738,
+    "total_problems": 1739,
     "source_total_problems": 1749,
-    "filtered_out_problems": 11,
-    "with_statement_brief": 1738,
-    "with_editorial_brief": 1507,
-    "with_solution_brief": 1508,
+    "filtered_out_problems": 10,
+    "with_statement_brief": 1739,
+    "with_editorial_brief": 1508,
+    "with_solution_brief": 1509,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 679,
+    "ai_override_count": 680,
     "primary_topic_count": 13,
     "contest_count": 277,
     "rating_min": 800,
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 74,
-    "构造与贪心": 579,
+    "构造与贪心": 580,
     "图论与网络流": 111,
     "动态规划与状态设计": 168,
     "数论与同余": 157,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 16
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 586,
+    "ai_generated_with_editorial": 587,
     "ai_generated_partial_editorial": 30,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -40612,7 +40612,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-12-09",
       "url": "https://codeforces.com/contest/1904",
       "type": "Div. 2",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": 2800,
       "problems": [
         {
@@ -40700,6 +40700,35 @@ window.CF_INSIGHTS_DATA = {
             "第二次操作也可能不产生更小值，因此初始最小值以及仅执行一次操作得到的候选值必须一并保留。"
           ],
           "solutionBrief": "先排序并计算原数组最小值及相邻差。$k\\geq3$ 直接输出 $0$；$k=1$ 输出上述最小值。$k=2$ 枚举任意首个差值，用二分查找其在有序数组中的前驱和后继，更新与它们的差，并保留少做操作的候选。复杂度为 $O(n^2\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1904D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Set To Max (Easy Version)",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1904/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/123160",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定等长数组 $a,b$，可重复选择一个连续区间，并将区间内所有元素改成该区间当前的最大值。判断能否通过若干次操作把 $a$ 完全变成 $b$。",
+          "transformedStatement": "把每个目标位置 $i$ 看成需要借助某个 $a_j=b_i$ 的“来源点”完成赋值；问题转化为判断是否存在覆盖 $i,j$ 的区间，使原数组最大值为 $b_i$ 且不会破坏区间内其他目标值。",
+          "keyObservations": [
+            "若存在 $b_i<a_i$，答案必为 NO，因为操作只会把区间元素提升到区间最大值，不能降低任何元素。",
+            "要把位置 $i$ 变成 $b_i$，所选区间必须包含某个满足 $a_j=b_i$ 的位置；取左右最近的此类位置即可，跨过更远的同值位置不会带来额外作用。",
+            "区间覆盖 $i$ 和来源位置时，必须同时满足区间内所有 $a_k\\le b_i$、所有 $b_k\\ge b_i$；前者保证区间最大值正好为 $b_i$，后者保证区间内目标不会被破坏。",
+            "上述条件对每个位置都成立时，按 $b_i$ 从小到大执行对应操作，较小值先固定且不会干扰更大的目标，因此这些条件也是充分的。"
+          ],
+          "solutionBrief": "先检查是否有 $b_i<a_i$。对每个位置寻找左右最近的 $a_j=b_i$，暴力检查对应区间是否满足 $a_k\\le b_i$ 且 $b_k\\ge b_i$；所有位置均可覆盖则输出 YES。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },

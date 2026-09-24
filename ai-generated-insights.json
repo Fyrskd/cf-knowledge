@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-24T16:39:53+00:00",
+  "updated_at": "2026-09-24T17:54:19+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -20692,6 +20692,38 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的插入、排序、删除规则，以及 editorial 给出的从左到右修复方案和复杂度说明；tags 仅用于主题归类。",
         "quality_flags": []
+      }
+    },
+    "1904D1": {
+      "problem_key": "1904D1",
+      "title": "Set To Max (Easy Version)",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1904/problem/D1",
+      "editorial_url": "https://codeforces.com/blog/entry/123160",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "01721919c0bd58304bfb2fff86b7997d03003d9dd1f0457a8b642bf5cf4c5ef3",
+      "generated_at": "2026-09-24T17:54:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定等长数组 $a,b$，可重复选择一个连续区间，并将区间内所有元素改成该区间当前的最大值。判断能否通过若干次操作把 $a$ 完全变成 $b$。",
+        "transformed_statement": "把每个目标位置 $i$ 看成需要借助某个 $a_j=b_i$ 的“来源点”完成赋值；问题转化为判断是否存在覆盖 $i,j$ 的区间，使原数组最大值为 $b_i$ 且不会破坏区间内其他目标值。",
+        "key_observations": [
+          "若存在 $b_i<a_i$，答案必为 NO，因为操作只会把区间元素提升到区间最大值，不能降低任何元素。",
+          "要把位置 $i$ 变成 $b_i$，所选区间必须包含某个满足 $a_j=b_i$ 的位置；取左右最近的此类位置即可，跨过更远的同值位置不会带来额外作用。",
+          "区间覆盖 $i$ 和来源位置时，必须同时满足区间内所有 $a_k\\le b_i$、所有 $b_k\\ge b_i$；前者保证区间最大值正好为 $b_i$，后者保证区间内目标不会被破坏。",
+          "上述条件对每个位置都成立时，按 $b_i$ 从小到大执行对应操作，较小值先固定且不会干扰更大的目标，因此这些条件也是充分的。"
+        ],
+        "solution_brief": "先检查是否有 $b_i<a_i$。对每个位置寻找左右最近的 $a_j=b_i$，暴力检查对应区间是否满足 $a_k\\le b_i$ 且 $b_k\\ge b_i$；所有位置均可覆盖则输出 YES。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement、完整 editorial 及 tags；区间操作的具体含义由 editorial 对区间最大值和赋值过程的描述恢复。",
+        "quality_flags": [
+          "statement_operation_recovered_from_editorial"
+        ]
       }
     }
   }
