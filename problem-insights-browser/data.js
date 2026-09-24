@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1676,
+    "total_problems": 1684,
     "source_total_problems": 1749,
-    "filtered_out_problems": 73,
-    "with_statement_brief": 1676,
-    "with_editorial_brief": 1445,
-    "with_solution_brief": 1446,
+    "filtered_out_problems": 65,
+    "with_statement_brief": 1684,
+    "with_editorial_brief": 1453,
+    "with_solution_brief": 1454,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 615,
+    "ai_override_count": 623,
     "primary_topic_count": 13,
-    "contest_count": 268,
+    "contest_count": 269,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -36,30 +36,30 @@ window.CF_INSIGHTS_DATA = {
     "组合计数与概率",
     "树结构",
     "图论与网络流",
-    "交互",
     "字符串",
+    "交互",
     "基础实现与模拟",
     "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 72,
-    "构造与贪心": 557,
+    "字符串": 73,
+    "构造与贪心": 558,
     "图论与网络流": 106,
-    "动态规划与状态设计": 161,
+    "动态规划与状态设计": 163,
     "数论与同余": 154,
-    "组合计数与概率": 131,
+    "组合计数与概率": 132,
     "数据结构": 136,
     "几何": 37,
-    "树结构": 110,
+    "树结构": 111,
     "交互": 73,
     "基础实现与模拟": 68,
-    "博弈": 56,
+    "博弈": 58,
     "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 526,
+    "ai_generated_with_editorial": 534,
     "ai_generated_partial_editorial": 28,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -35509,6 +35509,249 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1943,
+      "name": "Codeforces Round 934 (Div. 1)",
+      "date": "2024-03-16",
+      "url": "https://codeforces.com/contest/1943",
+      "type": "Div. 1",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1943A",
+          "index": "A",
+          "slot": "A",
+          "title": "MEX Game 1",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1943/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/127195",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "games",
+            "greedy"
+          ],
+          "statementBrief": "给定数组，Alice 与 Bob 轮流从数组中删除一个元素，Alice 将自己删除的元素按顺序加入数组 c，Bob 删除的元素不加入；数组删空后，Alice 最大化、Bob 最小化 c 的 MEX，求双方最优时的最终得分。",
+          "transformedStatement": "按数值统计频次：重复至少一次的数可被 Alice 通过跟随 Bob 的删除保住，真正决定结果的只有原数组中的最小缺失值和频次恰为 1 的数之间的争夺。",
+          "keyObservations": [
+            "出现至少两次的数无法被 Bob 完全阻止：若 Bob 删除它的一份，Alice 可在下一回合拿走另一份，因此这类数可视为 Alice 能保留。",
+            "频次为 1 的数是双方争夺的关键；Alice 首回合至多主动保住一个，之后 Bob 可删除剩余单例中最小的那个。",
+            "最终 MEX 等于原数组最小缺失值与第二小的单例值中的较小者，从而只需统计频次并按数值递增检查。"
+          ],
+          "solutionBrief": "统计每个数的频次。频次至少为 2 的数可由 Alice 应对 Bob 的删除而保住；从 0 开始扫描，遇到第一个缺失值或第二个频次为 1 的值时输出该值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1943B",
+          "index": "B",
+          "slot": "B",
+          "title": "Non-Palindromic Substring",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1943/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/127195",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "hashing",
+            "implementation",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定一个字符串，并回答多个区间查询。对每个区间形成的子串，若存在某个长度为 $k$ 的连续子串不是回文串，则称它对 $k$ 有贡献；要求输出所有有贡献的 $k$ 之和。",
+          "transformedStatement": "对长度为 $m$ 的查询串分类统计：$k=1$ 永不贡献；$1<k<m$ 时，奇数长度只在字符串不交替时贡献，偶数长度只在字符串不全相同时贡献；$k=m$ 单独检查整段是否为回文。",
+          "keyObservations": [
+            "若长度为 $k$ 的相邻两个窗口都为回文串，则会强制所有同奇偶位置字符分别相同；因此奇数 $k$ 时字符串必须交替，偶数 $k$ 时必须所有字符相同。",
+            "对长度为 $m$ 的查询串，$1<k<m$ 时，奇数 $k$ 可行当且仅当子串不交替，偶数 $k$ 可行当且仅当子串不全相同；这把存在回文子串的问题转成局部字符关系判断。",
+            "长度为 $m$ 的情况不能套用上述推导，只有整个查询串本身不是回文串时才贡献 $m$；长度 $1$ 永远不贡献。",
+            "查询中的“不交替”和“不全相同”分别可由是否存在 $s_i\\ne s_{i+2}$、$s_i\\ne s_{i+1}$ 判断，整段是否回文则用回文半径预处理，从而直接计算各类长度的总和。"
+          ],
+          "solutionBrief": "对每个查询先判断是否全相同、是否交替：全相同时内部贡献为 $0$；交替时仅偶数长度贡献，其和为 $x(x+1)$，其中 $x=\\lfloor(m-1)/2\\rfloor$；其他情况内部贡献为 $m(m-1)/2-1$。再根据整段是否回文决定是否加上 $m$。预处理相邻差异、距离 $2$ 的差异和回文半径。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1943C",
+          "index": "C",
+          "slot": "C",
+          "title": "Tree Compass",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1943/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/127195",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵初始全白的树。每次选择顶点 $v$ 和距离 $d$，将所有与 $v$ 的树上距离恰为 $d$ 的白色顶点染黑；要求输出把所有顶点染黑所需的最少操作次数及任意一种操作序列。",
+          "transformedStatement": "把每次操作看成从一个中心选取一层距离集合，问题转化为用尽量少的中心—半径层覆盖整棵树；关键覆盖范围由树的直径及其一个或两个中心决定。",
+          "keyObservations": [
+            "固定一条最长路径后，每次操作在这条路径上至多覆盖两个同层顶点，因此路径本身给出操作次数下界；当直径顶点数为 $2\\pmod 4$ 时，二分图染色还会额外迫使多用一次操作。",
+            "若直径包含奇数个顶点，唯一中心到所有顶点的距离不超过直径半径；从中心依次操作半径 $0,1,\\ldots,\\lfloor D/2\\rfloor$，即可覆盖整棵树。",
+            "若直径包含偶数个顶点，两中心把树按二分图两侧分开；从两个中心同时使用同一奇偶性的距离层，逐层覆盖两侧，另一中心会覆盖中心所在的另一层。",
+            "树上任意顶点都不会超出直径中心的覆盖半径，否则可与直径端点组成更长路径，因此只需围绕直径中心构造操作。"
+          ],
+          "solutionBrief": "求出直径及其中心。设直径顶点数为 $D$：$D$ 为奇数时，以唯一中心操作半径 $0$ 到 $\\lfloor D/2\\rfloor$；$D$ 为偶数时，以两个中心操作半径 $D/2-1,D/2-3,\\ldots$。这些层覆盖全树，且由直径路径与二分图下界可知次数最少。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1943D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Counting Is Fun (Easy Version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1943/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/127195",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$、每个元素在 $[0,k]$ 内的非负数组，反复执行题面规定的区间减法操作（题解使用长度为 2 或 3 的连续区间），问有多少数组能够变成全零。答案对质数 $p$ 取模。",
+          "transformedStatement": "题解将“能否通过操作归零”等价改写为带虚拟边界 $a_0=a_{n+1}=0$ 的局部约束：所有位置都必须满足 $a_i\\le a_{i-1}+a_{i+1}$；问题于是变成统计满足这些约束的值域数组。",
+          "keyObservations": [
+            "一个数组可变为全零，当且仅当每个位置满足 $a_i\\le a_{i-1}+a_{i+1}$，边界外元素视为 $0$，从而把操作可行性转成局部不等式判定。",
+            "充分性可用数组总和归纳：取第一个非零位置后，操作区间 $[i,i+1]$ 与 $[i,i+2]$ 至少有一个不会破坏所有局部不等式。",
+            "加入新元素 $c$ 时只需检查末尾三项，转移条件为 $b\\le a+c$，因此状态只需保留相邻的两个元素。",
+            "固定 $b,c$ 时合法的前一状态满足 $a\\ge\\max(0,b-c)$，对 $a$ 做前缀和即可把转移从三重枚举降为整体 $O(n^3)$。"
+          ],
+          "solutionBrief": "先用局部条件 $a_i\\le a_{i-1}+a_{i+1}$ 判定好数组，再设 $dp[a][b]$ 表示处理到当前位置且末两项为 $a,b$ 的方案数。加入 $c$ 时仅保留 $b\\le a+c$ 的转移，并按 $a$ 做前缀和优化；补两个边界零后取 $dp[0][0]$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1943D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Counting Is Fun (Hard Version)",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1943/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/127195",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组，每个元素取自 $[0,K]$；题目定义了一种将数组元素逐步归零的操作，并要求统计能够全部归零的数组数量，结果对素数 $p$ 取模。但当前记录缺失了该操作的具体规则；题解中将相关条件体现为位置 $i$ 满足 $a_i>a_{i-1}+a_{i+1}$ 时为 bad。",
+          "transformedStatement": "不直接模拟归零操作，而把问题转化为统计不包含不应出现的 bad 位置的数组：对 bad 位置集合做容斥，并用“最后一个元素值 + 已选 bad 位置数奇偶”描述逐层计数；三项局部约束通过跨两层的加权转移处理。",
+          "keyObservations": [
+            "把位置 $i$ 称为 bad 当且仅当 $a_i>a_{i-1}+a_{i+1}$；题解用这些位置刻画数组是否满足可归零条件，从而把操作过程转成局部不等式约束。",
+            "对所有 bad 位置集合做容斥时，具体下标只影响约束数量，因此只需记录已指定 bad 位置数的奇偶性，容斥符号也由该奇偶性决定。",
+            "固定当前位置值 $l_1$ 和前前位置值 $l_2$ 后，中间值满足 bad 条件的方案数为 $\\max(0,K-l_1-l_2)$，三点约束因此可转成跨两层的加权转移。",
+            "转移只需保留当前位置的值以及前两层状态；对所有前值的求和和权值的后缀累加可在每层线性完成，使总复杂度降为 $O(n^2)$。"
+          ],
+          "solutionBrief": "先把满足归零条件的局部障碍表示为 $a_i>a_{i-1}+a_{i+1}$，对指定障碍位置做容斥。DP 只记录当前位置数值和障碍数奇偶；普通转移用总和，新增障碍的转移权为 $\\max(0,K-l_1-l_2)$，再用前缀/后缀累加优化到 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1943E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "MEX Game 2 (Easy Version)",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1943/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/127195",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定数组中各个数值 $0$ 到 $m$ 的出现次数。Alice 每回合从数组中选一个元素放入新数组 $c$ 并删除它，Bob 随后最多删除 $k$ 个剩余元素，直到数组被清空；双方分别最大化、最小化 Alice 最终数组 $c$ 的 MEX，要求求出最优对弈结果。",
+          "transformedStatement": "把“最终 MEX 至少为 $i$”转化为 Alice 能否在 Bob 的删除下分别拿到数值 $0,1,\\ldots,i-1$ 各一个。维护这些类别的剩余频率并排序，Alice 取最小频率类别；再固定 Bob 想压垮的类别，模拟其保持有序的最强削减。",
+          "keyObservations": [
+            "要判断答案是否至少为 $i$，只需考虑数值 $0$ 到 $i-1$，因为 Alice 必须从每类中拿到至少一个元素。",
+            "在该阈值下，Alice 每回合选择当前剩余频率最小且尚未选过的类别，可通过交换论证保证不劣，从而固定她的最优取法。",
+            "把 Bob 的一次删除拆成若干次单位删除，并在相同频率中优先减少有序序列前端，可始终维持频率非降序而不改变结果。",
+            "固定 Bob 要阻止的类别后，他应在保持有序的前提下尽量压低该频率；批量操作可先把后缀拉平，再均匀分配剩余删除次数并处理余数。"
+          ],
+          "solutionBrief": "对答案做阈值判定：枚举 Bob 试图阻止的类别，按频率有序模拟 Alice 的贪心取法，并用拉平加均分的方式模拟 Bob 的最优删除。判定具有单调性，外层二分答案；题解给出的朴素实现复杂度为 $O(m^3\\log m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1943E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "MEX Game 2 (Hard Version)",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1943/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/127195",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组各个值的出现次数。Alice 每回合从数组中任选一个元素加入数组 $c$ 并删除，随后 Bob 最多任选 $k$ 个剩余元素删除，直到原数组为空；双方最优对弈，要求 Alice 最终数组 $c$ 的 MEX。",
+          "transformedStatement": "对每个候选答案只考虑所需的频数前缀；把 Bob 的删除过程抽象为频数状态。首次无法继续对应 Alice 实际删除后，剩余状态可压成各频数相差至多一的 flat 数组 $(n,s)$，并按固定递推判断胜负。",
+          "keyObservations": [
+            "将“最终 MEX 至少为 $i$”转化为 Alice 必须确保 $0,1,\u0002dots,i-1$ 都至少被她拿到一次，从而只需判定一个前缀目标是否能被 Bob 阻止。",
+            "忽略 Alice 删除操作时，若当前仍能对应真实过程，真实数组可视为模拟数组的后缀；第一次失配后，剩余频数必成为近似均匀的 flat 数组，这将任意频数状态压缩为 $(n,s)$。",
+            "flat 状态 $(n,s)$ 经过一轮后可转移为 $(n-1,s-\\lfloor s/n\\rfloor-k)$，因此可按 $n$ 递推每种规模下的最小必胜总数，而不必逐个模拟元素。",
+            "将频数排序后用双指针定位第一次失配的位置即可在线性时间找到对应 flat 状态，再对目标 MEX 做二分，避免逐个候选值进行高复杂度判定。"
+          ],
+          "solutionBrief": "对候选 MEX 的频数前缀排序，用双指针找出 Alice 删除影响下首次失配的后缀，并压缩成 flat 状态；利用 $(n,s)$ 的递推判定胜负。判定具有单调性，外层二分最大可行 MEX。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1943F",
+          "index": "F",
+          "slot": "F",
+          "title": "Minimum Hamming Distance",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1943/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/127195",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定等长二进制串 $s,t$，构造串 $g$ 时要求每个位置 $i$ 都能找到一个包含它的连续子串，使该位置对应的 $s_i$ 在 $g$ 的这个子串中属于出现次数不少于一半的字符。允许把 $t$ 的字符修改为得到 $g$，求最小汉明距离。",
+          "transformedStatement": "将每个字符编码为 $1$ 或 $-1$，把“某字符在区间内为众数”转化为区间平衡和的符号条件；问题变成按位置修复前缀，使每个标记为 $1$ 的位置都能被某个非负和区间覆盖，并最小化修改次数。",
+          "keyObservations": [
+            "利用字符取反的对称性，可先保证初始串中 $0$ 是多数或并列；此时所有标记为 $0$ 的位置天然可由整个区间满足，只需修复标记为 $1$ 的位置。",
+            "把 $1$ 记为 $+1$、$0$ 记为 $-1$ 后，某个区间中 $1$ 为众数等价于区间和非负，因此前缀状态只需记录当前前缀的最大后缀和。",
+            "处理一段新区间时，若其中出现标记为 $1$ 的位置，只需把末尾若干个 $0$ 改成 $1$，使已有后缀和与新区间和之和达到非负；这样翻转数最少且不会破坏已满足的位置。",
+            "交换论证表明，所有最优方案都能归入上述末尾连续改为 $1$ 的形式；预处理每段的最早可行位置后，转移可降为常数时间，总复杂度为 $O(n^2)$。"
+          ],
+          "solutionBrief": "先通过取反统一处理 $0$ 为初始众数的情况。以字符平衡和及最大后缀和作为 DP 状态，枚举末尾被改成 $1$ 的区间并计算代价；预处理可行边界后，将所有转移优化到 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
