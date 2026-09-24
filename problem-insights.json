@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1612,
+    "total_problems": 1618,
     "source_total_problems": 1749,
-    "filtered_out_problems": 137,
-    "with_statement_brief": 1612,
-    "with_editorial_brief": 1380,
-    "with_solution_brief": 1381,
+    "filtered_out_problems": 131,
+    "with_statement_brief": 1618,
+    "with_editorial_brief": 1386,
+    "with_solution_brief": 1387,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 550,
+    "ai_override_count": 556,
     "primary_topic_count": 13
   },
   "records": [
@@ -20307,6 +20307,277 @@
           "generated_at": "2026-09-24T06:51:40+00:00",
           "quality_flags": [
             "editorial_omits_exact_suffix_formula"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 488,
+      "problem_key": "1917A",
+      "contest_id": 1917,
+      "title": "Least Product",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1917/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/123721",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "给定一个整数数组，每次可以任选一个元素并将其变为 $0$，目标是在允许进行任意次操作后，使所有元素乘积达到可取得的最小值，并输出最少操作次数及一组操作方案。",
+      "transformed_statement": "只需判断当前乘积的符号和是否已有零：操作可以直接把乘积变为零，但不能把非零乘积的符号改成相反符号；因此负积保持不动，正积执行一次置零。",
+      "key_observations": [
+        "一旦某个元素变为 $0$，乘积就为 $0$，这是包含零时的最小可能值。",
+        "操作只会把一个元素变为 $0$，不会让非零元素的符号改变，因此初始乘积为负时无法得到更小的负数，只需 $0$ 次操作。",
+        "初始乘积为正时不能变成负数，而将任意一个元素变为 $0$ 即可得到乘积 $0$，所以恰好需要 $1$ 次操作。",
+        "初始数组已有零或负数个数为奇数时，当前乘积已经达到最小值，不需要操作。"
+      ],
+      "solution_brief": "统计数组中是否有零以及负数个数的奇偶性。已有零或负数为奇数时输出 $0$ 次；否则乘积为正，任选一个位置将其变为 $0$，输出 $1$ 次操作。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:24:32+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 489,
+      "problem_key": "1917B",
+      "contest_id": 1917,
+      "title": "Erase First or Second Letter",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1917/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/123721",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "组合计数与概率",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "combinatorics",
+        "data structures",
+        "dp",
+        "strings"
+      ],
+      "statement_brief": "给定长度为 $n$ 的小写字母串，每次可以删除当前字符串的第一个或第二个字符，任意进行零次或多次操作，但结果必须非空。求所有可能得到的不同非空字符串数量。",
+      "transformed_statement": "将操作序列规范为先删除若干个首字符，再删除若干个当前第二字符。此时结果由保留下来的首字母和其后的一个后缀决定，按首字母在原串中的首次出现位置统计贡献。",
+      "key_observations": [
+        "先删第二个字符再删第一个字符，等价于连续删两次第一个字符，因此操作顺序可规范为先做若干次第一种操作，再做若干次第二种操作。",
+        "做了 $i$ 次第一种、$j$ 次第二种操作后，结果为首字符 $s_{i+1}$ 加上从 $s_{i+j+2}$ 开始的后缀；相同结果必须具有相同长度且首字符相同。",
+        "固定第一种操作次数时，只有该首字符在原串中的首次出现位置值得考虑；若不是首次出现，结果可由更少的第一种操作和若干第二种操作得到。",
+        "对字母的首次出现位置 $i$（从 $0$ 开始），固定该位置后可保留的非空长度有 $n-i$ 种，且不同首次字母对应的结果不会重复。"
+      ],
+      "solution_brief": "记录每个字母在字符串中的首次出现位置。若首次出现于下标 $i$，则以它作为结果首字符时能得到 $n-i$ 个不同结果，将所有出现过的字母贡献相加即可。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:23:08+00:00",
+          "quality_flags": [
+            "statement_operation_definition_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 490,
+      "problem_key": "1917C",
+      "contest_id": 1917,
+      "title": "Watering an Array",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1917/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/123721",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "brute force",
+        "greedy",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组和周期重复的前缀长度序列。每天必须选择浇水或重置：浇水时把当前指定长度的前缀每项加一，重置时按数组中满足 $a_i=i$ 的位置数增加分数并将数组清零；求进行 $d$ 天后的最大分数。",
+      "transformed_statement": "把方案按“第一次重置发生在哪一天”分类：第一次重置前只模拟周期浇水，得到当时的匹配数量；此后从全零数组出发，利用单次重置至多得一分且有效重置不能连续的性质计算剩余最优收益。",
+      "key_observations": [
+        "浇水操作始终给前缀加一，因此从全零数组开始，数组保持非递增；而目标值序列 $[1,2,\u001b[... omitted?]$ 严格递增，所以一次重置至多获得 $1$ 分。",
+        "重置会把数组清零，连续两次重置之间若没有浇水，第二次不可能获得分数；因此从全零状态出发，交替浇水和重置即可达到每两天至多得 $1$ 分。",
+        "固定第一次重置的日期后，之前的数组状态可以按周期序列 $v$ 直接模拟；第一次重置之后只需利用剩余天数的交替上界估计收益。",
+        "第一次重置无需等待超过约 $2n$ 天：继续等待 $2n+1$ 天所能积累的收益不超过尽早重置后可获得的收益，因此只需枚举前 $\u001b[... omitted?]$ 个候选日期。"
+      ],
+      "solution_brief": "枚举第一次重置日在前 $\u001b[... omitted?]$ 天内的位置，按周期序列 $v$ 模拟此前的浇水并计算首次重置得分；重置后数组归零，剩余天数按交替操作的最优上界补分，取最大值。总复杂度为 $O(n\frac? )$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:22:01+00:00",
+          "quality_flags": [
+            "statement_inferred",
+            "statement_text_actions_missing"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 491,
+      "problem_key": "1917D",
+      "contest_id": 1917,
+      "title": "Yet Another Inversions Problem",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1917/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/123721",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "数据结构",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "data structures",
+        "dp",
+        "implementation",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定奇数排列 $p$ 和 $0$ 到 $k-1$ 的排列 $q$，构造长度为 $nk$ 的数组：第 $i$ 个长度为 $k$ 的块依次放入 $p_i2^{q_0},p_i2^{q_1},\\ldots,p_i2^{q_{k-1}}$。求该数组中下标递增但数值递减的数对数量，并对 $998244353$ 取模。",
+      "transformed_statement": "把数组视为 $n$ 个按基数 $p_i$ 缩放的相同幂序列块；逆序数分成单块内部贡献和不同块之间贡献。后者对每个基数对等价于统计两条等比序列拼接后的逆序数，其值由奇数基数的二进制尺度差决定。",
+      "key_observations": [
+        "按长度 $k$ 分块后，每块都包含同一组 $p_i2^0,\u0002^1,\u0006,\u0002^{k-1}$，所以块内逆序数恒为 $q$ 的逆序数，总贡献是 $n ext{Inv}(q)$。",
+        "不同块之间固定两个奇数基数 $x,y$ 后，只需统计拼接序列 $[x,2x,\u0006,2^{k-1}x,y,2y,\u0006,2^{k-1}y]$ 的逆序数，因而与 $q$ 的排列顺序无关。",
+        "由于 $x,y$ 均为奇数，跨块贡献只由大小关系及最大的 $z$（满足 $2^z\u00183x<y$ 或反向条件）决定，可按 $z$ 将贡献化为连续三角数之和。",
+        "按基数值依次加入前面出现的元素，并在维护各个 $2^z$ 阈值的线段树中查询加权计数，就能同时汇总所有基数对，避免枚举 $O(n^2)$ 对。"
+      ],
+      "solution_brief": "将答案拆为块内与块间两部分：块内为 $n$ 倍的 $q$ 的逆序数；块间按奇数基数对计算两条倍增序列的贡献。用线段树维护各层阈值的前置基数计数，整体复杂度为 $O(n\\,\\log n\\,\\min(\\log n,k)+k\\log k)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:13:29+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 492,
+      "problem_key": "1917E",
+      "contest_id": 1917,
+      "title": "Construct Matrix",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1917/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/123721",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "给定偶数 $n$ 和 $k$，要构造一个 $n\\times n$ 的 0-1 矩阵，使所有行的元素异或值相同、所有列的元素异或值也相同，并且矩阵中恰有 $k$ 个 $1$；若无法构造则输出无解。",
+      "transformed_statement": "将矩阵视为由保持行列偶校验的局部图案拼成：每个全 $1$ 的 $2\\times2$ 块增加 $4$ 个 $1$ 且不改变校验；余数为 $2$ 时先使用一个含 $6$ 个 $1$ 的特殊模板，再按四个一组补全。",
+      "key_observations": [
+        "所有行的异或值必须相同、所有列的异或值也必须相同；由于行数为偶数，所有行奇偶性相同会迫使总的 $1$ 的数量为偶数，因此 $k$ 为奇数时必无解。",
+        "一个填满 $1$ 的 $2\\times2$ 子矩阵不会改变相关行列的异或值，并贡献恰好 $4$ 个 $1$，所以当 $k\\equiv0\\pmod4$ 时可由若干个不重叠块直接构造。",
+        "当 $k\\equiv2\\pmod4$ 且 $k\\ge6$ 时，左上角按指定位置放置 $6$ 个 $1$，使每个涉及的行列仍有偶数个 $1$；剩余数量是 $4$ 的倍数，可继续用 $2\\times2$ 块补齐。",
+        "$k=2$ 或 $k=n^2-2$ 时，除 $n=2$ 外无法让所有行列满足条件；其余偶数规模和数量均可由上述块构造，接近全满时额外处理剩余的 $4$ 个位置。"
+      ],
+      "solution_brief": "奇数 $k$ 直接判无解；$k=2$ 或 $n^2-2$ 仅在 $n=2$ 时可行。其余情况先用 $2\\times2$ 全 $1$ 块贡献 $4$，若余数为 $2$，先放置固定的 $6$ 点模板，再用块补齐；接近全满时单独填入最后 $4$ 点。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:10:01+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 493,
+      "problem_key": "1917F",
+      "contest_id": 1917,
+      "title": "Construct Tree",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1917/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/123721",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "树结构"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "dp",
+        "trees"
+      ],
+      "statement_brief": "给定 $n$ 条带长度 $l_i$ 的边和目标值 $d$，需要每条边恰好使用一次，把它们连接成一棵带权树，并判断是否能使树的直径恰好为 $d$。输出是否存在这样的构造。",
+      "transformed_statement": "把问题转化为：选出若干边串成长度为 $d$ 的直径，其余边挂到直径上的某个顶点；若最大边不在直径中，就用到直径两端的距离判断它能否挂接而不产生更长路径。",
+      "key_observations": [
+        "设最大边长为 $l_n$，若 $l_n+l_{n-1}>d$，则任意包含这两条边的树都存在长度超过 $d$ 的路径，因此不可能满足直径为 $d$。",
+        "树的直径必须由若干条边组成，所以这些边长之和必须恰好为 $d$；若存在包含 $l_n$ 的子集达到该和，就能把它们串成直径，并将其余边挂在合适的直径端点附近。",
+        "若达到 $d$ 的子集不能包含最大边，则先用该子集构造直径，再选择直径上的顶点挂接 $l_n$；可行性由它到直径两端的距离分别加上 $l_n$ 是否仍小于 $d$ 决定。",
+        "上述挂接位置由两个端点距离共同刻画，因此背包状态需要记录这两个距离；由于两者较小者不超过 $d/2$，可用 bitset 优化状态转移，复杂度为 $O(nd^2/64)$。"
+      ],
+      "solution_brief": "排序后检查最大两条边之和。用背包判断是否存在和为 $d$ 且包含最大边的子集；若存在直接构造直径，否则对不含最大边的直径维护到两端的双距离状态，判断最大边能否安全挂接。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:08:31+00:00",
+          "quality_flags": [
+            "statement_inferred",
+            "statement条件列表缺失，树的具体约束依据editorial推断"
           ]
         }
       },

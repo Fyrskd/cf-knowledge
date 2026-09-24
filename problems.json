@@ -1919,6 +1919,7 @@
     "name": "Duck Surplus",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 1000,
     "tags": [
       "binary search",
       "greedy"
@@ -1930,6 +1931,7 @@
     "name": "Annoying the Ghost",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1000,
     "tags": [
       "brute force",
       "greedy"
@@ -1941,6 +1943,7 @@
     "name": "Destroying Towers",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "games",
       "greedy",
@@ -1952,6 +1955,7 @@
     "index": "G",
     "name": "Criterion in Burlandia",
     "type": "PROGRAMMING",
+    "rating": 2600,
     "tags": [
       "binary search",
       "bitmasks",
@@ -1969,6 +1973,7 @@
     "index": "F2",
     "name": "Elections in Saransk (hard version)",
     "type": "PROGRAMMING",
+    "rating": 2200,
     "tags": [
       "combinatorics",
       "dp",
@@ -1981,6 +1986,7 @@
     "index": "F1",
     "name": "Elections in Saransk (easy version)",
     "type": "PROGRAMMING",
+    "rating": 1700,
     "tags": [
       "number theory"
     ]
@@ -1990,6 +1996,7 @@
     "index": "E",
     "name": "Friendly Gifts",
     "type": "PROGRAMMING",
+    "rating": 1700,
     "tags": [
       "brute force",
       "dp"
@@ -2000,6 +2007,7 @@
     "index": "D",
     "name": "Brand New Tatar TV Show",
     "type": "PROGRAMMING",
+    "rating": 1300,
     "tags": [
       "binary search",
       "constructive algorithms",
@@ -2013,6 +2021,7 @@
     "index": "C",
     "name": "Omsk Programmers",
     "type": "PROGRAMMING",
+    "rating": 1000,
     "tags": [
       "brute force",
       "greedy",
@@ -2024,6 +2033,7 @@
     "index": "B",
     "name": "Tatar TV Show",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "greedy",
       "math",
@@ -2035,6 +2045,7 @@
     "index": "A",
     "name": "Games on the Train",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "greedy",
       "math"
@@ -2046,6 +2057,7 @@
     "name": "Stripe, Token and Two Players",
     "type": "PROGRAMMING",
     "points": 3250.0,
+    "rating": 2700,
     "tags": [
       "data structures",
       "dp",
@@ -2058,6 +2070,7 @@
     "name": "Vessels, Heights and Two Versions (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1750.0,
+    "rating": 2000,
     "tags": [
       "data structures",
       "dfs and similar",
@@ -2073,6 +2086,7 @@
     "name": "Vlad, Misha and Two Arrays",
     "type": "PROGRAMMING",
     "points": 2500.0,
+    "rating": 2100,
     "tags": [
       "brute force",
       "combinatorics",
@@ -2087,6 +2101,7 @@
     "name": "XOR, Expression and Two Binary Numbers",
     "type": "PROGRAMMING",
     "points": 1750.0,
+    "rating": 1500,
     "tags": [
       "bitmasks",
       "divide and conquer",
@@ -2101,6 +2116,7 @@
     "name": "Vessels, Heights and Two Versions (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 1200,
     "tags": [
       "dfs and similar",
       "dsu",
@@ -2115,6 +2131,7 @@
     "name": "Palindrome, Twelve and Two Terms",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 800,
     "tags": [
       "brute force",
       "constructive algorithms",
@@ -2127,6 +2144,7 @@
     "name": "Euclid, Sequence and Two Numbers",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "math",
       "number theory",
@@ -2138,6 +2156,7 @@
     "index": "F",
     "name": "Shortest GCD Paths",
     "type": "PROGRAMMING",
+    "rating": 2800,
     "tags": [
       "dp",
       "graphs",
@@ -2151,6 +2170,7 @@
     "index": "E2",
     "name": "Permutation Transmission (Difficult Version)",
     "type": "PROGRAMMING",
+    "rating": 2300,
     "tags": [
       "bitmasks",
       "combinatorics",
@@ -2162,6 +2182,7 @@
     "index": "E1",
     "name": "Permutation Transmission (Easy Version)",
     "type": "PROGRAMMING",
+    "rating": 2300,
     "tags": [
       "bitmasks",
       "combinatorics",
@@ -2173,6 +2194,7 @@
     "index": "D",
     "name": "Goods on the Shelf",
     "type": "PROGRAMMING",
+    "rating": 1900,
     "tags": [
       "brute force",
       "data structures",
@@ -2185,6 +2207,7 @@
     "index": "C",
     "name": "Cost of a Bracket Sequence",
     "type": "PROGRAMMING",
+    "rating": 1400,
     "tags": [
       "brute force",
       "dp",
@@ -2196,6 +2219,7 @@
     "index": "B",
     "name": "Different Distances",
     "type": "PROGRAMMING",
+    "rating": 900,
     "tags": [
       "constructive algorithms"
     ]
@@ -2205,6 +2229,7 @@
     "index": "A",
     "name": "AI Project Development",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "brute force",
       "math"
@@ -2216,6 +2241,7 @@
     "name": "The Cake Is a Lie",
     "type": "PROGRAMMING",
     "points": 3250.0,
+    "rating": 2900,
     "tags": [
       "greedy",
       "math",
@@ -2228,6 +2254,7 @@
     "name": "Snaking Arrangement",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 2600,
     "tags": [
       "combinatorics",
       "constructive algorithms"
@@ -2239,6 +2266,7 @@
     "name": "Magical Tiered Cake",
     "type": "PROGRAMMING",
     "points": 2000.0,
+    "rating": 2000,
     "tags": [
       "constructive algorithms",
       "dfs and similar",
@@ -2252,6 +2280,7 @@
     "name": "Seating Arrangement (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1600,
     "tags": [
       "binary search",
       "greedy",
@@ -2265,6 +2294,7 @@
     "name": "Seating Arrangement (Easy Version)",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 1300,
     "tags": [
       "binary search",
       "dp",
@@ -2278,6 +2308,7 @@
     "name": "Cake Leveling",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 800,
     "tags": [
       "binary search",
       "greedy",
@@ -2290,6 +2321,7 @@
     "name": "Convergence",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "greedy",
       "sortings"
@@ -2456,6 +2488,7 @@
     "name": "The Endians",
     "type": "PROGRAMMING",
     "points": 5000.0,
+    "rating": 3500,
     "tags": [
       "dp",
       "trees"
@@ -2467,6 +2500,7 @@
     "name": "Wowee Binary String",
     "type": "PROGRAMMING",
     "points": 4000.0,
+    "rating": 3300,
     "tags": [
       "combinatorics",
       "dp",
@@ -2479,6 +2513,7 @@
     "name": "Roadworks",
     "type": "PROGRAMMING",
     "points": 3250.0,
+    "rating": 3000,
     "tags": [
       "binary search",
       "data structures",
@@ -2493,6 +2528,7 @@
     "name": "Load Unbalancing",
     "type": "PROGRAMMING",
     "points": 2500.0,
+    "rating": 2400,
     "tags": [
       "binary search",
       "bitmasks",
@@ -2506,6 +2542,7 @@
     "name": "Deconstruction Tree",
     "type": "PROGRAMMING",
     "points": 2500.0,
+    "rating": 2100,
     "tags": [
       "combinatorics",
       "data structures",
@@ -2520,6 +2557,7 @@
     "name": "Me When Median Problem",
     "type": "PROGRAMMING",
     "points": 2000.0,
+    "rating": 1700,
     "tags": [
       "binary search",
       "greedy"
@@ -2531,6 +2569,7 @@
     "name": "We Be Flipping (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 1400,
     "tags": [
       "constructive algorithms",
       "dp",
