@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-24T08:01:21+00:00",
+  "updated_at": "2026-09-24T08:06:35+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -17558,6 +17558,187 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面与 editorial_text，tags 仅用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1928F": {
+      "problem_key": "1928F",
+      "title": "Digital Patterns",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/1928/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/125740",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "09a4f6dce388913e11946da2aafd21c504d95cd13f1938f6109f1dbbf7316db0",
+      "generated_at": "2026-09-24T08:03:11+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 条水平线系数 $a_i$ 和 $m$ 条竖直线系数 $b_j$，单元格 $(i,j)$ 的系数为 $a_i+b_j$。每次可将某一类线在一个连续区间内统一加上给定值；每次操作后，统计所有正方形子区域中不存在系数相同的相邻单元格的数量。",
+        "transformed_statement": "把相邻系数相等的位置视为分隔边界，将两数组拆成连续块；合法正方形等价于同时完全包含在一个水平块和一个竖直块中，因此答案是所有块长对的函数 $f(n,m)$ 之和。区间加只影响差分端点对应的块结构。",
+        "key_observations": [
+          "若相邻水平系数相等，则对应两行间所有竖直相邻单元格都相等；因此等边界把数组划成块，合法正方形必须完整落在水平块和竖直块内。",
+          "长度为 $n,m$ 的两个无相等相邻元素块贡献 $f(n,m)=\\sum_{k=1}^{\\min(n,m)}(n-k+1)(m-k+1)$，因为每个边长 $k$ 的正方形都合法。",
+          "总答案可写成所有水平块长度与竖直块长度两两组合的 $f$ 之和；将 $f$ 按较短长度展开为四个关于长度的基函数后，可用区间和快速求一块对另一侧全部块的贡献。",
+          "区间加只会改变差分数组在左右端点的两条边界，故只需在有序集合中合并或拆分至多两个块，并同步更新对应贡献。"
+        ],
+        "solution_brief": "按相邻相等位置维护两数组的连续块。用四棵线段树按块长维护四个基函数的和，从而在 $O(\\log n+\\log m)$ 内计算新块与另一侧所有块的贡献；区间加通过差分端点更新块集合并修正答案。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "数据结构",
+          "数论与同余",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意来自 statement_text；块划分、函数分解、线段树与差分维护来自 editorial_text；主题辅助参考 codeforces_tags。",
+        "quality_flags": []
+      }
+    },
+    "1928E": {
+      "problem_key": "1928E",
+      "title": "Modular Sequence",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1928/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/125740",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "eca5d8826576ca0fb8846ceadcc07cbb75509cf39b08f014bf077910874e3e43",
+      "generated_at": "2026-09-24T08:03:51+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n,x,y,S$，构造长度为 $n$ 的序列，首项必须是 $x$；每个后续元素只能取前一项加 $y$，或取前一项除以 $y$ 的余数。要求序列元素总和恰为 $S$，输出任意可行序列或判断不存在。",
+        "transformed_statement": "把序列按“首次取模”切成一个连续加 $y$ 的前缀和若干余数为 $x\\bmod y$ 的块；减去该余数并除以 $y$ 后，问题变成选择一个前缀及若干 $0,1,\\ldots,l-1$ 块，使标准化总和和长度同时匹配。",
+        "key_observations": [
+          "一旦第一次执行取模，当前值变为 $x\\bmod y$，之后只能在若干个形如 $r,r+y,\\ldots,r+ky$ 的块之间切换；因此序列是一个递增前缀后接多个标准块。",
+          "统一减去 $r=x\\bmod y$ 并除以 $y$ 后，前缀变为 $b,b+1,\\ldots,b+k$，后续每个块变为 $0,1,\\ldots,l-1$，从而只需处理整数和。",
+          "长度为 $l$ 的后续块贡献的标准化和为 $l(l-1)/2$；用 $dp[v]$ 表示凑出和 $v$ 所需的最少块元素数，就能用零元素补足剩余长度。",
+          "枚举前缀长度后，剩余和必须先扣除所有后续元素的 $r$，再能被 $y$ 整除；同时检查 $dp$ 是否不超过剩余位置数即可判定并恢复构造。"
+        ],
+        "solution_brief": "预处理标准块和的最少元素数：转移为加入长度 $l$ 的块，其贡献是 $l(l-1)/2$。枚举递增前缀长度，扣除前缀及后续固定余数，检查剩余量能否由若干标准块和零元素组成，并按记录恢复序列。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则、完整 editorial 正文及代码；tags 仅用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1928D": {
+      "problem_key": "1928D",
+      "title": "Lonely Mountain Dungeons",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1928/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/125740",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "bc51edf99238242e5dd7055e2a684a69a33c8a508e239d4cb411ec6456c147b7",
+      "generated_at": "2026-09-24T08:04:17+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个种族，第 $i$ 个种族有 $c_i$ 名成员。可以把所有成员分成至少一个队伍；每一对同种族且分处不同队伍的成员贡献 $b$，但使用 $k$ 个队伍要额外扣除 $(k-1)x$，求能得到的最大总战力。",
+        "transformed_statement": "把问题改写为枚举队伍数 $k$：每个种族独立决定如何分配到这些队伍以最大化跨队配对数，之后将各族贡献乘以 $b$ 并统一扣除队伍数惩罚。对某族而言，超过其人数后贡献不再增加。",
+        "key_observations": [
+          "固定总队伍数 $k$ 后，同一种族的跨队伍配对数在各队人数尽量均衡时最大，因此队伍人数只会是 $\\lfloor c_i/k\\rfloor$ 或 $\\lceil c_i/k\\rceil$。",
+          "若 $c_i$ 除以 $k$ 的商为 $q$、余数为 $r$，则有 $r$ 个队伍人数为 $q+1$、其余为 $q$，跨队配对数可按两类队伍之间的乘积直接计算。",
+          "当 $k>c_i$ 时，该种族最多只能贡献把其成员分到 $c_i$ 个非空队伍时的配对数，因此可将这份固定贡献从 $k=c_i$ 起加入后续所有队伍数。",
+          "对每个 $k$ 汇总所有种族的配对数后，再统一减去 $(k-1)x$，即可在所有 $k$ 中取最大值；用差分式数组维护已经饱和的种族贡献。"
+        ],
+        "solution_brief": "枚举队伍数 $k$。对每个种族按均衡分组计算跨队配对数，累加到 `cnt[k]`；其在 $k>c_i$ 时的恒定贡献放入 `add[c_i]`，扫描 $k$ 时维护 `add` 前缀和，计算 $(cnt[k]+前缀和)b-(k-1)x$ 并取最大值。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "数据结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 tags 提炼；算法细节主要来自 editorial。",
+        "quality_flags": []
+      }
+    },
+    "1928C": {
+      "problem_key": "1928C",
+      "title": "Physical Education Lesson",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1928/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/125740",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "5fba3a4e21430f11789509997327fd5b9cffd7d3916cc36149c8bcae03537d5e",
+      "generated_at": "2026-09-24T08:05:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定队列位置 $n$ 和该位置获得的编号 $x$，编号按 $1,2,\\ldots,k,k-1,\\ldots,2$ 重复，周期为 $2k-2$，且 $k>1$。求有多少个自然数 $k$ 能使位置 $n$ 的编号恰好为 $x$。",
+        "transformed_statement": "把问题改写为寻找偶数周期长度 $d=2k-2$：位置 $n$ 命中编号 $x$ 当且仅当 $d$ 整除 $n-x$ 或 $n+x-2$，再由 $k=1+d/2$ 还原并筛选合法值。",
+        "key_observations": [
+          "编号序列的周期长度为 $2k-2$，因此位置 $n$ 上出现编号 $x$ 的第一类条件等价于 $n-x$ 是周期长度的倍数。",
+          "同一编号在周期中的对称位置给出第二类条件，等价于 $n+x-2$ 是 $2k-2$ 的倍数；两类候选需要合并去重。",
+          "周期长度必须是偶数且满足 $k=1+(2k-2)/2\\ge x$，所以只需枚举两个数的偶数因子并转换为 $k$，最后过滤不合法的 $k$。"
+        ],
+        "solution_brief": "对 $n-x$ 和 $n+x-2$ 分别枚举所有因子，只保留偶数因子 $d$，将其转为 $k=1+d/2$，合并候选并保留 $k\\ge x$ 的值。每个测试用例复杂度为 $O(\\sqrt n)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的周期编号规则、editorial_text 的两类位置等价式与因子枚举方法，并参考 tags。",
+        "quality_flags": []
+      }
+    },
+    "1928B": {
+      "problem_key": "1928B",
+      "title": "Equalize",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1928/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/125740",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "acd04f488c542985dd4c600ad8bed42d901ffc968e18f5808acd32c7cb99b54b",
+      "generated_at": "2026-09-24T08:06:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组，必须选择一个 $1$ 到 $n$ 的排列，并将排列对应位置的数分别加到数组元素上。操作后统计相同数值的最多出现次数，求这个最大值。",
+        "transformed_statement": "不再直接构造排列，而是寻找最多个互不相同的原数组值，使其最大值与最小值之差不超过 $n-1$；这些值恰好能通过互异增量变成同一个目标值。",
+        "key_observations": [
+          "最终相等的元素原值不能重复，因为对应的排列值必须互不相同；因此重复元素最多贡献一次。",
+          "一组互不相同的原值可被变成同一个数，当且仅当最大值与最小值之差不超过 $n-1$，因为所需增量必须是 $1$ 到 $n$ 的互异整数。",
+          "去重并排序后，合法集合等价于差值不超过 $n-1$ 的连续区间；右端点右移时左端点只会右移，因此双指针能在线性时间求最大长度。"
+        ],
+        "solution_brief": "排序并去重数组，维护满足 $a_r-a_l<n$ 的最小左端点。最大窗口长度就是答案；窗口内每个值可分配互异增量使其相等，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的排列加法规则，以及 editorial 中关于去重、范围条件和双指针的完整说明；tags 仅作辅助。",
+        "quality_flags": []
+      }
+    },
+    "1928A": {
+      "problem_key": "1928A",
+      "title": "Rectangle Cutting",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1928/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/125740",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "085e0daf378bce615d8ec43414242723114da9e42fa76cab65e6d71f5738b634",
+      "generated_at": "2026-09-24T08:06:35+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $a\\times b$ 的整数边长矩形，必须沿原矩形边平行切一刀得到两个矩形，再任意移动、旋转并拼成一个矩形。判断能否得到一个不计 $90^\\circ$ 旋转后仍与原矩形不同的矩形。",
+        "transformed_statement": "把问题转化为判断切分后两条矩形带能否通过重新排列改变两边尺寸：只需检查是否能把某一边等分；若拼接结果只是原矩形的旋转，则不算成功。",
+        "key_observations": [
+          "令 $a\\le b$；若 $a$ 为偶数，可切成两个 $\\frac a2\\times b$ 的矩形并拼成 $\\frac a2\\times 2b$，必与原矩形不同。",
+          "若 $b$ 为偶数且 $b\\ne 2a$，可切成两个 $a\\times\\frac b2$ 的矩形并拼成 $2a\\times\\frac b2$；排除 $b=2a$ 是因为结果仅是旋转后的原矩形。",
+          "当两边都为奇数，或 $a$ 为奇数且 $b=2a$ 时，无法把切出的两条矩形带重新组合成不同尺寸；因此可行性完全由这两个失败情形刻画。"
+        ],
+        "solution_brief": "先交换使 $a\\le b$。若两边均为奇数，或 $a$ 为奇数且 $b=2a$，输出 No；其余情况按上述等分一边的构造输出 Yes。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、statement_text 及 geometry/math 标签提炼。",
         "quality_flags": []
       }
     }

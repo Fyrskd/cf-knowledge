@@ -1247,6 +1247,7 @@
     "name": "Whoname and Unsorted Array",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 2700,
     "tags": [
       "constructive algorithms"
     ]
@@ -1257,6 +1258,7 @@
     "name": "lce4113 and Security Game",
     "type": "PROGRAMMING",
     "points": 2250.0,
+    "rating": 2600,
     "tags": [
       "bitmasks",
       "interactive",
@@ -1270,6 +1272,7 @@
     "name": "diss_quack and Array Game",
     "type": "PROGRAMMING",
     "points": 1750.0,
+    "rating": 1900,
     "tags": [
       "bitmasks",
       "brute force",
@@ -1283,6 +1286,7 @@
     "name": "0mar and Alternating Sums",
     "type": "PROGRAMMING",
     "points": 1500.0,
+    "rating": 1300,
     "tags": [
       "combinatorics",
       "dp",
@@ -1295,6 +1299,7 @@
     "name": "ezraft and Array",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 800,
     "tags": [
       "constructive algorithms",
       "number theory"
@@ -1306,6 +1311,7 @@
     "name": "farmpiggie and Subset Sum",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "constructive algorithms"
     ]
@@ -1508,6 +1514,7 @@
     "index": "F",
     "name": "Summer Vacation",
     "type": "PROGRAMMING",
+    "rating": 2800,
     "tags": [
       "data structures",
       "dp",
@@ -1520,6 +1527,7 @@
     "index": "E",
     "name": "Product of Closures",
     "type": "PROGRAMMING",
+    "rating": 2200,
     "tags": [
       "bitmasks",
       "brute force",
@@ -1535,6 +1543,7 @@
     "index": "D",
     "name": "Two Digit Strings",
     "type": "PROGRAMMING",
+    "rating": 1600,
     "tags": [
       "dp",
       "strings"
@@ -1545,6 +1554,7 @@
     "index": "C",
     "name": "Unstable Elements",
     "type": "PROGRAMMING",
+    "rating": 1300,
     "tags": [
       "brute force",
       "data structures",
@@ -1558,6 +1568,7 @@
     "index": "B",
     "name": "Predominant Frequency Division",
     "type": "PROGRAMMING",
+    "rating": 900,
     "tags": [
       "data structures",
       "greedy",
@@ -1570,6 +1581,7 @@
     "index": "A",
     "name": "Bigrams",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "sortings",
       "strings"
@@ -1580,6 +1592,7 @@
     "index": "G",
     "name": "Summmon",
     "type": "PROGRAMMING",
+    "rating": 2200,
     "tags": [
       "binary search",
       "data structures",
@@ -1594,6 +1607,7 @@
     "index": "F",
     "name": "A Bit Odd",
     "type": "PROGRAMMING",
+    "rating": 1700,
     "tags": [
       "data structures",
       "games",
@@ -1606,6 +1620,7 @@
     "index": "E",
     "name": "Fair and Square",
     "type": "PROGRAMMING",
+    "rating": 1600,
     "tags": [
       "combinatorics",
       "dp",
@@ -1620,6 +1635,7 @@
     "index": "D",
     "name": "An Alternative Way",
     "type": "PROGRAMMING",
+    "rating": 1100,
     "tags": [
       "dp",
       "greedy",
@@ -1631,6 +1647,7 @@
     "index": "C",
     "name": "RemovevomeR",
     "type": "PROGRAMMING",
+    "rating": 900,
     "tags": [
       "greedy"
     ]
@@ -1640,6 +1657,7 @@
     "index": "B",
     "name": "Good times Good times",
     "type": "PROGRAMMING",
+    "rating": 1100,
     "tags": [
       "constructive algorithms",
       "dfs and similar",
@@ -1651,6 +1669,7 @@
     "index": "A",
     "name": "Divide and Conquer",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "greedy",
       "math",
