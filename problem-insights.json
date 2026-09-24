@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1625,
+    "total_problems": 1631,
     "source_total_problems": 1749,
-    "filtered_out_problems": 124,
-    "with_statement_brief": 1625,
-    "with_editorial_brief": 1393,
-    "with_solution_brief": 1394,
+    "filtered_out_problems": 118,
+    "with_statement_brief": 1631,
+    "with_editorial_brief": 1399,
+    "with_solution_brief": 1400,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 563,
+    "ai_override_count": 569,
     "primary_topic_count": 13
   },
   "records": [
@@ -21469,6 +21469,263 @@
           "generated_at": "2026-09-24T07:26:59+00:00",
           "quality_flags": [
             "statement_text_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 519,
+      "problem_key": "1924A",
+      "contest_id": 1924,
+      "title": "Did We Get Everything Covered?",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1924/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/125137",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dp",
+        "greedy",
+        "shortest paths",
+        "strings"
+      ],
+      "statement_brief": "给定整数 $n,k$ 和只含前 $k$ 个小写字母的字符串 $s$，判断所有由这 $k$ 个字母组成的长度为 $n$ 的字符串是否都是 $s$ 的子序列。若不是，输出任意一个不是子序列的合法长度为 $n$ 的字符串。",
+      "transformed_statement": "将 $s$ 从左到右切成若干个最短块，使每块都包含全部 $k$ 个字母；块数达到 $n$ 时可逐块匹配任意目标串，否则利用最后后缀中缺失的字母构造无法匹配的反例。",
+      "key_observations": [
+        "把字符串从左到右划分为若干最短前缀块，每块都恰好覆盖前 $k$ 个字母；每个完整块都能为目标串贡献任意一个字符。",
+        "若能形成至少 $n$ 个完整块，则对目标串的每个位置分别从对应块中选取所需字母，因此所有长度为 $n$ 的字符串都是子序列。",
+        "若完整块不足 $n$ 个，最后剩余后缀必有某个字母未出现；用已选块末尾字符组成前缀，再反复补该缺失字母，可保证构造串无法继续匹配。",
+        "每次选择当前各字母最晚的首次出现位置对应的字母，等价于取覆盖全部字母的最短前缀并推进扫描，从而为后续匹配保留最长后缀。"
+      ],
+      "solution_brief": "扫描字符串并在每次收集齐全部 $k$ 个字母时结束一个块，同时记录该块末尾字符。若得到至少 $n$ 个块则输出 YES；否则从剩余后缀中找未出现字母，用它补齐记录串并输出 NO。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:41:12+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 520,
+      "problem_key": "1924B",
+      "contest_id": 1924,
+      "title": "Space Harbour",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1924/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/125137",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "data structures",
+        "implementation",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "直线上有 $n$ 个位置和若干港口，每个位置有一艘船；非港口船只移动到右侧最近港口的费用等于左侧最近港口的价值乘两港口间剩余距离，港口上的船费用为 $0$。查询可在位置 $x$ 新增价值为 $v$ 的港口，或询问区间 $[l,r]$ 内所有船只费用之和。",
+      "transformed_statement": "把每两个相邻港口之间的船只费用看成由左港口价值决定的等差序列；插入新港口只会切开原区间，并对左半段施加常数差、右半段施加与到右端距离成正比的差值。",
+      "key_observations": [
+        "相邻港口 $p<q$ 之间位置 $i$ 的船只费用恒为 $V_p(q-i)$，因此每个区间的费用序列本身是等差序列。",
+        "在 $x$ 处新增港口后，左侧区间 $(p,x]$ 的费用统一减少 $V_p(q-x)$，右侧区间 $(x,q)$ 的费用按到右港口的距离变化，增量为 $(V_x-V_p)(q-i)$；一次插入只需修改这两个区间。",
+        "区间更新可表示为“统一增量 + 按距区间右端距离递增的增量”，用两个参数记录等差更新，并在懒标记下用等差数列求和维护区间总费用。"
+      ],
+      "solution_brief": "先按相邻港口计算所有船只初始费用。新增港口时定位其左右港口，对左右两段分别施加常数更新和按距离变化的等差更新；线段树用等差懒标记维护区间和，查询区间费用总和。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:40:00+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 521,
+      "problem_key": "1924C",
+      "contest_id": 1924,
+      "title": "Fractal Origami",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1924/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/125137",
+      "editorial_quality": "complete",
+      "primary_topic": "几何",
+      "secondary_topics": [
+        "数论与同余",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "geometry",
+        "math",
+        "matrices"
+      ],
+      "statement_brief": "给定边长为 $1$ 的正方形，每次把四个角折到中心，所得边长为 $1/\\sqrt2$ 的正方形继续进行，共折叠 $N$ 次后展开。将折痕分为向外的山折和向内的谷折，设其总长度为 $M,V$，要求输出 $M/V=A+B\\sqrt2$ 中有理数系数 $B=p/q$ 在模 $999999893$ 下的 $p\\,q^{-1}$。",
+      "transformed_statement": "不再逐条追踪折痕方向，而是维护总长度 $S=V+M$ 与方向不平衡量 $D=V-M$。第一次操作决定固定的 $D=2\\sqrt2$，每次新增折痕总长构成等比数列，最后由 $(S-D)/(S+D)$ 恢复比例。",
+      "key_observations": [
+        "纸张上下表面的山谷方向相反，第一次折叠后两层对应的新增山谷与山脉长度相等，因此最终差值始终为 $V-M=2\\sqrt{2}$。",
+        "第 $i$ 次操作产生的总折痕长度为 $2^{i-1}\\cdot2\\sqrt{2}\\cdot(1/\\sqrt{2})^{i-1}=(\\sqrt{2})^{i+2}$，所以 $V+M$ 可直接转化为等比数列求和。",
+        "由总长度与差值可恢复两类长度，并有 $M/V=((V+M)-(V-M))/((V+M)+(V-M))$；有理化后即可提取 $\\sqrt{2}$ 的系数。",
+        "模数选为使 $2$ 不是二次剩余的素数，因而有理化分母不会模 $999999893$ 变为零，可用快速幂和模逆计算结果。"
+      ],
+      "solution_brief": "设总折痕长度为 $S=V+M$，固定差值为 $D=V-M=2\\sqrt2$。用等比数列求 $S$，由 $M/V=(S-D)/(S+D)$ 有理化并提取 $\\sqrt2$ 系数，最后用模幂与模逆求值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:38:52+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 522,
+      "problem_key": "1924D",
+      "contest_id": 1924,
+      "title": "Balanced Subsequences",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1924/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/125137",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定由 $n$ 个 `(` 和 $m$ 个 `)` 按任意顺序组成的字符串。可删除任意字符得到子序列，要求统计最长平衡括号子序列恰好有 $2k$ 个字符的字符串数量，并对 $10^9+7$ 取模。",
+      "transformed_statement": "将“最长长度恰好为 $2k$”转化为两个“最长长度至多为 $2k$”的计数之差；再按字符串首字符分类，得到关于 $f(n,m,k)$ 的递推，并将其化为单个组合数。",
+      "key_observations": [
+        "定义 $f(n,m,k)$ 为最长平衡括号子序列长度不超过 $2k$ 的串数，则恰好为 $2k$ 的答案是 $f(n,m,k)-f(n,m,k-1)$。",
+        "当 $k\\ge\\min(n,m)$ 时，任意字符串都不可能匹配出超过 $k$ 对括号，因此 $f(n,m,k)=\\binom{n+m}{m}$。",
+        "当 $k<\\min(n,m)$ 时按首字符分类：首字符为 `)` 对应 $f(n,m-1,k)$，首字符为 `(` 会必然增加一对匹配，​​对应 $f(n-1,m,k-1)$。",
+        "上述递推在 $k=0$ 和 $k=\\min(n,m)$ 的边界下归纳得到 $f(n,m,k)=\\binom{n+m}{k}$（非平凡边界范围内），从而每次查询只需计算两个组合数。"
+      ],
+      "solution_brief": "统计最长长度至多为 $2k$ 的数量 $f$，利用首字符递推并归纳化为组合数：$f=\\binom{n+m}{k}$（超过上界时为全排列数）。答案为 $f(k)-f(k-1)$，预处理阶乘及逆元后计算。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:37:44+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 523,
+      "problem_key": "1924E",
+      "contest_id": 1924,
+      "title": "Paper Cutting Again",
+      "rating": 3100,
+      "problem_url": "https://codeforces.com/contest/1924/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/125137",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [],
+      "original_tags": [
+        "combinatorics",
+        "probabilities"
+      ],
+      "statement_brief": "给定高为 $n$、宽为 $m$ 的矩形纸张；每次从当前内部横线或竖线中等概率选一条切割，竖切后丢弃右侧、横切后丢弃下侧。求面积严格小于 $k$ 前所需切割次数的期望值，并输出其分数模 $10^9+7$ 的结果。",
+      "transformed_statement": "将每条切线看作按坐标嵌套的事件，整个过程转化为竖线序列与横线序列的随机交错；目标是首次出现当前宽高乘积小于 $k$，再按最终停止切割的方向划分概率贡献。",
+      "key_observations": [
+        "每次竖切后宽度变为切线坐标、横切后高度变为切线坐标，因此过程可表示为两类嵌套切线的随机交错顺序，单条切线被选中的概率会形成调和项。",
+        "只使用竖切时，令 $reqv=\\lfloor (k-1)/n\\rfloor$，前 $reqv$ 条竖线中任一条先出现即可达标，其事件概率为 $reqv/(reqv+n-1)$，其余切线贡献转化为调和和。",
+        "固定最后一条竖切为第 $x$ 条，并令 $reqh=\\lfloor (k-1)/x\\rfloor$，混合情形可由该竖线先于前 $reqh$ 条横线、再由其中一条横线完成停止条件来计数。",
+        "超过阈值的竖线或横线贡献分别形成调和和与二阶调和和，预处理 $1/i$ 及 $1/(i(i+1))$ 的前缀和即可在每个候选 $x$ 上常数时间求和。"
+      ],
+      "solution_brief": "把停止过程按只竖切、只横切及最终切线方向分类，计算每条线被切到的概率并累加期望；预处理调和和与二阶调和和，用模逆元完成取模计算。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:36:27+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 524,
+      "problem_key": "1924F",
+      "contest_id": 1924,
+      "title": "Anti-Proxy Attendance",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1924/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/125137",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dp",
+        "interactive",
+        "ternary search"
+      ],
+      "statement_brief": "有 $n$ 名按编号排列的学生，恰有一人缺席。每次可询问一个编号区间并统计举手人数，但学生会按题目规定的四种诚实或不诚实模式应答；在至多 $\\lceil\\log_{1.116}n\\rceil-1$ 次询问内，最终至多标记两名学生，且必须包含真正缺席者。",
+      "transformed_statement": "将问题转化为维护一个包含缺席者的连续候选集合：每轮把它切成三个连续块，通过固定决策树的区间查询排除其中一块，并根据不同分支使用 $3$ 或 $4$ 次查询。",
+      "key_observations": [
+        "把当前仍可能缺席的学生维护为一个连续候选区间，并将其分成三个连续部分；决策树的每个叶子都能安全排除至少一个部分。",
+        "三部分按约 $36\\%:28\\%:36\\%$ 划分，使排除中间部分时用 $3$ 次询问、排除两侧部分时用 $4$ 次询问，从而平衡不同分支的收缩速度。",
+        "虽然原题只能询问区间，但三个部分按学生编号连续排列，因此决策树中涉及部分并集的询问都可用覆盖它们的一个区间替代。",
+        "重复将候选规模缩小后只剩两名学生，直接依次标记这两人；比例由 $(1-x)^3=(2x)^4$ 平衡三次与四次分支的渐近查询效率。"
+      ],
+      "solution_brief": "维护连续候选区间，每轮按约 $36\\%,28\\%,36\\%$ 分成三段，用至多 $4$ 次区间询问按决策树排除一段；缩至两人后标记两人。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:35:00+00:00",
+          "quality_flags": [
+            "statement_cases_incomplete"
           ]
         }
       },
