@@ -98,7 +98,6 @@
     "name": "Deranged Calculator",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 2700,
     "tags": [
       "constructive algorithms",
       "implementation",
@@ -111,7 +110,6 @@
     "name": "A Prime Flood (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 2700,
     "tags": [
       "brute force",
       "combinatorics",
@@ -125,7 +123,6 @@
     "name": "A Prime Flood (Easy Version)",
     "type": "PROGRAMMING",
     "points": 2000.0,
-    "rating": 2100,
     "tags": [
       "combinatorics",
       "dp",
@@ -138,7 +135,6 @@
     "name": "Dr. Agos's Dark Mode",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 1800,
     "tags": [
       "brute force",
       "chinese remainder theorem",
@@ -153,7 +149,6 @@
     "name": "Madamant's Skating Dynasty",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1300,
     "tags": [
       "combinatorics",
       "math",
@@ -166,7 +161,6 @@
     "name": "Knife's Pill Farm",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1000,
     "tags": [
       "data structures",
       "greedy",
@@ -179,7 +173,6 @@
     "name": "Rumb Needs a Hand",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "implementation",
       "sortings",
@@ -192,7 +185,6 @@
     "name": "Min Matrices",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 900,
     "tags": [
       "constructive algorithms"
     ]
@@ -203,7 +195,6 @@
     "name": "Min Max Game",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "games"
     ]
@@ -214,7 +205,6 @@
     "name": "Rank Removal",
     "type": "PROGRAMMING",
     "points": 3250.0,
-    "rating": 3500,
     "tags": [
       "math"
     ]
@@ -225,7 +215,6 @@
     "name": "Paired Bracket Sequences",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 3100,
     "tags": [
       "combinatorics",
       "math"
@@ -237,7 +226,6 @@
     "name": "PLUSworld",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2800,
     "tags": [
       "constructive algorithms",
       "graphs",
@@ -250,7 +238,6 @@
     "name": "Traveling the World",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 2200,
     "tags": [
       "combinatorics",
       "constructive algorithms",
@@ -265,7 +252,6 @@
     "name": "Culling Game",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 2000,
     "tags": [
       "binary search",
       "data structures",
@@ -279,7 +265,6 @@
     "name": "Floor of MEX (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1800,
     "tags": [
       "dp",
       "implementation",
@@ -292,7 +277,6 @@
     "name": "Floor of MEX (Easy Version)",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 1200,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -303,7 +287,6 @@
     "index": "G",
     "name": "Sortable Permutations",
     "type": "PROGRAMMING",
-    "rating": 2900,
     "tags": [
       "brute force",
       "combinatorics",
@@ -316,7 +299,6 @@
     "index": "F",
     "name": "Edge Three-Coloring",
     "type": "PROGRAMMING",
-    "rating": 2500,
     "tags": [
       "brute force",
       "dfs and similar",
@@ -330,7 +312,6 @@
     "index": "E",
     "name": "Cyclic Balance",
     "type": "PROGRAMMING",
-    "rating": 2000,
     "tags": [
       "binary search",
       "constructive algorithms",
@@ -343,7 +324,6 @@
     "index": "D",
     "name": "Signs of Prefix Sums",
     "type": "PROGRAMMING",
-    "rating": 1700,
     "tags": [
       "brute force",
       "constructive algorithms",
@@ -357,7 +337,6 @@
     "index": "C",
     "name": "Maximize XOR, Minimize Operations",
     "type": "PROGRAMMING",
-    "rating": 1300,
     "tags": [
       "bitmasks",
       "greedy"
@@ -368,7 +347,6 @@
     "index": "B",
     "name": "Monocarp and Projects",
     "type": "PROGRAMMING",
-    "rating": 900,
     "tags": [
       "brute force",
       "math",
@@ -380,7 +358,6 @@
     "index": "A",
     "name": "Monocarp's Contest",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "implementation"
     ]
@@ -390,7 +367,6 @@
     "index": "H",
     "name": "Treasure Map Destruction (Counting Version)",
     "type": "PROGRAMMING",
-    "rating": 2200,
     "tags": [
       "dfs and similar",
       "dp",
@@ -404,7 +380,6 @@
     "index": "G",
     "name": "Index Removal",
     "type": "PROGRAMMING",
-    "rating": 1900,
     "tags": [
       "binary search",
       "data structures",
@@ -416,7 +391,6 @@
     "index": "F",
     "name": "Binary Bubble Sort Inversions",
     "type": "PROGRAMMING",
-    "rating": 1800,
     "tags": [
       "data structures",
       "math",
@@ -428,7 +402,6 @@
     "index": "E",
     "name": "Treasure Map Destruction (Constructive Version)",
     "type": "PROGRAMMING",
-    "rating": 1500,
     "tags": [
       "2-sat",
       "constructive algorithms",
@@ -440,7 +413,6 @@
     "index": "D",
     "name": "MEX Multiset",
     "type": "PROGRAMMING",
-    "rating": 1200,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -451,7 +423,6 @@
     "index": "C",
     "name": "101",
     "type": "PROGRAMMING",
-    "rating": 1000,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -462,7 +433,6 @@
     "index": "B",
     "name": "Minus Two",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "math",
       "number theory"
@@ -473,7 +443,6 @@
     "index": "A",
     "name": "Moo Language School",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "brute force",
       "greedy",
@@ -486,7 +455,6 @@
     "name": "Plus Minus Tree",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 2500,
     "tags": [
       "data structures",
       "dfs and similar",
@@ -502,7 +470,6 @@
     "name": "DivMEX",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2400,
     "tags": [
       "data structures",
       "math",
@@ -515,7 +482,6 @@
     "name": "Magic Tiles",
     "type": "PROGRAMMING",
     "points": 2000.0,
-    "rating": 2500,
     "tags": [
       "dp",
       "greedy",
@@ -528,7 +494,6 @@
     "name": "Far Cities",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1600,
     "tags": [
       "interactive",
       "trees",
@@ -541,7 +506,6 @@
     "name": "Carrot Chopdown (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1600,
     "tags": [
       "brute force",
       "greedy",
@@ -555,7 +519,6 @@
     "name": "Carrot Chopdown (Easy Version)",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 900,
     "tags": [
       "brute force",
       "games",
@@ -568,7 +531,6 @@
     "name": "Odd Eraser",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "math"
     ]
@@ -579,7 +541,6 @@
     "name": "Beaver's Jumping Track (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 2700,
     "tags": [
       "data structures",
       "dp",
@@ -592,7 +553,6 @@
     "name": "Beaver's Jumping Track (Easy Version)",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2500,
     "tags": [
       "data structures",
       "dp",
@@ -605,7 +565,6 @@
     "name": "Busy Beaver",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2000,
     "tags": [
       "brute force",
       "data structures",
@@ -622,7 +581,6 @@
     "name": "Bermuda Rectangle",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1600,
     "tags": [
       "binary search",
       "implementation",
@@ -637,7 +595,6 @@
     "name": "Spying on the Beaver",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1200,
     "tags": [
       "constructive algorithms",
       "dfs and similar",
@@ -652,7 +609,6 @@
     "name": "Gigantomachy",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 800,
     "tags": [
       "math"
     ]
@@ -663,7 +619,6 @@
     "name": "Creating Abbreviations",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "brute force",
       "strings"
@@ -675,7 +630,6 @@
     "name": "Domino Tiles",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1000,
     "tags": [
       "implementation",
       "math"
@@ -687,7 +641,6 @@
     "name": "Three Numbers on the Blackboard",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "math",
       "sortings"
@@ -699,7 +652,6 @@
     "name": "Who Will Witness the End?",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 3100,
     "tags": [
       "fft",
       "math"
@@ -711,7 +663,6 @@
     "name": "What Will Remain at the End? (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 3400,
     "tags": [
       "data structures"
     ]
@@ -722,7 +673,6 @@
     "name": "What Will Remain at the End? (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 2900,
     "tags": [
       "brute force",
       "data structures"
@@ -734,7 +684,6 @@
     "name": "How Long Until Nothing Remains?",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 2300,
     "tags": [
       "binary search",
       "bitmasks",
@@ -750,7 +699,6 @@
     "name": "Even If the World Turns",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 2100,
     "tags": [
       "communication",
       "constructive algorithms",
@@ -767,7 +715,6 @@
     "name": "A Ribbon for Tomorrow",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1600,
     "tags": [
       "combinatorics",
       "math"
@@ -779,7 +726,6 @@
     "name": "Hot Potatoes at the Fairy Warehouse",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 1200,
     "tags": [
       "games",
       "greedy",
@@ -791,7 +737,6 @@
     "index": "G",
     "name": "Nightcrawler",
     "type": "PROGRAMMING",
-    "rating": 2200,
     "tags": [
       "data structures",
       "dfs and similar",
@@ -806,7 +751,6 @@
     "index": "F",
     "name": "Whiplash",
     "type": "PROGRAMMING",
-    "rating": 1900,
     "tags": [
       "bitmasks",
       "constructive algorithms",
@@ -819,7 +763,6 @@
     "index": "E",
     "name": "Chronostasis",
     "type": "PROGRAMMING",
-    "rating": 1500,
     "tags": [
       "binary search",
       "data structures",
@@ -831,7 +774,6 @@
     "index": "D",
     "name": "Silhouette",
     "type": "PROGRAMMING",
-    "rating": 1300,
     "tags": [
       "constructive algorithms",
       "math",
@@ -843,7 +785,6 @@
     "index": "C2",
     "name": "Marenol (hard version)",
     "type": "PROGRAMMING",
-    "rating": 1200,
     "tags": [
       "greedy",
       "sortings"
@@ -854,7 +795,6 @@
     "index": "C1",
     "name": "Marenol (easy version)",
     "type": "PROGRAMMING",
-    "rating": 1000,
     "tags": [
       "greedy"
     ]
@@ -864,7 +804,6 @@
     "index": "B",
     "name": "Evanescent",
     "type": "PROGRAMMING",
-    "rating": 900,
     "tags": [
       "implementation",
       "strings",
@@ -876,7 +815,6 @@
     "index": "A",
     "name": "Riptide",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "implementation",
       "sortings"
@@ -887,7 +825,6 @@
     "index": "F",
     "name": "4-beauty",
     "type": "PROGRAMMING",
-    "rating": 2600,
     "tags": [
       "bitmasks",
       "dp",
@@ -901,7 +838,6 @@
     "index": "E",
     "name": "Diameter Intersections",
     "type": "PROGRAMMING",
-    "rating": 2100,
     "tags": [
       "brute force",
       "dfs and similar",
@@ -916,7 +852,6 @@
     "index": "D",
     "name": "Hypercarp and Interdimensional Jumps",
     "type": "PROGRAMMING",
-    "rating": 1800,
     "tags": [
       "binary search",
       "brute force",
@@ -931,7 +866,6 @@
     "index": "C",
     "name": "Sum of Distinct Values in a Matrix",
     "type": "PROGRAMMING",
-    "rating": 1500,
     "tags": [
       "greedy",
       "sortings",
@@ -943,7 +877,6 @@
     "index": "B",
     "name": "Hypercarp and the Control Panel",
     "type": "PROGRAMMING",
-    "rating": 1100,
     "tags": [
       "brute force",
       "data structures",
@@ -955,7 +888,6 @@
     "index": "A",
     "name": "The Best Card",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "greedy",
       "math",
@@ -968,7 +900,6 @@
     "name": "Spectral Components",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2600,
     "tags": [
       "dfs and similar",
       "dp",
@@ -983,7 +914,6 @@
     "name": "Generational Triplets",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2100,
     "tags": [
       "bitmasks",
       "combinatorics",
@@ -997,7 +927,6 @@
     "name": "Array Replacement",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1700,
     "tags": [
       "greedy",
       "sortings"
@@ -1009,7 +938,6 @@
     "name": "Risky Tower",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1400,
     "tags": [
       "binary search",
       "brute force",
@@ -1024,7 +952,6 @@
     "name": "Always Changing",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1100,
     "tags": [
       "dp",
       "greedy",
@@ -1038,7 +965,6 @@
     "name": "Boss Fight",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "data structures",
       "greedy"
@@ -1050,7 +976,6 @@
     "name": "String Construction",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 1000,
     "tags": [
       "constructive algorithms"
     ]
@@ -1061,7 +986,6 @@
     "name": "Threshold Movement",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "brute force",
       "implementation",
@@ -1074,7 +998,6 @@
     "name": "Even Simple Path",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 3200,
     "tags": [
       "constructive algorithms",
       "graphs",
@@ -1087,7 +1010,6 @@
     "name": "String (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 3000,
     "tags": [
       "divide and conquer",
       "implementation",
@@ -1100,7 +1022,6 @@
     "name": "String (Easy Version)",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2800,
     "tags": [
       "divide and conquer",
       "implementation",
@@ -1113,7 +1034,6 @@
     "name": "Xor Permutation Matrix",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2300,
     "tags": [
       "bitmasks",
       "constructive algorithms",
@@ -1126,7 +1046,6 @@
     "name": "Double-Rift Dial",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 2000,
     "tags": [
       "data structures",
       "dfs and similar",
@@ -1141,7 +1060,6 @@
     "name": "Permutation Cuts",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1700,
     "tags": [
       "combinatorics",
       "implementation",
@@ -1154,7 +1072,6 @@
     "name": "Rank Subsequence",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 1300,
     "tags": [
       "brute force",
       "greedy",
@@ -1167,7 +1084,6 @@
     "name": "No Balance Left",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 3000,
     "tags": [
       "bitmasks",
       "dp",
@@ -1181,7 +1097,6 @@
     "name": "Matrix Elimination",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2500,
     "tags": [
       "binary search",
       "greedy",
@@ -1194,7 +1109,6 @@
     "name": "Excuse for Breaks",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 1900,
     "tags": [
       "binary search",
       "brute force",
@@ -1209,7 +1123,6 @@
     "name": "Good Pair Queries",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1400,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -1222,7 +1135,6 @@
     "name": "Maximize the Score",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1300,
     "tags": [
       "dp",
       "greedy"
@@ -1234,7 +1146,6 @@
     "name": "Merge to Match",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1000,
     "tags": [
       "greedy",
       "sortings"
@@ -1246,7 +1157,6 @@
     "name": "You Delete, I Delete",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "greedy"
     ]
@@ -1257,7 +1167,6 @@
     "name": "Paths on a Grid",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 2900,
     "tags": [
       "data structures",
       "dp",
@@ -1270,7 +1179,6 @@
     "name": "Build a Tree",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 2300,
     "tags": [
       "constructive algorithms",
       "trees",
@@ -1283,7 +1191,6 @@
     "name": "XOR Sorting (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 2000,
     "tags": [
       "bitmasks",
       "data structures",
@@ -1296,7 +1203,6 @@
     "name": "XOR Sorting (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1500,
     "tags": [
       "bitmasks",
       "greedy"
@@ -1308,7 +1214,6 @@
     "name": "Inversion of a Subsequence",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1100,
     "tags": [
       "greedy",
       "math"
@@ -1320,7 +1225,6 @@
     "name": "Yet Another Constructive",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 900,
     "tags": [
       "constructive algorithms"
     ]
@@ -1331,7 +1235,6 @@
     "name": "Zero Sum",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "constructive algorithms",
       "dp",
@@ -1344,7 +1247,6 @@
     "name": "Whoname and Unsorted Array",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2900,
     "tags": [
       "constructive algorithms"
     ]
@@ -1355,7 +1257,6 @@
     "name": "lce4113 and Security Game",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2600,
     "tags": [
       "bitmasks",
       "interactive",
@@ -1369,7 +1270,6 @@
     "name": "diss_quack and Array Game",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1900,
     "tags": [
       "bitmasks",
       "brute force",
@@ -1383,7 +1283,6 @@
     "name": "0mar and Alternating Sums",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1400,
     "tags": [
       "combinatorics",
       "dp",
@@ -1396,7 +1295,6 @@
     "name": "ezraft and Array",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 900,
     "tags": [
       "constructive algorithms",
       "number theory"
@@ -1408,7 +1306,6 @@
     "name": "farmpiggie and Subset Sum",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "constructive algorithms"
     ]
@@ -1419,7 +1316,6 @@
     "name": "Connect Connect See",
     "type": "PROGRAMMING",
     "points": 5000.0,
-    "rating": 3500,
     "tags": [
       "brute force",
       "data structures"
@@ -1431,7 +1327,6 @@
     "name": "NPC Challenge",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 3000,
     "tags": [
       "divide and conquer",
       "interactive"
@@ -1443,7 +1338,6 @@
     "name": "Familiar?",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 2800,
     "tags": [
       "brute force",
       "combinatorics",
@@ -1456,7 +1350,6 @@
     "name": "Tom and Jerry",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2300,
     "tags": [
       "dfs and similar",
       "dsu",
@@ -1470,7 +1363,6 @@
     "name": "Construct an Array (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 2000,
     "tags": [
       "2-sat",
       "constructive algorithms",
@@ -1485,7 +1377,6 @@
     "name": "Construct an Array (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1700,
     "tags": [
       "dfs and similar",
       "implementation",
@@ -1498,7 +1389,6 @@
     "name": "MEXOR",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1400,
     "tags": [
       "bitmasks",
       "constructive algorithms",
@@ -1511,7 +1401,6 @@
     "name": "Delete and Concatenate",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1100,
     "tags": [
       "greedy"
     ]
@@ -1522,7 +1411,6 @@
     "name": "Who Watches the Watchpig?",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "greedy"
     ]
@@ -1532,7 +1420,6 @@
     "index": "G",
     "name": "Yura and Deadlines",
     "type": "PROGRAMMING",
-    "rating": 1900,
     "tags": [
       "data structures",
       "dp"
@@ -1543,7 +1430,6 @@
     "index": "F",
     "name": "Anya Loves Trees!",
     "type": "PROGRAMMING",
-    "rating": 1700,
     "tags": [
       "dfs and similar",
       "dp",
@@ -1556,7 +1442,6 @@
     "index": "E",
     "name": "Masha and the Garland",
     "type": "PROGRAMMING",
-    "rating": 1400,
     "tags": [
       "data structures",
       "dp",
@@ -1572,7 +1457,6 @@
     "index": "D",
     "name": "Yaroslav and Productivity",
     "type": "PROGRAMMING",
-    "rating": 1200,
     "tags": [
       "constructive algorithms",
       "dp",
@@ -1586,7 +1470,6 @@
     "index": "C",
     "name": "Stepan and Permutation",
     "type": "PROGRAMMING",
-    "rating": 1100,
     "tags": [
       "constructive algorithms",
       "dfs and similar",
@@ -1602,7 +1485,6 @@
     "index": "B",
     "name": "Nikita and Books",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "greedy",
       "math",
@@ -1614,7 +1496,6 @@
     "index": "A",
     "name": "Iskander and Drawings",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "dp",
       "games",
@@ -1627,7 +1508,6 @@
     "index": "F",
     "name": "Summer Vacation",
     "type": "PROGRAMMING",
-    "rating": 2700,
     "tags": [
       "data structures",
       "dp",
@@ -1640,7 +1520,6 @@
     "index": "E",
     "name": "Product of Closures",
     "type": "PROGRAMMING",
-    "rating": 2200,
     "tags": [
       "bitmasks",
       "brute force",
@@ -1656,7 +1535,6 @@
     "index": "D",
     "name": "Two Digit Strings",
     "type": "PROGRAMMING",
-    "rating": 1600,
     "tags": [
       "dp",
       "strings"
@@ -1667,7 +1545,6 @@
     "index": "C",
     "name": "Unstable Elements",
     "type": "PROGRAMMING",
-    "rating": 1300,
     "tags": [
       "brute force",
       "data structures",
@@ -1681,7 +1558,6 @@
     "index": "B",
     "name": "Predominant Frequency Division",
     "type": "PROGRAMMING",
-    "rating": 1000,
     "tags": [
       "data structures",
       "greedy",
@@ -1694,7 +1570,6 @@
     "index": "A",
     "name": "Bigrams",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "sortings",
       "strings"
@@ -1705,7 +1580,6 @@
     "index": "G",
     "name": "Summmon",
     "type": "PROGRAMMING",
-    "rating": 2400,
     "tags": [
       "binary search",
       "data structures",
@@ -1720,7 +1594,6 @@
     "index": "F",
     "name": "A Bit Odd",
     "type": "PROGRAMMING",
-    "rating": 1700,
     "tags": [
       "data structures",
       "games",
@@ -1733,7 +1606,6 @@
     "index": "E",
     "name": "Fair and Square",
     "type": "PROGRAMMING",
-    "rating": 1600,
     "tags": [
       "combinatorics",
       "dp",
@@ -1748,7 +1620,6 @@
     "index": "D",
     "name": "An Alternative Way",
     "type": "PROGRAMMING",
-    "rating": 1100,
     "tags": [
       "dp",
       "greedy",
@@ -1760,7 +1631,6 @@
     "index": "C",
     "name": "RemovevomeR",
     "type": "PROGRAMMING",
-    "rating": 1000,
     "tags": [
       "greedy"
     ]
@@ -1770,7 +1640,6 @@
     "index": "B",
     "name": "Good times Good times",
     "type": "PROGRAMMING",
-    "rating": 1100,
     "tags": [
       "constructive algorithms",
       "dfs and similar",
@@ -1782,7 +1651,6 @@
     "index": "A",
     "name": "Divide and Conquer",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "greedy",
       "math",
@@ -1795,7 +1663,6 @@
     "name": "AI Finds Nothing Here",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1100,
     "tags": [
       "combinatorics",
       "math"
@@ -1807,7 +1674,6 @@
     "name": "Another Popcount Problem",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "greedy"
     ]
@@ -1818,7 +1684,6 @@
     "name": "Colorful Works",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 3500,
     "tags": [
       "dp",
       "fft",
@@ -1832,7 +1697,6 @@
     "name": "The end of this world,",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 3300,
     "tags": [
       "data structures",
       "divide and conquer",
@@ -1846,7 +1710,6 @@
     "name": "Hunting the Beast",
     "type": "PROGRAMMING",
     "points": 2000.0,
-    "rating": 2500,
     "tags": [
       "combinatorics",
       "dp",
@@ -1860,7 +1723,6 @@
     "name": "Revival",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 2200,
     "tags": [
       "binary search",
       "data structures",
@@ -1874,7 +1736,6 @@
     "name": "Decidophobia",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1500,
     "tags": [
       "greedy",
       "math",
@@ -1888,7 +1749,6 @@
     "name": "Nim Game Is XOR Game",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 1300,
     "tags": [
       "constructive algorithms",
       "games",
@@ -1902,7 +1762,6 @@
     "name": "Infinite Work",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2600,
     "tags": [
       "combinatorics",
       "graphs",
@@ -1917,7 +1776,6 @@
     "name": "Cake Trial",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2000,
     "tags": [
       "dp",
       "greedy"
@@ -1929,7 +1787,6 @@
     "name": "Storming Arasaka",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1500,
     "tags": [
       "greedy",
       "math",
@@ -1942,7 +1799,6 @@
     "name": "Village Guilds",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1400,
     "tags": [
       "dfs and similar",
       "dp",
@@ -1955,7 +1811,6 @@
     "name": "Crimson Triples",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 900,
     "tags": [
       "dp",
       "math",
@@ -1968,7 +1823,6 @@
     "name": "Another Puzzle from Papyrus",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "greedy",
       "math",
@@ -1981,7 +1835,6 @@
     "name": "DBFS Order (Hard Version)",
     "type": "PROGRAMMING",
     "points": 4500.0,
-    "rating": 3500,
     "tags": [
       "dp",
       "trees"
@@ -1993,7 +1846,6 @@
     "name": "DBFS Order (Easy Version)",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 3500,
     "tags": [
       "dp",
       "trees"
@@ -2005,7 +1857,6 @@
     "name": "Slime and Queries",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 3500,
     "tags": [
       "data structures",
       "greedy",
@@ -2018,7 +1869,6 @@
     "name": "Send GCDs",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2900,
     "tags": [
       "communication",
       "constructive algorithms",
@@ -2033,7 +1883,6 @@
     "name": "Paint the Array",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2400,
     "tags": [
       "data structures",
       "dp",
@@ -2046,7 +1895,6 @@
     "name": "Permutation Commutation",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2000,
     "tags": [
       "data structures",
       "graphs",
@@ -2059,7 +1907,6 @@
     "name": "Fullmetal Bitchemist",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1500,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -2072,7 +1919,6 @@
     "name": "Duck Surplus",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1000,
     "tags": [
       "binary search",
       "greedy"
@@ -2084,7 +1930,6 @@
     "name": "Annoying the Ghost",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1000,
     "tags": [
       "brute force",
       "greedy"
@@ -2096,7 +1941,6 @@
     "name": "Destroying Towers",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "games",
       "greedy",
@@ -2108,7 +1952,6 @@
     "index": "G",
     "name": "Criterion in Burlandia",
     "type": "PROGRAMMING",
-    "rating": 2600,
     "tags": [
       "binary search",
       "bitmasks",
@@ -2126,7 +1969,6 @@
     "index": "F2",
     "name": "Elections in Saransk (hard version)",
     "type": "PROGRAMMING",
-    "rating": 2200,
     "tags": [
       "combinatorics",
       "dp",
@@ -2139,7 +1981,6 @@
     "index": "F1",
     "name": "Elections in Saransk (easy version)",
     "type": "PROGRAMMING",
-    "rating": 1700,
     "tags": [
       "number theory"
     ]
@@ -2149,7 +1990,6 @@
     "index": "E",
     "name": "Friendly Gifts",
     "type": "PROGRAMMING",
-    "rating": 1700,
     "tags": [
       "brute force",
       "dp"
@@ -2160,7 +2000,6 @@
     "index": "D",
     "name": "Brand New Tatar TV Show",
     "type": "PROGRAMMING",
-    "rating": 1300,
     "tags": [
       "binary search",
       "constructive algorithms",
@@ -2174,7 +2013,6 @@
     "index": "C",
     "name": "Omsk Programmers",
     "type": "PROGRAMMING",
-    "rating": 1000,
     "tags": [
       "brute force",
       "greedy",
@@ -2186,7 +2024,6 @@
     "index": "B",
     "name": "Tatar TV Show",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "greedy",
       "math",
@@ -2198,7 +2035,6 @@
     "index": "A",
     "name": "Games on the Train",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "greedy",
       "math"
@@ -2210,7 +2046,6 @@
     "name": "Stripe, Token and Two Players",
     "type": "PROGRAMMING",
     "points": 3250.0,
-    "rating": 2700,
     "tags": [
       "data structures",
       "dp",
@@ -2223,7 +2058,6 @@
     "name": "Vessels, Heights and Two Versions (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1900,
     "tags": [
       "data structures",
       "dfs and similar",
@@ -2239,7 +2073,6 @@
     "name": "Vlad, Misha and Two Arrays",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2100,
     "tags": [
       "brute force",
       "combinatorics",
@@ -2254,7 +2087,6 @@
     "name": "XOR, Expression and Two Binary Numbers",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1500,
     "tags": [
       "bitmasks",
       "divide and conquer",
@@ -2269,7 +2101,6 @@
     "name": "Vessels, Heights and Two Versions (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1200,
     "tags": [
       "dfs and similar",
       "dsu",
@@ -2284,7 +2115,6 @@
     "name": "Palindrome, Twelve and Two Terms",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 800,
     "tags": [
       "brute force",
       "constructive algorithms",
@@ -2297,7 +2127,6 @@
     "name": "Euclid, Sequence and Two Numbers",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "math",
       "number theory",
@@ -2309,7 +2138,6 @@
     "index": "F",
     "name": "Shortest GCD Paths",
     "type": "PROGRAMMING",
-    "rating": 2800,
     "tags": [
       "dp",
       "graphs",
@@ -2323,7 +2151,6 @@
     "index": "E2",
     "name": "Permutation Transmission (Difficult Version)",
     "type": "PROGRAMMING",
-    "rating": 2300,
     "tags": [
       "bitmasks",
       "combinatorics",
@@ -2335,7 +2162,6 @@
     "index": "E1",
     "name": "Permutation Transmission (Easy Version)",
     "type": "PROGRAMMING",
-    "rating": 2200,
     "tags": [
       "bitmasks",
       "combinatorics",
@@ -2347,7 +2173,6 @@
     "index": "D",
     "name": "Goods on the Shelf",
     "type": "PROGRAMMING",
-    "rating": 1900,
     "tags": [
       "brute force",
       "data structures",
@@ -2360,7 +2185,6 @@
     "index": "C",
     "name": "Cost of a Bracket Sequence",
     "type": "PROGRAMMING",
-    "rating": 1400,
     "tags": [
       "brute force",
       "dp",
@@ -2372,7 +2196,6 @@
     "index": "B",
     "name": "Different Distances",
     "type": "PROGRAMMING",
-    "rating": 900,
     "tags": [
       "constructive algorithms"
     ]
@@ -2382,7 +2205,6 @@
     "index": "A",
     "name": "AI Project Development",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "brute force",
       "math"
@@ -2394,7 +2216,6 @@
     "name": "The Cake Is a Lie",
     "type": "PROGRAMMING",
     "points": 3250.0,
-    "rating": 3000,
     "tags": [
       "greedy",
       "math",
@@ -2407,7 +2228,6 @@
     "name": "Snaking Arrangement",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2600,
     "tags": [
       "combinatorics",
       "constructive algorithms"
@@ -2419,7 +2239,6 @@
     "name": "Magical Tiered Cake",
     "type": "PROGRAMMING",
     "points": 2000.0,
-    "rating": 2000,
     "tags": [
       "constructive algorithms",
       "dfs and similar",
@@ -2433,7 +2252,6 @@
     "name": "Seating Arrangement (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1500,
     "tags": [
       "binary search",
       "greedy",
@@ -2447,7 +2265,6 @@
     "name": "Seating Arrangement (Easy Version)",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 1300,
     "tags": [
       "binary search",
       "dp",
@@ -2461,7 +2278,6 @@
     "name": "Cake Leveling",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 900,
     "tags": [
       "binary search",
       "greedy",
@@ -2474,7 +2290,6 @@
     "name": "Convergence",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "greedy",
       "sortings"
@@ -2486,7 +2301,6 @@
     "name": "Quadratic Jumps",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2600,
     "tags": [
       "brute force",
       "constructive algorithms",
@@ -2501,7 +2315,6 @@
     "name": "Graph Cutting",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2300,
     "tags": [
       "dfs and similar",
       "dp",
@@ -2515,7 +2328,6 @@
     "name": "Maximum Prefix Sums",
     "type": "PROGRAMMING",
     "points": 2000.0,
-    "rating": 1900,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -2529,7 +2341,6 @@
     "name": "Chipmunk Theo and Equality",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1400,
     "tags": [
       "implementation",
       "sortings"
@@ -2541,7 +2352,6 @@
     "name": "Another Sorting Problem",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1100,
     "tags": [
       "constructive algorithms"
     ]
@@ -2552,7 +2362,6 @@
     "name": "Construct an Array",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "constructive algorithms"
     ]
@@ -2562,7 +2371,6 @@
     "index": "F",
     "name": "Game on Growing Tree",
     "type": "PROGRAMMING",
-    "rating": 2700,
     "tags": [
       "binary search",
       "dfs and similar",
@@ -2578,7 +2386,6 @@
     "index": "E",
     "name": "Minimum Influence",
     "type": "PROGRAMMING",
-    "rating": 2100,
     "tags": [
       "binary search",
       "data structures",
@@ -2594,7 +2401,6 @@
     "index": "D",
     "name": "Good Schedule",
     "type": "PROGRAMMING",
-    "rating": 1700,
     "tags": [
       "dp",
       "greedy"
@@ -2605,7 +2411,6 @@
     "index": "C",
     "name": "Arrange the Numbers in a Circle",
     "type": "PROGRAMMING",
-    "rating": 1300,
     "tags": [
       "constructive algorithms",
       "implementation",
@@ -2617,7 +2422,6 @@
     "index": "B",
     "name": "Digit String",
     "type": "PROGRAMMING",
-    "rating": 1000,
     "tags": [
       "greedy",
       "implementation",
@@ -2629,7 +2433,6 @@
     "index": "A",
     "name": "Optimal Purchase",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "implementation",
       "math"
@@ -2641,7 +2444,6 @@
     "name": "The Endians",
     "type": "PROGRAMMING",
     "points": 5000.0,
-    "rating": 3400,
     "tags": [
       "dp",
       "trees"
@@ -2653,7 +2455,6 @@
     "name": "Wowee Binary String",
     "type": "PROGRAMMING",
     "points": 4000.0,
-    "rating": 3200,
     "tags": [
       "combinatorics",
       "dp",
@@ -2666,7 +2467,6 @@
     "name": "Roadworks",
     "type": "PROGRAMMING",
     "points": 3250.0,
-    "rating": 2900,
     "tags": [
       "binary search",
       "data structures",
@@ -2681,7 +2481,6 @@
     "name": "Load Unbalancing",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2400,
     "tags": [
       "binary search",
       "bitmasks",
@@ -2695,7 +2494,6 @@
     "name": "Deconstruction Tree",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2100,
     "tags": [
       "combinatorics",
       "data structures",
@@ -2710,7 +2508,6 @@
     "name": "Me When Median Problem",
     "type": "PROGRAMMING",
     "points": 2000.0,
-    "rating": 1700,
     "tags": [
       "binary search",
       "greedy"
@@ -2722,7 +2519,6 @@
     "name": "We Be Flipping (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1400,
     "tags": [
       "constructive algorithms",
       "dp",
@@ -2735,7 +2531,6 @@
     "name": "We Be Flipping (Easy Version)",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 900,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -2747,7 +2542,6 @@
     "name": "Absolute Cinema",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 800,
     "tags": [
       "greedy",
       "math"
@@ -2759,7 +2553,6 @@
     "name": "Slimes on a Line",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "brute force",
       "greedy",
@@ -2772,7 +2565,6 @@
     "name": "Momoyo and the Network",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 2700,
     "tags": [
       "binary search",
       "dfs and similar",
@@ -2787,7 +2579,6 @@
     "name": "Amanojaku and Sequence (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 2500,
     "tags": [
       "combinatorics",
       "data structures",
@@ -2801,7 +2592,6 @@
     "name": "Amanojaku and Sequence (Easy Version)",
     "type": "PROGRAMMING",
     "points": 2000.0,
-    "rating": 2400,
     "tags": [
       "combinatorics",
       "math"
@@ -2813,7 +2603,6 @@
     "name": "Sanae, Cross and Color",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 1900,
     "tags": [
       "binary search",
       "data structures",
@@ -2826,7 +2615,6 @@
     "name": "Cirno and Number (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1600,
     "tags": [
       "binary search",
       "dfs and similar",
@@ -2841,7 +2629,6 @@
     "name": "Cirno and Number (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1500,
     "tags": [
       "binary search",
       "brute force",
@@ -2856,7 +2643,6 @@
     "name": "Remilia Plays Soku",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 1100,
     "tags": [
       "games",
       "implementation"
@@ -2868,7 +2654,6 @@
     "name": "Marisa Steals Reimu's Takeout",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "greedy",
       "implementation"
@@ -2879,7 +2664,6 @@
     "index": "H",
     "name": "Fallen Leaves",
     "type": "PROGRAMMING",
-    "rating": 2100,
     "tags": [
       "dfs and similar",
       "dp",
@@ -2891,7 +2675,6 @@
     "index": "G",
     "name": "Drowning",
     "type": "PROGRAMMING",
-    "rating": 2000,
     "tags": [
       "binary search",
       "data structures",
@@ -2903,7 +2686,6 @@
     "index": "F",
     "name": "It Just Keeps Going Sideways",
     "type": "PROGRAMMING",
-    "rating": 1700,
     "tags": [
       "binary search",
       "data structures",
@@ -2917,7 +2699,6 @@
     "index": "E",
     "name": "It All Went Sideways",
     "type": "PROGRAMMING",
-    "rating": 1400,
     "tags": [
       "binary search",
       "data structures",
@@ -2930,7 +2711,6 @@
     "index": "D",
     "name": "Palindromex",
     "type": "PROGRAMMING",
-    "rating": 1200,
     "tags": [
       "binary search",
       "brute force",
@@ -2946,7 +2726,6 @@
     "index": "C",
     "name": "Snowfall",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "constructive algorithms",
       "math"
@@ -2957,7 +2736,6 @@
     "index": "B",
     "name": "Party Monster",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "greedy"
     ]
@@ -2967,7 +2745,6 @@
     "index": "A",
     "name": "Koshary",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "implementation",
       "math"
@@ -2979,7 +2756,6 @@
     "name": "Stop Spot",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 3000,
     "tags": [
       "implementation",
       "strings",
@@ -2992,7 +2768,6 @@
     "name": "Inversion Invasion",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2800,
     "tags": [
       "math",
       "number theory"
@@ -3004,7 +2779,6 @@
     "name": "Mental Monumental (Hard Version)",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2300,
     "tags": [
       "data structures",
       "greedy",
@@ -3018,7 +2792,6 @@
     "name": "Reserved Reversals",
     "type": "PROGRAMMING",
     "points": 2000.0,
-    "rating": 1900,
     "tags": [
       "constructive algorithms",
       "dp",
@@ -3032,7 +2805,6 @@
     "name": "Mental Monumental (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1500,
     "tags": [
       "binary search",
       "data structures",
@@ -3047,7 +2819,6 @@
     "name": "Everything Everywhere",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 900,
     "tags": [
       "greedy",
       "math",
@@ -3060,7 +2831,6 @@
     "name": "Disturbing Distribution",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "greedy",
       "math"
@@ -3071,7 +2841,6 @@
     "index": "G",
     "name": "Simple Problem",
     "type": "PROGRAMMING",
-    "rating": 2900,
     "tags": [
       "brute force",
       "graphs",
@@ -3084,7 +2853,6 @@
     "index": "F",
     "name": "String Cutting",
     "type": "PROGRAMMING",
-    "rating": 2600,
     "tags": [
       "binary search",
       "brute force",
@@ -3099,7 +2867,6 @@
     "index": "E",
     "name": "Covering Points with Circles",
     "type": "PROGRAMMING",
-    "rating": 2200,
     "tags": [
       "constructive algorithms",
       "geometry",
@@ -3111,7 +2878,6 @@
     "index": "D",
     "name": "Exceptional Segments",
     "type": "PROGRAMMING",
-    "rating": 1500,
     "tags": [
       "bitmasks",
       "brute force",
@@ -3123,7 +2889,6 @@
     "index": "C",
     "name": "Red-Black Pairs",
     "type": "PROGRAMMING",
-    "rating": 1100,
     "tags": [
       "dp",
       "greedy"
@@ -3134,7 +2899,6 @@
     "index": "B",
     "name": "Alternating String",
     "type": "PROGRAMMING",
-    "rating": 900,
     "tags": [
       "brute force",
       "greedy"
@@ -3145,7 +2909,6 @@
     "index": "A",
     "name": "A Number Between Two Others",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "greedy",
       "math"
@@ -3157,7 +2920,6 @@
     "name": "Zhily and Mex and Max",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 1200,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -3171,7 +2933,6 @@
     "name": "Zhily and Array Operating",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -3183,7 +2944,6 @@
     "name": "Zhily and Colorful Strings",
     "type": "PROGRAMMING",
     "points": 4500.0,
-    "rating": 3400,
     "tags": [
       "divide and conquer",
       "fft",
@@ -3196,7 +2956,6 @@
     "name": "Zhily and Permutation",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 3500,
     "tags": [
       "data structures",
       "divide and conquer",
@@ -3209,7 +2968,6 @@
     "name": "Zhily and Cycle",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2800,
     "tags": [
       "graphs",
       "greedy"
@@ -3221,7 +2979,6 @@
     "name": "Zhily and Signpost",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 2300,
     "tags": [
       "chinese remainder theorem",
       "dfs and similar",
@@ -3236,7 +2993,6 @@
     "name": "Zhily and Barknights",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 1600,
     "tags": [
       "binary search",
       "data structures",
@@ -3252,7 +3008,6 @@
     "name": "Zhily and Bracket Swapping",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 1300,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -3264,7 +3019,6 @@
     "name": "Counting Sort?",
     "type": "PROGRAMMING",
     "points": 4000.0,
-    "rating": 3500,
     "tags": [
       "brute force",
       "combinatorics",
@@ -3277,7 +3031,6 @@
     "name": "Statistics on Tree",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 3100,
     "tags": [
       "binary search",
       "brute force",
@@ -3293,7 +3046,6 @@
     "name": "Building Tree",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 2600,
     "tags": [
       "data structures",
       "divide and conquer",
@@ -3308,7 +3060,6 @@
     "name": "Seek the Truth",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2000,
     "tags": [
       "binary search",
       "bitmasks",
@@ -3322,7 +3073,6 @@
     "name": "Permutation Construction",
     "type": "PROGRAMMING",
     "points": 2000.0,
-    "rating": 1800,
     "tags": [
       "constructive algorithms",
       "data structures",
@@ -3335,7 +3085,6 @@
     "name": "Median Partition",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1500,
     "tags": [
       "dp",
       "math"
@@ -3347,7 +3096,6 @@
     "name": "Artistic Balance Tree",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1100,
     "tags": [
       "greedy",
       "sortings"
@@ -3359,7 +3107,6 @@
     "name": "A Wonderful Contest",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "brute force",
       "dp",
@@ -3372,7 +3119,6 @@
     "name": "OIE Excursion",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1200,
     "tags": [
       "greedy"
     ]
@@ -3383,7 +3129,6 @@
     "name": "Blocked",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "greedy",
       "sortings"
@@ -3395,7 +3140,6 @@
     "name": "Weird Chessboard",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 3500,
     "tags": [
       "constructive algorithms",
       "math"
@@ -3407,7 +3151,6 @@
     "name": "MEX Replacement on Tree",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2700,
     "tags": [
       "data structures",
       "implementation",
@@ -3421,7 +3164,6 @@
     "name": "Coloring a Red Black Tree",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 2300,
     "tags": [
       "dfs and similar",
       "dp",
@@ -3437,7 +3179,6 @@
     "name": "Unique Values (Hard version)",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 2000,
     "tags": [
       "binary search",
       "bitmasks",
@@ -3451,7 +3192,6 @@
     "name": "Unique Values (Easy version)",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 1900,
     "tags": [
       "binary search",
       "constructive algorithms",
@@ -3466,7 +3206,6 @@
     "name": "Grid L",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 1400,
     "tags": [
       "brute force",
       "constructive algorithms",
@@ -3479,7 +3218,6 @@
     "index": "G",
     "name": "The 67th Iteration of \"Counting is Fun\"",
     "type": "PROGRAMMING",
-    "rating": 1800,
     "tags": [
       "implementation",
       "math"
@@ -3490,7 +3228,6 @@
     "index": "F",
     "name": "The 67th Tree Problem",
     "type": "PROGRAMMING",
-    "rating": 1500,
     "tags": [
       "constructive algorithms",
       "implementation",
@@ -3502,7 +3239,6 @@
     "index": "E",
     "name": "The 67th XOR Problem",
     "type": "PROGRAMMING",
-    "rating": 1200,
     "tags": [
       "binary search",
       "bitmasks",
@@ -3514,7 +3250,6 @@
     "index": "D",
     "name": "The 67th OEIS Problem",
     "type": "PROGRAMMING",
-    "rating": 1100,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -3527,7 +3262,6 @@
     "index": "C",
     "name": "The 67th Permutation Problem",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -3539,7 +3273,6 @@
     "index": "B",
     "name": "The 67th 6-7 Integer Problem",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "greedy",
       "math"
@@ -3550,7 +3283,6 @@
     "index": "A",
     "name": "The 67th Integer Problem",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "brute force",
       "games",
@@ -3564,7 +3296,6 @@
     "name": "Closer",
     "type": "PROGRAMMING",
     "points": 3750.0,
-    "rating": 2800,
     "tags": [
       "dfs and similar",
       "dp",
@@ -3577,7 +3308,6 @@
     "name": "Down the Pivot",
     "type": "PROGRAMMING",
     "points": 3250.0,
-    "rating": 2600,
     "tags": [
       "combinatorics",
       "dp",
@@ -3591,7 +3321,6 @@
     "name": "Interval Game",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2300,
     "tags": [
       "bitmasks",
       "combinatorics",
@@ -3609,7 +3338,6 @@
     "name": "Definitely Larger",
     "type": "PROGRAMMING",
     "points": 2000.0,
-    "rating": 2000,
     "tags": [
       "binary search",
       "constructive algorithms",
@@ -3625,7 +3353,6 @@
     "name": "Flip the Bit (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1900,
     "tags": [
       "greedy",
       "implementation",
@@ -3638,7 +3365,6 @@
     "name": "Grid Covering",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1300,
     "tags": [
       "chinese remainder theorem",
       "math",
@@ -3651,7 +3377,6 @@
     "name": "Flip the Bit (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1000,
     "tags": [
       "greedy",
       "implementation"
@@ -3663,7 +3388,6 @@
     "name": "The Equalizer",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "math"
     ]
@@ -3674,7 +3398,6 @@
     "name": "THU Packing Puzzle",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1300,
     "tags": [
       "greedy"
     ]
@@ -3685,7 +3408,6 @@
     "name": "Course Wishes",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 900,
     "tags": [
       "greedy"
     ]
@@ -3696,7 +3418,6 @@
     "name": "Maze",
     "type": "PROGRAMMING",
     "points": 5000.0,
-    "rating": 3500,
     "tags": [
       "trees"
     ]
@@ -3707,7 +3428,6 @@
     "name": "Research",
     "type": "PROGRAMMING",
     "points": 4000.0,
-    "rating": 3500,
     "tags": [
       "games"
     ]
@@ -3718,7 +3438,6 @@
     "name": "Star Map",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 2700,
     "tags": [
       "constructive algorithms",
       "data structures",
@@ -3733,7 +3452,6 @@
     "name": "EXPloration, EXPloitation, and Gain Some EXPerience!",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2800,
     "tags": [
       "bitmasks",
       "brute force",
@@ -3748,7 +3466,6 @@
     "name": "Oriented Journey",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 2200,
     "tags": [
       "bitmasks",
       "brute force",
@@ -3765,7 +3482,6 @@
     "name": "RReeppeettiittiioonn",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 2000,
     "tags": [
       "binary search",
       "brute force",
@@ -3780,7 +3496,6 @@
     "name": "Interval Mod",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 1700,
     "tags": [
       "constructive algorithms",
       "dp",
@@ -3894,7 +3609,6 @@
     "name": "Median Deletion",
     "type": "PROGRAMMING",
     "points": 4000.0,
-    "rating": 3500,
     "tags": []
   },
   {
@@ -3903,7 +3617,6 @@
     "name": "Rational Bubble Sort",
     "type": "PROGRAMMING",
     "points": 3250.0,
-    "rating": 2900,
     "tags": [
       "constructive algorithms",
       "geometry",
@@ -3916,7 +3629,6 @@
     "name": "Learning Binary Search",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 2400,
     "tags": [
       "combinatorics",
       "divide and conquer",
@@ -3930,7 +3642,6 @@
     "name": "Minimum Path Cover",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2500,
     "tags": [
       "brute force",
       "dp",
@@ -3947,7 +3658,6 @@
     "name": "AND-array",
     "type": "PROGRAMMING",
     "points": 2000.0,
-    "rating": 1900,
     "tags": [
       "bitmasks",
       "combinatorics",
@@ -3960,7 +3670,6 @@
     "name": "Equal Multisets (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1800,
     "tags": [
       "constructive algorithms",
       "dsu",
@@ -3973,7 +3682,6 @@
     "name": "Equal Multisets (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1300,
     "tags": [
       "binary search",
       "brute force",
@@ -3987,7 +3695,6 @@
     "name": "Mickey Mouse Constructive",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1100,
     "tags": [
       "constructive algorithms",
       "dp",
@@ -4001,7 +3708,6 @@
     "name": "Antimedian Deletion",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "implementation",
       "math"
@@ -4013,7 +3719,6 @@
     "name": "A Simple Problem",
     "type": "PROGRAMMING",
     "points": 3500.0,
-    "rating": 2700,
     "tags": [
       "binary search",
       "data structures",
@@ -4028,7 +3733,6 @@
     "name": "Binary Strings are Simple?",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2700,
     "tags": [
       "constructive algorithms",
       "implementation",
@@ -4042,7 +3746,6 @@
     "name": "A Simple RBS Problem",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2100,
     "tags": [
       "constructive algorithms",
       "math",
@@ -4056,7 +3759,6 @@
     "name": "A Simple GCD Problem (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 2100,
     "tags": [
       "dp",
       "greedy",
@@ -4069,7 +3771,6 @@
     "name": "A Simple GCD Problem (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1200,
     "tags": [
       "greedy",
       "number theory"
@@ -4081,7 +3782,6 @@
     "name": "Simply Sitting on Chairs",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 900,
     "tags": [
       "data structures",
       "greedy"
@@ -4093,7 +3793,6 @@
     "name": "A Simple Sequence",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "constructive algorithms",
       "dp",
@@ -4107,7 +3806,6 @@
     "name": "Dynamic Values And Maximum Sum",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 2700,
     "tags": [
       "data structures",
       "greedy",
@@ -4121,7 +3819,6 @@
     "name": "A Trivial String Problem",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2200,
     "tags": [
       "brute force",
       "dp",
@@ -4136,7 +3833,6 @@
     "name": "Ghostfires",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1800,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -4148,7 +3844,6 @@
     "name": "Find the Zero",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1400,
     "tags": [
       "constructive algorithms",
       "interactive"
@@ -4160,7 +3855,6 @@
     "name": "Array",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 900,
     "tags": [
       "greedy"
     ]
@@ -4171,7 +3865,6 @@
     "name": "Flip Flops",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "greedy"
     ]
@@ -4182,7 +3875,6 @@
     "name": "Counting Cute Arrays",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 2700,
     "tags": [
       "combinatorics",
       "dp"
@@ -4194,7 +3886,6 @@
     "name": "Tree Orientation (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 2200,
     "tags": [
       "dfs and similar",
       "dsu",
@@ -4210,7 +3901,6 @@
     "name": "Tree Orientation (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1800,
     "tags": [
       "constructive algorithms",
       "dfs and similar",
@@ -4227,7 +3917,6 @@
     "name": "Stamina and Tasks",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1300,
     "tags": [
       "dp",
       "greedy",
@@ -4240,7 +3929,6 @@
     "name": "Cyclists",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1100,
     "tags": [
       "brute force",
       "games",
@@ -4256,7 +3944,6 @@
     "name": "Bingo Candies",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "constructive algorithms",
       "math"
@@ -4311,7 +3998,6 @@
     "name": "Toothless",
     "type": "PROGRAMMING",
     "points": 3750.0,
-    "rating": 3300,
     "tags": [
       "constructive algorithms",
       "dfs and similar",
@@ -4324,7 +4010,6 @@
     "name": "Hanabi",
     "type": "PROGRAMMING",
     "points": 3250.0,
-    "rating": 2900,
     "tags": [
       "binary search",
       "data structures",
@@ -4342,7 +4027,6 @@
     "name": "N-MEX (Counting Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 2400,
     "tags": [
       "combinatorics",
       "constructive algorithms",
@@ -4355,7 +4039,6 @@
     "name": "N-MEX (Constructive Version)",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 2100,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -4367,7 +4050,6 @@
     "name": "Boxed Like a Fish",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2200,
     "tags": [
       "dfs and similar",
       "dp",
@@ -4382,7 +4064,6 @@
     "name": "Where's My Water?",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1600,
     "tags": [
       "data structures",
       "divide and conquer",
@@ -4396,7 +4077,6 @@
     "name": "One Night At Freddy's",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1600,
     "tags": [
       "games",
       "greedy",
@@ -4409,7 +4089,6 @@
     "name": "1-1",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 800,
     "tags": [
       "greedy",
       "strings"
@@ -4420,7 +4099,6 @@
     "index": "M",
     "name": "Deformed Balance",
     "type": "PROGRAMMING",
-    "rating": 2900,
     "tags": []
   },
   {
@@ -4428,7 +4106,6 @@
     "index": "L",
     "name": "Onion",
     "type": "PROGRAMMING",
-    "rating": 3500,
     "tags": []
   },
   {
@@ -4436,7 +4113,6 @@
     "index": "K",
     "name": "Time Display Stickers",
     "type": "PROGRAMMING",
-    "rating": 1300,
     "tags": [
       "binary search"
     ]
@@ -4446,7 +4122,6 @@
     "index": "J",
     "name": "Worldwide Playlist",
     "type": "PROGRAMMING",
-    "rating": 1700,
     "tags": [
       "math"
     ]
@@ -4456,7 +4131,6 @@
     "index": "I",
     "name": "Growth Factor",
     "type": "PROGRAMMING",
-    "rating": 2900,
     "tags": [
       "combinatorics",
       "dp",
@@ -4469,7 +4143,6 @@
     "index": "H",
     "name": "Reflect Sort",
     "type": "PROGRAMMING",
-    "rating": 1800,
     "tags": [
       "number theory"
     ]
@@ -4479,7 +4152,6 @@
     "index": "G",
     "name": "Extra Transition",
     "type": "PROGRAMMING",
-    "rating": 3100,
     "tags": [
       "graphs"
     ]
@@ -4489,7 +4161,6 @@
     "index": "F",
     "name": "Minesweeper String",
     "type": "PROGRAMMING",
-    "rating": 2400,
     "tags": [
       "fft",
       "number theory"
@@ -4500,7 +4171,6 @@
     "index": "E",
     "name": "Parallel Sums",
     "type": "PROGRAMMING",
-    "rating": 2500,
     "tags": [
       "data structures",
       "geometry"
@@ -4511,7 +4181,6 @@
     "index": "D",
     "name": "Christmas Tree Un-decoration",
     "type": "PROGRAMMING",
-    "rating": 2600,
     "tags": [
       "data structures",
       "dp",
@@ -4523,7 +4192,6 @@
     "index": "C",
     "name": "Upside Down Dijkstra",
     "type": "PROGRAMMING",
-    "rating": 2200,
     "tags": [
       "dfs and similar"
     ]
@@ -4533,7 +4201,6 @@
     "index": "B",
     "name": "Subtree Removal Game",
     "type": "PROGRAMMING",
-    "rating": 2500,
     "tags": [
       "binary search",
       "games",
@@ -4545,7 +4212,6 @@
     "index": "A",
     "name": "Compare Suffixes",
     "type": "PROGRAMMING",
-    "rating": 3500,
     "tags": [
       "interactive"
     ]
@@ -4556,7 +4222,6 @@
     "name": "Simons and Diophantus Equation",
     "type": "PROGRAMMING",
     "points": 3250.0,
-    "rating": 3000,
     "tags": [
       "bitmasks",
       "brute force",
@@ -4571,7 +4236,6 @@
     "name": "Simons and Reconstructing His Roads",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2400,
     "tags": [
       "constructive algorithms",
       "data structures",
@@ -4585,7 +4249,6 @@
     "name": "Simons and Dividing the Rhythm",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2100,
     "tags": [
       "combinatorics",
       "data structures",
@@ -4602,7 +4265,6 @@
     "name": "Simons and Beating Peaks",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1700,
     "tags": [
       "data structures",
       "divide and conquer",
@@ -4618,7 +4280,6 @@
     "name": "Simons and Posting Blogs",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1500,
     "tags": [
       "greedy",
       "sortings"
@@ -4630,7 +4291,6 @@
     "name": "Simons and Cakes for Success",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 800,
     "tags": [
       "implementation",
       "math"
@@ -4642,7 +4302,6 @@
     "name": "Simons and Making It Beautiful",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 800,
     "tags": [
       "brute force",
       "constructive algorithms"
@@ -4653,7 +4312,6 @@
     "index": "G",
     "name": "Grid Path",
     "type": "PROGRAMMING",
-    "rating": 2700,
     "tags": [
       "dp",
       "graphs",
@@ -4665,7 +4323,6 @@
     "index": "F",
     "name": "Sum of Fractions",
     "type": "PROGRAMMING",
-    "rating": 2200,
     "tags": [
       "binary search",
       "brute force",
@@ -4682,7 +4339,6 @@
     "index": "E",
     "name": "Sum of Digits (and Again)",
     "type": "PROGRAMMING",
-    "rating": 1800,
     "tags": [
       "brute force",
       "constructive algorithms",
@@ -4694,7 +4350,6 @@
     "index": "D",
     "name": "Alternating Path",
     "type": "PROGRAMMING",
-    "rating": 1400,
     "tags": [
       "constructive algorithms",
       "dfs and similar",
@@ -4707,7 +4362,6 @@
     "index": "C",
     "name": "Spring",
     "type": "PROGRAMMING",
-    "rating": 1000,
     "tags": [
       "math",
       "number theory"
@@ -4718,7 +4372,6 @@
     "index": "B",
     "name": "Right Maximum",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "greedy"
     ]
@@ -4728,7 +4381,6 @@
     "index": "A",
     "name": "Passing the Ball",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "brute force",
       "implementation"
@@ -4739,7 +4391,6 @@
     "index": "F",
     "name": "Binary Search with One Swap",
     "type": "PROGRAMMING",
-    "rating": 2600,
     "tags": [
       "binary search",
       "divide and conquer",
@@ -4754,7 +4405,6 @@
     "index": "E",
     "name": "Probabilistic Card Game",
     "type": "PROGRAMMING",
-    "rating": 2200,
     "tags": [
       "binary search",
       "data structures",
@@ -4769,7 +4419,6 @@
     "index": "D",
     "name": "Divisibility Game",
     "type": "PROGRAMMING",
-    "rating": 1700,
     "tags": [
       "brute force",
       "games",
@@ -4782,7 +4431,6 @@
     "index": "C",
     "name": "Test Generator",
     "type": "PROGRAMMING",
-    "rating": 1500,
     "tags": [
       "binary search",
       "bitmasks",
@@ -4795,7 +4443,6 @@
     "index": "B",
     "name": "Beautiful Numbers",
     "type": "PROGRAMMING",
-    "rating": 1000,
     "tags": [
       "bitmasks",
       "dp",
@@ -4809,7 +4456,6 @@
     "index": "A",
     "name": "Towers of Boxes",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "math"
     ]
@@ -4820,7 +4466,6 @@
     "name": "Monotone Monochrome Matrices (Easy Version)",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2500,
     "tags": [
       "data structures"
     ]
@@ -4831,7 +4476,6 @@
     "name": "ABAB Construction",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1200,
     "tags": [
       "dp",
       "greedy",
@@ -4844,7 +4488,6 @@
     "name": "Parkour Design",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 800,
     "tags": [
       "math"
     ]
@@ -4855,7 +4498,6 @@
     "name": "Codeforces Heuristic Contest 1001",
     "type": "PROGRAMMING",
     "points": 5000.0,
-    "rating": 3500,
     "tags": [
       "constructive algorithms"
     ]
@@ -4866,7 +4508,7 @@
     "name": "Monotone Monochrome Matrices (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 2800,
+    "rating": 2700,
     "tags": [
       "constructive algorithms",
       "data structures",
@@ -4880,7 +4522,7 @@
     "name": "Monotone Monochrome Matrices (Medium Version)",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2900,
+    "rating": 2800,
     "tags": [
       "data structures",
       "hashing"
@@ -4965,7 +4607,6 @@
     "index": "H",
     "name": "Six Seven",
     "type": "PROGRAMMING",
-    "rating": 2600,
     "tags": [
       "divide and conquer",
       "math",
@@ -4979,7 +4620,6 @@
     "index": "G",
     "name": "Operation Permutation",
     "type": "PROGRAMMING",
-    "rating": 2200,
     "tags": [
       "combinatorics",
       "dp",
@@ -4992,7 +4632,6 @@
     "index": "F",
     "name": "Mooclear Reactor 2",
     "type": "PROGRAMMING",
-    "rating": 1900,
     "tags": [
       "brute force",
       "data structures",
@@ -5006,7 +4645,6 @@
     "index": "E",
     "name": "Divisive Battle",
     "type": "PROGRAMMING",
-    "rating": 1500,
     "tags": [
       "games",
       "greedy",
@@ -5019,7 +4657,6 @@
     "index": "D",
     "name": "Portal",
     "type": "PROGRAMMING",
-    "rating": 1300,
     "tags": [
       "greedy",
       "sortings"
@@ -5030,7 +4667,6 @@
     "index": "C",
     "name": "Specialty String",
     "type": "PROGRAMMING",
-    "rating": 900,
     "tags": [
       "brute force",
       "greedy",
@@ -5042,7 +4678,6 @@
     "index": "B",
     "name": "Deletion Sort",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "bitmasks",
       "brute force",
@@ -5055,7 +4690,6 @@
     "index": "A",
     "name": "Eating Game",
     "type": "PROGRAMMING",
-    "rating": 800,
     "tags": [
       "greedy"
     ]
@@ -5065,7 +4699,6 @@
     "index": "I",
     "name": "Strange Process",
     "type": "PROGRAMMING",
-    "rating": 3000,
     "tags": [
       "*special"
     ]
@@ -5075,7 +4708,6 @@
     "index": "H",
     "name": "Sum of MEX",
     "type": "PROGRAMMING",
-    "rating": 2300,
     "tags": [
       "*special",
       "combinatorics",
@@ -5089,7 +4721,6 @@
     "index": "G",
     "name": "Jammer",
     "type": "PROGRAMMING",
-    "rating": 2500,
     "tags": [
       "*special",
       "math"
@@ -5100,7 +4731,6 @@
     "index": "F",
     "name": "Self-Produced Sequences",
     "type": "PROGRAMMING",
-    "rating": 2000,
     "tags": [
       "*special",
       "combinatorics",
@@ -5112,7 +4742,6 @@
     "index": "E",
     "name": "Supersequence",
     "type": "PROGRAMMING",
-    "rating": 2100,
     "tags": [
       "*special",
       "binary search",
@@ -5124,7 +4753,6 @@
     "index": "D",
     "name": "Two Arrays",
     "type": "PROGRAMMING",
-    "rating": 1800,
     "tags": [
       "*special",
       "math"
@@ -5135,7 +4763,6 @@
     "index": "C",
     "name": "Minesweeper",
     "type": "PROGRAMMING",
-    "rating": 1600,
     "tags": [
       "*special",
       "constructive algorithms",
@@ -5147,7 +4774,6 @@
     "index": "B",
     "name": "Two Towers",
     "type": "PROGRAMMING",
-    "rating": 1400,
     "tags": [
       "*special",
       "greedy",
@@ -5159,7 +4785,6 @@
     "index": "A",
     "name": "Game",
     "type": "PROGRAMMING",
-    "rating": 1000,
     "tags": [
       "*special"
     ]
@@ -5328,7 +4953,7 @@
     "index": "G",
     "name": "Idiot First Search and Queries",
     "type": "PROGRAMMING",
-    "rating": 2300,
+    "rating": 2200,
     "tags": [
       "binary search",
       "data structures",
@@ -5368,7 +4993,7 @@
     "index": "D",
     "name": "Absolute Cinema",
     "type": "PROGRAMMING",
-    "rating": 1300,
+    "rating": 1200,
     "tags": [
       "math"
     ]
@@ -5378,7 +5003,7 @@
     "index": "C",
     "name": "Dice Roll Sequence",
     "type": "PROGRAMMING",
-    "rating": 1100,
+    "rating": 1000,
     "tags": [
       "dp",
       "greedy"
@@ -5412,7 +5037,7 @@
     "name": "Again Trees... (hard version)",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 3000,
+    "rating": 2800,
     "tags": [
       "bitmasks",
       "data structures",
@@ -5484,7 +5109,7 @@
     "name": "Offshores",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1000,
+    "rating": 900,
     "tags": [
       "greedy",
       "implementation",
@@ -5572,7 +5197,7 @@
     "index": "C",
     "name": "Replace and Sum",
     "type": "PROGRAMMING",
-    "rating": 1000,
+    "rating": 900,
     "tags": [
       "data structures",
       "greedy"
@@ -5618,7 +5243,7 @@
     "name": "Swap to Rearrange",
     "type": "PROGRAMMING",
     "points": 2250.0,
-    "rating": 2100,
+    "rating": 2000,
     "tags": [
       "constructive algorithms",
       "dfs and similar",
@@ -5684,7 +5309,7 @@
     "name": "MEX Reordering",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1000,
+    "rating": 900,
     "tags": [
       "constructive algorithms",
       "sortings"
@@ -5801,7 +5426,7 @@
     "name": "Sorting Game",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 1200,
+    "rating": 1100,
     "tags": [
       "constructive algorithms",
       "games",
@@ -6093,7 +5718,7 @@
     "index": "E",
     "name": "The Robotic Rush",
     "type": "PROGRAMMING",
-    "rating": 1500,
+    "rating": 1400,
     "tags": [
       "binary search",
       "greedy",
@@ -6119,7 +5744,7 @@
     "index": "C",
     "name": "Shifted MEX",
     "type": "PROGRAMMING",
-    "rating": 900,
+    "rating": 800,
     "tags": [
       "implementation",
       "sortings"
@@ -6175,7 +5800,7 @@
     "index": "E",
     "name": "Exquisite Array",
     "type": "PROGRAMMING",
-    "rating": 1800,
+    "rating": 1700,
     "tags": [
       "combinatorics",
       "data structures",
@@ -6188,7 +5813,7 @@
     "index": "D",
     "name": "Unfair Game",
     "type": "PROGRAMMING",
-    "rating": 1600,
+    "rating": 1500,
     "tags": [
       "combinatorics",
       "dp",
@@ -6214,7 +5839,7 @@
     "index": "B",
     "name": "Hourglass",
     "type": "PROGRAMMING",
-    "rating": 1100,
+    "rating": 1000,
     "tags": [
       "math"
     ]
@@ -6343,7 +5968,7 @@
     "name": "War Strategy",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1500,
+    "rating": 1400,
     "tags": [
       "binary search",
       "greedy",
@@ -6436,7 +6061,7 @@
     "index": "D",
     "name": "Christmas Tree Decoration",
     "type": "PROGRAMMING",
-    "rating": 1600,
+    "rating": 1500,
     "tags": [
       "combinatorics",
       "dp",
@@ -6449,7 +6074,7 @@
     "index": "C",
     "name": "Production of Snowmen",
     "type": "PROGRAMMING",
-    "rating": 1200,
+    "rating": 1100,
     "tags": [
       "brute force",
       "combinatorics",
@@ -6542,7 +6167,7 @@
     "index": "H",
     "name": "Honey Cake",
     "type": "PROGRAMMING",
-    "rating": 1200,
+    "rating": 1100,
     "tags": [
       "brute force",
       "math",
@@ -6554,7 +6179,7 @@
     "index": "G",
     "name": "Greta's Game",
     "type": "PROGRAMMING",
-    "rating": 2400,
+    "rating": 2300,
     "tags": [
       "binary search",
       "dp",
@@ -6603,7 +6228,7 @@
     "index": "C",
     "name": "Cacti Classification",
     "type": "PROGRAMMING",
-    "rating": 3200,
+    "rating": 3100,
     "tags": [
       "binary search",
       "constructive algorithms",
@@ -6719,7 +6344,7 @@
     "name": "Insolvable Disks",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1900,
+    "rating": 2000,
     "tags": [
       "data structures",
       "dp",
@@ -6837,7 +6462,7 @@
     "index": "C",
     "name": "Blackslex and Number Theory",
     "type": "PROGRAMMING",
-    "rating": 1100,
+    "rating": 1000,
     "tags": [
       "implementation",
       "math",
@@ -6970,7 +6595,7 @@
     "name": "Impost or Sus",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 900,
+    "rating": 800,
     "tags": [
       "dp",
       "greedy",
@@ -7054,7 +6679,7 @@
     "name": "Optimal Shifts",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1000,
+    "rating": 900,
     "tags": [
       "bitmasks",
       "greedy",
@@ -7080,7 +6705,7 @@
     "name": "XOR Array",
     "type": "PROGRAMMING",
     "points": 750.0,
-    "rating": 1300,
+    "rating": 1200,
     "tags": [
       "constructive algorithms",
       "math"
@@ -7118,7 +6743,7 @@
     "name": "Game of Scientists (Version 2)",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 3200,
+    "rating": 3100,
     "tags": [
       "binary search",
       "chinese remainder theorem",
@@ -7133,7 +6758,7 @@
     "name": "Game of Scientists (Version 1)",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 3100,
+    "rating": 3000,
     "tags": [
       "chinese remainder theorem",
       "constructive algorithms",
@@ -7147,7 +6772,7 @@
     "name": "Secret Message",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 3400,
+    "rating": 3300,
     "tags": [
       "data structures",
       "dp",
@@ -7161,7 +6786,7 @@
     "name": "Beautiful Patterns (Hard Version)",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "rating": 2500,
+    "rating": 2400,
     "tags": [
       "combinatorics",
       "math",
@@ -7270,7 +6895,7 @@
     "name": "Niko's Tactical Cards",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1100,
+    "rating": 1000,
     "tags": [
       "dp",
       "greedy",
@@ -7294,7 +6919,7 @@
     "index": "N",
     "name": "New Kingdom",
     "type": "PROGRAMMING",
-    "rating": 2800,
+    "rating": 2700,
     "tags": [
       "constructive algorithms",
       "graphs",
@@ -7306,7 +6931,7 @@
     "index": "M",
     "name": "Maximum Distance To Port",
     "type": "PROGRAMMING",
-    "rating": 1300,
+    "rating": 1400,
     "tags": [
       "graphs",
       "shortest paths"
@@ -7361,7 +6986,7 @@
     "index": "H",
     "name": "Shuffling Cards with Problem Solver 68!",
     "type": "PROGRAMMING",
-    "rating": 2500,
+    "rating": 2600,
     "tags": [
       "hashing",
       "string suffix structures",
@@ -7403,7 +7028,7 @@
     "index": "D",
     "name": "Divisor Card Game",
     "type": "PROGRAMMING",
-    "rating": 3100,
+    "rating": 3000,
     "tags": [
       "combinatorics",
       "dp"
@@ -7446,7 +7071,7 @@
     "index": "H",
     "name": "Shiori Miyagi and Maximum Array Score",
     "type": "PROGRAMMING",
-    "rating": 2400,
+    "rating": 2300,
     "tags": [
       "binary search",
       "data structures",
@@ -7489,7 +7114,7 @@
     "index": "E",
     "name": "Anisphia Wynn Palettia and Good Permutations",
     "type": "PROGRAMMING",
-    "rating": 2000,
+    "rating": 1900,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -7541,7 +7166,7 @@
     "index": "B",
     "name": "Yuu Koito and Minimum Absolute Sum",
     "type": "PROGRAMMING",
-    "rating": 900,
+    "rating": 800,
     "tags": [
       "math"
     ]
@@ -7573,7 +7198,7 @@
     "index": "E",
     "name": "Binary Strings and Blocks",
     "type": "PROGRAMMING",
-    "rating": 2100,
+    "rating": 2000,
     "tags": [
       "combinatorics",
       "data structures",
@@ -7585,7 +7210,7 @@
     "index": "D",
     "name": "Almost Roman",
     "type": "PROGRAMMING",
-    "rating": 2200,
+    "rating": 2100,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -7597,7 +7222,7 @@
     "index": "C",
     "name": "Quotient and Remainder",
     "type": "PROGRAMMING",
-    "rating": 1300,
+    "rating": 1200,
     "tags": [
       "binary search",
       "greedy",
@@ -7609,7 +7234,7 @@
     "index": "B",
     "name": "Addition on a Segment",
     "type": "PROGRAMMING",
-    "rating": 1200,
+    "rating": 1100,
     "tags": [
       "greedy",
       "math"
@@ -7634,7 +7259,7 @@
     "index": "F",
     "name": "Subsequence Problem",
     "type": "PROGRAMMING",
-    "rating": 2700,
+    "rating": 2800,
     "tags": [
       "combinatorics",
       "dp",
@@ -7699,7 +7324,7 @@
     "index": "B",
     "name": "Drifting Away",
     "type": "PROGRAMMING",
-    "rating": 1100,
+    "rating": 1000,
     "tags": [
       "greedy",
       "implementation"
@@ -7882,7 +7507,7 @@
     "name": "Arctic Acquisition",
     "type": "PROGRAMMING",
     "points": 4000.0,
-    "rating": 3500,
+    "rating": 3400,
     "tags": [
       "data structures",
       "greedy"
@@ -7908,7 +7533,7 @@
     "name": "Path Split",
     "type": "PROGRAMMING",
     "points": 2500.0,
-    "rating": 2500,
+    "rating": 2600,
     "tags": [
       "graph matchings",
       "greedy"
@@ -8086,7 +7711,7 @@
     "name": "Plegma",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2700,
+    "rating": 2600,
     "tags": [
       "bitmasks",
       "combinatorics",
@@ -8144,7 +7769,7 @@
     "name": "Siga ta Kymata",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1700,
+    "rating": 1600,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -8217,7 +7842,7 @@
     "index": "D",
     "name": "Beautiful Permutation",
     "type": "PROGRAMMING",
-    "rating": 1400,
+    "rating": 1300,
     "tags": [
       "binary search",
       "interactive"
@@ -8240,7 +7865,7 @@
     "index": "B",
     "name": "Beautiful String",
     "type": "PROGRAMMING",
-    "rating": 1000,
+    "rating": 900,
     "tags": [
       "brute force",
       "constructive algorithms"
@@ -8326,7 +7951,7 @@
     "name": "Loyalty",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1200,
+    "rating": 1100,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -8366,7 +7991,7 @@
     "name": "Reverse XOR",
     "type": "PROGRAMMING",
     "points": 1250.0,
-    "rating": 1300,
+    "rating": 1200,
     "tags": [
       "bitmasks"
     ]
@@ -8377,7 +8002,7 @@
     "name": "Distinct Elements",
     "type": "PROGRAMMING",
     "points": 1000.0,
-    "rating": 1100,
+    "rating": 1000,
     "tags": [
       "greedy",
       "math"
@@ -8425,7 +8050,7 @@
     "name": "Inverse Minimum Partition (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 3200,
+    "rating": 3100,
     "tags": [
       "dp",
       "greedy",
@@ -8609,7 +8234,7 @@
     "name": "Keygen 3",
     "type": "PROGRAMMING",
     "points": 3750.0,
-    "rating": 3200,
+    "rating": 3300,
     "tags": [
       "brute force",
       "combinatorics",
@@ -8732,7 +8357,7 @@
     "name": "Strange Operation (Hard Version)",
     "type": "PROGRAMMING",
     "points": 3250.0,
-    "rating": 3000,
+    "rating": 3100,
     "tags": [
       "data structures",
       "greedy",
@@ -8745,7 +8370,7 @@
     "name": "Strange Operation (Easy Version)",
     "type": "PROGRAMMING",
     "points": 3250.0,
-    "rating": 2200,
+    "rating": 2300,
     "tags": [
       "brute force",
       "data structures",
@@ -8760,7 +8385,7 @@
     "name": "Best Time to Buy and Sell Stock",
     "type": "PROGRAMMING",
     "points": 2750.0,
-    "rating": 2500,
+    "rating": 2400,
     "tags": [
       "binary search",
       "brute force",
@@ -8831,7 +8456,7 @@
     "name": "Juan's Colorful Tree",
     "type": "PROGRAMMING",
     "points": 3000.0,
-    "rating": 2800,
+    "rating": 2700,
     "tags": [
       "data structures",
       "dfs and similar",
@@ -8876,7 +8501,7 @@
     "name": "The Ancient Wizards' Capes",
     "type": "PROGRAMMING",
     "points": 1750.0,
-    "rating": 1500,
+    "rating": 1600,
     "tags": [
       "brute force",
       "greedy",
@@ -9022,7 +8647,7 @@
     "name": "Odd Queries on Odd Array",
     "type": "PROGRAMMING",
     "points": 3250.0,
-    "rating": 2900,
+    "rating": 2600,
     "tags": [
       "bitmasks",
       "brute force",
@@ -9142,7 +8767,7 @@
     "name": "Triple Attack",
     "type": "PROGRAMMING",
     "points": 4000.0,
-    "rating": 2500,
+    "rating": 2600,
     "tags": [
       "data structures",
       "greedy"
@@ -9195,7 +8820,7 @@
     "name": "Catching the Krug",
     "type": "PROGRAMMING",
     "points": 1500.0,
-    "rating": 1300,
+    "rating": 1200,
     "tags": [
       "games"
     ]

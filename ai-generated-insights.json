@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-23T20:48:37+00:00",
+  "updated_at": "2026-09-24T05:34:36+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -14964,6 +14964,65 @@
         "quality_flags": [
           "statement_definition_missing"
         ]
+      }
+    },
+    "1890B": {
+      "problem_key": "1890B",
+      "title": "Qingshan Loves Strings",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1890/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/121813",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "a97060d084ea602f6c94aef6d6fb64ede40ccdf8def13ba1b71925fbf5f3b640",
+      "generated_at": "2026-09-24T05:33:35+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定二进制字符串 $s$ 和 $t$，可以把完整的 $t$ 插入到 $s$ 的任意位置并重复任意次。若最终能使 $s$ 的相邻字符始终交替（即成为 good 字符串），输出 YES，否则输出 NO。",
+        "transformed_statement": "把问题转化为消除 $s$ 中的坏相邻对：若 $t$ 交替且首尾为 $1$，它可插入到 $00$ 之间修复该处；若首尾为 $0$，则对称地修复 $11$，同时需保证另一类坏对不存在。",
+        "key_observations": [
+          "目标字符串“good”等价于相邻字符全部不同，即整个字符串必须交替；因此初始的 $s$ 若已交替即可直接回答 YES。",
+          "插入一个交替且首尾都是 $1$ 的 $t$，可以修复 $s$ 中的相邻 $00$；只要不存在 $11$，插入位置不会制造新的 $11$。",
+          "插入一个交替且首尾都是 $0$ 的 $t$，可以对称地修复所有相邻 $11$；只要不存在 $00$，操作不会制造新的 $00$。",
+          "若 $t$ 不满足上述两种交替且首尾相同的形式，则插入无法持续消除 $s$ 中的坏相邻对，因此不能依靠操作把非交替字符串变好。"
+        ],
+        "solution_brief": "先判断 $s$ 是否交替。否则要求 $t$ 本身交替且首尾相同：首尾为 $1$ 时检查 $s$ 无 $11$，首尾为 $0$ 时检查 $s$ 无 $00$；满足对应条件则输出 YES，否则 NO。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的示例、editorial_text 的三种判定条件及 tags；题面中 good 的定义和插入操作描述存在缺失，因此对其作了必要的语义还原。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1890A": {
+      "problem_key": "1890A",
+      "title": "Doremy's Paint 3",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1890/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/121813",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "5b883423c0cb1897071e5d4fee0bf1acf836217afaa5082b88595e7e68dfeddb",
+      "generated_at": "2026-09-24T05:34:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组，可以任意重新排列元素，但不能修改元素值。要求判断是否能排列成一个数组，使所有相邻元素的和都相等。",
+        "transformed_statement": "相邻和相等等价于 $b_i=b_{i+2}$，因此问题转化为：能否把数组划分为奇数位置组和偶数位置组，使每组内部元素全部相同，且组大小分别为 $⌈n/2⌉$ 与 $⌊n/2⌋$。",
+        "key_observations": [
+          "由相邻和相等可得 $b_i+b_{i+1}=b_{i+1}+b_{i+2}$，进而有 $b_i=b_{i+2}$，因此奇数位置和偶数位置必须各自全部相同。",
+          "长度为 $n$ 的数组中，奇数位置有 $⌈n/2⌉$ 个、偶数位置有 $⌊n/2⌋$ 个，所以元素频次必须能恰好分成这两个大小。",
+          "若数组含有三种及以上不同的数，不可能填满两类位置；若只有一种数则必然可行，若有两种数则频次必须分别为 $⌊n/2⌋$ 和 $⌈n/2⌉$。"
+        ],
+        "solution_brief": "统计不同数及其频次。若只有一种数直接输出 Yes；否则必须恰有两种数，且它们的频次分别为 $⌊n/2⌋$ 与 $⌈n/2⌉$，满足则输出 Yes，否则输出 No。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，tags 仅用于主题辅助。",
+        "quality_flags": []
       }
     }
   }

@@ -1,19 +1,19 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-09-23",
+  "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1556,
+    "total_problems": 1558,
     "source_total_problems": 1749,
-    "filtered_out_problems": 193,
-    "with_statement_brief": 1556,
-    "with_editorial_brief": 1324,
-    "with_solution_brief": 1325,
+    "filtered_out_problems": 191,
+    "with_statement_brief": 1558,
+    "with_editorial_brief": 1326,
+    "with_solution_brief": 1327,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 493,
+    "ai_override_count": 495,
     "primary_topic_count": 13,
-    "contest_count": 249,
+    "contest_count": 250,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 64,
-    "构造与贪心": 507,
+    "构造与贪心": 509,
     "图论与网络流": 99,
     "动态规划与状态设计": 157,
     "数论与同余": 146,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 412,
+    "ai_generated_with_editorial": 414,
     "ai_generated_partial_editorial": 21,
     "missing_editorial": 231,
     "manual_override": 891,
@@ -36417,6 +36417,69 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1890,
+      "name": "Codeforces Round 906 (Div. 2)",
+      "date": "2023-10-28",
+      "url": "https://codeforces.com/contest/1890",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 800,
+      "problems": [
+        {
+          "key": "1890A",
+          "index": "A",
+          "slot": "A",
+          "title": "Doremy's Paint 3",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1890/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/121813",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个正整数数组，可以任意重新排列元素，但不能修改元素值。要求判断是否能排列成一个数组，使所有相邻元素的和都相等。",
+          "transformedStatement": "相邻和相等等价于 $b_i=b_{i+2}$，因此问题转化为：能否把数组划分为奇数位置组和偶数位置组，使每组内部元素全部相同，且组大小分别为 $⌈n/2⌉$ 与 $⌊n/2⌋$。",
+          "keyObservations": [
+            "由相邻和相等可得 $b_i+b_{i+1}=b_{i+1}+b_{i+2}$，进而有 $b_i=b_{i+2}$，因此奇数位置和偶数位置必须各自全部相同。",
+            "长度为 $n$ 的数组中，奇数位置有 $⌈n/2⌉$ 个、偶数位置有 $⌊n/2⌋$ 个，所以元素频次必须能恰好分成这两个大小。",
+            "若数组含有三种及以上不同的数，不可能填满两类位置；若只有一种数则必然可行，若有两种数则频次必须分别为 $⌊n/2⌋$ 和 $⌈n/2⌉$。"
+          ],
+          "solutionBrief": "统计不同数及其频次。若只有一种数直接输出 Yes；否则必须恰有两种数，且它们的频次分别为 $⌊n/2⌋$ 与 $⌈n/2⌉$，满足则输出 Yes，否则输出 No。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1890B",
+          "index": "B",
+          "slot": "B",
+          "title": "Qingshan Loves Strings",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1890/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/121813",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定二进制字符串 $s$ 和 $t$，可以把完整的 $t$ 插入到 $s$ 的任意位置并重复任意次。若最终能使 $s$ 的相邻字符始终交替（即成为 good 字符串），输出 YES，否则输出 NO。",
+          "transformedStatement": "把问题转化为消除 $s$ 中的坏相邻对：若 $t$ 交替且首尾为 $1$，它可插入到 $00$ 之间修复该处；若首尾为 $0$，则对称地修复 $11$，同时需保证另一类坏对不存在。",
+          "keyObservations": [
+            "目标字符串“good”等价于相邻字符全部不同，即整个字符串必须交替；因此初始的 $s$ 若已交替即可直接回答 YES。",
+            "插入一个交替且首尾都是 $1$ 的 $t$，可以修复 $s$ 中的相邻 $00$；只要不存在 $11$，插入位置不会制造新的 $11$。",
+            "插入一个交替且首尾都是 $0$ 的 $t$，可以对称地修复所有相邻 $11$；只要不存在 $00$，操作不会制造新的 $00$。",
+            "若 $t$ 不满足上述两种交替且首尾相同的形式，则插入无法持续消除 $s$ 中的坏相邻对，因此不能依靠操作把非交替字符串变好。"
+          ],
+          "solutionBrief": "先判断 $s$ 是否交替。否则要求 $t$ 本身交替且首尾相同：首尾为 $1$ 时检查 $s$ 无 $11$，首尾为 $0$ 时检查 $s$ 无 $00$；满足对应条件则输出 YES，否则 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
