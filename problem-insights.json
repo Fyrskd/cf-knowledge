@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1728,
+    "total_problems": 1736,
     "source_total_problems": 1749,
-    "filtered_out_problems": 21,
-    "with_statement_brief": 1728,
-    "with_editorial_brief": 1497,
-    "with_solution_brief": 1498,
+    "filtered_out_problems": 13,
+    "with_statement_brief": 1736,
+    "with_editorial_brief": 1505,
+    "with_solution_brief": 1506,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 669,
+    "ai_override_count": 677,
     "primary_topic_count": 13
   },
   "records": [
@@ -26288,6 +26288,363 @@
           "model": "gpt-6-luna",
           "generated_at": "2026-09-24T15:59:29+00:00",
           "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 633,
+      "problem_key": "1967A",
+      "contest_id": 1967,
+      "title": "Permutation Counting",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1967/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/129027",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "greedy",
+        "implementation",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "有 $n$ 种卡片，第 $i$ 种已有 $a_i$ 张，可额外购买总数为 $k$ 的任意类型卡片，然后任意排列全部卡片。要求最大化排列中长度为 $n$ 且恰好包含 $1$ 到 $n$ 各一次的连续子数组数量。",
+      "transformed_statement": "把问题转成分配购买卡片以抬高各类型库存的最低层：先确定购买后最小数量 $w$，再由仍停留在该最低层的类型数决定可形成的有效窗口数量。",
+      "key_observations": [
+        "设购买后所有类型中的最小卡片数为 $w$，若恰有 $c$ 种类型数量等于 $w$，最大得分为 $nw-c+1$。",
+        "每次把一张卡补给当前数量最少的类型，得分恰好增加 $1$；补给非最少类型不会增加得分，因此预算应优先用于抬高最低层。",
+        "抬高最低层时，数量相同的类型必须成组处理；确定最终最低值 $w$ 后，再根据剩余处于 $w$ 的类型数量直接套用公式。"
+      ],
+      "solution_brief": "将数量排序，优先用 $k$ 张卡补齐当前最少的类型，确定购买后的最低数量 $w$ 及等于 $w$ 的类型数 $c$，答案为 $nw-c+1$。可枚举最低层范围或二分 $w$，复杂度为 $O(n\\log n)$ 或 $O(n\\log a_i)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T16:21:23+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 634,
+      "problem_key": "1967B1",
+      "contest_id": 1967,
+      "title": "Reverse Card (Easy Version)",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1967/problem/B1",
+      "editorial_url": "https://codeforces.com/blog/entry/129027",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定正整数 $n,m$，统计所有满足 $1\\le a\\le n$、$1\\le b\\le m$ 且 $(b\\cdot\\gcd(a,b))$ 能整除 $a+b$ 的有序正整数对 $(a,b)$ 数量。",
+      "transformed_statement": "把每对数写成 $a=pd,b=qd$，其中 $d=\\gcd(a,b)$ 且 $\\gcd(p,q)=1$；整除条件将其转化为 $qd\\mid p+q$，进而只需按 $d=b$ 枚举可行的参数 $k$。",
+      "key_observations": [
+        "令 $d=\\gcd(a,b)$、$a=pd$、$b=qd$ 后，整除条件等价于 $qd\\mid p+q$，同时 $\\gcd(p,q)=1$。",
+        "由 $p+q=kqd$ 可得 $p=(kd-1)q$；互质性强制 $q=1$，因此所有有效对都满足 $b=d$。",
+        "固定 $d$ 后，$p+1=kd$ 且 $a=pd\\le n$，所以可选的 $k$ 数量为 $\\left\\lfloor(\\left\\lfloor n/d\\right\\rfloor+1)/d\\right\\rfloor$。",
+        "计数时 $d=1,k=1$ 会产生非法的 $a=0$，因此最终总数需要减去 $1$。"
+      ],
+      "solution_brief": "将 $a,b$ 按最大公约数分解，证明互质条件迫使 $b=d$。枚举 $d=1$ 到 $m$，累加 $\\left\\lfloor(\\left\\lfloor n/d\\right\\rfloor+1)/d\\right\\rfloor$，最后减去对应 $a=0$ 的一次计数，复杂度为 $O(\\sum m)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T16:19:59+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 635,
+      "problem_key": "1967B2",
+      "contest_id": 1967,
+      "title": "Reverse Card (Hard Version)",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1967/problem/B2",
+      "editorial_url": "https://codeforces.com/blog/entry/129027",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定正整数 $n,m$，统计所有满足 $1\\le a\\le n$、$1\\le b\\le m$ 的有序对 $(a,b)$，其中 $a+b$ 必须整除 $b\\cdot\\gcd(a,b)$。每组数据输出合法有序对的数量。",
+      "transformed_statement": "把 $(a,b)$ 唯一写成 $a=pd、b=qd$，其中 $d=\\gcd(a,b)$ 且 $\\gcd(p,q)=1$；题目转化为枚举互质的 $(p,q)$，并统计满足 $(p+q)\\mid d$ 及范围约束的 $d$。",
+      "key_observations": [
+        "令 $d=\\gcd(a,b)$、$a=pd$、$b=qd$ 后，$p,q$ 互质，原条件等价于 $(p+q)\\mid qd$。",
+        "由于 $\\gcd(p+q,q)=1$，必有 $(p+q)\\mid d$，因此固定互质的 $(p,q)$ 后，只需统计满足范围的 $d$ 的倍数。",
+        "由 $a=pd\\le n$ 且 $d>p$ 可得 $p^2<n$，同理 $q^2<m$，从而只需枚举有限的小范围 $(p,q)$。",
+        "固定 $(p,q)$ 时，合法的 $d$ 数量为 $\\left\\lfloor\\frac{\\min(\\lfloor n/p\\rfloor,\\lfloor m/q\\rfloor)}{p+q}\\right\\rfloor$，对所有互质对求和即可。"
+      ],
+      "solution_brief": "将每个有序对按最大公因数分解为 $a=pd,b=qd$，枚举满足 $p^2<n、q^2<m$ 且互质的 $(p,q)$，累加上述 $d$ 的倍数数量；总复杂度为 $O(\\sum n+\\sum m)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T16:19:01+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 636,
+      "problem_key": "1967C",
+      "contest_id": 1967,
+      "title": "Fenwick Tree",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1967/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/129027",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "组合计数与概率",
+        "动态规划与状态设计",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "combinatorics",
+        "data structures",
+        "dp",
+        "math",
+        "trees"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组 $b$ 和正整数 $k$。一次 Fenwick 变换令第 $j$ 项变为原数组区间 $[j-\\operatorname{lowbit}(j)+1,j]$ 的元素和并对 $998244353$ 取模，连续执行 $k$ 次后得到 $b$；需要构造任意满足条件且每项在模数范围内的原数组 $a$。",
+      "transformed_statement": "把下标按 Fenwick 的父子关系组织成树，变换等价于把每个节点的子树和写入节点。问题转化为：已知重复传播后的节点值，利用节点到祖先的深度差对应的组合系数，自底向上反推出各节点的初始值。",
+      "key_observations": [
+        "把 Fenwick 数组对应为一棵树：每个位置存储其子树元素之和，原数组元素对祖先节点的影响沿树向上传播。",
+        "若节点 $u$ 是祖先 $v$ 的后代，深度差为 $\\\u001b[?]$，则 $a_u$ 在经过 $k$ 次变换后对 $b_v$ 的系数为 $\\binom{\\Delta d+k-1}{\\Delta d}$；因此多次变换的影响可以直接按深度差计算。",
+        "叶节点没有其他后代贡献，所以其原值满足 $a_u=b_u$；已知这些节点后，向上枚举并从祖先的 $b$ 值中扣除已知贡献，剩余值就唯一确定当前节点。",
+        "每个节点只需更新其 Fenwick 树祖先，树高为 $O(\\log n)$，因此总处理量为 $O(n\\log n)$。"
+      ],
+      "solution_brief": "将 Fenwick 变换建模为树上的子树和传播。按从低位节点到高位节点的顺序确定 $a_u$，并用系数 $\\binom{\\Delta d+k-1}{\\Delta d}$ 将该值对所有祖先的贡献扣除，最终得到满足条件的数组。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T16:15:59+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 637,
+      "problem_key": "1967D",
+      "contest_id": 1967,
+      "title": "Long Way to be Non-decreasing",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1967/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/129027",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "dfs and similar",
+        "graphs",
+        "implementation",
+        "shortest paths",
+        "two pointers"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组 $a$、值域为 $[1,m]$ 的固定数组 $b$，需要通过反复施展题面规定的魔法，使 $a$ 变为非递减，并求最少施法次数；若无法做到则输出 $-1$。当前记录缺失每次魔法如何依据 $b$ 修改数组的具体规则。",
+      "transformed_statement": "将一次魔法抽象为值之间的有向转移，并询问一个值在至多 $k$ 步内能否到达另一个值；固定 $k$ 后，问题变为按位置贪心选择最小可达且不小于前一项的值。转移图是每点出度为一的伪森林。",
+      "key_observations": [
+        "固定施法次数 $k$ 后，可行性具有单调性：若 $k$ 次能完成，更多次数也不会变差，因此最小次数可通过二分确定。",
+        "判定固定 $k$ 时，从左到右为每个位置选择能达到的最小值；若当前候选值不可达就增大候选值，否则确定该位置并处理下一个位置，从而保证后缀保留最大可行空间。",
+        "由每个点唯一指向 $p_i$ 建图后得到伪森林；切断每个环上的一条边即可将问题化为树上的祖先关系，并用 DFS 序判断子树包含关系。",
+        "路径经过被切断的环边时，可将距离拆成两段树路径加环边，使用 $dep_s-dep_u+dep_v-dep_t+1\\le k$ 判断，并分别检查 $u$、$v$ 所属子树。"
+      ],
+      "solution_brief": "二分答案 $k$。判定时从左到右贪心选每个位置的最小可行值；把魔法转移建成每点出度为一的伪森林，切环后用 DFS 序、子树大小和深度在 $O(1)$ 判断 $k$ 步可达性。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T16:15:22+00:00",
+          "quality_flags": [
+            "ambiguous_statement",
+            "editorial_uses_undefined_p_i",
+            "statement_missing_operation_definition"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 638,
+      "problem_key": "1967E1",
+      "contest_id": 1967,
+      "title": "Again Counting Arrays (Easy Version)",
+      "rating": 3100,
+      "problem_url": "https://codeforces.com/contest/1967/problem/E1",
+      "editorial_url": "https://codeforces.com/blog/entry/129027",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "fft",
+        "math"
+      ],
+      "statement_brief": "给定长度 $n$、取值上限 $m$ 和初值 $b_0$，统计所有由 $m$ 个可能值组成的数组 $a_1,\u0010ldots,a_n$：要求存在非负整数数组 $b_0,\u0010ldots,b_n$，每步满足 $|b_i-b_{i-1}|=1$，且所有位置都有 $a_i\\ne b_i$。答案对 $998244353$ 取模。",
+      "transformed_statement": "题解把生成过程重述为网格中的单调路径计数：路径不能经过两条斜线 $y=x+b_1$ 与 $y=x+b_2$。对触碰斜线的路径使用反射与容斥，把每种触线序列转成起点到反射后终点的组合数。",
+      "key_observations": [
+        "固定数组 $a$ 后，可以按当前位置和连续数组当前值建立网格路径状态，从而把“存在一条避开 $a_i$ 的 $b$”转成路径计数问题。",
+        "当状态达到边界值 $m$ 时，后续每个 $a_i$ 都有 $m$ 种独立选择，因此该状态直接贡献 $m^{n-i}$，无需继续转移。",
+        "核心子问题等价于从原点走到目标点且不经过两条形如 $y=x+b_1$、$y=x+b_2$ 的直线；对触线事件做容斥，并用反射将每项化为一个组合数。",
+        "触碰同一条直线的连续事件可以压缩，且反射后只有 $O((p+q)/|b_1-b_2|)$ 个非零项；简化后的网格路径计数可进一步用 NTT 加速。"
+      ],
+      "solution_brief": "先用当前位置与 $b_i$ 的 DP 表示可行生成过程，边界状态直接计入后续的 $m$ 次方贡献；再将转移化为避开两条对角线的网格路径计数，用反射法和容斥求组合数，并以 NTT 加速卷积。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T16:14:04+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 639,
+      "problem_key": "1967E2",
+      "contest_id": 1967,
+      "title": "Again Counting Arrays (Hard Version)",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1967/problem/E2",
+      "editorial_url": "https://codeforces.com/blog/entry/129027",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组 $a$，其元素为不超过 $m$ 的非负整数，并给定连续数组的初值 $b_0$。连续数组 $b_0,\\ldots,b_n$ 每步上下移动 $1$ 且始终非负；要求统计有多少个不同的 $a$，使得存在某个连续数组满足所有 $i$ 都有 $a_i\\ne b_i$，答案对 $998244353$ 取模。",
+      "transformed_statement": "把 $b$ 建模为在高度轴上的一维步行，把 $a_i$ 看作各时刻禁止经过的高度；利用上下边界 $y=m$ 和 $y=-1$ 的反射，将满足条件的路径贡献转成边界触碰序列的交替容斥，再聚合终点。",
+      "key_observations": [
+        "把连续数组视为从初始高度 $b_0$ 出发、每步上下移动 $1$ 的路径，数组 $a_i$ 则是在时刻 $i$ 禁止路径经过的高度。",
+        "反射边界 $y=m$ 与 $y=-1$ 后，触碰边界的路径按首次触碰序列交替计数，贡献形成 $f(\\varnothing)-f(\\texttt{Y})+f(\\texttt{XY})-\\cdots$ 的容斥。",
+        "目标点位于边界外侧时，反射后的路径可能根本未触碰边界，因此必须分别处理 $x\\ge 0$ 与 $x\\le -1$ 两部分，后者必先触碰 $\\texttt{Y}$。",
+        "路径终点的计数可写成 $\\sum_i c_i\\binom{n}{i}$；通过对系数序列做微分式递推，避免逐项处理组合数并将总复杂度降至 $O(n)$。"
+      ],
+      "solution_brief": "将数组计数转为受两条边界限制的路径容斥，用反射法处理边界触碰序列；分别计算两侧终点贡献，再维护系数序列 $c_i$ 并通过微分递推求和，单测复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T16:12:30+00:00",
+          "quality_flags": [
+            "editorial_references_G1",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 640,
+      "problem_key": "1967F",
+      "contest_id": 1967,
+      "title": "Next and Prev",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1967/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/129027",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "data structures",
+        "implementation"
+      ],
+      "statement_brief": "给定一个 $1$ 到 $n$ 的排列。对每个 $q$，保留排列中不超过 $q$ 的元素并保持原相对顺序形成 $q$-subsequence；在其中为每个位置找左侧最近的更大元素位置 `pre` 和右侧最近的更大元素位置 `nxt`。对该 $q$ 的每个查询 $x$，求 $\\sum_i\\min(nxt(i)-pre(i),x)$。",
+      "transformed_statement": "把每个位置 $i$ 看成长度为 $x$ 的区间 $[i,i+x)$，按元素值从大到小标记尚未标记的位置。标记总数给出目标和与单边量 $\\sum_i\\min(x,nxt_i-i)$ 的恒等关系，因此问题转为随 $q$ 插入元素并动态维护这些距离。",
+      "key_observations": [
+        "对固定的 $q,x$，把每个位置 $i$ 标记区间 $[i,i+x)$，按元素值从大到小处理，可得标记总数恒为 $q+x-1$，从而把目标和转化为两类单边距离之和。",
+        "标记恒等式给出 $\\sum_i\\min(x,nxt_i-pre_i)=\\sum_i\\min(x,nxt_i-i)+\\sum_i\\min(x,i-pre_i)-(q+x-1)$；左右两项对称，因此只需维护一侧。",
+        "增大 $q$ 插入新元素时，完整块内的 $nxt_i$ 只会整体加一或被新位置执行 `chkmin`；最大 $nxt_i$ 的位置可懒更新，其余情况重建块。",
+        "按 $nxt_i-i$ 排序并维护前缀和后，每个块可二分计算 $\u0000sum\\min(x,nxt_i-i)$；用块内不同 $nxt_i$ 值的数量作势能，可将重建总成本摊还到 $O(nB+n^2/B)$。"
+      ],
+      "solution_brief": "用区间标记恒等式把答案化为单边距离和，按 $q$ 增量插入元素；分块维护各位置的 $nxt_i-i$，按值分类、懒处理整体加一并在必要时重建。取 $B=O(\\sqrt n)$，总复杂度为 $O(n\\sqrt n+k\\sqrt n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T16:11:21+00:00",
+          "quality_flags": [
+            "statement_formatting_corrupted"
+          ]
         }
       },
       "manual_override": false,
