@@ -4476,6 +4476,7 @@
     "name": "ABAB Construction",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 1200,
     "tags": [
       "dp",
       "greedy",
@@ -4488,6 +4489,7 @@
     "name": "Parkour Design",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 800,
     "tags": [
       "math"
     ]
