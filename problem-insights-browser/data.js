@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1686,
+    "total_problems": 1692,
     "source_total_problems": 1749,
-    "filtered_out_problems": 63,
-    "with_statement_brief": 1686,
-    "with_editorial_brief": 1455,
-    "with_solution_brief": 1456,
+    "filtered_out_problems": 57,
+    "with_statement_brief": 1692,
+    "with_editorial_brief": 1461,
+    "with_solution_brief": 1462,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 625,
+    "ai_override_count": 631,
     "primary_topic_count": 13,
-    "contest_count": 270,
+    "contest_count": 271,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 73,
-    "构造与贪心": 559,
+    "构造与贪心": 561,
     "图论与网络流": 107,
-    "动态规划与状态设计": 163,
+    "动态规划与状态设计": 165,
     "数论与同余": 154,
-    "组合计数与概率": 132,
+    "组合计数与概率": 133,
     "数据结构": 136,
     "几何": 37,
-    "树结构": 111,
+    "树结构": 112,
     "交互": 73,
     "基础实现与模拟": 68,
     "博弈": 58,
     "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 536,
+    "ai_generated_with_editorial": 542,
     "ai_generated_partial_editorial": 28,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -35509,6 +35509,197 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1946,
+      "name": "Codeforces Round 936 (Div. 2)",
+      "date": "2024-03-22",
+      "url": "https://codeforces.com/contest/1946",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1946A",
+          "index": "A",
+          "slot": "A",
+          "title": "Median of an Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1946/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/127439",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一个整数数组，每次可以任选一个位置并将该元素加 $1$。求最少进行多少次操作，才能使数组按非降序排列后的中位数严格增大。",
+          "transformedStatement": "设当前中位数为 $x$，将目标改写为：让足够多的元素达到至少 $x+1$。排序后统计已有的这类元素，并计算中位数值所在连续区间中还需加一的元素数量。",
+          "keyObservations": [
+            "中位数要从当前值 $x$ 至少升到 $x+1$，必须让至少 $n-\\lceil n/2\\rceil+1$ 个元素达到 $x+1$ 及以上，因此问题可转成补足这类元素的数量。",
+            "排序后，设中位数值 $x$ 最后一次出现的位置为 $t$，已有的、严格大于 $x$ 的元素恰有 $n-t$ 个；中位数到位置 $t$ 的 $x$ 都要各增加一次，补足所需数量恰好只需这些操作。"
+          ],
+          "solutionBrief": "将数组升序排序，令中位数值为 $x$，并找到 $x$ 最后出现的位置 $t$。答案为 $t-\\lceil n/2\\rceil+1$：对从中位数位置到 $t$ 的每个元素各加 $1$，即可让中位数至少增加 $1$，且所需操作数最少。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1946B",
+          "index": "B",
+          "slot": "B",
+          "title": "Maximum Sum",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1946/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/127439",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定整数数组，恰好进行 $k$ 次操作：每次选取一个连续子数组（也可为空），将其元素和作为一个新元素插入数组任意位置。求操作后数组元素总和的最大值，并对 $10^9+7$ 取模。",
+          "transformedStatement": "把每次操作对目标的影响视为给总和增加所选子数组的和；核心是找出可反复扩大的最大子数组和 $x$。将新得到的和插入该子数组内部可使其和翻倍，从而把多次操作的贡献转成几何级数。",
+          "keyObservations": [
+            "一次操作只会把所选连续子数组的和加入整个数组，因此最终总和等于原总和加上每次插入的数值。",
+            "对原数组取最大子数组和 $x$ 后，每次都把当前这段子数组的和插入其内部，就能使其和依次翻倍；题解据此得到各次新增量为 $x,2x,4x,\\dots$。",
+            "插入任意子数组和都不超过当前数组的最大子数组和，因此上述翻倍策略达到题解所述的最大增长；空子数组允许取和为 $0$，也覆盖 $x$ 非正的情况。"
+          ],
+          "solutionBrief": "用 Kadane 算法求原数组总和 $s$ 和最大子数组和 $x$，答案为 $s+(2^k-1)x$，再对 $10^9+7$ 取模。若 $x$ 为负，允许选择空子数组使新增贡献为零。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1946C",
+          "index": "C",
+          "slot": "C",
+          "title": "Tree Cutting",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1946/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/127439",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵有 $n$ 个顶点的树，必须恰好删除 $k$ 条边，使树分成若干连通块。要求每个连通块至少有 $x$ 个顶点，求能够实现的最大 $x$。",
+          "transformedStatement": "将问题转化为判定固定阈值 $x$ 是否可行：只需判断树中能否切出至少 $k+1$ 个、大小均不小于 $x$ 的连通块；随后利用该判定对 $x$ 的单调性寻找最大阈值。",
+          "keyObservations": [
+            "若阈值 $x$ 可行，则更小的阈值也可行，因此可行性关于 $x$ 单调，最大答案可以通过二分确定。",
+            "固定 $x$ 后，若某个子树已有至少 $x$ 个点，就切断它与父节点的边，可将这部分独立成一个合格连通块；题解指出这种贪心能得到可切出的最大块数。",
+            "切出至少 $k+1$ 个合格连通块即可满足要求：删除 $k$ 条边后恰有 $k+1$ 个连通块，再合并部分已切出的块不会使块大小低于 $x$。",
+            "贪心结果与选取的树根无关，因此可任选一点定根；题解通过比较相邻根下的处理顺序，说明两种视角得到的切边一致。"
+          ],
+          "solutionBrief": "对答案阈值 $x$ 二分。每次将树任意定根，自底向上处理；当一个子树大小达到 $x$ 时切断其与父节点的边并计数。若可切出至少 $k+1$ 个合格块，则阈值可行；最终取最大的可行值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1946D",
+          "index": "D",
+          "slot": "D",
+          "title": "Birthday Gift",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1946/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/127439",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组和上界 $x$，将数组按顺序切成若干个非空连续段，每个元素恰好属于一段。对每段求异或，再将这些结果按位或，要求所得值不超过 $x$；求最多能切成多少段，若不存在可行划分则输出 $-1$。",
+          "transformedStatement": "将条件改写为：寻找段数最多的划分，使所有段异或值的按位或小于 $x+1$。从最高位向最低位确定这一比较关系；在需要把某位清零时，将该位为 $1$ 的元素按相邻成对的方式压缩，从而保留可行性并尽量多留段界。",
+          "keyObservations": [
+            "把每段的异或值按位观察：若全数组在某位的异或为 $1$，无论怎样切段，至少有一段该位为 $1$，因此所有段异或值的按位或在该位必为 $1$。",
+            "若某位全数组的异或为 $0$，要让所有段的该位都为 $0$，每段必须包含偶数个该位为 $1$ 的元素；为尽量增加段数，可将相邻的两个该位为 $1$ 的位置及其间元素合并处理。",
+            "从高位向低位比较结果与上界时，高位一旦已经超过上界，低位无法补救；因此遇到结果位必为 $1$ 而上界该位为 $0$ 时即可停止。"
+          ],
+          "solutionBrief": "将上界改为 $x+1$，按位从高到低处理。奇数个当前位为 $1$ 时，该位在最终按位或中必为 $1$；偶数个时，为使该位清零，将相邻的两个 $1$ 及中间元素压缩为其异或值，并继续处理低位。根据高位比较结果判断何时停止，并记录可行的最大段数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1946E",
+          "index": "E",
+          "slot": "E",
+          "title": "Girl Permutation",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1946/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/127439",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列中所有前缀最大值和后缀最大值所在的位置。前缀最大值要求它大于左侧所有元素，后缀最大值要求它大于右侧所有元素；需要统计满足这些位置条件的不同排列数，结果对 $10^9+7$ 取模。",
+          "transformedStatement": "把全局最大值 $n$ 看作前缀最大值和后缀最大值的公共分界点；先分配它左右两侧的数字，再在左右子区间中递归确定下一个最大值位置，并将自由中间段的排列数计入乘积。",
+          "keyObservations": [
+            "若首个前缀最大值不在位置 $1$、最后一个后缀最大值不在位置 $n$，或最大的前缀最大值与最左后缀最大值位置不同，则不可能存在合法排列，答案为 $0$。",
+            "前缀最大值与后缀最大值的交点必为全局最大值 $n$，因此其位置被确定为 $s_1=p_{m_1}$，可先选择哪些较小数字放在它左侧，产生 $\binom{n-1}{s_1-1}$ 种分配。",
+            "固定当前区间中的最大值位置后，区间被拆成左右两部分；较大值必须进入包含该最大值的一侧，其余中间位置的数字可任意排列，分别贡献组合数和阶乘。",
+            "对全局最大值左侧、右侧继续进行同样的分解，所有独立子区间的组合数与阶乘相乘即可得到总方案数。"
+          ],
+          "solutionBrief": "先检查三个必要位置条件，否则答案为 $0$。确定最大值 $n$ 的位置后，按其左右递归拆分；每次用组合数分配两侧数字，用中间空位的阶乘排列，并将各部分贡献相乘后对 $10^9+7$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1946F",
+          "index": "F",
+          "slot": "F",
+          "title": "Nobody is needed",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1946/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/127439",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "2-sat",
+            "data structures",
+            "dfs and similar",
+            "dp"
+          ],
+          "statementBrief": "给定一个排列和多个区间 $[l,r]$，每次要统计其中所有下标递增的非空序列 $(t_1,\u0002,t_k)$：相邻选中位置的排列值满足前者整除后者。对每个区间输出这样的合法序列总数。",
+          "transformedStatement": "把每个合法序列按首位置和末位置计数：固定左端点后，状态表示从该起点出发、以某个排列值结束的整除链；所有首位置不小于当前左端点的链按末位置汇总。",
+          "keyObservations": [
+            "将查询左端点固定为 $L$，Fenwick 树在位置 $i$ 维护所有首下标不小于 $L$ 且末下标为 $i$ 的合法序列数，区间和就直接得到查询答案。",
+            "从 $L$ 变为 $L-1$ 时，只需计算首下标恰为 $L-1$ 的新序列，因此增量只影响以该位置为起点的状态。",
+            "令 $dp[pos_x]$ 表示当前起点到值 $x$ 的合法序列数；若 $x$ 是当前值的倍数且位置递增，则可转移到任意满足 $y$ 为 $x$ 的倍数的 $pos_y$。",
+            "所有新生成序列按末位置累加到 Fenwick 树后清空 $dp$，这样每个左端点的新增贡献不会与后续状态混淆。"
+          ],
+          "solutionBrief": "从右向左枚举左端点，用 $dp$ 计算以新位置开头、按下标递增且数值逐步整除的序列，并按末位置加入 Fenwick 树；查询用区间和回答。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
