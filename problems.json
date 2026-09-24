@@ -98,6 +98,7 @@
     "name": "Deranged Calculator",
     "type": "PROGRAMMING",
     "points": 3000.0,
+    "rating": 2800,
     "tags": [
       "constructive algorithms",
       "implementation",
@@ -110,6 +111,7 @@
     "name": "A Prime Flood (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
+    "rating": 2700,
     "tags": [
       "brute force",
       "combinatorics",
@@ -123,6 +125,7 @@
     "name": "A Prime Flood (Easy Version)",
     "type": "PROGRAMMING",
     "points": 2000.0,
+    "rating": 2200,
     "tags": [
       "combinatorics",
       "dp",
@@ -135,6 +138,7 @@
     "name": "Dr. Agos's Dark Mode",
     "type": "PROGRAMMING",
     "points": 2500.0,
+    "rating": 1900,
     "tags": [
       "brute force",
       "chinese remainder theorem",
@@ -149,6 +153,7 @@
     "name": "Madamant's Skating Dynasty",
     "type": "PROGRAMMING",
     "points": 1500.0,
+    "rating": 1400,
     "tags": [
       "combinatorics",
       "math",
@@ -161,6 +166,7 @@
     "name": "Knife's Pill Farm",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 1000,
     "tags": [
       "data structures",
       "greedy",
@@ -173,6 +179,7 @@
     "name": "Rumb Needs a Hand",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "implementation",
       "sortings",
@@ -185,6 +192,7 @@
     "name": "Min Matrices",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 800,
     "tags": [
       "constructive algorithms"
     ]
@@ -195,6 +203,7 @@
     "name": "Min Max Game",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "games"
     ]
@@ -205,6 +214,7 @@
     "name": "Rank Removal",
     "type": "PROGRAMMING",
     "points": 3250.0,
+    "rating": 3500,
     "tags": [
       "math"
     ]
@@ -215,6 +225,7 @@
     "name": "Paired Bracket Sequences",
     "type": "PROGRAMMING",
     "points": 3000.0,
+    "rating": 3100,
     "tags": [
       "combinatorics",
       "math"
@@ -226,6 +237,7 @@
     "name": "PLUSworld",
     "type": "PROGRAMMING",
     "points": 2500.0,
+    "rating": 2900,
     "tags": [
       "constructive algorithms",
       "graphs",
@@ -238,6 +250,7 @@
     "name": "Traveling the World",
     "type": "PROGRAMMING",
     "points": 1750.0,
+    "rating": 2300,
     "tags": [
       "combinatorics",
       "constructive algorithms",
@@ -252,6 +265,7 @@
     "name": "Culling Game",
     "type": "PROGRAMMING",
     "points": 1750.0,
+    "rating": 2000,
     "tags": [
       "binary search",
       "data structures",
@@ -265,6 +279,7 @@
     "name": "Floor of MEX (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1800,
     "tags": [
       "dp",
       "implementation",
@@ -277,6 +292,7 @@
     "name": "Floor of MEX (Easy Version)",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 1200,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -287,6 +303,7 @@
     "index": "G",
     "name": "Sortable Permutations",
     "type": "PROGRAMMING",
+    "rating": 2600,
     "tags": [
       "brute force",
       "combinatorics",
@@ -299,6 +316,7 @@
     "index": "F",
     "name": "Edge Three-Coloring",
     "type": "PROGRAMMING",
+    "rating": 2500,
     "tags": [
       "brute force",
       "dfs and similar",
@@ -312,6 +330,7 @@
     "index": "E",
     "name": "Cyclic Balance",
     "type": "PROGRAMMING",
+    "rating": 2000,
     "tags": [
       "binary search",
       "constructive algorithms",
@@ -324,6 +343,7 @@
     "index": "D",
     "name": "Signs of Prefix Sums",
     "type": "PROGRAMMING",
+    "rating": 1700,
     "tags": [
       "brute force",
       "constructive algorithms",
@@ -337,6 +357,7 @@
     "index": "C",
     "name": "Maximize XOR, Minimize Operations",
     "type": "PROGRAMMING",
+    "rating": 1300,
     "tags": [
       "bitmasks",
       "greedy"
@@ -347,6 +368,7 @@
     "index": "B",
     "name": "Monocarp and Projects",
     "type": "PROGRAMMING",
+    "rating": 900,
     "tags": [
       "brute force",
       "math",
@@ -358,6 +380,7 @@
     "index": "A",
     "name": "Monocarp's Contest",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "implementation"
     ]
@@ -367,6 +390,7 @@
     "index": "H",
     "name": "Treasure Map Destruction (Counting Version)",
     "type": "PROGRAMMING",
+    "rating": 2200,
     "tags": [
       "dfs and similar",
       "dp",

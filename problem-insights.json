@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1657,
+    "total_problems": 1663,
     "source_total_problems": 1749,
-    "filtered_out_problems": 92,
-    "with_statement_brief": 1657,
-    "with_editorial_brief": 1425,
-    "with_solution_brief": 1426,
+    "filtered_out_problems": 86,
+    "with_statement_brief": 1663,
+    "with_editorial_brief": 1431,
+    "with_solution_brief": 1432,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 595,
+    "ai_override_count": 601,
     "primary_topic_count": 13
   },
   "records": [
@@ -23059,6 +23059,283 @@
             "notation_corrupted",
             "statement_inferred"
           ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 557,
+      "problem_key": "1936A",
+      "contest_id": 1936,
+      "title": "Bitwise Operation Wizard",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1936/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/126513",
+      "editorial_quality": "partial",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "greedy",
+        "interactive",
+        "math"
+      ],
+      "statement_brief": "有一个未知排列 $p_0,\u0018dots,p_{n-1}$，每次可选择四个下标，询问 $p_a|p_b$ 与 $p_c|p_d$ 的大小关系。需要在不超过 $3n$ 次询问内，输出一对下标，使 $p_i\\oplus p_j$ 在所有下标对中最大。",
+      "transformed_statement": "先把目标的一端固定为排列最大值 $n-1$，再将最大异或值的寻找转化为两层筛选：先最大化该端与另一元素的按位或，再在并列候选中最小化另一元素的数值。",
+      "key_observations": [
+        "令两个查询中的下标分别相同，比较的实际值就是单个 $p_i$，因此可用线性扫描找到值为 $n-1$ 的位置。",
+        "固定 $p_i=n-1$ 后，比较 $p_i\\mathbin{|}p_k$ 的大小，可以筛出使按位或达到最大值的所有候选位置；这些位置包含最优异或配对的另一端。",
+        "在按位或相同的候选中，$p_i\\oplus p_k$ 的高位贡献已经确定，选择数值最小的 $p_k$ 可使与 $n-1$ 的异或值最大，从而确定答案。"
+      ],
+      "solution_brief": "先用 $n-1$ 次查询找出值为 $n-1$ 的位置，再用至多 $n-1$ 次查询筛出与它按位或最大的候选，最后在候选中用比较找最小值。总查询次数不超过 $3n$。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T09:07:17+00:00",
+          "quality_flags": [
+            "partial_editorial",
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 558,
+      "problem_key": "1936B",
+      "contest_id": 1936,
+      "title": "Pinball",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1936/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/126513",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "implementation",
+        "math",
+        "two pointers"
+      ],
+      "statement_brief": "给定长度为 $n$ 的一维网格，每格写有 `<` 或 `>`。弹珠分别从每个位置独立放入原始网格，按箭头和题目规定的变向规则逐步移动，直到越出网格；要求输出每个起点所需的时间。",
+      "transformed_statement": "把一次运动抽象为两组关键位置的交替跳转：起点左侧的 `>` 与右侧的 `<` 决定轨迹，其余位置可忽略；再用两组关键位置的数量关系确定最终出口，并累计各段位移。",
+      "key_observations": [
+        "对初始位置 $p$ 而言，真正会改变运动方向的只有 $p$ 左侧的 `>` 和 $p$ 右侧的 `<`，其余格子不会影响轨迹，因此可删去无关位置。",
+        "将两类关键位置分别按运动方向排列后，弹珠轨迹是在这两组位置之间交替移动，最后从某一侧边界离开；两组数量的比较决定离开方向及实际参与的配对数。",
+        "关键位置的下标和可用前缀计数与前缀下标和维护，任意一段轨迹的移动时间可由区间下标和直接计算，避免逐秒模拟。",
+        "通过前缀计数的二分查找，可以定位需要参与轨迹的第 $k$ 个关键位置，从而对每个起点快速汇总所有交替移动段的长度。"
+      ],
+      "solution_brief": "预处理 `<`、`>` 的前缀数量及位置和。对每个起点只考虑左侧 `>` 与右侧 `<`，用数量比较确定离开边界，再以二分定位交替经过的位置，并用位置和前缀快速求总时间。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T09:01:49+00:00",
+          "quality_flags": [
+            "movement_rule_inferred_from_editorial",
+            "statement_rules_omitted"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 559,
+      "problem_key": "1936C",
+      "contest_id": 1936,
+      "title": "Pokémon Arena",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1936/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/126513",
+      "editorial_quality": "partial",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "数据结构",
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "data structures",
+        "graphs",
+        "greedy",
+        "implementation",
+        "shortest paths",
+        "sortings"
+      ],
+      "statement_brief": "有 $n$ 只宝可梦和 $m$ 个属性，初始只有第 $1$ 只在场，目标是让第 $n$ 只站上场。可以雇佣宝可梦与当前宝可梦按某个属性对战，并可永久提高属性、支付对应费用；求让第 $n$ 只上场的最小总费用。",
+      "transformed_statement": "将一次“雇佣宝可梦 $u$、把某属性提高到足以击败当前宝可梦 $v$”视为从 $u$ 到 $v$ 的带权边，权值为雇佣费加所需提升费；目标转化为压缩图中从 $n$ 到 $1$ 的最短路。",
+      "key_observations": [
+        "把“当前站场宝可梦为 $v$ 时使用宝可梦 $u$”的代价写成 $c_u+\\max(0,a_{v,j}-a_{u,j})$，于是整个过程等价于从宝可梦 $n$ 反向走到宝可梦 $1$ 的最短路。",
+        "对每个属性按数值排序，用递增链表示提升属性的费用、用反向零费用链表示可击败的所有较小数值，从而把该属性的所有两两转移压缩为线性条数的边。",
+        "每个属性建立 $X$、$Y$ 两组虚点：沿 $X$ 链移动支付数值差，沿 $Y$ 链移动免费，再通过宝可梦与对应排名点连接，完整表达一次提升并击败目标的过程。",
+        "题解指出无需重复雇佣同一宝可梦，因此图中只需保留一次雇佣费用；所有边权非负，可在压缩图上使用最短路求解。"
+      ],
+      "solution_brief": "按属性分别排序并建立两组虚点，压缩所有“提升后击败”的转移；将雇佣费用接入图中，最后在总图上运行 Dijkstra，复杂度为 $O(nm\\log(nm))$。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:59:46+00:00",
+          "quality_flags": [
+            "operation_rules_partially_inferred",
+            "partial_editorial",
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 560,
+      "problem_key": "1936D",
+      "contest_id": 1936,
+      "title": "Bitwise Paradox",
+      "rating": 3100,
+      "problem_url": "https://codeforces.com/contest/1936/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/126513",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "binary search",
+        "bitmasks",
+        "data structures",
+        "greedy",
+        "two pointers"
+      ],
+      "statement_brief": "给定数组 $a,b$ 和固定阈值 $v$。区间 $[l,r]$ 在其中 $b$ 的按位或不小于 $v$ 时称为好区间，其代价是该区间内 $a$ 的最大值；操作包括修改某个 $b_p$，以及询问给定范围内所有好区间的最小代价，无解输出 $-1$。",
+      "transformed_statement": "把每次区间询问转化为在线段树节点上合并“各位在边界附近的最早/最晚出现位置”和当前最优代价；跨左右子段的候选只需满足按位或与 $v$ 的最高不同位规则。",
+      "key_observations": [
+        "将条件 $OR\\ge v$ 按最高不同二进制位判断：高位需与 $v$ 相同，首个更高位必须为 $1$，更低位无需强制处理，从而只需逐位贪心扩展区间。",
+        "跨越线段树左右边界时，某一位在左侧取最后出现位置、在右侧取最先出现位置；比较两处对应区间的 $a$ 最大值，较小者可贪心保留。",
+        "每个线段树节点记录各二进制位的最早和最晚出现位置，并记录节点内部答案，使跨边界候选能与左右子节点答案合并。",
+        "用稀疏表 $O(1)$ 查询任意区间的 $a$ 最大值，因此一次合并只需处理 $O(\\log V)$ 个二进制位。"
+      ],
+      "solution_brief": "用线段树维护 $b$ 的各位最早、最晚出现位置及节点答案；合并时逐位选择左右边界中代价更小的位置，并用稀疏表求 $a$ 的区间最大值。单点修改和区间查询复杂度为 $O(\\log n\\log V)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:58:10+00:00",
+          "quality_flags": [
+            "statement_text中查询类型描述不完整，但操作和目标可由editorial及代码确定"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 561,
+      "problem_key": "1936E",
+      "contest_id": 1936,
+      "title": "Yet Yet Another Permutation Problem",
+      "rating": 3400,
+      "problem_url": "https://codeforces.com/contest/1936/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/126513",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "divide and conquer",
+        "fft",
+        "math"
+      ],
+      "statement_brief": "给定一个长度为 $n$ 的排列 $p$，要统计排列 $q$ 的数量，使得对每个前缀长度 $i<n$，$q$ 的前缀最大值都不等于 $p$ 的对应前缀最大值。答案对 $998244353$ 取模。",
+      "transformed_statement": "把限制改写为两个排列的前缀最大值序列不能在同一位置相等；只关注 $p$ 的前缀极大值，并按哪些极大值在 $q$ 中被复现进行容斥计数。",
+      "key_observations": [
+        "令 $P_i$、$Q_i$ 分别为两个排列的前缀最大值；$P_i$ 只在前缀出现新的极大值时变化，因此约束只需围绕这些极大值处理。",
+        "将存在某个前缀满足 $P_j=Q_j$ 且该值为第 $i$ 个极大值定义为 $i$-invalid，用容斥把合法排列数转为 $n!$ 减去各类 invalid 排列的交集计数。",
+        "处理一个极大值后，前若干位置的取值范围已被确定；状态 $dp_{i,j}$ 只需记录确定了前 $i$ 个位置以及 invalid 个数的奇偶性，从而把容斥状态压缩为两类。",
+        "递推中的阶乘比可改写为卷积形式；按 $P_i=P_{i-1}$ 与否拆分后，转为 $f(i)=h(i)\\sum_{j<i}f(j)g(i-j)$，再用分治加 FFT 将整体计算降至 $O(n\\log^2 n)$。"
+      ],
+      "solution_brief": "对前缀最大值的极大值点做 invalid 分类，用容斥计数；DP 只保留 invalid 数的奇偶性，再将阶乘权重改写为卷积，使用分治 FFT 优化递推。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:56:59+00:00",
+          "quality_flags": [
+            "statement_excerpt_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 562,
+      "problem_key": "1936F",
+      "contest_id": 1936,
+      "title": "Grand Finale: Circles",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1936/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/126513",
+      "editorial_quality": "complete",
+      "primary_topic": "几何",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "geometry"
+      ],
+      "statement_brief": "给定平面上的 $n$ 个圆，需要构造一个同时完全位于所有给定圆内部的圆，输出其圆心坐标和半径。要求输出的圆半径尽可能大；题目保证存在半径至少为 $10^{-6}$ 的可行圆。",
+      "transformed_statement": "将每个给定圆看作对答案圆心和半径的约束：答案半径满足 $r\\le r_i-\\operatorname{dist}(p,p_i)$。于是目标是最大化所有约束右端的最小值，并利用二维问题中至多三个紧约束确定最优解。",
+      "key_observations": [
+        "固定圆心 $(x,y)$ 时，能放入所有给定圆的最大半径是各项 $r_i-\\operatorname{dist}((x,y),(x_i,y_i))$ 的最小值，因此问题转化为最大化这个最小值。",
+        "最优圆至多由 $3$ 个给定圆决定：$0/1/2$ 个约束可直接构造，$3$ 个约束则由三条相切方程联立求解，从而避免枚举全部约束组合。",
+        "随机增量处理时，只有当前圆违反基准圆才需要把它加入最多 $3$ 个元素的基，递归重算；基大小受维度限制，使总处理时间达到期望 $O(n)$。",
+        "为避免随机顺序导致的坏情况及浮点异常，限制单次递归次数，超限或得到 NaN 时重新打乱输入并重跑。"
+      ],
+      "solution_brief": "把答案视为由至多 $3$ 个约束圆定义的基准圆，用随机增量递归维护该基；当前圆不包含基准圆时加入基并重算。超限或数值异常则打乱重跑，期望复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:55:26+00:00",
+          "quality_flags": []
         }
       },
       "manual_override": false,
