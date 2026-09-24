@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1656,
+    "total_problems": 1657,
     "source_total_problems": 1749,
-    "filtered_out_problems": 93,
-    "with_statement_brief": 1656,
-    "with_editorial_brief": 1424,
-    "with_solution_brief": 1425,
+    "filtered_out_problems": 92,
+    "with_statement_brief": 1657,
+    "with_editorial_brief": 1425,
+    "with_solution_brief": 1426,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 594,
+    "ai_override_count": 595,
     "primary_topic_count": 13
   },
   "records": [
@@ -18231,6 +18231,51 @@
           "generated_at": "2026-09-24T05:47:01+00:00",
           "quality_flags": [
             "statement_conditions_formatting_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 437,
+      "problem_key": "1898A",
+      "contest_id": 1898,
+      "title": "Milica and String",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1898/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/120960",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "implementation",
+        "strings"
+      ],
+      "statement_brief": "给定一个只含 `A`、`B` 的长度为 $n$ 的字符串。一次操作选择一个前缀长度和字符，将该前缀全部替换为所选字符；要求用最少操作使字符串恰好含有 $k$ 个 `B`，并输出这些操作。",
+      "transformed_statement": "把一次操作视为重写某个前缀：改成 `B` 时，答案数量由该前缀长度加上后缀原有的 `B` 数决定；改成 `A` 时只保留后缀的 `B`。因此可直接枚举一次操作是否能达到目标，否则使用“全 `A` 再填充前缀”的两步构造。",
+      "key_observations": [
+        "先把整个字符串改成全为 `A`，再把长度为 $k$ 的前缀改成全为 `B`，因此任意情况最多需要 $2$ 次操作。",
+        "若当前字符串已有恰好 $k$ 个 `B`，无需操作；这是最优的 $0$ 次方案。",
+        "一次操作可行当且仅当存在某个前缀及其统一字符，使修改后的 `B` 数量为 $k$；枚举前缀并用前缀计数即可判断。",
+        "若不存在一次操作方案，前述两步构造达到上界 $2$，结合前两种情况即可确定最小操作数。"
+      ],
+      "solution_brief": "统计当前 `B` 的数量；若已等于 $k$，输出 $0$。否则枚举每个前缀分别改成全 `A` 或全 `B`，找到使总数为 $k$ 的方案就输出 $1$；若找不到，则先全改为 `A`，再将长度为 $k$ 的前缀改为 `B`，输出 $2$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:47:50+00:00",
+          "quality_flags": [
+            "statement末尾操作示例不完整，但操作定义可由题解明确还原"
           ]
         }
       },

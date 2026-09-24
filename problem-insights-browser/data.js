@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1656,
+    "total_problems": 1657,
     "source_total_problems": 1749,
-    "filtered_out_problems": 93,
-    "with_statement_brief": 1656,
-    "with_editorial_brief": 1424,
-    "with_solution_brief": 1425,
+    "filtered_out_problems": 92,
+    "with_statement_brief": 1657,
+    "with_editorial_brief": 1425,
+    "with_solution_brief": 1426,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 594,
+    "ai_override_count": 595,
     "primary_topic_count": 13,
     "contest_count": 265,
     "rating_min": 800,
@@ -36,15 +36,15 @@ window.CF_INSIGHTS_DATA = {
     "组合计数与概率",
     "树结构",
     "图论与网络流",
-    "交互",
     "字符串",
+    "交互",
     "基础实现与模拟",
     "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 71,
+    "字符串": 72,
     "构造与贪心": 549,
     "图论与网络流": 105,
     "动态规划与状态设计": 161,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 508,
+    "ai_generated_with_editorial": 509,
     "ai_generated_partial_editorial": 25,
     "missing_editorial": 231,
     "manual_override": 891,
@@ -38941,9 +38941,39 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-11-19",
       "url": "https://codeforces.com/contest/1898",
       "type": "Div. 2",
-      "problemCount": 5,
+      "problemCount": 6,
       "maxRating": 2600,
       "problems": [
+        {
+          "key": "1898A",
+          "index": "A",
+          "slot": "A",
+          "title": "Milica and String",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1898/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/120960",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个只含 `A`、`B` 的长度为 $n$ 的字符串。一次操作选择一个前缀长度和字符，将该前缀全部替换为所选字符；要求用最少操作使字符串恰好含有 $k$ 个 `B`，并输出这些操作。",
+          "transformedStatement": "把一次操作视为重写某个前缀：改成 `B` 时，答案数量由该前缀长度加上后缀原有的 `B` 数决定；改成 `A` 时只保留后缀的 `B`。因此可直接枚举一次操作是否能达到目标，否则使用“全 `A` 再填充前缀”的两步构造。",
+          "keyObservations": [
+            "先把整个字符串改成全为 `A`，再把长度为 $k$ 的前缀改成全为 `B`，因此任意情况最多需要 $2$ 次操作。",
+            "若当前字符串已有恰好 $k$ 个 `B`，无需操作；这是最优的 $0$ 次方案。",
+            "一次操作可行当且仅当存在某个前缀及其统一字符，使修改后的 `B` 数量为 $k$；枚举前缀并用前缀计数即可判断。",
+            "若不存在一次操作方案，前述两步构造达到上界 $2$，结合前两种情况即可确定最小操作数。"
+          ],
+          "solutionBrief": "统计当前 `B` 的数量；若已等于 $k$，输出 $0$。否则枚举每个前缀分别改成全 `A` 或全 `B`，找到使总数为 $k$ 的方案就输出 $1$；若找不到，则先全改为 `A`，再将长度为 $k$ 的前缀改为 `B`，输出 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1898B",
           "index": "B",
