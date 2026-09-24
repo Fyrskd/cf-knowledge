@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1665,
+    "total_problems": 1671,
     "source_total_problems": 1749,
-    "filtered_out_problems": 84,
-    "with_statement_brief": 1665,
-    "with_editorial_brief": 1433,
-    "with_solution_brief": 1434,
+    "filtered_out_problems": 78,
+    "with_statement_brief": 1671,
+    "with_editorial_brief": 1439,
+    "with_solution_brief": 1440,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 603,
+    "ai_override_count": 609,
     "primary_topic_count": 13,
-    "contest_count": 267,
+    "contest_count": 268,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 72,
-    "构造与贪心": 550,
+    "构造与贪心": 554,
     "图论与网络流": 106,
     "动态规划与状态设计": 161,
     "数论与同余": 154,
     "组合计数与概率": 130,
     "数据结构": 136,
-    "几何": 36,
+    "几何": 37,
     "树结构": 109,
     "交互": 73,
     "基础实现与模拟": 68,
-    "博弈": 55,
+    "博弈": 56,
     "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 514,
+    "ai_generated_with_editorial": 520,
     "ai_generated_partial_editorial": 28,
     "missing_editorial": 231,
     "manual_override": 891,
@@ -35545,6 +35545,199 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1934,
+      "name": "Codeforces Round 931 (Div. 2)",
+      "date": "2024-03-01",
+      "url": "https://codeforces.com/contest/1934",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1934A",
+          "index": "A",
+          "slot": "A",
+          "title": "Too Min Too Max",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1934/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/126423",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定数组，需要任选四个不同下标，并按 $i,j,k,l$ 的顺序组成一个闭环，最大化四条边差值绝对值之和：$|a_i-a_j|+|a_j-a_k|+|a_k-a_l|+|a_l-a_i|$。",
+          "transformedStatement": "先只考虑选出的四个数并将其排序为 $a\\le b\\le c\\le d$，题解把所有下标顺序归纳为三种环形排列，所得最大值为 $2(c+d-a-b)$；于是只需选择四个数使该差值最大。",
+          "keyObservations": [
+            "对选出的四个数排序为 $a\\le b\\le c\\le d$ 后，三种本质不同的环形排列中最大值为 $2(d+c)-2(a+b)$，因此目标变成让较大两项尽量大、较小两项尽量小。",
+            "全局最优的四个元素必是原数组中最小的两个和最大的两个；替换为更小或更大的元素只会增大 $2(c+d-a-b)$，所以答案为 $2(a_n-a_1+a_{n-1}-a_2)$。"
+          ],
+          "solutionBrief": "将数组排序。对任选四个值，最优环形排列的贡献是较大两项之和减较小两项之和的两倍；因此选最小的两个和最大的两个，输出 $2(a_n-a_1+a_{n-1}-a_2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1934B",
+          "index": "B",
+          "slot": "B",
+          "title": "Yet Another Coin Problem",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1934/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/126423",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有无限多枚面值为 1、3、6、10、15 的硬币，每次可任意选取一枚并计入总和。对每个目标值 $n$，要求恰好凑出 $n$，并求所需硬币的最少数量。",
+          "transformedStatement": "把任意方案重写为少量 1、3、6、10 硬币加若干枚 15 硬币；利用等值替换证明前四类硬币的数量都有常数上界，于是问题转化为有限枚举合法前缀组合并检查剩余值是否为 15 的倍数。",
+          "keyObservations": [
+            "在最优方案中，1、3、6、10 面值硬币的数量可分别限制为至多 2、1、4、2；超过上限时可用等值但硬币更少的替换方案消除。",
+            "固定这四类硬币的数量后，剩余金额必须是非负的 15 的倍数，因此只需检查有限种组合，并用剩余金额除以 15 补齐硬币数。",
+            "只使用 1、3、6、15 时可以从大面值向下贪心：15 先取整，余数再依次用 6、3、1 表示，因为处理后的余数小于 15，且 1、3、6 具有逐级整除关系。",
+            "10 面值硬币最多取 2 枚；枚数固定为 0、1、2 后分别求其余部分的贪心解并取最小值，从而避免处理任意多枚 10。"
+          ],
+          "solutionBrief": "将 1、3、6、10 的枚数限制在常数范围内枚举；若剩余金额是非负的 15 的倍数，则用 15 面值硬币补齐并更新答案。也可分别枚举 0、1、2 枚 10，再对其余金额按 15、6、3、1 贪心求解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1934C",
+          "index": "C",
+          "slot": "C",
+          "title": "Find a Mine",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1934/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/126423",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "交互",
+            "构造与贪心",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "geometry",
+            "greedy",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 网格，其中有两个不同位置的地雷。每次可询问任意格子，交互器返回该格子到两枚地雷的最小曼哈顿距离；最多询问四次后，输出任意一枚地雷的位置。",
+          "transformedStatement": "把一次角点询问看作一条必经过某枚地雷的曼哈顿等距线：三个角点分别提供两条对角线约束和一条反向对角线约束，地雷必在第三条线与前两条线形成的两个候选交点之一。",
+          "keyObservations": [
+            "查询左上角得到 $d_1$ 后，至少一枚地雷位于对角线 $x+y=d_1+2$ 上，将距离信息转成直线约束。",
+            "查询右上角得到 $d_3$ 后，至少一枚地雷位于直线 $x-y=d_3+1-m$ 上，从而可与前两条对角线求候选交点。",
+            "三条查询直线中，第三条必经过某枚地雷，因此它与前两条对角线的两个交点中至少有一个是真实地雷位置。",
+            "对其中一个候选点再次查询；若距离为 $0$ 就直接确定，否则另一候选点必为地雷位置，从而满足最多四次查询。"
+          ],
+          "solutionBrief": "查询三个角点，将返回的曼哈顿距离转化为两条同向对角线和一条反向对角线，求出两个候选交点；再查询其中一个，依据是否返回 $0$ 选择答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1934D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "XOR Break --- Solo Version",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1934/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/126423",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "初始变量为 $n$，每次可选择一个新值 $y$，当 $x\\oplus y<x$ 时把当前值 $x$ 替换为 $y$；要求在不超过 63 次操作内把 $n$ 变为给定的 $m<n$，并输出完整变化序列，否则输出 $-1$。",
+          "transformedStatement": "问题等价于判断 $m$ 的最高置位能否落在 $n$ 的最高位或次高位以下：前者可一步到达，后者可借助次高位对应的掩码分两步到达，而两者之间的位区间不可达。",
+          "keyObservations": [
+            "设 $a$、$b$ 为 $n$ 的最高位和次高位的二进制权值；若 $n$ 只有一个二进制位，则无法进行任何有效拆分，因此不存在 $m<n$ 的可达方案。",
+            "可达的 $m$ 只有两类：最高位仍为 $a$，或最高位不超过 $b$；中间区间的最高位无法通过异或操作产生，这将可达性判定压缩为位级条件。",
+            "若 $m$ 含有最高位 $a$，直接选择下一状态为 $m$，因为 $n\\oplus m$ 的最高位低于 $a$，满足一次操作的下降条件。",
+            "若 $m$ 的最高位不超过 $b$，先转移到 $m\\oplus b$，再转移到 $m$；第一步利用掩码 $b$ 将状态降到低位范围，第二步的异或差恰为 $b$，因此最多两步完成。"
+          ],
+          "solutionBrief": "找出 $n$ 的最高位 $a$ 和次高位 $b$。若不存在次高位，输出 $-1$；否则当 $m$ 含有 $a$ 或 $m<2b$ 时可达：前者直接输出 $n,m$，后者输出 $n,m\\oplus b,m$，其余情况输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1934D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "XOR Break --- Game Version",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1934/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/126423",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "交互"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "games",
+            "greedy",
+            "interactive"
+          ],
+          "statementBrief": "给定正整数 $n$，Alice 与系统轮流操作；当前数必须被拆成两个严格更小的正整数，且两数异或等于原数，下一回合从这两个数中继续选择一个。Alice 可选择先手或后手，目标是在最多 63 次拆分内获胜；无法操作的一方失败。",
+          "transformedStatement": "把每次拆分后的局面抽象为两个候选数，核心只看它们二进制置位数的奇偶：偶数置位数的数可被拆成一个单比特数和奇数置位数的余数，从而将局面导向两个幂次的必败状态。",
+          "keyObservations": [
+            "若当前待拆分的两个数都是 $2$ 的幂，则它们都无法继续拆分，因此这是必败状态。",
+            "具有偶数个二进制 $1$ 的数可拆成最高位对应的 $2^k$ 与其余部分；后者的置位数为奇数，迫使对手避开立即败着并保留可控的奇偶结构。",
+            "奇数置位数的数拆分后必得到一个奇数置位数和一个偶数置位数，利用这一点可把相同的胜负结构交还给当前策略方。",
+            "初始 $n$ 的置位数为偶数时选择先手，为奇数时选择后手；每次拆除当前数的最高位，最多经历有限次操作即可到达含两个置位的状态。"
+          ],
+          "solutionBrief": "按 $n$ 的二进制置位数奇偶选择先后手：偶数先手，奇数后手。每次将当前数拆成最高位对应的 $2^k$ 和剩余部分，依据对手返回数的置位数奇偶继续维护策略，最终逼出无法拆分的状态。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1934E",
+          "index": "E",
+          "slot": "E",
+          "title": "Weird LCM Operations",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1934/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/126423",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "number theory"
+          ],
+          "statementBrief": "初始数组为 $a_i=i$。每次选择三个不同下标 $i,j,k$，设对应值为 $x,y,z$，并将它们替换为 $\\operatorname{lcm}(y,z),\\operatorname{lcm}(x,z),\\operatorname{lcm}(x,y)$；要求构造不超过限制的操作，使最终数组中对每个 $1\\le i\\le n$ 都存在一个子序列，其最大公约数等于 $i$，且所有数不超过 $10^{18}$。",
+          "transformedStatement": "把三个待操作的数视为一个 NICE 三元组：若它们除去公共因子后两两互质，则一次 LCM 操作会让三对元素的 GCD 分别恢复为原三数。因此问题转化为把较大数划分为固定模式的 NICE 三元组，同时保留较小数不动。",
+          "keyObservations": [
+            "若三元组的两两最大公约数都等于同一个公因子，则写成 $(gX,gY,gZ)$ 后，三者互质；一次操作后任意两项的最大公约数恰好分别为原来的三个数。",
+            "因此只要把待处理的数划分成互不相交的 NICE 三元组，对每组操作一次即可同时保留这三个目标最大公约数。",
+            "所有不超过 $n/2$ 的数可以保持不变，因为其不超过 $n$ 的倍数始终存在，且对倍数执行操作后仍会留下一个该数的倍数。",
+            "连续 $12$ 个数在区间末端模 $4$ 为 $1$ 或 $2$ 时，都能按固定方式拆成四个 NICE 三元组；结合末尾少量三元组处理即可覆盖大规模情况。"
+          ],
+          "solutionBrief": "对 $n\\le13$ 直接使用预先构造。更大时保留不超过 $n/2$ 的元素，从末端按模 $4$ 分类处理：用一次操作消化余数为 $0$ 或 $3$ 的情况，用固定分组处理每批 $12$ 个数；每组均为 NICE 三元组，操作后得到所需的两项最大公约数，操作数满足题目上限。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
