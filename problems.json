@@ -1663,6 +1663,7 @@
     "name": "AI Finds Nothing Here",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 1000,
     "tags": [
       "combinatorics",
       "math"
@@ -1674,6 +1675,7 @@
     "name": "Another Popcount Problem",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "greedy"
     ]
@@ -1684,6 +1686,7 @@
     "name": "Colorful Works",
     "type": "PROGRAMMING",
     "points": 3500.0,
+    "rating": 3500,
     "tags": [
       "dp",
       "fft",
@@ -1697,6 +1700,7 @@
     "name": "The end of this world,",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 3200,
     "tags": [
       "data structures",
       "divide and conquer",
@@ -1710,6 +1714,7 @@
     "name": "Hunting the Beast",
     "type": "PROGRAMMING",
     "points": 2000.0,
+    "rating": 2500,
     "tags": [
       "combinatorics",
       "dp",
@@ -1723,6 +1728,7 @@
     "name": "Revival",
     "type": "PROGRAMMING",
     "points": 1500.0,
+    "rating": 2200,
     "tags": [
       "binary search",
       "data structures",
@@ -1736,6 +1742,7 @@
     "name": "Decidophobia",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1600,
     "tags": [
       "greedy",
       "math",
@@ -1749,6 +1756,7 @@
     "name": "Nim Game Is XOR Game",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 1300,
     "tags": [
       "constructive algorithms",
       "games",
@@ -1762,6 +1770,7 @@
     "name": "Infinite Work",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 2600,
     "tags": [
       "combinatorics",
       "graphs",
@@ -1776,6 +1785,7 @@
     "name": "Cake Trial",
     "type": "PROGRAMMING",
     "points": 2250.0,
+    "rating": 2100,
     "tags": [
       "dp",
       "greedy"
@@ -1787,6 +1797,7 @@
     "name": "Storming Arasaka",
     "type": "PROGRAMMING",
     "points": 1500.0,
+    "rating": 1500,
     "tags": [
       "greedy",
       "math",
@@ -1799,6 +1810,7 @@
     "name": "Village Guilds",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 1300,
     "tags": [
       "dfs and similar",
       "dp",
@@ -1811,6 +1823,7 @@
     "name": "Crimson Triples",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 900,
     "tags": [
       "dp",
       "math",
@@ -1823,6 +1836,7 @@
     "name": "Another Puzzle from Papyrus",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "greedy",
       "math",
@@ -1835,6 +1849,7 @@
     "name": "DBFS Order (Hard Version)",
     "type": "PROGRAMMING",
     "points": 4500.0,
+    "rating": 3500,
     "tags": [
       "dp",
       "trees"
@@ -1846,6 +1861,7 @@
     "name": "DBFS Order (Easy Version)",
     "type": "PROGRAMMING",
     "points": 3500.0,
+    "rating": 3500,
     "tags": [
       "dp",
       "trees"
@@ -1857,6 +1873,7 @@
     "name": "Slime and Queries",
     "type": "PROGRAMMING",
     "points": 3500.0,
+    "rating": 3500,
     "tags": [
       "data structures",
       "greedy",
@@ -1869,6 +1886,7 @@
     "name": "Send GCDs",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 2900,
     "tags": [
       "communication",
       "constructive algorithms",
@@ -1883,6 +1901,7 @@
     "name": "Paint the Array",
     "type": "PROGRAMMING",
     "points": 2500.0,
+    "rating": 2400,
     "tags": [
       "data structures",
       "dp",
@@ -1895,6 +1914,7 @@
     "name": "Permutation Commutation",
     "type": "PROGRAMMING",
     "points": 2250.0,
+    "rating": 2100,
     "tags": [
       "data structures",
       "graphs",
@@ -1907,6 +1927,7 @@
     "name": "Fullmetal Bitchemist",
     "type": "PROGRAMMING",
     "points": 1750.0,
+    "rating": 1600,
     "tags": [
       "constructive algorithms",
       "greedy",

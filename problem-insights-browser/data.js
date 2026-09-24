@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1618,
+    "total_problems": 1625,
     "source_total_problems": 1749,
-    "filtered_out_problems": 131,
-    "with_statement_brief": 1618,
-    "with_editorial_brief": 1386,
-    "with_solution_brief": 1387,
+    "filtered_out_problems": 124,
+    "with_statement_brief": 1625,
+    "with_editorial_brief": 1393,
+    "with_solution_brief": 1394,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 556,
+    "ai_override_count": 563,
     "primary_topic_count": 13,
-    "contest_count": 259,
+    "contest_count": 260,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 69,
-    "构造与贪心": 537,
-    "图论与网络流": 103,
-    "动态规划与状态设计": 157,
-    "数论与同余": 150,
+    "构造与贪心": 539,
+    "图论与网络流": 105,
+    "动态规划与状态设计": 158,
+    "数论与同余": 151,
     "组合计数与概率": 122,
-    "数据结构": 131,
+    "数据结构": 132,
     "几何": 33,
     "树结构": 108,
     "交互": 70,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 472,
+    "ai_generated_with_editorial": 479,
     "ai_generated_partial_editorial": 23,
     "missing_editorial": 231,
     "manual_override": 891,
@@ -35719,6 +35719,230 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1920,
+      "name": "Codeforces Round 919 (Div. 2)",
+      "date": "2024-01-13",
+      "url": "https://codeforces.com/contest/1920",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1920A",
+          "index": "A",
+          "slot": "A",
+          "title": "Satisfying Constraints",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1920/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/122560",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定若干关于整数 $k$ 的约束：要求 $k$ 不小于指定值、 不大于指定值，或不等于指定值。对每组约束，求同时满足全部条件的整数 $k$ 的数量。",
+          "transformedStatement": "先把所有下界和上界合并成一个可能的闭区间，再将每条不等于约束视为从该区间中删除一个指定整数；最终答案就是区间长度减去其中被删除的不同整数数目，若区间为空则答案为零。",
+          "keyObservations": [
+            "所有下界约束合并后只需取最大值，所有上界约束合并后只需取最小值；因此满足这两类约束的整数恰好构成一个闭区间。",
+            "不等于约束只会排除区间内对应的单个整数，区间外的值本来就不可行，因此只需统计落在区间内的不同禁值并从区间长度中扣除。",
+            "若合并后的下界大于上界，区间为空；用答案与零取最大值即可统一处理这种情况。"
+          ],
+          "solutionBrief": "维护所有下界的最大值 $l$ 和所有上界的最小值 $r$，得到可行区间 $[l,r]$。统计该区间内的不等于约束所禁止的整数个数 $s$，答案为 $\\max(r-l+1-s,0)$，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1920B",
+          "index": "B",
+          "slot": "B",
+          "title": "Summation Game",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1920/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/122560",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "games",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定正整数数组，Alice 先至多删除 $k$ 个元素以最大化最终总和；随后 Bob 将剩余数组中至多 $x$ 个元素乘以 $-1$，以最小化总和。假设双方最优行动，求最终总和。",
+          "transformedStatement": "把 Alice 的选择归结为删除多少个最大元素：删除数量固定后，Bob 会变号剩余元素中最大的至多 $x$ 个。于是对每种删除数量，最终得分只需通过排序数组上的区间和计算，再取最大值。",
+          "keyObservations": [
+            "固定 Alice 删除的元素后，Bob 为了让总和最小，应将剩余数组中最大的至多 $x$ 个数变号；因此 Bob 的影响只由剩余元素的大小顺序决定。",
+            "Alice 删除最大的若干元素能减少 Bob 可变号元素的总量，所以枚举删除数量时，只需考虑删除排序后最大的前缀。",
+            "若降序数组前缀和为 $P$，Alice 删除前 $i$ 个数后，Bob 变号的部分是接下来的至多 $x$ 个数；最终和可由总和与这段区间和直接计算。"
+          ],
+          "solutionBrief": "将数组降序排序并计算前缀和。枚举 Alice 删除 $0$ 到 $k$ 个元素的数量，每次删除最大的对应前缀，再计算 Bob 将剩余最大至多 $x$ 个数变号后的总和，取最大值；排序是主要开销，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1920C",
+          "index": "C",
+          "slot": "C",
+          "title": "Partitioning the Array",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1920/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/122560",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组。对每个整除 $n$ 的正整数 $k$，按连续的 $k$ 个元素把数组分成若干块；若能选择某个 $m>1$，使所有块对应位置的元素模 $m$ 后完全相同，则获得 1 分，求总得分。",
+          "transformedStatement": "固定块长 $k$ 后，块间逐位置相等可重述为所有相距 $k$ 的元素差值都被同一个 $m>1$ 整除；因此问题转化为判断这些差值的 gcd 是否大于 $1$。",
+          "keyObservations": [
+            "两个长度为 $k$ 的连续分块逐位置模 $m$ 相等，等价于所有相距 $k$ 的元素满足 $a_i\\equiv a_{i+k}\\pmod m$，因此无需显式比较整个分块。",
+            "条件 $a_i\\equiv a_{i+k}\\pmod m$ 等价于 $m$ 整除 $|a_i-a_{i+k}|$；所有位置同时成立，当且仅当 $m$ 整除这些差值的最大公约数。",
+            "对固定 $k$，只需计算所有 $|a_i-a_{i+k}|$ 的 gcd；该 gcd 大于 $1$ 时存在合法的 $m>1$，于是该约数贡献一个得分。",
+            "只需枚举 $n$ 的所有约数作为分块长度；逐个约数扫描数组即可统计答案，gcd 在扫描中保持或至少减半，因此单个约数的处理近似线性。"
+          ],
+          "solutionBrief": "枚举每个约数 $k$，计算所有相距 $k$ 的元素差值的 gcd。若 gcd 不为 $1$，则存在 $m>1$ 同时整除全部差值，该 $k$ 计分；累加计数即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1920D",
+          "index": "D",
+          "slot": "D",
+          "title": "Array Repetition",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1920/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/122560",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "dsu",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "数组初始为空，按顺序执行 $n$ 次操作：类型 1 在末尾追加一个数，类型 2 将当前整个数组连续复制 $x$ 次并追加到末尾。所有操作完成后，回答 $q$ 个查询，求最终数组第 $k$ 个位置的元素。",
+          "transformedStatement": "把每个操作后的数组压缩为长度 $dp_i$ 和末尾元素，并将查询位置从最终数组逆着映射回某个更早的前缀；遇到重复块时用模运算消除整块复制。",
+          "keyObservations": [
+            "每次类型 2 操作都会把当前数组整体复制并追加 $x$ 次，因此长度从 $dp_{i-1}$ 变为 $dp_{i-1}(x+1)$。",
+            "若目标位置落在某次复制形成的块中，其原数组位置等价于 $k\\bmod dp_{i-1}$；余数为 $0$ 时应取前一段的最后一个元素。",
+            "记录每步数组长度和末尾元素后，若 $k$ 恰好等于某个前缀长度即可直接返回该步末尾元素，否则不断将位置映射回更早的前缀，最终定位到一次追加操作。"
+          ],
+          "solutionBrief": "预处理每步长度 $dp_i$ 与末尾元素。对每个查询从相关的重复操作逆推，用取模将位置还原到前一段；余数为 $0$ 时取前缀末尾，最后用二分定位对应的追加操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1920E",
+          "index": "E",
+          "slot": "E",
+          "title": "Counting Binary Strings",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1920/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/122560",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n,k$，统计所有二进制字符串中恰有 $n$ 个好子串的字符串数。好子串恰含一个 `1`，且每个好子串长度都不能超过 $k$；按位置区分子串，答案对 $998244353$ 取模。",
+          "transformedStatement": "把字符串按其中每个 `1` 划成正长度块 $a_1,\n_2,\nots,\n_m$，问题等价于统计满足相邻和减一不超过 $k$、且相邻乘积之和为 $n$ 的正整数数组。单块数组对应只有一个 `1` 的字符串。",
+          "keyObservations": [
+            "按每个 `1` 将字符串划分为正长度块 $a_1,\n_2,\nots,\n_m$，每个好子串恰对应相邻两块的选取，故总数化为 $\n_1a_2+\n_2a_3+\nots+\n_{m-1}a_m$。",
+            "相邻块产生的最长好子串长度为 $a_i+a_{i+1}-1$，因此长度限制等价于所有相邻元素满足 $a_i+a_{i+1}-1\\le k$。",
+            "令 $dp_{i,j}$ 表示乘积相邻和为 $i$、末项为 $j$ 的数组数；向末尾添加当前值 $j$ 时，前一项为 $p$ 会增加 $jp$，所以从 $dp_{i-jp,p}$ 转移。",
+            "转移中的 $p$ 只需枚举到 $\\lfloor i/j\\rfloor$，因为更大的前项会使新增贡献超过 $i$；对所有 $j$ 求和后每层枚举量为 $O(i\\log i)$。"
+          ],
+          "solutionBrief": "将字符串一一对应为正整数数组，数组相邻乘积之和等于好子串数，相邻元素和减一受 $k$ 限制。用 $dp_{i,j}$ 按总贡献和末项转移，初始单元素数组贡献为零，答案为 $dp_{n,j}$ 之和，模 $998244353$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1920F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Smooth Sailing (Easy Version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1920/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/122560",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "网格中有相连的岛屿、海洋和水下火山，且岛屿不接触边界。每个查询给出一个海洋或火山格，要求从此出发沿海上路径完成环绕岛屿的往返，并最大化路径上各格到最近火山的最小曼哈顿距离。",
+          "transformedStatement": "把安全值 $k$ 固定后，仅保留到最近火山距离至少为 $k$ 的海洋格；问题变为判断查询点所在的可达区域能否隔断岛屿与网格边界，从而形成环绕岛屿的闭合路径。",
+          "keyObservations": [
+            "将路径安全性转化为阈值可行性：固定 $k$ 后，只允许经过到火山曼哈顿距离至少为 $k$ 的海洋格。",
+            "从查询点出发的可行海洋区域若能隔断岛屿与网格边界，就等价于存在一条环绕岛屿的有效往返路径。",
+            "判断是否隔断时，在未被可行区域占据的格子上允许八方向移动；若岛屿仍能到达边界，则路径没有形成封闭阻断。",
+            "安全阈值越大，可经过的格子只会减少，因此可行性具有单调性，可以对答案二分。"
+          ],
+          "solutionBrief": "先从所有火山进行多源 BFS，求每个非岛屿格到最近火山的曼哈顿距离。对每个查询二分安全值 $k$，四方向搜索满足距离阈值的可达区域，再用八方向检查岛屿是否还能绕过该区域到达边界；不能到达即判定可行。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1920F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Smooth Sailing (Hard Version)",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1920/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/122560",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "几何",
+            "树结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dsu",
+            "geometry",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定由岛屿、海洋和水下火山组成的网格，Thomas 只能在非岛屿格子间沿相邻格移动并最终回到起点；路径安全性是路径上各格到最近火山的曼哈顿距离最小值。对每个海洋或火山起点，求安全性最大的环游路径。",
+          "transformedStatement": "先把每个非岛屿格子赋予“到最近火山距离”的点权，再将位置复制成射线穿越次数的奇偶两层；原问题转化为两层同位置状态之间的最大瓶颈连通值。",
+          "keyObservations": [
+            "把每个非岛屿格子的安全值定义为到最近火山的曼哈顿距离，则路径安全性等价于路径上所有点权的最小值。",
+            "沿任意岛屿格子上边向右作射线，闭合路径与该射线的穿越次数必须为奇数；因此为每个位置复制奇偶两种状态，跨线移动时翻转状态。",
+            "固定安全阈值后，问题变成判断 $(x,y,0)$ 与 $(x,y,1)$ 是否连通；按边权从高到低加入边时，它们首次连通的权值就是该询问答案。",
+            "所有询问可把同一编号放入两个奇偶状态的并查集集合中，并在小集合合并时检测重复编号，从而离线同时确定首次连通权值。"
+          ],
+          "solutionBrief": "多源 BFS 求各格到火山的距离，建立带奇偶状态的加权图；按边权降序用并查集合并，并通过小集合合并检测每个询问的两状态何时连通。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
