@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1684,
+    "total_problems": 1686,
     "source_total_problems": 1749,
-    "filtered_out_problems": 65,
-    "with_statement_brief": 1684,
-    "with_editorial_brief": 1453,
-    "with_solution_brief": 1454,
+    "filtered_out_problems": 63,
+    "with_statement_brief": 1686,
+    "with_editorial_brief": 1455,
+    "with_solution_brief": 1456,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 623,
+    "ai_override_count": 625,
     "primary_topic_count": 13
   },
   "records": [
@@ -24296,6 +24296,92 @@
           "generated_at": "2026-09-24T09:37:38+00:00",
           "quality_flags": [
             "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 585,
+      "problem_key": "1944A",
+      "contest_id": 1944,
+      "title": "Destroying Bridges",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1944/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/127195",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "graphs",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "有 $n$ 个岛屿，初始时任意两岛之间都有桥。Dominater 最多摧毁 $k$ 座桥，目标是让从岛屿 1 出发经一座或多座未毁桥能到达的岛屿数量（包括 1）尽可能少，求该最小数量。",
+      "transformed_statement": "将最终可达岛屿划为一侧、不可达岛屿划为另一侧；要阻断两侧，必须删除所有跨越该划分的桥，因此问题转化为寻找最小的 $i$，使割边数量 $i(n-i)$ 不超过 $k$。",
+      "key_observations": [
+        "若最终只有集合 $S$ 中的岛屿能从 1 到达，则 $S$ 与补集之间的所有 $|S|(n-|S|)$ 座桥都必须被摧毁，因此这是不可绕过的割边下界。",
+        "摧毁集合 $S$ 与补集之间的全部桥后，两部分完全断开，且保留的完全图仍连通，所以达到恰好 $i$ 个可达岛屿所需的最少操作数是 $i(n-i)$。",
+        "对 $1\\le i<n$，$i(n-i)$ 的最小值为 $n-1$；因此当 $k<n-1$ 时无法隔离任何岛屿，只能到达全部 $n$ 个岛屿。",
+        "当 $k\\ge n-1$ 时直接摧毁岛屿 1 与其余每个岛屿之间的桥即可只保留岛屿 1；也可统一枚举最小的 $i$ 使 $i(n-i)\\le k$。"
+      ],
+      "solution_brief": "把可达岛屿与不可达岛屿视为两部分，必须摧毁两部分之间的全部桥，代价为 $i(n-i)$。枚举 $i=1\\ldots n$，输出第一个满足 $i(n-i)\\le k$ 的值；等价地，$k\\ge n-1$ 时答案为 1，否则为 $n$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T09:47:12+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 586,
+      "problem_key": "1944B",
+      "contest_id": 1944,
+      "title": "Equal XOR",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1944/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/127195",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms"
+      ],
+      "statement_brief": "给定长度为 $2n$ 的数组，其中 $1$ 到 $n$ 每个数恰好出现两次，并将数组分为前、后两个长度为 $n$ 的部分。允许从两部分分别删除元素并任意重排，构造长度均为 $2k$ 的序列 $l,r$，使它们的异或和相等。",
+      "transformed_statement": "只统计每个数在前半段的出现次数：次数为 $2$ 的数只能成对供前半段使用，次数为 $0$ 的数只能成对供后半段使用，次数为 $1$ 的数则可同时供两边使用；目标转化为用这些贡献填满两边各 $2k$ 个位置。",
+      "key_observations": [
+        "在前半段出现两次的数必在后半段出现零次，二者数量相等，因此可分别成对加入两边而不改变异或值。",
+        "成对加入同一个数的异或贡献为 $x\\oplus x=0$，所以两边先用各自独有的成对元素即可保持异或一致。",
+        "前半段恰好出现一次的数也在后半段出现一次，把同一个数同时加入两边，既补足偶数长度又保持两边异或相同。",
+        "先加入成对元素直到接近长度 $2k$，再用单次出现的元素同步补齐；由于目标长度为偶数，剩余长度可以这样完成。"
+      ],
+      "solution_brief": "统计每个数在前半段出现次数，分为 $0/1/2$ 三组。将出现两次的数成对放入 $l$、出现零次的数成对放入 $r$，再把出现一次的数同步放入两边，直到各有 $2k$ 个元素；成对异或为零，同步元素保证异或相等。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T09:46:45+00:00",
+          "quality_flags": [
+            "statement_text_truncated_or_malformed"
           ]
         }
       },
