@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-24T07:41:12+00:00",
+  "updated_at": "2026-09-24T07:46:05+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -17293,6 +17293,94 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的子序列判定与构造要求，以及 editorial 的贪心分块和反例构造；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1925D": {
+      "problem_key": "1925D",
+      "title": "Good Trip",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1925/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/125137",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "d304d30dbc1fda07076542ef5a9da5ffc236e66554c512a219ee2d1e8b731dbc",
+      "generated_at": "2026-09-24T07:43:52+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 名孩子和 $m$ 个友谊点对，每次行程独立且等概率选取一个孩子点对。选中友谊点对后，其友谊值从下一次行程起增加 $1$；非友谊点对的值始终为 $0$。求 $k$ 次行程中被选点对在选中时的友谊值总和的期望，并输出其模 $10^9+7$ 的结果。",
+        "transformed_statement": "把每个友谊点对单独观察：其初始值贡献按每次被选中的概率累加，而重复选中造成的增量只取决于它总共被选中的次数 $X$，对应额外值 $X(X-1)/2$。其中 $X$ 服从每次成功概率为 $1/C(n,2)$ 的二项分布。",
+        "key_observations": [
+          "期望具有线性性，可将初始友谊值与重复选择带来的增量分开计算，从而避免联合处理所有选择序列。",
+          "设总点对数为 $D=C(n,2)$，初始值贡献恒为 $k\\times\\sum f_i/D$，因为每个友谊点对在每次行程中被选中的概率都是 $1/D$。",
+          "某个友谊点对若在 $k$ 次行程中被选中 $x$ 次，其额外贡献是 $0+1+\\cdots+(x-1)=x(x-1)/2$，因为每次选中后只影响后续行程。",
+          "该点对被选中次数服从二项分布，概率为 $C(k,x)(1/D)^x((D-1)/D)^{k-x}$；所有友谊点对分布相同，因此先求单个点对的期望增量，再乘以 $m$。"
+        ],
+        "solution_brief": "预处理阶乘及逆元计算组合数。对每组数据令 $D=C(n,2)$，先加入初始贡献 $k\\sum f_i/D$；再枚举单个友谊点对被选中 $x$ 次，用二项分布乘以 $x(x-1)/2$ 求期望，最后乘 $m$ 并取模。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、statement_text，并参考 tags 中的组合计数、数学与概率信息。",
+        "quality_flags": []
+      }
+    },
+    "1925B": {
+      "problem_key": "1925B",
+      "title": "A Balanced Problemset?",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1925/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/125137",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "49da641fe571a1ef19969b12ce61ca8cc2adba915c8deab0f23f215b3c6296d9",
+      "generated_at": "2026-09-24T07:44:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定总难度 $x$ 和子题数量 $n$，将 $x$ 拆成 $n$ 个正整数难度，所有难度之和必须为 $x$。要求选择拆分方案，使这些难度的最大公约数（平衡值）最大。",
+        "transformed_statement": "把每个可能的平衡值视为候选因数 $d$：所有子题难度都需是 $d$ 的倍数，而总和为 $x$；于是只需寻找最大的因数 $d\\mid x$，满足至少能放入 $n$ 个正的 $d$ 倍数，即 $nd\\le x$。",
+        "key_observations": [
+          "最终平衡值必为 $x$ 的因数，因为所有子题难度的最大公约数也必须整除它们的总和 $x$。",
+          "对候选因数 $d$，存在可行划分当且仅当 $nd\\le x$：先取 $n-1$ 个难度为 $d$，最后一个为 $x-(n-1)d$，且它仍是 $d$ 的正倍数。",
+          "因此问题转化为在 $x$ 的所有因数中找满足 $d\\le x/n$ 的最大者，枚举因数对即可避免搜索所有划分方案。"
+        ],
+        "solution_brief": "枚举 $x$ 的因数对 $(i,x/i)$。对每个因数检查 $nd\\le x$，满足条件就更新答案；因数枚举只需遍历到 $\\sqrt{x}$，复杂度为 $O(\\sqrt{x})$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的目标定义、editorial 的两个提示与完整 Tutorial；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1925A": {
+      "problem_key": "1925A",
+      "title": "We Got Everything Covered!",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1925/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/125137",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "5a40a4f39bf5a7d8ad065746b02bda3e7ca5b3b6772fb69e17c8bda4a6e05dfa",
+      "generated_at": "2026-09-24T07:46:05+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数 $n,k$，使用前 $k$ 个小写字母构造一个字符串，使所有长度为 $n$ 的可能字符串都能通过删除部分字符得到为其子序列；在满足条件的答案中要求长度最短。",
+        "transformed_statement": "把问题视为寻找覆盖所有长度为 $n$ 的目标串的最短公共超序列：将字符串划分为 $n$ 个连续块，每块包含全部 $k$ 个字母，使目标串的每个位置分别从对应块中匹配。",
+        "key_observations": [
+          "字符串必须包含由单一字符重复 $n$ 次组成的子序列，因此前 $k$ 个字符各至少出现 $n$ 次，长度下界为 $n\\cdot k$。",
+          "将前 $k$ 个字母按固定顺序组成一个长度为 $k$ 的块，并重复 $n$ 次；目标串的第 $i$ 个字符可从第 $i$ 个块中选取，因而任意长度为 $n$ 的字符串都是其子序列。",
+          "上述构造恰好达到长度下界，所以不仅满足覆盖要求，还保证了答案长度最小。"
+        ],
+        "solution_brief": "输出由前 $k$ 个小写字母组成的块，连续重复 $n$ 次。每个目标位置从对应块中选取所需字符；同时各字符至少需出现 $n$ 次，因此长度 $n\\cdot k$ 必然最优。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅用于主题辅助。",
         "quality_flags": []
       }
     }

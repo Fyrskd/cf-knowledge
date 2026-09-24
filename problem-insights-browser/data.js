@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1631,
+    "total_problems": 1634,
     "source_total_problems": 1749,
-    "filtered_out_problems": 118,
-    "with_statement_brief": 1631,
-    "with_editorial_brief": 1399,
-    "with_solution_brief": 1400,
+    "filtered_out_problems": 115,
+    "with_statement_brief": 1634,
+    "with_editorial_brief": 1402,
+    "with_solution_brief": 1403,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 569,
+    "ai_override_count": 572,
     "primary_topic_count": 13,
-    "contest_count": 261,
+    "contest_count": 262,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,11 +45,11 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 70,
-    "构造与贪心": 539,
+    "构造与贪心": 540,
     "图论与网络流": 105,
     "动态规划与状态设计": 158,
-    "数论与同余": 151,
-    "组合计数与概率": 124,
+    "数论与同余": 152,
+    "组合计数与概率": 125,
     "数据结构": 133,
     "几何": 34,
     "树结构": 108,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 485,
+    "ai_generated_with_editorial": 488,
     "ai_generated_partial_editorial": 23,
     "missing_editorial": 231,
     "manual_override": 891,
@@ -35719,6 +35719,104 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1925,
+      "name": "Codeforces Round 921 (Div. 2)",
+      "date": "2024-01-27",
+      "url": "https://codeforces.com/contest/1925",
+      "type": "Div. 2",
+      "problemCount": 3,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "1925A",
+          "index": "A",
+          "slot": "A",
+          "title": "We Got Everything Covered!",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1925/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/125137",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定正整数 $n,k$，使用前 $k$ 个小写字母构造一个字符串，使所有长度为 $n$ 的可能字符串都能通过删除部分字符得到为其子序列；在满足条件的答案中要求长度最短。",
+          "transformedStatement": "把问题视为寻找覆盖所有长度为 $n$ 的目标串的最短公共超序列：将字符串划分为 $n$ 个连续块，每块包含全部 $k$ 个字母，使目标串的每个位置分别从对应块中匹配。",
+          "keyObservations": [
+            "字符串必须包含由单一字符重复 $n$ 次组成的子序列，因此前 $k$ 个字符各至少出现 $n$ 次，长度下界为 $n\\cdot k$。",
+            "将前 $k$ 个字母按固定顺序组成一个长度为 $k$ 的块，并重复 $n$ 次；目标串的第 $i$ 个字符可从第 $i$ 个块中选取，因而任意长度为 $n$ 的字符串都是其子序列。",
+            "上述构造恰好达到长度下界，所以不仅满足覆盖要求，还保证了答案长度最小。"
+          ],
+          "solutionBrief": "输出由前 $k$ 个小写字母组成的块，连续重复 $n$ 次。每个目标位置从对应块中选取所需字符；同时各字符至少需出现 $n$ 次，因此长度 $n\\cdot k$ 必然最优。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1925B",
+          "index": "B",
+          "slot": "B",
+          "title": "A Balanced Problemset?",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1925/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/125137",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定总难度 $x$ 和子题数量 $n$，将 $x$ 拆成 $n$ 个正整数难度，所有难度之和必须为 $x$。要求选择拆分方案，使这些难度的最大公约数（平衡值）最大。",
+          "transformedStatement": "把每个可能的平衡值视为候选因数 $d$：所有子题难度都需是 $d$ 的倍数，而总和为 $x$；于是只需寻找最大的因数 $d\\mid x$，满足至少能放入 $n$ 个正的 $d$ 倍数，即 $nd\\le x$。",
+          "keyObservations": [
+            "最终平衡值必为 $x$ 的因数，因为所有子题难度的最大公约数也必须整除它们的总和 $x$。",
+            "对候选因数 $d$，存在可行划分当且仅当 $nd\\le x$：先取 $n-1$ 个难度为 $d$，最后一个为 $x-(n-1)d$，且它仍是 $d$ 的正倍数。",
+            "因此问题转化为在 $x$ 的所有因数中找满足 $d\\le x/n$ 的最大者，枚举因数对即可避免搜索所有划分方案。"
+          ],
+          "solutionBrief": "枚举 $x$ 的因数对 $(i,x/i)$。对每个因数检查 $nd\\le x$，满足条件就更新答案；因数枚举只需遍历到 $\\sqrt{x}$，复杂度为 $O(\\sqrt{x})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1925D",
+          "index": "D",
+          "slot": "D",
+          "title": "Good Trip",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1925/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/125137",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "有 $n$ 名孩子和 $m$ 个友谊点对，每次行程独立且等概率选取一个孩子点对。选中友谊点对后，其友谊值从下一次行程起增加 $1$；非友谊点对的值始终为 $0$。求 $k$ 次行程中被选点对在选中时的友谊值总和的期望，并输出其模 $10^9+7$ 的结果。",
+          "transformedStatement": "把每个友谊点对单独观察：其初始值贡献按每次被选中的概率累加，而重复选中造成的增量只取决于它总共被选中的次数 $X$，对应额外值 $X(X-1)/2$。其中 $X$ 服从每次成功概率为 $1/C(n,2)$ 的二项分布。",
+          "keyObservations": [
+            "期望具有线性性，可将初始友谊值与重复选择带来的增量分开计算，从而避免联合处理所有选择序列。",
+            "设总点对数为 $D=C(n,2)$，初始值贡献恒为 $k\\times\\sum f_i/D$，因为每个友谊点对在每次行程中被选中的概率都是 $1/D$。",
+            "某个友谊点对若在 $k$ 次行程中被选中 $x$ 次，其额外贡献是 $0+1+\\cdots+(x-1)=x(x-1)/2$，因为每次选中后只影响后续行程。",
+            "该点对被选中次数服从二项分布，概率为 $C(k,x)(1/D)^x((D-1)/D)^{k-x}$；所有友谊点对分布相同，因此先求单个点对的期望增量，再乘以 $m$。"
+          ],
+          "solutionBrief": "预处理阶乘及逆元计算组合数。对每组数据令 $D=C(n,2)$，先加入初始贡献 $k\\sum f_i/D$；再枚举单个友谊点对被选中 $x$ 次，用二项分布乘以 $x(x-1)/2$ 求期望，最后乘 $m$ 并取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
