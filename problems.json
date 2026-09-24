@@ -1426,6 +1426,7 @@
     "index": "G",
     "name": "Yura and Deadlines",
     "type": "PROGRAMMING",
+    "rating": 1900,
     "tags": [
       "data structures",
       "dp"
@@ -1436,6 +1437,7 @@
     "index": "F",
     "name": "Anya Loves Trees!",
     "type": "PROGRAMMING",
+    "rating": 1700,
     "tags": [
       "dfs and similar",
       "dp",
@@ -1448,6 +1450,7 @@
     "index": "E",
     "name": "Masha and the Garland",
     "type": "PROGRAMMING",
+    "rating": 1400,
     "tags": [
       "data structures",
       "dp",
@@ -1463,6 +1466,7 @@
     "index": "D",
     "name": "Yaroslav and Productivity",
     "type": "PROGRAMMING",
+    "rating": 1200,
     "tags": [
       "constructive algorithms",
       "dp",
@@ -1476,6 +1480,7 @@
     "index": "C",
     "name": "Stepan and Permutation",
     "type": "PROGRAMMING",
+    "rating": 1000,
     "tags": [
       "constructive algorithms",
       "dfs and similar",
@@ -1491,6 +1496,7 @@
     "index": "B",
     "name": "Nikita and Books",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "greedy",
       "math",
@@ -1502,6 +1508,7 @@
     "index": "A",
     "name": "Iskander and Drawings",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "dp",
       "games",

@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1646,
+    "total_problems": 1656,
     "source_total_problems": 1749,
-    "filtered_out_problems": 103,
-    "with_statement_brief": 1646,
-    "with_editorial_brief": 1414,
-    "with_solution_brief": 1415,
+    "filtered_out_problems": 93,
+    "with_statement_brief": 1656,
+    "with_editorial_brief": 1424,
+    "with_solution_brief": 1425,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 584,
+    "ai_override_count": 594,
     "primary_topic_count": 13
   },
   "records": [
@@ -22573,6 +22573,451 @@
         "links_and_tags": "records.json"
       },
       "manual_override": false
+    },
+    {
+      "ordinal": 547,
+      "problem_key": "1930A",
+      "contest_id": 1930,
+      "title": "Maximise The Score",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1930/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/126043",
+      "editorial_quality": "partial",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "白板上有 $2n$ 个正整数。每次从剩余数字中选两个 $x,y$，把它们删除并将 $\\min(x,y)$ 加入得分，恰好进行 $n$ 次后求最大最终得分。",
+      "transformed_statement": "把游戏视为将全部数字划分成 $n$ 个二元组，每组贡献其中较小值；目标转化为最大化所有配对较小值之和，最优配对可按排序后的相邻元素进行。",
+      "key_observations": [
+        "将所有数升序排列后，最小的数无论与谁配对，都会贡献它本身；把它与第二小数配对不会降低当前贡献，并能把更大的数留给后续配对。",
+        "交换论证表明，最优方案可令排序后的前两个数先配对；删去它们后，剩余问题完全相同，因此可对排序数组的每个相邻二元组独立取较小值。",
+        "排序后第 $1,3,5,\\ldots,2n-1$ 个元素恰好是各相邻二元组的较小值，所以答案是这些位置元素之和。"
+      ],
+      "solution_brief": "将 $2n$ 个数排序，依次把相邻两个数配成一组；每组贡献较小者，因此答案为下标 $0,2,4,\\ldots$ 元素之和。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:20:58+00:00",
+          "quality_flags": [
+            "partial_editorial",
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 548,
+      "problem_key": "1930B",
+      "contest_id": 1930,
+      "title": "Permutation Printing",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1930/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/126043",
+      "editorial_quality": "partial",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "给定正整数 $n$，构造一个 $1$ 到 $n$ 的排列。要求不存在两个不同的相邻位置起点 $i,j$，使得 $p_i$ 整除 $p_j$ 且 $p_{i+1}$ 整除 $p_{j+1}$，输出任意合法排列。",
+      "transformed_statement": "将排列构造成小数与大数交替出现，使每个相邻位置对都包含一个大于 $n/2$ 的元素；由于这类元素没有更大的倍数，可直接阻断成对整除关系。",
+      "key_observations": [
+        "交替放置最小未用数和最大未用数，可保证除末对外每个相邻位置对都含有大于 $\\lfloor n/2\\rfloor$ 的数。",
+        "区间 $[\\lfloor n/2\\rfloor+1,n]$ 中的数不存在更大的倍数，因此含有该大数的候选起点不可能同时满足两次整除。",
+        "最后一个相邻位置对单独检查：其末元素大于 $n/2$，没有其他不同元素能被它整除，从而排除剩余的索引组合。"
+      ],
+      "solution_brief": "从两端维护未使用数，奇数位置取当前最小值，偶数位置取当前最大值，得到 $[1,n,2,n-1,\\ldots]$。每个相邻对都能借助大于 $n/2$ 的元素阻止两次整除同时成立，末对再单独验证。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:19:57+00:00",
+          "quality_flags": [
+            "partial_editorial"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 549,
+      "problem_key": "1930C",
+      "contest_id": 1930,
+      "title": "Lexicographically Largest",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1930/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/126043",
+      "editorial_quality": "partial",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "constructive algorithms",
+        "data structures",
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "给定数组，重复恰好 $n$ 次：从当前数组任选一个元素，按它当前的位置将“元素值加位置”插入集合 $S$，随后删除该元素。所有元素删除后，将 $S$ 中不同的数按降序组成数组 $b$，求字典序最大的 $b$。",
+      "transformed_statement": "把删除顺序表示为每个原下标 $i$ 的参数 $c_i$，其中 $0\\le c_i<i$，于是第 $i$ 项向集合贡献 $a_i+i-c_i$；题目转为依次选择这些贡献值，使最终不同元素组成的降序数组字典序最大。",
+      "key_observations": [
+        "对原数组下标为 $i$ 的元素，令 $c_i$ 表示更小下标且已先被删除的元素个数，则它被删除时的位置为 $i-c_i$，加入集合的值恒为 $a_i+i-c_i$。",
+        "所有满足 $0\\le c_i<i$ 的序列都能通过安排删除顺序实现，因此可以按原下标递增，独立选择每个 $c_i$，不必直接搜索删除排列。",
+        "处理第 $i$ 个元素时，选择最小的 $v\\in[0,i-1]$ 使 $a_i+i-v$ 尚未出现不会损害字典序；这等价于在不冲突的候选值中取不超过 $a_i+i$ 的最大值。",
+        "维护已使用值及其下方仍可能可用的候选值，即可在线找到上述最大未使用值；最后将得到的集合按降序输出。"
+      ],
+      "solution_brief": "将删除顺序转化为选择 $c_i$：第 $i$ 项贡献 $a_i+i-c_i$，且所有合法 $c_i$ 序列均可实现。依次处理元素，贪心选取不冲突的最大候选值，用集合维护已用值和可用前驱，最后降序输出。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:18:17+00:00",
+          "quality_flags": [
+            "editorial_quality_partial",
+            "statement_text部分截断"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 550,
+      "problem_key": "1930D1",
+      "contest_id": 1930,
+      "title": "Sum over all Substrings (Easy Version)",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1930/problem/D1",
+      "editorial_url": "https://codeforces.com/blog/entry/126043",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "dp",
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "给定二进制模式串 $p$，要构造同长度的二进制串 $q$，使模式中每个位置都能在某个覆盖该位置的子区间内成为出现次数不少于一半的字符；记满足条件的 $q$ 中 `1` 的最少数量为 $f(p)$。对给定二进制串 $s$，求所有连续子串的 $f$ 值之和。",
+      "transformed_statement": "题解将最优的 $q$ 抽象为若干 `0` 与 `010` 块的拼接：模式位置为 `0` 时使用单字符块，位置为 `1` 时使用长度至多三的位置块并支付一个 `1`，于是 $f(p)$ 转化为一次线性贪心扫描。",
+      "key_observations": [
+        "存在一个最优的 $p$-good 字符串，可以重排并表示为若干个 `0` 或 `010` 块的拼接，因此不必枚举所有候选二进制串。",
+        "在这种块表示下，扫描模式串时遇到 `0` 消耗一个位置，遇到 `1` 支付一个 `1` 并跳过后两个位置；该贪心过程正好计算 $f(p)$。",
+        "对每个左端点逐步扩展右端点即可得到所有子串，并立即用上述扫描计算其 $f$ 值，最后累加而无需重复设计更复杂的全局状态。"
+      ],
+      "solution_brief": "枚举所有子串，维护当前子串并调用贪心函数：从左到右扫描，遇到 `1` 就计数并跳过后两个位置，遇到 `0` 只前进一格。将每个子串的计数累加即为答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:16:50+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 551,
+      "problem_key": "1930D2",
+      "contest_id": 1930,
+      "title": "Sum over all Substrings (Hard Version)",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1930/problem/D2",
+      "editorial_url": "https://codeforces.com/blog/entry/126043",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "字符串"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "divide and conquer",
+        "dp",
+        "dsu",
+        "greedy",
+        "implementation",
+        "strings"
+      ],
+      "statement_brief": "给定二进制串 $s$，对每个子串 $p$，在所有满足题面 p-good 条件的同长度二进制串 $q$ 中，定义 $f(p)$ 为 $q$ 中字符 $1$ 的最少数量。要求计算所有子串的 $f(p)$ 之和；题面中 p-good 的形式化条件在记录里不完整。",
+      "transformed_statement": "将每个子串 $s[i..j]$ 的答案表示为状态 $dp[i][j]$，再按左端点汇总为 $track[i]=\\sum_{j=i}^{n}dp[i][j]$。首字符为 $0$ 时状态右移一位，首字符为 $1$ 时增加一次贡献并跳到 $i+3$，于是可逆序线性计算。",
+      "key_observations": [
+        "对固定子串 $s[i..j]$，若 $s_i=0$，则 $f(s[i..j])=f(s[i+1..j])$；若 $s_i=1$，则 $f(s[i..j])=1+f(s[i+3..j])$，从而只需跳过 $1$ 个或 $3$ 个位置。",
+        "定义 $track[i]=\\sum_{j=i}^{n}f(s[i..j])$ 后，$s_i=0$ 时有 $track[i]=track[i+1]$，避免枚举所有右端点。",
+        "当 $s_i=1$ 时，前缀中的每个右端点都贡献 $1$，其余部分正好汇总为 $track[i+3]$，因此 $track[i]=n-i+1+track[i+3]$。",
+        "所有子串恰好按左端点划分，所以最终答案是 $\\sum_{i=1}^{n}track[i]$，逆序计算即可在线性时间完成。"
+      ],
+      "solution_brief": "利用题解给出的递推：$s_i=0$ 时令 $dp[i]=dp[i+1]$，$s_i=1$ 时令 $dp[i]=n-i+1+dp[i+3]$。从右向左计算并累加 $dp[i]$，得到所有子串答案总和，复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:14:54+00:00",
+          "quality_flags": [
+            "statement_definition_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 552,
+      "problem_key": "1930E",
+      "contest_id": 1930,
+      "title": "2..3...4.... Wonderful! Wonderful!",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1930/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/126043",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "初始数组为 $[1,2,\\ldots,n]$。固定 $k$ 后可重复进行围绕某个保留元素、删除其左右各 $k$ 个元素的操作，也可以不操作；对每个 $k\\le\\lfloor(n-1)/2\\rfloor$，求所有不同最终数组的数量。",
+      "transformed_statement": "把最终数组表示为长度为 $n$ 的二进制串：保留位置记为 $1$，删除位置记为 $0$。问题转化为在零数为 $2k$ 倍数的字符串中，统计左右第 $k$ 个零之间至少出现一个一的字符串数量。",
+      "key_observations": [
+        "最终数组必须是初始数组的子序列，删除元素总数须为 $2k$ 的倍数；除无删除外，可行性等价于存在一个保留元素，其左右被删除元素各至少有 $k$ 个。",
+        "将保留元素记为 $1$、删除元素记为 $0$ 后，零的数量必须是 $2k$ 的倍数；不可行当且仅当从左右数第 $k$ 个零之间没有任何 $1$。",
+        "把左右第 $k$ 个零之间的所有零压成一个零，可得到恰有 $2k-1$ 个零的字符串，且压缩结果唯一对应原字符串，因此含 $x$ 个一的坏串数量为 $C(x+2k-1,2k-1)$。",
+        "当删除数为 $n-x$ 且满足 $(n-x)\\bmod 2k=0$ 时，含 $x$ 个一的好串数量为 $C(n,x)-C(x+2k-1,2k-1)，只需累加这些 $x$。"
+      ],
+      "solution_brief": "枚举删除数 $d=2k,4k,\\ldots$，令 $x=n-d$，累加 $C(n,x)-C(x+2k-1,2k-1)$，并额外计入不删除的情况。预处理阶乘及逆阶乘后计算组合数。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:13:52+00:00",
+          "quality_flags": [
+            "statement_operation_text_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 553,
+      "problem_key": "1930F",
+      "contest_id": 1930,
+      "title": "Maximize the Difference",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1930/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/126043",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "dfs and similar"
+      ],
+      "statement_brief": "初始数组为空，每次根据当前查询值与上一次答案计算 $v=(e_i+last_i)\\bmod n$，将 $v$ 追加到数组。每次追加后，要求计算所有非负 $x$ 下数组元素按位 OR 后的最大值与最小值之差的最大可能值。",
+      "transformed_statement": "把答案重写为数组中有序对的最大 $b_i\\land\\sim b_j$，再在固定的二进制位域中维护所有 $b_i$ 的子掩码集合与所有补集的子掩码集合；答案就是两个集合交集中的最大掩码。",
+      "key_observations": [
+        "最优的 $x$ 一定可以取数组中的某个元素 $b_p$，因此无需在所有非负整数中搜索，只需考虑已有元素。",
+        "原函数等价于所有有序对的最大值 $f(b)=\\max_{i,j}(b_i\\land\\sim b_j)$，把 OR 的极差转成了按位 AND 与补集的最大值。",
+        "若某个掩码同时是某个 $b_i$ 和某个 $\\sim b_j$ 的子掩码，它就是候选答案；因此分别维护两类子掩码并取交集中的最大值即可。",
+        "追加元素只会新增其自身及补集的子掩码；每类掩码全局只访问一次，并沿删除一个置位逐层扩展，从而将所有查询合并处理。"
+      ],
+      "solution_brief": "将值域扩展到不小于 $n$ 的二次幂，维护所有元素子掩码和所有补集子掩码。每次追加值 $v$ 时遍历并标记新增子掩码，更新两类集合交集中的最大掩码作为答案，再用该答案解密下一次查询；总复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:12:02+00:00",
+          "quality_flags": [
+            "statement_format_corrupted"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 554,
+      "problem_key": "1930G",
+      "contest_id": 1930,
+      "title": "Prefix Max Set Counting",
+      "rating": 3100,
+      "problem_url": "https://codeforces.com/contest/1930/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/126043",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "树结构",
+        "数据结构"
+      ],
+      "original_tags": [
+        "data structures",
+        "dp",
+        "trees"
+      ],
+      "statement_brief": "给定一棵以 $1$ 为根的树，考虑所有满足先序约束的节点排列（每个节点先于其后代出现）。对排列依次取前缀最大值并保留这些元素，要求计算所有不同结果数组的数量，答案对 $998244353$ 取模。",
+      "transformed_statement": "不直接枚举先序排列，而把每个结果看成节点序列 $S$：它从 $1$ 开始、以 $n$ 结束，并满足相邻节点路径最大值为后者；再统计这些序列的数量。对不在同一根路径上的转移，可用分叉子树的最大节点唯一刻画。",
+      "key_observations": [
+        "每个答案可等价表示为节点序列 $S=f(a)$，其首项为 $1$、末项为 $n$，且相邻节点间路径上的最大编号必须是后一个节点。",
+        "若相邻节点不在同一条根路径上，设分叉点下通向前一节点的子树为 $m$，则该子树最大编号必须恰好等于前一节点，从而可按子树最大值聚合转移。",
+        "定义 $dp[i]$ 为合法序列以节点 $i$ 结尾的数量，所有转移只依赖祖先路径与各分支子树最大值，因此可按节点编号递增计算。",
+        "将祖先贡献转化为欧拉序区间的前缀和，并用树状数组维护；对满足子树最大值等于当前编号的连续祖先链跳过处理，使总复杂度降为 $O(n\\log n)$。"
+      ],
+      "solution_brief": "把不同的 $f(a)$ 视为合法节点序列，设 $dp[i]$ 为以 $i$ 结尾的序列数。按编号递增转移，利用根路径最大值和分支子树最大值聚合贡献；欧拉序配合树状数组维护祖先和，答案为 $dp[n]$，复杂度 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:10:58+00:00",
+          "quality_flags": [
+            "statement_format_corruption"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 555,
+      "problem_key": "1930H",
+      "contest_id": 1930,
+      "title": "Interactive Mex Tree",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1930/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/126043",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "树结构",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "interactive",
+        "trees"
+      ],
+      "statement_brief": "给定一棵编号为 $1$ 到 $n$ 的树，Bob 先输出两个节点排列。随后每轮 Alice 给出两个端点，Bob 可在这两个排列的连续区间上发起查询，并需回答该端点路径上节点编号的 MEX；各轮彼此独立。",
+      "transformed_statement": "把路径 MEX 改写为路径补集中节点编号的最小值。通过 DFS 的进入、离开时间建立两种全局排列，使路径补集能按 LCA 和子树边界拆成至多五个可单次查询的连续区间。",
+      "key_observations": [
+        "路径的 MEX 等于所有不在该路径上的节点编号中的最小值；因此问题可转为查询路径补集的最小编号。",
+        "按 DFS 的进入时间排序得到 $p_1$、按离开时间排序得到 $p_2$，使若干由时间边界定义的节点集合分别成为连续区间。",
+        "设路径端点的 LCA 及其通向一端的子树边界，路径补集可被划分为至多五个时间区间；这些区间不含路径节点且覆盖全部补集。",
+        "每个区间只需查询一次并取结果最小值；若补集为空，路径包含全部节点，答案直接为 $n$。"
+      ],
+      "solution_brief": "DFS 记录 $tin,tout$，输出按进入、离开时间排序的两种排列。对每轮端点求 LCA，用时间边界把路径外节点划为至多五个连续区间，查询各区间 MEX 后取最小值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:09:49+00:00",
+          "quality_flags": [
+            "statement_interaction_rules_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 556,
+      "problem_key": "1930I",
+      "contest_id": 1930,
+      "title": "Counting Is Fun",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1930/problem/I",
+      "editorial_url": "https://codeforces.com/blog/entry/126043",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "字符串",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "combinatorics"
+      ],
+      "statement_brief": "给定长度为 $n$ 的二进制模式串 $p$，统计同长度二进制串 $q$ 的数量。对每个位置 $i$，必须能选取一个包含 $i$ 的连续子串，使得 $p_i$ 在该子串中出现次数至少为子串长度的一半；求满足条件的 $q$ 的数量。",
+      "transformed_statement": "把 $q$ 映射为步长为 $-1$ 或 $1$ 的格路，并用前缀和表示区间中两种字符的数量差。位置 $i$ 合法等价于前后前缀和不发生严格分离；固定所有坏位置后，问题转为两端 ballot 路与中间双向 ballot 路的容斥计数。",
+      "key_observations": [
+        "把候选串 $q$ 的 0、1 分别赋权 $-1、1$；位置 $i$ 无法找到满足要求的区间，当且仅当前后两段前缀和严格分离，因此坏位置可转化为前缀和的全局极值条件。",
+        "若总位移为正，则只有模式为 $0$ 的位置可能成为坏点；总位移为负时对称处理，而总位移为零的串必然合法，从而可把问题分成两个方向。",
+        "固定一组坏位置后，两端必须是单向 ballot 序列，相邻坏点之间必须是双向 ballot 序列，故该交集的计数分解为若干 $f$ 与 $g$ 的乘积，可用容斥合并。",
+        "双向 ballot 数 $g$ 可由反射法写成二项式系数的线性组合，再用生成函数和分治卷积求出；坏点转移同样用分治卷积计算，整体复杂度为 $O(n\\log^2 n)$。"
+      ],
+      "solution_brief": "将 $q$ 视为上下走的格路，用前缀和刻画每个位置是否存在使给定字符成为众数的区间。按总位移方向处理，利用容斥、ballot 数和反射法得到转移，再以生成函数及分治卷积计算，复杂度 $O(n\\log^2 n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:09:11+00:00",
+          "quality_flags": [
+            "notation_corrupted",
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 571,
