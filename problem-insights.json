@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1603,
+    "total_problems": 1612,
     "source_total_problems": 1749,
-    "filtered_out_problems": 146,
-    "with_statement_brief": 1603,
-    "with_editorial_brief": 1371,
-    "with_solution_brief": 1372,
+    "filtered_out_problems": 137,
+    "with_statement_brief": 1612,
+    "with_editorial_brief": 1380,
+    "with_solution_brief": 1381,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 541,
+    "ai_override_count": 550,
     "primary_topic_count": 13
   },
   "records": [
@@ -19907,6 +19907,407 @@
           "model": "gpt-6-luna",
           "generated_at": "2026-09-24T06:44:57+00:00",
           "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 478,
+      "problem_key": "1909A",
+      "contest_id": 1909,
+      "title": "Distinct Buttons",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1909/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/123584",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "几何"
+      ],
+      "original_tags": [
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "从原点出发，在无限整数平面上用上、右、下、左四个按钮移动；整个过程中最多使用其中三种不同按钮，但每种可重复按。给定若干特殊点，判断能否按任意顺序访问全部特殊点而不使用四种按钮。",
+      "transformed_statement": "把“最多使用三种方向”转化为选择一个不能使用的方向：若禁止左或右，所有点必须位于同一侧的竖直半平面；若禁止下或上，则所有点必须位于同一侧的水平半平面。",
+      "key_observations": [
+        "若只使用上、右、下三个按钮，就无法到达任何 $x<0$ 的点；因此省略左按钮时，所有目标点必须满足 $x_i\\ge 0$。",
+        "当所有 $x_i\\ge 0$ 时，可按 $x$ 从小到大访问：在同一列用上、下按钮移动，列之间用右按钮连接，因此三种按钮足够覆盖全部点。",
+        "对四个方向做对称分析，能够访问全部点当且仅当所有 $x_i\\ge0$、所有 $x_i\\le0$、所有 $y_i\\ge0$ 或所有 $y_i\\le0$；否则无论省略哪个按钮都会有目标点不可达。"
+      ],
+      "solution_brief": "扫描所有点的横纵坐标，判断是否至少有一个坐标方向完全位于非负半轴或非正半轴；满足则输出 YES，否则输出 NO，复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:05:47+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 479,
+      "problem_key": "1909B",
+      "contest_id": 1909,
+      "title": "Make Almost Equal With Mod",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1909/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/123584",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定一个由互不相同正整数构成的数组，选择一个 $1\\le k\\le10^{18}$，将每个元素统一替换为其除以 $k$ 的余数。要求操作一次后数组中恰好出现两种不同的值，并输出任意可行的 $k$。",
+      "transformed_statement": "令 $f(k)$ 表示数组对 $k$ 取模后不同余数的数量，只需在模数 $2^j$ 的序列中寻找第一次从 $f=1$ 变为非 $1$ 的位置；这个位置的取模结果必有两种值。",
+      "key_observations": [
+        "取模 $k$ 后若所有数都得到同一余数 $x$，则改取 $2k$ 时每个余数只能是 $x$ 或 $x+k$，因此不同值数只能保持为 $1$ 或变为 $2$。",
+        "从 $k=1$ 开始逐次尝试 $2^j$；当 $k=2^j$ 的结果只有一个值而下一个模数产生多个值时，根据前述限制，下一个结果必恰有两个值。",
+        "由于 $a_i<2^{57}$ 且互不相同，模数 $2^{57}$ 后仍有 $n$ 个不同余数；结合模数 $1$ 时只有一个余数，必能在幂次递增过程中找到答案。",
+        "模 $2^j$ 等价于保留二进制表示的末 $j$ 位，因此目标是找到一个二进制后缀恰好对应两类数。"
+      ],
+      "solution_brief": "定义 $f(k)$ 为取模后不同余数的数量，依次尝试 $k=2^1,2^2,\u001cdots,2^{57}$。若当前 $f(k)=1$ 而下一个不为 $1$，由每个余数只会分裂成两种可知下一个必为 $2$，输出该模数；复杂度为 $O(n\frac{\\log(\\max a_i))$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:04:44+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 480,
+      "problem_key": "1909C",
+      "contest_id": 1909,
+      "title": "Heavy Intervals",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1909/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/123584",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "data structures",
+        "dsu",
+        "greedy",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "给定 $n$ 个区间的左端点、右端点及单位长度代价，允许分别重排这些端点和代价，但最终每个区间必须满足左端点小于右端点。求所有区间总重量 $\\sum c_i(r_i-l_i)$ 的最小值。",
+      "transformed_statement": "先把所有端点按坐标排列，并将左端点视为左括号、右端点视为右括号，用括号匹配决定最优的端点配对；得到各区间长度后，再将代价按降序分配给长度按升序排列的区间。",
+      "key_observations": [
+        "将所有左端点记为“(”、右端点记为“)”，按坐标排序后必为合法括号序列；匹配括号即可得到一种嵌套的端点配对。",
+        "若两条区间交叉为 $l_i<l_j<r_i<r_j$，交换两个右端点不会增大代价，因此不断消除交叉可得到括号匹配对应的最优配对。",
+        "端点配对确定后，长度越短的区间应分配越大的单位代价；由重排不等式，按长度升序与 $c_i$ 降序配对最优。",
+        "从右端点升序处理时，为其选择当前最大的左端点等价于栈式括号匹配，可在排序后用栈或集合完成。"
+      ],
+      "solution_brief": "分别重排左端点、右端点和单位代价。将端点排序并按括号规则配对得到最优区间长度，再把最大的代价分给最短区间，累加 $c_i(r_i-l_i)$；复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:03:42+00:00",
+          "quality_flags": [
+            "statement_operation_text_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 481,
+      "problem_key": "1909D",
+      "contest_id": 1909,
+      "title": "Split Plus K",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1909/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/123584",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "greedy",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "黑板上有 $n$ 个正整数和常数 $k$。每次可选一个数 $x$，将其替换为两个正整数 $y,z$，满足 $y+z=x+k$；求把所有数变得相等所需的最少操作次数，无法做到时输出 $-1$。",
+      "transformed_statement": "把黑板上的每个数统一改记为原值减去 $k$，原操作就变成将一个数拆成和不变的两个数。于是要把各个 $a_i-k$ 拆成若干个相同的单位，并最小化拆出数量。",
+      "key_observations": [
+        "令 $a'_i=a_i-k$ 后，一次把 $x$ 拆成满足 $y+z=x+k$ 的两个数，恰好变为把 $x'$ 拆成和为 $x'$ 的两数，因此问题等价于 $k=0$。",
+        "若最终所有数在移位后都等于 $m'$，则每个 $a'_i$ 都必须由若干个 $m'$ 组成，所以 $m'$ 必须整除所有 $a'_i$；同号时取绝对值最大的可行单位，即 $\u001b$gcd$\u001b$。",
+        "移位后的数若同时为正或同时为负则可行；正负混杂时无法通过拆分改变总和的符号结构，因此答案为 $-1$。",
+        "选定单位后，第 $i$ 个数需要变成 $|a'_i|/|m'|$ 个最终数，操作次数等于最终总数减去初始数的个数，即 $\u001b$sum$|a'_i|/g-n$。"
+      ],
+      "solution_brief": "将所有数减去 $k$，把操作转化为保持总和的拆分。若 $a_i-k$ 全为正或全为负，取其绝对值的最大公约数 $g$，答案为 $\u001b$sum$|a_i-k|/g-n$；全为零时答案为 $0$，符号混杂则为 $-1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:02:32+00:00",
+          "quality_flags": [
+            "statement_operation_text_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 482,
+      "problem_key": "1909E",
+      "contest_id": 1909,
+      "title": "Multiple Lamps",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1909/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/123584",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余",
+        "组合计数与概率",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "constructive algorithms",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "有 $n$ 盏初始熄灭的灯和同样数量的按钮；按下编号 $i$ 的按钮会翻转所有编号为 $i$ 的倍数的灯，且若按下 $u$ 就必须按下指定的 $v$。要求至少按下一个按钮，使最终亮灯数不超过 $\\floor{n/5}\\rfloor$，否则输出 $-1$。",
+      "transformed_statement": "不直接搜索按钮集合，而是先指定最终亮灯集合 $S$。由于按钮 $i$ 是影响第 $i$ 盏灯的最后一个相关按钮，可按编号递增唯一恢复实现状态 $S$ 所需的按钮；大规模时则把“按下所有按钮”作为统一构造。",
+      "key_observations": [
+        "按下所有按钮时，编号为 $i$ 的灯会被其全部约数按钮翻转，因此最终亮当且仅当 $i$ 是完全平方数，亮灯数为 $\floor\\sqrt n\\rfloor$。",
+        "当 $n\\ge 20$ 时有 $\floor\\sqrt n\\rfloor\\le\\floor{n/5}\\rfloor$，所以直接按下全部按钮既满足亮灯上限，也自动满足所有按钮依赖。",
+        "当 $n\\le19$ 时目标亮灯集合大小至多为 $3$；固定目标集合后，按编号递增处理，每个按钮是否按下由当前第 $i$ 盏灯是否与目标状态一致唯一确定。",
+        "枚举所有大小不超过 $3$ 的目标亮灯集合，并检查得到的按钮集合是否满足每条“按下 $u$ 必须按下 $v$”约束；没有可行集合时输出 $-1$。"
+      ],
+      "solution_brief": "$n\\ge20$ 时按下全部按钮，亮灯恰为完全平方数。否则枚举至多 $3$ 盏目标亮灯，利用从小到大的唯一递推恢复按钮集合，再验证所有依赖约束并排除空操作。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:00:51+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 483,
+      "problem_key": "1909F1",
+      "contest_id": 1909,
+      "title": "Small Permutation Problem (Easy Version)",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1909/problem/F1",
+      "editorial_url": "https://codeforces.com/blog/entry/123584",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组 $a$，统计排列 $p$ 的数量：对每个位置 $i$，前 $i$ 个位置中数值不超过 $i$ 的元素个数必须恰好等于 $a_i$。答案对 $998244353$ 取模。",
+      "transformed_statement": "把排列表示为网格中的点 $(i,p_i)$；由于每行和每列恰有一个点，题目变成统计使每个左上角正方形 $[1,i]\\times[1,i]$ 含指定点数的点集，并按相邻约束之间新增的 L 形区域分阶段计数。",
+      "key_observations": [
+        "把排列元素表示为网格中的点 $(i,p_i)$ 后，条件等价于左上角前缀正方形 $[1,i]\\times[1,i]$ 中恰有 $a_i$ 个点，几何上形成一系列嵌套约束。",
+        "按下标递增处理相邻的非负约束时，只需在新增的 L 形区域放入 $a_i-a_j$ 个点；这将全局排列限制转化为局部增量计数。",
+        "每个 L 形区域可拆成两个矩形，枚举第一个矩形放入的点数 $k$，即可分别计数两个矩形中的合法点集并求和。",
+        "一个 $h\\times w$ 矩形放置 $k$ 个互不同行列的点有 $\\binom{h}{k}\\binom{w}{k}k!$ 种，因此可直接用组合数计算每次转移；非负 $a_i$ 必须非递减且最终满足 $a_n=n$。"
+      ],
+      "solution_brief": "将排列画成网格点，按非负约束递增处理嵌套前缀正方形。每次在新增 L 形区域中枚举分配到第一个矩形的点数，用 $\\binom{h}{k}\\binom{w}{k}k!$ 计数并累乘；若约束不递增或 $a_n\\ne n$，答案为 $0$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T06:59:13+00:00",
+          "quality_flags": [
+            "editorial_diagrams_missing",
+            "statement_condition_corrupted"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 484,
+      "problem_key": "1909F2",
+      "contest_id": 1909,
+      "title": "Small Permutation Problem (Hard Version)",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1909/problem/F2",
+      "editorial_url": "https://codeforces.com/blog/entry/123584",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定长度为 $n$ 的排列 $p$ 和数组 $a$。对每个 $i$，要求前 $i$ 个位置中数值不超过 $i$ 的元素个数等于 $a_i$；当 $a_i=-1$ 时该位置不设限制。请计算满足所有限制的排列数量，结果模 $998244353$。",
+      "transformed_statement": "把排列表示成网格点 $(i,p_i)$：每个条件要求左上角 $i\\times i$ 方格含有指定数量的点。按相邻已知边界处理新增 L 形区域，并把它拆成两个矩形进行计数。",
+      "key_observations": [
+        "把排列元素表示为网格中的点 $(i,p_i)$ 后，条件等价于左上角 $i\\times i$ 子方格内恰有 $a_i$ 个点；这将排列约束转成前缀正方形计数。",
+        "相邻两个有约束的位置 $j<i$ 之间，内层正方形已有 $a_j$ 个点，因此只需在新增的 L 形区域放置 $a_i-a_j$ 个点，问题被分解为独立的局部增量。",
+        "将每个 L 形区域拆成两个矩形，并枚举第一个矩形放置的点数 $k$；矩形中放置 $k$ 个互不同行列点的方案数为 $\\binom{h}{k}\\binom{w}{k}k!$，从而可用组合数乘积合并两部分。",
+        "所有已知的非负 $a_i$ 必须单调不减，且必须有 $a_n=n$；否则前缀点数无法随边界扩张而满足条件，答案直接为 $0$，同时单调性保证所有 $k$ 的枚举总量为 $O(n)$。"
+      ],
+      "solution_brief": "用网格前缀点数刻画约束，按相邻已知位置处理 L 形增量区域。将其拆成两个矩形，枚举第一块放置的点数，用 $\\binom{h}{k}\\binom{w}{k}k!$ 计算并合并方案；先检查已知值单调且 $a_n=n$，整体复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T06:57:47+00:00",
+          "quality_flags": [
+            "statement_condition_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 485,
+      "problem_key": "1909G",
+      "contest_id": 1909,
+      "title": "Pumping Lemma",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/1909/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/123584",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [],
+      "original_tags": [
+        "hashing",
+        "strings"
+      ],
+      "statement_brief": "给定长度为 $n$ 的字符串 $s$ 和长度为 $m$ 的字符串 $t$，统计把 $s$ 分成连续三段 $x,y,z$ 的所有三元组。分界点对应的前缀与后缀需按题目条件分别和 $t$ 的相应部分匹配，求满足这些条件的三元组数量。",
+      "transformed_statement": "把三元组改写为两个分界点 $(a,b)$：$x=s[1,a]$、$y=s[a+1,b]$、$z=s[b+1,n]$。固定中段长度 $l=b-a$ 后，合法分界点由前缀匹配和后缀匹配共同限制，并形成一个连续位置区间。",
+      "key_observations": [
+        "固定 $|y|=l$ 后，若分界点 $(a,b)$ 有效，则向右同步移动一位只需新增检查 $s_{b+1}=t_{b+1}$，因此同长度的有效分界点连续出现。",
+        "若当前位置首次出现前缀失配 $s_c\\ne t_c$，则所有满足 $b\\ge c$ 的分界点都无效；这给出了有效区间的右端点。",
+        "从字符串末尾向左寻找首次失配，可确定后缀匹配允许的左端点；结合 $b-a=l$，每种长度只需检查对应区间内的一个分界点。",
+        "前缀和后缀匹配均可用滚动哈希一次性判断，枚举长度并维护有效区间即可达到 $O(n)$。"
+      ],
+      "solution_brief": "将三元组表示为分界点 $(a,b)$，其中 $x=s[1,a]$、$y=s[a+1,b]$、$z=s[b+1,n]$。按 $|y|$ 处理，利用前缀和后缀失配位置确定连续有效区间，并用滚动哈希判断匹配，整体复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T06:56:34+00:00",
+          "quality_flags": [
+            "partial_editorial",
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 487,
+      "problem_key": "1909I",
+      "contest_id": 1909,
+      "title": "Short Permutation Problem",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1909/problem/I",
+      "editorial_url": "https://codeforces.com/blog/entry/123584",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "fft",
+        "math"
+      ],
+      "statement_brief": "给定 $n,x$，对每个 $3\\le m\\le n+1$ 和 $0\\le k\\le n-1$，统计排列 $p$ 中满足 $p_i+p_{i+1}\\ge m$ 的相邻位置恰有 $k$ 个的数量 $a_{m,k}$。先将这些数量按模 $998244353$ 计算，再把它们视为代表元，输出 $\\sum a_{m,k}x^{mn+k}$ 对模 $1000000007$ 的结果。",
+      "transformed_statement": "对固定阈值 $m$，不直接枚举排列，而是按围绕 $m/2$ 的顺序逐个把元素插入当前序列；插入位置决定新增 good pair 数。交替插入阶段用按数量计数的 DP，后续仅插入小元素的阶段改写为组合公式，最后通过多项式卷积合并不同阶段。",
+      "key_observations": [
+        "按围绕 $m/2$ 交替扩展的顺序插入元素时，新插入的“大”元素与此前所有元素组成的相邻对都满足和至少为 $m$，而“小”元素形成的对应对都不满足，从而能直接判断新增 good pair 数量。",
+        "对固定 $m$，用 $dp_{i,j}$ 表示插入该顺序前 $i$ 个元素并得到 $j$ 个 good pair 的排列数，把排列构造转化为插入位置带来的计数转移。",
+        "交替的“大、小”元素处理完后只剩“小”元素，此阶段无需继续 DP；固定已有状态和最终 good pair 数后，可用选择被破坏的相邻对与 stars and bars 的组合公式一次计算。",
+        "不同 $m$ 的 DP 前缀本质相同、仅长度不同；整理阶乘因子后，所有答案可转为多项式乘法，并用 NTT 在 $O(n^2\\log n)$ 内批量计算。"
+      ],
+      "solution_brief": "按围绕 $m/2$ 的交替顺序插入元素，DP 统计 good pair 数；剩余小元素用组合公式处理，再将各长度状态整理为多项式并用 NTT 批量合并，最后按题目要求双模数哈希。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T06:51:40+00:00",
+          "quality_flags": [
+            "editorial_omits_exact_suffix_formula"
+          ]
         }
       },
       "manual_override": false,

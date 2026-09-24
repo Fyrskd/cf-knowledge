@@ -2301,6 +2301,7 @@
     "name": "Quadratic Jumps",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 2600,
     "tags": [
       "brute force",
       "constructive algorithms",
@@ -2315,6 +2316,7 @@
     "name": "Graph Cutting",
     "type": "PROGRAMMING",
     "points": 2500.0,
+    "rating": 2300,
     "tags": [
       "dfs and similar",
       "dp",
@@ -2328,6 +2330,7 @@
     "name": "Maximum Prefix Sums",
     "type": "PROGRAMMING",
     "points": 2000.0,
+    "rating": 1900,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -2341,6 +2344,7 @@
     "name": "Chipmunk Theo and Equality",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 1400,
     "tags": [
       "implementation",
       "sortings"
@@ -2352,6 +2356,7 @@
     "name": "Another Sorting Problem",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1000,
     "tags": [
       "constructive algorithms"
     ]
@@ -2362,6 +2367,7 @@
     "name": "Construct an Array",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "constructive algorithms"
     ]
@@ -2371,6 +2377,7 @@
     "index": "F",
     "name": "Game on Growing Tree",
     "type": "PROGRAMMING",
+    "rating": 2700,
     "tags": [
       "binary search",
       "dfs and similar",
@@ -2536,6 +2543,7 @@
     "name": "We Be Flipping (Easy Version)",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 800,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -2547,6 +2555,7 @@
     "name": "Absolute Cinema",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 800,
     "tags": [
       "greedy",
       "math"
@@ -2558,6 +2567,7 @@
     "name": "Slimes on a Line",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "brute force",
       "greedy",
