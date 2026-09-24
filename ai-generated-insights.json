@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-24T09:07:17+00:00",
+  "updated_at": "2026-09-24T09:15:21+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -18289,6 +18289,69 @@
         "quality_flags": [
           "partial_editorial",
           "statement_truncated"
+        ]
+      }
+    },
+    "1937B": {
+      "problem_key": "1937B",
+      "title": "Binary Path",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1937/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/126513",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "85625ad7b347c31472ec9e6b3cdf860fc756d784f4aefff2898e272507969ca3",
+      "generated_at": "2026-09-24T09:13:39+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $2\\times n$ 的 01 网格，蚱蜢从左上角出发，每次只能向右或向下，最终到达右下角。收集路径上的 $n+1$ 个字符，要求输出字典序最小的路径字符串，以及能生成该字符串的路径数量。",
+        "transformed_statement": "每条合法路径等价于选择一个下移列 $i$：先走第一行到第 $i$ 列下移，再沿第二行走完。于是问题转化为在这些候选字符串中找字典序最小者，并统计达到最小值的连续下移列区间。",
+        "key_observations": [
+          "所有合法路径都可唯一表示为在第 $i$ 列向下，再沿第二行走到末格；因此只需比较 $n$ 个候选字符串。",
+          "相邻的第 $i$、$i+1$ 条路径生成的字符串仅可能在第 $i+1$ 个字符不同，比较结果只由 $a_{2,i}$ 与 $a_{1,i+1}$ 决定，从而可在线性扫描中贪心选择。",
+          "若 $a_{2,i}=1$ 且 $a_{1,i+1}=0$，应优先在第 $i+1$ 列下移；若 $a_{2,i}=0$ 且 $a_{1,i+1}=1$，应优先在第 $i$ 列下移；相等时两条路径字符串相同。",
+          "达到最小字符串的下移列构成连续区间，因此找到左右端点后，路径数量就是区间长度。"
+        ],
+        "solution_brief": "将路径按下移列编号。相邻候选只比较一个字符，扫描确定最优下移列的连续区间；输出对应字符串及区间长度，时间复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "字符串",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、statement_text 及代码实现；tags 仅用于辅助主题判断。",
+        "quality_flags": []
+      }
+    },
+    "1937A": {
+      "problem_key": "1937A",
+      "title": "Shuffle Party",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1937/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/126513",
+      "editorial_quality": "partial",
+      "model": "gpt-6-luna",
+      "input_hash": "f733f16621f2b617b95c27c2974060e2c72f4e025dbebd10a1afbfa5015f5010",
+      "generated_at": "2026-09-24T09:15:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定初始数组 $[1,2,\\ldots,n]$，按 $k=2,3,\\ldots,n$ 的顺序执行操作：交换位置 $k$ 与其最大真因数位置上的元素。求所有操作完成后数字 $1$ 所在的位置。",
+        "transformed_statement": "把数组操作转化为追踪数字 $1$ 的位置：第 $k$ 步只会交换位置 $k$ 和 $k/2$，因此数字 $1$ 只有在当前位置为 $k/2$ 时才会向后移动并翻倍。",
+        "key_observations": [
+          "对任意 $k\\ge 2$，$k$ 的最大真因数是 $k/2$，因此操作等价于交换位置 $k$ 与位置 $k/2$。",
+          "按 $k$ 递增处理时，只有当数字 $1$ 当前位于 $k/2$ 时它才会移动；移动后位置直接变为 $k$，即位置翻倍。",
+          "数字 $1$ 从位置 $1$ 出发，只会依次到达 $1,2,4,8,\\ldots$，所以最终位置是最大的不超过 $n$ 的二次幂。"
+        ],
+        "solution_brief": "维护变量 $p=1$，只要 $2p\\le n$ 就令 $p\\leftarrow2p$；循环结束时的 $p$ 即为数字 $1$ 的最终位置。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "依据 statement 的数组操作规则、editorial 的二次幂结论与代码，以及 tags 中的 math/implementation。",
+        "quality_flags": [
+          "partial_editorial",
+          "statement_operation_definition_formatting_incomplete"
         ]
       }
     }

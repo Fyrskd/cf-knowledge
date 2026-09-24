@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1663,
+    "total_problems": 1665,
     "source_total_problems": 1749,
-    "filtered_out_problems": 86,
-    "with_statement_brief": 1663,
-    "with_editorial_brief": 1431,
-    "with_solution_brief": 1432,
+    "filtered_out_problems": 84,
+    "with_statement_brief": 1665,
+    "with_editorial_brief": 1433,
+    "with_solution_brief": 1434,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 601,
+    "ai_override_count": 603,
     "primary_topic_count": 13,
-    "contest_count": 266,
+    "contest_count": 267,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,10 +45,10 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 72,
-    "构造与贪心": 549,
+    "构造与贪心": 550,
     "图论与网络流": 106,
     "动态规划与状态设计": 161,
-    "数论与同余": 153,
+    "数论与同余": 154,
     "组合计数与概率": 130,
     "数据结构": 136,
     "几何": 36,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 513,
-    "ai_generated_partial_editorial": 27,
+    "ai_generated_with_editorial": 514,
+    "ai_generated_partial_editorial": 28,
     "missing_editorial": 231,
     "manual_override": 891,
     "statement_derived": 1
@@ -35545,6 +35545,74 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1937,
+      "name": "Codeforces Round 930 (Div. 2)",
+      "date": "2024-02-29",
+      "url": "https://codeforces.com/contest/1937",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1300,
+      "problems": [
+        {
+          "key": "1937A",
+          "index": "A",
+          "slot": "A",
+          "title": "Shuffle Party",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1937/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/126513",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定初始数组 $[1,2,\\ldots,n]$，按 $k=2,3,\\ldots,n$ 的顺序执行操作：交换位置 $k$ 与其最大真因数位置上的元素。求所有操作完成后数字 $1$ 所在的位置。",
+          "transformedStatement": "把数组操作转化为追踪数字 $1$ 的位置：第 $k$ 步只会交换位置 $k$ 和 $k/2$，因此数字 $1$ 只有在当前位置为 $k/2$ 时才会向后移动并翻倍。",
+          "keyObservations": [
+            "对任意 $k\\ge 2$，$k$ 的最大真因数是 $k/2$，因此操作等价于交换位置 $k$ 与位置 $k/2$。",
+            "按 $k$ 递增处理时，只有当数字 $1$ 当前位于 $k/2$ 时它才会移动；移动后位置直接变为 $k$，即位置翻倍。",
+            "数字 $1$ 从位置 $1$ 出发，只会依次到达 $1,2,4,8,\\ldots$，所以最终位置是最大的不超过 $n$ 的二次幂。"
+          ],
+          "solutionBrief": "维护变量 $p=1$，只要 $2p\\le n$ 就令 $p\\leftarrow2p$；循环结束时的 $p$ 即为数字 $1$ 的最终位置。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1937B",
+          "index": "B",
+          "slot": "B",
+          "title": "Binary Path",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1937/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/126513",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $2\\times n$ 的 01 网格，蚱蜢从左上角出发，每次只能向右或向下，最终到达右下角。收集路径上的 $n+1$ 个字符，要求输出字典序最小的路径字符串，以及能生成该字符串的路径数量。",
+          "transformedStatement": "每条合法路径等价于选择一个下移列 $i$：先走第一行到第 $i$ 列下移，再沿第二行走完。于是问题转化为在这些候选字符串中找字典序最小者，并统计达到最小值的连续下移列区间。",
+          "keyObservations": [
+            "所有合法路径都可唯一表示为在第 $i$ 列向下，再沿第二行走到末格；因此只需比较 $n$ 个候选字符串。",
+            "相邻的第 $i$、$i+1$ 条路径生成的字符串仅可能在第 $i+1$ 个字符不同，比较结果只由 $a_{2,i}$ 与 $a_{1,i+1}$ 决定，从而可在线性扫描中贪心选择。",
+            "若 $a_{2,i}=1$ 且 $a_{1,i+1}=0$，应优先在第 $i+1$ 列下移；若 $a_{2,i}=0$ 且 $a_{1,i+1}=1$，应优先在第 $i$ 列下移；相等时两条路径字符串相同。",
+            "达到最小字符串的下移列构成连续区间，因此找到左右端点后，路径数量就是区间长度。"
+          ],
+          "solutionBrief": "将路径按下移列编号。相邻候选只比较一个字符，扫描确定最优下移列的连续区间；输出对应字符串及区间长度，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
