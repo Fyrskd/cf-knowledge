@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1634,
+    "total_problems": 1640,
     "source_total_problems": 1749,
-    "filtered_out_problems": 115,
-    "with_statement_brief": 1634,
-    "with_editorial_brief": 1402,
-    "with_solution_brief": 1403,
+    "filtered_out_problems": 109,
+    "with_statement_brief": 1640,
+    "with_editorial_brief": 1408,
+    "with_solution_brief": 1409,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 572,
+    "ai_override_count": 578,
     "primary_topic_count": 13
   },
   "records": [
@@ -21852,6 +21852,263 @@
           "path": "ai-generated-insights.json",
           "model": "gpt-6-luna",
           "generated_at": "2026-09-24T07:43:52+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 528,
+      "problem_key": "1918A",
+      "contest_id": 1918,
+      "title": "Brick Wall",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1918/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/125300",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "几何",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定一个 $n\\times m$ 的矩形，要用长度至少为 $2$ 的水平或竖直砖块覆盖每个格子且不越界、不重叠。稳定性定义为水平砖块数减去竖直砖块数，要求最大可能稳定性。",
+      "transformed_statement": "将目标转化为逐行最大化水平砖块数量：竖直砖块只会降低稳定性，而每行最多容纳 $\\floor(m/2)$ 个水平砖块；关键是证明每行都能用水平砖块恰好铺满。",
+      "key_observations": [
+        "每个水平砖块只占一行且长度至少为 $2$，所以单行最多放置 $\floor(m/2)$ 个水平砖块，水平砖块总数至多为 $n\\cdot\\floor(m/2)$。",
+        "当 $m$ 为偶数时，每行用长度 $2$ 的砖块铺满；当 $m$ 为奇数时，用若干长度 $2$ 的砖块和一个长度 $3$ 的砖块铺满，均能达到单行上界。",
+        "上述构造完全不使用竖直砖块，因此稳定性等于水平砖块数并达到上界，答案直接为 $n\\cdot\\floor(m/2)$。"
+      ],
+      "solution_brief": "按行独立分析：每行最多有 $\\floor(m/2)$ 个水平砖块。用长度 $2$ 的砖块铺行，奇数宽度时补一个长度 $3$ 的砖块，即可无竖直砖块完成覆盖，因此输出 $n\\cdot(m/2)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:01:21+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 529,
+      "problem_key": "1918B",
+      "contest_id": 1918,
+      "title": "Minimize Inversions",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1918/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/125300",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "data structures",
+        "greedy",
+        "implementation",
+        "sortings"
+      ],
+      "statement_brief": "给定两个长度为 $n$ 的排列。每次可选择两个位置，同时交换这两个位置上的 $a$ 和 $b$，从而重排对应数对；要求输出操作后能达到的、两个排列逆序数总和最小的一组结果。",
+      "transformed_statement": "把每个位置视为不可拆分的数对 $(a_i,b_i)$，问题变成任意重排这些数对，使两列的逆序数总和最小。按第一列升序排列后，第一列的逆序贡献被全部消除，并逐对达到最小贡献。",
+      "key_observations": [
+        "把每个位置的 $(a_i,b_i)$ 看成不可拆分的数对，操作本质上只是任意重排这些数对，因此两个数组中的对应关系始终不变。",
+        "固定两个数对的相对顺序时，它们在两数组中贡献的逆序数总和只能是 $0$、$1$ 或 $2$；交换顺序会将 $0$ 与 $2$ 互换，而 $1$ 保持不变。",
+        "按 $a_i$ 升序排列所有数对后，任意两数对在 $a$ 中都不产生逆序，因此每一对数对的贡献都不超过其他排列，整体逆序数总和达到最小。"
+      ],
+      "solution_brief": "将每个 $(a_i,b_i)$ 组成数对，按第一关键字 $a_i$ 升序排序后输出数对中的两列。此时 $a$ 无逆序，且由任意两数对的贡献分析可知总逆序数最小；复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:01:04+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 530,
+      "problem_key": "1918C",
+      "contest_id": 1918,
+      "title": "XOR-distance",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1918/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/125300",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "greedy",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定非负整数 $a,b,r$，选择一个满足 $0\\le x\\le r$ 的整数，将 $a$ 和 $b$ 分别与 $x$ 按位异或；要求找出两 个结果的绝对差的最小值。",
+      "transformed_statement": "将问题转为在二进制位上构造 $x$：最高不同位固定异或结果的大小关系，之后只利用较低位尽量缩小差值，同时保持 $x\\le r$。",
+      "key_observations": [
+        "在 $a$ 与 $b$ 的相同位上，$x$ 的取值不会影响两者差值，因此令这些位为 $0$，既不损失答案又更容易满足 $x\\le r$。",
+        "交换 $a,b$ 使 $a\\le b$ 后，最高的不同位决定异或结果的大小关系；该位令 $x$ 取 $0$ 不会比取 $1$ 更差，且避免无益地增大 $x$。",
+        "确定最高不同位后，较低的不同位若令 $x_i=1$ 且不超过 $r$，就能把较小的异或结果对应位变成 $1$，从而减少当前差值；按位从高到低贪心选择即可。"
+      ],
+      "solution_brief": "先交换使 $a\\le b$，从高位扫描。跳过最高不同位；之后遇到 $a_i=0,b_i=1$ 且加入 $2^i$ 后仍有 $x\\le r$，就把该位加入 $x$，同步异或两数，最终输出 $b-a$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T08:00:45+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 531,
+      "problem_key": "1918D",
+      "contest_id": 1918,
+      "title": "Blocking Elements",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1918/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/125300",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "dp",
+        "implementation",
+        "two pointers"
+      ],
+      "statement_brief": "给定正整数数组，可任选一些位置阻塞。代价是被阻塞元素总和与各段连续未阻塞元素之和中的最大值；要求选择阻塞位置，使该代价最小。",
+      "transformed_statement": "把答案改写为判定最小阈值 $M$：能否让所有未阻塞连续段的和以及所有阻塞元素的总和都不超过 $M$。在此前提下，问题变成按最后一个阻塞位置进行区间转移的最小代价 DP。",
+      "key_observations": [
+        "固定候选上限 $M$ 后，判定等价于选择阻塞位置，使每段未阻塞连续子数组和及阻塞元素总和都不超过 $M$。",
+        "设 $dp_i$ 为前缀中将位置 $i$ 阻塞时的最小阻塞总和，转移只需考虑与 $i$ 之间未阻塞段和不超过 $M$ 的前一个阻塞位置。",
+        "由于所有 $a_i>0$，满足区间和不超过 $M$ 的前驱位置构成连续区间，可用滑动边界维护，并用集合取得其中最小 $dp$。",
+        "检查最后一个阻塞位置后的未阻塞后缀是否不超过 $M$，即可完成可行性判断；可行性随 $M$ 增大单调成立，因此能二分答案。"
+      ],
+      "solution_brief": "二分答案 $M$。判定时用 DP 计算满足未阻塞段和不超过 $M$ 时的最小阻塞总和；正数数组使合法前驱连续，用滑动窗口和集合维护最小值，并检查首尾未阻塞段。单次判定为 $O(n\\log n)$，总复杂度为 $O(n\\log n\\log 10^9)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:59:32+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 533,
+      "problem_key": "1918F",
+      "contest_id": 1918,
+      "title": "Caterpillar on a Tree",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1918/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/125300",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "graphs",
+        "greedy",
+        "implementation",
+        "sortings",
+        "trees"
+      ],
+      "statement_brief": "给定一棵以 1 为根的树，爬虫从根出发，每沿树边移动一次耗时 1；最多可传送回根 $k$ 次且耗时为 0，最后可停在任意节点。要求访问树上所有节点并求最短总时间。",
+      "transformed_statement": "把路线压缩为按某种顺序访问全部叶子的若干段：普通路线以每条边往返一次为基准，叶子处传送只改变后续回根代价。将子树按高度升序排列后，DFS 叶序给出最优访问顺序。",
+      "key_observations": [
+        "只需保证所有叶子都被访问，因为进入任意未访问子树必须经过其叶子所在路径；因此非叶节点没有必要作为传送起点。",
+        "固定叶子访问顺序后，各段都可取两叶间或根到叶的最短路径，传送某个非最后叶子节省的时间可独立计算并取正收益最大的至多 $k$ 个。",
+        "将每个节点的子树按子树高度升序排列，并按 DFS 得到叶子序列，存在最优路线采用该顺序；较浅子树先处理可通过交换路线段而不增加总时间。",
+        "不使用传送时遍历树的基准代价为 $2(n-1)$；最后停在末叶无需返回根，相当于额外获得一次传送机会，再扣除选中叶子的正收益。"
+      ],
+      "solution_brief": "先 DFS 求各子树高度和节点深度，并将每个节点的子树按高度升序排列。按该顺序生成叶子序列，计算每个叶子传送回根相对继续步行的节省值；以 $2(n-1)$ 为基准，连同最后无需返回根的机会，减去至多 $k$ 个最大的正收益。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:51:50+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 534,
+      "problem_key": "1918G",
+      "contest_id": 1918,
+      "title": "Permutation of Given",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1918/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/125300",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "给定整数 $n$，构造一个长度为 $n$ 的非零整数数组。将每个位置同时替换为其邻居之和，端点只取唯一邻居；要求所得数组是原数组的一个排列，并输出任意构造或判定无解。",
+      "transformed_statement": "把问题转化为寻找可反复延长的合法数组：若数组末两项为 $a,b$，就在末尾追加 $-b,a-b$，使长度增加 $2$ 且变换后的多重集合仍保持为原数组的排列。",
+      "key_observations": [
+        "若当前合法数组末两项为非零且不同的 $a,b$，追加 $-b,a-b$ 后仍满足变换结果是原数组的一个排列，从而长度可增加 $2$。",
+        "追加操作产生的两个新数均非零，且新末两项仍不同，因此该扩展可以反复使用，分别覆盖固定奇偶性的所有更大长度。",
+        "长度 $2$ 的初始数组为 $[1,2]$，长度 $7$ 的初始数组为 $[1,2,-3,2,4,-5,-2]$；结合扩展可得除 $3,5$ 外均有解。",
+        "长度 $3$ 和 $5$ 无法构造合法数组，必须直接输出无解。"
+      ],
+      "solution_brief": "除 $n=3,5$ 外输出 YES；偶数从 $[1,2]$、奇数从长度 $7$ 的基数组开始。设末两项为 $a,b$，反复追加 $-b,a-b$，每次使长度增加 $2$，并保持合法性。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T07:50:19+00:00",
           "quality_flags": []
         }
       },
