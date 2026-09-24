@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-24T16:21:23+00:00",
+  "updated_at": "2026-09-24T16:39:53+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -20635,6 +20635,62 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags 交叉确认题意和方法。",
+        "quality_flags": []
+      }
+    },
+    "1972B": {
+      "problem_key": "1972B",
+      "title": "Coin Games",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1972/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/129027",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "290b3a84ed6cd31c9b7a8337d35b93c847542c6c8dfd13266c192c7cd0e3e671",
+      "generated_at": "2026-09-24T16:38:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "圆形桌面上有正面或反面的硬币，Alice 先手。每次玩家必须选择一枚正面硬币移除，并翻转它两侧相邻的硬币；剩两枚或一枚时按题目规则处理。没有正面硬币可选者输，求双方最优时 Alice 是否获胜。",
+        "transformed_statement": "把局面抽象为正面硬币数量：四种相邻模式下，一次操作会使该数量变化 $-3$、$-1$ 或 $+1$，所以每步都翻转其奇偶性；终止状态统一为数量 $0$。",
+        "key_observations": [
+          "一次操作后正面朝上的硬币数只会变化 $-3$、$-1$ 或 $+1$，因此其奇偶性每步都会翻转。",
+          "游戏终止当且仅当没有正面硬币；若初始正面数为奇数，则到达 $0$ 必须经过奇数步，最后一步由 Alice 完成。",
+          "由于结论只依赖正面硬币数的奇偶性，无需模拟硬币位置或操作过程，统计字符串中 `U` 的数量即可判定。"
+        ],
+        "solution_brief": "统计正面硬币 `U` 的数量。每次操作都会改变其奇偶性，而终止状态正面数为 $0$；因此初始数量为奇数时操作步数为奇数，Alice 获胜，输出 YES，否则输出 NO。",
+        "primary_topic": "博弈",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial 中的四种局部变化与奇偶性证明，以及 tags 中的 games。",
+        "quality_flags": []
+      }
+    },
+    "1972A": {
+      "problem_key": "1972A",
+      "title": "Contest Proposal",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1972/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/129027",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "7669cdfe0a36fe03ff97a04f5832fd72a5057738f60541a95f5663b9f7948fba",
+      "generated_at": "2026-09-24T16:39:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个非递减数组 $a,b$，其中 $a_i$ 是现有第 $i$ 道题的难度上限要求为 $b_i$。每次可任选一个难度插入 $a$，排序后删除最大元素；求使所有 $a_i\\le b_i$ 所需新增题目的最少数量。",
+        "transformed_statement": "把一次新增操作视为用选定难度替换当前数组中的某个最大元素。按位置扫描时，遇到 $a_i>b_i$ 就用 $b_i$ 作为替换值，从而逐步消除所有超出对应阈值的元素。",
+        "key_observations": [
+          "扫描当前有序数组时，若第 $i$ 个元素满足 $a_i>b_i$，加入一个难度恰为 $b_i$ 的题目即可修复当前阈值，并删除最大的题目。",
+          "由于 $b$ 非递减，按下标从左到右处理不会破坏已经满足的更小下标约束，因此每次发现违约位置都必须进行一次新增操作。",
+          "每次新增后重新排序并移除末尾元素即可直接模拟；若只记录加入的题目及其影响，可将总复杂度降到 $O(n)$。"
+        ],
+        "solution_brief": "从左到右检查当前有序数组。若 $a_i>b_i$，就加入难度为 $b_i$ 的新题，排序后删除最大值；统计这样的操作次数即为答案。直接模拟为 $O(n^2)$，记录新增元素可优化到 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的插入、排序、删除规则，以及 editorial 给出的从左到右修复方案和复杂度说明；tags 仅用于主题归类。",
         "quality_flags": []
       }
     }

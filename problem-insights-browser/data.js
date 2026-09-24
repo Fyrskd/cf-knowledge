@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1736,
+    "total_problems": 1738,
     "source_total_problems": 1749,
-    "filtered_out_problems": 13,
-    "with_statement_brief": 1736,
-    "with_editorial_brief": 1505,
-    "with_solution_brief": 1506,
+    "filtered_out_problems": 11,
+    "with_statement_brief": 1738,
+    "with_editorial_brief": 1507,
+    "with_solution_brief": 1508,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 677,
+    "ai_override_count": 679,
     "primary_topic_count": 13,
-    "contest_count": 276,
+    "contest_count": 277,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 74,
-    "构造与贪心": 578,
+    "构造与贪心": 579,
     "图论与网络流": 111,
     "动态规划与状态设计": 168,
     "数论与同余": 157,
@@ -55,11 +55,11 @@ window.CF_INSIGHTS_DATA = {
     "树结构": 113,
     "交互": 73,
     "基础实现与模拟": 69,
-    "博弈": 61,
+    "博弈": 62,
     "代数、矩阵与多项式": 16
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 584,
+    "ai_generated_with_editorial": 586,
     "ai_generated_partial_editorial": 30,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -35437,6 +35437,69 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1972,
+      "name": "Codeforces Round 942 (Div. 2)",
+      "date": "2024-04-30",
+      "url": "https://codeforces.com/contest/1972",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 900,
+      "problems": [
+        {
+          "key": "1972A",
+          "index": "A",
+          "slot": "A",
+          "title": "Contest Proposal",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1972/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/129027",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定两个非递减数组 $a,b$，其中 $a_i$ 是现有第 $i$ 道题的难度上限要求为 $b_i$。每次可任选一个难度插入 $a$，排序后删除最大元素；求使所有 $a_i\\le b_i$ 所需新增题目的最少数量。",
+          "transformedStatement": "把一次新增操作视为用选定难度替换当前数组中的某个最大元素。按位置扫描时，遇到 $a_i>b_i$ 就用 $b_i$ 作为替换值，从而逐步消除所有超出对应阈值的元素。",
+          "keyObservations": [
+            "扫描当前有序数组时，若第 $i$ 个元素满足 $a_i>b_i$，加入一个难度恰为 $b_i$ 的题目即可修复当前阈值，并删除最大的题目。",
+            "由于 $b$ 非递减，按下标从左到右处理不会破坏已经满足的更小下标约束，因此每次发现违约位置都必须进行一次新增操作。",
+            "每次新增后重新排序并移除末尾元素即可直接模拟；若只记录加入的题目及其影响，可将总复杂度降到 $O(n)$。"
+          ],
+          "solutionBrief": "从左到右检查当前有序数组。若 $a_i>b_i$，就加入难度为 $b_i$ 的新题，排序后删除最大值；统计这样的操作次数即为答案。直接模拟为 $O(n^2)$，记录新增元素可优化到 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1972B",
+          "index": "B",
+          "slot": "B",
+          "title": "Coin Games",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1972/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/129027",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [],
+          "originalTags": [
+            "games"
+          ],
+          "statementBrief": "圆形桌面上有正面或反面的硬币，Alice 先手。每次玩家必须选择一枚正面硬币移除，并翻转它两侧相邻的硬币；剩两枚或一枚时按题目规则处理。没有正面硬币可选者输，求双方最优时 Alice 是否获胜。",
+          "transformedStatement": "把局面抽象为正面硬币数量：四种相邻模式下，一次操作会使该数量变化 $-3$、$-1$ 或 $+1$，所以每步都翻转其奇偶性；终止状态统一为数量 $0$。",
+          "keyObservations": [
+            "一次操作后正面朝上的硬币数只会变化 $-3$、$-1$ 或 $+1$，因此其奇偶性每步都会翻转。",
+            "游戏终止当且仅当没有正面硬币；若初始正面数为奇数，则到达 $0$ 必须经过奇数步，最后一步由 Alice 完成。",
+            "由于结论只依赖正面硬币数的奇偶性，无需模拟硬币位置或操作过程，统计字符串中 `U` 的数量即可判定。"
+          ],
+          "solutionBrief": "统计正面硬币 `U` 的数量。每次操作都会改变其奇偶性，而终止状态正面数为 $0$；因此初始数量为奇数时操作步数为奇数，Alice 获胜，输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
