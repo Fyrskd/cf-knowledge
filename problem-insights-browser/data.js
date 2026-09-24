@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1692,
+    "total_problems": 1700,
     "source_total_problems": 1749,
-    "filtered_out_problems": 57,
-    "with_statement_brief": 1692,
-    "with_editorial_brief": 1461,
-    "with_solution_brief": 1462,
+    "filtered_out_problems": 49,
+    "with_statement_brief": 1700,
+    "with_editorial_brief": 1469,
+    "with_solution_brief": 1470,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 631,
+    "ai_override_count": 640,
     "primary_topic_count": 13,
     "contest_count": 271,
     "rating_min": 800,
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 73,
-    "构造与贪心": 561,
+    "构造与贪心": 563,
     "图论与网络流": 107,
-    "动态规划与状态设计": 165,
+    "动态规划与状态设计": 167,
     "数论与同余": 154,
-    "组合计数与概率": 133,
-    "数据结构": 136,
-    "几何": 37,
+    "组合计数与概率": 135,
+    "数据结构": 137,
+    "几何": 38,
     "树结构": 112,
     "交互": 73,
     "基础实现与模拟": 68,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 542,
+    "ai_generated_with_editorial": 550,
     "ai_generated_partial_editorial": 28,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -35481,9 +35481,65 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-03-30",
       "url": "https://codeforces.com/contest/1942",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 1,
-      "maxRating": 1300,
+      "problemCount": 9,
+      "maxRating": 3500,
       "problems": [
+        {
+          "key": "1942A",
+          "index": "A",
+          "slot": "A",
+          "title": "Farmer John's Challenge",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1942/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/126942",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组和整数 $k$，数组的每个循环移位都要检查是否非降序。需要构造一个数组，使恰好有 $k$ 个循环移位非降序；若无法构造则输出 $-1$。",
+          "transformedStatement": "把数组看成首尾相接的环：每个非降序循环移位对应一种合法的切分位置。若合法切分位置超过一个，环上的所有相邻元素都必须相等，因此只能得到 $1$ 个或全部 $n$ 个合法移位。",
+          "keyObservations": [
+            "当 $k=1$ 时取严格递增数组 $1,2,\u0003dots,n$；任何其他循环移位都会出现 $n$ 在 $1$ 前面，因此不可能有序。",
+            "若有两个不同的循环移位都非降序，其中一个可视为另一个的循环移位；被移到末尾的前缀仍要保持非降序，这会迫使数组首尾及相邻元素全部相等。",
+            "一旦某个数组存在两个或更多有序循环移位，它就只能是全相等数组，因此有序循环移位数只能是 $1$ 或 $n$。",
+            "$k=n$ 时输出全为 $1$ 的数组，所有循环移位完全相同且有序；其余 $1<k<n$ 的情况无解。"
+          ],
+          "solutionBrief": "分三类处理：$k=1$ 输出 $1,2,\u0003dots,n$；$k=n$ 输出全为 $1$；其余情况根据“两个有序循环移位必导致全相等”判定无解，输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1942B",
+          "index": "B",
+          "slot": "B",
+          "title": "Bessie and MEX",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1942/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/126942",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$，需要构造一个包含 $0$ 到 $n-1$ 各一次的排列 $p$。对每个位置，$a_i$ 等于前缀 $p_1,\u001b[...p_i$ 的 MEX 减去 $p_i$，要求输出任意满足所有等式的排列。",
+          "transformedStatement": "将构造过程改为从左到右维护前缀 MEX：$a_i$ 的正负直接决定 MEX 是否增加；正数时填入旧 MEX，负数时填入旧 MEX 减去 $a_i$。",
+          "keyObservations": [
+            "前缀 MEX 只会保持不变或增加；若 $a_i>0$，MEX 不可能保持不变，因此第 $i$ 个数必须填入上一步的 MEX。",
+            "若 $a_i<0$，MEX 不可能增加，否则新 MEX 会大于当前填入值；所以 MEX 保持为 $m$，并由 $m-p_i=a_i$ 得到 $p_i=m-a_i$。",
+            "每次确定 $p_i$ 后标记该数并持续递增 MEX，便能直接得到后续状态；同时 $a_i=0$ 不可能出现，因为元素加入后不可能仍等于前缀 MEX。"
+          ],
+          "solutionBrief": "从左到右维护当前前缀 MEX。若 $a_i>0$，令 $p_i$ 为当前 MEX；若 $a_i<0$，令 $p_i= ext{MEX}-a_i$。加入后标记该值，并不断推进 MEX。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1942C1",
           "index": "C1",
@@ -35492,23 +35548,201 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1300,
           "problemUrl": "https://codeforces.com/contest/1942/problem/C1",
           "editorialUrl": "https://codeforces.com/blog/entry/126942",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
+          "originalTags": [
+            "geometry",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个按顺时针编号的正 $n$ 边形，以及已经选定的 $x$ 个顶点。本题 $y=0$，只能用这些顶点作为不相交对角线的端点；选择若干条对角线后，求最多能形成多少个三角形区域，其他非三角形区域不计数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1942C2",
+          "index": "C2",
+          "slot": "C",
+          "title": "Bessie's Birthday Cake (Hard Version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1942/problem/C2",
+          "editorialUrl": "https://codeforces.com/blog/entry/126942",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "几何",
-            "组合计数与概率",
-            "图论与网络流"
+            "数论与同余"
           ],
           "originalTags": [
             "geometry",
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Bessie's Birthday Cake (Easy Version)；本地暂无可用题解正文。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "url_only"
+          "statementBrief": "给定一个 $n$ 边形和已选的 $x$ 个顶点，可以再选择不超过 $y$ 个未选顶点，并用所选顶点作为端点绘制互不相交的对角线。要求最大化最终能分出的三角形块数量，其他非三角形区域不计数。",
+          "transformedStatement": "将问题转化为处理按圆周相邻的已选顶点之间的空缺间隔：基础结构贡献 $x-2$，而在各间隔中补选顶点可获得额外三角形；不同间隔的收益由空缺数的奇偶性决定。",
+          "keyObservations": [
+            "把已选顶点按圆周排序后先连成一个 $x$ 边形，可稳定得到 $x-2$ 个三角形；相邻已选点之间恰有一个未选点时，还能额外得到一个三角形。",
+            "设相邻已选顶点间有 $g$ 个未选点：$g$ 为奇数时用 $g/2$ 个顶点可产生 $g/2+1$ 个额外三角形，$g$ 为偶数时最多产生 $g/2$ 个。",
+            "奇数间隔的额外奖励需要完整填满对应间隔，因此按所需顶点数从小到大处理奇数间隔，能优先获得更多奖励。",
+            "所有能带来额外奖励的位置处理完后，继续选择顶点只稳定增加一个三角形，不会提高已获得的间隔奖励，剩余选择可直接按每个顶点计一分。"
+          ],
+          "solutionBrief": "排序已选顶点并计算环上的未选点间隔。答案先取 $x-2$，间隔为 $0/1$ 的贡献直接加入；对奇数间隔按所需顶点数升序贪心处理，再处理偶数间隔，最后把未用名额按每个顶点增加一个三角形计入。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1942D",
+          "index": "D",
+          "slot": "D",
+          "title": "Learning to Paint",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1942/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/126942",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 个连续格子，可任选一个子集涂色。将每个极大连续涂色区间 $[l,r]$ 贡献 $a_{l,r}$，总美值为所有区间贡献之和；要求输出所有 $2^n$ 种涂法中最大的 $k$ 个美值，重复值也要保留。",
+          "transformedStatement": "把涂法按前缀结尾分类：要么第 $i$ 格不涂，要么最后一段涂色区间为 $[l,i]$，其前缀只能延伸到 $l-2$。因此问题转化为反复合并若干个由 $dp$ 平移得到的非递增列表，并取前 $k$ 大值。",
+          "keyObservations": [
+            "令 $dp[i]$ 保存只考虑前 $i$ 个格子时最大的若干个美值；不涂第 $i$ 格直接继承 $dp[i-1]$，从而覆盖所有以空白结尾的方案。",
+            "若最后一段连续涂色区间是 $[l,i]$，此前只能使用前 $l-2$ 个格子，因此该类方案的美值列表等于 $dp[l-2]$ 中每个值加上 $a_{l,i}$。",
+            "每个转移来源都是一个非递增列表，答案只需合并这些列表的前 $k$ 大元素；维护各列表当前首元素并用优先队列逐次取最大值，可避免逐列表线性合并。",
+            "每个列表被推进的次数至多为 $k$，所以每个 $dp[i]$ 的转移可在 $O((n+k)\\log n)$ 内完成，总复杂度为 $O((n^2+nk)\\log n)$。"
+          ],
+          "solutionBrief": "用 $dp[i]$ 保存前缀的前 $k$ 大美值。按最后一段是否包含第 $i$ 格转移，得到多个已排序列表；用优先队列合并各列表并取前 $k$ 个，复杂度为 $O((n^2+nk)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1942E",
+          "index": "E",
+          "slot": "E",
+          "title": "Farm Game",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1942/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/126942",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "games"
+          ],
+          "statementBrief": "数轴上有 $n$ 头 FJ 的牛和 $n$ 头 FN 的牛，位置各不相同且两方牛交替排列。每回合一方选择 $1$ 到 $n$ 头自己的牛，并让它们同时向左或向右移动一格，不能撞墙或撞到对方；FJ 先手，无法移动者输。求双方最优时 FJ 必胜的配置数量。",
+          "transformedStatement": "固定交替排列的起始方，把每一对相邻异方牛之间的空位数表示为 $g_1,\u001dg_n$。题目被转化为判断这些间隙是否全为偶数，并通过枚举间隙总和统计全偶配置，再用总配置数取补集。",
+          "keyObservations": [
+            "把每对相邻的异方奶牛之间的空位数记为 $g_i$；一次移动等价于选择若干个非零 $g_i$，让它们同时加 $1$ 或减 $1$，从而忽略具体坐标只研究间隙。",
+            "若轮到 FJ 时所有 $g_i$ 都为偶数，FN 可以对 FJ 改变的同一组间隙反向操作，使其重新变为偶数；因此只要初始全偶，FJ 始终在偶数状态行动并最终输掉。",
+            "若存在奇数间隙，FJ 可在首回合同时减小所有奇数 $g_i$，使全部间隙变为偶数，随后转化为上一种必胜应对；所以胜负只由是否全偶决定。",
+            "固定偶数和 $s$ 后，令 $g_i=2x_i$，非负解数量为 $\\binom{s/2+n-1}{n-1}$；每组间隙对应 $2\\binom{l-s-n}{n}$ 个配置，累加全偶配置并从总数 $2\\binom{l}{2n}$ 中补集得到答案。"
+          ],
+          "solutionBrief": "用间隙 $g_i$ 建模：FJ 必胜当且仅当至少一个 $g_i$ 为奇数。枚举偶数总和 $s$，用隔板法统计全偶配置为 $2\\binom{s/2+n-1}{n-1}\\binom{l-s-n}{n}$，从总配置数 $2\\binom{l}{2n}$ 中减去其和。预处理组合数后每组枚举 $s$，总复杂度为 $O(l)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1942F",
+          "index": "F",
+          "slot": "F",
+          "title": "Farmer John's Favorite Function",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1942/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/126942",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定非负数组，定义 $f(1)=\\sqrt{a_1}$，以及 $f(i)=\\sqrt{f(i-1)+a_i}$。每次把指定位置 $a_k$ 修改为 $x$，并在每次修改后输出 $\\lfloor f(n)\\rfloor$。",
+          "transformedStatement": "把实数递推等价改写为每步开平方后立即取整的整数递推；再将数组分块，每块被抽象成一个带阈值的转移：输入状态低于阈值时输出 $v$，达到阈值时输出 $v+1$。",
+          "keyObservations": [
+            "连续开平方时可以在每一步取整：原实数递推的最终下取整，等价于整数递推 $f(1)=\\lfloor\\sqrt{a_1}\\rfloor$、$f(i)=\\lfloor\\sqrt{f(i-1)+a_i}\\rfloor$。",
+            "长度至少为 $6$ 的连续元素对输入状态的影响至多造成最终值相差 $1$，因此一个块只需记录两种可能的输出。",
+            "对每个块记录输入为 $0$ 时的输出 $v$，以及首次使输出变为 $v+1$ 的阈值 $c$；块的行为即可由“输入是否达到 $c$”判断。",
+            "相邻块的 $(v,c)$ 可以按阈值关系合并，点修改只重建所在块，再在线段树上更新块区间的整体转移。"
+          ],
+          "solutionBrief": "将数组补零并分成长度为 $6$ 的块，为每块维护基准输出和升档阈值；点修改后重建一个块，在线段树中合并块转移并得到最终值，复杂度为 $O((n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1942G",
+          "index": "G",
+          "slot": "G",
+          "title": "Bessie and Cards",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1942/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/126942",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "牌堆包含 $a$ 张“Draw 0”、$b$ 张“Draw 1”、$c$ 张“Draw 2”和 5 张特殊牌。玩家先抽 5 张，之后可从手牌打出尚未使用的“Draw $x$”牌并抽取接下来 $x$ 张；特殊牌不能打出，目标是抽到全部特殊牌，求随机洗牌下获胜的概率。",
+          "transformedStatement": "将可继续抽牌的能力表示为余额：初始为 $5$，“Draw 2”贡献 $+1$，“Draw 0”及特殊牌贡献 $-1$，“Draw 1”贡献 $0$。获胜排列按余额首次降至 $0$ 的前缀分类，并转化为不越界的括号路径计数。",
+          "keyObservations": [
+            "“Draw 1”牌既不会改变手牌可继续抽牌的净能力，又能立即打出，因此只需在最终计数时处理其排列位置，不必纳入核心路径状态。",
+            "把“Draw 2”视为余额增加 $1$、把“Draw 0”及特殊牌视为余额减少 $1$，初始余额为 $5$；首次余额降至 $0$ 的前缀决定了获胜过程的关键结构。",
+            "固定首次触及余额 $0$ 的前缀后，合法的加减序列可转化为带初始括号的括号路径；反射非法路径后，合法数为两项组合数之差，从而避免逐个检查排列。",
+            "特殊牌的位置选择以及同类普通牌的排列可以在路径计数后用组合数和阶乘补回，最后除以全部牌的排列数得到概率。"
+          ],
+          "solutionBrief": "枚举余额首次降至 $0$ 的前缀长度，确定其中两类牌的数量。用反射原理计算余额始终为正的加减序列数，再乘上特殊牌、同类牌和“Draw 1”牌的排列因子，累加所有前缀并除以总排列数；复杂度为 $O(\\min(a,c))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1942H",
+          "index": "H",
+          "slot": "H",
+          "title": "Farmer John's Favorite Intern",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1942/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/126942",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "flows",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的树，每个节点需要至少 $b_i$ 个桃子。按顺序加入增长或收获操作：操作要求在指定节点进行若干次对应事件，收获不能让任何节点桃子数变为负；对每个操作前缀，可独立重排这些事件并选择其实际作用方式，判断最终能否使所有节点都满足需求。",
+          "transformedStatement": "将增长事件视为子树资源、将节点需求和收获视为资源消耗，问题转成树上的供需平衡：每个子树向父亲传递一个受净余额限制的数值。动态操作只改变局部供给或消耗，并沿祖先方向更新这组状态。",
+          "keyObservations": [
+            "把子树中的增长、需求和收获统一成净余额：$bal_u=\\sum_{i\\in subtree(u)}a_i-b_i-c_i$，它是节点 $u$ 能向父亲提供或必须从祖先获得的资源上界。",
+            "令 $dp[u]>0$ 表示子树可向父节点提供资源，$dp[u]<0$ 表示需要祖先补充；先用子节点的正余额满足 $u$ 的需求，再用本节点增长满足剩余子树需求，贪心分配不会损害其他节点。",
+            "若 $v$ 是重儿子，固定轻子树贡献后，转移可化为 $dp[u]=\\min(dp[v]+x_u,y_u,bal_u)$；因此一条重链上的状态是若干“加法后取前缀最小值”的组合，而非一般树形 DP。",
+            "更新一个节点只会沿其祖先链影响重链转移，使用重链剖分和维护区间加、前缀最小值的数据结构即可动态维护根状态；根的 $dp$ 非负时当前前缀可行。"
+          ],
+          "solutionBrief": "用子树净余额定义树形 DP，正值向父节点提供增长、负值向祖先索取资源。将重儿子转移写成 $\\min(dp[v]+x,y,bal)$，结合重链剖分和区间加/前缀最小值维护；每次操作后检查根的 $dp\\ge0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
