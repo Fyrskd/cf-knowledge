@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1726,
+    "total_problems": 1728,
     "source_total_problems": 1749,
-    "filtered_out_problems": 23,
-    "with_statement_brief": 1726,
-    "with_editorial_brief": 1495,
-    "with_solution_brief": 1496,
+    "filtered_out_problems": 21,
+    "with_statement_brief": 1728,
+    "with_editorial_brief": 1497,
+    "with_solution_brief": 1498,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 667,
+    "ai_override_count": 669,
     "primary_topic_count": 13,
-    "contest_count": 274,
+    "contest_count": 275,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 74,
-    "构造与贪心": 575,
+    "构造与贪心": 577,
     "图论与网络流": 110,
     "动态规划与状态设计": 168,
     "数论与同余": 155,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 16
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 576,
+    "ai_generated_with_editorial": 578,
     "ai_generated_partial_editorial": 28,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -35437,6 +35437,72 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1966,
+      "name": "Codeforces Round 941 (Div. 2)",
+      "date": "2024-04-27",
+      "url": "https://codeforces.com/contest/1966",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1966A",
+          "index": "A",
+          "slot": "A",
+          "title": "Card Exchange",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1966/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/128914",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games",
+            "greedy"
+          ],
+          "statementBrief": "手中有 $n$ 张带数字的牌。每次可以选出 $k$ 张数字相同的牌并将其交换为 $k-1$ 张同号牌（新数字按规则从当前牌中选择），重复任意次，求最后手中最少能剩多少张牌。",
+          "transformedStatement": "把问题转化为判断是否能启动一次交换：一旦存在至少 $k$ 张同号牌，就能通过每次减少一张牌的构造持续操作；否则过程立即停止。最终答案由“初始不可操作”或“操作下界 $k-1$”两种情况决定。",
+          "keyObservations": [
+            "若初始没有任何数字出现至少 $k$ 次，就无法进行操作，因此只能保留 $n$ 张牌。",
+            "只要存在 $k$ 张同号牌，就能先移除它们；若仍有牌，则选取当前存在的任意数字补入 $k-1$ 张，使总牌数减少 $1$，并可继续寻找下一组 $k$ 张同号牌。",
+            "每次操作恰好减少 $1$ 张牌，而少于 $k$ 张时不可能继续操作，所以任何过程都不可能少于 $k-1$ 张；可行过程达到该下界，因此答案为 $k-1$。"
+          ],
+          "solutionBrief": "统计是否存在出现次数至少为 $k$ 的数字。若不存在，答案是 $n$；否则按题解构造连续操作，每次减少一张牌，直到剩下 $k-1$ 张，因此答案为 $k-1$。复杂度为 $O(n)$ 或 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1966B",
+          "index": "B",
+          "slot": "B",
+          "title": "Rectangle Filling",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1966/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/128914",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由黑白格组成的 $n\\times m$ 网格。每次选择两个同色格子，并将它们围成的轴对齐子矩形全部染成该色；问经过任意次操作后，能否使所有格子颜色相同。",
+          "transformedStatement": "将可达性转化为边界判定：若首末行或首末列分别是颜色不同的单色边界，它们会永久阻止统一；否则总能通过一次或两次矩形染色完成。",
+          "keyObservations": [
+            "若一对对角位置颜色相同，直接选这两个角即可把整个网格染成该颜色，因此立即可行。",
+            "若首行全为颜色 $A$、末行全为另一颜色 $B$，首行和末行分别保持不变，无法统一；左右边界同理，这给出了全部不可行情形。",
+            "除上述边界互异且各自单色的情形外，都能利用角点或边界上的异色格分两次完成统一，因此只需检查四条边界的单色性。"
+          ],
+          "solutionBrief": "检查首末行和首末列是否分别为不同的单色边界；若存在则输出 NO，否则输出 YES。对角同色时也自然属于可行情形。复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
