@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1720,
+    "total_problems": 1726,
     "source_total_problems": 1749,
-    "filtered_out_problems": 29,
-    "with_statement_brief": 1720,
-    "with_editorial_brief": 1489,
-    "with_solution_brief": 1490,
+    "filtered_out_problems": 23,
+    "with_statement_brief": 1726,
+    "with_editorial_brief": 1495,
+    "with_solution_brief": 1496,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 661,
+    "ai_override_count": 667,
     "primary_topic_count": 13,
-    "contest_count": 273,
+    "contest_count": 274,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,8 +45,8 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 74,
-    "构造与贪心": 571,
-    "图论与网络流": 109,
+    "构造与贪心": 575,
+    "图论与网络流": 110,
     "动态规划与状态设计": 168,
     "数论与同余": 155,
     "组合计数与概率": 136,
@@ -55,11 +55,11 @@ window.CF_INSIGHTS_DATA = {
     "树结构": 112,
     "交互": 73,
     "基础实现与模拟": 69,
-    "博弈": 60,
+    "博弈": 61,
     "代数、矩阵与多项式": 16
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 570,
+    "ai_generated_with_editorial": 576,
     "ai_generated_partial_editorial": 28,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -35437,6 +35437,186 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1965,
+      "name": "Codeforces Round 941 (Div. 1)",
+      "date": "2024-04-27",
+      "url": "https://codeforces.com/contest/1965",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3300,
+      "problems": [
+        {
+          "key": "1965A",
+          "index": "A",
+          "slot": "A",
+          "title": "Everything Nim",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1965/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/128914",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "games",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "有若干石子堆，每回合选择不超过当前最小非空堆大小的正整数 $k$，并从每个非空堆同时移除 $k$ 枚石子；无法操作者输。Alice 先手，求双方最优时的胜者。",
+          "transformedStatement": "把连续被迫取 $1$ 的回合视为逐层剥离堆大小，记录最大堆大小 $a$ 与未出现的最小正整数 $b$。剥离到出现最小堆至少为 $2$ 后，剩余博弈对当前行动者必胜，因此答案只由 $a$ 或 $b$ 的奇偶性决定。",
+          "keyObservations": [
+            "当最小非空堆为 $1$ 时，本回合只能取 $k=1$，因此连续若干回合的结果由所有堆同时减一决定，回合顺序也随之交替。",
+            "令 $b$ 为未出现的最小正整数；前 $b-1$ 次操作被迫取 $1$，之后若仍有石子，所有剩余堆的大小至少为 $2$。",
+            "当最小堆至少为 $2$ 时，当前行动者必胜：取最小堆大小 $x$ 若直接形成败势则立即获胜，否则取 $x-1$，迫使对手只能取 $1$，再转入必胜状态。",
+            "只需比较最大堆大小 $a$ 与正整数 MEX $b$：若 $b>a$，胜负由 $a$ 的奇偶性决定；否则由 $b$ 的奇偶性决定，奇数对应 Alice 胜。"
+          ],
+          "solutionBrief": "扫描数组求最大值 $a$ 和正整数 MEX $b$。若 $b>a$，判断 $a$ 奇偶；否则判断 $b$ 奇偶，判断值为奇数时输出 Alice，否则输出 Bob。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1965B",
+          "index": "B",
+          "slot": "B",
+          "title": "Missing Subsequence Sum",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1965/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/128914",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n,k$，构造一个长度不超过 $25$ 的非负整数序列，使每个 $1$ 到 $n$ 的整数（除了 $k$）都能作为某个子序列元素和，而 $k$ 不能被任何子序列凑出。子序列通过删除任意元素且保持剩余顺序得到，输出任意合法序列。",
+          "transformedStatement": "把问题转化为修改二进制权值集合：保留表示所有和的能力，同时设计一组小于等于 $k$ 的元素，其总和只有 $k-1$，再用 $k+1$ 及其变体覆盖大于 $k$ 的目标。",
+          "keyObservations": [
+            "固定 $k$ 后，若构造能覆盖到更大的上界，就自动覆盖任意更小的 $n$，因此构造只需保证所有 $v\\le 10^6$ 的需求。",
+            "完整二进制权值能表示所有目标和；删去 $2^i$ 并加入 $k-2^i$、$k+1$ 等修正项，可让所有不超过 $k$ 的可用元素总和恰为 $k-1$，从而不可能凑出 $k$。",
+            "令 $2^i\\le k<2^{i+1}$，当 $v<2^i$ 时直接使用二进制位；当 $2^i\\le v<k$ 时从总和 $k-1$ 中删去 $k-1-v$ 的二进制表示即可得到 $v$。",
+            "当 $v>k$ 时使用 $k+1$ 加上 $v-k-1$ 的二进制位；若其中含有 $2^i$，就改用 $k+1+2^i$，避免重复使用被调整的权值。"
+          ],
+          "solutionBrief": "取最大 $i$ 使 $2^i\\le k$，输出 $k-2^i$、$k+1$、$k+1+2^i$，再加入除 $2^i$ 外的二进制权值。前两类目标用二进制或补集表示，超过 $k$ 的目标用 $k+1$ 配合二进制位表示。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1965C",
+          "index": "C",
+          "slot": "C",
+          "title": "Folding Strip",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1965/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/128914",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一条由 $0$ 和 $1$ 组成的纸条，可以在任意相邻字符之间同时选择折痕；折叠完成后，所有上下重叠的字符必须相同。求满足条件时纸条从上方可见的最小长度。",
+          "transformedStatement": "把方案转化为选择相邻字符间的折痕，使折叠后的可见字符序列成为目标模式。题解证明最优模式恰好由所有相邻相同处折叠、相邻不同处不折叠得到，并且该模式中的字符交替出现。",
+          "keyObservations": [
+            "在每对相邻相同字符之间折叠、相邻不同字符之间不折叠，得到的可见字符模式必然交替，从而保证所有重叠字符匹配。",
+            "任何有效折叠都不能在相邻不同字符之间折叠；若相邻相同字符之间不折叠，最终模式就不可能保持交替。",
+            "对任意有效折叠得到的模式继续执行上述交替化折叠，等价于直接对原纸条折叠，因此该过程得到的唯一交替模式长度不超过任意方案。",
+            "折叠可以组合：先把原串折成某个模式，再折叠该模式，仍对应原串的一组有效折叠，这保证了交替模式的最优性。"
+          ],
+          "solutionBrief": "在所有相邻相同字符之间设置折痕，在相邻不同字符之间不折叠；模拟该组同时进行的折叠，得到交替可见模式的长度。该长度由上述最优性保证，是答案，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1965D",
+          "index": "D",
+          "slot": "D",
+          "title": "Missing Subarray Sum",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1965/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/128914",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个由 $n$ 个正整数构成的回文数组的所有连续子数组和，但其中恰好缺少一个；这些和以任意顺序给出且重复值按出现次数保留。请恢复任意满足条件的长度为 $n$ 的正整数回文数组。",
+          "transformedStatement": "把所有子数组和看作多重集合：回文对称使非中心区间成对出现，奇数频率的和编码中心区间。先利用这些中心和恢复一个长度相差 $2$ 的辅助回文数组，再通过多重集合差定位缺失和并还原目标数组。",
+          "keyObservations": [
+            "回文对称会把非中心子数组两两配对，因此它们的和在多重集合中贡献偶数次；出现奇数次的和恰好来自中心子数组。",
+            "中心子数组按长度递增时严格包含前一个并增加两个正数，所以其和严格递增；排序这些和后，相邻差值可直接恢复回文数组的新增元素。",
+            "若缺失和属于中心子数组，输入中的奇数频率和有 $\\lceil n/2\\rceil-1$ 个，可先恢复长度 $n-2$ 的回文数组；否则有 $\\lceil n/2\\rceil+1$ 个，可恢复长度 $n+2$ 的回文数组。",
+            "从观测和与辅助数组的子数组和做多重集合差，最大剩余值是某个前缀和 $x$；设辅助数组总和为 $y$，缺失和统一为 $2x-y$。"
+          ],
+          "solutionBrief": "统计输入中各个和的出现次数，通过奇数频率的和判断缺失子数组是否居中，并据此构造长度 $n-2$ 或 $n+2$ 的辅助回文数组。用其子数组和进行多重集合消除，取最大剩余值计算缺失和，再由全部中心和恢复原数组；复杂度为 $O(n^2\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1965E",
+          "index": "E",
+          "slot": "E",
+          "title": "Connected Cubes",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1965/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/128914",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "games"
+          ],
+          "statementBrief": "给定位于平面 $z=1$ 的 $n\\times m$ 彩色方块，每次可在正整数坐标处添加任意颜色的方块，但不能移动或删除已有方块。要求使每种颜色的所有方块按面相邻关系连通，并将新增方块数控制在 $4\\times10^5$ 以内；输出一种构造或判定无解。",
+          "transformedStatement": "将每个初始方格视为一条需要接入颜色网络的几何线路：偶数列向上拉伸，奇数列在底部弯向右方；随后建立按颜色分层的中继骨架，并用公共连接层合并同色线路。最终问题转化为在三维网格中铺设有限数量的同色连接骨架。",
+          "keyObservations": [
+            "把每个原始方格变成一条独立的“线”：偶数列直接向上延伸，奇数列利用底部的 $n-1$ 行弯向右侧再延伸，从而保证同一原始颜色的连接可以沿这条线传播。",
+            "在线与线之间填入按颜色编号的 $k$ 条辅助行，使每条原始线都接触到对应颜色的骨架，避免逐个处理原始方格之间的连接关系。",
+            "再添加 $k$ 条和 $k-1$ 条全局辅助行，把同色骨架统一连接；因此每种颜色的所有原始方块最终都能通过同色辅助方块连通。",
+            "该构造新增方块数为 $(n+k)^2m-(k-1)^2(m-1)-nm$，在 $n,m,k\\le 50$ 时不超过 $379851$，满足数量限制。"
+          ],
+          "solutionBrief": "按列交替构造竖直线和向右弯曲的线，再填充按颜色分层的辅助行，最后用全局辅助行连接同色部分。该方案总新增方块数为 $(n+k)^2m-(k-1)^2(m-1)-nm$，因此总能构造出解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1965F",
+          "index": "F",
+          "slot": "F",
+          "title": "Conference",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1965/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/128914",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "flows"
+          ],
+          "statementBrief": "有 $n$ 名讲师，第 $i$ 名只能在连续日期区间 $[l_i,r_i]$ 演讲；选择一段连续会议日期后，每天必须安排不同的可参加讲师。对每个 $k=1..n$，求能安排长度为 $k$ 的连续日期段数量。",
+          "transformedStatement": "将日期段可行性建模为日期与讲师之间的二分图完美覆盖问题，并先调整区间使所有左右端点互异。此后，一个日期区间合法当且仅当其整体邻接到至少同样多的讲师，且合法右端点对每个左端点构成前缀。",
+          "keyObservations": [
+            "把日期段与讲师建立二分图后，合法性等价于任意日期子集的邻接讲师数不少于子集大小，这是 Hall 定理在本题中的匹配条件。",
+            "两个讲师左端点相同且区间为 $[a,b]$、$[a,c]$（$b\\le c$）时，可将后者改为 $[a+1,c]$；两人能覆盖的日期对不变，因此可以消除重复左端点而不改变答案。",
+            "左右端点都消重后，Hall 条件中的非连续违规子集可以填满间隔仍保持违规，并且违规区间向左或向右扩展后仍违规；因此只需检查整个日期段，而不必枚举其所有子集。",
+            "对每个左端点，合法右端点形成前缀，可用双指针求出最远合法位置，再按每个左端点贡献的合法长度统计并做后缀累加，得到所有长度的答案。"
+          ],
+          "solutionBrief": "先用优先队列消除讲师区间的重复左右端点，保持可覆盖日期对集合不变。归一化后，日期段合法当且仅当整体满足 Hall 条件；利用违规区间的单调扩展性，双指针求每个左端点的最远合法右端点，再统计各长度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
