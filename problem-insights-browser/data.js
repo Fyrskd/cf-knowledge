@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1700,
+    "total_problems": 1708,
     "source_total_problems": 1749,
-    "filtered_out_problems": 49,
-    "with_statement_brief": 1700,
-    "with_editorial_brief": 1469,
-    "with_solution_brief": 1470,
+    "filtered_out_problems": 41,
+    "with_statement_brief": 1708,
+    "with_editorial_brief": 1477,
+    "with_solution_brief": 1478,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 640,
+    "ai_override_count": 648,
     "primary_topic_count": 13,
-    "contest_count": 271,
+    "contest_count": 272,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 73,
-    "构造与贪心": 563,
-    "图论与网络流": 107,
+    "字符串": 74,
+    "构造与贪心": 568,
+    "图论与网络流": 108,
     "动态规划与状态设计": 167,
     "数论与同余": 154,
-    "组合计数与概率": 135,
+    "组合计数与概率": 136,
     "数据结构": 137,
     "几何": 38,
     "树结构": 112,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 550,
+    "ai_generated_with_editorial": 558,
     "ai_generated_partial_editorial": 28,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -35472,6 +35472,251 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1951,
+      "name": "Codeforces Global Round 25",
+      "date": "2024-04-06",
+      "url": "https://codeforces.com/contest/1951",
+      "type": "Global",
+      "problemCount": 8,
+      "maxRating": 3200,
+      "problems": [
+        {
+          "key": "1951A",
+          "index": "A",
+          "slot": "A",
+          "title": "Dual Trigger",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1951/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/128116",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 盏按直线排列且初始全灭的灯；每次选择两盏不相邻的灯并将其点亮，不能关闭已亮的灯。给定目标二进制串，判断能否经过任意次操作恰好得到该配置。",
+          "transformedStatement": "把目标配置中的每个 `1` 看作必须被操作覆盖的灯；问题等价于判断这些位置能否被划分成若干对，使每对位置不相邻，因为一次操作恰好点亮一对灯。题解进一步利用亮灯数量分情况构造这种配对。",
+          "keyObservations": [
+            "每次操作会同时点亮两盏灯，因此最终亮灯数量必须为偶数；奇数个 `1` 的配置必不可能达到。",
+            "亮灯数量为 $0$ 时无需操作即可达到；恰有两个 `1` 时，只有两盏灯不相邻才能作为一次合法操作点亮。",
+            "当亮灯数量为 $k\\ge 4$ 时，按亮灯位置排序并将前后两半配对，第 $i$ 个与第 $i+k/2$ 个之间至少隔着另一盏目标亮灯，因此每对都不相邻，可以逐对完成构造。"
+          ],
+          "solutionBrief": "统计 `1` 的数量。若为奇数则输出 NO；若为 $0$ 则输出 YES；若为 $2$，检查两盏灯是否相邻；若至少为 $4$ 且为偶数，则总能按排序后前后两半配成非相邻的操作对，输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1951B",
+          "index": "B",
+          "slot": "B",
+          "title": "Battle Cows",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1951/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/128116",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 头评分互不相同的牛按固定顺序参加比赛：每场由下一头牛挑战此前所有牛中最强的一头。你可以至多一次将第 $k$ 头牛与任意位置的牛交换，也可以不交换，求它最多能赢多少场。",
+          "transformedStatement": "把比赛过程抽象为逐步维护前缀最强牛；你的牛只有在强于此前全部牛时才能开始获胜，而它前方第一头更强牛决定了最有价值的两种换位方案。",
+          "keyObservations": [
+            "第 $i$ 场比赛是第 $i+1$ 头牛挑战前缀中最强的牛，因此比赛过程只需关注每个前缀最大值的变化。",
+            "你的牛想赢得任何一场比赛，必须强于它前面的所有牛；若它在第一个位置，还必须先击败第二头牛。",
+            "若前面存在第一头比你的牛更强的牛 $i$，只有把你的牛移到 $i$ 前面或直接与 $i$ 交换两种位置值得考虑；前一种方案中应换到第一个位置。",
+            "若前面没有更强的牛，把你的牛换到第一个位置能使它尽早参与比赛并最大化后续可赢场数；将有限候选方案逐一计算后取最大值。"
+          ],
+          "solutionBrief": "维护你的牛前面第一头更强牛的位置。若不存在，则考察换到第一个位置；否则分别考察换到第一位和与该强牛交换两种方案，按前缀最强牛的比赛规则计算胜场并取最大值，单测复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1951C",
+          "index": "C",
+          "slot": "C",
+          "title": "Ticket Hoarding",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1951/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/128116",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个售票日，第 $i$ 天的初始票价为 $a_i$，每天最多买 $m$ 张；每张在较早日期买的票都会使之后日期的每张票涨价 $1$。选择各天购买数量，使总票数恰好为 $k$，求最小总花费。",
+          "transformedStatement": "令 $b_i$ 表示第 $i$ 天购买量，则第 $i$ 天实际单价是 $a_i+\\sum_{j<i}b_j$，总费用可重写为基础费用加上每一对跨天购买票产生的额外税费；随后优化这个表达式。",
+          "keyObservations": [
+            "把第 $i$ 天买票数记为 $b_i$ 后，总费用为基础价格和跨天票对税费之和：$\\sum a_i b_i+\\sum_{j<i}b_i b_j$。",
+            "交换两个日期的 $(a_i,b_i)$ 整体不会改变跨天税费，因此可以先将所有基础价格按非递减顺序排列。",
+            "跨天税费等于 $\\frac{k^2-\\sum b_i^2}{2}$；在每天上限为 $m$ 且总数固定时，让票数尽量集中可使 $\\sum b_i^2$ 最大。",
+            "因此最优方案是在价格最便宜的若干天各买满 $m$ 张，再在下一天购买余数；该方案同时最小化基础费用和跨天税费。"
+          ],
+          "solutionBrief": "将价格排序，依次在最便宜的日期购买，前面的日期各买满 $m$ 张，最后一天买剩余票数。答案用基础费用 $\\sum a_i b_i$ 加上跨天税费 $\\frac{k^2-\\sum b_i^2}{2}$ 计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1951D",
+          "index": "D",
+          "slot": "D",
+          "title": "Buying Jewels",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1951/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/128116",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "Bob 可设置最多 60 个摊位，每个摊位有无限珠宝并标价为 $1$ 到 $10^{18}$ 的整数。Alice 按摊位顺序在每个摊位购买能买的最多数量，Bob 需要构造价格使她最终恰好买到 $k$ 件，或判定无法做到。",
+          "transformedStatement": "将首摊价格写成 $n=p_1q+r$，把总购买量上界转化为 $q+r$，据此得到必要条件 $2k\\le n+1$；满足条件时用首摊让 Alice 只买 1 件，再用单价 1 的摊位补足其余数量。",
+          "keyObservations": [
+            "若第一摊价格为 $p_1\\ge 2$，设 $n=p_1q+r$，则第一摊买 $q$ 件、后续摊位至多再买 $r$ 件，因此总数不超过 $q+r$。",
+            "由 $n-2(q+r)=(p_1-2)q-r\\ge -1$，可得任何 $k<n$ 的可行方案都必须满足 $2k\\le n+1$，从而直接判定一部分无解情况。",
+            "当 $n>k$ 且 $2k\\le n+1$ 时，取第一摊价格 $p_1=n-k+1$，有 $n<2p_1$，所以 Alice 恰好买 $1$ 件；再设第二摊价格为 $1$，即可用剩余硬币买 $k-1$ 件。",
+            "当 $n=k$ 时只需设置一个价格为 $1$ 的摊位；当 $n<k$ 时硬币总数不足以购买目标数量，必然无解。"
+          ],
+          "solutionBrief": "先处理 $n<k$ 和 $n=k$。对 $n>k$，若 $2k>n+1$ 则由首摊分解得到无解；否则输出两摊，价格为 $n-k+1$ 和 $1$，Alice 将依次购买 $1$ 件和 $k-1$ 件。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1951E",
+          "index": "E",
+          "slot": "E",
+          "title": "No Palindromes",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1951/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/128116",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "divide and conquer",
+            "greedy",
+            "hashing",
+            "implementation",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定一个小写字符串，需要按原顺序切成若干连续非空子串，并要求每一段都不是回文串。判断是否存在这种划分；若存在，还要输出段数及任意一种合法划分。",
+          "transformedStatement": "将问题转化为寻找至多两段的非回文划分：先利用整串或首个非首字符位置构造候选切点；当原串和相应后缀都为回文时，再利用其被迫形成的交替结构判定无解或确定切点。",
+          "keyObservations": [
+            "若整个字符串不是回文串，直接取它作为唯一部分；若所有字符相同，则所有子串都是回文串，答案必为 NO。",
+            "设首个满足 $s_t\\ne s_1$ 的位置为 $t$，则前缀 $s[1..t]$ 一定不是回文串；若后缀 $s[t+1..n]$ 也不是回文串，二者即可构成合法划分。",
+            "若原串及该后缀都是回文串，字符串必呈现 $A\\mathtt bA\\mathtt b\\cdots A$ 的交替结构，其中 $A$ 是重复的同字符块，从而只需分析 $t$ 的特殊取值。",
+            "当 $t=2$ 或 $t=(n+1)/2$ 时任何划分都至少包含一个回文部分；其他情况下切在 $t+1$ 后，前后两段分别具有不相等的首尾字符，因此都是非回文串。"
+          ],
+          "solutionBrief": "先判断整串是否为非回文串；否则找首个与首字符不同的位置 $t$。检查对应后缀，若其非回文则二段划分；若两者均回文，则按 $t=2$、$t=(n+1)/2$ 判 NO，其余情况在 $t+1$ 后切分即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1951F",
+          "index": "F",
+          "slot": "F",
+          "title": "Inversion Composition",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1951/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/128116",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定一个排列 $p$ 和非负整数 $k$，要构造排列 $q$，其中复合排列满足 $(q\\cdot p)_i=q_{p_i}$。要求 $\\operatorname{inv}(q)+\\operatorname{inv}(q\\cdot p)=k$；若无法构造则输出无解。",
+          "transformedStatement": "把每个位置对按其在 $p$ 中是否为逆序对分类：$p$ 中的逆序对固定贡献 $1$，非逆序对可贡献 $0$ 或 $2$。于是只需构造 $w=q\\cdot p$，让恰好 $k'$ 个非逆序对在 $w$ 中变成逆序对。",
+          "keyObservations": [
+            "对每个位置对 $i<j$ 分类：若 $p_i>p_j$，它在 $q$ 与 $q\\cdot p$ 中恰有一次计入；否则两者贡献同为 $0$ 或同为 $1$，因此总和必须与 $\\operatorname{inv}(p)$ 同奇偶且落在对应区间内。",
+            "令 $x_i$ 为前面满足 $p_j<p_i$ 的位置数，则 $\\sum x_i$ 等于 $p$ 的非逆序对数量；目标转化为从这些特殊对中取得恰好 $k'=(k-\\operatorname{inv}(p))/2$ 个。",
+            "按 $x_i$ 的前缀和找到首个覆盖 $k'$ 的位置 $t$，再在构造的排列中调整 $t$ 与前缀的一段顺序，使其贡献剩余数量，从而精确得到目标特殊逆序数。"
+          ],
+          "solutionBrief": "先计算 $\\operatorname{inv}(p)$，若 $k$ 不在 $[\\operatorname{inv}(p),n(n-1)-\\operatorname{inv}(p)]$ 或奇偶不符则无解。否则用 Fenwick 树求各 $x_i$，按前缀和定位 $t$，构造满足条件的 $w=q\\cdot p$，再由 $w_i=q_{p_i}$ 反推出 $q$，总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1951G",
+          "index": "G",
+          "slot": "G",
+          "title": "Clacking Balls",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1951/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/128116",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "有 $m$ 个首尾相接的篮子和 $n$ 个初始位置各不相同的球。过程每秒按题目操作随机推动仍在场的球；若发生碰撞则移除一个球，未选中仍在场球时状态不变，直到只剩一个球，求所需时间的期望值。",
+          "transformedStatement": "将状态改写为按圆周排列的剩余球之间的间距序列 $S=(d_1,\\dots,d_k)$。一次有效转移把一段间距增加 $1$、相邻下一段减少 $1$，长度为 $0$ 的间距对应球被删除；目标是求该间距马尔可夫链到终态 $(m)$ 的期望吸收时间。",
+          "keyObservations": [
+            "把剩余球按圆周顺序表示为相邻间距 $S=(d_1,\u0005dots,d_k)$，始终有 $\u0005csum d_i=m$，从而忽略绝对位置，只需维护间距序列。",
+            "每个状态的转移只会把相邻两段间距调整为 $d_i+1,d_{i+1}-1$，若后者变为 $0$ 就删除对应球，因此期望满足局部差分方程。",
+            "令 $f(S)=c+\u0005csum_i\u0005csum_{x=0}^{d_i}g(x)$，可将所有转移差值望文生义为相邻项相消，状态方程只需满足 $\u0005csum_i(g(d_i)-g(d_i+1))=n$。",
+            "取 $g(x)=-\\frac{n}{m}\\binom{x}{2}$ 后方程成立，并由终态 $(m)$ 确定常数，初态答案为 $\\frac{n}{m}\\left(\\binom{m+1}{3}-\\sum_i\\binom{d_i+1}{3}\\right)$。"
+          ],
+          "solutionBrief": "按圆周顺序排序初始位置，计算相邻球间距 $d_i$。直接套用势函数结论，答案为 $\\frac{n}{m}\\left(\\binom{m+1}{3}-\\sum_i\\binom{d_i+1}{3}\\right)$，再用模 $10^9+7$ 的逆元计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1951I",
+          "index": "I",
+          "slot": "I",
+          "title": "Growing Trees",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1951/problem/I",
+          "editorialUrl": "https://codeforces.com/blog/entry/128116",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "flows",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "给定一个带参数 $a_i,b_i$ 的连通无向简单图，为每条边选择非负整数 $x_i$，表示复制该边的次数，使复制后的多重图能够分解成 $k$ 棵生成树。要求最小化总代价 $\\sum_i(a_i x_i^2+b_i x_i)$。",
+          "transformedStatement": "把每条边的第 $t$ 次使用看成一个具有边际代价的独立元素；可行的边副本集合等价于由 $k$ 个图拟阵组成的拟阵基。可行性则通过复制图的子集边数约束，并用删去一个顶点容量后的二分匹配或最大流进行判定。",
+          "keyObservations": [
+            "复制边得到的多重图可分解为 $k$ 棵生成树，当且仅当总边数为 $k(n-1)$ 且任意顶点子集 $U$ 的内部边数不超过 $k(|U|-1)$；因此可用 Nash-Williams 条件刻画可行性。",
+            "将边副本与顶点建立二分图，并删除某个顶点的 $k$ 个左侧副本后检查右侧是否可完全匹配，可同时验证所有包含该顶点的子集约束；匹配检查可转为容量为 $k$ 和 $x_i$ 的最大流。",
+            "把边 $i$ 的第 $t$ 个副本视为增量权值 $(a_i t^2+b_i t)-(a_i(t-1)^2+b_i(t-1))$ 的元素；这些元素构成由图拟阵直和得到的拟阵，故按增量权值从小到大加入可得到最小权基。",
+            "同一坐标一旦继续增加会使当前数组不可行，之后永远不会重新可行；因此二分该坐标首次失效的增量，批量推进并永久删除该坐标，每个坐标最多处理一次。"
+          ],
+          "solutionBrief": "用最大流检查复制边组成的多重图是否满足 Nash-Williams 条件。将每个边副本的二次函数增量作为拟阵元素，按增量贪心加入；对每条边二分其首次导致不可行的位置，批量推进并移除该边。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
