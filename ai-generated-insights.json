@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-24T09:26:08+00:00",
+  "updated_at": "2026-09-24T09:34:37+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -18541,6 +18541,188 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial 正文及 tags 中的 greedy、math。",
+        "quality_flags": []
+      }
+    },
+    "1935F": {
+      "problem_key": "1935F",
+      "title": "Andrey's Tree",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1935/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/126662",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "a31328935acf6d9fd7cfc452c55a68cb01bac0fe75868f5f632a59e72084a0de",
+      "generated_at": "2026-09-24T09:28:56+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵编号为 $1$ 到 $n$ 的树。对每个顶点 $v$，先删除 $v$ 及其 incident 边，再在剩余顶点间添加任意边，使图重新成为树；添加边 $(a,b)$ 的费用为 $|a-b|$，要求输出最小总费用及一组所加的边。",
+        "transformed_statement": "固定 $v$ 后，将删除它产生的每个连通分量压成一个点；任意跨分量补边的权值为两个端点编号之差，于是原问题转化为该分量完全图上的最小生成树，并只需研究 Kruskal 中的关键候选边。",
+        "key_observations": [
+          "删除顶点 $v$ 后产生 $deg(v)$ 个连通分量，因此必须添加恰好 $deg(v)-1$ 条边；问题等价于在这些分量之间求边权为端点编号差的最小生成树。",
+          "所有权值为 $1$ 的相邻编号边会分别把区间 $[1,v-1]$ 与 $[v+1,n]$ 尽量连成整体；若没有某个删除后的分量同时包含小于和大于 $v$ 的编号，还必须考虑边 $(v-1,v+1)$。",
+          "对每个删除后的分量，只需保留 $(mn_u-1,mn_u)$ 与 $(mx_u,mx_u+1)$ 两类边；按编号扫描时，最小值边或最大值边足以把对应前缀或后缀逐步并入同一连通块。",
+          "通过树的欧拉序和子树最小、最大编号可得到各分量的极值，再为每个 $v$ 仅生成 $O(deg(v))$ 条候选边并用并查集执行 Kruskal，总复杂度为 $O(n\\log n)$。"
+        ],
+        "solution_brief": "固定删除点 $v$，把其余连通分量视为带编号差权值的完全图顶点。只保留各分量极值产生的边及 $(v-1,v+1)$，用欧拉序求极值、二分定位分量，再以并查集跑 Kruskal 输出最小生成树。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "构造与贪心",
+          "数据结构",
+          "图论与网络流"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial、题面中的删除与补边规则，以及 tags 中的树、数据结构、贪心和构造信息。",
+        "quality_flags": [
+          "statement_output_section_truncated"
+        ]
+      }
+    },
+    "1935E": {
+      "problem_key": "1935E",
+      "title": "Distance Learning Courses in MAC",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1935/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/126662",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "9489a1592898f7f34bb6dc436968f1cf611616ac769a744b6e0878c3d578c961",
+      "generated_at": "2026-09-24T09:32:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 门课程，第 $i$ 门可独立选择一个介于 $x_i$ 和 $y_i$ 的整数成绩。学生只能选连续课程 $[l_j,r_j]$，最终成绩是这些成绩的按位或；对每位学生求其能够达到的最大最终成绩。",
+        "transformed_statement": "把每门课程的可选区间拆成必然相同的高位公共前缀和低位剩余区间；对查询区间，先合并所有公共前缀，再将剩余问题转化为按位统计上界并从高位向低位贪心构造最大按位或。",
+        "key_observations": [
+          "每个区间 $[x_i,y_i]$ 中所有可选数都共享最高位的公共前缀，该前缀对应的数 $w_i$ 必然出现在最终按位或中，可先单独计入答案。",
+          "去掉公共前缀后得到剩余区间 $[x'_i,y'_i]$，非退化区间满足 $x'_i\u001cleq y'_i-1$，因此一旦某位有多个来源，就能选择一个数贡献该位并用另一个数补出这一位以下的全部比特。",
+          "从高位到低位统计区间内各个 $y'_i$ 在当前位为 $1$ 的数量，并把强制贡献 $W$ 的对应位也计入：数量为 $0$ 时该位无法取得，为 $1$ 时可加入该位，大于 $1$ 时当前位及所有低位都能加入。",
+          "查询中的强制部分是区间内所有 $w_i$ 的按位或，剩余各位的出现次数可由每一位的前缀计数得到，从而把每次查询降为固定的比特处理。"
+        ],
+        "solution_brief": "先将每个 $[x_i,y_i]$ 拆成必选公共前缀 $w_i$ 与剩余区间。查询时用区间按位或得到所有 $w_i$ 的贡献，再从高位到低位结合各位前缀计数按上述三种情况贪心决定答案；区间按位或可用线段树维护。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面和完整官方题解，结合题解中的按位贪心、前缀计数与线段树实现。",
+        "quality_flags": []
+      }
+    },
+    "1935D": {
+      "problem_key": "1935D",
+      "title": "Exam in MAC",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1935/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/126662",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "7f304189fc074d8e29f9f8e5a194ce2e127561bb119f946785afcba3c1ffd09a",
+      "generated_at": "2026-09-24T09:33:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定大小为 $n$ 的集合 $S\\subseteq[0,c]$，统计整数对 $(x,y)$ 的数量，其中 $0\\le x\\le y\\le c$，且 $x+y$ 和 $y-x$ 都不属于 $S$。",
+        "transformed_statement": "把合法对看成区间 $0\\le x\\le y\\le c$ 中排除两类禁集：和属于 $S$ 或差属于 $S$；用容斥计算两类禁集的交集，并利用奇偶性判断交集中的整数解。",
+        "key_observations": [
+          "所有满足 $0\\le x\\le y\\le c$ 的整数对共有 $\\frac{(c+1)(c+2)}{2}$ 个，先统计全集可直接套用容斥。",
+          "固定 $s_i=x+y$ 时，$x$ 可取 $0$ 到 $\\lfloor s_i/2\\rfloor$，因此该禁条件覆盖 $\\lfloor s_i/2\\rfloor+1$ 对。",
+          "固定 $s_i=y-x$ 时，$y$ 可取 $s_i$ 到 $c$，因此该禁条件覆盖 $c-s_i+1$ 对。",
+          "同时满足和与差都在集合中的情况由 $x=\\frac{s_i-s_j}{2},y=\\frac{s_i+s_j}{2}$ 唯一确定；要求两数同奇偶且 $s_i\\ge s_j$，所以按奇偶分别计数为 $\\frac{even(even+1)}2+\\frac{odd(odd+1)}2$。"
+        ],
+        "solution_brief": "用容斥统计全集、和在集合中的对数、差在集合中的对数，再加回两者同时满足的交集。交集只需按集合元素奇偶计数，整体复杂度为 $O(n)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "数论与同余",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial 中的容斥推导与代码实现，并参考 tags。",
+        "quality_flags": []
+      }
+    },
+    "1935C": {
+      "problem_key": "1935C",
+      "title": "Messenger in MAC",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1935/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/126662",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "dbf161cd77e523dc5a0d09e6dc475a23a27d3720577365a3f571c84746ed2c36",
+      "generated_at": "2026-09-24T09:34:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 条消息，每条有阅读耗时 $a_i$ 和位置值 $b_i$。选择若干条不同消息并安排阅读顺序，总代价是所有 $a_i$ 之和加相邻消息 $b$ 值差的绝对值之和；要求在总代价不超过 $L$ 的条件下，求最多能选择多少条消息。",
+        "transformed_statement": "将消息按 $b$ 排序后，把一个选择方案看成覆盖某个 $[b_l,b_r]$ 区间的子集：其移动代价固定为 $b_r-b_l$，剩余预算用于选择区间内总 $a$ 值尽量小且数量最多的消息。",
+        "key_observations": [
+          "最优阅读顺序可按所选消息的 $b$ 值非降排列，此时相邻差值之和恰好等于最大值与最小值之差，从而消除排列带来的复杂性。",
+          "固定所选消息的最小和最大 $b$ 后，区间内任意消息加入都不改变移动代价，因此问题转为在该区间选尽可能多的最小 $a$ 值，使其总和不超过 $L-(b_r-b_l)$。",
+          "右端点逐步扩展时加入新消息；若总耗时超限，删除当前已选消息中 $a$ 最大者，保留同一区间内数量最多的可行集合。",
+          "对每个左端点维护区间扩展过程，删除操作只会发生有限次，因此使用支持插入、删除最大值和查询大小的数据结构可将复杂度降至 $O(n^2\\log n)$。"
+        ],
+        "solution_brief": "按 $b$ 排序，枚举所选区间的左右端点。用可删除最大值的数据结构维护区间内已选的最小若干个 $a$；加入元素后若 $a$ 总和加区间跨度超过 $L$，持续删除最大 $a$，并更新最大集合大小。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，以及 tags 中的贪心、数据结构和排序信息。",
+        "quality_flags": []
+      }
+    },
+    "1935B": {
+      "problem_key": "1935B",
+      "title": "Informatics in MAC",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1935/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/126662",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "5a6f219c4c2746e3e2472b0c7a329b85b7803420b2889de55e989b94c360c8c0",
+      "generated_at": "2026-09-24T09:34:20+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的非负整数数组，要将其划分为至少两个连续且非空的子段，并要求每段的 MEX（最小的未出现非负整数）相同。若存在这样的划分，输出任意一组边界；否则输出 -1。",
+        "transformed_statement": "将问题化为寻找一个分界位置，使其左侧前缀与右侧后缀的 MEX 相等。因为相邻的同 MEX 子段可以合并且 MEX 保持不变，所以无需考虑三段及以上的划分。",
+        "key_observations": [
+          "若数组能分成多于两段且每段 MEX 相同，合并其中相邻两段后，缺失的 MEX 仍不会出现，而更小的非负数仍都出现，因此合并后的 MEX 不变；所以只需判断能否分成两段。",
+          "分界点两侧的 MEX 相同，当且仅当可以用这一个分界点构成合法答案；因此从左向右移动分界点并比较前缀与后缀的 MEX 即可找到答案。",
+          "移动分界点时，只需维护两侧各数值是否仍有出现：左侧 MEX 只会随元素加入而不减，右侧 MEX 可在某个值最后一次离开右侧时回退，再向上恢复到缺失值。"
+        ],
+        "solution_brief": "从左到右枚举分界点，维护前缀和剩余后缀的 MEX；若二者相等，就输出这两个连续非空子段，否则输出 -1。合并相邻的同 MEX 子段不会改变 MEX，因此检查两段足够。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，核心证明与线性维护方法依据 editorial_text。",
+        "quality_flags": []
+      }
+    },
+    "1935A": {
+      "problem_key": "1935A",
+      "title": "Entertainment in MAC",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1935/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/126662",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "2e366ba72b18e2547166fbe9193b6413db31aa56da1718cf3b283f87e709d78e",
+      "generated_at": "2026-09-24T09:34:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定小写字符串 $s$ 和偶数 $n$，每次可将当前字符串反转，或把当前字符串的反串追加到末尾；两种操作可任意交错，且必须恰好操作 $n$ 次。求所有可得到的字符串中字典序最小者。",
+        "transformed_statement": "将操作序列归约为至多一次追加，其余操作用反转调整结果；于是最优结果只需在以 $s$ 或其反串 $t$ 开头的候选中比较，分别对应 $s$ 和 $t+s$。",
+        "key_observations": [
+          "追加操作最多做一次：若已追加过，再把剩余操作用于反转即可；由于操作总数为偶数，最终字符串可通过反转次数的奇偶性归约到原串或其反串，不必重复追加。",
+          "候选结果的开头只可能是原串 $s$ 或反串 $t$；在这两种前缀下，最小候选分别为 $s$ 和 $t+s$，因此只需比较这两个字符串。",
+          "$t+s$ 可以通过先反转 $s$、再追加当前字符串的反串得到，之后用成对反转补足剩余操作，故它满足恰好执行 $n$ 次操作的要求。"
+        ],
+        "solution_brief": "令 $t$ 为 $s$ 的反串，比较 $s$ 与 $t+s$，输出字典序较小者。额外的反转操作可成对抵消，因此不需要考虑 $n$ 的具体大小，只需利用其为偶数。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面给出的字符串操作规则及完整 editorial；题面中的操作描述存在缺失，具体操作含义由 editorial 补足。",
         "quality_flags": []
       }
     }
