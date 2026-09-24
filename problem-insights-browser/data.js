@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1570,
+    "total_problems": 1578,
     "source_total_problems": 1749,
-    "filtered_out_problems": 179,
-    "with_statement_brief": 1570,
-    "with_editorial_brief": 1338,
-    "with_solution_brief": 1339,
+    "filtered_out_problems": 171,
+    "with_statement_brief": 1578,
+    "with_editorial_brief": 1346,
+    "with_solution_brief": 1347,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 507,
+    "ai_override_count": 516,
     "primary_topic_count": 13,
     "contest_count": 253,
     "rating_min": 800,
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 65,
-    "构造与贪心": 516,
+    "字符串": 66,
+    "构造与贪心": 520,
     "图论与网络流": 100,
     "动态规划与状态设计": 157,
-    "数论与同余": 146,
+    "数论与同余": 145,
     "组合计数与概率": 117,
-    "数据结构": 124,
+    "数据结构": 126,
     "几何": 33,
     "树结构": 107,
-    "交互": 69,
+    "交互": 70,
     "基础实现与模拟": 67,
     "博弈": 55,
-    "代数、矩阵与多项式": 14
+    "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 425,
+    "ai_generated_with_editorial": 433,
     "ai_generated_partial_editorial": 22,
     "missing_editorial": 231,
     "manual_override": 891,
@@ -36225,9 +36225,211 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-11-25",
       "url": "https://codeforces.com/contest/1896",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 1,
-      "maxRating": 3400,
+      "problemCount": 9,
+      "maxRating": 3500,
       "problems": [
+        {
+          "key": "1896A",
+          "index": "A",
+          "slot": "A",
+          "title": "Jagged Swaps",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1896/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/122172",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "sortings"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列。每次只能选择中间位置 $i$（$2\\le i<n$），当 $a_{i-1}<a_i$ 且 $a_i>a_{i+1}$ 时，交换 $a_i$ 与 $a_{i+1}$；判断能否经过有限次操作将排列升序排列。",
+          "transformedStatement": "由于位置 $1$ 永远不会被交换，先判断首元素是否为 $1$。若是，则可把当前最大值视为峰值并不断向右推至末尾，再在剩余前缀上重复这一过程。",
+          "keyObservations": [
+            "第一个元素始终不能参与交换，因此若最终要升序排列，必须有 $a_1=1$；这是必要条件。",
+            "当 $a_1=1$ 时，取当前最大值。若它不在末尾，其左邻居必小于它且右邻居必小于它，可反复交换右侧相邻元素，将最大值推到末尾。",
+            "把已移到末尾的最大值视为删除后，对剩余前缀重复上述过程，因此 $a_1=1$ 也是充分条件。"
+          ],
+          "solutionBrief": "只需检查首元素是否为 $1$。首元素不能被操作修改；若首元素为 $1$，可从最大值开始，利用其满足峰值条件不断向右移动，依次将最大值放到末尾并完成排序。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1896B",
+          "index": "B",
+          "slot": "B",
+          "title": "AB Flipping",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1896/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/122172",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定只含 $A$ 和 $B$ 的字符串。每次可将一个相邻的 $AB$ 变为 $BA$，每个分界下标最多使用一次，操作顺序任意；求最多能进行多少次操作。",
+          "transformedStatement": "把问题转化为寻找首个 $A$ 的位置 $x$ 与末个 $B$ 的位置 $y$：边界外不可能产生可操作的 $AB$，而当 $x<y$ 时，中间每个分界都能按合适顺序使用一次。",
+          "keyObservations": [
+            "操作会把相邻的 $AB$ 变为 $BA$，因此字符 $A$ 只能向右移动、字符 $B$ 只能向左移动；首个 $A$ 左侧和末个 $B$ 右侧的边界始终无法操作。",
+            "设首个 $A$ 的位置为 $x$、末个 $B$ 的位置为 $y$；若 $x>y$，所有 $B$ 都在 $A$ 左侧，初始就不存在可操作的 $AB$，答案为 $0$。",
+            "当 $x<y$ 时，只有下标 $x$ 到 $y-1$ 可能操作，并可按区间内各个 $B$ 从左到右逐段向左推动，使这些下标全部恰好操作一次，因此最大次数为 $y-x$。"
+          ],
+          "solutionBrief": "扫描字符串找首个 $A$ 的位置 $x$ 和末个 $B$ 的位置 $y$。若不存在 $x<y$，输出 $0$；否则输出 $y-x$，因为区间外永远无法操作，区间内可通过合适顺序全部操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1896C",
+          "index": "C",
+          "slot": "C",
+          "title": "Matching Arrays",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1896/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/122172",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组 $a,b$，beauty 是满足 $a_i>b_i$ 的下标数量。只能重排数组 $b$，需要判断能否让 beauty 恰好等于给定的 $x$；若可以，输出任意一种重排结果。",
+          "transformedStatement": "先把 $a$ 和 $b$ 都按升序看待：让最大的 $x$ 个 $a$ 配最小的 $x$ 个 $b$，其余 $a$ 依次配剩余的 $b$，等价于将排序后的 $b$ 循环左移 $x$ 位。若该标准配对的胜出数不是 $x$，交换论证表明任何排列都无法满足要求；最后按 $a$ 的原下标还原。",
+          "keyObservations": [
+            "将 $a$、$b$ 分别升序排列后，把最小的 $x$ 个 $b$ 分配给最大的 $x$ 个 $a$，其余元素按顺序配对；这是唯一需要检查的标准构造。",
+            "若任意可行排列产生了恰好 $x$ 个胜出位置，通过交换错位元素，可以逐步把所有胜出位置移到排序后 $a$ 的最后 $x$ 个位置，同时不改变胜负关系。",
+            "在胜出位置固定后，再通过交换可令前 $n-x$ 个位置使用 $b_{x+1},\u001aots,b_n$，后 $x$ 个位置使用 $b_1,\u001aots,b_x$；因此标准循环移位失败时不存在其他可行排列。",
+            "排序时记录原数组 $a$ 的下标，标准构造完成后按这些下标还原答案，即可直接验证原位置上的 beauty。"
+          ],
+          "solutionBrief": "记录 $a$ 排序后的原下标并升序排列 $b$。将 $b$ 循环左移 $x$ 位后与排序后的 $a$ 配对，再映射回原位置；若实际得到的胜出数为 $x$ 就输出该排列，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1896D",
+          "index": "D",
+          "slot": "D",
+          "title": "Ones and Twos",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1896/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/122172",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "divide and conquer",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个只含 $1$ 和 $2$ 的数组，处理两类查询：询问是否存在一个连续子数组，使元素和等于给定值；将指定位置的元素修改为给定的 $1$ 或 $2$。每次询问都要输出是否存在满足条件的子数组。",
+          "transformedStatement": "把问题转化为：分别求两种奇偶性下可达到的最大连续子数组和。由于任意可行和都能逐步减去 $2$，查询值只需与对应奇偶性的最大值比较；该最大值由全数组，或第一个/最后一个 $1$ 外侧的部分决定。",
+          "keyObservations": [
+            "若存在和为 $v\\ge 2$ 的子数组，就能通过去掉首端、尾端或两端的元素得到和为 $v-2$ 的子数组，因此同一奇偶性的可行和从最大值开始每次减少 $2$。",
+            "全数组和为 $2n-k$（$k$ 为数字 $1$ 的个数），其奇偶性与 $k$ 相同；当查询值与其同奇偶时，最大候选就是全数组和，只需判断 $v\\le 2n-k$。",
+            "查询值与全数组和奇偶性不同的子数组不能同时覆盖第一个和最后一个 $1$，所以最大候选只需比较最后一个 $1$ 前的前缀与第一个 $1$ 后的后缀。",
+            "修改只改变一个位置是否为 $1$，维护所有 $1$ 的位置即可快速得到 $k$、第一个 $1$ 和最后一个 $1$，从而重新计算两种奇偶性的最大子数组和。"
+          ],
+          "solutionBrief": "维护数字 $1$ 的位置集合。设其数量为 $k$，同全数组和奇偶的查询直接判断 $v\\le2n-k$；异奇偶时比较最后一个 $1$ 前前缀和、最前一个 $1$ 后后缀和的较大值。修改时更新集合。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1896E",
+          "index": "E",
+          "slot": "E",
+          "title": "Permutation Sorting",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1896/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/122172",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "sortings"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的排列，当前位置和值相等的位置称为 good。每秒只将所有非 good 位置上的元素整体向右循环移动一格，已 good 的位置不参与移动；求每个位置第一次变为 good 的时间。",
+          "transformedStatement": "把每个元素视为从初始位置 $i$ 向目标位置 $a_i$ 移动的对象。它的基础环形距离是 $h_i$，但途中会跳过已经固定的 good 位置，因此需要统计路径内部同时落在对应位置和值区间的元素并扣除。",
+          "keyObservations": [
+            "把元素 $a_i$ 看作沿环形位置移动的对象，其直接到达目标位置所需步数为 $h_i=(a_i-i+n)\\bmod n$。",
+            "元素移动途中若遇到已经变好的位置，该位置不会参与旋转，因此元素会跳过它；答案等于 $h_i$ 减去路径内部同时满足位置和值落在该区间的元素数。",
+            "将数组复制为长度 $2n$ 的展开环形数组后，区间条件可统一处理；按左端点从后向前加入右端点，用树状数组查询路径内部元素数量。"
+          ],
+          "solutionBrief": "对每个初始位置 $i$ 的元素计算环形距离 $h_i$，再减去其路径中会被已变好位置跳过的元素数。复制数组处理跨边界区间，逆序扫描并用树状数组维护右端点计数，时间复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1896F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bracket Xoring",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1896/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/122172",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定长度为 `2n` 的二进制串。每次选择一条长度为 `2n` 的平衡括号串，并按其奇数位左括号、偶数位右括号所决定的位置翻转原串；要求输出不超过 10 次操作把所有字符变成 `0` 的括号串序列，或判断无解。",
+          "transformedStatement": "把每条平衡括号串视为一个二进制翻转掩码：操作结果在某位置为 `1`，当且仅当该括号串对应的奇偶位置条件成立。于是问题转化为用最多三条可构造的平衡括号串，使它们的翻转掩码异或后恰好等于原二进制串。",
+          "keyObservations": [
+            "一次操作对位置的影响等价于：平衡括号串中奇数位置的左括号、偶数位置的右括号会被翻转；这把括号匹配操作转化为按位置决定的二进制掩码。",
+            "每次操作都必然翻转首尾位置，且翻转位置数为偶数，因此首尾不同或 `1` 的总数为奇数时必不可能。",
+            "当首尾均为 `0` 且 `1` 的数量为偶数时，可构造两条平衡括号串，使对应位置字符相同当且仅当该位置需要保持为 `0`，不同当且仅当需要翻转为 `1`。",
+            "若首尾均为 `1`，先用交替串 `()()...()` 翻转首尾，再对得到的首尾为 `0` 的串使用上述两次构造，因此最多需要三次操作。"
+          ],
+          "solutionBrief": "先检查首尾是否相同以及 `1` 的数量是否为偶数；不满足则输出 `-1`。否则必要时先用交替括号串处理首尾，再构造两条平衡括号串：按 `1` 的位置交替设置括号差异，并按 `0` 的数量平分共同前缀结构，最终用两或三次操作清零。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1896G",
+          "index": "G",
+          "slot": "G",
+          "title": "Pepe Racing",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1896/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/122172",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "interactive",
+            "sortings"
+          ],
+          "statementBrief": "有 $n^2$ 个速度各不相同的选手，每次必须选恰好 $n$ 人比赛，但只能得知其中最快者。通过不超过 $2n^2-2n+1$ 次比赛，输出最快的 $n^2-n+1$ 人的完整速度顺序；最慢的 $n-1$ 人之间无需区分。",
+          "transformedStatement": "将选手划分为 $n$ 个组，用每组最快者作为组头；全局取最快等价于在组头中取最快。不断删除已确定的全局最快者并维护受影响组，直到剩余者中能确定所有慢者，再单独排序前面的 $n$ 人。",
+          "keyObservations": [
+            "把全部选手分成 $n$ 组并记录每组最快者；全体最快者必在这些组头中，因此一次包含所有组头的比赛就能找到它。",
+            "删除已确定的最快者后，只需重新计算其所在组的组头；从其他组补入非组头选手即可恢复该组规模，再用一次比赛更新组头。",
+            "每次比赛的胜者都不可能属于最慢的 $n-1$ 人；当剩下 $2n-1$ 人时，$n$ 个组头必在前 $n^2-n+1$ 人中，其他 $n-1$ 人即可整体视为慢者。",
+            "确定慢者后只需继续找出剩余 $n$ 人的顺序；每次从各组当前组头中选出最快者，最后总比赛数为 $n+2(n^2-2n+1)+(n-1)=2n^2-2n+1$。"
+          ],
+          "solutionBrief": "先将 $n^2$ 人分成 $n$ 组，查询各组组头，再反复查询所有组头并删除最快者，只重算受影响的组头并补齐其规模。剩下 $2n-1$ 人时，非组头者正好是 $n-1$ 个慢者，最后排序其余 $n$ 人；总查询数为 $2n^2-2n+1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1896H1",
           "index": "H1",
@@ -36235,13 +36437,9 @@ window.CF_INSIGHTS_DATA = {
           "title": "Cyclic Hamming (Easy Version)",
           "rating": 3400,
           "problemUrl": "https://codeforces.com/contest/1896/problem/H1",
-          "editorialUrl": "",
-          "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "构造与贪心",
-            "代数、矩阵与多项式"
-          ],
+          "editorialUrl": "https://codeforces.com/blog/entry/122172",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "divide and conquer",
@@ -36250,12 +36448,45 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Cyclic Hamming (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定两个长度为 $2^{k+1}$ 的二进制字符串 $s,t$，其中部分位置是问号。将所有问号替换为 $0$ 或 $1$，要求 $s$ 与 $t$ 的每个循环移位之间的汉明距离都至少为 $2^k$，求满足条件的补全方案数，答案对 $998244353$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1896H2",
+          "index": "H2",
+          "slot": "H",
+          "title": "Cyclic Hamming (Hard Version)",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1896/problem/H2",
+          "editorialUrl": "https://codeforces.com/blog/entry/122172",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "fft",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定两个长度为 $2^{k+1}$ 的二进制字符串，其中部分位置为 `?`。将所有缺失字符补成 `0` 或 `1`，要求 $t$ 的每个循环移位与 $s$ 的汉明距离都至少为 $2^k$，求满足条件的补全方案数并对 $998244353$ 取模。",
+          "transformedStatement": "令 $n=2^k$，把 $s$ 和反转后的 $t$ 看成系数多项式；所有循环移位的距离约束等价于乘积系数的互补关系。进一步把可行性表示为因子 $x^{2^p}+1$ 在两多项式之间的分配，并在按位反转后的完美二叉树上进行计数。",
+          "keyObservations": [
+            "若所有循环移位的汉明距离都不少于 $n$，则每个合法补全中的两个字符串都恰有 $n$ 个 $1$，并且对应循环相关系数满足固定的互补关系。",
+            "将 $s$ 与反转后的 $t$ 编成多项式后，乘积系数满足 $A[x^i]+A[x^{i+2n}]=n/2$，从而可写成固定因子与 $n/2+C(x-1)$ 的乘积。",
+            "由于 $x^{2^p}+1$ 在模数下不可约，固定因子必须分别被 $S$ 或 $T$ 吸收；因此合法性转化为每个层级因子在两边的分配条件。",
+            "按位反转重排位置后，$S$ 被 $x^{2^p}+1$ 整除，当且仅当树上第 $p$ 层每个节点的两个子树中 $1$ 的数量相等；这使因子条件能用树形状态计数，并用卷积加速数量合并。"
+          ],
+          "solutionBrief": "令 $n=2^k$，把字符串转为多项式并利用循环相关系数约束，将合法补全转化为因子集合在 $S,T$ 间的分配。按位反转位置建树，用状态记录满足的因子层集合及子树中 $1$ 的数量，合并时用 FFT 卷积；再通过莫比乌斯变换计数，复杂度为 $O(3^k k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
