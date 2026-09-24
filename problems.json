@@ -2386,6 +2386,7 @@
     "index": "E",
     "name": "Minimum Influence",
     "type": "PROGRAMMING",
+    "rating": 2200,
     "tags": [
       "binary search",
       "data structures",
@@ -2401,6 +2402,7 @@
     "index": "D",
     "name": "Good Schedule",
     "type": "PROGRAMMING",
+    "rating": 1700,
     "tags": [
       "dp",
       "greedy"
@@ -2411,6 +2413,7 @@
     "index": "C",
     "name": "Arrange the Numbers in a Circle",
     "type": "PROGRAMMING",
+    "rating": 1300,
     "tags": [
       "constructive algorithms",
       "implementation",
@@ -2422,6 +2425,7 @@
     "index": "B",
     "name": "Digit String",
     "type": "PROGRAMMING",
+    "rating": 1000,
     "tags": [
       "greedy",
       "implementation",
@@ -2433,6 +2437,7 @@
     "index": "A",
     "name": "Optimal Purchase",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "implementation",
       "math"
@@ -2565,6 +2570,7 @@
     "name": "Momoyo and the Network",
     "type": "PROGRAMMING",
     "points": 3500.0,
+    "rating": 2300,
     "tags": [
       "binary search",
       "dfs and similar",
@@ -2579,6 +2585,7 @@
     "name": "Amanojaku and Sequence (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
+    "rating": 2400,
     "tags": [
       "combinatorics",
       "data structures",
@@ -2592,6 +2599,7 @@
     "name": "Amanojaku and Sequence (Easy Version)",
     "type": "PROGRAMMING",
     "points": 2000.0,
+    "rating": 2200,
     "tags": [
       "combinatorics",
       "math"
@@ -2603,6 +2611,7 @@
     "name": "Sanae, Cross and Color",
     "type": "PROGRAMMING",
     "points": 2500.0,
+    "rating": 1900,
     "tags": [
       "binary search",
       "data structures",
@@ -2615,6 +2624,7 @@
     "name": "Cirno and Number (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1600,
     "tags": [
       "binary search",
       "dfs and similar",
@@ -2629,6 +2639,7 @@
     "name": "Cirno and Number (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
+    "rating": 1500,
     "tags": [
       "binary search",
       "brute force",
@@ -2643,6 +2654,7 @@
     "name": "Remilia Plays Soku",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 1000,
     "tags": [
       "games",
       "implementation"
@@ -2654,6 +2666,7 @@
     "name": "Marisa Steals Reimu's Takeout",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "greedy",
       "implementation"
@@ -2942,6 +2955,7 @@
     "name": "Zhily and Mex and Max",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 1100,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -2955,6 +2969,7 @@
     "name": "Zhily and Array Operating",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -2966,6 +2981,7 @@
     "name": "Zhily and Colorful Strings",
     "type": "PROGRAMMING",
     "points": 4500.0,
+    "rating": 3500,
     "tags": [
       "divide and conquer",
       "fft",
@@ -2978,6 +2994,7 @@
     "name": "Zhily and Permutation",
     "type": "PROGRAMMING",
     "points": 3500.0,
+    "rating": 3500,
     "tags": [
       "data structures",
       "divide and conquer",
@@ -2990,6 +3007,7 @@
     "name": "Zhily and Cycle",
     "type": "PROGRAMMING",
     "points": 2500.0,
+    "rating": 2800,
     "tags": [
       "graphs",
       "greedy"
@@ -3001,6 +3019,7 @@
     "name": "Zhily and Signpost",
     "type": "PROGRAMMING",
     "points": 1500.0,
+    "rating": 2300,
     "tags": [
       "chinese remainder theorem",
       "dfs and similar",
@@ -3015,6 +3034,7 @@
     "name": "Zhily and Barknights",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 1600,
     "tags": [
       "binary search",
       "data structures",
@@ -3030,6 +3050,7 @@
     "name": "Zhily and Bracket Swapping",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 1300,
     "tags": [
       "constructive algorithms",
       "greedy"
