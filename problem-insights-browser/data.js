@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1563,
+    "total_problems": 1565,
     "source_total_problems": 1749,
-    "filtered_out_problems": 186,
-    "with_statement_brief": 1563,
-    "with_editorial_brief": 1331,
-    "with_solution_brief": 1332,
+    "filtered_out_problems": 184,
+    "with_statement_brief": 1565,
+    "with_editorial_brief": 1333,
+    "with_solution_brief": 1334,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 500,
+    "ai_override_count": 502,
     "primary_topic_count": 13,
-    "contest_count": 251,
+    "contest_count": 252,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 64,
-    "构造与贪心": 512,
+    "构造与贪心": 513,
     "图论与网络流": 99,
     "动态规划与状态设计": 157,
     "数论与同余": 146,
@@ -54,12 +54,12 @@ window.CF_INSIGHTS_DATA = {
     "几何": 33,
     "树结构": 107,
     "交互": 69,
-    "基础实现与模拟": 66,
+    "基础实现与模拟": 67,
     "博弈": 55,
     "代数、矩阵与多项式": 14
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 419,
+    "ai_generated_with_editorial": 421,
     "ai_generated_partial_editorial": 21,
     "missing_editorial": 231,
     "manual_override": 891,
@@ -36256,6 +36256,68 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1894,
+      "name": "Codeforces Round 908 (Div. 2)",
+      "date": "2023-11-07",
+      "url": "https://codeforces.com/contest/1894",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1000,
+      "problems": [
+        {
+          "key": "1894A",
+          "index": "A",
+          "slot": "A",
+          "title": "Secret Sport",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1894/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/122074",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "两名玩家进行多盘比赛：每盘中先达到 $X$ 次胜利者赢盘，累计先赢得 $Y$ 盘者赢得整场比赛。已知所有回合的胜者序列但未知 $X,Y$，要求确定最终获胜者。",
+          "transformedStatement": "把未知的盘长和盘数视为由比赛过程自动确定的停止边界：最后一个回合结束最后一盘，而最后一盘结束整场比赛，因此只需判断胜者序列的末字符。",
+          "keyObservations": [
+            "最后一个回合的获胜者必然赢下最后一盘；否则最后一回合不会被进行，盘面早已结束。",
+            "最后一盘的获胜者必然赢得整场比赛；否则不会再开始下一盘，因此总冠军就是字符串最后一个字符对应的玩家。",
+            "无需枚举未知的 $X$ 和 $Y$，分层结束规则最终都被最后一次胜负唯一决定，从而把问题降为读取字符串末字符。"
+          ],
+          "solutionBrief": "对每组数据直接输出字符串最后一个字符对应的玩家。最后一回合决定最后一盘，最后一盘又决定整场比赛，因此 $X,Y$ 无需求出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1894B",
+          "index": "B",
+          "slot": "B",
+          "title": "Two Out of Three",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1894/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/122074",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定数组 $a$，要构造一个只含 $1,2,3$ 的数组 $b$。三种条件分别要求某个相等的 $a_i,a_j$ 被标成标签对 $(1,2)$、$(1,3)$ 或 $(2,3)$；要求恰好满足其中两种，否则输出 $-1$。",
+          "transformedStatement": "固定构造满足标签对 $(1,2)$ 和 $(1,3)$，并让标签 $2$、$3$ 分别落在两个不同的重复值上；其余元素统一标为 $1$，从而避免出现 $(2,3)$ 标签对。",
+          "keyObservations": [
+            "由对称性只需构造满足第(1,2)、第(1,3)两种配对的方案，第三种配对自然应被排除。",
+            "要同时形成标签 $1$ 与 $2$、$1$ 与 $3$ 的相等值，该值分别需要和标签 $1$ 共现；两种特殊值必须不同，否则会形成 $2$ 与 $3$ 的配对。",
+            "因此有解当且仅当数组中至少有两个不同的值各自出现多次；选它们各一个出现位置标为 $2$、$3$，其余位置标为 $1$ 即可。"
+          ],
+          "solutionBrief": "统计数组中出现至少两次的不同值。若不足两个则输出 $-1$；否则选两个这样的值，各取一个位置分别标为 $2$ 和 $3$，其余位置标为 $1$，即可恰好满足前两类相等值标签条件而不满足第三类。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },

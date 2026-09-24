@@ -4222,6 +4222,7 @@
     "name": "Simons and Diophantus Equation",
     "type": "PROGRAMMING",
     "points": 3250.0,
+    "rating": 3000,
     "tags": [
       "bitmasks",
       "brute force",
@@ -4236,6 +4237,7 @@
     "name": "Simons and Reconstructing His Roads",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 2400,
     "tags": [
       "constructive algorithms",
       "data structures",
@@ -4249,6 +4251,7 @@
     "name": "Simons and Dividing the Rhythm",
     "type": "PROGRAMMING",
     "points": 2500.0,
+    "rating": 2100,
     "tags": [
       "combinatorics",
       "data structures",
@@ -4265,6 +4268,7 @@
     "name": "Simons and Beating Peaks",
     "type": "PROGRAMMING",
     "points": 1750.0,
+    "rating": 1700,
     "tags": [
       "data structures",
       "divide and conquer",
@@ -4280,6 +4284,7 @@
     "name": "Simons and Posting Blogs",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 1400,
     "tags": [
       "greedy",
       "sortings"
@@ -4291,6 +4296,7 @@
     "name": "Simons and Cakes for Success",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 800,
     "tags": [
       "implementation",
       "math"
@@ -4302,6 +4308,7 @@
     "name": "Simons and Making It Beautiful",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "brute force",
       "constructive algorithms"
@@ -4391,6 +4398,7 @@
     "index": "F",
     "name": "Binary Search with One Swap",
     "type": "PROGRAMMING",
+    "rating": 2600,
     "tags": [
       "binary search",
       "divide and conquer",
@@ -4405,6 +4413,7 @@
     "index": "E",
     "name": "Probabilistic Card Game",
     "type": "PROGRAMMING",
+    "rating": 2200,
     "tags": [
       "binary search",
       "data structures",
@@ -4419,6 +4428,7 @@
     "index": "D",
     "name": "Divisibility Game",
     "type": "PROGRAMMING",
+    "rating": 1600,
     "tags": [
       "brute force",
       "games",
@@ -4431,6 +4441,7 @@
     "index": "C",
     "name": "Test Generator",
     "type": "PROGRAMMING",
+    "rating": 1500,
     "tags": [
       "binary search",
       "bitmasks",
@@ -4443,6 +4454,7 @@
     "index": "B",
     "name": "Beautiful Numbers",
     "type": "PROGRAMMING",
+    "rating": 900,
     "tags": [
       "bitmasks",
       "dp",
@@ -4456,6 +4468,7 @@
     "index": "A",
     "name": "Towers of Boxes",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "math"
     ]
@@ -4466,6 +4479,7 @@
     "name": "Monotone Monochrome Matrices (Easy Version)",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 2400,
     "tags": [
       "data structures"
     ]
@@ -4647,6 +4661,7 @@
     "index": "E",
     "name": "Divisive Battle",
     "type": "PROGRAMMING",
+    "rating": 1500,
     "tags": [
       "games",
       "greedy",
@@ -4659,6 +4674,7 @@
     "index": "D",
     "name": "Portal",
     "type": "PROGRAMMING",
+    "rating": 1300,
     "tags": [
       "greedy",
       "sortings"
@@ -4669,6 +4685,7 @@
     "index": "C",
     "name": "Specialty String",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "brute force",
       "greedy",
@@ -4680,6 +4697,7 @@
     "index": "B",
     "name": "Deletion Sort",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "bitmasks",
       "brute force",
@@ -4692,6 +4710,7 @@
     "index": "A",
     "name": "Eating Game",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "greedy"
     ]
