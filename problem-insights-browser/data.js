@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1708,
+    "total_problems": 1714,
     "source_total_problems": 1749,
-    "filtered_out_problems": 41,
-    "with_statement_brief": 1708,
-    "with_editorial_brief": 1477,
-    "with_solution_brief": 1478,
+    "filtered_out_problems": 35,
+    "with_statement_brief": 1714,
+    "with_editorial_brief": 1483,
+    "with_solution_brief": 1484,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 648,
+    "ai_override_count": 655,
     "primary_topic_count": 13,
     "contest_count": 272,
     "rating_min": 800,
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 74,
-    "构造与贪心": 568,
-    "图论与网络流": 108,
-    "动态规划与状态设计": 167,
+    "构造与贪心": 569,
+    "图论与网络流": 109,
+    "动态规划与状态设计": 168,
     "数论与同余": 154,
     "组合计数与概率": 136,
     "数据结构": 137,
     "几何": 38,
     "树结构": 112,
     "交互": 73,
-    "基础实现与模拟": 68,
-    "博弈": 58,
+    "基础实现与模拟": 69,
+    "博弈": 60,
     "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 558,
+    "ai_generated_with_editorial": 564,
     "ai_generated_partial_editorial": 28,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -35446,9 +35446,133 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-04-13",
       "url": "https://codeforces.com/contest/1956",
       "type": "Div. 2",
-      "problemCount": 1,
-      "maxRating": 2500,
+      "problemCount": 7,
+      "maxRating": 3000,
       "problems": [
+        {
+          "key": "1956A",
+          "index": "A",
+          "slot": "A",
+          "title": "Nene's Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1956/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/128426",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "games",
+            "greedy"
+          ],
+          "statementBrief": "给定严格递增的位置序列 $a$，初始有 $n$ 名按顺序排列的玩家。游戏按序列规定的位置逐轮淘汰玩家；若某轮无人被淘汰，游戏结束，剩余玩家获胜。对每个独立的 $n_i$，求最终获胜人数。",
+          "transformedStatement": "将多轮淘汰过程化为首个阈值 $a_1$ 的截断：最终留下的玩家数等于初始人数 $n$ 与 $a_1-1$ 的较小值，后续位置 $a_2,\u0005ldots,a_k$ 无需参与计算。",
+          "keyObservations": [
+            "首轮能被淘汰的最靠前玩家位置是 $a_1$，因此初始人数少于 $a_1$ 时首轮无人出局，游戏立即结束。",
+            "只要初始人数达到 $a_1$，位置 $a_1$ 及其后的玩家最终都会被淘汰，始终保留前 $a_1-1$ 人；所以更大的 $a_i$ 不影响答案。",
+            "每个询问彼此独立，获胜人数只由 $n$ 与 $a_1-1$ 的较小值决定，可直接计算而无需模拟多轮。"
+          ],
+          "solutionBrief": "对每个询问输出 $\u00024\\min(n,a_1-1)\\u00024$。依据首个淘汰位置判断：人数不足 $a_1$ 时无人出局，否则最终只剩前 $a_1-1$ 人。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1956B",
+          "index": "B",
+          "slot": "B",
+          "title": "Nene and the Card Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1956/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/128426",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "games",
+            "greedy"
+          ],
+          "statementBrief": "有 $2n$ 张牌，每个数字 $1$ 到 $n$$ 各出现两次，双方各拿 $n$ 张牌并轮流把手牌放到桌上，你先行动。妮妮会优先最大化自己的最终得分、再最小化你的得分；给定你的手牌，求你采取最优策略时能得到的最高分。",
+          "transformedStatement": "把问题按数字分别分析：一个数字的两张牌可能都在你手中、都在妮妮手中，或由双方各持一张；判断这三种持有关系中哪些能让你最终拿到该数字对应的分数。",
+          "keyObservations": [
+            "同一数字的两张牌都在你手中时，你可以在自己的回合打出它们并稳定获得该数字对应的分数。",
+            "同一数字的两张牌都在妮妮手中时，你无法获得该数字的分数，因此这类数字对答案没有贡献。",
+            "若双方各有一张同数字牌，妮妮会在你打出这张牌后用自己的同数字牌应对，从而阻止你得分；因此单张牌也不贡献分数。",
+            "每个数字的贡献只取决于它在你手中的出现次数，答案就是出现次数恰为 $2$ 的数字数量。"
+          ],
+          "solutionBrief": "统计每个数字在你的手牌中出现次数；只有出现两次时该数字能稳定贡献一分，累加这些数字的数量即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1956C",
+          "index": "C",
+          "slot": "C",
+          "title": "Nene's Magical Matrix",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1956/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/128426",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个全为零的 $n\\times n$ 矩阵，每次可选择一行或一列，将其按某个长度为 $n$ 的排列重新赋值。要求最多进行 $2n$ 次操作，使矩阵所有元素之和最大，并输出最大和及一组操作。",
+          "transformedStatement": "将元素和改写为各阈值下元素数量的总和：最大化每个 $f(x)=|\\{a_{i,j}\\ge x\\}|$。通过限制每个阈值对应的白格数量，证明构造出的矩阵 $a_{i,j}=\\max(i,j)$ 同时达到所有上界。",
+          "keyObservations": [
+            "把元素总和按阈值拆分：若定义 $f(x)$ 为矩阵中不小于 $x$ 的元素数，则总和等于 $\\sum_{x=1}^{n}f(x)$，因此可分别最大化各个阈值的覆盖数。",
+            "对固定阈值 $x$，把小于 $x$ 的格子视为白格；任意行列赋值操作都只能保证最终白格数至少受结构限制，从而黑格数不超过 $n^2-(x-1)^2$。",
+            "上述黑格上界可对矩阵规模做归纳证明：查看最后一次染色的行或列，其余部分归约为少一行或少一列的同类问题。",
+            "按 $i=n,n-1,\\ldots,1$ 依次把第 $i$ 列和第 $i$ 行设为 $[1,2,\\ldots,n]$，最终得到 $a_{i,j}=\\max(i,j)$，同时达到所有阈值上界。"
+          ],
+          "solutionBrief": "答案矩阵可构造成 $a_{i,j}=\\max(i,j)$。从 $n$ 到 $1$，依次对第 $i$ 列、第 $i$ 行赋值为 $1..n$，共 $2n$ 次；最大和为 $\\sum_{i=1}^{n}(2i-1)i=\\frac{n(n+1)(4n-1)}{6}$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1956D",
+          "index": "D",
+          "slot": "D",
+          "title": "Nene and the Mex Operator",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1956/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/128426",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "博弈",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "divide and conquer",
+            "dp",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的非负整数数组。每次选择一个连续区间，将区间内所有元素同时替换为该区间元素集合的 MEX，最多操作 $5\\cdot10^5$ 次；要求最大化数组总和，并输出达到最大值的操作序列。",
+          "transformedStatement": "将问题转化为选择若干互不相交的连续块：长度为 $k$ 的被选块最终可贡献 $k^2$，未被选中的位置贡献原数组值。先最大化这些块贡献与原值之和，再用递归操作实现每个块。",
+          "keyObservations": [
+            "把最终至少被操作一次的位置选成若干连续块后，各块可独立处理；未选位置保留原值，因此只需决定哪些位置值得改写。",
+            "长度为 $k$ 的连续块若整体被改写，最优可将其中每个数都变为 $k$，该块贡献由原值之和提升为 $k^2$。",
+            "递归构造能在不超过约 $2^k$ 次操作内把长度为 $k$ 的块变成全为 $k$，因此所有选中块都能在总操作数限制内实现。",
+            "枚举位置子集并按连续段累加 $k^2$、未选位置累加原值，即可找到最大收益并同步记录对应构造。"
+          ],
+          "solutionBrief": "枚举被改写位置的子集，将每个连续选中段长度为 $k$ 的贡献记为 $k^2$，其余位置保留原值，取总和最大者。对每个选中段用递归构造把所有元素变为段长，并输出操作序列；总操作数不超过 $2^n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1956E1",
           "index": "E1",
@@ -35456,22 +35580,82 @@ window.CF_INSIGHTS_DATA = {
           "title": "Nene vs. Monsters (Easy Version)",
           "rating": 2500,
           "problemUrl": "https://codeforces.com/contest/1956/problem/E1",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "几何"
-          ],
+          "editorialUrl": "https://codeforces.com/blog/entry/128426",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "implementation",
             "math"
           ],
-          "statementBrief": "题面已抓取：Nene vs. Monsters (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 个位于圆上的怪物，第 $i$ 个能量为 $a_i$。施法时，能量为 $x$ 的攻击者会把能量为 $y$ 的被攻击者变为 $\\max(0,y-x)$，攻击者不变；重复施法 $10^{100}$ 次后，要求找出能量仍非零的怪物。给定片段未说明每次攻击的具体对象和顺序。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1956E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Nene vs. Monsters (Hard Version)",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1956/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/128426",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个按环排列的怪物，第 $i$ 个能量为 $a_i$。每次施法按顺序让怪物攻击其邻居：攻击者能量不变，被攻击者能量变为 $\\max(0,y-x)$；重复 $10^{100}$ 次后，要求输出仍有正能量的怪物编号。",
+          "transformedStatement": "把长期循环攻击压缩为两阶段：先模拟直到环上不存在四个连续存活怪物；随后每个零点附近只需分析 $0,x,y,z$，用连续相减产生的累计伤害判断更后方怪物是否能保留。",
+          "keyObservations": [
+            "若连续四个怪物都存活，后方怪物在多轮中会受到至少线性、平方级、立方级累积伤害，因此经过 $O(\\sqrt[3]{V})$ 轮后不可能仍存在四个连续存活怪物，其中 $V=\\max a_i$。",
+            "当局部形态为 $0,x,y,z$ 且后三者均存活时，$x$ 会保留，$y$ 最终死亡，并在死亡前对 $z$ 造成 $D=(y-x)+(y-2x)+\\cdots+(y\\bmod x)$ 点伤害；因此 $z$ 最终存活当且仅当 $z>D$。",
+            "先暴力推进直到环上不存在四个连续存活怪物，剩余结构即可由零点两侧的局部形态独立判断，从而把长期过程压缩为有限次模拟和整数伤害计算。",
+            "当 $n$ 很小时，环上的相邻关系会覆盖自身，需直接模拟完整一轮攻击规则，而不能套用四连存活的局部化结论。"
+          ],
+          "solutionBrief": "循环模拟每轮相邻攻击，直到不存在四个连续存活怪物；此时按 $0,x,y,z$ 结构计算 $y$ 对 $z$ 的累计伤害 $D$，判断最终存活者。总复杂度为 $O(n\\sqrt[3]{V})$，小规模环单独模拟。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1956F",
+          "index": "F",
+          "slot": "F",
+          "title": "Nene and the Passing Game",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1956/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/128426",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dsu",
+            "graphs",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 名按编号排列的玩家，玩家 $i$ 的手臂可覆盖距离区间 $[l_i,r_i]$；两人 $i,j$ 能直接传球，当且仅当编号差 $|i-j|$ 落在两人手臂区间之和中。每轮选择一组能通过这些合法传球互相合作的玩家，要求所有玩家至少参加一轮，求最少轮数。",
+          "transformedStatement": "把玩家关系转成玩家与整数位置的二部图：对 $i<j$，两人的直接传球对应某个位置同时落在 $i$ 的右侧覆盖区间和 $j$ 的左侧覆盖区间。图的含玩家连通分量就是可放入同一轮的最大合作组。",
+          "keyObservations": [
+            "对 $i<j$，直接传球等价于区间 $[i+l_i,i+r_i]$ 与 $[j-r_j,j-l_j]$ 有交集，因此可把一次传球转化为两人的手臂共同覆盖某个整数位置。",
+            "建立“玩家—位置”二部图时，只保留同时被至少一名左手臂和至少一名右手臂覆盖的位置；否则同一方向的覆盖也会被错误连通，产生不存在的玩家连接。",
+            "一个玩家连接到一段连续位置时，只需连接该段端点并把段内相邻位置依次并入同一集合，就能保持连通性而将边数从平方级降到线性级。",
+            "所有合法传球关系的连通分量可以安排在同一轮，而不同分量之间无法通过传球互相到达，所以最少轮数等于该图中含玩家顶点的连通分量数。"
+          ],
+          "solutionBrief": "用玩家与整数位置构造二部图：玩家连接其左、右手臂可覆盖的位置，但删去未被两种方向同时覆盖的位置。用差分找有效位置、并将连续区间边压缩为相邻位置连接，再用并查集合并玩家与区间，统计连通分量，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
