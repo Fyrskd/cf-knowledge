@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-24T15:17:18+00:00",
+  "updated_at": "2026-09-24T15:26:19+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -19962,6 +19962,191 @@
         "quality_flags": [
           "statement_inferred"
         ]
+      }
+    },
+    "1957F2": {
+      "problem_key": "1957F2",
+      "title": "Frequency Mismatch (Hard Version)",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1957/problem/F2",
+      "editorial_url": "https://codeforces.com/blog/entry/128716",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "d19910682e145f0ef700545372af40474505d289d77b0e4a62f8f3d4742df5da",
+      "generated_at": "2026-09-24T15:19:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵带整数值的无向树。每次查询给出两条端点路径，比较各数值在两条路径上的出现次数，并输出出现次数不同的数值中任意最多 $k$ 个。",
+        "transformed_statement": "将每条根到节点的路径表示为一棵持久化的值频次数线段树；任意路径频次通过两条根路径减去 LCA 及其父节点的版本得到，再把问题转化为比较两棵隐式频次树的哈希差异。",
+        "key_observations": [
+          "把值频次数组分段存储，并令每个线段树节点保存对应区间的多项式哈希；比较两个根及递归子节点哈希即可定位频次不同的最小值。",
+          "根树后，路径 $u\\to v$ 的频次数组可按 $seg(1\\to u)+seg(1\\to v)-seg(1\\to lca)-seg(1\\to parent(lca))$ 组合，因而无需显式建立每条路径的线段树。",
+          "频次数组相加时哈希也满足线性可加性，所以路径组合后的任意区间哈希能由四棵持久化线段树的哈希直接计算。",
+          "为输出最多 $k$ 个答案，只递归访问两棵路径频次数结构哈希不同的节点；找到叶子就输出对应值，找到 $k$ 个后停止。"
+        ],
+        "solution_brief": "对每个根路径建立持久化频次数线段树，并预处理祖先与 LCA。查询时用四棵版本的节点信息做加减得到路径哈希，在两条路径的隐式线段树上递归跳过哈希相同区间，收集最多 $k$ 个不同值。总复杂度为 $O(n\\log n+qk\\log n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "树结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的树上路径频次定义，以及完整 editorial 中的持久化线段树、LCA、线性哈希和差异区间递归方案；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1957F1": {
+      "problem_key": "1957F1",
+      "title": "Frequency Mismatch (Easy Version)",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1957/problem/F1",
+      "editorial_url": "https://codeforces.com/blog/entry/128716",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "06ebc77444bf214c3c3316d8bca97d5b86b8640c6d45cd4cba0c616bf18b1848",
+      "generated_at": "2026-09-24T15:20:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵带整数值的无向树。每次询问两条路径，比较各数值在两条路径上的出现次数；简单版中 $k=1$，需输出任意一个出现次数不同的数值，若不存在则输出 $0$。",
+        "transformed_statement": "将每个询问改写为：对数值阈值 $t$，比较两条路径中所有值不超过 $t$ 的多重集合哈希，并寻找首次不相等的阈值；该阈值对应一个频次不匹配的值。",
+        "key_observations": [
+          "把两条路径限制在数值不超过阈值的节点多重集合进行比较；阈值从小到大时，首次哈希不等的位置必对应频次不同的数值，从而可二分答案。",
+          "为每个数值分配随机哈希，路径上的多重集合哈希等于节点哈希之和；不同频率通常导致哈希不同，将多重集合比较转成路径和比较。",
+          "在欧拉序上对某个数值的所有节点做进入点加哈希、离开点减哈希，前缀和结合 LCA 即可得到任意路径的该阈值哈希。",
+          "所有查询按当前二分中点排序并递增加入数值，复用同一个树状数组状态，避免每个查询独立重建数据结构。"
+        ],
+        "solution_brief": "给每个值分配双随机哈希，利用欧拉序差分和 LCA 计算两条路径中不超过阈值的哈希。对每个查询并行二分最小的哈希不等阈值，并输出对应值；整体复杂度为 $O(n\\log n+q\\log^2 n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "树结构",
+          "代数、矩阵与多项式"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，结合 statement_text、title、rating 与 tags 提炼；实现细节还参考了给出的代码。",
+        "quality_flags": [
+          "probabilistic_hash_collision",
+          "statement_format_corruption"
+        ]
+      }
+    },
+    "1957E": {
+      "problem_key": "1957E",
+      "title": "Carousel of Combinations",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1957/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/128716",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "aed81d6592cccf20b8ead635710adeb0de1fe1f17651ce53de43b0761efeaef9",
+      "generated_at": "2026-09-24T15:22:49+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数 $n$，其中 $C(i,j)$ 表示从 $\\{1,2,\\ldots,i\\}$ 选出并围成圆排列 $j$ 个不同数字的方案数，旋转后相同的排列视为同一种。要求计算所有 $1\\le j\\le i\\le n$ 的 $C(i,j)\\bmod j$ 之和，并对 $10^9+7$ 取模。",
+        "transformed_statement": "把圆排列数改写为线性排列数除以 $j$，将二重求和按固定的 $j$ 分组。除素数和 $j=4$ 外各组恒为零，而素数对应的贡献在连续区间 $[kp,(k+1)p-1]$ 上保持不变，因此可转成区间增量和前缀累加问题。",
+        "key_observations": [
+          "圆排列先化为线性排列数除以旋转次数，因此有 $C(i,j)=\\frac{i(i-1)\\cdots(i-j+1)}{j}$，为处理模 $j$ 提供了可约分的整数表达式。",
+          "长度为 $j$ 的连续乘积中恰有一项是 $j\\lfloor i/j\\rfloor$，其余因子模 $j$ 后覆盖 $1$ 到 $j-1$，故 $C(i,j)\\bmod j=((j-1)!\\lfloor i/j\\rfloor)\\bmod j$。",
+          "当 $j$ 为合数且 $j\\ne4$ 时，$(j-1)!$ 含有 $j$ 的全部因子，贡献恒为零；当 $j=p$ 为素数时由 Wilson 定理得到贡献为 $-\\lfloor i/p\\rfloor\\bmod p$。",
+          "固定素数 $p$ 后，$i\\in[kp,(k+1)p-1]$ 的贡献相同，可对每个区间做差分加法；再单独处理 $j=4$，前缀累加即可得到所有 $i$ 的总和。"
+        ],
+        "solution_brief": "先用公式化简 $C(i,j)\\bmod j$，筛出素数并按区间加入其常值贡献；合数贡献全为零但需特判 $j=4$。用差分数组汇总每个 $i$ 的贡献，再做一次前缀和得到答案并回答查询。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "组合计数与概率",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面定义、完整 Editorial 推导与代码中的筛法及差分预处理。",
+        "quality_flags": []
+      }
+    },
+    "1957D": {
+      "problem_key": "1957D",
+      "title": "A BIT of an Inequality",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1957/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/128716",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "66ef7f8529359fc24d61521f5ecb10b2594c0a4095273f879f0bf42488f65079",
+      "generated_at": "2026-09-24T15:23:41+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组及区间异或函数 $f(l,r)$，统计所有 $1\\le x\\le y\\le z\\le n$ 的三元组，使去掉中点 $a_y$ 后的两侧异或值大于完整区间异或值，即 $f(x,y-1)\\oplus f(y+1,z)>f(x,z)$。空区间异或视为 $0$。",
+        "transformed_statement": "固定中点 $y$，令左右部分异或为 $L=f(x,y-1)$、$R=f(y+1,z)$；完整值为 $L\\oplus a_y\\oplus R$，目标等价于判断 $(L\\oplus R)>(L\\oplus a_y\\oplus R)$，再由 $a_y$ 的最高位决定成败。",
+        "key_observations": [
+          "把条件改写为 $f(x,z)\\oplus a_y>f(x,z)$，即移除中点 $a_y$ 后的异或值更大，从而可固定 $y$ 独立计数左右端点。",
+          "设 $a_y$ 的最高位为 $k$；异或结果大小首先由第 $k$ 位决定，因此只有左右两侧异或值在第 $k$ 位恰有一个为 $1$ 时，加入 $a_y$ 才会使结果变小。",
+          "对每个二进制位分别统计左端点产生的异或位为 $0/1$ 的数量，以及右端点产生的异或位为 $0/1$ 的数量，左右组合数直接相乘即可。",
+          "更低位的变化不会推翻最高位的判断，因为所有低位总和小于 $2^k$；因此无需记录完整异或值，只需维护每一位的奇偶状态。"
+        ],
+        "solution_brief": "枚举中点 $y$，取 $a_y$ 的最高位 $k$。预处理每个位上各前缀、后缀异或状态为 $0/1$ 的端点数量，统计左右第 $k$ 位不同的组合并累加。",
+        "primary_topic": "代数、矩阵与多项式",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text、题目标签 bitmasks/dp；原题中的具体不等式在 statement_text 中缺失，按 editorial 重建。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1957B": {
+      "problem_key": "1957B",
+      "title": "A BIT of a Construction",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1957/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/128716",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "cbade2671a610bfcfe0b582fd8a2ca21cfef7be59331263bdaf1e8272ef782ed",
+      "generated_at": "2026-09-24T15:25:41+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 和总和 $k$，构造 $n$ 个非负整数，使它们的和恰为 $k$，并让所有数按位或结果的二进制表示中 $1$ 的个数尽可能多。若有多种最优序列，输出任意一种。",
+        "transformed_statement": "把问题转化为：在总和固定为 $k$ 的前提下，尽量让各数共同覆盖更多二进制位；分析 $k$ 的最高位即可确定按位或能覆盖的最大位数，再用两个数分配总和实现该上界。",
+        "key_observations": [
+          "设 $x$ 为 $k$ 的最高位，且 $2^x\\le k<2^{x+1}$；按位或若有超过 $x+1$ 个置位比特，其最小数值也会超过可用总和，因此答案至多为 $x+1$。",
+          "要让按位或达到 $x+1$ 个置位比特，必须使用低 $x+1$ 位全部为 $1$ 的数，即要求 $k=2^{x+1}-1$；否则最多只能达到 $x$ 个。",
+          "取一个数为 $2^x-1$，它贡献低位的 $x$ 个置位比特，再将剩余的 $k-(2^x-1)$ 放入第二个数，其他位置填 $0$，既保持总和又达到一般情况下的最优值。",
+          "当 $k=2^{x+1}-1$ 时，剩余值恰为 $2^x$，两个构造数的按位或覆盖连续的 $x+1$ 个比特；但 $n=1$ 时没有拆分空间，只能输出 $k$。"
+        ],
+        "solution_brief": "$n=1$ 时直接输出 $k$。否则令 $x=\\lfloor\\log_2 k\\rfloor$，输出 $2^x-1$、$k-(2^x-1)$，其余输出 $0$；该构造最大化按位或中置位比特数。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 中的求和与按位或目标、editorial 中的最高位上界和构造方案，并参考 bitmasks、constructive algorithms、greedy 标签。",
+        "quality_flags": []
+      }
+    },
+    "1957A": {
+      "problem_key": "1957A",
+      "title": "Stickogon",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1957/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/128716",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "fd2456b5d84d45ba93fe3de99f2c670a70be3092f34e0ff1b9a8dad2dab5bca1",
+      "generated_at": "2026-09-24T15:26:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干不能折断的木棍，每根有一个长度；每根木棍最多用于一个正多边形，且同一多边形的所有边必须等长。求同时能构成的正多边形最大数量。",
+        "transformed_statement": "将问题改写为按长度独立分组：同一种长度的木棍每取 3 根即可构成一个三角形，而构成更多边的正多边形不会增加数量，因此只需计算各长度频次除以 3 的整数商之和。",
+        "key_observations": [
+          "每个正多边形至少需要 3 根等长木棍，因此把同长度木棍组成三角形比组成边数更多的多边形更省材料，能得到最多个数。",
+          "长度为 $i$ 的木棍彼此独立；若有 $S_i$ 根，就能贡献 $\u0000lfloor S_i/3 \u0000rfloor$ 个三角形，剩余木棍不会影响其他长度。",
+          "答案可按长度分组后求 $\u0000sum_{i=1}^{100}\u0000lfloor S_i/3 \u0000rfloor$，将构造问题转化为频次统计。"
+        ],
+        "solution_brief": "统计每种长度的木棍数量 $S_i$，对每种长度加入 $\u0000lfloor S_i/3 \u0000rfloor$。三根等长木棍构成三角形，而更大的正多边形只会消耗更多木棍，因此该总和即为最大答案。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 中的木棍与正多边形规则，以及 editorial 中关于优先构造三角形和频次求和的完整说明。",
+        "quality_flags": []
       }
     }
   }
