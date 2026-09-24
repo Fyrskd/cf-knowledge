@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1591,
+    "total_problems": 1597,
     "source_total_problems": 1749,
-    "filtered_out_problems": 158,
-    "with_statement_brief": 1591,
-    "with_editorial_brief": 1359,
-    "with_solution_brief": 1360,
+    "filtered_out_problems": 152,
+    "with_statement_brief": 1597,
+    "with_editorial_brief": 1365,
+    "with_solution_brief": 1366,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 529,
+    "ai_override_count": 535,
     "primary_topic_count": 13,
-    "contest_count": 255,
+    "contest_count": 256,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 66,
-    "构造与贪心": 526,
-    "图论与网络流": 102,
+    "构造与贪心": 528,
+    "图论与网络流": 103,
     "动态规划与状态设计": 157,
     "数论与同余": 148,
     "组合计数与概率": 117,
-    "数据结构": 127,
+    "数据结构": 129,
     "几何": 33,
     "树结构": 108,
     "交互": 70,
-    "基础实现与模拟": 67,
+    "基础实现与模拟": 68,
     "博弈": 55,
     "代数、矩阵与多项式": 15
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 446,
+    "ai_generated_with_editorial": 452,
     "ai_generated_partial_editorial": 22,
     "missing_editorial": 231,
     "manual_override": 891,
@@ -36216,6 +36216,201 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1904,
+      "name": "Codeforces Round 914 (Div. 2)",
+      "date": "2023-12-09",
+      "url": "https://codeforces.com/contest/1904",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1904A",
+          "index": "A",
+          "slot": "A",
+          "title": "Forked!",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1904/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/123160",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "在无限整数坐标棋盘上，给定国王和皇后的位置，以及改造后的马步长 $a,b$。马每次在一个方向移动 $a$ 格、另一方向移动 $b$ 格，也可交换两者并改变正负号；求有多少个位置上的马能同时攻击国王和皇后。",
+          "transformedStatement": "将问题改为分别求国王与皇后的反向攻击位置集合：从目标坐标按所有马步变化反推候选位置，答案就是两个候选集合的交集大小。",
+          "keyObservations": [
+            "从目标棋子反推马的位置：对一个棋子，只需枚举坐标分别加减 $a,b$ 以及交换后的所有组合，候选数最多为 8 个。",
+            "当 $a=b$ 时，不同符号组合可能得到同一位置，因此必须去重，否则会重复计数。",
+            "能同时攻击国王和皇后的位置，恰好是两者候选位置集合的交集，枚举交集即可直接得到答案。"
+          ],
+          "solutionBrief": "分别生成国王和皇后的所有反向攻击位置，用集合去重后统计交集大小。每个棋子最多产生 8 个候选位置，因此无需在棋盘上搜索。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1904B",
+          "index": "B",
+          "slot": "B",
+          "title": "Collecting Game",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1904/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/123160",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定正整数数组和初始分数。对每个下标，先删除该元素并把分数设为它的值；之后每次只能删除一个不超过当前分数的元素，并将其加入分数，求最多还能删除多少个元素。",
+          "transformedStatement": "将元素排序后，把从排序位置 $i$ 出发的过程看成不断扩展可达前缀：先获得前 $i$ 个元素的总和，再利用该总和解锁更大的元素，直到无法继续扩展。",
+          "keyObservations": [
+            "排序后从位置 $i$ 开始时，所有更小或相等的元素都能先被收集，因此初始可积累到前缀和 $p_i$。",
+            "若当前分数 $p_i$ 不小于下一个元素，则收集它只会增加分数，之后仍可继续处理后续元素；可达元素始终构成排序数组的前缀。",
+            "令 $j$ 为满足 $a_j\\le p_i$ 的最大位置，则从 $i$ 出发可以直接进入状态 $j$，后续答案等同于状态 $j$ 的可达范围。",
+            "最终可达前缀长度减去 $1$ 才是答案，因为最初选中的 $a_i$ 不计入额外删除数量。"
+          ],
+          "solutionBrief": "保留原下标并排序，计算前缀和。对每个排序位置，用当前前缀和找到能达到的最右位置，并继承该位置的可达范围；将可达长度减一后映射回原下标。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1904C",
+          "index": "C",
+          "slot": "C",
+          "title": "Array Game",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1904/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/123160",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个正整数数组，每次选择两个已有元素，将它们的绝对差追加到数组末尾，重复恰好 $k$ 次。要求通过选择操作对象，使最终数组中的最小元素尽可能小，并输出该最小值。",
+          "transformedStatement": "只需区分 $k\\geq3$、$k=1$ 和 $k=2$：前者可构造零；后两者分别转化为寻找原数组中的最小值、相邻差，以及某个首轮差值与原数组元素之间的最近距离。",
+          "keyObservations": [
+            "当 $k\\geq 3$ 时，重复选择同一对元素会生成两个相同差值，再对这两个差值操作即可得到 $0$，因此答案固定为 $0$。",
+            "排序后，任意两数差的最小值一定出现在相邻元素之间，所以 $k=1$ 时只需比较原数组最小值与所有相邻差值。",
+            "$k=2$ 时枚举第一次生成的差值 $v$；第二次操作若能降低答案，必然应让 $v$ 与数组中最接近的元素配对，因此只需检查有序数组中 $v$ 的前驱和后继。",
+            "第二次操作也可能不产生更小值，因此初始最小值以及仅执行一次操作得到的候选值必须一并保留。"
+          ],
+          "solutionBrief": "先排序并计算原数组最小值及相邻差。$k\\geq3$ 直接输出 $0$；$k=1$ 输出上述最小值。$k=2$ 枚举任意首个差值，用二分查找其在有序数组中的前驱和后继，更新与它们的差，并保留少做操作的候选。复杂度为 $O(n^2\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1904D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Set To Max (Hard Version)",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1904/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/123160",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "divide and conquer",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定等长数组 $a,b$，可反复选择一个连续区间，把区间内所有元素都改成该区间的最大值。判断能否经过任意次操作将 $a$ 完全变成 $b$。",
+          "transformedStatement": "把每个位置 $i$ 的目标值 $b_i$ 看成需要从某个已有的 $b_i$ 来源位置传播来的值；检查连接两者的区间是否满足原数组不超过 $b_i$、目标数组不低于 $b_i$，并允许按目标值递增完成所有传播。",
+          "keyObservations": [
+            "若存在位置满足 $b_i<a_i$，操作只能取区间最大值并使元素不减，因此必然无法完成转换。",
+            "位置 $i$ 要变成 $b_i$，所选区间必须包含某个当前值为 $b_i$ 的位置；同侧更远的相同值不会优于最近者，所以每侧只需检查最近来源。",
+            "区间 $[i,j]$ 可用于生成 $b_i$ 当且仅当其中所有 $a_k\\le b_i$ 且所有 $b_k\\ge b_i$：前者保证区间最大值恰为目标值，后者保证不会破坏其他目标位置。",
+            "按目标值从小到大执行满足条件的区间不会互相干扰；用单调栈求区间边界并记录值的位置，即可在线性时间检查左右两侧的来源。"
+          ],
+          "solutionBrief": "先检查是否有 $b_i<a_i$。对每个位置寻找左右最近的值为 $b_i$ 的来源，并用单调栈求出必须满足的 $a$ 上界与 $b$ 下界；若至少一侧存在合法区间则可行，否则不可行。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1904E",
+          "index": "E",
+          "slot": "E",
+          "title": "Tree Queries",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1904/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/123160",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，每次查询指定起点 $x$ 和若干个与其不同的节点；先删除这些节点及其相连边，再求从 $x$ 出发的最长简单路径长度（按边数计）。",
+          "transformedStatement": "把树固定根后改用欧拉序表示：删除操作转化为封锁若干连续区间，保留包含 $x$ 的连通区域；对这些区间维护直径端点，再用端点到 $x$ 的距离回答最远可达距离。",
+          "keyObservations": [
+            "欧拉序中每个子树是连续区间；删除点后，非祖先点只封锁其子树，祖先点则封锁通向其他方向的两段区间，因此包含 $x$ 的可达区域可拆成 $O(k)$ 个连续区间。",
+            "树上从固定点 $x$ 出发的最远点一定是所在连通子树直径的某个端点，所以不必逐点寻找最远点，只需比较直径两端到 $x$ 的距离。",
+            "区间对应的直径只需记录两个端点；合并两个区间时枚举两对端点的组合即可得到合并后的直径，从而能合并所有未封锁区间。",
+            "利用祖先判断、求出祖先到 $x$ 路径上的下一点，并在线段树上查询未封锁欧拉区间，便可直接得到删除后的连通区域信息。"
+          ],
+          "solutionBrief": "对树做欧拉序，预处理祖先关系、距离及祖先链跳转。每个欧拉区间在线段树中维护直径端点；查询时把删除点转成封锁区间，合并所有未封锁区间的直径，最后取两个直径端点到 $x$ 的较大距离。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1904F",
+          "index": "F",
+          "slot": "F",
+          "title": "Beautiful Tree",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1904/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/123160",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的树，要把 $1$ 到 $n$ 的不同整数各分配给一个节点。每条要求给出路径两端 $a,b$ 及路径上的节点 $c$：类型1要求 $c$ 是该路径上的最小值，类型2要求 $c$ 是最大值；需构造满足全部要求的赋值，否则输出 $-1$。",
+          "transformedStatement": "把每条“路径上的最小/最大值”条件转成从较小节点指向较大节点的偏序约束图；问题变为判断该图是否无环，并用其拓扑序生成节点排列。为高效表达路径上的批量约束，引入重链区间和二进制分解虚点。",
+          "keyObservations": [
+            "把每条路径极值要求改写为有向约束边：类型1令 $c$ 小于路径上其他节点，类型2令路径节点小于 $c$；有向图有环当且仅当约束无法同时满足。",
+            "树上任意路径可拆成 $O(\\log n)$ 条重链区间，因此路径约束可转化为对若干连续区间的批量连边。",
+            "为每个区间建立二进制分解的虚点，虚点递归表示两个半区间；节点连接虚点即可覆盖整段路径，而无需逐点加边。",
+            "对最终约束图做拓扑排序，拓扑序直接赋予 $1$ 到 $n$；若检测到环则输出 $-1$，否则得到合法排列。"
+          ],
+          "solutionBrief": "将两类路径极值条件转为有向大小关系，利用重链分解和二进制区间虚点在 $O((n+m)\\log n)$ 内建图，再拓扑排序赋值；有环则无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
