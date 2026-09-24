@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-24T06:26:52+00:00",
+  "updated_at": "2026-09-24T06:34:10+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -15846,6 +15846,210 @@
         "quality_flags": [
           "statement_text_truncated_at_end"
         ]
+      }
+    },
+    "1903F": {
+      "problem_key": "1903F",
+      "title": "Babysitting",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1903/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/122820",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "e53f90f67125f8586ca8ed42ac04ef78f817bb0700bd3b4268b451a0dfd398f3",
+      "generated_at": "2026-09-24T06:28:42+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个顶点编号为 $1$ 到 $n$ 的无向图，需要选择一些顶点，使每条边至少有一个端点被选中。目标是在所有这样的点覆盖中，最大化被选顶点编号之间的最小差；若只选一个顶点，该最小差按 $n$ 计算。",
+        "transformed_statement": "把每个顶点是否被选作为布尔变量：原图边产生“至少选一端”的约束，而固定间距阈值后，编号相距不足该阈值的顶点产生“不能同时选”的约束。问题由此转为寻找最大的可行阈值，每次通过 2-SAT 检查约束是否可满足。",
+        "key_observations": [
+          "把顶点是否选入点覆盖视为布尔变量，每条原图边要求至少选一个端点，因此直接得到子句 $(u_i \\mid v_i)$。",
+          "固定最小编号间距阈值 $d$ 后，任意编号差小于 $d$ 的两个顶点不能同时选中，可写成子句 $(\\neg x \\mid \\neg y)$；因此可用 2-SAT 判定该阈值是否可行。",
+          "间距冲突对覆盖的是编号轴上的短区间，不必逐对添加约束：用类似线段树的辅助节点表示区间，可将一段范围的蕴含边压缩到对数条。",
+          "可行性随阈值增大具有单调性；阈值越大，互相冲突的顶点对只会增多，因此可以二分最大可行间距。"
+        ],
+        "solution_brief": "二分最小编号间距，并用 2-SAT 检查是否存在满足所有边覆盖约束、且任意两个被选顶点编号差至少为该阈值的方案。为避免枚举所有冲突顶点对，可用线段树式辅助节点压缩区间蕴含；题解还提到用 DSU 跳过已访问节点的优化方案。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的点覆盖与编号间距定义，以及 editorial 给出的 2-SAT、二分和区间约束压缩方法。",
+        "quality_flags": []
+      }
+    },
+    "1903E": {
+      "problem_key": "1903E",
+      "title": "Geo Game",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1903/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/122820",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "95e3d8e75562f0f85eac20798a5b6ad77e79cfc0b728a2d86cb75c4f64155800",
+      "generated_at": "2026-09-24T06:28:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "平面上给定起点和 $n$ 个点，两名玩家轮流选择一个尚未选过的点；每次把上一个位置到新点的欧几里得距离平方加入总和，直到所有点都被选完。总和为偶数则先手获胜，否则后手获胜；你要选择自己担任先手还是后手，并决定每回合选哪个点以保证获胜。",
+        "transformed_statement": "将起点及所有点映射为坐标奇偶异或值，并把选点顺序视为包含起点的二进制序列。游戏结果只由该序列相邻值变化次数的奇偶决定，等价于控制序列末值是否与起点值相同，策略因此转化为比较两类点的数量并争夺末端类别的控制权。",
+        "key_observations": [
+          "一段移动的距离平方模 $2$，只取决于起点和终点四个坐标的奇偶异或，因此具体坐标可压缩成每个点的奇偶类别。",
+          "把起点类别和依次选出的点类别排成二进制序列后，总分奇偶等于相邻类别变化次数的奇偶；变化次数为偶数当且仅当序列首尾类别相同。",
+          "若某类别的点数不多于另一类，先手可以持续选取另一类直到其耗尽，从而掌握序列末端；若起点类别数量严格较少，则后手可用对称策略迫使末端与起点类别不同。"
+        ],
+        "solution_brief": "统计两种奇偶类别的点数，并计算起点类别。若起点类别的数量不少于另一类，选择先手，持续选取另一类直到该类耗尽；否则选择后手，持续选取起点类别直到其耗尽。利用首尾类别关系保证最终分数奇偶符合胜负条件。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "博弈",
+          "交互",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；奇偶化简与策略依据完整 editorial_text；tags 仅用于辅助分类。",
+        "quality_flags": [
+          "statement_truncated"
+        ]
+      }
+    },
+    "1903D2": {
+      "problem_key": "1903D2",
+      "title": "Maximum And Queries (hard version)",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1903/problem/D2",
+      "editorial_url": "https://codeforces.com/blog/entry/122820",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "8fdd9290b54c1f9bf28c0b956c3690872c1201a92ef27edc65fee95c714b3e53",
+      "generated_at": "2026-09-24T06:30:05+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组，每次操作可任选一个元素加 $1$，且每个查询最多进行 $k$ 次操作；查询彼此独立。对每个给定的 $k$，求操作后数组所有元素按位与的最大值。",
+        "transformed_statement": "将目标按二进制位从高到低逐位构造：当前已选答案为 $x$ 时，判断把第 $b$ 位加入变成 $x+2^b$ 所需的全部增量是否不超过预算，并用元素与掩码的包含关系汇总该成本。",
+        "key_observations": [
+          "答案可以按位从高到低贪心确定；若当前答案加入某位的总增量不超过预算，就保留该位，否则放弃，从而保证前缀最优。",
+          "对单个元素，是否已包含当前答案可由“当前答案是否为其子掩码”判断；不满足时需增加 $2^b$，已包含新答案时无需增加，否则只需补到模 $2^b$ 的下一个位置。",
+          "把元素按掩码包含关系分组，可用 $A(mask)$ 统计子掩码数量、用 $B(mask,b)$ 汇总低 $b$ 位余数，从而快速计算加入一位的总成本。",
+          "当预算达到所有元素升至 $2^{20}$ 的总成本 $S$ 后，先统一达到 $2^{20}$，剩余预算平均分配，每个元素增加的部分为 $\\lfloor (k-S)/n\\rfloor$。"
+        ],
+        "solution_brief": "先处理 $k\\ge S$ 的情形；否则对每个查询从高位到低位尝试加入当前位，利用子掩码计数和低位余数和计算总增量，预算足够则保留。预处理通过 SOS DP 完成，单次查询为 $O(\\log A)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，并参考 bitmasks、dp、greedy 标签。",
+        "quality_flags": []
+      }
+    },
+    "1903D1": {
+      "problem_key": "1903D1",
+      "title": "Maximum And Queries (easy version)",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1903/problem/D1",
+      "editorial_url": "https://codeforces.com/blog/entry/122820",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "ad93b22668752fe59ecf574b2aa46263d04962396bc1aa258ba0516ffab47901",
+      "generated_at": "2026-09-24T06:31:35+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组和预算 $k$，一次操作可任选一个元素并将其加 $1$，最多进行 $k$ 次；操作后数组所有元素取按位与，要求最大化该结果。对每个独立的 $k_i$ 查询分别求最大可能的按位与。",
+        "transformed_statement": "把目标按二进制位从高到低构造：当前答案包含哪些高位，就要求每个数组元素都通过增加操作满足这些位。对新尝试的位，计算所有元素提升到该位为 $1$ 的最小总成本，并用预算判断是否可加入。",
+        "key_observations": [
+          "按位从高到低尝试加入答案位；高位一旦可行就必须保留，因为任何低位组合都无法弥补高位价值。",
+          "若当前考虑的第 $b$ 位在 $a_i$ 中为 $0$，把它增加到下一个该位为 $1$ 的数，所需操作数为 $2^b-(a_i\\bmod 2^b)$。",
+          "每次只在所有元素达到当前候选按位与所需总增量不超过预算时提交该位，并同步更新数组和剩余预算，因此后续判断始终建立在已选高位之上。"
+        ],
+        "solution_brief": "对每个查询独立处理，从第 $60$ 位到第 $0$ 位贪心构造答案。尝试打开当前位，逐个计算把对应元素提升到该位为 $1$ 所需的增量；总增量不超过 $k$ 就执行并扣除预算，否则跳过。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text，以及 tags 中的 bitmasks、greedy 信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "1903C": {
+      "problem_key": "1903C",
+      "title": "Theofanis' Nightmare",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1903/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/122820",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "34c1b7b6b78baf13b7f69e39b235bcffa5fe358903b5ab5eff2f32b19aff8155",
+      "generated_at": "2026-09-24T06:32:22+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个数组，需要将其划分成若干个连续、非空且覆盖全部元素的子数组。按从左到右的编号，将第 $i$ 个子数组的元素和乘以 $i$ 后求和，要求通过选择切分位置使该总值最大。",
+        "transformed_statement": "把每个切分后的子数组起点视为一个被选位置；原加权和等价于所有被选起点的后缀和之和，其中位置 $1$ 强制被选，其余位置可任意选择。于是问题转化为选取所有正后缀和对应的位置。",
+        "key_observations": [
+          "设每个子数组的起点为 $L_i$，则加权和等于所有这些起点对应后缀和之和：后缀中的每个元素恰好被前面及当前的 $j$ 个起点计数，因此其系数正好是所在子数组编号 $j$。",
+          "位置 $1$ 必须作为第一个子数组起点，而任意其他位置都可以独立选择为新子数组起点；因此每个 $suf_i$（$i>1$）是否加入不会受到其他位置影响。",
+          "由于各个可选后缀和独立贡献，正后缀和应当加入、负后缀和应当舍弃，零后缀和是否作为切分点不影响答案，从而贪心选择得到最优划分。"
+        ],
+        "solution_brief": "从右向左维护后缀和。答案初始包含整个数组的后缀和 $suf_1$，之后对每个位置 $i>1$，若当前 $suf_i>0$ 就加入答案；同时可据此在这些位置前切分。每个测试用例线性处理。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的连续非空子数组划分与加权求和定义，以及完整 editorial 的后缀和贪心结论；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1903B": {
+      "problem_key": "1903B",
+      "title": "StORage room",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1903/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/122820",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "e5095307d700950ab8a4a4918e691634e9b2c94c21904c1d80886cd9ba6eaca9",
+      "generated_at": "2026-09-24T06:33:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个对称的 $n\\times n$ 非负整数表 $M$，其中对角线为 $0$，需要构造数组 $a$，使每个不同下标对满足 $a_i|a_j=M_{i,j}$。若不存在这样的数组输出 NO，否则输出任意一个满足条件的数组。",
+        "transformed_statement": "把约束拆成独立的二进制位：某位只要在任意关联的 $M_{i,j}$ 中为 $0$，就必须从对应的 $a_i$ 或 $a_j$ 中清除；先构造保守候选，再用全部配对约束验证。",
+        "key_observations": [
+          "对每个二进制位，若某个 $M_{i,j}$ 不含该位，则 $a_i$ 和 $a_j$ 都不能含该位；因此可把所有候选初始为全 1，再按所有相邻表值共同清除位。",
+          "将每个 $M_{i,j}$ 同时与 $a_i$、$a_j$ 做按位与，得到的是满足所有相关约束时每个 $a_i$ 能保留的最大候选值。",
+          "候选数组不能保证一定存在解，必须逐对检查 $a_i|a_j=M_{i,j}$；检查失败说明至少有一个二进制位的约束无法同时满足。"
+        ],
+        "solution_brief": "将所有 $a_i$ 初始化为 $2^{30}-1$，遍历每对下标并令 $a_i$、$a_j$ 分别与 $M_{i,j}$ 按位与。最后检查所有 $a_i|a_j$ 是否等于对应表值，全部成立则输出数组，否则输出 NO。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 的矩阵约束、editorial 的构造与证明，以及 tags 中的位掩码和构造信息。",
+        "quality_flags": [
+          "statement_formula在原文中缺失，但由题解中的校验式确定"
+        ]
+      }
+    },
+    "1903A": {
+      "problem_key": "1903A",
+      "title": "Halloumi Boxes",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1903/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/122820",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "686dc947928ad27ba8636f4037635db69f2468e669570d8b9726ba3249db7941",
+      "generated_at": "2026-09-24T06:34:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $n$ 的数组，每次可以选择一个长度不超过 $k$ 的连续子数组并将其反转，操作次数不限。判断能否通过这些操作把整个数组变为非递减序列。",
+        "transformed_statement": "可行性只取决于 $k$ 是否至少为 $2$：此时长度为 $2$ 的反转就是交换相邻元素，能够实现任意排序；否则数组无法改变。",
+        "key_observations": [
+          "当 $k\\ge 2$ 时，可以反转长度为 $2$ 的连续子数组，这等价于交换任意相邻元素；因此通过相邻交换总能将数组排序。",
+          "当 $k=1$ 时，每次操作只能反转单个元素，数组内容不会发生变化，所以只有原数组已经非递减时才可行。"
+        ],
+        "solution_brief": "若 $k>1$，长度为 $2$ 的反转可以实现任意相邻交换，因此答案恒为 YES；若 $k=1$，只能检查数组是否已经非递减。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的反转操作定义和 editorial_text 的关键结论，结合题目标签整理。",
+        "quality_flags": []
       }
     }
   }
