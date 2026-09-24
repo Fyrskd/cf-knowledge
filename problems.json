@@ -3218,6 +3218,7 @@
     "index": "G",
     "name": "The 67th Iteration of \"Counting is Fun\"",
     "type": "PROGRAMMING",
+    "rating": 1800,
     "tags": [
       "implementation",
       "math"
@@ -3228,6 +3229,7 @@
     "index": "F",
     "name": "The 67th Tree Problem",
     "type": "PROGRAMMING",
+    "rating": 1500,
     "tags": [
       "constructive algorithms",
       "implementation",
@@ -3239,6 +3241,7 @@
     "index": "E",
     "name": "The 67th XOR Problem",
     "type": "PROGRAMMING",
+    "rating": 1200,
     "tags": [
       "binary search",
       "bitmasks",
@@ -3250,6 +3253,7 @@
     "index": "D",
     "name": "The 67th OEIS Problem",
     "type": "PROGRAMMING",
+    "rating": 1100,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -3262,6 +3266,7 @@
     "index": "C",
     "name": "The 67th Permutation Problem",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "constructive algorithms",
       "greedy",
@@ -3273,6 +3278,7 @@
     "index": "B",
     "name": "The 67th 6-7 Integer Problem",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "greedy",
       "math"
@@ -3283,6 +3289,7 @@
     "index": "A",
     "name": "The 67th Integer Problem",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "brute force",
       "games",
@@ -3296,6 +3303,7 @@
     "name": "Closer",
     "type": "PROGRAMMING",
     "points": 3750.0,
+    "rating": 2600,
     "tags": [
       "dfs and similar",
       "dp",
@@ -3308,6 +3316,7 @@
     "name": "Down the Pivot",
     "type": "PROGRAMMING",
     "points": 3250.0,
+    "rating": 2500,
     "tags": [
       "combinatorics",
       "dp",
@@ -3321,6 +3330,7 @@
     "name": "Interval Game",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 2400,
     "tags": [
       "bitmasks",
       "combinatorics",
@@ -3338,6 +3348,7 @@
     "name": "Definitely Larger",
     "type": "PROGRAMMING",
     "points": 2000.0,
+    "rating": 2100,
     "tags": [
       "binary search",
       "constructive algorithms",
@@ -3353,6 +3364,7 @@
     "name": "Flip the Bit (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1500.0,
+    "rating": 1900,
     "tags": [
       "greedy",
       "implementation",
@@ -3365,6 +3377,7 @@
     "name": "Grid Covering",
     "type": "PROGRAMMING",
     "points": 1500.0,
+    "rating": 1300,
     "tags": [
       "chinese remainder theorem",
       "math",
@@ -3377,6 +3390,7 @@
     "name": "Flip the Bit (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1000,
     "tags": [
       "greedy",
       "implementation"
@@ -3388,6 +3402,7 @@
     "name": "The Equalizer",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "math"
     ]
@@ -3418,6 +3433,7 @@
     "name": "Maze",
     "type": "PROGRAMMING",
     "points": 5000.0,
+    "rating": 3500,
     "tags": [
       "trees"
     ]
@@ -3428,6 +3444,7 @@
     "name": "Research",
     "type": "PROGRAMMING",
     "points": 4000.0,
+    "rating": 3500,
     "tags": [
       "games"
     ]
@@ -3438,6 +3455,7 @@
     "name": "Star Map",
     "type": "PROGRAMMING",
     "points": 3000.0,
+    "rating": 2700,
     "tags": [
       "constructive algorithms",
       "data structures",
@@ -3452,6 +3470,7 @@
     "name": "EXPloration, EXPloitation, and Gain Some EXPerience!",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 2800,
     "tags": [
       "bitmasks",
       "brute force",
@@ -3466,6 +3485,7 @@
     "name": "Oriented Journey",
     "type": "PROGRAMMING",
     "points": 1750.0,
+    "rating": 2200,
     "tags": [
       "bitmasks",
       "brute force",
@@ -3482,6 +3502,7 @@
     "name": "RReeppeettiittiioonn",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 2000,
     "tags": [
       "binary search",
       "brute force",
@@ -3496,6 +3517,7 @@
     "name": "Interval Mod",
     "type": "PROGRAMMING",
     "points": 750.0,
+    "rating": 1700,
     "tags": [
       "constructive algorithms",
       "dp",
@@ -3609,6 +3631,7 @@
     "name": "Median Deletion",
     "type": "PROGRAMMING",
     "points": 4000.0,
+    "rating": 3500,
     "tags": []
   },
   {
@@ -3617,6 +3640,7 @@
     "name": "Rational Bubble Sort",
     "type": "PROGRAMMING",
     "points": 3250.0,
+    "rating": 3100,
     "tags": [
       "constructive algorithms",
       "geometry",
@@ -3629,6 +3653,7 @@
     "name": "Learning Binary Search",
     "type": "PROGRAMMING",
     "points": 3000.0,
+    "rating": 2400,
     "tags": [
       "combinatorics",
       "divide and conquer",
@@ -3642,6 +3667,7 @@
     "name": "Minimum Path Cover",
     "type": "PROGRAMMING",
     "points": 2500.0,
+    "rating": 2500,
     "tags": [
       "brute force",
       "dp",
@@ -3658,6 +3684,7 @@
     "name": "AND-array",
     "type": "PROGRAMMING",
     "points": 2000.0,
+    "rating": 1900,
     "tags": [
       "bitmasks",
       "combinatorics",
@@ -3670,6 +3697,7 @@
     "name": "Equal Multisets (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1800,
     "tags": [
       "constructive algorithms",
       "dsu",
@@ -3722,6 +3750,7 @@
     "name": "A Simple Problem",
     "type": "PROGRAMMING",
     "points": 3500.0,
+    "rating": 2800,
     "tags": [
       "binary search",
       "data structures",
@@ -3736,6 +3765,7 @@
     "name": "Binary Strings are Simple?",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 2700,
     "tags": [
       "constructive algorithms",
       "implementation",
@@ -3749,6 +3779,7 @@
     "name": "A Simple RBS Problem",
     "type": "PROGRAMMING",
     "points": 2250.0,
+    "rating": 2100,
     "tags": [
       "constructive algorithms",
       "math",
@@ -3762,6 +3793,7 @@
     "name": "A Simple GCD Problem (Hard Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 2100,
     "tags": [
       "dp",
       "greedy",
@@ -3774,6 +3806,7 @@
     "name": "A Simple GCD Problem (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 1200,
     "tags": [
       "greedy",
       "number theory"
@@ -3785,6 +3818,7 @@
     "name": "Simply Sitting on Chairs",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 900,
     "tags": [
       "data structures",
       "greedy"
@@ -3796,6 +3830,7 @@
     "name": "A Simple Sequence",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "constructive algorithms",
       "dp",

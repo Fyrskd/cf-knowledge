@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1578,
+    "total_problems": 1584,
     "source_total_problems": 1749,
-    "filtered_out_problems": 171,
-    "with_statement_brief": 1578,
-    "with_editorial_brief": 1346,
-    "with_solution_brief": 1347,
+    "filtered_out_problems": 165,
+    "with_statement_brief": 1584,
+    "with_editorial_brief": 1352,
+    "with_solution_brief": 1353,
     "missing_editorial_brief": 231,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 516,
+    "ai_override_count": 522,
     "primary_topic_count": 13
   },
   "records": [
@@ -18831,6 +18831,269 @@
           "model": "gpt-6-luna",
           "generated_at": "2026-09-24T06:05:42+00:00",
           "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 452,
+      "problem_key": "1900A",
+      "contest_id": 1900,
+      "title": "Cover in Water",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1900/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/122677",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "字符串",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "strings"
+      ],
+      "statement_brief": "给定由空格和障碍组成的一排格子，手动操作可以给空格注水；若某个空格两侧已有水，它会自动注水。求让所有空格最终有水所需的最少手动操作次数，障碍格不能注水。",
+      "transformed_statement": "问题等价于判断字符串中是否存在连续三个空格：存在时可用两次手动注水启动自动扩展，否则自动规则无法启动，每个空格都要单独处理。",
+      "key_observations": [
+        "若连续出现三个空格 `...`，只需先用两次手动操作建立两端水，中央格会自动补水；随后借助水的移动可覆盖该段及其余空格，因此答案直接降为 $2$。",
+        "若不存在 `...`，自动规则永远无法形成可连续扩展的水域，每个空格都必须单独进行一次手动填水，答案就是空格数量。",
+        "因此只需在线性扫描字符串时判断是否包含 `...`；一旦找到即可输出 $2$，否则统计 `.` 的个数。"
+      ],
+      "solution_brief": "扫描字符串并统计空格数量。若存在连续三个 `.`，利用两次手动操作和自动补水覆盖全部空格，输出 $2$；否则输出 `.` 的数量，复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T06:26:52+00:00",
+          "quality_flags": [
+            "statement_text_truncated_at_end"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 453,
+      "problem_key": "1900B",
+      "contest_id": 1900,
+      "title": "Laura and Operations",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1900/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/122677",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "dp",
+        "math"
+      ],
+      "statement_brief": "棋盘上有数量分别为 $a,b,c$ 的数字 $1,2,3$。每次选择两种不同数字并擦除各一个，再写入第三种数字；问经过若干次操作后，是否可能只剩一种数字，并分别判断只剩 $1$、只剩 $2$、只剩 $3$ 的可行性。",
+      "transformed_statement": "把操作抽象为三类数量的变化：选中的两类各减一，未选中的一类加一。问题转化为判断为了让目标之外的两类都变为零，它们的奇偶关系是否满足不变量。",
+      "key_observations": [
+        "一次操作会让三种数字的数量分别同时加减 $1$：被选的两类各减 $1$，剩余的一类加 $1$，因此三个数量的奇偶性都会翻转，但任意两者是否同奇偶保持不变。",
+        "若最终只剩数字 $1$，则数字 $2$、$3$ 的数量必须同时变为 $0$，所以它们初始奇偶性必须相同；反之该条件也足够，答案可由构造得到。",
+        "当 $b,c$ 同奇偶时，先反复消去一个 $2$ 和一个 $3$ 并补入 $1$；若剩余的某类数量为偶数，再用两步操作每次减少该类 $2$ 个，从而最终只留下 $1$。"
+      ],
+      "solution_brief": "对每个目标数字，检查另外两类数量是否同奇偶。若同奇偶则可行，否则不可行；分别判断 $(b,c)$、$(a,c)$、$(a,b)$，输出三个结果，复杂度为 $O(1)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T06:25:15+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 454,
+      "problem_key": "1900C",
+      "contest_id": 1900,
+      "title": "Anji's Binary Tree",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1900/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/122677",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "dfs and similar",
+        "dp",
+        "trees"
+      ],
+      "statement_brief": "给定一棵以 1 号节点为根的二叉树，每个节点标有 `U`、`L` 或 `R`。从根向下走到任意叶子时，按当前节点指示方向可免费移动，否则需用一次操作调整方向，求到达叶子的最少操作次数。",
+      "transformed_statement": "把每个节点到左、右孩子的移动分别建成带权边：字符正好指向该方向时权重为 $0$，否则为 $1$。问题等价于求根到所有叶子的最小加权路径长度。",
+      "key_observations": [
+        "把从节点走向左、右孩子分别看成一条边：若当前字符与方向一致，边权为 $0$；否则需一次操作，边权为 $1$，因此字符影响被统一为边权。",
+        "树中根到任意节点的路径唯一，所以到达某个叶子的最少操作数就是该路径边权之和，无需考虑重复走路或全局状态。",
+        "对每个节点维护从根到它的加权距离并向子节点转移，所有叶子距离的最小值就是答案，遍历一次即可覆盖全部候选路径。"
+      ],
+      "solution_brief": "将节点字符转成边权：匹配左/右方向的边权为 $0$，不匹配的边权为 $1$。从根 DFS 计算加权距离，取所有叶子的最小距离；总复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T06:24:14+00:00",
+          "quality_flags": [
+            "statement_text截断"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 455,
+      "problem_key": "1900D",
+      "contest_id": 1900,
+      "title": "Small GCD",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1900/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/122677",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "dp",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定数组，任选三个不同位置 $i<j<k$，将对应三个数按非降序排列，只取其中两个较小数的最大公约数，忽略最大数。要求对所有三元组的该函数值求和。",
+      "transformed_statement": "先将数组整体排序，把每个三元组表示为位置 $p<q<r$；固定约数 $d$，统计前两项都被 $d$ 整除的三元组数，即函数值为 $d$ 的倍数，再通过倍数关系还原精确最大公约数计数。",
+      "key_observations": [
+        "将数组排序后，任意三元素都可按位置写成 $a_p\\le a_q\\le a_r$，因此只需把 $a_q$ 作为被忽略的最大值与中间值来计数。",
+        "固定 $d$ 时，三元组的函数值是 $d$ 的倍数，当且仅当两个较小元素都能被 $d$ 整除；枚举中间位置 $q$，左侧可整除元素数乘右侧任意元素数即可得到该数量。",
+        "先统计函数值为 $d$ 的倍数的三元组数，再按 $d$ 从大到小减去所有 $2d,3d,\\ldots$ 的精确计数，就能还原函数值恰为 $d$ 的三元组数。",
+        "每个数的约数数量最多为 $128$，因此只需把每个元素加入其约数对应的列表，并在各列表中统计左侧数量，整体计数可控制在约 $128n$。"
+      ],
+      "solution_brief": "排序数组并为每个约数 $d$ 收集可被其整除的元素位置。枚举中间位置，统计左侧可被 $d$ 整除的元素数与右侧元素数之积，得到函数值为 $d$ 倍数的三元组数；再按倍数关系从大到小容斥扣除，最后计算各精确计数乘以 $d$ 的总和。复杂度为 $O(M\\log M+n\\log n+128n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T06:22:52+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 456,
+      "problem_key": "1900E",
+      "contest_id": 1900,
+      "title": "Transitive Graph",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1900/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/122677",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "动态规划与状态设计"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "dp",
+        "dsu",
+        "graphs",
+        "implementation"
+      ],
+      "statement_brief": "给定带有顶点权值的有向图 G，将图反复补边形成传递闭包 H：只要两点间存在有向路径，就视为存在直接边。对 H 中由互不相同顶点组成的简单路径，长度是顶点数、值是顶点权值之和；要求输出最长路径的长度，以及所有最长路径中的最小值。",
+      "transformed_statement": "把 G 的每个强连通分量压缩为一个节点，节点大小为分量顶点数、节点权为分量内权值和；在由此得到的凝聚 DAG 上寻找大小总和最大的路径，并在并列时最小化权值总和。",
+      "key_observations": [
+        "传递闭包会使每个强连通分量内部任意两点互达，且原图中分量间的一条边扩展为两个分量之间的完全有向连接。",
+        "若一条最长路径进入某个强连通分量，就能利用内部完全互达性经过该分量的全部顶点，因此可把整个分量视为一个带大小和点权的节点。",
+        "将强连通分量缩成点后得到 DAG；路径长度变为经过分量大小之和，路径点值变为分量点权之和，从而可按拓扑序维护“最长长度及其最小点值”。",
+        "传递闭包中的跨分量跳跃不会带来额外的最优性：若中间存在可继续经过的分量，按凝聚 DAG 的路径顺序加入即可，因此只需在凝聚图上做路径 DP。"
+      ],
+      "solution_brief": "先求原图的 SCC，并将每个分量缩成节点，记录其顶点数与点权和，得到凝聚 DAG。按拓扑序计算到达各节点的最长路径长度；长度相同时取点权和更小者，所有入度为零的分量作为起点。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T06:21:52+00:00",
+          "quality_flags": [
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 457,
+      "problem_key": "1900F",
+      "contest_id": 1900,
+      "title": "Local Deletions",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1900/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/122677",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "implementation"
+      ],
+      "statement_brief": "给定一个排列，每次操作依次删除当前数组中的所有局部极大值、所有局部极小值，交替进行直到只剩一个数；对每个区间 $[l,r]$，求子数组 $[a_l,\\ldots,a_r]$ 按同样规则最终留下的元素。",
+      "transformed_statement": "把完整排列在每轮删除后的结果视为多层数组。一个查询等价于在某层取连续区间并补上左右边界；除端点外的元素可直接映射到下一层的连续区间，端点影响单独处理后继续递推。",
+      "key_observations": [
+        "交替删除当前数组中的所有局部极大值和局部极小值后，数组规模按常数比例缩小，因此只需保存 $O(\\log n)$ 层数组。",
+        "向层末尾加入一个元素时，只有原末端附近至多一个局部极值的判定会改变，因此可以把变化逐层传播，而不必重建整层。",
+        "对某层的子数组补上左右两个边界后，其中间元素的删除过程与整数组相同，会对应到下一层的一个连续区间，从而将查询规模缩小约一半。",
+        "补入左边界与首元素、末元素与右边界时，各自至少会发生一次删除；因此端点影响可以在每层常数时间内并入下一层查询。"
+      ],
+      "solution_brief": "预处理整个位数组在交替删除局部极大值、局部极小值后的各层，并维护元素在相邻层的区间对应关系。查询时将区间视为带左右边界的层内子数组：规模较小时直接模拟，否则依据端点删除和中间元素映射递推到下一层，最多递推 $O(\\log n)$ 层；总复杂度为 $O(n+q\\log n)$，或使用二分定位时为 $O(n+q\\log^2 n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-24T06:20:37+00:00",
+          "quality_flags": [
+            "statement_truncated"
+          ]
         }
       },
       "manual_override": false,
