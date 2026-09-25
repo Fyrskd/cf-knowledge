@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-24T17:54:19+00:00",
+  "updated_at": "2026-09-25T04:50:20+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -20724,6 +20724,187 @@
         "quality_flags": [
           "statement_operation_recovered_from_editorial"
         ]
+      }
+    },
+    "1973F": {
+      "problem_key": "1973F",
+      "title": "Maximum GCD Sum Queries",
+      "rating": 3100,
+      "problem_url": "https://codeforces.com/contest/1973/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/129556",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "a99597b44c4376aa0f04ad569f5cfa9018e95cd9be3bb6d7e9814b004447c491",
+      "generated_at": "2026-09-25T04:42:45+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定三个长度为 $n$ 的正整数数组 $a,b,c$；每个位置可交换 $a_i,b_i$，代价为 $c_i$，总花费不能超过预算。对每个预算查询，求交换后两数组整体最大公约数之和的最大值。",
+        "transformed_statement": "把一次预算查询改写为：枚举最终两组最大公约数 $(X,Y)$，要求每个位置通过原顺序或付费交换后都同时被 $X,Y$ 整除，并求达到该条件的最小费用；再在所有约数对中取 $X+Y$ 最大者。",
+        "key_observations": [
+          "固定第 1 个位置不交换时，两组最终最大公约数分别只能是 $a_1$、$b_1$ 的约数，因此候选状态压缩为两个约数的配对。",
+          "对每个位置分别记录“不交换可满足”和“交换可满足”的约数条件；两种条件同时成立时用容斥撤销交换费用，避免重复计数。",
+          "若某约数对能覆盖一个位置，则它的任意约数对也能覆盖该位置，因此可用二维约数和变换汇总所有兼容位置及其最小费用。",
+          "预处理每个约数对的最大和与所需费用后，将候选按费用排序；每次查询只需在预算内取最大值，并额外处理第 1 位交换的情形。"
+        ],
+        "solution_brief": "固定第 1 位不交换，枚举 $a_1,b_1$ 的约数对，用三种情况及容斥统计覆盖全部位置的最小交换费，再做二维约数和变换。预处理候选后排序回答查询，并对第 1 位交换再运行一次。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 提炼，结合 statement_text 与 number theory、dp、bitmasks 标签核对主题。",
+        "quality_flags": []
+      }
+    },
+    "1973E": {
+      "problem_key": "1973E",
+      "title": "Cat, Fox and Swaps ",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1973/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/129556",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "e12c82cedaf6886b5443a3bd1317e982a805a7664aa73f290d6d20af97dc9c62",
+      "generated_at": "2026-09-25T04:44:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $1$ 到 $n$ 的排列，允许任意次交换两个数值为 $x,y$ 的元素，但必须满足 $l\\le x+y\\le r$，其中 $1\\le l\\le r\\le2n$。要求统计有多少组 $(l,r)$ 能把排列排成递增序列。",
+        "transformed_statement": "把可交换关系按元素数值而非位置分析：先单独处理只能交换互补数值的 $l=r$，再对未排序排列取最小和最大错位位置 $L,R$，将可行性等价为两个边界条件 $l\\le L+n$、$r\\ge R+1$。",
+        "key_observations": [
+          "当 $l=r$ 时，数值 $x$ 只能与唯一的 $l-x$ 交换；因此每个错位位置 $i$ 都要求 $l=i+p_i$，不同和的数量直接决定对角线方案数。",
+          "若排列未排序，令 $L$、$R$ 分别为最小和最大的错位下标；要让它们能参与交换，必须满足 $l\\le L+n$ 且 $R+1\\le r$。",
+          "在上述不等式成立且 $l<r$ 时，对任意 $X\\in[L,R-1]$ 都能找到可用中间值，使两次交换等价于交换 $X$ 与 $X+1$，因此可逐步修正整个错位区间。",
+          "排列已排好时无需操作，所有 $1\\le l\\le r\\le2n$ 都有效；未排序时分别统计满足边界不等式的非对角线区间对，再加上对角线情况。"
+        ],
+        "solution_brief": "先处理 $l=r$：收集所有错位位置的 $i+p_i$，不同值超过一个则无解，恰一个则贡献 $1$，没有错位则贡献 $2n$。未排序时求最小、最大错位位置 $L,R$，统计 $l\\le L+n$、$r\\ge R+1$ 且 $l<r$ 的合法对；这些条件既必要又充分，整体为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "组合计数与概率",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text，并参考 graphs、math、sortings 标签。",
+        "quality_flags": []
+      }
+    },
+    "1973D": {
+      "problem_key": "1973D",
+      "title": "Cat, Fox and Maximum Array Split",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1973/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/129556",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "b4ff424dc38e9ef529757f36a5077123798e136074614684a8113e180dccd1fe",
+      "generated_at": "2026-09-25T04:45:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "隐藏数组长度为 $n$，元素在 $[1,n]$ 内。每次可给出起点 $l$ 和目标值 $x$，交互器返回最小的 $r$ 使区间 $[l,r]$ 的长度乘最大值等于 $x$，不存在则返回 $n+1$；最多询问 $2n$ 次。要求将数组恰好划分成 $k$ 个连续非空子数组，使各段的该乘积相同，并求这个公共值的最大值，无解输出 $-1$。",
+        "transformed_statement": "把答案限制为全局最大值 $mx$ 的倍数，并把每个候选公共值 $m$ 的验证转化为：从左端开始逐段寻找最短区间使“长度乘区间最大值”为 $m$，看能否恰好完成 $k$ 段且终点为 $n$。",
+        "key_observations": [
+          "全数组最大值为 $mx$ 时，包含该元素的分段满足 $m$ 是 $mx$ 的倍数，因此候选仅为 $mx,2mx, ldots,nmx$。",
+          "查询 $f(1,n\\cdot i)$，恰好当 $i=mx$ 时返回位置 $n$，所以可用至多 $n$ 次查询确定全数组最大值。",
+          "每个分段的长度至少为 $m/mx$，共有 $k$ 段且总长度为 $n$，故 $k\\cdot m/mx\\le n$，只需检查前 $\\lfloor n/k\\rfloor$ 个候选倍数。",
+          "固定候选 $m$ 后，从当前位置开始反复询问最小的 $r$ 使 $f(l,r)=m$，将下一段起点设为 $r+1$；恰好得到 $k$ 段并覆盖到 $n$ 即为可行。"
+        ],
+        "solution_brief": "先用 $n$ 次查询确定全数组最大值 $mx$，再枚举不超过 $mx\\lfloor n/k\\rfloor$ 的倍数。对每个候选值从左到右用至多 $k$ 次查询贪心确定各段终点，检查能否恰好分成 $k$ 段；总查询数不超过 $2n$。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "构造与贪心",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题解正文、题面中的交互规则及标签信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "1973C": {
+      "problem_key": "1973C",
+      "title": "Cat, Fox and Double Maximum",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1973/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/129556",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "6985451c9c65ecd0428345954f44a5b4c033e27b2213aeb248c2a2c485088317",
+      "generated_at": "2026-09-25T04:48:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定偶数长度的排列 $p$，构造另一个排列 $q$，令 $a_i=p_i+q_i$。一次局部极大值指满足 $1<i<n$ 且 $a_i$ 严格大于左右相邻元素的位置，要求输出使局部极大值数量最多的任意 $q$。",
+        "transformed_statement": "把位置按奇偶分组，目标转化为让除一个端点外的某一类位置全部成为局部极大值；通过给该类位置分配较大的 $q_i$、另一类分配较小的 $q_i$，将两类的和分开。",
+        "key_observations": [
+          "局部极大值不能出现在两端，且相邻位置不可能同时成为局部极大值，因此总数上界是 $\\frac n2-1$。",
+          "若 $n$ 位于奇数位置，把较大的后半段数分配给奇数位、较小的前半段数分配给偶数位，并在各自位置上让较小的 $p_i$ 获得较大的 $q_i$，可使除首位外所有奇数位都成为局部极大值。",
+          "上述构造达到 $\\frac n2-1$ 个局部极大值，因而必然最优；当 $n$ 位于偶数位置时，反转数组后应用同一构造即可。"
+        ],
+        "solution_brief": "先用端点和相邻限制得到上界 $\\frac n2-1$。根据 $n$ 所在位置的奇偶性，把 $q$ 的大数和小数分别放到两类位置，并按 $p_i$ 反向匹配；若 $n$ 在偶数位则反转处理。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text、题目标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1973B": {
+      "problem_key": "1973B",
+      "title": "Cat, Fox and the Lonely Array",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1973/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/129556",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "f4b3cf74f3bea3d29dd1be503637eb649cb55cfdf8710dec368958f66e1d5242",
+      "generated_at": "2026-09-25T04:49:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个非负整数数组，长度为 $k$ 的每个连续子数组都计算按位或。求最小的正整数 $k$，使所有长度为 $k$ 的子数组按位或结果完全相同。",
+        "transformed_statement": "把答案转化为判定问题：检查固定长度 $k$ 的所有窗口按位或是否一致。该判定具有单调性，并可用按位计数维护滑动窗口。",
+        "key_observations": [
+          "若长度为 $k$ 的所有窗口按位或都相同，则相邻两个长度 $k+1$ 窗口的按位或也相同，因此 $k$ 可行会推出 $k+1$ 可行。",
+          "固定 $k$ 后，用每一位在当前窗口中的出现次数维护窗口按位或；移出或加入元素只需更新各位计数，从而以 $O(n\\log A)$ 检查可行性。",
+          "可行性关于 $k$ 单调，最小可行长度可通过二分确定，整体复杂度为 $O(n\\log A\\log n)$。"
+        ],
+        "solution_brief": "利用“$k$ 可行则 $k+1$ 可行”的单调性二分答案。检查某个 $k$ 时，用滑动窗口维护各二进制位出现次数，据此比较所有窗口的按位或。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial；算法细节、单调性和复杂度来自 editorial，题目定义来自 statement。",
+        "quality_flags": []
+      }
+    },
+    "1973A": {
+      "problem_key": "1973A",
+      "title": "Chess For Three",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1973/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/129556",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "55e1d8c57a2fe50e8a8258327d404780ff330f06070ae58fd048ba6a2f158691",
+      "generated_at": "2026-09-25T04:50:20+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "三名玩家进行任意场数的两人国际象棋比赛：胜者得 $2$ 分、败者得 $0$ 分，和棋双方各得 $1$ 分；同一对玩家可以比赛任意非负次数，也可以一场不进行。给定按非递减顺序排列的最终分数 $p_1,p_2,p_3$，求可能出现的最多和棋数；若这些分数无法由合法比赛产生则输出 $-1$。",
+        "transformed_statement": "把每场比赛拆成对总分和各玩家得分的贡献：和棋同时给两名对手各 $1$ 分，胜负则只给胜者 $2$ 分。最大和棋数等于总分上界 $(p_1+p_2+p_3)/2$ 与前两名得分上界 $p_1+p_2$ 的较小值，但总分为奇数时不可行。",
+        "key_observations": [
+          "每场比赛都会让三人的总分增加 $2$，因此总分为奇数时不可能由任何比赛结果得到，答案必为 $-1$。",
+          "设所有比赛都以和棋结束，则和棋总数不超过总分上界 $(p_1+p_2+p_3)/2$；同时每场和棋至少给前两名中的一人贡献 $1$ 分，因此和棋数不超过 $p_1+p_2$。",
+          "当总分为偶数时，上述两个上界中的较小值一定可以通过安排不同玩家间的和棋并用必要的胜负补足分数来达到，所以答案为这两个上界的最小值。"
+        ],
+        "solution_brief": "先判断 $p_1+p_2+p_3$ 是否为奇数，若是则输出 $-1$；否则答案为 $\\min((p_1+p_2+p_3)/2,\\ p_1+p_2)$。也可按题解提示枚举三对玩家的和棋次数并检查剩余分数。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的比赛计分规则与 editorial_text 的枚举方案及 $O(1)$ 结论，tags 仅用于辅助主题归类。",
+        "quality_flags": []
       }
     }
   }
