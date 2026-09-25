@@ -42,6 +42,31 @@ class DynamicTutorialTests(unittest.TestCase):
             )
         self.assertEqual([item["id"] for item in result], [2262])
 
+    def test_contest_window_includes_icpc_scored_codeforces_rounds_only(self) -> None:
+        contests = [
+            {
+                "id": 2266,
+                "type": "ICPC",
+                "phase": "FINISHED",
+                "startTimeSeconds": 1_790_001_300,
+                "name": "Codeforces Round 1122 (Div. 3)",
+            },
+            {
+                "id": 2206,
+                "type": "ICPC",
+                "phase": "FINISHED",
+                "startTimeSeconds": 1_790_001_300,
+                "name": "2026 ICPC Asia Pacific Championship - Online Mirror",
+            },
+        ]
+        with patch.object(cf, "cf_api", return_value=contests):
+            result = cf.contest_window(
+                object(),
+                datetime(2026, 9, 21, tzinfo=timezone.utc),
+                datetime(2026, 9, 22, tzinfo=timezone.utc),
+            )
+        self.assertEqual([item["id"] for item in result], [2266])
+
     def test_problem_metadata_falls_back_to_contest_standings(self) -> None:
         def fake_cf_api(_fetcher: object, method: str, **params: object) -> dict:
             if method == "problemset.problems":

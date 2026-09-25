@@ -1411,6 +1411,24 @@ def cf_api(fetcher: Fetcher, method: str, **params):
     return obj["result"]
 
 
+def is_codeforces_contest(contest: dict[str, object]) -> bool:
+    """Return whether an API contest belongs to the Codeforces round corpus.
+
+    The API ``type`` field describes the scoring system, not the contest
+    brand.  Div. 3 and Educational Codeforces rounds use ``ICPC`` scoring even
+    though they are still Codeforces contests.  Keep the historical ``CF``
+    entries and admit only clearly Codeforces-branded ``ICPC`` entries so
+    unrelated ICPC regional contests and online mirrors remain excluded.
+    """
+    contest_type = contest.get("type")
+    if contest_type == "CF":
+        return True
+    if contest_type != "ICPC":
+        return False
+    name = str(contest.get("name") or "")
+    return name.startswith(("Codeforces ", "Educational Codeforces "))
+
+
 def contest_window(
     fetcher: Fetcher,
     since: dt.datetime,
@@ -1421,7 +1439,7 @@ def contest_window(
     ans = []
     for c in contests:
         start = c.get("startTimeSeconds")
-        if c.get("type") != "CF" or not start:
+        if not is_codeforces_contest(c) or not start:
             continue
         if contest_id is not None and int(c.get("id", -1)) != contest_id:
             continue
