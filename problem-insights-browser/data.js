@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1764,
+    "total_problems": 1771,
     "source_total_problems": 1771,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1764,
-    "with_editorial_brief": 1533,
-    "with_solution_brief": 1534,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1771,
+    "with_editorial_brief": 1540,
+    "with_solution_brief": 1541,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 705,
+    "ai_override_count": 712,
     "primary_topic_count": 13,
-    "contest_count": 280,
+    "contest_count": 281,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,22 +45,22 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 74,
-    "构造与贪心": 592,
+    "构造与贪心": 595,
     "图论与网络流": 112,
     "动态规划与状态设计": 171,
-    "数论与同余": 160,
-    "组合计数与概率": 139,
-    "数据结构": 142,
+    "数论与同余": 161,
+    "组合计数与概率": 140,
+    "数据结构": 143,
     "几何": 38,
     "树结构": 113,
+    "代数、矩阵与多项式": 17,
     "交互": 74,
     "基础实现与模拟": 69,
-    "博弈": 64,
-    "代数、矩阵与多项式": 16
+    "博弈": 64
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 612,
-    "ai_generated_partial_editorial": 30,
+    "ai_generated_with_editorial": 618,
+    "ai_generated_partial_editorial": 31,
     "missing_editorial": 230,
     "manual_override": 891,
     "statement_derived": 1
@@ -54150,6 +54150,220 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "构造后缀自动机，统计每个状态对应子串的出现次数 $d$。状态覆盖长度区间 $[len(link)+1,len]$，枚举或预处理 $d$ 的因数，计算区间内因数个数并累加 $d$ 乘该数量。",
           "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1792,
+      "name": "Educational Codeforces Round 142 (Rated for Div. 2)",
+      "date": "2023-01-24",
+      "url": "https://codeforces.com/contest/1792",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1792A",
+          "index": "A",
+          "slot": "A",
+          "title": "GamingForces",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1792/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/111835",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 只怪物，第 $i$ 只生命值为 $h_i$。第一种法术可同时使两只指定怪物各减少 $1$ 点生命，第二种法术可使一只指定怪物减少 $2$ 点生命；法术可任意次、任意顺序施放，生命值降至 $0$ 的怪物死亡，要求击杀全部怪物的最少施法次数。",
+          "transformedStatement": "把两种法术视为两种消耗方式：一次第二种法术处理一只怪物的 $2$ 点生命，一次第一种法术同时处理两只怪物各 $1$ 点生命。通过交换两次集中使用第一种法术，可限制其只服务于生命值为 $1$ 的怪物，剩余生命统一按每次减少 $2$ 计算。",
+          "keyObservations": [
+            "对同一只怪物连续施放两次第一种法术时，可改为对它施放一次第二种法术，再用一次第一种法术同时攻击另外两只怪物；总次数不变且伤害不减，因此第一种法术无需在同一只怪物上使用两次。",
+            "所以第一种法术只应攻击生命值为 $1$ 的怪物，并把它们两两配对；这些怪物需要的施法次数为 $\\lceil c/2\\rceil$，其中 $c$ 是生命值为 $1$ 的怪物数量。",
+            "其余怪物只用第二种法术即可分别击杀，生命值为 $h_i$ 的怪物需要 $\\lceil h_i/2\\rceil$ 次，因此答案可按怪物独立累加得到。"
+          ],
+          "solutionBrief": "统计生命值为 $1$ 的怪物数量 $c$，贡献为 $\\lceil c/2\\rceil$；对每个 $h_i>1$ 的怪物加入 $\\lceil h_i/2\\rceil$。遍历数组即可，单组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1792B",
+          "index": "B",
+          "slot": "B",
+          "title": "Stand-up Comedian",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1792/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/111835",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "Eve 有四类笑话：类型 1 两人都喜欢，类型 4 两人都不喜欢，类型 2、3 分别只被其中一人喜欢。她可任意安排讲笑话的顺序；每人喜欢时情绪加一，否则减一，任一人的情绪降到负数就离场，求最多能讲多少个。",
+          "transformedStatement": "把两人的情绪视为同步变化的状态：先用类型 1 建立共同缓冲，再把类型 2、3 配成情绪不变的对，最后将无法配对的笑话视为对某一人的连续消耗，并与类型 4 一起受当前情绪上限约束。",
+          "keyObservations": [
+            "类型 1 的笑话同时让两人的情绪上升，类型 4 同时让两人下降，因此应先使用类型 1、最后使用类型 4，避免无谓地过早触发离场。",
+            "类型 2 和类型 3 对两人的效果相反，交替讲一对不会改变任意一人的情绪，因此最多可安全使用 $2\\min(a_2,a_3)$ 个。",
+            "交替配对后剩余的类型 2、类型 3 与类型 4 都会让同一位观众持续掉情绪，最多还能讲 $\\min(a_1+1,|a_2-a_3|+a_4)$ 个。",
+            "若 $a_1=0$，第一条笑话无论属于哪种类型都会使至少一人的情绪变为负数，所以答案恒为 $1$。"
+          ],
+          "solutionBrief": "先讲完全部类型 1，再交替讲类型 2、3，最后按任意顺序处理剩余类型 2/3 与类型 4。若 $a_1\\ne0$，答案为 $a_1+2\\min(a_2,a_3)+\\min(a_1+1,|a_2-a_3|+a_4)$；否则答案为 $1$，单组复杂度 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1792C",
+          "index": "C",
+          "slot": "C",
+          "title": "Min Max Sort",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1792/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/111835",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列。每次可任选两个不同元素删除，再把较小者插到最前面、较大者插到最后面；求将排列变为升序所需的最少操作次数。",
+          "transformedStatement": "倒推最后一次操作：升序排列的两端必为 $1,n$，所以每次操作都可视为剥离当前数值范围的两个极值。问题转化为寻找原排列中保持相对升序的最大中心数值区间。",
+          "keyObservations": [
+            "最终一次操作必须选取 $1$ 和 $n$，因此可递归剥离两端极值，把问题缩小到中间数值区间。",
+            "若数值区间 $[k,n-k+1]$ 在原排列中的出现顺序递增，则这些数无需操作，答案至多为 $k-1$。",
+            "区间对某个 $k$ 有序时，对更大的 $k$ 也必有序，因此只需从中心向外检查；每次扩展只需比较两端新加入元素的位置。"
+          ],
+          "solutionBrief": "建立每个数在排列中的位置 $pos$，从最大的中心区间开始向外扩展，检查新加入两端的相对位置是否正确；找到最小可行的 $k$ 后答案为 $k-1$，总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1792D",
+          "index": "D",
+          "slot": "D",
+          "title": "Fixed Prefix Permutations",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1792/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/111835",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "data structures",
+            "hashing",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 个长度为 $m$ 的排列。排列乘积 $p\\cdot q$ 定义为第 $j$ 位取 $q_{p_j}$，而 beauty 是从首位开始连续等于 $1,2,\\ldots$ 的最长前缀长度；对每个 $a_i$，求与任意 $a_j$（可取 $i=j$）相乘后能达到的最大 beauty。",
+          "transformedStatement": "对固定排列 $p$，要求 $p\\cdot q$ 的前 $k$ 位为 $1,2,\\ldots,k$，等价于要求 $p$ 与 $q^{-1}$ 的前 $k$ 位相同。因此问题转化为：对每个原排列，查询所有输入排列逆排列中的最长公共前缀。",
+          "keyObservations": [
+            "固定 $p=a_i$ 后，$p\\cdot q$ 的前 $k$ 位为 $1,2,\\ldots,k$ 当且仅当 $p$ 与 $q^{-1}$ 的前 $k$ 位完全相同，从而把乘法条件转成前缀匹配。",
+            "因此每个 $p$ 的答案就是所有给定排列逆排列中，与 $p$ 拥有最长公共前缀的长度，避免了枚举排列对。",
+            "将每个逆排列的所有前缀组织起来后，沿着 $p$ 逐位匹配，首次无法继续的位置即确定最大 beauty。"
+          ],
+          "solutionBrief": "先求出每个排列的逆排列并插入前缀 Trie。对每个原排列沿 Trie 逐位行走，能匹配的最长深度就是答案，因为它等价于与某个逆排列的最长公共前缀。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1792E",
+          "index": "E",
+          "slot": "E",
+          "title": "Divisors and Table",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1792/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/111835",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "number theory"
+          ],
+          "statementBrief": "给定大小为 $n\\times n$ 的乘法表，其中第 $i$ 行第 $j$ 列为 $i\\cdot j$，以及 $m=m_1m_2$。对 $m$ 的每个约数，判断它是否能写成表内两个数的乘积；若能，求包含它的最小行号，最后输出出现的约数数量及所有行号（未出现记为 $0$）的按位异或。",
+          "transformedStatement": "对每个约数 $d$，不直接寻找最小行号，而是先找最大的因子 $y\\mid d$ 且 $y\\le n$；此时另一因子 $x=d/y$ 就是最小可能行号，并检查 $x\\le n$。",
+          "keyObservations": [
+            "将 $m_1,m_2$ 分别质因数分解并合并指数，就能生成 $m$ 的全部约数而无需直接分解可能很大的 $m$。",
+            "对固定约数 $d$，最小行号 $x$ 等价于寻找最大的约数 $y\\mid d$ 且 $y\\le n$，并令 $x=d/y$。",
+            "设 $dp[d]$ 为不超过 $n$ 的最大约数；当 $d>n$ 时，任意候选 $y<d$ 都整除某个 $d/p$，因此可由 $dp[d]=\\max_{p\\mid d}dp[d/p]$ 递推。",
+            "得到最大 $y=dp[d]$ 后，只有当 $d/dp[d]\\le n$ 时该约数出现在表中；统计这些情况并异或对应行号即可。"
+          ],
+          "solutionBrief": "分别分解 $m_1,m_2$ 并生成 $m$ 的约数。按约数递增计算不超过 $n$ 的最大因子 $dp[d]$，令行号为 $d/dp[d]$；若该值不超过 $n$，计数并参与异或。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1792F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Graph Coloring (easy version)",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1792/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/111835",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "graphs"
+          ],
+          "statementBrief": "给定一个 $n$ 个顶点的完全图，把每条边独立染成红色或蓝色。要求不存在一个非平凡顶点集合能同时仅用红边连通、又仅用蓝边连通，求满足条件的染色方案数并对 $998244353$ 取模。",
+          "transformedStatement": "把蓝边图视为红边图的补图；先统计蓝色图连通的合法染色 $B_n$，再按顶点 $1$ 的蓝色连通分量拆分，其余顶点保留为任意合法染色。总答案由红、蓝两种不连通情形的颜色对称性恢复。",
+          "keyObservations": [
+            "若一种颜色形成的图不连通，则其补图（另一种颜色）必连通，因此不可能出现两种颜色都不连通的情况。",
+            "对任意 $n>1$，红色不连通与蓝色不连通的合法染色互为颜色翻转，且两类不重叠，所以总数满足 $A_n=2B_n$。",
+            "按顶点 $1$ 所在的蓝色连通分量大小 $k$ 划分：该分量内部有 $B_k$ 种方案，剩余顶点形成任意合法染色，有 $A_{n-k}$ 种方案。",
+            "选择分量中其余 $k-1$ 个顶点的方案数为 $\\frac{(n-1)!}{(k-1)!(n-k)!}$，从而得到递推并可用 $O(n^2)$ 动态规划计算。"
+          ],
+          "solutionBrief": "令 $B_n$ 表示蓝色图连通且合法的染色数，按顶点 $1$ 的蓝色连通分量大小分解：$B_n=\\sum_{k=1}^{n-1}B_kA_{n-k}\\binom{n-1}{k-1}$。再用 $A_1=B_1$、$A_n=2B_n$，以 $O(n^2)$ 计算所有答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1792F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Graph Coloring (hard version)",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1792/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/111835",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "divide and conquer",
+            "dp",
+            "fft",
+            "graphs"
+          ],
+          "statementBrief": "题目给出一个有 $n$ 个顶点的无向完全图，需要把每条边染成红色或蓝色，并定义顶点集合在某种颜色下连通的条件。给定文本未包含冒号后的具体染色约束，只能确认最终要求统计满足该缺失约束的染色方案数，并对 $998244353$ 取模。",
+          "transformedStatement": "题解将目标答案序列抽象为递推序列 $B$，并通过 $C_i=A_i/i!$、$D_i=B_i/(i-1)!$ 把递推中的双重求和等价改写成 $C,D$ 的卷积；由于新项在线产生，再采用分块卷积与边界补算。",
+          "keyObservations": [
+            "将递推式改写为 $B_n=(n-1)!\\sum_{k=0}^{n}C_{n-k}D_k$ 后，核心求和变成序列 $C,D$ 的卷积，从而可用 NTT 批量计算。",
+            "计算 $B_i$ 时，卷积只覆盖最近一次批处理前已知的 $C,D$；若上次批处理结束于 $t$，剩余未覆盖项满足 $k>t$ 或 $i-k>t$，总数为 $2(i-t)$，因此可以逐项补算。",
+            "每隔 $K$ 次迭代重新计算一次卷积，可将单项补算限制在 $O(K)$；结合约 $n/K$ 次 NTT，复杂度为 $O(n^2\\log n/K+nK)$，取 $K=\\sqrt{n\\log n}$ 得到 $O(n\\sqrt{n\\log n})$。",
+            "题解要求并行生成 $A,B,C,D$，但这些序列的原始定义依赖简单版题解，当前输入未提供，因此无法从现有文本完整还原递推的初始条件和原题约束。"
+          ],
+          "solutionBrief": "题解把 $B_n$ 的递推转成 $C,D$ 的卷积，并用分块重算卷积、逐项补齐新产生的项。每隔 $K$ 次使用 NTT，复杂度为 $O(n^2\\log n/K+nK)$，取 $K=\\sqrt{n\\log n}$。但给定正文缺少 $A_i、B_i$ 的完整定义。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "complete"
         }
       ]

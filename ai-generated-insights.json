@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-26T21:26:56+00:00",
+  "updated_at": "2026-09-26T21:32:33+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -21477,6 +21477,218 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面定义与完整 editorial，tags 仅用于辅助分类。",
         "quality_flags": []
+      }
+    },
+    "1792F2": {
+      "problem_key": "1792F2",
+      "title": "Graph Coloring (hard version)",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/1792/problem/F2",
+      "editorial_url": "https://codeforces.com/blog/entry/111835",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "bbd96768aeb10fb55d9631e4c28bdc992d316d72a9f52536265fb58bdf0c202a",
+      "generated_at": "2026-09-26T21:29:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "题目给出一个有 $n$ 个顶点的无向完全图，需要把每条边染成红色或蓝色，并定义顶点集合在某种颜色下连通的条件。给定文本未包含冒号后的具体染色约束，只能确认最终要求统计满足该缺失约束的染色方案数，并对 $998244353$ 取模。",
+        "transformed_statement": "题解将目标答案序列抽象为递推序列 $B$，并通过 $C_i=A_i/i!$、$D_i=B_i/(i-1)!$ 把递推中的双重求和等价改写成 $C,D$ 的卷积；由于新项在线产生，再采用分块卷积与边界补算。",
+        "key_observations": [
+          "将递推式改写为 $B_n=(n-1)!\\sum_{k=0}^{n}C_{n-k}D_k$ 后，核心求和变成序列 $C,D$ 的卷积，从而可用 NTT 批量计算。",
+          "计算 $B_i$ 时，卷积只覆盖最近一次批处理前已知的 $C,D$；若上次批处理结束于 $t$，剩余未覆盖项满足 $k>t$ 或 $i-k>t$，总数为 $2(i-t)$，因此可以逐项补算。",
+          "每隔 $K$ 次迭代重新计算一次卷积，可将单项补算限制在 $O(K)$；结合约 $n/K$ 次 NTT，复杂度为 $O(n^2\\log n/K+nK)$，取 $K=\\sqrt{n\\log n}$ 得到 $O(n\\sqrt{n\\log n})$。",
+          "题解要求并行生成 $A,B,C,D$，但这些序列的原始定义依赖简单版题解，当前输入未提供，因此无法从现有文本完整还原递推的初始条件和原题约束。"
+        ],
+        "solution_brief": "题解把 $B_n$ 的递推转成 $C,D$ 的卷积，并用分块重算卷积、逐项补齐新产生的项。每隔 $K$ 次使用 NTT，复杂度为 $O(n^2\\log n/K+nK)$，取 $K=\\sqrt{n\\log n}$。但给定正文缺少 $A_i、B_i$ 的完整定义。",
+        "primary_topic": "代数、矩阵与多项式",
+        "secondary_topics": [
+          "组合计数与概率",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意摘要依据 statement；卷积、分块 NTT 和复杂度依据 editorial；A、B 的具体含义因题解引用了未提供的简单版内容而无法确认。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "dependent_on_easy_version",
+          "partial_editorial",
+          "statement_incomplete"
+        ]
+      }
+    },
+    "1792F1": {
+      "problem_key": "1792F1",
+      "title": "Graph Coloring (easy version)",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1792/problem/F1",
+      "editorial_url": "https://codeforces.com/blog/entry/111835",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b7dcfa1eed5ce2d081edff3111c0c5fa7a6adb521580935b6516c14ce9105dd2",
+      "generated_at": "2026-09-26T21:30:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n$ 个顶点的完全图，把每条边独立染成红色或蓝色。要求不存在一个非平凡顶点集合能同时仅用红边连通、又仅用蓝边连通，求满足条件的染色方案数并对 $998244353$ 取模。",
+        "transformed_statement": "把蓝边图视为红边图的补图；先统计蓝色图连通的合法染色 $B_n$，再按顶点 $1$ 的蓝色连通分量拆分，其余顶点保留为任意合法染色。总答案由红、蓝两种不连通情形的颜色对称性恢复。",
+        "key_observations": [
+          "若一种颜色形成的图不连通，则其补图（另一种颜色）必连通，因此不可能出现两种颜色都不连通的情况。",
+          "对任意 $n>1$，红色不连通与蓝色不连通的合法染色互为颜色翻转，且两类不重叠，所以总数满足 $A_n=2B_n$。",
+          "按顶点 $1$ 所在的蓝色连通分量大小 $k$ 划分：该分量内部有 $B_k$ 种方案，剩余顶点形成任意合法染色，有 $A_{n-k}$ 种方案。",
+          "选择分量中其余 $k-1$ 个顶点的方案数为 $\\frac{(n-1)!}{(k-1)!(n-k)!}$，从而得到递推并可用 $O(n^2)$ 动态规划计算。"
+        ],
+        "solution_brief": "令 $B_n$ 表示蓝色图连通且合法的染色数，按顶点 $1$ 的蓝色连通分量大小分解：$B_n=\\sum_{k=1}^{n-1}B_kA_{n-k}\\binom{n-1}{k-1}$。再用 $A_1=B_1$、$A_n=2B_n$，以 $O(n^2)$ 计算所有答案。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "图论与网络流"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意规则依据 statement，并结合 editorial 补全合法染色条件；递推、补图引理和复杂度依据 editorial，tags 仅用于主题归类。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1792E": {
+      "problem_key": "1792E",
+      "title": "Divisors and Table",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1792/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/111835",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4df04f20606fd9b5d4a42a64d947c8ef85f4d33bde0fb6038f2c7a4836de233e",
+      "generated_at": "2026-09-26T21:30:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定大小为 $n\\times n$ 的乘法表，其中第 $i$ 行第 $j$ 列为 $i\\cdot j$，以及 $m=m_1m_2$。对 $m$ 的每个约数，判断它是否能写成表内两个数的乘积；若能，求包含它的最小行号，最后输出出现的约数数量及所有行号（未出现记为 $0$）的按位异或。",
+        "transformed_statement": "对每个约数 $d$，不直接寻找最小行号，而是先找最大的因子 $y\\mid d$ 且 $y\\le n$；此时另一因子 $x=d/y$ 就是最小可能行号，并检查 $x\\le n$。",
+        "key_observations": [
+          "将 $m_1,m_2$ 分别质因数分解并合并指数，就能生成 $m$ 的全部约数而无需直接分解可能很大的 $m$。",
+          "对固定约数 $d$，最小行号 $x$ 等价于寻找最大的约数 $y\\mid d$ 且 $y\\le n$，并令 $x=d/y$。",
+          "设 $dp[d]$ 为不超过 $n$ 的最大约数；当 $d>n$ 时，任意候选 $y<d$ 都整除某个 $d/p$，因此可由 $dp[d]=\\max_{p\\mid d}dp[d/p]$ 递推。",
+          "得到最大 $y=dp[d]$ 后，只有当 $d/dp[d]\\le n$ 时该约数出现在表中；统计这些情况并异或对应行号即可。"
+        ],
+        "solution_brief": "分别分解 $m_1,m_2$ 并生成 $m$ 的约数。按约数递增计算不超过 $n$ 的最大因子 $dp[d]$，令行号为 $d/dp[d]$；若该值不超过 $n$，计数并参与异或。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial、题面和 number theory、dp 标签提炼；采用 editorial 标注的主要 DP 方案。",
+        "quality_flags": []
+      }
+    },
+    "1792D": {
+      "problem_key": "1792D",
+      "title": "Fixed Prefix Permutations",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1792/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/111835",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ab50cdf88d7c3e7277e908bab78e5f164874bf68a2a35ea2943c3e358c734fe0",
+      "generated_at": "2026-09-26T21:31:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个长度为 $m$ 的排列。排列乘积 $p\\cdot q$ 定义为第 $j$ 位取 $q_{p_j}$，而 beauty 是从首位开始连续等于 $1,2,\\ldots$ 的最长前缀长度；对每个 $a_i$，求与任意 $a_j$（可取 $i=j$）相乘后能达到的最大 beauty。",
+        "transformed_statement": "对固定排列 $p$，要求 $p\\cdot q$ 的前 $k$ 位为 $1,2,\\ldots,k$，等价于要求 $p$ 与 $q^{-1}$ 的前 $k$ 位相同。因此问题转化为：对每个原排列，查询所有输入排列逆排列中的最长公共前缀。",
+        "key_observations": [
+          "固定 $p=a_i$ 后，$p\\cdot q$ 的前 $k$ 位为 $1,2,\\ldots,k$ 当且仅当 $p$ 与 $q^{-1}$ 的前 $k$ 位完全相同，从而把乘法条件转成前缀匹配。",
+          "因此每个 $p$ 的答案就是所有给定排列逆排列中，与 $p$ 拥有最长公共前缀的长度，避免了枚举排列对。",
+          "将每个逆排列的所有前缀组织起来后，沿着 $p$ 逐位匹配，首次无法继续的位置即确定最大 beauty。"
+        ],
+        "solution_brief": "先求出每个排列的逆排列并插入前缀 Trie。对每个原排列沿 Trie 逐位行走，能匹配的最长深度就是答案，因为它等价于与某个逆排列的最长公共前缀。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "代数、矩阵与多项式"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的排列乘法与 beauty 定义，以及 editorial 中将问题转化为逆排列最长公共前缀并用 Trie 处理的方案；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1792C": {
+      "problem_key": "1792C",
+      "title": "Min Max Sort",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1792/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/111835",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "732a3796f8ea5802d27bbe2ed2f993d15cdd42b560b0a69a4c7b232ae5fcdf6d",
+      "generated_at": "2026-09-26T21:31:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $1$ 到 $n$ 的排列。每次可任选两个不同元素删除，再把较小者插到最前面、较大者插到最后面；求将排列变为升序所需的最少操作次数。",
+        "transformed_statement": "倒推最后一次操作：升序排列的两端必为 $1,n$，所以每次操作都可视为剥离当前数值范围的两个极值。问题转化为寻找原排列中保持相对升序的最大中心数值区间。",
+        "key_observations": [
+          "最终一次操作必须选取 $1$ 和 $n$，因此可递归剥离两端极值，把问题缩小到中间数值区间。",
+          "若数值区间 $[k,n-k+1]$ 在原排列中的出现顺序递增，则这些数无需操作，答案至多为 $k-1$。",
+          "区间对某个 $k$ 有序时，对更大的 $k$ 也必有序，因此只需从中心向外检查；每次扩展只需比较两端新加入元素的位置。"
+        ],
+        "solution_brief": "建立每个数在排列中的位置 $pos$，从最大的中心区间开始向外扩展，检查新加入两端的相对位置是否正确；找到最小可行的 $k$ 后答案为 $k-1$，总复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 与完整 editorial_text；tags 仅用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1792B": {
+      "problem_key": "1792B",
+      "title": "Stand-up Comedian",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1792/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/111835",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "12cc346c064aaf38a8f0cf9a5d7288fa96279da12d7efde894d76f4f615326a8",
+      "generated_at": "2026-09-26T21:32:05+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "Eve 有四类笑话：类型 1 两人都喜欢，类型 4 两人都不喜欢，类型 2、3 分别只被其中一人喜欢。她可任意安排讲笑话的顺序；每人喜欢时情绪加一，否则减一，任一人的情绪降到负数就离场，求最多能讲多少个。",
+        "transformed_statement": "把两人的情绪视为同步变化的状态：先用类型 1 建立共同缓冲，再把类型 2、3 配成情绪不变的对，最后将无法配对的笑话视为对某一人的连续消耗，并与类型 4 一起受当前情绪上限约束。",
+        "key_observations": [
+          "类型 1 的笑话同时让两人的情绪上升，类型 4 同时让两人下降，因此应先使用类型 1、最后使用类型 4，避免无谓地过早触发离场。",
+          "类型 2 和类型 3 对两人的效果相反，交替讲一对不会改变任意一人的情绪，因此最多可安全使用 $2\\min(a_2,a_3)$ 个。",
+          "交替配对后剩余的类型 2、类型 3 与类型 4 都会让同一位观众持续掉情绪，最多还能讲 $\\min(a_1+1,|a_2-a_3|+a_4)$ 个。",
+          "若 $a_1=0$，第一条笑话无论属于哪种类型都会使至少一人的情绪变为负数，所以答案恒为 $1$。"
+        ],
+        "solution_brief": "先讲完全部类型 1，再交替讲类型 2、3，最后按任意顺序处理剩余类型 2/3 与类型 4。若 $a_1\\ne0$，答案为 $a_1+2\\min(a_2,a_3)+\\min(a_1+1,|a_2-a_3|+a_4)$；否则答案为 $1$，单组复杂度 $O(1)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的四类笑话与情绪规则，以及完整 editorial 的构造顺序和公式。",
+        "quality_flags": []
+      }
+    },
+    "1792A": {
+      "problem_key": "1792A",
+      "title": "GamingForces",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1792/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/111835",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5a677cbaf05aad44cf20ecabc5515c386d39f03ebc213b5c08ecd6599023b87a",
+      "generated_at": "2026-09-26T21:32:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 只怪物，第 $i$ 只生命值为 $h_i$。第一种法术可同时使两只指定怪物各减少 $1$ 点生命，第二种法术可使一只指定怪物减少 $2$ 点生命；法术可任意次、任意顺序施放，生命值降至 $0$ 的怪物死亡，要求击杀全部怪物的最少施法次数。",
+        "transformed_statement": "把两种法术视为两种消耗方式：一次第二种法术处理一只怪物的 $2$ 点生命，一次第一种法术同时处理两只怪物各 $1$ 点生命。通过交换两次集中使用第一种法术，可限制其只服务于生命值为 $1$ 的怪物，剩余生命统一按每次减少 $2$ 计算。",
+        "key_observations": [
+          "对同一只怪物连续施放两次第一种法术时，可改为对它施放一次第二种法术，再用一次第一种法术同时攻击另外两只怪物；总次数不变且伤害不减，因此第一种法术无需在同一只怪物上使用两次。",
+          "所以第一种法术只应攻击生命值为 $1$ 的怪物，并把它们两两配对；这些怪物需要的施法次数为 $\\lceil c/2\\rceil$，其中 $c$ 是生命值为 $1$ 的怪物数量。",
+          "其余怪物只用第二种法术即可分别击杀，生命值为 $h_i$ 的怪物需要 $\\lceil h_i/2\\rceil$ 次，因此答案可按怪物独立累加得到。"
+        ],
+        "solution_brief": "统计生命值为 $1$ 的怪物数量 $c$，贡献为 $\\lceil c/2\\rceil$；对每个 $h_i>1$ 的怪物加入 $\\lceil h_i/2\\rceil$。遍历数组即可，单组复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，并结合 editorial_text 对两种法术的具体作用和最优使用方式进行还原；贪心结论来自 editorial。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
       }
     }
   }
