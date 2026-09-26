@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1748,
+    "total_problems": 1749,
     "source_total_problems": 1749,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 1748,
-    "with_editorial_brief": 1517,
-    "with_solution_brief": 1518,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1749,
+    "with_editorial_brief": 1518,
+    "with_solution_brief": 1519,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 689,
+    "ai_override_count": 690,
     "primary_topic_count": 13
   },
   "records": [
@@ -25953,6 +25953,49 @@
           "path": "ai-generated-insights.json",
           "model": "gpt-6-luna",
           "generated_at": "2026-09-24T15:25:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 620,
+      "problem_key": "1957C",
+      "contest_id": 1957,
+      "title": "How Does the Rook Move?",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1957/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/128716",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定一个 $n\\times n$ 棋盘，你与电脑交替放置不同颜色的车，任何两车不能同行或同列；你的落子 $(r,c)$ 后，电脑必须在 $(c,r)$ 镜像落子，若 $r=c$ 则跳过。已有 $k$ 次落子后，继续进行直到无合法位置，求所有不同最终配置数。",
+      "transformed_statement": "将每个已处理的行列编号视为被删除：对角线操作删除一个编号，非对角线操作及镜像删除两个编号。初始操作后只需保留剩余规模 $m$，并计算规模为 $m$ 的匹配式递推配置数。",
+      "key_observations": [
+        "每个非对角线落子及其镜像会同时占用两个行列编号，而对角线落子只占用一个，因此初始操作后剩余可用行列数可压缩为一个数 $m$。",
+        "剩余行列的具体编号和删除顺序不影响后续配置数量，只由当前剩余规模 $i$ 决定，从而可将棋盘状态压缩成一维 DP。",
+        "在 $i\\times i$ 的剩余棋盘中，最后一个行列编号若放置 $(i,i)$，贡献 $dp[i-1]$；若与任意其他编号配成非对角线操作，有 $2(i-1)$ 种选择并贡献 $2(i-1)dp[i-2]$。",
+        "上述两类情况互斥且覆盖所有合法终局，因此满足递推 $dp[i]=dp[i-1]+2(i-1)dp[i-2]$，并以 $dp[0]=dp[1]=1$ 初始化。"
+      ],
+      "solution_brief": "统计已落子及镜像操作后剩余的可用行列数 $m$，预处理递推 $dp[i]=dp[i-1]+2(i-1)dp[i-2]$。每组答案为 $dp[m]$，全程对 $10^9+7$ 取模。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T20:33:04+00:00",
           "quality_flags": []
         }
       },

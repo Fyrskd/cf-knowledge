@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-26T20:31:24+00:00",
+  "updated_at": "2026-09-26T20:33:04+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -21002,6 +21002,37 @@
         "quality_flags": [
           "statement_inferred"
         ]
+      }
+    },
+    "1957C": {
+      "problem_key": "1957C",
+      "title": "How Does the Rook Move?",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1957/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/128716",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1f97fd55a86dd9f8be17b6b09b7cc5c367f80c53ca7256fe5f8fb2c8c4eb360e",
+      "generated_at": "2026-09-26T20:33:04+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times n$ 棋盘，你与电脑交替放置不同颜色的车，任何两车不能同行或同列；你的落子 $(r,c)$ 后，电脑必须在 $(c,r)$ 镜像落子，若 $r=c$ 则跳过。已有 $k$ 次落子后，继续进行直到无合法位置，求所有不同最终配置数。",
+        "transformed_statement": "将每个已处理的行列编号视为被删除：对角线操作删除一个编号，非对角线操作及镜像删除两个编号。初始操作后只需保留剩余规模 $m$，并计算规模为 $m$ 的匹配式递推配置数。",
+        "key_observations": [
+          "每个非对角线落子及其镜像会同时占用两个行列编号，而对角线落子只占用一个，因此初始操作后剩余可用行列数可压缩为一个数 $m$。",
+          "剩余行列的具体编号和删除顺序不影响后续配置数量，只由当前剩余规模 $i$ 决定，从而可将棋盘状态压缩成一维 DP。",
+          "在 $i\\times i$ 的剩余棋盘中，最后一个行列编号若放置 $(i,i)$，贡献 $dp[i-1]$；若与任意其他编号配成非对角线操作，有 $2(i-1)$ 种选择并贡献 $2(i-1)dp[i-2]$。",
+          "上述两类情况互斥且覆盖所有合法终局，因此满足递推 $dp[i]=dp[i-1]+2(i-1)dp[i-2]$，并以 $dp[0]=dp[1]=1$ 初始化。"
+        ],
+        "solution_brief": "统计已落子及镜像操作后剩余的可用行列数 $m$，预处理递推 $dp[i]=dp[i-1]+2(i-1)dp[i-2]$。每组答案为 $dp[m]$，全程对 $10^9+7$ 取模。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的落子与镜像规则，以及 editorial 中的剩余规模建模和 DP 递推；tags 提供组合计数、DP、数学方向。",
+        "quality_flags": []
       }
     }
   }

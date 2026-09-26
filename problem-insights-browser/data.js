@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1748,
+    "total_problems": 1749,
     "source_total_problems": 1749,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 1748,
-    "with_editorial_brief": 1517,
-    "with_solution_brief": 1518,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1749,
+    "with_editorial_brief": 1518,
+    "with_solution_brief": 1519,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 689,
+    "ai_override_count": 690,
     "primary_topic_count": 13,
     "contest_count": 278,
     "rating_min": 800,
@@ -49,7 +49,7 @@ window.CF_INSIGHTS_DATA = {
     "图论与网络流": 111,
     "动态规划与状态设计": 168,
     "数论与同余": 158,
-    "组合计数与概率": 138,
+    "组合计数与概率": 139,
     "数据结构": 141,
     "几何": 38,
     "树结构": 113,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 16
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 596,
+    "ai_generated_with_editorial": 597,
     "ai_generated_partial_editorial": 30,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -36197,7 +36197,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-04-21",
       "url": "https://codeforces.com/contest/1957",
       "type": "Div. 2",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": 2700,
       "problems": [
         {
@@ -36253,6 +36253,36 @@ window.CF_INSIGHTS_DATA = {
             "当 $k=2^{x+1}-1$ 时，剩余值恰为 $2^x$，两个构造数的按位或覆盖连续的 $x+1$ 个比特；但 $n=1$ 时没有拆分空间，只能输出 $k$。"
           ],
           "solutionBrief": "$n=1$ 时直接输出 $k$。否则令 $x=\\lfloor\\log_2 k\\rfloor$，输出 $2^x-1$、$k-(2^x-1)$，其余输出 $0$；该构造最大化按位或中置位比特数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1957C",
+          "index": "C",
+          "slot": "C",
+          "title": "How Does the Rook Move?",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1957/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/128716",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 棋盘，你与电脑交替放置不同颜色的车，任何两车不能同行或同列；你的落子 $(r,c)$ 后，电脑必须在 $(c,r)$ 镜像落子，若 $r=c$ 则跳过。已有 $k$ 次落子后，继续进行直到无合法位置，求所有不同最终配置数。",
+          "transformedStatement": "将每个已处理的行列编号视为被删除：对角线操作删除一个编号，非对角线操作及镜像删除两个编号。初始操作后只需保留剩余规模 $m$，并计算规模为 $m$ 的匹配式递推配置数。",
+          "keyObservations": [
+            "每个非对角线落子及其镜像会同时占用两个行列编号，而对角线落子只占用一个，因此初始操作后剩余可用行列数可压缩为一个数 $m$。",
+            "剩余行列的具体编号和删除顺序不影响后续配置数量，只由当前剩余规模 $i$ 决定，从而可将棋盘状态压缩成一维 DP。",
+            "在 $i\\times i$ 的剩余棋盘中，最后一个行列编号若放置 $(i,i)$，贡献 $dp[i-1]$；若与任意其他编号配成非对角线操作，有 $2(i-1)$ 种选择并贡献 $2(i-1)dp[i-2]$。",
+            "上述两类情况互斥且覆盖所有合法终局，因此满足递推 $dp[i]=dp[i-1]+2(i-1)dp[i-2]$，并以 $dp[0]=dp[1]=1$ 初始化。"
+          ],
+          "solutionBrief": "统计已落子及镜像操作后剩余的可用行列数 $m$，预处理递推 $dp[i]=dp[i-1]+2(i-1)dp[i-2]$。每组答案为 $dp[m]$，全程对 $10^9+7$ 取模。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
