@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1794,
+    "total_problems": 1801,
     "source_total_problems": 1809,
-    "filtered_out_problems": 15,
-    "with_statement_brief": 1794,
-    "with_editorial_brief": 1554,
-    "with_solution_brief": 1555,
+    "filtered_out_problems": 8,
+    "with_statement_brief": 1801,
+    "with_editorial_brief": 1561,
+    "with_solution_brief": 1562,
     "missing_editorial_brief": 239,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 735,
+    "ai_override_count": 742,
     "primary_topic_count": 13,
-    "contest_count": 285,
+    "contest_count": 286,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -34,8 +34,8 @@ window.CF_INSIGHTS_DATA = {
     "数论与同余",
     "数据结构",
     "组合计数与概率",
-    "树结构",
     "图论与网络流",
+    "树结构",
     "字符串",
     "交互",
     "基础实现与模拟",
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 75,
-    "构造与贪心": 604,
-    "图论与网络流": 114,
-    "动态规划与状态设计": 172,
-    "数论与同余": 163,
+    "构造与贪心": 606,
+    "图论与网络流": 115,
+    "动态规划与状态设计": 173,
+    "数论与同余": 165,
     "组合计数与概率": 141,
     "数据结构": 144,
     "几何": 38,
     "树结构": 115,
     "代数、矩阵与多项式": 17,
     "交互": 74,
-    "基础实现与模拟": 73,
+    "基础实现与模拟": 74,
     "博弈": 64
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 632,
+    "ai_generated_with_editorial": 639,
     "ai_generated_partial_editorial": 31,
     "missing_editorial": 239,
     "manual_override": 891,
@@ -1234,6 +1234,214 @@ window.CF_INSIGHTS_DATA = {
             "当当前数量大于 $3n$ 时，同列三条边中必有一对删除后不改变匹配奇偶性；奇数阶时可用一个保持满秩的单边或 L 形三边操作补足奇数，再成对删除。"
           ],
           "solutionBrief": "先由每步最多删 $n$ 个 $1$ 得到下界。对超过 $3n$ 个 $1$ 的矩阵，反复寻找保持行列式不变的两边删除；奇数阶先用单边或 L 形三边操作调整奇偶。剩余较少时利用完美匹配化为三角矩阵，最后两步清空。用高斯消元检验候选操作，基础实现复杂度为 $O(n^5)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2260,
+      "name": "Educational Codeforces Round 194 (Rated for Div. 2)",
+      "date": "2026-09-08",
+      "url": "https://codeforces.com/contest/2260",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "2260A",
+          "index": "A",
+          "slot": "A",
+          "title": "Monocarp's Contest",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2260/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/156529",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定由 $0/1$ 表示的 $n$ 道题，其中 $0$ 表示 easy、$1$ 表示 hard。每次可任选两道题交换位置，要求用最少次数使第一个和最后一个位置都是 easy；若不可能则输出 $-1$。",
+          "transformedStatement": "把问题转化为端点修复：先判断全数组是否至少有两个 $0$，再分别处理首尾位置。已有 easy 的端点无需操作，当前为 hard 的端点各从其他位置交换来一个 $0$。",
+          "keyObservations": [
+            "若数组中的 $0$ 少于两个，就无法同时把两个不同端点变成 easy，答案必为 $-1$。",
+            "只要至少有两个 $0$，两个端点所需的 easy 问题可以分别从数组内部交换得到；每个当前为 $1$ 的端点恰好需要一次交换，因此答案等于首尾元素中 $1$ 的个数。"
+          ],
+          "solutionBrief": "先统计数组中 $0$ 的数量，少于两个则输出 $-1$；否则统计首元素和末元素中有多少个是 $1$，该数量就是最少交换次数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2260B",
+          "index": "B",
+          "slot": "B",
+          "title": "Monocarp and Projects",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2260/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/156529",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "未来 $k$ 个月中，第 $i$ 个月有 $x+i$ 名员工和 $y+i$ 个项目。项目必须平均分给所有员工，每名员工获得相同数量，剩余项目由 Monocarp 完成；求他在全部月份完成的项目总数。",
+          "transformedStatement": "把每个月的贡献表示为余数 $(y+i)\\bmod(x+i)$，并将月份分成前缀与尾部：当 $i\\ge y$ 时余数固定为 $y-x$，只需枚举前面至多 $y$ 个月。",
+          "keyObservations": [
+            "第 $i$ 个月 Monocarp 完成的项目数等于 $(y+i)\\bmod(x+i)$，因此题目转化为求这组余数的总和。",
+            "当 $i\\ge y$ 时有 $y+i<2(x+i)$，且项目数不少于员工数，所以商必为 $1$，余数恒为 $y-x$。",
+            "只需计算前 $\u0000\\min(k,y)\\u0000$ 个月的余数；剩余 $\\max(0,k-y)$ 个月统一贡献 $y-x$，将复杂度降为 $O(y)$。"
+          ],
+          "solutionBrief": "逐个计算 $i=0$ 到 $\\min(k-1,y-1)$ 的 $(y+i)\\bmod(x+i)$ 并累加；若 $k>y$，再加上 $(k-y)(y-x)$。每个测试用例复杂度为 $O(y)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2260C",
+          "index": "C",
+          "slot": "C",
+          "title": "Maximize XOR, Minimize Operations",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2260/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/156529",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "greedy"
+          ],
+          "statementBrief": "给定非负整数 $x,y$，每次操作将 $x$ 减少 $1$、同时将 $y$ 增加 $1$，且 $x=0$ 时不能操作。选择任意次操作，先最大化最终 $x\\oplus y$，再在达到最大值的方案中最小化操作次数。",
+          "transformedStatement": "设不变量总和为 $s=x+y$。最大异或值是 $s$；随后只需寻找最大的 $x'\\le x$，使其置位全部来自 $s$ 的置位，令最终 $y'=s-x'$，操作次数就是 $x-x'$。",
+          "keyObservations": [
+            "每次操作保持总和 $s=x+y$ 不变，而任意两个非负数的异或都不超过它；将 $x$ 降为 $0$ 可达到异或值 $s$。",
+            "在总和固定为 $s$ 时，异或等于总和当且仅当两个数每一位恰好一个为 $1$，因此最终的 $x'$ 只能使用 $s$ 中为 $1$ 的位。",
+            "操作次数为 $x-x'$，所以应在 $x'\\le x$ 且 $x'$ 的置位是 $s$ 的子集的条件下最大化 $x'$；按高位到低位贪心加入允许的位可得到该最大值。"
+          ],
+          "solutionBrief": "令 $s=x+y$，最大异或值必为 $s$。从高位到低位构造不超过 $x$ 且只使用 $s$ 的置位的最大数 $x'$，答案为 $s$ 和 $x-x'$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2260D",
+          "index": "D",
+          "slot": "D",
+          "title": "Signs of Prefix Sums",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2260/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/156529",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "给定只含 `+`、`-`、`0` 的字符串，要求构造一个所有元素非零的整数数组，使其每个前缀和的正负零符号与字符串完全一致。目标是最小化数组元素绝对值的最大值；若无法构造则输出 $-1$。",
+          "transformedStatement": "将数组改写为前缀和序列 $p_0=0,p_1,\\dots,p_n$：每个 $p_i$ 必须落在字符串指定的符号区域，且相邻值不同；边长 $|p_i-p_{i-1}|$ 对应数组元素绝对值，目标是最小化所有边长的最大值。最优序列可限制在 $[-3,3]$ 内。",
+          "keyObservations": [
+            "把前缀和 $p_i$ 作为状态，状态值只保留与第 $i$ 个字符符号一致的数，从而直接表达题目对每个前缀和的限制。",
+            "相邻前缀和之差就是对应的非零数组元素，因此从 $j$ 转移到 $k$ 的代价为 $|j-k|$，且状态转移必须满足 $j\\ne k$。",
+            "任意最优前缀和序列都可将所有值压缩到区间 $[-3,3]$：对超过 $3$ 或低于 $-3$ 的极值进行局部替换，不会增大相邻差值。",
+            "在有限范围内，状态记录当前前缀和时达到的最小最大边长，转移时取已有代价与 $|j-k|$ 的较大值，因此可得到最小成本。"
+          ],
+          "solutionBrief": "令 $dp_{i,j}$ 表示处理前 $i$ 个位置、当前前缀和为 $j$ 时的最小成本。利用最优解可限制 $j\\in[-3,3]$，枚举相邻前缀和并以 $\\max(dp,|j-k|)$ 转移；最终取所有合法末状态的最小值，无解则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2260E",
+          "index": "E",
+          "slot": "E",
+          "title": "Cyclic Balance",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/2260/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/156529",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定一个二进制串和多个区间。每次只能在区间子串的任意位置插入字符，不能删除或修改原字符；将其首尾相连后，要求 $00$、$01$、$10$、$11$ 四类相邻对数量相等，求达到条件所需的最少插入数。",
+          "transformedStatement": "把区间看成带首尾相连边的二点有向图，设 $00$、$11$ 各为 $A,B$，$01$ 与 $10$ 各为 $C$；目标转化为寻找最小 $T$，使四类边都能补到各有 $T$ 条。",
+          "keyObservations": [
+            "循环二进制串中 $01$ 与 $10$ 的数量必相等；若四类边各出现 $T$ 次，最终长度为 $4T$，答案就是 $4T-(r-l+1)$。",
+            "原有的 $00$ 或 $11$ 过多时，只能通过插入分别拆成 $010$ 或 $101$，因此可行性的必要条件是 $C+\\max(0,A-T)+\\max(0,B-T)\\le T$。",
+            "上述条件也是充分的：先拆分超出的同类边，再把缺少的边视为二点图上的边并补成欧拉环；且条件对 $T$ 单调成立，所以可二分最小 $T$。",
+            "查询区间补上首尾相连的一对后，可由前缀和得到 $c_1,d$，并计算 $C=d/2$、$A=(len-c_1)-C$、$B=c_1-C$，无需逐字符处理。"
+          ],
+          "solutionBrief": "对每个区间统计 1 的数量和循环相邻字符不同的位置数，得到 $A,B,C$。二分最小的 $T$ 使 $C+\\max(0,A-T)+\\max(0,B-T)\\le T$，答案为 $4T-len$；预处理 $O(n)$，单次查询 $O(\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2260F",
+          "index": "F",
+          "slot": "F",
+          "title": "Edge Three-Coloring",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/2260/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/156529",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一张连通无向图，要把每条边染成 $1,2,3$ 三种颜色且每种颜色都至少出现一次。若两点能通过颜色 $i$ 的边连通，则对任意 $i<j$，它们还必须通过颜色 $j$ 的边连通；判断是否存在这种染色。",
+          "transformedStatement": "题目可等价转化为：是否存在一个环，删除环上的全部边后原图仍连通。找到后把环上一条边染为 $1$、其余环边染为 $2$，所有环外边染为 $3$ 即可。",
+          "keyObservations": [
+            "由于原图连通，颜色 $3$ 的边也必须连通；因此颜色 $3$ 实际承担整体连通性，其他颜色只需满足更强的连通关系。",
+            "颜色 $1$ 不必使用多条边：若有多条颜色 $1$ 的边，将其中任意一条改成颜色 $3$ 不会破坏条件，所以可将颜色 $1$ 压缩为单条边。",
+            "颜色 $1$ 的边及颜色 $2$ 的相关路径必须形成环；题目等价于寻找一个删除后仍保持图连通的环，并将环上一条边染成 $1$、其余环边染成 $2$、环外边染成 $3$。",
+            "固定生成树后，任取非树边子集，其在目标环中的选择唯一决定树边：每条树边是否选取由其子树内所选非树边端点数的奇偶性决定，因此只需枚举至多 $2^{m-n+1}$ 个候选并检查删除后的连通性。"
+          ],
+          "solutionBrief": "先将问题化为寻找删除后仍连通的环。选取生成树，枚举非树边子集，用子树端点奇偶性通过异或路径确定树边，得到候选环（或环集合），再用 DFS/BFS 检查删除后是否连通；复杂度为 $O(2^{m-n+1}(m-n+1)(n+m))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2260G",
+          "index": "G",
+          "slot": "G",
+          "title": "Sortable Permutations",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/2260/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/156529",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $1$ 到 $n$ 的一个排列，可以选择整数 $x\\\\ge2$，删除所有下标为 $x,2x,3x,\\\\ldots$ 的元素，且保留元素的相对顺序；若剩余序列严格递增，则称该排列可排序。求大小为 $n$ 的可排序排列数量，结果对 $998244353$ 取模。",
+          "transformedStatement": "把所有可行的 $x$ 按其质因数条件表示为集合并集，并用莫比乌斯反演计数。固定平方自由整数 $i$ 后，只分析未被 $i$ 的质因子删除的位置之间的大小约束，再将这些约束组织成线段进行组合计数。",
+          "keyObservations": [
+            "若某个复合数 $x$ 可行，则其任一质因数也可行，因此只需把“存在可行 $x$”转化为质数条件的并集，并用莫比乌斯反演去重。",
+            "对平方自由的 $i$，相邻条件 $a_j<a_{j+1}$ 不受约束，当且仅当 $i$ 的质因子都来自 $j(j+1)$；所以可由 $j(j+1)$ 的平方自由因子生成所有相关 $i$。",
+            "固定 $i$ 后，同奇偶且下标不被 $i$ 整除的元素必须递增；这将剩余位置的约束压缩为若干重叠相邻对组成的线段。",
+            "在线段内部，奇下标与偶下标之间没有大小约束，若两类数量为 $c_0,c_1$，内部排列数为 $\frac{(c_0+c_1)!}{c_0!c_1!}$；不同线段之间只需按线段顺序分配递增的值。"
+          ],
+          "solutionBrief": "用质因数条件和莫比乌斯反演合并所有可行情况。对每个平方自由 $i$，先任意安排其倍数位置，再将其余位置按无约束相邻对组成线段；跨线段分配递增值，线段内按奇偶交错计数，最后累加 $1- extstyle\frac{}{}$ 的莫比乌斯加权结果。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
