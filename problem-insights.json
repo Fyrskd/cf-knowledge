@@ -16,8 +16,8 @@
   },
   "summary": {
     "total_problems": 1786,
-    "source_total_problems": 1786,
-    "filtered_out_problems": 0,
+    "source_total_problems": 1794,
+    "filtered_out_problems": 8,
     "with_statement_brief": 1786,
     "with_editorial_brief": 1547,
     "with_solution_brief": 1548,
@@ -70441,7 +70441,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1779,
+      "ordinal": 1787,
       "problem_key": "2268A",
       "contest_id": 2268,
       "title": "K Is Important",
@@ -70478,7 +70478,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1780,
+      "ordinal": 1788,
       "problem_key": "2268B",
       "contest_id": 2268,
       "title": "What a SauSaGe! It's All Meat",
@@ -70516,7 +70516,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1781,
+      "ordinal": 1789,
       "problem_key": "2268C",
       "contest_id": 2268,
       "title": "KiaKio and Energy Intervals",
@@ -70555,7 +70555,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1782,
+      "ordinal": 1790,
       "problem_key": "2268D",
       "contest_id": 2268,
       "title": "AghaBalaSar and Hamed",
@@ -70591,7 +70591,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1783,
+      "ordinal": 1791,
       "problem_key": "2268E",
       "contest_id": 2268,
       "title": "Kia Kio and Tree of Life",
@@ -70628,7 +70628,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1784,
+      "ordinal": 1792,
       "problem_key": "2268F",
       "contest_id": 2268,
       "title": "Deglado",
@@ -70664,7 +70664,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1785,
+      "ordinal": 1793,
       "problem_key": "2269A",
       "contest_id": 2269,
       "title": "SauSaGe Bank",
@@ -70701,7 +70701,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1786,
+      "ordinal": 1794,
       "problem_key": "2269B",
       "contest_id": 2269,
       "title": "KiaKio and Squared Numbers",

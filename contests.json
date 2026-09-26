@@ -3102,6 +3102,17 @@
     "date": "2026-09-21"
   },
   {
+    "id": 2267,
+    "name": "Codeforces Round 1123 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1790346900,
+    "relativeTimeSeconds": 112127,
+    "date": "2026-09-25"
+  },
+  {
     "id": 2268,
     "name": "Codeforces Round 1124 (Div. 1)",
     "type": "CF",
