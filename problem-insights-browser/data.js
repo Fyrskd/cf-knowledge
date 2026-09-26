@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1780,
-    "source_total_problems": 1780,
+    "total_problems": 1786,
+    "source_total_problems": 1786,
     "filtered_out_problems": 0,
-    "with_statement_brief": 1780,
+    "with_statement_brief": 1786,
     "with_editorial_brief": 1547,
     "with_solution_brief": 1548,
-    "missing_editorial_brief": 232,
+    "missing_editorial_brief": 238,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 721,
     "primary_topic_count": 13,
-    "contest_count": 283,
+    "contest_count": 284,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 75,
-    "构造与贪心": 599,
+    "构造与贪心": 602,
     "图论与网络流": 113,
-    "动态规划与状态设计": 171,
+    "动态规划与状态设计": 173,
     "数论与同余": 161,
     "组合计数与概率": 140,
-    "数据结构": 143,
+    "数据结构": 144,
     "几何": 38,
     "树结构": 114,
     "代数、矩阵与多项式": 17,
@@ -61,7 +61,7 @@ window.CF_INSIGHTS_DATA = {
   "statusCounts": {
     "ai_generated_with_editorial": 625,
     "ai_generated_partial_editorial": 31,
-    "missing_editorial": 232,
+    "missing_editorial": 238,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -121,6 +121,165 @@ window.CF_INSIGHTS_DATA = {
             "implementation"
           ],
           "statementBrief": "有 $n$ 座灯塔，第 $0$ 夜分别显示 $a_i$。之后每夜都把当前数字替换为其十进制各位数字平方和；若两座灯塔从某一夜起每夜都显示相同数字，则称它们合拍，求满足条件的下标对数量。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 2268,
+      "name": "Codeforces Round 1124 (Div. 1)",
+      "date": "2026-09-26",
+      "url": "https://codeforces.com/contest/2268",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2268A",
+          "index": "A",
+          "slot": "A",
+          "title": "K Is Important",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "交互"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：K Is Important；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2268B",
+          "index": "B",
+          "slot": "B",
+          "title": "What a SauSaGe! It's All Meat",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：What a SauSaGe! It's All Meat；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2268C",
+          "index": "C",
+          "slot": "C",
+          "title": "KiaKio and Energy Intervals",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：KiaKio and Energy Intervals；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2268D",
+          "index": "D",
+          "slot": "D",
+          "title": "AghaBalaSar and Hamed",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "博弈",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "题面已抓取：AghaBalaSar and Hamed；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2268E",
+          "index": "E",
+          "slot": "E",
+          "title": "Kia Kio and Tree of Life",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "代数、矩阵与多项式",
+            "树结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "fft"
+          ],
+          "statementBrief": "题面已抓取：Kia Kio and Tree of Life；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2268F",
+          "index": "F",
+          "slot": "F",
+          "title": "Deglado",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "博弈"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "题面已抓取：Deglado；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
