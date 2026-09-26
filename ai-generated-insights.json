@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-26T21:39:40+00:00",
+  "updated_at": "2026-09-26T21:43:55+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -21953,6 +21953,163 @@
         "quality_flags": [
           "missing_editorial",
           "statement_inferred"
+        ]
+      }
+    },
+    "2268F": {
+      "problem_key": "2268F",
+      "title": "Deglado",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2268/problem/F",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5b112409bfd06c7fcfcef40507a5d3b77f97d95d28059d2cec0a50259d61784f",
+      "generated_at": "2026-09-26T21:42:41+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $2n\\times2n$ 的网格，保证每列都是 $1$ 到 $2n$ 的排列。每次选择相邻两行和相邻两列组成的 $2\\times2$ 子网格，同时交换这两列中的上下两个元素；要求在至多 $n\\binom{2n}{2}+9n$ 次操作内，使所有列都从上到下递增，否则输出无解。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面与 constructive algorithms 标签；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2268E": {
+      "problem_key": "2268E",
+      "title": "Kia Kio and Tree of Life",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2268/problem/E",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "34181cb940ea0145a1c759f47daf0d176063d97efd07e3232c05054e75ad916d",
+      "generated_at": "2026-09-26T21:42:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组的连续区间可任选一个位置作根，再用左侧区间和右侧区间递归构造左右子树，因此会得到所有合法二叉树。删去每条边后，将两部分数组元素的按位异或值相加得到树的价值，要求所有合法树的价值总和并对 $998244353$ 取模。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "树结构",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面中的递归建树规则、删边贡献定义和样例；editorial_url 及 editorial_text 均缺失，tags 仅作主题参考。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2268D": {
+      "problem_key": "2268D",
+      "title": "AghaBalaSar and Hamed",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2268/problem/D",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "855edc1ae772ee07d6de25b1f5b9878042a8f6e9e4bbd428b1e221463e64e4df",
+      "generated_at": "2026-09-26T21:43:12+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $n$ 的排列。每次从位置 $i$ 出发，可以一步移动到任意左侧位置，或移动到右侧第一个满足 $p_j>p_i$ 的位置（若存在）；对每个有序位置对求最少步数，不可达记为 $0$，输出所有 $f(i,j)$ 的总和。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和题目标签生成；editorial_text 为空，未使用标签补写算法。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2268C": {
+      "problem_key": "2268C",
+      "title": "KiaKio and Energy Intervals",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2268/problem/C",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1c389d7c293713b7dfb4a651dee7d4b15e5f1374f150995567d24cf4cd8d2a81",
+      "generated_at": "2026-09-26T21:43:25+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组后，可选择任意满足 $l<r$ 的连续区间。先取区间最大值 $m$，再将区间内每个数与 $m$ 按位 AND，最后把所有结果按位 XOR；要求求出所有合法区间中能得到的最大值。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和题目元数据中的 tags；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2268B": {
+      "problem_key": "2268B",
+      "title": "What a SauSaGe! It's All Meat",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2268/problem/B",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1305b58ed2dfdf0fb6ee777d7314e02d5a9b672f8789d44c7870606e24a6b125",
+      "generated_at": "2026-09-26T21:43:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个数量均小于 $16$ 的数组元素，可反复选择一对相邻元素，并对两者同时异或 $3k$（$1\\le k\\le5$）。每次更新永久把一个元素改为指定值；对初始数组及每次更新后数组，分别求通过任意操作后能让数量被 $3$ 整除的元素个数最大值。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 与 codeforces_tags；editorial_text 为空且 editorial_url 缺失。",
+        "quality_flags": [
+          "missing_editorial",
+          "no_algorithm_evidence",
+          "statement_only"
+        ]
+      }
+    },
+    "2268A": {
+      "problem_key": "2268A",
+      "title": "K Is Important",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2268/problem/A",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4064702be04ebf20d671aee4eec04ea7735423da925b044df338cd4a1a52df31",
+      "generated_at": "2026-09-26T21:43:55+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定含正整数的数组和参数 $k$。当数组长度至少为 $k$ 时，每次只能删除当前第 $k$ 个或倒数第 $k$ 个元素，并将其加入得分；删除后保持其余元素顺序，求最大得分。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 提取题意与操作规则，依据 codeforces_tags 进行主题归类；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_only"
         ]
       }
     }

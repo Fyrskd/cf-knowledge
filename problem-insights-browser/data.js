@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 238,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 721,
+    "ai_override_count": 727,
     "primary_topic_count": 13,
     "contest_count": 284,
     "rating_min": 800,
@@ -45,17 +45,17 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 75,
-    "构造与贪心": 602,
-    "图论与网络流": 113,
-    "动态规划与状态设计": 173,
-    "数论与同余": 161,
+    "构造与贪心": 601,
+    "图论与网络流": 114,
+    "动态规划与状态设计": 171,
+    "数论与同余": 162,
     "组合计数与概率": 140,
-    "数据结构": 144,
+    "数据结构": 143,
     "几何": 38,
-    "树结构": 114,
+    "树结构": 115,
     "代数、矩阵与多项式": 17,
     "交互": 74,
-    "基础实现与模拟": 71,
+    "基础实现与模拟": 72,
     "博弈": 64
   },
   "statusCounts": {
@@ -147,15 +147,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2268/problem/A",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "交互"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：K Is Important；本地暂无可用题解正文。",
+          "statementBrief": "给定含正整数的数组和参数 $k$。当数组长度至少为 $k$ 时，每次只能删除当前第 $k$ 个或倒数第 $k$ 个元素，并将其加入得分；删除后保持其余元素顺序，求最大得分。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -170,16 +167,13 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2268/problem/B",
           "editorialUrl": "",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "构造与贪心",
-            "数据结构"
-          ],
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
           "originalTags": [
             "bitmasks",
             "math"
           ],
-          "statementBrief": "题面已抓取：What a SauSaGe! It's All Meat；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n$ 个数量均小于 $16$ 的数组元素，可反复选择一对相邻元素，并对两者同时异或 $3k$（$1\\le k\\le5$）。每次更新永久把一个元素改为指定值；对初始数组及每次更新后数组，分别求通过任意操作后能让数量被 $3$ 整除的元素个数最大值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -194,19 +188,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2268/problem/C",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "数据结构",
-            "组合计数与概率"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "bitmasks",
             "data structures",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：KiaKio and Energy Intervals；本地暂无可用题解正文。",
+          "statementBrief": "给定数组后，可选择任意满足 $l<r$ 的连续区间。先取区间最大值 $m$，再将区间内每个数与 $m$ 按位 AND，最后把所有结果按位 XOR；要求求出所有合法区间中能得到的最大值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -221,16 +211,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2268/problem/D",
           "editorialUrl": "",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "博弈",
-            "构造与贪心"
-          ],
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
           "originalTags": [
             "dp"
           ],
-          "statementBrief": "题面已抓取：AghaBalaSar and Hamed；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为 $n$ 的排列。每次从位置 $i$ 出发，可以一步移动到任意左侧位置，或移动到右侧第一个满足 $p_j>p_i$ 的位置（若存在）；对每个有序位置对求最少步数，不可达记为 $0$，输出所有 $f(i,j)$ 的总和。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -245,17 +231,13 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2268/problem/E",
           "editorialUrl": "",
-          "primaryTopic": "数据结构",
-          "secondaryTopics": [
-            "代数、矩阵与多项式",
-            "树结构",
-            "数论与同余"
-          ],
+          "primaryTopic": "树结构",
+          "secondaryTopics": [],
           "originalTags": [
             "data structures",
             "fft"
           ],
-          "statementBrief": "题面已抓取：Kia Kio and Tree of Life；本地暂无可用题解正文。",
+          "statementBrief": "给定数组的连续区间可任选一个位置作根，再用左侧区间和右侧区间递归构造左右子树，因此会得到所有合法二叉树。删去每条边后，将两部分数组元素的按位异或值相加得到树的价值，要求所有合法树的价值总和并对 $998244353$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -271,15 +253,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2268/problem/F",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "动态规划与状态设计",
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms"
           ],
-          "statementBrief": "题面已抓取：Deglado；本地暂无可用题解正文。",
+          "statementBrief": "给定一个 $2n\\times2n$ 的网格，保证每列都是 $1$ 到 $2n$ 的排列。每次选择相邻两行和相邻两列组成的 $2\\times2$ 子网格，同时交换这两列中的上下两个元素；要求在至多 $n\\binom{2n}{2}+9n$ 次操作内，使所有列都从上到下递增，否则输出无解。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
