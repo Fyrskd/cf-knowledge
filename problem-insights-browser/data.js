@@ -1,17 +1,17 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-09-25",
+  "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1745,
+    "total_problems": 1746,
     "source_total_problems": 1749,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 1745,
-    "with_editorial_brief": 1514,
-    "with_solution_brief": 1515,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 1746,
+    "with_editorial_brief": 1515,
+    "with_solution_brief": 1516,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 686,
+    "ai_override_count": 687,
     "primary_topic_count": 13,
     "contest_count": 278,
     "rating_min": 800,
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 74,
-    "构造与贪心": 583,
+    "构造与贪心": 584,
     "图论与网络流": 111,
     "动态规划与状态设计": 168,
     "数论与同余": 158,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 16
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 593,
+    "ai_generated_with_editorial": 594,
     "ai_generated_partial_editorial": 30,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -40343,8 +40343,8 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-12-23",
       "url": "https://codeforces.com/contest/1909",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 9,
-      "maxRating": 3000,
+      "problemCount": 10,
+      "maxRating": 3500,
       "problems": [
         {
           "key": "1909A",
@@ -40583,6 +40583,34 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "将三元组表示为分界点 $(a,b)$，其中 $x=s[1,a]$、$y=s[a+1,b]$、$z=s[b+1,n]$。按 $|y|$ 处理，利用前缀和后缀失配位置确定连续有效区间，并用滚动哈希判断匹配，整体复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1909H",
+          "index": "H",
+          "slot": "H",
+          "title": "Parallel Swaps Sort",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1909/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/123584",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures"
+          ],
+          "statementBrief": "给定一个$1$到$n$的排列。一次操作选择长度为偶数的区间$[l,r]$，并同时交换其中的相邻对$(l,l+1),(l+2,l+3),\\ldots,(r-1,r)$；需要输出不超过$10^6$次操作，使最终排列变为$p_i=i$，无需最小化操作次数。",
+          "transformedStatement": "将一次合法操作限制为所有相邻交换对都处于逆序状态，即区间内每个左元素都大于其右邻居。问题转化为两轮消除这种交错逆序结构：先固定前缀，再从右侧固定后缀。",
+          "keyObservations": [
+            "只执行每一对相邻元素均满足左值大于右值的区间操作，因此一次操作中的所有交换都直接消除逆序；取以当前位置结尾的最长可操作区间可保证处理范围最大。",
+            "从左到右处理后，把满足$a_i<a_{i-1}$的位置标为B，其余标为A；A元素始终保持为A，A对应的数值递增，且B不会连续出现，这些不变量支撑后续寻找区间。",
+            "从右到左再次执行同样规则时，当前位置会成为A，并且后缀逐步固定为正确的连续值；因此两轮处理后整个排列有序。",
+            "B元素的相对次序不变，最长可操作后缀可由B的当前位置之和判定；每次操作只需让受影响的B位置减一，并将所需次数归零的B转为A。"
+          ],
+          "solutionBrief": "先从左到右、再从右到左，反复对以当前位置结尾的最长可操作偶数区间执行并行相邻交换。用线段树维护A/B类型、B的当前位置及其转为A所需次数，支持区间减一和批量转化；总操作次数为$2n-3$，时间复杂度为$O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
         {

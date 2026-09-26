@@ -1,5 +1,193 @@
 [
   {
+    "contestId": 2269,
+    "index": "B",
+    "name": "KiaKio and Squared Numbers",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "tags": [
+      "brute force",
+      "implementation"
+    ]
+  },
+  {
+    "contestId": 2269,
+    "index": "A",
+    "name": "SauSaGe Bank",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "tags": [
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2268,
+    "index": "F",
+    "name": "Deglado",
+    "type": "PROGRAMMING",
+    "points": 3250.0,
+    "tags": [
+      "constructive algorithms"
+    ]
+  },
+  {
+    "contestId": 2268,
+    "index": "E",
+    "name": "Kia Kio and Tree of Life",
+    "type": "PROGRAMMING",
+    "points": 2750.0,
+    "tags": [
+      "data structures",
+      "fft"
+    ]
+  },
+  {
+    "contestId": 2268,
+    "index": "D",
+    "name": "AghaBalaSar and Hamed",
+    "type": "PROGRAMMING",
+    "points": 2250.0,
+    "tags": [
+      "dp"
+    ]
+  },
+  {
+    "contestId": 2268,
+    "index": "C",
+    "name": "KiaKio and Energy Intervals",
+    "type": "PROGRAMMING",
+    "points": 1750.0,
+    "tags": [
+      "binary search",
+      "bitmasks",
+      "data structures",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2268,
+    "index": "B",
+    "name": "What a SauSaGe! It's All Meat",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "tags": [
+      "bitmasks",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2268,
+    "index": "A",
+    "name": "K Is Important",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "tags": [
+      "constructive algorithms",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2267,
+    "index": "G",
+    "name": "New LRT",
+    "type": "PROGRAMMING",
+    "points": 3000.0,
+    "tags": [
+      "dp"
+    ]
+  },
+  {
+    "contestId": 2267,
+    "index": "F2",
+    "name": "XOR Transformations (Hard Version)",
+    "type": "PROGRAMMING",
+    "points": 2000.0,
+    "tags": [
+      "bitmasks",
+      "brute force",
+      "data structures",
+      "dfs and similar",
+      "greedy",
+      "sortings",
+      "strings",
+      "trees"
+    ]
+  },
+  {
+    "contestId": 2267,
+    "index": "F1",
+    "name": "XOR Transformations (Easy Version)",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "tags": [
+      "bitmasks",
+      "brute force",
+      "implementation",
+      "sortings"
+    ]
+  },
+  {
+    "contestId": 2267,
+    "index": "E",
+    "name": "Clean Substrings",
+    "type": "PROGRAMMING",
+    "points": 1750.0,
+    "tags": [
+      "combinatorics",
+      "data structures",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2267,
+    "index": "D",
+    "name": "Backrooms Hill",
+    "type": "PROGRAMMING",
+    "points": 1250.0,
+    "tags": [
+      "constructive algorithms",
+      "dp",
+      "greedy",
+      "sortings",
+      "two pointers"
+    ]
+  },
+  {
+    "contestId": 2267,
+    "index": "C",
+    "name": "GCD Treasury",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "tags": [
+      "greedy",
+      "math",
+      "number theory"
+    ]
+  },
+  {
+    "contestId": 2267,
+    "index": "B",
+    "name": "Fashionable Array",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "tags": [
+      "brute force",
+      "constructive algorithms",
+      "sortings"
+    ]
+  },
+  {
+    "contestId": 2267,
+    "index": "A",
+    "name": "Turn Into a Palindrome",
+    "type": "PROGRAMMING",
+    "points": 250.0,
+    "tags": [
+      "greedy",
+      "strings"
+    ]
+  },
+  {
     "contestId": 2266,
     "index": "H",
     "name": "Deque Malfunction",
@@ -45,6 +233,7 @@
     "name": "Prime Destruction",
     "type": "PROGRAMMING",
     "tags": [
+      "brute force",
       "dp",
       "math",
       "number theory"
