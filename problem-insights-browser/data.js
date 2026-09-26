@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1858,
+    "total_problems": 1864,
     "source_total_problems": 1864,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 1858,
-    "with_editorial_brief": 1616,
-    "with_solution_brief": 1617,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1864,
+    "with_editorial_brief": 1622,
+    "with_solution_brief": 1623,
     "missing_editorial_brief": 241,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 799,
+    "ai_override_count": 805,
     "primary_topic_count": 13,
-    "contest_count": 294,
+    "contest_count": 295,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 78,
-    "构造与贪心": 624,
+    "构造与贪心": 626,
     "图论与网络流": 116,
-    "动态规划与状态设计": 176,
-    "数论与同余": 173,
+    "动态规划与状态设计": 177,
+    "数论与同余": 174,
     "组合计数与概率": 144,
-    "数据结构": 153,
+    "数据结构": 154,
     "几何": 39,
-    "树结构": 119,
+    "树结构": 120,
     "代数、矩阵与多项式": 17,
     "交互": 74,
     "基础实现与模拟": 79,
     "博弈": 66
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 692,
+    "ai_generated_with_editorial": 698,
     "ai_generated_partial_editorial": 33,
     "missing_editorial": 241,
     "manual_override": 891,
@@ -7086,6 +7086,201 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：四平方定理把最短路答案压到 4 以内。先预处理每个差值能否表示为两平方和，以及需要向区间外跳的两平方差条件；询问时依次判 1 步、2 步。若不行，枚举不超过 √n 个第一跳平方，检查新点到终点是否 2 步可达；仍不行则为 4。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2230,
+      "name": "Educational Codeforces Round 190 (Rated for Div. 2)",
+      "date": "2026-05-18",
+      "url": "https://codeforces.com/contest/2230",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "2230A",
+          "index": "A",
+          "slot": "A",
+          "title": "Optimal Purchase",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2230/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/153834",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 名学生需要课程权限：个人钥匙每把花费 $a$，只能服务 1 人；团体钥匙每把花费 $b$，可服务至多 3 人且不足 3 人时价格不变。可购买任意数量并分配给学生，要求覆盖所有学生并求最小总花费。",
+          "transformedStatement": "把学生划分为若干个 3 人满组和至多一个尾组；每个满组、尾组选择个人钥匙或团体钥匙，但由团体钥匙的固定价格可将最优方案压缩为三种统一组合的费用比较。",
+          "keyObservations": [
+            "将学生按每组最多 3 人划分为 $c=\\lfloor n/3\\rfloor$ 个满组和一个含 $d=n\\bmod 3$ 人的尾组，任意购买方案都可归入这些组的处理方式。",
+            "由于团体钥匙价格与人数无关，若为较小的尾组购买团体钥匙，则为人数更多的满组购买也不会更差，因此只需考虑按组大小形成的三种整体方案。",
+            "三种方案分别对应全买个人钥匙、满组买团体钥匙且尾组买个人钥匙、所有组都买团体钥匙，答案因此是三个总价的最小值。"
+          ],
+          "solutionBrief": "令 $c=\\lfloor n/3\\rfloor$、$d=n\\bmod 3$，计算 $n a$、$d a+c b$、$(c+1)b$ 三种方案的费用并取最小值；当 $d=0$ 时第三项会被第二项自然淘汰。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2230B",
+          "index": "B",
+          "slot": "B",
+          "title": "Digit String",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2230/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/153834",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个只含数字 $1$ 到 $4$ 的字符串，可以删除任意字符，剩余字符顺序不变。若剩余字符串的任意非空子序列都不能组成 $4$ 的倍数，则称其美丽；要求最少删除多少个字符使字符串美丽。",
+          "transformedStatement": "先删除所有会单独形成 $4$ 的数字 $4$，再把问题转化为：保留序列中不能出现奇数位于数字 $2$ 之前，因此选择一个分界点，左侧只保留 $2$、右侧只保留 $1$ 或 $3$，最大化保留数量。",
+          "keyObservations": [
+            "数字 $4$ 单独就能组成 $4$，因此任何保留下来的 $4$ 都会破坏美丽性，必须全部删除。",
+            "删除 $4$ 后，按末两位判断整除性，相关危险子序列只可能是 $12$ 或 $32$；因此美丽序列不能出现奇数之后的数字 $2$。",
+            "满足条件的保留序列必能表示为“前缀中的若干 $2$ 加后缀中的若干 $1/3$”，枚举分界点并最大化保留字符数即可。",
+            "用前缀偶数计数和后缀奇数计数维护每个分界点，便可在线性时间内求出最大保留长度，从而得到删除数。"
+          ],
+          "solutionBrief": "先忽略或删除所有 $4$。枚举保留序列中“取 $2$ 的前缀”和“取 $1/3$ 的后缀”的分界点，统计两部分字符数并取最大值；答案为原串长度减去最大保留长度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2230C",
+          "index": "C",
+          "slot": "C",
+          "title": "Arrange the Numbers in a Circle",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2230/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/153834",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定每个数字的牌数，从中选牌排成至少三张的圆环；圆环中每个连续三张牌都必须至少有两张数字相同。求满足条件时最多能选多少张牌，无法选出三张则输出 $0$。",
+          "transformedStatement": "最优方案会按数字整组取牌。把数量为 1 的数字看作需要被支撑的单牌，把数量至少为 2 的数字看作提供支撑的牌组；每张单牌需要插入某个牌组的两对相同牌之间。",
+          "keyObservations": [
+            "若某个数字取出至少一张牌，就可以把该数字的所有牌加入圆环；新增牌只会产生含有相邻两张相同牌的三元组，因此最优解按数字整组选择。",
+            "数量为 1 的牌必须被夹在同一数字的两张牌之间，且左右各需要一对该数字；因此数量为 $c_j\\ge2$ 的数字最多支持 $\\lfloor c_j/2\\rfloor-1$ 张单牌。",
+            "若只有一个数字的数量超过 1，它的首尾两张牌可以同时充当两侧的支撑，使支持数量改为 $\\lfloor c_j/2\\rfloor$。",
+            "非单牌无需其他数字支撑，删除它们不会带来收益；所以保留所有数量至少为 2 的牌，再保留不超过总支持数的单牌即可。"
+          ],
+          "solutionBrief": "统计单牌数量 $U$，以及所有 $c_i\\ge2$ 的牌数总和 $M$。若有多个非单牌数字，支持数为各项 $\\lfloor c_i/2\\rfloor-1$ 之和；若只有一个，则为 $\\lfloor c_i/2\\rfloor$。答案为 $M+\\min(U,支持数)$，若结果小于 3 则输出 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2230D",
+          "index": "D",
+          "slot": "D",
+          "title": "Good Schedule",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2230/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/153834",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定两座城市连续 $n$ 天播放的剧集编号，选择一个连续日期段。每天两人只会观看自己尚未看过且正好应观看的下一集；要求每天要么同时观看同一集，要么都不观看，求满足条件的日期段数量。",
+          "transformedStatement": "对每个左端点 $L$，寻找最大的可行右端点。按剧集编号 $1,2,\\dots$ 比较两人的下一出现日期：首次不同的位置决定区间必须提前结束；若相同，则继续检查下一集，并用后向 DP 复用结果。",
+          "keyObservations": [
+            "若区间 $[L,R]$ 满足条件，则缩短右端点后的区间也满足，因此只需为每个 $L$ 求最大的可行右端点。",
+            "固定 $L$ 后，若两人接下来观看第 $1$ 集的日期不同，较早日期会造成一方观看而另一方不观看，答案立即截止在该日期前。",
+            "若两人同时观看某一集，则只需递归检查下一集的出现位置；因此问题可转化为沿连续剧集数比较两条日程的后继位置。",
+            "从后向前维护每集在两张日程中的下一出现位置，并对两人同时观看的日期记录后续失败位置，即可复用状态计算每个起点的最大右端点。"
+          ],
+          "solutionBrief": "对每个起点维护两人的各集下一出现位置。若第 1 集位置不同，最大右端点是较早位置减一；若相同，则转移到该共同日期之后检查下一集。按日期从后向前计算这些转移，最后累加每个起点的可行区间数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2230E",
+          "index": "E",
+          "slot": "E",
+          "title": "Minimum Influence",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2230/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/153834",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "implementation",
+            "math",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定 $n$ 条新闻，每条有政治值 $p_i$ 和文化值 $c_i$；每位用户有政治容忍度 $tp_j$、文化容忍度 $tc_j$ 及影响区间长度 $d_j$。按题目给定的分段规则计算每条新闻对用户的两类影响之和，并对每位用户求所有新闻中的最小总影响。",
+          "transformedStatement": "对固定用户，把新闻按 $p_i$ 和 $c_i$ 相对两个阈值分别划分为低于容忍、处于影响区间和达到上限的区域。四个单维区域只需查询另一维的最小值，双维中间区域则由全局最小的 $p_i+c_i$ 覆盖。",
+          "keyObservations": [
+            "当 $p_i<tp_j$ 时政治贡献为零，因此该区域只需找 $c_i$ 最小的新闻；对称地，$c_i<tc_j$ 时只需找 $p_i$ 最小者。",
+            "当 $p_i\\ge tp_j+d_j$ 时政治贡献固定为 $tp_j+d_j$，所以该区域仍只需按 $c_i$ 的最小值筛选；文化维度同理。",
+            "两项都处于影响区间时，影响等于 $p_i+c_i$；即使全局最小和不在该矩形内，其实际影响也不超过这个和，因此全局最小的 $p_i+c_i$ 已足以覆盖该区域最优解。",
+            "四类阈值查询都可用按坐标值预处理的前缀/后缀最小值回答，配合全局最小 $p_i+c_i$，每个用户只需检查五个候选。"
+          ],
+          "solutionBrief": "对每个用户分别查询 $p<tp$、$c<tc$、$p\\ge tp+d$、$c\\ge tc+d$ 四类区域的对应最小值，再与全局最小 $p_i+c_i$ 取最小。按值域预处理前缀和后缀最小值，整体复杂度为 $O(n+m+A)$，其中 $A=10^6$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2230F",
+          "index": "F",
+          "slot": "F",
+          "title": "Game on Growing Tree",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/2230/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/153834",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "博弈",
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "dfs and similar",
+            "divide and conquer",
+            "dp",
+            "games",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "树从一个白色顶点开始，Alice 首回合选择顶点放置棋子并染红；之后她每回合必须把棋子移到相邻白点并染红，Bob 每回合任选白点染蓝，无法继续移动或无白点时结束。给定按顺序不断挂接新顶点的过程，求每次得到的树上双方最优对弈时的红点数量。",
+          "transformedStatement": "固定 Alice 的起点并以它为根后，Alice 只需向下选择一条路径，Bob 每次优先封锁当前点的一个子节点。令 $dp_u$ 表示轮到 Bob 且棋子在 $u$ 时还能走的步数，节点转移为子节点 DP 值的次大值加一。",
+          "keyObservations": [
+            "固定起点后，Alice 的路径只能沿以起点为根的树向下延伸，因此问题变成 Bob 每回合阻断一个子树入口、Alice 选择剩余入口的对抗过程。",
+            "若当前位于 $u$ 且轮到 Bob，Bob 阻断 $u$ 的一个子节点最有效；于是 $dp_u$ 等于所有子节点 DP 值中的次大值加一，因为最大值会被 Bob 封锁。",
+            "换根时某个顶点至多有一个被排除的子节点，预存子节点 DP 值的前三大值即可在删除一个子节点后仍以 $O(1)$ 重算次大值。",
+            "新增顶点不会降低答案，且达到 $k$ 步需要递归产生至少二叉的深度结构，所以答案至多为 $O(\\log n)$；因此各查询答案形成若干单调连续段，可二分每段边界。"
+          ],
+          "solutionBrief": "先对固定树用换根 DP 求任意起点的最优得分：$dp_u$ 取子节点 DP 值的次大值加一，并用前三大值支持换根。随着插点答案单调不降且只有 $O(\\log q)$ 个不同值，预处理后对每个答案段二分边界，整体为 $O(q\\log^2 q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
