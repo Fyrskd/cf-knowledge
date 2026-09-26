@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1771,
+    "total_problems": 1778,
     "source_total_problems": 1778,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1771,
-    "with_editorial_brief": 1540,
-    "with_solution_brief": 1541,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1778,
+    "with_editorial_brief": 1547,
+    "with_solution_brief": 1548,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 712,
+    "ai_override_count": 719,
     "primary_topic_count": 13
   },
   "records": [
@@ -2798,6 +2798,307 @@
           "model": "gpt-5.6-luna",
           "generated_at": "2026-09-21T18:02:04+00:00",
           "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 66,
+      "problem_key": "1790A",
+      "contest_id": 1790,
+      "title": "Polycarp and the Day of Pi",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1790/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/111948",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "implementation",
+        "math",
+        "strings"
+      ],
+      "statement_brief": "每个测试用例给出一串 Polycarp 记下的数字，它本想表示圆周率从开头开始的数字序列。需要从首位起检查这串数字与圆周率前缀连续相同的长度，并输出正确记住的首位数。",
+      "transformed_statement": "将问题转化为求字符串 $n$ 与圆周率前 $30$ 个字符的最长公共前缀（LCP）：从左到右比较，首个失配处截断，或在 $n$ 结束时停止。",
+      "key_observations": [
+        "题目答案等价于字符串 $n$ 与圆周率小数表示前 $30$ 个字符的最长公共前缀长度，因此无需处理圆周率的无限展开。",
+        "从首字符开始逐位比较；首次不相等的位置之后不可能继续算作正确记忆，答案立即确定。",
+        "若比较过程中 $n$ 提前结束，则其全部字符都匹配，答案就是 $|n|$。"
+      ],
+      "solution_brief": "预先保存圆周率表示的前 $30$ 个字符，对每个字符串从左到右比较；遇到首个不同字符就停止，否则比较到字符串末尾，输出匹配长度。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:37:18+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 67,
+      "problem_key": "1790B",
+      "contest_id": 1790,
+      "title": "Taisia and Dice",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1790/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/111948",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定 $n$ 个六面骰子的朝上点数总和 $s$。猫拿走其中一个最大点数的骰子后，剩余 $n-1$ 个点数之和为 $r$；需要构造任意一组满足每个点数在 $1$ 到 $6$、总和为 $s$ 且删除一个最大值后剩余和为 $r$ 的序列。",
+      "transformed_statement": "把问题分成两部分：先确定被删除的最大点数 $mx=s-r$，再构造 $n-1$ 个不超过 $mx$ 的正整数使其和为 $r$；通过拆分已有点数增加元素数量，最后补回 $mx$。",
+      "key_observations": [
+        "被偷骰子的点数必为 $mx=s-r$，且它是最大值，因此其余所有点数都不能超过 $mx$。",
+        "先用若干个 $mx$ 和至多一个余数表示剩余总和 $r$，这样每个已构造点数天然满足不超过 $mx$。",
+        "若当前骰子数量不足 $n-1$，将一个点数 $x$ 拆成 $x-1$ 与 $1$，总和不变且不会超过 $mx$，可持续补足数量。",
+        "最后加入一个点数为 $mx$ 的骰子即可恢复总和为 $s$，并保证它确实是最大值之一。"
+      ],
+      "solution_brief": "令被偷点数为 $mx=s-r$。先用若干个 $mx$ 及一个可能的余数构造总和 $r$，再反复把较大的点数拆成 $x-1$ 和 $1$，直到得到 $n-1$ 个骰子，最后加入 $mx$。复杂度为 $O(n^2)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:37:08+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 68,
+      "problem_key": "1790C",
+      "contest_id": 1790,
+      "title": "Premutation",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1790/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/111948",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定同一个长度为 $n$ 的排列生成的 $n$ 个长度为 $n-1$ 的序列：每次删除排列中的一个位置，并且每个位置恰好删除一次；这些序列顺序已被打乱。请还原原排列。",
+      "transformed_statement": "把每行看作原排列删除一个位置后的结果：删除首位置的唯一一行不再以原首元素开头，其余 $n-1$ 行的首元素都相同，因此答案等于多数首元素加上异常行。",
+      "key_observations": [
+        "原排列的首元素只会在删除其他位置的 $n-1$ 个序列中保留，因此它是所有序列首元素中的多数值。",
+        "唯一一个首元素不同的序列正是删除原排列首元素后得到的序列，所以它完整给出排列的后缀顺序。",
+        "将多数首元素放到异常序列之前即可恢复原排列；每个位置恰好被删除一次保证该构造唯一且正确。"
+      ],
+      "solution_brief": "统计所有序列的首元素，出现 $n-1$ 次的值就是原排列首元素。找到首元素不同的那一行，将该值插到行首，即得到答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:36:48+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 69,
+      "problem_key": "1790D",
+      "contest_id": 1790,
+      "title": "Matryoshkas",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1790/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/111948",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "data structures",
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "给出一批尺寸可能被打乱的娃娃。需要把每个娃娃恰好分配到某个集合中，每个集合包含一段连续递增的正整数尺寸且全部使用，求最少能组成多少个集合。",
+      "transformed_statement": "将问题转化为按尺寸排列的链覆盖：每条链在相邻尺寸间延续，尺寸计数增加时无法由旧链承接的部分必须新开链；缺失尺寸视为计数为零。",
+      "key_observations": [
+        "把所有集合看成从某个起点开始、每个尺寸恰好递增 $1$ 的链；混合顺序不影响划分，只需统计每种尺寸出现次数。",
+        "在尺寸 $s$ 处，能由前一尺寸的链继续使用的数量至多为前一尺寸的计数；若 $cnt_s>cnt_{s-1}$，多出的 $cnt_s-cnt_{s-1}$ 个娃娃必须开启新集合。",
+        "将每个出现尺寸的后继尺寸 $s+1$ 也加入处理坐标，可把缺失尺寸视为计数 $0$，从而正确处理不连续尺寸并在断点重新开链。",
+        "所有计数下降只会结束已有集合，不会增加集合总数，因此答案等于按尺寸扫描时所有正增量之和。"
+      ],
+      "solution_brief": "统计各尺寸出现次数，并把每个尺寸的后继也纳入有序扫描。设当前与前一尺寸计数分别为 $x,y$，只需将 $\\max(0,x-y)$ 加入答案；计数下降对应结束集合，不影响答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:36:33+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 70,
+      "problem_key": "1790E",
+      "contest_id": 1790,
+      "title": "Vlad and a Pair of Numbers",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1790/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/111948",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms"
+      ],
+      "statement_brief": "给定正整数 $x$，需要为每组数据构造正整数 $a,b$，使按位异或 $a\\oplus b$ 等于 $x$，且算术平均数 $(a+b)/2$ 也等于 $x$；若不存在则输出 $-1$。",
+      "transformed_statement": "利用 $a+b=(a\\oplus b)+2(a\\&b)$，原问题等价于寻找异或为 $x$ 且按位与为 $x/2$ 的一对数；进一步用 $a=3x/2,b=x/2$ 直接验证可行性。",
+      "key_observations": [
+        "由恒等式 $a+b=(a\\oplus b)+2(a\\&b)$，代入两式都等于 $x$ 可得 $a\\&b=x/2$，因此 $x$ 必须为偶数。",
+        "按位与和按位异或不可能在同一位同时为 $1$，所以还必须满足 $x\\&(x/2)=0$；该条件排除了构造中的位冲突。",
+        "若条件成立，取 $a=3x/2$、$b=x/2$，两数的和为 $2x$，且无冲突位时异或恰为 $x$，因此构造充分。"
+      ],
+      "solution_brief": "对每个 $x$ 检查是否为偶数且满足 $x\\&(x/2)=0$。满足时输出 $a=3x/2,b=x/2$，否则输出 $-1$；按位检查复杂度为 $O(\\log x)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:36:14+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 71,
+      "problem_key": "1790F",
+      "contest_id": 1790,
+      "title": "Timofey and Black-White Tree",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1790/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/111948",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "图论与网络流",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "dfs and similar",
+        "divide and conquer",
+        "graphs",
+        "greedy",
+        "math",
+        "shortest paths",
+        "trees"
+      ],
+      "statement_brief": "给定一棵树，初始只有顶点 $c_0$ 是黑色，其余为白色；按固定顺序 $c_1,c_2,\\ldots,c_{n-1}$，每次选择对应白色顶点并将其染黑。每次操作后，输出所有不同黑色顶点对之间距离的最小值。",
+      "transformed_statement": "把过程转化为动态维护多源最近距离：$d[v]$ 表示顶点到最近黑点的距离，新增黑点后只需局部传播更短距离，并检查传播边界形成的黑点对距离，从而更新全局最小值。",
+      "key_observations": [
+        "新增黑点与已有黑点的最近距离就是它染黑前的 $d[c_i]$，因此可直接用它更新全局最小距离 $ans$，且 $ans$ 只会不增。",
+        "从新黑点出发时，只需进入满足 $d[v]<ans$ 的顶点；若经 $v$ 能让邻点 $u$ 的距离变小就继续松弛，否则边两侧已有最近黑点，可用 $d[v]+1+d[u]$ 更新答案。",
+        "前 $\\lceil\\sqrt n\\rceil$ 次操作后必有 $ans\\le\\lceil\\sqrt n\\rceil$，所以之后搜索范围被全局最小黑点距离严格限制，避免每次遍历整棵树。",
+        "每个进入搜索的顶点都至少使自己的 $d$ 减少 $1$，而后期 $d$ 不超过 $\\lceil\\sqrt n\\rceil$；连同前期至多 $\\lceil\\sqrt n\\rceil$ 次完整遍历，总复杂度为 $O(n\\sqrt n)$。"
+      ],
+      "solution_brief": "维护每个顶点到最近黑点的距离 $d$ 和当前答案 $ans$。按给定顺序加入新黑点，并从该点进行受 $d[v]<ans$ 限制的 DFS：能松弛就继续，否则利用边两侧距离更新答案；通过距离下降次数摊还，总复杂度为 $O(n\\sqrt n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:35:50+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 72,
+      "problem_key": "1790G",
+      "contest_id": 1790,
+      "title": "Tokens on Graph",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1790/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/111948",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "graphs",
+        "shortest paths"
+      ],
+      "statement_brief": "给定一张无向连通图，部分顶点放有 token，部分顶点放有 bonus；玩家按题目规定移动 token，可任意顺序使用 bonus，且同一 bonus 可无限使用、不会移动，多个 token 可以到达同一顶点。顶点 $1$ 是终点，判断是否能让任意 token 到达它；若 token 初始就在 $1$，立即获胜。",
+      "transformed_statement": "把 bonus 顶点诱导出的结构拆成连通块：先用最短路确定一个负责到达终点的主 token，再把其他 token 在各 bonus 连通块内或邻接处产生的能力转化为额外移动次数，或判断其是否能制造无限移动。",
+      "key_observations": [
+        "先按到终点 $1$ 的最短距离选择最接近的 token 作为主 token；若没有 token 能到达终点，则必败，其余 token 只负责提供额外移动机会。",
+        "将所有 bonus 顶点按图中的连通关系划分为连通块；一个 token 只有位于该块内或与该块相邻时，才会影响该块带来的额外移动。",
+        "大小为 $1$ 的 bonus 连通块至多为相邻 token 提供 $1$ 次额外移动，因此可将所有这类贡献累加后与主 token 的最短距离比较。",
+        "若较大的 bonus 连通块内或邻接处存在合适 token，则它能与主 token 交替移动并形成无限移动；这时无需继续计数即可判定胜利。"
+      ],
+      "solution_brief": "计算到终点的最短距离，选最近 token 主攻；再按 bonus 顶点连通块统计额外移动。单点块贡献一次，大块若有相关 token 可形成无限移动，否则比较额外移动总数与主 token 距离。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:35:30+00:00",
+          "quality_flags": [
+            "movement_rules_missing_from_input",
+            "statement_truncated"
+          ]
         }
       },
       "manual_override": false,
