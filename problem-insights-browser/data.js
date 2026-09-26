@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1747,
+    "total_problems": 1748,
     "source_total_problems": 1749,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 1747,
-    "with_editorial_brief": 1516,
-    "with_solution_brief": 1517,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 1748,
+    "with_editorial_brief": 1517,
+    "with_solution_brief": 1518,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 688,
+    "ai_override_count": 689,
     "primary_topic_count": 13,
     "contest_count": 278,
     "rating_min": 800,
@@ -55,11 +55,11 @@ window.CF_INSIGHTS_DATA = {
     "树结构": 113,
     "交互": 74,
     "基础实现与模拟": 69,
-    "博弈": 62,
+    "博弈": 63,
     "代数、矩阵与多项式": 16
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 595,
+    "ai_generated_with_editorial": 596,
     "ai_generated_partial_editorial": 30,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -36610,7 +36610,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-04-06",
       "url": "https://codeforces.com/contest/1951",
       "type": "Global",
-      "problemCount": 8,
+      "problemCount": 9,
       "maxRating": 3200,
       "problems": [
         {
@@ -36813,6 +36813,38 @@ window.CF_INSIGHTS_DATA = {
             "取 $g(x)=-\\frac{n}{m}\\binom{x}{2}$ 后方程成立，并由终态 $(m)$ 确定常数，初态答案为 $\\frac{n}{m}\\left(\\binom{m+1}{3}-\\sum_i\\binom{d_i+1}{3}\\right)$。"
           ],
           "solutionBrief": "按圆周顺序排序初始位置，计算相邻球间距 $d_i$。直接套用势函数结论，答案为 $\\frac{n}{m}\\left(\\binom{m+1}{3}-\\sum_i\\binom{d_i+1}{3}\\right)$，再用模 $10^9+7$ 的逆元计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1951H",
+          "index": "H",
+          "slot": "H",
+          "title": "Thanos Snap",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1951/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/128116",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "树结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "games",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定长度为 $2^k$ 的排列，双方先看到回合数 $t$。每轮 Alice 可在当前子数组内交换两个位置，随后对手选择保留左右哪一半，连续进行 $t$ 轮；双方最优行动后，要求分别求出 $t=1,2,\\ldots,k$ 时最终数组最大值的结果。",
+          "transformedStatement": "对固定的 $t$ 和候选阈值，将达到阈值的元素标为 $1$，问题转为 Alice 是否能保证对手最终选出的每个大小为 $2^{k-t}$ 的叶子子数组至少含一个 $1$。把所有可能选择组织成策略二叉树后，在树上匹配可转移的多余 $1$ 与缺失叶子。",
+          "keyObservations": [
+            "固定候选分数后，只需把数组元素按是否达到阈值二值化；Alice 能否保证最终最大值达到阈值，就变成每个最终子数组都必须保留至少一个高值元素。",
+            "将 Alice 的策略表示为深度为 $t$ 的完美二叉树，叶子对应大小为 $2^{k-t}$ 的最终子数组，分支对应对手选择保留哪一半。",
+            "一个叶子中超过一个的高值元素可以向其他缺少高值元素的叶子捐赠；在每个内部节点优先匹配“可捐赠数量”和“缺失叶子数量”，再把剩余量向父节点传递。",
+            "若根节点最终仍有缺失叶子，则无论如何都无法保证阈值；否则该自底向上的匹配过程本身就给出了 Alice 的可行策略，因此可对答案进行二分。"
+          ],
+          "solutionBrief": "对每个 $t$ 二分最终最大值阈值，并将元素转成是否达标的 $0/1$。用深度为 $t$ 的策略树自底向上维护缺失叶子数与可捐赠高值数，匹配后判断根部是否仍有缺失；按题解可在所有 $t$ 上达到 $O(n\\log^2 n)$，并可优化到 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
