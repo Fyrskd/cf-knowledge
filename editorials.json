@@ -4009,6 +4009,27 @@
     "raw_sha256": "ca287a2196d906ebd93f116c9e061de73dba20b2f56f418e0373120e3b2a3a96"
   },
   {
+    "url": "https://codeforces.com/blog/entry/154371",
+    "blog_entry_id": 154371,
+    "title": "Educational Codeforces Round 191 Editorial",
+    "author": "FelixArg",
+    "creation_time": "2026-06-09",
+    "original_locale": "ru",
+    "source": "codeforces-blog",
+    "label": "154371",
+    "section_count": 7,
+    "covered_problems": [
+      "2233A",
+      "2233B",
+      "2233C",
+      "2233D",
+      "2233E1",
+      "2233E2",
+      "2233F"
+    ],
+    "raw_sha256": "c524e7fd1c29f389d8f98cce9db98ab911fcc2bb8251f3452c0de3d411c51a51"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/154603",
     "blog_entry_id": 154603,
     "title": "Order Capital Round 2 (Codeforces Round 1104, Div. 1 + Div. 2) Editorial",

@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1851,
-    "source_total_problems": 1851,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 1851,
+    "total_problems": 1852,
+    "source_total_problems": 1858,
+    "filtered_out_problems": 6,
+    "with_statement_brief": 1852,
     "with_editorial_brief": 1610,
     "with_solution_brief": 1611,
-    "missing_editorial_brief": 240,
+    "missing_editorial_brief": 241,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 792,
     "primary_topic_count": 13,
-    "contest_count": 293,
+    "contest_count": 294,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -49,7 +49,7 @@ window.CF_INSIGHTS_DATA = {
     "图论与网络流": 116,
     "动态规划与状态设计": 176,
     "数论与同余": 172,
-    "组合计数与概率": 142,
+    "组合计数与概率": 143,
     "数据结构": 152,
     "几何": 39,
     "树结构": 119,
@@ -61,7 +61,7 @@ window.CF_INSIGHTS_DATA = {
   "statusCounts": {
     "ai_generated_with_editorial": 686,
     "ai_generated_partial_editorial": 33,
-    "missing_editorial": 240,
+    "missing_editorial": 241,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -5927,6 +5927,43 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "先利用异或等于和的充要条件，预处理每个顶点最近的违规祖先。查询按 LCA 分成两侧区间和跨 LCA 中段；两侧通过路径聚合统计，中段因非零元素数至多 $20$，用双指针或暴力处理。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2233,
+      "name": "Educational Codeforces Round 191 (Rated for Div. 2)",
+      "date": "2026-06-09",
+      "url": "https://codeforces.com/contest/2233",
+      "type": "Educational",
+      "problemCount": 1,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "2233E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Permutation Transmission (Easy Version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/2233/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/154371",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计",
+            "交互"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Permutation Transmission (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     },
