@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1749,
+    "total_problems": 1757,
     "source_total_problems": 1764,
-    "filtered_out_problems": 15,
-    "with_statement_brief": 1749,
-    "with_editorial_brief": 1518,
-    "with_solution_brief": 1519,
+    "filtered_out_problems": 7,
+    "with_statement_brief": 1757,
+    "with_editorial_brief": 1526,
+    "with_solution_brief": 1527,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 690,
+    "ai_override_count": 698,
     "primary_topic_count": 13
   },
   "records": [
@@ -69198,6 +69198,348 @@
           "path": "ai-generated-insights.json",
           "model": "gpt-5.6-sol",
           "generated_at": "2026-09-20T13:47:13+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1757,
+      "problem_key": "2266A",
+      "contest_id": 2266,
+      "title": "Good Contest",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2266/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/156984",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy"
+      ],
+      "statement_brief": "有 $n$ 名参与者参加含三道题的比赛，第 $i$ 题被解出的人数为 $a_i$。在所有符合这三个统计数的成绩表中，参与者每道题最多解一次；未解完三题者算弱者，求弱者人数的最小可能值。",
+      "transformed_statement": "将问题转化为最大化同时解出三题的参与者数量：弱者数就是 $n$ 减去全解人数。三题共同覆盖的人数最多为三个统计数的最小值，并可通过让同一批参与者全解三题达到。",
+      "key_observations": [
+        "同时解决三题的参与者数量不可能超过三项解题人数的最小值，因为他们必须分别计入每一项；因此上界是 $\\min(a_1,a_2,a_3)$。",
+        "让同一批 $\\min(a_1,a_2,a_3)$ 名参与者解决全部三题，再把各题剩余的解题次数分配给其他人，总能达到该上界；所以最大化全解人数可以直接取此最小值。",
+        "弱者人数等于总人数减去全解三题的人数，故答案为 $n-\\min(a_1,a_2,a_3)$。"
+      ],
+      "solution_brief": "先取三项解题人数的最小值，作为最多能同时解决三题的参与者数；该数量可以通过让同一批人解完三题实现。最少弱者人数为 $n-\\min(a_1,a_2,a_3)$，每组数据 $O(1)$ 计算。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:21:19+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1758,
+      "problem_key": "2266B",
+      "contest_id": 2266,
+      "title": "Three Piles",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2266/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/156984",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "games",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "有三堆石头，爱丽丝和鲍勃轮流从第三堆取任意数量（可取零）并加入自己的堆，连续两回合都取零时游戏结束。最终得分为两人石头数之差的绝对值，爱丽丝最大化得分、鲍勃最小化得分，求双方最优时的得分。",
+      "transformed_statement": "将每次取石头的过程压缩为两个端点选择：爱丽丝要么完全不取并让鲍勃也停止，要么一次取走第三堆全部石头；比较这两种结果的差值即可。",
+      "key_observations": [
+        "若 $a\\ge b$，爱丽丝立即拿走全部 $c$，鲍勃无石可拿，最终差值固定为 $a+c-b$。",
+        "若 $a<b$，爱丽丝选择不拿时，鲍勃也会不拿，得到差值 $b-a$；鲍勃拿石头只会让差值增大。",
+        "爱丽丝若决定拿石头，拿部分石头产生的差值位于“不拿”和“全拿”两种结果之间，因此只需比较拿 $0$ 个与拿全部 $c$ 个。",
+        "两种端点结果合并为答案 $\\max(|a-b|,a+c-b)$，每组数据只需常数次运算。"
+      ],
+      "solution_brief": "分别考虑初始两堆的大小。爱丽丝的最优选择只可能是拿 $0$ 个或拿走全部 $c$ 个，比较不拿得到的 $|a-b|$ 与全拿后的 $a+c-b$，答案为二者最大值，单组复杂度 $O(1)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:21:08+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1759,
+      "problem_key": "2266C",
+      "contest_id": 2266,
+      "title": "AND, OR, Sort!",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2266/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/156984",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "字符串"
+      ],
+      "original_tags": [
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "给定只含 $0$ 和 $1$ 的字符串。每次选择一个位置，将该位改成当前前缀的按位与或按位或结果，可重复操作；要求把字符串变为非降序，并求最少操作次数。",
+      "transformed_statement": "把非降序二进制串表示为一个分界点：分界点左侧全为 $0$、右侧全为 $1$。对每个分界点，代价是左侧原有 $1$ 的数量加上右侧原有 $0$ 的数量，并取最小值；首位为 $1$ 时单独处理为全 $1$。",
+      "key_observations": [
+        "当前缀同时含有 $0$ 和 $1$ 时，其按位与为 $0$、按位或为 $1$，因此可把被选位置改成任意目标位。",
+        "若首位是 $1$，它无法改变；非降序结果只能全为 $1$，所以答案就是原串中 $0$ 的数量。",
+        "若首位是 $0$，固定最终的分界点后，分界点左侧的 $1$ 必须改为 $0$，右侧的 $0$ 必须改为 $1$，代价等于两者数量之和。",
+        "分界点位于初始连续零段内部时不会优于移到该零段末端，因此只需扫描所有分界点并维护左侧 $1$ 数与右侧 $0$ 数。"
+      ],
+      "solution_brief": "先统计零的总数。若首位为 $1$，答案为零的总数；否则扫描每个分界点，维护左侧 $1$ 和右侧 $0$ 的数量，取其和的最小值，单个测试用例复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:20:56+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1760,
+      "problem_key": "2266D",
+      "contest_id": 2266,
+      "title": "Falling Concrete",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2266/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/156984",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "data structures",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "给定 $n$ 段道路及高度。每次可选 $i<j$，把第 $j$ 段搬到第 $i$ 段之前；被搬运段高度减少 $j-i$，原区间内其他段右移一位且高度各增加 $1$。可操作任意次，求最终连续等高路段的最大长度。",
+      "transformed_statement": "把每个路段标记为不变量 $a_i-i$，操作只改变路段顺序而不改变该标记。问题等价于从这些标记中选出最长连续整数集合，并按递减顺序排列，使对应路段形成等高连续段。",
+      "key_observations": [
+        "每个路段的“高度减位置”在任意操作后都不变：被搬运路段左移并降高，经过的路段右移并增高。",
+        "若连续 $k$ 个位置从 $p$ 开始且高度相同，则它们的不变量依次为 $h-p,h-p-1,\\ldots,h-p-k+1$，因此必须对应 $k$ 个连续整数。",
+        "反过来，任取不变量为连续整数的 $k$ 个路段，按不变量递减的顺序放置即可使它们高度相同；任意目标顺序都能通过逐个搬到当前位置实现。",
+        "因此答案等于所有不同的 $a_i-i$ 中最长连续整数段的长度，排序后扫描即可得到。"
+      ],
+      "solution_brief": "计算每个路段的不变量 $a_i-i$，去重并按升序扫描最长连续段。对应路段可按不变量递减顺序逐个搬运到目标位置，故该长度可实现且最优；复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:20:13+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1761,
+      "problem_key": "2266E",
+      "contest_id": 2266,
+      "title": "Prime Destruction",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2266/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/156984",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "数论与同余",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "dp",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定一个含 $n$ 个正整数的多重集合。每次可选取大于 $1$ 的元素 $x$ 及其质因子 $p$，删除一个 $x$ 并加入 $p$ 个 $x/p$；求将所有元素都变为不超过 $k$ 所需的最少操作次数。",
+      "transformed_statement": "把每个初始元素视为独立子问题：状态 $dp_i$ 表示单个 $i$ 被递归拆分直到所有叶子不超过 $k$ 的最小代价。一次按质因子拆分产生多个相同子问题，因此形成带乘法权重的递推，最后将各初始元素代价相加。",
+      "key_observations": [
+        "对一个初始值 $i$ 的处理可以独立于其他元素进行，因此总操作数等于所有 $dp_{a_i}$ 之和，避免了直接维护整个多重集合。",
+        "若 $i>k$ 时选择质因子 $p$，一次操作把它变成 $p$ 个 $i/p$；这些副本可独立处理，所以转移为 $dp_i=1+p imes dp_{i/p}$，并取所有质因子中的最小值。",
+        "由于 $i/p<i$，按数值递增计算即可保证转移状态已知；预先筛出每个数的不同质因子，就能高效枚举所有合法操作。"
+      ],
+      "solution_brief": "定义 $dp_i$ 为把单个 $i$ 全部变成不超过 $k$ 的元素所需最少操作数。$i\\le k$ 时为 $0$，否则枚举质因子 $p$，转移为 $1+p\\,dp_{i/p}$；答案为 $\\sum dp_{a_i}$，质因子由筛法预处理。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:19:57+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1762,
+      "problem_key": "2266F",
+      "contest_id": 2266,
+      "title": "MEX Replacement",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2266/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/156984",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "greedy",
+        "implementation",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "给定一个按“数值—出现次数”压缩表示的非负整数多重集合。每次可任选一个非空元素集合删除，并插入这些元素的 MEX；可操作任意次，要求整个过程中多重集合中曾出现过的最大整数。",
+      "transformed_statement": "将“能否出现 $M$”改为反向资源需求问题：从一个目标 $M$ 倒推制造它所需的各个更小数值副本，并统计原集合及操作过程中能提供的数量；再利用可行值的前缀单调性寻找最大目标。",
+      "key_observations": [
+        "从目标值 $M$ 反向考虑：制造一个 $M$ 至少需要一个 $0,1,\u0000dots,M-1$，因此可按值从大到小计算各层所需的副本数。",
+        "处理值 $x>0$ 时，若当前需要 $q$ 个而原有 $c$ 个，不足的每个副本都要额外消耗一份所有更小值，故需求变为 $q\\leftarrow q+\\max(0,q-c)$。",
+        "某个正数的多余副本无法补救更高的正数层，但可单独操作转成 $0$；因此只需累计多余副本，并在处理到 $0$ 时检查其是否足以满足最终需求。",
+        "连续缺失的 $d$ 个数值会使需求连续翻倍 $d$ 次，可整体乘以 $2^d$；若 $M$ 可行，则所有更小值也可行，从而答案具有单调性。"
+      ],
+      "solution_brief": "对候选 $M$ 做可行性检查：从 $M$ 向下处理已出现的值，按 $q\\leftarrow q+\\max(0,q-c)$ 更新需求，跳过缺失区间时批量翻倍，并累计多余正数转成的零。最终检查零的总供给是否满足需求；利用可行性的单调性二分最大 $M$，排序后单次检查为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:19:42+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1763,
+      "problem_key": "2266G",
+      "contest_id": 2266,
+      "title": "Modular Tree",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2266/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/156984",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "树结构",
+        "动态规划与状态设计"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "dp",
+        "greedy",
+        "math",
+        "number theory",
+        "trees"
+      ],
+      "statement_brief": "给定一棵以 1 为根的树，每个节点有初值 $a_i$ 和模数 $b_i$。每次可选一个节点，将其当前值加上所有直接子节点当前值后对 $b_i$ 取模，操作任意次，求最终所有节点值之和的最大值。",
+      "transformed_statement": "把每个节点抽象为一个可达值集合：其值始终是 $(a_u+g_ux)\\bmod b_u$。从叶到根用子树传来的步长和子节点初值和，通过最大公约数确定 $g_u$，再独立计算各节点的最大代表值。",
+      "key_observations": [
+        "对每个节点定义步长 $g_u$，其所有可达值恰为 $(a_u+g_ux)\\bmod b_u$；叶子的步长为 $b_u$，因此叶子实际上固定不变。",
+        "节点 $u$ 的子节点初值和为 $S_u$；非固定子节点能让该和变化若干个 $g_v$，所以 $u$ 的步长是 $\\gcd(b_u,S_u,\\{g_v\\mid g_v\\ne b_v\\})$。",
+        "节点达到自身最大可达值后，再只操作其子树不会改变该节点，因此可以按叶到根处理，并同时实现所有节点的最大值。",
+        "已知 $g_u$ 后，节点最大值为 $a_u+\\left\\lfloor\\frac{b_u-1-a_u}{g_u}\\right\\rfloor g_u$，将这些最大值求和即得答案。"
+      ],
+      "solution_brief": "从叶到根计算每个节点的可达步长 $g_u$：将模数、子节点初值和及所有非固定子节点步长取最大公约数。随后按公式求每个节点的最大可达值并求和，复杂度为 $O(n\\log 10^9)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:19:25+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1764,
+      "problem_key": "2266H",
+      "contest_id": 2266,
+      "title": "Deque Malfunction",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2266/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/156984",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "数据结构",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "dp",
+        "greedy"
+      ],
+      "statement_brief": "给定按顺序到达的数组 $b$，每个元素到达时必须压入双端队列前端、后端，或触发故障将其插入任意位置；任意时刻还可删除队首或队尾。所有元素处理完后，队列必须恰好为 $[1,2,\\ldots,n]$，求所需故障次数最小值，不可能时输出 $-1$。",
+      "transformed_statement": "为每个值 $1\\ldots n$ 选定一个最终保留的出现位置 $t_i$，其余出现都可直接清除。一个值无需故障当且仅当其位置是所有 $t_i$ 的前缀或后缀最小值，因此问题转化为最大化两类最小值的并集大小。",
+      "key_observations": [
+        "每个值只需保留一个到最终双端队列，其余到达元素都能从某一端压入后立即从同一端删除，因此只需选择各值的保留出现位置。",
+        "设值 $i$ 的保留位置为 $t_i$，它无需故障插入当且仅当 $t_i$ 是序列 $t_1,\u0012ldots,t_n$ 的前缀最小值或后缀最小值；两类计数在全局最小位置重复一次。",
+        "按值递增处理时，状态 $dp[p]$ 表示当前最小保留位置为 $p$ 时最多得到的前缀最小值数量；选择位置 $t$ 成为新最小值的转移只需查询所有 $p>t$ 的最大值。",
+        "固定全局最小位置后，前缀最小值和后缀最小值可以独立优化；对逆序值执行同样 DP，最终取 $\u0012max_p(L[p]+R[p]-1)$。"
+      ],
+      "solution_brief": "若有值未出现则答案为 $-1$。否则为每个值选择一个保留出现位置，用两次 DP 分别最大化前缀、后缀最小值数量，并在相同全局最小位置合并；答案为 $n$ 减去最多的免故障值数量。用线段树维护区间最大值并删除失效状态，复杂度为 $O(m\\log m)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:19:05+00:00",
           "quality_flags": []
         }
       },
