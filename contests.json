@@ -99,6 +99,17 @@
     "date": "2023-01-25"
   },
   {
+    "id": 1790,
+    "name": "Codeforces Round 847 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1674830100,
+    "relativeTimeSeconds": 115628312,
+    "date": "2023-01-27"
+  },
+  {
     "id": 1787,
     "name": "TypeDB Forces 2023 (Div. 1 + Div. 2, Rated, Prizes!)",
     "type": "CF",
