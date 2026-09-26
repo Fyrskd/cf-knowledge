@@ -4032,6 +4032,27 @@
     "raw_sha256": "923029b4d05d1ca9e628b34cdcab2f4c8673fc2c2a6be6b6d7d847b6d828485f"
   },
   {
+    "url": "https://codeforces.com/blog/entry/154698",
+    "blog_entry_id": 154698,
+    "title": "Codeforces Round 1107 (Div. 3) Editorial",
+    "author": "wakanda-forever",
+    "creation_time": "2026-06-23",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round 1107 (Div. 3) Editorial",
+    "section_count": 7,
+    "covered_problems": [
+      "2241A",
+      "2241B",
+      "2241C",
+      "2241D",
+      "2241E",
+      "2241F",
+      "2241G"
+    ],
+    "raw_sha256": "c880429b4b65d65e6483c90f25fc2bca3fbc14b73c792575299c44d4f8631d58"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/154788",
     "blog_entry_id": 154788,
     "title": "Codeforces Round 1105 (Div. 1, Div. 2) Editorial",
