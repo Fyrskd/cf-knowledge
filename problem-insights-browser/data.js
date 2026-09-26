@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1843,
+    "total_problems": 1851,
     "source_total_problems": 1851,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 1843,
-    "with_editorial_brief": 1602,
-    "with_solution_brief": 1603,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1851,
+    "with_editorial_brief": 1610,
+    "with_solution_brief": 1611,
     "missing_editorial_brief": 240,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 784,
+    "ai_override_count": 792,
     "primary_topic_count": 13,
-    "contest_count": 292,
+    "contest_count": 293,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 78,
-    "构造与贪心": 620,
+    "构造与贪心": 622,
     "图论与网络流": 116,
-    "动态规划与状态设计": 175,
-    "数论与同余": 170,
+    "动态规划与状态设计": 176,
+    "数论与同余": 172,
     "组合计数与概率": 142,
     "数据结构": 152,
     "几何": 39,
-    "树结构": 118,
+    "树结构": 119,
     "代数、矩阵与多项式": 17,
     "交互": 74,
-    "基础实现与模拟": 77,
-    "博弈": 65
+    "基础实现与模拟": 78,
+    "博弈": 66
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 678,
+    "ai_generated_with_editorial": 686,
     "ai_generated_partial_editorial": 33,
     "missing_editorial": 240,
     "manual_override": 891,
@@ -5680,6 +5680,252 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：计数对象不是染色本身，而是染色诱导的本质距离。先在每个子树中抽出可能的坏链；若一个坏链不含强制 1，或和最近的上方坏链含同一组强制 1，它不会产生新的遍历序，称为二阶坏链。于是答案等于“不含二阶坏链”的染色数。DP 沿 I1 的子树合并做，但额外区分当前最高坏链以及已经确定含二阶坏链的状态，最后丢掉会产生二阶坏链的部分。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2236,
+      "name": "Codeforces Round 1103 (Div. 3)",
+      "date": "2026-06-12",
+      "url": "https://codeforces.com/contest/2236",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "2236A",
+          "index": "A",
+          "slot": "A",
+          "title": "Games on the Train",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2236/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/154496",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定若干座高度为 $h_i$ 的塔，每座塔必须恰好一次增加一个整数 $x_i$，且 $1\\le x_i\\le k$。求能使所有塔高度相等的最小整数 $k$。",
+          "transformedStatement": "将目标高度固定为最高初始高度加一；此时每座塔所需增加量为 $mx+1-h_i$。问题转化为让这些增加量全部落在区间 $[1,k]$，其最大值由最低塔决定。",
+          "keyObservations": [
+            "设最高塔和最低塔分别为 $mx,mn$，最高塔至少增加 $1$，最低塔至多增加 $k$，因此统一后的高度必须满足 $mn+k\\ge mx+1$。",
+            "下界 $k\\ge mx-mn+1$ 可以达到：把所有塔统一到 $mx+1$，对高度为 $h_i$ 的塔增加 $x_i=mx+1-h_i$，其范围恰好是 $1\\le x_i\\le mx-mn+1$。",
+            "答案只由最高与最低塔的高度差决定，中间塔无需单独处理。"
+          ],
+          "solutionBrief": "扫描每组高度求最大值 $mx$ 和最小值 $mn$，答案为 $mx-mn+1$。必要性来自最高塔至少加 $1$、最低塔至多加 $k$；取统一高度 $mx+1$ 可证明该下界可行。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2236B",
+          "index": "B",
+          "slot": "B",
+          "title": "Tatar TV Show",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2236/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/154496",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的二进制字符串和整数 $k$，每次可选择 $i$，同时翻转位置 $i$ 与 $i+k$，操作次数不限。判断能否经过若干次操作将整个字符串变为全零。",
+          "transformedStatement": "把位置按对 $k$ 取模分成独立链；一次操作只翻转同一链中相邻的两个位置，因此问题等价于判断每条链上的 $1$ 的数量是否都是偶数。",
+          "keyObservations": [
+            "每次操作只翻转相差 $k$ 的两个位置，因此同一模 $k$ 的位置构成独立链，操作不会影响其他链。",
+            "对任意一条链，操作会使其中 $1$ 的数量变化为 $+2$、$0$ 或 $-2$，所以该链中 $1$ 的奇偶性是不变量；全零目标要求每条链的奇偶性都为偶数。",
+            "反复处理当前最左侧且不在末尾 $k$ 个位置的 $1$，可以把它消去；若最终仍有 $1$，它们位于末尾 $k$ 个位置且属于不同模类，因此每条对应链都有奇数个 $1$，不可能继续全部消除。"
+          ],
+          "solutionBrief": "按位置对 $k$ 取模，将字符串拆成若干独立链；统计每个模类中 $1$ 的数量，只有当所有数量均为偶数时才能通过操作变成全零。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2236C",
+          "index": "C",
+          "slot": "C",
+          "title": "Omsk Programmers",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2236/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/154496",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $a,b,x$，每次可任选一个数加 $1$，或将任选一个数替换为其除以 $x$ 的下取整结果。可按任意顺序重复操作，要求使两数相等，并求最少操作次数。",
+          "transformedStatement": "将过程重排为“先做若干次除法、再用加 $1$ 补齐差值”：始终令 $p\\le q$，只枚举把较大数逐次变为 $\\floor(q/x)$ 的状态，并计算每个状态的除法次数加当前差值。",
+          "keyObservations": [
+            "最优操作序列可以调整为先完成所有除以 $x$ 的操作，再只用加 $1$ 让两数相等；若加一后再除法，要么加一无效，要么两步可交换。",
+            "设当前较小值为 $p$、较大值为 $q$，已进行 $cnt$ 次除法，则此时补齐差值的代价是 $q-p+cnt$，因此每个除法阶段都应更新答案。",
+            "除法阶段只需继续将较大的数变为 $\floor(q/x)$；若两数相等即可停止，因为继续除法只会增加操作数而不会降低当前答案。"
+          ],
+          "solutionBrief": "令当前数对始终满足 $p\\le q$，枚举把较大数连续整除 $x$ 的阶段。每次用 $q-p+cnt$ 更新答案；若不相等则令 $q=\\floor(q/x)$，直到相等。每组复杂度为 $O(\\log_x a+\\log_x b)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2236D",
+          "index": "D",
+          "slot": "D",
+          "title": "Brand New Tatar TV Show",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2236/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/154496",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "dp",
+            "games",
+            "math"
+          ],
+          "statementBrief": "给定数组和整数$k$，Dabir原本先手；现在Arseniy代替他先删除一个任意元素，之后Egor与Dabir轮流删除元素，且除首步外每次选取的$y$必须满足$0\\le y-x\\le k$，其中$x$是上次删除的值。无法操作者输，要求判断是否存在首步能保证Egor无论Dabir如何应对都获胜。",
+          "transformedStatement": "将数组按数值分成若干组并从最大值向下处理：同一最大值组可以连续被取走，其胜负主要由组大小奇偶决定；只有相邻值差不超过$k$时，较小组才能把行动衔接到最大值组。由此递归删除无法衔接的最大组。",
+          "keyObservations": [
+            "若当前最大值出现次数为偶数，Arseniy先取一个最大值后，剩余最大值个数为奇数且由Egor先取，因此Egor能拿完这一组并获胜。",
+            "若最大值出现次数为奇数但与次大值的差不超过$k$，Arseniy取次大值后，Egor可立即转取最大值；由于最大值组由Egor先手且数量为奇数，Egor获胜。",
+            "当最大值数量为奇数且与次大值的差大于$k$时，最大值无法从更小值接入，只能独立处理；删除这一整组后，胜负转化为剩余不同值的同类问题。",
+            "最终必败情形恰为每个不同值的出现次数都是奇数，且相邻不同值之差都大于$k$；此时各值组彼此无法衔接，任何首步都不能改变Egor必败的奇偶结构。"
+          ],
+          "solutionBrief": "按数值从大到小处理压缩后的相同值分组。最大组偶数时首取最大值；最大组奇数且与次大值差不超过$k$时首取次大值；否则删除最大组继续判断。若所有组大小均为奇数且相邻间隔均大于$k$，答案为NO，否则为YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2236E",
+          "index": "E",
+          "slot": "E",
+          "title": "Friendly Gifts",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2236/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/154496",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dp"
+          ],
+          "statementBrief": "给定数组 $a$，要从中截取两个互不重叠且长度相同的连续子段。每个子段的元素都必须能重排成连续递增序列，并且将两段拼接后整体也必须满足该条件，求可达到的最大长度。",
+          "transformedStatement": "把每个子段抽象为其元素覆盖的数值区间：它可行当且仅当元素互异且区间长度等于子段长度。于是问题转化为寻找两个长度相同、数值范围相邻且都能由原数组子段实现的区间。",
+          "keyObservations": [
+            "一个长度为 $r-l+1$ 的子段可重排成连续递增数组，当且仅当其中元素互不相同且 $\\max-\\min=r-l$；因此无需枚举排列，只需检查端点范围和重复元素。",
+            "两段拼接后仍为 good，要求它们的数值集合恰好是两个相邻的连续区间；记录每个数值区间是否由某个子段实现即可。",
+            "两个相邻数值区间互不相交，因此对应子段不可能共享位置；这使得只检查两个区间都存在，就自动满足截取位置不重叠。",
+            "按长度从 $\\lfloor n/2\\rfloor$ 递减检查，首个存在两个相邻可实现区间的长度就是最大答案。"
+          ],
+          "solutionBrief": "枚举所有子段并维护其最小值、最大值及是否有重复元素，得到所有可重排为连续区间的数值范围。随后按长度递减，检查是否存在两个相邻且长度相同的可行范围；首个满足者即为答案，复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2236F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Elections in Saransk (easy version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2236/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/154496",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "number theory"
+          ],
+          "statementBrief": "给定每个人带来的整数 $a_i$，第 $i$ 个人必须选择一个整除 $a_i$ 的数 $p_i$。当 $x=1$ 时，要求 $\\operatorname{lcm}(p_1,\\ldots,p_n)=p_1p_2\\cdots p_n$，求满足条件的不同投票数组数量。",
+          "transformedStatement": "把每个 $a_i$ 的质因数指数看作可分配资源：每个质数的正指数只能被放入一个位置，也可以完全不使用；各质数独立计数后相乘。",
+          "keyObservations": [
+            "条件 $\\operatorname{lcm}(p_1,\\ldots,p_n)=\\prod p_i$ 当且仅当所有投票数两两互质，从整体等式转化为质因子不能在不同位置重复出现。",
+            "固定质数 $q$ 时，最多只能分配给一个 $p_i$；若分配给第 $i$ 个位置，其指数有 $v_q(a_i)$ 种正值选择，否则表示该质数不出现在任何投票数中。",
+            "不同质数的指数分配彼此独立，因此每个质数贡献 $1+\\sum_i v_q(a_i)$，总方案数可将这些贡献相乘。"
+          ],
+          "solutionBrief": "将条件化为所有 $p_i$ 两两互质。对每个出现在输入中的质数 $q$，统计 $S_q=\\sum_i v_q(a_i)$，其贡献为 $1+S_q$；答案为所有质数贡献的乘积，并对 $10^9+7$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2236F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Elections in Saransk (hard version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2236/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/154496",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 个数 $a_i$，第 $i$ 个投票者必须选择 $a_i$ 的一个约数作为 $p_i$，所有人独立完成选择。要求统计满足 $x\\cdot\\operatorname{lcm}(p_1,\\ldots,p_n)=\\prod_i p_i$ 的不同投票数组数量，并对 $10^9+7$ 取模。",
+          "transformedStatement": "按质数分解把乘积与最小公倍数条件转为每个质数指数上的总和—最大值关系：对 $pr$ 需满足 $\\sum_i v_{pr}(p_i)-\\max_i v_{pr}(p_i)=v_{pr}(x)$，再独立统计各质数的指数选择。",
+          "keyObservations": [
+            "对任意质数 $pr$，原式等价于 $v_{pr}(x)=\\sum_i v_{pr}(p_i)-\\max_i v_{pr}(p_i)$，因此整数乘法条件可拆成各质数指数的独立条件。",
+            "若 $pr\\nmid x$，所有投票中至多一个数含有 $pr$，故该质数的方案数为 $1+\\sum_i v_{pr}(a_i)$，分别选择无人使用或唯一使用者及其指数。",
+            "若 $v_{pr}(x)=vp>0$，只需记录当前指数总和和最大值；最终要求总和为 $vp+mx$，从而用二维 DP 合并每个投票者允许的指数。",
+            "各质数的指数选择彼此独立，最终答案是所有质数贡献的乘积；转移中的指数枚举和最大值枚举可分别用前缀和消除一层循环。"
+          ],
+          "solutionBrief": "先用最小质因数筛预处理所有 $v_{pr}(a_i)$。对不整除 $x$ 的质数直接计算 $1+\\sum_i v_{pr}(a_i)$；对整除 $x$ 的质数，以当前最大指数和指数总和为状态做 DP，筛选满足总和为 $v_{pr}(x)+mx$ 的状态，最后乘上各质数贡献。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2236G",
+          "index": "G",
+          "slot": "G",
+          "title": "Criterion in Burlandia",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/2236/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/154496",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "implementation",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "给定一棵带非负权值的树。每次查询给出两个不同顶点，取它们路径上的顶点序列，要求统计其中连续且非空的子段数量，使子段所有权值的按位异或不小于权值总和。",
+          "transformedStatement": "由于非负数的异或总是不超过总和，合法子段实际上要求异或等于总和，也就是所有权值的二进制位在该子段中最多出现一次。查询因此转化为统计树上路径中满足位互不重复的连续区间。",
+          "keyObservations": [
+            "对非负数而言，区间异或不会超过区间和，因此“异或至少为和”等价于两者相等，问题转化为判断每个二进制位是否在区间中出现超过一次。",
+            "异或等于和当且仅当区间内所有数的二进制位互不重复，所以有效区间至多包含 $20$ 个非零元素；这为围绕 LCA 截取短中段提供了长度界。",
+            "对每个顶点 $v$ 记录其向上最近的违规祖先 $bad_v$，则以 $v$ 为端点且完全位于单侧路径上的有效区间数量可由 $depth(v)-depth(bad_v)$ 表示，并可沿路径求和。",
+            "路径两端分别向 LCA 方向移动至多 $20+\\varepsilon$ 个非零顶点后，所有跨越 LCA 的候选区间都落在长度至多约 $40$ 的中段中，可直接枚举或用双指针处理，其余部分用祖先跳跃和路径聚合计算。"
+          ],
+          "solutionBrief": "先利用异或等于和的充要条件，预处理每个顶点最近的违规祖先。查询按 LCA 分成两侧区间和跨 LCA 中段；两侧通过路径聚合统计，中段因非零元素数至多 $20$，用双指针或暴力处理。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
