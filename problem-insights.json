@@ -15,13 +15,13 @@
     ]
   },
   "summary": {
-    "total_problems": 1778,
-    "source_total_problems": 1778,
+    "total_problems": 1780,
+    "source_total_problems": 1780,
     "filtered_out_problems": 0,
-    "with_statement_brief": 1778,
+    "with_statement_brief": 1780,
     "with_editorial_brief": 1547,
     "with_solution_brief": 1548,
-    "missing_editorial_brief": 230,
+    "missing_editorial_brief": 232,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 719,
@@ -70439,6 +70439,67 @@
       },
       "manual_override": false,
       "ai_override": true
+    },
+    {
+      "ordinal": 1779,
+      "problem_key": "2269A",
+      "contest_id": 2269,
+      "title": "SauSaGe Bank",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2269/problem/A",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "组合计数与概率",
+        "动态规划与状态设计",
+        "数据结构"
+      ],
+      "original_tags": [
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "题面已抓取：SauSaGe Bank；本地暂无可用题解正文。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json"
+      },
+      "manual_override": false
+    },
+    {
+      "ordinal": 1780,
+      "problem_key": "2269B",
+      "contest_id": 2269,
+      "title": "KiaKio and Squared Numbers",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2269/problem/B",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "交互"
+      ],
+      "original_tags": [
+        "brute force",
+        "implementation"
+      ],
+      "statement_brief": "题面已抓取：KiaKio and Squared Numbers；本地暂无可用题解正文。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json"
+      },
+      "manual_override": false
     }
   ]
 }

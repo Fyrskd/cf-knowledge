@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1778,
-    "source_total_problems": 1778,
+    "total_problems": 1780,
+    "source_total_problems": 1780,
     "filtered_out_problems": 0,
-    "with_statement_brief": 1778,
+    "with_statement_brief": 1780,
     "with_editorial_brief": 1547,
     "with_solution_brief": 1548,
-    "missing_editorial_brief": 230,
+    "missing_editorial_brief": 232,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 719,
     "primary_topic_count": 13,
-    "contest_count": 282,
+    "contest_count": 283,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 75,
-    "构造与贪心": 598,
+    "构造与贪心": 600,
     "图论与网络流": 113,
     "动态规划与状态设计": 171,
     "数论与同余": 161,
@@ -61,7 +61,7 @@ window.CF_INSIGHTS_DATA = {
   "statusCounts": {
     "ai_generated_with_editorial": 625,
     "ai_generated_partial_editorial": 31,
-    "missing_editorial": 230,
+    "missing_editorial": 232,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -76,6 +76,66 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
+    {
+      "id": 2269,
+      "name": "Codeforces Round 1124 (Div. 2)",
+      "date": "2026-09-26",
+      "url": "https://codeforces.com/contest/2269",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2269A",
+          "index": "A",
+          "slot": "A",
+          "title": "SauSaGe Bank",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2269/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：SauSaGe Bank；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2269B",
+          "index": "B",
+          "slot": "B",
+          "title": "KiaKio and Squared Numbers",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2269/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "交互"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：KiaKio and Squared Numbers；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
     {
       "id": 2266,
       "name": "Codeforces Round 1122 (Div. 3)",

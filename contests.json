@@ -3100,5 +3100,16 @@
     "startTimeSeconds": 1790001300,
     "relativeTimeSeconds": 456123,
     "date": "2026-09-21"
+  },
+  {
+    "id": 2269,
+    "name": "Codeforces Round 1124 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1790433300,
+    "relativeTimeSeconds": 25359,
+    "date": "2026-09-26"
   }
 ]
