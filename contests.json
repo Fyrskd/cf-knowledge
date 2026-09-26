@@ -3058,6 +3058,17 @@
     "date": "2026-08-29"
   },
   {
+    "id": 2260,
+    "name": "Educational Codeforces Round 194 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1788878100,
+    "relativeTimeSeconds": 1581298,
+    "date": "2026-09-08"
+  },
+  {
     "id": 2262,
     "name": "Codeforces Round 1120 (Div. 1)",
     "type": "CF",

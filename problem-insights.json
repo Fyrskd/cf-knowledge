@@ -16,8 +16,8 @@
   },
   "summary": {
     "total_problems": 1794,
-    "source_total_problems": 1794,
-    "filtered_out_problems": 0,
+    "source_total_problems": 1801,
+    "filtered_out_problems": 7,
     "with_statement_brief": 1794,
     "with_editorial_brief": 1554,
     "with_solution_brief": 1555,
@@ -69436,7 +69436,7 @@
       "manual_override": true
     },
     {
-      "ordinal": 1755,
+      "ordinal": 1762,
       "problem_key": "2262A1",
       "contest_id": 2262,
       "title": "Floor of MEX (Easy Version)",
@@ -69474,7 +69474,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1756,
+      "ordinal": 1763,
       "problem_key": "2262A2",
       "contest_id": 2262,
       "title": "Floor of MEX (Hard Version)",
@@ -69516,7 +69516,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1757,
+      "ordinal": 1764,
       "problem_key": "2262B",
       "contest_id": 2262,
       "title": "Culling Game",
@@ -69556,7 +69556,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1758,
+      "ordinal": 1765,
       "problem_key": "2262C",
       "contest_id": 2262,
       "title": "Traveling the World",
@@ -69602,7 +69602,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1759,
+      "ordinal": 1766,
       "problem_key": "2262D",
       "contest_id": 2262,
       "title": "PLUSworld",
@@ -69644,7 +69644,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1760,
+      "ordinal": 1767,
       "problem_key": "2262E",
       "contest_id": 2262,
       "title": "Paired Bracket Sequences",
@@ -69683,7 +69683,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1761,
+      "ordinal": 1768,
       "problem_key": "2262F",
       "contest_id": 2262,
       "title": "Rank Removal",
@@ -69724,7 +69724,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1762,
+      "ordinal": 1769,
       "problem_key": "2263A",
       "contest_id": 2263,
       "title": "Min Max Game",
@@ -69763,7 +69763,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1763,
+      "ordinal": 1770,
       "problem_key": "2263B",
       "contest_id": 2263,
       "title": "Min Matrices",
@@ -69801,7 +69801,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1764,
+      "ordinal": 1771,
       "problem_key": "2264A",
       "contest_id": 2264,
       "title": "Rumb Needs a Hand",
@@ -69843,7 +69843,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1765,
+      "ordinal": 1772,
       "problem_key": "2264B",
       "contest_id": 2264,
       "title": "Knife's Pill Farm",
@@ -69884,7 +69884,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1766,
+      "ordinal": 1773,
       "problem_key": "2264C",
       "contest_id": 2264,
       "title": "Madamant's Skating Dynasty",
@@ -69924,7 +69924,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1767,
+      "ordinal": 1774,
       "problem_key": "2264D",
       "contest_id": 2264,
       "title": "Dr. Agos's Dark Mode",
@@ -69969,7 +69969,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1768,
+      "ordinal": 1775,
       "problem_key": "2264E1",
       "contest_id": 2264,
       "title": "A Prime Flood (Easy Version)",
@@ -70012,7 +70012,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1769,
+      "ordinal": 1776,
       "problem_key": "2264E2",
       "contest_id": 2264,
       "title": "A Prime Flood (Hard Version)",
@@ -70056,7 +70056,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1770,
+      "ordinal": 1777,
       "problem_key": "2264F",
       "contest_id": 2264,
       "title": "Deranged Calculator",
@@ -70099,7 +70099,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1771,
+      "ordinal": 1778,
       "problem_key": "2266A",
       "contest_id": 2266,
       "title": "Good Contest",
@@ -70136,7 +70136,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1772,
+      "ordinal": 1779,
       "problem_key": "2266B",
       "contest_id": 2266,
       "title": "Three Piles",
@@ -70179,7 +70179,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1773,
+      "ordinal": 1780,
       "problem_key": "2266C",
       "contest_id": 2266,
       "title": "AND, OR, Sort!",
@@ -70220,7 +70220,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1774,
+      "ordinal": 1781,
       "problem_key": "2266D",
       "contest_id": 2266,
       "title": "Falling Concrete",
@@ -70263,7 +70263,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1775,
+      "ordinal": 1782,
       "problem_key": "2266E",
       "contest_id": 2266,
       "title": "Prime Destruction",
@@ -70306,7 +70306,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1776,
+      "ordinal": 1783,
       "problem_key": "2266F",
       "contest_id": 2266,
       "title": "MEX Replacement",
@@ -70351,7 +70351,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1777,
+      "ordinal": 1784,
       "problem_key": "2266G",
       "contest_id": 2266,
       "title": "Modular Tree",
@@ -70397,7 +70397,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1778,
+      "ordinal": 1785,
       "problem_key": "2266H",
       "contest_id": 2266,
       "title": "Deque Malfunction",
@@ -70441,7 +70441,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1779,
+      "ordinal": 1786,
       "problem_key": "2267A",
       "contest_id": 2267,
       "title": "Turn Into a Palindrome",
@@ -70481,7 +70481,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1780,
+      "ordinal": 1787,
       "problem_key": "2267B",
       "contest_id": 2267,
       "title": "Fashionable Array",
@@ -70522,7 +70522,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1781,
+      "ordinal": 1788,
       "problem_key": "2267C",
       "contest_id": 2267,
       "title": "GCD Treasury",
@@ -70563,7 +70563,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1782,
+      "ordinal": 1789,
       "problem_key": "2267D",
       "contest_id": 2267,
       "title": "Backrooms Hill",
@@ -70605,7 +70605,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1783,
+      "ordinal": 1790,
       "problem_key": "2267E",
       "contest_id": 2267,
       "title": "Clean Substrings",
@@ -70647,7 +70647,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1784,
+      "ordinal": 1791,
       "problem_key": "2267F1",
       "contest_id": 2267,
       "title": "XOR Transformations (Easy Version)",
@@ -70690,7 +70690,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1785,
+      "ordinal": 1792,
       "problem_key": "2267F2",
       "contest_id": 2267,
       "title": "XOR Transformations (Hard Version)",
@@ -70736,7 +70736,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1786,
+      "ordinal": 1793,
       "problem_key": "2267G",
       "contest_id": 2267,
       "title": "New LRT",
@@ -70774,7 +70774,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1787,
+      "ordinal": 1794,
       "problem_key": "2268A",
       "contest_id": 2268,
       "title": "K Is Important",
@@ -70811,7 +70811,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1788,
+      "ordinal": 1795,
       "problem_key": "2268B",
       "contest_id": 2268,
       "title": "What a SauSaGe! It's All Meat",
@@ -70849,7 +70849,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1789,
+      "ordinal": 1796,
       "problem_key": "2268C",
       "contest_id": 2268,
       "title": "KiaKio and Energy Intervals",
@@ -70888,7 +70888,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1790,
+      "ordinal": 1797,
       "problem_key": "2268D",
       "contest_id": 2268,
       "title": "AghaBalaSar and Hamed",
@@ -70924,7 +70924,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1791,
+      "ordinal": 1798,
       "problem_key": "2268E",
       "contest_id": 2268,
       "title": "Kia Kio and Tree of Life",
@@ -70961,7 +70961,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1792,
+      "ordinal": 1799,
       "problem_key": "2268F",
       "contest_id": 2268,
       "title": "Deglado",
@@ -70997,7 +70997,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1793,
+      "ordinal": 1800,
       "problem_key": "2269A",
       "contest_id": 2269,
       "title": "SauSaGe Bank",
@@ -71034,7 +71034,7 @@
       "ai_override": true
     },
     {
-      "ordinal": 1794,
+      "ordinal": 1801,
       "problem_key": "2269B",
       "contest_id": 2269,
       "title": "KiaKio and Squared Numbers",
