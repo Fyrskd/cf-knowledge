@@ -629,7 +629,7 @@ class AiConfig:
     base_url: str = "https://api.zhehentiaohe.cn/v1"
     api_key_env: str = "OPENAI_API_KEY"
     api_key: str = ""
-    model: str = "gpt-6-luna"
+    model: str = "gpt-5.6-luna"
     max_output_tokens: int = 1400
     timeout_seconds: int = 90
     max_attempts: int = 5

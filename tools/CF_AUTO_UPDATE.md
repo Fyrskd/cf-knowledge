@@ -30,7 +30,7 @@ Codeforces API / 题面镜像 / Tutorial
 ```json
 {
   "ai": {
-    "model": "gpt-6-luna",
+    "model": "gpt-5.6-luna",
     "timeout_seconds": 240
   },
   "batch_upload": {

@@ -274,7 +274,7 @@ python3 tools/cf_auto_update.py \
 
 ```json
 {
-  "ai": {"model": "gpt-6-luna"},
+  "ai": {"model": "gpt-5.6-luna"},
   "crawler": {"timeout_seconds": 30}
 }
 ```

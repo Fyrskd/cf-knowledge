@@ -56,7 +56,7 @@ cp config.json config.local.json
 ```json
 {
   "ai": {
-    "model": "gpt-6-luna",
+    "model": "gpt-5.6-luna",
     "timeout_seconds": 240
   },
   "auto_update": {
