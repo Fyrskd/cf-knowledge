@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1836,
+    "total_problems": 1843,
     "source_total_problems": 1843,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1836,
-    "with_editorial_brief": 1595,
-    "with_solution_brief": 1596,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1843,
+    "with_editorial_brief": 1602,
+    "with_solution_brief": 1603,
     "missing_editorial_brief": 240,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 777,
+    "ai_override_count": 784,
     "primary_topic_count": 13,
-    "contest_count": 291,
+    "contest_count": 292,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,22 +45,22 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 78,
-    "构造与贪心": 617,
+    "构造与贪心": 620,
     "图论与网络流": 116,
     "动态规划与状态设计": 175,
-    "数论与同余": 168,
+    "数论与同余": 170,
     "组合计数与概率": 142,
     "数据结构": 152,
     "几何": 39,
-    "树结构": 117,
+    "树结构": 118,
     "代数、矩阵与多项式": 17,
     "交互": 74,
     "基础实现与模拟": 77,
-    "博弈": 64
+    "博弈": 65
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 672,
-    "ai_generated_partial_editorial": 32,
+    "ai_generated_with_editorial": 678,
+    "ai_generated_partial_editorial": 33,
     "missing_editorial": 240,
     "manual_override": 891,
     "statement_derived": 1
@@ -4684,6 +4684,221 @@ window.CF_INSIGHTS_DATA = {
             "每加入一天只需对函数数组做常数次区间分割与合并，持久化隐式 Treap 能在 $O(\\log n)$ 完成这些操作，并保留需要的数组版本。"
           ],
           "solutionBrief": "从右向左处理天数，令 $dp[j]$ 表示以后缀开始时有 $j$ 元的最终余额。加入 $x$ 时将旧数组按 $[x,2x)$、$[0,2n-x)$ 拼接，用持久化隐式 Treap 支持分割合并；每次答案为新数组的 $dp[0]$，总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2241,
+      "name": "Codeforces Round 1107 (Div. 3)",
+      "date": "2026-06-30",
+      "url": "https://codeforces.com/contest/2241",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "2241A",
+          "index": "A",
+          "slot": "A",
+          "title": "Divide and Conquer",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2241/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/154698",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $x$ 和 $y$，每次可选择任意整除当前 $x$ 的正整数 $z$，并将当前值替换为 $x/z$。判断经过任意次操作（也可以不操作）后能否恰好得到 $y$。",
+          "transformedStatement": "操作后的数始终是初始 $x$ 的因子，而初始数的任意因子都能通过一次选择 $z=x/y$ 到达，因此问题等价于判断 $y$ 是否整除 $x$。",
+          "keyObservations": [
+            "选择因子 $z$ 后得到的 $x/z$ 本身就是原数 $x$ 的因子，因此一次操作可直接到达 $x$ 的任意因子。",
+            "多次操作不会扩大可达集合，因为因子的因子仍是原数的因子，所以只需判断 $y$ 是否整除 $x$。",
+            "若 $y\\mid x$，取 $z=x/y$ 即可一步到达 $y$；否则任何操作都无法得到 $y$。"
+          ],
+          "solutionBrief": "每组判断 $x\\bmod y$ 是否为 $0$。若整除，取 $z=x/y$ 一步得到 $y$；否则输出 NO。时间复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2241B",
+          "index": "B",
+          "slot": "B",
+          "title": "Good times Good times",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2241/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/154698",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "math"
+          ],
+          "statementBrief": "给定一个十进制表示中至多含两种不同数字的整数 $x$，构造 $2\\le y\\le10^9$，使得 $y$ 以及乘积 $x\\times y$ 的十进制表示都至多含两种不同数字；有多个答案时输出任意一个。",
+          "transformedStatement": "把乘法构造成十进制拼接：若 $d$ 是 $x$ 的位数，则 $10^d+1$ 会让 $x$ 乘积变成两个连续的 $x$，从而继承原数的数字集合。",
+          "keyObservations": [
+            "令 $d$ 为 $x$ 的十进制位数，取 $y=10^d+1$；该数只含数字 $0$ 和 $1$，因此一定是 good。",
+            "因为 $x<10^d$，有 $x\\times y=x\\times10^d+x$，十进制表示正好是将 $x$ 与自身拼接，所含数字种类不变。",
+            "$x<10^8$ 意味着 $d\\le 8$，所以构造出的 $y=10^d+1$ 满足 $2\\le y\\le10^9$，无需搜索其他答案。"
+          ],
+          "solutionBrief": "统计 $x$ 的位数 $d$，直接输出 $y=10^d+1$。它只含 $0,1$，且乘积是 $x$ 的两次拼接，因此也只含 $x$ 中出现的数字；每组耗时 $O(\\log_{10}x)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2241C",
+          "index": "C",
+          "slot": "C",
+          "title": "RemovevomeR",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2241/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/154698",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定一个二进制字符串，每次可选择一个长度至少为 $2$ 的回文子串并删除其中恰好一个字符，再拼接剩余部分。可操作任意次，求字符串最终能达到的最小长度。",
+          "transformedStatement": "把字符串按连续相同字符划分为若干块，并令 $c$ 为相邻字符不同的位置数；只需根据块数分类：一块、两块或至少三块，分别判断是否能继续消除。",
+          "keyObservations": [
+            "当相邻不同位置数 $c=0$ 时，整串由同一字符组成，整串始终是回文串，因此可连续删除到只剩 $1$ 个字符。",
+            "当 $c=1$ 时字符串恰好由两个非空同字符块组成，跨越分界处不存在长度至少为 $2$ 的回文子串；操作只能缩短某个块，两个块都无法被删空，所以答案为 $2$。",
+            "当 $c\\ge2$ 时可先把每个同字符块缩到长度 $1$，得到长度至少为 $3$ 的交替串；交替串末三位必为 $010$ 或 $101$，删除末位仍保持交替，最终可化为三个字符并继续删到长度 $1$。"
+          ],
+          "solutionBrief": "统计相邻字符不同的位置数 $c$。若 $c=1$，答案为 $2$；否则答案为 $1$。判定只需线性扫描字符串，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2241D",
+          "index": "D",
+          "slot": "D",
+          "title": "An Alternative Way",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2241/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/154698",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定等长数组 $a,b$，可反复选择区间 $[l,r]$，从左端开始对区间元素交替执行 $+1,-1,+1,-1,\\dots$。判断能否经过任意次操作使数组 $a$ 完全变为 $b$。",
+          "transformedStatement": "令 $p_i$ 和 $q_i$ 分别表示 $a$、$b$ 的前 $i$ 项和。一次区间操作只会让各前缀和增加 $0$ 或 $1$；同时长度为 $2$ 的区间操作可以单独增加一个指定前缀和，因此问题等价于判断是否对所有 $i$ 都有 $p_i\\le q_i$。",
+          "keyObservations": [
+            "一次操作在前缀和上只会产生 $0$ 或 $1$ 的增量，因此任何前缀和都不可能减少；这把数组操作转化为前缀和的单调性约束。",
+            "对相邻位置 $[i,i+1]$ 操作只会让第 $i$ 个前缀和增加 $1$，而对 $[n,n]$ 操作只会让第 $n$ 个前缀和增加 $1$；因此每个前缀和都能独立增加。",
+            "所以目标数组可达当且仅当所有位置满足 $\\sum_{j=1}^{i}a_j\\le\\sum_{j=1}^{i}b_j$；逐项比较前缀和即可完成判定。"
+          ],
+          "solutionBrief": "计算两个数组的前缀和并逐项比较。若存在某个位置使 $a$ 的前缀和大于 $b$，则操作无法修复；否则可通过长度为 $2$ 或 $1$ 的操作独立增加各前缀和，答案为 YES。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "2241E",
+          "index": "E",
+          "slot": "E",
+          "title": "Fair and Square",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2241/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/154698",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "graphs",
+            "math",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带正整数点权的树。对三个不同顶点，分别取三对顶点唯一路径上点权的乘积；若这三个乘积的乘积是完全平方数，则称三元组合格，求合格无序三元组数量。",
+          "transformedStatement": "把每个三元组重述为三条两两路径围成的结构，并按它们唯一公共顶点分类；只需对点权为完全平方数的顶点，统计删除该点后不同连通分量间的二点和三点选取数。",
+          "keyObservations": [
+            "三条两两路径恰有一个公共顶点 $c$，其余顶点在乘积中出现 $0$ 次或 $2$ 次，因此整体乘积为平方当且仅当 $a_c$ 是完全平方数。",
+            "删除候选公共顶点 $x$ 后，若 $x$ 被选入三元组，另外两点必须来自不同连通分量，贡献为 $\u00024\\sum_{i<j}s_i s_j$；若未选入，则三点必须来自三个不同分量，贡献为 $\u0002\\sum_{i<j<k}s_i s_j s_k$。",
+            "树以任意点为根后，删除顶点 $x$ 的分量大小就是各子树大小及父侧大小 $n-\\mathrm{sz}[x]$，无需为每个顶点重新遍历整棵树。",
+            "按分量依次维护已有点数、二元组选数和三元组选数，即可在线累加两两及三分量乘积，避免显式枚举组合。"
+          ],
+          "solutionBrief": "根树求所有子树大小。对每个 $a_x$ 为完全平方数的顶点，取删除它后的各分量大小，在线计算分量间二选一和三选一的乘积并加入答案；总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2241F",
+          "index": "F",
+          "slot": "F",
+          "title": "A Bit Odd",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2241/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/154698",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "games",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个二进制字符串，Alice 与 Bob 轮流操作；每次必须选择一个子序列并删除，且该子序列的逆序对数量必须为奇数。无法操作者输，求双方最优时获胜者。",
+          "transformedStatement": "把局面按连续相同字符分块，并忽略开头的 0 与结尾的 1；题目等价于判断剩余每个块是否都是偶数长度，全部为偶数时是必败态，否则先手可胜。",
+          "keyObservations": [
+            "若既不能选出含奇数个逆序对的子序列删光所有 0，也不能删光所有 1，则字符串必为“可选前导 0 + 若干个同字符偶数块 + 可选末尾 1”。",
+            "去掉前导 0 和末尾 1 后，只要存在一个奇数长度的连续同字符块，当前玩家就能通过删去全部 0 或全部 1 立即获胜。",
+            "在所有同字符块长度均为偶数的局面中，每个块若被分到两部分，两部分各得一个相同字符；若留在同一部分，其逆序贡献为偶数，因此两部分逆序数奇偶相同。",
+            "合法操作删去部分为奇数逆序数时，剩余字符串也必为奇数逆序数，下一位可直接删完整个剩余串，所以这类局面全是必败态。"
+          ],
+          "solutionBrief": "去掉所有前导 0 和末尾 1，检查剩余字符串的每个连续同字符块长度。若全部为偶数则 Bob 胜，否则 Alice 胜；总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2241G",
+          "index": "G",
+          "slot": "G",
+          "title": "Summmon",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/2241/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/154698",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数数组，任取一个连续子数组，并可反复选择相邻位置 $i,i+1$，将右侧元素改为自身加上或减去左侧元素。定义操作后数组最大值与最小值之差的最小可能值，要求求所有连续子数组该值的总和。",
+          "transformedStatement": "固定子数组左端点 $l$：在首个不被 $a_l$ 整除的位置出现前，整个子数组可化为常数；该位置出现后，答案由其对 $a_l$ 的余数决定，且对更长右端点保持不变。因此只需为每个 $l$ 找到首个非整除位置并统计覆盖它的子数组数量。",
+          "keyObservations": [
+            "固定左端点后，前缀元素能传递到下一位置，因此下一元素可加减前缀最大公约数的任意倍数，问题转为研究模该最大公约数的余数。",
+            "对起点 $l$，首个不被 $a_l$ 整除的位置 $t$ 决定答案；此前贡献为 $0$，之后所有更长子数组的贡献都固定为 $\\min(a_t\\bmod a_l,\\ a_l-(a_t\\bmod a_l))$。",
+            "从左到右维护尚未找到首个不整除位置的起点栈；若当前值对栈顶起点取模非零，则当前下标就是其首个破坏位置，可立即计入 $(n-i)d$ 并弹栈。"
+          ],
+          "solutionBrief": "对每个起点寻找首个不被其首值整除的位置，并用余数到最近端点的距离计算固定贡献。单调栈在线完成首个位置的匹配，每个下标只入栈出栈一次；答案使用 $\\text{int128}$ 累加。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
