@@ -3058,6 +3058,17 @@
     "date": "2026-08-29"
   },
   {
+    "id": 2259,
+    "name": "Codeforces Round 1119 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1788619500,
+    "relativeTimeSeconds": 1841216,
+    "date": "2026-09-05"
+  },
+  {
     "id": 2260,
     "name": "Educational Codeforces Round 194 (Rated for Div. 2)",
     "type": "ICPC",
