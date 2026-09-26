@@ -3067,5 +3067,16 @@
     "startTimeSeconds": 1789319100,
     "relativeTimeSeconds": 870025,
     "date": "2026-09-13"
+  },
+  {
+    "id": 2266,
+    "name": "Codeforces Round 1122 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1790001300,
+    "relativeTimeSeconds": 456123,
+    "date": "2026-09-21"
   }
 ]
