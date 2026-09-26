@@ -434,7 +434,10 @@ def load_candidates(
             )
         )
 
-    selected.sort(key=lambda item: (item.date is None, item.date or dt.date.min, item.contest_id))
+    selected.sort(
+        key=lambda item: (item.date or dt.date.min, item.contest_id),
+        reverse=True,
+    )
     return selected
 
 

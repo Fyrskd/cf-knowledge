@@ -272,6 +272,24 @@ class BatchUploadTests(unittest.TestCase):
                     ),
                 },
                 {
+                    "id": 2268,
+                    "name": "Codeforces Round 1124 (Div. 1)",
+                    "type": "CF",
+                    "phase": "FINISHED",
+                    "startTimeSeconds": int(
+                        dt.datetime(2026, 9, 26, tzinfo=dt.timezone.utc).timestamp()
+                    ),
+                },
+                {
+                    "id": 2269,
+                    "name": "Codeforces Round 1124 (Div. 2)",
+                    "type": "CF",
+                    "phase": "FINISHED",
+                    "startTimeSeconds": int(
+                        dt.datetime(2026, 9, 26, tzinfo=dt.timezone.utc).timestamp()
+                    ),
+                },
+                {
                     "id": 9999,
                     "name": "Unrelated ICPC Regional",
                     "type": "ICPC",
@@ -300,12 +318,14 @@ class BatchUploadTests(unittest.TestCase):
         self.assertEqual(
             result,
             [
+                Contest(2269, "Codeforces Round 1124 (Div. 2)", dt.date(2026, 9, 26)),
+                Contest(2268, "Codeforces Round 1124 (Div. 1)", dt.date(2026, 9, 26)),
+                Contest(2266, "Codeforces Round 1122 (Div. 3)", dt.date(2026, 9, 21)),
                 Contest(
                     2260,
                     "Educational Codeforces Round 194 (Rated for Div. 2)",
                     dt.date(2026, 9, 8),
                 ),
-                Contest(2266, "Codeforces Round 1122 (Div. 3)", dt.date(2026, 9, 21)),
             ],
         )
 

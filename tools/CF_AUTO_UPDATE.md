@@ -105,8 +105,9 @@ git push origin main
 
 `tools/cf_batch_upload.py` 会同时读取 Codeforces 官方 `contest.list`、本地比赛、题目和发布
 数据，默认从 `batch_upload.from_date`（当前为 `2023-01-01`）之后找出尚未进入本地数据，
-或仍有题目没有进入 `problem-insights.json` 的比赛，然后按比赛日期串行触发
-`cf-auto-update.yml`。因此新比赛即使还不在 `contests.json` 中，也不会再被误判为 0 场。
+或仍有题目没有进入 `problem-insights.json` 的比赛，然后按比赛日期从晚到早串行触发
+`cf-auto-update.yml`；同一天的比赛按比赛 ID 从大到小执行。因此新比赛即使还不在
+`contests.json` 中，也不会再被误判为 0 场，并且会优先补最新比赛。
 每场比赛默认允许失败后重试 3 次；成功后写入本地状态并自动跳过。
 
 批量上传的默认日期、重试次数、轮询间隔、等待超时、状态文件、workflow、ref 和仓库从
