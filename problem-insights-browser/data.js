@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1801,
+    "total_problems": 1809,
     "source_total_problems": 1809,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 1801,
-    "with_editorial_brief": 1561,
-    "with_solution_brief": 1562,
-    "missing_editorial_brief": 239,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1809,
+    "with_editorial_brief": 1568,
+    "with_solution_brief": 1569,
+    "missing_editorial_brief": 240,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 742,
+    "ai_override_count": 750,
     "primary_topic_count": 13,
-    "contest_count": 286,
+    "contest_count": 287,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -37,31 +37,31 @@ window.CF_INSIGHTS_DATA = {
     "图论与网络流",
     "树结构",
     "字符串",
-    "交互",
     "基础实现与模拟",
+    "交互",
     "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
     "字符串": 75,
-    "构造与贪心": 606,
+    "构造与贪心": 609,
     "图论与网络流": 115,
     "动态规划与状态设计": 173,
-    "数论与同余": 165,
-    "组合计数与概率": 141,
-    "数据结构": 144,
+    "数论与同余": 166,
+    "组合计数与概率": 142,
+    "数据结构": 146,
     "几何": 38,
     "树结构": 115,
     "代数、矩阵与多项式": 17,
     "交互": 74,
-    "基础实现与模拟": 74,
+    "基础实现与模拟": 75,
     "博弈": 64
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 639,
-    "ai_generated_partial_editorial": 31,
-    "missing_editorial": 239,
+    "ai_generated_with_editorial": 645,
+    "ai_generated_partial_editorial": 32,
+    "missing_editorial": 240,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -1443,6 +1443,232 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "用质因数条件和莫比乌斯反演合并所有可行情况。对每个平方自由 $i$，先任意安排其倍数位置，再将其余位置按无约束相邻对组成线段；跨线段分配递增值，线段内按奇偶交错计数，最后累加 $1- extstyle\frac{}{}$ 的莫比乌斯加权结果。",
           "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2259,
+      "name": "Codeforces Round 1119 (Div. 3)",
+      "date": "2026-09-05",
+      "url": "https://codeforces.com/contest/2259",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "2259A",
+          "index": "A",
+          "slot": "A",
+          "title": "Moo Language School",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2259/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/156457",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定由 $n$ 个字段组成的区域，每连续 $k$ 个字段构成一个农场。可以在任意字段建设学校，但每个农场至少要有一所；求必须建在 Nhoj 所有字段上的学校数量最少是多少。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2259B",
+          "index": "B",
+          "slot": "B",
+          "title": "Minus Two",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2259/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/156457",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定数组，每次操作都必须同时将所有元素 $a_i$ 替换为 $|a_i-2|$；操作次数可以为零或任意非负整数。求操作结束后，数组中某个整数能够出现的最大次数。",
+          "transformedStatement": "把元素按初始值分为奇数、模 $4$ 为 $0$ 和模 $4$ 为 $2$ 三组；统一操作次数只会让偶数的两类交替、让奇数最终归一到 $1$，所以问题转化为求这三组数量的最大值。",
+          "keyObservations": [
+            "奇数经过若干次操作都会变为 $1$，且奇偶性始终不变，因此所有原本为奇数的元素可以合并，但不能与偶数合并。",
+            "偶数元素的模 $4$ 类别会在每次操作后互换，操作次数为偶数或奇数时分别落在对应的 $0$ 或 $2$ 类别。",
+            "同属一个模 $4$ 类别的偶数可通过统一选择操作次数变成同一个值，而两个不同类别的偶数无法在同一全局操作次数下相等。",
+            "因此可合并的元素恰好分成三组：奇数、模 $4$ 为 $0$、模 $4$ 为 $2$，答案是三组大小的最大值。"
+          ],
+          "solutionBrief": "统计数组中奇数、模 $4$ 等于 $0$、模 $4$ 等于 $2$ 的元素数量，输出三者最大值。因为所有元素必须同步操作，三类之间无法合并，而同类元素都能变成同一个数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2259C",
+          "index": "C",
+          "slot": "C",
+          "title": "101",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2259/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/156457",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个由 $-1$、$0$、$1$ 组成的数组，把每个 $-1$ 独立替换为 $0$ 或 $1$。数组得分是首尾为 $1$、中间全为 $0$ 的连续子数组的最大长度，要求构造任意使得分最大的数组。",
+          "transformedStatement": "把目标看成选择两个 $1$ 作为区间端点，并让它们之间尽可能保持全为 $0$；区间最外侧的未知位置可被制造成端点，夹在端点之间的未知位置则不能设为 $1$，否则会切断候选区间。",
+          "keyObservations": [
+            "最左侧的未知位置若左边没有 $1$，只有把它设为 $1$ 才能让有效区间向左延伸；最右侧未知位置同理应设为 $1$。",
+            "完成上述处理后，除端点外的每个 $-1$ 都位于两个 $1$ 之间，因此将其设为 $0$ 可以保留由两端 $1$ 组成的整个候选区间。",
+            "若把两个端点之间的某个 $-1$ 设为 $1$，原本覆盖该区域的区间就会被破坏，只能改用更短或不包含该区域的区间，因而不会更优。",
+            "处理后没有 $1$ 时得分只能为 $0$，只有一个 $1$ 时得分为 $1$；因此端点处理也覆盖了全为 $-1$ 或仅有一个有效端点的情况。"
+          ],
+          "solutionBrief": "将最左侧且左边没有 $1$ 的 $-1$、最右侧且右边没有 $1$ 的 $-1$ 设为 $1$，其余所有 $-1$ 设为 $0$。这样保留或构造出能覆盖最长范围的两个端点，且不会破坏中间的连续零段。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2259D",
+          "index": "D",
+          "slot": "D",
+          "title": "MEX Multiset",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2259/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/156457",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定数组，必须将每个元素恰好放入三个多重集合 $A、B、C$ 之一。要求三者 MEX 之和至少为最大 MEX 的两倍，并判断是否可行；若可行，输出每个元素所属集合的分配方案。",
+          "transformedStatement": "把分配问题转化为统计数组中 $0$ 的出现次数：零的数量决定能否让至少两个集合拥有正 MEX，非零元素只需按构造方案放置。",
+          "keyObservations": [
+            "将可行性压缩为只统计数组中 $0$ 的数量，因为没有 $0$ 的集合 MEX 必为 $0$，而非零元素不会改变这一点。",
+            "若没有 $0$，三个集合的 MEX 都是 $0$，条件自动成立；若恰有一个 $0$，只有包含它的集合可能具有正 MEX，另外两个为 $0$，因此总和小于最大值的两倍。",
+            "若至少有两个 $0$，把一个 $0$ 放入 $A$，其余 $0$ 放入 $B$，所有非零元素放入 $C$，即可得到三个 MEX 分别为 $1,1,0$，恰好满足条件。"
+          ],
+          "solutionBrief": "统计 $0$ 的数量：为 $1$ 时输出 NO；为 $0$ 时任意分配即可；至少为 $2$ 时按一个零进 A、其余零进 B、非零进 C 构造，输出对应字母串。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2259E",
+          "index": "E",
+          "slot": "E",
+          "title": "Treasure Map Destruction (Constructive Version)",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2259/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/156457",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "2-sat",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 个排成一行的岛屿，宝藏位于至少一个岛上；从岛屿 $i$ 出发只能走向相邻岛屿，$a_i$ 是到最近宝藏的最少步数。给定部分被毁坏、以 $-1$ 表示的数组 $b$，请构造任意符合所有已知距离的宝藏位置串，若不存在则输出 $-1$。",
+          "transformedStatement": "把每个已知距离 $b_i=x$ 改写为两类条件：半径 $x-1$ 的区间必须为空，距离恰为 $x$ 的左端点或右端点必须有宝藏。先满足所有区间禁放条件，再用候选集合的直接距离验证完成构造。",
+          "keyObservations": [
+            "已知位置 $i$ 的距离为 $x$ 时，区间 $[\\max(1,i-x+1),\\min(n,i+x-1)]$ 内不能有宝藏，且 $i-x$ 或 $i+x$ 中至少一个位置必须有宝藏；这正好刻画最近距离为 $x$。",
+            "所有已知数值先转化为区间禁放约束，因此可以先求出被任一区间覆盖的位置，再处理剩余位置的取舍。",
+            "将所有未被禁放的位置都放置宝藏可得到候选构造；随后直接重新计算每个已知位置的最近宝藏距离，若全部匹配则构造有效，否则说明该候选不能使用。",
+            "未知位置不提供约束，所以只需验证已知位置；最终还必须检查候选集合非空，并输出其位置串。"
+          ],
+          "solutionBrief": "对每个已知距离建立不能放宝藏的区间，用差分统计所有禁放位置；把其余位置全部设为宝藏，再验证每个已知距离是否恰好成立，成立则输出，否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2259F",
+          "index": "F",
+          "slot": "F",
+          "title": "Binary Bubble Sort Inversions",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2259/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/156457",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定只含 `0` 和 `1` 的数组，以及长度相同的操作串。按顺序执行每个字符指定的一次正向冒泡（从左到右比较相邻元素并交换逆序对）或反向冒泡（从右到左执行同样操作），输出初始状态及每次操作后的逆序对数量。",
+          "transformedStatement": "正向冒泡可抽象为把当前数组中的第一个 `1` 移到末尾，反向冒泡可抽象为把最后一个 `0` 移到开头；因此只需维护尚未被移出边界的核心区间及其中的 `0`、`1` 数量。",
+          "keyObservations": [
+            "一次正向冒泡等价于把数组中的第一个 `1` 移到末尾，因此逆序对减少量正好是它右侧的 `0` 的数量。",
+            "一次反向冒泡等价于把最后一个 `0` 移到开头，因此逆序对减少量正好是它左侧的 `1` 的数量。",
+            "数组前缀中的 `0` 和后缀中的 `1` 不参与逆序对；持续删除它们后，双端队列两端分别直接对应下一次可能被移动的 `1` 或 `0`。",
+            "每个元素最多从双端队列的一端被删除一次，并维护队列内 `0`、`1` 数量即可在每次操作中 $O(1)$ 更新答案。"
+          ],
+          "solutionBrief": "先计算初始逆序对数，并删除前缀 `0` 与后缀 `1`。遇到 `1` 时从左端移除并减去当前队列中的 `0` 数，遇到 `0` 时从右端移除并减去当前队列中的 `1` 数；随后继续清理新形成的前缀 `0` 和后缀 `1`，即可在线性时间输出全部状态。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2259G",
+          "index": "G",
+          "slot": "G",
+          "title": "Index Removal",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2259/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/156457",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "给定一个相邻元素满足非递减且差值不超过 $k$ 的数组。对每个位置独立删除该元素，之后可以反复把任意剩余元素减小 $1$，求使数组重新满足条件所需的最少操作次数。",
+          "transformedStatement": "删除中间位置后，将问题看成从缺口向右传播的局部修复：连续受影响元素必须被压到以缺口左侧元素为起点、步长为 $k$ 的上界序列，目标是确定修复终点并计算总降幅。",
+          "keyObservations": [
+            "删除首尾元素不会增大任何相邻差值，因此数组仍然良好，这两种位置答案恒为 $0$。",
+            "删除中间元素后，从缺口处开始逐个检查；若当前元素超过前一元素加 $k$，把它降到该上限是操作次数最少且会影响后续的位置。",
+            "连续受影响元素会被压成等差序列，位置 $r$ 的目标值为左侧原元素加上 $rk$，因此总操作数可转化为一段差值之和。",
+            "受影响区间的右端点具有单调性，可用二分确定；区间代价再由前缀和与等差数列公式快速计算。"
+          ],
+          "solutionBrief": "首尾删除直接得到答案 $0$。对中间删除，从缺口向右传播修复，将连续受影响元素降到由左邻元素和 $k$ 形成的等差上界；二分最后受影响位置，并用前缀和计算所有降幅之和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2259H",
+          "index": "H",
+          "slot": "H",
+          "title": "Treasure Map Destruction (Counting Version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2259/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/156457",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个排成一列的岛屿，宝藏放在一个非空岛屿集合中；从每个岛出发只能沿相邻岛移动，数组值表示到最近宝藏岛的最少步数。给定其中部分距离已被改成 $-1$ 的数组，要求计算所有可能宝藏集合的数量，结果对 $10^9+7$ 取模。",
+          "transformedStatement": "将每个未损坏的距离视为对宝藏位置的约束，先排除导致矛盾的 forbidden indexes；再把损坏位置按约束作用划分为强制点、独立自由点和相邻链，把原问题转化为若干独立选择因子的乘积。",
+          "keyObservations": [
+            "已知距离会对宝藏位置施加限制；若前置判定得到矛盾或出现 forbidden index，则不存在合法宝藏集合，答案为 $0$。",
+            "每个未被禁止的已损坏位置可归为三类：被某个已知距离唯一强制为宝藏、完全不影响其他约束、或与相邻位置形成链；强制位置不增加方案数，完全自由的位置各贡献因子 $2$。",
+            "在链中，每一对相邻的损坏位置至少有一个必须放置宝藏，因此当前位置取“不放置”时会强制下一位置放置，合法方案数满足斐波那契型递推。",
+            "不同自由位置和链彼此独立，最终将各部分方案数相乘；若整个数组均为 $-1$，还需从 $2^n$ 个选择中排除空集合。"
+          ],
+          "solutionBrief": "先利用前置版本 E 的判定找出 forbidden indexes，若约束矛盾则答案为 $0$。其余损坏位置分为强制、自由和链：自由位置贡献 $2$，链按相邻位置至少一个选中的条件用斐波那契递推计数，最后乘起来；全为 $-1$ 时减去空集合。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "complete"
         }
       ]
