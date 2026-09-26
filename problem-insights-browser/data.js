@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1746,
+    "total_problems": 1747,
     "source_total_problems": 1749,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 1746,
-    "with_editorial_brief": 1515,
-    "with_solution_brief": 1516,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 1747,
+    "with_editorial_brief": 1516,
+    "with_solution_brief": 1517,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 687,
+    "ai_override_count": 688,
     "primary_topic_count": 13,
     "contest_count": 278,
     "rating_min": 800,
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 74,
-    "构造与贪心": 584,
+    "构造与贪心": 585,
     "图论与网络流": 111,
     "动态规划与状态设计": 168,
     "数论与同余": 158,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 16
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 594,
+    "ai_generated_with_editorial": 595,
     "ai_generated_partial_editorial": 30,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -38952,7 +38952,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-01-30",
       "url": "https://codeforces.com/contest/1918",
       "type": "Div. 2",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": 2700,
       "problems": [
         {
@@ -39072,6 +39072,38 @@ window.CF_INSIGHTS_DATA = {
             "检查最后一个阻塞位置后的未阻塞后缀是否不超过 $M$，即可完成可行性判断；可行性随 $M$ 增大单调成立，因此能二分答案。"
           ],
           "solutionBrief": "二分答案 $M$。判定时用 DP 计算满足未阻塞段和不超过 $M$ 时的最小阻塞总和；正数数组使合法前驱连续，用滑动窗口和集合维护最小值，并检查首尾未阻塞段。单次判定为 $O(n\\log n)$，总复杂度为 $O(n\\log n\\log 10^9)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1918E",
+          "index": "E",
+          "slot": "E",
+          "title": "ace5 and Task Order",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1918/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/125300",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "交互"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "divide and conquer",
+            "implementation",
+            "interactive",
+            "probabilities",
+            "sortings"
+          ],
+          "statementBrief": "隐藏对象是一个长度为 $n$ 的 $1$ 到 $n$ 的排列，交互过程中维护未知的当前值 $x$。每次可询问一个位置并得到该位置的排列值与当前 $x$ 的比较结果（`<`、`=` 或 `>`）；需要在不超过 $40n$ 次询问内输出完整排列。",
+          "transformedStatement": "把所有位置视为待排序元素：先让当前值与一个随机枢轴相等，再用比较结果把其余位置分成小于枢轴和大于枢轴两组；递归获得按隐藏排列值排序的位置顺序，最后还原每个位置的数值。",
+          "keyObservations": [
+            "先反复询问同一枢轴位置，直到当前隐藏值满足 $x=a_i$；此时枢轴就能作为可靠比较基准。",
+            "固定枢轴后询问其他位置，并在每次询问后再次询问枢轴恢复 $x=a_i$，即可按返回的 `<` 与 `>` 将位置划分到枢轴两侧。",
+            "上述划分保持了隐藏排列中相对枢轴的大小关系，因此对子区间递归处理后，按左部、枢轴、右部拼接即可得到按值排序的位置序列。",
+            "随机选择枢轴使划分过程对应随机快速排序，题解指出其查询次数能够舒适地控制在 $40n$ 以内。"
+          ],
+          "solutionBrief": "随机选一个未确定位置作为枢轴，重复询问直到 $x$ 等于其值；询问其他位置并每次恢复枢轴状态，根据 `<`、`>` 分成两组，递归处理后拼接。最后把排序后的位置序列转换为各原位置的排列值。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },

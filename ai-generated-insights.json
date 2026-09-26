@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-26T20:27:45+00:00",
+  "updated_at": "2026-09-26T20:29:10+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -20936,6 +20936,38 @@
         "source_provenance": "依据题面、完整英文题解及标签整理；并行交换的具体含义由题解中的“所有交换对”规则补全。",
         "quality_flags": [
           "statement_inferred"
+        ]
+      }
+    },
+    "1918E": {
+      "problem_key": "1918E",
+      "title": "ace5 and Task Order",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1918/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/125300",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f3c7a23643fd285a6a94613e21df0df55e3883051ff43a1bd4d1a6e3d49bffc3",
+      "generated_at": "2026-09-26T20:29:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "隐藏对象是一个长度为 $n$ 的 $1$ 到 $n$ 的排列，交互过程中维护未知的当前值 $x$。每次可询问一个位置并得到该位置的排列值与当前 $x$ 的比较结果（`<`、`=` 或 `>`）；需要在不超过 $40n$ 次询问内输出完整排列。",
+        "transformed_statement": "把所有位置视为待排序元素：先让当前值与一个随机枢轴相等，再用比较结果把其余位置分成小于枢轴和大于枢轴两组；递归获得按隐藏排列值排序的位置顺序，最后还原每个位置的数值。",
+        "key_observations": [
+          "先反复询问同一枢轴位置，直到当前隐藏值满足 $x=a_i$；此时枢轴就能作为可靠比较基准。",
+          "固定枢轴后询问其他位置，并在每次询问后再次询问枢轴恢复 $x=a_i$，即可按返回的 `<` 与 `>` 将位置划分到枢轴两侧。",
+          "上述划分保持了隐藏排列中相对枢轴的大小关系，因此对子区间递归处理后，按左部、枢轴、右部拼接即可得到按值排序的位置序列。",
+          "随机选择枢轴使划分过程对应随机快速排序，题解指出其查询次数能够舒适地控制在 $40n$ 以内。"
+        ],
+        "solution_brief": "随机选一个未确定位置作为枢轴，重复询问直到 $x$ 等于其值；询问其他位置并每次恢复枢轴状态，根据 `<`、`>` 分成两组，递归处理后拼接。最后把排序后的位置序列转换为各原位置的排列值。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "交互"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；核心算法、查询恢复方式与查询预算依据 editorial_text；主题参考 codeforces_tags。",
+        "quality_flags": [
+          "statement_text部分交互规则因格式损坏而缺失"
         ]
       }
     }

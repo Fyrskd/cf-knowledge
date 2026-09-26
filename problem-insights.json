@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1746,
+    "total_problems": 1747,
     "source_total_problems": 1749,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 1746,
-    "with_editorial_brief": 1515,
-    "with_solution_brief": 1516,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 1747,
+    "with_editorial_brief": 1516,
+    "with_solution_brief": 1517,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 687,
+    "ai_override_count": 688,
     "primary_topic_count": 13
   },
   "records": [
@@ -22157,6 +22157,53 @@
           "model": "gpt-6-luna",
           "generated_at": "2026-09-24T07:59:32+00:00",
           "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 532,
+      "problem_key": "1918E",
+      "contest_id": 1918,
+      "title": "ace5 and Task Order",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1918/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/125300",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "交互"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "divide and conquer",
+        "implementation",
+        "interactive",
+        "probabilities",
+        "sortings"
+      ],
+      "statement_brief": "隐藏对象是一个长度为 $n$ 的 $1$ 到 $n$ 的排列，交互过程中维护未知的当前值 $x$。每次可询问一个位置并得到该位置的排列值与当前 $x$ 的比较结果（`<`、`=` 或 `>`）；需要在不超过 $40n$ 次询问内输出完整排列。",
+      "transformed_statement": "把所有位置视为待排序元素：先让当前值与一个随机枢轴相等，再用比较结果把其余位置分成小于枢轴和大于枢轴两组；递归获得按隐藏排列值排序的位置顺序，最后还原每个位置的数值。",
+      "key_observations": [
+        "先反复询问同一枢轴位置，直到当前隐藏值满足 $x=a_i$；此时枢轴就能作为可靠比较基准。",
+        "固定枢轴后询问其他位置，并在每次询问后再次询问枢轴恢复 $x=a_i$，即可按返回的 `<` 与 `>` 将位置划分到枢轴两侧。",
+        "上述划分保持了隐藏排列中相对枢轴的大小关系，因此对子区间递归处理后，按左部、枢轴、右部拼接即可得到按值排序的位置序列。",
+        "随机选择枢轴使划分过程对应随机快速排序，题解指出其查询次数能够舒适地控制在 $40n$ 以内。"
+      ],
+      "solution_brief": "随机选一个未确定位置作为枢轴，重复询问直到 $x$ 等于其值；询问其他位置并每次恢复枢轴状态，根据 `<`、`>` 分成两组，递归处理后拼接。最后把排序后的位置序列转换为各原位置的排列值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T20:29:10+00:00",
+          "quality_flags": [
+            "statement_text部分交互规则因格式损坏而缺失"
+          ]
         }
       },
       "manual_override": false,
