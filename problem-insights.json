@@ -24,7 +24,7 @@
     "missing_editorial_brief": 232,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 719,
+    "ai_override_count": 721,
     "primary_topic_count": 13
   },
   "records": [
@@ -70450,16 +70450,12 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "组合计数与概率",
-        "动态规划与状态设计",
-        "数据结构"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：SauSaGe Bank；本地暂无可用题解正文。",
+      "statement_brief": "账户初始有 $1$ 美元，连续营业 $n$ 天。每天早晨余额翻倍，晚上可选择取出全部余额并将账户重置为 $1$，也可暂不取出；要求恰好在 $k$ 个不同日期取款，最大化第 $n$ 天结束时银行卡中的总金额。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -70467,9 +70463,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:39:40+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1780,
@@ -70480,16 +70486,13 @@
       "problem_url": "https://codeforces.com/contest/2269/problem/B",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "交互"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：KiaKio and Squared Numbers；本地暂无可用题解正文。",
+      "statement_brief": "有 $n$ 座灯塔，第 $0$ 夜分别显示 $a_i$。之后每夜都把当前数字替换为其十进制各位数字平方和；若两座灯塔从某一夜起每夜都显示相同数字，则称它们合拍，求满足条件的下标对数量。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -70497,9 +70500,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T21:39:23+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     }
   ]
 }

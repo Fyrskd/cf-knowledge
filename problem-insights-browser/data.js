@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 232,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 719,
+    "ai_override_count": 721,
     "primary_topic_count": 13,
     "contest_count": 283,
     "rating_min": 800,
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 75,
-    "构造与贪心": 600,
+    "构造与贪心": 599,
     "图论与网络流": 113,
     "动态规划与状态设计": 171,
     "数论与同余": 161,
@@ -55,7 +55,7 @@ window.CF_INSIGHTS_DATA = {
     "树结构": 114,
     "代数、矩阵与多项式": 17,
     "交互": 74,
-    "基础实现与模拟": 70,
+    "基础实现与模拟": 71,
     "博弈": 64
   },
   "statusCounts": {
@@ -94,16 +94,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2269/problem/A",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "动态规划与状态设计",
-            "数据结构"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：SauSaGe Bank；本地暂无可用题解正文。",
+          "statementBrief": "账户初始有 $1$ 美元，连续营业 $n$ 天。每天早晨余额翻倍，晚上可选择取出全部余额并将账户重置为 $1$，也可暂不取出；要求恰好在 $k$ 个不同日期取款，最大化第 $n$ 天结束时银行卡中的总金额。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -118,16 +114,13 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2269/problem/B",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "交互"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：KiaKio and Squared Numbers；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 座灯塔，第 $0$ 夜分别显示 $a_i$。之后每夜都把当前数字替换为其十进制各位数字平方和；若两座灯塔从某一夜起每夜都显示相同数字，则称它们合拍，求满足条件的下标对数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

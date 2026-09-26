@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-26T21:37:18+00:00",
+  "updated_at": "2026-09-26T21:39:40+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -21902,6 +21902,58 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 与 editorial_text；tags 用于辅助确定主题。",
         "quality_flags": []
+      }
+    },
+    "2269B": {
+      "problem_key": "2269B",
+      "title": "KiaKio and Squared Numbers",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2269/problem/B",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a21e40f17d903e873042269851f91b1239481b1b75aa313bae63b6bdc4e00598",
+      "generated_at": "2026-09-26T21:39:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 座灯塔，第 $0$ 夜分别显示 $a_i$。之后每夜都把当前数字替换为其十进制各位数字平方和；若两座灯塔从某一夜起每夜都显示相同数字，则称它们合拍，求满足条件的下标对数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 提炼；editorial_text 为空，codeforces_tags 仅用于主题归类。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2269A": {
+      "problem_key": "2269A",
+      "title": "SauSaGe Bank",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2269/problem/A",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "11a1474b2da52eca77ac35cc1afb914fcd1a83248a9c945bf7503d1bb46499a0",
+      "generated_at": "2026-09-26T21:39:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "账户初始有 $1$ 美元，连续营业 $n$ 天。每天早晨余额翻倍，晚上可选择取出全部余额并将账户重置为 $1$，也可暂不取出；要求恰好在 $k$ 个不同日期取款，最大化第 $n$ 天结束时银行卡中的总金额。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面操作规则和 codeforces_tags 中的 greedy、math；未提供 editorial_text。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
       }
     }
   }
