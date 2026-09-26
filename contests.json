@@ -3003,6 +3003,17 @@
     "date": "2026-08-01"
   },
   {
+    "id": 2254,
+    "name": "Codeforces Round 1114 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1785854100,
+    "relativeTimeSeconds": 4611079,
+    "date": "2026-08-04"
+  },
+  {
     "id": 2252,
     "name": "Codeforces Round 1115 (Div. 2)",
     "type": "CF",
