@@ -2816,6 +2816,17 @@
     "date": "2026-04-28"
   },
   {
+    "id": 2227,
+    "name": "Codeforces Round 1096 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1777559700,
+    "relativeTimeSeconds": 12907328,
+    "date": "2026-04-30"
+  },
+  {
     "id": 2223,
     "name": "Codeforces Round 1097 (Div. 1,  Based on Zhili Cup 2026)",
     "type": "CF",
