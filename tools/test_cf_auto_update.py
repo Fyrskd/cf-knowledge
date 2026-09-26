@@ -137,6 +137,7 @@ class AutoUpdateTests(unittest.TestCase):
         with patch.object(updater, "run_command") as run_command, \
                 patch.object(updater, "generate_pending", return_value=(0, 0, 0)) as generate, \
                 patch.object(updater, "rebuild_static_outputs") as rebuild, \
+                patch.object(updater, "refresh_coverage_outputs") as refresh_coverage, \
                 patch.object(updater, "pending_ai_count", return_value=0), \
                 patch.object(updater, "corpus_summary", return_value={
                     "problems": 0,
@@ -149,6 +150,7 @@ class AutoUpdateTests(unittest.TestCase):
         self.assertEqual(result, 0)
         run_command.assert_not_called()
         rebuild.assert_not_called()
+        refresh_coverage.assert_called_once_with()
         generate.assert_called_once_with(0, False, False, None)
 
     def test_crawl_phase_checkpoints_without_running_ai(self) -> None:
@@ -177,6 +179,7 @@ class AutoUpdateTests(unittest.TestCase):
         self.assertIn("needs: crawl", workflow)
         self.assertIn("--phase crawl", workflow)
         self.assertIn("--phase ai --require-ai", workflow)
+        self.assertEqual(workflow.count("ref: ${{ github.ref_name }}"), 2)
         self.assertLess(
             workflow.index("Commit crawled source data"),
             workflow.index("Refresh AI summaries"),

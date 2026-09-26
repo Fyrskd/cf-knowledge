@@ -386,6 +386,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             print("BUILD_SKIPPED records unchanged", flush=True)
     else:
         print("CRAWL_SKIPPED phase=ai", flush=True)
+        refresh_coverage_outputs()
 
     if args.phase in {"all", "ai"}:
         selected_pending, success, failed = generate_pending(
