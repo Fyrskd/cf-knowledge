@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1830,
+    "total_problems": 1836,
     "source_total_problems": 1836,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 1830,
-    "with_editorial_brief": 1589,
-    "with_solution_brief": 1590,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1836,
+    "with_editorial_brief": 1595,
+    "with_solution_brief": 1596,
     "missing_editorial_brief": 240,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 771,
+    "ai_override_count": 777,
     "primary_topic_count": 13
   },
   "records": [
@@ -66915,6 +66915,270 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 1688,
+      "problem_key": "2242A",
+      "contest_id": 2242,
+      "title": "Bigrams",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2242/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/155047",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "sortings",
+        "strings"
+      ],
+      "statement_brief": "给定每种字母的卡片数量，必须每张恰好使用一次排列成字符串；相邻两个字符构成一个 bigram，要求字符串中至少出现两次完全相同且顺序也相同的 bigram。判断是否存在这样的排列。",
+      "transformed_statement": "把目标拆成两种构造：重复的同字母 bigram 可通过三个连续相同字母重叠产生；重复的异字母 bigram 只能用两份相同的两字母组合，因此需要两种字母各有至少两张卡。",
+      "key_observations": [
+        "两个相同字母组成的 bigram 可以重叠：连续放置三个相同字母即可得到两个 `aa`，因此只需某个 $c_i\\ge 3$。",
+        "两个不同字母组成的相同 bigram 不能重叠，因此必须找到两个不同字母，且它们的数量都至少为 $2$。",
+        "上述两类构造彼此覆盖全部可能性；将数量降序排序后，只需检查最大值是否至少为 $3$，或前两大的数量是否都至少为 $2$。"
+      ],
+      "solution_brief": "将重复 bigram 分为同字母和异字母两类：若某个数量至少为 $3$，可构造重叠的 `aaa`；否则若有两个不同字母数量都至少为 $2$，可构造两个不重叠的相同异字母 bigram。排序后检查这两个条件即可。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:39:21+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1689,
+      "problem_key": "2242B",
+      "contest_id": 2242,
+      "title": "Predominant Frequency Division",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2242/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/155047",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "data structures",
+        "greedy",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定只含 1、2、3 的数组，要将其切成三个连续且非空的部分。第 $i$ 部分中大于 $i$ 的元素数必须不超过该部分长度的一半，判断是否存在满足条件的切法并输出 YES 或 NO。",
+      "transformed_statement": "将两个关键部分分别转成权值和约束：第一段要求 $w_1$ 前缀和非负，第二段要求 $w_2$ 区间和非负；于是寻找两个切点 $x<y$，使 $pref_1[x]\\ge0$ 且 $pref_2[x]\\le pref_2[y]$，第三段只需非空。",
+      "key_observations": [
+        "第一段条件可改写为“1 的数量不少于 2 和 3 的总数”，给元素 1 赋权 $+1$、其余赋权 $-1$ 后等价于前缀权值和非负。",
+        "第二段条件可改写为“1 和 2 的数量不少于 3 的数量”，给 1、2 赋权 $+1$、3 赋权 $-1$ 后等价于该段权值和非负。",
+        "第三段对阈值 3 的条件恒成立，因此只需保证第二个切点不超过 $n-1$，问题只剩前两段的可行性。",
+        "固定第二个切点 $y$ 后，只需在此前满足第一段条件的切点 $x$ 中维护最小的 $pref_2[x]$；若该最小值不超过 $pref_2[y]$，就能保证第二段合格。"
+      ],
+      "solution_brief": "分别构造两种权值的前缀和，线性扫描第二个切点。维护此前所有满足 $pref_1[x]\\ge 0$ 的切点中的最小 $pref_2[x]$，检查其是否不超过当前 $pref_2[y]$；总复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:39:05+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1690,
+      "problem_key": "2242C",
+      "contest_id": 2242,
+      "title": "Unstable Elements",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2242/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/155047",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "brute force",
+        "data structures",
+        "implementation",
+        "sortings",
+        "two pointers"
+      ],
+      "statement_brief": "给定一个非递减数组，每次可同时删除每个相等连续块的第一个元素，或复制这些元素，使所有块长度统一减一或加一；数组为空后不能继续操作。求经过任意次操作后，能得到多少个不同的长度为 $k$ 的数组。",
+      "transformed_statement": "将数组表示为相等连续块，并把操作序列重排为先做若干次统一减一、再做若干次统一加一。固定减一次数后，块只按是否被完全删除而分组，剩余块再以固定步长共同增加长度。",
+      "key_observations": [
+        "把数组压缩成相等连续块；一次删除或复制会让每个现存块的长度统一减一或加一。",
+        "任意操作序列可等价整理为先连续删除、再连续复制；若先删除了某些块，它们之后不会重新出现。",
+        "固定删除 $x$ 次后，长度不超过 $x$ 的块消失，其余 $q$ 个块总长度为 $n-d-xq$；之后每次复制使长度增加 $q$。",
+        "不同的 $x$ 可能删除同一批块并得到同一数组，因此只检查使大小为 $x+1$ 的块首次消失的位置即可去重。"
+      ],
+      "solution_brief": "按相等连续段统计块长，枚举删除次数 $x$。计算被删除块总长 $d$ 和剩余块数 $q$，用 $n-d-xq\\le k$ 且差值能被 $q$ 整除判断可达；只在 $x+1$ 等于某个块长时计数，避免重复。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:38:49+00:00",
+          "quality_flags": [
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1691,
+      "problem_key": "2242D",
+      "contest_id": 2242,
+      "title": "Two Digit Strings",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/2242/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/155047",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "字符串"
+      ],
+      "original_tags": [
+        "dp",
+        "strings"
+      ],
+      "statement_brief": "给定两个数字串，每次可在任一串中选择相邻两个数字，将它们替换为其和模 $10$ 的一个数字，串长随之减一。可进行任意次操作，要求两串最终完全相同，并求能达到的最大公共长度；若无法相同则输出 $-1$。",
+      "transformed_statement": "把每个字符串改写为模 $10$ 前缀和数组；一次相邻合并正好删除其中一个非首尾前缀和。于是问题转化为在两个前缀和数组中保留最长相同子序列，同时保留固定的首项和末项。",
+      "key_observations": [
+        "相邻数字合并等价于删除前缀和数组中的一个内部元素，因此每次操作只改变一个可删除的分界点。",
+        "前缀和数组以首项 $0$ 唯一还原原字符串，所以两个结果字符串相等，当且仅当它们的前缀和数组完全相等。",
+        "两串所有数字的总和模 $10$ 必须相同；否则末尾前缀和无法匹配，答案为 $-1$，相同则至少能保留首尾两个前缀和。",
+        "要保留最多前缀和元素，只需对两个数组的内部元素求最长公共子序列，首尾元素固定额外贡献 $2$。"
+      ],
+      "solution_brief": "分别计算两串的模 $10$ 前缀和。若末项不同则输出 $-1$；否则对去掉首尾的数组求 LCS，答案为 LCS 长度加 $2$，用二维 DP 在 $O(|a||b|)$ 内完成。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:38:30+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1692,
+      "problem_key": "2242E",
+      "contest_id": 2242,
+      "title": "Product of Closures",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/2242/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/155047",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "正整数 $x$ 的闭包是其无前导零二进制表示的无限重复串；两个闭包的乘积是逐位 AND。需在 $[l,r]$ 中选取 $x<y$，使乘积按字典序最小，并输出其前 $n$ 位。",
+      "transformed_statement": "令 $k=\\lfloor\\log_2 r\\rfloor$，按候选数是否跨越幂次边界分类。闭包的周期等于二进制长度，首位相遇间隔由两长度的最小公倍数决定；据此分别构造同长度或相邻长度的最稀疏 AND 串。",
+      "key_observations": [
+        "当所有候选数的二进制长度相同为 $k+1$ 时，闭包积的周期固定；取 $l$ 与将最高不同位翻转且低位清零的数，可同时消去最低的 $d+1$ 位。",
+        "长度分别为 $a,b$ 的两个数，其首位的 $1$ 每隔 $\\operatorname{lcm}(a,b)$ 位相遇，因此积中首个 $1$ 不可能更晚；取两个单独的幂次可精确得到这种最稀疏模式。",
+        "若 $l\\le 2^{k-1}$，可使用长度为 $k$ 和 $k+1$ 的两个幂次，达到所有可用长度中最大的周期 $\\operatorname{lcm}(k,k+1)=k(k+1)$。",
+        "若 $2^{k-1}<l<2^k$，最优解必须取一个长度为 $k$ 的数和 $2^k$；与后者按位与等价于在前者每位之间插入 $k$ 个零，因此较小的 $x=l$ 最优。"
+      ],
+      "solution_brief": "令 $k=\\lfloor\\log_2 r\\rfloor$，按 $l$ 与 $2^k、2^{k-1}$ 的关系选取最优数对：同长度时用最高不同位构造；跨长度时分别取 $(2^{k-1},2^k)$ 或 $(l,2^k)$。重复两个数的二进制表示并逐位 AND，输出前 $n$ 位。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:38:16+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1693,
+      "problem_key": "2242F",
+      "contest_id": 2242,
+      "title": "Summer Vacation",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/2242/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/155047",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "树结构"
+      ],
+      "original_tags": [
+        "data structures",
+        "dp",
+        "probabilities",
+        "trees"
+      ],
+      "statement_brief": "有连续 $n$ 天，Monocarp 可选择从某一天起在首都生活；每个生活日有 $a_i$ 分钟，若当天开始时资金不少于 $a_i$，就花掉 $a_i$ 元休息购物，否则整天工作并赚取 $a_i$ 元，不能同日兼做两者。初始资金为 $0$，要求分别求他生活最后 $k$ 天（$1\\le k\\le n$）后剩余的钱。",
+      "transformed_statement": "把每个后缀抽象为函数 $dp[j]$：表示以 $j$ 元进入该后缀时最终剩余的钱。向后缀左侧加入一天 $x$，就是把旧函数数组的两段按 $[x,2x)$、$[0,2n-x)$ 拼接，再读取输入 $0$ 对应的函数值。",
+      "key_observations": [
+        "处理某一天时，资金变化是确定函数：输入为 $j$ 时，若 $j<x$ 输出 $j+x$，否则输出 $j-x$；因此可把整个后缀表示成“起始资金到最终资金”的函数数组。",
+        "在资金范围内维护函数值数组后，加入左侧元素 $x$ 只需重排旧数组：新数组等于旧数组的区间 $[x,2x)$ 与 $[0,2n-x)$ 的拼接，从逐点转移降为区间截取和拼接。",
+        "资金在整个过程中不会超过 $2n$：达到 $a_i$ 时会减少，否则增加后小于 $2a_i$；因此状态数组长度可限制为 $O(n)$，避免维护无界资金状态。",
+        "每加入一天只需对函数数组做常数次区间分割与合并，持久化隐式 Treap 能在 $O(\\log n)$ 完成这些操作，并保留需要的数组版本。"
+      ],
+      "solution_brief": "从右向左处理天数，令 $dp[j]$ 表示以后缀开始时有 $j$ 元的最终余额。加入 $x$ 时将旧数组按 $[x,2x)$、$[0,2n-x)$ 拼接，用持久化隐式 Treap 支持分割合并；每次答案为新数组的 $dp[0]$，总复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:37:49+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1694,
