@@ -3014,6 +3014,17 @@
     "date": "2026-08-06"
   },
   {
+    "id": 2253,
+    "name": "Educational Codeforces Round 193 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1786113300,
+    "relativeTimeSeconds": 4351632,
+    "date": "2026-08-07"
+  },
+  {
     "id": 2255,
     "name": "Codeforces Round 1116 (Div. 1)",
     "type": "CF",
