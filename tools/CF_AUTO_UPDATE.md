@@ -122,15 +122,19 @@ python3 tools/cf_batch_upload.py --contest-id 1778 --contest-id 1788
 脚本中断后重新运行会等待仍在运行的 Action；已成功的比赛会跳过，失败的比赛会重新开始
 本轮重试。某场达到重试上限后会继续处理后续比赛，脚本最后以非零状态退出并保留失败日志摘要。
 
-批量上传的控制台日志按阶段打印。重点关注以下几类行：
+交互终端默认显示彩色比赛进度条、当前 Action 阶段、等待时间和简短失败原因。GitHub
+Actions API 只提供 `queued`、`in_progress` 和 `completed` 等状态，不提供真实执行百分比，
+因此总进度条按比赛数量计算，单场 Action 使用阶段状态和计时显示。
 
-- `CONTEST_START` / `CANDIDATE_LIST`：本轮候选比赛和当前进度；
-- `DISPATCH_START`：正在触发哪一个 workflow、分支和比赛；
-- `RUN_DISCOVERY_START` / `RUN_DISCOVERY_SUCCESS`：是否找到对应的 Actions run；
-- `RUN_POLL_START` / `RUN_STATUS`：当前 run 的轮询状态；
-- `RUN_FAILURE_LOG`：失败 run 对应的 workflow step 和错误片段；
-- `RETRY`：失败发生在哪个本地阶段、哪个 workflow step，以及下一次重试等待时间；
-- `CONTEST_FAILED` / `CONTEST_FAILED_URL`：最终失败原因、run ID 和可直接打开的 Actions 链接。
+默认只显示最有用的失败原因和 Run 链接，避免在失败、重试和最终汇总中重复整段日志。需要
+排查完整 Actions 错误片段时使用：
+
+```bash
+python3 tools/cf_batch_upload.py --from-date 2023-01-01 --verbose
+```
+
+输出被重定向、通过管道使用或显式添加 `--plain` 时，脚本会输出稳定的纯文本事件行，方便
+保存和搜索。设置通用的 `NO_COLOR` 环境变量会关闭颜色和动态刷新，但仍保留易读文案。
 
 如果手动按 `Ctrl-C` 中断，脚本会打印 `BATCH_UPLOAD_INTERRUPTED`；状态文件会保留当前 run，下一次运行会先恢复等待，不会立即重复触发。
 如果项目迁移了源仓库，旧状态文件中的 Actions run ID 可能在新仓库中不存在；脚本会识别

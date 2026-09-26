@@ -6,23 +6,33 @@ from __future__ import annotations
 import datetime as dt
 import io
 import json
+import os
 import sys
 import tempfile
 import unittest
 from contextlib import redirect_stdout
 from pathlib import Path
 from typing import Any
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from cf_batch_upload import (
+    BatchConsole,
     BatchUploadError,
     BatchUploader,
     Contest,
     RunNotFoundError,
     WorkflowRun,
     load_candidates,
+    render_progress_bar,
     summarize_failed_log,
+    summarize_failure_reason,
 )
+
+
+class TtyBuffer(io.StringIO):
+    def isatty(self) -> bool:
+        return True
 
 
 class FakeWorkflowClient:
@@ -99,6 +109,55 @@ class DetailedFailureClient(FakeWorkflowClient):
 
 
 class BatchUploadTests(unittest.TestCase):
+    def test_progress_bar_uses_exact_contest_count(self) -> None:
+        self.assertEqual(render_progress_bar(2, 4, width=10), "[█████░░░░░] 2/4")
+
+    def test_interactive_console_uses_color_and_replaces_live_line(self) -> None:
+        output = TtyBuffer()
+        console = BatchConsole(stream=output)
+        with patch.dict(os.environ, {}, clear=True):
+            console.event("RAW_START", "开始处理", tone="cyan")
+            console.live("⠋ Action 运行中")
+            console.event("RAW_DONE", "处理完成", tone="green")
+        text = output.getvalue()
+        self.assertIn("开始处理", text)
+        self.assertIn("Action 运行中", text)
+        self.assertIn("处理完成", text)
+        self.assertIn("\x1b[", text)
+        self.assertNotIn("RAW_START", text)
+
+    def test_plain_console_keeps_stable_event_output(self) -> None:
+        output = TtyBuffer()
+        console = BatchConsole(stream=output, plain=True)
+        console.event("RUN_STATUS status=in_progress", "Action 运行中", tone="cyan")
+        console.live("这行不应输出")
+        self.assertEqual(output.getvalue(), "RUN_STATUS status=in_progress\n")
+
+    def test_no_color_keeps_friendly_text_without_terminal_codes(self) -> None:
+        output = TtyBuffer()
+        console = BatchConsole(stream=output)
+        with patch.dict(os.environ, {"NO_COLOR": "1"}):
+            console.event("RAW_STATUS", "Action 运行中", tone="cyan")
+            console.live("这行不应动态输出")
+        self.assertEqual(output.getvalue(), "Action 运行中\n")
+
+    def test_interactive_batch_shows_overall_progress(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            output = TtyBuffer()
+            uploader = BatchUploader(
+                client=FakeWorkflowClient([True]),
+                state_path=Path(directory) / "state.json",
+                retry_delay_seconds=0,
+                sleep=lambda _: None,
+                console=BatchConsole(stream=output),
+            )
+            with patch.dict(os.environ, {}, clear=True):
+                uploader.run([Contest(1778, "Round 848", dt.date(2023, 2, 1))])
+        text = output.getvalue()
+        self.assertIn("[░░░░░░░░░░░░░░░░░░░░] 0/1", text)
+        self.assertIn("[████████████████████] 1/1", text)
+        self.assertIn("Action 已结束", text)
+
     def test_summarize_failed_log_extracts_workflow_step_and_error(self) -> None:
         step, excerpt = summarize_failed_log(
             "update\tUNKNOWN STEP\t2026-09-25T00:00:00Z\tRunner output\n"
@@ -108,6 +167,16 @@ class BatchUploadTests(unittest.TestCase):
         self.assertEqual(step, "Build outputs")
         self.assertIn("AUTO_UPDATE_FAILED", excerpt)
         self.assertIn("exit code 1", excerpt)
+
+    def test_summarize_failure_reason_prefers_actionable_ai_error(self) -> None:
+        reason = summarize_failure_reason(
+            "update\tBuild\t2026-09-25T00:00:00Z\t"
+            "AI_ITEM problem_key=1909H status=failed category=rate_limited "
+            "error=Codex 账号用量窗口已达上限\n"
+            "update\tBuild\t2026-09-25T00:00:01Z\t"
+            "AUTO_UPDATE_FAILED 本批次 AI 摘要全部失败\n"
+        )
+        self.assertEqual(reason, "Codex 账号用量窗口已达上限")
 
     def test_failed_console_log_identifies_phase_step_and_run_url(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
@@ -127,6 +196,23 @@ class BatchUploadTests(unittest.TestCase):
         self.assertIn("phase=workflow", text)
         self.assertIn("workflow_step=Crawl contests, build outputs, and refresh AI summaries", text)
         self.assertIn("CONTEST_FAILED_URL contest=1778", text)
+        self.assertIn("error=命令失败（2）", text)
+        self.assertNotIn("exit code 1", text)
+
+    def test_verbose_failure_console_includes_log_excerpt(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            output = io.StringIO()
+            uploader = BatchUploader(
+                client=DetailedFailureClient([False]),
+                state_path=Path(directory) / "state.json",
+                max_retries=0,
+                retry_delay_seconds=0,
+                sleep=lambda _: None,
+                console=BatchConsole(stream=output, plain=True, verbose=True),
+            )
+            uploader.run([Contest(1778, "Round 848", dt.date(2023, 2, 1))])
+        text = output.getvalue()
+        self.assertIn("RUN_FAILURE_LOG contest=1778", text)
         self.assertIn("exit code 1", text)
 
     def test_load_candidates_only_returns_incomplete_contests(self) -> None:
