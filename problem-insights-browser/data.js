@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1786,
+    "total_problems": 1794,
     "source_total_problems": 1794,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 1786,
-    "with_editorial_brief": 1547,
-    "with_solution_brief": 1548,
-    "missing_editorial_brief": 238,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1794,
+    "with_editorial_brief": 1554,
+    "with_solution_brief": 1555,
+    "missing_editorial_brief": 239,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 727,
+    "ai_override_count": 735,
     "primary_topic_count": 13,
-    "contest_count": 284,
+    "contest_count": 285,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,23 +45,23 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 75,
-    "构造与贪心": 601,
+    "构造与贪心": 604,
     "图论与网络流": 114,
-    "动态规划与状态设计": 171,
-    "数论与同余": 162,
-    "组合计数与概率": 140,
-    "数据结构": 143,
+    "动态规划与状态设计": 172,
+    "数论与同余": 163,
+    "组合计数与概率": 141,
+    "数据结构": 144,
     "几何": 38,
     "树结构": 115,
     "代数、矩阵与多项式": 17,
     "交互": 74,
-    "基础实现与模拟": 72,
+    "基础实现与模拟": 73,
     "博弈": 64
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 625,
+    "ai_generated_with_editorial": 632,
     "ai_generated_partial_editorial": 31,
-    "missing_editorial": 238,
+    "missing_editorial": 239,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -263,6 +263,242 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 2267,
+      "name": "Codeforces Round 1123 (Div. 2)",
+      "date": "2026-09-25",
+      "url": "https://codeforces.com/contest/2267",
+      "type": "Div. 2",
+      "problemCount": 8,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2267A",
+          "index": "A",
+          "slot": "A",
+          "title": "Turn Into a Palindrome",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2267/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/157126",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的小写字符串 $s$ 和字符 $c$。每次可任选一个位置并将其改为 $c$，要求计算把 $s$ 变成回文串所需的最少操作次数。",
+          "transformedStatement": "将字符串按首尾对称位置划分成若干独立的字符对；每对只需满足两端相等，并根据原字符是否已为 $c$ 计算该对的最小修改费用，中心字符无需处理。",
+          "keyObservations": [
+            "回文条件只约束每个对称位置对 $(s_i,s_{n-i+1})$，因此各对可以独立计算修改代价并求和。",
+            "若一对字符已经相同，则无需操作；若恰有一个字符等于 $c$，只需把另一个改成 $c$，代价为 $1$。",
+            "若一对字符不同且都不等于 $c$，两者都必须改成 $c$，代价为 $2$；这种逐对取最小代价的方案同时覆盖了所有回文约束。"
+          ],
+          "solutionBrief": "遍历前半段与后半段的对称位置。相同则贡献 $0$；不同但有一侧为 $c$ 则贡献 $1$；否则两侧都改为 $c$，贡献 $2$，累加得到答案，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2267B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fashionable Array",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2267/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/157126",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "sortings"
+          ],
+          "statementBrief": "给定一个整数数组，可以任意重排其中元素。重排后，对每个前缀取出现次数最多的数；若并列则取数值最大的数，要求输出一个使所有前缀模式之和最大的排列。",
+          "transformedStatement": "把每个数按出现次数展开成若干层：第 $i$ 层包含所有总出现次数至少为 $i$ 的数，并将每层按数值递减拼接。这样每个前缀都对应于某一频次层，模式由该层的最大值控制。",
+          "keyObservations": [
+            "把每个数的出现次数记为 $c_x$，将第 $i$ 层定义为所有满足 $c_x\\ge i$ 的数；每个数恰好在前 $c_x$ 层出现一次，因此不会改变元素总数。",
+            "每层按数值递减输出后，层内第一个数是当前拥有第 $i$ 次出现机会的最大值；后续同层元素只会与它并列最高频，故该数始终是前缀的模式。",
+            "按出现次数分层而不是简单按数值排序，使每个前缀优先获得当前频次下能使用的最大数，从而同时照顾所有前缀的模式值。"
+          ],
+          "solutionBrief": "统计每个值的出现次数。对 $i=1$ 到 $n$，依次按递减值输出所有满足 $c_x\\ge i$ 的数；这种分层排列可使每个前缀的模式取到相应频次层中的最大值。复杂度为 $O(n)$ 或 $O(n\\cdot maxA)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2267C",
+          "index": "C",
+          "slot": "C",
+          "title": "GCD Treasury",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2267/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/157126",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 堆硬币和整数 $x$。每次选择正数堆且其与当前 $x$ 的最大公约数 $g>1$，取走该堆的 $g$ 枚硬币并令 $x=g$，直到无法操作；求最多能取走的硬币总数。",
+          "transformedStatement": "把一次次取硬币抽象为选择若干整堆：选中堆的总大小必须与初始 $x$ 及其他选中堆拥有大于 $1$ 的公共因子。固定公共因子 $d$ 后，收益就是所有可被 $d$ 整除的堆之和。",
+          "keyObservations": [
+            "一旦选择某堆，其当前可取数量 $g$ 会始终整除剩余硬币，因此可以连续操作直到整堆取完，不会降低最优答案。",
+            "取完若干堆后，当前 $x$ 等于初始 $x$ 与所有已选堆大小的最大公约数；因此可行选择必须存在某个初始 $x$ 的因子 $d>1$，整堆大小都被 $d$ 整除。",
+            "固定因子 $d$ 后，所有能被 $d$ 整除的堆都可以全部取走，收益就是它们的总和 $c_d$；枚举 $x$ 的所有因子并取最大值即可。"
+          ],
+          "solutionBrief": "证明选中一堆后应将其取空，再将问题转为：对初始 $x$ 的每个因子 $d>1$，统计所有 $d\\mid a_i$ 的堆总和 $c_d$，答案为最大 $c_d$。可用枚举因子或按倍数统计。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2267D",
+          "index": "D",
+          "slot": "D",
+          "title": "Backrooms Hill",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2267/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/157126",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个由不同整数构成的数组，每次可交换下标相差 $2$ 的两个元素。目标是判断能否通过任意次操作，使数组存在一个峰顶：峰顶左侧严格递增，右侧严格递减。",
+          "transformedStatement": "交换操作允许分别任意重排奇数下标和偶数下标的元素。将每个值映射为其原位置的奇偶性后，问题等价于判断从最大值开始的每个值域后缀能否占据一段连续位置。",
+          "keyObservations": [
+            "距离为 2 的交换只会交换相同下标奇偶性的元素，因此两类位置内的元素可以任意重排，问题只需保留每个数原位置的奇偶性。",
+            "山形数组中，任取值域后缀 $i,i+1,\u0000dots,n$，这些数在数组中的位置必须构成连续段；否则它们之间夹着较小值，会产生局部谷底。",
+            "连续段中的两类位置数量之差不能超过 $1$，所以对位置序列的每个值域后缀统计奇偶性，若差值超过 $1$ 就一定无法构造。",
+            "所有后缀都满足奇偶数量差不超过 $1$ 时，可以按从大到小逐步放入连续段，奇偶位置始终可匹配，因此该条件也是充分的。"
+          ],
+          "solutionBrief": "记录每个数在原数组中的位置奇偶性，并从 $n$ 到 $1$ 扫描这些奇偶标记的后缀。维护两类数量，若任一后缀的数量差超过 $1$ 输出 NO，否则输出 YES，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2267E",
+          "index": "E",
+          "slot": "E",
+          "title": "Clean Substrings",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2267/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/157126",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "给定二进制串，可花费一枚硬币选择一个全相同的连续子串并翻转其中所有字符；一个串的美丽值是把它变成全相同串所需的最少硬币数。串的力量是所有连续子串美丽值之和；每次将指定位置的字符翻转，输出初始状态及每次修改后的力量。",
+          "transformedStatement": "将字符串改写为相邻差分数组 $b_i=[s_i\\ne s_{i+1}]$。每个子串的美丽值只由其中差分 $1$ 的数量决定，整体答案转化为差分位置的加权贡献加上首尾字符不同的子串数量。",
+          "keyObservations": [
+            "把相邻字符是否不同编码为数组 $b$；反转任意子串只会改变其两侧边界的 $b$，因此一次操作最多消除两个不等位置，子串美丽值等于 $\u001bceil\\sum b/2\\u001bceil$。",
+            "利用 $\\lceil x/2\\rceil=(x+[x\\text{为奇数}])/2$，美丽值总和可拆为所有子串中 $b$ 的总和与奇数段数量两部分，避免逐个计算子串。",
+            "每个 $b_i=1$ 会出现在恰好 $i(n-i)$ 个子串中，所以第一部分是各 $b_i$ 的固定权重贡献；奇数段等价于首尾字符不同，数量为原串中 $0$ 和 $1$ 的个数之积。",
+            "翻转位置 $i$ 只影响 $b_{i-1}$ 和 $b_i$，同时调整字符计数与这两个位置的加权贡献即可处理每次修改。"
+          ],
+          "solutionBrief": "维护相邻差分数组 $b$、其加权和以及原串中 $0/1$ 的数量。答案为 $\\frac{\\sum b_i i(n-i)+cnt_0cnt_1}{2}$；翻转字符时只更新相邻两个差分位置，预处理后每次 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2267F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "XOR Transformations (Easy Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2267/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/157126",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的非负整数数组。一次变换要计算所有下标对的两两异或值，取其中最小的 $n$ 个组成新数组；对每个独立查询 $x$，求原数组经过 $x$ 次变换后最大值与最小值之差。",
+          "transformedStatement": "把数组看作一个按轮次演化的状态序列：每轮由全部两两异或值的前 $n$ 小者确定，并记录该状态的值域宽度。核心是证明最高二进制位会快速消失，从而状态序列在常数轮内归零。",
+          "keyObservations": [
+            "设当前最高位为 $1$ 和为 $0$ 的元素数量分别为 $c_1,c_0$，最高位不出现在异或结果中的配对数为 $\\binom{c_0}{2}+\\binom{c_1}{2}$；该数量至少为 $n$ 时，选出的新数组就不会含有最高位。",
+            "当 $n\\ge 6$ 时上述配对数总不少于 $n$，因此最高位一次变换必然消失；$n=5$ 时若两组规模为 $2,3$，下一轮会使无最高位元素数变为 $4$，所以最多两轮消失。",
+            "最高位持续消失意味着数组数值范围快速缩小，题解进一步给出至多 $9$ 次变换即可全为零；因此只需预处理这几个状态，较大的查询统一回答 $0$。",
+            "一次变换直接生成全部 $\\binom n2$ 个两两异或值并取最小的 $n$ 个，单轮复杂度为 $O(n^2\\log n)$，逐轮预处理后即可独立回答所有查询。"
+          ],
+          "solutionBrief": "反复生成所有两两异或值，排序后保留最小的 $n$ 个作为下一状态，同时记录每轮的最大值减最小值。由于最高位至多在两轮内消失且总轮数不超过 $9$，预处理所有状态后，查询超过终止轮数时直接输出 $0$；总复杂度为 $O(n^2\\log n\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2267F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "XOR Transformations (Hard Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2267/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/157126",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "greedy",
+            "sortings",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "给定非负整数数组。一次操作枚举所有下标对 $i<j$ 的异或值，取其中最小的 $n$ 个作为新数组；每个查询独立地从原数组开始执行 $x$ 次操作，要求最终数组的最大值减最小值。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2267G",
+          "index": "G",
+          "slot": "G",
+          "title": "New LRT",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2267/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/157126",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定起点 $0$、终点 $n$ 和费用数组 $c$。每次在位置 $i$ 选择正整数 $x$，要求 $m\\&x=x$，移动到 $i+x$ 并支付 $c_x$；所有步长和为 $n$ 的移动序列都算不同，求全部序列费用总和对 $10^9+7$ 取模。",
+          "transformedStatement": "把每条行程视为由允许步长组成的有序组合：先统计每个总位移的组合数，再统计所有组合的步数加一。固定步长 $x$ 时，它在总位移 $n$ 的行程中的出现次数等于位移 $n-x$ 的每条行程可插入该步的 $p+1$ 个位置。",
+          "keyObservations": [
+            "允许的步长恰好是二进制掩码 $m$ 的正子掩码，因此按步长是否为 $2^j$ 分层，可用 $st[i][j]$ 汇总所有小于 $2^j$ 的转移，避免逐个枚举步长。",
+            "路径数满足按最后一步分类的递推；利用 $st$ 后，$dp[i]$ 能在 $O(\\log n)$ 时间内得到，从而统计所有到达位置 $i$ 的路径。",
+            "固定步长 $x$ 后，包含该步的路径删去一次 $x$ 就变成位移 $n-x$ 的路径；若原路径有 $p$ 步，则可将 $x$ 插入 $p+1$ 个位置，因此其总贡献由所有此类路径的 $p+1$ 之和决定。",
+            "令 $cnt[i]$ 表示位移为 $i$ 的所有路径中 $p+1$ 的总和，则按最后一步转移后再加上 $dp[i]$，即可递推这些插入位置数量，并将答案写成 $\\sum_{x\\in I}c_x\\,cnt[n-x]$。"
+          ],
+          "solutionBrief": "先用分层辅助数组优化路径数 DP，得到所有 $dp[i]$；再递推路径步数权重 $cnt[i]$。每个允许步长 $x$ 的总贡献为 $c_xcnt[n-x]$，累加后取模，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
