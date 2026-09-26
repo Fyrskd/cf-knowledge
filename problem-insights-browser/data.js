@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1815,
+    "total_problems": 1823,
     "source_total_problems": 1823,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 1815,
-    "with_editorial_brief": 1574,
-    "with_solution_brief": 1575,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1823,
+    "with_editorial_brief": 1582,
+    "with_solution_brief": 1583,
     "missing_editorial_brief": 240,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 756,
+    "ai_override_count": 764,
     "primary_topic_count": 13,
-    "contest_count": 288,
+    "contest_count": 289,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 75,
-    "构造与贪心": 611,
+    "字符串": 77,
+    "构造与贪心": 615,
     "图论与网络流": 115,
     "动态规划与状态设计": 174,
     "数论与同余": 167,
     "组合计数与概率": 142,
-    "数据结构": 146,
+    "数据结构": 147,
     "几何": 39,
     "树结构": 116,
     "代数、矩阵与多项式": 17,
     "交互": 74,
-    "基础实现与模拟": 75,
+    "基础实现与模拟": 76,
     "博弈": 64
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 651,
+    "ai_generated_with_editorial": 659,
     "ai_generated_partial_editorial": 32,
     "missing_editorial": 240,
     "manual_override": 891,
@@ -2814,6 +2814,246 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：固定颜色后，先把问题转成边收益。单点最优是这些颜色点的树上中心，总距离等于每条边被多少条到中心的路径经过之和；选 k 个点的连通块，相当于从中心出发加入 k-1 条边并扣掉这些边收益。由于收益向外单调下降，贪心取最大收益边即可；对每种颜色用虚树收集压缩路径上的相同收益段。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2254,
+      "name": "Codeforces Round 1114 (Div. 3)",
+      "date": "2026-08-04",
+      "url": "https://codeforces.com/contest/2254",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "2254A",
+          "index": "A",
+          "slot": "A",
+          "title": "Riptide",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2254/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/155666",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "三名玩家分别拥有 $a,b,c$ 个代币。每轮开始前若有人数相同则立即结束，否则拥有最多代币者给最少者 1 个代币；求从初始状态开始实际进行的轮数。",
+          "transformedStatement": "将三个代币数排序为 $a\\le b\\le c$，把每轮操作看成左右端点同时向固定的中间值靠近 1。游戏在任一端点首次达到中间值时结束，因此转化为求两段距离的较小值。",
+          "keyObservations": [
+            "将三人数值排序为 $a\\le b\\le c$ 后，每轮只会让最小值增加 $1$、最大值减少 $1$，中间值 $b$ 在首次出现相等前保持不变。",
+            "最小值与中间值的差距每轮减少 $1$，最大值与中间值的差距也每轮减少 $1$；任一差距先变为 $0$ 时游戏立即结束。",
+            "因此结束轮数等于两侧距离中较小者，即 $\\min(b-a,c-b)$；初始存在相等值时该式自然给出 $0$。"
+          ],
+          "solutionBrief": "先将三个数排序为 $a\\le b\\le c$。每轮两端分别向中间值靠近 $1$，中间值不变，直到较近的一端与其相等，因此输出 $\\min(b-a,c-b)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2254B",
+          "index": "B",
+          "slot": "B",
+          "title": "Evanescent",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2254/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/155666",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个由小写字母组成的字符串，必须删除一个不能位于首尾的字符；删除后将每个连续相同字符块压缩为一个字符。求所有合法删除方案中压缩后字符串的最短长度。",
+          "transformedStatement": "把字符串表示成连续字符块序列，目标转化为删除一个内部位置：删除非单字符块没有收益，删除单字符块则可能使左右两块合并。",
+          "keyObservations": [
+            "删除长度大于 $1$ 的连续相同字符块中的任意字符后，该块仍存在，因此压缩串长度不变。",
+            "只有删除长度为 $1$ 且位于内部的字符块，才能让压缩串长度减少。",
+            "删除孤立块后，若左右相邻块字符相同，它们会合并，长度减少 $2$；否则只减少 $1$。",
+            "因此只需统计原压缩串的块数，并在所有可删的单字符内部块中取最大减少量。"
+          ],
+          "solutionBrief": "先统计原字符串的连续字符块数。扫描内部的单字符块：若左右字符相同，答案最多减少 $2$；否则最多减少 $1$，取最大减少量后输出块数减去该值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2254C1",
+          "index": "C1",
+          "slot": "C",
+          "title": "Marenol (easy version)",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2254/problem/C1",
+          "editorialUrl": "https://codeforces.com/blog/entry/155666",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定两个等长二进制串，每次可将子串 $001$ 与 $100$ 互换，或将 $110$ 与 $011$ 互换。判断经过有限次操作后，是否能把第一个串变成第二个串。",
+          "transformedStatement": "把每次局部替换抽象为交换下标相差 $2$ 的两个字符，于是字符串分解为奇数位序列和偶数位序列，两部分可独立任意重排；问题转为比较两部分的字符计数。",
+          "keyObservations": [
+            "每次操作都等价于交换位置 $i$ 与 $i+2$ 的字符，中间字符不变，因此字符只能在相同奇偶性的位置间移动。",
+            "同一奇偶性的位置可以通过距离为 $2$ 的交换任意重排，所以无需匹配具体位置，只需比较两串在奇数位和偶数位上的 $1$ 的数量。",
+            "若两类位置的 $1$ 数量分别相同，就能独立重排成目标串；任一类数量不同则该类字符无法通过操作改变。"
+          ],
+          "solutionBrief": "分别统计 $a$、$b$ 在奇数位和偶数位上的 $1$ 数量。两类数量都相等则输出 YES，否则输出 NO；因为操作只允许同奇偶位置间交换。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2254C2",
+          "index": "C2",
+          "slot": "C",
+          "title": "Marenol (hard version)",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2254/problem/C2",
+          "editorialUrl": "https://codeforces.com/blog/entry/155666",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定两个等长二进制串 $a,b$，每次可将连续子串 $001$ 与 $100$ 互换，或将 $110$ 与 $011$ 互换。求把 $a$ 变成 $b$ 所需的最少操作数；若无法变换则输出 $-1$。",
+          "transformedStatement": "按下标奇偶把字符串拆成两条压缩序列；原操作在其中一条序列上等价于交换相邻的 $0$ 和 $1$。因此问题转化为分别计算两条序列中对应 $1$ 的最小相邻交换代价。",
+          "keyObservations": [
+            "每次操作只会让一个字符移动两个位置，因此字符始终被限制在原来的下标奇偶类中，奇偶位置可以分别独立处理。",
+            "在固定奇偶类的压缩序列中，合法操作等价于交换相邻的 $0$ 和 $1$，所以可行性的必要条件是初末状态中 $1$ 的数量分别相等。",
+            "相同的 $1$ 无需相互穿越，最优方案让初始序列中的第 $k$ 个 $1$ 对应目标序列中的第 $k$ 个 $1$，从而得到最小移动距离。",
+            "所有匹配位置差之和除以 $2$ 就是操作数，因为一次操作让一个 $1$ 移动两个原字符串位置。"
+          ],
+          "solutionBrief": "分别收集 $a,b$ 在两类下标中的 $1$ 的位置。若任一类数量不同则输出 $-1$；否则按出现顺序匹配对应的 $1$，累加位置差并除以 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2254D",
+          "index": "D",
+          "slot": "D",
+          "title": "Silhouette",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2254/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/155666",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定正整数数组的影子数组 $b$，其中 $b_i$ 是原数组中所有严格小于 $a_i$ 的元素之和。需要重建满足条件且字典序最小的正整数数组 $a$；若不存在则输出 $-1$。",
+          "transformedStatement": "把原数组按相同值划分为递增分组；每组对应一个不同影子值，且该影子等于所有更小分组元素总和，因此排序后的影子值就是分组前缀和。",
+          "keyObservations": [
+            "相同的 $a$ 值必有相同影子，而较大的 $a$ 值影子严格更大，因此按影子排序即可唯一对应各个值分组。",
+            "设第 $i$ 组大小为 $c_i$、元素值为 $v_i$，相邻影子之差满足 $s_{i+1}-s_i=c_i v_i$，从而可直接恢复除最后一组外的所有组值。",
+            "最小影子必须是 $0$；若相邻差不能被对应组大小整除，或恢复出的组值不递增，则不存在合法数组。",
+            "最后一组没有后继影子提供约束，为使数组字典序最小，应将其值设为前一组值加 $1$。"
+          ],
+          "solutionBrief": "统计每个不同影子的出现次数并排序。要求最小影子为 $0$，用相邻影子差除以前一组大小恢复组值，同时检查整除性和严格递增；最后一组取前值加 $1$，再按原位置映射输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2254E",
+          "index": "E",
+          "slot": "E",
+          "title": "Chronostasis",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2254/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/155666",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定由正整数数组 $a$ 的首项和相邻差分组成的数组 $b$，但 $b$ 的元素已被完全打乱。需要重新排列 $b$，使按首项及差分还原出的每个 $a_i$ 都至少为 $1$，并输出字典序最小的 $a$；若无法做到则输出 $-1$。",
+          "transformedStatement": "令 $a_0=0$，把排列后的 $b$ 视为依次加入的增量，目标变为构造一个始终为正的前缀和序列。固定当前前缀和后，下一步选择不小于 $1-a_{i-1}$ 的最小未用增量。",
+          "keyObservations": [
+            "令 $a_0=0$，则重排后的 $b$ 依次作为增量时，$a$ 恰好是这些增量的前缀和，从而把重构转化为排列问题。",
+            "已确定 $a_{i-1}$ 时，$a_i=a_{i-1}+b_i$；要保持正数必须选取满足 $b_i\\ge 1-a_{i-1}$ 的未使用元素。",
+            "在满足正数约束的候选中选最小的 $b_i$，就能使当前 $a_i$ 最小；由于前缀已按字典序最优固定，这一选择也保证整体字典序最小。",
+            "用 multiset 保存未使用元素并查询阈值 $1-a_{i-1}$ 的最小元素；若不存在则当前前缀无法延伸，整个重构必定无解。"
+          ],
+          "solutionBrief": "将 $b$ 看作待排列的增量，维护当前前缀和 $a_{i-1}$。每步在 multiset 中取不小于 $1-a_{i-1}$ 的最小元素并删除；若取不到则输出 $-1$，否则得到的前缀和序列即为答案，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2254F",
+          "index": "F",
+          "slot": "F",
+          "title": "Whiplash",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2254/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/155666",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定偶数长度的非负整数数组 $a$ 和目标数组 $b$。每次选择一个位置 $i$，保持 $a_i$ 不变，并将其他所有元素分别与当前 $a_i$ 做按位异或；可重复操作，判断能否得到 $b$。",
+          "transformedStatement": "把操作序列按元素多重集分析：任意多次操作的结果都等价于原数组，或原数组执行一次操作后的某个排列。于是问题转化为比较两个多重集，并寻找一次操作中被选元素的值。",
+          "keyObservations": [
+            "连续先选 $i$ 再选 $j$ 后，除元素顺序外的结果集合等同于只从初始数组执行一次选 $j$ 的操作，因此任意操作序列只需考虑零次或一次操作。",
+            "由于 $n$ 为偶数，一次操作会使全数组异或和从 $S$ 变为 $S\\oplus a_i$；所以若需要执行一次操作，被选元素的值必为 $x=S_a\\oplus S_b$。",
+            "最终数组只需与目标数组具有相同的元素多重集，因此先排序比较；若初始多重集不同，只需检查初始数组中是否存在值 $x$，并模拟选中它后的结果。"
+          ],
+          "solutionBrief": "先分别排序两数组，若已相等则可不操作。否则计算 $x=S_a\\oplus S_b$；若 $x$ 不在初始数组中则无解，否则把除一个值为 $x$ 的位置外的所有元素异或 $x$，排序后与 $b$ 比较。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2254G",
+          "index": "G",
+          "slot": "G",
+          "title": "Nightcrawler",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2254/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/155666",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定一棵根为 $1$ 的带权树，要把所有顶点恰好划分为 $k$ 个非空集合；同一集合中的任意两个顶点必须存在祖先—后代关系。集合得分是其中顶点权值的最大值，要求对每个 $k=1..n$ 最大化所有集合得分之和，无合法划分时输出 $-1$。",
+          "transformedStatement": "把每个合法集合视为一条竖直祖先—后代链。自底向上维护子树中各条链的当前最大值：每个分叉处只能让父节点接入一条链，其余链的最大值转化为可单独开新集合的备用贡献。",
+          "keyObservations": [
+            "不同叶节点不可能进入同一集合，因此最少集合数等于叶子数 $\u001b$ell$；少于它必无解，而更多集合可将路径继续拆成单点。",
+            "处理节点 $u$ 时，把它接到子树链最大值最小的那条链上最优：新最大值取 $\u001b$max(a_u,x)$，较小值可作为新增集合的独立贡献。",
+            "每个子树只需维护各条活动链的最大值；合并子树后取最小值与 $a_u$ 配对，较小者加入备用值列表，较大者留在堆中。",
+            "根堆中的 $\u001b$ell$ 个值给出最少集合数时的答案；备用值按降序加入，就能依次得到每个更大 $k$ 的最优答案。"
+          ],
+          "solutionBrief": "自底向上处理树，为每个子树维护链最大值的小根堆。节点与最小堆值合并，较小者记为备用贡献；根堆求出 $\u001b$ell$ 个集合的答案，再按备用值降序累加得到更大 $k$。小并大合并使复杂度为 $\u001b$O(n\\log^2 n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
