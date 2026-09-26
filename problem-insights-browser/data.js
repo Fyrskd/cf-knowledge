@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1809,
+    "total_problems": 1815,
     "source_total_problems": 1815,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 1809,
-    "with_editorial_brief": 1568,
-    "with_solution_brief": 1569,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1815,
+    "with_editorial_brief": 1574,
+    "with_solution_brief": 1575,
     "missing_editorial_brief": 240,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 750,
+    "ai_override_count": 756,
     "primary_topic_count": 13,
-    "contest_count": 287,
+    "contest_count": 288,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -34,8 +34,8 @@ window.CF_INSIGHTS_DATA = {
     "数论与同余",
     "数据结构",
     "组合计数与概率",
-    "图论与网络流",
     "树结构",
+    "图论与网络流",
     "字符串",
     "基础实现与模拟",
     "交互",
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 75,
-    "构造与贪心": 609,
+    "构造与贪心": 611,
     "图论与网络流": 115,
-    "动态规划与状态设计": 173,
-    "数论与同余": 166,
+    "动态规划与状态设计": 174,
+    "数论与同余": 167,
     "组合计数与概率": 142,
     "数据结构": 146,
-    "几何": 38,
-    "树结构": 115,
+    "几何": 39,
+    "树结构": 116,
     "代数、矩阵与多项式": 17,
     "交互": 74,
     "基础实现与模拟": 75,
     "博弈": 64
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 645,
+    "ai_generated_with_editorial": 651,
     "ai_generated_partial_editorial": 32,
     "missing_editorial": 240,
     "manual_override": 891,
@@ -2423,6 +2423,197 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：先把环排列求和转成对称多项式系数问题。用分治 NTT 求 `prod(1+a_i x)` 的所有 `e_r`；再根据题解推导的递推求出 `h_r`，最终累加 `h_r*e_r*e_{n-r}`。难点不在环枚举，而在把每种指数模式的组合系数压成只依赖 k。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2253,
+      "name": "Educational Codeforces Round 193 (Rated for Div. 2)",
+      "date": "2026-08-07",
+      "url": "https://codeforces.com/contest/2253",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "2253A",
+          "index": "A",
+          "slot": "A",
+          "title": "The Best Card",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2253/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/155813",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有数值为 $2,3,\u001d,n+1$ 的牌。比较两张牌 $x,y$ 时，若一张能整除另一张，则较小值获胜；否则较大值获胜。判断是否存在一张牌能击败所有其他牌。",
+          "transformedStatement": "先利用每个 $x$ 都会输给相邻的 $x+1$，排除所有小于 $n+1$ 的牌；问题等价于判断最大值 $n+1$ 是否没有 $2$ 到 $n$ 的因子，也就是判断它是否为质数。",
+          "keyObservations": [
+            "对任意 $x\u001e[2,n]$，$x+1$ 不会被 $x$ 整除，因此 $x+1$ 会击败 $x$；所以除最大牌 $n+1$ 外，其他牌都不可能击败所有牌。",
+            "最大牌 $n+1$ 想击败所有更小的牌，必须不被 $2,3,\u001d,n$ 中任何数整除；这等价于 $n+1$ 是质数。",
+            "因此原问题从比较所有牌简化为一次质数判定：只需判断 $n+1$ 是否为质数即可。"
+          ],
+          "solutionBrief": "先由相邻牌的比较确定唯一可能的答案是 $n+1$，再判断它是否会被 $2$ 到 $n$ 中的数整除。该条件恰好等价于 $n+1$ 为质数，逐个检查因子即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2253B",
+          "index": "B",
+          "slot": "B",
+          "title": "Hypercarp and the Control Panel",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2253/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/155813",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "two pointers"
+          ],
+          "statementBrief": "给定一列带颜色的模块，可以先删除任意数量的模块并保持相对顺序，再至多交换一次相邻的剩余模块，且交换后不能继续删除。求最终相邻模块颜色均不同的条件下最多保留多少个模块。",
+          "transformedStatement": "把数组划分为极大连续同色块：不交换时每块只能贡献一个元素；唯一一次交换只能打破至多两个块内部的同色相邻关系，因此只需判断能否额外贡献两个或一个元素。",
+          "keyObservations": [
+            "将数组压缩为极大连续同色块；不交换时每块最多保留一个元素，因此基础答案就是块数 $m$。",
+            "一次相邻交换至多打破两个同色块内部的相邻关系，所以答案最多为 $m+2$，只可能是 $m$、$m+1$ 或 $m+2$。",
+            "若存在相邻的两个长度至少为 $2$ 的色块，就能通过一次交换各多保留一个元素，从而达到 $m+2$。",
+            "若无法达到 $m+2$，逐个检查长度至少为 $2$ 的色块与左右邻块交换是否会产生冲突；右侧交换要求存在右邻块且它后方不存在同色块，或满足 $color_i\\ne color_{i+2}$，左侧对称。"
+          ],
+          "solutionBrief": "先把数组压缩成同色连续块，基础答案为块数 $m$。检查相邻长块能否一次增加 $2$，否则检查某个长块向左右邻块交换能否增加 $1$；所有判断在线性扫描中完成，总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2253C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sum of Distinct Values in a Matrix",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2253/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/155813",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个初始全为零的 $n\\times m$ 矩阵。每次可选择数组 $a$ 中的数覆盖一整行，或选择数组 $b$ 中的数覆盖一整列，操作可任意交错且可重复；矩阵代价是其中所有不同数值之和，求最大代价。",
+          "transformedStatement": "把每行和每列抽象为一个最终标签及其操作时序：行标签最多贡献 $n$ 个、列标签最多贡献 $m$ 个，且两类操作同时使用时总共最多保留 $n+m-1$ 个不同值；随后按数值是否属于两个数组拆分选择。",
+          "keyObservations": [
+            "同一行或同一列的最终值只由最后一次操作决定，因此每行每列至多贡献一个非零数。",
+            "若行和列都至少操作一次，按两类操作的首次出现顺序，必有一类中一个数被后续操作覆盖，所以总贡献数至多为 $n+m-1$。",
+            "将数值分为仅属于 $a$、仅属于 $b$、同时属于两者三类后，前两类分别受 $n$、$m$ 个名额限制，而重合值只需计入一次。",
+            "先取仅属于 $a$ 的最大 $n$ 个、仅属于 $b$ 的最大 $m$ 个并加入全部重合值，再从合集中取最大 $n+m-1$ 个，正好同时满足数量上限并最大化总和。"
+          ],
+          "solutionBrief": "每行、每列只保留最后操作，利用操作顺序得到总数上限 $n+m-1$。用双指针拆出两数组的交集及各自独有部分，保留两类独有值的最大配额和全部交集，再取其中最大的 $n+m-1$ 个求和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2253D",
+          "index": "D",
+          "slot": "D",
+          "title": "Hypercarp and Interdimensional Jumps",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2253/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/155813",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "geometry",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "飞船从 $(0,0)$ 出发，初始跳跃向量为 $(a,b)=(0,0)$。每次操作必须让 $a$ 或 $b$ 增加 $1$，再按当前向量移动；移动过程中坐标不能离开矩形范围，允许随时停止，目标是让终点到 $(x,y)$ 的平方欧氏距离最小。",
+          "transformedStatement": "进行 $k$ 次操作后，跳跃向量的各次增量构成 $1,2,\u0011,\u0012,\u0011,\u0011,\u0011$...，所以所有终点都落在 $p+q=d=\frac{k(k+1)}2$ 上，且该直线上的非负整数分配均可通过选取步长实现。问题转化为选择合适的 $d$，再求安全范围内距离 $(x,y)$ 最近的整数点。",
+          "keyObservations": [
+            "进行 $k$ 次操作后，每次增加的步长依次为 $1,2,\u0011,\u0012,\u0011,\u0011,\u0011$... 实际应为 $1,2,\u0011,\u0012,\u0011,\u0011,\u0011$",
+            "固定进行 $k$ 次操作时，最终点满足 $p+q=d=\frac{k(k+1)}{2}$；选择哪些步增加 $a$，就等价于从 $1,\u0011,\u0012,\u0011,\u0011,\u0011$ 中选一个子集作为 $p$，因此该直线上的每个非负整数点都可达。",
+            "应取满足 $\frac{k(k+1)}{2}\u0013x+y$ 的最大 $k$，因为最终坐标和越接近目标点的坐标和，在线段约束下能达到的最小距离不会更差。",
+            "在直线 $p+q=d$ 上，目标点的垂足是与 $p=x$、$q=y$ 交点连线的中点；检查该中点附近的整数点并处理负坐标，即可得到最近可达点，随后用降序子集拆分重建操作序列。"
+          ],
+          "solutionBrief": "先求最大的 $k$ 使 $d=\frac{k(k+1)}2 ext{ 不超过 }x+y$，把终点限制转为直线 $p+q=d$ 上的最近整数点问题。找到最优点后，从 $k$ 到 $1$ 贪心选取组成 $p$ 的步长，剩余步长组成 $q$。复杂度为 $O(k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2253E",
+          "index": "E",
+          "slot": "E",
+          "title": "Diameter Intersections",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2253/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/155813",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "fft",
+            "graphs",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵直径长度为奇数的树。任选两条直径（允许相同），计算它们公共部分包含的边数；要求找出所有可能出现的 $k$，并按升序输出。",
+          "transformedStatement": "所有直径共享唯一中心边；删去它后，将每条直径看成从两侧深度为 $d$ 的叶子连接到中心边的路径。两条直径的交集长度因此转化为两侧候选交点深度的组合问题。",
+          "keyObservations": [
+            "树的直径长度为奇数时，所有直径都必须经过同一条中心边；删去这条边后，树被分成两侧，可分别处理交集路径的两个端点。",
+            "一侧中的候选端点必须能连接到该侧根下、深度为 $d$ 的两个叶子，且叶子位于不同子树；另需把端点本身就是深度为 $d$ 的叶子的情况单独计入。",
+            "两侧候选点的具体位置不重要，只需记录它们到中心边端点的深度，因此答案由两侧深度组合得到，避免枚举所有点对。",
+            "同一侧候选深度的种类数为 $O(\\sqrt n)$：按欧拉序观察深度为 $d$ 的叶子及相邻叶子的 LCA，深度差会消耗树中的边数，从而限制不同候选深度数量。"
+          ],
+          "solutionBrief": "先用两次遍历求直径及其中心边。删边后在两侧根树上统计深度为 $d$ 的叶子，找出满足分叉条件的候选深度，再枚举两侧深度组合并输出对应的交集长度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2253F",
+          "index": "F",
+          "slot": "F",
+          "title": "4-beauty",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/2253/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/155813",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "graphs",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定集合 $1,2,\\ldots,n\\u007f$，删除数字 $i$ 需支付 $m_i$；集合的 $(4)$-beauty 是其中四个不同数字组成等差数列时，整除有序对数量的最大值。求至少删除一些数字，使该 beauty 严格下降的最小总费用。",
+          "transformedStatement": "初始 beauty 为 $4$，因此问题等价于删除每个形如 $(d,2d,3d,4d)$ 的四元组中的至少一个元素。按数字的 $2,3$ 指数分解后，各核心数 $x$ 独立对应一个矩阵禁形覆盖问题。",
+          "keyObservations": [
+            "任意四项正整数等差数列中，后两对相邻项不可能存在整除关系，因此整除特征值最多为 $4$，初始集合因包含 $(1,2,3,4)$ 恰好达到 $4$。",
+            "设等差数列为 $(a,a+d,a+2d,a+3d)$；若特征值为 $4$，由 $(a+3d)$ 被 $(a+d)$ 整除可推出 $a=d$，所以所有必须摧毁的结构恰为 $(d,2d,3d,4d)$。",
+            "将每个数唯一写成 $x\\cdot2^j\\cdot3^i$ 且 $x$ 不含因子 $2,3$，同一结构中的四个数具有相同的 $x$，因此不同 $x$ 的删除决策可以独立求解。",
+            "固定 $x$ 后，矩阵中不能同时保留 $(i,j),(i+1,j),(i,j+1),(i,j+2)$；按行扫描并用最近一行的位掩码记录保留状态，即可在当前格判断是否形成禁形并求最小删除费用。"
+          ],
+          "solutionBrief": "先证明目标是摧毁所有 $(d,2d,3d,4d)$。按去除 $2,3$ 因子后的核心数 $x$ 分组，将每组映射为矩阵；对每个矩阵做行扫描位掩码 DP，避免保留四格禁形，累加各组最小删除费用。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
