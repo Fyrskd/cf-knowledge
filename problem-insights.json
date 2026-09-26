@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1823,
+    "total_problems": 1830,
     "source_total_problems": 1830,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1823,
-    "with_editorial_brief": 1582,
-    "with_solution_brief": 1583,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1830,
+    "with_editorial_brief": 1589,
+    "with_solution_brief": 1590,
     "missing_editorial_brief": 240,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 764,
+    "ai_override_count": 771,
     "primary_topic_count": 13
   },
   "records": [
@@ -67136,6 +67136,305 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 1694,
+      "problem_key": "2244A",
+      "contest_id": 2244,
+      "title": "Iskander and Drawings",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2244/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/155197",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "字符串",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "dp",
+        "games",
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "给定只含 `#` 和 `*` 的字符串，每段连续的 `#` 表示一条线。选择其中一条线后，双方每秒分别从左右两端各擦除 $1$ 厘米，长度为 $1$ 或 $2$ 时下一秒全部擦除；求能达到的最长擦除时间，没有线则为 $0$。",
+      "transformed_statement": "把每条连续 `#` 段独立看作长度为 $l$ 的线段，其擦除时间为 $(l+1)/2$ 的整数除法结果；由于该时间随 $l$ 增大，只需最大化连续 `#` 段长度。",
+      "key_observations": [
+        "长度为 $l$ 的连续线段每秒减少 $2$ 厘米，剩余长度为 $1$ 或 $2$ 时下一秒直接清除，因此清除时间是 $\frac{l+1}{2}$ 向下取整，即 $\frac{l+1}{2}$ 的整数除法结果。",
+        "清除时间随线段长度单调增加，所以只需找到字符串中最长的连续 `#` 段，再计算其清除时间；没有 `#` 时答案为 $0$。"
+      ],
+      "solution_brief": "扫描字符串统计最长连续 `#` 的长度 $L$，答案为整数除法 $(L+1)/2$；若不存在 `#`，输出 $0$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:34:35+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1695,
+      "problem_key": "2244B",
+      "contest_id": 2244,
+      "title": "Nikita and Books",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2244/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/155197",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "greedy",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "有 $n$ 个从左到右排列的书堆，第 $i$ 堆有 $a_i$ 本。每次可从非最右且至少有两本书的书堆取出一本，放到右侧相邻书堆；可操作任意次，要求判断能否使书堆数量严格递增。",
+      "transformed_statement": "把每个前缀看作不可补充的资源集合：向右搬书只会减少某个前缀的总量。目标严格递增数组的最小前缀需求为 $1+2+\\dots+i=i(i+1)/2$，因此问题转化为检查所有前缀是否满足该需求。",
+      "key_observations": [
+        "对前 $i$ 个栈的操作只会把书移出该前缀，因此其总数只能减少或保持不变，这给出不可违背的前缀资源限制。",
+        "最终数组严格递增且每个栈至少有一本书，所以第 $i$ 个栈至少有 $i$ 本，前 $i$ 个栈至少需要 $1+2+\\dots+i=i(i+1)/2$ 本。",
+        "所有前缀都满足上述下界时，可以贪心地把各栈的多余书向右转移，因此这些条件不仅必要而且充分。"
+      ],
+      "solution_brief": "从左到右累加前缀书本数；若某个前缀和小于 $i(i+1)/2$，则无法达成严格递增。所有前缀均满足时，按题解中的贪心转移多余书即可，输出 YES。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:34:25+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1696,
+      "problem_key": "2244C",
+      "contest_id": 2244,
+      "title": "Stepan and Permutation",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2244/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/155197",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "dsu",
+        "greedy",
+        "math",
+        "number theory",
+        "sortings"
+      ],
+      "statement_brief": "给定一个长度为 $n$ 的排列，每次只能交换下标差为 $x$ 或 $y$ 的两个位置，且可进行任意次操作。判断能否通过这些交换将排列按升序排好。",
+      "transformed_statement": "将位置建成图：下标差为 $x$ 或 $y$ 的位置之间连边，问题转化为判断每个元素当前位置与目标位置是否属于同一连通分量；题解进一步将这些分量刻画为下标模 $gcd(x,y)$ 相同的位置集合。",
+      "key_observations": [
+        "把位置作为图的顶点、允许交换的位置对作为边后，同一连通分量内的元素可以通过沿边交换实现任意重排，因此只需检查元素能否到达目标位置。",
+        "令 $g = gcd(x,y)$，每次移动都会改变位置的 $g$ 的倍数，所以连通位置必须具有相同的模 $g$ 余数。",
+        "由 $gcd(x/g,y/g)=1$ 且 $x+y\\le n$，同一模 $g$ 余数类中的位置彼此连通；因此位置 $i$ 上的值 $p_i$ 能归位当且仅当 $p_i\\equiv i\\pmod g$。"
+      ],
+      "solution_brief": "计算 $g=gcd(x,y)$，逐个检查是否对所有位置 $i$ 都有 $p_i\\equiv i\\pmod g$。全部满足则每个元素都能在对应连通分量内归位，输出 YES，否则输出 NO。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:34:08+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1697,
+      "problem_key": "2244D",
+      "contest_id": 2244,
+      "title": "Yaroslav and Productivity",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2244/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/155197",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "dp",
+        "greedy",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定长度为 $n$ 的生产力数组，可任选一些帖子；读取位置为 $b_j$ 的帖子会将前缀 $a_1 ext{ 到 }a_{b_j}$ 全部变号。求选择任意帖子（也可不选）后数组元素总和的最大值。",
+      "transformed_statement": "按帖子位置排序，把数组划分为相邻帖子位置之间的区间。每个前缀翻转只会让某些完整区间整体变号，且各可变区间的符号选择彼此独立，因此分别最大化区间和的正负贡献。",
+      "key_observations": [
+        "将所有操作位置排序后，数组被切成区间 $(b_{k-1},b_k]$ 及末尾区间；同一区间内的元素恰好受到相同次数的前缀翻转，因此可以整体处理。",
+        "区间 $(b_{k-1},b_k]$ 的最终符号由位置不小于 $b_k$ 的已选帖子数量奇偶决定；这些奇偶值可以独立取定，所以每个区间都能独立选择正号或负号。",
+        "每个可翻转区间的最优贡献是其元素和的绝对值，而最后区间 $(b_m,n]$ 从未被翻转，只能直接贡献原始元素和。"
+      ],
+      "solution_brief": "排序帖子位置并按相邻位置划分区间。对每个可改变符号的区间取元素和的绝对值，末尾不可翻转区间直接累加原和，即得答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:33:51+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1698,
+      "problem_key": "2244E",
+      "contest_id": 2244,
+      "title": "Masha and the Garland",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2244/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/155197",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "字符串"
+      ],
+      "original_tags": [
+        "data structures",
+        "dp",
+        "greedy",
+        "implementation",
+        "math",
+        "number theory",
+        "strings"
+      ],
+      "statement_brief": "给定一个由 0、1 组成的灯串，每次可选择一个连续子段并翻转其中所有灯。对每个独立查询，给出区间 $[l,r]$，要求判断能否用至多 $k$ 次操作，使该区间内相邻灯的状态全部严格交替。",
+      "transformed_statement": "把区间目标限定为两种交替模板之一，考察原串与模板不同的位置形成的连续差异块；每次翻转一个差异块可合并相邻块，因此问题转化为统计两种模板下的块数并取最优操作代价。",
+      "key_observations": [
+        "目标串只有两种：从 0 或从 1 开始的交替串，因此只需分别计算两种目标的代价并取较小值。",
+        "原串与目标串不同的位置会形成若干极大连续块；翻转内部块会与两侧块合并，使块数减少 2，而翻转边缘块只减少 1。",
+        "若初始有 $cnt$ 个差异块，依次翻转第 2、4、… 个块即可达到最优，所需操作数为 $\\lfloor cnt/2\\rfloor$。",
+        "预处理两种目标下差异块起点的标记及前缀和，就能快速统计任意区间内的差异块数，再与 $k$ 比较。"
+      ],
+      "solution_brief": "对两种交替目标串分别统计查询区间内的差异连续块数，最少操作为 $\\lfloor cnt/2\\rfloor$；用差异块起点前缀和快速求 $cnt$，取两种结果的最小值并判断是否不超过 $k$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:33:38+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1699,
+      "problem_key": "2244F",
+      "contest_id": 2244,
+      "title": "Anya Loves Trees!",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2244/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/155197",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "dp",
+        "greedy",
+        "trees"
+      ],
+      "statement_brief": "给定一棵以 1 为根的有序树，叶子上写有互不相同的编号。每次可任选一个节点，将其所有子节点整体左循环移一位，并可重复操作；判断能否使从左到右读取的叶子编号严格递增。",
+      "transformed_statement": "把每个子树抽象为叶子编号集合：它必须是一个连续区间，且其子树区间按环相邻时最多出现一个断点。若所有子树满足该条件，断点处即可通过循环移位切开并得到递增排列。",
+      "key_observations": [
+        "若整棵树最终按叶子值递增，则每个子树的叶子必对应一段连续编号；因此可自底向上判断每个子树是否能形成连续区间。",
+        "对一个内部节点，所有子节点都可行时，只需检查其相邻子节点区间在环上的断点数；断点至多一个时，旋转子节点即可恢复正确顺序。",
+        "用子树叶子数、最小值和最大值描述区间，并结合所有子节点的可行性完成局部判定；根节点可行当且仅当全树能够排成递增序列。"
+      ],
+      "solution_brief": "从叶子向根处理。对每个节点维护子树叶子的最小值、最大值、数量及可行性；内部节点要求所有子节点可行，且按原顺序连接时环上的不连续位置不超过一个，此时可通过循环移位排列子节点。最后检查根节点。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:33:20+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1700,
+      "problem_key": "2244G",
+      "contest_id": 2244,
+      "title": "Yura and Deadlines",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2244/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/155197",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "动态规划与状态设计"
+      ],
+      "original_tags": [
+        "data structures",
+        "dp"
+      ],
+      "statement_brief": "给定数组 $a$，选择若干个作业获得其权值之和；任意两个被选作业的下标 $i,j$ 必须满足 $|i-j|>\\max(a_i,a_j)$。求满足这一限制时可获得的最大总权值。",
+      "transformed_statement": "将选择结果按下标视为子序列，只检查相邻选中位置。对每个结尾位置 $j$，寻找同时满足前驱下标 $i<j-a_j$ 与结束位置 $i+a_i<j$ 的最优前驱，并进行最大值动态规划。",
+      "key_observations": [
+        "按所选下标从左到右排列后，只需检查相邻所选作业；相邻距离之和会保证任意更远两项也满足限制，从而将任意子集转化为合法子序列。",
+        "相邻下标 $i<j$ 的条件 $j-i>\\max(a_i,a_j)$ 等价于同时满足 $i+a_i<j$ 和 $i<j-a_j$，把双点约束拆成了对前驱的两个上界条件。",
+        "定义 $l_i=i+a_i$ 后，前驱 $i$ 对当前位置 $j$ 合法当且仅当 $l_i<j$ 且 $i<j-a_j$；按 $j$ 从左到右处理时，可在 $j$ 到达后激活满足 $l_i<j$ 的前驱，再查询下标前缀最大值。"
+      ],
+      "solution_brief": "设 $dp[j]$ 为以作业 $j$ 结尾的最大权值。维护满足 $l_i<j$ 的前驱，用支持单点加入与前缀最大值查询的树结构，查询下标 $[1,j-a_j-1]$ 得到转移所需最大值，再加上 $a_j$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:33:05+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1701,
