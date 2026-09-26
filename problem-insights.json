@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1852,
+    "total_problems": 1858,
     "source_total_problems": 1858,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 1852,
-    "with_editorial_brief": 1610,
-    "with_solution_brief": 1611,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1858,
+    "with_editorial_brief": 1616,
+    "with_solution_brief": 1617,
     "missing_editorial_brief": 241,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 792,
+    "ai_override_count": 799,
     "primary_topic_count": 13
   },
   "records": [
@@ -66013,6 +66013,164 @@
       "manual_override": true
     },
     {
+      "ordinal": 1664,
+      "problem_key": "2233A",
+      "contest_id": 2233,
+      "title": "AI Project Development",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2233/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/154371",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "math"
+      ],
+      "statement_brief": "项目需要完成至少 $n$ 行代码。Maxim 始终以每小时 $x$ 行工作；Nikita 要么立即以每小时 $y$ 行工作，要么先花 $z$ 个整小时部署 AI、期间不写代码，之后以每小时 $10y$ 行工作。Nikita 预先选择一种方案，求两人合作完成项目所需的最少整小时数。",
+      "transformed_statement": "将决策拆成两个互斥方案分别计时：普通方案是全程以总速度 $x+y$ 推进；AI 方案先计算部署期间 Maxim 完成的 $xz$ 行，再把剩余代码交给总速度 $x+10y$ 的阶段完成，最后取两种总时间的较小值。",
+      "key_observations": [
+        "不使用 AI 时，两人从第 0 小时同时写代码，合计速度为 $x+y$，所需整小时数直接是 $\frac{n}{x+y}$ 向上取整。",
+        "使用 AI 时，准备阶段只有 Maxim 工作，因此前 $z$ 小时固定贡献 $xz$ 行；若此时已完成，额外时间为 $0$，否则剩余部分按速度 $x+10y$ 计算。",
+        "两种方案都能独立计算完成时间，Nikitia 的最优选择就是取它们的最小值，因此无需搜索其他策略。"
+      ],
+      "solution_brief": "分别计算不使用 AI 的时间 $\u0000ceil n/(x+y) \u0000ceil$，以及使用 AI 的时间 $z+\\max(0,\\u0000ceil(n-xz)/(x+10y)\\u0000ceil)$，输出两者较小值。所有计算均为 $O(1)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:52:54+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1665,
+      "problem_key": "2233B",
+      "contest_id": 2233,
+      "title": "Different Distances",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/2233/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/154371",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms"
+      ],
+      "statement_brief": "构造一个长度为 $4n$ 的数组，使数字 $1$ 到 $n$ 各恰好出现四次。对每个数字，按出现顺序计算相邻两次出现位置之差，要求这三个差值两两不同，并输出任意满足条件的数组。",
+      "transformed_statement": "把数组划分为若干互不影响的局部块：每个相邻数字对占据一个长度为 $8$ 的块，并让两数字在块内形成固定的三段不同间隔；奇数时额外使用一个覆盖三个数字的初始块。",
+      "key_observations": [
+        "将两个相邻数字放入长度为 $8$ 的独立块 `[a,b,b,a,b,a,a,b]`，其中 $a$ 的相邻出现间隔为 $3,2,1$，$b$ 的间隔为 $1,2,3$，因此块内直接满足条件。",
+        "不同数字对使用互不重叠的块；整体平移不会改变同一数字各次出现之间的距离，所以各块可以直接拼接。",
+        "当 $n$ 为偶数时，所有数字都能两两分组并套用上述块；当 $n$ 为奇数时，先使用题面给出的 $1,2,3$ 的长度 $12$ 构造，再对 $4,5$、$6,7$ 等剩余数字使用相同的八元块。"
+      ],
+      "solution_brief": "按奇偶性分组构造：偶数 $n$ 时每对相邻数字输出 `[a,b,b,a,b,a,a,b]`；奇数 $n$ 时先输出题面中的 $1,2,3$ 构造，再对其余数字成对使用该块。每个数字的三段相邻出现距离均互不相同。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:52:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1666,
+      "problem_key": "2233C",
+      "contest_id": 2233,
+      "title": "Cost of a Bracket Sequence",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2233/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/154371",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "dp",
+        "greedy"
+      ],
+      "statement_brief": "给定一个括号串，可以删除至多 $k$ 个字符，并需输出每个位置是否被删除。目标是让删除后字符串的最长合法括号子序列尽可能短，任意达到最小值的删除方案均可。",
+      "transformed_statement": "把代价转化为字符串中可形成的有序括号配对数量的两倍。对一个分界点，配对数由其左侧保留的开括号和右侧保留的闭括号共同决定，因此问题变为选择最优分界点并删除其中至多 $k$ 个候选字符。",
+      "key_observations": [
+        "最长合法括号子序列的长度等于某种“左侧开括号与右侧闭括号”配对数的两倍，因此可直接最小化配对数。",
+        "若要减少配对数，删除开括号时只需考虑当前最左侧的开括号，删除闭括号时只需考虑当前最右侧的闭括号；其他位置可被这些极端位置替代而不更优。",
+        "固定分界点 $i$ 后，可参与配对的数量是前缀开括号数与后缀闭括号数之和，即 $\\texttt{pref\\_open}_i+\\texttt{suff\\_close}_i$；取其最小值即可确定最优结构。",
+        "该最小值也可写成总闭括号数加前缀平衡值的最小值，说明只需维护前缀计数和最小平衡，而不必枚举配对。"
+      ],
+      "solution_brief": "预处理每个位置的前缀开括号数和后缀闭括号数，找到使 $\\texttt{pref\\_open}_i+\\texttt{suff\\_close}_i$ 最小的分界点；只从该点左侧开括号和右侧闭括号中删除至多 $k$ 个字符，并输出删除标记。整体复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:52:26+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1667,
+      "problem_key": "2233D",
+      "contest_id": 2233,
+      "title": "Goods on the Shelf",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2233/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/154371",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "data structures",
+        "implementation",
+        "two pointers"
+      ],
+      "statement_brief": "给定商品类型数组，每种类型在整理后的货架上必须只形成一个连续块。最多选择两个不同位置交换一次，也可以不交换；判断能否通过这次操作使所有相同类型分别连续排列。",
+      "transformed_statement": "将数组压缩为连续块序列，并把目标转化为让每种值的块数都不超过 $1$。若存在分裂值，只需围绕其各块端点及相邻位置枚举交换，再验证交换后的块数。",
+      "key_observations": [
+        "把相同商品的连续段视为一个块；货架合法当且仅当每种值的块数不超过 $1$，因此检查可转化为统计连续段。",
+        "合法数组进行一次交换后，任意值最多出现 $3$ 个块；交换可逆，所以当前数组若有值出现在超过 $3$ 个块中就必然无解。",
+        "若当前存在分裂的值 $x$，成功交换必须涉及 $x$；且交换位置只需取 $x$ 各块的端点，另一位置只需取这些块左右相邻的位置。",
+        "上述候选位置最多 $12$ 个，枚举候选交换后重新检查所有值的块数，即可覆盖所有可能的成功交换并保持线性验证。"
+      ],
+      "solution_brief": "先离散化商品编号并统计各值的连续块。若所有值均只有一个块则直接成功；否则选一个分裂值，枚举其块端点与相邻位置形成的常数个交换，交换后用双指针检查块数，整体复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:51:57+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
       "ordinal": 1668,
       "problem_key": "2233E1",
       "contest_id": 2233,
@@ -66023,16 +66181,14 @@
       "editorial_quality": "url_only",
       "primary_topic": "组合计数与概率",
       "secondary_topics": [
-        "构造与贪心",
-        "动态规划与状态设计",
-        "交互"
+        "数论与同余"
       ],
       "original_tags": [
         "bitmasks",
         "combinatorics",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Permutation Transmission (Easy Version)；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由 $1$ 到 $n$ 组成的未知排列。发送时依次收集所有元素的第 $0$、第 $1$ 位等二进制位，形成若干长度为 $n$ 的字符串，但这些字符串到具体位编号的对应关系被打乱；要求统计所有可能的原排列数量，若数据不可能来自合法排列则答案为零。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -66040,9 +66196,107 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:51:40+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1669,
+      "problem_key": "2233E2",
+      "contest_id": 2233,
+      "title": "Permutation Transmission (Difficult Version)",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/2233/problem/E2",
+      "editorial_url": "https://codeforces.com/blog/entry/154371",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "combinatorics",
+        "sortings"
+      ],
+      "statement_brief": "给定一个 $1$ 到 $n$ 的排列在二进制各位上分别形成的若干长度为 $n$ 的字符串，但这些字符串对应的位顺序被打乱。需要统计有多少个原排列能够产生收到的数据；若数据无法对应任何排列则输出 $0$。",
+      "transformed_statement": "把每个收到的字符串看作一列二进制位，先依据列中 1 的数量确定其规范的位序，再检查按这些列读取出的行是否正好是 $1$ 到 $n$。相同 1 数量的列可以互换，构成答案中的排列因子。",
+      "key_observations": [
+        "对 $0,1,\u0000\u0000\u0000,n$ 的各个二进制位统计，低位的 1 数量总是不少于相邻高位，因此合法输入中的字符串必须按 1 的数量非递增排列。",
+        "若相邻两位的 1 数量相等，交换这两位不会改变集合 $\\{0,1,\\ldots,n\\}$；因此同一 1 数量组内的字符串可以任意分配到对应位。",
+        "将所有字符串按 1 的数量非递增排序后，按列还原每个位置的数；只有当得到的 $n$ 个数恰好构成 $1$ 到 $n$ 的排列时输入才有效，否则答案为 $0$。",
+        "设恰有 $i$ 个 1 的字符串数量为 $c_i$，不同合法分配只来自各组内部的排列，因此答案为 $\\prod_i c_i!$。"
+      ],
+      "solution_brief": "按每个字符串中 1 的数量非递增排序，并将其视为从低位到高位的二进制列，检查按列生成的数是否恰为 $1$ 到 $n$。若合法，统计各 1 数量组的大小 $c_i$，答案是 $\\prod_i c_i!$；否则输出 $0$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:51:24+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1670,
+      "problem_key": "2233F",
+      "contest_id": 2233,
+      "title": "Shortest GCD Paths",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/2233/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/154371",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "dp",
+        "graphs",
+        "math",
+        "number theory",
+        "shortest paths"
+      ],
+      "statement_brief": "给定 $1$ 到 $n$ 的完全无向带权图，任意不同顶点 $u,v$ 的边权为 $\\max(u,v)/\\gcd(u,v)$。要求求出从顶点 $a$ 到顶点 $b$ 的最短路径长度。",
+      "transformed_statement": "约去两端公共因子后，将路径抽象为把 $a$ 的质因子逐步移除、把 $b$ 的质因子逐步加入；状态 $(d_a,d_b)$ 表示已完成的两部分，单次交换因子 $p,q$ 的代价是 $\\max(p,q)$。",
+      "key_observations": [
+        "边权在两个端点同时乘以同一因子时不变，因此可先令 $g=\\gcd(a,b)$ 并将两端都除以 $g$，最短路长度不变。",
+        "对路径所有点去除 $g$ 中的质因子不会增大任意边权，所以存在一条最优路径，其顶点全是 $ab$ 的因子。",
+        "把当前点表示为 $a/d_a\\cdot d_b$，一次转移相当于从 $a$ 剩余部分取因子 $p$、从 $b$ 剩余部分取因子 $q$，边权恰为 $\\max(p,q)$。",
+        "状态数和转移数可按 $a,b$ 的因子枚举；利用因子个数函数的积性，可将总量界定在约 $1.6\\times10^8$，无需构造原图。"
+      ],
+      "solution_brief": "先约去 $\\gcd(a,b)$，再只考虑 $ab$ 的因子。设 dp[da][db] 表示已从 $a$ 取出 $da$、从 $b$ 引入 $db$ 的最小代价，枚举剩余因子 $p,q$，以 $\\max(p,q)$ 转移，答案为 dp[a][b]。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-26T23:51:02+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1671,
