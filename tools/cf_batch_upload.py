@@ -339,6 +339,23 @@ def problem_key(row: dict[str, Any]) -> str | None:
     return f"{contest_id}{index}"
 
 
+def fetch_codeforces_contests(timeout_seconds: int, retries: int) -> list[dict[str, Any]]:
+    """从官方 API 读取比赛清单，发现尚未进入本地数据的新比赛。"""
+    import cf_knowledge_index as indexer
+
+    try:
+        payload = indexer.cf_api(
+            indexer.Fetcher(delay=0, retries=retries, timeout=timeout_seconds),
+            "contest.list",
+            gym="false",
+        )
+    except (OSError, RuntimeError, ValueError) as exc:
+        raise BatchUploadError(f"查询 Codeforces 比赛列表失败：{exc}") from exc
+    if not isinstance(payload, list):
+        raise BatchUploadError("Codeforces contest.list 返回格式不是数组")
+    return [row for row in payload if isinstance(row, dict)]
+
+
 def load_candidates(
     contests_path: Path = CONTESTS_PATH,
     records_path: Path = RECORDS_PATH,
@@ -346,8 +363,11 @@ def load_candidates(
     from_date: dt.date | None = dt.date(2023, 1, 1),
     until_date: dt.date | None = None,
     contest_ids: Sequence[int] | None = None,
+    remote_contests: Sequence[dict[str, Any]] | None = None,
 ) -> list[Contest]:
-    """返回需要处理的比赛，默认只返回发布数据不完整的比赛。"""
+    """返回需要处理的本地不完整比赛和官方 API 新比赛。"""
+    import cf_knowledge_index as indexer
+
     contests = read_json(contests_path, [])
     records = read_json(records_path, [])
     insights = read_json(insights_path, {})
@@ -359,6 +379,19 @@ def load_candidates(
         insights = {}
 
     contest_rows: dict[int, dict[str, Any]] = {}
+    for row in remote_contests or []:
+        start = row.get("startTimeSeconds")
+        if (
+            row.get("id") is None
+            or row.get("phase") != "FINISHED"
+            or not start
+            or not indexer.is_codeforces_contest(row)
+        ):
+            continue
+        contest_rows[int(row["id"])] = {
+            **row,
+            "date": dt.datetime.fromtimestamp(int(start), dt.timezone.utc).date().isoformat(),
+        }
     for row in contests:
         if not isinstance(row, dict) or row.get("id") is None:
             continue
@@ -1047,7 +1080,9 @@ def build_parser() -> argparse.ArgumentParser:
 def main(argv: Sequence[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     console = BatchConsole(plain=args.plain, verbose=args.verbose)
-    config = section(load_config(), "batch_upload")
+    project_config = load_config()
+    config = section(project_config, "batch_upload")
+    crawler_config = section(project_config, "crawler")
     from_date_value = args.from_date if args.from_date is not None else get_str(config, "from_date", "2023-01-01")
     max_contests = args.max_contests if args.max_contests is not None else get_int(config, "max_contests", 0)
     max_retries = args.max_retries if args.max_retries is not None else get_int(config, "max_retries", 3)
@@ -1073,6 +1108,8 @@ def main(argv: Sequence[str] | None = None) -> int:
     ref = args.ref or get_str(config, "ref", "main")
     configured_repo = get_str(config, "repo", "") or None
     repository = current_repository_slug(args.repo or configured_repo)
+    api_timeout = get_int(crawler_config, "timeout_seconds", 30)
+    api_retries = get_int(crawler_config, "retries", 3)
     if max_contests < 0:
         raise BatchUploadError("max-contests 不能小于 0")
     if max_retries < 0:
@@ -1084,10 +1121,25 @@ def main(argv: Sequence[str] | None = None) -> int:
     if from_date and until_date and from_date > until_date:
         raise BatchUploadError("from-date 不能晚于 until-date")
 
+    remote_contests: list[dict[str, Any]] | None = None
+    if not args.contest_id:
+        console.event(
+            "CONTEST_DISCOVERY_START source=codeforces_api",
+            "正在查询 Codeforces 官方比赛列表…",
+            tone="cyan",
+        )
+        remote_contests = fetch_codeforces_contests(api_timeout, api_retries)
+        console.event(
+            f"CONTEST_DISCOVERY_SUCCESS count={len(remote_contests)}",
+            f"已读取 {len(remote_contests)} 场官方比赛",
+            tone="green",
+        )
+
     contests = load_candidates(
         from_date=from_date,
         until_date=until_date,
         contest_ids=args.contest_id,
+        remote_contests=remote_contests,
     )
     if max_contests:
         contests = contests[:max_contests]

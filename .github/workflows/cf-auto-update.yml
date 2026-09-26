@@ -36,12 +36,84 @@ permissions:
   contents: write
 
 jobs:
-  update:
+  crawl:
+    name: Crawl and checkpoint source data
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
       - name: Checkout source repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Set up Python
+        uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: "3.x"
+
+      - name: Crawl contests and build base outputs
+        env:
+          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '' }}
+          CONTEST_ID: ${{ github.event.inputs.contest_id || '' }}
+          SKIP_EDITORIAL_ENRICH: ${{ github.event.inputs.skip_editorial_enrich || 'false' }}
+        run: |
+          args=()
+          if [ -n "$LOOKBACK_DAYS" ]; then
+            args+=(--lookback-days "$LOOKBACK_DAYS")
+          fi
+          if [ -n "$CONTEST_ID" ]; then
+            args+=(--contest-id "$CONTEST_ID")
+          fi
+          if [ "$SKIP_EDITORIAL_ENRICH" = "true" ]; then
+            args+=(--skip-editorial-enrich)
+          fi
+          python3 tools/cf_auto_update.py "${args[@]}" --phase crawl
+
+      - name: Validate crawled source data
+        run: |
+          python3 -m json.tool config.json >/dev/null
+          python3 -m json.tool contests.json >/dev/null
+          python3 -m json.tool problems.json >/dev/null
+          python3 -m json.tool records.json >/dev/null
+          python3 -m json.tool editorials.json >/dev/null
+          python3 -m json.tool state.json >/dev/null
+          python3 -m json.tool problem-insights.json >/dev/null
+          python3 -m json.tool statement-gaps.json >/dev/null
+          python3 -m json.tool auto-update-status.json >/dev/null
+          python3 -m py_compile tools/cf_config.py tools/cf_knowledge_index.py tools/cf_auto_update.py tools/cf_ai_manager.py tools/cf_batch_upload.py
+          python3 -m unittest tools/test_cf_config.py tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py
+          node --check problem-insights-browser/app.js
+          node --check problem-insights-browser/data.js
+          git diff --check
+
+      - name: Commit crawled source data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add \
+            ai-generated-insights.json \
+            contests.json \
+            editorials.json \
+            problem-insights-browser/data.js \
+            problem-insights.json \
+            problems.json \
+            records.json \
+            state.json
+          if git diff --cached --quiet; then
+            echo "No crawled source data changes."
+          else
+            git commit -m "chore(cf): checkpoint latest contests"
+            git push
+          fi
+
+  update:
+    name: Generate AI summaries and publish
+    needs: crawl
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout checkpointed source repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.ref_name }}
 
       - name: Set up Python
         uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
@@ -65,37 +137,29 @@ jobs:
               output.write(f"pages_ref={pages_ref}\n")
           PY
 
-      - name: Crawl contests, build outputs, and refresh AI summaries
+      - name: Refresh AI summaries
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-          LOOKBACK_DAYS: ${{ github.event.inputs.lookback_days || '' }}
           CONTEST_ID: ${{ github.event.inputs.contest_id || '' }}
           AI_LIMIT: ${{ github.event.inputs.ai_limit || '' }}
-          SKIP_EDITORIAL_ENRICH: ${{ github.event.inputs.skip_editorial_enrich || 'false' }}
           REFRESH_AI: ${{ github.event.inputs.refresh_ai || 'false' }}
         run: |
           args=()
-          if [ -n "$LOOKBACK_DAYS" ]; then
-            args+=(--lookback-days "$LOOKBACK_DAYS")
-          fi
           if [ -n "$AI_LIMIT" ]; then
             args+=(--ai-limit "$AI_LIMIT")
           fi
           if [ -n "$CONTEST_ID" ]; then
             args+=(--contest-id "$CONTEST_ID")
           fi
-          if [ "$SKIP_EDITORIAL_ENRICH" = "true" ]; then
-            args+=(--skip-editorial-enrich)
-          fi
           if [ "$REFRESH_AI" = "true" ]; then
             args+=(--refresh-ai)
           fi
-          python3 tools/cf_auto_update.py "${args[@]}" --require-ai
+          python3 tools/cf_auto_update.py "${args[@]}" --phase ai --require-ai
 
       - name: Validate generated outputs
         run: |
           python3 -m json.tool config.json >/dev/null
-          python3 -m py_compile tools/cf_config.py tools/cf_knowledge_index.py tools/cf_auto_update.py tools/cf_ai_manager.py
+          python3 -m py_compile tools/cf_config.py tools/cf_knowledge_index.py tools/cf_auto_update.py tools/cf_ai_manager.py tools/cf_batch_upload.py
           python3 -m unittest tools/test_cf_config.py tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py
           python3 -m json.tool problem-insights.json >/dev/null
           python3 -m json.tool statement-gaps.json >/dev/null

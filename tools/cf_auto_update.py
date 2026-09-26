@@ -8,6 +8,8 @@ problem-insights page, and optionally generate AI summaries for new records.
 
 Examples:
   python3 tools/cf_auto_update.py --lookback-days 30 --ai-limit -1 --require-ai
+  python3 tools/cf_auto_update.py --phase crawl --lookback-days 30
+  python3 tools/cf_auto_update.py --phase ai --ai-limit -1 --require-ai
   OPENAI_API_KEY=... python3 tools/cf_auto_update.py --ai-limit 20
 """
 
@@ -259,8 +261,14 @@ def pending_ai_count() -> int:
     )
 
 
-def main() -> int:
+def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--phase",
+        choices=("all", "crawl", "ai"),
+        default="all",
+        help="执行完整流程、仅抓取构建，或仅生成 AI 摘要",
+    )
     parser.add_argument("--lookback-days", type=int, default=None)
     parser.add_argument("--contest-id", type=int, default=None, help="只处理指定的 Codeforces 比赛")
     parser.add_argument("--ai-limit", type=int, default=None)
@@ -276,7 +284,11 @@ def main() -> int:
         help="重生成已有 AI 摘要，默认只处理没有当前摘要的题目",
     )
     parser.add_argument("--skip-editorial-enrich", action=argparse.BooleanOptionalAction, default=None)
-    args = parser.parse_args()
+    return parser
+
+
+def main(argv: Sequence[str] | None = None) -> int:
+    args = build_parser().parse_args(argv)
     config = load_config()
     auto_update = section(config, "auto_update")
     crawler = section(auto_update, "crawler") or section(config, "crawler")
@@ -296,6 +308,7 @@ def main() -> int:
     global RUN_CONTEXT
     RUN_CONTEXT = {
         "started_at": utc_now(),
+        "phase": args.phase,
         "lookback_days": lookback_days,
         "contest_id": args.contest_id,
         "ai_limit": ai_limit,
@@ -307,44 +320,24 @@ def main() -> int:
 
     since, until = sync_window(lookback_days)
     RUN_CONTEXT["window"] = {"since": since.isoformat(), "until": until.isoformat()}
-    before_records = RECORDS_PATH.read_bytes() if RECORDS_PATH.exists() else b""
-    before_keys = problem_keys(read_json(RECORDS_PATH, []))
-    before_contests = read_json(CONTESTS_PATH, [])
-    print(f"WINDOW since={since.isoformat()} until={until.isoformat()}", flush=True)
+    records_changed = False
+    new_count = 0
+    if args.phase in {"all", "crawl"}:
+        before_records = RECORDS_PATH.read_bytes() if RECORDS_PATH.exists() else b""
+        before_keys = problem_keys(read_json(RECORDS_PATH, []))
+        before_contests = read_json(CONTESTS_PATH, [])
+        print(f"WINDOW since={since.isoformat()} until={until.isoformat()}", flush=True)
 
-    crawl_command = [
-        sys.executable,
-        str(REPO_ROOT / "tools" / "cf_knowledge_index.py"),
-        "crawl",
-        "--since",
-        since.isoformat(),
-        "--until",
-        until.isoformat(),
-        "--out",
-        str(DATA_DIR),
-        "--delay",
-        str(delay),
-        "--retries",
-        str(retries),
-        "--timeout",
-        str(timeout),
-        "--checkpoint-every",
-        str(checkpoint_every),
-    ]
-    if args.contest_id is not None:
-        crawl_command.extend(["--contest-id", str(args.contest_id)])
-    run_command(crawl_command)
-    merge_contests(before_contests, read_json(CONTESTS_PATH, []))
-
-    if not skip_editorial_enrich:
-        enrich_command = [
+        crawl_command = [
             sys.executable,
             str(REPO_ROOT / "tools" / "cf_knowledge_index.py"),
-            "enrich",
-            "--data",
+            "crawl",
+            "--since",
+            since.isoformat(),
+            "--until",
+            until.isoformat(),
+            "--out",
             str(DATA_DIR),
-            "--only-incomplete",
-            "--skip-missing-contests",
             "--delay",
             str(delay),
             "--retries",
@@ -355,28 +348,57 @@ def main() -> int:
             str(checkpoint_every),
         ]
         if args.contest_id is not None:
-            enrich_command.extend(["--contest-id", str(args.contest_id)])
-        run_command(enrich_command)
-    else:
-        refresh_coverage_outputs()
+            crawl_command.extend(["--contest-id", str(args.contest_id)])
+        run_command(crawl_command)
+        merge_contests(before_contests, read_json(CONTESTS_PATH, []))
 
-    after_records = RECORDS_PATH.read_bytes() if RECORDS_PATH.exists() else b""
-    after_keys = problem_keys(read_json(RECORDS_PATH, []))
-    records_changed = before_records != after_records
-    new_count = len(after_keys - before_keys)
-    if records_changed or not (DATA_DIR / "problem-insights.json").exists():
-        rebuild_static_outputs()
-    else:
-        print("BUILD_SKIPPED records unchanged", flush=True)
+        if not skip_editorial_enrich:
+            enrich_command = [
+                sys.executable,
+                str(REPO_ROOT / "tools" / "cf_knowledge_index.py"),
+                "enrich",
+                "--data",
+                str(DATA_DIR),
+                "--only-incomplete",
+                "--skip-missing-contests",
+                "--delay",
+                str(delay),
+                "--retries",
+                str(retries),
+                "--timeout",
+                str(timeout),
+                "--checkpoint-every",
+                str(checkpoint_every),
+            ]
+            if args.contest_id is not None:
+                enrich_command.extend(["--contest-id", str(args.contest_id)])
+            run_command(enrich_command)
+        else:
+            refresh_coverage_outputs()
 
-    selected_pending, success, failed = generate_pending(
-        ai_limit,
-        require_ai,
-        refresh_ai,
-        args.contest_id,
-    )
-    if success:
-        rebuild_static_outputs()
+        after_records = RECORDS_PATH.read_bytes() if RECORDS_PATH.exists() else b""
+        after_keys = problem_keys(read_json(RECORDS_PATH, []))
+        records_changed = before_records != after_records
+        new_count = len(after_keys - before_keys)
+        if records_changed or not (DATA_DIR / "problem-insights.json").exists():
+            rebuild_static_outputs()
+        else:
+            print("BUILD_SKIPPED records unchanged", flush=True)
+    else:
+        print("CRAWL_SKIPPED phase=ai", flush=True)
+
+    if args.phase in {"all", "ai"}:
+        selected_pending, success, failed = generate_pending(
+            ai_limit,
+            require_ai,
+            refresh_ai,
+            args.contest_id,
+        )
+        if success:
+            rebuild_static_outputs()
+    else:
+        print("AI_SKIPPED phase=crawl", flush=True)
+        selected_pending, success, failed = 0, 0, 0
     pending = pending_ai_count()
 
     summary = corpus_summary()
@@ -401,7 +423,7 @@ def main() -> int:
     })
 
     print(
-        f"AUTO_UPDATE new_problems={new_count} records_changed={records_changed} "
+        f"AUTO_UPDATE phase={args.phase} new_problems={new_count} records_changed={records_changed} "
         f"ai_selected={selected_pending} ai_pending={pending} "
         f"ai_success={success} ai_failed={failed}",
         flush=True,

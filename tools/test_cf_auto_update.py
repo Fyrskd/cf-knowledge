@@ -129,6 +129,59 @@ class AutoUpdateTests(unittest.TestCase):
         ])
         self.assertEqual(after - before, {"2263A"})
 
+    def test_phase_parser_accepts_crawl_and_ai(self) -> None:
+        self.assertEqual(updater.build_parser().parse_args(["--phase", "crawl"]).phase, "crawl")
+        self.assertEqual(updater.build_parser().parse_args(["--phase", "ai"]).phase, "ai")
+
+    def test_ai_phase_skips_crawl_commands(self) -> None:
+        with patch.object(updater, "run_command") as run_command, \
+                patch.object(updater, "generate_pending", return_value=(0, 0, 0)) as generate, \
+                patch.object(updater, "rebuild_static_outputs") as rebuild, \
+                patch.object(updater, "pending_ai_count", return_value=0), \
+                patch.object(updater, "corpus_summary", return_value={
+                    "problems": 0,
+                    "contests": 0,
+                    "statement_gaps": 0,
+                    "editorial_gaps": 0,
+                }), \
+                patch.object(updater, "write_auto_update_status"):
+            result = updater.main(["--phase", "ai", "--ai-limit", "0", "--no-require-ai"])
+        self.assertEqual(result, 0)
+        run_command.assert_not_called()
+        rebuild.assert_not_called()
+        generate.assert_called_once_with(0, False, False, None)
+
+    def test_crawl_phase_checkpoints_without_running_ai(self) -> None:
+        with patch.object(updater, "run_command") as run_command, \
+                patch.object(updater, "merge_contests"), \
+                patch.object(updater, "generate_pending") as generate, \
+                patch.object(updater, "rebuild_static_outputs"), \
+                patch.object(updater, "pending_ai_count", return_value=0), \
+                patch.object(updater, "corpus_summary", return_value={
+                    "problems": 0,
+                    "contests": 0,
+                    "statement_gaps": 0,
+                    "editorial_gaps": 0,
+                }), \
+                patch.object(updater, "write_auto_update_status"):
+            result = updater.main(["--phase", "crawl", "--no-require-ai"])
+        self.assertEqual(result, 0)
+        self.assertEqual(run_command.call_count, 2)
+        generate.assert_not_called()
+
+    def test_workflow_checkpoints_crawl_before_ai_job(self) -> None:
+        workflow = (
+            Path(__file__).resolve().parents[1] / ".github" / "workflows" / "cf-auto-update.yml"
+        ).read_text(encoding="utf-8")
+        self.assertIn("crawl:\n    name: Crawl and checkpoint source data", workflow)
+        self.assertIn("needs: crawl", workflow)
+        self.assertIn("--phase crawl", workflow)
+        self.assertIn("--phase ai --require-ai", workflow)
+        self.assertLess(
+            workflow.index("Commit crawled source data"),
+            workflow.index("Refresh AI summaries"),
+        )
+
     def test_merge_contests_keeps_historical_entries(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             target = Path(directory) / "contests.json"

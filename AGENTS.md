@@ -237,11 +237,12 @@ python3 tools/cf_ai_manager.py --host 127.0.0.1 --port 8787
 2. 支持 `workflow_dispatch` 手动运行；
 3. 使用最近一段重叠时间窗口抓取比赛；
 4. 增量补抓题面和不完整题解；
-5. 生成或刷新 AI 摘要；
-6. 重建发布数据和浏览器 `data.js`；
-7. 执行 Python 测试、JSON 检查、发布门检查、JavaScript 语法检查和 `git diff --check`；
-8. 将源数据提交到 `Fyrskd/cf-knowledge`；
-9. 将 `index.html`、`app.js`、`data.js`、`styles.css` 复制到 Pages 仓库根目录并推送。
+5. 重建基础发布数据，校验后先将抓取检查点提交到 `Fyrskd/cf-knowledge`；
+6. 从刚提交的检查点生成或刷新 AI 摘要；
+7. 重建最终发布数据和浏览器 `data.js`；
+8. 执行 Python 测试、JSON 检查、发布门检查、JavaScript 语法检查和 `git diff --check`；
+9. 将 AI 摘要和最终源数据提交到 `Fyrskd/cf-knowledge`；
+10. 将 `index.html`、`app.js`、`data.js`、`styles.css` 复制到 Pages 仓库根目录并推送。
 
 自动更新总入口：
 
@@ -255,13 +256,16 @@ python3 tools/cf_auto_update.py \
 常用参数：
 
 - `--lookback-days`：重叠抓取窗口，必须为正数；
+- `--phase crawl`：只抓取并构建基础数据，不调用 AI；
+- `--phase ai`：跳过抓取，只处理当前记录中的待生成摘要；
 - `--ai-limit -1`：处理全部待生成摘要；
 - `--ai-limit 0`：跳过 AI，只适合本地调试，不能用于正式上线；
 - `--refresh-ai`：按当前输入重新生成已有 AI 摘要；
 - `--skip-editorial-enrich`：跳过题解补抓，仅在明确需要时使用；
 - `--require-ai`：缺少 key 或本批次全部生成失败时拒绝提交；单题生成失败会记录警告并在下一轮重试，成功题目仍可发布。
 
-源数据提交和 Pages 发布是连续但独立的步骤。Pages 推送失败时不能回滚已经提交的源数据，修复 token 或权限后重新运行发布流程即可。
+抓取检查点、AI 数据提交和 Pages 发布是连续但独立的阶段。AI 超时或 Pages 推送失败时不能
+回滚已经提交的抓取数据，修复模型、token 或权限后重新运行对应阶段即可。
 
 ## 10. Secrets 和本地配置
 

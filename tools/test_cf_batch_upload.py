@@ -246,6 +246,69 @@ class BatchUploadTests(unittest.TestCase):
             )
         self.assertEqual([item.contest_id for item in result], [1778])
 
+    def test_remote_finished_codeforces_rounds_are_candidates_when_missing_locally(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / "contests.json").write_text("[]", encoding="utf-8")
+            (root / "records.json").write_text("[]", encoding="utf-8")
+            (root / "problem-insights.json").write_text('{"records": []}', encoding="utf-8")
+            remote = [
+                {
+                    "id": 2266,
+                    "name": "Codeforces Round 1122 (Div. 3)",
+                    "type": "ICPC",
+                    "phase": "FINISHED",
+                    "startTimeSeconds": int(
+                        dt.datetime(2026, 9, 21, tzinfo=dt.timezone.utc).timestamp()
+                    ),
+                },
+                {
+                    "id": 2260,
+                    "name": "Educational Codeforces Round 194 (Rated for Div. 2)",
+                    "type": "ICPC",
+                    "phase": "FINISHED",
+                    "startTimeSeconds": int(
+                        dt.datetime(2026, 9, 8, tzinfo=dt.timezone.utc).timestamp()
+                    ),
+                },
+                {
+                    "id": 9999,
+                    "name": "Unrelated ICPC Regional",
+                    "type": "ICPC",
+                    "phase": "FINISHED",
+                    "startTimeSeconds": int(
+                        dt.datetime(2026, 9, 20, tzinfo=dt.timezone.utc).timestamp()
+                    ),
+                },
+                {
+                    "id": 2267,
+                    "name": "Codeforces Round 1123 (Div. 2)",
+                    "type": "CF",
+                    "phase": "CODING",
+                    "startTimeSeconds": int(
+                        dt.datetime(2026, 9, 25, tzinfo=dt.timezone.utc).timestamp()
+                    ),
+                },
+            ]
+            result = load_candidates(
+                contests_path=root / "contests.json",
+                records_path=root / "records.json",
+                insights_path=root / "problem-insights.json",
+                from_date=dt.date(2026, 9, 1),
+                remote_contests=remote,
+            )
+        self.assertEqual(
+            result,
+            [
+                Contest(
+                    2260,
+                    "Educational Codeforces Round 194 (Rated for Div. 2)",
+                    dt.date(2026, 9, 8),
+                ),
+                Contest(2266, "Codeforces Round 1122 (Div. 3)", dt.date(2026, 9, 21)),
+            ],
+        )
+
     def test_explicit_contest_ids_bypass_publish_filter(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

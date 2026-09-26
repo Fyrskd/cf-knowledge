@@ -7,6 +7,7 @@ Codeforces API / 题面镜像 / Tutorial
         -> cf_knowledge_index.py crawl
         -> enrich 非完整题解
         -> problem-insights 重建
+        -> 校验并提交抓取检查点
         -> 所有待生成题目调用 AI
         -> AI 质量校验通过后重建 problem-insights
         -> 生成题面缺口与自动更新状态报告
@@ -54,6 +55,16 @@ cd /Users/welp/Haduki/cf-knowledge
 python3 tools/cf_auto_update.py --lookback-days 30 --ai-limit -1 --require-ai
 ```
 
+自动工作流会把完整流程拆成两个阶段。也可以在本地单独运行：
+
+```bash
+python3 tools/cf_auto_update.py --phase crawl --lookback-days 30
+python3 tools/cf_auto_update.py --phase ai --ai-limit -1 --require-ai
+```
+
+`crawl` 阶段只负责比赛、题面、题解和基础发布数据；`ai` 阶段只处理已有记录的摘要。这样
+AI 服务不可用或运行超时时，已抓到的新比赛仍能先提交到源仓库，下一轮可以直接继续生成摘要。
+
 历史比赛可以按比赛 ID 单独处理，适合一场一场补发布；抓取、题解补抓、AI 摘要、源仓库提交和 Pages 发布仍由同一轮任务完成：
 
 ```bash
@@ -92,13 +103,16 @@ git push origin main
 
 ## 批量逐场提交和失败重试
 
-`tools/cf_batch_upload.py` 会读取本地比赛、题目和发布数据，默认从
-`batch_upload.from_date`（当前为 `2023-01-01`）之后找出仍有题目没有进入 `problem-insights.json` 的比赛，然后按比赛日期串行触发
-`cf-auto-update.yml`。每场比赛默认允许失败后重试 3 次；成功后写入本地状态并自动跳过。
+`tools/cf_batch_upload.py` 会同时读取 Codeforces 官方 `contest.list`、本地比赛、题目和发布
+数据，默认从 `batch_upload.from_date`（当前为 `2023-01-01`）之后找出尚未进入本地数据，
+或仍有题目没有进入 `problem-insights.json` 的比赛，然后按比赛日期串行触发
+`cf-auto-update.yml`。因此新比赛即使还不在 `contests.json` 中，也不会再被误判为 0 场。
+每场比赛默认允许失败后重试 3 次；成功后写入本地状态并自动跳过。
 
 批量上传的默认日期、重试次数、轮询间隔、等待超时、状态文件、workflow、ref 和仓库从
 `config.json` 的 `batch_upload` 分组读取；命令行参数（例如 `--from-date`、`--repo` 和
-`--max-retries`）可以临时覆盖配置。
+`--max-retries`）可以临时覆盖配置。官方比赛列表请求复用 `crawler` 分组的超时和重试设置；
+API 查询失败会明确报错，不会静默退回可能不完整的本地清单。
 
 先用 dry-run 检查候选列表：
 
@@ -149,6 +163,9 @@ GitHub 的 404，自动丢弃旧断点并为该比赛重新派发一次工作流
 - `auto-update-status.json` / `.md`：窗口、新题数、题解/题面缺口、AI 成功/失败和警告。
 - `state.json`：失败记录按 URL 去重，并限制为最近 500 条。
 
-任务会把抓取结果和摘要存回 `Fyrskd/cf-knowledge`，再覆盖 Pages 仓库根目录的 CF补完计划静态页。当前发布范围只包含题目洞察页，不再维护独立的 lemma 页面或其他旧知识索引产物。
+任务会先把抓取结果作为检查点提交到 `Fyrskd/cf-knowledge`，再从该检查点生成 AI 摘要并
+覆盖 Pages 仓库根目录的 CF补完计划静态页。当前发布范围只包含题目洞察页，不再维护独立的
+lemma 页面或其他旧知识索引产物。
 
-源数据提交和 Pages 发布是两个连续步骤：Pages token 缺失或发布失败时，已完成的源数据提交不会被回滚；下一轮修复 token 后可独立重试发布。
+抓取检查点、AI 数据提交和 Pages 发布是三个连续但独立的持久化阶段：AI 超时、Pages token
+缺失或发布失败时，已经提交的抓取数据不会回滚；下一轮会从现有检查点继续处理。
