@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1757,
+    "total_problems": 1764,
     "source_total_problems": 1764,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1757,
-    "with_editorial_brief": 1526,
-    "with_solution_brief": 1527,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1764,
+    "with_editorial_brief": 1533,
+    "with_solution_brief": 1534,
     "missing_editorial_brief": 230,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 698,
+    "ai_override_count": 705,
     "primary_topic_count": 13,
-    "contest_count": 279,
+    "contest_count": 280,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 74,
-    "构造与贪心": 589,
-    "图论与网络流": 111,
-    "动态规划与状态设计": 170,
-    "数论与同余": 159,
+    "构造与贪心": 592,
+    "图论与网络流": 112,
+    "动态规划与状态设计": 171,
+    "数论与同余": 160,
     "组合计数与概率": 139,
-    "数据结构": 141,
+    "数据结构": 142,
     "几何": 38,
     "树结构": 113,
     "交互": 74,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 16
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 605,
+    "ai_generated_with_editorial": 612,
     "ai_generated_partial_editorial": 30,
     "missing_editorial": 230,
     "manual_override": 891,
@@ -55073,6 +55073,216 @@ window.CF_INSIGHTS_DATA = {
             "阶梯新增一行的长度必须不超过上一行长度；完成一个角后重置为最大允许长度，这正好对应状态转移并避免重复统计。"
           ],
           "solutionBrief": "先由 $n$ 的平方根确定最小周长及候选矩形。构造时从矩形中删去角部方格；计数时把四角空缺表示为阶梯，用 $dp[angles][sum][last]$ 统计总删格数为 $xy-n$ 的方案，并将预处理优化到 $O(n)$，总复杂度为 $O(n+t\\sqrt n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1783,
+      "name": "Educational Codeforces Round 141 (Rated for Div. 2)",
+      "date": "2023-01-08",
+      "url": "https://codeforces.com/contest/1783",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1783A",
+          "index": "A",
+          "slot": "A",
+          "title": "Make it Beautiful",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1783/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/111194",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个非递减的正整数数组，只能重排元素，不能插入或删除。若某个元素等于它之前所有元素之和，数组就不美丽；请构造一个美丽排列，若无法构造则报告无解。",
+          "transformedStatement": "将问题转化为控制前两个位置：先放最大值，使第三位及以后都因前缀和超过当前值而安全，再用最小值放在第二位避免前两项相等；若所有值相同则不存在可行排列。",
+          "keyObservations": [
+            "把最大值放在首位后，从第三个位置起，前缀和至少包含最大值并再加一个正数，因此一定严格大于当前元素，后续位置不可能造成丑数组。",
+            "在上述排列中，唯一需要检查的是第二个元素；只要最小值与最大值不同，令它们分别位于前两位即可避免前缀和相等。",
+            "若最大值等于最小值，则所有元素都相同，任意排列的前两个元素相等，第二个元素必等于此前缀和，因此无法构造美丽数组。"
+          ],
+          "solutionBrief": "检查最小值和最大值是否不同。若不同，将最大值放在第一位、最小值放在第二位，其余元素任意排列；若相同则无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1783B",
+          "index": "B",
+          "slot": "B",
+          "title": "Matrix of Differences",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1783/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/111194",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定 $n$，要构造一个 $n\\times n$ 矩阵，使 $1$ 到 $n^2$ 每个数恰好出现一次。矩阵 beauty 是所有上下左右相邻元素绝对差中不同数值的数量，要求将其最大化。",
+          "transformedStatement": "先把问题看成排列问题：让一条相邻序列产生尽可能多的不同绝对差；再用蛇形遍历把这条序列映射到矩阵，使序列相邻项必为矩阵边相邻单元。",
+          "keyObservations": [
+            "任意两个不同元素的差值只能落在 $1$ 到 $n^2-1$ 之间，因此不同差值的数量最多为 $n^2-1$，这是 beauty 的上界。",
+            "将 $1$ 到 $n^2$ 排成 $[n^2,1,n^2-1,2,n^2-2,3,\u000b\u000b\u000b]$，相邻元素的绝对差恰好覆盖所有 $1$ 到 $n^2-1$，从而达到上界。",
+            "按蛇形路径依次填入矩阵：第一行从左到右，下一行从右到左并交替进行；路径中相邻位置都是边相邻单元，因此线性序列中的全部差值都会出现在矩阵中。"
+          ],
+          "solutionBrief": "先用不同差值总数不超过 $n^2-1$ 得到上界，再构造交替排列 $[n^2,1,n^2-1,2,\u000b\u000b\u000b]$。沿蛇形路径填入矩阵，使排列中的相邻差值对应矩阵的边相邻元素，因此 beauty 达到 $n^2-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1783C",
+          "index": "C",
+          "slot": "C",
+          "title": "Yet Another Tournament",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1783/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/111194",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "你要与每个对手各比赛一次：击败对手 $i$ 需提前准备 $a_i$ 分钟，总准备时间不能超过 $m$，且准备不能并行。对手之间按编号决定胜负，你需要选择准备哪些比赛获胜，使最终名次尽可能靠前。",
+          "transformedStatement": "把目标先转为最大化胜场数：固定赢得 $x$ 场后，只有编号为 $x$ 的对手会额外影响名次。用最短准备时间取得最大可行的 $x$，再单独检查这名关键对手能否被纳入获胜集合。",
+          "keyObservations": [
+            "若最终赢了 $x$ 场，编号小于 $x$ 的对手即使击败你也不会超过你的胜场；编号大于 $x$ 的对手即使输给你仍有超过 $x$ 场胜利，因此只有编号为 $x$ 的对手会决定你是第 $n-x$ 还是第 $n-x+1$。",
+            "赢得更多场次得到的名次不会更差，所以先选准备时间最短的对手，求满足前缀和不超过 $m$ 的最大胜场数 $x$。",
+            "当 $x<n$ 时，为取得名次 $n-x$，必须击败编号为 $x$ 的关键对手；若它不在最短的 $x$ 个准备时间中，就用它替换其中耗时最大的对手，并检查总耗时是否仍不超过 $m$。"
+          ],
+          "solutionBrief": "将准备时间排序，取总和不超过 $m$ 的最短对手，得到最多胜场 $x$。若 $x<n$，检查能否在这组对手中加入编号为 $x$ 的关键对手：必要时替换最大耗时者；成功答案为 $n-x$，否则为 $n-x+1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1783D",
+          "index": "D",
+          "slot": "D",
+          "title": "Different Arrays",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1783/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/111194",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组，按顺序进行 $n-2$ 次操作；第 $i$ 次取第 $i+1$ 个元素，将它加到左右邻居中的一个，并从另一个邻居减去。要求统计所有可能得到的不同最终数组数量，结果对 $998244353$ 取模。",
+          "transformedStatement": "把过程视为从左到右逐步确定前缀：完成前 $i$ 次操作后，前 $i$ 个位置不再变化，未来只会影响紧邻未确定前缀的两个边界值，因此可用边界状态上的计数 DP 表示所有不同结果。",
+          "keyObservations": [
+            "执行完前 $i$ 次操作后，前 $i$ 个位置已永久固定，位置 $i+3$ 之后仍是原数组，因此后续只需记录边界的两个值。",
+            "设当前边界为 $(x,y)$，处理下一个原数组值 $a_{i+3}$ 后，固定位置的值为 $x-y$ 或 $x+y$，新的边界分别为 $(y,a_{i+3}+y)$ 或 $(y,a_{i+3}-y)$。",
+            "转移结果与 $x$ 无关，所以可将状态从 $dp_{i,x,y}$ 压缩为只按 $y$ 统计；当 $y=0$ 时两种操作完全相同，只能计数一次。",
+            "状态值可能为负数，可通过给第二维统一加上足够大的偏移量 $M$ 存入数组，避免使用映射结构。"
+          ],
+          "solutionBrief": "用 $dp[i][y]$ 统计完成 $i$ 次操作且当前边界第二个值为 $y$ 时的不同前缀数。按两种符号转移；当 $y=0$ 合并重复转移。由于首个边界值不影响转移，复杂度为 $O(n^2A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1783E",
+          "index": "E",
+          "slot": "E",
+          "title": "Game of the Year",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1783/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/111194",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 个按顺序挑战的 Boss；固定 $k$ 后，双方轮流各进行一块包含 $k$ 次尝试的攻击，某人成功击杀当前 Boss 后才进入下一个，且尝试次数对新 Boss 重置。对每个 $k\\in[1,n]$，求 Monocarp 是否能在 Polycarp 之前或同时击杀全部 Boss，并输出所有可行的 $k$。",
+          "transformedStatement": "把每个 Boss 的击杀尝试次数转成所需攻击块数：Monocarp 为 $\\lceil a_i/k\\rceil$，Polycarp 为 $\\lceil b_i/k\\rceil$。一个 $k$ 失败，当且仅当某个半开区间 $[b_i,a_i)$ 中出现 $k$ 的倍数。",
+          "keyObservations": [
+            "固定 $k$ 后，玩家击杀第 $i$ 个 Boss 所需的轮数分别是 $\\lceil a_i/k\\rceil$ 和 $\\lceil b_i/k\\rceil$；Monocarp 获胜当且仅当对所有 $i$ 都有前者不超过后者。",
+            "$k$ 无效等价于存在某个 $i$，使区间 $[b_i,a_i)$ 内含有 $k$ 的倍数；该倍数表示 Polycarp 已结束一个尝试块，而 Monocarp 还需要更多块。",
+            "用差分数组统计每个位置被多少个半开区间 $[b_i,a_i)$ 覆盖后，检查某个 $k$ 的所有倍数是否都未被覆盖，即可判定它是否有效。",
+            "所有 $k$ 的倍数总数为 $\\sum_{k=1}^{n}\\lfloor n/k\\rfloor=O(n\\log n)$，因此逐个检查倍数即可达到整体 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "对每个区间 $[b_i,a_i)$ 做差分并求前缀和，得到各位置的覆盖次数。枚举每个 $k$，检查其所有倍数的覆盖次数是否均为零；若是，则 $k$ 能使 Monocarp 击杀全部 Boss。总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1783F",
+          "index": "F",
+          "slot": "F",
+          "title": "Double Sort II",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1783/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/111194",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dfs and similar",
+            "flows",
+            "graph matchings",
+            "graphs"
+          ],
+          "statementBrief": "给定两个 $1$ 到 $n$ 的置换。每次选择编号 $i$，分别在两个置换中找到值为 $i$ 的位置，并交换该位置与下标 $i$ 的元素；要求用最少操作使两个置换都升序，同时输出操作编号序列。",
+          "transformedStatement": "将每个置换视为映射图并分解成若干环；操作一个编号就是把该顶点从环中摘出。把两组环作为二分图顶点、每个编号作为连接对应两环的边，选择不操作的编号就变成选择最大匹配。",
+          "keyObservations": [
+            "对某个编号 $i$ 操作会把 $i$ 从所在置换环中单独摘出；因此长度为 $c$ 的环至少要操作 $c-1$ 个顶点，唯一不操作的顶点可任意选择。",
+            "若编号 $i$ 不被操作，它必须是两个置换各自所在环中唯一未摘出的顶点，否则对应环无法全部变成自环。",
+            "把第一置换的每个环和第二置换的每个环作为二分图两侧，编号 $i$ 作为连接其两个环的边，则可同时保留的编号恰好构成匹配；最大化未操作编号等价于求最大匹配。",
+            "最大匹配边对应不操作的编号，其余编号各操作一次即可排序；操作顺序不影响结果，因此最少操作数为 $n$ 减去最大匹配大小。"
+          ],
+          "solutionBrief": "分别分解两置换的环，建立“第一置换环—第二置换环”的二分图，每个编号对应一条边。求最大匹配，将匹配边的编号保留不操作，其余编号各操作一次；答案数为 $n-|M|$，整体复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1783G",
+          "index": "G",
+          "slot": "G",
+          "title": "Weighed Tree Radius",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1783/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/111194",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带非负顶点权值的树，从顶点 $v$ 到 $u$ 的距离定义为边数 $d(v,u)$ 加上终点权值 $a_u$；顶点 $v$ 的离心距是到所有顶点的最大该距离，树半径是所有顶点离心距的最小值。每次把一个顶点的权值修改为指定值，并在每次修改后输出当前半径。",
+          "transformedStatement": "将问题改写为最大化对称路径权值 $a_u+d(u,v)+a_v$ 的动态树直径；半径由该直径直接得到。再把每个顶点权值在查询序列中的持续区间放入查询线段树，使遍历过程中只处理单调增大的权值变化。",
+          "keyObservations": [
+            "将端点为 $u,v$ 的路径定义为对称权值 $a_u+d(u,v)+a_v$，并允许 $u=v$，从而可用类似普通树直径的结构处理顶点权值。",
+            "若当前直径端点为 $x,y$，任意顶点到其中一个端点的加权距离就是其离心距，因此半径等于直径权值的一半向上取整。",
+            "增大顶点 $v$ 的权值时，只有端点为 $v$ 的路径会变化；新直径只需在原直径、$(v,v)$、$(v,x)$、$(v,y)$ 中取最大值。",
+            "把每个顶点的每段固定权值表示为查询时间轴上的活跃区间，在线下建立查询线段树后，区间内只需处理从 $0$ 增大的赋值，并沿树遍历维护直径。"
+          ],
+          "solutionBrief": "把权值变化转成查询时间轴上的活跃区间，在线段树遍历中维护当前直径。每次增大权值仅检查原直径及经过该点的三个候选端点对，距离用 LCA 计算；用 Euler 序稀疏表可将 LCA 降为 $O(1)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
