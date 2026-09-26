@@ -2893,6 +2893,17 @@
     "date": "2026-06-07"
   },
   {
+    "id": 2236,
+    "name": "Codeforces Round 1103 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1781274900,
+    "relativeTimeSeconds": 9191328,
+    "date": "2026-06-12"
+  },
+  {
     "id": 2237,
     "name": "Order Capital Round 2 (Codeforces Round 1104, Div. 1 + Div. 2)",
     "type": "CF",
