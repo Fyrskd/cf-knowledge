@@ -82,6 +82,18 @@ jobs:
           python3 -m json.tool auto-update-status.json >/dev/null
           python3 -m py_compile tools/cf_config.py tools/cf_knowledge_index.py tools/cf_auto_update.py tools/cf_ai_manager.py tools/cf_batch_upload.py
           python3 -m unittest tools/test_cf_config.py tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          records = json.loads(Path("records.json").read_text(encoding="utf-8"))
+          bad = [
+              f"{row.get('contest_id')}{row.get('index')}"
+              for row in records
+              if "codeforces search problemset" in str(row.get("statement_text") or "").lower()
+          ]
+          assert not bad, f"metadata page stored as statement: {bad[:5]}"
+          PY
           node --check problem-insights-browser/app.js
           node --check problem-insights-browser/data.js
           git diff --check
@@ -201,7 +213,7 @@ jobs:
           ]
           assert not missing_solution_summary, f"无题解总结的记录仍带有题解内容: {missing_solution_summary[:10]}"
           bad = [
-              row.get("problem_key")
+              f"{row.get('contest_id')}{row.get('index')}"
               for row in records
               if "codeforces search problemset" in str(row.get("statement_text") or "").lower()
           ]

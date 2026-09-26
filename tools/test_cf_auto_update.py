@@ -180,6 +180,11 @@ class AutoUpdateTests(unittest.TestCase):
         self.assertIn("--phase crawl", workflow)
         self.assertIn("--phase ai --require-ai", workflow)
         self.assertEqual(workflow.count("ref: ${{ github.ref_name }}"), 2)
+        self.assertEqual(workflow.count("metadata page stored as statement"), 2)
+        self.assertLess(
+            workflow.index("metadata page stored as statement"),
+            workflow.index("Commit crawled source data"),
+        )
         self.assertLess(
             workflow.index("Commit crawled source data"),
             workflow.index("Refresh AI summaries"),

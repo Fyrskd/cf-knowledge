@@ -107,11 +107,14 @@ class DynamicTutorialTests(unittest.TestCase):
 
     def test_metadata_only_mirror_page_has_no_statement(self) -> None:
         raw = b"""
+        <h1>Codeforces search problemset</h1>
+        <p>Home Search User Search About</p>
+        <p>Solutions are presented as using the least memory and fastest execution time.</p>
+        <p>If you want to limit the input, choose an operation or integer index.</p>
         <h3>Problems</h3>
         <table><tr><td>A1</td><td>Floor of MEX</td></tr></table>
         <h3>Tutorials</h3>
         <table></table>
-        <p>Codeforces search problemset</p>
         <p>Submissions</p>
         <p>Back to search problems</p>
         """
@@ -152,10 +155,13 @@ class DynamicTutorialTests(unittest.TestCase):
 
     def test_statement_fallback_uses_official_page_after_metadata_mirror(self) -> None:
         mirror = b"""
+        <h1>Codeforces search problemset</h1>
+        <p>Solutions are presented as using the least memory and fastest execution time.</p>
+        <p>If you want to limit the input, choose an operation or integer index.</p>
         <h3>Problems</h3>
         <table><tr><td>A</td><td>Example</td></tr></table>
         <h3>Tutorials</h3><table></table>
-        <p>Codeforces search problemset</p><p>Submissions</p>
+        <p>Submissions</p>
         """
         official = b"""
         <div class="problem-statement">
@@ -355,7 +361,11 @@ class ExistingToolReuseTests(unittest.TestCase):
     def test_metadata_only_statement_stays_missing(self) -> None:
         record = {
             "statement_quality": "available",
-            "statement_text": "Problems Submissions Back to search problems",
+            "statement_text": (
+                "Codeforces search problemset Home Search User Search About. "
+                "Solutions are presented as using the least memory and fastest execution time. "
+                "If you want to limit the input, choose an operation or integer index."
+            ),
         }
         cf.normalize_legacy_record(record)
         self.assertEqual(record["statement_quality"], "missing")

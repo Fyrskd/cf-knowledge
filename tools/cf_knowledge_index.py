@@ -364,9 +364,12 @@ def clean_text(raw: bytes | str) -> str:
     return p.text()
 
 
-STATEMENT_METADATA_MARKERS = (
+STATEMENT_METADATA_PREFIXES = (
     "codeforces search problemset",
     "codeforces search problems",
+)
+STATEMENT_METADATA_MARKERS = (
+    *STATEMENT_METADATA_PREFIXES,
     "back to search problems",
     "solutions are presented as using the least memory",
 )
@@ -395,6 +398,8 @@ def is_problem_statement(text: str) -> bool:
     """Reject mirror navigation/submission pages masquerading as statements."""
     normalized = re.sub(r"\s+", " ", str(text or "")).strip().lower()
     if len(normalized) < 80:
+        return False
+    if normalized.startswith(STATEMENT_METADATA_PREFIXES):
         return False
     if sum(cue in normalized for cue in STATEMENT_CUES) >= 1:
         # Historical mirror captures may include navigation after a real
