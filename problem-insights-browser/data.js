@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2077,
+    "total_problems": 2085,
     "source_total_problems": 2085,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2077,
-    "with_editorial_brief": 1825,
-    "with_solution_brief": 1826,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2085,
+    "with_editorial_brief": 1833,
+    "with_solution_brief": 1834,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1018,
+    "ai_override_count": 1026,
     "primary_topic_count": 13,
-    "contest_count": 324,
+    "contest_count": 325,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 90,
-    "构造与贪心": 696,
-    "图论与网络流": 122,
+    "构造与贪心": 700,
+    "图论与网络流": 123,
     "动态规划与状态设计": 196,
-    "数论与同余": 209,
-    "组合计数与概率": 158,
-    "数据结构": 177,
+    "数论与同余": 210,
+    "组合计数与概率": 159,
+    "数据结构": 178,
     "几何": 44,
     "树结构": 130,
     "代数、矩阵与多项式": 18,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 73
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 896,
+    "ai_generated_with_editorial": 904,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -28390,6 +28390,237 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：可交换性把数组压成“相邻值嵌套森林”。分别为 a、b 构造从 m 到 1 的有序树森林，对每棵树做确定性哈希；最后用 KMP 或字符串哈希判断两组根哈希序列是否为循环旋转。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2117,
+      "name": "Codeforces Round 1029 (Div. 3)",
+      "date": "2025-06-08",
+      "url": "https://codeforces.com/contest/2117",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "2117A",
+          "index": "A",
+          "slot": "A",
+          "title": "False Alarm",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2117/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/143362",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 扇按编号排列的门，必须按顺序通过；打开的门耗时 1 秒，关闭的门不能通过。按钮最多使用一次，可让所有关闭门在 $x$ 秒内打开，判断能否通过全部门到达出口。",
+          "transformedStatement": "把按钮生效期间必须覆盖的部分看成从第一扇关闭门到最后一扇关闭门的连续区间；其长度决定所需按钮时长，问题转化为判断 $x$ 是否不小于该区间长度。",
+          "keyObservations": [
+            "无需在已打开的门处提前按按钮；第一次遇到关闭的门时按下不会更差，并能最大化覆盖后续路程。",
+            "设第一扇关闭的门为 $l$、最后一扇为 $r$，从 $l$ 到 $r$ 必须连续经过 $r-l+1$ 扇门，因此按钮时长至少为该区间长度。",
+            "区间内的打开门也各耗时 1 秒，所以即使关闭门不连续，按钮仍需覆盖整个首尾区间，而区间外的门无需按钮即可通过。"
+          ],
+          "solutionBrief": "扫描所有门，记录第一扇和最后一扇关闭的门的位置。若 $x\\ge r-l+1$，就在第一次遇到关闭门时按下按钮并顺利通过；否则无法覆盖两端关闭门之间的全部时间，输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2117B",
+          "index": "B",
+          "slot": "B",
+          "title": "Shrink",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2117/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/143362",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定长度为 $n$ 的排列，每次可选择一个同时大于左右相邻元素的内部位置并删除该元素。构造一个排列，使能够进行的删除操作次数最大，并输出任意最优排列。",
+          "transformedStatement": "把删除过程看成不断删除当前数组的最大内部元素：只要最大值不在端点，它就必然是可删除的。构造时固定 $1,2$ 为两端，让其余元素依次暴露为内部最大值。",
+          "keyObservations": [
+            "任何操作都会把数组长度减少 1，而长度为 2 时两项都在端点，故操作次数上界是 $n-2$。",
+            "当前数组的最大值若位于两个端点之间，就一定大于相邻两项，因此可以立即删除；删除后可继续考察剩余元素的最大值。",
+            "将 $1$ 和 $2$ 固定在两端，并把 $3,\bdots,n$ 放在中间，所有大于 $2$ 的元素都会依次成为内部最大值并被删除，从而达到上界。"
+          ],
+          "solutionBrief": "对每组 $n$ 输出 $2,3,\bdots,n,1$。两端固定为 $2,1$，中间最大值可依次删除，直到只剩两项，因此恰好进行 $n-2$ 次操作并达到理论上界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2117C",
+          "index": "C",
+          "slot": "C",
+          "title": "Cool Partition",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2117/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/143362",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定数组，要将其划分为若干个连续且不重叠的段，保持原有顺序。每个段中的每种元素都必须至少在紧接着的下一段中出现，求满足条件的最大段数。",
+          "transformedStatement": "将合法切分转化为前缀覆盖问题：以 $r$ 结尾的段必须包含前缀 $[1,r]$ 的全部不同元素。于是从左到右维护前缀集合与当前段集合，在二者相同时立即确定一个段。",
+          "keyObservations": [
+            "若某段以位置 $r$ 结尾，则该段必须包含前缀 $[1,r]$ 中的所有不同元素；否则更早段中的某个元素无法出现在后续段中。",
+            "扫描到位置 $i$ 时，当前段的不同元素集合是前缀不同元素集合的子集，因此两者大小相等就等价于当前段已覆盖整个前缀集合，可以安全切段。",
+            "应在第一次满足条件的位置切断当前段；若延后到更远位置，前移边界并把中间元素并入下一段不会减少合法性，因此尽早切分能保留最大段数。"
+          ],
+          "solutionBrief": "从左到右维护整个前缀和当前段的不同元素集合；当两者大小相等时立即结束当前段并清空当前集合。每次切分都尽可能提前，得到最大段数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2117D",
+          "index": "D",
+          "slot": "D",
+          "title": "Retaliation",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2117/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/143362",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定长度为 $n$ 的正整数数组。每次可选择一种操作：对所有位置 $i$ 同时减去 $i$，或同时减去 $n-i+1$；操作可进行任意次，判断能否让所有元素恰好变为零。",
+          "transformedStatement": "把两类操作次数记为 $x,y$，则目标等价于验证 $a_i=xi+y(n-i+1)$。配对一次两类操作会对每项统一减少 $n+1$，因此先处理剩余单一类型操作，再检查统一余量能否由若干对操作消除。",
+          "keyObservations": [
+            "若分别进行 $x,y$ 次两类操作，则 $a_i=xi+y(n-i+1)$，因此所有相邻差必须相等；这把可行性先化为等差数列检查。",
+            "将两类操作各配对一次会让每个元素都减少 $n+1$，所以去掉较少的一类后，剩余操作必须是同一种类型，且次数等于相邻差的绝对值。",
+            "先执行剩余的同类操作后，数组所有元素应相等；公共值必须非负且能被 $n+1$ 整除，才能继续用成对操作全部减为零。"
+          ],
+          "solutionBrief": "先检查数组是否为等差数列。设相邻差为 $d$，若 $d>0$ 扣除 $d$ 次第一类操作，否则扣除 $|d|$ 次第二类操作；检查所得公共值是否非负且被 $n+1$ 整除。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2117E",
+          "index": "E",
+          "slot": "E",
+          "title": "Lost Soul",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2117/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/143362",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定等长数组 $a,b$，可在开始前至多删除同一位置的两个元素；之后任意次选择 $i<n$，令 $a_i=b_{i+1}$ 或 $b_i=a_{i+1}$，且两种操作可用于同一位置。求最终两数组对应位置相等的最大数量。",
+          "transformedStatement": "将目标改写为寻找能形成相等的最右位置：一旦位置 $i$ 相等，就能把这个匹配向左传播，得到长度为 $i$ 的相等前缀；删除 $i+1$ 后，位置 $i$ 的可取值由更后方两数组的后缀值决定。",
+          "keyObservations": [
+            "若位置 $i$ 能形成相等，则可从 $i-1$ 向前依次传播操作，使前缀 $1..i$ 全部相等，因此只需最大化最右侧可匹配位置。",
+            "删除位置 $i+1$ 后，位置 $i$ 可以通过交替转移取得任意更后方位置 $j>i+1$ 的 $a_j$ 或 $b_j$，所以匹配条件可转化为后缀是否出现相同数值。",
+            "从右向左扫描时，位置 $i$ 可匹配当且仅当已有相等、相邻同值可配合删除，或 $a_i,b_i$ 出现在更后方位置；用集合记录后缀值即可找到最右可行位置。"
+          ],
+          "solutionBrief": "从右向左维护已扫描后缀中出现过的数值。对每个位置检查本身相等、相邻同值或两端值是否出现在后缀；首次满足的位置就是最右可匹配位置，答案为其前缀长度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2117F",
+          "index": "F",
+          "slot": "F",
+          "title": "Wildflower",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2117/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/143362",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根、每个点赋值为 $1$ 或 $2$ 的树。点 $u$ 的值 $s_u$ 是其子树内所有点权之和，要求统计使所有 $s_u$ 两两不同的数组数量，并对 $10^9+7$ 取模。",
+          "transformedStatement": "把树按叶子数压缩：超过两个叶子立即因叶子子树和碰撞而无解；两个叶子时只需分析根到两叶最近公共祖先的主路径及两条分支，分支上的点权由叶子取值逐步强制，未被强制的位置独立贡献二的幂。",
+          "keyObservations": [
+            "若树有至少 3 个叶子，叶子的子树和只能取 $1$ 或 $2$，由抽屉原理必有两个相同，因此答案为 $0$。",
+            "树只有 1 个叶子时，沿根方向子树严格增加，因为加入的点权始终为正，所以任意 $2^n$ 个数组都合法。",
+            "有 2 个叶子时，根到两叶子最近公共祖先的路径上的点权均可自由选择；两条分支的叶子取值会决定向上若干点必须取 $2$，剩余位置才是自由变量。",
+            "设两叶深度为 $d_x\\le d_y$、最近公共祖先深度为 $d_v$；当深度不等时两种叶子取值贡献 $2^{d_y-d_x}$ 与 $2^{d_y-d_x-1}$，当深度相等时两种取值各贡献 $2^{d_v}$。"
+          ],
+          "solutionBrief": "先统计叶子数：超过 2 个时答案为 0，只有 1 个时答案为 $2^n$。有 2 个叶子时求其深度差及最近公共祖先深度，按两种叶子取值的强制传播情况套用对应公式并取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2117G",
+          "index": "G",
+          "slot": "G",
+          "title": "Omg Graph",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2117/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/143362",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dsu",
+            "graphs",
+            "greedy",
+            "shortest paths",
+            "sortings"
+          ],
+          "statementBrief": "给定一张连通无向带权图，可以沿边从顶点 $1$ 走到顶点 $n$，路径允许重复顶点和边。若路径边权为序列，其代价是最小边权加最大边权，要求求出所有可行路径中的最小代价。",
+          "transformedStatement": "把每条候选路径的最小边固定为某条边 $e$，目标转为最小化包含 $e$ 的路径最大边权，再加上 $e$ 的权值。固定 $e=(u,v)$ 后，问题等价于连接 $1\\to u$、经过 $e$、再到 $v\\to n$ 的最小瓶颈路径。",
+          "keyObservations": [
+            "对任意路径选取其最小边 $e$ 后，路径代价可写成 $w_e+$该路径最大边权；枚举作为最小边的 $e$，取所有结果最小值即可保持最优性。",
+            "固定边 $e=(u,v)$ 后，只需分别求 $1\\to u$ 和 $v\\to n$ 的最小瓶颈值；将两段路径与 $e$ 拼接后，整条路的最大边权就是三者的最大值。",
+            "最小瓶颈路径可用类似 Dijkstra 的标号法求解，经过边权 $w$ 的新值为 $\\max(d[x],w)$，该转移不会降低路径瓶颈值，因此堆顶点确定后无需回退。",
+            "对每条边计算 $w+\\max(d_1[u],w,d_n[v])$ 并取最小值；遍历无向边的两个方向覆盖固定边位于路径中的两种连接方式。"
+          ],
+          "solutionBrief": "分别从 $1$ 和 $n$ 运行两次“最小化路径最大边权”的 Dijkstra，得到各点的最小瓶颈值。枚举每条边及其方向，计算 $w+\\max(d_1[u],d_n[v],w)$，取最小答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2117H",
+          "index": "H",
+          "slot": "H",
+          "title": "Incessant Rain",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/2117/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/143362",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "sortings"
+          ],
+          "statementBrief": "给定数组，每次查询把一个位置替换为指定值。每次替换后，要在所有连续子数组和整数候选值中，求最大的 $k$，使该值在某个子数组中出现次数至少为 $\\lfloor(|b|+1)/2\\rfloor+k$。",
+          "transformedStatement": "对每个候选值 $x$ 单独建立数组：原数组中等于 $x$ 的位置贡献 $1$，其他位置贡献 $-1$。问题转化为动态维护该数组的最大子段和，并取所有 $x$ 的结果最大值后除以 $2$ 下取整。",
+          "keyObservations": [
+            "固定候选值 $x$ 后，将等于 $x$ 的位置记为 $1$、其余记为 $-1$；任意子数组的和为 $2\\operatorname{cnt}(x)-|b|$，因此该值能达到的最大 $k$ 是最大子段和除以 $2$ 后下取整。",
+            "一次修改只会改变旧值和新值对应的两套二元数组，因此只需更新这两个值的答案，不必重算其他候选值。",
+            "对每个值离线收集所有涉及它的修改，按时间顺序在同一棵线段树上切换对应位置的 $-1/1$，即可得到该值在每个时刻的最大子段和。",
+            "将所有候选值当前的最大子段和放入 multiset；每个时刻只替换受影响候选值的旧答案，集合最大值即全局答案。"
+          ],
+          "solutionBrief": "把每个候选值转成 $\\pm1$ 数组，用维护总和、最大前缀和、最大后缀和及最大子段和的线段树处理修改。离线按候选值收集事件并记录各时刻答案，再用 multiset 动态维护所有候选值的最大值，输出其除以 $2$ 的下取整。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
