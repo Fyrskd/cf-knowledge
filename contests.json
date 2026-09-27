@@ -1,5 +1,16 @@
 [
   {
+    "id": 1737,
+    "name": "Dytechlab Cup 2022",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1665153300,
+    "relativeTimeSeconds": 125392523,
+    "date": "2022-10-07"
+  },
+  {
     "id": 1736,
     "name": "Codeforces Round 825 (Div. 2)",
     "type": "CF",
