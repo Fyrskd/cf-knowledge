@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2174,
-    "source_total_problems": 2174,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 2174,
+    "total_problems": 2175,
+    "source_total_problems": 2183,
+    "filtered_out_problems": 8,
+    "with_statement_brief": 2175,
     "with_editorial_brief": 1922,
     "with_solution_brief": 1923,
-    "missing_editorial_brief": 251,
+    "missing_editorial_brief": 252,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 1115,
     "primary_topic_count": 13,
-    "contest_count": 338,
+    "contest_count": 339,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 95,
-    "构造与贪心": 734,
+    "构造与贪心": 735,
     "图论与网络流": 126,
     "动态规划与状态设计": 202,
     "数论与同余": 224,
@@ -61,7 +61,7 @@ window.CF_INSIGHTS_DATA = {
   "statusCounts": {
     "ai_generated_with_editorial": 993,
     "ai_generated_partial_editorial": 38,
-    "missing_editorial": 251,
+    "missing_editorial": 252,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -36002,6 +36002,42 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "关键观察：先刻画可达集合，而不是直接构造。对 a 递归选最长最大子段和段，得到不会被跨越的分割屏障。可达数组必然对应某个段和阈值 x：小于 x 的段保留，大于等于 x 的段被替换，其中只有一个段能替成任意数组，其余替换段的最大子段和不能超过 x。枚举 x 后用 DP 判断 b 能否按这些段拼出，并反向构造操作。",
           "extractionStatus": "manual_override",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2065,
+      "name": "Codeforces Round 1003 (Div. 4)",
+      "date": "2025-02-09",
+      "url": "https://codeforces.com/contest/2065",
+      "type": "Div. 4",
+      "problemCount": 1,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "2065C1",
+          "index": "C1",
+          "slot": "C",
+          "title": "Skibidus and Fanum Tax (easy version)",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2065/problem/C1",
+          "editorialUrl": "https://codeforces.com/blog/entry/139327",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Skibidus and Fanum Tax (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     },

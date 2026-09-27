@@ -2455,6 +2455,27 @@
     "raw_sha256": "1cff2db110eab24eba97f74a4f2851de255a0020170b57bff8775e4220763d11"
   },
   {
+    "url": "https://codeforces.com/blog/entry/139327",
+    "blog_entry_id": 139327,
+    "title": "Codeforces Round 1003 (Div 4) — Video Tutorial",
+    "author": "Shayan",
+    "creation_time": "2025-02-09",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Video Tutorial",
+    "section_count": 7,
+    "covered_problems": [
+      "2060A",
+      "2060B",
+      "2060C",
+      "2060D",
+      "2060E",
+      "2060F",
+      "2060G"
+    ],
+    "raw_sha256": "b3e5009c184f5042a7158096921408cdaaf648d936479b869ec6a1ba07e6fb04"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/139415",
     "blog_entry_id": 139415,
     "title": "Codeforces Round 1004 (Div. 1, Div. 2) Editorial",

@@ -1804,6 +1804,17 @@
     "date": "2025-02-02"
   },
   {
+    "id": 2065,
+    "name": "Codeforces Round 1003 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1739111700,
+    "relativeTimeSeconds": 51367731,
+    "date": "2025-02-09"
+  },
+  {
     "id": 2066,
     "name": "Codeforces Round 1004 (Div. 1)",
     "type": "CF",
