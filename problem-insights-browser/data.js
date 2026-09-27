@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2987,
+    "total_problems": 2993,
     "source_total_problems": 2994,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2987,
-    "with_editorial_brief": 2715,
-    "with_solution_brief": 2716,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2993,
+    "with_editorial_brief": 2721,
+    "with_solution_brief": 2722,
     "missing_editorial_brief": 271,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2049,
+    "ai_override_count": 2055,
     "primary_topic_count": 13,
-    "contest_count": 454,
+    "contest_count": 455,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数据结构": 281,
+    "几何": 72,
+    "构造与贪心": 946,
+    "字符串": 160,
+    "数论与同余": 323,
+    "动态规划与状态设计": 253,
     "基础实现与模拟": 179,
-    "构造与贪心": 945,
     "树结构": 151,
-    "动态规划与状态设计": 252,
-    "字符串": 159,
     "博弈": 97,
     "组合计数与概率": 235,
-    "数据结构": 280,
-    "几何": 71,
-    "数论与同余": 322,
     "图论与网络流": 180,
     "交互": 95,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1764,
+    "ai_generated_with_editorial": 1770,
     "missing_editorial": 271,
     "ai_generated_partial_editorial": 60,
     "manual_override": 891,
@@ -92327,6 +92327,194 @@ window.CF_INSIGHTS_DATA = {
             "将所有方向字符串放入 Aho-Corasick 自动机，并把每个状态及其失配链上的模式权值预先求和；随后用 $dp[mask][v]$ 表示已放置字母集合为 $mask$、自动机处于状态 $v$ 时的最大收益。"
           ],
           "solutionBrief": "为每个单词提取相邻字母图的路径及两个方向；不成路径的单词舍弃。将所有方向串加入 Aho-Corasick，预处理每个状态的失配链累计权值，再用 $dp[mask][v]$ 逐字母扩展键盘并累加新状态收益，取完整排列的最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1730,
+      "name": "Codeforces Round 823 (Div. 2)",
+      "date": "2022-09-25",
+      "url": "https://codeforces.com/contest/1730",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1730A",
+          "index": "A",
+          "slot": "A",
+          "title": "Planets",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1730/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/107293",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 颗行星及其所在轨道。同一轨道的行星可逐颗摧毁，每颗费用为 1；也可使用第二台机器一次摧毁该轨道上的全部行星，费用为 $c$。求摧毁所有行星的最小总费用。",
+          "transformedStatement": "按轨道分组后，问题分解为多个互不影响的局部选择：对每个非空轨道，在支付其行星数 $cnt_i$ 逐个处理和支付固定费用 $c$ 整体处理之间取较小值，最后求和。",
+          "keyObservations": [
+            "同一轨道上的行星彼此独立：若逐个使用第一台机器，费用是该轨道行星数；若使用第二台机器一次，可整体摧毁它们，费用为 $c$。",
+            "因此每个非空轨道的最优费用恰为 $\\min(cnt_i,c)$，无需考虑不同轨道之间的操作顺序或组合。",
+            "只需统计各轨道出现次数，再把每个轨道的局部最优费用相加，即可得到全局最优解。"
+          ],
+          "solutionBrief": "统计每个轨道上的行星数 $cnt_i$。对每个出现过的轨道，比较逐个摧毁的费用 $cnt_i$ 与第二台机器的固定费用 $c$，累加 $\\min(cnt_i,c)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1730B",
+          "index": "B",
+          "slot": "B",
+          "title": "Meeting on the Line",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1730/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/107293",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "geometry",
+            "greedy",
+            "implementation",
+            "math",
+            "ternary search"
+          ],
+          "statementBrief": "给定每个人在线上的位置 $x_i$ 以及出发前需要准备的时间 $t_i$，所有人选择同一个会面位置；第 $i$ 个人到达所需时间是 $t_i+|x_i-x_0|$。要求找到使所有人都到达所需最大时间最小的唯一会面位置 $x_0$。",
+          "transformedStatement": "将每个人等价看成两个准备时间为零、位置分别为 $x_i-t_i$ 和 $x_i+t_i$ 的人。于是目标变为找一个点，使其到这些新位置的最大距离最小，即求最左与最右新位置的中点。",
+          "keyObservations": [
+            "对每个人 $(x_i,t_i)$，将其替换为两个零准备时间的位置 $x_i-t_i$ 与 $x_i+t_i$，任意会面点到这两个位置的最大距离恰好等于其原总耗时。",
+            "替换后问题只需最小化会面点到所有新位置的最大距离，因此只由最小位置和最大位置决定，中间位置不会影响最优点。",
+            "一维区间两端点的最大距离在中点处最小，所以最优会面位置为所有 $x_i-t_i$ 的最小值与所有 $x_i+t_i$ 的最大值的平均数。"
+          ],
+          "solutionBrief": "把每个人转换成位置 $x_i-t_i$ 和 $x_i+t_i$ 的两个零准备时间点。扫描得到 $L=\\min(x_i-t_i)$、$R=\\max(x_i+t_i)$，输出 $(L+R)/2$，总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1730C",
+          "index": "C",
+          "slot": "C",
+          "title": "Minimum Notation",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1730/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/107293",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定只含数字的字符串。每次可选取一个数字，将其移到右侧并加一（结果不超过 $9$），重复任意次后，求能得到的字典序最小字符串。",
+          "transformedStatement": "把数字分成两类：右侧没有更小数字的后缀最小值必须固定在原位置；其余数字都移入后缀并变为 $\\min(d+1,9)$，再将这部分按升序排列。",
+          "keyObservations": [
+            "从右向左看，若某位数字不大于其右侧所有数字的最小值，就应保留在原位置；后续数字不可能小于它，移动它不会改善当前字典序。",
+            "其余数字右侧存在更小数字，必须通过操作移走；移走时数字变为 $\\min(d+1,9)$，否则保留它会让当前位置更大。",
+            "所有被移走的数字最终都位于保留数字之后，并可按升序排列；因此将它们统一加一后排序，再接到保留序列末尾即可得到最小结果。"
+          ],
+          "solutionBrief": "从右向左维护后缀最小值：不大于右侧最小值的数字保留，其余数字替换为 $\\min(d+1,9)$ 放入待排序集合。最后保留数字按原顺序输出，集合升序追加。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1730D",
+          "index": "D",
+          "slot": "D",
+          "title": "Prefixes and Suffixes",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1730/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/107293",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定两个长度均为 $n$ 的小写字母串，可以重复执行题面规定的前缀操作，判断能否通过这些操作使两个字符串完全相同。当前记录中的 statement 未展示具体操作文字，但题解说明该操作在反转第二串后表现为对二元组前缀进行反转并交换分量。",
+          "transformedStatement": "先将第二个字符串反转，再把两个字符串同位置字符组成无序二元组；原问题转化为判断这些二元组能否通过操作排列成一个回文序列，因为回文序列两侧的二元组必须相同。",
+          "keyObservations": [
+            "将第二个字符串反转后，把同位置字符组成无序二元组；一次前缀操作等价于反转一段二元组顺序并交换其中每个二元组的两个分量。",
+            "利用三次前缀操作可以把任意一个二元组移动到指定位置，并按需交换其两个分量，因此二元组可以任意排列，且每个二元组可独立决定方向。",
+            "最终相等等价于二元组序列能排成回文：每种非中心二元组必须成对出现；若长度为奇数，唯一中心二元组必须形如 $(a,a)$。",
+            "因此只需统计无序字符对的出现次数，并检查所有计数的奇偶性以及奇数长度时的中心条件。"
+          ],
+          "solutionBrief": "反转第二个字符串，将对应字符组成无序二元组并计数。长度为偶数时所有二元组出现次数都必须为偶数；长度为奇数时只能有一个奇数次二元组，且它必须是 $(a,a)$。满足条件即可输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1730E",
+          "index": "E",
+          "slot": "E",
+          "title": "Maximums and Minimums",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1730/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/107293",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "divide and conquer",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组，考察每个连续子段 $[l,r]$，若该子段的最小值能整除最大值，则称其通过检查。需要统计所有满足 $1\\le l\\le r\\le n$ 的通过子段数量。",
+          "transformedStatement": "将每个通过子段按其左侧最靠前的最大值位置 $i$ 归类；固定最大值后，问题变为枚举 $a_i$ 的因子作为最小值，并计算左右端点同时避开更大值和更小值阻挡位置的方案数。",
+          "keyObservations": [
+            "固定左侧最靠前的最大值位置 $i$ 后，子段满足最大值为 $a_i$ 当且仅当 $lge_i<l\\le i\\le r<rg_i$，从而唯一处理最大值并解决相等最大值的重复计数。",
+            "最小值必须是 $a_i$ 的某个因子，因此只需枚举 $a_i$ 的因子 $d$，而不必枚举所有可能的最小值。",
+            "对每个因子 $d$，只需考虑 $i$ 左右最近的两个 $d$ 的出现位置；结合最大值和最小值的阻挡位置后，合法的左右端点分别形成区间，数量可用区间长度乘积计算。",
+            "通过为每个位置维护最近的左侧大于等于、右侧大于、左侧小于和右侧小于元素，并预处理所有数的因子，可将计数转化为局部边界计算。"
+          ],
+          "solutionBrief": "用单调栈求各位置四类最近阻挡位置，固定子段的左侧最靠前最大值 $i$，枚举 $a_i$ 的因子 $d$，利用左右最近的 $d$ 及边界交集计算合法端点数。因子筛预处理后总复杂度为 $O(A\\log A+nD)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1730F",
+          "index": "F",
+          "slot": "F",
+          "title": "Almost Sorted",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1730/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/107293",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的排列 $p$，要构造一个索引排列 $q$。从左到右排列索引后，任意前后位置都必须满足 $p_{q_i}\\le p_{q_j}+k$；在所有满足条件的 $q$ 中，求其逆序对数量的最小值。",
+          "transformedStatement": "把构造过程视为逐步选取未使用的 $p_i$：记录当前最小未选值 $mn$，以及 $[mn,mn+k]$ 内哪些值已被选。每次从该窗口选择一个未选索引，并计算它与此前索引形成的新增逆序对。",
+          "keyObservations": [
+            "当前前缀确定最小未使用值为 $mn$ 时，所有小于 $mn$ 的值都已使用、所有大于 $mn+k$ 的值都未使用，因此不确定部分只需记录区间 $[mn,mn+k]$ 的使用掩码。",
+            "下一步只能选择一个尚未使用且满足 $mn\\le p_i\\le mn+k$ 的索引 $i$，把它追加到 $q$ 的末尾；状态由 $mn$ 和掩码完整刻画。",
+            "追加索引 $i$ 产生的逆序对可按对应值是否小于 $mn$ 分开：前者用树状数组统计已选的大索引，后者只涉及至多 $k+1$ 个窗口元素，可直接枚举。"
+          ],
+          "solutionBrief": "从左到右构造 $q$，用 $dp[mn][mask]$ 表示最小逆序对数。枚举窗口内可选索引转移；新增逆序对中，窗口外部分由树状数组统计，窗口内部分直接计算，复杂度为 $O(n2^k k(k+\\log n))$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
