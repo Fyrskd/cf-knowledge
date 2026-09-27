@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2226,
+    "total_problems": 2233,
     "source_total_problems": 2233,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2226,
-    "with_editorial_brief": 1966,
-    "with_solution_brief": 1967,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2233,
+    "with_editorial_brief": 1973,
+    "with_solution_brief": 1974,
     "missing_editorial_brief": 259,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1167,
+    "ai_override_count": 1174,
     "primary_topic_count": 13
   },
   "records": [
@@ -37876,6 +37876,299 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 922,
+      "problem_key": "2037A",
+      "contest_id": 2037,
+      "title": "Twice",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2037/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/135533",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
+      "original_tags": [
+        "implementation"
+      ],
+      "statement_brief": "给定一个整数数组，初始得分为 $0$。每次可选择两个尚未在之前操作中使用过、且数值相同的下标，将得分加一；求最多进行这些操作时的最大得分。",
+      "transformed_statement": "将问题按数值分组：对每个值，只需把它的所有出现位置两两配对；不同值使用的下标互不冲突，因此分别求每组能形成的配对数后求和。",
+      "key_observations": [
+        "同一数值的出现位置之间彼此独立配对；若其频次为 $f_x$，最多只能形成 $\frac{f_x}{2}$ 向下取整对，因为每个位置只能使用一次。",
+        "不同数值的配对不会争用数组下标，因此各数值的最大配对数可以直接相加，答案为所有 $x$ 的 $\floor{f_x/2}$ 之和。"
+      ],
+      "solution_brief": "统计每个数值在数组中的频次，对每个频次累加 $\floor{f_x/2}$。每对相同元素消耗两个互不重复的下标，因此该总和正好是最大得分。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:06:44+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 923,
+      "problem_key": "2037B",
+      "contest_id": 2037,
+      "title": "Intercepted Inputs",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2037/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/135533",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "implementation"
+      ],
+      "statement_brief": "打乱一个原本包含维度 $n,m$ 及 $n\\times m$ 个网格值的输入流后，得到 $k$ 个整数；其中 $n,m$ 也混在这些数中。请从这 $k$ 个数中找出任意可能的 $n,m$，满足它们能组成原网格的尺寸。",
+      "transformed_statement": "问题等价于：在给定整数 multiset 中寻找一对都出现的正整数 $(n,m)$，使 $n\\times m=k-2$；若两者相等，还必须有至少两个该值。把网格具体内容完全抽象掉后，只需做因子匹配。",
+      "key_observations": [
+        "输入总数由两个维度和全部网格元素组成，因此必有 $n\\times m=k-2$，候选维度对被限制为 $k-2$ 的因子对。",
+        "由于原输入中的 $n,m$ 都会出现在打乱后的整数 multiset 中，候选因子对只有在两者都出现时才有效。",
+        "当 $n=m$ 时需要至少出现两个该数；这避免把同一个元素错误地同时当作两个维度。",
+        "用频次数组检查候选因子是否存在，可避免哈希容器在特殊数据下的性能风险。"
+      ],
+      "solution_brief": "统计每个数的出现次数，枚举 $k-2$ 的因子 $n$，令 $m=(k-2)/n$；若 $n,m$ 均出现且平方情形有足够次数，就输出该因子对。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:06:35+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 924,
+      "problem_key": "2037C",
+      "contest_id": 2037,
+      "title": "Superultra's Favorite Permutation",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2037/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/135533",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定整数 $n$，要构造一个包含 $1$ 到 $n$ 的每个数且恰好使用一次的排列，使每一对相邻元素之和都是合数；若不存在这样的排列则输出 $-1$。",
+      "transformed_statement": "将排列划分为偶数块和奇数块：同一块内相邻元素的和自动是大于 $2$ 的偶数，只需安排一个合数和的跨奇偶连接点；用 $4,5$ 连接两块即可。",
+      "key_observations": [
+        "任意两个同奇偶性的数之和都是大于 $2$ 的偶数，因此必为合数，可以把大部分偶数和奇数分别排成连续块。",
+        "只需处理奇偶块之间的一个连接点；选择 $4,5$ 相邻时，$4+5=9$ 为合数，从而完成奇偶块的安全衔接。",
+        "当 $n\\leq 4$ 时不存在满足条件的排列，而 $n\\geq 5$ 时一定包含 $4,5$，因此统一使用上述连接结构即可构造成功。"
+      ],
+      "solution_brief": "$n<5$ 时输出 $-1$。否则先放置除 $4$ 外的偶数，再放置 $4,5$，最后放置除 $5$ 外的奇数；块内相邻数同奇偶，连接处 $4+5=9$，所有相邻和均为合数。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:06:20+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 925,
+      "problem_key": "2037D",
+      "contest_id": 2037,
+      "title": "Sharky Surfing",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2037/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/135533",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "data structures",
+        "greedy",
+        "two pointers"
+      ],
+      "statement_brief": "她从位置 $1$ 出发，初始跳跃力为 $1$；每次可跳到不超过当前跳跃力的更后方整数位置，但不能落入任一闭区间障碍。到达道具位置时可选择收集并增加跳跃力，求到达位置 $L$ 至少要收集多少个道具；无法到达则输出 $-1$。",
+      "transformed_statement": "将路径按位置转成两类事件：道具先进入可选资源池，障碍则提出跳跃力需求 $k\\ge r-l+2$。问题变为按序用资源池中尽量少的最大价值道具满足每个障碍需求。",
+      "key_observations": [
+        "跨过闭区间 $[l,r]$ 必须从 $l-1$ 跳到 $r+1$，因此所需跳跃力为 $r-l+2$，而不是障碍长度。",
+        "按位置从前往后处理时，已出现但尚未使用的强化道具都可用于当前障碍；从中优先取数值最大的道具，能用最少数量达到所需跳跃力。",
+        "每次遇到障碍前才补充跳跃力，若所有可用道具仍不足以满足 $k\\ge r-l+2$，则后续也无法到达终点，可直接判定失败。"
+      ],
+      "solution_brief": "按位置合并排序障碍与道具事件，用最大堆保存已遇到的道具价值。遇到障碍时不断取出最大价值并累加跳跃力，直到能跳过；若仍不足则输出 $-1$，否则最终输出取用道具数。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:06:04+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 926,
+      "problem_key": "2037E",
+      "contest_id": 2037,
+      "title": "Kachina's Favorite Binary String",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/2037/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/135533",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "字符串",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "dp",
+        "greedy",
+        "interactive",
+        "two pointers"
+      ],
+      "statement_brief": "给定一个未知的长度为 $n$ 的二进制字符串，可反复选择区间 $[l,r]$，询问其中子序列 $01$ 的数量，最多询问 $n$ 次。需要据此唯一确定并输出原字符串；若无论如何都无法唯一确定，则输出 IMPOSSIBLE。",
+      "transformed_statement": "把交互过程转化为询问前缀计数 $f(1,r)$：计数的变化直接反映新加入字符是否为 $1$，而首个非零前缀具有唯一的“若干个 $1$ 后接若干个 $0$”结构。",
+      "key_observations": [
+        "对固定左端点 $1$，加入新字符只能让 $f(1,r)$ 增加；若前缀已有 $0$，增量非零恰好说明新字符是 $1$。",
+        "第一个满足 $f(1,r)>0$ 的前缀中，新增的 $1$ 必须位于末尾，且此前缀只能是若干个 $1$ 后接若干个 $0$；其计数直接给出其中的 $0$ 的数量。",
+        "若所有前缀的 $f(1,r)$ 都为零，则整个串没有子序列 $01$，所有区间询问都无法区分多个形如若干个 $1$ 后接若干个 $0$ 的字符串，因此应报告不可能。",
+        "找到首个非零前缀后，后续前缀计数是否增加即可逐位确定字符，从而用不超过 $n$ 次询问恢复整个字符串。"
+      ],
+      "solution_brief": "依次询问前缀的 $f(1,r)$，定位首个非零前缀；由其计数确定该前缀的 $1/0$ 分界。之后利用计数增量判断每个后续字符。若所有前缀计数均为零，则答案为 IMPOSSIBLE。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:05:45+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 927,
+      "problem_key": "2037F",
+      "contest_id": 2037,
+      "title": "Ardent Flames",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2037/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/135533",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "math",
+        "sortings",
+        "two pointers"
+      ],
+      "statement_brief": "有 $n$ 个敌人分别位于位置 $x_i$、拥有生命值 $h_i$。攻击前选择一个固定整数位置 $p$，每次攻击对距离为 $d$ 的敌人造成 $\\max(0,m-d)$ 点伤害，且之后不能更换位置；求至少击败 $k$ 个敌人所需的最少攻击次数，无法做到时输出 $-1$。",
+      "transformed_statement": "把候选攻击次数固定为 $q$：敌人 $i$ 能在 $q$ 次内被击败，当且仅当站位 $p$ 落在区间 $[x_i-m+\\lceil h_i/q\\rceil,\\ x_i+m-\\lceil h_i/q\\rceil]$（且所需伤害不超过 $m$）。于是只需判断这些区间是否存在一个点被至少 $k$ 个区间覆盖，并利用可行性的单调性二分 $q$。",
+      "key_observations": [
+        "固定攻击次数 $q$ 后，敌人每次至少需要受到 $\u001bceil h_i/q\nceil$ 点伤害；若该值超过 $m$，则无论站在哪里都无法在 $q$ 次内击败它。",
+        "对可击败的敌人，站位必须满足 $|p-x_i|\\le m-\\lceil h_i/q\\rceil$，因此每个敌人对应一个允许站位区间，问题转化为判断是否存在至少被 $k$ 个区间覆盖的整数点。",
+        "将区间左右端点转成起点加一、终点后一的位置事件，按坐标扫描并维护当前覆盖数；覆盖数达到 $k$ 即说明该攻击次数可行。",
+        "可行性随 $q$ 增大而单调，因此二分最小可行攻击次数；若进行 $\\max h_i$ 次攻击仍不可行，则答案为 $-1$。"
+      ],
+      "solution_brief": "二分攻击次数 $q$。对每个敌人计算所需单次伤害 $\\lceil h_i/q\\rceil$，将满足该伤害的站位转成区间；用扫描线统计区间最大重叠数，判断是否至少有 $k$ 个敌人可同时被击败。复杂度为 $O(n\\log n\\log\\max h_i)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:05:23+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 928,
+      "problem_key": "2037G",
+      "contest_id": 2037,
+      "title": "Natlan Exploring",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/2037/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/135533",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "组合计数与概率",
+        "数据结构"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "combinatorics",
+        "data structures",
+        "dp",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定按编号排列的 $n$ 个城市及吸引力 $a_i$，只有当 $i<j$ 且 $\\gcd(a_i,a_j)\\ne1$ 时才能从城市 $i$ 直接前往城市 $j$。从城市 $1$ 出发，求到达城市 $n$ 的不同路径数，并对 $998244353$ 取模。",
+      "transformed_statement": "把每个城市的吸引力改写为其不同质因子集合；两城可连通当且仅当集合有交。问题转为按编号计算路径 DP，并用各质因子子集维护所有历史状态，从而快速求出与当前集合相交的前驱总贡献。",
+      "key_observations": [
+        "由于只关心两数是否有公共质因子，重复质因子的幂次可以忽略；将每个数表示为不同质因子的集合即可判断转移条件。",
+        "令 $count[d]$ 表示此前所有城市中可达路径数之和，且这些城市的数都能被 $d$ 整除；对当前数的质因子非空子集做容斥，可使每条与当前数有公共质因子的路径恰好计数一次。",
+        "当前城市的 $dp$ 值计算完成后才把它加入各个 $count[d]$，因此只会连接到下标更小的城市，自动满足有向边的顺序限制。",
+        "$a_i\\le 10^6$ 时不同质因子最多为 $7$ 个，每个城市只需处理至多 $2^7-1=127$ 个子集，避免枚举所有前驱城市。"
+      ],
+      "solution_brief": "设 $dp[i]$ 为到达城市 $i$ 的路径数，并维护每个质因子子集乘积对应的历史 $dp$ 和。对当前数的质因子子集按奇偶做容斥，得到与其有公共质因子的前驱贡献；算出后再更新这些状态。预处理最小质因子，复杂度约为 $O(M\\log M+128n)$，其中 $M=\\max a_i$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:05:03+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 929,
