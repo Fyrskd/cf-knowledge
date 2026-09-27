@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2682,
+    "total_problems": 2689,
     "source_total_problems": 2689,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2682,
-    "with_editorial_brief": 2413,
-    "with_solution_brief": 2414,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2689,
+    "with_editorial_brief": 2420,
+    "with_solution_brief": 2421,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1744,
+    "ai_override_count": 1751,
     "primary_topic_count": 13,
-    "contest_count": 410,
+    "contest_count": 411,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 136,
-    "构造与贪心": 842,
+    "字符串": 137,
+    "构造与贪心": 846,
     "图论与网络流": 164,
-    "动态规划与状态设计": 229,
+    "动态规划与状态设计": 230,
     "数论与同余": 293,
-    "组合计数与概率": 205,
+    "组合计数与概率": 206,
     "数据结构": 252,
     "几何": 65,
     "树结构": 143,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1469,
+    "ai_generated_with_editorial": 1476,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 268,
     "manual_override": 891,
@@ -75903,6 +75903,213 @@ window.CF_INSIGHTS_DATA = {
             "从 $k-1$ 增加到 $k$ 时，只有 `good` 的后缀会失效，且最多需要额外更新两个边界位置，因此可用单调结构、RMQ 和线段树维护全部答案，整体复杂度为 $O(n\\log n)$。"
           ],
           "solutionBrief": "固定 $k$，把后缀视为特殊元素，按极大连续段的升降排列性质统计前缀、后缀及跨界子数组。维护 `good` 位置及其最小值/最大值等价段，随 $k$ 扫描更新贡献；结合单调栈、RMQ、链表和线段树，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1832,
+      "name": "Educational Codeforces Round 148 (Rated for Div. 2)",
+      "date": "2023-05-12",
+      "url": "https://codeforces.com/contest/1832",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 3200,
+      "problems": [
+        {
+          "key": "1832A",
+          "index": "A",
+          "slot": "A",
+          "title": "New Palindrome",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1832/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116454",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "给定一个已经是回文的字符串，只能重新排列其中的字母；需要判断能否得到一个与原串不同、但仍为回文的字符串，并输出 YES 或 NO。",
+          "transformedStatement": "将问题转化为检查回文左半部分是否含有至少两个不同字符：左半部分全相同则排列唯一，否则交换两个不同位置及其镜像即可构造新回文。",
+          "keyObservations": [
+            "回文串的前半部分与后半部分由镜像关系完全确定，因此只需观察前 $\\lfloor |s|/2\\rfloor$ 个字符。",
+            "若前半部分全部相同，则所有非中心字符都相同；剩余字符只能放在奇数长度回文的中心，回文排列唯一，无法得到另一个结果。",
+            "若前半部分存在两个不同字符，同时交换这两个位置及其右侧镜像位置，仍保持回文且使用相同字母，因此一定得到不同的回文。"
+          ],
+          "solutionBrief": "检查前 $\\lfloor |s|/2\\rfloor$ 个字符是否全部相同；全部相同输出 NO，否则交换两个不同字符及其镜像即可构造另一回文，输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1832B",
+          "index": "B",
+          "slot": "B",
+          "title": "Maximum Sum",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1832/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/116454",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个元素互不相同的数组，必须恰好进行 $k$ 次操作；每次可删除当前数组中的两个最小元素，或删除一个最大元素。求操作结束后数组元素总和的最大值。",
+          "transformedStatement": "先排序数组，把两种操作分别视为从左端删除两个元素、从右端删除一个元素。枚举左端操作次数 $m$ 后，剩余元素固定为排序数组中的连续区间。",
+          "keyObservations": [
+            "操作顺序不影响最终结果，因此只需枚举执行“删除两个最小值”操作的次数 $m$，无需搜索不同操作排列。",
+            "排序后，删除两个最小值等价于从左端删除两个元素，删除一个最大值等价于从右端删除一个元素，剩余元素必为一个连续区间。",
+            "当执行 $m$ 次前者时，共删除 $2m$ 个最小值和 $k-m$ 个最大值，答案就是排序数组区间 $[2m+1,n-(k-m)]$ 的和。",
+            "用前缀和计算每个区间的元素和即可在 $O(1)$ 时间评估一种 $m$，遍历所有可行 $m$ 后取最大值。"
+          ],
+          "solutionBrief": "将数组排序并建立前缀和，枚举删除两个最小值的次数 $m$。此时剩余元素是排序数组的连续区间，用前缀和求区间和并取最大值；总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1832C",
+          "index": "C",
+          "slot": "C",
+          "title": "Contrast Value",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1832/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/116454",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定整数数组 $a$，可以删除若干元素并保持其余元素的相对顺序，得到子序列 $b$；要求 $b$ 与 $a$ 的 contrast（相邻元素绝对差之和）相同。求 $b$ 可能达到的最小长度。",
+          "transformedStatement": "将数组看成数轴上的点，contrast 是按原顺序连接这些点的路径总长度。问题转化为：在不改变路径总长度的前提下，删除零贡献的重复点和位于同向直线段内部的点。",
+          "keyObservations": [
+            "把数组元素视为数轴上的点后，contrast 是按原顺序访问这些点的总路程；删除中间点不会增加总路程，因此只需保留不影响总路程的元素。",
+            "连续相等元素之间贡献为零，删除重复项不改变 contrast，因此每段连续相等值只保留一个即可。",
+            "若相邻三项严格单调，即 $a_{i-1}<a_i<a_{i+1}$ 或 $a_{i-1}>a_i>a_{i+1}$，中间项满足两段距离之和等于首尾距离，可以删除；只有方向变化的位置必须保留。"
+          ],
+          "solutionBrief": "先压缩连续相等元素，再删除所有处于严格单调段内部的元素。最终保留数组首尾以及每次变化方向改变的位置，保留数量即最小的 $|b|$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1832D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Red-Blue Operations (Easy Version)",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1832/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/116454",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个初始全为红色的数组。第 $i$ 次操作选择一个元素：红色时增加 $i$ 并变蓝，蓝色时减少 $i$ 并变红；每个询问都从初始数组独立开始，要求恰好进行 $k$ 次操作后，数组最小值的最大可能值。",
+          "transformedStatement": "将每个元素被选中的次数按奇偶拆分：奇数次对应最终增加，偶数次可整理为若干次净减 $1$。先确定必须保留的单次增加及其分配，再把所有净减操作看成对当前最大值的均衡消耗。",
+          "keyObservations": [
+            "对同一元素操作奇数次会使其总体增加，偶数次会使其总体减少或保持不变，因此应尽量让更多元素获得奇数次操作。",
+            "当 $k\\le n$ 时无需产生减法，最优做法是选取最小的 $k$ 个元素，并分别增加 $k,k-1,\\dots,1$，从而抬高原本的最小值。",
+            "当 $k>n$ 时，最优方案至多让一个元素最终变小；相邻的加法、减法操作可以重排并配对，使每对操作的净变化为 $-1$。",
+            "完成必须的单次增加后，把这些 $-1$ 操作优先施加到当前最大值：先消耗数组与最小值的差距，差距消失后每进行 $n$ 次操作，最小值下降 $1$。"
+          ],
+          "solutionBrief": "排序后分别处理 $k\\le n$ 与 $k>n$。前者给最小的 $k$ 个元素分配递减的增量；后者先按奇偶性确定各元素的最终增量，再计算与当前最小值的总差距，模拟可被吸收的 $-1$ 操作，剩余操作按每 $n$ 次使答案下降 $1$ 计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1832D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Red-Blue Operations (Hard Version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1832/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/116454",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个初始全为红色的整数数组，每次操作选择一个元素并按题设的红蓝规则改变它；每个查询都从初始数组独立开始，要求恰好进行 $k$ 次操作后数组可能达到的最大最小值。当前记录缺少“选择元素后”的具体变色与数值变化规则。",
+          "transformedStatement": "将数组排序后，把前 $k$ 个位置的操作效果表示为调整值 $a_i-(i-1)$ 的前缀瓶颈；当操作次数超过数组长度时，再利用总和表达式和 $k,n$ 的奇偶性处理周期性变化。",
+          "keyObservations": [
+            "排序后，前缀被操作时的最低瓶颈可写成 $\\min_{i\\le k}(a_i-(i-1))+k$，因此只需预处理调整数组的前缀最小值。",
+            "当 $k<n$ 时，未被处理的最小元素是 $a_{k+1}$，答案由 $\\min(\\mathrm{pref}_k+k,a_{k+1})$ 决定，避免逐次模拟操作。",
+            "当 $k\\ge n$ 时，最小值中的固定部分可预处理；$k$ 与 $n$ 的奇偶关系决定使用 $\\mathrm{pref}_n$ 还是 $\\mathrm{pref}_{n-1}$，体现了颜色操作的周期性。",
+            "操作后的总和可化为 $n\\cdot k+\\sum_{i=1}^n(a_i-(i-1))$，所以总和也能预处理，并与最小值共同确定每个查询的结果。"
+          ],
+          "solutionBrief": "先排序并预处理 $a_i-(i-1)$ 的前缀最小值及调整后的总和。$k<n$ 时结合第 $k+1$ 个未处理元素求最小值；$k\\ge n$ 时按 $k,n$ 奇偶性套用对应公式，所有查询均可 $O(1)$ 完成，总复杂度 $O(n\\log n+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1832E",
+          "index": "E",
+          "slot": "E",
+          "title": "Combinatorics Problem",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1832/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/116454",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "dp"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$ 和参数 $k$；数组由 $a_1,x,y,m$ 按题面规定生成。对每个 $i$，计算 $b_i=\\left(\\sum_{j=1}^{i}\\binom{i-j+1}{k}a_j\\right)\\bmod 998244353$，再令 $c_i=b_i\\cdot i$（乘法后不取模），输出所有 $c_i$ 的按位异或。",
+          "transformedStatement": "把原问题扩展为多个层次：$c_{i,j}$ 表示将组合参数替换为 $j$ 时的第 $i$ 项。组合数递推把相邻层转化为前缀和关系，因此目标层可通过对原数组反复做前缀和得到。",
+          "keyObservations": [
+            "利用帕斯卡恒等式可将第 $j$ 层表示为前一位置的第 $j$ 层与第 $j-1$ 层之和，从而避免直接计算组合数卷积。",
+            "令 $c_{i,j}$ 表示参数取 $j$ 时的第 $i$ 个结果，则 $j\\ge2$ 时有 $c_{i,j}=c_{i-1,j}+c_{i-1,j-1}$；$j=1$ 时第二项改为同位置的 $c_{i,0}$。",
+            "$c_{i,0}$ 的所有组合系数均为 $1$，因此它就是 $a$ 的前缀和，为各层递推提供了直接初值。",
+            "每提升一层都等价于对整个数组再做一次前缀和，所以最终只需将 $a$ 连续做 $k+1$ 次前缀和，再按题意计算乘积异或。"
+          ],
+          "solutionBrief": "维护 $c_{i,j}$ 表示参数为 $j$ 时的结果。由帕斯卡恒等式逐层递推，底层 $c_{i,0}$ 是 $a$ 的前缀和；等价地，对 $a$ 连续做 $k+1$ 次前缀和即可得到目标 $b$，逐项计算 $b_i\\cdot i$ 后异或。复杂度为 $O(nk)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1832F",
+          "index": "F",
+          "slot": "F",
+          "title": "Zombies",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1832/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/116454",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "dp"
+          ],
+          "statementBrief": "有 $n$ 个入口，每分钟每个入口都有一只僵尸尝试进入；入口在给定人工防守区间内被挡住。需将每个入口连接到一个发电机，并独立选择每台发电机在长度为 $m$ 的连续时间段内工作，求最多能进入基地的僵尸数。",
+          "transformedStatement": "把每个入口看成一段固定的人工防守区间，再与其连接的长度为 $m$ 的发电机区间取并集；由于各段长度固定，问题转化为最大化所有入口对应区间交集长度之和，并将按区间中心排序的入口划分为至多 $k$ 个连续组。",
+          "keyObservations": [
+            "每个入口被阻挡的时间是人工防守区间与发电机区间的并集；两段长度固定，因此最大化进入的僵尸数等价于最大化所有交集长度之和。",
+            "所有发电机区间长度相同，入口区间与发电机区间的交集随中心距离增大而不增；因此按 $l_i+r_i$ 排序后，同一发电机负责的入口可视为连续分组。",
+            "某个连续分组的最优发电机起点只需检查所有 $l_i$ 与 $r_i-m$，共至多 $2n$ 个候选；预处理候选区间与入口区间的交集前缀和后，可在 $O(1)$ 求出一组的代价。",
+            "分组代价满足四边形不等式，分组 DP 的转移可用分治优化；同时候选起点的最优位置具有单调性，结合类似 Knuth 优化的计算可将整体复杂度降至 $O(n^2\\log n)$。"
+          ],
+          "solutionBrief": "将入口按 $l_i+r_i$ 排序，令 $dp_{i,j}$ 表示前 $i$ 个入口分成 $j$ 组时的最大交集和。枚举连续分组并用候选起点及交集前缀和求组代价，再利用分治或 Knuth 型单调优化加速转移，最后由固定总长度换算僵尸数。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
