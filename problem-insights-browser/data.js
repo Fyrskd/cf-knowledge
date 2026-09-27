@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2308,
+    "total_problems": 2314,
     "source_total_problems": 2314,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2308,
-    "with_editorial_brief": 2046,
-    "with_solution_brief": 2047,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2314,
+    "with_editorial_brief": 2052,
+    "with_solution_brief": 2053,
     "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1249,
+    "ai_override_count": 1255,
     "primary_topic_count": 13,
-    "contest_count": 356,
+    "contest_count": 357,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -34,8 +34,8 @@ window.CF_INSIGHTS_DATA = {
     "动态规划与状态设计",
     "数据结构",
     "组合计数与概率",
-    "图论与网络流",
     "树结构",
+    "图论与网络流",
     "基础实现与模拟",
     "字符串",
     "交互",
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 106,
-    "构造与贪心": 760,
+    "字符串": 107,
+    "构造与贪心": 761,
     "图论与网络流": 136,
     "动态规划与状态设计": 209,
     "数论与同余": 241,
-    "组合计数与概率": 172,
-    "数据结构": 206,
+    "组合计数与概率": 173,
+    "数据结构": 207,
     "几何": 52,
-    "树结构": 136,
+    "树结构": 137,
     "代数、矩阵与多项式": 19,
     "交互": 82,
-    "基础实现与模拟": 111,
+    "基础实现与模拟": 112,
     "博弈": 78
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1110,
+    "ai_generated_with_editorial": 1116,
     "ai_generated_partial_editorial": 45,
     "missing_editorial": 261,
     "manual_override": 891,
@@ -48632,6 +48632,195 @@ window.CF_INSIGHTS_DATA = {
             "两个剩余类用中国剩余定理合并成一个等差数列；只需统计其中小于 $k$ 的非负重复次数，避免逐次模拟。"
           ],
           "solutionBrief": "计算脚本前缀位移并按 $2w,2h$ 取模。对每个前缀分别求关于重复次数的线性同余式，再用 CRT 合并，最后按合并后的周期统计 $[0,k-1]$ 内的解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1997,
+      "name": "Educational Codeforces Round 168 (Rated for Div. 2)",
+      "date": "2024-07-30",
+      "url": "https://codeforces.com/contest/1997",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1997A",
+          "index": "A",
+          "slot": "A",
+          "title": "Strong Password",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1997/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/132154",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个小写字母串，必须恰好插入一个小写字母，位置可在任意字符前、后或之间。输入时间按字符逐个输入计算：通常每个字符耗时 $2$，相邻相同字符中的后一个耗时 $1$；要求构造输入时间最大的结果串。",
+          "transformedStatement": "把输入时间表示为 $2|s|-p$，其中 $p$ 是相邻相等字符对数。由于插入后长度固定增加一位，问题转化为通过一次插入最小化 $p$。",
+          "keyObservations": [
+            "输入长度固定增加 $1$，而输入时间可写为 $2|s|-p$，其中 $p$ 是相邻相等字符对数量，因此目标等价于尽量减少 $p$。",
+            "在一对相邻的相同字符之间插入不同字符，可以恰好消除这一对相等关系且不产生新的相等对，所以只需处理任意一处重复相邻字符。",
+            "一次插入至多影响原来相邻的一对字符，因而至多减少一个相等对；若原串没有相等对，只要在末尾加入一个不同于末字符的字母即可保持 $p=0$。"
+          ],
+          "solutionBrief": "统计相邻相等字符。若存在一处 $s_i=s_{i+1}$，就在两者之间插入任意不同字母；否则在末尾追加一个不同于末字符的字母。这样使相等对数量最小，从而输入时间最大。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1997B",
+          "index": "B",
+          "slot": "B",
+          "title": "Make Three Regions",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1997/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/132154",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个两行 n 列的网格，`.` 是空闲格、`x` 是阻塞格，初始最多只有一个连通区域。每次选择一个空闲格并将其阻塞，求有多少个格子会使空闲格恰好分成 3 个连通区域。",
+          "transformedStatement": "把“删除后形成三个区域”转化为检查被删除格周围的局部结构：它的三个边邻居必须为空闲，两个对角格必须阻塞；因此只需统计两种镜像局部模式。",
+          "keyObservations": [
+            "删除的单元格要把原连通区域分成 3 个非空部分，因此它必须与这 3 个部分都通过边相邻；在两行网格中候选点最多只有 3 个邻居。",
+            "候选点的左、右及另一行的同列邻居必须全部为空闲格，否则删除后无法得到 3 个区域。",
+            "候选点两侧的两个对角格必须都是阻塞格；若任一对角格为空闲，两个邻居会重新连通，区域数会少于 3 个。",
+            "满足上述条件的局部形状只有上下镜像的两种，因此逐格检查这两种模式即可统计答案。"
+          ],
+          "solutionBrief": "对每个空闲格检查其三个边邻居是否都为空闲，并检查两个对角格是否都被阻塞。满足条件的格子恰好对应删除后产生三个区域的两种局部模式，统计其数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1997C",
+          "index": "C",
+          "slot": "C",
+          "title": "Even Positions",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1997/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/132154",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定一个长度为偶数的括号串，奇数位置被擦除为下划线，偶数位置的括号固定不变。需要把下划线替换成括号，使整个串成为合法括号序列，并最小化每一对匹配括号之间距离的总和。",
+          "transformedStatement": "把成本改写为右括号位置和减去左括号位置和；由于所有位置总和固定，问题等价于在前缀平衡始终非负且最终为零的条件下，尽量让可选择的右括号出现在更靠前的位置。",
+          "keyObservations": [
+            "每个匹配括号对的距离总和等于所有右括号位置和减去所有左括号位置和，因此总位置和固定时，只需让右括号尽量靠前。",
+            "从左到右处理下划线时，只要当前平衡值大于 $0$ 就填入右括号，否则必须填入左括号；这正好在不破坏前缀合法性的前提下提前放置右括号。",
+            "用栈记录尚未匹配的左括号位置，遇到右括号时弹出栈顶并累加位置差，即可直接得到所有匹配对的距离总和。",
+            "若存在更优方案，比较两者首次不同的位置，贪心方案在此处放右括号而另一方案放左括号；将另一方案后续的一个右括号交换到这里仍保持 RBS，却会减小右括号位置和，产生矛盾。"
+          ],
+          "solutionBrief": "维护当前平衡值，从左到右扫描；固定括号照放，下划线在平衡为 $0$ 时填左括号，否则填右括号。用栈匹配括号位置并累加每对的距离，得到最小成本。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1997D",
+          "index": "D",
+          "slot": "D",
+          "title": "Maximize the Root",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1997/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/132154",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定以 1 为根的带权树。每次可选择一个有子节点的顶点，将其值加 1，并将其所有严格后代的值各减 1，且操作后所有值都必须非负；求经过任意次操作后根节点值的最大值。",
+          "transformedStatement": "把目标根值视为需要在根及其祖先方向施加的操作需求，定义 $check(v,x)$ 判断子树能否承受需求 $x$。若 $x>a_v$，节点 $v$ 需补做 $x-a_v$ 次操作，子节点需求因此变为 $2x-a_v$；否则需求不变。",
+          "keyObservations": [
+            "若根节点能达到某个值 $k$，则从初始值 $a_1$ 到 $k$ 的所有整数都能达到，因此可对根值进行二分。",
+            "状态 $check(v,x)$ 表示当前节点上方的操作使子树需要承受 $x$，并判断该子树能否始终保持非负。",
+            "若非叶节点满足 $x>a_v$，必须在 $v$ 执行 $x-a_v$ 次操作，使每个子节点的新需求变为 $x+(x-a_v)=2x-a_v$。",
+            "每次检查只遍历树一次；需求值可能快速增长，因此应在过大时及时停止以避免溢出。"
+          ],
+          "solutionBrief": "二分根节点目标值，并从根调用 $check$。叶子要求 $x\\le a_v$；非叶节点在 $x\\le a_v$ 时向子树传 $x$，否则执行 $x-a_v$ 次操作并传 $2x-a_v$。单次检查为 $O(n)$，总复杂度为 $O(n\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1997E",
+          "index": "E",
+          "slot": "E",
+          "title": "Level Up",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1997/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/132154",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "implementation"
+          ],
+          "statementBrief": "角色初始等级为 1，按顺序面对怪物；只有怪物等级不少于当前角色等级时才会战斗，否则怪物逃跑。对固定的 $k$，每战斗 $k$ 只怪物角色等级加一；每个查询给出位置 $i$ 和参数 $k$，要求判断第 $i$ 只怪物是否会被战斗。",
+          "transformedStatement": "把过程按角色等级 $x$ 分层处理：当前可战斗位置是所有满足 $a_j\\ge x$ 的下标，对每个 $k$ 维护角色达到等级 $x$ 的位置，并把升到 $x+1$ 转化为寻找其后的第 $k$ 个可用位置。查询则在每个 $k$ 的单调位置序列上离线判断。",
+          "keyObservations": [
+            "固定当前等级为 $x$ 时，能被战斗的怪物位置满足 $a_j\\ge x$；升到下一级等价于在这些位置中向后找到第 $k$ 个位置。",
+            "对于每个等级 $x$，达到该等级的 $k$ 值集合一定是前缀；$k$ 越小，战斗次数要求越低，不会比更大的 $k$ 更晚达到该等级。",
+            "按等级逐层处理时，只需维护当前所有 $a_j\\ge x$ 的位置，并为每个活跃的 $k$ 查询当前位置之后的第 $k$ 个位置，从而避免对每个 $k$ 完整模拟。",
+            "同一个 $k$ 的查询按下标排序后，角色等级和对应位置都单调前进，因此可在模拟过程中离线判断每个查询是否会战斗。"
+          ],
+          "solutionBrief": "按等级逐层加入或移除怪物位置，用树状数组或线段树查询当前位置后的第 $k$ 个可战斗怪物；对每个 $k$ 离线排序查询并同步回答，整体复杂度为 $O(n\\log^2 n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1997F",
+          "index": "F",
+          "slot": "F",
+          "title": "Chips on a Line",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1997/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/132154",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 枚芯片，先把它们放入编号 $1$ 到 $x$ 的位置，允许同一点放多枚；随后可按题面规定反复执行四种操作，芯片位置可移到大于 $x$ 的坐标但不能小于 $1$。放置的成本是操作后能剩下的最少芯片数，要求统计成本恰为 $m$ 的不同放置方案数。",
+          "transformedStatement": "把位置 $i$ 的芯片替换为价值为第 $i$ 个 Fibonacci 数 $f_i$ 的物品；操作只改变表示方式而保持总价值。于是问题转为：对每个总价值，统计用 $f_1,\\ldots,f_x$ 恰好取 $n$ 项的无序表示，并筛选其最少 Fibonacci 表示项数为 $m$ 的价值。",
+          "keyObservations": [
+            "每个位置 $i$ 的芯片可视为贡献一个 Fibonacci 数 $f_i$，所有操作保持总权重不变；因此两个放置可互相转换当且仅当权重相同。",
+            "把位置 $i>2$ 的芯片递归拆成位置 $i-1$ 和 $i-2$ 的两枚，再把位置 $2$ 移到位置 $1$，可将任意放置规范化为位置 $1$ 上恰好 $\\sum f_i$ 枚芯片。",
+            "固定权重后，放置的最小成本等于该整数表示成 Fibonacci 数之和所需的最少项数，可对每个权重做最短表示动态规划。",
+            "固定权重的放置数是用 $f_1$ 到 $f_x$ 表示该权重且恰好使用 $n$ 项的无序多重集合数；逐个加入 Fibonacci 数时按权重升序转移，重复使用同一数会自然累积。"
+          ],
+          "solutionBrief": "按 Fibonacci 权重划分所有放置。先求每个权重的最少 Fibonacci 项数，再用按 $f_i$ 分组的完全背包式 DP 统计恰用 $n$ 项的表示数；累加最少项数为 $m$ 的权重，模 $998244353$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
