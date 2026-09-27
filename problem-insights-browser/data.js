@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2314,
+    "total_problems": 2321,
     "source_total_problems": 2321,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2314,
-    "with_editorial_brief": 2052,
-    "with_solution_brief": 2053,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2321,
+    "with_editorial_brief": 2059,
+    "with_solution_brief": 2060,
     "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1255,
+    "ai_override_count": 1262,
     "primary_topic_count": 13,
-    "contest_count": 357,
+    "contest_count": 358,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 107,
-    "构造与贪心": 761,
+    "字符串": 108,
+    "构造与贪心": 762,
     "图论与网络流": 136,
     "动态规划与状态设计": 209,
-    "数论与同余": 241,
-    "组合计数与概率": 173,
-    "数据结构": 207,
+    "数论与同余": 242,
+    "组合计数与概率": 175,
+    "数据结构": 208,
     "几何": 52,
     "树结构": 137,
     "代数、矩阵与多项式": 19,
     "交互": 82,
-    "基础实现与模拟": 112,
+    "基础实现与模拟": 113,
     "博弈": 78
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1116,
+    "ai_generated_with_editorial": 1123,
     "ai_generated_partial_editorial": 45,
     "missing_editorial": 261,
     "manual_override": 891,
@@ -49060,6 +49060,220 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1996,
+      "name": "Codeforces Round 962 (Div. 3)",
+      "date": "2024-07-26",
+      "url": "https://codeforces.com/contest/1996",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1996A",
+          "index": "A",
+          "slot": "A",
+          "title": "Legs",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1996/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/131528",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "math",
+            "ternary search"
+          ],
+          "statementBrief": "农场中只有鸡和牛，鸡有 2 条腿、牛有 4 条腿；已知所有动物共有 $n$ 条腿。求满足腿数的动物数量最小值。",
+          "transformedStatement": "将问题转化为用尽可能多的牛覆盖腿数：每头牛贡献 4 条腿，若总数除以 4 有余数，由于 $n$ 为偶数，只需把余下的 2 条腿换成一只鸡。",
+          "keyObservations": [
+            "为了让动物数量最少，应尽可能用四条腿的牛替代两条腿的鸡；因此先最大化牛的数量，每增加一头牛比鸡少用一只动物。",
+            "当 $n$ 能被 $4$ 整除时全部由牛组成；否则剩余的 $2$ 条腿必须由一只鸡承担，答案统一为向上取整的 $\frac{n}{4}$，即整数运算中的 $(n+2)/4$。"
+          ],
+          "solutionBrief": "每组数据直接计算 $(n+2)/4$。若 $n$ 被 $4$ 整除，全部使用牛；否则使用一只鸡和若干头牛，得到最少动物数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1996B",
+          "index": "B",
+          "slot": "B",
+          "title": "Scale",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1996/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/131528",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 的 01 网格，将它按位置划分为不重叠的 $k\\times k$ 块，其中 $k$ 是 $n$ 的因数，且每块内字符都相同。每个块替换为一个代表其值的单元格，输出得到的缩小网格。",
+          "transformedStatement": "把每个 $k\\times k$ 块视为一个整体，并用其左上角元素表示；因此目标等价于从原网格中按行列间隔 $k$ 采样左上角位置。",
+          "keyObservations": [
+            "每个 $k\\times k$ 块内的值都相同，因此整个块可唯一地用其左上角单元格代表，避免检查或处理块内其他位置。",
+            "原网格中左上角坐标分别为 $(0,k,2k,\\ldots)$ 的行和列，恰好对应所有缩小后单元格；按这些步长采样即可保持块的排列关系。"
+          ],
+          "solutionBrief": "读入网格后，对行、列都以步长 $k$ 遍历，输出每个 $k\\times k$ 块左上角的字符。由于块内保证全相同，这些字符正好组成缩小后的网格。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1996C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sort",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1996/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/131528",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定两个长度为 `n` 的小写字母串。每次查询给出区间 `[l,r]`，可把 `a` 中区间内任意一个字符改成任意字符，且各查询互不影响；求使两个区间排序后相同所需的最少修改次数。",
+          "transformedStatement": "把每个区间表示为 26 维字母频次数组，目标是通过单次修改在两个坐标间转移一个计数，使 `a` 的频次向量变成 `b` 的频次向量；区间频次由字符前缀和取得。",
+          "keyObservations": [
+            "两个子串排序后相等，当且仅当 26 个小写字母的出现次数分别相等，因此不必真正进行排序。",
+            "一次修改会把一个字符的计数减一、另一个字符的计数加一，所以只需把 `a` 中多出的字符转移给缺少的字符。",
+            "最少修改次数等于所有正向计数差之和，也等于 26 个计数差绝对值之和的一半。",
+            "为每个字母分别建立前缀计数，就能在每个查询中直接得到区间频次，避免逐次统计或排序。"
+          ],
+          "solutionBrief": "分别为两串的 26 个字母建立前缀计数。查询 `[l,r]` 时计算各字母频次差，答案为所有正差之和，或绝对值差总和除以 2。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1996D",
+          "index": "D",
+          "slot": "D",
+          "title": "Fun",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1996/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/131528",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "combinatorics",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $n,x$，统计有序正整数三元组 $(a,b,c)$ 的数量。三元组必须满足 $ab+ac+bc\\le n$ 且 $a+b+c\\le x$，不同排列按不同三元组计数。",
+          "transformedStatement": "把三元组计数改为先枚举有序正整数对 $(a,b)$，只保留 $ab\\le n$ 且 $a+b\\le x$ 的对；对每对求同时满足两条不等式的正整数 $c$ 的取值个数，再累加。",
+          "keyObservations": [
+            "任意可行三元组都必须满足 $ab\\le n$ 与 $a+b\\le x$，而固定 $a$ 时可枚举的 $b$ 数量至多为 $\\lfloor n/a\\rfloor$，总枚举量为调和级数规模 $O(n\\log n)$。",
+            "固定 $a,b$ 后，第一条限制可改写为 $c(a+b)\\le n-ab$，因此得到 $c\\le\\lfloor(n-ab)/(a+b)\\rfloor$。",
+            "同时还需满足 $c\\le x-a-b$，所以正整数 $c$ 的数量就是 $\\min(\\lfloor(n-ab)/(a+b)\\rfloor,x-a-b)$；枚举所有合法 $(a,b)$ 并累加即可。"
+          ],
+          "solutionBrief": "枚举满足 $ab\\le n$ 且 $a+b\\le x$ 的有序正整数对 $(a,b)$。对每对计算 $c$ 的最大值 $\\min(\\lfloor(n-ab)/(a+b)\\rfloor,x-a-b)$，将其累加为答案；总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1996E",
+          "index": "E",
+          "slot": "E",
+          "title": "Decode",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1996/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/131528",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个只含 $0$ 和 $1$ 的字符串。对每个区间 $[l,r]$，统计其中所有子串 $[x,y]$ 中 $0$ 与 $1$ 数量相等的个数，再求所有 $[l,r]$ 的统计值之和，并对 $10^9+7$ 取模。",
+          "transformedStatement": "把问题改写为：在前缀和数组中寻找所有相同值的位置对 $(j,i)$（$j<i$），每对对应平衡子串 $[j+1,i]$，并按能够覆盖该子串的外层区间数量 $(j+1)(n-i+1)$ 加权求和。",
+          "keyObservations": [
+            "把字符 $0$ 映射为 $-1$、字符 $1$ 映射为 $1$ 后，子串 $[x,y]$ 平衡当且仅当前缀和满足 $p_{x-1}=p_y$，从而将字符计数转为相同前缀值配对。",
+            "固定前缀位置对 $j=x-1<i=y$ 后，原子区间为 $[j+1,i]$；能覆盖它的外层区间有 $(j+1)(n-i+1)$ 个，因此每个相同前缀位置对可直接按该权重计入答案。",
+            "从左到右处理前缀位置 $i$ 时，只需维护每个前缀和值对应的历史权重和 $\u001b$sum(j+1)$；当前贡献就是 $(n-i+1)$ 乘以该权重和，避免枚举所有位置对。"
+          ],
+          "solutionBrief": "将二进制串转成 $\u001b-1/1$ 前缀和。扫描每个前缀位置 $i$，用映射维护此前相同前缀和值的 $\u001b$sum(j+1)$，加入 $(n-i+1)\u001b\\cdot\u001b$sum(j+1)$，全程对 $10^9+7$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1996F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bomb",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1996/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/131528",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组，选择下标 $i$ 操作时先把当前的 $a_i$ 加入得分，再将其更新为 $\\max(0,a_i-b_i)$。最多进行 $k$ 次操作，要求安排操作顺序，使最终得分最大。",
+          "transformedStatement": "每个下标独立产生序列 $a_i,a_i-b_i,a_i-2b_i,\\ldots$（低于零时视为零），问题转化为从这些序列的所有贡献中选出最大的 $k$ 个并求和。用阈值统计选中项数量，再计算阈值以上的等差数列总和。",
+          "keyObservations": [
+            "每个位置能贡献独立的递减序列 $a_i,a_i-b_i,a_i-2b_i,\u0005cdots$，因此最优策略等价于从所有序列中选取最大的 $k$ 个有效项。",
+            "值至少为阈值 $x$ 的项数是 $f(x)=\\sum_i\\max(0,\\lfloor(a_i-x)/b_i\\rfloor+1)$；阈值升高时该数量单调不增，所以可二分最小的 $x$ 使 $f(x)\\le k$。",
+            "对每个位置被选中的连续项构成等差数列，可用首项、末项和项数直接求和，避免逐次模拟大量操作。",
+            "选完所有不小于 $x$ 的项后，剩余操作的最优贡献都为 $x-1$；这是由 $x$ 的最小性保证的，因此只需补上剩余数量乘以 $x-1$。"
+          ],
+          "solutionBrief": "把每个位置看成一个递减等差贡献序列，最优答案是全体序列中最大的 $k$ 项之和。二分阈值 $x$，统计所有不小于 $x$ 的项数；用等差数列公式累加这些项，再用 $x-1$ 补足剩余操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1996G",
+          "index": "G",
+          "slot": "G",
+          "title": "Penacony",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1996/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/131528",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "graphs",
+            "greedy",
+            "hashing"
+          ],
+          "statementBrief": "有 $n$ 个房屋按环连接，每对朋友所在房屋之间必须仍存在一条由保留道路组成的路径。可以废弃部分道路，要求在满足所有友谊连通条件的前提下，求最少需要保留多少条道路。",
+          "transformedStatement": "把房屋环上的道路视为位置，把每对朋友视为连接两个顶点的对角线；每条对角线将道路分成两侧，并为道路记录其被哪些对角线选定的一侧覆盖。具有相同覆盖集合的道路可以一起删除，因此只需找覆盖签名出现次数最多的道路。",
+          "keyObservations": [
+            "每条友谊边把环上的道路分成两条可选路径；固定一条被删除的道路后，所有友谊必须统一选择不经过它的那一侧。",
+            "两条道路能够同时删除，当且仅当它们被完全相同的友谊对角线集合覆盖；因此问题转化为寻找覆盖签名出现次数最多的道路组。",
+            "为每条友谊边分配一个随机 64 位数，并把该数异或到对应道路区间，区间的前缀异或值就是道路的覆盖签名。",
+            "最多删除覆盖签名相同的道路，答案等于道路总数减去最大签名频次；随机 64 位碰撞概率可忽略。"
+          ],
+          "solutionBrief": "将每条友谊边对应的一段环路用随机 64 位数标记，利用差分异或在 $O(1)$ 时间处理区间覆盖；计算所有道路的覆盖签名并统计最大频次，答案为 $n$ 减去该频次。总复杂度为 $O(n\beqslant ext{或}\beqslant n\\\\log n+m)$，取决于频次表实现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
