@@ -2079,6 +2079,17 @@
     "date": "2025-05-31"
   },
   {
+    "id": 2111,
+    "name": "Educational Codeforces Round 179 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1748961300,
+    "relativeTimeSeconds": 41514485,
+    "date": "2025-06-03"
+  },
+  {
     "id": 2117,
     "name": "Codeforces Round 1029 (Div. 3)",
     "type": "ICPC",
