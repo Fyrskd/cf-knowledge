@@ -1694,6 +1694,17 @@
     "date": "2024-12-08"
   },
   {
+    "id": 2044,
+    "name": "Codeforces Round 993 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1734273300,
+    "relativeTimeSeconds": 56207332,
+    "date": "2024-12-15"
+  },
+  {
     "id": 2048,
     "name": "Codeforces Global Round 28",
     "type": "CF",
