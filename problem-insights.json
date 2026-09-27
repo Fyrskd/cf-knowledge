@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2285,
+    "total_problems": 2292,
     "source_total_problems": 2292,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2285,
-    "with_editorial_brief": 2024,
-    "with_solution_brief": 2025,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2292,
+    "with_editorial_brief": 2031,
+    "with_solution_brief": 2032,
     "missing_editorial_brief": 260,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1226,
+    "ai_override_count": 1233,
     "primary_topic_count": 13
   },
   "records": [
@@ -33086,6 +33086,303 @@
           "path": "ai-generated-insights.json",
           "model": "gpt-5.6-luna",
           "generated_at": "2026-09-23T03:09:47+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 794,
+      "problem_key": "2004A",
+      "contest_id": 2004,
+      "title": "Closest Point",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2004/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/132790",
+      "editorial_quality": "complete",
+      "primary_topic": "几何",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定数轴上严格递增的若干整数点，需加入一个不同于已有点的整数点，使它成为原集合中每个点的最近点（允许存在同距离最近点）。判断是否可能，并输出 YES 或 NO。",
+      "transformed_statement": "把新增点按其所在位置划分：它最多只能成为左侧最近的一个点和右侧最近的一个点的最近点。因此只有两个原点时可能成功，且新增点必须插在二者之间。",
+      "key_observations": [
+        "新增点至多只能同时服务于它左侧和右侧各一个原点；若某侧有两个原点，离该侧更远的那个不可能把新增点视为最近点。",
+        "因此当 $n>2$ 时，无论新增点放在哪里，至少有一侧会出现两个原点，答案必为 NO。",
+        "当 $n=2$ 时，新增点必须严格位于两个原点之间；只有两点不相邻时才存在整数位置可插入，答案为 YES。"
+      ],
+      "solution_brief": "仅需判断点数。若 $n>2$ 输出 NO；若 $n=2$，当 $x_2-x_1>1$ 时可在两点间插入整数点，输出 YES，否则输出 NO。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:48:23+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 795,
+      "problem_key": "2004B",
+      "contest_id": 2004,
+      "title": "Game with Doors",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2004/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/132790",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "greedy"
+      ],
+      "statement_brief": "有 100 个成排房间，初始所有门都开着；Alice 位于区间 $[l,r]$ 的某个房间，Bob 位于区间 $[L,R]$ 的某个不同房间。你可以锁上任意房门，要求无论两人的具体位置如何都无法通过未锁的门相遇，求最少锁门数。",
+      "transformed_statement": "只需分析两个可能位置区间的重叠部分：交集内部的每扇门都要切断，交集两侧若有区间继续延伸，还要在对应边界各补一扇门；无交集时两区间间隔只需一扇门。",
+      "key_observations": [
+        "两人的可能房间交集为 $[\u001b[max(l,L),\u001b[min(r,R)]$；交集为空时只需在两个区间之间锁一扇门即可阻断所有路径。",
+        "若交集非空，交集内相邻房间之间的 $\\min(r,R)-\\max(l,L)$ 扇门都必须锁住，否则两人可能恰好位于相邻房间。",
+        "交集左右若仍有一方区间向外延伸，还必须分别锁住交集左侧或右侧的边界门，因此额外贡献分别由 $l\\ne L$ 和 $r\\ne R$ 判断。"
+      ],
+      "solution_brief": "先求两个房间区间的交集。交集为空时答案为 $1$；否则答案为交集内门数 $\\min(r,R)-\\max(l,L)$，再加上左右端点是否不同时各贡献的 $1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:48:13+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 796,
+      "problem_key": "2004C",
+      "contest_id": 2004,
+      "title": "Splitting Items",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2004/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/132790",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "博弈"
+      ],
+      "original_tags": [
+        "games",
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "有 $n$ 个物品，双方轮流选择一个未取物品，Alice 先手；所有物品取完后，得分为 Alice 所取总价值减去 Bob 所取总价值。比赛前 Bob 可将任意物品价值只增不减，且总增量不超过 $k$，双方随后最优行动，求 Bob 能得到的最小最终得分。",
+      "transformed_statement": "将物品按价值降序排列，把游戏转化为依次处理 Alice 位置和 Bob 位置：Bob 只需把当前待取价值尽量补到前一个更大值，直到耗尽预算或两者相等。之后每一对物品都重复这一过程。",
+      "key_observations": [
+        "数组降序后，Alice 必拿当前最大值，Bob 必拿当前次大值；因此每一对物品的归属顺序可以独立按大小处理。",
+        "Bob 提高某个待取物品的价值不会改变 Alice 先拿最大值的事实，最优只需将它提高到不超过前一个物品的值，增量为 $\\min(k,a_{i-1}-a_i)$。",
+        "按 Alice、Bob 的回合交替处理降序数组：Alice 位置贡献加法，Bob 位置贡献减法；每次提升后扣除相同预算，剩余问题保持同样结构。"
+      ],
+      "solution_brief": "将物品按价值降序排列。遍历数组，Alice 回合把当前值加入答案；Bob 回合用剩余预算把当前值尽量提升至前一项，随后从答案中减去提升后的值并扣除预算。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:47:56+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 797,
+      "problem_key": "2004D",
+      "contest_id": 2004,
+      "title": "Colored Portals",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/2004/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/132790",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "图论与网络流",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "data structures",
+        "graphs",
+        "greedy",
+        "implementation",
+        "shortest paths"
+      ],
+      "statement_brief": "有 $n$ 座按直线编号的城市，每座城市拥有两种不同颜色的传送门。若两城拥有共同颜色，就能在它们之间移动，费用为编号差的绝对值；移动可以经过其他城市。对每个独立查询，求从城市 $x$ 到城市 $y$ 的最小费用，无法到达则输出 $-1$。",
+      "transformed_statement": "把每种双色组合视为一种城市类型。无共同颜色时，将路径压缩为 $x\\to z\\to y$，其中中间类型必须分别与两端共享颜色；对每种候选类型，只需寻找起点左右最近的出现位置。",
+      "key_observations": [
+        "若两座城市有共同颜色，直接移动的费用 $|x-y|$，且无需经过其他城市，因为任意绕路都不会更短。",
+        "若起点和终点无共同颜色，最优路线至多经过一个中间城市；中间城市必须同时与两端分别拥有共同颜色，否则可以跳过它。",
+        "设 $x\\le y$，中间城市在区间 $[x,y]$ 内时总费用恒为 $y-x$；在区间外时，选择离 $x$ 最近的候选城市即可使费用最小。",
+        "对每种可能的中间城市类型预处理其左右最近位置；查询时只需检查这些位置并取最小值，没有候选位置则答案为 $-1$。"
+      ],
+      "solution_brief": "预处理每个位置左、右侧各城市类型的最近出现位置。查询先判断两端是否有共同颜色；否则枚举同时连接两端的候选类型，计算经过左右最近位置的费用并取最小值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:47:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 798,
+      "problem_key": "2004E",
+      "contest_id": 2004,
+      "title": "Not a Nim Problem",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2004/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/132790",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "brute force",
+        "games",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "有若干石堆，轮流选择一堆并取走正数个石子；若当前堆有 $x$ 个、取走 $y$ 个，则必须满足 $gcd(x,y)=1$。无法操作者失败，Alice 先手，要求判断双方最优时谁获胜。",
+      "transformed_statement": "将每堆抽象为状态为石子数的单堆无偏博弈：从 $x$ 可转移到 $x-y$，且 $gcd(x,y)=1$。先求单堆 Grundy 函数的数论规律，再用所有堆的 Grundy 值异或判定胜负。",
+      "key_observations": [
+        "这是多个独立石堆组成的无偏博弈，整局胜负由各堆 Grundy 值的异或和是否为零决定，从而可分别分析单堆。",
+        "偶数堆无法转移到另一个偶数状态，因此其可达状态不含 Grundy 值为零的状态，故 $g(x)=0$。",
+        "奇素数 $x$ 能转移到所有更小状态，已有 Grundy 值覆盖连续区间，所以其值等于该素数在素数序列中的下标。",
+        "奇合数的最小质因数为 $d$ 时，所有 Grundy 值等于 $g(d)$ 的状态都因不可满足互质限制而无法到达，故 $g(x)=g(d)$。"
+      ],
+      "solution_brief": "把每堆视为独立无偏博弈，计算其 Grundy 值并异或。对上界内所有数用线性筛求最小质因数和素数下标，按 $g(1)=1$、偶数为 $0$、奇素数取下标、奇合数取最小质因数的值处理。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:47:26+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 799,
+      "problem_key": "2004F",
+      "contest_id": 2004,
+      "title": "Make a Palindrome",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/2004/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/132790",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "data structures",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定正整数数组。每次可以合并相邻两个元素并以其和替代，或把一个大于 $1$ 的元素拆成两个正整数；对每个子数组，求将其变成回文数组所需的最少操作数，并输出所有子数组这些最少值的总和。",
+      "transformed_statement": "把单个区间看成不断比较两端的过程：相等端点可免费剥离，不等端点通过拆分较大端点付出一次代价后剥离。整个过程转化为统计删除等和前缀、后缀后仍出现的区间，并按边界前缀和之和分类。",
+      "key_observations": [
+        "若当前数组两端元素相等，就能不花操作直接去掉这两个端点（单元素区间直接结束），因此这一步不会增加代价。",
+        "若两端元素不同，合并较小端点或拆分较大端点的最优代价等价；可拆分较大端点使两端相等，再用一次操作去掉它们，区间长度减少 $1$。",
+        "连续去掉相等端点，等价于从原区间前缀和后缀删除总和相同的部分；删除后区间两侧边界前缀和之和 $p_l+p_r$ 保持不变。",
+        "按区间长度递增处理，并用映射统计相同 $p_l+p_r$ 的更短区间，就能累计每个区间中遇到相等端点的次数，从而在 $O(n^2\\log n)$ 内求出所有子数组答案。"
+      ],
+      "solution_brief": "对每个子数组按端点递归分析：相等端点免费消去，不等端点付费消去。利用前缀和把免费消去转为统计相同 $p_l+p_r$ 的更短区间，按长度递增并用映射累计，复杂度为 $O(n^2\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:47:10+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 800,
+      "problem_key": "2004G",
+      "contest_id": 2004,
+      "title": "Substring Compression",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/2004/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/132790",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "data structures",
+        "dp",
+        "matrices"
+      ],
+      "statement_brief": "给定数字串的每个长度为 $k$ 的连续子串。对一个子串，可将其切成偶数个非空块，并把每个偶数块重复前一个奇数块所表示的数字次，求所有切法得到的最短结果长度，并输出每个子串的答案。",
+      "transformed_statement": "把压缩过程重述为若干“单数字奇数块 + 非空偶数块”的分段：状态记录当前最后一个单数字块，其后的字符按该数字计费；每个输入数字对应一个 $10$ 维最小加法转移矩阵，滑动窗口则维护这些矩阵的有序乘积。",
+      "key_observations": [
+        "任意奇数块长度至少为 $2$ 时，把它的首位保留为奇数块、其余字符并入后继偶数块不会增大结果长度，因此只需考虑长度为 $1$ 的奇数块。",
+        "固定最后一个奇数块的数字 $c$ 后，后续偶数块中的每个字符都会贡献 $c$；因此状态只需记录最后奇数块数字，转移分别对应延长偶数块或开启新的一对块。",
+        "加入表示“刚写完奇数块”的虚拟状态后，两类转移都能按单个字符推进，从而可表示为固定的 $10$ 维最小加法矩阵。",
+        "所有长度为 $k$ 的子串构成先进先出窗口；用两栈维护转移矩阵乘积时，需分别在右栈右乘、左栈左乘，以保持非交换矩阵的顺序。"
+      ],
+      "solution_brief": "先证明最优方案的每个奇数块都只有一个数字，再用记录最后奇数块数字的 $10$ 状态 DP 建立每个数字对应的最小加法转移矩阵。将窗口视为队列，用两栈维护矩阵乘积并处理滑动子串；矩阵仅有线性个有效项，单次乘法可降至 $O(10^2)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:46:47+00:00",
           "quality_flags": []
         }
       },
