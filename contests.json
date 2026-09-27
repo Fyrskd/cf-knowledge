@@ -1870,6 +1870,17 @@
     "date": "2025-03-10"
   },
   {
+    "id": 2074,
+    "name": "Codeforces Round 1009 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1741703700,
+    "relativeTimeSeconds": 48774563,
+    "date": "2025-03-11"
+  },
+  {
     "id": 2081,
     "name": "Codeforces Round 1010 (Div. 1, Unrated)",
     "type": "CF",
