@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2408,
+    "total_problems": 2415,
     "source_total_problems": 2415,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2408,
-    "with_editorial_brief": 2142,
-    "with_solution_brief": 2143,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2415,
+    "with_editorial_brief": 2149,
+    "with_solution_brief": 2150,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1470,
+    "ai_override_count": 1477,
     "primary_topic_count": 13,
-    "contest_count": 370,
+    "contest_count": 371,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 115,
+    "字符串": 116,
     "构造与贪心": 760,
     "图论与网络流": 142,
-    "动态规划与状态设计": 210,
-    "数论与同余": 263,
+    "动态规划与状态设计": 211,
+    "数论与同余": 264,
     "组合计数与概率": 187,
     "数据结构": 223,
     "几何": 56,
-    "树结构": 134,
+    "树结构": 135,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 130,
+    "基础实现与模拟": 133,
     "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1204,
+    "ai_generated_with_editorial": 1211,
     "ai_generated_partial_editorial": 47,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -56184,6 +56184,220 @@ window.CF_INSIGHTS_DATA = {
             "更新一个节点只会沿其祖先链影响重链转移，使用重链剖分和维护区间加、前缀最小值的数据结构即可动态维护根状态；根的 $dp$ 非负时当前前缀可行。"
           ],
           "solutionBrief": "用子树净余额定义树形 DP，正值向父节点提供增长、负值向祖先索取资源。将重儿子转移写成 $\\min(dp[v]+x,y,bal)$，结合重链剖分和区间加/前缀最小值维护；每次操作后检查根的 $dp\\ge0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1950,
+      "name": "Codeforces Round 937 (Div. 4)",
+      "date": "2024-03-28",
+      "url": "https://codeforces.com/contest/1950",
+      "type": "Div. 4",
+      "problemCount": 7,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "1950A",
+          "index": "A",
+          "slot": "A",
+          "title": "Stair, Peak, or Neither?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1950/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/127664",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定多组由三个数字 $a,b,c$ 组成的序列。对每组判断它是否严格递增形成“STAIR”、中间数高于两端形成“PEAK”，否则输出“NONE”。",
+          "transformedStatement": "把每组三个数字抽象为两个相邻比较关系：检查 $(a<b,b<c)$ 是否同时成立，或检查 $(a<b,b>c)$ 是否同时成立；按优先顺序映射到三种输出。",
+          "keyObservations": [
+            "“STAIR”恰好等价于两个相邻关系同时严格递增，即 $a<b$ 且 $b<c$，因此无需枚举其他情况。",
+            "“PEAK”只需中间数字高于两端，即 $a<b$ 且 $b>c$；若两个条件均不满足，则输出“NONE”。",
+            "判定应拆成两个独立比较式，避免把 $a<b<c$ 当作所有语言都支持的链式比较。"
+          ],
+          "solutionBrief": "对每组 $(a,b,c)$ 先判断是否满足 $a<b<c$，满足则输出“STAIR”；否则判断 $a<b$ 且 $b>c$，满足则输出“PEAK”，其余输出“NONE”。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1950B",
+          "index": "B",
+          "slot": "B",
+          "title": "Upscaling",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1950/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/127664",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定整数 $n$，需要输出一个边长为 $2n$ 的字符棋盘。棋盘由交替排列的 $2\\times2$ 同字符方块组成，左上角字符为 `#`；对每个测试用例输出完整棋盘，测试用例之间不能有空行。",
+          "transformedStatement": "将目标棋盘视为一个 $n\\times n$ 的普通棋盘，每个原格子复制成对应的 $2\\times2$ 方块。大棋盘坐标 $(x,y)$ 对应原坐标 $(\\lfloor x/2\\rfloor,\\lfloor y/2\\rfloor)$，再按坐标和奇偶性决定字符。",
+          "keyObservations": [
+            "放大后的每个 $2\\times2$ 小块都对应原棋盘的一个格子，因此同一小块内的 4 个位置必须输出相同字符，避免逐格重新判断图案。",
+            "原棋盘位置 $(i,j)$ 的字符只由 $i+j$ 的奇偶性决定；对大棋盘坐标 $(x,y)$ 使用 $\\lfloor x/2\\rfloor+\\lfloor y/2\\rfloor$，即可直接判断对应小块应为 `#` 还是 `.`。",
+            "当上述两个商之和为偶数时输出 `#`、否则输出 `.`，天然保证左上角为 `#`，并使相邻的 $2\\times2$ 小块交替。"
+          ],
+          "solutionBrief": "遍历每个测试用例的 $2n\\times2n$ 位置 $(x,y)$，若 $\\lfloor x/2\\rfloor+\\lfloor y/2\\rfloor$ 为偶数输出 `#`，否则输出 `.`；每行连续输出且测试用例间不留空行。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1950C",
+          "index": "C",
+          "slot": "C",
+          "title": "Clock Conversion",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1950/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/127664",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定若干个合法的 24 小时制时间，格式为 `hh:mm`。每个时间需转换为 12 小时制，输出保留两位数字的 `hh:mm AM` 或 `hh:mm PM`，其中分钟不变，午夜和正午需正确区分。",
+          "transformedStatement": "把问题拆成独立的小时映射和分钟保留：小时先取模 $12$，零值映射为 $12$；原小时在 $00$ 到 $11$ 时标记 AM，在 $12$ 到 $23$ 时标记 PM。",
+          "keyObservations": [
+            "分钟部分在两种制式中完全不变，因此只需转换小时并保留原分钟字符串。",
+            "小时可统一计算为 $h\\bmod 12$，但结果为 $0$ 时必须改成 $12$；同时用原小时是否小于 $12$ 判断 AM 或 PM，覆盖午夜和正午边界。",
+            "输出小时和分钟都要保留两位数字，避免个位数转换后丢失前导零。"
+          ],
+          "solutionBrief": "逐个读取时间，保留分钟；将小时转为 $h\\bmod 12$，结果为 $0$ 就设为 $12$，原小时小于 $12$ 输出 AM，否则输出 PM，并补齐前导零。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1950D",
+          "index": "D",
+          "slot": "D",
+          "title": "Product of Binary Decimals",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1950/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/127664",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "implementation",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $n$，其中“二进制小数”指十进制表示中每一位都只能是 $0$ 或 $1$ 的正整数。需要判断 $n$ 是否能表示成若干个（允许重复）二进制小数的乘积，并输出 YES 或 NO。",
+          "transformedStatement": "把目标集合定义为“good”：$1$ 是 good；对 $n>1$，若存在一个二进制小数 $i>1$ 且 $i\\mid n$，使商 $n/i$ 为 good，则 $n$ 也是 good。于是问题变成在少量候选因子上的递归可达性判断。",
+          "keyObservations": [
+            "一个数可表示为若干二进制小数的乘积，当且仅当它等于 $1$，或存在一个大于 $1$ 的二进制小数因子 $i$，使得 $n/i$ 仍可表示；这把乘积判定转成递归的因子分解判定。",
+            "当 $n\\le 10^5$ 时，只需预处理不超过 $10^5$ 的二进制小数作为候选因子，因为乘积中的每个因子都不能大于 $n$。",
+            "满足条件的候选二进制小数数量不超过 $32$，因此逐个尝试可整除因子并递归判断，在本题范围内足够高效；记忆化还能避免重复子问题。"
+          ],
+          "solutionBrief": "预处理所有不超过 $10^5$ 且十进制位只含 $0,1$ 的数。对每个 $n$ 递归判断：$n=1$ 时成功，否则尝试每个能整除 $n$ 的二进制小数 $i>1$，若 $n/i$ 成功则答案为 YES；可用记忆化或预先计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1950E",
+          "index": "E",
+          "slot": "E",
+          "title": "Nearly Shortest Repeating Substring",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1950/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/127664",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "number theory",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的小写字符串 $s$，选择一个长度为 $l$ 的字符串 $k$，将它连续重复若干次组成长度同为 $n$ 的字符串；组成结果与 $s$ 至多有一个位置不同。求满足条件的最短 $k$ 的长度。",
+          "transformedStatement": "把问题转化为寻找最小周期长度：候选周期必须整除 $n$。对每个候选长度，分别把原串的前缀或后缀作为周期并重复铺满整串，判断是否只需修改至多一个字符即可得到 $s$。",
+          "keyObservations": [
+            "周期串的长度必须整除 $n$，因此候选长度从 $n$ 的所有因子中筛选，避免枚举任意长度。",
+            "固定长度 $l$ 后，用 $s$ 的前缀重复生成整串并统计不匹配位置；差异数不超过 $1$ 即可判定可行。",
+            "唯一差异可能出现在用于生成模式的前缀内部，此时前缀检查会掩盖它；再用长度为 $l$ 的后缀生成整串即可覆盖这种情况。",
+            "按从小到大检查因子，首个满足条件的长度就是最短答案，无需继续处理更大的候选。"
+          ],
+          "solutionBrief": "枚举 $n$ 的所有因子并按升序检查。对每个长度 $l$，分别用 $s$ 的前缀和后缀重复构造长度为 $n$ 的模式，统计与 $s$ 的差异数；任一模式的差异不超过 $1$，就输出该 $l$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1950F",
+          "index": "F",
+          "slot": "F",
+          "title": "0, 1, 2, Tree!",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1950/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/127664",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "greedy",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵根树中恰有 $a$ 个节点拥有 $2$ 个孩子、$b$ 个节点拥有 $1$ 个孩子、$c$ 个叶子（拥有 $0$ 个孩子）。要求构造满足这些数量的树并求最小高度；若不存在则输出 $-1$。",
+          "transformedStatement": "将建树改写为从根开始反复扩展叶子：选一个叶子增加 $1$ 个或 $2$ 个孩子，分别总共进行 $b$ 次和 $a$ 次。问题转化为在叶子数条件成立时，按最浅优先且优先二叉扩展，求完成全部扩展所需的最少层数。",
+          "keyObservations": [
+            "把树按扩展过程看待：根初始为叶子，每次把一个叶子变成拥有 $1$ 个或 $2$ 个孩子的内部节点，分别进行 $b$ 次和 $a$ 次。",
+            "每次扩展出 $1$ 个孩子时叶子数不变，扩展出 $2$ 个孩子时叶子数增加 $1$；因此最终必须满足 $c=a+1$，否则无法构造。",
+            "为降低最大深度，应优先进行扩展出 $2$ 个孩子的操作，并且始终扩展距离根更近的叶子；这样能尽早产生更多下一层节点。",
+            "只需按层维护当前层和下一层可扩展叶子的数量，不必显式建立树；模拟所有扩展即可得到最小高度。"
+          ],
+          "solutionBrief": "先检查叶子数条件 $c=a+1$，不满足则输出 $-1$。满足时按层扩展叶子，优先使用 $2$ 个孩子的节点、并优先处理靠近根的叶子，同时用两个计数器维护当前层和下一层，层数即最小高度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1950G",
+          "index": "G",
+          "slot": "G",
+          "title": "Shuffling Songs",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1950/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/127664",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "字符串",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "hashing",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 首歌曲，每首有类型和作者。可以先删除任意数量的歌曲，再任意重排剩余歌曲；重排后每对相邻歌曲必须同作者或同类型，求至少删除多少首才能满足条件。",
+          "transformedStatement": "构造歌曲兼容图：两首歌在作者或类型相同时相连。目标变为寻找一条包含最多不同歌曲的简单路径，使用子集与路径末尾顶点表示可达性。",
+          "keyObservations": [
+            "把歌曲视为顶点，只有“同作者或同类型”的两首歌之间才连边；问题等价于寻找包含尽可能多顶点的简单路径。",
+            "对状态 $dp[mask][i]$ 记录使用歌曲集合 $mask$ 且以歌曲 $i$ 结尾的路径是否存在，末尾歌曲足以决定下一步能否追加。",
+            "若未使用歌曲与当前末尾歌曲同作者或同类型，就能扩展状态；因此所有可达状态中最大 $ ext{popcount}(mask)$ 直接给出最多保留歌曲数。",
+            "将类型和作者字符串分别离散化为整数，只保留相等关系，可避免状态转移中反复比较长字符串。"
+          ],
+          "solutionBrief": "先将作者和类型字符串离散化，再枚举歌曲子集与最后一首歌。若未选歌曲与末尾歌曲同作者或同类型，则转移到新状态；取可达状态的最大集合大小，答案为 $n$ 减去它。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
