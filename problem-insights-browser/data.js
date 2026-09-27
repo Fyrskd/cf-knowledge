@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2484,
+    "total_problems": 2491,
     "source_total_problems": 2491,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2484,
-    "with_editorial_brief": 2218,
-    "with_solution_brief": 2219,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2491,
+    "with_editorial_brief": 2225,
+    "with_solution_brief": 2226,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1546,
+    "ai_override_count": 1553,
     "primary_topic_count": 13,
-    "contest_count": 381,
+    "contest_count": 382,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 121,
-    "构造与贪心": 785,
+    "构造与贪心": 788,
     "图论与网络流": 149,
     "动态规划与状态设计": 217,
     "数论与同余": 273,
     "组合计数与概率": 190,
-    "数据结构": 230,
-    "几何": 57,
+    "数据结构": 232,
+    "几何": 58,
     "树结构": 136,
     "代数、矩阵与多项式": 19,
     "交互": 84,
     "基础实现与模拟": 137,
-    "博弈": 86
+    "博弈": 87
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1277,
+    "ai_generated_with_editorial": 1284,
     "ai_generated_partial_editorial": 50,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -60806,6 +60806,214 @@ window.CF_INSIGHTS_DATA = {
             "计算状态时去掉两端与目标条件无关的元素：$dp$ 去掉两端的 $k$，$dp2$ 去掉两端的非 $k$，从而严格缩短依赖并消除循环。"
           ],
           "solutionBrief": "先利用相邻相等元素可合并的性质，将操作后的区间视为单元素。区间 DP 同时维护变成全为 $k$ 和消除所有 $k$ 两类状态，通过分割或整体修改转移；计算前裁剪两端无关元素以消除循环依赖，复杂度为 $O(n^4)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1921,
+      "name": "Codeforces Round 920 (Div. 3)",
+      "date": "2024-01-15",
+      "url": "https://codeforces.com/contest/1921",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1921A",
+          "index": "A",
+          "slot": "A",
+          "title": "Square",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1921/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/124757",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给出一个边与坐标轴平行、面积为正的正方形四个顶点，顶点顺序任意。对每组数据，求出该正方形的面积。",
+          "transformedStatement": "不必判断四个点的排列或显式重建正方形，只需取所有顶点横坐标的最小值与最大值；它们的差是水平跨度，也就是边长，面积为该跨度的平方。",
+          "keyObservations": [
+            "由于正方形边与坐标轴平行，所有顶点的横坐标只取左右两条边的位置，因此 $x_{max}-x_{min}$ 直接等于边长，无需恢复顶点顺序。",
+            "正方形边长同时决定面积，得到边长 $d$ 后可直接计算 $S=d^2$，问题从识别图形转化为求横坐标极值。"
+          ],
+          "solutionBrief": "对四个顶点的横坐标求最小值和最大值，二者之差就是正方形边长 $d$；输出 $d^2$ 作为面积。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1921B",
+          "index": "B",
+          "slot": "B",
+          "title": "Arranging Cats",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1921/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/124757",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 个盒子，初始状态由二进制串 $s$ 表示，目标状态由 $f$ 表示。每天可添加一只猫、移除一只猫，或把一只猫从一个盒子移动到另一个盒子，求达到目标状态所需的最少天数。",
+          "transformedStatement": "只需关注两类不匹配位置：目标有猫但当前没有的位置，以及当前有猫但目标没有的位置。一次移动可以同时消除两类各一个不匹配，未配对的需求再用单独添加或移除完成。",
+          "keyObservations": [
+            "令 $add$ 为需要从 0 变 1 的位置数、$remove$ 为需要从 1 变 0 的位置数；一次操作至多完成一类需求各一个，因此答案至少为它们的较大值。",
+            "当两类位置同时存在时，可把一个待删除位置的猫直接移动到一个待增加位置，同时完成两个目标，单次操作的效率最高。",
+            "配对进行 $\\min(add,remove)$ 次移动后，剩余位置只能分别添加或移除猫，所需操作数为 $|add-remove|$，总数恰为 $\\max(add,remove)$。"
+          ],
+          "solutionBrief": "统计 $s_i=0,f_i=1$ 的数量 $add$ 和 $s_i=1,f_i=0$ 的数量 $remove$，答案为 $\\max(add,remove)$。可先将两类位置配对移动猫，再处理剩余的添加或移除。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1921C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sending Messages",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1921/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/124757",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "手机初始电量为 $f$，开机每经过一个时间单位消耗 $a$ 电量；可以随时关机并在之后开机，每次关机再开机固定消耗 $b$。必须在指定时刻依次发送所有消息，电量降至 $0$ 或以下时不能发送，判断是否能完成全部发送。",
+          "transformedStatement": "将时间轴拆成从 $0$ 到第一条消息、以及相邻消息之间的区间；对每个长度为 $\\Delta$ 的区间，比较全程开机的代价 $a\\Delta$ 与首尾关开机的代价 $b$，把区间代价取最小后求总和。",
+          "keyObservations": [
+            "固定相邻两条消息的时间间隔后，各区间的耗电可以分别取最小值，因为总耗电等于所有区间消耗之和。",
+            "长度为 $t$ 的区间只有两种有竞争力的方案：保持开机消耗 $a\\cdot t$，或在区间首尾关机再开机消耗 $b$，因此该区间最优消耗为 $\\min(a\\cdot t,b)$。",
+            "由于电量降到 $0$ 或以下时无法发送消息，所有区间最小消耗之和必须严格小于初始电量 $f$，而不是小于等于 $f$。"
+          ],
+          "solutionBrief": "依次处理区间 $[0,m_1]$、$[m_1,m_2]$ 等，每段累加 $\\min(a\\cdot\\Delta,b)$。若总消耗严格小于 $f$，输出 YES，否则输出 NO，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1921D",
+          "index": "D",
+          "slot": "D",
+          "title": "Very Different Array",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1921/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/124757",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$ 和长度为 $m$ 的数组 $b$（$m\\ge n$）。需要从 $b$ 中选出 $n$ 个数并任意排列成数组 $c$，使每个位置的差值 $|a_i-c_i|$ 之和最大，求这个最大值。",
+          "transformedStatement": "把问题转化为排序后的极端匹配：$a$ 升序排列，候选的 $b$ 只取若干个最大值和若干个最小值；枚举最大值的数量 $k$，计算该分界下的匹配总差值并取最大。",
+          "keyObservations": [
+            "将数组 $a$ 升序排列后，小元素应尽量匹配较大的 $b$，大元素应尽量匹配较小的 $b$，因此最优选择只需考虑两端的候选值。",
+            "将 $b$ 降序排列后，对某个 $k$，选取前缀中的 $k$ 个最大值和后缀中的 $n-k$ 个最小值；这覆盖了最优方案所需的极端元素组合。",
+            "枚举 $k=0$ 到 $n$ 时，相邻方案只替换一个被选元素，因此总差值可在 $O(1)$ 时间更新，再取所有方案最大值。"
+          ],
+          "solutionBrief": "分别将 $a$ 升序、$b$ 降序排列。枚举选取 $b$ 的最大值个数 $k$，用这 $k$ 个值匹配 $a$ 的前部，其余最小值匹配 $a$ 的后部；相邻 $k$ 只改变一项，可线性更新答案。总复杂度为排序的 $O(m\\log m)$ 加枚举的 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1921E",
+          "index": "E",
+          "slot": "E",
+          "title": "Eat the Chip",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1921/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/124757",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "games",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "在一个 $h\\times w$ 棋盘上，Alice 的棋子每次向下、左下或右下移动一格，Bob 的棋子每次向上、左上或右上移动一格，Alice 先手且越界不能移动。若某次移动后落在对方棋子所在格立即获胜，无法移动则平局；求双方最优时的胜负结果。",
+          "transformedStatement": "把游戏分成垂直和水平两部分：垂直行差决定谁能在相同行号时获得最后一步，水平位置则转化为逃跑者能否在有限步数内到达对应棋盘边界。根据行差奇偶性和边界可达性直接判定胜者。",
+          "keyObservations": [
+            "两枚棋子的行差每走一步就减少 $1$，因此只有行号相等时才可能相遇；若初始 $x_b\\le x_a$，双方会错开，结果必为平局。",
+            "当 $d=x_b-x_a>0$ 为奇数时，Alice 比 Bob 多走最后一步；当 $d$ 为偶数时，Bob 在相同行号阶段拥有决定性的一步，因此胜者由 $d$ 的奇偶性确定。",
+            "相同行号前的水平移动可视为双方互相远离：逃跑者若能沿远离方向到达边界就能避免碰撞，否则对手可持续选择相应方向逼近。",
+            "奇数行差时 Alice 的可胜条件与偶数行差时 Bob 的可胜条件对称，分别只需检查对手沿逃跑方向还能移动的步数是否受棋盘边界限制。"
+          ],
+          "solutionBrief": "先判断 $x_b-x_a$ 的符号和奇偶性；非正时平局。正且为奇数时检查 Alice 能否利用最后一步逼到 Bob 的逃跑边界，正且为偶数时检查 Bob 的对应条件；否则为平局。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1921F",
+          "index": "F",
+          "slot": "F",
+          "title": "Sum of Progression",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1921/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/124757",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定数组和 $q$ 个查询 $(s,d,k)$，每次从下标 $s$ 开始，每隔 $d$ 个位置取一个元素，共取 $k$ 个，并分别乘以 $1,2,\\ldots,k$ 后求和。对所有查询输出对应结果。",
+          "transformedStatement": "将每个查询视为固定步长 $d$ 的一条等差下标序列上的加权区间和：小步长的各条序列预先建立两类前缀和，大步长则利用序列长度短直接计算。",
+          "keyObservations": [
+            "固定步长 $d$ 后，按下标模 $d$ 分组即可把查询看成某条等差序列上的区间；维护该序列的元素前缀和与“序列位置乘元素”的前缀和，就能在 $O(1)$ 内得到权重和。",
+            "对所有 $d\u0001le D$ 预处理上述前缀信息，总成本为 $O(nD)$，这些查询无需逐项访问，从而消除小步长带来的大量重复计算。",
+            "当 $d>D$ 时，查询最多包含 $O(n/d)$ 项，因此直接枚举单个查询的所有项；总成本为 $O(qn/D)$。",
+            "合并两类查询得到 $O(nD+qn/D)$，取 $D\\approx\\sqrt q$（实现中固定为 $322$）即可平衡预处理与逐项计算成本。"
+          ],
+          "solutionBrief": "按步长阈值分治查询：小步长按模分类预处理元素和带位置权重的前缀和，直接回答；大步长逐项枚举。总复杂度为 $O(nD+qn/D)$，取 $D\\approx\\sqrt q$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1921G",
+          "index": "G",
+          "slot": "G",
+          "title": "Mischievous Shooter",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1921/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/124757",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "几何",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由空格和目标组成的 $n\\times m$ 棋盘，选择一个位置和四个对角方向之一开枪；子弹会击中该方向上、曼哈顿距离不超过 $k$ 的所有目标。求一次射击最多能击中多少个目标。",
+          "transformedStatement": "把一次射击看成以某个格子为顶点、沿指定对角方向展开的曼哈顿距离三角区域计数问题；先求固定左上朝向的所有三角区域权值，再通过棋盘旋转或翻转覆盖其余三个朝向。",
+          "keyObservations": [
+            "四种射击方向得到的区域互为棋盘的旋转或翻转，因此只需处理左上的三角区域，再对四种方向取最大值。",
+            "固定三角区域的顶点后，向右移动一个格子时，区域变化只涉及新增和移除的两条边界带，答案可由前一位置在 $O(1)$ 内修正。",
+            "用列方向前缀和与“向上且向右”对角线前缀和预处理边界带，就能快速得到每次移动应加减的目标数。",
+            "所有顶点和方向的三角区域都在线性扫描中计算，因此单个测试用例总复杂度为 $O(nm)$。"
+          ],
+          "solutionBrief": "将四个方向分别通过棋盘旋转或翻转归约为左上三角。对该方向建立列前缀和和右上对角线前缀和，沿行移动顶点时用新增、移除边界带的和在 $O(1)$ 内更新答案，扫描全部位置后取四种方向最大值，复杂度为 $O(nm)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
