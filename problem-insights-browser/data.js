@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2948,
+    "total_problems": 2955,
     "source_total_problems": 2955,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2948,
-    "with_editorial_brief": 2676,
-    "with_solution_brief": 2677,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2955,
+    "with_editorial_brief": 2683,
+    "with_solution_brief": 2684,
     "missing_editorial_brief": 271,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2010,
+    "ai_override_count": 2017,
     "primary_topic_count": 13,
-    "contest_count": 448,
+    "contest_count": 449,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -34,8 +34,8 @@ window.CF_INSIGHTS_DATA = {
     "数据结构",
     "动态规划与状态设计",
     "组合计数与概率",
-    "基础实现与模拟",
     "图论与网络流",
+    "基础实现与模拟",
     "字符串",
     "树结构",
     "博弈",
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "字符串": 157,
+    "构造与贪心": 932,
+    "树结构": 150,
+    "动态规划与状态设计": 248,
+    "数据结构": 278,
+    "图论与网络流": 179,
     "基础实现与模拟": 178,
-    "构造与贪心": 930,
     "数论与同余": 319,
-    "数据结构": 277,
-    "字符串": 156,
-    "动态规划与状态设计": 247,
     "交互": 95,
     "组合计数与概率": 232,
-    "图论与网络流": 178,
     "几何": 70,
-    "树结构": 149,
     "博弈": 96,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 1732,
     "missing_editorial": 271,
-    "ai_generated_with_editorial": 1725,
     "ai_generated_partial_editorial": 60,
     "manual_override": 891,
     "statement_derived": 1
@@ -91115,6 +91115,221 @@ window.CF_INSIGHTS_DATA = {
             "关键位置选完后，继续加入剩余元素不会改变已经确定的前缀或值，因而剩余元素可以按任意顺序输出。"
           ],
           "solutionBrief": "维护当前前缀按位或值，反复在未使用元素中选择使新按位或值最大的元素并放到答案前面，最多进行约 $30$ 次；随后直接输出所有剩余元素。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1741,
+      "name": "Codeforces Round 826 (Div. 3)",
+      "date": "2022-10-11",
+      "url": "https://codeforces.com/contest/1741",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1741A",
+          "index": "A",
+          "slot": "A",
+          "title": "Compare T-Shirt Sizes",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1741/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/107908",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定两个合法的 T 恤尺码字符串：尺码由 M，或若干个 X 加 S/L 构成。比较两个尺码的大小，并输出 `<`、`>` 或 `=`；其中 S、L 前的 X 数量分别表示更小或更大的程度。",
+          "transformedStatement": "将每个尺码拆成末字符和字符串长度：末字符不同直接按 S、M、L 比较；末字符相同则 M 必相等，S 按长度反向比较，L 按长度正向比较。",
+          "keyObservations": [
+            "当两个尺码的末字符不同，大小只由末字符决定：整体顺序为 S < M < L，因此无需比较前面的 X 数量。",
+            "末字符都是 M 时，两者只能都是 M，直接判定相等。",
+            "末字符都是 S 时，X 越多表示越小，比较字符串长度即可反向确定大小。",
+            "末字符都是 L 时，X 越多表示越大，比较字符串长度即可正向确定大小。"
+          ],
+          "solutionBrief": "取两个字符串的末字符。末字符不同则按 S、M、L 的顺序比较；末字符相同为 M 时相等，为 S 或 L 时分别按长度反向或正向比较。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1741B",
+          "index": "B",
+          "slot": "B",
+          "title": "Funny Permutation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1741/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/107908",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定整数 $n$，构造一个包含 $1$ 到 $n$ 各一次的排列，使每个位置的值都不等于位置编号，并且每个元素至少有一个相邻元素与它相差 $1$。若不存在这样的排列，输出 $-1$。",
+          "transformedStatement": "问题等价于判断是否能排列所有数，使排列既没有固定点，又让每个元素在路径相邻关系中连接到数值差为 $1$ 的元素；除 $n=3$ 外可用固定排列模板直接构造。",
+          "keyObservations": [
+            "当 $n=3$ 时，数字 $3$ 的相邻位置必须放 $2$；逐一检查其可能位置会导致固定点或末位无法拥有差值为 $1$ 的邻居，因此无解。",
+            "当 $n\\ge4$ 时，构造 $[3,4,\\ldots,n,2,1]$：中间连续递增段提供差值为 $1$ 的邻居，末尾的 $2,1$ 也满足邻接条件，同时所有位置值都不等于自身。",
+            "$n=2$ 的唯一排列 $[2,1]$ 直接满足无固定点和邻接差值为 $1$，因此可单独处理。"
+          ],
+          "solutionBrief": "按 $n$ 分类输出：$n=3$ 输出 $-1$；$n=2$ 输出 $2\\ 1$；$n\\ge4$ 输出 $3,4,\\ldots,n,2,1$。该构造同时保证无固定点，且每个元素都有相邻元素与其相差 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1741C",
+          "index": "C",
+          "slot": "C",
+          "title": "Minimize the Thickness",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1741/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/107908",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个正整数序列，将其完整划分为若干个连续且不重叠的非空段，使每段元素和都相同。每个元素必须恰好属于一段，要求最小化所有分段长度中的最大值。",
+          "transformedStatement": "把首段的右端点作为枚举对象：它确定共同段和；之后从首段末尾继续扫描，累计和达到该目标就唯一切分下一段，若能正好覆盖序列则得到一个候选厚度。",
+          "keyObservations": [
+            "固定第一段的右端点后，其元素和就确定了所有分段必须达到的目标和；由于元素均为正数，后续每段只能在前缀和首次达到该目标时切分。",
+            "枚举第一段的所有可能长度覆盖了任意合法划分，因为任何划分都必然有一个确定的首段；对每种选择贪心扫描即可判断并评估。",
+            "一次扫描中若某段累加超过目标和，该首段选择立即不合法；若恰好切分到序列末尾，则最大段长就是该方案的厚度。"
+          ],
+          "solutionBrief": "枚举第一段长度，令其元素和为所有分段的共同和；随后从左到右累加，每次达到该和就切段，记录最大段长。所有首段选择取最小值，复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1741D",
+          "index": "D",
+          "slot": "D",
+          "title": "Masha and a Beautiful Tree",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1741/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/107908",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "divide and conquer",
+            "graphs",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定一棵高度为 $n$、有 $m=2^n$ 个叶子的完全二叉树，叶子从左到右放置排列 $p$。每次可选择一个非叶节点，交换其左右子树；求使叶子序列从左到右递增所需的最少操作数，若无法做到则判定不可行。",
+          "transformedStatement": "将每个子树抽象为其覆盖的连续叶子区间，并递归决定是否交换两个半区：通过该区间的最小值和最大值所在半区判断交换是否被迫或必然错误，最后验证整体序列是否递增。",
+          "keyObservations": [
+            "把每个子树视为叶子连续区间；不交换当前节点时，右子树元素无法进入左半区，因此跨半区的极值位置会强制决定是否交换。",
+            "若区间最小值在右子树且最大值在左子树，当前节点必须交换，否则无法形成递增序列；交换次数因此是被迫操作数。",
+            "若最小值在左子树且最大值在右子树，交换会破坏递增所需的两半顺序，因此该节点不能交换，应继续处理两个子区间。",
+            "递归处理所有子树后，只有叶子序列最终严格递增才可行；预先计算各子树的最小值和最大值可将总复杂度降为 $O(m)$。"
+          ],
+          "solutionBrief": "递归检查每个子树区间的最小值和最大值：若最小值在右、最大值在左则交换并计数；若相反则不能交换。继续处理子树，最后检查整个排列是否递增。预处理区间极值后复杂度为 $O(m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1741E",
+          "index": "E",
+          "slot": "E",
+          "title": "Sending a Sequence Over the Network",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1741/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/107908",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定序列 $b$，它可能由某个序列 $a$ 切成若干连续分段后得到：每段的长度数字被放在该段之前或之后，再将所有内容拼接。判断是否存在这样的 $a$、分段方式和放置方式，使发送结果正好为 $b$。",
+          "transformedStatement": "把 $b$ 中的某个元素视为一个分段的长度标记：它要么向右覆盖接下来的 $b_i$ 个元素，要么向左覆盖此前的 $b_i$ 个元素。用 $dp[i]$ 表示前缀是否能被完整覆盖，并按两种方向建立转移。",
+          "keyObservations": [
+            "每个分段在序列中恰有一个长度标记，标记值等于该段元素个数，且标记可位于分段左侧或右侧，因此只需判断每个位置能否承担这两种角色。",
+            "若位置 $i$ 是分段左侧的标记，前缀 $i-1$ 必须可行；随后恰有 $b_i$ 个分段元素，所以可转移到前缀 $i+b_i$。",
+            "若位置 $i$ 是分段右侧的标记，前面必须紧邻 $b_i$ 个分段元素；因此当前缀 $i-b_i-1$ 可行时，前缀 $i$ 也可行，最终检查 $dp[n]$。"
+          ],
+          "solutionBrief": "令 $dp[i]$ 表示前 $i$ 个元素能否由若干完整分段编码得到。遍历每个位置，分别尝试把它作为左侧或右侧长度标记，按 $dp[i+b_i]$ 和 $dp[i]$ 的转移更新，最后判断 $dp[n]$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1741F",
+          "index": "F",
+          "slot": "F",
+          "title": "Multi-Colored Segments",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1741/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/107908",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "几何",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 个带颜色的闭区间。区间距离是两者端点间的最小距离，相交时为 $0$；对每个区间，求它与任意不同颜色区间之间的最小距离。",
+          "transformedStatement": "把每个区间的最近异色区间分成两类：左端点不晚于当前区间的候选，以及位于其右侧的候选。前者用前缀中各颜色的最大右端点表示，后者通过将区间变换为 $[-r_i,-l_i]$ 后复用同一模型。",
+          "keyObservations": [
+            "对按左端点不晚于当前段的候选，只需保留每种颜色的最大右端点；维护右端点最大的两种颜色即可排除当前颜色。",
+            "若候选的最大右端点不小于当前左端点，两段相交且答案为 $0$；否则最近距离就是当前左端点减去该最大右端点。",
+            "将区间映射为 $[-r_i,-l_i]$ 再进行同样扫描，就能处理原区间右侧开始的候选，从而覆盖所有可能的最近异色区间。",
+            "两次扫描分别得到来自左侧和右侧的最小距离，逐段取二者最小值即可；每次查询只需比较两种最优颜色记录。"
+          ],
+          "solutionBrief": "按左端点排序扫描，维护已见区间中右端点最大的两种颜色，查询与当前颜色不同的最优候选；再对 $[-r_i,-l_i]$ 扫描一次处理另一侧，取两次结果的最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1741G",
+          "index": "G",
+          "slot": "G",
+          "title": "Kirill and Company",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1741/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/107908",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "flows",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个连通无向图，所有朋友从顶点 $1$ 出发回家；其中 $k\\le 6$ 人没有车，其余人有车。每位有车朋友可以沿通往自己家的某条最短路径，顺路载走路径上的任意数量无车朋友，求最少需要步行的无车朋友数。",
+          "transformedStatement": "先在从 $1$ 出发的最短路图上，计算每个终点的一条最短路径可能覆盖哪些无车朋友；随后把每位司机能覆盖的集合视为一个位掩码，选择若干司机使覆盖掩码的按位或尽可能大。",
+          "keyObservations": [
+            "把从起点到顶点的所有最短路径看成最短路有向无环图；某顶点可形成的无车朋友集合，等于其最短路前驱集合加上该顶点居住的无车朋友。",
+            "无车朋友数满足 $k\\le 6$，因此可用位掩码表示被某条最短路径覆盖的朋友集合，并保留每个顶点可能得到的所有掩码。",
+            "一个有车朋友选择某个可行掩码后，覆盖集合只需按位或合并；因此对所有司机做掩码背包，最大化最终覆盖的无车朋友数即可。",
+            "同一司机载走某条最短路径上的全部无车朋友不会劣于只载其中一部分，所以转移时只需考虑整个位掩码。"
+          ],
+          "solutionBrief": "先从顶点 $1$ 做 BFS，沿最短路边传播各顶点可形成的无车朋友掩码。对每个有车朋友取得其终点的可行掩码集合，再用按位或背包求最多能被覆盖的无车朋友数，答案为 $k$ 减去该数量。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
