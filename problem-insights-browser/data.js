@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2394,
+    "total_problems": 2400,
     "source_total_problems": 2400,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2394,
-    "with_editorial_brief": 2128,
-    "with_solution_brief": 2129,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2400,
+    "with_editorial_brief": 2134,
+    "with_solution_brief": 2135,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1456,
+    "ai_override_count": 1462,
     "primary_topic_count": 13,
-    "contest_count": 368,
+    "contest_count": 369,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,11 +45,11 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 115,
-    "构造与贪心": 755,
+    "构造与贪心": 757,
     "图论与网络流": 142,
     "动态规划与状态设计": 209,
-    "数论与同余": 258,
-    "组合计数与概率": 185,
+    "数论与同余": 260,
+    "组合计数与概率": 187,
     "数据结构": 222,
     "几何": 56,
     "树结构": 134,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1190,
+    "ai_generated_with_editorial": 1196,
     "ai_generated_partial_editorial": 47,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -55203,6 +55203,191 @@ window.CF_INSIGHTS_DATA = {
             "所有合法传球关系的连通分量可以安排在同一轮，而不同分量之间无法通过传球互相到达，所以最少轮数等于该图中含玩家顶点的连通分量数。"
           ],
           "solutionBrief": "用玩家与整数位置构造二部图：玩家连接其左、右手臂可覆盖的位置，但删去未被两种方向同时覆盖的位置。用差分找有效位置、并将连续区间边压缩为相邻位置连接，再用并查集合并玩家与区间，统计连通分量，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1954,
+      "name": "Educational Codeforces Round 164 (Rated for Div. 2)",
+      "date": "2024-04-12",
+      "url": "https://codeforces.com/contest/1954",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 3100,
+      "problems": [
+        {
+          "key": "1954A",
+          "index": "A",
+          "slot": "A",
+          "title": "Painting the Ribbon",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1954/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/128421",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "Alice 先把长度为 $n$ 的缎带每个部件独立染成 $m$ 种颜色之一；随后 Bob 最多选择 $k$ 个部件，并把它们全部重染为同一种颜色。判断 Alice 是否能安排初始染色，使 Bob 无法将整条缎带变成单色。",
+          "transformedStatement": "把 Bob 统一成颜色 $i$ 的能力转化为该颜色初始出现次数是否至少为 $n-k$。于是问题变成：把 $n$ 个部件分配到 $m$ 种颜色，使最大颜色频数严格小于 $n-k$。",
+          "keyObservations": [
+            "若目标颜色已有至少 $n-k$ 个部件，Bob 只需把其余至多 $k$ 个部件改成该色，因此 Alice 必须让每种颜色的出现次数都小于 $n-k$。",
+            "为了压低所有颜色的最大出现次数，应尽量均匀分配颜色；此时最大频数的最小值为 $\\lceil n/m\\rceil$，因为任意分配中至少有一种颜色出现不少于该数量。",
+            "因此只需比较均匀分配后的最大频数与 $n-k$：当 $\\lceil n/m\\rceil<n-k$ 时可以阻止 Bob，否则无论如何分配都存在可被 Bob 统一的颜色。"
+          ],
+          "solutionBrief": "计算均匀染色时的最小可能最大频数 $\\lceil n/m\\rceil$。若它小于 $n-k$，输出 YES；否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1954B",
+          "index": "B",
+          "slot": "B",
+          "title": "Make It Ugly",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1954/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/128421",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "数组美丽是指可反复选择一个内部元素：当它左右元素相等时，将该元素改成邻居值。允许删除若干元素但不能交换，要求删除最少元素后数组不再美丽；若无论如何都做不到则输出 $-1$。",
+          "transformedStatement": "令目标值为原数组首元素。题解将美丽性等价为：首尾相等，且任意两个相邻元素至少有一个等于目标值；因此问题转化为删除最短的一段目标值连续块，使其中一个条件失效。",
+          "keyObservations": [
+            "操作无法修改首尾元素，因此若数组仍美丽，首尾必须相等，最终所有元素也只能变成这个值。",
+            "设目标值为首元素；数组美丽当且仅当不存在两个相邻且都不等于目标值的元素，这把复杂操作判定转成局部条件。",
+            "要破坏上述条件，只需删除一段连续的目标值；删除首尾段会破坏端点相等，删除中间段会让两个非目标值相邻，因此答案是最短目标值连续段的长度。"
+          ],
+          "solutionBrief": "若数组所有元素相同，删除后仍美丽，答案为 $-1$。否则扫描数组中等于 $a_1$ 的连续段，取最短长度；它既可能位于首尾，也可能位于两个非目标值之间。复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1954C",
+          "index": "C",
+          "slot": "C",
+          "title": "Long Multiplication",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1954/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/128421",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定两个长度相同且各位数字均为 $1$ 到 $9$ 的整数。每次可交换它们在同一位置上的数字，任意操作后输出一组结果，使两个数的乘积最大。",
+          "transformedStatement": "交换操作保持两数总和不变，因此问题转化为让两数尽量接近。按最高位不同的位置确定较大数，再在所有低位反向分配数字，以最小化两数差。",
+          "keyObservations": [
+            "每次交换只改变两数的分配，不改变总和；固定总和时，乘积等于 $\\left(\\frac{s}{2}\\right)^2-\\left(\\frac{x-y}{2}\\right)^2$，因此只需最小化差值。",
+            "最高位不同的位置决定两数大小；把该位较大的数字放入 $x$、较小的放入 $y$，即可固定 $x>y$ 的方向。",
+            "在更低位把较小数字放入 $x$、较大数字放入 $y$，不会改变最高不同位的大小关系，并使差值尽可能小。"
+          ],
+          "solutionBrief": "总和恒定，所以最大化乘积等价于最小化两数差。找到最高位的不同数字，将较大者放入 $x$；该位之后每一位都将较小者放入 $x$、较大者放入 $y$，即可构造最优结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1954D",
+          "index": "D",
+          "slot": "D",
+          "title": "Colored Balls",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1954/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/128421",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 种颜色，第 $i$ 种有 $a_i$ 个球。对每个颜色子集，只能把这些球分成若干组，每组至多 2 个球且不能出现同色球；求所有 $2^n$ 个子集的最少分组数之和，并对 $998244353$ 取模。",
+          "transformedStatement": "对一个子集先令总球数为 $s$，其答案通常是 $\u0000ceil{s/2}\u0000rceil$；仅当某种颜色的球数大于其余颜色总数时，答案改为该颜色的球数。于是问题转化为按总球数统计子集，并单独修正主导颜色子集。",
+          "keyObservations": [
+            "对任意颜色子集，若没有某种颜色的球数超过其余球数总和，最少分组数就是总球数 $s$ 的 $\u0000ceil{s/2}\u0000rceil$，因为每组最多容纳两个球且可将不同颜色配对。",
+            "只有存在唯一的主导颜色时基准值会失效；若该颜色有 $a_i$ 个球、其余入选颜色共有 $j<a_i$ 个球，实际分组数为 $a_i$，因此只需对基准值补偿 $a_i-\u0000ceil{(a_i+j)/2}\u0000rceil$。",
+            "用 $dp[j]$ 统计选取若干颜色后球数恰为 $j$ 的子集数量；所有子集先按 $\u0000ceil{j/2}\u0000rceil$ 计入，再按每个颜色的 $j<a_i$ 状态补偿主导颜色情形，避免重复计数。"
+          ],
+          "solutionBrief": "先用 0/1 背包统计总球数为 $j$ 的颜色子集数，并将每个子集按 $\u0000ceil{j/2}\u0000rceil$ 计入答案。再枚举主导颜色 $i$，利用同一 DP 统计其余颜色总数 $j<a_i$ 的子集，并补上 $a_i-\u0000ceil{(a_i+j)/2}\u0000rceil$；总复杂度为 $O(nS)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1954E",
+          "index": "E",
+          "slot": "E",
+          "title": "Chain Reaction",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1954/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/128421",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dsu",
+            "greedy",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 只怪物按顺序排列，第 $i$ 只生命值为 $a_i$。每秒选择一只存活怪物释放一次链式闪电，闪电对它造成 $k$ 点伤害，并向左右连续传递给存活怪物；遇到死亡怪物或边界就停止。对每个 $1\\le k\\le\\max a_i$，求杀死全部怪物所需的最少秒数。",
+          "transformedStatement": "固定 $k$ 后，把第 $i$ 只怪物的生命值替换为需要承受的次数 $b_i=\\lceil a_i/k\\rceil$。链式传播被死亡位置分隔，整体答案等价于从左到右累计每个位置相对前一位置新增的正差，并进一步按相邻原始生命值关系合并为加权的整除取整和。",
+          "keyObservations": [
+            "固定伤害值 $k$ 后，每只怪物等价拥有 $b_i=\\lceil a_i/k\\rceil$ 次生命单位，问题转为相邻单位差的累计。",
+            "按从左到右击杀时，第 $i$ 只怪物只需补足超过前一只的部分，因此答案为 $b_1+\\sum_{i=2}^n\\max(0,b_i-b_{i-1})$，且击杀顺序不会影响结果。",
+            "若 $a_i<a_{i-1}$，则对任意 $k$ 都有 $b_i\\le b_{i-1}$；因此可将答案改写为 $\\sum_i c_i\\lceil a_i/k\\rceil$，其中 $c_i$ 只由相邻原始生命值的大小关系决定。",
+            "固定 $k$ 时，生命值区间 $[(t-1)k+1,tk]$ 内的怪物都有相同的 $\\lceil a_i/k\\rceil=t$；按区间汇总对应 $c_i$ 的和，所有 $k$ 的区间总数为 $O(A\\log A)$。"
+          ],
+          "solutionBrief": "先计算每个位置的系数 $c_i$，使答案写成 $\\sum c_i\\lceil a_i/k\\rceil$。按生命值统计各系数和；对每个 $k$ 枚举区间 $[(t-1)k+1,tk]$ 并累加区间和乘 $t$，总复杂度为 $O(n+A\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1954F",
+          "index": "F",
+          "slot": "F",
+          "title": "Unique Strings",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1954/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/128421",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定初始串 $1^c0^{n-c}$，每次可把一个 0 改成 1，最多操作 $k$ 次；若两个结果能通过循环移位互相得到则视为同一个字符串。要求统计不同循环移位等价类的数量，并对 $10^9+7$ 取模。",
+          "transformedStatement": "把每个结果类改看成一个二进制环串：它至多有 $c+k$ 个 1，并含有长度至少 $c$ 的环形连续 1 段。于是问题变为统计这类环串在循环群作用下的轨道数。",
+          "keyObservations": [
+            "可达字符串的旋转等价类，恰好对应于含有至少 $c$ 个连续（按环连接）1 且总 1 数不超过 $c+k$ 的二进制环串，从而去掉了操作顺序限制。",
+            "按 Burnside 引理计数时，平移 $i$ 位的固定串只由 $g=\\gcd(i,n)$ 决定；其前 $g$ 位被重复 $n/g$ 次，因此只需按 $n$ 的因子分组统计。",
+            "固定前缀中最多可放置 $\\left\\lfloor\\frac{(c+k)g}{n}\\right\\rfloor$ 个 1；当 $c<g$ 时，合法前缀数等于总数减去不含长度至少 $c$ 的环形 1 段的坏前缀数。",
+            "用 $d[z][l]$ 统计含 $z$ 个 0、长度为 $l$、末位为 0 且 1 段长度小于 $c$ 的串，追加至多 $c-1$ 个 1 和一个 0 可做区间转移，再用前缀和处理环首尾连接。"
+          ],
+          "solutionBrief": "将答案转为满足条件的环串轨道数，按 Burnside 对各因子 $g$ 统计固定串。每个固定串缩成长度 $g$ 的前缀，用总数减去坏环串；坏串由区间优化的 DP 计数，复杂度为 $O(n^2+\\sum_{g|n}g^2)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
