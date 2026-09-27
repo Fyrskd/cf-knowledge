@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T10:23:00+00:00",
+  "updated_at": "2026-09-27T10:37:34+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -51370,6 +51370,32 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 的操作与胜负规则、editorial_text 的构造策略和小规模分类，结合 tags 判断主题。",
+        "quality_flags": []
+      }
+    },
+    "1915B": {
+      "problem_key": "1915B",
+      "title": "Not Quite Latin Square",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1915/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/123952",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8b90ce536e4aebc03a77719d693a4c1ed5483e937e7e1f955cd84a2a4071ebf8",
+      "generated_at": "2026-09-27T10:37:34+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $3\\times3$ 网格，其中只包含 `A`、`B`、`C` 和一个 `?`，它原本是每行每列都恰好包含三种字母的拉丁方。问号替代了哪个字母，并输出该字母。",
+        "transformed_statement": "将恢复网格的问题转化为全局计数：完整网格中 `A`、`B`、`C` 各出现 $3$ 次，而问号使被替换的字母只剩 $2$ 次，因此寻找出现次数为 $2$ 的字母即可。",
+        "key_observations": [
+          "完整的拉丁方中每个字母应恰好出现 $3$ 次；由于只有一个字符被替换为问号，缺失字母的出现次数恰好为 $2$。",
+          "统计整个 $3\\times3$ 网格中 `A`、`B`、`C` 的出现次数即可定位答案，无需判断问号所在行的其他排列。"
+        ],
+        "solution_brief": "对每个测试用例统计 `A`、`B`、`C` 的出现次数，输出出现次数为 $2$ 的字母；因为原拉丁方中三种字母各出现 $3$ 次。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text；tags 仅用于主题归类。",
         "quality_flags": []
       }
     }

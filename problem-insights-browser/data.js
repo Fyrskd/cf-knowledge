@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2660,
+    "total_problems": 2661,
     "source_total_problems": 2669,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 2660,
-    "with_editorial_brief": 2391,
-    "with_solution_brief": 2392,
+    "filtered_out_problems": 8,
+    "with_statement_brief": 2661,
+    "with_editorial_brief": 2392,
+    "with_solution_brief": 2393,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1722,
+    "ai_override_count": 1723,
     "primary_topic_count": 13,
     "contest_count": 407,
     "rating_min": 800,
@@ -55,11 +55,11 @@ window.CF_INSIGHTS_DATA = {
     "树结构": 142,
     "代数、矩阵与多项式": 20,
     "交互": 85,
-    "基础实现与模拟": 152,
+    "基础实现与模拟": 153,
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1447,
+    "ai_generated_with_editorial": 1448,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 268,
     "manual_override": 891,
@@ -61715,7 +61715,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-12-28",
       "url": "https://codeforces.com/contest/1915",
       "type": "Div. 4",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": 1800,
       "problems": [
         {
@@ -61739,6 +61739,31 @@ window.CF_INSIGHTS_DATA = {
             "题目保证恰有两个数字相等，所以无需比较三种配对情况，直接计算三数异或即可得到唯一值。"
           ],
           "solutionBrief": "对每组输入计算 $a\\oplus b\\oplus c$ 并输出。异或满足 $x\\oplus x=0$，相同的两个数字抵消后，结果正好是唯一出现的数字。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1915B",
+          "index": "B",
+          "slot": "B",
+          "title": "Not Quite Latin Square",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1915/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/123952",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $3\\times3$ 网格，其中只包含 `A`、`B`、`C` 和一个 `?`，它原本是每行每列都恰好包含三种字母的拉丁方。问号替代了哪个字母，并输出该字母。",
+          "transformedStatement": "将恢复网格的问题转化为全局计数：完整网格中 `A`、`B`、`C` 各出现 $3$ 次，而问号使被替换的字母只剩 $2$ 次，因此寻找出现次数为 $2$ 的字母即可。",
+          "keyObservations": [
+            "完整的拉丁方中每个字母应恰好出现 $3$ 次；由于只有一个字符被替换为问号，缺失字母的出现次数恰好为 $2$。",
+            "统计整个 $3\\times3$ 网格中 `A`、`B`、`C` 的出现次数即可定位答案，无需判断问号所在行的其他排列。"
+          ],
+          "solutionBrief": "对每个测试用例统计 `A`、`B`、`C` 的出现次数，输出出现次数为 $2$ 的字母；因为原拉丁方中三种字母各出现 $3$ 次。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
