@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2106,
+    "total_problems": 2114,
     "source_total_problems": 2114,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2106,
-    "with_editorial_brief": 1854,
-    "with_solution_brief": 1855,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2114,
+    "with_editorial_brief": 1862,
+    "with_solution_brief": 1863,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1047,
+    "ai_override_count": 1055,
     "primary_topic_count": 13,
-    "contest_count": 328,
+    "contest_count": 329,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 92,
-    "构造与贪心": 709,
-    "图论与网络流": 123,
+    "构造与贪心": 713,
+    "图论与网络流": 124,
     "动态规划与状态设计": 196,
     "数论与同余": 214,
     "组合计数与概率": 159,
     "数据结构": 180,
     "几何": 46,
-    "树结构": 131,
+    "树结构": 132,
     "代数、矩阵与多项式": 18,
-    "交互": 77,
-    "基础实现与模拟": 87,
+    "交互": 78,
+    "基础实现与模拟": 88,
     "博弈": 74
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 925,
+    "ai_generated_with_editorial": 933,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -31009,6 +31009,252 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：分层流模型很直接，真正瓶颈是要对 t_1..t_m 都求最大流。转到最小割视角后，令 dp[k][mask] 表示处理到第 k 层且该层 S/T 分布为 mask 的最小割，逐层转移即可同时得到所有天的答案。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2106,
+      "name": "Codeforces Round 1020 (Div. 3)",
+      "date": "2025-04-24",
+      "url": "https://codeforces.com/contest/2106",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "2106A",
+          "index": "A",
+          "slot": "A",
+          "title": "Dr. TC",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2106/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/142254",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的二进制串 $s$，构造 $n$ 行：第 $i$ 行复制 $s$ 后仅翻转第 $i$ 个字符。要求统计整个网格中所有字符 `1` 的总数。",
+          "transformedStatement": "将网格总数按列独立统计：对每个位置只需计算它在 $n$ 次构造中的 `1` 出现次数，再把所有位置的贡献相加。",
+          "keyObservations": [
+            "每个位置恰好在对应的那一行被翻转，因此原字符为 $1$ 时在其余 $n-1$ 行贡献 1。",
+            "原字符为 $0$ 时只有对应行会变成 $1$，所以该位置总贡献为 1；各位置贡献可以独立相加。"
+          ],
+          "solutionBrief": "逐字符统计贡献：遇到 `0` 加 $1$，遇到 `1` 加 $n-1$，累加后输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2106B",
+          "index": "B",
+          "slot": "B",
+          "title": "St. Chroma",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2106/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/142254",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定包含 $0$ 到 $n-1$ 的排列，按顺序查看每个前缀，并把该前缀的 MEX 作为对应格子的颜色。请构造一个排列，使颜色为 $x$ 的格子数量最大。",
+          "transformedStatement": "问题等价于最大化 MEX 等于 $x$ 的前缀数量：当 $x<n$ 时，这些前缀必须已经包含全部小于 $x$ 的数且尚未包含 $x$，所以要尽早完成前者并尽晚放置后者。",
+          "keyObservations": [
+            "当 $x<n$ 时，MEX 等于 $x$ 必须先收集完 $0 ext{ 到 }x-1$ 且尚未出现 $x$；因此应把这些较小数放在最前面，把 $x$ 延后到最后。",
+            "把 $0,1,\u0002dots,x-1$ 放在前缀后，MEX 从位置 $x$ 开始变为 $x$；再将 $x$ 放到末位，可使该颜色持续到最长的 $n-x$ 个位置。",
+            "一旦前缀包含了 $x$，其 MEX 不可能仍为 $x$，所以延后 $x$ 是保证颜色持续时间最大的关键。",
+            "当 $x=n$ 时，只有包含全部 $0 ext{ 到 }n-1$ 的完整前缀才会产生 MEX $n$，因此任意排列都能达到同样效果。"
+          ],
+          "solutionBrief": "若 $x<n$，输出 $0,1,\u0002dots,x-1$，再输出 $x+1,\u0002dots,n-1$，最后输出 $x$；这样尽早得到 MEX $x$，并将其维持到末尾。若 $x=n$，输出任意排列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2106C",
+          "index": "C",
+          "slot": "C",
+          "title": "Cherry Bomb",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2106/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/142254",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组 $a,b$，其中 $a_i$ 在 $[0,k]$ 内，$b$ 中的 $-1$ 表示缺失值。将缺失位置填成 $[0,k]$ 内的整数后，要求所有 $a_i+b_i$ 相等，求不同填法的数量。",
+          "transformedStatement": "把公共和记为 $s$，则整个数组 $b$ 被唯一表示为 $b_i=s-a_i$。问题转化为：已知位置限制 $s$ 的唯一取值；全缺失时统计同时满足 $s\\ge\\max(a)$ 和 $s\\le\\min(a)+k$ 的整数 $s$。",
+          "keyObservations": [
+            "一旦确定公共和 $s$，每个位置的缺失值都唯一确定为 $b_i=s-a_i$，因此同一个 $s$ 不会产生多种填法。",
+            "只要存在已知的 $b_i$，公共和就被固定为 $a_i+b_i$；所有已知位置必须给出同一个和，且所有 $s-a_i$ 都必须落在 $[0,k]$ 内，否则答案为 $0$，否则答案为 $1$。",
+            "当所有 $b_i$ 都缺失时，可行的公共和满足 $\\max(a)\\le s\\le \\min(a)+k$，所以方案数为 $k-(\\max(a)-\\min(a))+1$；区间为空时该式自然给出无效结果，需按不可行处理。"
+          ],
+          "solutionBrief": "按是否存在已知的 $b_i$ 分情况。若存在，检查已知位置的 $a_i+b_i$ 是否一致，并验证所有 $s-a_i$ 在 $[0,k]$ 内；若全缺失，则统计 $s\\in[\\max(a),\\min(a)+k]$ 的整数个数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2106D",
+          "index": "D",
+          "slot": "D",
+          "title": "Flower Boy",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2106/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/142254",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定花朵美丽值序列 $a$ 和要求序列 $b$，只能从左到右选择恰好 $m$ 朵，所选第 $i$ 朵的美丽值至少为 $b_i$。开始前最多可在任意位置插入一朵自选美丽值的花，求保证选择成功所需的最小值；无需插入输出 $0$，仍不可能输出 $-1$。",
+          "transformedStatement": "把插入一朵花视为替代要求序列中的一个 $b_i$：原数组负责按顺序满足其余要求，而新增花承担被跳过的要求。于是问题转化为寻找一个可删除的 $b_i$，使其左侧要求与右侧要求在原数组中存在不重叠的匹配。",
+          "keyObservations": [
+            "按从左到右优先匹配当前能满足的最早花朵，总能得到一种可行匹配；若完整匹配了 $b$，无需插花，答案为 $0$。",
+            "插入的新花可以放在任意位置并承担一个要求，因此等价于从要求序列 $b$ 中删除一个 $b_i$，再判断其余要求能否由原数组按顺序满足。",
+            "预处理每个前缀要求的最早匹配位置 $p_i$ 和每个后缀要求的最晚可用起点 $s_i$ 后，删除 $b_i$ 可行当且仅当前后两部分能在数组中拼接，即 $p_{i-1}<s_{i+1}$；取所有可删除要求中的最小值。"
+          ],
+          "solutionBrief": "先用贪心双指针匹配完整的 $b$，成功则输出 $0$。否则分别计算前缀匹配位置和后缀匹配位置，枚举被插入花朵替代的 $b_i$，用前后匹配不冲突判断可行性，并取最小的 $b_i$；不存在则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2106E",
+          "index": "E",
+          "slot": "E",
+          "title": "Wolf",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2106/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/142254",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个排列和区间 $[l,r]$，二分查找值 $k$ 时可选取若干个不含 $k$ 的位置并任意重排其元素。对每个独立查询，求使二分最终找到 $k$ 所需选取位置数的最小值；无法做到则输出 $-1$。",
+          "transformedStatement": "把问题转为让二分区间始终朝着 $k$ 的原位置 $idx_k$ 收缩：沿固定路径检查各中点，统计必须改成小于或大于 $k$ 的错误点，并用排列中未被路径消耗的对应值补足这些需求。",
+          "keyObservations": [
+            "目标值 $k$ 的原位置必须在 $[l,r]$ 内，否则无论怎样重排都无法被二分查到。",
+            "沿着原位置 $idx_k$ 模拟二分；若中点方向错误，就必须把该位置改成相反侧的值，分别计为需要小于或大于 $k$ 的数量。",
+            "方向正确的中点不能随意改动，它们会消耗可供替换的对应大小值；因此还需检查剩余的小值或大值是否足够。",
+            "每个错误中点和用于提供替换值的位置都必须被选中，配对后答案为 $2\\max(needSmall,needBig)$；不足的供给则无解。"
+          ],
+          "solutionBrief": "预处理每个值的位置。对每个查询模拟目标位置上的二分路径，统计两类错误方向及可用的小值、大值；若目标不在区间或供给不足输出 $-1$，否则答案为 $2\\max(needSmall,needBig)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2106F",
+          "index": "F",
+          "slot": "F",
+          "title": "Goblin",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2106/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/142254",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的二进制串 $s$，对每个位置分别复制 $s$ 并翻转该位置，得到 $n$ 个字符串并组成网格。只能选择值为 $0$ 的格子，且所选格子必须全部处于同一个零格连通块中，求最多能选多少个。",
+          "transformedStatement": "将网格按列看待：第 $i$ 列由翻转位置造成的特殊格分成至多三段，只记录各零段所属连通块的大小；遍历列时依据相邻字符决定哪些段合并，问题转化为维护两个前缀连通块的最大权值。",
+          "keyObservations": [
+            "每个翻转位置对应的网格列只有三段结构：全为原字符的上段、翻转形成的单格段和全为原字符的下段，因此零连通块只需按段统计。",
+            "相邻列的零段是否连通只由相邻的两个原字符决定；两者均为 $1$ 时不连通，其余情况按上段或下段合并，避免逐格建图。",
+            "扫描到第 $i$ 列时，若 $s_i=0$，上、下两段分别增加 $i-1$ 与 $n-i$；若 $s_i=1$，当前单个零格接到前一列的下方连通块，形成两个前缀状态。",
+            "最大可行集合恰好是零网格中的最大连通块，因为集合中的所有格子必须两两通过零格互达。"
+          ],
+          "solutionBrief": "把每列压缩为上段、中心段、下段，按相邻列规则维护上方和下方连通块的零格数量。扫描字符串并更新两个状态，所有状态中的最大值就是答案，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2106G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Baudelaire (easy version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2106/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/142254",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "divide and conquer",
+            "greedy",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以未知节点为根、每个节点值为 $1$ 或 $-1$ 的树；可询问若干节点到根路径和的总和，也可翻转任意节点的值。需要在不超过 $n+200$ 次询问内，输出所有节点最终的值；本版本保证所有节点都与节点 $1$ 相邻。",
+          "transformedStatement": "把每个节点抽象为根到该点的路径和 $s_u$。先通过翻转节点 $1$，在其邻居中寻找唯一不会改变路径和的父节点以确定根，再由相邻父子节点的路径和差恢复原值。",
+          "keyObservations": [
+            "已知根后，单点询问得到根到各点的路径和 $s_u$，利用 $v_u=s_u-s_{p_u}$ 即可恢复所有节点值。",
+            "翻转节点 $u$ 只会改变其子节点的路径和，不会改变父节点的路径和；因此可用邻居集合的批量和定位 $u$ 的父亲。",
+            "对一段包含 $m$ 个邻居的集合，翻转 $u$ 前后若差值绝对值为 $2m$，说明其中没有父亲；否则父亲在该段中，从而可二分缩小范围。",
+            "该版本的树是以节点 $1$ 为中心的星形树，找到节点 $1$ 的父亲即可确定根；若不存在未变化邻居，则节点 $1$ 本身就是根。"
+          ],
+          "solutionBrief": "先询问每个节点的路径和。通过翻转节点 $1$，对其邻居集合做二分，利用唯一不变的父节点确定根；随后按父子路径和之差恢复所有节点值，总询问次数为 $n+O(\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2106G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Baudelaire (hard version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/2106/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/142254",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "交互",
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "dfs and similar",
+            "divide and conquer",
+            "implementation",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "给定一棵未知根节点、每个节点值为 $1$ 或 $-1$ 的树。可查询若干节点的根到该节点路径和，也可翻转任意节点值；在不超过 $n+200$ 次查询内，输出所有操作完成后的节点值。",
+          "transformedStatement": "把找根转化为质心分解上的分支定位：翻转候选质心，利用路径和总和判断哪些代表节点仍受其影响，再递归进入唯一异常组件；根确定后，路径前缀和直接还原点值。",
+          "keyObservations": [
+            "对节点 $c$ 做翻转后，某个节点的根路径和仅在 $c$ 位于其根到该节点路径上时改变；因此一批节点的总和恰好变化 $\u00177 2k$，等价于它们全部是 $c$ 的后代。",
+            "在质心分解中，若当前质心就是根，则所有子组件代表都会受翻转影响；若根位于某个子组件，则只有该组件代表不受影响，从而可用前缀检测定位异常分支。",
+            "质心保证每次保留的根候选集合至多减半，前缀检测具有单调性，所以可在每层用二分递归寻找真实根，并将查询数控制在限制内。",
+            "确定根后，单点查询得到每个节点的根路径和；沿已知根向下减去祖先累计值，即可恢复每个节点最终的 $\u001771$ 值。"
+          ],
+          "solutionBrief": "建立树的质心分解。通过翻转质心并比较节点集合总和，判断根所在子组件，二分定位真实根；随后查询所有根路径和并沿树相减恢复节点值。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
