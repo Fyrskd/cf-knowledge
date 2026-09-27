@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2444,
+    "total_problems": 2450,
     "source_total_problems": 2450,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2444,
-    "with_editorial_brief": 2178,
-    "with_solution_brief": 2179,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2450,
+    "with_editorial_brief": 2184,
+    "with_solution_brief": 2185,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1506,
+    "ai_override_count": 1512,
     "primary_topic_count": 13,
-    "contest_count": 375,
+    "contest_count": 376,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 118,
-    "构造与贪心": 772,
+    "字符串": 119,
+    "构造与贪心": 775,
     "图论与网络流": 146,
     "动态规划与状态设计": 213,
     "数论与同余": 268,
     "组合计数与概率": 188,
-    "数据结构": 225,
+    "数据结构": 227,
     "几何": 56,
     "树结构": 135,
     "代数、矩阵与多项式": 19,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1239,
+    "ai_generated_with_editorial": 1245,
     "ai_generated_partial_editorial": 48,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -58422,6 +58422,198 @@ window.CF_INSIGHTS_DATA = {
             "每次固定一个格子的形状只会筛掉与该格不一致的候选完整网格，因此答案就是 8 个候选中仍与所有操作一致的数量；无需实际填充空格。"
           ],
           "solutionBrief": "预先列出 8 个合法网格公式，将圆记为 $1$、方块记为 $0$。维护每个候选是否仍与已固定格子一致，输出初始及每次操作后的存活数量；每次操作检查 8 个候选即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1923,
+      "name": "Educational Codeforces Round 162 (Rated for Div. 2)",
+      "date": "2024-02-23",
+      "url": "https://codeforces.com/contest/1923",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1923A",
+          "index": "A",
+          "slot": "A",
+          "title": "Moving Chips",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1923/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/126339",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由 $n$ 个格子组成的 ribbon，每格有芯片或为空。每次可选一个左侧存在空格的芯片，把它移到左边最近的空格；求使所有芯片最终连续成一个区块且中间无空格所需的最少操作次数。",
+          "transformedStatement": "把目标转化为缩小最左芯片与最右芯片之间的距离：若芯片数为 $c$，连续排列所需的最小端点距离是 $c-1$。每次有效缩短距离的操作都能让该距离减少恰好 $1$，因此答案直接由初始端点距离决定。",
+          "keyObservations": [
+            "设最左、最右芯片位置为 $l,r$，芯片数为 $c$；无空格成块等价于 $r-l=c-1$，因此只需缩小两端距离。",
+            "移动非最右芯片不会减小 $r-l$：最左端可能左移，或两端都不变，因此这类操作不能直接改善目标。",
+            "每次移动当前最右芯片后，新的最右芯片恰好位于原位置左一格，所以 $r-l$ 必定减少 $1$，最终所需操作数就是初始距离与最小距离之差。"
+          ],
+          "solutionBrief": "统计芯片数 $c$、最左位置 $l$ 和最右位置 $r$，答案为 $(r-l)-(c-1)$。无需模拟移动过程，直接遍历 ribbon 完成统计即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1923B",
+          "index": "B",
+          "slot": "B",
+          "title": "Monsters Attack!",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1923/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/126339",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "角色位于数轴的 $0$ 点，怪物分别位于 $x_i$，生命值为 $a_i$。每秒最多发射 $k$ 发子弹攻击怪物，怪物同时向角色移动；必须在每个怪物到达 $0$ 前将其消灭，判断能否消灭全部怪物。",
+          "transformedStatement": "把每个怪物视为截止时间为 $|x_i|$ 秒、处理量为 $a_i$ 的任务；每秒新增 $k$ 点攻击能力，前面未用的能力可以结转，因此只需按截止时间检查累计生命值。",
+          "keyObservations": [
+            "距离为 $d$ 的怪物最晚必须在第 $d$ 秒前消灭，否则它会到达位置 $0$；因此可按距离分组处理截止时间。",
+            "处理距离 $d$ 的怪物时，可用本秒的 $k$ 发子弹加上之前各秒未用的子弹，累计可用弹药决定这一组能否全部消灭。",
+            "若某组生命值总和超过当前累计弹药，后续即使保留全部未来子弹也无法挽救，因此可立即判定为 NO；否则将剩余弹药结转到下一距离。"
+          ],
+          "solutionBrief": "按怪物到位置 $0$ 的距离分组并排序。维护之前未用的子弹；处理距离 $d$ 时检查该组总生命值是否不超过 $k+$lft$，通过后更新 $lft=k+lft-s_d$，全部通过则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1923C",
+          "index": "C",
+          "slot": "C",
+          "title": "Find B",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1923/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/126339",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定正整数数组 c，逐个查询其子数组是否为 good；题面在 good 中关于数组 b 的约束缺失，但结合题解可知：需构造正整数数组 b，使每个 b_i 不等于对应的 c_i 且两数组总和相同。每次查询只判断该区间能否构造出这样的 b。",
+          "transformedStatement": "对一个区间，只需比较其总和与满足逐位置不同条件时 b 的最小可能总和：每个 c_i=1 的位置贡献 2，其余位置贡献 1，因此下界为区间长度加上其中 1 的个数；长度大于 1 时达到下界即可通过分配多余和构造。",
+          "keyObservations": [
+            "每个位置的 b_i 都必须为正整数且不同于 c_i，因此 c_i=1 时最小只能取 2，其余位置最小取 1，整体最小和为区间长度加 1 的个数。",
+            "区间和小于最小可行和时必定无解；区间长度大于 1 且区间和达到该下界后，多出的和可调整到某个位置，仍保持各项与 c_i 不同。",
+            "长度为 1 时唯一元素的 b_1 必须既与 c_1 不同又保持总和不变，无法满足条件，因此单元素区间直接判为 NO。",
+            "区间和与 1 的个数都能用前缀数组求出，所以每次查询只需计算两个差值并检查下界条件。"
+          ],
+          "solutionBrief": "预处理 c 的前缀和及 1 的前缀计数。查询区间长度为 len、和为 s、1 的数量为 k；若 len=1 或 $s<len+k$ 输出 NO，否则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1923D",
+          "index": "D",
+          "slot": "D",
+          "title": "Slimes",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1923/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/126339",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 只史莱姆按顺序排列，每秒恰好一只史莱姆吃掉相邻的一只，且只有体积严格更大者才能进食，被吃者的体积会加入进食者。对每只史莱姆，求在所有操作顺序中它最早经过多少秒会被吃掉；若永远无法被吃掉则输出 $-1$。",
+          "transformedStatement": "对目标史莱姆 $i$，把其一侧相邻的一段视为最终的进食者：该段先合并成一个史莱姆，再吃掉 $i$。因此只需寻找总和大于 $a_i$ 且可合并的最短左、右区间；可合并当且仅当区间长度为 $1$或含有至少两个不同大小。",
+          "keyObservations": [
+            "要吃掉第 $i$ 只史莱姆，邻近方向上的一段必须先合并成一个史莱姆，且该段总和严格大于 $a_i$；若段长为 $1$ 或其中存在不同大小，就一定能合并，否则全相等时无法进行任何合并。",
+            "固定第 $i$ 只史莱姆后，左侧候选段为 $[j,i-1]$、右侧候选段为 $[i+1,j]$；一旦某个候选段可行，向外扩展仍可行，因此可二分寻找距离最近的边界。",
+            "候选段最终吃掉 $i$ 所需的操作数等于边界与 $i$ 的距离 $|i-j|$，所以左右两侧分别找最近可行段后取最小值。",
+            "前缀和可在常数时间计算任意候选段总和，最近异值位置可判断区间是否包含不同大小，从而把每只史莱姆的搜索降为 $O(\\log n)$。"
+          ],
+          "solutionBrief": "对每只史莱姆独立处理。用前缀和判断候选区间总和是否大于自身大小，用最近异值位置判断区间能否合并；由于可行性向外单调，左右两侧二分最近边界，取最小距离，否则输出 $-1$。总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1923E",
+          "index": "E",
+          "slot": "E",
+          "title": "Count Paths",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1923/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/126339",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带颜色的树，统计所有无向简单路径：两个端点颜色相同，且路径内部不再出现该颜色。每条路径只按无向意义计算一次，要求输出满足条件的路径总数。",
+          "transformedStatement": "对每种颜色分别考虑其“顶层”出现位置：从某个子树根向下到候选点的路径上不能先经过同色点。围绕每个顶点合并各子树的这些候选点，跨不同子树配成合法路径；若顶点本身就是该颜色，则候选只能与它配对。",
+          "keyObservations": [
+            "对颜色 $x$，子树中从其根到最近一个 $x$ 色点的顶层点，恰好能作为以该点为端点的有效路径候选，避免路径内部再次出现颜色 $x$。",
+            "若当前点不是颜色 $x$，不同子树中的所有 $x$ 色顶层点可以两两配对，路径经过当前点且内部没有颜色 $x$。",
+            "若当前点颜色为 $x$，来自不同子树的候选不能互相配对，只能分别与当前点配对；合并后该颜色在当前子树的顶层代表被当前点替代。",
+            "将子树信息合并到候选规模最大的子树容器中，并在合并时统计跨子树配对数，可用 small-to-large 将总复杂度控制为 $O(n\\log^2 n)$。"
+          ],
+          "solutionBrief": "将树任选根。对每个颜色维护各子树中的顶层同色点数量；合并子树时按当前点颜色决定跨子树配对或与当前点配对，并用 small-to-large 合并映射、累计答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1923F",
+          "index": "F",
+          "slot": "F",
+          "title": "Shrink-Reverse",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1923/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/126339",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "hashing",
+            "implementation",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定一个至少含有一个 $1$ 的二进制字符串，可进行至多 $k$ 次操作；给定材料表明操作包括交换和反转，但原题面未提供两类操作的具体对象与限制。要求使字符串表示的原整数值最小，并输出该最小原值对 $10^9+7$ 取模的结果。",
+          "transformedStatement": "把操作序列规范化为“先交换、后反转”，且反转次数只需考虑 $0$ 或 $1$。零次反转直接优化二进制串的高位；一次反转则转化为在反串中选择一个覆盖全部 $1$ 的最短区间，并在等长候选中取字典序最小者。",
+          "keyObservations": [
+            "任意最优方案都可整理为先完成所有交换、再完成所有反转；交换后再反转不会增加答案，因而大幅压缩操作顺序。",
+            "先交换后反转时，多次反转等价于至多两次，而第二次反转若有益可由一次额外交换替代，因此只需分别讨论反转次数为 $0$ 或 $1$。",
+            "不反转时，应反复把最左侧的 $1$ 与最右侧的 $0$ 交换；这样优先降低高位，得到该分支的贪心最优结果。",
+            "反转一次时，答案只由反转后最左和最右的 $1$ 决定；枚举左端点并用双指针找最小右端点，再按区间长度和字典序比较，后者可借助后缀数组的类值完成。"
+          ],
+          "solutionBrief": "先将方案规范化为交换后至多一次反转，分别求两种情况的最小二进制值。不反转时贪心交换最左 $1$ 与最右 $0$；反转时在反串上用双指针枚举最优区间，并用后缀数组比较候选。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
