@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2056,
+    "total_problems": 2063,
     "source_total_problems": 2063,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2056,
-    "with_editorial_brief": 1804,
-    "with_solution_brief": 1805,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2063,
+    "with_editorial_brief": 1811,
+    "with_solution_brief": 1812,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 997,
+    "ai_override_count": 1004,
     "primary_topic_count": 13
   },
   "records": [
@@ -48488,6 +48488,295 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 1201,
+      "problem_key": "2123A",
+      "contest_id": 2123,
+      "title": "Blackboard Game",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2123/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/144363",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "博弈"
+      ],
+      "original_tags": [
+        "math"
+      ],
+      "statement_brief": "黑板上写有整数 $0$ 到 $n-1$。每轮 Alice 先擦去一个数，随后 Bob 必须擦去一个仍在黑板上且与它的和模 $4$ 等于 $3$ 的数；无法行动者输，要求判断双方最优策略下谁获胜。",
+      "transformed_statement": "将每个整数只保留其模 $4$ 的余数，游戏转化为四类数字的配对问题：$0$ 与 $3$ 配对、$1$ 与 $2$ 配对；判断四类数量能否全部配平即可。",
+      "key_observations": [
+        "若 Bob 能预先把所有数字划分成满足 $a+b\\equiv3\\pmod4$ 的不相交对子，就能对 Alice 每次选择直接拿走对应数字并获胜；否则 Alice 可破坏这种配对。",
+        "数字的具体大小不影响配对关系，只需按模 $4$ 分类；余数 $0$ 只能和 $3$ 配对，余数 $1$ 只能和 $2$ 配对。",
+        "因此 Bob 获胜当且仅当余数 $0$ 与 $3$ 的数量相等、余数 $1$ 与 $2$ 的数量相等；对连续区间 $0,1,\\dots,n-1$，这等价于 $n\\bmod4=0$。"
+      ],
+      "solution_brief": "统计 $0,1,2,3\\pmod4$ 的出现次数，只有两组互补余数数量分别相等时 Bob 能固定配对获胜。对连续整数区间进一步化简为 $n\\bmod4=0$ 输出 Bob，否则输出 Alice。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:08:00+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1202,
+      "problem_key": "2123B",
+      "contest_id": 2123,
+      "title": "Tournament",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2123/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/144363",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy"
+      ],
+      "statement_brief": "有 $n$ 名玩家，第 $i$ 名玩家强度为 $a_i$。每次剩余人数超过 $k$ 时任选两人对战，强度较低者淘汰，强度相同则任选一人淘汰；判断是否存在操作顺序，使玩家 $j$ 成为最后剩下的 $k$ 人之一。",
+      "transformed_statement": "把问题按最终剩余人数分成两种情况：保留多人时可暂时避开目标玩家；只保留一人时，胜者必须来自全场最高强度玩家。于是只需比较 $k$ 与 $a_j$、全局最大值的关系。",
+      "key_observations": [
+        "当 $k>1$ 时，可以安排目标玩家始终不被选中，直到剩余人数降为 $k$，因此必然可行。",
+        "当 $k=1$ 时，所有全场最高强度玩家中至少有一人无法被击败并会存活到最后，所以目标玩家必须具有全场最大强度。",
+        "若目标玩家具有最大强度，可通过平局淘汰其他最高强度玩家，并让其余玩家在对局中被淘汰，从而使目标玩家成为最后一人。"
+      ],
+      "solution_brief": "先求全场最大强度。若 $k>1$，答案恒为 YES；若 $k=1$，只有目标玩家强度等于最大值时答案才为 YES。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:07:48+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1203,
+      "problem_key": "2123C",
+      "contest_id": 2123,
+      "title": "Prefix Min and Suffix Max",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2123/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/144363",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "data structures"
+      ],
+      "statement_brief": "给定一个元素互异的数组，每次可选择非空前缀并将其压成最小值，或选择非空后缀并将其压成最大值，数组长度随之减少。对每个原元素判断能否通过若干次操作把数组变成只含它的单元素数组，并输出对应二进制串。",
+      "transformed_statement": "一个元素能够最终存活，当且仅当它是从左侧看见的前缀最小值，或是从右侧看见的后缀最大值；因此问题转化为同时标记两类位置。",
+      "key_observations": [
+        "若 $a_i$ 是前缀最小值，先把前 $i$ 个元素压成 $a_i$，再将后缀压缩，最后在长度为 $2$ 的数组中选择它，因此一定可达。",
+        "若 $a_i$ 是后缀最大值，完全对称地先压缩后缀，再处理剩余元素，也一定可达。",
+        "若 $a_i$ 既非前缀最小值也非后缀最大值，取其左侧前缀最小值 $a_p$ 和右侧后缀最大值 $a_s$，三者满足 $p<i<s$ 且 $a_p<a_i<a_s$。",
+        "在首次删除 $a_p$、$a_i$、$a_s$ 中任意一个时，若通过前缀或后缀操作删除端点元素，所选区间必同时导致 $a_i$ 被压掉，因此 $a_i$ 不可能单独保留。"
+      ],
+      "solution_brief": "预处理每个位置的前缀最小值和后缀最大值。根据可达性判定，$a_i$ 等于任一对应值时输出 1，否则输出 0。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:07:35+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1204,
+      "problem_key": "2123D",
+      "contest_id": 2123,
+      "title": "Binary String Battle",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2123/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/144363",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "games",
+        "greedy"
+      ],
+      "statement_brief": "给定长度为 $n$ 的二进制字符串，Alice 每回合可任选 $k$ 个位置并将其置为 $0$，Bob 每回合可任选一个长度为 $k$ 的连续子串并将其全置为 $1$，双方轮流且 Alice 先手。若字符串在任意时刻全为 $0$，Alice 获胜；否则 Bob 获胜，要求判断最优策略下的赢家。",
+      "transformed_statement": "把局面核心压缩为字符串中 $1$ 的数量及其位置：Alice 每回合最多清除 $k$ 个 $1$，而 Bob 需判断能否用一个长度为 $k$ 的区间制造 $k$ 个 $1$ 并在区间外保留额外的 $1$。区间能否避开该额外位置由 $n$ 与 $2k$ 的关系决定。",
+      "key_observations": [
+        "若初始 $1$ 的数量不超过 $k$，Alice 第一步就能选中所有 $1$ 并立即获胜，因而只需分析 $1$ 的数量大于 $k$ 的情况。",
+        "Bob 获胜等价于每次自己操作后都保留至少一个不在所选连续段中的额外 $1$，从而 Alice 下一回合前始终面对超过 $k$ 个 $1$。",
+        "当 $n\\ge 2k$ 时，任取一个已有的额外 $1$，总能在其左侧或右侧找到长度为 $k$ 且不包含它的连续段；Bob 将该段置一后，至少保留 $k+1$ 个 $1$。",
+        "当 $n<2k$ 时，所有长度为 $k$ 的连续段都包含位置 $k$；Bob 首次操作后该位置必为 $1$，Alice 后续保留它并清除其余 $k$ 个 $1$，使 Bob 每轮至多新增 $k-1$ 个 $1$，总数严格下降并最终归零。"
+      ],
+      "solution_brief": "统计字符串中的 $1$ 数量。若数量不超过 $k$ 或 $n<2k$，Alice 获胜；否则 Bob 可持续保留一个额外的 $1$，答案为 Bob。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:07:13+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1205,
+      "problem_key": "2123E",
+      "contest_id": 2123,
+      "title": "MEX Count",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2123/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/144363",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "greedy",
+        "sortings",
+        "two pointers"
+      ],
+      "statement_brief": "给定一个含 $n$ 个非负整数的数组，每次必须恰好删除指定数量 $k$ 个元素，且不改变其余元素的相对内容。对每个 $k=0,1,\\ldots,n$，统计删除后可能得到的不同 MEX 数量。",
+      "transformed_statement": "把每个候选 MEX 值 $i$ 看成对删除次数的可行区间：必须删掉所有 $i$，同时保留至少 $i$ 个元素来覆盖 $0$ 到 $i-1$，所以其贡献区间为 $[\\mathrm{freq}(i),n-i]$；问题转为区间覆盖计数。",
+      "key_observations": [
+        "删除元素不会增加原数组的 MEX，因此候选值只需考虑 $0$ 到原始 MEX。",
+        "令候选 MEX 为 $i$，恰好删除 $k$ 个元素时，必要且充分条件是 $\\mathrm{freq}(i)\\le k$ 且 $i\\le n-k$；前者保证能删光所有 $i$，后者保证保留的元素足以覆盖 $0$ 到 $i-1$。",
+        "固定候选值 $i$ 后，它对所有 $k\\in[\\mathrm{freq}(i),n-i]$ 都贡献一次，因此可把每个候选值转化为答案数组上的一个区间，并用差分数组统一统计。"
+      ],
+      "solution_brief": "统计每个值的出现次数并求原始 MEX。对每个 $i\\le\\mathrm{MEX}$，将其可行删除数区间 $[\\mathrm{freq}(i),n-i]$ 用差分数组加入，最后做前缀和得到各 $k$ 的可行 MEX 数量。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:06:57+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1206,
+      "problem_key": "2123F",
+      "contest_id": 2123,
+      "title": "Minimize Fixed Points",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2123/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/144363",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "number theory"
+      ],
+      "statement_brief": "给定 $n$，构造一个 $1$ 到 $n$ 的排列，使每个位置 $i\\ge2$ 都满足 $\\gcd(i,p_i)>1$。在所有满足条件的排列中，要求固定点 $p_i=i$ 的数量最少，并输出任意一个最优排列。",
+      "transformed_statement": "把排列拆成若干置换环：只要一个环中的所有下标和值都含有同一素因子，该环就自动满足最大公约数条件。于是按每个数的最大素因子分组，并把每组未分配元素轮换，问题转化为最小化单元素分组。",
+      "key_observations": [
+        "若一个数与区间内所有其他数都互质，它只能放在自己的位置；这类必然固定的数正是 $1$，以及满足 $2i>n$ 的素数。",
+        "将同一循环中的所有数都安排为某个素数 $q$ 的倍数，则该循环内每个位置 $i$ 都满足 $gcd(i,p_i)\\ge q>1$，从而整体满足条件。",
+        "按最大素因子分组时，素数 $q$ 与所有最大素因子为 $q$ 的数形成一个循环；若 $2q\\le n$，该组至少含有 $q,2q$，轮换后不会产生固定点。",
+        "因此仅保留 $1$ 和大于 $n/2$ 的素数为单点循环，恰好达到必然固定点的下界，固定点数量最少。"
+      ],
+      "solution_brief": "预先筛出素数。对每个测试，按素数从大到小处理，将尚未分配且为该素数倍数的数收集成环并循环赋值；最后未分配的数自环。这样每个非单点环共享素因子，只有 $1$ 和大素数保持固定，达到最优。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:06:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1207,
+      "problem_key": "2123G",
+      "contest_id": 2123,
+      "title": "Modular Sorting",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2123/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/144363",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "数论与同余",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "data structures",
+        "greedy",
+        "math",
+        "number theory",
+        "sortings"
+      ],
+      "statement_brief": "给定一个长度为 $n$、元素均在 $[0,m)$ 的数组。修改操作永久把某个 $a_i$ 赋为指定值；查询操作给定 $k$，可对任意元素重复执行 $a_i\\leftarrow(a_i+k)\\bmod m$，且每次查询互相独立，判断是否能把数组变成非递减。",
+      "transformed_statement": "固定 $d=\\gcd(k,m)$ 后，每个位置只能在保持模 $d$ 余数不变的数中选择。问题转化为按顺序选取各位置的最小合法值，并判断贪心过程是否在模 $m$ 的层次中跨越了过多次数。",
+      "key_observations": [
+        "对固定查询令 $d=\\gcd(k,m)$，单个元素经过若干次操作后恰好能到达所有与原值模 $d$ 同余的数，因此可达集合只由该同余类决定。",
+        "按顺序把每个元素变成不小于前一个元素的最小可达值即可得到最小结尾值；相邻元素的模 $d$ 余数下降时必然发生一次跨层，跨层次数必须小于 $m/d$。",
+        "令 $\\mathrm{diff}_i=a_i-a_{i-1}$ 且 $a_0=0$，贪心后的结尾值等于各 $\\mathrm{diff}_i$ 对 $d$ 取非负余数后的总和；修改一个 $a_i$ 只影响相邻的至多两个差分项。",
+        "$\\gcd(k,m)$ 必为 $m$ 的约数，因此只需为 $m$ 的每个约数维护一个统计量，查询时直接使用对应的 $d$。"
+      ],
+      "solution_brief": "枚举并维护 $m$ 的所有约数 $d$。对每个 $d$ 维护差分项模 $d$ 后的和，单点修改只更新相邻两项；查询令 $d=\\gcd(k,m)$，若维护值小于 $m$ 则输出 YES，否则输出 NO。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:06:24+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1208,
