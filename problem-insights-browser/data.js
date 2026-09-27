@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2762,
+    "total_problems": 2770,
     "source_total_problems": 2770,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2762,
-    "with_editorial_brief": 2500,
-    "with_solution_brief": 2501,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2770,
+    "with_editorial_brief": 2508,
+    "with_solution_brief": 2509,
     "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1824,
+    "ai_override_count": 1832,
     "primary_topic_count": 13,
-    "contest_count": 420,
+    "contest_count": 422,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,11 +45,11 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 150,
-    "构造与贪心": 864,
+    "构造与贪心": 868,
     "图论与网络流": 168,
-    "动态规划与状态设计": 236,
-    "数论与同余": 297,
-    "组合计数与概率": 211,
+    "动态规划与状态设计": 237,
+    "数论与同余": 299,
+    "组合计数与概率": 212,
     "数据结构": 259,
     "几何": 68,
     "树结构": 145,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1554,
+    "ai_generated_with_editorial": 1562,
     "ai_generated_partial_editorial": 55,
     "missing_editorial": 261,
     "manual_override": 891,
@@ -76,6 +76,257 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
+    {
+      "id": 2269,
+      "name": "Codeforces Round 1124 (Div. 2)",
+      "date": "2026-09-26",
+      "url": "https://codeforces.com/contest/2269",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2269A",
+          "index": "A",
+          "slot": "A",
+          "title": "SauSaGe Bank",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2269/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "账户初始有 $1$ 美元，共运行 $n$ 天；每天早上余额翻倍，晚上可选择提款，提款金额加入卡中且账户重置为 $1$，不提款则继续累积。必须恰好在 $k$ 个不同的晚上提款，求第 $n$ 天结束时卡中金额的最大值。",
+          "transformedStatement": "把两次提款之间经历的天数记为一个正整数区间；每个区间贡献其长度对应的 $2^d$，于是问题等价于将 $n$ 划分为 $k$ 个正整数并最大化这些幂之和。",
+          "keyObservations": [
+            "每次提款前账户经历的天数为一个正整数区间，等待 $d$ 天恰好贡献 $2^d$，因此提款过程可转成把 $n$ 划分为 $k$ 个正整数区间。",
+            "固定两个区间总长度时，把较短区间再缩短一天、较长区间延长一天会使 $2^a+2^b$ 增大，因此收益应尽量集中到一个区间。",
+            "反复转移后最优区间长度为 $n-k+1,1,1,\\ldots,1$，所以答案为 $2^{n-k+1}+2(k-1)$。"
+          ],
+          "solutionBrief": "将相邻提款日之间的等待天数视为区间长度，需把 $n$ 划分成 $k$ 个正整数。由幂函数的集中性，最优长度为 $n-k+1$ 与 $k-1$ 个 $1$，直接计算 $2^{n-k+1}+2(k-1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2269B",
+          "index": "B",
+          "slot": "B",
+          "title": "KiaKio and Squared Numbers",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2269/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 个灯塔，第 $0$ 晚分别显示 $a_i$；之后每晚把当前数替换为其十进制各位数字平方和。若存在某晚起两座灯塔始终显示相同数字，则称它们协调，求满足条件的下标对 $(i,j)$（$i<j$）数量。",
+          "transformedStatement": "把每个初值映射为其最终周期中的长期状态：到达固定点 $1$ 的归为一类，进入八元环的则用“环位置减去到达所需步数”的模 $8$ 相位表示；协调关系等价于签名相同。",
+          "keyObservations": [
+            "一次变换后数值至多为 $729$，因此所有初值都会很快进入有限状态；反复变换最终只会到达 $1$ 自环或长度为 $8$ 的循环。",
+            "到达 $1$ 的所有数从某晚起恒为 $1$，可统一视为同一个签名；进入八环的数则必须比较它们在同一晚对应的环上位置。",
+            "若某数经过 $s$ 步到达八环下标 $k$，其长期相位为 $(k-s)\\bmod 8$；相位相同当且仅当两盏灯从某晚起每晚显示完全相同的数。",
+            "将相同签名的数量记为 $cnt$，答案可直接累加每组内部配对数 $cnt[x](cnt[x]-1)/2$，无需比较所有灯塔对。"
+          ],
+          "solutionBrief": "对每个初值模拟数位平方和，直到到达 $1$ 或八元环。到达 $1$ 的签名设为 $8$；到达环上位置 $k$ 且耗时 $s$ 的签名设为 $(k-s)\\bmod 8$。统计各签名数量并累加组合数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2268,
+      "name": "Codeforces Round 1124 (Div. 1)",
+      "date": "2026-09-26",
+      "url": "https://codeforces.com/contest/2268",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2268A",
+          "index": "A",
+          "slot": "A",
+          "title": "K Is Important",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定正整数数组和参数 $k$。当当前长度至少为 $k$ 时，每次只能删除从左数第 $k$ 个或从右数第 $k$ 个元素，并将其加入得分；长度不足 $k$ 后停止，求最大得分。",
+          "transformedStatement": "把元素按原数组的对称位置划分：部分元素无论如何都会被删除，部分元素永远不会被删除，剩余元素形成对称竞争对，每对必须且只能贡献其中一个元素的值。",
+          "keyObservations": [
+            "当 $2k\\le n$ 时，原数组中下标满足 $k\\le i\\le n-k+1$ 的元素无论操作顺序如何都会被删除，因此它们的总和必然计入答案。",
+            "删除上述必然元素后，剩余元素从两端对称配对；对于每一对 $(a_i,a_{n-i+1})$，最终恰好删除其中一个，所以该对的最优贡献是 $\\max(a_i,a_{n-i+1})$。",
+            "当 $2k>n$ 时，中间下标 $n-k+2\\le i\\le k-1$ 的元素会在数组长度降到 $k$ 以下前始终避开两端第 $k$ 个位置，因此不会被删除；其余元素仍按对称位置两两竞争。",
+            "将必然删除的元素直接累加，再从剩余序列的两端逐对取较大值，恰好覆盖所有可获得的删除贡献，整个过程只需线性扫描。"
+          ],
+          "solutionBrief": "先累加必然会被删除的中间区间；其余元素按原数组对称位置配对，每对只能删除一个，取两者较大值。用双指针从剩余序列两端配对，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2268B",
+          "index": "B",
+          "slot": "B",
+          "title": "What a SauSaGe! It's All Meat",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 个小于 $16$ 的数量，并进行若干次永久更新。每次回答时，可任意多次选择相邻两个元素，并对二者同时异或 $3k$（$1\\le k\\le5$）；求最多能让多少个元素变成 $3$ 的倍数。操作只用于当前状态，不影响后续更新。",
+          "transformedStatement": "将相邻操作等价扩展为：可选择任意两个元素，同时异或任意置位数为偶数的四位掩码。于是奇数 popcount 元素不可达，而所有偶数 popcount 元素总能同时构造为 $3$ 的倍数，问题转化为统计这类元素。",
+          "keyObservations": [
+            "所有可用掩码 $3,6,9,12,15$ 的二进制置位数均为偶数，因此操作保持每个数的 popcount 奇偶性；奇数 popcount 的元素永远不能变成 $3$ 的倍数。",
+            "沿相邻边连续操作可把同一掩码只作用于任意两个元素；组合操作后，任意偶数 popcount 的四位掩码都可以用于这两个元素。",
+            "若存在奇数 popcount 元素，可将其作为缓冲，对每个偶数 popcount 元素与缓冲同时异或该元素，使前者变为 $0$，从而达到所有可行元素都计入答案。",
+            "若全部元素的 popcount 均为偶数，可先把数组化为 $[x,0,\u001b[0m\\ldots,0]$，其中 $x$ 为全数组异或和；仅剩 $x=5$ 或 $10$ 时，再对前两个元素异或 $3$ 即可全部变为 $3$ 的倍数。"
+          ],
+          "solutionBrief": "答案恰为数组中 popcount 为偶数的元素个数。维护该计数即可：更新时减去旧值是否满足偶数 popcount，再加上新值，初始处理为 $O(n)$，每次更新为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2268C",
+          "index": "C",
+          "slot": "C",
+          "title": "KiaKio and Energy Intervals",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组，每次选择一个至少包含两个元素的连续区间，取区间最大值 $m$，将区间内每个数与 $m$ 按位与后全部按位异或。求所有合法区间能产生的最大结果。",
+          "transformedStatement": "将每个区间表示为两个前缀异或端点，并用最大笛卡尔树的 LCA 表示区间最大值；问题转为寻找满足指定掩码的端点对，再逐位贪心构造答案。",
+          "keyObservations": [
+            "按位与可分配到异或上，因此区间值等于 $(p_{l-1}\\oplus p_r)\\mathbin{\\&}m$，只需关注两个前缀端点和区间最大值。",
+            "最大笛卡尔树中，区间 $[l,r]$ 的最大值对应其端点节点的 LCA；若 LCA 为 $v$，两端前缀下标分别落在 $[L-1,v-1]$ 与 $[v,R]$。",
+            "固定候选掩码 $M$ 后，令 $s_i$ 为 $a_i\\mathbin{\\&}M$ 的前缀异或；可行条件化为 $(a_v\\mathbin{\\&}M)=M$ 且存在 $s_x\\oplus s_y=M$。",
+            "小子树优先扫描并将大子树前缀异或保留在计数表中，每个端点至多被扫描 $O(\\log n)$ 次；同时必须排除 $(v-1,v)$ 对应的单元素区间。"
+          ],
+          "solutionBrief": "建立最大笛卡尔树，按答案高位到低位贪心试加掩码 $M$。每次用掩码后的前缀异或，在树上以小合并大检查互补值；单次检查 $O(n\\log n)$，总复杂度 $O(18n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2268D",
+          "index": "D",
+          "slot": "D",
+          "title": "AghaBalaSar and Hamed",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的排列，从位置 $i$ 出发时可一步移动到任意左侧位置，或移动到右侧第一个值大于 $p_i$ 的位置。求所有有序位置对的最短移动步数之和；不可达时该步数记为 $0$。",
+          "transformedStatement": "把每个位置的唯一右跳记为 $R_i$，并按无法继续右跳的位置划分独立区块；对每个位置维护到本区块所有位置的距离和 $dp_i$，通过两步可达的最右位置及其中距离为 $2$ 的点数完成转移。",
+          "keyObservations": [
+            "最短路径可规范为至多一次初始左移、连续若干次被迫右移、至多一次末尾左移，因此不必搜索任意路径。",
+            "令 $R_i$ 为右侧第一个大于 $p_i$ 的位置；以 $R_r=n+1$ 的位置为块尾后，块右侧位置均不可达，距离和可在块内独立计算。",
+            "若从 $i$ 两步能到达的最右位置 $x$ 恰为 $R_i$，则所有更右位置都必须先经过 $R_i$，从而有 $dp_i=dp_{R_i}+r-i-1$。",
+            "若 $x>R_i$，则 $x$ 右侧的距离统一由 $dp_x$ 转移；区间 $(i,x]$ 中只需统计距离为 $2$ 的位置数 $c_2$，得到 $dp_i=dp_x+2(r-i)-2-c_2$，并用 $L_j=\\\\min\\{k:R_k=j\\}$ 从右向左维护可两步到达的位置。"
+          ],
+          "solutionBrief": "先用跳跃方式求每个 $R_i$ 及其逆向最小位置 $L_j$，按 $R_r=n+1$ 划分不可跨越的块。块内从右向左维护标记位置，求两步最远点 $x$ 与距离为 $2$ 的数量 $c_2$，按两种转移计算 $dp_i$，总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2268E",
+          "index": "E",
+          "slot": "E",
+          "title": "Kia Kio and Tree of Life",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "树结构",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "data structures",
+            "fft",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定数组，递归选择连续区间中的一个位置为根，左右剩余区间分别构成左右子树，从而生成所有中序序列固定为 $1,2,\\ldots,n$ 的二叉树。删去树中每条边，计算两部分数组元素异或和之和；求所有合法树的该值总和，并对 $998244353$ 取模。",
+          "transformedStatement": "把每条边下方的子树视为一个连续子数组。长度为 $l$ 的固定子数组以子树出现的次数是 $C_lC_{n-l}$，故答案是所有真子数组的异或值与整体异或补值之和，按长度乘 Catalan 权重后的总和。",
+          "keyObservations": [
+            "固定长度为 $l$ 的连续子数组作为某条边下方子树时，出现于恰好 $C_lC_{n-l}$ 棵树，因此可按子数组长度统计贡献。",
+            "删去子树对应的边后，两部分异或值为 $X_I$ 与 $S\\oplus X_I$；逐位处理后，答案转化为各长度中满足某一位为 $1$ 的子数组数量加权和。",
+            "若总异或 $S$ 的某位为 $1$，两部分该位必恰有一部分为 $1$，该位贡献与子数组内容无关，只需统计所有树的边数。",
+            "对 $S$ 中为 $0$ 的位，将前缀异或该位编码为 $\\pm1$，不同符号对数由自相关得到；利用 Parseval 恒等式直接计算其 Catalan 权重和，避免逐位逆变换。"
+          ],
+          "solutionBrief": "用 Catalan 数统计每个连续子数组作为子树的次数，按位计算切边两侧异或贡献。对总异或为 $0$ 的位，以前缀异或的 $\\pm1$ 序列做自相关，并用 NTT 与 Parseval 计算加权和；复杂度为 $O(18n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2268F",
+          "index": "F",
+          "slot": "F",
+          "title": "Deglado",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个 $2n\\times2n$ 网格，且每一列都是 $1$ 到 $2n$ 的排列。每次选择相邻两行和相邻两列组成的 $2\\times2$ 子网格，同时交换两列中的上下元素；要求在不超过 $n\\binom{2n}{2}+9n$ 次操作内使每列从上到下递增，否则输出无解。",
+          "transformedStatement": "把相邻列配成 $n$ 个列对，逐个数值 $x$ 处理：目标是将所有 $x$ 集中到第 $x$ 行。对每个列对按当前行含有 $0、1$ 个且位于左侧或右侧、2 个 $x$ 分类，并通过左右方向的配对消除逐步变成双 $x$ 类型。",
+          "keyObservations": [
+            "每次操作分别在两列中交换一对元素，因此两列逆序数的奇偶性各自翻转，总逆序数奇偶性保持不变；奇数时不可能变成全有序。",
+            "按数值从小到大处理，并只在当前行及其下方移动值 $x$，可在不破坏已固定行的前提下把所有 $x$ 放入第 $x$ 行。",
+            "将相邻列配成列对后，每对在当前行只需区分 $0、L、R、1$ 四种类型；从左处理 $L$、从右处理 $R$，相遇时可同时修复两对，从而避免额外的大规模移动。",
+            "固定一个 $x$ 时每个列对至多使用 $2n-x$ 次主要操作，端点和最后一行只增加线性次数，总数不超过 $n\\binom{2n}{2}+9n$。"
+          ],
+          "solutionBrief": "先计算所有列逆序数总和的奇偶性，若为奇数输出 $-1$。否则按 $x=1$ 到 $2n-1$ 处理，配对相邻列并用 $0/L/R/1$ 类型从两侧合并、修复，使所有 $x$ 到达第 $x$ 行；端点和最后一行特殊处理，操作数满足上界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
     {
       "id": 2267,
       "name": "Codeforces Round 1123 (Div. 2)",
