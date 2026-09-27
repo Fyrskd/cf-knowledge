@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T22:09:27+00:00",
+  "updated_at": "2026-09-27T22:14:58+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -61088,6 +61088,153 @@
         "quality_flags": [
           "statement_text中的魔法具体规则缺失，部分规则依据editorial与样例推断"
         ]
+      }
+    },
+    "1739F": {
+      "problem_key": "1739F",
+      "title": "Keyboard Design",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1739/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/107461",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a84126ea0ef47a169969250a905ddaa76948e12ebb6d968e056606fc2a4b4863",
+      "generated_at": "2026-09-27T22:12:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定由字母 a 到 l 组成的若干单词及使用频率。键盘是这 12 个字母各出现一次的排列；只有当单词中每对相邻字母也在键盘中相邻时，才能在该键盘上轻松输入，要求构造使可输入单词频率总和最大的键盘排列。",
+        "transformed_statement": "把每个单词转成由其相邻字母关系形成的图：可行时它必须是一条路径，并对应两个方向字符串。于是问题等价于排列 12 个字母，使键盘中作为连续子串出现的这些方向串的权值总和最大。",
+        "key_observations": [
+          "把单词中出现过的相邻字母建成无向图；若某点度数至少为 3 或图含环，就不可能嵌入线性键盘，只有“一个简单路径加若干孤立点”时才可能成功。",
+          "合法单词对应路径的两个方向字符串，且单词可输入当且仅当其中一个方向是键盘排列的连续子串，从而把复杂的相邻约束转成子串匹配。",
+          "同一单词的两个方向不可能同时出现在一个键盘中，因此可把单词权值同时赋给两个方向字符串，最大化键盘中所有模式子串权值之和不会重复计分。",
+          "将所有方向字符串放入 Aho-Corasick 自动机，并把每个状态及其失配链上的模式权值预先求和；随后用 $dp[mask][v]$ 表示已放置字母集合为 $mask$、自动机处于状态 $v$ 时的最大收益。"
+        ],
+        "solution_brief": "为每个单词提取相邻字母图的路径及两个方向；不成路径的单词舍弃。将所有方向串加入 Aho-Corasick，预处理每个状态的失配链累计权值，再用 $dp[mask][v]$ 逐字母扩展键盘并累加新状态收益，取完整排列的最大值。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 tags 提炼；算法细节主要来自 editorial。",
+        "quality_flags": []
+      }
+    },
+    "1739E": {
+      "problem_key": "1739E",
+      "title": "Cleaning Robot",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1739/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/107461",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9eac63011399779000dedd60a44eb234f83dc8c12e4111fb6a9adef3c614003c",
+      "generated_at": "2026-09-27T22:12:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个两行 $n$ 列的网格，机器人从第 $1$ 行第 $1$ 列出发，每次移动到距离当前位置最近的脏格并清扫；若最近脏格不唯一就故障。启动前可以手动清理任意脏格，求在机器人不故障的前提下最多能保留多少脏格交给它清扫。",
+        "transformed_statement": "将清扫过程重述为从左到右处理各列：由于机器人不会向左移动，只需记录它到达当前列的行，以及当前列另一格是否仍脏；这些信息足以判断下一列的合法保留方式和移动结果。",
+        "key_observations": [
+          "由于走廊只有两行，机器人清扫时不会向左移动，因此可以按列从左到右处理状态。",
+          "机器人位于第 $i$ 列时，只需关注后方最近的含脏单元格列；若该列两格都脏，两个单元格距离相同，机器人必然故障。",
+          "状态 $dp[i][j][f]$ 记录机器人从左侧到达第 $i$ 列第 $j$ 行时的最大保留脏格数，其中 $f$ 表示第 $i$ 列另一行是否仍脏，从而保留了影响下一列的全部信息。",
+          "若当前列另一行仍脏，下一列必须先清理当前行对应单元格以避免并列选择；否则可选择保留或手动清理下一列另一行，并据此唯一确定机器人的去向。"
+        ],
+        "solution_brief": "按列进行动态规划，维护机器人所在行以及当前列另一格是否脏。根据下一列两格的保留或手动清理情况转移，确保机器人始终没有等距选择，并取末列所有状态的最大值，复杂度为 $O(n)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text 及 tags 中的 DP 信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "1739D": {
+      "problem_key": "1739D",
+      "title": "Reset K Edges",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1739/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/107461",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3af186e9cbf72c6d8e886223282cb86680b854d10c34aeba71e3a5c6d9c9e12f",
+      "generated_at": "2026-09-27T22:13:20+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定以 1 为根的树，每次可把一个顶点与其父亲的边重置为连接该顶点到根，即将整个对应子树移到根下，最多操作 $k$ 次。要求求操作后树的最小可能高度。",
+        "transformed_statement": "将问题转化为：最多把 $k$ 个子树直接接到根，使所有保留下来的根到顶点路径长度不超过目标 $h$；固定 $h$ 后，求达到该高度所需的最少切割次数。",
+        "key_observations": [
+          "把一次操作等价为将某个顶点的父亲改成根 1；由于各次赋值互不依赖，操作顺序可以重排为按被选顶点深度递减处理，避免嵌套子树操作互相影响。",
+          "固定目标高度 $h$ 时，被移到根下的子树原高度必须不超过 $h-1$；否则重新接到根后会产生高度至少 $h+1$，不可能得到目标高度。",
+          "若仍有深度大于 $h$ 的顶点，取其中最深者，必须切断包含它的某个子树；选择其向上 $h-1$ 条边处的祖先最优，因为该子树仍满足高度限制且包含其他候选切点的子树。",
+          "使高度不超过 $h$ 所需的操作数随 $h$ 增大而不增，因此可二分最小可行高度；判定时按深度从大到小反复切除上述祖先子树。"
+        ],
+        "solution_brief": "二分目标高度 $h$。预处理每个顶点向上 $h-1$ 条边的祖先，并按深度递减处理；遇到尚未被切除且深度超标的顶点，就切其对应祖先子树并标记后代，统计切割次数是否不超过 $k$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "构造与贪心",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text 及 tags 中的树、贪心、二分和数据结构信息。",
+        "quality_flags": []
+      }
+    },
+    "1739B": {
+      "problem_key": "1739B",
+      "title": "Array Recovery",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1739/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/107461",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "684036397bf3452f708ebd07dcdb2c1358b0a23a5af5c09ee8c137e7f0be85ad",
+      "generated_at": "2026-09-27T22:14:43+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定非负数组 $d$，其中 $d_1=a_1$、$d_i=|a_i-a_{i-1}|$。请恢复非负数组 $a$：若合法数组唯一则输出它，否则输出 $-1$。",
+        "transformed_statement": "把恢复过程改写为逐项为每个 $d_i$ 选择加号或减号的路径：$a_1$ 被固定为 $d_1$，其余位置从前一项转移，并判断全加号路径之外是否存在一次仍保持非负的有效减号选择。",
+        "key_observations": [
+          "将每个差值视为两种转移：$a_i=a_{i-1}+d_i$ 或 $a_i=a_{i-1}-d_i$，因此可先固定全部取加法得到一个必然非负的候选数组。",
+          "若在基准数组的某个位置满足 $i>1$、$d_i>0$ 且 $a_{i-1}-d_i\\ge 0$，就能只把该位置改为减法并得到另一组合法数组，因此答案必不唯一。",
+          "只需检查基准数组即可：若存在其他解，取它首次不同于全加法方案的位置，此处必然是可行的减法；所以没有可行减法时基准方案就是唯一解。",
+          "当 $d_i=0$ 时加法和减法产生相同的 $a_i$，不会形成不同数组，故这类位置不应判定为多解。"
+        ],
+        "solution_brief": "先令 $a_1=d_1$，随后全部取加法构造 $a_i=a_{i-1}+d_i$。检查每个 $i>1$：若 $d_i>0$ 且 $a_{i-1}\\ge d_i$，减法也合法，输出 $-1$；否则输出构造出的数组。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的数组定义与输出规则，以及 editorial_text 的全加法构造和可行减法判定；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1739A": {
+      "problem_key": "1739A",
+      "title": "Immobile Knight",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1739/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/107461",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "fff49b2a33f9626df1a0686c6da44430fcd76ce37d47a8edd798cbb8738c373d",
+      "generated_at": "2026-09-27T22:14:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times m$ 的棋盘，马每次可沿一个方向移动 $2$ 格、垂直方向移动 $1$ 格。要求输出一个没有任何合法马步的孤立格；若不存在，则输出棋盘上的任意格子。",
+        "transformed_statement": "问题只需按棋盘两条边的长度分类：判断是否所有格都无法移动、是否存在统一的中心孤立格，或直接确认没有孤立格；无需逐格模拟马步。",
+        "key_observations": [
+          "若任一边长为 $1$，马无法完成垂直方向的移动，因此棋盘上所有格子都是孤立格。",
+          "当两边都至少为 $2$ 且较大边长至少为 $4$ 时，马总能沿较长方向移动 $2$ 格、沿另一方向移动 $1$ 格，因此不存在孤立格。",
+          "剩余的 $(2,2)$、$(2,3)$、$(3,3)$ 中，中心格无法容纳任何马步，统一可取坐标 $(\\lfloor n/2\\rfloor+1,\\lfloor m/2\\rfloor+1)$。"
+        ],
+        "solution_brief": "按棋盘尺寸分类：若有边长为 $1$，或属于 $(2,2)$、$(2,3)$、$(3,3)$，直接输出中心格；其他情况没有孤立格，输出任意格即可。统一输出 $(\\lfloor n/2\\rfloor+1,\\lfloor m/2\\rfloor+1)$，每组复杂度为 $O(1)$。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "几何"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的孤立格定义及完整 editorial 的尺寸分类与中心格结论，tags 仅作题型参考。",
+        "quality_flags": []
       }
     }
   }
