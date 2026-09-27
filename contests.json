@@ -1936,6 +1936,17 @@
     "date": "2025-03-29"
   },
   {
+    "id": 2086,
+    "name": "Educational Codeforces Round 177 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1743690900,
+    "relativeTimeSeconds": 46786555,
+    "date": "2025-04-03"
+  },
+  {
     "id": 2084,
     "name": "Teza Round 1 (Codeforces Round 1015, Div. 1 + Div. 2)",
     "type": "CF",
