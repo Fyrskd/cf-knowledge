@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2437,
+    "total_problems": 2444,
     "source_total_problems": 2444,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2437,
-    "with_editorial_brief": 2171,
-    "with_solution_brief": 2172,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2444,
+    "with_editorial_brief": 2178,
+    "with_solution_brief": 2179,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1499,
+    "ai_override_count": 1506,
     "primary_topic_count": 13,
-    "contest_count": 374,
+    "contest_count": 375,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,10 +45,10 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 118,
-    "构造与贪心": 768,
-    "图论与网络流": 145,
+    "构造与贪心": 772,
+    "图论与网络流": 146,
     "动态规划与状态设计": 213,
-    "数论与同余": 266,
+    "数论与同余": 268,
     "组合计数与概率": 188,
     "数据结构": 225,
     "几何": 56,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1232,
+    "ai_generated_with_editorial": 1239,
     "ai_generated_partial_editorial": 48,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -58203,6 +58203,225 @@ window.CF_INSIGHTS_DATA = {
             "为避免随机顺序导致的坏情况及浮点异常，限制单次递归次数，超限或得到 NaN 时重新打乱输入并重跑。"
           ],
           "solutionBrief": "把答案视为由至多 $3$ 个约束圆定义的基准圆，用随机增量递归维护该基；当前圆不包含基准圆时加入基并重算。超限或数值异常则打乱重跑，期望复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1933,
+      "name": "Codeforces Round 929 (Div. 3)",
+      "date": "2024-02-27",
+      "url": "https://codeforces.com/contest/1933",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "1933A",
+          "index": "A",
+          "slot": "A",
+          "title": "Turtle Puzzle: Rearrange and Negate",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1933/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/126560",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个整数数组，先可任意重排数组，再选择一个连续子段并将其中每个数变号（也可以不操作）。按此顺序完成两步后，求数组元素总和的最大值。",
+          "transformedStatement": "把目标转化为让尽可能多的元素变成非负数：两种操作均保持每个元素的绝对值不变，所以先重排出负数前缀，再一次性取反该前缀即可达到绝对值总和。",
+          "keyObservations": [
+            "两次操作都不会改变任何元素的绝对值，因此数组总和不可能超过所有 $|a_i|$ 之和，问题上界立即确定。",
+            "先将数组重排为负数在前、非负数在后的顺序，再把连续负数段整体取反，就能让所有元素变为非负数，从而达到绝对值总和这一上界。",
+            "若数组中没有负数，则第二次操作无需执行；否则只需取反负数构成的前缀，不必考虑其他区间。"
+          ],
+          "solutionBrief": "先计算所有元素绝对值之和作为上界。将数组按负数在前重排，再取反负数前缀，使所有元素非负，因此答案就是 $\u001b[?]$ 所有 $|a_i|$ 之和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1933B",
+          "index": "B",
+          "slot": "B",
+          "title": "Turtle Math: Fast Three Task",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1933/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/126560",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组，每次可以选择把任意一个元素加 $1$，或删除一个元素，可进行任意多次但数组为空后不能继续操作。求使数组元素总和能被 $3$ 整除所需的最少操作次数，初始已满足时答案为 $0$。",
+          "transformedStatement": "只需研究总和对 $3$ 的余数：加一使余数增加 $1$，删除元素使总和减少该元素的余数；因此分别判断能否通过一次删除或一次加一归零，否则使用两次加一。",
+          "keyObservations": [
+            "总和模 $3$ 为 $0$ 时无需操作；目标只取决于当前总和的模 $3$，不必关注元素具体大小。",
+            "总和模 $3$ 为 $2$ 时，对任意元素加 $1$ 即可；这是单次操作直接改变总和余数 $2\\to0$。",
+            "若存在元素满足 $a_i\\bmod3=s\\bmod3$，删除它后总和恰好减去同余数，余数变为 $0$，因此答案为 $1$。",
+            "当 $s\\bmod3=1$ 且不存在可删除的同余元素时，单次操作不可行，但对任意元素连续加 $1$ 两次使总和增加 $2$，答案为 $2$。"
+          ],
+          "solutionBrief": "先求总和 $s$ 及各元素对 $3$ 的余数。若 $s\\bmod3=0$ 答案为 $0$；若为 $2$ 答案为 $1$。若为 $1$，存在余数为 $1$ 的元素则删除它，否则对任意元素加两次 $1$，答案为 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1933C",
+          "index": "C",
+          "slot": "C",
+          "title": "Turtle Fingers: Count the Values of k",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1933/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/126560",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $a,b,l$，选择非负整数 $x,y$，使 $l=k\\cdot a^x\\cdot b^y$；要求统计所有可能的不同 $k$ 的数量。每组数据都要考虑全部合法指数选择，并对重复的 $k$ 只计一次。",
+          "transformedStatement": "把问题转化为枚举幂乘积 $a^x b^y$：它必须是 $l$ 的约数，且对应商 $l/(a^x b^y)$ 就是一个候选 $k$；最终求所有这些商的去重数量。",
+          "keyObservations": [
+            "由于 $k>0$ 且 $a,b\\ge 2$，可行的 $a^x$、$b^y$ 都不超过 $l$，因此指数对数量很少，可以直接完整枚举。",
+            "固定指数对 $(x,y)$ 后，只有当 $a^x b^y$ 整除 $l$ 时才对应合法值，候选值唯一确定为 $k=l/(a^x b^y)$。",
+            "不同指数对可能得到同一个 $k$，所以必须对所有候选商去重后计数，而不能直接统计指数对数量。"
+          ],
+          "solutionBrief": "分别枚举所有满足幂值不超过 $l$ 的 $x,y$，检查 $a^x b^y$ 是否整除 $l$；若整除则加入商 $l/(a^x b^y)$ 的集合，最后输出集合大小。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1933D",
+          "index": "D",
+          "slot": "D",
+          "title": "Turtle Tenacity: Continual Mods",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1933/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/126560",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定一个数组，可以任意重排元素形成序列；随后按从左到右的顺序连续计算取模，即前一步余数再对下一个数取模。判断是否存在一种排列，使最终结果不为 $0$。",
+          "transformedStatement": "将问题转化为围绕数组最小值 $m$ 选择排列：首项或首个非整除 $m$ 的元素决定能否产生一个小于 $m$ 的正余数，而之后的元素不会改变这个余数。",
+          "keyObservations": [
+            "排序后若最小值唯一，把它放在首位；后续所有数都更大，余数始终保持为该正数。",
+            "若最小值 $m$ 至少出现两次，只要存在元素 $x$ 满足 $x\\bmod m\\ne 0$，先放 $x$ 再放所有最小值，结果会固定为正余数 $x\\bmod m$。",
+            "若所有元素都是 $m$ 的倍数，则无论排列如何，最小值必会参与取模并产生 $0$，因此不可能成功。"
+          ],
+          "solutionBrief": "排序并取最小值 $m$。若 $m$ 只出现一次则输出 YES；否则检查是否存在元素不被 $m$ 整除，存在则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1933E",
+          "index": "E",
+          "slot": "E",
+          "title": "Turtle vs. Rabbit Race: Optimal Trainings",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1933/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/126560",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "implementation",
+            "math",
+            "ternary search"
+          ],
+          "statementBrief": "给定每条跑道包含的小段数，以及查询参数 $l,u$。每次必须选择连续跑道 $l$ 到 $r$，按题目规定的递减收益完成其中全部小段；对每个查询求使总收益最大的 $r$，若有多个则取最小值。",
+          "transformedStatement": "把区间端点映射为前缀和差值 $x=S_r-S_{l-1}$，则收益只由总段数决定，为 $F(x)=xu-x(x-1)/2$。由于该函数先增后不增，答案只需在累计段数刚好不超过 $u$ 的最后端点及其下一端点中选择。",
+          "keyObservations": [
+            "设已完成总段数为 $x$，总收益为 $F(x)=xu-x(x-1)/2$；当累计段数不超过 $u$ 时，继续完成区间一定增加收益。",
+            "令 $r$ 是从 $l$ 开始累计段数不超过 $u$ 的最大端点，则更小端点收益更低，因此只需比较 $r$ 与 $r+1$。",
+            "超过 $u$ 后每个新增小段的边际收益不再为正，所以包含 $r+1$ 后的更远端点不可能优于这两个候选。",
+            "前缀和使区间 $[l,r]$ 的段数可由两个前缀值相减，并可二分定位最大可行端点；收益相同则保留较小端点。"
+          ],
+          "solutionBrief": "预处理前缀和。对每个查询二分最大的 $r$ 使区间段数不超过 $u$，再计算该端点与下一个端点的收益 $F(x)=xu-x(x-1)/2$，取收益较大者，平手取较小端点。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1933F",
+          "index": "F",
+          "slot": "F",
+          "title": "Turtle Mission: Robot and the Earthquake",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1933/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/126560",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个上下首尾相接的 $n\\times m$ 网格，岩石每单位时间在各自列中向上循环移动；机器人从 $(0,0)$ 出发，只能按题目规定上下或向右移动，且不能停留、向左或撞到移动中的岩石。求它安全到达 $(n-1,m-1)$ 所需的最短时间。",
+          "transformedStatement": "改用机器人相对岩石的位置建模，使岩石固定而机器人转移改变：上移为原地不动，下移为行号加 $2$，右移为行号加 $1$ 并进入下一列；于是目标转化为带循环行坐标和碰撞限制的网格最短路。",
+          "keyObservations": [
+            "把机器人相对岩石的运动重新表示后，上移等价于原地不动，下移变为行号增加 $2$，右移变为行号增加 $1$ 且列号增加 $1$，从而消除了岩石随时间移动的动态性。",
+            "相对坐标中的行号按 $n$ 取模，所有会与岩石碰撞的转移直接视为不可用，问题因此变成网格状态间的最短到达时间。",
+            "寻找最短时间时无需主动加入原地等待；先求到达倒数第二列各行状态的最早时间，再分别等待终点循环到合适位置并完成最后一步右移。"
+          ],
+          "solutionBrief": "将机器人改用相对岩石的坐标描述：上移为原地不动，下移使行号加 $2$，右移使行号加 $1$ 并进入下一列。保留合法转移后，从 $(0,0)$ 做 BFS/DP 求到倒数第二列各行的最早时间，再枚举终点循环所需的等待时间并取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1933G",
+          "index": "G",
+          "slot": "G",
+          "title": "Turtle Magic: Royal Turtle Shell Pattern",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1933/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/126560",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "combinatorics",
+            "constructive algorithms",
+            "dfs and similar",
+            "math"
+          ],
+          "statementBrief": "给定一个初始为空的 $n\\times m$ 网格，每次选择一个当前空格并放入指定形状的圆或方块，已放置的格子不能再修改。要求统计在补满其余空格后，使横、竖及两条对角线方向上都不存在连续三个同形饼干的方案数，并输出初始状态及每次操作后的答案。",
+          "transformedStatement": "当 $n,m\\ge5$ 时，满足条件的完整网格恰好只有 8 种：四种形如 $i+\\lceil j/2\\rceil$、$i+\\lfloor j/2\\rfloor$ 奇偶取值的图案及其转置版本，并分别包含两种奇偶选择。题目等价于动态统计这 8 个固定模板中有多少个与当前已放置的格子完全相容。",
+          "keyObservations": [
+            "任意不贴边角的 $2\\times2$ 子网格必须恰有两个圆和两个方块，否则可推出某条方向上出现三个同形饼干。",
+            "任意不贴边角的 $3\\times3$ 子网格至少包含一种特定的良好 $2\\times2$ 图案；若四个子网格都不是良好图案，则边相邻格必异形，进而对角线出现三个同形饼干。",
+            "良好 $2\\times2$ 图案确定后可唯一向全网格延拓，因此所有合法完整网格只有 8 种：4 种基本图案分别进行一次横向或纵向平移。",
+            "每次固定一个格子的形状只会筛掉与该格不一致的候选完整网格，因此答案就是 8 个候选中仍与所有操作一致的数量；无需实际填充空格。"
+          ],
+          "solutionBrief": "预先列出 8 个合法网格公式，将圆记为 $1$、方块记为 $0$。维护每个候选是否仍与已固定格子一致，输出初始及每次操作后的存活数量；每次操作检查 8 个候选即可。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
