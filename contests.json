@@ -407,6 +407,17 @@
     "date": "2023-05-05"
   },
   {
+    "id": 1829,
+    "name": "Codeforces Round 871 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1683383700,
+    "relativeTimeSeconds": 107123184,
+    "date": "2023-05-06"
+  },
+  {
     "id": 1824,
     "name": "Codeforces Round 872 (Div. 1)",
     "type": "CF",
