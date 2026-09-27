@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2464,
+    "total_problems": 2471,
     "source_total_problems": 2471,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2464,
-    "with_editorial_brief": 2198,
-    "with_solution_brief": 2199,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2471,
+    "with_editorial_brief": 2205,
+    "with_solution_brief": 2206,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1526,
+    "ai_override_count": 1533,
     "primary_topic_count": 13,
-    "contest_count": 378,
+    "contest_count": 379,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 119,
-    "构造与贪心": 777,
-    "图论与网络流": 147,
+    "字符串": 120,
+    "构造与贪心": 779,
+    "图论与网络流": 148,
     "动态规划与状态设计": 215,
-    "数论与同余": 272,
-    "组合计数与概率": 188,
+    "数论与同余": 273,
+    "组合计数与概率": 189,
     "数据结构": 228,
     "几何": 57,
     "树结构": 136,
     "代数、矩阵与多项式": 19,
     "交互": 84,
     "基础实现与模拟": 137,
-    "博弈": 85
+    "博弈": 86
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1259,
+    "ai_generated_with_editorial": 1266,
     "ai_generated_partial_editorial": 48,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -59502,6 +59502,211 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1931,
+      "name": "Codeforces Round 925 (Div. 3)",
+      "date": "2024-02-13",
+      "url": "https://codeforces.com/contest/1931",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1931A",
+          "index": "A",
+          "slot": "A",
+          "title": "Recovering a Small String",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1931/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/125878",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "strings"
+          ],
+          "statementBrief": "每个测试给出一个整数 $n$，它等于某个恰有 3 个小写字母的单词中三个字母编号之和（`a` 到 `z` 编号为 $1$ 到 $26$）。要求输出所有满足该和的三字母单词中字典序最小的一个。",
+          "transformedStatement": "将问题转化为寻找满足 $x_1+x_2+x_3=n$ 且 $1\\le x_i\\le26$ 的字母编号三元组，并按对应字符串的字典序取最小值。可直接遍历固定的 $26^3$ 个状态，或从最小串 `aaa` 逆序分配剩余增量。",
+          "keyObservations": [
+            "每个字符只贡献其字母编号，三字符单词因此等价于在 $[1,26]^3$ 中寻找和为 $n$ 的三元组，避免处理原故事背景。",
+            "由于只有 $26^3$ 个候选单词，逐一检查并保留字典序最小的可行单词即可，规模固定且实现直接。",
+            "也可从 `aaa` 出发优先调整末位、再调整中间位和首位；从后往前尽量增大字符，会在保持总和可达的前提下得到字典序最小结果。"
+          ],
+          "solutionBrief": "对每个 $n$ 枚举所有三字母组合，计算字母编号之和并选择字典序最小者；也可从 `aaa` 开始按末位到首位尽量增加字符并同步扣除增量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1931B",
+          "index": "B",
+          "slot": "B",
+          "title": "Make Equal",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1931/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/125878",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 个按顺序排列的容器，第 $i$ 个初始有 $a_i$ 单位水。每次只能把任意多的水从左侧容器倒入右侧容器，判断能否经过若干次操作使所有容器水量相等。",
+          "transformedStatement": "设每个容器的目标水量为 $k=\\frac{\\sum a_i}{n}$，从左到右依次固定容器；当前位置只能依靠左侧流来的水，若不足 $k$ 就无法完成，否则将多余部分继续向右传递。",
+          "keyObservations": [
+            "共同水量唯一确定为 $k=\\frac{\\sum a_i}{n}$，因此问题转化为判断能否让每个位置恰好达到 $k$。",
+            "水只能从左向右流，第 $i$ 个容器处理完后必须已有至少 $k$ 单位；不足时后方无法补回，立即判定不可行。",
+            "按位置传递当前容器的多余水量即可模拟所有必要操作：多于 $k$ 的部分流向下一个容器，最后一个位置因总量守恒自动达到 $k$。"
+          ],
+          "solutionBrief": "计算目标水量 $k$，从左到右维护当前容器水量。若当前位置少于 $k$ 则输出 NO，否则把多出的水全部倒入下一容器；遍历结束输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1931C",
+          "index": "C",
+          "slot": "C",
+          "title": "Make Equal Again",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1931/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/125878",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个整数数组，最多一次选择连续区间 $[i,j]$，把区间内所有元素改成任意值，费用为区间长度。要求用最少费用使整个数组的所有元素相等。",
+          "transformedStatement": "把操作看成选择一个最短的连续区间进行重写，其外部前缀和后缀必须保持不变且拥有同一个值；因此问题转化为最大化能够保留的首尾同值元素数量。",
+          "keyObservations": [
+            "一次操作只能修改一个连续区间，因此区间外只能保留数组的前缀和后缀；这些保留元素必须都等于最终目标值。",
+            "可排除的前缀必须是从左端开始、与 $a_1$ 相同的最长前缀，后缀同理；排除它们就能直接缩短待修改区间。",
+            "若首尾元素相同，前缀和后缀可以同时保留；否则最终目标值不能同时匹配两端，只能保留长度更长的一侧。",
+            "设可保留元素数为 $k$，其余元素全部改成保留端点的值，所需费用就是 $n-k$，因此最大化 $k$ 即得到最优解。"
+          ],
+          "solutionBrief": "先判断数组是否已全相等，若是答案为 $0$。否则统计与首元素相同的最长前缀和与末元素相同的最长后缀；首尾相同则两者都可保留，否则只能保留较长的一侧，答案为 $n-k$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1931D",
+          "index": "D",
+          "slot": "D",
+          "title": "Divisible Pairs",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1931/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/125878",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定数组和两个整数 $x,y$，下标对 $(i,j)$（$i<j$）在 $a_i+a_j$ 能被 $x$ 整除且 $a_i-a_j$ 能被 $y$ 整除时称为美丽对。对每组数据，求数组中的美丽对数量。",
+          "transformedStatement": "把每个元素压缩为其对 $x$ 和 $y$ 的余数。对当前右端点 $j$，合法左端点必须同时具有互补的 $x$ 余数和相同的 $y$ 余数，因此问题转化为前缀二元余数频次查询。",
+          "keyObservations": [
+            "和能被 $x$ 整除等价于两数的 $x$ 余数互为补数，即前项余数应为 $(x-a_j\\bmod x)\\bmod x$，从而只需比较余数。",
+            "差能被 $y$ 整除等价于两数的 $y$ 余数相同，因此每个后缀元素只需寻找一个确定的二元余数键。",
+            "从左到右处理 $j$ 并只统计此前元素，可同时保证 $i<j$ 且避免重复计数；用映射维护二元余数出现次数即可直接累加答案。"
+          ],
+          "solutionBrief": "将每个元素表示为 $(a_i\\bmod x,a_i\\bmod y)$。从左到右扫描，查询此前键为 $((x-a_j\\bmod x)\\bmod x,a_j\\bmod y)$ 的元素数量，再把当前元素的余数键加入映射。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1931E",
+          "index": "E",
+          "slot": "E",
+          "title": "Anna and the Valentine's Day Gift",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1931/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/125878",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "games",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一列正整数，Anna 与 Sasha 轮流操作：Anna 选择一个数反转其十进制表示，Sasha 选择两个数将它们拼接；不能跳过回合，直到只剩一个数。若最终数至少为 $10^m$，Sasha 获胜，否则 Anna 获胜，求双方最优策略下的赢家。",
+          "transformedStatement": "把最终数值比较改成总位数比较：Sasha 的拼接不改变位数，Anna 的反转只会删除所选数末尾连续的零。于是问题变为双方交替争夺这些可删除的零，并判断剩余位数是否超过 $m$。",
+          "keyObservations": [
+            "最终整数是否达到 $10^m$ 只取决于十进制位数，因此双方无需比较具体数值，目标转化为增减总位数。",
+            "Sasha 的拼接不会改变总位数；Anna 反转一个数时，只有末尾连续的 $0$ 会因反转后成为前导零而被删去。",
+            "Anna 每次应选择末尾零最多的数以最大化删掉的位数；Sasha 随后把另一个末尾零最多的数作为前半部分拼接，从而保留这些零。",
+            "按末尾零数量降序排列后，Anna 实际会消除下标为 $0,2,4,\\ldots$ 的零贡献；总位数减去这些贡献后即可判断是否至少为 $m+1$。"
+          ],
+          "solutionBrief": "统计每个数的位数和末尾零数量，并按末尾零降序排列。总位数减去排序后偶数下标元素的末尾零数，若结果大于 $m$，则 Sasha 获胜，否则 Anna 获胜。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1931F",
+          "index": "F",
+          "slot": "F",
+          "title": "Chat Screenshots",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1931/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/125878",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "graphs"
+          ],
+          "statementBrief": "有 $n$ 名参与者存在一个固定的全局活跃顺序；每位截图作者看到的列表会把自己移到首位，其余人仍按全局顺序排列。给出 $k$ 位不同作者的截图，判断是否存在一个全局顺序同时解释所有截图。",
+          "transformedStatement": "将每张截图的首位作者删去，把剩余列表转成从前到后的有向约束链；问题转化为判断这些约束组成的有向图是否存在拓扑序。",
+          "keyObservations": [
+            "截图作者被强制放在首位，这一位置不反映全局活动顺序，因此可以忽略每行的第一个人。",
+            "忽略作者后，截图中的其余参与者必须按全局顺序出现；只连接相邻两人即可表示整条相对顺序链。",
+            "若存在合法全局顺序，约束图不可能有环；反之，图的任意拓扑序都满足所有截图中的相对顺序，因此答案等价于判断有向图是否无环。"
+          ],
+          "solutionBrief": "建立包含所有人的有向图。对每张截图，从第二个位置到末尾依次连边，表示相邻者的先后约束；用拓扑排序判断是否存在环，无环则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1931G",
+          "index": "G",
+          "slot": "G",
+          "title": "One-Dimensional Puzzle",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1931/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/125878",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有四类不可旋转且同类形状可区分类型的拼图块，数量分别为 $c_1,c_2,c_3,c_4$。必须把所有块排成一条链，使每对相邻块的连接方向相反，求不同类型序列的数量并对 $998244353$ 取模；无法完成时输出 0。",
+          "transformedStatement": "把 1、2 型块看成必须交替形成的主体骨架；3、4 型块各自可组成保持端点状态的连续链，再分别插入对应骨架元素产生的位置中，插入计数转化为隔板法。",
+          "keyObservations": [
+            "3、4 型元素分别可连成只含自身类型的链，且接入后端点连接状态不变，因此先构造 1、2 型交替骨架，再把两类链插入其中。",
+            "骨架存在当且仅当 $|c_1-c_2|\\le 1$；骨架首类必须是数量不少于另一类的一方，数量相等时两种首类都要分别计数。",
+            "固定骨架后，3 型链只能挂在 1 型元素之后、4 型链只能挂在 2 型元素之后，两类插入彼此独立，答案可将对应方案数相乘。",
+            "若某类骨架元素有 $n_0$ 个，待插入元素有 $m$ 个，首端额外可用一个位置时记为 $add=1$，否则为 $0$，则插入数由隔板法得到 $\\binom{n_0+add+m-1}{m}$。"
+          ],
+          "solutionBrief": "先检查 $|c_1-c_2|\\le1$，枚举合法的骨架首类。对固定骨架，分别用隔板法计算 3 型插入 1 型位置、4 型插入 2 型位置的方案数并相乘；数量相等时累加两个首类结果，全部按模数计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
