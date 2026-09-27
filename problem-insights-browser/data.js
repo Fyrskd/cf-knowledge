@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2012,
+    "total_problems": 2019,
     "source_total_problems": 2019,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2012,
-    "with_editorial_brief": 1760,
-    "with_solution_brief": 1761,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2019,
+    "with_editorial_brief": 1767,
+    "with_solution_brief": 1768,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 953,
+    "ai_override_count": 960,
     "primary_topic_count": 13,
-    "contest_count": 315,
+    "contest_count": 316,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 86,
-    "构造与贪心": 677,
+    "构造与贪心": 680,
     "图论与网络流": 119,
     "动态规划与状态设计": 190,
-    "数论与同余": 196,
+    "数论与同余": 198,
     "组合计数与概率": 157,
-    "数据结构": 165,
-    "几何": 42,
+    "数据结构": 166,
+    "几何": 43,
     "树结构": 129,
     "代数、矩阵与多项式": 18,
     "交互": 77,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 71
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 832,
+    "ai_generated_with_editorial": 839,
     "ai_generated_partial_editorial": 37,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -22892,6 +22892,209 @@ window.CF_INSIGHTS_DATA = {
             "在 Aho-Corasick 自动机中，某状态只要自身或后缀链接树上可达终止状态就不安全；DP 只转移到安全状态，即可保证整个构造串不含任何给定子串。"
           ],
           "solutionBrief": "先特判 `()`；否则先得到至多两组的构造。再用 Aho-Corasick 建模所有禁用子串，令 `dp[i][bal][v]` 表示长度、括号平衡值和自动机状态，避开不安全转移并要求最终平衡为零。若能到达则输出一组，否则输出上述两组构造。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2148,
+      "name": "Codeforces Round 1050 (Div. 4)",
+      "date": "2025-09-13",
+      "url": "https://codeforces.com/contest/2148",
+      "type": "Div. 4",
+      "problemCount": 7,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "2148A",
+          "index": "A",
+          "slot": "A",
+          "title": "Sublime Sequence",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2148/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/146112",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "hashing",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $x$ 和长度 $n$，构造以 $x$ 开始、之后依次交替为 $-x$ 和 $x$ 的序列。求该序列所有元素的总和。",
+          "transformedStatement": "将序列按相邻位置两两分组，每组均为 $(x,-x)$ 或 $(-x,x)$，其和为 $0$；因此总和只取决于是否存在未配对的末项。",
+          "keyObservations": [
+            "相邻的两个元素总是 $x$ 与 $-x$，因此每一对的和为 $0$，成对处理可以消去绝大部分项。",
+            "当 $n$ 为偶数时所有元素都能配成相邻数对，答案必为 $0$；当 $n$ 为奇数时只剩末尾一个奇数位置元素，答案为 $x$。"
+          ],
+          "solutionBrief": "只需判断 $n$ 的奇偶性：$n$ 为偶数输出 $0$，$n$ 为奇数输出 $x$。每组测试复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2148B",
+          "index": "B",
+          "slot": "B",
+          "title": "Lasers",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2148/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/146112",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
+          "originalTags": [
+            "geometry"
+          ],
+          "statementBrief": "在矩形区域内，从 $(0,0)$ 连续移动到 $(x,y)$，途中可以沿任意方向移动，但路径必须始终位于矩形内。矩形中有贯穿左右边界的 $n$ 条横向激光和贯穿上下边界的 $m$ 条纵向激光，每穿过一条计一次，即使在交点同时穿过两条也计两次；求最少穿过次数。",
+          "transformedStatement": "把每条横向或纵向激光视为将起点与终点分隔开的完整屏障：横线分别阻隔上下区域，竖线分别阻隔左右区域。因此路径不需要具体规划，问题等价于统计所有必经屏障的数量。",
+          "keyObservations": [
+            "任意连续路径从底边区域到顶边区域，都必须穿过每条横向激光；否则路径无法改变自身相对该激光的上下位置。",
+            "任意连续路径从左边界到右边界，都必须穿过每条纵向激光；绕行或弯曲不能避开完整贯穿矩形的线段。",
+            "横纵激光交点处同时穿过两条激光，题目明确计为两次，因此所有必经激光的贡献可以直接相加。"
+          ],
+          "solutionBrief": "每条横向激光从左边界延伸到右边界，每条纵向激光从下边界延伸到上边界。连续路径从 $(0,0)$ 到 $(x,y)$ 时必然分别穿过全部 $n$ 条横线和 $m$ 条竖线，答案为 $n+m$；读入坐标后直接输出即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2148C",
+          "index": "C",
+          "slot": "C",
+          "title": "Pacer",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2148/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/146112",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "FJ 初始在 0 号场地，每分钟开始时可选择跑到另一侧并得 1 分，或留在原地；在指定的第 $a_i$ 分钟开始时，他必须位于 $b_i$ 号场地。要求满足所有位置限制，并求直到第 $m$ 分钟开始前最多能获得的分数。",
+          "transformedStatement": "把起点视为虚拟要求 $(0,0)$，问题转化为独立计算相邻位置要求之间的最大得分：区间长度与所需换边次数奇偶性一致时全程奔跑，否则安排一次停留；末尾无约束的区间全部奔跑。",
+          "keyObservations": [
+            "相邻要求之间相隔 $d$ 分钟时，若 $d$ 与两侧编号差值的奇偶性相同，就能每分钟换边并获得 $d$ 分；奇偶性不同则必须停留至少一次。",
+            "奇偶性不匹配时，停留一次即可调整位置，剩余时间全部奔跑，因此该区间恰好获得 $d-1$ 分。",
+            "将初始状态补成虚拟要求 $(a_0,b_0)=(0,0)$，即可统一处理起点到首个要求及所有相邻要求区间。",
+            "最后一个要求之后没有位置限制，直到第 $m$ 分钟都可以奔跑，所以还需直接加入 $m-a_n$ 分。"
+          ],
+          "solutionBrief": "按时间顺序处理要求，令前一状态为 $(p_x,p_y)$。区间长度为 $d=x-p_x$；若 $d$ 与 $|y-p_y|$ 奇偶性不同则该段少得 1 分，否则得满分 $d$。初始设为 $(0,0)$，最后加上 $m-p_x$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2148D",
+          "index": "D",
+          "slot": "D",
+          "title": "Destruction of the Dandelion Fields",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2148/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/146112",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有一台初始关闭的割草机，按任意顺序且每块恰好一次访问 $n$ 块花田。访问前若花田中蒲公英数为奇数，机器先切换开关；随后机器开启就割光该田，否则不割，求最多能割下的蒲公英总数。",
+          "transformedStatement": "只需关注奇偶性：偶数花田不改变状态，奇数花田使状态交替切换。先用一个奇数花田开机后，所有偶数花田都可收割，而奇数花田中只有交替位置的一半左右能在开机时收割。",
+          "keyObservations": [
+            "没有奇数花田时割草机始终关闭，因此答案必为 $0$；存在奇数花田时，应先访问最大的奇数花田以立即开启机器。",
+            "偶数花田不会改变机器状态，开启后可连续访问并收割所有偶数花田，因此所有偶数值都能计入答案。",
+            "访问奇数花田会交替切换开关，所以恰有 $\\lceil m/2\\rceil$ 个奇数花田能在开启状态下被收割；选择其中数值最大的即可最优。"
+          ],
+          "solutionBrief": "按奇偶分组。若没有奇数则答案为 $0$；否则加入所有偶数，并将奇数降序排列，累加前 $\\lceil m/2\\rceil$ 个。排序后每组复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2148E",
+          "index": "E",
+          "slot": "E",
+          "title": "Split",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2148/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/146112",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "two pointers"
+          ],
+          "statementBrief": "给定含正整数的数组和 $k$ 个空多重集合。对每个连续子数组，必须把其中元素放入第一个集合，其余元素可任意分配到各集合；求最终能让 $k$ 个集合包含完全相同元素的子数组数量。",
+          "transformedStatement": "设全数组中值 $v$ 的总次数为 $\\mathrm{cnt}_v$。若所有次数都能被 $k$ 整除，则每个集合必须含 $\\mathrm{cnt}_v/k$ 个 $v$，问题等价于统计所有值频次均不超过该上限的连续子数组。",
+          "keyObservations": [
+            "所有多重集合最终必须完全相同，因此每个值 $v$ 在每个集合中的目标次数唯一确定为 $\\mathrm{cnt}_v/k$；若总次数不能被 $k$ 整除，任何子数组都不合法。",
+            "子数组被强制放入第一个集合，所以其内部值 $v$ 的次数必须不超过 $\\mathrm{cnt}_v/k$；满足所有上限时，剩余元素可以补齐其他集合。",
+            "合法性在删除元素后保持，因此维护一个满足频次上限的滑动窗口；固定右端点时，窗口内所有更长左端点范围的子数组都合法，可一次加入窗口长度。"
+          ],
+          "solutionBrief": "先统计全数组各值的频次并检查是否都能被 $k$ 整除，得到每个值在单个集合中的上限。随后用滑动窗口维护各值在当前子数组中的次数，超限就右移左端点；每个右端点贡献当前窗口长度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2148F",
+          "index": "F",
+          "slot": "F",
+          "title": "Gravity Falls",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2148/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/146112",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定若干长度不同的数组，将它们左对齐并任意顺序上下堆叠；反复让下方无元素支撑的单元格下落，直到稳定。求所有堆叠顺序中，最终底行的字典序最小结果。",
+          "transformedStatement": "把稳定后的底行视为逐段构造的序列：当前已确定长度为 $i$ 的前缀时，选择一个长度大于 $i$ 的数组，并追加它从第 $i+1$ 个元素开始的完整后缀；目标是用最小字典序的后缀逐段填满最大长度。",
+          "keyObservations": [
+            "重力后的底行长度必为所有数组的最大长度；把当前底行看成已确定前缀后，上方数组只会贡献其从该前缀长度开始的后缀。",
+            "当前前缀长度为 $i$ 时，下一次应选择所有长度大于 $i$ 的数组中从位置 $i+1$ 开始字典序最小的后缀，并一次性追加整个后缀，因此局部选择可直接确定最优延伸。",
+            "从后往前维护后缀的相对排名：比较两个候选后缀时先比较当前位置元素，再比较其余后缀排名；数组恰好结束时排名设为更优的 $-1$，即可在每个长度快速确定候选。",
+            "按长度从大到小排序并记录每个数组的排名，所有位置总共参与排序不超过元素总数，从而将候选选择压缩为 $O((\\sum k)\\log n)$。"
+          ],
+          "solutionBrief": "先求最大长度。逆序为每个位置的数组后缀建立字典序排名，记录各前缀长度应选的数组；再从左到右不断追加对应数组的剩余后缀，直到得到最大长度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2148G",
+          "index": "G",
+          "slot": "G",
+          "title": "Farmer John's Last Wish",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2148/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/146112",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定数组，对每个前缀都可以任意重排元素。定义重排后前缀 gcd 从前 $k$ 个到前 $k+1$ 个严格下降的最大位置，并在所有重排中取最大值；输出每个前缀的这个最大值。",
+          "transformedStatement": "对长度为 $i$ 的前缀，寻找一个 $d>1$，使它整除尽可能多但不是全部元素；把被整除的元素放在前面、其余元素紧随其后，问题就等价于求这类因子覆盖数的最大值。",
+          "keyObservations": [
+            "若前 $k$ 个元素都被某个 $d>1$ 整除、而第 $k+1$ 个不被整除，则前后两段的前缀 gcd 必然严格下降；因此下降位置可转化为共同非平凡因子的覆盖数。",
+            "对长度为 $i$ 的前缀，若 $d>1$ 整除其中 $c<i$ 个元素，就能把这 $c$ 个元素放在开头，其后放一个不被 $d$ 整除的元素，从而实现位置 $c$ 的下降。",
+            "当某个因子整除当前前缀全部 $i$ 个元素时，它不能产生合法下降，因为题目要求下降位置小于前缀长度；所以必须排除覆盖数等于 $i$ 的因子。",
+            "逐个加入元素并更新其所有非平凡因子的覆盖数，答案就是覆盖数小于当前长度的最大值；达到当前长度的因子需暂时视为无效。"
+          ],
+          "solutionBrief": "把每个前缀中的元素按某个 $d>1$ 是否整除分组。预处理或枚举各元素的因子，维护每个因子的覆盖数；每次加入元素后，取覆盖数小于当前长度的最大值，覆盖全部前缀的因子必须排除。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
