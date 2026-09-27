@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2538,
+    "total_problems": 2545,
     "source_total_problems": 2546,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2538,
-    "with_editorial_brief": 2270,
-    "with_solution_brief": 2271,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2545,
+    "with_editorial_brief": 2277,
+    "with_solution_brief": 2278,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1600,
+    "ai_override_count": 1607,
     "primary_topic_count": 13,
-    "contest_count": 389,
+    "contest_count": 390,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 128,
-    "构造与贪心": 802,
-    "图论与网络流": 152,
+    "构造与贪心": 804,
+    "图论与网络流": 153,
     "动态规划与状态设计": 220,
-    "数论与同余": 277,
-    "组合计数与概率": 193,
+    "数论与同余": 278,
+    "组合计数与概率": 195,
     "数据结构": 237,
     "几何": 59,
     "树结构": 137,
     "代数、矩阵与多项式": 19,
     "交互": 84,
     "基础实现与模拟": 140,
-    "博弈": 90
+    "博弈": 91
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1327,
+    "ai_generated_with_editorial": 1334,
     "ai_generated_partial_editorial": 52,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -65099,6 +65099,240 @@ window.CF_INSIGHTS_DATA = {
             "三染色数可按桥和环分解：每条桥使两侧染色方案乘以 $\\frac{2}{3}$，长度为 $c$ 的环贡献 $2^c+2(-1)^c$；压缩边上的附加顶点需计入展开后的桥数和环长。"
           ],
           "solutionBrief": "把权值方案拆成顶点三染色与边控制方向两部分。展开压缩边后，若顶点数与边数奇偶性不同答案为 $0$；否则答案为桥因子、环方向因子和各环染色因子的乘积。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1895,
+      "name": "Educational Codeforces Round 157 (Rated for Div. 2)",
+      "date": "2023-11-03",
+      "url": "https://codeforces.com/contest/1895",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 3100,
+      "problems": [
+        {
+          "key": "1895A",
+          "index": "A",
+          "slot": "A",
+          "title": "Treasure Chest",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1895/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/122034",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "数轴上人从 $0$ 出发，箱子在 $x$、钥匙在 $y$。他可自由移动，并且携带箱子的累计时间最多为 $k$；拿到钥匙后需到箱子处开箱，求最少用时。",
+          "transformedStatement": "将过程按钥匙相对箱子的位置划分：钥匙在去箱子的路径上时无需折返；钥匙在箱子右侧时，优先判断能否携箱直达，否则让箱子尽量向钥匙方向移动，再完成取钥匙与返回。",
+          "keyObservations": [
+            "当钥匙在箱子左侧时，前往箱子的路径必然经过钥匙，因此无需额外折返，答案就是到达箱子的时间 $x$。",
+            "当钥匙在箱子右侧且 $y-x\\le k$ 时，可边携带箱子边走到钥匙处，直接在钥匙位置开箱，答案为 $y$。",
+            "当 $y-x>k$ 时，携带箱子向右最多走满 $k$ 后放下，再去钥匙处并返回箱子；总时间为 $y+(y-x-k)=2y-x-k$，且携带距离取满能使折返距离最短。"
+          ],
+          "solutionBrief": "分三种情况计算：若 $y<x$，答案为 $x$；否则若 $y-x\\le k$，答案为 $y$；否则携带箱子走满 $k$ 后往返，答案为 $2y-x-k$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1895B",
+          "index": "B",
+          "slot": "B",
+          "title": "Points and Minimum Distance",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1895/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/122034",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定 $2n$ 个整数，必须把每个数恰好作为一个点的横坐标或纵坐标，将它们组成 $n$ 个平面点。选择一条从某点出发、访问所有点至少一次并在某点结束的路径，点间距离为曼哈顿距离，要求最小化路径长度并输出一种构造。",
+          "transformedStatement": "把路径拆成横坐标序列和纵坐标序列的两条一维路径；固定坐标划分后，两序列分别排序即可达到各自极差，因此问题转化为划分数字，使两组极差之和最小。",
+          "keyObservations": [
+            "固定哪些数作为横坐标和纵坐标后，两类坐标都按非降序配对即可，使对应一维路径长度分别恰为极差。",
+            "总长度等于横坐标极差与纵坐标极差之和，因此只需决定两组数的划分，而不必再优化点的访问顺序。",
+            "排序后全局最小值和最大值必分别贡献一个极差端点；另一组的最小值不超过 $a_{n+1}$、最大值不小于 $a_n$，得到下界 $a_{2n}-a_1+a_n-a_{n+1}$。",
+            "取前 $n$ 个数作横坐标、后 $n$ 个数作纵坐标即可达到该下界，按排序下标配成点并依次访问。"
+          ],
+          "solutionBrief": "将 $2n$ 个数排序，前 $n$ 个作横坐标、后 $n$ 个作纵坐标，并按升序下标配成点。依次访问这些点时长度为 $a_{2n}-a_1+a_n-a_{n+1}$，该值由极差下界保证最优。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1895C",
+          "index": "C",
+          "slot": "C",
+          "title": "Torn Lucky Ticket",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1895/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/122034",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "hashing",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 个只含数字 1 到 9 的非空字符串片段，按有序选择 $(i,j)$ 并将 $s_i+s_j$ 拼接；拼接结果长度必须为偶数且前后两半数字和相等，求满足条件的有序对数量，允许 $i=j$。",
+          "transformedStatement": "将每个片段按长度和数字总和分类。固定长度较长的一段并枚举另一段长度后，目标拼接串的两半中已有部分的数字和确定，从而把配对条件转化为查找指定长度、指定数字和的片段数量。",
+          "keyObservations": [
+            "固定长度较长且不短于另一段的首段后，另一段只需按长度枚举；总长度确定后，较长段内部已确定两半中的部分数字和。",
+            "设较长段前半和为 $sum_l$、其余部分和为 $sum_r$，则短段所需数字和恰为 $sum_l-sum_r$，因此可用长度与数字和的频次直接计数。",
+            "预处理 $cnt[len][sum]$ 后，每个较长字符串只需枚举至多 5 种长度；再对第二段更长的情况对称处理，即可覆盖所有有序下标对。"
+          ],
+          "solutionBrief": "统计每种长度和数字和对应的字符串数量。枚举一段作为较长段及另一段长度，根据两半数字和之差查表计数；分别处理两种长度关系，得到所有有序对，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1895D",
+          "index": "D",
+          "slot": "D",
+          "title": "XOR Construction",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1895/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/122034",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "data structures",
+            "math",
+            "string suffix structures",
+            "trees"
+          ],
+          "statementBrief": "给定 $n-1$ 个数，构造一个包含 $0$ 到 $n-1$ 每个数恰好一次的排列 $b$，使每个相邻元素满足 $b_i\\oplus b_{i+1}=a_i$。题目保证至少存在一种合法排列，输出任意一种即可。",
+          "transformedStatement": "令 $c_0=0$、$c_i=a_1\\oplus\\cdots\\oplus a_i$，把问题转化为寻找首项 $x$，使集合 $\\{x\\oplus c_i\\}$ 全部小于 $n$；找到后直接恢复排列。",
+          "keyObservations": [
+            "首项 $b_1$ 确定后，其余元素唯一满足 $b_{i+1}=b_1\\oplus a_1\\oplus\\cdots\\oplus a_i$，因此构造被降为寻找合适的首项。",
+            "令 $c_0=0$ 且 $c_i=a_1\\oplus\\cdots\\oplus a_i$，则所有候选值统一写成 $b_1\\oplus c_i$，避免逐个重新计算数组。",
+            "把所有 $c_i$ 放入二进制 Trie，可快速求给定 $b_1$ 时的最大 $b_1\\oplus c_i$；最大值小于 $n$ 就保证所有元素都在合法范围内。",
+            "由于题目保证至少存在答案，$c_i$ 两两不同，因此任意首项产生的各个 $b_i$ 也互不相同，无需额外检查最小值或重复性。"
+          ],
+          "solutionBrief": "计算前缀异或 $c_i$，将其加入二进制 Trie。枚举候选 $b_1$，查询所有 $b_1\\oplus c_i$ 的最大值；若小于 $n$，即可按前缀异或公式恢复整个排列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1895E",
+          "index": "E",
+          "slot": "E",
+          "title": "Infinite Card Game",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1895/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/122034",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "games",
+            "graphs",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "Monocarp 先出一张牌，双方轮流出牌，且新牌的攻击值必须严格大于上一张牌的防御值；被击败的牌回到原持有者手中。轮到某方却没有可应对的牌时该方输，持续极久则和棋，需在双方最优策略下统计三类结果。",
+          "transformedStatement": "把每张牌视为“当前牌”状态，连向对方所有能击败它的牌。由于防御值更高的应牌会压缩下一步的可行集合，只需保留其中防御值最大的牌，问题转化为函数图上的胜负与环检测。",
+          "keyObservations": [
+            "历史出牌不会影响后续可选牌，因此状态只需记录当前场上的最后一张牌，游戏可表示为二分有向图。",
+            "对于同一张当前牌，防御值更大的可应牌会让对手面对更少的后续选择，因此只保留防御值最大的应牌不会削弱当前玩家的策略。",
+            "每个状态最多保留一条代表性转移；无转移的状态是当前玩家必败，沿转移到达已判定状态后可交替推出胜负。",
+            "无法到达终止状态的剩余节点必然形成环，环上始终存在应对且可无限进行，因此按题目规则判为和棋。"
+          ],
+          "solutionBrief": "将每张牌作为状态，边表示对方用能击败当前牌的牌应对。对每个状态只保留防御值最大的应牌，从而得到函数图；终点和可达终点的节点交替判定胜负，剩余环判为和棋，并统计三类结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1895F",
+          "index": "F",
+          "slot": "F",
+          "title": "Fancy Arrays",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1895/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/122034",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "matrices"
+          ],
+          "statementBrief": "给定$n,x,k$，统计长度为$n$的非负整数数组：相邻元素差的绝对值不超过$k$，且至少有一个元素位于区间$[x,x+k)$。输出满足条件的数组数量对$10^9+7$取模。",
+          "transformedStatement": "把数组按相邻差序列和首元素表示。先统计所有满足相邻差限制的数组，再扣除完全位于$[0,x)$或完全位于$[x+k,\\infty)$的数组；两端区间的后一部分通过差序列配对相减，转化为简单幂次项。",
+          "keyObservations": [
+            "不满足第一条件的数组只能全部落在区间$[0,x)$或全部落在$[x+k,\u0003infty)$；因为跨越两段的相邻元素差至少为$k+1$，会违反相邻差限制。",
+            "固定相邻差序列后，所有元素都可由首元素确定；若差序列的最小、最大相对位置为$mn,mx$，则首元素的可选数为$\u0003max(0,(r-l)-(mx-mn))$，因此只需关注差序列的跨度。",
+            "对上界取足够大的$M$时，$f(0,M)$与$f(x+k,M)$对应同一批差序列，跨度项相互抵消，每个差序列对两者之差贡献$x+k$，总贡献为$(x+k)(2k+1)^{n-1}$。",
+            "剩余的$f(0,x-1)$可按末元素建立状态；转移只取决于前后元素是否满足$|y-z|\\le k$，因此可用固定的$x$维转移矩阵快速幂处理超大$n$。"
+          ],
+          "solutionBrief": "先计算满足相邻差限制、但完全落在两端区间的数组数。差序列贡献为$(x+k)(2k+1)^{n-1}$，再减去全部位于$[0,x)$的数量；后者用$x$维DP转移矩阵快速幂计算，复杂度为$O(x^3\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1895G",
+          "index": "G",
+          "slot": "G",
+          "title": "Two Characters, Two Colors",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1895/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/122034",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "flows",
+            "greedy"
+          ],
+          "statementBrief": "给定一个只含 $0$ 和 $1$ 的字符串，第 $i$ 个字符可染成红色并获得 $r_i$ 枚硬币，或染成蓝色并获得 $b_i$ 枚硬币。完成染色后删除所有蓝色字符；每个剩余的左侧红色 $1$ 与右侧红色 $0$ 构成逆序对并扣除 1 枚硬币，要求最大化最终所得硬币数。",
+          "transformedStatement": "将每个位置的染色看作割中顶点所属的一侧：固定获得 $\\sum(r_i+b_i)$，再用单点割边表示染色损失，用所有红色 $1\\to0$ 的容量为 $1$ 的边表示逆序对损失。于是问题等价于求该网络的最小割，并通过顺序增广流转化为维护 excess 多重集合。",
+          "keyObservations": [
+            "把所有位置先视为获得 $r_i+b_i$ 枚硬币；染成红色损失 $b_i$、染成蓝色损失 $r_i$，而红色的 $1$ 与后方红色的 $0$ 组成一对时再损失 $1$，从而将最大收益转化为常数减最小割。",
+            "对每个 $1$ 到其后每个 $0$ 连容量为 $1$ 的边，并按两类字符交换红蓝与割侧的对应关系，使且仅使这两个字符都为红色时该边被割，从而精确表示逆序对罚分。",
+            "按位置处理网络流时，每个 $1$ 产生的未饱和容量可视为一个 excess；处理 $0$ 时，从此前 excess 最大的不同来源各取至多 $1$ 单位，取最大的来源不会降低后续可行流，因此只需维护 excess 的多重集合。",
+            "对 excess 多重集合支持加入一个值、统计正值个数以及让最大的 $k$ 个值同时减一；带懒标记的按键 Treap 可在 $O(\\log n)$ 内完成这些操作，整体复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "建立源点、汇点和每个字符对应的最小割网络，答案为 $\\sum(r_i+b_i)-\\text{mincut}$。按字符串顺序贪心模拟最大流：$1$ 产生 excess，$0$ 从最大的 excess 中取流，并用带懒标记的 Treap 维护这些值，复杂度 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
