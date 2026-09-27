@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T04:22:23+00:00",
+  "updated_at": "2026-09-27T04:27:38+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -35843,6 +35843,217 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 的回合规则与结束条件，以及 editorial_text 的直接模拟方案；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "2025G": {
+      "problem_key": "2025G",
+      "title": "Variable Damage",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/2025/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/135173",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e89e41a39479d7a2057272607fdf02251d2ffef0c7d65ba186dff7f98afb8556",
+      "generated_at": "2026-09-27T04:25:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "不断加入英雄或防御神器；战斗中每轮龙按当前存活英雄数和启用神器数造成伤害，英雄死亡后相关神器会失效，神器也会在持有者累计受伤达到耐久度时失效。每次加入后重新最优分配神器，求战斗最多持续多少轮。",
+        "transformed_statement": "把每个英雄—神器配对转化为两个无神器英雄，贡献为英雄生命值与 $\\min(生命值,耐久度)$；问题因此变成动态维护降序英雄、神器序列上的最大匹配贡献。",
+        "key_observations": [
+          "一个生命值为 $a$、耐久度为 $b$ 的英雄与神器，可等价替换为两个无神器英雄，生命值分别为 $a$ 和 $\\min(a,b)$，因此一组配对的存活轮数是所有 $a_i+\\min(a_i,b_i)$ 之和。",
+          "将英雄和神器都按数值降序配对不会降低 $\\sum\\min(a_i,b_i)$：较大的英雄应匹配较大的神器，交换逆序配对即可保持或增加贡献。",
+          "把两类对象合并后按值降序扫描，余额表示前缀中未匹配英雄数减未匹配神器数；遇到神器且余额为正时贡献其耐久度，遇到英雄且余额为负时贡献其生命值。",
+          "平方分块只需记录每个块的总余额及不同块首余额下的贡献；块内每个元素对一段首余额区间产生贡献，可用差分数组重算，从而单次更新为 $O(\\sqrt q)$。"
+        ],
+        "solution_brief": "将配对问题化为降序序列上的余额扫描，维护所有 $\\min(a_i,b_i)$ 的最大和。离线按数值排序并平方分块；每块预处理不同起始余额的贡献，查询时合并各块，复杂度为 $O(q\\sqrt q)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text，并参考 data structures 标签。",
+        "quality_flags": []
+      }
+    },
+    "2025F": {
+      "problem_key": "2025F",
+      "title": "Choose Your Queries",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/2025/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/135173",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "dae72162f30353247d8eaf1266fdbf3c40b5e83428050f74e4252e9d0fc9269c",
+      "generated_at": "2026-09-27T04:26:03+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有一个初始全为 $0$ 的数组。每次给出两个不同下标，只能选择其中一个并将其加 $1$ 或减 $1$，且每次操作后所有元素都必须非负；要求处理完全部查询后，使数组元素总和最小，并输出每次的选择。",
+        "transformed_statement": "将数组下标建成点、查询建成边，把每次选择的下标看作边的指向端点、加减看作边的符号。目标转化为在每个连通分量中配对共享端点的边，使符号尽量抵消，同时利用查询先后保证前缀状态非负。",
+        "key_observations": [
+          "每个连通分量的最终元素和等于该分量中加法次数减减法次数，因此边数为偶数时下界是 $0$，为奇数时下界是 $1$。",
+          "若能把同一连通分量的边两两配对且每对有公共端点，就能让一条边在公共点加 $1$、另一条边减 $1$，从而每对总贡献为零。",
+          "按查询编号较小的边执行加法、较大的边执行减法，配对边指向公共端点；两次操作之间该端点只暂时增加，因此任意时刻都不会产生负数。",
+          "DFS 从叶到根处理时，将子树边和回边尽量配对；若剩一条就与父边配对，于是每个子树离开时至多保留一条待父节点处理的树边。"
+        ],
+        "solution_brief": "把数组下标视为点、查询视为边。DFS 后序处理边并按公共端点配对；每对边指向公共点，早边选加、晚边选减，奇数分量剩一条边选加，即达到每个分量的 $0/1$ 下界。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "树结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text，并参考 codeforces_tags。",
+        "quality_flags": []
+      }
+    },
+    "2025E": {
+      "problem_key": "2025E",
+      "title": "Card Game",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/2025/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/135173",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a7b09e45c4cdd98fed09e18d9aed53d5269229f9443e912b17f24cc705ef11ee",
+      "generated_at": "2026-09-27T04:26:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "牌堆包含每个花色与等级组合的一张牌，必须将全部牌平均分给两名玩家。第一花色的牌可以击败其他任意花色，或击败同花色的低等级牌；其他花色只能按同花色高等级规则击败对手。要求统计存在一一匹配、使第一玩家每张牌都能击败第二玩家对应牌的分配方案数。",
+        "transformed_statement": "将每个花色的分配编码为括号序列，并用最终余额表示该花色需要外部支援或能提供的牌数：第一花色提供支援，其余花色产生需求。问题因此变为统计各花色余额相抵为零的方案。",
+        "key_observations": [
+          "同一花色内按牌面从高到低处理时，第一玩家牌记为左括号、第二玩家牌记为右括号；存在匹配当且仅当每个前缀左括号不少于右括号，最终多出的左括号数就是可支援其他花色的数量。",
+          "除第一花色外，第一玩家的牌只能由同花色更高等级的牌击败，因此按等级从低到高看，必须满足每个前缀第二玩家牌不少于第一玩家牌，最终多出的第二玩家牌数可由第一花色支援。",
+          "第一花色第一玩家的剩余牌与其他花色第二玩家的剩余牌只能跨花色匹配，因此全局可行条件转化为第一花色盈余等于其余花色盈余之和。",
+          "令 $dp_{i,j}$ 表示处理前 $i$ 个花色后，第一花色第一玩家仍多出 $j$ 张牌的分配数；加入新花色时按其第二玩家盈余 $k$ 转移到 $j-k$，最终要求盈余为 $0$。"
+        ],
+        "solution_brief": "把各花色的合法分配转成带非负前缀余额的括号序列，预处理每种最终余额的数量。再用 $dp_{i,j}$ 合并花色，第一花色产生的盈余抵消其他花色的盈余，最终取 $dp_{n,0}$；复杂度为 $O(nm^2)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅用于主题辅助判断。",
+        "quality_flags": []
+      }
+    },
+    "2025D": {
+      "problem_key": "2025D",
+      "title": "Attribute Checks",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/2025/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/135173",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7a59aaf93d524c06afb06cfab727ea9555b2ce1ff8d23309911cc4fa4e48b07d",
+      "generated_at": "2026-09-27T04:26:39+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "按固定顺序处理包含属性点和检查的记录：遇到属性点时必须把它永久分配给力量或智力之一，正数检查要求智力至少达到该值，负数检查要求力量至少达到其绝对值。求合理分配后最多通过多少次检查。",
+        "transformed_statement": "按处理进度和当前智力建模；已获得的点数确定力量，因此状态只保留智力这一维。将每次检查视为对满足阈值的一段智力状态统一加分，将属性点视为相邻状态的最大值转移。",
+        "key_observations": [
+          "处理前 $i$ 条记录后，只需记录智力 $I$；已获得点数为 $P$ 时力量必为 $P-I$，因此二维属性状态可压成一维。",
+          "智力检查只会给满足 $I\\ge r_i$ 的状态加一，力量检查只会给满足 $I\\le P-|r_i|$ 的状态加一，二者都等价于对状态数组做区间加法。",
+          "属性点记录的转移是 $d[I]=\\max(d[I],d[I-1])$；按智力从大到小原地更新可避免覆盖仍需使用的旧状态。",
+          "用差分数组暂存检查产生的区间加法，在获得属性点时一次性推送；由于属性点恰好有 $m$ 次，可将总复杂度降为 $O(m^2+n)$，空间降为 $O(m)$。"
+        ],
+        "solution_brief": "以已处理记录数和当前智力建立 DP，并利用总点数确定力量。检查只做区间加法，用差分数组延迟维护；遇到属性点时推送加法，再按智力降序完成转移，得到 $O(m^2+n)$ 时间、$O(m)$ 空间的算法。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的记录规则，以及完整 editorial 中的一维 DP、差分数组和原地转移方案。",
+        "quality_flags": []
+      }
+    },
+    "2025C": {
+      "problem_key": "2025C",
+      "title": "New Game",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2025/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/135173",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "22ddb315bf1ff7eabfe4d8a53c10adaad2836e27ca11fb162a9d0ee72d1486c4",
+      "generated_at": "2026-09-27T04:27:08+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一副写有整数的牌，第一步可任取一张；之后每步只能拿与上一张数字相同或大 $1$ 的牌，且拿到的不同数字不超过 $k$，拿过的牌会被移除。求最多能拿多少张牌。",
+        "transformed_statement": "固定第一张牌的数字 $x$，最优过程等价于依次取尽数字 $x,x+1,\u0002dots,x+k-1$ 的牌，遇到缺失数字就停止。排序后转化为寻找最长区间，使相邻数值差不超过 $1$ 且首尾差小于 $k$。",
+        "key_observations": [
+          "固定首张牌的数值为 $x$ 后，最优策略是依次拿完 $x,x+1,\u0002dots$ 的所有牌；提前跳过某个可拿数值不会增加后续选择空间。",
+          "排序后，一个区间可连续取完，当且仅当相邻不同数值的差不超过 $1$，且区间首尾数值差满足 $a_r-a_l<k$；前者防止中间数值缺失，后者限制不同数值数量。",
+          "左端点向右移动时，满足条件的最右端点不会左移，因此可以用双指针维护最长合法区间并更新答案。"
+        ],
+        "solution_brief": "先排序数组。用双指针维护窗口：窗口内相邻元素差均不超过 $1$，且最大值与最小值之差小于 $k$；右端点尽量扩展，左端点右移后继续维护，取最大窗口长度。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text，以及 tags 中的排序和双指针信息。",
+        "quality_flags": []
+      }
+    },
+    "2025B": {
+      "problem_key": "2025B",
+      "title": "Binomial Coefficients, Kind Of",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2025/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/135173",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "964568f238aa48c91607d93d062b66ad839b93877303bcc15ff19e23e21865e3",
+      "generated_at": "2026-09-27T04:27:26+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $t$ 组整数 $(n,k)$，按题目中错误的系数递推式（边界为 $C[n][0]=1$）计算 $C[n][k]$，其中 $1\\le k<n$。对每组结果取模 $10^9+7$ 后输出。",
+        "transformed_statement": "把二维系数表的目标项沿第二维连续展开，转化为 $k$ 层二项式加权的边界值之和；由于边界值均为 $1$，问题等价于计算 $2^k$。",
+        "key_observations": [
+          "错误递推在 $k<n$ 时满足 $C[n][k]=C[n][k-1]+C[n-1][k-1]$，沿 $k$ 方向展开后可表示为二项式系数加权的边界值之和。",
+          "由于边界 $C[x][0]=1$，展开 $k$ 次得到 $C[n][k]=\\sum_{i=0}^{k}\\binom{k}{i}=2^k$，因此结果与 $n$ 无关。",
+          "所有询问只需按 $p[0]=1$、$p[k]=2p[k-1]\\bmod(10^9+7)$ 预处理幂次，再直接按 $k$ 查询，避免逐个递推二维表。"
+        ],
+        "solution_brief": "将错误递推展开为二项式系数之和，证明所有 $k<n$ 的值均为 $2^k$。预处理模 $10^9+7$ 下的幂数组，按每个询问的 $k$ 直接输出。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 中的询问范围与取模要求，以及 editorial 给出的错误递推、展开证明和幂次预处理方案。",
+        "quality_flags": []
+      }
+    },
+    "2025A": {
+      "problem_key": "2025A",
+      "title": "Two Screens",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2025/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/135173",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9d15de7227b62588a2d56c5a4bf8cac82ad18dc4b698a68ee70b8f55a7056a00",
+      "generated_at": "2026-09-27T04:27:38+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有两块初始为空的屏幕，每秒可以向任一屏幕末尾追加一个大写字母，或把一块屏幕的完整内容复制到另一块并覆盖原内容。要求用最少时间使第一块显示 $s$、第二块显示 $t$。",
+        "transformed_statement": "把方案抽象为“先在一块屏幕上形成某个前缀并复制一次，再分别追加剩余字符”；可复制的部分必须是 $s,t$ 的公共前缀，因此问题转化为求最长公共前缀。",
+        "key_observations": [
+          "复制前另一块屏幕的内容可视为空，因此最优方案至多复制一次；多次复制不会带来额外收益，反而会覆盖已有内容。",
+          "复制后只能在末尾追加字符，所以被复制的内容必须同时是两个目标串的前缀，最多能复制最长公共前缀。",
+          "若最长公共前缀长度为 $l>0$，先写出并复制这 $l$ 个字符，再分别补全，操作数为 $|s|+|t|+1-l$；若 $l=0$，直接分别输入即可避免无意义的复制。"
+        ],
+        "solution_brief": "求两个字符串的最长公共前缀长度 $l$。若 $l>0$，答案为 $|s|+|t|+1-l$；否则直接输入两串，答案为 $|s|+|t|$。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial，tags 仅用于辅助分类。",
         "quality_flags": []
       }
     }
