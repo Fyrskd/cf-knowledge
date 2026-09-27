@@ -1733,6 +1733,27 @@
     "raw_sha256": "44208024b64bdbfb5d860a2faa0ebabf91f45e2d81bfe458132788ee05d8492b"
   },
   {
+    "url": "https://codeforces.com/blog/entry/131438",
+    "blog_entry_id": 131438,
+    "title": "Codeforces Round 957 (Div. 3) — Video Editorial",
+    "author": "Shayan",
+    "creation_time": "2024-07-11",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Shayan's Video Tutorial",
+    "section_count": 7,
+    "covered_problems": [
+      "1992A",
+      "1992B",
+      "1992C",
+      "1992D",
+      "1992E",
+      "1992F",
+      "1992G"
+    ],
+    "raw_sha256": "abd3462d5bf11161b355e978bfb7bd199d35e741974755580aa33ce236459be8"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/131567",
     "blog_entry_id": 131567,
     "title": "Editorial of Codeforces Round 958 (Div. 2)",

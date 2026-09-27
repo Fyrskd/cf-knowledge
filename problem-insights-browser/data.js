@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2321,
-    "source_total_problems": 2321,
+    "total_problems": 2328,
+    "source_total_problems": 2328,
     "filtered_out_problems": 0,
-    "with_statement_brief": 2321,
+    "with_statement_brief": 2328,
     "with_editorial_brief": 2059,
     "with_solution_brief": 2060,
-    "missing_editorial_brief": 261,
+    "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 1262,
     "primary_topic_count": 13,
-    "contest_count": 358,
+    "contest_count": 359,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,11 +45,11 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 108,
-    "构造与贪心": 762,
+    "构造与贪心": 767,
     "图论与网络流": 136,
-    "动态规划与状态设计": 209,
+    "动态规划与状态设计": 210,
     "数论与同余": 242,
-    "组合计数与概率": 175,
+    "组合计数与概率": 176,
     "数据结构": 208,
     "几何": 52,
     "树结构": 137,
@@ -61,7 +61,7 @@ window.CF_INSIGHTS_DATA = {
   "statusCounts": {
     "ai_generated_with_editorial": 1123,
     "ai_generated_partial_editorial": 45,
-    "missing_editorial": 261,
+    "missing_editorial": 268,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -50057,6 +50057,194 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "用插入最大值的 DP 统计排列的前缀最大值和上升数，再反转得到后缀版本。按最大值位置拆分，合并两侧权值并计入跨界上升；二维多项式卷积可在 $O(n^2\\log n)$ 完成，亦可用插值降为 $O(n^3)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1992,
+      "name": "Codeforces Round 957 (Div. 3)",
+      "date": "2024-07-11",
+      "url": "https://codeforces.com/contest/1992",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1992A",
+          "index": "A",
+          "slot": "A",
+          "title": "Only Pluses",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1992/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/131438",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Only Pluses；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1992B",
+          "index": "B",
+          "slot": "B",
+          "title": "Angry Monk",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1992/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/131438",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "博弈"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Angry Monk；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1992C",
+          "index": "C",
+          "slot": "C",
+          "title": "Gorilla and Permutation",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1992/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/131438",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Gorilla and Permutation；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1992D",
+          "index": "D",
+          "slot": "D",
+          "title": "Test of Love",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1992/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/131438",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Test of Love；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1992E",
+          "index": "E",
+          "slot": "E",
+          "title": "Novice's Mistake",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1992/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/131438",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "implementation",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Novice's Mistake；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1992F",
+          "index": "F",
+          "slot": "F",
+          "title": "Valuable Cards",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1992/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/131438",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "动态规划与状态设计",
+            "博弈"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Valuable Cards；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1992G",
+          "index": "G",
+          "slot": "G",
+          "title": "Ultra-Meow",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1992/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/131438",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "博弈",
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Ultra-Meow；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     },

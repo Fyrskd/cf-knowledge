@@ -1331,6 +1331,17 @@
     "date": "2024-07-07"
   },
   {
+    "id": 1992,
+    "name": "Codeforces Round 957 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1720708500,
+    "relativeTimeSeconds": 69777228,
+    "date": "2024-07-11"
+  },
+  {
     "id": 1988,
     "name": "Codeforces Round 958 (Div. 2)",
     "type": "CF",
