@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T09:18:56+00:00",
+  "updated_at": "2026-09-27T09:23:57+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -48937,6 +48937,218 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial_text 以及 tags 中的 brute force 和 implementation。",
+        "quality_flags": []
+      }
+    },
+    "1872G": {
+      "problem_key": "1872G",
+      "title": "Replace With Product",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1872/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/120165",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "050f3e11454c7c1aa818a7a88979e0321894f190b865566bc62ffe10e09ac933",
+      "generated_at": "2026-09-27T09:22:12+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组，必须恰好选择一个连续子数组，将其中所有元素删除并替换成它们的乘积，数组其余部分保持不变。要求输出使最终数组元素总和最大的子数组左右端点。",
+        "transformed_statement": "把每个候选区间的收益表示为原数组总和加上“区间乘积减区间元素和”，于是问题转化为寻找乘积与和之差最大的区间；题解进一步只保留以非 $1$ 元素为端点的候选区间。",
+        "key_observations": [
+          "若全数组乘积足够大，最优区间应覆盖所有大于 $1$ 的元素；首尾的 $1$ 不必纳入，因此可直接取第一个到最后一个非 $1$ 元素。",
+          "若全数组乘积不超过 $2^{60}$，数组中大于 $1$ 的元素至多有 $60$ 个，从而候选区间数量降为至多 $60^2$。",
+          "最优区间的左右端点都不能是 $1$：去掉端点的 $1$ 不改变区间乘积，却能让它留在区间外，使总和增加 $1$。",
+          "固定区间后的数组和等于总和减去区间和再加区间乘积，因此可用前缀和与前缀积快速比较所有候选。"
+        ],
+        "solution_brief": "将区间替换后的总和写成总和减区间和加区间积。乘积大于 $2^{60}$ 时取覆盖全部非 $1$ 元素的区间；否则枚举非 $1$ 元素作为端点，并用前缀和、前缀积选取最优区间。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与题目标签整理。",
+        "quality_flags": []
+      }
+    },
+    "1872F": {
+      "problem_key": "1872F",
+      "title": "Selling a Menagerie",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1872/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/120165",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ad99603d94afecf98d28e322c0d99cb90d93ec7defe8b02a0b7f6ab6453065f9",
+      "generated_at": "2026-09-27T09:22:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 只动物，动物 $i$ 害怕唯一的另一只动物 $a_i$，成本为 $c_i$。需要安排一个出售全体动物的排列：出售某只动物时，若它害怕的动物尚未出售则获得双倍成本，否则获得单倍成本，目标是最大化总收益。",
+        "transformed_statement": "把动物视为函数图中的点和边 $i\\to a_i$，出售过程等价于逐步删除点并获得收益：先处理入度为 $0$ 的点，最后剩下的部分是若干有向环；每个环只需决定哪个点承担唯一的单倍收益。",
+        "key_observations": [
+          "当前若某动物没有任何尚未出售的动物害怕它，优先出售它不会损失双倍收益；出售后只需检查其害怕的动物是否因此变成新的可优先对象。",
+          "不断移除上述动物后，剩余图中每个点的入度都至少为 $1$，而函数图每个点只有一条出边，因此剩余部分必然分解为若干有向环。",
+          "在一个环中沿着害怕关系的方向出售时，除最后一个动物外都能获得双倍成本；最后一个只能获得单倍成本，因此应让环内成本最小的动物最后出售。",
+          "不同环之间互不影响，分别确定环内顺序后可以任意交错或拼接，直接累加各部分收益即可。"
+        ],
+        "solution_brief": "先用入度为 $0$ 的队列剥离可获得双倍收益的动物；剥离完成后，剩余部分是若干环。每个环沿 $i\\to a_i$ 顺序出售，并把成本最小者放在最后，按此顺序输出。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、题面示例及 graphs/implementation 标签；题面在收益规则处截断，因此该规则由 editorial 和示例补全。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1872E": {
+      "problem_key": "1872E",
+      "title": "Data Structures Fan",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1872/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/120165",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d774b09313431e82af9c14e8664e9894e4dc0b603df245cd3d0695adf043ee60",
+      "generated_at": "2026-09-27T09:22:49+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数数组 $a$ 和同长度的二进制串 $s$，其中 $s_i$ 决定 $a_i$ 属于组 $0$ 或组 $1$。类型 $1$ 查询翻转区间 $[l,r]$ 内的所有字符，类型 $2$ 查询给出组别 $g$，要求输出当前该组所有元素的异或和。",
+        "transformed_statement": "将状态压缩为两组异或值 $X_0,X_1$：区间翻转不会要求逐个移动元素，只需让两组同时异或该区间元素的异或和；再用前缀异或快速取得这个区间值。变换后的二进制串只需保留以便确定初始分组。",
+        "key_observations": [
+          "查询只关心当前二进制串中标记为 $0$ 和 $1$ 的两组异或值，因此维护 $X_0,X_1$ 即可直接回答类型 $2$ 查询。",
+          "翻转任意区间后，区间内每个 $a_i$ 都会在两组之间移动，使 $X_0$ 与 $X_1$ 同时异或区间异或和，且与原字符方向无关。",
+          "用前缀异或 $p_i=a_1\\oplus\\cdots\\oplus a_i$ 表示数组前缀后，区间异或可由 $p_r\\oplus p_{l-1}$ 常数时间得到。"
+        ],
+        "solution_brief": "维护标记为 $0$、$1$ 的元素异或值 $X_0,X_1$。类型 $1$ 用前缀异或求区间异或，并同时异或更新两者；类型 $2$ 输出对应的 $X_g$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "字符串",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial、题面中的查询定义及 tags；题面示例正文部分存在截断。",
+        "quality_flags": []
+      }
+    },
+    "1872D": {
+      "problem_key": "1872D",
+      "title": "Plus Minus Permutation",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1872/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/120165",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0aa60b525442e6c7733dc6d0cf087cda78f4961fa95ba98e473fb09d8a368c52",
+      "generated_at": "2026-09-27T09:23:07+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n,x,y$，将 $1$ 到 $n$ 不重复地排列到数组位置中；得分是所有位置索引为 $x$ 的倍数处元素之和，减去所有位置索引为 $y$ 的倍数处元素之和。求所有排列中的最大得分。",
+        "transformed_statement": "把位置按是否被 $x$、$y$ 整除分成仅受加法影响、仅受减法影响以及正负抵消三类；问题因此变成给两类位置分别分配最大的若干个数和最小的若干个数。",
+        "key_observations": [
+          "同时被 $x$ 和 $y$ 整除的位置正负贡献会抵消，因此这些位置上的数值完全不影响得分。",
+          "仅被 $x$ 整除的位置与仅被 $y$ 整除的位置互不重叠，所以应把最大的 $R$ 个数放入前者、最小的 $B$ 个数放入后者。",
+          "同时整除 $x,y$ 等价于整除 $\\operatorname{lcm}(x,y)$，从而可用整除数量直接得到 $R$ 和 $B$。",
+          "最优得分转化为两个等差数列之和，避免枚举排列或位置。"
+        ],
+        "solution_brief": "令 $L=\\operatorname{lcm}(x,y)$，$R=\\lfloor n/x\\rfloor-\\lfloor n/L\\rfloor$、$B=\\lfloor n/y\\rfloor-\\lfloor n/L\\rfloor$。答案为最大 $R$ 个数之和减最小 $B$ 个数之和，用等差数列公式计算。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 math 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1872C": {
+      "problem_key": "1872C",
+      "title": "Non-coprime Split",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1872/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/120165",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "99e4661201ca38d9fe7402b0f8e1ad761b530e33865b744ccff68a79ffad31b3",
+      "generated_at": "2026-09-27T09:23:25+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数区间 $[l,r]$，需要构造正整数 $a,b$，使得 $l\\le a+b\\le r$ 且 $\\gcd(a,b)>1$；若不存在则输出 $-1$，有多组解时任选一组。",
+        "transformed_statement": "把问题转为在区间 $[l,r]$ 中寻找一个可拆分的和 $s$：若取 $a=d,b=s-d$，则 gcd 等于 $\\gcd(d,s)$；因此寻找合数和，或在区间长度至少为二时利用偶数直接构造。",
+        "key_observations": [
+          "固定和为 $s$ 时，$\\gcd(a,s-a)=\\gcd(a,s)$；因此只需让 $s$ 有非平凡因子，并取该因子作为 $a$。",
+          "当 $l<r$ 且 $r\\ge4$ 时，区间内最大的偶数 $s=r-r\\%2$ 满足 $s\\ge4$，直接取 $a=b=s/2$ 即可。",
+          "当 $l=r$ 时，有解当且仅当 $l$ 是合数：质数没有非平凡因子，合数可取其非平凡因子 $d$ 与 $l-d$。"
+        ],
+        "solution_brief": "若 $l<r$，当 $r\\le3$ 输出 $-1$，否则取最大偶数 $s=r-r\\%2$，输出 $s/2,s/2$。若 $l=r$，试除判断其是否为合数；找到非平凡因子 $d$ 就输出 $d,l-d$，否则输出 $-1$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 中的和与 gcd 示例，以及 editorial_text 的完整构造和判定方法；标签提供数论方向。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1872B": {
+      "problem_key": "1872B",
+      "title": "The Corridor or There and Back Again",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1872/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/120165",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "30fb3d37d1ab8d2bbd8a1b30228a69d54e2726e7663c22b6f0804deebed4fcf8",
+      "generated_at": "2026-09-27T09:23:41+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "你从房间 1 出发，选择一个房间 $k$，沿走廊到达后再返回房间 1。每个陷阱在进入所在房间后 $s_i$ 秒激活，激活后不能进入或离开该房间；求能够安全往返的最大 $k$。",
+        "transformed_statement": "把每个陷阱视为对终点 $k$ 的独立上界：往返过程中经过房间 $d_i$ 的关键时间差是 $2(k-d_i)$，必须严格小于其可等待时间 $s_i$，于是问题转化为求所有上界的最小值。",
+        "key_observations": [
+          "对位于房间 $d_i$ 的陷阱，去程到最远房间再返程时在该房间停留的时间差为 $2(k-d_i)$，因此安全条件等价于 $s_i>2(k-d_i)$。",
+          "将严格不等式转为整数上界，可得每个陷阱都要求 $k\\le d_i+\\left\\lfloor\\frac{s_i-1}{2}\\right\\rfloor$，避免了逐个模拟移动过程。",
+          "所有陷阱的限制必须同时满足，因此最大可行房间编号就是各陷阱上界的最小值；多个位于同一房间的陷阱自然取其中最严格者。"
+        ],
+        "solution_brief": "每个陷阱分别计算允许的最大 $k$：$d_i+\\left\\lfloor\\frac{s_i-1}{2}\\right\\rfloor$，答案取这些上界的最小值。直接遍历所有陷阱即可。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 及 greedy、implementation 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1872A": {
+      "problem_key": "1872A",
+      "title": "Two Vessels",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1872/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/120165",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c0f279a7bb0981a9c8e37c2f4f7a5d90d58cf17edba5eeb2761b673d7d293db6",
+      "generated_at": "2026-09-27T09:23:57+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有两个可容纳任意水量的 vessel，初始分别装有 $a$ 和 $b$ 克水，并有容量为 $c$ 克的空杯。每次可从任一 vessel 舀取至多 $c$ 克水倒入另一个 vessel，倒水量可为非整数；求使两 vessel 水量相等所需的最少操作次数。",
+        "transformed_statement": "把状态压缩为两 vessel 的水量差 $d=a-b$。一次向另一 vessel 倒入 $x$ 克会使 $d$ 改变 $2x$，所以目标转化为用若干次最多覆盖 $2c$ 的操作消除初始差值 $|d|$。",
+        "key_observations": [
+          "两 vessel 的总水量始终不变，因此只需关注差值 $d=a-b$；两 vessel 相等等价于 $d=0$。",
+          "一次从较多的 vessel 向较少的 vessel 倒入 $x$ 克水会让差值减少 $2x$，其中 $0\\le x\\le c$，所以单步最多消除 $2c$ 的差值。",
+          "由于倒水量允许为非整数，任意一次都能消除不超过 $2c$ 的剩余差值，因此所需步数恰为覆盖 $|a-b|$ 的最少段数，即 $\\lceil |a-b|/(2c)\\rceil$。"
+        ],
+        "solution_brief": "令差值为 $d=a-b$。每次从水多的 vessel 向水少的 vessel 倒水，最多使差值减少 $2c$；因倒水量可为实数，答案为 $\\lceil |a-b|/(2c)\\rceil$，可用整数上取整计算。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅用于辅助主题归类。",
         "quality_flags": []
       }
     }
