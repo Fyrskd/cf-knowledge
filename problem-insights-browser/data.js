@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2847,
+    "total_problems": 2854,
     "source_total_problems": 2854,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2847,
-    "with_editorial_brief": 2583,
-    "with_solution_brief": 2584,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2854,
+    "with_editorial_brief": 2590,
+    "with_solution_brief": 2591,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1909,
+    "ai_override_count": 1916,
     "primary_topic_count": 13,
-    "contest_count": 433,
+    "contest_count": 434,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 893,
+    "基础实现与模拟": 172,
+    "字符串": 152,
+    "构造与贪心": 895,
+    "图论与网络流": 175,
     "数论与同余": 308,
-    "图论与网络流": 174,
     "组合计数与概率": 223,
     "树结构": 147,
     "交互": 92,
     "数据结构": 264,
     "动态规划与状态设计": 241,
     "几何": 69,
-    "基础实现与模拟": 169,
-    "字符串": 151,
     "博弈": 95,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1636,
+    "ai_generated_with_editorial": 1643,
     "ai_generated_partial_editorial": 56,
     "missing_editorial": 263,
     "manual_override": 891,
@@ -88093,6 +88093,204 @@ window.CF_INSIGHTS_DATA = {
             "1 变 0 时，在原区间内用 0 记作 $-1$、1 记作 $+1$，寻找前缀平衡首次达到 $-2$ 的位置即可切成两个仍平衡且由两个 0 分隔的区间。"
           ],
           "solutionBrief": "维护平衡区间及其间的 0 间隔。翻转为 1 时扩展、新建或合并区间；翻转为 0 时在原区间内寻找前缀和首次达到 $-2$ 的位置并切分。用带懒标记线段树维护全局前缀和、区间最小值，二分切分点，单次至多 5 次修改，总复杂度为 $O(n\\log^2 n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1760,
+      "name": "Codeforces Round 835 (Div. 4)",
+      "date": "2022-11-21",
+      "url": "https://codeforces.com/contest/1760",
+      "type": "Div. 4",
+      "problemCount": 7,
+      "maxRating": 1700,
+      "problems": [
+        {
+          "key": "1760A",
+          "index": "A",
+          "slot": "A",
+          "title": "Medium Number",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1760/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/109348",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "每组给出三个互不相同的整数，允许对它们按大小排列；需要输出既不是最小值也不是最大值的那个中间数。",
+          "transformedStatement": "将问题等价改写为：把三个数升序排列后，答案就是第二个元素；或者寻找严格介于另外两个数之间的元素。",
+          "keyObservations": [
+            "三个数互不相同，因此中位数唯一等于排序后位于第二个位置的数，直接取中间元素即可。",
+            "一个数是中位数，当且仅当它严格介于另外两个数之间；因此也可用两组大小关系直接判断，无需比较所有排列。"
+          ],
+          "solutionBrief": "对每组的三个数排序，输出排序后的第二个数；也可判断哪个数严格位于另外两个数之间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1760B",
+          "index": "B",
+          "slot": "B",
+          "title": "Atilla's Favorite Problem",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1760/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/109348",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定若干个只含小写字母的字符串。大小为 $x$ 的字母表包含前 $x$ 个字母，要求对每个字符串求能写出其中所有字符所需的最小字母表大小。",
+          "transformedStatement": "把问题转化为寻找字符串中的最大字母序字符：该字符决定必须扩展到哪个字母，而所有更小字符会自动被同一个前缀字母表覆盖。",
+          "keyObservations": [
+            "字母表只包含从 `a` 开始的连续前缀，因此只要覆盖字符串中字母序最大的字符，就必然覆盖所有其他字符。",
+            "若最大字符是第 $k$ 个字母，所需字母表大小至少为 $k$，而大小为 $k$ 的字母表恰好足够，因此答案就是字符串中的最大字母序编号。",
+            "遍历字符串维护最大字符即可完成计算，单个测试用例的时间复杂度为 $O(n)$。"
+          ],
+          "solutionBrief": "对每个字符串遍历所有字符，维护字母序最大的字符；将其转换为从 `a` 开始计数的编号并输出，即为覆盖全部字符所需的最小字母表大小。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1760C",
+          "index": "C",
+          "slot": "C",
+          "title": "Advantage",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1760/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/109348",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定多组比赛数据和每位参与者的强度。对每位参与者，找出除自己以外的最高强度，并输出自己的强度减去该值，差值可以为负数，结果需保持原参与者顺序。",
+          "transformedStatement": "先将所有强度排序，只保留全局最大值和第二大值作为候选：当前参与者不是全局最大值时使用最大值，否则使用第二大值计算差值。",
+          "keyObservations": [
+            "对每个参与者，除去自己后的最大强度只可能是全局最大值或排序后的第二大值，因此无需逐人重新寻找最大值。",
+            "若 $s_i$ 不等于全局最大值，其他人中仍有全局最大值，答案为 $s_i- ext{max}$；若 $s_i$ 等于全局最大值，则答案为 $s_i- ext{second\\_max}$。",
+            "当全局最大值出现多次时，排序后的第二大值仍可能等于最大值，恰好表示除去一个人后其他同强度参与者仍可作为最强者。"
+          ],
+          "solutionBrief": "复制并排序强度数组，取得全局最大值和第二大值。按原顺序处理每个参与者：若其强度等于全局最大值，就减去第二大值，否则减去全局最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1760D",
+          "index": "D",
+          "slot": "D",
+          "title": "Challenging Valleys",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1760/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/109348",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个整数数组，若其中恰好有一个连续相等段构成谷底：它左侧为空或左邻元素更大，且右侧为空或右邻元素更大，则称数组为 valley。对每个测试用例判断数组是否满足这一条件。",
+          "transformedStatement": "先将数组的每个极大连续相等段压缩为一个元素；问题转化为统计压缩数组中的局部谷底（包括位于两端、只有一侧邻居的情况），判断其数量是否恰为一个。",
+          "keyObservations": [
+            "连续相等的元素对判断没有区别，将每个极大相等段压缩成一个值后，谷底候选只需在段之间比较。",
+            "压缩数组中的谷底段必须不高于相邻段：左侧不存在或左邻值更大，且右侧不存在或右邻值更大；这正好对应原数组中满足条件的子数组。",
+            "原数组是否为谷地等价于压缩数组中谷底段恰好只有一个，因此只需线性扫描并统计候选数量。"
+          ],
+          "solutionBrief": "先把连续相等的元素合并为一个值，再扫描压缩数组，统计左侧为空或左邻更大、且右侧为空或右邻更大的段。候选段数量恰为一个时输出 YES，否则输出 NO，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1760E",
+          "index": "E",
+          "slot": "E",
+          "title": "Binary Inversions",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1760/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/109348",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个只含 $0$ 和 $1$ 的数组，最多选择一个位置，将该元素翻转为另一种值，也可以不操作。要求求操作后数组中左侧为 $1$、右侧为 $0$ 的下标对数量的最大值。",
+          "transformedStatement": "将目标视为统计所有“$1$ 在前、$0$ 在后”的配对：先求原数组贡献，再证明 $0\\to1$ 只需尝试最早的 $0$，$1\\to0$ 只需尝试最晚的 $1$，从而只比较两个候选方案。",
+          "keyObservations": [
+            "二进制数组中的逆序对恰好是左侧为 $1$、右侧为 $0$ 的下标对，因此扫描时只需维护此前出现的 $1$ 的数量。",
+            "把某个 $0$ 翻成 $1$ 时，越靠前的位置后方可新增的 $0$ 越多、前方损失的 $1$ 越少，所以只需考虑最早的 $0$。",
+            "把某个 $1$ 翻成 $0$ 时，越靠后的位置前方可新增的 $1$ 越多、后方损失的 $0$ 越少，所以只需考虑最晚的 $1$。"
+          ],
+          "solutionBrief": "先扫描数组，用此前的 $1$ 数量累计原始逆序对。最优翻转只可能是最早的 $0$ 或最晚的 $1$；分别计算两种翻转后的逆序对数量，并与不翻转的结果取最大值，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1760F",
+          "index": "F",
+          "slot": "F",
+          "title": "Quests",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1760/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/109348",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个任务，第 $i$ 个任务奖励 $a_i$ 枚硬币；每天至多完成一个任务，完成后接下来的 $k$ 天不能再次完成同一任务。给定目标硬币数 $c$ 和天数 $d$，求在 $d$ 天内至少获得 $c$ 枚硬币时最大的 $k$；若不存在则输出 Impossible，若 $k$ 可无限大则输出 Infinity。",
+          "transformedStatement": "把固定的 $k$ 看成任务选择序列的周期长度：奖励降序后，每个周期依次使用前 $k$ 个任务，超过任务数的周期位置空闲。于是问题变为判断该周期方案在 $d$ 天内是否达标，并利用可行性的单调性求最大周期。",
+          "keyObservations": [
+            "固定参数后，每天优先选择当前奖励最高且已可执行的任务；将高奖励任务提前不会减少后续可获得的奖励，反而能更早进入下一轮重复。",
+            "任务按奖励降序排列后，长度为 $k$ 的每个周期依次执行前 $k$ 个任务；若 $k>n$，多出的天数只能空闲，因此只需考虑 $k\\le n$。",
+            "若某个 $k$ 可达目标，则所有更小的 $k$ 也可达，因为更短周期不会减少任何可执行机会，故可行性关于 $k$ 单调。",
+            "当 $k=n$ 的方案也能达标时，增大 $k$ 不再改变最多执行每个任务一次的效果，因此答案为 Infinity；否则在有限范围内二分最大可行值。"
+          ],
+          "solutionBrief": "将奖励降序排序。固定 $k$ 时按周期重复执行前 $k$ 个任务，不足 $n$ 个时其余天数空闲，并计算 $d$ 天收益；利用可行性的单调性二分最大 $k$，边界分别判断 Impossible 和 Infinity。总复杂度为 $O(n\\log n+d\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1760G",
+          "index": "G",
+          "slot": "G",
+          "title": "SlavicG's Favorite Problem",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1760/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/109348",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dfs and similar",
+            "graphs"
+          ],
+          "statementBrief": "给定一棵带权无根树，从顶点 $a$ 出发，经过一条边就将变量 $x$ 与该边权异或，只有到达 $b$ 时 $x$ 恰好为 $0$ 才算成功。途中最多可传送一次到任意非 $b$ 顶点；判断是否存在一条满足条件的行进与传送方案。",
+          "transformedStatement": "把使用传送的路线表示为先沿树上路径从 $a$ 到某个 $c$，再传送到某个 $d\\ne b$，最后沿路径从 $d$ 到 $b$；问题转化为寻找两段路径的异或值相等，并限制第一段不能经过 $b$。",
+          "keyObservations": [
+            "树上任意一条不重复边的路径唯一；重复经过同一条边会因异或两次抵消，因此每段行程的异或值只由对应简单路径决定。",
+            "使用传送时，路线可拆成 $a\\to c$ 与 $d\\to b$ 两段；最终到达 $b$ 时异或为零，当且仅当两段路径的异或值相同。",
+            "从 $a$ 搜索时必须阻止路径进入 $b$，否则会把已经结束游戏的路线错误地当作传送前路径；从 $b$ 搜索的候选传送落点不能是 $b$。",
+            "分别收集两侧候选路径的异或值并查重即可判断是否存在可行传送，整体复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "先单独检查不传送时 $a$ 到 $b$ 的路径异或值是否为零。再从 $a$ 搜索且不进入 $b$，记录各点到 $a$ 的异或值；从 $b$ 搜索除自身外的点，若其到 $b$ 的异或值与前者有交集，则可以传送并成功到达。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
