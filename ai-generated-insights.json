@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T22:41:41+00:00",
+  "updated_at": "2026-09-27T22:47:06+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -62201,6 +62201,216 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 的操作规则和 editorial_text 的完整证明；题目分类参考 codeforces_tags。",
         "quality_flags": []
+      }
+    },
+    "1726H": {
+      "problem_key": "1726H",
+      "title": "Mainak and the Bleeding Polygon",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1726/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/106675",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f79e5cdf739f6d8860000e6fbc6a85f974df60c606644658ab90a3b294b40887",
+      "generated_at": "2026-09-27T22:45:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个逆时针排列的凸整数点多边形，所有内角均在 $90^\\circ$ 到 $180^\\circ$ 之间。若多边形内一点能位于某条长度不超过 $1$、端点在边界上的弦上，就将其染红；要求计算所有染红点组成区域的面积。",
+        "transformed_statement": "将染红区域改看成单位长度杆在多边形内部沿边界滑动时扫出的危险区：主要区域由每对相邻边的包络线决定，先按夹角求这些区域面积，再处理短公共边导致的相邻区域交集。",
+        "key_observations": [
+          "每条边长度至少为 $1$，因此除边长为 $1$ 的特殊矩形外，长度不超过 $1$ 的弦形成的危险区只需考虑相邻两边。",
+          "固定相邻边夹角为 $\\alpha$ 后，危险区边界是单位杆沿两边滑动形成的包络线，其面积仅由 $\\alpha$ 决定，可用给定积分公式直接计算。",
+          "任意一点至多被两个相邻危险区覆盖，两个危险区相交时对应三条连续边，故总面积只需减去少量两两交集。",
+          "能产生交集的公共边长度必须小于 $2$；整数坐标下其长度只能为 $1$ 或 $\\sqrt{2}$，且这种边最多有 $8$ 条，因此交集计算次数为常数。"
+        ],
+        "solution_brief": "把危险区分解为每对相邻边产生的包络区域，按夹角用公式求面积并求和。对可能重叠的短公共边，利用包络线高度单调性嵌套二分求交点，再用参数积分减去交集；短边数量至多为常数。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "数论与同余",
+          "构造与贪心",
+          "代数、矩阵与多项式"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，以及 geometry、math、binary search 标签。",
+        "quality_flags": []
+      }
+    },
+    "1726G": {
+      "problem_key": "1726G",
+      "title": "A Certain Magical Party",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1726/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/106675",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9e45cd667d4a23e4982a5f0f09cce6fca9f0b29c3dfff1edf523bfed9bdee86f",
+      "generated_at": "2026-09-27T22:45:29+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个人，每人有初始幸福值和二进制性格。按选定顺序依次发言：当前人向其他所有人讲故事，然后根据性格把自己的幸福值增加为当前严格更少或严格更多的人的数量；求最终所有人幸福值相等的发言顺序数，答案对 $998244353$ 取模。",
+        "transformed_statement": "把每个人抽象为初始值与行为类型的分组，并要求每次被选者行动后的幸福值恰为公共目标 $T$。问题转化为判断这些分组能否按强制的优先关系排成序列，再统计相同分组内部的排列及特殊组的位置选择。",
+        "key_observations": [
+          "所有人的幸福值只增不减；当初始值不全相同时，最终公共值被唯一确定为 $T=m+n-1$，其中 $m$ 是最小初值，否则无法达到同一终值。",
+          "对任意 $x<T$，初始状态为 $(x,1)$ 的人数至多为一个；否则其中一人行动后，其他同类人的严格更大人数只会增加，无法恰好达到 $T$。",
+          "可行顺序中，行为为 $0$ 的人必须按初始幸福值非递减出现；一般情况下每一步优先选择更大的可行值，并在同值时优先行为为 $1$，因此除相同分组内的排列外顺序基本唯一。",
+          "对尚未行动的行为为 $1$ 的人，当前严格更大人数不能超过 $T-u$；维护其“现在行动后的终值”最大值即可判定可行性，并用两棵线段树支持区间加、最大值查询及当前幸福值计数。"
+        ],
+        "solution_brief": "先处理所有初值相同的情况，答案为 $n!$。否则令 $T=m+n-1$，按贪心规则模拟：行为 $0$ 只取最小者，行为 $1$ 检查其当前终值上界；用两棵线段树维护最大值和幸福值计数。顺序确定后乘各分组阶乘；若 $T=M$ 的 $(M,1)$ 组特殊，再乘其位置选择数。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "组合计数与概率",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 codeforces_tags 提取。",
+        "quality_flags": []
+      }
+    },
+    "1726E": {
+      "problem_key": "1726E",
+      "title": "Almost Perfect",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1726/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/106675",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e2cc4af8427e5d3e11f278d029acaf9f922d170187aa7a9f61ecc396e49e25b9",
+      "generated_at": "2026-09-27T22:45:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的排列 $p$，其中 $p^{-1}$ 是逆排列。若每个位置 $i$ 都满足 $|p_i-p^{-1}_i|\\le1$，则称其为几乎完美排列；要求对每个 $n$ 统计这类排列的数量并对 $998244353$ 取模。",
+        "transformed_statement": "把排列按置换环分解：合法环恰好是单点环、任意二元环，以及 $(i,j,i+1,j+1)$ 形式的四元环；于是先固定四元环数量，再对剩余只能由单点环和二元环组成的部分计数。",
+        "key_observations": [
+          "任意合法置换的环只能是单点环、二元环或形如 $(i,j,i+1,j+1)$ 的四元环；排除三元及更长环后，问题变成三类环的组合计数。",
+          "若有 $s$ 个四元环，只需从 $[1,n-1]$ 选出 $2s$ 个互不相邻的位置作为相邻对，方案数为 $\\binom{n-2s}{2s}(2s)!/s!$。",
+          "去除四元环后，剩余元素只能组成单点环和二元环；令 $I_k$ 表示这类置换数，则按包含元素 $k$ 的环分类得到 $I_k=I_{k-1}+(k-1)I_{k-2}$。",
+          "固定四元环数量 $s$ 后，剩余有 $n-4s$ 个元素，因此答案可按 $s$ 求和，避免直接枚举置换。"
+        ],
+        "solution_brief": "预处理阶乘、逆阶乘和递推数组 $I$。对每个 $s\\le n/4$，计算 $\\binom{n-2s}{2s}(2s)!/s!\\cdot I_{n-4s}$ 并求和，所有运算取模；总预处理与各测试求和复杂度为 $O(\\max n+\\sum n)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 的环分解、计数公式与递推，并结合 statement_text 的合法性条件；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1726D": {
+      "problem_key": "1726D",
+      "title": "Edge Split",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1726/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/106675",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9ea45ae2c3f7d78d9d8768d118204ecbdbd3cadb65b1cfb23b3e7abb36b0caa0",
+      "generated_at": "2026-09-27T22:46:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个连通无向图，将每条边染成红色或蓝色；分别只保留红边、蓝边并统计所得连通分量数 $c_1,c_2$。要求输出一种染色方案，使 $c_1+c_2$ 最小。",
+        "transformed_statement": "可把问题重述为寻找一种颜色的生成树，并让另一种颜色的边尽量成为森林。利用图只有至多 $3$ 条生成树外边的限制，在 DFS 树上局部消除蓝色环。",
+        "key_observations": [
+          "存在一个最优方案使某一种颜色的边构成生成树；把连接其不同连通块的边移入该颜色可使组件数下降，而移除环边不会变差。",
+          "固定红边为生成树后，红色组件数恒为 $1$，问题转化为让蓝边尽量不成环，从而最小化蓝色连通块数量。",
+          "由于 $m\\le n+2$，生成树外至多只有 $3$ 条边；DFS 树只有返祖边，蓝边至多形成一个环，结构可局部处理。",
+          "若蓝边形成由返祖边构成的环，可将环中一条终点为 $w$ 的返祖边染红，并把 DFS 树中 $w$ 与父节点的边染蓝；红边仍是生成树且该蓝环被消除。"
+        ],
+        "solution_brief": "先用 DFS 建生成树并将树边染红、非树边染蓝。若蓝边出现环，交换一条终点为 $w$ 的返祖边与 $w$ 的父边颜色；这样红边仍是生成树，蓝边变成森林，得到最优构造。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "树结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 graphs、trees、constructive algorithms 标签。",
+        "quality_flags": []
+      }
+    },
+    "1726C": {
+      "problem_key": "1726C",
+      "title": "Jatayu's Balanced Bracket Sequence",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1726/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/106675",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8c3ae9e45a740237bbfd4bab0f509b85d193e27da896327c53d0ccce957bb4d8",
+      "generated_at": "2026-09-27T22:46:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $2n$ 的平衡括号序列，把每个位置作为顶点。对任意 $i<j$，当且仅当子串 $s[i..j]$ 本身是平衡括号序列时连接无向边，求所得图的连通分量数。",
+        "transformed_statement": "不直接构造边，而是研究每个连通块的最小位置：用括号序列的前缀平衡值证明，连通块起点恰好是位置 $1$ 或其前一个字符为“(”且当前位置也是“(”。因此问题转化为统计子串“((”的出现次数并加一。",
+        "key_observations": [
+          "任意边的左端点必为“(”、右端点必为“)”，且对应区间的前缀括号平衡值不能低于末值。",
+          "每个连通块的最小下标一定是“(”；下标 $k>1$ 时，它成为连通块起点当且仅当 $s_{k-1}='('$。",
+          "若 $s_{k-1}='('$，利用前缀平衡值可证明连通块中不存在更小下标；因此所有相邻的“((”各贡献一个连通块，位置 $1$ 还额外贡献一个。"
+        ],
+        "solution_brief": "扫描字符串中相邻的“((”出现次数，答案为该次数加 $1$。总复杂度为 $O(n)$，所有测试的总长度线性可处理。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial；tags 用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1726B": {
+      "problem_key": "1726B",
+      "title": "Mainak and Interesting Sequence",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1726/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/106675",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a9d89345b03de59da09c873d893fe3c375e7198bc1feba4731f5c7717317aee0",
+      "generated_at": "2026-09-27T22:46:38+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度 $n$ 和总和 $m$，构造 $n$ 个正整数。对每个元素，所有严格小于它的元素的按位异或必须为 $0$；要求输出满足条件且总和为 $m$ 的任意序列，或报告无解。",
+        "transformed_statement": "把条件按数值从小到大观察：每个非最大取值的出现次数必须为偶数，最大值不受此限制。因此问题转化为在给定长度和总和下安排这些出现次数的奇偶性。",
+        "key_observations": [
+          "在任意相邻的不同取值之间，较小值出现次数必须为偶数；否则两个前缀异或值之差会等于该正数，无法同时为零。",
+          "因此除最大值外的每个数都必须出现偶数次，这把逐个检查异或的条件转化为出现次数的奇偶性约束。",
+          "当 $n$ 为奇数时，用 $n-1$ 个 $1$ 和一个 $m-n+1$；当 $n$ 为偶数且 $m$ 为偶数时，用 $n-2$ 个 $1$ 和两个 $(m-n+2)/2$，所有非最大取值的次数均为偶数。",
+          "当 $n$ 为偶数且 $m$ 为奇数时，按出现次数奇偶性必有至少两个不同的非最大值出现奇数次，违反上述必要条件，因此无解。"
+        ],
+        "solution_brief": "先判断 $n>m$，此时正整数之和不可能达到 $m$。若 $n$ 为奇数，输出 $n-1$ 个 $1$ 及 $m-n+1$；若 $n$、$m$ 均为偶数，输出 $n-2$ 个 $1$ 及两个 $(m-n+2)/2$；$n$ 偶数且 $m$ 奇数时无解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的正整数、严格小于条件及异或定义，并结合完整 editorial 的奇偶出现次数引理和四种分类构造；tags 仅作主题参考。",
+        "quality_flags": []
+      }
+    },
+    "1726A": {
+      "problem_key": "1726A",
+      "title": "Mainak and Array",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1726/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/106675",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3c56b03271141be80f5aefffa71a25096fef5d0350629767a604a2c8c5bf879d",
+      "generated_at": "2026-09-27T22:47:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数数组，必须选择一个连续子数组并将其整体向右循环移动一位（末元素移到子数组首端），恰好操作一次；求操作后数组末元素减首元素的最大值。",
+        "transformed_statement": "只需研究操作后首尾两个位置的来源：若子数组覆盖两端，首尾来自环形相邻元素；若只覆盖一端，则一个端点保持不变、另一个端点可从数组内部选择。因此答案是三类端点差的最大值。",
+        "key_observations": [
+          "选择的子数组同时覆盖首尾时，右移后首尾差只能变为环形相邻差 $a_{i-1}-a_i$，令 $a_0=a_n$ 即可统一枚举。",
+          "若子数组不包含末位置，末元素仍为 $a_n$，最优结果是从前 $n-1$ 个元素中选择被移到首端的 $a_i$，得到 $a_n-a_i$。",
+          "若子数组不包含首位置，首元素仍为 $a_1$，最优结果是让某个 $a_i$ 成为末端，得到 $a_i-a_1$；三类候选取最大值即可。"
+        ],
+        "solution_brief": "枚举操作后首尾元素关系的三类情况：环形相邻差、$a_n-a_i$ 和 $a_i-a_1$，再与不操作的结果合并取最大值，单次遍历即可。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 的数组目标、editorial 的四类候选及 tags 中的 greedy、math；题面未完整给出具体操作规则，操作形式由 editorial 候选关系推断。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
       }
     }
   }
