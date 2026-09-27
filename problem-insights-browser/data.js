@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1939,
+    "total_problems": 1946,
     "source_total_problems": 1946,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1939,
-    "with_editorial_brief": 1696,
-    "with_solution_brief": 1697,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1946,
+    "with_editorial_brief": 1703,
+    "with_solution_brief": 1704,
     "missing_editorial_brief": 242,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 879,
+    "ai_override_count": 887,
     "primary_topic_count": 13,
     "contest_count": 306,
     "rating_min": 800,
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 81,
-    "构造与贪心": 654,
+    "字符串": 82,
+    "构造与贪心": 655,
     "图论与网络流": 118,
-    "动态规划与状态设计": 183,
+    "动态规划与状态设计": 182,
     "数论与同余": 185,
-    "组合计数与概率": 148,
+    "组合计数与概率": 152,
     "数据结构": 162,
     "几何": 40,
-    "树结构": 126,
+    "树结构": 127,
     "代数、矩阵与多项式": 17,
     "交互": 74,
-    "基础实现与模拟": 82,
+    "基础实现与模拟": 83,
     "博弈": 69
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 771,
+    "ai_generated_with_editorial": 778,
     "ai_generated_partial_editorial": 34,
     "missing_editorial": 242,
     "manual_override": 891,
@@ -15252,9 +15252,151 @@ window.CF_INSIGHTS_DATA = {
       "date": "2025-12-29",
       "url": "https://codeforces.com/contest/2182",
       "type": "Educational",
-      "problemCount": 1,
-      "maxRating": 2300,
+      "problemCount": 8,
+      "maxRating": 2800,
       "problems": [
+        {
+          "key": "2182A",
+          "index": "A",
+          "slot": "A",
+          "title": "New Year String",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2182/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/149733",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定只含 $0,2,5,6$ 的字符串，每次可把任意一个字符改成这四种字符中的任意一种。要求用最少操作使其包含连续子串 $2026$，或不包含连续子串 $2025$。",
+          "transformedStatement": "将目标条件转化为检查两个固定子串：若已有 $2026$ 或没有 $2025$，无需修改；否则把一个 $2025$ 的末位改为 $6$，直接制造 $2026$。",
+          "keyObservations": [
+            "若字符串已含子串 $2026$，或根本不含子串 $2025$，则已经满足条件，答案直接为 $0$。",
+            "若字符串不满足条件，则必然含有 $2025$ 且不含 $2026$；将任意一个出现位置的最后一个字符 $5$ 改为 $6$，即可用一次操作得到 $2026$。",
+            "因此不存在需要两次及以上操作的情况，答案只可能是 $0$ 或 $1$，只需检查两个固定子串是否出现。"
+          ],
+          "solutionBrief": "检查字符串是否包含 $2026$ 或不包含 $2025$；满足其一输出 $0$。否则必含 $2025$，把其中末位 $5$ 改成 $6$ 即可，输出 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2182B",
+          "index": "B",
+          "slot": "B",
+          "title": "New Year Cake",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2182/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/149733",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force"
+          ],
+          "statementBrief": "蛋糕至少有一层，从顶到底各层大小为 $1,2,4,\\ldots$，每层恰用一种巧克力，且相邻层颜色必须交替。给定白巧克力和黑巧克力库存，求最多能制作多少层并保证两种巧克力都够用。",
+          "transformedStatement": "将层按从顶部开始的位置奇偶分成两组：同组层使用同一种颜色，组内需求分别是对应 $1,2,4,\\ldots$ 项之和。对每个层数检查这两组与白、黑库存的两种匹配方式。",
+          "keyObservations": [
+            "固定层数后，涂在顶部同奇偶位置的层总需求与另一组分别独立计算，因此只需检查两组需求是否能对应白、黑巧克力。",
+            "顶部颜色没有预先限定，所以同一组奇偶层可以先分配给白巧克力，也可以分配给黑巧克力；检查这两种对应关系即可覆盖所有方案。",
+            "层大小按 $1,2,4,\\ldots$ 指数增长，答案不超过约 $\\log_2\\max(a,b)$，因此逐层增加并检查是足够快的。",
+            "若无法制作 $k$ 层，增加一层只会继续消耗巧克力；任意可行的 $k+1$ 层去掉底层后仍应可行，所以可以在首次失败时停止。"
+          ],
+          "solutionBrief": "逐步枚举层数，维护顶部起第奇数层与第偶数层的巧克力需求。每次检查两种颜色分配方式，若至少一种满足库存则继续；首次失败后答案不可能恢复，直接停止。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2182C",
+          "index": "C",
+          "slot": "C",
+          "title": "Production of Snowmen",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2182/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/149733",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "dp"
+          ],
+          "statementBrief": "有三条长度均为 $n$ 的循环传送带，分别放置头部、躯干和腿部雪球。选择三个起点后，每次同步取下一个雪球，连续组装 $n$ 个雪人；要求每个雪人都满足头部大小小于躯干且躯干小于腿部，求满足条件的起点三元组数量。",
+          "transformedStatement": "把三个起点看成三条循环序列的相对偏移。整体同步平移不改变生成的雪人集合，因此固定躯干偏移后，只需独立判断头部偏移和腿部偏移是否分别与整条躯干序列满足严格大小关系。",
+          "keyObservations": [
+            "任意起点三元组都可整体平移，使躯干起点变为 $1$；平移只改变雪人的排列顺序，因此统计标准化三元组后再乘 $n$。",
+            "固定躯干起点后，头部起点只需满足所有头部小于对应躯干，腿部起点只需满足所有躯干小于对应腿部；头部与腿部起点之间没有直接约束。",
+            "因此固定躯干起点时，可行的头部起点数与可行的腿部起点数相互独立，合法组合数等于二者乘积，避免枚举三元组。"
+          ],
+          "solutionBrief": "只枚举躯干起点为 $1$ 的情形，扫描全部头部和腿部循环偏移，分别统计满足全程严格不等式的起点数并相乘，最后将结果乘以 $n$ 恢复所有躯干起点。总复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2182D",
+          "index": "D",
+          "slot": "D",
+          "title": "Christmas Tree Decoration",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2182/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/149733",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个人和编号为 $0$ 到 $n$ 的盒子，第 $i$ 个人每次只能从 0 号盒或自己的盒子取一件装饰，并按某个固定排列循环行动，直到所有装饰用完；过程中任何人行动时都不能两个可用盒子同时为空。求满足这一条件的排列数量，结果对 $998244353$ 取模。",
+          "transformedStatement": "把过程划分为前 $k=\\lfloor s/n\\rfloor$ 个完整轮次和最后一轮：前者固定每人至少完成 $k$ 次，剩余普通盒至多保留一件；最后一轮只需决定哪些空盒对应的人不行动及各组内部顺序。基于此，排列计数化为选择并排列这些人。",
+          "keyObservations": [
+            "最优安排是每个人先消耗自己的盒子，只有自己的盒子空了才取 0 号盒；因此前 $k=\\lfloor s/n\\rfloor$ 轮的剩余量可以直接计算，而无需模拟所有取法。",
+            "若某个普通盒在前 $k$ 轮后仍剩超过 $1$ 件，其对应的人无法在最后一轮前处理完；若 0 号盒剩余为负，则前 $k$ 轮本身不可行，因此答案为 $0$。",
+            "最后一轮至多处理 $n-1$ 件。设空普通盒数量为 $z$、0 号盒剩余为 $b_0$，则必须有 $b_0\\le z$，且恰有 $x=z-b_0$ 个空盒对应的人不在最后一轮工作。",
+            "选择这 $x$ 个人并将其放在排列末尾，再分别排列其余人与这 $x$ 个人，得到计数 $\\binom{z}{x}x!(n-x)!$；这覆盖了最后一轮中所有可行的排列顺序。"
+          ],
+          "solutionBrief": "令 $s=\\sum a_i$、$k=\\lfloor s/n\\rfloor$。按“先用个人盒、再用 0 号盒”计算前 $k$ 轮剩余量；若 $b_0<0$ 或某普通盒剩余超过 $1$，答案为 $0$。否则令 $z$ 为空普通盒数、$x=z-b_0$，若 $x<0$ 答案为 $0$，否则答案为 $\\binom{z}{x}x!(n-x)!$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2182E",
+          "index": "E",
+          "slot": "E",
+          "title": "New Year's Gifts",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2182/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/149733",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 位朋友和 $m$ 个盒子，第 $j$ 个盒子的美观度为 $a_j$，每位朋友必须收到至少价值 $y_i$ 的礼物。朋友 $i$ 若收到放在美观度至少为 $x_i$ 的盒子中的礼物，或礼物价值达到 $z_i$，就会开心；每个盒子最多装一件礼物，求预算 $k$ 内最多让多少人开心。",
+          "transformedStatement": "先统一购买价值 $y_i$ 的基础礼物，再把每个盒子视为一次免除某位朋友补差价 $d_i=z_i-y_i$ 的机会；盒子只能分配给满足 $x_i\\le a_j$ 的朋友，未被分配者则直接支付补差价。",
+          "keyObservations": [
+            "先为每位朋友购买价格恰为 $y_i$ 的礼物，固定消耗 $\u00024\\sum y_i$，之后每位朋友只需通过盒子或补差价获得快乐。",
+            "定义补差价 $d_i=z_i-y_i$；一个盒子应优先分配给满足 $x_i\\le a_j$ 且 $d_i$ 最大的未装盒礼物，因为这样能免去最大的潜在补价。",
+            "按盒子美观度从低到高处理，并加入所有 $x_i$ 已达到当前美观度的礼物；每个盒子取当前 $d_i$ 最大者，可得到贪心匹配。",
+            "所有可匹配盒子处理完后，剩余朋友只能按 $d_i$ 从小到大支付补价；在剩余预算内购买最长可行前缀即可得到额外快乐人数。"
+          ],
+          "solutionBrief": "先扣除所有基础礼物费用，按美观度递增处理盒子，并从当前可装盒礼物中取补差价最大的一个。匹配结束后，将剩余补差价排序，利用剩余预算购买最便宜的前缀，匹配数与该前缀长度之和即为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "2182F1",
           "index": "F1",
@@ -15263,10 +15405,10 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/2182/problem/F1",
           "editorialUrl": "https://codeforces.com/blog/entry/149733",
-          "primaryTopic": "动态规划与状态设计",
+          "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
-            "构造与贪心",
-            "组合计数与概率"
+            "数论与同余",
+            "动态规划与状态设计"
           ],
           "originalTags": [
             "bitmasks",
@@ -15275,12 +15417,78 @@ window.CF_INSIGHTS_DATA = {
             "dp",
             "math"
           ],
-          "statementBrief": "题面已抓取：Christmas Reindeer (easy version)；本地暂无可用题解正文。",
+          "statementBrief": "维护一个驯鹿集合，每只驯鹿的强度为 $2^{c_i}$，支持加入或删除指定强度的驯鹿。对查询，需要统计从当前集合中选出任意子集的方案数，使选中驯鹿按强度降序排列后，第一只贡献自身强度、后续第 $i$ 只贡献其强度除以 $2^{i-1}$ 后向下取整，所有贡献之和至少为给定值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "2182F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Christmas Reindeer (hard version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/2182/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/149733",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "combinatorics",
+            "data structures",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有若干强度为 $2^{c_i}$ 的驯鹿，选出任意子集后按强度降序排列，第 $t$ 只贡献其强度除以 $2^t$ 后的向下取整，贡献总和为容量。动态加入或删除指定强度的驯鹿，并查询容量至少为给定 $x$ 的子集数量。",
+          "transformedStatement": "把驯鹿按类型 $0$ 到 $60$ 计数。先由 $x$ 的二进制高位逐位构造恰好达到 $x$ 的需求向量 $r$，再按高类型到低类型的字典序比较实际向量与 $r$，将满足条件的子集分成最后一个不同类型的位置进行计数。",
+          "keyObservations": [
+            "用一个高类型驯鹿替换任意多个更低类型驯鹿，容量一定下降，因此达到目标时应优先保留高类型贡献。",
+            "从目标 $x$ 的最高位开始逐位匹配最高驯鹿类型；每向后一个驯鹿，其比较基准额外右移一位，可唯一确定恰好容量为 $x$ 的需求计数 $r_i$。",
+            "将实际计数 $k_i$ 与需求计数 $r_i$ 从高类型向低类型比较，最后一个不同位置决定结果：该处多选则容量至少为 $x$，少选则不足。",
+            "固定最后一个不同类型后，高类型选法是组合数乘积、低类型任意选择贡献 $2^{ ext{总数}}$，当前类型的超额选择数可由总子集数减去前缀组合和得到。"
+          ],
+          "solutionBrief": "维护各类型驯鹿数量。查询时按目标高位构造需求数组 $r$，枚举实际计数与其从低位起的最长匹配后缀，并用组合数、幂和组合前缀和统计；每次复杂度为 $O(\\log x)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2182G",
+          "index": "G",
+          "slot": "G",
+          "title": "Short Garland",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/2182/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/149733",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率",
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 $1$ 为根的有根树，要依次放置编号为 $1$ 到 $n$ 的灯泡：灯泡 $1$ 放在根上，每个后续灯泡必须放在其父节点已放置灯泡的顶点中，并优先选择深度最大的顶点。要求相邻灯泡所在顶点距离不超过 $k$，求所有合法放置顺序的数量。",
+          "transformedStatement": "把放置过程看成从根开始、按子树完成顺序访问顶点的 DFS；每个节点只需决定子树的访问顺序，并用子树遍历末点到该节点的距离范围作为合并状态。",
+          "keyObservations": [
+            "题目的放置顺序等价于 DFS 进入序，真正的选择只有每个节点遍历其子树时的子节点排列顺序。",
+            "一个子树遍历结束后若还要切换到同一父节点的另一子树，末点到父节点的距离必须不超过 $k-1$，因此子树只需暴露末点距离信息。",
+            "令 $dp[v][t]$ 统计末点到 $v$ 的距离不超过 $t$ 的遍历数；固定最后遍历的子节点后，其余子树各取 $dp[u][k-1]$，再乘以其排列数。",
+            "用小并大合并子树状态，并以乘法懒标记 $ml$ 和加法懒标记 $ad$ 延迟更新；乘数为零时显式清零并保留较小状态规模以维持复杂度。"
+          ],
+          "solutionBrief": "将问题转为统计满足相邻距离限制的 DFS 子树排列。用按末点距离截断的前缀 DP 合并子树，结合小并大及 $ml/ad$ 懒更新；题解实现复杂度为 $O(n\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
