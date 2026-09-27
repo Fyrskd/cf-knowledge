@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2740,
+    "total_problems": 2749,
     "source_total_problems": 2749,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 2740,
-    "with_editorial_brief": 2470,
-    "with_solution_brief": 2471,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2749,
+    "with_editorial_brief": 2479,
+    "with_solution_brief": 2480,
     "missing_editorial_brief": 269,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1802,
+    "ai_override_count": 1811,
     "primary_topic_count": 13
   },
   "records": [
@@ -5522,6 +5522,394 @@
           "generated_at": "2026-09-22T16:10:12+00:00",
           "quality_flags": [
             "statement_text_corrupted"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 130,
+      "problem_key": "1800A",
+      "contest_id": 1800,
+      "title": "Is It a Cat?",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1800/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/113477",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "implementation",
+        "strings"
+      ],
+      "statement_brief": "给定若干只含大小写英文字母的字符串。判断它是否能表示猫叫：忽略大小写后，字符必须按 `m`、`e`、`o`、`w` 的顺序出现，每种字符至少一次，且同一种字符可以连续重复；对每组输出 YES 或 NO。",
+      "transformed_statement": "把字符串按大小写归一化，并将每段连续相同字符压缩为一个字符；原问题转化为判断压缩后的字符序列是否恰好是 `meow`。",
+      "key_observations": [
+        "忽略大小写后，合法字符串必须恰好依次经过 `m`、`e`、`o`、`w` 四个阶段，因此字符种类或顺序不符即可直接判定失败。",
+        "同一阶段中连续重复字符不影响合法性，删除相邻重复字符后，合法字符串等价于恰好得到 `meow`。",
+        "将字符串转为小写并压缩连续相同字符，只需比较压缩结果与 `meow`，即可同时检查字符范围、阶段顺序以及四个阶段是否都出现。"
+      ],
+      "solution_brief": "对每个字符串统一转为小写，再删除连续重复字符；若结果恰好为 `meow`，输出 YES，否则输出 NO。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:46:19+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 131,
+      "problem_key": "1800B",
+      "contest_id": 1800,
+      "title": "Count the Number of Pairs",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1800/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/113477",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "给定只含大小写英文字母的字符串；一个小写字母和同字母的大写字母可组成一对，每个字符只能使用一次。最多进行 $k$ 次操作，每次把一个字母改成另一种大小写，求最多能得到多少对。",
+      "transformed_statement": "把字符串压缩为每个字母的大小写计数：先匹配现有的大小写对，再将同一字母同侧的剩余字符成对消耗操作，把其中一半改成另一种大小写。",
+      "key_observations": [
+        "对每个字母分别统计大小写数量，已有配对数必为两者较小值，先取出这些配对不会影响后续操作。",
+        "去除已有配对后，同一大小写中剩余字符只能两两通过一次改大小写操作形成新配对，因此最多新增 $\\lfloor\\min(k,\\max(small[i],big[i]))/2\\rfloor$ 对。",
+        "每次操作最多消耗一个字符，且同一字母的剩余字符互不影响，所以按字母直接贪心利用可转换字符即可得到最大答案。"
+      ],
+      "solution_brief": "统计每个字母的大小写数量，先累加已有配对并扣除对应字符。对每个字母，利用剩余数量较多的一侧，每两次操作新增一对，新增数为 $\\lfloor\\min(k,c)/2\\rfloor$，其中 $c$ 为该侧剩余数量。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:46:08+00:00",
+          "quality_flags": [
+            "statement_formatting_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 132,
+      "problem_key": "1800C1",
+      "contest_id": 1800,
+      "title": "Powering the Hero (easy version)",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1800/problem/C1",
+      "editorial_url": "https://codeforces.com/blog/entry/113477",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "data structures",
+        "greedy"
+      ],
+      "statement_brief": "牌堆中的牌按给定顺序处理，包含英雄牌和带有正数力量的奖励牌；遇到奖励牌可以保留或跳过，遇到英雄牌时可用一个尚未使用的奖励增强它。要求安排这些选择，使所有英雄获得的总力量最大。",
+      "transformed_statement": "将问题重述为：扫描序列并维护已出现但尚未使用的奖励值；每个英雄至多匹配一个奖励，匹配时取当前最大值，奖励也可以因没有足够英雄而保留不用。",
+      "key_observations": [
+        "奖励牌的使用顺序不影响最终结果，因此可以只维护当前尚未使用的奖励值，而不必模拟具体分配顺序。",
+        "遇到英雄牌时，给它分配当前最大的奖励一定不劣：英雄数量和后续可用奖励数固定，较大的奖励留给其他英雄只会得到不高的总和。",
+        "奖励牌可以暂存或跳过；只有英雄出现且存在可用奖励时才消耗一个最大值，因此用完所有英雄后剩余奖励不会产生贡献。"
+      ],
+      "solution_brief": "按牌堆顺序处理：正数牌加入可用奖励集合，英雄牌到来时取出并累加当前最大奖励。由于奖励分配顺序可交换，使用大根堆即可直接维护最大值；没有奖励时该英雄贡献为零。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:45:55+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 133,
+      "problem_key": "1800C2",
+      "contest_id": 1800,
+      "title": "Powering the Hero (hard version)",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1800/problem/C2",
+      "editorial_url": "https://codeforces.com/blog/entry/113477",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "data structures",
+        "greedy"
+      ],
+      "statement_brief": "牌堆中的正数牌是可收集的奖金，零值牌是英雄。按从顶到底的顺序处理牌，奖金可以暂存并用于增强之后遇到的英雄，每个英雄最多使用一张已获得的奖金；求所有英雄获得的最大总战力。",
+      "transformed_statement": "将过程重述为在线资源分配：扫描序列时把正数加入可用奖金集合，遇到英雄就从集合中选一项使用；由于奖金的应用顺序不影响结果，每次应选择当前最大的可用奖金。",
+      "key_observations": [
+        "奖金卡之间的使用顺序不影响结果，因此处理英雄卡时只需关注当前尚未使用的奖金集合。",
+        "遇到英雄卡时使用当前最大奖金不会降低后续最优值：它获得的收益最大，剩余较小奖金仍可留给后面的英雄卡。",
+        "从牌顶依次处理时，正数牌加入可用奖金集合，零牌消耗其中一个奖金；没有可用奖金的零牌无法贡献收益。"
+      ],
+      "solution_brief": "按牌面顺序扫描，用优先队列保存已遇到的正数奖金。遇到零值英雄卡就取出当前最大奖金并累加；正数牌加入队列，最终总和即为最大收益。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:45:37+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 134,
+      "problem_key": "1800D",
+      "contest_id": 1800,
+      "title": "Remove Two Letters",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1800/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/113477",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [],
+      "original_tags": [
+        "data structures",
+        "greedy",
+        "hashing",
+        "strings"
+      ],
+      "statement_brief": "给定一个长度为 $n$ 的小写字母串，必须选择一对连续字符并将其删除。统计所有 $n-1$ 种删除位置中，最终得到的不同字符串数量。",
+      "transformed_statement": "把每个删除位置视为一种候选结果。比较相邻删除位置 $i$ 与 $i+1$：两者只在长度为三的局部片段中产生差异，且当两端字符相等时会合并为同一个结果，因此只需统计距离为 $2$ 的相等字符对。",
+      "key_observations": [
+        "删除位置为 $i,i+1$ 与 $i+1,i+2$ 时，只有下标 $i$ 到 $i+2$ 的局部保留字符不同；因此当 $s_i=s_{i+2}$ 时，两种删除结果完全相同。",
+        "所有连续删除方案共有 $n-1$ 个；每个满足 $s_i=s_{i+2}$ 的位置会使结果数减少一次，因此答案为 $n-1-\bigl|i: s_i=s_{i+2}\bigr|$。",
+        "判断只依赖距离为 $2$ 的字符比较，无需实际构造删除后的字符串，从而可在线性扫描中完成计数。"
+      ],
+      "solution_brief": "先将删除相邻两个字符的方案数记为 $n-1$，再扫描所有 $iin[1,n-2]$。若 $s_i=s_{i+2}$，相邻两种删除方案产生同一字符串，答案减一。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:45:12+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 135,
+      "problem_key": "1800E1",
+      "contest_id": 1800,
+      "title": "Unforgivable Curse (easy version)",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1800/problem/E1",
+      "editorial_url": "https://codeforces.com/blog/entry/113477",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "图论与网络流",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "dsu",
+        "graphs",
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "给定两个等长小写字符串 $s,t$，可以无限次交换 $s$ 中下标距离恰为 $3$ 或 $4$ 的两个字符。判断是否能通过这些操作把 $s$ 变成 $t$。",
+      "transformed_statement": "把字符串看成由交换操作构成的状态图：每个字符串是一个状态，交换距离为 $3$ 或 $4$ 的位置连边；长度至少 $6$ 时该图在相同字符多重集合内连通，长度不超过 $5$ 时直接搜索可达状态。",
+      "key_observations": [
+        "当 $n\\ge 6$ 时，距离为 $3$ 和 $4$ 的交换可以组合出相邻字符交换，因此任意排列都可实现；可行性只取决于 $s$ 与 $t$ 的字符多重集合是否相同。",
+        "字符多重集合不同一定无法通过交换改变，因此大规模情形只需比较每种字母的出现次数。",
+        "当 $n\\le 5$ 时不能套用任意排列结论，可将每个字符串视为状态，边表示一次距离为 $3$ 或 $4$ 的交换，从初始串搜索所有可达状态并判断是否包含 $t$。"
+      ],
+      "solution_brief": "按长度分类：$n\\ge6$ 时比较两串的字符频数；$n\\le5$ 时从 $s$ 出发枚举所有距离为 $3$ 或 $4$ 的交换，用 BFS 建立可达状态并检查 $t$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:44:57+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 136,
+      "problem_key": "1800E2",
+      "contest_id": 1800,
+      "title": "Unforgivable Curse (hard version)",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1800/problem/E2",
+      "editorial_url": "https://codeforces.com/blog/entry/113477",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "图论与网络流",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "dfs and similar",
+        "dsu",
+        "graphs",
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "给定等长字符串 $s,t$，每次可任意交换 $s$ 中距离为 $k$ 或 $k+1$ 的两个位置，且操作次数不限。判断能否通过这些交换把 $s$ 变成 $t$。",
+      "transformed_statement": "将字符串位置建成图，边连接允许直接交换的两个位置。题解将所有非孤立位置视为一个可任意重排的区域，而孤立位置字符保持不变。",
+      "key_observations": [
+        "把位置看成图的顶点、合法交换看成距离为 $k$ 或 $k+1$ 的边；没有任何邻边的位置永远不能改变字符，因此必须满足 $s_i=t_i$。",
+        "题解指出，所有至少能与一个位置交换的位置之间可以通过两次操作实现向右移动 $1$ 格，因而这些位置上的字符实际上可以任意重排。",
+        "所以可交换位置只需比较 $s$ 与 $t$ 中各字符的出现次数，固定位置则必须逐位相同；这将多步交换问题降为局部计数与逐位检查。"
+      ],
+      "solution_brief": "标记能参与至少一次合法交换的位置。所有标记位置上的字符可任意排列，比较两串在这些位置的字符频数；未标记位置必须逐位相同，均满足则输出 YES。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:44:42+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 137,
+      "problem_key": "1800F",
+      "contest_id": 1800,
+      "title": "Dasha and Nightmares",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1800/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/113477",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "hashing",
+        "meet-in-the-middle",
+        "strings"
+      ],
+      "statement_brief": "给定 $n$ 个由小写字母组成的单词，考虑任意下标对 $1\\le i\\le j\\le n$，将 $s_i$ 与 $s_j$ 拼接；若拼接结果恰好有 $25$ 个不同字母且这 $25$ 个字母的出现次数都为奇数，则该词对形成一个噩梦。要求统计形成噩梦的不同下标对数量。",
+      "transformed_statement": "把每个单词抽象为两个 $26$ 位掩码：一个表示字母是否出现，另一个表示出现次数奇偶。有效词对等价于存在唯一缺失字母 $k$，两词都不含它，且它们的奇偶掩码异或为除 $k$ 外全为 $1$。",
+      "key_observations": [
+        "每个单词只需记录出现过哪些字母的集合掩码，以及各字母出现次数的奇偶掩码；具体出现次数不会影响判定。",
+        "一对单词构成噩梦，当且仅当它们的出现集合并集含有恰好 $25$ 个字母，且两词拼接后这 $25$ 个字母的总出现次数都为奇数。",
+        "固定唯一缺失的字母 $k$ 后，只保留不含 $k$ 的单词；此时并集条件自动满足，配对条件等价于两个奇偶掩码的异或等于除 $k$ 外全为 $1$ 的掩码。",
+        "每个有效词对恰好对应一个缺失字母，因此分别枚举 $k$ 不会重复计数；扫描单词时查询之前出现过的目标奇偶掩码即可。"
+      ],
+      "solution_brief": "为每个单词计算出现集合掩码和奇偶掩码。枚举缺失字母 $k$，过滤含 $k$ 的单词，并在扫描过程中统计此前奇偶掩码等于当前掩码与“除 $k$ 外全 1 掩码”异或结果的单词数；每个答案对只被其唯一缺失字母计数一次。复杂度为 $O(\\sum|s|+26n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:44:24+00:00",
+          "quality_flags": [
+            "statement_formula_corrupted",
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 138,
+      "problem_key": "1800G",
+      "contest_id": 1800,
+      "title": "Symmetree",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1800/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/113477",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "hashing",
+        "implementation",
+        "trees"
+      ],
+      "statement_brief": "给定一棵根为顶点 1 的树，可以为每个节点任意排列其孩子。若能排列孩子，使除至多一个子树外的子树都两两成镜像，且唯一未配对的子树（若存在）自身也满足该条件，则称树对称；判断整棵树是否对称。",
+      "transformed_statement": "把每棵根树抽象为由所有孩子子树类型组成的多重集合，并用结构哈希表示类型；一个节点合法，当且仅当孩子类型中至多一种出现奇数次，且该奇数次类型的未配对子树本身合法。",
+      "key_observations": [
+        "镜像子树必然同构，因此可以忽略顶点编号，只用子树的结构类型判断两个孩子能否配成镜像。",
+        "对每个顶点统计各子树类型的出现次数；除至多一个类型外，其余类型都必须成对出现，奇数次的唯一类型对应的那棵子树还必须自身对称。",
+        "子树的对称性和结构哈希可以自底向上同时计算，使父节点只需根据孩子类型计数和唯一可能的未配对子树作判断。"
+      ],
+      "solution_brief": "从叶子向根计算每棵子树的结构哈希及是否对称。对每个节点统计孩子哈希出现次数，若奇数次的类型超过一个则不对称；若恰有一个，则该类型的子树必须对称。根节点满足条件则输出 YES。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:43:54+00:00",
+          "quality_flags": [
+            "statement_definition_truncated",
+            "statement_inferred"
           ]
         }
       },
