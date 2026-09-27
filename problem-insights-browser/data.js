@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2993,
+    "total_problems": 2999,
     "source_total_problems": 3000,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2993,
-    "with_editorial_brief": 2721,
-    "with_solution_brief": 2722,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2999,
+    "with_editorial_brief": 2727,
+    "with_solution_brief": 2728,
     "missing_editorial_brief": 271,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2055,
+    "ai_override_count": 2061,
     "primary_topic_count": 13,
-    "contest_count": 455,
+    "contest_count": 456,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 951,
+    "动态规划与状态设计": 254,
     "数据结构": 281,
     "几何": 72,
-    "构造与贪心": 946,
     "字符串": 160,
     "数论与同余": 323,
-    "动态规划与状态设计": 253,
     "基础实现与模拟": 179,
     "树结构": 151,
     "博弈": 97,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1770,
+    "ai_generated_with_editorial": 1776,
     "missing_editorial": 271,
     "ai_generated_partial_editorial": 60,
     "manual_override": 891,
@@ -92515,6 +92515,183 @@ window.CF_INSIGHTS_DATA = {
             "追加索引 $i$ 产生的逆序对可按对应值是否小于 $mn$ 分开：前者用树状数组统计已选的大索引，后者只涉及至多 $k+1$ 个窗口元素，可直接枚举。"
           ],
           "solutionBrief": "从左到右构造 $q$，用 $dp[mn][mask]$ 表示最小逆序对数。枚举窗口内可选索引转移；新增逆序对中，窗口外部分由树状数组统计，窗口内部分直接计算，复杂度为 $O(n2^k k(k+\\log n))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1734,
+      "name": "Codeforces Round 822 (Div. 2)",
+      "date": "2022-09-23",
+      "url": "https://codeforces.com/contest/1734",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1734A",
+          "index": "A",
+          "slot": "A",
+          "title": "Select Three Sticks",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1734/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/107231",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 根正整数长度的木棍，每次可将一根木棍长度增加或减少 $1$。需要选择三根木棍并通过若干次操作使它们长度完全相等，从而组成等边三角形，求最少操作次数。",
+          "transformedStatement": "将选择的三根木棍视为要统一到某个长度 $v$，代价是三者到 $v$ 的绝对距离之和；排序后问题等价于求某个连续三元组的首尾长度差的最小值。",
+          "keyObservations": [
+            "固定选择三根木棍后，将它们改成同一长度的最小代价是到三者中位数的距离和；因此总代价等于最大长度减最小长度，即 $a_z-a_x$。",
+            "数组排序后，固定中间位置时，选择更靠近它的两端不会增大跨度，所以最优三元组一定是三个连续元素。",
+            "因此只需计算所有长度为 $3$ 的排序窗口跨度 $a_{i+2}-a_i$，其中最小值就是答案，避免了枚举全部三元组。"
+          ],
+          "solutionBrief": "先将木棍长度排序。对每个连续三元组，令三根木棍最终都变为中间长度，所需操作数为首尾差值；遍历所有窗口并取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1734B",
+          "index": "B",
+          "slot": "B",
+          "title": "Bright, Nice, Brilliant",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1734/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/107231",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个有 $n$ 层的三角形房间结构，每个房间可放或不放火炬；火炬只能沿向下的两条楼梯传播可达性，房间亮度是所有可到达它的火炬数。要求构造一个使每层亮度完全相同的 nice 金字塔，并最大化左侧边界所有房间亮度之和。",
+          "transformedStatement": "第 $i$ 层最左房间的祖先数限制了该层统一亮度，故其最大值不超过 $i$。将火炬限定放在左右两条边界后，每个内部房间的可达火炬数可拆成两段边界贡献，恰好达到 $i$。",
+          "keyObservations": [
+            "第 $i$ 层最左房间只有从上到下的 $i$ 个左边界祖先，因此该层所有房间的亮度至多为 $i$，从而整体 brilliance 的上界是 $1+2+\\cdots+n$。",
+            "把每层最左和最右房间放置火炬后，位置 $(i,j)$ 能到达的火炬恰好来自左边界前 $i-j+1$ 个房间和右边界前 $j$ 个房间，亮度为 $(i-j+1)+(j-1)=i$。",
+            "该构造使第 $i$ 层所有房间亮度都达到上界 $i$，因此每层相同且总 brilliance 达到理论上界，必然最优。"
+          ],
+          "solutionBrief": "对每个测试用例逐层输出三角形矩阵：第 $i$ 层仅在第一个和第 $i$ 个房间放火炬，其余房间留空。这样第 $i$ 层亮度统一为 $i$，同时达到每层亮度上界，故 brilliance 最大。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1734C",
+          "index": "C",
+          "slot": "C",
+          "title": "Removing Smallest Multiples",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1734/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/107231",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "初始集合为 $\\{1,2,\\dots,n\\}$，目标是得到由二进制串表示的子集 $T$。每次选择正整数 $x$，删除集合中当前最小的 $x$ 的倍数并支付代价 $x$，求把初始集合变成 $T$ 的最小总费用。",
+          "transformedStatement": "把每个不属于 $T$ 的元素 $v$ 看成必须删除的对象，并为它寻找最小代价 $x$：要求 $x\\mid v$，且 $v$ 之前的所有正倍数都已经被删除，即不属于 $T$。问题转化为求这些最小代价之和。",
+          "keyObservations": [
+            "若用代价为 $x$ 的操作删除 $v$，则 $x$ 必须整除 $v$，且更小的倍数 $x,2x,\u0002dots,v-x$ 必须已被删除，因此它们都不能属于 $T$。",
+            "对每个待删除元素 $v$，取满足条件的最小 $x=f(v)$；任何方案都至少付出 $\\sum f(v)$，因为每个元素都必须被某次操作单独删除。",
+            "按 $v$ 从小到大删除所有不在 $T$ 中的元素时，处理 $v$ 前其所需的更小倍数已删除，所以可以用 $f(v)$ 删除它，从而达到上述下界。",
+            "固定 $x$ 扫描其倍数，遇到属于 $T$ 的元素立即停止；倒序枚举 $x$ 的筛法会为每个待删元素保留最小可行代价，总复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "对每个不在 $T$ 中的 $v$，求最小可行除数 $x$，使其所有更小的 $x$ 倍数都不在 $T$。用倒序枚举 $x$、扫描倍数的筛法求出代价并求和；按升序删除可证明达到下界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1734D",
+          "index": "D",
+          "slot": "D",
+          "title": "Slime Escape",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1734/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/107231",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "数轴上第 $k$ 个史莱姆由玩家控制，移动一格时若遇到史莱姆就必须吸收并加上其生命值；玩家生命值任何时刻不能为负。问能否通过任意次左右移动到达位置 $0$ 或 $n+1$ 的出口。",
+          "transformedStatement": "将起点左右的史莱姆分别压缩成按移动顺序排列的若干分组；每组表示一次可整体吸收的交易，具有生命值增量和完成该组所需的最低初始生命值，问题变为从两端逐步选择可行分组直到一侧清空。",
+          "keyObservations": [
+            "存在合法路线时，可以把交替向左、向右的移动重排为整组整组地吸收；先完成一侧的完整分组不会降低任何中间时刻的生命值，因此只需考虑按组行动。",
+            "从起点向两侧扫描，在累计生命值首次达到非负时切出最小分组，末尾未闭合部分直接作为通向出口的分组，从而把任意移动序列压缩成有限个独立组。",
+            "对按吸收顺序排列的分组，其最低生命值要求为 $-\\min_{j=0}^{m}\\left(\\sum_{i=1}^{j}a_i\\right)$；满足该要求即可安全吸收，最终生命值增加该组总和。",
+            "维护左右两端尚未吸收的分组，只要当前生命值达到某组要求就吸收它；若某一侧耗尽即可逃脱，若两侧均无法吸收则不可能继续。"
+          ],
+          "solutionBrief": "从起点向左右分别划分最小的非负和分组，并为每组计算总增量与最低生命值要求。以当前生命值反复吸收任一可行端组；一侧耗尽则输出 YES，双方都不可行则输出 NO，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1734E",
+          "index": "E",
+          "slot": "E",
+          "title": "Rectangular Congruence",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1734/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/107231",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "number theory"
+          ],
+          "statementBrief": "给定素数 $n$ 和 $n$ 个取值在 $[0,n)$ 的数 $b_i$，构造一个 $n\\times n$ 矩阵，所有元素也须在该范围内，且主对角线第 $i$ 项为 $b_i$。对任意不同的两行和两列，两个对角方向的元素和在模 $n$ 下必须不同；输出任意满足条件的矩阵。",
+          "transformedStatement": "把矩阵条件改写为任意矩形的交叉差 $a_{r_1,c_1}-a_{r_2,c_1}-a_{r_1,c_2}+a_{r_2,c_2}$ 非零。先用双线性函数 $ij$ 产生固定合法矩阵，再利用行平移自由度独立修正每个对角元素。",
+          "keyObservations": [
+            "取下标从 $0$ 开始的基矩阵 $a_{i,j}=ij\\bmod n$，任意矩形的交叉差等于 $(r_1-r_2)(c_1-c_2)$，因此可直接验证其满足不等式条件。",
+            "由于 $n$ 是素数且行、列各自选取了不同下标，上述三个因子均非零模 $n$，交叉差不可能为零，这是构造成立的核心。",
+            "给整行统一加同一个数不会改变任意矩形的交叉差；因此逐行加上 $b_i-a_{i,i}$，即可在保持合法性的同时把主对角线调整为给定数组。"
+          ],
+          "solutionBrief": "先构造 $a_{i,j}=ij\\bmod n$。其矩形交叉差为 $(r_1-r_2)(c_1-c_2)\\not\\equiv0\\pmod n$；再对第 $i$ 行加上 $b_i-a_{i,i}$，即可修正主对角线。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1734F",
+          "index": "F",
+          "slot": "F",
+          "title": "Zeros and Ones",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1734/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/107231",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "divide and conquer",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定无限 Thue-Morse 二进制串 $S$，其中第 $i$ 位由 $i$ 的二进制置位数奇偶决定。对长度为 $m$ 的前缀和从位置 $n$ 开始的长度为 $m$ 的子串，统计对应位置字符不同的数量。",
+          "transformedStatement": "把每个位置 $i$ 的字符改写为 $\\operatorname{popcount}(i)\\bmod2$，答案就变成统计 $0\\le x<m$ 且 $\\operatorname{popcount}(x)\\not\\equiv\\operatorname{popcount}(x+n)\\pmod2$ 的 $x$ 的个数。",
+          "keyObservations": [
+            "Thue-Morse 第 $i$ 位等于 $i$ 的二进制置位数奇偶，因此答案是区间 $x\\in[0,m-1]$ 中，$\\operatorname{popcount}(x)$ 与 $\\operatorname{popcount}(x+n)$ 奇偶性不同的个数。",
+            "逐位计算 $x+n$ 时，当前进位只会影响后续连续位；记录结果奇偶、上界限制以及连续尾部 $1$ 的奇偶，就足以确定所有转移。",
+            "从高位到低位处理二进制位，并用上界状态限制 $x<m$，可在每一位枚举 $x$ 的当前位；连续尾部长度只需保留奇偶，状态数从 $O(\\log n)$ 降为常数级。"
+          ],
+          "solutionBrief": "利用 $S_i=\\operatorname{popcount}(i)\\bmod2$，将答案转为统计 $x<m$ 且两次置位数奇偶不同的数量。按位做数位 DP，维护奇偶、加法进位相关的尾部 $1$ 奇偶和上界限制，复杂度为 $O(\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

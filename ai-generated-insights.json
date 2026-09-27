@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T22:20:22+00:00",
+  "updated_at": "2026-09-27T22:24:54+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -61420,6 +61420,182 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text、editorial_text 以及 data structures、greedy、sortings 标签；两台机器的具体费用和作用由题解正文明确说明。",
         "quality_flags": []
+      }
+    },
+    "1734F": {
+      "problem_key": "1734F",
+      "title": "Zeros and Ones",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1734/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/107231",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "173c9b11acbc04aa1f820a7f8266bc0feedcf92c860147a0f4a1794e447ef122",
+      "generated_at": "2026-09-27T22:23:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定无限 Thue-Morse 二进制串 $S$，其中第 $i$ 位由 $i$ 的二进制置位数奇偶决定。对长度为 $m$ 的前缀和从位置 $n$ 开始的长度为 $m$ 的子串，统计对应位置字符不同的数量。",
+        "transformed_statement": "把每个位置 $i$ 的字符改写为 $\\operatorname{popcount}(i)\\bmod2$，答案就变成统计 $0\\le x<m$ 且 $\\operatorname{popcount}(x)\\not\\equiv\\operatorname{popcount}(x+n)\\pmod2$ 的 $x$ 的个数。",
+        "key_observations": [
+          "Thue-Morse 第 $i$ 位等于 $i$ 的二进制置位数奇偶，因此答案是区间 $x\\in[0,m-1]$ 中，$\\operatorname{popcount}(x)$ 与 $\\operatorname{popcount}(x+n)$ 奇偶性不同的个数。",
+          "逐位计算 $x+n$ 时，当前进位只会影响后续连续位；记录结果奇偶、上界限制以及连续尾部 $1$ 的奇偶，就足以确定所有转移。",
+          "从高位到低位处理二进制位，并用上界状态限制 $x<m$，可在每一位枚举 $x$ 的当前位；连续尾部长度只需保留奇偶，状态数从 $O(\\log n)$ 降为常数级。"
+        ],
+        "solution_brief": "利用 $S_i=\\operatorname{popcount}(i)\\bmod2$，将答案转为统计 $x<m$ 且两次置位数奇偶不同的数量。按位做数位 DP，维护奇偶、加法进位相关的尾部 $1$ 奇偶和上界限制，复杂度为 $O(\\log n)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text 中的数位 DP方案及 bitmasks、dp、math 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1734E": {
+      "problem_key": "1734E",
+      "title": "Rectangular Congruence",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1734/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/107231",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a70a0ce53963c6bbbc367d5cf0f9478068f0289f7c3177559623f8e844d3317f",
+      "generated_at": "2026-09-27T22:23:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定素数 $n$ 和 $n$ 个取值在 $[0,n)$ 的数 $b_i$，构造一个 $n\\times n$ 矩阵，所有元素也须在该范围内，且主对角线第 $i$ 项为 $b_i$。对任意不同的两行和两列，两个对角方向的元素和在模 $n$ 下必须不同；输出任意满足条件的矩阵。",
+        "transformed_statement": "把矩阵条件改写为任意矩形的交叉差 $a_{r_1,c_1}-a_{r_2,c_1}-a_{r_1,c_2}+a_{r_2,c_2}$ 非零。先用双线性函数 $ij$ 产生固定合法矩阵，再利用行平移自由度独立修正每个对角元素。",
+        "key_observations": [
+          "取下标从 $0$ 开始的基矩阵 $a_{i,j}=ij\\bmod n$，任意矩形的交叉差等于 $(r_1-r_2)(c_1-c_2)$，因此可直接验证其满足不等式条件。",
+          "由于 $n$ 是素数且行、列各自选取了不同下标，上述三个因子均非零模 $n$，交叉差不可能为零，这是构造成立的核心。",
+          "给整行统一加同一个数不会改变任意矩形的交叉差；因此逐行加上 $b_i-a_{i,i}$，即可在保持合法性的同时把主对角线调整为给定数组。"
+        ],
+        "solution_brief": "先构造 $a_{i,j}=ij\\bmod n$。其矩形交叉差为 $(r_1-r_2)(c_1-c_2)\\not\\equiv0\\pmod n$；再对第 $i$ 行加上 $b_i-a_{i,i}$，即可修正主对角线。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的矩阵条件与对角线要求，以及 editorial 给出的乘积构造、素数性质和逐行平移方法；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1734D": {
+      "problem_key": "1734D",
+      "title": "Slime Escape",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1734/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/107231",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9c546447079df08dbbed1c066c40afba4374590231377ce6ccbeb710bffae9f7",
+      "generated_at": "2026-09-27T22:24:04+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "数轴上第 $k$ 个史莱姆由玩家控制，移动一格时若遇到史莱姆就必须吸收并加上其生命值；玩家生命值任何时刻不能为负。问能否通过任意次左右移动到达位置 $0$ 或 $n+1$ 的出口。",
+        "transformed_statement": "将起点左右的史莱姆分别压缩成按移动顺序排列的若干分组；每组表示一次可整体吸收的交易，具有生命值增量和完成该组所需的最低初始生命值，问题变为从两端逐步选择可行分组直到一侧清空。",
+        "key_observations": [
+          "存在合法路线时，可以把交替向左、向右的移动重排为整组整组地吸收；先完成一侧的完整分组不会降低任何中间时刻的生命值，因此只需考虑按组行动。",
+          "从起点向两侧扫描，在累计生命值首次达到非负时切出最小分组，末尾未闭合部分直接作为通向出口的分组，从而把任意移动序列压缩成有限个独立组。",
+          "对按吸收顺序排列的分组，其最低生命值要求为 $-\\min_{j=0}^{m}\\left(\\sum_{i=1}^{j}a_i\\right)$；满足该要求即可安全吸收，最终生命值增加该组总和。",
+          "维护左右两端尚未吸收的分组，只要当前生命值达到某组要求就吸收它；若某一侧耗尽即可逃脱，若两侧均无法吸收则不可能继续。"
+        ],
+        "solution_brief": "从起点向左右分别划分最小的非负和分组，并为每组计算总增量与最低生命值要求。以当前生命值反复吸收任一可行端组；一侧耗尽则输出 YES，双方都不可行则输出 NO，整体复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，以及 tags 中的贪心、双指针和数据结构线索。",
+        "quality_flags": []
+      }
+    },
+    "1734C": {
+      "problem_key": "1734C",
+      "title": "Removing Smallest Multiples",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1734/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/107231",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "02b3aa1d38a8217c01a4dc21cd7ab5c8d4926460ac6ae218e7842985d9a162bb",
+      "generated_at": "2026-09-27T22:24:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "初始集合为 $\\{1,2,\\dots,n\\}$，目标是得到由二进制串表示的子集 $T$。每次选择正整数 $x$，删除集合中当前最小的 $x$ 的倍数并支付代价 $x$，求把初始集合变成 $T$ 的最小总费用。",
+        "transformed_statement": "把每个不属于 $T$ 的元素 $v$ 看成必须删除的对象，并为它寻找最小代价 $x$：要求 $x\\mid v$，且 $v$ 之前的所有正倍数都已经被删除，即不属于 $T$。问题转化为求这些最小代价之和。",
+        "key_observations": [
+          "若用代价为 $x$ 的操作删除 $v$，则 $x$ 必须整除 $v$，且更小的倍数 $x,2x,\u0002dots,v-x$ 必须已被删除，因此它们都不能属于 $T$。",
+          "对每个待删除元素 $v$，取满足条件的最小 $x=f(v)$；任何方案都至少付出 $\\sum f(v)$，因为每个元素都必须被某次操作单独删除。",
+          "按 $v$ 从小到大删除所有不在 $T$ 中的元素时，处理 $v$ 前其所需的更小倍数已删除，所以可以用 $f(v)$ 删除它，从而达到上述下界。",
+          "固定 $x$ 扫描其倍数，遇到属于 $T$ 的元素立即停止；倒序枚举 $x$ 的筛法会为每个待删元素保留最小可行代价，总复杂度为 $O(n\\log n)$。"
+        ],
+        "solution_brief": "对每个不在 $T$ 中的 $v$，求最小可行除数 $x$，使其所有更小的 $x$ 倍数都不在 $T$。用倒序枚举 $x$、扫描倍数的筛法求出代价并求和；按升序删除可证明达到下界。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 tags；操作规则结合题解中的代价为 $x$、删除倍数条件明确化。",
+        "quality_flags": []
+      }
+    },
+    "1734B": {
+      "problem_key": "1734B",
+      "title": "Bright, Nice, Brilliant",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1734/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/107231",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f20047ccec86422ef746e59b2159dbf3032b4983ff17355229744ceca8a4e7e6",
+      "generated_at": "2026-09-27T22:24:39+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个有 $n$ 层的三角形房间结构，每个房间可放或不放火炬；火炬只能沿向下的两条楼梯传播可达性，房间亮度是所有可到达它的火炬数。要求构造一个使每层亮度完全相同的 nice 金字塔，并最大化左侧边界所有房间亮度之和。",
+        "transformed_statement": "第 $i$ 层最左房间的祖先数限制了该层统一亮度，故其最大值不超过 $i$。将火炬限定放在左右两条边界后，每个内部房间的可达火炬数可拆成两段边界贡献，恰好达到 $i$。",
+        "key_observations": [
+          "第 $i$ 层最左房间只有从上到下的 $i$ 个左边界祖先，因此该层所有房间的亮度至多为 $i$，从而整体 brilliance 的上界是 $1+2+\\cdots+n$。",
+          "把每层最左和最右房间放置火炬后，位置 $(i,j)$ 能到达的火炬恰好来自左边界前 $i-j+1$ 个房间和右边界前 $j$ 个房间，亮度为 $(i-j+1)+(j-1)=i$。",
+          "该构造使第 $i$ 层所有房间亮度都达到上界 $i$，因此每层相同且总 brilliance 达到理论上界，必然最优。"
+        ],
+        "solution_brief": "对每个测试用例逐层输出三角形矩阵：第 $i$ 层仅在第一个和第 $i$ 个房间放火炬，其余房间留空。这样第 $i$ 层亮度统一为 $i$，同时达到每层亮度上界，故 brilliance 最大。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的亮度与 nice 定义，以及 editorial 给出的上界分析和边界火炬构造；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1734A": {
+      "problem_key": "1734A",
+      "title": "Select Three Sticks",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1734/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/107231",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d2b83b45bf59852f69e3da1156abb669aa2a313ed60747ed9688a202095836f2",
+      "generated_at": "2026-09-27T22:24:54+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 根正整数长度的木棍，每次可将一根木棍长度增加或减少 $1$。需要选择三根木棍并通过若干次操作使它们长度完全相等，从而组成等边三角形，求最少操作次数。",
+        "transformed_statement": "将选择的三根木棍视为要统一到某个长度 $v$，代价是三者到 $v$ 的绝对距离之和；排序后问题等价于求某个连续三元组的首尾长度差的最小值。",
+        "key_observations": [
+          "固定选择三根木棍后，将它们改成同一长度的最小代价是到三者中位数的距离和；因此总代价等于最大长度减最小长度，即 $a_z-a_x$。",
+          "数组排序后，固定中间位置时，选择更靠近它的两端不会增大跨度，所以最优三元组一定是三个连续元素。",
+          "因此只需计算所有长度为 $3$ 的排序窗口跨度 $a_{i+2}-a_i$，其中最小值就是答案，避免了枚举全部三元组。"
+        ],
+        "solution_brief": "先将木棍长度排序。对每个连续三元组，令三根木棍最终都变为中间长度，所需操作数为首尾差值；遍历所有窗口并取最小值。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text 以及题目标签提炼；操作定义部分结合题面示例和题解中的绝对值代价补全。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
       }
     }
   }
