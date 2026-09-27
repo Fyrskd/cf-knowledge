@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2869,
+    "total_problems": 2875,
     "source_total_problems": 2875,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2869,
-    "with_editorial_brief": 2605,
-    "with_solution_brief": 2606,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2875,
+    "with_editorial_brief": 2611,
+    "with_solution_brief": 2612,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1931,
+    "ai_override_count": 1937,
     "primary_topic_count": 13,
-    "contest_count": 436,
+    "contest_count": 437,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 153,
-    "数论与同余": 311,
-    "构造与贪心": 901,
+    "构造与贪心": 903,
+    "字符串": 154,
+    "数据结构": 265,
+    "数论与同余": 312,
+    "树结构": 148,
     "组合计数与概率": 225,
     "图论与网络流": 176,
     "动态规划与状态设计": 242,
     "交互": 93,
     "基础实现与模拟": 172,
-    "树结构": 147,
-    "数据结构": 264,
     "几何": 69,
     "博弈": 95,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1657,
+    "ai_generated_with_editorial": 1663,
     "ai_generated_partial_editorial": 57,
     "missing_editorial": 263,
     "manual_override": 891,
@@ -88747,6 +88747,199 @@ window.CF_INSIGHTS_DATA = {
             "若某个 $b_i$ 没有可用的小于它的伙伴，则剩余数字无法完成配对，直接判定为无解。"
           ],
           "solutionBrief": "先检查 $b$ 是否有重复元素，并取出未出现在 $b$ 中的数字。按 $b$ 从后往前处理，每次选未使用且小于当前 $b_i$ 的最大数放在其前面；若不存在则输出 NO，否则输出构造出的排列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1748,
+      "name": "Codeforces Round 833 (Div. 2)",
+      "date": "2022-11-12",
+      "url": "https://codeforces.com/contest/1748",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1748A",
+          "index": "A",
+          "slot": "A",
+          "title": "The Ultimate Square",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1748/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/108319",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 个不可旋转的木块，第 $i$ 块高为 $1$、长为 $\\lceil i/2\\rceil$。可以选择部分木块并排列拼接，要求构造出的图形是正方形，求可能得到的最大边长。",
+          "transformedStatement": "将木块长度视为序列 $1,1,2,2,\\dots$，问题转化为判断这些长度能否分成若干行且每行总长相同；奇数个木块能恰好形成边长 $\\frac{n+1}{2}$ 的正方形，再用总面积排除更大的边长。",
+          "keyObservations": [
+            "当 $n=2k-1$ 时，长度为 $1,1,2,2,\u0000dots,k-1,k-1,k$ 的木块可分成 $k$ 行，每行总长为 $k$，因此能拼出边长 $k$ 的正方形。",
+            "对偶数块，只需先使用前 $n-1$ 块；因为 $n-1$ 为奇数，仍可构造边长为 $\\frac n2$ 的正方形。",
+            "奇数规模构造出的正方形边长为 $k$，再增加一块长度为 $k$ 的木块后，总面积为 $k^2+k<(k+1)^2$，所以边长不会提升。",
+            "奇偶情况合并后，最大边长统一为 $\\left\\lfloor\\frac{n+1}{2}\\right\\rfloor$，每组数据只需直接计算。"
+          ],
+          "solutionBrief": "令 $k=\\left\\lfloor\\frac{n+1}{2}\\right\\rfloor$。奇数个木块可按行配对构成 $k\\times k$ 正方形；偶数个时舍弃最后一块即可。面积上界说明多出的木块不足以形成边长 $k+1$ 的正方形，因此输出 $k$，单组复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1748B",
+          "index": "B",
+          "slot": "B",
+          "title": "Diverse Substrings",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1748/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/108319",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定只含数字 $0$ 到 $9$ 的字符串，统计所有连续子串中满足条件的个数：每种数字的出现次数都不超过该子串包含的不同数字种类数。相同内容但位置不同的子串分别计数。",
+          "transformedStatement": "将每个子串的合法性转化为“最大数字频次不超过不同数字数”的判定；由于合法串长度最多为 $100$，问题变为从每个起点枚举至多 $100$ 个字符并实时维护这两个量。",
+          "keyObservations": [
+            "多样子串中不同数字最多为 $10$ 种，且每种数字出现次数都不超过不同数字数，因此任意数字频次超过 $10$ 后无需继续延伸。",
+            "由上述限制可知多样子串长度最多为 $10\\times10=100$，所以从每个起点只需检查长度不超过 $100$ 的连续子串。",
+            "对固定左端点维护不同数字数和最大出现次数，子串满足条件当且仅当最大频次不超过不同数字数，从而可在线判断并计数。"
+          ],
+          "solutionBrief": "枚举每个左端点向右扩展，维护 10 个数字的频次、不同数字数和最大频次；一旦某频次超过 10 就停止。若最大频次不超过不同数字数则计数，单测复杂度为 $O(n\\cdot100)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1748C",
+          "index": "C",
+          "slot": "C",
+          "title": "Zero-Sum Prefixes",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1748/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/108319",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定数组，允许把值为 $0$ 的元素替换成任意整数并进行多次操作。数组得分是前缀和等于 $0$ 的位置数，要求最大化修改后的得分。",
+          "transformedStatement": "将问题转为调整前缀和：修改某个零元素会把其对应位置及之后的前缀和统一平移，因此所有零位置把前缀和序列切成若干段，每段独立选择一个平移量以制造尽可能多的零。",
+          "keyObservations": [
+            "把数组改写为前缀和数组后，修改位置 $i$ 的零元素只会给从 $s_i$ 开始的后缀统一加上同一个值，因此影响范围可按零的位置切成独立区间。",
+            "第一个零之前的前缀和完全无法改变，只能直接统计其中等于 $0$ 的项；这部分构成固定贡献。",
+            "对于每个后续区间，只能整体平移一次，因此令修改值抵消区间内出现次数最多的前缀和值，该区间的最大贡献就是其最高频率。",
+            "扫描时在每个零处分段并清空频率表，维护当前区间前缀和的出现次数与最大频率，即可在线累加答案。"
+          ],
+          "solutionBrief": "计算原数组前缀和，并以零元素为边界分段。首个零前统计前缀和为 $0$ 的数量；其后每段取出现次数最多的前缀和值作为贡献，扫描维护频率表即可，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1748D",
+          "index": "D",
+          "slot": "D",
+          "title": "ConstructOR ",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1748/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/108319",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "chinese remainder theorem",
+            "combinatorics",
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $a,b,d$，构造任意整数 $x$，使按位或结果 $a|x$ 与 $b|x$ 都能被 $d$ 整除；若不存在则输出 $-1$，有多个答案时输出任意一个。",
+          "transformedStatement": "把问题改写为寻找一个同时覆盖 $a,b$ 所有置位的 $d$ 的倍数，并进一步构造 $a|x=b|x=x$；于是只需设计满足固定低位约束且能被 $d$ 整除的 $x$。",
+          "keyObservations": [
+            "令 $k$ 为 $d$ 的最低非零二进制位位置；若 $a$ 或 $b$ 的低 $k$ 位有任意一位为 $1$，对应的按位或结果不可能被 $d$ 整除，因此可直接判无解。",
+            "可以主动构造满足 $a|x=b|x=x$ 的 $x$，这样两个整除条件合并为只需让 $x$ 成为 $d$ 的倍数，同时保证 $x$ 覆盖 $a,b$ 的所有置位。",
+            "将 $d$ 写成 $2^k d'$ 后，$d'$ 为奇数；令 $x$ 的低 $k$ 位为 $0$、接下来的 $30-k$ 位为 $1$，再用高位参数 $p$ 调整模 $d'$ 的余数，整除条件化为关于 $2^{30-k}$ 的模逆计算。",
+            "若 $a|b$ 本身已经是 $d$ 的倍数，可直接取 $x=a|b$；否则只需在奇数模数下计算 $2$ 的逆元并快速幂求出构造参数。"
+          ],
+          "solutionBrief": "先令 $a\neceivedby b$ 合并已需覆盖的置位；若 $a|b$ 可被 $d$ 整除则直接输出。设 $k$ 为 $d$ 的二进制尾零数，检查 $a,b$ 低 $k$ 位，否则无解；再按固定低位模式构造 $x$，用奇数部分模逆求高位参数，复杂度为 $O(\\log d)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1748E",
+          "index": "E",
+          "slot": "E",
+          "title": "Yet Another Array Counting Problem",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1748/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/108319",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "flows",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$，统计所有元素取值在 $1$ 到 $m$ 之间的数组 $b$，使得对每个区间 $[l,r]$，$a$ 与 $b$ 的最左最大值位置都相同。输出满足条件的数组数量。",
+          "transformedStatement": "把数组 $a$ 在每个区间上的最左最大位置递归展开为一棵二叉树：区间最左最大位置是根，左右子区间对应左右子树；问题转化为给这棵树赋予 $1$ 到 $m$ 的值，并满足左孩子严格小于父亲、右孩子不大于父亲。",
+          "keyObservations": [
+            "对每个区间取数组 $a$ 的最左最大位置作为根，并递归处理其左右子区间，所有区间的最左最大关系因此被压缩成一棵二叉树。",
+            "若节点 $u$ 的左右子节点分别是 $p,p_2$，则保持最左最大位置要求 $b_u>b_p$ 且 $b_u\\ge b_{p_2}$；严格与否分别来自左侧相等时会抢先出现。",
+            "固定节点值 $b_u=x$ 后，左右子树彼此独立，左子树只能取 $1$ 到 $x-1$，右子树只能取 $1$ 到 $x$，因此转移可拆成两个前缀和的乘积。",
+            "同时维护每个子树的 $dp$ 前缀和，就能在 $O(1)$ 完成每个值的转移；用区间最左最大值查询递归建树，总复杂度为 $O(nm+n\\log n)$。"
+          ],
+          "solutionBrief": "将 $a$ 的区间最左最大位置递归建成二叉树。设 $dp[u][x]$ 表示子树根取值 $x$ 的方案数，按左侧严格小于、右侧不大于的条件用前缀和转移；稀疏表支持建树时的区间最左最大查询。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1748F",
+          "index": "F",
+          "slot": "F",
+          "title": "Circular Xor Reversal",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1748/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/108319",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms"
+          ],
+          "statementBrief": "数组初始为 $a_i=2^i$。每次选择一个位置 $i$，令该位置与其环形后继异或，即 $a_i\\leftarrow a_i\\oplus a_{(i+1)\\bmod n}$；要求至多进行 $250000$ 次操作，使数组变为 $a_i=2^{n-1-i}$，并输出任意操作序列。",
+          "transformedStatement": "将相邻环形异或视为可组合的局部线性变换，定义 $f(i,j)$ 在一段圆环区间内对两端对称元素执行批量异或；题目转化为用三次这样的区间变换合成位置反转。",
+          "keyObservations": [
+            "连续沿圆环执行相邻异或，可以在有限操作内实现远距离的异或赋值；而三次形如 $x\\mathrel{\\oplus}=y,y\\mathrel{\\oplus}=x,x\\mathrel{\\oplus}=y$ 的赋值还能交换两个位置的值。",
+            "定义过程 $f(i,j)$，它在从 $i$ 到 $j$ 的圆环区间内，同时完成两端对称位置的异或赋值；交替从区间两端扫描，可把局部操作组织成这些成对变换。",
+            "先后执行 $f(0,n-1)$、中点反向区间上的 $f$、再次执行 $f(0,n-1)$，三层对称异或变换的合成效果正好是数组反转。",
+            "单个 $f$ 的操作数为 $O(m^2)$，三次过程中的区间长度不超过 $n-1$，因此总数满足题目的 $250000$ 限制，且构造时间为 $O(n^2)$。"
+          ],
+          "solutionBrief": "把相邻环形异或操作组织成过程 $f(i,j)$：交替收缩区间并扫描，完成区间两端对称位置的异或。依次调用 $f(0,n-1)$、中点对应区间和 $f(0,n-1)$，即可反转数组，操作数为 $O(n^2)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
