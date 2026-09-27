@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2875,
+    "total_problems": 2883,
     "source_total_problems": 2883,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2875,
-    "with_editorial_brief": 2611,
-    "with_solution_brief": 2612,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2883,
+    "with_editorial_brief": 2619,
+    "with_solution_brief": 2620,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1937,
+    "ai_override_count": 1945,
     "primary_topic_count": 13,
-    "contest_count": 437,
+    "contest_count": 438,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 903,
-    "字符串": 154,
-    "数据结构": 265,
-    "数论与同余": 312,
+    "构造与贪心": 906,
+    "数论与同余": 313,
+    "字符串": 155,
+    "动态规划与状态设计": 243,
+    "组合计数与概率": 226,
+    "数据结构": 266,
     "树结构": 148,
-    "组合计数与概率": 225,
     "图论与网络流": 176,
-    "动态规划与状态设计": 242,
     "交互": 93,
     "基础实现与模拟": 172,
     "几何": 69,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1663,
-    "ai_generated_partial_editorial": 57,
+    "ai_generated_with_editorial": 1669,
+    "ai_generated_partial_editorial": 59,
     "missing_editorial": 263,
     "manual_override": 891,
     "statement_derived": 1
@@ -88940,6 +88940,252 @@ window.CF_INSIGHTS_DATA = {
             "单个 $f$ 的操作数为 $O(m^2)$，三次过程中的区间长度不超过 $n-1$，因此总数满足题目的 $250000$ 限制，且构造时间为 $O(n^2)$。"
           ],
           "solutionBrief": "把相邻环形异或操作组织成过程 $f(i,j)$：交替收缩区间并扫描，完成区间两端对称位置的异或。依次调用 $f(0,n-1)$、中点对应区间和 $f(0,n-1)$，即可反转数组，操作数为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1750,
+      "name": "CodeTON Round 3 (Div. 1 + Div. 2, Rated, Prizes!)",
+      "date": "2022-11-06",
+      "url": "https://codeforces.com/contest/1750",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1750A",
+          "index": "A",
+          "slot": "A",
+          "title": "Indirect Sort",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1750/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/108504",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列，反复选择 $i<j<k$：若 $a_i>a_k$，就将 $a_i$ 增加 $1$；否则交换 $a_j$ 与 $a_k$。判断能否通过这些操作把排列变为非递减序列。",
+          "transformedStatement": "问题等价于判断首位置能否最终固定为最小值 $1$：若首位是 $1$，它可作为中间操作的支点，后缀能够任意交换；若首位不是 $1$，最小值无法到达首位。",
+          "keyObservations": [
+            "下标 $1$ 在交换操作中永远不会被换走；其中的数只能在存在更小的 $a_k$ 时增加，但排列中的最小值 $1$ 不可能满足该条件。",
+            "因此若初始 $a_1\\ne1$，数值 $1$ 无法移动到首位，最终不可能得到升序排列。",
+            "若 $a_1=1$，固定选择 $i=1$ 时即可利用后续操作交换任意两个位置 $j,k$（$2\\le j<k\\le n$），所以能直接把后缀任意重排为有序。"
+          ],
+          "solutionBrief": "只需判断首元素是否为 $1$。首元素不是 $1$ 时答案为 No；首元素为 $1$ 时可借助它交换后缀任意两项，从而排序，答案为 Yes。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1750B",
+          "index": "B",
+          "slot": "B",
+          "title": "Maximum Substring",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1750/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/108504",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个二进制字符串，任取一个非空连续子串，设其中 0 和 1 的数量分别为 $x,y$：若只含一种字符，代价为该数量的平方；若两种字符都含有，代价为 $x\\cdot y$。求所有子串中的最大代价。",
+          "transformedStatement": "把候选子串分为混合子串和单字符子串：前者的乘积随包含的 0、1 数量增加而不会减小，后者只由最长连续同字符段决定，因此答案是三类候选值的最大值。",
+          "keyObservations": [
+            "含有两种字符的子串，其代价为 $x\\cdot y$；扩大到整个字符串会同时增大或保持 $x,y$，因此这类子串的最优选择是整个字符串。",
+            "只含一种字符的子串代价等于其长度平方，所以只需寻找连续相同字符的最长段，并比较其平方。",
+            "最终答案只需比较整串中 0 和 1 数量的乘积，以及最长连续 0 段和最长连续 1 段长度的平方。"
+          ],
+          "solutionBrief": "统计整串中 0、1 的数量，得到混合子串候选值；线性扫描字符串求最长连续 0 段和 1 段，分别平方后与前者取最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1750C",
+          "index": "C",
+          "slot": "C",
+          "title": "Complementary XOR",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1750/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/108504",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的二进制串。每次选择区间 $[l,r]$，翻转 $a$ 在该区间内的字符，并翻转 $b$ 在区间外的字符；要求判断能否在不超过 $n+5$ 次操作后让两串都全为 $0$，若能还需输出任意操作序列。",
+          "transformedStatement": "把每个位置的状态抽象为 $a_i=b_i$ 还是 $a_i\\ne b_i$：一次操作会同时翻转所有位置的这种关系。可行时先将两串变为相同，再把共同为 $1$ 的位置逐个消掉；剩余难点是将操作数压缩到 $n+5$。",
+          "keyObservations": [
+            "一次操作会在每个位置恰好翻转 $a_i$ 或 $b_i$ 中的一个，因此 $a_i=b_i$ 的真假会对所有位置同时取反；若初始相等关系不全相同，就不可能最终同时变为 $0$。",
+            "当所有位置满足 $a_i\\ne b_i$ 时，对整个区间操作即可只翻转 $a$，将其变为与 $b$ 相同；因此可统一转化为处理两串相等的位置。",
+            "若某个位置 $i$ 上两串同为 $1$，用区间 $(1,i)$ 与 $(1,i-1)$ 可只翻转该位置；当 $i=1$ 时改用 $(1,n)$ 与 $(2,n)$，这说明逐点消除存在可行构造，但题解未给出满足 $n+5$ 次限制的具体优化。"
+          ],
+          "solutionBrief": "先检查所有位置的 $a_i=b_i$ 是否完全相同；不一致则输出 NO。若全为不等，可对整个区间操作使两串相等；随后逐点消除共同的 $1$。现有题解只说明了约 $2n+O(1)$ 的构造及按奇偶优化的方向，未提供满足 $n+5$ 次限制的完整方案，因此本地题解正文不足。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1750D",
+          "index": "D",
+          "slot": "D",
+          "title": "Count GCD",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1750/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/108504",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$ 和上界 $m$，统计所有元素均不超过 $m$ 的数组 $b$，使得每个前缀的最大公约数依次等于 $a_1,a_2,\\ldots,a_n$。输出满足条件的数组数量，并对 $998244353$ 取模。",
+          "transformedStatement": "把第 $i$ 个前缀 GCD 的变化单独看成从 $a_{i-1}$ 加入一个数 $b_i$，要求 $\\gcd(a_{i-1},b_i)=a_i$；令 $b_i=a_i k$ 后，每步变为统计上界内与 $a_{i-1}/a_i$ 互质的 $k$。",
+          "keyObservations": [
+            "若某个 $a_{i-1}$ 不能被 $a_i$ 整除，则前缀最大公约数不可能按要求从 $a_{i-1}$ 变为 $a_i$，答案直接为 $0$。",
+            "固定前一项前缀最大公约数为 $a_{i-1}$ 后，第 $i$ 项只需满足 $\\gcd(a_{i-1},b_i)=a_i$，因此各位置的选择彼此独立，答案是各位置方案数之积。",
+            "令 $b_i=a_i k$，条件等价于 $\\gcd(a_{i-1}/a_i,k)=1$，且 $k\\le\\lfloor m/a_i\\rfloor$，从而每个位置转化为统计与一个数互质的整数个数。",
+            "对 $a_{i-1}/a_i$ 的不同质因子做容斥，即可在区间 $[1,\\lfloor m/a_i\\rfloor]$ 中计算互质数数量；这些质因子都来自 $a_1$，可复用其分解结果。"
+          ],
+          "solutionBrief": "先检查相邻元素是否满足 $a_{i-1}\\bmod a_i=0$。令 $b_i=a_i k$ 后，用容斥统计 $k\\le\\lfloor m/a_i\\rfloor$ 且与 $a_{i-1}/a_i$ 互质的数量，将各位置结果相乘；$b_1$ 唯一为 $a_1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1750E",
+          "index": "E",
+          "slot": "E",
+          "title": "Bracket Cost",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1750/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/108504",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定只含括号的字符串，需要对每个非空子串独立计算把它变成合法括号序列的最少操作数，再求这些代价之和。题面摘录未完整显示两类操作；题解明确涉及循环右移一段，以及在首端或尾端补入相应括号。",
+          "transformedStatement": "把左括号记为 $1$、右括号记为 $-1$，设前缀和为 $b$。子串 $s[l+1..r]$ 的代价被等价重述为 $\\max(b_l,b_r)-\\min_{i=l}^{r}b_i$，问题转为汇总所有区间的这一数值。",
+          "keyObservations": [
+            "对区间 $s[l+1..r]$，最少操作数等于 $\\max(b_l,b_r)-\\min(b_l,b_{l+1},\\ldots,b_r)$，从括号匹配转化为前缀和端点与区间最低点的差值。",
+            "任意一次操作至多让上述差值减少 $1$，因此该差值是操作次数的下界，不能通过更少操作达到平衡。",
+            "当 $b_l<b_r$ 或 $b_l>b_r$ 时，在相应端点补括号即可使差值减一；当两端前缀和相等时，取区间内最右侧最低点并循环右移对应片段，也能使差值减一，从而得到充分性。"
+          ],
+          "solutionBrief": "令左括号贡献 $1$、右括号贡献 $-1$ 并计算前缀和。每个子串的代价由端点前缀和最大值与区间前缀和最小值之差给出，再用数据结构维护这些端点最大值和区间最小值，汇总所有子串代价。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1750F",
+          "index": "F",
+          "slot": "F",
+          "title": "Majority",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1750/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/108504",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "字符串",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的二进制服务器串；题解将一次有效传播等价描述为选择形如 $1^+0^+1^+$ 的连续子串，并把其中的 $0$ 全部改成 $1$，可重复操作。要求统计能够最终变成全 $1$ 串的初始二进制串数量，结果对 $m$ 取模。",
+          "transformedStatement": "把问题改写为：对二进制串反复消除夹在两段连续 $1$ 之间的零段，判断其是否能消成全 $1$。按操作终止后的字符串前缀连续 $1$ 长度分组计数，并用“总数减去阻碍状态”处理全为 $1$ 的特殊组。",
+          "keyObservations": [
+            "题解将原操作等价为：选择形如 $1^+0^+1^+$ 的子串并全部变成 $1$，因此只需研究这种更简单的消零操作。",
+            "反复操作后的不可再变字符串可按开头连续 $1$ 的长度分类；$dp_{i,j}$ 统计长度为 $i$ 且最终状态前缀有 $j$ 个连续 $1$ 的字符串。",
+            "转移需要枚举后续零段长度及其后的可修复前缀，并排除会使前缀继续扩大的情况，从而保证状态分类互斥。",
+            "$dp_{i,i}$ 无法直接由同类递推得到，可改为总数减去含阻碍的情况；用前缀和的前缀和优化枚举，使复杂度从 $O(n^4)$ 降为 $O(n^2)$。"
+          ],
+          "solutionBrief": "先把原电力传播等价化为消除形如 $1^+0^+1^+$ 子串中的零，再按不可继续操作后的前缀连续 $1$ 长度设计 $dp_{i,j}$。特殊状态 $dp_{i,i}$ 用总数减阻碍情况计算，并通过二重前缀和将转移优化到 $O(n^2)$，答案对 $m$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1750G",
+          "index": "G",
+          "slot": "G",
+          "title": "Doping",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1750/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/108504",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的排列 $p$。把任意排列划分成尽可能少的连续子数组，使每段都满足相邻元素严格递增 $1$，记最少段数为 $f$；要求对每个 $k$，统计字典序小于 $p$ 且 $f=k$ 的排列数量，并对 $m$ 取模。",
+          "transformedStatement": "固定候选排列与 $p$ 的首次不同位置，较小元素确定后，后缀是剩余元素的任意排列。由于 $f$ 只由相邻的连续对数量决定，问题转化为按剩余集合中的连续对数，统计后缀使用不同数量连续对的排列。",
+          "keyObservations": [
+            "将排列按相邻位置是否满足 $a_i=a_{i-1}+1$ 划分为极大连续段，因此 $f(a)$ 等于长度减去这类相邻连接的数量，目标转成统计连接数。",
+            "固定字典序首次不同的位置及其较小取值后，后缀只需排列剩余元素；剩余集合中的有向连续对数量决定后缀避开或使用连接的计数。",
+            "对含 $i$ 个元素且存在 $j$ 个候选连续对的集合，设排列避开所有这些对的数量为 $dp[i][j]$，逐个加入候选对可得 $dp[i][j]=dp[i][j-1]-dp[i-1][j-1]$，其中 $dp[i][0]=i!$。",
+            "首次不同位置选定元素后，若其前驱仍在剩余集合中，候选连续对数减少一；同时它与前一固定元素是否相邻决定段数是否额外增加，按元素类型汇总即可在 $O(n^2)$ 内完成所有答案。"
+          ],
+          "solutionBrief": "枚举字典序首次不同的位置和较小元素，把后缀排列转为避开指定连续对的计数。用 $dp[i][j]=dp[i][j-1]-dp[i-1][j-1]$ 统计不同连接数，再按首次不同元素的类型累加各个 $f$ 值，整体复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1750H",
+          "index": "H",
+          "slot": "H",
+          "title": "BinaryStringForces",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1750/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/108504",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定二进制串，可反复选择相邻的两个极大同字符段；若其中 $1$ 段长度为 $a$、$0$ 段长度为 $b$，则较长字符覆盖两段（相等时按示例变为 $1$）。求所有非空子串中，能够经过这些操作变成全为 $1$ 的子串数量。",
+          "transformedStatement": "把每个子串的可行性转成区间状态：固定一端后，记录所有以 $1$ 结尾的 good 右端点区间；对两端为 $0$ 的子串，再以最长 $0$ 块为核心，判断其左侧或右侧是否存在足够长的 good 部分。",
+          "keyObservations": [
+            "固定左端点 $i$ 扫描右端点时，good 与 bad 状态交替出现；good 变 bad 的触发条件是遇到更长的 $0$ 块，而此时相关长度至少翻倍，因此 good 区间只有 $O(\\log n)$ 段。",
+            "若当前以 $0$ 结尾的子串为 bad，跳到下一个 $1$ 后，重新变 good 的最早位置由三个条件确定：后缀本身 good、终点为 $1$，且长度不小于上一段 $0$ 块；满足后即可先消除该 $0$ 块，再消除剩余部分。",
+            "对以 $1$ 结尾的子串维护上述不相交区间，并在反串上执行同样过程，即可同时判断以 $1$ 开头的子串；这些区间还能支持后续的范围计数。",
+            "两端均为 $0$ 的子串只需考察其最长 $0$ 块：该块能从左侧或右侧被一个长度不小于它的 good 部分消除，当且仅当整个子串 good；按最长块归属分组后可用范围计数合并答案。"
+          ],
+          "solutionBrief": "对每个左端点压缩记录以 $1$ 结尾的 good 区间，利用长度翻倍性质控制区间数，并预处理状态转移；反转字符串得到另一端信息。对两端为 $0$ 的子串按最长 $0$ 块分组，用范围数据结构统计左右可行部分，整体复杂度为 $O(n\\log^2 n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T20:14:02+00:00",
+  "updated_at": "2026-09-27T20:20:01+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -57843,6 +57843,261 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 的木块尺寸与拼接规则，以及 editorial_text 的奇偶构造和面积上界；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1750H": {
+      "problem_key": "1750H",
+      "title": "BinaryStringForces",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1750/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/108504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7c01853d95f98857e6a2fd53d2dc9bc70978399e841071ad5be30f8d9a7972ea",
+      "generated_at": "2026-09-27T20:17:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定二进制串，可反复选择相邻的两个极大同字符段；若其中 $1$ 段长度为 $a$、$0$ 段长度为 $b$，则较长字符覆盖两段（相等时按示例变为 $1$）。求所有非空子串中，能够经过这些操作变成全为 $1$ 的子串数量。",
+        "transformed_statement": "把每个子串的可行性转成区间状态：固定一端后，记录所有以 $1$ 结尾的 good 右端点区间；对两端为 $0$ 的子串，再以最长 $0$ 块为核心，判断其左侧或右侧是否存在足够长的 good 部分。",
+        "key_observations": [
+          "固定左端点 $i$ 扫描右端点时，good 与 bad 状态交替出现；good 变 bad 的触发条件是遇到更长的 $0$ 块，而此时相关长度至少翻倍，因此 good 区间只有 $O(\\log n)$ 段。",
+          "若当前以 $0$ 结尾的子串为 bad，跳到下一个 $1$ 后，重新变 good 的最早位置由三个条件确定：后缀本身 good、终点为 $1$，且长度不小于上一段 $0$ 块；满足后即可先消除该 $0$ 块，再消除剩余部分。",
+          "对以 $1$ 结尾的子串维护上述不相交区间，并在反串上执行同样过程，即可同时判断以 $1$ 开头的子串；这些区间还能支持后续的范围计数。",
+          "两端均为 $0$ 的子串只需考察其最长 $0$ 块：该块能从左侧或右侧被一个长度不小于它的 good 部分消除，当且仅当整个子串 good；按最长块归属分组后可用范围计数合并答案。"
+        ],
+        "solution_brief": "对每个左端点压缩记录以 $1$ 结尾的 good 区间，利用长度翻倍性质控制区间数，并预处理状态转移；反转字符串得到另一端信息。对两端为 $0$ 的子串按最长 $0$ 块分组，用范围数据结构统计左右可行部分，整体复杂度为 $O(n\\log^2 n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement、editorial_text 及题目 tags 提炼。",
+        "quality_flags": []
+      }
+    },
+    "1750G": {
+      "problem_key": "1750G",
+      "title": "Doping",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1750/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/108504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ddbf37036b92576a59bf453960a5a4480dbecc319eea877e7f77665ba8b25a88",
+      "generated_at": "2026-09-27T20:17:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的排列 $p$。把任意排列划分成尽可能少的连续子数组，使每段都满足相邻元素严格递增 $1$，记最少段数为 $f$；要求对每个 $k$，统计字典序小于 $p$ 且 $f=k$ 的排列数量，并对 $m$ 取模。",
+        "transformed_statement": "固定候选排列与 $p$ 的首次不同位置，较小元素确定后，后缀是剩余元素的任意排列。由于 $f$ 只由相邻的连续对数量决定，问题转化为按剩余集合中的连续对数，统计后缀使用不同数量连续对的排列。",
+        "key_observations": [
+          "将排列按相邻位置是否满足 $a_i=a_{i-1}+1$ 划分为极大连续段，因此 $f(a)$ 等于长度减去这类相邻连接的数量，目标转成统计连接数。",
+          "固定字典序首次不同的位置及其较小取值后，后缀只需排列剩余元素；剩余集合中的有向连续对数量决定后缀避开或使用连接的计数。",
+          "对含 $i$ 个元素且存在 $j$ 个候选连续对的集合，设排列避开所有这些对的数量为 $dp[i][j]$，逐个加入候选对可得 $dp[i][j]=dp[i][j-1]-dp[i-1][j-1]$，其中 $dp[i][0]=i!$。",
+          "首次不同位置选定元素后，若其前驱仍在剩余集合中，候选连续对数减少一；同时它与前一固定元素是否相邻决定段数是否额外增加，按元素类型汇总即可在 $O(n^2)$ 内完成所有答案。"
+        ],
+        "solution_brief": "枚举字典序首次不同的位置和较小元素，把后缀排列转为避开指定连续对的计数。用 $dp[i][j]=dp[i][j-1]-dp[i-1][j-1]$ 统计不同连接数，再按首次不同元素的类型累加各个 $f$ 值，整体复杂度为 $O(n^2)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial，以及 statement 中的排列、字典序和 fancy 分段定义；k-special 的缺失定义由 editorial 和样例语义补全。",
+        "quality_flags": [
+          "statement_formatting_missing_k_special_definition"
+        ]
+      }
+    },
+    "1750F": {
+      "problem_key": "1750F",
+      "title": "Majority",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1750/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/108504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a62d25e7f525c8b43e098d1247a6419d7de42bdb41aa7f3ca7859965c04ebbc1",
+      "generated_at": "2026-09-27T20:18:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的二进制服务器串；题解将一次有效传播等价描述为选择形如 $1^+0^+1^+$ 的连续子串，并把其中的 $0$ 全部改成 $1$，可重复操作。要求统计能够最终变成全 $1$ 串的初始二进制串数量，结果对 $m$ 取模。",
+        "transformed_statement": "把问题改写为：对二进制串反复消除夹在两段连续 $1$ 之间的零段，判断其是否能消成全 $1$。按操作终止后的字符串前缀连续 $1$ 长度分组计数，并用“总数减去阻碍状态”处理全为 $1$ 的特殊组。",
+        "key_observations": [
+          "题解将原操作等价为：选择形如 $1^+0^+1^+$ 的子串并全部变成 $1$，因此只需研究这种更简单的消零操作。",
+          "反复操作后的不可再变字符串可按开头连续 $1$ 的长度分类；$dp_{i,j}$ 统计长度为 $i$ 且最终状态前缀有 $j$ 个连续 $1$ 的字符串。",
+          "转移需要枚举后续零段长度及其后的可修复前缀，并排除会使前缀继续扩大的情况，从而保证状态分类互斥。",
+          "$dp_{i,i}$ 无法直接由同类递推得到，可改为总数减去含阻碍的情况；用前缀和的前缀和优化枚举，使复杂度从 $O(n^4)$ 降为 $O(n^2)$。"
+        ],
+        "solution_brief": "先把原电力传播等价化为消除形如 $1^+0^+1^+$ 子串中的零，再按不可继续操作后的前缀连续 $1$ 长度设计 $dp_{i,j}$。特殊状态 $dp_{i,i}$ 用总数减阻碍情况计算，并通过二重前缀和将转移优化到 $O(n^2)$，答案对 $m$ 取模。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "组合计数与概率",
+          "字符串",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的二进制串定义、题解给出的等价操作与 DP 方案，并参考 tags 中的 dp、combinatorics、strings、math。",
+        "quality_flags": [
+          "statement_operation_phases_missing"
+        ]
+      }
+    },
+    "1750E": {
+      "problem_key": "1750E",
+      "title": "Bracket Cost",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1750/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/108504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "31ec24400225faf81d4ed4b4dc7691af078ac51b28d0addb334bc0e8cfec792b",
+      "generated_at": "2026-09-27T20:18:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定只含括号的字符串，需要对每个非空子串独立计算把它变成合法括号序列的最少操作数，再求这些代价之和。题面摘录未完整显示两类操作；题解明确涉及循环右移一段，以及在首端或尾端补入相应括号。",
+        "transformed_statement": "把左括号记为 $1$、右括号记为 $-1$，设前缀和为 $b$。子串 $s[l+1..r]$ 的代价被等价重述为 $\\max(b_l,b_r)-\\min_{i=l}^{r}b_i$，问题转为汇总所有区间的这一数值。",
+        "key_observations": [
+          "对区间 $s[l+1..r]$，最少操作数等于 $\\max(b_l,b_r)-\\min(b_l,b_{l+1},\\ldots,b_r)$，从括号匹配转化为前缀和端点与区间最低点的差值。",
+          "任意一次操作至多让上述差值减少 $1$，因此该差值是操作次数的下界，不能通过更少操作达到平衡。",
+          "当 $b_l<b_r$ 或 $b_l>b_r$ 时，在相应端点补括号即可使差值减一；当两端前缀和相等时，取区间内最右侧最低点并循环右移对应片段，也能使差值减一，从而得到充分性。"
+        ],
+        "solution_brief": "令左括号贡献 $1$、右括号贡献 $-1$ 并计算前缀和。每个子串的代价由端点前缀和最大值与区间前缀和最小值之差给出，再用数据结构维护这些端点最大值和区间最小值，汇总所有子串代价。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意与限制来自 statement_text，代价公式、操作分类证明和数据结构方向来自 editorial_text；tags 仅用于主题索引。",
+        "quality_flags": [
+          "editorial_aggregation_detail_sparse",
+          "operation_rules_incomplete",
+          "statement_truncated"
+        ]
+      }
+    },
+    "1750D": {
+      "problem_key": "1750D",
+      "title": "Count GCD",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1750/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/108504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d645df9892b64d1a875b4e4db3353f5a4c65fe6dcf8868286974231afb1dd5ce",
+      "generated_at": "2026-09-27T20:18:55+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组 $a$ 和上界 $m$，统计所有元素均不超过 $m$ 的数组 $b$，使得每个前缀的最大公约数依次等于 $a_1,a_2,\\ldots,a_n$。输出满足条件的数组数量，并对 $998244353$ 取模。",
+        "transformed_statement": "把第 $i$ 个前缀 GCD 的变化单独看成从 $a_{i-1}$ 加入一个数 $b_i$，要求 $\\gcd(a_{i-1},b_i)=a_i$；令 $b_i=a_i k$ 后，每步变为统计上界内与 $a_{i-1}/a_i$ 互质的 $k$。",
+        "key_observations": [
+          "若某个 $a_{i-1}$ 不能被 $a_i$ 整除，则前缀最大公约数不可能按要求从 $a_{i-1}$ 变为 $a_i$，答案直接为 $0$。",
+          "固定前一项前缀最大公约数为 $a_{i-1}$ 后，第 $i$ 项只需满足 $\\gcd(a_{i-1},b_i)=a_i$，因此各位置的选择彼此独立，答案是各位置方案数之积。",
+          "令 $b_i=a_i k$，条件等价于 $\\gcd(a_{i-1}/a_i,k)=1$，且 $k\\le\\lfloor m/a_i\\rfloor$，从而每个位置转化为统计与一个数互质的整数个数。",
+          "对 $a_{i-1}/a_i$ 的不同质因子做容斥，即可在区间 $[1,\\lfloor m/a_i\\rfloor]$ 中计算互质数数量；这些质因子都来自 $a_1$，可复用其分解结果。"
+        ],
+        "solution_brief": "先检查相邻元素是否满足 $a_{i-1}\\bmod a_i=0$。令 $b_i=a_i k$ 后，用容斥统计 $k\\le\\lfloor m/a_i\\rfloor$ 且与 $a_{i-1}/a_i$ 互质的数量，将各位置结果相乘；$b_1$ 唯一为 $a_1$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "组合计数与概率"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的数组与前缀 GCD 目标，以及 editorial_text 的整除性判断、独立计数和容斥方案；tags 提供数论与组合计数背景。",
+        "quality_flags": [
+          "statement_condition_formatting_incomplete"
+        ]
+      }
+    },
+    "1750C": {
+      "problem_key": "1750C",
+      "title": "Complementary XOR",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1750/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/108504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f765a806ea11e0c426c656f7663b89c3121fbed7cf33ecaa9d7c92722d4bbfea",
+      "generated_at": "2026-09-27T20:19:16+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度为 $n$ 的二进制串。每次选择区间 $[l,r]$，翻转 $a$ 在该区间内的字符，并翻转 $b$ 在区间外的字符；要求判断能否在不超过 $n+5$ 次操作后让两串都全为 $0$，若能还需输出任意操作序列。",
+        "transformed_statement": "把每个位置的状态抽象为 $a_i=b_i$ 还是 $a_i\\ne b_i$：一次操作会同时翻转所有位置的这种关系。可行时先将两串变为相同，再把共同为 $1$ 的位置逐个消掉；剩余难点是将操作数压缩到 $n+5$。",
+        "key_observations": [
+          "一次操作会在每个位置恰好翻转 $a_i$ 或 $b_i$ 中的一个，因此 $a_i=b_i$ 的真假会对所有位置同时取反；若初始相等关系不全相同，就不可能最终同时变为 $0$。",
+          "当所有位置满足 $a_i\\ne b_i$ 时，对整个区间操作即可只翻转 $a$，将其变为与 $b$ 相同；因此可统一转化为处理两串相等的位置。",
+          "若某个位置 $i$ 上两串同为 $1$，用区间 $(1,i)$ 与 $(1,i-1)$ 可只翻转该位置；当 $i=1$ 时改用 $(1,n)$ 与 $(2,n)$，这说明逐点消除存在可行构造，但题解未给出满足 $n+5$ 次限制的具体优化。"
+        ],
+        "solution_brief": "先检查所有位置的 $a_i=b_i$ 是否完全相同；不一致则输出 NO。若全为不等，可对整个区间操作使两串相等；随后逐点消除共同的 $1$。现有题解只说明了约 $2n+O(1)$ 的构造及按奇偶优化的方向，未提供满足 $n+5$ 次限制的完整方案，因此本地题解正文不足。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意与操作规则依据 statement_text 及示例重建；可行性判断和逐点构造依据 editorial_text；题型参考 tags。",
+        "quality_flags": [
+          "operation_rule_reconstructed_from_example",
+          "optimized_construction_missing",
+          "partial_editorial",
+          "statement_truncated"
+        ]
+      }
+    },
+    "1750B": {
+      "problem_key": "1750B",
+      "title": "Maximum Substring",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1750/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/108504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "6adef583e2e44d469d2d7de22deb393ad478c6ce7931804f18b23ecaebf28af5",
+      "generated_at": "2026-09-27T20:19:34+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个二进制字符串，任取一个非空连续子串，设其中 0 和 1 的数量分别为 $x,y$：若只含一种字符，代价为该数量的平方；若两种字符都含有，代价为 $x\\cdot y$。求所有子串中的最大代价。",
+        "transformed_statement": "把候选子串分为混合子串和单字符子串：前者的乘积随包含的 0、1 数量增加而不会减小，后者只由最长连续同字符段决定，因此答案是三类候选值的最大值。",
+        "key_observations": [
+          "含有两种字符的子串，其代价为 $x\\cdot y$；扩大到整个字符串会同时增大或保持 $x,y$，因此这类子串的最优选择是整个字符串。",
+          "只含一种字符的子串代价等于其长度平方，所以只需寻找连续相同字符的最长段，并比较其平方。",
+          "最终答案只需比较整串中 0 和 1 数量的乘积，以及最长连续 0 段和最长连续 1 段长度的平方。"
+        ],
+        "solution_brief": "统计整串中 0、1 的数量，得到混合子串候选值；线性扫描字符串求最长连续 0 段和 1 段，分别平方后与前者取最大值。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的题目对象与样例、editorial_text 的完整解法，tags 仅用于主题辅助判断。",
+        "quality_flags": []
+      }
+    },
+    "1750A": {
+      "problem_key": "1750A",
+      "title": "Indirect Sort",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1750/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/108504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "cf3cbecfe08f8068a9de316fa8b8647f7d01646521f2f142c1049bd961b5404f",
+      "generated_at": "2026-09-27T20:20:01+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $1$ 到 $n$ 的排列，反复选择 $i<j<k$：若 $a_i>a_k$，就将 $a_i$ 增加 $1$；否则交换 $a_j$ 与 $a_k$。判断能否通过这些操作把排列变为非递减序列。",
+        "transformed_statement": "问题等价于判断首位置能否最终固定为最小值 $1$：若首位是 $1$，它可作为中间操作的支点，后缀能够任意交换；若首位不是 $1$，最小值无法到达首位。",
+        "key_observations": [
+          "下标 $1$ 在交换操作中永远不会被换走；其中的数只能在存在更小的 $a_k$ 时增加，但排列中的最小值 $1$ 不可能满足该条件。",
+          "因此若初始 $a_1\\ne1$，数值 $1$ 无法移动到首位，最终不可能得到升序排列。",
+          "若 $a_1=1$，固定选择 $i=1$ 时即可利用后续操作交换任意两个位置 $j,k$（$2\\le j<k\\le n$），所以能直接把后缀任意重排为有序。"
+        ],
+        "solution_brief": "只需判断首元素是否为 $1$。首元素不是 $1$ 时答案为 No；首元素为 $1$ 时可借助它交换后缀任意两项，从而排序，答案为 Yes。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题解中的必要性与充分性证明，并结合题面给出的三索引操作示例；题目标签用于主题归类。",
         "quality_flags": []
       }
     }
