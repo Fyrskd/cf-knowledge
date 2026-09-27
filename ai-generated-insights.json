@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T23:26:50+00:00",
+  "updated_at": "2026-09-27T23:32:13+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -63843,6 +63843,190 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial_text 及标签 greedy、implementation 提炼。",
+        "quality_flags": []
+      }
+    },
+    "1713F": {
+      "problem_key": "1713F",
+      "title": "Lost Array",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/1713/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/105419",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "6f8cd11cb3c9e4dc24fb4cdcc5d8d59d2640ca0ffd7a75f8f9d98a9a7228ae88",
+      "generated_at": "2026-09-27T23:30:34+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组 $a$ 经题面规定的 XOR 转换得到矩阵 $b$，现在只知道最后一列中的 $b_{1,n},b_{2,n},\\ldots,b_{n,n}$。需要构造任意一个与这些值一致的 $a$；若不存在则输出 $-1$。等价地，$a_i$ 对 $b_{j,n}$ 的贡献次数为 $\\binom{(n-i)+(j-1)}{j-1}$。",
+        "transformed_statement": "令 $x=n-i$ 并将末列下标按位取补，问题转化为：从布尔格上的部分 Zeta 变换值恢复仅在 $x<n$ 处可能非零的数组 $a'_x$；由于运算是 XOR，逆变换与 Zeta 变换形式相同。",
+        "key_observations": [
+          "$a_i$ 对 $b_{j,n}$ 的贡献次数为 $\\binom{(n-i)+(j-1)}{j-1}$，因使用异或，只有该组合数为奇数时才保留贡献。",
+          "由 Lucas 定理，贡献条件等价于 $(n-i)\\ \\&\\ (j-1)=0$，从而把组合数奇偶判断转成位掩码的子集关系。",
+          "取 $m$ 为不小于 $n$ 的最小二次幂并反转下标后，已知的末列数据正好成为布尔格上的 Zeta 变换值，可用异或版 Möbius 变换恢复数组。",
+          "反转后的变换数组有前缀位置缺失；先对已知值做一次超集异或和，再将对应不存在的 $a'$ 分量置零并再次变换，即可补全缺失值。"
+        ],
+        "solution_brief": "将贡献次数的奇偶性用 Lucas 定理转为位掩码条件，扩展到大小为 $m$ 的布尔格后视为 Zeta 变换。通过两次异或超集变换补全缺失位置，再恢复 $a$，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "数论与同余",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意对象和输入输出来自 statement_text；贡献公式、Lucas 定理、布尔格变换及复杂度来自 editorial_text；bitmasks、combinatorics、constructive algorithms 等标签仅用于主题归类。",
+        "quality_flags": [
+          "statement_conversion_rule_display_missing"
+        ]
+      }
+    },
+    "1713E": {
+      "problem_key": "1713E",
+      "title": "Cross Swapping",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1713/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/105419",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9f40e9ec469ad88f243dc1ec23bb1c64dd946cba5907c6fd7ad3b00a5c34fdaa",
+      "generated_at": "2026-09-27T23:31:01+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个$n\\times n$整数矩阵。每次可选定$k$，对所有$i$交换$A_{i,k}$与$A_{k,i}$（对角元素不变），操作可重复任意次；要求输出所有可得矩阵中字典序最小的矩阵。",
+        "transformed_statement": "把每个下标$k$的操作抽象为一个二值状态；位置$(i,j)$是否与$(j,i)$交换等价于两个状态是否不同。于是题目变成按行优先顺序，为这些状态逐步加入“相同”或“相反”的约束，并保留最早位置的选择。",
+        "key_observations": [
+          "每个非对角元素在任意操作序列中只能留在$(i,j)$或被换到$(j,i)$；操作$i$与操作$j$的执行奇偶性不同，当且仅当这两个位置发生交换。",
+          "按矩阵行优先顺序处理位置时，若$A_{i,j}<A_{j,i}$应要求操作$i,j$状态相同，若$A_{i,j}>A_{j,i}$则要求状态不同，从而直接决定当前最重要位置能否取较小值。",
+          "用带符号并查集维护操作状态的相同或相反关系；若当前关系连接了不同连通块就合并，若已在同一块则保留先前约束，使更早位置的字典序决策不被破坏。",
+          "确定每个操作的执行状态后，执行状态为真的操作即可得到目标矩阵，因为每对$(i,j)$是否交换只由两个端点状态的异同决定。"
+        ],
+        "solution_brief": "将每个操作的执行奇偶性视为二值变量，按字典序建立“同状态/异状态”约束。用带符号并查集合并这些关系，最后执行代表状态为真的操作并输出矩阵。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 data structures、greedy、matrices、dsu 标签。",
+        "quality_flags": []
+      }
+    },
+    "1713D": {
+      "problem_key": "1713D",
+      "title": "Tournament Countdown",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1713/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/105419",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3aa859b30dfab67cbec1cecac7b1f758b98407ca7cb5063965debc78756bcc77",
+      "generated_at": "2026-09-27T23:31:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $2^n$ 名选手进行固定的单败淘汰赛，但不知道比赛结果。每次可询问两名选手，裁判返回谁赢得更多场或两者胜场相同；要求在规定的最多查询次数内找出最终冠军。",
+        "transformed_statement": "把问题转化为维护“仍可能成为冠军”的候选集合：每四名候选人通过两次胜场比较缩减为一名，再递归处理新集合，直到只剩一或两名候选人。",
+        "key_observations": [
+          "将当前候选人每四人分组，查询第1人与第3人的胜场数：若前者更多，可排除第2、3人；若后者更多，可排除第1、4人；若相等，可排除第1、3人，因此每组只需再查询一次就能保留冠军候选人。",
+          "上述过程每两次查询至少排除三名候选人，等价于把候选人数从四个缩减为一个，从而将总查询数控制为 $\\left\\lceil(2^n-1)\\cdot\\frac{2}{3}\\right\\rceil$。",
+          "不断对保留下来的候选人重复四人归并，直到剩下至多两人；最后一次查询直接确定两人中的冠军。"
+        ],
+        "solution_brief": "维护当前仍可能夺冠的候选人，每四人一组。先比较第1、3人的胜场数，再按返回结果排除两人，并查询剩余两人确定保留者；重复归并，最后比较至多两人。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "构造与贪心",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 的四人分组消除方案，并结合 statement_text 的交互规则与 tags。",
+        "quality_flags": []
+      }
+    },
+    "1713C": {
+      "problem_key": "1713C",
+      "title": "Build Permutation",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1713/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/105419",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "29ccc9aec657db594ce96d967e549dd9f077c14faebe369d4f901c334649847d",
+      "generated_at": "2026-09-27T23:31:41+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$，要把 $0,1,\\ldots,n-1$ 重排为排列 $p$，使每个位置 $i$ 都满足 $p_i+i$ 是完全平方数；输出任意满足条件的排列，若不存在则输出 $-1$。",
+        "transformed_statement": "把尚未处理的元素看成前缀 $[0,r]$：选择平方和 $h$，令 $l=h-r$，将区间 $[l,r]$ 内的位置与数反向配对，使该整段的每个位置和值都等于同一个平方数，再递归处理更小前缀。",
+        "key_observations": [
+          "对当前区间 $[0,r]$，取不小于 $r$ 的最小平方数 $h$，则必有 $h\\le 2r$，因此 $l=h-r$ 满足 $0\\le l\\le r$。",
+          "将区间 $[l,r]$ 两端对称配对并设 $p_i=r$、$p_r=l$，所有位置都满足 $p_i+i=l+r=h$，且恰好使用该区间中的全部数。",
+          "处理完一个平方和相同的区间后，只需递归处理前缀 $[0,l-1]$；各区间互不重叠，因此最终自动构成排列并覆盖所有位置。",
+          "每次递归至少完成一个新区间的赋值，所有位置总共只被处理一次，所以总复杂度为 $O(n)$，且答案对所有 $n$ 都存在。"
+        ],
+        "solution_brief": "对当前前缀右端点 $r$，找到不小于 $r$ 的最小平方数 $h$，令 $l=h-r$。递归处理 $[0,l-1]$，再把 $[l,r]$ 两端反向配对，使每对位置和值都为 $h$。该过程覆盖全部元素，复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial 中的构造证明与代码实现，并参考题目标签。",
+        "quality_flags": []
+      }
+    },
+    "1713B": {
+      "problem_key": "1713B",
+      "title": "Optimal Reduction",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1713/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/105419",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8266edec871de2d7e357f87a24a4bfc0e3d995d145db5bfcadfa0ada4a706769",
+      "generated_at": "2026-09-27T23:31:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组，每次可选择一个连续子数组并将其中所有元素减一，目标是用最少操作把数组变成全零。判断当前排列的最少操作数是否不超过该数组任意其他排列的最少操作数。",
+        "transformed_statement": "把问题转化为判断当前排列能否达到理论下界：最大元素为 $M$，若数组可拆成非递减前缀和非递增后缀，则可在 $M$ 次操作内清零；因此只需检查这两个部分是否覆盖整个数组。",
+        "key_observations": [
+          "设数组最大值为 $M$，每次操作最多让任意元素减少 $1$，因此最大元素至少需要参与 $M$ 次操作，得到所有排列的操作数下界 $f\\ge M$。",
+          "当数组先非递减、后非递增时，每次选择当前最左和最右的非零位置组成子数组并整体减一，可在恰好 $M$ 次内清零，因此这类排列满足 $f=M$。",
+          "原数组达到所有排列中的最优值，当且仅当它能由一个非递减前缀和一个非递增后缀拼成；这等价于最长非递减前缀长度与最长非递增后缀长度之和至少为 $n$。"
+        ],
+        "solution_brief": "最大值 $M$ 是任意排列的操作数下界；能拼成“先不降、后不升”的山形数组时可恰好用 $M$ 次。线性扫描最长非递减前缀和最长非递增后缀，若长度和不少于 $n$ 则输出 YES。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 的操作与排列判定要求，以及 editorial 的最大值下界、山形结构和线性检查方法；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1713A": {
+      "problem_key": "1713A",
+      "title": "Traveling Salesman Problem",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1713/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/105419",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "898e2b1250619d0c77b6ea83fc8a21f5b06baab79c27d883bf5ddb864f1d0d63",
+      "generated_at": "2026-09-27T23:32:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "平面上有若干箱子，且每个箱子位于 $x$ 轴或 $y$ 轴上。你从原点出发，每步只能向上下左右相邻点移动；必须收集所有箱子并回到原点，求最少移动步数。",
+        "transformed_statement": "将路线按坐标轴拆分：对每条出现箱子的轴，单独从原点到达该轴上最远的箱子并返回原点；总路程等于各轴所需往返距离之和。",
+        "key_observations": [
+          "所有箱子都在两条坐标轴上，离开坐标轴只会增加曼哈顿移动距离，因此存在只沿坐标轴移动的最优路线。",
+          "同一条轴上的箱子只需到达离原点最远的两侧端点；经过端点之间的路段时即可收集其余箱子，往返代价为两侧距离之和的两倍。",
+          "不同坐标轴之间没有可复用的移动路段，访问一条轴后回到原点再访问另一条轴是最优的，因此答案是各轴极值跨度的两倍之和。"
+        ],
+        "solution_brief": "扫描所有坐标，分别维护 $x$、$y$ 的最小值和最大值。每条有箱子的坐标轴都从原点走到最远端再返回，答案为 $2(maxX+maxY-minX-minY)$，复杂度为 $O(n)$。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text 和 codeforces_tags 提炼。",
         "quality_flags": []
       }
     }
