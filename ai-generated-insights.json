@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T10:06:50+00:00",
+  "updated_at": "2026-09-27T10:12:33+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -50797,6 +50797,190 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 与 editorial_text；tags 中的 implementation、math 仅作辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1845F": {
+      "problem_key": "1845F",
+      "title": "Swimmers in the Pool",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1845/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/117791",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "552ea371a0d38ae2ab056668d4215c57fb88dfbb8405bb57a36c856e9f997e3c",
+      "generated_at": "2026-09-27T10:10:51+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "泳池长度为 $l$，每名游泳者从 $0$ 出发，以自己的恒定速度游到 $l$ 后立即折返，往返循环且彼此不干扰。泳池开放 $t$ 秒，要求统计除时刻 $0$ 外、包括时刻 $t$ 在内，至少两人在同一点的不同相遇时刻数。",
+        "transformed_statement": "每对速度产生两类等差相遇时刻：同向对应 $w=|v_i-v_j|$，反向对应 $w=v_i+v_j$，时刻均为 $2lk/w$。因此只需统计不同的分数 $k/w$，其中 $1\\le k\\le\\lfloor tw/(2l)\\rfloor$，并通过既约化去除重复时刻。",
+        "key_observations": [
+          "两名同向游泳者的相遇间隔为 $2l/|v_i-v_j|$，反向游泳者的相遇间隔为 $2l/(v_i+v_j)$，因此每对速度只需贡献一个数 $w=|v_i\\pm v_j|$。",
+          "所有相遇时刻可统一写成 $2lk/w$；去掉公共因子后，问题等价于统计满足 $1\\le k\\le\\lfloor tw/(2l)\\rfloor$ 的不同分数 $k/w$。",
+          "同一时刻可能由多名游泳者产生，只有既约分数才应计数；对固定 $w$，既约分数数量可用莫比乌斯反演计算为 $\\sum_{d\\mid w}\\mu(d)\\lfloor k_w/d\\rfloor$。",
+          "将速度集合编码为多项式后，两次卷积能在线性对数时间内找出所有可达的速度和与差，且 $w\\le 2\\max v_i$，从而把配对枚举降为按值处理。"
+        ],
+        "solution_brief": "先用两次 FFT 求出所有出现过的 $w=|v_i\\pm v_j|$。令 $k_w=\\lfloor tw/(2l)\\rfloor$，按 $w$ 处理并用莫比乌斯反演统计区间内的既约分数，所得分数总数就是不同相遇时刻数，复杂度为 $O(n+V\\log V)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "代数、矩阵与多项式"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text，以及 tags 中的 FFT、math、number theory；未仅凭标签补充算法。",
+        "quality_flags": []
+      }
+    },
+    "1845E": {
+      "problem_key": "1845E",
+      "title": "Boxes and Balls",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1845/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/117791",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1c4cb5f3492cb282330842d968a1a925516e1b964e2d50bc89eb2e256cd2a181",
+      "generated_at": "2026-09-27T10:11:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个排成一列的箱子，初始每个箱子有球或为空；每次只能把一个球从箱子移到相邻的空箱。求恰好进行 $k$ 次移动后，可能得到的不同球分布数量，答案对 $10^9+7$ 取模。",
+        "transformed_statement": "将最终分布与初始分布中的球按从左到右顺序匹配，目标转化为统计所有等数量选位方案的最小移动代价。该代价等于每个箱子间隔处前缀球数差的绝对值之和，再用平衡值动态规划计数。",
+        "key_observations": [
+          "按从左到右匹配初始与最终的第 $i$ 个球，球的移动路径不会交叉，因此固定最终布局的最少操作数是对应位置差绝对值之和。",
+          "每个相邻箱子之间需要通过的球数，等于最终布局与初始布局在该处左侧球数之差；因此最少操作数可改写为所有前缀差绝对值之和。",
+          "处理到第 $i$ 个箱子时，放球或留空分别使平衡变为 $j+1-a_i$ 或 $j-a_i$，并增加该新平衡的绝对值；处理完全部箱子且平衡为 $0$，恰好保证球总数不变。",
+          "若中途平衡绝对值为 $|j|$，之后回到零至少还需增加 $|j|+(|j|-1)+\\dots+1$；由于代价不超过 $k$，$|j|=O(\\sqrt{k})$，可将状态范围压缩到约 $55$。"
+        ],
+        "solution_brief": "以位置和当前前缀平衡为状态，转移放球或留空并累加新平衡的绝对值，只保留可在代价 $k$ 内回到零的平衡范围。最终统计最小操作数与 $k$ 同奇偶的状态，复杂度为 $O(nk^{1.5})$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "组合计数与概率",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags 提炼。",
+        "quality_flags": []
+      }
+    },
+    "1845D": {
+      "problem_key": "1845D",
+      "title": "Rating System",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1845/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/117791",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0e234f2912b181910757e62fdd0639dde6e6ecd5c7e7483436fcc72831a71455",
+      "generated_at": "2026-09-27T10:11:35+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "初始 rating 为 $0$，依次经历 $n$ 次变化 $a_i$。给定整数 $k$ 后，若当前 rating 至少为 $k$ 且下一次变化会使其低于 $k$，就将结果强制设为 $k$；要求选择一个 $k$，使全部变化结束后的 rating 最大。",
+        "transformed_statement": "把下限规则造成的影响看成被删除的一个连续子段：最终 rating 等于全部变化总和减去该子段的和。因此问题转化为寻找最小和连续子段，并取其左侧前缀和作为 $k$。",
+        "key_observations": [
+          "固定 $k$ 后，所有受到下限截断的变化可合并为一个连续区间；区间外的变化仍按原数组累加。",
+          "因此最终 rating 不超过总和减去某个连续子段和，最大终值上界就是总和减去最小连续子段和。",
+          "若最小子段为 $[l,r]$，取 $k$ 为其左侧前缀和；处理到 $r$ 时 rating 恰好回到 $k$，否则该子段末尾存在正和后缀，与其最小性矛盾。",
+          "最小连续子段为空时可取 $k=0$；否则只需找到最小和子段及其左端前缀和即可得到最优阈值。"
+        ],
+        "solution_brief": "扫描数组求最小和连续子段。若其范围为 $[l,r]$，输出前缀和 $a_1+\\cdots+a_{l-1}$；若最小子段为空，则输出 $0$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 与完整 editorial_text 提炼，tags 仅作辅助参考。",
+        "quality_flags": []
+      }
+    },
+    "1845C": {
+      "problem_key": "1845C",
+      "title": "Strong Password",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1845/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/117791",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c33aa8e237fda512729fd0fe552ec7d3cff9e175e1f6200c31421ca9f1b90751",
+      "generated_at": "2026-09-27T10:12:05+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数字串 $s$，要构造长度为 $m$ 的密码，使第 $i$ 位数字位于 $l_i$ 和 $r_i$ 的闭区间内。判断是否存在一个满足限制、但不是 $s$ 的子序列的密码；存在则输出 YES，否则输出 NO。",
+        "transformed_statement": "把候选密码看成在 $s$ 中逐位匹配的路径：当前位置确定后，只关心各允许数字的下一次出现位置，并将匹配终点尽量推向右侧；最终判断是否能走完整条长度为 $m$ 的路径。",
+        "key_observations": [
+          "固定一个密码时，贪心匹配每位数字的最早出现位置即可判断其是否为子序列，因为更早结束不会减少后续可用位置。",
+          "处理到某位时，已匹配位置越靠右，剩余后缀越短、后续越难匹配，因此应在允许数字中选择下一次出现位置最靠右的数字。",
+          "若允许数字中没有任何一个能在当前位置之后出现，则当前前缀无法延伸；由于此前每步都保留了最靠右的结束位置，其他选择也不可能形成完整子序列。",
+          "用指针顺序扫描字符串时，后续密码位置不会重新检查已经越过的字符，因此每个字符至多被常数个数字状态处理，总复杂度为 $O(m+10|s|)$。"
+        ],
+        "solution_brief": "从字符串当前位置开始，逐位考虑区间 $[l_i,r_i]$ 内的数字，并选择其后继出现位置最靠右者作为匹配位置。若某位无可匹配数字，则存在不属于 $s$ 子序列的密码，输出 YES；全部匹配成功则输出 NO。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 提炼算法，并结合 statement_text 确认输入对象、子序列判定和输出目标；tags 仅用于主题索引。",
+        "quality_flags": [
+          "statement_tail_truncated"
+        ]
+      }
+    },
+    "1845B": {
+      "problem_key": "1845B",
+      "title": "Come Together",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1845/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/117791",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "cd668391d27f7ba3b0f412e6df640f7945a022a07cfdbee282a4a73e11c614dd",
+      "generated_at": "2026-09-27T10:12:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "在无限方格上，Bob 和 Carol 都从 $A$ 出发，分别要到达 $B$ 和 $C$；每次只能移动到共享边的相邻格子，且各自必须走最短路线。两人可选择路线，要求最大化两条最短路线经过的共同格子数。",
+        "transformed_statement": "把每条最短路线长度表示为曼哈顿距离，并将两人的路线看成从 $A$ 到分叉点 $X$ 的共同前缀；分叉点位于 $B,C$ 的轴对齐包围盒内，之后分别独立前往各自终点。",
+        "key_observations": [
+          "从起点到任一终点的最短路长度等于曼哈顿距离；最短移动每一步都会使到对应终点的距离减少 $1$。",
+          "两人共同前进时，当前位置必须能通过下一步同时更接近 $B$ 和 $C$；一旦进入 $B,C$ 的轴对齐包围盒，就不存在这样的共同下一步。",
+          "共同路径可视为从 $A$ 到某个分叉点 $X$ 的共享前缀，而 $X$ 位于 $B,C$ 的包围盒内，因此恒有 $d(X,B)+d(X,C)=d(B,C)$。",
+          "按路径长度分解并把共享的起点格子计入，最大共同格子数为 $\\frac{d(A,B)+d(A,C)-d(B,C)}{2}+1$，无需实际构造路径。"
+        ],
+        "solution_brief": "用曼哈顿距离计算三点间距离，答案直接为 $\\frac{d(A,B)+d(A,C)-d(B,C)}{2}+1$。逐个测试用绝对值求距离并输出该式。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "数论与同余",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，结合 tags 中的 geometry、math、implementation。",
+        "quality_flags": []
+      }
+    },
+    "1845A": {
+      "problem_key": "1845A",
+      "title": "Forbidden Integer",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1845/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/117791",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b4756bc250dd639a76bb066609713cfed66c25564e571931c288eec2c1b2d5f3",
+      "generated_at": "2026-09-27T10:12:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定目标和 $n$，可无限次取 $1$ 到 $k$ 中除 $x$ 外的整数，要求判断能否让所取数字之和恰好为 $n$；若可以，输出任意一组取法及其数量。",
+        "transformed_statement": "将可行性按禁用数字和可用数字范围分情况：优先利用数字 $1$，否则只需分析只能取 $2$ 的情形；当 $2$、$3$ 都可用时，用它们按目标和的奇偶性直接构造。",
+        "key_observations": [
+          "当 $x\\ne1$ 时，数字 $1$ 可用，直接取 $n$ 个 $1$ 就能构成 $n$，因此必定可行。",
+          "当 $x=1$ 且 $k=1$ 时没有任何可用数字，无法得到正数 $n$；当 $k=2$ 时只能使用 $2$，所以仅在 $n$ 为偶数时可行。",
+          "在 $x=1$ 且 $k\\ge3$ 时，偶数 $n$ 用若干个 $2$ 构成，奇数 $n$ 用一个 $3$ 加若干个 $2$ 构成；这覆盖了剩余情况。"
+        ],
+        "solution_brief": "按 $x\\ne1$、$k=1$、$k=2$ 和 $k\\ge3$ 分类。可用 $1$ 时输出 $n$ 个 $1$；只能用 $2$ 时检查奇偶；否则按 $n$ 的奇偶用全是 $2$ 或一个 $3$ 加若干个 $2$ 构造。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial 正文及 tags 提炼。",
         "quality_flags": []
       }
     }
