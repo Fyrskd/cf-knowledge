@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2457,
+    "total_problems": 2464,
     "source_total_problems": 2464,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2457,
-    "with_editorial_brief": 2191,
-    "with_solution_brief": 2192,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2464,
+    "with_editorial_brief": 2198,
+    "with_solution_brief": 2199,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1519,
+    "ai_override_count": 1526,
     "primary_topic_count": 13,
-    "contest_count": 377,
+    "contest_count": 378,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 119,
-    "构造与贪心": 775,
-    "图论与网络流": 146,
-    "动态规划与状态设计": 214,
-    "数论与同余": 270,
+    "构造与贪心": 777,
+    "图论与网络流": 147,
+    "动态规划与状态设计": 215,
+    "数论与同余": 272,
     "组合计数与概率": 188,
-    "数据结构": 227,
+    "数据结构": 228,
     "几何": 57,
     "树结构": 136,
     "代数、矩阵与多项式": 19,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1252,
+    "ai_generated_with_editorial": 1259,
     "ai_generated_partial_editorial": 48,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -58824,6 +58824,215 @@ window.CF_INSIGHTS_DATA = {
             "P 节点不能处于蓝色或无音乐状态，S 节点不能处于红色或无音乐状态，非法状态设为无穷大，从而保证所有强制条件。"
           ],
           "solutionBrief": "将厚墙视为删除树边，要求每个连通块不同时含 P 和 S。树形 DP 为每个子树记录与父亲相连部分的红、蓝、无音乐三种状态；合并时颜色冲突就切边，最后取根的最小合法状态，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1932,
+      "name": "Codeforces Round 927 (Div. 3)",
+      "date": "2024-02-18",
+      "url": "https://codeforces.com/contest/1932",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "1932A",
+          "index": "A",
+          "slot": "A",
+          "title": "Thorns and Coins",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1932/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/126196",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一条由空格、荆棘和硬币组成的长度为 $n$ 的路径，从最左格出发，每次可向前移动 $1$ 格或 $2$ 格，但不能落在荆棘上；到达硬币格会收集硬币。求最多能收集多少枚硬币。",
+          "transformedStatement": "把路径转化为可达前缀：单个荆棘可以被两格跳跃越过，而连续两个荆棘构成无法通过的阻断点。因此答案就是首次出现“**”之前的硬币数量。",
+          "keyObservations": [
+            "遇到单个荆棘时可以跳过它，因此当前位置后只要不是连续两个荆棘，就能继续到达后方路径。",
+            "出现子串“**”后，当前位置无法越过这两个连续荆棘，后面的所有格子都不可达，因此只需统计此前的硬币。",
+            "在首次出现“**”之前，所有可到达的硬币都能通过逐格走或跳过单个荆棘收集，移动选择不会遗漏可收集硬币。"
+          ],
+          "solutionBrief": "从左到右扫描路径，统计首次出现子串“**”之前的所有“@”。单个荆棘可以用一次两格跳过，而连续两个荆棘会阻断后续路径。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1932B",
+          "index": "B",
+          "slot": "B",
+          "title": "Chaya Calendar",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1932/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/126196",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 个征兆，第 $i$ 个每隔 $a_i$ 年发生，即只在 $a_i$ 的正整数倍年份出现。必须按顺序等待：第一个发生后，后一个只能在严格更晚的年份发生；求最后一个征兆发生、灾难到来的年份。",
+          "transformedStatement": "将过程建模为按顺序维护当前年份 $cur$：对下一个周期 $a_i$，把 $cur$ 替换为严格大于它的最小 $a_i$ 倍数，即一次向上取整到对应同余类。",
+          "keyObservations": [
+            "第一个征兆必定在年份 $a_1$ 发生，之后每个征兆都要选择严格晚于当前年份的、能被其周期整除的最小年份，从而顺序限制被逐步落实。",
+            "若当前征兆发生在年份 $cur$，下一个周期为 $a_i$ 的征兆发生年份为 $cur+a_i-cur\\bmod a_i$；该式得到的是严格大于 $cur$ 的最小对应倍数。",
+            "只需保留前一个征兆的发生年份，因为后续选择只取决于当前年份与下一个周期，整个过程可按给定顺序线性推进。"
+          ],
+          "solutionBrief": "令当前年份为 $a_1$，依次处理后续周期。对每个 $a_i$，将当前年份更新为 $cur+a_i-cur\\bmod a_i$，即严格大于 $cur$ 的最小 $a_i$ 倍数，最终年份即答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1932C",
+          "index": "C",
+          "slot": "C",
+          "title": "LR-remainders",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1932/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/126196",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "implementation",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组、模数 $m$ 和长度为 $n$ 的命令串；每个命令按顺序删除当前数组的左端元素（L）或右端元素（R），数组每次缩短一项。要求输出每次删除前当前数组所有元素乘积除以 $m$ 的余数。",
+          "transformedStatement": "把正向不断缩短的数组看成一个连续区间，先确定全部删除后最后留下的原数组元素；再从末状态开始按命令逆序把被删除元素加入区间，并维护区间乘积模 $m$。",
+          "keyObservations": [
+            "所有删除完成前始终保留原数组中的一个连续区间，因此最终一次删除前剩下的元素位置可以由命令序列直接确定。",
+            "倒序处理命令时，前向删除会变成向区间左端或右端加入元素；维护当前区间乘积对 $m$ 的余数即可避免重复计算。",
+            "倒序得到的余数对应正向操作的逆序答案，最后将结果反转即可恢复每一步执行前的乘积余数。"
+          ],
+          "solutionBrief": "先根据全部命令确定最后剩余元素的位置。再从最后一步倒推，用双端扩展区间并维护乘积对 $m$ 的余数，记录结果后反转输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1932D",
+          "index": "D",
+          "slot": "D",
+          "title": "Card Game",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1932/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/126196",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定若干轮后弃牌堆中的 $2n$ 张不同卡牌和王牌花色。每轮第一名玩家先出一张牌，第二名玩家必须用同花色更高点数的牌，或在对方非王牌时用任意王牌压过它；需要恢复任意一组可能的出牌顺序。",
+          "transformedStatement": "将问题转化为配对：非王牌牌优先在各自花色内组成“低点数先出、高点数后压”的对子；每种花色至多留下一个单牌，再用王牌覆盖这些单牌，最后配对剩余王牌。",
+          "keyObservations": [
+            "对每种非王牌花色单独配对，并尽量形成最多的同花色对子；这样每种花色至多剩一张，能最小化需要王牌处理的非王牌数量。",
+            "同花色对子中应让点数较低的牌先出、较高的牌后出，因此排序后相邻配对即可保证第二张牌能压过第一张。",
+            "所有非王牌花色的剩余单牌都必须由王牌响应；若王牌数量不足则无解，这一步直接检验了必要条件。",
+            "处理完非王牌牌后，剩余王牌数量必为偶数，再按点数排序相邻配对即可完成所有回合。"
+          ],
+          "solutionBrief": "按花色统计牌并排序：非王牌花色尽量两两配成同花色对子，剩余单牌交给王牌；若王牌不足则输出无解。最后将剩余王牌排序后两两配对，低点数先出、高点数后出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1932E",
+          "index": "E",
+          "slot": "E",
+          "title": "Final Countdown",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1932/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/126196",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个由 $n$ 个十进制数位组成的正数。倒计时每次从当前数减一，但每个发生变化的数位各耗时一秒；求它从当前值降到零所需的总秒数，答案可能很大。",
+          "transformedStatement": "不模拟每次减一，而是统计每个数位在整个倒计时期间独立切换的次数：右起第 $i$ 位切换 $\\lfloor s/10^i\\rfloor$ 次。再把这些次数按初始数字的数位展开，转化为后缀和加十进制进位构造。",
+          "keyObservations": [
+            "从右往左编号为 $i$ 的数位，在倒计时归零前恰好切换 $\\lfloor s/10^i\\rfloor$ 次，因此总时间可转化为这些切换次数之和。",
+            "将初始数字按数位展开后，数位 $s_i$ 对答案的贡献是 $s_i(1+10+\\cdots+10^i)$，避免逐秒模拟整个倒计时。",
+            "交换求和顺序后，$10^j$ 位的系数等于从第 $j$ 位到最高位的数字后缀和；预处理后缀和并按十进制进位即可得到答案。"
+          ],
+          "solutionBrief": "令每个数位的切换次数为 $\\lfloor s/10^i\\rfloor$，展开并交换求和，将答案表示为各个 $10^j$ 位乘以后缀数字和。线性计算后缀和，再逐位处理进位，直接构造可能很大的答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1932F",
+          "index": "F",
+          "slot": "F",
+          "title": "Feed Cats",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1932/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/126196",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个时刻和 $m$ 只猫，猫 $i$ 在区间 $[l_i,r_i]$ 内出现。每个时刻可以喂当前所有猫或什么也不做；同一只猫被喂两次就失败，要求选择喂食时刻，使被喂到的猫数量最大。",
+          "transformedStatement": "将每个喂食时刻视为一个被选整数点，要求每个猫对应的区间至多覆盖一个选中点，并最大化覆盖至少一个选中点的区间数量。用前缀 DP 决定最后一个选中点是否为当前时刻。",
+          "keyObservations": [
+            "在时刻 $i$ 喂食会一次覆盖所有当前存在的猫；设这些猫中最早到达时刻为 $x$，则此前选择的喂食时刻必须限制在 $1$ 到 $x-1$，转移为 $dp_{x-1}$ 加当前活跃猫数。",
+            "若不在时刻 $i$ 喂食，前缀答案不会变化，因此 $dp_i$ 至少可以从 $dp_{i-1}$ 转移。",
+            "把区间按左端点加入、在右端点之后移除，活跃区间的最小左端点就能表示当前喂食对之前选择施加的最早边界。",
+            "每个区间至多覆盖一个被选时刻，因此每次在 $i$ 喂食时，所有当前活跃区间都可作为本次新增贡献。"
+          ],
+          "solutionBrief": "令 $dp_i$ 表示前 $i$ 个时刻的最大收益。扫描时刻并维护当前活跃区间左端点的最小值；若在 $i$ 喂食，转移为 $dp_{x-1}$ 加活跃区间数，否则继承 $dp_{i-1}$，取两者最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1932G",
+          "index": "G",
+          "slot": "G",
+          "title": "Moving Platforms",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1932/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/126196",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "graphs",
+            "math",
+            "number theory",
+            "shortest paths"
+          ],
+          "statementBrief": "有 $n$ 个带初始等级的平台和若干通道。每一步可以留在原平台，或沿通道移动到当前等级相同的平台；完成这一步后，所有平台的等级同时按 $l_i\\leftarrow(l_i+s_i)\\bmod H$ 更新。求从平台 $1$ 到平台 $n$ 的最少步数，无法到达则输出 $-1$。",
+          "transformedStatement": "将时间作为状态：时刻 $k$ 时平台 $i$ 的等级为 $l_i+ks_i\\pmod H$。每条通道的可用时刻由一个线性同余式决定，因而问题变成在这些按时间开放的边上求最早到达时间。",
+          "keyObservations": [
+            "平台的等级变化只由时间决定，与玩家走法无关，因此到达某个平台后无需考虑更早到达会带来的额外限制，只需用最早到达时间继续转移。",
+            "从平台 $u$ 在时刻 $t$ 出发到相邻平台 $v$，关键是求最小的 $k\\ge t$，使 $l_u+ks_u\\equiv l_v+ks_v\\pmod H$；这把动态移动转成了带时间的边转移。",
+            "同层条件等价于线性同余式 $l_u-l_v\\equiv k(s_v-s_u)\\pmod H$；令 $g=\\gcd(H,s_v-s_u)$，若左侧不能被 $g$ 整除则永远无法同行，否则约去 $g$ 后用逆元得到 $k$ 的模 $H/g$，再取不小于当前时间的最小代表。",
+            "每条边从已知最早到达时间出发都能确定最早可通过时刻，因此以到达时间为距离进行 Dijkstra，松弛后的到达时间为 $k+1$。"
+          ],
+          "solutionBrief": "把每个平台的最早到达时刻作为 Dijkstra 距离。对当前平台的每条边，解同层条件对应的线性同余式；若无解跳过，否则求不小于当前时间的最早 $k$，并用 $k+1$ 松弛邻点。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
