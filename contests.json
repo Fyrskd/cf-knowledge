@@ -2673,6 +2673,17 @@
     "date": "2026-02-23"
   },
   {
+    "id": 2203,
+    "name": "Educational Codeforces Round 187 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1772030100,
+    "relativeTimeSeconds": 18438436,
+    "date": "2026-02-25"
+  },
+  {
     "id": 2205,
     "name": "Codeforces Round 1083 (Div. 2)",
     "type": "CF",
