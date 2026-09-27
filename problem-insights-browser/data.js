@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2625,
+    "total_problems": 2633,
     "source_total_problems": 2634,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 2625,
-    "with_editorial_brief": 2357,
-    "with_solution_brief": 2358,
-    "missing_editorial_brief": 267,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2633,
+    "with_editorial_brief": 2364,
+    "with_solution_brief": 2365,
+    "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1687,
+    "ai_override_count": 1695,
     "primary_topic_count": 13,
-    "contest_count": 402,
+    "contest_count": 403,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,23 +45,23 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 133,
-    "构造与贪心": 828,
-    "图论与网络流": 161,
+    "构造与贪心": 829,
+    "图论与网络流": 162,
     "动态规划与状态设计": 226,
-    "数论与同余": 288,
-    "组合计数与概率": 200,
+    "数论与同余": 289,
+    "组合计数与概率": 201,
     "数据结构": 247,
-    "几何": 61,
+    "几何": 62,
     "树结构": 139,
     "代数、矩阵与多项式": 20,
     "交互": 84,
-    "基础实现与模拟": 146,
+    "基础实现与模拟": 149,
     "博弈": 92
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1413,
+    "ai_generated_with_editorial": 1420,
     "ai_generated_partial_editorial": 53,
-    "missing_editorial": 267,
+    "missing_editorial": 268,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -71894,6 +71894,244 @@ window.CF_INSIGHTS_DATA = {
             "所有非零相邻差值按时间顺序存入 Treap；事件只对一段前缀或后缀统一加值，答案则由差值序列的最小前缀和恢复，从而在线处理全部更新。"
           ],
           "solutionBrief": "将问题转为红蓝事件二分图最大流，再转为斜率为 $\\pm1$ 的折线最小割。按 $x$ 推进维护 DP 相邻差值，用带懒标记的 Treap 支持区间加、差值合并和最小前缀和查询，总体在线处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1850,
+      "name": "Codeforces Round 886 (Div. 4)",
+      "date": "2023-07-21",
+      "url": "https://codeforces.com/contest/1850",
+      "type": "Div. 4",
+      "problemCount": 8,
+      "maxRating": 1700,
+      "problems": [
+        {
+          "key": "1850A",
+          "index": "A",
+          "slot": "A",
+          "title": "To My Critics",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1850/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/118466",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "每组给出三个数字，需要从不同位置选出两个数字且每个位置最多选一次；如果存在一对数字的和大于或等于 $10$，输出“YES”，否则输出“NO”。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1850B",
+          "index": "B",
+          "slot": "B",
+          "title": "Ten Words of Wisdom",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1850/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/118466",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "每个回答有词数和质量，只有词数不超过 $10$ 的回答具备获胜资格；在这些回答中，质量最高者获胜。对每个测试用例输出获胜回答的编号。",
+          "transformedStatement": "将问题重述为：遍历所有回答，过滤掉词数大于 $10$ 的项，再在剩余项中求质量的最大值及其原始下标。",
+          "keyObservations": [
+            "长度超过 $10$ 的回答永远不可能获胜，先过滤掉这些回答即可缩小候选集合。",
+            "所有回答的质量互不相同，因此在长度不超过 $10$ 的候选中维护当前最大质量及其编号，就能唯一确定获胜者。",
+            "题目只要求一次遍历即可完成筛选和取最大值，无需真正排序，时间复杂度为 $O(n)$。"
+          ],
+          "solutionBrief": "逐个检查回答：若长度超过 $10$ 则忽略，否则比较其质量与当前最大值，并同步记录编号。遍历结束后输出记录的编号，单个测试用例复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1850C",
+          "index": "C",
+          "slot": "C",
+          "title": "Word on the Paper",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1850/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/118466",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "每个测试用例给出一个 8×8 字符网格，其中小写字母组成的单词位于同一列，并从上到下连续排列，其余位置都是点。需要找出并输出这个竖直单词。",
+          "transformedStatement": "将网格视为按行优先输入的 64 个字符流：由于单词竖直且无间隔，过滤掉所有点后，剩余字符已经按从上到下的正确顺序排列。",
+          "keyObservations": [
+            "网格中只有一个连续的竖直单词，因此按行从上到下读取时，所有非点字符天然就是单词顺序，无需记录所在列或额外排序。",
+            "逐个检查 64 个字符并输出非 `.` 字符即可；点只表示空位，不会出现在答案中，因此扫描结果恰好组成完整单词。"
+          ],
+          "solutionBrief": "对每个测试用例依次读取 8×8 个字符，遇到不是 `.` 的字符就直接输出。由于输入顺序已按行从上到下，输出顺序正是竖直单词顺序；固定网格大小下复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1850D",
+          "index": "D",
+          "slot": "D",
+          "title": "Balanced Round",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1850/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/118466",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 道题及难度，删除任意一些题后可重新排列剩余题目。若排列中每对相邻题目的难度差绝对值都不超过 $k$，则称其平衡；求至少删除多少道题才能得到平衡排列。",
+          "transformedStatement": "将问题转化为：排序所有难度后，寻找相邻差均不超过 $k$ 的最长连续子数组。保留该区段即可构成平衡排列，因此删除数为 $n$ 减去其长度。",
+          "keyObservations": [
+            "对保留的问题按难度排序不会增大相邻差异；因此一个选定集合可行，当且仅当其排序后每个相邻差都不超过 $k$。",
+            "在已排序数组中，若保留两个位置之间的元素，则中间元素不会破坏相邻差限制，所以最优保留集合必是连续子数组。",
+            "排序数组中出现大于 $k$ 的相邻差就会把可行集合分成独立区段，最大可保留数量就是最长连续区段的长度。"
+          ],
+          "solutionBrief": "先将难度排序，按相邻差是否超过 $k$ 划分连续区段；线性扫描求最长区段长度，答案为 $n$ 减去该长度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1850E",
+          "index": "E",
+          "slot": "E",
+          "title": "Cardboard for Pictures",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1850/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/118466",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "binary search",
+            "geometry",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 张边长为 $s_i$ 的正方形图片，每张图片都贴在四周各留出 $w$ 厘米边框的完整方形纸板上，因此纸板边长为 $s_i+2w$。已知所有纸板总面积为 $c$，且答案为正整数，求使用的 $w$。",
+          "transformedStatement": "把问题转化为求单调函数 $f(x)=\\sum_{i=1}^{n}(s_i+2x)^2$ 的目标整数：寻找最大的 $x$ 使 $f(x)\\le c$，存在性保证该最大值就是所求的 $w$。",
+          "keyObservations": [
+            "每张边长为 $s_i$ 的图片对应一块边长为 $s_i+2w$ 的完整方形纸板，因此总用量可写成 $f(w)=\\sum_{i=1}^{n}(s_i+2w)^2$。",
+            "当 $w$ 增大时每块纸板面积都会增大，所以 $f(w)$ 单调递增；题目要求的唯一整数正是满足 $f(w)\\le c$ 的最大 $w$。",
+            "计算 $f(w)$ 时一旦累计值超过 $c$ 就立即停止，既能判定当前 $w$ 不可行，也能避免平方和超出 64 位整数范围。",
+            "由于 $c\\le 10^{18}$，答案可在不超过 $10^9$ 的范围内二分；每次判定线性扫描所有图片。"
+          ],
+          "solutionBrief": "定义总纸板面积函数 $f(w)=\\sum(s_i+2w)^2$，利用其单调性二分最大的可行整数 $w$。判定时累计面积超过 $c$ 即提前返回，防止溢出；每组复杂度为 $O(n\\log 10^9)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1850F",
+          "index": "F",
+          "slot": "F",
+          "title": "We Were Both Children",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1850/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/118466",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 只青蛙从坐标 $0$ 出发，第 $i$ 只每秒向前跳 $a_i$ 个单位。跳跃开始前只能在坐标 $1$ 到 $n$ 中选一个位置放置陷阱，所有曾经过该位置的青蛙都会被捕获，要求最大化捕获数量。",
+          "transformedStatement": "把每只青蛙转化为一个除数条件：选择坐标 $x$ 后，恰好能捕获跳跃长度整除 $x$ 的青蛙。于是问题变为在 $1\\le x\\le n$ 中寻找约数权值和最大的坐标。",
+          "keyObservations": [
+            "每只跳跃长度为 $a_i$ 的青蛙只会经过其跳跃长度的正倍数，因此放置在坐标 $x$ 时，它能被捕获当且仅当 $a_i\\mid x$。",
+            "由于陷阱坐标不超过 $n$，所有 $a_i>n$ 的青蛙都不可能被捕获，可以直接忽略。",
+            "将跳跃长度相同的青蛙合并为 $cnt_d$，则坐标 $x$ 的捕获数为所有满足 $d\\mid x$ 的 $cnt_d$ 之和，遍历每个 $d$ 并累加到其倍数即可得到所有坐标的答案。",
+            "长度为 $d$ 的累加会访问约 $n/d$ 个坐标，总操作数为 $\\sum_{d=1}^{n} n/d=O(n\\log n)$，因此能在总规模限制内完成计算。"
+          ],
+          "solutionBrief": "统计每种跳跃长度的青蛙数量，忽略大于 $n$ 的长度；对每个 $d$，把 $cnt_d$ 加到所有不超过 $n$ 的 $d$ 的倍数上，最后取各坐标累计值的最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1850G",
+          "index": "G",
+          "slot": "G",
+          "title": "The Morning Star",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1850/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/118466",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "几何",
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "geometry",
+            "implementation",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定平面上 $n$ 个互不重合的整点，在一个点放罗盘、另一个点放晨星；罗盘只能沿水平、竖直或两条对角线方向指向星体。求满足条件的有序点对数量。",
+          "transformedStatement": "将每个允许方向族视为一组平行直线：水平线按 $y$ 分组，竖直线按 $x$ 分组，两类对角线分别按 $x-y$ 与 $x+y$ 分组；每组内任取两个不同点并区分先后。",
+          "keyObservations": [
+            "罗盘与星体的有序点对只需共线于水平、竖直或两条对角线之一；这正好覆盖八个允许方向，避免逐对计算方向。",
+            "同一条水平线上的 $k$ 个点可任意指定罗盘和星体，贡献有序对数 $k(k-1)$；竖直线和两类对角线同理。",
+            "斜率为 $1$ 的直线可用不变量 $x-y$ 唯一分组，斜率为 $-1$ 的直线可用不变量 $x+y$ 分组，因此四类方向都能转化为频次统计。",
+            "每个点对若满足多个方向条件，只可能在两点重合时发生，而题目保证点互异，所以分别累加四类贡献不会重复计数。"
+          ],
+          "solutionBrief": "分别统计每个 $y$、$x$、$x-y$、$x+y$ 值的出现次数。对每组大小 $k$ 加上 $k(k-1)$，即得到所有有序罗盘—星体点对数；用映射计数，复杂度为 $O(n\\\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1850H",
+          "index": "H",
+          "slot": "H",
+          "title": "The Third Letter",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1850/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/118466",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 名士兵，每人必须被安排到整数坐标的一个营地，多个士兵可以在同一营地。每条条件规定士兵 $a_i$ 的营地相对士兵 $b_i$ 向前 $d_i$ 米（$d_i<0$ 表示向后），判断是否存在满足全部条件的安排。",
+          "transformedStatement": "把每名士兵视为节点，把条件重述为坐标差方程 $x_{a_i}-x_{b_i}=d_i$；在每个连通分量中从任意基准点传播相对坐标，并检查所有约束是否一致。",
+          "keyObservations": [
+            "每条条件都可写成坐标方程 $x_{a_i}-x_{b_i}=d_i$，因此一个条件同时确定两个方向的相对位移，便于统一遍历。",
+            "在同一连通分量中任选一个士兵坐标为 $0$，其余坐标由相对位移逐步确定；整体平移不影响任何条件，所以无需枚举绝对位置。",
+            "若遍历到已赋值士兵时发现方程不成立，说明该分量中的环产生了矛盾；反之所有边都满足则整个分量可行。",
+            "图可能不连通，各分量可以独立选取基准坐标，因此必须从每个未访问士兵开始检查。"
+          ],
+          "solutionBrief": "将士兵建为带相对位移约束的图，并把每条条件转成双向关系。对每个连通分量任选根赋值为 $0$，DFS 推出其他坐标；遇到已赋值节点时验证坐标差，出现矛盾则输出 NO，否则输出 YES。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
