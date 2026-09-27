@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2400,
+    "total_problems": 2408,
     "source_total_problems": 2408,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2400,
-    "with_editorial_brief": 2134,
-    "with_solution_brief": 2135,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2408,
+    "with_editorial_brief": 2142,
+    "with_solution_brief": 2143,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1462,
+    "ai_override_count": 1470,
     "primary_topic_count": 13,
-    "contest_count": 369,
+    "contest_count": 370,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 115,
-    "构造与贪心": 757,
+    "构造与贪心": 760,
     "图论与网络流": 142,
-    "动态规划与状态设计": 209,
-    "数论与同余": 260,
+    "动态规划与状态设计": 210,
+    "数论与同余": 263,
     "组合计数与概率": 187,
-    "数据结构": 222,
+    "数据结构": 223,
     "几何": 56,
     "树结构": 134,
     "代数、矩阵与多项式": 19,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1196,
+    "ai_generated_with_editorial": 1204,
     "ai_generated_partial_editorial": 47,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -55388,6 +55388,254 @@ window.CF_INSIGHTS_DATA = {
             "用 $d[z][l]$ 统计含 $z$ 个 0、长度为 $l$、末位为 0 且 1 段长度小于 $c$ 的串，追加至多 $c-1$ 个 1 和一个 0 可做区间转移，再用前缀和处理环首尾连接。"
           ],
           "solutionBrief": "将答案转为满足条件的环串轨道数，按 Burnside 对各因子 $g$ 统计固定串。每个固定串缩成长度 $g$ 的前缀，用总数减去坏环串；坏串由区间优化的 DP 计数，复杂度为 $O(n^2+\\sum_{g|n}g^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1955,
+      "name": "Codeforces Round 938 (Div. 3)",
+      "date": "2024-04-08",
+      "url": "https://codeforces.com/contest/1955",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "1955A",
+          "index": "A",
+          "slot": "A",
+          "title": "Yogurt Sale",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1955/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/128243",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "每瓶酸奶单价为 $a$，也可以按每两瓶 $b$ 的优惠价购买；需要恰好买 $n$ 瓶，每次可选择单买或按优惠价买两瓶。求买齐这些酸奶的最小总花费。",
+          "transformedStatement": "将购买方案抽象为若干个单瓶和若干个二瓶组合：单瓶贡献 $a$，二瓶组合贡献 $b$。比较二瓶组合与两次单买的价格，并根据 $n$ 的奇偶确定最多能使用多少个组合。",
+          "keyObservations": [
+            "不使用优惠时总价固定为 $n\\cdot a$，因此所有方案都可与这一基准比较，避免逐种枚举购买组合。",
+            "只有当两瓶优惠价 $b<2a$ 时，成对购买才可能更优；否则每瓶单买已经不贵于任何优惠组合。",
+            "优惠确实更便宜时，应尽可能组成最多的二瓶组合：$n$ 为偶数时全部成对购买，$n$ 为奇数时剩余一瓶按单价购买。"
+          ],
+          "solutionBrief": "先计算全部单买的费用 $n\\cdot a$。若 $b<2a$，按 $n$ 的奇偶用尽可能多的优惠对购买，再与全单买费用取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1955B",
+          "index": "B",
+          "slot": "B",
+          "title": "Progressive Square",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1955/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/128243",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定方阵大小 $n$、正整数增量 $c,d$ 以及随机排列的 $n^2$ 个数。要求判断能否以这些数作为元素构造方阵，使每格向下增加 $c$、向右增加 $d$。",
+          "transformedStatement": "将问题转化为多重集合校验：先用最小元素确定左上角，再生成唯一矩阵，其中每个位置的值为 $a_{1,1}+(i-1)c+(j-1)d$，最后检查生成值与输入值是否相同。",
+          "keyObservations": [
+            "由于 $c,d>0$，矩阵从左上角向右或向下都严格增大，因此左上角元素必是所有给定数中的最小值，$a_{1,1}$ 无需枚举。",
+            "确定最小值后，第 $i$ 行第 $j$ 列唯一为 $a_{1,1}+(i-1)c+(j-1)d$，所以只需重建这 $n^2$ 个值并核对多重集合。",
+            "元素出现顺序无关，分别排序给定数组和重建数组并逐项比较即可判断是否完全一致，避免处理任意排列。"
+          ],
+          "solutionBrief": "取给定数组最小值作为 $a_{1,1}$，按 $a_{1,1}+(i-1)c+(j-1)d$ 重建矩阵。将重建值与输入数组分别排序并比较；复杂度为 $O(n^2\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1955C",
+          "index": "C",
+          "slot": "C",
+          "title": "Inhabitant of the Deep Sea",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1955/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/128243",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 艘船按顺序排列，第 $i$ 艘耐久为 $a_i$。海怪交替攻击当前最左、最右的未下沉船，每次使其耐久减一；耐久降至零后移除并不再受击。最多攻击 $k$ 次，求最终下沉的船数。",
+          "transformedStatement": "将未下沉船维护为双端队列，每次只关注当前首尾：把成对的左右攻击批量处理；若攻击不足以完成一整批，则直接按攻击次数的奇偶计算两端受到的伤害。",
+          "keyObservations": [
+            "两艘端点船连续经历一轮“先左后右”攻击，因此每 $2m$ 次攻击可同时扣除两端各 $m$ 点耐久，其中 $m$ 为两端耐久较小值。",
+            "若剩余攻击次数不足 $2m$，左端承受 $\u001b[? no]$ 次向上取整的攻击、右端承受向下取整的攻击，奇偶性完全决定最后一段伤害分配。",
+            "每次处理一对端点后，至少有一艘船下沉或攻击次数耗尽，因此用双端队列逐步移除下沉船即可保证总处理次数为 $O(n)$。",
+            "只剩一艘船时不再交替攻击；只需判断剩余攻击次数是否至少等于它的耐久。"
+          ],
+          "solutionBrief": "用双端队列维护尚未下沉的船。每轮取首尾，批量消耗 $2m$ 次攻击并各扣 $m$ 点；若剩余攻击不足一轮，按奇偶分配给两端，移除耐久归零的船，最后单独处理唯一剩余船。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1955D",
+          "index": "D",
+          "slot": "D",
+          "title": "Inaccurate Subsequence Search",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1955/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/128243",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组 $a$、目标数组 $b$ 和阈值 $k$，取出 $a$ 的每个长度为 $m$ 的连续子段。允许任意重排子段元素，要求统计其中至少有 $k$ 个元素能与 $b$ 中元素一一相等匹配的子段数量。",
+          "transformedStatement": "把每个窗口与 $b$ 的关系转化为两个多重集合的最大匹配问题，匹配数是各值出现次数较小者之和；随后用固定长度滑动窗口动态维护这个匹配数。",
+          "keyObservations": [
+            "一个窗口与 $b$ 的最大匹配数等于各数值出现次数最小值之和，即 $\\sum_x \\min(\\mathrm{cnt}_W(x),\\mathrm{cnt}_b(x))$，因此重复元素必须按多重集合处理。",
+            "维护已匹配的 $b$ 元素集合 $D$、未匹配的 $b$ 元素集合 $C$ 和窗口中未匹配元素集合 $E$，并保持 $C$ 与 $E$ 没有相同元素，使 $|D|$ 直接表示当前匹配数。",
+            "窗口右移时，移出的元素若属于匹配对，先用 $E$ 中同值元素补配；新加入元素优先与 $C$ 中同值元素匹配，否则放入 $E$，这样每次只需局部修复匹配关系。",
+            "窗口长度固定为 $m$，因此每个长度为 $m$ 的子段都能在线更新，判断条件统一为 $|D|\\ge k$。"
+          ],
+          "solutionBrief": "用滑动窗口枚举所有长度为 $m$ 的子段，并维护三组多重集合：已匹配的 $b$ 元素、未匹配的 $b$ 元素和窗口内未匹配元素。窗口移动时删除左端、补回可用匹配，再处理新右端；若已匹配数量至少为 $k$，答案加一。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1955E",
+          "index": "E",
+          "slot": "E",
+          "title": "Long Inversions",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1955/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/128243",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一个只含 $0$ 和 $1$ 的字符串。先选择一个固定的 $k$，之后可以任意多次翻转任意长度为 $k$ 的连续子串；要求判断能否把所有字符变成 $1$，并求最大的可行 $k$。",
+          "transformedStatement": "对每个候选 $k$，把过程重述为从左到右修正字符串：当前位置若仍为 $0$，翻转从它开始的长度为 $k$ 的区间。用区间翻转的奇偶影响替代真实修改，从而在线性时间完成一次可行性判定。",
+          "keyObservations": [
+            "固定 $k$ 从左到右处理时，若当前位置在当前翻转影响下为 $0$，就必须翻转覆盖该位置且不触及已确定前缀的区间 $[i,i+k)$；否则无法最终保持前缀全为 $1$。",
+            "同一个长度为 $k$ 的子串无需翻转两次，因为两次翻转效果抵消；因此按上述规则决定的翻转足以判断该 $k$ 是否可行。",
+            "不实际修改区间，而用翻转计数的奇偶性表示当前位置状态，并在区间右端记录一次计数减少，使固定 $k$ 的检查从 $O(nk)$ 降为 $O(n)$。",
+            "枚举所有 $k$ 并保留可行的最大值即可；总复杂度为 $O(n^2)$，符合给定的平方和约束。"
+          ],
+          "solutionBrief": "枚举 $k$，从左到右维护当前翻转次数的奇偶性。遇到实际为 $0$ 的位置就强制翻转区间 $[i,i+k)$，用差分事件在 $i+k$ 撤销影响；若区间越界则该 $k$ 不可行，最后取最大可行值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1955F",
+          "index": "F",
+          "slot": "F",
+          "title": "Unfair Game",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1955/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/128243",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "博弈"
+          ],
+          "originalTags": [
+            "dp",
+            "games",
+            "greedy",
+            "math",
+            "schedules"
+          ],
+          "statementBrief": "给定只含 $1,2,3,4$ 的序列，Alice 与 Bob 每轮按当前序列的整体异或判定胜负：异或非零时 Alice 胜，否则 Bob 胜。每轮结束后 Eve 删除一个数并继续，直到序列为空；她可选择删除顺序，要求 Bob 获胜的总次数最大。",
+          "transformedStatement": "把过程看成从初始多重集合不断删去一个元素，并统计所有非空剩余集合中异或为零的次数。题解进一步按异或的奇偶性拆分为数字 $4$ 的偶数约束，以及 $1,2,3$ 三类数量奇偶性全相同的状态。",
+          "keyObservations": [
+            "数字 $4$ 的异或贡献与 $1,2,3$ 分离；剩余 $4$ 的数量必须为偶数才可能获胜，因此最多贡献 $\u001b[?]$。",
+            "对 $1,2,3$ 而言，异或为零当且仅当三种数字的出现次数奇偶性全相同：要么全偶，要么全奇，这把获胜条件压缩为奇偶状态。",
+            "在非全奇的初始状态下，通过成对移除同类数字可保持全偶状态，每两次移除贡献一次胜利；若初始三种数量全奇，则初始局额外获胜一次。"
+          ],
+          "solutionBrief": "将 $4$ 与其他数字分开处理，答案为 $\u001b[?]$；其中前三项来自每类数字的成对移除，若 $p_1,p_2,p_3$ 全为奇数再加初始胜利。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1955G",
+          "index": "G",
+          "slot": "G",
+          "title": "GCD on a grid",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1955/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/128243",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的整数网格，从左上角出发，每步只能向下或向右，直到右下角；路径上的所有格子共同产生一个 GCD。要求找出所有合法路径中 GCD 的最大值。",
+          "transformedStatement": "把每个候选因数 $x$ 转化为一个布尔网格：格子值能被 $x$ 整除则可通行，否则不可通行。问题变为在端点 GCD 的全部因数中，寻找能从左上角连通到右下角的最大通行条件。",
+          "keyObservations": [
+            "任一路径都经过左上角和右下角，因此路径 GCD 必须是这两个端点 GCD 的因数，候选范围可大幅缩小。",
+            "固定候选因数 $x$ 后，只保留能被 $x$ 整除的格子；原问题转化为判断这些格子中是否存在一条单调路径。",
+            "令 $dp_{i,j}$ 表示能否从左上角到达该格子，则只有上方或左方可达且当前格子有效时才能转移，避免枚举具体路径。",
+            "若某条路径所有数都被 $x$ 整除，则其实际 GCD 至少包含因子 $x$；枚举端点 GCD 的全部因数并取最大值即可得到最大实际 GCD。"
+          ],
+          "solutionBrief": "先求两端元素的 GCD，枚举其全部因数 $x$。对每个 $x$ 建立“元素是否被 $x$ 整除”的布尔网格，用网格 DP 判断是否存在全为有效格子的右下路径，取可行的最大 $x$。总复杂度为 $O(nm\noot 3\\of A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1955H",
+          "index": "H",
+          "slot": "H",
+          "title": "The Most Reckless Defense",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1955/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/128243",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "几何",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "flows",
+            "graph matchings",
+            "shortest paths"
+          ],
+          "statementBrief": "网格上已有若干塔，敌人沿给定路径从 $(1,1)$ 依次走到 $(n,m)$，每到一个格子先停留一秒并承受范围内塔的伤害，若到终点后还能继续移动则失败。每种正整数射程最多给一座塔使用，使用射程 $r$ 会让敌人初始生命额外增加 $3^r$；要求选择射程，使敌人无法通关，并最大化其未计入这些增量的基础生命 $h$。",
+          "transformedStatement": "把问题转成给塔分配互不重复的半径：半径 $r$ 分配给塔 $i$ 的收益是该塔对路径造成的伤害 $p_i\\cdot cover(i,r)$，代价是全局生命增加 $3^r$，目标最大化收益总和减去代价总和。将可用半径集合编码为掩码后进行集合分配 DP。",
+          "keyObservations": [
+            "敌人只在给定路径上每个格子停留一次，因此塔的总伤害等于其覆盖路径格子数乘以伤害值，可预先计算 $cover(i,r)$。",
+            "给第 $i$ 座塔使用半径 $r$ 的净贡献是 $p_i\\cdot cover(i,r)-3^r$，因为半径带来的全局生命增加必须从造成的总伤害中扣除。",
+            "半径越大并不一定更优；由 $500\\pi r^2-3^r>0$ 可知只需考虑至多 $R=12$ 的半径，且每种半径最多分配给一座塔。",
+            "用掩码表示已使用的半径，$dp[i][mask]$ 记录前 $i$ 座塔在使用这些半径时的最大总伤害；每座塔可不分配半径或选择一个未使用半径。"
+          ],
+          "solutionBrief": "预处理每座塔使用各半径时覆盖的路径格子数。以半径集合为掩码做分配 DP，转移为跳过或把一个未用半径给当前塔；答案取最大总伤害减去所有半径带来的生命增加。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
