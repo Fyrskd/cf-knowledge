@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2999,
+    "total_problems": 3005,
     "source_total_problems": 3006,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2999,
-    "with_editorial_brief": 2727,
-    "with_solution_brief": 2728,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3005,
+    "with_editorial_brief": 2733,
+    "with_solution_brief": 2734,
     "missing_editorial_brief": 271,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2061,
+    "ai_override_count": 2067,
     "primary_topic_count": 13,
-    "contest_count": 456,
+    "contest_count": 457,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,8 +44,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 951,
-    "动态规划与状态设计": 254,
+    "构造与贪心": 955,
+    "动态规划与状态设计": 256,
     "数据结构": 281,
     "几何": 72,
     "字符串": 160,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1776,
+    "ai_generated_with_editorial": 1781,
+    "ai_generated_partial_editorial": 61,
     "missing_editorial": 271,
-    "ai_generated_partial_editorial": 60,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -92692,6 +92692,187 @@ window.CF_INSIGHTS_DATA = {
             "从高位到低位处理二进制位，并用上界状态限制 $x<m$，可在每一位枚举 $x$ 的当前位；连续尾部长度只需保留奇偶，状态数从 $O(\\log n)$ 降为常数级。"
           ],
           "solutionBrief": "利用 $S_i=\\operatorname{popcount}(i)\\bmod2$，将答案转为统计 $x<m$ 且两次置位数奇偶不同的数量。按位做数位 DP，维护奇偶、加法进位相关的尾部 $1$ 奇偶和上界限制，复杂度为 $O(\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1733,
+      "name": "Codeforces Round 821 (Div. 2)",
+      "date": "2022-09-19",
+      "url": "https://codeforces.com/contest/1733",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1733A",
+          "index": "A",
+          "slot": "A",
+          "title": "Consecutive Sum",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1733/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/83109",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组，最多进行 $k$ 次允许的交换；交换只能发生在下标相差为 $k$ 的倍数的位置之间。操作结束后选择 $k$ 个连续元素，以它们的和为得分，求最大得分。",
+          "transformedStatement": "将下标按模 $k$ 分成 $k$ 个余数类。任何长度为 $k$ 的连续区间都从每类取一个元素，而交换不会改变元素所属的余数类，因此问题转化为求每个余数类的最大值之和。",
+          "keyObservations": [
+            "任意连续的 $k$ 个位置恰好覆盖下标模 $k$ 的每个余数类一次，因此选取窗口等价于每类贡献一个元素。",
+            "允许交换的两个位置下标模 $k$ 相同，所以元素只能在自己的余数类内移动，无法跨类改变贡献归属。",
+            "第 $r$ 类中应把最大元素放入最终窗口；将各类最大值交换到前 $k$ 个位置后，选择前 $k$ 个元素即可达到最优。"
+          ],
+          "solutionBrief": "按下标模 $k$ 将元素分成 $k$ 类。每类独立选最大值，并至多用一次交换将其放入前 $k$ 个位置；最后求这 $k$ 个最大代表的和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1733B",
+          "index": "B",
+          "slot": "B",
+          "title": "Rule of League",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1733/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/83109",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 名选手按固定顺序进行淘汰式比赛：先由 1 号和 2 号比赛，之后每场都由上一场胜者与下一号选手比赛，共进行 $n-1$ 场。已知 1 号和 2 号各自获胜次数为 $x,y$，请构造每场胜者；若无法满足则输出 $-1$。",
+          "transformedStatement": "把胜者序列按长度 $k=\\max(x,y)$ 分成若干块：每块由当前选手连续获胜 $k$ 场，下一位选手在块末进入并成为下一块胜者；问题转化为判断这些完整分块能否覆盖全部 $n-1$ 场。",
+          "keyObservations": [
+            "首场比赛只能由选手 1 或 2 获胜，因此两人的胜场数必有一个为 $0$，另一个为正数。",
+            "每场比赛恰有一名胜者和一名败者，所以总胜场数等于总败场数；总败场数固定为 $n-1$。",
+            "除首位选手外，构造中的胜场数都按 $k=\\max(x,y)$ 成组出现，因此可行时必须满足 $(n-1)\\bmod k=0$。",
+            "令目标获胜者连续赢 $k$ 场，再由下一位新选手击败他并连续赢 $k$ 场，重复该块即可保证比赛顺序和胜场数。"
+          ],
+          "solutionBrief": "若 $\\min(x,y)=0$、$\\max(x,y)>0$ 且 $(n-1)\\bmod\\max(x,y)=0$，则令胜场较多的选手先连续获胜 $k=\\max(x,y)$ 场，之后每隔 $k$ 场更换为对应的新选手；否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1733C",
+          "index": "C",
+          "slot": "C",
+          "title": "Parity Shuffle Sorting",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1733/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/83109",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "sortings"
+          ],
+          "statementBrief": "给定一个非负整数数组，每次选择两个下标 $l<r$，按照题目规定的奇偶规则把其中一个元素改成另一个元素，最多操作 $n$ 次。需要输出任意一组操作，使数组最终满足 $a_1\\le a_2\\le\\cdots\\le a_n$；操作次数无需最少。",
+          "transformedStatement": "不把目标看成逐步排序，而是构造一个全相等数组：先用首尾位置建立共同值，再让每个中间元素通过一次按奇偶选择的操作复制该值。全相等自然满足非递减条件。",
+          "keyObservations": [
+            "先操作下标 $1,n$，无论两端之和奇偶，都能让 $a_1$ 与 $a_n$ 相等，从而建立统一的锚点值。",
+            "对每个中间位置 $i$，若 $a_1+a_i$ 为奇数就选 $(1,i)$，否则选 $(i,n)$；按奇偶规则可只改变 $a_i$，不会破坏两端相等。",
+            "处理完所有中间位置后，整个数组元素相等，而全相等数组必然非递减，因此无需真正模拟排序。",
+            "恰好使用 $n-1$ 次操作即可覆盖所有位置，满足操作次数不超过 $n$ 的限制。"
+          ],
+          "solutionBrief": "当 $n=1$ 时不操作。否则先操作 $(1,n)$ 令两端相等，再遍历每个中间位置：若 $a_1+a_i$ 为奇数输出 $(1,i)$，否则输出 $(i,n)$，使其与端点值相等；最终数组全相等且非递减，共 $n-1$ 次操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1733D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Zero-One (Easy Version)",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1733/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/83109",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的二进制串，每次选择两个位置并翻转这两处字符；若两位置相邻，费用为 $x$，否则费用为 $y$。求把串 $a$ 变成串 $b$ 的最小总费用，无法完成则输出 $-1$。",
+          "transformedStatement": "令 $c=a\\oplus b$，问题转化为通过每次翻转 $c$ 的两个位置，把差异串清零，并根据其中 $1$ 的数量及两处差异是否相邻分类求最小配对费用。",
+          "keyObservations": [
+            "把 $a_i\\ne b_i$ 的位置组成差异串 $c=a\\oplus b$，原操作等价于每次选择两个位置并同时翻转它们，从而只需消除 $c$ 中的所有 $1$。",
+            "每次操作会改变两个位置，因此差异串中 $1$ 的奇偶性保持不变；若 $d$ 为奇数则永远无法变成全零。",
+            "当 $d\\ne2$ 时，把第 $i$ 个和第 $i+d/2$ 个差异位置配对，所有配对都非相邻，可用 $d/2$ 次代价为 $y$ 的操作达到下界 $d y/2$。",
+            "当仅有两个差异位置时，非相邻可直接付出 $y$；相邻时可直接付出 $x$，也可借助 $n\\ge5$ 用两次非相邻操作付出 $2y$，答案为 $\\min(x,2y)$。"
+          ],
+          "solutionBrief": "构造差异串并统计 $1$ 的数量 $d$。$d$ 为奇数输出 $-1$；$d\\ne2$ 时答案为 $d y/2$；$d=2$ 时按两处是否相邻分别取 $y$ 或 $\\min(x,2y)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1733D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Zero-One (Hard Version)",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1733/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/83109",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "题目给出两个长度为 $n$ 的二进制串 $a,b$，允许反复选择下标并按题目规定支付代价进行修改，目标是把 $a$ 变成 $b$。需要求最小总费用；若无法完成则输出 $-1$。给定记录未包含具体的下标操作规则。",
+          "transformedStatement": "题解把原问题抽象为一个二进制序列 $c$ 的前缀优化问题：处理每个位置时，同时记录前缀中 $1$ 的数量以及当前末位为 $0$ 或 $1$，通过代价为 $x$、$y$ 的转移消除所有未完成贡献。最终只接受数量为 $0$ 的状态。",
+          "keyObservations": [
+            "题解将问题转化为处理二进制序列 $c$，并按前缀长度与其中 $1$ 的数量分层记录最小代价，从而把全局配对决策变成前缀状态转移。",
+            "状态还需记录当前前缀末位是 $0$ 还是 $1$；末位信息决定新增位置能否与前缀中的贡献配对，以及应付出 $x$ 或 $y$ 的代价。",
+            "当处理第 $i$ 个位置时，状态中的 $1$ 的数量只会按题解给出的转移保持不变、增加或减少 $2$，因此可以枚举数量并在 $O(n^2)$ 状态范围内求最优值。",
+            "最终要求前缀全部处理完且剩余数量为 $0$，因此答案取题解定义的终态 $z[n][0]$；不可达状态保持无穷大。"
+          ],
+          "solutionBrief": "题解在 D1 贪心失效的情况下，定义按前缀长度、$1$ 的数量和末位比特划分的 DP 状态 $z0,z1$，依据当前 $c_i$ 枚举保持或改变状态的转移，复杂度为 $O(n^2)$，答案取 $z[n][0]$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1733E",
+          "index": "E",
+          "slot": "E",
+          "title": "Conveyor",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1733/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/83109",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "有一个 $120\\times120$ 网格，初始时球在 $(0,0)$。球经过每个格子向下一条对角线传播：若格中有 $k$ 个球，则 $\\lceil k/2\\rceil$ 个向右、$\\lfloor k/2\\rfloor$ 个向下；对每个 $t,x,y$，判断 $t$ 秒后 $(x,y)$ 是否有球。",
+          "transformedStatement": "把格子按 $i+j$ 分成对角线，并把目标格转化为第 $d=x+y$ 条对角线上的位置问题。该位置等价于这条对角线上第 $t-d+1$ 个传播球的落点，可通过比较前后两个球数的传播结果定位。",
+          "keyObservations": [
+            "目标格所在对角线编号为 $d=x+y$，每秒只能前进一条对角线，因此 $t<d$ 时必不可能到达。",
+            "将同一格中的 $k$ 个球传播到下一条对角线时，向右为 $\\lceil k/2\\rceil$、向下为 $\\lfloor k/2\\rfloor$，因此可按对角线逐层聚合计数。",
+            "在第 $d$ 条对角线上，先传播 $t-d$ 个球再传播 $t-d+1$ 个球，恰有一个格子的计数增加；该格就是当前时刻对应的球所在位置。",
+            "比较两次传播而非直接模拟 $t$ 秒，把超大的时间参数转化为目标对角线上的相邻编号计数问题。"
+          ],
+          "solutionBrief": "令目标对角线编号为 $d=x+y$。若 $t<d$ 直接输出 NO；否则分别把 $t-d$ 和 $t-d+1$ 个球从原点按“向右取上半、向下取下半”传播到第 $d$ 条对角线，唯一计数增加的格子就是当前球的位置，据此判断是否为 $(x,y)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
