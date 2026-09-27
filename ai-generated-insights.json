@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T08:42:51+00:00",
+  "updated_at": "2026-09-27T08:47:25+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -47491,6 +47491,219 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的道路、加油规则和往返目标，以及 editorial 给出的分段容量约束与最大值结论；tags 提供了 greedy、math。",
+        "quality_flags": []
+      }
+    },
+    "1899G": {
+      "problem_key": "1899G",
+      "title": "Unusual Entertainment",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1899/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/122407",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ccd66ba7396cb38fa727234a83e2d42dd0e3c06295d33422a4edae44a82dd6c9",
+      "generated_at": "2026-09-27T08:45:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵以 1 为根、节点编号为 1 到 $n$ 的树，以及一个节点排列。对每个查询 $(l,r,x)$，判断排列位置 $l$ 到 $r$ 中是否至少有一个节点是 $x$ 的后代，并输出 YES 或 NO。",
+        "transformed_statement": "用 DFS 进入/退出时间将树上后代关系转成时间戳区间包含关系，再把排列替换为对应时间戳数组；每个查询变成区间 $a[l..r]$ 与值域 $[\\mathrm{tin}[x],\\mathrm{tout}[x])$ 是否有交集。",
+        "key_observations": [
+          "DFS 的进入时间把每个节点的整棵子树映射为连续区间 $[\\mathrm{tin}[x],\\mathrm{tout}[x])$，因此判断后代转化为判断时间戳是否落在该区间内。",
+          "将排列改写为 $a_i=\\mathrm{tin}[p_i]$ 后，原查询等价于判断 $a[l..r]$ 中是否存在一个值属于节点 $x$ 的子树时间区间。",
+          "归并排序树的每个区间节点保存有序时间戳，查询时用二分统计目标值域内的元素数量，从而同时处理排列位置区间和值域区间。"
+        ],
+        "solution_brief": "先对根树 DFS 编号，得到每个子树的连续时间区间；构造排列时间戳数组，并用归并排序树统计 $[l,r]$ 中落入 $x$ 子树区间的值，数量非零则回答 YES。复杂度为 $O(n\\log n+q\\log^2 n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "树结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial 核心思路与代码实现；tags 用于辅助主题归类。",
+        "quality_flags": [
+          "editorial中的祖先判定公式存在明显笔误，已依据代码和核心描述修正"
+        ]
+      }
+    },
+    "1899F": {
+      "problem_key": "1899F",
+      "title": "Alex's whims",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1899/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/122407",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4333ab5b34b0538090a9aef6c9c09303e15b1c6696c9b37f4e1b37e2f53fac7c",
+      "generated_at": "2026-09-27T08:45:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定含 $n$ 个顶点的树和连续 $q$ 天的距离要求 $d_i$。每天开始时至多进行一次允许的重连操作，使当天树中存在两片叶子的距离恰好为 $d_i$；需要输出初始树及每天的操作方案。",
+        "transformed_statement": "将树限制为“顶点 $1$—顶点 $2$—至多两条链”的形状，把每天的要求转化为：维护至少一条从叶子到固定叶子 $1$ 的链，使其长度等于 $d_i$，并通过转移链的连续末段调整长度。",
+        "key_observations": [
+          "始终维护一条固定的边 $1\\!-\u00002$，并让 $2$ 向外最多连接两条链，因此树始终只有至多三个叶子，且顶点 $1$ 一定是其中一个叶子。",
+          "只要某条链的叶子到顶点 $1$ 的距离等于当天的 $d_i$，当天无需操作；否则只需调整一条链的末段长度，就能把另一条链的叶子移动到目标距离。",
+          "把需要移动的连续末段整体从一条链的末端拆下并接到另一条链的末端，既保持树结构，又只需一次允许的重连操作。",
+          "用两个数组记录两条链上的顶点，转移末段时同步移动数组元素；每个顶点在一次调整中最多被处理一次，所以总复杂度为 $O(nq)$。"
+        ],
+        "solution_brief": "先把树初始化为路径，再固定顶点 $1$ 与 $2$，将其余结构维护为从 $2$ 出发的至多两条链。对每个 $d_i$，若已有叶子距 $1$ 为 $d_i$ 就不动，否则把一条链的末段整体转接到另一条链末端，使目标叶子距离变为 $d_i$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "树结构",
+          "图论与网络流"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意规则与目标来自 statement_text；构造、末段转移和复杂度来自 editorial_text；标签用于辅助确认构造、树与贪心方向。",
+        "quality_flags": [
+          "statement_text截断，正式操作定义不完整；操作含义依据editorial代码与描述还原"
+        ]
+      }
+    },
+    "1899E": {
+      "problem_key": "1899E",
+      "title": "Queue Sort",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1899/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/122407",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "08290b137154634e1370f34403c7a4fbb0924c1cf245a25f773ecb2379b31e26",
+      "generated_at": "2026-09-27T08:46:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，每次取出队首元素，并按规则将它移到后方较小元素之后；重复操作，要求把数组变为非递减序列。求所需的最少操作次数，若无法完成则输出 $-1$。",
+        "transformed_statement": "把数组按第一次最小值分成前缀和后缀：前缀元素必须逐个移走，而后缀元素的相对顺序保持不变。因此问题化为判断最小值后的后缀是否已经非递减，并统计最小值前有多少个元素。",
+        "key_observations": [
+          "设最小值第一次出现的位置为 $k$，其前面的元素都严格大于它，因此每个前置元素都必须被操作，否则无法排到最小值之后。",
+          "操作队首元素只会把它插入到后方较小元素之后，不会改变后缀元素的相对顺序；因此最小值之后的部分若不是非递减，排序必然不可能。",
+          "处理完最小值前的全部元素后，最小值位于队首；由于它不大于任何元素，再操作它不会改变数组，所以最少操作次数正好是 $k$。"
+        ],
+        "solution_brief": "找到第一次出现的最小值位置 $k$，检查其后的子数组是否非递减；若不是则输出 $-1$，否则答案为 $k$。因为前面的每个元素都必须移到最小值后，而后缀内部顺序无法改变。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text、题目标签 greedy/implementation/sortings；操作的具体插入规则由题解对操作效果的描述补足。",
+        "quality_flags": [
+          "statement_operation_diagram_missing"
+        ]
+      }
+    },
+    "1899D": {
+      "problem_key": "1899D",
+      "title": "Yarik and Musical Notes",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1899/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/122407",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "94e162bf0e78eee4e209950859e503a1f158ce579bf000954009f43beac4faad",
+      "generated_at": "2026-09-27T08:46:43+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定指数数组 $a$，第 $i$ 个音符的数值为 $b_i=2^{a_i}$。请统计所有 $i<j$，满足交换两个音符后组合值不变，即 $b_i^{b_j}=b_j^{b_i}$ 的下标对数量。",
+        "transformed_statement": "把巨大音符值改写为指数条件：判断 $ (2^a)^{2^b}=(2^b)^{2^a}$，等价于比较 $a2^b$ 与 $b2^a$；该条件最终只保留相等指数以及 $(1,2)$ 两种不同指数配对。",
+        "key_observations": [
+          "将音符代入后，交换条件等价于 $a\\cdot 2^b=b\\cdot 2^a$，从而避免直接处理可能极大的幂。",
+          "当 $a\\ne b$ 时，$a/b$ 必须是 $2$ 的幂；设较大者为 $b=a\\cdot 2^k$ 后，只有 $k=1,a=1$ 可成立，因此异值情况仅有指数对 $(1,2)$。",
+          "指数相等时原式恒成立，所以答案由相等指数对数量和指数为 $1,2$ 的跨值配对数量组成。"
+        ],
+        "solution_brief": "扫描数组并维护每个指数已出现的次数。当前值与历史相同值配对；若为 $1$ 或 $2$，再分别累加历史中的 $2$ 或 $1$，最后更新频次。使用映射统计，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial 的代数推导与代码，并结合 statement、math/number theory/hashing 标签。",
+        "quality_flags": []
+      }
+    },
+    "1899C": {
+      "problem_key": "1899C",
+      "title": "Yarik and Array",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1899/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/122407",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "22505ca4668557ab0c98fcb9883b0e7ff22aabf46c32cab08a42052fc043a6ec",
+      "generated_at": "2026-09-27T08:46:55+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，选择一个非空连续子数组，但其中每对相邻元素必须具有不同奇偶性。求所有满足条件的子数组中的最大元素和。",
+        "transformed_statement": "把相邻元素同奇偶的位置视为不可跨越的边界，数组因此被切成若干个内部奇偶交替的连续块；原问题等价于在这些块中求最大子段和。",
+        "key_observations": [
+          "相邻元素同奇偶的位置构成不可跨越的边界，因此所有合法子数组都完整包含在由这些边界切出的某个连续块内，问题可分解到各块分别求最大子段和。",
+          "在一个合法块中，固定右端点的最大子段和等于当前前缀和减去此前最小前缀和，因此只需单遍维护当前前缀和与最小前缀和。",
+          "遇到同奇偶相邻元素时，跨越该位置的区间全部非法；将前缀和及最小前缀和重置后，就能在下一合法块中独立继续计算。"
+        ],
+        "solution_brief": "用同奇偶相邻位置切分数组。单遍扫描每个合法块，维护当前前缀和及其最小值，用当前前缀和减最小前缀和更新答案；遇到非法边界就重置状态，整体复杂度为 $O(n)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的奇偶交替限制、editorial_text 的分块与最小前缀和方法，以及 tags 中的 dp、greedy。",
+        "quality_flags": []
+      }
+    },
+    "1899B": {
+      "problem_key": "1899B",
+      "title": "250 Thousand Tons of TNT",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1899/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/122407",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b276725afd2d9f04c2a8422c880fc3be1d67eeadbfb8b1e1add4beddfbaca756",
+      "generated_at": "2026-09-27T08:47:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一排重量为 $a_i$ 的箱子，选择每辆车装恰好 $k$ 个箱子，并按顺序将全部箱子分成连续的等长组；若 $k$ 不能整除 $n$ 则该选择无效。求所有可行 $k$ 下任意两辆车总重量绝对差的最大值，只有一辆车时差值为 $0$。",
+        "transformed_statement": "把每个可行的 $k$ 看成一种分块方式：将数组划分为若干个长度为 $k$ 的连续区间，问题转化为最大化这些区间和的最大值与最小值之差。可行的分块长度恰好是 $n$ 的所有因数。",
+        "key_observations": [
+          "可行的每车箱数 $k$ 必须整除 $n$，否则无法把所有箱子分成大小完全相同的连续分组，因此只需检查 $n$ 的因数。",
+          "固定 $k$ 后，每辆车对应一个连续长度为 $k$ 的区间，任意两车重量差的最大值等于这些区间和的最大值减最小值。",
+          "对每个因数直接按长度 $k$ 扫描分组并更新最大、最小区间和，就能同时得到该 $k$ 的最优差值，最后在所有 $k$ 中取最大值。"
+        ],
+        "solution_brief": "枚举所有满足 $n\\bmod k=0$ 的 $k$，将数组按顺序划分为长度为 $k$ 的连续块，计算每块重量和的最大值与最小值，候选答案为两者之差；遍历所有因数后取最大值。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 确定分组规则与目标，依据 editorial_text 和代码提炼因数枚举及连续分块求和方法；tags 用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1899A": {
+      "problem_key": "1899A",
+      "title": "Game with Integers",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1899/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/122407",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4efa34765ec2b8694bca5af96173021ca4824d0aaf9fd2a8a67c43641b4f455b",
+      "generated_at": "2026-09-27T08:47:25+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数 $n$，Vanya 与 Vova 轮流将当前数加 $1$ 或减 $1$，Vanya 先手；若 Vanya 操作后数字能被 $3$ 整除，他立即获胜，否则最多进行十步，仍未获胜则 Vova 获胜。对每个测试用例判断最优策略下的获胜者。",
+        "transformed_statement": "只观察当前数除以 $3$ 的余数：每次加减 $1$ 都会在余数状态间转移。问题等价于判断 Vanya 是否能在第一步把非零余数转成 $0$，或在初始余数为 $0$ 时能否避免 Vova 的对应反制。",
+        "key_observations": [
+          "当初始数对 $3$ 的余数为 $1$ 或 $2$ 时，Vanya 总能通过加 $1$ 或减 $1$ 在第一步变成 $3$ 的倍数，因此立即获胜。",
+          "当初始数是 $3$ 的倍数时，Vanya 的第一步必然使其余数变为 $1$ 或 $2$；Vova 可以模仿同方向操作，使数再次成为 $3$ 的倍数，从而 Vanya 无法在自己的回合结束时获胜。",
+          "模 $3$ 的余数决定胜负，后续具体数值和十步上限都无需模拟，因此判定可直接归结为 $n\\bmod 3$ 是否为零。"
+        ],
+        "solution_brief": "对每个测试用例计算 $n\\bmod 3$：余数非零时 Vanya 第一步调整为 $3$ 的倍数并获胜；余数为零时 Vova 可跟随保持优势，输出 Second。",
+        "primary_topic": "博弈",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial 正文与 games、math、number theory 标签提炼。",
         "quality_flags": []
       }
     }
