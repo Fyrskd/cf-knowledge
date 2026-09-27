@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2545,
+    "total_problems": 2552,
     "source_total_problems": 2553,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2545,
-    "with_editorial_brief": 2277,
-    "with_solution_brief": 2278,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2552,
+    "with_editorial_brief": 2284,
+    "with_solution_brief": 2285,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1607,
+    "ai_override_count": 1614,
     "primary_topic_count": 13,
-    "contest_count": 390,
+    "contest_count": 391,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 128,
+    "字符串": 129,
     "构造与贪心": 804,
     "图论与网络流": 153,
-    "动态规划与状态设计": 220,
-    "数论与同余": 278,
+    "动态规划与状态设计": 221,
+    "数论与同余": 280,
     "组合计数与概率": 195,
-    "数据结构": 237,
+    "数据结构": 238,
     "几何": 59,
-    "树结构": 137,
+    "树结构": 138,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 140,
+    "基础实现与模拟": 141,
     "博弈": 91
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1334,
+    "ai_generated_with_editorial": 1341,
     "ai_generated_partial_editorial": 52,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -66469,6 +66469,203 @@ window.CF_INSIGHTS_DATA = {
             "利用上述阈值结构，只需二分定位 $x$，即可将对全部 $m$ 个首元素取值的求和转化为两段答案的计数。"
           ],
           "solutionBrief": "固定 $a_1=i$ 后排序两数组；删除 $k$ 个元素时删 $a$ 的最大值和 $b$ 的最小值，并检查剩余位置是否逐一满足 $a_j<b_j$，通过二分求最少删除数。答案函数只有一个阈值变化，二分该阈值后统计两段总和，复杂度为 $O(n\\log n\\log m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1881,
+      "name": "Codeforces Round 903 (Div. 3)",
+      "date": "2023-10-12",
+      "url": "https://codeforces.com/contest/1881",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1881A",
+          "index": "A",
+          "slot": "A",
+          "title": "Don't Try to Count",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1881/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/121327",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "strings"
+          ],
+          "statementBrief": "给定字符串 $x$ 和目标串 $s$，每次操作都把当前的整个 $x$ 再追加到自身末尾，使长度翻倍。求经过最少多少次操作后 $s$ 会作为连续子串出现在 $x$ 中；若始终无法出现则输出 $-1$。",
+          "transformedStatement": "把第 $k$ 次操作后的字符串视为初始 $x$ 重复 $2^k$ 次，问题转化为依次检查这些有限长度的重复串是否包含 $s$，并取首次成功的 $k$。由于约束保证可行答案不超过 $5$，只需检查到第 $5$ 次。",
+          "keyObservations": [
+            "第 $k$ 次操作后，$x$ 恰好变为初始字符串连续重复 $2^k$ 次，因此每次操作只需将当前串整体复制并拼接即可模拟。",
+            "由 $n\\cdot m\\le 25$ 可知若答案存在则不超过 $5$；因此只检查初始状态到连续操作 $5$ 次，仍未出现即可判定为 $-1$。",
+            "每个状态只需判断目标串 $s$ 是否作为连续子串出现，首次出现的操作次数就是最小答案，从而无需分析所有可能位置或更长的重复串。"
+          ],
+          "solutionBrief": "从 $0$ 次操作开始逐次把当前 $x$ 与自身拼接，并检查 $s$ 是否为子串；最多检查 $5$ 次。首次出现即输出次数，始终未出现则输出 $-1$，复杂度为 $O(2^5\\cdot n\\cdot m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1881B",
+          "index": "B",
+          "slot": "B",
+          "title": "Three Threadlets",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1881/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/121327",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定三条长度为正整数的线段，每次可任选一条，将其切成两条正整数长度且总长度不变，最多操作三次，并允许继续切割新得到的线段。判断能否把所有线段变成相同长度。",
+          "transformedStatement": "把目标长度固定为初始最短长度 $a$，因为更短的统一长度会使三条原线段都需要额外切割。于是只需判断另外两条长度是否能分成若干段 $a$，并计算所需切割次数总和。",
+          "keyObservations": [
+            "三段不全相等时，最终长度不能小于最短段；否则最短段也必须被切开，连同其他两段达到统一长度所需切割次数会超过 $3$ 次，因此目标长度只能是最短长度 $a$。",
+            "若 $b$ 或 $c$ 不是 $a$ 的倍数，就无法仅通过切割得到若干条长度为 $a$ 的线段，因此可直接判定为不可行。",
+            "长度为 $x$ 的线段要全部变成长度 $a$ 的线段，需要切割次数为 $\\frac{x}{a}-1$；所以总次数是 $\\frac{b}{a}-1+\\frac{c}{a}-1$，检查其是否不超过 $3$ 即可。"
+          ],
+          "solutionBrief": "先取最短长度 $a$。若三段已相等直接输出 YES；否则要求 $b,c$ 都能被 $a$ 整除，并判断将它们分别切成若干段长度 $a$ 所需的总次数 $\\frac{b}{a}-1+\\frac{c}{a}-1$ 是否不超过 $3$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1881C",
+          "index": "C",
+          "slot": "C",
+          "title": "Perfect Square",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1881/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/121327",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "给定一个边长为偶数的字符方阵。一次操作可选择一个字符并将其替换为字母表中的下一个字符（若为 z 则不变）；要求通过最少操作使方阵顺时针旋转 90° 后保持不变。",
+          "transformedStatement": "将方阵按 90° 旋转划分为若干个包含四个位置的轨道；每个轨道内的字符最终必须一致，并独立计算把四个字符都提升到该组最大字符所需的总代价。",
+          "keyObservations": [
+            "90°旋转会把每个单元格与另外三个位置组成四元组，旋转不变要求四个字符完全相同，因此问题可拆成互不影响的四元组。",
+            "由于操作只能将字符向字母表后方推进，四元组的目标字符应取其中的最大字符；取更小字符无法到达，取更大字符还会增加操作次数。",
+            "一个四元组的代价就是其余三个字符到最大字符的字母位置差之和，分别处理所有四元组并求和即可得到最小值。"
+          ],
+          "solutionBrief": "按旋转对应关系枚举每个四元组，找出其中最大的字符，将另外三个字符推进到该字符，累计它们的字母差。每组独立处理，避免重复统计。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1881D",
+          "index": "D",
+          "slot": "D",
+          "title": "Divide and Equalize",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1881/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/121327",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n$ 个正整数。每次可从一个元素中取出一个因子并乘到另一个元素上，反复操作后判断能否让所有元素相等，输出肯定或否定答案。",
+          "transformedStatement": "把问题改写为质因子指数的重新分配：操作不改变每种质因子的总指数，而相等状态要求每种质因子的总指数平均分布到 $n$ 个位置。",
+          "keyObservations": [
+            "操作只会在数组元素之间转移因子，因此所有质因子的总指数保持不变；最终相等要求每种质因子的总指数都能平均分给 $n$ 个元素。",
+            "将每个 $a_i$ 分解为质因数并统计全数组中每个质因子的指数，若某个指数不是 $n$ 的倍数，就不可能通过转移得到全部相等。",
+            "若所有质因子的总指数都可被 $n$ 整除，就能按目标指数逐步重新分配各质因子，使每个元素拥有相同的质因数分解，因此条件也是充分的。"
+          ],
+          "solutionBrief": "分解所有数组元素，统计每个质因子的总指数。若每个指数都能被 $n$ 整除，则可以把质因子平均转移到各元素中使其相等，否则输出否。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1881E",
+          "index": "E",
+          "slot": "E",
+          "title": "Block Sequence",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1881/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/121327",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定整数序列，可以反复删除任意元素，但不能改变剩余元素的相对顺序。要求用最少删除次数，使剩余序列由若干块组成：每个块先出现一个长度值，再出现恰好该长度个元素。",
+          "transformedStatement": "把每个位置视为一次决策：删除它并继续处理下一个位置，或将其作为块头，连同后面的 $a_i$ 个元素整体跳过，再独立处理剩余后缀。",
+          "keyObservations": [
+            "从位置 $i$ 开始，最优方案的第一步只有两种：删除 $a_i$，或把它作为当前块长度；因此后缀答案可由这两个选择取最小值。",
+            "保留 $a_i$ 作为块头时，可直接将紧随其后的 $a_i$ 个元素纳入该块，并从位置 $i+a_i+1$ 继续处理；块内元素不受取值限制，无需在块内部删除。",
+            "若 $i+a_i+1>n+1$，当前位置无法提供足够元素组成完整块，保留该块头不可行，只能删除 $a_i$。"
+          ],
+          "solutionBrief": "从后向前定义 $dp[i]$ 为处理后缀 $i..n$ 所需的最少删除数。删除当前位置转移为 $dp[i+1]+1$；若后面元素足够组成长度为 $a_i$ 的块，则保留它并转移到 $dp[i+a_i+1]$，取两者最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1881F",
+          "index": "F",
+          "slot": "F",
+          "title": "Minimum Maximum Distance",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1881/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/121327",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树和若干标记顶点。对任意顶点 $i$，定义 $f_i$ 为它到所有标记顶点的最大距离；要求在每次只能沿树边移动的距离定义下，求所有顶点中的最小 $f_i$。",
+          "transformedStatement": "把问题看成标记顶点集合的最小最大距离，即求该集合在树上的半径。通过两次从标记点出发的最远标记点遍历确定该集合的直径，再用直径长度的一半向上取整得到半径。",
+          "keyObservations": [
+            "从任意标记点出发，最远的标记点可作为标记点集合直径的一端；再从该点找最远标记点，就得到直径另一端，从而避免枚举所有候选顶点。",
+            "设两端距离为 $d$，树上任意顶点到这两个端点的最大距离至少为 $\\lceil d/2\\rceil$；取两端路径中部的顶点即可达到该上界，因此最优值就是 $\\lceil d/2\\rceil$。",
+            "只有一个标记点时，该点本身到所有标记点的距离为 $0$，所以答案需单独记为 $0$。"
+          ],
+          "solutionBrief": "先从任意标记点遍历，找出距离最远的标记点 $v_2$；再从 $v_2$ 遍历，找出最远标记点 $v_3$。令两点距离为 $d$，答案为 $\\lceil d/2\\rceil$；仅有一个标记点时答案为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1881G",
+          "index": "G",
+          "slot": "G",
+          "title": "Anya and the Mysterious String",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1881/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/121327",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures"
+          ],
+          "statementBrief": "给定一个小写字母串，区间加法会把指定子串中的每个字符统一向后轮换若干次，字母表循环。每次查询要么执行这种修改，要么判断指定子串是否美丽，即其中不存在长度至少为 $2$ 的回文子串。",
+          "transformedStatement": "把“是否含有任意长回文”转化为检查区间内是否存在长度 $2$ 或 $3$ 的回文起点；把区间轮换视为区间加、单点取值问题，并只维护修改边界附近可能变化的起点。",
+          "keyObservations": [
+            "任意长度至少为 $2$ 的回文串都包含长度为 $2$ 或 $3$ 的回文子串，因此只需维护这两类回文的起点即可判定美丽性。",
+            "区间整体平移不会改变区间内部字符之间的相等关系，所以长度 $2$、$3$ 回文只可能在修改区间的左右边界附近出现或消失，更新时只需检查常数个边界位置。",
+            "将长度 $2$ 和长度 $3$ 回文起点分别存入集合后，查询区间内是否存在合法起点即可判定；集合中的首个相关位置可通过二分定位。",
+            "用差分数组上的树状数组支持区间加、单点取值，配合集合的插入与删除，就能在修改后重新判断边界附近的回文状态。"
+          ],
+          "solutionBrief": "把长度 $2$、$3$ 回文起点分别维护在有序集合中。区间加法用差分数组树状数组处理，修改后只重算左右边界附近的常数个位置；查询时检查区间内是否有对应起点，整体复杂度为 $O((n+m)\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
