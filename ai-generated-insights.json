@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T22:51:19+00:00",
+  "updated_at": "2026-09-27T22:56:19+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -62576,6 +62576,209 @@
           "missing_editorial",
           "statement_inferred"
         ]
+      }
+    },
+    "1722G": {
+      "problem_key": "1722G",
+      "title": "Even-Odd XOR",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1722/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/106478",
+      "editorial_quality": "partial",
+      "model": "gpt-5.6-luna",
+      "input_hash": "73cf47548c523e1f81da382c0881ad2b3338adbde3c649958a23521a493dc519",
+      "generated_at": "2026-09-27T22:54:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度 $n$，构造一个包含 $n$ 个互不相同的非负整数的数组，所有数都小于 $2^{31}$。按 1 开始编号后，要求奇数下标元素的按位异或等于偶数下标元素的按位异或，输出任意满足条件的数组。",
+        "transformed_statement": "把奇数下标组与偶数下标组的异或分别记为 $a,b$，目标 $a=b$ 等价于整个数组的异或为 $0$；因此只需构造不同元素且总异或为零的数组。",
+        "key_observations": [
+          "奇偶下标两组异或相等，当且仅当全数组异或为 $0$，因此可将问题转化为构造总异或为零的不同整数。",
+          "先选取 $n-2$ 个最高位为 $0$ 的不同数，再加入 $2^{30}$；最后一个数设为前面所有数的异或，可同时保证总异或为零且不会与前缀重复。",
+          "最后一个数与 $2^{30}$ 相等仅当前 $n-2$ 个数的异或为零；使用区间 $0,1,\u001b[...$ 或整体加一后的区间时，两种前缀异或相差 $n-2$，至少一种不会为零。"
+        ],
+        "solution_brief": "将奇偶组异或相等转为全体异或为零。取两种候选前缀：$0..n-3$ 或 $1..n-2$，选择异或非零者，再追加 $2^{30}$ 和“前缀异或 $2^{30}$”，即可保证所有数不同且总异或为零。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "依据题面约束与 editorial_text 的构造说明；tags 仅用于主题归类。",
+        "quality_flags": [
+          "partial_editorial"
+        ]
+      }
+    },
+    "1722F": {
+      "problem_key": "1722F",
+      "title": "L-shapes",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1722/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/106478",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "76977b0d844b33ccca445601642d3003a20b233868014bae0bce735d2dbf44a4",
+      "generated_at": "2026-09-27T22:55:12+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定由空格和阴影格组成的矩形网格。判断所有阴影格能否恰好分成若干个可旋转的 L 形，每个 L 形含三个格子，且不同 L 形之间不能共享边或角；能则输出 YES，否则输出 NO。",
+        "transformed_statement": "把每个 L 形抽象为唯一的拐角格及其两个垂直相邻阴影格：先由拐角恢复并编号所有三格结构，再检查结构是否重叠、是否覆盖全部阴影格，以及不同编号是否存在对角接触。",
+        "key_observations": [
+          "每个 L 形恰有一个拐角格，且该格恰好有两个同色四邻格；若两个邻格相对而非垂直，便不可能组成 L 形。",
+          "从拐角标记对应的三个格子，若标记时覆盖已有标记，说明两个 L 形共享边或拐角，答案立即为否。",
+          "所有拐角处理后仍未被标记的阴影格不属于任何 L 形，因此可用“是否全部覆盖”排除孤立或更复杂的形状。",
+          "不同编号的格子不能对角相邻；结合前面的重叠检查，这正好保证不同 L 形既不共享边也不共享角。"
+        ],
+        "solution_brief": "扫描每个阴影格的四邻域：邻居超过两个或两个邻居相对则失败；恰有两个垂直邻居时标记该 L 形。检查标记重叠、阴影格是否全覆盖，并禁止不同编号对角相邻。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 implementation 标签整理。",
+        "quality_flags": []
+      }
+    },
+    "1722E": {
+      "problem_key": "1722E",
+      "title": "Counting Rectangles",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1722/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/106478",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c7461801dae285ddb6ee616e25944f67f2047cda23c38c106a404c600e383b4f",
+      "generated_at": "2026-09-27T22:55:30+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干不可旋转的矩形及其高、宽。每次查询给出内边界 $(h_s,w_s)$ 和外边界 $(h_b,w_b)$，只统计满足 $h_s<h_i<h_b$ 且 $w_s<w_i<w_b$ 的矩形，并输出它们面积之和。",
+        "transformed_statement": "将每种尺寸 $(h,w)$ 视为二维网格上的一个点，点权是所有该尺寸矩形的面积总和；一次查询就等价于求网格子矩形 $[h_s+1,h_b-1]\\times[w_s+1,w_b-1]$ 的权值和。",
+        "key_observations": [
+          "把相同尺寸的矩形合并到网格点 $(h,w)$，令该点累加所有对应矩形的面积，从而把逐个筛选转为二维区域求和。",
+          "题目要求高度和宽度都严格位于边界之间，因此查询对应网格下标范围是 $[h_s+1,h_b-1]$ 与 $[w_s+1,w_b-1]$，边界尺寸会自然排除。",
+          "二维前缀和可以在预处理后用四个前缀区域相减得到任意矩形区域的面积总和，使每个查询都能常数时间回答。"
+        ],
+        "solution_brief": "在二维数组中按尺寸 $(h,w)$ 累加矩形面积，建立二维前缀和。对每个查询取行区间 $[h_s+1,h_b-1]$、列区间 $[w_s+1,w_b-1]$ 的区域和即可；总复杂度为 $O(n+q+HW)$，其中 $H,W$ 为尺寸上界。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的严格尺寸条件、不可旋转规则，以及 editorial 给出的二维加权数组和二维前缀和方法。",
+        "quality_flags": []
+      }
+    },
+    "1722D": {
+      "problem_key": "1722D",
+      "title": "Line",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1722/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/106478",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1a8cb7565947d6eb3fda6aef46b5aab899a0c19e9ed8e239de02821ed80f8524",
+      "generated_at": "2026-09-27T22:55:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个人排成一条线，每人朝左或朝右，并获得其朝向一侧的人数作为贡献，整行价值是所有贡献之和。对每个 $k=1,\\ldots,n$，允许至多改变 $k$ 个人的朝向，求能达到的最大价值。",
+        "transformed_statement": "把每个位置的朝向改变视为一次独立选择，计算它相对原朝向带来的收益；问题转化为对这些收益选择至多 $k$ 个并使总收益最大。",
+        "key_observations": [
+          "翻转第 $i$ 个位置的人只会改变他自己的贡献，增量可独立计算，因此所有翻转收益可以直接相加。",
+          "若当前位置朝左，翻转收益为 $n-1-2i$；若朝右，翻转收益为 $2i-(n-1)$，其中 $i$ 从 $0$ 开始。",
+          "将所有翻转收益从大到小处理，每增加一次可用操作就优先选择当前收益最大的未选位置；收益为负时不再翻转，因为题目允许至多操作 $k$ 次。",
+          "因此答案是初始总价值加上正收益的前缀和，超过正收益数量后保持不变；排序后整体复杂度为 $O(n\\log n)$。"
+        ],
+        "solution_brief": "先计算每个人翻转方向带来的独立增量，再将增量降序排列。对每个 $k$，依次加入最大的正增量；若下一个增量非正则保持答案不变，得到至多翻转 $k$ 人的最大值。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的价值定义与操作限制，以及 editorial_text 的独立增量和排序贪心方案；tags 提供了 greedy、sortings。",
+        "quality_flags": []
+      }
+    },
+    "1722C": {
+      "problem_key": "1722C",
+      "title": "Word Game",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1722/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/106478",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "774a209f48b58eba955e5154c4de9c40eb1df3fafdd0e297b813678a88662b73",
+      "generated_at": "2026-09-27T22:55:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "三位玩家各写下 $n$ 个互不重复的三字母单词。根据每个单词同时出现在几位玩家的列表中的规则，为三人分别计分并输出三人的总分；但给定文本缺少具体的积分对应表。",
+        "transformed_statement": "将题目转化为“单词出现频次统计”：先计算每个单词出现在三份列表中的人数，再把该频次对应的分值加到拥有它的玩家身上。具体频次到分值的映射因题面截断无法确定。",
+        "key_observations": [
+          "把三人的所有单词按出现人数归类：同一个单词出现于几个人的列表，决定它对各人的得分贡献，从而可先统计全局频次再逐人结算。",
+          "每个人的列表内部没有重复词，因此只需查询每个输入单词的全局出现次数，不需要处理同一人的重复计分；但给定文本缺失“各出现次数对应多少分”的具体规则。"
+        ],
+        "solution_brief": "用哈希表统计每个单词在三份列表中出现的次数，再遍历每位玩家的单词，根据出现次数累加对应分值。由于题面截断，具体积分映射无法从给定正文确定。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "依据 statement_text 中的输入结构与 editorial_text 中的哈希表统计方案；积分规则在给定题面中缺失。",
+        "quality_flags": [
+          "ambiguous_scoring",
+          "partial_editorial",
+          "statement_truncated"
+        ]
+      }
+    },
+    "1722B": {
+      "problem_key": "1722B",
+      "title": "Colourblindness",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1722/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/106478",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ebe1bc5040486ce90d0d55381bb398458846e96803d32aabdf8d5d82f9c18bb7",
+      "generated_at": "2026-09-27T22:56:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 2 行 $n$ 列的网格，每个格子为红色 `R`、绿色 `G` 或蓝色 `B`。由于 Vasya 无法区分绿色和蓝色，判断他是否会认为两行颜色完全相同，并输出 YES 或 NO。",
+        "transformed_statement": "把颜色按 Vasya 的视觉划分为两类：红色，以及由绿色和蓝色组成的非红色类；于是只需逐列比较两行所属类别是否一致。",
+        "key_observations": [
+          "绿色和蓝色在观察者眼中不可区分，因此两行对应位置只需比较是否同为红色，或是否都属于非红色类别。",
+          "将两行中的所有 `B` 统一替换为 `G` 后，题目等价于判断得到的两个字符串是否完全相同；逐位处理即可在 $O(n)$ 时间内完成。"
+        ],
+        "solution_brief": "把每行中的 `B` 统一改成 `G`，保留 `R`，再比较两行规范化后的字符串是否相等；相等输出 YES，否则输出 NO，单个测试用例复杂度为 $O(n)$。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的颜色辨识规则和 editorial 中的统一替换方案提炼。",
+        "quality_flags": []
+      }
+    },
+    "1722A": {
+      "problem_key": "1722A",
+      "title": "Spell Check",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1722/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/106478",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "2d9eaf07381f88bbf83e794db2b96f35672dcdf2fb9a75579a2c471d20d605cf",
+      "generated_at": "2026-09-27T22:56:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干字符串，每个字符串由大小写英文字母组成。判断它是否恰好是 `Timur` 的某个排列：必须包含大写 `T` 以及小写 `i、m、u、r` 各一次；满足则输出 `YES`，否则输出 `NO`。",
+        "transformed_statement": "把“是否为 `Timur` 的任意排列”转化为“待测字符串与 `Timur` 的字符多重集合是否相同”；对两者排序后，问题就等价于判断两个字符串是否完全相等。",
+        "key_observations": [
+          "合法字符串必须恰好包含 `T`、`i`、`m`、`u`、`r` 各一次，因此长度不为 5 时可直接判定为 `NO`。",
+          "题目允许任意排列这些字符，顺序本身无关；将待测字符串与 `Timur` 排序后比较，即可把排列判断转化为标准字符串相等判断。",
+          "字符大小写属于字符本身，只有一个大写 `T`、四个指定的小写字母的组合才会匹配，从而自动排除大小写错误。"
+        ],
+        "solution_brief": "对每个字符串排序，并与同样排序后的 `Timur` 比较；相等输出 `YES`，否则输出 `NO`。该方法时间复杂度为每组 $O(n\\log n)$，也可直接统计五个字符。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的排列与大小写要求，以及 editorial 给出的排序比较方案和复杂度。",
+        "quality_flags": []
       }
     }
   }
