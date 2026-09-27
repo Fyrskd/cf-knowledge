@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T07:59:43+00:00",
+  "updated_at": "2026-09-27T08:04:36+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -45911,6 +45911,189 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面操作规则与 editorial 的区间收缩证明，结合 tags 中的 greedy、strings。",
         "quality_flags": []
+      }
+    },
+    "1922F": {
+      "problem_key": "1922F",
+      "title": "Replace on Segment",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1922/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/124890",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c46a7636b9dc83b0fbe04974541ddfce5ec3b83e0e8174f21cc55cc2d0138c26",
+      "generated_at": "2026-09-27T08:02:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个元素均在 $1$ 到 $x$ 的数组。每次可选一个子段和一个未出现在该子段中的整数，并把子段全部替换为它；求把整个数组变成相同整数所需的最少操作次数。",
+        "transformed_statement": "把一次操作覆盖的连续区间收缩为一个整体，问题转化为区间上的两类状态：将区间统一为指定值，或消除指定值；两类状态通过区间分割和整体改写相互转移。",
+        "key_observations": [
+          "任意操作覆盖的连续段都可视为一个整体元素，后续操作要么覆盖整段、要么完全避开它，因此可安全进行区间合并。",
+          "定义 $dp[l][r][k]$ 为把区间变成全为 $k$ 的最少操作数，最后一步要么整体改成 $k$，要么拆成两个分别变成 $k$ 的区间。",
+          "定义 $dp2[l][r][k]$ 为消除区间内所有 $k$ 的最少操作数；最后一步可整体改成某个 $m\\ne k$，也可拆成两段分别消除。",
+          "计算状态时去掉两端与目标条件无关的元素：$dp$ 去掉两端的 $k$，$dp2$ 去掉两端的非 $k$，从而严格缩短依赖并消除循环。"
+        ],
+        "solution_brief": "先利用相邻相等元素可合并的性质，将操作后的区间视为单元素。区间 DP 同时维护变成全为 $k$ 和消除所有 $k$ 两类状态，通过分割或整体修改转移；计算前裁剪两端无关元素以消除循环依赖，复杂度为 $O(n^4)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、Editorial 正文及 tags 中的 DP 信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "1922E": {
+      "problem_key": "1922E",
+      "title": "Increasing Subsequences",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1922/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/124890",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e5bb0145b3add824f17910105af0ba2813b24eab7ac2e5b13b7ea6817ea37172",
+      "generated_at": "2026-09-27T08:03:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $X$，构造一个长度不超过 $200$ 的整数数组，使其严格递增子序列数量恰好为 $X$；空子序列也计数，来自不同位置的相同元素对应不同子序列。若无法构造则输出 $-1$。",
+        "transformed_statement": "把目标数量看作可递归变化的状态：向数组末尾加入全局最小值使数量加一，加入全局最大值使数量翻倍，于是将 $X$ 逆向拆成减一或除二操作，直到得到数量为一的空数组。",
+        "key_observations": [
+          "在已有数组末尾加入一个严格小于所有元素的新最小值，只新增由它单独组成的子序列，因此总数从 $x$ 变为 $x+1$。",
+          "在末尾加入一个严格大于所有元素的新最大值时，每个原有递增子序列都可选择是否包含它，因此总数从 $x$ 变为 $2x$。",
+          "令 $f(x)$ 表示构造恰有 $x$ 个递增子序列的数组：$x$ 为奇数时转为 $f(x-1)$ 并追加最小值，$x$ 为偶数时转为 $f(x/2)$ 并追加最大值。",
+          "奇数转移后必然进入偶数转移，连续两步至少使当前数减半，因此从 $X\\le 10^{18}$ 出发得到的数组长度能控制在 $200$ 以内。"
+        ],
+        "solution_brief": "从 $f(1)$ 的空数组开始递归处理 $X$：奇数减一并追加当前最小值，偶数除二并追加当前最大值。递归结束后按逆序还原追加操作，即得到目标数组。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，tags 仅用于辅助归类。",
+        "quality_flags": []
+      }
+    },
+    "1922D": {
+      "problem_key": "1922D",
+      "title": "Berserk Monsters",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1922/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/124890",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "bc61fab10c8f13eaa34ebe887c023fd4fc5fc719d2b59d564febd2e412df476d",
+      "generated_at": "2026-09-27T08:03:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个按顺序排列的怪物，第 $i$ 个怪物有攻击值 $a_i$ 和防御值 $d_i$。战斗分为 $n$ 轮，每轮根据当前存活怪物及其相邻怪物的攻击/防御关系同时判定并移除死亡怪物，要求输出每一轮死亡的怪物数量。",
+        "transformed_statement": "将过程改写为事件驱动模拟：只有某怪物自身或其存活邻居在上一轮发生死亡时，它的死亡状态才可能改变；因此维护存活下标集合，并把每轮死亡怪物的存活邻居作为下一轮候选。",
+        "key_observations": [
+          "若某怪物本轮未死亡，且它的任何存活相邻怪物也未死亡，那么下一轮它面对的邻居不会改变，无需再次检查。这样只需追踪受本轮死亡影响的邻居。",
+          "第一轮将所有怪物作为候选；每杀死一个怪物，至多把它当前的两个存活邻居加入下一轮候选，因此所有候选记录总数不超过 $3n$。",
+          "用有序集合维护当前仍存活的怪物下标，删除死亡怪物后即可找到其左右存活邻居，从而按题目规定的攻击/防御条件检查候选怪物。",
+          "候选集合只处理可能受邻居死亡影响的怪物，配合有序集合查邻居，使总复杂度为 $O(n\\log n)$。"
+        ],
+        "solution_brief": "维护当前存活怪物下标的有序集合，并按轮次维护候选怪物。死亡怪物被删除后，将其仍存活的邻居加入下一轮；候选为空后，后续各轮死亡数均为 $0$，总复杂度为 $O(n\\log n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "基础实现与模拟",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意依据 statement_text，候选传播、有序集合和复杂度依据 editorial_text，数据结构类别参考 codeforces_tags。",
+        "quality_flags": [
+          "statement_condition_missing",
+          "statement_incomplete"
+        ]
+      }
+    },
+    "1922C": {
+      "problem_key": "1922C",
+      "title": "Closest Cities",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1922/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/124890",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f6a83c59c7bb6882f89401e655c7fc584206661d5b10049b940b89487d698de0",
+      "generated_at": "2026-09-27T08:03:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "数轴上有坐标严格递增的 $n$ 座城市；从当前城市出发，可以前往任意城市，若目的地是当前城市的唯一最近城市则花费 $1$ 枚硬币，否则花费两城的坐标距离。对每个给定的起点和终点，求到达终点所需的最少硬币数。",
+        "transformed_statement": "把城市视为按坐标排列的点，并将每对相邻城市的两个方向分别赋予移动费用；最短路线等价于沿相邻城市链累加对应方向的边权，再用左右两套前缀费用回答区间和。",
+        "key_observations": [
+          "任意跳到非相邻城市的路线都能拆成相邻移动，且拆分不会增加费用，因此最短路只需考虑相邻城市之间的移动。",
+          "相邻城市 $i$ 与 $i+1$ 的单向费用由当前位置决定：若目标城市是当前城市的唯一最近城市则为 $1$，否则为坐标差，从而可把路线转成有向边权之和。",
+          "从左端和右端分别累加相邻移动费用，得到前缀费用数组 $r$ 与反向费用数组 $l$，任意同向查询都能用两个前缀值相减得到。"
+        ],
+        "solution_brief": "先计算每对相邻城市两个方向的移动费用，再分别预处理从城市 $1$ 出发的费用前缀 $r$ 和从城市 $n$ 反向出发的费用前缀 $l$。查询 $x<y$ 时回答 $r_y-r_x$，查询 $x>y$ 时回答 $l_y-l_x$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的城市与移动定义，以及 editorial_text 的相邻化证明、费用累加和查询公式；tags 仅用于主题归类。",
+        "quality_flags": [
+          "statement_truncated"
+        ]
+      }
+    },
+    "1922B": {
+      "problem_key": "1922B",
+      "title": "Forming Triangles",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1922/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/124890",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d402102404dc2a18f480f6e5c0dd207d399c4745a95a2eaee958d5a6a04a12c8",
+      "generated_at": "2026-09-27T08:04:17+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干长度均为 $2^{a_i}$ 的木棍，从中任选恰好三根且不计选择顺序，要求统计能组成面积严格大于零的三角形的选法数量。",
+        "transformed_statement": "把每根木棍按指数分组，并按三根中的最大指数 $m$ 计数；可行三元组恰好分为三根都为 $2^m$，或两根为 $2^m$、第三根长度严格更短两类。",
+        "key_observations": [
+          "将三根木棍按长度降序排列后，非退化三角形成立当且仅当最大指数至少出现两次；若最大指数只出现一次，最长边不小于另外两边之和。",
+          "固定最大长度为 $2^m$ 后，三根木棍要么全部等长，要么恰有两根长度为 $2^m$，第三根可任取长度不超过 $2^{m-1}$ 的木棍。",
+          "长度为 $2^m$ 的三根全等方案数为 $\\binom{cnt_m}{3}$，恰有两根等长的方案数为 $\\binom{cnt_m}{2} \\cdot sumCnt_{m-1}$，两类方案互不重叠。"
+        ],
+        "solution_brief": "统计每种 $2^i$ 长度的木棍数量 $cnt_i$，并计算前缀和 $sumCnt_i$。枚举最大指数 $m$，累加 $\\binom{cnt_m}{3}+\\binom{cnt_m}{2}sumCnt_{m-1}$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "数论与同余",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的木棍与三角形条件，以及 editorial 中关于最大长度出现次数和计数公式的分析；tags 提供组合计数与排序背景。",
+        "quality_flags": []
+      }
+    },
+    "1922A": {
+      "problem_key": "1922A",
+      "title": "Tricky Template",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1922/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/124890",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a3720e3739d4fcc9ed2c5a30fb7d7f88409cefd3fe592a8ab71a18d642acb456",
+      "generated_at": "2026-09-27T08:04:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的字符串 $a,b,c$，构造一个由大小写英文字母组成的模板：模板中的小写字母要求对应字符相同，大写字母要求对应字符与其小写形式不同。要求 $a,b$ 匹配模板而 $c$ 不匹配，判断是否存在这样的模板。",
+        "transformed_statement": "把模板选择拆成相互独立的各个位置：需要在至少一个位置排除 $c_i$，同时不排除 $a_i,b_i$；其他位置再任取能让前两者通过的字符即可。问题因此等价于寻找满足 $a_i\\ne c_i$ 且 $b_i\\ne c_i$ 的位置。",
+        "key_observations": [
+          "要让 $c$ 不匹配，只需找到一个位置使模板字符排除 $c_i$；若 $a_i$ 或 $b_i$ 等于 $c_i$，该位置无法同时满足要求。",
+          "当某位置满足 $a_i\\ne c_i$ 且 $b_i\\ne c_i$ 时，可选用大写的 $c_i$：它会排除 $c_i$，但允许 $a_i$ 和 $b_i$ 通过。",
+          "确定一个破坏 $c$ 的位置后，其余位置只需选一个同时不同于 $a_i,b_i$ 的大写字母；最多排除两个字母，因此总能完成模板。"
+        ],
+        "solution_brief": "逐位检查是否存在 $a_i\\ne c_i$ 且 $b_i\\ne c_i$。若存在，用大写 $c_i$ 排除字符串 $c$，其余位置选同时不同于 $a_i,b_i$ 的大写字母；否则输出 NO。复杂度为 $O(n)$。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意规则依据 statement，核心判定、构造与复杂度依据 editorial，主题参考 tags。",
+        "quality_flags": [
+          "statement中的匹配条件文本缺失，依据editorial补全其含义"
+        ]
       }
     }
   }
