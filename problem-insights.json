@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2220,
+    "total_problems": 2226,
     "source_total_problems": 2226,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2220,
-    "with_editorial_brief": 1960,
-    "with_solution_brief": 1961,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2226,
+    "with_editorial_brief": 1966,
+    "with_solution_brief": 1967,
     "missing_editorial_brief": 259,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1161,
+    "ai_override_count": 1167,
     "primary_topic_count": 13
   },
   "records": [
@@ -38683,6 +38683,257 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 943,
+      "problem_key": "2042A",
+      "contest_id": 2042,
+      "title": "Greedy Monocarp",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2042/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/136886",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "有若干箱子分别装着硬币；你可以在出场前向任意箱子加入任意数量，但之后贪心者每次都拿走当前硬币最多的箱子，直到拿走的硬币总数至少为 $k$。求使他最终恰好拿走 $k$ 枚硬币所需加入的最少硬币数。",
+      "transformed_statement": "把箱子按初始硬币数降序排列，问题等价于选择一个不会超过 $k$ 的最大前缀，并只补足该前缀与 $k$ 的差值；改变原有取箱顺序不可能带来更低成本。",
+      "key_observations": [
+        "最优方案不会让原本较小的箱子越过原本更大的箱子：若选了 $a_i$ 却没选 $a_j>a_i$，把给 $i$ 的增量改加给 $j$ 成本更低且不妨碍达到目标。",
+        "因此只需将箱子按硬币数降序排列，考虑贪婪取走的最大箱子前缀；取到下一个箱子就会使总和超过 $k$。",
+        "设该前缀和为 $s\\le k$，只给其中最大箱子补上 $k-s$ 枚硬币即可保持取箱顺序并恰好达到 $k$，所以最小增量就是 $k-s$。"
+      ],
+      "solution_brief": "将箱子按硬币数降序排列，累加能在不超过 $k$ 的最大前缀，记其和为 $s$。给该前缀中的最大箱子补 $k-s$ 枚硬币，取箱集合不变且恰好达到 $k$；交换论证表明改变原顺序不会更优。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:01:28+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 944,
+      "problem_key": "2042B",
+      "contest_id": 2042,
+      "title": "Game with Colored Marbles",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/2042/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/136886",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "games",
+        "greedy"
+      ],
+      "statement_brief": "有$n$颗带颜色的弹珠，Alice先手、双方轮流各取走一颗直到取完。Alice每种取过的颜色得$1$分，若该颜色的所有弹珠都由她取走再得$1$分；双方最优对弈，求Alice最终得分。",
+      "transformed_statement": "按颜色出现次数分成单例颜色和非单例颜色：单例弹珠争夺的是价值$2$的独占收益；其余颜色通过对称跟取建模为双方各分到该色，Alice每色稳定获得$1$分。",
+      "key_observations": [
+        "每种颜色只有一颗弹珠时，拿走它会让自己获得该色的两项得分；因此双方都会优先拿这类弹珠，Alice最终拿到其中的$\\lceil u/2\\rceil$颗。",
+        "唯一颜色弹珠被处理完后，每种剩余颜色至少有两颗；对手首次拿某色后立即拿同色，可保证该色由双方分得，因此Alice恰好从每种颜色获得$1$分。",
+        "对非唯一颜色采用上述对称应对策略时，Bob能阻止Alice独占任何一种颜色，所以剩余$k$种颜色至多贡献$k$分；结合应对策略可达到该上界。"
+      ],
+      "solution_brief": "统计每种颜色出现次数。设出现一次的颜色数为$u$，出现至少两次的颜色数为$k$；唯一弹珠贡献$2\\lceil u/2\\rceil$分，其余颜色在双方分取下各贡献$1$分，答案为$2\\lceil u/2\\rceil+k$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:01:09+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 945,
+      "problem_key": "2042C",
+      "contest_id": 2042,
+      "title": "Competitive Fishing",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/2042/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/136886",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy"
+      ],
+      "statement_brief": "给定按大小排列的鱼串，字符 $0$ 表示 Alice 捕获、$1$ 表示 Bob 捕获。必须把鱼按顺序划分为若干个非空连续组，第 $i$ 组中的鱼价值为 $i-1$，要求 Bob 总分至少比 Alice 高 $k$，求所需的最少组数；若无法达到则报告无解。",
+      "transformed_statement": "把每个组间分隔线视为一次独立选择：该分隔线会让其右侧所有鱼的价值增加 $1$，所以它的贡献是右侧鱼中 Bob 数减 Alice 数的后缀平衡值。问题转化为选最少条分隔线，使贡献总和达到 $k$。",
+      "key_observations": [
+        "每在相邻两条鱼之间设置分组边界，边界后的所有鱼价值都增加 $1$，因此该边界对分差的贡献等于后缀中 Bob 数减 Alice 数。",
+        "设每条可能边界的贡献为后缀平衡值，则最终 Bob 与 Alice 的分差就是所选边界贡献之和，且选出 $r$ 个边界恰好形成 $r+1$ 组。",
+        "固定边界数量时，选择贡献最大的若干个边界可得到最大分差，因此将所有后缀平衡值降序排列并依次选取即可最早达到 $k$。",
+        "若所有正贡献之和仍小于 $k$，则任何边界方案都无法达标；否则达到阈值时所选边界数加一就是最少组数。"
+      ],
+      "solution_brief": "计算每个位置作为分组边界时对应的后缀平衡值，降序排序后依次累加最大的贡献；首次使总和达到 $k$ 时，答案为已选贡献数加 $1$，无法达到则报告无解。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:00:56+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 946,
+      "problem_key": "2042D",
+      "contest_id": 2042,
+      "title": "Recommendations",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2042/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/136886",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "data structures",
+        "implementation",
+        "sortings",
+        "two pointers"
+      ],
+      "statement_brief": "每位用户喜欢的歌曲构成区间 $[l_i,r_i]$。若另一用户的区间完全包含它，则称为预测者；要求统计所有预测者共同喜欢、但该用户尚未喜欢的歌曲数量，没有预测者时答案为 $0$。",
+      "transformed_statement": "对每个区间，先求所有包含它的区间的交集 $[L,R]$；由于该交集包含自身，答案等于左侧区间 $[L,l_i)$ 与右侧区间 $(r_i,R]$ 的长度之和。右端点和左端点可通过一次扫描及其镜像分别求出。",
+      "key_observations": [
+        "相同区间的用户答案必为 $0$，且这些区间作为预测者时只需保留其边界信息，不会改变其他交集。",
+        "按 $l$ 升序、$r$ 降序处理时，当前区间的所有包含者都已出现；已处理区间中满足 $r_j\\ge r_i$ 的最小右端点就是预测者交集的右端点。",
+        "预测者的公共区间包含当前区间，因此新增推荐轨道只可能位于当前区间左侧或右侧，可将两侧分别计算。",
+        "将所有区间关于坐标方向反转后重复右侧计算，即可对称得到公共区间左端点，避免重新设计另一套扫描逻辑。"
+      ],
+      "solution_brief": "先处理重复区间并按 $l$ 升序、$r$ 降序扫描，用有序集合找不小于 $r_i$ 的最小右端点，得到右侧贡献；反转区间后同法得到左侧贡献，总复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:00:36+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 947,
+      "problem_key": "2042E",
+      "contest_id": 2042,
+      "title": "Vertex Pairs",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/2042/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/136886",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "data structures",
+        "dfs and similar",
+        "divide and conquer",
+        "greedy",
+        "implementation",
+        "trees"
+      ],
+      "statement_brief": "给定一棵含 $2n$ 个顶点的树，每个编号 $1..n$ 恰好出现在两个顶点上，顶点 $i$ 的费用为 $2^i$。选择一个连通顶点集合，使每个编号至少出现一次，求总费用最小的集合并输出其顶点。",
+      "transformed_statement": "把集合固定为包含某个必选根的连通子树：选中一个顶点就必须选中它到根的整条祖先路径。问题转化为在“必选、禁选、未定”三种状态之间传播约束，并按编号降序贪心决定未定顶点是否排除。",
+      "key_observations": [
+        "由于各顶点权值是不同的二次幂，最小总费用等价于按顶点编号从大到小优先排除顶点的字典序最小集合。",
+        "固定一个必选根后，连通性等价于“选中顶点时其所有祖先也选中”，因此可把约束转化为祖先闭包。",
+        "同一编号的两点都在某个子树内时，该子树根及其到根路径上的顶点必须选中，否则无法连通覆盖这两个点。",
+        "排除一个未确定顶点会排除其整棵子树；若因此排除某编号的一处出现，另一处就必须选中，所有状态传播总次数为线性。"
+      ],
+      "solution_brief": "枚举编号为 $1$ 的两个顶点分别作为必选根。对每种根先标记各编号两点到根的 LCA 路径为必选，再按顶点编号降序处理：未确定点优先排除并传播子树禁选，否则保留。用三态标记和路径跳转维护传播，比较两种结果的二进制费用，复杂度 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T04:00:13+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 948,
+      "problem_key": "2042F",
+      "contest_id": 2042,
+      "title": "Two Subarrays",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/2042/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/136886",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "data structures",
+        "dp",
+        "implementation",
+        "matrices"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组 $a,b$，区间 $[l,r]$ 内一个非空子数组的代价是其中所有 $a_i$ 之和加上左右端点的 $b$ 值，单元素子数组的端点贡献计算两次。需支持修改任意 $a_p$ 或 $b_p$，以及查询区间内两个非空且不重叠子数组的最大总代价。",
+      "transformed_statement": "将每个位置视为两个子数组边界选择过程中的一次状态转移：四个边界依次把状态从 $0$ 推进到 $4$，开启中的子数组累加 $a_i$，每放置一个边界累加 $b_i$。于是任意区间被抽象成 5 状态最大值转移矩阵，答案是该区间从状态 $0$ 到状态 $4$ 的最优转移。",
+      "key_observations": [
+        "把两个子数组的边界选择过程压缩为 5 个状态：已选边界数分别为 $0,1,2,3,4$，其中奇数状态表示当前子数组已开启；这样每个位置只需决定保持状态或新增边界。",
+        "选择某个位置作为边界时贡献对应的 $b_i$，若当前处于开启状态则额外贡献 $a_i$；同一位置可同时作为左右端点，因此允许 $0\\to2$ 和 $2\\to4$ 的直接转移，恰好覆盖单元素子数组。",
+        "每段区间可表示为 $5\\times5$ 的最大加法转移矩阵，矩阵元素记录从起始边界状态到结束状态的最大贡献；相邻区间通过枚举中间状态取最大值合并，从而支持区间查询与单点修改。",
+        "矩阵合并只需考虑 $0\\le i\\le j\\le k\\le4$ 的状态三元组，共 $35$ 种，因此线段树每次操作耗时为 $O(35\\log n)$。"
+      ],
+      "solution_brief": "用 5 状态 DP 描述两个子数组的四个边界，单点位置形成状态转移矩阵；在线段树中维护区间矩阵，区间合并按中间状态取最大值，修改叶子后重算路径即可。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:59:52+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 949,
