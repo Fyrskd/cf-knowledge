@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2940,
+    "total_problems": 2947,
     "source_total_problems": 2948,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2940,
-    "with_editorial_brief": 2669,
-    "with_solution_brief": 2670,
-    "missing_editorial_brief": 270,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2947,
+    "with_editorial_brief": 2675,
+    "with_solution_brief": 2676,
+    "missing_editorial_brief": 271,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2002,
+    "ai_override_count": 2009,
     "primary_topic_count": 13,
-    "contest_count": 447,
+    "contest_count": 448,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 928,
+    "基础实现与模拟": 177,
+    "构造与贪心": 930,
+    "数论与同余": 319,
+    "数据结构": 277,
+    "字符串": 156,
     "动态规划与状态设计": 247,
     "交互": 95,
-    "数据结构": 276,
-    "基础实现与模拟": 175,
-    "数论与同余": 318,
     "组合计数与概率": 232,
     "图论与网络流": 178,
     "几何": 70,
     "树结构": 149,
     "博弈": 96,
-    "字符串": 155,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1718,
-    "missing_editorial": 270,
+    "missing_editorial": 271,
+    "ai_generated_with_editorial": 1724,
     "ai_generated_partial_editorial": 60,
     "manual_override": 891,
     "statement_derived": 1
@@ -90892,6 +90892,202 @@ window.CF_INSIGHTS_DATA = {
             "为避免多个任务同时换序，在收益中加入足够小的互异扰动；按变换后收益处理任务，并用并查集判断截止日前是否还有可用日期。"
           ],
           "solutionBrief": "将截止日期约束视为拟阵约束，对加入类别偏置后的收益做贪心选取；在二维参数平面中搜索，使最优集合恰好包含三类各指定数量，无法达到则输出 $-1$。复杂度为 $O(n\\log n\\log C)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1742,
+      "name": "Codeforces Round 827 (Div. 4)",
+      "date": "2022-10-13",
+      "url": "https://codeforces.com/contest/1742",
+      "type": "Div. 4",
+      "problemCount": 7,
+      "maxRating": 1500,
+      "problems": [
+        {
+          "key": "1742A",
+          "index": "A",
+          "slot": "A",
+          "title": "Sum",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1742/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/107962",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "每组给出三个非负整数 $a,b,c$，需要判断其中是否有一个数等于另外两个数之和。对每组独立输出 YES 或 NO。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1742B",
+          "index": "B",
+          "slot": "B",
+          "title": "Increasing",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1742/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/107962",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一个含正整数的数组，每组数据允许任意重排元素，要求判断能否排列成严格递增序列，即满足 $a_1<a_2<\\cdots<a_n$，并输出 YES 或 NO。",
+          "transformedStatement": "问题等价于判断数组是否包含重复值：若所有元素不同，将它们升序排列即可形成严格递增序列；若有重复值，则任何排列都无法严格递增。",
+          "keyObservations": [
+            "若数组中存在两个相等元素，它们无论如何排列都不可能同时满足严格递增，因此答案必为 NO。",
+            "严格递增排列存在当且仅当所有元素互不相同；去重后排序即可得到唯一的可行顺序，因此只需检查重复值。"
+          ],
+          "solutionBrief": "对每组数组检查是否有重复元素：有重复则输出 NO；否则所有元素互异，按升序排列后必然严格递增，输出 YES。可排序后比较相邻元素，或直接用集合判断。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1742C",
+          "index": "C",
+          "slot": "C",
+          "title": "Stripes",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1742/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/107962",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个由红色整行和蓝色整列依次绘制得到的 $8\\times8$ 网格，后绘制的条纹会覆盖先前颜色。根据最终网格判断最后绘制的是红色行还是蓝色列。",
+          "transformedStatement": "把问题转化为寻找最后一条未被覆盖的完整条纹：若网格中有一行的 8 个格子全是 `R`，最后操作是红行；否则最后操作是蓝列。",
+          "keyObservations": [
+            "最后绘制的条纹不会再被其他条纹覆盖，因此它对应的整行或整列会完整呈现为同一种颜色。",
+            "红色只能覆盖整行、蓝色只能覆盖整列；若存在全为 `R` 的行，说明该红行位于最后，否则最后绘制的必然是蓝色列。"
+          ],
+          "solutionBrief": "逐个测试用例检查 8 行是否存在完全由 `R` 组成的行；若存在输出 `R`，否则输出 `B`。因为最后绘制的条纹会完整保留。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1742D",
+          "index": "D",
+          "slot": "D",
+          "title": "Coprime",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1742/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/107962",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组，可选择任意两个位置（题目允许两位置相同）。若这两个位置上的数互质，则得到它们的下标和；要求所有合法选择中的最大值，若不存在则输出 $-1$。",
+          "transformedStatement": "把每个数值压缩为它在数组中最后一次出现的下标。数值对是否可行只由其最大公约数决定，而固定数值对的最优下标和必由两个最后出现位置取得。",
+          "keyObservations": [
+            "由于所有元素都不超过 $1000$，数组中不同数值的种类数至多为 $1000$，因此可以按数值而非按位置枚举候选。",
+            "对于固定的两个数值 $x,y$，只需保留它们最后出现的位置；若 $\\\\gcd(x,y)=1$，这两个最晚位置必然使下标和最大。",
+            "问题因此转化为枚举所有出现过的数值对，检查互质性并取对应最大下标和；允许两个位置相同，所以同一个数值为 $1$ 时也可形成合法选择。"
+          ],
+          "solutionBrief": "记录每个数值在数组中的最大下标，然后枚举所有出现过的数值对。若两值的最大公约数为 $1$，用对应下标和更新答案；没有合法组合则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1742E",
+          "index": "E",
+          "slot": "E",
+          "title": "Scuza",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1742/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/107962",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 阶楼梯，第 $i$ 阶比前一阶高 $a_i$ 米；每个询问给出腿长 $k$，Timur 只能依次攀爬高度差不超过 $k$ 的台阶，且询问相互独立。对每个询问，求他最多能到达的绝对高度。",
+          "transformedStatement": "把每个询问转化为：找最长前缀，使该前缀所有 $a_i$ 都不超过 $k$；答案就是这个前缀的元素和。用前缀最大值表示可行性后，问题变成在单调数组中找最后一个不超过 $k$ 的位置。",
+          "keyObservations": [
+            "能连续爬到第 $i$ 阶当且仅当前缀中的最大台阶高度不超过 $k$，因为每一阶都必须按顺序通过。",
+            "预处理前缀和 $b_i=a_1+\u0002+a_i$ 后，爬到第 $i$ 阶的总高度可直接由 $b_i$ 得到，避免逐次累加。",
+            "定义前缀最大值 $m_i=\\max(a_1,\\ldots,a_i)$，其必然非递减，因此每个询问只需找最大的 $i$ 使 $m_i\\le k$。"
+          ],
+          "solutionBrief": "先计算台阶高度前缀和与前缀最大值。对每个腿长 $k$，在非递减的前缀最大值中二分查找最后一个不超过 $k$ 的位置，输出对应前缀和；找不到时答案为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1742F",
+          "index": "F",
+          "slot": "F",
+          "title": "Smaller",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1742/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/107962",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "有两个初始均为“a”的字符串 $s,t$。每次选择其中一个字符串，将给定字符串 $x$ 连续追加 $k$ 次；操作后可分别重排两串字符，判断是否能使 $s$ 的字典序严格小于 $t$。",
+          "transformedStatement": "把每次询问转化为字符多重集合的极值比较：$s$ 取升序排列、$t$ 取降序排列。于是先判断 $t$ 是否含非 $a$，否则只需判断两串是否都由 $a$ 构成并比较长度。",
+          "keyObservations": [
+            "对固定的字符多重集合，将 $s$ 按字典序升序、$t$ 按降序排列最有利；这样能让 $s$ 的首字符尽量小、$t$ 的首字符尽量大。",
+            "由于两串初始都含有字符 $a$，只要 $t$ 中出现非 $a$ 字符，排序后 $t$ 首字符大于 $s$ 的首字符 $a$，答案必为“YES”。",
+            "当 $t$ 仍全为 $a$ 时，只有 $s$ 也全为 $a$ 才可能更小，此时问题退化为比较长度：必须满足 $|s|<|t|$。"
+          ],
+          "solutionBrief": "维护两串长度以及是否出现过非 $a$ 字符。若 $t$ 出现非 $a$，直接输出“YES”；否则仅当 $s$ 没有非 $a$ 且 $|s|<|t|$ 时输出“YES”，每次操作按追加次数乘字符串长度更新长度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1742G",
+          "index": "G",
+          "slot": "G",
+          "title": "Orray",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1742/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/107962",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个非负整数数组，可以任意重排其元素。重排后定义每个前缀的按位或值组成新数组，要求输出一种排列，使这个前缀按位或数组按字典序最大。",
+          "transformedStatement": "把排列过程视为逐步扩展当前二进制掩码：放入一个元素后，状态变为当前掩码与该元素的按位或；每一步优先让这个新状态最大，所有位覆盖后剩余元素不再影响目标。",
+          "keyObservations": [
+            "固定已选元素的前缀或值后，下一项的前缀或值就是它与候选元素的按位或；因此每一步选结果最大的候选，能直接最大化当前字典序位置。",
+            "每次真正有用的选择都会至少新增一个二进制位，而元素不超过 $10^9$，所以至多处理约 $30$ 个关键位置；之后所有可出现的位都已覆盖。",
+            "关键位置选完后，继续加入剩余元素不会改变已经确定的前缀或值，因而剩余元素可以按任意顺序输出。"
+          ],
+          "solutionBrief": "维护当前前缀按位或值，反复在未使用元素中选择使新按位或值最大的元素并放到答案前面，最多进行约 $30$ 次；随后直接输出所有剩余元素。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
