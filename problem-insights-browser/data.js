@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1893,
+    "total_problems": 1901,
     "source_total_problems": 1901,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 1893,
-    "with_editorial_brief": 1651,
-    "with_solution_brief": 1652,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1901,
+    "with_editorial_brief": 1659,
+    "with_solution_brief": 1660,
     "missing_editorial_brief": 241,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 834,
+    "ai_override_count": 842,
     "primary_topic_count": 13,
-    "contest_count": 299,
+    "contest_count": 300,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 80,
-    "构造与贪心": 640,
+    "字符串": 81,
+    "构造与贪心": 644,
     "图论与网络流": 117,
     "动态规划与状态设计": 179,
-    "数论与同余": 178,
-    "组合计数与概率": 146,
+    "数论与同余": 179,
+    "组合计数与概率": 147,
     "数据结构": 155,
     "几何": 40,
     "树结构": 121,
     "代数、矩阵与多项式": 17,
     "交互": 74,
     "基础实现与模拟": 80,
-    "博弈": 66
+    "博弈": 67
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 727,
+    "ai_generated_with_editorial": 735,
     "ai_generated_partial_editorial": 33,
     "missing_editorial": 241,
     "manual_override": 891,
@@ -11262,6 +11262,244 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：一次全递增询问能定位主路径叶 z，之后左右限制函数把问题拆开。递归恢复左右子树后，用常数模式的比较询问不断决定挂接顺序，最终得到完整 min-max 树；回答阶段直接在树上求值。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2200,
+      "name": "Codeforces Round 1084 (Div. 3)",
+      "date": "2026-02-27",
+      "url": "https://codeforces.com/contest/2200",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "2200A",
+          "index": "A",
+          "slot": "A",
+          "title": "Eating Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2200/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/151625",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 名玩家围坐成环，每次轮到一名玩家时，若他还有盘子就必须吃掉一个，随后按编号循环轮流；可以任意选择谁先开始。所有盘子吃完后，最后吃掉盘子的玩家获胜，要求统计可能获胜的玩家数量。",
+          "transformedStatement": "把过程按完整的 $n$ 人循环分组：设最大盘子数为 $m$，先观察前 $n(m-1)$ 次行动后的剩余情况，再通过选择起始玩家控制最后一轮中哪个最大值位置最后行动。",
+          "keyObservations": [
+            "设所有盘子都吃完前的最大盘子数为 $m$；经过 $n(m-1)$ 次轮流后，每位玩家至多还剩一个盘子，因此只有 $a_i=m$ 的玩家可能吃到最后一个盘子。",
+            "盘子数小于 $m$ 的玩家在关键阶段前已经耗尽盘子，无法成为最后一位进食者，从而候选人恰好是数组中的最大值位置。",
+            "对于任意满足 $a_i=m$ 的玩家，让编号为 $(i\\bmod n)+1$ 的玩家先开始，循环顺序会使玩家 $i$ 最后完成自己的剩余进食，因此每个最大值位置都确实可以获胜。"
+          ],
+          "solutionBrief": "令 $m=\\max(a)$。经过 $n(m-1)$ 次行动后，只有盘子数为 $m$ 的玩家仍可能剩一个盘子；对任意这样的玩家，让其下一位玩家先手即可使他最后进食。因此答案就是数组中最大值的出现次数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2200B",
+          "index": "B",
+          "slot": "B",
+          "title": "Deletion Sort",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2200/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/151625",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一个正整数数组。每回合若数组已非递减，游戏立即结束；否则可任选一个元素删除。求通过合理删除后，游戏结束时数组所能剩下的最少元素数量。",
+          "transformedStatement": "问题等价于判断数组是否已有相邻逆序对：若没有，无法开始删除；若有，可利用这对元素构造出只剩一个元素的合法删除序列。",
+          "keyObservations": [
+            "若初始数组非递减，游戏会立即结束，不能进行任何删除，因此答案必为 $n$。",
+            "只要存在相邻逆序对 $a_i>a_{i+1}$，就能先删除其余元素保留这两个数，再删除 $a_i$，最终只剩 $1$ 个元素。",
+            "数组是否存在相邻逆序对完全决定答案：不存在时为 $n$，存在时通过上述构造可达到理论下界 $1$。"
+          ],
+          "solutionBrief": "扫描数组检查是否存在相邻逆序对。若数组本身非递减，不能删除任何元素，答案为 $n$；否则保留一对逆序相邻元素，删去其他元素后再删去左元素，答案为 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2200C",
+          "index": "C",
+          "slot": "C",
+          "title": "Specialty String",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2200/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/151625",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个只含小写字母的字符串。每次可选择两个相等字符，且它们之间全是星号，并把这两个字符改成星号；判断能否通过若干次操作把整个字符串变成全是星号。",
+          "transformedStatement": "忽略已经变成的星号，把每次操作看成从当前序列中删除一对相邻且相等的字符；问题转化为判断能否反复删除这类字符对直至序列为空。",
+          "keyObservations": [
+            "把两个端点及其间的星号整体视为一段；操作等价于删除当前字符串中一对相邻且相等的字符，星号无需单独处理。",
+            "删除相邻相等字符不会破坏其他可删除对，只可能让新的相等字符相邻，因此操作顺序不影响最终能否清空。",
+            "反复寻找并删除相邻相等字符，最多进行 $n/2$ 轮；若最终序列为空则可获胜，否则不可能清空。"
+          ],
+          "solutionBrief": "将题目转化为不断删除相邻相等字符：扫描序列并删除找到的字符对，重复至无法删除。若序列最终为空输出 YES，否则输出 NO；也可用栈在线完成同样过程。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2200D",
+          "index": "D",
+          "slot": "D",
+          "title": "Portal",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2200/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/151625",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一个排列和位于两个边界之间的传送门。每次可取某个传送门旁边的一个元素，移到另一个传送门的对应一侧；重复操作后，求能够得到的字典序最小排列，传送门本身不参与比较。",
+          "transformedStatement": "把两传送门之间的连续区间视为块 $A$，把其余元素按原相对顺序视为序列 $B$。操作等价于循环旋转 $A$，并将整块 $A$ 移到 $B$ 的某个位置；两部分的元素归属和各自顺序约束不变。",
+          "keyObservations": [
+            "两个传送门之间的元素集合始终不变，内部只能循环移位；其余元素的相对顺序也始终不变，因此问题只剩下选择一段循环起点和插入位置。",
+            "令中间区间为 $A$，其余元素按原顺序组成 $B$；要使整体字典序最小，$A$ 的首元素必须是其中最小值，否则可通过循环移位减小当前位置。",
+            "确定 $A$ 的最小值后，应将整段 $A$ 放到 $B$ 中第一个大于该最小值的元素之前；若不存在这样的元素，则放在 $B$ 末尾，从而尽早放置更小的首元素。"
+          ],
+          "solutionBrief": "将两传送门之间的区间记为 $A$，其余元素记为 $B$。把 $A$ 循环移位到最小值开头，再按原顺序将整段 $A$ 插入 $B$ 中第一个大于该最小值的元素之前；若不存在则放到末尾。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2200E",
+          "index": "E",
+          "slot": "E",
+          "title": "Divisive Battle",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2200/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/151625",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "games",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数数组，Alice 和 Bob 轮流行动；若数组已非递减则立即结束，否则当前玩家可把一个 $x$ 拆成原位置上的两个因子 $y,z$，满足 $x=yz$ 且 $1<y,z<x$。无法操作或数组变为非递减时结束，最终非递减则 Bob 胜，否则 Alice 胜，求最优策略下的赢家。",
+          "transformedStatement": "将每个数按素因子结构分类：含多个不同素因子的数可直接用来固定制造逆序；其余数都是 $1$ 或素数幂，再把它们压缩为 $1$ 或唯一素因子，转化为判断该序列是否非递减。",
+          "keyObservations": [
+            "若某个数含有两个不同素因子 $p<q$，可将其按顺序拆成 $x/p$ 和 $p$；前者是 $q$ 的倍数且大于 $p$，因此会永久保留逆序，Alice 必胜。",
+            "若不存在含两个不同素因子的数，则每个元素只能是 $1$ 或单一素数的幂，可将其映射为 $1$ 或唯一素因子，忽略幂次。",
+            "映射数组非递减时，所有可拆分操作结束后原数组也必然非递减，因此 Bob 获胜；否则逆序位置可被 Alice 拆出对应素数，制造无法消除的逆序。"
+          ],
+          "solutionBrief": "先判断数组是否已非递减。若存在含两个不同素因子的元素，Alice 用固定顺序拆分制造永久逆序；否则把元素映射为 $1$ 或唯一素因子，检查映射数组是否非递减，据此判定 Bob 或 Alice。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2200F",
+          "index": "F",
+          "slot": "F",
+          "title": "Mooclear Reactor 2",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2200/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/151625",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个粒子，每个粒子有能量 $x$ 和反应性 $y$；若选中它，最多只能与 $y$ 个其他选中粒子共存。Bessie 必须从商店购买恰好一个粒子但可以不使用它，并分别求购买每个商店粒子后可获得的最大总能量。",
+          "transformedStatement": "把一个合法的已有粒子集合按大小 $k$ 处理：所有成员都必须满足 $y\\geq k-1$，所以固定大小时只需取符合阈值的最大能量。对商店粒子则预留一个位置，把问题转成查询已有粒子数量不超过其 $y$ 时的最大总能量。",
+          "keyObservations": [
+            "若最终选了 $k$ 个粒子，则每个被选粒子都必须满足 $y\\geq k-1$；因此固定规模后只需在符合阈值的粒子中选能量最大的 $k$ 个。",
+            "从 $k=n$ 递减时，可逐步加入满足 $y\\geq k-1$ 的粒子，并维护当前最大的 $k$ 个能量值；删除最小值即可得到该规模的最优总能量。",
+            "购买粒子的反应性为 $y$ 时，除它以外最多只能选 $y$ 个已有粒子，因此预处理“已有粒子数量不超过 $y$ 时的最大能量”即可直接回答该购买方案。",
+            "购买的粒子可以不使用，所以每个询问答案是“不使用它得到的全局最优值”和“使用它并加上 $x$”两者的较大值。"
+          ],
+          "solutionBrief": "先按可容纳的总粒子数阈值递减，用最小堆维护符合条件的最大能量集合，求出不使用商店粒子的最优值。再将集合容量改为预留商店粒子的版本，得到已有粒子数量上限的前缀最优值；对商店粒子 $(x,y)$，答案为全局最优值与 $x+f[y+1]$ 的较大者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2200G",
+          "index": "G",
+          "slot": "G",
+          "title": "Operation Permutation",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2200/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/151625",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "给定初始整数 $x$ 和 $n$ 个操作，每个操作是加、减、乘或实数除以一个正整数。操作会被随机打乱后依次执行，要求所有 $n!$ 种顺序下最终 $x$ 的期望值，并将该有理数按模 $10^9+7$ 输出。",
+          "transformedStatement": "把每个操作表示为对当前值的加法贡献或乘法缩放：加法项最终会乘上它之后出现的所有乘法因子。于是问题转化为计算随机排列中每个加法项后方乘法子集乘积的期望，以及初始值经过全部乘法因子的贡献。",
+          "keyObservations": [
+            "将减法视为加上负数、除法视为乘以模逆元后，所有操作都能统一分析为加法贡献与乘法缩放。",
+            "一个加法项的最终贡献等于其数值乘以后方所有乘法因子的乘积，因此可独立累加各加法项的期望贡献。",
+            "对固定加法项，后方乘法操作的数量在 $0$ 到 $m$ 间等概率；固定数量为 $k$ 时，它们构成所有大小为 $k$ 的子集中的均匀随机子集。",
+            "用 $dp[i][j]$ 维护前 $i$ 个乘法因子中大小为 $j$ 的子集乘积之和，转移对应选取或跳过当前因子，从而得到各阶对称和。"
+          ],
+          "solutionBrief": "把减法和除法统一成加法、乘法后，设有 $m$ 个乘法因子。用二维 DP 求各大小子集的乘积和，按加法项后方乘法子集数量的均匀分布计算其期望贡献，再加上初始 $x$ 经过全部乘法因子的贡献；总复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2200H",
+          "index": "H",
+          "slot": "H",
+          "title": "Six Seven",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/2200/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/151625",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "divide and conquer",
+            "math",
+            "number theory",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "定义 $f_i(j)$ 为 $i$ 的最大幂次，使 $i^k$ 整除 $j$；当 $f_6(j)>f_7(j)$ 时称 $j$ 为特殊数。每次操作把数组所有元素同时加 $1$，求让所有元素同时变为特殊数所需的最少操作次数，若不可能则输出 $-1$。",
+          "transformedStatement": "将总操作数写成 $m=42q+k$，其中 $0\\le k<42$。先处理加上 $k$ 后未被 $42$ 整除的元素；对被 $42$ 整除的元素替换为 $(a_i+k)/42$，剩余的 $q$ 次压缩为同一个递归问题。",
+          "keyObservations": [
+            "若 $42\\nmid x$，则 $f_6(x)>f_7(x)$ 等价于 $6\\mid x$；若 $42\\mid x$，除以 $42$ 不改变两者差值的符号。",
+            "固定 $k=m\\bmod 42$ 后，$42\\nmid(a_i+k)$ 的元素只能通过条件 $6\\mid(a_i+k)$ 判定；其余元素可压缩为 $\\frac{a_i+k}{42}$。",
+            "对压缩数组递归得到最少操作数 $m'$ 后，原问题对应的操作数必为 $m=42m'+k$，枚举全部 $k$ 取最小值。",
+            "每个元素在每层递归只产生一个对应元素，且数值每层至少缩小约 $42$ 倍，因此总处理量为 $O(n\\log_{42}10^9)$。"
+          ],
+          "solutionBrief": "利用特殊数的递归性质，枚举总操作数模 $42$ 的余数 $k$。不被 $42$ 整除的元素检查是否被 $6$ 整除，被 $42$ 整除的元素压缩后递归处理；若递归答案为 $m'$，则候选答案为 $42m'+k$，取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
