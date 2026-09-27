@@ -495,6 +495,17 @@
     "date": "2023-06-04"
   },
   {
+    "id": 1841,
+    "name": "Educational Codeforces Round 150 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1686580500,
+    "relativeTimeSeconds": 103923828,
+    "date": "2023-06-12"
+  },
+  {
     "id": 1834,
     "name": "Codeforces Round 879 (Div. 2)",
     "type": "CF",
