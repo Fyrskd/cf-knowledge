@@ -957,6 +957,17 @@
     "date": "2023-12-24"
   },
   {
+    "id": 1915,
+    "name": "Codeforces Round 918 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1703774100,
+    "relativeTimeSeconds": 86722544,
+    "date": "2023-12-28"
+  },
+  {
     "id": 1916,
     "name": "Good Bye 2023",
     "type": "CF",
