@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2190,
+    "total_problems": 2197,
     "source_total_problems": 2197,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2190,
-    "with_editorial_brief": 1937,
-    "with_solution_brief": 1938,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2197,
+    "with_editorial_brief": 1944,
+    "with_solution_brief": 1945,
     "missing_editorial_brief": 252,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1131,
+    "ai_override_count": 1138,
     "primary_topic_count": 13
   },
   "records": [
@@ -39846,6 +39846,307 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 975,
+      "problem_key": "2043A",
+      "contest_id": 2043,
+      "title": "Coin Transformation",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2043/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/137801",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "math"
+      ],
+      "statement_brief": "初始有一枚价值为 $n$ 的硬币。每次可将一枚价值 $x>3$ 的硬币变成两枚价值为 $\\\\lfloor x/4\\\\rfloor$ 的硬币，操作次数不限；求最终最多能拥有多少枚硬币。",
+      "transformed_statement": "把逐枚转换改为按层处理：同一层的硬币价值相同，因此每轮同时把当前价值除以 $4$ 并让硬币数翻倍；当价值降到不超过 $3$ 时停止。",
+      "key_observations": [
+        "只要存在价值大于 $3$ 的硬币，就应继续转换，因为一次转换会让硬币数量增加且不会妨碍后续转换，因此最优策略是一直转换到所有硬币价值都不超过 $3$。",
+        "同一轮中所有硬币价值相同，可以整体处理：经过 $k$ 轮后有 $2^k$ 枚硬币，每枚价值为 $\\\\left\\\\lfloor n/4^k\\\\right\\\\rfloor$，从而无需逐枚模拟。",
+        "每轮只需将当前价值整除 $4$ 并将数量翻倍，直到当前价值不超过 $3$；轮数为 $O(\\\\log n)$，且避免了浮点数计算对对数取整的误差。"
+      ],
+      "solution_brief": "从一枚硬币开始，反复执行“价值除以 $4$、数量乘以 $2$”，只要当前价值大于 $3$ 就继续。循环结束时的硬币数量即为答案，单个测试用例复杂度为 $O(\\\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:38:51+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 976,
+      "problem_key": "2043B",
+      "contest_id": 2043,
+      "title": "Digits",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2043/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/137801",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定整数 $n$ 和数字 $d$，把数字 $d$ 连写恰好 $n!$ 次形成一个数。要求按升序输出 $1$ 到 $9$ 中能够整除该数的所有奇数。",
+      "transformed_statement": "把目标数视为长度为 $n!$ 的重复数字串，并利用重复块的倍数关系把 $n$ 截断到 $7$；之后将问题转为对五个奇数直接做模运算。",
+      "key_observations": [
+        "若长度 $L$ 是较短长度 $l$ 的倍数，则由同一数字重复组成的长度为 $L$ 的数是长度为 $l$ 的数的整数倍；由于 $n!$ 是 $(n-1)!$ 的倍数，可整除的奇数集合随 $n$ 增大只会保留或增加。",
+        "当 $n=7$ 时，长度为 $7!$ 的全 1 数已能被 $1、3、7、9$ 整除；乘以数字 $d$ 不会破坏这些整除关系，而是否被 $5$ 整除只取决于末位 $d$，因此所有 $n\\ge 7$ 的答案都已稳定。",
+        "将 $n$ 截断为不超过 $7$ 后，重复数字的长度最多为 $7!=5040$，可以直接构造该数并分别测试 $1、3、5、7、9$ 的余数，避免处理原本巨大且无法显式构造的长度。"
+      ],
+      "solution_brief": "将 $n$ 替换为 $\\min(n,7)$，构造长度为 $n!$、每位为 $d$ 的数；依次计算它对 $1、3、5、7、9$ 的余数，输出余数为零的奇数。$n\\ge7$ 时答案与截断前相同。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:38:35+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 977,
+      "problem_key": "2043C",
+      "contest_id": 2043,
+      "title": "Sums on Segments",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/2043/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/137801",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "data structures",
+        "dp",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定一个数组，其中至多一个元素不是 $1$ 或 $-1$。允许选取任意连续非空子数组，也可选空子数组（和为 $0$），要求输出所有能得到的不同子数组和，并按升序排列。",
+      "transformed_statement": "把所有子数组按是否包含那个特殊元素分为两类：分别求两类和集合的最小值与最大值，将它们视为整数区间，最后取两个区间的并。通过前缀和差值和分位置维护前缀极值来得到区间端点。",
+      "key_observations": [
+        "当数组元素全为 $1$ 或 $-1$ 时，固定左端点并右移右端点，子数组和每次只增减 $1$，因此能覆盖该左端点下最小值到最大值之间的所有整数；所有区间都包含空子数组产生的 $0$，整体结果也是一个整数区间。",
+        "不包含特殊元素的子数组构成一个包含 $0$ 的连续和区间；包含特殊元素的子数组去掉该元素后，其和同样覆盖连续区间，加回特殊值后只是整体平移，因此答案是两个整数区间的并。",
+        "子数组和可写为 $pref_{r+1}-pref_l$；固定右端点时，最大值由最小的合法前缀和产生，最小值由最大的合法前缀和产生，从而可在线维护两侧前缀极值并分别求出两类区间的端点。",
+        "最终只需合并“不含特殊元素”和“包含特殊元素”的两个整数区间；相交时合并为一个区间，否则分别输出，避免逐个枚举子数组。"
+      ],
+      "solution_brief": "定位唯一可能不为 $\u00177$ 的元素，将子数组按是否包含它分成两类。用前缀和及特殊位置两侧的前缀极值，在线求两类子数组和的最小值和最大值；每类答案都是连续整数区间，最后合并并升序输出。复杂度为每组 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:38:07+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 978,
+      "problem_key": "2043D",
+      "contest_id": 2043,
+      "title": "Problem about GCD",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/2043/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/137801",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "flows",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定区间 $[l,r]$ 和目标最大公因数 $G$，选择满足 $l\\le A\\le B\\le r$ 且 $\\gcd(A,B)=G$ 的两个整数。要求最大化 $B-A$；若有多个，选择 $A$ 最小的方案，无解时输出 $-1,-1$。",
+      "transformed_statement": "先把可选范围压缩为区间内的 $G$ 的倍数并整体除以 $G$，问题变成在 $[L,R]$ 中寻找距离最大的互质整数对，并按边界收缩层次检查候选。",
+      "key_observations": [
+        "先将区间端点调整为区间内最小和最大的 $G$ 的倍数；若不存在这样的倍数，则无解，因为合法的 $A、B$ 都必须被 $G$ 整除。",
+        "除以 $G$ 后，问题等价于在整数区间 $[L,R]$ 中寻找互质的 $x、y$，再令 $A=Gx、B=Gy$；这样最大化原距离等价于最大化 $y-x$。",
+        "按距离损失从小到大枚举边界向内收缩的总量，并检查该层的所有端点对；首次找到互质对即可保证距离最大，而同层从左到右检查可保证 $A$ 最小。",
+        "在数值不超过 $10^{18}$ 时，左右各约 $30$ 个数中必有一对互质，因此需要检查的距离损失有常数上界，枚举不会随区间长度增长。"
+      ],
+      "solution_brief": "将端点收缩到区间内的 $G$ 的倍数并除以 $G$，转化为在 $[L,R]$ 中找距离最大的互质对。按距离损失分层枚举所有边界对，找到的第一对即为答案；找不到则输出 $-1 ext{ }-1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:37:46+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 979,
+      "problem_key": "2043E",
+      "contest_id": 2043,
+      "title": "Matrix Transformation",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/2043/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/137801",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "数据结构"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "data structures",
+        "dfs and similar",
+        "graphs",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定两个 $n\\times m$ 的整数矩阵。可以反复选择一行并将其所有元素分别与某个 $x$ 按位与，也可以选择一列并将其所有元素分别与某个 $x$ 按位或，操作顺序和次数任意；判断能否把矩阵 $A$ 变成矩阵 $B$。",
+      "transformed_statement": "将每个二进制位独立看成一个 $0/1$ 矩阵：行操作把整行变为 $0$，列操作把整列变为 $1$。把行列操作作为顶点，用每个单元要求的先后关系连边，并判断从必做操作出发的依赖图是否无环。",
+      "key_observations": [
+        "按二进制位独立处理，因为一次按位与/或可拆成多个只影响单个位的操作，各个位之间互不干扰。",
+        "对单个位，行操作等价于把整行设为 $0$，列操作等价于把整列设为 $1$；若 $A_{i,j}=0,B_{i,j}=1$，对应列操作必做，若 $A_{i,j}=1,B_{i,j}=0$，对应行操作必做。",
+        "若目标单元为 $0$，列操作会破坏它，因此必须满足“列操作后行操作”；若目标单元为 $1$，必须满足“行操作后列操作”，从而可将每个单元转化为操作间的有向依赖边。",
+        "从必做操作可达的依赖图若含环，就无法安排有限的最后操作；无环时按拓扑序执行所有可达操作，每个需修改单元的最后一次相关操作都会使其等于目标值。"
+      ],
+      "solution_brief": "逐位建立行、列操作的依赖图。由初始与目标不同的单元确定必做操作，再按目标位加入操作顺序边；检查必做操作可达区域是否有环，有环则不可行，否则拓扑执行。总复杂度为 $O(nm\\log A)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:37:26+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 980,
+      "problem_key": "2043F",
+      "contest_id": 2043,
+      "title": "Nim",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/2043/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/137801",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "博弈",
+        "组合计数与概率",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "combinatorics",
+        "dp",
+        "games",
+        "greedy",
+        "implementation",
+        "shortest paths"
+      ],
+      "statement_brief": "给定数组及多个区间询问，每次可独立删除区间内任意多个石堆，但至少保留一个；随后先手进行 Nim，无法行动者失败。求保证先手必败时最多删除的石堆数，以及达到该最大值的删除方案数（模 $998244353$）；若无法保证则输出 $-1$。",
+      "transformed_statement": "先将每个区间转化为各数值的出现次数，选择每种数值保留 $0$、$1$ 或 $2$ 个，使所有保留值的异或和为 $0$ 且至少保留一个，同时最大化删除数量并统计选择方案。",
+      "key_observations": [
+        "Nim 中先手必败当且仅当保留下来的石堆异或和为 $0$，因此每个询问等价于选择一个非空子集，使其异或和为 $0$，并尽量少保留元素。",
+        "同一数值的石堆保留超过 $2$ 个没有必要：删去其中任意 $2$ 个不会改变异或和，却能增加删除数量，因此最优方案对每个数值只保留 $0$、$1$ 或 $2$ 个。",
+        "固定某个数值出现次数为 $c$ 后，保留 $0$、$1$、$2$ 个的方案数分别为 $1$、$c$、$\\frac{c(c-1)}{2}$，这将按位置选择转化为按数值分组的计数转移。",
+        "由于数组元素不超过 $50$，所有保留元素的异或值都小于 $64$；因此可用数值种类、异或值和是否已保留元素构成仅 $51\\times64\\times2$ 个状态。"
+      ],
+      "solution_brief": "每个询问先统计 $0$ 到 $50$ 的出现次数，再做分组 DP。状态记录当前异或值、是否保留过元素，以及最大删除数和对应方案数；对每种数值尝试保留 $0/1/2$ 个，最终取异或为 $0$ 且非空的状态。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:37:08+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 981,
+      "problem_key": "2043G",
+      "contest_id": 2043,
+      "title": "Problem with Queries",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/2043/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/137801",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "data structures",
+        "implementation"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组，在线处理两类操作：把某位置改成指定值，或询问区间内满足 $i<j$ 且 $a_i\\ne a_j$ 的下标对数量。输入查询经过编码，必须用上一次区间询问答案解码当前参数，并在每次区间询问后更新该答案。",
+      "transformed_statement": "将目标改写为区间总下标对数减去相同值对数；按块划分数组，把完整块区间抽象成块多重集合上的相同值对统计，并用前缀频次与边界差分结构支持修改和查询。",
+      "key_observations": [
+        "把区间内不同值的 pasangan 数转为总对数减去相同值对数，后者可按值出现次数增量维护，避免直接处理不等关系。",
+        "将每个分块视为无序多重集合后，单点修改等价于从所属块删除旧值并加入新值；加入值 $x$ 对块区间 $[i,j]$ 的贡献正好是其中 $x$ 的出现次数。",
+        "加入某块的贡献可拆成左侧计数与右侧计数，分别对右端点后缀和左端点前缀做差分记录，从而把一次修改和完整块区间查询都降为遍历块数。",
+        "任意查询只需处理内部完整块与两侧至多 $O(B)$ 个边界元素；边界元素对内部块和彼此的贡献可用频次数组补上。"
+      ],
+      "solution_brief": "取块长 $B=\\sqrt N$，维护各块区间的相同值对数、值的块前缀频次及两类差分更新。查询用总对数减相同值对数，并枚举两侧边界元素补贡献；修改删除旧值、加入新值，复杂度为 $O((N+Q)\\sqrt N)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:36:51+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 982,
