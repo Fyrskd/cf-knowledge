@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2497,
-    "source_total_problems": 2498,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 2497,
+    "total_problems": 2499,
+    "source_total_problems": 2507,
+    "filtered_out_problems": 8,
+    "with_statement_brief": 2499,
     "with_editorial_brief": 2231,
     "with_solution_brief": 2232,
-    "missing_editorial_brief": 265,
+    "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 1559,
     "primary_topic_count": 13,
-    "contest_count": 383,
+    "contest_count": 384,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,8 +45,8 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 122,
-    "构造与贪心": 788,
-    "图论与网络流": 150,
+    "构造与贪心": 789,
+    "图论与网络流": 151,
     "动态规划与状态设计": 217,
     "数论与同余": 274,
     "组合计数与概率": 190,
@@ -61,7 +61,7 @@ window.CF_INSIGHTS_DATA = {
   "statusCounts": {
     "ai_generated_with_editorial": 1290,
     "ai_generated_partial_editorial": 50,
-    "missing_editorial": 265,
+    "missing_editorial": 267,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -62384,6 +62384,73 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "按围绕 $m/2$ 的交替顺序插入元素，DP 统计 good pair 数；剩余小元素用组合公式处理，再将各长度状态整理为多项式并用 NTT 批量合并，最后按题目要求双模数哈希。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1914,
+      "name": "Codeforces Round 916 (Div. 3)",
+      "date": "2023-12-19",
+      "url": "https://codeforces.com/contest/1914",
+      "type": "Div. 3",
+      "problemCount": 2,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "1914E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Game with Marbles (Easy Version)",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1914/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/123530",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "brute force",
+            "games",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Game with Marbles (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1914G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Light Bulbs (Easy Version)",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1914/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/123530",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "graphs",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Light Bulbs (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     },

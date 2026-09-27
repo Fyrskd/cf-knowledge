@@ -935,6 +935,17 @@
     "date": "2023-12-16"
   },
   {
+    "id": 1914,
+    "name": "Codeforces Round 916 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1702996500,
+    "relativeTimeSeconds": 87500460,
+    "date": "2023-12-19"
+  },
+  {
     "id": 1909,
     "name": "Pinely Round 3 (Div. 1 + Div. 2)",
     "type": "CF",

@@ -1238,6 +1238,29 @@
     "raw_sha256": "2cb722bf7a40d1873380dd0017ea09cc8a6d4c8c1441d17bf7e440180c90a323"
   },
   {
+    "url": "https://codeforces.com/blog/entry/123530",
+    "blog_entry_id": 123530,
+    "title": "Codeforces Round 916 (Div. 3) Editorial",
+    "author": "awoo",
+    "creation_time": "2023-12-20",
+    "original_locale": "ru",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round 916 (Div. 3) Editorial",
+    "section_count": 9,
+    "covered_problems": [
+      "1914A",
+      "1914B",
+      "1914C",
+      "1914D",
+      "1914E1",
+      "1914E2",
+      "1914F",
+      "1914G1",
+      "1914G2"
+    ],
+    "raw_sha256": "5b6edfbbfbc0dc7bb7cad00df7f021ddcf4c33633d20d9dddc80d151b3910ed5"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/123584",
     "blog_entry_id": 123584,
     "title": "Editorial of Pinely Round 3 (Div. 1 + Div. 2)",
