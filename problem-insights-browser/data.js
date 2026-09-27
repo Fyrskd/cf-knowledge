@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2592,
+    "total_problems": 2599,
     "source_total_problems": 2600,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2592,
-    "with_editorial_brief": 2324,
-    "with_solution_brief": 2325,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2599,
+    "with_editorial_brief": 2331,
+    "with_solution_brief": 2332,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1654,
+    "ai_override_count": 1661,
     "primary_topic_count": 13,
-    "contest_count": 397,
+    "contest_count": 398,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 131,
-    "构造与贪心": 818,
+    "字符串": 132,
+    "构造与贪心": 820,
     "图论与网络流": 157,
-    "动态规划与状态设计": 223,
+    "动态规划与状态设计": 224,
     "数论与同余": 285,
-    "组合计数与概率": 198,
-    "数据结构": 244,
+    "组合计数与概率": 199,
+    "数据结构": 245,
     "几何": 60,
     "树结构": 139,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 143,
+    "基础实现与模拟": 144,
     "博弈": 91
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1380,
+    "ai_generated_with_editorial": 1387,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -69815,6 +69815,215 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1862,
+      "name": "Codeforces Round 894 (Div. 3)",
+      "date": "2023-08-24",
+      "url": "https://codeforces.com/contest/1862",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1862A",
+          "index": "A",
+          "slot": "A",
+          "title": "Gift Carpet",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1862/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/119715",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写字母组成的 $n\\times m$ 地毯。阅读时按列从左到右处理每列，每列可选一个或不选字符；若能从四个不同且递增的列中依次选出 `v`、`i`、`k`、`a`，输出 YES，否则输出 NO。",
+          "transformedStatement": "把每一列抽象成其中包含的字符集合，题目变为判断列集合序列中是否能依次匹配字符串 `vika`；对每个目标字符选择其右侧最早可用列即可。",
+          "keyObservations": [
+            "每一列最多选一个字符，因此一列只需关心是否包含当前要找的字母，而不必记录具体行号，问题被压缩为按列检查字符集合。",
+            "若存在一种读取方案，可将第一个 `v` 替换为所有可行方案中最靠左的 `v`；随后对 `i`、`k`、`a` 也逐次选择其右侧最靠左的出现位置，因此贪心选择不会破坏可行性。",
+            "按从左到右的顺序依次寻找 `v`、`i`、`k`、`a`，成功找到四个不同列当且仅当可以读出目标单词，从而将二维表判定转化为顺序匹配。"
+          ],
+          "solutionBrief": "从左到右扫描每一列，依次寻找 `v`、`i`、`k`、`a`；在当前列找到目标字符后转而寻找下一个字符。四个字符都找到则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1862B",
+          "index": "B",
+          "slot": "B",
+          "title": "Sequence Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1862/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/119715",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定由原序列经过题面规定的相邻筛除规则得到的序列 $b$，需要构造任意一个可能的原序列 $a$。输出长度在 $n$ 到 $2n$ 之间，并通过在相邻上升处补入元素，使按该规则处理 $a$ 后恰好得到 $b$。",
+          "transformedStatement": "把问题转化为恢复所有相邻关系：非递增的两个数可直接相邻；每个上升边 $b_i<b_{i+1}$ 都拆成 $b_i,1,b_{i+1}$，让新增的 $1$ 成为被筛除的中间元素。",
+          "keyObservations": [
+            "若相邻的两个给定数满足左数小于右数，直接相邻会导致左数被规则删去，因此必须在它们之间插入 $1$。",
+            "插入 $1$ 后，原左数的右邻居变成更小的 $1$，而 $1$ 会因右邻居更大而被删去，所以只恢复了原有的两个数。",
+            "对于非递增相邻对无需插入元素；逐对处理后，每个新增的 $1$ 都是唯一需要被删除的元素，原序列中的数均能保留。"
+          ],
+          "solutionBrief": "从左到右输出给定序列；若当前数大于前一个数，先输出 $1$，再输出当前数。这样每个上升处都被拆成“原数、$1$、原数”，规则只会删除新增的 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1862C",
+          "index": "C",
+          "slot": "C",
+          "title": "Flower City Fence",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1862/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/119715",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定按非递增顺序排列的 $n$ 块木板高度。将所有木板按原顺序水平放置后，会形成一个新高度序列；若新序列与原序列完全相同，则栅栏对角线对称，要求判断每组数据是否对称。",
+          "transformedStatement": "把栅栏视为由方格组成的 Ferrers 图：原序列给出各行长度，水平放置后第 $j$ 项是包含第 $j$ 层方格的行数，即对原分拆取共轭，并检查该分拆是否等于自身。",
+          "keyObservations": [
+            "水平摆放后得到的第 $j$ 个高度等于原栅栏中高度至少为 $j$ 的木板数量，即 $b_j=|\\{i\\mid a_i\\ge j\\}|$。",
+            "原数组长度为 $n$，而水平摆放后的数组长度为最高木板高度 $a_1$；因此若 $a_1\\ne n$，两种栅栏不可能相同。",
+            "对所有 $j=1,\\dots,a_1$ 构造 $b_j$ 并逐项比较 $a$ 与 $b$，相等恰好说明栅栏关于对角线对称。"
+          ],
+          "solutionBrief": "先检查 $a_1=n$，否则直接输出 NO。随后令 $b_j$ 为高度至少为 $j$ 的木板数，构造水平摆放后的高度序列，并判断它是否与 $a$ 完全相同。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1862D",
+          "index": "D",
+          "slot": "D",
+          "title": "Ice Cream Balls",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1862/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/119715",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "combinatorics",
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "Tema 购买不同口味的冰淇淋球，每个冰淇淋由两个球组成，两个球的口味集合相同才算同一种；同口味冰淇淋要求该口味至少有两个球。球可以独立重复用于制作不同冰淇淋，要求购买最少的球，使恰好能制作出 $n$ 种不同冰淇淋。",
+          "transformedStatement": "把库存按口味分为拥有两个球的 $x$ 种和拥有一个球的 $y$ 种，令 $k=x+y$ 表示出现过的口味数。此时目标方程为 $x+C(k,2)=n$，并在满足 $0\\le x\\le k$ 的候选方案中最小化总球数 $2x+y=x+k$。",
+          "keyObservations": [
+            "每种口味拥有超过两个球不会增加可制作的冰淇淋种类，因此每种口味只需考虑拥有 $0$、$1$ 或 $2$ 个球。",
+            "设有 $x$ 种口味各拥有两个球、$y$ 种口味各拥有一个球，令 $k=x+y$，则同口味冰淇淋有 $x$ 种，不同口味组合有 $C(k,2)$ 种，总数为 $x+C(k,2)$，所需球数为 $x+k$。",
+            "固定 $k$ 后，$x$ 被唯一确定为 $n-C(k,2)$；可行条件等价于 $C(k,2)\\le n\\le C(k,2)+k$，因此原问题转化为寻找覆盖 $n$ 的三角数区间。",
+            "相邻两个可行的 $k$ 只会在区间端点重合，因此找到最小可行 $k$ 后还需检查相邻候选，并取 $x+k$ 较小者。"
+          ],
+          "solutionBrief": "用二分寻找满足 $C(k,2)\\le n\\le C(k,2)+k$ 的最小 $k$，计算 $x=n-C(k,2)$，答案候选为 $x+k$；同时检查相邻可行的 $k$，取所需球数最少者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1862E",
+          "index": "E",
+          "slot": "E",
+          "title": "Kolya and Movie Theatre",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1862/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/119715",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "新影院连续开放 $n$ 天，第 $i$ 天电影的娱乐值为 $a_i$。Kolya 每次访问会获得该电影价值，但距上次观影经过的天数为 $cnt$ 时要扣除 $d\\cdot cnt$；他从第 0 天刚观影过，最多访问 $m$ 部电影，要求选择访问日期使总娱乐值最大。",
+          "transformedStatement": "若选择日期为 $i_1<i_2<\\cdots<i_k$，所有间隔惩罚之和等于 $d\\cdot i_k$，所以问题变成枚举最后访问日 $i_k$，在其前缀选至多 $m-1$ 个正的 $a_i$，最大化所选价值之和减去 $d\\cdot i_k$。",
+          "keyObservations": [
+            "连续访问产生的惩罚可以望远镜相消：若最后访问日为 $i_k$，总惩罚恒为 $d\\cdot i_k$，与中间访问间隔无关。",
+            "固定最后访问日 $i_k$ 后，之前每个被选电影只贡献自身的 $a_i$；因此应从前缀中选至多 $m-1$ 个最大的正数，非正数不会提高答案。",
+            "按最后访问日从左到右枚举，并维护前缀内最大的 $m-1$ 个正值，就能用“这些值之和 $+a_i-d\\cdot i$”更新答案；维护集合的最小值可在超限时删除。"
+          ],
+          "solutionBrief": "将已选日期的总收益化为所选 $a_i$ 之和减去最后日期的 $d\\cdot i$。从左到右枚举最后访问日，用 multiset 维护前缀中最大的至多 $m-1$ 个正值，计算候选答案并取最大值，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1862F",
+          "index": "F",
+          "slot": "F",
+          "title": "Magic Will Save the World",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1862/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/119715",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "dp"
+          ],
+          "statementBrief": "每秒可分别生成 $w$ 点水系法力和 $f$ 点火系法力；每只强度为 $s_i$ 的怪物必须用一种法术消耗至少对应强度的法力。法力可随时积攒并瞬间施法，求消灭全部怪物所需的最少秒数。",
+          "transformedStatement": "把每只怪物分到水系或火系：若水系怪物总强度为 $x$、全部强度为 $S$，经过 $T$ 秒可行当且仅当 $x\\le Tw$ 且 $S-x\\le Tf$；问题转为带单调时间判定的子集和可行性。",
+          "keyObservations": [
+            "由于法力不会过期且施法瞬间完成，逐步消灭怪物没有收益；可以先积攒到最后一秒，再一次性分配全部怪物。",
+            "固定时间 $T$ 后，水系和火系容量分别为 $Tw$、$Tf$；只需选择一组怪物交给水系，使其总强度不超过 $Tw$，其余总强度不超过 $Tf$。",
+            "所有可达的水系总强度可预先用一次子集和 DP 求出；检查某个 $T$ 时只需扫描满足 $x\\le Tw$ 且 $S-x\\le Tf$ 的可达值 $x$。",
+            "时间增加时两种法力容量都不下降，因此可行性具有单调性，能够在时间上二分最小可行值。"
+          ],
+          "solutionBrief": "先用子集和 DP 预处理所有可作为水系总消耗的强度。二分时间 $T$，扫描可达总和 $x$，若 $x\\le Tw$ 且总强度减去 $x\\le Tf$ 则可行，取最小可行时间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1862G",
+          "index": "G",
+          "slot": "G",
+          "title": "The Great Equalizer",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1862/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/119715",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个整数数组，设备会反复对数组进行排序和均衡变换，使排序后元素间的最大差距逐轮缩小，最终输出设备得到的数值。随后进行若干次单点修改，将位置 $i$ 的元素改为 $x$，每次修改后都要输出当前数组对应的设备结果。",
+          "transformedStatement": "不模拟设备的逐轮变化，而把问题转化为：对排序后的数组 $b$，维护最大元素与最大相邻差，答案就是 $\\max(b)+\\max_i(b_{i+1}-b_i)$；单点修改只局部改变有序集合中的相邻关系。",
+          "keyObservations": [
+            "将当前数组排序后，设备最终输出等于最大元素加上相邻元素差值的最大值，即答案为 $\\max(a)+\\max_{i}(b_{i+1}-b_i)$，其中 $b$ 是排序后的数组。",
+            "均衡过程每轮使排序序列中的最大相邻差减少 $1$，因此决定最终结果的只剩最大值和最大相邻差，无需模拟全部过程。",
+            "修改一个位置只会影响该元素与排序前驱、后继之间的差值；删除旧值并补上前驱与后继的新差值，即可局部维护所有相邻差。",
+            "用一个多重集合维护数组元素以获得最大值，再用另一个多重集合维护相邻差值的最大值，从而支持重复元素和点修改。"
+          ],
+          "solutionBrief": "把答案化为排序数组的最大值与最大相邻差之和。用多重集合维护元素及相邻差；修改时只删除旧值相关差值、插入新值相关差值，再取两者最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
