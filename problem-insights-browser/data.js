@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2586,
+    "total_problems": 2592,
     "source_total_problems": 2593,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2586,
-    "with_editorial_brief": 2318,
-    "with_solution_brief": 2319,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2592,
+    "with_editorial_brief": 2324,
+    "with_solution_brief": 2325,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1648,
+    "ai_override_count": 1654,
     "primary_topic_count": 13,
-    "contest_count": 396,
+    "contest_count": 397,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 130,
-    "构造与贪心": 816,
-    "图论与网络流": 156,
-    "动态规划与状态设计": 222,
+    "字符串": 131,
+    "构造与贪心": 818,
+    "图论与网络流": 157,
+    "动态规划与状态设计": 223,
     "数论与同余": 285,
     "组合计数与概率": 198,
-    "数据结构": 243,
+    "数据结构": 244,
     "几何": 60,
     "树结构": 139,
     "代数、矩阵与多项式": 19,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 91
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1374,
+    "ai_generated_with_editorial": 1380,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -69178,6 +69178,196 @@ window.CF_INSIGHTS_DATA = {
             "固定区间后的数组和等于总和减去区间和再加区间乘积，因此可用前缀和与前缀积快速比较所有候选。"
           ],
           "solutionBrief": "将区间替换后的总和写成总和减区间和加区间积。乘积大于 $2^{60}$ 时取覆盖全部非 $1$ 元素的区间；否则枚举非 $1$ 元素作为端点，并用前缀和、前缀积选取最优区间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1861,
+      "name": "Educational Codeforces Round 154 (Rated for Div. 2)",
+      "date": "2023-08-31",
+      "url": "https://codeforces.com/contest/1861",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 3200,
+      "problems": [
+        {
+          "key": "1861A",
+          "index": "A",
+          "slot": "A",
+          "title": "Prime Deletion",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1861/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/119964",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定一个包含数字 1 到 9 各一次的九位序列，可多次删除任意一位，但序列剩两位后不能继续删除，且不能改变顺序。求删除后仍表示质数的序列。",
+          "transformedStatement": "将问题转化为寻找一个必然出现的质数子序列：只比较 1 和 3 的先后顺序，按原顺序保留它们即可得到 13 或 31。",
+          "keyObservations": [
+            "只需保留数字 1 和 3；它们在原序列中的相对顺序决定保留后的两位数是 13 还是 31，从而无需搜索所有子序列。",
+            "13 和 31 都是质数，且由于 1、3 各出现一次，二者必有一个按原顺序作为子序列出现，删除其余数字即可得到合法答案。",
+            "操作不能在序列长度为 2 时继续删除，但目标本身正好保留两位，因此不会影响构造。"
+          ],
+          "solutionBrief": "记录数字 1 和 3 在字符串中的位置：若 1 在 3 前，输出 13；否则输出 31。二者均为质数，删除其他七位即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1861B",
+          "index": "B",
+          "slot": "B",
+          "title": "Two Binary Strings",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1861/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/119964",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定两个等长、首字符为 $0$ 且末字符为 $1$ 的二进制字符串。每次可选一串，选取两个相等字符作为端点，并把它们之间的所有字符改成该端点字符；问能否通过任意次操作使两串相等。",
+          "transformedStatement": "把目标重述为寻找共同的分界位置：若位置 $i,i+1$ 构成相邻 $01$，该串可被变为前 $i$ 位全为 $0$、其余全为 $1$ 的单调串；两串必须存在同一个这样的分界。",
+          "keyObservations": [
+            "若字符串在位置 $i,i+1$ 处为相邻的 $01$，就能分别把前缀变成全 $0$、后缀变成全 $1$，得到形态 $0^i1^{n-i}$。",
+            "若某个切分点不是 $01$，则相邻字符为 $00$、$11$ 或 $10$；前两者无法只改变其中一个，后者一旦改变端点之一就会变成相等，因此该切分点不可能成为最终的 $0/1$ 分界。",
+            "两串最终相等时，可继续操作把它们统一为某个单调串 $0^i1^{n-i}$；因此只需寻找两串共同拥有的相邻 $01$ 位置，而不必模拟所有操作。"
+          ],
+          "solutionBrief": "枚举相邻位置 $i$，检查是否同时满足 $a_i=b_i=0$ 且 $a_{i+1}=b_{i+1}=1$。存在这样的公共 $01$ 边界则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1861C",
+          "index": "C",
+          "slot": "C",
+          "title": "Queries for the Array",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1861/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/119964",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "implementation",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "初始数组为空，按字符串顺序执行操作：`+` 在末尾加入一个整数，`-` 删除末尾元素，`0` 或 `1` 检查当前数组是否分别无序或有序。需要判断是否存在一组加入的整数，使所有检查都成立。",
+          "transformedStatement": "将每次 `+` 产生的新数组状态建成树节点，`-` 回到父状态；`0` 标记当前节点为无序，`1` 标记为有序。问题转化为检查长度约束，以及是否存在带 `0` 标记节点的有序祖先。",
+          "keyObservations": [
+            "查询 `0` 要求当前数组非递减且长度至少为 $2$ 的条件被否定，因此长度小于 $2$ 时必然冲突；长度可只由 `+` 和 `-` 维护。",
+            "若某次 `1` 要求当前数组有序，而它对应状态的某个前缀曾被 `0` 要求无序，则同一数组前缀的约束矛盾；所有冲突恰好可归结为有序状态的祖先包含无序标记。",
+            "把每次 `+` 创建的新数组状态视为树中新节点，`-` 回到父节点，`0`、`1` 分别给当前节点加无序、有序标记，从而把回退操作下的前缀关系转成祖先关系。",
+            "若不存在上述两类冲突，可以通过给新增元素赋值并在需要时把末尾元素设为 $0$，构造出满足全部查询的数组，因此判定条件也是充分的。"
+          ],
+          "solutionBrief": "维护当前数组长度，并将 `+/-` 形成的状态建成树；在节点记录 `0/1` 标记。若 `0` 时长度小于 $2$，或某个 `0` 节点有标记 `1` 的祖先，则输出 NO，否则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1861D",
+          "index": "D",
+          "slot": "D",
+          "title": "Sorting By Multiplication",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1861/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/119964",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个正整数数组，每次可选取一个前缀或后缀，并把其中所有元素乘以任意整数；要求用最少操作使数组严格递增，输出最少操作数。乘数可以为负数，也可以为零或正数。",
+          "transformedStatement": "把最终数组按符号划分：所有负数必须构成一个前缀，其长度记为 $x$；固定 $x$ 后，只需处理负前缀内部的非降相邻对和非负后缀内部的非升相邻对，并最小化对应操作数。",
+          "keyObservations": [
+            "所有乘以负数的操作最终只能形成一个负数前缀；若出现多个被非负元素隔开的负段，后续乘以非负数无法排成升序。",
+            "固定负前缀长度为 $x$ 后，原本前缀内部的非降相邻对需要一次前缀放大，后缀内部的非升相邻对需要一次后缀放大。",
+            "固定 $x$ 时，不同位置的违序相邻对不能由同一次操作同时修复，因此所需操作数就是这些位置的数量，再加上 $x>0$ 时把前缀变负的一次操作。",
+            "随着 $x$ 从 $0$ 到 $n$ 变化，两类相邻对分别从后缀计数转入前缀计数；维护两类计数即可在线性时间内求出最小值。"
+          ],
+          "solutionBrief": "枚举最终负前缀长度 $x$。先统计前缀中的非降相邻对和后缀中的非升相邻对，二者分别对应一次前缀或后缀乘正数操作；再加上 $x>0$ 时的负号操作。通过递推维护计数，取所有 $x$ 的最小值，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1861E",
+          "index": "E",
+          "slot": "E",
+          "title": "Non-Intersecting Subpermutations",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1861/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/119964",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$、元素均在 $1\\sim k$ 中的所有数组。每个被选子数组必须是长度为 $k$ 且恰好包含 $1\\sim k$ 各一次的连续区间，所选区间之间不能相交；数组代价是最多能选出的区间数，要求求所有数组代价之和。",
+          "transformedStatement": "把数组从左到右扫描，抽象为“当前仍可使用的最长互异后缀长度”状态；每当该长度达到 $k$，就完成一个不相交块并清空状态。再用动态规划统计各状态，并在块完成时一次性计算其对所有后缀数组的贡献。",
+          "keyObservations": [
+            "数组的代价可由贪心确定：从左到右反复取最早的、未与已选区间相交且包含全部 $1\\sim k$ 的长度为 $k$ 的子数组；这种选择得到的数量就是最大值。",
+            "扫描时只需维护当前后缀中互不相同且仍可使用的元素数 $x$；遇到重复值就截去其上次出现位置之前的部分，从而无需枚举所有区间。",
+            "加入未出现在后缀中的新值有 $k-x$ 种选择，后缀长度增加；若 $x=k-1$，该选择立即完成一个子数组并将可用后缀重置为 $0$。",
+            "加入后缀中已有的第 $j$ 个元素时，转移到每个更短后缀状态的系数均为 $1$，因此可用前缀和统一处理；完成子数组时直接将当前状态对剩余位置的贡献乘以 $k^{\\text{剩余长度}}$，省去代价维度。"
+          ],
+          "solutionBrief": "用 $dp[i][x]$ 统计处理前 $i$ 位且当前可用互异后缀长度为 $x$ 的数组。新值转移按 $k-x$ 计数，重复值转移用前缀和优化；达到 $k$ 时把该状态对所有后缀的贡献乘上 $k^{\\text{剩余长度}}$，总复杂度为 $O(nk)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1861F",
+          "index": "F",
+          "slot": "F",
+          "title": "Four Suits",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1861/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/119964",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "flows",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 名玩家，部分四种花色的牌已发出，庄家还要把余牌补给玩家，使每人的总牌数相同。每名玩家随后选择自己手中数量最多的一种花色并弃掉其他牌；对每名指定玩家，求通过安排余牌使其获得的最大得分，其中得分是其保留牌数减去其他玩家中的最大保留牌数，若并列最高则得分为 $0$。",
+          "transformedStatement": "固定目标玩家及其最终选择的花色后，先贪心确定其能拿到的该花色牌；其余牌分配被转化为限制每个其他玩家各花色牌数不超过 $x$ 的容量流可行性问题，并通过最小割判断。",
+          "keyObservations": [
+            "固定目标玩家及其最终选择的花色后，把该花色的剩余牌尽可能给目标玩家不会变差，因此目标玩家的花色数量可先贪心确定。",
+            "固定其他玩家允许的最大花色数量 $x$ 后，剩余牌能否分配成合法方案等价于一个四层容量网络的最大流是否饱和。",
+            "枚举最小割中的花色集合 $mask$ 后，每个其他玩家被割掉的贡献唯一确定为 $\\min(remain_k, |mask|x-alreadyHas_{mask,k})$，从而避免显式建图。",
+            "对每个玩家和 $mask$，上述贡献随 $x$ 是两段线性函数；用差分数组预处理所有线性段的总和，再对单调可行性二分最小 $x$。"
+          ],
+          "solutionBrief": "枚举目标玩家和其选择的花色，先尽量分配该花色。对其他玩家的最大花色数 $x$ 建立流模型，并枚举四种花色的割侧集合计算最小割；利用分段线性贡献的差分预处理快速判定，再二分最小可行 $x$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
