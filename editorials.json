@@ -1709,6 +1709,26 @@
     "raw_sha256": "b5e168e3c204a816ad5fcde91524b097572d6befda3c653587be7f8f9fd03c52"
   },
   {
+    "url": "https://codeforces.com/blog/entry/130988",
+    "blog_entry_id": 130988,
+    "title": "Educational Codeforces Round 167 Editorial",
+    "author": "awoo",
+    "creation_time": "2024-06-28",
+    "original_locale": "ru",
+    "source": "codeforces-blog",
+    "label": "Educational Codeforces Round 167 Editorial",
+    "section_count": 6,
+    "covered_problems": [
+      "1989A",
+      "1989B",
+      "1989C",
+      "1989D",
+      "1989E",
+      "1989F"
+    ],
+    "raw_sha256": "ea9a7fd051a413997979923ffe6f1f304fc9cd7585009cd5df02ca63251305a8"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/131053",
     "blog_entry_id": 131053,
     "title": "EPIC Institute of Technology Round Summer 2024 (Div. 1 + Div. 2) Editorial",
