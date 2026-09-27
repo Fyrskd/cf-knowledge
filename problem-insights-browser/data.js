@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2423,
+    "total_problems": 2430,
     "source_total_problems": 2430,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2423,
-    "with_editorial_brief": 2157,
-    "with_solution_brief": 2158,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2430,
+    "with_editorial_brief": 2164,
+    "with_solution_brief": 2165,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1485,
+    "ai_override_count": 1492,
     "primary_topic_count": 13,
-    "contest_count": 372,
+    "contest_count": 373,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 116,
-    "构造与贪心": 763,
-    "图论与网络流": 142,
+    "字符串": 117,
+    "构造与贪心": 766,
+    "图论与网络流": 144,
     "动态规划与状态设计": 211,
     "数论与同余": 266,
-    "组合计数与概率": 187,
+    "组合计数与概率": 188,
     "数据结构": 225,
     "几何": 56,
     "树结构": 135,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1219,
+    "ai_generated_with_editorial": 1226,
     "ai_generated_partial_editorial": 47,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -57132,6 +57132,220 @@ window.CF_INSIGHTS_DATA = {
             "交换论证表明，所有最优方案都能归入上述末尾连续改为 $1$ 的形式；预处理每段的最早可行位置后，转移可降为常数时间，总复杂度为 $O(n^2)$。"
           ],
           "solutionBrief": "先通过取反统一处理 $0$ 为初始众数的情况。以字符平衡和及最大后缀和作为 DP 状态，枚举末尾被改成 $1$ 的区间并计算代价；预处理可行边界后，将所有转移优化到 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1948,
+      "name": "Educational Codeforces Round 163 (Rated for Div. 2)",
+      "date": "2024-03-15",
+      "url": "https://codeforces.com/contest/1948",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 3100,
+      "problems": [
+        {
+          "key": "1948A",
+          "index": "A",
+          "slot": "A",
+          "title": "Special Characters",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1948/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/127182",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定整数 $n$，构造一个只含大写拉丁字母的字符串，使其中恰有 $n$ 个字符与相邻字符中的恰好一个相同；字符串两端按实际存在的邻居判断。若无法构造则输出无解，否则输出任意满足条件的字符串。",
+          "transformedStatement": "将字符串按极大连续相同字符段建模：单字符段贡献 $0$，长度至少为 $2$ 的段贡献 $2$。因此问题等价于判断 $n$ 是否为偶数，并在可行时拼接 $n/2$ 个互不合并的双字符块。",
+          "keyObservations": [
+            "把字符串划分为极大连续相同字符段：长度为 $1$ 的段贡献 $0$ 个特殊字符，长度至少为 $2$ 的段恰好贡献 $2$ 个，因此总数必为偶数。",
+            "特殊字符只会出现在长度至少为 $2$ 的连续段两端，段内其他位置与两侧字符均相同，不满足“恰好一个相同邻居”。",
+            "当 $n$ 为偶数时，使用 $n/2$ 个长度为 $2$ 的块，并让相邻块使用不同字母，例如重复拼接 `AA`、`BB`，每个块贡献恰好 $2$ 个特殊字符且不会合并。"
+          ],
+          "solutionBrief": "按连续相同字符块分析：每个长度至少为 $2$ 的块贡献 $2$ 个特殊字符，长度为 $1$ 的块贡献 $0$ 个，所以奇数 $n$ 无解。偶数时输出交替的 `AA`、`BB` 共 $n/2$ 个块。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1948B",
+          "index": "B",
+          "slot": "B",
+          "title": "Array Fix",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1948/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/127182",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个整数数组，每次可任选一个至少为 $10$ 的元素，删除它并在原位置按顺序插入它的十进制数字，可重复操作。要求判断能否通过这些操作使当前数组最终按非降序排列。",
+          "transformedStatement": "把问题改写为从右向左逐个确定最终数组：右侧后缀一旦固定，当前元素若大于后缀边界就只能拆成数字，否则保留；所有位置处理后再验证最终序列的非降序性质。",
+          "keyObservations": [
+            "若当前元素大于其右侧已确定的首个元素，它若不拆分就无法恢复非降序，因此该位置的拆分是被迫选择；若元素是个位数则无法拆分，直接判定失败。",
+            "从右向左处理时，右侧后缀已经确定；当前元素只需与该后缀的边界比较，拆分或保留不会影响更右侧的决策。",
+            "拆分多位数后，数字序列内部也必须保持非降序；因此所有选择完成后仍要检查最终序列，像 $98$ 这样的拆分会产生逆序，不能被忽略。"
+          ],
+          "solutionBrief": "从右向左维护已经处理好的后缀。若当前数大于后缀首元素，就必须把它拆成数字并接入；个位数无法拆分则失败。处理结束后检查得到的完整序列是否非降序，满足则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1948C",
+          "index": "C",
+          "slot": "C",
+          "title": "Arrow Path",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1948/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/127182",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个 $2\\times n$ 的网格，每格有向左或向右的箭头。机器人从 $(1,1)$ 出发，每秒先自行走到一个相邻格，再被所在格的箭头强制移动；判断它能否到达 $(2,n)$。",
+          "transformedStatement": "把格子按坐标和奇偶性分成两类：偶格表示可选择移动后的状态，奇格表示必须沿箭头移动的状态。问题等价于判断该有向状态图中起点是否能到达 $(2,n)$，也可进一步寻找会阻断向右推进的对角线左箭头结构。",
+          "keyObservations": [
+            "按坐标和的奇偶性分组：奇格只能在每秒第一次的自主移动后到达，偶格只能在随后沿箭头移动后到达，因此每次移动都会在两类格子间交替。",
+            "从偶格出发时机器人可以选择任意相邻格，而到达奇格后必须沿该格箭头移动；据此可将每个格子建成有向图，目标转化为可达性判断。",
+            "若同一条对角线相邻的两个奇格都指向左方，则任何路径都会经过其中至少一个并被迫向左，无法继续前进，因此答案为 NO。",
+            "若不存在上述阻挡对，则每个偶格所在列或右侧相邻位置总有箭头向右，可持续推进到目标格，因此答案为 YES。"
+          ],
+          "solutionBrief": "利用坐标和奇偶性建立移动模型：偶格可自主选择相邻格，奇格只能沿箭头移动。扫描是否存在同一对角线上的两个奇格都向左；存在则输出 NO，否则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1948D",
+          "index": "D",
+          "slot": "D",
+          "title": "Tandem Repeats?",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1948/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/127182",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定由小写字母和问号组成的字符串，可将每个问号替换为任意小写字母。要求最大化替换后最长子串的长度，其中该子串必须为偶数长度且前半部分与后半部分完全相同；若无法形成则输出 $0$。",
+          "transformedStatement": "把每个偶数候选子串表示为长度为 $2d$ 的滑动窗口，问题转化为寻找最大的 $d$，使窗口两半的 $d$ 个对应字符对都能匹配。",
+          "keyObservations": [
+            "一个候选串可行当且仅当两半的每个对应位置字符相同或至少一方是问号；由于每个位置只参与一对比较，可独立完成替换。",
+            "固定半长 $d$ 后，候选区间统一为 $[l,l+2d)$，只需统计 $d$ 对对应字符中有多少对匹配，全部匹配时长度 $2d$ 合法。",
+            "将左端点从 $l$ 移到 $l+1$ 时，匹配计数只需删除 $(l,l+d)$ 的贡献并加入 $(l+d,l+2d)$ 的贡献，从而避免对每个子串重新检查。",
+            "枚举所有半长并在线性扫描左端点即可覆盖所有偶数长度候选，整体复杂度为每组 $O(n^2)$。"
+          ],
+          "solutionBrief": "枚举半长 $d$，维护窗口 $[l,l+2d)$ 中两半对应位置的可匹配对数。窗口右移时删去最左配对、加入新右侧配对；计数为 $d$ 时更新答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1948E",
+          "index": "E",
+          "slot": "E",
+          "title": "Clique Partition",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1948/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/127182",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定 $n$ 个顶点和参数 $k$，需把 $1..n$ 的一个排列赋给顶点；任意两点 $i,j$ 在满足 $|i-j|+|a_i-a_j|\\le k$ 时连边。要求构造该排列，使所得图能划分成尽可能少的团，并输出这种划分。",
+          "transformedStatement": "把问题转化为：在排列诱导的距离规则下，先证明单个团最多容纳 $k$ 个顶点，再把顶点划成连续块，并为每块构造一个内部完全相连的排列，以匹配团数量下界。",
+          "keyObservations": [
+            "任意团的大小不超过 $k$：若团中有 $k+1$ 个顶点，必有两个顶点编号差至少为 $k$，再加上不同赋值至少相差 $1$，它们不可能相连。",
+            "因此至少需要 $\feil n/k \feil$ 个团；若把顶点按连续区间分块且每块大小不超过 $k$，只要让每块内部成为团即可达到这个下界。",
+            "对大小为 $k$ 的块取 $m=\feil k/2 \feil$，分别在区间 $[1,m]$ 和 $[m+1,k]$ 内反向赋值；同半区距离不超过 $2(m-1)\fle k$，跨半区距离恰好为 $k$。",
+            "将上述构造平移到每个连续分块后，各块内部都是团，所有顶点恰好被分配一次，从而得到最少的 $\feil n/k \feil$ 个团。"
+          ],
+          "solutionBrief": "先用团大小上界证明答案至少为 $\feil n/k \feil$。再将顶点和赋值按连续区间分成若干块，每块采用“两半分别反向”的排列，使块内任意两点距离不超过 $k$，最后输出这些块作为团。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1948F",
+          "index": "F",
+          "slot": "F",
+          "title": "Rare Coins",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1948/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/127182",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "有 $n$ 个袋子，每枚金币价值为 $1$，每枚银币独立地以相同概率取价值 $0$ 或 $1$。对每个区间 $[l,r]$，求区间内所有硬币的总价值严格大于区间外总价值的概率，并按模 $998244353$ 输出。",
+          "transformedStatement": "把区间内银币初始视为价值 $1$、区间外银币初始视为价值 $0$，此时总差值从 $st$ 开始，并因银币状态翻转而独立减少若干次；问题转化为二项式系数前缀和。",
+          "keyObservations": [
+            "将区间内银币默认设为价值 $1$、区间外默认设为 $0$，每枚银币以概率 $1/2$ 使区间与外部的差值减少 $1$，从而统一了两侧银币的影响方向。",
+            "设区间内外金币差为 $k$、区间内银币数为 $cur$，初始差值为 $st=k+cur$；若共有 $m$ 枚银币，最终差值为正当且仅当减少次数不超过 $st-1$。",
+            "减少次数服从参数为 $m$、成功概率为 $1/2$ 的二项分布，因此答案是 $\\sum_{i=0}^{st-1}\\binom{m}{i}\\,/\\,2^m$，只需查询二项式系数前缀和。",
+            "所有查询的银币总数 $m$ 相同，因此可以统一预处理前缀和；区间内金币数和银币数则由数组前缀和得到。"
+          ],
+          "solutionBrief": "用前缀和求区间内外的金币差 $k$ 及银币数 $cur$，令 $st=k+cur$、$m=\\sum b_i$。预处理 $\\binom{m}{i}$ 的前缀和，查询 $\\sum_{i=0}^{st-1}\\binom{m}{i}\\cdot 2^{-m}$，并在模 $998244353$ 下计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1948G",
+          "index": "G",
+          "slot": "G",
+          "title": "MST with Matching",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1948/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/127182",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dsu",
+            "graph matchings",
+            "trees"
+          ],
+          "statementBrief": "给定一个带正权的连通无向图，选择恰好 $n-1$ 条边组成生成树。生成树代价等于所选边权总和加上 $c$ 乘以该树最大匹配的大小，要求求出最小代价。",
+          "transformedStatement": "把每棵生成树视为二分图，用 König 定理将最大匹配大小替换为最小点覆盖大小；随后枚举可能的覆盖集合 $S$，只允许至少有一个端点属于 $S$ 的边，并在这些边上寻找最小生成树。",
+          "keyObservations": [
+            "任意生成树都是二分图，因此其最大匹配大小等于最小点覆盖大小，可将匹配惩罚改写为点覆盖大小乘以 $c$。",
+            "固定一个顶点集合 $S$ 作为点覆盖时，所有不与 $S$ 相交的边都不能选；剩余边上的最小生成树就是满足该覆盖条件的最小权生成树。",
+            "不要求枚举出的 $S$ 恰好是最小点覆盖：若生成树存在更小的覆盖，该覆盖也会在枚举中出现，从而得到对应候选解。",
+            "枚举全部顶点集合并对每个集合运行 Prim，可在 $O(2^n\\cdot n^2)$ 时间内求出所有候选方案的最小代价。"
+          ],
+          "solutionBrief": "利用树是二分图这一性质，把最大匹配改为最小点覆盖。枚举覆盖集合 $S$，禁用两端都不在 $S$ 中的边，在剩余图上求最小生成树，并加上 $c\\cdot|S|$，取所有方案最小值。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
