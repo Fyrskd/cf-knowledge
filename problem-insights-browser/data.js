@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2732,
+    "total_problems": 2740,
     "source_total_problems": 2740,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2732,
-    "with_editorial_brief": 2463,
-    "with_solution_brief": 2464,
-    "missing_editorial_brief": 268,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2740,
+    "with_editorial_brief": 2470,
+    "with_solution_brief": 2471,
+    "missing_editorial_brief": 269,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1794,
+    "ai_override_count": 1802,
     "primary_topic_count": 13,
-    "contest_count": 417,
+    "contest_count": 418,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 139,
-    "构造与贪心": 859,
+    "字符串": 140,
+    "构造与贪心": 861,
     "图论与网络流": 168,
-    "动态规划与状态设计": 233,
+    "动态规划与状态设计": 234,
     "数论与同余": 298,
     "组合计数与概率": 210,
-    "数据结构": 256,
+    "数据结构": 257,
     "几何": 67,
     "树结构": 144,
     "代数、矩阵与多项式": 20,
-    "交互": 87,
-    "基础实现与模拟": 158,
+    "交互": 88,
+    "基础实现与模拟": 160,
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1518,
+    "ai_generated_with_editorial": 1525,
     "ai_generated_partial_editorial": 54,
-    "missing_editorial": 268,
+    "missing_editorial": 269,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -79793,6 +79793,235 @@ window.CF_INSIGHTS_DATA = {
             "将下一名选手放在首位会触发一段连续冲突选手；其余选手有 $i$ 个插入位置，冲突段的插入方案数可用阶乘与逆阶乘一次计算。"
           ],
           "solutionBrief": "把可预测条件转为每个前缀最大值与下一元素的差至少为 $k+1$。按评分从高到低构造，$dp_i$ 只保留首元素不冲突的排列；普通插入转移有 $i$ 种，首位插入则批量放入连续冲突段，方案数用阶乘计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1807,
+      "name": "Codeforces Round 859 (Div. 4)",
+      "date": "2023-03-19",
+      "url": "https://codeforces.com/contest/1807",
+      "type": "Div. 4",
+      "problemCount": 8,
+      "maxRating": 1700,
+      "problems": [
+        {
+          "key": "1807A",
+          "index": "A",
+          "slot": "A",
+          "title": "Plus or Minus",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1807/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/114143",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定整数 $a,b,c$，保证 $a+b=c$ 和 $a-b=c$ 中恰有一个成立。对每组数据判断成立的等式：若为加法输出“+”，否则输出“-”。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1807B",
+          "index": "B",
+          "slot": "B",
+          "title": "Grab the Candies",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1807/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/114143",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "有一排糖果袋，按排列后的顺序逐袋领取：偶数袋由 Mihai 获得，奇数袋由 Bianca 获得，袋中糖果计入对应玩家总数。Mihai 可以重排这些袋子，要求除开始外每个时刻都严格多于 Bianca，判断是否存在这样的排列。",
+          "transformedStatement": "将问题转化为比较偶数袋总和 $s_e$ 与奇数袋总和 $s_o$：先处理全部偶数袋、再处理全部奇数袋时，只需保证最终总和 $s_e>s_o$，即可让整个前缀过程保持领先。",
+          "keyObservations": [
+            "每个偶数袋只增加 Mihai 的总数，每个奇数袋只增加 Bianca 的总数，因此最终比较值只由两类袋子的总和决定。",
+            "若偶数袋总和 $s_e\\le s_o$，最终 Mihai 不可能严格领先，所以任何排列都不可行。",
+            "若 $s_e>s_o$，先放全部偶数袋再放奇数袋；前半段 Bianca 为 $0$，后半段 Mihai 固定为 $s_e$ 且始终大于 Bianca，因而所有时刻都满足要求。"
+          ],
+          "solutionBrief": "分别累加所有偶数袋和奇数袋的糖果数，记为 $s_e,s_o$。若 $s_e>s_o$ 输出 YES，并按“偶数袋在前、奇数袋在后”排列即可；否则输出 NO，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1807C",
+          "index": "C",
+          "slot": "C",
+          "title": "Find and Replace",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1807/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/114143",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个小写字母串，每次可选择一种字母，把它的所有出现位置同时替换为 0 或 1，并可进行多次操作。判断能否得到相邻字符始终不同的交替二进制串，输出 YES 或 NO。",
+          "transformedStatement": "把问题改写为：给定一个候选交替二进制目标串，判断原串中的每个字母能否建立唯一的字母到二进制位的映射，使其所有出现位置都匹配目标串；只要存在一种候选模式可行即可。",
+          "keyObservations": [
+            "固定目标串后，同一个原字符在所有位置都必须映射成同一位；若它对应过 0 和 1，就无法通过全局替换得到目标串。",
+            "长度为 $n$ 的交替二进制串只有 `0101...` 和 `1010...` 两种，因此只需验证这两种目标是否有一种满足映射一致性。",
+            "实际上验证一种交替模式即可，因为将所有映射结果中的 0、1 同时交换，正好对应另一种模式，冲突性质不变。"
+          ],
+          "solutionBrief": "分别将原字符串与一种交替模式逐位对齐，记录每个字母的目标位；若同一字母被要求映射到两种位则失败，否则成功。交换 0、1 后另一种模式等价，因此检查一种即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1807D",
+          "index": "D",
+          "slot": "D",
+          "title": "Odd Queries",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1807/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/114143",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "给定数组，每次查询把下标区间 $[l,r]$ 内的所有元素都替换为 $k$，其他位置不变。对每次独立查询，判断操作后的整个数组元素和是否为奇数，输出“YES”或“NO”。",
+          "transformedStatement": "将区间替换后的数组总和拆成左侧前缀、被替换区间和右侧后缀三部分，用前缀和快速取得两侧贡献，再判断总和奇偶性。",
+          "keyObservations": [
+            "一次查询只改变区间 $[l,r]$：原区间贡献被替换为 $(r-l+1)k$，区间外元素保持不变。",
+            "用前缀和 $S$ 表示数组累计和后，新数组总和可写为 $S_{l-1}+(r-l+1)k+(S_n-S_r)$，从而每次查询只需常数时间计算。",
+            "最终只需判断上述总和的奇偶性，不必真正构造替换后的数组，因此总复杂度降为 $O(n+q)$。"
+          ],
+          "solutionBrief": "预处理数组前缀和。对每个查询用 $S_{l-1}+(r-l+1)k+(S_n-S_r)$ 求替换后的总和，并判断其是否为奇数；单次查询 $O(1)$，总复杂度 $O(n+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1807E",
+          "index": "E",
+          "slot": "E",
+          "title": "Interview",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1807/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/114143",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "implementation",
+            "interactive"
+          ],
+          "statementBrief": "有 $n$ 堆石头，第 $i$ 堆有 $a_i$ 颗；除一颗特殊石头重 $2$ 克外，其余均重 $1$ 克，特殊石头位于未知的一堆。每次可选择若干不同的堆并询问总重量，要求最多询问 $30$ 次找出特殊石头所在的堆。",
+          "transformedStatement": "把一次区间询问转化为检验：实际重量与已知数量总和相差 $1$ 当且仅当特殊堆在该区间内；于是目标变成通过二分不断缩小包含特殊堆的候选区间。",
+          "keyObservations": [
+            "若查询的区间不含特殊石头，返回重量等于已知石头数之和；若包含，则恰好多 $1$，因此一次查询即可判断区间是否含目标堆。",
+            "对当前候选区间二分，只需查询其中一半：若返回值比预计算总和大 $1$，目标在该半区间，否则必在另一半，从而每次将候选范围减半。",
+            "候选堆数最多为 $2\\cdot10^5$，二分至多需要 $\\lceil\\log_2(2\\cdot10^5)\\rceil=18$ 次查询，满足不超过 $30$ 次的交互限制。"
+          ],
+          "solutionBrief": "预处理数组前缀和。维护候选区间，每次查询其左半部分并与对应前缀和比较；多出的 $1$ 表示特殊堆在左半，否则转到右半，直到定位唯一下标。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1807F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bouncy Ball",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1807/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/114143",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "implementation"
+          ],
+          "statementBrief": "在 $n\\times m$ 网格中，球从给定格子沿四个对角方向之一移动；每次移动若下一格越界，就在对应墙面反弹，撞角时同时翻转两个方向。求球到达目标格前经历的反弹次数；若永远到不了则输出 $-1$。",
+          "transformedStatement": "将运动过程抽象为“当前位置+对角方向”的确定性状态图，每个状态只有一个后继。模拟这条路径，首次进入目标位置时返回反弹数，重复状态则表示进入不会到达目标的环。",
+          "keyObservations": [
+            "球的未来行为完全由当前位置和四个对角方向之一决定，因此总状态数至多为 $4nm$，可用有限状态模拟替代无限运动过程。",
+            "每个状态的后继唯一确定：若下一步越过边界，就先按对应墙面翻转方向并增加一次反弹，再进入下一格；这准确处理了“先进入格子、之后才反弹”的计数规则。",
+            "若到达目标格，应在执行下一次反弹前结束，因为目标格是在移动后首次到达的；若某个位置与方向状态重复，之后轨迹必然循环且不会再首次到达目标。"
+          ],
+          "solutionBrief": "维护当前位置、运动方向和已访问的“位置+方向”状态。每步先判断是否到达目标，再在即将越界时翻转相应方向并计数，随后移动；若状态重复则说明进入循环，答案为 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1807G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Subsequence Addition (Easy Version)",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1807/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/114143",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "初始数组只有一个 $1$。每次可选数组中任意非空子序列，将其元素之和作为一个新元素插入任意位置；给定最终数组 $c$，判断能否通过若干次操作得到它。",
+          "transformedStatement": "由于插入位置无关，可把问题改为构造一个多重集合：按值从小到大加入每个目标元素，并要求除初始 $1$ 外的每个元素都能由此前元素的某个子集求和得到。",
+          "keyObservations": [
+            "插入位置不影响可行性，因此只需判断最终多重集合能否被构造，不必考虑元素排列顺序。",
+            "将目标元素按非降序加入时，当前元素只需由已加入元素的某个非空子集求和得到；若最小值不是 $1$，则无法从初始数组开始。",
+            "用 $dp_s$ 表示已处理元素能否选出和为 $s$，加入 $c_i$ 时进行一次 $0/1$ 子集和转移，避免把同一新元素重复使用。",
+            "所有目标值不超过 $5000$，因此只维护这些和即可，逐个处理元素得到 $O(n\\cdot 5000)$ 的判定。"
+          ],
+          "solutionBrief": "先排序并检查最小值是否为 $1$，再按顺序处理其余元素。维护已构造元素可形成的所有子集和；若当前值对应的和可达，就将其作为新元素加入状态，否则判定失败。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1807G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Subsequence Addition (Hard Version)",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1807/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/114143",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "数组初始为 $[1]$。每次可选当前数组的一个非空子序列，将其元素和作为新元素插入任意位置，重复任意次后得到数组 $c$；判断是否存在这样的操作序列。",
+          "transformedStatement": "把目标数组按数值排序，忽略插入位置；利用“当前总和为 $s$ 时可加入任意 $1$ 到 $s$ 的数”这一不变量，将问题转化为逐个检查每个数是否不超过此前元素总和。",
+          "keyObservations": [
+            "可构造数组总和为 $s$ 时，任意 $1\\le x\\le s$ 都能作为新元素加入；加入 $x$ 后可继续覆盖区间 $[1,s+x]$。",
+            "最终数组必须保留初始元素 $1$，因此排序后必须有 $c_1=1$；否则不可能从初始数组得到。",
+            "排序后若某个 $c_i$ 大于前缀和，则最早生成不小于它的元素时没有足够的小元素支撑，因此不可能构造。",
+            "若所有 $c_i\\le\\sum_{j=1}^{i-1}c_j$，就能按从小到大依次加入它们，利用前缀元素构造每个目标值，因此条件也充分。"
+          ],
+          "solutionBrief": "将数组排序并检查 $c_1=1$，以及每个 $i\\ge2$ 是否满足 $c_i\\le$ 当前前缀和。满足时按升序依次加入元素；不满足则输出 NO。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
