@@ -8,6 +8,26 @@
     "raw_sha256": "fa89a503b50feeb91aba308c25cdee0a9d5ab0a8cda3bf69642f79d9854267d3"
   },
   {
+    "url": "https://codeforces.com/blog/entry/105919",
+    "blog_entry_id": 105919,
+    "title": "Codeforces Round #813 (Div. 2) Editorial",
+    "author": "Vladithur",
+    "creation_time": "2022-08-12",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round #813 (Div. 2) Editorial",
+    "section_count": 6,
+    "covered_problems": [
+      "1712A",
+      "1712B",
+      "1712C",
+      "1712D",
+      "1712E2",
+      "1712F"
+    ],
+    "raw_sha256": "82fc31992f61c94fc53fd00f36f02fea0f95efa3e10a26f387df1cb96d445134"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/106049",
     "blog_entry_id": 106049,
     "title": "Codeforces Round #814 (Div. 1, Div. 2) Editorial",

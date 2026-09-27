@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3067,
-    "source_total_problems": 3068,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 3067,
+    "total_problems": 3068,
+    "source_total_problems": 3075,
+    "filtered_out_problems": 7,
+    "with_statement_brief": 3068,
     "with_editorial_brief": 2788,
     "with_solution_brief": 2789,
-    "missing_editorial_brief": 278,
+    "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2129,
     "primary_topic_count": 13,
-    "contest_count": 467,
+    "contest_count": 468,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 977,
+    "构造与贪心": 978,
     "数据结构": 287,
     "图论与网络流": 189,
     "数论与同余": 330,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "missing_editorial": 278,
+    "missing_editorial": 279,
     "ai_generated_with_editorial": 1833,
     "ai_generated_partial_editorial": 64,
     "manual_override": 891,
@@ -94731,6 +94731,45 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "先按不同质因子做容斥，预处理小质数掩码、单个大质数和大质数对的贡献。再用莫队维护区间质因子集合，按这些状态累加答案；复杂度为 $O(n\\sqrt n+q(\\pi(m)+casesCount(C)))$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1712,
+      "name": "Codeforces Round 813 (Div. 2)",
+      "date": "2022-08-13",
+      "url": "https://codeforces.com/contest/1712",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "1712E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "LCM Sum (easy version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1712/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/105919",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "combinatorics",
+            "math",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：LCM Sum (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
