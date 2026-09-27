@@ -1,5 +1,16 @@
 [
   {
+    "id": 1746,
+    "name": "Codeforces Global Round 23",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1665844500,
+    "relativeTimeSeconds": 124698857,
+    "date": "2022-10-15"
+  },
+  {
     "id": 1744,
     "name": "Codeforces Round  828 (Div. 3)",
     "type": "ICPC",
