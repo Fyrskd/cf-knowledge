@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3061,
+    "total_problems": 3067,
     "source_total_problems": 3068,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3061,
-    "with_editorial_brief": 2782,
-    "with_solution_brief": 2783,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3067,
+    "with_editorial_brief": 2788,
+    "with_solution_brief": 2789,
     "missing_editorial_brief": 278,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2122,
+    "ai_override_count": 2129,
     "primary_topic_count": 13,
     "contest_count": 467,
     "rating_min": 800,
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "动态规划与状态设计": 259,
+    "构造与贪心": 977,
+    "数据结构": 287,
+    "图论与网络流": 189,
+    "数论与同余": 330,
     "博弈": 98,
-    "构造与贪心": 974,
-    "数据结构": 286,
-    "数论与同余": 329,
+    "动态规划与状态设计": 258,
     "组合计数与概率": 239,
-    "图论与网络流": 187,
     "几何": 75,
     "字符串": 163,
     "基础实现与模拟": 183,
@@ -60,7 +60,7 @@ window.CF_INSIGHTS_DATA = {
   },
   "statusCounts": {
     "missing_editorial": 278,
-    "ai_generated_with_editorial": 1827,
+    "ai_generated_with_editorial": 1833,
     "ai_generated_partial_editorial": 64,
     "manual_override": 891,
     "statement_derived": 1
@@ -94523,8 +94523,8 @@ window.CF_INSIGHTS_DATA = {
       "date": "2022-08-16",
       "url": "https://codeforces.com/contest/1718",
       "type": "Div. 1",
-      "problemCount": 1,
-      "maxRating": 1800,
+      "problemCount": 7,
+      "maxRating": 3500,
       "problems": [
         {
           "key": "1718A1",
@@ -94534,22 +94534,203 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1800,
           "problemUrl": "https://codeforces.com/contest/1718/problem/A1",
           "editorialUrl": "https://codeforces.com/blog/entry/106049",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "构造与贪心",
-            "组合计数与概率",
-            "图论与网络流"
-          ],
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
           "originalTags": [
             "dp",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Burenka and Traditions (easy version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为 $n$ 的整数数组，需要反复执行题面规定的“两步操作”，把所有元素变成 $0$，并求达到目标所需的最短时间。但本地记录缺失该操作的具体规则，因此无法完整还原允许的每步行为。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1718A2",
+          "index": "A2",
+          "slot": "A",
+          "title": "Burenka and Traditions (hard version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1718/problem/A2",
+          "editorialUrl": "https://codeforces.com/blog/entry/106049",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的非负整数数组，每次可选择一个连续子段和数 $x$，将该子段所有元素都与 $x$ 异或，并以一次操作计时；目标是把全部元素变成 $0$，求最少操作时间。",
+          "transformedStatement": "把一次点操作视为基准成本后，长度为 $2$ 的操作只能在相邻元素间传递异或状态；一个异或和为 $0$ 的连续子段可用长度减一的操作清零，因此问题等价于最大化互不相交的零异或子段数量。",
+          "keyObservations": [
+            "长度大于 $2$ 的操作可拆成若干个长度为 $1$ 或 $2$ 的操作且效果不变，因此最优解只需考虑这两种长度。",
+            "长度为 $2$ 的操作若与长度为 $1$ 的操作相交，可改成两个长度为 $1$ 的操作；因此可将方案看成互不相交的二元组覆盖和单点操作。",
+            "一个子段异或和为 $0$ 时，可用该子段长度减一的连续二元组操作全部清零，比逐点处理节省 $1$ 秒。",
+            "从左到右维护前缀异或值集合，遇到重复值就得到一个异或和为 $0$ 的子段并立即切断；这种最早结束的贪心选择能得到最多个互不相交子段。"
+          ],
+          "solutionBrief": "将答案转化为 $n$ 减去最多的不相交异或和为 $0$ 的子段数。扫描前缀异或，用集合记录当前块中的值；出现重复时计数加一并清空集合重新开始，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1718B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fibonacci Strings",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1718/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/106049",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定每个字母在字符串中的出现次数，允许任意重排这些字母。重排后字符串的同字母极大连续块长度必须依次为斐波那契数列 $1,1,2,3,5,\\ldots$ 的前缀；判断是否能得到这样的字符串。",
+          "transformedStatement": "把问题转化为：将斐波那契前缀中的每个块长分配给某个字母，使同一字母分到的块长总和等于其出现次数，且相邻块不能分给同一字母；按块长从大到小贪心分配。",
+          "keyObservations": [
+            "总长度必须等于斐波那契数列前缀之和；否则无法把所有字符划分成规定长度的连续块，答案必为 NO。",
+            "从最大块长向下处理时，当前应选剩余次数最多且不同于上一块字符的字母；若其次数小于当前斐波那契数，则不存在可行分配。",
+            "若有多个字母可承担当前块，选择剩余次数最大的字母不会损害后续可行性；不选它会使其相对下一块长度过大，无法由更小且不相邻的块长表示。",
+            "当两个候选字母的剩余次数都达到当前块长时，较大的那个必须优先使用；若两者相等则交换字母不影响方案，因此贪心选择足以覆盖所有情况。"
+          ],
+          "solutionBrief": "先生成斐波那契数列并检查总次数是否为某个前缀和。再按块长降序处理，每次选剩余次数最多且不等于上一块字母的字符，扣除该块长度；任何一步不足则输出 NO，否则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1718C",
+          "index": "C",
+          "slot": "C",
+          "title": "Tonya and Burenka-179",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1718/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/106049",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个首尾相连的数组，程序选择起点 $s$ 和步长 $k<n$，机器人从 $s$ 出发在环上固定步长移动并累计经过位置的数组值，恰好移动 $n$ 步。数组会被多次执行单点赋值修改，需要输出初始数组及每次修改后的最大可得收益。",
+          "transformedStatement": "把固定步长按 $d=\\gcd(k,n)$ 归类：收益等于某个模 $d$ 同余类元素和乘以 $d$。利用因子间的支配关系，只需维护 $d=n/p$（$p$ 为 $n$ 的质因子）的同余类最大和。",
+          "keyObservations": [
+            "步长为 $k$ 时，访问序列只取决于 $d=\\gcd(k,n)$；每个起点会循环遍历一个同余类中的 $n/d$ 个元素，并将该类元素和乘以 $d$。",
+            "若 $k_1\\mid k_2$ 且二者都是 $n$ 的因子，$k_2$ 对应的每个分组可视为 $k_1$ 分组的细分；由“最大子组和乘子组数不小于总和”，有答案$(k_1)\\le答案(k_2)$。",
+            "因此只需考虑形如 $n/p$ 的步长，其中 $p$ 是 $n$ 的不同质因子；其他因子都被某个这样的候选步长支配。",
+            "对每个候选步长 $d$，维护各个同余类的元素和及其最大值；单点修改只影响一个同余类，可用有序集合更新全局最大值。"
+          ],
+          "solutionBrief": "将步长按与 $n$ 的最大公因数归类，只维护 $d=n/p$（$p$ 为质因子）的候选。对每个 $d$ 保存各同余类和及最大值；修改时更新受影响的类，并取所有候选的最大答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1718D",
+          "index": "D",
+          "slot": "D",
+          "title": "Permutation for Burenka",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1718/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/106049",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "graph matchings",
+            "greedy",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定长度为 $n$ 的排列 $p$，以及含有恰好 $k$ 个零的数组 $a$；相似数组要求每个子数组最大值所在位置都与 $p$ 相同。每次询问一个候选数 $d$，判断能否用集合 $S$ 的 $k-1$ 个数和 $d$ 恰好填满所有零位，使数组元素互异且与 $p$ 相似。",
+          "transformedStatement": "把排列 $p$ 建成按区间最大值递归产生的笛卡尔树；填数问题等价于给每个空位分配一个同时大于其子树固定值、又小于其祖先固定值的数，并检查这些区间与 $S\\cup\\{d\\}$ 是否存在完美匹配。",
+          "keyObservations": [
+            "两个数组相似当且仅当它们按区间最大值递归得到的笛卡尔树相同，因此题目可转为满足树上祖先值严格大于后代值。",
+            "允许初始为空的祖先与后代暂不比较；若得到这种“近似相似”填法，可递归交换两个空位的值，修复所有违反的父子关系。",
+            "对空位 $i$，设祖先固定值最小值为 $r_i$、子树固定值最大值为 $l_i$，则可行值恰好需满足 $l_i<a_i<r_i$，问题变成区间与数值的匹配。",
+            "固定候选数 $d$ 后只需判断 $S\\cup\\{d\\}$ 是否能与所有空位区间完美匹配；可行的 $d$ 构成连续区间，其边界可用二分或两次贪心求出。"
+          ],
+          "solutionBrief": "由排列建立最大笛卡尔树，把相似性转成祖先值大于后代值。为每个空位计算可行值区间，再判断 $S\\cup\\{d\\}$ 与这些区间的完美匹配；可行的 $d$ 是连续区间，用两次贪心或二分求边界，复杂度为 $O(n\\log n)$ 或 $O(n\\log^2 n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1718E",
+          "index": "E",
+          "slot": "E",
+          "title": "Impressionism",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1718/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/106049",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定两个大小为 $n\\times m$ 的颜色表，每行和每列中除颜色 $0$ 外不重复。允许对表 $a$ 任意交换两行或任意交换两列，要求判断能否得到表 $b$；若可以，还要输出一系列交换操作。",
+          "transformedStatement": "把行和列分别看作二分图两侧的顶点，把每个非零单元格看作颜色为该数的边；问题变为寻找一个保持两侧类别和边颜色的图同构，并将对应的顶点置换还原为交换序列。",
+          "keyObservations": [
+            "任意操作序列都等价于一个行置换和一个列置换，最终位置 $(i,j)$ 的颜色必为 $a_{p_i,q_j}$，因此只需寻找两组置换。",
+            "把非零单元格视为带颜色的行列二分图边后，题目等价于寻找保持二分部和边颜色的图同构。",
+            "同一颜色在任意行或列中至多出现一次，因此确定一个顶点映射后，其相邻同色边及另一端点的映射都被唯一确定，可递归传播整个连通分量。",
+            "在较小的顶点部上逐一尝试尚未匹配的候选点，并在传播时检查冲突；得到置换后即可拆成交换操作，整体复杂度为 $O(\\min(n,m)(nm+n+m))$。"
+          ],
+          "solutionBrief": "将两张表建成带颜色边的二分图，寻找保持行部、列部及边颜色的同构。对较小部的顶点尝试匹配并递归传播，冲突则回退；最后把得到的行列置换分别拆成交换操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1718F",
+          "index": "F",
+          "slot": "F",
+          "title": "Burenka, an Array and Queries",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1718/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/106049",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个元素不超过 $m$ 的数组。每次查询区间 $[l,r]$，将其中所有数相乘得到 $p$，要求统计 $1$ 到 $C$ 中与 $p$ 互质的整数个数。",
+          "transformedStatement": "把每个区间转化为其乘积的不同质因子集合，用容斥计算这些质因子共同排除的数；再将质因子集合拆成小质数掩码与至多两个大质数的状态。",
+          "keyObservations": [
+            "互质计数只取决于区间乘积的不同质因子，可用容斥写成若干个 $\\lfloor C/d\\rfloor$ 的带符号和。",
+            "由于连续整除满足 $\\lfloor C/(ab)\\rfloor=\\lfloor\\lfloor C/a\\rfloor/b\\rfloor$，各质因子状态的贡献可以预处理并通过子集和聚合。",
+            "将质数按是否不超过 $42$ 分组后，小质因子只有 $13$ 个；任意不超过 $10^5$ 的乘积至多包含两个不同的大质因子，因此状态只需记录小质数掩码及零、一个或一对大质数。",
+            "用莫队维护当前区间出现的不同质因子，查询时枚举其小质数子掩码以及区间内的大质因子和合法质因子对，即可累加预处理贡献。"
+          ],
+          "solutionBrief": "先按不同质因子做容斥，预处理小质数掩码、单个大质数和大质数对的贡献。再用莫队维护区间质因子集合，按这些状态累加答案；复杂度为 $O(n\\sqrt n+q(\\pi(m)+casesCount(C)))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
