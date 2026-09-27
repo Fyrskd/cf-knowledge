@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2323,
+    "total_problems": 2334,
     "source_total_problems": 2334,
-    "filtered_out_problems": 11,
-    "with_statement_brief": 2323,
-    "with_editorial_brief": 2059,
-    "with_solution_brief": 2060,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2334,
+    "with_editorial_brief": 2070,
+    "with_solution_brief": 2071,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1260,
+    "ai_override_count": 1396,
     "primary_topic_count": 13
   },
   "records": [
@@ -9191,6 +9191,133 @@
       "ai_override": true
     },
     {
+      "ordinal": 215,
+      "problem_key": "1817A",
+      "contest_id": 1817,
+      "title": "Almost Increasing Subsequence",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1817/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/115586",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "greedy"
+      ],
+      "statement_brief": "给定数组和多个区间查询。对每个子数组，可删除任意元素但保持顺序，要求所得最长子序列中不存在三个连续元素 $x,y,z$ 满足 $x\\ge y\\ge z$，输出其最大长度。",
+      "transformed_statement": "将每个查询区间按相邻严格上升的位置切分为非递增段；答案等于区间长度减去所有作为某个非递增段内部元素的位置数，即统计区间内部满足 $a_{i-1}\\ge a_i\\ge a_{i+1}$ 的位置。",
+      "key_observations": [
+        "把区间按相邻上升处切成若干连续非递增段；每段最多取两个元素，否则会形成三个连续的非递增元素。",
+        "每段取首尾两个元素即可达到上界，因为不同段之间的切口满足严格上升，不会在拼接处产生三项非递增。",
+        "一段贡献可写成其长度减去内部元素数，因此答案是区间长度减去满足 $a_{i-1}\\ge a_i\\ge a_{i+1}$ 的内部位置数量。",
+        "这些特殊位置与查询端点无关，可预处理前缀和，使每次查询只需做一次区间计数。"
+      ],
+      "solution_brief": "预处理每个位置是否满足 $a_{i-1}\\ge a_i\\ge a_{i+1}$，并建立前缀和。查询 $[l,r]$ 时输出 $r-l+1$ 减去内部位置 $i\\in(l,r)$ 的特殊位置数量，整体复杂度为 $O(n+q)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:15:34+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 216,
+      "problem_key": "1817B",
+      "contest_id": 1817,
+      "title": "Fish Graph",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1817/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/115586",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "dfs and similar",
+        "graphs"
+      ],
+      "statement_brief": "给定一个可能不连通的简单无向图，可以从原图中任意选取边组成子图。要求判断子图中是否存在一个环，并有一个环上特殊顶点 $u$ 额外连接两条边，且这两条边不能连接到环上的其他顶点；若存在，输出任意这样的子图。",
+      "transformed_statement": "将目标等价转化为寻找一个环上的顶点 $u$，使其原图度数至少为 $4$。固定 $u$ 的一条环边后删边找回到 $u$ 的最短路径，可得到无弦环，再从 $u$ 的剩余邻边中取两条作为鱼鳍。",
+      "key_observations": [
+        "鱼形子图存在的充要条件是：某个环上的顶点 $u$ 在原图中的度数至少为 $4$；环贡献两条边，其余两条邻边可作为鱼鳍。",
+        "枚举高阶顶点 $u$ 的一条邻边 $uv$，删去该边后寻找从 $v$ 回到 $u$ 的路径，就能把问题转化为找环。",
+        "取删边后从 $v$ 到 $u$ 的最短路径，得到的环没有弦；因此 $u$ 的另外两条邻边不会连接到环上其他顶点，可直接作为两条额外边。",
+        "遍历所有候选边并独立搜索路径即可构造答案，复杂度为 $O(m(n+m))$，总规模约束下可行。"
+      ],
+      "solution_brief": "枚举度数至少为 $4$ 的顶点 $u$ 及其邻边 $uv$，暂时删去 $uv$，用 BFS 找从 $v$ 到 $u$ 的最短路形成无弦环。再选取 $u$ 的两条非环邻边作为鱼鳍；找不到则输出 NO。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:15:18+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 217,
+      "problem_key": "1817C",
+      "contest_id": 1817,
+      "title": "Similar Polynomials",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1817/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/115586",
+      "editorial_quality": "complete",
+      "primary_topic": "代数、矩阵与多项式",
+      "secondary_topics": [
+        "组合计数与概率",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "math"
+      ],
+      "statement_brief": "给定两个次数均为 $d$ 的整数多项式 $A,B$ 在 $0,1,\u001b[?$\u001b[0m\\ldots,d$ 处的模 $10^9+7$ 取值，保证存在平移量 $s$ 使 $B(x)=A(x+s)$。要求输出任意满足条件的 $0\\le s<10^9+7$。",
+      "transformed_statement": "把问题转化为比较两多项式的高阶差分：对两者分别做 $d-1$ 次相邻差分后，它们都变成一次多项式，且后者是前者自变量平移 $s$ 后的结果；只需利用这两个一次式的少量取值恢复 $s$。",
+      "key_observations": [
+        "定义 $\u001b[?$\u001b[0mDelta f(x)=f(x)-f(x+1)$ 后，差分会使多项式次数降低一阶，且平移关系保持为 $\u001b[?$\u001b[0mDelta^{d-1}B(x)=\u001b[?$\u001b[0mDelta^{d-1}A(x+s)$。",
+        "做 $d-1$ 次差分后得到一次多项式；其在 $0,1$ 两点的值确定斜率，因此可由 $\u001b[?$\u001b[0mDelta^{d-1}B(0)$ 直接反推出平移量 $s$。",
+        "高阶差分无需逐层构造，可用 $\u001b[?$\u001b[0mDelta^k f(x)=\u001b[?$\u001b[0m\\sum_{i=0}^k(-1)^i\\binom{k}{i}f(x+i)$ 在 $O(d)$ 时间内计算。",
+        "一次差分多项式的斜率与原多项式首项系数及 $d!$ 成正比；因首项系数非零且 $d<10^9+7$，分母可逆，平移量唯一可求。"
+      ],
+      "solution_brief": "分别用二项式公式计算 $A,B$ 的 $d-1$ 阶差分在 $0,1$ 的值。令 $F_A,F_B$ 为所得一次多项式，则 $s=(F_B(0)-F_A(0))/(F_A(1)-F_A(0))$，全部运算取模。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:14:59+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
       "ordinal": 218,
       "problem_key": "1817D",
       "contest_id": 1817,
@@ -9227,6 +9354,89 @@
           "path": "ai-generated-insights.json",
           "model": "gpt-5.6-luna",
           "generated_at": "2026-09-23T07:05:39+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 219,
+      "problem_key": "1817E",
+      "contest_id": 1817,
+      "title": "Half-sum",
+      "rating": 3400,
+      "problem_url": "https://codeforces.com/contest/1817/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/115586",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "brute force",
+        "divide and conquer",
+        "greedy"
+      ],
+      "statement_brief": "给定一个非负整数多重集合，每次任选两个数 $x,y$ 删除，并放回它们的平均值 $(x+y)/2$，重复操作直到只剩两个数。求所有操作顺序下这两个数绝对差的最大值，并将所得有理数按模 $10^9+7$ 输出。",
+      "transformed_statement": "将每次合并看成带权二叉树：叶子是原数，叶深为 $h$ 的叶子贡献系数为 $\u00017b2^{-h}$。排序后只需选择一个前缀作为负贡献树、后缀作为正贡献树，并优化分界点及两棵偏斜树的系数。",
+      "key_observations": [
+        "把每次取平均表示为合并两棵树；叶子深度为 $h_i$ 时，其数值在最终差值中的系数是正负 $2^{-h_i}$，从而把操作序列转成树形系数设计。",
+        "固定所有叶子深度并令较小树贡献为负时，交换论证表明较小的数应放入负贡献树、较大的数放入正贡献树，因此最优划分必是排序数组的前缀与后缀。",
+        "对任一前缀，存在最优的高度极不平衡树，其叶子高度为 $1,2,\u001cdots,k-2,k-1,k-1$；这是由重排不等式将较小元素移向更深位置得到的。",
+        "相邻划分的最优值满足 $f(k)-f(k-1)=(a_{k+1}-a_k)2^{-(n-k)}-(a_k-a_{k-1})2^{-(k-1)}$，因此最大值只需检查正间隔的首尾位置及中点附近至多约 $60$ 个位置。"
+      ],
+      "solution_brief": "排序后枚举前缀分界点，用两棵最优偏斜树的系数计算 $f(k)$；由相邻差分公式，只检查正间隔首尾和中点附近候选，并用模逆表示负幂。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:14:31+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 220,
+      "problem_key": "1817F",
+      "contest_id": 1817,
+      "title": "Entangled Substrings",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1817/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/115586",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "string suffix structures",
+        "strings"
+      ],
+      "statement_brief": "给定一个小写字符串，考虑其中两个非空子串 $a,b$。若存在一个可为空的连接串 $c$，使 $a$ 和 $b$ 在原串中的所有出现都只能作为字符串 $acb$ 中对应的首、尾部分出现，则称它们纠缠；要求统计所有纠缠子串对的数量。",
+      "transformed_statement": "为每个子串 $a$ 找到其所有出现共同嵌入的最长固定上下文 $\\hat a$，再把具有相同 $\\hat a$ 的子串归为一组；原问题转化为各组中满足位置区间互不重叠的子串对计数。",
+      "key_observations": [
+        "对每个非空子串 $a$ 定义其最大包围串 $\\hat a=xay$：所有出现都必须由同一侧前缀 $x$ 和后缀 $y$ 包围；在后缀自动机中，从代表 $a$ 的状态沿唯一出边继续走，直到遇到终止状态或出边分叉即可得到它。",
+        "若一对子串 $(a,b)$ 是纠缠的，则且仅当 $\\hat a=\\hat b=\\widehat{acb}$；因此不必直接枚举连接串 $c$，只需按最大包围串分组。",
+        "后缀自动机同一状态中的子串具有相同的右侧延伸部分，长度恰好构成 $[len(link(q))+1,len(q)]$；这使每组字符串可表示为若干个共享端点的连续线段。",
+        "每组内的纠缠对子等价于统计这些线段中互不重叠的两段，统一用线段树处理各三元组 $([l_1,l_2],r)$，从而将总问题降为 $O(n\\log n)$ 的区间计数。"
+      ],
+      "solution_brief": "建立字符串的后缀自动机，沿唯一出边为每个状态找到对应的最大包围串，并将得到相同包围串的状态分组。每组转化为若干共享端点的长度区间，利用线段树统计其中互不重叠的线段对。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:14:03+00:00",
           "quality_flags": []
         }
       },
@@ -9581,15 +9791,13 @@
       "problem_url": "https://codeforces.com/contest/1824/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/116328",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "组合计数与概率"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "greedy",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：LuoTianyi and the Show；本地暂无可用题解正文。",
+      "statement_brief": "有 `m` 个排成一行的座位和 `n` 个人，可任意安排入场顺序。每个人要么坐当前最左座位左侧、当前最右座位右侧或指定编号座位；目标是最大化最终成功入座的人数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -9597,9 +9805,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:13:38+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 230,
@@ -9612,9 +9830,7 @@
       "editorial_quality": "url_only",
       "primary_topic": "组合计数与概率",
       "secondary_topics": [
-        "树结构",
-        "数论与同余",
-        "博弈"
+        "树结构"
       ],
       "original_tags": [
         "combinatorics",
@@ -9622,7 +9838,7 @@
         "probabilities",
         "trees"
       ],
-      "statement_brief": "题面已抓取：LuoTianyi and the Floating Islands (Easy Version)；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵含 $n$ 个岛屿的树，随机选取 $k$ 个不同岛屿安置人员，其中 $k\\le 3$。对每个选择，定义到这 $k$ 个岛屿距离和最小的岛屿为好岛屿，求好岛屿数量的期望并对 $10^9+7$ 取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -9630,9 +9846,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:13:22+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 231,
@@ -9643,11 +9870,10 @@
       "problem_url": "https://codeforces.com/contest/1824/problem/B2",
       "editorial_url": "https://codeforces.com/blog/entry/116328",
       "editorial_quality": "url_only",
-      "primary_topic": "树结构",
+      "primary_topic": "组合计数与概率",
       "secondary_topics": [
-        "组合计数与概率",
-        "数论与同余",
-        "博弈"
+        "树结构",
+        "几何"
       ],
       "original_tags": [
         "combinatorics",
@@ -9656,7 +9882,7 @@
         "probabilities",
         "trees"
       ],
-      "statement_brief": "题面已抓取：LuoTianyi and the Floating Islands (Hard Version)；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵含 $n$ 个岛屿的树，每次将 $k$ 个人均匀放在互不相同的岛屿上。对每种放置，距离这 $k$ 个岛屿的总距离最小的岛屿称为 good 岛，要求所有放置下 good 岛数量的期望，并对 $10^9+7$ 取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -9664,9 +9890,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:13:09+00:00",
+          "quality_flags": [
+            "editorial_url_only",
+            "low_confidence",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 232,
@@ -9678,11 +9916,7 @@
       "editorial_url": "https://codeforces.com/blog/entry/116328",
       "editorial_quality": "url_only",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "图论与网络流",
-        "构造与贪心",
-        "动态规划与状态设计"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "data structures",
         "dfs and similar",
@@ -9691,7 +9925,7 @@
         "greedy",
         "trees"
       ],
-      "statement_brief": "题面已抓取：LuoTianyi and XOR-Tree；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵以顶点 $1$ 为根、每个顶点带整数值的树。一次操作可把任意一个顶点的值改成任意非负整数；要求用最少操作，使每条从根到非根叶子的路径上所有顶点值的按位异或和都为 $0$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -9699,9 +9933,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:12:54+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 233,
@@ -9713,13 +9958,11 @@
       "editorial_url": "https://codeforces.com/blog/entry/116328",
       "editorial_quality": "url_only",
       "primary_topic": "数据结构",
-      "secondary_topics": [
-        "交互"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "data structures"
       ],
-      "statement_brief": "题面已抓取：LuoTianyi and the Function；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的数组和 $q$ 个查询。每个查询给出两个下标区间 $[l,r]$、$[x,y]$，要求计算所有 $i\\in[l,r]$、$j\\in[x,y]$ 的 $g(i,j)$ 之和；记录中的样例表明 $g$ 与两个区间的元素集合包含关系有关，但正式定义未完整提供。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -9727,9 +9970,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:12:39+00:00",
+          "quality_flags": [
+            "incomplete_definition",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 234,
@@ -9740,17 +9994,15 @@
       "problem_url": "https://codeforces.com/contest/1824/problem/E",
       "editorial_url": "https://codeforces.com/blog/entry/116328",
       "editorial_quality": "url_only",
-      "primary_topic": "树结构",
+      "primary_topic": "数据结构",
       "secondary_topics": [
-        "数据结构",
-        "图论与网络流",
-        "构造与贪心"
+        "树结构"
       ],
       "original_tags": [
         "data structures",
         "trees"
       ],
-      "statement_brief": "题面已抓取：LuoTianyi and Cartridge；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵带顶点值 $a_i,b_i$、边值 $c_j,d_j$ 的树，需要从原树中选出题目规定的树 $T'$（通常指保留下来的连通子树）。令所选顶点的最小 $a_i$ 为 $A$、边的最小 $c_j$ 为 $C$，并分别求 $b_i$、$d_j$ 的总和 $B,D$，最大化 $\u0000min(A,C)\\cdot(B+D)$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -9758,9 +10010,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:12:17+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 235,
@@ -9772,14 +10035,12 @@
       "editorial_url": "https://codeforces.com/blog/entry/116328",
       "editorial_quality": "url_only",
       "primary_topic": "字符串",
-      "secondary_topics": [
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "greedy",
         "strings"
       ],
-      "statement_brief": "题面已抓取：LuoTianyi and the Palindrome String；本地暂无可用题解正文。",
+      "statement_brief": "给定一个保证为回文的字符串，每次可删除任意字符以保留一个子序列，要求找出最长的非空且不是回文的子序列长度；若不存在这样的子序列则输出 $-1$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -9787,9 +10048,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:11:56+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 236,
@@ -9802,14 +10073,13 @@
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
       "secondary_topics": [
-        "博弈",
-        "交互"
+        "数论与同余"
       ],
       "original_tags": [
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：LuoTianyi and the Table；本地暂无可用题解正文。",
+      "statement_brief": "给定 $n\\times m$ 个格子和 $n\\cdot m$ 个整数，需将每个整数恰好放入一个格子。对每个以左上角为起点、右下角为 $(i,j)$ 的子表计算最大值减最小值，并最大化所有这些差值之和。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -9817,9 +10087,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:11:40+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 237,
@@ -13965,16 +14246,16 @@
       "problem_url": "https://codeforces.com/contest/1859/problem/A",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "数论与同余",
+      "primary_topic": "构造与贪心",
       "secondary_topics": [
-        "构造与贪心"
+        "数论与同余"
       ],
       "original_tags": [
         "constructive algorithms",
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：United We Stand；本地暂无可用题解正文。",
+      "statement_brief": "给定一个整数数组，需要把每个元素恰好放入两个初始为空的数组 b 或 c 之一，并输出任意满足题目条件的划分；若不存在则输出 -1。记录中的“以下条件”未被提供，因而无法完整确定合法划分规则。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -13982,9 +14263,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:11:24+00:00",
+          "quality_flags": [
+            "incomplete_statement",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 333,
@@ -13996,16 +14288,14 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "博弈"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "greedy",
         "math",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Olya and Game with Arrays；本地暂无可用题解正文。",
+      "statement_brief": "给定多个整数数组，每次可以从每个数组至多移出一个整数并把它移入另一个数组；一个数组可以接收多个整数，所有移动同时进行。操作后重新计算每个数组的最小值，并最大化这些最小值之和。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14013,9 +14303,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:11:01+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 334,
@@ -14027,18 +14327,14 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "组合计数与概率",
-        "交互"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "dp",
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：Another Permutation Problem；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的排列 $p$，其中每个整数 $1$ 到 $n$ 恰好出现一次。其代价为所有 $i\\cdot p_i$ 之和减去其中最大的乘积，要求求出所有排列中的最大代价。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14046,9 +14342,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:10:46+00:00",
+          "quality_flags": [
+            "cost_formula_reconstructed_from_examples",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 335,
@@ -14059,12 +14366,8 @@
       "problem_url": "https://codeforces.com/contest/1859/problem/D",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "图论与网络流",
-        "数据结构"
-      ],
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "data structures",
@@ -14073,7 +14376,7 @@
         "greedy",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Andrey and Escape from Capygrad；本地暂无可用题解正文。",
+      "statement_brief": "数轴上有若干传送门；当当前位置落在传送门的 $[l_i,r_i]$ 内时，可以把自己传送到任意 $[a_i,b_i]$ 内，并且传送门可无限次使用。对每个给定起点，求最终能够到达的最大坐标。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14081,9 +14384,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:10:13+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 336,
@@ -14094,16 +14407,14 @@
       "problem_url": "https://codeforces.com/contest/1859/problem/E",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计"
-      ],
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "dp",
         "math"
       ],
-      "statement_brief": "题面已抓取：Maximum Monogonosity；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的数组 $a,b$，区间 $[l,r]$ 的收益为 $|b_l-a_r|+|b_r-a_l|$。选择若干两两不相交的区间，使它们长度总和恰好为 $k$，求收益总和的最大值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14111,9 +14422,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:09:45+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 337,
@@ -14124,11 +14447,9 @@
       "problem_url": "https://codeforces.com/contest/1859/problem/F",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "图论与网络流",
+      "primary_topic": "树结构",
       "secondary_topics": [
-        "树结构",
-        "数据结构",
-        "博弈"
+        "图论与网络流"
       ],
       "original_tags": [
         "data structures",
@@ -14138,7 +14459,7 @@
         "shortest paths",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Teleportation in Byteland；本地暂无可用题解正文。",
+      "statement_brief": "Byteland 的城市由一棵带硬度的无向树连接；经过硬度为 $w$ 的道路需耗时 $\u001clceil w/c rceil$，其中当前技能为 $c$。可在指定城市花费 $T$ 完成课程并将技能翻倍，课程可重复完成；对每个城市对查询从 $a$ 到 $b$ 的最短总时间，初始技能为 $1$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14146,9 +14467,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:09:31+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 338,
@@ -14423,16 +14756,14 @@
       "editorial_url": "https://codeforces.com/blog/entry/119772",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "交互"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "greedy",
         "implementation",
         "math"
       ],
-      "statement_brief": "题面已抓取：Increasing and Decreasing；本地暂无可用题解正文。",
+      "statement_brief": "每组给定整数 $x,y,n$，需要构造一个长度为 $n$ 的整数数组；若存在多个答案可输出任意一个，不存在则输出 $-1$。给定文本缺少数组必须满足的正式条件，示例仅展示了一个递增数组及其递减的相邻差值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14440,9 +14771,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:09:12+00:00",
+          "quality_flags": [
+            "ambiguous_constraints",
+            "incomplete_statement",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 345,
@@ -14453,19 +14796,15 @@
       "problem_url": "https://codeforces.com/contest/1864/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/119772",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "字符串",
-        "数论与同余",
-        "图论与网络流"
-      ],
+      "primary_topic": "字符串",
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "greedy",
         "sortings",
         "strings"
       ],
-      "statement_brief": "题面已抓取：Swap and Reverse；本地暂无可用题解正文。",
+      "statement_brief": "给定一个长度为 $n$ 的小写字母字符串 $s$ 和整数 $k$，每一步可以执行题面规定的两种操作之一，操作次数可以为零或任意多次。需要在所有可得到的字符串中找出字典序最小者，但当前记录未包含这两种操作的具体规则。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14473,9 +14812,22 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:08:56+00:00",
+          "quality_flags": [
+            "lexicographic_definition_truncated",
+            "low_confidence",
+            "missing_editorial",
+            "missing_operation_definitions",
+            "statement_incomplete"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 346,
@@ -14488,9 +14840,7 @@
       "editorial_quality": "url_only",
       "primary_topic": "数论与同余",
       "secondary_topics": [
-        "动态规划与状态设计",
-        "构造与贪心",
-        "组合计数与概率"
+        "构造与贪心"
       ],
       "original_tags": [
         "bitmasks",
@@ -14498,7 +14848,7 @@
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Divisor Chain；本地暂无可用题解正文。",
+      "statement_brief": "给定整数 $x$，反复选择当前数的一个约数 $d$，将当前数改为 $x-d$，且同一个 $d$ 最多使用两次。要求输出一个不超过 $1000$ 步、最终从 $x$ 到达 $1$ 的合法操作序列。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14506,9 +14856,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:08:44+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "operation_text_incomplete",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 347,
@@ -14519,12 +14880,8 @@
       "problem_url": "https://codeforces.com/contest/1864/problem/D",
       "editorial_url": "https://codeforces.com/blog/entry/119772",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "数据结构",
-        "组合计数与概率"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "constructive algorithms",
@@ -14533,7 +14890,7 @@
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：Matrix Cascade；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由 $0$ 和 $1$ 组成的 $n\\times n$ 矩阵，需要通过题面规定的操作把所有元素变成 $0$，并求所需的最少操作次数。但当前记录没有提供每一步具体允许如何操作，因此操作限制无法完整确定。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14541,9 +14898,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:08:21+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "missing_operation_rule",
+            "statement_incomplete"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 348,
@@ -14556,9 +14925,7 @@
       "editorial_quality": "url_only",
       "primary_topic": "博弈",
       "secondary_topics": [
-        "组合计数与概率",
-        "数据结构",
-        "动态规划与状态设计"
+        "组合计数与概率"
       ],
       "original_tags": [
         "bitmasks",
@@ -14570,7 +14937,7 @@
         "strings",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Guess Game；本地暂无可用题解正文。",
+      "statement_brief": "给定一个非负整数序列，Carol 随机选择两个下标（允许相同），令对应元素为 $a,b$；Alice 与 Bob 轮流猜测并根据公开发言判断 $a<b$、$a>b$ 或 $a=b$，要求计算游戏进行的期望回合数。题面缺失玩家每回合可执行的具体操作，因此完整规则无法确定。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14578,9 +14945,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:08:06+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_incomplete",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 349,
@@ -14591,18 +14969,14 @@
       "problem_url": "https://codeforces.com/contest/1864/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/119772",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "数据结构",
-        "博弈",
-        "交互"
-      ],
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
       "original_tags": [
         "data structures",
         "implementation",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Exotic Queries；本地暂无可用题解正文。",
+      "statement_brief": "给定整数数组。每次查询给出 $[l,r]$，可反复选择连续区间并将其中所有数减去同一个非负值；任意两个所选区间相交时必须存在包含关系。对每个查询独立进行操作，使所有初值位于 $[l,r]$ 的元素变为 $0$，求最少操作次数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14610,9 +14984,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:07:53+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "operation_conditions_incomplete",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 350,
@@ -14625,16 +15010,14 @@
       "editorial_quality": "url_only",
       "primary_topic": "组合计数与概率",
       "secondary_topics": [
-        "构造与贪心",
-        "数论与同余",
-        "动态规划与状态设计"
+        "构造与贪心"
       ],
       "original_tags": [
         "combinatorics",
         "constructive algorithms",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Magic Square；本地暂无可用题解正文。",
+      "statement_brief": "给定两个 $n\\times n$ 矩阵，二者都恰好包含 $1$ 到 $n^2$ 各一次。可以执行题目规定的两种操作若干次（包括零次），要求统计把初始矩阵变为目标矩阵的不同操作序列数量，并对 $998244353$ 取模；但当前记录未包含这两种操作的具体规则。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14642,9 +15025,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:07:37+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "operation_rules_missing",
+            "statement_incomplete"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 351,
@@ -14655,18 +15049,16 @@
       "problem_url": "https://codeforces.com/contest/1864/problem/H",
       "editorial_url": "https://codeforces.com/blog/entry/119772",
       "editorial_quality": "url_only",
-      "primary_topic": "动态规划与状态设计",
+      "primary_topic": "组合计数与概率",
       "secondary_topics": [
-        "代数、矩阵与多项式",
-        "数论与同余",
-        "组合计数与概率"
+        "数论与同余"
       ],
       "original_tags": [
         "dp",
         "math",
         "matrices"
       ],
-      "statement_brief": "题面已抓取：Asterism Stream；本地暂无可用题解正文。",
+      "statement_brief": "给定整数 $n$，变量 $x$ 初始为 $1$。每次等概率选择题面列出的某个操作修改 $x$，直到首次满足 $x\\ge n$；要求计算所需操作次数的期望，并以模 $998244353$ 的形式输出。当前记录未包含具体操作规则。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14674,9 +15066,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:07:21+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "incomplete_operation_list",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 352,
@@ -14689,15 +15093,13 @@
       "editorial_quality": "url_only",
       "primary_topic": "图论与网络流",
       "secondary_topics": [
-        "构造与贪心",
-        "组合计数与概率",
-        "交互"
+        "构造与贪心"
       ],
       "original_tags": [
         "graphs",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Future Dominators；本地暂无可用题解正文。",
+      "statement_brief": "棋盘为 $n\\times n$，需依次把 $1$ 到 $n^2$ 各放入一个格子。若能补完所有空格，使除数字 $1$ 外每个数字都有共享边的更小数字邻居，则当前局面合法；每次给出一个经上一答案异或编码的空格，要求放入仍保持合法的最大剩余数字。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14705,9 +15107,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:07:02+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "no_algorithm_evidence",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 353,
@@ -14718,17 +15131,13 @@
       "problem_url": "https://codeforces.com/contest/1863/problem/A",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "组合计数与概率",
-        "图论与网络流",
-        "几何"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "greedy",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Channel；本地暂无可用题解正文。",
+      "statement_brief": "频道共有 $n$ 名订阅者，发帖时有 $a$ 人在线且会读到帖子。随后按顺序收到 $q$ 次通知，每次表示一名订阅者上线（+）或下线（-），但不知道具体身份；需要判断所有订阅者读到帖子是不可能、可能，还是必然。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14736,9 +15145,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:06:40+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 354,
@@ -14751,15 +15170,15 @@
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
       "secondary_topics": [
-        "组合计数与概率",
-        "博弈"
+        "基础实现与模拟",
+        "数论与同余"
       ],
       "original_tags": [
         "greedy",
         "math",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Split Sort；本地暂无可用题解正文。",
+      "statement_brief": "给定一个 $1$ 到 $n$ 的排列。每次可选择 $2\\le x\\le n$，保持相对顺序不变地把所有小于 $x$ 的元素移到前面、其余元素放到后面；求将排列变为 $1,2,\\ldots,n$ 所需的最少操作次数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14767,9 +15186,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:06:13+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 355,
@@ -14780,15 +15210,13 @@
       "problem_url": "https://codeforces.com/contest/1863/problem/C",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "图论与网络流",
-      "secondary_topics": [
-        "博弈"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "implementation",
         "math"
       ],
-      "statement_brief": "题面已抓取：MEX Repetition；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由 $0$ 到 $n$ 中 $n$ 个互不相同整数构成的数组。一次操作按下标从左到右逐个位置，用当前整个数组的 MEX 替换该位置；重复执行 $k$ 次后输出数组。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14796,9 +15224,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:05:59+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 356,
@@ -14810,14 +15248,12 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "组合计数与概率"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Two-Colored Dominoes；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由相邻两格组成且互不重叠的骨牌铺放方案，为每个骨牌的两格分别染黑和白，要求每个骨牌恰有一黑一白，且每行、每列的黑白格数量相等；输出一种染色或判定无解。未覆盖的格子保持为点号。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14825,9 +15261,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:05:33+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 357,
@@ -14838,12 +15285,8 @@
       "problem_url": "https://codeforces.com/contest/1863/problem/E",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "图论与网络流",
-        "树结构"
-      ],
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "dfs and similar",
@@ -14854,7 +15297,7 @@
         "sortings",
         "two pointers"
       ],
-      "statement_brief": "题面已抓取：Speedrun；本地暂无可用题解正文。",
+      "statement_brief": "有 $n$ 个任务，第 $i$ 个任务只能在每天的固定小时 $h_i$ 开始完成；任务之间存在无环依赖，后继任务必须在前驱任务完成后才能完成，但同一小时内可瞬间完成任意多个任务。可任选合法顺序完成全部任务，求从第一个任务到最后一个任务的最短时间跨度。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14862,9 +15305,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:05:18+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 358,
@@ -14876,17 +15329,13 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "动态规划与状态设计",
-      "secondary_topics": [
-        "字符串",
-        "数据结构",
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "bitmasks",
         "dp",
         "math"
       ],
-      "statement_brief": "题面已抓取：Divide, XOR, and Conquer；本地暂无可用题解正文。",
+      "statement_brief": "给定数组，每次把当前连续区间切成非空前缀和后缀，比较两段元素的按位 XOR，丢弃 XOR 较小的一段；相等时任选一段丢弃。不断操作直到只剩一个元素，分别判断每个原位置是否可能成为最后留下的位置。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14894,9 +15343,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:05:00+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "no_algorithm_evidence",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 359,
@@ -14907,11 +15367,9 @@
       "problem_url": "https://codeforces.com/contest/1863/problem/G",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "组合计数与概率",
+      "primary_topic": "图论与网络流",
       "secondary_topics": [
-        "动态规划与状态设计",
-        "图论与网络流",
-        "数论与同余"
+        "组合计数与概率"
       ],
       "original_tags": [
         "combinatorics",
@@ -14919,7 +15377,7 @@
         "graphs",
         "math"
       ],
-      "statement_brief": "题面已抓取：Swaps；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的数组，且每个元素都在 $1$ 到 $n$ 之间。可重复选择任意下标 $i$，交换位置 $i$ 与位置 $a_i$ 中的元素，也可以不操作；要求统计最终能得到的不同数组数量，并对 $10^9+7$ 取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14927,9 +15385,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:04:43+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 360,
@@ -14941,16 +15409,12 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "数据结构",
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "dp",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Goldberg Machine 3；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵以 1 为根的完全二叉树，每片饼干从根依次落下；经过内部节点时按其选择器进入一个子节点，随后选择器切换到另一个子节点。可在开始前独立设置所有选择器的初态，要求所有叶子至少获得各自饥饿值数量的饼干；每次查询永久修改一个叶子的需求，并输出每次修改后填满整棵树所需的最少饼干数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14958,9 +15422,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:04:26+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 361,
@@ -14972,17 +15446,13 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "构造与贪心",
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "dp",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Redundant Routes；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵树，可以选择若干条包含至少两个顶点的不同简单路径。若所选路径的顶点集合被另一条所选路径包含，则前者不允许出现；求满足条件时最多能选择多少条路径。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -14990,9 +15460,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:04:12+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 362,
@@ -15407,14 +15887,12 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "组合计数与概率"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：green_gold_dog, array and permutation；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的数组 $a$，需要构造一个由 $1$ 到 $n$ 各出现一次的排列 $b$。计算每个位置的差值 $a_i-b_i$，要求使这些差值中的不同数值数量最大，并输出任意满足条件的排列。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -15422,9 +15900,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:03:58+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 372,
@@ -15437,7 +15925,6 @@
       "editorial_quality": "missing_url",
       "primary_topic": "字符串",
       "secondary_topics": [
-        "动态规划与状态设计",
         "构造与贪心"
       ],
       "original_tags": [
@@ -15445,7 +15932,7 @@
         "constructive algorithms",
         "strings"
       ],
-      "statement_brief": "题面已抓取：XOR Palindromes；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的二进制串 $s$。每次选择一个同长度二进制串 $l$，将每一位替换为 $s_i\\oplus l_i$；若结果是回文，则称 $l$ 中 1 的数量为一个 good 数。要求输出长度为 $n+1$ 的二进制串，标记 $0$ 到 $n$ 中哪些数量可行。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -15453,9 +15940,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:03:36+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 373,
@@ -15466,12 +15964,8 @@
       "problem_url": "https://codeforces.com/contest/1867/problem/C",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "博弈",
-        "交互",
-        "数据结构"
-      ],
+      "primary_topic": "博弈",
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "data structures",
@@ -15479,7 +15973,7 @@
         "greedy",
         "interactive"
       ],
-      "statement_brief": "题面已抓取：Salyg1n and the MEX Game；本地暂无可用题解正文。",
+      "statement_brief": "给定一个包含 $n$ 个不同非负整数的集合，Alice 先手，每次加入一个当前不在集合中的数；随后 Bob 必须删除一个严格小于 Alice 最近加入数的现有元素。游戏在 Bob 无法操作或进行 $2n+1$ 步后结束，要求 Alice 采用策略使最终集合的 MEX 至少达到双方最优对局结果。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -15487,9 +15981,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:03:19+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_incomplete",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 374,
@@ -15503,8 +16008,7 @@
       "primary_topic": "构造与贪心",
       "secondary_topics": [
         "图论与网络流",
-        "树结构",
-        "交互"
+        "基础实现与模拟"
       ],
       "original_tags": [
         "brute force",
@@ -15514,7 +16018,7 @@
         "greedy",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Cyclic Operations；本地暂无可用题解正文。",
+      "statement_brief": "初始数组全为 $0$。每次选择 $k$ 个互不相同的下标 $l_1,\u0005dots,l_k$，并令位置 $l_i$ 的值变为下一个下标 $l_{i\bmod k+1}$；可重复操作任意次，判断能否得到给定数组 $b$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -15522,9 +16026,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:03:04+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 375,
@@ -15537,16 +16051,14 @@
       "editorial_quality": "missing_url",
       "primary_topic": "交互",
       "secondary_topics": [
-        "构造与贪心",
-        "博弈",
-        "数据结构"
+        "基础实现与模拟"
       ],
       "original_tags": [
         "constructive algorithms",
         "interactive",
         "math"
       ],
-      "statement_brief": "题面已抓取：Salyg1n and Array (simple version)；本地暂无可用题解正文。",
+      "statement_brief": "交互程序面对一个长度为 $n$ 的隐藏整数数组，每次可询问一个长度为 $k$ 的连续子数组，获得其异或和后该子数组会立即被反转，最多询问 100 次。需要输出当前数组所有元素的异或和。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -15554,9 +16066,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:02:47+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 376,
@@ -15568,16 +16090,12 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "交互",
-      "secondary_topics": [
-        "构造与贪心",
-        "博弈",
-        "数据结构"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "interactive"
       ],
-      "statement_brief": "题面已抓取：Salyg1n and Array (hard version)；本地暂无可用题解正文。",
+      "statement_brief": "给定一个隐藏的正整数数组，每次可选择一个长度为 $k$ 的连续子数组，获得其中所有元素的 XOR，随后该子数组会被反转。最多进行 57 次查询，最后输出整个数组的 XOR。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -15585,9 +16103,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:02:31+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 377,
@@ -15600,9 +16129,7 @@
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
       "secondary_topics": [
-        "树结构",
-        "字符串",
-        "图论与网络流"
+        "树结构"
       ],
       "original_tags": [
         "brute force",
@@ -15611,7 +16138,7 @@
         "greedy",
         "hashing"
       ],
-      "statement_brief": "题面已抓取：Most Different Tree；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵根为 $1$ 的 $n$ 个顶点树。需要重新构造一棵同样以 $1$ 为根、含 $n$ 个顶点的树 $G'$，并统计 $G'$ 中每个顶点的带根子树：若该子树与原树中任意顶点的子树同构，就计入一次，目标是让计数最小。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -15619,9 +16146,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:02:15+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 378,
@@ -18467,7 +19005,7 @@
         "constructive algorithms",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Sorting with Twos；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的整数数组。每次可选择满足 $2^m\\le n$ 的非负整数 $m$，将前 $2^m$ 个元素都减 $1$，可操作任意次；判断能否把数组变为非递减序列。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -18475,9 +19013,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:01:55+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 446,
@@ -18488,14 +19036,16 @@
       "problem_url": "https://codeforces.com/contest/1891/problem/B",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [],
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
       "original_tags": [
         "brute force",
         "math",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Deja Vu；本地暂无可用题解正文。",
+      "statement_brief": "给定正整数数组和按顺序执行的查询 $x_i$。第 $i$ 次查询中，所有当前值能被 $2^{x_i}$ 整除的元素都加上 $2^{x_i-1}$；完成全部查询后输出数组。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -18503,9 +19053,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:01:37+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 447,
@@ -18518,9 +19078,7 @@
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
       "secondary_topics": [
-        "博弈",
-        "组合计数与概率",
-        "数据结构"
+        "基础实现与模拟"
       ],
       "original_tags": [
         "binary search",
@@ -18529,7 +19087,7 @@
         "sortings",
         "two pointers"
       ],
-      "statement_brief": "题面已抓取：Smilo and Monsters；本地暂无可用题解正文。",
+      "statement_brief": "有 $n$ 个兽群，第 $i$ 个含有 $a_i$ 只怪物。每次可对任意非空兽群单杀一只并使连击数加一，或在某个兽群至少剩余当前连击数时发动终极攻击，消灭其中 $x$ 只并将 $x$ 清零；求消灭全部怪物所需的最少攻击次数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -18537,9 +19095,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:01:17+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 448,
@@ -18550,18 +19118,14 @@
       "problem_url": "https://codeforces.com/contest/1891/problem/D",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "数论与同余",
-        "数据结构",
-        "交互"
-      ],
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "brute force",
         "math"
       ],
-      "statement_brief": "题面已抓取：Suspicious logarithms；本地暂无可用题解正文。",
+      "statement_brief": "定义 $f(x)$ 为不超过 $x$ 的最大二次幂指数，即满足 $2^{f(x)}\\le x$；再定义 $g(x)$ 为以 $f(x)$ 为底的对数下取整。对每个查询给定区间 $[l_i,r_i]$，求其中所有整数的 $g(k)$ 之和，并对 $10^9+7$ 取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -18569,9 +19133,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:00:36+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 449,
@@ -18582,12 +19156,8 @@
       "problem_url": "https://codeforces.com/contest/1891/problem/E",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "数论与同余",
-        "图论与网络流",
-        "博弈"
-      ],
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "greedy",
@@ -18595,7 +19165,7 @@
         "math",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Brukhovich and Exams；本地暂无可用题解正文。",
+      "statement_brief": "给定 $n$ 场考试及其非负难度数组，每次操作可把任意一场考试的难度改为 $0$，总操作次数不超过 $k$。悲伤值是相邻考试中难度最大公约数为 $1$ 的配对数，要求最小化它。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -18603,9 +19173,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T06:00:15+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 450,
@@ -18616,17 +19197,16 @@
       "problem_url": "https://codeforces.com/contest/1891/problem/F",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "树结构",
+      "primary_topic": "数据结构",
       "secondary_topics": [
-        "数据结构",
-        "图论与网络流"
+        "树结构"
       ],
       "original_tags": [
         "data structures",
         "dfs and similar",
         "trees"
       ],
-      "statement_brief": "题面已抓取：A Growing Tree；本地暂无可用题解正文。",
+      "statement_brief": "初始只有根节点 $1$，所有节点数值为 $0$。每次可向已有节点添加编号为当前节点总数加一的新子节点，或把一个数加到某节点当前子树的所有节点上；全部操作结束后输出每个节点的数值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -18634,9 +19214,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:59:58+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 451,
@@ -21424,7 +22014,7 @@
       "primary_topic": "数论与同余",
       "secondary_topics": [
         "构造与贪心",
-        "动态规划与状态设计"
+        "基础实现与模拟"
       ],
       "original_tags": [
         "constructive algorithms",
@@ -21432,7 +22022,7 @@
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：2023；本地暂无可用题解正文。",
+      "statement_brief": "原序列 $a$ 的所有元素乘积为 $2023$，删除其中 $k$ 个元素后得到已知序列 $b$。需要判断是否存在这样的原序列，并在存在时输出被删除的 $k$ 个非负整数，否则输出 NO。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21440,9 +22030,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:59:43+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 516,
@@ -21454,15 +22054,13 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "数论与同余",
-      "secondary_topics": [
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Two Divisors；本地暂无可用题解正文。",
+      "statement_brief": "每组给出两个整数 $a<b$，它们是某个正整数 $x$ 的两个最大真因子，且 $x\\le 10^9$。请为每组构造并输出一个满足条件的 $x$；题目保证答案存在，多个答案时任意输出即可。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21470,9 +22068,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:59:26+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 517,
@@ -21483,11 +22092,9 @@
       "problem_url": "https://codeforces.com/contest/1916/problem/C",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "博弈",
       "secondary_topics": [
-        "博弈",
-        "字符串",
-        "交互"
+        "数论与同余"
       ],
       "original_tags": [
         "constructive algorithms",
@@ -21496,7 +22103,7 @@
         "implementation",
         "math"
       ],
-      "statement_brief": "题面已抓取：Training Before the Olympiad；本地暂无可用题解正文。",
+      "statement_brief": "给定数组后，对每个非空前缀分别进行一场双人轮流合并游戏：当前玩家任选两个数删除，并加入 $2\\lfloor(x+y)/2\\rfloor$，直到只剩一个数。先手最大化最终数，后手最小化最终数，要求输出每个前缀在双方最优策略下的最终结果。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21504,9 +22111,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:59:10+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 518,
@@ -21519,9 +22137,8 @@
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
       "secondary_topics": [
-        "几何",
-        "数据结构",
-        "交互"
+        "数论与同余",
+        "基础实现与模拟"
       ],
       "original_tags": [
         "brute force",
@@ -21529,7 +22146,7 @@
         "geometry",
         "math"
       ],
-      "statement_brief": "题面已抓取：Mathematical Problem；本地暂无可用题解正文。",
+      "statement_brief": "给定一个奇数 $n$，需要构造 $n$ 个互不相同的整数：每个数都是某个整数的平方、恰好有 $n$ 位且首位非零，并且所有数包含的数字多重集完全相同。对每个测试用例输出任意一组满足条件的 $n$ 个数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21537,9 +22154,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:58:54+00:00",
+          "quality_flags": [
+            "algorithm_unavailable",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 519,
@@ -21551,18 +22179,14 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "构造与贪心",
-        "数据结构",
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "data structures",
         "dfs and similar",
         "greedy",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Happy Life in University；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵以顶点 $1$ 为根的树，每个顶点有一种活动类型。选择两个顶点（可以相同），令每个顶点到二者最近公共祖先的路径上出现的不同活动种类数相乘，求这个乘积的最大值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21570,9 +22194,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:58:38+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 520,
@@ -21583,10 +22218,9 @@
       "problem_url": "https://codeforces.com/contest/1916/problem/F",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "图论与网络流",
       "secondary_topics": [
-        "图论与网络流",
-        "树结构"
+        "构造与贪心"
       ],
       "original_tags": [
         "constructive algorithms",
@@ -21594,7 +22228,7 @@
         "graphs",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Group Division；本地暂无可用题解正文。",
+      "statement_brief": "给定一张有 $n_1+n_2$ 个顶点的友谊图，且删除任意一个人及其关系后，剩余任意两人仍可通过友谊链互相认识。需要把所有人分成大小分别为 $n_1$、$n_2$ 的两组，使每组内任意两人都能只经过本组成员通过友谊链连通。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21602,9 +22236,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:58:21+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "truncated_statement"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 521,
@@ -21617,9 +22262,7 @@
       "editorial_quality": "missing_url",
       "primary_topic": "数论与同余",
       "secondary_topics": [
-        "树结构",
-        "动态规划与状态设计",
-        "图论与网络流"
+        "树结构"
       ],
       "original_tags": [
         "divide and conquer",
@@ -21627,7 +22270,7 @@
         "number theory",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Optimizations From Chelsu；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵带正整数边权的树。对任意两个顶点，定义它们之间唯一路径的长度为边数、路径值为所有边权的最大公约数，要求在所有顶点对中最大化二者的乘积。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21635,9 +22278,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:58:01+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 522,
@@ -21650,8 +22303,6 @@
       "editorial_quality": "missing_url",
       "primary_topic": "组合计数与概率",
       "secondary_topics": [
-        "动态规划与状态设计",
-        "构造与贪心",
         "代数、矩阵与多项式"
       ],
       "original_tags": [
@@ -21661,7 +22312,7 @@
         "math",
         "matrices"
       ],
-      "statement_brief": "题面已抓取：Matrix Rank (Easy Version)；本地暂无可用题解正文。",
+      "statement_brief": "给定正整数 $n$、素数 $p$ 和 $k$，考虑所有元素属于模 $p$ 整数域的 $n\\times n$ 矩阵。对每个 $r=0,1,\\ldots,k$，分别统计秩恰好为 $r$ 的矩阵数量，并将结果对 $998244353$ 取模输出。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21669,9 +22320,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:57:53+00:00",
+          "quality_flags": [
+            "low_confidence_key_observations",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 523,
@@ -21684,8 +22346,6 @@
       "editorial_quality": "missing_url",
       "primary_topic": "组合计数与概率",
       "secondary_topics": [
-        "动态规划与状态设计",
-        "字符串",
         "代数、矩阵与多项式"
       ],
       "original_tags": [
@@ -21695,7 +22355,7 @@
         "matrices",
         "string suffix structures"
       ],
-      "statement_brief": "题面已抓取：Matrix Rank (Hard Version)；本地暂无可用题解正文。",
+      "statement_brief": "给定正整数 $n$、素数 $p$ 和 $k$，考虑所有元素属于模 $p$ 域的 $n\\times n$ 矩阵。对每个 $r=0,1,\\ldots,k$，统计秩恰好为 $r$ 的矩阵数量，并将结果对 $998244353$ 取模输出。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21703,9 +22363,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:57:36+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 524,
@@ -21718,13 +22389,13 @@
       "editorial_quality": "missing_url",
       "primary_topic": "博弈",
       "secondary_topics": [
-        "构造与贪心"
+        "基础实现与模拟"
       ],
       "original_tags": [
         "games",
         "math"
       ],
-      "statement_brief": "题面已抓取：Wallet Exchange；本地暂无可用题解正文。",
+      "statement_brief": "Alice 和 Bob 轮流操作，Alice 先手。每回合玩家可选择交换或不交换钱包，然后必须从自己当前持有的钱包中取走 1 枚硬币；无法取币者输，要求判断双方最优时谁获胜。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21732,9 +22403,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:57:14+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 525,
@@ -21746,15 +22427,11 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "组合计数与概率",
-        "字符串",
-        "博弈"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Plus-Minus Split；本地暂无可用题解正文。",
+      "statement_brief": "给定只含“+”和“-”的字符串，将其按原顺序切分成若干个非空连续部分。把“+”视为 $1$、“-”视为 $-1$，每部分代价为该部分元素和的绝对值乘以长度，要求求所有切分方案中的最小总代价。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21762,9 +22439,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:56:59+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_truncated_or_malformed"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 526,
@@ -21776,17 +22463,13 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "数据结构",
-        "组合计数与概率"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "data structures",
         "dp",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Grouping Increases；本地暂无可用题解正文。",
+      "statement_brief": "给定数组，需将每个元素按原顺序分配到两个可为空的子序列中，不能改变元素相对顺序。每个子序列的惩罚是相邻位置出现严格上升的次数，目标是使两者惩罚之和最小。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21794,9 +22477,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:56:42+00:00",
+          "quality_flags": [
+            "low_confidence_solution",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 527,
@@ -21807,10 +22501,9 @@
       "problem_url": "https://codeforces.com/contest/1919/problem/D",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "树结构",
       "secondary_topics": [
-        "图论与网络流",
-        "树结构",
+        "构造与贪心",
         "数据结构"
       ],
       "original_tags": [
@@ -21821,7 +22514,7 @@
         "sortings",
         "trees"
       ],
-      "statement_brief": "题面已抓取：01 Tree；本地暂无可用题解正文。",
+      "statement_brief": "给定按 DFS 叶序排列的数组 $a$，其中 $a_i$ 是根到第 $i$ 个叶子的路径权值和。要判断是否存在一棵完全二叉树，使每个非叶节点连接两个孩子的边中恰有一条权值为 $0$、另一条为 $1$，并产生该数组。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21829,9 +22522,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:56:26+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 528,
@@ -21844,9 +22548,8 @@
       "editorial_quality": "missing_url",
       "primary_topic": "组合计数与概率",
       "secondary_topics": [
-        "构造与贪心",
         "动态规划与状态设计",
-        "数论与同余"
+        "构造与贪心"
       ],
       "original_tags": [
         "combinatorics",
@@ -21855,7 +22558,7 @@
         "implementation",
         "math"
       ],
-      "statement_brief": "题面已抓取：Counting Prefixes；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由 $1$ 和 $-1$ 组成的隐藏数组，先计算其每个前缀和，再将这 $n$ 个前缀和值排序。要求统计有多少个不同的隐藏数组会得到给定的排序结果，答案对 $998244353$ 取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21863,9 +22566,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:56:08+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 529,
@@ -21878,14 +22592,13 @@
       "editorial_quality": "missing_url",
       "primary_topic": "数据结构",
       "secondary_topics": [
-        "构造与贪心",
-        "图论与网络流"
+        "构造与贪心"
       ],
       "original_tags": [
         "data structures",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Wine Factory (Easy Version)；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的水量数组 $a$、法师处理能力数组 $b$ 和相邻阀门容量数组 $c$。按水塔从 $1$ 到 $n$ 的顺序，每塔先取出至多 $b_i$ 升水制成酒，再将剩余水至多经容量 $c_i$ 的阀门送往下一塔；每次把指定位置的 $a_p,b_p,c_p$ 改为给定值，并求当前总产酒量。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21893,9 +22606,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:55:47+00:00",
+          "quality_flags": [
+            "ambiguous_c_constraint",
+            "missing_editorial",
+            "statement_only",
+            "truncated_statement"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 530,
@@ -21906,11 +22631,10 @@
       "problem_url": "https://codeforces.com/contest/1919/problem/F2",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "图论与网络流",
+      "primary_topic": "数据结构",
       "secondary_topics": [
-        "数据结构",
         "动态规划与状态设计",
-        "构造与贪心"
+        "图论与网络流"
       ],
       "original_tags": [
         "data structures",
@@ -21919,7 +22643,7 @@
         "greedy",
         "matrices"
       ],
-      "statement_brief": "题面已抓取：Wine Factory (Hard Version)；本地暂无可用题解正文。",
+      "statement_brief": "有 $n$ 个按顺序处理的水塔，第 $i$ 个塔初始有 $a_i$ 升水，巫师最多将 $b_i$ 升水变成葡萄酒；处理后剩余水最多通过容量为 $c_i$ 的阀门流向下一个塔。每次更新同时修改给定位置的 $a_p,b_p,c_p$，修改会持续影响后续操作；每次更新后求最终制造的葡萄酒总量。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21927,9 +22651,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:55:20+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 531,
@@ -21943,8 +22678,7 @@
       "primary_topic": "博弈",
       "secondary_topics": [
         "树结构",
-        "构造与贪心",
-        "图论与网络流"
+        "构造与贪心"
       ],
       "original_tags": [
         "constructive algorithms",
@@ -21952,7 +22686,7 @@
         "games",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Tree LGM；本地暂无可用题解正文。",
+      "statement_brief": "给定一个含 $n$ 个顶点的未知树，以及一个 $n\\times n$ 的胜负矩阵：先选根节点，再把棋子放在任意顶点；双方轮流将棋子移到当前顶点的任意子节点，无法移动者输。判断是否存在符合矩阵的树，若存在则构造它。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21960,9 +22694,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:54:47+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 532,
@@ -21975,15 +22720,13 @@
       "editorial_quality": "missing_url",
       "primary_topic": "交互",
       "secondary_topics": [
-        "树结构",
-        "图论与网络流",
-        "数据结构"
+        "树结构"
       ],
       "original_tags": [
         "interactive",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Tree Diameter；本地暂无可用题解正文。",
+      "statement_brief": "有一棵顶点数为 $n$ 的隐藏树，边带有编号。每次可给所有边赋正整数权并询问加权直径，或询问两条指定边之间的最短边距离；最多各进行 $n$ 次询问，要求输出一棵与隐藏树同构的树。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -21991,9 +22734,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:54:29+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 533,
@@ -23260,14 +24013,16 @@
       "editorial_url": "https://codeforces.com/blog/entry/125943",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [],
+      "secondary_topics": [
+        "数论与同余"
+      ],
       "original_tags": [
         "constructive algorithms",
         "greedy",
         "math",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Sasha and the Beautiful Array；本地暂无可用题解正文。",
+      "statement_brief": "给定一个长度为 $n$ 的数组，可以任意重排其中所有元素。数组的美丽值是所有相邻元素差值 $a_i-a_{i-1}$（$2\\le i\\le n$）之和，要求求出重排后能够得到的最大美丽值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -23275,9 +24030,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:54:17+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 563,
@@ -23289,16 +24054,13 @@
       "editorial_url": "https://codeforces.com/blog/entry/125943",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "博弈",
-        "几何"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：Sasha and the Drawing；本地暂无可用题解正文。",
+      "statement_brief": "给定一个 $n\\times n$ 的方格，每次可将任意一个未染色格子染色；一个格子会使经过它的两条对角线被覆盖。要求至少有 $k$ 条（总共 $4n-2$ 条）对角线包含染色格子，求最少需要染色多少个格子。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -23306,9 +24068,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:54:05+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 564,
@@ -23319,11 +24092,8 @@
       "problem_url": "https://codeforces.com/contest/1929/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/125943",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "博弈",
-        "组合计数与概率"
-      ],
+      "primary_topic": "博弈",
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "brute force",
@@ -23332,7 +24102,7 @@
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：Sasha and the Casino；本地暂无可用题解正文。",
+      "statement_brief": "Sasha 初始有 $a$ 枚硬币，每次可下注正整数 $y$，且 $y$ 不得超过当前资金；赢时资金增加 $(k-1)y$，输时减少 $y$。赌场保证不会连续输超过 $x$ 次，要求判断是否存在一种下注策略，使无论符合该限制的输赢结果如何，资金最终都能达到任意大的数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -23340,9 +24110,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:53:53+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 565,
@@ -23355,9 +24136,7 @@
       "editorial_quality": "url_only",
       "primary_topic": "树结构",
       "secondary_topics": [
-        "组合计数与概率",
-        "动态规划与状态设计",
-        "数论与同余"
+        "组合计数与概率"
       ],
       "original_tags": [
         "combinatorics",
@@ -23365,7 +24144,7 @@
         "math",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Sasha and a Walk in the City；本地暂无可用题解正文。",
+      "statement_brief": "城市由 $n$ 个路口和道路组成，且道路构成一棵树。需要从所有路口中选出一个集合，将其视为危险路口，并统计满足题目所要求“good”条件的集合数量，答案对 $998244353$ 取模；但给定记录中该条件正文缺失。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -23373,9 +24152,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:53:37+00:00",
+          "quality_flags": [
+            "ambiguous_condition",
+            "incomplete_statement",
+            "missing_editorial",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 566,
@@ -23387,11 +24178,7 @@
       "editorial_url": "https://codeforces.com/blog/entry/125943",
       "editorial_quality": "url_only",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "构造与贪心",
-        "动态规划与状态设计",
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "bitmasks",
         "brute force",
@@ -23402,7 +24189,7 @@
         "math",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Sasha and the Happy Tree Cutting；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵有 $n$ 个顶点的树和 $k$ 对顶点。需要给树边染色，使每一对顶点之间的唯一简单路径都至少包含一条被染色的边，并求最少需要染色多少条边。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -23410,9 +24197,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:53:20+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 567,
@@ -23423,11 +24221,9 @@
       "problem_url": "https://codeforces.com/contest/1929/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/125943",
       "editorial_quality": "url_only",
-      "primary_topic": "树结构",
+      "primary_topic": "组合计数与概率",
       "secondary_topics": [
-        "构造与贪心",
-        "组合计数与概率",
-        "数据结构"
+        "树结构"
       ],
       "original_tags": [
         "brute force",
@@ -23437,7 +24233,7 @@
         "math",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Sasha and the Wedding Binary Search Tree；本地暂无可用题解正文。",
+      "statement_brief": "给定根为 1、左右孩子关系已知的二叉树，部分节点值已知、部分值遗忘。需要为遗忘节点填入 $[1,C]$ 中的整数，使每个节点左子树的值都不大于它、右子树的值都不小于它，并统计所有合法补全方案数，结果对 $998244353$ 取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -23445,9 +24241,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:53:07+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 568,
@@ -27918,9 +28725,9 @@
       "problem_url": "https://codeforces.com/contest/1975/problem/A",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "基础实现与模拟",
       "secondary_topics": [
-        "数据结构"
+        "构造与贪心"
       ],
       "original_tags": [
         "brute force",
@@ -27928,7 +28735,7 @@
         "implementation",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Bazoka and Mocha's Array；本地暂无可用题解正文。",
+      "statement_brief": "给定一个正整数数组，每次可将数组切成连续前缀和后缀，再把后缀接到前缀前面，操作可进行任意次（也可不操作）。判断能否通过这些操作使数组按非递减顺序排列。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -27936,9 +28743,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:52:45+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 671,
@@ -27949,7 +28766,7 @@
       "problem_url": "https://codeforces.com/contest/1975/problem/B",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "数论与同余",
       "secondary_topics": [],
       "original_tags": [
         "brute force",
@@ -27957,7 +28774,7 @@
         "math",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：378QAQ and Mocha's Array；本地暂无可用题解正文。",
+      "statement_brief": "给定一个含正整数的数组，可以从中选择两个不同位置的元素。若数组中的每个元素都能被这两个被选元素中的至少一个整除，则称数组美丽；需要判断每组数组是否美丽。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -27965,9 +28782,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:52:29+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 672,
@@ -27978,14 +28805,14 @@
       "problem_url": "https://codeforces.com/contest/1975/problem/C",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "基础实现与模拟",
       "secondary_topics": [],
       "original_tags": [
         "binary search",
         "brute force",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Chamo and Mocha's Array；本地暂无可用题解正文。",
+      "statement_brief": "给定一个正整数数组，可以重复执行题面所称的三步魔法操作，直到所有元素相同；需要求最终共同元素能够达到的最大值。题面同时定义了区间中位数，但具体三步操作内容缺失。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -27993,9 +28820,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:52:15+00:00",
+          "quality_flags": [
+            "ambiguous_operation",
+            "incomplete_statement",
+            "missing_editorial"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 673,
@@ -28007,11 +28845,7 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "构造与贪心",
-        "图论与网络流",
-        "动态规划与状态设计"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "dfs and similar",
@@ -28020,7 +28854,7 @@
         "shortest paths",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Paint the Tree；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵树和分别位于顶点 $a$、$b$ 的两枚棋子，初始所有顶点为白色，且起点按题面规则先进行着色。每一步两枚棋子都必须移动，并允许同时位于同一顶点；目标是求将所有顶点染成蓝色所需的最少步数。给定记录未包含完整的移动和着色规则。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28028,9 +28862,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:51:41+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_incomplete"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 674,
@@ -28042,11 +28887,7 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "数据结构",
-        "构造与贪心",
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "data structures",
@@ -28054,7 +28895,7 @@
         "implementation",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Chain Queries；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵树及每个顶点的黑白颜色。每次查询翻转指定顶点的颜色，并在翻转后判断所有黑色顶点是否恰好位于某条简单路径上；只有一个黑点算满足，没有黑点不满足。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28062,9 +28903,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:51:23+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 675,
@@ -28075,12 +28926,8 @@
       "problem_url": "https://codeforces.com/contest/1975/problem/F",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "动态规划与状态设计",
-      "secondary_topics": [
-        "组合计数与概率",
-        "树结构",
-        "构造与贪心"
-      ],
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [],
       "original_tags": [
         "bitmasks",
         "brute force",
@@ -28090,7 +28937,7 @@
         "dp",
         "math"
       ],
-      "statement_brief": "题面已抓取：Set；本地暂无可用题解正文。",
+      "statement_brief": "给定整数 $n$ 和 $2^n-1$ 个集合 $V_i$，每个集合都用二进制整数表示：第 $j$ 位为 $1$ 表示包含元素 $j$。需要找出所有满足题目指定约束的集合 $S$，并按其二进制编码递增输出；但当前记录遗漏了该核心约束。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28098,9 +28945,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:51:06+00:00",
+          "quality_flags": [
+            "ambiguous_constraint",
+            "incomplete_statement",
+            "low_confidence",
+            "missing_editorial"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 676,
@@ -28112,18 +28971,14 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "字符串",
-      "secondary_topics": [
-        "构造与贪心",
-        "代数、矩阵与多项式",
-        "几何"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "fft",
         "greedy",
         "math",
         "strings"
       ],
-      "statement_brief": "题面已抓取：Zimpha Fan Club；本地暂无可用题解正文。",
+      "statement_brief": "给定两个分别含小写字母、`-` 和 `*` 的字符串。每个 `-` 可独立替换为一个小写字母，每个 `*` 可独立替换为空串或任意小写字符串；判断是否能将两串展开成完全相同的字符串。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28131,9 +28986,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:50:49+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 677,
@@ -28145,16 +29010,12 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "字符串",
-      "secondary_topics": [
-        "构造与贪心",
-        "数论与同余",
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "greedy",
         "strings"
       ],
-      "statement_brief": "题面已抓取：378QAQ and Core；本地暂无可用题解正文。",
+      "statement_brief": "给定一个长度为 $n$ 的小写字母字符串，可以任意重排所有字符。对每种排列，取其中字典序最大的连续子串作为 core，要求输出所有排列中 core 的字典序最小值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28162,9 +29023,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:50:32+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_formatting_corrupted",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 678,
@@ -28175,16 +29047,12 @@
       "problem_url": "https://codeforces.com/contest/1975/problem/I",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "动态规划与状态设计",
-      "secondary_topics": [
-        "数论与同余",
-        "博弈",
-        "组合计数与概率"
-      ],
+      "primary_topic": "博弈",
+      "secondary_topics": [],
       "original_tags": [
         "dp"
       ],
-      "statement_brief": "题面已抓取：Mind Bloom；本地暂无可用题解正文。",
+      "statement_brief": "题目给出按非降序排列的 n 张卡牌及二进制串：$s_i=0$ 表示第 $i$ 张牌在抽牌堆，$s_i=1$ 表示在手牌中。玩家会反复进行题面所述过程，目标是求最终能够清空抽牌堆的概率，并将其对 $1{,}000{,}000{,}007$ 取模；但当前记录未提供具体操作规则。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28192,9 +29060,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:50:16+00:00",
+          "quality_flags": [
+            "incomplete_statement",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 679,
@@ -28421,16 +29300,14 @@
       "problem_url": "https://codeforces.com/contest/1981/problem/A",
       "editorial_url": "/contest/1981/attachments/download/25830/sol-zh.pdf",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "博弈"
-      ],
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：Turtle and Piggy Are Playing a Game；本地暂无可用题解正文。",
+      "statement_brief": "Turtle 先从区间 $[l,r]$ 中选择整数 $x$，随后 Piggy 不断操作直到 $x=1$，双方都希望最大化最终得分。题面给出了若干选择 $p$ 的示例，但未提供每次操作如何改变 $x$、如何计分等关键规则，因此无法完整确定题意。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28438,9 +29315,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:50:03+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_incomplete",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 685,
@@ -28451,15 +29339,15 @@
       "problem_url": "https://codeforces.com/contest/1981/problem/B",
       "editorial_url": "/contest/1981/attachments/download/25830/sol-zh.pdf",
       "editorial_quality": "url_only",
-      "primary_topic": "动态规划与状态设计",
+      "primary_topic": "数论与同余",
       "secondary_topics": [
-        "交互"
+        "基础实现与模拟"
       ],
       "original_tags": [
         "bitmasks",
         "math"
       ],
-      "statement_brief": "题面已抓取：Turtle and an Infinite Sequence；本地暂无可用题解正文。",
+      "statement_brief": "有无限序列，初始为 $a_i=i$。每秒所有元素同时更新：$a_0$ 变为自身与 $a_1$ 的按位或，正整数位置变为左邻居、自身和右邻居的按位或；给定 $n,m$，求第 $m$ 秒的 $a_n$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28467,9 +29355,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:49:44+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 686,
@@ -28481,9 +29379,7 @@
       "editorial_url": "/contest/1981/attachments/download/25830/sol-zh.pdf",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "bitmasks",
         "brute force",
@@ -28492,7 +29388,7 @@
         "implementation",
         "math"
       ],
-      "statement_brief": "题面已抓取：Turtle and an Incomplete Sequence；本地暂无可用题解正文。",
+      "statement_brief": "给定一个含正整数和 $-1$ 占位符的序列，需保留所有已知数并为未知位置填入正整数，使每对相邻元素中一个恰好等于另一个除以 $2$ 向下取整。若无法满足全部相邻约束则输出 $-1$，否则输出任意合法序列。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28500,9 +29396,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:49:17+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 687,
@@ -28514,18 +29420,14 @@
       "editorial_url": "/contest/1981/attachments/download/25830/sol-zh.pdf",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "数论与同余",
-        "图论与网络流",
-        "树结构"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "dfs and similar",
         "graphs",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Turtle and Multiplication；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的序列，要求构造整数 $a_1,a_2,\\ldots,a_n$，使其满足题面规定的两个条件，并在所有可行序列中尽量减少不同整数的数量。当前记录缺少这两个条件的完整公式；示例仅明确指出某些位置对的乘积不能相等。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28533,9 +29435,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:48:59+00:00",
+          "quality_flags": [
+            "ambiguous_constraints",
+            "low_confidence",
+            "missing_editorial",
+            "statement_incomplete"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 688,
@@ -28548,9 +29462,8 @@
       "editorial_quality": "url_only",
       "primary_topic": "图论与网络流",
       "secondary_topics": [
-        "构造与贪心",
         "数据结构",
-        "树结构"
+        "构造与贪心"
       ],
       "original_tags": [
         "data structures",
@@ -28558,7 +29471,7 @@
         "graphs",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Turtle and Intersected Segments；本地暂无可用题解正文。",
+      "statement_brief": "给定 $n$ 个带标签 $a_i$ 的区间 $[l_i,r_i]$，把每个区间视为顶点；两区间相交时连边，边权为 $|a_i-a_j|$。求该图最小生成树的边权总和；若图不连通则输出 $-1$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28566,9 +29479,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:48:41+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 689,
@@ -28580,17 +29504,13 @@
       "editorial_url": "/contest/1981/attachments/download/25830/sol-zh.pdf",
       "editorial_quality": "url_only",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "数据结构",
-        "动态规划与状态设计",
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "data structures",
         "dp",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Turtle and Paths on a Tree；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵以 1 为根、每个非叶节点至多有两个儿子的二叉树，以及每个顶点的正整数标签。选择若干条树上简单路径，使每条边恰好被一条路径覆盖；路径可共享顶点，目标是最小化所有路径上顶点标签 MEX 的总和。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -28598,9 +29518,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:48:21+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 690,
@@ -30463,13 +31394,13 @@
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
       "secondary_topics": [
-        "组合计数与概率"
+        "数论与同余"
       ],
       "original_tags": [
         "constructive algorithms",
         "math"
       ],
-      "statement_brief": "题面已抓取：Array Divisibility；本地暂无可用题解正文。",
+      "statement_brief": "给定数组长度 $n$，需要构造一个整数数组。对每个 $k=1,2,\u0005cldots,n$，取所有下标为 $k$ 的倍数的位置，将这些位置上的元素求和，并要求该和能被 $k$ 整除。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30477,9 +31408,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:47:58+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 734,
@@ -30490,10 +31432,9 @@
       "problem_url": "https://codeforces.com/contest/1983/problem/B",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "数论与同余",
       "secondary_topics": [
-        "数论与同余",
-        "几何"
+        "基础实现与模拟"
       ],
       "original_tags": [
         "constructive algorithms",
@@ -30501,7 +31442,7 @@
         "implementation",
         "math"
       ],
-      "statement_brief": "题面已抓取：Corner Twist；本地暂无可用题解正文。",
+      "statement_brief": "给定两个只含 $0,1,2$ 的 $n\\times m$ 网格。每次选择行列长度都至少为 $2$ 的子矩形，在一条对角线的两个角上加 $1$、另一条对角线的两个角上加 $2$，均按模 $3$ 计算；判断能否经过任意次操作把网格 $a$ 变成网格 $b$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30509,9 +31450,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:47:40+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 735,
@@ -30523,16 +31475,14 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "brute force",
         "greedy",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Have Your Cake and Eat It Too；本地暂无可用题解正文。",
+      "statement_brief": "给定三组长度为 $n$ 的正整数，三组总和都为 $tot$。需要为 Alice、Bob、Charlie 各选一段连续且两两不重叠的蛋糕片，使每人在自己评价下获得的区间价值都至少为 $\\lceil tot/3\\rceil$，并输出一种分配方案。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30540,9 +31490,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:47:25+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 736,
@@ -30554,9 +31515,7 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "数据结构"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "data structures",
@@ -30565,7 +31524,7 @@
         "math",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Swap Dilemma；本地暂无可用题解正文。",
+      "statement_brief": "给定两个长度为 $n$ 且各自元素互不相同的数组。每次可在数组 $a$ 中交换位置 $l,r$，同时在数组 $b$ 中交换位置 $p,q$，并要求两次交换的距离满足 $r-l=q-p$；可重复操作，判断能否使两个数组逐项完全相同。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30573,9 +31532,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:47:08+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 737,
@@ -30587,16 +31557,13 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "组合计数与概率",
-      "secondary_topics": [
-        "数论与同余",
-        "博弈"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "combinatorics",
         "math",
         "probabilities"
       ],
-      "statement_brief": "题面已抓取：I Love Balls；本地暂无可用题解正文。",
+      "statement_brief": "有 $n$ 个球，其中前 $k$ 个为特殊球，每个球带有价值。Alice 先行动，每次随机取出一个剩余球并获得其价值；取到特殊球时同一玩家继续，否则轮到另一玩家，直到所有球取完，求 Alice 和 Bob 的期望总得分并对 $10^9+7$ 取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30604,9 +31571,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:46:52+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 738,
@@ -30617,11 +31594,9 @@
       "problem_url": "https://codeforces.com/contest/1983/problem/F",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "数据结构",
       "secondary_topics": [
-        "动态规划与状态设计",
-        "数据结构",
-        "博弈"
+        "数论与同余"
       ],
       "original_tags": [
         "binary search",
@@ -30630,7 +31605,7 @@
         "greedy",
         "two pointers"
       ],
-      "statement_brief": "题面已抓取：array-value；本地暂无可用题解正文。",
+      "statement_brief": "给定非负整数数组。对每个长度至少为 $2$ 的连续子数组，取其中任意两个位置的异或值 $a_i\\oplus a_j$ 的最小值作为该子数组的分数；将所有子数组分数排序后，求第 $k$ 小的值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30638,9 +31613,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:46:37+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "no_algorithm_evidence",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 739,
@@ -30651,11 +31637,9 @@
       "problem_url": "https://codeforces.com/contest/1983/problem/G",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "动态规划与状态设计",
+      "primary_topic": "树结构",
       "secondary_topics": [
-        "树结构",
-        "构造与贪心",
-        "图论与网络流"
+        "数论与同余"
       ],
       "original_tags": [
         "bitmasks",
@@ -30663,7 +31647,7 @@
         "dp",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Your Loss；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵带点权 $a_i$ 的树。每次查询给出有序端点 $x,y$，将从 $x$ 到 $y$ 的路径依次记为 $p_0=x,p_1,\\\\ldots,p_r=y$，求所有位置的 $a_{p_i}\\oplus i$ 之和。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30671,9 +31655,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:46:20+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 740,
@@ -31235,15 +32229,13 @@
       "editorial_url": "https://codeforces.com/blog/entry/131642",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "代数、矩阵与多项式"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "greedy",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Diverse Game；本地暂无可用题解正文。",
+      "statement_brief": "给定一个包含 $1$ 到 $n\\cdot m$ 所有整数且各不相同的 $n\\times m$ 矩阵 $a$，需要重新排列这些整数构造矩阵 $b$，使每个位置的 $b_{i,j}$ 都不等于原位置的 $a_{i,j}$；若无法构造则输出 $-1$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -31251,9 +32243,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:46:05+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 754,
@@ -31264,10 +32266,9 @@
       "problem_url": "https://codeforces.com/contest/1994/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/131642",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "基础实现与模拟",
       "secondary_topics": [
-        "动态规划与状态设计",
-        "博弈"
+        "构造与贪心"
       ],
       "original_tags": [
         "bitmasks",
@@ -31275,7 +32276,7 @@
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：Fun Game；本地暂无可用题解正文。",
+      "statement_brief": "给定两个长度为 $n$ 的二进制序列 $s,t$。每次选择 $1\\le l\\le r\\le n$，并同时对所有 $i\\in[l,r]$ 执行 $s_i\\leftarrow s_i\\oplus s_{i-l+1}$；可进行任意次操作，判断能否把 $s$ 变成 $t$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -31283,9 +32284,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:45:48+00:00",
+          "quality_flags": [
+            "editorial_url_only",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 755,
@@ -31296,18 +32308,14 @@
       "problem_url": "https://codeforces.com/contest/1994/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/131642",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "组合计数与概率",
-        "博弈"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "dp",
         "two pointers"
       ],
-      "statement_brief": "题面已抓取：Hungry Games；本地暂无可用题解正文。",
+      "statement_brief": "给定一排毒性值为 $a_i$ 的蘑菇，选择一个连续子段并按从左到右的顺序逐个吃掉，初始毒性值 $g=0$。题面记录缺失吃蘑菇后的具体更新规则；目标是统计最终 $g\\ne0$ 的 $(l,r)$ 选择数量。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -31315,9 +32323,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:45:32+00:00",
+          "quality_flags": [
+            "incomplete_statement",
+            "low_confidence",
+            "missing_editorial"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 756,
@@ -31330,9 +32349,7 @@
       "editorial_quality": "url_only",
       "primary_topic": "图论与网络流",
       "secondary_topics": [
-        "构造与贪心",
-        "数论与同余",
-        "树结构"
+        "构造与贪心"
       ],
       "original_tags": [
         "constructive algorithms",
@@ -31343,7 +32360,7 @@
         "number theory",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Funny Game；本地暂无可用题解正文。",
+      "statement_brief": "给定含 $n$ 个顶点且初始无边的图，以及数组 $a$。需要按顺序执行恰好 $n-1$ 次操作，每次按题目规定选择顶点并添加边，最终构造连通图；若无法做到则输出 No，否则输出 Yes 及全部操作。但当前记录缺失每次操作的具体限制。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -31351,9 +32368,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:45:18+00:00",
+          "quality_flags": [
+            "ambiguous_operation_rule",
+            "missing_editorial",
+            "statement_incomplete"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 757,
@@ -31365,18 +32393,14 @@
       "editorial_url": "https://codeforces.com/blog/entry/131642",
       "editorial_quality": "url_only",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "构造与贪心",
-        "动态规划与状态设计",
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "bitmasks",
         "greedy",
         "math",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Wooden Game；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由多棵带根树组成的森林，反复选择仍存在的顶点并删除其当前子树，直到整个森林被删除。每次记录被删除子树的大小，要求最大化所有这些大小的按位或结果。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -31384,9 +32408,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:45:01+00:00",
+          "quality_flags": [
+            "ambiguous_operation_details",
+            "missing_editorial",
+            "statement_inferred",
+            "url_only_editorial"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 758,
@@ -31397,10 +32433,10 @@
       "problem_url": "https://codeforces.com/contest/1994/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/131642",
       "editorial_quality": "url_only",
-      "primary_topic": "树结构",
+      "primary_topic": "图论与网络流",
       "secondary_topics": [
-        "图论与网络流",
-        "构造与贪心"
+        "构造与贪心",
+        "树结构"
       ],
       "original_tags": [
         "constructive algorithms",
@@ -31408,7 +32444,7 @@
         "graphs",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Stardew Valley；本地暂无可用题解正文。",
+      "statement_brief": "给定一个含有平行边和自环的无向图，每条道路标记是否有 NPC。农夫需要规划一条首尾相同的闭合路线，使所有带 NPC 的道路都被走到；若无法满足规则输出 No，否则输出路线经过的道路数及房屋序列。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -31416,9 +32452,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:44:26+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 759,
@@ -31429,12 +32476,8 @@
       "problem_url": "https://codeforces.com/contest/1994/problem/G",
       "editorial_url": "https://codeforces.com/blog/entry/131642",
       "editorial_quality": "url_only",
-      "primary_topic": "动态规划与状态设计",
-      "secondary_topics": [
-        "图论与网络流",
-        "构造与贪心",
-        "博弈"
-      ],
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
       "original_tags": [
         "bitmasks",
         "brute force",
@@ -31442,7 +32485,7 @@
         "graphs",
         "math"
       ],
-      "statement_brief": "题面已抓取：Minecraft；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的数组和目标数 $s$，选择一个非负整数 $x$，让它分别与每个 $a_i$ 做按位异或，再把所得结果用普通整数加法求和；输出任意满足条件的长度为 $k$ 的二进制表示，若不存在则输出 $-1$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -31450,9 +32493,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:44:08+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 760,
@@ -31463,11 +32517,10 @@
       "problem_url": "https://codeforces.com/contest/1994/problem/H",
       "editorial_url": "https://codeforces.com/blog/entry/131642",
       "editorial_quality": "url_only",
-      "primary_topic": "字符串",
+      "primary_topic": "交互",
       "secondary_topics": [
-        "构造与贪心",
         "数论与同余",
-        "交互"
+        "字符串"
       ],
       "original_tags": [
         "combinatorics",
@@ -31480,7 +32533,7 @@
         "number theory",
         "strings"
       ],
-      "statement_brief": "题面已抓取：Fortnite；本地暂无可用题解正文。",
+      "statement_brief": "系统使用未知的底数 $p$ 和模数 $m$ 计算字符串多项式哈希：第 $i$ 个字符的字母序号乘以 $p^{i-1}$ 后求和并对 $m$ 取模。每组数据最多查询 3 个长度不超过 50 的小写字符串，随后输出系统使用的 $p$ 和 $m$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -31488,9 +32541,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:43:51+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 761,
@@ -34959,14 +36023,13 @@
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
       "secondary_topics": [
-        "数论与同余",
-        "博弈"
+        "基础实现与模拟"
       ],
       "original_tags": [
         "greedy",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Make All Equal；本地暂无可用题解正文。",
+      "statement_brief": "给定一个环形数组。每次可选取一对相邻元素（首尾也相邻），但只有当前一个元素不大于后一个时才能操作，并删除其中恰好一个；求把剩余所有元素变成同一个值所需的最少操作次数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -34974,9 +36037,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:43:34+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unverified",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 844,
@@ -34988,15 +36062,11 @@
       "editorial_url": "https://codeforces.com/blog/entry/132965",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "组合计数与概率",
-        "博弈",
-        "几何"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms"
       ],
-      "statement_brief": "题面已抓取：Generate Permutation；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的全为 $-1$ 的数组，选择从左向右或从右向左的打字机，反复在指针位置填入当前数组中最小的未出现正整数，并可在合法范围内移动指针或将其回到端点，直到形成排列。要求构造一个排列 $p$，使两种打字机分别达到 $p$ 所需的最少回车次数相同。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35004,9 +36074,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:43:13+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 845,
@@ -35017,11 +36098,9 @@
       "problem_url": "https://codeforces.com/contest/2001/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/132965",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "交互",
       "secondary_topics": [
-        "树结构",
-        "交互",
-        "图论与网络流"
+        "树结构"
       ],
       "original_tags": [
         "binary search",
@@ -35033,7 +36112,7 @@
         "interactive",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Guess The Tree；本地暂无可用题解正文。",
+      "statement_brief": "交互方隐藏了一棵包含 $n$ 个编号节点的树。每次询问给出两个节点 $a,b$，交互方返回使 $|d(a,x)-d(b,x)|$ 最小的节点，并在并列时选择距 $a$ 更近者；最多询问 $15n$ 次后，输出这棵树的全部 $n-1$ 条边。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35041,9 +36120,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:42:57+00:00",
+          "quality_flags": [
+            "interactive_hack_format_incomplete",
+            "low_confidence",
+            "missing_editorial",
+            "statement_incomplete"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 846,
@@ -35055,11 +36146,7 @@
       "editorial_url": "https://codeforces.com/blog/entry/132965",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "数据结构",
-        "数论与同余",
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "constructive algorithms",
@@ -35067,7 +36154,7 @@
         "greedy",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Longest Max Min Subsequence；本地暂无可用题解正文。",
+      "statement_brief": "给定整数序列，只能通过删除元素保留一个子序列，并要求保留下来的元素互不重复。先最大化该子序列长度；若有多个最长方案，则将奇数位置元素乘以 $-1$ 后，选择字典序最小的方案并输出。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35075,9 +36162,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:42:44+00:00",
+          "quality_flags": [
+            "editorial_url_only",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 847,
@@ -35088,11 +36186,10 @@
       "problem_url": "https://codeforces.com/contest/2001/problem/E1",
       "editorial_url": "https://codeforces.com/blog/entry/132965",
       "editorial_quality": "url_only",
-      "primary_topic": "树结构",
+      "primary_topic": "组合计数与概率",
       "secondary_topics": [
-        "组合计数与概率",
         "动态规划与状态设计",
-        "图论与网络流"
+        "树结构"
       ],
       "original_tags": [
         "combinatorics",
@@ -35100,7 +36197,7 @@
         "math",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Deterministic Heap (Easy Version)；本地暂无可用题解正文。",
+      "statement_brief": "题目在一棵包含 $2^n-1$ 个节点的完美二叉树上赋值，初始各点值为 $0$。`pop` 从根开始，在每次遇到两个子节点时选择值较大的一个并沿其向下移动，同时把该值上移，最终把到达的位置设为 $-1$；若所有选择都没有并列，则称操作具有确定性，并定义了满足父节点值不小于两个子节点的最大堆，但当前题面未给出完整的最终目标。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35108,9 +36205,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:42:31+00:00",
+          "quality_flags": [
+            "ambiguous_operation_description",
+            "missing_editorial",
+            "missing_goal",
+            "truncated_statement"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 848,
@@ -35122,17 +36231,13 @@
       "editorial_url": "https://codeforces.com/blog/entry/132965",
       "editorial_quality": "url_only",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "组合计数与概率",
-        "动态规划与状态设计",
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "combinatorics",
         "dp",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Deterministic Heap (Hard Version)；本地暂无可用题解正文。",
+      "statement_brief": "题目在一棵大小为 $2^n-1$ 的完美二叉树上定义最大堆与 `pop`：从根开始反复选择值较大的子节点并沿路径下移，最后将到达的叶节点设为 $-1$。题面截断处未给出完整的输入、操作目标和最终要求，因此无法确定需要求解的具体结果。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35140,9 +36245,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:42:14+00:00",
+          "quality_flags": [
+            "ambiguous_initialization",
+            "missing_editorial",
+            "objective_missing",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 849,
@@ -35154,14 +36271,12 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "字符串",
-      "secondary_topics": [
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "greedy",
         "strings"
       ],
-      "statement_brief": "题面已抓取：Turtle and Good Strings；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由小写字母组成的字符串，需要将它按顺序切成至少两个非空连续子串。若对任意前面的子串和后面的子串，前者首字符都不同于后者末字符，则输出“YES”，否则输出“NO”。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35169,9 +36284,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:41:56+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 850,
@@ -35182,17 +36308,14 @@
       "problem_url": "https://codeforces.com/contest/2003/problem/B",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "博弈",
-        "数据结构"
-      ],
+      "primary_topic": "博弈",
+      "secondary_topics": [],
       "original_tags": [
         "games",
         "greedy",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Turtle and Piggy Are Playing a Game 2；本地暂无可用题解正文。",
+      "statement_brief": "给定一个序列，Turtle 与 Piggy 轮流选择一对相邻元素，并将左元素分别替换为两者的最大值或最小值，再删除右元素；Turtle 先手用最大值，Piggy 后手用最小值。序列缩短至一个元素后结束，求双方最优策略下最终的 $a_1$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35200,9 +36323,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:41:36+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 851,
@@ -35223,7 +36356,7 @@
         "sortings",
         "strings"
       ],
-      "statement_brief": "题面已抓取：Turtle and Good Pairs；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由小写字母组成的字符串，可以任意重排字符。对每个下标对 $(i,j)$，若两端字符相同，或区间内存在位置 $k$ 满足相邻字符不同且题设条件成立，则称其为 good pair；要求输出使 good pair 数量最大的任意重排结果。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35231,9 +36364,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:41:17+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 852,
@@ -35244,17 +36387,13 @@
       "problem_url": "https://codeforces.com/contest/2003/problem/D1",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "博弈",
-        "数据结构"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：Turtle and a MEX Problem (Easy Version)；本地暂无可用题解正文。",
+      "statement_brief": "给定 $n$ 个整数序列，初始有一个非负整数 $x$。每次可任意选择一个序列，把 $x$ 更新为由当前 $x$ 与该序列所有元素共同计算出的 MEX；序列可以重复选择，操作次数可为零。定义从初始值 $k$ 出发最终能达到的最大值为 $f(k)$，要求计算 $\\sum_{k=0}^{m}f(k)$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35262,9 +36401,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:41:00+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 853,
@@ -35275,11 +36424,9 @@
       "problem_url": "https://codeforces.com/contest/2003/problem/D2",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "图论与网络流",
       "secondary_topics": [
-        "动态规划与状态设计",
-        "图论与网络流",
-        "树结构"
+        "数论与同余"
       ],
       "original_tags": [
         "dfs and similar",
@@ -35289,7 +36436,7 @@
         "implementation",
         "math"
       ],
-      "statement_brief": "题面已抓取：Turtle and a MEX Problem (Hard Version)；本地暂无可用题解正文。",
+      "statement_brief": "给定 $n$ 个整数序列，初始值为 $x=k$ 时可任意次选择尚未使用的序列，并把 $x$ 改为它与该序列所有元素的 mex；可随时停止。定义 $f(k)$ 为能达到的最大终值，要求计算 $\\sum_{k=0}^{m}f(k)$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35297,9 +36444,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:40:41+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 854,
@@ -35311,10 +36470,7 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "组合计数与概率"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "divide and conquer",
@@ -35322,7 +36478,7 @@
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：Turtle and Inversions (Easy Version)；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的排列和 $m$ 个两端点区间。每个区间选择一个 $k_i$（$l_i\\le k_i<r_i$），比较区间左段的最大值与右段的最小值；要求所有左段最大值都小于所有右段最小值，并求满足条件的排列的最大逆序对数，无解则输出 $-1$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35330,9 +36486,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:40:23+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 855,
@@ -35344,11 +36511,7 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "数据结构",
-        "组合计数与概率"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "data structures",
@@ -35358,7 +36521,7 @@
         "math",
         "two pointers"
       ],
-      "statement_brief": "题面已抓取：Turtle and Inversions (Hard Version)；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 n 的排列和 m 个区间。每个区间选择一个切分点 k_i，将区间分成左右两段；要求所有左段最大值的最大值小于所有右段最小值的最小值。求满足条件的排列中的最大逆序对数；若不存在则输出 -1。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35366,9 +36529,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:40:04+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_only",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 856,
@@ -35379,11 +36553,9 @@
       "problem_url": "https://codeforces.com/contest/2003/problem/F",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "动态规划与状态设计",
       "secondary_topics": [
-        "组合计数与概率",
-        "动态规划与状态设计",
-        "数据结构"
+        "构造与贪心"
       ],
       "original_tags": [
         "brute force",
@@ -35394,7 +36566,7 @@
         "probabilities",
         "two pointers"
       ],
-      "statement_brief": "题面已抓取：Turtle and Three Sequences；本地暂无可用题解正文。",
+      "statement_brief": "给定三个长度为 $n$ 的序列 $a,b,c$，选择下标严格递增且长度为 $m$ 的子序列。要求选中位置的 $a$ 值非递减、$b$ 值两两不同，最大化对应 $c$ 值之和；若无法选择则输出 $-1$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35402,9 +36574,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:39:41+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 857,
@@ -35415,11 +36598,9 @@
       "problem_url": "https://codeforces.com/contest/2006/problem/A",
       "editorial_url": "/contest/2006/attachments/download/26936/tutorial.pdf",
       "editorial_quality": "url_only",
-      "primary_topic": "树结构",
+      "primary_topic": "博弈",
       "secondary_topics": [
-        "构造与贪心",
-        "图论与网络流",
-        "博弈"
+        "树结构"
       ],
       "original_tags": [
         "constructive algorithms",
@@ -35429,7 +36610,7 @@
         "greedy",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Iris and Game on the Tree；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵以 1 为根的二叉值树，每个节点取 0、1 或未知值；叶子的权重是根到该叶路径字符串中“10”出现次数减去“01”出现次数。双方轮流选择一个未知节点并将其定为 0 或 1，Iris 先手并最大化非零权重叶子的数量，Dora 最小化该数量，求最优对局后的最终分数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35437,9 +36618,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:39:25+00:00",
+          "quality_flags": [
+            "constraints_incomplete",
+            "missing_editorial",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 858,
@@ -35452,9 +36644,8 @@
       "editorial_quality": "url_only",
       "primary_topic": "树结构",
       "secondary_topics": [
-        "图论与网络流",
-        "构造与贪心",
-        "数据结构"
+        "数据结构",
+        "数论与同余"
       ],
       "original_tags": [
         "brute force",
@@ -35464,7 +36655,7 @@
         "math",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Iris and the Tree；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵以 1 为根、按 DFS 顺序编号的树，第 $i$ 条父子边的非负权重为 $t_i$，且总和为 $w$。依次获知若干边的权重 $t_x=y$；每次事件后，分别最大化每个环形相邻顶点对 $(i,i\\bmod n+1)$ 的树上距离，并输出这些最大值之和。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35472,9 +36663,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:39:02+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 859,
@@ -35485,11 +36687,9 @@
       "problem_url": "https://codeforces.com/contest/2006/problem/C",
       "editorial_url": "/contest/2006/attachments/download/26936/tutorial.pdf",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "数论与同余",
       "secondary_topics": [
-        "数据结构",
-        "数论与同余",
-        "组合计数与概率"
+        "数据结构"
       ],
       "original_tags": [
         "data structures",
@@ -35498,7 +36698,7 @@
         "number theory",
         "two pointers"
       ],
-      "statement_brief": "题面已抓取：Eri and Expanded Sets；本地暂无可用题解正文。",
+      "statement_brief": "给定正整数数组，取任意子数组并把其中不同元素放入集合。每次可选集合中两个不同且平均数为正整数、尚未出现的数，将平均数加入集合；要求统计哪些子数组能经过有限次操作变成排序后相邻差均为 $1$ 的连续集合。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35506,9 +36706,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:38:39+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 860,
@@ -35520,18 +36730,14 @@
       "editorial_url": "/contest/2006/attachments/download/26936/tutorial.pdf",
       "editorial_quality": "url_only",
       "primary_topic": "数据结构",
-      "secondary_topics": [
-        "构造与贪心",
-        "博弈",
-        "交互"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "data structures",
         "greedy",
         "implementation",
         "math"
       ],
-      "statement_brief": "题面已抓取：Iris and Adjacent Products；本地暂无可用题解正文。",
+      "statement_brief": "给定数组及上限 $k$，每个查询取一个子数组；可任意重排元素，也可将单个元素改成 $1$ 到 $k$ 的任意整数。要求使重排后每对相邻元素的乘积都不超过 $k$，并求最少修改次数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35539,9 +36745,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:38:20+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 861,
@@ -35553,18 +36770,14 @@
       "editorial_url": "/contest/2006/attachments/download/26936/tutorial.pdf",
       "editorial_quality": "url_only",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "构造与贪心",
-        "数据结构",
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "data structures",
         "dfs and similar",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Iris's Full Binary Tree；本地暂无可用题解正文。",
+      "statement_brief": "初始只有顶点 $1$，随后按给定父节点逐个加入顶点 $i$，并连边 $(i,p_i)$，要求对每个前缀树分别求其二叉深度。二叉深度是最小的 $d$，使得可以任选根并补充顶点和边，把当前树变成含 $2^d-1$ 个顶点的满二叉树；若不存在则输出 $-1$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35572,9 +36785,18 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:38:06+00:00",
+          "quality_flags": [
+            "missing_editorial"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 862,
@@ -35585,12 +36807,8 @@
       "problem_url": "https://codeforces.com/contest/2006/problem/F",
       "editorial_url": "/contest/2006/attachments/download/26936/tutorial.pdf",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "组合计数与概率",
-        "图论与网络流",
-        "数论与同余"
-      ],
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "combinatorics",
@@ -35598,7 +36816,7 @@
         "graphs",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Dora's Paint；本地暂无可用题解正文。",
+      "statement_brief": "给定一个初始全为 $0$ 的 $n\\times n$ 矩阵，可反复选择一列并将其全部涂成 $1$，或选择一行并将其全部涂成 $2$，后涂染会覆盖先前颜色。目标矩阵只含 $1,2$；给出的矩阵恰有一个位置与真实矩阵相反，求真实矩阵 beauty 的期望值，即最少操作涂成它的方案数的平均值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35606,9 +36824,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:37:44+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 863,
@@ -35620,16 +36849,13 @@
       "editorial_url": "/contest/2007/attachments/download/26937/tutorial.pdf",
       "editorial_quality": "url_only",
       "primary_topic": "数论与同余",
-      "secondary_topics": [
-        "构造与贪心",
-        "数据结构"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "greedy",
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Dora's Set；本地暂无可用题解正文。",
+      "statement_brief": "给定整数区间 $[l,r]$，初始集合包含其中所有整数。每次可选出三个不同的数，要求它们两两互质，然后将这三个数全部删除；求最多能进行多少次操作。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35637,9 +36863,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:37:25+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 864,
@@ -35651,14 +36888,12 @@
       "editorial_url": "/contest/2007/attachments/download/26937/tutorial.pdf",
       "editorial_quality": "url_only",
       "primary_topic": "数据结构",
-      "secondary_topics": [
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "data structures",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Index and Maximum Value；本地暂无可用题解正文。",
+      "statement_brief": "给定一个整数数组，按顺序执行操作 `+ l r` 或 `- l r`：所有当前值位于区间 $[l,r]$ 的元素分别加一或减一。每次操作后输出数组中的最大值，元素后续可以超出初始范围。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35666,9 +36901,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:37:10+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 865,
@@ -35680,15 +36925,12 @@
       "editorial_url": "/contest/2007/attachments/download/26937/tutorial.pdf",
       "editorial_quality": "url_only",
       "primary_topic": "数论与同余",
-      "secondary_topics": [
-        "博弈",
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Dora and C++；本地暂无可用题解正文。",
+      "statement_brief": "给定数组 $c$ 以及两个正整数 $a,b$。每次可任选一个元素，将其增加 $a$ 或增加 $b$，操作次数可为任意非负数；求操作后数组的最小可能极差，即最大元素减最小元素。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -35696,9 +36938,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:36:52+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 866,
@@ -91964,6 +93216,94 @@
       "ai_override": true
     },
     {
+      "ordinal": 2298,
+      "problem_key": "2262C",
+      "contest_id": 2262,
+      "title": "Traveling the World",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/2262/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/156688",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "图论与网络流",
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "constructive algorithms",
+        "graphs",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定严格递增且含 $0$ 的 $n$ 个岛屿值，可任意重排成数组 $b$。从位置 $i$ 可前往位置 $j$，当且仅当 $b_i+b_j$ 等于从 $i$ 到末尾的最大值；要求统计能按此规则恰好访问每个位置一次的重排数量，结果对 $10^9+7$ 取模。",
+      "transformed_statement": "将重排表示为一个值顶点图：顶点 $v$ 的后缀最大值为 $s$ 时唯一可能的转移是 $v\\to s-v$。好重排等价于该函数图包含覆盖全部顶点的简单路径，而两处后缀最大值强制其值序列具有由 $x$ 交替生成的固定结构。",
+      "key_observations": [
+        "把每个位置的值视为图上的顶点；若其后缀最大值为 $s$，则它至多有一条出边，且唯一可能是 $v\\to s-v$，因此题目转化为判断该函数图是否存在覆盖所有顶点的有向路径。",
+        "好排列恰有两个后缀最大值：只有一个时会在 $x\\to M-x\\to x$ 间循环；超过两个时至少有三个顶点指向 $0$，与覆盖全部顶点所需的简单路径及每点至多一条出边矛盾。",
+        "设 $M=a_n$ 且 $x=M-b_n$，覆盖路径反向后必呈 $M,0,M-x,x,M-2x,2x,\\ldots$ 的交替结构；因此 $0,x,\\ldots,(k-1)x$ 必须位于 $M$ 前，其余对应值位于 $M$ 后，排列自由度分别为 $k!$ 与 $(n-k-2)!$。",
+        "只需检查 $x=M-a_{n-1}$ 和 $x=M-a_{n-2}$；其他候选会迫使 $a_{n-1},a_{n-2}$ 都是 $x$ 的倍数，但二者差值严格小于 $x$，不可能同时成立。"
+      ],
+      "solution_brief": "令 $M=a_n$、$k=\\lfloor n/2\\rfloor$，枚举两个候选 $x$，生成并排序结构化数列 $0,x,\\ldots,(k-1)x,M,M-x,\\ldots$，与原数组比较。每个匹配候选贡献 $k!(n-k-2)!$，累加取模。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:36:40+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2299,
+      "problem_key": "2262D",
+      "contest_id": 2262,
+      "title": "PLUSworld",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/2262/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/156688",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "graphs",
+        "greedy"
+      ],
+      "statement_brief": "有 $n$ 个点，点 $i$ 的有向道路初始指向 $a_i$。从任意点出发，可反复将当前点的终点加一，或沿当前道路移动到下一点；要求最终得到所有道路指向 $b_i$（且 $i\\le b_i$），输出可行操作序列或判定无解。",
+      "transformed_statement": "把一次可修改道路的移动过程抽象为区间图：点 $i$ 可在终点从 $a_i$ 增至 $b_i$ 的过程中访问区间 $[a_i,b_i]$。压缩固定点后，问题转化为检查必须访问的 SCC 是否能按单链顺序遍历，并在 SCC 内构造逐点修正的路线。",
+      "key_observations": [
+        "若存在 $a_i>b_i$，由于道路只能向更大编号增加，目标值永远无法达到，立即判定无解。",
+        "将每个点 $i$ 连向区间 $[a_i,b_i]$ 内的所有点，并压缩满足 $a_i=b_i$ 的固定点；剩余必须访问的 SCC 在缩点图中必须形成一条链，且每个 SCC 至多有一个出边。",
+        "若有两个不同点满足 $a_i<i=b_i$，修正其中一个后会永久停在该点，无法再处理另一个，因此这种点至多存在一个。",
+        "含有出边的 SCC 中，承担该出边的点必须是该 SCC 的最大编号点；否则按编号单调性无法处理完其余点后再返回。"
+      ],
+      "solution_brief": "先检查 $a_i>b_i$，再建立区间可达图并压缩固定点，求 SCC 检验缩点图链式结构及编号限制。对每个可行 SCC，利用反向内部边构造树，逐点调整道路并移动，按 SCC 链顺序完成构造。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:36:22+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
       "ordinal": 2300,
       "problem_key": "2262E",
       "contest_id": 2262,
@@ -92204,6 +93544,136 @@
       "ai_override": true
     },
     {
+      "ordinal": 2306,
+      "problem_key": "2264C",
+      "contest_id": 2264,
+      "title": "Madamant's Skating Dynasty",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2264/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/156680",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "给定 $n$ 名评分互不相同的选手，构造一棵有根树，要求每个非根节点的父节点评分严格更高。每棵合法树的代价是所有父子边评分差之和，求所有合法树代价总和并对 $998244353$ 取模。",
+      "transformed_statement": "将评分排序为 $b_0<\\cdots<b_{n-1}$ 后，把每个位置 $i<n-1$ 独立选择一个右侧父节点；最大值固定为根。对每条候选边统计它出现在多少棵树中，再累加边权贡献。",
+      "key_observations": [
+        "排序后每个非根节点只能连向右侧更大评分的节点，因此最大评分者必为根，任意独立选父节点都会自动形成合法树。",
+        "固定边 $i\\to j$ 后，其他位置 $k$ 的父节点选择数仍为 $n-k-1$，所以该边出现在与 $j$ 无关的 $W_i$ 棵树中。",
+        "同一节点 $i$ 发出的所有边可合并计算为 $W_i\\left(\\sum_{j>i}b_j-(n-i-1)b_i\\right)$，从逐树求和转为后缀和与乘积。",
+        "$W_i$ 是去掉一个因子的整体乘积，可用前缀积和后缀积求出，避免模意义下除法并保持线性扫描。"
+      ],
+      "solution_brief": "将评分排序。对每个可能的父子边按贡献计数：其出现次数是其他节点父节点选择数的乘积，边权总和用后缀和计算；前缀积与后缀积得到各边出现次数，整体复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:36:03+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2307,
+      "problem_key": "2264D",
+      "contest_id": 2264,
+      "title": "Dr. Agos's Dark Mode",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2264/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/156680",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心",
+        "字符串"
+      ],
+      "original_tags": [
+        "brute force",
+        "chinese remainder theorem",
+        "constructive algorithms",
+        "math",
+        "strings"
+      ],
+      "statement_brief": "给定长度为 $n$ 的二进制屏幕串，允许其中至多有三个 $1$。把每个连续子串视为二进制整数，统计其值能被 $3$ 整除的子串数量，并构造一个使该数量在所有长度为 $n$ 的二进制串中最小的串。",
+      "transformed_statement": "把每个位置后的前缀映射为交错和模 $3$ 的余数；一个子串恼人的充要条件是两端前缀余数相同。因此问题转化为让三种余数在 $n+1$ 个前缀中的出现次数尽量均衡。",
+      "key_observations": [
+        "二进制数模 $3$ 时 $2\\equiv-1$，因此子串可整除 $3$ 当且仅当其两端对应的交错前缀余数相同。",
+        "若三种前缀余数出现次数为 $c_0,c_1,c_2$，答案就是 $\\sum c_i(c_i-1)/2$；总数固定时，三者尽量均衡即可最小化它。",
+        "零只会重复当前余数，至多三个一把前缀划成四个常值块，因此把三个边界放在约 $n/3$、$2n/3$ 和末尾即可尝试实现均衡。",
+        "枚举两个边界各自附近的两个位置及是否放置末尾的第三个一，共至多八个候选，检查前缀余数计数是否相差不超过一即可。"
+      ],
+      "solution_brief": "维护交错前缀和模 $3$，将整除子串数转为相同余数前缀对数。对边界附近至多八个、含不超过三个 $1$ 的候选串计数，输出三类余数均衡者；$n=1,2$ 特判。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:35:45+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2308,
+      "problem_key": "2264E1",
+      "contest_id": 2264,
+      "title": "A Prime Flood (Easy Version)",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/2264/problem/E1",
+      "editorial_url": "https://codeforces.com/blog/entry/156680",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "组合计数与概率",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "number theory"
+      ],
+      "statement_brief": "给定数组的每个非空下标子序列，可反复选择质数 $p$，同时将当前能被 $p$ 整除的所有元素减一；每个子序列独立操作。求能把该子序列所有元素变相等的最大最终值，并对所有子序列的该值求和。",
+      "transformed_statement": "把每个子序列压缩为其最小值 $x$ 和最大值 $y$，定义 $dp[x][y]$ 为这对端点可被化为的最大相等值；先递推所有端点状态，再按数组中取到指定最小值和最大值的方式计数。",
+      "key_observations": [
+        "操作始终保持各元素的相对大小，因此只要最小值和最大值最终相等，中间值也必然相等；子序列贡献只取决于其最小值和最大值。",
+        "考察首次让最大端点 $y$ 降到 $y-1$ 的操作：若存在只整除 $y$ 而不整除 $x$ 的质数，可转移到 $dp[x][y-1]$；否则该操作也会使下端点降为 $x-1$，转移到 $dp[x-1][y-1]$。",
+        "令 $need[y]$ 为 $y$ 的不同质因子乘积，则“$y$ 的所有质因子都整除 $x$”等价于 $x\\bmod need[y]=0$，从而能直接按区间长度递推整张 $dp$ 表。",
+        "固定最小值 $x$ 和最大值 $y$ 后，两端必须各选至少一个，中间出现次数任意选择，子序列数量为 $(2^{c_x}-1)(2^{c_y}-1)2^{\\sum_{x<v<y}c_v}$，可用频次数组前缀和计算。"
+      ],
+      "solution_brief": "预处理每个 $y$ 的不同质因子乘积，并按区间长度计算 $dp[x][y]$。对每个测试用例统计各值频次，用端点必须出现、中间元素任选的公式计数，再乘对应 $dp[x][y]$ 求和。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:35:27+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
       "ordinal": 2309,
       "problem_key": "2264E2",
       "contest_id": 2264,
@@ -92241,6 +93711,49 @@
           "path": "ai-generated-insights.json",
           "model": "gpt-5.6-sol",
           "generated_at": "2026-09-20T13:47:56+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2310,
+      "problem_key": "2264F",
+      "contest_id": 2264,
+      "title": "Deranged Calculator",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/2264/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/156680",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定 $k\\in\\{2,3,50\\}$，只能使用输入整数 $n$、括号、round 和四则运算，且不能直接写数字常量，构造一个不超过 $10000$ 个字符的 DC 表达式。对每个 $2\\le n\\le k$，表达式不能发生除零，并必须输出排列 $[1,2,\\ldots,n]$ 的错排数量。",
+      "transformed_statement": "将错排数转化为 $D_n=round(n!/e)$：先用阈值指示器把固定上界内的各个阶乘因子按输入值选择性乘入，再用有限嵌套级数构造足够精确的 $e$，最后整体取整。",
+      "key_observations": [
+        "对常数 $x$，表达式 $round(n/(n+x))$ 在 $n<x$ 时为 $0$、在 $n\\ge x$ 时为 $1$，因此可充当阈值指示器。",
+        "把常数预先表示成由 $n$、四则运算和括号组成的短表达式，就能在禁止数字常量的限制下复用这些阈值和乘法因子。",
+        "因子 $[n\\ge j](j-1)+1$ 在阈值前为 $1$、达到阈值后为 $j$，将 $j=2$ 到 $50$ 的因子相乘即可得到输入对应的 $n!$。",
+        "利用 $D_n=round(n!/e)$，再用 $e=\\sum_{k=0}^{\\infty}1/k!$ 的嵌套有限展开近似 $e$，可在 $n\\le50$ 时保持取整结果正确。"
+      ],
+      "solution_brief": "先用短表达式构造所需整数和阈值指示器，再拼出输入对应的阶乘。利用 $D_n=round(n!/e)$，以嵌套形式计算足够精确的 $e$ 近似，最终输出取整结果。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:34:58+00:00",
           "quality_flags": []
         }
       },
@@ -93006,11 +94519,9 @@
       "problem_url": "https://codeforces.com/contest/2268/problem/C",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "基础实现与模拟",
       "secondary_topics": [
-        "动态规划与状态设计",
-        "数据结构",
-        "组合计数与概率"
+        "数论与同余"
       ],
       "original_tags": [
         "binary search",
@@ -93021,7 +94532,7 @@
         "greedy",
         "two pointers"
       ],
-      "statement_brief": "题面已抓取：KiaKio and Energy Intervals；本地暂无可用题解正文。",
+      "statement_brief": "给定一个非负整数数组，每次选择至少包含两个元素的连续区间，令 $m$ 为区间最大值，将区间内每个数与 $m$ 做按位 AND，再把所有结果按位 XOR。求所有合法区间中能得到的最大能量值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -93029,9 +94540,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:34:37+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 2330,
@@ -93042,18 +94564,14 @@
       "problem_url": "https://codeforces.com/contest/2268/problem/D",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "动态规划与状态设计",
-      "secondary_topics": [
-        "树结构",
-        "数据结构",
-        "组合计数与概率"
-      ],
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [],
       "original_tags": [
         "data structures",
         "dp",
         "trees"
       ],
-      "statement_brief": "题面已抓取：AghaBalaSar and Hamed；本地暂无可用题解正文。",
+      "statement_brief": "给定一个长度为 $n$ 的排列，从位置 $i$ 出发时可一步移动到任意左侧位置，或右侧第一个值比 $p_i$ 大的位置。对每个有序位置对求最少步数，不可达记为 $0$，输出所有步数之和。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -93061,9 +94579,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:34:21+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 2331,
@@ -93076,9 +94604,7 @@
       "editorial_quality": "missing_url",
       "primary_topic": "树结构",
       "secondary_topics": [
-        "数据结构",
-        "代数、矩阵与多项式",
-        "数论与同余"
+        "组合计数与概率"
       ],
       "original_tags": [
         "data structures",
@@ -93086,7 +94612,7 @@
         "math",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Kia Kio and Tree of Life；本地暂无可用题解正文。",
+      "statement_brief": "给定数组，递归地对每个连续区间选择一个元素作根，左、右子树分别由根左侧和右侧区间构成，从而生成所有保持数组顺序的二叉树。删除树中的每条边，计算两部分元素异或和之和并累加，求所有合法树的该值总和，结果模 $998244353$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -93094,9 +94620,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:34:06+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 2332,
