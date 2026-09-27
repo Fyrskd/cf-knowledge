@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 939,
+    "ai_override_count": 946,
     "primary_topic_count": 13,
     "contest_count": 314,
     "rating_min": 800,
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 85,
-    "构造与贪心": 678,
+    "构造与贪心": 676,
     "图论与网络流": 119,
     "动态规划与状态设计": 189,
-    "数论与同余": 194,
+    "数论与同余": 195,
     "组合计数与概率": 155,
-    "数据结构": 164,
+    "数据结构": 165,
     "几何": 42,
     "树结构": 129,
     "代数、矩阵与多项式": 18,
@@ -21441,15 +21441,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/2149/problem/A",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "博弈"
-          ],
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
           "originalTags": [
             "math"
           ],
-          "statementBrief": "题面已抓取：Be Positive；本地暂无可用题解正文。",
+          "statementBrief": "给定一个只含 $-1$、$0$、$1$ 的数组。每次可任选一个位置并将该元素增加 $1$，重复任意次，要求用最少操作使所有元素的乘积严格为正。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -21465,14 +21462,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2149/problem/B",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "greedy",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Unconventional Pairs；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为偶数的整数数组，需要将所有下标两两配成恰好 $n/2$ 对，每个下标只能使用一次。每对元素的代价是绝对差值，要求最小化所有配对中最大代价。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -21488,14 +21483,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2149/problem/C",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈",
-            "数据结构"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "greedy"
           ],
-          "statementBrief": "题面已抓取：MEX rose；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $n$ 的数组和目标值 $k$，每次可任选一个位置，将其改成 $0$ 到 $n$ 中的任意整数。求使数组的 MEX（最小未出现的非负整数）恰好为 $k$ 所需的最少修改次数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -21511,14 +21503,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2149/problem/D",
           "editorialUrl": "",
           "primaryTopic": "字符串",
-          "secondaryTopics": [
-            "构造与贪心",
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "strings"
           ],
-          "statementBrief": "题面已抓取：A and B；本地暂无可用题解正文。",
+          "statementBrief": "给定只含 `a` 和 `b` 的字符串，每次可交换一对相邻字符。要求用最少操作使 `a` 或 `b` 的所有字符集中成恰好一个连续块，另一种字符可分布在该块前后，并输出最少操作次数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -21534,15 +21523,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2149/problem/E",
           "editorialUrl": "",
           "primaryTopic": "数据结构",
-          "secondaryTopics": [
-            "构造与贪心",
-            "图论与网络流"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "data structures",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Hidden Knowledge of the Ancients；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $n$ 的整数数组，以及整数 $k,l,r$。需要统计连续子数组的数量：子数组长度必须在 $[l,r]$ 内，且其中恰好包含 $k$ 个不同的数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -21558,17 +21544,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2149/problem/F",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "几何",
-            "图论与网络流",
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "math",
             "ternary search"
           ],
-          "statementBrief": "题面已抓取：Nezuko in the Clearing；本地暂无可用题解正文。",
+          "statementBrief": "角色从数轴上的 $0$ 点出发，初始有 $h$ 点生命，每回合可休息并恢复 $1$ 点生命，或向右移动 $1$；若这是连续移动的第 $j$ 次，则损失 $j$ 点生命，移动后生命不能降至 $0$ 或以下。求到达 $d$ 点所需的最少回合数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -21583,12 +21565,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2100,
           "problemUrl": "https://codeforces.com/contest/2149/problem/G",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构",
-            "组合计数与概率",
-            "交互"
-          ],
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "brute force",
@@ -21596,7 +21574,7 @@ window.CF_INSIGHTS_DATA = {
             "divide and conquer",
             "probabilities"
           ],
-          "statementBrief": "题面已抓取：Buratsuta 3；本地暂无可用题解正文。",
+          "statementBrief": "给定一个整数数组，处理多个区间查询 $(l,r)$。对每个区间统计各数值出现次数，输出所有出现次数严格大于该区间长度除以 $3$ 的整数下取整值，并按升序排列；若没有则输出 $-1$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

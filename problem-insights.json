@@ -24,7 +24,7 @@
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 939,
+    "ai_override_count": 946,
     "primary_topic_count": 13
   },
   "records": [
@@ -53146,15 +53146,12 @@
       "problem_url": "https://codeforces.com/contest/2149/problem/A",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "组合计数与概率",
-        "博弈"
-      ],
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
       "original_tags": [
         "math"
       ],
-      "statement_brief": "题面已抓取：Be Positive；本地暂无可用题解正文。",
+      "statement_brief": "给定一个只含 $-1$、$0$、$1$ 的数组。每次可任选一个位置并将该元素增加 $1$，重复任意次，要求用最少操作使所有元素的乘积严格为正。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -53162,9 +53159,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:28:30+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1325,
@@ -53176,14 +53183,12 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "博弈"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "greedy",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Unconventional Pairs；本地暂无可用题解正文。",
+      "statement_brief": "给定一个长度为偶数的整数数组，需要将所有下标两两配成恰好 $n/2$ 对，每个下标只能使用一次。每对元素的代价是绝对差值，要求最小化所有配对中最大代价。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -53191,9 +53196,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:28:14+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1326,
@@ -53205,14 +53220,11 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "博弈",
-        "数据结构"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "greedy"
       ],
-      "statement_brief": "题面已抓取：MEX rose；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的数组和目标值 $k$，每次可任选一个位置，将其改成 $0$ 到 $n$ 中的任意整数。求使数组的 MEX（最小未出现的非负整数）恰好为 $k$ 所需的最少修改次数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -53220,9 +53232,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:27:58+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1327,
@@ -53234,14 +53257,11 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "字符串",
-      "secondary_topics": [
-        "构造与贪心",
-        "博弈"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "strings"
       ],
-      "statement_brief": "题面已抓取：A and B；本地暂无可用题解正文。",
+      "statement_brief": "给定只含 `a` 和 `b` 的字符串，每次可交换一对相邻字符。要求用最少操作使 `a` 或 `b` 的所有字符集中成恰好一个连续块，另一种字符可分布在该块前后，并输出最少操作次数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -53249,9 +53269,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:27:43+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1328,
@@ -53263,15 +53294,12 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "数据结构",
-      "secondary_topics": [
-        "构造与贪心",
-        "图论与网络流"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "data structures",
         "two pointers"
       ],
-      "statement_brief": "题面已抓取：Hidden Knowledge of the Ancients；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的整数数组，以及整数 $k,l,r$。需要统计连续子数组的数量：子数组长度必须在 $[l,r]$ 内，且其中恰好包含 $k$ 个不同的数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -53279,9 +53307,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:27:28+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1329,
@@ -53293,17 +53332,13 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "几何",
-        "图论与网络流",
-        "博弈"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "math",
         "ternary search"
       ],
-      "statement_brief": "题面已抓取：Nezuko in the Clearing；本地暂无可用题解正文。",
+      "statement_brief": "角色从数轴上的 $0$ 点出发，初始有 $h$ 点生命，每回合可休息并恢复 $1$ 点生命，或向右移动 $1$；若这是连续移动的第 $j$ 次，则损失 $j$ 点生命，移动后生命不能降至 $0$ 或以下。求到达 $d$ 点所需的最少回合数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -53311,9 +53346,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:27:09+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1330,
@@ -53324,12 +53369,8 @@
       "problem_url": "https://codeforces.com/contest/2149/problem/G",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "数据结构",
-        "组合计数与概率",
-        "交互"
-      ],
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "brute force",
@@ -53337,7 +53378,7 @@
         "divide and conquer",
         "probabilities"
       ],
-      "statement_brief": "题面已抓取：Buratsuta 3；本地暂无可用题解正文。",
+      "statement_brief": "给定一个整数数组，处理多个区间查询 $(l,r)$。对每个区间统计各数值出现次数，输出所有出现次数严格大于该区间长度除以 $3$ 的整数下取整值，并按升序排列；若没有则输出 $-1$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -53345,9 +53386,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:26:50+00:00",
+          "quality_flags": [
+            "ambiguous_example",
+            "missing_editorial",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1331,

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T01:24:34+00:00",
+  "updated_at": "2026-09-27T01:28:30+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -28394,6 +28394,192 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 的均分规则与 editorial_text 的模 $3$ 转化，tags 提供 math 分类。",
         "quality_flags": []
+      }
+    },
+    "2149G": {
+      "problem_key": "2149G",
+      "title": "Buratsuta 3",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2149/problem/G",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "38b4e62e8a17979f9fde90e182d0a7a493effa04ad3f6f7b1756c5e2e069224f",
+      "generated_at": "2026-09-27T01:26:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，处理多个区间查询 $(l,r)$。对每个区间统计各数值出现次数，输出所有出现次数严格大于该区间长度除以 $3$ 的整数下取整值，并按升序排列；若没有则输出 $-1$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意与可直接推出的性质来自 statement_text；primary_topic 参考了给定 tags 中的 data structures，未据此补写算法。",
+        "quality_flags": [
+          "ambiguous_example",
+          "missing_editorial",
+          "statement_truncated"
+        ]
+      }
+    },
+    "2149F": {
+      "problem_key": "2149F",
+      "title": "Nezuko in the Clearing",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2149/problem/F",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8dbb72021905c3f560cd3789814c8dd427c5552191d867e1d7aff7cf8d41b58d",
+      "generated_at": "2026-09-27T01:27:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "角色从数轴上的 $0$ 点出发，初始有 $h$ 点生命，每回合可休息并恢复 $1$ 点生命，或向右移动 $1$；若这是连续移动的第 $j$ 次，则损失 $j$ 点生命，移动后生命不能降至 $0$ 或以下。求到达 $d$ 点所需的最少回合数。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，未使用外部信息补充算法。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2149E": {
+      "problem_key": "2149E",
+      "title": "Hidden Knowledge of the Ancients",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/2149/problem/E",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0c014a742718f9755993f654ee17bb54c64f182e7e142bc34d61d2f22e059f42",
+      "generated_at": "2026-09-27T01:27:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的整数数组，以及整数 $k,l,r$。需要统计连续子数组的数量：子数组长度必须在 $[l,r]$ 内，且其中恰好包含 $k$ 个不同的数。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，未使用外部信息。",
+        "quality_flags": [
+          "low_confidence",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2149D": {
+      "problem_key": "2149D",
+      "title": "A and B",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2149/problem/D",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "34f9ecf3ddd52ec41e436dcb1346d99b72e3533d16ecfb05703f3f3aa48c3b55",
+      "generated_at": "2026-09-27T01:27:43+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定只含 `a` 和 `b` 的字符串，每次可交换一对相邻字符。要求用最少操作使 `a` 或 `b` 的所有字符集中成恰好一个连续块，另一种字符可分布在该块前后，并输出最少操作次数。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "字符串",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred",
+          "statement_truncated"
+        ]
+      }
+    },
+    "2149C": {
+      "problem_key": "2149C",
+      "title": "MEX rose",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/2149/problem/C",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "27017010cb8e87c377467c2aff4217b2e8891cf9a865391c00c941a7834ec289",
+      "generated_at": "2026-09-27T01:27:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组和目标值 $k$，每次可任选一个位置，将其改成 $0$ 到 $n$ 中的任意整数。求使数组的 MEX（最小未出现的非负整数）恰好为 $k$ 所需的最少修改次数。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面和 greedy 标签；未提供 editorial_text。",
+        "quality_flags": [
+          "missing_editorial",
+          "solution_unavailable",
+          "statement_only"
+        ]
+      }
+    },
+    "2149B": {
+      "problem_key": "2149B",
+      "title": "Unconventional Pairs",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2149/problem/B",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5aeac9eaa58cb596e671cff3f0441215e4f7b5e29b95626639fc6f427fe3faa5",
+      "generated_at": "2026-09-27T01:28:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为偶数的整数数组，需要将所有下标两两配成恰好 $n/2$ 对，每个下标只能使用一次。每对元素的代价是绝对差值，要求最小化所有配对中最大代价。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和题目标签 greedy、sortings；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2149A": {
+      "problem_key": "2149A",
+      "title": "Be Positive",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2149/problem/A",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-5.6-luna",
+      "input_hash": "76a8db066f8b94fa84bd0bcd19973fc06a573cbd9282718aaeae4c16292b7a59",
+      "generated_at": "2026-09-27T01:28:30+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个只含 $-1$、$0$、$1$ 的数组。每次可任选一个位置并将该元素增加 $1$，重复任意次，要求用最少操作使所有元素的乘积严格为正。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 与 tags 中的 math；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
       }
     }
   }
