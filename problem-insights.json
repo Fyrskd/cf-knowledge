@@ -15,19 +15,236 @@
     ]
   },
   "summary": {
-    "total_problems": 3104,
+    "total_problems": 3109,
     "source_total_problems": 3110,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 3104,
-    "with_editorial_brief": 2824,
-    "with_solution_brief": 2825,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3109,
+    "with_editorial_brief": 2829,
+    "with_solution_brief": 2830,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2166,
+    "ai_override_count": 2171,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1710A",
+      "contest_id": 1710,
+      "title": "Color the Picture",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1710/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/105232",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定一个 $n\\times m$ 的环面网格和 $k$ 种颜料，第 $i$ 种颜料最多可涂 $a_i$ 个格子。要求为所有格子涂色，使每个格子恰有四个环面相邻格中的至少三个与它同色，判断是否能做到。",
+      "transformed_statement": "将合法图案等价看成统一方向的条带划分：每条水平条带至少含两行，或每条垂直条带至少含两列。于是问题转为判断颜料容量按条带长度折算后，能否覆盖目标条带数并满足奇数条带的额外容量条件。",
+      "key_observations": [
+        "若存在异色相邻格，沿该边界传播可知边界只能是贯穿整图的水平线或垂直线，且两种方向不能同时出现，因此图案必为宽度至少为 $2$ 的行条带或列条带。",
+        "采用行条带时，颜料 $i$ 最多提供 $\\lfloor a_i/m\\rfloor$ 行；只有这些商至少为 $2$ 的颜料才能参与，商的总和达到 $n$ 才可能覆盖全部行。",
+        "当所需条带数为奇数时，每个颜料恰好只能提供 $2$ 条会导致无法拼出奇数条，因此必须存在某个颜料能提供至少 $3$ 条；条带数为偶数时该额外条件不需要。",
+        "交换行列后即可检查列条带：颜料容量除以 $n$ 得到可提供的列数，并对目标列数应用同样的奇偶条件。"
+      ],
+      "solution_brief": "分别尝试行条带和列条带。对行条带累加满足 $\\lfloor a_i/m\\rfloor\\ge2$ 的可用行数，并检查总数是否至少为 $n$；若 $n$ 为奇数，还需存在商至少为 $3$ 的颜料。列条带交换 $n,m$ 后同理，任一方向可行即输出 Yes。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T23:59:01+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1710B",
+      "contest_id": 1710,
+      "title": "Rain",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1710/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/105232",
+      "editorial_quality": "complete",
+      "primary_topic": "几何",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "data structures",
+        "geometry",
+        "greedy",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "数轴上连续下雨，第 $i$ 天的雨以整数位置 $x_i$ 为中心，在位置 $j$ 增加 $\\max(0,p_i-|x_i-j|)$。必须分别假设删除某一天的整场雨，判断剩余累计雨量是否始终不超过 $m$，并输出每一天对应的可行性。",
+      "transformed_statement": "把所有降雨叠加成关于位置的分段线性函数，只需检查各场雨的中心。对每个超限位置，删除一场雨必须覆盖该位置的超额雨量，于是转化为参数点 $(x_i,p_i)$ 是否属于若干旋转象限的交集。",
+      "key_observations": [
+        "总降雨量函数是若干尖顶函数之和，其最大值可在某场雨的中心位置取得，因此只需检查所有 $x_i$。",
+        "用二阶差分表示降雨函数时，一场中心为 $x_i$、强度为 $p_i$ 的雨只需在 $x_i-p_i+1$、$x_i+1$、$x_i+p_i+1$ 三处更新，扫描即可得到各关键位置的总量。",
+        "若位置 $j$ 超过上限的雨量为 $a_j-m$，删除第 $i$ 场雨能修复它当且仅当 $p_i-|x_i-j|\\ge a_j-m$，这把删除条件转成了 $(x_i,p_i)$ 平面上的旋转象限。",
+        "所有超限位置对应区域的交集仍可由两个边界维护；最终判断每场雨的点是否落在该交集中，从而在线性扫描和排序后统一得到答案。"
+      ],
+      "solution_brief": "先用二阶差分扫描所有雨量函数的关键位置，找出全部超限位置。每个超限位置给出一个关于待删除雨水参数 $(x,p)$ 的旋转象限约束，维护这些约束的交集，检查每场雨的点是否满足交集即可；总复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T23:58:40+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1710C",
+      "contest_id": 1710,
+      "title": "XOR Triangle",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1710/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/105232",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "constructive algorithms",
+        "dp",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定一个无前导零的二进制整数 $n$，统计所有满足 $0\\le a,b,c\\le n$ 的有序三元组。令 $a\\oplus b$、$b\\oplus c$、$a\\oplus c$ 为三条边，要求它们构成非退化三角形，并输出三元组数量。",
+      "transformed_statement": "把 $a,b,c$ 的每个二进制位视为一个三位模式；三条三角形不等式只取决于六种单一或双重置位模式是否出现，再结合三个数逐位不超过 $n$ 的上界条件进行数位 DP。",
+      "key_observations": [
+        "同一二进制位同时观察 $a,b,c$ 的取值，可按三位模式统计贡献；例如 $011$ 与 $100$ 的出现恰好保证 $(a\\oplus b)+(a\\oplus c)>b\\oplus c$。",
+        "三条三角形不等式分别等价于模式对 $\\{011,100\\}$、$\\{101,010\\}$、$\\{110,001\\}$ 中至少出现一个，因此无需计算异或数值，只需记录三个条件是否已满足。",
+        "从高位到低位枚举每位的 $(a_i,b_i,c_i)$，用三个标志分别记录对应数是否已严格小于 $n$；若仍与上界相等，则不能选择超过 $n_i$ 的位，从而同时完成范围限制。",
+        "处理完全部位后，只保留三个三角形条件均满足的状态；状态数量为 $8\\times8$，每位枚举 $8$ 种模式即可在线性扫描中完成计数。"
+      ],
+      "solution_brief": "将每一位的三元取值压缩为 $8$ 种模式，用一个 $8$ 位掩码记录三条不等式是否已满足，另一个掩码维护 $a,b,c$ 对 $n$ 的上界关系。按高位到低位做数位 DP，答案对 $998244353$ 取模，复杂度为 $O(2^9|n|)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T23:58:20+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1710D",
+      "contest_id": 1710,
+      "title": "Recover the Tree",
+      "rating": 3400,
+      "problem_url": "https://codeforces.com/contest/1710/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/105232",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "树结构"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "trees"
+      ],
+      "statement_brief": "给定编号为 $1$ 到 $n$ 的顶点及一棵未知树。对每个连续区间 $[l,r]$，输入它包含的顶点是否在树中构成一个连通块；要求恢复任意一棵与全部标记一致的树。",
+      "transformed_statement": "把顶点初始视为单点连通块，按区间长度递增加入边；每次对一个 good 区间，将其端点所在的连续连通块及中间块合并，同时保持所有当前连通块都是编号连续区间。",
+      "key_observations": [
+        "两个相交的 good 区间的交集和并集仍然 good，因此可用重叠区间链推出更大的连续区间。",
+        "按区间长度递增处理，并保持每个当前连通块的编号集合是连续区间，使合并范围可由左右端点直接表示。",
+        "处理 good 区间 $[x,y]$ 时，若两端属于不同连通块，可用包含 $x,y$ 的交错路径连接中间所有连通块，从而合并整个范围。",
+        "若待处理区间两端已在同一连通块中则无需加边；交错连边不会制造 bad 区间，因为新变得连通的区间要么未受影响，要么可由若干已确认的 good 子区间拼出。"
+      ],
+      "solution_brief": "按长度递增扫描所有区间，维护每个连通块的左右端点。遇到标记为 good 且两端不在同一块的区间，就用端点和中间各块的代表点交错连成一条路径并更新连通块；最终得到 $n-1$ 条边，复杂度为 $O(n^2)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T23:57:36+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1710E",
+      "contest_id": 1710,
+      "title": "Two Arrays",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1710/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/105232",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "博弈",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "games",
+        "graph matchings"
+      ],
+      "statement_brief": "给定数组 $a,b$ 构成的 $n\\times m$ 网格，格子 $(r,c)$ 的分数为 $a_r+b_c$。车从 $(1,1)$ 出发，双方轮流将车沿当前行或列移动，并受访问次数限制且可结束游戏；Bob 最大化最终分数，Alice 最小化，求最优策略下的最终分数。",
+      "transformed_statement": "对候选阈值 $Z$，把分数不超过 $Z$ 的格子染白，其余染黑，并将同一行或同一列中的异色格子连边。题目转化为判断起点在这个二分图中是否属于所有最大匹配，再借助最大独立集大小比较完成判定。",
+      "key_observations": [
+        "对答案设阈值 $Z$ 后，将格子按 $a_r+b_c\\le Z$ 与否染成两色；只保留同一行或同一列的异色转移，原博弈等价于该二分图上的限次走棋。",
+        "每个格子复制 $1000$ 份后，限次访问可转化为每个顶点至多访问一次；起点先手必胜当且仅当起点属于所有最大匹配。",
+        "起点属于所有最大匹配等价于删除起点会降低最大匹配大小，也等价于含起点的最大独立集严格更小，因此可通过比较两种最大独立集大小判定阈值。",
+        "排序后白格构成递减阶梯；固定白列数时，逐行改变颜色的独立集增量具有单调性，可用双指针在线性时间求最大独立集。"
+      ],
+      "solution_brief": "二分最终分数阈值 $Z$。排序数组后，把 $a_r+b_c\\le Z$ 的格子视为白色，利用阶梯结构线性计算含起点和不含起点的最大独立集；两者相等则起点不属于所有最大匹配，判定 Alice 可否将答案压到 $Z$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T23:57:11+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 6,
       "problem_key": "1711A",
