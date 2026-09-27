@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2697,
+    "total_problems": 2705,
     "source_total_problems": 2705,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2697,
-    "with_editorial_brief": 2428,
-    "with_solution_brief": 2429,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2705,
+    "with_editorial_brief": 2436,
+    "with_solution_brief": 2437,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1759,
+    "ai_override_count": 1767,
     "primary_topic_count": 13,
-    "contest_count": 412,
+    "contest_count": 413,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 138,
-    "构造与贪心": 847,
+    "构造与贪心": 850,
     "图论与网络流": 166,
     "动态规划与状态设计": 231,
-    "数论与同余": 293,
+    "数论与同余": 295,
     "组合计数与概率": 206,
     "数据结构": 253,
-    "几何": 65,
-    "树结构": 143,
+    "几何": 66,
+    "树结构": 144,
     "代数、矩阵与多项式": 20,
     "交互": 87,
-    "基础实现与模拟": 155,
+    "基础实现与模拟": 156,
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1484,
+    "ai_generated_with_editorial": 1492,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 268,
     "manual_override": 891,
@@ -77187,6 +77187,242 @@ window.CF_INSIGHTS_DATA = {
             "上述构造满足每个顶点的期望平衡方程，并利用终点停止、起点初始计数为 $1$ 的边界条件唯一确定答案。"
           ],
           "solutionBrief": "先找出 $s$ 到 $t$ 的唯一路径并编号为 $r_0,\\\\dots,r_k$。终点答案为 $1$；对其他路径顶点及其挂接子树中的顶点，答案统一为 $(k-i)\\deg(v)$，最后按模 $998244353$ 输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1822,
+      "name": "Codeforces Round 867 (Div. 3)",
+      "date": "2023-04-24",
+      "url": "https://codeforces.com/contest/1822",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1822A",
+          "index": "A",
+          "slot": "A",
+          "title": "TubeTube Feed",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1822/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/115409",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "视频按顺序编号，初始停在第一个视频；每跳过一个视频耗时 1 秒，选定后还要完整观看该视频。请在总时间不超过 $t$ 的前提下选择娱乐值最大的可观看视频，若不存在则输出 $-1$。",
+          "transformedStatement": "把每个视频独立看作一个候选项：第 $i$ 个视频的固定进入成本为 $i-1$，连同观看时长后的总成本为 $i-1+a_i$；只在成本不超过 $t$ 的候选中最大化 $b_i$。",
+          "keyObservations": [
+            "选择第 $i$ 个视频时，必须先跳过前面 $i-1$ 个视频，因此总耗时是 $i-1+a_i$；可行条件恰为 $i-1+a_i\\le t$。",
+            "所有可行视频之间只需比较娱乐值 $b_i$，取最大者即可；若最大值相同，任意对应下标都满足要求。"
+          ],
+          "solutionBrief": "逐个枚举视频，检查 $i-1+a_i\\le t$。对满足条件的视频维护最大的娱乐值及其下标；若没有可行视频则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1822B",
+          "index": "B",
+          "slot": "B",
+          "title": "Karina and Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1822/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/115409",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个整数数组，可以删除任意数量的元素，但最终至少保留两个元素，数组中相邻元素的乘积最大值称为美丽值。求通过删除元素后能够得到的最大美丽值，保留元素的相对顺序不变。",
+          "transformedStatement": "由于不限制删除次数，任意两个原数组元素都能通过删除它们之间及其他位置的元素变成相邻元素。因此问题转化为寻找数组中乘积最大的两个元素。",
+          "keyObservations": [
+            "删除中间元素可以让原数组中任意两个保序元素成为相邻元素，因此目标等价于在所有元素对中寻找最大乘积。",
+            "最大乘积若为正，只可能来自两个较大的数或两个较小的负数；因此只需比较排序后最小两个数与最大两个数的乘积。",
+            "题目不要求最少删除次数，选定最优元素对后删除其余所有元素即可，所以不需要考虑元素间原本是否相邻。"
+          ],
+          "solutionBrief": "排序数组后，计算最小两个数的乘积和最大两个数的乘积，取较大值。因为可以删除其他所有元素，选中的两个数最终必然相邻；每组测试复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1822C",
+          "index": "C",
+          "slot": "C",
+          "title": "Bun Lover",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1822/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/115409",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定边长为 $n$ 的方形肉桂卷，其巧克力沿唯一确定的螺旋铺在内部并环绕外侧；已知 $n\\ge4$，要求计算整层巧克力的总长度。",
+          "transformedStatement": "将螺旋巧克力层等价拆成中心一段、段长为 $1$ 到 $n$ 的折线，以及段长为 $1$ 到 $n+1$ 的折线，问题转化为三部分长度求和。",
+          "keyObservations": [
+            "将复杂螺旋巧克力层拆成两条可拉直的折线和中心短段，避免直接计算螺旋的几何形状。",
+            "其中一条折线的各段长度为 $1,2,\u0005dots,n$，所以长度是 $\\frac{n(n+1)}{2}$；拉直末段不会改变总长度。",
+            "另一条折线的各段长度为 $1,2,\\dots,n+1$，长度为 $\\frac{(n+1)(n+2)}{2}$，再加上长度为 $1$ 的中心段即可得到总长度。"
+          ],
+          "solutionBrief": "把巧克力层分成中心长度为 $1$ 的线段，以及段长分别为 $1$ 到 $n$、$1$ 到 $n+1$ 的两条折线，利用等差数列求和，答案化为 $(n+1)^2+1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1822D",
+          "index": "D",
+          "slot": "D",
+          "title": "Super-Permutation",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1822/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/115409",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定长度 $n$，先构造一个 $1$ 到 $n$ 的排列 $a$，再令 $b_i$ 为前 $i$ 项元素和模 $n$。要求 $[b_1+1,\u0005dots,b_n+1]$ 也恰好是一个排列；存在则输出任意这样的 $a$，否则输出 $-1$。",
+          "transformedStatement": "把目标转化为设计一条前缀和模 $n$ 的序列，使其遍历所有余数各一次；关键是先固定 $n$ 的位置，再利用总和模 $n$ 排除奇数并为偶数安排交错增量。",
+          "keyObservations": [
+            "数字 $n$ 若出现在位置 $k>1$，则加入它不会改变前缀和模 $n$，即 $b_k=b_{k-1}$，因此 $n$ 必须放在首位。",
+            "当 $n>1$ 为奇数时，所有元素总和模 $n$ 为 $0$，所以末项 $b_n=0$；首项因 $a_1=n$ 也为 $0$，必然重复，故无解。",
+            "当 $n$ 为偶数时，排列 $[n,1,n-2,3,n-4,5,\u0005dots,n-1,2]$ 的前缀模和依次覆盖 $0,1,n-1,2,n-2,3,\u0005dots,n/2$，加一后正好构成 $1$ 到 $n$ 的排列。",
+            "$n=1$ 时排列 $[1]$ 直接满足条件，因此无解情形仅为大于 $1$ 的奇数。"
+          ],
+          "solutionBrief": "先由重复前缀模和证明 $n$ 必须首位；再用总和模 $n$ 判定奇数 $n>1$ 无解。$n=1$ 输出 $[1]$，偶数 $n$ 输出交错排列 $[n,1,n-2,3,\u0005dots,n-1,2]$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1822E",
+          "index": "E",
+          "slot": "E",
+          "title": "Making Anti-Palindromes",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1822/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/115409",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写字母组成的字符串，每次可以任意交换两个位置上的字符。要求用最少交换次数使其满足所有对称位置字符都不同；若无法做到则输出 $-1$。",
+          "transformedStatement": "把偶数长度字符串划分为关于中心对称的字符对，将两字符相等的对视为坏对。问题转化为通过交换消除所有坏对，并由坏对总数及其中最集中的字符类型确定最少操作数。",
+          "keyObservations": [
+            "当 $n$ 为奇数时，中间位置会与自身对称，必然满足相等，故无论如何交换都无法成为反回文串。",
+            "若某字符出现次数超过 $n/2$，它无法全部分配到不同的对称位置，必然形成相等字符对，因此答案为 $-1$。",
+            "设相等对称对总数为 $k$，其中同一字符形成的相等对最多为 $m$；一次交换至多消除两个坏对，且最多消除一个指定字符的坏对，所以答案至少为 $\\max(m,\\lceil k/2\\rceil)$。",
+            "每次优先处理数量为 $m$ 的字符：与另一个相等对或两个字符均不同于它的对交换，可使 $\\max(m,\\lceil k/2\\rceil)$ 恰好减少 $1$，因此该下界可达。"
+          ],
+          "solutionBrief": "奇数长度直接输出 $-1$；偶数长度先检查每个字符次数是否超过 $n/2$。统计相等对总数 $k$ 及同字符相等对的最大值 $m$，答案为 $\\max(m,\\lceil k/2\\rceil)$，按题解中的贪心交换即可达到。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1822F",
+          "index": "F",
+          "slot": "F",
+          "title": "Gardening Friends",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1822/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/115409",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一棵每条边长度均为 $k$、初始根为顶点 $1$ 的树。每次可将根移动到当前根的相邻顶点并支付 $c$，可操作任意次；最终利润为新根到各顶点最大距离减去总操作费用，求最大利润。",
+          "transformedStatement": "把最终根固定为 $v$：其操作费用只取决于从 $1$ 到 $v$ 的深度，而树的售价是 $v$ 到所有顶点的最大距离。于是对每个顶点求换根后的树高，再最大化 $k\\cdot dist[v]-c\\cdot depth[v]$。",
+          "keyObservations": [
+            "最终根为顶点 $v$ 时，最少需要沿树上唯一路径移动 $depth[v]$ 次；绕路只增加操作费用而不改变最终树的代价。",
+            "以原根为基准，顶点 $v$ 换根后的最大叶子距离等于其子树内最远距离 $down_1[v]$ 与子树外最远距离 $up[v]$ 的较大值。",
+            "计算 $up[v]$ 时，若父节点最远分支进入 $v$ 的子树，就改用父节点的第二远分支，否则使用第一远分支，从而能在线性时间完成换根转移。",
+            "固定最终根 $v$ 后，利润可直接写成 $k\\cdot\\max(down_1[v],up[v])-c\\cdot depth[v]$，遍历所有顶点取最大值即可。"
+          ],
+          "solutionBrief": "先 DFS 求深度，并通过自底向上的两大子树距离和自顶向下的子树外最远距离，得到每个顶点换根后的最大距离。对每个 $v$ 计算 $k\\cdot dist[v]-c\\cdot depth[v]$，取最大值；总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1822G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Magic Triples (Easy Version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1822/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/115409",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数序列，统计所有下标互不相同的有序三元组 $(i,j,k)$：存在整数公比 $b$ 使 $a_j=a_i b$ 且 $a_k=a_i b^2$。下标顺序有区别，要求输出魔法三元组总数。",
+          "transformedStatement": "把问题转化为统计序列中按数值组成的三项等比数列，并按首项值与公比 $b$ 分组；相同值对应 $b=1$，其余情况通过频次数组统计两个目标倍数。",
+          "keyObservations": [
+            "将魔法三元组重述为等比关系 $a_j=a_i b$、$a_k=a_i b^2$，其中 $i,j,k$ 必须互不相同且顺序计数，从而可按首项和公比枚举。",
+            "当 $b=1$ 时三个元素值相同；对每个首项出现位置，可从其余相同值中有序选取两个位置，贡献为 $(cnt[a_i]-1)(cnt[a_i]-2)$。",
+            "当 $b\\ge2$ 时，若首项为 $a_i$，则 $a_i b^2=a_k\\le M$，所以 $b\\le\\sqrt M$；枚举有限公比后，中间项和末项可分别用频次数组独立计数。",
+            "对固定的 $a_i,b$，贡献 $cnt[a_i b]\\cdot cnt[a_i b^2]$，且 $b\\ge2$ 时三种数值严格递增，自动保证所选下标互不相同。"
+          ],
+          "solutionBrief": "统计每个数的出现次数。单独处理 $b=1$ 的相同值三元组；对 $b\\ge2$，枚举每个首项和 $b\\le\\sqrt M$，累加 $cnt[a_i b]cnt[a_i b^2]$，总复杂度为 $O(n\\sqrt M)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1822G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Magic Triples (Hard Version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1822/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/115409",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个整数序列，若三个下标对应的数值能够重排成等比序列 $x,xb,xb^2$，则称其为魔法三元组；下标顺序不受限制，且应按有序下标三元组计数。需要求序列中魔法三元组的总数。",
+          "transformedStatement": "把问题转化为统计数值模式 $x,xb,xb^2$ 的出现次数：$b=1$ 时是三个相等元素，$b\\ge2$ 时由中间值和整数比例确定两端数值，再用频次数乘积计算下标选择。",
+          "keyObservations": [
+            "魔法三元组的三个数可重排为 $x,xb,xb^2$；当 $b\\ge2$ 时三者互异，因此选出三种数值的下标后有 $6$ 种排列，计数可转为频次数乘积。",
+            "当 $b=1$ 时三个数必须相等，数值 $x$ 的贡献是 $cnt[x](cnt[x]-1)(cnt[x]-2)$，可直接按频次数统计。",
+            "设数组最大值为 $M$：若中间值 $x\\ge M^{2/3}$，则比例 $b\\le M^{1/3}$；否则 $b$ 必须是 $x$ 的因子。按此阈值分情况枚举，把搜索范围限制在 $O(M^{1/3})$。",
+            "使用哈希表查询 $cnt[x]$，每个数组元素只需检查受限的比例或因子，从而得到题解给出的总复杂度 $O(nM^{1/3})$。"
+          ],
+          "solutionBrief": "统计每个值的出现次数。相等三元组直接加入 $cnt[x](cnt[x]-1)(cnt[x]-2)$；其余情况按几何级数 $x/b,x,xb$ 计数并乘排列数。根据 $M^{2/3}$ 阈值，分别枚举小比例或中间值的因子。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
