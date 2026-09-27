@@ -2376,6 +2376,17 @@
     "date": "2025-10-12"
   },
   {
+    "id": 2162,
+    "name": "Codeforces Round 1059 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1760711700,
+    "relativeTimeSeconds": 29760014,
+    "date": "2025-10-17"
+  },
+  {
     "id": 2154,
     "name": "Codeforces Round 1060 (Div. 2)",
     "type": "CF",
