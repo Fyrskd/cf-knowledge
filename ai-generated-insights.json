@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T18:56:04+00:00",
+  "updated_at": "2026-09-27T19:00:57+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -54917,6 +54917,187 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面操作规则、完整 editorial 及 greedy 标签提炼。",
         "quality_flags": []
+      }
+    },
+    "1731F": {
+      "problem_key": "1731F",
+      "title": "Function Sum",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1731/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/110630",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5c007d94411d43c90506c1479a242749571fb2339e93928ebd132c2d02934d97",
+      "generated_at": "2026-09-27T18:59:26+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$、每个元素取值于 $[1,k]$ 的所有整数数组。位置 $i$ 在左侧小于 $a_i$ 的元素个数少于右侧大于 $a_i$ 的元素个数时称为 good，数组函数是所有 good 位置元素之和；要求对全部数组的函数值求和。",
+        "transformed_statement": "固定一个位置及其取值 $t$，把数组按左侧小于或不小于 $t$、右侧大于或不大于 $t$ 分类，直接计算该位置成为 good 时的贡献。把取值上限改为变量 $u$ 后，所有贡献的和构成次数至多为 $n+2$ 的多项式，在小规模点上求值并插值得到 $u=k$。",
+        "key_observations": [
+          "固定位置 $i$ 的值为 $t$ 后，左侧小于 $t$ 的个数和右侧大于 $t$ 的个数分别独立计数，good 条件正是 $x<y$。",
+          "对左、右位置按是否满足大小关系分类，选择位置并填值后可得到 $F(t)$，它统计该位置值对总答案的全部贡献。",
+          "将所有 $t\\le u$ 的贡献定义为 $P(u)$ 后，组合式中的幂次总度数至多为 $n+2$，因此 $P$ 是低次数多项式。",
+          "只需对较小的 $u$ 暴力计算 $P(u)$ 的值，再用多项式插值求出目标 $P(k)$，避免直接枚举全部 $k^n$ 个数组。"
+        ],
+        "solution_brief": "固定位置和值 $t$，按左右两侧元素与 $t$ 的大小关系组合计数，得到该位置的贡献 $F(t)$。累加为多项式 $P(u)$，先暴力求足够多的小点值，再用多项式插值计算 $P(k)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "代数、矩阵与多项式"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的数组定义与 editorial_text 中的组合计数、多项式次数和插值方案；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1731E": {
+      "problem_key": "1731E",
+      "title": "Graph Cost",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1731/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/110630",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8341fd4e9fe5300af64d8f8d3606c0d519e13913b6d5bf0ff606111a51353d02",
+      "generated_at": "2026-09-27T18:59:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定编号为 $1$ 到 $n$ 的空无向图，每次可选择一个整数 $e$，加入恰好 $e$ 条尚未存在的边，并要求这些边的权值都等于 $e+1$；边 $(u,v)$ 的权值固定为 $\\gcd(u,v)$。要求恰好加入 $m$ 条边并使总操作成本最小，无法构造时输出 $-1$。",
+        "transformed_statement": "把每次操作视为一个大小为 $k-1$、成本为 $k$ 的操作包，其中包内边都来自最大公因数为 $k$ 的点对。先求各类边能形成的包数量，再在这些受限包中用最少包数凑出恰好 $m$ 条边。",
+        "key_observations": [
+          "一次操作若加入 $e$ 条边，则这些边的权值都为 $e+1$，操作成本也是 $e+1$；因此每次操作的成本等于加入边数加一，总成本转化为 $m+$操作次数。",
+          "令 $dp[k]$ 表示端点最大公因数恰为 $k$ 的点对数量，先统计所有端点都是 $k$ 的倍数的点对，再减去更大公因数的数量，即可按倍数倒序求出全部 $dp[k]$。",
+          "权值为 $k$ 的边最多能组成 $s[k]=\\left\\lfloor\\frac{dp[k]}{k-1}\\right\\rfloor$ 个操作包；$s[k]$ 单调不增，且存在大包时所有更小包的容量也足够，这使可行包大小具有前缀结构。",
+          "将每个权值 $k$ 的操作看作大小为 $k-1$ 的包，从大到小尽可能选取；在剩余边数为 $m'$ 时选包数为 $\\min\\left(s[k],\\left\\lfloor\\frac{m'}{k-1}\\right\\rfloor\\right)$，可在满足总边数的同时最少化包数。"
+        ],
+        "solution_brief": "先按倍数倒序计算每个最大公因数对应的边数 $dp[k]$，得到各权值可组成的操作包数 $s[k]$。再按 $k$ 从大到小贪心选大小为 $k-1$ 的包；无法恰好凑出 $m$ 条边则输出 $-1$，否则答案为 $m+$包数，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心",
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据statement_text确定图与目标，依据editorial_text补全操作规则、最大公因数计数递推和贪心方案，tags仅作主题辅助。",
+        "quality_flags": [
+          "statement_text中的操作规则不完整，依据editorial补全为“加入e条权值为e+1的边”"
+        ]
+      }
+    },
+    "1731D": {
+      "problem_key": "1731D",
+      "title": "Valiant's New Map",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1731/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/110630",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e798b4aa62c264ecf15b76b0be02bad390e11de4666c31b04addfb23dc8464ad",
+      "generated_at": "2026-09-27T19:00:07+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times m$ 网格，每个格子有一栋指定高度的建筑。需要选出一个边长为 $l$ 的连续正方形区域，要求其中每栋建筑高度都至少为 $l$，求最大的 $l$。",
+        "transformed_statement": "把候选边长 $s$ 视为阈值：只保留高度至少为 $s$ 的格子，问题转化为判断二值网格中是否存在全为 $1$ 的 $s\\times s$ 正方形，并对这个单调判定进行二分。",
+        "key_observations": [
+          "固定边长 $s$ 后，合法性等价于存在一个 $s\\times s$ 子矩阵，其最小高度至少为 $s$，从而把几何条件转成区域最小值判定。",
+          "若边长 $s$ 可行，则任意更小边长也可行，因此可行性关于 $s$ 单调，可以二分最大答案。",
+          "对固定 $s$，将高度至少为 $s$ 的格子标为 $1$，其余标为 $0$；某个正方形的二维前缀和等于 $s^2$，当且仅当其中所有建筑都满足高度要求。",
+          "每次判定只需建立一次二维前缀和并扫描所有起点，耗时为 $O(nm)$，结合二分得到总复杂度 $O(nm\\log(\\min(n,m)))$。"
+        ],
+        "solution_brief": "二分边长 $s$。判定时把高度至少为 $s$ 的位置设为 $1$，其余设为 $0$，利用二维前缀和检查是否存在元素和为 $s^2$ 的 $s\\times s$ 正方形；依据可行性的单调性取最大可行值。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 的二分与二维前缀和方案，以及 tags 中的数据结构和二分相关信息。",
+        "quality_flags": []
+      }
+    },
+    "1731C": {
+      "problem_key": "1731C",
+      "title": "Even Subarrays",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1731/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/110630",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "23e948b73b5d080c9e9efa5056edb468d495abeef3c8e8990d2707fd03301859",
+      "generated_at": "2026-09-27T19:00:26+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数数组，统计所有连续子数组，使其中所有元素的按位异或结果拥有偶数个因数。因数个数为奇数的数包括完全平方数，且题目特别规定异或结果为 $0$ 时按奇数个因数处理，最后输出符合条件的子数组数量。",
+        "transformed_statement": "把目标转化为总子数组数减去异或和为完全平方数的子数组数；由于异或值小于 $2n$，只需枚举这些范围内的平方数，并用前缀异或对计数。",
+        "key_observations": [
+          "一个数的因数个数为奇数当且仅当它是完全平方数；题目还规定 $0$ 按奇数因数处理，因此只需排除异或和为平方数的子数组。",
+          "由于所有 $a_i\\le n$，任意子数组异或值都小于 $2n$，所以可能的平方数只有 $O(\\sqrt n)$ 个，避免逐个检查所有异或值。",
+          "固定平方数 $s$ 后，用前缀异或统计满足 $p_l\\oplus p_r=s$ 的前缀对，即可在线性时间内得到异或和为 $s$ 的子数组数量。",
+          "先统计总子数组数 $n(n+1)/2$，减去所有异或和为完全平方数的数量，就得到异或和具有偶数个因数的答案。"
+        ],
+        "solution_brief": "枚举小于 $2n$ 的完全平方数。对每个平方数 $s$，用前缀异或频次在线性时间统计异或和为 $s$ 的子数组；将这些数量从 $n(n+1)/2$ 中扣除，复杂度为 $O(n\\sqrt n)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的因数与异或定义，以及 editorial 中关于完全平方数、异或范围和前缀统计的方案；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1731B": {
+      "problem_key": "1731B",
+      "title": "Kill Demodogs",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1731/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/110630",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "2286ed20c718f543bc343f18d8573c2c275772e71831bd744f5c941b86b77370",
+      "generated_at": "2026-09-27T19:00:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times n$ 网格，第 $i$ 行第 $j$ 列有 $i\\cdot j$ 个目标。角色从 $(1,1)$ 出发，只能每步向右或向下到达 $(n,n)$，并杀死经过格子的全部目标；要求求最大击杀总数乘以 $2022$ 后对 $10^9+7$ 取模的结果。",
+        "transformed_statement": "把路径收益最大化转化为选择一条固定的交替折线路径：先后经过 $(1,1),(1,2),(2,2),\\ldots,(n,n)$，其收益由主对角线格子和右上相邻格子的权值组成，再用平方和与等差数列求和化简。",
+        "key_observations": [
+          "最优路径可采用交替向右、向下的折线路径，依次经过主对角线及其右上相邻格；题解证明偏离该结构不会增加总收益。",
+          "折线路径经过的格子权值可拆为主对角线平方和与相邻乘积和，即 $\\sum_{i=1}^{n}i^2+\\sum_{i=1}^{n-1}i(i+1)$，从而直接化为 $\\frac{n(n+1)(4n-1)}{6}$。",
+          "题目要求先乘以 $2022$ 再取模，而 $2022/6=337$，因此最终结果可写成 $337n(n+1)(4n-1)\\bmod(10^9+7)$，无需处理模意义下除法。"
+        ],
+        "solution_brief": "证明交替向右、向下的折线路径最优，计算其经过格子的权值和为 $n(n+1)(4n-1)/6$，再利用 $2022/6=337$，输出 $337n(n+1)(4n-1)\\bmod(10^9+7)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的网格移动与计分规则、editorial_text 的最优路径证明和公式，以及 tags 中的 greedy、math。",
+        "quality_flags": []
+      }
+    },
+    "1731A": {
+      "problem_key": "1731A",
+      "title": "Joey Takes Money",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1731/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/110630",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4fe4b0bd11b3e5f87f0c4786165841f32c2d52623c3e7489bce936d6df82bf6a",
+      "generated_at": "2026-09-27T19:00:57+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个含 $n\\ge2$ 个正整数的数组，每次可选两个元素，将它们替换为两个正整数，且替换前后的乘积相同。可进行任意次操作，要求最终数组元素和最大，并输出该最大值乘以 $2022$。",
+        "transformed_statement": "把操作视为在保持数组总乘积 $P$ 不变的前提下重新分配因子；最优重分配是把全部乘积集中到一个位置，其他位置都变成 $1$。",
+        "key_observations": [
+          "固定两个元素的乘积为 $K$ 时，将它们改为 $1$ 和 $K$ 可使两者之和最大，因此每次合并都应把乘积集中到一个元素上。",
+          "数组总乘积 $P$ 在操作中保持不变；依次处理各元素后，可将所有乘积集中为一个元素 $P$，其余 $n-1$ 个元素均为 $1$。",
+          "最终数组的最大元素和为 $P+n-1$，所以题目只需在线性扫描中计算总乘积，再乘以 $2022$。"
+        ],
+        "solution_brief": "维护所有元素的乘积 $P$。对任意一对元素，将其替换为 $1$ 和两者乘积不会降低总和，并可重复进行，最终得到 $P$ 与 $n-1$ 个 $1$，输出 $(P+n-1)\\times2022$，复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 的数组与目标描述，以及 editorial 的操作规则、最优性观察和公式；tags 辅助确认贪心与数学性质。",
+        "quality_flags": [
+          "statement中的操作描述在给定文本中被截断，具体规则依据editorial补全"
+        ]
       }
     }
   }
