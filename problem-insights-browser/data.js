@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3080,
+    "total_problems": 3086,
     "source_total_problems": 3087,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3080,
-    "with_editorial_brief": 2800,
-    "with_solution_brief": 2801,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3086,
+    "with_editorial_brief": 2806,
+    "with_solution_brief": 2807,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2142,
+    "ai_override_count": 2148,
     "primary_topic_count": 13,
-    "contest_count": 469,
+    "contest_count": 470,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 984,
+    "动态规划与状态设计": 260,
+    "数据结构": 290,
+    "组合计数与概率": 241,
     "几何": 76,
-    "构造与贪心": 982,
     "交互": 97,
-    "数据结构": 289,
-    "组合计数与概率": 240,
     "数论与同余": 332,
     "树结构": 152,
     "图论与网络流": 189,
     "博弈": 98,
-    "动态规划与状态设计": 258,
     "字符串": 163,
     "基础实现与模拟": 183,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1845,
+    "ai_generated_with_editorial": 1851,
     "missing_editorial": 279,
     "ai_generated_partial_editorial": 64,
     "manual_override": 891,
@@ -95136,6 +95136,195 @@ window.CF_INSIGHTS_DATA = {
             "反转后的变换数组有前缀位置缺失；先对已知值做一次超集异或和，再将对应不存在的 $a'$ 分量置零并再次变换，即可补全缺失值。"
           ],
           "solutionBrief": "将贡献次数的奇偶性用 Lucas 定理转为位掩码条件，扩展到大小为 $m$ 的布尔格后视为 Zeta 变换。通过两次异或超集变换补全缺失位置，再恢复 $a$，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1716,
+      "name": "Educational Codeforces Round 133 (Rated for Div. 2)",
+      "date": "2022-08-04",
+      "url": "https://codeforces.com/contest/1716",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1716A",
+          "index": "A",
+          "slot": "A",
+          "title": "2-3 Moves",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1716/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/105653",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "从数轴坐标 $0$ 出发，每分钟可向左或向右移动 $2$ 或 $3$，坐标可以变成负数。对每个给定的正整数 $n$，求恰好到达坐标 $n$ 所需的最少分钟数。",
+          "transformedStatement": "把问题转化为用尽量少个绝对值为 $2$ 或 $3$ 的位移之和得到 $n$；先由单步最大位移 $3$ 给出步数下界，再按 $n$ 对 $3$ 的余数构造达到该下界的方案。",
+          "keyObservations": [
+            "每分钟的位移绝对值最多为 $3$，因此到达坐标 $n$ 至少需要 $\\\\lceil n/3 \\\\rceil$ 步，这为答案提供下界。",
+            "当 $n\\ge 4$ 时，按 $n\\bmod 3$ 调整由若干个 $+3$ 组成的方案：余数为 $0$ 直接使用 $+3$，余数为 $2$ 加一次 $+2$，余数为 $1$ 则用两次 $+2$ 替代一次 $+3$，恰好达到下界。",
+            "$n=1$ 无法一步得到，只能先走 $+3$ 再走 $-2$，因此答案为 $2$；而 $n=2,3$ 分别一步即可到达。"
+          ],
+          "solutionBrief": "特判 $n=1$ 时答案为 $2$，$n=2,3$ 时答案为 $1$。其余情况由每步最多前进 $3$ 得到下界，并按 $n$ 除以 $3$ 的余数用 $+2,+3$ 构造达到下界，因此答案为 $\\lceil n/3\\rceil$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1716B",
+          "index": "B",
+          "slot": "B",
+          "title": "Permutation Chain",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1716/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/105653",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定 $n$，从恒等排列 $[1,2,\\dots,n]$ 开始，每次可交换当前排列中的任意两个元素，但新排列的固定点数量必须严格减少。要求构造固定点数严格下降的最长排列链，并输出链中所有排列。",
+          "transformedStatement": "把每次操作固定为交换相邻位置 $1,2$、$2,3$ 直到 $n-1,n$，此时前缀形成循环左移、后缀保持恒等；问题转化为证明该序列达到首步交换限制下的最大长度。",
+          "keyObservations": [
+            "从恒等排列进行一次交换时恰好有两个位置失去固定，因此固定点数不可能从 $n$ 变为 $n-1$，链长上限不是 $n+1$ 而是 $n$。",
+            "依次交换相邻位置 $(1,2),(2,3),\\dots,(n-1,n)$，前缀会变成 $[2,3,\\dots,i+1,1]$，其余位置仍固定，因此每次恰好减少一个固定点。",
+            "该构造的固定点数依次为 $n,n-2,n-3,\\dots,0$，既满足严格下降，又达到由首步限制推得的最大链长。"
+          ],
+          "solutionBrief": "先证明首轮交换只能得到 $n-2$ 个固定点，所以链长最多为 $n$。然后从恒等排列开始，依次交换位置 $(1,2),(2,3),\\dots,(n-1,n)$；前缀逐步左移，固定点数按 $n,n-2,n-3,\\dots,0$ 下降，输出全部 $n$ 个排列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1716C",
+          "index": "C",
+          "slot": "C",
+          "title": "Robot in a Hallway",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1716/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/105653",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation",
+            "ternary search"
+          ],
+          "statementBrief": "给定一个 $2\\times m$ 网格，机器人从 $(1,1)$ 出发，每秒可移动到相邻格，必要时等待；除起点外的格子在各自时刻解锁，只能进入已解锁且此前未进入的格子。求访问所有格子且不重复进入所需的最少时间。",
+          "transformedStatement": "把路线抽象为蛇形前缀与钩形后缀的组合。对固定路径，将第 $k$ 个访问格子的解锁限制转化为初始等待时间至少为 $a_{x_k,y_k}-k+1$，于是路径代价由这些值的最大值和路径长度决定。",
+          "keyObservations": [
+            "固定访问路径后，所需初始等待时间等于所有格子的最大值 $\\max(a_{x_k,y_k}-k+1)$，因此可把途中等待统一提前到起点。",
+            "所有覆盖两行网格且不重复的路径可表示为先走一段蛇形路径，再在某列转为钩形路径；连续向右走两步后路径形态就被唯一确定。",
+            "两段路径拼接时，后段的等待指标整体减去前段长度，因此只需分别维护每段的长度和最大指标即可合并。",
+            "枚举蛇形部分的长度时，钩形部分由转折列唯一确定；预处理各列开始的钩形指标后，可在线性时间更新所有候选答案。"
+          ],
+          "solutionBrief": "预处理从各列开始、跨到另一行并返回同列的钩形路径指标。枚举蛇形前缀长度，维护其长度与最大值，再用拼接公式合并对应钩形后缀，取总移动时间与所需初始等待之和的最小值，单组复杂度为 $O(m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1716D",
+          "index": "D",
+          "slot": "D",
+          "title": "Chip Move",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1716/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/105653",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "芯片从坐标 $0$ 出发，每次向右移动正整数；第 $1$、$2$、$3$ 次移动的长度必须分别被 $k$、$k+1$、$k+2$ 整除。对每个 $x\\in[1,n]$，计算到达 $x$ 的不同访问位置集合数量，并对 $998244353$ 取模。",
+          "transformedStatement": "将问题按移动次数分层，令 $dp_{s,i}$ 表示恰好移动 $s$ 次到达位置 $i$ 的方案数；从 $i$ 到 $j$ 的转移要求 $j>i$ 且 $j\\equiv i\\pmod{k+s}$，再按余数合并转移贡献。",
+          "keyObservations": [
+            "完成 $s$ 步至少前进 $k+(k+1)+\\dots+(k+s-1)$，因此能到达 $n$ 的步数最多为 $O(\\sqrt n)$，只需处理很少的层数。",
+            "从状态 $(s,i)$ 到 $(s+1,j)$ 的条件等价于 $j\\equiv i\\pmod{k+s}$，扫描 $j$ 时按余数维护此前状态和即可批量完成转移。",
+            "第 $s+1$ 层只依赖第 $s$ 层，因此用滚动数组保存相邻两层，避免存储规模为 $n^{3/2}$ 的完整状态矩阵。"
+          ],
+          "solutionBrief": "设 $dp_{s,i}$ 为恰好走 $s$ 步到达 $i$ 的方案数。按步数分层转移；利用步长必须满足同余关系，在扫描目标位置时维护各余数的前缀和，将每层转移降为线性，总复杂度 $O(n\\sqrt n)$，并用滚动数组节省内存。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1716E",
+          "index": "E",
+          "slot": "E",
+          "title": "Swap and Maximum Block",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1716/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/105653",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "dp"
+          ],
+          "statementBrief": "给定长度为 $2^n$ 的数组。每次给出 $k$，按位置升序扫描：若当前位置元素本次尚未交换，就把它与位置右移 $2^k$ 的元素交换，并跳过已参与交换的位置；操作后输出所有连续子段（允许空段）的最大元素和。查询会持续修改数组，后续查询基于当前数组执行。",
+          "transformedStatement": "将位置改为从 $0$ 开始后，一次参数为 $k$ 的操作就是把每个元素移到位置 $i\\oplus 2^k$。因此整个历史操作等价于一个累计异或掩码 $x$，问题转为预处理每个 $x$ 作用后的数组最大子段和。",
+          "keyObservations": [
+            "按块观察可知，本次交换恰好把位置 $i$ 映射到 $i\\oplus 2^k$；因此无需模拟扫描和跳过逻辑。",
+            "连续执行多个查询等价于用所有查询的 $2^k$ 做异或，数组当前状态只由累计掩码决定。",
+            "对每个线段树结点保存区间和、最大前缀和、最大后缀和及最大子段和，就能用常数时间合并两个相邻区间。",
+            "长度为 $2^k$ 的结点在掩码最高位翻转时只需交换左右子结点顺序，其余掩码位递归作用于两个子结点，因此各层版本总数为 $O(n2^n)$。"
+          ],
+          "solutionBrief": "将每次查询转为累计异或掩码，预处理线段树各结点在不同掩码下的四元组版本。根结点的对应版本直接给出当前数组的最大子段和，每次查询异或更新掩码后即可 $O(1)$ 回答；总预处理复杂度为 $O(n2^n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1716F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bags with Balls",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1716/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/105653",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 个彼此不同的袋子，每袋各含编号 $1$ 到 $m$ 的球；必须从每袋恰好取一个球。令所取球中编号为奇数的数量为 $F$，求所有取法的 $F^k$ 之和，并对 $998244353$ 取模。",
+          "transformedStatement": "把每个取法的 $F^k$ 展开成从奇数球所在袋子中有序选取 $k$ 个袋子的元组计数，再按元组包含的不同袋子数 $i$ 分组；每组数量由第二类斯特林数和下降阶乘表示。",
+          "keyObservations": [
+            "将每种选择方案的 $F^k$ 解释为从其中奇数球所在袋子中有序选取 $k$ 个袋子的方法数，从而把幂次求和转成元组计数。",
+            "若一个元组包含 $d$ 个不同袋子，则这些袋子必须选奇数球，其余袋子任意，因此该元组贡献为 $\\lceil m/2\\rceil^d m^{n-d}$。",
+            "长度为 $k$ 且恰有 $i$ 个不同元素的元组数为 $S(k,i)(n)_i$，其中 $S(k,i)$ 将元组模式标准化为第二类斯特林数。",
+            "预处理所有 $S(k,i)$ 后，逐项维护下降阶乘 $(n)_i$ 与贡献因子，即可将每个测试用例降为 $O(k)$ 计算。"
+          ],
+          "solutionBrief": "预处理第二类斯特林数 $S(k,i)$。答案为 $\\sum_i S(k,i)(n)_i\\lceil m/2\\rceil^i m^{n-i}$，逐项维护两个乘积并取模；预处理 $O(k^2)$，单测 $O(k)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
