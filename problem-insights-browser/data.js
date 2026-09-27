@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2342,
+    "total_problems": 2351,
     "source_total_problems": 2351,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 2342,
-    "with_editorial_brief": 2077,
-    "with_solution_brief": 2078,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2351,
+    "with_editorial_brief": 2086,
+    "with_solution_brief": 2087,
     "missing_editorial_brief": 264,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1404,
+    "ai_override_count": 1413,
     "primary_topic_count": 13,
-    "contest_count": 361,
+    "contest_count": 362,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 110,
-    "构造与贪心": 740,
-    "图论与网络流": 140,
+    "构造与贪心": 741,
+    "图论与网络流": 141,
     "动态规划与状态设计": 206,
-    "数论与同余": 253,
-    "组合计数与概率": 182,
-    "数据结构": 214,
-    "几何": 53,
+    "数论与同余": 255,
+    "组合计数与概率": 183,
+    "数据结构": 216,
+    "几何": 54,
     "树结构": 133,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 124,
+    "基础实现与模拟": 125,
     "博弈": 84
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1141,
+    "ai_generated_with_editorial": 1150,
     "ai_generated_partial_editorial": 45,
     "missing_editorial": 264,
     "manual_override": 891,
@@ -51452,6 +51452,272 @@ window.CF_INSIGHTS_DATA = {
             "先用埃拉托斯特尼筛求出每个数的质因数，再按质因数合并代表元，DSU 或 DFS 即可统计最终连通分量。"
           ],
           "solutionBrief": "把二维循环移位矩阵按平行对角线压缩为一维代表元；全为 $1$ 的对角线单独处理。对每个质因数收集可整除元素，只连接相邻且下标差不超过 $k$ 的元素，并用 DSU 或 DFS 统计分量；质因数分解由筛法预处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1985,
+      "name": "Codeforces Round 952 (Div. 4)",
+      "date": "2024-06-11",
+      "url": "https://codeforces.com/contest/1985",
+      "type": "Div. 4",
+      "problemCount": 9,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1985A",
+          "index": "A",
+          "slot": "A",
+          "title": "Creating Words",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1985/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/129620",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定两个长度均为 $3$ 的小写字符串。每次操作只交换两个字符串的首字符，并保留各自其余字符不变，要求输出交换后的两个字符串。",
+          "transformedStatement": "将每个字符串拆成“首字符 + 长度为 $2$ 的后缀”：交换两个首字符，两个后缀分别保持原样，再重新拼接即可。",
+          "keyObservations": [
+            "交换只涉及两个字符串下标为 $0$ 的字符，因此两个字符串的后缀保持不变，直接交换这两个位置即可完成操作。",
+            "操作后字符串长度和字符顺序均保持合法，分别输出修改后的两个字符串即可，不需要判断它们是否相同。"
+          ],
+          "solutionBrief": "逐个测试用例读取两个长度为 $3$ 的字符串，交换 `a[0]` 与 `b[0]`，再输出交换后的字符串。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1985B",
+          "index": "B",
+          "slot": "B",
+          "title": "Maximum Multiple Sum",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1985/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/129620",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定整数 $n$，选择一个满足 $2\\le x\\le n$ 的整数，计算所有不超过 $n$ 的正倍数之和，并使这个总和最大。对每个测试用例输出唯一的最优 $x$。",
+          "transformedStatement": "将问题视为在候选除数 $x$ 中比较其不超过 $n$ 的倍数贡献：通常候选值越小，覆盖的倍数越多，故答案固定为 $2$；仅需单独处理 $n=3$ 的边界情况。",
+          "keyObservations": [
+            "当目标转化为比较不超过 $n$ 的倍数贡献时，较小的 $x$ 能产生更多相关倍数，因此除特殊情况外选择最小允许值 $2$。",
+            "当 $n=3$ 时，$x=2$ 和 $x=3$ 都只有一个不超过 $n$ 的正倍数，但取 $x=3$ 的贡献更大，所以唯一最优答案是 $3$。",
+            "因此所有测试用例都无需枚举或计算总和，答案可直接按 $n=3$ 分类，否则输出 $2$。"
+          ],
+          "solutionBrief": "对每个测试用例直接判断：若 $n=3$ 输出 $3$，否则输出 $2$。题解指出较小的 $x$ 通常带来更多倍数，唯一例外是 $n=3$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1985C",
+          "index": "C",
+          "slot": "C",
+          "title": "Good Prefixes",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1985/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/129620",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定一个非负整数数组。一个非空数组若存在某个元素等于其余所有元素之和则称为好数组；统计原数组所有非空前缀中满足该条件的前缀数量。",
+          "transformedStatement": "将每个前缀中的“存在某个元素”转化为只检查该前缀最大元素：维护前缀总和 $S$ 和最大值 $M$，判断 $S-M=M$ 是否成立。",
+          "keyObservations": [
+            "若某个元素等于其余元素之和，它不可能小于其他元素，因此只需检查当前前缀的最大值是否等于其余元素之和。",
+            "对前缀维护总和 $S$ 与最大值 $M$，前缀为好当且仅当 $S-M=M$，无需枚举被选作目标的元素。",
+            "前缀从左到右扩展时，总和与最大值都能在线更新，因此每个前缀只需一次判断即可计数。"
+          ],
+          "solutionBrief": "从左到右处理每个前缀，维护元素总和 $S$ 和最大值 $M$。若 $S-M=M$，则最大值等于其余元素之和，当前前缀计入答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1985D",
+          "index": "D",
+          "slot": "D",
+          "title": "Manhattan Circle",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1985/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/129620",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个由 `.` 和 `#` 组成的网格，其中所有 `#` 点恰好是某个曼哈顿圆内部的点，圆心为 $(h,k)$，满足到圆心的曼哈顿距离小于某个正半径。求这个圆的网格坐标圆心。",
+          "transformedStatement": "把图案视为关于圆心对称的菱形：寻找最上方和最下方的 `#` 点，它们共享中心列，而两行的中点给出中心行，因此可直接恢复圆心。",
+          "keyObservations": [
+            "曼哈顿圆在网格上形成关于中心对称的菱形，因此最上方点和最下方点位于同一列，该列就是中心列。",
+            "最上方与最下方标记点的行坐标关于圆心对称，所以中心行等于两者行坐标的平均值。",
+            "只需扫描所有 `#` 的最小行点和最大行点即可确定中心，无需计算半径。"
+          ],
+          "solutionBrief": "扫描网格，找出最上方和最下方的 `#` 点；它们的列相同，作为中心列，行坐标平均值作为中心行，最后转换为 1-based 坐标输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1985E",
+          "index": "E",
+          "slot": "E",
+          "title": "Secret Box",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1985/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/129620",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "给定边长为 $x,y,z$ 的大盒子，选择三个正整数边长 $a,b,c$，使秘密盒体积为 $k$，且不旋转地放入大盒子。秘密盒只能放在整数位置，求所有可选尺寸中不同放置位置数的最大值；若无法放入则输出 $0$。",
+          "transformedStatement": "把问题拆成“先固定尺寸、再计数位置”：对满足 $abc=k$ 且分别不超过 $x,y,z$ 的尺寸，三个方向的起始坐标选择数相互独立，目标变为最大化 $(x-a+1)(y-b+1)(z-c+1)$。",
+          "keyObservations": [
+            "固定秘密盒尺寸为 $a,b,c$ 后，其左下后角的整数坐标分别有 $x-a+1$、$y-b+1$、$z-c+1$ 种选择，三轴独立因此放置数是三者乘积。",
+            "体积条件将第三个尺寸唯一确定为 $c=\\frac{k}{ab}$；只有当 $ab$ 整除 $k$ 且 $c\\le z$ 时，该尺寸组合才有效。",
+            "枚举满足边界的 $a\\le x$ 和 $b\\le y$ 即可覆盖所有可能尺寸，计算对应的 $c$ 并取放置数最大值，从而避免枚举三维尺寸。"
+          ],
+          "solutionBrief": "枚举 $a=1..x$、$b=1..y$，若 $ab$ 整除 $k$，令 $c=k/(ab)$；检查 $c\\le z$ 后，用 $(x-a+1)(y-b+1)(z-c+1)$ 更新答案。复杂度为 $O(xy)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1985F",
+          "index": "F",
+          "slot": "F",
+          "title": "Final Boss",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1985/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/129620",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures"
+          ],
+          "statementBrief": "Boss 有 $h$ 点生命值，拥有 $n$ 个攻击；攻击 $i$ 造成 $a_i$ 点伤害，使用于回合 $x$ 后，下一次只能在回合 $x+c_i$ 使用。每回合同时使用所有当前不在冷却中的攻击，若全部冷却则该回合跳过，求击败 Boss 所需的回合数。",
+          "transformedStatement": "把每个攻击视为一个不断产生事件的计时器，集合中的元素 $(t,i)$ 表示攻击 $i$ 下一次能在回合 $t$ 触发；按最早事件回合推进时间，并批量处理该回合的所有事件。需要更大生命值时，也可将时刻 $t$ 的累计伤害写成各攻击使用次数之和。",
+          "keyObservations": [
+            "每次攻击造成至少 $1$ 点伤害，因此真正发生攻击的回合数以及被处理的攻击事件总量都不超过 $h$，可以按事件模拟而无需逐回合等待。",
+            "用有序集合维护每个攻击的下一可用回合，最小回合就是下一次可能造成伤害的时刻；若当前没有攻击可用，直接跳到该回合即可跳过漫长冷却期。",
+            "同一回合的所有可用攻击必须全部执行，处理完后将攻击重新放入回合 $t+c_i$；这样集合始终准确表示每个攻击的下一次可用时间。",
+            "若需要处理更大的 $h$，在时刻 $t$ 前攻击 $i$ 的使用次数为 $\\left\\lfloor\\frac{t-1}{c_i}\\right\\rfloor+1$，总伤害随 $t$ 单调增加，因此可二分最早满足总伤害至少为 $h$ 的时刻。"
+          ],
+          "solutionBrief": "为每个攻击维护下一可用回合并按回合排序。跳到最早事件时刻，执行该回合所有可用攻击，再将它们分别安排到 $t+c_i$；直到生命值不大于零。每个事件至少造成 1 点伤害，复杂度为 $O(h\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1985G",
+          "index": "G",
+          "slot": "G",
+          "title": "D-Function",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1985/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/129620",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定整数 $l,r,k$，统计满足 $10^l\\le n<10^r$ 的正整数 $n$ 的数量，其中 $D(n)$ 是数位和，且要求乘以 $k$ 后满足 $D(kn)=kD(n)$。答案对 $10^9+7$ 取模。",
+          "transformedStatement": "把条件等价转化为：$n$ 的每个十进制数位乘以 $k$ 后都不能产生进位，因此每位只能取 $0$ 到 $\\lfloor9/k\\rfloor$。将数字补成固定长度的数位串后，区间计数变成两次幂的差。",
+          "keyObservations": [
+            "等式成立当且仅当乘以 $k$ 时所有数位都不产生进位，因此每个数位 $d$ 必须满足 $kd\\le 9$，即 $d\\le\\lfloor 9/k\\rfloor$。",
+            "将不足 $r$ 位的数在左侧补零后，每一位都有 $\\lfloor 9/k\\rfloor+1$ 种选择，因此小于 $10^r$ 的合法数共有 $\\left(\\lfloor 9/k\\rfloor+1\\right)^r$ 个。",
+            "区间下界通过排除小于 $10^l$ 的合法数处理，答案转化为 $\\left(\\lfloor 9/k\\rfloor+1\\right)^r-\\left(\\lfloor 9/k\\rfloor+1\\right)^l$，再取模。"
+          ],
+          "solutionBrief": "令每位可用数字数为 $a=\\lfloor 9/k\\rfloor+1$。分别计算小于 $10^r$ 和小于 $10^l$ 的合法数数量，即 $a^r$ 与 $a^l$，用模幂求值后相减并取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1985H1",
+          "index": "H1",
+          "slot": "H",
+          "title": "Maximize the Largest Component (Easy Version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1985/problem/H1",
+          "editorialUrl": "https://codeforces.com/blog/entry/129620",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由“.”和“#”组成的网格，允许至多一次选择一整行或一整列，并把其中所有格子改成“#”。操作后，求网格中最大连通块可能达到的大小；连通按上下左右相邻定义。",
+          "transformedStatement": "不直接模拟每次填行或填列，而是先把原有“#”连通块压缩为带大小和边界的对象：填某行时，只会合并其上下相邻行中出现的连通块；填某列时按列边界对称处理。",
+          "keyObservations": [
+            "填满第 $r$ 行后，新增的空白格数量是该行的点数；最终连通块还会吸收所有在第 $r-1,r,r+1$ 行出现的原有连通块。",
+            "一个连通块若覆盖的最小、最大行分别为 $l,r$，则填满行后，它会对行区间 $[l-1,r+1]$ 的候选答案贡献整个块大小，因此可用区间加统一统计。",
+            "列操作与行操作完全对称，只需按连通块覆盖的列区间 $[l-1,r+1]$ 进行同样计算，最后取所有行列候选值的最大值。"
+          ],
+          "solutionBrief": "先 DFS 求出每个原有连通块的大小及其行、列边界。用差分数组把块大小分别加入其可被某行或某列连接的扩展区间，再加上目标行列中的点数，扫描得到最大值；总复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1985H2",
+          "index": "H2",
+          "slot": "H",
+          "title": "Maximize the Largest Component (Hard Version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1985/problem/H2",
+          "editorialUrl": "https://codeforces.com/blog/entry/129620",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由“.”和“#”组成的网格，至多一次选择一行和一列，把该行及该列的所有格子改为“#”。按上下左右相邻定义连通块，求操作后最大连通块可能达到的大小。",
+          "transformedStatement": "把每个候选位置 $(r,c)$ 的答案拆成三部分：新增的行列空格数、接触第 $r$ 行的原连通块总和、接触第 $c$ 列的总和，再减去同时接触两者而重复计算的连通块。",
+          "keyObservations": [
+            "填充第 $r$ 行和第 $c$ 列后，会连入所有接触这两条线的原连通块，因此只需统计其大小并处理重复计数。",
+            "连通块的最小、最大行列坐标扩展一格后，恰好描述它会接触哪些行和列，可用区间差分批量累加到 $R$、$C$。",
+            "同时接触第 $r$ 行和第 $c$ 列的连通块会在 $R_r+C_c$ 中重复出现，用二维差分统计交集 $B_{r,c}$ 并减去。",
+            "新增的格子数等于第 $r$ 行和第 $c$ 列的点数减去交叉格 $(r,c)$ 的重复计数，从而得到每个操作位置的完整答案。"
+          ],
+          "solutionBrief": "先 DFS 求出每个原有连通块的大小及行列边界。将边界各扩展一格，用一维、二维差分分别统计接触行列的连通块总和及交集，再加上新增的不同点数，枚举所有 $(r,c)$ 取最大值；总复杂度为 $O(nm)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
