@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2605,
+    "total_problems": 2612,
     "source_total_problems": 2613,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2605,
-    "with_editorial_brief": 2337,
-    "with_solution_brief": 2338,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2612,
+    "with_editorial_brief": 2344,
+    "with_solution_brief": 2345,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1667,
+    "ai_override_count": 1674,
     "primary_topic_count": 13,
-    "contest_count": 399,
+    "contest_count": 400,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 132,
-    "构造与贪心": 822,
-    "图论与网络流": 158,
+    "构造与贪心": 824,
+    "图论与网络流": 159,
     "动态规划与状态设计": 225,
-    "数论与同余": 285,
-    "组合计数与概率": 199,
+    "数论与同余": 287,
+    "组合计数与概率": 200,
     "数据结构": 245,
     "几何": 61,
     "树结构": 139,
-    "代数、矩阵与多项式": 19,
+    "代数、矩阵与多项式": 20,
     "交互": 84,
     "基础实现与模拟": 144,
     "博弈": 92
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1393,
+    "ai_generated_with_editorial": 1400,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -70547,6 +70547,220 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1857,
+      "name": "Codeforces Round 891 (Div. 3)",
+      "date": "2023-08-07",
+      "url": "https://codeforces.com/contest/1857",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1857A",
+          "index": "A",
+          "slot": "A",
+          "title": "Array Coloring",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1857/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/119134",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个整数数组，必须把每个元素分别染成两种颜色，且两种颜色都至少包含一个元素。要求两种颜色对应元素之和具有相同奇偶性，判断是否存在这样的染色方案。",
+          "transformedStatement": "忽略偶数元素对和的奇偶性影响，只把数组转化为将所有奇数分成两组的问题；两组奇数数量同奇偶，当且仅当数组中的奇数总数为偶数。",
+          "keyObservations": [
+            "偶数加入某一颜色不会改变该颜色总和的奇偶性，只有奇数的数量分配会影响结果，因此问题可只关注奇数元素。",
+            "设两种颜色分别得到 $x,y$ 个奇数，则两组总和奇偶相同当且仅当 $x$ 与 $y$ 同奇偶；这要求奇数总数 $x+y$ 为偶数。",
+            "奇数总数为偶数时总能在保证两种颜色非空的前提下完成分配：全为偶数时任取一个元素分组，存在奇数时按奇数分配并调整分组即可。"
+          ],
+          "solutionBrief": "统计数组中奇数元素的数量。若数量为偶数则输出 YES，否则输出 NO；偶数元素不影响两组和的奇偶性，且 $n\\ge2$ 可保证两种颜色非空。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1857B",
+          "index": "B",
+          "slot": "B",
+          "title": "Maximum Rounding",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1857/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/119134",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个无前导零的正整数，可任意次选择某一位进行四舍五入：该位及右侧数字清零，若该位至少为 $5$ 则左侧一位加一。求操作后能得到的最大整数。",
+          "transformedStatement": "将操作视为从低位向高位的进位过程：右侧一旦被清零就不会再影响左侧，因此每个当前位只需判断是否至少为 $5$，满足条件便固定为零并向左进位。",
+          "keyObservations": [
+            "在位置 $k$ 执行四舍五入后，$k$ 位及右侧都会变成零；只有原第 $k$ 位至少为 $5$ 时结果才会增大，否则操作只会损失数值。",
+            "从低位向高位处理时，右侧已经被清零，因此每个达到 $5$ 的数字都应立即进位；这使得最优决策可以局部确定。",
+            "进位遇到数字 $9$ 时会继续向左传播，等价于把连续的高位 $9$ 一并处理，不需要额外分支枚举操作顺序。"
+          ],
+          "solutionBrief": "从个位右侧向高位扫描。若当前位至少为 $5$，将其及右侧置零，并给左邻位加一；进位可继续传播。处理完后输出结果，最高位溢出时自然形成新的 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1857C",
+          "index": "C",
+          "slot": "C",
+          "title": "Assembly via Minimums",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1857/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/119134",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定数组 $a$ 所有下标对的最小值组成并被打乱的数组 $b$，其中每对只记录一次。请恢复任意一个长度为 $n$、元素范围在 $[-10^9,10^9]$ 内的数组，使其生成的最小值多重集合恰好为 $b$。",
+          "transformedStatement": "把待恢复数组按非递减顺序排列；此时第 $i$ 个元素会作为最小值出现 $n-i$ 次。因此只需在排序后的 $b$ 中按这些频次依次提取前 $n-1$ 个元素，最后一个元素自由补足。",
+          "keyObservations": [
+            "数组 $a$ 的排列不影响所有二元组最小值的多重集合，因此可先假设 $a$ 非递减。",
+            "在非递减的 $a$ 中，$a_i$ 恰好作为最小值出现 $n-i$ 次；这把恢复问题转化为按固定频次从 $b$ 中提取元素。",
+            "将 $b$ 排序后，依次取下标 $0、n-1、n-1+(n-2)、\\dots$ 的元素即可；相同值合并出现时仍能满足对应频次。",
+            "$a_n$ 从未作为二元组最小值被记录，因此只需选择不小于已构造元素且不超过 $10^9$ 的任意值。"
+          ],
+          "solutionBrief": "将 $b$ 排序，按步长 $n-1,n-2,\\dots,1$ 依次取出前 $n-1$ 个数组元素，最后补 $10^9$。前面各值分别贡献固定次数，最后一个值不会出现在 $b$ 中。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1857D",
+          "index": "D",
+          "slot": "D",
+          "title": "Strong Vertices",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1857/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/119134",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "math",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组，在不同顶点 $u,v$ 间建立从 $u$ 到 $v$ 的有向边，当且仅当 $a_u-a_v\\ge b_u-b_v$。若一个顶点能沿有向边经过若干步到达所有其他顶点，则称其为强顶点；请输出所有强顶点的编号。",
+          "transformedStatement": "令每个顶点的权值为 $c_i=a_i-b_i$，则有向边等价于从 $c$ 值较大或相等的顶点指向 $c$ 值较小或相等的顶点。问题转化为寻找所有权值达到全局最大值的顶点。",
+          "keyObservations": [
+            "将边条件改写为 $a_u-b_u\\ge a_v-b_v$，令 $c_i=a_i-b_i$ 后，边只由两个顶点的 $c$ 值大小决定，避免直接处理两数组差式。",
+            "所有 $c$ 最大的顶点都能直接到达任意顶点，因为它们的 $c$ 值不小于全体顶点；因此这些顶点必然是强顶点。",
+            "若顶点 $v$ 的 $c_v$ 小于最大值，则它既不能直接到达最大值顶点，也不能沿路径到达最大值顶点，因为每条边只能从较大或相等的 $c$ 值指向较小或相等的值；所以答案恰好是所有最大值位置。"
+          ],
+          "solutionBrief": "计算每个位置的 $c_i=a_i-b_i$，找出其最大值，并输出所有达到最大值的位置。最大值顶点可到达全部顶点，非最大值顶点无法到达最大值顶点，因此答案唯一确定，单个测试用例复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1857E",
+          "index": "E",
+          "slot": "E",
+          "title": "Power of Points",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1857/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/119134",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定数轴上的 $n$ 个整数坐标。每次选一个已有坐标 $s=x_i$，为每个点 $x_j$ 构造连接 $s$ 与 $x_j$ 的闭整数线段；一个整数点的 power 是覆盖它的线段数，要求对每个原坐标输出所有整数点 $1$ 到 $10^9$ 的 power 总和。",
+          "transformedStatement": "把每个整数点被多少线段覆盖的总和，转化为所有线段包含的整数点数量之和。排序后，对固定的 $s=x_i$ 分别累加左侧线段长度 $s-x_j+1$ 和右侧线段长度 $x_j-s+1$，再用前缀和统一计算。",
+          "keyObservations": [
+            "每条整数线段对所有点的贡献等于其包含的整数点数，即长度 $b-a+1$；因此所有 $f_p$ 的总和可直接改写为各线段长度之和。",
+            "将坐标排序后固定 $s=x_i$，左侧及当前位置的点贡献 $s-x_j+1$，右侧点贡献 $x_j-s+1$，从而避免逐点计算覆盖次数。",
+            "上述长度和可整理为 $n+s(2i-n)-\\sum_{j=1}^{i}x_j+\\sum_{j=i+1}^{n}x_j$；前缀和与总和已知时，每个排序位置的答案可在 $O(1)$ 得到。",
+            "排序只改变处理顺序，计算出的每个坐标答案需按原数组位置输出；相同坐标对应的结果相同。"
+          ],
+          "solutionBrief": "先排序坐标并计算前缀和。利用总覆盖次数等于所有线段包含的整数点数之和，对每个排序位置用前缀和、后缀和在 $O(1)$ 计算答案，最后还原到原输入顺序；总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1857F",
+          "index": "F",
+          "slot": "F",
+          "title": "Sum and Product",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1857/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/119134",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "给定一个数组和多次查询，每次查询给出 $x,y$，要求统计下标对 $i<j$ 的数量，使得 $a_i+a_j=x$ 且 $a_i\\cdot a_j=y$。数组不变，需分别输出每个查询的计数。",
+          "transformedStatement": "把每次查询的数对值看作二次方程 $z^2-xz+y=0$ 的两个根；问题转化为判断根是否为合法整数，并根据数组中两根的出现次数计算下标对数量。",
+          "keyObservations": [
+            "每个查询等价于寻找方程 $z^2-xz+y=0$ 的两个根，因为根的和为 $x$、积为 $y$。",
+            "只有当判别式 $D=x^2-4y$ 非负、为完全平方数且 $x\\pm\\sqrt D$ 可被 $2$ 整除时，才存在整数候选值。",
+            "两根不同为 $u,v$ 时，答案是频次乘积 $cnt[u]cnt[v]$；两根相同为 $u$ 时，必须从该值中选两个位置，答案为 $cnt[u](cnt[u]-1)/2$。",
+            "预处理数组中每个数的出现次数后，每个查询只需计算判别式、根并查表，避免枚举所有下标对。"
+          ],
+          "solutionBrief": "用频次表统计数组中每个值的出现次数。对查询构造方程 $z^2-xz+y=0$，检查判别式及根的整数性；不同根返回两频次乘积，相同根返回组合数。总复杂度为 $O((n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1857G",
+          "index": "G",
+          "slot": "G",
+          "title": "Counting Graphs",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1857/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/119134",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "divide and conquer",
+            "dsu",
+            "graphs",
+            "greedy",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带边权的树和权值上限 $S$，可以在任意点对之间选择不加边，或加入一条权值在 $1$ 到 $S$ 内的新边，但最终图的最小生成树必须仍是这棵给定树。求不同带权图的数量，并对 $998244353$ 取模。",
+          "transformedStatement": "把每个点对独立看待：若其树上路径最大边权为 $P(u,v)$，新增边只能取权值 $P(u,v)+1$ 至 $S$，或不新增；答案转化为所有点对的 $(S-P(u,v)+1)$ 之积。",
+          "keyObservations": [
+            "固定树为最小生成树后，任意点对至多新增一条边；其权值必须大于路径上的最大边权，否则会替换原树中的最大边。",
+            "设点对路径最大边权为 $P(u,v)$，该点对有“不加边”或赋予 $P(u,v)+1$ 到 $S$ 的权值，共 $S-P(u,v)+1$ 种选择，且各点对彼此独立。",
+            "按原树边权递增合并连通块时，一条边两侧大小为 $s_u,s_v$，它确定了 $s_us_v-1$ 个此前未计入且路径最大边权等于当前权值的点对。",
+            "因此每次合并将答案乘以 $(S-w_i+1)^{s_us_v-1}$，用并查集维护连通块大小即可完成所有点对的计数。"
+          ],
+          "solutionBrief": "对树边按权值递增排序，用并查集合并端点所在连通块。若两块大小为 $s_u,s_v$，答案乘以 $(S-w+1)^{s_us_v-1}$；所有乘积取模，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
