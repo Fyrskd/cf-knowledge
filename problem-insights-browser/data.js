@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3060,
-    "source_total_problems": 3061,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 3060,
+    "total_problems": 3061,
+    "source_total_problems": 3068,
+    "filtered_out_problems": 7,
+    "with_statement_brief": 3061,
     "with_editorial_brief": 2782,
     "with_solution_brief": 2783,
-    "missing_editorial_brief": 277,
+    "missing_editorial_brief": 278,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2122,
     "primary_topic_count": 13,
-    "contest_count": 466,
+    "contest_count": 467,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,11 +44,11 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "动态规划与状态设计": 259,
     "博弈": 98,
     "构造与贪心": 974,
     "数据结构": 286,
     "数论与同余": 329,
-    "动态规划与状态设计": 258,
     "组合计数与概率": 239,
     "图论与网络流": 187,
     "几何": 75,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
+    "missing_editorial": 278,
     "ai_generated_with_editorial": 1827,
     "ai_generated_partial_editorial": 64,
-    "missing_editorial": 277,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -94514,6 +94514,42 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "模拟前 $n$ 轮，按选手保存其获胜轮次。查询时用二分统计轮次不超过 $k$ 的获胜记录；若对象是最强选手且 $k>n$，再加上 $k-n$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1718,
+      "name": "Codeforces Round 814 (Div. 1)",
+      "date": "2022-08-16",
+      "url": "https://codeforces.com/contest/1718",
+      "type": "Div. 1",
+      "problemCount": 1,
+      "maxRating": 1800,
+      "problems": [
+        {
+          "key": "1718A1",
+          "index": "A1",
+          "slot": "A",
+          "title": "Burenka and Traditions (easy version)",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1718/problem/A1",
+          "editorialUrl": "https://codeforces.com/blog/entry/106049",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Burenka and Traditions (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }

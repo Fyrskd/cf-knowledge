@@ -1,5 +1,16 @@
 [
   {
+    "id": 1718,
+    "name": "Codeforces Round 814 (Div. 1)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1660660500,
+    "relativeTimeSeconds": 129890498,
+    "date": "2022-08-16"
+  },
+  {
     "id": 1719,
     "name": "Codeforces Round 814 (Div. 2)",
     "type": "CF",
