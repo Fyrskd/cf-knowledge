@@ -1,5 +1,16 @@
 [
   {
+    "id": 1728,
+    "name": "Educational Codeforces Round 135 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1662647700,
+    "relativeTimeSeconds": 127900892,
+    "date": "2022-09-08"
+  },
+  {
     "id": 1729,
     "name": "Codeforces Round 820 (Div. 3)",
     "type": "ICPC",
