@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T00:35:03+00:00",
+  "updated_at": "2026-09-27T00:40:24+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -26171,6 +26171,242 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面与 editorial_text，tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "2185H": {
+      "problem_key": "2185H",
+      "title": "BattleCows 2",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/2185/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/150288",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "fcb61fefae09b826a4a2952ea32baa0816949e08d933645aad67bd6984659ddc",
+      "generated_at": "2026-09-27T00:38:16+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定按序排列的牛及技能值，每场由队首两牛交战，技能高者胜（平局前者胜），胜者技能变为两者之和，败者离队；目标牛最多可作弊 $k$ 次，使本应输的比赛按它获胜处理。对每头牛，求将它从原位插入任意位置且只有它最终留在队列中的位置数，其他牛不得作弊。",
+        "transformed_statement": "对每头牛分别把它移到队首，保持其余牛顺序不变，将比赛看成目标牛沿序吞并其他牛的过程；用前缀和定位目标牛技能不足、必须作弊的关键位置，再统计允许至多 $k$ 个关键位置被反转时的可行插入位置。",
+        "key_observations": [
+          "固定一头牛并把它移到队首后，其余牛的相对顺序不变，整个比赛可转化为按顺序处理对手、维护当前合并技能值。",
+          "目标牛只有在下一头牛技能更高时才需要作弊；作弊后技能变为两者之和并严格翻倍，因此最多发生 $O(\\log(\\max a_i))$ 次关键作弊。",
+          "用前缀和及“移除目标牛后区间和”的辅助查询表示当前技能，便可二分找到前缀和首次超过当前技能两倍的位置，跳过无需单独处理的比赛。",
+          "得到所有可能的作弊位置后，再根据目标牛至多作弊 $k$ 次的条件进行区间分类，统计能让它最终留下的插入位置。"
+        ],
+        "solution_brief": "逐头牛假设其被移到队首，用前缀和支持移除后的区间求和；每次二分定位下一处可能需要作弊的位置。由于作弊后技能翻倍，事件数为对数级，最后依据最多 $k$ 次作弊的区间分类统计所有可行插入位置，总复杂度为 $O(n\\log n\\log(\\max a_i))$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意依据 statement_text；算法依据 editorial_text，标签仅用于主题辅助。题解引用的 hint 1 未提供，因此最终位置分类部分只能概括。",
+        "quality_flags": [
+          "editorial_references_missing_hint_1",
+          "partial_editorial",
+          "statement_truncated"
+        ]
+      }
+    },
+    "2185G": {
+      "problem_key": "2185G",
+      "title": "Mixing MEXes",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/2185/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/150288",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a075ef2cf3895390d4eac3ac03ac2dc864c050f3b6eb7b64bcc522988e5534bd",
+      "generated_at": "2026-09-27T00:38:35+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个数组，必须恰好一次选择一个数组中的一个元素，将它从源数组删除并追加到另一个不同数组的末尾。对每个不同的有序三元组操作，计算操作后所有数组 MEX 之和，并求这些值的总和。",
+        "transformed_statement": "把一次移动拆成源数组的删除影响和目标数组的追加影响：总答案以所有数组原始 MEX 之和为基准，只需判断被删值是否唯一且低于源 MEX，以及追加值是否正好等于目标 MEX。",
+        "key_observations": [
+          "删除源数组中的元素只有在该值小于原 MEX 且只出现一次时才会改变 MEX；新 MEX 直接变为被删值。",
+          "向目标数组追加元素只有当该元素等于目标数组当前 MEX 时才会产生影响，此时 MEX 变为追加前的第二小缺失非负整数。",
+          "一次操作的总值等于所有数组原始 MEX 之和，加上源数组删除变化与目标数组追加变化；两部分可以独立统计并按元素位置和目标数组汇总。"
+        ],
+        "solution_brief": "先计算每个数组的 MEX、频次及第二 MEX。将每次操作的结果表示为原始 MEX 总和加源数组删除增量和目标数组追加增量，再按源元素与目标数组分别统计所有有序操作的贡献。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的操作与目标定义，以及 editorial_text 对删除和追加影响的分类；tags 用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "2185F": {
+      "problem_key": "2185F",
+      "title": "BattleCows",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2185/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/150288",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "adc1395bacfded4f96ebac5e1a9c4d2a26565d3da9a2a3d9dd58479a0c0c9d6d",
+      "generated_at": "2026-09-27T00:39:05+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $2^n$ 头牛按顺序站成一列，每头牛初始单独成栈。每轮奇数位置的栈与右侧栈比赛，技能值较高者胜出，平局时左栈胜出；胜者叠到败者上方并合并。每个询问把药剂给指定牛，将其技能改为指定值后独立进行整场比赛，要求最终栈中位于该牛上方的牛数。",
+        "transformed_statement": "将整场比赛看成一棵按轮次合并的淘汰结构：每个节点代表一个连续区间，节点值是区间异或和。对单个询问只追踪包含目标牛的节点及其每轮对手，并在胜负后更新目标牛在最终栈中的位置。",
+        "key_observations": [
+          "每个栈始终对应原队列中的一个连续区间，栈的技能值就是该区间所有牛的异或和，因此对手技能可以用区间异或快速计算。",
+          "目标牛所在的栈每轮只会参与一场比赛，只需沿着它在淘汰赛中的路径追踪；其他栈之间的比赛不会影响目标牛的结果。",
+          "药剂把目标牛的贡献从 $a_b$ 改为 $c$，因此目标所在区间的异或值只需相应异或上 $a_b\\oplus c$，每个询问可独立处理。",
+          "当目标所在队伍或其领头栈输掉时，只需将目标位置增加对手队伍大小加一；不必显式重建其他队伍的内部比赛。"
+        ],
+        "solution_brief": "把栈视为连续区间，用前缀异或计算每轮对手的技能值，只沿目标牛所在栈的比赛路径推进；根据胜负更新其位置，得到最终位于目标牛上方的牛数。每个询问结束后恢复原数组。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则、完整 editorial_text，以及 tags 中的数据结构与分治信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "2185E": {
+      "problem_key": "2185E",
+      "title": "The Robotic Rush",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/2185/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/150288",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c603077128cb0f4ed2f799f114ca61eeef9f2a9735820bc67a04e43570247ab1",
+      "generated_at": "2026-09-27T00:39:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "数轴上有机器人和尖刺，所有机器人同时执行同一串指令：每步向左或向右移动一个单位；机器人碰到尖刺后死亡。对每个指令前缀，输出执行完这些指令后仍存活的机器人数量。",
+        "transformed_statement": "把每个指令前缀压缩为所有机器人共同的位移 $d$。对每个机器人，只保留左右最近尖刺形成的两个致命位移，并按位移建立碰撞事件表，逐步处理当前位移对应的事件。",
+        "key_observations": [
+          "机器人向某一方向移动时，最先遇到的一定是该方向最近的尖刺，因此每个机器人只需记录左右两侧最近尖刺的距离。",
+          "所有机器人每次执行相同指令，所以它们相对初始位置的位移都相同；处理前缀后只需维护一个全局位移 $d$。",
+          "机器人可能死亡的位移只有左侧距离对应的 $-l$ 和右侧距离对应的 $r$，按位移分组即可快速找出本次碰撞者。",
+          "同一机器人可能在不同时间到达两个致命位移，必须用存活标记去重，否则会重复扣减存活数量。"
+        ],
+        "solution_brief": "先排序尖刺，求出每个机器人左右最近尖刺的距离，并将对应致命位移映射到机器人集合。逐条指令更新全局位移，处理该位移下尚未死亡的机器人并输出存活数。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text，以及 tags 中的实现、二分和双指针信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "2185D": {
+      "problem_key": "2185D",
+      "title": "OutOfMemoryError",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2185/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/150288",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "34c4a2a5fdb570eb6ae38395ceeb3a41be6a759a0f0b6fa3105c99f4f90430cb",
+      "generated_at": "2026-09-27T00:39:45+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组及 $m$ 次操作，每次把指定位置增加 $c_i$。若操作后任意元素超过 $h$，数组立即整体恢复为最初状态；全部操作完成后输出数组。",
+        "transformed_statement": "把一次整体恢复抽象为全局时间戳 $R$，每个位置只记录最后修改时间；位置若在 $R$ 之前未被重新修改，就逻辑上仍等于初值，从而避免每次崩溃遍历整个数组。",
+        "key_observations": [
+          "由于每次操作只增加一个元素，且崩溃前所有元素都不超过 $h$，因此本次是否崩溃只需检查被修改元素。",
+          "用最近一次重置时间 $R$ 表示全数组恢复原值；若元素上次修改时间不晚于 $R$，则它当前逻辑值应先恢复为初始值。",
+          "重置不必实际遍历数组，只更新 $R$；处理完所有操作后，最后一次修改时间不晚于 $R$ 的元素输出初值，其余输出维护的当前值。"
+        ],
+        "solution_brief": "为每个元素记录当前值和最后修改时间，并维护最近一次全数组重置时间。修改前若该元素已被最近重置覆盖，先恢复初值；加法后若超过 $h$，只更新重置时间。最终按时间戳判断输出初值或当前值。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的操作规则和 editorial_text 的时间戳懒重置方案，结合 tags 中的数据结构与实现信息。",
+        "quality_flags": []
+      }
+    },
+    "2185C": {
+      "problem_key": "2185C",
+      "title": "Shifted MEX",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/2185/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/150288",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a01a07b3a501d25b9679109d0f710369609ed43614e02ac03c34a948baa00273",
+      "generated_at": "2026-09-27T00:40:04+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，必须执行一次整体平移：选择任意整数 $x$，把每个元素都改为 $a_i+x$，其中 $x$ 可为负数或 $0$。求平移后数组 MEX 的最大值，即最小的未出现非负整数。",
+        "transformed_statement": "忽略重复值后，把数组看成一个整数集合；整体平移不改变元素间差值，因此目标等价于寻找排序后最长的连续整数段，并将其平移到 $0,1,\\ldots,k-1$。",
+        "key_observations": [
+          "重复元素不会改变 MEX，因此只需保留数组中的不同数值，问题规模可按去重后的集合处理。",
+          "若最终 MEX 为 $k$，数组必须包含连续值 $0,1,\u001b[?25l\\ldots,k-1$ 且不含 $k$；整体平移只能保持数值间差值，因此这些值必须来自原数组中的连续整数段。",
+          "对排序去重后的数组，最长相邻差为 $1$ 的连续段可以整体平移到 $0,1,\\ldots,k-1$，且其后一值不存在，从而得到对应的 MEX。",
+          "扫描排序后的不同元素，维护当前连续段长度并取最大值即可，排序与扫描总复杂度为 $O(n\\log n)$。"
+        ],
+        "solution_brief": "先对数组去重并排序，扫描最长的连续整数段。若该段长度为 $k$，选择合适的整体偏移即可把它变为 $0$ 到 $k-1$，答案就是最大段长。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的整体平移与 MEX 定义，以及 editorial 的两种解法和复杂度说明；主要采用解法一。",
+        "quality_flags": []
+      }
+    },
+    "2185B": {
+      "problem_key": "2185B",
+      "title": "Prefix Max",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2185/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/150288",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5a94bf1b28977cfcee03295f43dffa6b61a5518851a88c6d17989126451d9015",
+      "generated_at": "2026-09-27T00:40:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，数组价值是所有前缀最大值之和。最多交换一次任意两个位置的元素，要求最大化交换后数组的价值，也可以选择不交换。",
+        "transformed_statement": "设全局最大值为 $M$。由于每个前缀贡献至多为 $M$，总价值至多为 $nM$；将 $M$ 放到第一位即可让所有前缀贡献都达到该上界。",
+        "key_observations": [
+          "设全局最大值为 $M$，每个前缀最大值都不超过 $M$，因此数组价值上界是 $nM$。",
+          "若把一个全局最大值交换到首位，所有前缀都包含它，价值恰好达到 $nM$，从而必然最优。",
+          "若全局最大值已经在首位，则当前价值已经是 $nM$，不交换即可达到最优。"
+        ],
+        "solution_brief": "找出数组全局最大值。若它不在首位，就与首元素交换；否则不操作。此时每个前缀最大值都等于全局最大值，答案为 $n\\times\\max(a)$，扫描数组即可完成。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text；tags 提供了 greedy 标签。",
+        "quality_flags": []
+      }
+    },
+    "2185A": {
+      "problem_key": "2185A",
+      "title": "Perfect Root",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2185/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/150288",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d660426fd5c48149dffe63120c9efff9cb4faf1cb49a16eef449bd1a3fa93cdd",
+      "generated_at": "2026-09-27T00:40:24+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "每个测试用例给出整数 $n$，要求输出 $n$ 个两两不同的正整数 $x$，且每个 $x$ 都存在整数 $y$ 使得 $\\sqrt{y}=x$；输出的 $x$ 还必须位于 $[1,10^9]$ 内。",
+        "transformed_statement": "由于任意正整数 $x$ 都可令 $y=x^2$，原题被转化为：对每个 $n$，只需构造 $n$ 个范围内互不相同的正整数。",
+        "key_observations": [
+          "对任意正整数 $x$，取 $y=x^2$ 就有 $\u00024\\sqrt{y}=x$，因此所有正整数都是合法的，完美根条件无需额外筛选。",
+          "题目等价于在 $[1,10^9]$ 中构造 $n$ 个互不相同的正整数，直接输出 $1,2,\\ldots,n$ 即可满足范围和 distinct 要求。"
+        ],
+        "solution_brief": "利用 $y=x^2$ 证明每个正整数都是完美根；对每组数据直接输出 $1$ 到 $n$，它们互不相同且满足范围限制，复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 与 editorial_text，tags 仅用于辅助主题归类。",
         "quality_flags": []
       }
     }

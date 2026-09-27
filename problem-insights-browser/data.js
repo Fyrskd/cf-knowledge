@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1923,
+    "total_problems": 1931,
     "source_total_problems": 1931,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 1923,
-    "with_editorial_brief": 1681,
-    "with_solution_brief": 1682,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1931,
+    "with_editorial_brief": 1689,
+    "with_solution_brief": 1690,
     "missing_editorial_brief": 241,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 864,
+    "ai_override_count": 872,
     "primary_topic_count": 13,
-    "contest_count": 303,
+    "contest_count": 304,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -36,8 +36,8 @@ window.CF_INSIGHTS_DATA = {
     "组合计数与概率",
     "树结构",
     "图论与网络流",
-    "字符串",
     "基础实现与模拟",
+    "字符串",
     "交互",
     "博弈",
     "几何",
@@ -45,22 +45,22 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 81,
-    "构造与贪心": 651,
+    "构造与贪心": 654,
     "图论与网络流": 118,
     "动态规划与状态设计": 181,
     "数论与同余": 183,
     "组合计数与概率": 147,
-    "数据结构": 157,
+    "数据结构": 160,
     "几何": 40,
     "树结构": 125,
     "代数、矩阵与多项式": 17,
     "交互": 74,
-    "基础实现与模拟": 80,
+    "基础实现与模拟": 82,
     "博弈": 69
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 757,
-    "ai_generated_partial_editorial": 33,
+    "ai_generated_with_editorial": 764,
+    "ai_generated_partial_editorial": 34,
     "missing_editorial": 241,
     "manual_override": 891,
     "statement_derived": 1
@@ -14123,6 +14123,241 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：不要模拟坚果流动，而是反过来枚举最终还要付 q 的连通子树。题解证明 L 外操作可替换到 L 内，所以最优方案只关心每条有向边两侧“把外侧全部清空”的最少次数。用边方向 DP 合并这些代价，最后在每个候选 L 上取 p·操作数+q·|L|。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2185,
+      "name": "Codeforces Round 1074 (Div. 4)",
+      "date": "2026-01-18",
+      "url": "https://codeforces.com/contest/2185",
+      "type": "Div. 4",
+      "problemCount": 8,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "2185A",
+          "index": "A",
+          "slot": "A",
+          "title": "Perfect Root",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2185/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/150288",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "每个测试用例给出整数 $n$，要求输出 $n$ 个两两不同的正整数 $x$，且每个 $x$ 都存在整数 $y$ 使得 $\\sqrt{y}=x$；输出的 $x$ 还必须位于 $[1,10^9]$ 内。",
+          "transformedStatement": "由于任意正整数 $x$ 都可令 $y=x^2$，原题被转化为：对每个 $n$，只需构造 $n$ 个范围内互不相同的正整数。",
+          "keyObservations": [
+            "对任意正整数 $x$，取 $y=x^2$ 就有 $\u00024\\sqrt{y}=x$，因此所有正整数都是合法的，完美根条件无需额外筛选。",
+            "题目等价于在 $[1,10^9]$ 中构造 $n$ 个互不相同的正整数，直接输出 $1,2,\\ldots,n$ 即可满足范围和 distinct 要求。"
+          ],
+          "solutionBrief": "利用 $y=x^2$ 证明每个正整数都是完美根；对每组数据直接输出 $1$ 到 $n$，它们互不相同且满足范围限制，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2185B",
+          "index": "B",
+          "slot": "B",
+          "title": "Prefix Max",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2185/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/150288",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定一个整数数组，数组价值是所有前缀最大值之和。最多交换一次任意两个位置的元素，要求最大化交换后数组的价值，也可以选择不交换。",
+          "transformedStatement": "设全局最大值为 $M$。由于每个前缀贡献至多为 $M$，总价值至多为 $nM$；将 $M$ 放到第一位即可让所有前缀贡献都达到该上界。",
+          "keyObservations": [
+            "设全局最大值为 $M$，每个前缀最大值都不超过 $M$，因此数组价值上界是 $nM$。",
+            "若把一个全局最大值交换到首位，所有前缀都包含它，价值恰好达到 $nM$，从而必然最优。",
+            "若全局最大值已经在首位，则当前价值已经是 $nM$，不交换即可达到最优。"
+          ],
+          "solutionBrief": "找出数组全局最大值。若它不在首位，就与首元素交换；否则不操作。此时每个前缀最大值都等于全局最大值，答案为 $n\\times\\max(a)$，扫描数组即可完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2185C",
+          "index": "C",
+          "slot": "C",
+          "title": "Shifted MEX",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2185/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/150288",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一个整数数组，必须执行一次整体平移：选择任意整数 $x$，把每个元素都改为 $a_i+x$，其中 $x$ 可为负数或 $0$。求平移后数组 MEX 的最大值，即最小的未出现非负整数。",
+          "transformedStatement": "忽略重复值后，把数组看成一个整数集合；整体平移不改变元素间差值，因此目标等价于寻找排序后最长的连续整数段，并将其平移到 $0,1,\\ldots,k-1$。",
+          "keyObservations": [
+            "重复元素不会改变 MEX，因此只需保留数组中的不同数值，问题规模可按去重后的集合处理。",
+            "若最终 MEX 为 $k$，数组必须包含连续值 $0,1,\u001b[?25l\\ldots,k-1$ 且不含 $k$；整体平移只能保持数值间差值，因此这些值必须来自原数组中的连续整数段。",
+            "对排序去重后的数组，最长相邻差为 $1$ 的连续段可以整体平移到 $0,1,\\ldots,k-1$，且其后一值不存在，从而得到对应的 MEX。",
+            "扫描排序后的不同元素，维护当前连续段长度并取最大值即可，排序与扫描总复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "先对数组去重并排序，扫描最长的连续整数段。若该段长度为 $k$，选择合适的整体偏移即可把它变为 $0$ 到 $k-1$，答案就是最大段长。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2185D",
+          "index": "D",
+          "slot": "D",
+          "title": "OutOfMemoryError",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2185/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/150288",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "implementation",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组及 $m$ 次操作，每次把指定位置增加 $c_i$。若操作后任意元素超过 $h$，数组立即整体恢复为最初状态；全部操作完成后输出数组。",
+          "transformedStatement": "把一次整体恢复抽象为全局时间戳 $R$，每个位置只记录最后修改时间；位置若在 $R$ 之前未被重新修改，就逻辑上仍等于初值，从而避免每次崩溃遍历整个数组。",
+          "keyObservations": [
+            "由于每次操作只增加一个元素，且崩溃前所有元素都不超过 $h$，因此本次是否崩溃只需检查被修改元素。",
+            "用最近一次重置时间 $R$ 表示全数组恢复原值；若元素上次修改时间不晚于 $R$，则它当前逻辑值应先恢复为初始值。",
+            "重置不必实际遍历数组，只更新 $R$；处理完所有操作后，最后一次修改时间不晚于 $R$ 的元素输出初值，其余输出维护的当前值。"
+          ],
+          "solutionBrief": "为每个元素记录当前值和最后修改时间，并维护最近一次全数组重置时间。修改前若该元素已被最近重置覆盖，先恢复初值；加法后若超过 $h$，只更新重置时间。最终按时间戳判断输出初值或当前值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2185E",
+          "index": "E",
+          "slot": "E",
+          "title": "The Robotic Rush",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2185/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/150288",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "数轴上有机器人和尖刺，所有机器人同时执行同一串指令：每步向左或向右移动一个单位；机器人碰到尖刺后死亡。对每个指令前缀，输出执行完这些指令后仍存活的机器人数量。",
+          "transformedStatement": "把每个指令前缀压缩为所有机器人共同的位移 $d$。对每个机器人，只保留左右最近尖刺形成的两个致命位移，并按位移建立碰撞事件表，逐步处理当前位移对应的事件。",
+          "keyObservations": [
+            "机器人向某一方向移动时，最先遇到的一定是该方向最近的尖刺，因此每个机器人只需记录左右两侧最近尖刺的距离。",
+            "所有机器人每次执行相同指令，所以它们相对初始位置的位移都相同；处理前缀后只需维护一个全局位移 $d$。",
+            "机器人可能死亡的位移只有左侧距离对应的 $-l$ 和右侧距离对应的 $r$，按位移分组即可快速找出本次碰撞者。",
+            "同一机器人可能在不同时间到达两个致命位移，必须用存活标记去重，否则会重复扣减存活数量。"
+          ],
+          "solutionBrief": "先排序尖刺，求出每个机器人左右最近尖刺的距离，并将对应致命位移映射到机器人集合。逐条指令更新全局位移，处理该位移下尚未死亡的机器人并输出存活数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2185F",
+          "index": "F",
+          "slot": "F",
+          "title": "BattleCows",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2185/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/150288",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "implementation"
+          ],
+          "statementBrief": "有 $2^n$ 头牛按顺序站成一列，每头牛初始单独成栈。每轮奇数位置的栈与右侧栈比赛，技能值较高者胜出，平局时左栈胜出；胜者叠到败者上方并合并。每个询问把药剂给指定牛，将其技能改为指定值后独立进行整场比赛，要求最终栈中位于该牛上方的牛数。",
+          "transformedStatement": "将整场比赛看成一棵按轮次合并的淘汰结构：每个节点代表一个连续区间，节点值是区间异或和。对单个询问只追踪包含目标牛的节点及其每轮对手，并在胜负后更新目标牛在最终栈中的位置。",
+          "keyObservations": [
+            "每个栈始终对应原队列中的一个连续区间，栈的技能值就是该区间所有牛的异或和，因此对手技能可以用区间异或快速计算。",
+            "目标牛所在的栈每轮只会参与一场比赛，只需沿着它在淘汰赛中的路径追踪；其他栈之间的比赛不会影响目标牛的结果。",
+            "药剂把目标牛的贡献从 $a_b$ 改为 $c$，因此目标所在区间的异或值只需相应异或上 $a_b\\oplus c$，每个询问可独立处理。",
+            "当目标所在队伍或其领头栈输掉时，只需将目标位置增加对手队伍大小加一；不必显式重建其他队伍的内部比赛。"
+          ],
+          "solutionBrief": "把栈视为连续区间，用前缀异或计算每轮对手的技能值，只沿目标牛所在栈的比赛路径推进；根据胜负更新其位置，得到最终位于目标牛上方的牛数。每个询问结束后恢复原数组。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2185G",
+          "index": "G",
+          "slot": "G",
+          "title": "Mixing MEXes",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2185/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/150288",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 个数组，必须恰好一次选择一个数组中的一个元素，将它从源数组删除并追加到另一个不同数组的末尾。对每个不同的有序三元组操作，计算操作后所有数组 MEX 之和，并求这些值的总和。",
+          "transformedStatement": "把一次移动拆成源数组的删除影响和目标数组的追加影响：总答案以所有数组原始 MEX 之和为基准，只需判断被删值是否唯一且低于源 MEX，以及追加值是否正好等于目标 MEX。",
+          "keyObservations": [
+            "删除源数组中的元素只有在该值小于原 MEX 且只出现一次时才会改变 MEX；新 MEX 直接变为被删值。",
+            "向目标数组追加元素只有当该元素等于目标数组当前 MEX 时才会产生影响，此时 MEX 变为追加前的第二小缺失非负整数。",
+            "一次操作的总值等于所有数组原始 MEX 之和，加上源数组删除变化与目标数组追加变化；两部分可以独立统计并按元素位置和目标数组汇总。"
+          ],
+          "solutionBrief": "先计算每个数组的 MEX、频次及第二 MEX。将每次操作的结果表示为原始 MEX 总和加源数组删除增量和目标数组追加增量，再按源元素与目标数组分别统计所有有序操作的贡献。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2185H",
+          "index": "H",
+          "slot": "H",
+          "title": "BattleCows 2",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/2185/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/150288",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定按序排列的牛及技能值，每场由队首两牛交战，技能高者胜（平局前者胜），胜者技能变为两者之和，败者离队；目标牛最多可作弊 $k$ 次，使本应输的比赛按它获胜处理。对每头牛，求将它从原位插入任意位置且只有它最终留在队列中的位置数，其他牛不得作弊。",
+          "transformedStatement": "对每头牛分别把它移到队首，保持其余牛顺序不变，将比赛看成目标牛沿序吞并其他牛的过程；用前缀和定位目标牛技能不足、必须作弊的关键位置，再统计允许至多 $k$ 个关键位置被反转时的可行插入位置。",
+          "keyObservations": [
+            "固定一头牛并把它移到队首后，其余牛的相对顺序不变，整个比赛可转化为按顺序处理对手、维护当前合并技能值。",
+            "目标牛只有在下一头牛技能更高时才需要作弊；作弊后技能变为两者之和并严格翻倍，因此最多发生 $O(\\log(\\max a_i))$ 次关键作弊。",
+            "用前缀和及“移除目标牛后区间和”的辅助查询表示当前技能，便可二分找到前缀和首次超过当前技能两倍的位置，跳过无需单独处理的比赛。",
+            "得到所有可能的作弊位置后，再根据目标牛至多作弊 $k$ 次的条件进行区间分类，统计能让它最终留下的插入位置。"
+          ],
+          "solutionBrief": "逐头牛假设其被移到队首，用前缀和支持移除后的区间求和；每次二分定位下一处可能需要作弊的位置。由于作弊后技能翻倍，事件数为对数级，最后依据最多 $k$ 次作弊的区间分类统计所有可行插入位置，总复杂度为 $O(n\\log n\\log(\\max a_i))$。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "complete"
         }
       ]
