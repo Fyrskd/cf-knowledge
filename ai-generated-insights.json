@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T04:32:50+00:00",
+  "updated_at": "2026-09-27T04:37:59+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -36298,6 +36298,262 @@
         "quality_flags": [
           "partial_editorial"
         ]
+      }
+    },
+    "2009G3": {
+      "problem_key": "2009G3",
+      "title": "Yunli's Subarray Queries (extreme version)",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/2009/problem/G3",
+      "editorial_url": "https://codeforces.com/blog/entry/133296",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "43d47cbb09730c55f195e6124d52f3f9f53f469a8bae9bf55718fdcf6bc2cc7a",
+      "generated_at": "2026-09-27T04:35:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组 $a$，可任意次把某个元素改成任意整数。若子数组中存在长度至少为 $k$ 的连续段，使相邻元素都满足后者等于前者加一，则记达到该条件所需的最少修改次数为 $f$。每次查询给出 $[l,r]$，要求输出其中所有长度至少为 $k$ 的子数组的 $f$ 之和。",
+        "transformed_statement": "对每个长度为 $k$ 的窗口计算代价 $v_i$：按 $a_p-p$ 分组，代价为 $k$ 减去最大组大小；任意更长区间的代价就是所含窗口代价的最小值。因此查询等价于求 $v$ 的一个区间内所有子数组最小值之和。",
+        "key_observations": [
+          "长度为 $k$ 的窗口中，保持位置差值 $a_p-p$ 相同的元素无需修改，因此窗口代价是 $k$ 减去该差值的最大出现次数。",
+          "任意更长子数组的代价等于其中所有长度为 $k$ 窗口代价的最小值，所以原查询转化为固定数组上的子数组最小值之和。",
+          "用单调栈确定每个 $v_i$ 左右两侧第一个更小值后，其作为最小值的子数组范围可按左右边界乘积计数，并可归约为矩形查询。",
+          "按查询左端点分类处理左右边界是否越界；两类单侧越界贡献随扫描端点移动呈线性变化，可用带懒标记的线段树维护，双侧越界至多只含区间最小元素。"
+        ],
+        "solution_brief": "先计算每个长度为 $k$ 窗口的代价 $v$，再把查询转成 $v$ 的子数组最小值之和。用单调栈划分最小值贡献，结合矩形查询、扫描线和带懒标记线段树回答所有区间。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意来自 statement_text，核心算法与分类贡献来自 editorial_text，数据结构方向参考 codeforces_tags。",
+        "quality_flags": []
+      }
+    },
+    "2009G2": {
+      "problem_key": "2009G2",
+      "title": "Yunli's Subarray Queries (hard version)",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/2009/problem/G2",
+      "editorial_url": "https://codeforces.com/blog/entry/133296",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "38928fa36814508806a9d2d3a68845634f605e0bea955238601b343fac188aab",
+      "generated_at": "2026-09-27T04:36:05+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组，允许任意次选择一个位置并把其值改成任意整数。对每个查询区间 $[l,r]$，对每个右端点 $j\from l+k-1$ 到 $r$，计算子数组 $a_l\blist a_j$ 至少修改多少个元素才能包含长度至少为 $k$ 的连续递增整数段，并求这些最少修改数之和。",
+        "transformed_statement": "令 $c_i$ 表示原数组长度为 $k$ 的窗口 $[i,i+k-1]$ 的最少修改数，则查询答案等价于对 $c_l,\blist c_{r-k+1}$ 的所有前缀最小值求和；问题变成快速聚合一维序列的前缀最小值。",
+        "key_observations": [
+          "长度为 $k$ 的窗口中，目标连续递增序列要求所有 $a_i-i$ 相同，因此最少修改数是 $k$ 减去该值的最大出现次数。",
+          "任意更长前缀达到目标的最少修改数，等于其中所有长度为 $k$ 窗口代价 $c_i$ 的最小值，因此查询转化为前缀最小值之和。",
+          "从位置 $i$ 开始，前缀最小值只会在遇到下一个严格更小的 $c_j$ 时改变；这些跳转位置可由单调栈确定，连续相同贡献区间因此被压缩。",
+          "沿着“下一个更小值”跳转并预处理各级区间贡献后，可用倍增一次跳过多个区间并累加答案，避免逐项处理查询范围。"
+        ],
+        "solution_brief": "先滑动维护每个长度为 $k$ 窗口的最大频次，得到 $c_i=k- ext{maxfreq}(a_t-t)$。查询转为一段前缀最小值之和，再用单调栈找下一个更小值，并以倍增预处理跳转贡献后回答。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，以及 tags 中的数据结构和 DP 信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "2009G1": {
+      "problem_key": "2009G1",
+      "title": "Yunli's Subarray Queries (easy version)",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2009/problem/G1",
+      "editorial_url": "https://codeforces.com/blog/entry/133296",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "430fe8b2ef24f64ea73b8c8a7c9ccdb0e0274e7619d701d7abf6f0aa8880ca4a",
+      "generated_at": "2026-09-27T04:36:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组和长度 $k$，一次操作可把任意一个元素改成任意整数。对每个长度恰为 $k$ 的查询区间，求至少修改多少个元素，才能使其中存在一个长度为 $k$ 的连续子数组，且相邻元素始终相差 $1$。",
+        "transformed_statement": "把位置 $i$ 的值改写为 $c_i=a_i-i$；要让窗口变成连续递增序列，就等价于让窗口内所有位置的 $c_i$ 相等。于是问题转为保留窗口中出现最多的同值元素并修改其余元素。",
+        "key_observations": [
+          "将位置和值按 $c_i=a_i-i$ 转换后，窗口中满足 $a_j=a_i+(j-i)$ 的位置恰好具有相同的 $c$ 值，因此等差递增条件被转成相等性条件。",
+          "一个长度为 $k$ 的窗口最终应统一为某个 $c$ 值；保留出现次数最多的值无需修改，其余位置各改一次，所以答案是 $k-\\max\\text{频率}(c_i)$。",
+          "所有查询窗口长度固定为 $k$，滑动窗口只需删除左端并加入右端，同时维护当前各 $c_i$ 的最大频率，即可预处理每个起点的答案并用查表回答。"
+        ],
+        "solution_brief": "令 $c_i=a_i-i$。对每个长度为 $k$ 的窗口维护各 $c_i$ 的频率，答案为 $k$ 减去最大频率；用滑动窗口更新频率并预处理所有窗口，查询直接返回对应结果。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的修改目标与查询限制，以及 editorial 中的变换、频率结论和滑动窗口维护；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "2009F": {
+      "problem_key": "2009F",
+      "title": "Firefly's Queries",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2009/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/133296",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8dc137ba02f364cec21d0721631c538bf74b27e6376ddb473e34d5e14305159b",
+      "generated_at": "2026-09-27T04:36:42+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组，将它的 $n$ 个循环移位按顺序首尾拼接成长度为 $n^2$ 的数组 $b$；第 $x$ 个移位从 $a_x$ 开始并循环回到数组开头。对每个区间 $[l,r]$，求 $b_l$ 到 $b_r$ 的元素总和。",
+        "transformed_statement": "把 $b$ 看成由 $n$ 个长度为 $n$ 的移位块组成，并将原数组复制一次，使每个移位块对应复制数组中的一个连续窗口；查询因此转化为若干完整块、左端后缀和右端前缀的和。",
+        "key_observations": [
+          "第 $k$ 个循环移位的第 $j$ 个元素等于复制数组中的 $a_{k+j-1}$，因此所有移位都能统一表示为长度为 $n$ 的连续窗口。",
+          "全局位置 $x$ 所在的移位编号是 $\\lfloor(x-1)/n\\rfloor+1$，块内位置是 $(x-1)\\bmod n+1$，从而查询可按所在块直接拆分。",
+          "若查询跨越多个完整移位，中间部分只贡献若干个整数组和；两端分别是左块后缀和右块前缀，避免显式构造长度为 $n^2$ 的数组。",
+          "在 $a$ 后追加一份自身并建立前缀和后，任意块内连续区间、后缀和前缀都能在 $O(1)$ 时间求出。"
+        ],
+        "solution_brief": "复制数组形成长度 $2n$ 的序列并建立前缀和。将查询端点映射到移位编号和块内位置；同块直接求区间和，跨块则计算左后缀、右前缀及中间完整移位的总和，单次查询 $O(1)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的循环移位与区间查询定义，以及 editorial_text 的复制数组、分块和前缀和方案；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "2009E": {
+      "problem_key": "2009E",
+      "title": "Klee's SUPER DUPER LARGE Array!!!",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2009/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/133296",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d3990aa6318a1025d98f32a833dd97a7bbac268e5c8d781ad38351373fe7c41e",
+      "generated_at": "2026-09-27T04:37:01+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组 $k,k+1,\\ldots,k+n-1$，选择一个下标 $i$，将前 $i$ 个元素求和、后面的元素求和并作差。要求使该差的绝对值最小，并输出最小值。",
+        "transformed_statement": "设总和为 $T$、前缀和为 $P(i)$，问题等价于在 $1\\leq i\\leq n$ 中最小化 $|2P(i)-T|$；由于 $P(i)$ 单调增加，只需定位其穿过 $T/2$ 的边界。",
+        "key_observations": [
+          "令前缀和为 $P(i)$、总和为 $T$，目标可改写为 $|2P(i)-T|$，从而只需寻找前缀和接近总和一半的位置。",
+          "随着 $i$ 增大，前缀和单调增加、后缀和单调减少，因此两者大小关系只会发生一次变化，可二分找到最后一个满足 $P(i)\\leq T-P(i)$ 的位置。",
+          "绝对值在交界点两侧分别单调变化，所以最优答案只可能来自交界位置及其后一个位置，无需枚举全部下标。",
+          "连续数组的任意前缀和可用等差数列求和公式在 $O(1)$ 时间计算，使每组数据只需进行对数次判定。"
+        ],
+        "solution_brief": "用等差数列公式计算前缀和与后缀和，二分寻找最后一个前缀和不超过后缀和的下标，再比较该下标及下一个下标对应的绝对差，取较小值。",
+        "primary_topic": "代数、矩阵与多项式",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 与完整 editorial_text；tags 仅用于辅助确认主题。",
+        "quality_flags": []
+      }
+    },
+    "2009D": {
+      "problem_key": "2009D",
+      "title": "Satyam and Counting",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2009/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/133296",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0d962114e034f3a28e5cd63e9ca7743291cafb7711033bbfdbe831be300ad13d",
+      "generated_at": "2026-09-27T04:37:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干个二维平面上的不同整点，所有点都位于 $y=0$ 或 $y=1$ 两条水平线上。每次从中选三个不同点作为顶点，要求形成面积为正且含 $90^\\circ$ 内角的直角三角形，求不同三角形的总数。",
+        "transformed_statement": "把所有合法三角形按是否含同横坐标的竖直边分类：一类由任意竖直点对和第三点组成；另一类是横坐标连续的三点，其中中间点与两侧点处于相反横线。分别计数即可。",
+        "key_observations": [
+          "同一横坐标的两个点必为 $(x,0)$ 与 $(x,1)$；它们构成长度为 $1$ 的竖直边，任选其余 $n-2$ 个点都能在该边端点形成直角三角形。",
+          "除含竖直边的情况外，直角三角形只能由三个横坐标分别为 $x-1,x,x+1$ 的点组成，且中间点与两侧点位于相反的横线；这是因为两条斜边长度均为 $\u0001sqrt{2}$，底边长度为 $2$。",
+          "第二类三角形的中间点唯一，因此检查每个点的 $(x-1,1-y)$ 和 $(x+1,1-y)$ 是否存在即可，每个三角形只计数一次。"
+        ],
+        "solution_brief": "将答案拆成两类：每个竖直点对贡献 $n-2$ 个三角形；再枚举每个点作为中间点，检查两侧相邻横坐标的反色点。用集合与横坐标计数器可在线性时间完成。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，以及 geometry/math 标签。",
+        "quality_flags": []
+      }
+    },
+    "2009C": {
+      "problem_key": "2009C",
+      "title": "The Legend of Freya the Frog",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2009/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/133296",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "41801e556d6b2791a275ea3db8ea58475cda247be52d75547f99400c52aa8bf6",
+      "generated_at": "2026-09-27T04:37:38+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "青蛙从 $(0,0)$ 前往 $(x,y)$，每次沿当前面对的正坐标轴跳跃整数距离 $d$，其中 $0\\le d\\le k$；方向从 $x$ 轴开始并在每次跳跃后交替切换到 $y$ 轴。求恰好到达目标点所需的最少跳跃次数。",
+        "transformed_statement": "把到达目标拆成两个独立的位移需求：$x$ 轴至少需要 $\\lceil x/k\\rceil$ 次、$y$ 轴至少需要 $\\lceil y/k\\rceil$ 次有效跳跃，再用允许的零距离跳跃适配交替顺序，计算两轴需求对应的最短总轮数。",
+        "key_observations": [
+          "沿每个坐标轴分别计算至少需要的有效跳跃次数，分别为 $a=\\lceil x/k\\rceil$ 和 $b=\\lceil y/k\\rceil$，因为一次跳跃在对应方向最多前进 $k$。",
+          "跳跃方向严格交替，但允许选择 $d=0$，因此较少的一侧可以用零长度跳跃补齐，不会阻碍另一侧完成所需位移。",
+          "若 $x$ 方向所需次数更多，最后一次可以直接沿初始方向 $x$ 完成，因此总次数为 $2a-1$；否则必须以 $y$ 方向结束，总次数为 $2b$。",
+          "两种情况可统一为答案 $\\max(2a-1,2b)$，避免显式构造每次跳跃。"
+        ],
+        "solution_brief": "令 $a=\\lceil x/k\\rceil$、$b=\\lceil y/k\\rceil$。利用 $d=0$ 补足较少方向的跳跃次数；若 $a>b$，最后一次可沿 $x$ 方向，答案为 $2a-1$，否则为 $2b$。实现时用整除式计算上取整。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，并参考 implementation 与 math 标签。",
+        "quality_flags": []
+      }
+    },
+    "2009B": {
+      "problem_key": "2009B",
+      "title": "osu!mania",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2009/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/133296",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e4b2e8790133c1b67675a865b07e41af39ef37038b8ef5a28e5e1f03d1fe2562",
+      "generated_at": "2026-09-27T04:37:48+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n$ 行、4 列的图案，每行恰好有一个 `#` 表示音符。音符按从底行到顶行的顺序处理，要求输出每个音符所在的列号。",
+        "transformed_statement": "将每行视为一个只含一个目标字符的长度为 $4$ 的字符串：先定位每行 `#` 的列，再把行记录整体反转，即得到从底到顶的处理顺序。",
+        "key_observations": [
+          "每行恰好只有一个 `#`，因此该行的音符列号可直接由 `#` 的位置唯一确定，无需额外状态或搜索。",
+          "处理顺序与输入行顺序相反：输入从顶到底给出，实际应从第 $n$ 行倒序扫描到第 $1$ 行，输出对应列号。",
+          "列号从 $1$ 开始，而字符串下标通常从 $0$ 开始，因此定位后需要加 $1`。"
+        ],
+        "solution_brief": "逐组读入 $n$ 行，记录每行 `#` 的位置并转换为 $1$ 到 $4$ 的列号；再按从底到顶的逆序输出这些列号。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的输入结构与处理顺序，以及 editorial_text 给出的倒序扫描和字符串定位方法；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "2009A": {
+      "problem_key": "2009A",
+      "title": "Minimize!",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2009/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/133296",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "cc2e6e2e6b7e219f3c98094c52beb378d516d0b754a89c5809f2c5b8a3e34ec3",
+      "generated_at": "2026-09-27T04:37:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数 $a\neleq b$，选择任意满足 $a\neleq c\neleq b$ 的整数，计算从 $a$ 到 $c$ 再到 $b$ 的距离 $(c-a)+(b-c)$。要求对每组数据求所有合法选择中的最小值。",
+        "transformed_statement": "把选择 $c$ 看成在线段 $[a,b]$ 上插入一个中间点；目标距离是两段连续区间长度之和，代数化简后只取决于端点间距。",
+        "key_observations": [
+          "由于 $c$ 位于区间 $[a,b]$ 内，左右两段距离可直接相加：$(c-a)+(b-c)=b-a$。",
+          "化简结果与 $c$ 的具体位置无关，因此无需枚举或优化选择，任取合法的 $c$ 都得到同一答案。"
+        ],
+        "solution_brief": "对每组 $a,b$，利用中间变量 $c$ 在表达式中的两项相互抵消，答案恒为 $b-a$，直接输出即可。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text，并参考 tags 中的 math 与 brute force。",
+        "quality_flags": []
       }
     }
   }
