@@ -1133,6 +1133,17 @@
     "date": "2024-03-22"
   },
   {
+    "id": 1950,
+    "name": "Codeforces Round 937 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1711637100,
+    "relativeTimeSeconds": 78855826,
+    "date": "2024-03-28"
+  },
+  {
     "id": 1942,
     "name": "CodeTON Round 8 (Div. 1 + Div. 2, Rated, Prizes!)",
     "type": "CF",
