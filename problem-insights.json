@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2129,
+    "total_problems": 2135,
     "source_total_problems": 2135,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2129,
-    "with_editorial_brief": 1877,
-    "with_solution_brief": 1878,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2135,
+    "with_editorial_brief": 1883,
+    "with_solution_brief": 1884,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1070,
+    "ai_override_count": 1076,
     "primary_topic_count": 13
   },
   "records": [
@@ -44868,6 +44868,263 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 1106,
+      "problem_key": "2086A",
+      "contest_id": 2086,
+      "title": "Cloudberry Jam",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2086/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/141425",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
+      "original_tags": [
+        "math"
+      ],
+      "statement_brief": "制作果酱时，必须加入等量的云莓和糖，烹煮后总混合物会蒸发四分之一。每罐果酱重 3 千克，给定要制作的罐数 $n$，求所需云莓的千克数。",
+      "transformed_statement": "将每罐需求换算为原料量：若使用 $x$ 千克云莓和 $x$ 千克糖，成品为 $\\frac{3x}{2}$ 千克，也就是 $\\frac{x}{2}$ 罐，因此目标是求满足 $\\frac{x}{2}=n$ 的 $x$。",
+      "key_observations": [
+        "取 $x$ 千克浆果和同样多的糖时，烹煮后剩余总量为 $(2x)\\times\\frac{3}{4}=\\frac{3x}{2}$ 千克。",
+        "每罐需要 $3$ 千克果酱，因此 $x$ 千克浆果最终可制成 $\\frac{x}{2}$ 罐；要制成 $n$ 罐必须取 $x=2n$ 千克浆果。"
+      ],
+      "solution_brief": "每罐果酱需要 $2$ 千克浆果和 $2$ 千克糖，烹煮损耗四分之一后正好得到 $3$ 千克果酱。因此对每个测试用例直接输出 $2n$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:55:05+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1107,
+      "problem_key": "2086B",
+      "contest_id": 2086,
+      "title": "Large Array and Segments",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2086/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/141425",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "greedy"
+      ],
+      "statement_brief": "给定一个含 $n$ 个正整数的数组 $a$，将它连续复制 $k$ 次得到数组 $b$。对每个起点 $l$，允许选择任意 $r\\ge l$，若区间 $[l,r]$ 的元素和至少为 $x$则计数，要求统计所有满足条件的起点数量。",
+      "transformed_statement": "由于元素全为正数，每个起点能取得的最大区间和就是从该点一直取到数组末尾的后缀和。因此问题转化为统计后缀和至少为 $x$ 的起点，并在重复数组上快速计算任意后缀和。",
+      "key_observations": [
+        "由于所有元素均为正数，固定起点 $l$ 时区间和在 $r=nk$ 达到最大值，因此存在合法 $r$ 等价于后缀 $[l,nk]$ 的和至少为 $x$。",
+        "起点右移会严格减少对应后缀和，所以合法起点构成前缀；只需二分查找第一个后缀和小于 $x$ 的位置。",
+        "对起点 $m$，后缀由若干个完整的 $a$ 和一个前缀对应的尾部组成；令 $q=\\lfloor(nk-m+1)/n\\rfloor$、$s=(nk-m+1)\\bmod n$，即可用总和与后缀和在 $O(1)$ 内计算。",
+        "找到第一个不合法起点后，其前面的所有位置都合法，答案就是该位置之前的起点数量。"
+      ],
+      "solution_brief": "将存在区间转为判断从 $l$ 到末尾的后缀和是否至少为 $x$。利用后缀和随 $l$ 单调下降二分边界，并用完整副本总和加数组尾部后缀和在 $O(1)$ 内计算判定，单组复杂度为 $O(n+\\log(nk))$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:54:52+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1108,
+      "problem_key": "2086C",
+      "contest_id": 2086,
+      "title": "Disappearing Permutation",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2086/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/141425",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "dp",
+        "dsu",
+        "graphs",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定一个 $1$ 到 $n$ 的置换。第 $i$ 次查询将位置 $d_i$ 的元素替换为 $0$，每个位置恰被清零一次；查询后可独立选择若干次操作，将位置 $j$ 的值改为 $j$，求把当前数组恢复为任意置换所需的最少操作数。",
+      "transformed_statement": "将置换看成若干个环。清零某个位置会使缺失值沿置换映射传播，迫使修复该位置所在的整个环；因此答案等于截至当前查询，所有被触发置换环的长度之和。",
+      "key_observations": [
+        "把置换视为映射 $i\\to p_i$ 后，位置 $d$ 被清零意味着数值 $p_d$ 缺失；由于只能把位置 $j$ 改为 $j$，修复会沿着 $d,p_d,p_{p_d},\\dots$ 追踪，恰好覆盖 $d$ 所在的置换环。",
+        "一个置换环中只要有一个位置被清零，环内所有位置都必须执行修复操作；因此该环对答案的贡献固定为环长，重复清零同一环不会增加答案。",
+        "不同置换环互不影响，所以按查询顺序维护已经触发的环及其总长度即可；新查询若落在已触发环中直接复用当前答案，否则加入该环长度。"
+      ],
+      "solution_brief": "先分解置换得到每个位置所属的环及环长。按查询标记对应环：首次出现时把环长加入答案，之后保持不变；每次输出累计长度。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:54:33+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1109,
+      "problem_key": "2086D",
+      "contest_id": 2086,
+      "title": "Even String",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2086/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/141425",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "字符串"
+      ],
+      "original_tags": [
+        "brute force",
+        "combinatorics",
+        "dp",
+        "math",
+        "strings"
+      ],
+      "statement_brief": "给定 26 个小写字母各自必须出现的次数，构造长度为总次数的字符串，要求任意相同字母出现位置的下标差为偶数，即它们必须全部位于奇数位或全部位于偶数位。求满足条件的不同字符串数量，并对 $998244353$ 取模。",
+      "transformed_statement": "将位置按奇偶拆成大小分别为 $\\lceil S/2\\rceil$ 和 $\\lfloor S/2\\rfloor$ 的两组；每个字母整体选择放入其中一组，先统计恰好填满奇数位的字母子集，再计算两组内部排列数。",
+      "key_observations": [
+        "同一字母的任意两次出现下标差必须为偶数，因此该字母的所有出现只能全部放在奇数位或全部放在偶数位。",
+        "设奇数位数量为 $odd=\\lceil S/2\\rceil$，只需选择若干字母使其出现次数之和为 $odd$；这将位置分配转化为按重量选子集的计数。",
+        "固定奇数位字母集合后，两类位置的排列数乘积为 $\\frac{odd!\\cdot even!}{\\prod_i c_i!}$，与所选集合无关，因此可先计数可行集合再统一相乘。",
+        "用一维 0/1 背包统计非零字母子集的总出现次数，取总和为 $odd$ 的方案数即可避免枚举全部字母集合。"
+      ],
+      "solution_brief": "令 $S=\\sum c_i$，用 0/1 背包统计选择若干非零字母且总次数为 $odd=\\lceil S/2\\rceil$ 的集合数。每个集合对应的排列数相同，答案为 $dp[odd]\\times\\frac{odd!\\cdot even!}{\\prod_i c_i!}$，对 $998244353$ 取模。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:54:14+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1110,
+      "problem_key": "2086E",
+      "contest_id": 2086,
+      "title": "Zebra-like Numbers",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/2086/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/141425",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "constructive algorithms",
+        "dfs and similar",
+        "dp",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "正整数若二进制位从低到高交替且最低位为 $1$，称为斑马数。一个数的斑马值是把它表示成若干个斑马数之和所需的最少个数；给定 $[l,r]$ 和 $k$，求区间内斑马值恰为 $k$ 的整数数量。",
+      "transformed_statement": "先把每个整数按递减斑马数贪心分解，并将各斑马数的使用次数视为一种受特殊进位规则限制的数字表示；问题转化为统计区间内这种表示的数字和等于 $k$ 的数。通过前缀数位 DP 处理上界。",
+      "key_observations": [
+        "不超过 $10^{18}$ 的斑马数只有约 $30$ 个，且相邻斑马数满足 $z_{i+1}=4z_i+1$，因此可以完整预处理候选数。",
+        "反复减去不超过当前数的最大斑马数不会劣于任何表示；若最优表示缺少该最大数，可将至少若干个更小斑马数按 $4z_{i-1}+1=z_i$ 合并，得到不增的表示并产生矛盾。",
+        "贪心分解可唯一表示为长度约 $30$ 的数字串，每位取 $0$ 到 $4$；若某位为 $4$，更低位必须全为 $0$，且斑马值恰好等于各位数字之和。",
+        "将区间计数转为前缀计数后，按位维护当前数字是否已小于上界、数字位和以及是否出现过 $4$，即可用数位 DP 统计满足位和为 $k$ 的表示。"
+      ],
+      "solution_brief": "预处理递推得到全部斑马数。证明最大斑马数优先的贪心分解最优，并把分解编码为受“出现 4 后低位全为 0”限制的数字串；对 $[1,m]$ 做数位 DP，按位和及是否出现 4 计数，答案为前缀 $r$ 减前缀 $l-1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:53:55+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1111,
+      "problem_key": "2086F",
+      "contest_id": 2086,
+      "title": "Online Palindrome",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/2086/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/141425",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "交互",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "interactive"
+      ],
+      "statement_brief": "裁判依次给出只含 `a`、`b` 的字符串字符；每次收到一个字符后，它会追加到当前串末尾，你可以交换当前串中任意两个位置或不操作，并输出交换位置。字符串长度为不超过 $99$ 的奇数且事先未知，因此最终结束时必须保证当前串是回文；收到 `0` 后立即终止。",
+      "transformed_statement": "把未知结束时刻转化为在线维护：每个奇数长度前缀都要已经是可接受的回文。维护一种固定形态的模板回文，使加入两个后续字符时能通过至多一次交换转移到下一模板。",
+      "key_observations": [
+        "由于字符串长度事先未知，长度为奇数的每个前缀都可能是最终状态，因此每次处理完奇数长度前缀后都必须保持回文。",
+        "任意回文无法保证同时适应下一字符为 `a` 或 `b`；固定模板后，下一对字符的扩展可以预先转移到新的模板。",
+        "模板从两端向内交替放置仍有多个字符的 `a`、`b`，再用剩余较多的字符填充成对位置，中心字符由剩余计数决定。",
+        "奇数步枚举当前可交换的位置并分别假设下一字符为 `a` 或 `b`，线性比较目标模板与当前串的差异即可验证至多一次交换；偶数步直接修复为回文。"
+      ],
+      "solution_brief": "交互过程中维护指定模板回文，而不是任意回文。奇数步枚举一次交换并同时验证下一字符为 `a`、`b` 时能否转移到下一模板；偶数步线性寻找使当前串成为回文的交换，整体复杂度为 $O(|s|^4)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:53:37+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1112,
