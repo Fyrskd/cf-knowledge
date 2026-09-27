@@ -2706,6 +2706,17 @@
     "date": "2026-03-14"
   },
   {
+    "id": 2204,
+    "name": "Educational Codeforces Round 188 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1773671700,
+    "relativeTimeSeconds": 16796193,
+    "date": "2026-03-16"
+  },
+  {
     "id": 2209,
     "name": "Codeforces Round 1087 (Div. 2)",
     "type": "CF",
