@@ -1,5 +1,16 @@
 [
   {
+    "id": 1758,
+    "name": "Codeforces Round 836 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1669390500,
+    "relativeTimeSeconds": 121147936,
+    "date": "2022-11-25"
+  },
+  {
     "id": 1764,
     "name": "Codeforces Global Round 24",
     "type": "CF",
