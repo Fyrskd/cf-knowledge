@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2388,
+    "total_problems": 2394,
     "source_total_problems": 2394,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2388,
-    "with_editorial_brief": 2122,
-    "with_solution_brief": 2123,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2394,
+    "with_editorial_brief": 2128,
+    "with_solution_brief": 2129,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1450,
+    "ai_override_count": 1456,
     "primary_topic_count": 13,
-    "contest_count": 367,
+    "contest_count": 368,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,9 +45,9 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 115,
-    "构造与贪心": 752,
+    "构造与贪心": 755,
     "图论与网络流": 142,
-    "动态规划与状态设计": 207,
+    "动态规划与状态设计": 209,
     "数论与同余": 258,
     "组合计数与概率": 185,
     "数据结构": 222,
@@ -55,11 +55,11 @@ window.CF_INSIGHTS_DATA = {
     "树结构": 134,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 129,
+    "基础实现与模拟": 130,
     "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1184,
+    "ai_generated_with_editorial": 1190,
     "ai_generated_partial_editorial": 47,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -54331,6 +54331,189 @@ window.CF_INSIGHTS_DATA = {
             "按 $nxt_i-i$ 排序并维护前缀和后，每个块可二分计算 $\u0000sum\\min(x,nxt_i-i)$；用块内不同 $nxt_i$ 值的数量作势能，可将重建总成本摊还到 $O(nB+n^2/B)$。"
           ],
           "solutionBrief": "用区间标记恒等式把答案化为单边距离和，按 $q$ 增量插入元素；分块维护各位置的 $nxt_i-i$，按值分类、懒处理整体加一并在必要时重建。取 $B=O(\\sqrt n)$，总复杂度为 $O(n\\sqrt n+k\\sqrt n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1969,
+      "name": "Educational Codeforces Round 165 (Rated for Div. 2)",
+      "date": "2024-04-29",
+      "url": "https://codeforces.com/contest/1969",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1969A",
+          "index": "A",
+          "slot": "A",
+          "title": "Two Friends",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1969/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/129022",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个朋友，第 $i$ 个朋友的最佳朋友是 $p_i$。只有当同时邀请朋友 $i$ 和 $p_i$ 时，$i$ 才会到场；邀请函逐人发送，求至少让两人到场所需的最少邀请数。",
+          "transformedStatement": "把 $p$ 看成朋友之间的有向映射。两张邀请函可行等价于映射中存在长度为 $2$ 的环；若不存在该环，则固定任意 $i$，邀请 $i,p_i,p_{p_i}$ 即可保证两人到场。",
+          "keyObservations": [
+            "至少需要两张邀请函，因为朋友 $i$ 到场必须同时邀请 $i$ 和 $p_i$，且 $p_i\\ne i$。",
+            "最多三张邀请函：邀请 $i$、$p_i$ 和 $p_{p_i}$ 时，$i$ 与 $p_i$ 都满足到场条件。",
+            "两张邀请函可行当且仅当存在一对互为最佳朋友的朋友，即 $p_i=j$ 且 $p_j=i$；代入 $j=p_i$ 后只需检查是否有 $p_{p_i}=i$。"
+          ],
+          "solutionBrief": "遍历每个朋友 $i$，检查 $p_{p_i}=i$ 是否成立。若存在这样的二人环，答案为 $2$；否则利用 $i,p_i,p_{p_i}$ 的构造，答案为 $3$。每组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1969B",
+          "index": "B",
+          "slot": "B",
+          "title": "Shifts and Sorting",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1969/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/129022",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个二进制字符串，每次可选择一个连续子串，把其最后一个字符移到最前面，代价等于子串长度；可进行任意次操作，要求将字符串变为所有 $0$ 在前、所有 $1$ 在后的非降序形式，并最小化总代价。",
+          "transformedStatement": "把每次操作重述为将右端字符向左传送，并为传送本身及跨过的字符分别付费。最终问题转化为统计所有必须让 $0$ 越过左侧 $1$ 的传送代价及跨越代价。",
+          "keyObservations": [
+            "一次循环移位等价于取出区间右端字符并插到左端，代价是该字符本身的 $1$ 加上它跨过的区间内其他字符数。",
+            "每个左侧存在 $1$ 的 $0$ 都必须至少被向左传送一次，因此各贡献 $1$；每个 $1$ 右侧的每个 $0$ 都必须跨过它，因此各贡献 $1$。",
+            "上述两类必需代价可以通过逐个把需要左移的 $0$ 插到合适位置同时达到，因此答案就是所有贡献之和，可在线性扫描中统计。"
+          ],
+          "solutionBrief": "将操作视为把区间右端字符向左插入。扫描字符串，维护左侧是否出现过 $1$ 以及当前右侧剩余 $0$ 的数量；每个满足条件的 $0$ 贡献 $1$，每个 $1$ 贡献其右侧 $0$ 数，累加即为最小代价。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1969C",
+          "index": "C",
+          "slot": "C",
+          "title": "Minimizing the Sum",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1969/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/129022",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的数组，每次可选择一个元素，把它改成当前某个相邻元素的值，最多操作 $k$ 次。要求经过这些操作后，使数组所有元素总和最小。",
+          "transformedStatement": "将数组划分成若干连续段：对长度为 $L$ 的段，用 $L-1$ 次复制操作把整段统一为段内最小值，于是问题转化为在总操作数不超过 $k$ 时选择各段长度，使段代价之和最小。",
+          "keyObservations": [
+            "连续一段长度为 $L$ 的元素可以用 $L-1$ 次操作全部变成该段最小值，因此该段贡献变为 $L\\times\\min$。",
+            "把数组划分为若干连续段后，每段独立消耗长度减一的操作次数，整体最优值可由这些段的代价相加得到。",
+            "固定处理到位置 $i$ 和已用操作数 $j$ 后，下一段长度至多为 $k+1$；枚举长度时维护区间最小值即可完成转移。"
+          ],
+          "solutionBrief": "设 $dp[i][j]$ 为处理前 $i$ 个元素且使用 $j$ 次操作的最小和。枚举下一段长度 $L$，用 $L-1$ 次操作将其变为段内最小值，转移代价为 $L\\times\\min$；枚举过程中递推维护最小值，复杂度为 $O(nk^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1969D",
+          "index": "D",
+          "slot": "D",
+          "title": "Shop Game",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1969/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/129022",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "Alice先选择一个物品子集并逐件按 $a_i$ 买入；随后Bob从这些物品中优先免费拿走价值 $b_i$ 最大的至多 $k$ 件，其余按 $b_i$ 支付。Alice最大化 Bob 的付款总额减去自己的购买总额，求双方最优时的利润。",
+          "transformedStatement": "将物品按 $b_i$ 降序排列，把Bob免费拿取的物品视为排序前缀；枚举第一个付费位置，前缀只保留 $k$ 个最小购买价，后缀则独立选择所有 $b_i-a_i>0$ 的物品。",
+          "keyObservations": [
+            "按 $b_i$ 降序排列后，Bob 对 Alice 选中的物品会优先免费拿走前 $k$ 个，因此免费物品形成排序前缀，剩余物品都需付费。",
+            "固定第一个需要付费的位置 $i$ 后，$1$ 到 $i-1$ 中只能选出 $k$ 个最便宜的物品承担免费损失；维护这 $k$ 个最小的 $a$ 值即可得到损失。",
+            "在付费后缀中，每件物品独立贡献 $b_i-a_i$，只有该值为正时才值得购买，因此后缀收益可由 $max(0,b_i-a_i)$ 的后缀和计算。",
+            "枚举付费起点并取收益减免费损失的最大值，将原本对每个起点重复选择物品的问题降为排序、堆维护和前缀和。"
+          ],
+          "solutionBrief": "按 $b$ 降序排序，枚举第一个付费位置。用大根堆维护此前选出的 $k$ 个最小 $a$ 的总和，并用后缀和计算付费物品的正收益 $\\max(0,b_i-a_i)$，最大化两者之差。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1969E",
+          "index": "E",
+          "slot": "E",
+          "title": "Unique Array",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1969/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/129022",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定整数数组，可以任意次选择一个位置并把其值替换成任意整数。要求使每个连续子数组都包含某个恰好出现一次的整数，求所需替换操作的最少次数。",
+          "transformedStatement": "把所有不满足条件的连续子数组看成必须至少选中一个位置的区间；由于被替换位置可赋予数组中不存在的新值，问题等价于用最少位置命中全部这些区间。",
+          "keyObservations": [
+            "把每个非唯一子数组视为必须命中的区间；选中一个位置并替换后，所有包含该位置的子数组都能通过使用全新整数变为唯一，从而转成区间命中问题。",
+            "从左到右处理时，若当前前缀中存在左端点大于上次替换位置的非唯一子数组，就选其最小右端点并替换该端点；任何可行方案都必须命中该区间，而选右端点不会增加后续区间的需求。",
+            "对固定右端点 $i$，从右向左统计首次出现加一、第二次出现减一；区间和为 $0$ 当且仅当区间内每个数都至少出现两次，因此只需检测后缀和的最小值。",
+            "维护各值最近两次出现位置形成的 $t$ 数组，新增元素只改变相关后缀和；线段树支持区间加与区间最小值查询，即可在线判断是否存在所需非唯一子数组。"
+          ],
+          "solutionBrief": "将非唯一子数组转为必须命中的区间，按右端点贪心选择最早结束的区间端点。用最近两次出现位置构造 $t$，线段树维护后缀和最小值；若最小值为 $0$ 就替换当前位置，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1969F",
+          "index": "F",
+          "slot": "F",
+          "title": "Card Pairing",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1969/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/129022",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "hashing",
+            "implementation"
+          ],
+          "statementBrief": "牌堆按顺序给出每张牌的类型，先将前 $k$ 张放入手牌；每回合从手牌打出两张并补牌，使手牌恢复为 $k$ 张，若打出的两张类型相同则获得一枚硬币。求整个过程最多能获得多少枚硬币。",
+          "transformedStatement": "把收益改写为所有类型最多配成的总对数，答案等于 $\\sum_i\\lfloor c_i/2\\rfloor$ 减去全异手牌阶段因提前打出单张牌而损失的配对数；只在这些全异状态之间做最小损失路径 DP。",
+          "keyObservations": [
+            "只要手牌中存在相同类型的两张牌，就应优先打出这对牌；交换后续出牌顺序不会减少收益，因此真正需要决策的时刻只有手牌的 $k$ 张牌互不相同。",
+            "若类型 $i$ 总共出现 $c_i$ 张，理想收益是 $\\sum_i\\lfloor c_i/2\\rfloor$；在全异手牌时单独打出某类型的一张牌，会在该类型剩余数量为奇数时损失一个本可形成的配对。",
+            "令 $dp_i$ 表示已取牌堆前 $i$ 张且当前手牌全异时的最小损失；从该状态打出两种类型 $x,y$ 后，下一次回到全异状态的位置 $j$ 满足前缀异或关系 $p_j=p_i\\oplus h_x\\oplus h_y$，从而能快速定位转移终点。",
+            "每个状态的候选牌对可按“不会损失、会损失”分组处理；若某组转移已直接结束游戏或达到更优结果，就无需继续枚举后续组别，因此把每状态的转移数压到 $O(n)$。"
+          ],
+          "solutionBrief": "先把总配对数 $\\sum_i\\lfloor c_i/2\\rfloor$ 作为上界，再用 $dp_i$ 最小化全异手牌阶段的损失。用随机 $64$ 位异或哈希定位下一全异位置，并按损失分组削减牌对转移，复杂度可达 $O(n^3)$ 或 $O(n^2\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
