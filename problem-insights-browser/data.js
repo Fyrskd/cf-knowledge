@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2063,
+    "total_problems": 2069,
     "source_total_problems": 2069,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2063,
-    "with_editorial_brief": 1811,
-    "with_solution_brief": 1812,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2069,
+    "with_editorial_brief": 1817,
+    "with_solution_brief": 1818,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1004,
+    "ai_override_count": 1010,
     "primary_topic_count": 13,
-    "contest_count": 322,
+    "contest_count": 323,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 88,
-    "构造与贪心": 690,
-    "图论与网络流": 121,
-    "动态规划与状态设计": 194,
+    "构造与贪心": 693,
+    "图论与网络流": 122,
+    "动态规划与状态设计": 195,
     "数论与同余": 209,
     "组合计数与概率": 158,
     "数据结构": 175,
-    "几何": 43,
+    "几何": 44,
     "树结构": 130,
     "代数、矩阵与多项式": 18,
     "交互": 77,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 73
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 882,
+    "ai_generated_with_editorial": 888,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -27315,6 +27315,194 @@ window.CF_INSIGHTS_DATA = {
             "$\\gcd(k,m)$ 必为 $m$ 的约数，因此只需为 $m$ 的每个约数维护一个统计量，查询时直接使用对应的 $d$。"
           ],
           "solutionBrief": "枚举并维护 $m$ 的所有约数 $d$。对每个 $d$ 维护差分项模 $d$ 后的和，单点修改只更新相邻两项；查询令 $d=\\gcd(k,m)$，若维护值小于 $m$ 则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2112,
+      "name": "Educational Codeforces Round 180 (Rated for Div. 2)",
+      "date": "2025-06-23",
+      "url": "https://codeforces.com/contest/2112",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "2112A",
+          "index": "A",
+          "slot": "A",
+          "title": "Race",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2112/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/144148",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "奖品会在整数点 $x$ 或 $y$ 中任选一点出现。Bob 先选择一个不等于 Alice 起点 $a$ 的整数起点；无论奖品落在哪一点，只要他的绝对距离都严格小于 Alice 的距离，就输出 YES，否则输出 NO。",
+          "transformedStatement": "把两个可能的奖品位置排序为 $l<r$，问题转化为判断 Alice 的起点是否在区间 $(l,r)$ 外：在外侧可选相应端点保证获胜，在区间内则无法同时压过两端。",
+          "keyObservations": [
+            "若 $a<\\min(x,y)$，Bob 选择较近端点即可：到该端点为 $0$，到另一奖品点的距离也严格小于 Alice 的距离。",
+            "若 $a>\\max(x,y)$，对称地选择较远侧的奖品端点即可同时获胜，因此关键只在于判断 Alice 是否位于两种奖品位置之间。",
+            "若 $\\min(x,y)<a<\\max(x,y)$，Bob 在 $a$ 左侧时无法胜过奖品在右端的情形，在 $a$ 右侧时又无法胜过左端情形；选在中间也不能同时严格更近。"
+          ],
+          "solutionBrief": "令 $l=\\min(x,y),r=\\max(x,y)$。当 $a<l$ 或 $a>r$ 时输出 YES，否则输出 NO；Alice 在两奖品点之间时不存在能同时严格更近的起点。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2112B",
+          "index": "B",
+          "slot": "B",
+          "title": "Shrinking Array",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2112/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/144148",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定整数数组，只要长度至少为 2，就可以选择一对相邻元素，将它们删除并替换为两者数值范围内任意整数。求使数组出现一对相邻元素差的绝对值不超过 $1$ 所需的最少操作数；无法做到则输出 $-1$。",
+          "transformedStatement": "将答案分类为三种情况：数组已有合格相邻对、数组非单调因而可利用局部极值一次制造合格相邻对、数组单调且任何合并都不能缩小关键差值。全程只需检查相邻关系。",
+          "keyObservations": [
+            "若数组中已有相邻元素满足 $|a_i-a_{i+1}|\\le 1$，无需操作，答案直接为 $0$。",
+            "若数组不是单调的，则存在局部极值；在峰值处可把它与较小一侧相邻元素合并，并将结果取为另一侧邻居的值，从而一次操作制造相等相邻元素，谷值情形对称处理。",
+            "若数组当前不美丽且不存在局部极值，所有相邻差值方向一致，因此数组单调；合并任意相邻元素不会减小两侧相关差值，无法产生美丽相邻对，答案为 $-1$。"
+          ],
+          "solutionBrief": "先线性检查是否已有相邻差不超过 $1$。否则检查数组是否单调：单调数组无法变美丽，返回 $-1$；非单调数组含局部极值，可一次合并构造美丽数组，返回 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2112C",
+          "index": "C",
+          "slot": "C",
+          "title": "Coloring Game",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2112/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/144148",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个非递减整数数组，Alice 先选择三个位置并将对应元素染红；随后 Bob 可任选一个元素染蓝，若该元素已红则改为蓝。要求统计 Alice 选择哪三个位置后，无论 Bob 选择什么，红色元素之和都严格大于蓝色元素的值。",
+          "transformedStatement": "将 Bob 的任意选择压缩为两种最强反制：染蓝数组最大值，或把 Alice 选中的最大红色元素改蓝。于是三元组 $x<y<z$ 必胜等价于满足 $a_x+a_y+a_z>\\max(2a_z,a_n)$，再利用有序性计数有效的 $x$。",
+          "keyObservations": [
+            "Bob 的最优反制只需考虑选择全数组最大值或 Alice 选中的最大红色元素；两者对红蓝差值造成的最大损失是 $\\max(2a_z,a_n)$。",
+            "固定 $x<y<z$ 后，Alice 必胜当且仅当 $a_x+a_y+a_z>\\max(2a_z,a_n)$，因此博弈过程被转化为一个三元组不等式。",
+            "固定 $y,z$ 时，数组有序使条件关于 $x$ 单调：一旦某个 $x$ 有效，所有更大的且小于 $y$ 的下标也有效，因此只需二分最小有效下标并一次计数。"
+          ],
+          "solutionBrief": "枚举第二、第三个选中位置 $y,z$，用二分查找最小的有效 $x<y$，将其后的所有候选数量加入答案。判定条件为 $a_x+a_y+a_z>\\max(2a_z,a_n)$，总复杂度为 $O(n^2\\log n)$；也可用双指针优化到 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2112D",
+          "index": "D",
+          "slot": "D",
+          "title": "Reachability and Tree",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2112/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/144148",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "树结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一棵含 $n$ 个顶点的无向树，为每条边选择一个方向；若有向图中从 $u$ 可沿有向路径到达不同顶点 $v$，则计数有序对 $(u,v)$。要求判断能否使可达有序对恰好为 $n$ 个，并在可行时输出一种定向方案。",
+          "transformedStatement": "树边本身固定贡献 $n-1$ 个可达对，因此只需构造且仅构造一条长度为 $2$ 的有向路径。该路径的中间点必须是度为 $2$ 的顶点，随后把其两侧分支交替定向为源点和汇点，避免产生其他可达路径。",
+          "keyObservations": [
+            "每条树边无论取哪种方向都会贡献一个可达有序对，因此基础数量固定为 $n-1$，目标等价于恰好增加一个非边可达对。",
+            "若存在长度至少 $3$ 的有向路径，其长度为 $2$ 的子路径也会同时产生，故恰好增加一个可达对时只能存在一条长度为 $2$ 的路径。",
+            "唯一长度为 $2$ 的路径必须经过中间点 $r$；若 $r$ 还有第三条 incident 边，无论方向如何都会产生另一条长度为 $2$ 的路径，因此 $r$ 的度必须恰为 $2$。",
+            "选定度为 $2$ 的 $r$ 后令 $u\\to r\\to v$，并在两侧递归交替设置节点为全入或全出，可阻止任何边继续延伸成长度为 $2$ 的路径，从而只保留这一个额外可达对。"
+          ],
+          "solutionBrief": "先寻找度为 $2$ 的顶点 $r$；不存在则输出 NO。设其邻点为 $u,v$，定向为 $u\\to r\\to v$，再从两侧递归交替把节点设为全出或全入，定向剩余边，保证除该路径外没有其他长度至少为 $2$ 的有向路径。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2112E",
+          "index": "E",
+          "slot": "E",
+          "title": "Tree Colorings",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2112/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/144148",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余",
+            "树结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "math",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "给定一棵有根树，每个顶点染蓝、绿或黄，根必须为绿色；删去黄色后蓝绿顶点需连通，删去蓝色后黄绿顶点需连通。对给定 $m$，求恰有 $m$ 种美丽染色的树的最少顶点数；若不存在则输出 $-1$。",
+          "transformedStatement": "把每个绿色顶点的子树方案数作为状态：其每个孩子若为绿色贡献自身方案数，若为蓝色或黄色则整棵子树被迫同色，额外贡献两种选择。因此树的总方案数可视为若干整数因子的乘积，并对乘积做最小规模的逆向 DP。",
+          "keyObservations": [
+            "非绿色顶点的整棵子树必须全部染成该颜色，否则根到另一种颜色后代的路径会经过它，破坏连通性；绿色顶点不会额外限制子树。",
+            "设绿色顶点 $v$ 的子树方案数为 $cnt_v$，每个孩子子树可贡献 $cnt_u+2$ 种方案，因此有 $cnt_v=\\prod_u(cnt_u+2)$，问题转化为乘法分解。",
+            "若最后一个孩子子树的总贡献为 $x$，则 $x$ 必须是 $m$ 的因子，且该孩子自身对应 $x-2$ 种方案；因此转移为 $dp_m=\\min(dp_{m/x}+dp_{x-2})$，不可达状态保持无穷大。",
+            "预处理每个数的因子表，将所有因子 $d$ 加入其倍数，可把枚举因子的总复杂度降为 $O(M\\log M)$，从而支持所有测试用例统一计算。"
+          ],
+          "solutionBrief": "先证明非绿色子树必须单色，得到根方案数是各孩子贡献 $cnt_u+2$ 的乘积。令 $dp_m$ 为恰有 $m$ 种方案的最小树规模，枚举因子 $x\\mid m$，用 $dp_{m/x}+dp_{x-2}$ 转移；预处理因子表实现 $O(M\\log M)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2112F",
+          "index": "F",
+          "slot": "F",
+          "title": "Variables and Operations",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/2112/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/144148",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "graphs",
+            "greedy",
+            "shortest paths"
+          ],
+          "statementBrief": "有 $n$ 个初值变量和 $m$ 个操作，每个操作把 $a_x$ 更新为 $\\min(a_x,a_y+z)$；所有操作各执行一次，但顺序任意。每次询问可至多将任意变量单独减一共 $k$ 次，需要分别判断能否使目标变量的最终结果依赖操作顺序，即形成不稳定序列。",
+          "transformedStatement": "将变量看成带初始距离的顶点，把操作 $(x,y,z)$ 看成边 $y\\to x$ 的一次松弛。目标是通过少量降低初始距离，使目标点的多边最短路严格短于所有至多一条边的路径，从而存在错误松弛顺序。",
+          "keyObservations": [
+            "把操作 $(x,y,z)$ 视为有向边 $y\\to x$ 的一次松弛，因此任意操作顺序对应每条边恰好松弛一次。",
+            "变量 $i$ 不稳定当且仅当从初始值出发到 $i$ 的最短路严格优于所有至多一条边的路径，即 $\\min_j(a_j+d_{j,i})<\\min_j(a_j+e_{j,i})$。",
+            "若某条来源 $j\\to i$ 的全局最短距离等于至多一边距离，则降低 $a_j$ 也无法制造严格优势；只有 $d_{j,i}<e_{j,i}$ 的来源才可能使 $i$ 不稳定。",
+            "为了降低全局最短路的最小值，所有减法可集中施加到同一个 $a_j$；预处理两点距离后，可直接计算每个来源达到阈值所需的减法次数。"
+          ],
+          "solutionBrief": "将变量和操作建模为带非负权有向图及一次边松弛。预处理全源最短路，并计算每个目标的至多一边路径最小值；对每个来源 $j$，若 $d_{j,i}<e_{j,i}$，计算把 $a_j+d_{j,i}$ 降到该阈值以下所需次数，取最小值与 $k$ 比较。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
