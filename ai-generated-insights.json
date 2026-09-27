@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T03:48:18+00:00",
+  "updated_at": "2026-09-27T03:56:50+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -34694,6 +34694,191 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面与 editorial_text；tags 仅用于辅助主题归类。",
         "quality_flags": []
+      }
+    },
+    "2050G": {
+      "problem_key": "2050G",
+      "title": "Tree Destruction",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2050/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/137018",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "2895fbd96dba08e13358aff7cc27066c72ef0dd08a816a1129b9f879ad731422",
+      "generated_at": "2026-09-27T03:55:08+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵树，可以选择两个顶点，并一次性删除它们之间路径上的所有顶点（端点相同则只删除一个顶点）。要求最大化删除后剩余图的连通分量数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "树结构",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和题目标签 tree；editorial_text 为空且 editorial_quality 为 fetch_failed。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2050F": {
+      "problem_key": "2050F",
+      "title": "Maximum modulo equality",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2050/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/137018",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7ad4a4e71865dd996cb23a70b1faaea35b2074915a8ffee0c78178a5f508389b",
+      "generated_at": "2026-09-27T03:55:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组。对每个区间 $[l,r]$，寻找最大的模数 $m$，使区间内所有元素除以 $m$ 的余数都相同；若这样的最大值可视为无穷大，则输出 $0$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空且 editorial_quality 标记为 fetch_failed。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "2050E": {
+      "problem_key": "2050E",
+      "title": "Three Strings",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/2050/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/137018",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "da591813a51006fbb2302630d8cc6d5edc76c80ef93f77ac4d5f8c8334b971b2",
+      "generated_at": "2026-09-27T03:55:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定字符串 $a$、$b$ 和长度为 $|a|+|b|$ 的字符串 $c$。$c$ 原本由每次从 $a$ 或 $b$ 的首字符取出并追加而成，直到两串耗尽，之后其中剩余字符串整体追加；随后 $c$ 中若干字符被替换。要求最少可能替换了多少个字符。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "字符串",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text；editorial_text 为空，tags 仅用于题目主题辅助判断。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2050D": {
+      "problem_key": "2050D",
+      "title": "Digital string maximization",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2050/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/137018",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c269ca8ecef15eeef4c036814e2f0a940bb7e3425b481161885f81fdea1615a4",
+      "generated_at": "2026-09-27T03:55:52+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个不含前导零的数字字符串。每次可选择一个非首位且非零的数字，将它减一后与左侧相邻数字交换；可进行任意次操作，要求得到字典序最大的字符串。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "字符串",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 tags 提取；editorial_text 为空，题解链接抓取失败。",
+        "quality_flags": [
+          "low_confidence",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2050C": {
+      "problem_key": "2050C",
+      "title": "Uninteresting Number",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2050/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/137018",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "17164eba03e29d8ca4f33760a8322ecfbdead48a30d08ebc3b7daf439c969a0d",
+      "generated_at": "2026-09-27T03:56:11+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个不含前导零的十进制数，每次可选择一个数字并将其替换为平方值，但平方结果必须仍是一位数，操作次数不限。判断是否能通过这些操作得到一个 divisible by $9$ 的数。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 提取操作规则、可变数字和整除性条件；参考 tags 仅用于主题归类，未据此补写算法。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "2050B": {
+      "problem_key": "2050B",
+      "title": "Transfusion",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2050/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/137018",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "35a3cd860b186b77876ff79d4376cb956feda23586a03615d7eefd20365c5dd7",
+      "generated_at": "2026-09-27T03:56:39+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组，每次可选中间下标 $i$，在 $a_{i-1}$ 与 $a_{i+1}$ 之间转移 $1$，方向任选，但操作后所有元素必须非负。判断经过任意次操作后，能否使数组所有元素相等。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和题目标签整理；editorial_text 为空且 editorial_quality 标记为 fetch_failed。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2050A": {
+      "problem_key": "2050A",
+      "title": "Line Breaks",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2050/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/137018",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c247e5535ea516dc3ac624a0a6102a62773f38709fee031039d7f073f338f27e",
+      "generated_at": "2026-09-27T03:56:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定按顺序排列的 $n$ 个单词和容量为 $m$ 的第一条纸带。选择前缀长度 $x$，把前 $x$ 个单词无空格写在第一条纸带，其余写在第二条纸带；要求第一条纸带完整容纳这些单词，并求最大的 $x$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空且 editorial_quality 标记为 fetch_failed。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
       }
     }
   }

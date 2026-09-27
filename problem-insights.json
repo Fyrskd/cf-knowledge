@@ -24,7 +24,7 @@
     "missing_editorial_brief": 259,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1154,
+    "ai_override_count": 1161,
     "primary_topic_count": 13
   },
   "records": [
@@ -39054,14 +39054,12 @@
       "problem_url": "https://codeforces.com/contest/2050/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/137018",
       "editorial_quality": "fetch_failed",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "交互"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Line Breaks；本地暂无可用题解正文。",
+      "statement_brief": "给定按顺序排列的 $n$ 个单词和容量为 $m$ 的第一条纸带。选择前缀长度 $x$，把前 $x$ 个单词无空格写在第一条纸带，其余写在第二条纸带；要求第一条纸带完整容纳这些单词，并求最大的 $x$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -39069,9 +39067,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:56:50+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 954,
@@ -39082,16 +39090,14 @@
       "problem_url": "https://codeforces.com/contest/2050/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/137018",
       "editorial_quality": "fetch_failed",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "几何"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：Transfusion；本地暂无可用题解正文。",
+      "statement_brief": "给定一个正整数数组，每次可选中间下标 $i$，在 $a_{i-1}$ 与 $a_{i+1}$ 之间转移 $1$，方向任选，但操作后所有元素必须非负。判断经过任意次操作后，能否使数组所有元素相等。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -39099,9 +39105,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:56:39+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 955,
@@ -39112,16 +39128,14 @@
       "problem_url": "https://codeforces.com/contest/2050/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/137018",
       "editorial_quality": "fetch_failed",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计"
-      ],
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "dp",
         "math"
       ],
-      "statement_brief": "题面已抓取：Uninteresting Number；本地暂无可用题解正文。",
+      "statement_brief": "给定一个不含前导零的十进制数，每次可选择一个数字并将其替换为平方值，但平方结果必须仍是一位数，操作次数不限。判断是否能通过这些操作得到一个 divisible by $9$ 的数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -39129,9 +39143,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:56:11+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 956,
@@ -39142,19 +39166,15 @@
       "problem_url": "https://codeforces.com/contest/2050/problem/D",
       "editorial_url": "https://codeforces.com/blog/entry/137018",
       "editorial_quality": "fetch_failed",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "字符串",
-        "数论与同余",
-        "图论与网络流"
-      ],
+      "primary_topic": "字符串",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "greedy",
         "math",
         "strings"
       ],
-      "statement_brief": "题面已抓取：Digital string maximization；本地暂无可用题解正文。",
+      "statement_brief": "给定一个不含前导零的数字字符串。每次可选择一个非首位且非零的数字，将它减一后与左侧相邻数字交换；可进行任意次操作，要求得到字典序最大的字符串。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -39162,9 +39182,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:55:52+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 957,
@@ -39176,17 +39207,13 @@
       "editorial_url": "https://codeforces.com/blog/entry/137018",
       "editorial_quality": "fetch_failed",
       "primary_topic": "字符串",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "博弈",
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "dp",
         "implementation",
         "strings"
       ],
-      "statement_brief": "题面已抓取：Three Strings；本地暂无可用题解正文。",
+      "statement_brief": "给定字符串 $a$、$b$ 和长度为 $|a|+|b|$ 的字符串 $c$。$c$ 原本由每次从 $a$ 或 $b$ 的首字符取出并追加而成，直到两串耗尽，之后其中剩余字符串整体追加；随后 $c$ 中若干字符被替换。要求最少可能替换了多少个字符。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -39194,9 +39221,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:55:37+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 958,
@@ -39209,9 +39246,7 @@
       "editorial_quality": "fetch_failed",
       "primary_topic": "数论与同余",
       "secondary_topics": [
-        "数据结构",
-        "构造与贪心",
-        "交互"
+        "数据结构"
       ],
       "original_tags": [
         "data structures",
@@ -39219,7 +39254,7 @@
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Maximum modulo equality；本地暂无可用题解正文。",
+      "statement_brief": "给定一个正整数数组。对每个区间 $[l,r]$，寻找最大的模数 $m$，使区间内所有元素除以 $m$ 的余数都相同；若这样的最大值可视为无穷大，则输出 $0$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -39227,9 +39262,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:55:23+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 959,
@@ -39241,17 +39286,13 @@
       "editorial_url": "https://codeforces.com/blog/entry/137018",
       "editorial_quality": "fetch_failed",
       "primary_topic": "树结构",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "图论与网络流",
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "dfs and similar",
         "dp",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Tree Destruction；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵树，可以选择两个顶点，并一次性删除它们之间路径上的所有顶点（端点相同则只删除一个顶点）。要求最大化删除后剩余图的连通分量数量。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -39259,9 +39300,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:55:08+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 960,

@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 259,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1154,
+    "ai_override_count": 1161,
     "primary_topic_count": 13,
     "contest_count": 344,
     "rating_min": 800,
@@ -44,18 +44,18 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 99,
-    "构造与贪心": 747,
+    "字符串": 100,
+    "构造与贪心": 743,
     "图论与网络流": 130,
     "动态规划与状态设计": 205,
-    "数论与同余": 231,
+    "数论与同余": 232,
     "组合计数与概率": 167,
     "数据结构": 189,
     "几何": 49,
     "树结构": 134,
     "代数、矩阵与多项式": 18,
     "交互": 78,
-    "基础实现与模拟": 97,
+    "基础实现与模拟": 99,
     "博弈": 76
   },
   "statusCounts": {
@@ -40021,14 +40021,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/2050/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/137018",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "交互"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Line Breaks；本地暂无可用题解正文。",
+          "statementBrief": "给定按顺序排列的 $n$ 个单词和容量为 $m$ 的第一条纸带。选择前缀长度 $x$，把前 $x$ 个单词无空格写在第一条纸带，其余写在第二条纸带；要求第一条纸带完整容纳这些单词，并求最大的 $x$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -40043,16 +40041,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1100,
           "problemUrl": "https://codeforces.com/contest/2050/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/137018",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "几何"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Transfusion；本地暂无可用题解正文。",
+          "statementBrief": "给定一个正整数数组，每次可选中间下标 $i$，在 $a_{i-1}$ 与 $a_{i+1}$ 之间转移 $1$，方向任选，但操作后所有元素必须非负。判断经过任意次操作后，能否使数组所有元素相等。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -40067,16 +40063,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1200,
           "problemUrl": "https://codeforces.com/contest/2050/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/137018",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "dp",
             "math"
           ],
-          "statementBrief": "题面已抓取：Uninteresting Number；本地暂无可用题解正文。",
+          "statementBrief": "给定一个不含前导零的十进制数，每次可选择一个数字并将其替换为平方值，但平方结果必须仍是一位数，操作次数不限。判断是否能通过这些操作得到一个 divisible by $9$ 的数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -40091,19 +40085,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1300,
           "problemUrl": "https://codeforces.com/contest/2050/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/137018",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "字符串",
-            "数论与同余",
-            "图论与网络流"
-          ],
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "greedy",
             "math",
             "strings"
           ],
-          "statementBrief": "题面已抓取：Digital string maximization；本地暂无可用题解正文。",
+          "statementBrief": "给定一个不含前导零的数字字符串。每次可选择一个非首位且非零的数字，将它减一后与左侧相邻数字交换；可进行任意次操作，要求得到字典序最大的字符串。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -40119,17 +40109,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2050/problem/E",
           "editorialUrl": "https://codeforces.com/blog/entry/137018",
           "primaryTopic": "字符串",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "博弈",
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "dp",
             "implementation",
             "strings"
           ],
-          "statementBrief": "题面已抓取：Three Strings；本地暂无可用题解正文。",
+          "statementBrief": "给定字符串 $a$、$b$ 和长度为 $|a|+|b|$ 的字符串 $c$。$c$ 原本由每次从 $a$ 或 $b$ 的首字符取出并追加而成，直到两串耗尽，之后其中剩余字符串整体追加；随后 $c$ 中若干字符被替换。要求最少可能替换了多少个字符。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -40146,9 +40132,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/137018",
           "primaryTopic": "数论与同余",
           "secondaryTopics": [
-            "数据结构",
-            "构造与贪心",
-            "交互"
+            "数据结构"
           ],
           "originalTags": [
             "data structures",
@@ -40156,7 +40140,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Maximum modulo equality；本地暂无可用题解正文。",
+          "statementBrief": "给定一个正整数数组。对每个区间 $[l,r]$，寻找最大的模数 $m$，使区间内所有元素除以 $m$ 的余数都相同；若这样的最大值可视为无穷大，则输出 $0$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -40172,17 +40156,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2050/problem/G",
           "editorialUrl": "https://codeforces.com/blog/entry/137018",
           "primaryTopic": "树结构",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "图论与网络流",
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "dfs and similar",
             "dp",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Tree Destruction；本地暂无可用题解正文。",
+          "statementBrief": "给定一棵树，可以选择两个顶点，并一次性删除它们之间路径上的所有顶点（端点相同则只删除一个顶点）。要求最大化删除后剩余图的连通分量数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
