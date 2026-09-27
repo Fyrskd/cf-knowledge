@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2334,
-    "source_total_problems": 2334,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 2334,
+    "total_problems": 2335,
+    "source_total_problems": 2342,
+    "filtered_out_problems": 7,
+    "with_statement_brief": 2335,
     "with_editorial_brief": 2070,
     "with_solution_brief": 2071,
-    "missing_editorial_brief": 263,
+    "missing_editorial_brief": 264,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 1396,
     "primary_topic_count": 13,
-    "contest_count": 360,
+    "contest_count": 361,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 110,
-    "构造与贪心": 736,
+    "构造与贪心": 737,
     "图论与网络流": 139,
     "动态规划与状态设计": 206,
     "数论与同余": 251,
@@ -61,7 +61,7 @@ window.CF_INSIGHTS_DATA = {
   "statusCounts": {
     "ai_generated_with_editorial": 1134,
     "ai_generated_partial_editorial": 45,
-    "missing_editorial": 263,
+    "missing_editorial": 264,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -51017,6 +51017,46 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "维护下降位置集合和支持区间最值的线段树。每次赋值只更新相邻位置；取最左、最右下降点，再用区间最小值/最大值分别在有序前缀/后缀二分确定答案，单次复杂度为 $O(\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1986,
+      "name": "Codeforces Round 954 (Div. 3)",
+      "date": "2024-06-23",
+      "url": "https://codeforces.com/contest/1986",
+      "type": "Div. 3",
+      "problemCount": 1,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1986G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Permutation Problem (Simple Version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1986/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/130762",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "combinatorics",
+            "data structures",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Permutation Problem (Simple Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     },

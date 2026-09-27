@@ -1298,6 +1298,17 @@
     "date": "2024-06-16"
   },
   {
+    "id": 1986,
+    "name": "Codeforces Round 954 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1719154200,
+    "relativeTimeSeconds": 71335582,
+    "date": "2024-06-23"
+  },
+  {
     "id": 1982,
     "name": "Codeforces Round 955 (Div. 2, with prizes from NEAR!)",
     "type": "CF",

@@ -1707,6 +1707,27 @@
     "raw_sha256": "85c4bc5e7fd01d4be4f16b0138c605724c01e9c673e86fbe5cc7e3ac8dfeccb3"
   },
   {
+    "url": "https://codeforces.com/blog/entry/130762",
+    "blog_entry_id": 130762,
+    "title": "Codeforces Round 954 (Div. 3) Editorial",
+    "author": "74TrAkToR",
+    "creation_time": "2024-06-23",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "130762",
+    "section_count": 7,
+    "covered_problems": [
+      "1986A",
+      "1986B",
+      "1986C",
+      "1986D",
+      "1986E",
+      "1986F",
+      "1986G2"
+    ],
+    "raw_sha256": "380dd505038f3c9bb53f18e970f18ddc833edef430f55d733ae1cc50e7604b7b"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/130839",
     "blog_entry_id": 130839,
     "title": "Codeforces Round 955 (Div. 2, with prizes from NEAR!) Editorial",
