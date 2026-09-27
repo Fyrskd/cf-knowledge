@@ -15,19 +15,368 @@
     ]
   },
   "summary": {
-    "total_problems": 2854,
+    "total_problems": 2862,
     "source_total_problems": 2862,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2854,
-    "with_editorial_brief": 2590,
-    "with_solution_brief": 2591,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2862,
+    "with_editorial_brief": 2598,
+    "with_solution_brief": 2599,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1916,
+    "ai_override_count": 1924,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1761A",
+      "contest_id": 1761,
+      "title": "Two Permutations",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1761/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/109256",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms"
+      ],
+      "statement_brief": "给定 $n,a,b$，判断是否能构造两个长度为 $n$ 的排列，使它们的最长公共前缀长度为 $a$、最长公共后缀长度为 $b$。每个排列都必须恰好包含 $1$ 到 $n$ 各一次，只需输出是否存在这样的排列对。",
+      "transformed_statement": "把两个排列划分为公共前缀、必须不同的中间部分和公共后缀：若中间至少有两个位置，就交换边界元素制造恰好所需的差异；若前后缀约束重叠，则只能检查两排列完全相同的特例。",
+      "key_observations": [
+        "当 $a+b+2\\le n$ 时，可让两排列共享前 $a$ 个元素和后 $b$ 个元素，并交换中间两段的边界元素，从而恰好在第 $a+1$ 位和倒数第 $b+1$ 位首次、末次不同。",
+        "当 $a+b+2>n$ 时，前缀与后缀的约束覆盖了所有可分离位置，两排列只能完全相同，因此最长公共前缀和后缀都必须为 $n$。",
+        "因此不可构造的重叠情形只有完全相同的排列，判定条件可归结为 $a+b+2\\le n$ 或 $a=b=n$。"
+      ],
+      "solution_brief": "若 $a+b+2\\le n$，按公共前缀、可交换的中间部分和公共后缀构造两排列，答案为 Yes；否则两排列必须相同，仅当 $a=b=n$ 时答案为 Yes。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:03:35+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1761B",
+      "contest_id": 1761,
+      "title": "Elimination of a Ring",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1761/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/109256",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定一个首尾相连且初始相邻元素均不相等的环形序列。每次可主动删除一个元素；若删除后出现相等的相邻元素，环会立即自动删除其中一个，重复处理直到合法，要求最多主动删除多少次才能清空序列。",
+      "transformed_statement": "问题只需按序列中不同数值的种类数分类：恰有两种时环必为交替结构，答案有固定公式；种类超过两种时可构造一个不触发自动删除的完整删除顺序。",
+      "key_observations": [
+        "当环中恰有两种数值时，初始相邻不等意味着序列只能交替排列，答案固定为 $n/2+1$。",
+        "当数值种类超过两种且长度大于 $3$ 时，要么某个重复元素拥有两个不同邻居，删除它可将问题分解为更小环；要么存在只出现一次的元素。",
+        "若存在只出现一次的元素 $b$，可以持续删除其相邻元素，最后删除 $b$，从而避免任何一次操作触发额外删除并完成 $n$ 次操作。",
+        "长度小于 $3$ 时不会产生无法处理的结构，始终可以完成恰好 $n$ 次操作。"
+      ],
+      "solution_brief": "统计序列中的不同数值种类。若恰有两种，输出 $n/2+1$；否则输出 $n$。该结论来自两种数值时的交替结构，以及超过两种时总能安排删除顺序避免自动删除。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:03:16+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1761C",
+      "contest_id": 1761,
+      "title": "Set Construction",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1761/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/109256",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "graphs",
+        "greedy"
+      ],
+      "statement_brief": "给定一个二进制矩阵，其中 $b_{i,j}=1$ 表示集合 $A_i$ 必须是集合 $A_j$ 的真子集。请为每个 $A_i$ 构造一个由 $1$ 到 $n$ 中元素组成的非空集合，使矩阵指定的真包含关系恰好成立。",
+      "transformed_statement": "把矩阵看成集合之间的有向包含关系：每个顶点拥有一个唯一标记，某集合及其所有祖先都接收该标记；最终集合由它自身及所有后代标记共同决定。",
+      "key_observations": [
+        "为每个集合 $S$ 分配唯一元素 $x_S$，并把它加入 $S$ 及所有应包含 $S$ 的集合，从而自动传播包含关系。",
+        "若 $A$ 应包含 $B$，则 $B$ 的全部元素都会因祖先传播进入 $A$；同时 $x_A$ 不会进入 $B$，所以二者必为真子集而非相等。",
+        "若两个集合互不属于祖先或后代关系，则它们分别缺少对方的专属元素，因此不会错误地产生包含关系。",
+        "可直接令 $x_S=S$，使每个集合的构造只需依据矩阵找出对应祖先。"
+      ],
+      "solution_brief": "将每个集合视为关系图中的顶点。对集合 $S$ 加入编号 $S$，并把该元素同时加入矩阵中所有应包含 $S$ 的集合；这样既满足指定包含关系，又通过专属元素排除其他包含关系。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:02:57+00:00",
+          "quality_flags": [
+            "statement_condition_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1761D",
+      "contest_id": 1761,
+      "title": "Carry Bit",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1761/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/109256",
+      "editorial_quality": "partial",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "数论与同余",
+        "动态规划与状态设计"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "math"
+      ],
+      "statement_brief": "给定整数 $n,k$，考虑所有满足 $0\\le a,b<2^n$ 的有序整数对。按二进制逐位计算 $a+b$，统计产生进位的位数，要求统计进位数恰为 $k$ 的有序对数量，并对 $10^9+7$ 取模。",
+      "transformed_statement": "把每一位是否向更高位进位编码成序列 $c_0,\u0000c_{n-1}$，并补充初始状态 $c_{-1}=0$。问题转化为统计含恰好 $k$ 个进位状态的序列：固定序列后，各位数字对的选择数只由相邻状态是否变化决定，再按连续段数量进行组合计数。",
+      "key_observations": [
+        "固定每一位是否产生进位后，该位的 $(a_i,b_i)$ 选择彼此独立：进位状态不变时有 $3$ 种选择，状态改变时只有 $1$ 种选择，因此一个进位状态序列的贡献是 $3^{n-q}$，其中 $q$ 为状态变化次数。",
+        "用 $c_{-1}=0$ 表示初始无进位，并将 $c_0,\u0000c_{n-1}$ 看作进位序列；序列中恰有 $k$ 个 $1$ 就对应恰有 $k$ 次进位，避免直接枚举 $(a,b)$。",
+        "固定变化次数 $q$ 后，进位序列由交替的连续 $1$ 段和 $0$ 段组成；把 $k$ 个 $1$ 与包含初始哨兵的 $n-k+1$ 个 $0$ 分配到对应段中，可用组合数统计合法序列。",
+        "对所有可能的 $q$ 累加“状态序列数量乘以 $3^{n-q}$”，即可得到答案，原题的逐位 DP 因此被化为组合数求和。"
+      ],
+      "solution_brief": "设每一位的进位状态为 $c_i$，枚举相邻状态变化次数 $q$。固定状态序列时，每个未变化位置有 $3$ 种位对、变化位置有 $1$ 种；再按连续段组合数统计含 $k$ 个进位的状态序列，累加各项 $3^{n-q}$。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:02:36+00:00",
+          "quality_flags": [
+            "partial_editorial"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1761E",
+      "contest_id": 1761,
+      "title": "Make It Connected",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1761/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/109256",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "constructive algorithms",
+        "dsu",
+        "graphs",
+        "greedy",
+        "matrices",
+        "trees",
+        "two pointers"
+      ],
+      "statement_brief": "给定一个简单无向图，每次选择一个顶点并翻转它与所有其他顶点之间的邻接关系（有边变无边、无边变有边）。要求通过若干次操作使图连通，并输出最少操作次数及任意一种达到该次数的顶点序列。",
+      "transformed_statement": "按初始连通分量分类处理：非团分量可由一个合适顶点的边翻转直接连接全图；若每个分量都是团，则分别讨论两个分量和至少三个分量的情形。",
+      "key_observations": [
+        "若某连通分量不是团，取其中度数最小的顶点；它不是割点且并未连接该分量的所有顶点，翻转其关联边后即可一次连通全图。",
+        "若所有连通分量都是团且恰有两个分量，必须翻转一个完整分量中的所有顶点，因此选择较小分量最优。",
+        "若所有分量都是团且至少有三个分量，分别从两个不同分量选一个顶点翻转即可连通；而原图不连通，所以至少需要两次。"
+      ],
+      "solution_brief": "先判断原图是否连通。否则找非团连通分量，选择其中度数最小的顶点并操作一次；若所有分量都是团，则两分量时操作较小分量的全部顶点，多于两分量时操作两个分量各一个顶点。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:01:55+00:00",
+          "quality_flags": [
+            "statement_inferred",
+            "statement_operation_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1761F1",
+      "contest_id": 1761,
+      "title": "Anti-median (Easy Version)",
+      "rating": 3100,
+      "problem_url": "https://codeforces.com/contest/1761/problem/F1",
+      "editorial_url": "https://codeforces.com/blog/entry/109256",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "组合计数与概率",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定一个含有部分已知元素的 $1$ 到 $n$ 的排列，需要填入所有未知位置。若任意长度至少为 $3$ 的奇数长度子数组中，原中心元素都不等于该子数组排序后的中位数，则称排列为 anti-median；求满足条件的填法数量，结果对 $10^9+7$ 取模。",
+      "transformed_statement": "合法排列先被重述为两种峰谷交替的序列；在固定方向下，偶数位序列先增后减、奇数位序列先减后增。将偶数位正向排列、奇数位反向排列形成环后，按连续区间扩展来放置从大到小的数，从而建立区间 DP。",
+      "key_observations": [
+        "任意长度为 $3$ 的坏子数组等价于中间元素处出现连续上升或连续下降，因此相邻比较符号必须交替，合法排列只有两种峰谷交替方向。",
+        "固定峰谷方向后，偶数位元素必须先增后减，奇数位元素必须先减后增；长度为 $5$ 的限制推出这一形状，而该形状又足以保证所有奇数长度子数组都不坏。",
+        "将偶数位从左到右、奇数位从右到左接成环后，任意值区间 $[k,n]$ 都对应环上的连续段，使排列计数转化为逐步扩展循环区间的区间 DP。",
+        "状态 $dp[l][r]$ 表示当前最大的连续一段数已经放入环上 $l$ 到 $r$ 的位置，转移只需检查新位置与已知值是否兼容，并分别统计两种峰谷方向。"
+      ],
+      "solution_brief": "先由长度 $3$ 子数组得到两种峰谷交替方向，再利用长度 $5$ 条件推出两类位置的单峰/单谷形状。按“偶数位正向、奇数位反向”组成环，使最大值连续集合对应环区间，使用 $O(n^2)$ 区间 DP 计数，并检查已知位置；两种方向分别计算后求和。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:01:19+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1761F2",
+      "contest_id": 1761,
+      "title": "Anti-median (Hard Version)",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1761/problem/F2",
+      "editorial_url": "https://codeforces.com/blog/entry/109256",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定一个长度为 $n$ 的部分排列，未知位置用 $-1$ 表示。若任意长度至少为 $3$ 的奇数子数组排序后，中间位置的元素都不等于该子数组的中位数，则称排列为 anti-median；要求将未知值填成剩余数字，使整个排列满足条件的方案数，答案对 $10^9+7$ 取模。",
+      "transformed_statement": "把排列改看成在位置环上的逐步构造：先定位 $n$，再将递减的数依次接到当前连续段的左端或右端。已知位置把构造切成若干段，合法性转化为扩展段时避开由奇偶位置前缀、后缀产生的禁区，进一步成为不穿越直线 $x=y+c$ 的单调格路计数问题。",
+      "key_observations": [
+        "将位置按环排列，先放置最大值 $n$，再按 $n-1$ 到 $1$ 的顺序把每个数接到当前连续段的左端或右端；这种构造覆盖所有候选排列。",
+        "仅知道数值 $x$ 的位置时，$x$ 到 $n$ 所在的连续段只有向左或向右延伸两种可能，因此固定元素之间的变化可抽象为连续扩展线段。",
+        "仅允许左右扩展并不足以保证条件成立；若当前段包含奇偶位置前缀或后缀且两类数量关系不满足要求，就会形成禁止状态，必须在扩展过程中避开。",
+        "把向右扩展和向左扩展分别表示为坐标平面中的两种单调步，状态转移等价于从 $(0,0)$ 走到目标点且不穿过形如 $x=y+c$ 的边界，从而可用经典受限格路计数处理。"
+      ],
+      "solution_brief": "按环上位置建立由大到小、从当前段左右端扩展的构造，利用已知元素限制各阶段的段状态。把每段之间的合法扩展转为避开若干直线的单调格路计数，并将各阶段结果结合得到答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:00:56+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 8,
+      "problem_key": "1761G",
+      "contest_id": 1761,
+      "title": "Centroid Guess",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1761/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/109256",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "树结构",
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "interactive",
+        "probabilities",
+        "trees"
+      ],
+      "statement_brief": "有一棵包含 $n$ 个顶点且恰有一个重心的未知树，只能通过询问任意两点间距离来获取信息，最多询问 $2\\times10^5$ 次。需要在非自适应交互器中找出并报告该重心；删除重心后，每个连通块大小都不超过 $\\lfloor n/2\\rfloor$。",
+      "transformed_statement": "先随机抽取少量顶点，用两两距离构造包含它们及相关分叉点的虚树，并借助抽样点的加权重心选出一条高概率经过真实重心的路径。固定端点后，按每个顶点到两端的距离差把全树划分到路径各点的附属块，再用两侧累计大小定位重心。",
+      "key_observations": [
+        "若已知重心位于路径 $u\\to v$ 上，删除路径外的点后各连通块按路径顺序划分，重心只需满足两侧块大小都不超过 $\\lfloor n/2\\rfloor$。",
+        "对任意顶点 $x$，距离差 $dis(u,x)-dis(v,x)$ 唯一决定它属于路径上的哪个连通块，因此询问到 $u,v$ 的距离即可同时统计所有块大小。",
+        "随机抽取 $M=316$ 个点并构造其虚树，以抽样点为权重求虚树重心，再从最大和次大子树追到叶子，可高概率得到一条包含真实重心的端点路径。",
+        "若抽样导致路径不含真实重心，则落在隐藏树重心某侧的样本数至多为 $M/3$；错误概率被 $\\sum_{i=0}^{M/3}C_M^i/2^M$ 控制，约为 $6\\times10^{-10}$。"
+      ],
+      "solution_brief": "随机抽点构造虚树，利用其加权重心选出一对高概率经过真实重心的端点；再对所有顶点询问到两端距离，按距离差分组并扫描两侧大小确定重心。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:00:37+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 9,
       "problem_key": "1760A",
