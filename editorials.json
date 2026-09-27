@@ -8,6 +8,28 @@
     "raw_sha256": "7fad0de808d2e0d82c07c8c879f9f86473dcb016ecc85133c8bc12a87e68f7a6"
   },
   {
+    "url": "https://codeforces.com/blog/entry/109468",
+    "blog_entry_id": 109468,
+    "title": "Codeforces Global Round 24 Editorial",
+    "author": "Imakf",
+    "creation_time": "2022-11-26",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Global Round 24 Editorial",
+    "section_count": 8,
+    "covered_problems": [
+      "1764A",
+      "1764B",
+      "1764C",
+      "1764D",
+      "1764E",
+      "1764F",
+      "1764G3",
+      "1764H"
+    ],
+    "raw_sha256": "1751cdbe182287fe170dc11f58b6d89a1d53c1482794ea1fe187512fbefbd2e1"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/110629",
     "blog_entry_id": 110629,
     "title": "Editorial for Hello 2023",

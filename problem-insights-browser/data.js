@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2831,
-    "source_total_problems": 2831,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 2831,
+    "total_problems": 2833,
+    "source_total_problems": 2841,
+    "filtered_out_problems": 8,
+    "with_statement_brief": 2833,
     "with_editorial_brief": 2569,
     "with_solution_brief": 2570,
-    "missing_editorial_brief": 261,
+    "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 1893,
     "primary_topic_count": 13,
-    "contest_count": 431,
+    "contest_count": 432,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,6 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "交互": 91,
     "组合计数与概率": 222,
     "构造与贪心": 886,
     "数论与同余": 306,
@@ -53,15 +54,14 @@ window.CF_INSIGHTS_DATA = {
     "基础实现与模拟": 169,
     "字符串": 151,
     "图论与网络流": 173,
-    "交互": 89,
     "博弈": 95,
     "树结构": 146,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
+    "missing_editorial": 263,
     "ai_generated_with_editorial": 1623,
     "ai_generated_partial_editorial": 55,
-    "missing_editorial": 261,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -87646,6 +87646,67 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "先建立前缀奇偶集合的持久化二进制 Trie，每个位置只切换当前值的存在状态。查询时比较版本 $l-1$ 与 $r$，用子树哈希判断是否相同，并优先进入存在差异的低位子树，得到最小值；无差异输出 $0$。复杂度为 $O((n+q)\u0003a log n)$（压缩值后）。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1764,
+      "name": "Codeforces Global Round 24",
+      "date": "2022-11-26",
+      "url": "https://codeforces.com/contest/1764",
+      "type": "Global",
+      "problemCount": 2,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1764G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Doremy's Perfect DS Class (Easy Version)",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1764/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/109468",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率",
+            "树结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "interactive"
+          ],
+          "statementBrief": "题面已抓取：Doremy's Perfect DS Class (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1764G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Doremy's Perfect DS Class (Medium Version)",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1764/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/109468",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率",
+            "树结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "interactive"
+          ],
+          "statementBrief": "题面已抓取：Doremy's Perfect DS Class (Medium Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
