@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2888,
+    "total_problems": 2897,
     "source_total_problems": 2897,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 2888,
-    "with_editorial_brief": 2624,
-    "with_solution_brief": 2625,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2897,
+    "with_editorial_brief": 2633,
+    "with_solution_brief": 2634,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1950,
+    "ai_override_count": 1959,
     "primary_topic_count": 13,
-    "contest_count": 439,
+    "contest_count": 440,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 908,
+    "构造与贪心": 911,
+    "几何": 70,
+    "数据结构": 269,
+    "树结构": 149,
+    "组合计数与概率": 228,
+    "动态规划与状态设计": 244,
     "博弈": 96,
-    "数据结构": 267,
-    "组合计数与概率": 227,
     "数论与同余": 313,
     "字符串": 155,
-    "动态规划与状态设计": 243,
-    "树结构": 148,
     "图论与网络流": 176,
     "交互": 93,
     "基础实现与模拟": 172,
-    "几何": 69,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1674,
+    "ai_generated_with_editorial": 1683,
     "ai_generated_partial_editorial": 59,
     "missing_editorial": 263,
     "manual_override": 891,
@@ -89332,6 +89332,285 @@ window.CF_INSIGHTS_DATA = {
             "边界值满足 $f(x,0)=2^{x-1}(x+3)/2$（$x>0$），代入 $k=0$ 到 $\\min(n,m)$ 的组合求和即可，单组复杂度为 $O(\\min(n,m))$。"
           ],
           "solutionBrief": "将问题转成网格跳跃路径，按转向断点数 $k$ 分组。用 $\\binom nk\\binom mk$ 选择断点，结合一维边界公式计算每组访问格子总数，再求和并对 $10^9+7$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1740,
+      "name": "Codeforces Round 831 (Div. 1 + Div. 2)",
+      "date": "2022-10-29",
+      "url": "https://codeforces.com/contest/1740",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1740A",
+          "index": "A",
+          "slot": "A",
+          "title": "Factorise N+M",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1740/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/108567",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "number theory"
+          ],
+          "statementBrief": "每组给定一个质数 $n$，需要构造并输出另一个满足范围的质数 $m$，使得 $n+m$ 不是质数；存在多个答案时任选其一。",
+          "transformedStatement": "将构造目标改写为寻找一个能让和必为合数的质数。直接让 $m$ 复制 $n$，即可把和固定为 $2n$，从而无需搜索。",
+          "keyObservations": [
+            "令 $m=n$ 保证 $m$ 仍为质数，同时 $n+m=2n$；由于 $n>1$，该数有因子 $2$ 和 $n$，不可能是质数。",
+            "题目允许任意满足条件的答案，因此无需试除或枚举候选质数，直接输出输入的 $n$ 即可。"
+          ],
+          "solutionBrief": "每组直接取 $m=n$ 并输出。因为输入的 $n$ 是质数，所以 $m$ 合法；且 $n+m=2n$ 在 $n>1$ 时必为合数。每组复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1740B",
+          "index": "B",
+          "slot": "B",
+          "title": "Jumbo Extra Cheese 2",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1740/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/108567",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "geometry",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 个边长为 $a_i\\times b_i$ 的矩形，可以任意旋转并重新排列，使它们组成满足题目约束的连通图形，且每个矩形的底边位于 $x$ 轴上。求所有合法摆放中所得图形的最小周长。",
+          "transformedStatement": "把每个矩形抽象为宽 $c_i$、高 $d_i$，其底边沿 $x$ 轴连接；矩形从左到右形成一条高度序列，周长等于底部总长度的两倍加上顶部高度变化量。优化因此转化为选择方向并最小化 $2(\\sum c_i+\\max d_i)$。",
+          "keyObservations": [
+            "固定矩形方向后，若按高度非降顺序排列，顶部边界的高度差总和变为两倍最高高度，因此周长为 $2(\\sum c_i+\\max d_i)$。",
+            "对固定方向，任意排列的顶部高度变化至少为 $2\\max(d_i)$，按高度排序即可达到下界，因而排列顺序不再需要枚举。",
+            "所有边长在最终公式中只会贡献 $0$ 次或 $2$ 次；全体边长最大值无论如何都贡献两次，放入高度后可使其他高度不再贡献。",
+            "因此每个矩形应令较小边为宽 $c_i$、较大边为高 $d_i$，答案直接化为 $2(\\sum_i\\min(a_i,b_i)+\\max_i\\max(a_i,b_i))$。"
+          ],
+          "solutionBrief": "令每个矩形的宽为较小边、高为较大边，累加所有宽并取最大高。将矩形按高度排序后可实现最小周长，答案为 $2(\\sum\\min(a_i,b_i)+\\max\\max(a_i,b_i))$，每组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1740C",
+          "index": "C",
+          "slot": "C",
+          "title": "Bricks and Bags",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1740/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/108567",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 块有重量的砖和三个空袋，必须把每块砖放入一个袋子且每袋非空。分配后，对手从每袋各取一块并使 $|w_1-w_2|+|w_2-w_3|$ 尽量小，求你最优分配时能保证的最大最终得分。",
+          "transformedStatement": "将砖块按重量排序，并把对手最终取出的三块表示为下标 $p_1,p_2,p_3$。利用相邻下标替换和连续区间分袋构造，把原博弈转为在特定下标排列约束下最大化 $|a_{p_1}-a_{p_2}|+|a_{p_2}-a_{p_3}|$。",
+          "keyObservations": [
+            "将重量排序后，设对手从三袋取出的砖块下标为 $p_1,p_2,p_3$；三者的相对位置必属于单调递增、单调递减，或 $p_2$ 在两端之外的两类。",
+            "若 $p_2<\\\\min(p_1,p_3)$ 且两者间隔超过 $1$，无论砖块 $p_2+1$ 被放入哪一袋，对手都能改取它而使得分不增，因此最优取法满足 $\\\\min(p_1,p_3)=p_2+1$；上界情形同理。",
+            "满足上述下标约束的取法都能通过把排序后的砖块按连续区间分配给三袋来强制实现，因此问题可转化为直接枚举可行的三个下标。",
+            "最优方案可取第三或第四类，并分别令外侧下标达到端点；于是答案是两组表达式 $$(a_i-a_{i-1})+(a_i-a_1)$$ 与 $$(a_{i+1}-a_i)+(a_n-a_i)$$ 的最大值。"
+          ],
+          "solutionBrief": "先排序。分析对手取出砖块下标的相对顺序，证明极端夹在中间时必须相邻，并可用连续区间分袋强制实现。枚举中间下标，计算两种端点情形的得分最大值，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1740D",
+          "index": "D",
+          "slot": "D",
+          "title": "Knowledge Cards",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1740/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/108567",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures"
+          ],
+          "statementBrief": "棋盘左上角 $(1,1)$ 叠放着编号为 $1$ 到 $k$ 的一组排列卡片，其他格子为空。每次只能取某格栈顶的卡，移到共边相邻格并放在对方栈顶；要求最终把所有卡移到右下角 $(n,m)$，且从顶到底编号为 $1,2,\\ldots,k$，判断是否能做到。",
+          "transformedStatement": "把起点和终点之外的卡称为活动卡，只关心它们的编号而不维护具体位置。利用中间区域的空格，活动卡可在中间自由调整并移向终点；问题转化为按源栈顺序加入卡片、按 $k$ 到 $1$ 消除目标卡，同时保证活动卡数不超过 $nm-3$。",
+          "keyObservations": [
+            "最终栈顶到底依次为 $1,2,\\ldots,k$，因此实际放入终点的顺序必须是 $k,k-1,\\ldots,1$；这把目标排列转成了唯一的取牌顺序。",
+            "忽略起点 $(1,1)$ 和终点 $(n,m)$ 后，只要中间区域存在空格，就能借助 $2\\times2$ 旋转让任意活动卡移动到终点相邻位置；因此无需维护具体位置。",
+            "活动卡是当前不在两个端点的卡，处理源栈每张牌时加入活动集合，并反复移走当前所需的下一张牌；集合只需支持查找和删除目标编号。",
+            "中间区域共有 $nm-2$ 个格子，必须始终至少留一个空格，所以活动卡数量不能超过 $nm-3$；一旦超过该容量就必然无解。"
+          ],
+          "solutionBrief": "按源栈从顶到底加入活动卡，并按 $k$ 到 $1$ 的顺序把已出现的目标卡移入终点。用集合或优先队列维护活动卡；若活动卡数量超过 $nm-3$，输出无解，否则可行，复杂度为 $O(k\\log k)$ 或 $O(k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1740E",
+          "index": "E",
+          "slot": "E",
+          "title": "Hanging Hearts",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1740/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/108567",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以卡片 $1$ 为根的树，先把 $1$ 到 $n$ 的一个排列写到卡片上；随后按规定反复选择合法卡片移除，并把移除时的数字依次组成序列 $s$。要求优化排列和移除顺序，使 $s$ 的最长非降子序列尽可能长；移除一个卡片前必须先处理完其子树中的其他卡片。",
+          "transformedStatement": "将非降子序列中的元素改记为对应卡片序列：相邻元素可沿祖先链延伸，或切换到与此前路径无祖先关系的新路径。于是问题转化为树上选择若干条互不发生祖先关系的向上路径，并最大化总长度。",
+          "keyObservations": [
+            "移除卡片 $i$ 前必须先移除其子树中的其他卡片，因此它被移除时的数字等于其子树初始排列值的最小值。",
+            "最长非降子序列对应的卡片序列中，后续卡片不能位于当前卡片的子树内；否则移除顺序不合法。",
+            "若下一张卡片是当前卡片的祖先，可以通过共享子树最小值使两者取值相等；若不是祖先，则其值必须严格更大，并会阻断当前卡片祖先链的继续延伸。",
+            "最优序列可拆成若干条由后代指向祖先的路径，且不同路径之间不存在祖先关系，因此子树答案是“经过当前点的一条最长路径”和“各子树答案之和”中的较大值。"
+          ],
+          "solutionBrief": "把卡片看成根树，设 $dp[i]$ 为仅使用 $i$ 子树能得到的最长长度。对每个点，答案取经过它的一条最长祖先—后代路径长度，与所有儿子 $dp$ 之和的较大值；自底向上计算，复杂度 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1740F",
+          "index": "F",
+          "slot": "F",
+          "title": "Conditional Mix",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1740/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/108567",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定数组 $a$，先为每个元素写下单元素集合 $\\{a_i\\}$，再按题面允许的操作进行任意次处理，收集最终所有集合的大小形成多重集 $M$；要求计算不同 $M$ 的数量。原记录缺失了具体操作规则。",
+          "transformedStatement": "令 $cnt_i$ 为值 $i$ 在数组中的出现次数，把每个结果按集合大小降序补成长度为 $n$ 的序列。题解将可达性等价为总和为 $n$ 且所有前缀和受 $\\sum_i\\min(k,cnt_i)$ 约束的问题。",
+          "keyObservations": [
+            "最终大小多重集排序为 $M_1\\ge\\cdots\\ge M_n\\ge0$ 后，恰好满足总和为 $n$ 且对每个 $k$ 有 $\\sum_{j=1}^kM_j\\le\\sum_i\\min(k,cnt_i)$，从而把操作过程转成不等式判定。",
+            "按大小从大到小构造 $M$，状态记录当前位置、已选总和与上一个大小；下一个值只能不超过上一个值，因此转移只需汇总所有更小或相等的状态。",
+            "若当前位置为 $pos$、末项为 $last$，则已有总和至少为 $pos\\cdot last$ 且不超过 $n$，所以该位置可出现的 $last$ 不超过 $n/pos$，状态总数降为 $O(n^2\\log n)$。",
+            "转移中的前缀和既能快速汇总所有 $x\\le last$ 的状态，也使总时间复杂度保持为 $O(n^2\\log n)$。"
+          ],
+          "solutionBrief": "统计每个值的出现次数 $cnt_i$，将可达结果转化为满足前缀不等式的非增序列。用 $dp[pos][sum][last]$ 枚举序列，并用前缀和优化转移；利用 $last\\cdot pos\\le n$ 压缩状态，复杂度为 $O(n^2\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1740G",
+          "index": "G",
+          "slot": "G",
+          "title": "Dangerous Laser Power",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1740/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/108567",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dsu",
+            "sortings"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的门户网格，每个门户有强度和待设置的 0/1 类型。每束从每个门户的每个面以速度 1 发出的激光，按门户类型改变出口方向，并将速度提升至不低于当前强度；求一种类型设置，使最终消耗能量奇偶性等于类型的门户数量最大。",
+          "transformedStatement": "把每个门户的能量判定改写为四个面的反向路径问题：路径在遇到强度至少为当前门户的节点时被截断，只有此前的较小强度节点会影响当前结果；于是可按强度递增维护并合并这些路径。",
+          "keyObservations": [
+            "若激光在到达门户 $(i,j)$ 前已经经过强度不少于 $s_{i,j}$ 的门户，则其速度已不小于 $s_{i,j}$，因此 $(i,j)$ 不会消耗能量；反向追踪时遇到第一个这样的门户即可截断路径。",
+            "当前门户的反向路径在遇到强度至少为 $s_{i,j}$ 的门户前，只会经过强度更小的门户，因此按强度从小到大处理时，所需的转向信息已经全部确定。",
+            "固定一个门户后，从四个面反向追踪得到的四条路径足以计算该门户最终消耗能量的奇偶性，据此直接选择类型使其成为 good 门户。",
+            "反向路径本质上是已有较短路径的拼接；用并查集合并路径并维护计算能量奇偶性所需的信息，可将朴素的重复追踪降为 $O(nm)$。"
+          ],
+          "solutionBrief": "按强度从小到大构造类型。对每个门户从四个面反向追踪，遇到强度不小于当前值的门户就停止；用并查集合并共享路径并维护能量奇偶性，再选择使当前门户良好的类型，最终可让所有门户都 good，复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1740H",
+          "index": "H",
+          "slot": "H",
+          "title": "MEX Tree Manipulation",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1740/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/108567",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "trees"
+          ],
+          "statementBrief": "初始树只有根节点 1。第 $i$ 次操作把编号为 $i+1$ 的新节点作为 $x_i$ 的子节点；每个节点的值是其所有直接子节点值的 MEX，加入后重新计算并输出全树节点值之和。",
+          "transformedStatement": "把每个节点看成由重儿子输入值决定输出值的函数：轻儿子值集合只需确定最小和第二小缺失数，从而用三元组表示函数；新增节点转化为沿根路径合并并更新这些函数。",
+          "keyObservations": [
+            "向一个子节点值集合加入新值后，MEX 只有在新值等于当前最小缺失值时才会跳到第二小缺失值，因此整个更新关系可压缩为三元组 $(x,y,z)$。",
+            "对每个节点选子树最大的重儿子，其余轻儿子的值集合只需维护前两个缺失值；由此可把重儿子值到当前节点值的影响表示成一个三元组。",
+            "新增节点只会影响其到根的路径，而这条路径经过的重链数为 $O(\\log Q)$；跨链时更新轻儿子集合，链内用线段树合并三元组关系。",
+            "在线段树节点中同时维护输入为两种关键值时的链段答案和节点值总和，因而点更新后能直接得到整棵树的总和，单次复杂度为 $O(\\log^2 Q)$。"
+          ],
+          "solutionBrief": "用重链剖分把根路径更新拆成少量重链。每个节点维护轻儿子值集合的前两个 MEX，并以三元组表示重儿子值到自身值的转移；链上线段树合并转移及两种输入下的和，支持点更新并逐链向根传播。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1740I",
+          "index": "I",
+          "slot": "I",
+          "title": "Arranging Crystal Balls",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1740/problem/I",
+          "editorialUrl": "https://codeforces.com/blog/entry/108567",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "geometry",
+            "graphs",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 个按圆环排列的数，每次可选择连续的 $k$ 个位置，把它们同时按模 $m$ 加一或减一。求把所有数变为 $0$ 所需的最少操作次数；若无法做到则输出 $-1$。",
+          "transformedStatement": "把每个长度为 $k$ 的圆环区间视为一个变量 $c_i$，表示采用统一减法方向的操作次数。归零等价于满足每个长度为 $k$ 的 $c$ 区间和模 $m$ 等于对应的 $a_i$，目标代价为各变量的环形最小距离之和。",
+          "keyObservations": [
+            "将每个长度为 $k$ 的连续区间操作次数记为 $c_i$，则位置 $i$ 的归零条件变为相邻 $k$ 个 $c$ 的和模 $m$ 等于 $a_i$，原操作方向可使代价变为 $\u001c\\sum_i\\min(c_i,m-c_i)$。",
+            "相邻方程相减得到 $c_{i+k}-c_i\\equiv a_{i+1}-a_i\\pmod m$；步长为 $k$ 的环图有 $d=\\gcd(n,k)$ 个连通分量，因此每个分量只需枚举一个代表值，其余值都被强制确定。",
+            "每个分量的代价函数 $f_i(x)$ 由若干个环形距离函数叠加，斜率只会在少量特殊点改变；若至少两个分量取非特殊点，可通过一增一减保持总和不变且不增代价，因此最优解至多有一个非特殊点。",
+            "基于“至多一个非特殊点”，分治递归固定唯一可能的非特殊分量，并维护其余分量特殊点形成的模背包；每层转移规模为 $O(nm)$，总复杂度为 $O(nm\\log d)$。"
+          ],
+          "solutionBrief": "设 $d=\\gcd(n,k)$，由差分关系检查各连通分量是否可行，并把每个分量表示为代表值到代价 $f_i(x)$。利用代价函数的特殊斜率点证明最优解至多一个非特殊代表值，再用分治维护模背包，求满足代表值总和属于候选集合 $b$ 的最小代价。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
