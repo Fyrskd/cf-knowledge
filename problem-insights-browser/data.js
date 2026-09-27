@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2099,
+    "total_problems": 2106,
     "source_total_problems": 2106,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2099,
-    "with_editorial_brief": 1847,
-    "with_solution_brief": 1848,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2106,
+    "with_editorial_brief": 1854,
+    "with_solution_brief": 1855,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1040,
+    "ai_override_count": 1047,
     "primary_topic_count": 13,
-    "contest_count": 327,
+    "contest_count": 328,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 91,
-    "构造与贪心": 707,
+    "字符串": 92,
+    "构造与贪心": 709,
     "图论与网络流": 123,
     "动态规划与状态设计": 196,
-    "数论与同余": 212,
+    "数论与同余": 214,
     "组合计数与概率": 159,
-    "数据结构": 179,
+    "数据结构": 180,
     "几何": 46,
     "树结构": 131,
     "代数、矩阵与多项式": 18,
     "交互": 77,
     "基础实现与模拟": 87,
-    "博弈": 73
+    "博弈": 74
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 918,
+    "ai_generated_with_editorial": 925,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -30516,6 +30516,229 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：可达集合对逐点降低是封闭的，所以答案可以二分。检查 x 时，把目标简化为非降数组中包含 0..x-1，即后缀依次放这些值、前面全是 0。扫描每座塔，维护已有落块数；当当前位置需要目标高度 h，就安排它在恰好 h 个未来落块之后倒下，并把它倒下产生的影响加入差分。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2104,
+      "name": "Educational Codeforces Round 178 (Rated for Div. 2)",
+      "date": "2025-04-28",
+      "url": "https://codeforces.com/contest/2104",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "2104A",
+          "index": "A",
+          "slot": "A",
+          "title": "Three Decks",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2104/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/142472",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定三堆牌，数量满足 $a<b<c$。每次只能从第三堆取出若干张（至少一张），任意分给前两堆，判断能否使三堆牌数最终完全相等。",
+          "transformedStatement": "把问题改写为确定最终公共数量 $x$：总牌数守恒要求 $x=(a+b+c)/3$，而前两堆只能被增加，所以只需判断 $x$ 是否为整数且不小于较大的前堆 $b$。",
+          "keyObservations": [
+            "总牌数不变，若三堆最终各有 $x$ 张，则必须满足 $3x=a+b+c$，因此总数不能被 $3$ 整除时必定无解。",
+            "目标数量为 $x=(a+b+c)/3$；由于只能从第三堆向前两堆补牌，前两堆都不能超过 $x$，结合 $a<b$ 只需检查 $b\\le x$。",
+            "当 $b\\le x$ 且总数可被 $3$ 整除时，分别向前两堆补入 $x-a$ 与 $x-b$ 张，所需牌数恰好为 $c$，因此一定可以完成。"
+          ],
+          "solutionBrief": "计算总数并判断是否能均分为 $x$ 张；若 $(a+b+c)\\bmod 3=0$ 且 $b\\le x$，输出 YES，否则输出 NO。每组测试 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2104B",
+          "index": "B",
+          "slot": "B",
+          "title": "Move to the End",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2104/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/142472",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的数组。对每个 $k=1 ext{ 到 }n$，任选一个元素将其移到数组末尾，求此时最后 $k$ 个元素的最大可能和；每个 $k$ 独立操作并恢复原数组。",
+          "transformedStatement": "固定 $k$ 后，最后 $k-1$ 个原数组元素无论移动谁都必然被计入；另一个被计入的元素可从前 $n-k+1$ 个位置任取，因此问题转化为后缀和加前缀最大值。",
+          "keyObservations": [
+            "移动一个元素到末尾后，原数组最后的 $k-1$ 个元素始终仍属于新数组的最后 $k$ 个位置，因此它们的和是固定贡献。",
+            "剩余的一个位置可以由前 $n-k+1$ 个元素中的任意一个填充，移动该元素到末尾即可，所以应取这些元素的最大值。",
+            "答案可写为前缀最大值与后缀和之和，即 $max(a_1\\dots a_{n-k+1})+sum(a_{n-k+2}\\dots a_n)$，从而避免逐个尝试移动。",
+            "同时维护前缀和与前缀最大值即可在 $O(n)$ 内得到所有 $k$ 的答案。"
+          ],
+          "solutionBrief": "对每个 $k$，固定累加原数组最后 $k-1$ 个元素，再从前 $n-k+1$ 个元素中取最大值。预处理前缀和与前缀最大值，按公式直接计算所有答案，单组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2104C",
+          "index": "C",
+          "slot": "C",
+          "title": "Card Game",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2104/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/142472",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "games",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有编号为 $1$ 到 $n$ 的牌，编号较大的牌通常击败编号较小的牌，另有 $1$ 击败 $n$ 的例外。每回合 Alice 先出一张牌，Bob 看到后出一张牌，胜者拿走两张牌并可在后续继续使用；若回合开始时一方无牌则输，求最优策略下的胜者。",
+          "transformedStatement": "把整场游戏化为首回合的强制取牌判断：若一方能无视对手选择、在当前回合拿走两张牌，则其可将这一能力延续到下一回合。因此只需判断 Alice 是否有一张牌能压过 Bob 的每张牌。",
+          "keyObservations": [
+            "若某玩家能保证在第 $i$ 回合赢得两张牌，那么下一回合仍能保证做到：失去牌只会减少可选项，得到牌则会增加可选项，因此不会破坏原有策略。",
+            "因此只需判断第一回合的结果；一旦某方能在第一回合强制拿牌，就能在之后每回合延续该策略，最终获胜。",
+            "Alice 只有在存在一张牌能击败 Bob 的所有牌时才能保证第一回合获胜；否则 Bob 对 Alice 的每张出牌都存在一张能击败它的应对牌，从而可在第一回合拿牌并取胜。"
+          ],
+          "solutionBrief": "对每组数据检查 Alice 是否拥有一张能击败 Bob 全部牌的牌。若有则输出 Alice，否则输出 Bob；因为首回合能强制拿牌的一方可以将策略延续到后续回合。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2104D",
+          "index": "D",
+          "slot": "D",
+          "title": "Array and GCD",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2104/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/142472",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定数组，可反复花 1 枚硬币将任意元素加 1，或因将元素减 1 获得 1 枚硬币，初始没有硬币；还可以删除任意元素。要求删除后能变为每个元素至少为 2 且任意两元素互质的数组，求最少删除数量。",
+          "transformedStatement": "把“能通过加减操作变成理想数组”转化为保留元素总和至少达到前 $k$ 个质数之和，其中 $k$ 是保留数量；于是问题变为寻找最大的可行 $k$。",
+          "keyObservations": [
+            "操作的本质是最终数组元素总和不能超过原数组总和：先减少元素获得硬币，再用硬币增加元素即可实现所需调整。",
+            "任意理想数组都能把各元素降为质数，并用缺失的小质数替换较大的质数，因此长度为 $k$ 的理想数组最小总和是前 $k$ 个质数之和。",
+            "固定保留 $k$ 个元素时，选择原数组中最大的 $k$ 个数才能最大化可用总和；比较其前缀和与前 $k$ 个质数和即可判定。"
+          ],
+          "solutionBrief": "预处理足够多的质数及其前缀和。每组数据排序后计算从大到小的前缀和，枚举保留数量 $k$；若该和不少于前 $k$ 个质数之和，则可保留，取最大可行 $k$，答案为 $n-k$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2104E",
+          "index": "E",
+          "slot": "E",
+          "title": "Unpleasant Strings",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2104/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/142472",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定只含前 $k$ 个小写字母的字符串 $s$，以及多个查询串。每次可在查询串右端追加任意允许字母，求至少追加多少个字符，才能使结果不再是 $s$ 的子序列。",
+          "transformedStatement": "把子序列匹配过程建模为在 $s$ 上按字符跳转的状态机：状态是当前已匹配字符的位置，追加字符就是一次下一出现位置的跳转；目标是用最少跳转到达字符串末尾之外。",
+          "keyObservations": [
+            "贪心匹配子序列时总选当前可用的最左出现位置；若匹配失败，原串已不愉快，答案直接为 $0$。",
+            "匹配完查询串后，下一次追加字符只由当前最后位置决定，因此答案可压缩为位置状态，而与查询串具体前缀无关。",
+            "从位置 $p$ 继续追加时，应选择所有字符对应的下一出现位置中的最大值；跳得越远不会增加后续所需追加次数。",
+            "令 $d[p]$ 表示从位置 $p$ 使匹配失败所需的最少追加数，则有 $d[p]=1+d[\\max_c\\mathrm{nxt}[p+1][c]]$，其中越过字符串末尾的状态使答案立刻结束。"
+          ],
+          "solutionBrief": "预处理每个位置和字符的下一次出现位置。逐个贪心匹配查询串；若失败输出 $0$，否则在结束位置 $p$ 查预处理的 $d[p]$。按位置倒序计算 $d$，总复杂度为 $O(nk+\\sum|t_i|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2104F",
+          "index": "F",
+          "slot": "F",
+          "title": "Numbers and Strings",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/2104/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/142472",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "对每个 $x=1,2,\\ldots,n$，把十进制的 $x$ 与 $x+1$ 直接拼接，再将所得字符串中的所有数字按非降序排列得到 $S(x)$。要求统计 $S(1),S(2),\\ldots,S(n)$ 中不同字符串的数量。",
+          "transformedStatement": "把 $x$ 表示为左侧数字、最后一个非 $9$ 数字和末尾 $9$ 段；通过枚举左侧非降的规范代表，生成所有可能的 $S(x)$，再为每个字符串保留最小的 $x$。",
+          "keyObservations": [
+            "将 $x$ 拆成左侧部分、最后一个非 $9$ 数字和末尾连续 $9$ 段后，$x+1$ 只改变后两部分，左侧数字的排列顺序因此不影响 $S(x)$。",
+            "每个等价类都可由左侧数字非降排列、下降后只能接 $9$ 的形式表示；递归枚举这种结构即可覆盖所有可能的最小代表。",
+            "仅按结构枚举仍可能产生相同的 $S(x)$，因此按 $(S(x),x)$ 排序后只保留每个字符串对应的最小 $x$，再按 $x$ 排序。",
+            "左侧长度至多为 $8$，候选规模可由 $\\sum_{k=0}^{8}\\binom{k+9}{k}\\cdot9\\cdot(9-k)$ 估计，不到 $700000$；预处理代表后对每个 $n$ 二分统计 $x\\le n$ 的数量。"
+          ],
+          "solutionBrief": "按末尾 $9$ 段拆分 $x$，递归枚举左侧非降、下降后全为 $9$ 的候选；按 $S(x)$ 去重并保留最小代表，排序后用二分回答每个 $n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2104G",
+          "index": "G",
+          "slot": "G",
+          "title": "Modulo 3",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/2104/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/142472",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "dsu",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定每个顶点恰有一条出边的函数图，初始所有顶点为颜色 1。每次操作可选顶点和颜色，把该顶点及所有从它可达的顶点染成该色；每个查询先将一条出边改为 $x\\to y$，再求给定 $k$ 种颜色下不同最终染色数对 3 取模。",
+          "transformedStatement": "染色数等于函数图强连通分量数 $c$ 的幂 $k^c$。除 $k\\bmod3=2$ 外结果立即确定；此时只需维护 $c$ 的奇偶性，即维护原图无向化后非奇环连通分量的数量，并离线处理边的时间区间。",
+          "keyObservations": [
+            "任意一个强连通分量内的顶点最终必同色，且按缩点图拓扑序可实现任意分量配色，因此答案是 $k^c$，其中 $c$ 为强连通分量数。",
+            "当 $k\\bmod 3=2$ 时只需判断 $c$ 的奇偶性；函数图中 $c\\bmod 2=(n+B)\\bmod 2$，其中 $B$ 是长度为偶数的有向环数量。",
+            "函数图每个无向连通分量恰含一个有向环，因此该分量二分图当且仅当环长为偶数，$B$ 等于无向图中二分连通分量数。",
+            "把每次修改后的边看作只在一段查询时间内存在，在线段树上分发这些时间区间，并用带回滚、维护到根距离奇偶性的并查集统计二分连通分量。"
+          ],
+          "solutionBrief": "将答案化为 $k^c$。$k\\bmod3\\in\\{0,1\\}$ 时直接确定结果；否则通过二分连通分量数得到 $c$ 奇偶性。离线维护修改后的边区间，在线段树分治中用可回滚带奇偶性的并查集处理动态连通性。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
