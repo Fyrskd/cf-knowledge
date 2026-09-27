@@ -1375,6 +1375,17 @@
     "date": "2024-07-23"
   },
   {
+    "id": 1996,
+    "name": "Codeforces Round 962 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1722004500,
+    "relativeTimeSeconds": 68480916,
+    "date": "2024-07-26"
+  },
+  {
     "id": 1991,
     "name": "Pinely Round 4 (Div. 1 + Div. 2)",
     "type": "CF",
