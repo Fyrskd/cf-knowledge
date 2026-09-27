@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2335,
+    "total_problems": 2342,
     "source_total_problems": 2342,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2335,
-    "with_editorial_brief": 2070,
-    "with_solution_brief": 2071,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2342,
+    "with_editorial_brief": 2077,
+    "with_solution_brief": 2078,
     "missing_editorial_brief": 264,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1396,
+    "ai_override_count": 1404,
     "primary_topic_count": 13,
     "contest_count": 361,
     "rating_min": 800,
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 110,
-    "构造与贪心": 737,
-    "图论与网络流": 139,
+    "构造与贪心": 740,
+    "图论与网络流": 140,
     "动态规划与状态设计": 206,
-    "数论与同余": 251,
+    "数论与同余": 253,
     "组合计数与概率": 182,
     "数据结构": 214,
-    "几何": 52,
+    "几何": 53,
     "树结构": 133,
     "代数、矩阵与多项式": 19,
     "交互": 84,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 84
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1134,
+    "ai_generated_with_editorial": 1141,
     "ai_generated_partial_editorial": 45,
     "missing_editorial": 264,
     "manual_override": 891,
@@ -51026,9 +51026,187 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-06-23",
       "url": "https://codeforces.com/contest/1986",
       "type": "Div. 3",
-      "problemCount": 1,
-      "maxRating": 2200,
+      "problemCount": 8,
+      "maxRating": 2500,
       "problems": [
+        {
+          "key": "1986A",
+          "index": "A",
+          "slot": "A",
+          "title": "X Axis",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1986/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/130762",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "geometry",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定数轴上的三个整数点，可以选择任意整数坐标 $a$ 作为目标点，代价是三个点到 $a$ 的距离之和。对每组数据，求这个总距离的最小值。",
+          "transformedStatement": "把问题转化为在三个有序坐标中选择一个目标点，使绝对距离和最小；最优目标是中位数，最小值因此等于最右坐标减最左坐标。",
+          "keyObservations": [
+            "对任意选择的整数点 $a$，两端点贡献满足 $|x_1-a|+|x_3-a|\\ge x_3-x_1$，因此答案不可能小于最左点到最右点的距离。",
+            "将三个坐标排序为 $x_1\\le x_2\\le x_3$ 后，选择中间点 $a=x_2$，两端到它的距离之和恰好为 $x_3-x_1$，从而达到下界。"
+          ],
+          "solutionBrief": "先将三个坐标排序。最小总距离等于最大坐标减最小坐标：三角不等式给出下界，选择中位数作为目标点即可达到该下界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1986B",
+          "index": "B",
+          "slot": "B",
+          "title": "Matrix Stabilization",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1986/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/130762",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 矩阵，每次可以选择一个严格大于所有公共边相邻格的单元格，并将它改为相邻格中的最大值；重复操作直到不存在可选单元格。输出最终稳定矩阵。",
+          "transformedStatement": "把过程视为对每个初始局部严格最大值进行一次“降至最大邻居”的独立更新：相邻单元格的大小关系不会反转，因此非局部最大值不会改变，局部最大值的最终值由其初始邻居最大值决定。",
+          "keyObservations": [
+            "相邻两格中至多一格会改变；若初值相等则二者都不会改变，若不等则较大值始终不会降到较小值以下，因此局部关系不会反转。",
+            "若某格的初值不小于所有相邻格，它始终有一个不低于自己的邻居，因而不会被操作；这使得非局部最大格可以直接保留。",
+            "若某格严格大于所有邻居，它最终会降到相邻初值最大值；由于邻接关系不会反转，这个结果与其他格后续是否变化无关，所以可对原矩阵逐格判断并更新。"
+          ],
+          "solutionBrief": "先复制原矩阵。对每个单元格求四个方向相邻格的最大值；若该格严格大于此最大值，就把它改为该最大值，否则保持不变。根据相邻格关系不会反转的性质，一次逐格处理即可得到稳定矩阵。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1986C",
+          "index": "C",
+          "slot": "C",
+          "title": "Update Queries",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1986/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/130762",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的小写字符串、$m$ 个位置和 $m$ 个字符。必须执行全部更新，但可以任意重排位置和字符的顺序；每次把对应字符写入对应位置，求最终能得到的字典序最小字符串。",
+          "transformedStatement": "只保留每个不同位置的最后一次写入，因为同一位置的更早更新可以提前完成。于是问题转化为：将字符中最小的若干个字符，按从小到大的位置顺序分配给所有不同位置。",
+          "keyObservations": [
+            "同一位置被多次更新时，只有最后一次写入的字符会影响结果；其余针对该位置的操作可提前完成，因此每个不同位置只需保留一个最终字符。",
+            "设不同位置按下标为 $i_1<i_2<\\cdots<i_k$，为了最小化字典序，应将可用字符中最小的 $k$ 个依次分配给这些位置；较小位置的字符更早决定整体字典序。",
+            "未出现在不同位置集合中的原字符串字符不会改变，而重复位置对应的多余字符可以安排在前面的操作中，不会影响最终结果。"
+          ],
+          "solutionBrief": "收集所有不同的更新位置并排序，统计其数量 $k$。将字符串 $c$ 排序后取最小的 $k$ 个，按位置从小到大依次写入；重复位置的其他更新安排在此前即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1986D",
+          "index": "D",
+          "slot": "D",
+          "title": "Mathematical Problem",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1986/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/130762",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的数字串，必须在相邻数字之间插入恰好 $n-2$ 个加号或乘号，不能放在两端或连续放置，且数字顺序不能改变。按先乘后加计算表达式，求所有合法插法中的最小结果。",
+          "transformedStatement": "由于只插入 $n-2$ 个符号，恰好有一个相邻位置不插符号，可视为先枚举一处拼接形成的 $n-1$ 个数字，再在它们之间选择加法或乘法，使结果最小。固定这些数字后，问题可按是否含 $0$、是否全为 $1$ 分类求解。",
+          "keyObservations": [
+            "插入 $n-2$ 个符号等价于只选择一个相邻位置不插符号，将该处两位数字拼成一个数，其余位置都放置运算符；因此只需枚举这个拼接位置。",
+            "固定拼接位置后，若得到的数中有 $0$，把所有运算符设为乘法即可得到 $0$，这是该划分下的最优值。",
+            "若所有数都是 $1$，全乘得到 $1$；否则所有大于 $1$ 的数之间使用加法，并把数值为 $1$ 的项通过乘法并入邻居，最小值就是所有大于 $1$ 的数之和。",
+            "两个大于 $1$ 的数相乘不会优于分别相加，而 $1$ 乘入邻居不会改变数值，因此上述局部选择构成固定拼接位置下的最优方案。"
+          ],
+          "solutionBrief": "枚举唯一不放符号的位置，构造对应的 $n-1$ 个数。对每种划分，若含 $0$ 取值为 $0$；若全为 $1$ 取值为 $1$；否则将所有大于 $1$ 的数求和，并取所有划分结果的最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1986E",
+          "index": "E",
+          "slot": "E",
+          "title": "Beautiful Array",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1986/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/130762",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定整数数组和 $k$，可先任意打乱元素；每次选择一个位置并把该元素增加 $k$。要求用最少操作使数组满足首尾对称，即所有对称位置元素相等；若无法做到则输出 $-1$。",
+          "transformedStatement": "把最终数组看成若干相等配对（奇数长度时允许一个单独元素）。按元素除以 $k$ 的余数分组后，只需在每组的商之间配对并最小化差值总和。",
+          "keyObservations": [
+            "最终数组可先任意重排，因此问题等价于把元素分成相等的配对；若 $n$ 为奇数，恰有一个元素可以不配对。",
+            "同一对元素必须模 $k$ 同余，否则通过每次增加 $k$ 无法相等；同余时把较小值变成较大值的代价是商之差。",
+            "对同一余数类中的排序后序列，偶数个元素最优地配相邻元素，代价为相邻差之和，因为交叉配对不会更优。",
+            "余数类大小为奇数时只能删除一个奇数位置元素再配对；若有两个奇数大小的余数类则无法只剩一个未配对元素。"
+          ],
+          "solutionBrief": "按 $a_i\\bmod k$ 分组，并将每组转为商后排序。偶数大小的组配相邻元素；奇数大小的组枚举删除一个奇数位置，用前缀和与后缀和计算代价，若奇数组超过一个则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1986F",
+          "index": "F",
+          "slot": "F",
+          "title": "Non-academic Problem",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1986/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/130762",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一个连通无向图，必须恰好删除一条边。删除后统计仍存在路径连接的无序顶点对数量，并选择使该数量最小的边。",
+          "transformedStatement": "把删边分为两类：非桥删除后图仍连通，桥删除后图分成两个连通块。问题因此转化为枚举每条桥的两侧规模，并最小化两个块内部顶点对数量之和。",
+          "keyObservations": [
+            "删除非桥边不会改变图的连通性，因此所有顶点仍互相可达，答案就是总顶点对数。",
+            "删除桥后图恰好分成大小为 $x$ 和 $y$ 的两个连通块，仍可达的顶点对数变为 $\\frac{x(x-1)}{2}+\\frac{y(y-1)}{2}$。",
+            "在 DFS 树中，桥对应的子树边界；若桥两侧较小部分包含 $s$ 个顶点，则另一侧为 $n-s$，无需重新计算连通块。",
+            "枚举所有桥并取上述计数的最小值；若不存在桥，任意删除都不影响连通性。"
+          ],
+          "solutionBrief": "用 DFS 找出所有桥并计算每个顶点的子树大小。对每条桥取较小侧规模 $s$，计算 $\\frac{s(s-1)}{2}+\\frac{(n-s)(n-s-1)}{2}$，再与无桥时的总顶点对数取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1986G1",
           "index": "G1",
@@ -51037,12 +51215,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2200,
           "problemUrl": "https://codeforces.com/contest/1986/problem/G1",
           "editorialUrl": "https://codeforces.com/blog/entry/130762",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "数据结构",
-            "数论与同余"
-          ],
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "brute force",
@@ -51051,12 +51225,43 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Permutation Problem (Simple Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为 $n$ 的排列 $p$，对每个位置对 $1\\le i<j\\le n$，检查 $p_i\\cdot p_j$ 是否能被 $i\\cdot j$ 整除。对每组数据，统计满足该条件的位置对数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1986G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Permutation Problem (Hard Version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1986/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/130762",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "hashing",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的排列 $p$，需要统计所有下标对 $1\\le i<j\\le n$，其中满足 $p_i\\cdot p_j$ 能被 $i\\cdot j$ 整除的对数。排列中的每个数恰好从 $1$ 到 $n$ 出现一次。",
+          "transformedStatement": "把位置 $i$ 与排列值 $p_i$ 化为 $a_i=p_i/\\gcd(i,p_i)$ 和 $b_i=i/\\gcd(i,p_i)$；题目转化为统计满足 $b_i\\mid a_j$ 且 $b_j\\mid a_i$ 的互相整除下标对。",
+          "keyObservations": [
+            "令 $a_i=p_i/\\gcd(i,p_i)$、$b_i=i/\\gcd(i,p_i)$ 后，原条件等价于同时满足 $b_i\\mid a_j$ 和 $b_j\\mid a_i$，从而变为两组数之间的互相整除关系。",
+            "固定一个 $b$ 值时，只需枚举所有形如 $a_j=b\\cdot k$ 的候选，并统计它们对应的 $b_j$；再对同组每个 $a_i$ 枚举其因数，即可筛出满足另一方向整除条件的配对。",
+            "上述过程按有序方向统计时，每个合法的无序下标对会被交换两次，因此累计结果需要除以 $2$ 才得到 $i<j$ 的答案。",
+            "$a_i$、$b_i$ 都来自 $1$ 到 $n$ 内的数并通过约数枚举处理；所有数的约数总数为 $O(n\\log n)$，因此可预处理约数并保持整体复杂度。"
+          ],
+          "solutionBrief": "将每个位置化为 $(a_i,b_i)$，按 $b_i$ 分组。固定 $b$，枚举其倍数形式的 $a_j$ 并统计对应 $b_j$；随后枚举同组 $a_i$ 的全部因数进行匹配。双向统计后除以 $2$，使用预处理约数表实现 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
