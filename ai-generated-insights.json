@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T10:42:44+00:00",
+  "updated_at": "2026-09-27T10:49:12+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -51636,6 +51636,182 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 的加密示例与 editorial_text 的解密规则，结合 tags 中的字符串和实现分类。",
+        "quality_flags": []
+      }
+    },
+    "1837F": {
+      "problem_key": "1837F",
+      "title": "Editorial for Two",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1837/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/116752",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3c9187d4f243a94d6548e78689929a2be4b91538b6c655c0d3c4affd80861ac5",
+      "generated_at": "2026-09-27T10:47:42+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 道题及各自编辑耗时，从中删除 $n-k$ 道且保持剩余顺序，再把保留的 $k$ 道按顺序切成前缀和后缀，分别由两人并行完成。目标是选择题目和切分位置，使两部分耗时较大者最小。",
+        "transformed_statement": "固定原数组的一个分界点后，左右两侧独立选择题目；对候选上限 $x$，计算每侧在总耗时不超过 $x$ 时最多能选多少道，若两侧容量之和至少为 $k$，则该上限可行。",
+        "key_observations": [
+          "先固定原数组中的分界点，再决定左右各选多少题；这样选出的题天然仍按原顺序排列，避免同时处理选择与分割。",
+          "给定时间上限 $x$ 后，一侧最多能选的题数等于“总耗时不超过 $x$ 的最大子集大小”；依次加入元素并在超限时删除当前集合中的最大值即可保持最优。",
+          "左右两侧分别能选出的最大数量之和至少为 $k$，就能通过调整分割点和左右选取数量凑出恰好 $k$ 题，因此不必枚举左右数量。",
+          "可行性随 $x$ 增大具有单调性，所以答案能二分；各前缀和后缀的最大可选数量预处理后可在线性扫描分界点检查。"
+        ],
+        "solution_brief": "二分答案 $x$。对每个前缀和后缀维护耗时和不超过 $x$ 时的最大选取数量：加入新题，超限就删除最大耗时题。用单调链表支持快速插入和删除，再检查左右数量之和是否至少为 $k$；总复杂度为 $O(n\\log A)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，并参考 tags 中的数据结构、二分和贪心标签。",
+        "quality_flags": []
+      }
+    },
+    "1837E": {
+      "problem_key": "1837E",
+      "title": "Playoff Fixing",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1837/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/116752",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "fd27114a31835e153f58099aee48e4f80a776305ff74574e72e4f79a83fa97e0",
+      "generated_at": "2026-09-27T10:48:11+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $2^k$ 支按编号表示实力的队伍，编号小者必胜；它们被放入淘汰赛种子位，每轮按相邻位置配对，败者淘汰，直到产生冠军，并按淘汰轮次确定名次。部分种子已经指定队伍，需要填满其余种子，使最终名次符合要求，并统计所有可行填法。",
+        "transformed_statement": "把赛程看成一棵完全二叉树：叶子是种子位，内部节点的胜者是两队中编号较小者。固定底层的一轮后，将每场胜者提升为下一层状态，同时统计尚未确定的败者如何分配到空缺位置。",
+        "key_observations": [
+          "首轮恰有一半队伍必须出局，因此每场比赛都必须由强队区间与弱队区间各出一队；否则无法得到按实力排列的最终名次。",
+          "处理一对种子时，若两支已知队伍同属强弱区间或都不属于应晋级的一侧，则配置立即无效；其余情况可确定晋级者并把它提升到下一轮。",
+          "每轮尚未确定败者的名额可以任意分配给对应的待淘汰队伍，贡献为这些名额数量的阶乘；两队均未预留时，交换对阵顺序再贡献一个因子 $2$。",
+          "未知晋级者可以继续向上处理，因为队伍只有在确定败北时才真正分配种子，而固定各场顺序后能唯一追溯其起始位置。"
+        ],
+        "solution_brief": "把比赛括号树从底层向上处理。逐对检查预留队伍是否合法，确定或保留晋级者；每轮乘上未确定败者名额的阶乘，并为双方均未预留的对阵乘 $2$，最终得到答案，复杂度为 $O(2^k)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "树结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags；题面中目标描述和示意图文字有缺失，因此对最终名次规则作了保守归纳。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1837D": {
+      "problem_key": "1837D",
+      "title": "Bracket Coloring",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1837/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/116752",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "029fbb5eba0059bd2b44051954f52e5d761e5b8cd6b14067b4f6402707f4284d",
+      "generated_at": "2026-09-27T10:48:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由括号组成的字符串，需要为每个位置染色，使每种颜色按原顺序取出的括号子序列都是美丽序列；美丽序列是普通合法括号序列或将其反转后得到的序列。要求使用最少颜色，若无法完成则报告无解。",
+        "transformed_statement": "把字符串按前缀平衡值为 $0$ 的位置切成若干段；每段内部平衡始终为正或始终为负，于是分别归入合法括号类和反转合法括号类，再合并同类段作为颜色组。",
+        "key_observations": [
+          "美丽括号序列必然是普通合法括号序列或其反转，因此整体括号平衡值不为 $0$ 时不可能完成染色。",
+          "按前缀平衡值为 $0$ 的位置切分后，每个非空段内部平衡值始终同号，因而每段必是合法括号序列或反转后的合法括号序列。",
+          "同一种类型的多个合法段拼接后仍保持该类型，所以可把正平衡段染成一种颜色、负平衡段染成另一种颜色。",
+          "只需判断原串本身是否美丽：若是则一色最优，否则在总平衡为 $0$ 时两色构造可行且最优。"
+        ],
+        "solution_brief": "先计算总平衡值；不为 $0$ 输出无解。否则扫描前缀，在平衡值回到 $0$ 处分段，正段染色 $1$、负段染色 $2$；若原串本身美丽则只用一色，否则使用两色。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text、题目标题与 tags；题面中美丽序列及染色约束的部分定义存在缺失，因此对操作规则作了必要还原。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1837C": {
+      "problem_key": "1837C",
+      "title": "Best Binary String",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1837/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/116752",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "6ee8a64fefb1f87aed1d610be3c513744ea4850e43637c5580c02ecc7b252667",
+      "generated_at": "2026-09-27T10:48:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由 $0$、$1$ 和问号组成的模式串，每个问号可独立替换为 $0$ 或 $1$。对得到的二进制串，允许反转任意连续子串直到其按非降序排列；要求构造一个匹配模式且所需反转次数最少的字符串。",
+        "transformed_statement": "先把固定二进制串的代价转化为相邻逆序对 $10$ 的数量，再选择问号的取值，使这种相邻 $10$ 尽可能少；核心是让连续位置尽量属于同一字符段。",
+        "key_observations": [
+          "对任意确定的二进制串，排序所需的反转次数等于相邻逆序模式 $10$ 的数量；一次反转至多消除一个这样的模式，而针对某个 $10$ 反转相邻的两段可恰好消除一个。",
+          "将每个问号替换为前一个字符（若位于开头则替换为 $0$），会让连续问号尽量保持同一字符，从而不额外制造字符块变化。",
+          "上述替换使 $1$ 段到 $0$ 段的变化次数最少，因此相邻 $10$ 的数量达到最小，等价于最终字符串的排序代价最小。"
+        ],
+        "solution_brief": "先把字符串中的问号从左到右处理：首个问号替换为 $0$，其余问号复制前一个字符。因为二进制串的反转排序代价就是相邻 $10$ 的数量，而该填法能最少产生 $1$ 到 $0$ 的段变化，所以得到最优答案。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，tags 中的 constructive algorithms 和 greedy 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1837B": {
+      "problem_key": "1837B",
+      "title": "Comparison String",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1837/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/116752",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3b7f4ef251ab0d12b6f8e40232a968f86a4ba13a3f39bbd0401edaf750be5299",
+      "generated_at": "2026-09-27T10:49:01+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由 `<` 和 `>` 组成的字符串，构造长度为 $n+1$ 的数组，使每个相邻元素的大小关系与对应字符一致。数组代价是其中不同数值的个数，要求所有兼容数组中的最小代价。",
+        "transformed_statement": "把字符串视为一系列相邻不等式约束：同一符号的最长连续段对应一条最长严格单调链。问题等价于求这条链所需的最少层数，并验证整个符号序列能在这些层中完成构造。",
+        "key_observations": [
+          "长度为 $k$ 的同字符连续段会形成 $k+1$ 个元素的严格单调链，因此至少需要 $k+1$ 个不同值，答案下界由最长连续段决定。",
+          "令 $m$ 为最长同字符段长度并使用值域 $[0,m]$，从左到右遇到 `>` 就取当前允许的最大值、遇到 `<` 就取当前允许的最小值，可保证所有相邻关系成立。",
+          "每个同字符段开始时构造值会位于 $0$ 或 $m$，后续最多连续变化 $m$ 次仍不会越界，因此只需 $m+1$ 个值即可达到下界。"
+        ],
+        "solution_brief": "扫描字符串求最长连续相同字符段长度 $m$，答案为 $m+1$。下界来自严格单调链，使用 $0$ 到 $m$ 的值域并按符号取极值即可构造达到该下界的数组。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的相邻大小关系与代价定义，以及完整 editorial 中的下界证明和贪心构造。",
+        "quality_flags": []
+      }
+    },
+    "1837A": {
+      "problem_key": "1837A",
+      "title": "Grasshopper on a Line",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1837/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/116752",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "99f5479af8b111ef7a6af32441a1872b260b503c9e1c732e7f364fcff9f6e703",
+      "generated_at": "2026-09-27T10:49:12+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "蚱蜢从坐标 $0$ 出发，每次可向左或向右跳一个整数距离，但跳跃距离不能被 $k$ 整除。要求用最少次数到达坐标 $x$，并输出任意一组合法的带符号跳跃距离。",
+        "transformed_statement": "把问题转化为将 $x$ 表示成尽可能少个都不被 $k$ 整除的整数之和：若 $x$ 本身合法就用一个加数，否则拆成相邻的 $1$ 与 $x-1$。",
+        "key_observations": [
+          "当 $x$ 不被 $k$ 整除时，直接向右跳 $x$，一步即可到达；由于 $x>0$，一步也是最少的。",
+          "当 $x$ 被 $k$ 整除时，不能一步跳到 $x$，但连续跳 $1$ 和 $x-1$ 可行：$1$ 不被 $k$ 整除，且 $x-1$ 与 $x$ 相邻，不可能同时被 $k$ 整除，因此两步必定足够。"
+        ],
+        "solution_brief": "若 $x\\bmod k\\ne0$，输出一步跳 $x$。否则输出两步 $1$ 和 $x-1$；前者必合法，后者因与可被 $k$ 整除的 $x$ 相邻也不被 $k$ 整除。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则与完整 editorial；tags 提示 constructive algorithms、math。",
         "quality_flags": []
       }
     }
