@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2161,
+    "total_problems": 2168,
     "source_total_problems": 2168,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2161,
-    "with_editorial_brief": 1909,
-    "with_solution_brief": 1910,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2168,
+    "with_editorial_brief": 1916,
+    "with_solution_brief": 1917,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1102,
+    "ai_override_count": 1109,
     "primary_topic_count": 13
   },
   "records": [
@@ -42981,6 +42981,307 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 1056,
+      "problem_key": "2072A",
+      "contest_id": 2072,
+      "title": "New World, New Me, New Array",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2072/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/140039",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "greedy",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定一个长度为 $n$ 的全零数组，每次可选择一个位置并将其赋为区间 $[-p,p]$ 内的整数，允许重复修改位置。求使数组元素总和恰好为 $k$ 的最少操作次数；若无法实现则输出 $-1$。",
+      "transformed_statement": "把问题转化为：用不超过 $n$ 个位置承载若干个绝对值不超过 $p$ 的贡献，使它们的和为 $k$，并最小化非零贡献的数量。由于正负号对称，只需处理 $|k|$，每个位置最多贡献 $p$。",
+      "key_observations": [
+        "总和的绝对值最多达到 $np$，因此当 $|k|>np$ 时必然无解；否则可把目标拆成若干个绝对值不超过 $p$ 的位置贡献。",
+        "每次操作对总和的有效贡献最多为 $p$，所以至少需要 $\frac{|k|}{p}$ 向上取整次；用若干个 $ ext{sign}(k) imes p$ 和至多一个余数即可达到该下界。"
+      ],
+      "solution_brief": "先判断 $|k|>np$，不满足则输出 $-1$；$k=0$ 输出 $0$。否则答案为 $\frac{|k|+p-1}{p}$ 向下取整，即用若干个大小为 $p$ 的贡献和一个余数构造。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:19:09+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1057,
+      "problem_key": "2072B",
+      "contest_id": 2072,
+      "title": "Having Been a Treasurer in the Past, I Help Goblins Deceive",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/2072/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/140039",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "构造与贪心",
+        "字符串"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "constructive algorithms",
+        "strings"
+      ],
+      "statement_brief": "给定一个只含“-”和“_”的字符串，可以任意重排字符。字符串的值是子序列“-_-”的数量，要求通过最优重排使这个数量最大，并输出最大值。",
+      "transformed_statement": "将重排后的字符串建模为“若干‘-’+全部‘_’+若干‘-’”。若两侧分别有 $\\ell_p、\\ell_s$ 个“-”，每个中间“_”产生 $\\ell_p\\ell_s$ 种选择，因此总数为 $(n-c)\\ell_p\\ell_s$。",
+      "key_observations": [
+        "设左右两侧分别放置 $\\ell_p、\\ell_s$ 个“-”，所有“_”集中放在中间时，每个“_”都贡献 $\\ell_p\\ell_s$ 个子序列。",
+        "“-”的总数 $c$ 固定，因此答案化为最大化 $\\ell_p\\ell_s$，且满足 $\\ell_p+\\ell_s=c$。",
+        "两个非负整数和固定时，乘积在尽量均分时最大，所以取 $\\ell_p=\\lfloor c/2\\rfloor$、$\\ell_s=\\lceil c/2\\rceil$。",
+        "若“-”少于两个或没有“_”，不存在目标子序列，答案直接为 $0$。"
+      ],
+      "solution_brief": "统计“-”的数量 $c$ 和“_”的数量 $n-c$，构造为若干“-”、全部“_”、剩余“-”。答案为 $\\lfloor c/2\\rfloor\\cdot\\lceil c/2\\rceil\\cdot(n-c)$；边界情况为 $0$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:18:51+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1058,
+      "problem_key": "2072C",
+      "contest_id": 2072,
+      "title": "Creating Keys for StORages Has Become My Main Skill",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2072/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/140039",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "greedy"
+      ],
+      "statement_brief": "给定数组长度 $n$ 和目标值 $x$，构造 $n$ 个非负整数，使所有元素的按位或等于 $x$，并让数组元素集合的 MEX 最大。若有多种构造，输出任意一种。",
+      "transformed_statement": "把最大化 MEX 转化为尽可能完整地放入前缀 $0,1,2,\\ldots$：依次尝试加入当前整数，同时保证已选元素的位或始终只使用 $x$ 中存在的位；无法继续时用 $x$ 修正最终位或。",
+      "key_observations": [
+        "为了让 MEX 至少达到 $m$，数组必须包含从 $0$ 到 $m-1$ 的所有数，因此按递增顺序尝试放入这些数。",
+        "已放入元素的位或结果为 $v$；加入当前数 $m$ 后，只有当 $(v\\,|\\,m)$ 不含 $x$ 之外的置位时，最终位或才可能保持为 $x$。",
+        "一旦某个连续整数无法加入，后续更大的数也无法帮助提高 MEX，因此立即停止尝试，并用 $x$ 补足位或；若位置已满则将最后一个元素改为 $x$。",
+        "依次成功放入的数正好覆盖一段从 $0$ 开始的前缀，剩余位置填入 $0$ 不会改变位或，也不会破坏已达到的 MEX。"
+      ],
+      "solution_brief": "从 $0$ 开始贪心尝试加入连续整数，维护当前位或 $v$，仅在加入后仍不出现 $x$ 之外的位时接受。停止后用 $x$ 占据或补充一个位置，剩余位置填 $0$，从而保持位或为 $x$ 并最大化 MEX。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:18:35+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1059,
+      "problem_key": "2072D",
+      "contest_id": 2072,
+      "title": "For Wizards, the Exam Is Easy, but I Couldn't Handle It",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2072/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/140039",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组，必须恰好选择一个区间 $[l,r]$，将其中元素循环左移一位，即把 $a_l$ 移到 $r$ 的后面。要求选择区间，使操作后数组中的逆序对数量最少。",
+      "transformed_statement": "将一次区间左移重述为把某个元素 $a_l$ 向右移动到任意位置 $r\\ge l$；只有它与途中元素的相对顺序改变，因此目标变成最小化这些局部关系带来的逆序数变化。",
+      "key_observations": [
+        "左移区间等价于取出 $a_l$ 并将它插到位置 $r$，因此一次操作只会改变 $a_l$ 与区间内其他元素的相对顺序。",
+        "区间外元素及区间内其余元素的相对顺序不变，所以所有受影响的逆序对都涉及 $a_l$，无需重新计算完整逆序数。",
+        "对固定左端点 $l$ 扩展 $r$ 时，若 $a_i<a_l$，变化量为 $-1$；若 $a_i>a_l$，变化量为 $+1$；相等时为 $0$，累加即可得到该操作的逆序数变化。",
+        "枚举每个 $l$ 并扫描所有 $r\\ge l$，取最小变化量即可；允许 $l=r$ 保证至少可以不改变数组。"
+      ],
+      "solution_brief": "把左移区间视为将 $a_l$ 向右移动到 $r$。枚举 $l$，逐步扩大 $r$，按元素与 $a_l$ 的大小关系累加逆序数变化量，记录最小值并与原逆序数相加；总复杂度为 $O(n^2)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:17:55+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1060,
+      "problem_key": "2072E",
+      "contest_id": 2072,
+      "title": "Do You Love Your Hero and His Two-Hit Multi-Target Attacks?",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/2072/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/140039",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "几何",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "constructive algorithms",
+        "dp",
+        "geometry",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定整数 $k$，要在整数坐标系中放置不超过 $500$ 个互不重合的点。两点若欧氏距离等于曼哈顿距离则计为一对，要求构造点集，使满足条件的无序点对恰好有 $k$ 对。",
+      "transformed_statement": "利用等距条件等价于两点横坐标相同或纵坐标相同，把问题转为分组制造同行点对，并通过让各组的横、纵坐标都彼此错开来避免组间产生额外点对。",
+      "key_observations": [
+        "两点欧氏距离等于曼哈顿距离，当且仅当它们横坐标相同或纵坐标相同，因此目标对数可转化为统计同列或同行的点对。",
+        "每次取最大整数 $m$ 使 $m(m-1)/2\\le k$，放置同一横坐标的一行 $m$ 个点，直接贡献 $m(m-1)/2$ 对并使剩余量小于下一档增量。",
+        "将下一组点的横坐标整体右移、纵坐标上移，可保证不同组既没有相同横坐标也没有相同纵坐标，因此不会产生额外配对。",
+        "最大的完整组规模不超过 $447$，余数部分至多再放 $43$ 个点，所以总点数不超过 $490$，满足 $n\\le500$。"
+      ],
+      "solution_brief": "递归处理剩余的 $k$：每次取最大的 $m$ 满足 $m(m-1)/2\\le k$，放置同一纵坐标的连续 $m$ 个点，再将下一组右移并上移以隔离配对。重复直到剩余为零，复杂度为 $O(\\sqrt{k})$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:17:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1061,
+      "problem_key": "2072F",
+      "contest_id": 2072,
+      "title": "Goodbye, Banker Life",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2072/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/140039",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "组合计数与概率",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "2-sat",
+        "bitmasks",
+        "combinatorics",
+        "constructive algorithms",
+        "fft",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定第一行唯一元素 $k$ 的无限三角形：第 $i$ 行有 $i$ 个数，两端直接复制上一行对应元素，中间每个数是上一行相邻两数的按位异或。对每个测试用例输出第 $n$ 行的全部 $n$ 个元素。",
+      "transformed_statement": "把三角递推视为二进制各位独立的模 $2$ 杨辉三角；第 $n$ 行第 $j$ 项由二项式系数 $C(n-1,j-1)$ 的奇偶性决定，再与初值 $k$ 按位组合。",
+      "key_observations": [
+        "按二进制位独立处理异或：若 $k$ 的某一位为 $0$，该位整行恒为 $0$；若为 $1$，该位等价于模 $2$ 的杨辉三角。",
+        "第 $n$ 行第 $j$ 项的每个二进制位由系数 $C(n-1,j-1)$ 的奇偶性决定，因此数值等于 $k$ 与该奇偶系数的按位与。",
+        "系数为奇数当且仅当 $v_2((n-1)!)=v_2((j-1)!)+v_2((n-j)!)$，可通过递推预处理阶乘中因子 $2$ 的指数并逐项判定。"
+      ],
+      "solution_brief": "将异或三角按位拆开，转化为判断 $C(n-1,j-1)$ 的奇偶性。预处理各阶乘中因子 $2$ 的指数，逐项判断系数奇偶，奇数时输出 $k$，否则输出 $0$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:17:25+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1062,
+      "problem_key": "2072G",
+      "contest_id": 2072,
+      "title": "I've Been Flipping Numbers for 300 Years and Calculated the Sum",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/2072/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/140039",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "combinatorics",
+        "divide and conquer",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定正整数 $n$ 和上限 $k$，对每个 $p=2,3,\\ldots,k$，将 $n$ 写成 $p$ 进制后反转数字位，再转回十进制得到 $\\text{rev}(n,p)$。求所有这些结果之和，并输出其对 $10^9+7$ 取模后的值。",
+      "transformed_statement": "把进制 $p$ 按相对 $n$ 的大小分成三段：小进制直接处理；当 $\\sqrt n<p\\le n$ 时只需处理两位表示；当 $p>n$ 时贡献恒为 $n$。两位区间再转化为关于 $\\lfloor n/p\\rfloor$ 的分块求和。",
+      "key_observations": [
+        "当 $p>n$ 时，$n$ 在 $p$ 进制中只有一位，因此 $ ext{rev}(n,p)=n$，这部分可直接合并为 $(k-n)n$。",
+        "当 $\frac{}{}\\sqrt n<p\\le n$ 时，$n$ 的 $p$ 进制表示恰有两位，故翻转结果为 $p(n\\bmod p)+\\lfloor n/p\\rfloor$。",
+        "将 $n\\bmod p$ 改写为 $n-\\lfloor n/p\\rfloor p$ 后，中间区间的求和只需计算等差数列和、商值和以及带 $p^2$ 权重的商值和。",
+        "函数 $\\lfloor n/p\\rfloor$ 的不同取值不超过 $2\\sqrt n$，相同商值对应连续的 $p$ 区间，因此可按商值分块并用区间平方和快速合并。"
+      ],
+      "solution_brief": "按 $p\\le\\sqrt n$、$\\sqrt n<p\\le n$、$p>n$ 分段。第一段直接计算翻转，第二段用两位表示式并按 $\\lfloor n/p\\rfloor$ 的连续相同区间合并，第三段直接计数；总复杂度为 $O(\\sqrt n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:17:06+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1063,
