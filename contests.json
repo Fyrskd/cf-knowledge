@@ -1837,6 +1837,17 @@
     "date": "2025-02-16"
   },
   {
+    "id": 2069,
+    "name": "Educational Codeforces Round 174 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1739889300,
+    "relativeTimeSeconds": 50589846,
+    "date": "2025-02-18"
+  },
+  {
     "id": 2072,
     "name": "Codeforces Round 1006 (Div. 3)",
     "type": "ICPC",
