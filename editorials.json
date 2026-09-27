@@ -3504,6 +3504,28 @@
     "raw_sha256": "6569c1d0e9db4b5d5f73c3479e9a837a29e7bcce2225f3a9c98504db1478648c"
   },
   {
+    "url": "https://codeforces.com/blog/entry/149733",
+    "blog_entry_id": 149733,
+    "title": "Educational Codeforces Round 186 Editorial",
+    "author": "awoo",
+    "creation_time": "2025-12-30",
+    "original_locale": "ru",
+    "source": "codeforces-blog",
+    "label": "Educational Codeforces Round 186 Editorial",
+    "section_count": 8,
+    "covered_problems": [
+      "2182A",
+      "2182B",
+      "2182C",
+      "2182D",
+      "2182E",
+      "2182F1",
+      "2182F2",
+      "2182G"
+    ],
+    "raw_sha256": "77c3c43f30e1183875b17ff6eb17c7fe748fbd108f27fdfd9c6b9d564997f78d"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/149944",
     "blog_entry_id": 149944,
     "title": "Hello 2026 Editorial",

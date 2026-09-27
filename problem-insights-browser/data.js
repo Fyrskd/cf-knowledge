@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1938,
-    "source_total_problems": 1938,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 1938,
+    "total_problems": 1939,
+    "source_total_problems": 1946,
+    "filtered_out_problems": 7,
+    "with_statement_brief": 1939,
     "with_editorial_brief": 1696,
     "with_solution_brief": 1697,
-    "missing_editorial_brief": 241,
+    "missing_editorial_brief": 242,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 879,
     "primary_topic_count": 13,
-    "contest_count": 305,
+    "contest_count": 306,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -47,7 +47,7 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 81,
     "构造与贪心": 654,
     "图论与网络流": 118,
-    "动态规划与状态设计": 182,
+    "动态规划与状态设计": 183,
     "数论与同余": 185,
     "组合计数与概率": 148,
     "数据结构": 162,
@@ -61,7 +61,7 @@ window.CF_INSIGHTS_DATA = {
   "statusCounts": {
     "ai_generated_with_editorial": 771,
     "ai_generated_partial_editorial": 34,
-    "missing_editorial": 241,
+    "missing_editorial": 242,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -15243,6 +15243,44 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "关键观察：大规模部分不用完整搜索，先用配对操作把 1 的数量压到很小；剩余局面用掩码 DP 还原操作序列，从而兼顾构造正确性和复杂度。",
           "extractionStatus": "manual_override",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2182,
+      "name": "Educational Codeforces Round 186 (Rated for Div. 2)",
+      "date": "2025-12-29",
+      "url": "https://codeforces.com/contest/2182",
+      "type": "Educational",
+      "problemCount": 1,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "2182F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Christmas Reindeer (easy version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/2182/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/149733",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Christmas Reindeer (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     },

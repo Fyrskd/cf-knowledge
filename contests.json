@@ -2541,6 +2541,17 @@
     "date": "2025-12-27"
   },
   {
+    "id": 2182,
+    "name": "Educational Codeforces Round 186 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1767018900,
+    "relativeTimeSeconds": 23451021,
+    "date": "2025-12-29"
+  },
+  {
     "id": 2183,
     "name": "Hello 2026",
     "type": "CF",
