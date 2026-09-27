@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1262,
+    "ai_override_count": 1269,
     "primary_topic_count": 13,
     "contest_count": 359,
     "rating_min": 800,
@@ -44,18 +44,18 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 108,
-    "构造与贪心": 767,
+    "字符串": 109,
+    "构造与贪心": 765,
     "图论与网络流": 136,
-    "动态规划与状态设计": 210,
-    "数论与同余": 242,
+    "动态规划与状态设计": 209,
+    "数论与同余": 243,
     "组合计数与概率": 176,
     "数据结构": 208,
     "几何": 52,
     "树结构": 137,
     "代数、矩阵与多项式": 19,
     "交互": 82,
-    "基础实现与模拟": 113,
+    "基础实现与模拟": 114,
     "博弈": 78
   },
   "statusCounts": {
@@ -50078,7 +50078,9 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1992/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/131438",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
           "originalTags": [
             "brute force",
             "constructive algorithms",
@@ -50086,7 +50088,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Only Pluses；本地暂无可用题解正文。",
+          "statementBrief": "给定三个正整数 $a,b,c$，最多进行 5 次操作，每次任选其中一个数并将其加 1，操作可连续作用于同一个数。求操作结束后 $a\\times b\\times c$ 的最大值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -50102,16 +50104,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1992/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/131438",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "图论与网络流",
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "greedy",
             "math",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Angry Monk；本地暂无可用题解正文。",
+          "statementBrief": "给定总长度为 $n$ 的土豆糕已被切成 $k$ 段，段长为 $a_1,\u0000a_2,\u0000\\ldots,\u0000a_k$ 且总和为 $n$。题目要求通过题面所称的允许操作，将这些段恢复成一个长度为 $n$ 的整体，并求最少操作次数；但当前记录未包含具体操作规则。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -50128,14 +50127,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/131438",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "组合计数与概率",
-            "字符串"
+            "数论与同余"
           ],
           "originalTags": [
             "constructive algorithms",
             "math"
           ],
-          "statementBrief": "题面已抓取：Gorilla and Permutation；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n,m,k$ 且 $m<k$，要排列 $1$ 到 $n$。对每个前缀，函数 $g$ 累加其中不超过 $m$ 的数，函数 $f$ 累加其中不小于 $k$ 的数；需要构造一个排列，使所有前缀的 $f$ 之和减去所有前缀的 $g$ 之和最大。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -50150,16 +50148,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1200,
           "problemUrl": "https://codeforces.com/contest/1992/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/131438",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "构造与贪心"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "dp",
             "greedy",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Test of Love；本地暂无可用题解正文。",
+          "statementBrief": "河流被划分为 $n$ 个连续的 1 米河段，每段是木桩 L、鳄鱼 C 或水 W；角色从位置 $0$ 的左岸出发，目标是到达位置 $n+1$ 的右岸，最大跳跃距离为 $m$，全程游泳距离不能超过 $k$。题目要求按照规定的移动方式判断是否能到达右岸，但当前记录缺少“可以怎样移动”的具体规则。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -50174,9 +50170,10 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1700,
           "problemUrl": "https://codeforces.com/contest/1992/problem/E",
           "editorialUrl": "https://codeforces.com/blog/entry/131438",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "字符串",
           "secondaryTopics": [
-            "字符串"
+            "构造与贪心",
+            "基础实现与模拟"
           ],
           "originalTags": [
             "brute force",
@@ -50185,7 +50182,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "strings"
           ],
-          "statementBrief": "题面已抓取：Novice's Mistake；本地暂无可用题解正文。",
+          "statementBrief": "给定整数 $n$，原题的正确答案是 $an-b$，其中每位朋友赠送 $a$ 个苹果，且最终返还 $b$ 个。由于错误程序把 $n$ 当作字符串处理，需要找出所有满足约束、且该错误程序仍输出正确答案的 $(a,b)$，并输出这些数对。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -50200,12 +50197,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1900,
           "problemUrl": "https://codeforces.com/contest/1992/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/131438",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数论与同余",
-            "动态规划与状态设计",
-            "博弈"
-          ],
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "dp",
@@ -50213,7 +50206,7 @@ window.CF_INSIGHTS_DATA = {
             "number theory",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Valuable Cards；本地暂无可用题解正文。",
+          "statementBrief": "给定一列卡片及其正整数价格，且没有价格等于 $x$。需要把整列卡片划分成若干个连续分段；若一个分段中不存在若干张卡片，其价格乘积恰好为 $x$，则该分段为坏分段，求全部分段均为坏分段时所需的最少分段数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -50231,15 +50224,14 @@ window.CF_INSIGHTS_DATA = {
           "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
             "动态规划与状态设计",
-            "博弈",
-            "数据结构"
+            "数论与同余"
           ],
           "originalTags": [
             "combinatorics",
             "dp",
             "math"
           ],
-          "statementBrief": "题面已抓取：Ultra-Meow；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为 $n$、元素取自 $1$ 到 $n$ 的数组。对数组的每个不同子集 $b$，令其贡献为集合中未出现的正整数按升序排列后的第 $|b|+1$ 个数，将所有子集贡献相加并对 $10^9+7$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

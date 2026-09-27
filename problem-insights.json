@@ -24,7 +24,7 @@
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1262,
+    "ai_override_count": 1269,
     "primary_topic_count": 13
   },
   "records": [
@@ -30630,7 +30630,9 @@
       "editorial_url": "https://codeforces.com/blog/entry/131438",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [],
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
       "original_tags": [
         "brute force",
         "constructive algorithms",
@@ -30638,7 +30640,7 @@
         "math",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Only Pluses；本地暂无可用题解正文。",
+      "statement_brief": "给定三个正整数 $a,b,c$，最多进行 5 次操作，每次任选其中一个数并将其加 1，操作可连续作用于同一个数。求操作结束后 $a\\times b\\times c$ 的最大值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30646,9 +30648,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:13:11+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 735,
@@ -30660,16 +30672,13 @@
       "editorial_url": "https://codeforces.com/blog/entry/131438",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "图论与网络流",
-        "博弈"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "greedy",
         "math",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Angry Monk；本地暂无可用题解正文。",
+      "statement_brief": "给定总长度为 $n$ 的土豆糕已被切成 $k$ 段，段长为 $a_1,\u0000a_2,\u0000\\ldots,\u0000a_k$ 且总和为 $n$。题目要求通过题面所称的允许操作，将这些段恢复成一个长度为 $n$ 的整体，并求最少操作次数；但当前记录未包含具体操作规则。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30677,9 +30686,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:12:53+00:00",
+          "quality_flags": [
+            "ambiguous_operation",
+            "incomplete_statement",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 736,
@@ -30692,14 +30713,13 @@
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
       "secondary_topics": [
-        "组合计数与概率",
-        "字符串"
+        "数论与同余"
       ],
       "original_tags": [
         "constructive algorithms",
         "math"
       ],
-      "statement_brief": "题面已抓取：Gorilla and Permutation；本地暂无可用题解正文。",
+      "statement_brief": "给定 $n,m,k$ 且 $m<k$，要排列 $1$ 到 $n$。对每个前缀，函数 $g$ 累加其中不超过 $m$ 的数，函数 $f$ 累加其中不小于 $k$ 的数；需要构造一个排列，使所有前缀的 $f$ 之和减去所有前缀的 $g$ 之和最大。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30707,9 +30727,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:12:08+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_format_corrupted",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 737,
@@ -30720,16 +30751,14 @@
       "problem_url": "https://codeforces.com/contest/1992/problem/D",
       "editorial_url": "https://codeforces.com/blog/entry/131438",
       "editorial_quality": "url_only",
-      "primary_topic": "动态规划与状态设计",
-      "secondary_topics": [
-        "构造与贪心"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "dp",
         "greedy",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Test of Love；本地暂无可用题解正文。",
+      "statement_brief": "河流被划分为 $n$ 个连续的 1 米河段，每段是木桩 L、鳄鱼 C 或水 W；角色从位置 $0$ 的左岸出发，目标是到达位置 $n+1$ 的右岸，最大跳跃距离为 $m$，全程游泳距离不能超过 $k$。题目要求按照规定的移动方式判断是否能到达右岸，但当前记录缺少“可以怎样移动”的具体规则。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30737,9 +30766,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:11:52+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "incomplete_statement",
+            "missing_editorial"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 738,
@@ -30750,9 +30790,10 @@
       "problem_url": "https://codeforces.com/contest/1992/problem/E",
       "editorial_url": "https://codeforces.com/blog/entry/131438",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "字符串",
       "secondary_topics": [
-        "字符串"
+        "构造与贪心",
+        "基础实现与模拟"
       ],
       "original_tags": [
         "brute force",
@@ -30761,7 +30802,7 @@
         "math",
         "strings"
       ],
-      "statement_brief": "题面已抓取：Novice's Mistake；本地暂无可用题解正文。",
+      "statement_brief": "给定整数 $n$，原题的正确答案是 $an-b$，其中每位朋友赠送 $a$ 个苹果，且最终返还 $b$ 个。由于错误程序把 $n$ 当作字符串处理，需要找出所有满足约束、且该错误程序仍输出正确答案的 $(a,b)$，并输出这些数对。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30769,9 +30810,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:11:26+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 739,
@@ -30782,12 +30834,8 @@
       "problem_url": "https://codeforces.com/contest/1992/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/131438",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "数论与同余",
-        "动态规划与状态设计",
-        "博弈"
-      ],
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "dp",
@@ -30795,7 +30843,7 @@
         "number theory",
         "two pointers"
       ],
-      "statement_brief": "题面已抓取：Valuable Cards；本地暂无可用题解正文。",
+      "statement_brief": "给定一列卡片及其正整数价格，且没有价格等于 $x$。需要把整列卡片划分成若干个连续分段；若一个分段中不存在若干张卡片，其价格乘积恰好为 $x$，则该分段为坏分段，求全部分段均为坏分段时所需的最少分段数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30803,9 +30851,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:11:08+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 740,
@@ -30819,15 +30877,14 @@
       "primary_topic": "组合计数与概率",
       "secondary_topics": [
         "动态规划与状态设计",
-        "博弈",
-        "数据结构"
+        "数论与同余"
       ],
       "original_tags": [
         "combinatorics",
         "dp",
         "math"
       ],
-      "statement_brief": "题面已抓取：Ultra-Meow；本地暂无可用题解正文。",
+      "statement_brief": "给定一个长度为 $n$、元素取自 $1$ 到 $n$ 的数组。对数组的每个不同子集 $b$，令其贡献为集合中未出现的正整数按升序排列后的第 $|b|+1$ 个数，将所有子集贡献相加并对 $10^9+7$ 取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -30835,9 +30892,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T05:10:52+00:00",
+          "quality_flags": [
+            "ambiguous_subset_definition",
+            "malformed_statement",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 741,
