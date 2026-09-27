@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2148,
+    "total_problems": 2155,
     "source_total_problems": 2155,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2148,
-    "with_editorial_brief": 1896,
-    "with_solution_brief": 1897,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2155,
+    "with_editorial_brief": 1903,
+    "with_solution_brief": 1904,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1089,
+    "ai_override_count": 1096,
     "primary_topic_count": 13,
-    "contest_count": 334,
+    "contest_count": 335,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 94,
-    "构造与贪心": 724,
+    "构造与贪心": 726,
     "图论与网络流": 126,
-    "动态规划与状态设计": 199,
+    "动态规划与状态设计": 200,
     "数论与同余": 221,
     "组合计数与概率": 162,
-    "数据结构": 183,
-    "几何": 46,
+    "数据结构": 184,
+    "几何": 49,
     "树结构": 132,
     "代数、矩阵与多项式": 18,
     "交互": 78,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 74
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 967,
+    "ai_generated_with_editorial": 974,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -34076,6 +34076,224 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：困难版难点不在公式变了，而在 phi 前缀和规模太大。保留 简单版的跳变状态树，对每个状态求其子树中 phi 的总贡献；这些子树和再用数论分块/筛式前缀和计算，最后只遍历重要节点。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2074,
+      "name": "Codeforces Round 1009 (Div. 3)",
+      "date": "2025-03-11",
+      "url": "https://codeforces.com/contest/2074",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "2074A",
+          "index": "A",
+          "slot": "A",
+          "title": "Draw a Square",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2074/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/140540",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "geometry",
+            "implementation"
+          ],
+          "statementBrief": "给定四个平面点 $(-l,0)$、$(r,0)$、$(0,-d)$、$(0,u)$，其中四个参数均为正整数。需要判断能否把这四点作为顶点连接成一个四条边等长、四个内角相等且边不相交的正方形。",
+          "transformedStatement": "题目等价于判断四个坐标轴方向上的距离是否一致：只有当四个参数满足 $l=r=d=u$ 时，四点才是以原点为中心、位于两条坐标轴上的正方形四个顶点。",
+          "keyObservations": [
+            "四个点分别位于坐标轴正负方向；若它们构成正方形，水平和竖直方向的对应距离必须相等，即 $l=r=d=u$。",
+            "当 $l=r=d=u$ 时，四点关于原点对称，依次连接可形成四条等长边且四个直角，因此该条件也充分。",
+            "每组数据只需比较四个整数是否全部相等，不需要计算距离或尝试排列。"
+          ],
+          "solutionBrief": "对每个测试用例判断 $l,r,d,u$ 是否全部相等。全相等时四点组成以原点为中心的正方形，输出 Yes，否则输出 No；每组复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2074B",
+          "index": "B",
+          "slot": "B",
+          "title": "The Third Side",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2074/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/140540",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "geometry",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个正整数序列。每次选择两个不同元素，并用一个正整数 $x$ 替换它们，要求这两个元素与 $x$ 能组成非退化三角形；重复操作直到只剩一个元素，求该元素的最大值。",
+          "transformedStatement": "把过程看成对序列总和的控制：一次合并用 $x$ 替代 $a_i+a_j$，且三角形条件限制 $x\\le a_i+a_j-1$。题目转化为在固定的 $n-1$ 次合并中最小化每次总和损失。",
+          "keyObservations": [
+            "每次用 $a_i,a_j$ 替换为 $x$ 后，总和变为原总和 $-a_i-a_j+x$；三角形要求 $x<a_i+a_j$，所以正整数条件下总和至少减少 $1$。",
+            "对任意正整数 $p,q$，取 $x=p+q-1$ 总能组成非退化三角形，因为三条不等式分别归结为 $p+q>p+q-1$、$2p-1>0$ 和 $2q-1>0$。",
+            "因此每一步都能恰好让总和减少 $1$，共进行 $n-1$ 步后，最终元素最大为初始总和减去 $n-1$。"
+          ],
+          "solutionBrief": "设初始总和为 $S$。每次操作最多保留两数之和减 $1$，而取 $x=a_i+a_j-1$ 总能满足三角形条件，因此每步恰减 $1$；进行 $n-1$ 次后答案为 $S-n+1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2074C",
+          "index": "C",
+          "slot": "C",
+          "title": "XOR and Triangle",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2074/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/140540",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "geometry",
+            "greedy",
+            "probabilities"
+          ],
+          "statementBrief": "给定整数 $x$，需要选择正整数 $y<x$，使边长为 $x$、$y$ 和 $x\\oplus y$ 的三角形非退化。若存在则输出任意这样的 $y$，否则输出 $-1$。",
+          "transformedStatement": "把三角形判定改写为位条件：$y$ 必须与 $x$ 有公共置位，同时还要包含一个 $x$ 中未置位的位置；问题转化为寻找小于 $x$ 的满足这两类比特条件的数。",
+          "keyObservations": [
+            "三角形不等式中，$x+y>x\\oplus y$ 等价于 $x\\&y>0$，说明 $y$ 必须与 $x$ 共享至少一个置位。",
+            "在 $y<x$ 的前提下，另一条关键不等式等价于 $y>x\\&y$，因此 $y$ 还必须包含一个在 $x$ 中未置位的比特。",
+            "满足条件的最小候选可以只保留两个置位：一个来自 $x$，另一个不来自 $x$；枚举这两类比特的组合即可覆盖可行性。",
+            "枚举所有两位置位的候选并检查其是否小于 $x$，找到任意一个即可，否则不存在合法答案，单组复杂度为 $O((\\log x)^2)$。"
+          ],
+          "solutionBrief": "将三角形条件化为 $y$ 与 $x$ 共享置位且含有 $x$ 未置位的比特。枚举一个共享比特和一个非共享比特组成的两位置位数，若其小于 $x$ 就输出，否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2074D",
+          "index": "D",
+          "slot": "D",
+          "title": "Counting Points",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2074/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/140540",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "geometry",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定若干个圆，圆心分别为 $(x_i,0)$，半径为 $r_i$，且所有半径之和为 $m$。需要统计至少位于一个圆内部或边界上的整数点 $(x,y)$ 数量。",
+          "transformedStatement": "把并集按整数横坐标切成竖直截线：每个圆在某个横坐标上覆盖一个关于 $y=0$ 对称的整数区间，多个圆的区间可用最大半高合并，最后统计各横坐标的区间长度。",
+          "keyObservations": [
+            "固定整数横坐标 $x$ 后，圆内整数纵坐标构成对称区间，半高为 $a=\\left\\lfloor\\sqrt{r_i^2-(x-x_i)^2}\\right\\rfloor$，因此贡献是 $2a+1$。",
+            "多个圆覆盖同一横坐标时，只需保留最大的半高；对应的纵坐标区间包含其他圆的区间，避免重复计数。",
+            "半径总和为 $m$，第 $i$ 个圆只需处理 $[x_i-r_i,x_i+r_i]$ 内的横坐标，总处理规模为 $O(m)$，再按横坐标合并即可。"
+          ],
+          "solutionBrief": "枚举每个圆覆盖的整数横坐标，利用圆方程计算该横坐标的最大整数半高，并在映射中保留各横坐标的最大半高。最后对所有出现的横坐标累加 $2a+1$，复杂度为 $O(m\\log m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2074E",
+          "index": "E",
+          "slot": "E",
+          "title": "Empty Triangle",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2074/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/140540",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "交互"
+          ],
+          "originalTags": [
+            "geometry",
+            "interactive",
+            "probabilities"
+          ],
+          "statementBrief": "有 $n$ 个坐标未知、任意三点不共线的固定点。每次可询问三个不同编号，若其三角形内有隐藏点，交互器返回其中一个编号，否则返回 0；最多询问 75 次，要求找出一个内部不含其他点的三角形。",
+          "transformedStatement": "把当前三角形及其内部点看成状态；返回内部点 $p$ 后，用 $p$ 替换三个顶点中的任意一个，形成三个候选子三角形。它们共同划分原内部点集合（除去 $p$），因此随机沿子三角形递归即可利用内部点数的三分之一缩减。",
+          "keyObservations": [
+            "若询问三角形返回内部点 $p$，将一个顶点替换为 $p$ 得到的三个子三角形，其内部点数都严格少于原三角形。",
+            "原三角形内部点被三个子三角形的内部点集合与点 $p$ 划分，因此满足 $c_i+c_j+c_k+1=c$，这为数量缩减提供了不变量。",
+            "由抽屉原理，三个子三角形中至少一个的内部点数不超过 $(c-1)/3$；随机替换顶点以至少 $1/3$ 的概率选中它。",
+            "连续选中这种好子三角形至多 $\u0007\\lfloor\\log_3 n\\rfloor+1$ 次即可得到空三角形，而 75 次查询足以让失败概率极低。"
+          ],
+          "solutionBrief": "从任意三点开始询问；若返回内部点 $p$，等概率随机选择一个顶点替换为 $p$，继续询问新三角形。三个子三角形的内部点数满足划分关系，每次以至少 $1/3$ 概率让数量缩减到约三分之一，75 次内以极高概率得到返回 0 的空三角形。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2074F",
+          "index": "F",
+          "slot": "F",
+          "title": "Counting Necessary Nodes",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/2074/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/140540",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "divide and conquer",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定矩形区域 $[l_1,r_1]\\times[l_2,r_2]$，四叉树的每个节点对应一个边长为 $2^k$ 的轴对齐正方形，且大正方形递归划分为四个子正方形。要求选择尽可能少的节点，使这些节点对应区域的并集恰好等于给定矩形。",
+          "transformedStatement": "把矩形的两个轴区间分别改写成不重叠的规范二进制区间集合，再将目标矩形拆成区间对形成的子矩形；每个子矩形独立计算最小四叉树节点数并求和。",
+          "keyObservations": [
+            "将两个坐标轴上的目标区间分别分解为线段树规范二进制区间，矩形因此被划分为这些区间的笛卡尔积。",
+            "对于边长为 $|a|$ 和 $|b|$ 的子矩形，任何边长大于 $\\min(|a|,|b|)$ 的四叉树节点都会越出目标区域，因而不能使用。",
+            "边长不超过 $\\min(|a|,|b|)$ 的节点要么完全包含在该子矩形内，要么完全在其外部，所以不同子矩形可以独立覆盖。",
+            "由于两条边长都是 $2$ 的幂，较长边可被较短边整除；该子矩形恰需 $\\frac{\\max(|a|,|b|)}{\\min(|a|,|b|)}$ 个最小允许边长的节点覆盖。"
+          ],
+          "solutionBrief": "分别求两个轴区间的规范二进制分解。对每对区间，按较短边长放置四叉树节点，贡献为较长边与较短边之比；累加所有贡献，复杂度为 $O(\\log^2 X)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2074G",
+          "index": "G",
+          "slot": "G",
+          "title": "Game With Triangles: Season 2",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/2074/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/140540",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "dp",
+            "geometry"
+          ],
+          "statementBrief": "正多边形每个顶点有正整数权值。可以反复选取三个尚未使用的顶点画三角形并获得三者乘积，但新三角形不能与已画三角形有正面积重叠；求所有合法操作下的最大总得分。",
+          "transformedStatement": "切开一条多边形边后，把顶点排列视为线性区间；用 $dp[L][R]$ 表示该区间内可选互不冲突三角形的最大得分，并通过端点三角形或区间二分递推。",
+          "keyObservations": [
+            "固定一条多边形边并切开后，圆环可线性化为顶点区间；枚举所有切边取最大值不会改变最优答案。",
+            "区间中的最优方案若包含三角形 $(L,i,R)$，其余可用顶点被分成互不相交的区间 $[L+1,i-1]$ 与 $[i+1,R-1]$，因此可独立求和。",
+            "区间也可以先在某处分成两段；三段划分会在子问题中继续完成，所以只保留二段划分即可去除冗余转移。",
+            "端点三角形转移和二段划分共同覆盖所有不重叠方案，使状态数为 $O(n^2)$、转移枚举为 $O(n)$，总复杂度降至 $O(n^3)$。"
+          ],
+          "solutionBrief": "枚举切开的多边形边，将问题转为区间 DP。令 $dp[L][R]$ 表示区间顶点的最大得分，转移为选三角形 $(L,i,R)$，或把区间二分合并；枚举切边后取最大值，复杂度 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
