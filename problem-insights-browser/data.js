@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2168,
+    "total_problems": 2174,
     "source_total_problems": 2174,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2168,
-    "with_editorial_brief": 1916,
-    "with_solution_brief": 1917,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2174,
+    "with_editorial_brief": 1922,
+    "with_solution_brief": 1923,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1109,
+    "ai_override_count": 1115,
     "primary_topic_count": 13,
-    "contest_count": 337,
+    "contest_count": 338,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 94,
-    "构造与贪心": 731,
+    "字符串": 95,
+    "构造与贪心": 734,
     "图论与网络流": 126,
-    "动态规划与状态设计": 201,
+    "动态规划与状态设计": 202,
     "数论与同余": 224,
     "组合计数与概率": 164,
-    "数据结构": 184,
+    "数据结构": 185,
     "几何": 49,
     "树结构": 132,
     "代数、矩阵与多项式": 18,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 75
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 987,
+    "ai_generated_with_editorial": 993,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -35275,6 +35275,191 @@ window.CF_INSIGHTS_DATA = {
             "函数 $\\lfloor n/p\\rfloor$ 的不同取值不超过 $2\\sqrt n$，相同商值对应连续的 $p$ 区间，因此可按商值分块并用区间平方和快速合并。"
           ],
           "solutionBrief": "按 $p\\le\\sqrt n$、$\\sqrt n<p\\le n$、$p>n$ 分段。第一段直接计算翻转，第二段用两位表示式并按 $\\lfloor n/p\\rfloor$ 的连续相同区间合并，第三段直接计数；总复杂度为 $O(\\sqrt n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2069,
+      "name": "Educational Codeforces Round 174 (Rated for Div. 2)",
+      "date": "2025-02-18",
+      "url": "https://codeforces.com/contest/2069",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "2069A",
+          "index": "A",
+          "slot": "A",
+          "title": "Was there an Array?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2069/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/139774",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "graph matchings",
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n-2$ 的二进制数组 $b$，其中 $b_i=1$ 表示原数组中第 $i$ 个元素与左右邻居都相等，否则至少有一个邻居不同。需要判断是否存在某个整数数组 $a$ 产生恰好给定的相等特征数组。",
+          "transformedStatement": "把每个 $b_i=1$ 看作强制相邻边相等：它要求 $a_{i-1}=a_i=a_{i+1}$。因此只需检测是否出现 $1,0,1$ 的局部矛盾；若没有，就按相邻特征值决定是否延续当前数值来构造 $a$。",
+          "keyObservations": [
+            "若连续三个位置满足 $b_{i-1}=1,b_i=0,b_{i+1}=1$，两侧的 $1$ 都会强制 $a_{i-1}=a_i=a_{i+1}$，与中间的 $b_i=0$ 矛盾，因此这种模式是唯一的不可能情况。",
+            "若不存在上述模式，可以令 $a_1=1$，并在构造 $a_i$ 时只要 $b_{i-1}$ 或 $b_i$ 为 $1$ 就令 $a_i=a_{i-1}$，否则令 $a_i=a_{i-1}+1$，从而保证所有 $b_i=1$ 都对应连续三个相等元素。",
+            "在该构造中，若某个 $b_i=0$ 却出现 $a_{i-1}=a_i=a_{i+1}$，则相邻的 $b_{i-1}$ 和 $b_{i+1}$ 必须都为 $1$，会恰好产生已排除的 $1,0,1$ 模式。"
+          ],
+          "solutionBrief": "逐组检查是否存在连续模式 $1,0,1$；存在则输出 NO。否则按规则构造数组：若相邻涉及的任一 $b$ 为 $1$ 就延续前值，否则将前值加一，因此一定可满足全部条件，输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2069B",
+          "index": "B",
+          "slot": "B",
+          "title": "Set of Strangers",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2069/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/139774",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "matrices"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的彩色表格。每次可选择若干个两两不共边、且颜色相同的格子，把它们同时改成另一种颜色；求把整张表变成同一种颜色所需的最少操作次数。",
+          "transformedStatement": "把每种初始颜色视为一个需要被消除的类别：若其格子构成独立集，消除代价为 $1$；否则利用棋盘黑白划分分两次消除，代价为 $2$。最终选择代价最大的颜色保留。",
+          "keyObservations": [
+            "固定一种颜色后，若该颜色的所有格子两两不共边，一次操作即可全部改掉；若存在同色相邻格子，则一次操作无法同时选择它们，因此至少需要两次。",
+            "即使同色格子相邻，至多两次也能消除该颜色：按棋盘黑白格分别处理，同色的不同连通块之间不会共边。",
+            "因此每种出现过的颜色都有独立消除代价 $v_c\\in\\{1,2\\}$，总代价是所有颜色代价之和减去最终保留颜色的代价。"
+          ],
+          "solutionBrief": "统计每种颜色是否存在同色共边：无相邻格子的代价为 $1$，有相邻格子的代价为 $2$。将所有颜色消除代价求和，再减去最大代价，因为最优策略是不处理该颜色并将其作为最终颜色。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2069C",
+          "index": "C",
+          "slot": "C",
+          "title": "Beautiful Sequence",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2069/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/139774",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个只含 $1,2,3$ 的数组，从中删除任意元素但保持顺序，统计长度至少为 $3$ 且每个非首元素左侧都有更小元素、每个非末元素右侧都有更大元素的子序列数量，结果对 $998244353$ 取模。",
+          "transformedStatement": "题解将两个“存在左侧/右侧元素”的条件分别化为首元素严格小于所有后续元素、末元素严格大于所有前置元素；因此问题等价于统计数组中形如一个 $1$、至少一个连续选取意义上的 $2$、再一个 $3$ 的子序列。",
+          "keyObservations": [
+            "“每个非首元素左侧存在更小值”等价于首元素严格小于其余所有元素；逐项归纳可将局部条件化为首元素约束。",
+            "同理，末元素必须严格大于其余所有元素，因此在取值仅为 $1,2,3$ 时，漂亮子序列唯一形态是 $1,2^+,3$。",
+            "按扫描位置维护“已选一个 $1$”“已选 $1$ 和至少一个 $2$”“已用 $3$ 完成”的计数；遇到 $2$ 时，已有中间段可选可不选，故其数量翻倍，同时可从已选 $1$ 的状态开始。"
+          ],
+          "solutionBrief": "将目标转化为统计形如 $1,2^+,3$ 的子序列。线性扫描并维护三类计数：选定 $1$、选定 $1$ 及至少一个 $2$、以 $3$ 完成；遇到 $2$ 时中间段计数翻倍并可从 $1$ 状态转入，遇到 $3$ 则完成答案，所有计算取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2069D",
+          "index": "D",
+          "slot": "D",
+          "title": "Palindrome Shuffle",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2069/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/139774",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "hashing",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个偶数长度的小写字母串，每次可选择一个连续子串并任意重排其中字符，要求将整个字符串变成回文。求必须重排的连续子串的最短长度；已是回文时可选择空串，答案为 $0$。",
+          "transformedStatement": "先固定保留所有相等的对称端点，剩余问题中首尾不等，所以最优区间只需是剩余串的前缀或后缀。对一种方向，问题转为寻找最短前缀，使其覆盖所有需要改变的对称位置，并提供足够字符补齐未受影响的位置。",
+          "keyObservations": [
+            "先删除两端相等的对称字符，因为它们已经满足回文条件，且不应被操作影响；剩余串首尾不同，因此被打乱的区间必为前缀或后缀。",
+            "固定尝试打乱前缀时，若长度为 $m$ 可行，则长度更大的前缀也可行，因此可对最短可行长度进行二分；后缀情况通过反转字符串统一处理。",
+            "可行性检查需保证每个不相等的对称位置对中至少有一侧位于前缀，否则该不匹配无法改变；这把区间限制转化为逐对检查。",
+            "对每个字符统计未被打乱部分强制需要的数量，不能超过字符串中该字符总数；满足后，剩余字符可按相等字符对填入其余位置，因此这些条件也充分。"
+          ],
+          "solutionBrief": "去掉两端已匹配部分后，分别考虑前缀和后缀。对前缀长度二分，用对称字符对检查不匹配覆盖及各字符库存是否足够，单次检查 $O(n)$，总复杂度 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2069E",
+          "index": "E",
+          "slot": "E",
+          "title": "A, B, AB and BA",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/2069/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/139774",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定只含 A、B 的字符串，要将所有字符恰好划分为长度为 1 或 2 的连续块。单字符块只能是 A 或 B，双字符块只能是 AB 或 BA；AA、BB 不允许出现，四类块的数量分别不能超过 $a,b,ab,ba$，要求判断是否存在合法划分。",
+          "transformedStatement": "先在所有相邻相同字符处强制断开，把问题化为若干交替段的资源分配：不同首尾的段优先提供指定方向的对子，相同首尾的段提供可在 AB 与 BA 之间分配的剩余容量。",
+          "keyObservations": [
+            "相邻相同字符之间任何合法划分都必须断开，因此可先按这些位置切分，剩下的每段都是交替字符段。",
+            "奇数长度且首尾相同的交替段可独立产生任意数量的 AB、BA 对，总容量为该段长度除以二的下取整。",
+            "首尾不同的交替段最多全切成偏好的对子；若必须切出一个相反方向的对子，就会少得到一个对子，因此应优先把较短的段切成偏好方向。",
+            "处理完首尾不同的段后，首尾相同段还能贡献的对子数为 $\\min(ab+ba,tot)$；最后只需检查剩余单字符数量是否不超过 $a,b$。"
+          ],
+          "solutionBrief": "先切开所有相邻相同字符，按交替段类型处理。将首尾不同的段按长度递增优先切成对应方向的对子，再用剩余配额反向处理；首尾相同段补充 $\\min(ab+ba,tot)$ 个对子，最后检查单字符配额。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2069F",
+          "index": "F",
+          "slot": "F",
+          "title": "Graph Inclusion",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/2069/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/139774",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "dsu",
+            "graphs"
+          ],
+          "statementBrief": "有两个初始为空、共享 $n$ 个顶点的无向图 $A,B$。每次查询切换指定图中一条边的存在状态；处理后，求至少向 $A$ 添加多少条边，才能使 $B$ 的每个连通分量都包含在 $A$ 的某个连通分量中。",
+          "transformedStatement": "把目标改写为让 $A$ 的连通分量与并图 $U=A\\cup B$ 的连通分量一致，因此每次答案是 $\\operatorname{cc}(A)-\\operatorname{cc}(U)$；再对边的时间区间进行离线动态连通性维护。",
+          "keyObservations": [
+            "令 $U=A\\cup B$，最终需要让 $A$ 的连通分量恰好变成 $U$ 的分量；因为 $U$ 已包含 $A$，所需边数就是 $\\operatorname{cc}(A)-\\operatorname{cc}(U)$。",
+            "在同一个 $U$ 分量内把 $A$ 的多个分量连成一个，至少需要其数量减一条边且可以做到，因此组件数差值正好是最小答案。",
+            "每条边的存在时间可表示为若干查询区间，并挂到线段树节点；递归到叶子时，根到叶子的边恰好是该时刻存在的边。",
+            "线段树遍历中用不带路径压缩的按秩 DSU 维护连通分量，并回滚节点内的修改，从而同时维护 $A$ 与 $U$ 的组件数。"
+          ],
+          "solutionBrief": "离线求出每条边的存在区间，将区间分解到查询线段树。递归遍历时用两个可回滚 DSU 分别维护 $A$ 和 $A\\cup B$，叶子处输出两者组件数之差。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
