@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2725,
+    "total_problems": 2732,
     "source_total_problems": 2732,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2725,
-    "with_editorial_brief": 2456,
-    "with_solution_brief": 2457,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2732,
+    "with_editorial_brief": 2463,
+    "with_solution_brief": 2464,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1787,
+    "ai_override_count": 1794,
     "primary_topic_count": 13,
-    "contest_count": 416,
+    "contest_count": 417,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 139,
-    "构造与贪心": 857,
+    "构造与贪心": 859,
     "图论与网络流": 168,
-    "动态规划与状态设计": 232,
+    "动态规划与状态设计": 233,
     "数论与同余": 298,
-    "组合计数与概率": 209,
-    "数据结构": 255,
-    "几何": 66,
+    "组合计数与概率": 210,
+    "数据结构": 256,
+    "几何": 67,
     "树结构": 144,
     "代数、矩阵与多项式": 20,
     "交互": 87,
-    "基础实现与模拟": 157,
+    "基础实现与模拟": 158,
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1511,
+    "ai_generated_with_editorial": 1518,
     "ai_generated_partial_editorial": 54,
     "missing_editorial": 268,
     "manual_override": 891,
@@ -79581,6 +79581,218 @@ window.CF_INSIGHTS_DATA = {
             "前 $k-1$ 个班级分配完成后，最后一个班级只需补入自购箱子，并令其礼物数补足到能被该班级人数整除。"
           ],
           "solutionBrief": "先将班级人数排序，依次为前 $k-1$ 个班级从当前箱子中选出 $s_i$ 个，使礼物和模 $s_i$ 为零；利用 $2s_i-1$ 个数的选取定理保证存在性，并用三维 DP 找出具体选择。最后为剩余班级购买一个使总和可整除的箱子并输出分配。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1809,
+      "name": "Educational Codeforces Round 145 (Rated for Div. 2)",
+      "date": "2023-03-23",
+      "url": "https://codeforces.com/contest/1809",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1809A",
+          "index": "A",
+          "slot": "A",
+          "title": "Garland",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1809/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/114300",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定由 4 个彩色灯泡组成的串，初始全灭。每次可切换一个灯泡，但除第一次外，本次选择的颜色必须与上次选择的颜色不同；求将全部灯泡点亮所需的最少操作次数，无法完成则输出 $-1$。",
+          "transformedStatement": "只需按颜色出现次数分类，而不必关注灯泡的具体位置：四个同色时不可行，出现三个同色时需要一次额外的关灯再开灯，其余配置可用四次交替颜色的操作完成。",
+          "keyObservations": [
+            "操作要求相邻两次选择的颜色不同；若四个灯泡颜色全相同，第一次操作后无法继续，因此目标不可达。",
+            "若某种颜色恰有三个灯泡，四次操作无法同时点亮全部灯泡，至少需要让一个灯泡经历“亮—灭—亮”，答案下界为 $6$；题解给出了达到 $6$ 次的序列。",
+            "其余非全同且不存在三连同色的情况，都能安排颜色不相邻的点亮顺序，因此每个灯泡只操作一次，答案为 $4$。"
+          ],
+          "solutionBrief": "只需统计四个字符的颜色出现次数：最大频次为 $4$ 时输出 $-1$，为 $3$ 时输出 $6$，否则输出 $4$。这些情况覆盖所有颜色配置。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1809B",
+          "index": "B",
+          "slot": "B",
+          "title": "Points on Plane",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1809/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/114300",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "在整数坐标平面上放置 $n$ 个芯片，每个芯片的费用是 $|x|+|y|$，总费用取所有芯片费用的最大值；任意两芯片的欧氏距离必须严格大于 $1$。求满足条件时总费用的最小值。",
+          "transformedStatement": "假设总费用不超过 $k$，所有芯片只能放在菱形区域 $|x|+|y|\\le k$ 内；按横坐标分行后计算每行最多可放的芯片数，从而得到该费用下的最大容量。",
+          "keyObservations": [
+            "固定最大费用为 $k$ 后，可选点恰好位于菱形区域 $|x|+|y|\\le k$，因此优化目标转化为计算该区域最多能放多少芯片。",
+            "固定一行 $x$ 时，候选纵坐标连续且相邻点距离为 $1$，最多只能隔一个纵坐标放置；该行容量为 $k-|x|+1$。",
+            "对 $x=0,1,\\dots,k$ 的行容量之和为 $\\frac{(k+1)(k+2)}{2}$，负半轴行容量之和为 $\\frac{k(k+1)}{2}$，总容量因此为 $(k+1)^2$。",
+            "不同横坐标行可以按上述容量同时构造出满足任意两点距离大于 $1$ 的放置方案，所以容量上界可达到，答案就是满足 $(k+1)^2\\ge n$ 的最小 $k$。"
+          ],
+          "solutionBrief": "二分最小的 $k$，判定 $(k+1)^2\\ge n$；也可计算 $k=\\lceil\\sqrt n\\rceil-1$。由于 $n$ 很大，平方根计算需避免浮点精度误差，或用整数校验最终结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1809C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sum on Subarrays",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1809/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/114300",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定整数 $n$ 和 $k$，构造一个长度为 $n$ 的整数数组，使其所有非空连续子数组中，元素和为正的子数组恰好有 $k$ 个。每组数据输出任意满足条件的数组。",
+          "transformedStatement": "把目标计数按最后一个位置拆分：追加一个足够大的正数可一次性新增当前长度个正子数组；剩余的小计数则在某个位置放置正数，并用强负数阻止后续区间变正。",
+          "keyObservations": [
+            "每个新加入的末尾元素会产生恰好当前数组长度个以它结尾的子数组，因此当 $k\\ge n$ 时可递归处理 $(n-1,k-n)$，再追加一个足够大的正数。",
+            "当 $0<k<n$ 时，将第 $k$ 个位置设为 $200$，其余位置主要设为 $-1$，并在其后放置 $-400$，恰好只有以第 $k$ 个位置结尾的 $k$ 个子数组为正。",
+            "选择 $200$ 和 $-400$ 是为了让包含后者的子数组必为负、包含前者但延伸到后方的子数组也不会重新变正，从而避免额外的正子数组。",
+            "递归每次固定最后一个元素贡献的全部 $n$ 个子数组，并把问题规模减一，最终将目标计数拆成若干个完整的 $n$ 与一个小于当前长度的余数。"
+          ],
+          "solutionBrief": "递归构造数组：若 $k\\ge n$，先构造长度 $n-1$、目标为 $k-n$ 的数组，再追加 $1000$，使所有以末位结尾的 $n$ 个子数组为正；若 $k<n$，用第 $k$ 位的 $200$ 制造恰好 $k$ 个正子数组，并用 $-400$ 隔断其后的子数组，其余位置设为 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1809D",
+          "index": "D",
+          "slot": "D",
+          "title": "Binary String Sorting",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1809/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/114300",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定只含 0 和 1 的字符串，每次可以交换相邻字符（花费 $10^{12}$），或删除任意一个字符（花费 $10^{12}+1$）。可进行任意次操作，要求把最终字符串变为非递减的 $0^*1^*$ 形式，并求最少花费；空串也算有序。",
+          "transformedStatement": "把问题看成从原串中删除部分字符，并至多对一个逆序对 $10$ 做交换，使保留下来的字符按所有 0 在前、所有 1 在后的顺序排列；费用首先取决于总操作数，其次取决于交换次数。",
+          "keyObservations": [
+            "由于两种操作的费用都包含 $10^{12}$，应先最小化操作总次数，再在总次数相同的方案中尽量使用交换。",
+            "若保留下来的字符串需要超过一次交换，则其中某个元素至少参与两次逆序；删除该元素可减少更多操作，因此最优方案至多使用一次交换。",
+            "不使用交换时，最终字符串必须是原串的最长 $0^*1^*$ 子序列；枚举保留的 0 的数量，并统计其后的可保留 1。",
+            "使用一次交换时，只需枚举一个相邻逆序对 $10$ 作为交换位置，交换左侧保留的 0 和右侧保留的 1，从而把候选方案压缩为线性枚举。"
+          ],
+          "solutionBrief": "分别计算不交换时最长有序子序列对应的删除数，以及枚举相邻 $10$ 作为唯一交换位置时的最少删除数。比较两类方案的总操作数，若相同则选择交换次数更多者，再按两种操作的单价计算答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1809E",
+          "index": "E",
+          "slot": "E",
+          "title": "Two Tanks",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1809/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/114300",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有两个容量分别为 $a,b$ 的水箱，初始水量为 $c,d$。每次按 $v_i$ 尝试转移：$v_i>0$ 时从第一箱向第二箱倒 $v_i$，否则反向倒 $-v_i$；实际转移量受供水量和目标剩余容量限制。对所有 $0\\le c\\le a,0\\le d\\le b$ 的初始状态，输出全部操作后第一箱的水量。",
+          "transformedStatement": "把每个初始状态按不变量 $cd=c+d$ 分组；每组只需研究第一箱水量 $c$ 的一维状态序列。操作过程中，受边界阻挡的状态会合并成相同答案区间，未受阻挡区间则整体按累计净转移量移动。",
+          "keyObservations": [
+            "所有操作只在两个水箱之间转移水，因此总水量 $c+d$ 始终不变；固定总量后，二维答案矩阵可拆成若干条对角线分别处理。",
+            "固定 $cd=c+d$ 后，一旦某个状态因水量不足或容量不足而无法完整转移，它会与对应端点状态产生相同后续结果；其余未合并状态始终完整执行操作，可用累计有符号转移量表示。",
+            "每条对角线上的答案必呈现“相同前缀、连续中段、相同后缀”的形状，只需维护前缀和后缀的合并范围，再由边界状态恢复整条对角线。",
+            "对操作 $x$，发生合并当且仅当供水不足或目标空间不足；将 $d$ 替换为 $cd-c$ 后，这些条件可直接转化为当前对角线上的前缀、后缀边界判定。"
+          ],
+          "solutionBrief": "按总水量 $cd$ 分对角线处理。对每条对角线顺序扫描操作，维护已合并的前缀、后缀及未合并部分的累计净转移；用四种水量或容量不足条件扩展合并范围，最后由边界值恢复答案。总复杂度为 $O(n(a+b))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1809F",
+          "index": "F",
+          "slot": "F",
+          "title": "Traveling in Berland",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1809/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/114300",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "graphs",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 个城市按环形顺序连接，只能顺时针行驶；驶过第 $i$ 条边需消耗 $a_i$ 升燃油，油箱容量为 $k$，只能在城市加油且每升价格为 $b_i$。分别以每个城市为起点，沿环行驶一周并回到起点，求所需的最小加油费用。",
+          "transformedStatement": "把完整环行程改写为若干个“从零油量出发、到达下一处时也恰好为零油量”的贪心跳步：低价城市尽量预购，容量不足时在最后经过的高价城市补足。跳步的距离和费用可组成可倍增合并的转移。",
+          "keyObservations": [
+            "把一次行动定义为从某城市的 $0$ 油量出发并再次以 $0$ 油量到达后方城市，从而不同阶段可以直接拼接。",
+            "在油价为 $1$ 的城市，应尽量提前购买，以覆盖后续连续的油价 $2$ 城市；若连续路段油量需求不超过 $k$，即可一次买足并跳过这些加价站。",
+            "若覆盖到第 $j$ 段时总需求首次超过 $k$，就在起点买满 $k$，再于第 $j$ 个城市补足余量，单步成本为 $k+2(sum-k)$。",
+            "所有贪心步都保持油量为 $0$，因此可预处理每个城市经过 $2^{p}$ 步后的总距离与总花费，并用倍增在 $O(\\log n)$ 内求出每个起点答案。"
+          ],
+          "solutionBrief": "将行程拆成每次出发和到达都为零油量的贪心步：优先在价格 $1$ 的城市覆盖后续路段，必要时在价格 $2$ 的城市补油。预处理每个城市各倍增层的步长和花费，倍增累加得到所有起点的最小费用。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1809G",
+          "index": "G",
+          "slot": "G",
+          "title": "Prediction",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1809/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/114300",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 名带评分的选手，先任意分配出场顺序；第 $i$ 场由前一场胜者与第 $i+1$ 位选手交手。评分差大于 $k$ 时高分者必胜，否则胜者不确定，求能确定预测全部比赛结果的顺序数。",
+          "transformedStatement": "将顺序写成评分序列：每场的已知胜者必须是当前前缀最大评分，因此等价于要求每个前缀最大值与紧随其后的元素之差的绝对值都大于 $k$。再利用删除低分选手后条件仍成立，按评分从高到低插入构造。",
+          "keyObservations": [
+            "若当前前缀冠军评分为前缀最大值，则下一位必须与它相差至少 $k+1$，否则该场胜负无法确定。",
+            "删除排列中若干最低评分选手不会破坏条件，因此可以按评分从高到低逐步构造排列。",
+            "令 $dp_i$ 统计前 $i$ 名高分选手的合法排列，且首位不与尚未放入的选手冲突，从而无需记录所有禁用位置。",
+            "将下一名选手放在首位会触发一段连续冲突选手；其余选手有 $i$ 个插入位置，冲突段的插入方案数可用阶乘与逆阶乘一次计算。"
+          ],
+          "solutionBrief": "把可预测条件转为每个前缀最大值与下一元素的差至少为 $k+1$。按评分从高到低构造，$dp_i$ 只保留首元素不冲突的排列；普通插入转移有 $i$ 种，首位插入则批量放入连续冲突段，方案数用阶乘计算。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

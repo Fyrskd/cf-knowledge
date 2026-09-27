@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T11:28:21+00:00",
+  "updated_at": "2026-09-27T11:34:35+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -53309,6 +53309,214 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的插入规则和目标，以及 editorial 中关于字典序比较与首个较小数字位置的贪心结论；tags 仅作主题参考。",
+        "quality_flags": []
+      }
+    },
+    "1809G": {
+      "problem_key": "1809G",
+      "title": "Prediction",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1809/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/114300",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4210b79f3efebda2699a964400aa54d1ca0012881463bb63367a184c27f150d6",
+      "generated_at": "2026-09-27T11:32:26+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 名带评分的选手，先任意分配出场顺序；第 $i$ 场由前一场胜者与第 $i+1$ 位选手交手。评分差大于 $k$ 时高分者必胜，否则胜者不确定，求能确定预测全部比赛结果的顺序数。",
+        "transformed_statement": "将顺序写成评分序列：每场的已知胜者必须是当前前缀最大评分，因此等价于要求每个前缀最大值与紧随其后的元素之差的绝对值都大于 $k$。再利用删除低分选手后条件仍成立，按评分从高到低插入构造。",
+        "key_observations": [
+          "若当前前缀冠军评分为前缀最大值，则下一位必须与它相差至少 $k+1$，否则该场胜负无法确定。",
+          "删除排列中若干最低评分选手不会破坏条件，因此可以按评分从高到低逐步构造排列。",
+          "令 $dp_i$ 统计前 $i$ 名高分选手的合法排列，且首位不与尚未放入的选手冲突，从而无需记录所有禁用位置。",
+          "将下一名选手放在首位会触发一段连续冲突选手；其余选手有 $i$ 个插入位置，冲突段的插入方案数可用阶乘与逆阶乘一次计算。"
+        ],
+        "solution_brief": "把可预测条件转为每个前缀最大值与下一元素的差至少为 $k+1$。按评分从高到低构造，$dp_i$ 只保留首元素不冲突的排列；普通插入转移有 $i$ 种，首位插入则批量放入连续冲突段，方案数用阶乘计算。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text，以及 tags 中的组合计数、DP 和数学标签。",
+        "quality_flags": []
+      }
+    },
+    "1809F": {
+      "problem_key": "1809F",
+      "title": "Traveling in Berland",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1809/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/114300",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c835b9b2d698fc1519dcb234c38ef71f88e47b3216572cd845486937bebac88e",
+      "generated_at": "2026-09-27T11:32:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个城市按环形顺序连接，只能顺时针行驶；驶过第 $i$ 条边需消耗 $a_i$ 升燃油，油箱容量为 $k$，只能在城市加油且每升价格为 $b_i$。分别以每个城市为起点，沿环行驶一周并回到起点，求所需的最小加油费用。",
+        "transformed_statement": "把完整环行程改写为若干个“从零油量出发、到达下一处时也恰好为零油量”的贪心跳步：低价城市尽量预购，容量不足时在最后经过的高价城市补足。跳步的距离和费用可组成可倍增合并的转移。",
+        "key_observations": [
+          "把一次行动定义为从某城市的 $0$ 油量出发并再次以 $0$ 油量到达后方城市，从而不同阶段可以直接拼接。",
+          "在油价为 $1$ 的城市，应尽量提前购买，以覆盖后续连续的油价 $2$ 城市；若连续路段油量需求不超过 $k$，即可一次买足并跳过这些加价站。",
+          "若覆盖到第 $j$ 段时总需求首次超过 $k$，就在起点买满 $k$，再于第 $j$ 个城市补足余量，单步成本为 $k+2(sum-k)$。",
+          "所有贪心步都保持油量为 $0$，因此可预处理每个城市经过 $2^{p}$ 步后的总距离与总花费，并用倍增在 $O(\\log n)$ 内求出每个起点答案。"
+        ],
+        "solution_brief": "将行程拆成每次出发和到达都为零油量的贪心步：优先在价格 $1$ 的城市覆盖后续路段，必要时在价格 $2$ 的城市补油。预处理每个城市各倍增层的步长和花费，倍增累加得到所有起点的最小费用。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的环形单向道路与加油规则，以及 editorial_text 的零油量贪心分段和倍增方案；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1809E": {
+      "problem_key": "1809E",
+      "title": "Two Tanks",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1809/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/114300",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e8f94610e72e2d8e8e4e34e5a1033b09308e1ab20982a50e4f1a1d186e437d26",
+      "generated_at": "2026-09-27T11:33:26+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有两个容量分别为 $a,b$ 的水箱，初始水量为 $c,d$。每次按 $v_i$ 尝试转移：$v_i>0$ 时从第一箱向第二箱倒 $v_i$，否则反向倒 $-v_i$；实际转移量受供水量和目标剩余容量限制。对所有 $0\\le c\\le a,0\\le d\\le b$ 的初始状态，输出全部操作后第一箱的水量。",
+        "transformed_statement": "把每个初始状态按不变量 $cd=c+d$ 分组；每组只需研究第一箱水量 $c$ 的一维状态序列。操作过程中，受边界阻挡的状态会合并成相同答案区间，未受阻挡区间则整体按累计净转移量移动。",
+        "key_observations": [
+          "所有操作只在两个水箱之间转移水，因此总水量 $c+d$ 始终不变；固定总量后，二维答案矩阵可拆成若干条对角线分别处理。",
+          "固定 $cd=c+d$ 后，一旦某个状态因水量不足或容量不足而无法完整转移，它会与对应端点状态产生相同后续结果；其余未合并状态始终完整执行操作，可用累计有符号转移量表示。",
+          "每条对角线上的答案必呈现“相同前缀、连续中段、相同后缀”的形状，只需维护前缀和后缀的合并范围，再由边界状态恢复整条对角线。",
+          "对操作 $x$，发生合并当且仅当供水不足或目标空间不足；将 $d$ 替换为 $cd-c$ 后，这些条件可直接转化为当前对角线上的前缀、后缀边界判定。"
+        ],
+        "solution_brief": "按总水量 $cd$ 分对角线处理。对每条对角线顺序扫描操作，维护已合并的前缀、后缀及未合并部分的累计净转移；用四种水量或容量不足条件扩展合并范围，最后由边界值恢复答案。总复杂度为 $O(n(a+b))$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、Editorial 正文及其给出的复杂度分析；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1809D": {
+      "problem_key": "1809D",
+      "title": "Binary String Sorting",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1809/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/114300",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "67e32a9be816c4ea9c5d28a6d96e95b142391b514f43be35085548c7b9f35110",
+      "generated_at": "2026-09-27T11:33:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定只含 0 和 1 的字符串，每次可以交换相邻字符（花费 $10^{12}$），或删除任意一个字符（花费 $10^{12}+1$）。可进行任意次操作，要求把最终字符串变为非递减的 $0^*1^*$ 形式，并求最少花费；空串也算有序。",
+        "transformed_statement": "把问题看成从原串中删除部分字符，并至多对一个逆序对 $10$ 做交换，使保留下来的字符按所有 0 在前、所有 1 在后的顺序排列；费用首先取决于总操作数，其次取决于交换次数。",
+        "key_observations": [
+          "由于两种操作的费用都包含 $10^{12}$，应先最小化操作总次数，再在总次数相同的方案中尽量使用交换。",
+          "若保留下来的字符串需要超过一次交换，则其中某个元素至少参与两次逆序；删除该元素可减少更多操作，因此最优方案至多使用一次交换。",
+          "不使用交换时，最终字符串必须是原串的最长 $0^*1^*$ 子序列；枚举保留的 0 的数量，并统计其后的可保留 1。",
+          "使用一次交换时，只需枚举一个相邻逆序对 $10$ 作为交换位置，交换左侧保留的 0 和右侧保留的 1，从而把候选方案压缩为线性枚举。"
+        ],
+        "solution_brief": "分别计算不交换时最长有序子序列对应的删除数，以及枚举相邻 $10$ 作为唯一交换位置时的最少删除数。比较两类方案的总操作数，若相同则选择交换次数更多者，再按两种操作的单价计算答案。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text，以及 tags 中的贪心和构造信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "1809C": {
+      "problem_key": "1809C",
+      "title": "Sum on Subarrays",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1809/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/114300",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ba0cde1205868a2947130994afa91ec89fe5ab90a4b12bdd44da93a5f43bc9a1",
+      "generated_at": "2026-09-27T11:34:07+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数 $n$ 和 $k$，构造一个长度为 $n$ 的整数数组，使其所有非空连续子数组中，元素和为正的子数组恰好有 $k$ 个。每组数据输出任意满足条件的数组。",
+        "transformed_statement": "把目标计数按最后一个位置拆分：追加一个足够大的正数可一次性新增当前长度个正子数组；剩余的小计数则在某个位置放置正数，并用强负数阻止后续区间变正。",
+        "key_observations": [
+          "每个新加入的末尾元素会产生恰好当前数组长度个以它结尾的子数组，因此当 $k\\ge n$ 时可递归处理 $(n-1,k-n)$，再追加一个足够大的正数。",
+          "当 $0<k<n$ 时，将第 $k$ 个位置设为 $200$，其余位置主要设为 $-1$，并在其后放置 $-400$，恰好只有以第 $k$ 个位置结尾的 $k$ 个子数组为正。",
+          "选择 $200$ 和 $-400$ 是为了让包含后者的子数组必为负、包含前者但延伸到后方的子数组也不会重新变正，从而避免额外的正子数组。",
+          "递归每次固定最后一个元素贡献的全部 $n$ 个子数组，并把问题规模减一，最终将目标计数拆成若干个完整的 $n$ 与一个小于当前长度的余数。"
+        ],
+        "solution_brief": "递归构造数组：若 $k\\ge n$，先构造长度 $n-1$、目标为 $k-n$ 的数组，再追加 $1000$，使所有以末位结尾的 $n$ 个子数组为正；若 $k<n$，用第 $k$ 位的 $200$ 制造恰好 $k$ 个正子数组，并用 $-400$ 隔断其后的子数组，其余位置设为 $-1$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；正子数组计数目标及递归构造依据 editorial_text；题型归类参考 title、rating 与 tags。",
+        "quality_flags": []
+      }
+    },
+    "1809B": {
+      "problem_key": "1809B",
+      "title": "Points on Plane",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1809/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/114300",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "986101cb01ced61e2dfecb4e5f110fe65ca85dd0caedd2ec2d53fb82f60b62a7",
+      "generated_at": "2026-09-27T11:34:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "在整数坐标平面上放置 $n$ 个芯片，每个芯片的费用是 $|x|+|y|$，总费用取所有芯片费用的最大值；任意两芯片的欧氏距离必须严格大于 $1$。求满足条件时总费用的最小值。",
+        "transformed_statement": "假设总费用不超过 $k$，所有芯片只能放在菱形区域 $|x|+|y|\\le k$ 内；按横坐标分行后计算每行最多可放的芯片数，从而得到该费用下的最大容量。",
+        "key_observations": [
+          "固定最大费用为 $k$ 后，可选点恰好位于菱形区域 $|x|+|y|\\le k$，因此优化目标转化为计算该区域最多能放多少芯片。",
+          "固定一行 $x$ 时，候选纵坐标连续且相邻点距离为 $1$，最多只能隔一个纵坐标放置；该行容量为 $k-|x|+1$。",
+          "对 $x=0,1,\\dots,k$ 的行容量之和为 $\\frac{(k+1)(k+2)}{2}$，负半轴行容量之和为 $\\frac{k(k+1)}{2}$，总容量因此为 $(k+1)^2$。",
+          "不同横坐标行可以按上述容量同时构造出满足任意两点距离大于 $1$ 的放置方案，所以容量上界可达到，答案就是满足 $(k+1)^2\\ge n$ 的最小 $k$。"
+        ],
+        "solution_brief": "二分最小的 $k$，判定 $(k+1)^2\\ge n$；也可计算 $k=\\lceil\\sqrt n\\rceil-1$。由于 $n$ 很大，平方根计算需避免浮点精度误差，或用整数校验最终结果。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1809A": {
+      "problem_key": "1809A",
+      "title": "Garland",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1809/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/114300",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "af3d73feca6e38916d35f5cf1668676f147fa7c6546be941c8ef01eafbd5d86b",
+      "generated_at": "2026-09-27T11:34:35+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定由 4 个彩色灯泡组成的串，初始全灭。每次可切换一个灯泡，但除第一次外，本次选择的颜色必须与上次选择的颜色不同；求将全部灯泡点亮所需的最少操作次数，无法完成则输出 $-1$。",
+        "transformed_statement": "只需按颜色出现次数分类，而不必关注灯泡的具体位置：四个同色时不可行，出现三个同色时需要一次额外的关灯再开灯，其余配置可用四次交替颜色的操作完成。",
+        "key_observations": [
+          "操作要求相邻两次选择的颜色不同；若四个灯泡颜色全相同，第一次操作后无法继续，因此目标不可达。",
+          "若某种颜色恰有三个灯泡，四次操作无法同时点亮全部灯泡，至少需要让一个灯泡经历“亮—灭—亮”，答案下界为 $6$；题解给出了达到 $6$ 次的序列。",
+          "其余非全同且不存在三连同色的情况，都能安排颜色不相邻的点亮顺序，因此每个灯泡只操作一次，答案为 $4$。"
+        ],
+        "solution_brief": "只需统计四个字符的颜色出现次数：最大频次为 $4$ 时输出 $-1$，为 $3$ 时输出 $6$，否则输出 $4$。这些情况覆盖所有颜色配置。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面操作规则、样例说明和 editorial 中对 1111、1112、1122、1123、1234 五类配置的分析；tags 仅用于主题归类。",
         "quality_flags": []
       }
     }
