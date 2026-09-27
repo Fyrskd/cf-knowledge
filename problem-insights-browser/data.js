@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2240,
+    "total_problems": 2246,
     "source_total_problems": 2246,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2240,
-    "with_editorial_brief": 1980,
-    "with_solution_brief": 1981,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2246,
+    "with_editorial_brief": 1986,
+    "with_solution_brief": 1987,
     "missing_editorial_brief": 259,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1181,
+    "ai_override_count": 1187,
     "primary_topic_count": 13,
-    "contest_count": 347,
+    "contest_count": 348,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 101,
-    "构造与贪心": 748,
-    "图论与网络流": 130,
+    "构造与贪心": 750,
+    "图论与网络流": 131,
     "动态规划与状态设计": 205,
     "数论与同余": 235,
     "组合计数与概率": 167,
-    "数据结构": 193,
-    "几何": 49,
+    "数据结构": 195,
+    "几何": 50,
     "树结构": 135,
     "代数、矩阵与多项式": 18,
     "交互": 80,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 77
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1051,
+    "ai_generated_with_editorial": 1057,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 259,
     "manual_override": 891,
@@ -42677,6 +42677,201 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：连续盒子不是独立求胜负，因为败者会成为下一盒先手。先跳过前缀全 1 盒，它们只改变先手奇偶；第一个含大堆的非平凡盒决定谁能掌握后续控制权，再用前缀异或统计这些盒子的划分数。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2026,
+      "name": "Educational Codeforces Round 171 (Rated for Div. 2)",
+      "date": "2024-10-28",
+      "url": "https://codeforces.com/contest/2026",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "2026A",
+          "index": "A",
+          "slot": "A",
+          "title": "Perpendicular Segments",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2026/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/135680",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "geometry",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定宽为 $X$、高为 $Y$ 的坐标矩形，需要构造两条端点坐标均为整数的线段；每条长度至少为 $K$，且它们所在的直线互相垂直，线段本身不必相交。输出四个端点的坐标。",
+          "transformedStatement": "把两条线段放入共同的正方形区域，令 $M=\\min(X,Y)$。问题转化为利用该正方形的最大对角线构造两条互相垂直、长度均为 $M\\sqrt{2}$ 的线段。",
+          "keyObservations": [
+            "若第一条线段的包围盒宽、高分别为 $w,h$，其垂直方向的对应线段至少需要宽 $h$、高 $w$，因此两条线段同时放入矩形时必须有 $w,h\\le M$，其中 $M=\\min(X,Y)$。",
+            "当两个包围盒尺寸都不超过 $M$ 时，单条线段长度最多是正方形对角线 $M\\sqrt{2}$；这给出了可行长度的上界。",
+            "取正方形区域的两条对角线可同时达到长度 $M\\sqrt{2}$，且它们所在直线垂直，因此在答案保证存在时该构造必然满足 $K$。"
+          ],
+          "solutionBrief": "令 $M=\\min(X,Y)$，输出 $(0,0)-(M,M)$ 与 $(0,M)-(M,0)$。两条线段长度均为 $M\\sqrt{2}$，所在直线垂直且完全位于允许矩形内。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2026B",
+          "index": "B",
+          "slot": "B",
+          "title": "Black Cells",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2026/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/135680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定递增的指定黑格位置，每次只能选择两个尚未染黑且距离不超过 $k$ 的格子同时染黑；除指定位置外最多再染黑一个格子。求染黑全部指定格所需的最小 $k$。",
+          "transformedStatement": "将问题转化为：必要时加入一个额外位置，使所有位置按从左到右排列后能够两两配对，并最小化所有配对距离中的最大值；奇数规模时只需枚举相邻指定位置旁的候选插入点。",
+          "keyObservations": [
+            "当 $n$ 为偶数时，按原序配成 $(a_1,a_2),(a_3,a_4),\\ldots$ 不会劣于跨越其他点的配对，因此答案就是这些相邻配对距离的最大值。",
+            "当 $n$ 为奇数时，必须额外染黑一个非指定格子，才能将所有黑格分成若干对；额外格子位于某个相邻指定点之间时，只需考虑紧邻左端的 $a_i+1$ 或紧邻右端的 $a_{i+1}-1$。",
+            "枚举每个候选额外格子后，按位置顺序重新两两配对，最大配对距离就是该候选下的最小可行 $k$，取所有候选的最小值即可。"
+          ],
+          "solutionBrief": "偶数个指定格直接按顺序两两配对，答案为配对距离最大值。奇数个时枚举 $O(n)$ 个额外格子候选，插入后按序配对并计算最大距离，取最小值，整体复杂度 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2026C",
+          "index": "C",
+          "slot": "C",
+          "title": "Action Figures",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2026/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/135680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 件商品，第 $i$ 件价格为 $i$，只能从第 $i$ 天起购买；字符串中为 $1$ 的日子可以去商店。每次到店可购买任意件已上架商品，同次购买至少两件时，最贵的一件免费，且每件商品只能买一次；要求买齐全部商品并最小化总花费。",
+          "transformedStatement": "把每次获得的免费商品视为一次访问对应的配对收益：若获得 $k$ 件免费商品，只需考虑 $k$ 次有效访问，并尝试将最晚的 $k$ 个可访问日对应的商品设为免费。问题转为求最大的可行 $k$，其中每个前缀的免费标记数不能超过付费商品数。",
+          "keyObservations": [
+            "若要获得 $k$ 件免费商品，最优只访问 $k$ 次；额外访问若只买一件，可将该商品改到最后一天购买而不增加花费。",
+            "固定访问 $k$ 次时，免费商品必能取为可访问日期中最晚的 $k$ 个位置；交换论证说明任何更早的选择都不会带来更大折扣。",
+            "把这 $k$ 个位置标记为免费商品并从左到右扫描，若某个前缀中免费商品数超过付费商品数，就无法为每件免费商品配对同次购买的商品。",
+            "可行的 $k$ 越大，总折扣越大，因此可以二分最大的可行 $k$，答案为全部价格之和减去这 $k$ 个位置之和。"
+          ],
+          "solutionBrief": "枚举并二分免费商品数量 $k$。取最晚的 $k$ 个可访问日作为免费商品位置，用前缀扫描检查每个免费商品能否与付费商品配对；找到最大可行 $k$ 后，输出 $\\sum_{i=1}^{n}i$ 减去这些位置之和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2026D",
+          "index": "D",
+          "slot": "D",
+          "title": "Sums of Segments",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2026/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/135680",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定数组 $a$，按起点从小到大列出所有连续子数组和：先列出以 $a_1$ 开头的所有区间和，再列出以 $a_2$ 开头的区间和，得到数组 $b$。每次给出 $b$ 中的下标区间 $[l,r]$，要求计算其中所有元素的总和。",
+          "transformedStatement": "不实际构造 $b$，而是把它看成 $n$ 个块：第 $j$ 块包含 $s(j,j),s(j,j+1),\\dots,s(j,n-1)$。全局区间先定位到两个端点块，再转化为端点块部分和与中间完整块和的组合。",
+          "keyObservations": [
+            "把每个全局位置按三角形块边界转换为“起点块编号+块内下标”，区间查询就能拆成两个端点块的部分区间和中间完整块之和。",
+            "对固定起点块 $b$，块内元素是 $s(b,b+k)$；用原数组前缀和 $P$ 后，每项变为 $P_{b+k+1}-P_b$，再对 $P$ 建前缀和即可 $O(1)$ 求任意连续块内区间。",
+            "完整块的总和可以独立预处理并再次建立前缀和，因此多个连续块的贡献能通过两次前缀和相减得到。",
+            "块长度依次为 $n,n-1,\u0005dots,1$，全局位置到块的定位可由三角形边界二分完成，从而避免显式构造长度为 $O(n^2)$ 的数组 $b$。"
+          ],
+          "solutionBrief": "按块定位每个查询端点；预处理原数组前缀和、前缀和的前缀以及各块总和的前缀。查询由首尾块的截取部分和中间完整块组成，利用这些前缀和在 $O(1)$ 合并，定位块用二分，整体为 $O(n+q\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2026E",
+          "index": "E",
+          "slot": "E",
+          "title": "Best Subsequence",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/2026/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/135680",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "dfs and similar",
+            "flows",
+            "graph matchings",
+            "graphs"
+          ],
+          "statementBrief": "给定一个含 $n$ 个非负整数的数组，可以选取其中任意子序列；子序列价值等于元素个数减去所有选中元素按位或结果中的二进制 $1$ 的个数。请输出价值的最大值。",
+          "transformedStatement": "把每个数组元素视为左侧顶点、60 个二进制位视为右侧顶点：元素包含某位就连边。选中元素及其 OR 中未出现的位组成独立集，因此问题转化为求该二分图的最大独立集。",
+          "keyObservations": [
+            "将目标 $k- ext{popcount}(x)$ 改写为 $k+ ext{zeroes}(x)-60$，其中只统计 60 个有效二进制位，从而把置零的位也纳入收益。",
+            "建立元素与二进制位的二分图；选中的元素和其 OR 中为零的位之间没有边，因此它们恰好构成独立集。",
+            "二分图最大独立集大小等于总顶点数减最大匹配数，所以最优答案可化为 $n- ext{最大匹配}$，无需直接枚举子序列。"
+          ],
+          "solutionBrief": "把每个数组元素与其包含的二进制位连边，求该二分图的最大匹配。由最大独立集与最小点覆盖互补，答案为 $n- ext{matching}$，可用二分图匹配或网络流计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2026F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bermart Ice Cream",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/2026/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/135680",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "dp",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "初始只有一个空商店。可复制某商店并按原顺序建立新店、向指定店末尾加入商品、删除该店最早加入的商品，或查询价格总和不超过 $p$ 时商品子集的最大总美味度；每件商品最多选一次。",
+          "transformedStatement": "把每次修改后的商店看成一个版本：复制、加入和删除构成版本树，查询挂在对应版本上。沿版本树 DFS 时维护当前商品队列，并将每个版本的查询转化为当前队列上的 $0/1$ 背包问题。",
+          "keyObservations": [
+            "忽略开店操作时，商品按队列加入末尾、从队首删除；因此可用双栈分解队列，并让每个栈维护加入其商品后的背包 DP。",
+            "每个商品加入或删除时只需更新价格上限为 $P$ 的 $0/1$ 背包状态，单次变更代价为 $O(P)$，而不是重新处理整个商品序列。",
+            "开店操作复制已有商店，所有修改和查询可组织成版本树；对版本树 DFS 时，进入子树执行对应的队首/队尾变更，离开时反向恢复，从而无需持久化整套 DP。",
+            "查询答案只依赖当前队列中商品的价格与美味度，双端队列结构即可覆盖新增商品、删除最早商品以及 DFS 回溯所需的逆操作。"
+          ],
+          "solutionBrief": "将每个商店视为一个版本，建立版本树并离线 DFS。用支持两端操作的双栈队列维护 $0/1$ 背包 DP；进入或离开版本时增删商品并回滚，整体复杂度为 $O(qP)$，其中 $P$ 是查询中的最大价格上限。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
