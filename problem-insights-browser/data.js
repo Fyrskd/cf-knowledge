@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2491,
+    "total_problems": 2497,
     "source_total_problems": 2498,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2491,
-    "with_editorial_brief": 2225,
-    "with_solution_brief": 2226,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2497,
+    "with_editorial_brief": 2231,
+    "with_solution_brief": 2232,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1553,
+    "ai_override_count": 1559,
     "primary_topic_count": 13,
-    "contest_count": 382,
+    "contest_count": 383,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 121,
+    "字符串": 122,
     "构造与贪心": 788,
-    "图论与网络流": 149,
+    "图论与网络流": 150,
     "动态规划与状态设计": 217,
-    "数论与同余": 273,
+    "数论与同余": 274,
     "组合计数与概率": 190,
-    "数据结构": 232,
+    "数据结构": 234,
     "几何": 58,
     "树结构": 136,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 137,
+    "基础实现与模拟": 138,
     "博弈": 87
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1284,
+    "ai_generated_with_editorial": 1290,
     "ai_generated_partial_editorial": 50,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -61706,6 +61706,181 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1915,
+      "name": "Codeforces Round 918 (Div. 4)",
+      "date": "2023-12-28",
+      "url": "https://codeforces.com/contest/1915",
+      "type": "Div. 4",
+      "problemCount": 6,
+      "maxRating": 1800,
+      "problems": [
+        {
+          "key": "1915A",
+          "index": "A",
+          "slot": "A",
+          "title": "Odd One Out",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1915/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/123952",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "implementation"
+          ],
+          "statementBrief": "每组给出三个数字，其中恰有两个相等、另一个不同。对每组数字，找出并输出只出现一次的那个数字。",
+          "transformedStatement": "将问题转化为三数的按位异或：重复数字通过 $x\\oplus x=0$ 被消去，剩余结果就是目标数字。",
+          "keyObservations": [
+            "两个相同数字的按位异或结果为 $0$，因此 $a\\oplus b\\oplus c$ 会自动消去重复值，只留下出现一次的数字。",
+            "题目保证恰有两个数字相等，所以无需比较三种配对情况，直接计算三数异或即可得到唯一值。"
+          ],
+          "solutionBrief": "对每组输入计算 $a\\oplus b\\oplus c$ 并输出。异或满足 $x\\oplus x=0$，相同的两个数字抵消后，结果正好是唯一出现的数字。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1915C",
+          "index": "C",
+          "slot": "C",
+          "title": "Can I Square?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1915/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/123952",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "implementation"
+          ],
+          "statementBrief": "给定若干桶，第 $i$ 个桶中有 $a_i$ 个边长为 $1$ 的小正方形。必须使用全部小正方形，判断它们能否拼成一个完整的大正方形，并输出“YES”或“NO”。",
+          "transformedStatement": "忽略小正方形所在的桶，把所有数量合并为总面积 $s=\\sum a_i$；原问题转化为判断 $s$ 是否是某个整数边长的平方。",
+          "keyObservations": [
+            "所有木块都是相同的 $1\\times1$ 小正方形，因此能否拼成大正方形只取决于总数量，而与分桶方式无关。",
+            "设总数量为 $s=\\sum a_i$，拼成边长为 $k$ 的正方形当且仅当 $s=k^2$，所以问题等价于判断 $s$ 是否为完全平方数。",
+            "使用平方根或二分查找检查完全平方数时需要避免浮点误差，可验证候选整数平方是否恰好等于 $s$。"
+          ],
+          "solutionBrief": "逐个测试用例求出所有桶中小正方形的总数 $s$，再判断是否存在整数 $k$ 使 $k^2=s$；可用整数平方根或二分查找，并注意浮点精度问题。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1915D",
+          "index": "D",
+          "slot": "D",
+          "title": "Unnatural Language Processing",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1915/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/123952",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定只由五个字母组成、且保证合法的单词。单词由若干音节按顺序连接而成，需要在相邻音节之间插入点号；每个音节符合 CV 或 CVC 形式，输出任意一种合法划分。",
+          "transformedStatement": "把问题改写为从单词末尾反向剥离音节：末字符为元音时剥离长度 $2$ 的 CV，否则剥离长度 $3$ 的 CVC，并将剥离边界作为分隔点。",
+          "keyObservations": [
+            "从末尾向左处理时，若当前末字母是元音，它只能作为长度为 $2$ 的 CV 音节结尾，因此边界应向左移动 $2$ 个字符。",
+            "若当前末字母是辅音，它只能属于长度为 $3$ 的 CVC 音节，因此边界应向左移动 $3$ 个字符；题目保证整体始终可行。",
+            "每次从右侧确定一个完整音节后再插入分隔点，不会影响更左侧未处理部分，所以一次逆序扫描即可完成划分。"
+          ],
+          "solutionBrief": "将字符串从右向左扫描：末字符为元音时取最后 2 个字符作为 CV 音节，否则取最后 3 个字符作为 CVC 音节；每确定一个音节就在其左侧加入点，直到处理完整个字符串。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1915E",
+          "index": "E",
+          "slot": "E",
+          "title": "Romantic Glasses",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1915/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/123952",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一排列成一行的 $n$ 个玻璃杯及其中的果汁量，选择一个连续子数组；在该区间内，奇数号杯由 Iulia 饮用、偶数号杯由约会对象饮用，要求两人的果汁总量相等。判断是否存在这样的区间，并输出 YES 或 NO。",
+          "transformedStatement": "把每个位置的果汁量按全局下标奇偶赋予正负号，目标等价于判断是否存在一个连续区间，使其交错和为 $0$；再将其转成变换数组中的零和子数组问题。",
+          "keyObservations": [
+            "将子数组中两人的果汁总量相等改写为该子数组的交错和为 $0$，从而统一处理左右端点奇偶性不同的情况。",
+            "把原数组偶数下标元素变为相反数后，任意子数组的交错和就等于变换数组的普通子数组和，问题转化为寻找和为 $0$ 的连续子数组。",
+            "若两个前缀和相等，则它们之间的连续区间和为 $0$；因此记录出现过的前缀和即可在线判定，并且初始前缀和 $0$ 也必须计入。"
+          ],
+          "solutionBrief": "将偶数下标元素取反，遍历变换后的数组并维护前缀和集合；若当前前缀和曾出现，则对应区间和为 $0$，输出 YES，否则遍历结束输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1915F",
+          "index": "F",
+          "slot": "F",
+          "title": "Greetings",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1915/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/123952",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "sortings"
+          ],
+          "statementBrief": "数轴上每个人从不同的起点 $a_i$ 以速度 1 同时向右移动到终点 $b_i$，到达终点后仍可与后来到达的人问候；任意两人相遇时问候一次。给定所有 $a_i<b_i$ 且端点互不相同，求每组数据的问候总次数。",
+          "transformedStatement": "把每个人的移动表示为区间 $[a_i,b_i]$。问题等价于统计区间对中一个区间完全包含另一个区间的数量，再按右端点顺序将该关系转化为起点大小关系的在线计数。",
+          "keyObservations": [
+            "两人相遇当且仅当一个人的区间 $[a_i,b_i]$ 完全包含另一个人的区间；相交但互不包含时，两人始终同速前进，不会相遇。",
+            "按终点 $b$ 从小到大处理当前区间时，之前处理过且起点更大的区间恰好是被当前区间包含的区间，因此每次统计此前 $a$ 大于当前 $a$ 的数量即可。",
+            "所有端点互异，所以不存在端点相同或同时到达造成的边界歧义；每个满足包含关系的区间对只贡献一次问候。"
+          ],
+          "solutionBrief": "将每个人视为区间 $[a_i,b_i]$，相遇转化为区间包含关系。按 $b$ 升序处理，用树状数组维护已处理起点的频数，查询已出现且 $a$ 更大的数量并累加，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1915G",
+          "index": "G",
+          "slot": "G",
+          "title": "Bicycles",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1915/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/123952",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "graphs",
+            "greedy",
+            "implementation",
+            "shortest paths",
+            "sortings"
+          ],
+          "statementBrief": "给定无向城市图，道路有长度，每座城市出售一辆带迟缓系数的自行车。Slavic 只能骑车移动，可在到达城市后购买任意多辆并随时使用已购车辆；使用系数为 $s$ 的车通过长度 $w$ 的道路耗时 $w\\cdot s$，求从城市 $1$ 到城市 $n$ 的最短时间。",
+          "transformedStatement": "把行程建模为状态 $(城市,当前可用车辆中的最小迟缓系数)$；每次沿边移动产生当前系数乘边长的代价，并可用目的地车辆将系数更新为两者最小值。这样原问题等价于扩展状态图上的最短路。",
+          "keyObservations": [
+            "到达城市时只需记录当前拥有车辆中的最小迟缓系数，因为可以保留已买车辆并随时改用它，较慢的车辆不会再带来优势。",
+            "从状态 $(i,s)$ 沿长度为 $w$ 的道路到邻城 $j$ 时，耗时为 $w\\cdot s$，到达后状态变为 $(j,\\min(s,s_j))$，恰好对应是否购买邻城车辆。",
+            "将每个城市和当前最小迟缓系数组成扩展状态后，所有原行程都对应一条等价路径，因此在非负边权状态图上求最短路即可；终点所有迟缓系数状态中的最小值就是答案。"
+          ],
+          "solutionBrief": "建立状态 $(i,s)$ 表示在城市 $i$ 且当前使用的最小迟缓系数为 $s$。转移到邻城 $j$ 的代价是 $w\\cdot s$，新系数为 $\\min(s,s_j)$；从 $(1,s_1)$ 对扩展图运行 Dijkstra，取所有 $(n,s)$ 的最小距离。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
