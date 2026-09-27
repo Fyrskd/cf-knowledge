@@ -2145,6 +2145,17 @@
     "date": "2025-07-19"
   },
   {
+    "id": 2125,
+    "name": "Educational Codeforces Round 181 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1753194900,
+    "relativeTimeSeconds": 37279208,
+    "date": "2025-07-22"
+  },
+  {
     "id": 2128,
     "name": "Codeforces Round 1039 (Div. 2)",
     "type": "CF",

@@ -2918,6 +2918,26 @@
     "raw_sha256": "aac11ae7bc70a942530b6a99acbec96fee2208b07e9e095f5fa557a824086f89"
   },
   {
+    "url": "https://codeforces.com/blog/entry/144998",
+    "blog_entry_id": 144998,
+    "title": "Educational Codeforces Round 181 Editorial",
+    "author": "awoo",
+    "creation_time": "2025-07-23",
+    "original_locale": "ru",
+    "source": "codeforces-blog",
+    "label": "Educational Codeforces Round 181 Editorial",
+    "section_count": 6,
+    "covered_problems": [
+      "2125A",
+      "2125B",
+      "2125C",
+      "2125D",
+      "2125E",
+      "2125F"
+    ],
+    "raw_sha256": "439d985fd54106274c726791a09e71fd43d3bb843584e37aa047d37e332a3066"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/145080",
     "blog_entry_id": 145080,
     "title": "Codeforces Round #1039 — Editorial",
