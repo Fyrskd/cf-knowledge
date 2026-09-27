@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2114,
+    "total_problems": 2122,
     "source_total_problems": 2122,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2114,
-    "with_editorial_brief": 1862,
-    "with_solution_brief": 1863,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2122,
+    "with_editorial_brief": 1870,
+    "with_solution_brief": 1871,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1055,
+    "ai_override_count": 1063,
     "primary_topic_count": 13,
-    "contest_count": 329,
+    "contest_count": 330,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 92,
-    "构造与贪心": 713,
+    "字符串": 94,
+    "构造与贪心": 715,
     "图论与网络流": 124,
     "动态规划与状态设计": 196,
-    "数论与同余": 214,
+    "数论与同余": 217,
     "组合计数与概率": 159,
-    "数据结构": 180,
+    "数据结构": 181,
     "几何": 46,
     "树结构": 132,
     "代数、矩阵与多项式": 18,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 74
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 933,
+    "ai_generated_with_editorial": 941,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -31715,6 +31715,230 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：难点不是会用 FWHT，而是快速求每个区间在每个频率 k 下的变换值。对 `sum_{j<=r} s(k,j)`，按 k 的最低置位分块，完整长度 `2^{p+1}` 的块贡献为 0，只剩最后一小段；于是区间贡献能写成依赖 `k>>(p+1)` 的两个符号项。把每个区间归一成 `a+b*x^c`，相同 c 的项先合并，最后用 SOS DP 计算所有频率上的乘积，再逆变换得到 f_x。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2094,
+      "name": "Codeforces Round 1017 (Div. 4)",
+      "date": "2025-04-13",
+      "url": "https://codeforces.com/contest/2094",
+      "type": "Div. 4",
+      "problemCount": 8,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "2094A",
+          "index": "A",
+          "slot": "A",
+          "title": "Trippi Troppi",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2094/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/141796",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "每个国家的古代名称由三个小写字符串组成，现代名称定义为这三个字符串首字母按原顺序拼接而成。对每个测试用例输出对应的三字符现代名称。",
+          "transformedStatement": "将每个测试用例视为一个三元组 $(a,b,c)$，答案是字符投影 $a[0]+b[0]+c[0]$；字符串长度和其余字符均可忽略。",
+          "keyObservations": [
+            "现代名称只取三个单词各自的首字符，单词内部其余字符不会影响答案，因此无需处理完整字符串内容。",
+            "每个测试用例的输出长度固定为 $3$，并且字符顺序与输入的三个单词顺序完全一致，按序读取并拼接即可。"
+          ],
+          "solutionBrief": "对每个测试用例读取三个单词，依次取下标为 $0$ 的字符并拼接输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2094B",
+          "index": "B",
+          "slot": "B",
+          "title": "Bobritto Bandito",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2094/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/141796",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms"
+          ],
+          "statementBrief": "房屋位于无限数轴上，第 0 天感染房屋 $0$；之后每天只能感染一个与当前感染区间相邻的健康房屋，因此感染区间每天向左或向右扩展一格。已知第 $n$ 天感染区间为 $[l,r]$，要求构造任意一个可能在第 $m$ 天出现的区间。",
+          "transformedStatement": "不再考虑具体扩展顺序，只需在最终区间 $[l,r]$ 中选择一个包含 $0$ 的子区间 $[l',r']$，使 $r'-l'=m$；满足这些条件即可对应某个合法的第 $m$ 天状态。",
+          "keyObservations": [
+            "经过每天向相邻位置扩展一格后，区间长度差等于天数，因此目标区间必须满足 $r'-l'=m$。",
+            "目标区间必须是最终区间的子区间并包含房屋 $0$，等价于满足 $l\\le l'\\le 0\\le r'\\le r$，从而无需模拟扩展顺序。",
+            "若 $m\\le r$，直接取 $[0,m]$；否则固定右端点为 $r$，取左端点 $r-m$，两种情况都同时满足长度和边界约束。"
+          ],
+          "solutionBrief": "将问题转化为在最终区间内找一个包含 $0$ 且端点差为 $m$ 的区间。若 $m\\le r$ 输出 $(0,m)$，否则输出 $(r-m,r)$，整体为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2094C",
+          "index": "C",
+          "slot": "C",
+          "title": "Brr Brrr Patapim",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2094/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/141796",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 网格，其中第 $i$ 行第 $j$ 列的值等于长度为 $2n$ 的排列中第 $i+j$ 项。请根据网格恢复唯一的完整排列 $p_1,p_2,\\dots,p_{2n}$。",
+          "transformedStatement": "将每个格子按下标和 $i+j$ 映射到排列位置：网格只直接覆盖 $p_2$ 到 $p_{2n}$，而 $p_1$ 不在任何格子中，因此转化为提取边界位置并从排列全集中找缺失值。",
+          "keyObservations": [
+            "同一条反对角线上的格子满足相同的下标和，因此所有值都可视为对应的 $p_{i+j}$，无需处理格子之间的复杂关系。",
+            "第一行前 $n-1$ 个格子依次给出 $p_2, dots,p_n$，最后一行的 $n$ 个格子依次给出 $p_{n+1}, dots,p_{2n}$，正好覆盖除 $p_1$ 外的全部位置。",
+            "由于 $p$ 是 $1$ 到 $2n$ 的排列，标记已在网格中出现的数后，唯一未出现的数必然是 $p_1$，从而补全排列。"
+          ],
+          "solutionBrief": "按下标和将第一行前 $n-1$ 项及最后一行全部项填入 $p_2$ 到 $p_{2n}$，同时标记出现过的数；最后在 $1$ 到 $2n$ 中找唯一未出现的数作为 $p_1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2094D",
+          "index": "D",
+          "slot": "D",
+          "title": "Tung Tung Sahur",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2094/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/141796",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定命中序列 $p$ 和听到的序列 $s$。每次命中左鼓可产生一个或两个 L，右鼓可产生一个或两个 R，且按命中顺序拼接；判断 $s$ 是否可能由 $p$ 产生。",
+          "transformedStatement": "将两串都压缩成按顺序排列的同字符连续段；问题等价于判断两串段序列完全对应，并且原串每段长度 $x$ 在目标串中扩展为 $x$ 到 $2x$ 个相同字符。",
+          "keyObservations": [
+            "每个相同字符的极大连续段只能扩展为同字符段，且不同字符段的顺序不会改变，因此两串的连续段必须一一对应。",
+            "原串中长度为 $x$ 的连续段由每次命中产生一个或两个字符，所以目标串对应段长度 $y$ 必须满足 $x\\le y\\le 2x$。",
+            "只要连续段数量、字符顺序及每对对应段的长度范围都匹配，各段可独立分配为单倍或双倍声音，因而整体一定可行。"
+          ],
+          "solutionBrief": "分别按连续相同字符进行分段，比较两串的段数及每段字符。若对应段长度均满足 $x\\le y\\le2x$，则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2094E",
+          "index": "E",
+          "slot": "E",
+          "title": "Boneca Ambalabu",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2094/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/141796",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的整数数组，选择其中一个元素 $a_k$，计算它与数组所有元素分别按位异或后的总和（包括自身与自身异或）。要求输出所有选择中该总和的最大值。",
+          "transformedStatement": "把每个候选值与全数组的异或总和拆成 30 个二进制位分别统计：某一位对答案的贡献等于该位异或结果为 $1$ 的元素数量乘以 $2^i$。",
+          "keyObservations": [
+            "异或和可按二进制位独立统计，因为各位贡献相加且互不影响，从而避免逐对计算。",
+            "预处理第 $i$ 位为 $1$ 的元素数量 $cnt_i$，固定 $a_k$ 后，该位异或为 $1$ 的数量只可能是 $cnt_i$ 或 $n-cnt_i$。",
+            "若 $a_k$ 的第 $i$ 位为 $0$，贡献为 $cnt_i\\cdot 2^i$；若为 $1$，贡献为 $(n-cnt_i)\\cdot 2^i$，因此每个候选可在 $O(30)$ 内求值。"
+          ],
+          "solutionBrief": "统计所有元素在每个二进制位上的 $1$ 的数量。枚举候选 $a_k$，逐位根据其该位取值计算异或为 $1$ 的元素数及贡献，累加后取最大值；总复杂度为 $O(30n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2094F",
+          "index": "F",
+          "slot": "F",
+          "title": "Trulimero Trulicina",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2094/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/141796",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定 $n\\times m$ 的网格和整数 $k$，其中 $nm$ 是 $k$ 的倍数。需要填入 $1$ 到 $k$，使每个数字出现次数相同，且共享边的两个格子不能相等；输出任意满足条件的网格。",
+          "transformedStatement": "把网格视为按行优先展开的循环序列，基础值为 $(i\\cdot m+j)\\bmod k$；问题转化为选择必要的逐行循环偏移，消除上下相邻的冲突，同时保留循环序列的均衡计数。",
+          "keyObservations": [
+            "按行优先顺序循环填写 $1,2,\u0012,k$，每个数出现次数相等，因为总格数 $nm$ 是 $k$ 的倍数；横向相邻元素总相差 $1\\pmod k$。",
+            "这种填法中纵向相邻元素相差 $m\\pmod k$，因此仅当 $m$ 是 $k$ 的倍数时才会出现纵向相等，这是唯一需要修正的情况。",
+            "当 $k\\mid m$ 时让相邻行使用相反的循环偏移，例如偶数行不偏移、奇数行右移一格；这样纵向相邻元素也相差 $1\\pmod k$，同时不改变各数字的出现次数。"
+          ],
+          "solutionBrief": "先按行优先顺序循环填入 $1$ 到 $k$。若 $k\\nmid m$，直接满足相邻不同；若 $k\\mid m$，交替将每行循环移位一格，使上下相邻元素不同，均衡出现次数保持不变。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2094G",
+          "index": "G",
+          "slot": "G",
+          "title": "Chimpanzini Bananini",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2094/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/141796",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "代数、矩阵与多项式",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "从空数组开始，持续执行三类持久操作：循环右移、整体翻转，或把给定整数追加到末尾。每次操作后计算数组的加权和 $\u0000sum_{i=1}^{n}a_i i$ 并输出。",
+          "transformedStatement": "把数组视为可从两端操作的序列：翻转只需切换当前方向，循环右移对应从一端取出元素放到另一端；通过维护正向和反向加权和，将每次变化转化为端点元素、长度和元素总和的常数次更新。",
+          "keyObservations": [
+            "循环右移等价于把队尾元素移到队首：若队尾为 $x$、数组长度为 $n$、元素和为 $sum$，则当前加权和变为 $score+sum-xn$。",
+            "维护数组反向后的加权和 $rscore$，就能在整体翻转时直接交换 $score$ 与 $rscore$，避免实际反转全部元素。",
+            "整体翻转只改变访问方向，因此用双端队列配合方向标记即可；在当前方向下，操作 1 和追加分别对应两端的移动。",
+            "正向与反向加权和满足 $score+rscore=(n+1)sum$，因此只维护其中一个也能恢复另一个，原因是每个元素在两种方向中的位置权重之和均为 $n+1$。"
+          ],
+          "solutionBrief": "用双端队列保存当前数组，并维护长度、元素和及正向加权和；同时维护反向加权和或通过 $rscore=(n+1)sum-score$ 求出。循环右移按端点调整并更新公式，翻转交换正反状态，追加按新位置更新，所有操作均摊 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2094H",
+          "index": "H",
+          "slot": "H",
+          "title": "La Vaca Saturno Saturnita",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2094/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/141796",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定数组和多个查询 $(k,l,r)$。从 $l$ 到 $r$ 依次处理数组元素：当前位置的值先贡献到答案，若它能整除当前 $k$，就不断用该值除去 $k$；求整个区间的贡献总和。",
+          "transformedStatement": "把查询转化为寻找初始 $k$ 的各个因子在区间中的首次出现位置。按这些位置切分区间，只有切分点会改变当前 $k$，其余连续段直接按长度乘当前值计入答案。",
+          "keyObservations": [
+            "当前值 $k$ 只有在遇到能整除它的 $a[i]$ 时才会变化，因此真正需要关注的元素只来自 $k$ 的因子。",
+            "同一个因子在区间中第一次出现并使 $k$ 除去该因子后，$k$ 将不再被它整除，所以该值的后续出现不会再次产生变化。",
+            "为每个初始因子寻找区间内第一次出现位置并按位置排序，就能得到所有可能改变 $k$ 的事件；相邻事件之间的贡献是区间长度乘以当时的 $k$。",
+            "每个值的位置列表支持二分查找区间内首次出现位置，因而无需逐项扫描查询区间；变化次数由初始 $k$ 的因子数限制。"
+          ],
+          "solutionBrief": "预处理每个数组值出现的位置。对查询初始值 $k$ 枚举其因子，二分找到各因子在 $[l,r]$ 内的首次位置，按位置模拟除法并累加各段的 $k$；每次变化都执行直到不再整除。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
