@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2372,
+    "total_problems": 2380,
     "source_total_problems": 2380,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2372,
-    "with_editorial_brief": 2107,
-    "with_solution_brief": 2108,
-    "missing_editorial_brief": 264,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2380,
+    "with_editorial_brief": 2114,
+    "with_solution_brief": 2115,
+    "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1434,
+    "ai_override_count": 1442,
     "primary_topic_count": 13,
-    "contest_count": 365,
+    "contest_count": 366,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 111,
+    "字符串": 113,
     "构造与贪心": 749,
-    "图论与网络流": 141,
+    "图论与网络流": 142,
     "动态规划与状态设计": 207,
     "数论与同余": 257,
     "组合计数与概率": 185,
-    "数据结构": 220,
-    "几何": 54,
+    "数据结构": 221,
+    "几何": 56,
     "树结构": 134,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 127,
+    "基础实现与模拟": 129,
     "博弈": 84
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1170,
+    "ai_generated_with_editorial": 1177,
     "ai_generated_partial_editorial": 46,
-    "missing_editorial": 264,
+    "missing_editorial": 265,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -53549,6 +53549,236 @@ window.CF_INSIGHTS_DATA = {
             "预处理每个约数对的最大和与所需费用后，将候选按费用排序；每次查询只需在预算内取最大值，并额外处理第 1 位交换的情形。"
           ],
           "solutionBrief": "固定第 1 位不交换，枚举 $a_1,b_1$ 的约数对，用三种情况及容斥统计覆盖全部位置的最小交换费，再做二维约数和变换。预处理候选后排序回答查询，并对第 1 位交换再运行一次。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1971,
+      "name": "Codeforces Round 944 (Div. 4)",
+      "date": "2024-05-10",
+      "url": "https://codeforces.com/contest/1971",
+      "type": "Div. 4",
+      "problemCount": 8,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "1971A",
+          "index": "A",
+          "slot": "A",
+          "title": "My First Sorting Problem",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1971/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/129364",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定多组整数对 $(x,y)$。每组只允许读取这两个数，输出其中较小的数，再输出其中较大的数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1971B",
+          "index": "B",
+          "slot": "B",
+          "title": "Different String",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1971/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/129364",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个只含小写英文字母的字符串，每次测试中可任意重排其字符，要求构造一个与原字符串不同的重排串；若不存在则输出 NO，否则输出 YES 和任意一个满足条件的字符串。",
+          "transformedStatement": "问题等价于判断字符串是否含有至少两个不同字符：若有，交换首字符与某个不同字符即可构造答案；若所有字符相同，任何重排都不会改变原串。",
+          "keyObservations": [
+            "只要字符串中存在两个不同字符，交换它们所在位置就能得到与原串不同的重排；因此可行性等价于“并非所有字符都相同”。",
+            "枚举任意两位置交换即可覆盖所需重排，长度至多为 $10$，每组测试最多进行 $O(|s|^2)$ 次尝试。",
+            "进一步只需固定第一个字符，依次与其他位置交换；若某次交换产生变化即可输出，因为存在不同字符时必有一个位置与首字符不同。"
+          ],
+          "solutionBrief": "逐组检查并尝试交换第一个字符与每个后续字符。若得到不同字符串，输出 YES 及该字符串；若所有字符都相同、无法改变字符串，则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1971C",
+          "index": "C",
+          "slot": "C",
+          "title": "Clock and Strings",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1971/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/129364",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "钟面上有 $1$ 到 $12$ 的数字，红线连接不同位置 $a,b$，蓝线连接不同位置 $c,d$，四个端点互不相同，且两条线都是直线段。判断这两条线段是否相交。",
+          "transformedStatement": "将四个端点按钟面顺序标成红色或蓝色；问题等价于判断两种颜色是否交替出现：交替则两条弦相交，否则不相交。",
+          "keyObservations": [
+            "沿钟面顺时针查看四个端点，若相邻的两个端点属于同一条弦，则两条弦不会相交，因为另一条弦的两个端点都在同一侧。",
+            "若四个端点的颜色严格红蓝交替，则两条弦必相交；交替排列正是两条圆内弦相交的充要条件。",
+            "只需按数字 $1$ 到 $12$ 扫描端点并检查相邻颜色，避免了枚举端点排列和复杂分类。"
+          ],
+          "solutionBrief": "按 $1$ 到 $12$ 的顺序记录四个端点所属弦的颜色。若循环相邻端点中出现两个同色端点，输出 NO；否则颜色必然交替，输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1971D",
+          "index": "D",
+          "slot": "D",
+          "title": "Binary Cut",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1971/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/129364",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "implementation",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定一个只含 `0` 和 `1` 的字符串，可以在字符之间切割成若干个连续片段，再任意重排这些片段。求使拼接结果变成所有 `0` 在所有 `1` 之前的有序二进制串时，所需的最少片段数。",
+          "transformedStatement": "把字符串压缩为交替出现的同值连续块；问题转化为保留这些块的内容并重排，同时尽可能把一个相邻的 `0` 块和 `1` 块合并为跨值片段。",
+          "keyObservations": [
+            "最优切分不会把同一段连续的相同字符拆开，因为合并相邻同值片段既不影响重排能力，又能减少片段数；因此只需统计原串的连续块数。",
+            "重排后所有 `0` 块必须位于所有 `1` 块之前，最多只能把一个原本相邻的 `0` 块和 `1` 块作为跨字符片段连接，否则仍会产生额外的顺序冲突。",
+            "只要原串存在子串 `01`，就能将这对相邻块合并为一个片段，因此答案等于连续块数减一；不存在 `01` 时不能合并，答案就是连续块数。"
+          ],
+          "solutionBrief": "线性扫描统计相邻字符不同产生的连续块数。若存在相邻的 `01`，将这两个块合并可少切一刀，答案为块数减一；否则直接输出块数，复杂度为 $O(|s|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1971E",
+          "index": "E",
+          "slot": "E",
+          "title": "Find the Car",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1971/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/129364",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "汽车从位置 $0$ 出发沿数轴行驶到 $n$，在给定路标 $a_i$ 处分别于时间 $b_i$ 到达，并且相邻路标之间保持恒定速度。对每个查询位置 $d$，输出汽车到达该位置所需时间向下取整后的整数。",
+          "transformedStatement": "将整段路线视为由路标划分的若干线性时间区间；查询 $d$ 先定位其所在区间，再对该区间的距离和时间差做线性插值并向下取整。",
+          "keyObservations": [
+            "相邻路标之间速度恒定，因此到达区间内任意位置的时间是两个端点时间的线性插值。",
+            "对查询点 $d$ 找到最后一个满足 $a_r\\le d$ 的路标后，前缀用时已确定为 $b_r$，只需计算当前区间内的增量。",
+            "时间增量可写成 $(d-a_r)(b_{r+1}-b_r)/(a_{r+1}-a_r)$，各量为正，直接整数除法即可得到向下取整结果，避免浮点误差。",
+            "当查询点恰好是路标时取该路标的时间；到达终点 $n$ 时直接返回已知时间 $b_k$，不再访问下一个路标。"
+          ],
+          "solutionBrief": "对每个查询二分找到最后一个不超过 $d$ 的路标；若 $d=n$ 返回 $b_k$，否则用 $b_r+(d-a_r)(b_{r+1}-b_r)/(a_{r+1}-a_r)$ 的整数除法计算答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1971F",
+          "index": "F",
+          "slot": "F",
+          "title": "Circle Perimeter",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1971/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/129364",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "dfs and similar",
+            "geometry",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定整数半径 $r$，统计所有整数坐标点 $(x,y)$ 中到原点的欧氏距离满足 $r\\le\\sqrt{x^2+y^2}<r+1$ 的点数。每个测试用例独立计算这个宽度为 $1$ 的圆环内格点总数。",
+          "transformedStatement": "把问题重述为统计整数点满足 $r^2\\le x^2+y^2<(r+1)^2$，再利用四重对称性只处理 $x\\ge0,y>0$。固定 $x$ 后，合法纵坐标是一个连续区间，可用单调移动的上下界逐列计数。",
+          "keyObservations": [
+            "利用关于原点的四重对称性，只枚举 $x\\ge 0,y>0$ 的点，最后乘以 $4$，恰好覆盖坐标轴上的点。",
+            "对固定的 $x$，合法的 $y$ 构成连续区间；先从上界递减到距离小于 $r+1$，再向下枚举直到距离小于 $r$。",
+            "逐列维护的上界只会单调下降，因此总检查量与圆环面积近似成正比，为 $O(r)$；所有距离比较可转为比较 $x^2+y^2$ 与两个平方半径。"
+          ],
+          "solutionBrief": "只枚举第一象限中 $x\\ge0,y>0$ 的格点。按 $x=0$ 到 $r$ 扫描，并维护单调下降的 $y$ 上界，枚举满足 $r^2\\le x^2+y^2<(r+1)^2$ 的连续区间，计数后乘 $4$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1971G",
+          "index": "G",
+          "slot": "G",
+          "title": "XOUR",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1971/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/129364",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dsu",
+            "sortings"
+          ],
+          "statementBrief": "给定一个非负整数数组，允许交换任意两个位置上的元素，但只有当这两个元素的按位异或小于 $4$ 时交换才合法；可进行任意次交换，要求得到字典序最小的数组。",
+          "transformedStatement": "按去掉每个数最低两位后的值划分分组：合法交换恰好发生在同一组内，因此每个位置只能接收其所属组的元素，问题转化为分别排序各组并按原位置回填。",
+          "keyObservations": [
+            "若两个数的高位部分不同，它们的异或值必至少为 $4$；因此可交换的两个数必须拥有相同的二进制高位，即去掉最后两位后相等。",
+            "同一分组内任意两数的异或只涉及最后两位，必小于 $4$，所以组内元素可以任意重排，最终只需将每组升序排列。",
+            "不同分组之间无法通过交换连通，因而各组在原数组中的位置集合固定；将每个位置替换为所属组当前最小值即可得到全局字典序最小结果。"
+          ],
+          "solutionBrief": "按 $a_i\\mathbin{\\mathrm{>>}}2$ 将元素分组；每组内可任意交换，因此分别排序。再按原位置依次取出对应组的最小元素，得到字典序最小数组，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1971H",
+          "index": "H",
+          "slot": "H",
+          "title": "±1",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1971/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/129364",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "2-sat",
+            "dfs and similar",
+            "graphs"
+          ],
+          "statementBrief": "给定一个 $3\\times n$ 的网格，每个格子表示某个变量或其相反数。Alice 为每个变量选择 $1$ 或 $-1$，代入网格后逐列排序；若每列排序后的中间元素都是 $1$，则 Alice 获胜，要求判断是否存在这样的选择。",
+          "transformedStatement": "将每个变量的取值看作布尔变量，将网格每列看作三个文字；目标变为让每列至少两个文字为真，即满足由该列生成的三个二元逻辑子句的 2-SAT 可满足性问题。",
+          "keyObservations": [
+            "每列最终要求排序后的中间值为 $1$，等价于该列三个带符号文字中至少有两个为真。",
+            "“$x,y,z$ 中至少两个为真”等价于 $(x\\lor y)\\land(y\\lor z)\\land(z\\lor x)$，因此每列可独立转成三个二元子句。",
+            "把 Alice 对每个变量选择的 $1/-1$ 视为布尔变量真/假，表格中的正负号直接对应文字是否取反，从而得到标准 2-SAT 实例。"
+          ],
+          "solutionBrief": "将每个变量的取值 $1/-1$ 视为布尔赋值。每列三个文字要求至少两个为真，转成 $(x\\lor y)$、$(y\\lor z)$、$(z\\lor x)$ 三个二元子句；对全部子句运行 2-SAT，存在可行赋值则 Alice 能获胜。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
