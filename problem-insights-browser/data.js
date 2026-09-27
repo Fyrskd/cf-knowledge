@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2026,
+    "total_problems": 2034,
     "source_total_problems": 2034,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2026,
-    "with_editorial_brief": 1774,
-    "with_solution_brief": 1775,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2034,
+    "with_editorial_brief": 1782,
+    "with_solution_brief": 1783,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 967,
+    "ai_override_count": 975,
     "primary_topic_count": 13,
-    "contest_count": 317,
+    "contest_count": 318,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 86,
-    "构造与贪心": 682,
-    "图论与网络流": 119,
-    "动态规划与状态设计": 190,
-    "数论与同余": 200,
+    "字符串": 88,
+    "构造与贪心": 683,
+    "图论与网络流": 120,
+    "动态规划与状态设计": 191,
+    "数论与同余": 202,
     "组合计数与概率": 157,
-    "数据结构": 167,
+    "数据结构": 168,
     "几何": 43,
     "树结构": 129,
     "代数、矩阵与多项式": 18,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 72
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 846,
+    "ai_generated_with_editorial": 854,
     "ai_generated_partial_editorial": 37,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -24581,6 +24581,247 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：区间覆盖多了“中心不能互杀”的限制。令 dp[i] 表示选择 i 作为最右引爆怪，能覆盖到 i+e_i-1 的最少次数；合法前驱只落在两段区间里，因此线段树做两次 RMQ 即可转移。方案重构后按 e_i 升序引爆，保证前面的爆炸不会提前杀死后面要用的怪。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2132,
+      "name": "Codeforces Round 1043 (Div. 3)",
+      "date": "2025-08-21",
+      "url": "https://codeforces.com/contest/2132",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "2132A",
+          "index": "A",
+          "slot": "A",
+          "title": "Homework",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2132/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/145692",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定初始字符串 $a$，以及按顺序处理的字符串 $b$。对每个字符，若对应标记为 V，就把它加到当前字符串开头；否则由 Dima 加到末尾，求全部操作完成后的字符串。",
+          "transformedStatement": "把操作过程改写为两段独立贡献：Dima 字符按处理顺序形成末尾串，Vlad 字符先按处理顺序收集后整体反转形成前缀，最终答案是该前缀、原串 $a$ 和末尾串的拼接。",
+          "keyObservations": [
+            "所有由 Dima 添加的字符始终按处理顺序追加到末尾，因此它们在最终串中保持原顺序。",
+            "所有由 Vlad 添加的字符虽然按顺序依次插到开头，但后插入的字符会位于更前面，所以最终顺序正好是收集结果的逆序。",
+            "将两类字符分别收集后，只需输出逆序的 Vlad 部分与原串及 Dima 部分的拼接，避免逐次插入带来的复杂处理。"
+          ],
+          "solutionBrief": "遍历字符串 $b$，按字符串 $c$ 的标记将字符分别加入两个临时串：Dima 部分保持顺序追加，Vlad 部分也先追加收集。处理完后反转 Vlad 部分，并输出其与原串 $a$、Dima 部分的拼接，复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2132B",
+          "index": "B",
+          "slot": "B",
+          "title": "The Secret Number",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2132/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/145692",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定整数 $n$，某个正整数 $x$ 在末尾添加至少一个零得到 $y$，并满足 $n=x+y$。求所有可能的 $x$，按升序输出；若不存在则输出 $0$。",
+          "transformedStatement": "把添加零的操作参数化为零的个数 $k\\ge1$，则问题转化为枚举满足 $10^k+1\\mid n$ 的 $k$，并计算对应商 $x=n/(10^k+1)$。",
+          "keyObservations": [
+            "追加 $k$ 个零等价于把 $x$ 乘以 $10^k$，因此原条件可化为 $n=x(10^k+1)$，候选值由因子整除性唯一确定。",
+            "由于 $x$ 为正整数且 $n\\le 10^{18}$，只需检查 $1\\le k\\le17$；更大的 $10^k+1$ 已超过 $n$，不可能产生合法的 $x$。",
+            "按 $k$ 从小到大枚举时，除数 $10^k+1$ 递增，所以得到的 $x$ 递减；将找到的结果逆序输出即可满足升序要求。"
+          ],
+          "solutionBrief": "枚举 $k=1$ 到 $17$，若 $n$ 能被 $10^k+1$ 整除，就加入 $x=n/(10^k+1)$。最后逆序输出所有候选值；若没有候选则输出 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2132C1",
+          "index": "C1",
+          "slot": "C",
+          "title": "The Cunning Seller (easy version)",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2132/problem/C1",
+          "editorialUrl": "https://codeforces.com/blog/entry/145692",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "卖家可以进行若干次交易：一次购买 $3^x$ 个西瓜，费用为 $3^{x+1}+x\\cdot3^{x-1}$ 枚硬币，其中 $x\\ge0$，且购买总数必须恰好为 $n$。要求先使交易次数最少，再在这些方案中求买到 $n$ 个西瓜所需的最小总费用。",
+          "transformedStatement": "把每次交易看作一个价值为 $3^k$ 的三进制位，设第 $k$ 档使用 $w_k$ 次，则需满足 $\\sum 3^k w_k=n$。最少交易次数迫使每个 $w_k$ 成为 $0,1,2$，因此它们就是 $n$ 的三进制数字，答案是各位对应交易费用的加权和。",
+          "keyObservations": [
+            "同一种规模的交易若使用 3 次，可合并为下一档的 1 次交易，并减少 2 次交易，因此最少交易数的方案中每档最多使用 2 次。",
+            "交易规模不能超过不大于 $n$ 的最大 $3$ 的幂，否则购买数量会超出需求；因此只需考虑有限档位。",
+            "各档使用次数均为 $0,1,2$ 时，方程 $\\sum 3^k w_k=n$ 恰好是 $n$ 的三进制表示，且表示唯一，所以最少交易数的方案被唯一确定。",
+            "确定三进制数字 $w_k$ 后，第 $k$ 档交易的费用为 $3^{k+1}+k\\cdot3^{k-1}$，将各档费用按使用次数加权求和即可得到答案。"
+          ],
+          "solutionBrief": "将 $n$ 转为三进制，三进制第 $k$ 位就是规模 $3^k$ 的交易次数。按题目给出的单次交易费用计算各位贡献并求和，即得到在交易次数最少前提下的最小费用。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2132C2",
+          "index": "C2",
+          "slot": "C",
+          "title": "The Cunning Seller (hard version)",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2132/problem/C2",
+          "editorialUrl": "https://codeforces.com/blog/entry/145692",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "卖家只能通过交易购买西瓜：一次交易购买 $3^x$ 个西瓜，价格为 $3^{x+1}+x\\cdot3^{x-1}$（$x=0$ 时对应 1 个西瓜、3 枚硬币）。买家必须恰好购买 $n$ 个西瓜，交易次数不超过 $k$，求最低总价；若无法满足则输出 $-1$。",
+          "transformedStatement": "先把 $n$ 按三进制分解，视为若干种幂次大小交易的最少表示；再在不超过 $k$ 次交易的前提下，把较大的交易逐步替换为三个小一级交易，以利用更低的总价。",
+          "keyObservations": [
+            "恰好购买 $n$ 个西瓜所需的最少交易数等于 $n$ 的三进制各位数字之和；若该数量超过 $k$，则无解。",
+            "把一个价值为 $3^{x+1}$ 的大交易拆成三个价值为 $3^x$ 的交易，交易数增加 $2$，且总价降低 $3^x$。",
+            "拆分层级越大，单次拆分节省的钱越多，因此应优先拆分当前最大的交易，并在交易数限制允许时尽可能拆分。",
+            "所有相同大小的最大交易可批量处理；按幂次递减处理每层后，总复杂度为 $O(\\log_3 n)$。"
+          ],
+          "solutionBrief": "先用三进制分解得到最少交易数，超过 $k$ 则输出 $-1$。随后从最大发生次数的交易开始，优先将其批量拆成三个更小交易，每次增加 $2$ 次交易并降低相应费用，直到不能继续拆分，累计费用即为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2132D",
+          "index": "D",
+          "slot": "D",
+          "title": "From 1 to Infinity",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2132/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/145692",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "把正整数依次拼接成无限数字串，并截取前 $k$ 位，要求这些位中所有数字的总和。每个测试给出 $k$，截断位置可能落在某个整数的中间，因此也要计入该整数被截取到的前缀数字。",
+          "transformedStatement": "先按位数分块定位第 $k$ 位属于哪个整数 $n$，将答案转化为 $1$ 到 $n-1$ 的数位和加上 $n$ 的部分前缀数位和；前者再通过对齐位数后逐位统计前缀区间贡献来计算。",
+          "keyObservations": [
+            "按数字位数分组后，第 $k$ 位所在的数可由块长度 $l\\cdot9\\cdot10^{l-1}$ 定位，从而把无限前缀问题缩小到一个具体整数及其前缀。",
+            "找到包含第 $k$ 位的数 $n$ 后，答案拆成 $1$ 到 $n-1$ 的数位和，以及 $n$ 中前若干位的数位和，避免逐位生成整个序列。",
+            "将 $0$ 到 $n-1$ 都补齐到 $n$ 的位数，逐位统计较小前缀形成的完整区间和自由后缀的贡献，即可用位置贡献公式计算所有数的数位和。"
+          ],
+          "solutionBrief": "先按位数块定位第 $k$ 位所属的数 $n$，并累加 $n$ 的相应前缀。再对 $0$ 到 $n-1$ 补前导零，按位统计较小前缀与任意后缀的数位贡献，得到总和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2132E",
+          "index": "E",
+          "slot": "E",
+          "title": "Arithmetics Competition",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/2132/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/145692",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "sortings",
+            "ternary search"
+          ],
+          "statementBrief": "有两组分别由 Vadim 和 Kostya 持有的卡片，每轮必须总共选恰好 $z$ 张，且两人分别最多选 $x$ 张和 $y$ 张。要求计算每轮所选卡片数字总和的最大值。",
+          "transformedStatement": "把两组卡片都按降序排列并用前缀和表示：若从第一组取 $k$ 张，第二组就取 $z-k$ 张，目标变为最大化 $a\\_pref[k]+b\\_pref[z-k]$，其中 $k$ 被限制在可行区间 $[\\max(0,z-y),\\min(x,z)]$。",
+          "keyObservations": [
+            "固定从两组分别取 $k$ 和 $z-k$ 张时，最优选择必是各组当前最大的若干张，因此答案可写成两组前缀和之和。",
+            "对每个总数 $z$，不考虑上限时，按降序合并两组卡片即可确定最优分配数量；这个分配过程对所有 $z$ 可在线性时间完成。",
+            "加入上限后，Vadim 的取牌数必须落在区间 $[\\max(0,z-y),\\min(x,z)]$；无约束最优分配若越过区间边界，就取对应边界数量仍保持最优。",
+            "函数 $f(k)=a\\_pref[k]+b\\_pref[z-k]$ 的相邻差值随 $k$ 不增，因此可行区间内的最优点由无约束最优点向区间投影得到。"
+          ],
+          "solutionBrief": "将两组卡片分别降序排序并计算前缀和。通过双指针合并预处理每个 $z$ 的无约束最优分配；每次查询把该分配截到 $[\\max(0,z-y),\\min(x,z)]$，用两组前缀和 $O(1)$ 求值。总复杂度为 $O(n\\log n+m\\log m+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2132F",
+          "index": "F",
+          "slot": "F",
+          "title": "Rada and the Chamomile Valley",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/2132/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/145692",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个连通无向简单图，Smeshariki 每天从房屋 $1$ 前往房屋 $n$，但路线未知。对每天所在的房屋 $c_k$，求所有可能路线都必经的车道中距离该房屋最近者的距离。",
+          "transformedStatement": "先把“所有 $1$ 到 $n$ 的路线都经过的车道”转化为任意一条 $1$ 到 $n$ 路径上的桥，再将到必经车道的最近距离转化为从这些车道相关端点出发的多源最短路问题。",
+          "keyObservations": [
+            "所有 $1$ 到 $n$ 的路径都经过的车道必然是桥；否则删去它后仍存在绕行路径，矛盾。",
+            "取任意一条 $1$ 到 $n$ 的简单路径，路径上的桥恰好等于所有路径必经的车道，从而无需枚举全部路径。",
+            "把必经车道的相关起点作为多源 BFS 的源点后，各点到最近必经车道的距离可直接由 BFS 距离得到。",
+            "桥查找、任意路径提取和多源 BFS 都是线性处理，查询只需读取预处理结果。"
+          ],
+          "solutionBrief": "先用 DFS 找出所有桥，再取一条 $1$ 到 $n$ 的路径，保留其中的桥作为必经车道集合。以这些车道的相关起点进行多源 BFS，预处理每个房屋到最近必经车道的答案，之后可 $O(1)$ 回答查询；总复杂度为 $O(n+m+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2132G",
+          "index": "G",
+          "slot": "G",
+          "title": "Famous Choreographer",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/2132/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/145692",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "几何",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "hashing",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的字母表，可在原表外添加任意字母，但原有表格必须作为连续子表保留，最终形成一个更大的矩形。要求 180° 旋转后的最终表与自身完全相同，并至少让一个原有位置旋转后落到另一个原有位置或自身，求最少需要添加的字母数。",
+          "transformedStatement": "把目标看成寻找包含原表的最小 180° 对称（回文）矩形；枚举位于原表中的对称中心，并检查原表左上角到其旋转对应位置的子表是否已经具备该对称性。新增区域不受字符限制，因此只需最小化满足条件的外扩矩形面积。",
+          "keyObservations": [
+            "把“旋转后与原表相同”转化为关于某个中心点的 180° 对称，即整个字符表必须是回文表。",
+            "最优扩展不会同时在原表的上下两侧或左右两侧加行列，且对称中心位于原表内部；因此可无损地假设只向上和向左扩展。",
+            "固定对称中心后，只需检查原表左上角到其旋转对应位置的子表是否回文；一旦该子表满足条件，其余新增位置都能自由填充。",
+            "为每个候选子表预处理正向与旋转方向的二维加权哈希，用二维前缀和在 $O(1)$ 内比较两者，从而在线性于表格大小的时间内枚举全部候选。"
+          ],
+          "solutionBrief": "将问题转为寻找包含原表的最小 180° 回文矩形。枚举位于原表内的对称中心，用二维哈希 $O(1)$ 判断对应子表是否回文，并计算该中心下所需新增字符数，取最小值；总复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
