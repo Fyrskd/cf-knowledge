@@ -102,7 +102,8 @@
     "type": "PROGRAMMING",
     "points": 3000.0,
     "tags": [
-      "dp"
+      "dp",
+      "fft"
     ]
   },
   {

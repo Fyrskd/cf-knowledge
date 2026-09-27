@@ -1,5 +1,16 @@
 [
   {
+    "id": 1774,
+    "name": "Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1671287700,
+    "relativeTimeSeconds": 119248616,
+    "date": "2022-12-17"
+  },
+  {
     "id": 1772,
     "name": "Codeforces Round 839 (Div. 3)",
     "type": "ICPC",
