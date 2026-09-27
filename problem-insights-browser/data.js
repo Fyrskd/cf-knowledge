@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2415,
+    "total_problems": 2423,
     "source_total_problems": 2423,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2415,
-    "with_editorial_brief": 2149,
-    "with_solution_brief": 2150,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2423,
+    "with_editorial_brief": 2157,
+    "with_solution_brief": 2158,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1477,
+    "ai_override_count": 1485,
     "primary_topic_count": 13,
-    "contest_count": 371,
+    "contest_count": 372,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 116,
-    "构造与贪心": 760,
+    "构造与贪心": 763,
     "图论与网络流": 142,
     "动态规划与状态设计": 211,
-    "数论与同余": 264,
+    "数论与同余": 266,
     "组合计数与概率": 187,
-    "数据结构": 223,
+    "数据结构": 225,
     "几何": 56,
     "树结构": 135,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 133,
+    "基础实现与模拟": 134,
     "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1211,
+    "ai_generated_with_editorial": 1219,
     "ai_generated_partial_editorial": 47,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -56589,6 +56589,237 @@ window.CF_INSIGHTS_DATA = {
             "所有新生成序列按末位置累加到 Fenwick 树后清空 $dp$，这样每个左端点的新增贡献不会与后续状态混淆。"
           ],
           "solutionBrief": "从右向左枚举左端点，用 $dp$ 计算以新位置开头、按下标递增且数值逐步整除的序列，并按末位置加入 Fenwick 树；查询用区间和回答。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1945,
+      "name": "Codeforces Round 935 (Div. 3)",
+      "date": "2024-03-19",
+      "url": "https://codeforces.com/contest/1945",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1945A",
+          "index": "A",
+          "slot": "A",
+          "title": "Setting up Camp",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1945/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/127377",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $a$ 个内向者、$b$ 个外向者和 $c$ 个万能者，每顶帐篷最多住 3 人。内向者需独住，外向者需三人同住，万能者可补位或彼此合住；求满足所有偏好的最少帐篷数，不可能时输出 $-1$。",
+          "transformedStatement": "把问题拆成三部分：内向者固定单独占帐篷，外向者先按三人分组并用万能者补齐残组，剩余万能者再按每三人一顶独立打包。核心只需判断补齐外向者残组所需的万能者是否足够。",
+          "keyObservations": [
+            "内向者必须各占一顶帐篷，因此这部分固定贡献 $a$，不会与其他人合住。",
+            "外向者按每顶 3 人分组；若 $b$ 不能被 3 整除，就必须用 $d=(3-b\\bmod 3)\\bmod 3$ 个万能者补齐最后一顶，否则无法满足外向者的居住要求。",
+            "先用万能者补齐外向者的残组不会增加最优帐篷数；处理完后，剩余万能者可独立按每 3 人一顶打包，贡献 $\\lceil(c-d)/3\\rceil$ 顶。"
+          ],
+          "solutionBrief": "先为每个内向者单独计一顶，再将外向者按三人分组；不足三人的末组用万能者补齐，万能者不够则输出 $-1$。剩余万能者每三人共用一顶，整体为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1945B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fireworks",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1945/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/127377",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "两台烟花装置同时启动，分别每隔 $a$ 分钟和 $b$ 分钟发射一次；每个烟花从发射时刻起连续 $m+1$ 分钟可见。求某一时刻天空中最多能同时看到多少个烟花。",
+          "transformedStatement": "把两台装置的贡献分开计算：先求单个周期为 $d$ 的装置最多能覆盖多少个发射时刻，再寻找两台装置同时发射的时刻，使这两个独立上界能够同时实现。",
+          "keyObservations": [
+            "单台装置在任意时刻最多同时保留 $\\lfloor m/a\\rfloor+1$ 个烟花，因为可见发射时刻间隔为 $a$，最早与最晚相差不能超过 $m$。",
+            "两台装置分别独立计数，因此同时可见总数的上界是 $\\lfloor m/a\\rfloor+\\lfloor m/b\\rfloor+2$。",
+            "取两台装置同时发射的时刻 $T$ 为 $a,b$ 的最小公倍数，并观察 $T+m$ 时刻，可同时达到两台装置各自的上界。"
+          ],
+          "solutionBrief": "每台装置最多贡献 $\\lfloor m/d\\rfloor+1$ 个同时可见的烟花。两台装置在最小公倍数时刻同时发射，经过 $m$ 分钟时均达到该上限，因此答案为 $\\lfloor m/a\\rfloor+\\lfloor m/b\\rfloor+2$，每组数据 $O(1)$ 计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1945C",
+          "index": "C",
+          "slot": "C",
+          "title": "Left and Right Houses",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1945/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/127377",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force"
+          ],
+          "statementBrief": "有 $n$ 户居民按顺序排列，每户用 $0/1$ 表示希望住在道路左侧或右侧。道路可放在任意两户之间，也可放在最前或最后；要求两侧各自至少有一半居民满意，并在所有可行位置中选择最接近村庄中点的位置，平局选更靠左的位置。",
+          "transformedStatement": "把道路位置 $i$ 看成前缀 $[1,i]$ 与后缀 $[i+1,n]$ 的切分：前缀需满足 $0$ 不少于 $1$，后缀需满足 $1$ 不少于 $0$。逐个检查切分点，并最小化 $|n-2i|$。",
+          "keyObservations": [
+            "左侧满意人数不少于不满意人数，等价于前缀中 $0$ 的数量至少为 $1$ 的数量；右侧同理要求后缀中 $1$ 至少为 $0$。",
+            "枚举道路位置时，右侧的 $1$ 数可由后缀计数直接得到，左侧只需维护已加入前缀的 $0$ 数，因此每个位置都能在 $O(1)$ 时间判断。",
+            "将距离改写为 $|n-2i|$，避免处理 $\frac n2$ 的小数；距离相同候选按较小的 $i$ 保留即可。"
+          ],
+          "solutionBrief": "预处理每个后缀的 $1$ 数，依次枚举道路放在位置 $i$ 的情况，并维护左侧前缀中 $0$ 的数量。若两侧分别满足人数条件，则用 $|n-2i|$ 比较其与中点的距离，更新更近且更靠左的位置。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1945D",
+          "index": "D",
+          "slot": "D",
+          "title": "Seraphim the Owl",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1945/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/127377",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "Kirill 位于队尾，每次可选择前方位置 $j$ 与自己交换，支付第 $j$ 个人 $a_j$，并向中间经过的每个人支付对应的 $b_k$；操作可重复。求使最终位置不超过 $m$ 时的最少花费。",
+          "transformedStatement": "把一次到达最终位置 $f$ 的过程看成越过所有 $f+1$ 到 $n$ 的人：每个被越过的人可通过成为交换目标贡献 $a_k$，或作为中间人贡献 $b_k$，而最终目标 $f$ 额外贡献 $a_f$。因此转化为求 $a_f+\\sum_{k=f+1}^{n}\\min(a_k,b_k)$ 的最小值。",
+          "keyObservations": [
+            "固定最终位置 $f$ 后，队列中所有位置 $k>f$ 都必须被越过；第 $k$ 个人可作为交换目标支付 $a_k$，或作为中间人支付 $b_k$，因此其最小贡献是 $\\min(a_k,b_k)$。",
+            "最终到达位置 $f$ 时必须与第 $f$ 个人交换并支付 $a_f$，所以答案可转化为在 $1\\le f\\le m$ 中最小化 $a_f+\\sum_{k=f+1}^{n}\\min(a_k,b_k)$。",
+            "从后往前维护已经越过位置的贡献和，就能在一次扫描中更新所有候选最终位置；这也对应优先在 $a_j<b_j$ 的位置进行交换，以避免支付更高的中间费用。"
+          ],
+          "solutionBrief": "将最终位置枚举为 $f\\le m$：位置 $f$ 支付 $a_f$，其后的每个人贡献 $\\min(a_i,b_i)$。从后往前维护这些最小贡献的累加和，并逐个计算候选答案，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1945E",
+          "index": "E",
+          "slot": "E",
+          "title": "Binary Search",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1945/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/127377",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个排列和目标值 $x$，在运行固定的二分查找前，最多交换两个位置的元素两次。要求构造交换方案，使二分结束时指针 $l$ 所在位置的元素恰好为 $x$。",
+          "transformedStatement": "先把原排列当作比较器为 $p_m\\le x$ 的二分过程，记录其最终指针 $l$；问题转化为只需调整 $x$ 的位置，使这条既定二分路径的终点仍是 $l$ 且该位置放置 $x$。",
+          "keyObservations": [
+            "先在原排列上模拟一次二分得到最终位置 $l$；若 $l>1$，此时该位置的值必满足 $p_l\\le x$。",
+            "将 $p_l$ 与数值 $x$ 所在位置交换后，所有二分比较结果保持不变，因此最终位置仍为 $l$，且 $p_l=x$。",
+            "若初始二分得到 $l=1$，每次被检查的元素都大于 $x$；交换位置 $1$ 与 $x$ 的位置不会改变二分路径，却能令最终 $p_1=x$。"
+          ],
+          "solutionBrief": "模拟原排列上的二分得到 $l$，找到 $x$ 的位置并与 $l$ 交换；$l=1$ 时同样交换位置 $1$ 与 $x$。最多一次交换即可满足要求。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1945F",
+          "index": "F",
+          "slot": "F",
+          "title": "Kirill and Mushrooms",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1945/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/127377",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个带魔力值的蘑菇，按任意顺序采集恰好 $k$ 个时，下标为 $p_1,\u0018,p_{k-1}$ 的蘑菇会变为零，零魔力蘑菇不能用于药剂。药剂强度为所用蘑菇数量乘其中最小魔力值，要求最大化强度，并在强度相同的方案中选择数量最少者。",
+          "transformedStatement": "枚举药剂中使用的数量 $k$；此时问题变为在排除前缀置零位置后，选出 $k$ 个魔力值最大的合法蘑菇，使其中最小值最大。随着 $k$ 增大，只需处理一个新失效位置并从魔力值降序序列中补入元素。",
+          "keyObservations": [
+            "固定选取数量 $k$ 后，只能使用下标不在 $p_1,\u0018,p_{k-1}$ 中的蘑菇；因此按魔力值降序扫描并跳过非法下标，就能得到该 $k$ 下最优的最小魔力值。",
+            "从 $k$ 增加到下一个数量时，只有新变为零的蘑菇可能影响已选集合，同时还需补入一个更小的合法值，因此所有候选可通过排序后的指针单调向后处理。",
+            "维护已选标记和变零标记即可在删除失效蘑菇后继续补选；每个排序位置最多被指针访问一次，从而避免对每个 $k$ 重新扫描全部元素。",
+            "对每个 $k$ 计算强度 $k\\times\\text{当前最小魔力值}$，取强度最大者；强度相同时保留更小的 $k$，满足题目要求的最少采集数量。"
+          ],
+          "solutionBrief": "按魔力值降序排序。递增枚举 $k$，用 `zero` 标记新失效的 $p_k$，若它已被选则移除，再用指针补入下一个未失效元素；当前选中集合的最小值与 $k$ 相乘更新答案。总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1945G",
+          "index": "G",
+          "slot": "G",
+          "title": "Cook and Porridge",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1945/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/127377",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 名学生按顺序排队，每分钟开始时服务队首一份粥；学生需 $s_i$ 分钟后返回，并按优先级插入队列，优先级更低者必须让其通过，同刻返回者按 $s_i$ 升序处理。求从开始起最早经过多少分钟能让每名学生至少领取一次，若 $D$ 分钟内做不到则报告失败。",
+          "transformedStatement": "把队列抽象为两部分：保持原顺序、用指针推进的未服务原始队列，以及按返回事件动态加入的返回队列。通过原始队列剩余优先级的后缀最大值与返回者优先级比较，决定每分钟服务哪一部分。",
+          "keyObservations": [
+            "原始队列中尚未领取的学生相对顺序不会改变，因此只需用指针记录当前原始队列队首，指针越过全部学生即表示所有人都已领取。",
+            "返回学生能否越过尚未领取的原始队列，只取决于原始队列剩余部分的最大优先级；预处理后缀最大值即可快速判断下一次服务来自哪一部分。",
+            "所有返回事件按分钟分桶，同一分钟返回者按 $s_i$ 升序进入返回队列，再用优先队列维护当前可服务的返回学生。",
+            "逐分钟模拟并在原始队列指针首次到达 $n+1$ 时停止，得到所有学生首次领取的最早时刻；超过 $D$ 仍未到达则无解。"
+          ],
+          "solutionBrief": "将队列拆成未服务的原始队列和已返回队列。用指针、后缀最大优先级、按返回时间分桶及优先队列逐分钟决定服务对象，原始队列指针到达 $n+1$ 即得到答案，复杂度为 $O(D\\\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1945H",
+          "index": "H",
+          "slot": "H",
+          "title": "GCD is Greater",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1945/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/127377",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定数组和整数 $x$，需把数组元素划分为红、蓝两组，要求红组元素的最大公约数大于蓝组元素按位与的结果加上 $x$。输出满足条件的两组元素及其大小；若不存在这种划分则输出无法满足。",
+          "transformedStatement": "题解把问题化为寻找两个红色元素：它们的最大公约数作为候选阈值，而其余元素的整体按位与决定比较基准。先处理可能影响最优二元选择的稀疏位元素，再在剩余数组中寻找大于整体按位与加 $x$ 的公共因子。",
+          "keyObservations": [
+            "若红集合中有超过两个数，把其中一个移到蓝集合后，红集合的最大公约数不会变小、蓝集合的按位与不会变大，因此只需考虑红集合恰含两个数。",
+            "若某一位在不超过两个数中为零，这些数必须作为候选红色元素；枚举其中一个并与所有数配对，就能覆盖可能的最优二元红集合。",
+            "删除上述候选元素后，剩余数的整体按位与为 $A$，题目转化为寻找大于 $A+x$ 的公共因子；若两个剩余数都能被某个 $d$ 整除，即可用它们组成红集合。",
+            "对所有可能的 $d$ 从 $A+x+1$ 枚举到最大元素值，找到一对可被其整除的数即可构造划分；若不存在这样的 $d$，则无法满足条件。"
+          ],
+          "solutionBrief": "先证明红集合只需保留两个元素。预处理各位为零次数不超过两次的候选元素，枚举它们与所有元素的配对并直接计算最大公约数；移除这些候选后，计算剩余元素整体按位与 $A$，枚举 $d>A+x$，检查是否有两个剩余数都被 $d$ 整除，从而构造答案。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
