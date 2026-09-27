@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1991,
+    "total_problems": 1998,
     "source_total_problems": 1998,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1991,
-    "with_editorial_brief": 1746,
-    "with_solution_brief": 1747,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1998,
+    "with_editorial_brief": 1753,
+    "with_solution_brief": 1754,
     "missing_editorial_brief": 244,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 932,
+    "ai_override_count": 939,
     "primary_topic_count": 13,
-    "contest_count": 312,
+    "contest_count": 313,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -36,21 +36,21 @@ window.CF_INSIGHTS_DATA = {
     "组合计数与概率",
     "树结构",
     "图论与网络流",
-    "基础实现与模拟",
     "字符串",
+    "基础实现与模拟",
     "交互",
     "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 83,
-    "构造与贪心": 671,
+    "字符串": 84,
+    "构造与贪心": 673,
     "图论与网络流": 119,
-    "动态规划与状态设计": 188,
-    "数论与同余": 193,
-    "组合计数与概率": 154,
-    "数据结构": 162,
+    "动态规划与状态设计": 189,
+    "数论与同余": 194,
+    "组合计数与概率": 155,
+    "数据结构": 163,
     "几何": 42,
     "树结构": 129,
     "代数、矩阵与多项式": 18,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 71
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 818,
+    "ai_generated_with_editorial": 825,
     "ai_generated_partial_editorial": 37,
     "missing_editorial": 244,
     "manual_override": 891,
@@ -20724,6 +20724,223 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：把数组的交错限制转成树结构。建树后，原数组就是这棵树的 DFS 序，同值点连成块。预处理全局前缀/后缀的奇偶值和、每个子树的奇偶值和，以及每个节点儿子序列的前缀贡献。回答区间时求 l 和 r 的最近公共祖先，左侧残段用后缀差，右侧残段用前缀差，中间完整儿子区间用预处理前缀和，在线解码后仍能对数处理。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2145,
+      "name": "Educational Codeforces Round 183 (Rated for Div. 2)",
+      "date": "2025-10-06",
+      "url": "https://codeforces.com/contest/2145",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "2145A",
+          "index": "A",
+          "slot": "A",
+          "title": "Candies for Nephews",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2145/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/147164",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "每组给出 Monocarp 现有的 $n$ 颗糖，所有糖都要分给三个侄子，且三人得到的数量必须相同。允许额外购买糖果，求达到均分所需购买的最少数量。",
+          "transformedStatement": "把均分条件转化为总数 $n+x$ 必须是 $3$ 的倍数；因此问题变为寻找最小非负整数 $x$，使其抵消 $n$ 除以 $3$ 的余数。",
+          "keyObservations": [
+            "三人分得相同数量且必须用完所有糖果，等价于总糖果数能被 $3$ 整除，从而只需调整总数的模 $3$。",
+            "设购买数量为 $x$，最小非负 $x$ 满足 $n+x\\equiv0\\pmod3$；当余数为 $r$ 时，答案为 $(3-r)\\bmod3$，避免逐个尝试。"
+          ],
+          "solutionBrief": "对每个 $n$ 计算 $n\\bmod3$。若余数为 $0$，无需购买；否则购买 $3-(n\\bmod3)$ 颗，使总数成为 $3$ 的倍数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2145B",
+          "index": "B",
+          "slot": "B",
+          "title": "Deck of Cards",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2145/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/147164",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "牌面按 $1$ 到 $n$ 从顶到底排列，依次执行 $k$ 次操作：删顶、删底，或任选顶/底删除。判断每张牌最终必然保留、必然删除，还是根据任选操作可能处于两种状态。",
+          "transformedStatement": "忽略操作顺序，将操作压缩为固定删顶数 $a$、固定删底数 $b$ 和任选端删除数 $c$；答案转化为对牌序列的两个必删边界段、两个可能删除边界段进行标记。",
+          "keyObservations": [
+            "操作顺序不影响最终牌组，只需统计三类操作次数：固定删顶、固定删底和任选一端删除。",
+            "固定删顶会必然移除最前面的 $a$ 张牌，固定删底会必然移除最后面的 $b$ 张牌，因此这两段直接标记为 `-`。",
+            "剩余牌中，只有前 $c$ 张或后 $c$ 张可能被任选操作删掉；它们标记为 `?`，其余牌必然保留并标记为 `+`。",
+            "当 $k=n$ 时操作次数等于牌数，无论任选操作如何选择，所有牌最终都会被删除。"
+          ],
+          "solutionBrief": "统计字符 `0`、`1`、`2` 的数量 $a,b,c$。先将前 $a$ 张和后 $b$ 张标为 `-`，再将剩余区间的前 $c$ 张及后 $c$ 张标为 `?`，其余标为 `+`；若 $k=n$ 则全部为 `-`。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2145C",
+          "index": "C",
+          "slot": "C",
+          "title": "Monocarp's String",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2145/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/147164",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个只含 `a` 和 `b` 的字符串，可以删除一段连续字符，也可以什么都不删，使剩余字符串中 `a` 与 `b` 的数量相等。求需要删除的最少字符数；如果必须删除整个字符串，则输出 $-1$。",
+          "transformedStatement": "将 `a` 看作 $1$、`b` 看作 $-1$，问题转化为删除一个连续子数组，使删除部分的元素和等于整串总和，并最小化该子数组长度；空子数组对应答案 $0$。",
+          "keyObservations": [
+            "将字符 `a` 赋值为 $1$、`b` 赋值为 $-1$ 后，保留部分平衡等价于总和为 $0$，因此删除区间的和必须等于原串总和 $S$。",
+            "固定删除区间右端点 $r$ 时，需要寻找最大的前缀位置 $l$，满足 $pref_l=pref_{r+1}-S$；位置越大，区间长度越短。",
+            "从左到右记录每个前缀和出现过的最大位置，就能在扫描每个右端点时直接得到最短候选区间，从而在线性时间内求最优答案。",
+            "若最短候选区间覆盖整个字符串，说明只能删除全部字符，此时按题意输出 $-1$；原串已平衡时允许删除空区间，答案为 $0$。"
+          ],
+          "solutionBrief": "把 `a`、`b` 转成 $1$、$-1$，删除区间的和必须等于原串总和。用前缀和从左到右扫描，并记录各前缀和的最大下标，快速求每个右端点对应的最短区间；若最短长度为 $n$ 则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2145D",
+          "index": "D",
+          "slot": "D",
+          "title": "Inversion Value of a Permutation",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2145/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/147164",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dp"
+          ],
+          "statementBrief": "给定 $n$ 和 $k$，要构造一个 $1$ 到 $n$ 的排列，使所有长度至少为 $2$ 的连续子段中，包含至少一个逆序对的子段数量恰好为 $k$。若不存在这样的排列输出 $0$，否则输出任意满足条件的排列。",
+          "transformedStatement": "将问题改为控制无逆序子段数量：它等于总子段数 $\\frac{n(n-1)}{2}$ 减去 $k$。把排列组织成多个递增块，并让不同块之间全部互相形成逆序；此时目标只取决于各块长度的组合。",
+          "keyObservations": [
+            "一个子段没有逆序对，当且仅当其中所有相邻元素都递增，因此其是否有效只由相邻下降位置决定，可将排列划分为若干个递增块。",
+            "若递增块长度为 $x$，块内恰好有 $\\frac{x(x-1)}{2}$ 个无逆序子段；不同块之间全部制造逆序，因此总数等于各块贡献之和。",
+            "把目标转为构造块长之和为 $n$ 且 $\\sum \\frac{x(x-1)}{2}=\\frac{n(n-1)}{2}-k$，即可用状态 $dp[i][j]$ 表示前 $i$ 个位置能否得到 $j$ 个无逆序子段。",
+            "确定块长后，为前面的块依次分配更大的数并在块内递增，可保证跨块元素全部形成逆序，同时不破坏块内的递增结构。"
+          ],
+          "solutionBrief": "令目标无逆序子段数为 $\\frac{n(n-1)}{2}-k$。用 $dp[i][j]$ 枚举最后一个递增块长度 $x$，转移到 $dp[i+x][j+\\frac{x(x-1)}{2}]$；若无法达到目标输出 $0$。恢复块长后给前块分配更大的连续数，并在块内递增。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2145E",
+          "index": "E",
+          "slot": "E",
+          "title": "Predicting Popularity",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/2145/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/147164",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定电影的动作值 $ac$ 和剧情值 $dr$，每位用户有偏好 $(a_i,d_i)$。初始人气为 0；当某位未观看用户满足 $\\max(a_i-ac,0)+\\max(d_i-dr,0)\\le p$ 时，他会观看并使人气加一，过程持续到无人可观看。随后多次修改某位用户的两个偏好值，每次修改后都要重新计算最终会观看的人数。",
+          "transformedStatement": "把每位用户替换为其所需的最小人气阈值 $p_i$，并研究条件“至少有 $p$ 个阈值严格小于 $p$”。寻找最小失败点 $p$，最终人气就是 $p-1$。",
+          "keyObservations": [
+            "将用户需求压缩为阈值 $p_i=\\max(a_i-ac,0)+\\max(d_i-dr,0)$，用户在当前人气 $p$ 下可观看当且仅当 $p_i<p$，从而去掉了过程中的二维偏好判断。",
+            "最终人气达到 $p$ 的必要条件是至少有 $p$ 个用户满足 $p_i<p$；因此答案是第一个不满足该条件的 $p$ 减一。",
+            "令 $F(p)=\\#\\{i\\mid p_i<p\\}-p$，加入一个阈值为 $p_i$ 的用户只需对区间 $[p_i+1,n]$ 全部加一，删除时全区间减一，将动态修改转成区间加。",
+            "维护区间最小值后，沿线段树优先走向仍含负值的左子区间即可找到最小的 $F(p)<0$，该位置直接决定最终人气。"
+          ],
+          "solutionBrief": "先计算每人的阈值 $p_i$。维护 $F(p)=\\#(p_i<p)-p$：修改用户时对 $[p_i+1,n]$ 做区间加减，在线段树中查找最小负值的位置 $p$，答案为 $p-1$。每次修改耗时 $O(\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2145F",
+          "index": "F",
+          "slot": "F",
+          "title": "Long Journey",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/2145/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/147164",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "divide and conquer",
+            "dp",
+            "graphs",
+            "greedy",
+            "math",
+            "matrices",
+            "number theory"
+          ],
+          "statementBrief": "芯片从格子 $0$ 出发，每回合可向右移动一格或原地不动；第 $r$ 类陷阱在回合编号同余 $r\\pmod n$ 的回合结束时，激活所有满足 $x\\bmod a_r=b_r$ 的格子。若芯片在回合开始时位于已激活陷阱中则失败，且到达 $m$ 的同回合若该格陷阱也激活也不算成功；求到达 $m$ 的最少回合数，无法到达输出 $-1$。",
+          "transformedStatement": "把过程压缩为有限状态 $(\\text{回合号}\\bmod n,\\text{位置}\\bmod L)$，其中 $L=\\operatorname{lcm}(a_i)$；对每个状态预处理经历 $2^i$ 回合时可前进的格数，并用二进制跳跃组合长时间段。",
+          "keyObservations": [
+            "判断一次向右移动是否合法，只需知道当前回合编号模 $n$ 与当前位置模 $L$，其中 $L=\\operatorname{lcm}(a_1,\\dots,a_n)\\le2520$，因此状态数有限。",
+            "定义 $go_{i,x,y}$ 为从回合相位 $x$、位置余数 $y$ 出发经过 $2^i$ 回合能前进的格数；拆成两个长度为 $2^{i-1}$ 的区间即可复合两段转移。",
+            "后半段的起点相位变为 $(x+2^{i-1})\\bmod n$，位置余数变为 $(y+go_{i-1,x,y})\\bmod L$，所以前半段的位移同时决定后半段状态。",
+            "从大到小贪心加入不会到达或超过 $m$ 的二次幂区间，可定位到最后仍小于 $m$ 的位置；随后再走一步到达 $m$，从而得到最少回合数。"
+          ],
+          "solutionBrief": "令 $L$ 为所有 $a_i$ 的最小公倍数，以“回合模 $n$、位置模 $L$”建有限状态。预处理二进制长度的位移函数 $go$，再从高位到低位贪心跳过仍未到达 $m$ 的区间；若任意长度都无法到达则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2145G",
+          "index": "G",
+          "slot": "G",
+          "title": "Cost of Coloring",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/2145/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/147164",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "divide and conquer",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的空表格，每次选择一整行或一整列并用当前颜色覆盖它；第一次颜色为 $1$，之后每次只能沿用上一颜色或加 $1$。要求统计所有最终恰好使用颜色 $1..k$ 的染色方案，并按达到该方案所需的最少操作次数分别计数。",
+          "transformedStatement": "把方案改写为给每行和每列分配最终涂色标签：颜色 $k$ 到 $2$ 必须由对应颜色的整行整列递归剥离，颜色 $1$ 的行列可省略其中较多的一侧操作。于是固定颜色 $1$ 的行列数量后，问题变成对剩余对象进行颜色 $2..k$ 的满覆盖分配。",
+          "keyObservations": [
+            "每行和每列至多需要被涂一次，且为了覆盖所有单元格，至少要完整涂满所有行或所有列；因此最终操作数可转化为行列标签的计数问题。",
+            "对颜色 $k$ 到 $2$ 逆向删除对应的整行整列后，剩余部分只能由颜色 $1$ 构成；颜色 $1$ 的行列不必全部操作，最少操作数为 $n+m-\u0000max(x,y)$，其中 $x,y$ 分别是颜色 $1$ 的行列数量。",
+            "固定颜色 $1$ 的 $x$ 行和 $y$ 列后，其余 $n+m-x-y$ 个行列对象必须使用颜色 $2$ 到 $k$，且每种颜色至少出现一次，否则无法形成美丽染色。",
+            "用 $dp_{i,j}$ 统计前 $i$ 个对象恰好使用 $j$ 种颜色：下一个对象放入已有颜色有 $j$ 种选择，启用新颜色有 $k-j-1$ 种选择，从而在 $O((n+m)^2)$ 内完成所有计数。"
+          ],
+          "solutionBrief": "枚举颜色 $1$ 的行数 $x$ 和列数 $y$，贡献操作数 $n+m-\u0000max(x,y)$，并乘以选择行列的组合数。对剩余对象用 $dp_{i,j}$ 统计颜色 $2..k$ 全部出现的分配数，累加到对应答案；全程对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
