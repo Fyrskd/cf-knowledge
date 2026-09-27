@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1931,
+    "total_problems": 1938,
     "source_total_problems": 1938,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1931,
-    "with_editorial_brief": 1689,
-    "with_solution_brief": 1690,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1938,
+    "with_editorial_brief": 1696,
+    "with_solution_brief": 1697,
     "missing_editorial_brief": 241,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 872,
+    "ai_override_count": 879,
     "primary_topic_count": 13,
-    "contest_count": 304,
+    "contest_count": 305,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -47,19 +47,19 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 81,
     "构造与贪心": 654,
     "图论与网络流": 118,
-    "动态规划与状态设计": 181,
-    "数论与同余": 183,
-    "组合计数与概率": 147,
-    "数据结构": 160,
+    "动态规划与状态设计": 182,
+    "数论与同余": 185,
+    "组合计数与概率": 148,
+    "数据结构": 162,
     "几何": 40,
-    "树结构": 125,
+    "树结构": 126,
     "代数、矩阵与多项式": 17,
     "交互": 74,
     "基础实现与模拟": 82,
     "博弈": 69
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 764,
+    "ai_generated_with_editorial": 771,
     "ai_generated_partial_editorial": 34,
     "missing_editorial": 241,
     "manual_override": 891,
@@ -14691,6 +14691,211 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：先把代数问题变成图上的换边问题。差分后每一行是一条边，det 非零对应成树，det 符号由方向和排列奇偶确定；若当前 det=-1，尝试单行或两行修改翻符号，若 det=0，则按连通分量/唯一环情况做最小代价补边或换边。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2184,
+      "name": "Codeforces Round 1072 (Div. 3)",
+      "date": "2026-01-12",
+      "url": "https://codeforces.com/contest/2184",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "2184A",
+          "index": "A",
+          "slot": "A",
+          "title": "Social Experiment",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2184/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/150033",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个人，必须全部分成若干个每组恰有 $2$ 或 $3$ 人的团队；每个团队独立选择两个文明之一。求两个文明最终人数差的最小值。",
+          "transformedStatement": "把每个文明单独看作由若干个 $2$ 人组和 $3$ 人组组成，先刻画其可实现人数集合，再在两个可实现规模之和为 $n$ 的前提下让它们尽量接近。",
+          "keyObservations": [
+            "单个文明的人数可以是 $0$ 或任意不小于 $2$ 的整数：偶数由一个 $2$ 人组加若干个 $2$ 人组得到，奇数由一个 $3$ 人组加若干个 $2$ 人组得到。",
+            "因此只有人数为 $1$ 的文明规模无法实现，这把原问题转化为寻找最接近的两个可实现整数之和为 $n$。",
+            "当 $n\\ge 4$ 时，均分得到的两个规模都至少为 $2$，一定可行，最小差值就是 $n$ 的奇偶性；而 $n=2,3$ 时均分会产生不可行的规模 $1$。"
+          ],
+          "solutionBrief": "先证明一个文明的人数只能避开 $1$，其余非负整数都可由若干个 $2$ 人组和 $3$ 人组构成。于是 $n\\ge4$ 时尽量均分，答案为 $n\\bmod 2$；$n\\le3$ 时答案为 $n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2184B",
+          "index": "B",
+          "slot": "B",
+          "title": "Hourglass",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2184/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/150033",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "沙漏容量为 $s$ 分钟，开始时先翻转；之后每隔 $k$ 分钟翻转一次，即使沙子尚未流完也照常翻转，若已流完则等待到时再翻转。人在第 $m$ 分钟离开，并执行离开时刻应进行的翻转，求离开后沙子还需流多少分钟。",
+          "transformedStatement": "只需研究翻转过程中的上半部剩余沙量。若 $s>k$，状态以 $2k$ 为周期；若 $s\\le k$，状态以 $k$ 为周期，再用 $m$ 对周期取模直接确定离开时的剩余量。",
+          "keyObservations": [
+            "当 $s>k$ 时，前 $2k$ 分钟后上半部的状态开始以周期 $2k$ 重复：第一次翻转前消耗 $k$，翻转后再消耗剩余的 $k$。",
+            "当 $s\\le k$ 时，第一次翻转后的上半部会在每个长度为 $k$ 的周期内清空，因此状态周期为 $k$。",
+            "将离开时间 $m$ 对相应周期取模后，剩余沙量只由周期内位置决定，从而无需模拟全部翻转。",
+            "在 $s>k$ 的第二个半周期中，剩余沙量从翻转后的 $k$ 逐分钟减少；在 $s\\le k$ 时，超过 $s$ 分钟后上半部为空。"
+          ],
+          "solutionBrief": "若 $s>k$，令 $m\\gets m\\bmod(2k)$：当 $m<k$ 时答案为 $s-m$，否则为 $2k-m$。若 $s\\le k$，令 $m\\gets m\\bmod k$：当 $m<s$ 时答案为 $s-m$，否则为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2184C",
+          "index": "C",
+          "slot": "C",
+          "title": "Huge Pile",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2184/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/150033",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "binary search",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "给定一堆含 $n$ 个苹果的堆，每次可将任意当前堆分成大小为 $\\lfloor x/2\\rfloor$ 和 $\\lceil x/2\\rceil$ 的两堆，耗时 1 分钟。求是否能得到恰好含 $k$ 个苹果的堆；若能，输出最少分裂次数，否则输出 $-1$。",
+          "transformedStatement": "将所有可能的分裂结果建成以 $n$ 为根的决策树，节点 $x$ 的两个子节点分别是 $\\lfloor x/2\\rfloor$ 与 $\\lceil x/2\\rceil$；问题转化为寻找值 $k$ 在树中的最小深度。由于每层最多只有两个不同值，只需逐层维护这些状态。",
+          "keyObservations": [
+            "把深度为 $i$ 的所有节点视为经过恰好 $i$ 次分裂后能得到的堆大小，答案就是 $k$ 第一次出现的层数。",
+            "第 $i$ 层的可达值都落在最小值与最大值之间，区间长度满足 $d_{i+1}\\le (d_i-1)/2+2$；初始 $d_0=1$，因此每层至多包含两个不同值。",
+            "每次分裂都会将数值大致减半，所以决策树深度为 $O(\\log n)$；逐层生成至多两个后继并检查 $k$，即可避免展开指数数量的节点。"
+          ],
+          "solutionBrief": "从根节点 $n$ 开始逐层维护所有可达堆大小，每个值生成 $\\lfloor x/2\\rfloor$ 和 $\\lceil x/2\\rceil$。由于每层至多两个不同值，找到首次出现 $k$ 的层数即为最短时间；过程结束仍未出现则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2184D",
+          "index": "D",
+          "slot": "D",
+          "title": "Unfair Game",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2184/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/150033",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定 $n=2^d$ 和最多允许的 $k$ 次操作，初始数从 $1$ 到 $n$ 中选择。Alice 每次看到当前数后，偶数可除以 $2$，或执行减 $1$；除法仅能用于偶数，数变为 $0$ 时获胜，求哪些初始数即使 Alice 最优操作也无法在不超过 $k$ 步内获胜。",
+          "transformedStatement": "把游戏过程转成二进制位消除过程：从最低位开始，$0$ 位消耗一次除法，$1$ 位先减一再除法，最高位最后通过一次减法消失。因此问题等价于统计满足 $maxBit(a)+cntBit(a)>k$ 的 $a\\in[1,n]$。",
+          "keyObservations": [
+            "当当前数为偶数时除以 $2$、为奇数时减去 $1$ 再除以 $2$，每次都尽可能消去最低位，因此不存在更快结束游戏的策略。",
+            "对二进制数 $a$，最高位下标为 $maxBit(a)$、置位数为 $cntBit(a)$ 时，结束所需步数恰为 $maxBit(a)+cntBit(a)$：除最高位外的每个 $0$ 消耗一次操作、每个 $1$ 消耗两次，最高位最后再减一次。",
+            "固定最高位下标为 $i$ 且总置位数为 $j$ 时，剩余 $i$ 个位置中需选出 $j-1$ 个置位，数量为 $\\binom{i}{j-1}$；因此可按 $i,j$ 汇总满足 $i+j>k$ 的数。",
+            "范围中的特殊数 $n=2^d$ 的最高位下标为 $d$、置位数为 $1$，需单独判断 $d+1>k$；组合数可用 Pascal 递推预处理。"
+          ],
+          "solutionBrief": "将每个初始数的最短结束步数化为 $maxBit+cntBit$，统计其中大于 $k$ 的数。对 $a<n$ 按最高位下标和置位数分组，贡献为 $\\binom{i}{j-1}$；再单独处理 $n=2^d$，组合数用 Pascal 递推预处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2184E",
+          "index": "E",
+          "slot": "E",
+          "title": "Exquisite Array",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2184/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/150033",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "dsu",
+            "sortings"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列。对每个 $k=1,\u0000dots,n-1$，统计所有长度至少为 $2$ 的连续子数组，其中每一对相邻元素的绝对差都至少为 $k$。",
+          "transformedStatement": "将排列看成一条由 $n-1$ 条边连接的链，边权是相邻元素的绝对差；固定阈值 $k$ 时，只保留边权至少为 $k$ 的边，问题转化为统计各连通块内部长度至少为 $2$ 的连续子数组数量。",
+          "keyObservations": [
+            "当阈值从较大值降到 $k$ 时，原本满足更大阈值的子数组仍满足 $k$，因此可以按 $k=n-1$ 到 $1$ 递减维护答案。",
+            "把相邻元素的绝对差视为边权；处理阈值 $k$ 后，所有边权至少为 $k$ 的连续连通块恰好是可产生 $k$-exquisite 子数组的最大区间。",
+            "将边权恰为 $k$ 的相邻位置加入对应连通块后，若两个块长度为 $x,y$，答案只需增加 $xy$，因为新产生的子数组必须跨越这条刚激活的边。",
+            "每个连通块长度为 $l$ 时贡献 ${l(l-1)}/{2}$，维护所有块贡献之和即可避免对每个阈值重新统计。"
+          ],
+          "solutionBrief": "按相邻绝对差分桶，从 $n-1$ 到 $1$ 激活对应位置，用 DSU 合并相邻块。维护各块贡献 ${l(l-1)}/{2}$；每次合并长度为 $x,y$ 的块，答案增加 $xy$，当前总和即为该 $k$ 的答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2184F",
+          "index": "F",
+          "slot": "F",
+          "title": "Cherry Tree",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2184/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/150033",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的树，每个叶子上有一颗樱桃。每次可摇晃任意节点，使其子树内所有叶子的樱桃掉落；已掉落的叶子不能再次被覆盖，且摇晃次数必须是 3 的倍数，要求判断能否收集所有樱桃。",
+          "transformedStatement": "把一次合法方案表示为从根开始的节点集合：每次将一个非叶节点替换成它的所有孩子。替换节点 $u$ 后集合大小的模 $3$ 增量是 $a[u]=(c_u-1)\\bmod3$，目标变成判断能否通过这些替换让集合大小模 $3$ 为 $0$。",
+          "keyObservations": [
+            "任意合法的摇晃集合都能从只选根开始，通过反复把一个非叶节点替换为其所有孩子得到，因此无需枚举摇晃顺序。",
+            "将节点 $u$ 替换为其 $c$ 个孩子时，选中节点数的模 $3$ 变化量为 $a[u]=(c-1)\\bmod 3$；叶子的贡献记为 $0$，于是问题转为选择若干替换使集合大小模 $3$ 为 $0$。",
+            "若两个互不为祖先关系的节点都满足 $a[u]\\ne0$，就能分别利用它们的贡献调整任意当前余数，答案必为“是”；因此答案为“否”时，所有非零节点必须位于同一条根路径上。",
+            "在这条路径上，答案为“否”的充要条件是非零节点的贡献自上而下严格交替为 $1,2,1,2,\\ldots$；否则可以选择合适的替换使总数成为 $3$ 的倍数。"
+          ],
+          "solutionBrief": "对每个节点计算贡献 $a[u]$：叶子为 $0$，有 $c$ 个孩子时为 $(c-1)\\bmod3$。一次 DFS 检查所有非零节点是否共线且贡献自上而下交替为 $1,2,1,2,\\ldots$；满足则无解，否则有解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2184G",
+          "index": "G",
+          "slot": "G",
+          "title": "Nastiness of Segments",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2184/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/150033",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures"
+          ],
+          "statementBrief": "给定按编号排列的数组，单点操作可把 $a_i$ 修改为 $x$；区间查询给出 $[l,r]$，统计满足 $\\min(a_l,\\ldots,a_{l+d})=d$ 的整数 $d$，其中 $0\\le d\\le r-l$。需要在线处理所有修改和查询。",
+          "transformedStatement": "对固定左端点 $l$，把前缀长度参数 $d$ 的两侧写成递增函数 $f(d)=d$ 和不增函数 $g(d)=\\min(a_l,\\ldots,a_{l+d})$；查询转化为判断它们是否存在唯一交点，并在线段树上定位该交点。",
+          "keyObservations": [
+            "固定左端点 $l$ 后，$f(d)=d$ 严格递增而前缀最小值 $g(d)$ 单调不增，因此二者在整数上至多相交一次，答案只能是 $0$ 或 $1$。",
+            "令 $h(d)=d-g(d)$，它单调递增；最小的满足 $h(d)\\ge 0$ 的位置若满足 $h(d)=0$，就是唯一的 nasty 数，否则该区间没有答案。",
+            "在线段树下降时，比较左子区间两端的 $h$ 的符号即可判断交点是否位于左子区间，从而无需对每个候选位置重复查询区间最小值。"
+          ],
+          "solutionBrief": "用线段树维护数组最小值。修改时单点更新；查询固定 $l$，在线段树上下降寻找最小的 $d$ 使 $d\\ge\\min(a_l,\\ldots,a_{l+d})$，再验证是否等号成立，成立则答案为 $1$，否则为 $0$。总复杂度为 $O(n+q\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
