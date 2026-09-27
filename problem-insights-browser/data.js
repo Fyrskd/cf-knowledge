@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2925,
-    "source_total_problems": 2926,
+    "total_problems": 2932,
+    "source_total_problems": 2933,
     "filtered_out_problems": 1,
-    "with_statement_brief": 2925,
+    "with_statement_brief": 2932,
     "with_editorial_brief": 2661,
     "with_solution_brief": 2662,
-    "missing_editorial_brief": 263,
+    "missing_editorial_brief": 270,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 1987,
     "primary_topic_count": 13,
-    "contest_count": 445,
+    "contest_count": 446,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 928,
+    "数据结构": 276,
+    "数论与同余": 317,
     "组合计数与概率": 231,
-    "构造与贪心": 924,
     "动态规划与状态设计": 246,
-    "数据结构": 275,
     "图论与网络流": 178,
-    "数论与同余": 315,
     "几何": 70,
     "树结构": 149,
     "博弈": 96,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
+    "missing_editorial": 270,
     "ai_generated_with_editorial": 1710,
     "ai_generated_partial_editorial": 60,
-    "missing_editorial": 263,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -90478,6 +90478,186 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "按字符在线处理前缀，用转移总和减去所有以 Fibonacci 串结尾的非法切分。维护仍匹配公共长 Fibonacci 串前缀的 $(j,dp_j)$，用 Zeckendorf 式分解判断下一位并筛选候选；$f_0$ 单独处理，答案取模。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1744,
+      "name": "Codeforces Round  828 (Div. 3)",
+      "date": "2022-10-16",
+      "url": "https://codeforces.com/contest/1744",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1744A",
+          "index": "A",
+          "slot": "A",
+          "title": "Number Replacement",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Number Replacement；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744B",
+          "index": "B",
+          "slot": "B",
+          "title": "Even-Odd Increments ",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "交互"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Even-Odd Increments ；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744C",
+          "index": "C",
+          "slot": "C",
+          "title": "Traffic Light",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "博弈"
+          ],
+          "originalTags": [
+            "binary search",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Traffic Light；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744D",
+          "index": "D",
+          "slot": "D",
+          "title": "Divisibility by 2^n",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数据结构"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Divisibility by 2^n；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Divisible Numbers (easy version)",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Divisible Numbers (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Divisible Numbers (hard version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Divisible Numbers (hard version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
+        },
+        {
+          "key": "1744F",
+          "index": "F",
+          "slot": "F",
+          "title": "MEX vs MED",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1744/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/108101",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "博弈",
+            "数据结构"
+          ],
+          "originalTags": [
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：MEX vs MED；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "fetch_failed"
         }
       ]
     }
