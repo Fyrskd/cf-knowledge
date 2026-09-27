@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T19:38:41+00:00",
+  "updated_at": "2026-09-27T19:45:47+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -56527,6 +56527,300 @@
           "statement_incomplete",
           "statement_inferred"
         ]
+      }
+    },
+    "1764H": {
+      "problem_key": "1764H",
+      "title": "Doremy's Paint 2",
+      "rating": 3400,
+      "problem_url": "https://codeforces.com/contest/1764/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/109468",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5aa2641cf26163beae185fa2bf3af9c94de72bc16f5e3ebb17ef0a29c2c2c76e",
+      "generated_at": "2026-09-27T19:42:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有一个初始数组 $a_i=i$，第 $i$ 个操作会把当前数组中所有颜色值位于区间 $[l_i,r_i]$ 的元素改成 $l_i$。对每个起点 $x$，从初始数组重新开始，按循环顺序执行连续 $k$ 个操作，求执行后数组中不同颜色的数量。",
+        "transformed_statement": "将数组状态表示为颜色值的等价类划分：每个操作把一个值区间合并为同一类。由于数组始终非递减，答案转为统计相邻等价类之间的边界，并对连续循环窗口进行可撤销的双侧滑动维护。",
+        "key_observations": [
+          "操作始终保持数组颜色非递减，因此不同颜色数等于 $1$ 加上相邻位置颜色不同的次数，目标可转化为维护相邻边界数量。",
+          "把区间内的颜色全部改为 $l_i$，等价于将颜色值区间 $[l_i,r_i]$ 合并成标记为 $l_i$ 的等价类，只需维护合并后仍存在的相邻边界。",
+          "长度为 $k$ 的循环操作窗口可拆成固定的前半段与逐步变化的后半段；移动窗口时先撤销后半段的一次操作，再加入前半段的一次操作，从而复用相邻状态。",
+          "每批只需离散化当前起点附近最多 $2k$ 个操作涉及的区间，连续状态变化可摊还处理为 $O(k\\log k)$，所有批次合计为 $O(m\\log k)$。"
+        ],
+        "solution_brief": "按长度为 $k$ 的窗口分批处理所有起点。用等价类表示被区间合并的颜色，并维护相邻类边界数；滑动窗口时记录并撤销后半段操作、加入前半段操作。对每批涉及的 $2k$ 个区间离散化，整体复杂度为 $O(m\\log k)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 及 data structures 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1764G3": {
+      "problem_key": "1764G3",
+      "title": "Doremy's Perfect DS Class (Hard Version)",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1764/problem/G3",
+      "editorial_url": "https://codeforces.com/blog/entry/109468",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b0c7bb7a90539c691eabf46499d27e6fdf2db16396bdc4b1afd0fd8749a42134",
+      "generated_at": "2026-09-27T19:42:54+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个固定但未知的 $1$ 到 $n$ 的排列，可多次选择位置区间 $[l,r]$ 和除数 $k$，查询该区间所有 $\\lfloor p_i/k\\rfloor$ 中不同整数的数量。要求在最多 $20$ 次查询内找出值 $1$ 所在的位置。",
+        "transformed_statement": "把排列位置视为顶点，并在对应值满足相同 $\\lfloor x/2\\rfloor$ 时连边；查询 $k=2$ 可换算出区间内部边数，再通过切分区间后未配对顶点的数量变化二分定位唯一孤立值 $1$。",
+        "key_observations": [
+          "令 $C(l,r)$ 表示区间内满足 $\\\\lfloor a_i/2\\\\rfloor=\\\\lfloor a_j/2\\\\rfloor$ 的配对数，则 $C(l,r)+Q(l,r,2)=r-l+1$，因此一次查询可得到区间内部边数。",
+          "把位置按区间切开后，区间内未参与内部配对的元素只能通过跨区间边连接；当 $n$ 为奇数时唯一孤立值是 $1$，两侧剩余点数相差方向即可判断 $1$ 所在侧。",
+          "当 $n$ 为偶数时孤立值变为 $1,n$：两侧剩余点数可判断它们是否同侧，而对当前非单点区间查询 $Q(l,r,n)$ 可检测其中是否含有 $n$，从而确定 $1$ 的所在侧。",
+          "二分缩小到相邻位置后，已知的多个区间边数能推出其中一侧的结果，只需补一次查询；因此偶数情形也能压到 $20$ 次查询内。"
+        ],
+        "solution_brief": "将值按是否共享 $\\lfloor x/2\\rfloor$ 建边，用 $Q(l,r,2)$ 反推出区间内部边数。二分位置区间，根据切分后未配对点数判断孤立值 $1$ 的所在侧；偶数时额外用 $Q(l,r,n)$ 区分 $1,n$，并利用末段边数信息节省查询。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 及 tags 中的 interactive、binary search。",
+        "quality_flags": []
+      }
+    },
+    "1764G2": {
+      "problem_key": "1764G2",
+      "title": "Doremy's Perfect DS Class (Medium Version)",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/1764/problem/G2",
+      "editorial_url": "https://codeforces.com/blog/entry/109468",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "bd26ff6463b287c13717c5eb4d0252ad5a5489592199eaf3336596c3af1d629f",
+      "generated_at": "2026-09-27T19:43:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $n$ 的未知排列 $p$，每次可询问区间 $[l,r]$ 和整数 $k$；回答是区间内各个 $\floor{p_i/k}$ 中不同整数的数量。最多询问 $25$ 次，要求找出满足 $p_y=1$ 的下标 $y$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "交互",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags 中的 interactive、binary search；editorial_url 仅提供链接，未提供题解正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred",
+          "url_only"
+        ]
+      }
+    },
+    "1764G1": {
+      "problem_key": "1764G1",
+      "title": "Doremy's Perfect DS Class (Easy Version)",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/1764/problem/G1",
+      "editorial_url": "https://codeforces.com/blog/entry/109468",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "abce3131b8f28174ff22af052a5bcc98b8a90a15184a012459da0150fc11d6fd",
+      "generated_at": "2026-09-27T19:43:29+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $n$ 的未知排列，每次可提交区间 $[l,r]$ 和除数 $k$，查询会返回该区间内所有 $\floor{p_i/k}$ 的不同取值个数。最多查询 $30$ 次，要求找出排列中数值 $1$ 所在的下标。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "交互",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，editorial_url 仅提供链接。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred",
+          "url_only"
+        ]
+      }
+    },
+    "1764F": {
+      "problem_key": "1764F",
+      "title": "Doremy's Experimental Tree",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1764/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/109468",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "42cf70a2d68c717ebaa38499c9630f56df93eb1d5310435a095a70b4458bf24d",
+      "generated_at": "2026-09-27T19:43:49+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个有 $n$ 个顶点的未知整数加权树。对每个 $j\\le i$，在树上额外连接顶点 $i,j$ 的权重为 $1$ 的边（$i=j$ 时形成自环），计算所有顶点到新增边所形成环的最短距离之和 $f(i,j)$；要求仅根据这些值恢复并输出原树的 $n-1$ 条带权边。",
+        "transformed_statement": "不直接处理新增边形成的环，而是把每个顶点对看成完全图中的一条边，并将实验值 $f(i,j)$ 作为该边权。题解表明该完全图的最小生成树保留原树的拓扑，之后再利用父子子树规模反推出真实边权。",
+        "key_observations": [
+          "若原树中端点对 $(x,y)$ 的路径严格包含于 $(X,Y)$ 的路径，则有 $f(x,y)>f(X,Y)$；这种路径包含关系提供了由实验值恢复树结构的单调性。",
+          "把所有顶点对组成完全图，并令边权为对应的 $f(i,j)$，其最小生成树与原加权树具有相同的树形结构，因此可直接恢复拓扑。",
+          "在恢复的树中令 $x$ 为 $y$ 的父节点、$size_y$ 为 $y$ 的子树大小，则原树边权为 $\\frac{f(x,x)-f(x,y)}{size_y}$；子树中每个顶点的距离贡献恰好相差该边权。"
+        ],
+        "solution_brief": "将 $f(i,j)$ 作为完全图边权，求其最小生成树以恢复原树拓扑。任选根计算各子树大小；对每条父子边 $(x,y)$，按 $\\frac{f(x,x)-f(x,y)}{size_y}$ 计算并输出边权。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "图论与网络流",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 中的实验值定义与输出要求，以及 editorial 中的路径单调性、最小生成树和父子边权公式；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1764E": {
+      "problem_key": "1764E",
+      "title": "Doremy's Number Line",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1764/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/109468",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "69719c94994e99fe25b7b758f6f1ead6ed1b5f160b5df1de07c015cf9be12c09",
+      "generated_at": "2026-09-27T19:44:25+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "题目给出两组长度为 $n$ 的数对 $(a_i,b_i)$，并允许先选择一个颜色排列，再按该顺序依次执行着色操作，判断整数 $k$ 是否最终能被染成颜色 $1$。当前记录中的题面缺少每步操作的完整规则，因此只能保留这一目标及排列限制。",
+        "transformed_statement": "题解把问题改写为：在选择颜色先后顺序后，求颜色 $1$ 能覆盖的最大整数；由于所有更小整数也可覆盖，判断 $k$ 等价于比较它与该最大值，并围绕排列中颜色 $1$ 的前驱建立递归转移。",
+        "key_observations": [
+          "若存在某个 $j$ 使 $a_j\\ge a_1$，可先让颜色 $j$ 处理点 $a_1$，再让颜色 $1$ 扩展到 $a_1+b_1$，因此答案直接达到 $a_1+b_1$。",
+          "颜色 $1$ 能达到的最大点不会超过 $a_1+b_1$；由于可达性对更小整数具有单调性，只需判断目标 $k$ 是否不超过这个最大值。",
+          "当 $a_1$ 是所有 $a_i$ 的最大值时，关键变成枚举排列中位于颜色 $1$ 之前的颜色；若该颜色不是其余颜色中 $a$ 最大者，可将贡献压缩为 $\\min(a_j+b_j,a_1)+b_1$。",
+          "若位于颜色 $1$ 之前的颜色同时是其余颜色中 $a$ 最大者，问题结构与原问题相同，只是先处理该颜色；不断递归即可，排序后总复杂度为 $O(n\\log n)$。"
+        ],
+        "solution_brief": "利用可达性的单调性，只求颜色 $1$ 能达到的最大点。若有 $a_j\\ge a_1$，答案可直接达到 $a_1+b_1$；否则枚举颜色 $1$ 的前驱，并在前驱仍为最大 $a$ 时递归转移，排序后复杂度为 $O(n\\log n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "依据 statement_text、editorial_text 以及 tags；题面正文缺失了第 $i$ 步着色操作的关键描述，具体转移主要来自 editorial。",
+        "quality_flags": [
+          "ambiguous_operation_rule",
+          "partial_statement"
+        ]
+      }
+    },
+    "1764D": {
+      "problem_key": "1764D",
+      "title": "Doremy's Pegging Game",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1764/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/109468",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1607b569527582b64219534ffd589edcf61eb929ac4dd20f54d6db8a154d2af8",
+      "generated_at": "2026-09-27T19:44:55+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个按圆周编号的红桩和中心蓝桩，橡皮筋套在红桩外。每次在橡皮筋尚未碰到蓝桩时移除一个红桩并将其编号依次加入数组，碰到蓝桩立即停止；求所有可能生成的不同数组数量，并对质数 $p$ 取模。",
+        "transformed_statement": "把过程改写为圆环上的有序移除序列，并只研究首次触发碰撞的终局：终局由一段连续被移除的红桩、其外部被移除的桩以及最后一步共同决定，再按这些参数计数。党",
+        "key_observations": [
+          "橡皮筋首次碰到蓝桩，当且仅当已移除的红桩中出现长度至少为 $t=\\lfloor n/2\\rfloor$ 的连续块，因此终局只需按连续块结构分类。",
+          "固定终局连续块长度 $i$ 和其余移除桩数 $j$ 后，旋转对称性贡献 $n$，块外桩的选择数为 $\\binom{n-i-2}{j}$。",
+          "最后一步必须从连续块两端的候选位置产生碰撞，选择数为 $2t-i$；其余元素的排列数可合并为 $(i+j-1)!$。",
+          "当 $n$ 为偶数且 $i=n-1$ 时不适用上述普通分类，需要额外加入终局贡献 $n(n-2)!$。"
+        ],
+        "solution_brief": "令 $t=\\lfloor n/2\\rfloor$，按终局连续移除块长度 $i$ 和块外数量 $j$ 分类。对每类计入旋转、选点、排列及最后一步的 $(2t-i)$ 种选择，求双重和；$n$ 为偶数时再加 $n(n-2)!$，全程取模 $p$，复杂度为 $O(n^2)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的几何与数组过程描述，以及 editorial_text 的终局分类、计数公式和复杂度；tags 用于主题归类。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1764C": {
+      "problem_key": "1764C",
+      "title": "Doremy's City Construction",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1764/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/109468",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3b7dcef4b2204af9890d5b5600543e6ada66e4096550bc48f2cebc1065d69b31",
+      "generated_at": "2026-09-27T19:45:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定带高度的 $n$ 个顶点，可以任意选择无自环、无重边的无向边，但不能出现三个不同顶点 $u,v,w$ 满足 $a_u\\le a_v\\le a_w$ 且同时有边 $(u,v)$、$(v,w)$。求满足条件时图的最大边数。",
+        "transformed_statement": "把不同高度的顶点按一个阈值分成低侧和高侧；最优图连接两侧的所有点，成为完全二部图，因此只需选择合法高度分界并最大化两侧大小乘积。",
+        "key_observations": [
+          "不使用等高边时，一个顶点的所有邻居必须严格位于其高度同一侧，否则两条边会形成被禁止的三点链。",
+          "据此可将顶点染成黑白两类，合法边只能连接黑点与白点，且黑点高度高于白点；跨类边全部加入不会产生新的违规三点。",
+          "若某黑点高度低于某白点，交换这两个顶点的颜色及相关边不会变差，因此最优染色必由阈值 $A$ 划分：高度至少 $A$ 为黑色，其余为白色。",
+          "只有所有高度相同时才需考虑等高边，此时每个端点不能再连接其他顶点，最多取一组匹配，答案为 $\\lfloor n/2\\rfloor$。"
+        ],
+        "solution_brief": "排序高度后，只在相邻不同高度之间划分阈值。若左侧有 $i$ 个点、右侧有 $n-i$ 个点，答案候选为 $i(n-i)$，取最大值；全相等时答案为 $\\lfloor n/2\\rfloor$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "图论与网络流"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 graphs、greedy 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1764B": {
+      "problem_key": "1764B",
+      "title": "Doremy's Perfect Math Class",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1764/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/109468",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e99201ae0fee743fca479683b573e0ac3ea379732b5f3a6e90a00e9f66958b01",
+      "generated_at": "2026-09-27T19:45:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数集合，每次可选两个元素，并把较大的数替换为两数之差，重复任意次。求采取最优操作后集合可能达到的最大元素个数。",
+        "transformed_statement": "把反复作差视为欧几里得算法：集合最终受到整体最大公约数 $g$ 和最大初始值 $A$ 的限制，问题等价于确定区间 $[g,A]$ 中的正倍数数量。",
+        "key_observations": [
+          "对任意两个当前元素反复做差，较小数最终变为 $0$，较大数变为它们的 $\u0000 gcd$，因此集合操作闭包必然包含所有元素的整体最大公约数 $g$。",
+          "设最大元素为 $A=Kg$，由于 $g$ 和 $A$ 都在集合中，连续用 $g$ 与当前元素做差可以得到 $g,2g,\u0002dots,Kg$，所以至少能保留 $K$ 个元素。",
+          "所有新产生的数都不超过初始最大值 $A$，且始终是 $g$ 的倍数；同时 $0$ 不属于集合，因此除 $g,2g,\u0002dots,Kg$ 外不可能出现更多元素。"
+        ],
+        "solution_brief": "求所有元素的最大公约数 $g$ 和最大值 $A$，答案为 $A/g$。最大公约数可通过反复作差得到，且所有可出现的数恰好是 $g$ 的正倍数直到 $A$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 editorial_text 的欧几里得算法与上下界分析；statement_text 对具体操作描述缺失，结合题解补全操作含义，tags 提供数论分类。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1764A": {
+      "problem_key": "1764A",
+      "title": "Doremy's Paint",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1764/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/109468",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ef3fb905528e45759a0e8779034658b78302e656c63edecd8462f9596bc38093",
+      "generated_at": "2026-09-27T19:45:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个数组，选择满足 $l\\le r$ 的连续子数组 $[l,r]$，其中 $c(l,r)$ 是该区间内不同元素的数量。要求最大化 $r-l-c(l,r)$，输出任意达到最大值的左右端点。",
+        "transformed_statement": "把候选区间看作可逐步扩大的对象：向左或向右扩展一位时，长度项增加，而不同元素数最多增加同样的数量。因此目标函数沿扩展方向不会下降，问题等价于直接选择覆盖整个数组的区间。",
+        "key_observations": [
+          "将区间左端点从 $L$ 向左扩展一位时，区间长度差 $r-l$ 增加 $1$，不同元素个数至多增加 $1$，因此目标值不会下降。",
+          "任意区间都可以不断向左扩展到 $1$，并保持右端点不变；再将右端点扩展到 $n$ 也不会使目标值下降，所以完整区间 $[1,n]$ 一定是最优解。",
+          "最优性只要求目标值不下降，因此即使扩展时新增了一个不同元素，完整区间仍可与原区间并列最优。"
+        ],
+        "solution_brief": "对任意候选区间，向左扩展一位时长度贡献增加 $1$，不同元素数至多增加 $1$，目标值不会下降；因此继续扩展到整个数组即可。每组直接输出 $1,n$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags 中的 greedy 标签整理。",
+        "quality_flags": []
       }
     }
   }
