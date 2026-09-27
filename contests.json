@@ -880,6 +880,17 @@
     "date": "2023-11-19"
   },
   {
+    "id": 1901,
+    "name": "Educational Codeforces Round 158 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1700836500,
+    "relativeTimeSeconds": 89661829,
+    "date": "2023-11-24"
+  },
+  {
     "id": 1896,
     "name": "CodeTON Round 7 (Div. 1 + Div. 2, Rated, Prizes!)",
     "type": "CF",
