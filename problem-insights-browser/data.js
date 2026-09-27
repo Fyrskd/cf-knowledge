@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2365,
+    "total_problems": 2372,
     "source_total_problems": 2372,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2365,
-    "with_editorial_brief": 2100,
-    "with_solution_brief": 2101,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2372,
+    "with_editorial_brief": 2107,
+    "with_solution_brief": 2108,
     "missing_editorial_brief": 264,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1427,
+    "ai_override_count": 1434,
     "primary_topic_count": 13,
-    "contest_count": 364,
+    "contest_count": 365,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 110,
-    "构造与贪心": 746,
+    "字符串": 111,
+    "构造与贪心": 749,
     "图论与网络流": 141,
-    "动态规划与状态设计": 206,
+    "动态规划与状态设计": 207,
     "数论与同余": 257,
-    "组合计数与概率": 184,
-    "数据结构": 219,
+    "组合计数与概率": 185,
+    "数据结构": 220,
     "几何": 54,
     "树结构": 134,
     "代数、矩阵与多项式": 19,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 84
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1163,
+    "ai_generated_with_editorial": 1170,
     "ai_generated_partial_editorial": 46,
     "missing_editorial": 264,
     "manual_override": 891,
@@ -53147,6 +53147,216 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1974,
+      "name": "Codeforces Round 946 (Div. 3)",
+      "date": "2024-05-20",
+      "url": "https://codeforces.com/contest/1974",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1974A",
+          "index": "A",
+          "slot": "A",
+          "title": "Phone Desktop",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1974/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/129686",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $x$ 个占用 $1\\times1$ 单元格的小图标和 $y$ 个占用 $2\\times2$ 方格的大图标，把它们放入若干个互不重叠的 $5\\times3$ 屏幕中，要求所有图标都放下并使屏幕数最少。",
+          "transformedStatement": "先把问题转化为容量分配：用最少屏幕容纳全部大图标，再把这些屏幕的剩余单元格分配给小图标；只有小图标超出剩余容量时，才增加屏幕。",
+          "keyObservations": [
+            "一个 $5\\times3$ 屏幕最多容纳两个 $2\\times2$ 图标，因此仅由大图标决定的屏幕数下界为 $Z=\\lceil y/2\\rceil$。",
+            "先使用这 $Z$ 个屏幕放置全部大图标后，剩余可放置小图标的单元格总数为 $15Z-4y$，无需逐屏枚举摆法。",
+            "若小图标超过上述剩余容量，超出的部分只能放入新屏幕；每个新屏幕提供 $15$ 个单元格，因此补充屏幕数为 $\\left\\lceil\\max(0,x-(15Z-4y))/15\\right\\rceil$。"
+          ],
+          "solutionBrief": "令 $Z=\\lceil y/2\\rceil$，先用这些屏幕放下全部 $2\\times2$ 图标，剩余容量为 $15Z-4y$。若仍有小图标未放置，再按每屏 $15$ 个单元格向上取整补充屏幕。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1974B",
+          "index": "B",
+          "slot": "B",
+          "title": "Symmetric Encoding",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1974/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/129686",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "implementation",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定由小写字母组成的编码串 $b$。编码时先将原串中出现过的不同字母按升序组成串 $r$，再把每个字符替换为 $r$ 中关于两端对称位置的字符；要求对每个测试用例恢复原始字符串。",
+          "transformedStatement": "把问题看成一个由字符集合决定的对称置换：密文与原串拥有相同的不同字母集合，先用该集合构造升序序列 $r$，再对每个字符应用位置 $i\\mapsto |r|-1-i$ 的置换。",
+          "keyObservations": [
+            "编码只替换字符而不改变字符集合，因此可以直接从密文 $b$ 中提取所有不同字母并升序排列得到映射串 $r$。",
+            "$r$ 中位置互相对称的两个字符构成替换关系，且该关系是自反的；因此解码时对 $b$ 再执行一次相同的对称替换即可还原原串。",
+            "字母表最多只有 $26$ 个字符，定位每个字符在 $r$ 中的位置可以线性查找，不会影响总复杂度。"
+          ],
+          "solutionBrief": "从密文中收集所有不同字母并按字典序排列成 $r$。对每个字符，在 $r$ 中找到其位置并替换为对称位置的字符；由于映射是自反的，这样即可得到原字符串。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1974C",
+          "index": "C",
+          "slot": "C",
+          "title": "Beautiful Triple Pairs",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1974/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/129686",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures"
+          ],
+          "statementBrief": "给定数组，将每个长度为 $3$ 的连续子数组写成三元组。统计所有三元组对中，恰好只有一个位置的元素不同的无序对数量。",
+          "transformedStatement": "把每个三元组映射到三个“一个位置通配”的键；两个三元组恰好一处不同，当且仅当它们共享对应的一个通配键，但完全相同的三元组需要从三个匹配结果中扣除。",
+          "keyObservations": [
+            "按从左到右加入连续三元组，当前三元组只与此前三元组匹配，因此每个无序三元组对恰好统计一次。",
+            "将三元组的某一位置替换为不会出现在数组中的通配值 $0$，即可把“恰好一个位置不同”转化为匹配三个通配键之一。",
+            "与当前三元组完全相同的旧三元组会同时匹配三个通配键，因此必须从三种计数中各扣除一次，避免重复计入。"
+          ],
+          "solutionBrief": "从左到右处理每个连续三元组 $b$，查询 $(0,b_2,b_3)$、$(b_1,0,b_3)$、$(b_1,b_2,0)$ 的出现次数并求和，再减去 $3$ 倍完整三元组 $b$ 的出现次数；随后更新完整键和三个通配键的计数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1974D",
+          "index": "D",
+          "slot": "D",
+          "title": "Ingenuity-2",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1974/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/129686",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "火星车和直升机都从原点出发，给定按顺序排列的 N、S、E、W 指令；每条指令必须且只能交给其中一台设备执行，且两台设备都至少执行一条。要求构造分配方案，使两台设备执行完各自指令后位于同一点；无解时输出 NO。",
+          "transformedStatement": "把每条方向指令视为二维位移，先求全部指令的总位移 $(x,y)$，再将指令划分为两组，使两组位移都等于总位移的一半，同时保证两组非空。",
+          "keyObservations": [
+            "两台设备最终同点等价于把总位移平均分配：每台设备的位移都必须是 $(x/2,y/2)$，因此 $x$ 或 $y$ 为奇数时必无解。",
+            "当总位移为零且指令数为 $2$ 时，唯一的平衡分配会让一台设备没有指令；而指令数大于 $2$ 时，可将一对相反方向指令交给直升机，其余交给火星车。",
+            "总位移非零时，选取 $|x|/2$ 个对应 $x$ 方向、$|y|/2$ 个对应 $y$ 方向的指令给直升机，恰好得到总位移的一半，剩余指令自动给火星车。"
+          ],
+          "solutionBrief": "统计所有指令的总位移 $(x,y)$。若任一坐标为奇数或总位移为零且 $n=2$，输出 NO；否则按总位移方向选出一半给 H，其余给 R。总位移为零且 $n>2$ 时，将一对相反指令给 H。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1974E",
+          "index": "E",
+          "slot": "E",
+          "title": "Money Buys Happiness",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1974/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/129686",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "未来 $m$ 个月中，Charlie 每月赚 $x$ 英镑；第 $i$ 月有一次机会花费 $c_i$ 获得幸福值 $h_i$。不能借钱，且第 $i$ 月赚到的钱只能在之后月份使用，要求安排购买以最大化幸福值总和。",
+          "transformedStatement": "将问题重述为带月份可行性限制的 0/1 背包：状态 $dp[j]$ 表示获得幸福值 $j$ 所需的最小累计花费，处理第 $i$ 个机会时只允许转移到累计花费不超过前 $i-1$ 个月收入的状态。",
+          "keyObservations": [
+            "截至第 $i$ 个月开始时，最多只有前 $i-1$ 个月的收入可用，因此购买第 $i$ 个机会的总支出必须不超过 $(i-1)x$。",
+            "用达到幸福值 $j$ 所需的最小总花费作为状态；较小花费的状态完全支配较大花费状态，因而只需保留一个最小值。",
+            "处理第 $i$ 个月时，从已有幸福值 $k$ 转移到 $k+h_i$，仅当 $dp[k]+c_i\\le(i-1)x$；每个机会至多购买一次，保证了时间顺序和不可借款限制。",
+            "幸福值总和不超过 $10^5$，因此按幸福值维护状态的转移总复杂度为 $O(m\\cdot\\sum h_i)$。"
+          ],
+          "solutionBrief": "令 $dp[j]$ 表示获得总幸福值 $j$ 的最小总花费。按月份处理机会，若 $dp[k]+c_i\\le(i-1)x$，则用它更新 $dp[k+h_i]$；最终取可达的最大幸福值，复杂度为 $O(m\\cdot\\sum h_i)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1974F",
+          "index": "F",
+          "slot": "F",
+          "title": "Cutting Game",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1974/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/129686",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心",
+            "几何"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "implementation",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个网格和若干芯片，Alice 先手、双方轮流从当前网格的上/下/左/右边界切去指定数量的行或列，但不能一次切完整个剩余网格；切下部分中的每枚芯片为当前玩家得一分。按给定顺序执行所有操作，输出 Alice 和 Bob 的得分。",
+          "transformedStatement": "把芯片分别投影为按行号和列号排序的两个序列：上下切割变成删除行序列的前缀或后缀，左右切割变成删除列序列的前缀或后缀；由于两种投影共享同一批芯片，再用已计分标记处理交叉重复。",
+          "keyObservations": [
+            "按行坐标排序后，向上或向下切割恰好对应删除当前有效序列的前缀或后缀，因此只需移动两端指针即可定位候选芯片。",
+            "按列坐标排序可用同样方式处理向左和向右切割，避免每次扫描整个网格或重新建立剩余区域。",
+            "同一芯片可能先被横向切割、后被纵向切割，维护已得分芯片集合并跳过重复项，才能保证每枚芯片只计分一次。",
+            "每次切割只影响对应方向的边界，按操作顺序更新边界并将未计分芯片的数量累加给当前玩家即可。"
+          ],
+          "solutionBrief": "将芯片分别按行、列排序，用两端指针模拟四类边界切割；每次处理对应前缀或后缀，并用集合去重，随后按回合把新增芯片数计给 Alice 或 Bob。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1974G",
+          "index": "G",
+          "slot": "G",
+          "title": "Money Buys Less Happiness Now ",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1974/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/129686",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "未来 $m$ 个月中，每月赚取 $x$ 英镑，并有一次机会花费 $c_i$ 英镑购买 1 单位幸福；每月最多购买一次，不能借钱，且第 $i$ 个月赚的钱只能用于更晚月份。求最多能购买多少单位幸福。",
+          "transformedStatement": "把每次购买看成加入一个费用，处理到第 $i$ 个月时只受此前工资减去已选费用的余额限制；维护一个购买费用集合，并在无法加入当前费用时用更小费用替换集合中的最大费用。",
+          "keyObservations": [
+            "处理第 $i$ 个月时，可用资金等于前 $i-1$ 个月工资减去已选购买费用，即 $(i-1)x-sum$；因此当前决策只需比较当前费用与这一余额。",
+            "若当前费用能够支付，就加入已选集合；这不会降低最多购买数量，因为当前可行购买应优先保留并继续参与后续资金约束。",
+            "若当前费用无法支付，只需尝试用它替换已选费用中的最大值；替换后总花费不增且购买数量不变，因此堆中保留较小费用能为之后月份留下更多资金。",
+            "用大根堆维护已选费用及其总和，替换最大值只改变一个费用并保持购买数量，从而将每个月的可行性维护降为对数复杂度。"
+          ],
+          "solutionBrief": "按月份处理费用，用大根堆维护已选购买及总费用。若当前费用可由此前工资支付则加入；否则删除已选费用中的最大值，并在当前费用更小时用它替换，从而保持数量并尽量降低总支出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
