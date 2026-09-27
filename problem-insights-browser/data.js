@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2292,
+    "total_problems": 2300,
     "source_total_problems": 2300,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2292,
-    "with_editorial_brief": 2031,
-    "with_solution_brief": 2032,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2300,
+    "with_editorial_brief": 2039,
+    "with_solution_brief": 2040,
     "missing_editorial_brief": 260,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1233,
+    "ai_override_count": 1241,
     "primary_topic_count": 13,
-    "contest_count": 354,
+    "contest_count": 355,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -34,8 +34,8 @@ window.CF_INSIGHTS_DATA = {
     "动态规划与状态设计",
     "数据结构",
     "组合计数与概率",
-    "树结构",
     "图论与网络流",
+    "树结构",
     "基础实现与模拟",
     "字符串",
     "交互",
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 104,
-    "构造与贪心": 758,
-    "图论与网络流": 135,
-    "动态规划与状态设计": 208,
+    "字符串": 105,
+    "构造与贪心": 759,
+    "图论与网络流": 136,
+    "动态规划与状态设计": 209,
     "数论与同余": 240,
-    "组合计数与概率": 170,
-    "数据结构": 205,
+    "组合计数与概率": 171,
+    "数据结构": 206,
     "几何": 52,
     "树结构": 136,
     "代数、矩阵与多项式": 19,
     "交互": 80,
-    "基础实现与模拟": 107,
+    "基础实现与模拟": 109,
     "博弈": 78
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1095,
+    "ai_generated_with_editorial": 1103,
     "ai_generated_partial_editorial": 45,
     "missing_editorial": 260,
     "manual_override": 891,
@@ -47468,6 +47468,248 @@ window.CF_INSIGHTS_DATA = {
             "所有长度为 $k$ 的子串构成先进先出窗口；用两栈维护转移矩阵乘积时，需分别在右栈右乘、左栈左乘，以保持非交换矩阵的顺序。"
           ],
           "solutionBrief": "先证明最优方案的每个奇数块都只有一个数字，再用记录最后奇数块数字的 $10$ 状态 DP 建立每个数字对应的最小加法转移矩阵。将窗口视为队列，用两栈维护矩阵乘积并处理滑动子串；矩阵仅有线性个有效项，单次乘法可降至 $O(10^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2000,
+      "name": "Codeforces Round 966 (Div. 3)",
+      "date": "2024-08-13",
+      "url": "https://codeforces.com/contest/2000",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "2000A",
+          "index": "A",
+          "slot": "A",
+          "title": "Primary Task",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2000/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/132689",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "implementation",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "黑板上有 $t$ 个整数；原本的重要数是 $10^x$（$x\\ge2$），但书写时漏掉了乘方符号，因此实际写成十进制字符串“10”后直接接上 $x$。对每个给定整数，判断它是否可能是这样得到的数。",
+          "transformedStatement": "将问题重述为判断给定数的十进制表示是否以 `10` 开头，且其剩余部分是一个不带前导零、数值至少为 $2$ 的整数；在数值上限下，这进一步等价于检查两个固定区间。",
+          "keyObservations": [
+            "漏写乘方符号后，原数应按十进制拼接成字符串“10”+“x”，而不是计算 $10^x$，因此候选数必须以 `10` 开头。",
+            "由于 $x\\ge 2$ 且不能有前导零，三位数的末位必须为 `2` 到 `9`；更长的数其第三位必须至少为 `1`，从而排除 `100` 和 `101` 等情况。",
+            "结合 $a\\le 10000$，所有合法数恰好落在区间 $102\\le a\\le109$ 或 $1010\\le a\\le1099$，判定可直接转化为区间检查。"
+          ],
+          "solutionBrief": "对每个数判断其是否满足 $102\\le a\\le109$ 或 $1010\\le a\\le1099$；满足则输出 YES，否则输出 NO。该条件等价于检查其十进制表示是否为合法的“10”与无前导零的 $x$ 拼接。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2000B",
+          "index": "B",
+          "slot": "B",
+          "title": "Seating in a Bus",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2000/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/132689",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 个按编号排列的座位，$n$ 位乘客按数组 $a$ 给出的顺序入座且座位不重复。第一位可坐任意空座，之后每位必须坐在至少有一个已占邻座的空座上；判断整段入座过程是否合法。",
+          "transformedStatement": "将过程视为按时间推进的占座状态：处理 $a_i$ 时，只查询座位 $a_i$ 左右是否已被此前乘客占用，验证通过后再把 $a_i$ 加入已占集合。",
+          "keyObservations": [
+            "第一位乘客没有邻座限制；从第二位开始，合法性只取决于当前已占座位中是否存在相邻座位。",
+            "按上座顺序维护布尔数组，检查第 $i$ 位乘客时必须先查询 $a_i-1$ 和 $a_i+1$，再将 $a_i$ 标记为已占，否则会把当前座位错误地计入邻座。",
+            "每个座位只被标记和检查一次，因此逐人验证即可判断整个入座序列，无需搜索其他入座方案。"
+          ],
+          "solutionBrief": "按时间顺序维护已占座位布尔数组。第一位乘客直接入座；之后每位乘客先检查左右相邻座位是否已有占用，若都没有则输出 NO，否则标记其座位。全部通过则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2000C",
+          "index": "C",
+          "slot": "C",
+          "title": "Numeric String Template",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2000/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/132689",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "strings"
+          ],
+          "statementBrief": "给定一个整数数组模板和多条小写字符串。每条字符串必须与模板等长，且相等数字恰好对应相等字符、相等字符也必须对应相等数字；独立判断每条字符串是否匹配。",
+          "transformedStatement": "将匹配关系建模为数组值集合与字符串字符集合之间的双射，并把整条字符串的判定转化为逐位置维护两张反向映射、检查是否出现冲突。",
+          "keyObservations": [
+            "模板中的数字与字符串字符必须构成双射；同时维护两个方向的映射，才能排除不同数字映到同一字符或同一字符对应多个数字。",
+            "长度不等时不可能匹配，可在建立映射前直接判定为“NO”，避免无效检查。",
+            "逐位置检查时，已有映射必须与当前配对一致；只有数字和字符都未出现时才能建立新映射，因此扫描结束即可保证全局一致。"
+          ],
+          "solutionBrief": "对每个字符串先检查长度是否为 $n$，再用两个字典分别维护字符到数字、数字到字符的映射。逐位遇到冲突立即判定“NO”，否则建立映射；扫描完成则为“YES”。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2000D",
+          "index": "D",
+          "slot": "D",
+          "title": "Right Left Wrong",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2000/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/132689",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定含正整数和 `L`/`R` 标记的数组。每次可选择左端为 `L`、右端为 `R` 的区间，获得区间元素和，并将区间全部标记为不可再用；求任意次操作后能得到的最大总分。",
+          "transformedStatement": "把可选区间看成嵌套层：由于区间必须先选内层再选外层，且数值均为正，最优方案反复取当前范围内最左的 `L` 与最右的 `R`，再向内收缩。",
+          "keyObservations": [
+            "由于所有 $a_i$ 都为正数，最终方案应包含当前范围内最左的 `L` 和最右的 `R`；把它们作为最外层区间不会损失内部可选区间的收益。",
+            "区间不能相交，但可以先选内层、再选外层，因此多个区间可表示为不断向内收缩的嵌套层，而不是互相独立的区间选择。",
+            "每确定一层后，只需继续寻找范围内下一个 `L` 与上一个 `R`；若左端仍小于右端即可形成下一层，问题由区间选择降为双指针收缩。",
+            "用前缀和计算每层区间的元素和，可在指针单调移动的同时快速累加所有层的贡献。"
+          ],
+          "solutionBrief": "维护当前范围内最左的 `L` 和最右的 `R`，不断将这两个端点配成一层并收缩范围；这些区间按内层到外层的顺序执行即可。用前缀和求区间和，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2000E",
+          "index": "E",
+          "slot": "E",
+          "title": "Photoshoot for Gorillas",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2000/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/132689",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 网格和 $w$ 只大猩猩，要求将它们放入不同格子。所有边长为 $k$ 的子正方形中大猩猩身高之和构成总观赏值，需安排位置使其最大。",
+          "transformedStatement": "把每个格子看成一个权值为“覆盖它的 $k\\times k$ 子正方形数量”的位置，则目标变为将身高与这些位置权值配对，使乘积总和最大。",
+          "keyObservations": [
+            "把每个格子的贡献系数定义为覆盖它的边长为 $k$ 的子正方形数量，该系数可按行、列独立计算为 $(min(i,n-k)-max(-1,i-k))\\times(min(j,m-k)-max(-1,j-k))$。",
+            "总观赏值可改写为所有格子的“身高乘覆盖系数”之和，因此每个位置的价值只由其覆盖次数决定，与其他位置的选择无关。",
+            "将大猩猩身高从高到低分配给覆盖系数从高到低的格子能达到最大值；这是交换论证下的最优匹配。",
+            "覆盖系数和身高分别排序后逐项相乘求和即可，主要工作是生成全部格子的系数并完成两次排序。"
+          ],
+          "solutionBrief": "计算每个格子被多少个 $k\\times k$ 子正方形覆盖，得到全部覆盖系数并排序；将身高降序排列后与系数降序逐项相乘求和。总复杂度为 $O(nm\\log(nm)+w\\log w)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2000F",
+          "index": "F",
+          "slot": "F",
+          "title": "Color Rows and Columns",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2000/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/132689",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定若干宽为 $a_i$、高为 $b_i$ 的矩形，每次可选择一个矩形中的一个格子染色；某行或某列全部染色后获得 1 分。要求用最少染色操作获得至少 $k$ 分，无法达到时输出 $-1$。",
+          "transformedStatement": "把每个矩形看成一个独立物品：从中选择若干完整的行和列获得对应分数，代价是这些行列并集中的格子数；先求该矩形获得各分数的最小代价，再进行分组背包合并。",
+          "keyObservations": [
+            "在一个矩形中选 $x$ 列和 $y$ 行时，染色格子数为 $xb+ya-xy$，因为行列交叉处只需染色一次。",
+            "固定要从某个矩形获得若干分时，每次选择当前未染部分较短的一边对应的行或列，新增染色格子数最少，从而得到该矩形各得分的最小代价。",
+            "每个矩形只需记录“获得 $j$ 分的最小操作数”，再按矩形合并这些选择；这将原问题转化为按矩形分组的背包，而不是逐格模拟。",
+            "若所有矩形最多能完成的行列总数仍小于 $k$，则无法达到目标，答案为 $-1$。"
+          ],
+          "solutionBrief": "先为每个矩形计算获得 $j$ 分所需的最少染色次数：逐次选择当前未染部分较短的一边。令 $dp[i][j]$ 表示前 $i$ 个矩形获得 $j$ 分的最小操作数，枚举当前矩形贡献的分数进行转移，取达到至少 $k$ 分的最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2000G",
+          "index": "G",
+          "slot": "G",
+          "title": "Call During the Journey",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/2000/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/132689",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "graphs",
+            "greedy",
+            "shortest paths"
+          ],
+          "statementBrief": "城市路网中的道路可双向通行：乘公交耗时较短，步行耗时较长。你从路口 $1$ 出发，必须在 $t_0$ 前到达路口 $n$；在 $[t_1,t_2]$ 的通话期间不能乘公交，但可以步行、等待或停留，求仍能按时到达时最晚的出发时间。",
+          "transformedStatement": "将问题改写为：对每个路口求一个最晚时刻 $ans_i$，使得从该路口出发仍能在 $t_0$ 到达终点。以终点为起点反向传播这些时间，并在每条边上判断乘车、步行及通话期间等待的可行性。",
+          "keyObservations": [
+            "把每个路口的状态定义为从该处出发、仍能在时间 $t_0$ 前到达终点的最晚时刻 $ans_i$，答案就是 $ans_1$，从而把“尽量晚出发”转成从终点反向传播最晚可行时间。",
+            "处理一条连接 $u,v$ 的道路时，先根据 $ans_v$ 判断从 $u$ 乘车到 $v$ 的整段时间是否避开通话区间；若可行，就能把最晚出发时间按乘车时长向前推。",
+            "若乘车时间与通话冲突，不能直接乘车，但可以选择步行，或先在路口等待到通话结束后再乘车；将这些方案取最晚可行者即可完成边的松弛。",
+            "各路口的最晚可行时间可以从终点用 Dijkstra 逐步确定，因为到达某个路口后的最优后续时间已由该路口状态概括，边的可行性只需进行局部检查。"
+          ],
+          "solutionBrief": "定义每个路口的最晚可行离开时间 $ans_i$，从终点反向运行 Dijkstra。对每条边检查乘车区间是否避开通话，冲突时比较步行或等待后乘车的方案，最终输出 $ans_1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2000H",
+          "index": "H",
+          "slot": "H",
+          "title": "Ksyusha and the Loaded Set",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2000/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/132689",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "维护一个初始含有若干互不相同正整数的集合，依次执行插入未出现的数、删除已存在的数，或查询。查询给定 $k$ 时，要找最小正整数 $d$，使得连续的 $d,d+1,\\ldots,d+k-1$ 全部不在当前集合中。",
+          "transformedStatement": "把当前正整数轴划分为极大连续空区间；一次查询等价于在长度至少为 $k$ 的空区间中寻找最小左端点。集合修改只会局部拆分或合并这些空区间，再用按长度组织的笛卡尔树回答区间筛选。",
+          "keyObservations": [
+            "集合中的答案完全由极大连续空区间决定：只需在长度至少为 $k$ 的空区间中取最小左端点。",
+            "插入一个数只会把所在空区间拆成两个区间，删除一个数只会把相邻的两个空区间合并，因此区间集合可局部维护。",
+            "将空区间按“长度、左端点”组成笛卡尔树，并在节点保存子树左端点最小值；按长度切分后即可取得所有长度至少为 $k$ 的区间中的最小左端点。"
+          ],
+          "solutionBrief": "用有序集合维护元素和极大空区间，插入时拆分、删除时合并；笛卡尔树按区间长度组织并维护子树最小左端点，查询长度至少为 $k$ 的区间最小左端点。总复杂度为 $O(n\\log n+m\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
