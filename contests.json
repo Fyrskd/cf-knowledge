@@ -1287,6 +1287,17 @@
     "date": "2024-06-09"
   },
   {
+    "id": 1985,
+    "name": "Codeforces Round 952 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1718116500,
+    "relativeTimeSeconds": 72373596,
+    "date": "2024-06-11"
+  },
+  {
     "id": 1978,
     "name": "Codeforces Round 953 (Div. 2)",
     "type": "CF",
