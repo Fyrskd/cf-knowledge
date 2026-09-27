@@ -132,6 +132,17 @@
     "date": "2023-02-01"
   },
   {
+    "id": 1791,
+    "name": "Codeforces Round 849 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8700,
+    "startTimeSeconds": 1675434900,
+    "relativeTimeSeconds": 115075355,
+    "date": "2023-02-03"
+  },
+  {
     "id": 1784,
     "name": "VK Cup 2022 - Финальный раунд (Engine)",
     "type": "CF",
