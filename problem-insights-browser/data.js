@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2506,
+    "total_problems": 2512,
     "source_total_problems": 2513,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2506,
-    "with_editorial_brief": 2238,
-    "with_solution_brief": 2239,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2512,
+    "with_editorial_brief": 2244,
+    "with_solution_brief": 2245,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1568,
+    "ai_override_count": 1574,
     "primary_topic_count": 13,
-    "contest_count": 384,
+    "contest_count": 385,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 123,
-    "构造与贪心": 791,
-    "图论与网络流": 150,
-    "动态规划与状态设计": 217,
+    "字符串": 125,
+    "构造与贪心": 792,
+    "图论与网络流": 151,
+    "动态规划与状态设计": 218,
     "数论与同余": 274,
     "组合计数与概率": 192,
     "数据结构": 234,
@@ -55,11 +55,11 @@ window.CF_INSIGHTS_DATA = {
     "树结构": 137,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 138,
+    "基础实现与模拟": 139,
     "博弈": 89
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1296,
+    "ai_generated_with_editorial": 1302,
     "ai_generated_partial_editorial": 51,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -62649,6 +62649,187 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "先找出所有最小闭区间，标记其中被更内层区间覆盖的灯，再将整段划分为最少闭区间；每段可选起点数为未标记灯数，答案取这些数量的乘积。用随机异或前缀和配合映射表在 $O(n\\log n)$ 内找闭区间。",
           "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1913,
+      "name": "Educational Codeforces Round 160 (Rated for Div. 2)",
+      "date": "2023-12-18",
+      "url": "https://codeforces.com/contest/1913",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1913A",
+          "index": "A",
+          "slot": "A",
+          "title": "Rating Increase",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1913/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/123493",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个由原评级 $a$ 和新评级 $b$ 依次拼接形成的数字串，但两者之间的分界丢失。需要在每个非空切分处拆成两段，使后段没有前导零且数值满足 $b>a$；找到任意方案就输出，否则输出 $-1$。",
+          "transformedStatement": "把问题转化为：枚举原串内部的所有切点，将前缀和后缀分别解释为整数，筛选后缀表示合法且后缀数值大于前缀的切分。",
+          "keyObservations": [
+            "只需枚举拼接串的每个非空切分位置，因为原串中第一段和第二段的边界必然对应某个切点，长度很小足以直接检查。",
+            "第二段若以 `0` 开头就不能作为合法的整数表示；先排除这类切分可避免产生无效的 $b$。",
+            "对每个合法切分，将两段分别转为整数并检查 $b>a$；找到任意满足条件的切分即可停止，否则答案为 $-1$。"
+          ],
+          "solutionBrief": "枚举所有切点，把字符串拆成两段。若后段无前导零且其数值严格大于前段，就输出两段对应的整数；所有切点都失败则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1913B",
+          "index": "B",
+          "slot": "B",
+          "title": "Swap and Delete",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1913/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/123493",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "给定一个二进制串，可以任意次交换字符（免费），也可以删除字符（每次花费 1）；操作顺序任意。要求得到一个串 $t$，使其每个位置都不同于原串同位置字符，并最小化删除总费用；空串始终合法。",
+          "transformedStatement": "把问题看成从原串字符库存中构造最长结果串：第 $i$ 位只能放与 $s_i$ 相反的字符，交换负责任意重排，删除则对应没有被使用的字符。",
+          "keyObservations": [
+            "交换可以任意重排字符且不花费，删除只会减少某个字符的库存，因此最终串只受原串中 0、1 的数量限制。",
+            "在构造结果串的第 $i$ 位时，字符被唯一确定为与 $s_i$ 相反的值；若对应字符库存不足，就无法继续延长结果串。",
+            "按原串位置依次消耗所需字符，可以得到最长的合法结果串；所有未使用字符都必须删除，所以最小代价等于 $|s|-|t|$。"
+          ],
+          "solutionBrief": "统计原串中 0 和 1 的数量，按位置扫描 $s$；第 $i$ 位需要字符 $1-s_i$，若库存足够就消耗一个并延长 $t$，否则停止。答案为 $|s|-|t|$，总复杂度为 $O(|s|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1913C",
+          "index": "C",
+          "slot": "C",
+          "title": "Game with Multiset",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1913/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/123493",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "初始有一个空多重集合；ADD v 向其中加入一个权值为 $2^v$ 的元素，GET w 则询问当前集合中能否选取任意子集，使元素权值之和恰好为 $w$。按查询顺序处理所有操作，并对每次 GET 输出 YES 或 NO。",
+          "transformedStatement": "把集合按权值 $1,2,4,\u0005dots,2^{29}$ 分成 30 层。目标是逐位构造 $w$：低层物品负责满足当前二进制位，多出的同层物品两两打包后作为更高层物品继续使用。",
+          "keyObservations": [
+            "权值按 $2^i$ 分层后，所有更高层权值都是 $2^{i+1}$ 的倍数，因此目标和在模 $2^{i+1}$ 下的剩余只能由当前层及更低层补足。",
+            "处理完第 $i$ 层所需的奇偶贡献后，多余的 $2^i$ 物品可以两两合并为一个 $2^{i+1}$ 物品；这样不会损失可行方案，只需把数量向高层传递。",
+            "从低权值到高权值逐层检查时，只要当前可用数量不足以满足目标在该层的需求，就必然无法组成目标；否则保留成对剩余物品继续向上处理。",
+            "权值只有 $2^0$ 到 $2^{29}$ 共 30 层，ADD 只需增加对应计数，GET 每次线性检查这些层即可。"
+          ],
+          "solutionBrief": "维护每个权值 $2^i$ 的物品数量。GET 时从低到高检查目标和的二进制需求：用当前层满足必要余数，将多余物品每两个合并成上一层数量；任一层不足则输出 NO，否则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1913D",
+          "index": "D",
+          "slot": "D",
+          "title": "Array Collapse",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1913/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/123493",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一个元素互不相同的数组，每次可选择一个连续子段，删除其中除最小值外的所有元素，重复操作后得到一个可达数组。请计算所有不同可达数组的数量，并对 $998244353$ 取模。",
+          "transformedStatement": "将操作结果抽象为原数组位置的保留子序列，并按最后一个保留位置建立 DP：只有能删除其后的全部元素的位置才可作为最终端点，再统计每个端点对应的可行前缀序列数量。",
+          "keyObservations": [
+            "每个可达数组都可视为原数组位置的保留子序列，因此问题转为统计可行的保留位置序列，而非模拟操作顺序。",
+            "若最后保留的位置是 $i$，则 $p_i$ 必须是后缀最小值；此时可从左到右利用包含该位置的区间删除其后的元素。",
+            "设 $f[i]$ 为左侧最近且大于 $p_i$ 的位置，$i$ 能接在区间 $(f[i],i)$ 内的结尾之后，也能接在沿 $f$ 链向左跳到的结尾之后。",
+            "区间转移用前缀和处理，$f$ 链上的状态和用 $dpsum_i=dpsum_{f[i]}+dp_i$ 维护，配合单调栈即可将每个位置的计算降为 $O(1)$。"
+          ],
+          "solutionBrief": "把可达数组转为可行子序列计数。用 $dp_i$ 统计以位置 $i$ 结尾的方案，单调栈求左侧最近更大元素 $f[i]$；区间转移用前缀和，跳跃链转移用 $dpsum$，最后累加后缀最小值位置的 $dp_i$，总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1913E",
+          "index": "E",
+          "slot": "E",
+          "title": "Matrix Problem",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1913/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/123493",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "flows",
+            "graphs"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的 $0/1$ 矩阵。可以任意次选择一个格子，将其改成 $0$ 或 $1$；最终要求第 $i$ 行恰有 $A_i$ 个 $1$、第 $j$ 列恰有 $B_j$ 个 $1$，求最少修改次数，无法满足时输出 $-1$。",
+          "transformedStatement": "将最终矩阵看成一个二分图的 $0/1$ 选边方案：每行节点需要发送 $A_i$ 单位流，每列节点需要接收 $B_j$ 单位流，每个格子对应容量为 $1$ 的行列边；通过边费用最大化对原矩阵中 $1$ 的保留。",
+          "keyObservations": [
+            "目标矩阵中 $1$ 的总数固定为 $\\sum A_i$，因此只要最大化与原矩阵同为 $1$ 的格子数，就能同时最小化所有修改次数。",
+            "把每个格子选为 $1$ 视为行到列的一单位流，行容量限定行和、列容量限定列和，容量 $1$ 保证每个格子只能取 $0$ 或 $1$。",
+            "格子边在原矩阵为 $1$ 时费用为 $0$、为 $0$ 时费用为 $1$，最小费用等价于尽量少把原来的 $0$ 改成 $1$，从而最大化保留的原有 $1$。",
+            "若最小费用流的总流量不同时等于 $\\sum A_i$ 和 $\\sum B_j$，则不存在满足行列和的矩阵；可行时答案为 $\\lvert a\\text{ 中的 }1\\rvert-\\sum A_i+2\\times\\text{最小费用}$。"
+          ],
+          "solutionBrief": "建立源点—行—列—汇点网络：行边容量为 $A_i$，列边容量为 $B_j$，格子边容量为 $1$，费用为原值的相反偏好（原为 $1$ 费用 $0$，否则费用 $1$）。求最小费用最大流；流量不足则输出 $-1$，否则用 $\\lvert a\\text{中1的数量}\\rvert-\\sum A_i+2c$ 计算答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1913F",
+          "index": "F",
+          "slot": "F",
+          "title": "Palindromic Problem",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1913/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/123493",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "hashing",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的小写字母串，至多将其中一个字符替换成任意小写字母；回文子串按出现位置分别计数。要求先最大化回文子串总数，再在达到最大值的结果中输出字典序最小的字符串及其回文子串数量。",
+          "transformedStatement": "把一次修改的影响转化为：固定位置后，经过该位置的回文半径产生可批量汇总的损失，边界回文可能通过两侧 LCP 延长；于是每个位置和候选字符都能由原半径、差分值及 LCP 增量直接评估。",
+          "keyObservations": [
+            "一个回文子串对总数的贡献等于其中心对应的回文半径，因此原串的回文总数可由所有奇、偶中心的最长半径求和。",
+            "固定修改位置后，所有经过该位置的最长回文都会因边界变化而缩短；只有原本恰好延伸到该位置的回文可能继续变长，且新增长度可用两侧的 LCP 查询得到。",
+            "经过某位置的回文半径损失呈分段线性变化，可用二阶差分同时汇总所有中心的损失；奇回文中心正好位于修改点时不应计入损失，需要单独加回。",
+            "在 $s+分隔符+reverse(s)$ 上建立后缀数组和 LCP 查询，可统一求回文半径与修改后的继续匹配长度；同样回文数时，按修改字符增减方向和位置即可 $O(1)$ 比较字典序。"
+          ],
+          "solutionBrief": "先用后缀数组与 LCP 求各中心的奇偶回文半径及原答案，再枚举修改位置和 26 个字符。用二阶差分汇总经过该位置的回文损失，并用 LCP 计算边界回文的新增贡献；按回文数和字典序更新答案，总复杂度为 $O(n\\log n+n\\cdot|AL|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
