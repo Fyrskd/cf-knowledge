@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2558,
+    "total_problems": 2565,
     "source_total_problems": 2566,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2558,
-    "with_editorial_brief": 2290,
-    "with_solution_brief": 2291,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2565,
+    "with_editorial_brief": 2297,
+    "with_solution_brief": 2298,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1620,
+    "ai_override_count": 1627,
     "primary_topic_count": 13,
-    "contest_count": 392,
+    "contest_count": 393,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 130,
-    "构造与贪心": 805,
+    "构造与贪心": 807,
     "图论与网络流": 153,
     "动态规划与状态设计": 222,
-    "数论与同余": 280,
+    "数论与同余": 282,
     "组合计数与概率": 196,
-    "数据结构": 239,
+    "数据结构": 241,
     "几何": 60,
-    "树结构": 138,
+    "树结构": 139,
     "代数、矩阵与多项式": 19,
     "交互": 84,
     "基础实现与模拟": 141,
     "博弈": 91
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1346,
+    "ai_generated_with_editorial": 1353,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -67447,6 +67447,210 @@ window.CF_INSIGHTS_DATA = {
             "非闪卡若最终生命值和伤害都大于 $k$，就能改造成更优的闪卡；因此非闪卡的相关最大值至少有一个不超过 $k$，用 $g_a,g_b$ 分别记录另一维的有限增量后，状态规模降至 $O(mk^2)$。"
           ],
           "solutionBrief": "利用 $10^9$ 倍增益锁定闪卡，按其出现位置将路径分成前后两段。后段 DP 维护闪卡属性；前段用前缀代表卡、$f/g/g_a/g_b$ 状态压缩增益分配，沿 DAG 转移，整体复杂度为 $O(m(nk+k^2))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1878,
+      "name": "Codeforces Round 900 (Div. 3)",
+      "date": "2023-09-26",
+      "url": "https://codeforces.com/contest/1878",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "1878A",
+          "index": "A",
+          "slot": "A",
+          "title": "How Much Does Daytona Cost?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1878/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/120813",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组和整数 $k$，可以任选一个非空连续子段。判断是否存在某个子段，使 $k$ 的出现次数严格多于其中任何其他整数；存在则输出 YES，否则输出 NO。",
+          "transformedStatement": "不必寻找复杂子段：目标条件等价于数组中至少出现一次 $k$。出现时取该位置的单元素子段即可，不出现时任何子段都无法让 $k$ 成为最多元素。",
+          "keyObservations": [
+            "只要数组中出现元素 $k$，就能选取仅包含它的长度为 $1$ 的连续子段；此时不存在其他元素参与竞争，$k$ 必然是唯一的最多元素。",
+            "若数组中没有 $k$，任何子段中 $k$ 的出现次数都为 $0$，不可能严格多于其他元素，因此判定条件等价于检查数组是否包含 $k$。"
+          ],
+          "solutionBrief": "逐个检查数组元素，只要发现一个等于 $k$ 就输出 YES；遍历结束仍未发现则输出 NO。核心依据是出现的 $k$ 可单独构成长度为 $1$ 的合法子段。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1878B",
+          "index": "B",
+          "slot": "B",
+          "title": "Aleksa and Stack",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1878/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/120813",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定 $n\\ge3$，构造一个长度为 $n$ 的严格递增正整数数组。要求对每个 $i=1,2,\\dots,n-2$，$3a_{i+2}$ 都不能被 $a_i+a_{i+1}$ 整除；输出任意满足条件的数组。",
+          "transformedStatement": "将每组三个连续元素的条件转化为奇偶性问题：若所有数组元素取奇数，则前两项之和为偶数，第三项乘 $3$ 仍为奇数，从而整除关系必然不成立。",
+          "keyObservations": [
+            "连续两个奇数之和一定为偶数，因此对构造出的任意 $i$，$a_i+a_{i+1}$ 都是偶数。",
+            "$3a_{i+2}$ 仍为奇数，而奇数不可能被偶数整除，所以题目的整除排除条件对所有相邻三项自动成立。",
+            "直接取前 $n$ 个正奇数既保持严格递增，又满足元素上界，因此无需搜索或调整构造。"
+          ],
+          "solutionBrief": "对每个测试用例输出 $a_i=2i-1$，即 $1,3,5,\u0007dots,2n-1$。相邻两项和为偶数，而三倍的下一项为奇数，故不可能被前者整除；总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1878C",
+          "index": "C",
+          "slot": "C",
+          "title": "Vasilije in Cacak",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1878/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/120813",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定 $n,k,x$，需要从 $1$ 到 $n$ 中选择恰好 $k$ 个互不相同的整数，使它们的总和等于 $x$。对每组数据判断是否存在这样的选择，并输出 YES 或 NO。",
+          "transformedStatement": "把所有合法选择按元素整体从小到大逐步调整：从集合 $\\{1,2,\\ldots,k\\}$ 出发，每次把某个数增加 $1$ 且不与其他数冲突。可达总和构成从最小值到最大值的连续整数区间。",
+          "keyObservations": [
+            "选取的最小和必为 $1+2+\\cdots+k=\\frac{k(k+1)}2$，因此低于该值时不可能满足条件。",
+            "选取的最大和必为 $(n-k+1)+\\cdots+n=\\frac{k(2n-k+1)}2$，因此高于该值时同样不可能。",
+            "任意未达到最大和的 $k$ 个数中，都存在某个 $a<n$ 且 $a+1$ 未被选取；将 $a$ 替换为 $a+1$ 可使总和恰好增加 $1$。",
+            "从最小集合开始反复进行上述单步替换，可以连续得到最小和到最大和之间的所有整数，因此只需判断 $x$ 是否落在该闭区间内。"
+          ],
+          "solutionBrief": "计算 $\\mathrm{minSum}=\\frac{k(k+1)}2$ 和 $\\mathrm{maxSum}=\\frac{k(2n-k+1)}2$；当且仅当 $\\mathrm{minSum}\\le x\\le\\mathrm{maxSum}$ 时输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1878D",
+          "index": "D",
+          "slot": "D",
+          "title": "Reverse Madness",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1878/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/120813",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定一个小写字母串和若干互不相交的区间。每次输入位置 $x$，就在包含它的区间内，将 $x$ 与该区间关于中点对称的位置之间的子串反转；按所有查询完成后的结果输出字符串。",
+          "transformedStatement": "把每个区间视为独立的小问题，并将一次反转抽象为对称位置对的整体交换：某一对字符是否最终交换，只由覆盖它的操作次数奇偶性决定。",
+          "keyObservations": [
+            "给定的各个区间彼此独立，跨区间的操作不会互相影响，因此可以把每个区间分别处理后再合并。",
+            "在区间长度归一化为 $n$ 后，操作 $x$ 与操作 $n-x+1$ 完全等价，可统一记录较靠近区间左端的端点。",
+            "若某次操作的归一化端点为 $x$，它会交换所有满足 $i\\ge x$ 的位置 $i$ 与镜像位置 $n-i+1$，因此某对位置最终是否交换只取决于覆盖它的操作次数奇偶性。",
+            "操作只改变对应镜像对的交换状态，所以操作顺序不影响结果；记录各端点的次数并做累加，即可在线性扫描中判断每对字符是否交换。"
+          ],
+          "solutionBrief": "将每个互不相交区间独立处理，把查询端点映射到较近的一侧，并统计各端点操作次数。扫描区间时维护累计次数的奇偶性，若为奇数就交换当前位置与镜像位置，最后得到字符串。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1878E",
+          "index": "E",
+          "slot": "E",
+          "title": "Iva & Pav",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1878/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/120813",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定数组和多个查询，每次给出左端点 $l$ 与阈值 $k$，将 $a_l$ 到某个右端点 $r$ 的所有元素按位与，要求找出最大的 $r\\ge l$，使结果至少为 $k$；若不存在则输出 $-1$。",
+          "transformedStatement": "把区间按位与转化为逐位判断：某一位在区间内的前缀计数等于区间长度时，该位才属于结果。固定 $l$ 后，随着 $r$ 增大结果只会变小，因此可在可行前缀上二分边界。",
+          "keyObservations": [
+            "区间按位与的某一位仅当该位在区间内每个元素中都出现时才保留，可用前缀计数判断并重建区间值。",
+            "固定左端点后，右端点增加只会让按位与清除位，因此条件 $f(l,r)\\ge k$ 对 $r$ 具有先真后假的单调性。",
+            "利用上述单调性二分最大的可行右端点，每次通过各位前缀计数在 $O(\\log A)$ 时间计算区间按位与。"
+          ],
+          "solutionBrief": "预处理每一位在数组前缀中的出现次数。查询时用前缀计数计算任意 $f(l,r)$，再利用右端点增大时按位与不增的性质二分最大满足 $f(l,r)\\ge k$ 的 $r$，不存在则输出 $-1$。总复杂度为 $O(n\\log A+q\\log n\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1878F",
+          "index": "F",
+          "slot": "F",
+          "title": "Vasilije Loves Number Theory",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1878/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/120813",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定初始正整数 $n$，类型 1 操作将当前 $n$ 乘以 $x$，类型 2 操作把它恢复为初始值。每次类型 1 后，判断是否存在与当前 $n$ 互质的正整数 $a$，使 $d(n\\cdot a)=n$，并输出 YES 或 NO。",
+          "transformedStatement": "将问题转化为动态维护当前数的质因数指数和约数个数 $d(n)$，因为目标可行性等价于检查 $d(n)$ 是否整除当前 $n$；重置操作重新开始一个独立的乘积分段。",
+          "keyObservations": [
+            "存在所需的互质整数 $a$ 当且仅当 $d(n)\\mid n$：新增素因子只会给约数公式增加因子，故必要条件成立；反之取新素数的幂即可补足到 $n$。",
+            "若 $n=\\prod p_i^{\\alpha_i}$，则 $d(n)=\\prod(\\alpha_i+1)$；乘以 $x$ 时只需更新 $x$ 中各素数的指数及对应的约数因子。",
+            "当前 $n$ 可能极大，但判定 $d(n)\\mid n$ 只需计算当前分段乘积对 $d(n)$ 的余数，因此可保存重置后的初始值和所有乘数，避免直接存储乘积。",
+            "类型 2 操作会恢复初始状态，所以指数表、约数个数和当前分段的乘数记录都可以一并重置。"
+          ],
+          "solutionBrief": "用最小质因子表分解初始值及每个 $x$，维护各质因子指数和 $d(n)$。类型 1 更新指数后，判断重置分段内的乘积对当前 $d(n)$ 是否为 $0$；类型 2 清空并恢复初始状态。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1878G",
+          "index": "G",
+          "slot": "G",
+          "title": "wxhtzdy ORO Tree",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1878/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/120813",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带正整数点权的树，定义两点路径上所有点权的按位或为 $g(u,v)$。每次给出 $x,y$，只能选择位于它们最短路径上的顶点 $z$，目标是最大化 $g(x,z)$ 与 $g(y,z)$ 中置位比特数量之和。",
+          "transformedStatement": "把一条查询路径看成从 $x$ 到 $y$ 的序列：从 $x$ 端看，按位或只会在某个比特第一次出现时改变；从 $y$ 端也同样如此。因此只需定位两端对每个比特的首次出现点，再在这些关键位置中取最大值。",
+          "keyObservations": [
+            "沿着路径从端点 $x$ 走向 $y$ 时，$g(x,z)$ 只有在首次遇到某个比特时才会增加该比特，因此每个比特只需保留离 $x$ 最近的出现位置。",
+            "同理，从 $y$ 方向首次遇到各比特的位置决定 $g(y,z)$ 的全部变化，故最优点一定在两端方向这些关键位置中产生。",
+            "数值最多包含 $\u0000$ 个有效比特，因此每次查询只需检查至多 $2\\log(\\max a)$ 个候选顶点，而不是遍历整条路径。",
+            "任选根后，用根到顶点的各比特前缀计数判断路径区间是否出现某比特，再结合路径上的位置二分找到首次出现点。"
+          ],
+          "solutionBrief": "预处理树的祖先关系、路径查询结构以及根到各点的逐比特计数。每次查询对每个比特分别从 $x$、$y$ 两端二分寻找首次出现位置，收集至多 $2\\log(\\max a)$ 个候选点，计算其两段路径按位或的置位比特数之和并取最大值；复杂度为 $O(q(\\log n+\\log(\\max a)\\log n))$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
