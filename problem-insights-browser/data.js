@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3026,
-    "source_total_problems": 3027,
+    "total_problems": 3032,
+    "source_total_problems": 3033,
     "filtered_out_problems": 1,
-    "with_statement_brief": 3026,
+    "with_statement_brief": 3032,
     "with_editorial_brief": 2754,
     "with_solution_brief": 2755,
-    "missing_editorial_brief": 271,
+    "missing_editorial_brief": 277,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2088,
     "primary_topic_count": 13,
-    "contest_count": 460,
+    "contest_count": 461,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 962,
-    "图论与网络流": 183,
+    "数论与同余": 328,
+    "构造与贪心": 965,
+    "图论与网络流": 184,
     "组合计数与概率": 237,
     "数据结构": 282,
     "几何": 73,
     "动态规划与状态设计": 257,
-    "数论与同余": 326,
     "字符串": 162,
     "交互": 96,
     "基础实现与模拟": 179,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
+    "missing_editorial": 277,
     "ai_generated_with_editorial": 1801,
     "ai_generated_partial_editorial": 62,
-    "missing_editorial": 271,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -93513,6 +93513,161 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "把危险区分解为每对相邻边产生的包络区域，按夹角用公式求面积并求和。对可能重叠的短公共边，利用包络线高度单调性嵌套二分求交点，再用参数积分减去交集；短边数量至多为常数。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1717,
+      "name": "Codeforces Round 818 (Div. 2)",
+      "date": "2022-09-02",
+      "url": "https://codeforces.com/contest/1717",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1717A",
+          "index": "A",
+          "slot": "A",
+          "title": "Madoka and Strange Thoughts",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1717/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/106553",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Madoka and Strange Thoughts；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1717B",
+          "index": "B",
+          "slot": "B",
+          "title": "Madoka and Underground Competitions",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1717/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/106553",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "博弈",
+            "交互"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Madoka and Underground Competitions；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1717C",
+          "index": "C",
+          "slot": "C",
+          "title": "Madoka and Formal Statement",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1717/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/106553",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Madoka and Formal Statement；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1717D",
+          "index": "D",
+          "slot": "D",
+          "title": "Madoka and The Corruption Scheme",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1717/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/106553",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "博弈",
+            "几何"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Madoka and The Corruption Scheme；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1717E",
+          "index": "E",
+          "slot": "E",
+          "title": "Madoka and The Best University",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1717/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/106553",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "几何",
+            "交互"
+          ],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Madoka and The Best University；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1717F",
+          "index": "F",
+          "slot": "F",
+          "title": "Madoka and The First Session",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1717/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/106553",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "flows",
+            "graph matchings",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Madoka and The First Session；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
