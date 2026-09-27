@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2246,
+    "total_problems": 2253,
     "source_total_problems": 2253,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2246,
-    "with_editorial_brief": 1986,
-    "with_solution_brief": 1987,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2253,
+    "with_editorial_brief": 1993,
+    "with_solution_brief": 1994,
     "missing_editorial_brief": 259,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1187,
+    "ai_override_count": 1194,
     "primary_topic_count": 13,
-    "contest_count": 348,
+    "contest_count": 349,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 101,
-    "构造与贪心": 750,
-    "图论与网络流": 131,
-    "动态规划与状态设计": 205,
-    "数论与同余": 235,
+    "构造与贪心": 752,
+    "图论与网络流": 132,
+    "动态规划与状态设计": 206,
+    "数论与同余": 236,
     "组合计数与概率": 167,
     "数据结构": 195,
     "几何": 50,
-    "树结构": 135,
+    "树结构": 136,
     "代数、矩阵与多项式": 18,
     "交互": 80,
-    "基础实现与模拟": 102,
+    "基础实现与模拟": 103,
     "博弈": 77
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1057,
+    "ai_generated_with_editorial": 1064,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 259,
     "manual_override": 891,
@@ -43397,6 +43397,219 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：先把所有 x 的选择压成 32 个 nimber 计数。对每堆用数位 DP 统计 cnt[p]；然后做小范围异或背包，转移 dp[new_xor]+=dp[old_xor]*cnt[p]。最后 dp[0] 就是 Bob 必胜方案数。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2033,
+      "name": "Codeforces Round 981 (Div. 3)",
+      "date": "2024-10-24",
+      "url": "https://codeforces.com/contest/2033",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "2033A",
+          "index": "A",
+          "slot": "A",
+          "title": "Sakurako and Kosuke",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2033/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/135520",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "点从坐标 $0$ 出发，Sakurako 先手；第 $i$ 回合移动 $2i-1$ 个单位，Sakurako 始终向负方向移动，Kosuke 始终向正方向移动。每次移动后若坐标绝对值超过 $n$，游戏结束，要求判断完成最后一次移动的人。",
+          "transformedStatement": "将游戏视为确定性的坐标序列：按回合奇偶依次执行 $x\\leftarrow x-(2i-1)$ 和 $x\\leftarrow x+(2i-1)$，寻找第一次使 $|x|>n$ 的回合，并根据其奇偶判定玩家。",
+          "keyObservations": [
+            "第 $i$ 回合的位移绝对值固定为 $2i-1$，方向只由回合奇偶决定，因此无需搜索任何选择。",
+            "游戏在某次移动后首次满足 $|x|>n$ 时立即结束，所以逐回合更新坐标并检查越界者就是最后行动者。",
+            "每个测试规模只需模拟到越界；由于坐标每回合增加的位移始终为正且不断增大，模拟次数为 $O(n)$，满足范围要求。"
+          ],
+          "solutionBrief": "从 $x=0$ 开始按回合编号模拟：奇数回合减去 $2i-1$，偶数回合加上 $2i-1$。每次更新后若 $|x|>n$，当前回合玩家即为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2033B",
+          "index": "B",
+          "slot": "B",
+          "title": "Sakurako and Water",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2033/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/135520",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 矩阵，每次可选择一个正方形区域，并把其主对角线上的所有元素都增加 $1$。求使矩阵中所有元素都不小于 $0$ 所需的最少操作次数。",
+          "transformedStatement": "将每个格子按差值 $d=i-j$ 分组；同组格子正好位于同一条可整体操作的对角线上，问题转化为分别把每组的最小值提升到 $0$，再合并各组所需次数。",
+          "keyObservations": [
+            "一次操作覆盖的所有格子都满足相同的 $i-j$，因此操作只能影响同一条左上到右下方向的对角线。",
+            "对某条对角线，若最小值为 $m<0$，至少需要 $-m$ 次操作才能抬高该格子；将整条对角线连续操作 $-m$ 次即可使其全部非负。",
+            "不同对角线互不影响，所以每条对角线所需次数可以独立计算，答案是所有对角线的贡献之和。"
+          ],
+          "solutionBrief": "按 $i-j$ 将矩阵划分为对角线，求每条对角线的最小值；其贡献为 $\u0000max(0,-m)$，将所有贡献相加即为最少操作次数，整体复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2033C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sakurako's Field Trip",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2033/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/135520",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定一列学生及每人的兴趣主题，干扰值是相邻学生主题相同的组数。可以任意多次交换位置 $i$ 与 $n-i+1$ 的学生，求能够达到的最小干扰值。",
+          "transformedStatement": "把每一对关于中心对称的位置看成一个只能选择两种朝向的槽位，从两端向中心逐对确定朝向；每次选择只需比较该对与外侧两个邻居形成的局部四元组。",
+          "keyObservations": [
+            "每对关于数组中心对称的位置只能有两种排列，重复交换不会产生更多状态，因此问题可转为依次决定每个对称位置对的朝向。",
+            "处理对称位置时，新增影响只来自四元组 $[a_{i-1},a_i,a_{n-i+1},a_{n-i+2}]$ 的相邻关系；若两侧已有一处相等邻接，交换这两个对称元素不会增加干扰，必要时还能减少干扰。",
+            "从数组两端向中心处理每个对称位置对：若当前元素与左侧相等，或其对称元素与右侧相等，就交换该对元素；局部交换规则保证此前处理部分不被破坏，最后统一统计相等相邻对。"
+          ],
+          "solutionBrief": "从外向内扫描对称位置对。若左侧或右侧存在相等的相邻主题，就交换这一对对称元素；该交换不会使干扰变大。处理完后遍历数组统计相等的相邻元素数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2033D",
+          "index": "D",
+          "slot": "D",
+          "title": "Kousuke's Assignment",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2033/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/135520",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "dsu",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个整数数组，若连续子段元素和为 $0$，则称其为美丽段。要求从数组中选出数量最多且两两不重叠的美丽段，并输出最大数量。",
+          "transformedStatement": "将每个美丽段视为一个和为零的区间调度任务：用前缀和相等生成候选区间，再按右端点进行最大不相交区间的动态规划。",
+          "keyObservations": [
+            "前缀和相等当且仅当两者之间的数组段和为 $0$，因此以 $r$ 结尾的美丽段可由此前缀和等于当前前缀和的位置确定。",
+            "固定右端点 $r$ 时，只需保留最靠后的匹配前缀位置 $l$；更早的匹配会被更短的区间 $[l+1,r]$ 替代，并可能额外留下前面的零和区间。",
+            "按右端点递推时，最优解要么不使用位置 $r$，要么选择区间 $[l+1,r]$；因此状态转移为 $dp[r]=\\max(dp[r-1],dp[l]+1)$。"
+          ],
+          "solutionBrief": "计算前缀和并用映射记录每个前缀和最近一次出现的位置。遇到当前前缀和的旧位置 $l$ 时，用 $dp[r]=\\max(dp[r-1],dp[l]+1)$ 更新答案；最后输出 $dp[n]$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2033E",
+          "index": "E",
+          "slot": "E",
+          "title": "Sakurako, Kosuke, and the Permutation",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2033/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/135520",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的置换，每次可任选两个位置交换其中的元素。若对每个位置 $i$ 都满足 $p_i=i$ 或 $p_{p_i}=i$，则称置换简单；求将原置换变简单所需的最少交换次数。",
+          "transformedStatement": "把置换表示为由边 $i\\to p_i$ 组成的函数图；简单置换恰好是所有环长度不超过 $2$，于是问题转化为分别计算并拆分每个初始环的最小操作数。",
+          "keyObservations": [
+            "将置换看成每个位置指向其对应值的函数图；题目中的条件等价于所有环的长度都不超过 $2$，因此目标是把长环拆成若干个一元环或二元环。",
+            "交换同一环中的两个元素会把该环拆成两个环，所以一次操作可以直接减少待处理环的规模，并且不同初始环之间互不影响。",
+            "长度为 $x$ 的环反复拆分时，每次最多让当前环规模减少 $2$，最终需要并且可以用 $\\left\\lfloor\\frac{x-1}{2}\\right\\rfloor$ 次操作变成长度不超过 $2$ 的环。"
+          ],
+          "solutionBrief": "遍历置换的每个环。对长度为 $x$ 的环累加 $\\left\\lfloor\\frac{x-1}{2}\\right\\rfloor$，因为交换环内元素可将其拆成两个环，重复操作即可得到长度至多为 $2$ 的所有环；各环独立，累加即为答案，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2033F",
+          "index": "F",
+          "slot": "F",
+          "title": "Kosuke's Sloth",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2033/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/135520",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "定义斐波那契数列，令 $G(n,k)$ 表示第 $n$ 个能被 $k$ 整除的斐波那契数所在的下标。例如 $k=2$ 时下标依次为 $3,6,9,\u0000dots$，所以 $G(3,2)=9$。对每组给定的 $n,k$，输出 $G(n,k)$ 对 $10^9+7$ 取模的结果。",
+          "transformedStatement": "先求最小下标 $p$ 使得 $k\\mid F_p$；利用斐波那契数的最大公因数性质，所有满足条件的下标恰为 $p,2p,3p,\u0000dots$，因此原问题等价于计算 $np$。",
+          "keyObservations": [
+            "斐波那契数对 $k$ 取模后至多经过 $6k$ 项就进入循环，因此只需枚举前 $6k$ 项即可找到首个被 $k$ 整除的项。",
+            "若最小的 $p$ 满足 $k\\mid F_p$，则由 $gcd(F_a,F_b)=F_{gcd(a,b)}$ 可知其他可整除下标必须是 $p$ 的倍数，从而第 $n$ 个下标为 $np$。",
+            "找到首个下标 $p$ 后，问题从处理可能极大的 $n$ 转化为一次乘法，并在模 $10^9+7$ 下计算结果。"
+          ],
+          "solutionBrief": "对每个 $k$ 枚举前 $6k$ 个斐波那契数的模 $k$ 余数，找到首个余数为零的下标 $p$。所有可被 $k$ 整除的斐波那契数下标正好是 $p$ 的倍数，因此答案为 $np\\bmod(10^9+7)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2033G",
+          "index": "G",
+          "slot": "G",
+          "title": "Sakurako and Chefir",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2033/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/135520",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 $1$ 为根的树，猫从顶点 $v$ 出发并拥有 $k$ 点体力。沿祖先到后代移动不消耗体力，其他方向每走一步消耗 $1$ 点；每次询问要求最大化从 $v$ 能到达的顶点与 $v$ 的距离。",
+          "transformedStatement": "任意最优行走都可重述为：先从 $v$ 向根方向上行不超过 $k$ 步，再从某个祖先向下进入其子树。问题转化为在这些祖先处选择不重复已走边的最深下降分支，并用倍增表合并候选值。",
+          "keyObservations": [
+            "最优路线可化为先向上走 $x\\le k$ 条边，再向下走到某个后代；中途反复折返不会增加可达距离。",
+            "对每个顶点记录子树内最深后代，以及来自不同子树的次优深度；从某个子节点向上转移时，若最深分支会重复经过已走边，就改用另一子树的分支。",
+            "把从节点到其祖先路径上的候选值定义为“目标深度减祖先高度”，可在倍增跳跃中取最大值，从而一次合并多层祖先信息。",
+            "查询时至多向上跳 $k$ 层，取得最大候选值后加上起点高度，即得到从起点出发的最大距离。"
+          ],
+          "solutionBrief": "先求每个节点向下的最深距离和可避开当前子树的次优分支，再为祖先倍增表维护路径候选最大值。查询时向上至多 $k$ 层取最大候选，并加上起点深度。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
