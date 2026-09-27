@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2661,
+    "total_problems": 2669,
     "source_total_problems": 2669,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2661,
-    "with_editorial_brief": 2392,
-    "with_solution_brief": 2393,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2669,
+    "with_editorial_brief": 2400,
+    "with_solution_brief": 2401,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1723,
+    "ai_override_count": 1731,
     "primary_topic_count": 13,
-    "contest_count": 407,
+    "contest_count": 408,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 134,
-    "构造与贪心": 835,
+    "字符串": 135,
+    "构造与贪心": 836,
     "图论与网络流": 163,
-    "动态规划与状态设计": 228,
+    "动态规划与状态设计": 229,
     "数论与同余": 292,
-    "组合计数与概率": 201,
-    "数据结构": 250,
+    "组合计数与概率": 203,
+    "数据结构": 251,
     "几何": 65,
     "树结构": 142,
     "代数、矩阵与多项式": 20,
-    "交互": 85,
+    "交互": 87,
     "基础实现与模拟": 153,
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1448,
+    "ai_generated_with_editorial": 1456,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 268,
     "manual_override": 891,
@@ -74399,6 +74399,249 @@ window.CF_INSIGHTS_DATA = {
             "目标函数 $x^2+y^2$ 在凸多边形上取最大值时只需检查顶点，从而把指数级子集枚举降为构造 Minkowski 和并遍历顶点。"
           ],
           "solutionBrief": "将每组转成向量 $(a_i-b_i,c_i-d_i)$，把所有线段 $[0,v_i]$ 做 Minkowski 和，按方向排序构造所得凸多边形，枚举其顶点并最大化 $x^2+y^2$；总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1840,
+      "name": "Codeforces Round 878 (Div. 3)",
+      "date": "2023-06-06",
+      "url": "https://codeforces.com/contest/1840",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1840A",
+          "index": "A",
+          "slot": "A",
+          "title": "Cipher Shifer",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1840/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/117060",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定由若干小写字母分别加密后拼接得到的字符串。原字符 $c$ 的加密块以 $c$ 开头和结尾，中间可有若干个不同于 $c$ 的字符；需要还原原始字符串。",
+          "transformedStatement": "把密文看成多个连续块：每块的首字符会在块末再次出现，且块内不会提前出现该字符。扫描每个块的首字符并跳到其下一次出现的位置之后，即可恢复一个原字符。",
+          "keyObservations": [
+            "每个原字符 $c$ 对应的加密块以 $c$ 开始、以下一个 $c$ 结束，中间字符都不等于 $c$，因此下一个相同字符唯一确定块的边界。",
+            "解密当前块时只需保留块首字符，并跳过直到下一个相同字符；越过该边界后的位置就是下一个原字符的起点。",
+            "加密串是这些独立块的连续拼接，所以逐块处理不会影响后续字符，扫描到末尾即可得到唯一原串。"
+          ],
+          "solutionBrief": "从字符串首字符开始，将其加入答案；向后寻找下一个相同字符，跳过包括该边界字符在内的整个加密块，再从下一位置重复。由于块内不会出现首字符，找到的相同字符必是块尾。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1840B",
+          "index": "B",
+          "slot": "B",
+          "title": "Binary Cafe",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1840/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/117060",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "有 $k$ 种甜点，第 $i$ 种价格为 $2^i$，每种最多购买一次，也可以一种都不买。求总花费不超过 $n$ 枚硬币时，选择甜点集合的方案数。",
+          "transformedStatement": "将每个购买集合编码为 $k$ 位二进制数，其数值就是总花费；问题转化为统计不超过 $n$ 的、由 $k$ 位二进制表示出的数，且总数最多为 $2^k$。",
+          "keyObservations": [
+            "每种甜点最多选一次，因此购买方案等价于一个长度为 $k$ 的二进制选择向量；若预算无限，共有 $2^k$ 个子集。",
+            "甜点价格恰好是不同的二次幂，每个子集的总价都唯一对应一个区间内的整数，所有方案的价格覆盖 $0$ 到 $2^k-1$。",
+            "当 $n<2^k-1$ 时，恰好有 $n+1$ 个总价不超过预算的方案；预算再增加也无法超过全部 $2^k$ 个子集，因此答案为 $\\min(2^k,n+1)$。"
+          ],
+          "solutionBrief": "把每种甜点是否购买视为一位二进制选择。由于二进制表示唯一，方案总价覆盖从 $0$ 开始的连续整数，预算限制下可行方案数为 $\\min(2^k,n+1)$，逐组计算即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1840C",
+          "index": "C",
+          "slot": "C",
+          "title": "Ski Resort",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1840/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/117060",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定 $n$ 天的温度数组，选择一段连续日期去滑雪，所选日期数至少为 $k$，且这段中的每天温度都不能超过 $q$。请计算所有满足条件的连续日期段数量。",
+          "transformedStatement": "将每天抽象为“温度不超过 $q$”的可行标记，问题转化为统计所有连续 $1$ 段中长度至少为 $k$ 的子段数量；每个可行段独立贡献答案。",
+          "keyObservations": [
+            "将温度不超过 $q$ 的天标记为 $1$，其余标记为 $0$；合法旅行日期必须完全落在连续的 $1$ 段内，因此不同连续段可以独立计数。",
+            "长度为 $l$ 的连续可行段中，长度至少为 $k$ 的连续区间数量为 $\\binom{l-k+2}{2}$，因为可选起点和终点的组合数等价于 $1+2+\\cdots+(l-k+1)$。",
+            "长度小于 $k$ 的可行段没有贡献，遍历数组按连续可行段分组并累加公式即可得到答案。"
+          ],
+          "solutionBrief": "把数组转为温度是否合格的 $0/1$ 数组，扫描得到每个连续 $1$ 段的长度 $l$。对 $l\\ge k$ 的段累加 $\\binom{l-k+2}{2}$，即可统计所有满足最少 $k$ 天的连续旅行区间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1840D",
+          "index": "D",
+          "slot": "D",
+          "title": "Wooden Toy Festival",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1840/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/117060",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个订单，每个订单要求模式 $a_i$。三位雕刻师可预先各选一个整数模式；订单可分配给任意雕刻师并行制作，若其准备模式为 $x$、订单模式为 $y$，耗时为 $|x-y|$。求选择三种模式后所有订单中的最小可能最大耗时。",
+          "transformedStatement": "将订单模式排序，并把它们等价划分为首位雕刻师负责的前缀、中间雕刻师负责的连续中段、末位雕刻师负责的后缀。对给定上限 $t$，两端尽量覆盖前后部分，剩余区间只需满足最大值与最小值之差不超过 $2t$。",
+          "keyObservations": [
+            "将三位雕刻师的准备模式按大小排序后，按最近模式分配订单，排序后的需求必然被划分为前缀、中段和后缀。",
+            "固定最大等待时间为 $t$ 时，首位和末位雕刻师分别应尽可能覆盖最长前缀与最长后缀；每段需求的最大值与最小值之差不超过 $2t$。",
+            "去掉两端能够覆盖的最长前缀和后缀后，只需检查中段的取值范围是否不超过 $2t$，即可用一个整数准备模式覆盖它。",
+            "可行性随 $t$ 增大保持不变，因此答案可通过二分确定，每次线性扫描求出两端的最大覆盖范围。"
+          ],
+          "solutionBrief": "先排序需求，二分最大等待时间 $t$。判定时分别找出能被首、末雕刻师覆盖的最长前缀和后缀，再检查剩余中段的范围是否不超过 $2t$；每次判定为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1840E",
+          "index": "E",
+          "slot": "E",
+          "title": "Character Blocking",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1840/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/117060",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "hashing",
+            "implementation"
+          ],
+          "statementBrief": "给定两个等长字符串和封锁时长 $t$，每秒执行一种操作：封锁某个位置的两个字符 $t$ 秒、交换两个未封锁字符，或询问忽略当前封锁位置后两串是否相等。对每次询问操作输出 YES 或 NO。",
+          "transformedStatement": "将问题转化为维护未封锁位置中的“坏位置”集合：坏位置是两串字符不同的位置；封锁会暂时移除该位置的贡献，解封和交换只需更新常数个位置。",
+          "keyObservations": [
+            "只需统计未封锁位置中两串字符不同的位置数 $cnt$；两串在忽略封锁字符后相等，当且仅当 $cnt=0$。",
+            "封锁、解封或交换只会影响常数个位置，因此先从 $cnt$ 中移除这些位置的旧贡献，操作后再加入新贡献即可。",
+            "封锁持续时间固定为 $t$ 秒，可将每次封锁记录为“位置、解封时刻”并按时间顺序放入队列，在处理当前查询前先解封到期位置。"
+          ],
+          "solutionBrief": "维护每个未封锁位置是否为坏位置及其总数 $cnt$。用队列记录封锁位置的解封时刻；每次查询前处理到期解封，并在修改涉及的位置上先删旧贡献、后加新贡献。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1840F",
+          "index": "F",
+          "slot": "F",
+          "title": "Railguns",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1840/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/117060",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "graphs"
+          ],
+          "statementBrief": "角色从矩形网格的 $(0,0)$ 出发，每秒可以向坐标增大的相邻位置移动一格，或原地等待；在指定时刻，水平或垂直轨道炮会贯穿一整行或一整列，角色若位于射线上就会死亡。求他活着到达 $(n,m)$ 的最短时间，无法到达则输出 $-1$。",
+          "transformedStatement": "把路线视为网格上的单调路径：移动次数由终点坐标决定，额外时间只来自原地等待。用等待次数替代绝对时间作为 DP 第三维，并通过 $i+j+k$ 还原每个状态发生的时刻。",
+          "keyObservations": [
+            "角色到达 $(i,j)$ 且原地等待了 $k$ 次时，经过时间固定为 $i+j+k$，因此无需按可能极大的时间逐秒枚举。",
+            "若存在一条成功轨迹，则可以证明它原地不动的次数不超过射击次数 $r$；于是第三维只需开到 $r$，将时间规模压缩为射击规模。",
+            "状态转移只来自左边、下边或原地等待：到达当前格后检查对应时刻是否被射击，从而同时处理移动和等待造成的时间变化。"
+          ],
+          "solutionBrief": "设 $dp[i][j][k]$ 表示到达 $(i,j)$、等待 $k$ 次是否可行，实际时间为 $i+j+k$。从左侧、下侧和原地等待转移，并在该时刻被射击的格子处禁用状态；枚举 $k\\le r$，取首次可达终点的时间，否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1840G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "In Search of Truth (Easy Version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1840/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/117060",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "interactive",
+            "math",
+            "meet-in-the-middle",
+            "probabilities"
+          ],
+          "statementBrief": "圆环被划分为未知数量 $n$ 个扇区，每个扇区有未知编号，箭头初始指向已知编号的扇区。每次可要求箭头顺时针或逆时针移动任意步数并获知新编号，最多查询 $2023$ 次，最终确定并输出 $n$。",
+          "transformedStatement": "把扇区编号看成未知的周期序列：先用单位步长探测一段连续序列，再把这段长度为 $1000$ 的序列作为标记集合，用步长 $1000$ 的跳跃寻找再次命中的位置，从周期回绕关系恢复 $n$。",
+          "keyObservations": [
+            "连续执行 $999$ 次单位顺时针移动即可获得初始位置开始的 $1000$ 个连续扇区编号；若期间再次看到初始编号，首次出现的位置直接给出 $n<1000$。",
+            "若前 $999$ 次未回到初始编号，则可知 $n\\ge1000$，并保存这 $1000$ 个编号作为一个完整的已知编号集合。",
+            "随后每次顺时针移动 $1000$ 个扇区，直到落入已保存集合；首次命中的编号与移动次数共同确定环上的周期 $n$，且最多再需 $1000$ 次查询。",
+            "两阶段查询总数至多为 $999+1000=1999$，严格低于 $2023$，因此满足交互次数限制。"
+          ],
+          "solutionBrief": "先连续移动 $999$ 次收集相邻编号，并检查是否回到初始编号以处理 $n<1000$。否则保存得到的 $1000$ 个编号，再以步长 $1000$ 移动，首次命中保存集合后根据命中位置和次数确定周期 $n$；总查询不超过 $1999$ 次。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1840G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "In Search of Truth (Hard Version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1840/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/117060",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "interactive",
+            "math",
+            "meet-in-the-middle",
+            "probabilities"
+          ],
+          "statementBrief": "圆被分成未知数量 $n$ 的扇区，扇区编号顺序未知；已知箭头初始指向的编号，每次可要求箭头顺时针或逆时针移动指定数量的扇区，并读取移动后的编号。最多查询 $1000$ 次后，输出扇区总数 $n$。",
+          "transformedStatement": "将随机移动看作从 $[1,n]$ 中取得样本，样本最大值先给出 $n$ 的高概率下界，从而把确定未知 $n$ 转化为在一个短连续区间内精确定位答案。",
+          "keyObservations": [
+            "把随机移动后的返回编号视为区间 $[1,n]$ 中的随机样本，样本最大值 $n_0$ 直接给出 $n$ 的下界。",
+            "若真实答案满足 $n_0+d<n$，则所有 $k$ 个样本都落在前 $n-d$ 个编号中的概率为 $((n-d)/n)^k$，因此可用较大 $k$ 将漏掉上界的概率压到极低。",
+            "高概率得到 $n_0\\le n\\le n_0+d$ 后，原问题被压缩为在长度约为 $d$ 的连续区间内确定 $n$，该区间可由 G1 的方法在 $2\\sqrt d$ 次查询内解决。",
+            "总查询数由随机采样阶段和区间精确确定阶段共同分配，取 $k$ 约为 $300$ 到 $400$ 可在 $1000$ 次限制内获得极高成功概率。"
+          ],
+          "solutionBrief": "随机移动约 $k$ 次并取返回编号最大值 $n_0$，以极高概率将 $n$ 限制在 $[n_0,n_0+d]$ 内；再用 G1 的方法在约 $2\\sqrt d$ 次查询中精确确定，令 $k$ 取 $300$ 到 $400$ 以满足总预算。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
