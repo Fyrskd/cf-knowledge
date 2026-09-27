@@ -2398,6 +2398,17 @@
     "date": "2025-10-24"
   },
   {
+    "id": 2167,
+    "name": "Codeforces Round 1062 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1761662100,
+    "relativeTimeSeconds": 28809367,
+    "date": "2025-10-28"
+  },
+  {
     "id": 2161,
     "name": "Pinely Round 5 (Div. 1 + Div. 2)",
     "type": "CF",
