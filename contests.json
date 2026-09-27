@@ -264,6 +264,17 @@
     "date": "2023-03-18"
   },
   {
+    "id": 1807,
+    "name": "Codeforces Round 859 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1679237700,
+    "relativeTimeSeconds": 111271244,
+    "date": "2023-03-19"
+  },
+  {
     "id": 1809,
     "name": "Educational Codeforces Round 145 (Rated for Div. 2)",
     "type": "ICPC",
