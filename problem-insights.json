@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2204,
+    "total_problems": 2213,
     "source_total_problems": 2213,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 2204,
-    "with_editorial_brief": 1951,
-    "with_solution_brief": 1952,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2213,
+    "with_editorial_brief": 1960,
+    "with_solution_brief": 1961,
     "missing_editorial_brief": 252,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1145,
+    "ai_override_count": 1154,
     "primary_topic_count": 13
   },
   "records": [
@@ -39282,6 +39282,389 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 959,
+      "problem_key": "2044A",
+      "contest_id": 2044,
+      "title": "Easy Problem",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2044/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/137306",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "brute force",
+        "math"
+      ],
+      "statement_brief": "给定多个整数 $n$，对每个 $n$ 统计满足 $a=n-b$ 的正整数有序对 $(a,b)$ 数量；其中 $a,b$ 都必须大于 $0$，分别输出每组计数。",
+      "transformed_statement": "把有序对按第一个分量 $a$ 参数化：只需选择合法的 $a$，第二个分量唯一取为 $b=n-a$。正整数限制将可选范围精确限定为 $1$ 到 $n-1$。",
+      "key_observations": [
+        "固定 $a$ 后，$b$ 被唯一确定为 $n-a$，因此每个合法的 $a$ 恰好对应一个有序对。",
+        "正整数条件等价于 $1\\le a\\le n-1$；共有 $n-1$ 个可选的 $a$，答案因此直接确定。"
+      ],
+      "solution_brief": "将 $a$ 枚举为 $1$ 到 $n-1$，并令 $b=n-a$。此时 $a,b$ 始终为正整数且每个有序对被唯一计数，所以每组答案为 $n-1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:48:18+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 960,
+      "problem_key": "2044B",
+      "contest_id": 2044,
+      "title": "Normal Problem",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2044/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/137306",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "implementation",
+        "strings"
+      ],
+      "statement_brief": "给定一串只含 `p`、`q`、`w` 的字符，字符串写在玻璃上；从玻璃另一侧观察时，要求输出看到的字符串。需要同时考虑观察方向导致的左右顺序变化和字符形状变化。",
+      "transformed_statement": "把每个字符看成经过玻璃翻转后的映射：先将原串整体反转，再应用 `p↔q`、`w→w` 的逐字符替换，所得字符串就是答案。",
+      "key_observations": [
+        "从玻璃另一侧观察会使字符顺序左右反转，因此输出顺序应为原串从右到左遍历。",
+        "左右翻转还会改变字符形状：`p` 与 `q` 互换，而竖直对称的 `w` 保持不变；逐字符替换即可直接构造答案。"
+      ],
+      "solution_brief": "对每个测试串先反转顺序，再将其中的 `p` 与 `q` 互换、保留 `w`，输出处理后的字符串。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:48:07+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 961,
+      "problem_key": "2044C",
+      "contest_id": 2044,
+      "title": "Hard Problem",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2044/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/137306",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "教室有两排、每排 $m$ 个座位；有 $a$ 只猴子只能坐第 1 排，$b$ 只只能坐第 2 排，另有 $c$ 只猴子两排均可坐，每个座位最多坐一只且必须遵守偏好。求最多能安排多少只猴子入座。",
+      "transformed_statement": "把两排分别视为容量为 $m$ 的资源：专属猴子只能消耗对应资源，无偏好猴子可以消耗任意一排的剩余容量；因此先满足两类专属需求，再把全部剩余容量合并分配给无偏好猴子。",
+      "key_observations": [
+        "有明确偏好的猴子只能占用对应行，因此应先用各自专属行的座位安置它们；这不会减少无偏好猴子的可安置数量，因为无偏好猴子仍可去另一行。",
+        "先安置无偏好猴子可能占用专属猴子唯一能用的座位，导致另一行出现空位却无法补救；因此专属需求必须优先处理。",
+        "两行专属猴子安置后，剩余座位总数就是无偏好猴子的可用容量，最终补入 $\u0000min(c,\\text{剩余座位})$ 只需一次取最小值。"
+      ],
+      "solution_brief": "先在第 1 行安置至多 $\\min(m,a)$ 只专属猴子，再在第 2 行安置至多 $\\min(m,b)$ 只专属猴子；统计两行剩余座位，最后安置至多该容量和 $c$ 中较小者。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:47:57+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 962,
+      "problem_key": "2044D",
+      "contest_id": 2044,
+      "title": "Harder Problem",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2044/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/137306",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组 $a$，构造同长度数组 $b$，要求对每个前缀 $b_1,\u001b[1m\\ldots\u001b[0mb_i$，指定值 $a_i$ 都是出现次数最多的数；同时每个 $b_i$ 必须在 $[1,n]$ 内，输出任意合法构造。",
+      "transformed_statement": "将目标转化为让整个数组 $b$ 的元素全部互不相同：这样任意前缀中每个数频次均为 $1$，只需确保每个 $a_i$ 出现在对应前缀中即可。",
+      "key_observations": [
+        "只要前缀中的所有元素都互不相同，那么每个元素出现次数都是 $1$，因此任意指定的 $a_i$ 都是该前缀的众数。",
+        "对每个首次出现的 $a_i$ 令 $b_i=a_i$，重复出现时改填一个从未在整个 $a$ 中出现且尚未使用的数，可保证所有 $b_i$ 全局互异。",
+        "由于构造出的 $b$ 中每个数出现次数均为 $1$，每个前缀也保持这一性质，从而当前目标值 $a_i$ 必然是众数。",
+        "未出现在 $a$ 中的数数量足够填补重复位置，且它们都属于 $[1,n]$，所以构造始终合法。"
+      ],
+      "solution_brief": "记录 $a$ 的首次出现位置：首次出现时令 $b_i=a_i$，否则从未出现在 $a$ 中的数中取一个未使用值。这样 $b$ 的所有元素互异，每个前缀的所有元素都是众数，故满足要求。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:47:46+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 963,
+      "problem_key": "2044E",
+      "contest_id": 2044,
+      "title": "Insane Problem",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2044/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/137306",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "greedy",
+        "implementation",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定 $k$ 及两个整数区间 $[l_1,r_1]$、$[l_2,r_2]$，统计有序对 $(x,y)$ 的数量：$x,y$ 分别属于对应区间，且存在非负整数 $n$ 使 $y/x=k^n$。",
+      "transformed_statement": "把每个可能的比例 $k^n$ 单独处理。固定 $q=k^n$ 后，$y$ 被确定为 $xq$，于是问题转化为统计同时满足 $x\\in[l_1,r_1]$ 和 $xq\\in[l_2,r_2]$ 的整数 $x$。",
+      "key_observations": [
+        "将比例条件改写为 $y=x\\cdot k^n$；固定 $n$ 后，$y$ 由 $x$ 唯一确定，因此只需统计合法的 $x$。",
+        "固定 $q=k^n$ 时，$y$ 落在区间等价于 $\\lceil l_2/q\\rceil\\le x\\le\\lfloor r_2/q\\rfloor$，再与 $[l_1,r_1]$ 求交即可直接计数。",
+        "由于 $x\\ge1$ 且 $y\\le10^9$，只需枚举有限个幂次；当 $k\\ge2$ 时，$k^{32}>10^9$，更大的幂不可能产生合法数对。",
+        "交集右端小于左端时贡献为 $0$；整数上取整应使用 $\\lfloor(l_2-1)/q\\rfloor+1$，避免浮点误差。"
+      ],
+      "solution_brief": "枚举 $n\\ge0$ 生成 $q=k^n$。对每个 $q$，将可行的 $x$ 限制为 $[l_1,r_1]\\cap[\\lceil l_2/q\\rceil,\\lfloor r_2/q\\rfloor]$，累加交集大小；幂次超过范围后停止。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:47:36+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 964,
+      "problem_key": "2044F",
+      "contest_id": 2044,
+      "title": "Easy Demon Problem",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2044/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/137306",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "数据结构",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "data structures",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定数组 `$a$` 和 `$b$`，构造矩阵 `$M_{i,j}=a_i b_j$`。对每个独立查询，必须选择一行和一列，把该行或列的所有元素置零，判断操作后矩阵元素总和是否能恰好为 `$x$`。",
+      "transformed_statement": "不构造矩阵，直接把选中行列后的总和建模为 `$(\\sum a-a_r)(\\sum b-b_c)$`。因此问题变为：查询给定 `$x$` 时，是否存在一个数组 `$a$` 的剩余和与一个数组 `$b$` 的剩余和，其乘积等于 `$x$`。",
+      "key_observations": [
+        "原矩阵总和可直接因式分解为 `$\\text{SumA}\\cdot\\text{SumB}$`，无需显式构造规模为 `$n\\times m$` 的矩阵。",
+        "删除第 `$r$` 行和第 `$c$` 列时交叉元素被重复扣除一次，因此剩余总和恰为 `$(\\text{SumA}-a_r)(\\text{SumB}-b_c)$`。",
+        "每个数组只需记录可能出现的剩余和及其正负号；查询 `$x$` 等价于判断是否存在两个可达因子，其乘积为 `$x$`。",
+        "按 `$x$` 的因子枚举有序乘积，并分别检查正负组合，可将每次查询转化为常数时间的可达性判断。"
+      ],
+      "solution_brief": "先计算两数组总和，并记录所有 `SumA-a_i` 与 `SumB-b_j` 的可达值及符号。预处理可达因子乘积；每次查询枚举 `$x$` 的因子，若两侧剩余和能组成该乘积则输出 YES。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:47:17+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 965,
+      "problem_key": "2044G1",
+      "contest_id": 2044,
+      "title": "Medium Demon Problem (easy version)",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2044/problem/G1",
+      "editorial_url": "https://codeforces.com/blog/entry/137306",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "树结构",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "graph matchings",
+        "graphs",
+        "implementation",
+        "trees"
+      ],
+      "statement_brief": "有 $n$ 只蜘蛛，每只初始有一个玩偶，并固定在每年同时把一个玩偶交给指定蜘蛛；没有玩偶则不操作，任意蜘蛛超过一个玩偶时立即丢弃多余部分。求从第 $2$ 年起，玩偶数量数组首次与上一年相同的年份。",
+      "transformed_statement": "把每只蜘蛛视为指向指定接收者的函数图节点。稳定时间由所有不在有向环上的节点把初始玩偶沿出边送到环所需的最长距离决定，环上的持续传递不影响结果。",
+      "key_observations": [
+        "每个点只有一个出边，因此图的每个连通块都由一个有向环和若干条指向环的路径组成，问题可归结为各点到环的最大距离。",
+        "非环点上的玩偶每年沿唯一出边前进一格；在它到达环前，该点状态必然改变，因此答案至少受最大入环距离限制。",
+        "环上点初始均有一个玩偶，交换后仍能保持一个玩偶，多余玩偶会被丢弃，所以环内循环不会继续增加稳定所需年份。",
+        "反复删除入度为零的点，每轮对应远离环的同一层；删除轮数得到最大入环距离，答案为该距离加 $2$。"
+      ],
+      "solution_brief": "将函数图按入度为零的点逐层剥离，记录剥离轮数以求最大入环距离。所有非环点的玩偶需传播到环后状态才稳定，因此输出最大距离加 $2$；可用有序集合维护当前入度为零层。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:47:02+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 966,
+      "problem_key": "2044G2",
+      "contest_id": 2044,
+      "title": "Medium Demon Problem (hard version)",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2044/problem/G2",
+      "editorial_url": "https://codeforces.com/blog/entry/137306",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "树结构",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "dp",
+        "dsu",
+        "graphs",
+        "implementation",
+        "trees"
+      ],
+      "statement_brief": "有 $n$ 只蜘蛛，每只初始拥有一个玩偶，并固定把玩偶交给另一只蜘蛛。每年所有蜘蛛同时进行操作：手中至少有一个玩偶的蜘蛛恰好交出一个，否则不操作，且蜘蛛可以持有多个玩偶。求第一次出现本年交换前的持有数量与上一年交换前完全相同的年份。",
+      "transformed_statement": "把每个蜘蛛视为指向接收者的函数图：环上的节点构成稳定核心，其他节点组成指向环的入树。树中玩偶沿父边逐年汇聚，节点耗尽所需时间等于其子树规模，因此只需计算各节点的子树规模并取最大耗尽时间。",
+      "key_observations": [
+        "函数图中每个连通块只有一个环；把环视为根后，其余节点形成指向根的树，问题被分解为若干棵入树。",
+        "对非环节点 $i$，其子树内的所有初始玩偶最终都要经过 $i$，且每年最多有一个玩偶离开，因此 $i$ 恰好在子树大小对应的时间后耗尽。",
+        "从入度为 $0$ 的叶子向上处理时，把已处理节点的累计规模加到其唯一后继，即可得到每个节点子树的初始玩偶总数。",
+        "所有非环分支耗尽后，玩偶只在环上循环且每年收支相等；因此答案是所有被剥离节点的累计规模加 $2$ 的最大值，若没有树枝则为 $2$。"
+      ],
+      "solution_brief": "将函数图的环压成根，对非环节点做入度剥离。令 $v[i]$ 为其子树规模，初始化为 $1$，处理节点 $i$ 时累加到 $v[r_i]$；答案取所有剥离节点的 $v[i]+2$ 的最大值，初值为 $2$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:46:43+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 967,
+      "problem_key": "2044H",
+      "contest_id": 2044,
+      "title": "Hard Demon Problem",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2044/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/137306",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "data structures",
+        "dp",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定一个 $n\\times n$ 的正整数矩阵，每次查询指定一个子矩阵；将其中元素按从上到下、每行从左到右的顺序展开成数组。要求计算展开数组中每个元素与其从 $1$ 开始的位置编号之积之和。",
+      "transformed_statement": "把子矩阵中元素的展开位置表示为局部行号乘子矩阵宽度、加局部列号再加一，将答案转化为该区域内 $M$、行坐标乘 $M$、列坐标乘 $M$ 的三类矩形加权和。",
+      "key_observations": [
+        "子矩阵按行优先展开后，元素的局部下标可写成 $(x-x_1)(y_2-y_1+1)+(y-y_1)+1$，从而把展开数组上的加权和还原为矩阵元素的线性加权和。",
+        "将局部下标展开后，答案只需组合子矩阵内的 $\u0001M$、$xM$ 和 $yM$ 三类矩形和，避免逐元素模拟展开过程。",
+        "全局坐标相对查询左上角存在偏移，且展开宽度变为 $y_2-y_1+1$；用矩形前缀和取得各类加权和后统一修正这两个偏移即可。",
+        "预处理这些加权前缀和后，每个查询只进行常数次矩形和计算，因此总复杂度降为 $O(n^2+q)$。"
+      ],
+      "solution_brief": "把展开后的位置改写为局部行号乘子矩阵宽度再加局部列号，拆成元素和、行坐标加权和、列坐标加权和。预处理对应的二维前缀和，查询时按边界取矩形和并修正坐标偏移，做到每次 $O(1)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:46:13+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 968,
