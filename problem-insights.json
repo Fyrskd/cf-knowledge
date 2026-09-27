@@ -15,19 +15,310 @@
     ]
   },
   "summary": {
-    "total_problems": 2898,
+    "total_problems": 2905,
     "source_total_problems": 2906,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2898,
-    "with_editorial_brief": 2634,
-    "with_solution_brief": 2635,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2905,
+    "with_editorial_brief": 2641,
+    "with_solution_brief": 2642,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1960,
+    "ai_override_count": 1967,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1753A1",
+      "contest_id": 1753,
+      "title": "Make Nonzero Sum (easy version)",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1753/problem/A1",
+      "editorial_url": "https://codeforces.com/blog/entry/108336",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "dp",
+        "greedy"
+      ],
+      "statement_brief": "给定一个只含 $-1$ 和 $1$ 的数组，要把整个数组划分为若干个连续且互不重叠、覆盖全部元素的区间。每个区间按位置计算交错和，要求所有区间交错和之和为 $0$；请构造任意可行划分，或判断不存在。",
+      "transformed_statement": "把问题转化为让各区间的交错和贡献成组抵消：先按相邻位置划分二元组，再让每个二元组独立产生总贡献 $0$，从而无需优化区间数量。",
+      "key_observations": [
+        "每个区间的交错和与普通区间和模 $2$ 同余，因此所有区间交错和的总和若为奇数不可能变成 $0$；这给出无解条件。",
+        "总和为偶数时数组长度也为偶数，可将数组固定分成相邻二元组，使构造只需独立处理每一对元素。",
+        "若一对元素相同，将其作为一个区间，其交错和为 $a_{2i-1}-a_{2i}=0$；若不同，则拆成两个单点区间，它们的贡献相反，合计为 $0$。"
+      ],
+      "solution_brief": "先判断数组总和是否为奇数；若是则输出无解。否则按相邻位置两两分组，相同元素输出一个二元区间，不同元素输出两个单点区间，所有区间贡献均为零。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:42:55+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1753A2",
+      "contest_id": 1753,
+      "title": "Make Nonzero Sum (hard version)",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1753/problem/A2",
+      "editorial_url": "https://codeforces.com/blog/entry/108336",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "dp",
+        "greedy"
+      ],
+      "statement_brief": "给定只含 $-1,0,1$ 的数组，将其划分为若干个连续且首尾相接的非空段。每段得分是段内元素从左到右正负交替的和，要求所有段得分之和为 $0$；需构造划分或判断无解。",
+      "transformed_statement": "把问题转化为：按顺序配对非零元素，并将每对非零元素及其间的零组成一个块；通过在块内选择切点，调整交替和中部分元素的符号，使每个块独立贡献 $0$。",
+      "key_observations": [
+        "每个元素乘以正号或负号后都与原值同模 $2$，因此所有段的交替和总和奇偶性不变；原数组元素和为奇数时必无解。",
+        "按顺序把数组划分成恰好包含两个非零元素的块，块间独立处理；只需让每个块切分后的交替和总和为 $0$。",
+        "若当前块长度为偶数，切出末尾非零元素即可翻转它在交替和中的符号；若长度为奇数，则根据首元素是否为零切首端，再归约到同样情形。",
+        "上述切分只改变被切部分的符号贡献，且两个非零元素的贡献最终相互抵消，因此各块可直接拼接成完整划分。"
+      ],
+      "solution_brief": "若全数组元素和为奇数输出 $-1$；否则顺序处理每两个非零元素及其中的零，按块长度和首元素情况切分，使每块交替和为 $0$，最后合并所有分段。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:42:40+00:00",
+          "quality_flags": [
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1753B",
+      "contest_id": 1753,
+      "title": "Factorial Divisibility",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1753/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/108336",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定 $n$ 个不超过 $x$ 的整数，允许把每个整数 $a_i$ 看作阶乘项 $a_i!$，要求判断这些阶乘之和是否能被 $x!$ 整除，并输出 Yes 或 No。",
+      "transformed_statement": "按阶乘大小统计频次，并把 $k+1$ 个 $k!$ 看成一个 $(k+1)!$ 进行进位；最终只需判断小于 $x$ 的阶乘项是否全部被进位消除。",
+      "key_observations": [
+        "把相同数值的阶乘项按频次统计；其中 $cnt_x$ 对模 $x!$ 的结果没有影响，因为每个 $x!$ 本身就是目标模数的倍数。",
+        "若 $cnt_k\u001e k+1$，可将 $k+1$ 个 $k!$ 合并为一个 $(k+1)!$，即令 $cnt_k$ 减少 $k+1$、$cnt_{k+1}$ 增加 $1$；该操作保持总和不变。",
+        "反复合并后满足 $cnt_k\u001e k$。此时剩余部分最大为 $\u0011_{k=1}^{x-1}k een k!=x!-1$，因此它在模 $x!$ 下为零当且仅当所有低于 $x$ 的频次都为零。",
+        "频次合并只需从小到大处理，并把整除得到的进位传给下一阶，因此可在线性统计后在线性范围内完成判断。"
+      ],
+      "solution_brief": "统计每个 $k$ 的出现次数，从 $1$ 到 $x-1$ 依次将 $k+1$ 个 $k!$ 进位成一个 $(k+1)!$。归一化后检查所有 $cnt_k$（$k<x$）是否为零；是则输出 Yes，否则输出 No，复杂度为 $O(n+x)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:41:44+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1753C",
+      "contest_id": 1753,
+      "title": "Wish I Knew How to Sort",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1753/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/108336",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "dp",
+        "math",
+        "probabilities"
+      ],
+      "statement_brief": "给定一个只含 $0$ 和 $1$ 的数组，每次等概率选择两个不同下标并交换对应元素，直到数组按非降序排列。求所需交换次数的期望，并将其表示的分数在模 $998244353$ 下输出。",
+      "transformed_statement": "把排序过程压缩为前 $g$ 个位置中零的数量：若共有 $g$ 个零，状态 $k$ 只会在交换前缀中的一与后缀中的零时增为 $k+1$，目标状态为 $g$。",
+      "key_observations": [
+        "设数组中共有 $g$ 个零，则排好序时前 $g$ 个位置必须全为零；状态 $k$ 可定义为这段前缀中已有的零数。",
+        "当状态为 $k$ 时，只有交换前缀中的一个一与后缀中的一个零才会让状态增加；这样的无序下标对概率为 $\\frac{2(g-k)^2}{n(n-1)}$。",
+        "其余交换不会改变状态，因此自环可以移项，得到 $dp[k]=\\frac{n(n-1)}{2(g-k)^2}+dp[k+1]$，答案是初始状态 $dp[o]$。",
+        "状态只会从 $k$ 增加到 $k+1$，所以答案可直接累加各阶段的期望等待次数，并用模逆元计算。"
+      ],
+      "solution_brief": "令 $g$ 为零的总数、$o$ 为前 $g$ 位中的零数。定义 $dp[k]$ 为已有 $k$ 个位置正确时的期望，利用有效交换概率建立自环递推并移项，计算 $dp[o]$ 的累加式，所有除法用 $998244353$ 下的模逆元完成。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:41:28+00:00",
+          "quality_flags": [
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1753D",
+      "contest_id": 1753,
+      "title": "The Beach",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1753/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/108336",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "graphs",
+        "shortest paths"
+      ],
+      "statement_brief": "棋盘中有障碍物、空地和已占据两格相邻位置的躺椅。每次最多移动一张躺椅，移动或旋转会分别产生给定代价，并始终保持躺椅占据两格相邻空位；要求释放出一对相邻空格供新躺椅放置，使总不适代价最小，无法做到则输出 $-1$。",
+      "transformed_statement": "把躺椅移动等价为让空闲格沿有向边转移：边表示一次操作后哪个格子被释放，边权为旋转或平移代价。于是问题变成从初始空闲格出发，分别在黑白棋盘格上求最短路，再寻找一对相邻可达格。",
+      "key_observations": [
+        "把操作改看成“移动空闲格”：空闲格沿某张躺椅移动到新位置，代价由躺椅相对方向决定，且棋盘颜色不变。",
+        "每张躺椅在最优方案中至多操作一次，因此可为每个空闲格建立到另一个可释放格子的有向带权转移。",
+        "棋盘黑白格之间不会互相转移，所以分别从所有初始空闲格多源运行最短路，得到每个格子被释放的最小代价。",
+        "最终空闲位置必须是相邻异色格，答案是所有相邻格距离之和的最小值；若不存在这样的可达对则无解。"
+      ],
+      "solution_brief": "将每个可能的空闲格作为图节点，根据相邻躺椅建立代价为 $p$ 或 $q$ 的有向边。以所有“.”为源做多源 Dijkstra，枚举相邻格取距离和最小值；不存在可达相邻对时输出 $-1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:41:08+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1753E",
+      "contest_id": 1753,
+      "title": "N Machines",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1753/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/108336",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "greedy"
+      ],
+      "statement_brief": "初始工件值为 $1$，依次经过一条固定顺序的加法机器（变为 $x+a_i$）或乘法机器（变为 $x\\cdot a_i$）。每次可付出 $p$ 或 $m$ 枚硬币，将对应机器移到链中任意位置且不改变其他机器相对顺序，在总预算不超过 $b$ 的条件下最大化最终值。",
+      "transformed_statement": "把方案重述为选择部分乘法器移到末尾、部分加法器移到开头：先枚举乘法器集合，再把加法器按乘法器分隔成若干段，并依据各自移到开头后的增益选择机器。对固定集合，预算选择转化为取最大的若干个增益。",
+      "key_observations": [
+        "在最优方案中，被移动的乘法机器可统一移到末尾，被移动的加法机器可统一移到开头，具体移动顺序不会影响最优值。",
+        "非平凡乘法器数量至多为 $log_2 C$，且若前面的乘法器不小于后面的，则移动后者必然也应移动前者；这些约束使候选乘法器子集数量很小。",
+        "固定要移到末尾的乘法器集合后，加法器被分成若干段；每个加法器移到开头的增益为 $profit_j=\\frac{lmul-1}{lmul}\\cdot rmul\\cdot a_j$，因此每段只需考虑增益最大的若干个。",
+        "所有增益都不超过 $C^2/4$，可二分临界增益，统计增益至少达到该值的加法器数量，再用剩余预算处理同值候选。"
+      ],
+      "solution_brief": "枚举满足前缀闭包性质的乘法器移动集合，将其移到末尾；对加法器分段排序并做前缀和。二分增益阈值，按预算选取最高增益的加法器，取所有方案最大值。题解复杂度为 $O(F(C)log^3 C+nlog n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:40:50+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1753F",
+      "contest_id": 1753,
+      "title": "Minecraft Series",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1753/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/108336",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "two pointers"
+      ],
+      "statement_brief": "城市是一个 $n\\times m$ 的网格，每名学生住在一个格子并有整数攻击性。选择一个轴对齐、边长为整数的正方形，英雄进入其中后可挑选攻击性两两不同且恰好构成包含 $0$ 的连续整数段的学生团队；不必选中方格内所有学生，求能组成至少 $t$ 人团队的正方形数量。",
+      "transformed_statement": "对每个方格只维护其中正整数和负数绝对值的集合，将可组成的最大团队条件转化为代价 $A+B\\ge t$。固定方格所在的对角线后，把右下角移动，并维护满足代价小于 $t$ 的最远左上边界。",
+      "key_observations": [
+        "将正整数集合的 MEX 记为 $A$、负数绝对值集合的 MEX 记为 $B$，则题目条件等价于方格代价 $A+B\\ge t$。",
+        "方格扩大时，已包含的整数不会消失，因此代价单调不减；固定右下角后，满足代价不超过 $t-1$ 的最远左上角边界只能单向移动。",
+        "按同一条左上到右下对角线处理方格，并随双指针增删边界单元格；每个单元格在每条相关对角线上至多加入一次，从而限制总增删次数。",
+        "MEX 查询总数不超过 $2nm$，用平方根分块维护增删与查询，可将总复杂度控制为 $O((nm+k)\\min(n,m)+nm\\sqrt{k})$。"
+      ],
+      "solution_brief": "把每个方格的代价定义为正数集合 MEX 与负数绝对值集合 MEX 之和。沿对角线固定右下角，用双指针维护代价不超过 $t-1$ 的边界，并用平方根分块动态维护 MEX，统计其余满足条件的方格。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:40:15+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 9,
       "problem_key": "1754B",
