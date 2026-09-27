@@ -24,7 +24,7 @@
     "missing_editorial_brief": 277,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2088,
+    "ai_override_count": 2094,
     "primary_topic_count": 13
   },
   "records": [
@@ -43,7 +43,7 @@
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Madoka and Strange Thoughts；本地暂无可用题解正文。",
+      "statement_brief": "对每个测试用例，考虑所有满足 $1\\le a,b\\le n$ 的有序整数对，判断其最小公倍数与最大公约数之比是否不超过 $3$，并统计满足条件的数对数量。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -51,9 +51,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:51:19+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 2,
@@ -66,15 +77,13 @@
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
       "secondary_topics": [
-        "图论与网络流",
-        "博弈",
-        "交互"
+        "基础实现与模拟"
       ],
       "original_tags": [
         "constructive algorithms",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Madoka and Underground Competitions；本地暂无可用题解正文。",
+      "statement_brief": "给定一个边长为 $n$ 且 $n$ 是 $k$ 的倍数的方形网格，用 `.` 和 `X` 填满，并要求指定位置 $(r,c)$ 必须为 `X`。每行、每列的任意连续 $k$ 个格子中至少要有一个 `X`，目标是在满足这些条件下让 `X` 的数量最少。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -82,9 +91,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:51:02+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "editorial_url_only",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 3,
@@ -95,12 +116,12 @@
       "problem_url": "https://codeforces.com/contest/1717/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/106553",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "基础实现与模拟",
       "secondary_topics": [],
       "original_tags": [
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Madoka and Formal Statement；本地暂无可用题解正文。",
+      "statement_brief": "给定两个长度为 $n$ 的数组。每次可将位置 $i$ 的元素加 $1$，但必须满足它不大于下一个位置的当前元素；对最后一个位置，下一个位置视为第一个位置。判断经过任意次操作（也可以不操作）后能否得到数组 $b$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -108,9 +129,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:50:45+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 4,
@@ -121,11 +152,9 @@
       "problem_url": "https://codeforces.com/contest/1717/problem/D",
       "editorial_url": "https://codeforces.com/blog/entry/106553",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "组合计数与概率",
       "secondary_topics": [
-        "组合计数与概率",
-        "博弈",
-        "几何"
+        "构造与贪心"
       ],
       "original_tags": [
         "combinatorics",
@@ -133,7 +162,7 @@
         "greedy",
         "math"
       ],
-      "statement_brief": "题面已抓取：Madoka and The Corruption Scheme；本地暂无可用题解正文。",
+      "statement_brief": "有 $2^n$ 名按顺序编号的选手进行 $n$ 轮完整淘汰赛，每场比赛的左右位置和初始胜者方向都可安排，且每轮胜者保持相对顺序。赞助商最多可翻转 $k$ 场比赛的胜者，求无论如何翻转都能保证的最小最终胜者编号，并对该最小值取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -141,9 +170,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:50:29+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 5,
@@ -155,16 +195,12 @@
       "editorial_url": "https://codeforces.com/blog/entry/106553",
       "editorial_quality": "url_only",
       "primary_topic": "数论与同余",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "几何",
-        "交互"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Madoka and The Best University；本地暂无可用题解正文。",
+      "statement_brief": "给定整数 $n$，枚举所有满足 $a,b,c>0$ 且 $a+b+c=n$ 的有序三元组，计算每个三元组的 $\\operatorname{lcm}(c,\\gcd(a,b))$ 并求总和，最后对 $10^9+7$ 取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -172,9 +208,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:50:13+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 6,
@@ -186,9 +232,7 @@
       "editorial_url": "https://codeforces.com/blog/entry/106553",
       "editorial_quality": "url_only",
       "primary_topic": "图论与网络流",
-      "secondary_topics": [
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "flows",
@@ -196,7 +240,7 @@
         "graphs",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Madoka and The First Session；本地暂无可用题解正文。",
+      "statement_brief": "给定一个含 $n$ 个顶点、$m$ 条无向边的图，以及初始全为零的数组 $b$。每条边必须独立选择一个方向：方向从 $v_i$ 到 $u_i$ 时让前者减 $1$、后者加 $1$，反向则相反；要求所有 $s_i=1$ 的顶点最终满足 $b_i=a_i$，并输出是否存在这样的选择，若存在还要给出每条边的方向。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -204,9 +248,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:49:58+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 7,

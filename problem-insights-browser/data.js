@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 277,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2088,
+    "ai_override_count": 2094,
     "primary_topic_count": 13,
     "contest_count": 461,
     "rating_min": 800,
@@ -45,15 +45,15 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "数论与同余": 328,
-    "构造与贪心": 965,
+    "构造与贪心": 963,
+    "基础实现与模拟": 180,
+    "组合计数与概率": 238,
     "图论与网络流": 184,
-    "组合计数与概率": 237,
     "数据结构": 282,
     "几何": 73,
     "动态规划与状态设计": 257,
     "字符串": 162,
     "交互": 96,
-    "基础实现与模拟": 179,
     "树结构": 151,
     "博弈": 97,
     "代数、矩阵与多项式": 21
@@ -93539,7 +93539,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Madoka and Strange Thoughts；本地暂无可用题解正文。",
+          "statementBrief": "对每个测试用例，考虑所有满足 $1\\le a,b\\le n$ 的有序整数对，判断其最小公倍数与最大公约数之比是否不超过 $3$，并统计满足条件的数对数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -93556,15 +93556,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/106553",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "图论与网络流",
-            "博弈",
-            "交互"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "constructive algorithms",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Madoka and Underground Competitions；本地暂无可用题解正文。",
+          "statementBrief": "给定一个边长为 $n$ 且 $n$ 是 $k$ 的倍数的方形网格，用 `.` 和 `X` 填满，并要求指定位置 $(r,c)$ 必须为 `X`。每行、每列的任意连续 $k$ 个格子中至少要有一个 `X`，目标是在满足这些条件下让 `X` 的数量最少。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -93579,12 +93577,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1300,
           "problemUrl": "https://codeforces.com/contest/1717/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/106553",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "基础实现与模拟",
           "secondaryTopics": [],
           "originalTags": [
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Madoka and Formal Statement；本地暂无可用题解正文。",
+          "statementBrief": "给定两个长度为 $n$ 的数组。每次可将位置 $i$ 的元素加 $1$，但必须满足它不大于下一个位置的当前元素；对最后一个位置，下一个位置视为第一个位置。判断经过任意次操作（也可以不操作）后能否得到数组 $b$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -93599,11 +93597,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1900,
           "problemUrl": "https://codeforces.com/contest/1717/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/106553",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
-            "组合计数与概率",
-            "博弈",
-            "几何"
+            "构造与贪心"
           ],
           "originalTags": [
             "combinatorics",
@@ -93611,7 +93607,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Madoka and The Corruption Scheme；本地暂无可用题解正文。",
+          "statementBrief": "有 $2^n$ 名按顺序编号的选手进行 $n$ 轮完整淘汰赛，每场比赛的左右位置和初始胜者方向都可安排，且每轮胜者保持相对顺序。赞助商最多可翻转 $k$ 场比赛的胜者，求无论如何翻转都能保证的最小最终胜者编号，并对该最小值取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -93627,16 +93623,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1717/problem/E",
           "editorialUrl": "https://codeforces.com/blog/entry/106553",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "几何",
-            "交互"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Madoka and The Best University；本地暂无可用题解正文。",
+          "statementBrief": "给定整数 $n$，枚举所有满足 $a,b,c>0$ 且 $a+b+c=n$ 的有序三元组，计算每个三元组的 $\\operatorname{lcm}(c,\\gcd(a,b))$ 并求总和，最后对 $10^9+7$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -93652,9 +93644,7 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1717/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/106553",
           "primaryTopic": "图论与网络流",
-          "secondaryTopics": [
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "flows",
@@ -93662,7 +93652,7 @@ window.CF_INSIGHTS_DATA = {
             "graphs",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Madoka and The First Session；本地暂无可用题解正文。",
+          "statementBrief": "给定一个含 $n$ 个顶点、$m$ 条无向边的图，以及初始全为零的数组 $b$。每条边必须独立选择一个方向：方向从 $v_i$ 到 $u_i$ 时让前者减 $1$、后者加 $1$，反向则相反；要求所有 $s_i=1$ 的顶点最终满足 $b_i=a_i$，并输出是否存在这样的选择，若存在还要给出每条边的方向。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

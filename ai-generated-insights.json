@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T22:47:06+00:00",
+  "updated_at": "2026-09-27T22:51:19+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -62409,6 +62409,171 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement 的数组目标、editorial 的四类候选及 tags 中的 greedy、math；题面未完整给出具体操作规则，操作形式由 editorial 候选关系推断。",
         "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1717F": {
+      "problem_key": "1717F",
+      "title": "Madoka and The First Session",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1717/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/106553",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "40b2f00ea62f26706a2f8ee1ce49927ceed40f78a412834c638db2e747578f48",
+      "generated_at": "2026-09-27T22:49:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个含 $n$ 个顶点、$m$ 条无向边的图，以及初始全为零的数组 $b$。每条边必须独立选择一个方向：方向从 $v_i$ 到 $u_i$ 时让前者减 $1$、后者加 $1$，反向则相反；要求所有 $s_i=1$ 的顶点最终满足 $b_i=a_i$，并输出是否存在这样的选择，若存在还要给出每条边的方向。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags 中的图论、网络流相关标签；editorial_text 为空，仅有题解链接。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1717E": {
+      "problem_key": "1717E",
+      "title": "Madoka and The Best University",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1717/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/106553",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "884703dee436aec1f394e1c54cfb36409766ce60a67e10b61aa6531e8ac33dfd",
+      "generated_at": "2026-09-27T22:50:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数 $n$，枚举所有满足 $a,b,c>0$ 且 $a+b+c=n$ 的有序三元组，计算每个三元组的 $\\operatorname{lcm}(c,\\gcd(a,b))$ 并求总和，最后对 $10^9+7$ 取模。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 提炼；editorial_url 仅有链接，未提供 editorial_text；数论分类参考 tags。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1717D": {
+      "problem_key": "1717D",
+      "title": "Madoka and The Corruption Scheme",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1717/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/106553",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ba79cfca06ee8f4062af1c0aeb9cd8c2202782060a10ddd6715f76c907e0b97f",
+      "generated_at": "2026-09-27T22:50:29+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $2^n$ 名按顺序编号的选手进行 $n$ 轮完整淘汰赛，每场比赛的左右位置和初始胜者方向都可安排，且每轮胜者保持相对顺序。赞助商最多可翻转 $k$ 场比赛的胜者，求无论如何翻转都能保证的最小最终胜者编号，并对该最小值取模。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text、题目标题和 codeforces_tags；editorial_text 为空，仅作保守建模。",
+        "quality_flags": [
+          "low_confidence",
+          "missing_editorial",
+          "statement_truncated"
+        ]
+      }
+    },
+    "1717C": {
+      "problem_key": "1717C",
+      "title": "Madoka and Formal Statement",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1717/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/106553",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b8fedc257aa583a7ec3d1901ed369ca7e3c07e39bb1e88113932b2976c6cf48b",
+      "generated_at": "2026-09-27T22:50:45+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度为 $n$ 的数组。每次可将位置 $i$ 的元素加 $1$，但必须满足它不大于下一个位置的当前元素；对最后一个位置，下一个位置视为第一个位置。判断经过任意次操作（也可以不操作）后能否得到数组 $b$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_url 仅提供链接，未提供题解正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1717B": {
+      "problem_key": "1717B",
+      "title": "Madoka and Underground Competitions",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1717/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/106553",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c9c81e6386c5bb9e2c74f3a631817ece6fa1fcfdb97098eef220cdbd69aff618",
+      "generated_at": "2026-09-27T22:51:02+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个边长为 $n$ 且 $n$ 是 $k$ 的倍数的方形网格，用 `.` 和 `X` 填满，并要求指定位置 $(r,c)$ 必须为 `X`。每行、每列的任意连续 $k$ 个格子中至少要有一个 `X`，目标是在满足这些条件下让 `X` 的数量最少。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，editorial_url 仅提供链接。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "editorial_url_only",
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "1717A": {
+      "problem_key": "1717A",
+      "title": "Madoka and Strange Thoughts",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1717/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/106553",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "db70a6f7ca384838421c12b6fe122e193cbb2e3a1381bb2e31b7ca7fe71ee782",
+      "generated_at": "2026-09-27T22:51:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "对每个测试用例，考虑所有满足 $1\\le a,b\\le n$ 的有序整数对，判断其最小公倍数与最大公约数之比是否不超过 $3$，并统计满足条件的数对数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text、题目标签 math/number theory 和元数据；editorial_text 为空，仅有题解链接。",
+        "quality_flags": [
+          "low_confidence",
+          "missing_editorial",
           "statement_inferred"
         ]
       }
