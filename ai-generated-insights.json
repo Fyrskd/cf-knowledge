@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T21:45:23+00:00",
+  "updated_at": "2026-09-27T21:50:03+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -60258,6 +60258,184 @@
         "source_provenance": "依据 statement_text、editorial_text，并参考 tags 中的 implementation 与 strings。",
         "quality_flags": [
           "editorial中关于L尺码长度大小规律的文字表述与后续不等式矛盾，按后续不等式及题意处理"
+        ]
+      }
+    },
+    "1736E": {
+      "problem_key": "1736E",
+      "title": "Swap and Take",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1736/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/107847",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d06c5abf23632e54cc9d0f127b42e85ddb008c50e17861f39d2771f846e78b08",
+      "generated_at": "2026-09-27T21:48:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组，进行 $n$ 回合。第 $i$ 回合可不操作，或交换任意一对相邻元素并把其中恰好一个变为 $0$；随后把位置 $i$ 的当前值加入得分，求最大总得分。",
+        "transformed_statement": "把每回合最终计入得分的元素追溯到其原始下标，得到非递减序列 $p_1,\u0005cldots,p_n$；再以回合数、当前原始下标和已用交换次数建立最大值 DP。",
+        "key_observations": [
+          "最优方案中每次计分的数值都不会预先被置零，因此可将它们对应的原始下标记为非递减序列 $p_1\\le\\cdots\\le p_n$，操作过程被转化为下标选择问题。",
+          "若相邻两回合选择同一原始下标，只需再进行一次交换，状态转移为 $dp[t][last][m]=dp[t-1][last][m-1]+a[last]$。",
+          "若本回合从更大的原始下标转移，目标下标为 $last$ 时至少需要 $last-t$ 次交换；因此只需从前一回合较小下标的状态转移，并用前缀最大值合并这些状态。",
+          "固定已进行的交换次数后，前一状态下标的转移只取区间前缀最大值，使原本枚举前驱下标的高阶转移降为 $O(1)$。"
+        ],
+        "solution_brief": "令 $dp[t][last][m]$ 表示前 $t$ 回合以原始下标 $last$ 计分且用了 $m$ 次交换时的最大分数。按下标是否延续分类转移；递增下标时需固定支付 $last-t$ 次交换，并用前缀最大值优化，整体复杂度为 $O(n^3)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的操作规则与 editorial_text 的状态定义、转移和复杂度；tags 仅用于主题辅助判断。",
+        "quality_flags": []
+      }
+    },
+    "1736D": {
+      "problem_key": "1736D",
+      "title": "Equal Binary Subsequences",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1736/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/107847",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "495501349680bb12908d3d975427eb4e4d0e53a0a02ff60d716f1971c468ea10",
+      "generated_at": "2026-09-27T21:48:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $2n$ 的二进制串，必须恰好选择一列递增下标并将这些位置的字符循环右移一次，然后把全部位置划分成两条各含 $n$ 个下标的子序列。要求两条子序列按原顺序形成完全相同的字符串，并输出操作下标及其中一条子序列；无解输出 $-1$。",
+        "transformed_statement": "把字符串固定分成相邻二元组，目标转化为通过一次循环移位让每个二元组内部字符相同；完成后奇数位与偶数位自然构成两条相同子序列。若二元组不等的数量为偶数，则可用交替的 $0,1$ 选点实现这一转化。",
+        "key_observations": [
+          "若最终能分成两个相同子序列，字符串中的 $1$ 总数必须为偶数；一次循环移位不改变字符总数，因此这是必要条件。",
+          "将相邻位置分成 $n$ 对后，值不同的对数 $x$ 与总 $1$ 数同奇偶，所以当总 $1$ 数为偶数时，$x$ 必为偶数。",
+          "从每个不同对中选一个位置，并按顺序让被选字符依次为 $0,1,0,1,\u0002dots$；循环移位会翻转这些位置，使每个不同对变成相同的一对。",
+          "处理后每个相邻对的两个字符都相等，因此取所有奇数位置和所有偶数位置即可得到两条相同的子序列。"
+        ],
+        "solution_brief": "检查 $1$ 的总数是否为偶数，否则输出 $-1$。按相邻位置分对，从每个不同对选取一个位置，使选中字符交替为 $0,1$，循环移位后所有相邻对相同，输出选中位置和所有奇数位置；复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text 及 codeforces_tags 提炼；题面末尾输出格式不完整。",
+        "quality_flags": [
+          "statement_truncated"
+        ]
+      }
+    },
+    "1736C2": {
+      "problem_key": "1736C2",
+      "title": "Good Subarrays (Hard Version)",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1736/problem/C2",
+      "editorial_url": "https://codeforces.com/blog/entry/107847",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "68bb088cb13fb52e19a317a98c0ad819fb6bb7cfeabc550d118c63d9903ac4fc",
+      "generated_at": "2026-09-27T21:49:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的正整数数组；子数组若从左到右第 $i$ 个元素都至少为 $i$，则称为 good。每次独立地把一个位置 $a_p$ 改为 $x$，并求修改后数组中 good 子数组 $(l,r)$ 的数量。",
+        "transformed_statement": "把每个以 $i$ 结尾的 good 子数组数量等价表示为最长合法后缀长度 $dp[i]$，总答案为所有 $dp[i]$ 之和；单点修改只影响该点到后方第一个恢复原状态的位置，中间状态连续递增。",
+        "key_observations": [
+          "以 $dp[i]$ 表示以 $i$ 结尾的最长合法子数组长度，则有 $dp[i]=\\min(dp[i-1]+1,a_i)$，因此所有合法子数组总数就是 $\\sum_i dp[i]$。",
+          "修改位置 $p$ 后，$p$ 左侧的 $dp$ 不变；令 $q>p$ 为后方第一个重新满足 $adp[q]=a_q$ 的位置，则 $q$ 之后的状态和原数组完全一致。",
+          "在 $p< i<q$ 的区间内没有新的截断点，故 $adp[i]=adp[i-1]+1$，该段贡献可直接按等差数列求和。",
+          "预处理每个可能的恢复位置的后缀贡献，并用有序结构或二分定位 $q$，即可在 $O(\\log n)$ 时间回答一次独立修改。"
+        ],
+        "solution_brief": "预处理 $dp[i]=\\min(dp[i-1]+1,a_i)$、前缀和及各恢复位置的后缀贡献。每次将 $a_p$ 截为 $\\min(x,dp[p-1]+1)$，定位后方首个恢复点 $q$，再合并左侧原贡献、中间等差段和右侧后缀贡献；用有序结构或二分实现 $O(\\log n)$ 查询。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数据结构",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、Editorial 正文及其在线/离线代码；tags 仅用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1736C1": {
+      "problem_key": "1736C1",
+      "title": "Good Subarrays (Easy Version)",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1736/problem/C1",
+      "editorial_url": "https://codeforces.com/blog/entry/107847",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4b9a00035ffb578f35681e49283a9a572f6af25786c2d7daa059b9d8d202d979",
+      "generated_at": "2026-09-27T21:49:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数数组，连续子数组若从左到右编号后第 $k$ 个元素都满足不小于 $k$，就称为合法。需要统计所有满足 $1\\le l\\le r\\le n$ 的区间 $[l,r]$ 中，合法子数组的数量。",
+        "transformed_statement": "把问题按右端点拆分：对每个位置 $i$，只维护以它结尾的最长合法后缀长度 $dp[i]$。由于合法数组的任意后缀仍合法，所有以 $i$ 结尾的合法区间数量正好等于该长度。",
+        "key_observations": [
+          "以 $i$ 结尾的最长合法子数组长度为 $dp[i]$ 时，其所有后缀也合法，因此恰好有 $dp[i]$ 个合法子数组以 $i$ 结尾。",
+          "若前一位置的最长长度为 $dp[i-1]$，尝试把它向右延伸后，新末元素必须满足 $a_i\\ge dp[i-1]+1$；否则合法长度受末元素限制，统一得到 $dp[i]=\\min(dp[i-1]+1,a_i)$。",
+          "将每个位置贡献的合法子数组数量相加即可统计所有区间，因为每个区间按右端点被唯一计数。"
+        ],
+        "solution_brief": "令 $dp[i]$ 表示以 $i$ 结尾的最长合法子数组长度，初始化 $dp[0]=0$，逐项计算 $dp[i]=\\min(dp[i-1]+1,a_i)$。以 $i$ 结尾的答案贡献为 $dp[i]$，累加得到总数，复杂度为 $O(n)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的合法子数组定义，以及 editorial 中给出的 $dp$ 状态、递推式和求和结论；tags 仅用于主题辅助判断。",
+        "quality_flags": []
+      }
+    },
+    "1736B": {
+      "problem_key": "1736B",
+      "title": "Playing with GCD",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1736/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/107847",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "aaafa5ef8fa2288f4546a946c65ac526e4c766422ea2f31568958af7614a2c02",
+      "generated_at": "2026-09-27T21:49:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的正整数数组 $a$，需要判断是否存在长度为 $n+1$ 的正整数数组 $b$，使每个相邻元素满足 $\\gcd(b_i,b_{i+1})=a_i$。对每组数据输出是否存在这样的数组。",
+        "transformed_statement": "将每个 $b_i$ 视为必须同时被 $a_{i-1}$ 和 $a_i$ 整除的数，取满足这些约束的最小公倍数代表 $b_i$；问题转化为检查这些代表值的相邻最大公因数是否恰好恢复原数组。",
+        "key_observations": [
+          "令边界值 $a_0=a_{n+1}=1$，并令 $b_i=\\operatorname{lcm}(a_{i-1},a_i)$，这样每个 $b_i$ 同时满足相邻两项的整除要求。",
+          "若该构造中的 $\\gcd(b_i,b_{i+1})=a_i$ 对所有位置成立，则 $b$ 直接是合法解，从而无需寻找其他数组。",
+          "任意合法数组 $c$ 的每个 $c_i$ 都是 $b_i$ 的倍数，因此 $\\gcd(c_i,c_{i+1})$ 不小于 $\\gcd(b_i,b_{i+1})$；若后者大于 $a_i$，任何数组都不可能合法。"
+        ],
+        "solution_brief": "补上两端的 $1$，构造 $b_i=\\operatorname{lcm}(a_{i-1},a_i)$。逐项检查 $\\gcd(b_i,b_{i+1})$ 是否等于 $a_i$；全相等输出 YES，否则输出 NO。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 和完整 editorial_text 提炼，codeforces_tags 用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1736A": {
+      "problem_key": "1736A",
+      "title": "Make A Equal to B",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1736/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/107847",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "496a3743c55e2d76cd4f0a333900d69759cebfc0667394773e1e73872b3720f7",
+      "generated_at": "2026-09-27T21:50:03+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度为 $n$、元素仅为 $0/1$ 的数组。每次可翻转一个元素，或将整个数组任意重排；求把数组 $a$ 变成数组 $b$ 所需的最少操作次数。",
+        "transformed_statement": "将方案分成是否使用重排：不重排时逐位置修正；使用一次重排时先通过翻转调整两个数组的 $0/1$ 数量，再用一次重排对齐位置，比较两种代价。",
+        "key_observations": [
+          "重排操作至多执行一次；多次重排不会比一次带来更多效果，因此只需比较使用与不使用两种情况。",
+          "不使用重排时，数组位置不能交换，答案就是对应位置不同的元素个数，即 $sum_i(a_i\\ne b_i)$。",
+          "使用一次重排后只需匹配 $0$ 和 $1$ 的总数；若 $a$ 比 $b$ 多 $x$ 个 $0$，翻转 $x$ 个元素再重排，代价为 $x+1$。",
+          "两种方案分别可独立达到目标，取 $min(\\text{位置失配数},1+|\\#1(a)-\\#1(b)|)$ 即得最优答案。"
+        ],
+        "solution_brief": "统计逐位失配数，并统计两数组中 $1$ 的数量差。答案取不重排的失配数与“翻转数量差后重排”的 $1+|\\Delta|$ 中较小者，单测复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement；操作规则与核心结论、复杂度依据 editorial；主题参考 tags。",
+        "quality_flags": [
+          "operation_rules_inferred_from_editorial",
+          "statement_operation_descriptions_corrupted"
         ]
       }
     }
