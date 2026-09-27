@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2647,
+    "total_problems": 2654,
     "source_total_problems": 2655,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2647,
-    "with_editorial_brief": 2378,
-    "with_solution_brief": 2379,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2654,
+    "with_editorial_brief": 2385,
+    "with_solution_brief": 2386,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1709,
+    "ai_override_count": 1716,
     "primary_topic_count": 13,
-    "contest_count": 405,
+    "contest_count": 406,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 134,
-    "构造与贪心": 832,
+    "构造与贪心": 834,
     "图论与网络流": 163,
     "动态规划与状态设计": 227,
     "数论与同余": 292,
     "组合计数与概率": 201,
-    "数据结构": 247,
+    "数据结构": 249,
     "几何": 64,
-    "树结构": 139,
+    "树结构": 142,
     "代数、矩阵与多项式": 20,
     "交互": 85,
     "基础实现与模拟": 151,
     "博弈": 92
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1434,
+    "ai_generated_with_editorial": 1441,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 268,
     "manual_override": 891,
@@ -73524,6 +73524,228 @@ window.CF_INSIGHTS_DATA = {
             "对第一条切边的位置使用分治递归，左右子问题继承由当前最优方案划分出的区间；可行方案的切边数量至多为 $O(n/k)$，因此总复杂度可达到 $O(n\\log k)$。"
           ],
           "solutionBrief": "先固定切边数量和一条基准切边，用区间 DP 求其余切边的最优位置。交换论证将其他最优方案限制在基准方案划出的区间内，再对基准位置分治求解；枚举同一或相邻的切边数量并取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1843,
+      "name": "Codeforces Round 881 (Div. 3)",
+      "date": "2023-06-20",
+      "url": "https://codeforces.com/contest/1843",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "1843A",
+          "index": "A",
+          "slot": "A",
+          "title": "Sasha and Array Coloring",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1843/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/117468",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个整数数组，必须把每个元素恰好染成一种颜色，每种颜色至少包含一个元素；某颜色的代价是该颜色所有元素的最大值减最小值，整体代价为各颜色代价之和。可以任意选择颜色数量和分组方式，要求最大化整体代价。",
+          "transformedStatement": "题目等价于把数组元素分成若干组，并最大化各组极差之和；最优时每组至多两个元素，因此进一步转化为将元素配成若干对，使配对差值总和最大。",
+          "keyObservations": [
+            "存在一个同样最优的方案，使每种颜色至多包含两个元素：从超过两个元素的颜色中移出中位数作为单独颜色，不改变原颜色的最大值和最小值。",
+            "两个只含一个元素的颜色可以合并且代价不会下降，因此最优方案可视为若干对元素，最多剩一个元素与自身成对。",
+            "一对元素的贡献是较大值减较小值，所以排序后应将最大的 $\\lfloor n/2\\rfloor$ 个元素作为正贡献、最小的 $\\lfloor n/2\\rfloor$ 个元素作为负贡献，中间元素贡献为零。"
+          ],
+          "solutionBrief": "先排序。根据最优方案可化为元素配对，最大化每对的差值，因此答案等于排序数组中最大的 $\\lfloor n/2\\rfloor$ 个数之和减去最小的 $\\lfloor n/2\\rfloor$ 个数之和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1843B",
+          "index": "B",
+          "slot": "B",
+          "title": "Long Long",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1843/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/117468",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个整数数组，每次可选择任意连续区间并将其中所有元素乘以 $-1$，可操作任意次。要求得到数组元素和的最大值，并在达到该最大值的方案中求最少操作次数。",
+          "transformedStatement": "将目标拆成两部分：先把每个元素的符号调整为非负以取得绝对值总和，再把问题转化为统计删除零后数组中的连续负数段，每段一次区间翻转。",
+          "keyObservations": [
+            "每个元素的最终值不超过其绝对值，且翻转所有负数后可同时达到，因此最大和必为 $\\sum |a_i|$。",
+            "零元素既不贡献和，也能被操作区间跨过而不影响目标符号，所以可先从数组中删除所有零。",
+            "删除零后，连续负数段各翻转一次即可变为全非负；不同负数段之间夹着正数，不能用一次操作同时处理而不破坏正数，因此最少操作数就是负数段数量。"
+          ],
+          "solutionBrief": "线性扫描数组，累加所有元素的绝对值；忽略零后，统计负数连续段的开始次数，即为最少操作数。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1843C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sum in Binary Tree",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1843/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/117468",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "题目给出一棵按层连续编号的无限二叉树：节点 $u$ 的两个孩子依次编号为 $2u$ 和 $2u+1$。对给定节点 $n$，求从根节点 $1$ 到 $n$ 的唯一路径上所有节点编号之和。",
+          "transformedStatement": "将求根到 $n$ 的路径改为从 $n$ 反向追溯父节点：每次把当前编号替换为 $\\lfloor u/2\\rfloor$，直到得到根节点 $1$，并累加经过的编号。",
+          "keyObservations": [
+            "编号为 $u$ 的节点的两个孩子固定为 $2u$ 和 $2u+1$，因此任意节点的父节点都能唯一确定为 $\floor(u/2)$。",
+            "从目标节点不断取父节点即可逆向枚举整条根路径，直到回到 $1$；路径长度为 $O(\\log n)$，所以无需显式建立无限树。",
+            "路径上的节点编号正是不断进行整除 $2$ 得到的序列，将这些编号累加即可得到答案。"
+          ],
+          "solutionBrief": "对每个 $n$，循环累加当前节点编号，并令当前编号变为 $\\lfloor n/2\\rfloor$，直到处理完根节点 $1$。每个测试用例耗时 $O(\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1843D",
+          "index": "D",
+          "slot": "D",
+          "title": "Apple Tree",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1843/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/117468",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的树，两枚苹果分别从顶点 $x,y$ 开始；反复摇树后，苹果沿各自子树方向下落，最终从某个叶子离开。对每个假设，求苹果分别可能从哪些顶点落下所形成的有序对 $(a,b)$ 的数量。",
+          "transformedStatement": "把每个顶点 $v$ 抽象为一个状态值 $cnt_v$，表示其子树内可作为苹果落点的叶子数量；查询答案转化为两个状态值的乘积 $cnt_xcnt_y$。",
+          "keyObservations": [
+            "苹果从顶点 $v$ 出发可能落下的位置，恰好是以 $v$ 为根的子树中的所有叶子，因此只需统计子树叶子数。",
+            "若 $v$ 本身是叶子，则其贡献为 $1$；否则可落下的位置被各个孩子子树划分，满足 $cnt_v=\\sum cnt_{child}$。",
+            "两枚苹果的最终落点分别独立选择，所以查询 $(x,y)$ 的有序结果数是 $cnt_x\\times cnt_y$，无需枚举落点组合。"
+          ],
+          "solutionBrief": "以 1 为根进行 DFS，计算每个顶点子树中的叶子数 $cnt$：叶子取 $1$，非叶子取所有孩子的 $cnt$ 之和。每次查询直接输出 $cnt_x\\times cnt_y$，总复杂度为 $O(n+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1843E",
+          "index": "E",
+          "slot": "E",
+          "title": "Tracking Segments",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1843/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/117468",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个全为 $0$ 的长度为 $n$ 的数组和 $m$ 个区间。按顺序执行 $q$ 次操作，每次把指定位置设为 $1$；当某个区间内的 $1$ 数严格多于 $0$ 数时称其美丽，要求找出第一次出现美丽区间的操作编号，若始终没有则输出 $-1$。",
+          "transformedStatement": "把每次操作的前缀视为一个固定数组状态，并把元素改写为权值：$1$ 对应 $+1$、$0$ 对应 $-1$。于是问题变为寻找最小的操作前缀，使某个给定区间的权值和为正。",
+          "keyObservations": [
+            "随着操作次数增加，数组中的 $1$ 只会新增不会撤销，因此“已有美丽区间”具有单调性，可对最早操作次数二分。",
+            "将数组中的 $1$ 记为 $+1$、$0$ 记为 $-1$ 后，区间美丽等价于区间和大于 $0$，可用前缀和在 $O(1)$ 时间判断一个区间。",
+            "检查前 $k$ 次操作时，只需把这些位置设为 $1$，再扫描所有区间；这将动态过程转化为固定状态下的区间判定。"
+          ],
+          "solutionBrief": "二分答案 $k$，检查前 $k$ 次修改形成的数组：将 $1$ 视为 $+1$、$0$ 视为 $-1$，建立前缀和并判断是否存在区间和大于 $0$。若最终仍不存在则输出 $-1$，总复杂度为 $O((n+m)\\\\log q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1843F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Omsk Metro (simple version)",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1843/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/117468",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "greedy",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "地铁站构成一棵树，初始只有权值为 $1$ 的根站；新增车站时把一个权值为 $-1$ 或 $1$ 的站连接到已有站上。对每次询问，考虑根到指定车站路径上的连续子段，判断是否存在其权值和落在给定范围内。",
+          "transformedStatement": "把每条根到节点的路径抽象为一个 $\\{-1,1\\}$ 数组；查询不再枚举子段，而是只需维护该数组所有连续子段和的最小值与最大值，因为中间的每个整数都一定可取得。",
+          "keyObservations": [
+            "由于每个点权只能是 $-1$ 或 $1$，从一个连续子段通过端点增删变到另一个子段时，区间和每次只改变 $1$，因此所有可达和恰好覆盖最小值到最大值之间的整数。",
+            "对根到节点 $u$ 的路径维护最大后缀和与最大子段和：新增点权为 $x_u$ 时，后缀更新为 $\\max(0,\\mathrm{suf}_{p_u}+x_u)$，最大子段和更新为 $\\max(\\mathrm{mx}_{p_u},\\mathrm{suf}_u)$。",
+            "最小子段和可对权值取相反数并使用同样递推；于是每次查询只需判断目标区间是否与 $[\\mathrm{mn}_u,\\mathrm{mx}_u]$ 相交。",
+            "节点是在已有树上在线添加的，父节点已知，所以新节点的这些统计量能直接继承父节点，所有事件总计线性处理。"
+          ],
+          "solutionBrief": "对每个节点维护根到它的路径上的最大、最小子段和，以及最大、最小后缀和。新增节点时由父节点递推；查询时利用可达和构成整数区间，判断询问范围是否与该区间相交，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1843F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Omsk Metro (hard version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1843/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/117468",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "dp",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "地铁是一棵树，初始只有权值为 $1$ 的根节点；新事件会把一个权值为 $-1$ 或 $1$ 的车站连接到已有车站。对每次询问，给定两个车站和整数 $k$，判断它们路径上的某个非空连续子段的权值和是否等于 $k$。",
+          "transformedStatement": "将每条祖先路径视为一个可拼接的序列摘要，维护其总和以及最小、最大前缀/后缀/连续子段和；任意两点路径通过最近公共祖先拆成两段后，用这些摘要合并。",
+          "keyObservations": [
+            "由于点权只有 $-1$ 和 $1$，一条路径上非空连续子段的可达和覆盖从最小值到最大值的全部整数，因此查询只需比较目标值与子段和的最小、最大值。",
+            "把一段路径维护为总和，以及前缀、后缀和与连续子段和的最小值和最大值；两段拼接时，跨越连接点的最优值由左侧后缀和右侧前缀合并得到。",
+            "对每个新增节点预处理到祖先的二进制跳跃信息，并为每个跳跃保存上述区间摘要，使任意祖先路径都能在 $O(\\log n)$ 次合并中得到答案。",
+            "查询路径可按两端分别上移到最近公共祖先，再合并两条竖直路径；处理第二条路径时需反转其序列方向，才能保持前缀和后缀的含义。"
+          ],
+          "solutionBrief": "动态加点时建立二进制提升表，并为每个跳跃维护总和、最小/最大前缀、后缀及子段和。查询时将两端提升到最近公共祖先，合并路径摘要，再判断 $k$ 是否位于最小与最大子段和之间；总复杂度为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
