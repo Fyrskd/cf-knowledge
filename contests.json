@@ -1947,6 +1947,17 @@
     "date": "2025-04-05"
   },
   {
+    "id": 2093,
+    "name": "Codeforces Round 1016 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1744122900,
+    "relativeTimeSeconds": 46354307,
+    "date": "2025-04-08"
+  },
+  {
     "id": 2094,
     "name": "Codeforces Round 1017 (Div. 4)",
     "type": "ICPC",
