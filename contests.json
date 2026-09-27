@@ -2585,6 +2585,17 @@
     "date": "2026-01-23"
   },
   {
+    "id": 2193,
+    "name": "Codeforces Round 1076 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1769351700,
+    "relativeTimeSeconds": 21117411,
+    "date": "2026-01-25"
+  },
+  {
     "id": 2187,
     "name": "Codeforces Round 1077 (Div. 1)",
     "type": "CF",
