@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2825,
+    "total_problems": 2831,
     "source_total_problems": 2831,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2825,
-    "with_editorial_brief": 2563,
-    "with_solution_brief": 2564,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2831,
+    "with_editorial_brief": 2569,
+    "with_solution_brief": 2570,
     "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1887,
+    "ai_override_count": 1893,
     "primary_topic_count": 13,
-    "contest_count": 430,
+    "contest_count": 431,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "组合计数与概率": 222,
+    "构造与贪心": 886,
+    "数论与同余": 306,
+    "动态规划与状态设计": 241,
+    "几何": 69,
+    "数据结构": 263,
     "基础实现与模拟": 169,
     "字符串": 151,
-    "数论与同余": 305,
-    "动态规划与状态设计": 240,
     "图论与网络流": 173,
-    "构造与贪心": 885,
-    "组合计数与概率": 221,
     "交互": 89,
-    "数据结构": 262,
     "博弈": 95,
     "树结构": 146,
-    "代数、矩阵与多项式": 21,
-    "几何": 68
+    "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1617,
+    "ai_generated_with_editorial": 1623,
     "ai_generated_partial_editorial": 55,
     "missing_editorial": 261,
     "manual_override": 891,
@@ -87458,6 +87458,192 @@ window.CF_INSIGHTS_DATA = {
             "用无限容量边 $s\\to1$ 和 $n\\to t$ 允许主流从源点到汇点，再给必须饱和的补偿边赋极大负费用，就能在一次最小费用流中强制满足这些约束而避免引入负环。"
           ],
           "solutionBrief": "按流量与容量同奇偶拆边：奇容量边的单位部分强制取满，检查各点奇边数并补偿固定流量；其余容量除以 $2$，建立带强制饱和边的最小费用流网络求解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1771,
+      "name": "Codeforces Round 837 (Div. 2)",
+      "date": "2022-12-11",
+      "url": "https://codeforces.com/contest/1771",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1771A",
+          "index": "A",
+          "slot": "A",
+          "title": "Hossam and Combinatorics",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1771/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/110092",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个含 $n$ 个正整数的数组，Hossam 先选一个元素、Hazem 再选一个元素，统计满足题目条件的有序选择对。现有题面未展示具体条件；根据题解可知，合法性等价于两数之差的绝对值达到整个数组的最大差值，并要求两个下标不同。",
+          "transformedStatement": "把问题转化为统计达到数组极差 $\\max(a)-\\min(a)$ 的有序下标对：若极差为零，所有不同下标均可；否则只需统计最小值与最大值的出现次数。",
+          "keyObservations": [
+            "任意两项的最大绝对差等于全数组极差，即 $\\max(a)-\\min(a)$，因此只有取到全局最小值和最大值的有序选择可能有效。",
+            "当数组所有元素相等时，任意两个不同下标都满足条件，答案为 $n(n-1)$。",
+            "当最小值与最大值不同，合法选择必须一端取最小值、另一端取最大值；两种顺序分别计数，答案为 $2\\times count_{min}\\times count_{max}$。"
+          ],
+          "solutionBrief": "扫描数组求最小值、最大值及其出现次数。若二者相等，输出 $n(n-1)$；否则输出 $2\\times count_{min}\\times count_{max}$，因为合法有序对只能由最小值和最大值组成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1771B",
+          "index": "B",
+          "slot": "B",
+          "title": "Hossam and Friends",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1771/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/110092",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "dp",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 个人按编号顺序排成队列，给出 $m$ 对互不认识的人；未列出的两人互为朋友。求有多少连续子段 $[a,b]$ 满足其中任意两人都是朋友。",
+          "transformedStatement": "对每个禁配对归一化为 $x<y$，它要求所有包含起点 $a\\le x$ 的合法子段都满足终点 $b<y$。因此固定起点的答案由所有 $x\\ge a$ 的限制中的最小上界决定。",
+          "keyObservations": [
+            "将每个不认识的有序对归一化为 $x<y$，则包含两人的子段必须满足终点 $b<y$，否则一定不合法。",
+            "固定起点 $a$ 时，只需考虑所有 $x\\ge a$ 的禁配对；它们共同给出终点上界，即这些 $y-1$ 的最小值。",
+            "从右向左维护所有后缀起点产生的最小终点上界 $R$，则以当前位置 $a$ 开始的合法终点恰为 $a$ 到 $R$，可一次加入 $R-a+1$ 个子段。"
+          ],
+          "solutionBrief": "把禁配对按较小端点分组，记录其较大端点减一形成的上界。从右向左维护后缀最小上界 $R$，每个起点贡献 $R-a+1$，累加得到答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1771C",
+          "index": "C",
+          "slot": "C",
+          "title": "Hossam and Trainees",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1771/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/110092",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n$ 个正整数。若能找到两个不同位置的数，使某个 $x\\geq2$ 同时整除这两个数，则称这对学员成功；判断是否存在成功配对并输出 YES 或 NO。",
+          "transformedStatement": "把“存在公共整数因子”改写为“两个数拥有同一个质因子”，于是问题变成分解所有数并判断质因子集合是否出现重复。",
+          "keyObservations": [
+            "两个数若有大于 $1$ 的公共因子，则该因子的某个质因子也同时整除它们，因此成功条件等价于出现重复质因子。",
+            "分解每个数时，每个质因子只需记录一次；若某质因子已经被其他数记录，就立即判定存在成功配对。",
+            "试除结束后若剩余部分大于 $1$，它必为一个未处理的质因子，必须同样加入已见集合。"
+          ],
+          "solutionBrief": "先筛出不超过 $\\sqrt{10^9}$ 的质数，用它们分解每个 $a_i$；维护已出现的质因子集合，发现重复因子就输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1771D",
+          "index": "D",
+          "slot": "D",
+          "title": "Hossam and (sub-)palindromic tree",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1771/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/110092",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构",
+            "字符串"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "给定一棵每个顶点带小写字母的树。对任意两点，取它们唯一路径上的字母串，并允许删除任意字符得到回文子序列；要求所有路径中最长回文子序列的长度。",
+          "transformedStatement": "把每条路径视为由两个端点界定的序列，定义 $dp_{v,u}$ 为该序列的最长回文子序列长度。通过递归剥离左右端点，将问题转化为更短路径的状态合并：跳过一端，或在两端相等时同时保留两端。",
+          "keyObservations": [
+            "任意路径的最优回文子序列要么跳过左端点、要么跳过右端点、要么在两端字符相同并同时选取它们，因此状态只需向路径内部转移。",
+            "令 $go_{v,u}$ 表示从 $v$ 沿通往 $u$ 的路径前进一步，端点相同或相邻时可直接确定状态，避免重复构造路径字符串。",
+            "当 $s_v=s_u$ 时，端点贡献 $2$，剩余部分正是内部路径的最优回文子序列；不相等时只能从跳过某个端点的两种方案中取最优。",
+            "所有转移都指向更短的路径，所以按端点距离递增计算即可；固定一个端点作为根，可在线性遍历各子树时得到所有对应的 $go$。"
+          ],
+          "solutionBrief": "设 $dp_{v,u}$ 为路径 $v$ 到 $u$ 的最长回文子序列长度。按距离递增计算，转移为跳过任一端点，或在两端字符相同时取内部状态加 $2$；预处理 $go$ 后总复杂度与空间均为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1771E",
+          "index": "E",
+          "slot": "E",
+          "title": "Hossam and a Letter",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1771/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/110092",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个由 `.`、`m`、`#` 标记的 $n\\times m$ 网格，需要在格子上建墙组成大写字母 H；墙的选取必须遵守三种质量等级对应的有效性限制，目标是最大化墙的数量，无法组成时输出 0。",
+          "transformedStatement": "将 H 表示为一条横向墙和两条竖向墙：固定横线行及两条竖线列后，分别求两列向上、向下能延伸到的边界，再取二者交集；`m` 的限制通过横线含一个或不含一个两类枚举处理。",
+          "keyObservations": [
+            "固定横线所在行以及两条竖线的列后，H 的可行性只取决于这两列向上、向下的连续可用区间，从而可逐个列对求最优高度。",
+            "对每个格子预处理四个方向上最近的 `m` 和 `#`，两条竖线共同可延伸的上界取两列上方边界的较大值，下界取下方边界的较小值。",
+            "横线含一个 `m` 时，两条竖线必须避开 `m`；横线不含 `m` 时只需枚举四个方向上的首个 `m`，并检查对应线上的 `m` 数量限制。",
+            "枚举行、两列以及有限的 `m` 处理方案即可覆盖所有 H，预处理后总复杂度为 $O(n^3)$。"
+          ],
+          "solutionBrief": "预处理每格上下方向最近的 `m` 与 `#`，然后枚举横线所在行和两条竖线的列。根据横线是否含 `m` 分情况确定两条竖线的可延伸区间，取共同区间并更新墙数，复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1771F",
+          "index": "F",
+          "slot": "F",
+          "title": "Hossam and Range Minimum Query",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1771/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/110092",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "data structures",
+            "hashing",
+            "probabilities",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数序列，并在线处理 $q$ 个经过前一次答案异或编码的区间查询。每次在还原出的子段中寻找出现次数为奇数的最小整数；若不存在则输出 $0$，当前答案会影响下一次查询的区间。",
+          "transformedStatement": "把每个前缀表示为“出现次数为奇数的值”的集合，则区间 $[l,r]$ 的奇数次元素正是前缀 $r$ 与前缀 $l-1$ 的对称差。问题转化为在两棵前缀集合 Trie 的差异中寻找最小数。",
+          "keyObservations": [
+            "区间内某个值出现奇数次，等价于它在前缀 $[1,r]$ 与前缀 $[1,l-1]$ 的奇偶集合中恰好出现一次，因此答案是两个前缀集合的最小对称差元素。",
+            "持久化二进制 Trie 的第 $i$ 个版本只保存前缀 $[1,i]$ 中出现次数为奇数的值；加入 $a_i$ 时对该值执行插入或删除，即可用版本差表达任意区间的奇偶性。",
+            "在两棵 Trie 上同步向下时，若当前位为 $0$ 的子树哈希不同，则对称差中存在以 $0$ 开头的值，应优先走左子树；否则答案只能在右子树，保证得到数值最小的值。",
+            "为持久化节点的子树建立哈希后，可在 $O(1)$ 时间判断两个子树是否完全相同，从而每次查询只需沿值的二进制位下降；若根集合相同则没有奇数次出现的值。"
+          ],
+          "solutionBrief": "先建立前缀奇偶集合的持久化二进制 Trie，每个位置只切换当前值的存在状态。查询时比较版本 $l-1$ 与 $r$，用子树哈希判断是否相同，并优先进入存在差异的低位子树，得到最小值；无差异输出 $0$。复杂度为 $O((n+q)\u0003a log n)$（压缩值后）。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
