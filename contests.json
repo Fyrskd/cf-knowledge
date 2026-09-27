@@ -1683,6 +1683,17 @@
     "date": "2024-12-03"
   },
   {
+    "id": 2050,
+    "name": "Codeforces Round 991 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1733409300,
+    "relativeTimeSeconds": 57071645,
+    "date": "2024-12-05"
+  },
+  {
     "id": 2040,
     "name": "Codeforces Round 992 (Div. 2)",
     "type": "CF",
