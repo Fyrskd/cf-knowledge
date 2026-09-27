@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1962,
+    "total_problems": 1969,
     "source_total_problems": 1969,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1962,
-    "with_editorial_brief": 1717,
-    "with_solution_brief": 1718,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1969,
+    "with_editorial_brief": 1724,
+    "with_solution_brief": 1725,
     "missing_editorial_brief": 244,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 901,
+    "ai_override_count": 910,
     "primary_topic_count": 13
   },
   "records": [
@@ -56056,6 +56056,82 @@
       "manual_override": true
     },
     {
+      "ordinal": 1401,
+      "problem_key": "2171A",
+      "contest_id": 2171,
+      "title": "Shizuku Hoshikawa and Farm Legs",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2171/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/148567",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "math"
+      ],
+      "statement_brief": "农场只有鸡和牛，鸡有 2 条腿、牛有 4 条腿，且鸡或牛都可以为 0。已知农场共有 $n$ 条腿，求不同鸡牛数量组合的个数；多组测试分别计算。",
+      "transformed_statement": "将问题转化为非负整数方程 $2c+4w=n$。先按 $n$ 的奇偶性判定是否有解；当 $n$ 为偶数时，枚举奶牛贡献的非负 $4$ 的倍数，鸡的数量会随之唯一确定。",
+      "key_observations": [
+        "总腿数为奇数时不可能由腿数均为偶数的动物组成，因此答案直接为 $0$，无需枚举配置。",
+        "当 $n$ 为偶数时，奶牛贡献的腿数必须是一个不超过 $n$ 的非负 $4$ 的倍数；每选定一个这样的贡献值，鸡的数量就被唯一确定。",
+        "不超过 $n$ 的非负 $4$ 的倍数共有 $\\lfloor n/4\\rfloor+1$ 个，因此偶数情况下答案可直接按公式计算。"
+      ],
+      "solution_brief": "设鸡、牛数量分别为 $c,w$，则需满足 $2c+4w=n$。若 $n$ 为奇数无解；否则奶牛腿数可取 $0,4,\\ldots,4\\lfloor n/4\\rfloor$，答案为 $n/4+1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:05:32+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1402,
+      "problem_key": "2171B",
+      "contest_id": 2171,
+      "title": "Yuu Koito and Minimum Absolute Sum",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/2171/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/148567",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "math"
+      ],
+      "statement_brief": "给定一个含非负整数和 $-1$ 空缺的数组，可将每个空缺填为任意非负整数。定义相邻元素差组成的差分数组，要求最小化其元素总和的绝对值，并输出达到最小值的字典序最小数组。",
+      "transformed_statement": "差分数组的总和会望远镜消去为 $a_n-a_1$，所以问题只需选择首尾空缺以最小化它们的绝对差；所有不影响首尾的中间空缺再取最小的非负值 $0$。",
+      "key_observations": [
+        "差分和满足望远镜消去：$\\sum_{i=1}^{n-1}(a_{i+1}-a_i)=a_n-a_1$，因此中间位置完全不影响目标值。",
+        "目标等价于最小化首尾元素的绝对差；若只有一个端点缺失，就把它填成另一个端点的值，从而达到最小值 $0$。",
+        "若首尾都已确定，答案只能是它们的绝对差；若首尾都缺失，则都取 $0$ 可达到最小值且保证字典序最小。",
+        "首尾处理后，所有仍为空的位置统一填 $0$，既不改变目标值，又逐位取得允许的最小值。"
+      ],
+      "solution_brief": "利用差分和的望远镜性质只需处理首尾：缺一个就令其等于另一个，均缺失则都取 $0$；其余空位填 $0$，并输出首尾差的绝对值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:05:20+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
       "ordinal": 1403,
       "problem_key": "2171C1",
       "contest_id": 2171,
@@ -56065,17 +56141,13 @@
       "editorial_url": "https://codeforces.com/blog/entry/148567",
       "editorial_quality": "url_only",
       "primary_topic": "博弈",
-      "secondary_topics": [
-        "构造与贪心",
-        "动态规划与状态设计",
-        "组合计数与概率"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "bitmasks",
         "games",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Renako Amaori and XOR Game (easy version)；本地暂无可用题解正文。",
+      "statement_brief": "给定两个长度为 $n$ 的二进制数组，游戏进行 $n$ 回合。第 $i$ 回合只能选择交换 $a_i,b_i$ 或不操作，奇数回合由 Ajisai 决定、偶数回合由 Mai 决定；全部操作后分别计算两个数组的异或和，较大者获胜，否则平局，要求判断最优博弈结果。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -56083,9 +56155,63 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:05:04+00:00",
+          "quality_flags": [
+            "low_confidence",
+            "missing_editorial",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1404,
+      "problem_key": "2171C2",
+      "contest_id": 2171,
+      "title": "Renako Amaori and XOR Game (hard version)",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2171/problem/C2",
+      "editorial_url": "https://codeforces.com/blog/entry/148567",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "数论与同余",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "games",
+        "greedy"
+      ],
+      "statement_brief": "给定等长数组 $a,b$，共进行 $n$ 回合；第 $i$ 回合只能交换 $a_i,b_i$ 或跳过，奇数回合由 Ajisai 操作，偶数回合由 Mai 操作。结束后比较两数组元素异或得到的分数，判断最优策略下谁获胜或是否平局。",
+      "transformed_statement": "令 $x$ 为所有 $a_i,b_i$ 的总异或，则最终两人的得分异或恒为 $x$。当 $x\\ne0$ 时只看其最高置位，并把问题化为寻找最后一个能改变该位的数组位置，由该位置所属玩家决定胜负。",
+      "key_observations": [
+        "所有 $2n$ 个数的总异或值不变，且等于最终两人得分的异或；因此总异或为 $0$ 时两分必相等，结果直接是平局。",
+        "总异或非零时，最高位的不同决定两个数的大小，较低位无需考虑，因此只需研究总异或的最高置位。",
+        "在该最高位上，只有满足 $(a_i\\oplus b_i)$ 含此位的下标会影响结果；最大的此类下标是最后一个有效决策点，其对应玩家可通过交换或不交换控制该位归属。",
+        "若最后有效下标对应奇数回合则 Ajisai 获胜，对应偶数回合则 Mai 获胜；因为之后的回合都不会改变决定胜负的最高位。"
+      ],
+      "solution_brief": "先计算所有 $a_i,b_i$ 的总异或 $x$。若 $x=0$ 输出平局；否则找出 $x$ 的最高置位，再找最后一个使 $(a_i\\oplus b_i)$ 含该位的下标，按其回合奇偶判断胜者。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:04:47+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1405,
@@ -56096,11 +56222,9 @@
       "problem_url": "https://codeforces.com/contest/2171/problem/D",
       "editorial_url": "https://codeforces.com/blog/entry/148567",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "图论与网络流",
       "secondary_topics": [
-        "图论与网络流",
-        "树结构",
-        "动态规划与状态设计"
+        "树结构"
       ],
       "original_tags": [
         "binary search",
@@ -56111,7 +56235,7 @@
         "implementation",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Rae Taylor and Trees (easy version)；本地暂无可用题解正文。",
+      "statement_brief": "给定一个长度为 $n$ 的排列，顶点按编号标为 $1$ 到 $n$。需要判断能否用这些顶点组成一棵树，使每条边连接的两个顶点中，编号较小者在排列中出现在编号较大者之前。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -56119,9 +56243,196 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:04:29+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1406,
+      "problem_key": "2171E",
+      "contest_id": 2171,
+      "title": "Anisphia Wynn Palettia and Good Permutations",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/2171/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/148567",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "number theory"
+      ],
+      "statement_brief": "给定 $n$，要排列 $1$ 到 $n$ 的所有数。若某个连续三元组中的三数两两互质，则其起点是坏位置；要求构造一个坏位置不超过 $6$ 个的排列。",
+      "transformed_statement": "把问题转化为尽量重复制造“两个共享因子的大数相邻”的三元模式：用偶数或奇数倍 $3$ 组成成对同组元素，用其他数作分隔，从而让大多数连续三元组自动包含非互质数对。",
+      "key_observations": [
+        "只要每三个连续位置中有两个数共享大于 $1$ 的因子，该位置就不是坏位置；因此形如“任意数、同组数、同组数”重复排列的块完全没有坏位置。",
+        "将偶数作为一组、奇数倍 $3$ 作为另一组，其余数作为分隔元素；两组互不重叠，能分别构造上述无坏块并覆盖大部分元素。",
+        "每个完整三元块及其相邻重叠窗口都满足共享因子条件，拼接两类块后只可能在块边界和末尾产生坏位置；按模 $12$ 统计可得坏位置至多 $4$ 个，满足限制。"
+      ],
+      "solution_brief": "把数分为偶数、奇数倍 $3$ 和其余数。优先反复输出“其余数、同类数、同类数”，先使用偶数组再使用奇数倍 $3$ 组，最后输出所有剩余元素；这种排列至多产生 $4$ 个坏位置。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:04:12+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1407,
+      "problem_key": "2171F",
+      "contest_id": 2171,
+      "title": "Rae Taylor and Trees (hard version)",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/2171/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/148567",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "constructive algorithms",
+        "data structures",
+        "dp",
+        "dsu",
+        "greedy",
+        "implementation",
+        "trees"
+      ],
+      "statement_brief": "给定 $1$ 到 $n$ 的一个排列，要求构造一棵带这些标签的无向树，使每条边 $(u,v)$（$u<v$）都满足标签 $u$ 在排列中先于 $v$ 出现。判断是否存在这样的树；若存在，还要输出任意一棵。",
+      "transformed_statement": "把问题看成在排列位置之间选择合法边并要求图连通。对每个切分点，前缀最小值必须小于后缀最大值；满足后即可按后缀最大值划分连续块，并显式连接成树。",
+      "key_observations": [
+        "若某个切分点满足前缀最小值大于后缀最大值，则两侧不存在合法边，图必然断开，因此该条件直接判定无解。",
+        "若所有切分点都有前缀最小值小于后缀最大值，则相邻排列元素可通过前缀最小值和后缀最大值连通，说明合法图一定连通。",
+        "按后缀最大值出现的位置划分块；块内元素都小于块末元素，可全部连接到块末元素，从而用恰好 $n-1$ 条合法边连成星形块。",
+        "每个非首块的块末元素都大于此前缀最小值，把二者相连即可接入已有连通部分，保证所有块合并为一棵树。"
+      ],
+      "solution_brief": "计算每个前缀最小值和后缀最大值；若存在前缀最小值大于后缀最大值则输出 No。否则按后缀最大值位置分块，块内连向块末点，再用此前缀最小值连接各块。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:03:53+00:00",
+          "quality_flags": [
+            "statement_tail_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1408,
+      "problem_key": "2171G",
+      "contest_id": 2171,
+      "title": "Sakura Adachi and Optimal Sequences",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/2171/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/148567",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "combinatorics",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定两个长度为 $n$ 的数组 $a,b$，每次可以把一个指定的 $a_i$ 加一，或把整个数组所有元素同时翻倍，要求恰好变成 $b$。求所需的最少操作数，并统计达到该最少次数的不同操作序列数量，结果对 $10^6+3$ 取模。",
+      "transformed_statement": "把操作按翻倍次数分层：一次在恰好经过 $j$ 次翻倍前的加一，最终贡献 $2^j$。先固定最大可行的翻倍层数，再将每个 $b_i$ 的低位按二进制拆分、高位差额归入最终层，最后计算各层操作的排列数。",
+      "key_observations": [
+        "固定使用 $k$ 次整体翻倍后，每个元素至少变为 $a_i2^k$，因此必须满足 $a_i2^k\\le b_i$；剩余差额可按二进制位安排到各次翻倍之前。",
+        "对元素 $i$，高于低 $k$ 位的部分需要 $\\mathrm{floor}(b_i/2^k)-a_i$ 次在所有翻倍前执行的加一；低 $k$ 位中每个为 $1$ 的位各对应一次加一。",
+        "由于 $n\\ge2$，翻倍对所有元素同时产生的收益严格优于一次单点加一，所以最优方案取允许的最大 $k$，即所有 $\\mathrm{floor}(\\log_2(b_i/a_i))$ 的最小值。",
+        "固定每个翻倍阶段的加一数量后，阶段内操作可任意交错；低位阶段每个元素至多贡献一次，产生该阶段数量的阶乘，高位阶段产生多重组合数 $\\frac{(\\sum c_i)!}{\\prod c_i!}$。"
+      ],
+      "solution_brief": "取最大可行翻倍次数 $k$，统计每个低位阶段中需要加一的元素数，以及翻倍前各元素的额外次数 $c_i=\\mathrm{floor}(b_i/2^k)-a_i$。最少操作数为 $k$ 加上这些次数之和；方案数是各低位阶段的阶乘与最终多重组合数的乘积，用模 $10^6+3$ 的阶乘和逆元计算。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:03:34+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1409,
+      "problem_key": "2171H",
+      "contest_id": 2171,
+      "title": "Shiori Miyagi and Maximum Array Score",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/2171/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/148567",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "dp",
+        "sortings"
+      ],
+      "statement_brief": "给定 $n\\le m$，构造长度为 $n$ 的严格递增正整数数组 $a$，且每个元素不超过 $m$。定义 $v(b,x)$ 为满足 $b^k\\mid x$ 的最大非负整数，要求最大化 $\\sum_{i=2}^{n}v(i,a_i)$。",
+      "transformed_statement": "把每个位置写成 $a_i=i+j$，将数组选择转化为选择单调不减的偏移量序列 $j$；每次加入位置 $i$ 时，只需在所有不超过当前偏移量的前缀状态中取最大得分。",
+      "key_observations": [
+        "令偏移量为 $j=a_i-i$，严格递增等价于偏移量单调不减，因此前一状态只需取 $k\\le j$ 的最大值。",
+        "固定当前偏移量后，转移为前缀最大值加上 $v(i,i+j)$，从而把二维状态压成按 $i$ 迭代的一维状态。",
+        "当 $v(i,i+j)=0$ 时，更新值只是已有前缀最大值；后续查询必然覆盖它，因此无需显式更新这类位置。",
+        "只有 $i+j$ 是 $i$ 的倍数时才有非零贡献，按倍数枚举所有候选位置，总更新数由调和级数控制。"
+      ],
+      "solution_brief": "设 $a_i=i+j$，用一维 DP 记录各偏移量的最大得分；每层通过树状数组查询 $k\\le j$ 的前缀最大值，并仅枚举 $i+j$ 为 $i$ 的倍数的位置更新，最终取全局最大值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:03:09+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1410,
