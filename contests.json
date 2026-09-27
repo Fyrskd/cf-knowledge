@@ -2266,6 +2266,17 @@
     "date": "2025-09-09"
   },
   {
+    "id": 2148,
+    "name": "Codeforces Round 1050 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1757774100,
+    "relativeTimeSeconds": 32698851,
+    "date": "2025-09-13"
+  },
+  {
     "id": 2144,
     "name": "Educational Codeforces Round 182 (Rated for Div. 2)",
     "type": "ICPC",
