@@ -1419,6 +1419,17 @@
     "date": "2024-08-11"
   },
   {
+    "id": 2000,
+    "name": "Codeforces Round 966 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1723560000,
+    "relativeTimeSeconds": 66924538,
+    "date": "2024-08-13"
+  },
+  {
     "id": 2004,
     "name": "Educational Codeforces Round 169 (Rated for Div. 2)",
     "type": "ICPC",
