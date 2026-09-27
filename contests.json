@@ -1232,6 +1232,17 @@
     "date": "2024-05-17"
   },
   {
+    "id": 1974,
+    "name": "Codeforces Round 946 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1716215700,
+    "relativeTimeSeconds": 74275403,
+    "date": "2024-05-20"
+  },
+  {
     "id": 1975,
     "name": "Codeforces Round 947 (Div. 1 + Div. 2)",
     "type": "CF",
