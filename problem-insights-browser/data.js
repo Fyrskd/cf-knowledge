@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2359,
+    "total_problems": 2365,
     "source_total_problems": 2365,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2359,
-    "with_editorial_brief": 2094,
-    "with_solution_brief": 2095,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2365,
+    "with_editorial_brief": 2100,
+    "with_solution_brief": 2101,
     "missing_editorial_brief": 264,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1421,
+    "ai_override_count": 1427,
     "primary_topic_count": 13,
-    "contest_count": 363,
+    "contest_count": 364,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 110,
-    "构造与贪心": 744,
+    "构造与贪心": 746,
     "图论与网络流": 141,
     "动态规划与状态设计": 206,
     "数论与同余": 257,
-    "组合计数与概率": 183,
-    "数据结构": 218,
+    "组合计数与概率": 184,
+    "数据结构": 219,
     "几何": 54,
-    "树结构": 133,
+    "树结构": 134,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 126,
+    "基础实现与模拟": 127,
     "博弈": 84
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1157,
+    "ai_generated_with_editorial": 1163,
     "ai_generated_partial_editorial": 46,
     "missing_editorial": 264,
     "manual_override": 891,
@@ -52571,6 +52571,202 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1976,
+      "name": "Educational Codeforces Round 166 (Rated for Div. 2)",
+      "date": "2024-05-30",
+      "url": "https://codeforces.com/contest/1976",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1976A",
+          "index": "A",
+          "slot": "A",
+          "title": "Verify Password",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1976/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/129992",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "implementation",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定只含小写字母和数字的密码，判断它是否满足：所有数字在所有字母之前，数字和字母各自都按非递减顺序排列；只含数字或只含字母也允许。每个测试用例输出密码是否满足这些条件。",
+          "transformedStatement": "利用字符编码中数字整体小于小写字母这一性质，把“数字先出现、两类字符分别有序”转化为检查整个密码字符串是否按字符编码非递减排列。",
+          "keyObservations": [
+            "密码中的数字必须全部位于字母之前，且数字段与字母段分别按非递减顺序排列；这正好覆盖“不能有数字出现在字母后”的限制。",
+            "ASCII 编码中所有数字都小于所有小写字母，因此只需检查整个字符串按字符编码非递减排列，无需单独判断数字和字母的分界。",
+            "将字符串排序后与原串比较即可验证整体非递减性，从而把多个局部条件合并为一次排序检查。"
+          ],
+          "solutionBrief": "对每个密码检查其字符是否整体按非递减顺序排列。可直接逐相邻字符比较，或排序后与原串比较；相同则输出“YES”，否则输出“NO”。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1976B",
+          "index": "B",
+          "slot": "B",
+          "title": "Increase/Decrease/Copy",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1976/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/129992",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$ 和长度为 $n+1$ 的数组 $b$。每次可以把任意元素加一或减一，也可以复制一个已有元素并追加到末尾；要求用最少操作把 $a$ 变成 $b$。",
+          "transformedStatement": "把前 $n$ 个位置的变化视为独立的绝对值代价，再选择一个原元素负责生成新增位置。该元素从 $a_i$ 调整到 $b_i$ 时可在途中复制，因此复制目标只需落在这段数值区间内，或额外承担到区间的距离。",
+          "keyObservations": [
+            "固定第 $i$ 个原数组元素负责复制时，其余位置至少需要付出 $ab_j-a_j$ 次单点增减操作。",
+            "第 $i$ 个元素从 $a_i$ 调整到 $b_i$ 的过程中，可以在经过目标值 $b_{n+1}$ 时复制，因此额外代价取决于该目标值到区间 $[a_i,b_i]$ 的距离。",
+            "复制第 $i$ 个元素的总额外代价是 $1+\\operatorname{dist}(b_{n+1},[\\min(a_i,b_i),\\max(a_i,b_i)])$，枚举复制位置取最小值即可。"
+          ],
+          "solutionBrief": "先计算前 $n$ 个位置的调整代价 $\\sum_{j=1}^{n}|a_j-b_j|$，再枚举复制位置，加入复制操作及目标值到区间 $[a_i,b_i]$ 的距离，取额外代价最小者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1976C",
+          "index": "C",
+          "slot": "C",
+          "title": "Job Interview",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1976/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/129992",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n+m+1$ 名按顺序到达的候选人，每人有编程技能和测试技能。面试时优先安排到技能较高的岗位，若该岗位已满则安排到另一岗位；对每名候选人分别假设其缺席，求剩余 $n+m$ 人填满全部岗位后的团队总技能。",
+          "transformedStatement": "把“每人分别缺席”的过程统一转化为一个基准分配：先假设最后一人缺席并固定前 $n+m$ 人的岗位，再研究删除任意一人时岗位归属最多发生的一次边界调整。",
+          "keyObservations": [
+            "先让最后一名候选人缺席，记录前 $n+m$ 人的岗位归属，得到一个可复用的基准团队分数。",
+            "第一个被迫安排到非优先岗位的候选人是唯一可能因缺席而改岗的人，因此其后的岗位归属基本固定。",
+            "若缺席者在该边界之前且岗位类型不同，只需交换边界候选人与最后一人的岗位；其他情况只需用最后一人替换缺席者原岗位。",
+            "团队分数是各岗位技能贡献之和，所以每种缺席情况都能通过少数候选人的贡献差直接修正基准值。"
+          ],
+          "solutionBrief": "先按到达顺序模拟最后一人缺席时的招聘，记录每人岗位和第一个被迫错岗的位置 $bad$。以该基准分数为基础，按缺席者是否位于 $bad$ 之前及岗位是否相同，分别进行一次或两次贡献替换，得到所有答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1976D",
+          "index": "D",
+          "slot": "D",
+          "title": "Invertible Bracket Sequences",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1976/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/129992",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "combinatorics",
+            "data structures",
+            "divide and conquer",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个正规括号序列，可选择一个连续子串并把其中每个左括号与右括号互换，且只能进行这一次操作。求有多少个区间 $[l,r]$ 使操作后的整个序列仍是正规括号序列。",
+          "transformedStatement": "用前缀平衡值表示左括号数减右括号数。区间 $[l,r]$ 可行等价于 $bal_{l-1}=bal_r$，且区间内最大前缀平衡不超过 $2bal_{l-1}$；问题转为动态维护满足该上界的左端点计数。",
+          "keyObservations": [
+            "设前缀平衡值为 $bal_i$，翻转区间后总平衡仍为零当且仅当 $bal_{l-1}=bal_r$，因此端点匹配把候选区间转成同值前缀位置的计数。",
+            "翻转区间内的前缀后，新平衡为 $2bal_{l-1}-bal_i$；要始终非负，必须满足区间内所有 $i$ 都有 $bal_i\\le 2bal_{l-1}$。",
+            "从左到右处理右端点时，若当前 $bal_r$ 使某个候选值 $x$ 满足 $x<bal_r-x$，则该值对应的所有左端点都已永久失效，可整体从映射中删除。",
+            "维护仍合法的各平衡值出现次数后，对每个 $r$ 只需查询值为 $bal_r$ 的计数，从而在线累加答案。"
+          ],
+          "solutionBrief": "计算前缀平衡值并从左到右扫描右端点。映射维护尚未被条件 $bal_i\\le2x$ 淘汰的左端点平衡值；遇到违反条件的值就整组删除，再用 $bal_r$ 对应的计数累加答案，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1976E",
+          "index": "E",
+          "slot": "E",
+          "title": "Splittable Permutations",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1976/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/129992",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "dfs and similar",
+            "greedy",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一个大小为 $n$ 的排列以及对其进行的 $q$ 次分裂操作所记录的序列 $l$ 和 $r$；但本地题面缺失了每次分裂的具体规则。要求计算有多少个初始排列能够按这些记录完成全部操作，答案对 $998244353$ 取模。",
+          "transformedStatement": "先把所有在记录中出现过的数视为固定元素，并逆向撤销分裂操作恢复它们的唯一顺序；其余元素只需插入这个固定序列的 $q+2$ 个空档。某空档的可插入元素必须小于其两侧边界的较大值，随后按元素降序进行独立的可行位置计数。",
+          "keyObservations": [
+            "出现在 $l$ 或 $r$ 中的整数，其相对顺序可以通过从后往前撤销操作唯一恢复；因此它们组成一个固定序列，不需要再枚举排列。",
+            "固定序列含 $q+1$ 个元素，从而产生 $q+2$ 个插入空档；空档两侧元素为 $y,z$ 时，未出现元素 $x$ 能放入该空档当且仅当 $x<\\max(y,z)$。",
+            "按未出现元素从大到小插入时，若当前元素适合 $b$ 个空档、此前已插入 $k$ 个元素，则可选位置数恒为 $b+k$；此前元素所在空档被分裂，但不会改变当前元素适合的空档集合。",
+            "因此每个未出现元素只需统计可用空档数并乘以 $b+k$，无需维护这些元素在同一空档中的具体排列。"
+          ],
+          "solutionBrief": "先逆序撤销操作，用 DSU 或双向链表恢复所有出现在 $l,r$ 中元素的唯一顺序。将其视为固定序列，统计每个空档的边界最大值；再按未出现元素降序计算其可放位置数 $b+k$，逐项相乘并对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1976F",
+          "index": "F",
+          "slot": "F",
+          "title": "Remove Bridges",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1976/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/129992",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定根为 1 且根只有一个孩子的树，可以添加恰好 $k$ 条任意边，允许重边或添加已有边。对每个 $k=1,\\ldots,n-1$，求添加后仍是桥的原树边数的最小值。",
+          "transformedStatement": "一条新增边会使其两个端点间路径上的所有原树边不再是桥，因此问题转化为用 $k$ 条路径覆盖尽可能多的树边。题解进一步将其等价为选择 $2k-1$ 个叶子，使它们到根的路径并集最大。",
+          "keyObservations": [
+            "新增边的两个端点之间的整条树上路径都会失去桥属性，因此目标是让所选路径的并集尽可能大。",
+            "任意端点都可向其子树中的叶子延伸而不缩小路径并集，所以只需考虑根和叶子；$k$ 条边可等价转化为选择 $2k-1$ 个叶子覆盖根路径。",
+            "按 DFS 叶子序配对一个根与中间叶子、其余叶子对称配对，可保证所有路径并集等于这些叶子到根的路径并集。",
+            "对每个顶点记录向下到叶子的最长路径；每次选值最大的顶点并删除该路径，正好选择能新增最多边的叶子路径，维护集合即可得到各步覆盖量。"
+          ],
+          "solutionBrief": "把每条新增边转化为覆盖其端点间路径，最大化被覆盖的原树边数。等价选择 $2k-1$ 个叶子到根的路径；预处理每点到叶子的最长路径，用集合反复取最大值并删除对应路径，累计覆盖边数后得到剩余桥数，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
