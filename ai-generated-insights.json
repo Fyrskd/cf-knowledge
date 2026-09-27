@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T19:28:21+00:00",
+  "updated_at": "2026-09-27T19:33:28+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -56171,6 +56171,181 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial_text 及 tags 提炼；核心算法和复杂度来自 editorial。",
+        "quality_flags": []
+      }
+    },
+    "1766F": {
+      "problem_key": "1766F",
+      "title": "MCF",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1766/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/110066",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "218a54f001739fa483d68c4facba1cb6849940b6cdc574376f739f38c8606197",
+      "generated_at": "2026-09-27T19:31:57+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个有向带容量和费用的网络，选择每条边的整数流量，使中间顶点流入等于流出，并满足每条边的流量与容量同奇偶。要求在这些限制下找到费用总和最小的流；若不存在则报告 Impossible。",
+        "transformed_statement": "把奇容量边拆为一个偶容量可调部分和一个必须取满的单位部分，先处理这些固定流量造成的顶点盈余，再将所有偶容量除以 $2$，转化为带强制饱和约束的最小费用流。",
+        "key_observations": [
+          "每条边的流量必须与其容量同奇偶，因此容量为 $2k+1$ 的边可拆成容量 $2k$ 的可调部分和必须取满的单位部分。",
+          "删去所有必须取满的单位边后，顶点 incident 的奇边数量必须为偶数，否则无法恢复整数守恒；源点和汇点若均为奇数，可额外加入 $1\\to n$ 的单位零费用边修正。",
+          "剩余容量全部除以 $2$ 后，奇边在各顶点产生的固定流入和流出差额可分别用 $s\\to v$、$v\\to t$ 的边补偿，并要求这些补偿边全部饱和。",
+          "用无限容量边 $s\\to1$ 和 $n\\to t$ 允许主流从源点到汇点，再给必须饱和的补偿边赋极大负费用，就能在一次最小费用流中强制满足这些约束而避免引入负环。"
+        ],
+        "solution_brief": "按流量与容量同奇偶拆边：奇容量边的单位部分强制取满，检查各点奇边数并补偿固定流量；其余容量除以 $2$，建立带强制饱和边的最小费用流网络求解。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial，以及 statement 中的网络、容量、费用和守恒条件；题面未直接展示“流量与容量同奇偶”的附加约束，故该规则由 editorial 推断。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1766E": {
+      "problem_key": "1766E",
+      "title": "Decomposition",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1766/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/110066",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1cdca34fb3e20ebd8f3c14a0bfb8f87b6d3267806f63ae6e431635d87c73a5d8",
+      "generated_at": "2026-09-27T19:32:17+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个只含 $0$ 到 $3$ 的数组。对任意连续子数组，从左到右把元素加入第一个与其按位与大于零的已有子序列；若不存在则新建子序列，求所有连续子数组的分解子序列数量之和。",
+        "transformed_statement": "把每个分解过程抽象为“各子序列末尾元素”的有限状态自动机：非零元素只需记录最多三个活跃末尾，零元素作为不改变状态但新增一个惰性子序列的特殊转移，再用后缀 DP 汇总所有右端点。",
+        "key_observations": [
+          "忽略零元素产生的惰性子序列后，分解中活跃子序列最多只有 3 条，因此只需记录它们末尾元素的向量，状态组合数至多为 $3^3+3^2+3+1=40$。",
+          "当前元素总是加入第一个满足按位与非零的子序列，否则新建子序列；因此给定末尾向量后，状态转移是唯一确定的。",
+          "定义状态转移后的后缀 DP 时，若当前位置新建子序列，其贡献会影响所有 $n-i+1$ 个右端点，所以可一次性加入 $n-i+1$，同时覆盖所有区间终点。",
+          "元素 $0$ 不会改变活跃末尾向量，也不会被后续元素接入；它只单独增加一个子序列，因此可作为状态不变但答案加一的转移处理。"
+        ],
+        "solution_brief": "枚举最多 40 个活跃末尾向量，设 $dp[i,c]$ 表示从位置 $i$ 开始、初态为 $c$ 时对所有右端点产生的新增子序列总数。按唯一规则转移；新建子序列时加上 $n-i+1$，零元素保持状态但增加贡献，最后累加所有 $dp[i,空]$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，tags 仅用于辅助主题判断。",
+        "quality_flags": []
+      }
+    },
+    "1766D": {
+      "problem_key": "1766D",
+      "title": "Lucky Chains",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1766/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/110066",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8374ef1e38df314c8b3c6d0f11f6e9daa8f08211a12b492cf2d1dba06d6fc526",
+      "generated_at": "2026-09-27T19:32:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定多个正整数对 $(x,y)$，每次可以同时把两数加一，形成 $(x+k,y+k)$ 的前缀链。要求每个给定对的最长链，使链中所有元素对的最大公约数都为 $1$；初始不满足时答案为 $0$，若可无限延伸则输出 $-1$。",
+        "transformed_statement": "把同步移动后的判定改写为固定差值 $d=y-x$ 与变化量 $x+k$ 的最大公约数问题：寻找最小的 $k\\ge0$，使 $x+k$ 被 $d$ 的某个质因数整除；链长就是这个失效位置。",
+        "key_observations": [
+          "同步增加不改变差值，因此有等价式 $\\gcd(x+k,y+k)=\\gcd(x+k,y-x)$，判定链中断只需检查 $x+k$ 与固定差值的公因数。",
+          "最早失效位置一定由差值 $d=y-x$ 的某个质因数 $p$ 触发；对每个 $p$，最小候选步数是 $(p-x\\bmod p)\\bmod p$，取其中最小值即可。",
+          "只需筛出每个数的最小质因数，就能逐次分解 $d$ 的全部不同质因数；因此每组查询只需处理至多 $O(\\log d)$ 个质因数。"
+        ],
+        "solution_brief": "令 $d=y-x$。若初始最大公约数大于 $1$，答案为 $0$；若 $d=1$，答案为 $-1$。否则用最小质因数筛分解 $d$，对每个质因数 $p$ 求使 $x+k$ 被 $p$ 整除的最小非负 $k$，最小值即答案。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 及 math/number theory 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1766C": {
+      "problem_key": "1766C",
+      "title": "Hamiltonian Wall",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1766/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/110066",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "34f569ffdaa24d35a6fcbfe82f49df14994a0163bdd3b8a3d1f1fc18a61efd27",
+      "generated_at": "2026-09-27T19:32:55+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $2\\times m$ 的黑白网格，每列至少有一个黑格。需要从某个格子开始沿相邻格移动，使画笔经过所有黑格且不经过白格，并判断是否存在这样的路径。",
+        "transformed_statement": "把每列压缩为单黑列或双黑列；单黑列会强制路径所在行，连续双黑列形成可蛇形通过的矩形，问题转化为从一个单黑列向左右检查这些强制转移是否始终可行。",
+        "key_observations": [
+          "若所有列都有两个黑格，整面墙可以按蛇形方式贯穿，因此答案直接为 YES。",
+          "存在只有一个黑格的列时，该列会固定路径经过方向；从它向左、向右分别检查，避免两侧的可行性相互干扰。",
+          "沿某个方向遇到连续的单黑列时，下一列必须位于同一行；若切换到另一行则无法继续，否则路径方向被唯一确定。",
+          "进入连续双黑列组成的矩形后，若右侧仍有列，想从矩形末列继续向右只有交替上下移动的蛇形走法，因此只需检查最终所在行是否正确。"
+        ],
+        "solution_brief": "寻找只有一个黑格的列作为锚点；若不存在则直接为 YES。分别向左右模拟：单黑列要求行不变，连续双黑段按唯一蛇形路线通过，并检查能否以正确行离开。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的网格与黑白格定义、editorial_text 的分段模拟结论，以及 tags 中的 dp 和 implementation。",
+        "quality_flags": [
+          "statement_text中的路径移动规则在给定摘录中不完整，部分细节依据题解和示例还原"
+        ]
+      }
+    },
+    "1766B": {
+      "problem_key": "1766B",
+      "title": "Notepad#",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1766/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/110066",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f94c49aa92a4561238c064fc12b6392a9fe00b63deea6b1515a5e667f2fc889e",
+      "generated_at": "2026-09-27T19:33:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $n$ 的小写字母串，每次可以输入一个字符，或将已经输入部分中的连续子串复制到末尾，复制也只算一次操作。判断是否能用严格少于 $n$ 次操作输入完整字符串。",
+        "transformed_statement": "把问题转化为寻找一个能被复制的、长度至少为 $2$ 的重复子串；由于更长的有效子串可缩短为长度 $2$，最终只需判断某个二元字符子串是否在两个不重叠的位置出现。",
+        "key_observations": [
+          "逐字符输入需要恰好 $n$ 次操作，因此想少于 $n$ 次，必须使用一次复制操作，并且复制长度至少为 $2$。",
+          "若某个长度为 $k\\ge2$ 的子串有两个不相交出现位置，删去其末尾字符后仍保留这些出现位置；因此只需寻找重复出现且不相交的长度为 $2$ 的子串。",
+          "长度为 $2$ 的子串在位置 $i$ 和 $j$ 出现且满足 $|i-j|\\ge2$ 时，两次出现不重叠，可以复制其中一段并节省至少一次操作；记录每个二元组的出现位置即可判断。"
+        ],
+        "solution_brief": "枚举字符串中的所有长度为 $2$ 的子串，记录其出现位置；若同一子串曾在距离至少 $2$ 的位置出现，则输出 YES，否则输出 NO。整体可在线性时间完成。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 中的输入与目标、editorial 中的操作分析和判定条件，以及 implementation 标签。",
+        "quality_flags": [
+          "statement_operation_rules_partially_missing_but_recoverable_from_editorial"
+        ]
+      }
+    },
+    "1766A": {
+      "problem_key": "1766A",
+      "title": "Extremely Round",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1766/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/110066",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "593c0280356e008ff38e86572bf3924af716a86d63634cece28aa38e021fe3b0",
+      "generated_at": "2026-09-27T19:33:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "正整数若十进制表示中恰好只有一位非零数字，就称为极简整数。对每个给定的 $n$，要求统计满足 $1\\le x\\le n$ 的极简整数个数。",
+        "transformed_statement": "将候选数重述为 $d\\times10^k$（$1\\le d\\le9$）的形式；由于所有询问的上界固定为 $999999$，先生成这一范围内的全部候选，再回答各个前缀计数。",
+        "key_observations": [
+          "极简整数恰好可写成 $d\\times10^k$，其中 $d\\in[1,9]$；因此无需逐位处理所有候选数，只需识别这种稀疏形式。",
+          "极简整数在 $1$ 到 $999999$ 中非常少，可以预先枚举并保存全部合法数，使每个询问只需统计其中不超过 $n$ 的元素。",
+          "逐个询问扫描 $1$ 到 $n$ 会产生 $O(tn)$ 复杂度，而一次预处理后复用同一候选数组即可避免重复检查。"
+        ],
+        "solution_brief": "预先遍历 $1$ 到 $999999$，检查每个数是否恰好只有一位非零数字，并将合法数存入数组。对每个 $n$，统计数组中不超过 $n$ 的元素数量即可。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 对极简整数的定义、editorial_text 的预处理枚举方案，以及 tags 中的 brute force 和 implementation。",
         "quality_flags": []
       }
     }
