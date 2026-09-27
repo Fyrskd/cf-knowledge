@@ -1,5 +1,16 @@
 [
   {
+    "id": 1729,
+    "name": "Codeforces Round 820 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1662993300,
+    "relativeTimeSeconds": 127554985,
+    "date": "2022-09-12"
+  },
+  {
     "id": 1733,
     "name": "Codeforces Round 821 (Div. 2)",
     "type": "CF",
