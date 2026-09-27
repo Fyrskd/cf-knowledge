@@ -21,6 +21,7 @@ from cf_batch_upload import (
     BatchUploadError,
     BatchUploader,
     Contest,
+    GhWorkflowClient,
     RunNotFoundError,
     WorkflowRun,
     load_candidates,
@@ -109,6 +110,13 @@ class DetailedFailureClient(FakeWorkflowClient):
 
 
 class BatchUploadTests(unittest.TestCase):
+    def test_gh_command_decodes_utf8_output_independently_of_system_locale(self) -> None:
+        client = GhWorkflowClient(executable=sys.executable)
+        output = client._command(
+            ["-c", "import sys; sys.stdout.buffer.write('失败日志'.encode('utf-8'))"]
+        )
+        self.assertEqual(output, "失败日志")
+
     def test_progress_bar_uses_exact_contest_count(self) -> None:
         self.assertEqual(render_progress_bar(2, 4, width=10), "[█████░░░░░] 2/4")
 

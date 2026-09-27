@@ -812,11 +812,12 @@ class ReportTests(unittest.TestCase):
                 "editorial_status": "missing_url",
             }]
             cf.write_editorial_gaps(out, records)
-            payload = json.loads((out / "editorial-gaps.json").read_text())
+            payload = json.loads((out / "editorial-gaps.json").read_text(encoding="utf-8"))
             self.assertEqual(len(payload), 1)
             self.assertEqual(payload[0]["contest_url"], "https://codeforces.com/contest/1")
-            self.assertIn("https://codeforces.com/contest/1", (out / "editorial-gaps.md").read_text())
-            self.assertIn("1A", (out / "editorial-gaps.md").read_text())
+            report = (out / "editorial-gaps.md").read_text(encoding="utf-8")
+            self.assertIn("https://codeforces.com/contest/1", report)
+            self.assertIn("1A", report)
 
 
 if __name__ == "__main__":
