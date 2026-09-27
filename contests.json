@@ -913,6 +913,17 @@
     "date": "2023-11-30"
   },
   {
+    "id": 1902,
+    "name": "Educational Codeforces Round 159 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1701614100,
+    "relativeTimeSeconds": 88883922,
+    "date": "2023-12-03"
+  },
+  {
     "id": 1907,
     "name": "Codeforces Round 913 (Div. 3)",
     "type": "ICPC",
