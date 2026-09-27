@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2749,
+    "total_problems": 2755,
     "source_total_problems": 2755,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2749,
-    "with_editorial_brief": 2479,
-    "with_solution_brief": 2480,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2755,
+    "with_editorial_brief": 2485,
+    "with_solution_brief": 2486,
     "missing_editorial_brief": 269,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1811,
+    "ai_override_count": 1817,
     "primary_topic_count": 13,
-    "contest_count": 419,
+    "contest_count": 420,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 146,
+    "字符串": 148,
     "构造与贪心": 863,
     "图论与网络流": 168,
-    "动态规划与状态设计": 234,
-    "数论与同余": 298,
+    "动态规划与状态设计": 235,
+    "数论与同余": 300,
     "组合计数与概率": 210,
     "数据结构": 257,
     "几何": 67,
-    "树结构": 145,
+    "树结构": 146,
     "代数、矩阵与多项式": 20,
     "交互": 88,
     "基础实现与模拟": 160,
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1534,
+    "ai_generated_with_editorial": 1540,
     "ai_generated_partial_editorial": 54,
     "missing_editorial": 269,
     "manual_override": 891,
@@ -81198,6 +81198,188 @@ window.CF_INSIGHTS_DATA = {
             "子树的对称性和结构哈希可以自底向上同时计算，使父节点只需根据孩子类型计数和唯一可能的未配对子树作判断。"
           ],
           "solutionBrief": "从叶子向根计算每棵子树的结构哈希及是否对称。对每个节点统计孩子哈希出现次数，若奇数次的类型超过一个则不对称；若恰有一个，则该类型的子树必须对称。根节点满足条件则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1796,
+      "name": "Educational Codeforces Round 144 (Rated for Div. 2)",
+      "date": "2023-02-28",
+      "url": "https://codeforces.com/contest/1796",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1796A",
+          "index": "A",
+          "slot": "A",
+          "title": "Typical Interview Problem",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1796/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/113408",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "从正整数 $1$ 开始依次处理每个数：若能被 $3$ 整除就追加 F，若能被 $5$ 整除就追加 B；同时满足时先追加 F 再追加 B。给定仅含 F、B 的字符串 $s$，判断它是否是所得无限字符串的连续子串。",
+          "transformedStatement": "FB-string 每 $8$ 个字符循环一次，因此长度不超过 $10$ 的模式只需在前 $17$ 个字符中检查。问题转化为生成这段有限前缀并进行一次连续子串匹配。",
+          "keyObservations": [
+            "每处理连续 $15$ 个整数，除以 $3$ 和 $5$ 的余数模式都会重复，同时恰好产生 $8$ 个字符，因此 FB-string 满足 $f_{i+8}=f_i$。",
+            "由于待匹配字符串长度最多为 $10$，周期为 $8$ 时只需检查前 $8$ 个起点；这些起点覆盖到第 $17$ 个字符，所以生成前 $17$ 个字符即可。",
+            "将每个整数按“能被 $3$ 整除就追加 F、能被 $5$ 整除就追加 B”的规则生成后，直接判断目标串是否作为连续片段出现即可。"
+          ],
+          "solutionBrief": "先按题目规则生成 FB-string 的前 $17$ 个字符。利用其长度为 $8$ 的周期，所有长度不超过 $10$ 的可能子串都已覆盖，再用字符串查找判断每个 $s$ 是否出现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1796B",
+          "index": "B",
+          "slot": "B",
+          "title": "Asterisk-Minor Template",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1796/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/113408",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定两个小写字母串，可把模板中的每个星号替换为任意小写字母串（也可以为空），要求两串都能由同一个模板得到。模板中星号数量必须不超过固定字母数量，需构造任意满足条件的模板，否则输出 NO。",
+          "transformedStatement": "将问题转化为寻找两串的共同固定片段：优先利用相同首字母或末字母配一个星号；若无法利用端点，则寻找公共长度为 $2$ 的连续子串，并在其两侧放置星号。该三类情况覆盖所有可行模板。",
+          "keyObservations": [
+            "若两串首字符相同，模板为“该字符+*”即可；若末字符相同，模板为“*+该字符”，分别利用一个固定字母满足星号数不超过字母数。",
+            "若首尾都无法直接利用，则可行模板必须在两侧使用星号，并且中间至少含有一对相邻字母，否则星号数会多于字母数。",
+            "因此只需寻找两串共有的长度为 $2$ 的连续子串；用它构造“*+子串+*”，恰好有两个星号和两个字母，且可通过前后星号补齐两串。"
+          ],
+          "solutionBrief": "依次检查首字符相同、末字符相同，分别构造“c*”或“*c”。若均不满足，枚举两串的长度为 $2$ 的连续子串；找到公共子串 xy 就输出“*xy*”，否则输出 NO。每组复杂度为 $O(|a||b|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1796C",
+          "index": "C",
+          "slot": "C",
+          "title": "Maximum Set",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1796/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/113408",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "math"
+          ],
+          "statementBrief": "给定区间 $[l,r]$，从中选出一个集合，要求任意两个元素中必有一个能整除另一个。对每组 $l,r$，求这种集合的最大大小，以及达到最大大小的集合数量（模 $998244353$）。",
+          "transformedStatement": "把合法集合升序表示为首项 $a_1$ 与相邻整数比值序列；最大长度对应乘积最小的比值序列，而达到该长度的序列只需考虑全为 $2$ 或恰有一个 $3$。",
+          "keyObservations": [
+            "将集合升序记为 $a_1,\u001ba_2,\u001b\\dots,a_m$，相邻比值 $d_i=a_{i+1}/a_i$ 必为大于 $1$ 的整数，从而集合可由首项和比值序列刻画。",
+            "最大规模时首项取 $l$、所有比值取 $2$ 最省空间，因此最大大小是满足 $l\\cdot2^{m-1}\\le r$ 的最大 $m$。",
+            "最大规模的比值序列至多含一个 $3$，其余必须为 $2$；否则可用更多个 $2$ 替换并得到更大的集合。",
+            "全为 $2$ 时按首项计数；含一个 $3$ 时还要选择其位置，计数分别为首项可选数量与该数量乘 $m-1$。"
+          ],
+          "solutionBrief": "先求最大的 $m$ 使 $l\\cdot2^{m-1}\\le r$。答案集合分为全是比值 $2$ 和恰有一个比值 $3$ 两类，按首项区间计数，后一类再乘以 $3$ 的位置数 $m-1$，结果对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1796D",
+          "index": "D",
+          "slot": "D",
+          "title": "Maximum Subarray",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1796/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/113408",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组，必须恰好一次选择 $k$ 个不同位置加上 $x$，其余位置减去 $x$。在此操作后，求某个连续子数组的最大元素和，并最大化对位置选择得到的结果；空子数组和为 $0$。",
+          "transformedStatement": "把问题改写为同时选择一个连续目标区间和恰好 $k$ 个加法位置：从左到右扫描，用区间前、区间内、区间后三种阶段状态累计目标区间贡献，并记录已选加法位置数。",
+          "keyObservations": [
+            "最终答案对应的连续子数组和增益位置可以同时决定，从而无需先枚举子数组再处理位置选择。",
+            "扫描数组时用“区间前、区间内、区间后”三种单调状态表示连续子数组，状态只能向后转移，保证选出的部分连续。",
+            "处理每个位置时二选一：计入已选的 $k$ 个位置并取值 $a_i+x$，或不计入并取值 $a_i-x$；仅在区间内将该值加入当前和。",
+            "状态中的计数 $j$ 强制最终恰好选出 $k$ 个增益位置，遍历结束后取 $j=k$ 的最大值，同时空子数组使答案至少为 $0$。"
+          ],
+          "solutionBrief": "设 $dp_{i,j,t}$ 表示处理前 $i$ 个位置、已选 $j$ 个增益位置且处于区间前/内/后的最大值。每个位置分别尝试加 $x$ 或减 $x$，并按状态转移；区间内才累加，最终取 $j=k$ 的最大值，复杂度为 $O(nk)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1796E",
+          "index": "E",
+          "slot": "E",
+          "title": "Colored Subgraphs",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1796/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/113408",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "games",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "选择一个顶点作为根，并按题目规则给树中所有顶点染色；合法染色中每种颜色形成连通子图，且同色顶点的根深度互不相同。树的代价是所有使用颜色的顶点数中的最小值，要求最大化该代价。",
+          "transformedStatement": "固定根后，合法染色等价于把整棵树划分成若干条沿父子方向的竖直路径；目标变为最大化这些路径长度的最小值，并通过换根求出所有根中的最优值。",
+          "keyObservations": [
+            "固定根后，同色连通子图中各顶点深度必须互不相同，因此每种颜色恰好对应一条从叶子向根延伸的竖直路径。",
+            "在分叉点只能让一个子树中的路径继续向上；保留最短路径不会劣于保留其他路径，因为答案由所有被截断路径长度的最小值决定。",
+            "处理到顶点时，只需关注其子路径长度中的最短和次短值：最短路径继续向上，次短及其余路径用于更新答案。",
+            "换根时维护每个顶点子方向路径长度的多重集合，并维护所有分叉点的次短值集合；当前根的答案是这些次短值与根处最短路径的最小值。"
+          ],
+          "solutionBrief": "枚举根并将树视为若干条竖直路径的划分。自底向上时在每个分叉点只保留最短子路径继续，其余路径更新答案；再用换根维护路径长度多重集合和各点次短值，整体可做到每个测试用例 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1796F",
+          "index": "F",
+          "slot": "F",
+          "title": "Strange Triples",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1796/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/113408",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定上界 $A,B,N$，正整数三元组 $(a,b,n)$ 满足 $a<A,b<B,n<N$。把 $an$ 表示为十进制拼接 $a$ 与 $n$，把 $nb$ 表示为拼接 $n$ 与 $b$；要求统计满足 $(an)/(nb)=a/b$ 的三元组数量。",
+          "transformedStatement": "将拼接等式交叉相乘，并按 $\\gcd(a,b)$ 分解为 $a=a'g,b=b'g$；题解把问题转化为枚举 $n$ 的位数、循环数 $10^{|n|}-1$ 的因子及若干商，再由同余关系恢复所有候选。",
+          "keyObservations": [
+            "交叉相乘并令 $a=a'g,b=b'g$ 后，由 $\u001cgcd(a',b')=1$ 可推出 $a'\\mid n$，先消去这一必要因子能显著减少变量。",
+            "令 $n'=n/a'$，则 $n'$ 必须分解为 $k_1k_2$，其中 $k_1\\mid b$、$k_2\\mid(10^{|n|}-1)$；取最小的 $k_1$ 等价于检查 $\\gcd(k_1,(10^{|n|}-1)/k_2)=1$。",
+            "固定 $|n|$、$k_2$、$d=b/k_1$ 和 $|b|$ 后，模 $10^{|b|}$ 的方程唯一确定 $b'$，再由 $a'=(d r+b')/10^{|b|}$ 直接恢复 $a'$。",
+            "固定 $b'$ 后，$g$ 只需落在保证 $b=b'g$ 具有指定位数的区间内，并且必须是 $d/\\gcd(d,b')$ 的倍数；枚举这些 $g$ 后统一检查边界、互质性和 $n$ 的位数即可。"
+          ],
+          "solutionBrief": "枚举 $|n|$ 及 $10^{|n|}-1$ 的因子 $k_2$，再枚举 $d=b/k_1$ 和 $|b|$。利用模方程确定 $b'$，按位数范围与倍数条件枚举 $g$，恢复 $a,b,n$ 并验证全部条件，用集合去重；复杂度约为 $O(200B\\log B)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
