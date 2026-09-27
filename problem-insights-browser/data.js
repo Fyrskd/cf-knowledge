@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2612,
+    "total_problems": 2618,
     "source_total_problems": 2619,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2612,
-    "with_editorial_brief": 2344,
-    "with_solution_brief": 2345,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2618,
+    "with_editorial_brief": 2350,
+    "with_solution_brief": 2351,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1674,
+    "ai_override_count": 1680,
     "primary_topic_count": 13,
-    "contest_count": 400,
+    "contest_count": 401,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 132,
-    "构造与贪心": 824,
-    "图论与网络流": 159,
+    "字符串": 133,
+    "构造与贪心": 826,
+    "图论与网络流": 160,
     "动态规划与状态设计": 225,
     "数论与同余": 287,
     "组合计数与概率": 200,
-    "数据结构": 245,
+    "数据结构": 246,
     "几何": 61,
     "树结构": 139,
     "代数、矩阵与多项式": 20,
     "交互": 84,
-    "基础实现与模拟": 144,
+    "基础实现与模拟": 145,
     "博弈": 92
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1400,
+    "ai_generated_with_editorial": 1406,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -71231,6 +71231,197 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "先按曼哈顿距离上界和奇偶条件判断恰好 $k$ 步的普通可达点，再递推维护少量异常集合 $A_k$。对所有 $k$ 生成异常点并利用坐标对称性归一化，最后按这些可达性条件统计矩形区域内各点的最小步数；题解未展开具体计数实现。",
           "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1849,
+      "name": "Educational Codeforces Round 152 (Rated for Div. 2)",
+      "date": "2023-07-27",
+      "url": "https://codeforces.com/contest/1849",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1849A",
+          "index": "A",
+          "slot": "A",
+          "title": "Morning Sandwich",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1849/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/118752",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定面包、奶酪和火腿的数量，制作一个上下都是面包、面包与填料交替排列的三明治；每层填料可选奶酪或火腿，求最多能使用多少层。",
+          "transformedStatement": "把两种填料合并成总数 $c+h$，将三明治表示为“面包—填料”重复 $k$ 次再加底部面包；问题转化为最大化满足 $k+1\\le b$ 且 $k\\le c+h$ 的 $k$。",
+          "keyObservations": [
+            "奶酪和火腿在结构上完全等价，可合并为总填料数 $c+h$，从而无需区分填料种类。",
+            "若夹入 $k$ 层填料，就必须使用 $k+1$ 片面包；因此可行的 $k$ 受面包和填料共同限制，最大值为 $\\min(b-1,c+h)$。",
+            "每增加一层填料，必须同时增加一片面包，最终总层数为 $2k+1$，所以答案是 $2\\min(b-1,c+h)+1$。"
+          ],
+          "solutionBrief": "将奶酪与火腿合并为总填料数，令 $k=\\min(b-1,c+h)$。构造交替排列需要 $k+1$ 片面包和 $k$ 层填料，输出 $2k+1$，每组数据 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1849B",
+          "index": "B",
+          "slot": "B",
+          "title": "Monsters",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1849/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/118752",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个怪物，第 $i$ 个初始生命值为 $a_i$。每次攻击当前生命值最高的怪物，若并列则选编号较小者，并使其生命值减少 $k$；生命值降至不超过 $0$ 的怪物死亡。求所有怪物的死亡顺序。",
+          "transformedStatement": "将每个怪物被反复攻击后的状态压缩为 $r_i=(a_i-1)\\bmod k+1$。此时所有生命值都在 $1$ 到 $k$ 之间，每次选中的怪物都会死亡，因此问题转化为按 $r_i$ 降序、编号升序输出怪物。",
+          "keyObservations": [
+            "对每个怪物先抽象出反复减去 $k$ 后落在 $1$ 到 $k$ 的剩余生命值：$r_i=(a_i-1)\\bmod k+1$，这保留了它在最终阶段的有效生命。",
+            "当所有怪物的生命值都不超过 $k$ 后，下一次受到攻击的怪物必然死亡，因此后续过程只需比较这些剩余生命值。",
+            "剩余生命值越大的怪物越早死亡；剩余值相同则按编号升序排列，正好对应每次选当前最高生命值且同值选小编号的规则。"
+          ],
+          "solutionBrief": "计算每个怪物的 $r_i=(a_i-1)\\bmod k+1$，按 $r_i$ 降序、编号升序排序，输出排序后的编号。因为此时每次攻击都会直接杀死被选中的怪物，该顺序就是死亡顺序。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1849C",
+          "index": "C",
+          "slot": "C",
+          "title": "Binary String Copying",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1849/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/118752",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "hashing",
+            "strings"
+          ],
+          "statementBrief": "给定一个只含 `0` 和 `1` 的字符串，复制出多个副本；对每个副本恰好一次，将指定闭区间内的字符按升序排序。要求统计操作后得到的不同字符串数量，若某次操作未改变字符串，原串也计入。",
+          "transformedStatement": "不直接构造排序后的字符串，而是把每个结果抽象成其首个变化位置和末个变化位置；相同的端点对代表相同结果，未变化的副本统一归为一个特殊状态。",
+          "keyObservations": [
+            "对区间排序后，副本的变化只由首个变化位置和末个变化位置决定，因此可用一对端点代表结果字符串。",
+            "区间左端及其右侧最近的 `1` 是首个可能变化点，区间右端及其左侧最近的 `0` 是末个可能变化点。",
+            "预处理每个位置左侧最近的 `0` 与右侧最近的 `1`，即可将每次操作的变化端点直接转化为 `rg_l` 和 `lf_r`。",
+            "若 `rg_l>lf_r`，区间内没有可交换的 `1` 与 `0`，副本保持原串；所有这种情况统一用特殊端点表示并去重。"
+          ],
+          "solutionBrief": "从左到右、从右到左预处理最近的 `0` 和 `1`。每个操作映射为变化区间 `(rg_l,lf_r)`；无变化时使用统一标记，最后统计不同端点对的数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1849D",
+          "index": "D",
+          "slot": "D",
+          "title": "Array Painting",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1849/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/118752",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个只含 $0、1、2$ 的数组，所有位置初始为蓝色；可以花费硬币直接染红，并可通过对已染红位置消耗其数值来继续染红其他位置。要求在遵守相邻传播规则的前提下，把所有位置染红并求最少硬币数。",
+          "transformedStatement": "把一次硬币启动后能够通过数值传播染红的所有位置视为一个连续 good 段，问题变成用最少数量的 good 连续段覆盖整个数组；由于 good 段的子段仍然 good，可采用从左到右的最大扩展划分。",
+          "keyObservations": [
+            "把一次付费染红及其后续传播归入同一段后，原问题等价于把数组划分成最少的连续 good 段，每段只需一枚硬币即可完成。",
+            "若一个连续段可用一枚硬币完成，则它的任意子段也可完成；因此从左到右尽可能延长当前段，首次变坏时切分，所得段数必然最少。",
+            "good 段内部不能出现 $0$，否则传播无法跨过该位置；若内部无 $0$，只要某个端点非 $0$，或段内存在 $2$，就能从相应位置向两侧传播。",
+            "长度至少为 $2$ 且两端都是 $0$、中间全为 $1$ 的段不可由一枚硬币完成：两端无法同时被传播覆盖，而可消耗的总资源不足以覆盖整段。"
+          ],
+          "solutionBrief": "将答案转化为 good 连续段的最少划分。线性扫描并不断扩展当前段；根据内部零点、端点是否非零及是否含有 $2$ 判断其可行性，一旦变坏就结束当前段并重新计数，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1849E",
+          "index": "E",
+          "slot": "E",
+          "title": "Max to the Right of Min",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1849/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/118752",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "dsu",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列。对每个连续子数组，找出其中最大值和最小值的位置，统计最大值位置严格在最小值位置右侧的子数组数量。",
+          "transformedStatement": "按右端点逐个处理所有子数组，把左端点从右向左移动时最小值变小、最大值变大分别记录为事件；相邻事件之间的左端点区间可整体判断是否满足条件。",
+          "keyObservations": [
+            "固定右端点 $r$ 从右向左移动左端点时，区间最小值只会变小、最大值只会变大，因此两类变化事件都能分别由单调栈压缩维护。",
+            "相邻事件把左端点划成一段区间；若后一个事件是“最小值变小”，该段所有子数组都满足最小值位置在最大值左侧，否则不满足。",
+            "用有序集合维护按位置排列的事件，并维护每个最小值事件到前一事件的距离总和；删除事件只影响相邻的少数距离，故每次更新可在 $O(\\log n)$ 内完成。"
+          ],
+          "solutionBrief": "按右端点计数。两 个单调栈维护最小值、最大值变化事件；有序集合按事件位置维护相邻距离及其类型贡献，从而增删事件并更新当前答案，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1849F",
+          "index": "F",
+          "slot": "F",
+          "title": "XOR Partition",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1849/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/118752",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "data structures",
+            "divide and conquer",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定 $n$ 个互不相同的整数，要把每个整数恰好分到两个集合之一。一个集合的代价是其中任意两数异或值的最小值（少于两个元素时为 $2^{30}$），分割价值取两个集合代价的较小者，要求最大化该价值并输出任意最优分割。",
+          "transformedStatement": "把每个整数视为完全图顶点，点对 $(i,j)$ 的边权设为 $a_i\\oplus a_j$；分割就是二染色，而价值是同色边中的最小权值。题解将目标转化为求该 XOR 完全图的最小生成树，并用其二染色得到最优结果。",
+          "keyObservations": [
+            "把同色点对视为不能接受的边后，答案至少为 $x$ 等价于所有权值小于 $x$ 的边构成二分图，从而能用逐权值加边理解最优分割。",
+            "按边权递增处理时，连接不同连通块的边才会改变染色约束；因此保留这些边得到的最小生成树足以代表全部关键约束。",
+            "对最小生成树二染色所得的同色点对，加入该点对会形成奇环；由最小生成树的替换性质，环上存在不大于该点对权值的边，故任何分割都不可能优于该染色。",
+            "Borůvka 每轮为每个连通块寻找最小出边；暂时从二进制 Trie 删除该块元素后逐点查询最小异或值，再恢复元素即可在 $O(n\\log A)$ 内完成一轮。"
+          ],
+          "solutionBrief": "将元素建成完全图，边权为两端异或值；求其最小生成树并二染色，输出两种颜色。用 Borůvka 分轮找最小出边，借助删除当前连通块后的二进制 Trie 查询最小异或，复杂度为 $O(n\\log n\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
