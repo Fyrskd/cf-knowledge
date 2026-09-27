@@ -1,5 +1,16 @@
 [
   {
+    "id": 1759,
+    "name": "Codeforces Round  834 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1668782100,
+    "relativeTimeSeconds": 121757351,
+    "date": "2022-11-18"
+  },
+  {
     "id": 1761,
     "name": "Pinely Round 1 (Div. 1 + Div. 2)",
     "type": "CF",
