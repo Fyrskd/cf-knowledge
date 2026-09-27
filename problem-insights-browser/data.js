@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2770,
+    "total_problems": 2778,
     "source_total_problems": 2778,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2770,
-    "with_editorial_brief": 2508,
-    "with_solution_brief": 2509,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2778,
+    "with_editorial_brief": 2516,
+    "with_solution_brief": 2517,
     "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1832,
+    "ai_override_count": 1840,
     "primary_topic_count": 13,
-    "contest_count": 422,
+    "contest_count": 423,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 871,
+    "数论与同余": 300,
+    "图论与网络流": 169,
+    "组合计数与概率": 214,
+    "代数、矩阵与多项式": 21,
     "字符串": 150,
-    "构造与贪心": 868,
-    "图论与网络流": 168,
     "动态规划与状态设计": 237,
-    "数论与同余": 299,
-    "组合计数与概率": 212,
     "数据结构": 259,
     "几何": 68,
     "树结构": 145,
-    "代数、矩阵与多项式": 20,
     "交互": 88,
     "基础实现与模拟": 163,
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1562,
+    "ai_generated_with_editorial": 1570,
     "ai_generated_partial_editorial": 55,
     "missing_editorial": 261,
     "manual_override": 891,
@@ -85774,6 +85774,252 @@ window.CF_INSIGHTS_DATA = {
             "规模 $8$ 的集合最后只需与剩余玩家中总强度最大的可行 $8$ 人组配对；这个 $8$-元素和问题在至多 $24$ 个元素上用折半枚举处理。"
           ],
           "solutionBrief": "将淘汰过程逆推为等规模集合的扩展，用支配关系筛掉不必要的候选。按规模 $1\\to2\\to4\\to8$ 维护代表状态，最后用最大和的贪心完成扩展，并对剩余元素用折半枚举解决 $8$-元素和；对候选强度利用单调性判定。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1770,
+      "name": "Good Bye 2022: 2023 is NEAR",
+      "date": "2022-12-30",
+      "url": "https://codeforces.com/contest/1770",
+      "type": "Others",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1770A",
+          "index": "A",
+          "slot": "A",
+          "title": "Koxia and Whiteboards",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1770/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/110754",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 块白板，初始分别写着 $a_i$。必须按顺序执行 $m$ 次操作，第 $j$ 次任选一块白板，将其数字改为 $b_j$；全部操作结束后，求所有白板数字总和的最大值。",
+          "transformedStatement": "把最终白板上的数字视为从初始值和各次写入值中选出的恰好 $n$ 个：最后写入的 $b_m$ 必选，其余位置取剩下 $n+m-1$ 个数中最大的 $n-1$ 个。",
+          "keyObservations": [
+            "最后一次操作必然把某块白板改成 $b_m$，且之后没有操作覆盖它，因此 $b_m$ 一定出现在最终答案中。",
+            "除 $b_m$ 外，最终保留的 $n-1$ 个数可以从初始的 $a_i$ 与 $b_1,\u001cdots,b_{m-1}$ 中任意选择：想保留初值就不改对应白板，想保留某个 $b_i$ 就在第 $i$ 步替换一个不需要的数。",
+            "因此答案等于 $b_m$ 加上其余 $n+m-1$ 个数中最大的 $n-1$ 个，直接排序取最大值即可；逐步用 $b_i$ 替换当前最小值也得到同样结果。"
+          ],
+          "solutionBrief": "将 $b_m$ 固定计入答案，再把所有初始值和 $b_1$ 到 $b_{m-1}$ 放在一起，取其中最大的 $n-1$ 个相加。实现时排序后选出最大的 $n$ 个（排除固定的 $b_m$），每组复杂度为 $O((n+m)\\log(n+m))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1770B",
+          "index": "B",
+          "slot": "B",
+          "title": "Koxia and Permutation",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1770/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/110754",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定 $n$ 和 $k$，要求排列 $1$ 到 $n$，并对每个长度为 $k$ 的连续子数组计算其最大值与最小值之和；排列的代价是这些和中的最大值。请构造一个使代价最小的排列。",
+          "transformedStatement": "将目标转化为控制所有长度为 $k$ 的窗口的“最大值+最小值”：先由包含 $n$ 的窗口得到下界，再构造一个让所有窗口同时不超过该下界的交错排列。",
+          "keyObservations": [
+            "当 $k=1$ 时，每个窗口的值是 $2p_i$，因此任意排列的代价都固定为 $2n$，无需特殊构造。",
+            "当 $k\\ge 2$ 时，包含元素 $n$ 的窗口的最大值为 $n$，且最小值至少为 $1$，所以所有排列的代价下界都是 $n+1$。",
+            "按 $[n,1,n-1,2,n-2,3,\\ldots]$ 交替放置大数和小数时，任意长度至少为 $2$ 的连续窗口都满足最大值与最小值之和不超过 $n+1$，恰好达到下界。"
+          ],
+          "solutionBrief": "$k=1$ 时直接输出任意排列；否则交替从两端取数，构造 $[n,1,n-1,2,\\ldots]$。该排列使每个窗口的最大值加最小值至多为 $n+1$，结合下界即为最优，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1770C",
+          "index": "C",
+          "slot": "C",
+          "title": "Koxia and Number Theory",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1770/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/110754",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "chinese remainder theorem",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组，需要选择一个正整数 $x$，使所有数都加上 $x$ 后，任意两项的最大公因数都为 $1$。判断是否存在这样的 $x$，输出 YES 或 NO。",
+          "transformedStatement": "把每个素数分别视为潜在的公共因子：若两个数组元素模该素数相同，则某个 $x$ 余数会使它们同时被整除；因此问题转化为能否为每个素数选择一个避开所有重复余数类的 $x$，再用中国剩余定理合并。",
+          "keyObservations": [
+            "若数组中有两个相同元素，则对应平移后的两个数仍相同且大于 $1$，其最大公因数不可能为 $1$，因此可立即判定为 NO。",
+            "所有两两最大公因数为 $1$ 等价于：对每个素数 $p$，至多一个 $a_i+x$ 能被 $p$ 整除；这把整体条件转成了逐个素数检查。",
+            "若模 $p$ 的每个余数类在数组中都至少出现两次，那么无论 $x$ 取何值，总有两个平移后的数同时被 $p$ 整除，因此必为 NO。",
+            "若不存在上述障碍，每个相关素数都能选择一个不被禁止的 $x$ 余数；由中国剩余定理合并这些选择。只需检查不超过 $\\lfloor n/2\\rfloor$ 的模数，因为更大的素数不可能让所有余数类都至少出现两次。"
+          ],
+          "solutionBrief": "先判重；随后枚举 $2$ 到 $\\lfloor n/2\\rfloor$，统计各余数出现次数。若某个模数的所有余数次数都至少为 $2$，输出 NO，否则根据中国剩余定理可构造合法的正整数 $x$，输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1770D",
+          "index": "D",
+          "slot": "D",
+          "title": "Koxia and Game",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1770/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/110754",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "flows",
+            "games",
+            "graph matchings",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a,b$，需要构造数组 $c$。每轮 Koxia 从当前三个数中删去一个，Mahiru 从剩余两个数中选择本轮的 $d_i$；若双方最优时所得 $d$ 是排列 $1..n$，Koxia 获胜。求能保证 Koxia 获胜的数组 $c$ 数量，答案对 $998244353$ 取模。",
+          "transformedStatement": "把每个位置对应为无向边 $(a_i,b_i)$，而把该位置最终被强制选择的值视为边指向的顶点；目标变成让每个顶点恰有一条入边。于是逐个分析边数等于顶点数的连通分量，并按是否含自环统计选择数。",
+          "keyObservations": [
+            "若某轮剩余的两个数不同，Mahiru可任选其一并在最后破坏排列；因此获胜时每轮都必须让剩余两数相同，$d_i$ 实际被唯一确定。",
+            "Koxia获胜等价于对每个位置在 $a_i,b_i$ 中选一个值，使所得数组成为排列；将 $(a_i,b_i)$ 看作边后，就是给每条边定向且每个顶点恰有一条入边。",
+            "一个连通分量可行当且仅当边数等于顶点数；此时它是树加一条边，若无自环有顺、逆两种环方向，其他边方向随之唯一确定。",
+            "含自环的可行分量中，自环对应位置的 $c_i$ 不影响强制结果，可任取 $n$ 个值；因此该分量贡献 $n$ 而非 $2$。"
+          ],
+          "solutionBrief": "把 $(a_i,b_i)$ 建成 $n$ 个顶点上的边，用并查集统计每个连通分量的顶点数、边数及是否含自环。若有分量不满足边数等于顶点数，答案为 $0$；否则每个普通分量乘 $2$，含自环分量乘 $n$，结果取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1770E",
+          "index": "E",
+          "slot": "E",
+          "title": "Koxia and Tree",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1770/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/110754",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "树结构",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "math",
+            "probabilities",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树和位于不同顶点的 $k$ 只蝴蝶，游戏按边进行一次移动，每条边的方向随机决定，蝴蝶沿方向移动且每条边至多被经过一次。求最终所有蝴蝶对之间距离所形成得分的期望，并对 $998244353$ 取模。",
+          "transformedStatement": "把得分看成所有蝴蝶两两距离之和，再按树边拆分：一条边两侧分别有 $x$ 和 $k-x$ 只蝴蝶时贡献为 $x(k-x)$；随机移动则只需维护各顶点含蝴蝶的边缘概率。",
+          "keyObservations": [
+            "任意两只蝴蝶的路径会经过某条边，当且仅当它们位于该边两侧，因此若子树内有 $x$ 只蝴蝶，该边对所有点对距离的贡献为 $x(k-x)$。",
+            "每条边最多被蝴蝶经过一次，所以处理一条边后，其子树蝴蝶数相对初始值至多变化 $1$，边贡献只需比较少数几种情况即可更新。",
+            "用 $p_i$ 表示顶点 $i$ 当前有蝴蝶的概率，随机选择边的方向等价于令该边两端的概率都变为 $(p_u+p_v)/2$，从而无需枚举所有方向组合。",
+            "固定初始子树蝴蝶数并沿操作顺序维护端点概率，结合端点恰有一只蝴蝶时子树计数的增减，就能在线性时间累加每条边的期望贡献。"
+          ],
+          "solutionBrief": "将得分转为所有蝴蝶对的距离和。按边用子树计数计算贡献，并用端点概率的均值更新随机移动后的状态；最后除以 $\\binom{k}{2}$，全程取模，复杂度 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1770F",
+          "index": "F",
+          "slot": "F",
+          "title": "Koxia and Sequence",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1770/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/110754",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $n$ 以及非负整数 $x,y$，考虑长度为 $n$ 的非负整数数组：数组元素总和必须为 $x$，所有元素的按位或必须恰为 $y$。每个合法数组的得分是其所有元素的按位异或，要求把所有合法数组的得分再逐个异或；若不存在合法数组则输出 $0$。",
+          "transformedStatement": "先按二进制位分别统计得分出现次数的奇偶性，并利用位置对称性消去偶数 $n$ 的情形。对奇数 $n$，将“按位或恰为 $y$”改写为对所有子集 $y'\\subseteq y$ 的“按位或包含于 $y'$”进行子集反演，再用二项式系数模 $2$ 的子集判定计算每一位。",
+          "keyObservations": [
+            "由位置对称性，固定某个数值出现在任意位置的方案数相同；因此当 $n$ 为偶数时每个数值的贡献都会抵消，答案必为 $0$。",
+            "把最终异或拆成各个二进制位的奇偶计数后，只需判断每一位在所有合法数组中出现次数是否为奇数。",
+            "先统计按位或是 $y'$ 的子集的数组，再通过子集反演恢复按位或恰为 $y$ 的计数；这将精确按位或条件转成对所有 $y'\\subseteq y$ 的异或汇总。",
+            "由卢卡斯定理，$\\binom{a}{b}\\bmod 2=1$ 等价于 $b$ 的置位包含于 $a$；结合范德蒙德恒等式，和为 $x$ 且按位或受限于 $y'$ 的方案奇偶性等于 $\\binom{ny'}{x}\\bmod 2$，从而可逐位用子集判断完成计算。"
+          ],
+          "solutionBrief": "若 $n$ 为偶数直接输出 $0$。否则枚举 $y$ 的非空子集 $y'$ 及其每个置位 $i$，检查 $x-2^i$ 是否为 $ny'-2^i$ 的子集；成立则异或答案的第 $i$ 位。总复杂度为 $O(y\\log y)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1770G",
+          "index": "G",
+          "slot": "G",
+          "title": "Koxia and Bracket",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1770/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/110754",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "divide and conquer",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定只含括号的字符串，可以删除任意字符但必须保持剩余字符的相对顺序。设使剩余序列成为合法平衡括号序列所需删除的最少字符数为 $k$，要求统计恰好删除 $k$ 个字符的不同下标集合数量，并对 $998244353$ 取模。",
+          "transformedStatement": "把删除过程重述为统计满足前缀和约束的最小删除方案：删除的括号子序列必为若干个“)”后接若干个“(”，据此拆成两个只删一种括号的计数问题，并把每段的状态转移表示成多项式运算。",
+          "keyObservations": [
+            "最优删除字符按原序组成先若干个“)”再若干个“(”的子序列；否则可保留一对逆序括号而不破坏平衡，从而把删除分成两个只删单类括号的部分。",
+            "将“(”记为 $+1$、“)”记为 $-1$，每次前缀和跌破此前最小值都必须额外删除一个更早的“)”；因此只需把最远特殊位置之前的删除作为固定分界，再分别计数。",
+            "对只允许删除“)”的部分，状态 $dp_{i,j}$ 表示处理到第 $i$ 个“)”且除强制删除外再删 $j$ 个的方案数；普通位置转移为 $dp_{i-1,j}+dp_{i-1,j-1}$，特殊位置转移为 $dp_{i-1,j}+dp_{i-1,j+1}$。",
+            "连续处理若干个非特殊位置时，转移等价于乘以系数为组合数的多项式；分治时把 $j$ 不受特殊位置影响的部分直接用 NTT 卷积，其余低阶状态递归传递，使每层卷积规模总和受区间长度控制，得到 $O(n\\log^2 n)$。"
+          ],
+          "solutionBrief": "先按最远特殊前缀位置将字符串拆成两部分，第二部分通过反转并交换括号转化为只删“)”的问题。对每部分建立上述 $dp$，利用分治提取高阶状态并用组合数多项式做 NTT 卷积，合并两部分的 $dp_{end,0}$ 得到答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1770H",
+          "index": "H",
+          "slot": "H",
+          "title": "Koxia, Mahiru and Winter Festival",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1770/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/110754",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定 $n\\times n$ 网格和两个排列：每个上边界点 $(1,i)$ 要到达 $(n,p_i)$，每个左边界点 $(i,1)$ 要到达 $(q_i,n)$。为这 $2n$ 对端点分别选择沿网格边移动的路径，使所有路径中同一条边被使用的次数最大值最小，并输出这些路径。",
+          "transformedStatement": "把问题看成带两组边界置换需求的网格布线：先用外框承接四个特殊需求，再将其余需求的起点和终点各向中心缩进一格，得到一个规模为 $n-2$ 的同型实例；递归结果平移回核心并与外框路径拼接。",
+          "keyObservations": [
+            "最大拥堵为 $1$ 当且仅当 $p_i=q_i=i$；否则总路径长度超过网格边数，抽屉原理保证某条边被重复使用。",
+            "固定四条涉及外框的需求并沿边界布线后，剩余端点可同时向内缩一层，且相对顺序不变，恰好转化为规模 $n-2$ 的同类排列问题。",
+            "递归区域与外框只通过已确定的边界连接，外框上的路径安排使每条边至多使用两次，内部递归解平移后仍保持该上界。",
+            "对水平需求选择合适的边界起点（特殊时直接采用另一侧）可避免额外重叠；因此任意输入都能构造最大拥堵为 $2$ 的方案。"
+          ],
+          "solutionBrief": "先判断全为恒等排列时输出不重复边的直线路径。一般情况下沿网格外框布置四条特殊路径，删除对应的两行两列端点并调整排列，递归解决规模 $n-2$ 的核心区域，再把路径平移并接回边界；最终最大拥堵为 $2$，且由下界可知最优。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
