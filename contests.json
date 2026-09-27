@@ -2101,6 +2101,17 @@
     "date": "2025-06-15"
   },
   {
+    "id": 2121,
+    "name": "Codeforces Round 1032 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1750170900,
+    "relativeTimeSeconds": 40304268,
+    "date": "2025-06-17"
+  },
+  {
     "id": 2120,
     "name": "Codeforces Round 1033 (Div. 2) and CodeNite 2025",
     "type": "CF",
