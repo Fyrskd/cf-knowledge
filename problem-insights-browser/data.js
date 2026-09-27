@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2525,
+    "total_problems": 2531,
     "source_total_problems": 2532,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2525,
-    "with_editorial_brief": 2257,
-    "with_solution_brief": 2258,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2531,
+    "with_editorial_brief": 2263,
+    "with_solution_brief": 2264,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1587,
+    "ai_override_count": 1593,
     "primary_topic_count": 13,
-    "contest_count": 387,
+    "contest_count": 388,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,13 +45,13 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 128,
-    "构造与贪心": 796,
+    "构造与贪心": 800,
     "图论与网络流": 152,
-    "动态规划与状态设计": 218,
+    "动态规划与状态设计": 219,
     "数论与同余": 275,
     "组合计数与概率": 193,
     "数据结构": 236,
-    "几何": 58,
+    "几何": 59,
     "树结构": 137,
     "代数、矩阵与多项式": 19,
     "交互": 84,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 89
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1314,
+    "ai_generated_with_editorial": 1320,
     "ai_generated_partial_editorial": 52,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -64299,6 +64299,190 @@ window.CF_INSIGHTS_DATA = {
             "按位反转重排位置后，$S$ 被 $x^{2^p}+1$ 整除，当且仅当树上第 $p$ 层每个节点的两个子树中 $1$ 的数量相等；这使因子条件能用树形状态计数，并用卷积加速数量合并。"
           ],
           "solutionBrief": "令 $n=2^k$，把字符串转为多项式并利用循环相关系数约束，将合法补全转化为因子集合在 $S,T$ 间的分配。按位反转位置建树，用状态记录满足的因子层集合及子树中 $1$ 的数量，合并时用 FFT 卷积；再通过莫比乌斯变换计数，复杂度为 $O(3^k k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1901,
+      "name": "Educational Codeforces Round 158 (Rated for Div. 2)",
+      "date": "2023-11-24",
+      "url": "https://codeforces.com/contest/1901",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1901A",
+          "index": "A",
+          "slot": "A",
+          "title": "Line Trip",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1901/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/122645",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "汽车从数轴上的 $0$ 出发前往 $x$，再返回 $0$，每行驶 1 单位距离消耗 1 升油。沿途到达任意加油站都会加满油，但 $0$ 和 $x$ 没有加油站；求保证完成往返所需的最小油箱容量。",
+          "transformedStatement": "把旅程拆成从 $0$ 到各加油站、再到 $x$ 的连续区段；前面的区段只需单程通过，最后一个加油站到 $x$ 的区段必须在无补给条件下完成去程和回程，因此需求加倍。",
+          "keyObservations": [
+            "从起点满油到下一座加油站的每段距离都不能超过油箱容量，否则途中无法补给。",
+            "最后一座加油站到终点后还要原路返回，且终点没有加油站，因此这段距离的需求是 $2(x-a_n)$。",
+            "所有路段约束必须同时满足，所以最小油箱容量等于普通相邻间距与末段往返距离中的最大值。"
+          ],
+          "solutionBrief": "枚举或直接计算各段需求：先考虑 $0\\to a_1$ 及相邻加油站间距，最后加入 $2(x-a_n)$。答案是这些数的最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1901B",
+          "index": "B",
+          "slot": "B",
+          "title": "Chip and Ribbon",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1901/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/122645",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有一条含 $n$ 个格子的带子，芯片从第 $1$ 格开始。每次可将芯片向右移动一格，或将其传送到任意格；每回合结束时芯片所在格的数值加一，求使各格最终分别达到 $c_1,\u0003c2,\u0003c3,\u0003c4c_n$ 所需的最少传送次数。",
+          "transformedStatement": "把传送看成在目标格新建一个不会消失的芯片，再允许任意芯片逐格向右移动；问题转化为让第 $i$ 格被芯片到达恰好 $c_i$ 次，并最小化新建芯片总数。",
+          "keyObservations": [
+            "把一次传送等价为在目标位置新建一个芯片，原芯片仍可继续向右移动；于是每个位置需要出现的芯片次数恰好是对应的 $c_i$。",
+            "第 $1$ 个位置初始已有一次出现，因此必须额外新建 $c_1-1$ 个芯片；这是该位置传送次数的最小值。",
+            "从位置 $i$ 向 $i+1$ 移动的芯片数最多为 $c_i$，所以当 $c_{i+1}>c_i$ 时，至少要在 $i+1$ 新建 $c_{i+1}-c_i$ 个芯片；否则无需新增。",
+            "各位置新增芯片的最低数量可以独立累加，答案为 $c_1-1+\\sum_{i=2}^{n}\\max(0,c_i-c_{i-1})$，因为向右移动只能逐步传递已有芯片。"
+          ],
+          "solutionBrief": "将传送视为在目标格新建芯片，原芯片可继续右移。扫描数组：位置 $1$ 需新增 $c_1-1$ 个，之后每个位置新增 $\\max(0,c_i-c_{i-1})$ 个，累加即为最少传送次数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1901C",
+          "index": "C",
+          "slot": "C",
+          "title": "Add, Divide and Floor",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1901/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/122645",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定整数数组，每次必须对所有元素使用同一个整数 $x$，并把每个 $a_i$ 替换为 $\floor{(a_i+x)/2}$。求使所有元素相等所需的最少操作次数，并在次数不超过 $n$ 时输出每次选择的 $x$。",
+          "transformedStatement": "把数组压缩为当前最小值与最大值之间的极差；由于操作保持顺序，问题等价于不断选择 $x$，让这个极差尽快变为零。通过最小值的奇偶性选择 $x$，可使极差恰好变为原来的一半向下取整。",
+          "keyObservations": [
+            "操作始终保持数组元素的相对顺序，因此只需让当前最小值和最大值相等，所有元素就会同时相等。",
+            "设极差为 $d$，一次操作后的极差至少为 $\floor(d/2)$，并且通过选择合适的 $x$ 可以恰好达到该下界，因此每次操作最多把未解决的差距减半。",
+            "若当前最小值为偶数取 $x=0$，否则取 $x=1$，即可实现极差变为 $\floor(d/2)$；重复直到最小值等于最大值，操作次数达到最小。"
+          ],
+          "solutionBrief": "维护当前最小值和最大值。若最小值为偶数就取 $x=0$，否则取 $x=1$，每次将所有元素更新为 $\floor{(a_i+x)/2}$，直到极差为零；由于每次极差至少减半且该方案恰好减半，次数最优。复杂度为 $O(n+\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1901D",
+          "index": "D",
+          "slot": "D",
+          "title": "Yet Another Monster Fight",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1901/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/122645",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有一排生命值为 $a_i$ 的 $n$ 个怪物。选择首个目标 $i$ 和初始伤害 $x$ 后，闪电每次从未击中的、与已击中怪物相邻的目标中任选一个，依次造成 $x,x-1,\u0005dots$ 点伤害。求一个最小的 $x$，使所有可能的击打顺序都能消灭全部怪物。",
+          "transformedStatement": "固定首个目标后，把击打过程看成从该点向左右扩展的区间；分别考虑先清空右侧再处理左侧、以及先清空左侧再处理右侧这两种最坏延迟情况，将每个怪物转化为对初始伤害 $x$ 的下界约束。",
+          "keyObservations": [
+            "固定起点 $i$ 后，最坏情况下左侧怪物会等右侧全部被击中后才受击，因此左侧第 $j$ 只保证得到 $x-(n-j)$ 点伤害。",
+            "同理，右侧怪物可能等左侧全部处理完才受击，因此右侧第 $j$ 只保证得到 $x-(j-1)$ 点伤害。",
+            "固定起点所需的最小初始能量是左侧、起点和右侧需求的最大值；前缀最大值与后缀最大值可将所有起点的计算降至线性时间。"
+          ],
+          "solutionBrief": "枚举初始目标 $i$，按最坏受击顺序计算左侧、起点、右侧各怪物对 $x$ 的下界，再取三者最大值。用前缀和后缀最大值维护两侧需求，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1901E",
+          "index": "E",
+          "slot": "E",
+          "title": "Compressed Tree",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1901/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/122645",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "greedy",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带点权的树，可以反复删除叶子（也可删光），随后不断删除度数恰为 $2$ 的顶点进行压缩。要求最大化压缩结束后剩余顶点权值之和。",
+          "transformedStatement": "把删叶过程看成选择一棵可保留的连通子树，再根据其中每个顶点的最终度数判断其是否会被压缩；在定根树上按父边是否存在和保留子树数量进行 DP。",
+          "keyObservations": [
+            "压缩结束后恰好保留度数不为 $2$ 的顶点，因此一个顶点是否计入答案只取决于最终保留子树中的度数。",
+            "将树定根后，子树是否与父亲相连会改变当前点的度数，故需区分“父边存在”和“父边不存在”两种状态。",
+            "若父边存在，保留 $0$ 个、$1$ 个或至少 $2$ 个子树时，当前点分别对应叶子、被压缩点和分支点，从而得到不同转移。",
+            "最终树可能完全位于某个子树内，根点的度数情形为 $0,1,2,\\ge3$ 个保留子树；另需将删空方案的答案设为 $0$。"
+          ],
+          "solutionBrief": "将可由删叶得到的剩余部分视为一棵连通保留子树。树形 DP 记录父边存在与否，并按保留子树数量处理当前点是否在压缩后保留；同时枚举最终树位于某个子树的情况，答案至少为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1901F",
+          "index": "F",
+          "slot": "F",
+          "title": "Landscaping",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1901/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/122645",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "geometry",
+            "two pointers"
+          ],
+          "statementBrief": "给定顶点为 $(i,a_i)$ 的折线。按顺序将第 $i$ 个高度替换为 $b_i$，每次替换后选择一条从 $(0,y_0)$ 到 $(n-1,y_1)$ 的线段，使整条折线位于其下方，并求围成面积最小的铺平代价。",
+          "transformedStatement": "把铺平线视为折线的上方支撑线：最优线对应凸包上跨过 $x=\\frac{n}{2}$ 的一条边。将顶点按中线分成左右两半，对每个左点寻找右半凸包切线，并以交点高度 $y_c$ 的函数值转化答案。",
+          "keyObservations": [
+            "最优支撑直线至少接触一个顶点；若只接触一个顶点，绕该点旋转即可降低面积，因此最优解必接触两个顶点。",
+            "两个接触点必须是多边形凸包上的相邻点，且分别位于中线两侧；若两点同在一侧，绕其中一个点旋转还能继续降低目标值。",
+            "固定左半部分顶点后，使直线在 $x=\\frac{n}{2}$ 处达到候选极值的右端点必在右半凸包上，因此可转化为寻找凸包切线，并用叉积二分定位。",
+            "左半顶点的更新具有前缀结构：已更新顶点取新高度、未更新顶点取旧高度，分别维护新值前缀最大值和旧值后缀最大值即可；右半部分通过反转数组并交换新旧数组处理。"
+          ],
+          "solutionBrief": "建立右半部分凸包，为每个左半顶点二分寻找切线并计算 $f=2y_c$，其中 $y_c=(y_0+y_1)/2$。预处理旧值后缀最大、新值前缀最大，合并得到左半答案；反转并交换数组处理右半，复杂度为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
