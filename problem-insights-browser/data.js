@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2711,
+    "total_problems": 2717,
     "source_total_problems": 2717,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2711,
-    "with_editorial_brief": 2442,
-    "with_solution_brief": 2443,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2717,
+    "with_editorial_brief": 2448,
+    "with_solution_brief": 2449,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1773,
+    "ai_override_count": 1779,
     "primary_topic_count": 13,
-    "contest_count": 414,
+    "contest_count": 415,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 139,
-    "构造与贪心": 853,
-    "图论与网络流": 166,
+    "构造与贪心": 854,
+    "图论与网络流": 167,
     "动态规划与状态设计": 231,
-    "数论与同余": 295,
+    "数论与同余": 297,
     "组合计数与概率": 208,
-    "数据结构": 253,
+    "数据结构": 255,
     "几何": 66,
     "树结构": 144,
     "代数、矩阵与多项式": 20,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1498,
+    "ai_generated_with_editorial": 1504,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 268,
     "manual_override": 891,
@@ -78316,6 +78316,190 @@ window.CF_INSIGHTS_DATA = {
             "新增顶点的编号最大，因此所有以它为端点的路径自动满足 II；只需在 min-RT 中统计其中不满足 I 的路径，并据此增量更新答案。"
           ],
           "solutionBrief": "建立 min-RT 和 max-RT，使路径最小编号与最大编号分别对应 LCA。用两棵重构树的深度统计 $A、B$，用 DFS 序和 Fenwick 树统计同时满足两条件的 $C$，通过 $K=A+B-2C$ 得到答案；新增最大编号叶子时只需增量处理相关路径。总复杂度为 $O((n+m)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1814,
+      "name": "Educational Codeforces Round 146 (Rated for Div. 2)",
+      "date": "2023-04-06",
+      "url": "https://codeforces.com/contest/1814",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1814A",
+          "index": "A",
+          "slot": "A",
+          "title": "Coins",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1814/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/114854",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "每组给出金额 $n$，可使用任意枚面值为 $2$ 和 $k$ 的硬币，且两种硬币数量都必须是非负整数；判断能否恰好凑出 $n$，输出 YES 或 NO。",
+          "transformedStatement": "将方程 $2x+ky=n$ 中面值为 $k$ 的硬币数量规范化为至多一枚：多出的两枚可替换成 $k$ 枚面值为 $2$ 的硬币。于是只需判断 $y=0$ 或 $y=1$ 时剩余金额是否为非负偶数。",
+          "keyObservations": [
+            "两枚面值为 $k$ 的硬币可替换为 $k$ 枚面值为 $2$ 的硬币，因此若存在方案，就存在面值为 $k$ 的硬币不超过一枚的方案，搜索范围从任意非负数缩为 $0$ 或 $1$。",
+            "固定使用 $y\\in\\{0,1\\}$ 枚面值为 $k$ 的硬币后，剩余金额 $n-ky$ 必须非负且为偶数；满足其一即可由面值为 $2$ 的硬币补足。"
+          ],
+          "solutionBrief": "利用两枚 $k$ 面值硬币等价于 $k$ 枚面值为 $2$ 的硬币，将 $k$ 面值硬币数量只需检查 $0$ 和 $1$。若某种选择使 $n-ky\\ge 0$ 且为偶数，则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1814B",
+          "index": "B",
+          "slot": "B",
+          "title": "Long Legs",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1814/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/114854",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "机器人从无限网格的 $(0,0)$ 出发，初始腿长为 $1$；每步可以将腿长加 $1$，或沿一个坐标轴跳跃当前腿长。要求到达给定的 $(a,b)$，求最少步数。",
+          "transformedStatement": "固定腿长最终增至 $k$，增腿需要 $k-1$ 步；之后两个坐标分别只需用长度 $k$ 的跳跃覆盖，跳跃次数为 $\\lceil a/k\\rceil$ 和 $\\lceil b/k\\rceil$，于是问题变为最小化 $\\lceil a/k\\rceil+\\lceil b/k\\rceil+k-1$。",
+          "keyObservations": [
+            "固定最终腿长为 $k$ 后，腿长必须依次经历 $1$ 到 $k$，因此增腿操作固定消耗 $k-1$ 步，并能覆盖所有不超过 $k$ 的单次跳跃长度。",
+            "对于坐标 $a$，使用长度为 $k$ 的跳跃并在末尾处理余数，所需跳跃次数恰为 $\\lceil a/k\\rceil$；坐标 $b$ 同理，两个方向可以独立计算。",
+            "固定 $k$ 时总步数转化为 $\\lceil a/k\\rceil+\\lceil b/k\\rceil+k-1$，从路径规划问题变成一维整数参数优化。",
+            "连续近似下，跳跃代价随 $k$ 增大而下降、增腿代价随 $k$ 增大而上升，最优点在 $\\sqrt{a}$ 或 $\\sqrt{b}$ 附近；因此只需枚举到约 $10^5$ 的 $k$。"
+          ],
+          "solutionBrief": "枚举最终腿长 $k$，计算代价 $\\lceil a/k\\rceil+\\lceil b/k\\rceil+k-1$ 并取最小值。根据函数在约 $\\sqrt{\\max(a,b)}$ 附近达到最优，只需枚举到约 $10^5$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1814C",
+          "index": "C",
+          "slot": "C",
+          "title": "Search in Parallel",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1814/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/114854",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个颜色各异的箱子和两台机器人。需把每个箱子恰好分配到一台机器人，并分别确定访问顺序；机器人并行按序检查箱子，第一个机器人每箱耗时 $s_1$ 秒、第二个每箱耗时 $s_2$ 秒，找到所请求颜色后停止。已知颜色 $i$ 会被请求 $r_i$ 次，要求构造两条列表，使所有请求的总搜索时间最小。",
+          "transformedStatement": "把机器人列表中的每个位置抽象为一个代价：两台机器人分别提供 $s_1,2s_1,\\dots$ 与 $s_2,2s_2,\\dots$。问题变成将颜色权重 $r_i$ 分配给这些位置，使权重与代价乘积之和最小。",
+          "keyObservations": [
+            "把两条列表中的位置看成代价序列：第一个机器人的第 $i$ 个位置代价为 $i s_1$，第二个机器人的第 $j$ 个位置代价为 $j s_2$，总耗时就是请求次数与位置代价的乘积之和。",
+            "固定所有位置代价后，按请求次数从大到小把颜色分配给代价从小到大的位置，可由交换论证保证乘积和最小。",
+            "两台机器人的可用位置代价分别是递增序列 $s_1,2s_1,\u001dots$ 和 $s_2,2s_2,\u001d\u001dots$；每次选择当前两条序列的下一个较小代价，就等价于按升序合并全部位置代价。",
+            "因此先将颜色按请求次数非增排序，再依次放入下一位置代价更小的列表；相等时任选，因为后续方案价值不受选择方向影响。"
+          ],
+          "solutionBrief": "将两条列表的位置代价视为两条递增序列，贪心合并得到全局升序代价。把请求次数降序排列的颜色依次分配给这些代价，即可由重排不等式最小化总耗时，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1814D",
+          "index": "D",
+          "slot": "D",
+          "title": "Balancing Weapons",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1814/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/114854",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 把武器，第 $i$ 把的射速为 $f_i$、每发伤害为 $d_i$，火力为 $p_i=f_i d_i$。可以把任意武器的 $d_i$ 改成正整数，要求最终最大与最小火力之差不超过 $k$，求至少要修改多少把武器。",
+          "transformedStatement": "若保留某把武器的伤害不变，就以它的火力为中心限制其他火力；问题转化为在该范围内选择一个长度为 $k+1$ 的火力区间，使每把武器都有可达火力，并最大化仍使用原伤害的武器数。",
+          "keyObservations": [
+            "若最终答案小于 $n$，至少有一把武器不修改；固定这把武器后，所有火力都必须落在以其火力为中心、半径 $k$ 的区间内。",
+            "固定未修改武器后，每把武器只需考虑 $\\lfloor p_{id}/f_i\\rfloor$、其加一以及原损伤值这至多三种候选，并过滤掉不满足正整数和区间条件的候选。",
+            "把候选损伤对应的火力视为带权事件，其中原损伤值权重为 $1$；若长度为 $k+1$ 的子区间覆盖每把武器至少一个事件，则事件权重和恰好是可保持不变的武器数。",
+            "在每个固定火力区间上用双指针维护事件覆盖的武器种类数和权重和，取覆盖全部武器时的最大权重；枚举未修改武器后答案为 $n-mx$，总复杂度为 $O(n^2+nk)$。"
+          ],
+          "solutionBrief": "枚举一把保持不变的武器，构造其余武器的至多三种候选火力事件。用双指针扫描长度为 $k+1$ 的区间，要求覆盖所有武器并最大化原值事件数，最终取最小修改数；全改也总是可行。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1814E",
+          "index": "E",
+          "slot": "E",
+          "title": "Chain Chips",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1814/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/114854",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "matrices"
+          ],
+          "statementBrief": "给定一条有 $n$ 个顶点的带权路径，第 $i$ 条边连接顶点 $i$ 与 $i+1$，每个顶点初始放有一个芯片。一次操作可沿一条边移动任意芯片，代价为该边权；要求让每个芯片都至少移动一次，并求最小总费用。每次查询把第 $k$ 条边权改为 $x$，输出修改后的费用。",
+          "transformedStatement": "不再安排具体移动顺序，而是选择需要使用的路径边：每个顶点必须接触至少一条被选边，且选中边可各走两次完成移动。因此转化为选取权值和最小的边集，使每对相邻边至少有一条被选，最终答案为最小权值和的两倍。",
+          "keyObservations": [
+            "任意边两侧的芯片跨边次数必须为偶数，因此被使用的边至少贡献两次，答案可按边独立计费。",
+            "每个顶点的芯片都必须离开原点，所以每个顶点至少要有一条相邻边被使用；否则该芯片无法移动。",
+            "选定一组满足每个顶点都有相邻边的边后，可将每条选中边恰好走两次，因此问题等价于在边序列上选边，使每对相邻边至少选一条并最小化权重。",
+            "把区间内首尾边是否选中作为 $2\\times2$ 矩阵状态，矩阵合并时只需检查连接处两条边不能同时未选；单点修改只影响线段树上的 $O(\\log n)$ 个节点。"
+          ],
+          "solutionBrief": "将原问题转成路径边上的最小权独立补集覆盖：相邻边至少选一条，答案为所选边权和的两倍。用线性 DP 表示首尾选取状态，再在线段树节点中存储 $2\\times2$ 转移矩阵，支持单点修改与查询，复杂度为 $O((n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1814F",
+          "index": "F",
+          "slot": "F",
+          "title": "Communication Towers",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1814/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/114854",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "divide and conquer",
+            "dsu"
+          ],
+          "statementBrief": "有 $n$ 座塔和双向连线，第 $i$ 座塔只接受区间 $[l_i,r_i]$ 内的频率。选择一个频率 $x$ 后，只能沿连线经过所有接受 $x$ 的塔；若塔 $b$ 与塔 $1$ 在这种子图中连通，则称其可达，要求输出所有可达塔的编号。",
+          "transformedStatement": "把频率 $x$ 看作时间：塔在其接受区间内处于活动状态，边在两个端点同时活动时存在。问题变为求每个时刻塔 $1$ 所在连通分量的并集，并通过连通分量的合并关系恢复原塔。",
+          "keyObservations": [
+            "固定频率 $x$ 后，只需在接受 $x$ 的塔构成的诱导子图中判断连通分量，从而把“存在频率和路径”转为按 $x$ 的动态连通性问题。",
+            "一条连线只在两个端点的频率区间交集内有效，因此每条边对应频率轴上的一个连续活动区间，可离线处理所有连通性变化。",
+            "用可回滚并查集配合分治维护各频率区间的连通分量，避免逐个频率重新计算整张图。",
+            "把并查集合并过程构成有向合并树，新分量指向被合并的旧分量；标记所有包含塔 $1$ 的分量后，从这些标记点遍历到原始单点叶子即可汇总答案。"
+          ],
+          "solutionBrief": "按频率轴离线处理活动区间，用分治和可回滚并查集维护活动图的连通分量。记录所有包含塔 $1$ 的分量，并在由合并关系构成的有向树上遍历，从而找出被任一标记分量覆盖的原始塔。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
