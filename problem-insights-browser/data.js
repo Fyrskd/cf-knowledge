@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2797,
+    "total_problems": 2806,
     "source_total_problems": 2806,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 2797,
-    "with_editorial_brief": 2535,
-    "with_solution_brief": 2536,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2806,
+    "with_editorial_brief": 2544,
+    "with_solution_brief": 2545,
     "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1859,
+    "ai_override_count": 1868,
     "primary_topic_count": 13,
-    "contest_count": 426,
+    "contest_count": 427,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 882,
+    "博弈": 95,
+    "树结构": 146,
+    "数据结构": 261,
+    "组合计数与概率": 218,
     "基础实现与模拟": 166,
-    "构造与贪心": 878,
-    "博弈": 94,
-    "组合计数与概率": 216,
     "图论与网络流": 171,
     "数论与同余": 303,
-    "数据结构": 260,
     "代数、矩阵与多项式": 21,
     "字符串": 150,
     "动态规划与状态设计": 237,
     "几何": 68,
-    "树结构": 145,
     "交互": 88
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1589,
+    "ai_generated_with_editorial": 1598,
     "ai_generated_partial_editorial": 55,
     "missing_editorial": 261,
     "manual_override": 891,
@@ -86611,6 +86611,279 @@ window.CF_INSIGHTS_DATA = {
             "当净变化为正时，可批量跳过相同的若干轮，直到达到目标评分或起始评分触及下一胜场阈值；每次跳过后 $p$ 增大，最多处理 $n$ 个阶段。"
           ],
           "solutionBrief": "将对手排序后按升序循环。预处理前缀胜利所需的阈值，用 upper_bound 求当前每轮胜场数；对净增益为正的相同轮次按两个上界批量跳过，直到达标或胜场数增加，否则返回 -1。总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1774,
+      "name": "Polynomial Round 2022 (Div. 1 + Div. 2, Rated, Prizes!)",
+      "date": "2022-12-17",
+      "url": "https://codeforces.com/contest/1774",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1774A",
+          "index": "A",
+          "slot": "A",
+          "title": "Add Plus Minus Sign",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1774/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/110184",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定只含 $0$ 和 $1$ 的字符串，需要在每对相邻字符之间放置一个正号或负号，形成按顺序计算的表达式。对每个测试用例输出一组符号，使表达式绝对值尽可能小，任意最优方案均可。",
+          "transformedStatement": "把表达式看成每个 $1$ 携带 $+1$ 或 $-1$ 系数的带符号计数；忽略所有 $0$ 后，只需按 $1$ 的出现次序交替安排系数，使其尽量成对抵消。",
+          "keyObservations": [
+            "所有为 $0$ 的位置对表达式数值没有贡献，因此它们之间的符号可以统一任意设置，不影响最优性。",
+            "若字符串中有 $m$ 个 $1$，每个 $1$ 的系数只能是 $+1$ 或 $-1$，所以总和与 $m$ 同奇偶，绝对值不可能小于 $m\\bmod 2$。",
+            "按出现顺序让第 $2,4,6,\\ldots$ 个 $1$ 前放负号、第 $3,5,7,\\ldots$ 个 $1$ 前放正号，可使这些 $1$ 两两抵消，最终总和恰为 $m\\bmod 2$，达到下界。"
+          ],
+          "solutionBrief": "从左到右统计已经出现的 $1$ 的数量。当前字符为 $1$ 且它是第偶数个 $1$ 时输出负号，否则输出正号；字符为 $0$ 的位置输出任意正号即可。这样表达式值为 $1$ 的个数的奇偶性，绝对值最小。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1774B",
+          "index": "B",
+          "slot": "B",
+          "title": "Coloring",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1774/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/110184",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有一排 $n$ 个格子和 $m$ 种颜色，第 $i$ 种颜色必须恰好使用 $a_i$ 次。需要依次给格子染色，并保证任意连续 $k$ 个格子的颜色两两不同，判断是否存在满足条件的染色方案。",
+          "transformedStatement": "将位置划分为若干段：除最后一段外每段长度为 $k$，最后一段长度为 $s=((n-1)\\bmod k)+1$。问题转化为判断每种颜色最多能覆盖多少段，以及必须覆盖全部分段的颜色能否在最后一段分别占位。",
+          "keyObservations": [
+            "任意颜色的相邻两次出现必须至少相隔 $k$ 个位置，因此每种颜色最多出现 $c=\\lceil n/k\\rceil$ 次。",
+            "把出现 $c$ 次的颜色看作必须覆盖全部 $c$ 个分段；它们在最后一个长度为 $s=((n-1)\\bmod k)+1$ 的分段中占据不同位置，所以数量不能超过 $s$。",
+            "当所有 $a_i\\le c$ 且达到 $c$ 的颜色数量不超过 $s$ 时，可先固定这些高频颜色，再将其余颜色按分段循环填入，保证每个长度为 $k$ 的窗口没有重复颜色。"
+          ],
+          "solutionBrief": "令 $c=\\lceil n/k\\rceil$、$s=((n-1)\\bmod k)+1$。若存在 $a_i>c$ 或恰有 $c$ 次的颜色超过 $s$ 种则输出 NO，否则按题解的分段循环顺序可构造合法染色，输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1774C",
+          "index": "C",
+          "slot": "C",
+          "title": "Ice and Fire",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1774/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/110184",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "有编号为 $1$ 到 $n$ 的玩家，玩家编号也是温度值。进行前 $x-1$ 场战斗时只让玩家 $1$ 到 $x$ 参加，每场从当前玩家中任选两人对战，按字符串对应环境决定温度较低或较高者获胜，败者淘汰；对每个 $x=2,\nots,n$，求哪些玩家存在最终获胜的安排，并输出其数量。",
+          "transformedStatement": "把前 $i$ 个环境看作一个战斗前缀，令 $f_i$ 为该前缀末尾连续相同字符的最长长度。题目等价于求 $i-f_i+1$，而 $f_i$ 可由当前字符之前最后一次出现相反字符的位置直接得到。",
+          "keyObservations": [
+            "对前 $i$ 场战斗，结尾连续相同环境的最长长度 $f_i$ 决定答案：恰有 $f_i$ 名玩家必败，其余 $i-f_i+1$ 名玩家都存在获胜安排。",
+            "若当前环境为 $0$，设此前最后一个 $1$ 的位置为 $p$，则末尾连续 $0$ 的长度为 $i-p$，答案直接变为 $p+1$；当前为 $1$ 时同理。",
+            "当末尾有连续 $x$ 个相同环境时，较低或较高的一侧有 $x$ 名玩家无法在这 $x$ 场中找到足够的对应对手，因此必败；环境改变处可安排战斗顺序，使其他玩家获胜。"
+          ],
+          "solutionBrief": "从左到右扫描字符串，维护最近一次出现的 $0$ 和 $1$ 的位置。若当前字符为 $c$，答案就是最近一次出现 $1-c$ 的位置加一；每个位置均可 $O(1)$ 求出，总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1774D",
+          "index": "D",
+          "slot": "D",
+          "title": "Same Count One",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1774/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/110184",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定 $n$ 个长度为 $m$ 的二进制数组。一次操作可选两行和同一列，交换这两行该列的元素；要求用最少操作使每行包含相同数量的 1，并输出操作序列或判定无解。",
+          "transformedStatement": "将目标转化为让每行达到统一的 1 数量 $S/n$。对每一列，把当前计数超标且该列为 1 的行视为供给方，把计数不足且该列为 0 的行视为需求方，直接匹配并交换。",
+          "keyObservations": [
+            "总 1 的数量必须能被 $n$ 整除，否则每行无法达到同一个整数目标，直接判定无解。",
+            "把每行目标设为总数除以 $n$；每列中，超额行的 $1$ 与不足行的 $0$ 配对交换，可同时修正两行的计数。",
+            "每次交换至多让一行减少一个多余的 $1$、另一行增加一个缺少的 $1$，因此按上述配对完成的交换数达到必要下界，从而最少。",
+            "处理一列后立即更新两行计数，并清空该列的配对集合，后续列只需继续修正仍未达标的行。"
+          ],
+          "solutionBrief": "先统计所有 1 并检查能否均分，令每行目标为总数除以 $n$。逐列收集超额行中的 1 和不足行中的 0，成对交换并更新计数；配对数正好达到最少操作数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1774E",
+          "index": "E",
+          "slot": "E",
+          "title": "Two Chess Pieces",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1774/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/110184",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以节点 $1$ 为根的树，两枚棋子都从根出发；每步只能移动一枚棋子到相邻节点，两枚棋子的距离始终不能超过 $d$。每枚棋子都有一组必须经过的节点，经过顺序任意且最终都要回到根，求最少移动步数。",
+          "transformedStatement": "把距离约束转化为任务补点：某枚棋子要到达一个节点时，另一枚棋子必须经过该节点向根方向的第 $d$ 层祖先。补点后分别求两组节点的根路径并集，问题变成两棵必要子树的闭合遍历代价。",
+          "keyObservations": [
+            "若第二个棋子必须经过节点 $b$，第一个棋子也必须经过 $b$ 的第 $d$ 层祖先；否则两者无法始终保持距离不超过 $d$，反向同理。",
+            "将这些跨棋子补充的祖先节点加入各自任务后，距离限制可以通过协调移动满足，不需要额外访问其他节点。",
+            "单个棋子访问若干节点并回到根时，只需覆盖根到这些节点的最小子树；其中每条被覆盖的非根边都必须往返一次，因此贡献 $2$。",
+            "按 DFS 顺序交替前往两组必要节点，并仅在下一步会超距时让另一棋子靠近，可在不增加路线长度的情况下维持距离限制。"
+          ],
+          "solutionBrief": "先为每个棋子的任务节点向另一组加入对应的 $d$ 层祖先（深度不足则为根），再对子树做标记，得到两组各自必须覆盖的根路径。答案是两组标记子树中非根边数之和乘 $2$；按 DFS 顺序协调移动可保证距离约束不增加额外步数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1774F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Magician and Pigs (Easy Version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1774/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/110184",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "魔术师依次执行 $n$ 次操作：创建指定生命值的猪、让所有存活猪受到指定伤害，或重复已有操作产生新的猪。生命值降至不超过 $0$ 的猪死亡，要求最后存活猪的数量，并对 $998244353$ 取模。",
+          "transformedStatement": "将每头猪记录为“初始生命值加统一累计伤害偏移”，把全体攻击转化为增加 $tot$；Repeat 则转化为对所有当前生命值大于 $0$ 的猪按生命值减去 $tot$ 复制一份，并令累计伤害翻倍。",
+          "keyObservations": [
+            "把当前每头猪的生命值表示为其创建生命值加上统一偏移量 $-tot$，因此全体受伤只需令 $tot$ 增加，新增猪存入键值 $x+tot$。",
+            "一次 Repeat 会让每头当前生命值为 $w$ 且 $w>tot$ 的猪额外产生一头生命值为 $w-tot$ 的猪；生命值不超过 $0$ 的复制品直接无效。",
+            "Repeat 后累计伤害 $tot$ 翻倍，且翻倍后很快超过所有操作中的最大 $x$，所以只有 $O(\\log X)$ 次 Repeat 会真正产生新猪，之后可跳过复制过程。",
+            "当 $tot=0$ 时 Repeat 不改变生命值，只会使所有已有猪的数量翻倍，因此需单独维护整体倍数，避免逐头复制。"
+          ],
+          "solutionBrief": "用带计数的 map 维护隐式生命值：新增猪按 $x+tot$ 入表，攻击只增加 $tot$，Repeat 复制所有键值大于 $tot$ 的猪并令 $tot$ 翻倍；$tot=0$ 时维护整体倍数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1774F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Magician and Pigs (Hard Version)",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1774/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/110184",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "魔术师依次执行 $n$ 次操作：创建一只指定血量的猪、令所有活猪受到指定伤害，或让所有活猪各复制出一只。血量不超过 $0$ 的猪死亡，要求所有操作结束后存活猪的数量，结果对 $998244353$ 取模。",
+          "transformedStatement": "把每只最终猪追溯为某次创建操作的血缘分支，并逆序处理后续操作：攻击必然扣除累计伤害，复制则等价于选择该累计伤害是否作用于当前分支。因此问题变成统计使创建血量减去所选伤害后仍为正的复制选择。🌐 URL: https://codeforces.com/contest/1774/problem/F2",
+          "keyObservations": [
+            "沿着每只猪的血缘逆序分析：遇到攻击，累计伤害必须加入；遇到复制，当前累计伤害可选择是否施加到该分支，从而把过程转成子集选择。",
+            "累计伤害为 $0$ 的复制不会改变血量，却会让每种结果出现两份，因此可直接把答案乘以 $2$。",
+            "保留下来的非零累计伤害按从大到小排列时，每个元素都大于所有更小元素之和；因此处理阈值 $r$ 时，若当前元素小于 $r$，不选它的所有后缀子集都合法，可在 $O(\\log X)$ 内计数。",
+            "对每个创建操作，只需统计复制选择使最终血量仍为正的方案数，再乘以前面独立复制产生的方案数，即可累加所有存活猪。"
+          ],
+          "solutionBrief": "逆序处理操作，维护后续攻击造成的累计伤害。创建猪时统计其血量大于累计伤害的复制选择数；非零复制伤害形成超递增序列，可用贪心计数所有和小于阈值的子集，整体复杂度为 $O(n\\log X)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1774G",
+          "index": "G",
+          "slot": "G",
+          "title": "Segment Covering",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1774/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/110184",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定 $m$ 个互不相同的线段。对每次查询 $[l,r]$，统计所有并集恰好等于它的线段子集：选偶数条计入 $f(l,r)$，选奇数条计入 $g(l,r)$，输出 $f(l,r)-g(l,r)$ 的模 $998244353$ 值。",
+          "transformedStatement": "把每个子集按选中线段数赋予符号 $(-1)^{|S|}$，问题变成求并集恰为 $[l,r]$ 的带符号计数。经过抵消删除后，将保留线段按“下一个不相交线段”连接成树，查询转为判断两个端点是否落在同一条覆盖路径上并计算其长度奇偶。",
+          "keyObservations": [
+            "若选中了包含区间 $(l_1,r_1)$，则其内部区间选与不选的并集相同、符号相反，因此该外层区间的总贡献为零，可以删除。",
+            "删除包含关系后按左端点排序，右端点也递增；满足交叠支配关系的区间仍可成对抵消，删去后任意恰好覆盖查询区间的选择只贡献 $(-1)^k$，否则贡献为 $0$。",
+            "对每个保留区间连接到第一个左端点大于其右端点的区间，得到表示连续覆盖跳转的树；查询的非零性可转化为两个端点区间是否位于同一路径。",
+            "答案非零时只需比较路径上的区间数量奇偶性，因此可用倍增祖先跳转同时判断路径关系并计算符号。"
+          ],
+          "solutionBrief": "先按包含关系和交叠支配关系删除会抵消的区间，使有效覆盖至多贡献一个符号。再按每个区间跳到下一个不相交区间建树，用倍增处理查询：定位从左端点开始、以右端点结束的路径，路径不存在则为 $0$，否则按区间数奇偶输出 $\u001771$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1774H",
+          "index": "H",
+          "slot": "H",
+          "title": "Maximum Permutation",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1774/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/110184",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定 $1$ 到 $n$ 的所有数字，排列成长度为 $n$ 的数组。数组价值是所有连续长度为 $k$ 的子数组和中的最小值，要求构造一个排列，使该价值最大，并输出最大值和任意最优排列。",
+          "transformedStatement": "把长度为 $k$ 的窗口及其不重叠分段视为约束集合：先研究 $k$ 整除 $n$ 时如何让各块和均衡，再将一般情形 $n=qk+r$ 拆成长度为 $r$ 与 $k-r$ 的红蓝块，通过控制两类块的极值来达到窗口和的理论上界。",
+          "keyObservations": [
+            "当 $k\\mid n$ 时，取互不重叠的 $n/k$ 个长度为 $k$ 的区间，可知最小区间和不超过它们总和的平均值；构造需让这些区间和尽量相等。",
+            "当 $n=qk+r$ 时，将数组划成 $q+1$ 个长度为 $r$ 的红段和 $q$ 个长度为 $k-r$ 的蓝段；窗口上界转化为压低红段最大和、抬高蓝段最小和。",
+            "$k$ 为偶数时交替放置当前最小值和最大值，可使长度为 $k$ 的关键分段达到相同总和，从而取得平均值上界。",
+            "$k$ 为奇数时，把分段放入表格，用 S 形顺序填充后 $k-3$ 列，再将剩余三列划分为和相等或尽量接近的三组，以控制相邻窗口和的差异。"
+          ],
+          "solutionBrief": "先处理 $k\\mid n$：偶数 $k$ 交替放置小数和大数，奇数 $k$ 用表格、S 形填充及三组平衡构造。一般情况按 $n=qk+r$ 拆成红蓝子段，分别递归套用整除情形；$r=1$ 或 $k-r=1$ 时单独固定边界元素后递归构造，最后扫描窗口取最小和。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
