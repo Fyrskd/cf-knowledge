@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2430,
+    "total_problems": 2437,
     "source_total_problems": 2437,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2430,
-    "with_editorial_brief": 2164,
-    "with_solution_brief": 2165,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2437,
+    "with_editorial_brief": 2171,
+    "with_solution_brief": 2172,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1492,
+    "ai_override_count": 1499,
     "primary_topic_count": 13,
-    "contest_count": 373,
+    "contest_count": 374,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 117,
-    "构造与贪心": 766,
-    "图论与网络流": 144,
-    "动态规划与状态设计": 211,
+    "字符串": 118,
+    "构造与贪心": 768,
+    "图论与网络流": 145,
+    "动态规划与状态设计": 213,
     "数论与同余": 266,
     "组合计数与概率": 188,
     "数据结构": 225,
@@ -55,12 +55,12 @@ window.CF_INSIGHTS_DATA = {
     "树结构": 135,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 134,
+    "基础实现与模拟": 135,
     "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1226,
-    "ai_generated_partial_editorial": 47,
+    "ai_generated_with_editorial": 1232,
+    "ai_generated_partial_editorial": 48,
     "missing_editorial": 265,
     "manual_override": 891,
     "statement_derived": 1
@@ -57346,6 +57346,212 @@ window.CF_INSIGHTS_DATA = {
             "枚举全部顶点集合并对每个集合运行 Prim，可在 $O(2^n\\cdot n^2)$ 时间内求出所有候选方案的最小代价。"
           ],
           "solutionBrief": "利用树是二分图这一性质，把最大匹配改为最小点覆盖。枚举覆盖集合 $S$，禁用两端都不在 $S$ 中的边，在剩余图上求最小生成树，并加上 $c\\cdot|S|$，取所有方案最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1941,
+      "name": "Codeforces Round 933 (Div. 3)",
+      "date": "2024-03-11",
+      "url": "https://codeforces.com/contest/1941",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1941A",
+          "index": "A",
+          "slot": "A",
+          "title": "Rudolf and the Ticket",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1941/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/127018",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "给定左、右两个口袋中的硬币面值，必须恰好从左口袋选一枚、从右口袋选一枚；每枚硬币按其数组索引区分。要求统计两枚硬币面值之和不超过 $k$ 的索引对数量。",
+          "transformedStatement": "将问题建模为统计笛卡尔积中的可行对：对每个左侧索引 $i$ 和右侧索引 $j$ 检查谓词 $b_i+c_j\\le k$，满足条件的有序索引对贡献一个答案。",
+          "keyObservations": [
+            "一个合法选择完全由左口袋索引 $f$ 和右口袋索引 $s$ 唯一确定，因此只需统计满足 $b_f+c_s\\le k$ 的有序索引对。",
+            "硬币按索引区分，即使两个硬币面值相同也算不同选择；双重遍历不会遗漏或重复任何方案。",
+            "对每个左侧硬币逐一尝试所有右侧硬币，并直接检查和是否不超过 $k$，即可把计数条件落实为独立的局部判断。"
+          ],
+          "solutionBrief": "对每个测试用例枚举所有 $(i,j)$，若 $b_i+c_j\\le k$ 就将答案加一。由于选择由两个索引决定，直接双重循环恰好统计所有合法方案，复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1941B",
+          "index": "B",
+          "slot": "B",
+          "title": "Rudolf and 121",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1941/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/127018",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题目给定一个非负整数数组，并允许反复选择满足范围限制的中间位置执行题面规定的局部操作，目标是判断能否把所有元素都变成 $0$。当前记录中的操作赋值公式缺失，因此无法准确说明每次操作具体修改哪些元素。",
+          "transformedStatement": "题解将过程重述为从左到右消除数组中的非零元素：找到最左侧正数后，只能通过选择其右侧的指定位置来消除它，并继续向数组末端推进，最后检查是否完全清零。",
+          "keyObservations": [
+            "对当前最左侧的正数位置 $i$，题解指出只能选择第 $i+1$ 个位置操作；更靠左的操作要么无法进行，要么会使元素变成负数，因此处理顺序被唯一确定。",
+            "从最左侧正数开始持续处理并向数组右端推进；若推进结束后仍有非零元素，说明无法全部清零，答案为“NO”。"
+          ],
+          "solutionBrief": "按照题解，从最左侧正数开始，反复选择其右侧位置进行操作并向右推进。处理到数组末尾后检查是否仍有非零元素；全为零则输出“YES”，否则输出“NO”。但给定题面缺失了操作赋值公式，无法补充具体更新细节。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1941C",
+          "index": "C",
+          "slot": "C",
+          "title": "Rudolf and the Ugly String",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1941/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/127018",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个小写字符串，每次可从任意位置删除一个字符，直到剩余字符串不再包含连续子串 `pie` 或 `map`。要求使字符串变得美丽所需删除的最少字符数。",
+          "transformedStatement": "将问题转化为覆盖所有禁用子串：普通的 `pie` 或 `map` 各需删除一个中间字符，而重叠结构 `mapie` 可删除中央 `p`，同时消除两个禁用子串。",
+          "keyObservations": [
+            "每个单独出现的 `pie` 或 `map` 删除其中间字符即可破坏该禁串，且一次删除足够，因此每个这样的局部结构贡献一次答案。",
+            "`mapie` 同时包含 `map` 和 `pie`，删除中间的 `p` 可一次破坏两个禁串；若只删除任一长度为 3 子串的中间字符，另一禁串仍会保留。",
+            "除 `mapie` 外，禁串之间不会产生需要合并处理的重叠，因此从左到右处理并优先识别 `mapie` 不会漏计或多删。"
+          ],
+          "solutionBrief": "从左到右扫描字符串：优先识别 `mapie`，计数一次并跳过它；否则遇到 `pie` 或 `map` 就计数一次并跳过该段，最后的计数即最少删除数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1941D",
+          "index": "D",
+          "slot": "D",
+          "title": "Rudolf and the Ball Game",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1941/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/127018",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 名玩家按顺时针围成一圈，球初始在玩家 $x$ 手中。第 $i$ 次投掷必须移动 $r_i$ 步，方向可能已知为顺时针或逆时针，也可能两种方向都允许；求完成 $m$ 次投掷后所有可能持球玩家的编号。",
+          "transformedStatement": "将游戏建模为圆环上的可达状态集合：初态只有 $x$，每次投掷按允许的方向把每个当前位置映射到一个或两个新位置，并合并重复状态；最终状态集合就是答案。",
+          "keyObservations": [
+            "只需维护当前所有可能持球人的集合；同一玩家无论由哪条路径到达，后续可选转移完全相同，因此重复位置可以合并而不影响答案。",
+            "每次投掷都把集合中的每个位置替换为对应的顺时针、逆时针落点；方向未知时同时加入两种落点，从而保持集合恰好表示所有可达状态。",
+            "圆周上的位置转移可统一写为模 $n$ 运算，逆时针计算需先加 $n$，避免负数取模导致实现结果错误。",
+            "任意时刻可达位置数不超过 $n$，所以逐次更新集合的总复杂度为 $O(nm)$。"
+          ],
+          "solutionBrief": "用集合 $q$ 表示当前所有可能持球人，初始为 $x$。逐次处理每个投掷：按已知方向加入一个落点，未知方向加入两个落点，并去重；最终集合即答案，复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1941E",
+          "index": "E",
+          "slot": "E",
+          "title": "Rudolf and k Bridges",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1941/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/127018",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个 $n$ 行、$m$ 列的河流网格，第 $j$ 列支柱费用为 $a_{i,j}+1$，需在一行的首尾岸边及中间位置安装支柱，并保证相邻支柱的列距不超过 $d$。选择连续的 $k$ 行分别建桥，求所有支柱费用之和的最小值。",
+          "transformedStatement": "先把每一行视为列位置组成的带权路径：从一个支柱跳到右侧不超过 $d$ 列的位置，代价为落点支柱费用；求每行从首列到末列的最短路径，再取连续 $k$ 个行代价的最小和。",
+          "keyObservations": [
+            "单行桥的相邻支柱列号差不能超过 $d$，因此到达第 $j$ 列的最小费用只需取前面距离不超过 $d$ 的状态最小值。",
+            "每个位置的支柱费用固定为 $a_{i,j}+1$，所以单行最优费用满足“窗口最小值加当前位置费用”的转移，可用滑动窗口维护。",
+            "各行的桥彼此独立，选定连续 $k$ 行后总费用就是对应单行最优费用之和，因此只需在行费用数组中寻找长度为 $k$ 的最小连续段。"
+          ],
+          "solutionBrief": "对每行做 DP：令状态表示铺设支柱到该列的最小费用，用维护最近 $d$ 个状态的有序 multiset 取得转移最小值，并强制包含首尾列。得到每行费用后，用滑动窗口求连续 $k$ 行费用最小和。复杂度为 $O(nm\u0003log d)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1941F",
+          "index": "F",
+          "slot": "F",
+          "title": "Rudolf and Imbalance",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1941/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/127018",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定严格递增的题目复杂度数组，还可从一个模型和一个函数组合出复杂度为 $d_i+f_j$ 的新题目，最多插入一道并重新排序。要求选择是否插入及组合方式，使相邻复杂度差的最大值最小。",
+          "transformedStatement": "把问题转化为拆分一个原有相邻间隔：只需处理最大的间隔，其余间隔中第二大的值作为不可避免的下界；新复杂度应尽量靠近该最大间隔的中点。",
+          "keyObservations": [
+            "插入一个问题只能拆分一个相邻复杂度间隔，因此若不插入最大间隔内部，最大不平衡值不会改变。",
+            "设最大间隔为 $[a_p,a_{p+1}]$，插入后该处最大子间隔在新复杂度最接近中点时最小。",
+            "其他间隔中的第二大值不会因插入而减小，所以答案至少是原间隔中的第二大值。",
+            "对每个模型二分查找最接近中点的函数值，只需检查中点两侧的候选复杂度并更新最大子间隔。"
+          ],
+          "solutionBrief": "先找出最大间隔及第二大间隔。将新问题放入最大间隔，并令其复杂度尽量接近中点；排序函数数组后，对每个模型二分查找中点两侧候选，取拆分后的较大间隔与第二大间隔的最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1941G",
+          "index": "G",
+          "slot": "G",
+          "title": "Rudolf and Subway",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1941/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/127018",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个无向连通地铁图，边连接可直达的车站，并带有颜色；同色边组成一条连通地铁线路。路线可沿边经过车站，目标是从出发站到目的站，使经过的不同线路数量最少。",
+          "transformedStatement": "将原图改成车站节点与线路节点组成的二部图：车站连接到所有经过它的线路。一次乘坐某条线路被表示为“车站—线路—车站”，于是原问题等价于求两站间二部图最短路并折半。",
+          "keyObservations": [
+            "把每种颜色视为一条线路；由于同色边构成连通子图，进入该线路后可在其覆盖的任意相关车站间换乘而不增加线路数。",
+            "建立“车站—线路”二部图：车站与其相邻边所属的线路相连，原图中乘坐一条线路的一次转移对应二部图中的两条边。",
+            "车站到目的地的二部图最短路长度必为偶数，每两条边恰好对应使用一条线路，因此答案是最短路长度除以 $2$。"
+          ],
+          "solutionBrief": "为每种颜色建立线路节点，并将车站连接到所有经过该站的线路节点。在二部图中从出发站 BFS 到目的站，最短距离除以 $2$ 即为最少使用的线路数。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
