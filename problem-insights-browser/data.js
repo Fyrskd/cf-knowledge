@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 269,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1816,
+    "ai_override_count": 1832,
     "primary_topic_count": 13,
     "contest_count": 422,
     "rating_min": 800,
@@ -45,18 +45,18 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 150,
-    "构造与贪心": 870,
+    "构造与贪心": 867,
     "图论与网络流": 169,
-    "动态规划与状态设计": 238,
-    "数论与同余": 296,
-    "组合计数与概率": 210,
+    "动态规划与状态设计": 236,
+    "数论与同余": 298,
+    "组合计数与概率": 211,
     "数据结构": 259,
     "几何": 68,
-    "树结构": 147,
+    "树结构": 146,
     "代数、矩阵与多项式": 20,
     "交互": 88,
-    "基础实现与模拟": 163,
-    "博弈": 92
+    "基础实现与模拟": 165,
+    "博弈": 93
   },
   "statusCounts": {
     "ai_generated_with_editorial": 1554,
@@ -167,17 +167,16 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2268/problem/B",
           "editorialUrl": "",
-          "primaryTopic": "动态规划与状态设计",
+          "primaryTopic": "数论与同余",
           "secondaryTopics": [
-            "构造与贪心",
-            "数据结构"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "bitmasks",
             "brute force",
             "math"
           ],
-          "statementBrief": "题面已抓取：What a SauSaGe! It's All Meat；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n$ 个数量均小于 $16$ 的数组元素，并不断执行永久更新 $a_p:=x$。在每个状态下，可任意多次选择相邻位置，并将两者同时与 $3k$（$1\\le k\\le5$）异或；求通过这些操作最多能让多少个元素变成 $3$ 的倍数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -46636,16 +46635,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2007/problem/A",
           "editorialUrl": "/contest/2007/attachments/download/26937/tutorial.pdf",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "构造与贪心",
-            "数据结构"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "greedy",
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Dora's Set；本地暂无可用题解正文。",
+          "statementBrief": "初始集合包含区间 $[l,r]$ 中的所有整数。每次可选择三个不同的数，要求它们两两最大公约数都为 $1$，然后同时删除这三个数；求最多能进行多少次操作。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -46661,14 +46657,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2007/problem/B",
           "editorialUrl": "/contest/2007/attachments/download/26937/tutorial.pdf",
           "primaryTopic": "数据结构",
-          "secondaryTopics": [
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "data structures",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Index and Maximum Value；本地暂无可用题解正文。",
+          "statementBrief": "给定一个整数数组，并按顺序执行 $m$ 次操作：对当前值位于 $[l,r]$ 的所有元素统一加一或减一。每次操作完成后，输出数组中的最大值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -46684,15 +46678,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2007/problem/C",
           "editorialUrl": "/contest/2007/attachments/download/26937/tutorial.pdf",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "博弈",
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Dora and C++；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $n$ 的数组和两个常数 $a,b$。每次可任选一个位置，将该元素增加 $a$ 或增加 $b$，操作次数可为零；求操作后数组最大值减最小值的最小可能值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -46718,11 +46709,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1700,
           "problemUrl": "https://codeforces.com/contest/2006/problem/A",
           "editorialUrl": "/contest/2006/attachments/download/26936/tutorial.pdf",
-          "primaryTopic": "树结构",
+          "primaryTopic": "博弈",
           "secondaryTopics": [
-            "构造与贪心",
-            "图论与网络流",
-            "博弈"
+            "树结构"
           ],
           "originalTags": [
             "constructive algorithms",
@@ -46732,7 +46721,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Iris and Game on the Tree；本地暂无可用题解正文。",
+          "statementBrief": "给定一棵以 1 为根的二叉值树，顶点取值为 0、1 或未知 ?。每回合当前玩家选择一个 ? 并将其改为 0 或 1，Iris 先手且想最大化得分，Dora 想最小化；所有 ? 被填完后，统计权重非零的叶子数，其中叶子不包括根。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -46749,8 +46738,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "/contest/2006/attachments/download/26936/tutorial.pdf",
           "primaryTopic": "树结构",
           "secondaryTopics": [
-            "图论与网络流",
-            "构造与贪心",
+            "数论与同余",
             "数据结构"
           ],
           "originalTags": [
@@ -46761,7 +46749,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Iris and the Tree；本地暂无可用题解正文。",
+          "statementBrief": "给定一棵以 1 为根、边权非负且总和为 $w$ 的树。依次得知若干条边的权值；每次得知后，对每个 $i$ 独立最大化从顶点 $i$ 到顶点 $i\\bmod n+1$ 的路径长度，并输出这些最大值之和。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -46776,12 +46764,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/2006/problem/C",
           "editorialUrl": "/contest/2006/attachments/download/26936/tutorial.pdf",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构",
-            "数论与同余",
-            "组合计数与概率"
-          ],
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
           "originalTags": [
             "data structures",
             "divide and conquer",
@@ -46789,7 +46773,7 @@ window.CF_INSIGHTS_DATA = {
             "number theory",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Eri and Expanded Sets；本地暂无可用题解正文。",
+          "statementBrief": "给定正整数数组，把任意子数组中的不同元素放入集合。每次可选两个不同元素，若它们的平均数是尚未出现的正整数，就将该平均数加入集合；问有多少个子数组能经过有限次操作变成相邻整数构成的连续集合。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -46807,8 +46791,7 @@ window.CF_INSIGHTS_DATA = {
           "primaryTopic": "数据结构",
           "secondaryTopics": [
             "构造与贪心",
-            "博弈",
-            "交互"
+            "数论与同余"
           ],
           "originalTags": [
             "data structures",
@@ -46816,7 +46799,7 @@ window.CF_INSIGHTS_DATA = {
             "implementation",
             "math"
           ],
-          "statementBrief": "题面已抓取：Iris and Adjacent Products；本地暂无可用题解正文。",
+          "statementBrief": "给定数组和上限 $k$，每次询问取一个子数组。可以任意重排其元素，并把任意元素改成 $1$ 到 $k$ 的整数；要求最终排列中每对相邻元素的乘积都不超过 $k$，求最少改写次数。各询问彼此独立。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -46832,18 +46815,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2006/problem/E",
           "editorialUrl": "/contest/2006/attachments/download/26936/tutorial.pdf",
           "primaryTopic": "树结构",
-          "secondaryTopics": [
-            "构造与贪心",
-            "数据结构",
-            "图论与网络流"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "data structures",
             "dfs and similar",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Iris's Full Binary Tree；本地暂无可用题解正文。",
+          "statementBrief": "从只有顶点 $1$ 的树开始，第 $i$ 步把新顶点接到指定的旧顶点 $p_i$ 上。对每个前缀树，求能通过补充顶点和边扩展成满二叉树的最小深度；若不存在则输出 $-1$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -46858,12 +46837,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 3500,
           "problemUrl": "https://codeforces.com/contest/2006/problem/F",
           "editorialUrl": "/contest/2006/attachments/download/26936/tutorial.pdf",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "图论与网络流",
-            "数论与同余"
-          ],
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "combinatorics",
@@ -46871,7 +46846,7 @@ window.CF_INSIGHTS_DATA = {
             "graphs",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Dora's Paint；本地暂无可用题解正文。",
+          "statementBrief": "给定一个初始全为 $0$ 的 $n\\times n$ 矩阵，每次可将某一列全部涂成 $1$，或将某一行全部涂成 $2$，操作后矩阵只含 $1,2$。已知矩阵中 $1$ 的位置，其余位置为 $2$；给定矩阵恰有一个位置与真实矩阵相反，求真实矩阵 beauty 的期望值，即最少操作数下可得到它的刷涂顺序数量的期望。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -52468,16 +52443,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1981/problem/A",
           "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Turtle and Piggy Are Playing a Game；本地暂无可用题解正文。",
+          "statementBrief": "给定整数区间 $[l,r]$，Turtle 先选择其中一个整数 $x$；随后 Piggy 反复执行题面规定的操作，直到 $x$ 变为 $1$，双方都希望最终得分最大。当前记录未提供该操作的具体规则和计分方式，因此无法完整确定要求。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -52492,15 +52465,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1300,
           "problemUrl": "https://codeforces.com/contest/1981/problem/B",
           "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
-          "primaryTopic": "动态规划与状态设计",
+          "primaryTopic": "基础实现与模拟",
           "secondaryTopics": [
-            "交互"
+            "数论与同余"
           ],
           "originalTags": [
             "bitmasks",
             "math"
           ],
-          "statementBrief": "题面已抓取：Turtle and an Infinite Sequence；本地暂无可用题解正文。",
+          "statementBrief": "有一个无限序列，初始时 $a_i=i$。每秒所有元素同步更新：正下标位置变为自身与左右邻居的按位或，$a_0$ 则变为自身与 $a_1$ 的按位或；求经过 $m$ 秒后 $a_n$ 的值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -52517,7 +52490,8 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "动态规划与状态设计"
+            "基础实现与模拟",
+            "数论与同余"
           ],
           "originalTags": [
             "bitmasks",
@@ -52527,7 +52501,7 @@ window.CF_INSIGHTS_DATA = {
             "implementation",
             "math"
           ],
-          "statementBrief": "题面已抓取：Turtle and an Incomplete Sequence；本地暂无可用题解正文。",
+          "statementBrief": "给定一个含正整数和 $-1$ 的序列，$-1$ 表示缺失值，需保留已知元素并为缺失位置填入 $[1,10^9]$ 的正整数。最终每对相邻元素中，必须有一个等于另一个除以 $2$ 的下取整；若无法完成则输出 $-1$，否则输出任意合法序列。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -52543,18 +52517,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1981/problem/D",
           "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数论与同余",
-            "图论与网络流",
-            "树结构"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "dfs and similar",
             "graphs",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Turtle and Multiplication；本地暂无可用题解正文。",
+          "statementBrief": "给定整数 $n$，需要构造一个长度为 $n$ 的整数序列，使其满足题面列出的条件，并在所有可行序列中让不同元素的数量最少。当前记录缺少这些具体条件，因此无法确定允许的关系或操作规则。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -52570,18 +52540,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1981/problem/E",
           "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
           "primaryTopic": "图论与网络流",
-          "secondaryTopics": [
-            "构造与贪心",
-            "数据结构",
-            "树结构"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "data structures",
             "dsu",
             "graphs",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Turtle and Intersected Segments；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n$ 个区间 $[l_i,r_i]$ 及数值 $a_i$。每当两个区间相交就连一条无向边，边权为 $|a_i-a_j|$；求该图最小生成树的边权总和，若图不连通则输出 $-1$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -52597,17 +52563,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1981/problem/F",
           "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
           "primaryTopic": "树结构",
-          "secondaryTopics": [
-            "数据结构",
-            "动态规划与状态设计",
-            "图论与网络流"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "data structures",
             "dp",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Turtle and Paths on a Tree；本地暂无可用题解正文。",
+          "statementBrief": "给定一棵以 1 为根、每个非叶节点至多有两个儿子的二叉树，以及每个顶点的整数标签。选择若干条树上简单路径，使每条边恰好被一条路径覆盖，允许路径在顶点处相交；路径代价是其顶点标签集合的正整数 MEX，要求最小化所有路径代价之和。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
