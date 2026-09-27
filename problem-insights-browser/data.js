@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2277,
+    "total_problems": 2285,
     "source_total_problems": 2285,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2277,
-    "with_editorial_brief": 2016,
-    "with_solution_brief": 2017,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2285,
+    "with_editorial_brief": 2024,
+    "with_solution_brief": 2025,
     "missing_editorial_brief": 260,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1218,
+    "ai_override_count": 1226,
     "primary_topic_count": 13,
-    "contest_count": 352,
+    "contest_count": 353,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 102,
-    "构造与贪心": 754,
-    "图论与网络流": 134,
+    "字符串": 104,
+    "构造与贪心": 755,
+    "图论与网络流": 135,
     "动态规划与状态设计": 208,
-    "数论与同余": 237,
-    "组合计数与概率": 169,
+    "数论与同余": 240,
+    "组合计数与概率": 170,
     "数据结构": 203,
     "几何": 51,
     "树结构": 136,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 77
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1080,
+    "ai_generated_with_editorial": 1088,
     "ai_generated_partial_editorial": 45,
     "missing_editorial": 260,
     "manual_override": 891,
@@ -46350,6 +46350,252 @@ window.CF_INSIGHTS_DATA = {
             "按查询左端点分类处理左右边界是否越界；两类单侧越界贡献随扫描端点移动呈线性变化，可用带懒标记的线段树维护，双侧越界至多只含区间最小元素。"
           ],
           "solutionBrief": "先计算每个长度为 $k$ 窗口的代价 $v$，再把查询转成 $v$ 的子数组最小值之和。用单调栈划分最小值贡献，结合矩形查询、扫描线和带懒标记线段树回答所有区间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2008,
+      "name": "Codeforces Round 970 (Div. 3)",
+      "date": "2024-09-01",
+      "url": "https://codeforces.com/contest/2008",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "2008A",
+          "index": "A",
+          "slot": "A",
+          "title": "Sakurako's Exam",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2008/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/133509",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个含有 $a$ 个 $1$ 和 $b$ 个 $2$ 的数组，需要分别在每个元素前放置正号或负号，使所有带符号元素之和为 $0$。对每组数据判断是否存在这样的符号分配，输出 Yes 或 No。",
+          "transformedStatement": "将正负号分配视为把所有元素划分到两个集合，并要求两集合元素和相等；问题因此只需分析总和奇偶性，以及奇数个 $2$ 造成的剩余差值能否由两个 $1$ 补偿。",
+          "keyObservations": [
+            "给每个数加正负号等价于把数组划分为两个元素集合，使两边元素和相等，因此总和必须为偶数；由于所有 $2$ 的贡献为偶数，这等价于 $a$ 必须为偶数。",
+            "将数量为 $2$ 的元素尽量平均分配后，若 $b$ 为偶数，两边贡献天然相等；若 $b$ 为奇数，会产生差值 $2$，必须用两个 $1$ 抵消。",
+            "因此当 $b$ 为奇数时，至少需要 $2$ 个 $1$；结合 $a$ 必须为偶数，可行条件为 $a$ 为偶数且（$b$ 为偶数或 $a\\ge2$）。"
+          ],
+          "solutionBrief": "把问题转化为等和划分。若 $a$ 为奇数则总和为奇数，直接判 No；否则当 $b$ 为偶数一定可行，当 $b$ 为奇数则必须有至少两个 $1$ 用于平衡，满足条件输出 Yes。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2008B",
+          "index": "B",
+          "slot": "B",
+          "title": "Square or Not",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2008/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/133509",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定一个由漂亮二进制矩阵按行拼接得到的字符串；矩阵边界全为 $1$、内部为 $0$。判断是否存在一个行数等于列数的漂亮方阵，按同样顺序拼接后恰好得到该字符串。",
+          "transformedStatement": "把字符串看作某个矩阵的按行展开：若有 $0$，首个 $0$ 的位置确定矩阵宽度，从而只需检查总长度是否为该宽度的平方；全 $1$ 时单独判断长度 $4$。",
+          "keyObservations": [
+            "若字符串全为 $1$，原矩阵的某个维度必不超过 $2$；在长度至少为 $2$ 的前提下，只有长度为 $4$ 时能对应所需的 $2\\times2$ 方阵。",
+            "若存在 $0$，其在展平字符串中的第一个位置（按 $0$ 开始编号）必为矩阵边长加 $1$，因为第一行和第一列全是 $1$；因此可由该位置唯一确定候选边长。",
+            "候选边长确定后，只需判断字符串长度是否等于该边长的平方；题目保证字符串确实来自某个漂亮矩阵，所以无需再逐格验证。"
+          ],
+          "solutionBrief": "先处理全为 $1$ 的特殊情况：仅当长度为 $4$ 时回答 Yes。否则找到第一个 $0$ 的 $0$-based 位置 $p$，候选边长为 $p-1$；若 $n=(p-1)^2$ 则回答 Yes，否则回答 No。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2008C",
+          "index": "C",
+          "slot": "C",
+          "title": "Longest Good Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2008/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/133509",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "给定区间 $[l,r]$，要构造一个所有元素都在区间内的数组。数组元素严格递增，且相邻差也必须严格递增，求这种数组的最大长度。",
+          "transformedStatement": "将数组转化为递增的正整数差序列。为最大化长度，差从 $1$ 开始每次增加 $1$，于是第 $i$ 个位置的最小值为 $l+\\frac{i(i+1)}{2}$，只需寻找仍不超过 $r$ 的最大位置。",
+          "keyObservations": [
+            "为了在固定上界下尽可能延长数组，首项取 $l$、首个差取 $1$，之后每个差依次增加 $1$；任何更大的选择都会更早消耗可用区间。",
+            "按上述最小增长构造，第 $i$ 个增量位置的元素为 $l+\\frac{i(i+1)}{2}$，因此长度问题转化为三角数不超过 $r-l$。",
+            "若构造序列已有更短长度，任意更长的合法序列都能在首次变大的位置后提供足够大的末项差，从而可接到当前构造后，形成矛盾。",
+            "最大长度等于满足 $l+\\frac{x(x+1)}{2}\\le r$ 的最大 $x$ 加一；这个单调条件可用二分、公式或逐步枚举求解。"
+          ],
+          "solutionBrief": "令首项为 $l$，相邻差依次取 $1,2,3,\\ldots$，得到第 $i$ 个位置为 $l+\\frac{i(i+1)}{2}$。求满足该值不超过 $r$ 的最大 $x$，答案为 $x+1$，可用二分、公式或枚举计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2008D",
+          "index": "D",
+          "slot": "D",
+          "title": "Sakurako's Hobby",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2008/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/133509",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "dsu",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "给定一个置换 $p$ 和二进制串 $s$，从位置 $i$ 出发可以反复把当前位置替换为 $p_i$；若 $s_i=0$，则数值 $p_i$ 为黑色，否则为白色。对每个起点 $i$，求反复跳转能够到达的所有数值中黑色数目的 $F(i)$。",
+          "transformedStatement": "把置换看成有向图，每个位置有唯一出边 $i\\to p_i$，因此图由若干独立环组成；问题转化为统计每个环中的黑色元素数，并把该计数赋给环内所有起点。",
+          "keyObservations": [
+            "由于 $p$ 是置换，映射 $i\\to p_i$ 会把所有位置划分成互不相交的环；从同一环出发反复跳转能够到达该环的全部元素，且无法到达其他环。",
+            "同一环内任意起点的可达集合完全相同，因此该环中的所有 $F(i)$ 都等于环内黑色元素数量；遍历环时统计对应的 $s_i=0$ 即可一次为整环赋值。"
+          ],
+          "solutionBrief": "遍历置换的每个未访问环，收集环上所有位置并统计其中 $s_i=0$ 的数量。将这个数量写入环内每个位置的答案；每个位置只访问一次，总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2008E",
+          "index": "E",
+          "slot": "E",
+          "title": "Alternating String",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2008/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/133509",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个小写字符串，要求使其变成偶数长度，且所有奇数位置字符相同、所有偶数位置字符相同。每次可修改任意一个字符，另可至多删除一个字符，求达到目标所需的最少操作数。",
+          "transformedStatement": "将目标字符串拆成奇数位和偶数位两个独立组：固定保留的字符位置后，每组统一成出现次数最多的字母。奇数长度时枚举删除点，并用删除后右侧位置 parity 翻转的计数模型重新计算两组频次。",
+          "keyObservations": [
+            "当字符串长度为偶数时不能删除字符，否则长度变奇数；因此只需独立统计奇数位和偶数位，分别保留出现次数最多的字母。",
+            "当字符串长度为奇数时必须删除一个字符；删除位置 $i$ 后，$i$ 后面的字符整体换 parity，因此删除后的每种字母计数可由前缀原 parity 与后缀相反 parity 合并得到。",
+            "固定删除位置后，剩余字符串的最优修改次数等于总长度减去奇数位和偶数位的最大频次之和，所以可以逐个位置计算并取最小值。"
+          ],
+          "solutionBrief": "偶数长度直接统计两种位置上的字母频次并计算修改数；奇数长度枚举唯一删除位置，用前缀、后缀频次数组处理删除后的 parity 变化，再计算该位置的最优修改数并取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2008F",
+          "index": "F",
+          "slot": "F",
+          "title": "Sakurako's Box",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2008/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/133509",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n$ 个带值的球，朋友等概率随机选出两个不同的球（即使数值相同也按不同球区分），收益是两球数值的乘积。求所有可能选择的乘积期望，并将其表示为 $P/Q$ 后输出 $P\\cdot Q^{-1}\\bmod 10^9+7$。",
+          "transformedStatement": "将随机过程转化为计算所有无序不同下标对的乘积总和，再除以组合数 $C(n,2)$；其中总和用 $(\\sum a_i)^2-\\sum a_i^2$ 的恒等式快速求出。",
+          "keyObservations": [
+            "所有不同下标的球对等概率出现，因此期望值等于全部两两乘积之和除以球对数量 $n(n-1)/2$。",
+            "两两乘积之和可由恒等式 $(\\sum a_i)^2-\\sum a_i^2$ 得到，再除以 $2$，避免枚举所有球对。",
+            "模 $10^9+7$ 下的除法统一改为乘以模逆元，因此分母和最终平均值都可直接进行模运算。"
+          ],
+          "solutionBrief": "先计算数组总和 $S$ 与平方和 $T$，得到所有不同元素对的乘积和为 $(S^2-T)/2$；再乘以 $n(n-1)/2$ 的模逆元，输出结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2008G",
+          "index": "G",
+          "slot": "G",
+          "title": "Sakurako's Task",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2008/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/133509",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定含 $n$ 个正整数的数组，可反复选择 $i\\ne j$ 且 $a_i\\ge a_j$，把 $a_i$ 改为 $a_i-a_j$ 或 $a_i+a_j$。求任意操作后数组的第 $k$ 个缺失非负整数的最大值。",
+          "transformedStatement": "当 $n>1$ 时把问题转化为最大公约数格点上的缺失数问题：设全数组最大公约数为 $g$，只需考察连续集合 $0,g,2g,\\dots,(n-1)g$ 的间隔；$n=1$ 则保持原数组。",
+          "keyObservations": [
+            "当 $n=1$ 时没有可执行操作，数组始终不变，因此第 $k$ 个缺失的非负整数可直接由唯一元素的位置确定。",
+            "当 $n>1$ 时，所有元素始终是初始数组最大公约数 $g$ 的倍数；题解指出可将数组优化为 $0,g,2g,\u0018dots,(n-1)g$，从而只需研究这组规则间隔的数。",
+            "在相邻两个已出现数 $x,y$ 之间，缺失数恰有 $y-x-1$ 个；逐段扣除这些缺失数，首次覆盖第 $k$ 个缺失数的区间即可直接定位答案。"
+          ],
+          "solutionBrief": "若 $n=1$，数组不能改变，按唯一元素判断第 $k$ 个缺失数。否则求全体元素的最大公约数 $g$，将最优数组视为 $0,g,\\dots,(n-1)g$，扫描相邻数之间的缺口并定位第 $k$ 个缺失值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2008H",
+          "index": "H",
+          "slot": "H",
+          "title": "Sakurako's Test",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/2008/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/133509",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定数组和多个查询值 $x$。每次操作可任选一个不小于 $x$ 的元素并将其减去 $x$，操作任意次后，求数组能达到的最小中位数；需要回答每个查询。",
+          "transformedStatement": "固定 $x$ 后，所有元素独立地被减到小于 $x$，所以最终数组唯一对应为 $(a_i\\bmod x)$。问题转为求这些模值的上中位数，并通过统计各区间 $[kx,kx+m]$ 判断候选答案是否可行。",
+          "keyObservations": [
+            "任意元素都可以反复减去 $x$，且减小元素不会使中位数变大，因此最优结果必然是把每个 $a_i$ 化为 $a_i\\bmod x$。",
+            "判断模后有多少元素不超过 $m$，等价于统计原数组落在所有区间 $[kx,kx+m]$ 中的元素数量。",
+            "由于 $a_i\\le n$，固定 $x$ 时只需枚举 $k< n/x$；配合频次数组前缀和可在 $O((n/x)\\log n)$ 内检查一个候选中位数。",
+            "模后中位数具有单调判定性质：随着 $m$ 增大，不超过 $m$ 的元素数不会减少，因此可二分最小的可行 $m$，并预处理所有 $x$ 的答案。"
+          ],
+          "solutionBrief": "对每个 $x$，先将所有元素的最终值视为 $a_i\\bmod x$。用频次数组前缀和统计区间 $[kx,kx+m]$ 中的元素，二分满足至少 $\floor(n/2)+1$ 个模值不超过 $m$ 的最小值；枚举全部 $x$ 的总复杂度为 $O(n\\log^2 n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
