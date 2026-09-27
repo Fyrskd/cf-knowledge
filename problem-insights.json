@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2175,
+    "total_problems": 2183,
     "source_total_problems": 2183,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2175,
-    "with_editorial_brief": 1922,
-    "with_solution_brief": 1923,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2183,
+    "with_editorial_brief": 1930,
+    "with_solution_brief": 1931,
     "missing_editorial_brief": 252,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1115,
+    "ai_override_count": 1124,
     "primary_topic_count": 13
   },
   "records": [
@@ -42364,6 +42364,84 @@
       "manual_override": true
     },
     {
+      "ordinal": 1040,
+      "problem_key": "2065A",
+      "contest_id": 2065,
+      "title": "Skibidus and Amog'u",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2065/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/139178",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "strings"
+      ],
+      "statement_brief": "给定若干个以 `us` 结尾的阿莫格语单数名词。单数由词根加 `us` 构成，复数由同一词根加 `i` 构成；请将每个单数形式转换并输出对应复数形式。",
+      "transformed_statement": "把问题视为固定后缀替换：输入串可写成词根加 `us`，目标就是保留词根、删除最后两个字符，再追加 `i`。",
+      "key_observations": [
+        "题目保证输入串以固定后缀 `us` 结尾，因此复数转换只需删除末尾两个字符，避免对词根进行额外判断。",
+        "单数和复数共享同一词根，后缀分别为 `us` 与 `i`，所以将后缀替换为 `i` 就能直接得到唯一答案。"
+      ],
+      "solution_brief": "对每个单数形式字符串删除末尾的 `us`，再拼接字符 `i` 并输出。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:28:48+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1041,
+      "problem_key": "2065B",
+      "contest_id": 2065,
+      "title": "Skibidus and Ohio",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2065/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/139178",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [],
+      "original_tags": [
+        "strings"
+      ],
+      "statement_brief": "给定一个小写字母串。每次可选择一对相邻且相等的字符，把前一个改成任意小写字母并删除后一个；可重复操作，求字符串能达到的最小长度。",
+      "transformed_statement": "问题等价于判断是否存在可启动的相邻相等字符：一旦完成第一次删除，就能通过选择合适的替换字符让下一步继续可行，最终删到一个字符；否则长度无法改变。",
+      "key_observations": [
+        "只要初始串存在相邻相等字符，就能先执行一次操作；随后把保留下来的字符改成相邻字符，使新串仍存在相邻相等字符，从而可连续操作到长度 $1$。",
+        "如果初始串没有相邻相等字符，则任何操作都无法开始，字符串始终不变，因此最小长度就是原长度 $|s|$。"
+      ],
+      "solution_brief": "扫描字符串是否存在相邻相等字符。若存在，利用操作后选择替换字符的自由度可持续删减至长度 $1$；否则无法操作，答案为 $|s|$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:28:40+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
       "ordinal": 1042,
       "problem_key": "2065C1",
       "contest_id": 2065,
@@ -42373,16 +42451,13 @@
       "editorial_url": "https://codeforces.com/blog/entry/139327",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "数据结构"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "dp",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Skibidus and Fanum Tax (easy version)；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $n$ 的数组 $a$ 和只有一个元素 $b_1$ 的数组 $b$。每个 $a_i$ 最多操作一次，将其改为 $b_1-a_i$，也可以保持不变；要求判断是否能使最终数组按非递减顺序排列。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -42390,9 +42465,271 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:28:15+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1043,
+      "problem_key": "2065C2",
+      "contest_id": 2065,
+      "title": "Skibidus and Fanum Tax (hard version)",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2065/problem/C2",
+      "editorial_url": "https://codeforces.com/blog/entry/139178",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "greedy"
+      ],
+      "statement_brief": "给定数组 $a$ 和 $b$，每个 $a_i$ 至多操作一次：可以保持不变，或任选一个 $b_j$ 将其替换为 $b_j-a_i$。判断能否通过这些独立选择，使 $a$ 最终按非递减顺序排列。",
+      "transformed_statement": "把每个位置视为从候选集合 $\\{a_i\\}\\cup\\{b_j-a_i\\}$ 中选一个值，并要求选择结果形成非递减序列；从左到右始终选不小于前值的最小候选。",
+      "key_observations": [
+        "将 $b$ 排序后，满足 $b_j-a_i\\ge prev$ 的最小 $b_j$ 会产生所有可行变换值中的最小值，因此只需二分找到它。",
+        "处理 $a_i$ 时只需比较“不变的 $a_i$”和最小可行的 $b_j-a_i$，选取不小于前值的较小者，能为后续位置留下最大可行空间。",
+        "若当前位置的两种候选值都小于前一个已选值，则无论后续如何操作都无法形成非递减序列，可以立即判定失败。"
+      ],
+      "solution_brief": "先将 $b$ 排序，从左到右维护前一个选定值。对每个 $a_i$，用二分找最小的 $b_j$ 使 $b_j-a_i\\ge prev$，再与不变值比较并选较小可行者；若无可行值则输出 NO。复杂度为 $O(n\\log m)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:27:58+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1044,
+      "problem_key": "2065D",
+      "contest_id": 2065,
+      "title": "Skibidus and Sigma",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2065/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/139178",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "给定 $n$ 个长度均为 $m$ 的数组，可以任意排列这些数组并依次拼接成一个数组。拼接后数组的得分是所有前缀和之和，要求求出所有排列中可能达到的最大得分。",
+      "transformed_statement": "把每个数组视为一个整体：其内部得分固定，而放在前面的数组会因后续元素存在而额外贡献“自身元素总和乘以后续元素个数”。因此排列问题转化为按数组总和决定先后顺序。",
+      "key_observations": [
+        "长度为 $k$ 的数组得分可改写为 $k b_1+(k-1)b_2+\\cdots+b_k$，因此每个位置的元素权重只由它后面还有多少元素决定。",
+        "对两个长度均为 $m$ 的数组 $a,b$，有 $score(a+b)=m\\cdot sum(a)+score(a)+score(b)$；交换顺序只会改变前置数组的总和贡献。",
+        "比较两数组的两种顺序可知，$a$ 放在 $b$ 前的优势为 $m\\cdot(sum(a)-sum(b))$，所以总和更大的数组必须排在前面，按总和降序排列即可保证全局最优。",
+        "数组内部的相对顺序不影响其作为整体与其他数组的排序依据，固定排列后直接按最终位置权重累加即可计算答案。"
+      ],
+      "solution_brief": "先计算每个数组的元素总和，按总和从大到小排列并拼接。利用 $score(a+b)=m\\cdot sum(a)+score(a)+score(b)$，该顺序由交换论证保证最优；答案按最终元素权重累加。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:27:40+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1045,
+      "problem_key": "2065E",
+      "contest_id": 2065,
+      "title": "Skibidus and Rizz",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/2065/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/139178",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "字符串"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "给定包含 $n$ 个 0 和 $m$ 个 1 的二进制串，要求构造长度为 $n+m$ 的字符串。对每个子串，平衡值是其中 0 和 1 数量之差的绝对值；需要让所有子串的最大平衡值恰好为 $k$，无解则输出 -1。",
+      "transformed_statement": "把目标转化为控制同一字符在字符串中的连续积累：先制造一个长度为 $k$ 的多数字符前缀以达到目标，再用交替排列消除更大的局部偏差，剩余多数字符放在末尾。可行性只由 $|n-m|\\le k\\le\\max(n,m)$ 决定。",
+      "key_observations": [
+        "整串本身的平衡值为 $|n-m|$，因此目标值必须满足 $k\\ge |n-m|$。",
+        "任意子串的平衡值不可能超过全串中数量较多字符的总数，所以必须有 $k\\le\\max(n,m)$。",
+        "不妨令 0 的数量不少于 1；先放置 $k$ 个 0，再交替放置剩余的 1 和 0，最后补完剩余的 0，可得到某个前缀平衡值恰为 $k$。",
+        "交替段限制了局部同类字符的连续积累，末尾只补多数字符，因此不会产生超过 $k$ 的子串平衡值；若 1 较多则整体翻转字符。"
+      ],
+      "solution_brief": "若 $k<|n-m|$ 或 $k>\\max(n,m)$，输出 -1。否则令数量较多的字符为主字符，先连续放 $k$ 个，再交替放置两类字符，最后补齐主字符；另一类较多时翻转字符。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:27:26+00:00",
+          "quality_flags": [
+            "editorial中对 n、m 分别代表哪类字符的文字表述略有混淆，但代码与题面构造规则一致"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1046,
+      "problem_key": "2065F",
+      "contest_id": 2065,
+      "title": "Skibidus and Slay",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2065/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/139178",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "data structures",
+        "dfs and similar",
+        "graphs",
+        "greedy",
+        "trees"
+      ],
+      "statement_brief": "给定一棵带整数标签的树。对每个可能的值 $i$，判断是否存在至少包含两个顶点的简单路径，使路径上顶点标签组成的序列中 $i$ 出现次数严格超过其他标签总数。",
+      "transformed_statement": "把路径标签二值化为“等于目标值”为 $1$、“其他值”为 $0$。问题等价于判断树中是否存在标签形如 $[k,k]$ 或 $[k,x,k]$ 的长度至少为 $2$ 的路径。",
+      "key_observations": [
+        "若一条长度至少为 2 的序列中某值占多数，则其二值化序列必含连续的 $[1,1]$ 或 $[1,0,1]$，因此无需检查更长路径。",
+        "将目标值记为 $1$、其他值记为 $0$ 后，若没有相邻的两个 $1$，多数条件会迫使序列交替排列，并必然出现 $[1,0,1]$。",
+        "树中出现 $[k,k]$ 或 $[k,x,k]$，等价于存在一条以 $k$ 为多数的非平凡路径；这只需检查每个顶点及其邻居中的标签是否有某值出现至少两次。",
+        "所有顶点邻接表的总长度为 $2(n-1)$，所以统计每个闭邻域中的标签总量是线性的。"
+      ],
+      "solution_brief": "对每个顶点统计自身及所有邻居的标签。若某值在该闭邻域中出现至少两次，就能形成同值相邻或隔一个顶点的路径，将该值标记为可行；遍历所有顶点即可在线性总邻接量内完成。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:27:09+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1047,
+      "problem_key": "2065G",
+      "contest_id": 2065,
+      "title": "Skibidus and Capping",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2065/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/139178",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定数组，需要统计所有满足 $i\\le j$ 的下标对，使 $\\operatorname{lcm}(a_i,a_j)$ 能表示为两个（可相同）质数的乘积，即为半素数。每个下标最多与自身或其他下标配对，输出满足条件的配对数量。",
+      "transformed_statement": "把每个数组值按质因子分成质数、平方半素数、两个不同质因子的半素数和无效值；利用最小公倍数为半素数的必要条件，将问题转化为几类频次数的组合求和。",
+      "key_observations": [
+        "若某个数含有超过两个素因子（按重数计），它整除的最小公倍数不可能是半素数，因此可直接忽略。",
+        "合法配对只有三类：两个不同质数、半素数与其质因子、两个相同的半素数；分类后不会重复计数。",
+        "设质数总出现次数为 $P$，每个质数 $p$ 对不同质数贡献 $cnt[p](P-cnt[p])/2$，将配对计数转为频次数学求和。",
+        "对半素数 $pq$，其与质因子贡献 $cnt[pq](cnt[p]+cnt[q])$；自身配对贡献 $cnt[pq](cnt[pq]+1)/2$，统一处理下标相同的情况。"
+      ],
+      "solution_brief": "分解每个数组值并统计质数、平方半素数及不同质因子半素数的出现次数。按三类合法配对累加：不同质数、半素数与其质因子、两个相同半素数；用筛法预处理因子可在线性对数复杂度完成。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:26:50+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1048,
+      "problem_key": "2065H",
+      "contest_id": 2065,
+      "title": "Bro Thinks He's Him",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/2065/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/139178",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "data structures",
+        "divide and conquer",
+        "dp",
+        "math",
+        "matrices"
+      ],
+      "statement_brief": "给定二进制字符串，$f(t)$ 是把字符串划分为若干个相同字符连续段所需的最少段数。每次翻转一个指定位置并保留修改，要求在每次操作后计算原串所有非空子序列的 $f$ 之和，结果对 $998244353$ 取模。",
+      "transformed_statement": "把每个非空子序列的连续段数改写为 $1+$ 相邻选中位置的字符变化数，再对每个位置对 $(i,j)$ 统计其成为子序列相邻边界的方案数；动态翻转只需维护受影响的左右边界贡献。",
+      "key_observations": [
+        "任意非空子序列的 $f$ 等于 $1$ 加上相邻选中位置中字符不同的次数，因此可把总和拆成基础项 $2^n-1$ 与每条“边界”贡献。",
+        "固定位置对 $(i,j)$ 后，只有两端被选中且中间位置全部未选中时它才成为相邻边界；前缀和后缀可任意选择，故贡献为 $2^{i-1}2^{n-j}$。",
+        "按右端点扫描时，只需维护两类前端权值 $\u0000sum 2^{i-1}$，分别对应字符 $0$ 和 $1$，即可在线性时间累加所有不同字符边界。",
+        "翻转位置 $k$ 只影响以 $k$ 为左端或右端的边界：分别查询左侧相反字符的 $2^{i-1}$ 和右侧相反字符的 $2^{n-j}$；四棵按字符分类的树支持这些区间和。"
+      ],
+      "solution_brief": "先将答案写成 $2^n-1$ 加所有不同字符边界的贡献。用四棵按字符分类的树维护 $2^{i-1}$ 与 $2^{n-i}$，翻转前删除旧位置贡献、更新字符后加入新贡献，每次查询复杂度为 $O(\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:26:31+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1049,
