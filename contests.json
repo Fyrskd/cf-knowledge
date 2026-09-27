@@ -1100,6 +1100,17 @@
     "date": "2024-03-05"
   },
   {
+    "id": 1948,
+    "name": "Educational Codeforces Round 163 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1710513300,
+    "relativeTimeSeconds": 79980321,
+    "date": "2024-03-15"
+  },
+  {
     "id": 1943,
     "name": "Codeforces Round 934 (Div. 1)",
     "type": "CF",
