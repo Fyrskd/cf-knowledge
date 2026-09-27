@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2142,
+    "total_problems": 2148,
     "source_total_problems": 2148,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2142,
-    "with_editorial_brief": 1890,
-    "with_solution_brief": 1891,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2148,
+    "with_editorial_brief": 1896,
+    "with_solution_brief": 1897,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1083,
+    "ai_override_count": 1089,
     "primary_topic_count": 13
   },
   "records": [
@@ -44015,6 +44015,254 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 1083,
+      "problem_key": "2075A",
+      "contest_id": 2075,
+      "title": "В ноль",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2075/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/140781",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定整数 $n$ 和奇数 $k$，每次选择 $1$ 到 $k$ 的整数 $x$ 从当前数中减去；若当前数为偶数，$x$ 必须为偶数，若当前数为奇数，$x$ 必须为奇数。求把 $n$ 减到 $0$ 所需的最少操作次数。",
+      "transformed_statement": "操作可分为两个阶段：若初始 $n$ 为奇数，先用一次奇数减法将其变为偶数；之后每次都从剩余量中尽量扣除最大合法偶数 $k-1$，问题转化为计算剩余量被 $k-1$ 覆盖所需的块数。",
+      "key_observations": [
+        "奇数状态只能减奇数，偶数状态只能减偶数，因此任意一次操作后数值都会变成偶数；奇数 $n$ 只需先处理一次，之后始终处于偶数状态。",
+        "在偶数状态下可选的最大减数是 $k-1$，每次尽量减去它不会增加操作数；最后不足一整块时用更小的合法偶数完成。",
+        "偶数 $n$ 的答案是把 $n$ 分成容量为 $k-1$ 的若干块，即 $\\\\lceil n/(k-1)\\\\rceil$；奇数 $n$ 先减去 $k$，答案为 $1+\\\\lceil(n-k)/(k-1)\\\\rceil$。"
+      ],
+      "solution_brief": "若 $n$ 为奇数，先减去最大奇数 $k$ 使其变为偶数，并计入一次操作；随后每次最多减去偶数 $k-1$，剩余不足时最后一次调整。因此答案分别为 $\\\\lceil n/(k-1)\\\\rceil$（$n$ 偶）和 $1+\\\\lceil(n-k)/(k-1)\\\\rceil$（$n$ 奇）。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:04:07+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1084,
+      "problem_key": "2075B",
+      "contest_id": 2075,
+      "title": "Перекрашивание массива",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2075/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/140781",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy"
+      ],
+      "statement_brief": "给定全为红色的数组，先任选恰好 $k$ 个元素染蓝；之后每次只能把与蓝色元素相邻的红色元素染蓝，直到全部变蓝。费用是最初选中的 $k$ 个元素之和加上最后染蓝元素的值，求最大费用。",
+      "transformed_statement": "把问题看成选择计入费用的 $k+1$ 个元素，并安排其中一个作为最后染蓝者：$k\\ge2$ 时通过位置交替构造实现最大的 $k+1$ 个值；$k=1$ 时最后元素只能固定在某个端点。",
+      "key_observations": [
+        "费用只包含最初选中的 $k$ 个元素和最后染蓝的元素，因此答案至多是数组中最大的 $k+1$ 个数之和。",
+        "当 $k\\ge2$ 时，在按位置排列的 $k+1$ 个最大元素中交替选取初始蓝点，可让其中一个内部元素最后染蓝，从而达到上界。",
+        "当 $k=1$ 时，最后染蓝的元素必为数组首端或尾端；分别固定尾端或首端后，初始元素取其余位置最大值即可。"
+      ],
+      "solution_brief": "当 $k\\ge2$ 时答案是最大的 $k+1$ 个元素之和。$k=1$ 时比较 $a_n+\\max_{i<n}a_i$ 与 $a_1+\\max_{i>1}a_i$，取较大值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:03:50+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1085,
+      "problem_key": "2075C",
+      "contest_id": 2075,
+      "title": "Два цвета",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/2075/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/140781",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "binary search",
+        "combinatorics",
+        "math"
+      ],
+      "statement_brief": "有 $n$ 块排成一行的木板和 $m$ 种油漆，第 $i$ 种最多能涂 $a_i$ 块。必须恰好使用两种不同颜色，且每种颜色的木板连续成一段；求所有不同涂色方案数。",
+      "transformed_statement": "把方案重述为选择分界点 $k$，分别为长度为 $k$ 和 $n-k$ 的两段选择不同颜色；对每个 $k$ 统计两段的可用颜色配对数并扣除同色配对。",
+      "key_observations": [
+        "任意合法涂法都唯一对应一个分界点 $k$：前 $k$ 块使用一种颜色，后 $n-k$ 块使用另一种颜色，因此只需枚举 $1\\le k<n$。",
+        "对固定 $k$，第一段可选颜色数为满足 $a_i\\ge k$ 的数量 $x$，第二段可选颜色数为满足 $a_i\\ge n-k$ 的数量 $y$；排序后可用二分统计这两个数量。",
+        "直接计算的 $x\\cdot y$ 包含两段使用同一种颜色的情况，而同时满足两个容量条件的颜色数为 $\\min(x,y)$，所以该分界点的贡献是 $x\\cdot y-\\min(x,y)$。"
+      ],
+      "solution_brief": "将涂法按分界点 $k$ 枚举。排序容量数组，用二分统计能覆盖长度 $k$ 与 $n-k$ 的颜色数 $x,y$，累加 $x\\cdot y-\\min(x,y)$，排除两段同色的情况。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:03:31+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1086,
+      "problem_key": "2075D",
+      "contest_id": 2075,
+      "title": "Уравнивание",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/2075/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/140781",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "dp",
+        "graphs",
+        "math"
+      ],
+      "statement_brief": "给定两个非负整数 $x,y$。每次选择一个尚未使用的正整数 $k$，将 $x$ 或 $y$ 替换为其除以 $2^k$ 的向下取整，并支付 $2^k$；求经过任意次操作后使两数相等的最小总费用。",
+      "transformed_statement": "把所有操作按指数合并：分配给 $x$ 的指数总和为 $i$，分配给 $y$ 的总和为 $j$，目标变为在每个指数至多归属一方的前提下，寻找满足 $\frac{x}{2^i}$ 与 $\frac{y}{2^j}$ 向下取整相等的最低划分费用。",
+      "key_observations": [
+        "连续进行除以 $2^a$ 和除以 $2^b$ 等价于一次除以 $2^{a+b}$，因此每个数只需关注分配到的指数总和。",
+        "每个指数 $k$ 只有分配给 $x$、分配给 $y$ 或不使用三种去向，原本的操作顺序由此转化为指数集合的划分。",
+        "令 $dp_{k,i,j}$ 表示处理指数 $1..k$ 后，分别给 $x,y$ 的指数和为 $i,j$ 时的最小费用，三种去向直接对应状态转移并保证每个指数至多使用一次。",
+        "预处理所有指数划分后，只需枚举满足 $\frac{x}{2^i}$ 向下取整等于 $\frac{y}{2^j}$ 向下取整的 $(i,j)$，取对应 DP 值的最小值。"
+      ],
+      "solution_brief": "预处理指数 $1$ 到 $60$ 的三分划分 DP：每个指数可给 $x$、给 $y$ 或舍弃，代价为 $2^k$。对每组输入枚举总指数 $(i,j)$，筛选两数右移后相等的状态并取最小费用。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:03:19+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1087,
+      "problem_key": "2075E",
+      "contest_id": 2075,
+      "title": "XOR-матрица",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/2075/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/140781",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数论与同余",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "combinatorics",
+        "dp",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定长度分别为 $n,m$ 的数组 $a,b$，其中元素取值范围为 $[0,A]$ 与 $[0,B]$，定义 $X_{i,j}=a_i\\oplus b_j$。要求统计所有有序数组对中，矩阵 $X$ 的不同元素数不超过 $2$ 的数量，并对 $998244353$ 取模。",
+      "transformed_statement": "若任一数组有至少三个不同值则必然不合法，所以只需按两数组各含一个或两个值分类。两数组均含两个值时，条件化为两组值的 XOR 差相同，再用数位 DP 统计满足范围和大小关系的值四元组。",
+      "key_observations": [
+        "若数组 $a$ 或 $b$ 含至少三个不同值，固定另一数组中的任意元素即可在矩阵中得到至少三个不同值，因此两数组都至多含两个不同值。",
+        "按两数组的不同值个数分别为 $(1,1)$、$(1,2)$、$(2,1)$、$(2,2)$ 分情况计数；两值数组的位置分配分别贡献 $2^n-2$ 或 $2^m-2$。",
+        "当两数组都含两个值时，设较大值为 $a_1,b_1$、较小值为 $a_2,b_2$，矩阵至多两值等价于 $a_1\\oplus a_2=b_1\\oplus b_2$，也等价于交叉 XOR 结果相等。",
+        "令 $x=a_1\\oplus a_2=b_1\\oplus b_2$，只需统计满足 $a_1\\oplus x<a_1\\le A$ 和 $b_1\\oplus x<b_1\\le B$ 的三元组；逐位从高到低维护两个上界标志及 $x$ 是否非零即可完成数位 DP。"
+      ],
+      "solution_brief": "将答案拆成四类：两数组各单值、恰有一数组双值、两数组均双值。前几类直接组合计数；最后统计满足 XOR 差相等的四元组，用高位到低位的三维数位 DP，并乘位置分配数，结果取模。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:02:58+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1088,
+      "problem_key": "2075F",
+      "contest_id": 2075,
+      "title": "Красивая последовательность возвращается",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/2075/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/140781",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "data structures",
+        "implementation"
+      ],
+      "statement_brief": "给定数组，可删除任意元素但保持剩余元素顺序，要求所得子序列中除首元素外每个元素左侧都有更小值，除末元素外每个元素右侧都有更大值。求最长此类子序列的长度。",
+      "transformed_statement": "将 $a_i$ 看作平面点 $(i,a_i)$，把子序列转化为选定左下角和右上角后，统计两角之间严格位于矩形内部的点；再只保留可作为左下角的前缀最小点和可作为右上角的后缀最大点。",
+      "key_observations": [
+        "美丽序列等价于首元素是唯一最小值、末元素是唯一最大值，内部元素只需严格位于两者之间。",
+        "若位置 $i$ 左侧存在不大于 $a_i$ 的元素，则用该更早位置作起点不会更差，因此只需考虑前缀最小值位置。",
+        "前缀最小值的位置递增且数值递减；对每个点，可行起点在其中形成连续区间，两个端点可用二分确定。",
+        "从右向左枚举后缀最大值作为终点，点的加入或移除都对应对其可行起点区间加减 $1$，用线段树维护区间最大值即可。"
+      ],
+      "solution_brief": "把数组元素映射为平面点，只保留前缀最小值作起点、后缀最大值作终点。按终点从右向左扫描，用二分求每个点对应的起点区间，并在线段树上区间加减及查询最大值，复杂度为 $O(n\\\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T03:02:40+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1089,
