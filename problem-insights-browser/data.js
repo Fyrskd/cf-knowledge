@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2790,
+    "total_problems": 2797,
     "source_total_problems": 2797,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2790,
-    "with_editorial_brief": 2528,
-    "with_solution_brief": 2529,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2797,
+    "with_editorial_brief": 2535,
+    "with_solution_brief": 2536,
     "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1852,
+    "ai_override_count": 1859,
     "primary_topic_count": 13,
-    "contest_count": 425,
+    "contest_count": 426,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,8 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 874,
-    "基础实现与模拟": 164,
+    "基础实现与模拟": 166,
+    "构造与贪心": 878,
+    "博弈": 94,
     "组合计数与概率": 216,
     "图论与网络流": 171,
     "数论与同余": 303,
@@ -55,11 +56,10 @@ window.CF_INSIGHTS_DATA = {
     "动态规划与状态设计": 237,
     "几何": 68,
     "树结构": 145,
-    "交互": 88,
-    "博弈": 93
+    "交互": 88
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1582,
+    "ai_generated_with_editorial": 1589,
     "ai_generated_partial_editorial": 55,
     "missing_editorial": 261,
     "manual_override": 891,
@@ -86404,6 +86404,213 @@ window.CF_INSIGHTS_DATA = {
             "在这棵扩展树上，任意两点路径的权值和可用根到点前缀和与 LCA 表示为 $dp[u]+dp[v]-2dp[lca(u,v)]+val[lca(u,v)]$，从而统一处理路径经过分量的情况。"
           ],
           "solutionBrief": "先用 DFS 求双连通分量及其内部边数，构造原点与分量虚点组成的树；预处理根路径权值和及 LCA，每次查询用两点前缀和减去两倍 LCA 前缀和，并补上 LCA 点权。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1772,
+      "name": "Codeforces Round 839 (Div. 3)",
+      "date": "2022-12-18",
+      "url": "https://codeforces.com/contest/1772",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1772A",
+          "index": "A",
+          "slot": "A",
+          "title": "A+B?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1772/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/110313",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定若干个形如 `a+b` 的字符串，其中 `a`、`b` 都是 0 到 9 的一位整数且不含空格。对每个表达式计算两个数字的和并输出结果。",
+          "transformedStatement": "将每个表达式视为固定长度的字符数组：第一个字符和最后一个字符是待求和的数字，中间的 `+` 无需处理，因此问题退化为两次字符转数字和一次加法。",
+          "keyObservations": [
+            "表达式长度固定为 3，首字符和末字符分别就是两个数字，因此无需真正解析运算符。",
+            "字符转数字可通过减去字符 `0` 的编码实现，再将两个数字相加，避免依赖代码求值功能。"
+          ],
+          "solutionBrief": "逐组读取长度为 3 的表达式，取首、末字符转换为数字并求和输出；字符转数字可用减去 `0` 的编码实现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1772B",
+          "index": "B",
+          "slot": "B",
+          "title": "Matrix Rotation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1772/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/110313",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "给定一个四个元素互不相同的 $2\\times2$ 矩阵，每次可以将矩阵顺时针旋转 $90$ 度，且可旋转任意次（包括不旋转）。判断是否能把它变成美丽矩阵，并输出 YES 或 NO。",
+          "transformedStatement": "不必枚举四种旋转，把目标转化为判断最小值和最大值是否位于一对对角角落；若是，旋转即可将它们分别调整到美丽矩阵要求的位置。",
+          "keyObservations": [
+            "美丽矩阵等价于四个数的最小值和最大值位于一对对角角落；另外两个数自然夹在二者之间，因此满足递增条件。",
+            "顺时针旋转只会让两对角线角落互换位置，最小值与最大值是否处于对角位置这一性质不变。",
+            "将四个元素按行展开后，对角角落对应下标对 $(0,3)$ 或 $(1,2)$，因此只需检查最小值和最大值下标之和是否为 $3$。"
+          ],
+          "solutionBrief": "读入四个数并记录最小值、最大值的位置。若它们位于对角角落，即位置和为 $3$，就能通过旋转将最小值放到左上、最大值放到右下，输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1772C",
+          "index": "C",
+          "slot": "C",
+          "title": "Different Differences",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1772/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/110313",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $k,n$，要构造一个由 $1$ 到 $n$ 内数组成的严格递增数组。数组的特征值是相邻元素差值中不同数的个数，要求最大化该特征值，并输出任意一个最优数组。",
+          "transformedStatement": "将数组表示为长度为 $k-1$ 的正整数差数组，其总和必须不超过 $n-1$；目标转化为在此总和限制下最大化差数组中的不同元素数量。",
+          "keyObservations": [
+            "把原数组改写为相邻差数组 $d_i=a_{i+1}-a_i$ 后，只需保证差值为正整数且总和不超过 $n-1$，因为从 $1$ 开始累加即可得到合法数组。",
+            "若差数组需要恰好包含 $f$ 种不同数，其最小总和由差值 $1,2,\\\\dots,f$ 各出现一次、其余位置全部填 $1$ 得到；重复使用最小差值 $1$ 不会增加总和。",
+            "因此只要满足 $\\\\frac{f(f+1)}{2}+(k-1-f)\\\\le n-1$，就能实现 $f$ 种差值；枚举并取最大的可行 $f$，再累加构造原数组即可。"
+          ],
+          "solutionBrief": "枚举不同差值的数量 $f$，用差值 $1,2,\\\\dots,f$ 各出现一次、剩余位置填 $1$ 的最小和判定可行性。取最大的可行 $f$，从 $1$ 开始依次累加这些差值输出数组。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1772D",
+          "index": "D",
+          "slot": "D",
+          "title": "Absolute Sorting",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1772/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/110313",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定整数数组，选择一个 $x$，并将每个元素统一替换为 $|a_i-x|$，操作恰好进行一次。要求找出任意使新数组非递减的 $x$（$0\\le x\\le10^9$），若不存在则输出 $-1$。",
+          "transformedStatement": "把新数组有序改写为所有相邻位置满足 $|a_i-x|\\le|a_{i+1}-x|$，每一对相邻元素分别给出关于 $x$ 的上界或下界，答案就是这些区间约束的交集。",
+          "keyObservations": [
+            "最终数组有序等价于每个相邻对都满足 $|a_i-x|\\le |a_{i+1}-x|$，因此可把全局问题拆成相邻不等式并求其交集。",
+            "若 $a_i<a_{i+1}$，该相邻对要求 $x\\le\\left\\lfloor\\frac{a_i+a_{i+1}}2\\right\\rfloor$；所有这类约束只需取最小上界。",
+            "若 $a_i>a_{i+1}$，该相邻对要求 $x\\ge\\left\\lceil\\frac{a_i+a_{i+1}}2\\right\\rceil$；所有这类约束只需取最大下界，相等元素不产生限制。",
+            "将所有上下界合并后，若下界不超过上界，区间内任取整数均可；否则不存在合法的 $x$。"
+          ],
+          "solutionBrief": "线性扫描相邻元素。对上升对更新 $x$ 的最小上界，对下降对更新最大下界，相等对跳过；若最终下界超过上界输出 $-1$，否则输出任意区间内整数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1772E",
+          "index": "E",
+          "slot": "E",
+          "title": "Permutation Game",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1772/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/110313",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [],
+          "originalTags": [
+            "games"
+          ],
+          "statementBrief": "给定一个既非升序也非降序的排列，所有元素初始为红色，双方轮流按规则染蓝或重排蓝色元素。第一方希望将排列变为升序，第二方希望变为降序，若双方长期都无法获胜则判为平局；要求判断最优策略下的结果。",
+          "transformedStatement": "将重排蓝色元素视为：只有被染蓝的位置才能被调整，而未染蓝的位置必须保持原值。分别统计升序目标和降序目标所需的专属元素及公共元素，再比较双方完成染色所需的回合数。",
+          "keyObservations": [
+            "把升序目标中当前位置不正确的元素视为第一方必须染蓝的元素，把降序目标中不正确的元素视为第二方必须染蓝的元素；两者的交集需要双方共同争取。",
+            "设仅第一方需要的数量为 $a$，仅第二方需要的数量为 $b$，双方都需要的数量为 $c$，则第一方必须在第二方完成其专属元素前染完 $a+c$ 个元素。",
+            "第一方先手，因此其获胜条件为 $a+c\\le b$；第二方后手少一次行动，获胜条件严格为 $b+c<a$。",
+            "若上述两个条件都不成立，双方都无法在对手获胜前完成目标，最优结果只能是平局。"
+          ],
+          "solutionBrief": "统计升序和降序目标分别需要染蓝的位置，并按仅第一方需要、仅第二方需要、双方都需要分类为 $a,b,c$。若 $a+c\\le b$ 输出 First；否则若 $b+c<a$ 输出 Second；否则输出 Tie。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1772F",
+          "index": "F",
+          "slot": "F",
+          "title": "Copy of a Copy of a Copy",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1772/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/110313",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一张初始黑白图片以及经过若干次操作得到的 $k$ 张副本，但 $k+1$ 张图片的顺序被打乱。操作可按规则重染合法格子并生成副本，要求找出初始图片及一组能按顺序生成全部副本的操作。",
+          "transformedStatement": "把每张图片视为一个状态，并以当前仍可重染的格子数作为状态层级；真实操作只会让层级下降，相邻状态之间则由所有不同位置的独立重染构成。",
+          "keyObservations": [
+            "对每张图片统计当前可重染的格子数；一次重染会使该格子及其相邻格子失去可操作性，因此这个数量沿真实过程严格下降。",
+            "按可重染格子数从大到小排序即可恢复图片顺序；若两个数量相同，题解指出两张图片必然相同，所以并列顺序不影响答案。",
+            "相邻图片的不同格子中不可能存在相邻的一对，否则其中一个格子无法满足重染条件；因此这些格子可以按任意顺序独立重染。"
+          ],
+          "solutionBrief": "统计每张图当前合法重染位置数并降序排列，以此确定初始图和后续顺序；对相邻图片，依次重染所有不同格子即可生成下一张图。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1772G",
+          "index": "G",
+          "slot": "G",
+          "title": "Gaining Rating",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1772/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/110313",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "implementation",
+            "math",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 名评分固定的对手，初始评分为 $x$；每次只能选择当前对局次数最少的对手，评分不低于对手则获胜并加 $1$，否则减 $1$。求达到 $y$ 所需的最少对局数，无法达到则输出 $-1$。",
+          "transformedStatement": "把对局序列重述为若干轮：每轮恰好与所有对手各比赛一次，轮内顺序可优化为按评分升序。于是每轮先连续获胜一个前缀，再连续输掉其余对手，只需追踪当前评分和该前缀长度。",
+          "keyObservations": [
+            "公平规则等价于按轮次循环对手；交换相邻的逆序对不会减少本轮胜场，因此每轮按对手评分升序进行最优。",
+            "按升序对手排列时，一轮中获胜者必然构成前缀；预处理每个前缀的最低起始评分 $t_i$，即可用第一个 $t_i>x$ 定位本轮胜场数。",
+            "固定胜场数 $p$ 时，每轮评分净变化为 $2p-n$；若未立即达标且该值不为正，后续胜场数不会增加，因而必定无法达标。",
+            "当净变化为正时，可批量跳过相同的若干轮，直到达到目标评分或起始评分触及下一胜场阈值；每次跳过后 $p$ 增大，最多处理 $n$ 个阶段。"
+          ],
+          "solutionBrief": "将对手排序后按升序循环。预处理前缀胜利所需的阈值，用 upper_bound 求当前每轮胜场数；对净增益为正的相同轮次按两个上界批量跳过，直到达标或胜场数增加，否则返回 -1。总复杂度为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
