@@ -1540,6 +1540,17 @@
     "date": "2024-10-13"
   },
   {
+    "id": 2025,
+    "name": "Educational Codeforces Round 170 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1728916500,
+    "relativeTimeSeconds": 61566460,
+    "date": "2024-10-14"
+  },
+  {
     "id": 2030,
     "name": "Codeforces Round 979 (Div. 2)",
     "type": "CF",
