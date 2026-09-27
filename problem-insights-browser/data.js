@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2300,
+    "total_problems": 2308,
     "source_total_problems": 2308,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2300,
-    "with_editorial_brief": 2039,
-    "with_solution_brief": 2040,
-    "missing_editorial_brief": 260,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2308,
+    "with_editorial_brief": 2046,
+    "with_solution_brief": 2047,
+    "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1241,
+    "ai_override_count": 1249,
     "primary_topic_count": 13,
-    "contest_count": 355,
+    "contest_count": 356,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 105,
-    "构造与贪心": 759,
+    "字符串": 106,
+    "构造与贪心": 760,
     "图论与网络流": 136,
     "动态规划与状态设计": 209,
-    "数论与同余": 240,
-    "组合计数与概率": 171,
+    "数论与同余": 241,
+    "组合计数与概率": 172,
     "数据结构": 206,
     "几何": 52,
     "树结构": 136,
     "代数、矩阵与多项式": 19,
-    "交互": 80,
-    "基础实现与模拟": 109,
+    "交互": 82,
+    "基础实现与模拟": 111,
     "博弈": 78
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1103,
+    "ai_generated_with_editorial": 1110,
     "ai_generated_partial_editorial": 45,
-    "missing_editorial": 260,
+    "missing_editorial": 261,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -48195,6 +48195,231 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "根据题解提示，为每个元素求其可作为最后元素的最小前缀端点 $L_j$，并预处理各位置向右的最远可达范围以得到 $R_j$；随后利用区间 $[L_j,R_j]$ 统计题目要求的 $f(i)$。但给定题解未说明具体 Solve 实现及最终统计细节。",
           "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "partial"
+        }
+      ]
+    },
+    {
+      "id": 1999,
+      "name": "Codeforces Round 964 (Div. 4)",
+      "date": "2024-08-06",
+      "url": "https://codeforces.com/contest/1999",
+      "type": "Div. 4",
+      "problemCount": 8,
+      "maxRating": 1700,
+      "problems": [
+        {
+          "key": "1999A",
+          "index": "A",
+          "slot": "A",
+          "title": "A+B Again?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1999/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/132373",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定 $t$ 个两位正整数。对每个数，只需取出它的十位和个位并求和，输出每个数的数位和。",
+          "transformedStatement": "把每个两位数拆成十位与个位两个独立贡献：数值法中分别为 $\\lfloor n/10\\rfloor$ 和 $n\\bmod 10$，问题转化为输出这两项之和。",
+          "keyObservations": [
+            "两位数的十位和个位可以直接按字符读取并相加，因此无需进行更复杂的数值处理。",
+            "若按整数处理，十位是 $\\lfloor n/10\\rfloor$，个位是 $n\\bmod 10$，两者相加恰好得到数位和。"
+          ],
+          "solutionBrief": "逐个测试用例读取两位数；可将其作为字符串，把两个字符对应的数字相加，也可计算 $\\lfloor n/10\\rfloor+n\\bmod 10$ 并输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1999B",
+          "index": "B",
+          "slot": "B",
+          "title": "Card Game",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1999/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/132373",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "双方各有两张面朝下的整数牌，进行恰好两回合；每回合双方各翻开一张尚未使用的牌，牌面较大者赢得该回合，最终赢得回合数更多者赢得整局，要求统计 Suneet 获胜的所有可能方式数。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1999C",
+          "index": "C",
+          "slot": "C",
+          "title": "Showering",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1999/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/132373",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "一天有 $m$ 分钟，已有 $n$ 个按时间顺序排列且互不重叠的忙碌区间 $(l_i,r_i)$，这些区间内不能洗澡。每次洗澡需要连续 $s$ 分钟，判断一天开始前、任务之间或最后一个任务后是否存在至少 $s$ 分钟的空闲时间。",
+          "transformedStatement": "将问题转化为检查忙碌区间划分出的所有空档：首段长度为 $l_1$，内部空档为 $l_i-r_{i-1}$，末段长度为 $m-r_n$；判断这些长度的最大值是否至少为 $s$。",
+          "keyObservations": [
+            "任务区间按时间顺序排列，因此只需检查相邻任务之间以及两端的空闲区间，不必重新排序或比较所有区间。",
+            "相邻任务 $(l_{i-1},r_{i-1})$ 与 $(l_i,r_i)$ 之间的可用时长为 $l_i-r_{i-1}$；只要该值至少为 $s$，就能安排淋浴。",
+            "一天开始前的空闲时长是 $l_1$，结束后的空闲时长是 $m-r_n$；将这两个边界空档与内部空档统一检查即可覆盖所有可能的淋浴时段。"
+          ],
+          "solutionBrief": "依次检查第一个任务前、相邻任务之间以及最后一个任务后的空档。若任一空档长度至少为 $s$，输出 YES；否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1999D",
+          "index": "D",
+          "slot": "D",
+          "title": "Slavic's Exam",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1999/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/132373",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定含小写字母和若干问号的字符串 $s$，必须把每个问号替换成小写字母，使给定字符串 $t$ 成为 $s$ 的子序列；输出任意可行结果，若不存在则输出 NO。",
+          "transformedStatement": "将问题转化为从左到右消费 $t$ 的字符：扫描 $s$ 时，匹配的固定字符或被赋值为当前目标字符的问号推进目标位置，剩余问号在目标完成后任意填充。",
+          "keyObservations": [
+            "从左到右匹配时，问号优先填成当前尚未匹配的目标字符不会损害可行性，因为更早使用该位置只会给后续匹配留下更多位置。",
+            "固定字符只有在等于当前待匹配字符时才能推进目标指针，否则应保留给后续字符；这正好对应子序列匹配的贪心过程。",
+            "当目标串已经完全匹配后，剩余问号可任意填充，因此只需判断目标指针是否最终到达末尾即可。"
+          ],
+          "solutionBrief": "用双指针从左到右扫描 $s$ 和 $t$：问号在仍有未匹配字符时填为当前 $t$ 字符，固定字符相等则推进目标指针。扫描后若 $t$ 全部匹配，输出修改后的字符串，否则输出 NO，复杂度为 $O(|s|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1999E",
+          "index": "E",
+          "slot": "E",
+          "title": "Triple Operations",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1999/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/132373",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "棋盘上有所有整数 $l$ 到 $r$。每次选两个数 $x,y$，擦除它们并写入 $3x$ 与 $\\lfloor y/3\\rfloor$；求把棋盘上所有数都变成 $0$ 所需的最少操作次数。",
+          "transformedStatement": "将数值操作改写为三进制位操作：选中的 $x$ 末尾添加一个 $0$，选中的 $y$ 删除末位。问题转化为先付出代价制造一个零，再利用零逐位消除区间内所有数。",
+          "keyObservations": [
+            "把每个数写成三进制后，乘以 $3$ 相当于末尾添加一个 $0$，整除 $3$ 相当于删除末位，因此普通操作不会改变所有数的三进制位数总量。",
+            "只有令操作中的 $x=0$ 时，添加的末尾 $0$ 不产生实际位数；所以必须先制造一个 $0$，且选择区间最小值 $l$ 可使这一步代价最低，为 $f(l)$。",
+            "得到一个 $0$ 后，可让它作为 $x$，反复对其他数执行除以 $3$，每次恰好消去一个三进制位，因此后续代价等于区间内所有 $f(i)$ 之和。",
+            "令 $f(i)=\\lfloor\\log_3 i\\rfloor+1$，答案化为 $f(l)+\\sum_{i=l}^{r}f(i)$，用前缀和即可在每组询问中快速计算。"
+          ],
+          "solutionBrief": "预处理每个 $i$ 的三进制位数 $f(i)$ 及其前缀和。每组答案为 $f(l)+\\mathrm{psum}(r)-\\mathrm{psum}(l-1)$，其中前一项用于先制造一个 $0$，其余项用于清除全部三进制位。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1999F",
+          "index": "F",
+          "slot": "F",
+          "title": "Expected Median",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1999/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/132373",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "给定一个只含 $0$ 和 $1$ 的数组，需要从中按下标选择所有长度为奇数 $k$ 的子序列；对每个子序列排序后取中位数，求所有中位数之和并对 $10^9+7$ 取模。",
+          "transformedStatement": "设数组中有 $x$ 个 $1$、$y$ 个 $0$，把每个长度为 $k$ 的子序列按其中 $1$ 的数量分类。由于中位数为二值，答案等于统计其中至少有 $\\lfloor k/2\\rfloor+1$ 个 $1$ 的选法总数。",
+          "keyObservations": [
+            "由于子序列长度 $k$ 为奇数，二进制子序列的中位数只有 $0$ 或 $1$；中位数为 $1$ 当且仅当其中至少有 $\\lfloor k/2\\rfloor+1$ 个 $1$。",
+            "只需统计中位数为 $1$ 的子序列，因为中位数为 $0$ 的子序列贡献为零，原问题转化为满足条件的子序列数量。",
+            "若子序列选取了 $i$ 个 $1$ 和 $k-i$ 个 $0$，其方案数为 $\\binom{x}{i}\\binom{y}{k-i}$；对所有 $i\\geq\\lfloor k/2\\rfloor+1$ 求和即可。",
+            "组合数可由预处理阶乘及逆阶乘计算，从而在模 $10^9+7$ 下直接累加各类选取方案。"
+          ],
+          "solutionBrief": "统计数组中的 $1$ 和 $0$ 的数量 $x,y$。枚举子序列中 $1$ 的个数 $i$，当 $i\\geq\\lfloor k/2\\rfloor+1$ 时加入 $\\binom{x}{i}\\binom{y}{k-i}$，组合数用阶乘与逆阶乘预处理后取模计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1999G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Ruler (easy version)",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1999/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/132373",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "interactive"
+          ],
+          "statementBrief": "有一把缺少数字 $x$ 的尺子，$2\\le x\\le999$：测量长度 $y$ 时，若 $y<x$ 返回 $y$，否则返回 $y+1$。每次可询问一个 $a\\times b$ 矩形，尺子分别测量两边并返回测量值的乘积；最多询问 $10$ 次，找出 $x$。",
+          "transformedStatement": "只询问尺寸为 $1\\times y$ 的矩形，因为边长 $1$ 始终测量正确，问题等价于在单调函数 $f(y)=y$（当 $y<x$）或 $f(y)=y+1$（当 $y\\ge x$）中寻找跳变点。",
+          "keyObservations": [
+            "固定查询一个边长为 $1$ 的矩形时，该边一定被正确测量，因此返回值只由另一边决定。",
+            "查询 $?$ $1$ $y$ 的返回值为：$y<x$ 时是 $y$，$y\\ge x$ 时是 $y+1$，因此首次出现“返回值大于输入”的位置正好是 $x$。",
+            "上述返回值关于 $y$ 具有单调阈值性质，二分查找最小的满足返回值为 $y+1$ 的 $y$ 即可确定缺失数字，并在 $1000$ 个候选范围内至多使用 $10$ 次查询。"
+          ],
+          "solutionBrief": "每次询问 $?\\ 1\\ y$，根据返回值判断 $x$ 在当前区间的哪一侧：若返回 $y$，则 $y<x$；若返回 $y+1$，则 $y\\ge x$。对 $y\\in[2,999]$ 二分，找到首次异常的位置作为答案，最多查询 $10$ 次。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1999G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Ruler (hard version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1999/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/132373",
+          "primaryTopic": "交互",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "interactive",
+            "ternary search"
+          ],
+          "statementBrief": "有一把缺少数字 $x$ 的尺子，且 $2\\le x\\le999$：测量长度 $y$ 时，若 $y<x$ 返回 $y$，否则返回 $y+1$。每次可查询一个 $a\\times b$ 矩形，得到两条边被尺子测量后的乘积，最多查询 7 次，要求找出 $x$。",
+          "transformedStatement": "把每次矩形查询视为对未知阈值 $x$ 的三路比较：根据面积结果判断 $x\\le a$、$a<x\\le b$ 或 $x>b$，从而在候选值集合上进行三分区间搜索。",
+          "keyObservations": [
+            "当查询满足 $a<b$ 时，返回值分别对应 $x\nleq a$、$a<x\need b$、$x>b$ 三种情况，因此一次查询能把候选区间划成三段。",
+            "两边都正常、仅右边错误、两边都错误时，返回值依次为 $ab$、$a(b+1)$、$(a+1)(b+1)$，三种结果可直接区分。",
+            "每次选择 $a,b$ 使三段候选数尽量相等，候选范围每轮约缩小为三分之一；$1000$ 个可能值最多需要 $ceil(log_3 1000)=7$ 次查询。",
+            "候选值只剩两个时要单独处理边界，避免按三等分选择导致无法区分最后两个值。"
+          ],
+          "solutionBrief": "维护 $x$ 的候选区间，每次取两个分界点 $a<b$，根据返回面积判断 $x$ 落在三段中的哪一段，并将区间缩小到该段。每轮尽量三等分候选范围，最多 7 次后确定 $x$；剩余两个值时直接用能区分它们的查询。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
