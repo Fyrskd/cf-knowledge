@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2762,
+    "total_problems": 2770,
     "source_total_problems": 2770,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2762,
-    "with_editorial_brief": 2492,
-    "with_solution_brief": 2493,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2770,
+    "with_editorial_brief": 2500,
+    "with_solution_brief": 2501,
     "missing_editorial_brief": 269,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1824,
+    "ai_override_count": 1832,
     "primary_topic_count": 13,
-    "contest_count": 421,
+    "contest_count": 422,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 149,
-    "构造与贪心": 864,
+    "字符串": 150,
+    "构造与贪心": 867,
     "图论与网络流": 169,
     "动态规划与状态设计": 236,
     "数论与同余": 300,
     "组合计数与概率": 211,
-    "数据结构": 258,
+    "数据结构": 259,
     "几何": 68,
     "树结构": 146,
     "代数、矩阵与多项式": 20,
     "交互": 88,
-    "基础实现与模拟": 160,
+    "基础实现与模拟": 163,
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1547,
-    "ai_generated_partial_editorial": 54,
+    "ai_generated_with_editorial": 1554,
+    "ai_generated_partial_editorial": 55,
     "missing_editorial": 269,
     "manual_override": 891,
     "statement_derived": 1
@@ -82849,6 +82849,232 @@ window.CF_INSIGHTS_DATA = {
             "当 $k>(n-1)/2$ 时按最终集合最小元素选取唯一规范代表，并筛掉最左未删除区间为空的 $(p,q)$；固定 $q$ 后合法 $p$ 连成区间，利用 $\\sum_{i=0}^{r}\\binom{i}{q}=\\binom{r+1}{q+1}$ 将求和降为 $O(n)$。"
           ],
           "solutionBrief": "将操作序列编码为 $L/M$，用 $LMM\\to MLM$ 化为规范形。按 $p,q$ 计数不含连续 $M$ 的后缀；大 $k$ 时按最小剩余元素去重，再用范德蒙德式求和将枚举优化到 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1791,
+      "name": "Codeforces Round 849 (Div. 4)",
+      "date": "2023-02-03",
+      "url": "https://codeforces.com/contest/1791",
+      "type": "Div. 4",
+      "problemCount": 8,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "1791A",
+          "index": "A",
+          "slot": "A",
+          "title": "Codeforces Checking",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1791/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/112282",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定多个小写英文字母，每次判断该字母是否出现在固定字符串 `codeforces` 中；出现则输出 `YES`，否则输出 `NO`。",
+          "transformedStatement": "把每个测试用例看成一次固定字符串的成员资格查询：输入字符只需与 `codeforces` 的各个字符逐一比较，匹配成功即可判定为存在。",
+          "keyObservations": [
+            "目标字符串只有固定的 7 种不同字符，因此可将问题转化为判断输入字符是否属于集合 $\\{c,o,d,e,f,r,s\\}$。",
+            "直接遍历字符串 `codeforces` 并比较当前字符即可完成集合成员判断，无需处理字符出现次数或位置。"
+          ],
+          "solutionBrief": "对每个测试字符，遍历固定字符串 `codeforces`；若找到相同字符输出 `YES`，遍历结束仍未找到则输出 `NO`。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1791B",
+          "index": "B",
+          "slot": "B",
+          "title": "Following Directions",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1791/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/112282",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "geometry",
+            "implementation"
+          ],
+          "statementBrief": "从$(0,0)$出发，按字符串中的每个字符依次移动一格：L/R改变横坐标，D/U改变纵坐标。若移动过程中曾到达糖果所在的$(1,1)$，输出YES，否则输出NO；不要求最终停在那里。",
+          "transformedStatement": "将整段移动过程视为由字符串前缀确定的一系列坐标状态，问题转化为判断某个前缀对应的位置是否等于$(1,1)$，而不是只比较完整字符串的终点。",
+          "keyObservations": [
+            "把当前位置维护为坐标状态：L、R分别使$x$减一或加一，D、U分别使$y$减一或加一，因此每个字符只对应一次确定的状态转移。",
+            "题目要求经过糖果而非最终停在糖果处，所以必须在每次移动后检查当前位置是否为$(1,1)$；任意前缀到达即可判定为YES。"
+          ],
+          "solutionBrief": "从$(0,0)$开始逐字符更新坐标，每次移动后检查是否到达$(1,1)$；曾到达则输出YES，否则输出NO。单个测试用例耗时为$O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1791C",
+          "index": "C",
+          "slot": "C",
+          "title": "Prepend and Append",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1791/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/112282",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定 Timur 经过若干次操作后的二进制字符串。每次操作可在字符串最前端和最后端各加入一个不同的二进制字符，要求求出能产生该字符串的最短原始字符串长度；原串可以为空。",
+          "transformedStatement": "将构造过程倒放：从最终字符串开始，只要当前首字符和尾字符不同，就删除这两个字符。不断执行这一逆操作后剩余区间的长度，就是最短原串长度。",
+          "keyObservations": [
+            "正向操作只会在字符串两端加入两个不同的字符，因此逆向时只有首尾字符不同才能同时删除它们，这保证了逆操作与原操作等价。",
+            "为了得到最短原串，逆向删除应持续进行到不能删除为止；提前停止只会保留本可消去的字符，无法达到最短。",
+            "每次删除的始终是一对当前首尾字符，所以只需维护左右边界，不必实际修改字符串，剩余长度直接是答案。"
+          ],
+          "solutionBrief": "从最终字符串逆向处理：若当前首尾字符不同，就同时向内移动左右指针；首尾相同或指针相遇时停止，输出剩余区间长度。若区间为空则输出 $0$，每组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1791D",
+          "index": "D",
+          "slot": "D",
+          "title": "Distinct Split",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1791/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/112282",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个仅含小写字母的字符串，必须在两个相邻字符之间切一刀，将其分成两个非空连续子串。对每种切法，计算两部分包含的不同字符数之和，并求所有切分中的最大值。",
+          "transformedStatement": "把问题转化为扫描所有前缀—后缀切分：维护当前前缀和后缀各自的字符频率及不同字符数。切分点右移一格时，只需处理被移入前缀的那个字符。",
+          "keyObservations": [
+            "每个合法切分都对应一个位置 $1\\le i<n$，前缀和后缀的不同字符数之和就是该切分的得分，因此只需比较所有切分位置。",
+            "字符加入某一部分时，只有它原先出现次数为 $0$ 才会使不同字符数增加；这使得计数可以由频率数组增量维护。",
+            "从左到右移动切分点时，当前字符从后缀移到前缀；分别根据移入前后的频率是否为零更新两部分的不同字符数，避免重复统计整段字符串。"
+          ],
+          "solutionBrief": "预先统计整个字符串作为后缀的字符频率和不同字符数，切分点从左到右移动。每次将一个字符从后缀移入前缀，依据频率是否从零变为非零或反向变化更新两边计数，并取最大和。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1791E",
+          "index": "E",
+          "slot": "E",
+          "title": "Negatives and Positives",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1791/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/112282",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一个数组，每次可选择一对相邻元素并同时改变它们的符号，操作次数不限。求操作后数组元素总和的最大值。",
+          "transformedStatement": "把问题转化为保持负数个数奇偶性的符号调整：先假设所有元素取正贡献，再根据负数奇偶性决定是否必须让绝对值最小的一个元素保留负号。",
+          "keyObservations": [
+            "每次同时取相邻两个元素变号，因此负数个数的奇偶性保持不变；这把操作可达性归结为初始负数个数的奇偶性。",
+            "若负数个数为偶数，可以通过一系列相邻操作使所有元素都非负，答案就是所有元素绝对值之和。",
+            "若负数个数为奇数，最终必须保留一个负数；为使总和最大，应让绝对值最小的元素保持负号，其余元素变为正数。"
+          ],
+          "solutionBrief": "统计负数个数、所有元素绝对值之和以及最小绝对值。负数个数为偶数时答案为绝对值总和；为奇数时答案为绝对值总和减去两倍最小绝对值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1791F",
+          "index": "F",
+          "slot": "F",
+          "title": "Range Update Point Query",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1791/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/112282",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures"
+          ],
+          "statementBrief": "给定数组，处理两类操作：对区间 $[l,r]$ 内每个元素替换为其十进制数位和，或查询位置 $x$ 的当前值。按顺序输出所有单点查询结果。",
+          "transformedStatement": "把每个下标视为一个会逐渐失活的对象：区间操作只需处理其中仍未达到三次数位和变换的下标，达到三次后永久跳过；因此问题转化为有序活跃集合上的区间遍历与单点读取。",
+          "keyObservations": [
+            "对同一位置连续应用三次数位和后必变成一位数，之后数位和恒不再变化，因此每个位置最多实际更新三次。",
+            "只维护尚未完成三次更新的“活跃”位置；区间操作跳过已失活位置，避免反复扫描整个区间。",
+            "活跃位置按下标有序，从区间左端开始不断定位下一个活跃下标并处理，删除达到三次更新的位置，从而把总处理次数限制在 $3n$ 次。"
+          ],
+          "solutionBrief": "用有序集合维护更新次数不超过两次的位置。区间更新时定位区间内所有活跃下标并替换为数位和，第三次处理后移出集合；单点查询直接输出当前值。每个位置最多更新三次，摊还复杂度为 $O(q+n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1791G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Teleporters (Easy Version)",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1791/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/112282",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "数轴上点 $1$ 到 $n$ 各有一个传送器，从点 $0$ 出发，移动到尚未使用的传送器 $i$ 并支付 $a_i$ 后传送回点 $0$，可重复进行。给定金币数 $c$，求最多能使用多少个传送器。",
+          "transformedStatement": "把每个传送器视为一个独立物品：使用编号为 $i$ 的传送器总共消耗 $i+a_i$ 枚金币。由于每次都会回到 $0$，问题转化为在预算 $c$ 内选取最多个独立成本之和最小的物品。",
+          "keyObservations": [
+            "最优路线中无需向左移动或经过传送点后继续前进；到达某个传送点后立即使用它不会增加成本。",
+            "使用传送器后会回到点 $0$，因此后续选择与之前的路线无关，每个传送器都可视为独立的一次性消费。",
+            "传送器 $i$ 的独立成本是到达它的 $i$ 步加使用费用 $a_i$，即 $i+a_i$；将这些成本升序排列后，能支付的最小前缀长度就是答案。"
+          ],
+          "solutionBrief": "计算每个传送器的独立成本 $i+a_i$，排序后从小到大累加；只要总费用不超过 $c$ 就继续选择，否则停止，累计数量即为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1791G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Teleporters (Hard Version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1791/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/112282",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "数轴上有端点 $0,n+1$ 和位于 $1$ 到 $n$ 的传送器，从 $0$ 出发，每次花费移动距离和传送器费用到达并使用传送器，随后可从相应端点继续移动。要求在初始拥有 $c$ 枚硬币且第一次必须从 $0$ 出发的条件下，最多使用多少个传送器。",
+          "transformedStatement": "把第一次使用的传送器单独枚举：它的代价是 $a_i+i$；之后每个传送器可从两端中选择更近的一端接近，代价为 $\\min(a_i+i,a_i+n+1-i)$。于是问题转化为首项固定、其余取最小代价前缀的最大选取数量。",
+          "keyObservations": [
+            "除第一次传送外，每个传送器都可从 $0$ 或 $n+1$ 接近，因此其独立使用代价是 $\\min(a_i+i,a_i+n+1-i)$，可按该代价排序。",
+            "第一次使用的传送器必须从 $0$ 出发，代价固定为 $a_i+i$；枚举它后，其余传送器只需选择代价最小的若干个。",
+            "固定首个传送器后，选择 $k-1$ 个后续传送器的总价由排序后的前缀和决定；若首个传送器也在该前缀中，需要扣除其被重复计算的一次代价。",
+            "可使用的传送器数量随候选数量增加而单调不减，因此对每个首个传送器可以二分最多能补选多少个。"
+          ],
+          "solutionBrief": "先计算每个传送器从两端接近时的最小代价并排序，建立前缀和。枚举从 $0$ 首先使用的传送器，固定其真实首付，再用前缀和和二分查找最多可选的后续传送器，注意排除首个传送器的重复计费。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
