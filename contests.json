@@ -1573,6 +1573,17 @@
     "date": "2024-10-20"
   },
   {
+    "id": 2033,
+    "name": "Codeforces Round 981 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1729780500,
+    "relativeTimeSeconds": 60702200,
+    "date": "2024-10-24"
+  },
+  {
     "id": 2027,
     "name": "Codeforces Round 982 (Div. 2)",
     "type": "CF",
