@@ -1716,6 +1716,17 @@
     "date": "2024-12-20"
   },
   {
+    "id": 2051,
+    "name": "Codeforces Round 995 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1734878100,
+    "relativeTimeSeconds": 55602282,
+    "date": "2024-12-22"
+  },
+  {
     "id": 2043,
     "name": "Educational Codeforces Round 173 (Rated for Div. 2)",
     "type": "ICPC",
