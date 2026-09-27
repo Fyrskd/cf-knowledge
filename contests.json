@@ -2079,6 +2079,17 @@
     "date": "2025-05-31"
   },
   {
+    "id": 2117,
+    "name": "Codeforces Round 1029 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1749393300,
+    "relativeTimeSeconds": 41082177,
+    "date": "2025-06-08"
+  },
+  {
     "id": 2118,
     "name": "Codeforces Round 1030 (Div. 2)",
     "type": "CF",
