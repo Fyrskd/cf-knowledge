@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2019,
+    "total_problems": 2026,
     "source_total_problems": 2026,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2019,
-    "with_editorial_brief": 1767,
-    "with_solution_brief": 1768,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2026,
+    "with_editorial_brief": 1774,
+    "with_solution_brief": 1775,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 960,
+    "ai_override_count": 967,
     "primary_topic_count": 13,
-    "contest_count": 316,
+    "contest_count": 317,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 86,
-    "构造与贪心": 680,
+    "构造与贪心": 682,
     "图论与网络流": 119,
     "动态规划与状态设计": 190,
-    "数论与同余": 198,
+    "数论与同余": 200,
     "组合计数与概率": 157,
-    "数据结构": 166,
+    "数据结构": 167,
     "几何": 43,
     "树结构": 129,
     "代数、矩阵与多项式": 18,
     "交互": 77,
-    "基础实现与模拟": 85,
-    "博弈": 71
+    "基础实现与模拟": 86,
+    "博弈": 72
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 839,
+    "ai_generated_with_editorial": 846,
     "ai_generated_partial_editorial": 37,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -23655,6 +23655,215 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：这题的构造不是随便画三角形，而是把每两次操作看成堆一个平行四边形单元。若目标方向在可控角度内，沿目标方向均分线段并重复复制单元即可；否则先用一个 30 度辅助三角形把夹角抬起来，再沿目标边平行推进。证明重点是所有边长保持在 [0.5,1]，且总单元数不超过允许上界。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2137,
+      "name": "Codeforces Round 1047 (Div. 3)",
+      "date": "2025-09-07",
+      "url": "https://codeforces.com/contest/2137",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "2137A",
+          "index": "A",
+          "slot": "A",
+          "title": "Collatz Conjecture",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2137/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/146121",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定最终整数 $x$ 和操作次数 $k$，需要构造一个初始正整数。每次若当前数为偶数就除以 $2$，否则替换为 $3x+1$；恰好执行 $k$ 次后，结果必须是给定的 $x$，输出任意可行初值。",
+          "transformedStatement": "将正向过程反过来构造：一次除以 $2$ 的逆操作总可以选择为乘以 $2$，因为所得数必为偶数。因此从最终值 $x$ 出发连续乘以 $2$ 共 $k$ 次，即可得到合法初值。",
+          "keyObservations": [
+            "逆向操作中，任意正整数 $x$ 都能先变为偶数 $2x$，再反向对应一次除以 $2$，因此无需判断另一种逆操作是否可用。",
+            "连续进行 $k$ 次逆向乘 $2$ 后得到 $x\\cdot 2^k$；正向过程中该数每一步都为偶数，必定连续除以 $2$ 回到给定的 $x$。",
+            "只需构造一个合法初值而非恢复唯一值，所以可以始终选择最简单的偶数逆操作，避免处理 $(x-1)/3$ 为奇整数的条件。"
+          ],
+          "solutionBrief": "对每个测试用例输出 $x\\cdot 2^k$。这个初值经过 $k$ 次过程时始终为偶数，因此每次都除以 $2$，最终恰好得到给定的 $x$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2137B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fun Permutation",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2137/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/146121",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列 $p$，构造另一个排列 $q$。要求所有相邻位置满足 $\\gcd(p_i+q_i,p_{i+1}+q_{i+1})\\ge3$，输出任意可行的 $q$。",
+          "transformedStatement": "把每个位置的构造目标统一为固定和：让所有 $p_i+q_i$ 都等于 $n+1$。于是相邻位置的两个和相同，最大公约数自动等于 $n+1$，只需验证反射后的数列仍是排列。",
+          "keyObservations": [
+            "令每个位置满足 $p_i+q_i=n+1$，则任意相邻位置的两项和完全相同，问题中的最大公约数条件被直接化为 $n+1\\ge 3$。",
+            "将 $p_i$ 映射为 $n+1-p_i$ 是对 $1$ 到 $n$ 的反射双射，因此不同的 $p_i$ 仍对应不同的 $q_i$，且 $q$ 必为排列。"
+          ],
+          "solutionBrief": "对每个位置输出 $q_i=n+1-p_i$。这样 $p_i+q_i=n+1$，相邻两项的和相同，其最大公约数为 $n+1\\ge3$；反射映射也保证 $q$ 是排列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2137C",
+          "index": "C",
+          "slot": "C",
+          "title": "Maximum Even Sum",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2137/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/146121",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $a,b$，选择任意能整除 $b$ 的整数 $k$，同时将 $a$ 乘以 $k$、将 $b$ 除以 $k$。求操作后 $a+b$ 能达到的最大偶数；若无法得到偶数则输出 $-1$。",
+          "transformedStatement": "把操作结果看成乘积固定为 $ab$ 的因子对 $(ak,b/k)$：需要在所有合法因子对中寻找和为偶数者，并利用较小因子越小、总和越大的性质只检查边界因子。",
+          "keyObservations": [
+            "变换后两数的乘积始终为 $ab$；在满足和为偶数的因子组合中，让较小因子尽量小即可最大化两数之和。",
+            "若 $a,b$ 均为奇数，任意合法操作后的两数都为奇数，取 $k=b$ 得到 $ab+1$，这是最大偶数和。",
+            "若 $b$ 为偶数且 $b/2$ 可作为因子，取 $k=b/2$ 可把第二个数变为 $2$，候选和为 $ab/2+2$；当 $a$ 为偶数或 $4\\mid b$ 时该和为偶数。",
+            "当 $a$ 为偶数、$b$ 为奇数，或 $a$ 为奇数且 $b\\equiv2\\pmod4$ 时，任意操作后两数奇偶性都无法相同，因此无解。"
+          ],
+          "solutionBrief": "利用乘积不变和奇偶性分类。先保留初始偶数和，再在满足条件时分别尝试 $k=b$ 或 $k=b/2$，取最大候选；无法形成偶数和则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2137D",
+          "index": "D",
+          "slot": "D",
+          "title": "Replace with Occurrences",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2137/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/146121",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $b$，要构造长度同为 $n$ 的数组 $a$，其中 $1\\le a_i\\le n$。定义 $f(x)$ 为 $x$ 在 $a$ 中的出现次数，要求每个位置满足 $f(a_i)=b_i$；若无法构造则输出 $-1$。",
+          "transformedStatement": "把 $b$ 中值为 $x$ 的位置视为必须由某些在 $a$ 中各出现恰好 $x$ 次的标签覆盖，因此这些位置必须能被划分成若干个大小为 $x$ 的组；每组填入一个独立标签即可完成构造。",
+          "keyObservations": [
+            "对于所有值 $x$，$b$ 中等于 $x$ 的位置数必须是 $x$ 的倍数；因为每个满足 $f(a_i)=x$ 的数值在 $a$ 中都会形成大小为 $x$ 的完整出现组。",
+            "将所有满足 $b_i=x$ 的位置按每 $x$ 个分组，并让同一组使用一个全新的数值，就能保证该数值在 $a$ 中恰好出现 $x$ 次。",
+            "不同的分组使用递增且互不重复的标签，因此各组之间不会合并，构造出的每个位置都满足 $f(a_i)=b_i$。"
+          ],
+          "solutionBrief": "统计每个 $x$ 在 $b$ 中出现的位置。若位置数不是 $x$ 的倍数则输出 $-1$；否则按每 $x$ 个位置分组，并为每组赋予一个未使用的新标签。整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2137E",
+          "index": "E",
+          "slot": "E",
+          "title": "Mexification",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2137/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/146121",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的非负整数数组，重复进行 $k$ 次同步操作：每个位置都改成删除该位置后其余所有元素的 MEX。求全部操作完成后数组元素之和。",
+          "transformedStatement": "把一次同步更新按全局 MEX 与各数出现次数分类：小于 MEX 且只出现一次的值不变，其余位置统一映射到当前 MEX；研究这种频次状态转移可知数组很快进入固定点或两状态循环。",
+          "keyObservations": [
+            "设当前数组的 MEX 为 $m$：只有出现次数为 $1$ 且小于 $m$ 的元素保持原值，其余元素都会变成 $m$，因此一次操作只需统计频次和 MEX。",
+            "若数组恰好是 $0,1,\u0000\u0000\u0000,n-1$ 的排列，则每个元素被移除后自身成为 MEX，数组保持不变，可直接判定为固定状态。",
+            "否则取最小的、出现次数不为 $1$ 的数 $x$；一次操作会把重复的 $x$ 或缺失的 $x$ 转化为相邻的另一种状态，之后数组至多在两个状态间交替。",
+            "由于至多两次操作后进入周期不超过 $2$ 的状态，只需实际模拟前 $\u0000\u0000\u0000\\min(k,k\\bmod 2+2)$ 次，再求数组总和即可。"
+          ],
+          "solutionBrief": "每次根据全局频次和 MEX 同步生成新数组：唯一且小于 MEX 的值保留，其余值改为 MEX。数组至多两步进入长度为 $2$ 的循环，因此只模拟 $\u0000\u0000\u0000\\min(k,k\\bmod 2+2)$ 次，最后求和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2137F",
+          "index": "F",
+          "slot": "F",
+          "title": "Prefix Maximum Invariance",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2137/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/146121",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "binary search",
+            "combinatorics",
+            "data structures",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a,b$。对任意子数组 $x=a_l\\ldots a_r$，可任意构造数组 $z$，但必须使每个前缀的最大值与 $x$ 相同；定义能让 $z_i=b_i$ 的最多位置数为 $f(x,b_l\\ldots b_r)$，求所有子数组对应的 $f$ 之和。",
+          "transformedStatement": "将答案改为按位置 $i$ 计数：统计有多少个包含 $i$ 的子数组能实现 $z_i=b_i$。当两值不同，问题等价于判断该子数组左侧是否存在元素至少为 $\\max(a_i,b_i)$，再利用区间最大值的单调边界计数。",
+          "keyObservations": [
+            "若 $a_i=b_i$，该位置在所有包含它的子数组中都能保留，因此直接贡献 $(i+1)(n-i)$ 个子数组。",
+            "若 $a_i\\ne b_i$，位置 $i$ 可被改成 $b_i$ 当且仅当其左侧存在元素至少为 $\u0000max(a_i,b_i)$；这统一了降低当前前缀最大值和提高当前位置两种情况。",
+            "对固定 $i$，合法子数组左端点构成前缀区间，只需找到最右的左侧位置 $j$ 满足区间 $[j,i-1]$ 的最大值达到阈值，即可计数为 $(j+1)(n-i)$。",
+            "区间最大值关于左端点具有单调性，因此可用 RMQ 结构配合二分定位最右可行位置，避免逐个枚举子数组。"
+          ],
+          "solutionBrief": "把每个位置对所有包含它的子数组的贡献独立统计。相等时全部有效；否则查询左侧区间最大值是否达到 $\\max(a_i,b_i)$，利用单调性二分最右可行起点，再乘以可选右端点数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2137G",
+          "index": "G",
+          "slot": "G",
+          "title": "Cry Me a River",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2137/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/146121",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "图论与网络流",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "games",
+            "graphs"
+          ],
+          "statementBrief": "给定一个有向无环图，棋子从节点 $s$ 出发，Cry 先手；每回合必须沿一条有向边移动。到达无出边节点时 Cry 获胜，到达红节点时 River 获胜，若两者同时满足则 River 获胜。节点初始均为蓝色，操作是把尚未染红的节点变红，或询问从指定节点开始且双方最优时 Cry 是否获胜。",
+          "transformedStatement": "将每个节点拆成“轮到 Cry”与“轮到 River”两个状态，状态值表示 Cry 是否能最终获胜。染红相当于让该节点的两种状态都变为失败，再通过反向边增量维护前驱状态：Cry 回合要求存在胜利后继，River 回合则对应对手无法获胜。",
+          "keyObservations": [
+            "把每个节点拆成“轮到 Cry”与“轮到 River”两种状态，分别记录在双方最优策略下 Cry 是否能赢，从而把博弈转为两类布尔状态传播。",
+            "节点变红后，无论当前轮到谁，Cry 都立即失败；因此该节点的两种状态同时失效，并沿反图向前传播影响。",
+            "若某节点在 River 回合失败，则其所有前驱在 Cry 回合都不能选择获胜后继；用计数维护仍未失败的后继数，计数归零时即可更新。",
+            "每个节点的两种状态最多各被处理一次，且每条边只在对应状态变化时被扫描，因此所有更新的总传播量为 $O(n+m)$。"
+          ],
+          "solutionBrief": "维护每个节点在两种回合下 Cry 的胜负状态。染红使两态都失败，再在反图中传播：River 回合失败会减少前驱的可用后继计数，计数归零则 Cry 回合失败；Cry 回合失败则令前驱的 River 回合失败。每个状态只更新一次。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
