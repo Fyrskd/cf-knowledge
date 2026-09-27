@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2085,
+    "total_problems": 2092,
     "source_total_problems": 2092,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2085,
-    "with_editorial_brief": 1833,
-    "with_solution_brief": 1834,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2092,
+    "with_editorial_brief": 1840,
+    "with_solution_brief": 1841,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1026,
+    "ai_override_count": 1033,
     "primary_topic_count": 13
   },
   "records": [
@@ -47736,6 +47736,307 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 1181,
+      "problem_key": "2111A",
+      "contest_id": 2111,
+      "title": "Energy Crystals",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2111/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/143528",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "greedy",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "有三枚初始能量为 $0$ 的晶体，每次可把一枚晶体增加任意正整数，但操作结束后任意两枚都必须满足较小者至少为较大者的一半向下取整。要求将三枚晶体都充到恰好 $x$，求最少操作次数。",
+      "transformed_statement": "把“恰好达到 $x$”暂时放宽为三枚能量都至少为 $x$，维护合法状态下的最大可提升量：每次处理当前最小晶体，将它升至另外两枚中较小值的 $2$ 倍加一；最后一次再证明超出部分可改成恰好 $x$。",
+      "key_observations": [
+        "同步条件等价于当前最大能量不超过最小能量的两倍加一，因此给定另外两枚晶体的最小值为 $m$ 时，被操作晶体最多可升到 $2m+1$。",
+        "每次选择当前能量最小的晶体并尽量升高，能在保持合法的同时最大化下一步的基础，三枚晶体的能量会快速增长，因此达到目标只需 $O(\\log x)$ 次操作。",
+        "可以暂时把目标放宽为三枚晶体都至少为 $x$；贪心首次准备升到超过 $x$ 时，若状态为 $[m,m,x]$，改为升到恰好 $x$ 仍可通过两次操作变成 $[x,x,x]$，所以不会增加操作次数。"
+      ],
+      "solution_brief": "放宽终点为所有能量至少为 $x$，反复选择最小晶体，将其升到另外两枚中较小值的两倍加一。若下一次会超过 $x$，改为直接升到 $x$；根据末段构造仍能用相同次数完成，模拟直到三枚都达到 $x$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:27:19+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1182,
+      "problem_key": "2111B",
+      "contest_id": 2111,
+      "title": "Fibonacci Cubes",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2111/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/143528",
+      "editorial_quality": "complete",
+      "primary_topic": "几何",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "dp",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定边长依次为斐波那契数的 $n$ 个立方体，以及多个长方体盒子。立方体边必须平行于盒子边，只能放在盒底或完全被下方立方体支撑，且大立方体不能放在小立方体上；判断每个盒子能否容纳全部立方体。",
+      "transformed_statement": "题目等价于检查盒子是否具备容纳斐波那契立方体整体构型的尺寸：三条边都至少为最大边长 $f_n$，并且最长边额外达到 $f_{n+1}$。该构型来自二维斐波那契正方形铺法沿第三维的扩展。",
+      "key_observations": [
+        "只要能放下最大的两个立方体，就能按斐波那契结构安排其余更小立方体，因此无需逐个搜索摆放方案。",
+        "盒子的每条边都必须至少为 $f_n$，否则最大的立方体无法放入；同时最长边至少为 $f_{n+1}$，才能容纳前两个立方体的整体结构。",
+        "将三维摆放降为 $f_n\\times f_{n+1}$ 矩形中的斐波那契正方形铺法，再沿第三维扩展为立方体，可保持空间填满和大立方体不压在小立方体上的限制。"
+      ],
+      "solution_brief": "预处理斐波那契数。对每个盒子取三条边，若最短边不少于 $f_n$ 且最长边不少于 $f_{n+1}$，输出 1，否则输出 0。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:27:00+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1183,
+      "problem_key": "2111C",
+      "contest_id": 2111,
+      "title": "Equal Values",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2111/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/143528",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "greedy",
+        "two pointers"
+      ],
+      "statement_brief": "给定整数数组，每次可选一个位置，用该位置的值覆盖它左侧或右侧的全部元素，费用分别是覆盖元素个数乘该值。可进行任意次操作，要求使整个数组相等并最小化总费用。",
+      "transformed_statement": "固定最终值 $x$ 后，最优方案等价于保留数组中一个连续的 $x$ 相同值块，只覆盖其左侧和右侧；因此问题转化为在所有连续相同值块中最小化 $x\\cdot(n-len)$。",
+      "key_observations": [
+        "固定最终值为 $x$ 后，所有有效操作都应使用值为 $x$ 的位置，否则无法帮助保留最终值 $x$。",
+        "左向操作和右向操作若覆盖范围交叉，可以改为在其中一个位置执行并降低费用，因此存在左右覆盖区域不交叉的最优方案。",
+        "同一方向的多次操作可由更靠外的一次操作替代，故最优方案只需保留一个连续的 $x$ 区间，修改其左侧和右侧。",
+        "若连续相同值块长度为 $len$，保留该块的费用为 $x\\cdot(n-len)$；遍历所有相同值块即可取最小值。"
+      ],
+      "solution_brief": "按连续相同值块扫描数组。对每个值为 $x$、长度为 $len$ 的块，保留它并把左右元素改成 $x$，费用为 $x\\cdot(n-len)$；取所有块中的最小值，整体复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:26:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1184,
+      "problem_key": "2111D",
+      "contest_id": 2111,
+      "title": "Creating a Schedule",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2111/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/143528",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "data structures",
+        "greedy",
+        "implementation",
+        "sortings"
+      ],
+      "statement_brief": "有 $n$ 个小组和 $m$ 个教室，每组第一天上 6 节课，第 $k$ 节课所有小组同时进行，且同一时刻一个教室不能安排多个小组。教室编号除末两位外表示楼层，要求为每组安排教室，使相邻课程间楼层移动总次数最大，并输出任意最优安排。",
+      "transformed_statement": "把安排表示为一个 $n\\times6$ 的楼层矩阵，目标是最大化相邻列之间所有楼层差的总和。对每次列间转换，分别最大化较高端点之和、最小化较低端点之和，再构造交替使用最低与最高教室的六列方案达到该界。",
+      "key_observations": [
+        "相邻两节课的总移动量可写成所有小组的楼层差之和，即每组贡献 $|f_{i,j}-f_{i,j+1}|$，从而只需优化相邻两列的配对。",
+        "对任意相邻课次，一个教室最多被两个小组使用，因此所有较大端点之和受最高楼层教室限制，所有较小端点之和受最低楼层教室限制。",
+        "将小组分成低楼层组和高楼层组，并让两组在低、高教室集合之间交替，可同时达到相邻两列端点和的上下界。",
+        "当小组数为奇数时，额外小组在奇数课次使用第 $(n/2+1)$ 个最低教室、偶数课次使用第 $(n/2+1)$ 个最高教室，正好补足两个端点集合。"
+      ],
+      "solution_brief": "按教室编号排序，将小组分成两半：一半在低楼层教室与高楼层教室之间交替，另一半反向交替；若 $n$ 为奇数，额外小组使用中间对应的低、高教室交替。连续安排六节课即可达到上下界，因而最优。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:26:28+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1185,
+      "problem_key": "2111E",
+      "contest_id": 2111,
+      "title": "Changing the String",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2111/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/143528",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心",
+        "数据结构",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "greedy",
+        "implementation",
+        "sortings",
+        "strings"
+      ],
+      "statement_brief": "给定只含 $a,b,c$ 的字符串，并按固定顺序处理 $q$ 次操作；每次可把一个当前为 $x$ 的字符改成 $y$，也可以跳过。要求选择每次是否操作，使最终字符串按字典序最小。",
+      "transformed_statement": "把每次操作视为带时间下标的字母转换边；字符串中的每个位置选择一条时间递增、长度至多两步的有效路径，目标是在从左到右决定位置时尽量使用更小的终点字母。",
+      "key_observations": [
+        "每个字符最多有两次有效变化，所有有意义的路径仅为 $b\\to a$、$b\\to c\\to a$、$c\\to a$、$c\\to b$、$c\\to b\\to a$，因此无需考虑更长或循环变化。",
+        "不能同时采用 $b\\to c\\to a$ 和 $c\\to b\\to a$ 两类双步路径；将它们分别改成 $b\\to a$ 与 $c\\to a$ 不会变差，从而减少资源冲突。",
+        "按字符串位置从左到右处理，并优先把当前字符变成更小字母：$b$ 依次尝试直接或间接变为 $a$，$c$ 依次尝试变为 $a$、经 $b$ 变为 $a$、直接变为 $b$，保证字典序优先级。",
+        "单步操作取最早可用下标，双步操作固定第一步后用 `lower_bound` 找其后的第二步；较早的直接变 $a$ 操作应优先使用，较晚操作可保留给双步路径。"
+      ],
+      "solution_brief": "为每种有向字母变化维护操作下标集合，按位置贪心尝试最小终字符。单步取最早操作，双步在第一步之后二分查找第二步；总复杂度为 $O((n+q)\\log q)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:26:02+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1186,
+      "problem_key": "2111F",
+      "contest_id": 2111,
+      "title": "Puzzle",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/2111/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/143528",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "几何",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定整数 $p,s$，要用不重叠且边平行于坐标轴的单位正方形组成一个边相连的连通图形，使其周长与面积之比为 $p/s$。每个测试用例需构造不超过 $50000$ 个方格的坐标，若无法构造则输出 $-1$。",
+      "transformed_statement": "把图形视为由单位方格组成的连通多格骨牌：贴上只共享一条边的方格使面积加 $1$、周长加 $2$，而贴上共享至少两条边的方格不增加周长。于是构造转化为先选一个正方形核心，再接一条单边相连的方格带。",
+      "key_observations": [
+        "连通单位方格的周长面积比最大为 $4$；因此当 $p/s>4$ 时不可能，直接排除一类情况。",
+        "向图形外侧只贴一个边的新方格会使面积加 $1$、周长加 $2$，所以从单方格连续延伸得到的长条比值恰为 $2+2/(x+1)$。",
+        "若 $p/s>2$ 且不能写成 $2+2/(x+1)$，就无法通过后续贴方格降低到该比值，因此应判定无解。",
+        "当 $p/s\\le2$ 时，反复同步减去周长分子 $2$ 和面积分母 $1$，可归约到 $1/s'$ 或 $2/s'$；它们分别由边长 $4s'$ 或 $2s'$ 的正方形实现，再接单边长条恢复原比值。"
+      ],
+      "solution_brief": "先处理比值大于 $2$ 的长条情形；比值不超过 $2$ 时按分子奇偶归约到 $1/s'$ 或 $2/s'$，用正方形作核心并接单边长条。超过 $4$ 或不符合长条形式则输出 $-1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:25:44+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1187,
+      "problem_key": "2111G",
+      "contest_id": 2111,
+      "title": "Divisible Subarrays",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/2111/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/143528",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "bitmasks",
+        "brute force",
+        "data structures",
+        "interactive"
+      ],
+      "statement_brief": "给定一个 $1$ 到 $n$ 的排列。对每个区间 $[l,r]$，判断它能否在某个切分点和整数阈值 $x$ 下，使左半部分全部不大于 $x$、右半部分全部大于 $x$，或两侧不等号完全反向；按输入批次在线回答每个区间的 YES/NO。",
+      "transformed_statement": "把每个阈值 $x$ 下的排列转成二进制数组：位置值不超过 $x$ 记为 $0$，否则记为 $1$。问题转化为判断查询区间是否包含一段非空的单调二进制串，并通过相邻块的边界三元组统一表示所有阈值。",
+      "key_observations": [
+        "固定阈值 $x$ 后，将 $p_i\\le x$ 编为 $0$、其余编为 $1$；区间可分恰好等价于子串为非空的 $0^*1^*$ 或 $1^*0^*$。",
+        "在二进制数组中，合法区间的左右端点必须落在一对相邻的同值块中，因此只需维护相邻块形成的三元组 $(L,M,R)$。",
+        "阈值从 $x$ 增加到 $x+1$ 时只会把一个位置从 $1$ 改为 $0$，块的变化至多影响两个边界，所以所有阈值产生的三元组总数仍为 $O(n)$。",
+        "三元组 $(L,M,R)$ 对应条件 $L\\le l<M\\le r<R$；按 $l$ 扫描并用持久化线段树维护所有活跃的 $[M,R)$，即可在版本中通过查询位置 $r$ 判断是否存在合法三元组。"
+      ],
+      "solution_brief": "按阈值递增维护由 $p_i\\le x$ 与 $p_i>x$ 构成的二进制块，并记录相邻块产生的三元组。将三元组转为按左端点启停的区间更新，建立持久化线段树保存每个 $l$ 的版本，查询 $r$ 是否被覆盖；总复杂度为 $O((n+q)\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:25:14+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1188,
