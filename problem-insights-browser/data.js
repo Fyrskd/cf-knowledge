@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1976,
+    "total_problems": 1983,
     "source_total_problems": 1983,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1976,
-    "with_editorial_brief": 1731,
-    "with_solution_brief": 1732,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1983,
+    "with_editorial_brief": 1738,
+    "with_solution_brief": 1739,
     "missing_editorial_brief": 244,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 917,
+    "ai_override_count": 924,
     "primary_topic_count": 13,
-    "contest_count": 310,
+    "contest_count": 311,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 82,
-    "构造与贪心": 664,
+    "字符串": 83,
+    "构造与贪心": 665,
     "图论与网络流": 119,
-    "动态规划与状态设计": 186,
-    "数论与同余": 192,
+    "动态规划与状态设计": 187,
+    "数论与同余": 193,
     "组合计数与概率": 154,
     "数据结构": 162,
-    "几何": 40,
-    "树结构": 128,
+    "几何": 42,
+    "树结构": 129,
     "代数、矩阵与多项式": 18,
     "交互": 76,
     "基础实现与模拟": 84,
     "博弈": 71
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 804,
-    "ai_generated_partial_editorial": 36,
+    "ai_generated_with_editorial": 810,
+    "ai_generated_partial_editorial": 37,
     "missing_editorial": 244,
     "manual_override": 891,
     "statement_derived": 1
@@ -19268,6 +19268,209 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：原排列过程可由所有阈值的 0/1 过程叠加恢复。对固定阈值，b 中的小数 token 按 +m 进入 a 环，同位置冲突只留下最早 token；最终哪些位置为小数确定后，阈值从小到大变化时每次只定位新增的那个数。核心是把巨大 k 的循环交换压成环上 token 推进和周期维护。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2167,
+      "name": "Codeforces Round 1062 (Div. 4)",
+      "date": "2025-10-28",
+      "url": "https://codeforces.com/contest/2167",
+      "type": "Div. 4",
+      "problemCount": 7,
+      "maxRating": 1600,
+      "problems": [
+        {
+          "key": "2167A",
+          "index": "A",
+          "slot": "A",
+          "title": "Square?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2167/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/147869",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定四根不能弯折或截断、长度分别为 $a,b,c,d$ 的直棒，每根用于构成正方形的一条边。判断是否能用它们组成四条等长且边界不相交的正方形，输出 YES 或 NO。",
+          "transformedStatement": "将构造正方形转化为长度判定：因为四根直棒分别对应正方形的四条边，问题等价于判断 $a=b=c=d$。",
+          "keyObservations": [
+            "正方形的四条边必须等长，而四根直棒不能弯折或截断，因此每根直棒只能对应一条边。",
+            "由于正方形恰有四条边，能够拼成正方形当且仅当四根直棒长度全部相等，判定被化为一次相等性检查。"
+          ],
+          "solutionBrief": "对每组四个长度检查是否全部相等；若相等则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2167B",
+          "index": "B",
+          "slot": "B",
+          "title": "Your Name",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2167/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/147869",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "每组给出两个长度同为 $n$ 的小写字母串 $s$ 和 $t$，可以任意交换或重排 $s$ 中的字母。判断能否将 $s$ 重排成 $t$，能则输出 YES，否则输出 NO。",
+          "transformedStatement": "把字符串视为由 26 种字母及其出现次数构成的多重集合；问题转化为判断 $s$ 与 $t$ 的每个字母频次是否完全一致。",
+          "keyObservations": [
+            "字符串的具体顺序不影响能否重排成功，真正决定结果的是每个小写字母在两串中的出现次数是否相同；逐字母比较即可避免尝试交换排列。",
+            "允许任意重排等价于比较两个字符串表示的字母多重集合，因此只要存在一个字母频次不同，就不可能得到目标串。"
+          ],
+          "solutionBrief": "对每组字符串统计 26 个小写字母的出现次数，比较两组频次数组；全部相同输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2167C",
+          "index": "C",
+          "slot": "C",
+          "title": "Isamatdin and His Magic Wand!",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2167/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/147869",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一排整数玩具，每次只能交换奇偶性不同的两个位置。求通过任意次合法交换后能够得到的字典序最小数组。",
+          "transformedStatement": "若数组只有一种奇偶性，所有位置均被冻结；若两种奇偶性都存在，借助异奇偶元素可模拟同奇偶元素交换，使可达排列集合扩展为全部排列。",
+          "keyObservations": [
+            "若数组中所有数同奇偶，任意两数都不能交换，因此唯一可达序列就是原数组。",
+            "只要存在一个与目标元素奇偶相反的元素，就能用三次交换交换任意两个同奇偶元素；不同奇偶元素则可直接交换。",
+            "存在奇数和偶数时，任意元素对都可以交换，因而可达任意排列，字典序最小结果就是整个数组升序排列。"
+          ],
+          "solutionBrief": "检查数组是否同时含奇数和偶数：若只有一种奇偶性，直接输出原数组；否则利用异奇偶元素作为桥梁可实现任意交换，输出排序后的数组。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2167D",
+          "index": "D",
+          "slot": "D",
+          "title": "Yet Another Array Problem",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2167/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/147869",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定长度为 $n$ 的正整数数组，要求找出最小的 $x$（$2\\le x\\le 10^{18}$），使数组中至少有一个元素 $a_i$ 与 $x$ 的最大公约数为 $1$；若不存在则输出 $-1$。",
+          "transformedStatement": "将候选 $x$ 替换为其最小质因子：若 $x$ 能与某个数组元素互质，则该质因子也能与它互质，因此只需在递增质数中寻找第一个不整除所有数组元素的质数。",
+          "keyObservations": [
+            "若候选数 $x$ 与某个 $a_i$ 互质，则 $x$ 的最小质因子 $p$ 也与该 $a_i$ 互质；因此复合数不可能是最小答案，答案必为质数。",
+            "只需按从小到大检查质数 $p$，找到第一个满足存在 $i$ 使 $\\\\gcd(a_i,p)=1$ 的质数即可，因为它直接满足原条件且所有更小候选都已排除。",
+            "若所有不超过 $53$ 的质数都整除每个数组元素，则这些质数的乘积也整除每个元素，而该乘积已大于 $10^{18}$，与 $a_i\\le 10^{18}$ 矛盾；所以检查到 $53$ 足够。"
+          ],
+          "solutionBrief": "证明答案必为质数后，从小到大枚举不超过 $53$ 的质数；对每个质数检查数组中是否存在与它互质的元素，首个满足者就是答案，否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2167E",
+          "index": "E",
+          "slot": "E",
+          "title": "khba Loves to Sleep!",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2167/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/147869",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "geometry",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 位朋友分别站在区间 $[0,x]$ 的位置上；选择 $k$ 个互不相同且位于该区间内的传送点，每位朋友会走向最近的传送点。要求最大化最先到达传送点的朋友所需时间，并输出一组达到最优值的传送点位置。",
+          "transformedStatement": "将“最先到达时间”转化为朋友到最近传送点距离的最小值。对固定候选值 $m$，只允许在所有朋友禁区之外放点，这些位置恰好由排序后相邻朋友之间的若干整数区间组成。",
+          "keyObservations": [
+            "把目标写成最大化所有朋友到最近传送点距离的最小值；固定整数 $m$ 时，传送点不能落入任一朋友半径 $m-1$ 的禁区。",
+            "将朋友位置排序并加入左右哨兵后，任意可选传送点都位于相邻朋友之间的区间 $[a_{i-1}+m,a_i-m]$，因此问题转为统计这些区间中的整数点。",
+            "各区间中的可选点互不重叠，区间整数点总数不少于 $k$ 当且仅当能放置 $k$ 个不同传送点，这保证了可行性判定的充分必要性。",
+            "可行性随 $m$ 增大而单调变差；确定最大可行 $m$ 后，按区间依次取点即可构造任意一组最优答案。"
+          ],
+          "solutionBrief": "排序朋友位置并加入左右哨兵。二分最大可行距离 $m$，用各相邻位置区间 $[a_{i-1}+m,a_i-m]$ 的整数点数量判断是否至少能放置 $k$ 个传送点；最后遍历区间取出前 $k$ 个。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2167F",
+          "index": "F",
+          "slot": "F",
+          "title": "Tree, TREE!!!",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2167/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/147869",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一棵含 $n$ 个节点的树。每次选择一个根 $r$，考虑所有由 $k$ 个不同节点组成的集合，收集它们在以 $r$ 为根时的 LCA，记不同 LCA 的数量为 $|S_r|$；要求计算所有根的总和 $\\sum_{r=1}^{n}|S_r|$。",
+          "transformedStatement": "把问题改为统计每个节点 $v$ 能在多少种根下成为某个 $k$ 点集合的 LCA。固定基准根后，根移动到某个方向时，包含 $v$ 的连通块大小由子树大小或其补集决定。",
+          "keyObservations": [
+            "在固定根下，节点 $v$ 能成为某个 $k$ 点集合的 LCA，当且仅当其子树大小至少为 $k$；选 $v$ 本身再选子树内的 $k-1$ 点即可。",
+            "以任意节点为基准根后，若新根在 $v$ 的子树外，$v$ 的子树大小仍为 $sz_v$，因此这类根在 $sz_v\\ge k$ 时贡献 $n-sz_v$ 个。",
+            "若新根位于子节点 $c$ 的子树内，重根后包含 $v$ 的部分大小变为 $n-sz_c$，所以该子树内的 $sz_c$ 个根在 $n-sz_c\\ge k$ 时都使 $v$ 可作为 LCA。",
+            "对每个节点单独统计所有可能根的贡献，并额外计入根本身；这样总答案就是所有节点贡献之和，无需分别求每个根的完整 LCA 集合。"
+          ],
+          "solutionBrief": "以 1 为基准根求出所有 $sz$。对节点 $v$ 计入根为 $v$ 的 1 次；若 $sz_v\\ge k$，计入子树外的 $n-sz_v$ 个根；对每个子节点 $c$，若 $n-sz_c\\ge k$，计入其子树内的 $sz_c$ 个根，最后累加。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2167G",
+          "index": "G",
+          "slot": "G",
+          "title": "Mukhammadali and the Smooth Array",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2167/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/147869",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定数组 $a$，修改任意位置需支付对应费用 $c_i$，并可将该位置替换为任意整数；未修改位置必须保留原值。要求通过这些修改使最终数组非递减，即任意相邻位置不出现前者严格大于后者，并求最小总修改费用。",
+          "transformedStatement": "把未修改的位置视为必须保留的元素：它们按原顺序必须组成非递减子序列，而其余位置都能任意填补。因此改为选择一个总费用最大的非递减子序列保留，答案是所有费用之和减去该最大值。",
+          "keyObservations": [
+            "最终不变的位置必须按原顺序构成一个值非递减的子序列，否则这些位置之间无法消除下降。",
+            "任意值非递减的保留子序列都可以通过修改其余位置补成完整的非递减数组，因此问题等价于最大化保留位置的总修改费用。",
+            "令 $dp[i]$ 表示以位置 $i$ 结尾的非递减子序列的最大费用，则只能从满足 $j<i$ 且 $a_j\\le a_i$ 的位置转移，从而得到 $dp[i]=c_i+\\max dp[j]$。"
+          ],
+          "solutionBrief": "将最小修改费用转为最大化保留位置的费用。用 $dp[i]$ 求以 $i$ 结尾的最大费用非递减子序列，枚举此前满足 $a_j\\le a_i$ 的位置转移，答案为总费用减去最大 $dp[i]$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
