@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2048,
+    "total_problems": 2056,
     "source_total_problems": 2056,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2048,
-    "with_editorial_brief": 1796,
-    "with_solution_brief": 1797,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2056,
+    "with_editorial_brief": 1804,
+    "with_solution_brief": 1805,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 989,
+    "ai_override_count": 997,
     "primary_topic_count": 13,
-    "contest_count": 320,
+    "contest_count": 321,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 88,
-    "构造与贪心": 686,
+    "构造与贪心": 689,
     "图论与网络流": 121,
     "动态规划与状态设计": 194,
-    "数论与同余": 206,
+    "数论与同余": 207,
     "组合计数与概率": 158,
-    "数据结构": 169,
+    "数据结构": 172,
     "几何": 43,
     "树结构": 130,
     "代数、矩阵与多项式": 18,
     "交互": 77,
-    "基础实现与模拟": 86,
+    "基础实现与模拟": 87,
     "博弈": 72
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 867,
+    "ai_generated_with_editorial": 875,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -26364,6 +26364,245 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：把停车区间计数转成树拓扑序计数。利用单树公式和拓扑序公式，所求和等价于欧拉数 `A(n-1,k-1)` 乘上统一系数。最终答案为 `A(n-1,k-1)*(2n)!/(n*2^n)`，欧拉数用容斥或快速公式计算。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2126,
+      "name": "Codeforces Round 1037 (Div. 3)",
+      "date": "2025-07-17",
+      "url": "https://codeforces.com/contest/2126",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "2126A",
+          "index": "A",
+          "slot": "A",
+          "title": "Only One Digit",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2126/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/144845",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定整数 $x$，需要找出最小的非负整数 $y$，使 $x$ 与 $y$ 的十进制表示至少包含一个相同数字。每个测试用例独立处理，并输出这个最小的 $y$。",
+          "transformedStatement": "将问题转化为：从 $x$ 的数字集合中选出最小元素。多位数没有必要考虑，因为其首位对应的一位数已经能满足相同数字的条件。",
+          "keyObservations": [
+            "合法的最小 $y$ 一定可以取为一位数；因为多位数的首位本身就是一个候选数字，若它能与 $x$ 匹配，则对应的一位数更小或相等。",
+            "因此只需记录 $x$ 的十进制表示中出现过的数字，并按 $0$ 到 $9$ 从小到大寻找第一个出现的数字，直接得到最小答案。"
+          ],
+          "solutionBrief": "提取 $x$ 中出现的数字，随后从 $0$ 到 $9$ 递增检查；第一个出现的数字就是答案，因为最优 $y$ 必为一位数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2126B",
+          "index": "B",
+          "slot": "B",
+          "title": "No Casino in the Mountains",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2126/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/144845",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定每天的天气数组，$0$ 表示晴天、$1$ 表示下雨。一次徒步必须连续占用 $k$ 个晴天，完成后至少休息 1 天才能开始下一次徒步，求最多能游览多少座山峰。",
+          "transformedStatement": "将数组划分为若干个连续的全零段；每段中安排若干个长度为 $k$ 的徒步，并在相邻徒步之间插入休息日。长度为 $len$ 的一段等价于计算 $\\left\\lfloor\\frac{len+1}{k+1}\\right\\rfloor$ 个固定长度单位。",
+          "keyObservations": [
+            "连续的好天气段可以独立计算，因为雨天会阻断徒步，跨段安排不可能带来额外收益。",
+            "长度为 $len$ 的全零段中，每次徒步占用 $k$ 天，除最后一次外还必须占用 1 天休息；在末尾补一个虚拟休息日后，答案变为 $\\left\\lfloor\\frac{len+1}{k+1}\\right\\rfloor$。",
+            "按顺序贪心地切分每个连续零段不会损失最优性，因为每次徒步都消耗固定的 $k+1$ 个位置，只有最后一次可以省略尾部休息日。"
+          ],
+          "solutionBrief": "扫描数组中的连续好天气段。对每段长度 $len$，累加 $\\left\\lfloor\\frac{len+1}{k+1}\\right\\rfloor$，即把徒步和必要休息视为长度为 $k+1$ 的单位；雨天处直接分隔不同段。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2126C",
+          "index": "C",
+          "slot": "C",
+          "title": "I Will Definitely Make It",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2126/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/144845",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 座塔，第 $k$ 座是起点，水位从 $1$ 开始每秒上升 $1$；水位严格超过所在塔高时立即失败。任意时刻可从当前塔传送到另一座塔，耗时为两塔高度差，传送期间仍在原塔，抵达后可立即继续传送；要求判断能否在被水淹没前到达最高塔。",
+          "transformedStatement": "把路线抽象为按塔高单调上升的序列：从起点高度 $h_0$ 到高度 $H$ 的累计耗时等于 $H-h_0$，因此排序所有更高塔后，逐个检查离开当前塔时是否仍满足 $time<cur$。",
+          "keyObservations": [
+            "站在高度为 $h$ 的塔上时，最晚必须在全局时间 $h-1$ 前出发；因此到达时间为 $t$ 时的可用余量是 $h-1-t$。",
+            "前往更高的塔不会比绕经低塔更慢，且下降只会额外消耗时间，所以只需考虑高度单调不下降的路线。",
+            "按高度递增依次经过塔时，累计传送时间会望远镜相消，抵达高度 $H$ 的时间始终为 $H-h_0$；只需在每次离开当前塔前检查当前时间是否小于其高度。"
+          ],
+          "solutionBrief": "记录起点高度 $h_0$，将所有塔高排序并依次处理更高的高度。累计传送时间增加 $H-cur$；若任一步出现 $time\\ge cur$，说明离开当前塔前已被水淹没，答案为 NO，否则最终可到达最高塔，答案为 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2126D",
+          "index": "D",
+          "slot": "D",
+          "title": "This Is the Last Time",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2126/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/144845",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个赌场，初始拥有 $k$ 枚金币。当前金币数为 $x$ 时，只能进入满足 $l_i\\le x\\le r_i$ 的赌场；进入后金币变为 $real_i$，每个赌场最多进入一次且顺序任意。求最终最多能拥有的金币数。",
+          "transformedStatement": "把过程看成金币数单调增长的可达状态：当前值为 $cur$ 时，所有 $l_i\\le cur$ 的赌场进入候选集，而仍满足 $cur\\le r_i$ 的候选可被执行并把状态更新为 $real_i$。用按 $l_i$ 扫描和按 $real_i$ 取最大值的堆维护候选。",
+          "keyObservations": [
+            "由于每次都有 $real_i\\ge l_i$ 且当前可玩时 $cur\\ge l_i$，操作后金币不会减少，因此可玩赌场集合只会扩大。",
+            "当前可玩的赌场中，选择 $real_i$ 最大者不会损害后续选择，反而立即得到最大的金币数，因此可按最大收益贪心。",
+            "按 $l_i$ 排序后，将所有 $l_i\\le cur$ 的赌场加入按 $real_i$ 最大堆；若某赌场满足 $r_i<cur$，因金币单调不降，它以后也不可能再可玩，可以永久丢弃。",
+            "每个赌场至多入堆和出堆一次，堆过程恰好模拟贪心序列，无法找到覆盖当前 $cur$ 的赌场时即可停止。"
+          ],
+          "solutionBrief": "按 $l_i$ 排序，用最大堆维护已满足下界的赌场并按 $real_i$ 取最大者；移除 $r_i<cur$ 的赌场，直到无可玩赌场。复杂度为 $O(n\\log n)$，空间 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2126E",
+          "index": "E",
+          "slot": "E",
+          "title": "G-C-D, Unlucky!",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2126/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/144845",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定数组 $p$ 和 $s$，它们声称分别是某个正整数数组 $a$ 的前缀 GCD 和后缀 GCD：$p_i=gcd(a_1,\u0005cldots,a_i)$、$s_i=gcd(a_i,\u0005cldots,a_n)$。需要判断是否存在这样的数组 $a$，输出 Yes 或 No。",
+          "transformedStatement": "将两条 GCD 链先除以共同的全数组 GCD $g=p_n=s_1$，并把每个位置的隐藏元素视为同时包含 $P_i$、$S_i$ 的公倍数；可行性转化为相邻链比值与另一侧因子的互质性检查。",
+          "keyObservations": [
+            "前缀 GCD 必须沿数组方向逐步整除，后缀 GCD 则反向逐步整除，且 $p_n=s_1$ 都是全数组 GCD；这些条件可先排除不可能的链。",
+            "提出公共因子 $g=p_n=s_1$ 并令 $P_i=p_i/g、S_i=s_i/g$，把全局公共 GCD 从可行性判断中剥离。",
+            "位置 $i$ 的元素可取为 $a_i=gP_iS_i$；它同时是 $P_i$ 与 $S_i$ 的公倍数，因此只需检查相邻比值与另一侧链值的两个互质条件。",
+            "对每个位置检查 $gcd(p_{i-1}/p_i,S_i)=1$ 和 $gcd(s_{i+1}/s_i,P_i)=1$，即可保证该位置不会额外改变前缀或后缀 GCD。"
+          ],
+          "solutionBrief": "先检查两条 GCD 链的整除关系及 $p_n=s_1$，再令 $g=p_n$、$P_i=p_i/g$、$S_i=s_i/g$。逐位置验证两组互质条件；全部通过则存在构造 $a_i=gP_iS_i$ 的数组，否则输出 No。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2126F",
+          "index": "F",
+          "slot": "F",
+          "title": "1-1-1, Free Tree!",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/2126/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/144845",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带边权的树和每个顶点的初始颜色；端点颜色相同的边费用为 0，否则费用等于边权。每次永久将指定顶点重染为新颜色，并在每次操作后输出全树边费用总和。",
+          "transformedStatement": "将树根为 1，把每条边看作父节点与一个子节点的关系，并维护每个父节点按子节点颜色汇总的边权。答案是颜色不同的父子边权总和，重染色只会影响该点的父边和所有子边。",
+          "keyObservations": [
+            "把树根定为 1 后，每条边都归属于其子端点；初始答案就是所有端点颜色不同的父子边权之和。",
+            "对顶点 v 维护按子节点颜色分组的边权和，重染色时子边的变化可由旧颜色组加上、新颜色组减去一次性得到。",
+            "顶点 v 与父亲的边只需比较重染色前后的两次颜色是否相同，从而独立修正该边对答案的贡献。",
+            "重染色只改变 v 的颜色，因此还需把 v 在父亲处的边权从旧颜色组移到新颜色组，其他顶点分组均保持不变。"
+          ],
+          "solutionBrief": "将树根定为 1，维护每个顶点按子节点颜色统计的边权和及当前总答案。重染色时分别修正所有相关子边、父边，并更新父节点的两组统计；用平衡映射维护颜色组，单次查询为 $O(\\log n)$，总复杂度为 $O((n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2126G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Big Wins! (easy version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2126/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/144845",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "dsu",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个元素值不超过 $\\min(n,100)$ 的数组，可以任选一个连续非空子数组。将其排序后取题目规定位置的中位数，并减去该子数组的最小值，要求最大化这个差值。",
+          "transformedStatement": "把“中位数至少为 $m$”改写为二元数组上的正权值区间：元素不小于 $m$ 记为 $+1$，否则记为 $-1$。随后对每个位置判断它是否能被某个正和区间覆盖，并用该位置的 $a_j$ 作为差值下界。",
+          "keyObservations": [
+            "固定阈值 $m$ 后，将 $a_j\\ge m$ 标为 $+1$、否则标为 $-1$，则子数组中位数至少为 $m$ 等价于其中 $+1$ 严格多数，也等价于该段权值和为正。",
+            "令前缀和为 $pref$，区间 $(l,r]$ 权值和为正当且仅当 $pref_r>pref_l$，因此可用前缀最小值和后缀最大值判断某个位置是否能被正和子数组覆盖。",
+            "若位置 $j$ 被某个中位数至少为 $m$ 的子数组覆盖，则该子数组的真实最小值不大于 $a_j$，所以它至少能贡献差值 $m-a_j$；枚举所有可覆盖位置即可得到该阈值下的最优候选。",
+            "由于简单版本中 $a_i\\le100$，只需枚举 $m=1$ 到 $100$；每个阈值线性处理，整体复杂度为 $O(100n)$，额外空间为 $O(n)$。"
+          ],
+          "solutionBrief": "枚举中位数下界 $m$，把数组转为 $\u001771$ 权值。用前缀和、前缀最小值和后缀最大值判断每个位置是否属于某个正和子数组，并更新 $m-a_j$ 的最大值；所有 $m$ 中取最大答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2126G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Big Wins!  (hard version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/2126/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/144845",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "树结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "divide and conquer",
+            "dsu",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个整数数组，可任意选择一个连续子数组；子数组中位数定义为排序后第 $\\lceil(k+1)/2\\rceil$ 个元素，目标是最大化其中位数减最小值。对每个测试用例输出所有连续子数组中该差值的最大值。",
+          "transformedStatement": "枚举子数组的最小值 $mn$ 和候选中位数 $M$：把元素按是否至少为 $M$ 编成 $+1/-1$，将“中位数至少为 $M$”转化为区间符号和非负；再围绕每个等于 $mn$ 的位置组合最大左后缀与最大右前缀。",
+          "keyObservations": [
+            "固定最小值为 $mn$ 后，包含某个 $a_u=mn$ 的合法子数组必须处在 $u$ 两侧最近更小元素之间，因此只需在该最大范围内寻找最优左右延伸。",
+            "对候选中位数 $M$ 将元素转为 $+1$（$a_i\\ge M$）或 $-1$，则子数组中位数至少为 $M$ 等价于符号和非负，从而转成区间和判定。",
+            "以 $u$ 为最小值位置时，最优子数组可独立选取左侧最大后缀和与右侧最大前缀和；三者之和非负正好判定是否存在可行子数组。",
+            "$mn$ 与可行的 $M$ 都只向上移动，每个位置只需在其值低于当前 $M$ 时更新一次，因此总更新次数为 $O(n)$，结合线段树查询得到 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "按最小值 $mn$ 递增扫描，并让候选中位数 $M$ 单调递增。用单调栈求每个最小值位置的可扩展范围；将数组按 $M$ 转成 $\u001c1$，线段树维护区间总和、最大前缀和与最大后缀和，判断左右延伸是否能使符号和非负，维护最大 $M-mn$。复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T01:58:55+00:00",
+  "updated_at": "2026-09-27T02:03:51+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -29853,6 +29853,237 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 与完整 editorial_text，tags 用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "2126G2": {
+      "problem_key": "2126G2",
+      "title": "Big Wins!  (hard version)",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/2126/problem/G2",
+      "editorial_url": "https://codeforces.com/blog/entry/144845",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "2077b9cdf965d38fd2d8c2067d2fd989872f36a4f80d5e43ad646eb994b21af6",
+      "generated_at": "2026-09-27T02:01:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，可任意选择一个连续子数组；子数组中位数定义为排序后第 $\\lceil(k+1)/2\\rceil$ 个元素，目标是最大化其中位数减最小值。对每个测试用例输出所有连续子数组中该差值的最大值。",
+        "transformed_statement": "枚举子数组的最小值 $mn$ 和候选中位数 $M$：把元素按是否至少为 $M$ 编成 $+1/-1$，将“中位数至少为 $M$”转化为区间符号和非负；再围绕每个等于 $mn$ 的位置组合最大左后缀与最大右前缀。",
+        "key_observations": [
+          "固定最小值为 $mn$ 后，包含某个 $a_u=mn$ 的合法子数组必须处在 $u$ 两侧最近更小元素之间，因此只需在该最大范围内寻找最优左右延伸。",
+          "对候选中位数 $M$ 将元素转为 $+1$（$a_i\\ge M$）或 $-1$，则子数组中位数至少为 $M$ 等价于符号和非负，从而转成区间和判定。",
+          "以 $u$ 为最小值位置时，最优子数组可独立选取左侧最大后缀和与右侧最大前缀和；三者之和非负正好判定是否存在可行子数组。",
+          "$mn$ 与可行的 $M$ 都只向上移动，每个位置只需在其值低于当前 $M$ 时更新一次，因此总更新次数为 $O(n)$，结合线段树查询得到 $O(n\\log n)$。"
+        ],
+        "solution_brief": "按最小值 $mn$ 递增扫描，并让候选中位数 $M$ 单调递增。用单调栈求每个最小值位置的可扩展范围；将数组按 $M$ 转成 $\u001c1$，线段树维护区间总和、最大前缀和与最大后缀和，判断左右延伸是否能使符号和非负，维护最大 $M-mn$。复杂度为 $O(n\\log n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心",
+          "树结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的目标与中位数定义，以及 editorial_text 的符号转化、最小值范围、线段树维护和单调扫描；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "2126G1": {
+      "problem_key": "2126G1",
+      "title": "Big Wins! (easy version)",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/2126/problem/G1",
+      "editorial_url": "https://codeforces.com/blog/entry/144845",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "fe8534b76ed0648cfa40e76a68db3617fb8248d9fec9050689c84699b7b9a085",
+      "generated_at": "2026-09-27T02:02:20+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个元素值不超过 $\\min(n,100)$ 的数组，可以任选一个连续非空子数组。将其排序后取题目规定位置的中位数，并减去该子数组的最小值，要求最大化这个差值。",
+        "transformed_statement": "把“中位数至少为 $m$”改写为二元数组上的正权值区间：元素不小于 $m$ 记为 $+1$，否则记为 $-1$。随后对每个位置判断它是否能被某个正和区间覆盖，并用该位置的 $a_j$ 作为差值下界。",
+        "key_observations": [
+          "固定阈值 $m$ 后，将 $a_j\\ge m$ 标为 $+1$、否则标为 $-1$，则子数组中位数至少为 $m$ 等价于其中 $+1$ 严格多数，也等价于该段权值和为正。",
+          "令前缀和为 $pref$，区间 $(l,r]$ 权值和为正当且仅当 $pref_r>pref_l$，因此可用前缀最小值和后缀最大值判断某个位置是否能被正和子数组覆盖。",
+          "若位置 $j$ 被某个中位数至少为 $m$ 的子数组覆盖，则该子数组的真实最小值不大于 $a_j$，所以它至少能贡献差值 $m-a_j$；枚举所有可覆盖位置即可得到该阈值下的最优候选。",
+          "由于简单版本中 $a_i\\le100$，只需枚举 $m=1$ 到 $100$；每个阈值线性处理，整体复杂度为 $O(100n)$，额外空间为 $O(n)$。"
+        ],
+        "solution_brief": "枚举中位数下界 $m$，把数组转为 $\u001771$ 权值。用前缀和、前缀最小值和后缀最大值判断每个位置是否属于某个正和子数组，并更新 $m-a_j$ 的最大值；所有 $m$ 中取最大答案。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，以及 tags 中的数据结构、DP 和双指针等信息；核心算法仅采用 editorial 明确给出的阈值与前缀极值方法。",
+        "quality_flags": []
+      }
+    },
+    "2126F": {
+      "problem_key": "2126F",
+      "title": "1-1-1, Free Tree!",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/2126/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/144845",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "61b790fbf8728e91d72b0aea2a560fdefd0989bd2101c480b9432c865ca47d57",
+      "generated_at": "2026-09-27T02:02:34+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵带边权的树和每个顶点的初始颜色；端点颜色相同的边费用为 0，否则费用等于边权。每次永久将指定顶点重染为新颜色，并在每次操作后输出全树边费用总和。",
+        "transformed_statement": "将树根为 1，把每条边看作父节点与一个子节点的关系，并维护每个父节点按子节点颜色汇总的边权。答案是颜色不同的父子边权总和，重染色只会影响该点的父边和所有子边。",
+        "key_observations": [
+          "把树根定为 1 后，每条边都归属于其子端点；初始答案就是所有端点颜色不同的父子边权之和。",
+          "对顶点 v 维护按子节点颜色分组的边权和，重染色时子边的变化可由旧颜色组加上、新颜色组减去一次性得到。",
+          "顶点 v 与父亲的边只需比较重染色前后的两次颜色是否相同，从而独立修正该边对答案的贡献。",
+          "重染色只改变 v 的颜色，因此还需把 v 在父亲处的边权从旧颜色组移到新颜色组，其他顶点分组均保持不变。"
+        ],
+        "solution_brief": "将树根定为 1，维护每个顶点按子节点颜色统计的边权和及当前总答案。重染色时分别修正所有相关子边、父边，并更新父节点的两组统计；用平衡映射维护颜色组，单次查询为 $O(\\log n)$，总复杂度为 $O((n+q)\\log n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "树结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 codeforces_tags 提取。",
+        "quality_flags": []
+      }
+    },
+    "2126E": {
+      "problem_key": "2126E",
+      "title": "G-C-D, Unlucky!",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2126/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/144845",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8b3f42d10ee951a5aed071c94dce683623141ab64dc4f125330b23102925a8c0",
+      "generated_at": "2026-09-27T02:02:55+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组 $p$ 和 $s$，它们声称分别是某个正整数数组 $a$ 的前缀 GCD 和后缀 GCD：$p_i=gcd(a_1,\u0005cldots,a_i)$、$s_i=gcd(a_i,\u0005cldots,a_n)$。需要判断是否存在这样的数组 $a$，输出 Yes 或 No。",
+        "transformed_statement": "将两条 GCD 链先除以共同的全数组 GCD $g=p_n=s_1$，并把每个位置的隐藏元素视为同时包含 $P_i$、$S_i$ 的公倍数；可行性转化为相邻链比值与另一侧因子的互质性检查。",
+        "key_observations": [
+          "前缀 GCD 必须沿数组方向逐步整除，后缀 GCD 则反向逐步整除，且 $p_n=s_1$ 都是全数组 GCD；这些条件可先排除不可能的链。",
+          "提出公共因子 $g=p_n=s_1$ 并令 $P_i=p_i/g、S_i=s_i/g$，把全局公共 GCD 从可行性判断中剥离。",
+          "位置 $i$ 的元素可取为 $a_i=gP_iS_i$；它同时是 $P_i$ 与 $S_i$ 的公倍数，因此只需检查相邻比值与另一侧链值的两个互质条件。",
+          "对每个位置检查 $gcd(p_{i-1}/p_i,S_i)=1$ 和 $gcd(s_{i+1}/s_i,P_i)=1$，即可保证该位置不会额外改变前缀或后缀 GCD。"
+        ],
+        "solution_brief": "先检查两条 GCD 链的整除关系及 $p_n=s_1$，再令 $g=p_n$、$P_i=p_i/g$、$S_i=s_i/g$。逐位置验证两组互质条件；全部通过则存在构造 $a_i=gP_iS_i$ 的数组，否则输出 No。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 math、number theory 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "2126D": {
+      "problem_key": "2126D",
+      "title": "This Is the Last Time",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2126/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/144845",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "75619ce0b99321b442d4491171f6567e93221307133de2a4167d144a934d3943",
+      "generated_at": "2026-09-27T02:03:08+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个赌场，初始拥有 $k$ 枚金币。当前金币数为 $x$ 时，只能进入满足 $l_i\\le x\\le r_i$ 的赌场；进入后金币变为 $real_i$，每个赌场最多进入一次且顺序任意。求最终最多能拥有的金币数。",
+        "transformed_statement": "把过程看成金币数单调增长的可达状态：当前值为 $cur$ 时，所有 $l_i\\le cur$ 的赌场进入候选集，而仍满足 $cur\\le r_i$ 的候选可被执行并把状态更新为 $real_i$。用按 $l_i$ 扫描和按 $real_i$ 取最大值的堆维护候选。",
+        "key_observations": [
+          "由于每次都有 $real_i\\ge l_i$ 且当前可玩时 $cur\\ge l_i$，操作后金币不会减少，因此可玩赌场集合只会扩大。",
+          "当前可玩的赌场中，选择 $real_i$ 最大者不会损害后续选择，反而立即得到最大的金币数，因此可按最大收益贪心。",
+          "按 $l_i$ 排序后，将所有 $l_i\\le cur$ 的赌场加入按 $real_i$ 最大堆；若某赌场满足 $r_i<cur$，因金币单调不降，它以后也不可能再可玩，可以永久丢弃。",
+          "每个赌场至多入堆和出堆一次，堆过程恰好模拟贪心序列，无法找到覆盖当前 $cur$ 的赌场时即可停止。"
+        ],
+        "solution_brief": "按 $l_i$ 排序，用最大堆维护已满足下界的赌场并按 $real_i$ 取最大者；移除 $r_i<cur$ 的赌场，直到无可玩赌场。复杂度为 $O(n\\log n)$，空间 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text 及 tags 提炼；核心算法和正确性依据 editorial。",
+        "quality_flags": []
+      }
+    },
+    "2126C": {
+      "problem_key": "2126C",
+      "title": "I Will Definitely Make It",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2126/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/144845",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3012ca3acb604f122bc600f80ea829f51b96348bf7c10faee92a98bebace25e4",
+      "generated_at": "2026-09-27T02:03:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 座塔，第 $k$ 座是起点，水位从 $1$ 开始每秒上升 $1$；水位严格超过所在塔高时立即失败。任意时刻可从当前塔传送到另一座塔，耗时为两塔高度差，传送期间仍在原塔，抵达后可立即继续传送；要求判断能否在被水淹没前到达最高塔。",
+        "transformed_statement": "把路线抽象为按塔高单调上升的序列：从起点高度 $h_0$ 到高度 $H$ 的累计耗时等于 $H-h_0$，因此排序所有更高塔后，逐个检查离开当前塔时是否仍满足 $time<cur$。",
+        "key_observations": [
+          "站在高度为 $h$ 的塔上时，最晚必须在全局时间 $h-1$ 前出发；因此到达时间为 $t$ 时的可用余量是 $h-1-t$。",
+          "前往更高的塔不会比绕经低塔更慢，且下降只会额外消耗时间，所以只需考虑高度单调不下降的路线。",
+          "按高度递增依次经过塔时，累计传送时间会望远镜相消，抵达高度 $H$ 的时间始终为 $H-h_0$；只需在每次离开当前塔前检查当前时间是否小于其高度。"
+        ],
+        "solution_brief": "记录起点高度 $h_0$，将所有塔高排序并依次处理更高的高度。累计传送时间增加 $H-cur$；若任一步出现 $time\\ge cur$，说明离开当前塔前已被水淹没，答案为 NO，否则最终可到达最高塔，答案为 YES。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的传送与水位规则、editorial_text 的单调路线和时间检查结论，并参考 tags 中的 greedy 与 sortings。",
+        "quality_flags": []
+      }
+    },
+    "2126B": {
+      "problem_key": "2126B",
+      "title": "No Casino in the Mountains",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2126/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/144845",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9448f2352bbc3572bef291cff2b8327126aee809da7c8426e64d3160b1f3e020",
+      "generated_at": "2026-09-27T02:03:39+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定每天的天气数组，$0$ 表示晴天、$1$ 表示下雨。一次徒步必须连续占用 $k$ 个晴天，完成后至少休息 1 天才能开始下一次徒步，求最多能游览多少座山峰。",
+        "transformed_statement": "将数组划分为若干个连续的全零段；每段中安排若干个长度为 $k$ 的徒步，并在相邻徒步之间插入休息日。长度为 $len$ 的一段等价于计算 $\\left\\lfloor\\frac{len+1}{k+1}\\right\\rfloor$ 个固定长度单位。",
+        "key_observations": [
+          "连续的好天气段可以独立计算，因为雨天会阻断徒步，跨段安排不可能带来额外收益。",
+          "长度为 $len$ 的全零段中，每次徒步占用 $k$ 天，除最后一次外还必须占用 1 天休息；在末尾补一个虚拟休息日后，答案变为 $\\left\\lfloor\\frac{len+1}{k+1}\\right\\rfloor$。",
+          "按顺序贪心地切分每个连续零段不会损失最优性，因为每次徒步都消耗固定的 $k+1$ 个位置，只有最后一次可以省略尾部休息日。"
+        ],
+        "solution_brief": "扫描数组中的连续好天气段。对每段长度 $len$，累加 $\\left\\lfloor\\frac{len+1}{k+1}\\right\\rfloor$，即把徒步和必要休息视为长度为 $k+1$ 的单位；雨天处直接分隔不同段。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的徒步与休息规则，以及 editorial_text 给出的连续零段计数公式；tags 仅作辅助参考。",
+        "quality_flags": []
+      }
+    },
+    "2126A": {
+      "problem_key": "2126A",
+      "title": "Only One Digit",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2126/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/144845",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8bffe5f217a8f6b4131d2959b531e05054a93f73d49349f5572578083ba85204",
+      "generated_at": "2026-09-27T02:03:51+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数 $x$，需要找出最小的非负整数 $y$，使 $x$ 与 $y$ 的十进制表示至少包含一个相同数字。每个测试用例独立处理，并输出这个最小的 $y$。",
+        "transformed_statement": "将问题转化为：从 $x$ 的数字集合中选出最小元素。多位数没有必要考虑，因为其首位对应的一位数已经能满足相同数字的条件。",
+        "key_observations": [
+          "合法的最小 $y$ 一定可以取为一位数；因为多位数的首位本身就是一个候选数字，若它能与 $x$ 匹配，则对应的一位数更小或相等。",
+          "因此只需记录 $x$ 的十进制表示中出现过的数字，并按 $0$ 到 $9$ 从小到大寻找第一个出现的数字，直接得到最小答案。"
+        ],
+        "solution_brief": "提取 $x$ 中出现的数字，随后从 $0$ 到 $9$ 递增检查；第一个出现的数字就是答案，因为最优 $y$ 必为一位数。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则与完整 editorial，结合 tags 中的实现和暴力提示。",
         "quality_flags": []
       }
     }
