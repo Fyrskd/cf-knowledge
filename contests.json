@@ -1606,6 +1606,17 @@
     "date": "2024-11-01"
   },
   {
+    "id": 2036,
+    "name": "Codeforces Round 984 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1730558100,
+    "relativeTimeSeconds": 59923961,
+    "date": "2024-11-02"
+  },
+  {
     "id": 2029,
     "name": "Refact.ai Match 1 (Codeforces Round 985)",
     "type": "CF",
