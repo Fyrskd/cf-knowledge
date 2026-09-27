@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2717,
+    "total_problems": 2725,
     "source_total_problems": 2725,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2717,
-    "with_editorial_brief": 2448,
-    "with_solution_brief": 2449,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2725,
+    "with_editorial_brief": 2456,
+    "with_solution_brief": 2457,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1779,
+    "ai_override_count": 1787,
     "primary_topic_count": 13
   },
   "records": [
@@ -7963,6 +7963,344 @@
           "model": "gpt-5.6-luna",
           "generated_at": "2026-09-23T06:36:19+00:00",
           "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 187,
+      "problem_key": "1811A",
+      "contest_id": 1811,
+      "title": "Insert Digit",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1811/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/114788",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "字符串"
+      ],
+      "original_tags": [
+        "greedy",
+        "math",
+        "strings"
+      ],
+      "statement_brief": "给定一个无前导零的 $n$ 位正整数和一个数字 $d$，必须将 $d$ 恰好插入原数字的任意位置（开头、末尾均可），得到 $n+1$ 位数字，并使结果最大。",
+      "transformed_statement": "把所有插入位置产生的结果视为等长字符串，目标转化为最大化字典序：保留尽可能长的前缀，并在第一个小于 $d$ 的原数字前插入 $d$；若不存在则追加到末尾。",
+      "key_observations": [
+        "所有候选结果长度都为 $n+1$，因此数值最大等价于按字典序最大，比较时只需关注最早不同的位置。",
+        "若当前数字小于 $d$，把 $d$ 放在它前面会立即增大该位置；若当前数字大于等于 $d$，应保留它在前面，从而继续寻找插入点。",
+        "从左到右找到第一个小于 $d$ 的原数字并在其前插入；若不存在这样的数字，放到末尾即可，这保证了前缀尽可能大。"
+      ],
+      "solution_brief": "从左到右扫描原数字，在第一个小于 $d$ 的位置前插入 $d$；若所有数字都不小于 $d$，则在末尾追加。这样最大化结果的字典序，也就最大化了数值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:28:21+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 188,
+      "problem_key": "1811B",
+      "contest_id": 1811,
+      "title": "Conveyor Belts",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1811/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/114788",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "几何"
+      ],
+      "original_tags": [
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定一个偶数阶方阵，格子按同心环组成顺时针传送带。站在格子上会随传送带每秒免费前进，也可随时花费 1 点能量移动到相邻格子；求从起点到终点所需的最少能量。",
+      "transformed_statement": "把每个格子替换为其所在同心环的编号，编号等于它到四条边界距离的最小值。免费移动可以在同一环内任意调整位置，付费移动则相当于在线性环编号上前进或后退一层。",
+      "key_observations": [
+        "每个格子属于一个由边界向内编号的同心环，同一环上的格子可借助传送带无消耗地移动，因此具体坐标只需转化为环编号。",
+        "一次付费移动只能改变所在环的编号一层，并且可以实现向外层或内层移动一层，因此环编号差既是能量下界也是可达的。",
+        "格子所在环编号为 $d(x,y)=min(x,y,n+1-x,n+1-y)$，所以最小能量就是两个编号之差的绝对值。"
+      ],
+      "solution_brief": "对起点和终点分别计算其到矩阵四条边的最小距离，即所在同心环编号；传送带可免费绕环移动，跨越相邻环需消耗 1 点能量，因此输出两个编号的绝对差。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:28:04+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 189,
+      "problem_key": "1811C",
+      "contest_id": 1811,
+      "title": "Restore the Array",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1811/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/114788",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy"
+      ],
+      "statement_brief": "给定数组 $b$，它由某个长度为 $n$ 的非负数组 $a$ 的相邻元素最大值生成，即 $b_i=\\max(a_i,a_{i+1})$。请构造任意一个满足这一关系的数组 $a$。",
+      "transformed_statement": "把每个位置的恢复看成同时满足左右相邻最大值约束的问题：端点固定取对应的 $b$，内部位置取其左右约束的较小值，从而让每个目标值都能由相邻位置中的一个达到。",
+      "key_observations": [
+        "两端元素可直接取为 $a_1=b_1$、$a_n=b_{n-1}$，这样边界相邻最大值必然分别还原为对应的 $b$。",
+        "对内部位置取 $a_i=\\min(b_{i-1},b_i)$，它同时不超过左右两侧目标值，避免新构造的相邻最大值超过 $b$。",
+        "合法的 $b$ 不可能出现 $b_i$ 严格大于左右邻居；因此 $\u001b$两个相邻的最小值中总有一个等于 $b_i$，其最大值恰为目标值。"
+      ],
+      "solution_brief": "构造 $a_1=b_1$、$a_n=b_{n-1}$，并对 $2\\le i\\le n-1$ 取 $a_i=\\min(b_{i-1},b_i)$。利用合法数组的局部性质，可证明每个相邻最大值都等于对应的 $b_i$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:27:38+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 190,
+      "problem_key": "1811D",
+      "contest_id": 1811,
+      "title": "Umka and a Long Flight",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1811/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/114788",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "几何"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定高为 $F_n$、宽为 $F_{n+1}$ 的 Fibonacci 矩形，以及其中坐标为 $(x,y)$ 的彩色格。需要依次切割成恰好 $n+1$ 个方格，并保证切割不穿过彩色格，判断是否存在这样的切法。",
+      "transformed_statement": "将问题重述为递归剥离边长为 $F_n,F_{n-1},\\ldots,F_0$ 的方格：每次选择不覆盖彩色格的一侧切下最大方格，再旋转剩余矩形并转换彩色格坐标。",
+      "key_observations": [
+        "面积恒等式 $F_0^2+F_1^2+\\cdots+F_n^2=F_nF_{n+1}$ 说明可行分割的方格边长必须恰好是 $F_0,F_1,\\ldots,F_n$。",
+        "当前最大的 $F_n\\times F_n$ 方格必须贴着矩形的一条长边切下；若从内部切割，会导致剩余区域无法容纳完整的 Fibonacci 方格集合。",
+        "当当前彩色格的横向坐标满足 $F_{n-1}<y\\le F_n$ 且 $n>1$ 时，左右两种放置都会覆盖它，因此可以立即判定无解。",
+        "若彩色格位于可保留的边缘区域，切去另一侧的最大方格后，将剩余矩形旋转并把坐标更新为 $(y,x)$ 或 $(y-F_n,x)$，即可递归检查更小的 Fibonacci 矩形。"
+      ],
+      "solution_brief": "预计算 Fibonacci 数列，从 $n$ 递减检查彩色格位置。若 $n>1$ 且 $F_{n-1}<y\\le F_n$ 则输出 NO；否则切去不覆盖彩色格的边缘最大方格，按旋转后的对应公式更新 $(x,y)$，最终输出 YES。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:27:24+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 191,
+      "problem_key": "1811E",
+      "contest_id": 1811,
+      "title": "Living Sequence",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1811/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/114788",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "dp",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "定义序列为所有十进制表示中不含数字 $4$ 的正整数，并按递增顺序排列。给定位置 $k$，需要求出序列中的第 $k$ 个数。",
+      "transformed_statement": "把每个合法十进制位替换为九进制中的一个数字：$0,1,2,3$ 保持不变，$4,5,6,7,8$ 分别对应 $5,6,7,8,9$；于是第 $k$ 个合法数等价于将 $k$ 写成九进制后逐位完成该映射。",
+      "key_observations": [
+        "长度为 $l$ 的合法正整数共有 $8\\times9^{l-1}$ 个，前缀累计后恰好对应 $k$ 的九进制位数，因此无需逐个跳过含 $4$ 的数字。",
+        "合法数字的每一位都可视为九进制数字 $0\\sim8$；九进制位越过 $4$ 时，映射为十进制数字加一，从而避开数字 $4$。",
+        "每个后缀位置都有独立的 $9$ 种选择，固定前缀不会改变后缀的排名，因此可以逐位进行相同映射。"
+      ],
+      "solution_brief": "将 $k$ 写成九进制，逐位把数字 $d$ 映射为 $d$（若 $d<4$）或 $d+1$（若 $d\\ge4$），所得十进制数就是答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:26:46+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 192,
+      "problem_key": "1811F",
+      "contest_id": 1811,
+      "title": "Is It Flower?",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1811/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/114788",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "graphs",
+        "implementation"
+      ],
+      "statement_brief": "给定一个无向简单图，若它能由一个长度为 $k$ 的主环组成，并在主环每个顶点上接一个长度同为 $k$、除该顶点外互不共享顶点的环，则称为 $k$-flower。需要判断图是否是某个 $k$-flower。",
+      "transformed_statement": "把图抽象为 $k$ 个度为 $4$ 的主环顶点和若干度为 $2$ 的附加顶点：先由总顶点数确定候选 $k$，再识别主环边；删去主环后，每个剩余连通块应恰好包含一个主环顶点及其附加环的全部顶点。",
+      "key_observations": [
+        "花朵恰有 $k^2$ 个顶点：主环的 $k$ 个顶点各额外贡献 $k-1$ 个顶点，因此可由 $n$ 判断 $k$ 是否为整数且至少为 $3$。",
+        "主环顶点的度数为 $4$，其余顶点的度数为 $2$；因此应恰有 $k$ 个度为 $4$ 的顶点，并可用度数模式排除结构不符的图。",
+        "花朵的边数固定为 $k^2+k$，且图必须连通；这些全局条件能快速筛掉顶点数量或连接关系不匹配的图。",
+        "两端都是度为 $4$ 顶点的边正好属于主环；删除这些边后，图应分裂成若干个大小均为 $k$ 的连通分量，从而验证每个附加环的长度。"
+      ],
+      "solution_brief": "由 $n=k^2$ 求出候选 $k$，检查 $k\\ge3$、连通性、边数 $k^2+k$ 及度数分布。删除所有连接两个度为 $4$ 顶点的边后，检查剩余每个连通分量的大小是否均为 $k$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:26:28+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 193,
+      "problem_key": "1811G1",
+      "contest_id": 1811,
+      "title": "Vlad and the Nice Paths (easy version)",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1811/problem/G1",
+      "editorial_url": "https://codeforces.com/blog/entry/114788",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定一排带颜色的 $n$ 个棋子，可以从任意棋子开始，每次向右跳到任意位置，选出的递增位置序列构成路径。按题解对应的定义，路径需由若干个长度为 $k$ 的同色块组成；要求求最大长度路径的数量，并对 $10^9+7$ 取模。",
+      "transformed_statement": "把路径看成前缀上的同色块序列：每加入一个新块，只需确定它的首尾位置，并从两端之间的同色棋子中选出 $k-2$ 个作为中间位置；于是问题转化为按块数计数的前缀 DP。",
+      "key_observations": [
+        "按题解中的分块定义，路径由若干个长度为 $k$ 的同色块组成，因此最大路径长度等价于最大化块数。",
+        "若最后一块的首尾位置为 $p,i$ 且颜色相同，设区间内部还有 $s$ 个相同颜色的棋子，则中间选出的 $k-2$ 个位置有 $\\binom{s}{k-2}$ 种方式。",
+        "固定最后一块后，其前面的选择完全落在前缀 $[1,p-1]$ 中，因而可用前缀中已有 $j-1$ 个块的方案数转移，并在所有 $j$ 中取最大可行值。"
+      ],
+      "solution_brief": "令 $dp[i][j]$ 表示前缀中形成 $j$ 个同色块的路径数。枚举最后一块的首尾位置 $p,i$，用区间内同色位置数产生组合数 $\\binom{s}{k-2}$，结合 $dp[p-1][j-1]$ 转移；取最大块数的方案总数，复杂度为 $O(n^3)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:26:02+00:00",
+          "quality_flags": [
+            "statement_definition_truncated",
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 194,
+      "problem_key": "1811G2",
+      "contest_id": 1811,
+      "title": "Vlad and the Nice Paths (hard version)",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1811/problem/G2",
+      "editorial_url": "https://codeforces.com/blog/entry/114788",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "combinatorics",
+        "data structures",
+        "dp",
+        "math",
+        "two pointers"
+      ],
+      "statement_brief": "给定一排带颜色的 $n$ 个方块，可以从任意方块出发，按从左到右的方向跳到后面的任意方块，形成一条路径。题目要求统计满足“nice”条件且长度最大的路径数量，并对 $10^9+7$ 取模；但提供的题面正文缺失了 nice 路径的具体条件。",
+      "transformed_statement": "题解将问题重述为逐前缀求最长路径：对每个位置维护最长路径的数量及其块数，并寻找能在该位置开始新块的最左位置来进行最优转移。具体的块定义和可行性判定在给定材料中未提供。",
+      "key_observations": [
+        "只需保留每个前缀中的最长路径，因此题解指出可以删去原状态中的参数 $j$，避免同时记录非最大长度的路径。",
+        "将 $dp[i]$ 记录为一个二元组：达到位置 $i$ 的最长路径数量，以及这些路径中的块数；这样计数和最优长度信息可以同步转移。",
+        "对位置 $i$，先寻找最靠左且能够作为一个块起点的位置，再按题解所述持续更新，直到当前排序位置的最大值满足条件；该过程用于确定 $i$ 的最优路径贡献，但给定正文未完整说明判定条件。"
+      ],
+      "solution_brief": "题解把每个前缀的状态压缩为最长路径数量及其块数，用最靠左的可行块起点确定当前位置的最优转移，并累计最长路径的数量。由于题面和题解均缺少完整转移条件，无法进一步可靠还原算法细节。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T11:25:34+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_nice_path_condition",
+            "partial_editorial",
+            "statement_incomplete"
+          ]
         }
       },
       "manual_override": false,
