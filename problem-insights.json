@@ -15,19 +15,278 @@
     ]
   },
   "summary": {
-    "total_problems": 3039,
+    "total_problems": 3045,
     "source_total_problems": 3046,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3039,
-    "with_editorial_brief": 2761,
-    "with_solution_brief": 2762,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3045,
+    "with_editorial_brief": 2767,
+    "with_solution_brief": 2768,
     "missing_editorial_brief": 277,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2101,
+    "ai_override_count": 2107,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1721A",
+      "contest_id": 1721,
+      "title": "Image",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1721/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/106416",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定一个 $2\\times2$ 的四像素图像，每步可选择至多两个同色像素，并把它们同时改成另一种颜色。求把四个像素变成同一种颜色所需的最少操作次数。",
+      "transformed_statement": "将问题抽象为消除颜色种类：选定一种颜色保留，其他每种颜色分别用一次操作全部改成目标色；目标是最少消除多少种不同颜色。",
+      "key_observations": [
+        "选择出现次数最多的颜色作为最终颜色后，其他任意颜色最多出现 $2$ 次，因此每种非目标颜色都能在一次操作中被全部改掉，操作限制不会额外增加答案。",
+        "一次操作只能处理一种来源颜色，所以每次至多消灭一种不同颜色；若共有 $d$ 种颜色，至少需要 $d-1$ 次操作。",
+        "保留一种颜色、分别消除其余每种颜色即可达到上述下界，因此最少操作次数只取决于不同颜色的数量。"
+      ],
+      "solution_brief": "统计四个像素中出现的不同颜色数 $d$，保留其中一种颜色，并将其他每种颜色的像素一次性改成它。由于非目标颜色最多出现 $2$ 次，答案为 $d-1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T23:01:56+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1721B",
+      "contest_id": 1721,
+      "title": "Deadly Laser",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1721/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/106416",
+      "editorial_quality": "complete",
+      "primary_topic": "几何",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "implementation"
+      ],
+      "statement_brief": "机器人从 $ (1,1) $ 出发，每步只能向上下左右相邻且仍在网格内的格子移动；进入与激光曼哈顿距离不超过 $d$ 的格子会被消灭。求不被消灭地到达 $ (n,m) $ 所需的最少步数，无法到达则输出 $-1$。",
+      "transformed_statement": "把距离不超过 $d$ 的格子视为危险区域，问题转化为判断左上到右下是否存在一条避开危险区域的单调边界路径；存在时该路径必达到曼哈顿距离下界。",
+      "key_observations": [
+        "任意从 $(1,1)$ 到 $(n,m)$ 的路径至少需要 $n+m-2$ 步，而沿网格边界的单调路径恰好达到该下界，因此可行时答案不会更大。",
+        "若激光危险区域同时覆盖左上角相邻的上、左两面边界，或同时覆盖右下角相邻的下、右两面边界，则两条可行的边界通路都被封死，无法到达终点。",
+        "若上述两组边界没有任意一组同时被覆盖，至少有一条贴近边界的单调路径完全避开危险区域，因此一定可以用 $n+m-2$ 步到达。",
+        "某面边界是否被危险区域覆盖可直接由激光到该边界的最小曼哈顿距离判断，例如上、左、下、右分别对应 $s_x-1$、$s_y-1$、$n-s_x$、$m-s_y$。"
+      ],
+      "solution_brief": "计算激光危险区域是否同时覆盖上、左两面边界，或下、右两面边界；若任一情况成立输出 $-1$，否则沿未被封锁的边界路径行走，答案为 $n+m-2$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T23:01:39+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1721C",
+      "contest_id": 1721,
+      "title": "Min-Max Array Transformation",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1721/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/106416",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "greedy",
+        "two pointers"
+      ],
+      "statement_brief": "给定两个非递减数组 $a$ 和 $b$，为每个 $a_i$ 加上非负值 $d_i$，再将所得数组排序，使其恰好变为 $b$。对每个位置分别求 $d_i$ 在所有合法选择中的最小值和最大值，各位置的极值可以来自不同的合法数组。",
+      "transformed_statement": "把问题看成将每个 $a_i$ 独立匹配到一个最终值 $b_j$，但整体匹配必须能通过加法和排序实现；最小值寻找最早可匹配的 $b_j$，最大值寻找从当前位置向右扩展时首次破坏可行性的边界。",
+      "key_observations": [
+        "由于最终只要求排序后的结果等于 $b$，$a_i$ 可以匹配到任意满足 $b_j\\ge a_i$ 的位置，且每个位置的极值彼此独立。",
+        "$d_i$ 的最小值对应于第一个满足 $b_j\\ge a_i$ 的元素，因此为 $b_j-a_i$；把区间内元素整体错位即可构造出合法匹配。",
+        "若 $a_i$ 匹配到更靠右的 $b_j$，中间元素需满足 $b_{k-1}\\ge a_k$；从右向左维护第一个违约位置，就能确定 $d_i$ 的最大可达目标。",
+        "最大值的目标位置至多是该违约位置前的 $b_{l-1}$；若不存在违约位置，则可匹配到 $b_n$，从而得到 $d_i^{max}$。"
+      ],
+      "solution_brief": "对每个 $a_i$，用双指针寻找第一个不小于它的 $b_j$，计算最小增量。最大增量从右向左维护最左违约位置 $l$，取 $b_{l-1}-a_i$，若不存在则取 $b_n-a_i$；总复杂度可做到 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T23:01:13+00:00",
+          "quality_flags": [
+            "statement_operation_text_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1721D",
+      "contest_id": 1721,
+      "title": "Maximum AND",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1721/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/106416",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "dfs and similar",
+        "divide and conquer",
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "给定两个长度均为 $n$ 的非负整数数组 $a,b$，可以任意重排数组 $b$，再将每个 $a_i$ 与对应的 $b_i$ 配对并计算异或值。要求最大化所有这些异或值的按位与，并输出最大结果。",
+      "transformed_statement": "把目标看成选择一个最大掩码 $mask$，要求存在一种配对，使每对异或值都包含 $mask$ 的全部位。对固定掩码，配对可行性等价于 $a$ 的每个按掩码分组都能和 $b$ 中按补值分组一一对应。",
+      "key_observations": [
+        "要让某一位进入答案，所有配对的异或值都必须在该位为 $1$，因此该位为 $1$ 的 $a$ 元素必须恰好匹配该位为 $0$ 的 $b$ 元素，反之亦然。",
+        "逐位贪心时不能只检查当前位，因为新配对可能破坏已保留的高位；必须要求所有候选位同时满足配对条件。",
+        "对当前候选掩码 $mask$，若 $a_i$ 与 $b_j$ 配对后异或在这些位上全为 $1$，则 $a_i\\&mask$ 必须匹配 $b_j\\&mask$ 的补值；因此按 $a_i\\&mask$ 分组后，各组大小必须等于 $b$ 中对应补值分组的大小。",
+        "分组只需记录实际出现的掩码值，不必枚举全部 $2^k$ 组；用映射维护计数即可支持逐位尝试。"
+      ],
+      "solution_brief": "从最高位到最低位贪心尝试加入答案掩码。加入一位后，按当前 $mask$ 统计 $a_i\\&mask$ 与 $b_j\\&mask$ 的分组计数；若每组都能与对应补值组相等，则保留该位，否则撤销。总复杂度为 $O(n\\log n\\log A)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T23:00:55+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1721E",
+      "contest_id": 1721,
+      "title": "Prefix Function Queries",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1721/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/106416",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数据结构"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "dp",
+        "hashing",
+        "string suffix structures",
+        "strings",
+        "trees"
+      ],
+      "statement_brief": "给定小写字符串 $s$，每次把一个小写字符串 $t$ 追加到 $s$ 后，考虑新串 $s+t$。对每个查询，输出追加部分各位置的前缀函数值，即该位置结尾处最长的相等真前缀与后缀长度。",
+      "transformed_statement": "将前缀函数值视为当前状态：状态表示已匹配的最长前缀长度，追加一个字符就是沿失配链寻找下一状态的确定转移。先为 $s$ 建立前缀函数自动机，再对查询串只扩展超出已有状态的部分。",
+      "key_observations": [
+        "计算新字符对应的前缀函数值时，当前值加上新字符即可沿失配链反复回退，因此只需知道当前前缀长度状态，无需保存完整字符串。",
+        "把状态定义为当前前缀函数值后，每个字符都对应一个确定转移；在固定字符串 $s$ 上预处理全部字母转移，就能把大部分查询步骤降为 $O(1)$。",
+        "查询串可能使匹配前缀长度超过 $|s|$，因此不能只使用 $s$ 的自动机；应从已有状态继续按 KMP 规则临时扩展查询串对应的层，得到答案后回滚。",
+        "临时扩展每一层只依赖其失配链和字符转移，扩展后立即回滚不会影响其他查询，从而避免为每个查询重新处理整个 $s$。"
+      ],
+      "solution_brief": "先计算 $s$ 的前缀函数，并为每个前缀状态预处理 26 个字符的转移。每次查询从 $s$ 的末状态开始，优先使用已有自动机；超出预处理范围时临时扩展 $t$ 的状态与转移，输出各步前缀函数值后回滚。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T23:00:38+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1721F",
+      "contest_id": 1721,
+      "title": "Matching Reduction",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1721/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/106416",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "dfs and similar",
+        "flows",
+        "graph matchings",
+        "graphs",
+        "interactive"
+      ],
+      "statement_brief": "给定一个二分图，包含两侧顶点和边，并在线处理只给出类型编号的两类查询。题解明确了类型 1 需要删除一个能使最大匹配下降的顶点，删除后继续处理后续查询；程序还需按题面规定报告当前匹配等结果，但所给题面片段未包含两类查询的完整输出要求。",
+      "transformed_statement": "把“减少最大匹配”转化为“删除最小点覆盖中的一个顶点”：由 König 定理，这会让匹配规模恰好减少 $1$。先固定最大匹配与最小点覆盖，并把覆盖顶点和其匹配边配对，之后的删除只需移除对应配对。",
+      "key_observations": [
+        "二分图中最大匹配大小等于最小点覆盖大小；删除最小点覆盖中的任意一个顶点后，点覆盖规模降为 $k-1$，而匹配至多损失一条边，因此最大匹配恰好下降 $1$。",
+        "固定一个最大匹配及其对应的最小点覆盖后，点覆盖中的每个顶点恰好关联一条匹配边；删除该顶点时同步删除这条边，就能直接维护匹配，无需重新求匹配。",
+        "最小点覆盖包含最大匹配的每个端点之一，因此图中每条边都与待删除的点覆盖相交；这保证了预先建立的顶点—匹配边对应关系在后续删除中不会产生新的冲突。"
+      ],
+      "solution_brief": "先用 Dinic 等方法求最大匹配，再由匹配构造最小点覆盖。预存点覆盖顶点与其唯一匹配边的对应关系；类型 1 删除一个点覆盖顶点并同步删边，类型 2 按当前匹配输出，从而无需重建匹配。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T23:00:02+00:00",
+          "quality_flags": [
+            "statement_query_details_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 7,
       "problem_key": "1722A",
