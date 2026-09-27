@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2005,
+    "total_problems": 2012,
     "source_total_problems": 2012,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2005,
-    "with_editorial_brief": 1753,
-    "with_solution_brief": 1754,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2012,
+    "with_editorial_brief": 1760,
+    "with_solution_brief": 1761,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 946,
+    "ai_override_count": 953,
     "primary_topic_count": 13,
-    "contest_count": 314,
+    "contest_count": 315,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 85,
-    "构造与贪心": 676,
+    "字符串": 86,
+    "构造与贪心": 677,
     "图论与网络流": 119,
-    "动态规划与状态设计": 189,
-    "数论与同余": 195,
-    "组合计数与概率": 155,
+    "动态规划与状态设计": 190,
+    "数论与同余": 196,
+    "组合计数与概率": 157,
     "数据结构": 165,
     "几何": 42,
     "树结构": 129,
     "代数、矩阵与多项式": 18,
     "交互": 77,
-    "基础实现与模拟": 84,
+    "基础实现与模拟": 85,
     "博弈": 71
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 825,
+    "ai_generated_with_editorial": 832,
     "ai_generated_partial_editorial": 37,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -22680,6 +22680,219 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：把操作能力翻译成线性基表示能力。固定左端 l 后，随着右端扩大，可表示空间只在插入独立元素时变化；用后缀线性基记录这些变化点。再用线性基的排名/第 k 小能力，按下标块模拟能否选出严格递增值，得到每个 l 的最远合法右端，查询 O(1) 回答。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2144,
+      "name": "Educational Codeforces Round 182 (Rated for Div. 2)",
+      "date": "2025-09-15",
+      "url": "https://codeforces.com/contest/2144",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "2144A",
+          "index": "A",
+          "slot": "A",
+          "title": "Cut the Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2144/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/146474",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个长度至少为 $3$ 的非负整数数组，选择两个边界 $1\\le l<r<n$，将数组按顺序切成非空前缀、中间段和后缀。计算三段元素和分别模 $3$ 的余数，若三者全相同或两两不同则输出边界，否则输出 $0\\ 0$。",
+          "transformedStatement": "把三段的余数视为集合 $\\{0,1,2\\}$ 中的三个数；它们的和模 $3$ 等于整个数组和模 $3$。在总和模 $3$ 为 $0$ 时，三个余数必然全相同或恰好各不相同，所以切分边界无需优化。",
+          "keyObservations": [
+            "三个部分的和模 $3$ 之和等于整个数组的和模 $3$，因此满足条件的必要条件是总和能被 $3$ 整除。",
+            "三个余数都属于 $\\{0,1,2\\}$；当它们总和模 $3$ 为 $0$ 时，若前两个相等，第三个必然也相等，否则三个余数必为 $0,1,2$ 的排列。",
+            "只要数组总和能被 $3$ 整除，任意合法切分都满足要求，因此无需搜索边界，可直接输出 $l=1,r=2$。"
+          ],
+          "solutionBrief": "计算整个数组元素和对 $3$ 的余数。若为 $0$，任取合法切分并输出 $1\\ 2$；否则不存在满足条件的切分，输出 $0\\ 0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2144B",
+          "index": "B",
+          "slot": "B",
+          "title": "Maximum Cost Permutation",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2144/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/146474",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的数组，其中正整数互不重复、其余位置为零；将零替换为缺失数字，使数组成为排列。排列的代价是把一个连续子段排序后使整个排列升序所需的最短子段长度，要求最大化该代价。",
+          "transformedStatement": "先把代价转化为补全排列中最左与最右错位位置的跨度。固定的非零元素决定不可改变的正确前后缀，而多个空位可以通过循环分配缺失数字让所有空位都成为错位点。",
+          "keyObservations": [
+            "排列的代价等于最左和最右错位元素之间的距离，因为这两处必须被排序区间覆盖，而覆盖全部错位位置后其余元素已正确归位。",
+            "只有一个零时，缺失数字的填法唯一，因此直接统计唯一补全排列的最左、最右错位位置即可。",
+            "当零的数量至少为两个时，可先尽量让缺失数字与对应位置匹配，再将这些数字在空位中循环右移，从而保证每个原零位置都放入错位数字。",
+            "因此多零情况下只需去掉前缀和后缀中原本已正确的固定元素，中间区间就是可达到的最大代价。"
+          ],
+          "solutionBrief": "先找缺失数字。若只有一个零，唯一补全后统计最左、最右错位位置；若有多个零，将缺失数字循环移到空位，使所有零位错位，答案为去除正确前后缀后的区间长度。整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2144C",
+          "index": "C",
+          "slot": "C",
+          "title": "Non-Descending Arrays",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2144/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/146474",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的整数数组，可任选一个下标子集，并在这些位置分别交换 $a_i$ 与 $b_i$。求交换后两个数组都按非递减顺序排列的子集数量，答案对 $998244353$ 取模。",
+          "transformedStatement": "把每一列看成一对数，先统一将较小值放入 $a$、较大值放入 $b$；随后把相邻边界上是否强制两列同步选择转化为路径连通段计数。",
+          "keyObservations": [
+            "先把每个位置的较小值放入数组 $a$、较大值放入数组 $b$；这种预交换只是重新标记子集，所有方案数量不变，且存在可行方案时该排列一定可行。",
+            "若相邻位置满足 $b_i\\le a_{i+1}$，则位置 $i$ 和 $i+1$ 的任意取值都能保持跨边界有序，因此两侧选择互不约束。",
+            "若 $b_i>a_{i+1}$，为保持两数组有序，位置 $i$ 与 $i+1$ 必须同时交换或同时不交换；该条件把相邻位置的选择合并为同一连通段。",
+            "将满足 $b_i>a_{i+1}$ 的相邻边视为连接，若其数量为 $k$，则路径上的独立段数为 $n-k$，每段有两种选择，答案为 $2^{n-k}$。"
+          ],
+          "solutionBrief": "先逐列交换使 $a_i\\le b_i$，再检查每个相邻边界。满足 $b_i>a_{i+1}$ 时两列选择必须一致，否则互不影响；统计这类边数 $k$，输出 $2^{n-k}\\bmod 998244353$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2144D",
+          "index": "D",
+          "slot": "D",
+          "title": "Price Tags",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2144/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/146474",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 件商品，原价为 $c_i$。选择整数 $x>1$，将每件商品价格改为 $\\lceil c_i/x\\rceil$；已有价格标签可以重新贴到其他商品，只有缺少对应价格标签时才需按每张 $y$ 枚印刷，求最大总收入。",
+          "transformedStatement": "把固定的 $x$ 看成将原价轴划分为区间 $[(p-1)x+1,px]$：区间内商品统一变为价格 $p$，再用原价频次统计每个新价格的需求，并与已有 $p$ 元标签数量匹配。",
+          "keyObservations": [
+            "当 $x>A$ 时所有新价格都为 $1$，与 $x-1$ 的结果相同，因此只需检查 $2\\le x\\le A$；$A=1$ 时答案直接为 $n$。",
+            "固定 $x$ 后，新价格为 $p$ 的原价恰好落在区间 $[(p-1)x+1,px]$，因此可按新价格分组统计，而不必逐件处理。",
+            "若该组有 $need$ 件商品、新价格为 $p$，已有标签数为 $cnt[p]$，只需打印 $\\max(0,need-cnt[p])$ 张，贡献为 $p\\cdot need-y\\cdot\\max(0,need-cnt[p])$。",
+            "新价格最多为 $\\lceil A/x\\rceil$，用原价频次的前缀和在常数时间求每组数量，使所有 $x$ 的总复杂度降为 $O(A\\log A)$。"
+          ],
+          "solutionBrief": "统计各原价频次及前缀和，枚举 $x=2..A$。对每个新价格 $p$，由区间 $[(p-1)x+1,px]$求商品数，扣除已有标签可复用的数量，累加收入并取最大值；总复杂度为 $O(n+A\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2144E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Looking at Towers (easy version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2144/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/146474",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp"
+          ],
+          "statementBrief": "给定塔高序列，子序列由选择不同下标得到；从左看时保留严格高于此前所有塔的元素，从右看时保留严格高于其后所有塔的元素。要求统计左右视野高度集合都与原序列相同的子序列数量，并对 $998244353$ 取模。",
+          "transformedStatement": "把每个合法子序列按最大值在其中的首次位置 $i$ 和末次位置 $j$ 分类：左侧负责生成完整左视野，右侧负责生成完整右视野，而两个最大值之间的元素完全不影响视野，可独立选择。通过前缀匹配状态计算两侧方案。",
+          "keyObservations": [
+            "子序列的最大值必须等于原序列最大值 $m$，因为最大塔无论从左还是从右都必然可见，从而可以按所选最大值的首次与末次位置分类计数。",
+            "固定最大值在子序列中的首次位置 $i$ 和末次位置 $j$ 后，二者之间的元素不会改变左右视野，因此中间每个位置都可独立选或不选，贡献为 $2^{j-i-1}$。",
+            "从左到右维护“左视野等于目标视野前缀”的计数：若新元素等于下一个目标高度则推进前缀，否则只有不超过当前最高可见高度时才可自由选取或跳过。",
+            "在遇到最大值位置 $i$ 时，能作为子序列首次最大值的方案数等于匹配目标左视野去掉最后一个元素的状态；右侧计数可对反序列使用同样方法得到。"
+          ],
+          "solutionBrief": "先求原序列的左右视野及最大值。枚举子序列中最大值的首次、末次位置，用左右前缀 DP 分别计算两侧方案，中间位置贡献 $2^{j-i-1}$，将三者乘积累加，整体复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2144E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Looking at Towers (difficult version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/2144/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/146474",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定一个高度序列，子序列必须保持原下标顺序；从左看时记录所有严格高于此前全部元素的塔，从右看时记录所有严格高于其后全部元素的塔。要求统计与原序列拥有相同左右可见高度集合的子序列数量，按下标选择区分并对 $998244353$ 取模。",
+          "transformedStatement": "把合法子序列按其中最大值的最左、最右选中位置 $i,j$ 划分：两端的可行选择由 $dpL_i$ 和 $dpR_j$ 表示，中间位置独立产生因子 $2^{\\max(0,j-i-1)}$；问题转为高效计算两侧 DP 及所有端点配对的加权和。",
+          "keyObservations": [
+            "处理一个元素 $a_i$ 时，数组 $c$ 中被影响的位置总是所有不小于 $a_i$ 的左侧可见高度组成的后缀，因此可二分定位并整体乘 $2$，避免逐项更新。",
+            "$c$ 的更新只包含区间整体乘 $2$、单点加值和单点查询，正好可以由带懒标记的线段树维护，从而在 $O(n\\log n)$ 内构造 $dpL$ 与 $dpR$。",
+            "固定最大值的两个选中位置 $i\\le j$ 后，中间位置的选择贡献为 $2^{\\max(0,j-i-1)}$，该部分可与两端的 $dpL_i$、$dpR_j$ 分离。",
+            "从左到右枚举右端位置 $j$ 时，所有此前的 $dpL_i$ 及其幂次权重只需整体乘 $2$，再加入 $dpL_j$，即可在线性时间累加所有 $dpL_i\\cdot dpR_j\\cdot 2^{\\max(0,j-i-1)}$。"
+          ],
+          "solutionBrief": "沿用简单版的 $dpL,dpR$，用线段树维护可见高度后缀的统一翻倍与单点更新，$O(n\\log n)$ 求出两组 DP。再按最大值的选中端点配对，维护加权 $dpL$ 前缀和，在线性时间累加答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2144F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bracket Groups",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/2144/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/146474",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 个长度不超过偶数 $k$ 的括号串，要把每个串恰好分到一个组。每组需指定一个长度恰为 $k$ 的正规括号序列，并要求该组所有串都不是它的子串；求最少组数并输出构造，若不可能则输出 $-1$。",
+          "transformedStatement": "问题等价于寻找尽量少的长度为 $k$ 的正规括号序列，使每个给定串至少被其中一个序列避开；单组可行性则是带前缀平衡约束的禁用子串生成问题，用自动机状态记录当前后缀。",
+          "keyObservations": [
+            "若输入包含字符串 `()`，则任何正规括号序列都必含它，因此无论分组数如何都无法构造答案。",
+            "除 `()` 外，所有字符串至多可分成两组：含有相邻相同括号的字符串避开 `()()...()`，其余交替字符串避开形如 `((...))` 的嵌套序列。",
+            "判断能否只用一组可转化为：构造长度为 $k$、前缀平衡值始终非负且末平衡为 $0$ 的字符串，并禁止所有给定串作为子串。",
+            "在 Aho-Corasick 自动机中，某状态只要自身或后缀链接树上可达终止状态就不安全；DP 只转移到安全状态，即可保证整个构造串不含任何给定子串。"
+          ],
+          "solutionBrief": "先特判 `()`；否则先得到至多两组的构造。再用 Aho-Corasick 建模所有禁用子串，令 `dp[i][bal][v]` 表示长度、括号平衡值和自动机状态，避开不安全转移并要求最终平衡为零。若能到达则输出一组，否则输出上述两组构造。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
