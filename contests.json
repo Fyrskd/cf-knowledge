@@ -1947,6 +1947,17 @@
     "date": "2025-04-05"
   },
   {
+    "id": 2094,
+    "name": "Codeforces Round 1017 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1744558500,
+    "relativeTimeSeconds": 45918397,
+    "date": "2025-04-13"
+  },
+  {
     "id": 2096,
     "name": "Neowise Labs Contest 1 (Codeforces Round 1018, Div. 1 + Div. 2)",
     "type": "CF",
