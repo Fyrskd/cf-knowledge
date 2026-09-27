@@ -572,6 +572,17 @@
     "date": "2023-07-16"
   },
   {
+    "id": 1850,
+    "name": "Codeforces Round 886 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1689950100,
+    "relativeTimeSeconds": 100552903,
+    "date": "2023-07-21"
+  },
+  {
     "id": 1852,
     "name": "Codeforces Round 887 (Div. 1)",
     "type": "CF",
