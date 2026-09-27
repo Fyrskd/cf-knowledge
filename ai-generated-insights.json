@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T20:59:12+00:00",
+  "updated_at": "2026-09-27T21:08:07+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -59374,6 +59374,198 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面约束和 editorial 中的组合计数方案，结合 tags 中的 combinatorics 与 math。",
         "quality_flags": []
+      }
+    },
+    "1744F": {
+      "problem_key": "1744F",
+      "title": "MEX vs MED",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1744/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/108101",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5859c05507354ddd573cc4f75c9ff4c7e00caaf5e1a50c7b84d55288d81ac9ce",
+      "generated_at": "2026-09-27T21:06:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个包含 $0$ 到 $n-1$ 的排列，考虑其中每个连续子段。对每个子段计算其 MEX（未出现的最小非负整数）和排序后的下中位数，统计满足 MEX 严格大于中位数的子段数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面中的 MEX 定义、下中位数定义和子段计数目标；题解正文抓取失败，未使用标签补写算法。",
+        "quality_flags": [
+          "algorithm_unavailable",
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "1744E2": {
+      "problem_key": "1744E2",
+      "title": "Divisible Numbers (hard version)",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1744/problem/E2",
+      "editorial_url": "https://codeforces.com/blog/entry/108101",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "127914eb9e792d14b3fe9ce7d4f0c7891d9b8f3016f1d00ac0acdd1d890bc127",
+      "generated_at": "2026-09-27T21:06:49+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数 $a,b,c,d$，其中 $a<c$、$b<d$。需要分别从区间 $(a,c]$ 和 $(b,d]$ 中选取整数 $x,y$，使 $xy$ 能被 $ab$ 整除；若不存在这样的数对，输出 $-1\\ -1$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，未使用外部题解。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "1744E1": {
+      "problem_key": "1744E1",
+      "title": "Divisible Numbers (easy version)",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1744/problem/E1",
+      "editorial_url": "https://codeforces.com/blog/entry/108101",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "afdb358b9f48cbb1d234ff1677357be9122fae1cf826efb5d59d4031eeb06793",
+      "generated_at": "2026-09-27T21:07:04+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数 $a<b? $ 的区间参数，实际条件为 $a<c$、$b<d$。需要分别选择 $a<x\\le c$ 和 $b<y\\le d$，使乘积 $xy$ 能被 $ab$ 整除；若不存在这样的数对，输出 $-1\\ -1$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和题目标签提炼；editorial_text 为空且 editorial_quality 标记为 fetch_failed。",
+        "quality_flags": [
+          "low_confidence",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1744D": {
+      "problem_key": "1744D",
+      "title": "Divisibility by 2^n",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1744/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/108101",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1741df840b712399149ecbbf78148745b891c97f8410d5c91ffd39b78f43441a",
+      "generated_at": "2026-09-27T21:07:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个正整数。按示例，选择下标 $i$ 时可将对应元素 $a_i$ 乘以 $i$，每个下标最多操作一次；要求用最少操作使所有元素的乘积能被 $2^n$ 整除，无解时输出 $-1$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 及其中示例推断操作效果，结合 tags 中的 math、greedy、sortings；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "operation_inferred_from_examples",
+          "statement_operation_formula_incomplete"
+        ]
+      }
+    },
+    "1744C": {
+      "problem_key": "1744C",
+      "title": "Traffic Light",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1744/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/108101",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "cd55776319fe465acbcc9472d1141aac58401ddc65254d72af24fdaf27075e43",
+      "generated_at": "2026-09-27T21:07:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "交通灯有一个长度为 $n$ 的循环颜色串，每秒依次显示一个字符并不断重复。已知当前颜色但不知道处于周期中的哪个位置，只能在绿色时过马路；求无论当前位置如何都能保证过马路所需的最少时间。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text；editorial_text 获取失败，tags 仅用于主题辅助判断。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1744B": {
+      "problem_key": "1744B",
+      "title": "Even-Odd Increments ",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1744/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/108101",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "503f46dca7b6afe8177c67d10825e00ee94b2a211e81013b4004eb7b92709adf",
+      "generated_at": "2026-09-27T21:07:52+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，依次处理两类查询：按照元素当前是奇数还是偶数，给对应的全部元素增加查询中的数值；每次操作后输出整个数组的元素总和。筛选依据是元素的奇偶值，而不是下标。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text、题目标题、示例变化和 tags 推断；editorial_text 为空且 editorial_quality 标记为 fetch_failed。",
+        "quality_flags": [
+          "missing_editorial",
+          "partial_statement",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1744A": {
+      "problem_key": "1744A",
+      "title": "Number Replacement",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1744/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/108101",
+      "editorial_quality": "fetch_failed",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7917ffcac48151e1b1adf69f0177673a51d04df4ed143120eabd84c4ac36a417",
+      "generated_at": "2026-09-27T21:08:07+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的整数数组和长度同为 $n$ 的小写字符串。每次选择数组中的一个数字并把它替换成一个字母；题面示例表明同一数字的出现位置会统一替换，最终判断能否得到给定字符串。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 及其示例；editorial_text 为空，tags 仅用于题目分类。",
+        "quality_flags": [
+          "ambiguous_statement",
+          "missing_editorial",
+          "statement_inferred"
+        ]
       }
     }
   }
