@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2183,
+    "total_problems": 2190,
     "source_total_problems": 2190,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2183,
-    "with_editorial_brief": 1930,
-    "with_solution_brief": 1931,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2190,
+    "with_editorial_brief": 1937,
+    "with_solution_brief": 1938,
     "missing_editorial_brief": 252,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1124,
+    "ai_override_count": 1131,
     "primary_topic_count": 13,
-    "contest_count": 339,
+    "contest_count": 340,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 97,
-    "构造与贪心": 738,
-    "图论与网络流": 126,
-    "动态规划与状态设计": 202,
+    "构造与贪心": 740,
+    "图论与网络流": 127,
+    "动态规划与状态设计": 203,
     "数论与同余": 225,
-    "组合计数与概率": 165,
+    "组合计数与概率": 166,
     "数据结构": 185,
     "几何": 49,
     "树结构": 133,
     "代数、矩阵与多项式": 18,
     "交互": 78,
-    "基础实现与模拟": 92,
-    "博弈": 75
+    "基础实现与模拟": 93,
+    "博弈": 76
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1001,
+    "ai_generated_with_editorial": 1008,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 252,
     "manual_override": 891,
@@ -37337,6 +37337,212 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：直接 dp(i,j) 是 O(n^2)，而且不容易优化；要按区间转移。进入某段时如果胜负差绝对值超过段长，历史场结果已经被锁死，剩下只是从付费场里选若干个最小代价，形成凸函数，可用单调性分治。对未锁死的中间带递归分裂，整体得到近似分治 DP 的 O(n log^2 n) 级做法。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2060,
+      "name": "Codeforces Round 998 (Div. 3)",
+      "date": "2025-01-19",
+      "url": "https://codeforces.com/contest/2060",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "2060A",
+          "index": "A",
+          "slot": "A",
+          "title": "Fibonacciness",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2060/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/138342",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force"
+          ],
+          "statementBrief": "给定长度为 5 的整数数组中的 $a_1,a_2,a_4,a_5$，可以将缺失的 $a_3$ 设为任意整数。数组的 Fibonacciness 是满足 $a_{i+2}=a_i+a_{i+1}$ 的下标 $i\n ext{（}1 ext{ 到 }3 ext{）}$ 数量，要求最大化该数量。",
+          "transformedStatement": "把三个递推条件分别改写为对 $a_3$ 的三个精确要求：$a_3=a_1+a_2$、$a_3=a_4-a_2$、$a_3=a_5-a_4$；问题转化为从这三个值中选择一个，使其出现次数最大。",
+          "keyObservations": [
+            "三个递推条件分别要求 $a_3$ 等于 $a_1+a_2$、$a_4-a_2$ 或 $a_5-a_4$，因此每个条件都对应唯一候选值。",
+            "选择某个候选值后，恰好能满足候选列表中与它相同的条件，所以最优答案就是三个候选值的最大出现次数。",
+            "候选值之外的任何 $a_3$ 都不会满足三个等式中的任意一个，无需枚举其他整数。"
+          ],
+          "solutionBrief": "计算三个候选值 $a_1+a_2$、$a_4-a_2$、$a_5-a_4$，统计它们的最大频次；将 $a_3$ 设为出现次数最多的候选值即可，复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2060B",
+          "index": "B",
+          "slot": "B",
+          "title": "Farmer John's Card Game",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2060/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/138342",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 头牛，每头持有 $m$ 张不同的牌。每轮按固定排列依次让每头牛出一张牌，所出牌必须大于牌堆顶，出牌后成为新的牌堆顶；求能否通过选择出场顺序让所有牛恰好完成 $m$ 轮，若能输出任意顺序，否则输出 $-1$。",
+          "transformedStatement": "将整个过程重述为必须按严格递增顺序打出全部牌 $0$ 到 $nm-1$。于是每个出场位置对应一个模 $n$ 的牌类，某头牛必须恰好持有一个固定余数类的全部牌。",
+          "keyObservations": [
+            "由于所有牌互不相同且总共恰好进行 $nm$ 次出牌，合法过程必须依次打出 $0,1,2,\\dots,nm-1$；因此第 $i$ 个出牌位置的牛必须持有序列 $i,i+n,i+2n,\\dots$。",
+            "一头牛的牌排序后，相邻牌之差必须始终为 $n$；该条件同时保证它能在每轮对应的位置出牌，任意一处不满足则无解。",
+            "每头牛的最小牌决定其在回合中的位置，持有最小牌 $i$ 的牛必须排在第 $i$ 位；检查所有最小牌能否覆盖 $0$ 到 $n-1$ 后即可唯一确定顺序。"
+          ],
+          "solutionBrief": "对每头牛的牌排序，检查相邻差是否都为 $n$。若满足，则用每头牛的最小牌作为位置标记，最小牌为 $i$ 的牛排在第 $i$ 位；否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2060C",
+          "index": "C",
+          "slot": "C",
+          "title": "Game of Mathletes",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2060/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/138342",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "games",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "黑板上有偶数个整数，Alice 每回合先擦掉一个数，Bob 再擦掉一个数；若两数之和为 $k$，得分增加 1。进行 $n/2$ 回合后，在 Alice 试图最小化得分、Bob 试图最大化得分的最优策略下，求最终得分。",
+          "transformedStatement": "把每个数按是否存在补数 $k-x$ 分成可配对与不可配对两类。Bob 可以对 Alice 取出的可配对数立即取补数，而不可配对数总能成对消耗，因此答案等于原 multiset 中最多能形成的和为 $k$ 的不相交数对数量。",
+          "keyObservations": [
+            "对任意能与当前数凑成 $k$ 的数字，若 Alice 先取其中一个，Bob 总能取对应的另一个，因此这类配对的得分机会由出现次数直接决定。",
+            "所有无法参与凑 $k$ 的数字数量始终为偶数：总数和已配对数字数都为偶数，所以 Alice 取走一个后，Bob 总能取另一个无关紧要的数字。",
+            "对于 $x\\ne k-x$，可组成的配对数是 $\\min(c_x,c_{k-x})$；当 $k$ 为偶数且 $x=k/2$ 时，配对数改为 $\\lfloor c_x/2\\rfloor$，逐类相加即可。"
+          ],
+          "solutionBrief": "忽略 Alice 的具体选择：若她取走可配对数字，Bob 取其补数；若取不可配对数字，Bob 任取另一个不可配对数。用频次数组统计各类，按 $\\min(c_x,c_{k-x})$ 计数，并单独处理 $x=k/2$ 的情况。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2060D",
+          "index": "D",
+          "slot": "D",
+          "title": "Subtract Min Sort",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2060/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/138342",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定一个正整数数组，每次可选择相邻位置，并从这两个数中同时减去它们的较小值；可重复操作任意次。判断能否把数组变成非递减序列。",
+          "transformedStatement": "题解将任意可行操作方案等价重排为从左到右处理相邻位置的规范方案：找到最后一个下降点，只模拟覆盖该点的前缀操作，再验证结果是否已经非递减。",
+          "keyObservations": [
+            "一次操作会让相邻两个数至少有一个变为 $0$，因此重复执行同一位置没有额外作用，可以把可行操作序列化简为各位置至多操作一次。",
+            "若存在可行方案，可以将操作重排为从左到右的顺序；先处理前缀能逐步消除左侧阻碍，不会破坏最终可行性。",
+            "只需找到最后一个下降位置，并依次执行此前所有相邻操作；更右侧原本已经非递减，最终只需检查整个数组是否有序。"
+          ],
+          "solutionBrief": "找到最后一个满足 $a_i>a_{i+1}$ 的位置，依次对位置 $1,2,\\\\ldots,i$ 执行“同时减去相邻最小值”的操作，最后检查数组是否非递减；若原数组已有序则直接回答 YES。整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2060E",
+          "index": "E",
+          "slot": "E",
+          "title": "Graph Composition",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2060/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/138342",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "给定两个含有相同顶点的简单无向图 F 和 G，可以任意删除 F 中已有的边，或向 F 中加入不存在的边。要求用最少操作使 F 中任意两点连通当且仅当它们在 G 中连通。",
+          "transformedStatement": "只需让 F 与 G 的连通分量划分一致：先切断 F 中跨越 G 的不同连通分量的边，再在每个 G 分量内部把 F 的多个连通块合并起来。",
+          "keyObservations": [
+            "先按 G 的连通分量给顶点标号；F 中跨不同标号的边必须删除，否则会产生 G 中不存在的连通关系。",
+            "删除所有跨 G 分量的边后，F 的每个连通块都完全位于某个 G 分量内，因此不会再错误连接不同的 G 分量。",
+            "若一个 G 分量内仍有多个 F 连通块，就必须用至少块数减一条边将其合并；这些添加操作都能实现，因此总添加数是 F 当前连通块数与 G 连通块数之差。",
+            "删除跨分量边和补齐同分量内的连接分别达到两个必要下界，操作不会相互抵消，所以按该顺序处理得到最小次数。"
+          ],
+          "solutionBrief": "用 DFS 或 DSU 求 G 的连通分量，删除 F 中连接不同 G 分量的边；再统计删除后的 F 连通块数，向各 G 分量内补边，答案为删除数加上 F 连通块数减 G 连通块数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2060F",
+          "index": "F",
+          "slot": "F",
+          "title": "Multiplicative Arrays",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2060/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/138342",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "number theory"
+          ],
+          "statementBrief": "给定 $k,n$，对每个 $x=1,2,\\ldots,k$，统计长度在 $1$ 到 $n$、每个元素属于 $[1,k]$ 且所有元素乘积恰为 $x$ 的有序数组数量。数组长度或任一位置的元素不同都视为不同，答案对 $998244353$ 取模。",
+          "transformedStatement": "先删除数组中的所有 $1$，把问题转为统计乘积为 $x$ 且含 $j$ 个大于 $1$ 因子的有序序列；恢复原数组时，将这些因子放入长度为 $L$ 的任意 $j$ 个位置，其余位置填 $1$，再对 $L\\le n$ 求和。",
+          "keyObservations": [
+            "乘积为 $x>1$ 时，数组中的 $1$ 只负责填充位置；若恰有 $j$ 个非 $1$ 元素，则其排列数为 $\\binom{L}{j}$，其取值序列可独立统计。",
+            "乘积不超过 $10^5$ 时，非 $1$ 元素最多有 $16$ 个，因为 $17$ 个这样的元素至少产生乘积 $2^{17}>10^5$，因此长度维度可以截断。",
+            "令 $dp[x][j]$ 表示乘积为 $x$ 的、含恰好 $j$ 个非 $1$ 元素的序列数，则最后一个元素取作 $p>1$ 时有 $dp[x][j]=\\sum_{p\\mid x,\\ p>1}dp[x/p][j-1]$。",
+            "对所有长度求和后，恒等式 $\\sum_{L=1}^{n}\\binom{L}{j}=\\binom{n+1}{j+1}$ 将逐长度计数压缩为至多 $16$ 项；乘积为 $1$ 则单独对应每个长度的全 $1$ 数组。"
+          ],
+          "solutionBrief": "预处理每个乘积由恰好 $j$ 个大于 $1$ 的因子组成的序列数，$j$ 只需枚举到 $16$。再用组合数安排其余的 $1$，通过插板恒等式得到长度不超过 $n$ 的总数；所有计算模 $998244353$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2060G",
+          "index": "G",
+          "slot": "G",
+          "title": "Bugged Sort",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/2060/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/138342",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的序列，$1$ 到 $2n$ 恰好各出现一次。每次选不同下标 $i,j$，交换 $a_i$ 与 $b_j$，同时交换 $b_i$ 与 $a_j$；问经过任意次操作后，能否使两个序列都分别递增。",
+          "transformedStatement": "把每个位置视为可交换且可翻转的数对 $(a_i,b_i)$：操作保持数对完整，只会交换两个数对并翻转它们。先确定按数对最小值排列的唯一顺序，再判断能否以偶数个数对翻转，使两坐标序列同时递增。",
+          "keyObservations": [
+            "每个位置的 $(a_i,b_i)$ 始终作为整体移动；一次操作等价于交换两个数对并同时翻转它们，因此不会破坏数对关系。",
+            "由于 $n\\ge 3$，三次操作可以只交换任意两个数对而不翻转；也可以只翻转两个数对，但单独翻转一个数对因翻转次数奇偶性不可能实现。",
+            "最终数对必须按 $\\min(a_i,b_i)$ 递增排列，否则某个数对的较小元素会小于前一个数对的元素，无法让两行同时递增；该排列因此唯一且可达。",
+            "固定数对顺序后，只需记录当前数对是否翻转以及累计翻转数的奇偶性；相邻数对按对应方向满足两坐标严格递增即可转移，最终只接受偶数次翻转的状态。"
+          ],
+          "solutionBrief": "将数对按最小值排序。用四状态 DP 记录处理到当前位置时的当前方向与翻转次数奇偶性，若相邻数对在选定方向下两坐标均递增则转移；最后判断偶数翻转状态是否可达。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
