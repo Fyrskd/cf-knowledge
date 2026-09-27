@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2092,
+    "total_problems": 2099,
     "source_total_problems": 2099,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2092,
-    "with_editorial_brief": 1840,
-    "with_solution_brief": 1841,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2099,
+    "with_editorial_brief": 1847,
+    "with_solution_brief": 1848,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1033,
+    "ai_override_count": 1040,
     "primary_topic_count": 13,
-    "contest_count": 326,
+    "contest_count": 327,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 91,
-    "构造与贪心": 704,
+    "构造与贪心": 707,
     "图论与网络流": 123,
     "动态规划与状态设计": 196,
-    "数论与同余": 210,
+    "数论与同余": 212,
     "组合计数与概率": 159,
     "数据结构": 179,
-    "几何": 45,
-    "树结构": 130,
+    "几何": 46,
+    "树结构": 131,
     "代数、矩阵与多项式": 18,
     "交互": 77,
     "基础实现与模拟": 87,
     "博弈": 73
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 911,
+    "ai_generated_with_editorial": 918,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -29145,6 +29145,218 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：不能真的把一个元素插进前 r 个集合。用带叶子的可持久化平衡树表示集合序列，每个内部节点记录“整棵子树所有叶子都含有”的元素集合，并把大集合拆成本节点直接集合 T 和若干子节点来源。split/merge/reverse 都只改树结构和懒标记；插入只挂到前缀根，删除只从元素所在的 T 中删。查询某个叶子时递归合并它祖先来源里的最小未删元素，空旧节点被摊还删除。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2114,
+      "name": "Codeforces Round 1027 (Div. 3)",
+      "date": "2025-05-26",
+      "url": "https://codeforces.com/contest/2114",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "2114A",
+          "index": "A",
+          "slot": "A",
+          "title": "Square Year",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2114/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/143268",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "给定若干个恰好四位的年份字符串，允许前导零。对每个年份，要求找两个非负整数 $a,b$，使 $(a+b)^2$ 等于该字符串表示的数；若不存在则输出 $-1$，任意合法解均可。",
+          "transformedStatement": "题目等价于判断年份数值是否为完全平方数。若它等于 $x^2$，原问题中的二元构造可统一取为 $(a,b)=(0,x)$。",
+          "keyObservations": [
+            "等式 $(a+b)^2=s$ 中只有和 $a+b$ 影响结果，因此存在合法答案当且仅当 $s$ 是某个非负整数的平方，避免枚举两个变量。",
+            "一旦找到平方根 $x$，固定取 $a=0,b=x$ 即满足非负性和 $(a+b)^2=s$；否则直接输出 $-1$。"
+          ],
+          "solutionBrief": "将四位字符串按数值读取，判断其是否为完全平方数。若平方根为 $x$，输出 $0,x$；否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2114B",
+          "index": "B",
+          "slot": "B",
+          "title": "Not Quite a Palindromic String",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2114/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/143268",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个长度为偶数的二进制字符串，可以任意重新排列其中的字符。若镜像位置对 $(i,n-i+1)$ 上的两个字符相同，则称其为好对；要求判断能否通过重排使好对恰好有 $k$ 个。",
+          "transformedStatement": "把字符串划分为 $n/2$ 个镜像位置槽，每槽放置两个字符并判断是否相同。问题转化为：在固定的 $0$、$1$ 数量下，判断好槽数量 $k$ 是否落在可达区间内且满足交换操作带来的奇偶性限制。",
+          "keyObservations": [
+            "将所有 $0$ 放在一端、所有 $1$ 放在另一端时，同字符的镜像位置只能出现在中间，最少好对数为 $\\max(c_0,c_1)-\\frac n2$。",
+            "要让好对数尽可能多，应分别把相同字符配成镜像对，最多得到 $\\lfloor c_0/2\\rfloor+\\lfloor c_1/2\\rfloor$ 个好对。",
+            "交换不同镜像位置上的字符时，好对数只会增加或减少 $0$ 或 $2$，因此可达的好对数在最小值和最大值之间按固定奇偶性变化。",
+            "所以目标值可行当且仅当它位于最小值与最大值之间，且与最小值奇偶性相同；这将重排问题化为区间与奇偶性判断。"
+          ],
+          "solutionBrief": "统计 $0$ 和 $1$ 的数量，计算最小值 $L=\\max(c_0,c_1)-n/2$ 与最大值 $R=\\lfloor c_0/2\\rfloor+\\lfloor c_1/2\\rfloor$。当且仅当 $L\\le k\\le R$ 且 $(k-L)\\bmod 2=0$ 时输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2114C",
+          "index": "C",
+          "slot": "C",
+          "title": "Need More Arrays",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2114/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/143268",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个非递减数组，可以删除任意元素但不能改变剩余顺序。处理剩余序列时，首元素单独成数组；后续元素若比前一个保留元素大至少 $2$ 就新建数组，否则并入前一个数组，求最多能得到多少个数组。",
+          "transformedStatement": "问题等价于从原数组选一个非空子序列，使相邻选中值的差至少为 $2$，并最大化选中元素个数；每个选中元素对应一个最终数组。",
+          "keyObservations": [
+            "删除一个本应与已选元素同组的元素不会变差，因为它可能阻碍后面更大的元素独立成组；因此只需保留必要元素。",
+            "选中的相邻元素必须满足后者至少比前者大 $2$，每个满足条件的选中元素都会贡献一个新数组。",
+            "由于数组已排序，固定上一个选中值后，选择右侧第一个大于它加 $1$ 的元素最优；它留下最多后续可选元素。"
+          ],
+          "solutionBrief": "从左到右贪心选择元素：先选第一个元素，之后跳过所有不大于上一个选中值加 $1$ 的元素，遇到第一个更大的元素就选取并令答案加一。选择最早可行元素能最大限度保留后续空间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2114D",
+          "index": "D",
+          "slot": "D",
+          "title": "Come a Little Closer",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2114/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/143268",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定二维网格上的 $n$ 个不同位置的怪物，最多可将一个怪物移动到任意空闲格子一次；随后选择一个矩形，消灭其中所有怪物，并按矩形包含的格子数付费。求消灭全部怪物所需的最小费用。",
+          "transformedStatement": "把最终费用转化为包围所有怪物的轴对齐最小矩形面积。枚举被移动的怪物，先求其余点的包围矩形，再判断该矩形是否有空位容纳它；若没有，就扩展面积较小的一个方向。",
+          "keyObservations": [
+            "固定被移动的怪物后，其他怪物的最小覆盖矩形由两轴的最小值和最大值完全决定，因此只需比较边界极值。",
+            "删除某个怪物后，每个坐标轴的新边界只可能是原第一或第二小值、第一或第二大值，无需维护全部点。",
+            "若剩余矩形面积大于 $n-1$，其中存在空格可放回被移动的怪物；若面积等于 $n-1$，必须将矩形的一条边扩展一格。"
+          ],
+          "solutionBrief": "枚举每个可能被移动的怪物，用两组最小值和最大值快速求出其余怪物的包围矩形。若矩形有空位，直接使用其面积；若恰好被填满，则分别扩展高或宽一格，取较小面积并求全局最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2114E",
+          "index": "E",
+          "slot": "E",
+          "title": "Kirei Attacks the Estate",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2114/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/143268",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根、每个顶点带危险值的树。对每个顶点，只能沿父节点方向取从自身开始的任意长度路径，并按正负交替计算危险值，要求输出这些路径交替和的最大值。",
+          "transformedStatement": "将每个节点的候选路径视为“当前节点单独取值”或“当前值减去父节点某条路径和”；因此只需维护父节点路径和的最大值与最小值，就能递推当前节点的最大、最小交替和。",
+          "keyObservations": [
+            "对每个顶点同时维护从该点向上截取的交替和最大值 $f$ 与最小值 $g$，因为加入父节点时只会改变后缀整体符号。",
+            "设父节点为 $p$，则当前最大值为 $f(v)=\\max(a_v,a_v-g(p))$，最小值为 $g(v)=\\min(a_v,a_v-f(p))$，所有更短前缀已由父节点状态概括。",
+            "根节点没有父节点，直接令 $f(1)=g(1)=a_1$；沿树向下遍历即可在父状态确定后计算每个子节点答案。"
+          ],
+          "solutionBrief": "把每个节点的所有向上路径交替和压缩为最大值 $f$ 和最小值 $g$。根节点初始化为 $a_1$，对每个子节点用 $f(v)=\\max(a_v,a_v-g(p))$、$g(v)=\\min(a_v,a_v-f(p))$ 转移，树遍历得到全部 $f$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2114F",
+          "index": "F",
+          "slot": "F",
+          "title": "Small Operations",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/2114/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/143268",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "math",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定整数 $x,y,k$，每次可选 $1\\le a\\le k$，将当前数乘以 $a$，或在整除时除以 $a$。求把 $x$ 变为 $y$ 的最少操作次数；若无法做到则输出 $-1$。",
+          "transformedStatement": "先把 $x$ 和 $y$ 的公共部分约去：令 $g=\\gcd(x,y)$，分别把 $x/g$、$y/g$ 表示成尽可能少的、每个不超过 $k$ 的整数因子的乘积，两个最少因子数之和就是答案。",
+          "keyObservations": [
+            "先连续除法把 $x$ 降到 $g=\\\\gcd(x,y)$，再连续乘法从 $g$ 变为 $y$ 不会增加最优操作数，因此问题分解为两侧相对质因子的独立分解。",
+            "将 $a$ 分解成若干个不超过 $k$ 的因子，所需因子数正好对应操作次数；设 $dp[i]$ 为分解 $i$ 的最少因子数，可由满足 $j\\\\mid i$ 且 $i/j\\\\le k$ 的 $dp[j]+1$ 转移。",
+            "只保留原数 $a$ 的约数作为状态，因为非约数不可能出现在完整因子分解的前缀乘积中；这样状态数量从 $a$ 降为约数个数，避免平方级枚举。"
+          ],
+          "solutionBrief": "令 $g=\\\\gcd(x,y)$，分别求 $x/g$ 与 $y/g$ 分解为最少个不超过 $k$ 的因子所需数量。对每个数枚举全部约数作为 DP 状态，按 $dp[i]=\\\\min(dp[j]+1)$（$j\\\\mid i$ 且 $i/j\\\\le k$）转移；任一侧无法分解则答案为 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2114G",
+          "index": "G",
+          "slot": "G",
+          "title": "Build an Array",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2114/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/143268",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "从空数组开始，每次任选一个整数加到数组左端或右端；若出现相邻相等元素，就立即将它们替换为和，直到没有可合并的相邻对。给定最终数组及操作次数 $k$，判断能否恰好通过 $k$ 次操作得到它。",
+          "transformedStatement": "固定最终数组中最先形成的一个元素，分别向左右扩展。每个目标值由其二进制因子决定可使用的合并链长度，而与前一个值的 $2$ 的幂关系决定是否需要额外插入阻断合并。",
+          "keyObservations": [
+            "固定起点后，目标值 $c$ 可沿二进制合并链生成；不考虑邻接冲突时，最多贡献 $v_2(c)+1$ 次插入。",
+            "若相邻值 $b,c$ 满足 $c/b$ 是 $2$ 的幂，直接生成链会与 $b$ 合并；先加入 $2b$ 可阻断这次错误合并。",
+            "固定最先形成的元素后，左右两侧的贡献可分别由相邻有序对累加；预处理前缀和与后缀和即可避免枚举起点时重复计算。",
+            "若某个起点的最大操作数为 $M$，每次把最终会合并的两个相等元素改为一次插入即可减少一次操作，因此 $M\\ge k$ 时可以恰好完成 $k$ 次操作。"
+          ],
+          "solutionBrief": "对每个相邻有序对计算基于 $v_2$ 的最大贡献，并处理比值为 $2$ 的幂时的阻断修正；用前缀、后缀和求每个起点的最大操作数 $M$，若存在 $M\\ge k$ 则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]

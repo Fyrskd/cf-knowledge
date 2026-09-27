@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T02:27:19+00:00",
+  "updated_at": "2026-09-27T02:31:57+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -31143,6 +31143,211 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial 正文以及 greedy、implementation、math 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "2114G": {
+      "problem_key": "2114G",
+      "title": "Build an Array",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/2114/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/143268",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "55b8d9a57243c33059bf3a8630f75541adf6fcde68d18033112b6654a209701e",
+      "generated_at": "2026-09-27T02:30:17+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "从空数组开始，每次任选一个整数加到数组左端或右端；若出现相邻相等元素，就立即将它们替换为和，直到没有可合并的相邻对。给定最终数组及操作次数 $k$，判断能否恰好通过 $k$ 次操作得到它。",
+        "transformed_statement": "固定最终数组中最先形成的一个元素，分别向左右扩展。每个目标值由其二进制因子决定可使用的合并链长度，而与前一个值的 $2$ 的幂关系决定是否需要额外插入阻断合并。",
+        "key_observations": [
+          "固定起点后，目标值 $c$ 可沿二进制合并链生成；不考虑邻接冲突时，最多贡献 $v_2(c)+1$ 次插入。",
+          "若相邻值 $b,c$ 满足 $c/b$ 是 $2$ 的幂，直接生成链会与 $b$ 合并；先加入 $2b$ 可阻断这次错误合并。",
+          "固定最先形成的元素后，左右两侧的贡献可分别由相邻有序对累加；预处理前缀和与后缀和即可避免枚举起点时重复计算。",
+          "若某个起点的最大操作数为 $M$，每次把最终会合并的两个相等元素改为一次插入即可减少一次操作，因此 $M\\ge k$ 时可以恰好完成 $k$ 次操作。"
+        ],
+        "solution_brief": "对每个相邻有序对计算基于 $v_2$ 的最大贡献，并处理比值为 $2$ 的幂时的阻断修正；用前缀、后缀和求每个起点的最大操作数 $M$，若存在 $M\\ge k$ 则输出 YES。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 与完整 editorial_text 提炼；codeforces_tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "2114F": {
+      "problem_key": "2114F",
+      "title": "Small Operations",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/2114/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/143268",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "bee1a3263bfb2bfd25d7f3eddedc847a0fd22f782ad58a0e5c561d89b49c1799",
+      "generated_at": "2026-09-27T02:30:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数 $x,y,k$，每次可选 $1\\le a\\le k$，将当前数乘以 $a$，或在整除时除以 $a$。求把 $x$ 变为 $y$ 的最少操作次数；若无法做到则输出 $-1$。",
+        "transformed_statement": "先把 $x$ 和 $y$ 的公共部分约去：令 $g=\\gcd(x,y)$，分别把 $x/g$、$y/g$ 表示成尽可能少的、每个不超过 $k$ 的整数因子的乘积，两个最少因子数之和就是答案。",
+        "key_observations": [
+          "先连续除法把 $x$ 降到 $g=\\\\gcd(x,y)$，再连续乘法从 $g$ 变为 $y$ 不会增加最优操作数，因此问题分解为两侧相对质因子的独立分解。",
+          "将 $a$ 分解成若干个不超过 $k$ 的因子，所需因子数正好对应操作次数；设 $dp[i]$ 为分解 $i$ 的最少因子数，可由满足 $j\\\\mid i$ 且 $i/j\\\\le k$ 的 $dp[j]+1$ 转移。",
+          "只保留原数 $a$ 的约数作为状态，因为非约数不可能出现在完整因子分解的前缀乘积中；这样状态数量从 $a$ 降为约数个数，避免平方级枚举。"
+        ],
+        "solution_brief": "令 $g=\\\\gcd(x,y)$，分别求 $x/g$ 与 $y/g$ 分解为最少个不超过 $k$ 的因子所需数量。对每个数枚举全部约数作为 DP 状态，按 $dp[i]=\\\\min(dp[j]+1)$（$j\\\\mid i$ 且 $i/j\\\\le k$）转移；任一侧无法分解则答案为 $-1$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 number theory、dp 等标签整理。",
+        "quality_flags": []
+      }
+    },
+    "2114E": {
+      "problem_key": "2114E",
+      "title": "Kirei Attacks the Estate",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2114/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/143268",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e974f28d175ca2a7b45084c184f467daf3c447172908cb99d2d947830b02486e",
+      "generated_at": "2026-09-27T02:30:49+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵以 1 为根、每个顶点带危险值的树。对每个顶点，只能沿父节点方向取从自身开始的任意长度路径，并按正负交替计算危险值，要求输出这些路径交替和的最大值。",
+        "transformed_statement": "将每个节点的候选路径视为“当前节点单独取值”或“当前值减去父节点某条路径和”；因此只需维护父节点路径和的最大值与最小值，就能递推当前节点的最大、最小交替和。",
+        "key_observations": [
+          "对每个顶点同时维护从该点向上截取的交替和最大值 $f$ 与最小值 $g$，因为加入父节点时只会改变后缀整体符号。",
+          "设父节点为 $p$，则当前最大值为 $f(v)=\\max(a_v,a_v-g(p))$，最小值为 $g(v)=\\min(a_v,a_v-f(p))$，所有更短前缀已由父节点状态概括。",
+          "根节点没有父节点，直接令 $f(1)=g(1)=a_1$；沿树向下遍历即可在父状态确定后计算每个子节点答案。"
+        ],
+        "solution_brief": "把每个节点的所有向上路径交替和压缩为最大值 $f$ 和最小值 $g$。根节点初始化为 $a_1$，对每个子节点用 $f(v)=\\max(a_v,a_v-g(p))$、$g(v)=\\min(a_v,a_v-f(p))$ 转移，树遍历得到全部 $f$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、statement_text 及 tags；题解中的 $g$ 转移按上下文修正明显重复项。",
+        "quality_flags": [
+          "editorial_formula_typo_in_g_expression"
+        ]
+      }
+    },
+    "2114D": {
+      "problem_key": "2114D",
+      "title": "Come a Little Closer",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2114/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/143268",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "fcf9436adf8f69641c4eeb9e9e1a0e3c5c3426958ee812bc4076e1debb3d8e09",
+      "generated_at": "2026-09-27T02:31:08+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定二维网格上的 $n$ 个不同位置的怪物，最多可将一个怪物移动到任意空闲格子一次；随后选择一个矩形，消灭其中所有怪物，并按矩形包含的格子数付费。求消灭全部怪物所需的最小费用。",
+        "transformed_statement": "把最终费用转化为包围所有怪物的轴对齐最小矩形面积。枚举被移动的怪物，先求其余点的包围矩形，再判断该矩形是否有空位容纳它；若没有，就扩展面积较小的一个方向。",
+        "key_observations": [
+          "固定被移动的怪物后，其他怪物的最小覆盖矩形由两轴的最小值和最大值完全决定，因此只需比较边界极值。",
+          "删除某个怪物后，每个坐标轴的新边界只可能是原第一或第二小值、第一或第二大值，无需维护全部点。",
+          "若剩余矩形面积大于 $n-1$，其中存在空格可放回被移动的怪物；若面积等于 $n-1$，必须将矩形的一条边扩展一格。"
+        ],
+        "solution_brief": "枚举每个可能被移动的怪物，用两组最小值和最大值快速求出其余怪物的包围矩形。若矩形有空位，直接使用其面积；若恰好被填满，则分别扩展高或宽一格，取较小面积并求全局最小值。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "构造与贪心",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的移动与矩形费用规则，以及 editorial 中关于包围矩形、次大次小边界和满矩形扩展的说明。",
+        "quality_flags": []
+      }
+    },
+    "2114C": {
+      "problem_key": "2114C",
+      "title": "Need More Arrays",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2114/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/143268",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d9c52d7307705a4304cee3c15110b43e19c2b150f5532e7a57db39c4e96fb261",
+      "generated_at": "2026-09-27T02:31:29+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个非递减数组，可以删除任意元素但不能改变剩余顺序。处理剩余序列时，首元素单独成数组；后续元素若比前一个保留元素大至少 $2$ 就新建数组，否则并入前一个数组，求最多能得到多少个数组。",
+        "transformed_statement": "问题等价于从原数组选一个非空子序列，使相邻选中值的差至少为 $2$，并最大化选中元素个数；每个选中元素对应一个最终数组。",
+        "key_observations": [
+          "删除一个本应与已选元素同组的元素不会变差，因为它可能阻碍后面更大的元素独立成组；因此只需保留必要元素。",
+          "选中的相邻元素必须满足后者至少比前者大 $2$，每个满足条件的选中元素都会贡献一个新数组。",
+          "由于数组已排序，固定上一个选中值后，选择右侧第一个大于它加 $1$ 的元素最优；它留下最多后续可选元素。"
+        ],
+        "solution_brief": "从左到右贪心选择元素：先选第一个元素，之后跳过所有不大于上一个选中值加 $1$ 的元素，遇到第一个更大的元素就选取并令答案加一。选择最早可行元素能最大限度保留后续空间。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、statement_text 及 tags 中的 greedy；题面末尾示例文字不完整。",
+        "quality_flags": [
+          "statement_truncated"
+        ]
+      }
+    },
+    "2114B": {
+      "problem_key": "2114B",
+      "title": "Not Quite a Palindromic String",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/2114/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/143268",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3c76a4dab3d1c0d0d26472354c531ea80a7cc68906a8aa867a0a5b34ade6e833",
+      "generated_at": "2026-09-27T02:31:48+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为偶数的二进制字符串，可以任意重新排列其中的字符。若镜像位置对 $(i,n-i+1)$ 上的两个字符相同，则称其为好对；要求判断能否通过重排使好对恰好有 $k$ 个。",
+        "transformed_statement": "把字符串划分为 $n/2$ 个镜像位置槽，每槽放置两个字符并判断是否相同。问题转化为：在固定的 $0$、$1$ 数量下，判断好槽数量 $k$ 是否落在可达区间内且满足交换操作带来的奇偶性限制。",
+        "key_observations": [
+          "将所有 $0$ 放在一端、所有 $1$ 放在另一端时，同字符的镜像位置只能出现在中间，最少好对数为 $\\max(c_0,c_1)-\\frac n2$。",
+          "要让好对数尽可能多，应分别把相同字符配成镜像对，最多得到 $\\lfloor c_0/2\\rfloor+\\lfloor c_1/2\\rfloor$ 个好对。",
+          "交换不同镜像位置上的字符时，好对数只会增加或减少 $0$ 或 $2$，因此可达的好对数在最小值和最大值之间按固定奇偶性变化。",
+          "所以目标值可行当且仅当它位于最小值与最大值之间，且与最小值奇偶性相同；这将重排问题化为区间与奇偶性判断。"
+        ],
+        "solution_brief": "统计 $0$ 和 $1$ 的数量，计算最小值 $L=\\max(c_0,c_1)-n/2$ 与最大值 $R=\\lfloor c_0/2\\rfloor+\\lfloor c_1/2\\rfloor$。当且仅当 $L\\le k\\le R$ 且 $(k-L)\\bmod 2=0$ 时输出 YES。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的好对定义、字符重排规则，以及 editorial_text 给出的最小值、最大值和交换奇偶性分析；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "2114A": {
+      "problem_key": "2114A",
+      "title": "Square Year",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2114/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/143268",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "20907a807716f3bdc3bb723f75755c4ff489f593150e4a28af08a561803014d1",
+      "generated_at": "2026-09-27T02:31:57+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干个恰好四位的年份字符串，允许前导零。对每个年份，要求找两个非负整数 $a,b$，使 $(a+b)^2$ 等于该字符串表示的数；若不存在则输出 $-1$，任意合法解均可。",
+        "transformed_statement": "题目等价于判断年份数值是否为完全平方数。若它等于 $x^2$，原问题中的二元构造可统一取为 $(a,b)=(0,x)$。",
+        "key_observations": [
+          "等式 $(a+b)^2=s$ 中只有和 $a+b$ 影响结果，因此存在合法答案当且仅当 $s$ 是某个非负整数的平方，避免枚举两个变量。",
+          "一旦找到平方根 $x$，固定取 $a=0,b=x$ 即满足非负性和 $(a+b)^2=s$；否则直接输出 $-1$。"
+        ],
+        "solution_brief": "将四位字符串按数值读取，判断其是否为完全平方数。若平方根为 $x$，输出 $0,x$；否则输出 $-1$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial；tags 仅用于主题辅助。",
         "quality_flags": []
       }
     }
