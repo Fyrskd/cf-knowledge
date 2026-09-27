@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1969,
+    "total_problems": 1976,
     "source_total_problems": 1976,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1969,
-    "with_editorial_brief": 1724,
-    "with_solution_brief": 1725,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1976,
+    "with_editorial_brief": 1731,
+    "with_solution_brief": 1732,
     "missing_editorial_brief": 244,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 910,
+    "ai_override_count": 917,
     "primary_topic_count": 13,
-    "contest_count": 309,
+    "contest_count": 310,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 82,
-    "构造与贪心": 662,
+    "构造与贪心": 664,
     "图论与网络流": 119,
-    "动态规划与状态设计": 185,
-    "数论与同余": 190,
-    "组合计数与概率": 153,
+    "动态规划与状态设计": 186,
+    "数论与同余": 192,
+    "组合计数与概率": 154,
     "数据结构": 162,
     "几何": 40,
     "树结构": 128,
-    "代数、矩阵与多项式": 17,
+    "代数、矩阵与多项式": 18,
     "交互": 76,
     "基础实现与模拟": 84,
     "博弈": 71
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 797,
+    "ai_generated_with_editorial": 804,
     "ai_generated_partial_editorial": 36,
     "missing_editorial": 244,
     "manual_override": 891,
@@ -18310,6 +18310,222 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：不要枚举五元组。对每个左端点，前两位一旦确定，问题变成查询一个不可支配的 4,3,5 候选；题解证明最小候选中 5 必须是 3 右侧最近的更大元素，4 也随之固定。于是先用数据结构枚举所有线性数量的最小三元结构，再转成二维查询求每个左端点的最小右端点。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2169,
+      "name": "Educational Codeforces Round 184 (Rated for Div. 2)",
+      "date": "2025-11-14",
+      "url": "https://codeforces.com/contest/2169",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "2169A",
+          "index": "A",
+          "slot": "A",
+          "title": "Alice and Bob",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2169/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/148390",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定 Alice 预先选择的整数 $a$ 和一组写有整数的弹珠，Bob 选择整数 $b$ 后逐个取出弹珠；每颗弹珠归距离其数字更近的人，距离相同时归 Alice。求一个使 Bob 得分最多的 $b$。",
+          "transformedStatement": "将 Bob 的选择按位于 $a$ 左侧或右侧分类：选在左侧时最多只能赢下所有小于 $a$ 的弹珠，选在右侧时最多只能赢下所有大于 $a$ 的弹珠；两侧的最优代表分别是 $a-1$ 和 $a+1$。",
+          "keyObservations": [
+            "若 Bob 选择 $b<a$，所有 $v_i<a$ 的弹珠都更接近 $a-1$，而 $v_i\\ge a$ 的弹珠不可能被 Bob 抢到，因此这一侧的最优选择固定为 $b=a-1$。",
+            "若 Bob 选择 $b>a$，对称地只有 $v_i>a$ 的弹珠能得分，且选择 $b=a+1$ 已经达到这一侧的最大得分。",
+            "因此 Bob 无需搜索所有整数，只需比较 $a-1$ 获得的“小于 $a$ 的弹珠数量”和 $a+1$ 获得的“大于 $a$ 的弹珠数量”，选择得分较高的一侧。"
+          ],
+          "solutionBrief": "分别统计数组中小于和大于 $a$ 的弹珠数量。若前者不少于后者输出 $a-1$，否则输出 $a+1$；统计可利用有序数组或线性扫描完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2169B",
+          "index": "B",
+          "slot": "B",
+          "title": "Drifting Away",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2169/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/148390",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "河道由 `<`、`>`、`*` 组成，分别表示被带向左、被带向右和可自行选择向左或向右划。Monocarp 选择起点并每分钟移动一次，撞到边界即上岸；需要求能航行的最大时间，若能无限航行则输出 `-1`。",
+          "transformedStatement": "把每个 `*` 的每次选择固定为一个方向，等价于将其替换成 `<` 或 `>`；问题转化为判断替换后的箭头串是否含相邻 `><`，否则求连续左箭头段与右箭头段中较长者。",
+          "keyObservations": [
+            "若字符串中存在相邻的 `><`，从这两个格子之一出发即可往返，答案为无限。",
+            "访问同一个 `*` 后再次回来时，重复选择同一方向不会更差；因此可把每个 `*` 固定替换成一个箭头。",
+            "若不存在可形成 `><` 的相邻符号，则字符串至多含一个 `*`，其余箭头按 `<<<...>>>` 排列，有限答案就是两类箭头数量的较大值。",
+            "唯一的 `*` 可替换成数量更多的箭头，因此无需尝试两种替换，只需统计 `<` 和 `>` 的数量。"
+          ],
+          "solutionBrief": "逐个检查相邻字符是否能形成 `><`；若能，则答案为 `-1`。否则统计 `<`、`>` 及 `*`，把唯一的 `*` 计入数量较多的一类，输出两类数量的最大值，单个测试用例为 $O(|s|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2169C",
+          "index": "C",
+          "slot": "C",
+          "title": "Range Operation",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2169/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/148390",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组，至多一次选择连续区间 $[l,r]$，把区间内每个元素都替换为 $l+r$。求操作后数组元素总和的最大值，也可以选择不操作。",
+          "transformedStatement": "用前缀和表示区间原总和后，操作收益变为 $f(r)-f(l-1)$，其中 $f(x)=x^2+x-S_x$；等价地，收益是数组 $b_i=2i-a_i$ 的某个连续子段和。",
+          "keyObservations": [
+            "区间 $[l,r]$ 的总和变化量为 $(l+r)(r-l+1)-(S_r-S_{l-1})$，可直接用前缀和计算。",
+            "令 $f(x)=x^2+x-S_x$，变化量可化为 $f(r)-f(l-1)$；固定右端点时，只需保留此前最小的 $f(l-1)$。",
+            "区间替换后的总和等于 $2l+2(l+1)+\\dots+2r$，因此操作收益等价于数组 $b_i=2i-a_i$ 上某个连续子段的和。"
+          ],
+          "solutionBrief": "先计算前缀和，将区间收益化为 $f(r)-f(l-1)$，扫描右端点并维护此前最小的 $f$；也可构造 $b_i=2i-a_i$，求其最大子段和，并与不操作取最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2169D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Removal of a Sequence (Easy Version)",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2169/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/148390",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "序列初始为 $1$ 到 $10^{12}$。重复 $x$ 次操作：在当前序列中同时删除位置为 $y,2y,3y,\\ldots$ 的所有元素；操作完成后，求剩余序列第 $k$ 个数，若剩余长度不足 $k$ 则输出 $-1$。",
+          "transformedStatement": "把“求剩余序列第 $k$ 个数”转化为判断初始前缀 $1..p$ 经过 $x$ 次删除后还能剩多少个元素。该数量通过反复执行 $p\\leftarrow p-\\lfloor p/y\\rfloor$ 计算，再寻找最小的可达到目标数量的 $p$。",
+          "keyObservations": [
+            "只考察初始前缀 $1..p$ 时，一次操作恰好删除当前序列中第 $y,2y,\u0000b7\u0000b7\u0000b7$ 个位置，因此剩余数量可用 $p\\leftarrow p-\\lfloor p/y\\rfloor$ 更新。",
+            "经过固定的 $x$ 次操作后，前缀最终剩余数量关于 $p$ 单调不减，因此可以二分最小的 $p$，使其最终至少包含第 $k$ 个剩余元素。",
+            "初始序列最多只有 $10^{12}$ 个数；若对 $p=10^{12}$ 处理后仍少于 $k$ 个元素，则原序列中不存在答案，应输出 $-1$。"
+          ],
+          "solutionBrief": "对候选前缀长度 $p$ 模拟 $x$ 次更新，每次令 $p\\leftarrow p-\\lfloor p/y\\rfloor$，得到最终剩余数量。利用该数量对初始 $p$ 的单调性，在 $[1,10^{12}]$ 二分最小可保留至少 $k$ 个元素的 $p$；若上界仍不足则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2169D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Removal of a Sequence (Hard Version)",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/2169/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/148390",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "divide and conquer",
+            "greedy",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "初始序列为 $1$ 到 $10^{12}$ 的所有自然数。重复 $x$ 次：在当前序列中同时删除位置为 $y,2y,3y,\\ldots$ 的元素；最后求剩余序列第 $k$ 个数，若不足 $k$ 个则输出 $-1$。",
+          "transformedStatement": "不直接模拟删除后的序列，而是从最终的第 $k$ 个保留元素反向恢复其删除前位置。一次反向操作把位置 $p'$ 映射为 $p'+\\lfloor(p'-1)/(y-1)\\rfloor$，连续执行 $x$ 次即可定位初始序列中的元素。",
+          "keyObservations": [
+            "一次操作后位置 $p$ 变为 $p'=p-\\lfloor p/y\\rfloor$，因为每 $y$ 个当前位置中恰有一个倍数位置被删除。",
+            "反向恢复可用 $p=p'+\\lfloor (p'-1)/(y-1)\\rfloor$，其中每完整的 $y-1$ 个保留元素对应一个被跳过的位置。",
+            "从第 $k$ 个剩余位置连续执行 $x$ 次反向映射即可得到原序列中的答案，过程中一旦超过 $10^{12}$，说明最终剩余长度不足 $k$。",
+            "当 $y=1$ 时第一次操作会删除所有位置，因此只要 $x\\ge1$，答案必为 $-1$，需单独处理除零情况。"
+          ],
+          "solutionBrief": "先特判 $y=1$，否则令当前位置为 $k$，重复 $x$ 次计算 $p\\leftarrow p+\\lfloor(p-1)/(y-1)\\rfloor$。若中途超过 $10^{12}$ 输出 $-1$，否则最终的 $p$ 即答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2169E",
+          "index": "E",
+          "slot": "E",
+          "title": "Points Selection",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/2169/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/148390",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定带坐标和代价的平面点，Alice 先删除任意一些但不能全部删除的点，Bob 再为剩余点画一个边平行于坐标轴的矩形，允许退化为线段或点。得分是删除点代价之和加矩形周长；Alice 最大化、Bob 最小化，求最优得分。",
+          "transformedStatement": "将 Bob 的选择固定为剩余点的最小包围矩形，并把矩形抽象为四条边界线。依次处理每个点，决定删除并支付代价，或让它确定若干尚未确定的边，再用四位掩码累计边界坐标的带符号贡献。",
+          "keyObservations": [
+            "Bob 为了最小化周长，必然选择剩余点的最小包围矩形，因此矩形由四条边界线的位置完全决定。",
+            "不在包围矩形任何一条边上的点可以直接删除，矩形不变且分数增加其代价；所以保留的点必须负责确定至少一条边。",
+            "若四条边所在坐标分别为 $x_1,x_2,y_1,y_2$，周长可写成 $-2x_1+2x_2-2y_1+2y_2$，使每次确定边界时只需加入对应坐标的带符号贡献。",
+            "一条边已经被某个保留点确定后，再由其他点确定不会改变周长，因此只需用 $4$ 位掩码记录已确定的边；即使中间形成边界交叉的非法状态，其负长度贡献也不会成为最大值。"
+          ],
+          "solutionBrief": "按点处理并维护 $d[i][mask]$：删除第 $i$ 个点则加 $c_i$；保留它时枚举尚未确定的边，并加入相应的 $\u00177x_i,\u00177y_i$。最终取四条边均确定的最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2169F",
+          "index": "F",
+          "slot": "F",
+          "title": "Subsequence Problem",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/2169/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/148390",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定 $k$ 个候选数组，每个美丽数组从第 $i$ 个数组中选一个元素组成。要求统计长度为 $n$、元素均在 $1$ 到 $m$ 的数组 $c$：每个美丽数组都必须能通过删除 $c$ 中若干元素且保持顺序得到。",
+          "transformedStatement": "将条件重述为扫描 $c$ 的匹配过程：当前阶段维护下一组尚未覆盖的候选值，必须全部遇到后才能进入下一组。把必需的匹配元素与其间的自由块分离，并按自由块中禁用值的数量分类计数。",
+          "keyObservations": [
+            "用“最晚可匹配位置”贪心检查所有选择：扫描数组时，当前阶段必须依次遇到该组的全部候选值，才能保证任意美丽数组都能继续嵌入。",
+            "扫描过程中恰有每组长度之和个元素会使候选集合缩小；这些关键元素在每组内部的出现顺序任意，因此贡献为各组 $l_i!$ 的乘积。",
+            "其余元素被分隔成关键元素之间的若干块；若某块有 $i$ 个当前禁用值，则其中每个位置有 $m-i$ 种选择，且 $i$ 只可能取 $0$ 到 $5$。",
+            "设禁用数为 $i$ 的块有 $d_i$ 个、共放入 $e_i$ 个普通元素，则贡献为 ${e_i+d_i-1\\choose e_i}(m-i)^{e_i}$；把六类对应生成函数相乘并取总次数 $n-\\sum l_i$ 的系数即可汇总所有分配。"
+          ],
+          "solutionBrief": "用扫描状态刻画当前候选集合，分离出各组候选值的排列与其间的普通元素块。按块中禁用值数量 $0\\sim5$ 分类，构造组合数与幂次生成函数，用 NTT 相乘并取目标系数，再乘各 $l_i!$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
