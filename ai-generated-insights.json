@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T03:38:51+00:00",
+  "updated_at": "2026-09-27T03:43:29+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -34220,6 +34220,212 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text、editorial_text，并参考 tags 中的 brute force 和 math。",
+        "quality_flags": []
+      }
+    },
+    "2051G": {
+      "problem_key": "2051G",
+      "title": "Snakes",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2051/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/137623",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "10d7c440a9e444f13c80467beb03f522d8f93a0b883172a6ea2a18c7bb5f094e",
+      "generated_at": "2026-09-27T03:41:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "在长度为 $10^9$ 的单行网格中，为每条蛇选择互不重叠的初始单元格。随后按固定事件序列操作：指定蛇向右变长一格或从左端缩短一格；若撞到边界或其他蛇则失败，目标是最小化全过程中任意蛇占据的最大编号。",
+        "transformed_statement": "先把蛇按从左到右排列成一个排列；固定排列后，只需为每对相邻蛇设置足够大的初始间距，使其在所有事件前缀中不发生相撞，再在所有排列中最小化这些间距之和及末尾蛇的变长代价。",
+        "key_observations": [
+          "固定蛇的放置顺序后，让相邻蛇尽量贴近总是最优，因为任何额外初始间距都会直接增加最终最右端位置。",
+          "对相邻的蛇 $i,j$，只需追踪它们之间的间距：$i$ 变长使间距减 $1$，$j$ 变短使间距加 $1$；因此所需最小初始间距由所有事件前缀变化的最小值决定。",
+          "若事件贡献序列为 $e_k$，则相邻蛇的最小间距为 $\\mathrm{minDist}[i][j]=1-\\min_k\\sum_{t=1}^{k}e_t$，这保证整个过程中间距始终非负。",
+          "放置顺序只需记录已选蛇集合和最后一条蛇，状态 $d[mask][last]$ 累加相邻间距；最后一条蛇的变长次数还会额外决定最终最右端位置。"
+        ],
+        "solution_brief": "先扫描事件求任意有序蛇对的最小安全间距，再把蛇的放置顺序视为带权路径，用状态 $d[mask][last]$ 求最小总间距，最后加上末蛇的变长次数。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "图论与网络流",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "2051F": {
+      "problem_key": "2051F",
+      "title": "Joker",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/2051/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/137623",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ee27000a5fba221b086bfbe3e95bcf612dddf48a42823fe3055b255f063b4de3",
+      "generated_at": "2026-09-27T03:42:08+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定含 $n$ 张牌的牌堆，Joker 初始在第 $m$ 个位置。每次取当前第 $a_i$ 张牌，将它移到牌堆最前或最后，要求在每次操作后输出 Joker 所有可能位置的不同数量。",
+        "transformed_statement": "将牌堆排列的不确定性压缩为 Joker 可达位置的区间并集；每次操作只根据 $a_i$ 与各区间的相对关系改变端点，并在命中区间时加入首尾位置的可达性。",
+        "key_observations": [
+          "把所有可能的 Joker 位置表示成若干个不相交闭区间，单次操作只需对每个区间按 $a_i$ 的相对位置更新，避免枚举具体牌面排列。",
+          "若 $a_i<l$，区间变为 $[l-1,r]$；若 $a_i>r$，区间变为 $[l,r+1]$，因为两种移动方向分别造成位置整体平移或不变。",
+          "若 $l\ne r$ 且 $a_i\notin[l,r]$，区间仍按外部情形扩展；若 $a_i\ne l,r$ 且位于区间内，区间主体保持为 $[l,r]$，并新增端点位置 $1,n$。",
+          "可达位置始终至多由三个区间组成：初始区间向两侧扩展，以及从区间内部命中操作位置后产生的只向右扩展的 $[1,1]$ 和只向左扩展的 $[n,n]$，因此每次只需常数次更新。"
+        ],
+        "solution_brief": "维护可达位置的区间并集。对每个区间按 $a_i<l$、$a_i>r$ 或落在区间内更新；区间内命中位置会额外产生 $1,n$，单点区间被命中时消失。由于区间数始终不超过三个，每次处理后统计长度并集即可。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，结合 tags 中的实现和贪心信息。",
+        "quality_flags": []
+      }
+    },
+    "2051E": {
+      "problem_key": "2051E",
+      "title": "Best Price",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/2051/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/137623",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7c955be68e0ad039bba5c3202957ad04150c63d4d7d65008747e5d39c2466506",
+      "generated_at": "2026-09-27T03:42:26+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 位客户，第 $i$ 位客户在价格不超过 $a_i$ 时购买并给好评，在超过 $a_i$ 但不超过 $b_i$ 时购买并给差评，超过 $b_i$ 则不购买。商店统一设定一个价格，要求差评数不超过 $k$，求最大总收入。",
+        "transformed_statement": "把问题转化为枚举关键价格并计算两类人数：$b_i\\ge p$ 的客户贡献购买量，$a_i<p\\le b_i$ 的客户贡献差评；只需在所有阈值 $a_i,b_i$ 上比较收益。",
+        "key_observations": [
+          "最优价格只需检查所有 $a_i$ 和 $b_i$，因为区间内部提价不会改变购买状态，却能提高每件售出的收入。",
+          "价格为 $p$ 时，购买人数等于满足 $b_i\\ge p$ 的客户数，可由排序后的 $b$ 数组二分统计。",
+          "负面评价数等于购买人数减去满足 $a_i\\ge p$ 的客户数，因此只需再对排序后的 $a$ 数组二分即可得到约束值。",
+          "每个候选价格的收益是 $p$ 乘购买人数，仅保留负面评价数不超过 $k$ 的候选并取最大值，整体复杂度为 $O(n\\log n)$。"
+        ],
+        "solution_brief": "将所有 $a_i,b_i$ 合并去重作为候选价格，分别排序 $a,b$。对每个价格用二分统计购买人数和负面评价数，满足评价限制时更新价格乘购买人数的最大值。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 及 tags 中的排序、数据结构和贪心方向提炼。",
+        "quality_flags": []
+      }
+    },
+    "2051D": {
+      "problem_key": "2051D",
+      "title": "Counting Pairs",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2051/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/137623",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "27ab4e850b3f79cd570161dd6c8ab0ab5fd23e1e45a2ba547a7c844d2be43d43",
+      "generated_at": "2026-09-27T03:42:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的正整数数组和区间 $[x,y]$，选择两个不同位置 $i<j$ 并同时删除它们。若删除后剩余元素之和位于 $[x,y]$ 内，则该位置对有效；要求统计所有有效位置对的数量。",
+        "transformed_statement": "将问题改写为统计函数 $F(z)$：删除两项后剩余和小于 $z$ 的位置对数量，答案是 $F(y+1)-F(x)$。排序后，对固定元素，满足条件的另一元素形成连续后缀，因此可转化为边界查找与对称计数。",
+        "key_observations": [
+          "设总和为 $S$，删除 $a_i,a_j$ 后的和是 $S-a_i-a_j$，因此区间条件可转化为两个严格不等式的计数之差，避免直接处理闭区间。",
+          "排序后固定 $i$，满足 $S-a_i-a_j<z$ 的 $j$ 必然构成后缀；找到最小可行位置即可一次统计整段，降低逐对枚举的开销。",
+          "按所有有序下标对统计时会包含 $i=j$ 以及正反两次计数，先减去满足 $S-2a_i<z$ 的对角项，再除以 $2$ 即得到 $i<j$ 的数量。"
+        ],
+        "solution_brief": "令 $F(z)$ 表示删除两项后剩余和小于 $z$ 的合法无序对数，答案为 $F(y+1)-F(x)$。对数组排序；固定一项后，可用二分查找满足 $S-a_i-a_j<z$ 的后缀起点，统计包含对角项的有序对，减去对角项后除以 $2$。每个阈值复杂度为 $O(n\\log n)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的删除两项并判断剩余和的条件，以及 editorial_text 的阈值差分、排序后缀计数和对称性处理；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "2051C": {
+      "problem_key": "2051C",
+      "title": "Preparing for the Exam",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2051/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/137623",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "93f71e12ad561e8c17a148a5e0b6867b317924c7c73819694c2e717315c1c222",
+      "generated_at": "2026-09-27T03:43:01+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "共有 $n$ 道题和 $m$ 份试卷，每份试卷都包含除题号 $a_i$ 外的其余 $n-1$ 道题。Monocarp 已知其中 $k$ 道题，收到某份试卷后必须答对其中全部题目；请输出每份试卷能否通过，分别用 `1` 和 `0` 表示。",
+        "transformed_statement": "将每份试卷表示为“缺少一道题”的集合，并比较它与已知题集合的大小及唯一缺失元素：只有已知题数为 $n$ 或 $n-1$ 时可能通过，后者要求试卷缺少的题正是唯一未知题。",
+        "key_observations": [
+          "每份试卷都恰好包含 $n-1$ 道题，因此只有当已知题目数为 $n-1$ 时，才需要逐份判断；已知少于 $n-1$ 道时不可能通过。",
+          "已知全部 $n$ 道题时，每份试卷都能通过，答案字符串全部为 `1`。",
+          "当已知恰好 $n-1$ 道题时，已知题集合与试卷集合大小相同；试卷缺少的题号 $a_i$ 必须正好是唯一未知题，否则两集合不相等。",
+          "用布尔数组记录每道题是否已知后，只需检查 `a_i` 是否已知即可在 $O(1)$ 时间判断第 $i$ 份试卷。"
+        ],
+        "solution_brief": "用布尔数组标记已知题目。若 $k=n$，输出全为 `1`；若 $k<n-1$，输出全为 `0`；若 $k=n-1$，第 $i$ 位在 $a_i$ 是唯一未知题时为 `1`，即判断 `known[a_i]` 是否为假。每个测试用例复杂度为 $O(n)$。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、statement_text 的题目规则及 implementation 标签；statement 的示例部分在输入中被截断。",
+        "quality_flags": [
+          "statement_truncated_after_example"
+        ]
+      }
+    },
+    "2051B": {
+      "problem_key": "2051B",
+      "title": "Journey",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2051/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/137623",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a540d68c1dba608aebb42abb6685258827058514317cc906762bf6754312c1c6",
+      "generated_at": "2026-09-27T03:43:16+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "每天行走距离按 $a,b,c,a,b,c,\\ldots$ 循环，累计路程达到至少 $n$ 千米时立即结束旅程。对每组给定的 $n,a,b,c$，求首次达到目标的天数。",
+        "transformed_statement": "将行程划分为若干个连续三日块，每块贡献固定路程 $a+b+c$；先整体消去完整三日块，再在不超过三天的剩余前缀中寻找首次达到剩余目标的位置。",
+        "key_observations": [
+          "每天的步行距离以 $a,b,c$ 为周期，连续三天的总路程固定为 $S=a+b+c$，因此可以把多个完整周期整体处理。",
+          "完整周期的数量是 $q=\\lfloor n/S\\rfloor$，它们贡献 $3q$ 天；剩余目标为 $r=n\\bmod S$，避免逐天扣除导致的线性复杂度。",
+          "处理剩余部分时只需比较 $a$、$a+b$、$a+b+c$ 与 $r$；若 $r=0$，恰好在第 $3q$ 天完成，否则答案是在此基础上加上首次达到 $r$ 所需的天数。"
+        ],
+        "solution_brief": "令 $S=a+b+c$，用商和余数一次性计算完整三日周期：答案先加 $3\\lfloor n/S\\rfloor$，再根据余数依次比较 $a$、$a+b$、$S$，确定剩余的 0 至 3 天。每组数据复杂度为 $O(1)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 及 tags 中的 math 和 binary search；核心方法来自题解中的三日分组与整除取余。",
+        "quality_flags": []
+      }
+    },
+    "2051A": {
+      "problem_key": "2051A",
+      "title": "Preparing for the Olympiad",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2051/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/137623",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a821774d024ee2592cb5775ef10ea0637b3a310e36fd7336cfc64426bd05b46d",
+      "generated_at": "2026-09-27T03:43:29+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 天，Monocarp 可任选日期训练，第 $i$ 天训练解决 $a_i$ 题；若他在第 $i<n$ 天训练，Stereocarp 会在第 $i+1$ 天训练并解决 $b_{i+1}$ 题。求安排 Monocarp 的训练日期，使两人总解题数之差最大。",
+        "transformed_statement": "用二元变量表示是否在每天训练：对 $i<n$，选择第 $i$ 天的净收益是 $a_i-b_{i+1}$；选择最后一天的收益是 $a_n$。目标因此转化为独立选取所有正收益项。",
+        "key_observations": [
+          "对每个第 $i<n$ 天，Monocarp 的训练会独立贡献 $a_i-b_{i+1}$，因此只需判断这一天训练是否能增加最终差值。",
+          "最后一天训练不会触发 Stereocarp 在后一天训练，其贡献始终为 $a_n>0$，所以最后一天必选。",
+          "所有天数的贡献可以分别决定，选择所有正贡献对应的日期即可得到全局最大值，无需考虑训练日期之间的额外冲突。"
+        ],
+        "solution_brief": "遍历每个 $i<n$，若 $a_i-b_{i+1}>0$ 就把该贡献加入答案；最后额外加入 $a_n$。等价于对每一天独立选择正贡献。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的训练与跟随规则，以及 editorial_text 给出的逐日贡献分析；tags 仅用于辅助分类。",
         "quality_flags": []
       }
     }
