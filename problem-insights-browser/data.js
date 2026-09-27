@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1998,
-    "source_total_problems": 1998,
+    "total_problems": 2005,
+    "source_total_problems": 2005,
     "filtered_out_problems": 0,
-    "with_statement_brief": 1998,
+    "with_statement_brief": 2005,
     "with_editorial_brief": 1753,
     "with_solution_brief": 1754,
-    "missing_editorial_brief": 244,
+    "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 939,
     "primary_topic_count": 13,
-    "contest_count": 313,
+    "contest_count": 314,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 84,
-    "构造与贪心": 673,
+    "字符串": 85,
+    "构造与贪心": 678,
     "图论与网络流": 119,
     "动态规划与状态设计": 189,
     "数论与同余": 194,
     "组合计数与概率": 155,
-    "数据结构": 163,
+    "数据结构": 164,
     "几何": 42,
     "树结构": 129,
     "代数、矩阵与多项式": 18,
@@ -61,7 +61,7 @@ window.CF_INSIGHTS_DATA = {
   "statusCounts": {
     "ai_generated_with_editorial": 825,
     "ai_generated_partial_editorial": 37,
-    "missing_editorial": 244,
+    "missing_editorial": 251,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -21421,6 +21421,187 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "关键观察：不要对每个查询重新跑树 DP，而是把 DP 结果作为函数预处理出来。每个节点维护函数斜率变化的断点堆；合并孩子时合并断点，应用 `max` 操作时找到与直线的交点并截断旧函数。所有断点总增量可摊还控制，查询时在根函数上求值即可。",
           "extractionStatus": "manual_override",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2149,
+      "name": "Codeforces Round 1054 (Div. 3)",
+      "date": "2025-09-25",
+      "url": "https://codeforces.com/contest/2149",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "2149A",
+          "index": "A",
+          "slot": "A",
+          "title": "Be Positive",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "博弈"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Be Positive；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149B",
+          "index": "B",
+          "slot": "B",
+          "title": "Unconventional Pairs",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Unconventional Pairs；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149C",
+          "index": "C",
+          "slot": "C",
+          "title": "MEX rose",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "数据结构"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：MEX rose；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149D",
+          "index": "D",
+          "slot": "D",
+          "title": "A and B",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "博弈"
+          ],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：A and B；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149E",
+          "index": "E",
+          "slot": "E",
+          "title": "Hidden Knowledge of the Ancients",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "data structures",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Hidden Knowledge of the Ancients；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149F",
+          "index": "F",
+          "slot": "F",
+          "title": "Nezuko in the Clearing",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "图论与网络流",
+            "博弈"
+          ],
+          "originalTags": [
+            "binary search",
+            "math",
+            "ternary search"
+          ],
+          "statementBrief": "题面已抓取：Nezuko in the Clearing；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2149G",
+          "index": "G",
+          "slot": "G",
+          "title": "Buratsuta 3",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/2149/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "组合计数与概率",
+            "交互"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "probabilities"
+          ],
+          "statementBrief": "题面已抓取：Buratsuta 3；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
         }
       ]
     },

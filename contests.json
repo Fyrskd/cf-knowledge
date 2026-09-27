@@ -2321,6 +2321,17 @@
     "date": "2025-09-24"
   },
   {
+    "id": 2149,
+    "name": "Codeforces Round 1054 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1758810900,
+    "relativeTimeSeconds": 31661369,
+    "date": "2025-09-25"
+  },
+  {
     "id": 2152,
     "name": "Squarepoint Challenge (Codeforces Round 1055, Div. 1 + Div. 2)",
     "type": "CF",
