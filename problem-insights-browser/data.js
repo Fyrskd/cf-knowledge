@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3102,
+    "total_problems": 3104,
     "source_total_problems": 3105,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 3102,
-    "with_editorial_brief": 2822,
-    "with_solution_brief": 2823,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3104,
+    "with_editorial_brief": 2824,
+    "with_solution_brief": 2825,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2164,
+    "ai_override_count": 2166,
     "primary_topic_count": 13,
-    "contest_count": 472,
+    "contest_count": 473,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,9 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 991,
+    "构造与贪心": 992,
+    "图论与网络流": 191,
     "数论与同余": 334,
-    "图论与网络流": 190,
     "博弈": 99,
     "代数、矩阵与多项式": 22,
     "组合计数与概率": 243,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 163
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1865,
+    "ai_generated_with_editorial": 1867,
     "ai_generated_partial_editorial": 66,
     "missing_editorial": 279,
     "manual_override": 891,
@@ -95813,6 +95813,68 @@ window.CF_INSIGHTS_DATA = {
             "环上的树组件用 $A,B$ 分别表示根不在、在独立集中的情形，环的生成函数为 $-\\\\ln(1-A-B)-A$，再扣除整环均被前驱占据的非法情况，最后用指数运算合并多个环组件。"
           ],
           "solutionBrief": "把每个 $a$ 看成无自环函数图，统计其带入度权的独立集。用生成函数递推树组件，牛顿迭代求系数；再通过对数构造环、指数合并组件，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1711,
+      "name": "Codeforces Round 810 (Div. 2)",
+      "date": "2022-07-24",
+      "url": "https://codeforces.com/contest/1711",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1300,
+      "problems": [
+        {
+          "key": "1711A",
+          "index": "A",
+          "slot": "A",
+          "title": "Perfect Permutation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1711/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/105232",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定正整数 $n$，要构造一个 $1$ 到 $n$ 的排列；排列的权重是满足下标 $i$ 整除对应值 $p_i$ 的位置数量。要求输出权重最小的排列。",
+          "transformedStatement": "把目标转化为让除位置 $1$ 外的所有位置都满足 $i\\nmid p_i$。利用循环右移排列，使 $i\\ge2$ 时 $p_i=i-1$，从而直接排除这些位置的整除关系。",
+          "keyObservations": [
+            "下标 $1$ 一定满足 $1\\mid p_1$，因此任意排列的权重至少为 $1$，不可能达到 $0$。",
+            "将排列构造成 $[n,1,2,\\ldots,n-1]$ 后，对每个 $i\\ge 2$ 都有 $p_i=i-1<i$，所以 $i$ 不可能整除 $p_i$，权重恰好为 $1$。"
+          ],
+          "solutionBrief": "先用 $1\\mid p_1$ 证明答案下界为 $1$，再输出循环右移一位的排列 $[n,1,2,\\ldots,n-1]$。除第一个位置外，均有 $p_i=i-1<i$，故只有一个位置计入权重，达到最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1711B",
+          "index": "B",
+          "slot": "B",
+          "title": "Party",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1711/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/105232",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "graphs"
+          ],
+          "statementBrief": "给定 $n$ 名成员及 $m$ 对朋友关系，选择邀请任意成员；未被邀请的成员贡献对应的不开心值，而一对朋友都被邀请就吃一个蛋糕。要求邀请后蛋糕总数为偶数，求最小总不开心值。",
+          "transformedStatement": "将成员建模为图顶点、朋友关系建模为边，把未邀请成员看作被删除的顶点，并要求删除后剩余边数为偶数；目标是最小化被删除顶点权值之和。",
+          "keyObservations": [
+            "若朋友边总数 $m$ 为偶数，邀请所有成员时蛋糕数已合法，答案直接为 $0$。",
+            "当 $m$ 为奇数时，删除一个奇度顶点会使剩余边数变偶，因此只需考虑删除一个奇度顶点的代价。",
+            "若只删除偶度顶点，剩余边数奇偶只由被删顶点之间的内部边决定；要改变奇偶性，至少删除一条连接两个偶度顶点的边，因此只需检查这样的相邻顶点对。"
+          ],
+          "solutionBrief": "把成员视为图顶点、朋友关系视为边，删除成员的代价是其不开心值。若 $m$ 偶数答案为 $0$；否则枚举每个奇度顶点单独删除，以及每条连接两个偶度顶点的边对应的两点删除，取最小代价，复杂度为 $O(n+m)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
