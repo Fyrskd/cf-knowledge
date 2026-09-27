@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2334,
+    "total_problems": 2323,
     "source_total_problems": 2334,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 2334,
-    "with_editorial_brief": 2065,
-    "with_solution_brief": 2066,
-    "missing_editorial_brief": 268,
+    "filtered_out_problems": 11,
+    "with_statement_brief": 2323,
+    "with_editorial_brief": 2059,
+    "with_solution_brief": 2060,
+    "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1275,
+    "ai_override_count": 1260,
     "primary_topic_count": 13,
     "contest_count": 360,
     "rating_min": 800,
@@ -34,8 +34,8 @@ window.CF_INSIGHTS_DATA = {
     "动态规划与状态设计",
     "数据结构",
     "组合计数与概率",
-    "图论与网络流",
     "树结构",
+    "图论与网络流",
     "基础实现与模拟",
     "字符串",
     "交互",
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 110,
-    "构造与贪心": 766,
-    "图论与网络流": 137,
+    "字符串": 109,
+    "构造与贪心": 765,
+    "图论与网络流": 134,
     "动态规划与状态设计": 210,
-    "数论与同余": 243,
-    "组合计数与概率": 177,
-    "数据结构": 208,
+    "数论与同余": 242,
+    "组合计数与概率": 175,
+    "数据结构": 207,
     "几何": 52,
     "树结构": 137,
-    "代数、矩阵与多项式": 19,
+    "代数、矩阵与多项式": 18,
     "交互": 82,
-    "基础实现与模拟": 115,
+    "基础实现与模拟": 114,
     "博弈": 78
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1129,
+    "ai_generated_with_editorial": 1123,
     "ai_generated_partial_editorial": 45,
-    "missing_editorial": 268,
+    "missing_editorial": 263,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -188,15 +188,22 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2268/problem/C",
           "editorialUrl": "",
-          "primaryTopic": "基础实现与模拟",
-          "secondaryTopics": [],
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "组合计数与概率"
+          ],
           "originalTags": [
             "binary search",
             "bitmasks",
+            "brute force",
             "data structures",
-            "greedy"
+            "divide and conquer",
+            "greedy",
+            "two pointers"
           ],
-          "statementBrief": "给定数组后，可选择任意满足 $l<r$ 的连续区间。先取区间最大值 $m$，再将区间内每个数与 $m$ 按位 AND，最后把所有结果按位 XOR；要求求出所有合法区间中能得到的最大值。",
+          "statementBrief": "题面已抓取：KiaKio and Energy Intervals；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -211,12 +218,18 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2268/problem/D",
           "editorialUrl": "",
-          "primaryTopic": "图论与网络流",
-          "secondaryTopics": [],
-          "originalTags": [
-            "dp"
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构",
+            "组合计数与概率"
           ],
-          "statementBrief": "给定一个长度为 $n$ 的排列。每次从位置 $i$ 出发，可以一步移动到任意左侧位置，或移动到右侧第一个满足 $p_j>p_i$ 的位置（若存在）；对每个有序位置对求最少步数，不可达记为 $0$，输出所有 $f(i,j)$ 的总和。",
+          "originalTags": [
+            "data structures",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：AghaBalaSar and Hamed；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -232,12 +245,18 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2268/problem/E",
           "editorialUrl": "",
           "primaryTopic": "树结构",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "数据结构",
+            "代数、矩阵与多项式",
+            "数论与同余"
+          ],
           "originalTags": [
             "data structures",
-            "fft"
+            "fft",
+            "math",
+            "trees"
           ],
-          "statementBrief": "给定数组的连续区间可任选一个位置作根，再用左侧区间和右侧区间递归构造左右子树，因此会得到所有合法二叉树。删去每条边后，将两部分数组元素的按位异或值相加得到树的价值，要求所有合法树的价值总和并对 $998244353$ 取模。",
+          "statementBrief": "题面已抓取：Kia Kio and Tree of Life；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -757,7 +776,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-13",
       "url": "https://codeforces.com/contest/2264",
       "type": "Div. 2",
-      "problemCount": 7,
+      "problemCount": 3,
       "maxRating": 2700,
       "problems": [
         {
@@ -818,95 +837,6 @@ window.CF_INSIGHTS_DATA = {
           "editorialQuality": "complete"
         },
         {
-          "key": "2264C",
-          "index": "C",
-          "slot": "C",
-          "title": "Madamant's Skating Dynasty",
-          "rating": 1300,
-          "problemUrl": "https://codeforces.com/contest/2264/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/156680",
-          "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [],
-          "originalTags": [
-            "combinatorics",
-            "math",
-            "sortings"
-          ],
-          "statementBrief": "给定 $n$ 个评分互不相同且带标签的滑冰者，要构造一棵有根树，使每个非根节点的评分都低于其父节点。每棵树的成本是所有父子边上“父评分减子评分”的总和，要求计算所有合法树成本之和并对 $998244353$ 取模。",
-          "transformedStatement": "排序后，最大评分者必为根；对每个其余位置 $i$，只需独立选择一个下标更大的位置作为父亲。这样所有合法树等价于这些父亲选择的组合，目标转化为按每条可能的有向边统计其在多少种组合中出现。",
-          "keyObservations": [
-            "将评分排序为 $b_0< b_1<\\cdots<b_{n-1}$ 后，每个非根节点只能选择右侧节点为父亲，因此父亲链严格右移，不会成环且最终必到达最大值；最大评分选手被强制为根。",
-            "固定一条边 $i\\to j$（$j>i$）后，其余位置 $k$ 可独立选择 $n-k-1$ 个右侧父亲，因此包含该边的树数量为 $W_i=\\prod_{k\\ne i}(n-k-1)$，且与 $j$ 无关。",
-            "由于总成本是边权之和，可逐条边统计贡献；位置 $i$ 的全部出边贡献为 $W_i\\left(\\sum_{j>i}b_j-(n-i-1)b_i\\right)$，用后缀和快速计算边权总和。",
-            "各个 $W_i$ 可由 $(n-k-1)$ 的前缀积与后缀积相乘得到，避免模除法，并将整体复杂度控制在排序所需的 $O(n\\log n)$。"
-          ],
-          "solutionBrief": "排序后让每个非最大元素选择任意右侧元素作父亲。按边计贡献：对位置 $i$，用后缀和求所有出边权值和，用前后缀积求包含固定边的树数，累加并取模。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2264D",
-          "index": "D",
-          "slot": "D",
-          "title": "Dr. Agos's Dark Mode",
-          "rating": 1800,
-          "problemUrl": "https://codeforces.com/contest/2264/problem/D",
-          "editorialUrl": "https://codeforces.com/blog/entry/156680",
-          "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "构造与贪心",
-            "字符串"
-          ],
-          "originalTags": [
-            "brute force",
-            "chinese remainder theorem",
-            "constructive algorithms",
-            "math",
-            "strings"
-          ],
-          "statementBrief": "给定长度为 $n$ 的二进制串，连续子串按二进制数解释且允许前导零；每个数值能被 $3$ 整除的子串都计数。请构造一个至多含三个 $1$ 的串，使这类子串数量在所有长度为 $n$ 的二进制串中最小。",
-          "transformedStatement": "把每个位置前缀映射为模 $3$ 的交错和：一个子串被 $3$ 整除等价于其左右边界的前缀余数相同。因此问题转为让三种前缀余数在 $n+1$ 个前缀中的出现次数尽量均衡。",
-          "keyObservations": [
-            "因 $2\\equiv-1\\pmod 3$，定义交错前缀和 $p_i=\\sum_{j=1}^{i}(-1)^js_j\\bmod 3$ 后，子串可被整除当且仅当其两端对应的前缀余数相等。",
-            "若三种前缀余数出现次数为 $c_0,c_1,c_2$，则答案为 $\\sum_{k=0}^{2}\\binom{c_k}{2}$；固定总数 $n+1$ 时，三者尽量均衡可使该和最小。",
-            "零会保持前缀余数不变，三个一最多把余数序列分成四个常值块，因此把两个前一位置放在约 $n/3、2n/3$ 处、第三个放在末尾即可尝试均衡三种余数。",
-            "枚举两个边界各自向下或向上取整以及是否放置末尾的 $1$，检查前缀余数计数是否相差至多一；这种候选中必有最优构造。"
-          ],
-          "solutionBrief": "将可整除子串转化为相等交错前缀余数对，最小化三类余数计数的组合数之和。对 $n\\ge3$ 枚举约在 $n/3、2n/3$ 及末尾放置的至多三个 $1$，选取计数均衡者；$n=1,2$ 特判。总复杂度为 $O(n)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2264E1",
-          "index": "E1",
-          "slot": "E",
-          "title": "A Prime Flood (Easy Version)",
-          "rating": 2100,
-          "problemUrl": "https://codeforces.com/contest/2264/problem/E1",
-          "editorialUrl": "https://codeforces.com/blog/entry/156680",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "数论与同余",
-            "组合计数与概率"
-          ],
-          "originalTags": [
-            "combinatorics",
-            "dp",
-            "number theory"
-          ],
-          "statementBrief": "给定数组，分别对每个非空子序列操作：任选质数 $p$，同时将当前值能被 $p$ 整除的所有元素减一，操作可重复或不做。求每个子序列最终能统一成的最大整数之和，按下标选择分别计数。",
-          "transformedStatement": "先只研究端点对 $[x,y]$ 能统一到的最大值 $dp[x][y]$，利用操作保持数值顺序推导端点递推；随后把每个子序列按其最小值和最大值分类计数并加权。",
-          "keyObservations": [
-            "任意操作都保持数值的相对顺序，因此最小值和最大值最终相等时，区间内所有值也必然相等，子序列贡献只取决于其最小值与最大值。",
-            "若 $x<y$ 且存在质数整除 $y$ 但不整除 $x$，可只让上端降为 $y-1$，状态转为 $dp[x][y-1]$；否则所有 $y$ 的质因数也整除 $x$，两端同时下降，转为 $dp[x-1][y-1]$。",
-            "令 $need[y]$ 为 $y$ 的所有不同质因数之积，则“$y$ 的每个质因数都整除 $x$”等价于 $x\\bmod need[y]=0$，从而能按区间长度递推整张状态表。",
-            "固定最小值 $x$ 和最大值 $y$ 后，两端必须各选至少一个，中间元素任选，因此方案数为 $(2^{c_x}-1)(2^{c_y}-1)2^{\\sum_{x<v<y}c_v}$，可用频次数组前缀和快速计算。"
-          ],
-          "solutionBrief": "预处理 $need[y]$ 和 $dp[x][y]$，其中状态表示区间端点能达到的最大相等值。再按最小值、最大值统计子序列数量，用前缀和计算中间元素的自由选择并累加贡献；预处理为 $O(M^2)$，每组统计为 $O(n^2)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
           "key": "2264E2",
           "index": "E2",
           "slot": "E",
@@ -934,36 +864,6 @@ window.CF_INSIGHTS_DATA = {
             "最小值为 $x$、最大值为 $y$ 的子序列数量可拆为 $L_xR_y$，其中 $L_x=C_x2^{-S(x)}$、$R_y=C_y2^{S(y-1)}$；因此每个压缩区间可用 $R_y$ 的前缀和一次性计数。"
           ],
           "solutionBrief": "先用质因数筛得到 $r(y)$，生成阻断位置并按断点压缩各行 DP。再按数值频次计算端点权重，将子序列数拆成最小值因子和最大值因子，用前缀和累加每个断点区间，最后单独处理最小值等于最大值的情况。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2264F",
-          "index": "F",
-          "slot": "F",
-          "title": "Deranged Calculator",
-          "rating": 2700,
-          "problemUrl": "https://codeforces.com/contest/2264/problem/F",
-          "editorialUrl": "https://codeforces.com/blog/entry/156680",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数论与同余",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "implementation",
-            "math"
-          ],
-          "statementBrief": "给定 $k\\in\\{2,3,50\\}$，构造一行 DC 表达式。表达式只能使用输入正整数 $n$、括号、`round` 及四则运算，不能写数字常量；所有除法须始终不除以零，并且对每个 $2\\le n\\le k$ 输出长度为 $n$ 的错排数。",
-          "transformedStatement": "将目标函数拆成两层构造：先用取整制造关于 $n$ 的阈值，从而拼出阶乘表达式；再利用错排数是 $n!/e$ 的最近整数这一关系，用有限嵌套分式逼近 $e$，最终整体取整。",
-          "keyObservations": [
-            "用 `round(n/(n+x))` 构造阈值指示器：当且仅当 $n\\ge x$ 时取 $1$，从而能在表达式中选择性加入阶乘因子。",
-            "把 $n!$ 写成各项的乘积，并用阈值指示器决定因子是否启用，即可在没有循环和递归的情况下同时表示所有 $2\\le n\\le50$。",
-            "错排数满足 $D_n=\\operatorname{round}(n!/e)$；因此问题可转化为构造足够精确的 $e$，再对整体结果取整。",
-            "利用 $e=\\sum_{i=0}^{\\infty}1/i!$ 的嵌套形式截断到第 $50$ 项，避免重复书写阶乘并使表达式长度满足限制。"
-          ],
-          "solutionBrief": "预先用仅含 $n$ 的表达式构造 $1\\sim50$ 的常数；用 `round(n/(n+x))` 拼出 $n!$，再以嵌套形式近似 $e$，输出 `round(n!/e)`。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
@@ -1037,7 +937,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-12",
       "url": "https://codeforces.com/contest/2262",
       "type": "Div. 1",
-      "problemCount": 7,
+      "problemCount": 5,
       "maxRating": 3500,
       "problems": [
         {
@@ -1118,68 +1018,6 @@ window.CF_INSIGHTS_DATA = {
             "插入一个位置会改变其右侧冠军的能力，因此只需沿 $S$ 中右侧已有失利点继续检查受影响的边界；区间总和用树状数组或线段树维护，避免逐个模拟所有选手。"
           ],
           "solutionBrief": "将删除过程反转为按 $p_n,\u0002ldots,p_1$ 插入。用有序集合维护弃权位置，用树状数组或线段树查询活跃能力和；每次插入依据左侧最近弃权点确定新冠军，并向右更新受影响的弃权点，记录每个阶段答案。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2262C",
-          "index": "C",
-          "slot": "C",
-          "title": "Traveling the World",
-          "rating": 2200,
-          "problemUrl": "https://codeforces.com/contest/2262/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/156688",
-          "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [
-            "图论与网络流",
-            "构造与贪心",
-            "数论与同余"
-          ],
-          "originalTags": [
-            "combinatorics",
-            "constructive algorithms",
-            "graphs",
-            "greedy",
-            "math"
-          ],
-          "statementBrief": "给定严格递增且含 $0$ 的 $n$ 个岛屿值，将它们任意重排为 $b$。位于位置 $i$ 时，可移动到位置 $j$ 当且仅当 $b_i+b_j$ 等于从 $i$ 到末尾的最大值；要求统计能按该规则恰好访问所有位置一次的重排数。",
-          "transformedStatement": "将重排转为按岛屿值建图：每个值依据所在位置的后缀最大值确定唯一可能的后继。题目等价于统计能形成覆盖全部节点的有向简单路径的排列，并由路径末端反向推出两组等差结构。",
-          "keyObservations": [
-            "把值为 $v$ 的位置看成图节点；若其后缀最大值为 $s$，它至多只能连向 $s-v$，因此每个节点出度不超过 $1$。",
-            "可行排列恰有两个后缀最大值：少于两个会形成短环，多于两个会产生过多指向 $0$ 的边，无法组成覆盖所有节点的简单路径。",
-            "两 个后缀最大值必为 $M=a_n$ 与 $b_n$，且路径末段固定为 $b_n\\to0\\to M$；逆向追踪后，节点值交替呈现为 $0,x, M-x,2x,\\ldots$，其中 $x=M-b_n$。",
-            "只需检查 $x=M-a_{n-1}$ 和 $x=M-a_{n-2}$；若生成的两组等差值恰好组成原数组，则前后两组可独立排列，贡献 $k!(n-k-2)!$。"
-          ],
-          "solutionBrief": "令 $M=a_n$，分别测试 $x=M-a_{n-1}$、$M-a_{n-2}$。生成并排序 $0,x,\u001b[...],(k-1)x$ 与 $M,M-x,\u001b[...],M-(n-k-1)x$，若等于原数组则累加 $k!(n-k-2)!$，其中 $k=\\lfloor n/2\\rfloor$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2262D",
-          "index": "D",
-          "slot": "D",
-          "title": "PLUSworld",
-          "rating": 2800,
-          "problemUrl": "https://codeforces.com/contest/2262/problem/D",
-          "editorialUrl": "https://codeforces.com/blog/entry/156688",
-          "primaryTopic": "图论与网络流",
-          "secondaryTopics": [
-            "构造与贪心"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "graphs",
-            "greedy"
-          ],
-          "statementBrief": "有 $n$ 个点，点 $i$ 的有向边当前指向 $a_i$，目标是变为指向 $b_i$，且给定 $i\\le b_i$。任选起点后，每次可将当前位置的终点加一，或沿当前边移动到下一个点；要求判断能否有限步完成，并输出任意合法操作序列。",
-          "transformedStatement": "把一次可修改的点视为可将终点从 $a_i$ 逐步推到 $b_i$，并建立边集 $i\\to j$（$a_i\\le j\\le b_i$）。问题转化为判断这些区间边形成的 SCC 是否能按一条链访问，再据此构造遍历顺序。",
-          "keyObservations": [
-            "若存在 $a_i>b_i$，由于操作只能增大终点，目标立即不可达；否则把每个点 $i$ 连向区间 $[a_i,b_i]$ 内的所有点，用可达结构刻画访问顺序。",
-            "$a_i=b_i$ 的点无需修改，可将指向它们的边直接改接到其目标点；压缩后，所有非平凡 SCC 都必须被访问，而全由固定点组成的 SCC 可忽略。",
-            "压缩后的 SCC 缩点图每个点至多有一条出边，且非平凡部分必须是一条链；否则一次离开某个 SCC 后无法返回并修正其余分支。",
-            "含有出边的 SCC 中，承担该出边的点必须是该 SCC 的最大编号点；按内部反向边建树并逐次换根，即可访问并修正链上所有点。"
-          ],
-          "solutionBrief": "先检查 $a_i>b_i$。构造区间有向图并压缩固定点，求 SCC 及缩点结构；若不满足出度至多一、非平凡 SCC 成链等条件则输出 -1，否则按链序遍历各 SCC，用内部反向树逐步调整终点并完成构造。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
@@ -1680,7 +1518,7 @@ window.CF_INSIGHTS_DATA = {
       "url": "https://codeforces.com/contest/2258",
       "type": "Div. 2",
       "problemCount": 7,
-      "maxRating": 2500,
+      "maxRating": 3000,
       "problems": [
         {
           "key": "2258A",
@@ -1870,7 +1708,7 @@ window.CF_INSIGHTS_DATA = {
           "index": "F",
           "slot": "F",
           "title": "Plus Minus Tree",
-          "rating": 2500,
+          "rating": 3000,
           "problemUrl": "https://codeforces.com/contest/2258/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/156316",
           "primaryTopic": "动态规划与状态设计",
@@ -46617,7 +46455,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Dora's Set",
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/2007/problem/A",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/2007/attachments/download/26937/tutorial.pdf",
           "primaryTopic": "数论与同余",
           "secondaryTopics": [
             "构造与贪心",
@@ -46642,7 +46480,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Index and Maximum Value",
           "rating": 900,
           "problemUrl": "https://codeforces.com/contest/2007/problem/B",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/2007/attachments/download/26937/tutorial.pdf",
           "primaryTopic": "数据结构",
           "secondaryTopics": [
             "构造与贪心"
@@ -46665,14 +46503,17 @@ window.CF_INSIGHTS_DATA = {
           "title": "Dora and C++",
           "rating": 1500,
           "problemUrl": "https://codeforces.com/contest/2007/problem/C",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/2007/attachments/download/26937/tutorial.pdf",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "博弈",
+            "构造与贪心"
+          ],
           "originalTags": [
             "math",
             "number theory"
           ],
-          "statementBrief": "给定长度为 $n$ 的数组和两个常数 $a,b$。每次可任选一个位置，将该元素增加 $a$ 或增加 $b$，操作次数可为任意非负整数；求操作后数组最大值与最小值之差的最小可能值。",
+          "statementBrief": "题面已抓取：Dora and C++；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -46697,7 +46538,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Iris and Game on the Tree",
           "rating": 1700,
           "problemUrl": "https://codeforces.com/contest/2006/problem/A",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/2006/attachments/download/26936/tutorial.pdf",
           "primaryTopic": "树结构",
           "secondaryTopics": [
             "构造与贪心",
@@ -46726,7 +46567,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Iris and the Tree",
           "rating": 1800,
           "problemUrl": "https://codeforces.com/contest/2006/problem/B",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/2006/attachments/download/26936/tutorial.pdf",
           "primaryTopic": "树结构",
           "secondaryTopics": [
             "图论与网络流",
@@ -46755,7 +46596,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Eri and Expanded Sets",
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/2006/problem/C",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/2006/attachments/download/26936/tutorial.pdf",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "数据结构",
@@ -46783,7 +46624,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Iris and Adjacent Products",
           "rating": 2600,
           "problemUrl": "https://codeforces.com/contest/2006/problem/D",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/2006/attachments/download/26936/tutorial.pdf",
           "primaryTopic": "数据结构",
           "secondaryTopics": [
             "构造与贪心",
@@ -46810,7 +46651,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Iris's Full Binary Tree",
           "rating": 3100,
           "problemUrl": "https://codeforces.com/contest/2006/problem/E",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/2006/attachments/download/26936/tutorial.pdf",
           "primaryTopic": "树结构",
           "secondaryTopics": [
             "构造与贪心",
@@ -46837,7 +46678,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Dora's Paint",
           "rating": 3500,
           "problemUrl": "https://codeforces.com/contest/2006/problem/F",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/2006/attachments/download/26936/tutorial.pdf",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "组合计数与概率",
@@ -47235,7 +47076,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Deterministic Heap (Hard Version)",
           "rating": 2900,
           "problemUrl": "https://codeforces.com/contest/2001/problem/E2",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/132965",
           "primaryTopic": "树结构",
           "secondaryTopics": [
             "组合计数与概率",
@@ -49841,7 +49682,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Fortnite",
           "rating": 3500,
           "problemUrl": "https://codeforces.com/contest/1994/problem/H",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/131642",
           "primaryTopic": "字符串",
           "secondaryTopics": [
             "构造与贪心",
@@ -51762,7 +51603,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Turtle and Piggy Are Playing a Game",
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1981/problem/A",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "博弈"
@@ -51786,7 +51627,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Turtle and an Infinite Sequence",
           "rating": 1300,
           "problemUrl": "https://codeforces.com/contest/1981/problem/B",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
           "primaryTopic": "动态规划与状态设计",
           "secondaryTopics": [
             "交互"
@@ -51809,7 +51650,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Turtle and an Incomplete Sequence",
           "rating": 1800,
           "problemUrl": "https://codeforces.com/contest/1981/problem/C",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "动态规划与状态设计"
@@ -51836,7 +51677,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Turtle and Multiplication",
           "rating": 2400,
           "problemUrl": "https://codeforces.com/contest/1981/problem/D",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "数论与同余",
@@ -51863,7 +51704,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Turtle and Intersected Segments",
           "rating": 2600,
           "problemUrl": "https://codeforces.com/contest/1981/problem/E",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
           "primaryTopic": "图论与网络流",
           "secondaryTopics": [
             "构造与贪心",
@@ -51890,7 +51731,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Turtle and Paths on a Tree",
           "rating": 3000,
           "problemUrl": "https://codeforces.com/contest/1981/problem/F",
-          "editorialUrl": "",
+          "editorialUrl": "/contest/1981/attachments/download/25830/sol-zh.pdf",
           "primaryTopic": "树结构",
           "secondaryTopics": [
             "数据结构",
@@ -55532,7 +55373,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Sasha and the Beautiful Array",
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1929/problem/A",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/125943",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [],
           "originalTags": [
@@ -55555,7 +55396,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Sasha and the Drawing",
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1929/problem/B",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/125943",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "博弈",
@@ -55580,7 +55421,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Sasha and the Casino",
           "rating": 1400,
           "problemUrl": "https://codeforces.com/contest/1929/problem/C",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/125943",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "博弈",
@@ -55608,7 +55449,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Sasha and a Walk in the City",
           "rating": 1900,
           "problemUrl": "https://codeforces.com/contest/1929/problem/D",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/125943",
           "primaryTopic": "树结构",
           "secondaryTopics": [
             "组合计数与概率",
@@ -55635,7 +55476,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Sasha and the Happy Tree Cutting",
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/1929/problem/E",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/125943",
           "primaryTopic": "树结构",
           "secondaryTopics": [
             "构造与贪心",
@@ -55666,7 +55507,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Sasha and the Wedding Binary Search Tree",
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/1929/problem/F",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/125943",
           "primaryTopic": "树结构",
           "secondaryTopics": [
             "构造与贪心",
@@ -61995,7 +61836,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Increasing and Decreasing",
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1864/problem/A",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/119772",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "交互"
@@ -62020,7 +61861,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Swap and Reverse",
           "rating": 1100,
           "problemUrl": "https://codeforces.com/contest/1864/problem/B",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/119772",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "字符串",
@@ -62047,7 +61888,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Divisor Chain",
           "rating": 1300,
           "problemUrl": "https://codeforces.com/contest/1864/problem/C",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/119772",
           "primaryTopic": "数论与同余",
           "secondaryTopics": [
             "动态规划与状态设计",
@@ -62074,7 +61915,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Matrix Cascade",
           "rating": 1700,
           "problemUrl": "https://codeforces.com/contest/1864/problem/D",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/119772",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "动态规划与状态设计",
@@ -62103,7 +61944,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Guess Game",
           "rating": 2100,
           "problemUrl": "https://codeforces.com/contest/1864/problem/E",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/119772",
           "primaryTopic": "博弈",
           "secondaryTopics": [
             "组合计数与概率",
@@ -62134,7 +61975,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Exotic Queries",
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/1864/problem/F",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/119772",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "数据结构",
@@ -62160,7 +62001,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Magic Square",
           "rating": 3100,
           "problemUrl": "https://codeforces.com/contest/1864/problem/G",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/119772",
           "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
             "构造与贪心",
@@ -62186,7 +62027,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Asterism Stream",
           "rating": 3200,
           "problemUrl": "https://codeforces.com/contest/1864/problem/H",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/119772",
           "primaryTopic": "动态规划与状态设计",
           "secondaryTopics": [
             "代数、矩阵与多项式",
@@ -62212,7 +62053,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "Future Dominators",
           "rating": 3500,
           "problemUrl": "https://codeforces.com/contest/1864/problem/I",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/119772",
           "primaryTopic": "图论与网络流",
           "secondaryTopics": [
             "构造与贪心",
@@ -65607,7 +65448,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "LuoTianyi and the Palindrome String",
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1825/problem/A",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/116328",
           "primaryTopic": "字符串",
           "secondaryTopics": [
             "构造与贪心"
@@ -65630,7 +65471,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "LuoTianyi and the Table",
           "rating": 1000,
           "problemUrl": "https://codeforces.com/contest/1825/problem/B",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/116328",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "博弈",
@@ -65665,7 +65506,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "LuoTianyi and the Show",
           "rating": 1400,
           "problemUrl": "https://codeforces.com/contest/1824/problem/A",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/116328",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
             "组合计数与概率"
@@ -65688,7 +65529,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "LuoTianyi and the Floating Islands (Easy Version)",
           "rating": 1800,
           "problemUrl": "https://codeforces.com/contest/1824/problem/B1",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/116328",
           "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
             "树结构",
@@ -65715,7 +65556,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "LuoTianyi and the Floating Islands (Hard Version)",
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/1824/problem/B2",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/116328",
           "primaryTopic": "树结构",
           "secondaryTopics": [
             "组合计数与概率",
@@ -65743,7 +65584,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "LuoTianyi and XOR-Tree",
           "rating": 2500,
           "problemUrl": "https://codeforces.com/contest/1824/problem/C",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/116328",
           "primaryTopic": "树结构",
           "secondaryTopics": [
             "图论与网络流",
@@ -65772,7 +65613,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "LuoTianyi and the Function",
           "rating": 3000,
           "problemUrl": "https://codeforces.com/contest/1824/problem/D",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/116328",
           "primaryTopic": "数据结构",
           "secondaryTopics": [
             "交互"
@@ -65794,7 +65635,7 @@ window.CF_INSIGHTS_DATA = {
           "title": "LuoTianyi and Cartridge",
           "rating": 3500,
           "problemUrl": "https://codeforces.com/contest/1824/problem/E",
-          "editorialUrl": "",
+          "editorialUrl": "https://codeforces.com/blog/entry/116328",
           "primaryTopic": "树结构",
           "secondaryTopics": [
             "数据结构",
@@ -66073,79 +65914,9 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-04-29",
       "url": "https://codeforces.com/contest/1817",
       "type": "Div. 1",
-      "problemCount": 6,
-      "maxRating": 3500,
+      "problemCount": 1,
+      "maxRating": 2700,
       "problems": [
-        {
-          "key": "1817A",
-          "index": "A",
-          "slot": "A",
-          "title": "Almost Increasing Subsequence",
-          "rating": 1500,
-          "problemUrl": "https://codeforces.com/contest/1817/problem/A",
-          "editorialUrl": "https://codeforces.com/blog/entry/115586",
-          "primaryTopic": "数据结构",
-          "secondaryTopics": [],
-          "originalTags": [
-            "binary search",
-            "data structures",
-            "greedy"
-          ],
-          "statementBrief": "给定数组和多次区间查询。对每个区间 $[l,r]$，可以删除任意元素但必须保持剩余元素的相对顺序，要求最长剩余子序列不包含三个连续元素 $x,y,z$ 满足 $x\\ge y\\ge z$，输出其长度。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "url_only"
-        },
-        {
-          "key": "1817B",
-          "index": "B",
-          "slot": "B",
-          "title": "Fish Graph",
-          "rating": 1900,
-          "problemUrl": "https://codeforces.com/contest/1817/problem/B",
-          "editorialUrl": "https://codeforces.com/blog/entry/115586",
-          "primaryTopic": "图论与网络流",
-          "secondaryTopics": [
-            "构造与贪心"
-          ],
-          "originalTags": [
-            "brute force",
-            "constructive algorithms",
-            "dfs and similar",
-            "graphs"
-          ],
-          "statementBrief": "给定一个可能不连通的简单无向图，可以任意选取原图中的部分边组成子图。要求判断子图中是否存在一个简单环，并选定环上的顶点 $u$，使环外恰有两条额外边都连接到 $u$，且不连接环上的其他顶点；若存在则输出这些边。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "url_only"
-        },
-        {
-          "key": "1817C",
-          "index": "C",
-          "slot": "C",
-          "title": "Similar Polynomials",
-          "rating": 2400,
-          "problemUrl": "https://codeforces.com/contest/1817/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/115586",
-          "primaryTopic": "代数、矩阵与多项式",
-          "secondaryTopics": [
-            "数论与同余"
-          ],
-          "originalTags": [
-            "combinatorics",
-            "math"
-          ],
-          "statementBrief": "给定两个次数均为 $d$ 的整数多项式 $A(x)$、$B(x)$，并提供它们在 $0,1,\\ldots,d$ 处、模 $10^9+7$ 的取值。已知存在平移量 $s$，使对所有整数 $x$ 都有 $B(x)\\equiv A(x+s)\\pmod{10^9+7}$，要求输出任意满足条件且 $0\\le s<10^9+7$ 的 $s$。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "url_only"
-        },
         {
           "key": "1817D",
           "index": "D",
@@ -66175,51 +65946,6 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "将 $k$ 分为左半区、中间位置和右半区处理。左半区使用 `R`、若干次 `DRUR` 与 `DL`；右半区先用镜像操作移到右上角，再整理玩具并还原为左半区。总操作数为 $O(n)$，满足上限。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
-        },
-        {
-          "key": "1817E",
-          "index": "E",
-          "slot": "E",
-          "title": "Half-sum",
-          "rating": 3400,
-          "problemUrl": "https://codeforces.com/contest/1817/problem/E",
-          "editorialUrl": "https://codeforces.com/blog/entry/115586",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "brute force",
-            "divide and conquer",
-            "greedy"
-          ],
-          "statementBrief": "给定一个非负整数多重集合。每步任选两个数 $x,y$，删除它们并加入平均值 $\\frac{x+y}{2}$，直到只剩两个数；要求最大化这两个数的绝对差，并将结果按有理数在 $10^9+7$ 下取模输出。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "url_only"
-        },
-        {
-          "key": "1817F",
-          "index": "F",
-          "slot": "F",
-          "title": "Entangled Substrings",
-          "rating": 3500,
-          "problemUrl": "https://codeforces.com/contest/1817/problem/F",
-          "editorialUrl": "https://codeforces.com/blog/entry/115586",
-          "primaryTopic": "字符串",
-          "secondaryTopics": [
-            "数据结构"
-          ],
-          "originalTags": [
-            "string suffix structures",
-            "strings"
-          ],
-          "statementBrief": "给定一个由小写字母组成的字符串，枚举两个非空子串 $a,b$。若存在一个可为空的链接串 $c$，使得 $a$ 和 $b$ 在原串中的出现都只能作为整体 $acb$ 的子串，则称这对字符串纠缠；要求统计所有纠缠子串对的数量。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "url_only"
         }
       ]
     },

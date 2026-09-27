@@ -5,7 +5,7 @@
     "label": "Tutorial",
     "section_count": 0,
     "covered_problems": [],
-    "raw_sha256": "b8b147f637b652cf85c414d855f73ddd26f8d4baaafb4f227955443b115ea8c9"
+    "raw_sha256": "d62ffde67477aeca3cf3ee154386ab3b7d453313c016cd660512f6cee62c630d"
   },
   {
     "url": "https://codeforces.com/blog/entry/110629",
@@ -95,9 +95,16 @@
     "creation_time": "2023-01-23",
     "original_locale": "en",
     "source": "codeforces-blog",
-    "label": "contest editorial (contest-page)",
-    "section_count": 8,
+    "label": "Tutorial",
+    "section_count": 15,
     "covered_problems": [
+      "1781A",
+      "1781B",
+      "1781C",
+      "1781D",
+      "1781E",
+      "1781F",
+      "1781G",
       "1782A",
       "1782B",
       "1782C",
@@ -546,11 +553,18 @@
     "original_locale": "en",
     "source": "codeforces-blog",
     "label": "Codeforces Round #869 (Div.1, Div.2) Editorial",
-    "section_count": 1,
+    "section_count": 8,
     "covered_problems": [
-      "1817D"
+      "1817A",
+      "1817B",
+      "1817C",
+      "1817D",
+      "1817E",
+      "1817F",
+      "1818A",
+      "1818B"
     ],
-    "raw_sha256": "68a9e051e5df7cf78ed8afdd34d3c0be6883bd86621e1f33de11fc4ea8537dce"
+    "raw_sha256": "14763885865d5a5ecb6e01a3a3916d86e515a861e1d533b896cb2d1d446b2e14"
   },
   {
     "url": "https://codeforces.com/blog/entry/115892",
@@ -601,6 +615,7 @@
     "creation_time": "2023-05-08",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "CodeForces Round 872(Div. 1&2) Editorial",
     "section_count": 0,
     "covered_problems": [],
     "raw_sha256": "14279d11a1659c04fd81b090c18cd354837d97fcc95c391df2df12b7dd099f34"
@@ -900,6 +915,7 @@
     "creation_time": "2023-08-26",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Harbour.Space Scholarship Contest 2023-2024 (Div. 1 + Div. 2) Editorial",
     "section_count": 0,
     "covered_problems": [],
     "raw_sha256": "5cfcba7caaaa4f9f81e2889124a50e2ddc4a13d88d36a87706bffe02f9fee2ab"
@@ -1040,7 +1056,7 @@
     "creation_time": "2023-10-22",
     "original_locale": "ru",
     "source": "codeforces-blog",
-    "label": "contest editorial (contest-page)",
+    "label": "Codeforces Round #905 (Div. 1, Div. 2, Div. 3) Editorial",
     "section_count": 12,
     "covered_problems": [
       "1883A",
@@ -1332,6 +1348,7 @@
     "creation_time": "2024-02-15",
     "original_locale": "ru",
     "source": "codeforces-blog",
+    "label": "Codeforces Round #926 (Div. 2) Editorial.",
     "section_count": 0,
     "covered_problems": [],
     "raw_sha256": "9222e0b1e5c6d0b3e753198d1cf4e9aacb5e42a2ebe95683e918dbe43c5c7d3b"
@@ -1800,6 +1817,7 @@
     "creation_time": "2024-07-18",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Video Tutorial",
     "section_count": 7,
     "covered_problems": [
       "1994A",
@@ -1940,6 +1958,7 @@
     "creation_time": "2024-08-20",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Video Tutorial",
     "section_count": 5,
     "covered_problems": [
       "2001A",
@@ -1980,6 +1999,7 @@
     "creation_time": "2024-09-14",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Discussion stream (With Hints)",
     "section_count": 7,
     "covered_problems": [
       "2005A",
@@ -2022,6 +2042,7 @@
     "creation_time": "2024-09-23",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "134298",
     "section_count": 2,
     "covered_problems": [
       "2013A",
@@ -2080,14 +2101,16 @@
     "creation_time": "2024-10-07",
     "original_locale": "en",
     "source": "codeforces-blog",
-    "section_count": 4,
+    "label": "Codeforces Round #977 (Div. 2, based on COMPFEST 16 — Final Round) Editorial",
+    "section_count": 5,
     "covered_problems": [
       "2021A",
       "2021B",
       "2021C2",
+      "2021D",
       "2021E3"
     ],
-    "raw_sha256": "da0fb7de05b5c167a964d54d0d350bac2bc2b6b594639146a4762fa2e584fbfb"
+    "raw_sha256": "2ea6059d294d8d9e967d47b6688a88b068d440e6325396d16a055650f93349a8"
   },
   {
     "url": "https://codeforces.com/blog/entry/135095",
@@ -2117,6 +2140,7 @@
     "creation_time": "2024-10-17",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Codeforces Round 979 Editorial",
     "section_count": 8,
     "covered_problems": [
       "2030A",
@@ -2301,6 +2325,7 @@
     "creation_time": "2024-12-04",
     "original_locale": "ru",
     "source": "codeforces-blog",
+    "label": "Разбор Codeforces Round 990 (Div. 2 + Div. 1)",
     "section_count": 8,
     "covered_problems": [
       "2046C",
@@ -2322,15 +2347,17 @@
     "creation_time": "2024-12-08",
     "original_locale": "ru",
     "source": "codeforces-blog",
-    "section_count": 5,
+    "label": "Codeforces Round #992 (Div.2) Editorial",
+    "section_count": 6,
     "covered_problems": [
       "2040A",
       "2040B",
       "2040C",
       "2040D",
+      "2040E",
       "2040F"
     ],
-    "raw_sha256": "607e8112133ae06848dc521153c444408b87e30b358efac9cd979dbc2b87fcfb"
+    "raw_sha256": "a8a7505adc9bac71853a5a203077836498584c9b9d17a0e741166686bae22590"
   },
   {
     "url": "https://codeforces.com/blog/entry/137273",
@@ -2677,6 +2704,7 @@
     "creation_time": "2025-03-26",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Codeforces Round 1012 (Div.1, Div. 2, based on THUPC 2025 — Finals) Editorial",
     "section_count": 9,
     "covered_problems": [
       "2089A",
@@ -3049,6 +3077,7 @@
     "creation_time": "2025-07-30",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Codeforces Round 1040 (Div. 1, Div. 2) Editorial",
     "section_count": 11,
     "covered_problems": [
       "2129A",
@@ -3114,6 +3143,7 @@
     "creation_time": "2025-08-25",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Codeforces Round 1046 (Div. 1, Div. 2) Editorial",
     "section_count": 10,
     "covered_problems": [
       "2135A",
@@ -3554,16 +3584,19 @@
     "creation_time": "2025-12-06",
     "original_locale": "ru",
     "source": "codeforces-blog",
-    "section_count": 6,
+    "label": "Codeforces Round 1069 Editorial",
+    "section_count": 8,
     "covered_problems": [
+      "2174A",
       "2174B",
       "2174C2",
+      "2174D",
       "2174E2",
       "2174F",
       "2175A",
       "2175B"
     ],
-    "raw_sha256": "f88f80db6ba0061a13e19f0ab27c7e57a7539e92b8b69aeba488a2c0e4879643"
+    "raw_sha256": "d1efa91c9b03bb277fc6eb25a202152bae37c71016da61c163f53cd1a61ffebd"
   },
   {
     "url": "https://codeforces.com/blog/entry/149154",
@@ -3726,6 +3759,7 @@
     "creation_time": "2026-01-29",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Codeforces Round 1077 (Div. 1, Div. 2) Editorial",
     "section_count": 10,
     "covered_problems": [
       "2187A",
@@ -3749,15 +3783,17 @@
     "creation_time": "2026-02-08",
     "original_locale": "ru",
     "source": "codeforces-blog",
-    "section_count": 5,
+    "label": "Codeforces Round #1078 Editorial",
+    "section_count": 6,
     "covered_problems": [
       "2194A",
       "2194B",
       "2194C",
       "2194D",
-      "2194E"
+      "2194E",
+      "2194F2"
     ],
-    "raw_sha256": "10b80a2b50dbc162b6e9d5630a7e31b9ef0dc09d39f19079fd55aced67e31f74"
+    "raw_sha256": "3a882ba9709d14ac7c44a1d8bb19a3f60a2545de11b95f21a601dae637fa69b4"
   },
   {
     "url": "https://codeforces.com/blog/entry/151052",
@@ -3767,6 +3803,7 @@
     "creation_time": "2026-02-11",
     "original_locale": "ru",
     "source": "codeforces-blog",
+    "label": "Tutorial",
     "section_count": 10,
     "covered_problems": [
       "2196A",
@@ -3829,12 +3866,23 @@
     "creation_time": "2026-02-23",
     "original_locale": "en",
     "source": "codeforces-blog",
-    "section_count": 2,
+    "label": "Codeforces Round 1082 (Div. 1, Div. 2) Complete Editorial",
+    "section_count": 12,
     "covered_problems": [
+      "2201A1",
+      "2201A2",
+      "2201B",
+      "2201C",
+      "2201D",
+      "2201E",
       "2201F1",
+      "2201F2",
+      "2201G",
+      "2202A",
+      "2202B",
       "2202G1"
     ],
-    "raw_sha256": "fcb1ba6c1985b1d941433e268d8557b3693599536d1e1aa138b5b6ac4dfec790"
+    "raw_sha256": "da21d4d71b69c98d200f76930e53fde15d410f14cf045566d1d406d6fe2a5d4f"
   },
   {
     "url": "https://codeforces.com/blog/entry/151886",
@@ -3844,9 +3892,22 @@
     "creation_time": "2026-03-08",
     "original_locale": "en",
     "source": "codeforces-blog",
-    "section_count": 0,
-    "covered_problems": [],
-    "raw_sha256": "df0bcd7c38d3d552ad9e238451914d23c00e877368a4ebb759d05d1301a31b22"
+    "label": "Codeforces Round 1085 (Div. 1 + Div. 2) Editorial",
+    "section_count": 11,
+    "covered_problems": [
+      "2207A",
+      "2207B",
+      "2207C",
+      "2207D",
+      "2207E1",
+      "2207E2",
+      "2207F",
+      "2207G",
+      "2207H1",
+      "2207H2",
+      "2207H3"
+    ],
+    "raw_sha256": "400c0d1070cb0b6e0b69de344ce459cd03c42a4f78f15d37453f327f36eef54f"
   },
   {
     "url": "https://codeforces.com/blog/entry/152073",
@@ -3856,6 +3917,7 @@
     "creation_time": "2026-03-15",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Tutorial",
     "section_count": 5,
     "covered_problems": [
       "2208A",
@@ -4062,6 +4124,7 @@
     "creation_time": "2026-05-09",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Codeforces Round 1098 (Div. 2) Editorial",
     "section_count": 8,
     "covered_problems": [
       "2228A",
@@ -4125,6 +4188,7 @@
     "creation_time": "2026-05-29",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Codeforces Round 1101 (Div. 2) — Editorial",
     "section_count": 5,
     "covered_problems": [
       "2232A",
@@ -4287,6 +4351,7 @@
     "creation_time": "2026-07-15",
     "original_locale": "en",
     "source": "codeforces-blog",
+    "label": "Spectral::Cup 2026 Round 3 (Codeforces Round 1110, Div. 1 + Div. 2) Editorial",
     "section_count": 9,
     "covered_problems": [
       "2245A",
