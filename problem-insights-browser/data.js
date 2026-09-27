@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2618,
+    "total_problems": 2625,
     "source_total_problems": 2626,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2618,
-    "with_editorial_brief": 2350,
-    "with_solution_brief": 2351,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2625,
+    "with_editorial_brief": 2357,
+    "with_solution_brief": 2358,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1680,
+    "ai_override_count": 1687,
     "primary_topic_count": 13,
-    "contest_count": 401,
+    "contest_count": 402,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 133,
-    "构造与贪心": 826,
-    "图论与网络流": 160,
-    "动态规划与状态设计": 225,
-    "数论与同余": 287,
+    "构造与贪心": 828,
+    "图论与网络流": 161,
+    "动态规划与状态设计": 226,
+    "数论与同余": 288,
     "组合计数与概率": 200,
-    "数据结构": 246,
+    "数据结构": 247,
     "几何": 61,
     "树结构": 139,
     "代数、矩阵与多项式": 20,
     "交互": 84,
-    "基础实现与模拟": 145,
+    "基础实现与模拟": 146,
     "博弈": 92
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1406,
+    "ai_generated_with_editorial": 1413,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -71421,6 +71421,219 @@ window.CF_INSIGHTS_DATA = {
             "Borůvka 每轮为每个连通块寻找最小出边；暂时从二进制 Trie 删除该块元素后逐点查询最小异或值，再恢复元素即可在 $O(n\\log A)$ 内完成一轮。"
           ],
           "solutionBrief": "将元素建成完全图，边权为两端异或值；求其最小生成树并二染色，输出两种颜色。用 Borůvka 分轮找最小出边，借助删除当前连通块后的二进制 Trie 查询最小异或，复杂度为 $O(n\\log n\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1851,
+      "name": "Codeforces Round 888 (Div. 3)",
+      "date": "2023-07-25",
+      "url": "https://codeforces.com/contest/1851",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1851A",
+          "index": "A",
+          "slot": "A",
+          "title": "Escalator Conversations",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1851/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/118667",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个人和一部包含 $m$ 个台阶的扶梯，第 $i$ 个台阶高度为 $i\\cdot k$；Vlad 身高为 $H$。对每个人，Vlad 与其分别站在不同台阶上，且身高差必须等于台阶高度差，求能单独与 Vlad 对话的人数。",
+          "transformedStatement": "把两人的站位抽象为台阶编号差 $q$，其可取 $1$ 到 $m-1$；因此某人可对话当且仅当身高差为正数、是 $k$ 的倍数，且商 $q$ 不超过 $m-1$。",
+          "keyObservations": [
+            "两人的身高差必须是 $k$ 的正整数倍，否则无法对应两个不同台阶的高度差。",
+            "两个台阶的编号差最大为 $m-1$，因此身高差除以 $k$ 后还必须不超过 $m-1$。",
+            "每个人能否与 Vlad 对话彼此独立，只需逐人检查上述条件并计数，无需考虑其他人的站位。"
+          ],
+          "solutionBrief": "对每个身高 $h_i$ 计算 $d=|h_i-H|$；当 $d>0$、$d$ 能被 $k$ 整除且 $d/k<m$ 时计数。满足条件时可将台阶编号差设为 $d/k$，且该差值不超过 $m-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1851B",
+          "index": "B",
+          "slot": "B",
+          "title": "Parity Sort",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1851/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/118667",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个整数数组，每次可交换两个奇偶性相同的元素，操作次数不限。判断能否通过这些交换将数组变为非递减序列，并输出 YES 或 NO。",
+          "transformedStatement": "把问题转化为检查排序目标是否保留每个位置的奇偶性：合法操作只能分别重排奇数元素和偶数元素，因此排序数组与原数组必须逐位置具有相同奇偶性。",
+          "keyObservations": [
+            "允许交换的两个元素必须同奇偶，因此每个位置上的奇偶性在整个过程中保持不变；这是判断可行性的必要条件。",
+            "将数组排序得到目标数组 $b$ 后，只需逐位置比较 $a_i$ 与 $b_i$ 的奇偶性；若存在位置奇偶性不同，该位置无法通过合法交换得到目标值。",
+            "若所有位置的奇偶性都一致，则偶数元素和奇数元素可以分别在各自位置集合内任意重排，因此一定能还原为排序后的数组。"
+          ],
+          "solutionBrief": "复制数组并排序为 $b$，逐位检查 $a_i$ 与 $b_i$ 的奇偶性是否相同。全部相同则输出 YES，否则输出 NO；因为同奇偶元素可分别任意重排。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1851C",
+          "index": "C",
+          "slot": "C",
+          "title": "Tiles Comeback",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1851/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/118667",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定按顺序排列的 $n$ 个 tile 及颜色，可从第一个 tile 出发向右跳跃，选择一个以第一个和最后一个 tile 为端点的路径。路径要分成同色块，每块至少包含 $k$ 个选中的 tile，判断是否存在这样的路径。",
+          "transformedStatement": "把问题压缩为端点颜色的资源检查：首尾同色时寻找一个包含两端的长度至少为 $k$ 的同色子序列；首尾异色时寻找不相交的两个端点色块，左、右块分别至少有 $k$ 个 tile。",
+          "keyObservations": [
+            "若首尾颜色相同，可以只构造一个同色块；因此只需检查整个数组中该颜色的出现次数是否至少为 $k$，首尾各占一个位置。",
+            "若首尾颜色不同，可以只构造两个色块：左块取首 tile 及其后的首颜色 tile，右块取末 tile 及其前的末颜色 tile；两侧各凑够 $k$ 个且选择范围不重叠即可。",
+            "从数组两端向中间扫描并分别计数两种端点颜色，可以直接判断两个长度为 $k$ 的色块能否共存，避免枚举跳跃位置。"
+          ],
+          "solutionBrief": "首尾同色时统计该颜色总数，至少为 $k$ 即可。首尾异色时用双指针从两端向中间推进，分别收集首端色和末端色；两侧都达到 $k$ 且未相遇则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1851D",
+          "index": "D",
+          "slot": "D",
+          "title": "Prefix Permutation Sums",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1851/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/118667",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的排列的前缀和数组，但其中恰好删除了一个前缀和，只剩 $n-1$ 个严格递增的数。需要判断是否存在某个 $1..n$ 的排列，使删除其一个前缀和后正好得到给定数组。",
+          "transformedStatement": "把保留下来的前缀和转为相邻差分：若删除末项，补上总和后检查全部差分；若删除开头或中间项，则某个差分是两个排列元素的合并和，表现为一个重复差分与两个缺失元素之间的和关系。",
+          "keyObservations": [
+            "相邻前缀和之差能恢复连续元素；若丢失的是总前缀和，只需补上总和 $n(n+1)/2$，再检查得到的 $n$ 个元素是否恰好为 $1..n$。",
+            "若丢失的前缀和位于开头或中间，相邻差分中会出现一个值等于两个缺失元素之和，其余差分对应其他真实元素，因此应恰好缺少两个数，且它们的和等于唯一重复的差分。",
+            "差分出现至少三次，或有两个及以上差分各重复，都会无法对应一次前缀和删除；这直接排除了多个异常合并或重复元素的情况。"
+          ],
+          "solutionBrief": "先计算相邻前缀和之差。尝试补入总和 $n(n+1)/2$ 并检查是否得到排列；否则统计差分频次，要求只有一个重复值，恰好缺少两个数，且缺失数之和等于该重复值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1851E",
+          "index": "E",
+          "slot": "E",
+          "title": "Nastya and Potions",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1851/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/118667",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "sortings"
+          ],
+          "statementBrief": "共有 $n$ 种药剂，第 $i$ 种可花费 $c_i$ 直接购买；部分药剂有唯一配方，必须先获得配方列出的全部其他药剂并将其消耗后混合得到。另有 $k$ 种药剂可无限免费获得，要求分别求得到每种药剂一次所需的最少金币。",
+          "transformedStatement": "把药剂视为无环依赖图中的节点：节点权值是购买成本，免费供应节点权值改为 $0$；每个节点的最优值等于直接购买成本与其所有前驱最优值之和的较小值。将该递推在依赖图上记忆化求解即可。",
+          "keyObservations": [
+            "已有的 $k$ 种药剂供应无限且无需付费，因此可直接把它们的购买成本改为 $0$，并作为其他配方的免费原料。",
+            "若药剂 $i$ 有配方，完成一次混合必须获得全部原料，最优混合成本就是各原料最优成本之和，再与直接购买价 $c_i$ 取最小值。",
+            "配方依赖图无环，所以求某种药剂时可以递归求解其原料并缓存结果，不会出现循环依赖或重复计算。",
+            "没有原料的药剂只能购买，其答案直接为购买成本；这也统一了递推的边界情况。"
+          ],
+          "solutionBrief": "将无限供应的药剂成本设为 $0$，对每种药剂记忆化 DFS。答案为直接购买价与所有配方原料答案之和的较小值；无环保证递归可完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1851F",
+          "index": "F",
+          "slot": "F",
+          "title": "Lisa and the Martians",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1851/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/118667",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy",
+            "math",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "给定 $n$ 个小于 $2^k$ 的非负整数，先选择一个同样小于 $2^k$ 的 $x$，再选择两个不同下标 $i,j$，最大化 $(a_i\\mathbin{\\oplus}x)\\mathbin{\\&}(a_j\\mathbin{\\oplus}x)$。需要输出任意达到最大值的 $i,j,x$。",
+          "transformedStatement": "对固定数对，目标值只由两数哪些二进制位相等决定；最优值是这些相等位组成的掩码，所以问题转化为寻找 $a_i\\oplus a_j$ 最小的数对，再据此构造 $x$。",
+          "keyObservations": [
+            "固定一对数后，某位只有在两数该位相等时才能让按位与贡献这一位；将 $x$ 的该位取为它们的反值即可，否则无论 $x$ 如何选择都贡献 $0$。",
+            "因此该对数的最优值就是两数按位相等位置组成的掩码，最大化它等价于在 $k$ 位范围内最小化 $a_i\\oplus a_j$。",
+            "按高位到低位在二进制 Trie 中为当前数寻找异或值最小的已有数：只要存在相同位就优先走相同分支，因为更高位的差异大于所有低位贡献之和。",
+            "找到配对后，可令 $x$ 的每一位都为 $a_i$ 对应位的反值；相等位会同时变成 $1$，不等位仍不会产生按位与贡献。"
+          ],
+          "solutionBrief": "维护已加入数的二进制 Trie，逐个为新数贪心寻找异或值最小的配对并更新答案；配对确定后取 $x$ 为其中一个数在 $k$ 位内的按位反值。总复杂度为 $O(nk)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1851G",
+          "index": "G",
+          "slot": "G",
+          "title": "Vlad and the Mountains",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1851/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/118667",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dsu",
+            "graphs",
+            "implementation",
+            "sortings",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "给定若干有高度的山峰和双向道路，从山峰 $a$ 出发时拥有 $e$ 点能量；沿道路从 $i$ 到 $j$ 会消耗 $h_j-h_i$ 点能量，下降则恢复能量，且途中能量不能低于零。对每个查询判断是否能构造一条从 $a$ 到 $b$ 的路线。",
+          "transformedStatement": "对查询设阈值 $H=h_a+e$，只考虑高度不超过 $H$ 的山峰及其道路；原问题等价于判断 $a,b$ 在这个诱导子图中是否连通。将道路的启用阈值记为两端高度的最大值，即可按阈值递增维护连通分量。",
+          "keyObservations": [
+            "沿路径到达任意山峰时，当前能量只由起点和当前高度决定，为 $e+h_a-h_v$；因此路径上的所有山峰高度不超过 $h_a+e$ 就能通行。",
+            "固定阈值 $H=h_a+e$ 后，问题等价于只保留高度不超过 $H$ 的山峰及其道路，并判断 $a,b$ 是否连通，从而消除了逐步模拟能量的需要。",
+            "一条道路能在阈值 $H$ 下启用，当且仅当其两端高度最大值不超过 $H$；按阈值递增加入道路后，连通关系只会合并不会拆分。",
+            "将查询按 $h_a+e$ 排序、道路按 $\u0000max(h_u,h_v)$ 排序并用 DSU 维护，可在线性扫描中回答每个连通性判断。"
+          ],
+          "solutionBrief": "把每个查询转为阈值 $H=h_a+e$ 下的连通性问题。按 $H$ 排序处理查询，依次加入两端高度最大值不超过 $H$ 的道路，用 DSU 判断 $a,b$ 是否属于同一连通分量。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
