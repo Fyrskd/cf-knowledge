@@ -1,5 +1,16 @@
 [
   {
+    "id": 1742,
+    "name": "Codeforces Round 827 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8700,
+    "startTimeSeconds": 1665671700,
+    "relativeTimeSeconds": 124872028,
+    "date": "2022-10-13"
+  },
+  {
     "id": 1746,
     "name": "Codeforces Global Round 23",
     "type": "CF",
