@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 1954,
+    "total_problems": 1960,
     "source_total_problems": 1960,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 1954,
-    "with_editorial_brief": 1711,
-    "with_solution_brief": 1712,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1960,
+    "with_editorial_brief": 1717,
+    "with_solution_brief": 1718,
     "missing_editorial_brief": 242,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 895,
+    "ai_override_count": 901,
     "primary_topic_count": 13
   },
   "records": [
@@ -56408,6 +56408,259 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 1410,
+      "problem_key": "2170A",
+      "contest_id": 2170,
+      "title": "Maximum Neighborhood",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2170/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/148798",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "构造与贪心",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "greedy",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定一个按行连续填入 $1$ 到 $n^2$ 的 $n\\times n$ 网格。一个格子的代价等于自身数值加上所有共享边的邻居数值；对每个测试用例，求所有格子代价中的最大值。",
+      "transformed_statement": "把问题视为在单调递增网格中寻找最大局部邻域和：非边界候选若能向下或向右移动，就能得到更大的代价，因此只需比较右下角附近的四个格子，并对小 $n$ 单独处理。",
+      "key_observations": [
+        "每个格子的数值随行号或列号增加而严格增加，因此除最后两行、最后两列形成的四个交界格外，其下方或右方格子的邻域和一定更大，可将候选缩减为四格。",
+        "只需计算四个候选格及其存在的相邻格；当 $n\\ge 5$ 时，左上角候选 $(n-1,n-1)$ 的代数展开最大，答案为 $5n^2-5n-5$。",
+        "当 $n<5$ 时上述统一最优位置结论不成立，直接按网格边界计算所有格子的邻域代价即可覆盖这些小规模特例。"
+      ],
+      "solution_brief": "小规模时遍历每个格子并累加自身及四个存在的邻居。一般情况下只需检查最后两行和最后两列交界处的四格；当 $n\\ge5$ 时最优格固定为 $(n-1,n-1)$，答案是 $5n^2-5n-5$，更小的 $n$ 直接特判或枚举。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:00:25+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1411,
+      "problem_key": "2170B",
+      "contest_id": 2170,
+      "title": "Addition on a Segment",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2170/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/148798",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定长度为 $n$ 的全零数组，必须恰好进行 $n$ 次操作；每次选择一个非空连续区间，并将区间内所有元素加一。操作结束后允许任意重排，要求结果与给定数组 $b$ 相同，求所有操作中区间长度最大值的最大可能值。",
+      "transformed_statement": "把每次区间加一看成贡献其区间长度的总增量。由于最终只比较元素多重集合，问题转化为利用 $b$ 的非零元素数量限制区间长度，并利用总和扣除其余 $n-1$ 次操作的最小贡献。",
+      "key_observations": [
+        "最终只要求重排后得到目标数组，因此只需关注 $b$ 的非零元素个数 $c$ 与元素总和 $s$。",
+        "$b$ 中有 $n-c$ 个零，任何被操作覆盖的位置最终都会变为正数，所以最长区间长度不能超过 $c$。",
+        "所有操作增加的总量等于区间长度之和 $s$；若最长区间长为 $L$，其余 $n-1$ 次操作至少各长 $1$，故 $L\\le s-n+1$。",
+        "两种上界可以同时达到，因此答案为 $\\min(c,s-n+1)$；其中 $s-c\\ge n-1$ 时该值退化为 $c$。"
+      ],
+      "solution_brief": "统计非零元素个数 $c$ 和总和 $s$。最长区间既不能超过 $c$，又不能超过 $s-n+1$，直接输出 $\\min(c,s-n+1)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:00:00+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1412,
+      "problem_key": "2170C",
+      "contest_id": 2170,
+      "title": "Quotient and Remainder",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2170/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/148798",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "binary search",
+        "greedy",
+        "two pointers"
+      ],
+      "statement_brief": "给定两个长度均为 $n$ 的数组 $q,r$。每次选择 $1\\le y<x\\le k$，若某个未删除的 $q_i=\\lfloor x/y\\rfloor$ 且某个未删除的 $r_j=x\\bmod y$，就同时删除这两个元素；求最多能进行多少次操作。",
+      "transformed_statement": "把一次操作看成选择一对 $(q_i,r_j)$。该配对存在合法 $x,y$ 的充要条件是 $(q_i+1)(r_j+1)-1\\le k$，于是问题转化为在乘积上限下最大化可匹配的配对数。",
+      "key_observations": [
+        "固定配对 $(q_i,r_j)$ 后，能实现它的最小 $x$ 是 $q_i(r_j+1)+r_j=(q_i+1)(r_j+1)-1$；取 $y=r_j+1$ 即可，因此配对可行当且仅当该值不超过 $k$。",
+        "可行配对数量具有前缀性质：若能完成 $c$ 对，就能删去其中一对完成 $c-1$ 对，所以最大数量可以通过二分答案确定。",
+        "要完成 $c$ 对，只需考虑排序后最小的 $c$ 个 $q$ 和最小的 $c$ 个 $r$；较大的元素只会使乘积约束更难满足。",
+        "在这两个前缀中，最小的 $q$ 应配最大的 $r$，即按 $q$ 升序与 $r$ 降序配对；交换论证表明交换后两对的乘积约束仍成立。"
+      ],
+      "solution_brief": "将每个 $(q,r)$ 配对转化为检查 $(q+1)(r+1)-1\\le k$。排序两个数组后，二分可完成的对数 $c$；判定时取两边最小的 $c$ 个元素，并按 $q$ 升序、$r$ 降序配对检查全部约束。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T00:59:42+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1413,
+      "problem_key": "2170D",
+      "contest_id": 2170,
+      "title": "Almost Roman",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/2170/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/148798",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定一个由 X、V、I 和问号组成的字符串，其中 I 的值在下一个字符为 X 或 V 时为 $-1$，否则为 $1$，X 和 V 的值分别为 $10$ 和 $5$。每次查询给出可使用的 X、V、I 数量，将所有问号替换为这些字符且不超出库存，求所得字符串的最小总值。",
+      "transformed_statement": "先决定问号中使用 I、V、X 的数量，再把所有 X 暂时降为 V，将目标转化为最大化 IV 相邻对数量；之后用每个问号段支持的“增加或保持 IV 对数”的替换次数处理不同查询。",
+      "key_observations": [
+        "在可替换数量固定时，应优先使用尽可能多的 I，再使用 V，最后使用 X；把 I 换成 V 的代价至少为 3，把 V 换成 X 的代价恰为 5。",
+        "将原串和选用的所有 X 暂时视为 V，只需最大化相邻模式 IV 的数量；最后每个被视为 V 的 X 额外贡献 $5$。",
+        "把所有问号先填成 I，再考虑将 I 改成 V。一次修改对 IV 数量的影响只可能是增加、保持或减少 $1$，因此应按这三类顺序使用修改机会。",
+        "每段连续问号可独立预处理：孤立长度为 $L$ 时，最多有 $\\lfloor L/2\\rfloor$ 次增加和 $L\\bmod 2$ 次保持；前方的 I 或后方的 V 会改变这两个数量，其中后方 V 已形成一个 IV，需要额外扣除一次增加机会。"
+      ],
+      "solution_brief": "预处理原串全填 I 的值，并按问号段统计把 I 改成 V 时能增加或保持 IV 数量的次数。每次查询先按“尽量 I、再 V、最后 X”确定用量，再用这些预处理量修正 IV 数量，并补上 X 相对 V 的 $5$ 倍额外贡献。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T00:59:20+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1414,
+      "problem_key": "2170E",
+      "contest_id": 2170,
+      "title": "Binary Strings and Blocks",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2170/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/148798",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "数据结构",
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "data structures",
+        "dp"
+      ],
+      "statement_brief": "给定长度为 $n$ 的二进制字符串和 $m$ 个区间。对每个区间子串，若能删除恰好一个完整的同字符极大连续块，使剩余字符串的块数为奇数，则称其美丽；要求统计所有区间子串都美丽的字符串数量。",
+      "transformed_statement": "美丽条件等价于区间内同时出现 0 和 1，因此问题转化为统计所有给定区间都不是常值串的二进制串。按最后一次相邻字符变化的位置划分字符串，并对不被限制区间覆盖的常值段做转移。",
+      "key_observations": [
+        "一个字符串美丽当且仅当同时含有 0 和 1：单块时删除后有 0 块，而至少两块时删除边界块或中间块可得到奇偶所需结果。",
+        "令 $dp_i$ 表示最后一次相邻字符变化发生在 $i$，则从 $dp_j$ 转移到 $dp_i$ 等价于保证常值段 $[j,i-1]$ 不完整包含任何限制区间。",
+        "对所有右端点不超过 $i-1$ 的区间取左端点最大值，可得到合法 $j$ 的统一下界；因此转移只需查询一段连续的 $dp$ 和。",
+        "在末尾额外添加一个必须与前一位不同的字符后，$dp_n$ 恰好对应原长度为 $n$ 且满足全部限制的字符串数量。"
+      ],
+      "solution_brief": "先将美丽条件化为每个区间同时出现 0 和 1。按最后一次相邻变化位置设立 $dp$，用限制区间左端点的前缀最大值确定合法转移范围，再用前缀和或树状数组求区间和；末尾补一个变化字符得到答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T00:58:59+00:00",
+          "quality_flags": [
+            "statement_text_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1415,
+      "problem_key": "2170F",
+      "contest_id": 2170,
+      "title": "Build XOR on a Segment",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/2170/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/148798",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "dp"
+      ],
+      "statement_brief": "给定一个元素值在 $1$ 到 $2^{12}-1$ 的数组。每次查询给出区间 $[l,r]$ 和目标 $x$，要求从该区间选取若干个元素，每个位置至多选一次，使它们的异或和为 $x$，并输出最少选取数量；若无法实现则输出 $0$。",
+      "transformed_statement": "把每个右端点下的方案按“异或值 $x$、选取数量 $y$”分类，并记录能覆盖该方案的最大左端点。于是查询转化为寻找最小的 $y$，使对应状态的最大左端点至少为给定的 $l$。",
+      "key_observations": [
+        "由于所有数只有 $12$ 个二进制位，任意可实现的异或值都能用至多 $B=12$ 个元素表示，因此只需维护选取数量 $y\\le 12$。",
+        "固定右端点、异或值 $x$ 和数量 $y$ 后，可行左端点具有单调性：若区间能实现，则向左扩展仍能实现，所以只需记录最大的可行左端点。",
+        "处理新元素 $a_i$ 时，原有状态可以直接保留；也可以将其加入已有方案，使 $(x,y)$ 转移为 $(x\\oplus a_i,y+1)$，且左端点保持原值。",
+        "将查询按右端点分组后，只需在线推进 DP 并回答当前端点的查询；无需保存所有右端点层，从而把空间降为 $O(B\\cdot 2^B)$。"
+      ],
+      "solution_brief": "维护 $dp[r][x][y]$：在右端点为 $r$ 时，能用 $y$ 个元素异或出 $x$ 的最大左端点。逐个加入元素，状态可保留或加入该元素；按右端点处理查询，取满足左端点至少为 $l$ 的最小 $y$，不存在则输出 $0$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T00:58:33+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1416,
