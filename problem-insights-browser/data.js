@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1872,
+    "total_problems": 1879,
     "source_total_problems": 1879,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1872,
-    "with_editorial_brief": 1630,
-    "with_solution_brief": 1631,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1879,
+    "with_editorial_brief": 1637,
+    "with_solution_brief": 1638,
     "missing_editorial_brief": 241,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 813,
+    "ai_override_count": 820,
     "primary_topic_count": 13,
-    "contest_count": 296,
+    "contest_count": 297,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -36,22 +36,22 @@ window.CF_INSIGHTS_DATA = {
     "组合计数与概率",
     "树结构",
     "图论与网络流",
-    "基础实现与模拟",
     "字符串",
+    "基础实现与模拟",
     "交互",
     "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 78,
-    "构造与贪心": 631,
+    "字符串": 80,
+    "构造与贪心": 632,
     "图论与网络流": 116,
-    "动态规划与状态设计": 177,
-    "数论与同余": 175,
+    "动态规划与状态设计": 178,
+    "数论与同余": 177,
     "组合计数与概率": 144,
     "数据结构": 155,
-    "几何": 39,
+    "几何": 40,
     "树结构": 121,
     "代数、矩阵与多项式": 17,
     "交互": 74,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 66
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 706,
+    "ai_generated_with_editorial": 713,
     "ai_generated_partial_editorial": 33,
     "missing_editorial": 241,
     "manual_override": 891,
@@ -8529,6 +8529,221 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：不要在原数组空间里暴力走函数图。先枚举所有满足 `sum i*a_i<=n` 的核心数组，并求它们在函数图中的深度；除特殊根外，任意 b 若二次映射到 a，则 `g(b)=g(a)+2`。对每个核心 a，用按值从大到小填计数数组的 DP 统计有多少 b 受上界 r 限制，最后按深度归入答案。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2225,
+      "name": "Educational Codeforces Round 189 (Rated for Div. 2)",
+      "date": "2026-04-21",
+      "url": "https://codeforces.com/contest/2225",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "2225A",
+          "index": "A",
+          "slot": "A",
+          "title": "A Number Between Two Others",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2225/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/153154",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $x<y$，且 $y$ 是 $x$ 的倍数。需要判断是否存在整数 $z$，使得 $x<z<y$、$z$ 是 $x$ 的倍数，但 $y$ 不是 $z$ 的倍数；对每组测试输出 YES 或 NO。",
+          "transformedStatement": "将 $y$ 表示为 $kx$，问题转化为判断是否存在整数倍数 $mx$ 满足 $1<m<k$ 且 $k$ 不被 $m$ 整除；当 $k>2$ 时直接选最大候选倍数 $m=k-1$。",
+          "keyObservations": [
+            "令 $y=kx$，所有满足 $x<z<y$ 且被 $x$ 整除的候选数都可写成 $z=mx$，其中 $1<m<k$。",
+            "当 $k>2$ 时取 $z=(k-1)x$，因为 $y=kx$ 除以它的余数为 $x\\ne0$，所以一定满足不可整除条件。",
+            "当 $k=2$ 时，$x$ 与 $2x$ 之间不存在 $x$ 的倍数，因此无论如何都不能构造出 $z$。",
+            "因此存在性完全等价于 $y\\ne2x$，每个测试用例只需判断这一条件。"
+          ],
+          "solutionBrief": "设 $k=y/x$。若 $k=2$ 输出 NO；若 $k>2$，构造 $z=(k-1)x$，它位于两数之间且 $y$ 除以 $z$ 的余数为 $x$，输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2225B",
+          "index": "B",
+          "slot": "B",
+          "title": "Alternating String",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2225/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/153154",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定只含字母 a、b 的字符串，至多一次选择一个非空子串：可选地翻转其中所有字母，然后必须将该子串反转。判断能否经过这次操作得到相邻字符始终不同的交替字符串。",
+          "transformedStatement": "将字符串转为相邻关系序列 $d$：相邻相等记为 $1$，相邻不同记为 $0$；题目转化为判断能否通过一次操作把 $d$ 中所有 $1$ 消除。",
+          "keyObservations": [
+            "把相邻相等记为 $d_i=1$、相邻不同记为 $d_i=0$，目标等价于把序列 $d$ 全部变成 $0$。",
+            "一次反转子串至多影响 $d$ 中两个端点位置，因此若 $d$ 中有超过两个 $1$，不可能全部消除。",
+            "当只有一个 $1$ 时，取覆盖该相等对左端字符的前缀，并按首字符是否相同决定是否翻转，即可消除唯一坏边。",
+            "当有两个 $1$ 时，取左坏边右端到右坏边左端的子串；根据两坏边字符关系决定是否翻转，再反转即可同时消除它们。"
+          ],
+          "solutionBrief": "统计字符串中相邻相等的位置数。该数量超过 $2$ 时输出 NO；为 $0$、$1$、$2$ 时分别可直接保持或按题解构造一次操作，因此输出 YES。整体复杂度为 $O(|s|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2225C",
+          "index": "C",
+          "slot": "C",
+          "title": "Red-Black Pairs",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2225/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/153154",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $2\\times n$ 的红黑棋盘，可重染任意格子，使所有格子能被划分为相邻且同色的两格一对；求最少需要重染多少格子。相邻关系允许同列上下相邻或相邻列左右相邻，所有格子必须恰好参与一对。",
+          "transformedStatement": "把每对相邻格子视为一个 $1\\times2$ 或 $2\\times1$ 的骨牌，并先选择覆盖整个棋盘的骨牌铺法；固定铺法后，每块骨牌的代价仅为其两格颜色不同的数量是否为 $1$，再求最小总成本。",
+          "keyObservations": [
+            "任意合法铺法的第一列只能放一个竖直骨牌，或与下一列共同放置两个水平骨牌，因此整块棋盘被划分为长度为 $1$ 或 $2$ 的列段。",
+            "固定一个骨牌后，令其两格同色只需在颜色不同的情况下重染一个格子，所以该骨牌的代价就是两格颜色是否不同。",
+            "水平骨牌必须成对覆盖相邻两列，两个骨牌的重染代价可以独立相加；因此每个列段的代价局部确定，前缀最优值可由两种铺法转移得到。"
+          ],
+          "solutionBrief": "预处理每一列放竖直骨牌的代价，以及每两列放两个水平骨牌的代价。令 $dp[i]$ 为前 $i$ 列的最小重染数，分别用长度 $1$ 和 $2$ 的列段转移，答案为 $dp[n]$，总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2225D",
+          "index": "D",
+          "slot": "D",
+          "title": "Exceptional Segments",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2225/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/153154",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "给定序列 $1,2,\\ldots,n$ 和位置 $x$，统计所有包含 $x$ 的连续子段 $[l,r]$，使其中所有数的按位异或和为 $0$。输出方案数对 $998244353$ 取模后的结果。",
+          "transformedStatement": "把每个候选子段表示为两个前缀异或下标：左端对应 $l-1\\in[0,x-1]$，右端对应 $r\\in[x,n]$；问题转化为统计两侧前缀异或值相等的下标对。",
+          "keyObservations": [
+            "把区间 $[l,r]$ 的异或改写为 $pref_{l-1}\\oplus pref_r$，目标等价于在 $[0,x-1]$ 与 $[x,n]$ 中寻找前缀异或值相同的下标对。",
+            "前缀异或按下标模 $4$ 呈固定模式：余数为 $0,1,2,3$ 时分别为 $i,1,i+1,0$，因此无需逐段计算。",
+            "除 $0$ 和 $1$ 外，前缀异或值不会在左右区间中重复；所以合法区间只来自前缀值同为 $0$ 或同为 $1$ 的下标对。",
+            "分别统计两侧前缀值为 $0$、$1$ 的下标数量，答案就是两类数量乘积之和，即 $L_0R_0+L_1R_1$，各项可按模 $4$ 周期用整除计算。"
+          ],
+          "solutionBrief": "令 $pref_i=1\\oplus2\\oplus\\cdots\\oplus i$，合法区间对应 $pref_{l-1}=pref_r$。利用 $pref_i$ 的模 $4$ 模式，统计区间 $[0,x-1]$ 和 $[x,n]$ 中值为 $0、1$ 的下标，计算 $L_0R_0+L_1R_1$，单组为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2225E",
+          "index": "E",
+          "slot": "E",
+          "title": "Covering Points with Circles",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2225/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/153154",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "geometry",
+            "math"
+          ],
+          "statementBrief": "给定平面上的 $n$ 个整数坐标点，可放置任意多个半径均为 $r$ 且圆心为整数坐标的圆；任意两圆不能有正面积交集，但允许相切。要求输出这些圆的圆心，使至少 $89\\%$ 的点位于某个圆内或边界上。",
+          "transformedStatement": "不直接估计未知矩形，而是在平面上铺设带随机相位的六边形圆格：格点对应待选圆心，先只保留输入点附近的有限格点，再通过更换相位寻找覆盖率达标的圆集合。",
+          "keyObservations": [
+            "半径为 $r$ 的圆采用六边形密堆积时，理论覆盖面积约为 $\\frac{\\pi}{2\\sqrt3}\\approx90.69\\%$，因此随机均匀点有较大概率被覆盖至少 $89\\%$。",
+            "取横向间距 $2r$、纵向间距 $\\lceil\\sqrt3r\\rceil$，并让相邻行横向错开 $r$，可得到中心距不小于 $2r$ 的整数坐标圆格，保证圆之间不重叠。",
+            "对每个输入点只需检查其附近若干行与列的交点；题解取最近的 $5$ 行和 $5$ 列即可，在有限候选中找到可能覆盖输入点的圆。",
+            "若随机选择的格点起始偏移未达到覆盖要求，重新随机偏移并构造候选圆，利用均匀随机点分布提高成功概率。"
+          ],
+          "solutionBrief": "随机选整数起点建立六边形圆格，按每个点附近的 $5$ 行、$5$ 列交点收集候选圆并输出；若覆盖点数不足，则更换起点重试。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2225F",
+          "index": "F",
+          "slot": "F",
+          "title": "String Cutting",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/2225/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/153154",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "hashing",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定字符串 $s$，要把它按原顺序切成至少 $k$ 段，每段长度至少为 $l$；切完后将所有段按字典序排序，要求最大化排序后第 $k$ 个字符串。若无法完成切分输出 NO，否则输出 YES 和能达到的最大字符串。",
+          "transformedStatement": "最优方案可视为恰好切成 $k$ 段，并把其中一段作为候选答案。对每个候选子串，只检查它左右剩余部分能否合计切成 $k-1$ 段，再在这些候选子串中取字典序最大者。",
+          "keyObservations": [
+            "把相邻两段合并后，原来的两项被替换为更大的拼接串，任意阈值以下元素数量不会增加，因此第 $k$ 小串不会变小，最优方案可只考虑恰好切成 $k$ 段。",
+            "若子串 $t=s[L..R]$作为答案，只需要求其前缀和后缀能合计切成恰好 $k-1$ 个长度至少为 $l$ 的部分；若其他部分中出现大于 $t$ 的串，它本身就是更优候选，因此无需直接约束其他部分不超过 $t$。",
+            "固定左端点 $L$ 后，延长右端点得到的子串严格变大，所以只需取满足前后缀切分条件的最大右端点，将候选数量降为 $O(n)$。",
+            "用前缀哈希在 $O(1)$ 时间判断子串相等，再二分最长公共前缀即可在 $O(\\log n)$ 时间比较两个候选串，从而在线性个候选中选出最大者。"
+          ],
+          "solutionBrief": "先证明合并相邻段不会降低第 $k$ 小串，因此只切成恰好 $k$ 段。枚举答案子串的左端点，并取满足前后缀可切成其余 $k-1$ 段的最大右端点；用双哈希加二分最长公共前缀比较所有候选，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2225G",
+          "index": "G",
+          "slot": "G",
+          "title": "Simple Problem",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/2225/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/153154",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "brute force",
+            "graphs",
+            "greedy",
+            "number theory"
+          ],
+          "statementBrief": "给定 $0$ 到 $n-1$，要把它们排列成一个排列，使每对相邻数的绝对差至少能被一个给定的 $k_i$ 整除。若不存在这样的排列输出 $-1$，否则输出任意一种排列。",
+          "transformedStatement": "把数字按模 $k_1$ 分成类：类内相邻天然满足条件，核心变成用步长 $k_i$ 串起所有类；再为每个类选择内部顺序和边界端点，完成整条排列。",
+          "keyObservations": [
+            "若所有 $k_i$ 的最大公因数 $d>1$，每条相邻边的差都被 $d$ 整除，排列无法连接不同模 $d$ 的数类，因此无解。",
+            "按模 $k_1$ 分类后，同类元素可任意相邻；问题转为排列这些类，并让相邻类的代表元素恰好相差某个 $k_i$。",
+            "设 $g_i=\\\\gcd(k_1,\\\\ldots,k_i)$，递归拼接 $g_{i-1}/g_i$ 条低阶链，可保证类不重复；当 $g_m=1$ 时恰好覆盖所有类。",
+            "由于每个 $k_i\\le n/3$，每个模类至少有三个元素；利用类中前两个元素交替作为末端和下一类起点，可保证加上边界步长后仍在 $0\\ldots n-1$ 内。"
+          ],
+          "solutionBrief": "先求所有 $k_i$ 的最大公因数；不为 $1$ 输出 $-1$。否则按模 $k_1$ 建类，用 gcd 递归拼出覆盖全部类的链，并在类内安排元素，使链间差恰为对应的 $k_i$；整体可在线性时间完成。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
