@@ -913,6 +913,17 @@
     "date": "2023-11-30"
   },
   {
+    "id": 1907,
+    "name": "Codeforces Round 913 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1701787500,
+    "relativeTimeSeconds": 88710148,
+    "date": "2023-12-05"
+  },
+  {
     "id": 1904,
     "name": "Codeforces Round 914 (Div. 2)",
     "type": "CF",
