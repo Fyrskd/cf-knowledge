@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T00:21:46+00:00",
+  "updated_at": "2026-09-27T00:26:06+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -25515,6 +25515,186 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 的轮流进食规则和 editorial_text 的最大值分析；primary_topic 结合题解内容归纳。",
+        "quality_flags": []
+      }
+    },
+    "2203F": {
+      "problem_key": "2203F",
+      "title": "Binary Search with One Swap",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/2203/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/151612",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "eee06addb22e2b861b1412127c78f839850295950ee31460c142544d1804dda3",
+      "generated_at": "2026-09-27T00:24:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定有序数组 $[1,2,\\dots,n]$，对每个 $i<j$ 交换两个元素，再用固定的二分查找算法查询每个 $x\\in[1,n]$。交换后的 beauty 是能成功找到的 $x$ 的数量，要求统计每种 beauty 对应的交换对数量。",
+        "transformed_statement": "将二分查找过程表示为一棵由区间中点构成的二叉树：每个节点控制其对应区间。对交换位置的最近公共祖先 $k$ 分类计数，因为 $k$ 子树外不会受影响，只需统计子树内无法找到的元素数，再将其转换为 beauty。",
+        "key_observations": [
+          "交换位置的最近公共祖先为 $k$ 时，$k$ 子树外的元素搜索路径完全不变，因此只有 $k$ 控制的区间可能搜索失败。",
+          "若交换 $k$ 与左子树位置 $i$，恰好有区间 $[i+1,k]$ 中的 $k-i$ 个数无法找到。",
+          "若从左右子树分别选 $i,j$ 交换，失败数等于 $g(i)+h(j)$，其中 $g(i)$ 是 $i$ 右子树大小加一，$h(j)$ 是 $j$ 左子树大小加一。",
+          "同一层的子树大小至多相差一，所以 $g,h$ 只有 $O(\\log n)$ 种取值；可用频数表合并，并按相同子树大小的 $k$ 分组复用结果。"
+        ],
+        "solution_brief": "把二分过程建成按区间中点递归划分的树，枚举交换位置的最近公共祖先。分别统计两类交换产生的失败数，用 $O(\\log n)$ 大小的频数表合并，并按相同子树大小批量计数；总复杂度为 $O(n\\log\\log n+\\log^3 n)$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "数据结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 提炼，结合 statement_text 与 codeforces_tags 确认题意和主题。",
+        "quality_flags": []
+      }
+    },
+    "2203E": {
+      "problem_key": "2203E",
+      "title": "Probabilistic Card Game",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/2203/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/151612",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c085cb3592a352d9302a22187e55d95174a0d755765b1313e630154b065da3a0",
+      "generated_at": "2026-09-27T00:24:49+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "牌堆初始为空，第 $i$ 轮先加入唯一的新牌；牌数不足三张则结束，否则 Alice 选一张、Bob 知道后选另一张，再从其余牌中等概率选第三张，三张随后放回。根据三张牌的相对距离和位置计分，Alice 每轮最小化、Bob 最大化期望得分，求每轮答案。",
+        "transformed_statement": "把每轮随机得分改写为所有可能第三张牌的得分总和除以 $i-2$。固定 Alice 后，Bob 的最优选择只可能是其左右最近牌，于是问题变成在牌值序列上最小化两侧代价的最大值。",
+        "key_observations": [
+          "固定 Alice 的牌后，Bob 选左侧或右侧离它最近的牌最优；向内移动会把原本得分为零的区间变成正贡献，且外侧贡献不减。",
+          "若 Bob 选 Alice 左侧最近的牌，只有更左的牌产生贡献，得分和为各自到该牌距离之和；右侧情形对称，因此期望值就是对应总和除以牌数。",
+          "随着 Alice 的牌值增大，左侧方案的代价单调不减、右侧方案的代价单调不增，所以两者最大值先降后升，只需检查交叉处相邻的两个候选位置。",
+          "用支持第 $k$ 小值的有序结构定位邻牌，并用树状数组维护坐标前缀的数量与数值和，即可在 $O(\\log^2 m)$ 时间计算两侧代价并完成二分。"
+        ],
+        "solution_brief": "将随机抽牌的期望转为所有候选牌得分和除以 $i-2$。固定 Alice 后，Bob 只需选两侧最近牌；两侧代价单调相反，二分交叉位置取最优。用顺序统计结构和树状数组维护代价，单轮 $O(\\log^2 m)$，最后乘以 $i-2$ 的模逆。",
+        "primary_topic": "博弈",
+        "secondary_topics": [
+          "数据结构",
+          "构造与贪心",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、完整 editorial，以及 tags 中的博弈、数据结构、二分和数学信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "2203D": {
+      "problem_key": "2203D",
+      "title": "Divisibility Game",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2203/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/151612",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "946993c48a12d91577f41639c3e86a10762de5e2dbd035d923514338ba8186e2",
+      "generated_at": "2026-09-27T00:25:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组 $a$ 和 $b$，Alice 每回合必须选择 $a$ 中的 $x$ 与 $b$ 中可被 $x$ 整除的 $y$，Bob 则必须选择不能被任何所选 $x$ 整除的 $y$；选后只从 $b$ 删除一个 $y$，$a$ 中元素可重复使用。双方轮流操作，无法操作者输，求最优策略下谁获胜。",
+        "transformed_statement": "把 $b$ 中每个数按可被多少个 $a$ 元素整除分成 Alice 专属、Bob 专属和公共三类。公共类先被双方交替消耗，之后只剩各自专属类的轮流消耗；分类所需的整除计数通过对 $a$ 的每个值向其所有倍数贡献来批量计算。",
+        "key_observations": [
+          "按一个 $b$ 中的数 $y$ 被 $a$ 中元素整除的数量分类：数量为 $n$ 时只能由 Alice 删除，数量为 $0$ 时只能由 Bob 删除，其余情况双方都能删除。",
+          "双方都能删除的公共数应优先处理；处理完公共数后，剩余回合只会交替消耗各自的专属数，因此胜负只由公共数奇偶和两类专属数数量决定。",
+          "令 $c_y=\\sum_{d\\mid y}\\mathrm{cnt}[d]$，即可用 $c_y=n$、$c_y=0$ 或介于两者之间判断类别，避免对每个 $y$ 单独枚举因数。",
+          "通过枚举每个 $d$ 并把其出现次数加入所有倍数，可在 $O(V\\log V)$ 时间计算全部 $c_y$，其中 $V=n+m$。"
+        ],
+        "solution_brief": "统计 $b$ 中只能 Alice 删除、只能 Bob 删除和双方都能删除的数量。公共数先被交替处理；若其数量为奇数则 Bob 先处理专属数，否则 Alice 先处理。随后比较先手方与后手方的专属数：先手专属数更多时获胜，否则 Bob获胜。用倍数筛计算每个 $y$ 的因数计数和，复杂度为 $O((n+m)\\log(n+m))$。",
+        "primary_topic": "博弈",
+        "secondary_topics": [
+          "数论与同余",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、statement_text 及 tags 提炼；胜负判定由题解中的分类与“先处理公共数”策略推出。",
+        "quality_flags": []
+      }
+    },
+    "2203C": {
+      "problem_key": "2203C",
+      "title": "Test Generator",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/2203/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/151612",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f7a350a64529558960c6f535084753bb87b130029b0a45cec8dce9212b3c85f6",
+      "generated_at": "2026-09-27T00:25:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数 $s,m$，要构造若干个非负整数，使它们的总和为 $s$，且每个数的二进制位都只能出现在 $m$ 的置位位置，即满足 $a_i\\mathbin{\\&}m=a_i$。求所需元素个数的最小值；无法构造时输出 $-1$。",
+        "transformed_statement": "把总和 $s$ 看成各个二次幂的份数 $c_i$：每份 $2^i$ 最终分配给一个数组元素。高位份额可以拆成两份低位份额，目标转化为在只使用 $m$ 的置位层的前提下，让所有 $c_i$ 不超过数组长度。",
+        "key_observations": [
+          "把 $s$ 表示成若干个 $2^i$ 的计数 $c_i$ 后，可用 $c_i o c_i-1,\\,c_{i-1} o c_{i-1}+2$ 拆分高位，从而把不被 $m$ 允许的位转移到更低位；若某个非法位下方没有允许位，则一定无解。",
+          "固定计数数组 $c$ 时，至少需要 $max_i c_i$ 个数，因为每个数的同一位最多出现一次；将每个 $2^i$ 分配到不同元素即可达到这个下界。",
+          "判断是否能用不超过 $n$ 个元素等价于构造所有 $c_i\nenle n$ 的合法计数数组，该可行性关于 $n$ 单调，因为增加一个元素可以补上 $0$。",
+          "对候选 $n$ 从高位到低位处理并进行拆分、限制各层计数不超过 $n$，即可在线性位数内完成判定，因此可二分最小的 $n$。"
+        ],
+        "solution_brief": "将 $s$ 拆成各个 $2^i$ 的计数。通过高位拆成两个低位来消除 $m$ 不允许的位，并要求每层计数不超过候选 $n$；可行性具有单调性，二分最小 $n$，总复杂度为 $O(t\\log^2 s)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial 正文及 tags 中的二分、位运算和贪心信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "2203B": {
+      "problem_key": "2203B",
+      "title": "Beautiful Numbers",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2203/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/151612",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0af68b1ed4065a53c6f3a92e3348bcbdfff213d7dff0ae38d84f3034d840ae72",
+      "generated_at": "2026-09-27T00:25:52+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个十进制整数，记 $F(x)$ 为其各位数字之和。每次可把任意一位改成另一位，但结果不能有前导零；求至少修改多少次，使最终整数满足 $F(F(x))=F(x)$。",
+        "transformed_statement": "美丽条件等价于最终数位和不超过 $9$。把一次修改视为减少数位和：非首位最多减少该位数字，首位最多减少其数字减一，于是问题变成用最少个降幅之和达到所需减少量。",
+        "key_observations": [
+          "对正整数而言，$F(F(x))=F(x)$ 当且仅当 $F(x)\\le 9$，因此目标转化为把数位和降到 $9$ 或更小。",
+          "修改非首位数字时最多可减少其原值，修改首位时最多只能改为 $1$，所以各位置的最大降幅分别为 $a_i$ 和 $a_1-1$。",
+          "每次修改的降幅彼此独立；按降幅从大到小选取，取最少的前缀使总降幅达到所需值即可保证修改次数最小。"
+        ],
+        "solution_brief": "计算数位和，并将首位的可降幅设为 $a_1-1$、其余位设为原数字。降幅降序排序后，找到使剩余数位和不超过 $9$ 的最小前缀长度，该长度就是答案。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 与完整 editorial_text 提炼；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "2203A": {
+      "problem_key": "2203A",
+      "title": "Towers of Boxes",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2203/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/151612",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4ba20fd43013e76942d618f486af3adc29ee6234b54083df6bad02b8e4523377",
+      "generated_at": "2026-09-27T00:26:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个重量均为 $m$、耐久度均为 $d$ 的箱子，必须全部使用并分成若干座非空箱子塔。每座塔中任意箱子上方箱子的总重量不能超过它的耐久度，求所需的最少塔数。",
+        "transformed_statement": "把问题转化为先求单座塔的最大容量：只需检查最底层箱子，容量由 $m(k-1)\\le d$ 决定；随后用该容量覆盖全部 $n$ 个箱子并计算所需分组数。",
+        "key_observations": [
+          "一座含有 $k$ 个箱子的塔只需检查最底层箱子，其上总重量为 $m(k-1)$；因此可行条件是 $m(k-1)\\le d$。",
+          "每座塔的最大容量为 $k=⌊d/m⌋+1$，把所有塔都尽量装满不会增加塔数，因此答案是把 $n$ 个箱子按该容量分组后的组数。",
+          "所需塔数为 $⌈n/k⌉$，整数计算可改写为 $⌊(n+k-1)/k⌋$，避免浮点数误差。"
+        ],
+        "solution_brief": "先计算单座塔最多能放多少箱子：$k=⌊d/m⌋+1$。然后将 $n$ 个箱子按每塔最多 $k$ 个分组，答案为 $⌈n/k⌉$，可用整数式 $⌊(n+k-1)/k⌋$ 计算。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则与完整 editorial，tags 仅提供 math 分类。",
         "quality_flags": []
       }
     }
