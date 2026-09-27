@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T07:41:06+00:00",
+  "updated_at": "2026-09-27T07:45:26+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -45087,6 +45087,207 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面与 editorial，tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1926G": {
+      "problem_key": "1926G",
+      "title": "Vlad and Trouble at MIT",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1926/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/126132",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "80c0cdc0fb1016308ef9457a1a0f5c16818473f299aa5ecc4a96d65dc08282ff",
+      "generated_at": "2026-09-27T07:43:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵树，每个房间住着 P、S 或 C 学生。可以在任意边上安装厚墙，使音乐不能跨墙传播；要求每个 P 学生的音乐仍可播放且任何 S 学生都听不到音乐，C 学生没有强制归属，求最少需要安装的厚墙数。",
+        "transformed_statement": "把安装厚墙看成删除树边：删除后每个连通块只能包含 P、只能包含 S，或只包含可灵活处理的 C，不能让 P 与 S 出现在同一块。对每棵子树只保留其向父节点传播的音乐类型，用三状态 DP 合并。",
+        "key_observations": [
+          "删除边后，每个连通块不能同时含有 P 和 S；C 学生可归入任一侧，因此问题变成用最少边分离两类强制相反的源点。",
+          "从叶子向根合并子树时，子树与父节点相连的部分只需记录三种状态：仅能传来 P 的音乐、仅能传来 S 的音乐、没有音乐。",
+          "若当前部分与子树传来的两种音乐颜色不同，连接这条边会产生冲突，必须切断；相同颜色或无音乐状态则可继续连接。",
+          "P 节点不能处于蓝色或无音乐状态，S 节点不能处于红色或无音乐状态，非法状态设为无穷大，从而保证所有强制条件。"
+        ],
+        "solution_brief": "将厚墙视为删除树边，要求每个连通块不同时含 P 和 S。树形 DP 为每个子树记录与父亲相连部分的红、蓝、无音乐三种状态；合并时颜色冲突就切边，最后取根的最小合法状态，复杂度为 $O(n)$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "图论与网络流"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的树、厚墙和学生类型规则，以及 editorial_text 给出的三状态树形 DP；tags 仅用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1926F": {
+      "problem_key": "1926F",
+      "title": "Vlad and Avoiding X",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1926/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/126132",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7c9d9015db7331581d0ed370bc4660ece3375ba37b739fc7338ccc69d47f1756",
+      "generated_at": "2026-09-27T07:44:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $7\\times7$ 的黑白网格，每次可任选一个格子翻转颜色。要求最终不存在一个黑格，使它的四个对角邻居也全为黑色，求达到该条件所需的最少翻转次数。",
+        "transformed_statement": "按行列坐标奇偶性把网格拆成两部分；每个违规的对角线 X 完全位于同一部分，所以问题等价于分别修复两部分，再将两部分的最优翻转数相加。",
+        "key_observations": [
+          "每个黑色格子的四个对角邻居与它具有相同棋盘奇偶性，因此一个违规的“X”只涉及同一部分，黑白两部分可以独立求最少翻转数。",
+          "对某一部分按翻转数量从小到大枚举所有翻转集合，首次使该部分不存在违规黑格的数量就是最优值。",
+          "即使整张对应部分全为黑色，也至多需要翻转 $4$ 个格子，因此只需枚举大小不超过 $4$ 的集合，搜索规模受到严格限制。",
+          "分别求出两种奇偶性部分的最小翻转数后相加，因为两部分互不影响，合并不会破坏各自的可行性。"
+        ],
+        "solution_brief": "按棋盘奇偶性拆成两个独立部分。对每部分回溯枚举至多 $4$ 个要翻转的格子，逐一检查是否还存在四个对角邻居全黑的黑格；找到的最小数量相加即为答案。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 提炼，结合 statement_text 的操作规则与题目 tags；未使用外部信息。",
+        "quality_flags": []
+      }
+    },
+    "1926E": {
+      "problem_key": "1926E",
+      "title": "Vlad and an Odd Ordering",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1926/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/126132",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c2440ae3e34e8e47351310b4b60a15283381c5807ffe97b13c5f82683ddbf8ba",
+      "generated_at": "2026-09-27T07:44:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定编号为 $1$ 到 $n$ 的牌，按照牌的 $2$ 的最高次幂因子分组：先放奇数，再放恰好含一个因子 $2$ 的数，随后依次处理含更高次幂 $2$ 的数，组内按对应奇数倍顺序放置。对每个询问，输出最终放置顺序中的第 $k$ 张牌。",
+        "transformed_statement": "把牌按唯一形式 $2^j\\times$ 奇数分类。处理完所有奇数后，剩余偶数除以 $2$ 会重新变成一个规模为 $\\lfloor n/2\\rfloor$、位置平移后的同类问题。",
+        "key_observations": [
+          "每张牌都能唯一写成 $2^j\\times$ 奇数，因此实际顺序只会按 $2^j$ 从小到大分组，其他倍数对应的步骤不会新增牌。",
+          "第一组是所有奇数，共有 $\\lceil n/2\\rceil$ 张；若目标位置在其中，答案直接是第 $k$ 个奇数 $2k-1$。",
+          "去掉全部奇数后，剩余牌都是偶数，统一除以 $2$ 后形成规模为 $\\lfloor n/2\\rfloor$ 的同一个问题，因此可以递归处理并将结果乘 $2$。",
+          "每次递归都会将牌数至少减半，所以按递归公式处理单个询问只需 $O(\\log n)$。"
+        ],
+        "solution_brief": "设前 $\\lceil n/2\\rceil$ 个位置放置奇数。若 $k$ 在其中，返回 $2k-1$；否则删除奇数、把剩余偶数全部除以 $2$，递归求规模 $\\lfloor n/2\\rfloor$ 且位置为 $k-\\lceil n/2\\rceil$ 的答案，最后乘以 $2$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 中的 $n,k$ 定义；题面示例部分缺失，但递归分组规则由题解明确给出。",
+        "quality_flags": []
+      }
+    },
+    "1926D": {
+      "problem_key": "1926D",
+      "title": "Vlad and Division",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1926/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/126132",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a5804be82ff17dc1dc85c44a783c18e555e3173ea496e483488cb140b60aad31",
+      "generated_at": "2026-09-27T07:44:52+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个不超过 $2^{31}-1$ 的非负整数，将每个数恰好分入一个组。组内任意两数的 31 个低位都必须逐位不同，求所需的最少组数。",
+        "transformed_statement": "把每个数视为 31 位二进制串；可同组的两个数必须互为按位补码，即异或为 $2^{31}-1$。由于每组最多两数，问题转化为最大化这些互补数对的数量。",
+        "key_observations": [
+          "同一组中不可能出现三个数：任意固定二进制位只有 $0/1$ 两种取值，而组内任意两数都必须在该位不同，因此每组至多容纳两个数。",
+          "两个数能配成一组，当且仅当它们的异或值为 $2^{31}-1$，也就是其中一个数等于另一个数与 31 位全 1 掩码的异或。",
+          "从左到右处理时，当前数只需寻找此前尚未配对的互补数；成功配对就减少一个组，否则当前数必须单独开组，因此贪心配对不会影响其他可行配对。"
+        ],
+        "solution_brief": "设掩码 $M=2^{31}-1$，用计数记录尚未配对的数。处理 $a_i$ 时检查是否有 $M\\mathbin{\\oplus}a_i$；有则配对并消耗一个，否则记录 $a_i$。答案为未配对元素数，即 $n-$配对数。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text，并参考 bitmasks 与 greedy 标签。",
+        "quality_flags": []
+      }
+    },
+    "1926C": {
+      "problem_key": "1926C",
+      "title": "Vlad and a Sum of Sum of Digits",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1926/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/126132",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "161a9237d104c85c393182df056d28919c492e07889fa99932cc98d4c5e947fe",
+      "generated_at": "2026-09-27T07:45:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "对每个测试给定 $n$，先写出整数 $1$ 到 $n$，再把每个整数替换为其十进制数位之和，最后求替换后所有数的总和。需要独立回答多组不同 $n$ 的结果。",
+        "transformed_statement": "把问题重述为查询前缀函数 $ans(n)=\\sum_{i=1}^{n}S(i)$：从 $ans(0)=0$ 开始依次加入 $S(i)$，预先建立整条前缀答案表，再按下标响应查询。",
+        "key_observations": [
+          "将前缀答案定义为 $ans(n)=\\sum_{i=1}^{n}S(i)$，其中 $S(i)$ 是 $i$ 的数位和，则有 $ans(n)=ans(n-1)+S(n)$，每个新位置只需补上当前数的贡献。",
+          "所有测试询问的答案都属于同一条前缀和序列，因此先预处理到所有询问中的最大 $n$，即可避免为每个测试重复计算前缀。",
+          "计算单个数的数位和只需逐位拆分，代价为 $O(\\log n)$；预处理后每次询问直接读取数组，代价为 $O(1)$。"
+        ],
+        "solution_brief": "设 $ans[i]$ 为 $1$ 到 $i$ 的数位和总和，按 $ans[i]=ans[i-1]+S(i)$ 递推预处理到最大询问值。每个测试只需输出对应的 $ans[n]$，总复杂度为 $O(N\\log N+t)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 的数位替换与求和规则，以及 editorial 的前缀递推、预处理和复杂度分析；tags 提供 DP 与 implementation 线索。",
+        "quality_flags": []
+      }
+    },
+    "1926B": {
+      "problem_key": "1926B",
+      "title": "Vlad and Shapes",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1926/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/126132",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "86a2ed5548c02862b89128ccfa969f36b63090844396c7ba5ca4c8ef68d84386",
+      "generated_at": "2026-09-27T07:45:17+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由 `0` 和 `1` 组成的 $n\\times n$ 方格，所有 `1` 恰好组成一个边长大于 $1$ 的三角形或正方形。判断这些 `1` 形成的图形，并输出 `TRIANGLE` 或 `SQUARE`。",
+        "transformed_statement": "把图形识别转化为检查每一行的 `1` 数量：三角形的尖端会产生一个仅含单个 `1` 的行，而合法正方形不会出现这种行。",
+        "key_observations": [
+          "三角形的尖端所在行恰好只有一个 `1`，而边长大于 $1$ 的正方形不存在只有一个 `1` 的行，因此行计数可以直接区分两种图形。",
+          "只需统计每行 `1` 的数量；一旦发现某行数量为 $1$，答案必为 `TRIANGLE`，否则在题目保证图形唯一且合法的前提下只能是 `SQUARE`。"
+        ],
+        "solution_brief": "逐行统计 `1` 的数量。若存在某行恰好包含一个 `1`，输出 `TRIANGLE`；否则输出 `SQUARE`。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的图形保证与 editorial_text 的行计数判定，参考 tags 中的 geometry、implementation。",
+        "quality_flags": []
+      }
+    },
+    "1926A": {
+      "problem_key": "1926A",
+      "title": "Vlad and the Best of Five",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1926/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/126132",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3ff1800bd9915811f2bb36c1f9e2145ae246a02fb65cccf2e293c7fcb67d59dd",
+      "generated_at": "2026-09-27T07:45:26+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干个长度为 5 的字符串，每个字符只能是 `A` 或 `B`。对每个字符串，统计两种字符的出现次数并输出出现更多的那个字符。",
+        "transformed_statement": "将问题转化为两个字符频数的比较：维护当前字符串中 `A` 与 `B` 的计数，取计数较大的字符作为答案；长度为 5 保证比较结果不会相等。",
+        "key_observations": [
+          "字符串长度为奇数，因此 `A` 和 `B` 的出现次数不可能相等，答案始终唯一。",
+          "遍历 5 个字符分别统计 `A`、`B` 的数量，再比较两个计数即可直接确定多数字符。"
+        ],
+        "solution_brief": "对每个长度为 5 的字符串遍历计数：若 `A` 的数量大于 `B`，输出 `A`，否则输出 `B`。由于长度为奇数，不存在平票情况。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则和完整 editorial 提炼，tags 仅用于辅助确认题型。",
         "quality_flags": []
       }
     }

@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2450,
+    "total_problems": 2457,
     "source_total_problems": 2457,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2450,
-    "with_editorial_brief": 2184,
-    "with_solution_brief": 2185,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2457,
+    "with_editorial_brief": 2191,
+    "with_solution_brief": 2192,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1512,
+    "ai_override_count": 1519,
     "primary_topic_count": 13,
-    "contest_count": 376,
+    "contest_count": 377,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -35,8 +35,8 @@ window.CF_INSIGHTS_DATA = {
     "动态规划与状态设计",
     "组合计数与概率",
     "图论与网络流",
-    "树结构",
     "基础实现与模拟",
+    "树结构",
     "字符串",
     "博弈",
     "交互",
@@ -47,19 +47,19 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 119,
     "构造与贪心": 775,
     "图论与网络流": 146,
-    "动态规划与状态设计": 213,
-    "数论与同余": 268,
+    "动态规划与状态设计": 214,
+    "数论与同余": 270,
     "组合计数与概率": 188,
     "数据结构": 227,
-    "几何": 56,
-    "树结构": 135,
+    "几何": 57,
+    "树结构": 136,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 135,
+    "基础实现与模拟": 137,
     "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1245,
+    "ai_generated_with_editorial": 1252,
     "ai_generated_partial_editorial": 48,
     "missing_editorial": 265,
     "manual_override": 891,
@@ -58614,6 +58614,216 @@ window.CF_INSIGHTS_DATA = {
             "反转一次时，答案只由反转后最左和最右的 $1$ 决定；枚举左端点并用双指针找最小右端点，再按区间长度和字典序比较，后者可借助后缀数组的类值完成。"
           ],
           "solutionBrief": "先将方案规范化为交换后至多一次反转，分别求两种情况的最小二进制值。不反转时贪心交换最左 $1$ 与最右 $0$；反转时在反串上用双指针枚举最优区间，并用后缀数组比较候选。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1926,
+      "name": "Codeforces Round 928 (Div. 4)",
+      "date": "2024-02-19",
+      "url": "https://codeforces.com/contest/1926",
+      "type": "Div. 4",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1926A",
+          "index": "A",
+          "slot": "A",
+          "title": "Vlad and the Best of Five",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1926/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/126132",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定若干个长度为 5 的字符串，每个字符只能是 `A` 或 `B`。对每个字符串，统计两种字符的出现次数并输出出现更多的那个字符。",
+          "transformedStatement": "将问题转化为两个字符频数的比较：维护当前字符串中 `A` 与 `B` 的计数，取计数较大的字符作为答案；长度为 5 保证比较结果不会相等。",
+          "keyObservations": [
+            "字符串长度为奇数，因此 `A` 和 `B` 的出现次数不可能相等，答案始终唯一。",
+            "遍历 5 个字符分别统计 `A`、`B` 的数量，再比较两个计数即可直接确定多数字符。"
+          ],
+          "solutionBrief": "对每个长度为 5 的字符串遍历计数：若 `A` 的数量大于 `B`，输出 `A`，否则输出 `B`。由于长度为奇数，不存在平票情况。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1926B",
+          "index": "B",
+          "slot": "B",
+          "title": "Vlad and Shapes",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1926/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/126132",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "geometry",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由 `0` 和 `1` 组成的 $n\\times n$ 方格，所有 `1` 恰好组成一个边长大于 $1$ 的三角形或正方形。判断这些 `1` 形成的图形，并输出 `TRIANGLE` 或 `SQUARE`。",
+          "transformedStatement": "把图形识别转化为检查每一行的 `1` 数量：三角形的尖端会产生一个仅含单个 `1` 的行，而合法正方形不会出现这种行。",
+          "keyObservations": [
+            "三角形的尖端所在行恰好只有一个 `1`，而边长大于 $1$ 的正方形不存在只有一个 `1` 的行，因此行计数可以直接区分两种图形。",
+            "只需统计每行 `1` 的数量；一旦发现某行数量为 $1$，答案必为 `TRIANGLE`，否则在题目保证图形唯一且合法的前提下只能是 `SQUARE`。"
+          ],
+          "solutionBrief": "逐行统计 `1` 的数量。若存在某行恰好包含一个 `1`，输出 `TRIANGLE`；否则输出 `SQUARE`。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1926C",
+          "index": "C",
+          "slot": "C",
+          "title": "Vlad and a Sum of Sum of Digits",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1926/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/126132",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "对每个测试给定 $n$，先写出整数 $1$ 到 $n$，再把每个整数替换为其十进制数位之和，最后求替换后所有数的总和。需要独立回答多组不同 $n$ 的结果。",
+          "transformedStatement": "把问题重述为查询前缀函数 $ans(n)=\\sum_{i=1}^{n}S(i)$：从 $ans(0)=0$ 开始依次加入 $S(i)$，预先建立整条前缀答案表，再按下标响应查询。",
+          "keyObservations": [
+            "将前缀答案定义为 $ans(n)=\\sum_{i=1}^{n}S(i)$，其中 $S(i)$ 是 $i$ 的数位和，则有 $ans(n)=ans(n-1)+S(n)$，每个新位置只需补上当前数的贡献。",
+            "所有测试询问的答案都属于同一条前缀和序列，因此先预处理到所有询问中的最大 $n$，即可避免为每个测试重复计算前缀。",
+            "计算单个数的数位和只需逐位拆分，代价为 $O(\\log n)$；预处理后每次询问直接读取数组，代价为 $O(1)$。"
+          ],
+          "solutionBrief": "设 $ans[i]$ 为 $1$ 到 $i$ 的数位和总和，按 $ans[i]=ans[i-1]+S(i)$ 递推预处理到最大询问值。每个测试只需输出对应的 $ans[n]$，总复杂度为 $O(N\\log N+t)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1926D",
+          "index": "D",
+          "slot": "D",
+          "title": "Vlad and Division",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1926/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/126132",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 个不超过 $2^{31}-1$ 的非负整数，将每个数恰好分入一个组。组内任意两数的 31 个低位都必须逐位不同，求所需的最少组数。",
+          "transformedStatement": "把每个数视为 31 位二进制串；可同组的两个数必须互为按位补码，即异或为 $2^{31}-1$。由于每组最多两数，问题转化为最大化这些互补数对的数量。",
+          "keyObservations": [
+            "同一组中不可能出现三个数：任意固定二进制位只有 $0/1$ 两种取值，而组内任意两数都必须在该位不同，因此每组至多容纳两个数。",
+            "两个数能配成一组，当且仅当它们的异或值为 $2^{31}-1$，也就是其中一个数等于另一个数与 31 位全 1 掩码的异或。",
+            "从左到右处理时，当前数只需寻找此前尚未配对的互补数；成功配对就减少一个组，否则当前数必须单独开组，因此贪心配对不会影响其他可行配对。"
+          ],
+          "solutionBrief": "设掩码 $M=2^{31}-1$，用计数记录尚未配对的数。处理 $a_i$ 时检查是否有 $M\\mathbin{\\oplus}a_i$；有则配对并消耗一个，否则记录 $a_i$。答案为未配对元素数，即 $n-$配对数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1926E",
+          "index": "E",
+          "slot": "E",
+          "title": "Vlad and an Odd Ordering",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1926/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/126132",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "data structures",
+            "dp",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定编号为 $1$ 到 $n$ 的牌，按照牌的 $2$ 的最高次幂因子分组：先放奇数，再放恰好含一个因子 $2$ 的数，随后依次处理含更高次幂 $2$ 的数，组内按对应奇数倍顺序放置。对每个询问，输出最终放置顺序中的第 $k$ 张牌。",
+          "transformedStatement": "把牌按唯一形式 $2^j\\times$ 奇数分类。处理完所有奇数后，剩余偶数除以 $2$ 会重新变成一个规模为 $\\lfloor n/2\\rfloor$、位置平移后的同类问题。",
+          "keyObservations": [
+            "每张牌都能唯一写成 $2^j\\times$ 奇数，因此实际顺序只会按 $2^j$ 从小到大分组，其他倍数对应的步骤不会新增牌。",
+            "第一组是所有奇数，共有 $\\lceil n/2\\rceil$ 张；若目标位置在其中，答案直接是第 $k$ 个奇数 $2k-1$。",
+            "去掉全部奇数后，剩余牌都是偶数，统一除以 $2$ 后形成规模为 $\\lfloor n/2\\rfloor$ 的同一个问题，因此可以递归处理并将结果乘 $2$。",
+            "每次递归都会将牌数至少减半，所以按递归公式处理单个询问只需 $O(\\log n)$。"
+          ],
+          "solutionBrief": "设前 $\\lceil n/2\\rceil$ 个位置放置奇数。若 $k$ 在其中，返回 $2k-1$；否则删除奇数、把剩余偶数全部除以 $2$，递归求规模 $\\lfloor n/2\\rfloor$ 且位置为 $k-\\lceil n/2\\rceil$ 的答案，最后乘以 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1926F",
+          "index": "F",
+          "slot": "F",
+          "title": "Vlad and Avoiding X",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1926/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/126132",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $7\\times7$ 的黑白网格，每次可任选一个格子翻转颜色。要求最终不存在一个黑格，使它的四个对角邻居也全为黑色，求达到该条件所需的最少翻转次数。",
+          "transformedStatement": "按行列坐标奇偶性把网格拆成两部分；每个违规的对角线 X 完全位于同一部分，所以问题等价于分别修复两部分，再将两部分的最优翻转数相加。",
+          "keyObservations": [
+            "每个黑色格子的四个对角邻居与它具有相同棋盘奇偶性，因此一个违规的“X”只涉及同一部分，黑白两部分可以独立求最少翻转数。",
+            "对某一部分按翻转数量从小到大枚举所有翻转集合，首次使该部分不存在违规黑格的数量就是最优值。",
+            "即使整张对应部分全为黑色，也至多需要翻转 $4$ 个格子，因此只需枚举大小不超过 $4$ 的集合，搜索规模受到严格限制。",
+            "分别求出两种奇偶性部分的最小翻转数后相加，因为两部分互不影响，合并不会破坏各自的可行性。"
+          ],
+          "solutionBrief": "按棋盘奇偶性拆成两个独立部分。对每部分回溯枚举至多 $4$ 个要翻转的格子，逐一检查是否还存在四个对角邻居全黑的黑格；找到的最小数量相加即为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1926G",
+          "index": "G",
+          "slot": "G",
+          "title": "Vlad and Trouble at MIT",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1926/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/126132",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "flows",
+            "graphs",
+            "greedy",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，每个房间住着 P、S 或 C 学生。可以在任意边上安装厚墙，使音乐不能跨墙传播；要求每个 P 学生的音乐仍可播放且任何 S 学生都听不到音乐，C 学生没有强制归属，求最少需要安装的厚墙数。",
+          "transformedStatement": "把安装厚墙看成删除树边：删除后每个连通块只能包含 P、只能包含 S，或只包含可灵活处理的 C，不能让 P 与 S 出现在同一块。对每棵子树只保留其向父节点传播的音乐类型，用三状态 DP 合并。",
+          "keyObservations": [
+            "删除边后，每个连通块不能同时含有 P 和 S；C 学生可归入任一侧，因此问题变成用最少边分离两类强制相反的源点。",
+            "从叶子向根合并子树时，子树与父节点相连的部分只需记录三种状态：仅能传来 P 的音乐、仅能传来 S 的音乐、没有音乐。",
+            "若当前部分与子树传来的两种音乐颜色不同，连接这条边会产生冲突，必须切断；相同颜色或无音乐状态则可继续连接。",
+            "P 节点不能处于蓝色或无音乐状态，S 节点不能处于红色或无音乐状态，非法状态设为无穷大，从而保证所有强制条件。"
+          ],
+          "solutionBrief": "将厚墙视为删除树边，要求每个连通块不同时含 P 和 S。树形 DP 为每个子树记录与父亲相连部分的红、蓝、无音乐三种状态；合并时颜色冲突就切边，最后取根的最小合法状态，复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
