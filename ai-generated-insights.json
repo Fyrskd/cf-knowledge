@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T09:35:29+00:00",
+  "updated_at": "2026-09-27T09:40:33+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -49543,6 +49543,188 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的列选择规则与 editorial 中的贪心证明和扫描方案；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1860F": {
+      "problem_key": "1860F",
+      "title": "Evaluate RBS",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/1860/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/119504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ab9331b554ecf9494c11611056e02a61d6c99e3acf52ee3e307c41517810ea05",
+      "generated_at": "2026-09-27T09:38:42+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定$2n$个三元组$(a,b,c)$，其中恰有$n$个括号为“(”、$n$个为“)”。选择正数$x,y$，按$a x+b y$非降序排列三元组（相等时可任意排列），判断能否使括号序列成为正规括号序列。",
+        "transformed_statement": "把$(x,y)$视为第一象限中的旋转方向，并研究点$(a,b)$在该方向投影下的顺序。顺序只会在某些两点连线的垂直方向发生变化，于是问题转化为按角度扫描有限事件并维护括号序列是否合法。",
+        "key_observations": [
+          "将$(x,y)$只看作第一象限中的方向；两点的相对顺序仅在方向垂直于它们连线时改变，因此无穷多个选择可压缩为有限个旋转事件。",
+          "同一事件中所有点具有相同点积，先放左括号再放右括号不会破坏可行性；将该事件涉及的点整体重排可避免逐对交换。",
+          "事件处理后还要把上一个事件涉及的点与当前点一起重排，因为事件位置上的并列排列不等于方向刚旋转后的真实顺序。",
+          "最终括号总数相等，只需维护前缀平衡是否出现负值；重排只影响相关点所在的连续片段，因此可局部重算并用负值计数快速判定。"
+        ],
+        "solution_brief": "把方向$(x,y)$在第一象限旋转，按点对交换的垂直事件维护点的顺序。每次批量重排当前及上一事件涉及的点，并局部更新前缀平衡和负值数量；出现全非负前缀即回答 YES，复杂度为$O(n^2\\log n)$。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面、完整 editorial 及 tags 中的 geometry、data structures、implementation、math、sortings 提炼。",
+        "quality_flags": []
+      }
+    },
+    "1860E": {
+      "problem_key": "1860E",
+      "title": "Fast Travel Text Editor",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1860/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/119504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b4a017dc3077ca15eb46862d3209f800add54a4a3d114669cdf0dd4f0abb7079",
+      "generated_at": "2026-09-27T09:39:03+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "字符串长度为 $n$，光标位于相邻字符之间的 $n-1$ 个位置。每次可向左或右移动一个位置，也可在左右两侧字符组成的有序二元组相同的两个位置间跳转；对每个给定的起点和终点，求最少操作数。",
+        "transformed_statement": "把每个光标位置视为图顶点，相邻移动对应权重为 $1$ 的边；所有拥有同一左右字符对的位置构成一个可一步互达的团，再为每个字符对引入虚点压缩该团。",
+        "key_observations": [
+          "所有具有相同左右相邻字母的位置两两可一步跳转，因此它们形成一个团；用一个虚点替代整团，可将边数降到线性。",
+          "虚点到对应位置的边权设为 $0$，位置到虚点的边权设为 $1$，即可准确模拟团内任意两点一步到达，并转化为 $0$-$1$ 最短路。",
+          "任意使用跳转的最短路都经过某个字母对对应的虚点；枚举至多 $26^2$ 个虚点，分别计算起点到虚点和虚点到终点的距离即可覆盖最优解。",
+          "不使用跳转时答案就是 $|f-t|$；其余情况可拆成“起点到某虚点，再到终点”，从而只需合并预处理的两段距离。"
+        ],
+        "solution_brief": "将 $n-1$ 个光标位置建图：相邻位置双向连权 $1$，相同左右字母对的位置通过虚点以 $1+0$ 模拟一步跳转。枚举 $26^2$ 个虚点，在原图或反图上执行 $0$-$1$ BFS，结合 $|f-t|$ 更新所有查询，复杂度为 $O(26^2(n+26^2+q))$。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text、题目标签中的图与最短路信息；题面操作列表在本地记录中不完整。",
+        "quality_flags": [
+          "statement_operation_text_incomplete"
+        ]
+      }
+    },
+    "1860D": {
+      "problem_key": "1860D",
+      "title": "Balanced String",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1860/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/119504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "65f67613a6ab002a13f97ee26b53503a802334c320df66ebdaf83ecbe1fe5637",
+      "generated_at": "2026-09-27T09:39:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个二进制字符串，可以任意次选择两个位置交换字符。要求用最少交换次数把它变成平衡串，即其中下标递增的 $01$ 子序列数量与 $10$ 子序列数量相等。",
+        "transformed_statement": "将交换后的结果视为一个与原串含有相同数量 $0$、$1$ 的目标串，先最小化两串的字符不相同位置数，并要求目标串的 $01$ 子序列数等于所有异值对总数的一半。",
+        "key_observations": [
+          "前缀中放置字符 $1$ 时，新增的 $01$ 子序列数恰好等于此前缀的 $0$ 个数，因此只需记录前缀长度、$0$ 的数量和 $01$ 数量。",
+          "全串中 $01$ 与 $10$ 子序列总数恒为 $cnt0*cnt1$，所以平衡条件等价于最终 $01$ 数为 $cnt0*cnt1/2$，目标状态由此确定。",
+          "固定原串中 $0$ 和 $1$ 的数量后，把字符改成目标串时的 $0\\to1$ 与 $1\\to0$ 次数相等；每次交换可同时修正一对错位，因此最少交换次数是最少修改数的一半。"
+        ],
+        "solution_brief": "设 $dp[i][cnt0][cnt01]$ 为构造前 $i$ 位、使用 $cnt0$ 个 $0$ 且产生 $cnt01$ 个 $01$ 子序列的最少字符修改数。下一位放 $0$ 不增加 $cnt01$，放 $1$ 则增加 $cnt0$，代价取决于是否匹配原字符；在最终目标 $cnt01=cnt0*cnt1/2$ 的状态中取最小值并除以 $2$，复杂度为 $O(n^4)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 中的平衡定义与交换规则，以及完整 editorial_text 中的 DP 状态、转移和修改数转交换数结论。",
+        "quality_flags": []
+      }
+    },
+    "1860C": {
+      "problem_key": "1860C",
+      "title": "Game on Permutation",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1860/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/119504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ae4d72cbff323eedfd924339be378ba361474a94c6c0bb9b6ec2e658a5dd218c",
+      "generated_at": "2026-09-27T09:39:51+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个排列，爱丽丝先把芯片放到任意位置；之后双方轮流把芯片移到左侧且数值更小的位置。若轮到某人时无合法移动，则该玩家获胜。按题目对 lucky 的定义，统计把芯片首次放在各位置后放置者处于必胜状态的位置数量。",
+        "transformed_statement": "把每个位置视为一个博弈状态，状态的胜负针对“刚把芯片移入该位置的玩家”定义：没有后继状态时为必败，能移入必胜状态时也为必败，否则为必胜。由于转移只指向左侧位置，可按下标递推。",
+        "key_observations": [
+          "若当前位置没有更左且更小的元素可达，下一位玩家无法行动反而获胜，因此当前位置对放置芯片的玩家是必败位。",
+          "若当前位置能移动到某个必胜位，移动后对手将处于必胜状态，所以当前位置必败；否则只要存在合法移动，它就是必胜位。",
+          "判断是否存在任意合法移动只需比较前缀最小值 $mn$；判断是否能移入必胜位只需维护必胜位置中的最小值 $mnWin$。",
+          "因此位置 $i$ 必胜当且仅当 $mn<p_i$ 且 $mnWin>p_i$，扫描时统计并更新必胜位置的最小值即可。"
+        ],
+        "solution_brief": "从左到右判定每个位置对放置芯片者是必胜还是必败。维护此前所有值的最小值 $mn$ 和必胜位置值的最小值 $mnWin$；当 $mn<p_i$ 且 $mnWin>p_i$ 时计数并更新 $mnWin$，总复杂度为 $O(n)$。",
+        "primary_topic": "博弈",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、部分 statement_text 及 tags；statement 中 lucky 的具体定义在给定文本末尾被截断。",
+        "quality_flags": [
+          "statement_inferred",
+          "statement_truncated"
+        ]
+      }
+    },
+    "1860B": {
+      "problem_key": "1860B",
+      "title": "Fancy Coins",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1860/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/119504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "31ee197f7418b42ad630e5b78d64b8ac935784ecef002e265e3f2efa775ccd49",
+      "generated_at": "2026-09-27T09:40:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "购买金额必须恰好为 $m$。硬币面值只有 $1$ 和 $k$：普通硬币数量分别为 $a_1,a_k$，特殊硬币可补充使用；每次选择任意硬币付款且不能找零，目标是最少使用特殊硬币，不要求总硬币数最少。",
+        "transformed_statement": "把付款方案按使用的 $k$ 元硬币数量分解：其余金额必须由 $1$ 元硬币补足。以使用 $\\lfloor m/k\\rfloor$ 枚 $k$ 元硬币、$m\\bmod k$ 枚 $1$ 元硬币为起点，再进行“特殊 $k$ 元硬币换普通 $1$ 元硬币”的等价改进。",
+        "key_observations": [
+          "先取尽可能多的 $k$ 元硬币，再用余数个 $1$ 元硬币表示剩余金额；这给出一个便于统计普通币与特殊币数量的基准方案。",
+          "在基准方案中，只有“用掉一枚特殊 $k$ 元硬币、换成 $k$ 枚尚未使用的普通 $1$ 元硬币”才能减少特殊币；若普通 $1$ 元硬币不足 $k$ 枚或没有特殊 $k$ 元硬币，则继续替换不会更优。",
+          "可进行的替换次数直接是 $\\min(\\text{已用特殊 }k\\text{ 元硬币数},\\lfloor\\text{未用普通 }1\\text{ 元硬币数}/k\\rfloor)$，因此无需逐次模拟即可得到最小特殊币数量。"
+        ],
+        "solution_brief": "令 $q=\\lfloor m/k\\rfloor,r=m\\bmod k$，先统计使用 $q$ 枚 $k$ 元币和 $r$ 枚 $1$ 元币时的特殊币数。再用未用的普通 $1$ 元币替换特殊 $k$ 元币，替换次数取两者上限的最小值，答案为替换后的特殊币总数。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text 的第一种数学/贪心方案，tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1860A": {
+      "problem_key": "1860A",
+      "title": "Not a Substring",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1860/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/119504",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "80eebb0ca7ad6f792d57c58b28e496313e559d6b0f7d0fee18c5cc2166de5f6c",
+      "generated_at": "2026-09-27T09:40:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "每组给定一个仅含括号的字符串 $s$，长度为 $n$。需要构造一个长度为 $2n$ 的正规括号序列 $t$，使 $s$ 不作为连续子串出现；若不存在则输出 NO，否则输出任意合法的 $t$。",
+        "transformed_statement": "按 $s$ 是否存在相邻相同字符分类：前者用交替括号序列规避，后者用完全嵌套序列压缩交替子串形态；只需在这两个长度为 $2n$ 的候选中判定。",
+        "key_observations": [
+          "若 $s$ 含有相邻相同括号，长度为 $2n$ 的交替序列 `()()...` 不含任何相邻相同字符，因此一定避开 $s$。",
+          "若 $s$ 完全交替，长度为 $2n$ 的嵌套序列 `((...))` 的最长交替子串长度为 $2$，所以除 `()` 外的交替 $s$ 都无法出现在其中。",
+          "两类候选已覆盖所有字符串；当 $s=()` 时，任何正规括号序列都包含 `()`，因此无解。"
+        ],
+        "solution_brief": "设 $n=|s|$。若 $s$ 有相邻相同字符，构造长度 $2n$ 的 `()()`；否则构造 `((...))`。检查候选是否含 $s$，含有则输出 NO，否则输出候选。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，结合 tags 中的构造和字符串分类信息。",
         "quality_flags": []
       }
     }
