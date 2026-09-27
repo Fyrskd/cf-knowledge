@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-26T23:57:10+00:00",
+  "updated_at": "2026-09-27T00:01:47+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -24423,6 +24423,249 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅用于辅助主题判断。",
+        "quality_flags": []
+      }
+    },
+    "2227H": {
+      "problem_key": "2227H",
+      "title": "Fallen Leaves",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2227/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/153099",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5582e5d204138ba8691229a3c6e16609565e8a4a04c560d81a735c663fe1e7e4",
+      "generated_at": "2026-09-26T23:59:39+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵树，叶子集合按原树固定不变。每次选择两个尚未选过的不同叶子，支付它们之间简单路径的边数并将二者标记；当未选叶子至多一个时停止，求最小总费用。",
+        "transformed_statement": "把每条边的总费用独立统计：它是否被配对路径穿过只取决于其子树中叶子数的奇偶。若叶子总数为奇数，则等价于删除一个叶子，并选择能最大化路径奇偶变化收益的叶子。",
+        "key_observations": [
+          "固定一条父子边后，子树内叶子只能两两内部配对；因此子树叶子数为奇数时恰有一个叶子必须跨边，边的贡献恰为 $1$。",
+          "叶子总数为偶数时所有叶子都必须配对，答案等于子树叶子数为奇数的非根节点数量。",
+          "叶子总数为奇数时，忽略叶子 $x$ 会翻转根到 $x$ 路径上所有边的奇偶需求，因此应最大化该路径上“奇数边数减偶数边数”。",
+          "定义 $\\texttt{mx}[u]$ 为子树内叶子到 $u$ 的最大路径权值，子节点边权为奇数子树时 $+1$、偶数时 $-1$，即可用 $\\texttt{mx}[u]=\\max(\\texttt{mx}[v]+w_v)$ 求出最优忽略叶子。"
+        ],
+        "solution_brief": "任选根做 DFS，计算每个子树的叶子数 $\\texttt{cnt}$，先统计奇数子树边数。若叶子总数为奇数，再用路径 DP 求最大节省值 $\\texttt{mx}$，答案为统计值减去 $\\texttt{mx}[root]$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags 提炼；代码印证了 DFS 和树上 DP 状态。",
+        "quality_flags": []
+      }
+    },
+    "2227G": {
+      "problem_key": "2227G",
+      "title": "Drowning",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/2227/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/153099",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "06570bc29dd4f0f6571310008b13af2f7500d63800b4b669fe1aa060b716fa6d",
+      "generated_at": "2026-09-27T00:00:04+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数数组，可反复选择连续三个元素 $x,y,z$，仅当 $x+z>y$ 时将它们替换为 $x-y+z$。统计所有连续子数组中，能够通过这些操作归约成一个元素的子数组数量，长度为 $1$ 的子数组也算 good。",
+        "transformed_statement": "把每个子数组的可归约性改写为判定其长度是否为奇数且交错和为正，再用前缀交错和将所有满足条件的区间计数转化为带奇偶限制的前缀值大小关系查询。",
+        "key_observations": [
+          "每次操作将长度减少 $2$，因此只有奇数长度的子数组可能归约为单个元素。",
+          "三元替换前后的交错和贡献完全相同，所以交错和是操作不变量；归约到单个正数后，该值必须为正。",
+          "若奇数长度数组没有任何可行操作，则偶数位置都满足相邻两项之和不超过该位置元素，代入交错和可得其不大于 $0$；因此奇长且交错和为正也是充分条件。",
+          "用前缀交错和表示子数组后，奇数长度对应端点同奇偶，问题转化为按前缀下标奇偶统计更小或更大的前缀值。"
+        ],
+        "solution_brief": "定义前缀交错和 $P[i]$。子数组 good 当且仅当长度为奇数且交错和为正；扫描右端点时，按前缀下标奇偶分别统计小于或大于当前值的历史前缀，用坐标压缩树状数组维护，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text 及 tags 提炼；题面末尾示例文本不完整，但不影响操作定义与解法。",
+        "quality_flags": [
+          "statement_example_truncated"
+        ]
+      }
+    },
+    "2227F": {
+      "problem_key": "2227F",
+      "title": "It Just Keeps Going Sideways",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2227/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/153099",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "47b13b7908638aaf66411423aa7df918d2cf8163865bb9e588ece0794c15b51a",
+      "generated_at": "2026-09-27T00:00:22+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 列高度为 $a_i$ 的方块。重力转向右后，每个方块保持原高度并向右滑到不能再移动的位置；转向前至多删除某一列的一个方块，也可以不操作。求所有剩余方块移动距离之和的最大值。",
+        "transformed_statement": "把方块按高度拆成独立层：高度 $h$ 的方块恰好来自所有满足 $a_i\\ge h$ 的列，并最终占据最右侧的 $cnt[h]$ 列。于是答案转化为各层终点列号和减去初始列号和，再评估删除一个顶层方块只改变对应的一层。",
+        "key_observations": [
+          "同一高度的方块互不影响；若该高度有 $cnt[h]$ 个方块，它们必占据最右侧的 $cnt[h]$ 列，从而终点列号和可用等差数列直接计算。",
+          "所有方块的初始列号总和可按列累加为 $\\sum_{i=1}^{n} i\\cdot a_i$，避免逐个高度统计初始位置。",
+          "删除第 $i$ 列顶端方块时只有高度 $a_i$ 的层发生变化，因此终点列号总和减少 $n-cnt[a_i]+1$，删除带来的净增益为 $i-n+cnt[a_i]-1$。",
+          "对每个位置独立计算删除增益并取最大值，同时与不删除时的答案比较，即可覆盖“至多删除一个方块”的限制。"
+        ],
+        "solution_brief": "按高度分层统计 $cnt[h]=\\#\\{i\\mid a_i\\ge h\\}$。不删除时，终点列和由最右侧列的等差数列求出，初始列和为 $\\sum i a_i$。删除第 $i$ 列方块只影响高度 $a_i$，增益为 $i-n+cnt[a_i]-1$，取其与不删除方案的最大值。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅用于主题辅助判断。",
+        "quality_flags": []
+      }
+    },
+    "2227E": {
+      "problem_key": "2227E",
+      "title": "It All Went Sideways",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2227/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/153099",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1318a5efe089f81c607cf82d0c0101158afb8bd2a9d932b3d77e3758c38fa174",
+      "generated_at": "2026-09-27T00:00:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干列高度为 $a_i$ 的方块，每列方块占据高度 $1$ 到 $a_i$。重力转向右方后，每个方块在不改变高度、不穿过或重叠其他方块的前提下尽量向右移动；转向前至多删除某一列的一个方块，求最终会改变列位置的方块数最大值。",
+        "transformed_statement": "按高度逐行观察：第 $i$ 列能保持原列的方块数等于后缀最小值 $s_i$，所以目标转化为最大化总方块数减去后缀最小值之和；一次删除通过降低某段相等的后缀最小值来增加移动数。",
+        "key_observations": [
+          "高度为 $h$ 的方块在第 $i$ 列保持不动，当且仅当右侧每列都有高度 $h$ 的方块，因此第 $i$ 列恰有 $s_i$ 个不动方块，其中 $s_i$ 是后缀最小值。",
+          "若 $a_i>s_i$，删除该列一个方块不会改变任何后缀最小值，移动方块数只减少；真正有用的位置必须满足 $a_i=s_i$。",
+          "后缀最小值中的相等元素构成连续块，在某块最右端删除一个方块会使整块的静止数量各减少 $1$，所以移动方块数增加“块长减一”。",
+          "因此只需选择后缀最小值最长的相等块，答案为总方块数减静止方块数，再加最长块长度减一。"
+        ],
+        "solution_brief": "从右向左计算后缀最小值数组 $s$，初始移动数为 $\u00024\\sum(a_i-s_i)\\u00024$。扫描 $s$ 的最长相等连续块，最优删除使答案增加块长减一，输出初始值加该增量。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 codeforces_tags 提取。",
+        "quality_flags": []
+      }
+    },
+    "2227D": {
+      "problem_key": "2227D",
+      "title": "Palindromex",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2227/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/153099",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "66d40f6088231655ac6a03a1ed87862231a212ceb77a13205593b3f464fdb3c2",
+      "generated_at": "2026-09-27T00:01:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $2n$ 的数组，其中每个 $0$ 到 $n-1$ 恰好出现两次。选择一个连续回文子数组，要求其 MEX（最小未出现非负整数）尽可能大，并输出最大值。",
+        "transformed_statement": "由于单独取 $0$ 已能得到 MEX 为 $1$，最优回文必含 $0$。设两个 $0$ 的位置为 $x,y$，将问题化为检查它们各自作中心或彼此作对称点时能扩展出的最长合法回文，并计算其中最大 MEX。",
+        "key_observations": [
+          "最优回文子数组必须包含至少一个 $0$：不含 $0$ 时 MEX 为 $0$，而单独取一个 $0$ 就能得到 MEX 为 $1$，因此无需考虑其他情况。",
+          "数组中 $0$ 恰好出现两次，包含它们的回文只能有三种中心形态：以第一个 $0$ 为中心、以第二个 $0$ 为中心，或让两个 $0$ 位于中心两侧的对应位置。",
+          "固定一种中心形态后，只需从中心向两侧同步扩展，并在两端元素相等时继续；扩展过程中删除已出现的值，集合中的最小值就是当前回文的 MEX。",
+          "三种形态覆盖了所有包含 $0$ 的回文，因此分别求出的 MEX 最大值就是全局最优答案。"
+        ],
+        "solution_brief": "先定位两个 $0$，只检查以两个 $0$ 分别为中心，以及以它们为对称点的三种回文。对每种情况向外扩展，遇到两端不同就停止，并维护已出现元素的最小未出现值，取三者最大值。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、statement_text 的数组与 MEX 定义，以及 tags 中的实现和数据结构信息。",
+        "quality_flags": [
+          "statement_truncated_after_examples"
+        ]
+      }
+    },
+    "2227C": {
+      "problem_key": "2227C",
+      "title": "Snowfall",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2227/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/153099",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b304d20da4f7239984776249cc8d593b1ecb78d59e3bb5d8eb60cc820f0405f4",
+      "generated_at": "2026-09-27T00:01:24+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组，只能重新排列元素，不能修改元素值。重新排列后，统计所有乘积能被 $6$ 整除的连续子数组，要求构造一个使该数量最小的排列。",
+        "transformed_statement": "将每个数只抽象为是否含因子 $2$、是否含因子 $3$，得到 $S_6,S_2,S_3,S_1$ 四类；目标转化为安排四类元素，使同时覆盖因子 $2$ 和 $3$ 的连续区间尽可能少。",
+        "key_observations": [
+          "乘积能被 $6$ 整除当且仅当子数组中同时出现因子 $2$ 和 $3$，因此元素可按是否含这两个因子分成四组。",
+          "含有 $S_6$ 元素的任意子数组都有效，把所有 $S_6$ 元素连续放在一端，可减少被计入的子数组数量。",
+          "去掉 $S_6$ 后，将所有 $S_2$ 放在 $S_3$ 前面，只有从 $S_2$ 开始并在 $S_3$ 结束的子数组有效，其他排列不会更优。",
+          "$S_1$ 元素不提供因子 $2$ 或 $3$，放在 $S_2$ 与 $S_3$ 之间不会增加有效子数组，因此可置于两组之间。"
+        ],
+        "solution_brief": "按是否含因子 $2$、$3$ 将元素分为 $S_6,S_2,S_3,S_1$，依次输出 $S_6+S_2+S_1+S_3$。这样 $S_6$ 集中在一端，其余有效子数组数量达到最小。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags 中的构造、数学分类信息。",
+        "quality_flags": [
+          "statement_truncated_after_example_formula"
+        ]
+      }
+    },
+    "2227B": {
+      "problem_key": "2227B",
+      "title": "Party Monster",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2227/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/153099",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "efdd2e488833e1158ad97578200936275e4e23f62f8d70377ec3c7455da68137",
+      "generated_at": "2026-09-27T00:01:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定只含左右括号的字符串，至多一次选择一个连续子串删除，再将其中字符逐个插回剩余字符串的任意位置。判断是否能通过该操作得到合法括号序列。",
+        "transformed_statement": "题解将被操作子串扩展为整个字符串，使操作等价于任意重排全部括号；随后只需判断左右括号数量是否相等，因为相等时可排列成重复的 `()`。",
+        "key_observations": [
+          "选择整个字符串作为被移除的子串不会损失可行性：若某个更短子串能调整成功，改选整个字符串时只需移动原先子串中的字符，其余字符保持原位。",
+          "选取整个字符串后，操作等价于任意重排所有括号；因此问题只剩下括号数量是否能组成若干对。",
+          "括号序列能重排为合法括号序列，当且仅当左括号和右括号数量相等；相等时可排列成连续的 `()`，不相等时必有括号无法配对。"
+        ],
+        "solution_brief": "把操作子串直接选为整个字符串，将问题转化为判断能否任意重排括号。统计左括号数量 `cnt`，若满足 $2cnt=n$ 则左右括号数相等，可以重排成合法序列，否则输出 NO。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面操作定义及完整 editorial 的 Hint、Solution 和代码。",
+        "quality_flags": []
+      }
+    },
+    "2227A": {
+      "problem_key": "2227A",
+      "title": "Koshary",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2227/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/153099",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1c8169d04176e0ac65db9b4706589b0399b17333c88a928d4b454f9f71a5abff",
+      "generated_at": "2026-09-27T00:01:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "You are at $(0,0)$ and要到达目标坐标 $(x,y)$。每次长步可让一个坐标增加 $2$，整个过程中至多一次短步可让一个坐标增加 $1$；判断能否恰好到达目标。",
+        "transformed_statement": "把每个坐标拆成偶数增量和奇数余数：长步只能产生偶数坐标贡献，而唯一的短步最多只能修正一个坐标的奇数余数，因此问题等价于判断两个坐标是否不会同时为奇数。",
+        "key_observations": [
+          "长步每次只让一个坐标增加 $2$，因此不使用短步时两个坐标都必须为偶数。",
+          "至多一次短步只能让一个坐标的奇偶性改变，所以不能同时把两个奇数坐标补出来。",
+          "目标坐标可达当且仅当 $x$、$y$ 至少有一个为偶数，直接检查条件即可完成判定。"
+        ],
+        "solution_brief": "根据坐标奇偶性判定：若 $x$ 和 $y$ 都是奇数，需要两次短步，因此不可达；否则可用长步到达偶数部分，再至多使用一次短步，输出 YES。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial 中关于坐标奇偶性的分析，结合 tags。",
         "quality_flags": []
       }
     }
