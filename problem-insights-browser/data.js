@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2912,
+    "total_problems": 2918,
     "source_total_problems": 2919,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2912,
-    "with_editorial_brief": 2648,
-    "with_solution_brief": 2649,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2918,
+    "with_editorial_brief": 2654,
+    "with_solution_brief": 2655,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1974,
+    "ai_override_count": 1980,
     "primary_topic_count": 13,
-    "contest_count": 443,
+    "contest_count": 444,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,11 +44,11 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 921,
+    "组合计数与概率": 230,
+    "图论与网络流": 178,
+    "数据结构": 274,
     "数论与同余": 315,
-    "构造与贪心": 918,
-    "数据结构": 273,
-    "组合计数与概率": 229,
-    "图论与网络流": 177,
     "几何": 70,
     "树结构": 149,
     "动态规划与状态设计": 244,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1697,
+    "ai_generated_with_editorial": 1703,
     "ai_generated_partial_editorial": 60,
     "missing_editorial": 263,
     "manual_override": 891,
@@ -90082,6 +90082,190 @@ window.CF_INSIGHTS_DATA = {
             "块长取约为 $\\sqrt n$ 可平衡散块处理和整块遍历；每个块独立预处理所有可能的赋值答案。"
           ],
           "solutionBrief": "将数组分成长度约为 $\\sqrt n$ 的块。每块预处理所有 $x$ 下的最小值，整块赋值时直接查表；边界块逐项修改并重算，查询时合并各块答案。预处理利用质因子递推计算 $answer_x$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1749,
+      "name": "Educational Codeforces Round 138 (Rated for Div. 2)",
+      "date": "2022-10-20",
+      "url": "https://codeforces.com/contest/1749",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1749A",
+          "index": "A",
+          "slot": "A",
+          "title": "Cowardly Rooks",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1749/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/108269",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 棋盘和 $m$ 个互不攻击的车。必须恰好选择一辆车，将它沿所在行或列移动到不同的空格，且路径上不能有其他车；判断移动后能否仍保持任意两车不同行不同列。",
+          "transformedStatement": "把局面抽象为已占用的行集合和列集合：每辆车对应一个唯一的行列配对。问题等价于判断是否存在空行或空列；有空行列即可把一辆车移入其中，没有则无法改变位置而不冲突。",
+          "keyObservations": [
+            "由于任意两车不能处于同一行或同一列，所有车占用的行、列均不同，因此必有 $m\\le n$，只需区分是否存在空行。",
+            "当 $m<n$ 时存在空行；任选一辆车沿所在列移到该空行，因其所在列没有其他车且目标行、列都唯一，移动合法且不会产生攻击。",
+            "当 $m=n$ 时所有行和列都已被占用，移动任意车到不同位置必改变其行或列之一，并与原有车辆同列或同行，因此一定不可行。"
+          ],
+          "solutionBrief": "利用初始不互相攻击推出 $m\\le n$。若 $m<n$，存在空行，任选一车沿列移入即可；若 $m=n$，行列全部占用，任何移动都会产生攻击。因此仅当 $m<n$ 时输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1749B",
+          "index": "B",
+          "slot": "B",
+          "title": "Death's Blessing",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1749/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/108269",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "有一排 $n$ 只怪物，第 $i$ 只初始生命值为 $a_i$，死亡时会让当前相邻怪物的生命值各增加 $b_i$；每杀死一只后队列收缩，原本隔着它的怪物成为相邻。选择击杀顺序使所有怪物死亡，求所需的最短总时间。",
+          "transformedStatement": "每只怪物的初始生命值贡献固定为 $a_i$，只需最小化死亡法术造成的额外生命值。唯一可以完全避免额外贡献的是最后击杀的怪物；固定最后一只后，其余怪物都可安排为各贡献一次 $b_i$。",
+          "keyObservations": [
+            "无论击杀顺序如何，每只怪物的初始生命值都必然被支付一次，因此固定部分是总和 $\\sum a_i$，优化只需减少法术带来的额外生命值。",
+            "除最后一只外，每只怪物被击杀时至少还有一个邻居，因此其法术至少额外贡献 $b_i$；若两侧都有邻居，则贡献为 $2b_i$。",
+            "固定第 $l$ 只怪物最后击杀，先按 $1,2,\\ldots,l-1$ 的顺序，再按 $n,n-1,\\ldots,l+1$ 的顺序击杀，可使所有其他怪物恰好只贡献一次 $b_i$。",
+            "因此最后击杀的怪物只会减少其对应的 $b_l$，应选择 $b_l$ 最大的怪物，使答案为 $\\sum a_i+\\sum b_i-\\max b_i$。"
+          ],
+          "solutionBrief": "总初始生命值是固定开销。除最后一只怪物外，每只怪物至少贡献一次 $b_i$，且固定最后击杀第 $l$ 只时可通过先清左侧、再清右侧实现恰好贡献一次。因此答案为 $\\sum a_i+\\sum b_i-\\max b_i$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1749C",
+          "index": "C",
+          "slot": "C",
+          "title": "Number Game",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1749/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/108269",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "games",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个正整数数组，爱丽丝先选择阶段数 $k$。第 $i$ 阶段她必须删除一个不超过 $k-i+1$ 的元素，随后若数组非空，鲍勃把该数值加到任意剩余元素上；求双方最优时爱丽丝能获胜的最大 $k$。",
+          "transformedStatement": "固定 $k$ 后，把鲍勃的加法视为封锁一个元素：被增加的元素以后无法删除。于是爱丽丝保留可删除的小元素并按阈值从大到小处理；排序后只需判断后续 $k$ 个元素能否依次满足阈值 $k,k-1,\u001b[?1;1H...$。",
+          "keyObservations": [
+            "鲍勃增加过的元素在下一阶段及之后都无法再被删除，因此他的有效策略是优先封锁当前最小元素。",
+            "固定 $k$ 后，爱丽丝每阶段删除不超过当前阈值的最大元素，可为后续更小阈值保留小元素；鲍勃随后封锁剩余元素中的最小者。",
+            "将数组升序排列后，鲍勃等价于封锁前 $k-1$ 个元素，爱丽丝只需依次检查位置 $k$ 到 $2k-1$ 的元素能否满足递减阈值。"
+          ],
+          "solutionBrief": "枚举 $k$ 并模拟每阶段：爱丽丝删除不超过当前阈值的最大元素，鲍勃封锁剩余元素中的最小者；也可排序后检查区间 $[k,2k-1]$ 是否能按递减阈值删除。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1749D",
+          "index": "D",
+          "slot": "D",
+          "title": "Counting Arrays",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1749/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/108269",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定长度为 $1$ 到 $n$ 的数组，每个元素取值在 $1$ 到 $m$。每次只能删除当前某个位置 $i$ 上满足 $\\gcd(a_i,i)=1$ 的元素，删除后右侧元素左移；要求统计具有至少两种完整删除顺序的数组数量。",
+          "transformedStatement": "先统计所有数组，再反向统计删除顺序唯一的数组。由于总能删除当前第一个元素，唯一性等价于禁止每个位置的元素在任何阶段被非首位删除，最终转化为各位置必须含有所有不超过该位置的质因子。",
+          "keyObservations": [
+            "每个数组都能按当前第一个元素依次删除，因此唯一的基础序列是全为 $1$；只要某一步能删除非第一个元素，就能先走这一步再继续删除，从而产生另一条序列。",
+            "为保证删除序列唯一，原数组第 $i$ 个元素必须被所有不超过 $i$ 的质数整除；否则它会在某个阶段与当前位置互质并被提前删除。",
+            "令 $P_i$ 为不超过 $i$ 的所有质数之积，则长度为 $k$ 的非歧义数组数量为 $m\\prod_{i=2}^{k}\\left\\lfloor\\frac{m}{P_i}\\right\\rfloor$，因为各位置的取值限制彼此独立。",
+            "所有长度为 $1$ 到 $n$ 的数组总数是 $\\sum_{k=1}^{n}m^k$，减去上述非歧义数组数量即可得到歧义数组数。"
+          ],
+          "solutionBrief": "先计算各长度数组总数，再统计非歧义数组。维护不超过当前位置的质数乘积 $P_i$，长度 $k$ 的非歧义数组数为 $m\\prod_{i=2}^{k}\\lfloor m/P_i\\rfloor$，逐长度累加后用总数相减并取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1749E",
+          "index": "E",
+          "slot": "E",
+          "title": "Cactus Wall",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1749/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/108269",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 网格，部分格子已有仙人掌；可以继续种植，但所有仙人掌都不能共边相邻，且不能移除已有仙人掌。要求新增最少的仙人掌，使题目规定的从顶行到底行的通路不存在；若无法完成则报告无解，否则输出最终网格。",
+          "transformedStatement": "将“阻断上下通路”转化为寻找一条连接左、右边界的对角仙人掌链：相邻链点必须位于对角格。对不能放置的位置禁用，已有仙人掌经过代价为 $0$，新种格经过代价为 $1$，于是问题变成求该图中的最短路径并恢复构造。",
+          "keyObservations": [
+            "上下边界被隔开的充要构造是建立一条连接左右边界的仙人掌链，因此目标转化为寻找一条横向阻断路径。",
+            "链上相邻仙人掌不能共边，只能通过行列都变化的对角移动连接，这将合法链限制为对角边图上的路径。",
+            "与已有仙人掌共边的空格不能再种植，应从候选路径中排除；已有仙人掌可直接作为路径节点且新增代价为零。",
+            "把经过空格的代价设为 $1$、经过已有仙人掌的代价设为 $0$，最短路径的总代价正好等于需要新增的仙人掌数量。"
+          ],
+          "solutionBrief": "将可用格子建成对角相邻图，排除不能种植的位置；空格进入代价为 $1$，已有仙人掌代价为 $0$。用 $0$-$1$ BFS 求左右边界间最短路，沿最短路补种并输出；无路则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1749F",
+          "index": "F",
+          "slot": "F",
+          "title": "Distance to the Path",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1749/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/108269",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "给定一棵初始所有点值为 $0$ 的树，处理两类查询：把路径 $u$ 到 $v$ 距离不超过 $d$ 的所有顶点统一增加 $k$，或询问某个顶点当前的值。对每个询问操作输出对应顶点的值。",
+          "transformedStatement": "将一次路径邻域加法重述为若干个“某祖先子树中距该祖先固定距离的顶点加值”，并按 $\\operatorname{LCA}(u,v)$ 把区域拆到两条祖先链及路径上方；最终只需维护祖先链区间加、单点加和单点查询。",
+          "keyObservations": [
+            "把“某点到路径的距离不超过 $d$”拆成若干个“某个子树内、距指定根恰为某层”的集合；路径两侧可按祖先链分别处理，路径上方的重叠层只需保留相邻两层，因此一次更新最多转化为 $O(d)$ 个基础操作。",
+            "引入按距离分层的标记数组：对“子树中距顶点 $v$ 为 $t$ 的点统一加值”，只需记录 $v$ 在第 $t$ 层的贡献，查询顶点 $u$ 时读取其第 $t$ 个祖先的记录，从而避免显式遍历整棵子树。",
+            "利用 $\\operatorname{LCA}(u,v)$ 将原路径分成两条向上的祖先链及其上方部分，使所有受影响区域都能转化为祖先链区间加、单点加和单点查询。",
+            "在 DFS 序上用树状数组支持子树贡献的加入与点值读取；结合倍增求祖先和 LCA，每个距离层的处理耗时 $O(\\log n)$，单次原操作耗时 $O(d\\log n)$。"
+          ],
+          "solutionBrief": "选根并按距离层记录子树贡献，把路径邻域更新借助 LCA 拆成至多 $O(d)$ 个祖先链或单点操作。DFS 序树状数组维护这些操作，倍增支持祖先定位与 LCA；总复杂度为 $O(n\\log n+md\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
