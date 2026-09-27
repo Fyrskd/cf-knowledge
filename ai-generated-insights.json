@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T21:08:07+00:00",
+  "updated_at": "2026-09-27T21:14:44+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -59565,6 +59565,256 @@
           "ambiguous_statement",
           "missing_editorial",
           "statement_inferred"
+        ]
+      }
+    },
+    "1746G": {
+      "problem_key": "1746G",
+      "title": "Olympiad Training",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1746/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/108011",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "90401b8c6e1d7b750323b511eee0489c40d5b342e88b3f6dfd4124af4f05ddd3",
+      "generated_at": "2026-09-27T21:12:05+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个任务，第 $i$ 个任务只能在前 $d_i$ 天内完成，每天最多完成一个任务。任务分为三类并有收益，要求恰好完成三类各 $a、b、c$ 个任务，判断是否可行，并求可行选择的最大总收益。",
+        "transformed_statement": "把任务选择建模为带截止日期和总数量上限的加权拟阵优化；给三类任务分别增加可调偏置，通过改变偏置使最大权集合的类别计数达到目标。",
+        "key_observations": [
+          "所有满足截止日期且任务数不超过 $a+b+c$ 的任务集合构成加权拟阵，因此按收益从高到低贪心选取即可得到最优可行集合。",
+          "给三类任务收益分别加上 $x,y,z$ 后，最优集合的类别计数随参数变化；由于总数固定为 $a+b+c$，参数只需在二维平面中搜索。",
+          "在当前参数对应的计数与目标计数不一致时，类别计数的单调关系能排除一个半平面，从而维护可行参数多边形并快速收缩。",
+          "为避免多个任务同时换序，在收益中加入足够小的互异扰动；按变换后收益处理任务，并用并查集判断截止日前是否还有可用日期。"
+        ],
+        "solution_brief": "将截止日期约束视为拟阵约束，对加入类别偏置后的收益做贪心选取；在二维参数平面中搜索，使最优集合恰好包含三类各指定数量，无法达到则输出 $-1$。复杂度为 $O(n\\log n\\log C)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "几何",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、statement_text 及 codeforces_tags；核心实现细节参考给出的代码。",
+        "quality_flags": []
+      }
+    },
+    "1746F": {
+      "problem_key": "1746F",
+      "title": "Kazaee",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1746/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/108011",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c1dea08876a79f4ccda07d545a833eff617213a5a317c254792bf0bf6ea7940f",
+      "generated_at": "2026-09-27T21:12:22+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组，处理两类操作：把某个位置的值修改为新值，或询问区间 $[l,r]$ 中每个不同整数的出现次数是否都能被 $k$ 整除，分别输出 YES 或 NO。",
+        "transformed_statement": "把每个值随机分配到多个独立子集中，将“所有频次均为 $k$ 的倍数”转化为多个随机子集内元素总数为 $k$ 的倍数；每个子集的总数由一个支持单点修改和区间求和的 Fenwick 树维护。",
+        "key_observations": [
+          "对每个随机子集分别统计区间内属于该子集的元素总数；若所有元素出现次数都能被 $k$ 整除，则这些总数也必能被 $k$ 整除，从而得到必要条件。",
+          "若区间中存在某个元素的出现次数不能被 $k$ 整除，随机子集使其余各元素贡献恰好抵消的概率至多为 $1/2$；重复约 $50$ 个独立子集即可将误判概率压得极低。",
+          "一个随机子集对应一个动态的二进制位置数组，单点修改只影响该值是否属于各子集，因此可用 Fenwick 树维护每个子集的区间和。",
+          "区间长度若不能被 $k$ 整除则不可能所有频次都被 $k$ 整除；$k=1$ 时答案恒为 YES，这些条件可直接处理。"
+        ],
+        "solution_brief": "先压缩所有初始值和修改值。随机生成约 $50$ 个值子集，为每个子集维护位置指示数组的 Fenwick 树；查询时检查各子集区间和是否均为 $k$ 的倍数，单点修改同步更新这些树。非 YES 情况的误判概率至多约为 $2^{-50}$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "组合计数与概率",
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，并结合 editorial_text 中的代码还原两类查询；随机子集概率分析和 Fenwick 维护方案均来自 editorial_text，tags 用于辅助主题归类。",
+        "quality_flags": [
+          "statement_text中的查询格式缺失，但操作含义可由editorial代码明确还原"
+        ]
+      }
+    },
+    "1746E2": {
+      "problem_key": "1746E2",
+      "title": "Joking (Hard Version)",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1746/problem/E2",
+      "editorial_url": "https://codeforces.com/blog/entry/108011",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "31249f58e3731a3d5e2295ea0a057bc3fbca2fd0a708f6ab0a98ad023200528b",
+      "generated_at": "2026-09-27T21:12:42+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "交互中隐藏一个 $1$ 到 $n$ 的整数；每次可询问任意非空集合是否包含它，但任意连续两次回答中至少有一次真实。最多询问 $53$ 次，并可额外猜测至多两次，要求找到该整数。",
+        "transformed_statement": "将候选整数集合表示为 $(A,B)$：$A$ 是上一问回答所认定包含隐藏数的部分，$B$ 是其他候选。新查询从两部分分别选取元素，回答后只保留可与连续回答真实性约束相容的两部分，并用最坏询问次数 DP 选择划分。",
+        "key_observations": [
+          "把当前候选集拆成上一问中被认定包含 $x$ 的部分 $A$ 与其余部分 $B$，后续查询只需记录这两个规模而非具体历史。",
+          "若新一问从 $A$ 取 $a$ 个、从 $B$ 取 $b$ 个，则根据回答更新为上一组 $A'=a\\cup b$ 与剩余候选 $B'=A-a$，可删除原 $B$ 中未被选中的元素。",
+          "用 $(A,B)$ 表示状态并按两种回答都能继续处理的最坏情况建立 DP，转移只依赖选取的 $a,b$，从而把交互搜索转为规模状态优化。",
+          "小状态可以完整预处理最优转移；大状态采用近似均分两部分的转移并记忆化，题解认为该精度足以在 $53$ 次询问内缩小到至多两个候选。"
+        ],
+        "solution_brief": "维护候选集及上一问认定的子集 $(A,B)$，每次从两部分选择元素组成查询，并按回答更新状态。对小规模状态预处理最坏情况 DP；大规模近似各取一半并记忆化，最终剩余不超过两个候选后逐一猜测。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 的三步状态建模与 DP 方案，以及 tags 中的 interactive、dp。",
+        "quality_flags": []
+      }
+    },
+    "1746E1": {
+      "problem_key": "1746E1",
+      "title": "Joking (Easy Version)",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1746/problem/E1",
+      "editorial_url": "https://codeforces.com/blog/entry/108011",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ed0b71975b3f0bd0a1739743f817681928d03b874d3558b4cdfd50c53c3134d7",
+      "generated_at": "2026-09-27T21:13:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "交互中存在一个范围为 $1$ 到 $n$ 的待找整数。每次可询问任意非空整数集合，得到它是否包含该数，但任意连续两次回答至少有一次真实；最多询问 82 次，并可在过程中最多猜两次，要求猜中该整数。",
+        "transformed_statement": "把所有仍与回答规则相容的数维护为候选集：通过两次并集询问，将候选集划成四组并保证至少删去一组；当只剩三个候选时，再用固定的单点询问序列删去一个，最后用两次猜测覆盖剩余候选。",
+        "key_observations": [
+          "连续两次针对同一命题的回答中至少有一次真实，因此可以把这两次回答合并为一个确定有效的限制。",
+          "将当前候选集 $V$ 分成四组，询问 $V_1\\cup V_2$ 和 $V_1\\cup V_3$；无论回答组合如何，至少有一组必能排除，因此每两问都能删去至少 $|V|/4$ 个候选。",
+          "候选数降到三个后，依次询问单元素集合 $\\{a\\},\\{b\\},\\{b\\},\\{a\\}$，利用相邻回答约束可以保证至少排除一个候选，使剩余两个候选恰好对应两次猜测机会。",
+          "前一阶段最多用 76 次询问将候选集缩至三个，末阶段再用 4 次询问排除一个候选，总询问数不超过 82 次。"
+        ],
+        "solution_brief": "维护仍可能为答案的候选集。对其分成四组并用两次并集询问，每轮至少删去一组，最多 76 问缩至 3 个；对三个候选执行单点询问序列，再删去一个，最后依次猜剩余两数。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、完整 editorial_text，以及 tags 中的 interactive 和 constructive algorithms；未仅凭标签补充算法。",
+        "quality_flags": []
+      }
+    },
+    "1746D": {
+      "problem_key": "1746D",
+      "title": "Paths on the Tree",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1746/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/108011",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c1d6a400c6e10d7836f02d1c969f6a411bdedeeed1550970ab21eaf44bdf68e6",
+      "generated_at": "2026-09-27T21:13:38+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定以 $1$ 为根的树、每个节点的分数和整数 $k$，选择 $k$ 条从根到叶的简单路径组成多重集；在每个节点，经过它的路径要尽可能均衡地分到各个孩子子树，即各子树数量之差不超过 $1$。若 $c_i$ 是经过节点 $i$ 的路径数，要求最大化总分 $\\sum_i c_i s_i$。",
+        "transformed_statement": "把每条根到叶路径看成一枚从根向下流动的球：节点 $u$ 收到 $c$ 枚球后，必须把它们分成若干个 $\\lfloor c/d\\rfloor$ 和 $\\lceil c/d\\rceil$，其中 $d$ 是孩子数；目标是最大化所有节点的“经过球数乘节点分数”之和。",
+        "key_observations": [
+          "在节点 $u$ 分配经过它的 $c$ 条路径时，若有 $d$ 个孩子，则每个子树收到的路径数只能是 $\\lfloor c/d\\rfloor$ 或 $\\lceil c/d\\rceil$，因此局部限制被压缩为商和余数。",
+          "当 $r=c\\bmod d$ 时，恰有 $r$ 个孩子应多分配一条路径；各孩子的基础收益固定，选择增量 $f(v,q+1)-f(v,q)$ 最大的 $r$ 个孩子即可。",
+          "对同一节点可达的路径数至多是两个相邻整数，向下整除后仍只产生相邻的少量状态，因此记忆化搜索只需保存线性数量的状态。"
+        ],
+        "solution_brief": "令 $f(u,c)$ 表示 $c$ 条路径经过节点 $u$ 子树的最大收益。递归计算孩子在 $q$ 与 $q+1$ 条路径下的收益，按增量排序，选出余数个需要多分一条路径的孩子；用记忆化保留相邻状态。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "树结构",
+          "构造与贪心",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意对象和计分方式来自statement及样例；平衡分配规则、状态设计和转移来自editorial_text；树、DP、贪心与排序标签来自tags。",
+        "quality_flags": [
+          "statement_text缺失valid多重集的两项具体条件，相关规则依据editorial和样例反推"
+        ]
+      }
+    },
+    "1746C": {
+      "problem_key": "1746C",
+      "title": "Permutation Operations",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1746/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/108011",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5a429aade43f377c86b6ca940e6e38f78ff4359bcdf7cbf3c97b265cecd71490",
+      "generated_at": "2026-09-27T21:13:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $1$ 到 $n$ 的排列，依次进行 $n$ 次操作；第 $i$ 次选择一个非空后缀，把其中所有元素增加 $i$，同一后缀可以重复选择。请输出每次选择的后缀起点，使最终数组的逆序对数最少。",
+        "transformed_statement": "把数组改写为相邻差分 $d_i=a_{i+1}-a_i$，目标变成让所有差分非负。一次对后缀的加法只会增加该后缀左边界对应的一个差分，因此可用编号为 $a_i$ 的操作修正第 $i$ 个边界。",
+        "key_observations": [
+          "最终数组无逆序对当且仅当所有相邻差分 $d_i=a_{i+1}-a_i$ 非负，因此目标可转化为逐个修正差分。",
+          "对后缀起点为 $j$ 的操作，只有边界差分 $d_{j-1}$ 会增加操作编号，其余差分不变。",
+          "由于 $a_{i+1}\\ge 1$，有 $d_i\\ge -a_i$；把第 $a_i$ 次操作施加到起点 $i+1$ 的后缀后，$d_i$ 至少为 $0$。",
+          "排列中的每个数恰好对应一次操作，所以可为所有前缀边界完成上述修正；最后一次操作作用位置任意，最终逆序对数达到不可再低的 $0$。"
+        ],
+        "solution_brief": "记录每个值在排列中的位置。对于每个 $i<n$，令第 $a_i$ 次操作选择起点 $i+1$；第 $a_n$ 次操作任选起点。这样所有相邻差分非负，最终数组有 $0$ 个逆序对。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial 的差分构造证明，以及 tags 中的构造、贪心和实现信息。",
+        "quality_flags": []
+      }
+    },
+    "1746B": {
+      "problem_key": "1746B",
+      "title": "Rebellion",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1746/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/108011",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c10e80a9ab7f510f076171d8850905c27390225907a940f1b5c997be2c78e060",
+      "generated_at": "2026-09-27T21:14:18+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个只含 0 和 1 的数组。每次选择两个不同位置，把一个位置的元素加入另一个位置并删除前者，因此数组长度减一、元素可能超过 1；求最少操作次数，使数组变为非递减。",
+        "transformed_statement": "把最终的非递减数组抽象为一个分界点：分界点左侧不应出现正数，右侧不应出现零。对每个分界点，需消除的两类元素分别是左侧正数和右侧零，代价为它们数量的较大值。",
+        "key_observations": [
+          "固定最终有序数组中零与正数的分界点后，分界点左侧的正数和右侧的零都是必须处理的坏元素，分别记为前缀正数数与后缀零数。",
+          "一次操作至多从这两类坏元素中各消除一个，因此操作次数至少为二者数量的较大值。",
+          "当前缀正数和后缀零数都存在时，可将前者加入后者并删除前者，使两类数量同时减一；当其中一类为空时，也能单独处理另一类，因此下界总能达到。",
+          "枚举零与正数的分界位置，答案就是 $\\min\\max(\\text{前缀正数数},\\text{后缀零数})$，用前缀和与后缀和即可在线性时间内求出。"
+        ],
+        "solution_brief": "枚举最终有序数组中零与正数的分界点，统计分界点左侧的正数和右侧的零。该位置至少需要处理二者较大值次操作，且可通过配对处理达到，因此取所有分界点中的最小值。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的数组目标与样例、editorial_text 的分组下界和构造证明，并参考 tags。题面未完整给出操作定义，具体操作依据题解和样例推断。",
+        "quality_flags": [
+          "statement_inferred",
+          "statement_operation_definition_missing"
+        ]
+      }
+    },
+    "1746A": {
+      "problem_key": "1746A",
+      "title": "Maxmina",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1746/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/108011",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e8e177d210e383c9a0665a5d0512c3a44cb63f3ca43e091c51e6beace864e148",
+      "generated_at": "2026-09-27T21:14:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个只含 $0$ 和 $1$ 的数组，可反复选择相邻两个元素或长度为 $k$ 的连续片段进行合并，合并结果分别按题目规定取相应的二元值或片段最大值，数组长度也会缩短。判断能否经过若干次操作把数组变成单个 $1$。",
+        "transformed_statement": "问题等价于判断数组中是否存在初始的 $1$：若存在，可通过避开它的二元合并逐步把数组缩短到长度 $k$，再用长度为 $k$ 的合并保留并产生 $1$；若不存在则始终全为零。",
+        "key_observations": [
+          "全为 $0$ 时，两类操作都无法产生 $1$，因此必定无解。",
+          "只要存在一个 $1$，就能用二元操作不断缩短数组，同时避开该 $1$；数组长度降到 $k$ 后，用长度为 $k$ 的操作取最大值即可得到单个 $1$。",
+          "若唯一的 $1$ 位于边界附近，无法直接避开时，剩余特殊情形只能是长度为 $3$ 且 $k=2$，连续两次长度为 $k$ 的操作仍可得到 $1$。",
+          "因此可行性只取决于数组中是否出现过 $1$，无需模拟具体操作，检查 $\u00024\\sum a_i>0\\u00024$ 即可。"
+        ],
+        "solution_brief": "统计数组中是否至少有一个 $1$。全为 $0$ 时无论操作如何都不能产生 $1$；否则可先用二元操作缩短数组，再用长度为 $k$ 的操作合并出 $1$，所以答案为 YES。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 中的操作示例，以及 editorial_text 的完整证明和代码；题面中的操作定义正文存在截断。",
+        "quality_flags": [
+          "statement_operation_rules_truncated"
         ]
       }
     }
