@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2806,
+    "total_problems": 2812,
     "source_total_problems": 2812,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2806,
-    "with_editorial_brief": 2544,
-    "with_solution_brief": 2545,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2812,
+    "with_editorial_brief": 2550,
+    "with_solution_brief": 2551,
     "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1868,
+    "ai_override_count": 1874,
     "primary_topic_count": 13,
-    "contest_count": 427,
+    "contest_count": 428,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 882,
+    "基础实现与模拟": 167,
+    "构造与贪心": 883,
+    "动态规划与状态设计": 238,
+    "组合计数与概率": 219,
+    "图论与网络流": 172,
+    "数据结构": 262,
     "博弈": 95,
     "树结构": 146,
-    "数据结构": 261,
-    "组合计数与概率": 218,
-    "基础实现与模拟": 166,
-    "图论与网络流": 171,
     "数论与同余": 303,
     "代数、矩阵与多项式": 21,
     "字符串": 150,
-    "动态规划与状态设计": 237,
     "几何": 68,
     "交互": 88
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1598,
+    "ai_generated_with_editorial": 1604,
     "ai_generated_partial_editorial": 55,
     "missing_editorial": 261,
     "manual_override": 891,
@@ -86884,6 +86884,194 @@ window.CF_INSIGHTS_DATA = {
             "$k$ 为奇数时，把分段放入表格，用 S 形顺序填充后 $k-3$ 列，再将剩余三列划分为和相等或尽量接近的三组，以控制相邻窗口和的差异。"
           ],
           "solutionBrief": "先处理 $k\\mid n$：偶数 $k$ 交替放置小数和大数，奇数 $k$ 用表格、S 形填充及三组平衡构造。一般情况按 $n=qk+r$ 拆成红蓝子段，分别递归套用整除情形；$r=1$ 或 $k-r=1$ 时单独固定边界元素后递归构造，最后扫描窗口取最小和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1767,
+      "name": "Educational Codeforces Round 140 (Rated for Div. 2)",
+      "date": "2022-12-16",
+      "url": "https://codeforces.com/contest/1767",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 3100,
+      "problems": [
+        {
+          "key": "1767A",
+          "index": "A",
+          "slot": "A",
+          "title": "Cut the Triangle",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1767/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/110225",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个面积为正的三角形，要求画一条水平或竖直直线，将它切成两个面积为正的三角形。对每组顶点坐标判断是否存在这样的直线，并输出 YES 或 NO。",
+          "transformedStatement": "合法切线必须经过一个顶点；于是问题转化为判断三个顶点的横坐标是否全不同，或纵坐标是否全不同。若纵坐标全不同，可沿中位数纵坐标作水平线；横坐标全不同则可作竖直线。",
+          "keyObservations": [
+            "切线若不经过三角形顶点，就会同时截断两条边，使其中一块变成四边形；因此合法直线必须经过某个顶点。",
+            "水平线经过顶点时，另外两个顶点必须分处其上下两侧，这等价于三个 $y_i$ 两两不同；选取中位数 $y$ 的顶点即可。",
+            "同理，竖直线可行当且仅当三个 $x_i$ 两两不同；选取中位数 $x$ 的顶点即可。"
+          ],
+          "solutionBrief": "检查三个 $x_i$ 是否两两不同，或三个 $y_i$ 是否两两不同；任一条件成立就输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1767B",
+          "index": "B",
+          "slot": "B",
+          "title": "Block Towers",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1767/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/110225",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 座塔，第 $i$ 座有 $a_i$ 个方块。每次只能从高度严格大于目标塔的塔中移出一个方块放到目标塔，任意操作后求塔1最多能拥有多少方块。",
+          "transformedStatement": "把问题重述为：塔1依次吸收其他塔的方块，且每次吸收都会使塔1增加、供给塔减少；将供给塔按初始高度递增处理，并对每座塔一次性吸收至其不再高于塔1。",
+          "keyObservations": [
+            "除塔1外的塔之间转移不会增加塔1的方块数，且从塔1移出方块也无益，因此只需考虑把其他塔的方块直接移到塔1。",
+            "塔1变高且供给塔变矮，所以能向塔1转移的塔只会减少；按高度从低到高处理供给塔，当前最低可用塔是最先可能失效的对象。",
+            "若塔1当前有 $x$ 个方块、供给塔有 $y>x$ 个方块，则最多可连续转移 $\\lceil (y-x)/2 \\rceil$ 个；批量处理可避免逐步模拟大量操作。",
+            "处理完一个供给塔后继续按原排序检查更高的塔即可，因为较低塔已经不再影响后续更高塔能否向塔1转移。"
+          ],
+          "solutionBrief": "将除塔1外的高度排序。依次取当前塔高为 $y$ 的塔，若 $y>x$，令 $k=\\lceil(y-x)/2\\rceil$，同时更新 $x\\leftarrow x+k$、$y\\leftarrow y-k$；最后输出 $x$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1767C",
+          "index": "C",
+          "slot": "C",
+          "title": "Count Binary Strings",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1767/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/110225",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定长度为 n 的二进制字符串，并对每个区间 [i,j] 给出 a[i][j]，要求该区间子串中不同字符的数量恰好等于该值。求满足所有区间约束的字符串数量，答案对 998244353 取模。",
+          "transformedStatement": "把字符串按位置从左到右生成；处理末位为某字符时，只需知道此前最后一个相反字符的位置，就能判断任意以当前位结尾的区间含有一种还是两种字符。由此将问题转为记录这一位置的前缀 DP。",
+          "keyObservations": [
+            "对固定的末位字符，区间子串是否包含两种字符只取决于此前最后一个相反字符的位置，因此无需记录完整前缀。",
+            "令 dp[i][j] 表示前 i 位合法且 s[i] 的最后一个相反字符在 j；j=0 表示不存在，从而完整概括所有以 i 结尾区间的字符种类数。",
+            "加入新字符时只有两种转移：与末位相同则保留 j，与末位不同则把相反字符位置更新为 i；同时检查所有以新位置结尾的区间。",
+            "已经检查过的区间不会因继续添加字符而改变，故逐位只验证新区间即可保证全部约束，状态转移总复杂度为 O(n^3)。"
+          ],
+          "solutionBrief": "从左到右构造字符串，状态记录末位字符之前最后一个相反字符的位置。尝试接上相同或不同字符，并依据该位置检查所有新区间；初始位置 1 的两种字符分别计数，最终汇总所有状态。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1767D",
+          "index": "D",
+          "slot": "D",
+          "title": "Playoff",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1767/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/110225",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $2^n$ 支队伍按固定淘汰赛树比赛，技能值是 $1$ 到 $2^n$ 的排列。第 $i$ 个阶段按字符串 $s_i$ 规定胜者类型：字符为 $1$ 时技能较高者胜，字符为 $0$ 时技能较低者胜；求所有可能夺冠的技能值。",
+          "transformedStatement": "把阶段顺序视为可交换，只统计 $1$ 和 $0$ 的数量：重排为先进行 $x$ 个“高者胜”阶段、再进行 $y$ 个“低者胜”阶段，问题转化为确定这两段操作后所有可能冠军构成的连续区间。",
+          "keyObservations": [
+            "相邻两阶段交换顺序不会改变可成为冠军的技能值，因此只需把所有字符 $1$ 排在前面、字符 $0$ 排在后面。",
+            "设前面有 $x$ 个阶段为 $1$，则选手必须在规模为 $2^x$ 的子树中胜出，技能值 $1$ 到 $2^x-1$ 不可能晋级。",
+            "后面有 $y$ 个阶段为 $0$，最终从 $2^y$ 名晋级者中选技能值最小者，因此冠军技能值至多为 $2^n-2^y+1$。",
+            "对区间中的任意 $k$，可将 $1$ 到 $2^x-1$ 与 $k$ 放入同一子树，并让其余子树各产生一个最高技能者，从而构造出冠军 $k$。"
+          ],
+          "solutionBrief": "令 $x$ 为 $s$ 中 $1$ 的数量、$y=n-x$。交换相邻阶段不影响可行冠军，重排后先进行 $x$ 个高技能获胜阶段，再进行 $y$ 个低技能获胜阶段；答案是区间 $[2^x,2^n-2^y+1]$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1767E",
+          "index": "E",
+          "slot": "E",
+          "title": "Algebra Flash",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1767/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/110225",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "graphs",
+            "math",
+            "meet-in-the-middle",
+            "trees"
+          ],
+          "statementBrief": "有 $n$ 个按顺序排列的平台，第 $i$ 个平台属于颜色 $c_i$。购买颜色 $j$ 需花费 $x_j$，会同时激活该颜色的所有平台；从平台 $i$ 每次只能跳到 $i+1$ 或 $i+2$，要求购买一些颜色后能从已激活的平台 1 到达已激活的平台 $n$，求最小花费。",
+          "transformedStatement": "把每种颜色看成一个带购买代价的顶点，把每对相邻平台的颜色连边；除必须购买首尾平台颜色外，每条边至少要选中一个端点，从而转化为带权最小顶点覆盖。",
+          "keyObservations": [
+            "路径存在当且仅当首尾平台已激活，且不存在两个连续的未激活平台；因此只需保证每对相邻平台至少有一个颜色被购买。",
+            "把颜色视为带权顶点、相邻平台的颜色对视为边后，问题等价于求一个必须包含首尾颜色的最小权顶点覆盖。",
+            "固定第一半颜色集合后，第一半中未购买颜色会强制第二半购买所有相邻颜色，这些强制颜色构成约束掩码，第二半集合只需包含它。",
+            "对每个第一半掩码记录其约束掩码的最小花费，再通过子集最小值转移，就能快速查询任意第二半集合可兼容的最优第一半方案。"
+          ],
+          "solutionBrief": "将购买颜色建模为带权顶点覆盖，并用折半枚举处理最多 $m=40$ 个颜色。枚举第一半集合，计算其对第二半的强制购买掩码，再用子集最小值 DP 合并第二半集合，复杂度为 $O(2^{m/2}m^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1767F",
+          "index": "F",
+          "slot": "F",
+          "title": "Two Subtrees",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1767/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/110225",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根、每个顶点带整数的树。每次给出两个顶点，收集它们子树中的所有整数；两个子树重叠时重复计数，输出出现次数最多的整数，若并列则输出数值最小者。",
+          "transformedStatement": "把每个子树映射为 DFS 先序序列上的连续区间，于是查询变成两个区间的多重集合众数查询；核心是支持区间边界移动时的频率增删，并快速找出频率最大且值最小的元素。",
+          "keyObservations": [
+            "子树在 DFS 先序序列中对应连续区间，因此一次查询等价于维护两个区间中所有值的频率，并取频率数组最左侧的最大值位置。",
+            "单次加入或删除只会让一个值的频率变化 $1$，所以按值分块维护块内最大频率及各频率出现次数，就能快速维护全局最小众数值。",
+            "按子树大小将查询分为轻重两类：轻查询中临时加入另一棵小子树，重查询则把重顶点划分为若干竖直路径，使同一路径内的子树差异不超过 $B$。",
+            "将最重儿子放在 DFS 首位后，按 DFS 顺序移动当前区间时每个顶点被反复加入的次数为 $O(\\log n)$；这保证了小到大处理及路径分组的总移动代价可控。"
+          ],
+          "solutionBrief": "先将子树转成 DFS 区间，再用分块结构维护值频率的最小字典序众数。按子树大小分轻重查询：轻查询临时加入小区间，重查询按竖直路径批处理并移动两个区间边界，取 $B=\\sqrt{n\\log n}$ 时获得题解中的复杂度。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
