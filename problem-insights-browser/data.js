@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2974,
+    "total_problems": 2982,
     "source_total_problems": 2982,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2974,
-    "with_editorial_brief": 2702,
-    "with_solution_brief": 2703,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2982,
+    "with_editorial_brief": 2710,
+    "with_solution_brief": 2711,
     "missing_editorial_brief": 271,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2036,
+    "ai_override_count": 2044,
     "primary_topic_count": 13,
-    "contest_count": 452,
+    "contest_count": 453,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 939,
+    "构造与贪心": 944,
+    "博弈": 97,
+    "组合计数与概率": 235,
+    "数据结构": 280,
     "字符串": 158,
-    "组合计数与概率": 234,
     "几何": 71,
     "数论与同余": 322,
     "图论与网络流": 180,
-    "数据结构": 279,
     "动态规划与状态设计": 251,
     "树结构": 150,
     "基础实现与模拟": 178,
     "交互": 95,
-    "博弈": 96,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1751,
+    "ai_generated_with_editorial": 1759,
     "missing_editorial": 271,
     "ai_generated_partial_editorial": 60,
     "manual_override": 891,
@@ -91919,6 +91919,259 @@ window.CF_INSIGHTS_DATA = {
             "维护有序线段的长度和角度，并更新两个坐标轴端点；删除或截断越出第一象限的首尾线段即可恢复合法边界，整体复杂度为 $O(n\\log n)$。"
           ],
           "solutionBrief": "维护第一象限凸可达域的有序边界线段集合。每天插入新交换线段，分别平移两侧边界及轴端点，再截断越界线段；轴上端点给出当天最多的卵石数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1738,
+      "name": "Codeforces Global Round 22",
+      "date": "2022-09-30",
+      "url": "https://codeforces.com/contest/1738",
+      "type": "Global",
+      "problemCount": 8,
+      "maxRating": 3300,
+      "problems": [
+        {
+          "key": "1738A",
+          "index": "A",
+          "slot": "A",
+          "title": "Glory Addicts",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1738/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/107469",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "有若干 fire 或 frost 技能，每个技能有初始伤害；所有技能必须各使用一次，但可以任意安排顺序，并在每次使用时遵守题面魔法规则，使部分技能伤害翻倍。需要安排使用顺序，求最终总伤害的最大值。",
+          "transformedStatement": "把顺序选择转化为确定哪些技能能够获得翻倍：不同类型交替可以尽量扩大翻倍位置；因此问题变成在类型数量限制下，选择应被翻倍的最大伤害，并处理首个技能不能翻倍的特殊情况。",
+          "keyObservations": [
+            "固定首个技能后，后续优先选择与上一个不同类型且初始伤害最大的技能，可让可翻倍位置承载更大的伤害。",
+            "首个技能不会被翻倍，因此固定首类型时应删去该类型中初始伤害最小的技能作为首个技能。",
+            "两类数量相等时，除全体技能中最小伤害外的技能都能翻倍；数量不等时，设较小类数量为 $k$，只需翻倍全体中最大的 $2k$ 个伤害。"
+          ],
+          "solutionBrief": "统计两类技能并排序。若两类数量相等，答案为总和加上除最小值外所有伤害之和；否则令 $k$ 为较小类数量，把最大的 $2k$ 个伤害再加一次。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1738B",
+          "index": "B",
+          "slot": "B",
+          "title": "Prefix Sum Addicts",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1738/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/107469",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的非降序整数序列及其前缀和，但只知道最后 $k$ 个前缀和。需要判断是否存在某个非降序整数序列，使这些已知前缀和恰好成立。",
+          "transformedStatement": "把相邻已知前缀和做差，直接恢复序列的后缀；剩余问题变成：能否用 $n-k+1$ 个不超过后缀首元素的非降序整数，凑出总和 $s_{n-k+1}$。只有后缀差分有序且该总和不超过对应容量时可行。",
+          "keyObservations": [
+            "当 $k=1$ 时只知道总和，任意整数总和都能用若干个相邻的 $\u001bfloor S/n\u001b$ 与 $\u001bceil S/n\u001b$ 构成非降序列，因此答案必为 YES。",
+            "当 $k\\ge2$ 时，相邻已知前缀和之差唯一确定后缀元素；若这些差分不是非降序排列，则不可能还原出满足条件的原序列。",
+            "令 $m=n-k+1$，前 $m$ 个元素的总和为 $s_m$，其最后一个元素不能超过已知后缀首项，因此必要条件是 $s_m\\le m\\cdot a_{m+1}$；该条件也保证可以把前缀构造成不超过后缀首项的非降序列。",
+            "将前 $m$ 个元素取为平均值的下取整与上取整，其中较大的值出现 $s_m\\bmod m$ 次，即可在保持非降序的同时得到总和 $s_m$，从而证明上述条件充分。"
+          ],
+          "solutionBrief": "$k=1$ 直接判 YES。否则用相邻前缀和差分恢复后缀，检查差分非降序，并验证 $s_{n-k+1}\\le(n-k+1)a_{n-k+2}$；通过前缀均分为下取整和上取整构造，均满足则判 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1738C",
+          "index": "C",
+          "slot": "C",
+          "title": "Even Number Addicts",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1738/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/107469",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "games",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个整数序列，Alice 与 Bob 轮流从中任选一个整数并将其删除，Alice 先手，直到序列为空。若 Alice 选出数字的总和为偶数则她获胜，否则 Bob 获胜；要求判断双方最优操作下的获胜者。",
+          "transformedStatement": "把每个整数替换为其奇偶性，游戏等价于在剩余 $a$ 个偶数和 $b$ 个奇数之间轮流取数。按 $b\\bmod4$ 分类，并利用一方复制对手上一步奇偶选择的策略判断最终奇数贡献。",
+          "keyObservations": [
+            "所有数只需保留奇偶性，因此局面可压缩为剩余偶数个数 $a$ 与奇数个数 $b$。",
+            "当 $b\\equiv2\\pmod4$ 时，Bob 复制 Alice 上一步选择的奇偶性，使每轮后双方获得的奇数数量相同；终局双方各得 $b/2$ 个奇数且该数为奇数。",
+            "当 $b\\equiv0\\pmod4$ 时，Alice 先取一个偶数，之后复制 Bob 上一步的选择，最终双方各得 $b/2$ 个奇数且该数为偶数。",
+            "当 $b\\equiv1\\pmod4$ 时，先取奇数的一方必败；因此 Alice 只有在偶数个数 $a$ 为奇数时才能先取偶数并获胜。"
+          ],
+          "solutionBrief": "统计偶数数目 $a$ 和奇数数目 $b$。若 $b\\equiv2\\pmod4$，Bob 胜；若 $b\\equiv0$ 或 $3\\pmod4$，Alice 胜；若 $b\\equiv1\\pmod4$，则 Alice 当且仅当 $a$ 为奇数时获胜。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1738D",
+          "index": "D",
+          "slot": "D",
+          "title": "Permutation Addicts",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1738/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/107469",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构",
+            "图论与网络流",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一个由未知阈值 $k$ 和 $1\\ldots n$ 的排列生成的序列 $b$：按排列顺序处理元素，并依据元素属于阈值两侧的关系，为每个元素记录此前另一侧的相应候选（无候选时使用 $0$ 或 $n+1$）。要求恢复任意能生成该 $b$ 的阈值 $k$ 和排列。",
+          "transformedStatement": "把每个数值 $i$ 看成图顶点，并把 $b_i\\to i$ 视为“生成 $i$ 时选中的另一侧前驱”。确定 $k$ 后图被划分为两侧，目标转化为从这棵带端点哨兵的树中恢复一种满足父子访问顺序的排列。",
+          "keyObservations": [
+            "有效序列必满足前缀位置 $i\\le k$ 有 $b_i>i$、后缀位置 $i>k$ 有 $b_i<i$，因此 $k$ 唯一等于满足 $b_i>i$ 的最大下标。",
+            "固定 $k$ 后，所有 $i\\le k$ 的 $b_i$ 必须落在 $k+1\\ldots n+1$，所有 $i>k$ 的 $b_i$ 必须落在 $0\\ldots k$；这把每条依赖边强制成跨越两侧的边。",
+            "建立边 $b_i\\to i$ 后，每个顶点至多有一条入边；去掉 $0$ 与 $n+1$ 中唯一的孤立点，合法图会成为以另一个端点为根的树。",
+            "树中每个顶点至多有一个非叶子孩子，因此按非叶子节点靠后的 BFS 顺序输出，并删去根，就能保证每个节点选择到正确的父节点。"
+          ],
+          "solutionBrief": "先取最大的 $i$ 使 $b_i>i$ 作为 $k$，检查两侧取值范围。将每个 $b_i$ 连向 $i$，确认端点孤立性、无环及每个节点至多一个非叶子孩子；以非孤立端点为根，按非叶子节点后访问的 BFS 顺序生成排列并去掉根。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1738E",
+          "index": "E",
+          "slot": "E",
+          "title": "Balance Addicts",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1738/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/107469",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定非负整数序列，将其切分成若干个非空连续子段；每段取元素和，要求这些段和从两端向内对应相等，即构成回文序列。求不同切分方案数，并对 $998244353$ 取模。",
+          "transformedStatement": "把原问题改写为区间 DP：$f(i,j)$ 表示子数组 $a_i\\ldots a_j$ 的合法切分数。先匹配两侧相等的正和，再根据两端及中间的零段数量用组合数剥离，递归处理剩余区间。",
+          "keyObservations": [
+            "全为零的区间中任意切分都满足条件，因此答案是 $2^{j-i}$，每个内部间隙独立决定是否切开。",
+            "区间两端的零只能成对出现在和序列的两端；选出 $k$ 个前缀零和 $k$ 个后缀零的方案数为 $c_{x,y}=\\sum_k\\binom{x}{k}\\binom{y}{k}=\\binom{x+y}{x}$，可直接剥离。",
+            "取两侧首个相等的正和作为匹配外层；若中间仍有零，则这些零只能按对称方式切分，方案数转化为 $c_{x+1,y+1}$。",
+            "每次递归都会去掉已经确定的前缀、后缀或匹配部分，区间边界单调向内，因此所有元素总共只被处理一次。"
+          ],
+          "solutionBrief": "定义 $f(i,j)$ 为子数组的合法切分数。按全零、两端零或首尾匹配正和分类，利用组合数剥离对称零段并递归计算内部区间；边界单调扫描，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1738F",
+          "index": "F",
+          "slot": "F",
+          "title": "Connectivity Addicts",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1738/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/107469",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "交互"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dsu",
+            "graphs",
+            "greedy",
+            "interactive",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "给定一个简单无向图，但起初只知道各点度数；每次可查询一个点，并按对该点的第几次查询获得对应的邻边，最多查询 $n$ 次。需要据此给所有点染色，使每种颜色的点集连通，且该颜色点的度数总和 $s_c$ 不超过点数平方 $n_c^2$。",
+          "transformedStatement": "将未知图的探索建模为按度数递减扩展集合：从一个未访问点及其未访问邻点形成候选块，若碰到已染色点则把候选块接入其颜色，否则创建新颜色；核心是维护颜色块大小不小于其中点的度数。",
+          "keyObservations": [
+            "按未染色点的度数递减处理，可保持每个已有颜色块的大小至少等于其中任一点的度数；因此当前点的度数不超过任意已有颜色块大小。",
+            "若当前点的所有邻点都未访问，则形成含 $d_u+1$ 个点的星形新颜色块，且所有点度数不超过 $d_u$，所以 $s_c\\le(d_u+1)d_u\\le n_c^2$。",
+            "若遇到已有颜色 $c$ 的邻点，则待染色集合大小满足 $|S|\\le d_u\\le n'_c$；合并后新增度数和至多为 $|S|d_u$，从而保持 $s_c\\le(n'_c+|S|)^2$。",
+            "每次查询要么发现一个新的待染色点，要么结束当前集合并连接到已有颜色；因此每轮查询数不超过本轮新增染色点数，总查询数至多为 $n-C$，其中 $C$ 是最终颜色数。"
+          ],
+          "solutionBrief": "按度数递减选择未染色点，逐个查询其邻边并收集未访问邻点；遇到已染色邻点就把集合并入其颜色，否则建立新颜色。利用上述大小—度数不变量证明连通性和 $s_c\\le n_c^2$，查询数不超过 $n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1738G",
+          "index": "G",
+          "slot": "G",
+          "title": "Anti-Increasing Addicts",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1738/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/107469",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 网格，只有标记为可删除的格子才能被删除。必须恰好删除 $(n-k+1)^2$ 个格子，使剩余格子中不存在 $k$ 个行号和列号都严格递增的格子，并输出任意可行方案或判定无解。",
+          "transformedStatement": "按 $x-y$ 将格子分成递增对角线：先确定每条长度为 $t$ 的对角线必须删除的 $\\max(0,t-k+1)$ 个格子，再把相邻对角线的删除位置转化为互不相交区间中的精确选点约束。",
+          "keyObservations": [
+            "长度为 $t$ 的递增对角线至少要删除 $\\max(0,t-k+1)$ 个格子；所有对角线的下界总和恰好为 $(n-k+1)^2$，因此每条对角线的删除数都被完全确定。",
+            "相邻长度为 $t-1$ 与 $t$ 的对角线中，若大对角线删除位置为 $x_1<\\cdots<x_{t-k+1}$，小对角线必须在每个区间 $[x_j,x_{j+1}-1]$ 中恰删一个格子，其他位置不能删除。",
+            "按上述相邻对角线约束构造后，令每格记录其所在对角线此前保留格子的数量；这些数量按行、按列单调不减，从而任意递增的未删除序列对应严格递增的记录值，长度不可能达到 $k$。",
+            "从主对角线向外逐步贪心选择允许删除且不违反相邻约束的最早格子；只需维护每条对角线最后一次删除位置，若某步无可选格子则无解。"
+          ],
+          "solutionBrief": "按递增对角线统计每条线必须删除的格子数，再利用相邻对角线的区间对应关系逐步贪心选点。维护各对角线最后删除位置即可在 $O(n^2)$ 内完成构造；无法选择时输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1738H",
+          "index": "H",
+          "slot": "H",
+          "title": "Palindrome Addicts",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1738/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/107469",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "data structures",
+            "strings"
+          ],
+          "statementBrief": "维护一个初始为空的字符串队列：每次可在队尾加入一个小写字母，或从队首删除一个字母，删除操作保证队列非空。每次操作后，输出当前队列字符串中不同回文子串的数量。",
+          "transformedStatement": "把问题视为回文树在滑动窗口上的动态维护：队尾操作扩展窗口，队首操作移除窗口左端；节点代表不同回文，需判断哪些节点因窗口左移而彻底失效。",
+          "keyObservations": [
+            "队列中的不同回文子串可对应回文树节点，因此维护仍存在的节点数量即可得到答案。",
+            "删除队首字符时，可能消失的回文只需关注当前串的最长回文前缀；它只有在自身唯一出现时才需要删除。",
+            "一个回文节点唯一出现当且仅当其回文后缀链接入度为 $0$ 且不存在第二靠右的出现位置，这把出现次数判断转成局部信息。",
+            "新增字符只会产生当前串的最长回文后缀的新出现；删除唯一前缀后，再用其后缀链接诱导更新对应节点的最近两次出现位置，从而支持惰性维护。"
+          ],
+          "solutionBrief": "用回文树表示所有不同回文子串。队尾加入字符时更新最长回文后缀；队首删除时检查最长回文前缀，依据链接入度和最近两次出现位置判断是否删除，并沿后缀链接补充出现信息，整体可在 $O(26n)$ 时间维护。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
