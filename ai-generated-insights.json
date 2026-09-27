@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T22:35:59+00:00",
+  "updated_at": "2026-09-27T22:41:41+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -61991,6 +61991,215 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement 中的电梯移动规则和 editorial 中给出的距离公式与比较结论；tags 提供 math 标签。",
+        "quality_flags": []
+      }
+    },
+    "1728G": {
+      "problem_key": "1728G",
+      "title": "Illumination",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1728/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/106805",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d2352c9aca5a18ca76f840beb6cefe03102f129201acf341fe9e80c4c1eebb16",
+      "generated_at": "2026-09-27T22:39:29+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "线段内有若干固定位置的灯和兴趣点，每盏灯可独立选择 $0$ 到 $d$ 的整数照明功率；灯能照亮与其距离不超过功率的兴趣点。每次临时在指定坐标加入一盏灯，求使所有兴趣点都被照亮的功率分配数，取模后再移除该灯。",
+        "transformed_statement": "把“所有兴趣点被照亮”改写为对未被照亮兴趣点集合做容斥。对每个集合，灯的贡献由其到集合中最近点的距离决定；临时加入一盏灯则对应对一类掩码模板的乘法更新。",
+        "key_observations": [
+          "对未被照亮的兴趣点集合做容斥：总方案数为 $(d+1)^n$，只需统计至少包含指定未照亮点的方案数并按集合大小交替加减。",
+          "固定未照亮点集合后，各盏灯的功率选择彼此独立；某盏灯的选择数等于它到集合中最近兴趣点的距离，集合为空时为 $d+1$，因此方案数可写成各灯贡献的乘积。",
+          "固定一盏灯及其最近的未照亮点后，可行掩码呈现“指定点为未照亮、若干区间被迫照亮、其余位置任意”的模板；将模板表示为两个子掩码集合的乘除更新，即可用子集变换批量处理。",
+          "新增查询灯只会给符合其模板的掩码方案乘上对应距离；预先求出带容斥符号的子掩码和后，每次查询只需合并各最近点情况，达到 $O(m)$。"
+        ],
+        "solution_brief": "用容斥统计未照亮兴趣点集合。对每个掩码，按每盏灯到最近指定点的距离计算独立贡献，并通过子集乘法变换批量求值；查询灯的影响也转化为模板掩码的带符号子集和，预处理后每次 $O(m)$，总复杂度为 $O(nm+qm+2^m m)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，结合 statement_text、rating 与 tags；题解正文完整。",
+        "quality_flags": [
+          "statement_tail_truncated"
+        ]
+      }
+    },
+    "1728F": {
+      "problem_key": "1728F",
+      "title": "Fishermen",
+      "rating": 3100,
+      "problem_url": "https://codeforces.com/contest/1728/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/106805",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5bd3622738a2cc6572c6578cfa78b16317fd06c3bcf89529a12a8e619268794a",
+      "generated_at": "2026-09-27T22:39:48+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 名渔夫，第 $i$ 人实际捕获的鱼大小为 $a_i$；先选择他们发言的排列顺序，每人可将鱼的大小报得更大，并按题目规则生成报告值。要求选择最优顺序，使所有报告值之和最小；等价地，每个 $a_i$ 要对应一个互不相同且可被 $a_i$ 整除的报告值。",
+        "transformed_statement": "把问题重述为最小权二分图匹配：左侧每个顶点代表一个 $a_i$，右侧代表候选报告值 $k a_i$，其中 $1\\le k\\le n$；若该值是左侧数的倍数就连边，边权为报告值，目标是选出覆盖所有左侧顶点的最小权匹配。",
+        "key_observations": [
+          "固定顺序产生的报告值都两两不同，且每个报告值是对应 $a_i$ 的倍数；最小和方案一定能通过按报告值递增安排顺序实现，因此可直接优化这些值。",
+          "由抽屉原理，每个 $a_i$ 只需考虑前 $n$ 个倍数 $a_i,2a_i,\u001bn*a_i$，更大的倍数不可能出现在最优解中。",
+          "将左侧的 $a_i$ 与右侧的候选倍数匹配，边权取右侧数值后，按右侧顶点权值递增处理，逐个尽可能增广即可保证总权值最小。",
+          "保留未成功增广时的访问标记，避免每次增广都清空整张图；Kuhn 算法复杂度为 $O(M(E+V))$，本题得到 $O(n^3)$。"
+        ],
+        "solution_brief": "把每个 $a_i$ 分配给一个互不相同且可被其整除的报告值，代价为该报告值。只保留前 $n$ 个倍数，建二分图后交换两侧并按候选值递增运行带访问标记优化的 Kuhn 增广，得到最小权匹配。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 中的排列与报告规则、editorial_text 的等价转化和算法说明，并参考 tags 中的 flows、graph matchings、greedy。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1728E": {
+      "problem_key": "1728E",
+      "title": "Red-Black Pepper",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1728/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/106805",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "fcd9d2c1d135594c85897f0d543bfa9fe646d67ac8cd82921764e10f9c6ae99e",
+      "generated_at": "2026-09-27T22:40:18+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 道菜，每道必须且只能加红椒或黑椒；红椒和黑椒分别带来美味度 $a_i$、$b_i$。对每家商店，只能在该店购买非负数量的两种包装，使包装总供给恰好覆盖所有菜品且不剩余，然后求能得到的最大总美味度；无法购买时输出 $-1$。",
+        "transformed_statement": "令 $k$ 表示使用黑椒的菜品数，以全红椒为基准后，答案是总和 $\\sum a_i$ 加上最大的 $k$ 个 $b_i-a_i$ 之和。每家店的可行 $k$ 由包装数量方程 $xp+yq=n$ 产生，并形成一个等差序列。",
+        "key_observations": [
+          "把全部菜品先加红椒作为基准；改给第 $i$ 道菜黑椒的增量是 $d_i=b_i-a_i$，因此选恰好 $k$ 道改色只需取最大的 $k$ 个增量。",
+          "将 $d_i$ 降序排列并做前缀和后，总美味度关于黑椒菜数 $k$ 的增量单调不增，所以全局最优位置两侧的可行值中，只需检查距离它最近的两个值。",
+          "对商店 $(x,y)$，可行的黑椒菜数来自 $xp+yq=n$ 的非负整数解；若存在解，这些数构成公差为 $\\operatorname{lcm}(x,y)$ 的等差序列。",
+          "用扩展欧几里得算法得到丢番图方程的一组解，再将参数调整到非负范围，并检查最接近全局最优位置的两个可行解即可。"
+        ],
+        "solution_brief": "排序增量 $b_i-a_i$ 并求前缀和，得到任意黑椒数量的最优值。每家店用扩展欧几里得求可行数量的等差序列，只检查其在全局峰值两侧最近的两个元素。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1728D": {
+      "problem_key": "1728D",
+      "title": "Letter Picking",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1728/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/106805",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "eba3a0013ecddc9e0e03c81246c399ceab63a7c50db1a8a4ed002220a15abe56",
+      "generated_at": "2026-09-27T22:40:35+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为偶数的字符串，Alice 与 Bob 轮流从当前字符串的首端或尾端取走一个字符，并把它加到自己字符串的开头，Alice 先手。字符串取空后，字典序较小者获胜，相等则平局；要求双方最优时判断胜负。",
+        "transformed_statement": "将局面抽象为剩余半开区间 $[l,r)$，并把 Alice、Bob 的一轮操作合并处理。状态值记录该区间下 Alice 胜、平局或 Bob 胜，通过双方对端点的选择进行极小极大转移。",
+        "key_observations": [
+          "由于后续取得的字符会继续插到字符串最前面，若剩余区间的结果不是平局，它会覆盖当前回合取得字符的比较；只有后续为平局时才比较本回合的两个字符。",
+          "把 Alice 和 Bob 的连续两次操作视为一轮后，区间长度减少 $2$，每轮只需枚举双方各取左端或右端的 $4$ 种组合。",
+          "用 $-1、0、1$ 分别表示 Alice 胜、平局、Bob 胜；对 Alice 的每个选择取 Bob 最坏结果的最大值，再在 Alice 的选择中取最优的最小值。"
+        ],
+        "solution_brief": "设 $dp[l][r]$ 表示只剩半开区间 $[l,r)$ 时的结果，空区间为平局。枚举 Alice、Bob 各取两端的组合，从长度更短的状态转移；若后继非平局则沿用其结果，否则按本轮取得字符比较。复杂度为 $O(n^2)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "博弈",
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、statement_text 及题目 tags 提炼；算法细节主要来自 editorial。",
+        "quality_flags": []
+      }
+    },
+    "1728C": {
+      "problem_key": "1728C",
+      "title": "Digital Logarithm",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1728/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/106805",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "59ce4690739b84975fc93aac30dbd240650262a2b2e8fc2a19e9d9423b279007",
+      "generated_at": "2026-09-27T22:40:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个各含 $n$ 个正整数的数组。每次可任选一个元素，将其替换为十进制位数；操作后允许分别重排两个数组，求使它们包含完全相同元素 multiset 所需的最少操作次数。",
+        "transformed_statement": "把问题看成两个可不断缩小元素的最大堆配对过程：每轮处理两边最大值，相等就匹配并移除，不等就缩小较大值，直到所有元素完成配对。",
+        "key_observations": [
+          "对两个数组当前最大值进行比较：相等时可直接配对删除，不相等时必须把较大的那个变小，否则较小值无法与更大值匹配；这保证了每一步都不会错过最优配对。",
+          "数字大于 $1$ 时应用一次数字对数必然变小，因此两数组中只出现一次的最大值不能等待其他数变大，只能继续缩小；相等的最大值则无需再操作。",
+          "一个数最多经历两次缩小：先从多位数变成一位数，再从一位数变成 $1$，所以总处理次数是线性的；用最大堆即可支持取最大、删除和插入。"
+        ],
+        "solution_brief": "将两数组分别放入最大堆，反复比较堆顶：相等则同时删除，否则对较大者应用一次数字对数并重新插入。堆空时累计的操作次数即答案，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial，tags 仅用于辅助确认数据结构和贪心方向。",
+        "quality_flags": []
+      }
+    },
+    "1728B": {
+      "problem_key": "1728B",
+      "title": "Best Permutation",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1728/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/106805",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ae34767e759b6254384b308e933035d9606c6799f8133eacdd372feaa10f4b88",
+      "generated_at": "2026-09-27T22:41:24+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$，构造一个包含 $1$ 到 $n$ 各一次的排列。令 $x=0$，从左到右处理排列元素：若当前 $x$ 小于元素则将其加入 $x$，否则把 $x$ 重置为 $0$；要求最终的 $x$ 最大。",
+        "transformed_statement": "把目标转化为让最后一个元素加入时的状态尽可能大：末步必须满足 $x_{n-1}<p_n$，所以最终值至多为 $2n-1$；随后分别按 $n$ 的奇偶构造达到该上界的排列。",
+        "key_observations": [
+          "最后一步若想得到非零值，必须满足 $x_{n-1}<p_n$；因此 $x_n=x_{n-1}+p_n\\le 2p_n-1\\le 2n-1$，这给出答案上界。",
+          "当 $n$ 为偶数时，排列 $[2,1,4,3,\\dots,n-2,n-3,n-1,n]$ 使状态交替归零，并在最后两步达到 $x_n=2n-1$。",
+          "当 $n$ 为奇数时，排列 $[1,3,2,5,4,\\dots,n-2,n-3,n-1,n]$ 具有相同效果，最后得到 $x_n=2n-1$。"
+        ],
+        "solution_brief": "先证明任意排列的最终值不超过 $2n-1$，再按 $n$ 的奇偶输出固定构造：偶数使用 $[2,1,4,3,\\dots,n-1,n]$，奇数使用 $[1,3,2,5,4,\\dots,n-1,n]$，两者都达到上界。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 中的排列目标与 editorial 中的状态上界及奇偶构造；tags 提供 constructive algorithms、greedy 分类。",
+        "quality_flags": []
+      }
+    },
+    "1728A": {
+      "problem_key": "1728A",
+      "title": "Colored Balls: Revisited",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1728/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/106805",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0af6cefc08b7d4dfb9fac204e1b704d8f4211f0eec5f41edd5b91f59e45c7282",
+      "generated_at": "2026-09-27T22:41:41+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "袋中有 $n$ 种颜色的球，第 $i$ 种有 $cnt_i$ 个，球总数为奇数。每次可以取出两种不同颜色各一个球，直到无法操作，求一种可能最终剩余的颜色。",
+        "transformed_statement": "把问题转化为保留一个候选颜色 $x$：先不动它，消除其他颜色之间的异色配对，使剩余非 $x$ 颜色至多一种；利用奇数总数保证其数量少于 $x$，再由 $x$ 将其完全消除。",
+        "key_observations": [
+          "选取初始数量最多的颜色 $x$ 并始终保留它；先在其他颜色之间不断配对移除，可将剩余的非 $x$ 颜色压缩到至多一种。",
+          "若此时还剩颜色 $y$，则其数量不超过初始的 $x$ 数量；由于剩余总数为奇数，二者不可能相等，因此 $y$ 的数量严格小于 $x$。",
+          "继续配对移除一个 $x$ 球和一个 $y$ 球即可消尽 $y$，所以初始数量最多的颜色一定可以作为最终剩余颜色。"
+        ],
+        "solution_brief": "对每组数据找出球数最多的颜色并输出其编号。保留该颜色不参与前期操作，先消去其他颜色之间的球；若还剩另一种颜色，再用最多颜色逐个配对消去它。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的操作规则和 editorial_text 的完整证明；题目分类参考 codeforces_tags。",
         "quality_flags": []
       }
     }
