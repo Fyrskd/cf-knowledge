@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2512,
+    "total_problems": 2519,
     "source_total_problems": 2520,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2512,
-    "with_editorial_brief": 2244,
-    "with_solution_brief": 2245,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2519,
+    "with_editorial_brief": 2251,
+    "with_solution_brief": 2252,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1574,
+    "ai_override_count": 1581,
     "primary_topic_count": 13,
-    "contest_count": 385,
+    "contest_count": 386,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 125,
-    "构造与贪心": 792,
-    "图论与网络流": 151,
+    "字符串": 127,
+    "构造与贪心": 794,
+    "图论与网络流": 152,
     "动态规划与状态设计": 218,
     "数论与同余": 274,
-    "组合计数与概率": 192,
+    "组合计数与概率": 193,
     "数据结构": 234,
     "几何": 58,
     "树结构": 137,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 139,
+    "基础实现与模拟": 140,
     "博弈": 89
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1302,
-    "ai_generated_partial_editorial": 51,
+    "ai_generated_with_editorial": 1308,
+    "ai_generated_partial_editorial": 52,
     "missing_editorial": 267,
     "manual_override": 891,
     "statement_derived": 1
@@ -63235,6 +63235,212 @@ window.CF_INSIGHTS_DATA = {
             "对最终约束图做拓扑排序，拓扑序直接赋予 $1$ 到 $n$；若检测到环则输出 $-1$，否则得到合法排列。"
           ],
           "solutionBrief": "将两类路径极值条件转为有向大小关系，利用重链分解和二进制区间虚点在 $O((n+m)\\log n)$ 内建图，再拓扑排序赋值；有环则无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1907,
+      "name": "Codeforces Round 913 (Div. 3)",
+      "date": "2023-12-05",
+      "url": "https://codeforces.com/contest/1907",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1907A",
+          "index": "A",
+          "slot": "A",
+          "title": "Rook",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1907/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/123012",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个 8×8 棋盘上的车的位置。车每次可沿所在行或列移动至少一格，棋盘为空且不受阻挡；要求输出该车一次移动能够到达的所有格子，顺序不限。",
+          "transformedStatement": "将位置表示为行列坐标：合法位置是“行坐标相同”或“列坐标相同”的格子集合，再删除起点自身；因此只需分别枚举固定行和固定列。",
+          "keyObservations": [
+            "空棋盘上车的可达位置恰好是与起点同行或同列的所有格子，因为移动方向只能水平或竖直且没有阻挡。",
+            "固定起点行遍历 8 个列，再固定起点列遍历 8 个行，并跳过起点本身，即可覆盖全部合法移动。",
+            "同行和同列分别贡献 7 个不同格子，因此每个测试用例恰有 14 个答案位置，避免重复输出起点即可。"
+          ],
+          "solutionBrief": "对每个起点分别枚举同一行的 8 个格子和同一列的 8 个格子，跳过起点后输出；空棋盘无需考虑阻挡，任意顺序均可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1907B",
+          "index": "B",
+          "slot": "B",
+          "title": "YetnotherrokenKeoard",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1907/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/123012",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定每次按下的大小写字母序列，其中普通字母会加入当前字符串；按下小写 `b` 会删除当前字符串中最右侧的小写字母，`B` 会删除最右侧的大写字母，若不存在则忽略。按顺序处理所有按键后，输出最终字符串。",
+          "transformedStatement": "将操作序列反向处理：`b`、`B` 不再实际删除字符，而是分别产生一个待跳过的小写或大写字母名额；从右向左遇到对应字母时优先消耗名额，未被跳过的字符收集后再反转。",
+          "keyObservations": [
+            "从右向左看，原操作删除某类字符的最右者，等价于遇到该类删除键后跳过左侧最近的尚未处理同类字母。",
+            "大小写删除彼此独立，因此可分别维护待删除的小写和大写字母数量，普通字母只与对应计数匹配。",
+            "反向扫描得到的保留字符顺序与最终字符串相反，统一反转收集结果即可；整个过程每个字符只处理一次。"
+          ],
+          "solutionBrief": "从字符串末尾向前扫描，用两个计数器记录待删除的小写和大写字母。遇到删除键就增加对应计数，遇到同类字母则优先消耗计数，否则保留；最后将保留字符反转输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1907C",
+          "index": "C",
+          "slot": "C",
+          "title": "Removal of Unattractive Pairs",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1907/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/123012",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定一个小写字母字符串，每次可以删除一对相邻且不同的字符，并可重复任意次。求经过这些删除后能达到的最短字符串长度。",
+          "transformedStatement": "问题可只按字符频次分析：删除相当于消去一个不同字符对；最终若无法继续删除，剩余字符必然全相同，答案由出现最多的字符能否被其他字符全部抵消决定。",
+          "keyObservations": [
+            "任何无法继续操作的字符串都只能由同一种字符组成，否则相邻变化处仍存在可删除的异字符对，因此终态结构只由剩余字符种类决定。",
+            "设出现次数最多的字符为 $M$，若 $M>\\lfloor n/2\\rfloor$，每次删除至多消去一个该字符，故至少剩下 $2M-n$ 个；将其他字符逐个与它配对可达到此下界。",
+            "若 $M\\le\\lfloor n/2\\rfloor$，非主导字符数量足以逐步配对所有主导字符，题解指出无论删除顺序都能最终删空，答案为 $0$。"
+          ],
+          "solutionBrief": "统计每个字符出现次数并令最大值为 $M$。若 $M>\\lfloor n/2\\rfloor$，答案为 $2M-n$；否则答案为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1907D",
+          "index": "D",
+          "slot": "D",
+          "title": "Jumping Through Segments",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1907/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/123012",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms"
+          ],
+          "statementBrief": "玩家从数轴上的 $0$ 出发，固定每步最多移动距离 $k$，第 $i$ 步结束时必须落在第 $i$ 个线段 $[l_i,r_i]$ 内，按顺序到达所有线段。求能够完成关卡的最小整数 $k$。",
+          "transformedStatement": "把每一步所有可能的落点压缩成一个可达区间：从上一状态向左右各扩展 $k$ 后，与当前线段相交；问题转化为寻找使所有这些区间始终非空的最小 $k$。",
+          "keyObservations": [
+            "若某个 $k$ 可以完成全部路段，那么更大的 $k$ 也可以沿用同一条路线，因此可行性关于 $k$ 单调，答案能用二分确定。",
+            "完成第 $i$ 段后若所有可达位置组成区间 $[L,R]$，下一步移动后可达范围恰为 $[L-k,R+k]$，再与第 $i+1$ 段取交集即可更新状态。",
+            "每次交集为空就说明当前 $k$ 无法继续；交集非空则保留整个区间，因为其中任一点都能作为后续移动的起点。"
+          ],
+          "solutionBrief": "对 $k$ 二分。判定时维护当前可到达位置区间，每步先向两端扩展 $k$，再与对应线段求交；交集为空则不可行，否则继续。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1907E",
+          "index": "E",
+          "slot": "E",
+          "title": "Good Triples",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1907/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/123012",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "number theory"
+          ],
+          "statementBrief": "给定非负整数 $n$，统计有序三元组 $(a,b,c)$ 的数量：三者均为非负整数且 $a+b+c=n$，同时三者数位和之和等于 $n$ 的数位和。交换三元组中的数会被视为不同答案。",
+          "transformedStatement": "把 $a+b+c=n$ 看成十进制竖式加法。数位和等式等价于整个加法过程中没有任何进位，于是每个数位独立选择三个数字，使其和等于 $n$ 的该位数字，再将各位方案数相乘。",
+          "keyObservations": [
+            "数位和相等当且仅当三数相加的每一位都没有进位，因此原条件可转化为逐位独立的无进位相加。",
+            "对数字 $x$，只需统计有序数字三元组 $(u,v,w)$ 满足 $u+v+w=x$；各位的选择互不影响，所以总数是这些计数的乘积。",
+            "三元组顺序有区别，故每一位必须统计有序组合，不能只统计无序拆分。"
+          ],
+          "solutionBrief": "预先统计每个 $x\\in[0,9]$ 的有序数字三元组数量 $cnt[x]$，逐位读取 $n$ 的十进制数字并将对应的 $cnt[x]$ 相乘；无进位条件保证各位独立。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1907F",
+          "index": "F",
+          "slot": "F",
+          "title": "Shift and Reverse",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1907/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/123012",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一个整数数组，可以反复使用题目规定的两类操作 Shift 和 Reverse，将数组变为非降序排列。要求输出所需的最少操作次数；如果无法完成则输出 $-1$。所给题面片段没有包含这两类操作的具体定义。",
+          "transformedStatement": "题解把问题重述为：在原数组及其反转形成的循环序列中寻找能与非降序排序数组匹配的循环移位，并在所有可行移位对应的操作方案中取最小代价。",
+          "keyObservations": [
+            "把原数组与其反转分别看作循环序列，排序结果只能对应这些序列的某个循环移位，从而把操作序列压缩为有限个候选移位。",
+            "将数组首尾相接并写出两遍，通过统计连续上升段和下降段，可以定位哪些循环移位能够变成非降序。",
+            "找到所有可行移位后，只需比较对应操作序列的长度并取最小值；若不存在可行移位则返回 $-1$。"
+          ],
+          "solutionBrief": "分别考察原数组和反转数组的循环移位。把数组写成两遍并统计上升、下降连续段，以找出能变为非降序的移位，再比较这些候选方案的操作数；没有候选时输出 $-1$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1907G",
+          "index": "G",
+          "slot": "G",
+          "title": "Lights",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1907/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/123012",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 盏灯和对应开关；按下开关 $i$ 会同时翻转灯 $i$ 与灯 $a_i$。可按任意顺序选择开关，要求用最少次数把所有灯关掉，并输出操作列表；若无法做到则输出 $-1$。",
+          "transformedStatement": "把每个开关视为函数图中的有向边 $i\\to a_i$，每个连通块由一个有向环及其外侧入树组成。先从入度为零的叶子强制消除入树，再把剩余环上的按键选择转化为固定一个状态后沿环传播的两种方案比较。",
+          "keyObservations": [
+            "重复按同一开关的效果会抵消，因此最优方案只需决定每个开关按一次或不按。",
+            "函数图的非环顶点可从入度为零的叶子逆序处理：叶子当前亮着时必须按其开关，否则不能再改变它。",
+            "删去所有非环顶点后，每个剩余部分都是一个有向环；固定环上任意一个开关是否按下，其余开关状态便可沿环唯一推导。",
+            "每个环只需比较两种初始选择的可行方案，若两者都无法使环归零，则整个测试用例无解。"
+          ],
+          "solutionBrief": "将每个开关建为边 $i\\to a_i$，先按入度为零的顶点顺序处理非环部分，亮灯叶子必须按下开关并传播影响；剩余环分别尝试两种初始按法，沿环确定其余选择，取操作数更少的方案。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
