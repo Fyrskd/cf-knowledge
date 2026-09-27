@@ -1,5 +1,16 @@
 [
   {
+    "id": 1750,
+    "name": "CodeTON Round 3 (Div. 1 + Div. 2, Rated, Prizes!)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1667745300,
+    "relativeTimeSeconds": 122794800,
+    "date": "2022-11-06"
+  },
+  {
     "id": 1748,
     "name": "Codeforces Round 833 (Div. 2)",
     "type": "CF",
