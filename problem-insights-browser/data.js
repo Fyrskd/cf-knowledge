@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2571,
+    "total_problems": 2579,
     "source_total_problems": 2580,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 2571,
-    "with_editorial_brief": 2303,
-    "with_solution_brief": 2304,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2579,
+    "with_editorial_brief": 2311,
+    "with_solution_brief": 2312,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1633,
+    "ai_override_count": 1641,
     "primary_topic_count": 13,
-    "contest_count": 394,
+    "contest_count": 395,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 130,
-    "构造与贪心": 809,
-    "图论与网络流": 154,
+    "构造与贪心": 813,
+    "图论与网络流": 155,
     "动态规划与状态设计": 222,
-    "数论与同余": 282,
+    "数论与同余": 283,
     "组合计数与概率": 198,
     "数据结构": 242,
     "几何": 60,
     "树结构": 139,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 141,
+    "基础实现与模拟": 143,
     "博弈": 91
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1359,
+    "ai_generated_with_editorial": 1367,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -68011,6 +68011,242 @@ window.CF_INSIGHTS_DATA = {
             "固定 $x$ 和 $c=\\lceil a/x\\rceil$ 后，英雄的 $a$ 落在区间 $[x(c-1)+1,xc]$；对每个区间只需取得健康值的最大、次大值，再乘以同一系数 $c$ 比较。"
           ],
           "solutionBrief": "按 $a$ 预处理每个区间上的健康值最大和次大值，用可合并的稀疏表进行区间查询。枚举 $x\\le\\max a$，按 $\\lceil a/x\\rceil$ 的商分组并维护全局最大、次大存活回合数，将两者差值更新到最大值对应的英雄；复杂度为题解给出的 $O(n+a\\log a)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1873,
+      "name": "Codeforces Round 898 (Div. 4)",
+      "date": "2023-09-21",
+      "url": "https://codeforces.com/contest/1873",
+      "type": "Div. 4",
+      "problemCount": 8,
+      "maxRating": 1700,
+      "problems": [
+        {
+          "key": "1873A",
+          "index": "A",
+          "slot": "A",
+          "title": "Short Sort",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1873/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/120634",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "有三张分别写着 `a`、`b`、`c` 的牌按任意顺序排成一行，最多可以交换其中两张牌一次，也可以不操作。对每个排列，判断能否变成 `abc`，能则输出 `YES`，否则输出 `NO`。",
+          "transformedStatement": "把题目看成判断一个三元素排列与目标排列 `abc` 的交换距离是否不超过一次；由于排列总数只有 $6$ 种，也可直接检查每种可能或枚举一次交换后的结果。",
+          "keyObservations": [
+            "三张牌只有 $3!=6$ 种排列，其中只有 `bca` 和 `cab` 无法通过一次交换变成 `abc`，因此可直接按字符串判断。",
+            "也可统计处于错误位置的字符数：一次交换最多同时修正两个位置，所以错误位置数不超过 $2$ 当且仅当可以完成目标变换。",
+            "枚举三对位置并交换后检查是否得到 `abc`，能够覆盖“无需操作”和“一次交换”两种情况，且实现直接。"
+          ],
+          "solutionBrief": "对每个长度为 $3$ 的排列直接判断：若字符串是 `bca` 或 `cab` 输出 `NO`，其余情况输出 `YES`；也可以枚举所有位置对交换并检查结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1873B",
+          "index": "B",
+          "slot": "B",
+          "title": "Good Kid",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1873/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/120634",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个由 $n$ 个数字组成的数组，必须恰好选择一个元素并将其加 $1$，其余元素保持不变。要求输出所有合法选择中数组元素乘积的最大值。",
+          "transformedStatement": "把一次操作视为在 $n$ 个候选数组之间选择：第 $i$ 个候选仅将 $a_i$ 替换为 $a_i+1$，目标是在这些候选乘积中取最大值；进一步可将选择位置缩减为最小元素的位置。",
+          "keyObservations": [
+            "只修改一个元素时，可分别计算把 $a_i$ 变为 $a_i+1$ 后的整体乘积，取所有候选值的最大值即可。",
+            "当选择非零元素时，原乘积增加量与 $1/a_i$ 成正比，因此增大最小元素更有利；若存在零元素，增大零元素也不会劣于增大正数元素。",
+            "由于每个测试只有至多 $9$ 个元素，直接枚举被加一的位置并重新计算乘积，复杂度 $O(n^2)$ 已足够。"
+          ],
+          "solutionBrief": "枚举每个位置作为被加一的元素，计算修改后的数组乘积并取最大值；也可利用“增大最小元素最优”直接修改最小值后求乘积。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1873C",
+          "index": "C",
+          "slot": "C",
+          "title": "Target Practice",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1873/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/120634",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "每组测试给出一个 $10\\times10$ 网格，`X` 表示箭，`.` 表示空位。网格由五个同心环组成，最外层到中心分别值 $1$ 到 $5$；需要计算所有箭命中位置的总分。",
+          "transformedStatement": "将靶盘抽象成一个固定的 $10\\times10$ 分值矩阵：每个位置预先对应其所在环的分值。问题转化为遍历网格，对所有 `X` 位置求对应矩阵值之和。",
+          "keyObservations": [
+            "每个格子的得分只由它到四条边的最小距离决定，距离为 $d$ 时环值得分为 $d+1$，无需分别判断五个环。",
+            "目标盘面的分值布局固定为对称矩阵，预先写出矩阵后，遍历所有格子并只累加字符为 `X` 的位置即可。",
+            "所有测试用例都只有 $10\\times10$ 个格子，因此逐格处理的固定规模开销可视为每组 $O(1)$。"
+          ],
+          "solutionBrief": "预先构造或直接写出 $10\\times10$ 的环形分值矩阵。逐个读取每个格子，若为 `X`，就把该位置的分值加入答案；每组测试输出总分。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1873D",
+          "index": "D",
+          "slot": "D",
+          "title": "1D Eraser",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1873/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/120634",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$、由黑格和白格组成的纸带，每次可以选择连续的 $k$ 个格子并把它们全部变白，操作可重复且已白格也可被覆盖。要求求出清除所有黑格所需的最少操作次数。",
+          "transformedStatement": "把一次操作看作覆盖一个长度为 $k$ 的连续区间，并从左到右维护尚未处理的位置：每次遇到最左黑格，就用一个包含它且尽量向右延伸的区间覆盖，随后跳过该区间覆盖的后续位置。",
+          "keyObservations": [
+            "从左到右处理时，当前最左侧的黑格必须被某次操作覆盖；将长度为 $k$ 的操作尽量从该位置向右覆盖，不会比向左移动更差。",
+            "处理最左黑格后，接下来的 $k-1$ 个位置都已被这次操作变白，因此扫描位置可以直接跳过这 $k-1$ 个格子。",
+            "操作的先后顺序不影响最终结果，所以每次固定覆盖当前最左黑格即可；任何向右的黑格若已是白色，就没有必要单独从那里开始操作。"
+          ],
+          "solutionBrief": "从左到右扫描字符串。遇到黑格就增加一次操作，并跳过后面 $k-1$ 个位置，表示本次橡皮擦会将这段一起变白；否则继续向右移动一格，最终计数即为最少操作数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1873E",
+          "index": "E",
+          "slot": "E",
+          "title": "Building an Aquarium",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1873/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/120634",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 根高度为 $a_i$ 的柱子，可以向每根柱子上方加水，使整个水面达到统一高度 $h$；低于 $h$ 的柱子需要补足差值，高于 $h$ 的柱子无需加水。总水量不能超过 $x$，要求最大化可达到的水面高度 $h$。",
+          "transformedStatement": "把每个候选高度转化为资源判定：达到 $h$ 所需的总水量为 $W(h)=\\sum_i\\max(h-a_i,0)$，目标变为寻找满足 $W(h)\\le x$ 的最大整数 $h$。",
+          "keyObservations": [
+            "固定目标高度 $h$ 后，第 $i$ 根柱子只需补水量 $\u00024\\max(h-a_i,0)\\u00024$，逐列求和即可判断是否超出水量上限。",
+            "所需水量随 $h$ 增大而单调不减，因此“高度 $h$ 是否可行”具有单调性，可以寻找最大的可行高度。",
+            "当某个高度可行时，所有更低高度也可行；二分过程中只需根据总补水量调整边界，无需实际构造水面。"
+          ],
+          "solutionBrief": "对候选高度 $h$ 遍历所有柱子，累加 $\u00024\\max(h-a_i,0)\\u00024$。若总水量不超过 $x$ 则高度可行；利用可行性的单调性二分最大的可行 $h$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1873F",
+          "index": "F",
+          "slot": "F",
+          "title": "Money Trees",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1873/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/120634",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定每棵树的果实数 $a_i$ 和高度 $h_i$，选择一个连续子数组；相邻树必须满足前一棵高度能被后一棵高度整除，且收集的果实总数不超过 $k$。求满足条件的连续子数组最大长度，若不存在则输出 $0$。",
+          "transformedStatement": "把每个起点 $l$ 的整除条件压缩为最远合法终点 $len_l$。对固定长度 $s$，只需检查是否存在 $len_l\\ge l+s-1$ 且对应区间和不超过 $k$，再利用长度可行性的单调性二分答案。",
+          "keyObservations": [
+            "对每个起点 $l$，满足相邻高度整除关系的合法区间一定是从 $l$ 开始、终点不超过某个最大位置 $len_l$ 的前缀，因此只需记录这个最远终点。",
+            "固定长度 $s$ 后，起点 $l$ 可行当且仅当 $len_l\\ge l+s-1$ 且区间果实和不超过 $k$，区间和可由前缀和在 $O(1)$ 时间内得到。",
+            "若存在长度为 $s$ 的合法区间，则从其中截取更短的连续子区间仍满足整除关系，且果实数量不会增加，因此可行长度具有单调性，可以二分最大长度。"
+          ],
+          "solutionBrief": "先求每个起点在高度整除条件下能延伸到的最远终点，再用前缀和判断固定长度是否存在果实总数不超过 $k$ 的区间。由于可行长度单调，对答案二分，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1873G",
+          "index": "G",
+          "slot": "G",
+          "title": "ABBC or BACB",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1873/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/120634",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定只含 $A、B$ 的字符串。每次可把相邻的 $AB$ 替换为 $BC$，或把相邻的 $BA$ 替换为 $CB$，每次获得一枚硬币，并可重复操作；要求最多获得多少枚硬币。",
+          "transformedStatement": "将 $A$ 看作待覆盖的位置、$B$ 看作只能沿一个方向移动的角色、$C$ 看作不可穿过的障碍；每个 $B$ 会覆盖一侧的一整段连续 $A$，目标是最大化被覆盖的 $A$ 总数。",
+          "keyObservations": [
+            "把 $AB\\to BC$ 和 $BA\\to CB$ 看成一个 $B$ 吃掉相邻 $A$ 并向对应方向移动；变成的 $C$ 会阻断后续移动。",
+            "每个 $B$ 最终只能选择左侧或右侧的一段连续 $A$，不能同时覆盖两侧，因此问题转化为用各个 $B$ 覆盖尽可能多的 $A$ 分组。",
+            "若字符串首尾至少一端是 $B$，或存在相邻的 $BB$，则可以安排每个 $B$ 向合适方向移动并覆盖全部 $A$。",
+            "只有首尾都是 $A$ 且不存在相邻 $B$ 时，$A$ 分组数比 $B$ 多一组，必有一组无法覆盖；应舍弃最小的 $A$ 分组。"
+          ],
+          "solutionBrief": "扫描字符串统计 $A$ 总数及每段连续 $A$ 的长度。若无 $B$，答案为 $0$；若首尾有 $B$ 或出现 $BB$，答案为全部 $A$ 数；否则答案为全部 $A$ 数减去最短连续 $A$ 段。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1873H",
+          "index": "H",
+          "slot": "H",
+          "title": "Mad City",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1873/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/120634",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "博弈",
+            "树结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dsu",
+            "games",
+            "graphs",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "给定一个有 $n$ 个建筑和 $n$ 条双向道路的连通简单图，Marcel 从 $a$ 出发、Valeriu 从 $b$ 出发；每回合两人同时选择前往相邻建筑或原地停留，且 Valeriu 能预知 Marcel 下一步。判断 Valeriu 是否能在永远不与 Marcel 同点或同路相遇的情况下逃脱。",
+          "transformedStatement": "把连通且点边数相等的图视为“树加一条边”，其中只有一个环；问题转化为判断 Valeriu 是否能比 Marcel 更早到达他从 $b$ 通往该环的入口点。进入环后，Valeriu 再利用环上的分支选择持续躲避。",
+          "keyObservations": [
+            "图中有 $n$ 个点和 $n$ 条边且连通，因此恰好只有一个环；Valeriu 从 $b$ 到达环的入口是逃生的关键位置。",
+            "若 Marcel 与 Valeriu 同时到达或更早到达该入口，Valeriu 无法保证逃脱；因此只需比较两人到入口的最短距离。",
+            "Valeriu 一旦先进入环，就能利用环上两个方向并根据 Marcel 的下一步选择持续避开追捕。",
+            "若 $a=b$，两人一开始已经相遇，答案必为 NO。"
+          ],
+          "solutionBrief": "从 $b$ 出发确定其通往唯一环的入口点，计算 $a$、$b$ 到该点的距离；若 $b$ 严格更早到达且两人不在同一点，输出 YES，否则输出 NO。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
