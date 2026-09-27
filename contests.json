@@ -1,5 +1,16 @@
 [
   {
+    "id": 1772,
+    "name": "Codeforces Round 839 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1671374100,
+    "relativeTimeSeconds": 119161907,
+    "date": "2022-12-18"
+  },
+  {
     "id": 1763,
     "name": "Codeforces Round 840 (Div. 2) and Enigma 2022 - Cybros LNMIIT",
     "type": "CF",
