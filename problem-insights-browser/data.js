@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2947,
+    "total_problems": 2946,
     "source_total_problems": 2948,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 2947,
-    "with_editorial_brief": 2675,
-    "with_solution_brief": 2676,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 2946,
+    "with_editorial_brief": 2674,
+    "with_solution_brief": 2675,
     "missing_editorial_brief": 271,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2009,
+    "ai_override_count": 2008,
     "primary_topic_count": 13,
     "contest_count": 448,
     "rating_min": 800,
@@ -49,7 +49,7 @@ window.CF_INSIGHTS_DATA = {
     "数论与同余": 319,
     "数据结构": 277,
     "字符串": 156,
-    "动态规划与状态设计": 247,
+    "动态规划与状态设计": 246,
     "交互": 95,
     "组合计数与概率": 232,
     "图论与网络流": 178,
@@ -60,7 +60,7 @@ window.CF_INSIGHTS_DATA = {
   },
   "statusCounts": {
     "missing_editorial": 271,
-    "ai_generated_with_editorial": 1724,
+    "ai_generated_with_editorial": 1723,
     "ai_generated_partial_editorial": 60,
     "manual_override": 891,
     "statement_derived": 1
@@ -333,7 +333,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-25",
       "url": "https://codeforces.com/contest/2267",
       "type": "Div. 2",
-      "problemCount": 8,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
         {
@@ -534,31 +534,6 @@ window.CF_INSIGHTS_DATA = {
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2267G",
-          "index": "G",
-          "slot": "G",
-          "title": "New LRT",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2267/problem/G",
-          "editorialUrl": "https://codeforces.com/blog/entry/157126",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [],
-          "originalTags": [
-            "dp"
-          ],
-          "statementBrief": "给定起点 $0$、终点 $n$ 和费用数组 $c$。每次在位置 $i$ 选择正整数 $x$，要求 $m\\&x=x$，移动到 $i+x$ 并支付 $c_x$；所有步长和为 $n$ 的移动序列都算不同，求全部序列费用总和对 $10^9+7$ 取模。",
-          "transformedStatement": "把每条行程视为由允许步长组成的有序组合：先统计每个总位移的组合数，再统计所有组合的步数加一。固定步长 $x$ 时，它在总位移 $n$ 的行程中的出现次数等于位移 $n-x$ 的每条行程可插入该步的 $p+1$ 个位置。",
-          "keyObservations": [
-            "允许的步长恰好是二进制掩码 $m$ 的正子掩码，因此按步长是否为 $2^j$ 分层，可用 $st[i][j]$ 汇总所有小于 $2^j$ 的转移，避免逐个枚举步长。",
-            "路径数满足按最后一步分类的递推；利用 $st$ 后，$dp[i]$ 能在 $O(\\log n)$ 时间内得到，从而统计所有到达位置 $i$ 的路径。",
-            "固定步长 $x$ 后，包含该步的路径删去一次 $x$ 就变成位移 $n-x$ 的路径；若原路径有 $p$ 步，则可将 $x$ 插入 $p+1$ 个位置，因此其总贡献由所有此类路径的 $p+1$ 之和决定。",
-            "令 $cnt[i]$ 表示位移为 $i$ 的所有路径中 $p+1$ 的总和，则按最后一步转移后再加上 $dp[i]$，即可递推这些插入位置数量，并将答案写成 $\\sum_{x\\in I}c_x\\,cnt[n-x]$。"
-          ],
-          "solutionBrief": "先用分层辅助数组优化路径数 DP，得到所有 $dp[i]$；再递推路径步数权重 $cnt[i]$。每个允许步长 $x$ 的总贡献为 $c_xcnt[n-x]$，累加后取模，整体复杂度为 $O(n\\log n)$。",
-          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
