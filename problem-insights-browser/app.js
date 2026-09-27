@@ -7,6 +7,7 @@
   const LEGACY_ACCOUNT_CACHE_KEY = "cf-insights-account-cache-v1";
   const CF_STATUS_ENDPOINT = "https://codeforces.com/api/user.status";
   const STATUS_PAGE_SIZE = 10000;
+  const ACCOUNT_AUTO_REFRESH_INTERVAL_MS = 30 * 60 * 1000;
   const state = {
     topic: "all",
     minRating: "",
@@ -155,6 +156,16 @@
     const solvedCount = allProblems.filter((problem) => solvedHandlesFor(problem.key).length > 0).length;
     if (!state.accountHandles.length) return "绑定账号";
     return `账号 ${state.accountHandles.length} · 已过 ${solvedCount}`;
+  }
+
+  function accountCacheIsFresh(handle) {
+    const entry = state.accountCache[handleKey(handle)];
+    const fetchedAt = Date.parse(entry?.fetchedAt || "");
+    return Number.isFinite(fetchedAt) && Date.now() - fetchedAt < ACCOUNT_AUTO_REFRESH_INTERVAL_MS;
+  }
+
+  function accountsNeedingRefresh() {
+    return state.accountHandles.filter((handle) => !accountCacheIsFresh(handle));
   }
 
   function sleep(milliseconds) {
@@ -317,14 +328,16 @@
     elements.addAccountButton.disabled = state.accountSyncing;
   }
 
-  async function syncAccounts() {
+  async function syncAccounts(force = false) {
     if (!state.accountHandles.length || state.accountSyncing) return;
+    const handles = force ? state.accountHandles : accountsNeedingRefresh();
+    if (!handles.length) return;
     state.accountSyncing = true;
     state.accountMessage = "正在从 Codeforces 同步通过记录……";
     renderAccountControls();
     render();
     const failures = [];
-    for (const handle of state.accountHandles) {
+    for (const handle of handles) {
       state.accountMessage = `正在同步 ${handle}……`;
       renderAccountControls();
       try {
@@ -337,7 +350,7 @@
     state.accountSyncing = false;
     state.accountMessage = failures.length
       ? `部分账号同步失败：${failures.join("；")}`
-      : `同步完成：已检查 ${state.accountHandles.length} 个账号。`;
+      : `同步完成：已检查 ${handles.length} 个账号。`;
     saveAccountState();
     renderAccountControls();
     render();
@@ -662,7 +675,10 @@
       renderAccountControls();
       render();
     });
-    elements.syncAccountsButton?.addEventListener("click", syncAccounts);
+    elements.syncAccountsButton?.addEventListener("click", () => syncAccounts(true));
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "visible") syncAccounts();
+    });
     for (const button of elements.navButtons) {
       button.addEventListener("click", () => {
         state.view = button.dataset.view;
@@ -675,4 +691,5 @@
   renderAccountControls();
   bindEvents();
   render();
+  syncAccounts();
 })();
