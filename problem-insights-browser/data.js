@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3045,
+    "total_problems": 3051,
     "source_total_problems": 3052,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3045,
-    "with_editorial_brief": 2767,
-    "with_solution_brief": 2768,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3051,
+    "with_editorial_brief": 2773,
+    "with_solution_brief": 2774,
     "missing_editorial_brief": 277,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2107,
+    "ai_override_count": 2113,
     "primary_topic_count": 13,
-    "contest_count": 463,
+    "contest_count": 464,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 968,
-    "几何": 74,
+    "构造与贪心": 970,
+    "组合计数与概率": 239,
+    "图论与网络流": 187,
+    "几何": 75,
     "字符串": 163,
-    "图论与网络流": 185,
     "基础实现与模拟": 183,
     "数据结构": 284,
     "数论与同余": 328,
-    "组合计数与概率": 238,
     "动态规划与状态设计": 257,
     "交互": 96,
     "树结构": 151,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1812,
+    "ai_generated_with_editorial": 1818,
     "ai_generated_partial_editorial": 64,
     "missing_editorial": 277,
     "manual_override": 891,
@@ -94037,6 +94037,202 @@ window.CF_INSIGHTS_DATA = {
             "最小点覆盖包含最大匹配的每个端点之一，因此图中每条边都与待删除的点覆盖相交；这保证了预先建立的顶点—匹配边对应关系在后续删除中不会产生新的冲突。"
           ],
           "solutionBrief": "先用 Dinic 等方法求最大匹配，再由匹配构造最小点覆盖。预存点覆盖顶点与其唯一匹配边的对应关系；类型 1 删除一个点覆盖顶点并同步删边，类型 2 按当前匹配输出，从而无需重建匹配。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1715,
+      "name": "Codeforces Round 816 (Div. 2)",
+      "date": "2022-08-20",
+      "url": "https://codeforces.com/contest/1715",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1715A",
+          "index": "A",
+          "slot": "A",
+          "title": "Crossmarket",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1715/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/104261",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 网格，Stanley 从左上角到右下角，Megan 从左下角到右上角。移动到相邻格消耗 1 点能量；Megan 每到一个尚无门户的格子就留下门户，任何人在有门户的格子上可消耗 1 点传送到任意其他门户格，求两人完成各自路线的最小总能量。",
+          "transformedStatement": "由于两人的行动时序不影响能量，可先固定 Megan 的行走路线来布置门户，再计算 Stanley 从起点到终点时接近门户、传送和离开门户的最小代价；核心是把 Megan 的路线改造成只向右或向上移动，并据此建立总下界。",
+          "keyObservations": [
+            "两人的行动顺序可以重排为 Megan 先完成路线并留下所有门户，再让 Stanley 行动，因此可分别分析门户布置和使用代价。",
+            "Megan 的路线可以改造成始终不向左或向下移动；这种平移至右侧的改造至少减少一次自身移动，且至多增加 Stanley 一次移动，所以不会增加总能量。",
+            "Megan 因而至少需要 $n+m-2$ 次移动；Stanley 的移动与传送合计至少为 $n+m-\\max(n,m)$，两者相加得到总下界 $n+m+\\min(n,m)-2$。",
+            "当 $n=m=1$ 时两人的起点都等于终点，无需移动；其余情况题解构造可达到上述下界。"
+          ],
+          "solutionBrief": "利用行动顺序可交换性，先让 Megan 以不向左、不过度向下的路线留下门户，再让 Stanley 使用最有利的门户。下界与构造相符，答案为单格时 $0$，否则为 $n+m+\\min(n,m)-2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1715B",
+          "index": "B",
+          "slot": "B",
+          "title": "Beautiful Array",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1715/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/104261",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的非负整数数组、除数 $k$、目标美丽值 $b$ 和目标总和 $s$。数组美丽值是各元素整除 $k$ 后所得商的总和；需要构造满足这两个目标的数组，若不存在则输出 $-1$。",
+          "transformedStatement": "把每个元素视为 $k$ 的整数倍与一个小于 $k$ 的余数之和：整数倍部分决定美丽值，余数部分只负责在不改变美丽值的前提下补足数组总和。",
+          "keyObservations": [
+            "将每个元素写成商与余数之和后，所有商的总和固定为美丽值 $b$，因此数组总和至少为 $kb$。",
+            "每个余数都小于 $k$，余数总和最多为 $(k-1)n$，所以可行性的必要条件是 $kb\\le s\\le kb+(k-1)n$。",
+            "把 $kb$ 放入一个位置后，仅向各位置增加不超过 $k-1$ 的数，所有商不变，而增加量恰好补足总和 $s$，因此同时保证美丽值和数组总和。"
+          ],
+          "solutionBrief": "先判断 $kb\\le s\\le kb+(k-1)n$。可行时将一个元素设为 $kb$，再依次向各元素加入不超过 $k-1$ 的剩余量，直到总和达到 $s$；否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1715C",
+          "index": "C",
+          "slot": "C",
+          "title": "Monoblock",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1715/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/104261",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组，子数组的 awesomeness 是将其划分为连续且每块元素相同的最少块数。每次查询把位置 $i$ 的值改为 $x$，修改立即生效；每次修改后，输出所有非空子数组 awesomeness 之和。",
+          "transformedStatement": "把每个子数组的块数重写为 $1$ 加上其中相邻不同的位置数。于是答案由所有子数组的基础数量和每条相邻边界被多少子数组跨过的贡献组成，点修改只影响该位置两侧的边界。",
+          "keyObservations": [
+            "任意子数组的块数等于 $1$ 加上其中相邻元素不同的位置数，因此可把所有子数组的块数总和拆成基础项与各个“连接点”的独立贡献。",
+            "若原数组位置 $i$ 与 $i+1$ 不同，则包含这条连接点的子数组有 $i\\times(n-i)$ 个，所以该位置对总答案贡献固定为 $i(n-i)$。",
+            "修改位置 $i$ 只可能改变相邻的两条连接点 $(i-1,i)$ 和 $(i,i+1)$；先删除旧状态贡献、更新元素，再加入新状态贡献即可。"
+          ],
+          "solutionBrief": "先将答案初始化为所有子数组的基础贡献 $n(n+1)/2$，再为每个相邻不同的位置 $i$ 加上 $i(n-i)$。每次修改只检查边界 $i-1$ 与 $i$，分别移除旧贡献并加入新贡献，整体预处理 $O(n)$、每次查询 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1715D",
+          "index": "D",
+          "slot": "D",
+          "title": "2+ doors",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1715/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/104261",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "2-sat",
+            "bitmasks",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的非负整数数组未知值，以及 $q$ 条约束 $(i,j,x)$，要求满足 $a_i\\,|\\,a_j=x$，其中 $|$ 是按位或。保证至少存在一个解，输出所有可行数组中字典序最小的一个。",
+          "transformedStatement": "将每个整数拆成 30 个独立的布尔位问题：图的顶点代表数组元素，边标号表示两端该位的 OR；逐位求字典序最小的 $0/1$ 顶点赋值，再把各位重新合成为整数。",
+          "keyObservations": [
+            "按二进制位独立处理，因为 OR 的每一位互不影响；逐位得到的最小结果组合后仍是整体字典序最小。",
+            "对某一位，标号为 $0$ 的边强制其两个端点都为 $0$；这一步直接确定所有必须为 $0$ 的顶点。",
+            "标号为 $1$ 的边只禁止两个端点同时为 $0$，因此按下标尝试置零时，只需检查是否存在已为 $0$ 的相邻端点。",
+            "处理当前顶点时保留为 $1$ 等价于放弃当前位置的置零机会，不会妨碍后续顶点继续取更小值，从而保证逐点贪心的字典序最优性。"
+          ],
+          "solutionBrief": "对每个二进制位单独求解：先将所有标号该位为 $0$ 的边的端点置零，再按下标尝试把顶点置零；若会与已为零的顶点形成标号为 $1$ 的边则保留为一。重复处理 30 位并合并结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1715E",
+          "index": "E",
+          "slot": "E",
+          "title": "Long Way Home",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1715/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/104261",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计",
+            "几何"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "geometry",
+            "graphs",
+            "greedy",
+            "shortest paths"
+          ],
+          "statementBrief": "有 $n$ 个城市，城市间有双向普通道路，通行时间给定；任意两城间还可乘航班，城市 $u,v$ 间耗时为 $(u-v)^2$。从城市 $1$ 出发，最多乘坐 $k$ 次航班，求到达每个城市的最短时间。",
+          "transformedStatement": "把状态按已使用的航班次数分层：每层先通过一次代价为 $(u-v)^2$ 的全对城市转移加入航班，再通过普通道路的最短路传播结果，从而得到下一层距离。",
+          "keyObservations": [
+            "限制航班次数后，可按已使用的航班层数逐层计算；从第 $k$ 层到第 $k+1$ 层只需新增一次航班转移。",
+            "一次航班到达城市 $v$ 的代价是 $d_{old}[u]+(u-v)^2$，因此对所有 $u$ 的转移可用凸包优化求出，而不必枚举所有城市对。",
+            "完成航班转移后再运行一次 Dijkstra，能够把最后一次航班之后经过任意普通道路的路径全部纳入，并保持当前层答案最短。"
+          ],
+          "solutionBrief": "令每层表示至多使用对应数量航班的最短距离。每轮先用凸包优化计算 $d_{new}[v]=\\min_u(d_{old}[u]+(u-v)^2)$，再以普通道路为边运行 Dijkstra；重复 $k$ 轮，复杂度为 $O(k(m\\log n+n))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1715F",
+          "index": "F",
+          "slot": "F",
+          "title": "Crop Squares",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1715/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/104261",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "交互",
+            "构造与贪心",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "geometry",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的矩形田地，其中有一个边平行于坐标轴的 $1\\times1$ 中毒方块。每次可提交一个无自交、面积为正的多边形，获得它与中毒方块的交面积，最多查询 5 次，要求确定方块左下角坐标。",
+          "transformedStatement": "不直接定位方块，而是构造两个特殊的锯齿多边形：一个让交面积只编码方块的 y 坐标，另一个让交面积只编码 x 坐标；两次面积查询分别反解两个坐标。",
+          "keyObservations": [
+            "第一种锯齿多边形沿 x 方向以 1 为周期，因此交面积与方块的 x 坐标无关，只由 y 坐标决定。",
+            "第一种多边形与单位方块的交面积满足 $s=(y+0.5)/m$，所以可直接恢复下边界坐标 $y=ms-0.5$。",
+            "第二种锯齿多边形沿 y 方向以 1 为周期，因此交面积与方块的 y 坐标无关，只由 x 坐标决定。",
+            "第二次查询满足 $s=(x+0.5)/n$，据此可恢复左边界坐标 $x=ns-0.5$，两次查询即可定位方块。"
+          ],
+          "solutionBrief": "构造两个互相转置的锯齿状简单多边形。第一次查询用面积公式 $y=ms-0.5$ 求方块下边界，第二次用 $x=ns-0.5$ 求左边界；总共只需两次查询。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
