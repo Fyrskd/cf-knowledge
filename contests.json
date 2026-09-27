@@ -869,6 +869,17 @@
     "date": "2023-11-07"
   },
   {
+    "id": 1899,
+    "name": "Codeforces Round 909 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1700231700,
+    "relativeTimeSeconds": 90266887,
+    "date": "2023-11-17"
+  },
+  {
     "id": 1898,
     "name": "Codeforces Round 910 (Div. 2)",
     "type": "CF",
