@@ -1463,6 +1463,17 @@
     "date": "2024-08-30"
   },
   {
+    "id": 2008,
+    "name": "Codeforces Round 970 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1725201300,
+    "relativeTimeSeconds": 65282619,
+    "date": "2024-09-01"
+  },
+  {
     "id": 2009,
     "name": "Codeforces Round 971 (Div. 4)",
     "type": "ICPC",
