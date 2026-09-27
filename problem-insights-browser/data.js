@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2918,
+    "total_problems": 2925,
     "source_total_problems": 2926,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2918,
-    "with_editorial_brief": 2654,
-    "with_solution_brief": 2655,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2925,
+    "with_editorial_brief": 2661,
+    "with_solution_brief": 2662,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1980,
+    "ai_override_count": 1987,
     "primary_topic_count": 13,
-    "contest_count": 444,
+    "contest_count": 445,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 921,
-    "组合计数与概率": 230,
+    "组合计数与概率": 231,
+    "构造与贪心": 924,
+    "动态规划与状态设计": 246,
+    "数据结构": 275,
     "图论与网络流": 178,
-    "数据结构": 274,
     "数论与同余": 315,
     "几何": 70,
     "树结构": 149,
-    "动态规划与状态设计": 244,
     "博弈": 96,
     "字符串": 155,
     "交互": 93,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1703,
+    "ai_generated_with_editorial": 1710,
     "ai_generated_partial_editorial": 60,
     "missing_editorial": 263,
     "manual_override": 891,
@@ -90266,6 +90266,216 @@ window.CF_INSIGHTS_DATA = {
             "在 DFS 序上用树状数组支持子树贡献的加入与点值读取；结合倍增求祖先和 LCA，每个距离层的处理耗时 $O(\\log n)$，单次原操作耗时 $O(d\\log n)$。"
           ],
           "solutionBrief": "选根并按距离层记录子树贡献，把路径邻域更新借助 LCA 拆成至多 $O(d)$ 个祖先链或单点操作。DFS 序树状数组维护这些操作，倍增支持祖先定位与 LCA；总复杂度为 $O(n\\log n+md\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1743,
+      "name": "Educational Codeforces Round 137 (Rated for Div. 2)",
+      "date": "2022-10-17",
+      "url": "https://codeforces.com/contest/1743",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1743A",
+          "index": "A",
+          "slot": "A",
+          "title": "Password",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1743/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/108153",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "密码是允许以 $0$ 开头的四位数字序列，恰好包含两种不同数字，且每种出现两次。给出若干明确未使用的数字，要求统计满足条件的所有密码序列数量。",
+          "transformedStatement": "将密码构造成两步：从未禁止数字中选出两种，再从四个位置中选两个放置第一种数字，剩余位置放第二种数字。",
+          "keyObservations": [
+            "密码中使用的两种数字必须都来自未被禁止的 $10-n$ 个数字，因此选数字的方式为 $C(10-n,2)$。",
+            "选定两种数字后，只需选择其中一种出现的两个位置，剩余位置放另一种，位置安排数为 $C(4,2)$。",
+            "每个合法密码都唯一对应一组数字和一种位置选择，因此总数可直接相乘，不会重复计数。"
+          ],
+          "solutionBrief": "先从未禁止的数字中选择两种，再选择其中一种数字出现的两个位置；其余位置放另一种数字。答案为 $C(10-n,2)\\times C(4,2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1743B",
+          "index": "B",
+          "slot": "B",
+          "title": "Permutation Value",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1743/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/108153",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$，构造一个包含 $1$ 到 $n$ 各一次的排列。排列的值是其中连续子段里同样包含从 $1$ 到该子段长度所有数字的子段数量，要求使该值最小。",
+          "transformedStatement": "把目标转化为排除所有额外的合法连续子段：利用任何合法子段的元素范围限制，让 $1$ 出现在开头、$n$ 紧随其后，使除单点 $[1]$ 和完整排列外均不可能成为排列。",
+          "keyObservations": [
+            "任意排列都至少计入单元素子段 $[1]$ 和整个排列，因此答案下界为 $2$。",
+            "将排列的前两个数固定为 $1,n$ 后，唯一不含 $n$ 但含 $1$ 的子段是 $[1]$，从而排除了其他以 $1$ 开头的合法子段。",
+            "任何包含 $n$ 的真子段都不可能是排列：若长度小于 $n$，其元素范围应为 $1$ 到该长度，却包含了 $n$；因此只有整个排列还能贡献一次。"
+          ],
+          "solutionBrief": "先输出 $1,n$，再按任意顺序输出剩余数字。这样只有 $[1]$ 和整个排列是合法子段，达到不可低于的值 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1743C",
+          "index": "C",
+          "slot": "C",
+          "title": "Save the Magazines",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1743/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/108153",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 个排成一列的箱子，第 $i$ 个箱子有 $a_i$ 本杂志，并标记初始是否有盖。每个初始有盖箱子的盖子至多向左移动一格或保持不动，所有移动同时进行且每个盖子最多移动一次；求最终被盖住的箱子中杂志数量的最大值。",
+          "transformedStatement": "把序列按“一个无盖箱子及其后连续的有盖箱子”分段处理：该段的盖子数量比箱子少一个，等价于从这段中选一个箱子不覆盖，其余全部覆盖；单独的连续有盖前缀则全部覆盖。",
+          "keyObservations": [
+            "从左到右处理时，开头连续的有盖箱子无需移动即可全部保留，因此可以直接计入答案并移除。",
+            "一个无盖箱子后接一段连续有盖箱子时，这段共有比盖子多一个箱子，最终恰好有一个箱子无盖，且可选择其中任意一个。",
+            "因此对“一个无盖箱子加其后的连续有盖段”，应保留该段总和减去最小值；若后面没有有盖箱子，则无盖箱子只能放弃。"
+          ],
+          "solutionBrief": "从左到右扫描：连续有盖箱子直接累加；遇到无盖箱子，就合并其后的连续有盖段，累加该段总和减去最小值。无盖后无有盖段时不计入。整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1743D",
+          "index": "D",
+          "slot": "D",
+          "title": "Problem with Random Tests",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1743/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/108153",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "probabilities"
+          ],
+          "statementBrief": "给定一个只含 0 和 1 的字符串，任选两个可以重叠、相同或不相交的连续子串，将它们分别视为二进制数并按位或。求所有选择中按位或的最大值，并以无前导零的二进制形式输出。",
+          "transformedStatement": "把原问题重述为：在所有前缀中选择两个二进制数，使它们的按位或最大；进一步固定一个操作数为完整字符串 $s$，只寻找少数可能改变最高关键位的另一个前缀。",
+          "keyObservations": [
+            "任意不含字符串首位的子串向左扩展为前缀后，按二进制数计算的按位或不会变差，因此最优解可限制为两个前缀。",
+            "设字符串最左侧的 1 在位置 $i$，答案的有效长度不超过 $n-i+1$；要在最高位取得 1，只能选择完整字符串 $s$，所以两个前缀中必有一个是 $s$。",
+            "设 $s$ 的第一个连续 1 段后紧接着第一个 0；另一个前缀只有在把该 1 段中的某个 1 移到这个 0 对应的位置时才可能改进结果，因此只需检查少量特定前缀。",
+            "随机生成使开头连续 1 段长度的期望为 $O(1)$，所以候选前缀期望为常数个；逐个与 $s$ 求按位或即可得到期望 $O(n)$ 的算法。"
+          ],
+          "solutionBrief": "先将两个子串都限制为前缀，再证明其中一个必须是完整字符串 $s$。找到开头第一段连续 1 及其后的第一个 0，只枚举能把该段某个 1 对齐到该 0 位置的前缀，与 $s$ 求按位或并取最大值；随机数据下期望复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1743E",
+          "index": "E",
+          "slot": "E",
+          "title": "FTL",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1743/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/108153",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "dp"
+          ],
+          "statementBrief": "有两台初始均未充能的激光，功率和装填时间分别为 $(p_1,t_1)$、$(p_2,t_2)$。激光充满后可立即单独开火，也可等待另一台充满后同时开火；单独或同时射击造成的伤害为总功率减护盾值 $s$，求将耐久度 $h$ 降至零以下的最短时间。",
+          "transformedStatement": "以每次双激光同时射击为分界：双射后两台激光都视为重新从零充能，状态只记录已造成的伤害和经过时间。每个区间内分别计算两台激光能单独射击的次数，再枚举关键间隔完成伤害转移。",
+          "keyObservations": [
+            "把“上一次射击同时使用两台激光”作为状态边界，此时两台激光都刚充空，后续充能情况完全确定。",
+            "两次同时射击间隔为 $t$ 时，第 $i$ 台激光可单独射击的次数为 $\\lfloor t/t_i\\rfloor-1$，因此该段造成的伤害可以直接计算。",
+            "若间隔 $t$ 既不是 $t_1$ 的倍数也不是 $t_2$ 的倍数，将其减少 $1$ 不会减少任一激光的射击次数，所以最优间隔必为某个 $t_i$ 的倍数。",
+            "最后一次射击可能不同时使用两台激光；此时两台激光持续单独射击，摧毁时刻仍只需枚举两种装填时间的倍数。"
+          ],
+          "solutionBrief": "令 $dp[d]$ 表示上次为双激光射击、累计造成 $d$ 点伤害的最短时间。枚举为 $t_1$ 或 $t_2$ 倍数的间隔并转移，最后单独处理不含双激光射击的结尾，复杂度 $O(h^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1743F",
+          "index": "F",
+          "slot": "F",
+          "title": "Intersection and Union",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1743/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/108153",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "matrices",
+            "probabilities"
+          ],
+          "statementBrief": "给定 $n$ 个整数点线段，每相邻两个集合之间都可独立选择并集、对称差或交集，且按从左到右的顺序计算。要求把所有 $3^{n-1}$ 种运算符序列产生的最终集合大小相加，并对 $998244353$ 取模。",
+          "transformedStatement": "将每个整数点 $x$ 单独计数：状态表示当前集合是否包含 $x$，每条线段对应一个二状态转移矩阵；扫描 $x$ 时维护这些矩阵的整体乘积。",
+          "keyObservations": [
+            "固定整数点 $x$ 后，最终集合是否包含 $x$ 只剩一个二值状态；因此可统计使 $x$ 被保留的运算符序列数量，再对所有 $x$ 求和。",
+            "若当前结果状态为 $a$、新线段是否包含 $x$ 为 $b$，三种运算对二值状态的转移只由 $b$ 决定，可统一表示为 $2\\times2$ 矩阵。",
+            "当扫描 $x$ 从一个整数移到下一个整数时，第 $i$ 条线段的包含状态只会在 $l_i$ 或 $r_i+1$ 处改变，因此总共只需更新 $O(n)$ 个位置的转移矩阵。",
+            "线段树维护所有转移矩阵的乘积，根节点乘积直接给出所有运算符选择下的状态计数，从而每次局部变化只需 $O(\\log n)$ 更新。"
+          ],
+          "solutionBrief": "按整数点贡献答案。固定 $x$ 后用包含/不包含两状态 DP，依据下一条线段是否包含 $x$ 建立 $2\\times2$ 转移矩阵；线段树维护矩阵乘积。扫描 $x$ 时仅在线段端点导致状态变化的位置替换矩阵，总复杂度为 $O(M+n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1743G",
+          "index": "G",
+          "slot": "G",
+          "title": "Antifibonacci Cut",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1743/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/108153",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "字符串",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "hashing",
+            "math"
+          ],
+          "statementBrief": "定义 Fibonacci 串 $f_0=0,f_1=1,f_i=f_{i-1}+f_{i-2}$，把每个前缀字符串切成任意数量的连续非空段，且每段都不能是 Fibonacci 串。给出 $s_1,\u001bs_2,\u001b\\ldots,s_n$，依次求拼接前缀 $s_1+\\cdots+s_i$ 的合法切分数 $g$，结果对 $998244353$ 取模。",
+          "transformedStatement": "把每个切分视为以最后一段结尾的 DP 转移：所有起点都贡献一次，恰好为 Fibonacci 串的后缀转移被排除。由于 Fibonacci 串共享一个长前缀，只跟踪仍匹配该公共串前缀的起点及其 DP 值。",
+          "keyObservations": [
+            "设前缀长度为 $i$ 的答案为 $dp_i$，则最后一段任取时先汇总所有 $dp_j$，再对以 $j$ 开始且为 Fibonacci 串的分段减去 $dp_j$，从而把限制转化为按结尾位置扣除非法转移。",
+            "除 $f_0$ 外的所有 Fibonacci 串都是同一个长 Fibonacci 串的前缀，因此只需维护当前仍可能匹配该长串前缀的起点；追加字符后不匹配的起点立即丢弃，避免搜索所有结尾子串。",
+            "维护每个候选起点的 $(j,dp_j)$ 而不是完整的 $dp$ 数组，使计算新前缀答案时只保留仍可能形成 Fibonacci 串的转移，解决严格内存限制。",
+            "当前匹配前缀可表示为满足相邻下标至少差 $2$ 的 Fibonacci 串降序分解；其中是否含有 $f_1$ 决定下一个字符为 $0$ 还是 $1$，因此无需生成整条长串即可过滤候选。"
+          ],
+          "solutionBrief": "按字符在线处理前缀，用转移总和减去所有以 Fibonacci 串结尾的非法切分。维护仍匹配公共长 Fibonacci 串前缀的 $(j,dp_j)$，用 Zeckendorf 式分解判断下一位并筛选候选；$f_0$ 单独处理，答案取模。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
