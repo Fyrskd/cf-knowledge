@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2961,
+    "total_problems": 2968,
     "source_total_problems": 2968,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2961,
-    "with_editorial_brief": 2689,
-    "with_solution_brief": 2690,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2968,
+    "with_editorial_brief": 2696,
+    "with_solution_brief": 2697,
     "missing_editorial_brief": 271,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2023,
+    "ai_override_count": 2030,
     "primary_topic_count": 13,
-    "contest_count": 450,
+    "contest_count": 451,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 934,
-    "数论与同余": 320,
+    "构造与贪心": 936,
+    "数论与同余": 322,
+    "图论与网络流": 180,
+    "组合计数与概率": 233,
+    "数据结构": 279,
     "动态规划与状态设计": 251,
     "字符串": 157,
     "树结构": 150,
-    "数据结构": 278,
-    "图论与网络流": 179,
     "基础实现与模拟": 178,
     "交互": 95,
-    "组合计数与概率": 232,
     "几何": 70,
     "博弈": 96,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1738,
+    "ai_generated_with_editorial": 1745,
     "missing_editorial": 271,
     "ai_generated_partial_editorial": 60,
     "manual_override": 891,
@@ -91510,6 +91510,228 @@ window.CF_INSIGHTS_DATA = {
             "固定已进行的交换次数后，前一状态下标的转移只取区间前缀最大值，使原本枚举前驱下标的高阶转移降为 $O(1)$。"
           ],
           "solutionBrief": "令 $dp[t][last][m]$ 表示前 $t$ 回合以原始下标 $last$ 计分且用了 $m$ 次交换时的最大分数。按下标是否延续分类转移；递增下标时需固定支付 $last-t$ 次交换，并用前缀最大值优化，整体复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1737,
+      "name": "Dytechlab Cup 2022",
+      "date": "2022-10-07",
+      "url": "https://codeforces.com/contest/1737",
+      "type": "Others",
+      "problemCount": 7,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1737A",
+          "index": "A",
+          "slot": "A",
+          "title": "Ela Sorting Books",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1737/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/107567",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 本分别以 `a` 到 `y` 表示的书，要把它们分成 $k$ 个分组，每组恰有 $n/k$ 本。按顺序求每组字母 multiset 的 MEX 并拼成字符串，要求通过安排书籍使结果字符串字典序最大。",
+          "transformedStatement": "把问题看成带有限字母库存的顺序分组：为了让当前分组的 MEX 尽可能大，必须依次提供 `a`、`b` 等所有更小字母；第一个无法提供的字母立即确定该组答案，之后只需补满容量。",
+          "keyObservations": [
+            "字典序最大要求先固定前面的分组结果，再在剩余书籍中最大化当前分组的 MEX，因此分组应按编号依次处理。",
+            "一个分组的 MEX 为字母 $c$ 当且仅当其中包含所有更小字母且不包含 $c$；因此可从 `a` 起逐个消耗一册对应字母，首次缺货的字母就是该组答案。",
+            "每个分组只需为每种必需字母保留一册，其他书籍只用于填满容量；由于容量为 $n/k$，最多检查前 $n/k$ 个字母即可。"
+          ],
+          "solutionBrief": "按分组编号依次贪心处理。对当前分组从 `a` 开始逐字母尝试消耗一册：若某字母库存不足，则它就是该组 MEX；否则继续，最多检查分组容量个字母。每组处理后用任意剩余书籍补足容量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1737B",
+          "index": "B",
+          "slot": "B",
+          "title": "Ela's Fitness and the Luxury Number",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1737/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/107567",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定多组整数区间 $[l,r]$，第 $x$ 天若能被 $\\lfloor\\sqrt{x}\\rfloor$ 整除，就称为豪华日。对每组区间，统计其中豪华日的数量。",
+          "transformedStatement": "把正整数按 $\\lfloor\\sqrt{x}\\rfloor=a$ 划分为区间 $[a^2,(a+1)^2)$；每个区间只保留三个候选豪华数 $a^2$、$a(a+1)$ 和 $a(a+2)$，查询变成统计这些候选值落入 $[l,r]$ 的次数。",
+          "keyObservations": [
+            "按 $a=\\lfloor\\sqrt{x}\\rfloor$ 划分区间后，$x$ 必须位于 $[a^2,(a+1)^2)$，从而只需研究固定 $a$ 下的可整除数。",
+            "固定 $a$ 时，该区间内恰好只有 $a^2$、$a(a+1)$、$a(a+2)$ 三个豪华数，因此原问题可转化为统计三类数与查询区间 $[l,r]$ 的交集。",
+            "由于 $r$ 可达 $10^{18}$，不能依赖浮点平方根；用整数二分确定平方根的下取整值，避免精度误差并正确处理区间边界。"
+          ],
+          "solutionBrief": "将每个豪华数按 $a=\\lfloor\\sqrt{x}\\rfloor$ 分类；每类只贡献 $a^2$、$a(a+1)$、$a(a+2)$ 三个候选值，统计它们落在 $[l,r]$ 内的数量。平方根下取整用整数二分计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1737C",
+          "index": "C",
+          "slot": "C",
+          "title": "Ela and Crickets",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1737/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/107567",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "基础实现与模拟",
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "棋盘上有三个组成 L 形且相邻的白色棋子。每次可选择一个棋子，沿横、竖或斜方向跳过紧邻的另一个棋子，并落到其后紧邻的空格；判断经过有限次操作后是否能让任意棋子到达目标格 $(x,y)$。",
+          "transformedStatement": "把三个棋子按“中心棋子”和两个非中心棋子分类，并利用跳跃保持棋盘颜色的性质，将问题转化为角落边界限制、目标颜色以及相关坐标奇偶性的常数时间判定。",
+          "keyObservations": [
+            "每个棋子跳过相邻棋子后移动两格，因此始终停留在与初始位置同色的格子上；这把可达性限制转化为棋盘颜色与坐标奇偶性的判断。",
+            "先确定同时与另外两个棋子共边的中心棋子；中心棋子位于棋盘角落时，移动会被边界限制，所有可达位置只能落在初始 L 形覆盖的两条边上。",
+            "中心棋子不在角落且目标与中心棋子同色时，总能通过调整两个棋子的位置，使其中一个棋子最终沿对角线跳到目标格。",
+            "目标与中心棋子异色时，只有对应异色棋子能够到达目标；它不能通过对角线改变所需的坐标奇偶性，因此只需检查目标行坐标与该棋子初始行坐标的奇偶性是否一致。"
+          ],
+          "solutionBrief": "找出与另外两子共边的中心棋子。若中心在角落，只判断目标是否位于其 L 形覆盖的两条边上；否则先按目标与中心的颜色分类，同色必可达，异色时检查目标行坐标与对应异色棋子的初始行坐标奇偶性。每组只需常数次判断，复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1737D",
+          "index": "D",
+          "slot": "D",
+          "title": "Ela and the Wiring Wizard",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1737/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/107567",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "graphs",
+            "greedy",
+            "implementation",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个带权无向连通图，边的通行时间等于其权值。包裹出发前，向导可以按规则对任意边改线任意次，每次耗时为该边权值且权值不变，改线后允许出现自环；包裹开始传输后不能再改线，求从机器 $1$ 到机器 $n$ 的最短总时间。",
+          "transformedStatement": "将问题转化为：要么不改线直接走原图最短路，要么选择一条边并支付沿无权最短路径移动端点的代价，把它变成连接 $1,n$ 的捷径；端点可直接分别接向两端，也可借助中间点 $x$ 完成。",
+          "keyObservations": [
+            "无需改线时，答案至少可以取原图中从 $1$ 到 $n$ 的最短路；若进行改线，最优方案只需把某一条边最终改造成直接连接 $1$ 和 $n$ 的边。",
+            "若边 $i=(u_i,v_i)$ 分别接到 $1,n$，改造代价为 $(dist[u_i][1]+dist[v_i][n]+1)×w_i$，交换两端后同样计算一次并取较小值。",
+            "若通过中间点 $x$ 完成改造，使用端点 $u_i$ 的代价为 $(dist[1][x]+dist[x][n]+dist[u_i][x]+2)×w_i$，端点换成 $v_i$ 的方案也必须比较。",
+            "所有改线次数只对应原图无权距离，因此先用 BFS 或 Floyd 求任意两点距离，再枚举边和中间点即可覆盖全部候选方案。"
+          ],
+          "solutionBrief": "先求原图中 $1$ 到 $n$ 的加权最短路。再对每条边及每个中间点 $x$，按两种端点连接方式计算把该边改成 $(1,n)$ 的代价，取所有候选最小值；无权距离可用 BFS 或 Floyd，整体复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1737E",
+          "index": "E",
+          "slot": "E",
+          "title": "Ela Goes Hiking",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1737/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/107567",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "有 $n$ 只等距排成一列、初始重量相同的蚂蚁，每只独立等概率向左或向右匀速移动；相邻且反向移动的蚂蚁会相撞，蚂蚁到达木棍端点后立即反向，并按体重吞食更小的蚂蚁。对每个位置，求该位置的蚂蚁最终成为唯一存活者的概率，并对 $10^9+7$ 取模。",
+          "transformedStatement": "把“位置 $i$ 最终获胜”拆成两部分：它在前缀 $1\\ldots 2i-1$ 中获胜的局部事件，以及所有位置 $2i$ 及之后的蚂蚁都未获胜的事件；前者记为 $f(i)$，全局概率记为 $g(i)$。",
+          "keyObservations": [
+            "位置 $i$ 能在前缀 $1\\ldots 2i-1$ 中获胜，只取决于它附近一段连续蚂蚁的初始方向，因此可先定义局部概率 $f(i)$。",
+            "最右端的反弹会使第 $n$ 只蚂蚁无论初始方向最终都能转向左侧，所以边界位置的 $f(n)$ 与普通位置不同。",
+            "若位置 $i$ 要成为全局最后一只，既要满足前缀获胜事件，还要排除所有位置 $2i,2i+1,\\ldots,n$ 获胜的情况；这两部分依赖的方向范围互不重叠。",
+            "因此全局概率满足 $g(i)=f(i)\\times\\left(1-\\sum_{j=2i}^{n}g(j)\\right)$，按从后向前计算并维护后缀和即可避免重复求和。"
+          ],
+          "solutionBrief": "定义 $f(i)$ 为位置 $i$ 在前缀 $1\\ldots 2i-1$ 中最后存活的概率，按局部方向约束计算，并单独处理最右端边界。再令 $g(i)$ 为全体蚂蚁中的存活概率，利用 $g(i)=f(i)(1-\\sum_{j=2i}^n g(j))$ 逆序计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1737F",
+          "index": "F",
+          "slot": "F",
+          "title": "Ela and Prime GCD",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1737/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/107567",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $c$ 的素因子分解指数 $b_1,\u0002dots,b_m$，其中共有 $n=\u0001prod(b_i+1)$ 个因子。要求排列出除 $1$ 外的全部 $n-1$ 个因子，使每一对相邻因子的最大公因数都是素数；无解时输出 $-1$。",
+          "transformedStatement": "把问题看成在所有非单位因子上寻找一条路径：两个因子相邻当且仅当它们的最大公因数为素数。构造按素因子维度递增，每次复制已有路径并给一半位置乘上新素因子，以保持合法相邻关系。",
+          "keyObservations": [
+            "若某个素因子的指数至少为 $4$，或指数为 $3$ 的素因子至少两个、同时存在指数 $3$ 与 $2$、或指数为 $2$ 的素因子至少三个，则无法让所有相邻数的最大公因数都为素数。",
+            "指数为 $2$ 的素因子至多两个时，先构造这些素因子对应的核心排列；指数为 $3$ 时则使用另一组核心排列，剩余指数为 $1$ 的素因子统一通过扩展加入。",
+            "加入一个新素因子时复制当前排列，并只给特定奇偶位置的元素乘上该素因子；这样恰好覆盖新素因子的两种取值，同时保持相邻最大公因数为素数。",
+            "初始排列覆盖除 $1$ 外的全部已有因子组合，扩展过程逐个增加素因子维度，因此最终正好得到 $n-1$ 个不同的非单位因子。"
+          ],
+          "solutionBrief": "根据指数中 $2、3$ 的出现情况先判定不可行情形并建立核心排列，再按奇偶位置复制、乘入指数为 $1$ 的新素因子；输出排列中除 $1$ 外的所有元素。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1737G",
+          "index": "G",
+          "slot": "G",
+          "title": "Ela Takes Dancing Class",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1737/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/107567",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures"
+          ],
+          "statementBrief": "有 $n$ 名舞者位于正半轴上，二进制串决定谁可移动、谁固定。每分钟由坐标最小的可移动舞者开始，初始能量为 $d$，每向右走一格能量减一、与其他舞者相遇则加一，能量为零且不与人同点时停止；对每个 $(k,m)$ 查询第 $k$ 分钟后从左数第 $m$ 名舞者的坐标。",
+          "transformedStatement": "忽略固定舞者后，把可移动舞者的相对位置维护成“良好排列”：最左舞者下一次移动会越过其余所有舞者。该排列每经过全部 $C$ 个舞者一次就整体右移 $C-1+d$，因此可按完整周期和周期内已完成移动的前缀回答查询。",
+          "keyObservations": [
+            "若当前有 $C$ 个可移动舞者且排列满足“第一个舞者下一次会越过其余所有舞者”，连续 $C$ 次操作后相对坐标恢复不变，所有舞者整体右移 $C-1+d$。",
+            "在上述良好排列中，进行前 $i<C$ 次操作后，恰好最左侧的 $i$ 个舞者完成了同样的整体位移，其余舞者尚未完成；这提供了按操作次数定位舞者的分段结构。",
+            "按原顺序逐个合并舞者时，先将当前良好排列整体推进若干个 $C-1+d$，直到第一个舞者能够越过待加入舞者，再把待加入舞者之后的已有舞者坐标加一并插入，从而保持良好排列。",
+            "查询时可以二分操作次数，并删除不可移动舞者及尚未被观察到的舞者、同步调整查询位置；用平衡树维护排列中的相对坐标，可将每次定位降为对数级操作。"
+          ],
+          "solutionBrief": "将可移动舞者抽象为良好排列，利用每 $C$ 次操作后整体右移 $C-1+d$ 的周期性质逐个合并舞者。查询时二分经过的操作段，用平衡树维护相对坐标，并剔除固定舞者和未涉及舞者后调整排名。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
