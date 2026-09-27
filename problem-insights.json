@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2069,
+    "total_problems": 2077,
     "source_total_problems": 2077,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2069,
-    "with_editorial_brief": 1817,
-    "with_solution_brief": 1818,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2077,
+    "with_editorial_brief": 1825,
+    "with_solution_brief": 1826,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1010,
+    "ai_override_count": 1018,
     "primary_topic_count": 13
   },
   "records": [
@@ -48226,6 +48226,342 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 1194,
+      "problem_key": "2121A",
+      "contest_id": 2121,
+      "title": "Letter Home",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2121/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/143822",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "math"
+      ],
+      "statement_brief": "给定数轴上的 $n$ 个互不相同且已升序排列的位置，以及起点 $s$。每步只能向左或向右移动 $1$ 格，要求在移动过程中访问所有给定位置，求最少移动步数。",
+      "transformed_statement": "把所有目标位置看作区间 $[x_1,x_n]$ 的覆盖任务：先到达一个端点，再穿过整个区间到达另一个端点即可访问全部目标位置，因此只需比较两种端点访问顺序。",
+      "key_observations": [
+        "由于位置按升序排列，从最左端点 $x_1$ 到最右端点 $x_n$ 的途中会经过所有其他目标位置，因此只需保证访问两个端点。",
+        "访问两个端点必然需要覆盖区间长度 $x_n-x_1$，起点只需先前往较近的一个端点，总代价为 $min(|s-x_1|,|s-x_n|)+x_n-x_1$。",
+        "先到左端点再到右端点，或先到右端点再到左端点，恰好覆盖全部可行顺序，取两者较小值即可保证最优。"
+      ],
+      "solution_brief": "目标位置已排序，访问两个端点即可经过中间所有位置。分别计算先到左端点或先到右端点的步数，取较小值，即 $min(|s-x_1|,|s-x_n|)+x_n-x_1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:17:24+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1195,
+      "problem_key": "2121B",
+      "contest_id": 2121,
+      "title": "Above the Clouds",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2121/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/143822",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "给定字符串 $s$，要将其切成三个非空连续部分 $a,b,c$，且中间部分 $b$ 必须是拼接串 $a+c$ 的子串。判断是否存在这样的切分，并输出 Yes 或 No。",
+      "transformed_statement": "只需把中间段 $b$ 缩成一个字符：寻找一个不在首尾的字符位置，使该字符还在字符串其他位置出现；存在即可构造出合法的三段切分。",
+      "key_observations": [
+        "若存在满足条件的分割，就能从原来的 $b$ 中任选一个字符保留为新的 $b$，并把其前后字符分别并入 $a$ 和 $c$，因此只需考虑 $|b|=1$。",
+        "当 $b$ 为位置 $i$ 的单个字符时，$a,c$ 非空等价于 $i$ 不是首尾位置；同时该字符还必须在其余位置出现，才能成为 $a+c$ 的子串。",
+        "因此问题转化为：是否存在一个内部位置，其字符在整个字符串中至少出现两次；出现次数至少为 $3$ 时必有这样的内部位置，出现次数为 $2$ 时只需判断两次出现中是否有一次不在首尾。"
+      ],
+      "solution_brief": "将 $b$ 缩为单个字符。统计每个字符出现次数，并检查是否存在一个内部位置的字符总次数至少为 $2$；满足则输出 Yes，否则输出 No，整体复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:17:09+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1196,
+      "problem_key": "2121C",
+      "contest_id": 2121,
+      "title": "Those Who Are With Us",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2121/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/143822",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定一个 $n\\times m$ 整数矩阵，必须恰好选择一行和一列，将该行或该列中的每个元素减 $1$（交点只处理一次）。求操作后矩阵最大元素的最小可能值。",
+      "transformed_statement": "只需关注原矩阵中的最大值 $mx$：问题转化为判断是否存在一行和一列，使它们的并集覆盖所有 $mx$ 单元格；能覆盖则最大值降为 $mx-1$，否则保持为 $mx$。",
+      "key_observations": [
+        "最终答案只可能是 $mx$ 或 $mx-1$，因为一次操作至多让矩阵中的最大值下降 $1$。",
+        "答案为 $mx-1$ 当且仅当所有等于 $mx$ 的单元格都位于某一行或某一列的并集中，否则至少有一个最大值未被修改。",
+        "若第 $r$ 行和第 $c$ 列分别含有 $row_r$、$col_c$ 个最大值，则覆盖数量为 $row_r+col_c-[a_{rc}=mx]$；与最大值总数相等即可判定这对行列有效。"
+      ],
+      "solution_brief": "扫描矩阵求最大值 $mx$，统计每行、每列及总共出现多少次 $mx$。枚举行列组合，用行列计数减去交点重复计数；若能覆盖全部最大值则输出 $mx-1$，否则输出 $mx$，总复杂度为 $O(nm)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:16:54+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1197,
+      "problem_key": "2121D",
+      "contest_id": 2121,
+      "title": "1709",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2121/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/143822",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "implementation",
+        "sortings"
+      ],
+      "statement_brief": "给定两个长度为 $n$ 的数组，$1$ 到 $2n$ 的每个数恰好出现一次。每次可交换同一数组中的相邻元素，或交换同一列的 $a_i,b_i$；需在不超过 1709 次操作内，使两行都严格递增且对所有 $i$ 有 $a_i<b_i$。",
+      "transformed_statement": "先把两行独立整理成升序序列，再把每列的较小数放到上行、较大数放到下行；问题转化为证明逐列取最小值和最大值仍保持两行升序，并记录这些交换。",
+      "key_observations": [
+        "分别将两行升序排列后，行内相邻交换次数等于该行逆序对数，因此两行排序总计不超过 $n(n-1)$ 次。",
+        "两行均已升序时，对每列交换满足 $a_i>b_i$ 的上下元素，相当于逐列取较小值放入 $a$、较大值放入 $b$。",
+        "两个升序序列逐项取最小值和最大值后仍分别升序，因此列交换不会破坏行内有序性；总操作数不超过 $n(n-1)+n=n^2\u0000$，且 $n\\le40$ 时满足 1709 限制。"
+      ],
+      "solution_brief": "先用冒泡交换分别将 $a,b$ 排成升序，再扫描每一列；若 $a_i>b_i$ 就交换上下元素。逐列取最小值与最大值后两行仍升序，且操作数最多为 $n^2\\le1600$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:16:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1198,
+      "problem_key": "2121E",
+      "contest_id": 2121,
+      "title": "Sponsor of Your Problems",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/2121/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/143822",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "dp",
+        "greedy",
+        "implementation",
+        "strings"
+      ],
+      "statement_brief": "给定两个等长且无前导零的十进制整数 $l,r$，可选择任意 $l\\le x\\le r$。函数 $f(a,b)$ 表示两数十进制表示中对应位置数字相同的数量，要求最小化 $f(l,x)+f(x,r)$。",
+      "transformed_statement": "把区间选择转为逐位分析：公共前缀被迫固定；首个不同位决定 $x$ 能否选中间数字，若只能贴近某个端点，则后续的 $9/0$ 进位边界模式决定额外匹配次数。",
+      "key_observations": [
+        "$x$ 与 $l,r$ 位数相同，且公共前缀中的每一位必然同时与两端相同，因此固定贡献为公共前缀长度的两倍。",
+        "公共前缀后的首个数字若相差至少 $2$，可在两者之间选数字并自由填后缀，后缀可完全避开两端对应数字，答案就是 $2k$。",
+        "首个不同数字只相差 $1$ 时，$x$ 必须选择其中一个边界数字，额外贡献 $1$；之后只有连续出现 $l_i=9,r_i=0$ 的位置会被区间约束强制匹配并增加贡献。",
+        "若两数完全相同，则唯一可选的 $x$ 等于它们，答案为位数的两倍；否则在相差 $1$ 的情形答案为 $2k+1+c$。"
+      ],
+      "solution_brief": "将 $l,r$ 转为等长字符串，找首个不同位置及公共前缀长度 $k$。若无不同位，答案为 $2n$；若该位差至少为 $2$，答案为 $2k$；否则从下一位起统计连续的 $(9,0)$，答案为 $2k+1+c$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:16:26+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1199,
+      "problem_key": "2121F",
+      "contest_id": 2121,
+      "title": "Yamakasi",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/2121/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/143822",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "data structures",
+        "greedy",
+        "two pointers"
+      ],
+      "statement_brief": "给定整数数组、目标和 $s$ 及目标最大值 $x$，需要统计所有连续子段 $[l,r]$，使子段元素之和等于 $s$，且其中最大元素恰好等于 $x$。",
+      "transformed_statement": "按右端点从左到右扫描，把满足最大值条件的左端点动态加入集合；对每个右端点，用前缀和频次查询所需的 $pref_r-s$，从而把双条件计数转化为动态频次统计。",
+      "key_observations": [
+        "子段和可改写为 $pref_r-pref_{l-1}=s$，因此固定右端点后，只需查询此前出现过的前缀和 $pref_r-s$ 的次数。",
+        "元素大于 $x$ 会阻断所有包含它的合法子段；遇到它时清空前缀和计数，并将可选左端点重新设为当前位置之后。",
+        "要让最大值恰为 $x$，合法左端点必须位于当前阻断点之后且不晚于最近一次出现 $x$ 的位置；扫描到 $a_r=x$ 时，将尚未加入的左端点批量加入映射。",
+        "每个左端点只被加入一次、每个阻断点只清空一次，结合前缀和计数即可在线统计答案，整体复杂度为 $O(n\\log n)$。"
+      ],
+      "solution_brief": "扫描右端点并维护前缀和频次。用指针记录尚未激活的左端点：遇到大于 $x$ 的元素就清空，遇到等于 $x$ 的元素就激活对应区间；随后查询 $pref_r-s$ 的频次，累加得到答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:16:10+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1200,
+      "problem_key": "2121G",
+      "contest_id": 2121,
+      "title": "Gangsta",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2121/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/143822",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "data structures",
+        "divide and conquer",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "给定一个只含 0 和 1 的字符串。对每个非空连续子串，计算其中出现次数最多的字符数量，并求所有子串这些数量的总和。",
+      "transformed_statement": "把每个子串的贡献改写为其长度与 0、1 数量差绝对值之和的一半；再用前缀差数组把区间问题转化为所有前缀值对的绝对差求和。",
+      "key_observations": [
+        "对任意子串有 $\\max(c_0,c_1)=\\frac{c_0+c_1+|c_0-c_1|}{2}$，因此答案拆成长度总和与计数差绝对值总和。",
+        "令前缀值为“1 的数量减 0 的数量”，子串的计数差等于两个前缀值之差，从而只需统计所有前缀值对的绝对差。",
+        "所有子串长度的总和可按长度统计为 $\\sum_{len=1}^{n}len(n-len+1)$，无需逐个枚举区间。",
+        "将 $n+1$ 个前缀值排序后，每对绝对差变为较大值减较小值；排名为 $i$ 的值贡献系数 $i-(n-i)$，可线性求和。"
+      ],
+      "solution_brief": "用前缀差表示每个子串的 0/1 数量差，将最大出现次数拆为长度与绝对差两部分。长度总和直接计算；排序全部 $n+1$ 个前缀差后，按排名系数求绝对差总和，整体复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:15:51+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1201,
+      "problem_key": "2121H",
+      "contest_id": 2121,
+      "title": "Ice Baby",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/2121/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/143822",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "data structures",
+        "dp",
+        "implementation",
+        "sortings"
+      ],
+      "statement_brief": "给定 $n$ 个整数区间 $[l_i,r_i]$，对每个前缀 $1..k$，从对应区间中各选一个整数形成数组。要求分别最大化所形成数组的最长非递减子序列长度，并输出所有 $k$ 的最大值。",
+      "transformed_statement": "把每个前缀的答案转化为一组有序状态：长度为 $j$ 的非递减子序列的最小可能末值。处理新区间时，这组末值只发生“插入下界并删除首个超过上界的值”的变化，因此可抽象成动态维护多重集合。",
+      "key_observations": [
+        "将状态定义为处理前 $i$ 个位置后，长度为 $j$ 的非递减子序列能够达到的最小末值；末值随 $j$ 增大而不减，因此状态值天然有序。",
+        "加入区间 $[l,r]$ 时，只有末值不超过 $r$ 的子序列可以接上当前元素；相关状态整体向后平移，并把新末值截为至少 $l$。",
+        "从状态多重集合看，每次加入一个区间只需插入 $l$，并删除最小的一个大于 $r$ 的值；若不存在这样的值则不删除，因此集合大小就是当前前缀的最优子序列长度。",
+        "状态位置本身不影响后续转移，按值维护多重集合即可用插入和 `upper_bound` 删除完成每个位置的更新。"
+      ],
+      "solution_brief": "维护各长度非递减子序列的最小末值。处理区间 $[l,r]$ 时向多重集合插入 $l$，删除最小的大于 $r$ 的值；集合大小即答案，使用平衡树实现，复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T02:15:32+00:00",
+          "quality_flags": [
+            "statement_tail_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1202,
