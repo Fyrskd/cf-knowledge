@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1946,
+    "total_problems": 1954,
     "source_total_problems": 1954,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 1946,
-    "with_editorial_brief": 1703,
-    "with_solution_brief": 1704,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1954,
+    "with_editorial_brief": 1711,
+    "with_solution_brief": 1712,
     "missing_editorial_brief": 242,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 887,
+    "ai_override_count": 895,
     "primary_topic_count": 13,
-    "contest_count": 306,
+    "contest_count": 307,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,22 +45,22 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 82,
-    "构造与贪心": 655,
+    "构造与贪心": 658,
     "图论与网络流": 118,
     "动态规划与状态设计": 182,
-    "数论与同余": 185,
+    "数论与同余": 188,
     "组合计数与概率": 152,
     "数据结构": 162,
     "几何": 40,
     "树结构": 127,
     "代数、矩阵与多项式": 17,
-    "交互": 74,
+    "交互": 76,
     "基础实现与模拟": 83,
     "博弈": 69
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 778,
-    "ai_generated_partial_editorial": 34,
+    "ai_generated_with_editorial": 784,
+    "ai_generated_partial_editorial": 36,
     "missing_editorial": 242,
     "manual_override": 891,
     "statement_derived": 1
@@ -15777,6 +15777,252 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：几何距离只是建图入口。对偶 k 反复做坐标旋转缩放归约，得到若干二分图块；每块取较小侧枚举发射集合，另一侧的合法选择数通过邻接掩码的子集 DP 累计，最后各连通块相乘。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2179,
+      "name": "Codeforces Round 1071 (Div. 3)",
+      "date": "2025-12-23",
+      "url": "https://codeforces.com/contest/2179",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "2179A",
+          "index": "A",
+          "slot": "A",
+          "title": "Blackslex and Password",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2179/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/149406",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定整数 $k,x$，密码只能使用前 $k$ 个小写字母。若两个位置的下标差是 $x$ 的倍数，它们的字符必须不同；求不存在合法密码的最小长度。",
+          "transformedStatement": "将位置按下标除以 $x$ 的余数分成 $x$ 组；同组位置两两受限为不同字符，每组容量至多为 $k$，于是问题转化为寻找总容量 $k x$ 之后的第一个长度。",
+          "keyObservations": [
+            "两个位置的下标差能被 $x$ 整除，当且仅当它们除以 $x$ 的余数相同，因此约束可以按下标余数分组处理。",
+            "每个余数组成的子序列中任意两个字符都必须不同，所以一个余数类最多放置 $k$ 个位置。",
+            "共有 $x$ 个余数类，长度不超过 $k x$ 时可以让每类使用互不相同的字符；长度达到 $k x+1$ 时必有某类超过 $k$ 个位置，答案因此为 $k x+1$。"
+          ],
+          "solutionBrief": "按下标对 $x$ 的余数将位置分成 $x$ 组。每组字符必须两两不同，最多容纳 $k$ 个位置，因此最大可行长度为 $k x$，最小不可行长度为 $k x+1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2179B",
+          "index": "B",
+          "slot": "B",
+          "title": "Blackslex and Showering",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2179/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/149406",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定按顺序访问楼层的数组，每次相邻楼层产生其差的绝对值作为耗时。可以至多删除一个楼层并保持其他楼层顺序，求删除后相邻绝对差之和的最小值。",
+          "transformedStatement": "把楼层序列视为一条路径，边 $(a_i,a_{i+1})$ 的权值为 $|a_i-a_{i+1}|$；删除一个元素就是断开其相邻边，并在前后邻点之间补一条跨越边，目标是最小化路径总权值。",
+          "keyObservations": [
+            "删除端点只会去掉一条相邻边的代价；删除内部楼层则用跨越代价替换两条边的代价。",
+            "由三角不等式，内部位置满足 $|a_{i+1}-a_{i-1}|\\le |a_i-a_{i-1}|+|a_{i+1}-a_i|$，因此删除一个楼层总不会变差。",
+            "先计算原数组相邻差之和；删除内部位置 $i$ 时只需减去两条旧边并加上新的跨越边，其他部分无需重算。",
+            "所有位置的删除收益都能由局部三项计算得到，因此线性扫描即可找出最小结果。"
+          ],
+          "solutionBrief": "先求原数组相邻绝对差之和。分别计算删除首尾元素，以及删除每个内部元素后的局部变化，取所有结果最小值；总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2179C",
+          "index": "C",
+          "slot": "C",
+          "title": "Blackslex and Number Theory",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2179/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/149406",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "math",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定一个所有元素互不相同的正整数数组。每次可任选一个元素并用不小于 $k$ 的正整数作模运算替换它，目标是经过有限次操作使所有元素相等，求仍能做到这一点的最大正整数 $k$。",
+          "transformedStatement": "排序后只需比较两种最终目标：用每个元素自身作模数把全数组变成 $0$，或在 $k$ 超过最小值时固定最小元素为目标，并让其余元素通过模 $a_i-a_1$ 变成它。答案由最小值与前两小元素差值的较大者决定。",
+          "keyObservations": [
+            "将数组排序后，若 $k\\le a_1$，每个元素都能选择模数自身变为 $0$，因此这一范围内总能完成统一。",
+            "若 $k>a_1$，最小元素无法被改变，最终目标只能是 $a_1$；其他元素 $a_i$ 可用模数 $a_i-a_1$ 变成 $a_1$。",
+            "要让所有元素变成 $a_1$，最小的可用模数要求为 $a_2-a_1$，所以该方案允许的最大 $k$ 是 $a_2-a_1$；与归零方案取最大值得到答案。"
+          ],
+          "solutionBrief": "排序得到最小的两个数 $a_1,a_2$。当 $k\\le a_1$ 时可将所有数模自身变为 $0$；当 $k>a_1$ 时目标被迫为 $a_1$，可行上限为 $a_2-a_1$。答案为 $\\max(a_1,a_2-a_1)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2179D",
+          "index": "D",
+          "slot": "D",
+          "title": "Blackslex and Penguin Civilization",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2179/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/149406",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n$，需要排列 $0,1,\\ldots,2^n-1$。对每个前缀计算其中所有数的按位与，并累加其二进制 $1$ 的个数；要求输出使该总和最大的排列中，字典序最小的一个。",
+          "transformedStatement": "将总分改写为各个阈值的前缀计数之和：对每个 $i$，最大化按位与至少含 $i$ 个 $1$ 的前缀数量，并让这些层级同时达到上界；随后按字典序选择对应构造。",
+          "keyObservations": [
+            "把目标和按位层数拆开：前缀按位与的 `popcount` 等于各个阈值贡献的总和，因此可分别最大化“前缀与至少有 $i$ 个 $1$ 位”的前缀数量。",
+            "若某个前缀的按位与至少有 $i$ 个 $1$ 位，则该前缀中的所有数都必须包含这 $i$ 个固定位置的 $1$；这样的数最多有 $2^{n-i}$ 个，所以对应前缀数量存在上界。",
+            "构造使每个阈值 $i$ 都恰好达到上界：先放置全为 $1$ 的数，再按块追加 $j\\cdot 2^{n-i}+2^{n-i}-1$，其中 $i=1,\\ldots,n$ 且 $j$ 遍历所有偶数。",
+            "在达到各层上界的前提下，按题解固定低位模式并让其余部分按字典序尽量小，得到字典序最小的最优排列。"
+          ],
+          "solutionBrief": "先用前缀按位与的位数分层，证明第 $i$ 层最多有 $2^{n-i}$ 个有效前缀。构造输出 $2^n-1$，随后对每个 $i$ 追加 $j\\cdot2^{n-i}+2^{n-i}-1$（$j$ 为偶数），同时达到所有上界并保持字典序最小。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2179E",
+          "index": "E",
+          "slot": "E",
+          "title": "Blackslex and Girls",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2179/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/149406",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "geometry",
+            "math"
+          ],
+          "statementBrief": "给定两党的总票数、长度为 $n$ 的胜者模式串和每个选区的最低人数。可任意把两党的选民分配到各区，但每区人数至少为 $p_i$，且必须由模式指定的党以严格多数获胜，判断是否存在这种分配。",
+          "transformedStatement": "把每个选区的严格多数约束替换为指定赢家至少获得 $\frac{p_i}{2}$ 向下取整 $+1$ 票；混合胜者时分别满足两党的最低需求，统一胜者时再处理全局票差约束。",
+          "keyObservations": [
+            "在容量至少为 $p_i$ 且必须严格获胜时，指定赢家在第 $i$ 区至少需要 $\frac{p_i}{2}$ 向下取整 $+1$ 票，把多数条件转成各党的独立最低需求。",
+            "若字符串中两种指定赢家都出现，达到各区最低赢家票数后，多余票可分别投进对应赢家的区，因此只需检查总容量和两党的最低需求。",
+            "若所有区都由同一党获胜，除最低赢家票数外，赢家必须比输家总票数至少多 $n$，因为每个区都要贡献至少 $1$ 的票差。"
+          ],
+          "solutionBrief": "先检查所有最低人口之和是否超过总票数。计算各区指定赢家所需的 $\frac{p_i}{2}$ 向下取整 $+1$ 票；若两种赢家均出现，只需检查两党余额。若赢家党唯一，还需检查赢家总票数至少比另一党多 $n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2179F",
+          "index": "F",
+          "slot": "F",
+          "title": "Blackslex and Another RGB Walking",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/2179/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/149406",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "communication",
+            "constructive algorithms",
+            "graphs",
+            "interactive",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "给定一个连通无向二分图，第一位玩家可为每个顶点染红、绿或蓝；随后第二位玩家从未知的非根顶点出发，只能看到所有邻居的颜色，且不知道当前点和邻居编号。对每次查询，他必须选择一个邻居，使到顶点 $1$ 的距离严格变小，并设计两阶段策略保证做到这一点。",
+          "transformedStatement": "把通信编码为根到各点距离的模 $3$：颜色表示距离余数。由于二分图中相邻点距离恰差 $1$，邻居颜色组合即可唯一确定应选择的更近层颜色；单色时任取邻居。",
+          "keyObservations": [
+            "二分图中每条边连接的两个顶点到根的距离恰好相差 $1$，因此按距离模 $3$ 染色后，相邻点颜色必不同且能区分前进方向。",
+            "若邻居颜色包含红、绿，则当前位置只能是蓝色，通往根的邻居必为绿色；绿蓝对应目标蓝色，蓝红对应目标红色。",
+            "若所有邻居颜色相同，则这些邻居只能是当前位置距离更小的一层，因为除根外每个点都至少有一个更近的邻居；任选其一即可前进。"
+          ],
+          "solutionBrief": "第一轮从顶点 $1$ 求出各点距离，并按距离模 $3$ 依次染红、绿、蓝。第二轮根据邻居出现的颜色确定通往根的目标颜色；若只有一种颜色则任选邻居，否则选目标颜色对应的邻居。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2179G",
+          "index": "G",
+          "slot": "G",
+          "title": "Blackslex and Penguin Migration",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2179/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/149406",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "几何",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "岛屿是 $n\\times n$ 网格，每格恰有一只带唯一编号的企鹅。可询问任意两只企鹅的曼哈顿距离，最多进行规定次数，要求构造一个网格，使所有企鹅两两距离与隐藏布局完全一致。",
+          "transformedStatement": "把企鹅视为网格上的点：先定位两个非对置角点，再把每只企鹅到这两个角点的距离作为坐标方程，直接反解其行列位置。",
+          "keyObservations": [
+            "从任意企鹅出发，距离它最远的企鹅必位于某个角落，因此一次全量询问即可找到第一个角点。",
+            "相对第一个角点距离为 $n-1$ 的企鹅恰好形成一条候选边界；从其中任取一点，距离最远的候选点可作为非对置角点。",
+            "两个非对置角点的曼哈顿距离唯一确定任意企鹅的位置，可由两次距离联立得到 $x=(d_1+d_2-n+3)/2$、$y=(d_1-d_2+n+1)/2$。",
+            "只需询问两个角点到所有企鹅的距离即可填满整张网格，询问次数为 $3n^2+n$，满足限制。"
+          ],
+          "solutionBrief": "先从任意企鹅找最远点作为角点，再筛出距离为 $n-1$ 的候选点并找出非对置角点。询问两个角点到所有企鹅的距离，利用联立公式恢复每只企鹅的坐标并输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2179H",
+          "index": "H",
+          "slot": "H",
+          "title": "Blackslex and Plants",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2179/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/149406",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 株初始含水量为零的植物。每次给定区间 $[l,r]$，对其中第 $i$ 株加入 $f(i-l+1)$ 毫升水，其中 $f(x)=x$ 乘以 $x$ 的最低位非零二进制位；完成所有操作后输出每株植物的总含水量。",
+          "transformedStatement": "将每次操作中偏移量 $x=i-l+1$ 的贡献拆成所有满足 $2^j\\mid x$ 的层，每层只处理一个等差位置集合，并把贡献表示为关于实际位置的线性函数，以便用步长差分统一维护。",
+          "keyObservations": [
+            "对任意偏移量 $x$，有 $x\\cdot\\operatorname{lsb}(x)=\\sum_{j:2^j\\mid x}x\\cdot2^{\\max(0,j-1)}$，因此可按 $2^j$ 是否整除偏移量拆开贡献。",
+            "固定 $j$ 后，一次区间操作只影响满足 $2^j\\mid(i-l+1)$ 的等差位置，且贡献是关于位置的线性函数，从而可用两组差分量分别维护出现次数和线性偏移。",
+            "每个 $j$ 层只需处理不超过区间长度的幂次，沿步长 $2^j$ 做前缀累加即可恢复所有位置贡献，所有层合并后得到答案。"
+          ],
+          "solutionBrief": "利用 $f(x)$ 的幂二整除分解，按 $j$ 建层；每层对满足 $2^j\\mid(i-l+1)$ 的等差位置进行线性差分更新，再沿步长 $2^j$ 前缀累加并合并各层，复杂度为 $O((n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "complete"
         }
       ]
