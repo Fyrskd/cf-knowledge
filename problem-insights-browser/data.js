@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1983,
+    "total_problems": 1991,
     "source_total_problems": 1991,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 1983,
-    "with_editorial_brief": 1738,
-    "with_solution_brief": 1739,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1991,
+    "with_editorial_brief": 1746,
+    "with_solution_brief": 1747,
     "missing_editorial_brief": 244,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 924,
+    "ai_override_count": 932,
     "primary_topic_count": 13,
-    "contest_count": 311,
+    "contest_count": 312,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 83,
-    "构造与贪心": 665,
+    "构造与贪心": 671,
     "图论与网络流": 119,
-    "动态规划与状态设计": 187,
+    "动态规划与状态设计": 188,
     "数论与同余": 193,
     "组合计数与概率": 154,
     "数据结构": 162,
     "几何": 42,
     "树结构": 129,
     "代数、矩阵与多项式": 18,
-    "交互": 76,
+    "交互": 77,
     "基础实现与模拟": 84,
     "博弈": 71
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 810,
+    "ai_generated_with_editorial": 818,
     "ai_generated_partial_editorial": 37,
     "missing_editorial": 244,
     "manual_override": 891,
@@ -19972,6 +19972,232 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：不要枚举所有切分点。先判断“完全有序仍可行”这一特殊分支：按连续 `-1` 段套 `2^len-len-1` 并加一。否则根据已知非固定点推断每个已知位置属于左/右侧；把相邻已知点之间的 `-1` 段按 `L->L`,`L->R`,`R->L`,`R->R` 分类，同侧 gap 的贡献独立相乘，跨侧 gap 只收缩切分点范围并在有效范围内累加组合数。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2162,
+      "name": "Codeforces Round 1059 (Div. 3)",
+      "date": "2025-10-17",
+      "url": "https://codeforces.com/contest/2162",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "2162A",
+          "index": "A",
+          "slot": "A",
+          "title": "Beautiful Average",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2162/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/147242",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定一个整数数组，每次选择一个连续子数组（只能从首尾删除元素），计算其元素平均值。要求在所有非空连续子数组中，输出平均值的最大值。",
+          "transformedStatement": "把问题转化为寻找能作为单元素子数组取得的最大元素：任何子数组的平均值都不超过其中最大元素，因此全局最优值就是数组最大值。",
+          "keyObservations": [
+            "长度为 $1$ 的子数组可以直接取出任意单个元素，因此答案至少是数组最大值。",
+            "若当前子数组平均值为 $k$，加入一个大于 $k$ 的元素会提高平均值，加入小于 $k$ 的元素会降低平均值；因此包含最大元素的更长子数组不可能优于只取该元素。",
+            "任意子数组的平均值都不超过其中的最大元素，而整个数组中的最大元素可作为单元素子数组取得，所以最优值恰好是全数组最大值。"
+          ],
+          "solutionBrief": "扫描数组求最大元素即可。由于单元素子数组的平均值就是该元素，答案至少为最大元素；而任何子数组平均值都不超过其元素最大值，因此答案等于全数组最大值，单个测试用例复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2162B",
+          "index": "B",
+          "slot": "B",
+          "title": "Beautiful String",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2162/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/147242",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个二进制字符串，选择其中若干下标组成保持顺序的子序列并删除这些字符。所选子序列必须非递减，删除后的剩余字符串必须是回文串；输出任意合法下标序列，若无解输出 $-1$。",
+          "transformedStatement": "将构造目标转化为：删除一种字符，使剩余部分只包含另一种字符。具体删除所有 `0` 后，候选子序列天然非递减，剩余的全 `1` 字符串自动是回文串。",
+          "keyObservations": [
+            "选取字符串中的所有字符 `0` 作为子序列时，选中字符始终相同，因此按原顺序组成非递减子序列。",
+            "删除所有 `0` 后，剩余字符串只含 `1`，必然是回文串，从而同时满足两个条件。",
+            "因此每个测试用例都一定有解，只需线性扫描并输出所有 `0` 的位置；没有 `0` 时输出空子序列即可。"
+          ],
+          "solutionBrief": "线性扫描字符串，收集所有字符 `0` 的下标并输出。它们组成非递减子序列，删除后只剩全为 `1` 的字符串，该字符串必为回文；时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2162C",
+          "index": "C",
+          "slot": "C",
+          "title": "Beautiful XOR",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2162/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/147242",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定两个正整数 $a,b$，每次可选择满足 $0\\le x\\le$ 当前 $a$ 的整数，并将当前 $a$ 替换为 $a\\oplus x$。要求输出不超过 100 次操作，使最终 $a=b$；若无法做到则输出 $-1$。",
+          "transformedStatement": "把操作按二进制位分析：当前数的最高位是不可上升的边界。若目标未越界，先把边界以下的位全部补成 $1$，再通过异或逐位清除目标 $b$ 中不需要的位。",
+          "keyObservations": [
+            "每次选择的 $x$ 都不超过当前 $a$，因此 $x$ 的最高位不可能高于 $a$，异或后 $a$ 的最高位也不会上升；所以若 $b$ 的最高位高于初始 $a$，必然无解。",
+            "先把初始最高位以下所有为 $0$ 的二进制位逐个通过异或置为 $1$，可得到连续低位全为 $1$ 的中间状态，从而保证后续每个需要操作的幂次 $2^i$ 都满足 $x\\le a$。",
+            "在全填充状态下，对 $b$ 中为 $0$ 的每一位异或对应的 $2^i$，即可只关闭这些位并得到 $b$；整个过程的操作数为 $O(\\log a)$，满足 100 次限制。"
+          ],
+          "solutionBrief": "比较 $a,b$ 的最高位，若 $b$ 更高则无解。否则先用各个缺失的低位幂次把 $a$ 填成低位全为 $1$，再对 $b$ 中为 $0$ 的位异或对应幂次，构造出 $b$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2162D",
+          "index": "D",
+          "slot": "D",
+          "title": "Beautiful Permutation",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2162/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/147242",
+          "primaryTopic": "交互",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "interactive"
+          ],
+          "statementBrief": "有一个长度为 $n$ 的隐藏排列，并将某个区间 $[l,r]$ 内的每个元素都加一得到新数组。每次可询问原数组或新数组任意子数组的元素和，要求在不超过 40 次询问内找出这个区间。",
+          "transformedStatement": "把两数组的前缀和之差视为信号：区间左端点之前差值为零，进入修改区间后差值变为正；全数组差值则直接给出区间长度。",
+          "keyObservations": [
+            "令前缀差值为修改数组与原排列前缀和之差，则它在 $i<l$ 时为 $0$，在 $i\\ge l$ 时为正，因此 $l$ 是差值首次为正的位置。",
+            "对同一个前缀分别查询原排列和修改数组的和，就能判断该位置是否已经进入修改区间，从而二分定位 $l$。",
+            "整段数组的和之差恰好等于被加一的元素个数，即 $r-l+1$；得到 $l$ 后可直接计算 $r$，无需再对右端点二分。",
+            "先查询整段一次，再进行前缀二分，查询次数为 $2\\lceil\\log_2 n\\rceil+2<40$，满足交互限制。"
+          ],
+          "solutionBrief": "查询整段得到总增量，确定区间长度。对前缀分别询问原排列和修改数组的和，以差值是否为正二分出首个修改位置 $l$，再由区间长度计算 $r$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2162E",
+          "index": "E",
+          "slot": "E",
+          "title": "Beautiful Palindromes",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2162/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/147242",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "schedules"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组，每次可选择一个 $1$ 到 $n$ 的整数并追加到数组末尾，必须进行恰好 $k$ 次。要求输出每次追加的数，使最终数组中的回文连续子数组数量最少。",
+          "transformedStatement": "原数组本身的回文数量无法改变，因此问题转化为让追加部分及其与原数组的连接不产生任何新回文。为此只需寻找三个互不相同且与原数组结构相容的数，并按三周期循环追加。",
+          "keyObservations": [
+            "追加元素只会增加包含新位置的回文子数组，因此只要构造出一个完全不产生新增回文的序列，就能达到最小值。",
+            "三个互不相同的数按 $x,y,z$ 循环追加时，周期内部不会形成回文；选取方式还能避免它与原数组末尾拼接出新的回文。",
+            "若原数组是 $1$ 到 $n$ 的排列，取前三个元素作为 $x,y,z$，它们互不相同且各自在原数组中只出现一次，因此循环追加不会产生新增回文。",
+            "若原数组不是排列，则存在未出现的 $x$；取末元素为 $z$，再选一个不同于 $x,z$ 的 $y$，利用 $x$ 未在原数组出现且三者互异，循环追加同样不会增加回文子数组。"
+          ],
+          "solutionBrief": "先统计数组是否为排列。若是，循环输出 $a_1,a_2,a_3$；否则取未出现的数为 $x$、末元素为 $z$，再选不同于二者的 $y$，循环输出 $x,y,z$ 共 $k$ 次。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2162F",
+          "index": "F",
+          "slot": "F",
+          "title": "Beautiful Intervals",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/2162/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/147242",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 个位置和 $m$ 个区间，需要构造一个包含 $0$ 到 $n-1$ 的排列。对每个区间取其中元素的 MEX，收集成多重集合，要求排列使该集合的 MEX 最小。",
+          "transformedStatement": "把目标按答案是否为 $0$、$1$、$2$ 分层判断：先判断区间是否有公共交点，再判断能否让所有包含 $0$ 的区间覆盖相邻的 $1$；否则用子序列 $[0,2,1]$ 直接封锁 MEX 为 $2$。",
+          "keyObservations": [
+            "若排列中出现子序列 $[0,2,1]$，任何同时包含 $0$ 和 $1$ 的连续区间也必然包含 $2$，因此所有区间的 MEX 集合都不会含 $2$，答案至多为 $2$。",
+            "答案为 $0$ 当且仅当每个给定区间都包含放置 $0$ 的位置，也就是所有区间存在公共交点；把 $0$ 放在该交点即可。",
+            "为避免某个区间的 MEX 为 $1$，必须保证任何包含 $0$ 的区间也包含 $1$；若存在位置不是某区间左端点和另一区间右端点的同时角色，就可将 $0,1$ 相邻放置。",
+            "若不存在公共交点且无法满足相邻放置条件，则放置 $[0,2,1]$，排除 MEX 为 $0$ 和 $1$，结合答案至多为 $2$ 可得最优构造。"
+          ],
+          "solutionBrief": "先检查所有区间是否有公共位置，有则将 $0$ 放在那里，使答案为 $0$。否则寻找可使所有包含 $0$ 的区间同时包含相邻的 $1$ 的位置，答案为 $1$；若不存在，则固定放置 $[0,2,1]$，答案为 $2$，其余位置按未使用数字填充。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2162G",
+          "index": "G",
+          "slot": "G",
+          "title": "Beautiful Tree",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2162/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/147242",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "树结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "probabilities",
+            "trees"
+          ],
+          "statementBrief": "给定顶点编号为 $1$ 到 $n$ 的顶点，需要构造一棵树，使所有边的两个端点编号乘积之和为完全平方数。每条边连接两个不同顶点，最终输出 $n-1$ 条边，或在不存在满足条件的树时输出 $-1$。",
+          "transformedStatement": "把问题转化为让边权和固定等于 $n^2$：先建立少量固定边，再把其余顶点挂到指定顶点，使新增边权的总和补足目标平方数，同时保持树结构。",
+          "keyObservations": [
+            "将目标平方数固定为 $n^2$，这样每增加一个顶点时只需精确控制边权和的增量，避免搜索任意平方数。",
+            "当 $n\\ge 5$ 时，固定边 $1-2-3-4$ 和边 $1-n$，其余顶点 $i\\in[5,n-1]$ 接到顶点 $2$，所得边权和恰好为 $2+6+12+n+\\sum_{i=5}^{n-1}2i=n^2$。",
+            "上述构造始终包含全部顶点且边数为 $n-1$，因此连通且无环，确实是一棵树；小规模的 $n=3,4$ 可直接给出平方和构造。",
+            "$n=2$ 时唯一的树只有边 $1-2$，边权和为 $2$ 不是平方数，因此无解。"
+          ],
+          "solutionBrief": "目标直接设为 $S=n^2$。$n\\ge5$ 时输出边 $1-2,2-3,3-4,1-n$，并将 $5$ 到 $n-1$ 的顶点全部接到 $2$；代入求和可得 $S=n^2$。$n=3,4$ 特判，$n=2$ 无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2162H",
+          "index": "H",
+          "slot": "H",
+          "title": "Beautiful Problem",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/2162/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/147242",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定一个数组和若干下标区间。对每个 $x=1,\u0002,\u0002,\u0002,n$ 独立考虑，允许任意重排数组一次，并要求每个区间内的所有数都不同时严格小于和严格大于 $x$；输出哪些 $x$ 存在满足条件的重排。",
+          "transformedStatement": "把每个区间标记为“小侧”或“大侧”：前者只能放不超过 $x$ 的数，后者只能放不小于 $x$ 的数。去掉被包含区间后，按端点形成交叠链，问题转化为统计两类区间覆盖位置的可行计数 DP。",
+          "keyObservations": [
+            "$f=1$ 当且仅当区间内不存在同时小于 $x$ 和大于 $x$ 的数，因此每个区间必须整体放在 $x$ 的一侧。",
+            "固定区间属于“小侧”或“大侧”后，位置可按覆盖类型分类；严格小于、大于 $x$ 的元素数量分别只需不超过对应可用位置数，未被区间覆盖的位置可吸收剩余需求。",
+            "被其他区间完全包含的区间不会增加限制，删除后按左右端点递增排列，区间重叠结构可由相邻交集表示，从而把选择两类区间转为二维计数 DP。",
+            "三段区间中间段颜色与两侧都不同时可能重复扣除重叠部分，但这种状态不优于三段同色状态，因此保留这些状态不会改变最优答案。"
+          ],
+          "solutionBrief": "对每个 $x$ 统计小于和大于 $x$ 的元素数。将区间分为只能放小数或只能放大数，删除被包含区间后按端点排序，用 $dp[i][j][k]$ 记录前 $i$ 个区间的分类计数与另一类最大覆盖数，再检查未覆盖位置能否补足两侧需求；整体复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
