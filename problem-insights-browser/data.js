@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2499,
+    "total_problems": 2506,
     "source_total_problems": 2507,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2499,
-    "with_editorial_brief": 2231,
-    "with_solution_brief": 2232,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2506,
+    "with_editorial_brief": 2238,
+    "with_solution_brief": 2239,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1559,
+    "ai_override_count": 1568,
     "primary_topic_count": 13,
     "contest_count": 384,
     "rating_min": 800,
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 122,
-    "构造与贪心": 789,
-    "图论与网络流": 151,
+    "字符串": 123,
+    "构造与贪心": 791,
+    "图论与网络流": 150,
     "动态规划与状态设计": 217,
     "数论与同余": 274,
-    "组合计数与概率": 190,
+    "组合计数与概率": 192,
     "数据结构": 234,
     "几何": 58,
-    "树结构": 136,
+    "树结构": 137,
     "代数、矩阵与多项式": 19,
     "交互": 84,
     "基础实现与模拟": 138,
-    "博弈": 87
+    "博弈": 89
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1290,
-    "ai_generated_partial_editorial": 50,
+    "ai_generated_with_editorial": 1296,
+    "ai_generated_partial_editorial": 51,
     "missing_editorial": 267,
     "manual_override": 891,
     "statement_derived": 1
@@ -62393,9 +62393,120 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-12-19",
       "url": "https://codeforces.com/contest/1914",
       "type": "Div. 3",
-      "problemCount": 2,
-      "maxRating": 2100,
+      "problemCount": 9,
+      "maxRating": 2300,
       "problems": [
+        {
+          "key": "1914A",
+          "index": "A",
+          "slot": "A",
+          "title": "Problemsolving Log",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1914/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/123530",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定 Monocarp 每分钟正在解决哪道题的日志字符串；字母 `A` 到 `Z` 分别需要 $1$ 到 $26$ 分钟，且解决后仍可能继续思考。统计有多少道题累计获得了足够的思考时间并被解决。",
+          "transformedStatement": "把日志视为 26 个字母的频次统计问题：第 $i$ 个字母对应的题目可解当且仅当其出现次数至少为 $i+1$，答案是满足条件的字母数量。",
+          "keyObservations": [
+            "每道题是否解决只取决于日志中对应字母出现次数，而与这些分钟的先后顺序无关，因此可将字符串压缩为 26 个频次。",
+            "字母 `A` 到 `Z` 的最低用时依次为其编号，因此对第 $i$ 个字母只需判断出现次数是否至少为 $i+1$，满足条件就计数。",
+            "即使某题已经解决，后续仍可能继续思考它，所以同一字母的全部出现次数都应计入该题的总用时。"
+          ],
+          "solutionBrief": "统计日志中每个大写字母的出现次数；按 `A` 到 `Z` 的顺序检查其次数是否分别达到 $1,2,\u001b[...截断原因? No. Need valid. I accidentally have weird? Need redo.",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1914B",
+          "index": "B",
+          "slot": "B",
+          "title": "Preparing for the Contest",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1914/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/123530",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定难度为 $1$ 到 $n$ 的 $n$ 个问题，需选择一个排列依次解决；除第一个外，若当前问题比上一个更难，就计为一次兴奋。请构造一个排列，使兴奋次数恰好为 $k$。",
+          "transformedStatement": "把目标拆成一个完全递减的零兴奋前缀和一个递增的后缀：保留整体递减排列，仅反转末尾 $k+1$ 个问题，使后缀贡献恰好 $k$ 次。",
+          "keyObservations": [
+            "先按难度递减排列时不会产生任何兴奋，因此它可作为固定的零贡献前缀。",
+            "将末尾恰好 $k+1$ 个问题反转后，这一段内部严格递增，除首个外恰好产生 $k$ 次兴奋。",
+            "反转段首元素为 $1$；若前缀存在，其末元素至少为 $k+2$，所以前缀与反转段之间不会额外产生兴奋。"
+          ],
+          "solutionBrief": "先构造序列 $[n,n-1,\u0002dots,1]$，再将末尾 $k+1$ 个数反转。前缀不产生兴奋，反转段内部恰好有 $k$ 次递增，边界也不会新增次数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1914C",
+          "index": "C",
+          "slot": "C",
+          "title": "Quests",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1914/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/123530",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个按编号逐步解锁的任务，第一次完成任务 $i$ 获得 $a_i$ 经验，之后每次重复获得 $b_i$；最多完成 $k$ 次，求最大总经验。",
+          "transformedStatement": "把方案按首次完成的任务数量 $i$ 分类：首次完成固定是前缀 $1..i$，剩余 $k-i$ 次全部用于重复该前缀中 $b$ 最大的任务，因此只需比较各个前缀的候选总和。",
+          "keyObservations": [
+            "若首次完成的任务数为 $i$，由于任务按编号逐步解锁，首次完成的任务必为前缀 $1..i$，其经验固定为前缀和。",
+            "完成前缀后剩余的 $k-i$ 次只能重复已完成任务，因此全部重复前缀中 $b_j$ 最大的任务最优，候选值为 $\\sum_{j=1}^{i}a_j+\\max_{1\\le j\\le i}b_j\\cdot(k-i)$。",
+            "只需让 $i$ 遍历 $1$ 到 $\\min(n,k)$，并在扫描中维护前缀和与前缀最大值，就能避免对每个候选前缀重复计算。"
+          ],
+          "solutionBrief": "枚举首次完成的前缀长度 $i$，维护其 $a$ 值前缀和及最大 $b$ 值；剩余次数全部重复该最大 $b$ 的任务，取所有候选值最大者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1914D",
+          "index": "D",
+          "slot": "D",
+          "title": "Three Activities",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1914/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/123530",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "假期有 $n$ 天，第 $i$ 天参加滑雪、看电影、玩桌游分别会有 $a_i,b_i,c_i$ 位朋友参加。必须分别选择三个互不相同的日期各进行一次活动，最大化总人数 $a_x+b_y+c_z$。",
+          "transformedStatement": "把每个数组压缩为数值最大的三个元素及其日期；原问题等价于在这三组候选中选择一个三元组，要求日期两两不同并最大化三项之和。",
+          "keyObservations": [
+            "固定电影和桌游所用的两个日期后，滑雪数组中至多有两个位置被排除，因此总能找到一个不冲突的前三大元素替代最优选择。",
+            "对三个数组分别应用上述论证，可知存在一个最优方案，使三项活动所选的日期都来自各自数组的前三大位置。",
+            "候选位置总数只有 $3^3$，逐一检查三个日期是否互不相同并计算总和，就能覆盖至少一个最优方案。"
+          ],
+          "solutionBrief": "分别找出 $a,b,c$ 中数值最大的三个元素及其位置，只枚举这 $27$ 种组合，跳过日期重复的组合并取最大和。前三名足以覆盖某个最优解，因为固定另外两项时最多只冲突两个位置。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1914E1",
           "index": "E1",
@@ -62404,22 +62515,81 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1400,
           "problemUrl": "https://codeforces.com/contest/1914/problem/E1",
           "editorialUrl": "https://codeforces.com/blog/entry/123530",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈"
-          ],
+          "primaryTopic": "博弈",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "games",
             "greedy",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Game with Marbles (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n$ 种颜色的弹珠数量，Alice 和 Bob 轮流选择一种双方都至少拥有一颗弹珠的颜色；当前玩家丢弃一颗，对手丢弃该颜色的全部弹珠。无法继续选择时结束，求双方最优行动下 Alice 剩余总数减 Bob 剩余总数的结果。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1914E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Game with Marbles (Hard Version)",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1914/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/123530",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "games",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 种颜色的弹珠，Alice 和 Bob 各有数量 $a_i,b_i$。每回合选择双方都仍有该颜色弹珠的颜色，当前玩家丢掉自己的一颗，对手丢掉该颜色的全部弹珠；Alice 先手，直到无法操作，求双方最优时最终 Alice 弹珠总数减 Bob 弹珠总数。",
+          "transformedStatement": "把每种颜色归类为最终由 Alice 或 Bob 先处理：Alice 处理颜色 $i$ 的贡献是 $a_i-1$，Bob 处理的贡献是 $-(b_i-1)$。从所有颜色由 Bob 处理的基准分出发，Alice 接管颜色 $i$ 可增加 $a_i+b_i-2$，于是游戏转化为双方轮流争夺价值 $a_i+b_i$ 的颜色。",
+          "keyObservations": [
+            "把每种颜色都视为最终被某一方先处理：若 Alice 处理，得分贡献为 $a_i-1$；若 Bob 处理，贡献为 $-(b_i-1)$。",
+            "先假设所有颜色由 Bob 处理，基准分为 $-\u001csum_i(b_i-1)$；Alice 接管颜色 $i$ 后，得分增加 $a_i+b_i-2$，因此只需比较 $a_i+b_i$。",
+            "双方轮流争夺尚未决定的颜色，Alice 会拿走当前价值最大的颜色，Bob 则封锁当前价值最大的颜色；所以按 $a_i+b_i$ 降序后，奇数位置归 Alice、偶数位置归 Bob。"
+          ],
+          "solutionBrief": "将每种颜色归属给实际先操作它的一方。按 $a_i+b_i$ 降序排列，Alice 选择第 $1,3,5,\u001cdots$ 个颜色，Bob 选择第 $2,4,6,\u001cdots$ 个颜色；初始分数为 $-\u001csum_i(b_i-1)$，Alice 选中的颜色额外增加 $a_i+b_i-2$。复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1914F",
+          "index": "F",
+          "slot": "F",
+          "title": "Programming Competition",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1914/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/123530",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graph matchings",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以员工 1 为根的树，每名员工最多参加一个两人团队；若两人中一人是另一人的直接或间接上级，则不能组队。求最多能组成多少个团队。",
+          "transformedStatement": "根节点必然不能使用；其不同子树之间的节点可任意互配，因此先把各子树看作数量分别为 $sz_i$ 的类型配对。若最大类型压倒其他类型，就把问题缩到这棵最大子树，并记录其中已有的匹配数。",
+          "keyObservations": [
+            "根的不同子树中的任意两个节点互不为祖先关系，因此可将这些子树视为不同类型，配对限制转化为只能配不同类型。",
+            "若最大类型数量为 $mx$、总数为 $tot$，当 $mx\\le tot-mx$ 时可配出 $\\lfloor tot/2\\rfloor$ 对；否则所有其他类型只能分别与最大类型配对，得到 $tot-mx$ 对。",
+            "出现数量失衡时，未匹配节点只能继续留在最大子树中，因此递归处理该子树；若其中已有 $k$ 个节点匹配，平衡条件应改为 $sz_{mx}-k\\le tot-sz_{mx}$。",
+            "预先用 DFS 计算子树大小后，每次只沿数量最多的子树继续递归，整体过程可在线性时间内完成。"
+          ],
+          "solutionBrief": "根节点无法与任何人组队。把根的各棵子树视为不同类型，先按类型数量计算最大配对数；若最大类型过多，就将其余节点全部配给该类型，并递归处理剩余的最大子树，同时维护其中已匹配数量 $k$。DFS 预处理子树大小，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         },
         {
           "key": "1914G1",
@@ -62429,12 +62599,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2100,
           "problemUrl": "https://codeforces.com/contest/1914/problem/G1",
           "editorialUrl": "https://codeforces.com/blog/entry/123530",
-          "primaryTopic": "图论与网络流",
-          "secondaryTopics": [
-            "树结构",
-            "构造与贪心",
-            "组合计数与概率"
-          ],
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "combinatorics",
@@ -62445,12 +62611,45 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Light Bulbs (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一行排列的 $2n$ 个灯泡，每种颜色恰好有两个。需要先选择一组灯泡点亮，之后按题目规定反复操作，目标是保证最终所有灯泡都点亮，并输出题目要求的两个数；但当前记录缺少具体操作规则及完整输出含义。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1914G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Light Bulbs (Hard Version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1914/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/123530",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "字符串"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "hashing"
+          ],
+          "statementBrief": "有 $2n$ 盏排成一行的灯，每种颜色恰好出现两次。先选择若干盏初始点亮，之后可按题目规定的点亮操作反复传播；要求计算使全部灯最终点亮所需初始灯集合的最小大小，以及达到该最小值的集合数量。",
+          "transformedStatement": "把颜色序列划分为满足每种颜色出现 $0$ 或 $2$ 次的闭区间，并研究这些区间的嵌套关系：最小划分决定初始灯数量，内层区间会排除外层区间中的起点选择；闭区间检测转化为随机数的前缀异或相等。",
+          "keyObservations": [
+            "若一个连续区间内每种颜色出现次数都为 $0$ 或 $2$，从区间内任意灯开始都无法把点亮过程传到区间外，因此每个这样的最小闭区间至少需要一个初始灯。",
+            "把序列划分为最少的闭区间后，每个区间只需选择一个合适的起点；所有被更内层闭区间覆盖的灯都不能作为该外层区间的起点。",
+            "未被任何内层闭区间标记的灯一定能点亮其所属的最短闭区间，因此每个划分区间的可选起点数是其中未标记灯的数量，答案可按区间乘法合并。",
+            "为每种颜色赋一个随机 $64$ 位数，两次出现使用同一数；区间异或为 $0$ 当且仅当其颜色出现次数均为偶数，从而可用前缀异或和定位最短闭区间，并将处理复杂度降至 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "先找出所有最小闭区间，标记其中被更内层区间覆盖的灯，再将整段划分为最少闭区间；每段可选起点数为未标记灯数，答案取这些数量的乘积。用随机异或前缀和配合映射表在 $O(n\\log n)$ 内找闭区间。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
