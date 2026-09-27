@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3057,
+    "total_problems": 3060,
     "source_total_problems": 3061,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3057,
-    "with_editorial_brief": 2779,
-    "with_solution_brief": 2780,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3060,
+    "with_editorial_brief": 2782,
+    "with_solution_brief": 2783,
     "missing_editorial_brief": 277,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2119,
+    "ai_override_count": 2122,
     "primary_topic_count": 13,
-    "contest_count": 465,
+    "contest_count": 466,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,11 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "博弈": 98,
+    "构造与贪心": 974,
+    "数据结构": 286,
     "数论与同余": 329,
-    "构造与贪心": 973,
     "动态规划与状态设计": 258,
-    "数据结构": 285,
     "组合计数与概率": 239,
     "图论与网络流": 187,
     "几何": 75,
@@ -55,11 +56,10 @@ window.CF_INSIGHTS_DATA = {
     "基础实现与模拟": 183,
     "交互": 96,
     "树结构": 151,
-    "博弈": 97,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1824,
+    "ai_generated_with_editorial": 1827,
     "ai_generated_partial_editorial": 64,
     "missing_editorial": 277,
     "manual_override": 891,
@@ -94417,6 +94417,101 @@ window.CF_INSIGHTS_DATA = {
             "当 $c>k$ 时，题解证明最多两次操作即可达到目标；因此只需先判定是否存在一次操作得到 $k$，否则答案就是 $2$。"
           ],
           "solutionBrief": "先统计不同数值数 $c$。若 $c\\le k$，答案是 $k-c$；否则枚举正方形边长，按每个数值的出现位置范围用二维差分统计可完全覆盖的种类数，检查一次重染色能否得到 $k$，否则由构造保证答案为 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1719,
+      "name": "Codeforces Round 814 (Div. 2)",
+      "date": "2022-08-16",
+      "url": "https://codeforces.com/contest/1719",
+      "type": "Div. 2",
+      "problemCount": 3,
+      "maxRating": 1400,
+      "problems": [
+        {
+          "key": "1719A",
+          "index": "A",
+          "slot": "A",
+          "title": "Chip Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1719/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/106049",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "games",
+            "math"
+          ],
+          "statementBrief": "棋子位于 $n\\times m$ 棋盘左下角，两名玩家轮流将它向右或向上移动任意奇数格，但一次只能选择一个方向。无法移动者输，求双方最优行动时的获胜者。",
+          "transformedStatement": "忽略每步具体走向，将一局游戏抽象为把从左下角到右上角所需的固定总距离 $n+m-2$ 分成若干个奇数长度；分段数量的奇偶性决定最后行动者。",
+          "keyObservations": [
+            "棋子最终必然到达右上角，因为未到达时至少还能沿一个方向移动 $1$ 格；因此所有对局经过的总距离固定为 $n+m-2$。",
+            "每次移动的距离都是奇数，所以进行 $k$ 次移动后总距离的奇偶性就是 $k$ 的奇偶性，最后一步的执行者由固定总距离直接决定。",
+            "当 $(n+m-2)\\bmod 2=0$ 时总移动次数为偶数，最后一步属于 Tonya；否则属于先手 Burenka，因此无需考虑具体策略。"
+          ],
+          "solutionBrief": "把整局看成将固定总距离 $n+m-2$ 分成若干个奇数长度的移动。奇数移动的数量奇偶性等于总距离奇偶性；总距离为偶数时 Tonya 最后行动，否则 Burenka 获胜。每组数据只需判断 $(n+m)\\bmod 2$，复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1719B",
+          "index": "B",
+          "slot": "B",
+          "title": "Mathematical Circus",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1719/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/106049",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定偶数 $n$ 和整数 $k$，必须把 $1$ 到 $n$ 的每个整数恰好放入一个有序对 $(a,b)$。要求每对满足 $(a+k)\\cdot b$ 能被 $4$ 整除；请判断是否可行，若可行输出全部配对。",
+          "transformedStatement": "将条件按 $k$ 对 $4$ 的余数分类，并固定使用相邻奇偶数对 $(i,i+1)$（$i$ 为奇数）；核心只是在 $k\\equiv2\\pmod4$ 时根据 $i+1$ 是否为 $4$ 的倍数决定是否反转有序关系。",
+          "keyObservations": [
+            "条件只取决于 $k\\bmod 4$，因此可将所有情况压缩为余数 $0,1,2,3$ 四类。",
+            "当 $k\\equiv0\\pmod4$ 时，每个有序对都需贡献至少两个因子 $2$；但 $1$ 到 $n$ 的二进制因子总数为 $\\lfloor n/2\\rfloor+\\lfloor n/4\\rfloor<n$，所以不可能。",
+            "对所有奇数 $i$ 先配成 $(i,i+1)$：若 $k$ 为奇数，前项加 $k$ 与后项都为偶数，乘积必被 $4$ 整除。",
+            "当 $k\\equiv2\\pmod4$ 时，若 $i+1$ 不是 $4$ 的倍数就交换为 $(i+1,i)$；此时前项加 $k$ 被 $4$ 整除，而未交换的对中后项本身是 $4$ 的倍数。"
+          ],
+          "solutionBrief": "先令 $k\\leftarrow k\\bmod4$。余数为 $0$ 输出 NO；否则按奇数 $i$ 与 $i+1$ 配对。$k$ 为奇数时直接输出 $(i,i+1)$；$k=2$ 时仅在 $i+1$ 不是 $4$ 的倍数时交换顺序，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1719C",
+          "index": "C",
+          "slot": "C",
+          "title": "Fighting Tournament",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1719/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/106049",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 名强度互异的选手，按编号排队。每轮队首两人比赛，强者获胜并回到队首，败者移到队尾；对每个询问 $(i,k)$，求选手 $i$ 在前 $k$ 轮中获胜的次数。",
+          "transformedStatement": "把比赛分为前 $n$ 轮和其后的稳定阶段：前 $n$ 轮直接模拟并记录每位选手的获胜轮次；最强选手进入队首后将持续获胜，所以后续轮次只需对他补计。",
+          "keyObservations": [
+            "最强选手一旦到达队首，之后每轮都会获胜；他最晚在前 $n$ 轮内到达，因此只需显式处理前 $n$ 轮。",
+            "模拟前 $n$ 轮并记录每位选手获胜的轮次后，查询可转化为统计其记录中不超过 $k$ 的元素个数。",
+            "当 $k>n$ 且查询对象是最强选手时，前 $n$ 轮后的每一轮都获胜，因此额外增加 $k-n$ 次。"
+          ],
+          "solutionBrief": "模拟前 $n$ 轮，按选手保存其获胜轮次。查询时用二分统计轮次不超过 $k$ 的获胜记录；若对象是最强选手且 $k>n$，再加上 $k-n$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
