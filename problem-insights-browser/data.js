@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1907,
+    "total_problems": 1915,
     "source_total_problems": 1915,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 1907,
-    "with_editorial_brief": 1665,
-    "with_solution_brief": 1666,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1915,
+    "with_editorial_brief": 1673,
+    "with_solution_brief": 1674,
     "missing_editorial_brief": 241,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 848,
+    "ai_override_count": 856,
     "primary_topic_count": 13,
-    "contest_count": 301,
+    "contest_count": 302,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 81,
-    "构造与贪心": 646,
-    "图论与网络流": 117,
+    "构造与贪心": 649,
+    "图论与网络流": 118,
     "动态规划与状态设计": 179,
-    "数论与同余": 180,
+    "数论与同余": 182,
     "组合计数与概率": 147,
-    "数据结构": 155,
+    "数据结构": 156,
     "几何": 40,
-    "树结构": 122,
+    "树结构": 123,
     "代数、矩阵与多项式": 17,
     "交互": 74,
     "基础实现与模拟": 80,
     "博弈": 69
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 741,
+    "ai_generated_with_editorial": 749,
     "ai_generated_partial_editorial": 33,
     "missing_editorial": 241,
     "manual_override": 891,
@@ -12486,6 +12486,246 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：不要把双方行动混在一个巨大状态里。先分别计算每条鱼独立吞并左右连续区间的概率；轮次只由区间长度决定，因此能判断另一方此时是否还活着且未接触。等两条鱼的区间相邻后，再用第二阶段状态处理正面对抗概率，最后把两阶段贡献合并。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2195,
+      "name": "Codeforces Round 1080 (Div. 3)",
+      "date": "2026-02-15",
+      "url": "https://codeforces.com/contest/2195",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "2195A",
+          "index": "A",
+          "slot": "A",
+          "title": "Sieve of Erato67henes",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2195/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/151174",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定最多 $5$ 个正整数，每次可选择其中任意个不同元素，但不能一个都不选，并要求判断所选元素的乘积能否恰好为 $67$。对每个测试用例输出 YES 或 NO。",
+          "transformedStatement": "由于目标值 $67$ 是质数，乘积等于它的选取方案必须包含一个值为 $67$ 的元素；因此原题转化为判断数组中是否出现 $67$。",
+          "keyObservations": [
+            "因为 $67$ 是质数，若若干正整数的乘积为 $67$，其中至少有一个数必须等于 $67$；否则所有因子都无法产生这个质数因子。",
+            "数组中出现 $67$ 时，直接选择这个元素即可得到乘积 $67$，因此无需考虑其他元素或组合方式。",
+            "问题可等价为判断数组是否包含元素 $67$，逐个检查即可完成判定。"
+          ],
+          "solutionBrief": "对每个测试用例检查数组中是否存在 $67$。存在则输出 YES，否则输出 NO；依据是 $67$ 为质数，目标乘积为 $67$ 时必须选中它。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2195B",
+          "index": "B",
+          "slot": "B",
+          "title": "Heapify 1",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/2195/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/151174",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列，每次可选择 $i\\le n/2$，交换位置 $i$ 与 $2i$ 的元素，操作次数不限。判断能否通过这些交换将数组变为递增序列。",
+          "transformedStatement": "将位置按“去掉所有因子 $2$ 后的奇数部分”分组；每组形成一条可自由重排的链。问题等价于判断每组当前元素是否恰好包含递增目标在该组位置上的全部元素。",
+          "keyObservations": [
+            "交换边正好连接同一奇数因子的相邻位置，因此每个连通块都是 $x,2x,4x,\u0019dots$ 的链，且不同链之间无法交换元素。",
+            "同一条链上的相邻交换可以实现任意重排，所以只需分别检查每条链中的元素多重集合是否等于最终有序数组在这些位置上的元素。",
+            "最长的链是从位置 $1$ 开始的链，长度为 $\\lfloor\\log_2 n\\rfloor+1$；各链长度平方和为 $O(n\\log n)$，因此逐链排序仍满足限制。"
+          ],
+          "solutionBrief": "按位置的奇数部分把数组划分为若干链，每条链包含 $x,2x,4x,\\dots$。分别排序链中的当前值和目标位置值并比较；全部相同则输出 YES，否则输出 NO，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2195C",
+          "index": "C",
+          "slot": "C",
+          "title": "Dice Roll Sequence",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2195/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/151174",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个由 $1$ 到 $6$ 组成的序列；每次可任选一个位置，将其改成任意骰子面。要求所有相邻元素代表骰子上共边的不同面，求使序列满足条件所需的最少修改次数。",
+          "transformedStatement": "将每个数只看作三个相对面组合之一：$(1,6)$、$(2,5)$ 或 $(3,4)$。连续属于同一组合的子段内部必然产生冲突，每个长度为 $k$ 的子段独立贡献 $\\lfloor k/2\\rfloor$ 次修改。",
+          "keyObservations": [
+            "两个数在骰子上相邻，当且仅当它们不同且不互为相对面，即满足 $s\\ne t$ 且 $s+t\\ne7$。",
+            "把序列按“所属相对面组合”划分成若干连续子段；长度为 $k$ 的子段中有 $k-1$ 个必违规相邻对，而一次修改最多处理两个，因此至少需要 $\\lfloor k/2\\rfloor$ 次修改。",
+            "骰子上任意两面都存在同时邻接它们的第三面，所以修改一个位置时可以选取同时兼容左右邻居的数，不会引入新的违规。",
+            "每个子段都能达到下界：偶数长度修改所有奇数位置，奇数长度按顺序贪心修改冲突位置，因此总答案是各段 $\\lfloor k/2\\rfloor$ 之和。"
+          ],
+          "solutionBrief": "按每个数所属的相对面组合 $(1,6)$、$(2,5)$、$(3,4)$ 将序列划分为连续子段。长度为 $k$ 的子段贡献 $\\lfloor k/2\\rfloor$；该下界可通过选择同时邻接两侧的面达到，线性扫描累加即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2195D",
+          "index": "D",
+          "slot": "D",
+          "title": "Absolute Cinema",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2195/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/151174",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定一个隐藏整数序列 $a_1,\\ldots,a_n$，并给出每个位置 $x$ 的加权距离和 $f(x)=\\sum a_i|i-x|$。要求在序列可唯一确定的保证下，恢复并输出所有 $a_i$。",
+          "transformedStatement": "把 $f(x)$ 看作分段线性函数：在每个整数位置的斜率变化只由对应的 $a_i|i-x|$ 引起，因此先用离散二阶差分恢复内部系数，再处理首尾残差。",
+          "keyObservations": [
+            "在位置 $i$ 处，只有 $a_i|i-x|$ 会改变斜率，因此离散二阶差分满足 $f(i+1)+f(i-1)-2f(i)=2a_i$，可直接得到所有内部项。",
+            "先用已求出的 $a_2,\\\\ldots,a_{n-1}$ 从 $f(1),f(n)$ 中扣除其贡献，剩余函数只包含首尾两项。",
+            "对剩余函数 $g(x)$，有 $g(1)=(n-1)a_n$、$g(n)=(n-1)a_1$，因此两个端点系数可分别由一次除法确定。"
+          ],
+          "solutionBrief": "对每个 $2\\le i\\le n-1$，用离散二阶差分求 $a_i$。再从 $f(1),f(n)$ 扣除中间项贡献，得到仅含 $a_1,a_n$ 的残差，分别除以 $n-1$ 求出两端。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2195E",
+          "index": "E",
+          "slot": "E",
+          "title": "Idiot First Search",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2195/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/151174",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 $0$ 为根的二叉树，所有结点初始为空。Bob 从任意结点 $k$ 出发：空内部结点写入 L 并去左子树，L 改为 R 并去右子树，R 擦除并回父结点，叶子直接回父结点；每次移动耗时 1 秒，求他到达根 $0$ 的总时间（对 $10^9+7$ 取模）。",
+          "transformedStatement": "把一次从空状态进入子树直到返回父结点视为一个可复用的宏操作；其代价由子树代价递推得到。起点到根的完整路径则转化为这些宏操作代价的路径和。",
+          "keyObservations": [
+            "从空状态进入一个叶子结点只需向父结点移动一次，因此其空子树遍历代价为 $1$。",
+            "从空状态进入内部结点后，必须依次完成左子树、右子树，并在结点处完成三次状态转换，故代价满足 $dp_1[v]=dp_1[l_v]+dp_1[r_v]+3$。",
+            "遍历完一个空子树并返回父结点后，该子树状态恢复为空，因此每个祖先子树都可独立按 $dp_1$ 计费。",
+            "从起点到根的过程等价于依次遍历路径上的空子树，答案就是这些结点的 $dp_1$ 之和，可用树上的前缀和递推得到。"
+          ],
+          "solutionBrief": "先自底向上计算每个结点空子树遍历并返回父结点的时间：叶子为 $1$，内部结点为左右子树代价之和加 $3$。再自顶向下累加从结点到结点 $1$ 的路径和，即得到各起点答案，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2195F",
+          "index": "F",
+          "slot": "F",
+          "title": "Parabola Independence",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/2195/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/151174",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "dp",
+            "graphs",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 个二次函数。若两个函数在任意实数处都不相等，则称它们独立；organized 集合要求任意两函数都独立。对每个函数，求包含它的最大 organized 子集大小。",
+          "transformedStatement": "把函数间的独立关系定向为严格偏序：若 $f_u(x)<f_v(x)$ 对所有实数 $x$ 成立，就连边 $u\\to v$。这样 organized 子集等价于该 DAG 中的一条顶点路径，问题转为求经过每个顶点的最长路径。",
+          "keyObservations": [
+            "两个连续函数若处处不相等，则全体实数上只能保持同一大小关系，因此可定义 $u\\prec v$ 表示 $f_u(x)<f_v(x)$ 对所有 $x$ 成立。",
+            "关系 $\\prec$ 具有传递性且无环，所以由函数构成的有向图是 DAG；任意 organized 集合都能按该关系排成一条路径，反之路径也对应 organized 集合。",
+            "对每个顶点分别求最长入路径长度 $dp_l[v]$ 和最长出发路径长度 $dp_r[v]$，经过该顶点的最长路径长度就是 $dp_l[v]+dp_r[v]-1$。"
+          ],
+          "solutionBrief": "两两判断函数是否始终保持严格大小关系，以此建立 DAG。organized 集合等价于 DAG 中的路径；对每个点计算最长入、出路径，答案为 $dp_l[i]+dp_r[i]-1$，总复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2195G",
+          "index": "G",
+          "slot": "G",
+          "title": "Idiot First Search and Queries",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/2195/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/151174",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一棵根为 $0$ 的二叉树，$0$ 只有子节点 $1$，其余非叶节点有左右两个孩子。Bob 从顶点 $v$ 出发，按空白→写 L 并走左子树、L→改写 R 并走右子树、R→擦除并回父节点的规则移动，叶子总是回父节点；对每个查询 $(v,k)$，求移动恰好 $k$ 步后所在的顶点。",
+          "transformedStatement": "把 Bob 的确定性移动看成从顶点 $1$ 开始的固定遍历序列，并用 $\\mathtt{dp}_2$ 表示各顶点行走路径的后缀结构。查询先在祖先链上定位仍覆盖当前时刻的最深子树，再利用该子树在全局遍历序列中的连续区间取出答案。",
+          "keyObservations": [
+            "对任意祖先 $w$，从后代 $v$ 首次到达 $w$ 的时间等于 $\\mathtt{dp}_2[v]-\\mathtt{dp}_2[w]$，因为此前只遍历不含 $w$ 的后代子树。",
+            "取满足 $\\mathtt{dp}_2[v]-\\mathtt{dp}_2[u]\\le k$ 的最深祖先 $u$，则第 $k$ 步时 Bob 一定仍在 $u$ 的子树遍历过程中，原问题被拆成定位祖先和处理子树内偏移。",
+            "从顶点 $1$ 出发的完整行走记录中，每个顶点的子树遍历都对应一个连续区间，因此记录每个顶点的首次出现位置后，可用区间偏移量直接取得子树遍历中的目标顶点。",
+            "祖先条件沿父链具有单调性，可用二进制提升在 $O(\\log n)$ 内找到 $u$；找到后通过欧拉序列在 $O(1)$ 内定位剩余步数。"
+          ],
+          "solutionBrief": "预处理题解 E 中的 $\\mathtt{dp}_2$、父祖先二进制提升表，以及从顶点 $1$ 出发的行走序列和各顶点首次出现位置。查询时二分提升寻找最深的可达祖先 $u$，再把剩余步数转为该子树连续遍历区间中的偏移，整体复杂度为 $O((n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2195H",
+          "index": "H",
+          "slot": "H",
+          "title": "Codeforces Heuristic Contest 001",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/2195/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/151174",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "geometry",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由所有整数格点组成的 $3n\\times3n$ 网格，要选出尽可能多的三角形。每个三角形的三个顶点必须是网格点、面积恰为 $\\frac{1}{2}$，任意两个三角形不能共享任何点，并输出最大数量及一组满足条件的三角形。",
+          "transformedStatement": "把大正方形的构造转化为矩形拼块与更小正方形的递推：外围拆成可由固定 $2\\times3$、$3\\times2$ 块铺设的两个矩形，剩余中心正好是规模减二的同类子问题。",
+          "keyObservations": [
+            "一个 $2\\times 3$ 矩形可固定铺成若干面积为 $\\frac{1}{2}$ 的三角形，横向拼接后可构造任意 $k\\times 6$ 或 $6\\times k$ 矩形（$k\\ge 2$）。",
+            "将 $3n\\times 3n$ 正方形拆成一个 $6\\times 3n$ 矩形、一个 $3(n-2)\\times 6$ 矩形和一个 $3(n-2)\\times 3(n-2)$ 正方形，可把规模 $n$ 归约到 $n-2$。",
+            "若规模 $n-2$ 的构造有 $3(n-2)^2-k$ 个三角形，补上两个矩形后即可得到 $3n^2-k$ 个，递推过程中保持缺口 $k$ 不变。",
+            "偶数 $n$ 可直接由 $2\\times 3$ 与 $3\\times 2$ 矩形铺满；结合 $n=1$ 的 2 个三角形和 $n=3$ 的 27 个三角形基例，可达到 $n=1$ 时 2 个、$n\\ge2$ 时 $3n^2$ 个。"
+          ],
+          "solutionBrief": "预先编码 $n=3$ 时的 27 个三角形，并以 $n\\to n-2$ 的方式递推：外围补上两个可铺设的矩形，中心复用更小规模构造。偶数规模直接铺块，最终得到 $n=1$ 时 2 个、其余规模 $3n^2$ 个三角形。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
