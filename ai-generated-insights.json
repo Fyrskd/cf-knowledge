@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T03:08:56+00:00",
+  "updated_at": "2026-09-27T03:13:36+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -32991,6 +32991,183 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面给出的四个坐标点和 editorial 中“$l,r,d,u$ 必须全部相等”的结论。",
+        "quality_flags": []
+      }
+    },
+    "2070F": {
+      "problem_key": "2070F",
+      "title": "Friends and Pizza",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/2070/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/140146",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4b591f1456bcdf5d73df455d4b5cf87bb2cb0ce91d12addab3d66b428848f813",
+      "generated_at": "2026-09-27T03:12:03+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个披萨及每个朋友喜欢的披萨，必须邀请两名不同朋友。每个披萨由无人喜欢、恰好一人喜欢或两人共同喜欢时按规则分配；若两人共同喜欢奇数片披萨就争吵。对每个 $k$，求不争吵且 Monocarp 恰好吃 $k$ 片的邀请方案数。",
+        "transformed_statement": "把每位朋友压成喜好掩码，问题变为统计两个掩码的按位与在奇数披萨位上为零时的按位或分布；按位或掩码的补集就是 Monocarp 吃掉的披萨集合，再将其映射为切片总数。",
+        "key_observations": [
+          "将朋友的喜好表示为二进制掩码后，不争吵的充要条件是两个掩码与奇数切片披萨掩码的按位与为 $0$；两人共同喜欢或分别喜欢的披萨由按位或确定。",
+          "先把有序朋友对计数为 $c[x]c[y]$，得到每个喜好并集的数量；扣除 $x=y$ 的自选同一朋友情况，再整体除以 $2$，即可还原无序且朋友不同的选法。",
+          "当所有披萨均为偶数切片时，目标是两个掩码的 OR 卷积；对各序列做 SOS DP、逐点相乘后做逆 SOS DP，就能避免枚举全部掩码对。",
+          "奇数披萨不能被两人共同喜欢，因此在快速子集卷积中只按奇数披萨的交叠约束分层，层数由掩码中奇数位的数量决定；每层进行 OR 卷积并按层卷积，复杂度为 $O(pn2^n)$，其中 $p$ 是奇数披萨数。"
+        ],
+        "solution_brief": "把朋友按喜好掩码计数，统计满足奇数披萨交集为空的有序掩码对。以奇数位数量分层，用 SOS DP、逆 SOS DP 和快速子集卷积求并集分布，再扣除相同朋友并除以 $2$；并集的补集对应 Monocarp 吃掉的披萨，按切片总数汇总。总复杂度为 $O(n^2 2^n+mn)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "代数、矩阵与多项式"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的披萨分配规则、编辑中的 SOS DP 与快速子集卷积方案，以及题目标签中的位掩码和 DP 信息。",
+        "quality_flags": []
+      }
+    },
+    "2070E": {
+      "problem_key": "2070E",
+      "title": "Game with Binary String",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/2070/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/140146",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "59a5c3b589fefb20573316bd4a220144b2c2b82eb386d7e98b303486088adcd5",
+      "generated_at": "2026-09-27T03:12:22+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个二进制字符串，轮流从首尾相邻也算相邻的位置删除恰好两个字符：第一玩家必须删两个 0，第二玩家至少删去一个 1。无法操作者输，要求统计所有使第一玩家在双方最优决策下获胜的子串数量。",
+        "transformed_statement": "先忽略相邻限制，仅按 0 和 1 的数量分析博弈；证明该放宽不改变胜负后，长度模 $4$ 为 $i$ 的子串获胜当且仅当 $c_0>3c_1+k_i$，再转为带模分类的前缀和不等式计数。",
+        "key_observations": [
+          "把相邻删除放宽为按字符数量任意删除后，第二玩家总能优先删一个 0 和一个 1，使每轮双方合计消耗 3 个 0、1 个 1。",
+          "若原规则下第一玩家没有相邻的 00 可删，则字符串中 $c_0\\le c_1$；在放宽规则中第一玩家仍会先于第二玩家无步可走，因此放宽不改变胜负。",
+          "按长度模 $4$ 分类后，子串获胜等价于 $c_0>3c_1+k_i$，其中 $k_i$ 只由长度余数 $i$ 决定，从而把博弈判定化为计数不等式。",
+          "将 0 赋值为 $1$、1 赋值为 $-3$ 后，用四组按前缀下标模 $4$ 分类的数据结构统计此前缀和中小于当前值减阈值的数量。"
+        ],
+        "solution_brief": "先按长度模 $4$ 推导四个胜负阈值 $k_i$，将字符转为权值 $1/-3$。扫描前缀和，按下标模 $4$ 分组，用支持插入和查询小于给定值的结构统计满足阈值的前缀对，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "博弈",
+        "secondary_topics": [
+          "数据结构",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、Editorial 正文及 tags；胜负阈值的具体常数由 Editorial 建议推导或用小规模 DP 得出。",
+        "quality_flags": []
+      }
+    },
+    "2070D": {
+      "problem_key": "2070D",
+      "title": "Tree Jumps",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/2070/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/140146",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "08529259b50570cf9646403e06e30941d1caf2f7dc6ee911ec97b0bf623eedc1",
+      "generated_at": "2026-09-27T03:12:38+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵以 1 为根的树，棋子从根出发；每次必须跳到深度加一的顶点，若当前位置不是根，还不能跳到与当前位置直接相连的顶点。求所有按顺序恰好访问到的非空有效顶点序列数量，答案对 $998244353$ 取模。",
+        "transformed_statement": "把每个顶点作为序列终点，统计到达它的方案数。对深度为 $d_v-1$ 的所有终点求和后，只删除当前顶点父亲对应的方案，即可得到顶点 $v$ 的状态转移。",
+        "key_observations": [
+          "序列的最后一步只能从上一层跳到当前顶点，且唯一不能使用的上一层顶点是当前顶点的父亲，因此转移只需排除一个值。",
+          "同一深度的所有顶点都共享上一层状态总和；设第 $i$ 层总和为 $tot_i$，则 $dp_v=tot_{d_v-1}-dp_{p_v}$，若父亲为根则减去 $0$。",
+          "按深度递增处理顶点即可保证转移所需状态已经得到；所有 $dp_v$ 之和正好统计以各顶点结尾的全部有效序列。"
+        ],
+        "solution_brief": "令 $dp_v$ 表示以 $v$ 结尾的有效序列数，并维护每层的 $dp$ 总和 $tot$。按深度递增计算 $dp_v=tot_{d_v-1}-dp_{p_v}$（父亲为根时不减），最后求所有 $dp_v$ 之和；利用父编号小于子编号可在线性时间求深度并分层。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "树结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，结合 statement_text 中的跳跃规则与树结构标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "2070C": {
+      "problem_key": "2070C",
+      "title": "Limited Repainting",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/2070/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/140146",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a0abe3a395b856e94ae27719740bc93b0a69b3b76d9ea19125ef92de05cf2d06",
+      "generated_at": "2026-09-27T03:12:54+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有一条初始全为红色的 $n$ 格条带，每次可选择一个连续区间把它们涂成蓝色，不能重新涂红，最多操作 $k$ 次。每格有目标颜色和罚分，最终错误格中的最大罚分为结果，要求最小化该结果。",
+        "transformed_statement": "把候选答案 $x$ 视为允许忽略的罚分阈值：低于等于 $x$ 的格子不必保证正确，高于 $x$ 的格子必须正确。删除可忽略格子后，只需判断所有强制蓝格能否由不超过 $k$ 个连续蓝色段覆盖，同时强制红格不能被覆盖。",
+        "key_observations": [
+          "将答案上限设为 $x$ 后，罚分不超过 $x$ 的格子可任意处理，罚分大于 $x$ 的格子必须满足目标颜色，从而把最小化最大罚分转成可行性判定。",
+          "删去所有低罚分格子后，必须涂蓝的格子需要被划分为连续段；每段可用一次操作覆盖，因此段数不超过 $k$ 恰好对应可行。",
+          "可行性随 $x$ 增大而单调：放宽允许出错的格子不会破坏已有方案，所以可以在罚分范围内二分最小可行值。",
+          "扫描原串统计每个目标为蓝且前一个关键格子不存在或为红的起点，即得到必须涂蓝的连续段数量，单次判定为线性时间。"
+        ],
+        "solution_brief": "二分最终罚分上限 $x$。忽略罚分不超过 $x$ 的格子，只检查高罚分格子是否能正确染色：统计必须为蓝的连续段数量，若不超过 $k$ 则判定可行。总复杂度为 $O(n\\log A)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、完整 editorial 及 binary search、greedy 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "2070B": {
+      "problem_key": "2070B",
+      "title": "Robot Program",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2070/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/140146",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0f1e73f8bc9dc0baebded65da364d97f7a8e36ae0cb99aa959e67613d90b2c57",
+      "generated_at": "2026-09-27T03:13:12+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "机器人位于非零整数点，按顺序每秒执行字符串中的 L/R 指令，每次到达 $0$ 就将指令进度重置到开头；若执行完整段指令后不在 $0$，则停止。求未来 $k$ 秒内机器人进入 $0$ 的次数。",
+        "transformed_statement": "把每次执行序列视为位置前缀位移：先求从初始位置到零的最早前缀，再把零点后的过程抽象为从 $0$ 回到 $0$ 的固定最短周期，并统计该周期在剩余时间内重复的次数。",
+        "key_observations": [
+          "从初始位置出发，首次使前缀位移抵达 $0$ 的时刻决定第一次计数；若整段指令结束仍未到 $0$，机器人之后停止，答案为 $0$。",
+          "到达 $0$ 后指令序列会完整重置，因此后续过程每次都从同一状态开始；只需寻找从 $0$ 出发再次到达 $0$ 的最短前缀。",
+          "若从 $0$ 出发不存在回到 $0$ 的前缀，则只会记录第一次到达；否则设首次到达时刻为 $a$、循环长度为 $c$，答案为 $1+\\left\\lfloor\\frac{k-a}{c}\\right\\rfloor$。"
+        ],
+        "solution_brief": "先扫描指令找出从初始位置到达 $0$ 的首次时刻。若成功，再从 $0$ 扫描一次寻找回到 $0$ 的最短周期；无周期时答案为 $1$，有周期时按剩余时间整除周期计算次数。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的机器人重置规则，以及 editorial_text 给出的首次命中与循环计数方法；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "2070A": {
+      "problem_key": "2070A",
+      "title": "FizzBuzz Remixed",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2070/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/140146",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3f42299d4571779c8f0556825b365eb41e019d2c4db3287b98ca556ae0bd3253",
+      "generated_at": "2026-09-27T03:13:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数 $n$，依次处理区间 $[0,n]$ 中的所有整数；当某个整数除以 $3$ 和除以 $5$ 的余数相等时计作一次 FizzBuzz。对每个测试用例，求满足该条件的整数个数。",
+        "transformed_statement": "把判定序列视为长度为 $15$ 的周期序列：先统计完整周期 $[0,14]$ 的固定贡献，再单独处理最后一个不完整周期。由于基准周期中只有 $0,1,2$ 被计数，完整周期可直接按块累加。",
+        "key_observations": [
+          "条件 $i\\bmod 3=i\\bmod 5$ 以 $15$ 为周期，因为加上 $15$ 不会改变对 $3$ 和 $5$ 的余数；因此每个长度为 $15$ 的完整区间贡献相同次数。",
+          "区间 $[0,14]$ 中只有 $0,1,2$ 满足条件，所以每个完整周期贡献 $3$ 次，前缀答案可先按完整周期批量计算。",
+          "去除完整周期后，剩余部分长度至多为 $15$，直接检查其中每个数是否满足余数相等即可，整体时间复杂度为 $O(1)$。"
+        ],
+        "solution_brief": "将 $[0,n]$ 按长度 $15$ 分成完整周期和一个残段。完整周期数量为 $\\lfloor n/15\\rfloor$，每个贡献 $3$；再枚举 $0$ 到 $n\\bmod 15$，统计满足 $i\\bmod3=i\\bmod5$ 的残段元素。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的计数条件与 editorial_text 的周期性分析，结合 tags 中的 math 和 brute force。",
         "quality_flags": []
       }
     }
