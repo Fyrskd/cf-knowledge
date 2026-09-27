@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2233,
+    "total_problems": 2240,
     "source_total_problems": 2240,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2233,
-    "with_editorial_brief": 1973,
-    "with_solution_brief": 1974,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2240,
+    "with_editorial_brief": 1980,
+    "with_solution_brief": 1981,
     "missing_editorial_brief": 259,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1174,
+    "ai_override_count": 1181,
     "primary_topic_count": 13,
-    "contest_count": 346,
+    "contest_count": 347,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -36,30 +36,30 @@ window.CF_INSIGHTS_DATA = {
     "组合计数与概率",
     "树结构",
     "图论与网络流",
-    "字符串",
     "基础实现与模拟",
+    "字符串",
     "交互",
     "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 100,
-    "构造与贪心": 747,
+    "字符串": 101,
+    "构造与贪心": 748,
     "图论与网络流": 130,
     "动态规划与状态设计": 205,
-    "数论与同余": 234,
+    "数论与同余": 235,
     "组合计数与概率": 167,
-    "数据结构": 192,
+    "数据结构": 193,
     "几何": 49,
     "树结构": 135,
     "代数、矩阵与多项式": 18,
-    "交互": 79,
-    "基础实现与模拟": 100,
+    "交互": 80,
+    "基础实现与模拟": 102,
     "博弈": 77
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1044,
+    "ai_generated_with_editorial": 1051,
     "ai_generated_partial_editorial": 38,
     "missing_editorial": 259,
     "manual_override": 891,
@@ -42266,6 +42266,214 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：先把方差目标改写成固定中心 x 的平方误差最小化。枚举所有可能的 x；对每个 x，维护每个位置下一次加 k 的边际增量，反复找最小区间增量并更新，得到 1..m 次操作的候选答案；所有 x 取最小。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2036,
+      "name": "Codeforces Round 984 (Div. 3)",
+      "date": "2024-11-02",
+      "url": "https://codeforces.com/contest/2036",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "2036A",
+          "index": "A",
+          "slot": "A",
+          "title": "Quintomania",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2036/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/135849",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定多首由 $0$ 到 $127$ 的整数音符组成的旋律。若每一对相邻音符的绝对差恰好为 $5$ 或 $7$ 个半音，则旋律完美；对每首旋律输出 YES 或 NO。",
+          "transformedStatement": "把旋律视为一条按顺序连接音符的路径，每条相邻边的权值是两个音符的绝对差；问题转化为判断所有边权是否都属于集合 $\\{5,7\\}$。",
+          "keyObservations": [
+            "完美旋律的条件只作用于相邻音符，因此可将整首旋律拆成 $n-1$ 条独立相邻边逐一检查，避免考虑更远音符之间的关系。",
+            "每条相邻边的合法性等价于 $|a_i-a_{i+1}|\\in\\{5,7\\}$；只要发现一条边不合法，整首旋律立即判定为不完美。",
+            "所有相邻差值都合法时条件同时满足，因此线性扫描即可完成判定，检查次数与音符数量成正比。"
+          ],
+          "solutionBrief": "对每首旋律扫描所有相邻音符，计算绝对差。若存在差值既不是 $5$ 也不是 $7$，输出 NO；全部通过则输出 YES，单首复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2036B",
+          "index": "B",
+          "slot": "B",
+          "title": "Startup",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2036/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/135849",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个货架和 $k$ 瓶饮料，每瓶属于一个品牌并有价格。每个货架可放任意数量的瓶子，但同一货架上的瓶子必须同品牌；放上的瓶子都会售出，要求最大化总收入。",
+          "transformedStatement": "把每个品牌看作一个整体选项，其权值是该品牌所有瓶子的价格总和；每选一个品牌就占用一个货架，因此只需选出总和最大的至多 $n$ 个品牌并求和。",
+          "keyObservations": [
+            "同一品牌的所有瓶子可以放在同一个货架上，因此该品牌的全部瓶子应整体贡献其价格总和，而不必在同品牌内部取舍。",
+            "每个品牌至多占用一个货架，所以问题等价于在品牌总价值中选择至多 $n$ 个；由于所有价格为正，应选择价值最高的 $\u0001min(n,品牌数)\u0001$ 个品牌。",
+            "将每个品牌的瓶子价格求和后按总和降序排列，前 $n$ 个总和之和就是最大收益；分组求和和排序共同完成最优选择。"
+          ],
+          "solutionBrief": "先按品牌累计所有瓶子的价格，再将品牌总和降序排序，累加前 $\u0001min(n,k)\u0001$ 个值。实现复杂度为 $O(k\\log k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2036C",
+          "index": "C",
+          "slot": "C",
+          "title": "Anya and 1100",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2036/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/135849",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "给定一个只含 0 和 1 的字符串。每次操作把指定位置改成 0 或 1，操作后判断字符串中是否存在连续子串“1100”，对每次操作输出 YES 或 NO。",
+          "transformedStatement": "把每次修改视为只影响包含该位置的长度为 $4$ 的窗口：这些窗口的起点最多是 $i-3,i-2,i-1,i$。维护全串中“1100”的出现总数，并用修改前后的局部差值更新它。",
+          "keyObservations": [
+            "修改位置为 $i$ 时，只有起点在 $i-3$ 到 $i$ 的长度为 $4$ 子串可能改变，因此无需重新扫描整条字符串。",
+            "先统计字符串中所有 $1100$ 的出现次数；每次修改前后只比较受影响的小范围出现次数，并用差值更新总数，从而保持全局计数正确。",
+            "若修改后的总出现次数大于 $0$，答案就是 YES，否则为 NO；即存在性查询被转化为维护一个整数计数。"
+          ],
+          "solutionBrief": "预先统计所有 $1100$ 的出现次数。修改位置 $i$ 前后，仅检查起点位于 $i-3$ 到 $i$ 的子串，按出现次数差值更新总数，再根据总数是否为正回答。总复杂度为 $O(|s|+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2036D",
+          "index": "D",
+          "slot": "D",
+          "title": "I Love 1543",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/2036/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/135849",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "matrices"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的偶数行偶数列数字网格。对从外到内的每个同心边界层按顺时针读出数字，统计其中连续出现字符串 $1543$ 的次数；每层首尾相接，跨越边界的出现也要计入。",
+          "transformedStatement": "把每个同心边界层抽象成一个首尾相连的循环字符串：按顺时针提取其四条边后，统计所有起点开始的长度为 $4$ 的循环子串是否等于 $1543$。",
+          "keyObservations": [
+            "每一层都可由左上角坐标 $(i,i)$ 唯一确定，枚举 $i=0,1,\\\\ldots,\\frac{\\min(n,m)}{2}-1$ 即覆盖全部同心层。",
+            "沿边界顺时针提取字符时，四条边的端点必须错开，否则角点会被重复加入，得到的序列才与实际遍历顺序一致。",
+            "一层首尾相接，因此模式 $1543$ 可能跨越序列末尾和开头；用下标取模检查连续四个字符即可完整计数。"
+          ],
+          "solutionBrief": "逐层枚举矩形边界，按顺时针顺序写入临时数组，再检查每个位置开始的四个字符是否为 $1543$，下标通过取模处理首尾相连。所有层的边界总长度为 $O(nm)$，故总复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2036E",
+          "index": "E",
+          "slot": "E",
+          "title": "Reverse the Rivers",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/2036/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/135849",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 个国家、每国 $k$ 个区域，区域新值是从第 1 个国家到当前国家对应区域的按位或。每次查询给出多个区域的严格大小要求，要求找出同时满足所有要求的最小国家编号；不存在时输出 $-1$。",
+          "transformedStatement": "把每个区域看成按国家编号单调不降的序列：每个“$<$”要求限制国家不能越过某个右端点，每个“$>$”要求限制国家不能早于某个左端点。于是查询转化为多个区间的交集问题。",
+          "keyObservations": [
+            "固定区域的前缀或值满足 $b_{i,j}\\le b_{i+1,j}$，因此每个条件在国家编号上形成前缀、后缀或空集。",
+            "对“$<$”条件寻找第一个 $b_{i,r}\\ge c$ 的位置，对“$>$”条件寻找第一个 $b_{i,r}>c$ 的位置，即可分别得到可行编号的右界和左界。",
+            "所有要求的交集始终是一个编号区间，维护全局左右界后取最小可行编号即可；若左界超过右界则无解。"
+          ],
+          "solutionBrief": "先计算每个区域的前缀按位或，使其随国家编号单调不降。每条查询条件通过二分确定可行区间边界，交集得到整体区间，输出最小编号，否则输出 $-1$；复杂度为 $O(nk+qm\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2036F",
+          "index": "F",
+          "slot": "F",
+          "title": "XORificator 3000",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2036/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/135849",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "每次给定 $[l,r]$、$i$ 和 $k$，考虑区间内所有满足 $x\\not\\equiv k\\pmod {2^i}$ 的正整数，并求它们的按位异或。需要独立回答所有查询。",
+          "transformedStatement": "把被排除的数改写为 $x=k+q2^i$：右移后只需对连续的 $q$ 区间求异或，高 $i$ 位由此确定；低 $i$ 位统一为 $k$，仅由这些数的数量奇偶决定。",
+          "keyObservations": [
+            "先求整个区间的异或，再扣除满足同余条件的“无趣”数，避免直接枚举所有整数。",
+            "令 $m=2^i$，无趣数可写成 $x=k+qm$；右移 $i$ 位后，它们对应连续的 $q$ 区间，因此高位异或可由普通区间异或得到。",
+            "所有无趣数的低 $i$ 位都等于 $k$，所以它们的低位异或只取决于个数奇偶：奇数次贡献 $k$，偶数次贡献 $0$。",
+            "区间异或可由前缀异或相减（异或）得到，而前缀异或只按端点模 $4$ 分类；同余数数量则用整除式计算。"
+          ],
+          "solutionBrief": "对每次查询先计算 $[l,r]$ 的总异或。将无趣数表示为 $k+q2^i$，在对应的 $q$ 区间上求异或并左移 $i$ 位作为高位贡献，再按无趣数个数奇偶决定低位是否异或 $k$，最后与总异或合并。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2036G",
+          "index": "G",
+          "slot": "G",
+          "title": "Library of Magic",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2036/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/135849",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "divide and conquer",
+            "interactive",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 种书号，每种原本有两本，但书号互异的三种书各少了一本，需找出这三个书号。每次可查询区间 $[l,r]$ 内所有现存书号的按位异或，最多查询 $150$ 次，要求输出三个缺失书号。",
+          "transformedStatement": "把每个书号的两份拷贝视为异或贡献：完整出现的书号贡献为零，问题因此变成用区间异或定位三个只出现一次的不同数。利用二进制前缀逐位判断某个目标是否存在于候选区间。",
+          "keyObservations": [
+            "区间内成对出现的书号异或后会抵消，因此查询结果只等于区间内丢失书号的异或。",
+            "若区间含有至少一个丢失书号，结果不可能为零：含一两个时因书号不同而不为零，含三个时最高公共位异或为 $1$。",
+            "按二进制位从高到低确定前缀时，查询当前前缀加该位的整段区间；结果非零就说明至少一个目标仍在其中，可保留该位。",
+            "找到一个书号后，在后续查询中异或掉它；再找到第二个后，对全区间结果异或掉前两个即可得到第三个。"
+          ],
+          "solutionBrief": "利用成对书号抵消，将查询转为判断丢失书号是否落在区间内。按高位到低位逐位确定前两个书号，并在查询结果中排除已找到者，最后用全区间异或得到第三个；总查询约为 $2\\log n<150$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
