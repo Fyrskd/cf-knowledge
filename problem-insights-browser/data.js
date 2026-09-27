@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2034,
+    "total_problems": 2042,
     "source_total_problems": 2042,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2034,
-    "with_editorial_brief": 1782,
-    "with_solution_brief": 1783,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2042,
+    "with_editorial_brief": 1790,
+    "with_solution_brief": 1791,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 975,
+    "ai_override_count": 983,
     "primary_topic_count": 13,
-    "contest_count": 318,
+    "contest_count": 319,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 88,
-    "构造与贪心": 683,
-    "图论与网络流": 120,
-    "动态规划与状态设计": 191,
-    "数论与同余": 202,
+    "构造与贪心": 685,
+    "图论与网络流": 121,
+    "动态规划与状态设计": 192,
+    "数论与同余": 204,
     "组合计数与概率": 157,
-    "数据结构": 168,
+    "数据结构": 169,
     "几何": 43,
-    "树结构": 129,
+    "树结构": 130,
     "代数、矩阵与多项式": 18,
     "交互": 77,
     "基础实现与模拟": 86,
     "博弈": 72
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 854,
+    "ai_generated_with_editorial": 862,
     "ai_generated_partial_editorial": 37,
     "missing_editorial": 251,
     "manual_override": 891,
@@ -24821,6 +24821,249 @@ window.CF_INSIGHTS_DATA = {
             "为每个候选子表预处理正向与旋转方向的二维加权哈希，用二维前缀和在 $O(1)$ 内比较两者，从而在线性于表格大小的时间内枚举全部候选。"
           ],
           "solutionBrief": "将问题转为寻找包含原表的最小 180° 回文矩形。枚举位于原表内的对称中心，用二维哈希 $O(1)$ 判断对应子表是否回文，并计算该中心下所需新增字符数，取最小值；总复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2131,
+      "name": "Codeforces Round 1042 (Div. 3)",
+      "date": "2025-08-10",
+      "url": "https://codeforces.com/contest/2131",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "2131A",
+          "index": "A",
+          "slot": "A",
+          "title": "Lever",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2131/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/145439",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定等长数组 $a,b$。每轮先随机选一个满足 $a_i>b_i$ 的位置并将其减一，再随机选一个满足 $a_i<b_i$ 的位置并将其加一；若第一步没有可选位置，本轮仍结束并停止。求总共进行了多少轮。",
+          "transformedStatement": "把每个位置的初始差值 $a_i-b_i$ 看作需要由第一步消耗的盈余；第二步只处理亏损位置，不改变盈余总量。于是过程等价于逐单位消耗所有正差值，耗尽后再进行一轮失败检查。",
+          "keyObservations": [
+            "只有第一步被忽略时迭代才结束，因此总轮数只需统计第一步成功执行了多少次，再加上最后一次失败检查。",
+            "若某个位置满足 $a_i>b_i$，它只会在第一步被减少，并且恰好需要执行 $a_i-b_i$ 次；随机选择顺序不会改变该位置的贡献。",
+            "第二步只会增加满足 $a_i<b_i$ 的元素，不能增加任何盈余位置，因此不会影响第一步最终需要减少的总量。",
+            "第一步成功执行的总次数等于所有初始盈余之和 $\u0000sum_i\\max(a_i-b_i,0)$，答案因此为该总量加 $1$。"
+          ],
+          "solutionBrief": "对每个位置计算初始盈余 $\\max(a_i-b_i,0)$ 并求和。该和表示第一步成功执行的轮数，所有盈余消耗后还需进行一次第一步被忽略的终止轮，因此答案为总和加 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2131B",
+          "index": "B",
+          "slot": "B",
+          "title": "Alternating Series",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2131/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/145439",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组，要求相邻元素符号相反，且所有长度至少为 $2$ 的连续子数组之和都为正。请构造一个满足条件的数组，使其绝对值序列按字典序小于其他所有合法数组。",
+          "transformedStatement": "把问题转化为在符号交替的前提下，逐位置最小化绝对值。先用长度 $2$、$3$ 的子数组确定各位置正数的下界，再验证按这些下界构造出的序列对更长子数组也始终合法。",
+          "keyObservations": [
+            "相邻元素乘积为负等价于符号严格交替，因此所有元素非零，负数的最小绝对值可取 $1$。",
+            "任意正数端点至少为 $2$，内部正数还必须至少为 $3$，因为考虑其相邻的长度为 $2$ 或 $3$ 的子数组即可得到下界。",
+            "按绝对值从左到右贪心：首项取 $-1$，奇数位取 $-1$，内部偶数位取 $3$，若末位为偶数则取 $2$；这些都是对应位置允许的最小值。",
+            "长度为 $2$、$3$ 的子数组可直接验证和为正；长度至少为 $4$ 时，正数数量足以抵消至多同等规模的 $-1$，故总和仍为正。"
+          ],
+          "solutionBrief": "利用符号交替确定正负位置，并由短子数组推出正数的最小取值。逐位取最小绝对值：奇数位为 $-1$，内部偶数位为 $3$，偶数长度的末位改为 $2$；再按子数组长度验证合法性。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2131C",
+          "index": "C",
+          "slot": "C",
+          "title": "Make it Equal",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2131/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/145439",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定两个大小均为 $n$ 的多重集合 $S,T$，可反复选取 $S$ 中一个元素 $x$ 删除，再加入 $x+k$ 或 $|x-k|$。判断能否通过这些操作使 $S$ 与 $T$ 的每个元素出现次数完全相同。",
+          "transformedStatement": "将每个数按操作可达关系归并到模 $k$ 余数与其镜像中较小的代表元 $r=\\min(x\\bmod k,(k-x\\bmod k)\\bmod k)$；问题转化为比较 $S,T$ 的代表元频次多重集合是否一致。",
+          "keyObservations": [
+            "元素 $x$ 能变为 $y$ 当且仅当 $x\\equiv y\\pmod k$ 或 $x+y\\equiv0\\pmod k$，因此可达关系只由模 $k$ 的余数及其镜像决定。",
+            "同一可达类中的所有数都能变到代表元 $r=\\min(x\\bmod k,(k-x\\bmod k)\\bmod k)$，把任意元素压缩为该代表元不会丢失可达性。",
+            "分别将两个多重集合的每个元素替换为上述代表元后，只需比较代表元的出现次数；完全相同即可通过逐元素变换得到目标。"
+          ],
+          "solutionBrief": "对 $S$ 和 $T$ 中每个元素计算 $r=\\min(x\\bmod k,(k-x\\bmod k)\\bmod k)$，统计所有代表元的频次并比较。频次完全一致输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2131D",
+          "index": "D",
+          "slot": "D",
+          "title": "Arboris Contractio",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2131/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/145439",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "graphs",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，每次可选两个顶点，将它们路径上的所有边删除，再把路径除起点外的所有顶点直接连接到起点。求经过若干次操作后达到最小可能直径所需的最少操作次数。",
+          "transformedStatement": "对 $n>2$，目标等价于把树变成以某个顶点 $r$ 为中心的星形树。固定 $r$ 后，答案等于以 $r$ 为根时深度大于 $1$ 的叶子数量，再在所有根中取最小值。",
+          "keyObservations": [
+            "当 $n=2$ 时树的直径已经是 $1$，无需进行任何操作；当 $n>2$ 时可将树压成星形，因此最小直径必为 $2$。",
+            "固定最终星形中心为根 $r$ 后，深度不超过 $1$ 的顶点无需处理，真正需要操作的对象只有深度大于 $1$ 的叶子。",
+            "一次操作中选定路径上至多有一个顶点能作为叶子被消除，因此每个深度大于 $1$ 的叶子至少需要一次操作，给出固定根的下界。",
+            "对根 $r$ 与任意深度大于 $1$ 的叶子执行路径操作，会把该路径上的顶点直接连到 $r$；处理所有这类叶子即可得到星形树，因此固定根的最优次数就是这类叶子的数量。"
+          ],
+          "solutionBrief": "先处理 $n=2$。否则枚举最终星形中心 $r$，统计以 $r$ 为根时深度大于 $1$ 的叶子数；该数既是必要下界，也是逐叶操作可达到的次数，取所有根的最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2131E",
+          "index": "E",
+          "slot": "E",
+          "title": "Adjacent XOR",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2131/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/145439",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$，每个下标 $i<n$ 至多操作一次，将 $a_i$ 改为当前 $a_i\\oplus a_{i+1}$；可按任意顺序选择操作。判断能否把数组变成目标数组 $b$。",
+          "transformedStatement": "把每个位置看成“保持原值”或“通过右邻居变为目标值”两种状态；若需要异或，则右邻居必须处于原值或目标值之一，并由此形成相邻操作的先后约束。",
+          "keyObservations": [
+            "每个位置最多被修改一次，因此最终的 $a_i$ 只能是初值或目标值 $b_i$；这把右邻居在操作时的可能状态限制为原值和目标值两种。",
+            "若 $a_i=b_i$，位置 $i$ 无需操作；否则只有 $a_i\\oplus a_{i+1}=b_i$ 或 $a_i\\oplus b_{i+1}=b_i$ 两种可能，分别对应先操作 $i$ 或先操作 $i+1$。",
+            "上述局部选择只产生相邻位置间的先后约束，约束图无环，因此所有局部可行条件可以统一安排成合法操作顺序。",
+            "因此逐个位置检查这三个等式即可判定：末位置只能满足 $a_n=b_n$，其余位置还可通过与右邻居的原值或目标值异或得到 $b_i$。"
+          ],
+          "solutionBrief": "对每个位置检查 $a_i=b_i$、$a_i\\oplus a_{i+1}=b_i$ 或 $a_i\\oplus b_{i+1}=b_i$ 是否成立；末位置只检查相等。满足全部条件则局部先后约束必能按无环顺序执行，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2131F",
+          "index": "F",
+          "slot": "F",
+          "title": "Unjust Binary Life",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2131/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/145439",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "math",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的二进制串，网格 $(i,j)$ 的值为 $a_i\\oplus b_j$；从 $(1,1)$ 只能向下或向右移动，并要求路径上的格子全为 $0$。对每个终点 $(x,y)$，可独立地翻转任意 $a_i$ 或 $b_i$，求使其可达所需的最少翻转次数之和。",
+          "transformedStatement": "对终点 $(x,y)$，问题等价于把 $a$ 的前缀 $[1,x]$ 和 $b$ 的前缀 $[1,y]$ 都变成全零或全一，代价取两种方案的较小值；再将所有终点转化为两组前缀差的绝对值配对求和。",
+          "keyObservations": [
+            "从一个零值格子向下移动要求相邻的两个 $a$ 位相同，向右移动要求相邻的两个 $b$ 位相同，因此到达 $(x,y)$ 的路径存在当且仅当前缀 $a[1..x]$ 与 $b[1..y]$ 全部相同。",
+            "要让两个前缀都变成全 $0$ 或全 $1$，最少翻转次数分别是其中的 $0$ 数和 $1$ 数，故 $f(x,y)=\\min(\\mathrm{cnt}_0,\\mathrm{cnt}_1)$。",
+            "利用最小值恒等式，答案化为基础项 $\\frac{n^2(n+1)}2$ 减去所有前缀计数差绝对值之和的一半。",
+            "定义 $\\mathrm{prea}(x)$ 为 $a$ 前缀的零一差、$\\mathrm{preb}(y)$ 为 $b$ 前缀的一零差后，计数差变成 $|\\mathrm{prea}(x)-\\mathrm{preb}(y)|$，排序两组值并用双指针即可汇总所有配对。"
+          ],
+          "solutionBrief": "先证明可达条件等价于两个前缀全部取同一位，从而得到每个目标的最小翻转数。将其改写为前缀差绝对值的配对和，分别排序两组前缀差，用双指针按大小关系累计贡献。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2131G",
+          "index": "G",
+          "slot": "G",
+          "title": "Wafu!",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/2131/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/145439",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定一个由互不相同正整数构成的集合，反复执行：取当前最小值 $m$，将分数乘以 $m$，删除 $m$，再把所有 $1$ 到 $m-1$ 加入集合。执行恰好 $k$ 次后，求最终分数对 $10^9+7$ 取模的结果。",
+          "transformedStatement": "将集合中的每个数减一，并把集合表示为整数 $f(S)=\\sum_{v\\in S}2^v$。原操作等价于不断令 $f(S)$ 减一；于是可按当前最小位对应的 $2^v$ 次操作分块处理，并对最后不足整块的部分建立递归状态。",
+          "keyObservations": [
+            "把每个元素减一并编码为二进制位集合后，一次操作等价于将最低位的连续低位区域全部翻转，也就是令整数值 $f(S)$ 减一；因此连续 $2^v$ 次操作恰好能彻底移除当前元素 $v$。",
+            "完整移除元素 $i$ 的乘积可递推为 $F(0)=1$、$F(i)=(i+1)\\cdot\\prod_{j<i}F(j)$：首次操作贡献 $i+1$，随后新加入的所有更小元素分别被完整处理。",
+            "按元素从小到大消耗完整的 $2^v$ 操作块；若剩余操作不足以移除当前最小元素，则更大的元素不会再受影响，问题可递归为状态 $P(i,j)$，其中 $j<2^i$。",
+            "递归状态中，新加入的更小元素仍可优先按完整块处理，遇到第一个无法完整移除的元素就继续递归；由于 $2^{30}>10^9$，递归深度和每层枚举范围均受限。"
+          ],
+          "solutionBrief": "将元素减一后视为二进制位集合，操作变成整数减一。预处理完整移除某元素的乘积 $F$，再按升序消耗 $2^v$ 操作块；不足一个块时用 $P(i,j)$ 递归计算剩余贡献，复杂度为 $O(n\\log n+\\log^2 k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2131H",
+          "index": "H",
+          "slot": "H",
+          "title": "Sea, You & copriMe",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/2131/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/145439",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个整数数组，要求选出四个互不相同的下标，将它们分成两对，使每一对对应元素的最大公因数都为 $1$。找到任意一组就输出四个下标，否则输出 $0$。",
+          "transformedStatement": "建立互质图：每个数组下标是顶点，且当两项互质时连边；题目转化为寻找两条端点不相交的边，也就是大小为 $2$ 的匹配。",
+          "keyObservations": [
+            "把下标作为顶点、互质下标对作为边后，目标等价于寻找大小为 $2$ 的匹配；因此只需判断一条边删去后是否仍有边。",
+            "对每个 $a_i$，互质元素数量可由莫比乌斯反演写成 $C_i=\\sum_{d\\mid a_i}\\mu(d)f(d)$，其中 $f(d)$ 是数组中能被 $d$ 整除的元素数，从而无需枚举所有下标对。",
+            "图中选最大度顶点 $u$，再选其邻点中度数最小的 $v$；若删去 $u,v$ 后没有边，则图的非孤立部分只能呈现星形或三角形等结构，不能存在大小为 $2$ 的匹配。",
+            "当删去的边 $uv$ 后仍存在边时，这条剩余边与 $uv$ 顶点不相交，直接构成合法答案；否则由上述贪心性质可判定无解。"
+          ],
+          "solutionBrief": "将问题建模为互质图上的二边匹配。用莫比乌斯反演统计每个顶点的度数，选最大度顶点及其邻点中的最小度顶点作为第一条边，删去后寻找剩余边；找不到则输出 $0$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
