@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2519,
+    "total_problems": 2525,
     "source_total_problems": 2526,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2519,
-    "with_editorial_brief": 2251,
-    "with_solution_brief": 2252,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2525,
+    "with_editorial_brief": 2257,
+    "with_solution_brief": 2258,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1581,
+    "ai_override_count": 1587,
     "primary_topic_count": 13,
-    "contest_count": 386,
+    "contest_count": 387,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 127,
-    "构造与贪心": 794,
+    "字符串": 128,
+    "构造与贪心": 796,
     "图论与网络流": 152,
     "动态规划与状态设计": 218,
-    "数论与同余": 274,
+    "数论与同余": 275,
     "组合计数与概率": 193,
-    "数据结构": 234,
+    "数据结构": 236,
     "几何": 58,
     "树结构": 137,
     "代数、矩阵与多项式": 19,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 89
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1308,
+    "ai_generated_with_editorial": 1314,
     "ai_generated_partial_editorial": 52,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -63441,6 +63441,198 @@ window.CF_INSIGHTS_DATA = {
             "每个环只需比较两种初始选择的可行方案，若两者都无法使环归零，则整个测试用例无解。"
           ],
           "solutionBrief": "将每个开关建为边 $i\\to a_i$，先按入度为零的顶点顺序处理非环部分，亮灯叶子必须按下开关并传播影响；剩余环分别尝试两种初始按法，沿环确定其余选择，取操作数更少的方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1902,
+      "name": "Educational Codeforces Round 159 (Rated for Div. 2)",
+      "date": "2023-12-03",
+      "url": "https://codeforces.com/contest/1902",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1902A",
+          "index": "A",
+          "slot": "A",
+          "title": "Binary Imbalance",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1902/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/122951",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定只含 `0` 和 `1` 的字符串。每次选择相邻位置，在两字符之间插入：相同则插入 `1`，不同则插入 `0`；可操作任意次或不操作，判断能否使字符串中 `0` 的数量严格多于 `1`。",
+          "transformedStatement": "将问题转化为判断字符串是否含有 `0`：全为 `1` 时操作无法产生零；只要含有零，就可利用一个相邻的 `0/1` 边界持续生成零，直到零数超过一数。",
+          "keyObservations": [
+            "若字符串全为 `1`，任意操作两端字符相同，只会插入 `1`，因此零的数量永远不会增加，答案必为 NO。",
+            "若字符串全为 `0`，无需操作就已有零多于一，答案为 YES。",
+            "若字符串同时含有 `0` 和 `1`，必存在相邻的异字符对；在该位置插入 `0` 后，原边界仍会留下一个异字符相邻对，因此可以无限次增加零。",
+            "只要字符串含有 `0` 且不是全零，就能反复插入零直到零的数量超过一，故判定仅取决于是否存在 `0`。"
+          ],
+          "solutionBrief": "逐个判断字符串是否含有 `0`：全为 `1` 时任何操作都只增加 `1`，输出 NO；只要含有 `0`，若已满足零多于一则无需操作，否则利用相邻异字符对反复插入 `0`，输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1902B",
+          "index": "B",
+          "slot": "B",
+          "title": "Getting Points",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1902/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/122951",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "学期有 $n$ 天，任务分别在第 $1,8,15,\\ldots$ 天解锁；学习一天可参加当天课程并完成最多两个已解锁且未完成的任务，休息则什么都不做。每节课得 $l$ 分、每个任务得 $t$ 分，要求总分至少为 $P$，求最多能休息多少天。",
+          "transformedStatement": "将问题改写为选择最少的学习天数 $k$：课程固定贡献 $k\\cdot l$，任务最多贡献 $\\min(\\lceil n/7\\rceil,2k)\\cdot t$；由于最后 $k$ 天学习即可实现该任务数，只需找满足总分条件的最小 $k$。",
+          "keyObservations": [
+            "整个学期共解锁 $c=\\lceil n/7\\rceil$ 个任务，因此任务总量只由 $n$ 决定，避免逐日模拟解锁过程。",
+            "若学习恰好 $k$ 天，课程贡献固定为 $k\\cdot l$，任务最多完成 $\\min(c,2k)$ 个，故总分上界为 $k\\cdot l+\\min(c,2k)\\cdot t$。",
+            "把学习日安排在最后 $k$ 天时，可以倒序完成所有可完成任务，说明上述上界一定能达到，从而只需寻找满足分数要求的最小 $k$。",
+            "学习天数增加时可获得的分数不会下降，因此可对 $k$ 的可行性进行二分，答案为最小可行学习天数对应的 $n-k$。"
+          ],
+          "solutionBrief": "计算任务总数 $c=\\lceil n/7\\rceil$，二分最小学习天数 $k$，用 $k\\cdot l+\\min(c,2k)\\cdot t\\ge P$ 判断可行，输出 $n-k$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1902C",
+          "index": "C",
+          "slot": "C",
+          "title": "Insert and Equalize",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1902/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/122951",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个元素互异的整数数组，先插入一个不重复的新整数，再固定选择正整数 $x$；每次只能给一个元素加上 $x$，直到所有元素相等。要求选择插入值和 $x$，使所需操作次数最少。",
+          "transformedStatement": "将数组排序并把目标固定为原最大值附近的等差数列。相邻差值的最大公约数决定不改变原数组结构时的最优步长，插入值转化为寻找最大值以下第一个缺失的同余位置。",
+          "keyObservations": [
+            "不插入元素时，最终值取当前最大值最优；所有差值都必须被 $x$ 整除，因此最优 $x$ 是相邻有序元素差值的最大公约数。",
+            "插入元素不能增大可用步长的最大公约数；保持原步长 $x$ 时，新元素应取 $ ext{max}+kx$，其中 $k<0$ 且该值未出现，这样只增加新元素本身的操作次数。",
+            "取正的 $k$ 会抬高最终最大值，使原有 $n$ 个元素都额外操作；而向下寻找缺失位置的代价至多为 $n$，所以改变 $x$ 或向上插入都不会更优。",
+            "设 $k$ 为最大的负整数且 $ ext{max}+kx$ 不在数组中，则答案为原数组归一到最大值的操作数减去 $k$，即 $\u00024\\sum_i(\\text{max}-a_i)/x-k$。"
+          ],
+          "solutionBrief": "排序后计算相邻差值的最大公约数 $x$；$n=1$ 时答案为 $1$。令 $k=-1$ 向下寻找首个未出现的 $ ext{max}+kx$，答案为 $\u00024\\sum_i(\\text{max}-a_i)/x-k$。用集合或二分判断存在性。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1902D",
+          "index": "D",
+          "slot": "D",
+          "title": "Robot Queries",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1902/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/122951",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "机器人从无限二维网格的 $(0,0)$ 出发，按字符串中的 U、D、L、R 移动。每个查询会将指定的子串 $[l,r]$ 反转后重新执行，要求判断机器人在初始位置或移动过程中是否访问过给定点 $(x,y)$。",
+          "transformedStatement": "把反转后的路径拆成原路径的前段、反转区间和后段：前后两段直接使用原前缀位置，反转段的访问位置则可转化为检查原路径中某个位置是否等于 $pos_{l-1}+pos_r-(x,y)$。",
+          "keyObservations": [
+            "反转区间不会影响第 $1$ 到 $l-1$ 步和第 $r+1$ 到 $n$ 步对应的路径，因此可分别检查原路径位置索引区间 $[0,l-1]$ 与 $[r,n]$。",
+            "反转区间内走到某个中间位置，可等价表示为原前缀位置的对称变换：只需检查是否存在 $i\\in[l,r]$，使原路径位置满足 $pos_i=pos_{l-1}+pos_r-(x,y)$。",
+            "为每个坐标保存原路径访问它时的所有时刻，并对时刻列表二分，可以在指定索引区间内判断是否访问过该点，从而使每次查询只需检查三个部分。"
+          ],
+          "solutionBrief": "预处理机器人原路径的前缀坐标，并为每个坐标维护访问时刻的有序列表。每次查询分别检查未反转的前段、后段，以及通过 $pos_{l-1}+pos_r-(x,y)$ 映射得到的反转段，均用二分判断时刻区间内是否出现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1902E",
+          "index": "E",
+          "slot": "E",
+          "title": "Collapsing Strings",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1902/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/122951",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构",
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "给定 $n$ 个小写字符串。对有序对 $(a,b)$，反复删除 $a$ 的末尾字符和 $b$ 的开头字符（仅当二者相等且仍可继续），再拼接剩余部分得到 $C(a,b)$；要求计算所有 $(s_i,s_j)$ 的 $|C(s_i,s_j)|$ 之和。",
+          "transformedStatement": "把每个 $s_i$ 反转为 $s_i'$，将一次坍缩的删除次数视为 $s_i'$ 与 $s_j$ 的最长公共前缀长度。于是只需在所有反转串组成的 Trie 中，统计每个原串与这些反转串的 LCP 总和。",
+          "keyObservations": [
+            "将 $a$ 反转后，原本比较 $a$ 的后缀与 $b$ 的前缀，等价于比较 $a'$ 与 $b$ 的最长公共前缀，因此 $|C(a,b)|=|a|+|b|-2LCP(a',b)$。",
+            "所有有序字符串对的基础长度贡献固定为 $2n\\\\sum_i |s_i|$，问题转化为统计所有 $LCP(s_i',s_j)$ 的总和，从而避免逐对模拟坍缩过程。",
+            "在反转串构成的 Trie 中，一个节点对应的前缀若同时位于两条根到字符串路径上，就对它们的 LCP 贡献 $1$；因此查询字符串时沿其路径累加各节点子树中的字符串数量即可。",
+            "节点子树计数可在插入每个反转串时沿途加一，随后每个原串只需在 Trie 中匹配对应前缀；未能继续匹配后，后续前缀贡献均为零。"
+          ],
+          "solutionBrief": "反转所有字符串并建 Trie，节点维护其子树中反转串的数量。对每个原串沿 Trie 查询前缀，累加经过节点的计数得到全部 LCP 之和，再用 $2n\\sum|s_i|-2\\sum LCP$ 计算答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1902F",
+          "index": "F",
+          "slot": "F",
+          "title": "Trees and XOR Queries Again",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1902/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/122951",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "graphs",
+            "implementation",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带整数权值的树。每次查询给出顶点 $x,y$ 和整数 $k$，只能从简单路径 $x$ 到 $y$ 上选择任意个顶点（也可以一个不选），询问这些顶点的权值异或是否能恰好等于 $k$。",
+          "transformedStatement": "把一条路径上的所有顶点值看成二进制向量集合，查询转化为判断目标 $k$ 是否属于该集合生成的 XOR 线性空间；树上路径再由 LCA 拆成两条根向下的链。",
+          "keyObservations": [
+            "任意整数集合能表示出的异或值集合可由至多 $20$ 个线性无关的基向量完全描述，因此每次加入或判断一个数只需进行 $20$ 位消元。",
+            "将查询路径按树根和两端点的 LCA 拆成两条竖直路径，分别取得两段的 XOR 基后合并，就能判断路径上是否存在顶点子集异或为 $k$。",
+            "对每个顶点维护从该点到根路径上真正使 XOR 基增加秩的“关键顶点”列表，列表长度最多为 $20$，所以竖直路径的基可以只由这些顶点重建。",
+            "若 $p$ 是 $v$ 的父亲，则 $v$ 的关键列表只需在 $p$ 的列表上增删一个元素：若 $a_v$ 已可表示则替换掉其消元时对应的关键顶点，否则直接加入 $v$，从而预处理可在线性规模内完成。"
+          ],
+          "solutionBrief": "用 $20$ 位 XOR 线性基表示路径上所有顶点值的异或闭包。预处理每个顶点到根路径中的关键顶点列表；查询时由 LCA 拆成两条竖链，分别重建并合并线性基，再判断 $k$ 是否可被消元为 $0$。预处理 $O(nB^2)$，单次查询 $O(B^2+\\log n)$，其中 $B=20$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
