@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2380,
+    "total_problems": 2388,
     "source_total_problems": 2388,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2380,
-    "with_editorial_brief": 2114,
-    "with_solution_brief": 2115,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2388,
+    "with_editorial_brief": 2122,
+    "with_solution_brief": 2123,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1442,
+    "ai_override_count": 1450,
     "primary_topic_count": 13,
-    "contest_count": 366,
+    "contest_count": 367,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -38,29 +38,29 @@ window.CF_INSIGHTS_DATA = {
     "树结构",
     "基础实现与模拟",
     "字符串",
-    "交互",
     "博弈",
+    "交互",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 113,
-    "构造与贪心": 749,
+    "字符串": 115,
+    "构造与贪心": 752,
     "图论与网络流": 142,
     "动态规划与状态设计": 207,
-    "数论与同余": 257,
+    "数论与同余": 258,
     "组合计数与概率": 185,
-    "数据结构": 221,
+    "数据结构": 222,
     "几何": 56,
     "树结构": 134,
     "代数、矩阵与多项式": 19,
     "交互": 84,
     "基础实现与模拟": 129,
-    "博弈": 84
+    "博弈": 85
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1177,
-    "ai_generated_partial_editorial": 46,
+    "ai_generated_with_editorial": 1184,
+    "ai_generated_partial_editorial": 47,
     "missing_editorial": 265,
     "manual_override": 891,
     "statement_derived": 1
@@ -53780,6 +53780,247 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "将每个变量的取值 $1/-1$ 视为布尔赋值。每列三个文字要求至少两个为真，转成 $(x\\lor y)$、$(y\\lor z)$、$(z\\lor x)$ 三个二元子句；对全部子句运行 2-SAT，存在可行赋值则 Alice 能获胜。",
           "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1968,
+      "name": "Codeforces Round 943 (Div. 3)",
+      "date": "2024-05-02",
+      "url": "https://codeforces.com/contest/1968",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1968A",
+          "index": "A",
+          "slot": "A",
+          "title": "Maximize?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1968/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/129096",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定整数 $x$，每个测试用例中需选择一个满足 $1\\le y<x$ 的整数，最大化 $gcd(x,y)+y$，并输出任意达到最大值的 $y$。",
+          "transformedStatement": "先将 $gcd(x,y)$ 改写为 $gcd(x-y,y)$，把目标值上界压到 $x$；随后寻找使这个上界取等的合法选择，而不是枚举所有 $y$。",
+          "keyObservations": [
+            "利用恒等式 $\u0000gcd(x,y)=gcd(x-y,y)$，可得 $gcd(x,y)+y=gcd(x-y,y)+y\\le (x-y)+y=x$，因此目标值存在统一上界 $x$。",
+            "取 $y=x-1$ 时，$x$ 与 $x-1$ 互质，目标值为 $gcd(x,x-1)+(x-1)=x$，恰好达到上界，所以它对每个测试用例都最优。"
+          ],
+          "solutionBrief": "对每个 $x$ 直接输出 $y=x-1$。由 $gcd(x,y)=gcd(x-y,y)$ 可证明任意合法 $y$ 的目标值不超过 $x$，而相邻整数互质使该取值达到 $x$，总复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1968B",
+          "index": "B",
+          "slot": "B",
+          "title": "Prefiquence",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1968/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/129096",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定两个二进制字符串 $a,b$，可以从 $b$ 中删除任意字符但不能改变剩余字符顺序。求 $a$ 的最长前缀，使其能够作为 $b$ 的子序列出现。",
+          "transformedStatement": "将问题转化为扫描 $b$ 时尽可能按顺序匹配 $a$：维护当前已匹配的前缀长度，遇到下一个所需字符就推进，否则跳过该字符；最终匹配长度即答案。",
+          "keyObservations": [
+            "处理到 $b_i$ 时，若它等于当前前缀后第一个未匹配字符，就能让可匹配前缀长度增加 $1$；否则跳过它不会损失已有匹配。",
+            "在扫描 $b$ 的任意前缀后，已匹配长度始终是该范围内能形成的最长 $a$ 前缀，因此逐字符贪心不会错过更长答案。",
+            "每个字符只被扫描一次，匹配成功时指针同步右移，最终指针位置就是最大可行的 $k$。"
+          ],
+          "solutionBrief": "从左到右扫描 $b$，维护已匹配的 $a$ 前缀长度。若当前字符等于 $a$ 的下一个待匹配字符就递增，否则忽略；扫描结束后的长度即答案，复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1968C",
+          "index": "C",
+          "slot": "C",
+          "title": "Assembly via Remainders",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1968/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/129096",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "number theory"
+          ],
+          "statementBrief": "给定数组 $x_2,\u0000x_3,\u0000\\ldots,x_n$，构造正整数数组 $a_1,\\ldots,a_n$，使每个 $i\\ge2$ 都满足 $a_i$ 除以 $a_{i-1}$ 的余数为 $x_i$。每个 $a_i$ 不得超过 $10^9$，输出任意一种满足条件的数组。",
+          "transformedStatement": "将问题转化为逐项生成：先选一个大于所有 $x_i$ 的初值，再让每个新元素等于前一元素加目标余数，使除法中的商为 $1$、余数恰为 $x_i$。",
+          "keyObservations": [
+            "只要保证 $a_{i-1}>x_i$，令 $a_i=a_{i-1}+x_i$ 就有 $a_i\\bmod a_{i-1}=x_i$，因此每个位置可独立按前一项递推构造。",
+            "取 $a_1=1000$ 后，所有后续元素都不小于 $1000$，而 $x_i\\le 500$，所以始终满足余数必须小于除数的条件。",
+            "递推序列最大值不超过 $1000+500n$，在题目范围内小于 $10^9$，因此构造同时满足元素上界。"
+          ],
+          "solutionBrief": "令 $a_1=1000$，对每个 $i\\ge2$ 设置 $a_i=a_{i-1}+x_i$。由于 $a_{i-1}>x_i$，有 $a_i\\bmod a_{i-1}=x_i$；同时最大值不超过 $1000+500n<10^9$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1968D",
+          "index": "D",
+          "slot": "D",
+          "title": "Permutation Game",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1968/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/129096",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "games",
+            "graphs",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个置换 $p$ 和权值数组 $a$，两名玩家从各自起点同时进行 $k$ 回合；每回合可沿 $p$ 移到下一个位置或停留，并按所在位置获得分数。双方都以获胜为目标，要求判断最终是 Bodya、Sasha 获胜还是平局。",
+          "transformedStatement": "把每名玩家的行动看成在起点所在置换环上选择一个移动次数 $i$，移动后一直停在第 $i$ 个位置；其得分为前缀经过位置权值和加上剩余回合的停留收益。",
+          "keyObservations": [
+            "由于 $p$ 是置换，所有位置都属于若干环；玩家从起点出发只能沿所在环前进或停留，因此只需考虑这条环上的前缀。",
+            "所有 $a_i$ 都为正，最优策略不会把移动推迟到后面；最多只需在前 $\u0000min(n,k)$ 次中选择移动次数。",
+            "若恰好移动 $i$ 次并随后停在 $pos_i$，总分可写为 $S_i+(k-i)a_{pos_i}$，其中 $S_i$ 是前 $i$ 个到达位置的权值和；于是最优分数是对所有 $i$ 取最大值。",
+            "分别计算两名玩家的最大得分并比较，较大者获胜，相等时为平局；这样博弈转化为两个独立的最优停止位置问题。"
+          ],
+          "solutionBrief": "从每个起点沿置换环逐步计算位置和 $S_i$。枚举 $0\\le i\\le\\min(n,k)$，取 $S_i+(k-i)a_{pos_i}$ 的最大值，分别得到两人的最优得分后比较大小。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1968E",
+          "index": "E",
+          "slot": "E",
+          "title": "Cells Arrangement",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1968/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/129096",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "在 $n\\times n$ 网格中选出 $n$ 个单元，计算这些单元之间（包括同一单元）的所有曼哈顿距离 $|x_1-x_2|+|y_1-y_2|$，要求输出一种使不同距离数量最多的选点方案。",
+          "transformedStatement": "将目标转化为覆盖尽可能多的整数距离；由于距离只能落在 $[0,2n-2]$，只需构造点集覆盖该区间的每个值。具体使用主对角线点配合两个右下方点，分别组织奇数和偶数距离。",
+          "keyObservations": [
+            "曼哈顿距离的取值范围是 $0$ 到 $2n-2$，因此不同距离的数量最多为 $2n-1$。",
+            "取主对角线上的 $n-2$ 个点，再加入 $(n-1,n)$ 和 $(n,n)$，可用这两类特殊点分别覆盖奇数距离与偶数距离。",
+            "主对角线上的点与 $(n-1,n)$ 的距离为 $2n-1-2i$，覆盖大部分奇数；与 $(n,n)$ 的距离为 $2n-2i$，覆盖大部分偶数，剩余距离由特殊点之间及对角线内部补齐。"
+          ],
+          "solutionBrief": "先用距离范围得到上界 $2n-1$。对每组 $n$，输出 $(i,i)$（$1\\le i\\le n-2$），以及 $(n-1,n)$、$(n,n)$；该构造能产生从 $0$ 到 $2n-2$ 的全部曼哈顿距离，因而达到上界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1968F",
+          "index": "F",
+          "slot": "F",
+          "title": "Equal XOR Segments",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1968/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/129096",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures"
+          ],
+          "statementBrief": "给定数组和多个区间查询。对每个子数组，判断能否切成至少两段连续且覆盖全部元素的部分，使每段元素的按位异或值都相等；能则输出 YES，否则输出 NO。",
+          "transformedStatement": "用前缀异或数组表示区间异或，并利用任意三段可合并的性质，把问题压缩为寻找两段或三段切分点：两段对应两个前缀值相等，三段对应两个指定前缀值的位置按顺序出现。",
+          "keyObservations": [
+            "超过 $3$ 段的合法划分可反复合并任意连续三段，因为 $x\\oplus x\\oplus x=x$，所以只需判断恰好 $2$ 段或 $3$ 段。",
+            "前缀异或满足区间 $[l,r]$ 的异或为 $b_r\\oplus b_{l-1}$，将两段相等条件化为 $b_m=b_{l-1}$，从而只需查找相同前缀值的位置。",
+            "三段划分合法当且仅当存在 $l\\le s<t<r$，使 $b_s=b_r$ 且 $b_t=b_{l-1}$；分别取满足条件的最小 $s$ 和最大 $t$，即可判断是否有序。"
+          ],
+          "solutionBrief": "预处理前缀异或，并为每个异或值保存出现位置。查询时先判断区间端点前缀值是否相等；否则在对应位置列表中二分查找最小的 $s\\ge l$ 与最大的 $t<r$，若 $s<t$ 则为 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1968G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Division + LCP (easy version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1968/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/129096",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "hashing",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的字符串和固定的分段数 $k=l=r$，要把整个字符串按顺序划分成恰好 $k$ 个非空连续子串，每个字符必须属于且只属于一个子串。要求最大化这些子串的最长公共前缀长度，并输出该值。",
+          "transformedStatement": "把答案转为判定最大公共前缀长度 $x$：统计能否将字符串划分出至少 $k$ 个都以原串前缀的前 $x$ 个字符开头的连续块。用 Z 函数提供匹配长度，再利用可行性的单调性求最大 $x$。",
+          "keyObservations": [
+            "固定候选长度 $x$ 后，只需判断每个分段是否拥有与原串前缀相同的长度为 $x$ 的前缀；从位置 $p$ 开始的匹配长度由 Z 值 $z_p$ 给出，因此条件是 $z_p\\ge x$。",
+            "从左到右尽早选择合格的长度为 $x$ 的连续块，可以得到最多的可选分段数；若数量至少为 $k$，就能调整为恰好 $k$ 段的划分。",
+            "可行性关于 $x$ 单调：若能让所有分段共享长度为 $x$ 的前缀，就一定能共享长度为 $x-1$ 的前缀，因此最大可行 $x$ 可用二分查找。"
+          ],
+          "solutionBrief": "计算字符串的 Z 函数。对候选答案 $x$，贪心扫描并统计最多能选出多少个起点满足 $z_p\\ge x$ 的长度为 $x$ 的块；若数量至少为 $k$ 则可行。利用可行性的单调性二分最大 $x$，总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1968G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Division + LCP (hard version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1968/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/129096",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dp",
+            "hashing",
+            "math",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的字符串，对每个 $k\\in[l,r]$，必须把整个字符串按顺序划分成恰好 $k$ 个连续且不重叠的非空子串。求所有划分中这 $k$ 个子串的最长公共前缀长度的最大值 $f_k$。",
+          "transformedStatement": "把每个 $k$ 的答案按 $k\\le\\sqrt n$ 和 $k>\\sqrt n$ 分开处理：前者直接按小规模版本求解；后者利用公共前缀长度 $\\ell$ 满足 $k\\ell\\le n$，改为围绕较小的 $\\ell$ 求可行的最大分段数。",
+          "keyObservations": [
+            "若划分为 $k$ 段且公共前缀长度为 $\u001b$ell$，每段长度都至少为 $\u001b\u001b$ell$，因此必有 $k\\cdot \\ell\\le n$；当 $k>\\sqrt n$ 时，答案长度被限制在 $\\sqrt n$ 以内。",
+            "按 $k\\le\\sqrt n$ 与 $k>\\sqrt n$ 分治，可以分别处理少量小 $k$ 和较短的公共前缀候选，从而覆盖所有查询而不必对每个 $k$ 使用同一种昂贵处理。",
+            "对于大 $k$，题解将问题改为枚举公共前缀长度 $\\ell$，求该长度下可行的最大分段数，再据此得到对应的 $f_k$；这把大范围的 $k$ 查询转化为至多 $\\sqrt n$ 个长度层次。"
+          ],
+          "solutionBrief": "将 $k$ 分为不超过 $\\sqrt n$ 和大于 $\\sqrt n$ 两类。小 $k$ 按简单版本的方法计算，复杂度为 $O(n\\sqrt n\\log n)$；大 $k$ 利用 $k\\cdot\\ell\\le n$，枚举不超过 $\\sqrt n$ 的公共前缀长度并求可行的最大 $k$，总复杂度为 $O(n\\sqrt n)$。题解未展开具体判定与数据结构实现。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "complete"
         }
       ]
