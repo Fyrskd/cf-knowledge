@@ -363,6 +363,17 @@
     "date": "2023-04-15"
   },
   {
+    "id": 1822,
+    "name": "Codeforces Round 867 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1682346900,
+    "relativeTimeSeconds": 108160299,
+    "date": "2023-04-24"
+  },
+  {
     "id": 1823,
     "name": "Codeforces Round 868 (Div. 2)",
     "type": "CF",
