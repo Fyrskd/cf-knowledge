@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2883,
+    "total_problems": 2888,
     "source_total_problems": 2888,
-    "filtered_out_problems": 5,
-    "with_statement_brief": 2883,
-    "with_editorial_brief": 2619,
-    "with_solution_brief": 2620,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2888,
+    "with_editorial_brief": 2624,
+    "with_solution_brief": 2625,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1945,
+    "ai_override_count": 1950,
     "primary_topic_count": 13,
-    "contest_count": 438,
+    "contest_count": 439,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 906,
+    "构造与贪心": 908,
+    "博弈": 96,
+    "数据结构": 267,
+    "组合计数与概率": 227,
     "数论与同余": 313,
     "字符串": 155,
     "动态规划与状态设计": 243,
-    "组合计数与概率": 226,
-    "数据结构": 266,
     "树结构": 148,
     "图论与网络流": 176,
     "交互": 93,
     "基础实现与模拟": 172,
     "几何": 69,
-    "博弈": 95,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1669,
+    "ai_generated_with_editorial": 1674,
     "ai_generated_partial_editorial": 59,
     "missing_editorial": 263,
     "manual_override": 891,
@@ -89186,6 +89186,152 @@ window.CF_INSIGHTS_DATA = {
             "两端均为 $0$ 的子串只需考察其最长 $0$ 块：该块能从左侧或右侧被一个长度不小于它的 good 部分消除，当且仅当整个子串 good；按最长块归属分组后可用范围计数合并答案。"
           ],
           "solutionBrief": "对每个左端点压缩记录以 $1$ 结尾的 good 区间，利用长度翻倍性质控制区间数，并预处理状态转移；反转字符串得到另一端信息。对两端为 $0$ 的子串按最长 $0$ 块分组，用范围数据结构统计左右可行部分，整体复杂度为 $O(n\\log^2 n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1747,
+      "name": "Codeforces Round 832 (Div. 2)",
+      "date": "2022-11-04",
+      "url": "https://codeforces.com/contest/1747",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1747A",
+          "index": "A",
+          "slot": "A",
+          "title": "Two Groups",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1747/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/108782",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个整数数组，必须把每个元素恰好分到两个可为空的组中，分别求两组元素和。最大化第一组和的绝对值减去第二组和的绝对值，并输出最大值。",
+          "transformedStatement": "把两组和记为 $S_1,S_2$，它们满足 $S_1+S_2=S$，其中 $S$ 是全数组总和；问题转化为在固定总和下最大化 $|S_1|-|S_2|$，其上界正好由 $|S|$ 达到。",
+          "keyObservations": [
+            "无论如何分组，都有 $|S_1|-|S_2|\\le |S_1+S_2|=|S|$，因此整个数组和的绝对值是答案上界。",
+            "将正数放入一组、负数放入另一组后，两组和的绝对值分别是正数总和与负数总和的绝对值；交换两组标签即可取较大者，达到 $|S|$。",
+            "最优值只取决于所有元素的总和，不需要记录具体分组，因此每个测试用例只需累加数组并输出 $|S|$。"
+          ],
+          "solutionBrief": "设数组总和为 $S$。由三角不等式，任意分组的 $|S_1|-|S_2|$ 不超过 $|S|$；把正数和负数分开并按需要交换两组，可达到该上界。因此累加所有元素后输出 $|S|$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1747B",
+          "index": "B",
+          "slot": "B",
+          "title": "BAN BAN",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1747/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/108782",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定由字符串“BAN”重复 $n$ 次组成的字符串。每次可以交换任意两个不同位置的字符，要求操作后“BAN”不再是最终字符串的子序列；求最少操作次数，并输出一组达到该次数的交换。",
+          "transformedStatement": "先要求消灭所有连续子串“BAN”，把初始的 $n$ 个块视为需要破坏的目标；再交换左侧 B 与右侧 N，使每次操作最多处理两个块，并得到同时消除该子串和目标子序列的构造。",
+          "keyObservations": [
+            "将“没有 BAN 子序列”强化为“没有 BAN 连续子串”来建立下界：初始有 $n$ 个连续出现的一一对应块。",
+            "一次交换至多破坏两个连续的 BAN 块，因此消灭全部 $n$ 个块至少需要 $\u001b[1m\\lceil n/2\\rceil\u001b[0m$ 次交换。",
+            "交换从左数第 $i$ 个 B 与从右数第 $i$ 个 N，$1\\le i\\le\\lceil n/2\\rceil$；这些交换后既不存在 BAN 子串，也不存在 BAN 子序列。"
+          ],
+          "solutionBrief": "答案为 $\\lceil n/2\\rceil$。令左端位置从 $1$ 开始、右端位置从 $3n$ 开始，每次交换两端位置的字符，然后左端加 $3$、右端减 $3$，共进行 $\\lceil n/2\\rceil$ 次。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1747C",
+          "index": "C",
+          "slot": "C",
+          "title": "Swap Game",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1747/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/108782",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [],
+          "originalTags": [
+            "games"
+          ],
+          "statementBrief": "给定一个正整数数组，Alice 与 Bob 轮流操作，Alice 先手。每回合选择一个非首位置，将该位置与首元素交换，并把交换后位于该位置的数减一；当轮到某人时首元素为 $0$，该玩家失败。判断双方最优时谁获胜。",
+          "transformedStatement": "胜负只取决于首元素是否严格大于全数组最小值：首元素大于最小值时 Alice 能控制最小值的消耗顺序；首元素等于最小值时 Bob 能采取对应的反制策略。",
+          "keyObservations": [
+            "一次操作可视为选取某个非首元素，与首元素交换后将新的末端值减一，因此首元素的当前大小决定后续行动的节奏。",
+            "若 $a_1$ 严格大于全数组最小值，Alice 可选取最小值，使 Bob 接下来被迫消耗这个最小值，最终保持先手优势。",
+            "若 $a_1$ 等于全数组最小值，Bob 可采用对称策略，使 Alice 始终面对不优的交换选择，因此 Bob 获胜。"
+          ],
+          "solutionBrief": "只需比较首元素与其余元素的最小值：若 $a_1>\\min(a_2,\u0000a0\u0000a0a_n)$，输出 Alice；否则输出 Bob。代码通过排序后缀并比较前两项实现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1747D",
+          "index": "D",
+          "slot": "D",
+          "title": "Yet Another Problem",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1747/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/108782",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "constructive algorithms",
+            "data structures"
+          ],
+          "statementBrief": "给定整数数组，每次查询一个区间；一次操作可选取其中任意连续子数组，并把该子数组的所有元素替换为它们的按位异或值。对每个查询求将整个区间变成全零所需的最少操作次数，若无法做到则输出 $-1$。",
+          "transformedStatement": "对每个查询区间，只需研究其总异或以及前缀异或的下标奇偶：总异或必须为 $0$，并检查是否存在奇数长度的零异或前缀，从而将答案转化为 $0$、$1$、$2$ 或不可行的判定。",
+          "keyObservations": [
+            "区间异或值在任意操作后保持不变，因此查询区间异或非 $0$ 时不可能全部变成 $0$。",
+            "将前缀异或按下标奇偶分组后，操作只会删除或保留这些集合中的值；因此必须存在一个奇数长度、异或为 $0$ 的前缀作为可操作分界。",
+            "区间长度为奇数且总异或为 $0$ 时，直接对整个区间操作即可；若某个端点本身为 $0$，则对去掉该端点后的区间操作也只需 $1$ 次。",
+            "其余情况下，若能找到区间内奇数长度且异或为 $0$ 的前缀，就把区间拆成两段分别操作，答案为 $2$；否则无法完成。"
+          ],
+          "solutionBrief": "预处理前缀异或、非零元素位置，并按前缀下标奇偶记录相同异或值的最近位置。每次查询依次判断总异或、全零、奇偶长度、端点为零及可用分界点，答案只可能为 $0,1,2,-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1747E",
+          "index": "E",
+          "slot": "E",
+          "title": "List Generation",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1747/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/108782",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定 $n,m$，将题目中的 good 数组对等价看作网格路径：从 $(0,0)$ 出发，每次跳到一个横纵坐标都不小于当前位置且不完全相同的格子，直到 $(n,m)$。要求计算所有这类路径访问格子数量之和，并对 $10^9+7$ 取模。",
+          "transformedStatement": "把每条路径按转向断点数 $k$ 分类；固定断点后，路径主体可压成长度为 $n+m-k$ 的一维路径，二维计数转化为组合数乘以一维访问总和。",
+          "keyObservations": [
+            "把数组对等价为网格路径：从 $(0,0)$ 跳到任意坐标不减且不相同的 $(x',y')$，最终到 $(n,m)$，从而把数组计数转成路径计数。",
+            "固定路径的 $k$ 个转向断点后，断点位置有 $\\binom{n}{k}\\binom{m}{k}$ 种选择，其余 $n+m-k$ 个位置独立决定是否经过，路径类因此可整体计数。",
+            "固定 $k$ 个断点的所有路径，其访问格子数总和可化为一维值 $f(n+m-k,0)$ 加上断点贡献 $2^{n+m-k-1}k$，避免直接在二维网格上统计。",
+            "边界值满足 $f(x,0)=2^{x-1}(x+3)/2$（$x>0$），代入 $k=0$ 到 $\\min(n,m)$ 的组合求和即可，单组复杂度为 $O(\\min(n,m))$。"
+          ],
+          "solutionBrief": "将问题转成网格跳跃路径，按转向断点数 $k$ 分组。用 $\\binom nk\\binom mk$ 选择断点，结合一维边界公式计算每组访问格子总数，再求和并对 $10^9+7$ 取模。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
