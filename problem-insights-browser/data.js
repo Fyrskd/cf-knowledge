@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3051,
+    "total_problems": 3057,
     "source_total_problems": 3058,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3051,
-    "with_editorial_brief": 2773,
-    "with_solution_brief": 2774,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3057,
+    "with_editorial_brief": 2779,
+    "with_solution_brief": 2780,
     "missing_editorial_brief": 277,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2113,
+    "ai_override_count": 2119,
     "primary_topic_count": 13,
-    "contest_count": 464,
+    "contest_count": 465,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 970,
+    "数论与同余": 329,
+    "构造与贪心": 973,
+    "动态规划与状态设计": 258,
+    "数据结构": 285,
     "组合计数与概率": 239,
     "图论与网络流": 187,
     "几何": 75,
     "字符串": 163,
     "基础实现与模拟": 183,
-    "数据结构": 284,
-    "数论与同余": 328,
-    "动态规划与状态设计": 257,
     "交互": 96,
     "树结构": 151,
     "博弈": 97,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1818,
+    "ai_generated_with_editorial": 1824,
     "ai_generated_partial_editorial": 64,
     "missing_editorial": 277,
     "manual_override": 891,
@@ -94233,6 +94233,190 @@ window.CF_INSIGHTS_DATA = {
             "第二次查询满足 $s=(x+0.5)/n$，据此可恢复左边界坐标 $x=ns-0.5$，两次查询即可定位方块。"
           ],
           "solutionBrief": "构造两个互相转置的锯齿状简单多边形。第一次查询用面积公式 $y=ms-0.5$ 求方块下边界，第二次用 $x=ns-0.5$ 求左边界；总共只需两次查询。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1720,
+      "name": "Codeforces Round 815 (Div. 2)",
+      "date": "2022-08-18",
+      "url": "https://codeforces.com/contest/1720",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1720A",
+          "index": "A",
+          "slot": "A",
+          "title": "Burenka Plays with Fractions",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1720/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/106136",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定两个分数 $a/b$ 和 $c/d$。每次可以选择其中一个分数的分子或分母，并将其乘以任意整数（分母不能乘 $0$）；求使两分数数值相等所需的最少操作次数。",
+          "transformedStatement": "将分数相等条件重写为比较两个交叉乘积 $ad$ 和 $bc$。问题因此变成判断它们是否相等，或是否能通过一次允许的整数倍变换使二者相等；若不能，则利用总能两步完成的性质取答案 $2$。",
+          "keyObservations": [
+            "两分数是否相等只需比较交叉乘积 $ad$ 与 $bc$；相等时无需操作，否则答案不可能为 $0$。",
+            "一次操作可行当且仅当 $ad$ 与 $bc$ 中一个能整除另一个，因为改变任一分子或分母都等价于让一个交叉乘积乘上整数因子。",
+            "无论初始情况如何都能用两次操作把两分数变成相同值，因此在排除 $0$ 和 $1$ 次后答案必为 $2$。"
+          ],
+          "solutionBrief": "令 $x=ad$、$y=bc$。若 $x=y$ 输出 $0$；否则若非零的一个能整除另一个，输出 $1$；其余情况输出 $2$。因为最多总能用两次操作使两分数相等。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1720B",
+          "index": "B",
+          "slot": "B",
+          "title": "Interesting Sum",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1720/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/106136",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组，选择一个非空且不等于整个数组的连续子段。该子段的美丽值是子段内部最大值与最小值之差，加上其外部元素最大值与最小值之差；求所有合法子段中的最大美丽值。",
+          "transformedStatement": "把子段和补集视为数组的两个部分，目标变成最大化两部分极差之和；题解进一步将其上界转化为全数组两个最大值之和减去两个最小值之和，并证明该上界可实现。",
+          "keyObservations": [
+            "任意子段与其补集的两个最大值之和不超过全数组的两个最大值之和，两个最小值之和不小于全数组的两个最小值之和，因此答案至多为 $max_1+max_2-min_1-min_2$。",
+            "将全局两个最大值和两个最小值分别标记后，选取两类标记位置中距离最近的一对，并取它们之间的子段，可使四个极值在子段及补集之间各产生所需贡献，从而达到上述上界。",
+            "因此答案只由数组中两个最大值和两个最小值决定，无需枚举子段或实际构造最优区间。"
+          ],
+          "solutionBrief": "排序数组后取两个最大值与两个最小值，答案为 $a_{n-1}+a_{n-2}-a_0-a_1$。题解说明该值既是上界，又能通过合适子段达到；每组复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1720C",
+          "index": "C",
+          "slot": "C",
+          "title": "Corners",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1720/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/106136",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由 $0$ 和 $1$ 组成的矩阵。每次选择任意 $2\\times2$ 方块去掉一个角形成的 L 形区域，要求其中至少有一个 $1$，并将该区域的三个格子全部改为 $0$；求最多能进行多少次操作。",
+          "transformedStatement": "把目标转化为：先选择一次最划算的 L 形操作消耗若干个 $1$，随后利用新形成的相邻零区域，让剩余每个 $1$ 分别在一次操作中被消除；因此只需最小化第一次操作的 $1$ 损失。",
+          "keyObservations": [
+            "若当前存在至少含两个相邻零的连通区域，就能每次用一个含 $1$ 的 L 形操作再消去一个 $1$，因此之后每个剩余 $1$ 都能单独贡献一次操作。",
+            "第一次操作只需考察每个 $2\\times2$ 小块：若其中有 $k$ 个 $1$，选择其三个角后会消去至少一个 $1$，实际损失为 $\\max(1,k-1)$。",
+            "第一次操作后可达到剩余单个 $1$ 逐个消除的状态，所以应选择使 $\\max(1,k-1)$ 最小的非全零小块，答案为 $1+cnt_1-\\min\\max(1,k-1)$。"
+          ],
+          "solutionBrief": "统计全表 $1$ 的数量，并枚举每个 $2\\times2$ 小块中 $1$ 的个数 $k$，取最小的 $\\max(1,k-1)$。若全零答案为 $0$，否则答案是 $1+cnt_1-\\min\\max(1,k-1)$，复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1720D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Xor-Subsequence (easy version)",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1720/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/106136",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "strings",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组，选择下标严格递增的子序列。若相邻选中位置为 $j<i$，需满足 $a_j\\oplus i<a_i\\oplus j$；求满足条件的最长子序列长度。",
+          "transformedStatement": "把每个数组位置视为一个 DP 状态，边 $j\\to i$ 表示这两个位置可以连续衔接，即满足上述异或不等式；目标转化为求这张有向无环图中的最长路径。",
+          "keyObservations": [
+            "令 $dp_i$ 表示以位置 $i$ 结尾的最长美丽子序列长度，则转移只需判断前一位置 $j$ 是否满足 $a_j\\oplus i<a_i\\oplus j$。",
+            "由于 $a_i\\le 200$，题解证明满足条件的前驱不可能距离当前位置超过 $512$，因此无需枚举全部历史位置。",
+            "下标参与异或且子序列下标严格递增；将位置差限制在固定范围后，每个位置的转移数量变为常数，整体可在线性处理。"
+          ],
+          "solutionBrief": "设 $dp_i$ 为以 $i$ 结尾的最优长度。对每个 $i$，只枚举最近 $512$ 个 $j<i$；若 $a_j\\oplus i<a_i\\oplus j$，则用 $dp_j+1$ 更新 $dp_i$，取所有状态最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1720D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Xor-Subsequence (hard version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1720/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/106136",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "dp",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "给定数组 $a$，选择下标严格递增的子序列；对每一对相邻选中下标 $j<i$，必须满足 $a_j\\oplus i<a_i\\oplus j$。求满足条件的最长子序列长度。",
+          "transformedStatement": "把问题改写为按下标递增的最长路径：从状态 $j$ 转移到 $i$ 当且仅当 $a_j\\oplus i<a_i\\oplus j$。对每个结尾状态维护最大长度，并将比较过程按 $a_k\\oplus k$ 的二进制前缀组织成 Trie 查询。",
+          "keyObservations": [
+            "将最后选中的下标设为 $i$，其前驱 $j$ 必须满足 $a_j\\oplus i<a_i\\oplus j$，因此答案可按下标递增做转移。",
+            "比较两个异或值时，决定大小的是最高不同位；在此前缀位相同的条件下，$a_j\\oplus j$ 与 $a_i\\oplus i$ 的对应前缀也相同。",
+            "按 $a_j\\oplus j$ 建二进制 Trie，沿 $a_i\\oplus i$ 查询；每遇到相反分支，就能确定最高不同位，并用该子树中按下标当前位分类的最大 DP 值更新答案。",
+            "Trie 每个节点分别维护下标当前位为 $0$ 和 $1$ 的最大 DP 值，插入当前状态后即可供后续下标转移，整体复杂度为 $O(n\\log C)$。"
+          ],
+          "solutionBrief": "令 $dp_i$ 表示以 $i$ 结尾的最长美丽子序列。用 $a_j\\oplus j$ 建二进制 Trie，查询 $a_i\\oplus i$ 时检查相反分支，并按下标位分类维护最大 $dp_j$，求得转移后插入当前状态。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1720E",
+          "index": "E",
+          "slot": "E",
+          "title": "Misha and Paintings",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1720/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/106136",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 矩阵，每次可选一个正方形区域并把其中所有元素重染成同一个整数。求至少操作多少次，使矩阵中恰好出现 $k$ 个不同整数。",
+          "transformedStatement": "把一次操作的效果改写为：所选正方形内若包含某数值的全部出现位置，该数值会被消灭；重染色再至多引入一种数值。于是只需寻找能完整覆盖指定数量数值的正方形。",
+          "keyObservations": [
+            "若当前有 $c\\le k$ 种数值，每次把一个单元格改成新的数值即可恰好增加一种，因此答案为 $k-c$。",
+            "一次重染色只会消灭那些全部出现位置都被所选正方形覆盖的数值，并最多新增一种数值，所以结果只能是 $c-p$ 或 $c-p+1$，其中 $p$ 是被完全覆盖的数值种类数。",
+            "固定正方形边长后，能覆盖某个数值全部出现位置的左上角恰好形成一个矩形；对这些矩形做二维差分，就能同时统计所有候选正方形覆盖了多少完整数值。",
+            "当 $c>k$ 时，题解证明最多两次操作即可达到目标；因此只需先判定是否存在一次操作得到 $k$，否则答案就是 $2$。"
+          ],
+          "solutionBrief": "先统计不同数值数 $c$。若 $c\\le k$，答案是 $k-c$；否则枚举正方形边长，按每个数值的出现位置范围用二维差分统计可完全覆盖的种类数，检查一次重染色能否得到 $k$，否则由构造保证答案为 $2$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
