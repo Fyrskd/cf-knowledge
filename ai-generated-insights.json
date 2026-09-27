@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T10:49:12+00:00",
+  "updated_at": "2026-09-27T10:54:51+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -51812,6 +51812,214 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面规则与完整 editorial；tags 提示 constructive algorithms、math。",
+        "quality_flags": []
+      }
+    },
+    "1833G": {
+      "problem_key": "1833G",
+      "title": "Ksyusha and Chinchilla",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1833/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/116636",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "050a7fb68741fb269a4b69f7534171fe7970171532ffd44e802b19572fac7b7e",
+      "generated_at": "2026-09-27T10:52:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵树，每次可切断一条尚未切过的边；切完若干条边后，要求所有连通块都恰好包含 $3$ 个顶点。请输出任意可行的切边集合，若不存在则输出 $-1$。",
+        "transformed_statement": "把树以 $1$ 为根，将目标看成自底向上把局部顶点与子树配成大小为 $3$ 的块；优先处理所有孩子都是叶子的轻点，并根据其孩子数量决定保留父边还是切断父边。",
+        "key_observations": [
+          "将树以顶点 $1$ 为根后，只需自底向上处理局部结构；“轻点”是非叶且所有孩子都是叶子的顶点。",
+          "轻点若有至少 $3$ 个孩子，其自身加孩子无法与父边组成大小为 $3$ 的连通块，因此无论如何切割都不可能。",
+          "轻点恰有两个孩子时，应切断它与父亲的边，使它和两个孩子恰好组成一个分支；这固定了该局部的归属。",
+          "轻点恰有一个孩子时，应保留父亲与它的连接，并切断父亲连向其他孩子的边，使父亲、该轻点及其孩子组成一个分支；处理切边后继续更新父亲的孩子统计。"
+        ],
+        "solution_brief": "以 $1$ 为根，统计每个顶点的孩子数和轻孩子数，将轻点放入队列自底向上处理：按孩子数为 $1$ 或 $2$ 选择切边，孩子数至少为 $3$ 则无解；切边后更新相关父节点。整体复杂度为 $O(n)$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "构造与贪心",
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 的轻点贪心方案、statement_text 的分支定义与切边要求，以及 tags 中的树和构造方向。",
+        "quality_flags": []
+      }
+    },
+    "1833F": {
+      "problem_key": "1833F",
+      "title": "Ira and Flamenco",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1833/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/116636",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "13376b3ad9cdb81eafaeb62e84cac87111ec3785530acc2f6037a31551c64bc6",
+      "generated_at": "2026-09-27T10:53:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定$n$名学生及各自等级，每次选择恰好$m$名学生组成一个舞蹈；被选学生的等级必须两两不同，且最大等级与最小等级之差为$m-1$，也就是构成连续的$m$个整数等级。要求计算不同选人集合的数量，答案对$10^9+7$取模。",
+        "transformed_statement": "先把所有不同等级排序为$b$，并记录每个等级在原数组中的出现次数$c$。每个合法舞蹈对应一个连续的$m$个等级块，若该块确实连续，则其贡献为这些等级出现次数的乘积。",
+        "key_observations": [
+          "一个舞蹈合法，当且仅当所选学生的等级恰好是长度为 $m$ 的连续整数段，因此无需关心学生原来的排列顺序。",
+          "固定连续等级段的最小等级后，该段被唯一确定；按最小等级枚举可以避免同一组选人被重复计数。",
+          "将每个不同等级的出现次数记为 $c_i$，选择某个连续段的方案数就是其中所有出现次数的乘积，从而把选人计数转化为区间乘积。",
+          "区间乘积可由出现次数的前缀积快速得到，并用费马小定理求逆元计算模 $10^9+7$ 下的商。"
+        ],
+        "solution_brief": "排序并压缩等级，统计每个等级的出现次数。枚举每个可能的最小等级，若后续恰有连续的$m$个不同等级，则将这些等级出现次数的乘积加入答案；用前缀积和模逆元快速计算区间乘积。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "数论与同余",
+          "数据结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，结合 tags 中的 combinatorics、math、sortings、data structures。",
+        "quality_flags": [
+          "editorial下标表述疑似存在偏移，摘要按长度为m的连续等级段解释"
+        ]
+      }
+    },
+    "1833E": {
+      "problem_key": "1833E",
+      "title": "Round Dance",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1833/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/116636",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "53f51688f8ef5d577ac9e382ebf30bb63d62b91346bbc9e187b4eca9e850e5a0",
+      "generated_at": "2026-09-27T10:53:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $N$ 个人参加若干圆舞，每个圆舞至少两人且每人恰有两名邻居；每个人只记得其中一名邻居。给出所有人的记忆，求满足这些记忆时圆舞数量可能的最小值和最大值。",
+        "transformed_statement": "把每个人与其记得的邻居连成无向图，将连通分量视为已确定的局部结构：分量是环或路径；环必须独立成舞，而多个路径可以通过连接端点合并。",
+        "key_observations": [
+          "把每个人与其记得的邻居连成无向图；同一圆舞中的记忆边不会跨舞，因此连通分量数 $k$ 直接给出圆舞数量的上界。",
+          "由于每个顶点在该图中的度数不超过 $2$，每个连通分量只能是环或路径；这将一般划分问题压缩为统计两类分量。",
+          "环分量中的每个人已经有两个邻居，无法与其他分量合并；路径分量的两个端点可以重新连接，因此所有路径分量能够合并成一个圆舞。",
+          "若路径分量数为 $b$、环分量数为 $c$，则最小值为 $c+\\min(b,1)$，最大值为 $c+b$；整个过程只需线性遍历图。"
+        ],
+        "solution_brief": "将 $i$ 与 $a_i$ 连无向边并求连通分量，按环或路径分类。设路径数为 $b$、环数为 $c$，答案为 $c+\\min(b,1)$ 和 $c+b$，总复杂度 $O(n)$。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "树结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 与完整 editorial_text；tags 仅用于主题辅助判断。",
+        "quality_flags": []
+      }
+    },
+    "1833D": {
+      "problem_key": "1833D",
+      "title": "Flipper",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1833/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/116636",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0b397e2c1908938c8475f92fa31b34e337c51151d2702f54b2c7c2cee514d157",
+      "generated_at": "2026-09-27T10:54:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $n$ 的排列，选择区间 $[l,r]$，先将其反转，再交换该区间左侧前缀与右侧后缀，操作必须恰好进行一次。要求输出所有可能结果中字典序最大的排列。",
+        "transformed_statement": "一次操作后的排列统一写成三段：原后缀 $p_{r+1}\u0003dots p_n$、反转后的 $p_r\u0003dots p_l$、原前缀 $p_1\u0003dots p_{l-1}$；先最大化首段后的首元素，再优化剩余分界点。",
+        "key_observations": [
+          "固定右端点 $r$ 后，结果首项只能是 $p_{r+1}$（$r<n$）或 $p_n$（$r=n$），因此只需保留能得到最大首项的至多两个 $r$。",
+          "选定 $r$ 后，结果必为 $p_{r+1},\u0003dots,p_n$、$p_r,p_{r-1},\u0003dots,p_l$、$p_1,\u0003dots,p_{l-1}$ 三段，右侧后缀与 $l$ 无关，问题只剩比较中间段和前缀。",
+          "在固定后缀后，先放置 $p_r$；只要下一个倒序元素大于 $p_1$ 就继续纳入反转段，否则让前缀从 $p_1$ 开始即可，因为首个不同位置应优先选择更大值。",
+          "对至多两个候选 $r$ 分别构造最优结果并比较字典序，候选数量被首项最大性压缩，整体可在 $O(n^2)$ 内完成。"
+        ],
+        "solution_brief": "枚举能产生最大首项的至多两个右端点。对每个 $r$，固定保留后缀，令反转段从 $p_r$ 向左延伸；只要后续元素大于 $p_1$ 就继续，否则确定 $l$，最后比较候选答案取字典序最大者。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 提炼，并结合 statement_text 确认操作定义；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1833C": {
+      "problem_key": "1833C",
+      "title": "Vlad Building Beautiful Array",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1833/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/116636",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e9143792b556e812b51aba554c906898dad5225c36ea4be5efb28b57e38c3129",
+      "generated_at": "2026-09-27T10:54:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组，独立构造每个 $b_i$：可以保留 $a_i$，也可以选择任意下标 $j$ 将其改为 $a_i-a_j$，且结果必须为正。判断能否使所有 $b_i$ 具有相同奇偶性。",
+        "transformed_statement": "目标等价于判断能否统一成全偶或全奇。若数组混合奇偶，全偶方案受最小奇数限制而失败；全奇方案则要求存在一个正奇数作为统一减数。",
+        "key_observations": [
+          "若数组含有奇偶混合，不能把所有数变成正偶数：最小奇数减去任意奇数都会非正，减偶数则仍为奇数。",
+          "把目标统一为奇数时，只需保留奇数，并从每个偶数中减去数组最小值；因此最小值为奇数时一定可行。",
+          "若所有元素本来同奇偶，直接令 $b_i=a_i$ 即可，无需进行减法。"
+        ],
+        "solution_brief": "若所有元素同奇偶，直接判定为 YES。否则只能构造全奇数组；这当且仅当数组最小值为奇数，此时每个偶数减去最小值即可，因此判断“全同奇偶或最小值为奇数”。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text，以及 tags 中的 greedy、math。",
+        "quality_flags": []
+      }
+    },
+    "1833B": {
+      "problem_key": "1833B",
+      "title": "Restore the Weather",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1833/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/116636",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c70e614e3fcab5fe8f87a996cab81b9b1c92a79390ebe7bc7183e4c543f01c21",
+      "generated_at": "2026-09-27T10:54:39+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定连续 $n$ 天的预测温度数组 $a$，以及被打乱的实际温度数组 $b$。需要重新排列 $b$，使每天分配到的实际温度与预测温度之差绝对值不超过 $k$，并按日期顺序输出结果；题目保证一定存在可行排列。",
+        "transformed_statement": "把问题视为将两组数进行一一匹配：预测值排序后保留原下标，实际值排序后按相同排名配对。由于可行匹配存在，交叉配对可以交换成顺序配对而不破坏任意差值限制。",
+        "key_observations": [
+          "将预测温度和实际温度都按非降序排列后，最小预测值与最小实际值匹配是安全的；任意交叉匹配都可交换为不变差的顺序匹配。",
+          "若存在满足 $|a_i-b_i|\\le k$ 的任意配对，则按排序顺序配对也满足限制，因此无需尝试不同排列。",
+          "排序预测数组时保留原日期下标，完成顺序配对后写回原位置即可得到所需排列。"
+        ],
+        "solution_brief": "记录每个预测温度的原下标，将预测数组和实际温度数组分别排序，依次把第 $j$ 小的实际温度分配给第 $j$ 小的预测温度，再按原下标输出。题目保证可行，因此该顺序匹配一定满足差值限制。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text，以及 tags 中的 greedy 和 sortings。",
+        "quality_flags": []
+      }
+    },
+    "1833A": {
+      "problem_key": "1833A",
+      "title": "Musical Puzzle",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1833/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/116636",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c9927e80fc6d513b79dbcc739a62489dafe98fbdf56c6b989d5f965ba5a8be00",
+      "generated_at": "2026-09-27T10:54:51+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定由七种音符组成的旋律字符串。每次只能录制两个连续音符，之后可将两段旋律拼接，但前一段末音必须等于后一段首音；求得到完整字符串所需录制的不同二音旋律的最少数量。",
+        "transformed_statement": "把构造过程转化为覆盖目标字符串的相邻字符对：对每个位置记录 $s_i s_{i+1}$，这些二元串可以按顺序首尾重合拼接；重复出现的二元串只需记录一次。",
+        "key_observations": [
+          "目标旋律中每个相邻字符对 $s_i s_{i+1}$ 都必须被录制，否则无法在拼接过程中形成该处相邻音符。",
+          "按目标顺序依次拼接相邻二元旋律时，前一段的末音与后一段的首音天然相同，因此所有相邻二元旋律足以构造原旋律。",
+          "相同的二元旋律可以重复使用，不必重复录制，所以答案等于相邻字符对的不同种类数。"
+        ],
+        "solution_brief": "遍历字符串的所有相邻字符对，将每一对加入集合；集合大小就是最少需要录制的二音旋律数量，因为每个位置都必须覆盖且重复的旋律可复用。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，算法标签仅用于辅助归类。",
         "quality_flags": []
       }
     }
