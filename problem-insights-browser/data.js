@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1886,
+    "total_problems": 1893,
     "source_total_problems": 1893,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1886,
-    "with_editorial_brief": 1644,
-    "with_solution_brief": 1645,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1893,
+    "with_editorial_brief": 1651,
+    "with_solution_brief": 1652,
     "missing_editorial_brief": 241,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 827,
+    "ai_override_count": 834,
     "primary_topic_count": 13,
-    "contest_count": 298,
+    "contest_count": 299,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 80,
-    "构造与贪心": 638,
-    "图论与网络流": 116,
-    "动态规划与状态设计": 178,
-    "数论与同余": 177,
-    "组合计数与概率": 145,
+    "构造与贪心": 640,
+    "图论与网络流": 117,
+    "动态规划与状态设计": 179,
+    "数论与同余": 178,
+    "组合计数与概率": 146,
     "数据结构": 155,
     "几何": 40,
     "树结构": 121,
     "代数、矩阵与多项式": 17,
     "交互": 74,
-    "基础实现与模拟": 79,
+    "基础实现与模拟": 80,
     "博弈": 66
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 720,
+    "ai_generated_with_editorial": 727,
     "ai_generated_partial_editorial": 33,
     "missing_editorial": 241,
     "manual_override": 891,
@@ -10492,6 +10492,217 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：把所有复杂性集中到第一次操作。枚举第一次根 r 时，模拟一次“非叶值流向最远叶子”的结果；之后再选根只是在叶子值中拿最大的 k-1 个。用换根 DFS 从父根移动到子根时，只有沿这条边附近的归宿会变化，维护叶子值多重集合以及前 k-1 大的和，就能对每个 r 求 `a_r + 后续最大和` 并取最大。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2204,
+      "name": "Educational Codeforces Round 188 (Rated for Div. 2)",
+      "date": "2026-03-16",
+      "url": "https://codeforces.com/contest/2204",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "2204A",
+          "index": "A",
+          "slot": "A",
+          "title": "Passing the Ball",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2204/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/152150",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 名学生排成一列，学生收到球后按字符串规定向左（`L`）或向右（`R`）传给相邻学生；从第 1 名学生开始，连续传球恰好 $n$ 次。求整个过程中至少接到过一次球的学生人数。",
+          "transformedStatement": "令第一个 `L` 出现在位置 $p$。由于此前所有方向都是向右，球会先走过学生 $1$ 到 $p$；到达 $p$ 后与 $p-1$ 之间反复传球，所以问题转化为求这个首个 `L` 的位置。",
+          "keyObservations": [
+            "设字符串中第一个 `L` 位于第 $p$ 个学生；此前所有人都向右传，因此球会依次到达学生 $1$ 到 $p$。",
+            "到达学生 $p$ 后，它会向左传回学生 $p-1$，而学生 $p-1$ 再向右传回，形成只在两人之间往返的循环。",
+            "因此第 $p$ 个学生之后永远不会拿到球，而前 $p$ 个学生都至少拿到一次，答案直接是第一个 `L` 的位置 $p$。"
+          ],
+          "solutionBrief": "找到字符串中第一个 `L` 的位置 $p$。球会先依次经过前 $p$ 名学生，随后在 $p-1$ 与 $p$ 之间往返，因此输出 $p$；也可直接模拟并标记访问过的学生。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2204B",
+          "index": "B",
+          "slot": "B",
+          "title": "Right Maximum",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2204/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/152150",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定数组，每次选择当前数组中的最大值；若最大值有多个，选择最右侧的一个，然后删除该元素及其右侧全部元素。重复操作直到数组为空，求操作总次数。",
+          "transformedStatement": "把元素分为最终会被选中的元素和永远不会被选中的元素：一个元素能被选中，当且仅当它不小于左侧所有元素，因此答案就是数组前缀最大值（允许相等）出现的次数。",
+          "keyObservations": [
+            "若 $a_i$ 左侧存在严格更大的元素，则在 $a_i$ 尚未被删除时该元素也仍存在，因此 $a_i$ 不可能成为当前最大值，必定不会被选中。",
+            "若 $a_i$ 不小于左侧所有元素，则它不能在未被选中的情况下被删除：删除它必须选中一个不小于它的元素，而相同最大值时会优先选择更右侧的元素，因此 $a_i$ 必会被选中。",
+            "因此真正被选中的元素恰好是从左到右扫描时不小于此前最大值的元素，答案转化为统计前缀最大值出现的次数。"
+          ],
+          "solutionBrief": "从左到右维护此前元素的最大值。若当前元素小于该最大值，它左侧已有更大元素，必不会被选；否则它一定会被选，答案加一并更新最大值。每个测试用例在线性时间内完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2204C",
+          "index": "C",
+          "slot": "C",
+          "title": "Spring",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/2204/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/152150",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "三人分别每隔 $a$、$b$、$c$ 天在对应周期的倍数日到泉水处取水，统计第 1 到第 $m$ 天。独自到访者取 6 升，两人同时到访时各取 3 升，三人同时到访时各取 2 升，要求分别计算三人获得的总水量。",
+          "transformedStatement": "把每个人的总水量拆成三类事件的加权和：仅该人到访、该人与另一人恰好到访、三人同时到访；任意事件的发生日集合都由相应周期的最小公倍数刻画。",
+          "keyObservations": [
+            "任意两人的共同到访日恰好是其周期最小公倍数的倍数，因此共同到访次数为 $⌊m/\\operatorname{lcm}(x,y)⌋$。",
+            "固定某人周期为 $x$ 时，其到访次数为 $⌊m/x⌋$；用两两交集减去三人交集，可得到仅该人到访的天数。",
+            "两人同时到访的天数可由对应两人交集减去三人交集得到，三人同时到访次数则为 $⌊m/\\operatorname{lcm}(x,y,z)⌋$。",
+            "每位参与者的总水量只需按“独自到访得 6 升、恰有两人得 3 升、三人同时到访得 2 升”对三类天数加权。"
+          ],
+          "solutionBrief": "分别固定 Alice、Bob、Carol，统计其独自到访、与另一人恰好同时到访及三人同时到访的天数。所有交集次数都由周期的最小公倍数和整除计数得到，再按 6、3、2 升加权求和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2204D",
+          "index": "D",
+          "slot": "D",
+          "title": "Alternating Path",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2204/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/152150",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graph matchings",
+            "graphs"
+          ],
+          "statementBrief": "给定一个无向简单图，需要为每条边选择一个方向。若从顶点出发的任意路径都满足边方向按“顺着、逆着、顺着、逆着……”交替，则称该顶点美丽；求定向后最多能得到多少个美丽顶点。",
+          "transformedStatement": "将每个连通分量按距离起点的奇偶性划分为两侧：美丽条件要求所有边方向与这套二分划分一致。于是问题转化为对每个分量判断是否二分图，并在可行时选择较大的一侧计数。",
+          "keyObservations": [
+            "从顶点出发的长度为 $2$、$3$ 等路径依次强制相邻边方向交替，因此边方向由顶点到起点的距离奇偶性决定。",
+            "同一连通分量中，若某顶点能通过两条路径处于不同奇偶位置，其入边和出边要求会冲突；这等价于分量必须是二分图。",
+            "在二分连通分量中，选定一个美丽顶点后，所有边的方向被唯一确定，且与它同一侧的全部顶点都会美丽。",
+            "各连通分量的方向选择互不影响，所以每个二分分量贡献两侧较大者的大小，非二分分量贡献 $0$。"
+          ],
+          "solutionBrief": "按连通分量独立处理，用 DFS 将顶点二染色。若发现同边两端同色，则该分量贡献 $0$；否则贡献两种颜色数量的较大值，累加所有分量，复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2204E",
+          "index": "E",
+          "slot": "E",
+          "title": "Sum of Digits (and Again)",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2204/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/152150",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定一串数字，只能重排字符，不能增删，使其成为某个正整数 $x$ 按规则生成的字符串 $S(x)$：先写出 $x$，若其大于 $9$，再把各位数字之和作为新数继续写入，直到得到一位数。输出任意一种合法重排。",
+          "transformedStatement": "枚举原数 $x$ 的各位数字和 $y$。$y$ 决定字符串末尾的固定部分 $S(y)$；从输入数字中扣除该后缀后，剩余数字只需能组成一个各位和为 $y$ 的首段数。",
+          "keyObservations": [
+            "原数的首段数字和记为 $y$，必有 $1\\le y\\le 9|s|$，因此可以枚举 $y$，避免直接枚举可能很长的原数。",
+            "固定 $y$ 后，字符串末尾必须是唯一确定的 $S(y)$；该后缀很短，只需检查其各数字出现次数是否不超过输入串的对应计数。",
+            "去掉后缀后，剩余数字的总和必须恰好为 $y$，这正是它们能组成首段原数的充要条件；满足后将剩余数字按非递增序排列即可避免前导零。",
+            "找到任意可行的 $y$ 后，将剩余数字接到 $S(y)$ 前面就得到合法答案，因此枚举到首个可行值即可停止。"
+          ],
+          "solutionBrief": "统计输入串中各数字的数量，枚举首段数字和 $y$。构造后缀 $S(y)$，检查其计数可用且剩余数字之和为 $y$；若成立，就把剩余数字按非递增序排列并接到后缀前。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2204F",
+          "index": "F",
+          "slot": "F",
+          "title": "Sum of Fractions",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2204/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/152150",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "combinatorics",
+            "data structures",
+            "greedy",
+            "math",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组 $a$ 和多个操作次数 $k$。对每个子数组先把元素变成倒数，每次任选一个分数，将分子加一或在分母大于一时将分母减一，恰好操作 $k$ 次后最大化分数和，并对所有子数组的最大值求和。",
+          "transformedStatement": "把每个子数组按其最左侧最小元素唯一归类；该元素决定操作后的分段线性贡献，其余元素只提供固定的倒数贡献。于是对每个 $a_i$ 统计它覆盖的子数组数量，并将所有查询按阈值 $k<a_i$ 分成两段线性函数求和。",
+          "keyObservations": [
+            "对一个子数组，最优策略始终只操作其中最小的分母；若操作次数少于该最小值，就全部增加分子，否则先把分母降到 $1$，再继续增加分子。",
+            "因此最小元素 $b_m$ 的最优贡献是分段线性的：$k<b_m$ 时为 $(k+1)/b_m$，$k\\ge b_m$ 时为 $k+2-b_m$，其余元素始终贡献原值的倒数。",
+            "将每个子数组归给其中最左侧的最小值后，元素 $a_i$ 的归属范围由左侧最近的 $\u0000a_{l'}\\le a_i$ 和右侧最近的 $a_{r'}<a_i$ 确定，归属子数组数为 $(i-l')(r'-i)$。",
+            "对固定 $a_i$，它作为最小值或非最小值时对答案都是关于 $k$ 的线性函数；按 $k_j<a_i$ 与 $k_j\\ge a_i$ 用二分切分，再分别累加斜率和常数项即可。"
+          ],
+          "solutionBrief": "先证明每个子数组只需操作最小分母，并得到关于 $k$ 的分段线性公式。用单调栈确定每个 $a_i$ 作为最左最小值的子数组数，其他子数组贡献 $1/a_i$；再对查询按 $a_i$ 二分切分，用前缀和累加线性函数，复杂度为 $O(n(\\log M+\\log m)+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2204G",
+          "index": "G",
+          "slot": "G",
+          "title": "Grid Path",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/2204/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/152150",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "代数、矩阵与多项式",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "dp",
+            "graphs",
+            "matrices"
+          ],
+          "statementBrief": "给定 $n\\times m$ 网格，棋子从左上角出发，每次只能向左、向右或向下移动且不能出界，可移动任意次。路径只记录至少访问过的格子集合，求所有不同路径集合的数量，并对 $mod$ 取模。",
+          "transformedStatement": "把路径按行建模：每个被访问的行对应一个连续线段，且相邻行线段必须有交集；于是问题变为统计满足首行含起点、相邻线段可连接的线段序列，并用规范化的连接列消除重复计数。",
+          "keyObservations": [
+            "由于只能向下而不能向上，同一行被访问的格子必然构成一个连续线段；相邻行的线段必须相交，问题因此转化为逐行选择相交线段。",
+            "若直接以当前行线段的左右端点建状态，状态过多；将相邻行的连接列作为状态，并统一规定使用交集中的最左连接位置，可避免同一组线段被重复计数。",
+            "连接列是否等于当前行最左访问列会影响后续转移，因此为每个连接列增加一个布尔标记，得到每行仅 $2m$ 个状态。",
+            "逐行转移关系固定后，将状态向量补充前 $i$ 行方案总数 $s_i$，即可表示为固定的 $(2m+1)\\times(2m+1)$ 矩阵；行数很大时用矩阵快速幂，矩阵乘法中每累计约 16 项再取模以减少非固定模数开销。"
+          ],
+          "solutionBrief": "按行把路径表示为相交线段序列，用连接列及“是否为本行最左格”压缩状态，并加入累计总数构成固定转移矩阵。先用 $O(m^4)$ 建矩阵，再以矩阵快速幂在 $O(m^3\\log n)$ 内处理最多 $n$ 行；乘法中减少取模次数。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
