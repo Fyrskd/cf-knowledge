@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T02:55:05+00:00",
+  "updated_at": "2026-09-27T02:59:51+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -32401,6 +32401,209 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的等量配料、蒸发四分之一和每罐 3 千克规则，以及 editorial 给出的结论。",
+        "quality_flags": []
+      }
+    },
+    "2091G": {
+      "problem_key": "2091G",
+      "title": "Gleb and Boating",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/2091/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/141047",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "21ead6589837140644b3486db3e5b079720b3f2485864049985fffc1871c8d29",
+      "generated_at": "2026-09-27T02:58:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "Gleb 从位置 $0$ 划船到位置 $s$，每次划水沿当前方向移动当前能力的距离；转向会反向且能力减一，但能力最低为 $1$，不能在出发后立即转向，也不能连续转向。全程不得离开区间 $[0,s]$，求到达 $s$ 时可能保留的最大能力。",
+        "transformed_statement": "将过程建模为按能力分层的可达位置搜索：同一层按当前方向移动，只有完成至少一次移动后才能转向，并从该位置进入能力减一、方向相反的下一层；到达终点时取最高仍可行的能力。对于足够大的 $s$，再用局部构造将答案限制为 $k$ 或 $k-2$。",
+        "key_observations": [
+          "把固定能力与运动方向下可到达的位置作为一层状态；转向后从已到达位置进入能力减一、方向相反的新层，从而自然满足转向必须间隔一次划水。",
+          "当 $k\\ge 3$ 且 $s\\ge k^2$ 时，答案只可能是 $k$ 或 $k-2$；先用整除关系检查能否全程保持能力 $k$，否则可在边界内构造保持 $k-2$ 到达终点。",
+          "在 $s\\le k^2$ 时，若答案为 $ans$，只需搜索能力从 $k$ 降到 $ans$，总工作量为 $O(s(k-ans))$；由 $ans\\ge\\sqrt{s}-3$ 可将其上界压到 $O(k^3)$。"
+        ],
+        "solution_brief": "按能力从高到低进行分层可达性搜索，状态记录位置和方向，转向时能力减一且必须先完成一次移动。对 $s\\ge k^2$ 使用答案仅为 $k$ 或 $k-2$ 的结论；否则直接搜索，整体复杂度可界为 $O(k^3)$。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "基础实现与模拟",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 和 editorial_text 提炼，codeforces_tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "2091F": {
+      "problem_key": "2091F",
+      "title": "Igor and Mountain",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/2091/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/141047",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "21d229c1d44b0e350063dc164ada44631b78da6b5b810b1c689e1706facd7052",
+      "generated_at": "2026-09-27T02:58:26+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times m$ 的网格，部分格子有可抓握的支点。路线必须从底行到顶行、每行至少使用一个且至多使用两个支点，只能保持向上或同行移动，并要求相邻支点中心距离不超过手臂长度 $d$；求不同合法路线的数量。",
+        "transformed_statement": "把路线按行自下而上构造，令状态表示从某个支点开始、且当前行已使用一个或两个支点时的路线数。同行转移使用列距至多 $d$ 的区间，跨一行转移使用列距至多 $d-1$ 的区间。",
+        "key_observations": [
+          "将状态定义为从当前支点出发的合法路线数，并用标记区分当前行已使用一个还是两个支点，从而同时处理同行追加支点和向上转移。",
+          "同一行的第二个支点必须与当前支点的列距不超过 $d$，且要排除自身；这把同行选择转化为一段区间状态和。",
+          "相邻两行的竖直距离固定为 $1$，因此可达列的水平距离为 $\\lfloor\\sqrt{d^2-1}\\rfloor=d-1$，转移范围也是连续区间。",
+          "所有转移都是区间求和，可用前缀和在每个状态上做到 $O(1)$ 查询，使总复杂度降为 $O(nm)$。"
+        ],
+        "solution_brief": "从底行支点初始化，按自下而上方向计算状态。状态记录当前行已用一个或两个支点；同行转移的列距上限为 $d$，跨到上一行的列距上限为 $d-1$，两类区间和均用前缀和维护，最终汇总顶行状态。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 提取 DP 状态、两类转移和前缀和优化；statement_text 用于还原路线规则，tags 仅作主题参考。",
+        "quality_flags": [
+          "statement_text在路线差异定义处截断"
+        ]
+      }
+    },
+    "2091E": {
+      "problem_key": "2091E",
+      "title": "Interesting Ratio",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2091/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/141047",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4e3fe94ccccbbcdcfb1fe2f3bc84159590db1e0ff88e6db30a32e21e9a76ec95",
+      "generated_at": "2026-09-27T02:58:43+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$，考虑所有满足 $1\\le a<b\\le n$ 的整数对，并定义 $F(a,b)=\\operatorname{lcm}(a,b)/\\gcd(a,b)$。需要统计使 $F(a,b)$ 为质数的不同数对数量。",
+        "transformed_statement": "把每个数对按最大公因数分解为 $a=gx,b=gy$，题目等价于寻找 $F=xy$ 为质数的情形；这会将所有合法数对转化为 $(g,gp)$，其中 $p$ 为质数，再按质数倍数计数。",
+        "key_observations": [
+          "令 $g=\\gcd(a,b)$，并写成 $a=gx,b=gy$，则 $F(a,b)=xy$；由于 $xy$ 是质数，且 $a<b$，必有 $x=1$、$y=p$ 为质数。",
+          "所有合法数对都唯一表示为 $(a,b)=(g,gp)$，其中 $p$ 是质数且 $g\\ge 1$；因此固定 $p$ 后，$g$ 可取 $1$ 到 $\\lfloor n/p\\rfloor$。",
+          "答案等于所有不超过 $n$ 的质数 $p$ 对 $\\lfloor n/p\\rfloor$ 的求和，质数集合可通过埃拉托斯特尼筛一次性得到。"
+        ],
+        "solution_brief": "将数对分解为 $(a,b)=(g,gp)$，其中 $p$ 必须是质数。对每个质数 $p\\le n$，贡献 $\\lfloor n/p\\rfloor$，用埃拉托斯特尼筛枚举质数并求和，复杂度为 $O(n\\log\\log n)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，tags 仅作为主题参考。",
+        "quality_flags": []
+      }
+    },
+    "2091D": {
+      "problem_key": "2091D",
+      "title": "Place of the Olympiad",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/2091/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/141047",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "30cab3157c83905718c9ffdd9bc7e3442268d8b13a6abcaf6d525868dd9dfd53",
+      "generated_at": "2026-09-27T02:58:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "场地有 $n$ 行、每行 $m$ 个位置，要安排 $k$ 名参赛者各坐一张桌子。每行中连续占用的位置组成一条板凳，需选择所有桌子的位置，使最长板凳长度最小。",
+        "transformed_statement": "把答案设为最长板凳上限 $x$，先求一行在每段连续桌子不超过 $x$ 的条件下最多能放多少张桌子，再判断 $n$ 行总容量是否覆盖 $k$，即转化为单调可行性问题。",
+        "key_observations": [
+          "固定最长板凳长度为 $x$ 时，一行应尽量放置多个长度为 $x$ 的板凳，并在板凳间留一个空位；因此单行最多可放 $f(x)=x\\cdot\\lfloor m/(x+1)\\rfloor+(m\\bmod(x+1))$ 张桌子。",
+          "各行之间互不影响，所以最长板凳不超过 $x$ 当且仅当总容量 $n\\cdot f(x)$ 至少为 $k$，从而把布局问题转化为容量判定。",
+          "随着 $x$ 增大，单行可容纳的桌子数 $f(x)$ 单调不减，因此可在 $[1,m]$ 中二分最小可行的 $x$。"
+        ],
+        "solution_brief": "二分最长板凳长度 $x$。用“长度为 $x$ 的板凳加一个空位”的分块方式计算单行最大容量 $f(x)$，若 $n\\cdot f(x)\\ge k$ 则 $x$ 可行；取最小可行值，复杂度为 $O(\\log k)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，以及 tags 中的 binary search、greedy、math。",
+        "quality_flags": []
+      }
+    },
+    "2091C": {
+      "problem_key": "2091C",
+      "title": "Combination Lock",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2091/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/141047",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "35729de7c03ec92166204fd5e94f224fb8c0e0c6d5e888be294ee8f940ba4aff",
+      "generated_at": "2026-09-27T02:59:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$，要构造一个 $1$ 到 $n$ 的排列。每次循环移位都把末尾元素移到开头，并要求每个移位后的排列恰有一个位置满足“元素值等于位置”；若无法构造则输出 $-1$。",
+        "transformed_statement": "把位置和值改为从 $0$ 开始编号，将每个元素的位移差 $p_i-i$ 视为模 $n$ 的余数。题目等价于要求这些差值恰好覆盖 $0$ 到 $n-1$，使每种循环移位对应唯一固定点。",
+        "key_observations": [
+          "改用从 $0$ 开始编号后，元素 $p_i$ 在移动 $k$ 次后固定，当且仅当 $p_i-i\\equiv k\\pmod n$，因此每个差值必须覆盖所有余数。",
+          "所有差值的总和模 $n$ 为 $0$，而所有余数的总和为 $n(n-1)/2$；$n$ 为偶数时两者不相等，故无解。",
+          "$n$ 为奇数时取倒序排列 $[n,n-1,\\ldots,1]$，因为 $2$ 在模 $n$ 下可逆，差值 $p_i-i$ 会遍历全部余数，从而每次移位恰有一个固定点。"
+        ],
+        "solution_brief": "固定点条件等价于差值 $p_i-i$ 覆盖模 $n$ 的全部余数。求和得偶数 $n$ 无解；奇数时输出倒序排列，差值遍历全部余数，复杂度为 $O(n)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 以及 constructive algorithms 和 greedy 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "2091B": {
+      "problem_key": "2091B",
+      "title": "Team Training",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2091/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/141047",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d65db40850a84a0adfdc7e350282898d935edcf4b45441dcb00a163b09aa6032",
+      "generated_at": "2026-09-27T02:59:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 名学生的技能值，将所有学生划分到若干个非空队伍中，每名学生必须恰好属于一个队伍。队伍强度等于队伍人数乘以其中最低技能，求强度至少为 $x$ 的队伍数量最大值。",
+        "transformed_statement": "把学生按技能从高到低排列，扫描时维护当前尚未成队的人数；若把当前学生作为这批人的最低技能后满足人数乘技能至少为 $x$，就将这批人固定为一个强队。",
+        "key_observations": [
+          "按技能非增序处理时，当前学生就是已积累队伍中的最低技能者，因此队伍强度可直接写成“人数 × 当前技能”。",
+          "最低技能越高，达到强度 $x$ 所需人数越少；因此应在首次满足条件时成队，保留更多学生给后续队伍。",
+          "从上次成队后累计人数达到 $a_i\\cdot k\\ge x$ 时立即组队并清空累计人数，不再等待更低技能的学生，否则只会增加所需人数。"
+        ],
+        "solution_brief": "将技能降序排序，依次累计尚未成队的学生；当累计人数乘当前技能达到 $x$ 时立即组成一个强队并清零。总复杂度为 $O(n\\log n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text，并参考 tags 中的 greedy 与 sortings；未额外使用标签推断算法。",
+        "quality_flags": []
+      }
+    },
+    "2091A": {
+      "problem_key": "2091A",
+      "title": "Olympiad Date",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2091/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/141047",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "42f53b9b3b272dfc06fc8fae9870b7fc64311ae7332fff8219cb3b9179caa148",
+      "generated_at": "2026-09-27T02:59:51+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定按时间顺序抽取的数字序列，每次抽取一个数字；在任意时刻，可从已抽取数字中组合出日期 `01.03.2025`，忽略小数点但保留开头的 `0`。求首次能够组成该日期所需的抽取次数；若始终无法组成则输出 `0`。",
+        "transformed_statement": "把目标日期转化为一个数字多重集合：需要 3 个 `0`、1 个 `1`、2 个 `2`、1 个 `3` 和 1 个 `5`。问题等价于寻找最短前缀，使其各数字出现次数分别达到这些阈值。",
+        "key_observations": [
+          "忽略分隔点后，日期 `01.03.2025` 只要求数字计数达到：`0` 有 3 个、`1` 有 1 个、`2` 有 2 个、`3` 有 1 个、`5` 有 1 个，其余数字无贡献，因此问题转为前缀计数判定。",
+          "随着继续抽取数字，各种数字的计数只增不减；一旦某个前缀满足全部需求，之后的前缀也必然满足，所以首次满足条件的位置就是最小答案。",
+          "只需按抽取顺序累计数字并在每一步检查需求是否全部满足；扫描结束仍有缺失时无法组成日期，输出 `0`。"
+        ],
+        "solution_brief": "维护数字 `0` 到 `9` 的前缀计数，逐个加入抽取的数字；首次满足 `cnt[0]≥3、cnt[1]≥1、cnt[2]≥2、cnt[3]≥1、cnt[5]≥1` 的位置即答案，若整个序列都不满足则输出 `0`。复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的日期组成与按顺序抽取规则，以及 editorial_text 给出的计数阈值和线性扫描方法；tags 辅助确认贪心与字符串主题。",
         "quality_flags": []
       }
     }
