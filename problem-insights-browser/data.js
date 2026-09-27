@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2841,
+    "total_problems": 2847,
     "source_total_problems": 2847,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2841,
-    "with_editorial_brief": 2577,
-    "with_solution_brief": 2578,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2847,
+    "with_editorial_brief": 2583,
+    "with_solution_brief": 2584,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1903,
+    "ai_override_count": 1909,
     "primary_topic_count": 13,
-    "contest_count": 432,
+    "contest_count": 433,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,8 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 889,
-    "数论与同余": 307,
+    "构造与贪心": 893,
+    "数论与同余": 308,
+    "图论与网络流": 174,
     "组合计数与概率": 223,
     "树结构": 147,
     "交互": 92,
@@ -54,12 +55,11 @@ window.CF_INSIGHTS_DATA = {
     "几何": 69,
     "基础实现与模拟": 169,
     "字符串": 151,
-    "图论与网络流": 173,
     "博弈": 95,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1630,
+    "ai_generated_with_editorial": 1636,
     "ai_generated_partial_editorial": 56,
     "missing_editorial": 263,
     "manual_override": 891,
@@ -87918,6 +87918,181 @@ window.CF_INSIGHTS_DATA = {
             "每批只需离散化当前起点附近最多 $2k$ 个操作涉及的区间，连续状态变化可摊还处理为 $O(k\\log k)$，所有批次合计为 $O(m\\log k)$。"
           ],
           "solutionBrief": "按长度为 $k$ 的窗口分批处理所有起点。用等价类表示被区间合并的颜色，并维护相邻类边界数；滑动窗口时记录并撤销后半段操作、加入前半段操作。对每批涉及的 $2k$ 个区间离散化，整体复杂度为 $O(m\\log k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1758,
+      "name": "Codeforces Round 836 (Div. 2)",
+      "date": "2022-11-25",
+      "url": "https://codeforces.com/contest/1758",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1758A",
+          "index": "A",
+          "slot": "A",
+          "title": "SSeeeeiinngg DDoouubbllee",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1758/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/109438",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "strings"
+          ],
+          "statementBrief": "给定字符串 $s$，先将其中每个字符复制一次得到 double，再任意重排这些字符。要求输出一个长度为 $2|s|$ 的回文串，并且必须恰好使用 double 中的所有字符。",
+          "transformedStatement": "不再寻找任意重排，而是把原串作为回文的前半部分，再接上它的逆序作为后半部分；这种构造自动满足字符频次和回文对称性。",
+          "keyObservations": [
+            "将字符串构造为 $s+\\operatorname{reverse}(s)$，其长度正好为 $2|s|$，且每个字符在两部分中各出现一次，恰好使用了 double 的全部字符。",
+            "字符串与其逆序拼接后关于中点对称，因此必然是回文，不需要搜索具体的重排方式。"
+          ],
+          "solutionBrief": "直接输出 $s+\\operatorname{reverse}(s)$。每个字符在原串和逆序串中各出现一次，组成 double 的全部字符；两部分关于中点对称，所以结果是回文。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1758B",
+          "index": "B",
+          "slot": "B",
+          "title": "XOR = Average",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1758/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/109438",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定长度 $n$，构造 $n$ 个介于 $1$ 和 $10^9$ 的整数，使所有数的按位异或等于它们的算术平均值。每组数据输出任意满足条件的序列。",
+          "transformedStatement": "将目标拆成按 $n$ 奇偶分别构造：奇数时让所有元素相同；偶数时用 $1,3$ 组成一个异或和与平均值都为 $2$ 的核心，再补入成对出现的 $2$，使两种聚合值同时保持不变。",
+          "keyObservations": [
+            "当 $n$ 为奇数时，重复使用同一个正整数会使总平均值等于该数；该数异或奇数次仍为自身，因此直接输出全为 $1$ 即可。",
+            "当 $n$ 为偶数时，构造 $1,3$ 与 $n-2$ 个 $2$；前两个数的平均值和异或值都为 $2$，而剩余的 $2$ 成对异或抵消且总和保持平均值为 $2$。",
+            "偶数构造的总和为 $1+3+2(n-2)=2n$，所以平均值固定为 $2$；同时 $1\\mathbin{\\oplus}3=2$ 且 $2$ 出现偶数次，保证总异或也为 $2$。"
+          ],
+          "solutionBrief": "按 $n$ 的奇偶直接构造：奇数时输出 $n$ 个 $1$；偶数时输出 $1,3$ 以及 $n-2$ 个 $2$。前者平均值与异或均为 $1$，后者二者均为 $2$，且所有数都满足范围限制。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1758C",
+          "index": "C",
+          "slot": "C",
+          "title": "Almost All Multiples",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1758/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/109438",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n$ 和 $x$，要构造一个 $1$ 到 $n$ 的排列 $p$，满足 $p_1=x$、$p_n=1$，且对每个 $i<n$ 都有 $i\\mid p_i$。要求输出字典序最小的满足条件的排列；若不存在则输出 $-1$。",
+          "transformedStatement": "把排列看成映射的置换环：除位置 $n$ 外，每条边都必须沿整除关系前进，因此问题等价于寻找从 $x$ 到 $n$ 的最长整除链，并把这条链循环连接，其余位置保持不变。",
+          "keyObservations": [
+            "任意长度大于 1 的置换环中都存在一条边满足 $p_i<i$，因此必然破坏“$i$ 整除 $p_i$”；所以唯一的非平凡环必须包含例外位置 $n$。",
+            "由 $p_n=1$ 和 $p_1=x$，非平凡环被迫形成为 $n\\to1\\to x\\to\\cdots\\to n$，其中后续每条边都对应整除关系，因此只需构造一条从 $x$ 到 $n$ 的整除链。",
+            "若 $x\\nmid n$，整除链不可能存在；若 $x\\mid n$，将 $n/x$ 分解为质因数并按升序依次累乘，可得到最长链，且较小因子优先使置换字典序最小。"
+          ],
+          "solutionBrief": "若 $x\\nmid n$ 输出 $-1$。否则分解 $n/x$ 的质因数并升序排列，令链从 $x$ 开始依次乘这些因子得到 $n$；将链上的值循环左移，其他位置保持 $p_i=i$，最后令 $p_n=1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1758D",
+          "index": "D",
+          "slot": "D",
+          "title": "Range = √Sum",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1758/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/109438",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "constructive algorithms",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定整数 $n$，构造 $n$ 个互不相同且在 $[1,10^9]$ 内的整数。要求最大值减最小值等于所有数总和的平方根，输出任意满足条件的序列。",
+          "transformedStatement": "将目标改写为：若序列范围为整数 $R$，就让所有元素之和等于 $R^2$。根据 $n$ 的奇偶性，分别构造范围为 $n$ 或 $n+1$ 且总和匹配的序列。",
+          "keyObservations": [
+            "奇数 $n$ 时，从以 $n$ 为中心的连续整数开始，其范围为 $n-1$、总和为 $n^2$；整体加 $2$ 后范围不变而总和变为 $n^2+2n$。",
+            "奇数 $n$ 时将最小值减 $1$、最大值加 $1$，可在总和不变的情况下把范围变为 $n+1$；再将倒数第二个数加 $1$，总和恰好变为 $(n+1)^2$。",
+            "偶数 $n$ 时取区间 $[n/2,3n/2]$ 内除去 $n$ 的全部整数，恰有 $n$ 个数；其范围为 $n$，且利用对称性可得总和为 $n^2$。"
+          ],
+          "solutionBrief": "按奇偶性直接构造。偶数 $n$ 输出从 $n/2$ 到 $3n/2$ 的整数并删去 $n$；奇数 $n$ 先取以 $n$ 为中心的连续数整体加 $2$，再扩大两端并把倒数第二个数加 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1758E",
+          "index": "E",
+          "slot": "E",
+          "title": "Tick, Tock",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1758/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/109438",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "dsu",
+            "graphs"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的时钟网格，每个时钟显示 $0$ 到 $h-1$ 的时间，部分格子已知、其余为空。每次可选择一整行或一整列，让其中所有时钟加一并对 $h$ 取模；要求统计将空格子填满后，能够通过这些操作使所有时钟显示相同时间的赋值数，结果对 $10^9+7$ 取模。",
+          "transformedStatement": "把每个格子的时刻视为行势能与列势能之和，即要求已知值满足 $g_{i,j}\\equiv r_i+c_j\\pmod h$。已知列中的行差形成带权行图；图的连通块提供相对偏移自由度，而完全空列提供独立的列势能自由度。",
+          "keyObservations": [
+            "可解网格中的时刻必须能表示为 $g_{i,j}\\equiv r_i+c_j\\pmod h$，因此同一列中两行的时差应与列无关，这把操作可行性转成行之间的带模差约束。",
+            "把存在已知时刻的列产生的行差关系建成带权图；同一连通块内的行偏移一旦确定，其余行的偏移也随之确定，若环上的差值不一致则答案为 $0$。",
+            "若有 $k$ 个行连通块，合并两个块时可任选 $h$ 种相对偏移，因此所有行块合并贡献 $h^{k-1}$；完全空列不提供约束，每列还能独立贡献 $h$ 种赋值。",
+            "在约束一致时，答案统一为 $h^{k+e-1}\\bmod(10^9+7)$，其中 $e$ 是完全为空的列数；这同时覆盖了行块合并和空列自由选择两类自由度。"
+          ],
+          "solutionBrief": "将已知格子转化为行间的模 $h$ 差值约束，用带权并查集检查每个连通块是否矛盾并统计连通块数。若无矛盾，设完全空列数为 $e$、连通块数为 $k$，答案为 $h^{k+e-1}\\bmod(10^9+7)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1758F",
+          "index": "F",
+          "slot": "F",
+          "title": "Decent Division",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1758/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/109438",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures"
+          ],
+          "statementBrief": "有一条初始全为 0 的无限二进制串，按给定位置依次翻转字符。每次翻转后维护一组互不相交的区间，使每个区间含有相同数量的 0 和 1，并只输出本次从集合中删除或加入的区间；总修改次数不得超过 $10^6$。",
+          "transformedStatement": "将合法集合重述为：每个 1 都被某个平衡区间覆盖，且相邻区间之间至少有一个 0。把 0/1 映射为 $-1/+1$ 后，区间平衡转化为前缀和相等，翻转操作对应全局前缀和的区间加减。",
+          "keyObservations": [
+            "维护所有区间自身平衡，并保证相邻区间之间至少隔着一个 0；由于每个 1 都必须被覆盖，这一不变量足以描述合法集合。",
+            "0 变 1 时，若该位置在区间内，就向右吸收两个 0；若遇到相邻区间则合并，否则直接扩展，从而至多改动常数个区间。",
+            "0 变 1 时若位置不在区间内，可并入右侧区间或与下一个 0 新建长度为 2 的区间，之后只需和左右相邻区间合并。",
+            "1 变 0 时，在原区间内用 0 记作 $-1$、1 记作 $+1$，寻找前缀平衡首次达到 $-2$ 的位置即可切成两个仍平衡且由两个 0 分隔的区间。"
+          ],
+          "solutionBrief": "维护平衡区间及其间的 0 间隔。翻转为 1 时扩展、新建或合并区间；翻转为 0 时在原区间内寻找前缀和首次达到 $-2$ 的位置并切分。用带懒标记线段树维护全局前缀和、区间最小值，二分切分点，单次至多 5 次修改，总复杂度为 $O(n\\log^2 n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
