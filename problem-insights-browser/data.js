@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2471,
+    "total_problems": 2478,
     "source_total_problems": 2478,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2471,
-    "with_editorial_brief": 2205,
-    "with_solution_brief": 2206,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2478,
+    "with_editorial_brief": 2212,
+    "with_solution_brief": 2213,
     "missing_editorial_brief": 265,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1533,
+    "ai_override_count": 1540,
     "primary_topic_count": 13,
-    "contest_count": 379,
+    "contest_count": 380,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 120,
-    "构造与贪心": 779,
-    "图论与网络流": 148,
-    "动态规划与状态设计": 215,
+    "构造与贪心": 783,
+    "图论与网络流": 149,
+    "动态规划与状态设计": 216,
     "数论与同余": 273,
     "组合计数与概率": 189,
-    "数据结构": 228,
+    "数据结构": 229,
     "几何": 57,
     "树结构": 136,
     "代数、矩阵与多项式": 19,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 86
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1266,
-    "ai_generated_partial_editorial": 48,
+    "ai_generated_with_editorial": 1272,
+    "ai_generated_partial_editorial": 49,
     "missing_editorial": 265,
     "manual_override": 891,
     "statement_derived": 1
@@ -59898,6 +59898,221 @@ window.CF_INSIGHTS_DATA = {
             "区间加只会改变差分数组在左右端点的两条边界，故只需在有序集合中合并或拆分至多两个块，并同步更新对应贡献。"
           ],
           "solutionBrief": "按相邻相等位置维护两数组的连续块。用四棵线段树按块长维护四个基函数的和，从而在 $O(\\log n+\\log m)$ 内计算新块与另一侧所有块的贡献；区间加通过差分端点更新块集合并修正答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1927,
+      "name": "Codeforces Round 923 (Div. 3)",
+      "date": "2024-02-06",
+      "url": "https://codeforces.com/contest/1927",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "1927A",
+          "index": "A",
+          "slot": "A",
+          "title": "Make it White",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1927/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/125597",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定由白格和黑格组成的长度为 n 的条带，只能选择一个连续区间并将其中所有格子涂白。求使整条条带最终全白所需涂白区间的最小长度。",
+          "transformedStatement": "将问题转化为寻找覆盖所有黑格的最短连续区间：区间左端取最左黑格，右端取最右黑格，二者之间的白格也必须一并包含。",
+          "keyObservations": [
+            "任何可行区间都必须覆盖最左和最右的黑格，否则区间外的黑格无法被涂白，因此答案至少是两者之间的距离加一。",
+            "区间内的白格无需额外处理，区间外只能保留两端连续的白格；不断删去左右端的白格后，剩余区间仍覆盖全部黑格且长度最小。",
+            "答案等价于最右侧黑格下标减去最左侧黑格下标再加一，只需定位黑格的边界即可。"
+          ],
+          "solutionBrief": "对每组字符串找到最左和最右的黑格，选择覆盖这两个位置的连续区间；其长度为两位置下标之差加一，即为最小答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1927B",
+          "index": "B",
+          "slot": "B",
+          "title": "Following the String",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1927/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/125597",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组 $a$，其中 $a_i$ 表示字符串第 $i$ 个字符之前出现过多少个与它相同的字符。请构造一个只含小写字母的字符串，使每个位置都满足该定义；存在多个答案时输出任意一个。",
+          "transformedStatement": "将字符串构造转化为 26 个字母计数器的逐步匹配：处理位置 $i$ 时，选择当前出现次数等于 $a_i$ 的字母，并把该字母的计数增加一。",
+          "keyObservations": [
+            "第 $i$ 位字符之前相同字符的数量恰好是 $a_i$，因此只需在当前出现次数等于 $a_i$ 的字符中任选一个即可满足这一位。",
+            "从左到右维护 26 个字符的出现次数；选定字符后立即将其计数加一，后续位置只需依据更新后的计数继续选择。",
+            "题目保证合法字符串存在，因此每一步都至少有一个字符的当前计数等于 $a_i$，任选可行字符不会破坏后续构造。"
+          ],
+          "solutionBrief": "从左到右构造字符串，维护每个小写字母已出现次数。对每个 $a_i$，寻找当前计数等于 $a_i$ 的字母，将它加入答案并把计数加一；合法性保证这样的字母始终存在。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1927C",
+          "index": "C",
+          "slot": "C",
+          "title": "Choose the Different Ones!",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1927/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/125597",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定数组 $a$、数组 $b$ 和偶数 $k$，必须从每个数组中恰好选出 $k/2$ 个元素，使所选元素的值覆盖全部整数 $1$ 到 $k$。只需判断是否存在这样的选择，输出 YES 或 NO。",
+          "transformedStatement": "将问题转为统计目标集合 $[1,k]$ 的出现位置：只在一边出现的值会强制占用对应数组的名额，同时出现在两边的值可以灵活分配；据此检查两边的强制数量和总覆盖数。",
+          "keyObservations": [
+            "只需关注值域 $[1,k]$：大于 $k$ 的元素无法帮助覆盖目标值，因此可直接忽略。",
+            "若某个目标值只出现在数组 $a$ 中，就必须从 $a$ 选它；这类值超过 $k/2$ 时无法在固定名额内全部选择。",
+            "同理，只出现在数组 $b$ 中的目标值数量不能超过 $k/2$，否则数组 $b$ 的选择名额不足。",
+            "两数组中出现过的不同目标值总数必须达到 $k$；结合前两项限制时，其余缺口可由同时出现的值分配到两边完成覆盖。"
+          ],
+          "solutionBrief": "统计 $1$ 到 $k$ 中分别只在 $a$、只在 $b$、以及至少在一边出现的不同值数量。若前两类任一超过 $k/2$，或总覆盖值少于 $k$，输出 NO；否则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1927D",
+          "index": "D",
+          "slot": "D",
+          "title": "Find the Different Ones!",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1927/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/125597",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dp",
+            "dsu",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定整数数组和多个区间查询。对每个 $[l,r]$，要在区间内找出两个值不同的下标 $i,j$；若不存在这样的下标对则输出 $-1,-1$。",
+          "transformedStatement": "将每个位置 $i$ 抽象为左侧最近的异值位置 $p_i$，查询区间 $[l,r]$ 被转化为判断 $p_r$ 是否仍在区间内；若在，则 $(p_r,r)$ 是合法答案。",
+          "keyObservations": [
+            "对每个位置 $i$ 记录左侧最近的异值位置 $p_i$：若 $a_i\\ne a_{i-1}$ 则 $p_i=i-1$，否则继承 $p_{i-1}$，从而一次遍历完成预处理。",
+            "固定查询右端点 $r$ 作为答案位置后，能与 $a_r$ 不同的最靠右位置一定是 $p_r$；因此只需判断 $p_r\\ge l$。",
+            "若 $p_r<l$，则区间 $[l,r]$ 中所有元素都与 $a_r$ 相同，区间内不存在异值对；否则直接输出 $p_r,r$ 即可。"
+          ],
+          "solutionBrief": "从左到右预处理每个位置左侧最近的异值位置 $p_i$。查询 $[l,r]$ 时输出 $p_r,r$（若 $p_r\\ge l$），否则输出 $-1,-1$；预处理与回答均为线性总复杂度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1927E",
+          "index": "E",
+          "slot": "E",
+          "title": "Klever Permutation",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1927/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/125597",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定 $n$ 和偶数 $k$，要排列 $1$ 到 $n$，使所有长度为 $k$ 的连续子数组和的最大值与最小值之差不超过 $1$。输出任意满足条件的排列。",
+          "transformedStatement": "把长度为 $k$ 的窗口和视为数组 $s$，并按位置间隔 $k$ 将排列拆成多条链；窗口和的交替变化等价于这些链上相邻元素相差 $1$，且奇偶链方向相反。",
+          "keyObservations": [
+            "相邻窗口和不可能相等，因此在最大差不超过 $1$ 时，所有窗口和只能在两个相邻整数间交替。",
+            "若窗口和按 $x,x+1,x,x+1$ 交替，则有奇数位置 $a_i+1=a_{i+k}$、偶数位置 $a_i=a_{i+k}+1$，把位置按模 $k$ 分链后约束彼此独立。",
+            "沿每条位置链按上述方向填入连续的未使用数，就能直接满足所有相邻窗口和的交替关系。"
+          ],
+          "solutionBrief": "先利用窗口和只能交替取两个相邻值的性质，确定位置间隔为 $k$ 的链上的递推方向：奇数起点递增、偶数起点递减。再逐条链填入连续的未使用数，得到合法排列。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1927F",
+          "index": "F",
+          "slot": "F",
+          "title": "Microcycle",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1927/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/125597",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "implementation",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定一个无向带权图，每条边连接两个不同顶点且边不重合。要求找出一个简单环，使环上最轻边的权值尽可能小，并输出该权值、环的顶点数量及按遍历顺序排列的顶点。",
+          "transformedStatement": "将问题转化为从大到小处理边：维护由当前较大边组成的森林，寻找第一类会闭合已有路径的边；取处理顺序中最后一条此类边，用它和森林中的唯一路径恢复目标环。",
+          "keyObservations": [
+            "按边权从大到小加入 DSU；只有连接不同连通块的边才加入辅助图，因此辅助图始终是森林，保留的边都不小于当前边。",
+            "未加入 DSU 的边两端在辅助森林中已经连通，因此它与两端之间的唯一树路径构成一个简单环。",
+            "在所有被拒绝的边中取最后处理的一条，其权值最小；对应环上的树边权值都不小于它，所以该环的最轻边权值达到题目要求。"
+          ],
+          "solutionBrief": "按权值降序用 DSU 建最大生成森林，并记录最后一条因两端已连通而未加入的边。该边两端在森林中的路径与它组成目标环，再输出这条路径及该边的权值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1927G",
+          "index": "G",
+          "slot": "G",
+          "title": "Paint Charges",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1927/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/125597",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一条含 $n$ 个格子的横向网格，第 $i$ 格有一个大小为 $a_i$ 的充电器。每个充电器最多使用一次，可选择不使用，或按规定向左、向右喷出覆盖相应数量的连续格子；不同操作可以重复覆盖格子，要求涂满整条网格的最少使用次数。",
+          "transformedStatement": "将过程改写为从左到右扫描充电器的动态规划：历史操作不再按每个格子记录，而只保留当前位置两侧仍未涂区域的边界，即左侧最远未涂格和右侧最近未涂格。每次选择三种操作之一并更新这两个边界。",
+          "keyObservations": [
+            "按位置从左到右处理充电器时，已处理区域对未来的影响可压缩为：当前位置左侧最远的未涂格距离，以及右侧最近的未涂格距离。",
+            "每个位置只有三类决策：不使用充电器、向左喷涂或向右喷涂；执行后只需根据覆盖范围重新计算两侧边界，因此不必记录所有已涂格。",
+            "允许重复涂格意味着状态转移只需关心是否覆盖边界上的未涂格，而不需要避免覆盖已经涂过的区域。"
+          ],
+          "solutionBrief": "令 $dp[i][j][k]$ 表示处理到位置 $i$ 时，左侧最远未涂格与右侧最近未涂格的距离分别为 $j,k$ 所需的最少使用次数。对每个状态枚举不使用、向左或向右喷涂，并按充电器覆盖范围更新边界，最终取所有格子涂满时的最小值。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
