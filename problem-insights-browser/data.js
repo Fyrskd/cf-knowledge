@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2565,
+    "total_problems": 2571,
     "source_total_problems": 2572,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2565,
-    "with_editorial_brief": 2297,
-    "with_solution_brief": 2298,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2571,
+    "with_editorial_brief": 2303,
+    "with_solution_brief": 2304,
     "missing_editorial_brief": 267,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1627,
+    "ai_override_count": 1633,
     "primary_topic_count": 13,
-    "contest_count": 393,
+    "contest_count": 394,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,12 +45,12 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 130,
-    "构造与贪心": 807,
-    "图论与网络流": 153,
+    "构造与贪心": 809,
+    "图论与网络流": 154,
     "动态规划与状态设计": 222,
     "数论与同余": 282,
-    "组合计数与概率": 196,
-    "数据结构": 241,
+    "组合计数与概率": 198,
+    "数据结构": 242,
     "几何": 60,
     "树结构": 139,
     "代数、矩阵与多项式": 19,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 91
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1353,
+    "ai_generated_with_editorial": 1359,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 267,
     "manual_override": 891,
@@ -67828,6 +67828,189 @@ window.CF_INSIGHTS_DATA = {
             "两条排列必须使用相同次数的操作，而每次操作可分别选择两个排列中的元素，因此分别求出每种奇偶性的最小代价，再选取满足同一奇偶性且不小于两者的最小总次数。"
           ],
           "solutionBrief": "为两条排列分别加入标记 $X$，把每次操作转化为交换 $X$ 与某元素。枚举 $X$ 在有序排列中的所有旋转目标，用环分解公式求每种奇偶性的最小交换数；再让两条排列取相同奇偶性的最小可行总次数，并输出对应交换。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1879,
+      "name": "Educational Codeforces Round 155 (Rated for Div. 2)",
+      "date": "2023-09-24",
+      "url": "https://codeforces.com/contest/1879",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1879A",
+          "index": "A",
+          "slot": "A",
+          "title": "Rigged!",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1879/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/120773",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 名选手，第 $i$ 人力量为 $s_i$、耐力为 $e_i$。选择正整数杠铃重量 $w$：若 $w>s_i$ 则该选手一次也举不了，否则能举 $e_i$ 次；举得最多且只有一人的选手获胜。要求选择 $w$ 让 1 号选手唯一获胜，无法做到则输出 $-1$。",
+          "transformedStatement": "把杠铃重量视为按力量筛选选手的阈值。为保留 1 号选手并尽量排除较弱选手，将阈值固定为 $s_1$，问题转化为检查所有 $s_i\\ge s_1$ 的选手是否有人达到 $e_1$ 次。",
+          "keyObservations": [
+            "若 $w>s_1$，Polycarp 无法举重；若 $w<s_1$，至少会放行部分比他弱的选手，因此最优选择可固定为 $w=s_1$。",
+            "当 $w=s_1$ 时，只有满足 $s_i\\ge s_1$ 的选手能参赛；只要其中存在 $e_i\\ge e_1$ 的选手，就会与 Polycarp 并列或超过他，无法产生唯一冠军。"
+          ],
+          "solutionBrief": "令杠铃重量为 $s_1$，遍历其他选手；若存在 $s_i\\ge s_1$ 且 $e_i\\ge e_1$，输出 $-1$，否则输出 $s_1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1879B",
+          "index": "B",
+          "slot": "B",
+          "title": "Chips on the Board",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1879/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/120773",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的正整数数组 $a,b$，在 $n\\times n$ 棋盘格中放置芯片；格子 $(i,j)$ 的费用为 $a_i+b_j$，且每个格子所在的行或列必须有芯片。求满足条件的最小总费用。",
+          "transformedStatement": "把覆盖条件按行分析：要么每一行都有芯片，要么某个空行迫使每一列都有芯片。因此只需比较“逐行覆盖”和“逐列覆盖”两种最优放置方案。",
+          "keyObservations": [
+            "若存在一个空行，为了覆盖该行中的每个格子，每一列都必须有芯片；否则所有行都必须至少有一枚芯片，因此合法方案可归结为覆盖全部行或覆盖全部列。",
+            "在覆盖所有行的方案中，正数芯片费用使每行只放一枚芯片最优，并且该芯片应放在 $b_j$ 最小的列，总代价为 $\\sum_{i=1}^{n}(a_i+\\min_j b_j)$。",
+            "对称地，覆盖所有列时每列只放一枚芯片，并将其放在 $a_i$ 最小的行，总代价为 $\\sum_{j=1}^{n}(\\min_i a_i+b_j)$；两种方案取较小值即可。"
+          ],
+          "solutionBrief": "利用空行会强制所有列放芯片的性质，合法方案只需比较“每行放一枚”和“每列放一枚”。分别用另一数组的最小值计算总代价，取两者较小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1879C",
+          "index": "C",
+          "slot": "C",
+          "title": "Make it Alternating",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1879/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/120773",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个二进制字符串，每次操作删除其中一个字符，也可以不操作，目标是使剩余字符串任意相邻字符都不同。需要输出达到交替字符串所需的最少删除次数，以及达到该最少次数的不同操作序列数，结果对 $998244353$ 取模。",
+          "transformedStatement": "把字符串压缩为连续相同字符块：最终每个块只能保留一个字符，块之间天然交替。因此问题转化为选择每块的一个保留位置，并排列所有被删除字符的删除顺序。",
+          "keyObservations": [
+            "将字符串按连续相同字符划分为长度为 $len_i$ 的块；交替结果每块至多保留一个字符，而每块保留一个即可交替，因此最少删除 $n-k$ 个字符。",
+            "第 $i$ 个块中任意保留一个位置都能形成合法结果，所以保留方案数为 $\\\\prod_{i=1}^{k} len_i$。",
+            "固定保留位置后，其余 $n-k$ 个字符都必须删除，且删除顺序任意；不同顺序对应不同操作序列，贡献 $(n-k)!$。"
+          ],
+          "solutionBrief": "统计连续相同字符块及其长度。设块数为 $k$、总长为 $n$，答案为最少操作数 $n-k$，最短序列数为 $\\prod len_i\\cdot(n-k)!$，结果对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1879D",
+          "index": "D",
+          "slot": "D",
+          "title": "Sum of XOR Functions",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1879/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/120773",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "divide and conquer",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定一个非负整数数组，对每个连续子数组计算其所有元素的按位 XOR，并乘以子数组长度。要求对所有子数组的这些加权结果求和，并将答案对 $998244353$ 取模。",
+          "transformedStatement": "把整数按二进制位拆开，转化为多个二进制序列上的问题：统计每个右边界下，前缀奇偶性不同的左边界所对应的区间长度总和，再按位权合并。",
+          "keyObservations": [
+            "固定一个二进制位后，子数组 XOR 该位为 1，当且仅当子数组中该位的 1 的数量为奇数，因此各位可以独立计算。",
+            "用前缀 1 的奇偶性表示边界状态；对固定右端边界，只有前缀奇偶性不同的左边界才产生贡献。",
+            "将右端点改为开区间边界 $r$ 后，区间长度是 $r-p$；维护符合条件的边界数量和边界下标和，即可用 $r\\times cnt-sum$ 一次得到所有区间的长度加权和。",
+            "每个二进制位的结果乘以其位权 $2^b$ 后相加，遍历所有位即可得到原数值，复杂度为 $O(n\\log A)$。"
+          ],
+          "solutionBrief": "逐位处理数组。对每一位维护两种前缀奇偶性的边界数量及下标和；扫描右边界时，只配对奇偶性相反的边界，并用 $r\\times cnt-sum$ 累加长度贡献。最后乘位权 $2^b$ 合并各位，结果对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1879E",
+          "index": "E",
+          "slot": "E",
+          "title": "Interactive Game with Coloring",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1879/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/120773",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心",
+            "交互"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "implementation",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "给定以顶点 $1$ 为根的树，需要给每条边染色，并尽量减少颜色数。裁判把棋子放在任意非根节点；每步只告知当前位置各颜色相邻边的数量，你必须选择一种颜色移动，且在恰好走完该点到根的距离步数内到达根。",
+          "transformedStatement": "把目标转化为局部方向识别：每个节点的父边必须与所有子边异色，使所选颜色只能指向父节点。三色可用递推构造；二色则转化为一个边冲突图的二分性判定。",
+          "keyObservations": [
+            "为了在恰好等于深度的步数内到根，每一步都必须沿当前点的父边向上；因此父边颜色必须能由局部颜色计数唯一识别。",
+            "若某点的父边颜色为 $x$，则把它的所有子边设为 $x\\bmod 3+1$，可保证父边与所有子边颜色不同，所以任意树至多需要 $3$ 种颜色。",
+            "使用 $2$ 种颜色时，父边必须与所有子边异色；对恰有一个孩子的点，还必须让其父边颜色在所有这类点之间保持一致，否则无法区分上下方向。",
+            "将原树的每条边视为冲突图中的一个点，把同一树节点处的父边与各子边连边，并用辅助点约束单孩子节点的父边；该冲突图二分当且仅当可用 $2$ 色，否则非星形树需用 $3$ 色。"
+          ],
+          "solutionBrief": "先判断是否为星形树：是则所有边同色。否则构造边冲突图；若其二分，用二分结果给原树边染两色，否则按父边颜色循环递推染三色，并按局部反馈选择唯一向上的颜色。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1879F",
+          "index": "F",
+          "slot": "F",
+          "title": "Last Man Standing",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1879/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/120773",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 名英雄，每名英雄有生命值 $h$ 和护甲 $a$。先选择任意正整数伤害 $x$，之后每回合对所有存活英雄造成 $x$ 点伤害：伤害不足当前护甲时只削减护甲，否则生命值减一并重置护甲。求对所有可能的 $x$，每名英雄曾获得的最大得分；得分是其作为唯一存活英雄的回合数，若最后一回合多人同时死亡则无人得分。",
+          "transformedStatement": "把每名英雄在固定 $x$ 下的死亡回合数表示为 $d=\\lceil a/x\\rceil h$。对每个 $x$，只需找出 $d$ 的最大者和次大者；唯一最大者的答案候选为两者之差，并通过按 $\\lceil a/x\\rceil$ 划分的 $a$ 区间进行批量区间最大值查询。",
+          "keyObservations": [
+            "英雄在固定伤害 $x$ 下能存活的回合数恰为 $\\lceil a/x\\rceil\\cdot h$，因此死亡顺序完全由该值决定。",
+            "若最大存活回合数唯一，获胜英雄的得分等于最大值与次大值之差；若最大值并列，次大值相同，得分自然为 $0$。",
+            "当 $x\\ge\\max a$ 时每回合所有英雄只损失一点生命，所有更大的 $x$ 行为相同，因此只需枚举到 $\\max a$。",
+            "固定 $x$ 和 $c=\\lceil a/x\\rceil$ 后，英雄的 $a$ 落在区间 $[x(c-1)+1,xc]$；对每个区间只需取得健康值的最大、次大值，再乘以同一系数 $c$ 比较。"
+          ],
+          "solutionBrief": "按 $a$ 预处理每个区间上的健康值最大和次大值，用可合并的稀疏表进行区间查询。枚举 $x\\le\\max a$，按 $\\lceil a/x\\rceil$ 的商分组并维护全局最大、次大存活回合数，将两者差值更新到最大值对应的英雄；复杂度为题解给出的 $O(n+a\\log a)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
