@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 2042,
+    "total_problems": 2048,
     "source_total_problems": 2048,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2042,
-    "with_editorial_brief": 1790,
-    "with_solution_brief": 1791,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2048,
+    "with_editorial_brief": 1796,
+    "with_solution_brief": 1797,
     "missing_editorial_brief": 251,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 983,
+    "ai_override_count": 989,
     "primary_topic_count": 13
   },
   "records": [
@@ -49351,6 +49351,261 @@
         "manual_override": "人工只依据 records.json 的 statement_text/editorial_text 整理"
       },
       "manual_override": true
+    },
+    {
+      "ordinal": 1224,
+      "problem_key": "2125A",
+      "contest_id": 2125,
+      "title": "Difficult Contest",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2125/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/144998",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "字符串",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "implementation",
+        "sortings",
+        "strings"
+      ],
+      "statement_brief": "每个测试用例给出一个由大写字母组成的字符串，表示一场竞赛；若其中连续出现“FFT”或“NTT”，竞赛就被判定为困难。允许任意重排字符串中的字符，输出一个不含这两种连续子串的重排结果。",
+      "transformed_statement": "把目标转化为避免出现“F 或 N 后面接 T”：将所有 `T` 放在所有 `F`、`N` 之前即可，因此按字母非递增顺序排序整个字符串就能直接构造答案。",
+      "key_observations": [
+        "禁串“FFT”和“NTT”都要求字母 `T` 出现在 `F` 或 `N` 后面；因此只要让所有 `T` 位于所有 `F`、`N` 之前，就能同时排除两种禁串。",
+        "将字符串按字母非递增顺序排列时，`T` 会自然排在 `F`、`N` 前面，且不会改变字符 multiset，因此直接得到合法重排。"
+      ],
+      "solution_brief": "对每个字符串重新排列字符，使所有 `T` 位于 `F`、`N` 之前即可。可直接计数后按指定顺序输出，也可将字符按字母非递增排序；这样不会出现 `F/N` 后紧跟 `T` 的禁串，复杂度为 $O(n)$ 或 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:58:55+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1225,
+      "problem_key": "2125B",
+      "contest_id": 2125,
+      "title": "Left and Down",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/2125/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/144998",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "机器人位于无限网格的 $(a,b)$，每次可选择 $0\\le dx,dy\\le k$，将它向左移动 $dx$、向下移动 $dy$；同一位移对首次使用花费 $1$，再次使用免费。要求把机器人移到 $(0,0)$ 的最小总花费。",
+      "transformed_statement": "把问题转化为使用多少种不同的位移向量：重复同一向量不增加费用。由于分别使用 $(0,1)$ 和 $(1,0)$ 总能以 $2$ 种向量完成，因此只需判断能否用一个固定向量重复若干次覆盖总位移。",
+      "key_observations": [
+        "无论 $a,b$ 如何取，都能分别重复使用 $(0,1)$ 和 $(1,0)$，因此答案至多为 $2$。",
+        "答案为 $1$ 当且仅当存在一个位移对被重复使用，并满足 $a=t\\\\cdot dx$、$b=t\\\\cdot dy$，其中 $t$ 为正整数。",
+        "由于 $dx=a/t$、$dy=b/t$ 随 $t$ 增大而减小，只需取共同约数中最大的 $t=\\gcd(a,b)$；若归一化后的两个分量都不超过 $k$，即可一次付费完成。"
+      ],
+      "solution_brief": "先用 $(0,1)$ 与 $(1,0)$ 保证答案为 $2$。令 $g=\\gcd(a,b)$，检查 $a/g\\le k$ 且 $b/g\\le k$；满足则重复使用该位移对 $g$ 次，答案为 $1$，否则为 $2$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:58:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1226,
+      "problem_key": "2125C",
+      "contest_id": 2125,
+      "title": "Count Good Numbers",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2125/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/144998",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "combinatorics",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定多个区间 $[l,r]$，若一个正整数的质因数分解中所有质数都至少是两位数，则称其为好数。对每个区间，统计端点包含在内的好数数量。",
+      "transformed_statement": "好数恰好是不被 $2、3、5、7$ 任一整除的正整数，也就是与 $210$ 互质的数；因此可按模 $210$ 的周期统计前缀，或用四个质因子的容斥计算前缀数量。",
+      "key_observations": [
+        "一个数是好数当且仅当不被 $2,3,5,7$ 中任何一个整除，因此问题等价于统计与 $210$ 互质的正整数。",
+        "好数的判定只依赖模 $210$ 的余数，所以序列以 $210$ 为周期；完整周期可批量计数，末尾不足一个周期的部分单独统计。",
+        "区间计数可转化为前缀计数 $F(r)-F(l-1)$，从而避免直接处理左右端点并统一计算方式。",
+        "也可用容斥统计不合格数：对 $2,3,5,7$ 的每个非空子集，交集中的数都是其乘积的倍数，数量为相应乘积的整除商。"
+      ],
+      "solution_brief": "将好数转为不被 $2,3,5,7$ 整除的数，令 $F(k)$ 统计 $[1,k]$ 中的好数，答案为 $F(r)-F(l-1)$。利用模 $210$ 的周期预处理一个周期的好数数量，再计算完整周期和剩余部分；也可对四个质因子使用容斥。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:58:26+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1227,
+      "problem_key": "2125D",
+      "contest_id": 2125,
+      "title": "Segments Covering",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/2125/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/144998",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "组合计数与概率",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "dp",
+        "math",
+        "probabilities"
+      ],
+      "statement_brief": "有一条包含 $m$ 个格子的线段和 $n$ 个独立随机区间；区间 $i$ 覆盖 $[l_i,r_i]$，以概率 $\\frac{p_i}{q_i}$ 存在，否则不存在。求每个格子都恰好被一个存在的区间覆盖的概率，并输出其在模 $998244353$ 下的值。",
+      "transformed_statement": "把满足条件的存在区间看成将整条带划分成连续、不重叠区块的区间集合，按最后一个区块的右端点做前缀 DP；以“所有区间均不存在”的概率为基准，再对被选中的区间修正存在/不存在因子。",
+      "key_observations": [
+        "满足条件的区间集合必然把前缀划分成不重叠的连续块，因此以最后一个右端点为 $x$ 的区间作为末块时，前面只需恰好覆盖到 $l_i-1$。",
+        "令 $dp'_x$ 表示前缀 $[1,x]$ 恰好覆盖一次且区间外没有覆盖，则所有未选区间的概率可作为统一基准，避免额外计算重叠区间的排除概率。",
+        "在基准状态中区间 $i$ 默认不存在，接入它时需将该因素从 $\\frac{q_i-p_i}{q_i}$ 改为存在概率 $\\frac{p_i}{q_i}$，所以转移乘以 $\\frac{p_i}{q_i}\\big/\\frac{q_i-p_i}{q_i}$。",
+        "只需按右端点汇总转移并在模 $998244353$ 下用逆元表示分数，最终状态 $dp'_m$ 就是整条带恰好覆盖一次的概率。"
+      ],
+      "solution_brief": "先计算所有区间都不存在的概率，设 $dp'_0$ 为该值。对每个右端点为 $x$ 的区间 $i$，用 $dp'_{l_i-1}$ 转移到 $dp'_x$，乘以 $\\frac{p_i}{q_i}$ 并除以其原先的不存在因子 $\\frac{q_i-p_i}{q_i}$；答案为 $dp'_m$，分数运算用模逆元完成。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:58:10+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1228,
+      "problem_key": "2125E",
+      "contest_id": 2125,
+      "title": "Sets of Complementary Sums",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/2125/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/144998",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "brute force",
+        "combinatorics",
+        "dp",
+        "math",
+        "two pointers"
+      ],
+      "statement_brief": "给定正整数数组，设总和为 $s$，把每个元素 $a_i$替换为 $s-a_i$并去重得到集合 $Q$。要求统计所有恰好含 $n$个元素、且元素都在 $1$到 $x$之间的不同可生成集合，答案对 $998244353$取模。",
+      "transformed_statement": "对集合最大值 $M$建立可行性势函数 $P=(M+1)(n-1)-\\sum Q$，原题转化为统计满足 $P\\le0$的 $n$元集合；将其规范化到 $P=0$后，从 $\\{1,\\ldots,n\\}$通过后缀增量对应的有限背包状态生成。",
+      "key_observations": [
+        "任意候选集合令最大值为 $M$，可行当且仅当 $(M+1)(n-1)-\\sum_{y\\in Q}y\\le 0$；取初始总和 $M+1$ 重构数组，若总和不足可补若干个 $1$，若超出则增大总和也无法相等。",
+        "定义势函数 $P=(M+1)(n-1)-\\sum Q$，给有序集合后缀长度 $i$ 的元素都加 $1$ 时，势函数变化为 $n-i-1$；只有给全部元素加 $1$ 会降低势函数，因此每个可行集合都能规范化到 $P=0$。",
+        "从集合 $\\{1,2,\\ldots,n\\}$出发，后缀长度 $i<n$ 的操作为维持 $P=0$ 必须配合整体平移，最大值增量为 $n-i$；因此等价于每个权值 $1,2,\\ldots,n-1$至多选一次的背包计数。",
+        "集合元素和的最大值在其元素连续且包含最大值时取得，由此得到 $M\\ge \\frac{n(n-1)}{2}+n-1$；所以当 $n$过大答案必为零，剩余情况可将背包复杂度降到 $O(x\\sqrt{x})$。"
+      ],
+      "solution_brief": "先用条件 $(M+1)(n-1)-\\sum Q\\le0$ 判定可行集合。以 $\\{1..n\\}$为基准，计算达到等式所需的整体平移，随后把后缀操作转成权值 $1..n-1$ 的 0/1 背包，按最大值统计；最后做前缀和，计入所有向上整体平移的集合，并利用 $n=O(\\sqrt{x})$优化。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:57:52+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 1229,
+      "problem_key": "2125F",
+      "contest_id": 2125,
+      "title": "Timofey and Docker",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/2125/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/144998",
+      "editorial_quality": "partial",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "divide and conquer",
+        "dp"
+      ],
+      "statement_brief": "给定由小写字母组成的文本，可任意修改其中字符。每位听众会在“docker”的连续出现次数落在其区间$[l_i,r_i]$时听懂报告；要求先让听懂人数最多，再求达到该人数所需的最少修改次数。",
+      "transformed_statement": "把每位听众转化为出现次数轴上的区间，目标是选择一个出现次数使覆盖区间数最大；对固定次数，问题变为把文本划分并以最少字符修改制造指定数量的非重叠“docker”。",
+      "key_observations": [
+        "由于“docker”由不同字母组成，两个完整出现不会重叠，因此删去一个已有出现至少要改一个字符，目标次数为$i\\le cnt$时恰需$cnt-i$次修改。",
+        "把固定出现次数的最小修改代价写成前缀区间划分的DP后，区间代价满足四边形不等式，因此最终代价函数关于出现次数非递减且凸。",
+        "只需处理不小于原有次数$cnt$的第一个最优出现次数；更大的次数代价不会更小，从而避免为所有候选次数重复计算DP。",
+        "凸代价函数可以用Aliens trick求出指定出现次数的最小修改数，将原本$O(|s|^2)$的DP优化为按次数对数级处理。"
+      ],
+      "solution_brief": "统计每个出现次数被多少区间$[l_i,r_i]$覆盖，得到最多听众数。对不超过原次数的目标直接计算修改数；对第一个不小于原次数的最优目标，用满足四边形不等式的凸DP并结合Aliens trick求解。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T01:57:22+00:00",
+          "quality_flags": [
+            "implementation_details_missing",
+            "partial_editorial",
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 1230,
