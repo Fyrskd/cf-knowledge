@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2260,
-    "source_total_problems": 2260,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 2260,
+    "total_problems": 2261,
+    "source_total_problems": 2268,
+    "filtered_out_problems": 7,
+    "with_statement_brief": 2261,
     "with_editorial_brief": 2000,
     "with_solution_brief": 2001,
-    "missing_editorial_brief": 259,
+    "missing_editorial_brief": 260,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 1201,
     "primary_topic_count": 13,
-    "contest_count": 350,
+    "contest_count": 351,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 102,
-    "构造与贪心": 753,
+    "构造与贪心": 754,
     "图论与网络流": 133,
     "动态规划与状态设计": 207,
     "数论与同余": 236,
@@ -61,7 +61,7 @@ window.CF_INSIGHTS_DATA = {
   "statusCounts": {
     "ai_generated_with_editorial": 1071,
     "ai_generated_partial_editorial": 38,
-    "missing_editorial": 259,
+    "missing_editorial": 260,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -45438,6 +45438,44 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "关键观察：计数对象不是起点，而是“可赢起点区间”。利用区间交集刻画所有可赢起点；对固定右边界形态反向模拟确定性策略，DP 记录当前已访问区间和下一步是否被迫向右。最后通过区间容斥得到恰好长度 k 的贡献，`k=0` 用 `n^n` 减去非空区间贡献。",
           "extractionStatus": "manual_override",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2014,
+      "name": "Codeforces Round 974 (Div. 3)",
+      "date": "2024-09-21",
+      "url": "https://codeforces.com/contest/2014",
+      "type": "Div. 3",
+      "problemCount": 1,
+      "maxRating": 1400,
+      "problems": [
+        {
+          "key": "2014D",
+          "index": "D",
+          "slot": "D",
+          "title": "Robert Hood and Mrs Hood",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2014/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/134210",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "博弈",
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Robert Hood and Mrs Hood；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     },

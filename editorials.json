@@ -1952,6 +1952,28 @@
     "raw_sha256": "964e223143836e21eb0d246ec378f92911a87b46cfa0a76b94fa2e64b7dcfcbd"
   },
   {
+    "url": "https://codeforces.com/blog/entry/134210",
+    "blog_entry_id": 134210,
+    "title": "Codeforces Round 974 Video Editorial (With hints)",
+    "author": "aryanc403",
+    "creation_time": "2024-09-21",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Discussion stream (With Hints)",
+    "section_count": 8,
+    "covered_problems": [
+      "2014A",
+      "2014B",
+      "2014C",
+      "2014D",
+      "2014E",
+      "2014F",
+      "2014G",
+      "2014H"
+    ],
+    "raw_sha256": "961500fc0afb7e3050c759f7ca2eaeef2910bdfc052c3ab47df027e3a59e7bda"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/134298",
     "blog_entry_id": 134298,
     "title": "Alternative editorial for 973D",
