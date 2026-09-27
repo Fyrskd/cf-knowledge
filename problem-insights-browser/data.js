@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2654,
+    "total_problems": 2660,
     "source_total_problems": 2661,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2654,
-    "with_editorial_brief": 2385,
-    "with_solution_brief": 2386,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2660,
+    "with_editorial_brief": 2391,
+    "with_solution_brief": 2392,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1716,
+    "ai_override_count": 1722,
     "primary_topic_count": 13,
-    "contest_count": 406,
+    "contest_count": 407,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 134,
-    "构造与贪心": 834,
+    "构造与贪心": 835,
     "图论与网络流": 163,
-    "动态规划与状态设计": 227,
+    "动态规划与状态设计": 228,
     "数论与同余": 292,
     "组合计数与概率": 201,
-    "数据结构": 249,
-    "几何": 64,
+    "数据结构": 250,
+    "几何": 65,
     "树结构": 142,
     "代数、矩阵与多项式": 20,
     "交互": 85,
-    "基础实现与模拟": 151,
-    "博弈": 92
+    "基础实现与模拟": 152,
+    "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1441,
+    "ai_generated_with_editorial": 1447,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 268,
     "manual_override": 891,
@@ -74195,6 +74195,186 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "将排列看成位置到目标位置的置换图，答案等于满足 $a[i]<i$ 的位置数。预处理每个位置在各个循环移位起点下的贡献区间，用区间加维护答案；翻转查询则维护翻转排列的同类结构，整体复杂度为 $O(n+q)$。",
           "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1841,
+      "name": "Educational Codeforces Round 150 (Rated for Div. 2)",
+      "date": "2023-06-12",
+      "url": "https://codeforces.com/contest/1841",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1841A",
+          "index": "A",
+          "slot": "A",
+          "title": "Game with Board",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1841/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/117262",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games"
+          ],
+          "statementBrief": "黑板上初始有 $n$ 个数字，全部为 $1$。双方轮流操作，每次选择至少两个相等数字，擦除它们并写入总和；无法操作的玩家获胜，求双方最优时 Alice 还是 Bob 获胜。",
+          "transformedStatement": "把局面视为合并游戏，并利用“无合法操作者获胜”的反常终止规则：Alice 需要构造局面，使 Bob 被迫完成最后一次合并，从而让 Alice 在下一回合无操作并取胜。",
+          "keyObservations": [
+            "由于无法操作的玩家反而获胜，目标不是让自己保留操作，而是把对手逼入必须操作后、自己无合法操作的局面。",
+            "当 $n\\ge 5$ 时，Alice 首步合并 $n-2$ 个 $1$，棋盘变为 $\\{1,1,n-2\\}$；Bob 只能合并两个 $1$，随后得到 $\\{2,n-2\\}$，Alice 无法操作并获胜。",
+            "$n=2,3,4$ 的所有首步结果规模很小，可以直接枚举：其中 $n=4$ 的关键分支会依次变为 $\\{1,1,2\\}\\to\\u007f\\{2,2\\}\\to\\u007f\\{4\\}$，最终 Bob 获胜。"
+          ],
+          "solutionBrief": "分类讨论即可：$n\\le4$ 时枚举 Alice 的首步及后续唯一应对，Bob 获胜；$n\\ge5$ 时 Alice 合并 $n-2$ 个 $1$，强制 Bob 合并剩余两个 $1$，Alice 随后无操作并获胜。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1841B",
+          "index": "B",
+          "slot": "B",
+          "title": "Keep it Beautiful",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1841/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/117262",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "数组初始为空。每次给出一个整数，只有把它追加到当前数组末尾后数组仍能通过把某个前缀整体移到末尾而变成非降序时才追加；每次输出是否追加成功。",
+          "transformedStatement": "把数组视为首尾相连的序列：线性相邻位置中至多有一个下降点，并且存在下降点时，末元素必须不大于首元素。追加操作只影响原末元素与新元素之间的一条边。",
+          "keyObservations": [
+            "数组美丽等价于相邻逆序对最多一个；若恰有一个逆序对，还必须满足末元素不大于首元素，循环移位后才能整体非降。",
+            "追加元素只会新增最后一个相邻关系，因此只需检查原末元素与新元素，并维护逆序对数量。",
+            "若追加后逆序对数量超过一个，任何循环移位都会保留至少一个坏邻接；若数量为一个且新末元素大于首元素，也无法形成非降序列。",
+            "被拒绝的元素不能改变数组状态，因此每次只对接受的元素更新首尾元素和逆序对数量即可。"
+          ],
+          "solutionBrief": "维护当前数组首元素、末元素和相邻逆序对数量。对每个候选值暂时加入并检查逆序对数量是否为 $0$，或是否为 $1$ 且新末元素不大于首元素；满足则真正追加并输出 1，否则输出 0。每次查询均为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1841C",
+          "index": "C",
+          "slot": "C",
+          "title": "Ranom Numbers",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1841/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/117262",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "字符串由 A 到 E 组成，字符价值分别为 $1,10,100,1000,10000$。每个字符若右侧存在更大字符就取负号，否则取正号；允许至多修改一个字符为任意 A 到 E，求所得数值的最大值。",
+          "transformedStatement": "把原串反转后，字符的符号由其左侧已经见过的最大字符决定。于是从左到右扫描时，只需记录当前最大字符、是否使用过修改以及累计最大值，就能表示全部必要信息。",
+          "keyObservations": [
+            "将字符串反转后，每个字符的正负号只由它左侧出现过的最大字符决定，从而可以按顺序处理而无需维护右侧整体信息。",
+            "处理前缀时，后续符号判断只依赖当前最大字符和已用修改次数，因此状态可压缩为 $dp[i][j][k]$，其中 $j$ 只有 5 种取值、$k\\in\\{0,1\\}$。",
+            "每个状态既可保留当前字符，也可在尚未修改时尝试替换为任意一种字符；替换后的贡献由其与当前最大字符的大小关系直接确定。",
+            "由于修改次数维度只有 2、字符种类只有 5，所有转移总数为 $O(n\\cdot5\\cdot2\\cdot6)$，可在线性处理每个字符串。"
+          ],
+          "solutionBrief": "反转字符串，使字符符号由左侧最大字符决定。设 $dp[i][j][k]$ 表示处理前 $i$ 个字符、当前最大字符为 $j$、已修改 $k$ 次的最大值；逐字符转移保留或替换，最终取所有状态最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1841D",
+          "index": "D",
+          "slot": "D",
+          "title": "Pairs of Segments",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1841/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/117262",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定 $n$ 条闭区间，可以删除任意条线段。剩余线段必须能两两配对：每对内部相交，而任意不同配对中的线段都不能相交；求至少删除多少条线段才能满足条件。",
+          "transformedStatement": "把每个相交线段对压缩成覆盖二者的并集区间；问题转化为从所有候选并集中选出最多个两两不相交的区间，所选数量为合法配对数。",
+          "keyObservations": [
+            "一对相交线段的并集仍是一个连续区间，因此不同配对合法，当且仅当这些并集区间两两不相交。",
+            "枚举原数组中所有相交的线段对并替换为并集后，选择最多个互不相交的并集，就等价于保留最多个合法配对。",
+            "若两个候选并集共用同一条原线段，它们必相交，所以选择互不相交的并集会自动保证每条线段至多属于一个配对。",
+            "按并集右端点递增选择，并要求当前左端点大于上一个已选区间的右端点，可得到最多的不相交闭区间。"
+          ],
+          "solutionBrief": "枚举所有相交线段对，生成其并集区间；按右端点排序，贪心选择与已选区间不相交的并集。设选出 $p$ 个，答案为 $n-2p$，复杂度为 $O(n^2\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1841E",
+          "index": "E",
+          "slot": "E",
+          "title": "Fill the Matrix",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1841/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/117262",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 矩阵，第 $i$ 列顶部连续 $a_i$ 个格子为黑色，其余为白色。必须把 $1$ 到 $m$ 各放入一个白格，beauty 是有多少个 $j$ 使 $j+1$ 位于同一行、紧邻 $j$ 右侧，求最大 beauty。",
+          "transformedStatement": "把所有白格按行划分为被黑格隔开的连续白色段；在每个被选段内连续放置数字即可贡献“使用长度减一”，所以目标转化为用最少数量的白色段容纳总数为 $m$ 的位置容量。",
+          "keyObservations": [
+            "矩阵的每一行可以独立处理，且被黑格分隔开的连续白色段之间不会产生横向相邻关系，因此所有白色段的贡献可以相加。",
+            "在长度为 $k$ 的白色段中连续放置 $k$ 个按顺序递增的数，恰好产生 $k-1$ 点 beauty；若使用了 $s$ 个非空段，总数固定为 $m$ 时答案就是 $m-s$。",
+            "因此问题等价于用尽量少的白色段容纳 $m$ 个数，最优策略是按长度从大到小尽量选取白色段。",
+            "白色段数量可能达到 $O(n^2)$，但从下向上处理每列的黑格事件时，每个事件只会把一个区间分成左右两段；用区间映射维护分裂并统计各长度段数即可压缩处理。"
+          ],
+          "solutionBrief": "按 $a_i$ 从大到小处理黑格分裂事件，用映射维护当前横向白色区间及其存在的最低行，统计每种长度的段数。随后从长到短贪心选段，每种长度最多选 $\\min(\\lfloor m/len\\rfloor,cnt)$ 个，答案为 $m$ 减去使用段数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1841F",
+          "index": "F",
+          "slot": "F",
+          "title": "Monocarp and a Strategic Game",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1841/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/117262",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
+          "originalTags": [
+            "geometry",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "城市中的四类生物分别为人类、兽人、精灵和矮人；同族生物使彼此幸福值增加，敌对种族使彼此幸福值减少，人类与兽人敌对、精灵与矮人敌对。群组按顺序到来，每次必须整体接纳或整体拒绝，最终得分为居民数加所有人的幸福值之和，求最大得分。",
+          "transformedStatement": "把每个群组表示为二维向量 $(a_i-b_i,c_i-d_i)$；选择群组后的得分等价于所选向量总和 $(x,y)$ 的平方长度 $x^2+y^2$。于是问题转化为在线段 $[0,v_i]$ 的 Minkowski 和中寻找使平方长度最大的顶点。",
+          "keyObservations": [
+            "总人数与幸福值合并后，人类和兽人的贡献恰好为 $(a-b)^2$，精灵和矮人的贡献恰好为 $(c-d)^2$。",
+            "每个群组只需记录二维向量 $(a_i-b_i,c_i-d_i)$，接受若干群组就等价于求这些向量的子集和。",
+            "所有子集和都位于线段 $[0,v_i]$ 的 Minkowski 和中，且该多边形的每个顶点都对应某个子集和，因此不会丢失候选答案。",
+            "目标函数 $x^2+y^2$ 在凸多边形上取最大值时只需检查顶点，从而把指数级子集枚举降为构造 Minkowski 和并遍历顶点。"
+          ],
+          "solutionBrief": "将每组转成向量 $(a_i-b_i,c_i-d_i)$，把所有线段 $[0,v_i]$ 做 Minkowski 和，按方向排序构造所得凸多边形，枚举其顶点并最大化 $x^2+y^2$；总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
