@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1960,
-    "source_total_problems": 1960,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 1960,
+    "total_problems": 1962,
+    "source_total_problems": 1969,
+    "filtered_out_problems": 7,
+    "with_statement_brief": 1962,
     "with_editorial_brief": 1717,
     "with_solution_brief": 1718,
-    "missing_editorial_brief": 242,
+    "missing_editorial_brief": 244,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 901,
     "primary_topic_count": 13,
-    "contest_count": 308,
+    "contest_count": 309,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 82,
-    "构造与贪心": 661,
+    "构造与贪心": 662,
     "图论与网络流": 118,
     "动态规划与状态设计": 184,
     "数论与同余": 188,
@@ -56,12 +56,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 17,
     "交互": 76,
     "基础实现与模拟": 84,
-    "博弈": 69
+    "博弈": 70
   },
   "statusCounts": {
     "ai_generated_with_editorial": 790,
     "ai_generated_partial_editorial": 36,
-    "missing_editorial": 242,
+    "missing_editorial": 244,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -17784,6 +17784,73 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "关键观察：不要按 n、上一招暴力博弈 DP，而是只维护邪恶血量。偶数 m 时必败点就是 `m+1` 的倍数；奇数 m 时从当前邪恶血量 `v_i` 出发，只需判断 `v_i+m+1` 是否邪恶，否则下一项为 `v_i+m+2`。题解给出平均 O(1) 的递归判定，所以总复杂度按邪恶血量数量约为 `O(N/m)`。",
           "extractionStatus": "manual_override",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2171,
+      "name": "Codeforces Round 1065 (Div. 3)",
+      "date": "2025-11-20",
+      "url": "https://codeforces.com/contest/2171",
+      "type": "Div. 3",
+      "problemCount": 2,
+      "maxRating": 1400,
+      "problems": [
+        {
+          "key": "2171C1",
+          "index": "C1",
+          "slot": "C",
+          "title": "Renako Amaori and XOR Game (easy version)",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2171/problem/C1",
+          "editorialUrl": "https://codeforces.com/blog/entry/148567",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "games",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Renako Amaori and XOR Game (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "2171D",
+          "index": "D",
+          "slot": "D",
+          "title": "Rae Taylor and Trees (easy version)",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/2171/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/148567",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "树结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "dsu",
+            "greedy",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Rae Taylor and Trees (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     },

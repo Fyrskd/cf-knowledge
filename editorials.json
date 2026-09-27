@@ -3361,6 +3361,27 @@
     "raw_sha256": "a3a7f81cc42d696f2064ba0d08f9281181da6125fb21f5e7535cc03f8a84d8dc"
   },
   {
+    "url": "https://codeforces.com/blog/entry/148567",
+    "blog_entry_id": 148567,
+    "title": "Codeforces Round 1065 (Div. 3) Editorial",
+    "author": "reirugan",
+    "creation_time": "2025-11-20",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round 1065 (Div. 3) Editorial",
+    "section_count": 7,
+    "covered_problems": [
+      "2171A",
+      "2171B",
+      "2171C2",
+      "2171E",
+      "2171F",
+      "2171G",
+      "2171H"
+    ],
+    "raw_sha256": "bee778a7c92b53d55599ec4fc394b95882bf41f97a789defd78a29692e05eb82"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/148631",
     "blog_entry_id": 148631,
     "title": "Codeforces Round 1066 (Div. 1 + Div. 2) Editorial",
