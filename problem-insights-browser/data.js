@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2755,
+    "total_problems": 2762,
     "source_total_problems": 2762,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2755,
-    "with_editorial_brief": 2485,
-    "with_solution_brief": 2486,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2762,
+    "with_editorial_brief": 2492,
+    "with_solution_brief": 2493,
     "missing_editorial_brief": 269,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1817,
+    "ai_override_count": 1824,
     "primary_topic_count": 13,
-    "contest_count": 420,
+    "contest_count": 421,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 148,
-    "构造与贪心": 863,
-    "图论与网络流": 168,
-    "动态规划与状态设计": 235,
+    "字符串": 149,
+    "构造与贪心": 864,
+    "图论与网络流": 169,
+    "动态规划与状态设计": 236,
     "数论与同余": 300,
-    "组合计数与概率": 210,
-    "数据结构": 257,
-    "几何": 67,
+    "组合计数与概率": 211,
+    "数据结构": 258,
+    "几何": 68,
     "树结构": 146,
     "代数、矩阵与多项式": 20,
     "交互": 88,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1540,
+    "ai_generated_with_editorial": 1547,
     "ai_generated_partial_editorial": 54,
     "missing_editorial": 269,
     "manual_override": 891,
@@ -81851,6 +81851,225 @@ window.CF_INSIGHTS_DATA = {
             "当 $k\\geq5$ 时有 $|T'|\\leq |S|/5$；将 $S$ 分成五段后，$T'$ 至少完整出现在其中一段的子序列中，因此可枚举该段的所有子序列作为候选，再贪心匹配整串求最多重复次数。"
           ],
           "solutionBrief": "按重复次数分情况：$k=2$、$3$ 时枚举切分并求二段或三段 LCS；$k\\geq5$ 时枚举五段中短段的全部子序列，再贪心匹配其最大重复次数，取各类最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1795,
+      "name": "Educational Codeforces Round 143 (Rated for Div. 2)",
+      "date": "2023-02-16",
+      "url": "https://codeforces.com/contest/1795",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1795A",
+          "index": "A",
+          "slot": "A",
+          "title": "Two Towers",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1795/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/112963",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "有两座由红蓝方块组成的塔，字符串从底到顶表示方块顺序。每次可从一座至少有两个方块的塔顶拿走一个方块，放到另一座塔顶；可操作任意次，要求判断能否使两座塔中每一对相邻方块颜色都不同。",
+          "transformedStatement": "把搬运过程重述为：将第一座塔与第二座塔的逆序拼成一条序列，再选择一个切口分成两座塔；切口只能隔开一处相同颜色的相邻冲突，因此只需判断拼接序列中的冲突数是否至多为 $1$。",
+          "keyObservations": [
+            "连续向一个方向搬运后，搬动块在目标塔中的顺序会反转，因此可把两塔抽象成序列 $s+reverse(t)$，操作等价于选择一个切口重新分成两塔。",
+            "最终两塔内部只会保留合并序列中的相邻关系；若合并序列中没有相同相邻块，任意切分都合法，从而直接得到可行方案。",
+            "若合并序列恰好有一处相同相邻块，必须把切口放在这两个块之间，隔开唯一冲突；超过一处冲突时，无论切在哪里至少有一处冲突留在某座塔内。",
+            "先把所有块视为合并，再统计相同颜色的相邻对，就把原本的多次搬运判定简化为一次线性检查。"
+          ],
+          "solutionBrief": "将第二个字符串反转后与第一个拼接，统计相邻且颜色相同的位置。若数量不超过 $1$，输出 YES；否则输出 NO。其依据是切口可以避开唯一冲突，多个冲突则无法全部隔开。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1795B",
+          "index": "B",
+          "slot": "B",
+          "title": "Ideal Point",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1795/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/112963",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "geometry",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 个闭区间和整数点 $k$，允许删除任意数量的区间。删除后定义每个整数点被剩余区间覆盖的数量，要求判断能否使 $k$ 严格超过所有其他整数点，成为唯一覆盖数最大的点。",
+          "transformedStatement": "先只保留覆盖 $k$ 的区间，因为其余区间只会抬高别处的覆盖数；此时问题等价于判断这些区间的公共交集是否恰好为单点 $k$，即交集左端点与右端点相等。",
+          "keyObservations": [
+            "任何不覆盖 $k$ 的线段都会增加其他位置的覆盖数，因此可先全部删除，且不会损害让 $k$ 成为唯一最高点的可能性。",
+            "保留的所有线段都覆盖 $k$ 时，$f(k)$ 等于线段数；其他点达到同样覆盖数，当且仅当它位于所有保留线段的公共交集中。",
+            "若公共交集含有除 $k$ 外的整数点，删除线段不会消除这种并列：交集中的点与 $k$ 会同时失去同样的覆盖贡献，因此无需继续删除。",
+            "所有线段的公共交集端点为 $L=\\max l_i$、$R=\\min r_i$；由于它们都包含 $k$，当且仅当 $L=R$ 时公共交集只有 $k$。"
+          ],
+          "solutionBrief": "先删除所有不覆盖 $k$ 的线段。若剩余为空则为 NO；否则计算剩余线段的公共交集 $[L,R]$，当且仅当 $L=R$ 时输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1795C",
+          "index": "C",
+          "slot": "C",
+          "title": "Tea Tasting",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1795/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/112963",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 种茶和 $n$ 位品茶者，第 $i$ 位先喝第 $i$ 种茶；每一步所有人改喝前一种茶，能喝的量是该茶剩余量与个人单次容量 $b_i$ 的较小值，移到边界者结束。求每位品茶者最终喝下的总量。",
+          "transformedStatement": "把每种茶单独观察：它从同编号品茶者开始向右依次分配，连续填满若干人的容量，随后至多给下一人一份残量。问题转化为对每种茶做一次区间加法和一次单点加法。",
+          "keyObservations": [
+            "第 $i$ 种茶会依次被第 $i,i+1,\u001e\ndots$ 位品茶者处理；前若干人必定喝满，最多只有一人获得剩余茶量，从而可把影响转成一个连续区间。",
+            "用 $b$ 的前缀和定位第一个无法喝满的品茶者，区间终点可由满足前缀和不超过当前茶量的最大位置通过二分得到。",
+            "每种茶对连续区间内品茶者的“喝满次数”贡献均为 $1$，因此用差分数组记录区间加法，最后前缀累加即可恢复每人的次数。",
+            "第 $i$ 位的总量等于其获得的剩余茶量加上喝满次数乘以 $b_i$，将完整容量贡献与唯一残量贡献分离后无需逐步模拟。"
+          ],
+          "solutionBrief": "对每种茶用 $b$ 的前缀和二分找到最后一个能被其依次喝满的位置；把满额贡献记录为区间加一，把剩余茶量直接加到下一位。差分还原次数后，答案为 $cnt_i b_i+add_i$，每组复杂度 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1795D",
+          "index": "D",
+          "slot": "D",
+          "title": "Triangle Coloring",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1795/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/112963",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "给定由 $n/3$ 个互不相连三角形组成的带正权图，每个顶点染成红或蓝，且红蓝顶点各有 $n/2$ 个。染色权值是异色端点边的权值和，要求计算达到最大权值的合法染色数量，结果对 $998244353$ 取模。",
+          "transformedStatement": "把每个三角形看成一个局部模块：最优染色必保留两条异色边，并省略一条最小权边；模块再选择一红二蓝或二红一蓝两种方向。全局平衡转化为在 $n/3$ 个模块中恰选 $n/6$ 个使用其中一种方向。",
+          "keyObservations": [
+            "在一个三角形中，异色边最多只能有两条，因此局部最大贡献等于三条边权之和减去最小边权。",
+            "选定被省略的最小边后，其对面顶点必须与另外两点异色；因此每个三角形的最优选法数等于最小边权的出现次数。",
+            "每个三角形的最优染色必为一红二蓝或二红一蓝；全图红蓝各占一半，等价于恰有一半三角形采用每种类型。",
+            "三角形之间互不相连，局部选法彼此独立，所以总数是类型选择数与各三角形局部方案数的乘积。"
+          ],
+          "solutionBrief": "令三角形数量为 $m=n/3$。每个三角形取最小边作为不计入贡献的边，局部方案数为最小边权出现次数；再从 $m$ 个三角形中选 $m/2=n/6$ 个采用二红一蓝，其余采用一红二蓝。答案为 $\\binom{n/3}{n/6}\\prod c_i$，并对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1795E",
+          "index": "E",
+          "slot": "E",
+          "title": "Explosions?",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1795/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/112963",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有一排血量为 $h_i$ 的怪物，可先任意次施放每次造成 1 点伤害的基础法术，再只施放一次爆炸并选择目标和威力。爆炸从目标向相邻位置连锁，向外伤害逐格递减；求杀死所有怪物所需的基础法术次数与爆炸威力之和的最小值。",
+          "transformedStatement": "把基础伤害视为总血量中的直接支出，转而最大化爆炸连锁节省的法力。固定爆炸目标后，左右两侧分别形成受相邻递减约束的山形血量序列，并可独立计算。",
+          "keyObservations": [
+            "最终能被连锁爆炸消灭的剩余血量必须以目标位置为峰值，向左严格递增、向右严格递减，因此可分别优化目标两侧的连锁收益。",
+            "固定起点 $i$ 向左传播时，连续血量被限制为 $h_i,h_i-1,\u00028dots$；第一个满足 $h_j-j\\le h_i-i$ 的位置会截断当前等差段，并可接上状态 $d[j]$。",
+            "将关键值改写为 $a'_k=h_k-k$ 后，所需的最近截断点就是左侧最近的 $a'_j\\le a'_i$，单调栈可在线性摊还时间内找到它。",
+            "每个等差段的收益可用等差数列求和，左右分别在原数组和反转数组上计算，再按目标位置合并，得到全局最优答案。"
+          ],
+          "solutionBrief": "把答案写成总血量减去爆炸带来的节省。定义 $d[i]$ 为从 $i$ 向左的最大连锁收益，利用 $h_i-i$ 找到最近截断点，按等差数列转移并用单调栈求点；右侧对反转数组同算，枚举目标位置合并。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1795F",
+          "index": "F",
+          "slot": "F",
+          "title": "Blocking Chips",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1795/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/112963",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "dfs and similar",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树和分别放在不同顶点的 $k$ 个芯片，初始芯片所在点为黑色，其余点为白色。第 $i$ 次操作按 $1,2,\\ldots,k$ 循环选择芯片，并要求它移动到相邻白点且将该点染黑；若无法移动游戏结束，求最多能完成多少次操作。",
+          "transformedStatement": "把“能否完成前 $T$ 次操作”作为判定问题：每个芯片的移动次数由其在循环中的编号直接确定。将树任意根后，从底部向上贪心安排芯片的路径，优先使用未占用的向下路径，必要时把芯片推到父节点继续处理。",
+          "keyObservations": [
+            "固定游戏总步数 $T$ 后，第 $i$ 个芯片必须移动 $\\max(0,\\lfloor(T-i)/k\\rfloor+1)$ 次，且总步数越大要求越高，因此可进行单调性判定。",
+            "将树任选一点设根后，最底层芯片优先沿未访问的子树向下移动是安全的，因为上方芯片无法穿过它的初始位置。",
+            "若芯片无法完成所需的向下移动，它只能先移到父节点并延后处理；若父节点也不可用，则该芯片无法继续，当前 $T$ 不可行。",
+            "判定时维护已占用节点、各芯片剩余步数以及经未访问节点向下的最长路径，后序 DFS 可在线性时间内完成一次检查。"
+          ],
+          "solutionBrief": "二分答案 $T$，计算每个芯片在前 $T$ 步中必须移动的次数。对任意根树后序处理最底层芯片：优先走未访问的向下路径，不足时被迫移向父节点并延后；父节点不可用则判定失败。单次检查 $O(n)$，总复杂度 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1795G",
+          "index": "G",
+          "slot": "G",
+          "title": "Removal Sequences",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1795/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/112963",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dfs and similar",
+            "graphs"
+          ],
+          "statementBrief": "给定无向图及每个顶点的目标度数。每次只能删除当前度数等于该目标值的顶点，删除后同时移除其所有 incident 边；若一对顶点能在两种合法删除序列中分别先后出现，则称其为 nice，求编号较小的 nice 点对数量。",
+          "transformedStatement": "先按“何时满足删除条件”将顶点分层，并把每条无向边定向为删除较早顶点指向较晚顶点。问题转化为统计这个 DAG 中互不可达的顶点对，因为它们的先后顺序可以在不同拓扑序中交换。",
+          "keyObservations": [
+            "初始度数等于要求值的顶点可以同时视为第一层，且同层顶点不相邻；反复删除新满足条件的顶点即可得到唯一的分层过程。",
+            "每条边的方向由两端所在的删除先后决定，得到一个有向无环图；合法删除序列恰好是该图的拓扑序。",
+            "两个顶点能够在合法序列中互换先后，当且仅当它们在有向图中互不可达；若存在一方可达另一方，则所有拓扑序都固定其先后。",
+            "按每批 64 个目标顶点传播可达性，每个顶点只需保存一个 64 位掩码，从而以 $O((n+m)\\lceil n/64\\rceil)$ 时间和 $O(n)$ 额外空间统计可达点对。"
+          ],
+          "solutionBrief": "先按度数条件分层并据删除先后定向每条边，合法序列转化为该 DAG 的拓扑序。nice 对等价于互不可达点对；按拓扑逆序分批用 64 位掩码传播可达性，统计可达对后从总点对数中扣除。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
