@@ -15,19 +15,308 @@
     ]
   },
   "summary": {
-    "total_problems": 3005,
+    "total_problems": 3012,
     "source_total_problems": 3013,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3005,
-    "with_editorial_brief": 2733,
-    "with_solution_brief": 2734,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3012,
+    "with_editorial_brief": 2740,
+    "with_solution_brief": 2741,
     "missing_editorial_brief": 271,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2067,
+    "ai_override_count": 2074,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1729A",
+      "contest_id": 1729,
+      "title": "Two Elevators",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1729/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/106916",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "math"
+      ],
+      "statement_brief": "Vlad在1层等待，两部电梯分别位于$a$层和$b$层。第一部直接前往1层，第二部必须先到$c$层再到1层；输出更快的电梯编号，相同时输出3。",
+      "transformed_statement": "将两部电梯的到达过程转化为一维楼层上的路程比较：第一部距离为$|a-1|$，第二部固定经过$c$层，距离为$|b-c|+|c-1|$。",
+      "key_observations": [
+        "第一部电梯只需从楼层 $a$ 直达 1 层，因此到达时间是 $|a-1|$，无需考虑其他路径。",
+        "第二部电梯必须先从 $b$ 层到 $c$ 层，再从 $c$ 层到 1 层，路程可直接相加为 $|b-c|+|c-1|$；比较两者即可处理三种结果。"
+      ],
+      "solution_brief": "分别计算两部电梯到达 1 层所需时间：$d_1=|a-1|$，$d_2=|b-c|+|c-1|$。比较二者，第一部更快输出 1，第二部更快输出 2，相等输出 3。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:35:59+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1729B",
+      "contest_id": 1729,
+      "title": "Decode String",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1729/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/106916",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "给定由小写字母编号编码得到的数字串：编号 $1$ 到 $9$ 直接写一位，编号 $10$ 到 $26$ 写两位数字后再加一个 `0`。需要恢复唯一的原字母串。",
+      "transformed_statement": "将数字串视为从左到右拼接的若干编码块；从右端反向切分，末位为 `0` 时块长为 $3$，否则块长为 $1$，把每个编号映射回对应字母。",
+      "key_observations": [
+        "从编码串末尾向前处理时，末位为 `0` 必然对应一个两位字母编号；取末尾三位并去掉 `0`，即可恢复该字母。",
+        "若当前末位不是 `0`，它只能是编号为 $1$ 到 $9$ 的单个数字，对应一个单字符字母编号。",
+        "每次从右端完整移除一个字母的编码块，因此不会与前后编码边界混淆；逆序恢复后再反转结果即可得到原字符串。"
+      ],
+      "solution_brief": "从编码串末尾贪心解析：末位为 `0` 时取三位并删去 `0`，否则取一位；将得到的字母逆序排列即可还原原串。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:35:49+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1729C",
+      "contest_id": 1729,
+      "title": "Jumping on Tiles",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1729/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/106916",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "字符串"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "strings"
+      ],
+      "statement_brief": "给定只含小写字母的字符串，棋子从第一个位置出发，每次可跳到尚未访问的位置，跳跃费用是两个字母下标之差，且每个位置最多访问一次，最终必须到达末位置。要求先最小化总费用，再在所有最小费用路径中最大化访问的位置数，并输出访问顺序。",
+      "transformed_statement": "将路径看成字母下标的一维移动：首尾字母确定方向，最小费用路径必须沿该方向单调经过，因此问题转化为按方向收集首尾字母之间的所有出现位置。",
+      "key_observations": [
+        "任意路径的总费用至少为首尾字母下标之差；按字母单调移动时，所有跳跃费用之和恰好达到该下界，因此中间经过哪些同向字母不会增加费用。",
+        "只有字母位于首字符与末字符闭区间内的瓦片，才能被放入费用最小的单调路径；区间外的字母会造成额外回退费用。",
+        "为了在最小费用下最大化跳跃次数，应加入闭区间内的每个瓦片，并按首尾字母的方向逐字母输出；相同字母的多个位置可全部连续访问。"
+      ],
+      "solution_brief": "比较首尾字符确定遍历方向，收集所有字符位于两者之间的下标，并按字母顺序（或逆序）输出。最小费用是首尾字母下标差，收集到的全部位置保证在该费用下访问数量最多。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:35:39+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1729D",
+      "contest_id": 1729,
+      "title": "Friends and the Restaurant",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1729/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/106916",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy",
+        "sortings",
+        "two pointers"
+      ],
+      "statement_brief": "有 $n$ 位朋友，第 $i$ 位计划消费 $x_i$，拥有预算 $y_i$。朋友可以被分成若干个互不重叠的群组，每组至少两人；每组消费总额不得超过预算总额，未参加任何组的人也允许被留下。求最多能安排多少天，使每天恰有一个合法群组到餐厅。",
+      "transformed_statement": "把每位朋友改写为净结余 $d_i=y_i-x_i$，于是问题变成：从这些数中选出尽可能多组互不重复的元素对，使每对的和至少为 $0$；题解进一步利用排序后的两端配对来贪心处理。",
+      "key_observations": [
+        "令每位朋友的净结余为 $d_i=y_i-x_i$，一个群组能够结账当且仅当其中所有人的 $d_i$ 之和不小于 $0$，从而把预算条件转成净结余配对问题。",
+        "由于目标只统计群组数量，多人群组不会比拆成若干个二人群组获得更多天数，因此只需寻找尽可能多的合法二人组。",
+        "将 $d_i$ 升序排列后，若最小值与最大值之和小于 $0$，最小值无法和任何人组成合法组，只能舍弃；否则让两者配对不会降低可形成的组数。",
+        "双指针每次要么舍弃当前最小净结余，要么同时消耗最小值和最大值形成一组，因此可直接统计最多的合法配对数。"
+      ],
+      "solution_brief": "计算每人的净结余 $d_i=y_i-x_i$ 并升序排列。用左右指针配对：若两端之和非负则计数并同时移动，否则舍弃左端；直到指针相遇。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:35:23+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1729E",
+      "contest_id": 1729,
+      "title": "Guess the Cycle Size",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1729/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/106916",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "interactive",
+        "probabilities"
+      ],
+      "statement_brief": "交互器隐藏一个顶点数为 $n$ 的环，顶点标签随机固定。每次可询问一个有序顶点对并获得回答，最多询问 $50$ 次，要求猜出环中的顶点数；询问非法顶点会返回 $-1$。",
+      "transformed_statement": "把一次反向询问视为环上同一对顶点的两条有向路径长度：若两次结果不同，它们之和就是整张环的周长；若无法区分，则换一组编号继续尝试，越界则直接确定顶点数。",
+      "key_observations": [
+        "对同一对不同顶点询问两个相反方向，若返回值为 $x\\ne y$，它们正好是环上两条路径的长度，因此环长等于 $x+y$。",
+        "顶点标签随机固定，使两条方向距离相等的概率为 $1/2$；重复尝试最多 $25$ 次后仍未区分的概率为 $2^{-25}$。",
+        "从顶点 $1$ 依次询问编号为 $i$ 的顶点；首次得到 $-1$ 时说明该编号越界，因此环上顶点数为 $i-1$。",
+        "每次尝试使用两次反向询问，最多进行 $25$ 次即可控制总询问数不超过 $50$，整体成功概率为 $(1-2^{-25})^{50}$。"
+      ],
+      "solution_brief": "令 $i$ 从 $2$ 递增，询问 $(1,i)$ 与 $(i,1)$。若首次返回 $-1$，答案为 $i-1$；若两值不同，答案为两值之和；相等则继续，最多尝试 $25$ 次。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:34:59+00:00",
+          "quality_flags": [
+            "statement_text中的交互查询返回格式不完整，部分规则依据editorial补全"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1729F",
+      "contest_id": 1729,
+      "title": "Kirei and the Linear Function",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1729/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/106916",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "字符串"
+      ],
+      "original_tags": [
+        "hashing",
+        "math"
+      ],
+      "statement_brief": "给定数字串、长度 $w$，每次查询给出区间 $[l,r]$ 和 $k$。需找两个长度均为 $w$ 的子串，使第一段数值乘以 $v(l,r)$ 再加第二段数值后模 $9$ 等于 $k$；按第一段起点、再按第二段起点的字典序最小输出，不存在则报告无解。",
+      "transformed_statement": "把每个子串只看作模 $9$ 的余数：预处理全部长度为 $w$ 的起点，并按余数分成 $9$ 类。固定第一段余数 $a$ 后，第二段必须属于余数为 $k-a\\cdot v(l,r)\\pmod 9$ 的一类。",
+      "key_observations": [
+        "十进制数模 $9$ 等于其各位数字和模 $9$，因此用数字前缀和即可在 $O(1)$ 求任意查询区间的余数。",
+        "固定长度 $w$ 后，只需按模 $9$ 的余数记录所有起点；查询中的第一段余数为 $a$ 时，第二段余数唯一确定为 $k-a\\cdot v(l,r)\\pmod 9$。",
+        "若两段所需余数不同，分别取两类起点的最小值即可；若余数相同，则必须取该类最小和次小起点，以保证两段位置不同且字典序最优。"
+      ],
+      "solution_brief": "用数字前缀和求查询区间模 $9$，预处理所有长度为 $w$ 的子串并按余数分组。枚举第一段余数 $a$，计算第二段余数，按起点最小规则取候选并更新答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:34:39+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1729G",
+      "contest_id": 1729,
+      "title": "Cut Substrings",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1729/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/106916",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "组合计数与概率",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "hashing",
+        "strings",
+        "two pointers"
+      ],
+      "statement_brief": "给定字符串 $s$ 和模式串 $t$，每次可选择当前仍完整出现的一个 $t$，将其替换为点，因此所有与它重叠的出现也会消失。要求删掉全部出现所需的最少操作次数，以及达到最少次数的不同起点集合数量，结果模 $10^9+7$。",
+      "transformed_statement": "将 $t$ 在 $s$ 中的每次出现表示为等长区间；一次操作选择一个区间，并覆盖所有与其相交的区间。问题转化为在这些区间中选一个最小的相交支配集合，同时统计最优集合数。",
+      "key_observations": [
+        "把每个出现位置视为区间 $[l,l+|t|-1]$；切除一个区间会同时消灭所有与它相交的出现，因此问题等价于选最少区间，使每个出现区间都与至少一个被选区间相交。",
+        "处理当前最左边尚未消灭的出现时，选择与它相交且起点最靠右的出现不会增加后续负担，并能保证最少操作数；随后跳到第一个与该区间不相交的出现。",
+        "计数时以当前最左边未处理出现作为状态，枚举能与它相交的切除区间并转移到其右侧后缀；只保留最少操作数的转移并累加方案数，从而按起点集合计数而不重复计算顺序。"
+      ],
+      "solution_brief": "先用前缀函数找出 $t$ 在 $s$ 中的所有出现区间。按最左未消灭区间贪心选择最右相交区间求最少切除次数，再用后缀 DP 枚举相交选择并统计达到最优次数的起点集合，答案对 $10^9+7$ 取模。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T22:34:19+00:00",
+          "quality_flags": [
+            "partial_editorial",
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 8,
       "problem_key": "1733A",
