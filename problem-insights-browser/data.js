@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3093,
+    "total_problems": 3102,
     "source_total_problems": 3103,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3093,
-    "with_editorial_brief": 2813,
-    "with_solution_brief": 2814,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3102,
+    "with_editorial_brief": 2822,
+    "with_solution_brief": 2823,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2155,
+    "ai_override_count": 2164,
     "primary_topic_count": 13,
-    "contest_count": 471,
+    "contest_count": 472,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 991,
+    "数论与同余": 334,
+    "图论与网络流": 190,
+    "博弈": 99,
+    "代数、矩阵与多项式": 22,
+    "组合计数与概率": 243,
     "基础实现与模拟": 184,
-    "构造与贪心": 988,
-    "数论与同余": 333,
     "树结构": 153,
     "动态规划与状态设计": 260,
     "数据结构": 290,
-    "组合计数与概率": 241,
     "几何": 76,
     "交互": 97,
-    "图论与网络流": 189,
-    "博弈": 98,
-    "字符串": 163,
-    "代数、矩阵与多项式": 21
+    "字符串": 163
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1858,
+    "ai_generated_with_editorial": 1865,
+    "ai_generated_partial_editorial": 66,
     "missing_editorial": 279,
-    "ai_generated_partial_editorial": 64,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -95534,6 +95534,285 @@ window.CF_INSIGHTS_DATA = {
             "沿 DFS 同时累加路径上的 $a$ 值即可得到当前节点的 $A_i$，从而无需重新遍历根到节点的路径。"
           ],
           "solutionBrief": "DFS 从根向下维护当前路径的 $a$ 总和与 $b$ 前缀和数组。到达节点 $i$ 时，在单调递增的 $b$ 前缀和中二分查找不超过 $A_i$ 的最大前缀长度，回溯时撤销末尾状态。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1704,
+      "name": "CodeTON Round 2 (Div. 1 + Div. 2, Rated, Prizes!)",
+      "date": "2022-07-31",
+      "url": "https://codeforces.com/contest/1704",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1704A",
+          "index": "A",
+          "slot": "A",
+          "title": "Two 0-1 Sequences",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1704/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/105464",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定只含 0 和 1 的序列 $a,b$，其中 $m\\le n$。每次可按题面两种操作删除当前序列的第一个或第二个元素，问能否经过若干次操作恰好把 $a$ 变成 $b$；以下按题解对缺失操作定义的描述理解这两种操作。",
+          "transformedStatement": "删除操作只能影响原序列的前 $n-m+1$ 个位置：其中一个元素被保留为结果首位，其余元素删除；原序列后缀必须直接对应结果的第 $2$ 位到第 $m$ 位。问题因此转化为后缀匹配加前缀是否含有目标首位。",
+          "keyObservations": [
+            "最终长度必须从 $n$ 变为 $m$，因此只能删除原数组前 $n-m+1$ 个位置中的元素，原后缀 $a_{n-m+2..n}$ 必须逐位等于 $b_{2..m}$。",
+            "通过删除首元素和第二个元素，可以保留前缀中的任意一个元素作为最终首元素；因此只需判断 $a_{1..n-m+1}$ 中是否存在等于 $b_1$ 的位置。",
+            "一旦选定该位置作为最终首元素，其前面的元素用删除首元素操作移除，其后面多余的元素用删除第二个元素操作移除，后缀保持不变，从而充分保证构造可行。"
+          ],
+          "solutionBrief": "先检查 $a$ 的固定后缀 $a_{n-m+2..n}$ 是否等于 $b_{2..m}$；再检查前缀 $a_{1..n-m+1}$ 是否包含 $b_1$。两项都满足则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1704B",
+          "index": "B",
+          "slot": "B",
+          "title": "Luke is a Foodie",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1704/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/105464",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 堆按顺序排列的食物，经过每堆时必须按顺序吃掉且不能回头。开始前可免费选择整数偏好值，并可在吃每堆前将其改成任意整数；若 $|v-a_i|\\le x$ 才能吃第 $i$ 堆，求吃完全部食物所需的最少修改次数。",
+          "transformedStatement": "把第 $i$ 堆转成偏好值区间 $[a_i-x,a_i+x]$：连续若干堆无需修改，当且仅当这些区间有公共交集。于是问题变为从左到右用最少段覆盖区间序列，每当当前交集为空就开启新段。",
+          "keyObservations": [
+            "条件 $|v-a_i|\\le x$ 等价于当前偏好值必须落在区间 $[a_i-x,a_i+x]$ 内，从而把逐堆判断转成区间相交问题。",
+            "同一段连续食物可以不修改偏好值，当且仅当这些区间的交集非空；维护交集左右端点即可表示所有可行的 $v$。",
+            "当加入当前区间后交集为空时，前一段已经无法延伸，必须在当前食物前修改 $v$；此时从当前区间重新开始能保证修改次数最少。"
+          ],
+          "solutionBrief": "将每堆食物转为允许的偏好区间，顺序维护当前连续区间的交集。若交集变空，就在当前堆前修改一次偏好值，并用当前区间重新开始；初始偏好值不计修改。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1704C",
+          "index": "C",
+          "slot": "C",
+          "title": "Virus",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1704/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/105464",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "几何"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 间首尾相连的房屋，其中 $m$ 间起初感染。每天病毒扩散前，可以选择一间尚未感染的房屋永久保护；求采取最优保护策略后最终会被感染的房屋数最小值。",
+          "transformedStatement": "将环上的感染点排序，问题转化为处理它们之间的若干未感染间隔：病毒从间隔两端同时向中间推进，每天消耗两间房，而每天只能在一个间隔中设置一个永久保护点。",
+          "keyObservations": [
+            "把相邻初始感染房屋之间的未感染数量记为间隔长度；间隔两端的感染前沿每天各推进一格，因此经过 $d$ 天后只剩 $x-2d$ 格可处理。",
+            "若当前间隔剩余 $r=x-2d>0$，本轮保护一个房屋后，最终可避免感染的数量为 $r-1$；这同时消耗一天，使后续间隔的有效长度再减少 $2$。",
+            "较长间隔必须优先处理：若先放任它们，两个感染前沿会持续扩张并造成更多损失，而短间隔很快会被完全感染，延后处理不会额外减少可挽救数量。",
+            "将所有环上的间隔按长度降序处理，并用已经经过的天数修正长度，即可累加最终未感染房屋数，再用 $n$ 减去它得到答案。"
+          ],
+          "solutionBrief": "排序所有相邻初始感染点之间的未感染间隔。维护已过去的天数 $d$，对每个间隔令 $r=x-2d$；若 $r>0$，增加 $r-1$ 个最终未感染房屋并令 $d\nearrow d+1$，答案为 $n-$未感染数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1704D",
+          "index": "D",
+          "slot": "D",
+          "title": "Magical Array",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1704/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/105464",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "hashing",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 个长度为 $m$ 的非负整数数组，它们都由同一个数组 $b$ 出发，并按题目规定的两类操作生成；其中恰有一个数组是特殊数组。需要找出特殊数组的编号，并计算第二类操作在它上面执行的次数。",
+          "transformedStatement": "把每个数组映射为按位置加权的总和 $W=\\sum i a_i$：第一类操作对应保持该量不变，第二类操作对应使其增加 $1$。于是普通数组共享同一个基准值，特殊数组的偏差直接编码操作次数。",
+          "keyObservations": [
+            "对数组计算加权和 $W=\\sum_{i=1}^{m}i\\cdot a_i$，操作 1 前后 $W$ 不变，因此所有未使用操作 2 的数组具有相同的 $W$。",
+            "操作 2 会使加权和 $W$ 恰好增加 $1$，所以特殊数组与普通数组的加权和之差就是操作 2 的使用次数。",
+            "输入保证只有一个特殊数组，因此找出唯一不同于公共加权和的数组即可同时确定下标；其差值直接给出所求次数。"
+          ],
+          "solutionBrief": "对每个数组计算下标加权和 $W=\\sum i a_i$。操作 1 保持 $W$ 不变，操作 2 使 $W$ 增加 $1$；先找出普通数组的公共 $W$，唯一不同者为特殊数组，差值即操作 2 次数。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1704E",
+          "index": "E",
+          "slot": "E",
+          "title": "Count Seconds",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1704/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/105464",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "graphs",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个有向无环图，每个节点有非负整数 $a_i$，且只有一个节点没有出边。每秒所有数值为正的节点减一，并向每个出邻点增加一；求首次所有节点都变为零的时间，答案对 $998244353$ 取模。",
+          "transformedStatement": "把过程分成前 $n$ 秒的真实传播和之后的汇点清空阶段：前者得到残量 $s_i$，后者把每个残量按其到唯一汇点的路径数加权，因此不再需要继续逐秒模拟。",
+          "keyObservations": [
+            "任意初始单位沿 DAG 向汇点传播的总贡献等于它到汇点的有向路径数，因此可用路径计数替代逐单位模拟。",
+            "路径长度最多为 $n-1$；若前 $n$ 秒后仍未结束，汇点之后会持续得到供给，剩余结束时间等于所有残量最终流入汇点的总贡献。",
+            "令 $dp_i$ 为从节点 $i$ 到唯一汇点的路径数，则第 $n$ 秒后的残量 $s_i$ 对答案的贡献为 $s_i dp_i$，总时间为 $n+\\sum_i s_i dp_i$。",
+            "模拟阶段的数值可能很大且可能超过模数，必须同时维护模 $998244353$ 的值和足以判断前 $n$ 步内是否仍为正的截断信息。"
+          ],
+          "solutionBrief": "每个节点每秒将一个单位分给所有出边终点并自身减一。先模拟前 $n$ 秒，若期间全零则直接结束；否则用拓扑序求各点到汇点的路径数，答案为 $n+\\sum_i s_i dp_i$，全程取模并保留正性信息。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1704F",
+          "index": "F",
+          "slot": "F",
+          "title": "Colouring Game",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1704/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/105464",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "games"
+          ],
+          "statementBrief": "给定一排红蓝格子，Alice 先手；每回合 Alice 选择含红格子的相邻两格并染白，随后 Bob 选择含蓝格子的相邻两格并染白，选中的另一格可以是白色。无法操作者输，要求判断最优策略下的胜者。",
+          "transformedStatement": "当红蓝总数不等时，问题归结为比较两种颜色的数量；相等时只需研究相邻异色段，把一次操作抽象为从交替段中删除任意相邻两个位置，所得左右子段构成独立博弈。",
+          "keyObservations": [
+            "红蓝数量不等时，拥有更多自身颜色的玩家必胜：先不断消除相邻的 RB 或 BR，不改变颜色差；之后双方只能消除对方颜色与白色的组合，数量优势无法被逆转。",
+            "红蓝数量相等时，可先只考虑相邻异色对；这些操作等价于在一段未被取走的连续区域中删除任意相邻两个格子，并将剩余左右部分独立分开。",
+            "每个最大交替色段是一个独立子博弈，长度为 $n$ 的段的 SG 值满足 $SG(n)=\\operatorname{mex}_{0\\le i\\le n-2}(SG(i)\\oplus SG(n-2-i))$，所有段的 SG 值异或决定先手胜负。",
+            "该 SG 序列在初始若干项后以长度 $34$ 循环；验证前 $34^2$ 项即可确认循环，因此可在线性预处理后处理所有测试。"
+          ],
+          "solutionBrief": "先比较红蓝数量，不等时较多颜色的持有者获胜。相等时找出所有最大交替色段，按递推预处理其 SG 值并异或；异或非零则 Alice 胜，否则 Bob 胜。SG 序列利用长度 $34$ 的周期做到 $O(n)$ 预处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1704G",
+          "index": "G",
+          "slot": "G",
+          "title": "Mio and Lucky Array",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1704/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/105464",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [
+            "构造与贪心",
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "fft",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定整数数组 $a$ 和目标数组 $b$，需要按题面规定的下标操作修改 $a$，使 $b$ 成为修改后数组的连续子数组；输出一组互不重复且按顺序执行的操作，无法做到时输出 $-1$。当前记录缺少该操作的具体定义，因此无法完整复述每次操作如何改变数组。",
+          "transformedStatement": "将数组映射为二阶差分式量 $f_i=a_i+2a_{i-1}+a_{i-2}$，目标对应为 $g_i$；对每个可能的起点 $k$，先检查两项边界关系，再要求内部各位置的 $g_i-f_{k+i}$ 为 $0$ 或 $1$，最后把边界修正转化为带符号连续权值的选取问题。",
+          "keyObservations": [
+            "定义 $f_i=a_i+2a_{i-1}+a_{i-2}$、$g_i=b_i+2b_{i-1}+b_{i-2}$ 后，在位置 $i$ 操作只会使 $f_i$ 增加 $1$，因此原操作被转化为对 $f$ 的单点修改。",
+            "固定匹配起点 $k$ 时，匹配条件等价于 $b_1=a_{k+1}$、$b_1+b_2=a_{k+1}+a_{k+2}$，以及所有 $i\\ge3$ 满足 $g_i=f_{k+i}$；这把数组匹配拆成局部边界条件和可独立检查的序列条件。",
+            "前 $k+2$ 个位置的操作对前两项造成带符号的贡献，先选取全部同号贡献后，问题化为从连续整数权值中选定指定数量，使选中和落在最小值与最大值之间，从而可直接构造操作集合。",
+            "所有起点的第三类条件可写成 $\\sum_{i=3}^{m}(g_i-f_{k+i})(g_i-f_{k+i}-1)$；其为零当且仅当每项差值属于 $\\{0,1\\}$，展开后的交叉项是相关卷积，可用 FFT 在 $O(n\\log n)$ 内同时筛选候选起点。"
+          ],
+          "solutionBrief": "用二阶线性变换将一次操作变成对 $f$ 的单点加一。先通过边界条件和 FFT 计算卷积筛出满足内部匹配的起点，再依据带符号权值的可选子集区间构造具体操作；不存在合法起点时输出 $-1$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1704H1",
+          "index": "H1",
+          "slot": "H",
+          "title": "Game of AI (easy version)",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1704/problem/H1",
+          "editorialUrl": "https://codeforces.com/blog/entry/105464",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个机器人和 $n$ 座塔，初始时编号相同的机器人占据对应塔。先选择一个攻击顺序 $p$，再选择数组 $a$（每个 $a_i\\ne i$）；机器人按 $p$ 的顺序攻击，存活者占据塔 $a_i$ 并驱逐原占据者，无塔可占的机器人被淘汰。要求统计所有可能得到的数组对 $(a,b)$ 数量，其中 $b$ 是最终各塔的占据机器人编号。",
+          "transformedStatement": "先固定最终数组 $b$，把所有满足 $b_i\\ne i$ 的关系 $a_{b_i}=i$ 看作图上的边。该图分解成若干条链，链结构确定 $b$ 的其余信息；计数转化为统计各链顶的可选目标，并按链数及单点链数分类求和。",
+          "keyObservations": [
+            "固定最终序列 $b$ 后，若 $b_i\\ne i$，则必须有 $a_{b_i}=i$；若 $b_i=i$，所有满足 $a_j=i$ 的机器人都必须在攻击前已被淘汰。",
+            "由所有 $b_i\\ne i$ 的关系建图后，图必然分解为若干条链；每个这样的链唯一确定一个满足条件的 $b$，并固定除链顶外的大部分 $a_i$。",
+            "链长大于 $1$ 时，链顶对应的 $a_i$ 可取除 $i$ 外的任意塔；链长为 $1$ 时，$a_i$ 还不能取任何链底，否则会违反对应位置最终保持不变的条件。",
+            "满足这些局部条件的 $a$ 总能安排出合法攻击顺序 $p$，因此只需按链数和单点链数分类计数，并将各链顶的可选数量相乘。"
+          ],
+          "solutionBrief": "固定 $b$ 后，将非固定位置形成的关系建成若干条链；链结构确定唯一的 $b$，并固定非链顶的 $a_i$。按链长统计链顶的选择数，对链数和单点链数枚举并用组合数求和，整体复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1704H2",
+          "index": "H2",
+          "slot": "H",
+          "title": "Game of AI (hard version)",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1704/problem/H2",
+          "editorialUrl": "https://codeforces.com/blog/entry/105464",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个塔和机器人，初始第 $i$ 个机器人在第 $i$ 个塔上。先选择无固定点序列 $a$ 和攻击顺序排列 $p$；机器人按 $p$ 的顺序攻击，把第 $a_j$ 个塔改由自己占据，失去所有塔的机器人立即淘汰，最后得到塔上机器人序列 $b$。要求统计所有可能的不同序列对 $(a,b)$，并对范围内每个 $n$ 求答案。",
+          "transformedStatement": "把 $a$ 看作每个点恰有一条出边的函数图。固定 $a$ 后，$b_i=i$ 的位置形成独立集，其余位置贡献对应顶点的入度；于是问题等价于对函数图的独立集按入度乘积加权，并用生成函数统计所有环与有根树组件。",
+          "keyObservations": [
+            "固定 $a$ 后，$b_i$ 只能等于 $i$ 或某个满足 $a_j=i$ 的 $j$；若 $a_x=y$，则 $b_x=x$ 与 $b_y=y$ 不能同时成立，因此满足 $b_i=i$ 的点构成独立集。",
+            "给定独立集后，每个不在独立集中的点 $x$ 有 $ ext{indeg}(x)$ 种非自身取值，总数是所有这类入度的乘积，从而把排列过程转成带权独立集求和。",
+            "函数图由环及环上挂接的有根树组成；树部分按根是否属于独立集定义生成函数 $P,Q$，满足 $P=x(P+Q)e^{P+Q}$、$Q=xe^P$，可用牛顿迭代求系数。",
+            "环上的树组件用 $A,B$ 分别表示根不在、在独立集中的情形，环的生成函数为 $-\\\\ln(1-A-B)-A$，再扣除整环均被前驱占据的非法情况，最后用指数运算合并多个环组件。"
+          ],
+          "solutionBrief": "把每个 $a$ 看成无自环函数图，统计其带入度权的独立集。用生成函数递推树组件，牛顿迭代求系数；再通过对数构造环、指数合并组件，整体复杂度为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
