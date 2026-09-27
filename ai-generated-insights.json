@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T00:31:01+00:00",
+  "updated_at": "2026-09-27T00:35:03+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -25934,6 +25934,243 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 的选择规则与 editorial_text 的质数性质结论，tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "2193H": {
+      "problem_key": "2193H",
+      "title": "Remove the Grail Tree",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/2193/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/150510",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c252b96cda4876d673025aab378f263705bb93eb8694450f77ad85a9c9bc0069",
+      "generated_at": "2026-09-27T00:33:20+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵带整数点值的树。每次选择一个点，若其点值与当前所有剩余邻居点值之和奇偶性不同，就删除该点及其边；无法继续时停止。判断能否删除整棵树，若能则输出任意合法删除顺序。",
+        "transformed_statement": "先把点值压缩为 $0/1$，将删除过程拆成两部分：零点可依据相邻奇点数量直接或被激活删除；删除零点后，问题转化为依次清空若干全为 $1$ 的奇数大小树，并维护每个点周围偶数侧分支的数量。",
+        "key_observations": [
+          "只看 $a_v$ 的奇偶性；删除奇偶为 $0$ 的点不会改变其他点邻居和的奇偶性，因此可先处理这类点。",
+          "奇偶为 $0$ 的点若初始相邻奇点数为偶数就永远无法删除；相邻奇点数为奇数的点可直接删除，奇点删除后还能激活新的可删零点。",
+          "删去所有零点后得到若干全为奇点的树；偶数大小的树不可能清空，因为每次删除会移除偶数条边，而初始边数为奇数。",
+          "在奇数大小的奇点树中，定义邻居方向的贡献表示删去当前点后该邻居所在部分大小为偶数；每条边恰有一个方向贡献，故必有贡献数为 $0$ 的点可删，删除后仅需更新其邻居。"
+        ],
+        "solution_brief": "先将所有 $a_i$ 化为奇偶值，处理初始可删的零点；检查零点诱导的奇点森林每棵树是否为奇数大小。对每棵奇点树预计算各点的贡献数，用队列不断删除贡献数为 $0$ 的点，并同步激活受影响的零点，得到完整删除序列。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial 的主方案、题面操作规则及 trees/greedy/implementation 标签整理。",
+        "quality_flags": []
+      }
+    },
+    "2193G": {
+      "problem_key": "2193G",
+      "title": "Paths in a Tree",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2193/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/150510",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "45524b961b8f454c12eb39bb3e0984e75b4b74d68ffbaaef6a5fe3cd55d8785c",
+      "generated_at": "2026-09-27T00:33:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵树，存在两个可能重合的隐藏顶点，它们确定一条隐藏路径。每次可询问任意两点间的路径是否与隐藏路径相交，交互器回答 0 或 1；要求在至多 $\\lfloor n/2\\rfloor+1$ 次询问内找出隐藏路径上的任意一个顶点。",
+        "transformed_statement": "将 DFS 序中的顶点两两分组，把每组两点间的路径作为探测路径；利用相邻 DFS 顶点的路径覆盖关系，把一次正回答转化为“两个端点至少一个在隐藏路径上”，再用单点查询二选一。",
+        "key_observations": [
+          "按 DFS 序把顶点两两配对后，当前配对两点之间的路径中，除这两个端点外的相关顶点都已被前面的查询覆盖，因此回答为 1 时可确定至少一个端点在隐藏路径上。",
+          "对一个得到正回答的配对，再查询 $(a,a)$；单点路径是否与隐藏路径相交，恰好判断顶点 $a$ 是否位于隐藏路径，从而在两端点中确定答案。",
+          "若 $n$ 为奇数且所有配对都未得到正回答，DFS 序中未配对的最后一个顶点必在隐藏路径上，因此无需额外定位。",
+          "每个配对至多使用一次查询，首次命中后只增加一次单点查询，未命中时直接使用剩余顶点，故总查询数为 $\\lfloor n/2\\rfloor+1$。"
+        ],
+        "solution_brief": "先求 DFS 序并将顶点相邻配对，依次询问每对端点路径是否与隐藏路径相交。若回答为 1，再询问第一个端点的单点路径以确定端点；若全部失败，则输出未配对的最后顶点。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "交互"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags 中的树和交互信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "2193F": {
+      "problem_key": "2193F",
+      "title": "Pizza Delivery",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/2193/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/150510",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4ec225fb9037a5ef2c5b0ab47a2b0b02a62aecfeefcde2113f0aee0a700affca",
+      "generated_at": "2026-09-27T00:33:56+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定起点、终点和若干房屋坐标，送货员从起点出发，每步只能向右、向上或向下移动，不能向左；到达房屋即可零时间送达，送完所有披萨后必须到达终点。求完成全部送货所需的最短移动时间。",
+        "transformed_statement": "按横坐标把房屋分成若干组并从左到右处理，每组只需关注最低点和最高点作为进出端点；用两个状态表示处理完当前组后停在这两个端点之一的最短代价。",
+        "key_observations": [
+          "由于只能增加或不变横坐标，横坐标较小的房屋必须先于横坐标较大的房屋送达，因此可按不同的 $x$ 分组顺序处理。",
+          "同一横坐标组内，最后送达的房屋只可能是最高点或最低点；从一个极值走到另一个极值即可覆盖该组的全部纵坐标。",
+          "以处理完当前分组且最后停在最高点或最低点为状态，组间转移只需计算两端点的曼哈顿距离，再加上覆盖当前组的纵向跨度。",
+          "将起点和终点分别作为首尾分组后，终点组只有一个位置；取最终停在终点的状态即可得到最短总时间。"
+        ],
+        "solution_brief": "按横坐标排序并合并同组房屋，记录每组的最低、最高纵坐标。设 DP 表示处理完前缀分组后停在该组两端之一的最短时间，枚举前组端点转移并加上横向距离与当前组跨度，整体复杂度为 $O(n\\log n)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的移动限制，以及 editorial_text 的分组、端点 DP 和复杂度说明；tags 仅用于辅助主题判断。",
+        "quality_flags": []
+      }
+    },
+    "2193E": {
+      "problem_key": "2193E",
+      "title": "Product Queries",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2193/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/150510",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d404680e2553e732cffb178c9ecea37ccd830b4869a2a86f45ce44d84b4e349d",
+      "generated_at": "2026-09-27T00:34:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $n$ 的数组。对每个目标值 $i=1,2,\\ldots,n$，可重复选择数组中的元素并相乘，要求使用至少一个元素，求乘积恰好为 $i$ 所需的最少元素数；无法得到时输出 $-1$。",
+        "transformed_statement": "把问题视为乘法分解的最短组合：数组中的每个数是代价为 $1$ 的初始状态，目标 $x$ 可由任意因子对 $y$ 与 $x/y$ 合并得到，状态值就是得到该乘积的最小代价。",
+        "key_observations": [
+          "任意乘积 $x$ 的最后一次合并都可拆成两个因子 $y$ 和 $x/y$，因此最优值满足 $dp[x]=\\min(dp[y]+dp[x/y])$，只需枚举 $x$ 的因子。",
+          "初始令数组中出现的数的 $dp$ 为 $1$；由于元素允许重复使用，后续乘法转移会自然支持同一个数组元素被选多次，无需记录使用次数。",
+          "所有子乘积都不超过目标值，按数值递增处理时，因子对应的状态已经可用，从而逐步得到每个目标乘积所需的最少元素数。",
+          "对每个 $x$ 枚举其所有因子，所有数及其因子总数为 $O(n\\log n)$，比枚举元素组合更高效。"
+        ],
+        "solution_brief": "令 $dp[x]$ 表示得到乘积 $x$ 的最少元素数，数组元素对应状态初始化为 $1$。按递增顺序枚举每个 $x$ 的因子 $y$，用 $dp[y]+dp[x/y]$ 转移；未更新状态输出 $-1$，总复杂度为 $O(n\\log n)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数论与同余",
+          "图论与网络流"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 中的 DP 转移与复杂度说明，以及 tags 中的 dp、math、number theory、shortest paths。",
+        "quality_flags": []
+      }
+    },
+    "2193D": {
+      "problem_key": "2193D",
+      "title": "Monster Game",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2193/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/150510",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3d8d1ee4797782e26580f984e191e34841ae192409b43b390deb9f7f263ad693",
+      "generated_at": "2026-09-27T00:34:31+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定每把宝剑的强度和各关卡怪物所需的攻击次数。先选择难度 $x$，强度小于 $x$ 的宝剑全部无效；每把有效宝剑只能攻击一次，必须按顺序击败关卡，直到通关或宝剑耗尽，得分为 $x$ 乘以完成的关卡数，求最大得分。",
+        "transformed_statement": "把选择难度转化为选择按强度降序排列后的前缀宝剑数量：候选难度只需考虑某把宝剑的强度。对每个前缀，求其总攻击次数能覆盖的最长关卡前缀，再计算强度与该长度的乘积。",
+        "key_observations": [
+          "难度越高，可用宝剑越少，因此能完成的关卡数单调不增；最优难度必等于某把宝剑的强度，否则还能提高难度而不减少可用宝剑。",
+          "将宝剑按强度降序排列后，考察难度为第 $i$ 把宝剑强度时，前 $i$ 把宝剑可作为可用资源；重复强度通过枚举其最后出现的位置自然覆盖。",
+          "按关卡顺序累加所需攻击次数，维护当前最多能完成的关卡数；当新增可用宝剑使总需求不超过 $i$ 时继续推进，否则当前关卡数不变。",
+          "每个候选难度的得分是该强度乘以可完成关卡数，随着可用宝剑数量增加只需单调移动关卡指针，因此无需重复计算前缀需求。"
+        ],
+        "solution_brief": "将宝剑按强度降序排列，依次把位置 $i$ 视为可用 $i$ 把宝剑。用指针维护累计需求不超过 $i$ 时最多完成的关卡数，枚举每个强度并取强度乘关卡数的最大值。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，tags 仅用于辅助主题判断。",
+        "quality_flags": []
+      }
+    },
+    "2193C": {
+      "problem_key": "2193C",
+      "title": "Replace and Sum",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2193/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/150510",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "04de96ecfca98b6404469c480ace4fdc4c3c501e6e991ec6a5066a1c1077a952",
+      "generated_at": "2026-09-27T00:34:43+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度为 $n$ 的数组 $a,b$，可任选位置将 $a_i$ 替换为 $b_i$，或在 $i<n$ 时将 $a_i$ 替换为右邻元素 $a_{i+1}$，操作可重复。对每个区间 $[l,r]$，求操作后该区间元素和的最大值。",
+        "transformed_statement": "将操作过程抽象为从右向左传播最大值：位置 $i$ 的最终值由自身原值、$b_i$ 和右侧位置的最优值共同决定，形成递推数组；所有查询因此转化为该数组上的区间和查询。",
+        "key_observations": [
+          "位置 $i$ 最终能取得的最大值满足 $a_i'=\\max(a_i,b_i,a_{i+1}')$，因为它既可保留原值、直接替换为 $b_i$，也可从右侧位置复制。",
+          "从右向左处理后，右侧位置已经达到最优，因此每个位置的最优值可以被一次递推确定，且不会影响已处理位置的最优性。",
+          "所有位置都独立达到最大值后，区间答案就是最终数组的区间和；建立前缀和即可将每次查询降为常数时间。"
+        ],
+        "solution_brief": "从右向左令 $a_i=\\max(a_i,b_i,a_{i+1})$，得到每个位置可达到的最大值。随后建立最终数组的前缀和，用 $pref[r]-pref[l-1]$ 回答每个区间查询。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，tags 用于辅助确认数据结构和贪心主题。",
+        "quality_flags": []
+      }
+    },
+    "2193B": {
+      "problem_key": "2193B",
+      "title": "Reverse a Permutation",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2193/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/150510",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "dde56df4c96c5be513a28f0b12019d4e886537877753b330d1966de9cc4cc099",
+      "generated_at": "2026-09-27T00:34:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $n$ 的排列，必须恰好选择一个区间 $[l,r]$ 并将其中元素整体反转。要求输出经过这次操作后能够得到的字典序最大的排列。",
+        "transformed_statement": "将目标排列按字典序从左到右确定：先固定已经等于 $n,n-1,\\ldots$ 的最长前缀，再用一次区间反转把对应的下一个最大值移到首个不匹配位置。",
+        "key_observations": [
+          "字典序比较中，前缀位置的数值优先级最高；因此只需保留已经等于 $n,n-1,\\ldots$ 的前缀不动，寻找第一个未达到目标值的位置。",
+          "设第一个不满足 $p_i=n-i+1$ 的位置为 $i$，把值为 $n-i+1$ 的元素反转到该位置，可最大化当前位置且不影响更优的前缀。",
+          "目标值在排列中唯一，反转区间 $[i,j]$ 后前缀保持不变、位置 $i$ 变为所需最大值，因此得到字典序最优结果。"
+        ],
+        "solution_brief": "找到最长的降序目标前缀，使其依次为 $n,n-1,\\ldots$。若第一个不匹配位置为 $i$，找到值 $n-i+1$ 的位置 $j$，反转 $[i,j]$；若全匹配则原数组不变。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，以及 tags 中的 greedy。",
+        "quality_flags": []
+      }
+    },
+    "2193A": {
+      "problem_key": "2193A",
+      "title": "DBMB and the Array",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2193/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/150510",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ac442f0a7f07697b1f0c33a3dcf109b2686b4da37cdaef592282689df605ceaf",
+      "generated_at": "2026-09-27T00:35:03+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组、目标总和 $s$ 和步长 $x$。可以任意多次选择一个下标并将该位置元素增加 $x$，要求判断是否能使数组总和恰好等于 $s$。",
+        "transformed_statement": "把所有数组操作统一看成对总和的操作：初始总和为 $A$，每次操作使其增加固定值 $x$，因此问题等价于判断方程 $A+kx=s$ 是否存在非负整数解 $k$。",
+        "key_observations": [
+          "无论选择哪个下标，每次操作都只会让数组总和增加 $x$，因此元素分布和操作位置都不影响可行性。",
+          "设初始总和为 $A$，目标总和为 $s$；必须满足 $s\\ge A$，否则操作只能增大总和，无法达到目标。",
+          "当且仅当 $s-A$ 是 $x$ 的非负整数倍时可以完成，因为需要恰好进行 $(s-A)/x$ 次操作。"
+        ],
+        "solution_brief": "先求数组初始总和 $A$，判断 $s-A$ 是否非负且能被 $x$ 整除；满足则输出 YES，否则输出 NO。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，tags 仅用于辅助分类。",
         "quality_flags": []
       }
     }
