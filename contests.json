@@ -1221,6 +1221,17 @@
     "date": "2024-04-30"
   },
   {
+    "id": 1968,
+    "name": "Codeforces Round 943 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1714661100,
+    "relativeTimeSeconds": 75830630,
+    "date": "2024-05-02"
+  },
+  {
     "id": 1971,
     "name": "Codeforces Round 944 (Div. 4)",
     "type": "ICPC",
