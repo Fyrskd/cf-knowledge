@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3086,
+    "total_problems": 3093,
     "source_total_problems": 3094,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3086,
-    "with_editorial_brief": 2806,
-    "with_solution_brief": 2807,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3093,
+    "with_editorial_brief": 2813,
+    "with_solution_brief": 2814,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2148,
+    "ai_override_count": 2155,
     "primary_topic_count": 13,
-    "contest_count": 470,
+    "contest_count": 471,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 984,
+    "基础实现与模拟": 184,
+    "构造与贪心": 988,
+    "数论与同余": 333,
+    "树结构": 153,
     "动态规划与状态设计": 260,
     "数据结构": 290,
     "组合计数与概率": 241,
     "几何": 76,
     "交互": 97,
-    "数论与同余": 332,
-    "树结构": 152,
     "图论与网络流": 189,
     "博弈": 98,
     "字符串": 163,
-    "基础实现与模拟": 183,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1851,
+    "ai_generated_with_editorial": 1858,
     "missing_editorial": 279,
     "ai_generated_partial_editorial": 64,
     "manual_override": 891,
@@ -95325,6 +95325,215 @@ window.CF_INSIGHTS_DATA = {
             "预处理所有 $S(k,i)$ 后，逐项维护下降阶乘 $(n)_i$ 与贡献因子，即可将每个测试用例降为 $O(k)$ 计算。"
           ],
           "solutionBrief": "预处理第二类斯特林数 $S(k,i)$。答案为 $\\sum_i S(k,i)(n)_i\\lceil m/2\\rceil^i m^{n-i}$，逐项维护两个乘积并取模；预处理 $O(k^2)$，单测 $O(k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1714,
+      "name": "Codeforces Round 811 (Div. 3)",
+      "date": "2022-08-01",
+      "url": "https://codeforces.com/contest/1714",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "1714A",
+          "index": "A",
+          "slot": "A",
+          "title": "Everyone Loves to Sleep",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1714/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/105549",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "每天有 $n$ 个闹钟，分别在固定的小时和分钟响铃；闹钟每天循环，在午夜后重新从 $0:00$ 开始。给定入睡时间，求从此刻到下一次任意闹钟响铃所能睡的小时数和分钟数；若立即响铃则答案为 $0\\ 0$。",
+          "transformedStatement": "把一天视为长度为 $1440$ 分钟的环，将入睡时刻与每个闹钟时刻映射为分钟位置；答案等于所有闹钟位置相对当前​​位置的模 $1440$ 前向距离中的最小值。",
+          "keyObservations": [
+            "把当前时间和每个闹钟时间都换算成一天内的分钟数，所需睡眠时间就是从当前时刻沿 24 小时循环到该闹钟的前向距离。",
+            "若闹钟时间不早于入睡时间，等待时间是两者分钟数之差；否则必须跨过午夜并额外增加一天的 $1440$ 分钟。",
+            "对所有闹钟取最小前向距离即可得到下一次响铃时间；若某个闹钟与入睡时刻相同，其距离为 $0$，自然会优先成为答案。"
+          ],
+          "solutionBrief": "将时间统一表示为分钟，计算每个闹钟相对入睡时刻的循环等待时间：若差值为负则加 $1440$，取最小值后再拆成小时和分钟。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1714B",
+          "index": "B",
+          "slot": "B",
+          "title": "Remove Prefix",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1714/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/105549",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数序列，每次可以删除当前序列的第一个元素，直到剩余序列中的所有元素互不相同。求达到条件所需删除的最少元素数，即应删除的最短前缀长度。",
+          "transformedStatement": "不直接模拟删除操作，而是寻找最长的互不重复后缀：从右向左加入元素，直到遇到一个已在后缀中出现的值；该位置之前的全部元素都必须删除。",
+          "keyObservations": [
+            "删除若干次首元素等价于保留一个后缀，因此目标转化为寻找最长的、元素互不相同的后缀。",
+            "从右向左维护已经出现在当前后缀中的数；若遇到重复值，当前位置及其左侧都不能保留，所以答案立即确定为该位置前缀的长度。",
+            "一旦从右侧扫描到第一个重复元素，右侧后缀已经全部不同，删除此前缀即可；继续向左只会让保留后缀变短，因此无需继续处理。"
+          ],
+          "solutionBrief": "从数组末端向左扫描，用集合记录当前后缀中的元素。遇到已出现的值时，当前位置不能保留，最短需要删除的前缀长度就是该位置的前缀长度；若无重复则答案为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1714C",
+          "index": "C",
+          "slot": "C",
+          "title": "Minimum  Varied Number",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1714/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/105549",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定整数 $s$，构造一个各位数字互不相同且数位和为 $s$ 的最小正整数。对每个测试用例输出该整数。",
+          "transformedStatement": "将问题转化为从 $1$ 到 $9$ 中选取互不重复的数字，使其总和为 $s$；先用尽可能少的较大数字完成总和，再把选出的数字升序排列以最小化数值。",
+          "keyObservations": [
+            "从数字 $9$ 到 $1$ 依次选取，优先使用较大的不同数字，可用最少的位数凑出总和；遍历结束后的剩余值若非零，必小于已处理数字且不会重复。",
+            "若某个已选数字被减小，就必须让后面的数字增大来保持总和；但后面的数字已按降序选择，增大要么造成重复，要么超过 $9$，因此当前选择无法被改进。",
+            "确定所选数字后按升序排列，能在位数相同的情况下得到最小的整数；例如选择 $9,8,3$ 时输出 $389$。"
+          ],
+          "solutionBrief": "从 $9$ 向 $1$ 遍历，若当前剩余和不少于该数字就选它并扣除；最后若剩余和大于 $0$，加入剩余值。将所有选中的数字升序输出，即为最小答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1714D",
+          "index": "D",
+          "slot": "D",
+          "title": "Color with Occurrences",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1714/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/105549",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定文本 $t$ 和若干字符串。每步可选择任意字符串在 $t$ 中的一次出现，将对应字符染红；已染红字符可重复染色，出现位置也可任意重叠。求染红全文所需的最少步数及一种操作方案；无法完成时输出 $-1$。",
+          "transformedStatement": "将每次染色抽象为文本上的一个出现区间，问题转化为用最少区间覆盖位置 $1$ 到 $|t|$。按当前已覆盖前缀的右端点逐步扩展，并始终选择能达到最远右端点的可接续区间。",
+          "keyObservations": [
+            "把每个可匹配的字符串出现位置视为区间，染色目标等价于用这些区间覆盖整个文本，区间允许任意重叠。",
+            "首次必须选择覆盖文本开头的出现位置，并令其右端点尽可能远，否则开头无法被染色。",
+            "当前已覆盖到位置 $r$ 时，只需考虑起点不超过 $r$ 的区间，并选择右端点最大的区间；它能在不增加步数的前提下把可达范围推得最远。",
+            "若某一步不存在能接上当前覆盖前缀的区间，则后续无法覆盖断点，应直接判定为不可能。"
+          ],
+          "solutionBrief": "枚举所有字符串在文本中的出现位置，将其看作区间。先选覆盖开头且右端点最远的区间；之后反复在起点不超过当前覆盖端点的区间中选右端点最远者并记录，直到覆盖全文；若无法扩展则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1714E",
+          "index": "E",
+          "slot": "E",
+          "title": "Add Modulo 10",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1714/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/105549",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个整数数组，每次可选择一个元素，将它加上当前元素的个位数，并可对任意元素重复操作。判断能否通过有限次操作（也可以不操作）使所有数组元素相等。",
+          "transformedStatement": "先按是否存在能被 $5$ 整除的元素分情况；否则利用末位循环，把每个元素规范到末位为 $2$，再将问题转化为检查规范后元素的模 $20$ 类别是否一致。",
+          "keyObservations": [
+            "若数组含有末位为 $0$ 或 $5$ 的数，末位为 $0$ 的数无法改变、末位为 $5$ 的数最多有效操作一次，因此统一操作一次后直接检查所有数是否相等。",
+            "不存在能被 $5$ 整除的数时，末位为奇数的数操作一次就变为偶数；偶数末位按 $2\\to4\\to8\\to6\\to2$ 循环，四次操作总共增加 $20$。",
+            "将每个数独立操作到末位为 $2$ 后，同一模 $20$ 的数可以通过继续增加 $20$ 对齐；若同时出现模 $20$ 为 $2$ 和 $12$ 的数，则两类永远无法相等。"
+          ],
+          "solutionBrief": "先判断是否存在能被 $5$ 整除的数：若存在，所有元素统一操作一次并检查是否全相等；否则逐个操作至末位为 $2$，检查是否同时出现模 $20$ 为 $2$ 和 $12$ 的元素。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1714F",
+          "index": "F",
+          "slot": "F",
+          "title": "Build a Tree and That Is It",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1714/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/105549",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定顶点数 $n$ 以及顶点 1、2、3 两两之间的目标距离 $d12、d23、d31$，需要构造一棵恰有 $n$ 个顶点的无根树，使这三个距离全部满足；若不存在则输出 NO，否则输出任意一组 $n-1$ 条边。",
+          "transformedStatement": "把三点的最小连通子树重述为一个分叉点及连接到 1、2、3 的三条互不重复路径，设三条路径长度为 $a、b、c$，则三组目标距离分别是对应两条路径长度之和。",
+          "keyObservations": [
+            "三点在树中的最小连通子树可视为一个分叉点连接 1、2、3 的三条路径，因此有 $a+b=d12$、$b+c=d23$、$c+a=d31$，问题转为求三条臂长。",
+            "由距离方程得到 $a=(d12+d31-d23)/2$、$b=(d12+d23-d31)/2$、$c=(d23+d31-d12)/2$；非负且为整数是可行性的必要条件。",
+            "若某个臂长为 $0$，对应编号就是分叉点；若三个臂长都为正，可将顶点 4 作为分叉点，从而避免额外引入根节点。",
+            "三条路径需要的顶点总数为 $a+b+c+1$，因此必须满足 $a+b+c<n$；剩余顶点直接连接分叉点不会改变 1、2、3 之间的距离。"
+          ],
+          "solutionBrief": "解出三条从分叉点到 1、2、3 的长度，检查它们是否为非负整数且 $a+b+c<n$。选择零长度对应的终点或顶点 4 为分叉点，按三条长度铺设路径，再把剩余顶点连接到分叉点。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1714G",
+          "index": "G",
+          "slot": "G",
+          "title": "Path Prefixes",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1714/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/105549",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的树，每条父子边有正整数 $a_j,b_j$。对每个节点 $i$，令 $A_i$ 为根到 $i$ 的所有 $a$ 之和，求从根开始的最长边前缀，使其 $b$ 之和不超过 $A_i$，输出其长度。",
+          "transformedStatement": "把每个节点视为当前根路径上的一个查询：阈值是该路径的 $a$ 总和，候选值是同一路径上递增的 $b$ 前缀和；答案等价于查询最大的不超过阈值的前缀位置。",
+          "keyObservations": [
+            "由于所有 $b_j$ 都为正数，根到当前节点的前缀 $b$ 和严格递增，因此满足不超过 $A_i$ 的前缀长度形成连续区间，可用二分查找最大长度。",
+            "DFS 访问节点时维护当前根路径上的 $b$ 前缀和数组，节点答案就是其中不超过该节点 $A_i$ 的最大下标；离开节点时删除末尾值即可恢复父路径状态。",
+            "沿 DFS 同时累加路径上的 $a$ 值即可得到当前节点的 $A_i$，从而无需重新遍历根到节点的路径。"
+          ],
+          "solutionBrief": "DFS 从根向下维护当前路径的 $a$ 总和与 $b$ 前缀和数组。到达节点 $i$ 时，在单调递增的 $b$ 前缀和中二分查找不超过 $A_i$ 的最大前缀长度，回溯时撤销末尾状态。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
