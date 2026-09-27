@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2261,
+    "total_problems": 2268,
     "source_total_problems": 2268,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2261,
-    "with_editorial_brief": 2000,
-    "with_solution_brief": 2001,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2268,
+    "with_editorial_brief": 2007,
+    "with_solution_brief": 2008,
     "missing_editorial_brief": 260,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1201,
+    "ai_override_count": 1209,
     "primary_topic_count": 13,
     "contest_count": 351,
     "rating_min": 800,
@@ -46,21 +46,21 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "字符串": 102,
     "构造与贪心": 754,
-    "图论与网络流": 133,
-    "动态规划与状态设计": 207,
-    "数论与同余": 236,
+    "图论与网络流": 134,
+    "动态规划与状态设计": 208,
+    "数论与同余": 237,
     "组合计数与概率": 169,
-    "数据结构": 196,
+    "数据结构": 199,
     "几何": 50,
     "树结构": 136,
     "代数、矩阵与多项式": 18,
     "交互": 80,
-    "基础实现与模拟": 103,
+    "基础实现与模拟": 104,
     "博弈": 77
   },
   "statusCounts": {
     "ai_generated_with_editorial": 1071,
-    "ai_generated_partial_editorial": 38,
+    "ai_generated_partial_editorial": 45,
     "missing_editorial": 260,
     "manual_override": 891,
     "statement_derived": 1
@@ -45447,9 +45447,83 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-09-21",
       "url": "https://codeforces.com/contest/2014",
       "type": "Div. 3",
-      "problemCount": 1,
-      "maxRating": 1400,
+      "problemCount": 8,
+      "maxRating": 2200,
       "problems": [
+        {
+          "key": "2014A",
+          "index": "A",
+          "slot": "A",
+          "title": "Robin Helps",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2014/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/134210",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定按顺序排列的 $n$ 个人及其金币数。Robin 初始没有金币：遇到金币数至少为 $k$ 的人就拿走其全部金币，遇到金币数为 $0$ 的人则在手中有金币时送出 $1$ 枚；求最终收到金币的人数。",
+          "transformedStatement": "将过程抽象为一个按顺序变化的资源余额：富人的贡献增加余额，贫困者在余额充足时消耗一枚金币并产生一次有效赠予；答案就是所有成功消耗的次数。",
+          "keyObservations": [
+            "只有满足 $a_i\\ge k$ 的人会让 Robin 获得全部 $a_i$ 枚金币，因此当前金币数可直接累加这些人的贡献。",
+            "遇到 $a_i=0$ 时，只有当前金币数大于 $0$ 才能送出 $1$ 枚；送出后资源减一，答案加一，按顺序处理即可保证资金状态正确。"
+          ],
+          "solutionBrief": "按人物顺序维护 Robin 当前金币数和送出人数：$a_i\\ge k$ 时加入全部金币；$a_i=0$ 且仍有金币时送出一枚并计数。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "2014B",
+          "index": "B",
+          "slot": "B",
+          "title": "Robin Hood and the Major Oak",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2014/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/134210",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "树在第 $i$ 年新增 $i^i$ 片叶子，每片叶子从生长当年起存活 $k$ 年。给定目标年份 $n$ 和存活年数 $k$，判断第 $n$ 年树上叶子总数是否为偶数。",
+          "transformedStatement": "第 $n$ 年只需考虑年份区间 $[n-k+1,n]$ 的新增叶子；由于 $i^i$ 的奇偶性与 $i$ 相同，最终只需判断该区间内奇数年份的数量是否为偶数。",
+          "keyObservations": [
+            "第 $i$ 年新增叶子数 $i^i$ 的奇偶性只由 $i$ 决定：$i$ 为奇数时为奇数，$i$ 为偶数时为偶数，因此总数奇偶只需统计存活年份中的奇数年份。",
+            "第 $n$ 年仍存活的叶子恰好来自年份区间 $[n-k+1,n]$，所以问题转化为判断该区间内奇数的数量是否为偶数。",
+            "区间内奇数个数可由前缀计数计算为 $\\lfloor (n+1)/2\\rfloor-\\lfloor (n-k+1)/2\\rfloor$，无需逐年求幂即可判定答案。"
+          ],
+          "solutionBrief": "对每组 $n,k$，统计区间 $[n-k+1,n]$ 中奇数的数量；若数量为偶数则输出 YES，否则输出 NO。奇数年份贡献奇数叶子，偶数年份贡献偶数叶子。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "2014C",
+          "index": "C",
+          "slot": "C",
+          "title": "Robin Hood in Town",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2014/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/134210",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个人及其财富，最富者会额外获得非负整数 $x$ 枚金币。财富严格小于新平均财富一半的人算作不满；求使不满人数严格超过总人数一半所需的最小 $x$，若不可能则输出 $-1$。",
+          "transformedStatement": "排序财富后，把目标转化为让第 $k=\\floor(n/2)+1$ 小的人满足 $2a_k<(S+x)/n$；前面的所有人会同时满足不满条件，因此只需解这个线性不等式。",
+          "keyObservations": [
+            "当 $n<3$ 时不可能让严格超过一半的人不满，因为获得金币的最富者始终不会低于平均财富的一半。",
+            "将财富排序后，只需让第 $k=\floor(n/2)+1$ 小的人不满；由于更小的财富也必然不满，这正好达到所需人数。",
+            "设原总财富为 $S$，第 $k$ 小财富为 $a_k$，其不满条件等价于 $2na_k<S+x$，因此最小整数增量为 $\\max(0,2na_k-S+1)$。"
+          ],
+          "solutionBrief": "若 $n<3$ 输出 $-1$。否则排序，取第 $k=\\floor(n/2)+1$ 小的财富 $a_k$，计算 $\\max(0,2na_k-S+1)$，其中 $S$ 为原财富总和。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
         {
           "key": "2014D",
           "index": "D",
@@ -45458,11 +45532,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1400,
           "problemUrl": "https://codeforces.com/contest/2014/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/134210",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "数据结构",
           "secondaryTopics": [
-            "数据结构",
-            "博弈",
-            "几何"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "brute force",
@@ -45470,12 +45542,130 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Robert Hood and Mrs Hood；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n$ 天、每次持续 $d$ 天的访问，以及 $k$ 个覆盖区间形式的工作。分别为兄弟和母亲选择合法起点，使访问区间相交的不同工作数分别最大和最小；若有多个起点满足要求，均取最早起点。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "2014E",
+          "index": "E",
+          "slot": "E",
+          "title": "Rendez-vous de Marian et Robin",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2014/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/134210",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dfs and similar",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个无向带权图，Marian 从顶点 $1$、Robin 从顶点 $n$ 同时出发；部分顶点有马，抵达后可立即骑马，之后所有边的通行时间减半，也可以在顶点等待。两人必须在同一顶点会合，求最早会合时间；若两端不连通则输出 $-1$。",
+          "transformedStatement": "把每个人到各顶点的路线建模为两层最短路状态：尚未获得马匹时按原权值通行，获得马匹后永久按半权值通行；有马顶点提供从前一状态到后一状态的零代价转换。会合则转化为枚举顶点并最小化两侧最短时间的最大值。",
+          "keyObservations": [
+            "由于两人可以在任意顶点等待，固定会合点 $v$ 后，最早会合时间等于两人到达 $v$ 的最短时间中的较大值，即 $\\max(d_1[v],d_n[v])$。",
+            "马匹不会因被另一人使用而产生竞争，因此可以分别独立计算两人的路线；同一马匹位置对两人的最短路都可使用。",
+            "对单个人维护“尚未骑马”和“已经骑马”两种状态：到达有马顶点后可零时间切换到骑马状态，之后所有边的代价减半；这使问题能够用带状态的 Dijkstra 求解。",
+            "分别从顶点 $1$ 和顶点 $n$ 计算各点的最短到达时间，再枚举会合点取 $\\min_v\\max(d_1[v],d_n[v])$；若两端无法连通则不存在可行会合点。"
+          ],
+          "solutionBrief": "将每个人的路径扩展为“未骑马/已骑马”两层状态，在有马顶点免费切换状态，并用 Dijkstra 求各点最短时间。枚举会合点，取两人到达时间较大值的最小值。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "2014F",
+          "index": "F",
+          "slot": "F",
+          "title": "Sheriff's Defense",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/2014/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/134210",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，每个营地有初始金币。可以强化任意营地；强化一个营地会从它的每个相邻营地各扣除 $c$ 金币，但强化营地本身的金币不变。袭击后只有被强化的营地保留，要求最大化这些存活营地的最终金币总和。",
+          "transformedStatement": "选择一个营地集合 $S$ 作为强化集合：每个被选点贡献其初始金币，每条两端都被选中的边因双方互相扣款而产生 $2c$ 的总惩罚；问题变为在树上最大化该集合得分。以子树根是否属于 $S$ 作为 DP 状态。",
+          "keyObservations": [
+            "把强化营地集合记为 $S$ 后，目标等价于保留 $S$ 中初始金币之和，并为每条两端都在 $S$ 的边付出 $2c$。",
+            "非强化营地的金币不会计入答案，因此强化营地与非强化营地之间的扣款无需计入目标，代价只在选中边上产生。",
+            "以树根为界定义“当前点不强化”和“当前点强化”两种状态；子树之间只通过父子边相互影响，可独立合并。",
+            "若当前点强化，选中的子节点会使这条边贡献 $-2c$；因此转移为 $dp_1[u]=a_u+\\sum\\max(dp_0[v],dp_1[v]-2c)$，未强化时为 $dp_0[u]=\\sum\\max(dp_0[v],dp_1[v])$。"
+          ],
+          "solutionBrief": "将强化集合转化为树上的带点权选点问题：选点获得 $a_u$，两端都选中的边产生 $2c$ 惩罚。以任意点为根做后序树形 DP，维护根节点是否强化的两种最优值并按上述转移合并子树，根部两状态取最大值。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "2014G",
+          "index": "G",
+          "slot": "G",
+          "title": "Milky Days",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/2014/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/134210",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给出按日期获得的多批牛奶，每批只能在获得日到之后 $k-1$ 天饮用。每天优先喝最新鲜的可饮用牛奶，最多喝 $m$ 品脱；若当天至少喝到 $m$ 品脱，就计为满足日，求满足日总数。",
+          "transformedStatement": "把过程抽象为按日期维护一组未过期库存，并始终优先消耗日期最新的库存。最新批次充足时可把连续若干天合并处理，直到遇到新货、该批耗尽或保质期结束；不足时再细粒度补足当天需求。",
+          "keyObservations": [
+            "每天先删除已过期牛奶，再加入当天获得的牛奶；按新鲜度从高到低饮用，因此新牛奶未耗尽前不会触碰更旧库存。",
+            "若当前最新一批牛奶数量不少于 $m$，可以连续按每天 $m$ 品脱饮用；连续天数受下一次进货、当前批次耗尽和保质期结束三者共同限制。",
+            "若最新一批不足 $m$，必须逐批从最新到最旧补足当天饮用量；这样既能处理不满足日，也能在库存耗尽时推进到下一天。"
+          ],
+          "solutionBrief": "按日期推进，用映射维护仍可饮用的各批牛奶。每天清除过期批次并加入新货；最新批不足 $m$ 时逐批消耗，达到 $m$ 后计数，否则进入下一天；最新批足够时按三种限制一次跳过多天并扣除消耗量。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "2014H",
+          "index": "H",
+          "slot": "H",
+          "title": "Robin Hood Archery",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/2014/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/134210",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "字符串"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "greedy",
+            "hashing"
+          ],
+          "statementBrief": "有一排带分值的目标，Robin 先手，双方每回合从尚未被射中的目标中任选一个并获得其分值，目标随后消失，直到全部被射中。对每个区间 $[l,r]$，只保留其中目标并按最优策略进行游戏，判断 Sheriff 是否能够不输，即获胜或平局。",
+          "transformedStatement": "把每个查询区间看成一个分值多重集合：最优取法等价于按分值降序后 Robin 取奇数位、Sheriff 取偶数位。于是查询转化为判断区间内每个分值的出现次数是否都为偶数。",
+          "keyObservations": [
+            "双方都会优先选择当前剩余目标中的最高分，因此将区间分数降序排列后，Robin 取得奇数位，Sheriff 取得偶数位。",
+            "降序序列满足 $B_{2k-1}\\ge B_{2k}$，所以每一对中 Robin 的得分不低于 Sheriff，Sheriff 不可能获胜。",
+            "Sheriff 不输当且仅当最终平局；平局等价于目标数量为偶数且每对相邻分数相等，也等价于区间内每种分值出现次数都是偶数。",
+            "为判断区间内各分值出现次数的奇偶性，可为每种分值分配随机哈希并做前缀异或；区间哈希为零即可判定所有频次为偶数，但存在随机哈希碰撞风险。"
+          ],
+          "solutionBrief": "证明双方都会拿当前最大分后，将区间排序可知 Robin 按奇数位取数，Sheriff 按偶数位取数，因此 Sheriff 只能平局或落败。平局当且仅当每种分值出现偶数次；为处理区间查询，给分值分配随机哈希，用前缀异或判断区间哈希是否为零。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
         }
       ]
     },
