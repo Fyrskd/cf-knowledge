@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 1879,
+    "total_problems": 1886,
     "source_total_problems": 1886,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 1879,
-    "with_editorial_brief": 1637,
-    "with_solution_brief": 1638,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 1886,
+    "with_editorial_brief": 1644,
+    "with_solution_brief": 1645,
     "missing_editorial_brief": 241,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 820,
+    "ai_override_count": 827,
     "primary_topic_count": 13,
-    "contest_count": 297,
+    "contest_count": 298,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,11 +45,11 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 80,
-    "构造与贪心": 632,
+    "构造与贪心": 638,
     "图论与网络流": 116,
     "动态规划与状态设计": 178,
     "数论与同余": 177,
-    "组合计数与概率": 144,
+    "组合计数与概率": 145,
     "数据结构": 155,
     "几何": 40,
     "树结构": 121,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 66
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 713,
+    "ai_generated_with_editorial": 720,
     "ai_generated_partial_editorial": 33,
     "missing_editorial": 241,
     "manual_override": 891,
@@ -9576,6 +9576,213 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "关键观察：匹配交换把移动范围限制为 1。把树定根后，f[u][x] 表示 u 最后拿到原来在 x 的徽章时，u 子树内能贡献的最大收益；x 只需枚举 u、父亲、儿子，转移时扣掉被强制交换儿子的独立最优值。",
           "extractionStatus": "manual_override",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2218,
+      "name": "Codeforces Round 1090 (Div. 4)",
+      "date": "2026-04-04",
+      "url": "https://codeforces.com/contest/2218",
+      "type": "Div. 4",
+      "problemCount": 7,
+      "maxRating": 1800,
+      "problems": [
+        {
+          "key": "2218A",
+          "index": "A",
+          "slot": "A",
+          "title": "The 67th Integer Problem",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2218/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/152680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "games",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定整数 $x$，每个测试用例需选择一个范围在 $[-67,67]$ 内的整数 $y$，使 $\\min(x,y)$ 尽可能大；存在多个最优答案时任选其一。",
+          "transformedStatement": "把目标函数按 $y<x$ 与 $y\\ge x$ 分段：前者的值随 $y$ 增大，后者恒为 $x$。因此问题转化为在合法范围内找一个不小于 $x$ 的 $y$，固定取上界 $67$ 即可。",
+          "keyObservations": [
+            "固定 $x$ 后，若 $y\\ge x$，则 $\\min(x,y)=x$；若 $y<x$，结果等于 $y$，因此最大值不可能超过 $x$。",
+            "只要选择满足 $y\\ge x$ 的合法整数，就能达到最大值 $x$；由于 $x\\le67$，固定输出 $y=67$ 对所有测试均有效。",
+            "不能直接输出 $x+1$，因为当 $x=67$ 时会得到不合法的 $68$，而固定选择上界 $67$ 可避免越界。"
+          ],
+          "solutionBrief": "对每个测试用例直接输出 $67$。因为输入满足 $x\\le67$，有 $67\\ge x$，所以 $\\min(x,67)=x$，这是该表达式能达到的最大值，且输出始终合法。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2218B",
+          "index": "B",
+          "slot": "B",
+          "title": "The 67th 6-7 Integer Problem",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2218/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/152680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "每组给出 7 个整数，必须恰好选择其中 6 个乘以 $-1$，剩下 1 个保持不变。要求在所有选择方式中，求这 7 个数取反后的最大总和。",
+          "transformedStatement": "将操作改写为先把全部 7 个数取反，再任选 1 个数恢复原符号；恢复 $a_i$ 时总和变为 $-\\sum a_j+2a_i$，所以问题转化为寻找最大元素。",
+          "keyObservations": [
+            "把恰好取反 6 个数等价于先取反全部 7 个数，再把其中 1 个恢复原符号，从而只需决定恢复哪个数。",
+            "若恢复 $a_i$，最终和为 $-\\sum a_j+2a_i$；前一项固定，所以应选择最大的 $a_i$，答案为 $2\\max(a_i)-\\sum a_i$。"
+          ],
+          "solutionBrief": "先将 7 个数全部取反，再选择一个数再次取反。最终和为 $-\\sum a_i+2a_i$，因此选择最大值对应的数，输出 $2\\max(a_i)-\\sum a_i$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2218C",
+          "index": "C",
+          "slot": "C",
+          "title": "The 67th Permutation Problem",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/2218/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/152680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定整数 $n$，要把 $1$ 到 $3n$ 排成一个排列，并按顺序每三个数分成一组。每组取三个数排序后的中间值，要求最大化所有 $n$ 组中位数之和，任意达到最大值的排列均可输出。",
+          "transformedStatement": "把排列视为 $n$ 个无序三元组：每组选择一个中位数，并为它配一个更小值和一个更大值。问题转化为让所有中位数尽量大，同时满足每个中位数都必须独占一个更大的配对元素。",
+          "keyObservations": [
+            "每个三元组只需区分最小值、中位数和最大值；将当前最小的未用数放在最小位置、最大的未用两个数作为另外两项，就能让其中一个中位数尽可能大。",
+            "按从大到小排列中位数，若某个中位数是第 $k$ 个较小的中位数，则至少需要 $2k-1$ 个更大的元素，因此有 $m_{n-k+1}\\le 3n-2k+1$。",
+            "构造中第 $i$ 个三元组为 $(i,3n-2i+1,3n-2i+2)$，其中位数恰好达到上述上界；所有三元组还正好覆盖 $1$ 到 $3n$，所以总和最优。"
+          ],
+          "solutionBrief": "对每个 $i=1,2,\\ldots,n$ 输出三元组 $(i,3n-2i+1,3n-2i+2)$。其中位数依次达到由“大于它的元素数量”推出的逐项上界，因此总和最大，且这些三元组组成一个合法排列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2218D",
+          "index": "D",
+          "slot": "D",
+          "title": "The 67th OEIS Problem",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2218/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/152680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定整数 $n$，构造一个长度为 $n$ 的正整数序列，要求每一对相邻元素的最大公约数在所有相邻位置上都互不相同，并满足每个元素不超过 $10^{18}$。",
+          "transformedStatement": "先构造 $n+1$ 个辅助数 $b_i$，令相邻辅助数的乘积成为数组元素；这样第 $i$ 个相邻最大公约数可写成 $b_{i+1}\\gcd(b_i,b_{i+2})$，问题转化为让后一因子恒为 $1$ 且中间辅助数各不相同。",
+          "keyObservations": [
+            "将长度为 $n+1$ 的辅助序列设为 $b_1,\u0002dots,b_{n+1}$，并令 $a_i=b_i b_{i+1}$，即可把相邻元素的最大公约数结构化为辅助数。",
+            "由 $a_i=b_i b_{i+1}$ 可得 $\\gcd(a_i,a_{i+1})=b_{i+1}\\cdot\\gcd(b_i,b_{i+2})$；若后一个因子恒为 $1$，相邻最大公约数就直接由互不相同的 $b_{i+1}$ 区分。",
+            "取 $b_i=2i-1$，则 $b_i$ 与 $b_{i+2}$ 相差 $4$ 且均为奇数，所以 $\\gcd(b_i,b_{i+2})=\\gcd(x,x+4)=1$，最终第 $i$ 条边的最大公约数为 $2i+1$，必然互不相同。"
+          ],
+          "solutionBrief": "取 $b_i=2i-1$，输出 $a_i=b_i b_{i+1}=(2i-1)(2i+1)$。相邻元素的最大公约数为 $2i+1$，随 $i$ 严格递增，因此满足条件。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2218E",
+          "index": "E",
+          "slot": "E",
+          "title": "The 67th XOR Problem",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/2218/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/152680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force"
+          ],
+          "statementBrief": "给定一个含 $n$ 个非负整数的数组，恰好进行 $n-1$ 次操作：选择当前元素 $x$，将所有元素都与 $x$ 异或，再删除被选元素。要求通过最优操作顺序，使最后剩下的一个元素最大。",
+          "transformedStatement": "操作过程等价于从原数组中选择两个不同元素：一个作为最后一次被选中的元素，另一个始终不被删除；最终答案就是这两个元素的异或值，因此问题转化为求最大元素对异或值。",
+          "keyObservations": [
+            "连续执行两次操作时，第一次选中元素的影响会因 $x\\oplus x=0$ 被完全抵消，因此第二次操作后的数组与第一次选择无关。",
+            "将上述抵消关系递推到整个过程，所有较早的选择都不影响最终结果；最终值只由最后一次被选中的元素和始终未被选中的元素决定。",
+            "若这两个原数组元素分别为 $a_x$ 与 $a_y$，最终剩余值等于 $a_x\\oplus a_y$，所以原问题等价于求所有不同下标元素对的最大异或值。",
+            "$n$ 较小且所有无序元素对都可直接检查，枚举每对并取异或最大值即可覆盖所有可能的最终结果。"
+          ],
+          "solutionBrief": "利用异或自反性证明：操作顺序中除最后一次选择外的选择都会相互抵消，最终值恰为一个被选元素与一个未选元素的异或。于是枚举所有下标对，取 $a_i\\oplus a_j$ 的最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2218F",
+          "index": "F",
+          "slot": "F",
+          "title": "The 67th Tree Problem",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/2218/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/152680",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定两个整数 $x,y$，需要构造一棵以节点 $1$ 为根、共有 $x+y$ 个节点的树，使恰好 $x$ 个节点的子树大小为偶数、$y$ 个节点的子树大小为奇数；若无法构造则输出 NO，否则输出全部边。",
+          "transformedStatement": "把根的子树奇偶性先固定下来，再只安排其余节点的奇偶计数。题解将树重构为一条从根出发的主链，并把多余节点挂在链末端，使链上子树大小连续变化，从而控制偶数子树的数量。",
+          "keyObservations": [
+            "根的子树大小固定为 $n=x+y$，因此当 $n$ 为偶数时必须计入一个偶数点，当 $n$ 为奇数时必须计入一个奇数点；特别地，$n$ 为偶数且 $x=0$ 时必无解。",
+            "除根外，每个子树大小为偶数的顶点都至少有一个子树大小为奇数的孩子，否则其子树大小会变成“偶数之和加一”的奇数，因此偶数点数不能超过奇数点数，等价于 $x\\leq\\lfloor n/2\\rfloor$。",
+            "所有满足条件的情况都能用一条主链实现：令链长为 $m=2x+((y-x)\\bmod 2)$，再把剩余顶点全部接到链末端，沿链的子树大小奇偶性即可精确产生 $x$ 个偶数子树。"
+          ],
+          "solutionBrief": "令 $n=x+y$。若 $n$ 为偶数且 $x=0$，或 $x>\\lfloor n/2\\rfloor$，输出 NO；否则取 $m=2x+((y-x)\\bmod 2)$，建立链 $1-2-\\cdots-m$，并将其余顶点全部连接到顶点 $m$，即可得到恰好 $x$ 个偶数子树。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2218G",
+          "index": "G",
+          "slot": "G",
+          "title": "The 67th Iteration of \"Counting is Fun\"",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2218/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/152680",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $b$，其中每个时刻 $0$ 到 $m-1$ 都出现。统计数组 $a$ 的数量：$a_i=0$ 的人立即坐下，其他人仅在已有至少 $a_i$ 人坐下且至少一个相邻人已坐下时坐下，并要求每个人的坐下时刻恰为 $b_i$。",
+          "transformedStatement": "把 $b_i$ 视为每个人的目标坐下时刻，先由它统计每个时刻及此前已坐下人数；固定这些人数后，各个 $a_i$ 的可选范围彼此独立，只需根据最早邻居时刻分类并连乘。",
+          "keyObservations": [
+            "若 $b_i=0$，该人必须取 $a_i=0$，因此不会产生多个选择。",
+            "对 $b_i>0$，设相邻人最早在时刻 $s$ 坐下；若 $b_i<s+1$，邻居条件无法及时满足，答案直接为 $0$。",
+            "若 $b_i=s+1$，只需让人数条件在该时刻满足，$a_i$ 有 $c_{b_i-1}$ 种；若 $b_i>s+1$，还必须避免提前坐下，选择数为 $c_{b_i-1}-c_{b_i-2}=cnt_{b_i-1}$。",
+            "每个人的 $a_i$ 只受由固定数组 $b$ 决定的累计人数约束，因此各位置独立计数，最终将所有选择数相乘。"
+          ],
+          "solutionBrief": "统计各时刻人数及前缀人数。逐人找最早邻居时刻，按其与 $b_i$ 的差值乘入对应选择数；遇到无法满足邻居条件的位置则答案为 $0$，全程对 $676767677$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
