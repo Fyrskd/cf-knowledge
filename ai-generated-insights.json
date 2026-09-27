@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T10:01:30+00:00",
+  "updated_at": "2026-09-27T10:06:50+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -50562,6 +50562,242 @@
           "missing_editorial",
           "statement_only"
         ]
+      }
+    },
+    "1846G": {
+      "problem_key": "1846G",
+      "title": "Rudolf and CodeVid-23",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1846/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/118044",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ac307bcdda0c55158a678ceb6b9ce648678c5f137241a9ab0c23df6b6c0a3801",
+      "generated_at": "2026-09-27T10:04:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 种症状和 $m$ 种药物，初始症状由二进制串给出。每次只能服用一种药，药物经过指定天数后会消除部分症状并产生副作用；可按任意顺序重复用药，求消除全部症状的最少天数，无法做到则输出 $-1$。",
+        "transformed_statement": "将症状集合编码成二进制状态，把每种药物看成从一个状态到另一个状态的带权转移，构成 $2^n$ 个节点的有向图；问题等价于求初始状态到全零状态的最短路。",
+        "key_observations": [
+          "把当前症状集合压缩为长度为 $n$ 的二进制状态，所有可能状态仅有 $2^n$ 个，从而把连续用药过程转成有限状态图上的路径问题。",
+          "使用一种药后，当前状态先删去药物能消除的症状，再加入副作用产生的症状，即转移为 $s'=(s\\ \\&\\ \\sim remove)\\ |\\ sideEffect$，因此每种药对应一条带权状态转移。",
+          "每次只能同时服用一种药，所以任意合法用药序列恰好对应状态图中的一条路径，路径总权值就是累计用药天数。",
+          "所有药物耗时均为正，故从初始状态到全零状态的最短路就是最少治疗天数；若全零状态不可达则答案为 $-1$。"
+        ],
+        "solution_brief": "枚举 $2^n$ 个症状状态，建立每种药物产生的带权转移；从初始状态运行 Dijkstra，到达全零状态时输出最短距离，否则输出 $-1$。复杂度为 $O(nm2^n)$。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 及 tags 中的 bitmasks、graphs、shortest paths、dp。",
+        "quality_flags": []
+      }
+    },
+    "1846F": {
+      "problem_key": "1846F",
+      "title": "Rudolph and Mimic",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1846/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/118044",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3b582e060365af13dfeed6efa4d998a869f1e46065e30a9fbaa8b04a18a790d7",
+      "generated_at": "2026-09-27T10:05:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "房间中有 $n$ 个物体，其中一个是能变成任意类型的拟态生物。每轮先观察所有物体类型；可以直接猜测，或删除任意数量的物体后离开，期间物体会重排且拟态生物可变形，但同一外观不能连续保持超过两轮。要求最多五轮确定拟态生物的位置。",
+        "transformed_statement": "把每轮房间状态压缩为各类型的数量向量：在未删除物体时，某类数量的新增对应拟态生物变成该类。随后只保留该类物体，将问题转化为在同型集合中等待拟态生物被迫变形并定位。",
+        "key_observations": [
+          "在不删除物体的连续观察中，某类型数量增加只能由拟态生物变成该类型造成，因此增加的类型就是筛选目标。",
+          "一旦发现数量增加，就删除所有其他类型的物体；剩余物体类型全部相同，使拟态生物若继续伪装则只能处于这一类。",
+          "拟态生物不能连续三阶段保持同一外观，所以在全体物体同型的阶段后，至多再经历两轮就会被迫变形，从而能唯一定位。",
+          "最坏情况下前两轮不删除并等待强制变形，第三轮筛选；若筛选后仍未变形，则第五轮必能识别。"
+        ],
+        "solution_brief": "记录每种类型的数量，前两轮不删除以观察数量变化；发现某类型数量增加后，删除其他类型。此后所有物体同型，利用拟态生物最多连续两阶段保持同一外观的限制，在不超过第五轮时确定其位置。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 interactive、constructive algorithms、implementation 标签。",
+        "quality_flags": []
+      }
+    },
+    "1846E2": {
+      "problem_key": "1846E2",
+      "title": "Rudolf and Snowflakes (hard version)",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1846/problem/E2",
+      "editorial_url": "https://codeforces.com/blog/entry/118044",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a4ca66b55360be8a2cefc256bd6508107d2ceec62d6f6e94f9b655512ff82701",
+      "generated_at": "2026-09-27T10:05:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "从一个顶点开始，选择某个 $k>1$：先让根连接 $k$ 个新顶点，再至少一次把当前所有叶子各连接到 $k$ 个新顶点。给定 $n$，判断能否通过这种分层扩展恰好得到 $n$ 个顶点。",
+        "transformed_statement": "把每层扩展抽象为 $k$ 叉树；若最终有 $p+1$ 层，顶点数等价于几何级数 $1+k+k^2+\\cdots+k^p$，其中 $p\\ge2$。问题转化为判断 $n$ 是否属于某个 $k>1$ 的这些级数值。",
+        "key_observations": [
+          "雪花每层都把当前叶子扩展为 $k$ 个新顶点，因此顶点总数必为 $1+k+k^2+\u00130+\u001ek^p$，且至少包含三层，即 $p\\ge2$。",
+          "当 $p\\ge3$ 时，$1+k+k^2+k^3\\le10^{18}$ 迫使 $k$ 不超过约 $10^6$，所以可以枚举所有可能的 $k$ 并生成后续幂次和。",
+          "指数满足 $p\\le63$，因此枚举每个 $k$ 时只需不断乘以 $k$ 累加，超过 $10^{18}$ 即停止，所有结果放入集合去重。",
+          "$p=2$ 时不能依赖上述有限的 $k$ 枚举，可直接判断方程 $k^2+k+1=n$ 是否存在满足 $k>1$ 的整数根。"
+        ],
+        "solution_brief": "预处理所有 $p\\ge3$ 的几何级数和：枚举 $2\\le k\\le10^6$，逐项生成不超过 $10^{18}$ 的结果并存入集合。查询时先查集合；若未命中，再判断 $k^2+k+1=n$ 是否有整数根且 $k>1$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 及 tags 中的数学和枚举信息整理。",
+        "quality_flags": []
+      }
+    },
+    "1846E1": {
+      "problem_key": "1846E1",
+      "title": "Rudolf and Snowflakes (simple version)",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1846/problem/E1",
+      "editorial_url": "https://codeforces.com/blog/entry/118044",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a0ca0dacf1cb65281af269ab7b0b4c8d8c5c8ba820b7ed9f6966ff1cda159c39",
+      "generated_at": "2026-09-27T10:05:51+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "从一个顶点开始，选择某个 $k>1$，先连接出 $k$ 个新顶点；之后每次把当前所有只连接一个顶点的叶子各连接到 $k$ 个新顶点，并至少再进行一次扩展。给定 $n$，判断能否通过某个 $k$ 构造出恰好含 $n$ 个顶点的雪花。",
+        "transformed_statement": "把雪花按从根到叶的层数建模：每层顶点数依次为 $1,k,k^2,\\ldots,k^p$，所以问题等价于判断 $n$ 是否能表示为 $1+k+k^2+\\cdots+k^p$，其中 $k>1$ 且 $p\\ge2$。",
+        "key_observations": [
+          "雪花每增加一层就把当前所有叶子各连接 $k$ 个新顶点，因此深度为 $p$ 时顶点总数必为等比和 $1+k+k^2+\\cdots+k^p$。",
+          "题目要求至少进行一次叶子扩展，且初始顶点也算一层，所以合法总数从 $1+k+k^2$ 开始，而不是仅检查 $1+k$。",
+          "由于 $n\\le 10^6$，只需枚举 $2\\le k\\le 10^6$，逐项生成不超过上限的等比和；把所有结果预处理成可查询集合即可。",
+          "对固定的 $k$，后续等比和严格递增，超过 $10^6$ 后无需继续生成；因此每个测试只需判断 $n$ 是否被预处理标记。"
+        ],
+        "solution_brief": "预处理所有 $2\\le k\\le10^6$ 的等比和 $1+k+k^2+\\cdots+k^p$，仅记录从 $p=2$ 开始且不超过 $10^6$ 的值。每个测试直接查询对应标记，存在则输出 YES，否则输出 NO。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的雪花构造规则、editorial_text 的等比和枚举方法，以及 tags 中的 brute force、implementation、math。",
+        "quality_flags": []
+      }
+    },
+    "1846D": {
+      "problem_key": "1846D",
+      "title": "Rudolph and Christmas Tree",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1846/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/118044",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7891bd4a35ef90cab68149c11288b033e917b24b85138a7480873c1195e66a73",
+      "generated_at": "2026-09-27T10:06:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干个共用竖直中轴、底边水平的等腰三角形树枝，第 $i$ 个三角形底边位于高度 $y_i$，底长为 $d$、高为 $h$；三角形可相互重叠。求所有树枝图形并集的总面积。",
+        "transformed_statement": "将图形看成按底边高度排序的同轴三角形并集：第 $i$ 个三角形只计算从 $y_i$ 到下一底边之间未被覆盖的下部，重叠时该部分是由相似三角形确定上底的梯形。",
+        "key_observations": [
+          "按底边高度从低到高处理时，第 $i$ 个三角形在下一条底边以下的部分一定不会被更高三角形覆盖，可作为本轮新增面积。",
+          "若相邻底边高度差至少为 $h$，两个三角形不相交，第 $i$ 个三角形贡献完整面积 $\\frac{dh}{2}$。",
+          "若高度差为 $h'<h$，被保留部分是高为 $h'$ 的梯形；由相似三角形，其上底为 $d\\frac{h-h'}{h}$，面积为 $h'\\frac{d+d(h-h')/h}{2}$。",
+          "每个三角形只需结合下一个底边高度计算一次贡献，最后一个三角形直接计入完整面积，因此总处理量为 $O(n)$。"
+        ],
+        "solution_brief": "按 $y_i$ 升序扫描。令相邻底边高度差为 $h'$；取 $h'=\\min(h,y_{i+1}-y_i)$，用相似三角形求截面上底并计算梯形面积，最后一个三角形加入 $\\frac{dh}{2}$。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "代数、矩阵与多项式"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，以及 tags 中的 geometry 和 math。",
+        "quality_flags": []
+      }
+    },
+    "1846C": {
+      "problem_key": "1846C",
+      "title": "Rudolf and the Another Competition",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1846/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/118044",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9262eba50260ac13fc2d332c12598a2b5ac486af4559e0a14cf231a0e8192a34",
+      "generated_at": "2026-09-27T10:06:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "共有 $n$ 名选手和 $m$ 道题，比赛持续 $h$ 分钟；每名选手可自行安排做题顺序，完成一道题获得 1 分，并把完成时刻计入罚时，超过比赛时间的题不能完成。每名选手都采用最优顺序，要求确定 Rudolf 的最终名次；得分高者优先，得分相同则罚时少者优先，完全相同则 Rudolf 优先。",
+        "transformed_statement": "把每名选手的决策独立看成单机排程：先最大化截止时间 $h$ 前完成的任务数，再在完成数相同的方案中最小化所有完成时刻之和。该双目标排程等价于按处理时间升序排列，再取不超过 $h$ 的最长前缀。",
+        "key_observations": [
+          "对同一名选手，按解题时间升序完成题目能得到最多题数：任意较长题目放在较短题目前只会更早耗尽比赛时间，不会增加完成数。",
+          "在完成题数固定时，升序安排使总罚时最小，因为第 $k$ 道题的耗时会被计入后续未完成题目的累计时间，较长耗时应尽量放在序列末端。",
+          "排序后只需依次累加耗时，累计时间不超过 $h$ 的前缀就是完成题目集合；该前缀长度和累计前缀和分别给出得分与罚时。",
+          "Rudolf 的名次等于 $1$ 加上所有得分更高，或得分相同但罚时更低的选手数量；得分和罚时都相同的选手不超过 Rudolf。"
+        ],
+        "solution_brief": "对每位选手独立排序其解题时间，按升序模拟并统计累计时间不超过 $h$ 的题目数及罚时。再按得分优先、罚时次优的排名规则统计严格领先 Rudolf 的人数，答案为该人数加一，复杂度为 $O(nm\\log m)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "组合计数与概率"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的竞赛计分与排名规则，以及 editorial 中关于升序解题顺序、前缀模拟和复杂度的完整说明。",
+        "quality_flags": []
+      }
+    },
+    "1846B": {
+      "problem_key": "1846B",
+      "title": "Rudolph and Tic-Tac-Toe",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1846/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/118044",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5e57df9b9dbe464f0738ca0e0deed2d70c584fb82646297fe878d6c88f31e1d1",
+      "generated_at": "2026-09-27T10:06:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个已经结束的 $3\\times3$ 三人井字棋棋盘，格子可能是 `X`、`O`、`+` 或空位 `.`。若某位玩家在横、竖或对角线上占据连续三个相同符号，则该玩家获胜；否则输出 `DRAW`。",
+        "transformed_statement": "把终局判定转化为检查固定的 8 个长度为 3 的线段：只要某条线的三个格子相等且符号不是 `.`，其符号就是答案；若所有线都不满足则为平局。",
+        "key_observations": [
+          "胜负只由 8 条三连线决定：3 行、3 列和 2 条对角线，因此无需模拟落子过程即可直接检查终局棋盘。",
+          "一条连线只有在三个字符完全相同且不是 `.` 时才代表获胜；全为空位的连线不能产生答案，避免把 `.` 误判为玩家符号。",
+          "题目保证不会有多个玩家同时获胜，所以找到任意有效连线即可输出其符号；同一玩家拥有多条连线也不影响结果。"
+        ],
+        "solution_brief": "枚举棋盘的 8 条横、竖、斜线，若某条线的三个字符相同且不是 `.`，就输出该字符；若没有有效连线则输出 `DRAW`。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的棋盘与胜负规则，以及 editorial_text 对 8 条连线检查方法和空位处理的说明；tags 仅作主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1846A": {
+      "problem_key": "1846A",
+      "title": "Rudolph and Cut the Rope ",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1846/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/118044",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1cfd040bf27e040bf699614f06c723487444f05172bf33a936ee3d18449935ff",
+      "generated_at": "2026-09-27T10:06:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "墙上有 $n$ 个高度不同的钉子，第 $i$ 个钉子距地面 $a_i$ 米，并系着长度为 $b_i$ 米的绳子；所有绳子的另一端共同系着糖果。每次可以剪断一根绳子，求让糖果落到地面所需剪断的最少绳子数。",
+        "transformed_statement": "将问题转化为逐根判断绳子能否从钉子高度延伸到地面：长度不足以覆盖高度的绳子必须删除，长度足够的绳子保留即可，因此答案是所有满足 $a_i>b_i$ 的绳子数量。",
+        "key_observations": [
+          "第 $i$ 根绳子只有在长度满足 $b_i\\ge a_i$ 时才能触及地面；若 $a_i>b_i$，它无论如何都无法到地面，必须被剪断。",
+          "各根绳子是否触地彼此独立，剪断一根不会改变其他绳子的长度或悬挂高度，因此最优答案恰好是满足 $a_i>b_i$ 的绳子数量。"
+        ],
+        "solution_brief": "逐根比较钉子高度与绳长，统计所有满足 $a_i>b_i$ 的绳子。它们无法触地且必须剪断，其余绳子无需操作，统计值即为最小剪绳数。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 与 editorial_text；tags 中的 implementation、math 仅作辅助分类。",
+        "quality_flags": []
       }
     }
   }
