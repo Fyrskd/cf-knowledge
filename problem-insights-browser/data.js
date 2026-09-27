@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2784,
+    "total_problems": 2790,
     "source_total_problems": 2790,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2784,
-    "with_editorial_brief": 2522,
-    "with_solution_brief": 2523,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2790,
+    "with_editorial_brief": 2528,
+    "with_solution_brief": 2529,
     "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1846,
+    "ai_override_count": 1852,
     "primary_topic_count": 13,
-    "contest_count": 424,
+    "contest_count": 425,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 872,
+    "构造与贪心": 874,
+    "基础实现与模拟": 164,
+    "组合计数与概率": 216,
+    "图论与网络流": 171,
     "数论与同余": 303,
     "数据结构": 260,
-    "组合计数与概率": 215,
-    "图论与网络流": 169,
     "代数、矩阵与多项式": 21,
     "字符串": 150,
     "动态规划与状态设计": 237,
     "几何": 68,
     "树结构": 145,
     "交互": 88,
-    "基础实现与模拟": 163,
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1576,
+    "ai_generated_with_editorial": 1582,
     "ai_generated_partial_editorial": 55,
     "missing_editorial": 261,
     "manual_override": 891,
@@ -86207,6 +86207,203 @@ window.CF_INSIGHTS_DATA = {
             "只需对较小的 $u$ 暴力计算 $P(u)$ 的值，再用多项式插值求出目标 $P(k)$，避免直接枚举全部 $k^n$ 个数组。"
           ],
           "solutionBrief": "固定位置和值 $t$，按左右两侧元素与 $t$ 的大小关系组合计数，得到该位置的贡献 $F(t)$。累加为多项式 $P(u)$，先暴力求足够多的小点值，再用多项式插值计算 $P(k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1763,
+      "name": "Codeforces Round 840 (Div. 2) and Enigma 2022 - Cybros LNMIIT",
+      "date": "2022-12-19",
+      "url": "https://codeforces.com/contest/1763",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1763A",
+          "index": "A",
+          "slot": "A",
+          "title": "Absolute Maximization",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1763/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/110278",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个非负整数数组，可以反复选择两个元素和一个二进制位，交换这两个元素在该位上的比特，也可以不操作。要求经过操作后，使数组最大值与最小值之差尽可能大。",
+          "transformedStatement": "把每个二进制位独立考虑：交换只是在元素之间搬运该位的 1。共同出现在所有元素中的位被最小值保留，至少出现在一个元素中的位可被最大值收集，因此目标转化为计算全数组按位与和按位或的差。",
+          "keyObservations": [
+            "对某一位而言，交换操作只能转移这一位的 1，不能改变该位在所有元素中的总数；因此全体元素都为 1 的位无法在最小值中清零。",
+            "最小元素的每一位都能在可能时变为 0，最终最小值等于全数组按位与，因为按位与恰好保留所有元素共同拥有的位。",
+            "最大元素的每一位都能在至少一个元素拥有该位时变为 1，最终最大值等于全数组按位或；因此答案是按位或减按位与。"
+          ],
+          "solutionBrief": "逐位分析交换操作：全体元素都含有的位无法从最小值中消除，数组中出现过的位可以集中到最大值中。因此计算所有元素的按位与和按位或，答案为 $OR-AND$，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1763B",
+          "index": "B",
+          "slot": "B",
+          "title": "Incinerate",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1763/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/110278",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "implementation",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个怪物，第 $i$ 个生命值为 $h_i$、攻击力为 $p_i$。每次若 $k>0$，Genos 对所有存活怪物同时造成 $k$ 点伤害；攻击后，当前最小攻击力的存活怪物会使下一次攻击力减少其 $p_i$。判断能否最终消灭全部怪物。",
+          "transformedStatement": "把所有怪物受到的同步伤害压缩为累计伤害 $D$，怪物仅在 $h_i>D$ 时存活；再按 $p_i$ 升序模拟当前最弱存活怪物对攻击力的持续削减。",
+          "keyObservations": [
+            "所有怪物每次同时受到相同伤害，因此只需维护累计总伤害 $D$；怪物是否存活等价于判断 $h_i>D$，无需逐次修改每个生命值。",
+            "按攻击力 $p$ 升序处理怪物时，当前仍满足 $h_i>D$ 的怪物就是当前最弱的存活怪物，因此后续每次攻击都应将 $k$ 减去该怪物的 $p_i$。",
+            "对当前怪物持续攻击直到 $D\\ge h_i$，再处理后续怪物；若攻击力在消灭所有怪物前降至非正数，则无法继续攻击，答案为 NO。"
+          ],
+          "solutionBrief": "将怪物按 $p$ 升序排列，维护累计伤害 $D$ 和当前攻击力 $k$。遇到仍存活的怪物时，反复令 $D\\leftarrow D+k$、$k\\leftarrow k-p_i$，直到其被消灭；若期间 $k\\le0$，输出 NO，否则全部处理完输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1763C",
+          "index": "C",
+          "slot": "C",
+          "title": "Another Array Problem",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1763/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/110278",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定正整数数组，每次可选择一个区间 $[l,r]$，把区间内所有元素都改成两端元素之差的绝对值 $|a_l-a_r|$，可操作任意次或不操作。求最终数组元素和的最大值。",
+          "transformedStatement": "把一次区间操作看成用端点差将整段压成同一个值；题解利用“同一区间操作两次变为零”构造全局最大值覆盖整个数组，并对 $n=2,3$ 单独枚举可达结果。",
+          "keyObservations": [
+            "同一段区间连续操作两次会把该区间全部变为 $0$，因此可以先清空指定端点附近的元素，再利用最大值制造整段相同的数。",
+            "当 $n\\ge 4$ 时，设全局最大值为 $mx$；先将一侧两个元素清零，再把包含 $mx$ 的区间变为 $mx$，最后清零另一侧两个元素并操作整个数组，能得到所有元素均为 $mx$。",
+            "当 $n=2$ 时，最优结果只有“不操作”得到 $a_1+a_2$，或操作后两项均为 $|a_1-a_2|$，故答案是二者最大值。",
+            "当 $n=3$ 时，只有区间 $(1,2),(2,3),(1,3)$；前两个区间至多各需尝试两次，枚举这些有限操作组合即可覆盖最优结果，等价公式为 $\\max(a_1+a_2+a_3,3a_1,3a_3,3|a_1-a_2|,3|a_3-a_2|)$。"
+          ],
+          "solutionBrief": "若 $n\\ge4$，答案恒为 $n\\cdot\\max(a)$，依据是先清零两端小区间，再逐步把所有位置变成全局最大值。$n=2$ 取原和与 $2|a_1-a_2|$ 的较大值；$n=3$ 直接使用有限情况公式。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1763D",
+          "index": "D",
+          "slot": "D",
+          "title": "Valid Bitonic Permutations",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1763/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/110278",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $1$ 到 $n$ 的排列，要求其先严格递增到某个内部峰值位置，再严格递减，并且固定位置 $i,j$ 的元素分别为 $x,y$。求满足条件的双调排列数量，结果对 $10^9+7$ 取模。",
+          "transformedStatement": "把峰值位置 $k$ 固定后，双调排列被拆成峰值左侧递增、右侧递减的唯一排序；再按相对 $x,y$ 的三个数值区间选择哪些元素落入各位置段，将计数转化为组合数乘积并对所有合法 $k$ 求和。",
+          "keyObservations": [
+            "当 $x>y$ 时，将排列反转并同步交换两个位置和值，可转化为 $x<y$ 的同一计数问题，减少讨论情况。",
+            "固定峰值位置 $k$ 后，$x<y$ 时只有 $k\u0005BGeq i+1$ 合法；峰值在 $(i,j)$ 或 $(j,n)$ 两段时，三类数值区间的选取彼此独立。",
+            "将剩余数按 $[1,x-1]$、$[x+1,y-1]$、$[y+1,n-1]$ 分组后，每段位置只需选择元素，排列顺序由单调性唯一确定，因此每个固定 $k$ 的方案数是组合数乘积。",
+            "当 $y=n$ 时峰值只能位于 $j$，不必枚举 $k$；若同时 $j=n$，峰值位置不满足题设范围，答案为 $0$。"
+          ],
+          "solutionBrief": "先通过反转统一为 $x<y$，再按峰值位置 $k$ 分两段枚举。每段用三个数值区间的组合数计算方案并求和；预处理阶乘及逆元，在模 $10^9+7$ 下快速计算组合数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1763E",
+          "index": "E",
+          "slot": "E",
+          "title": "Node Pairs",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1763/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/110278",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "dp",
+            "graphs",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定整数 $p$，要构造一个有向图，使满足 $u<v$ 且 $u,v$ 互相可达的节点对恰好有 $p$ 个。先求实现这一条件所需的最少节点数，再在节点数最少的所有图中，求单向可达节点对数量的最大值。",
+          "transformedStatement": "把图压缩成若干强连通分量：每个大小为 $s$ 的分量贡献 $\\binom{s}{2}$ 个互相可达对。问题转化为用若干三角数之和表示 $p$，最小化对应分量大小总和；跨分量按拓扑顺序定向即可最大化单向对数。",
+          "keyObservations": [
+            "两个节点互相可达当且仅当它们属于同一个强连通分量，因此大小为 $s$ 的分量恰好贡献 $\\binom{s}{2}$ 个目标节点对。",
+            "将强连通分量大小视为物品，令 $dp[x]$ 表示得到 $x$ 个互相可达节点对所需的最少节点数，则加入大小为 $s$ 的分量对应转移 $dp[x]=\\min(dp[x-\\binom{s}{2}]+s)$。",
+            "若最少使用 $n$ 个节点，最多有 $\\binom{n}{2}-p$ 个单向节点对；把各强连通分量按顺序排列，并让前分量所有节点指向后分量所有节点，即可使所有跨分量节点对都单向可达，达到该上界。"
+          ],
+          "solutionBrief": "按强连通分量拆分图，大小为 $s$ 的分量贡献 $\\binom{s}{2}$ 对。用 $dp$ 求构成 $p$ 的最少总节点数，答案第二项为 $\\binom{dp[p]}{2}-p$；转移复杂度为 $O(p\\sqrt p)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1763F",
+          "index": "F",
+          "slot": "F",
+          "title": "Edge Queries",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1763/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/110278",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一个满足题面条件的无向连通图。每次给出顶点 $a,b$，考虑所有属于某条简单 $a$ 到 $b$ 路径的边，统计删除该边后 $a,b$ 仍可互相到达的边数。",
+          "transformedStatement": "把图按双连通分量压缩：桥构成分量之间的树边，每个分量用一个虚点表示并携带其内部边数；查询等价于在原点—分量虚点构成的树上求路径权值和。",
+          "keyObservations": [
+            "题面条件下，图可压缩为由双连通分量通过桥连接成的树；桥删除后会断开端点，因此永远不会计入答案。",
+            "同一双连通分量内的所有边都可作为非桥贡献，故一个分量只需记录其内部边数，而不必保留内部具体结构。",
+            "将每个双连通分量增加一个虚点，并把分量内所有原点连到该虚点，虚点权值设为分量边数、原点权值设为 $0$，即可把查询转成树上路径权值和。",
+            "在这棵扩展树上，任意两点路径的权值和可用根到点前缀和与 LCA 表示为 $dp[u]+dp[v]-2dp[lca(u,v)]+val[lca(u,v)]$，从而统一处理路径经过分量的情况。"
+          ],
+          "solutionBrief": "先用 DFS 求双连通分量及其内部边数，构造原点与分量虚点组成的树；预处理根路径权值和及 LCA，每次查询用两点前缀和减去两倍 LCA 前缀和，并补上 LCA 点权。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
