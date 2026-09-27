@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2862,
+    "total_problems": 2869,
     "source_total_problems": 2869,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2862,
-    "with_editorial_brief": 2598,
-    "with_solution_brief": 2599,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2869,
+    "with_editorial_brief": 2605,
+    "with_solution_brief": 2606,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1924,
+    "ai_override_count": 1931,
     "primary_topic_count": 13,
-    "contest_count": 435,
+    "contest_count": 436,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 898,
+    "字符串": 153,
+    "数论与同余": 311,
+    "构造与贪心": 901,
     "组合计数与概率": 225,
     "图论与网络流": 176,
     "动态规划与状态设计": 242,
     "交互": 93,
     "基础实现与模拟": 172,
-    "字符串": 152,
-    "数论与同余": 308,
     "树结构": 147,
     "数据结构": 264,
     "几何": 69,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1650,
+    "ai_generated_with_editorial": 1657,
     "ai_generated_partial_editorial": 57,
     "missing_editorial": 263,
     "manual_override": 891,
@@ -88538,6 +88538,215 @@ window.CF_INSIGHTS_DATA = {
             "若抽样导致路径不含真实重心，则落在隐藏树重心某侧的样本数至多为 $M/3$；错误概率被 $\\sum_{i=0}^{M/3}C_M^i/2^M$ 控制，约为 $6\\times10^{-10}$。"
           ],
           "solutionBrief": "随机抽点构造虚树，利用其加权重心选出一对高概率经过真实重心的端点；再对所有顶点询问到两端距离，按距离差分组并扫描两侧大小确定重心。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1759,
+      "name": "Codeforces Round  834 (Div. 3)",
+      "date": "2022-11-18",
+      "url": "https://codeforces.com/contest/1759",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "1759A",
+          "index": "A",
+          "slot": "A",
+          "title": "Yes-Yes?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1759/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/109254",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定若干字符串，每个字符串是从无限重复的 `YesYesYes...` 中听到的一段连续子串。对每个字符串判断它是否确实能作为该重复串的子串，输出 `YES` 或 `NO`。",
+          "transformedStatement": "由于输入长度最多为 $50$，构造 18 个 `Yes` 拼成的长度为 $54$ 的字符串；任何可能的输入子串都能在其中找到，因此问题等价于判断输入是否出现在这个固定字符串中。",
+          "keyObservations": [
+            "目标串的周期是 `Yes`，因此只需判断输入是否能嵌入这个长度为 $3\\times18=54$ 的有限前缀；它覆盖所有 $|s|\\le50$ 的可能位置。",
+            "将“是否为无限重复串的子串”转化为“是否出现在固定字符串 `YesYes...Yes` 中”，即可直接使用字符串查找完成判定。"
+          ],
+          "solutionBrief": "预先构造包含 18 个 `Yes` 的字符串 `full`。对每个输入串使用子串查找：若 `s` 出现在 `full` 中输出 `YES`，否则输出 `NO`。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1759B",
+          "index": "B",
+          "slot": "B",
+          "title": "Lost Permutation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1759/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/109254",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定一个包含排列部分元素的数组 $b$，元素互不相同；可以追加若干未找到的数字，使最终数组成为包含 $1..n$ 各一次的排列，且追加数字之和必须为 $s$。判断是否存在这样的追加方案。",
+          "transformedStatement": "把已知元素之和与待追加总和合并为完整排列的总和 $T=s+\\sum b_i$，寻找满足 $n(n+1)/2=T$ 的排列长度，再检查已知元素是否都属于 $1..n$。",
+          "keyObservations": [
+            "设最终排列长度为 $n$，则必须满足 $n(n+1)/2=s+\\sum b_i$，因此长度由总和唯一决定，问题转为检查这个 $n$ 是否可行。",
+            "给定元素互不相同且都不超过 $n$ 时，它们必然是排列 $1..n$ 的子集；补入其余数字后，新增元素之和自动等于 $s$。",
+            "逐步累加 $1,2,\\dots$，找到第一个使三角数不小于目标总和的 $n$；只有三角数恰好相等且 $\\max(b)\\le n$、$m\\le n$ 时才可行。"
+          ],
+          "solutionBrief": "令目标总和为 $s+\\sum b_i$，递增计算三角数 $n(n+1)/2$，直到不小于目标。若恰好相等且所有已知数不超过 $n$、$m\\le n$，补入缺失数字即可，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1759C",
+          "index": "C",
+          "slot": "C",
+          "title": "Thermostat",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1759/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/109254",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "shortest paths"
+          ],
+          "statementBrief": "给定允许温度区间 $[l,r]$、最小变化量 $x$，以及初始温度 $a$ 和目标温度 $b$。每次可将温度改为区间内的任意值，但新旧温度差必须至少为 $x$；求到达 $b$ 的最少操作次数，无法到达则输出 $-1$。",
+          "transformedStatement": "把每个温度视为图中的状态，两个状态当且仅当温差至少为 $x$ 时相连，问题转化为从 $a$ 到 $b$ 的最短路。对两步中间状态而言，区间端点总能替代合适的内部状态，因此只需检查 $l、r$ 及其交替路径。",
+          "keyObservations": [
+            "若初温与目标温度相同，答案为 $0$；否则只要 $|a-b|\\ge x$，就能直接完成，答案为 $1$。",
+            "若存在一个中间温度同时满足与 $a、b$ 的距离都至少为 $x$，则两步可达；由于温度范围是连续区间，只需检查端点 $l$ 或 $r$。",
+            "若不能通过同一个端点两步到达，但路径 $a\\to l\\to r\\to b$ 或 $a\\to r\\to l\\to b$ 的每一步都合法，则答案为 $3$。",
+            "上述直接路径和端点路径都不存在时无法到达；按操作数从小到大判断即可得到最小答案。"
+          ],
+          "solutionBrief": "按 $0、1、2、3$ 步依次判断：先处理 $a=b$ 和直接移动，再检查经 $l$ 或 $r$ 的两步路径，最后检查两个端点交替的三步路径；都不满足则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1759D",
+          "index": "D",
+          "slot": "D",
+          "title": "Make It Round",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1759/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/109254",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $n,m$，选择整数 $k$（$1\\le k\\le m$）将价格变为 $n\\cdot k$。要求末尾零的数量最多；若数量相同，输出数值最大的结果。",
+          "transformedStatement": "把目标转化为在乘数上分配因子 $2$ 和 $5$，最大化 $n\\cdot k$ 中这两种质因子指数的较小值；先补齐不平衡的指数，再成对增加并最终取最大可行倍数。",
+          "keyObservations": [
+            "末尾零的数量等于 $\\min(v_2(nk),v_5(nk))$，因此只需调节乘数中 $2$ 和 $5$ 的因子，而无需枚举所有 $k$。",
+            "若 $2$ 的指数较小，就不断乘以 $2$；若 $5$ 的指数较小，就不断乘以 $5$，这是用最小乘数成本弥补差距并尽量增加末尾零。",
+            "两种质因子的指数相等后，只要预算允许就乘以 $10$，每次同时增加一个 $2$ 和一个 $5$，不会浪费可获得的末尾零。",
+            "当再乘以 $10$ 或补齐较小指数都超出 $m$ 时，令 $x=\\lfloor m/k\\rfloor$；此时不能再增加末尾零，取最大可行的 $x$ 可保证结果最大。"
+          ],
+          "solutionBrief": "分解 $n$ 中 $2$、$5$ 的指数，优先用对应质因子补齐较小指数；指数相等后尽量乘 $10$。无法增加末尾零时取 $x=\\lfloor m/k\\rfloor$，输出 $n\\cdot k\\cdot x$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1759E",
+          "index": "E",
+          "slot": "E",
+          "title": "The Humanoid",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1759/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/109254",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 名力量为 $a_i$ 的宇航员和初始力量 $h$，人形生物每次可以吸收一名宇航员，使力量增加 $\\lfloor a_i/2\\rfloor$，也可以使用一次绿色血清使力量翻倍或一次蓝色血清使力量变为三倍。两瓶绿色和一瓶蓝色各只能使用一次，求合理操作下最多能吸收多少名宇航员。",
+          "transformedStatement": "把宇航员按力量升序排列，并将问题转为三种固定血清使用顺序的线性模拟：蓝色血清分别放在三次血清使用中的第1、2或3位；当前无法继续吸收时使用下一瓶血清。",
+          "keyObservations": [
+            "若当前能吸收多个宇航员，先吸收力量较小者不会损失可行性，且吸收会增加自身力量，因此可按力量升序处理。",
+            "只要当前能吸收某名宇航员，立即吸收一定不劣于暂缓，因为吸收会移除目标并增加力量，不消耗血清。",
+            "两瓶绿色血清和一瓶蓝色血清的使用顺序只由蓝色血清位于第1、2或3次决定，因此只需枚举这三种顺序并模拟。",
+            "固定血清顺序后，遇到当前无法吸收的宇航员就使用下一瓶血清；若血清耗尽仍无法吸收，后续更强的宇航员也无法处理。"
+          ],
+          "solutionBrief": "将力量排序，分别枚举蓝色血清在三次使用中的位置。每种顺序中优先吸收当前可吸收的宇航员，卡住时使用下一瓶血清，取三种模拟结果的最大值；排序后模拟总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1759F",
+          "index": "F",
+          "slot": "F",
+          "title": "All Possible Digits",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1759/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/109254",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个以 $p$ 为底、由 $n$ 个数字组成的正整数。每次操作将该数加一，数字在黑板上随当前数变化并可记录曾出现过的数字；求让 $0$ 到 $p-1$ 的每个数字都至少出现一次所需的最少操作次数。",
+          "transformedStatement": "把前 $k$ 次加一中各位置出现过的数字拆开处理：个位形成模 $p$ 的循环区间，个位回绕时前缀只额外变为原前缀加一；判定这些数字是否覆盖全部 $p$ 个数字，并利用可行性的单调性二分 $k$。",
+          "keyObservations": [
+            "在不超过 $p-1$ 次加一中，个位依次经过一个模 $p$ 的循环区间，因此未被个位覆盖的数字至多分成两个区间。",
+            "个位最多只会回绕一次；发生回绕时，高位整体等价于把原前缀加一，只有原前缀和进位后的前缀可能补充新的数字。",
+            "操作次数越多，曾出现过的数字集合只会增加，因此可对答案二分，并用至多 $n+1$ 个前缀数字检查剩余区间是否被覆盖。"
+          ],
+          "solutionBrief": "对操作次数二分，判定个位在这段时间覆盖的循环区间；再检查其余数字是否出现在原前缀或个位回绕后加一得到的前缀中。由于最多经过 $p-1$ 次即可由个位覆盖全部数字，二分范围有限。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1759G",
+          "index": "G",
+          "slot": "G",
+          "title": "Restore the Permutation",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1759/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/109254",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定偶数长度排列按连续两个元素分组，并把每组的较大值组成数组 $b$。需要判断给定 $b$ 是否能由某个排列得到；若能，输出字典序最小的原排列，否则输出无解标记。",
+          "transformedStatement": "把每个 $b_i$ 看成必须与一个未出现在 $b$ 中、且小于它的数字组成二元组，并将这些伙伴分配问题按 $b$ 的下标从后往前贪心处理。每次取不超过 $b_i$ 的最大可用伙伴，最后按二元组顺序还原排列。",
+          "keyObservations": [
+            "每个 $b_i$ 必须是对应连续二元组的较大值，因此它必须与一个未出现在 $b$ 中且小于它的数配对；重复的 $b_i$ 立即说明无法来自一个排列。",
+            "为使排列字典序最小，每个配对中较小的伙伴应放在 $b_i$ 前面；将配对伙伴从后往前分配，可以把更小的可用数留给前面的二元组。",
+            "处理当前 $b_i$ 时选择所有未使用且小于 $b_i$ 的数中的最大值，既保证当前配对可行，也最大限度保留更小数字，从而得到字典序最小结果。",
+            "若某个 $b_i$ 没有可用的小于它的伙伴，则剩余数字无法完成配对，直接判定为无解。"
+          ],
+          "solutionBrief": "先检查 $b$ 是否有重复元素，并取出未出现在 $b$ 中的数字。按 $b$ 从后往前处理，每次选未使用且小于当前 $b_i$ 的最大数放在其前面；若不存在则输出 NO，否则输出构造出的排列。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
