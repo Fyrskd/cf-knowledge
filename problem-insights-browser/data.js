@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2770,
+    "total_problems": 2762,
     "source_total_problems": 2770,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 2770,
+    "filtered_out_problems": 8,
+    "with_statement_brief": 2762,
     "with_editorial_brief": 2500,
     "with_solution_brief": 2501,
-    "missing_editorial_brief": 269,
+    "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1832,
+    "ai_override_count": 1824,
     "primary_topic_count": 13,
-    "contest_count": 422,
+    "contest_count": 420,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,23 +45,23 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 150,
-    "构造与贪心": 867,
-    "图论与网络流": 169,
+    "构造与贪心": 864,
+    "图论与网络流": 168,
     "动态规划与状态设计": 236,
-    "数论与同余": 298,
+    "数论与同余": 297,
     "组合计数与概率": 211,
     "数据结构": 259,
     "几何": 68,
-    "树结构": 146,
+    "树结构": 145,
     "代数、矩阵与多项式": 20,
     "交互": 88,
-    "基础实现与模拟": 165,
+    "基础实现与模拟": 163,
     "博弈": 93
   },
   "statusCounts": {
     "ai_generated_with_editorial": 1554,
     "ai_generated_partial_editorial": 55,
-    "missing_editorial": 269,
+    "missing_editorial": 261,
     "manual_override": 891,
     "statement_derived": 1
   },
@@ -76,210 +76,6 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
-    {
-      "id": 2269,
-      "name": "Codeforces Round 1124 (Div. 2)",
-      "date": "2026-09-26",
-      "url": "https://codeforces.com/contest/2269",
-      "type": "Div. 2",
-      "problemCount": 2,
-      "maxRating": null,
-      "problems": [
-        {
-          "key": "2269A",
-          "index": "A",
-          "slot": "A",
-          "title": "SauSaGe Bank",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2269/problem/A",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "greedy",
-            "math"
-          ],
-          "statementBrief": "账户初始有 $1$ 美元，连续营业 $n$ 天。每天早晨余额翻倍，晚上可选择取出全部余额并将账户重置为 $1$，也可暂不取出；要求恰好在 $k$ 个不同日期取款，最大化第 $n$ 天结束时银行卡中的总金额。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2269B",
-          "index": "B",
-          "slot": "B",
-          "title": "KiaKio and Squared Numbers",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2269/problem/B",
-          "editorialUrl": "",
-          "primaryTopic": "基础实现与模拟",
-          "secondaryTopics": [],
-          "originalTags": [
-            "brute force",
-            "implementation"
-          ],
-          "statementBrief": "有 $n$ 座灯塔，第 $0$ 夜分别显示 $a_i$。之后每夜都把当前数字替换为其十进制各位数字平方和；若两座灯塔从某一夜起每夜都显示相同数字，则称它们合拍，求满足条件的下标对数量。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        }
-      ]
-    },
-    {
-      "id": 2268,
-      "name": "Codeforces Round 1124 (Div. 1)",
-      "date": "2026-09-26",
-      "url": "https://codeforces.com/contest/2268",
-      "type": "Div. 1",
-      "problemCount": 6,
-      "maxRating": null,
-      "problems": [
-        {
-          "key": "2268A",
-          "index": "A",
-          "slot": "A",
-          "title": "K Is Important",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2268/problem/A",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "constructive algorithms",
-            "greedy"
-          ],
-          "statementBrief": "给定含正整数的数组和参数 $k$。当数组长度至少为 $k$ 时，每次只能删除当前第 $k$ 个或倒数第 $k$ 个元素，并将其加入得分；删除后保持其余元素顺序，求最大得分。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2268B",
-          "index": "B",
-          "slot": "B",
-          "title": "What a SauSaGe! It's All Meat",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2268/problem/B",
-          "editorialUrl": "",
-          "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "bitmasks",
-            "brute force",
-            "math"
-          ],
-          "statementBrief": "给定 $n$ 个数量均小于 $16$ 的数组元素，并不断执行永久更新 $a_p:=x$。在每个状态下，可任意多次选择相邻位置，并将两者同时与 $3k$（$1\\le k\\le5$）异或；求通过这些操作最多能让多少个元素变成 $3$ 的倍数。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2268C",
-          "index": "C",
-          "slot": "C",
-          "title": "KiaKio and Energy Intervals",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2268/problem/C",
-          "editorialUrl": "",
-          "primaryTopic": "基础实现与模拟",
-          "secondaryTopics": [
-            "数论与同余"
-          ],
-          "originalTags": [
-            "binary search",
-            "bitmasks",
-            "brute force",
-            "data structures",
-            "divide and conquer",
-            "greedy",
-            "two pointers"
-          ],
-          "statementBrief": "给定一个非负整数数组，每次选择至少包含两个元素的连续区间，令 $m$ 为区间最大值，将区间内每个数与 $m$ 做按位 AND，再把所有结果按位 XOR。求所有合法区间中能得到的最大能量值。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2268D",
-          "index": "D",
-          "slot": "D",
-          "title": "AghaBalaSar and Hamed",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2268/problem/D",
-          "editorialUrl": "",
-          "primaryTopic": "图论与网络流",
-          "secondaryTopics": [],
-          "originalTags": [
-            "data structures",
-            "dp",
-            "trees"
-          ],
-          "statementBrief": "给定一个长度为 $n$ 的排列，从位置 $i$ 出发时可一步移动到任意左侧位置，或右侧第一个值比 $p_i$ 大的位置。对每个有序位置对求最少步数，不可达记为 $0$，输出所有步数之和。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2268E",
-          "index": "E",
-          "slot": "E",
-          "title": "Kia Kio and Tree of Life",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2268/problem/E",
-          "editorialUrl": "",
-          "primaryTopic": "树结构",
-          "secondaryTopics": [
-            "组合计数与概率"
-          ],
-          "originalTags": [
-            "data structures",
-            "fft",
-            "math",
-            "trees"
-          ],
-          "statementBrief": "给定数组，递归地对每个连续区间选择一个元素作根，左、右子树分别由根左侧和右侧区间构成，从而生成所有保持数组顺序的二叉树。删除树中的每条边，计算两部分元素异或和之和并累加，求所有合法树的该值总和，结果模 $998244353$。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2268F",
-          "index": "F",
-          "slot": "F",
-          "title": "Deglado",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2268/problem/F",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "constructive algorithms"
-          ],
-          "statementBrief": "给定一个 $2n\\times2n$ 的网格，保证每列都是 $1$ 到 $2n$ 的排列。每次选择相邻两行和相邻两列组成的 $2\\times2$ 子网格，同时交换这两列中的上下两个元素；要求在至多 $n\\binom{2n}{2}+9n$ 次操作内，使所有列都从上到下递增，否则输出无解。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        }
-      ]
-    },
     {
       "id": 2267,
       "name": "Codeforces Round 1123 (Div. 2)",
