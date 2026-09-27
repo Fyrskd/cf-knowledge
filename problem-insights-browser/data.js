@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2705,
+    "total_problems": 2711,
     "source_total_problems": 2711,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2705,
-    "with_editorial_brief": 2436,
-    "with_solution_brief": 2437,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2711,
+    "with_editorial_brief": 2442,
+    "with_solution_brief": 2443,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1767,
+    "ai_override_count": 1773,
     "primary_topic_count": 13,
-    "contest_count": 413,
+    "contest_count": 414,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 138,
-    "构造与贪心": 850,
+    "字符串": 139,
+    "构造与贪心": 853,
     "图论与网络流": 166,
     "动态规划与状态设计": 231,
     "数论与同余": 295,
-    "组合计数与概率": 206,
+    "组合计数与概率": 208,
     "数据结构": 253,
     "几何": 66,
     "树结构": 144,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1492,
+    "ai_generated_with_editorial": 1498,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 268,
     "manual_override": 891,
@@ -77423,6 +77423,188 @@ window.CF_INSIGHTS_DATA = {
             "使用哈希表查询 $cnt[x]$，每个数组元素只需检查受限的比例或因子，从而得到题解给出的总复杂度 $O(nM^{1/3})$。"
           ],
           "solutionBrief": "统计每个值的出现次数。相等三元组直接加入 $cnt[x](cnt[x]-1)(cnt[x]-2)$；其余情况按几何级数 $x/b,x,xb$ 计数并乘排列数。根据 $M^{2/3}$ 阈值，分别枚举小比例或中间值的因子。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1821,
+      "name": "Educational Codeforces Round 147 (Rated for Div. 2)",
+      "date": "2023-04-20",
+      "url": "https://codeforces.com/contest/1821",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1821A",
+          "index": "A",
+          "slot": "A",
+          "title": "Matching",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1821/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/115296",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "给定只含数字和 `?` 的整数模板，每个 `?` 必须替换成一个数字，使结果成为没有前导零的正整数。对每个模板，求所有可能匹配的正整数数量。",
+          "transformedStatement": "将模板视为独立的数字位置选择问题：首位受正整数的非零限制，其余位置只受模板字符限制；答案等于各位置合法取值数的乘积。",
+          "keyObservations": [
+            "首位必须取 $1$ 到 $9$，因此首字符为 `0` 时方案数直接为 $0$，为 `?` 时只有 $9$ 种有效替换。",
+            "除首位外，每个固定数字只有 $1$ 种选择，而每个 `?` 都有 $10$ 种选择，且各位置选择彼此独立。",
+            "所有位置的选择数可以直接相乘，得到匹配的正整数数量，无需枚举具体替换结果。"
+          ],
+          "solutionBrief": "分别计算首位和其余位置的可选数字数量：首位为 `0` 时答案为 $0$，为固定非零数字时为 $1$，为 `?` 时为 $9$；其余位置固定数字贡献 $1$，`?` 贡献 $10$，将所有贡献相乘。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1821B",
+          "index": "B",
+          "slot": "B",
+          "title": "Sort the Subarray",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1821/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/115296",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定原数组 $a$ 以及由某个连续子数组排序后得到的数组 $a'$。需要找出可能被选择并按非降序排序的区间 $[l,r]$；若有多个答案，输出区间长度最长的一组。",
+          "transformedStatement": "把所有不同位置组成的最小区间视为必选核心，再将问题转化为：在结果数组 $a'$ 中，向两侧寻找仍能保持非降边界的最长连续扩展区间。",
+          "keyObservations": [
+            "由于排序区间外的元素保持不变，$a$ 与 $a'$ 的最左、最右不同位置必然都在所选区间内，构成不可再缩小的核心区间。",
+            "向左扩展到位置 $L-1$ 的充要条件是 $a_{L-1}\\le a'_L$；否则边界两元素排序后会改变而与 $a'$ 不符。",
+            "向右扩展到位置 $R+1$ 的充要条件是 $a'_R\\le a_{R+1}$；首次出现下降的位置不能纳入排序区间。",
+            "从差异核心持续扩展到相邻关系失去非降性，可得到仍能产生 $a'$ 的最长区间，因此满足最长要求。"
+          ],
+          "solutionBrief": "找出两数组的差异核心区间，再依据 $a'$ 的非降关系向左右扩展：左侧要求 $a_{L-1}\\le a'_L$，右侧要求 $a'_R\\le a_{R+1}$，直到无法扩展。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1821C",
+          "index": "C",
+          "slot": "C",
+          "title": "Tear It Apart",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1821/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/115296",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定一个小写字母字符串。每次可以选择若干个互不相邻的位置并同时删除这些位置的字符，剩余部分按原顺序拼接；求把字符串变成所有字符相同所需的最少操作次数。",
+          "transformedStatement": "枚举最终保留的字母 $c$，把 $c$ 标为 $1$、其他字符标为 $0$，目标就是删除全部 $0$。$1$ 分隔出的每个连续 $0$ 段独立减半，所有段同步处理。",
+          "keyObservations": [
+            "固定最终保留的字母 $c$ 后，只需把其他字母统一视为 $0$、把 $c$ 视为 $1$，问题转化为删除所有 $0$。",
+            "删除包含的 $1$ 不会带来收益，因为保留的 $1$ 还能继续分隔相邻的 $0$；因此最优方案只删除非 $c$ 字母。",
+            "被 $1$ 分隔的连续 $0$ 块可以独立处理，并行执行各块的第 $i$ 次操作，所以总操作数是所有块所需次数的最大值。",
+            "长度为 $l$ 的连续 $0$ 块一次操作后最多变为长度 $\floor{l/2}$，因此只需取最长块并反复减半，得到固定 $c$ 时的答案。"
+          ],
+          "solutionBrief": "枚举最终保留的字母 $c$。将其余字符视为 $0$，扫描得到各个连续非 $c$ 段；每段长度反复变为 $\floor{l/2}$，直到为零，所需轮数取最大值。对 26 个字母取最小答案，复杂度为 $O(26n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1821D",
+          "index": "D",
+          "slot": "D",
+          "title": "Black Cells",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1821/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/115296",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有一条从左到右编号的长条，指针从位置 $0$ 出发；每次可向右移动或按下、松开 Shift，按住 Shift 移动时只能将给定区间内经过的格子染黑。要求在允许区间中至少染黑 $k$ 个格子，求最少操作次数，无法达到时输出 $-1$。",
+          "transformedStatement": "把一次方案重述为：选择若干从左侧开始的区间，并在最后一个区间的某个位置 $p$ 停止；若染色了 $x$ 个区间，代价就是 $p+2x$。于是问题转化为枚举最后区间，在达到 $k$ 个格子的条件下最小化该表达式。",
+          "keyObservations": [
+            "最终只需考虑指针向右移动并停在某个可染色区间内；若停点为 $p$、途中染色了 $x$ 个区间，总代价等于移动代价 $p$ 加上每个区间按下与松开 Shift 的代价 $2x$。",
+            "长度至少为 $2$ 的区间不应跳过：染完整个区间只额外增加 $2$ 次按键，却能减少至少同样长度的右移，因此不会使答案变差。",
+            "枚举最后染色的第 $i$ 个区间，维护此前及当前所有长区间的总长度 $s$ 与单点区间数量 $c$；根据 $s+c<k$、$s<k\\le s+c$、$s\\ge k$ 分别计算是否可行及最优停点。",
+            "当长区间总长度首次达到 $k$ 时，可以在当前区间内部提前停止；各区间加入时只需增量更新 $s,c$，因此整体扫描复杂度为 $O(n)$。"
+          ],
+          "solutionBrief": "按最后染色的区间从左到右扫描，维护长区间覆盖总长度和单点区间数量。对每个位置按三种覆盖关系计算最小移动与按键代价；若所有允许区间总长度不足 $k$，输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1821E",
+          "index": "E",
+          "slot": "E",
+          "title": "Rearrange Brackets",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1821/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/115296",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定一个合法括号序列。每次可按题目规定将一个括号移到序列中的其他位置，最多操作 $k$ 次，且操作完成后序列仍须合法；合法序列的成本是在删除相邻括号对清空序列时各次删除代价之和，要求最小化最终成本。",
+          "transformedStatement": "将每一对匹配括号视为森林中的一个节点，节点深度之和就是序列成本。一次最优移动可视为把左括号右移到对应右括号旁，其收益等于该节点子树中其他节点的数量，因此转化为选取收益最大的 $k$ 个节点。",
+          "keyObservations": [
+            "删除顺序取从右到左时，每对括号的代价等于其嵌套深度，因此总成本就是所有括号对深度之和。",
+            "把括号对看成森林中的节点后，节点深度正好对应成本；将某个左括号尽量右移到匹配右括号前，可使其子树中除自身外的所有节点深度减一。",
+            "存在最优方案只右移左括号，且各次移动的收益彼此独立，所以应选择子树大小最大的至多 $k$ 个节点。",
+            "某个括号对的子树大小等于其匹配区间内括号数的一半，可用栈匹配并统计区间大小，无需显式建树。"
+          ],
+          "solutionBrief": "总成本等于括号对深度之和。用栈求每个左括号对应的内部节点数，选取其中最大的 $k$ 个作为右移对象；答案为初始成本减去这些收益，整体可在线性或 $O(n\\log n)$ 时间完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1821F",
+          "index": "F",
+          "slot": "F",
+          "title": "Timber",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1821/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/115296",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个连续位置，其中恰有 $m$ 个位置种着同高为 $k$ 的树。砍树时每棵树可向左或向右倒，分别占据从自身延伸 $k$ 格的连续位置；要求统计能在不冲突的情况下全部砍倒的树木布局数量，答案对 $998244353$ 取模。",
+          "transformedStatement": "将每棵倒下的树看成长度为 $k+1$ 的连续段，并根据其左侧空位是否至少为 $k$，把段划分为倒法唯一的长段和有两种方向的短段；问题转化为统计这些段的排列、间隔及长短属性。",
+          "keyObservations": [
+            "固定树的位置后，从左到右处理：若当前树能向左倒就令其向左，否则尝试向右；该策略失败当且仅当不存在可行砍倒方案。",
+            "每棵倒下的树占据一个长度为 $k+1$ 的连续段；若其左侧至少有 $k$ 个空位，倒法被唯一确定，否则该段有左右两种来源。",
+            "若指定至少有 $z$ 个段属于“长段”，可将它们长度扩为 $2k+1$，其余段长度为 $k+1$，再用隔板法计数，得到 $F(z)=\\binom{n-z(2k+1)-(m-z)(k+1)+m}{m}$。",
+            "先用容斥把“至少长段”转为恰好长段，再按短段的 $2$ 种倒法加权；二重求和可用二项式定理化为 $\\sum_{z=0}^{m}(-1)^z\\binom{m}{z}2^{m-z}F(z)$。"
+          ],
+          "solutionBrief": "把倒树结果抽象为互不重叠的连续段，按长段数量用隔板法计算 $F(z)$，再对长短段做容斥。最终答案为 $\\sum_{z=0}^{m}(-1)^z\\binom{m}{z}2^{m-z}F(z)$，整体复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
