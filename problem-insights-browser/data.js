@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2328,
+    "total_problems": 2334,
     "source_total_problems": 2334,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 2328,
-    "with_editorial_brief": 2059,
-    "with_solution_brief": 2060,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2334,
+    "with_editorial_brief": 2065,
+    "with_solution_brief": 2066,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1269,
+    "ai_override_count": 1275,
     "primary_topic_count": 13,
-    "contest_count": 359,
+    "contest_count": 360,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -34,8 +34,8 @@ window.CF_INSIGHTS_DATA = {
     "动态规划与状态设计",
     "数据结构",
     "组合计数与概率",
-    "树结构",
     "图论与网络流",
+    "树结构",
     "基础实现与模拟",
     "字符串",
     "交互",
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 109,
-    "构造与贪心": 765,
-    "图论与网络流": 136,
-    "动态规划与状态设计": 209,
+    "字符串": 110,
+    "构造与贪心": 766,
+    "图论与网络流": 137,
+    "动态规划与状态设计": 210,
     "数论与同余": 243,
-    "组合计数与概率": 176,
+    "组合计数与概率": 177,
     "数据结构": 208,
     "几何": 52,
     "树结构": 137,
     "代数、矩阵与多项式": 19,
     "交互": 82,
-    "基础实现与模拟": 114,
+    "基础实现与模拟": 115,
     "博弈": 78
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1123,
+    "ai_generated_with_editorial": 1129,
     "ai_generated_partial_editorial": 45,
     "missing_editorial": 268,
     "manual_override": 891,
@@ -50707,6 +50707,190 @@ window.CF_INSIGHTS_DATA = {
             "将列数递归降到 $A=25$ 后，对每个可能行使用一行二分式缩小；总查询数为 $n+63+25\\lceil\\log_2 25\\rceil\\le n+225$。"
           ],
           "solutionBrief": "把交互器抽象为返回满足距离区间约束的数值。单行时按返回值收缩列区间；多行时用第2行三个对称查询，要么删除前三行，要么显著缩小列范围，递归至 $m\\le25$ 后逐行处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1989,
+      "name": "Educational Codeforces Round 167 (Rated for Div. 2)",
+      "date": "2024-06-27",
+      "url": "https://codeforces.com/contest/1989",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1989A",
+          "index": "A",
+          "slot": "A",
+          "title": "Catch the Coin",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1989/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/130988",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "角色从 $(0,0)$ 出发，每秒先向八个相邻方向之一移动，若落在硬币处就将其收集；随后屏幕上所有未收集硬币统一向下移动一格。对每枚给定坐标的硬币，判断角色是否能通过选择移动顺序收集它。",
+          "transformedStatement": "将每秒的角色移动和硬币下落合并，硬币固定在初始位置，而角色相对硬币的纵坐标每秒可增加 $0,1,2$；同时保留“先移动后下落”的时序，可额外触及纵坐标 $-1$。",
+          "keyObservations": [
+            "把角色移动与硬币随后下落合并考虑后，相对初始位置的有效纵坐标每秒只能增加 $0,1,2$，因此硬币可暂时视为固定不动。",
+            "对于 $y\\ge 0$ 的硬币，可以先逐步调整角色的横坐标，再利用有效纵向变化到达目标；这说明所有此类硬币都可收集。",
+            "角色在每秒中先移动、硬币才下落，所以首次接触时还能向下移动一格，额外覆盖 $y=-1$；而 $y<-1$ 的硬币始终下落得更快，无法追上。"
+          ],
+          "solutionBrief": "对每枚硬币独立判断：由于角色先移动再触发下落，所有 $y\\ge -1$ 的硬币均可通过先调整横坐标、再移动到目标位置收集；$y<-1$ 时无法追上。输出对应判断。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1989B",
+          "index": "B",
+          "slot": "B",
+          "title": "Substring and Subsequence",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1989/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/130988",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定两个小写字符串 $a,b$，要构造一个字符串，使 $a$ 作为连续子串出现、$b$ 作为子序列出现；允许在 $a$ 前后添加字符，求这种字符串的最短长度。",
+          "transformedStatement": "把答案固定表示为 $x+a+y$，并将 $b$ 拆成 $x+c+y$：其中 $x$、$y$ 分别对应前后添加部分，只要中间串 $c$ 是 $a$ 的子序列即可。",
+          "keyObservations": [
+            "答案必能写成 $x+a+y$；为最短，可令 $x$ 是 $b$ 的前缀、$y$ 是 $b$ 的后缀，中间部分由 $a$ 覆盖。",
+            "固定 $|x|$ 后，只需让 $b$ 的剩余后缀尽可能多地匹配 $a$；匹配越长，需要补到末尾的 $y$ 越短。",
+            "从左到右贪心扫描 $a$，遇到当前所需的字符就匹配，可得到该位置开始的 $b$ 前缀在 $a$ 中能匹配的最大长度，因此剩余字符恰好构成最短的 $y$。"
+          ],
+          "solutionBrief": "枚举 $x$ 为 $b$ 的前缀长度，贪心扫描 $a$ 匹配其后的字符，计算未匹配后缀长度作为 $y$，用 $|x|+|a|+|y|$ 更新答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1989C",
+          "index": "C",
+          "slot": "C",
+          "title": "Two Movies",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1989/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/130988",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有两部电影和 $n$ 名观众，每人分别以 $-1、0、1$ 表示对两部电影的差评、中立或好评。必须让每个人恰好为一部电影写评价，电影评分为所得评价之和，公司评分是两部电影评分的较小值，求最大可能公司评分。",
+          "transformedStatement": "先固定所有对两部电影态度不同的观众：将其分给态度更高的电影。问题随即化为分配态度相同的观众，并枚举他们给第一部电影贡献的总和，再取两部电影评分较小值的最大值。",
+          "keyObservations": [
+            "当 $a_i\\ne b_i$ 时，把第 $i$ 个人分配给态度更高的电影不会降低最终可取的最小评分，因此无需保留另一种分配。",
+            "只有 $a_i=b_i$ 的人需要决定分配方向；其中相等于 $1$ 或 $-1$ 的人分别提供正、负贡献，相等于 $0$ 的人对评分没有影响。",
+            "设不等值人群已带来评分 $x,y$，若相等人群给第一部电影的总贡献为 $i$，则两部电影评分为 $x+i$ 与 $y+(pos-neg-i)$，枚举 $i\\in[-neg,pos]$ 即覆盖所有分配。"
+          ],
+          "solutionBrief": "先将所有 $a_i\\ne b_i$ 的观众分给态度更高的电影，统计两部电影已有评分及相等观众中的正负人数。再枚举相等观众对第一部电影的贡献 $i$，最大化 $\\min(x+i,y+pos-neg-i)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1989D",
+          "index": "D",
+          "slot": "D",
+          "title": "Smithing Skill",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1989/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/130988",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "math",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 类武器和 $m$ 种金属；锻造第 $i$ 类武器需消耗同一种金属的 $a_i$ 个锭，随后可熔炼自己锻造的武器并返还 $b_i$ 个该金属锭。每次锻造和熔炼各得 1 点经验，所有组合可重复使用，要求在各金属初始数量给定时最大化总经验。",
+          "transformedStatement": "对每种金属独立考虑其锭数 $x$：一次“锻造后立即熔炼”相当于花费 $a_i-b_i$ 个锭并获得 2 点经验。于是问题变成反复选择可行的最小损耗，先对不超过 $A=\\max a_i$ 的状态做递推，再处理更大的初始数量。",
+          "keyObservations": [
+            "每件武器都应在锻造后立即熔炼；这样一次完整操作只会让当前金属减少 $a_i-b_i$，并固定获得 $2$ 点经验，且不同金属可以独立处理。",
+            "拥有 $x$ 个锭时，只能选择满足 $a_i\\le x$ 的武器；在这些选择中取最小的 $a_i-b_i$，不会减少后续可行性，因此每一步都应选择损耗最小的类别。",
+            "令 $\\mathrm{best}[x]$ 表示所有 $a_i\\le x$ 的最小损耗，则有限状态可递推为 $\\mathrm{ans}[x]=2+\\mathrm{ans}[x-\\mathrm{best}[x]]$，从而预处理所有 $x\\le A$，其中 $A=\\max a_i$。",
+            "当 $x>A$ 时，始终使用全局最小损耗 $\\mathrm{best}[A]$，恰好重复 $k=\\left\\lceil\\frac{x-A}{\\mathrm{best}[A]}\\right\\rceil$ 次即可降到不超过 $A$，剩余部分直接查表。"
+          ],
+          "solutionBrief": "对每种金属独立处理。预处理前缀最小损耗 best 和 $x\\le A$ 的经验值 ans；对 $x>A$ 先用全局最小损耗降至 $A$ 以下，再查表。总复杂度为 $O(n+m+A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1989E",
+          "index": "E",
+          "slot": "E",
+          "title": "Distance to Different",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1989/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/130988",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的数组 $a$，其元素取自 $1$ 到 $k$ 且每个值都出现。对每个位置，令 $b_i$ 为该位置到最近的不同元素位置的距离，求所有可能数组 $a$ 产生的不同数组 $b$ 的数量。",
+          "transformedStatement": "忽略具体数值，只把 $a$ 看成由若干极大相等连续块组成；每个块贡献由自身长度决定的对称距离序列。通过选取满足唯一表示条件的块切分，将问题转化为带块数下限和块长限制的切分计数。",
+          "keyObservations": [
+            "将数组按极大相等连续段分块后，每块内部的 $b$ 只由到块边界的距离决定；长度为 $2x$ 和 $2x-1$ 时分别形成对称距离序列。",
+            "只要分块数至少为 $k$，就能为各块赋值使 $1$ 到 $k$ 全部出现，因此颜色具体取值可以完全省略。",
+            "不同分块可能产生同一个 $b$ 的唯一歧义，是非首尾的长度为 $2$ 的块可拆成两个长度为 $1$ 的块；长度大于 $2$ 的块可由内部峰值唯一识别。",
+            "因此只需统计至少 $k$ 块且仅首块、末块允许长度为 $2$ 的切分；令块数状态在 $k$ 处封顶，并用前缀和优化转移，可将复杂度降至 $O(nk)$。"
+          ],
+          "solutionBrief": "把答案转为合法分块方案数：至少有 $k$ 块，且内部块不能长为 $2$。用 $dp_{i,j}$ 统计前 $i$ 个位置分成至少或恰好 $j$ 块的方案，在 $j=k$ 处合并更大状态，并用前缀和完成 $O(nk)$ 转移。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1989F",
+          "index": "F",
+          "slot": "F",
+          "title": "Simultaneous Coloring",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1989/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/130988",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "divide and conquer",
+            "graphs"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 矩阵，每次可将一整行或一整列按固定颜色涂色，颜色不能自行选择；同一时刻执行 $k>1$ 个操作需付出 $k^2$ 枚硬币，单独执行免费，交叠单元格的颜色可独立决定。限制按顺序加入且每个限制指定一个单元格必须为红色或蓝色，要求每次加入后求满足全部限制的最小费用。",
+          "transformedStatement": "把每行和每列视为一个操作顶点：红色单元格转化为“列操作必须早于行操作”，蓝色单元格转化为“行操作必须早于列操作”。于是问题变为安排这些顶点的执行时刻，使有向边表示的先后关系成立，并计算为打破环而付出的同时执行费用。",
+          "keyObservations": [
+            "每个红色限制要求对应行晚于对应列执行，因此连边“列→行”；蓝色限制则要求“行→列”，把涂色要求转成操作顺序约束。",
+            "若约束图无环，按拓扑序逐个执行所有相关操作即可，每次只有一个操作，总代价为 $0$；无约束的行列也无需执行。",
+            "同一强连通分量中的操作无法全部按单独时刻完成，否则最后一批操作会在分量内部留下必须更晚执行的顶点，因此该分量至少产生一次大小为 $s$ 的同时操作，代价为 $s^2$。",
+            "不同强连通分量之间可按缩点图的拓扑序处理，所以答案等于所有大小大于 $1$ 的强连通分量大小平方之和；逐次加入限制时可用增量缩点维护该和。"
+          ],
+          "solutionBrief": "将每个限制转成行列顶点间的有向边：红色为“列→行”，蓝色为“行→列”。答案是当前图中所有非平凡强连通分量大小平方之和；逐次加边并用增量缩点维护这些分量及答案。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
