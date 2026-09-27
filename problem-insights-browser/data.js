@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3068,
+    "total_problems": 3074,
     "source_total_problems": 3075,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3068,
-    "with_editorial_brief": 2788,
-    "with_solution_brief": 2789,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3074,
+    "with_editorial_brief": 2794,
+    "with_solution_brief": 2795,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2129,
+    "ai_override_count": 2136,
     "primary_topic_count": 13,
     "contest_count": 468,
     "rating_min": 800,
@@ -44,10 +44,11 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 978,
-    "数据结构": 287,
+    "构造与贪心": 980,
+    "数据结构": 288,
+    "数论与同余": 332,
+    "树结构": 152,
     "图论与网络流": 189,
-    "数论与同余": 330,
     "博弈": 98,
     "动态规划与状态设计": 258,
     "组合计数与概率": 239,
@@ -55,12 +56,11 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 163,
     "基础实现与模拟": 183,
     "交互": 96,
-    "树结构": 151,
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 1839,
     "missing_editorial": 279,
-    "ai_generated_with_editorial": 1833,
     "ai_generated_partial_editorial": 64,
     "manual_override": 891,
     "statement_derived": 1
@@ -94740,9 +94740,124 @@ window.CF_INSIGHTS_DATA = {
       "date": "2022-08-13",
       "url": "https://codeforces.com/contest/1712",
       "type": "Div. 2",
-      "problemCount": 1,
-      "maxRating": 2300,
+      "problemCount": 7,
+      "maxRating": 3200,
       "problems": [
+        {
+          "key": "1712A",
+          "index": "A",
+          "slot": "A",
+          "title": "Wonderful Permutation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1712/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/105919",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列，每次可交换任意两个位置的元素。要求用最少交换次数，使前 $k$ 个位置元素之和达到所有排列中可能的最小值，并输出该次数。",
+          "transformedStatement": "目标等价于让前 $k$ 个位置恰好包含数值集合 $\\{1,2,\\ldots,k\\}$；因此只需统计当前前缀中被后缀大数占据的位置，并将它们逐一替换。",
+          "keyObservations": [
+            "前 $k$ 个位置的元素和不可能低于 $1+2+\\cdots+k$，因为全排列中最小的 $k$ 个数正是 $1$ 到 $k$。",
+            "前 $k$ 个位置中每出现一个大于 $k$ 的数，就必须通过一次交换换入一个位于后缀且不超过 $k$ 的数，因此这些位置的数量给出操作次数下界。",
+            "前缀中大于 $k$ 的元素数量与后缀中不超过 $k$ 的元素数量相等；每次交换同时减少二者各一个，所以总能完成替换并达到最小和。"
+          ],
+          "solutionBrief": "统计前 $k$ 个位置中满足 $p_i>k$ 的元素个数。每个这样的元素都需要与后缀中的一个不超过 $k$ 的元素交换，答案就是该计数，时间复杂度为 $\\mathcal{O}(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1712B",
+          "index": "B",
+          "slot": "B",
+          "title": "Woeful Permutation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1712/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/105919",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $n$，要构造一个包含 $1$ 到 $n$ 各一次的排列 $p$。目标是最大化 $\\operatorname{lcm}(1,p_1)+\\operatorname{lcm}(2,p_2)+\\cdots+\\operatorname{lcm}(n,p_n)$，输出任意达到最大值的排列。",
+          "transformedStatement": "把排列看成映射 $i\\to p_i$ 的若干有向环，并用 $f(i,p_i)$ 上界替代最小公倍数。最大化该上界等价于让各环覆盖的数值区间总宽度尽可能小，因而应把相邻数配成短环。",
+          "keyObservations": [
+            "相邻整数互质，因此交换相邻数可使对应项达到最大值：$\\operatorname{lcm}(x,x+1)=x(x+1)$。",
+            "令 $f(x,y)=x\\cdot y$（$x\\ne y$）且 $f(x,x)=x$，则始终有 $\\operatorname{lcm}(x,y)\\le f(x,y)$，原问题可转为最大化 $\\sum f(i,p_i)$。",
+            "把置换视为有向环后，一个环相对平方和的损失等于相邻元素差的平方和的一半，并至少为该环最大值与最小值之差。",
+            "将相邻整数两两成环可使所有环的范围损失最小：偶数从 $[2,1],[4,3]$ 开始，奇数让 $1$ 自成环后再配对。"
+          ],
+          "solutionBrief": "偶数 $n$ 输出 $[2,1,4,3,\\ldots,n,n-1]$；奇数 $n$ 输出 $[1,3,2,5,4,\\ldots,n,n-1]$。相邻数互质使构造达到由环损失下界给出的最优值，整体复杂度为 $\\mathcal O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1712C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sort Zero",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1712/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/105919",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一个正整数数组，每次选择一个值 $x$，把数组中所有等于 $x$ 的元素改为 $0$。要求求出至少进行多少次操作，才能使数组按非递减顺序排列。",
+          "transformedStatement": "把目标转化为消除所有相邻下降点。每个下降点会强制处理其左端值；因此只需关注最右下降点之前出现过的不同非零值。",
+          "keyObservations": [
+            "数组非递减当且仅当不存在相邻下降位置，因此只需消除所有满足 $a_i>a_{i+1}$ 的位置。",
+            "若位置 $i$ 出现下降，必须选择 $x=a_i$ 才能改变左端点并消除该下降；其他选择无法降低 $a_i$。",
+            "将 $a_i$ 变为 $0$ 后，该位置不可能再次成为下降点，因此每个坏位置至多被处理一次。",
+            "若最右坏位置为 $r$，最终答案等于前缀 $a_1,\u001b[0m\\ldots,a_r$ 中不同非零数的个数，从而可在线性扫描中统计。"
+          ],
+          "solutionBrief": "先找最右侧的相邻下降位置 $r$，统计前缀 $a_1\\ldots a_r$ 中不同的非零值；其数量就是必须执行的操作次数。若无下降则答案为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1712D",
+          "index": "D",
+          "slot": "D",
+          "title": "Empty Graph",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1712/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/105919",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "图论与网络流",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "shortest paths"
+          ],
+          "statementBrief": "给定正整数数组和最多 $k$ 次操作，每次可把一个元素改为 $10^9$。修改后用每条边覆盖区间的最小数组值建立完全带权图，要求最大化图的直径。",
+          "transformedStatement": "把图上任意两点的最短距离化为区间最小值与两倍全局最小值的较小者，再把直径化为相邻元素的最小值最大值与两倍全局最小值的较小者；随后对目标直径进行可行性判定。",
+          "keyObservations": [
+            "任意 $u<v$ 的最短路满足 $d(u,v)=\\min(\\min(a_u\\ldots a_v),2\\min(a_1\\ldots a_n))$；绕到全局最小值两侧至多只需两条边，因此路径不必再考虑更多中间点。",
+            "区间最小值随区间变长不会增大，所以全图直径等于相邻点距离的最大值，即 $\\min(\\max_i\\min(a_i,a_{i+1}),2\\min_i a_i)$。",
+            "判定答案至少为 $x$ 时，所有 $a_i<x/2$ 的位置都必须先改为 $10^9$；若所需操作超过 $k$，该阈值必不可行。",
+            "完成强制修改后，若还剩一次操作，只需把一个最大值附近的位置改大；若还剩至少两次操作，可利用已修改位置形成相邻的 $10^9$，因此阈值总能达到。"
+          ],
+          "solutionBrief": "先将操作理解为把选定的 $a_i$ 改成 $10^9$。利用直径公式二分答案 $x$：强制修改所有 $a_i<x/2$，不足操作则失败；剩余操作为 $0$、$1$ 或至少 $2$ 时分别按相邻最小值和全局最小值判定。复杂度为 $O(n\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1712E1",
           "index": "E1",
@@ -94751,9 +94866,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/1712/problem/E1",
           "editorialUrl": "https://codeforces.com/blog/entry/105919",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "数论与同余",
           "secondaryTopics": [
-            "数论与同余",
             "组合计数与概率"
           ],
           "originalTags": [
@@ -94764,12 +94878,74 @@ window.CF_INSIGHTS_DATA = {
             "number theory",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：LCM Sum (easy version)；本地暂无可用题解正文。",
+          "statementBrief": "给定整数区间 $[l,r]$，从中选出三个严格递增的整数 $(i,j,k)$。要求统计满足 $\\operatorname{lcm}(i,j,k)\\ge i+j+k$ 的不同三元组数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1712E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "LCM Sum (hard version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1712/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/105919",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "math",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "给定多个整数区间 $[l,r]$，从中选出严格递增的 $i<j<k$，统计满足 $\\text{lcm}(i,j,k)\\ge i+j+k$ 的不同三元组数量；每个测试用例都要独立回答该计数问题。",
+          "transformedStatement": "将目标转为“区间内全部三元组数减去坏三元组数”，其中坏三元组满足 $\\text{lcm}(i,j,k)<i+j+k$。固定最大值 $k$ 后，只需在 $2k$ 的约数中寻找 $(i,j)$，并把每个坏三元组转化为区间 $[i,k]$ 的权值贡献。",
+          "keyObservations": [
+            "因为三元组中包含最大值 $k$，其最小公倍数是 $k$ 的倍数且小于 $3k$；因此不满足条件时只可能是 $ ext{lcm}=k$，或 $ ext{lcm}=2k$ 且 $i+j>k$。",
+            "在上述两种情况中，$i$ 和 $j$ 都必须是 $2k$ 的约数；枚举同属 $2k$ 约数的 $i<j<k$，即可直接判定该三元组是否为坏三元组。",
+            "把每个坏三元组 $(i,j,k)$ 归因到区间 $[i,k]$，令区间权值统计其中可配成坏三元组的 $j$ 数量，则查询 $[l,r]$ 内坏三元组数等于所有满足 $l\\le i<k\\le r$ 的区间权值之和。",
+            "总三元组数可直接计算，再减去坏三元组数；区间权值的离线求和可用单点加与区间求和数据结构维护。"
+          ],
+          "solutionBrief": "先计算区间内所有三元组数量，再统计不满足条件的坏三元组。对每个最大值 $k$ 枚举 $2k$ 的约数对 $(i,j)$，按 $ ext{lcm}=k$ 或 $ ext{lcm}=2k$ 且 $i+j>k$ 判定，并将贡献记到区间 $[i,k]$；离线处理区间包含关系求和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1712F",
+          "index": "F",
+          "slot": "F",
+          "title": "Triameter",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1712/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/105919",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "给定一棵所有原边权为 $1$ 的树，记度数为 $1$ 的顶点为叶子。每个独立查询给出 $x_i$，在每对叶子之间加入一条权值为 $x_i$ 的边，要求输出所得图的直径。",
+          "transformedStatement": "把每次查询中的新图距离转化为两点原树距离与“分别走到最近叶子、跨新增叶边、再走到目标”的距离取最小值，即 $d'(u,v)=\\min(d(u,v),f_u+f_v+x)$；问题变为求所有点对的该表达式最大值。",
+          "keyObservations": [
+            "对任意两点 $u,v$，新图中的距离等于 $\\min(d(u,v),f_u+f_v+x)$，其中 $f_v$ 是到最近叶子的距离；两种路径分别对应不经过和经过叶子间新增边。",
+            "按 $f_v$ 分组维护子树内点的最大深度后，各组最大值天然按深度单调排列，因此合并两个子树时，每个分组只需检查一个临界位置即可判断是否能刷新当前直径。",
+            "跨不同子树的最优点对必在合并它们的公共祖先处被检查，且原树距离可由两点深度减去两倍公共祖先深度得到，从而不会漏掉直径候选。",
+            "小并大合并使每次合并只处理较小结构的分组，所有结构总处理量为 $O(n)$；结合答案最多逐次增加 $n$ 次，可将单个查询做到 $O(n)$。"
+          ],
+          "solutionBrief": "先用多源 BFS 求每个点到最近叶子的距离 $f$。对每个查询独立处理，用按 $f$ 分组的子树信息进行小并大合并，检查跨子树点对并维护最大距离；最终答案为维护值减一，单次复杂度 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
