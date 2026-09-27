@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2689,
+    "total_problems": 2697,
     "source_total_problems": 2697,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2689,
-    "with_editorial_brief": 2420,
-    "with_solution_brief": 2421,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2697,
+    "with_editorial_brief": 2428,
+    "with_solution_brief": 2429,
     "missing_editorial_brief": 268,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1751,
+    "ai_override_count": 1759,
     "primary_topic_count": 13,
-    "contest_count": 411,
+    "contest_count": 412,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 137,
-    "构造与贪心": 846,
-    "图论与网络流": 164,
-    "动态规划与状态设计": 230,
+    "字符串": 138,
+    "构造与贪心": 847,
+    "图论与网络流": 166,
+    "动态规划与状态设计": 231,
     "数论与同余": 293,
     "组合计数与概率": 206,
-    "数据结构": 252,
+    "数据结构": 253,
     "几何": 65,
     "树结构": 143,
     "代数、矩阵与多项式": 20,
     "交互": 87,
-    "基础实现与模拟": 153,
+    "基础实现与模拟": 155,
     "博弈": 93
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1476,
+    "ai_generated_with_editorial": 1484,
     "ai_generated_partial_editorial": 53,
     "missing_editorial": 268,
     "manual_override": 891,
@@ -76319,6 +76319,244 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1829,
+      "name": "Codeforces Round 871 (Div. 4)",
+      "date": "2023-05-06",
+      "url": "https://codeforces.com/contest/1829",
+      "type": "Div. 4",
+      "problemCount": 8,
+      "maxRating": 1700,
+      "problems": [
+        {
+          "key": "1829A",
+          "index": "A",
+          "slot": "A",
+          "title": "Love Story",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1829/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/116108",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定若干个长度恰为 $10$ 的小写字符串。不能调整字符顺序，需要统计每个字符串与“codeforces”在相同位置上字符不同的下标数量。",
+          "transformedStatement": "将问题转化为计算输入字符串与固定字符串“codeforces”的汉明距离：对 $10$ 个位置分别判断字符是否相等，并统计不相等的位置数。",
+          "keyObservations": [
+            "题目本质是计算两个等长字符串的汉明距离，只需比较相同下标的字符，不涉及重排或其他匹配。",
+            "参考串长度固定为 $10$，每个位置的差异彼此独立；逐位比较并累加不相等次数即可得到答案。"
+          ],
+          "solutionBrief": "对每个测试串与固定字符串“codeforces”逐下标比较，遇到字符不同就将答案加一，检查完全部 $10$ 个位置后输出差异数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1829B",
+          "index": "B",
+          "slot": "B",
+          "title": "Blank Space",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1829/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/116108",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个只含 $0$ 和 $1$ 的数组，其中连续的一段 $0$ 称为空白段。对每个测试用例，求数组中最长连续空白段的长度。",
+          "transformedStatement": "把数组划分为若干个连续零段和被 $1$ 分隔的部分；扫描时维护当前零段长度，并在零段结束或数组结束时更新最大值。",
+          "keyObservations": [
+            "连续的 $0$ 可以用一个当前长度统一表示：遇到 $0$ 就延长当前零段，避免枚举所有区间。",
+            "遇到 $1$ 时，当前零段必然结束，此时用它更新历史最大值；扫描结束时还需检查末尾零段，才能覆盖所有情况。"
+          ],
+          "solutionBrief": "逐个扫描数组，维护当前连续 $0$ 的长度和历史最大值；遇到 $0$ 增加当前长度，遇到 $1$ 结算并清零，最后再结算一次末段零串。复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1829C",
+          "index": "C",
+          "slot": "C",
+          "title": "Mr. Perfectly Fine",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1829/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/116108",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "Victor 有两项技能和若干本书，每本书阅读一次需花费给定时间，并获得两项技能中的某些技能。选择并阅读若干本书，使两项技能都获得，求最少总时间；无法实现时输出 $-1$。",
+          "transformedStatement": "把每本书按获得技能分类为“00”“01”“10”“11”，问题等价于比较一本文本为“11”的最短书，和分别选择最短“01”与最短“10”书的总时间。",
+          "keyObservations": [
+            "由于只有两项技能，获得全部技能的方案只可能是直接阅读一本“11”书，或分别阅读一本“01”和一本“10”的书；其他组合都可删去冗余书籍而不变差。",
+            "对于分开获取技能的方案，只需保留最短的“01”和最短的“10”书，因为它们分别独立贡献两项技能，替换为更长书不会更优。",
+            "“00”书不贡献任何技能，因此不可能出现在最优方案中；比较两种候选总时间即可覆盖所有可行情况并判断无解。"
+          ],
+          "solutionBrief": "分别记录四类书中的最短用时。答案取最短“11”书用时与最短“01”加最短“10”的总和；若任一方案不存在，则忽略它，两个方案都不存在时输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1829D",
+          "index": "D",
+          "slot": "D",
+          "title": "Gold Rush",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1829/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/116108",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "开始时只有一个大小为 $n$ 的金堆。每次可选择一个大小为 $3x$ 的堆，将其拆成大小为 $x$ 和 $2x$ 的两个堆；可重复操作，判断过程中是否能得到一个大小恰为 $m$ 的堆。",
+          "transformedStatement": "把问题建模为从状态 $n$ 出发的二叉可达状态树：非 $3$ 的倍数没有后继，$3$ 的倍数只产生 $n/3$ 与 $2n/3$ 两个子状态，目标是判断是否能到达 $m$。",
+          "keyObservations": [
+            "若当前堆大小已经等于 $m$，无需继续操作即可判定成功，因此递归搜索以相等状态作为成功条件。",
+            "一次合法拆分必须满足当前大小为 $3x$，且拆分结果唯一为 $x$ 和 $2x$；因此不能被 $3$ 整除的堆无法继续产生新状态。",
+            "当当前堆能拆分时，只需递归检查大小为 $n/3$ 和 $2n/3$ 的两堆，任意一堆能达到 $m$ 就足以判定成功。",
+            "每次拆分得到的子堆都严格小于原堆，递归必然终止；完整搜索的复杂度为 $O(n^{\\log_3 2})$。"
+          ],
+          "solutionBrief": "递归判断当前堆能否产生大小为 $m$ 的堆：若 $n=m$ 返回 YES；若 $n$ 不是 $3$ 的倍数返回 NO；否则继续检查 $n/3$ 和 $2n/3$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1829E",
+          "index": "E",
+          "slot": "E",
+          "title": "The Lakes",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1829/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/116108",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的非负整数网格，每个格子的数值表示水深。湖由上下左右相邻且水深大于 $0$ 的格子组成，体积是这些格子水深之和，要求求出所有湖中的最大体积。",
+          "transformedStatement": "把网格视为四方向图：正数格子是带权顶点，零格子不可通行；每个湖就是一个正数格子的连通分量，目标是求连通分量顶点权值和的最大值。",
+          "keyObservations": [
+            "湖可以等价看成由上下左右相邻、且水深均为正的格子组成的连通块，因此问题转化为求各连通块权值之和的最大值。",
+            "每个正数格子只属于一个连通块；遍历时将访问过的格子标记，就能在线性时间内完成一次计数且避免重复累加。",
+            "水深为 $0$ 的格子既不能被湖包含，也不能作为搜索路径，因此从每个未访问的正数格子出发即可覆盖所有候选湖。"
+          ],
+          "solutionBrief": "逐格扫描网格，对每个未访问的正数格子进行 DFS 或 BFS，只沿上下左右进入未访问的正数格子，并累加水深。一次搜索得到一个湖的体积，取所有连通块体积的最大值；总复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1829F",
+          "index": "F",
+          "slot": "F",
+          "title": "Forever Winter",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1829/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/116108",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "每组输入一张保证由 $x,y>1$ 生成的雪花图：先取一个中心点，连接 $x$ 个第二层点，再从每个第二层点连接 $y$ 个只连向它的叶子。要求输出生成该图的 $x$ 和 $y$。",
+          "transformedStatement": "将图的结构等价转化为顶点度数 multiset：度数为 $1$ 的叶子共有 $xy$ 个，中心贡献一个度数 $x$，第二层贡献 $x$ 个度数 $y+1$；只需从度数频次反推参数。",
+          "keyObservations": [
+            "中心点的度数为 $x$，第二层的每个点度数为 $y+1$，最外层叶子的度数为 $1$，因此叶子数量直接是 $xy$。",
+            "当 $x\\ne y+1$ 时，度数为 $x$ 的点恰好只有中心点，可由这个唯一出现的度数恢复 $x$，再用叶子数除以 $x$ 得到 $y$。",
+            "当 $x=y+1$ 时中心点与第二层点的度数合并，度数 $x$ 出现 $x+1$ 次；因此可由该频次减一恢复 $x$，再令 $y=x-1$。"
+          ],
+          "solutionBrief": "统计每个顶点的度数和度数为 $1$ 的顶点数 $L$。若存在唯一出现的非叶子度数 $d$，则 $x=d,y=L/x$；否则利用合并后的度数频次得到 $x=\\mathrm{cnt}[d]-1$、$y=d-1$。每组复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1829G",
+          "index": "G",
+          "slot": "G",
+          "title": "Hits Different",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1829/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/116108",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "基础实现与模拟",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有一个按规则编号、共 2023 行的罐子金字塔；每次击中编号为 $n^2$ 的罐子后，该罐子以及其正上方递层相连、会随之掉落的所有罐子都会落下。对每个给定的 $n$，求所有掉落罐子的编号之和。",
+          "transformedStatement": "把罐子改画为菱形并旋转布局后，每个击中位置对应的掉落集合成为一个网格矩形；将编号为 $k^2$ 的罐子按 $1,2,3,\\dots$ 的对角线顺序放入网格，问题就变成查询该矩形的二维前缀和。",
+          "keyObservations": [
+            "将罐子改画成菱形并旋转后，某个罐子上方会坠落的区域恰好是一个矩形，因此答案可转化为二维前缀和查询。",
+            "按标签 $1,2,3,\u001b[0m\\dots$ 沿网格对角线依次放置对应的 $k^2$，就能直接建立标签到前缀和的对应关系，无需反解行列坐标。",
+            "预处理所有不超过最大询问值的网格前缀和后，每个询问只需读取对应位置的前缀和，时间从逐次遍历坠落区域降为 $O(1)$。"
+          ],
+          "solutionBrief": "把布局旋转为网格，使每次坠落区域成为矩形二维前缀和。沿对角线按 $1,2,\\dots,M$ 预处理每个 $k^2$ 对应的前缀和，之后每次直接查询，预处理为 $O(M)$、单询问为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1829H",
+          "index": "H",
+          "slot": "H",
+          "title": "Don't Blame Me",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1829/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/116108",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定一个整数数组，需要统计所有保持原顺序且非空的子序列。每个子序列的值是其中所有元素的按位与，要求输出该结果的二进制表示中恰有 $k$ 个 $1$ 的子序列数量，并对 $10^9+7$ 取模。",
+          "transformedStatement": "把问题改写为按按位与结果分类计数：状态 $dp[j]$ 表示当前前缀中按位与为掩码 $j$ 的非空子序列数。依次加入元素时，原状态可保留、与新元素合并，或从该元素单独开始。",
+          "keyObservations": [
+            "由于所有元素不超过 $63$，任意子序列的按位与结果也只可能是 $0$ 到 $63$，因此可以完整维护每种结果而不必处理更大的状态空间。",
+            "处理新元素 $a_i$ 时，已有子序列若加入它，其按位与结果统一变为 $j\\mathbin{\\&}a_i$，所以状态转移只需枚举此前的 $64$ 种结果。",
+            "单独用 $a_i$ 初始化一个新子序列，能够纳入所有非空子序列，同时避免把空序列错误计入答案。",
+            "不选当前元素的转移保留此前计数，选取或跳过的两类选择覆盖每个子序列且互不重复，因此最终按结果统计其二进制中恰有 $k$ 个 $1$ 的状态即可。"
+          ],
+          "solutionBrief": "设状态记录处理前缀后按位与值为 $j$ 的非空子序列数量。对每个元素分别转移“不选”、将已有子序列与其按位与、以及单独开头三种情况，最后累加二进制中 $1$ 的个数为 $k$ 的状态，所有计算对 $10^9+7$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
