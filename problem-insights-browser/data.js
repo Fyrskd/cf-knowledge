@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2351,
+    "total_problems": 2359,
     "source_total_problems": 2359,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 2351,
-    "with_editorial_brief": 2086,
-    "with_solution_brief": 2087,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2359,
+    "with_editorial_brief": 2094,
+    "with_solution_brief": 2095,
     "missing_editorial_brief": 264,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1413,
+    "ai_override_count": 1421,
     "primary_topic_count": 13,
-    "contest_count": 362,
+    "contest_count": 363,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -45,22 +45,22 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "字符串": 110,
-    "构造与贪心": 741,
+    "构造与贪心": 744,
     "图论与网络流": 141,
     "动态规划与状态设计": 206,
-    "数论与同余": 255,
+    "数论与同余": 257,
     "组合计数与概率": 183,
-    "数据结构": 216,
+    "数据结构": 218,
     "几何": 54,
     "树结构": 133,
     "代数、矩阵与多项式": 19,
     "交互": 84,
-    "基础实现与模拟": 125,
+    "基础实现与模拟": 126,
     "博弈": 84
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1150,
-    "ai_generated_partial_editorial": 45,
+    "ai_generated_with_editorial": 1157,
+    "ai_generated_partial_editorial": 46,
     "missing_editorial": 264,
     "manual_override": 891,
     "statement_derived": 1
@@ -52177,6 +52177,246 @@ window.CF_INSIGHTS_DATA = {
             "询问 $d=n-2$ 可区分度数为 $n-2$ 与 $n-1$ 的情形；后一情形再用 $d=0$ 找到低度数顶点，整个递归过程的询问总数不超过 $n$。"
           ],
           "solutionBrief": "维护当前 Hamilton 路径的首尾。用 $d=n-2$ 判断并取出高阶顶点：度数为 $n-2$ 时递归删去一个顶点并接到路径端点；度数为 $n-1$ 时再找低度数顶点，删去两点后递归，并按 $w-u-$剩余路径拼接。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1980,
+      "name": "Codeforces Round 950 (Div. 3)",
+      "date": "2024-06-03",
+      "url": "https://codeforces.com/contest/1980",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1980A",
+          "index": "A",
+          "slot": "A",
+          "title": "Problem Generator",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1980/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/130135",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "Vlad 要举办 $m$ 个回合，每个回合必须各安排一道难度为 A、B、C、D、E、F、G 的题。给定题库中的 $n$ 道题及其难度，他可以补写新题，要求计算满足所有回合需求所需补写的最少题数。",
+          "transformedStatement": "把每个难度看成独立的需求类别：总共需要七类题各 $m$ 道，已有数量不足 $m$ 的类别补足差额，所有类别的差额相加即为答案。",
+          "keyObservations": [
+            "每种难度在全部回合中都必须出现恰好至少 $m$ 次，因此不同难度之间可以独立计算所需补题数。",
+            "若难度 $c$ 的现有题数为 $cnt_c<m$，至少要补出 $m-cnt_c$ 题；补得更多不会减少其他难度的缺口，因此该数量也是最优的。",
+            "答案等于七种难度缺口之和，即对每个难度取 $\\max(0,m-cnt_c)$ 后求和。"
+          ],
+          "solutionBrief": "统计字符串中 A 到 G 各难度的出现次数，对每种难度累加 $\\max(0,m-cnt_c)$，所得总和就是最少需要新编写的题目数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1980B",
+          "index": "B",
+          "slot": "B",
+          "title": "Choosing Cubes",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1980/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/130135",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 个方块及最喜欢方块的原始编号，将所有方块按数值从大到小排列；相同数值的方块顺序任意。随后删除排序后的前 $k$ 个方块，判断最喜欢的方块在所有排列中必被删除、必不被删除，还是两种情况都可能。",
+          "transformedStatement": "把问题转化为比较最喜欢方块的数值 $x$ 与删除边界：前 $k$ 个包含所有更大数值、可能包含部分等于 $x$ 的方块，而更小数值一定不会被删除。",
+          "keyObservations": [
+            "最喜欢的方块是否被删只取决于它的数值与排序后的边界，不取决于原始位置；设其数值为 $x$。",
+            "若第 $k$ 大方块的数值大于 $x$，前 $k$ 个全比它大，答案为 NO；若小于 $x$，它必在前 $k$ 个中，答案为 YES。",
+            "当第 $k$ 个数值等于 $x$ 时，若所有数值为 $x$ 的方块都位于前 $k$ 个，答案为 YES；否则相同数值方块的排序顺序可变，答案为 MAYBE。"
+          ],
+          "solutionBrief": "记最喜欢方块的数值为 $x$，排序后比较第 $k$ 个和第 $k+1$ 个数值：边界严格高于 $x$ 时为 NO，严格低于时为 YES；边界处与 $x$ 相等时，若后面仍有同值方块则为 MAYBE，否则为 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1980C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sofia and the Lost Operations",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1980/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/130135",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定初始数组 $a$、目标数组 $b$ 以及按固定顺序执行的操作值 $d_1,\\ldots,d_m$；第 $j$ 次操作可选择任意下标 $c_j$，将该位置改为 $d_j$。需要判断是否能选择这些下标，使操作结束后数组恰好变为 $b$。",
+          "transformedStatement": "只关注初始值与目标值不同的位置：它们分别提出必须被满足的最终赋值需求；多余操作可集中写入一个最终值为 $d_m$ 的位置，并由最后一次操作覆盖。问题因此转化为多重集合包含检查及 $d_m$ 是否出现在目标数组中。",
+          "keyObservations": [
+            "最后一次操作写入的值 $d_m$ 必须出现在目标数组 $b$ 中，否则最后一次修改后不可能得到 $b$。",
+            "所有满足 $a_i\\ne b_i$ 的位置都必须被某次操作写成 $b_i$，因此这些目标值的多重集合必须包含于 $d_1,\\ldots,d_m$。",
+            "匹配完所有不相同位置后，剩余操作都可施加到任意满足 $b_j=d_m$ 的位置，并由最后一次操作覆盖，因此无需为其余操作寻找新位置。"
+          ],
+          "solutionBrief": "先确认 $d_m$ 出现在 $b$ 中，再统计所有 $a_i\\ne b_i$ 所需的目标值，并检查它们能否由操作值多重集合提供。匹配后将剩余操作统一放到一个最终值为 $d_m$ 的位置即可；可用排序双指针或映射实现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1980D",
+          "index": "D",
+          "slot": "D",
+          "title": "GCD-sequence",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1980/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/130135",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数数组 $a$，先对每对相邻元素取最大公约数形成 GCD 序列。必须恰好删除 $a$ 中一个元素并重新计算相邻 GCD，判断所得序列能否非递减。",
+          "transformedStatement": "把目标转化为修复相邻 GCD 序列的首次下降。删除位置 $j$ 时，只会移除与 $a_j$ 相关的旧 GCD，并在两侧存在时新增 $\\gcd(a_{j-1},a_{j+1})$，因此候选位置可局限在首次下降涉及的三个元素。",
+          "keyObservations": [
+            "若原始 GCD 序列已经非递减，删除末尾元素不会影响剩余相邻 GCD 的顺序，因此答案必为 YES。",
+            "扫描原数组得到第一个下降位置，即满足 $\\gcd(a_{i-1},a_i)>\\gcd(a_i,a_{i+1})$ 的位置；任何成功删除都必须修复这个局部违序。",
+            "删除 $a_j$ 只会移除与它相邻的至多两个旧 GCD，并在两侧存在时新增 $\\gcd(a_{j-1},a_{j+1})$，所以首个下降处的候选删除位置仅需考虑 $i-1$、$i$、$i+1$。",
+            "分别验证删除这三个候选位置后的完整 GCD 序列；只要有一个非递减，就存在合法删除方案，否则无解。"
+          ],
+          "solutionBrief": "先扫描相邻 GCD，找到第一个下降；若不存在则删除末元素。否则只尝试删除下降处涉及的三个数组元素，并逐一判断删除后的 GCD 序列是否非递减。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1980E",
+          "index": "E",
+          "slot": "E",
+          "title": "Permutation of Rows and Columns",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1980/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/130135",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "hashing",
+            "implementation",
+            "math",
+            "matrices",
+            "sortings"
+          ],
+          "statementBrief": "给定两个均包含 $1$ 到 $nm$ 的排列矩阵。每次可以重排（等价于交换）任意两行或任意两列，允许进行任意次操作，判断能否把矩阵 $a$ 变成矩阵 $b$。",
+          "transformedStatement": "把每个元素在两矩阵中的位置表示为原始行、原始列到目标行、目标列的对应关系；由于行列操作彼此独立，只需判断这些对应关系是否分别构成一致的行映射和列映射。",
+          "keyObservations": [
+            "行的重排不会改变任意元素所在的列，列的重排也不会改变其所在的行，因此行、列位置可以分开验证。",
+            "同一原始行中的所有元素在目标矩阵中必须拥有相同的目标行号，这些行号共同确定原始行的重排映射。",
+            "同理，按元素记录原始列号与目标列号；若同一原始列对应多个目标列号，则不可能通过列重排得到目标矩阵。"
+          ],
+          "solutionBrief": "记录每个数在两矩阵中的行号和列号。检查同一原始行的目标行号是否统一、同一原始列的目标列号是否统一；两项都满足即可输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1980F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Field Division (easy version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1980/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/130135",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的网格和位于不同格子的 $k$ 个喷泉，Alice 要沿只能向下或向右变化的边界划出自己的区域，且喷泉默认归 Bob；Bob 至多把一个喷泉交给 Alice。要求先求不转让喷泉时 Alice 能得到的最大格子数，再对每个喷泉判断转让它后是否会使 Alice 的面积增加。",
+          "transformedStatement": "把划分边界改写为各行 Alice 区域宽度序列：从下到上宽度不能增加，并在每行受最左喷泉限制。转让某个喷泉的影响等价于判断它是否位于边界的拐角处。",
+          "keyObservations": [
+            "若第 $i$ 行属于 Alice 的格子数为 $x$，则第 $i-1$ 行至多也有 $x$ 个，因此可从下往上维护各行宽度。",
+            "处理当前行时，Alice 取得的格子数是上一行宽度与该行最左喷泉左侧格子数中的较小值，整块区域由此唯一确定。",
+            "相对边界，喷泉可能邻接 $0$、$1$ 或 $2$ 个 Alice 格子；只有邻接两个格子的“拐角”喷泉被交给 Alice 后会增加面积，其他喷泉的增量均为 $0$。",
+            "按行号降序、列号升序处理喷泉，并维护最近拐角的位置，即可判断每个喷泉是否为拐角，避免依赖 $n,m$ 的大小。"
+          ],
+          "solutionBrief": "从底行向上维护 Alice 区域的宽度，先得到所有喷泉都归 Bob 时的最大面积。将喷泉按行降序、列升序扫描，维护最近拐角；只有拐角喷泉交给 Alice 后面积才增加，因此对应输出 $1$，其余输出 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1980F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Field Division (hard version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1980/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/130135",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的网格和位于不同格子的 $k$ 个喷泉。Alice 要在题面规定的条件下划分并最大化自己的区域；Bob 可以不给喷泉，也可以把第 $i$ 个喷泉交给 Alice。输出 Bob 不交喷泉时 Alice 区域的最大面积 $\\alpha$，以及交出每个喷泉后相对 $\\alpha$ 增加的精确面积 $a_i$。",
+          "transformedStatement": "题解把“移除一个喷泉后重新求最大区域”转化为对按特定顺序排列的喷泉维护前缀信息，并研究喷泉是否属于会影响边界的“角点”。非角点的作用被延迟到其前方最后一个角点移除之后，再按相邻角点区间统一计算面积变化。",
+          "keyObservations": [
+            "前缀上的已存信息可以复用来计算移除某个喷泉后的面积变化，从而避免为每个喷泉重新处理整个前缀。",
+            "按题解定义的排序顺序，非角点喷泉要么永远不会成为角点，要么只有在它之前的最后一个角点被移除后才可能成为角点；因此其影响可归入相邻角点之间的区间。",
+            "对每个角点计算在暂不考虑它、直到下一个角点出现期间的面积变化，就能覆盖所有喷泉，且每个喷泉只被处理一次。"
+          ],
+          "solutionBrief": "先利用简单版方法预处理前缀信息，再按题解规定的顺序识别角点。对每个角点计算其被移除后、直到下一个角点之间的面积变化，并据此得到每个喷泉对应的精确增量；每个喷泉只处理一次。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1980G",
+          "index": "G",
+          "slot": "G",
+          "title": "Yasya and the Mysterious Tree",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1980/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/130135",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "图论与网络流",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "greedy",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带非负整数边权的树。每次操作要么把所有边权同时与 $y$ 按位异或，要么从指定顶点 $v$ 虚拟连一条权值为 $x$ 的边到任意其他顶点 $u$，求新形成的唯一简单环上所有边权的异或和最大值；虚拟边不会保留。",
+          "transformedStatement": "以顶点 $1$ 为根，预处理每个顶点到根的路径异或值 $d_v$，第二类操作转化为在所有 $u\\ne v$ 中最大化 $d_v\\oplus d_u\\oplus x$。全局更新只改变奇数深度点，因此维护一个奇数层掩码，并对两种深度分别维护可动态排除一个元素的二进制 Trie。",
+          "keyObservations": [
+            "令 $d_v$ 为根 $1$ 到 $v$ 的路径异或和，则给 $v$ 与 $u$ 添加权值为 $x$ 的边后，环异或和等于 $d_v\\oplus d_u\\oplus x$，无需显式寻找环。",
+            "所有边同时异或 $y$ 时，$d_v$ 仅在深度为奇数时变化，并统一变为 $d_v\\oplus y$；因此更新可由一个全局掩码记录。",
+            "将顶点按深度奇偶分别放入两棵二进制 Trie，可在每棵 Trie 中求与目标值异或最大的 $d_u$，再比较两类结果。",
+            "查询时必须暂时移除顶点 $v$ 对应的 Trie 叶子，避免选到 $u=v$；用终止计数支持删除后恢复。"
+          ],
+          "solutionBrief": "先 DFS 计算根到各点的路径异或值 $d_v$，并按深度奇偶建两棵二进制 Trie。全局边更新只记录奇数深度掩码；查询时暂时删除 $v$，分别在两棵 Trie 中求最大异或值并取最大，最后恢复 $v$。总复杂度为 $O((n+m)\\log 10^9)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
