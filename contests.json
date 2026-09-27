@@ -2739,6 +2739,17 @@
     "date": "2026-03-29"
   },
   {
+    "id": 2218,
+    "name": "Codeforces Round 1090 (Div. 4)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1775313300,
+    "relativeTimeSeconds": 15154346,
+    "date": "2026-04-04"
+  },
+  {
     "id": 2217,
     "name": "Codeforces Round 1091 (Div. 2) and CodeCraft 26",
     "type": "CF",
