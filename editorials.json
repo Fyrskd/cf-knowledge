@@ -8,6 +8,28 @@
     "raw_sha256": "7fad0de808d2e0d82c07c8c879f9f86473dcb016ecc85133c8bc12a87e68f7a6"
   },
   {
+    "url": "https://codeforces.com/blog/entry/109256",
+    "blog_entry_id": 109256,
+    "title": "Pinely Round 1 (Div. 1 + Div. 2) Editorial",
+    "author": "dXqwq",
+    "creation_time": "2022-11-20",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Pinely Round 1 (Div. 1 + Div. 2) Editorial",
+    "section_count": 8,
+    "covered_problems": [
+      "1761A",
+      "1761B",
+      "1761C",
+      "1761D",
+      "1761E",
+      "1761F1",
+      "1761F2",
+      "1761G"
+    ],
+    "raw_sha256": "77fb46a0ec280765276239765e5a5977f014d597369e0e1995c767519a088952"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/109468",
     "blog_entry_id": 109468,
     "title": "Codeforces Global Round 24 Editorial",
