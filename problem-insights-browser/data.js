@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2812,
+    "total_problems": 2819,
     "source_total_problems": 2819,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 2812,
-    "with_editorial_brief": 2550,
-    "with_solution_brief": 2551,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 2819,
+    "with_editorial_brief": 2557,
+    "with_solution_brief": 2558,
     "missing_editorial_brief": 261,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1874,
+    "ai_override_count": 1881,
     "primary_topic_count": 13,
-    "contest_count": 428,
+    "contest_count": 429,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数论与同余": 304,
+    "构造与贪心": 885,
+    "组合计数与概率": 221,
+    "交互": 89,
+    "动态规划与状态设计": 239,
     "基础实现与模拟": 167,
-    "构造与贪心": 883,
-    "动态规划与状态设计": 238,
-    "组合计数与概率": 219,
     "图论与网络流": 172,
     "数据结构": 262,
     "博弈": 95,
     "树结构": 146,
-    "数论与同余": 303,
     "代数、矩阵与多项式": 21,
     "字符串": 150,
-    "几何": 68,
-    "交互": 88
+    "几何": 68
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1604,
+    "ai_generated_with_editorial": 1611,
     "ai_generated_partial_editorial": 55,
     "missing_editorial": 261,
     "manual_override": 891,
@@ -87072,6 +87072,222 @@ window.CF_INSIGHTS_DATA = {
             "将最重儿子放在 DFS 首位后，按 DFS 顺序移动当前区间时每个顶点被反复加入的次数为 $O(\\log n)$；这保证了小到大处理及路径分组的总移动代价可控。"
           ],
           "solutionBrief": "先将子树转成 DFS 区间，再用分块结构维护值频率的最小字典序众数。按子树大小分轻重查询：轻查询临时加入小区间，重查询按竖直路径批处理并移动两个区间边界，取 $B=\\sqrt{n\\log n}$ 时获得题解中的复杂度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1762,
+      "name": "Codeforces Round 838 (Div. 2)",
+      "date": "2022-12-15",
+      "url": "https://codeforces.com/contest/1762",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 3100,
+      "problems": [
+        {
+          "key": "1762A",
+          "index": "A",
+          "slot": "A",
+          "title": "Divide and Conquer",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1762/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/110169",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组，每次可选择一个位置，将该元素替换为其除以 $2$ 的下取整值。求使数组元素总和变为偶数所需的最少操作次数，允许不操作。",
+          "transformedStatement": "先按总和奇偶分类：总和偶数直接结束；总和奇数时，把问题转化为寻找一个元素，使其经过若干次连续整除 $2$ 后改变相对原值的奇偶性，并最小化所需次数。",
+          "keyObservations": [
+            "总和为偶数时无需操作；总和为奇数时，最终必须让被操作元素的奇偶性变化为奇数次，才能改变总和奇偶性。",
+            "当初始总和为奇数时，只需改变一个元素的奇偶性；改变多个元素不会比其中一次最少代价更优。",
+            "对元素 $x$ 反复执行整除 $2$，找到第一次满足当前值与原值奇偶性不同的位置，其操作次数就是该元素的最小代价。",
+            "由于 $a_i\\le 10^6$，最多约 $20$ 次整除即可到达 $0$，因此逐个元素模拟并取最小值即可。"
+          ],
+          "solutionBrief": "先判断数组总和奇偶。若为偶数答案是 $0$；否则对每个元素单独反复除以 $2$，计算其首次改变相对原值奇偶性的操作次数，取最小值。复杂度为 $O(n\\log A_{max})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1762B",
+          "index": "B",
+          "slot": "B",
+          "title": "Make Array Good",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1762/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/110169",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定一个正整数数组，每次可选择一个位置并给该元素增加任意非负整数，最多进行 $n$ 次操作。要求输出一组操作，使最终数组中任意两元素的较大值都能被较小值整除。",
+          "transformedStatement": "将每个元素独立映射为严格大于它的最小 $2$ 的幂；问题转化为把整个数组变成只含 $2$ 的幂，因为同一质数的幂按指数排列且高次幂可被低次幂整除。",
+          "keyObservations": [
+            "把所有元素都改成严格大于原值的最小 $2$ 的幂后，任意两个元素都是 $2$ 的幂，较大的一个必然能被较小的一个整除，因此数组满足 good 定义。",
+            "对每个 $a_i$ 独立处理即可，因为操作只修改单个位置；令 $f(x)$ 为严格大于 $x$ 的最小 $2$ 的幂，给位置 $i$ 加上 $f(a_i)-a_i$ 即可得到目标值。",
+            "任意正整数 $x$ 的区间 $[x,2x]$ 内存在 $2$ 的幂，所以 $f(x)$ 不会超过 $2x$；该性质保证目标值始终容易构造。"
+          ],
+          "solutionBrief": "对每个位置输出一次操作，把 $a_i$ 增加到严格大于它的最小 $2$ 的幂，即输出增量 $f(a_i)-a_i$。最终所有元素都是 $2$ 的幂，任意两数满足整除关系；最多使用 $n$ 次操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1762C",
+          "index": "C",
+          "slot": "C",
+          "title": "Binary Strings are Fun",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1762/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/110169",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "给定二进制串 $s$，长度为 $k$ 的前缀可扩展为长度 $2k-1$ 的串：奇数位置必须保持前缀字符，偶数位置可任意填 $0/1$。若每个奇数长度前缀的中位数都等于其末位字符，则扩展称为好扩展；求所有前缀的好扩展数之和，模 $998244353$。",
+          "transformedStatement": "对每个前缀只需关注其末尾最长的连续相同字符段。该段长度为 $L$ 时，好扩展数等于 $2^{L-1}$，所以问题转化为在线维护连续段长度并累加对应幂次。",
+          "keyObservations": [
+            "设前缀的最长同字符后缀长度为 $L$，则其好扩展数为 $2^{L-1}$；后缀中的偶数位置可任意选择，贡献全部自由度。",
+            "若位置 $j$ 后面仍出现与 $s_j$ 不同的字符，则扩展中的 $b_{2j}$ 必须取与 $s_j$ 相反的值，否则后续对应前缀的中位数无法改变为目标字符。",
+            "从左到右处理前缀时，同字符相邻就令当前计数乘 $2$，字符变化就重置为 $1$，因此每个前缀的贡献可在线累加。"
+          ],
+          "solutionBrief": "对每个前缀维护其末尾连续相同字符段长度对应的计数。相邻字符相同则计数乘 $2$，否则重置为 $1$；将每次计数累加并对 $998244353$ 取模，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1762D",
+          "index": "D",
+          "slot": "D",
+          "title": "GCD Queries ",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1762/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/110169",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "interactive",
+            "number theory"
+          ],
+          "statementBrief": "隐藏数组是 $0$ 到 $n-1$ 的一个排列。每次可选择两个不同下标询问对应元素的最大公约数，最多询问 $2n$ 次，最后输出两个下标，使其中至少一个位置存放 $0$。",
+          "transformedStatement": "把目标转化为逐步排除确定不含 $0$ 的下标：维护两个候选位置，每加入一个新位置，用两次最大公约数比较淘汰一个安全位置，保证 $0$ 始终留在候选对中。",
+          "keyObservations": [
+            "对三个不同下标 $i,j,k$ 查询 $\\gcd(p_i,p_k)$ 与 $\\gcd(p_j,p_k)$；若两值相等，则 $p_k$ 不可能为 $0$，因为 $p_i,p_j$ 不同而 $\\gcd(0,x)=x$。",
+            "若两次查询结果不相等，较小结果对应的端点不可能为 $0$：若该端点为 $0$，查询值应等于另一个数 $p_k$，不可能小于与 $p_k$ 的最大公约数。",
+            "维护两个尚未排除的下标，每加入一个新下标只需查询两次并淘汰一个确定非零的下标；重复 $n-2$ 次后，剩余两下标中必有存放 $0$ 的位置。",
+            "该淘汰过程总共使用 $2(n-2)$ 次查询，最终直接输出剩余的两个下标即可满足要求。"
+          ],
+          "solutionBrief": "维护两个候选下标 $l,r$。对每个新下标 $i$ 查询 $\\gcd(p_l,p_i)$ 和 $\\gcd(p_r,p_i)$：相等时舍弃 $i$，否则舍弃查询值较大的对应端点，并用 $i$ 替换它。每次舍弃者必非零，最终输出 $l,r$；共查询 $2(n-2)$ 次。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1762E",
+          "index": "E",
+          "slot": "E",
+          "title": "Tree Sum",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1762/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/110169",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "树结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定 $n$ 个带编号顶点的树，并为每条边赋予 $1$ 或 $-1$ 的权重。若每个顶点相连边的权重乘积都是 $-1$，则称其为 good；要求所有 good 树中，从顶点 $1$ 到顶点 $n$ 的唯一路径边权和之和，结果对 $998244353$ 取模。",
+          "transformedStatement": "先按删除某条路径边后两侧的顶点数分类，而不再枚举整棵树。对含顶点 $1$ 的一侧大小为 $l$ 的边，其权重固定为 $(-1)^l$，再用两侧选点数、连接端点数和 Cayley 树计数统计出现次数。",
+          "keyObservations": [
+            "把所有顶点 incident 边权乘积相乘时，每条边的权重会出现两次，整体恒为 $1$；而 good 条件要求其为 $(-1)^n$，因此 $n$ 为奇数时不存在合法树。",
+            "当 $n$ 为偶数时，任意一棵无权树都恰好有一种边权赋值满足条件：以任意顶点为根，从叶子向根确定每条父子边的权重。",
+            "对任意边，若删去它后含有节点 $1$ 的一侧有 $l$ 个顶点，则该边权只由这一侧大小决定，为 $(-1)^l$，与树的具体形状无关。",
+            "固定一条连接两侧的边并令两侧大小为 $l,r$，其出现次数为 $C(n-2,l-1) imes l imes r imes l^{l-2} imes r^{r-2}$；由于两端节点分居两侧，这些边全部贡献到路径 $1$ 到 $n$ 的距离和中。"
+          ],
+          "solutionBrief": "奇数 $n$ 直接输出 $0$。偶数时按路径边的割大小 $l=1 rust n-1$ 分类，累加 $(-1)^l C(n-2,l-1)lr l^{l-2}r^{r-2}$，其中 $r=n-l$，所有运算对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1762F",
+          "index": "F",
+          "slot": "F",
+          "title": "Good Pairs ",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1762/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/110169",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定数组 $a$ 和整数 $k$，区间端点 $(l,r)$ 是 good，当且仅当能选取从 $l$ 到 $r$ 的递增下标序列，使相邻选中元素的值之差绝对值不超过 $k$。要求统计所有 $1\\le l\\le r\\le n$ 的 good pair 数量。",
+          "transformedStatement": "将不同端点值的可达路径按端点大小拆成严格递增和严格递减两类：答案等于相等值端点 pair 数，加上原数组中的递增路径数与倒序数组中的递增路径数。",
+          "keyObservations": [
+            "相邻值差不超过 $k$ 的任意路径，可通过交换论证改造成端点方向上的严格单调路径，因此不同端点值的好 pair 可按递增或递减两类分别统计。",
+            "设 $F(a,k)$ 只统计严格递增路径，倒序数组上的 $F$ 对应原数组中的严格递减路径；端点值相等的 pair 统一单独计数。",
+            "从右向左处理位置 $i$，令 $j$ 是右侧第一个满足 $a_j\\in[a_i+1,a_i+k]$ 的位置，则 $dp_i=dp_j+f(i,a_i+1,a_j)$，把后续可达位置压缩为区间计数。",
+            "用线段树维护每个值当前最早出现的位置，用树状数组统计值域区间中的右侧元素数量，即可在 $O(n\\log n)$ 内完成每个方向的统计。"
+          ],
+          "solutionBrief": "先统计所有 $a_l=a_r$ 的 pair，再分别在原数组和倒序数组上计算严格递增路径数。每次从右向左用线段树找最早可转移位置，并用树状数组完成区间计数，最终三部分相加。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1762G",
+          "index": "G",
+          "slot": "G",
+          "title": "Unequal Adjacent Elements",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1762/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/110169",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "sortings"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的正整数数组，需要输出下标 $1$ 到 $n$ 的一个排列 $p$，使按顺序取出 $a_{p_1},a_{p_2},\\ldots,a_{p_n}$ 后，相邻位置的元素满足题目要求的“不相等”条件；若不存在则输出 NO，否则输出任意可行排列。",
+          "transformedStatement": "将下标序列划分为若干个奇数长度的 beautiful 块：每块有一个值出现恰好一半以上，并把该值放在奇数位置、其余下标放在偶数位置；随后额外控制相邻块的边界值，必要时对末尾后缀整体重排。",
+          "keyObservations": [
+            "若某个值出现次数超过 $\\lceil n/2\\rceil$，它无法在排列中避免与自身相邻，因此答案必为 NO；反之题解给出的分块构造总能完成。",
+            "长度为奇数且某个众数恰好出现 $\\lceil |b|/2\\rceil$ 次的子数组可称为 beautiful：把该众数放在奇数位置，其余元素放在偶数位置即可保证块内相邻值不同。",
+            "从左到右取最短的 beautiful 块，并要求其末尾值与下一块起始值不同，可使块间边界也满足相邻不等；已完成前缀无需再次修改。",
+            "若最后剩余部分无法直接成块，则从末尾反向寻找平衡得分为 $1$ 的后缀，并连同边界前一个位置重新交错排列，从而同时修复末尾块和跨块边界。"
+          ],
+          "solutionBrief": "先统计频次，若最大频次超过 $\\lceil n/2\\rceil$ 输出 NO。否则从左向右划分 beautiful 子数组，将其下标交错排列；末尾无法成块时反向调整后缀并把边界下标并入重排，输出得到的排列。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
