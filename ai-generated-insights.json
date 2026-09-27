@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-27T20:32:24+00:00",
+  "updated_at": "2026-09-27T20:35:47+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -58530,6 +58530,35 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的质数定义与输出要求，以及 editorial 给出的 $m=n$ 构造。",
+        "quality_flags": []
+      }
+    },
+    "1754B": {
+      "problem_key": "1754B",
+      "title": "Kevin and Permutation",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1754/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/108336",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9531cf00a7c2b412aacb258761d6d3680cc740cc0b8cc4cc7e0e9cc46de02af8",
+      "generated_at": "2026-09-27T20:35:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $1$ 到 $n$ 的所有不同整数，需要将它们排列成一个排列。目标是最大化所有相邻元素绝对差中的最小值，并输出任意一个达到最大值的排列。",
+        "transformed_statement": "把问题转化为先确定任意排列都无法超过的最小相邻差上界，再将大于等于 $x$ 的数与小于 $x$ 的数交替排列，其中 $x=\u0001lfloor n/2 \u0001rfloor+1$，使每条相邻边都跨越两段。",
+        "key_observations": [
+          "中间值 $\u0001lfloor n/2 \u0001rfloor+1$ 与任意其他数的最大可能差值不超过 $\u0001lfloor n/2 \u0001rfloor$，因此所有相邻差的最小值不可能更大。",
+          "令 $x=\u0001lfloor n/2 \u0001rfloor+1$，交替放置 $x,1,x+1,2,x+2,\\ldots$，相邻元素始终来自高低两段，其差值至少为 $x-1$。",
+          "该构造达到上界 $\u0001lfloor n/2 \u0001rfloor$，因此直接交替输出两段连续数即可得到最优排列。"
+        ],
+        "solution_brief": "先用中间值证明最小相邻差的上界为 $\u0001lfloor n/2 \u0001rfloor$，再令 $x=\u0001lfloor n/2 \u0001rfloor+1$，按 $x,1,x+1,2,x+2,\\ldots$ 交替输出，构造达到该上界的排列。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text、statement_text，并参考题目 tags。",
         "quality_flags": []
       }
     }

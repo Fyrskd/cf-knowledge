@@ -15,19 +15,60 @@
     ]
   },
   "summary": {
-    "total_problems": 2897,
+    "total_problems": 2898,
     "source_total_problems": 2899,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 2897,
-    "with_editorial_brief": 2633,
-    "with_solution_brief": 2634,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2898,
+    "with_editorial_brief": 2634,
+    "with_solution_brief": 2635,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1959,
+    "ai_override_count": 1960,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 2,
+      "problem_key": "1754B",
+      "contest_id": 1754,
+      "title": "Kevin and Permutation",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1754/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/108336",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定 $1$ 到 $n$ 的所有不同整数，需要将它们排列成一个排列。目标是最大化所有相邻元素绝对差中的最小值，并输出任意一个达到最大值的排列。",
+      "transformed_statement": "把问题转化为先确定任意排列都无法超过的最小相邻差上界，再将大于等于 $x$ 的数与小于 $x$ 的数交替排列，其中 $x=\u0001lfloor n/2 \u0001rfloor+1$，使每条相邻边都跨越两段。",
+      "key_observations": [
+        "中间值 $\u0001lfloor n/2 \u0001rfloor+1$ 与任意其他数的最大可能差值不超过 $\u0001lfloor n/2 \u0001rfloor$，因此所有相邻差的最小值不可能更大。",
+        "令 $x=\u0001lfloor n/2 \u0001rfloor+1$，交替放置 $x,1,x+1,2,x+2,\\ldots$，相邻元素始终来自高低两段，其差值至少为 $x-1$。",
+        "该构造达到上界 $\u0001lfloor n/2 \u0001rfloor$，因此直接交替输出两段连续数即可得到最优排列。"
+      ],
+      "solution_brief": "先用中间值证明最小相邻差的上界为 $\u0001lfloor n/2 \u0001rfloor$，再令 $x=\u0001lfloor n/2 \u0001rfloor+1$，按 $x,1,x+1,2,x+2,\\ldots$ 交替输出，构造达到该上界的排列。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-27T20:35:47+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 3,
       "problem_key": "1740A",

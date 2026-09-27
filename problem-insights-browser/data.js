@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 2897,
+    "total_problems": 2898,
     "source_total_problems": 2899,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 2897,
-    "with_editorial_brief": 2633,
-    "with_solution_brief": 2634,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 2898,
+    "with_editorial_brief": 2634,
+    "with_solution_brief": 2635,
     "missing_editorial_brief": 263,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 1959,
+    "ai_override_count": 1960,
     "primary_topic_count": 13,
-    "contest_count": 440,
+    "contest_count": 441,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 911,
+    "构造与贪心": 912,
     "几何": 70,
     "数据结构": 269,
     "树结构": 149,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 21
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1683,
+    "ai_generated_with_editorial": 1684,
     "ai_generated_partial_editorial": 59,
     "missing_editorial": 263,
     "manual_override": 891,
@@ -89611,6 +89611,45 @@ window.CF_INSIGHTS_DATA = {
             "基于“至多一个非特殊点”，分治递归固定唯一可能的非特殊分量，并维护其余分量特殊点形成的模背包；每层转移规模为 $O(nm)$，总复杂度为 $O(nm\\log d)$。"
           ],
           "solutionBrief": "设 $d=\\gcd(n,k)$，由差分关系检查各连通分量是否可行，并把每个分量表示为代表值到代价 $f_i(x)$。利用代价函数的特殊斜率点证明最优解至多一个非特殊代表值，再用分治维护模背包，求满足代表值总和属于候选集合 $b$ 的最小代价。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1754,
+      "name": "Codeforces Round 829 (Div. 2)",
+      "date": "2022-10-23",
+      "url": "https://codeforces.com/contest/1754",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 800,
+      "problems": [
+        {
+          "key": "1754B",
+          "index": "B",
+          "slot": "B",
+          "title": "Kevin and Permutation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1754/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/108336",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $1$ 到 $n$ 的所有不同整数，需要将它们排列成一个排列。目标是最大化所有相邻元素绝对差中的最小值，并输出任意一个达到最大值的排列。",
+          "transformedStatement": "把问题转化为先确定任意排列都无法超过的最小相邻差上界，再将大于等于 $x$ 的数与小于 $x$ 的数交替排列，其中 $x=\u0001lfloor n/2 \u0001rfloor+1$，使每条相邻边都跨越两段。",
+          "keyObservations": [
+            "中间值 $\u0001lfloor n/2 \u0001rfloor+1$ 与任意其他数的最大可能差值不超过 $\u0001lfloor n/2 \u0001rfloor$，因此所有相邻差的最小值不可能更大。",
+            "令 $x=\u0001lfloor n/2 \u0001rfloor+1$，交替放置 $x,1,x+1,2,x+2,\\ldots$，相邻元素始终来自高低两段，其差值至少为 $x-1$。",
+            "该构造达到上界 $\u0001lfloor n/2 \u0001rfloor$，因此直接交替输出两段连续数即可得到最优排列。"
+          ],
+          "solutionBrief": "先用中间值证明最小相邻差的上界为 $\u0001lfloor n/2 \u0001rfloor$，再令 $x=\u0001lfloor n/2 \u0001rfloor+1$，按 $x,1,x+1,2,x+2,\\ldots$ 交替输出，构造达到该上界的排列。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
