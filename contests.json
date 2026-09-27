@@ -1,5 +1,16 @@
 [
   {
+    "id": 1730,
+    "name": "Codeforces Round 823 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1664116500,
+    "relativeTimeSeconds": 126430849,
+    "date": "2022-09-25"
+  },
+  {
     "id": 1739,
     "name": "Educational Codeforces Round 136 (Rated for Div. 2)",
     "type": "ICPC",
