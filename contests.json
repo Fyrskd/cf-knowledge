@@ -1,5 +1,16 @@
 [
   {
+    "id": 1612,
+    "name": "Educational Codeforces Round 117 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1637573700,
+    "relativeTimeSeconds": 153017206,
+    "date": "2021-11-22"
+  },
+  {
     "id": 1610,
     "name": "Codeforces Global Round 17",
     "type": "CF",
