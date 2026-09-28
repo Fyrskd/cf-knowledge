@@ -15,19 +15,134 @@
     ]
   },
   "summary": {
-    "total_problems": 4090,
+    "total_problems": 4093,
     "source_total_problems": 4093,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 4090,
-    "with_editorial_brief": 3744,
-    "with_solution_brief": 3746,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4093,
+    "with_editorial_brief": 3747,
+    "with_solution_brief": 3749,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3152,
+    "ai_override_count": 3155,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1509A",
+      "contest_id": 1509,
+      "title": "Average Height",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1509/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/89644",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms"
+      ],
+      "statement_brief": "给定若干成员的身高，可以任意调整他们在线上的排列顺序。若相邻两人的平均身高是整数，这一对就算上镜；要求输出一种排列，使上镜的相邻对数量最多。",
+      "transformed_statement": "将每个身高替换为奇偶标签：相邻标签相同当且仅当该对上镜。于是问题转化为排列这些标签，使相邻标签不同的边界数量最少。",
+      "key_observations": [
+        "两人的平均身高为整数，当且仅当身高奇偶性相同；因此是否上镜只由奇偶性决定。",
+        "把所有偶数身高排在一起、所有奇数身高排在一起，至多只在两组交界处出现一个奇偶不同的相邻对，从而把不上镜的相邻对压到最少。"
+      ],
+      "solution_brief": "按身高奇偶性分组，先输出所有偶数，再输出所有奇数。组内相邻成员奇偶性相同，只有两组交界处可能出现不上镜的一对，因此该排列最大化上镜相邻对数量。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T23:53:22+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1509B",
+      "contest_id": 1509,
+      "title": "TMT Document",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1509/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/89644",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "字符串"
+      ],
+      "original_tags": [
+        "greedy"
+      ],
+      "statement_brief": "给定一个仅由 T 和 M 组成、长度为 3 的倍数的字符串。可以把每个字符恰好分配到一个子序列中，要求每个子序列按原字符串顺序都是 TMT；判断是否能够完成这种划分。",
+      "transformed_statement": "令 $k=n/3$，将 M 的位置依次记为 $m_1,\u001bm_2,\u001b\\ldots,m_k$，将 T 的位置记为 $t_1,\u001bt_2,\u001b\\ldots,t_{2k}$。问题等价于检查每个 $i$ 是否都有 $t_i<m_i<t_{i+k}$，满足时按这三处位置直接配对即可。",
+      "key_observations": [
+        "若字符串长度为 $3k$，可分成 $k$ 个 TMT，因此必须恰有 $k$ 个 M 和 $2k$ 个 T；数量不符时无需考虑位置。",
+        "按从左到右编号 M 的位置为 $m_i$、T 的位置为 $t_i$，第 $i$ 个 M 左侧至少要有 $i$ 个 T，故必须满足 $t_i<m_i$。",
+        "对称地，第 $i$ 个 M 右侧必须留有足够的 T，等价于 $m_i<t_{i+k}$；两侧条件同时成立时，直接配成 $(t_i,m_i,t_{i+k})$ 即可构造全部子序列。"
+      ],
+      "solution_brief": "设 $n=3k$，先检查 M、T 数量是否分别为 $k$、$2k$。再从左到右记录 M 的位置 $m_i$ 和 T 的位置 $t_i$，当且仅当所有 $i$ 都满足 $t_i<m_i<t_{i+k}$ 时答案为 YES；此时按对应位置组成 $k$ 个 TMT 子序列。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T23:53:13+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1509C",
+      "contest_id": 1509,
+      "title": "The Sports Festival",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1509/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/89644",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "dp",
+        "greedy"
+      ],
+      "statement_brief": "给定 $n$ 名成员的速度，可以任意调整他们的出场顺序。每完成一名成员的出场，就计算已出场成员中的最高速度与最低速度之差，要求选择顺序，使所有阶段的差异值之和最小。",
+      "transformed_statement": "将速度排序后，把安排过程建模为不断缩小一个连续区间：每一步从区间左端或右端选一人放到序列末尾。求从完整区间开始的最小累计代价，其中当前区间两端之差计入本步代价。",
+      "key_observations": [
+        "当最小速度和最大速度都已出现在某个前缀中，之后每个前缀的差异值都达到全局最大值；把这两个端点中较晚出现的一个移到最后不会增大答案。",
+        "反复应用端点移到末尾的结论，可知最优排列的每个前缀对应排序后数组中的一个连续区间，因此只需考虑从区间两端逐个取人的顺序。",
+        "区间 $[l,r]$ 的首尾速度差会计入当前阶段，而下一步只需在去掉左端或右端后继续，因此状态转移为 $dp(l,r)=s_r-s_l+\\min(dp(l+1,r),dp(l,r-1))$。"
+      ],
+      "solution_brief": "先将速度排序，令 $dp(l,r)$ 表示只安排区间 $[l,r]$ 时的最小差异和。区间长度为 1 时答案为 0；否则按移除左端或右端转移，最终求 $dp(1,n)$，时间复杂度为 $O(n^2)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T23:53:01+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 4,
       "problem_key": "1514A",

@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4090,
+    "total_problems": 4093,
     "source_total_problems": 4093,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 4090,
-    "with_editorial_brief": 3744,
-    "with_solution_brief": 3746,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4093,
+    "with_editorial_brief": 3747,
+    "with_solution_brief": 3749,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3152,
+    "ai_override_count": 3155,
     "primary_topic_count": 13,
-    "contest_count": 635,
+    "contest_count": 636,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1328,
+    "动态规划与状态设计": 335,
     "数论与同余": 430,
     "组合计数与概率": 320,
     "数据结构": 387,
     "图论与网络流": 273,
-    "构造与贪心": 1326,
-    "动态规划与状态设计": 334,
     "树结构": 192,
     "几何": 96,
     "基础实现与模拟": 252,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2748,
+    "ai_generated_with_editorial": 2751,
     "ai_generated_partial_editorial": 105,
     "missing_editorial": 344,
     "low_confidence": 1,
@@ -125770,6 +125770,93 @@ window.CF_INSIGHTS_DATA = {
             "从路径末端向前扫描时，维护当前向后边能触及的最远位置；批量查询可逐步收缩该边界，且每次查询都会让扫描位置或边界前移，因此总查询次数为线性级别。"
           ],
           "solutionBrief": "先用单边查询进行归并，构造哈密顿路径。路径上的向前边可由路径本身替代；再从后向前扫描，只保留能把可达范围扩展到更靠前位置的向后边，并用双指针和批量查询确定这些边。这样可据保留边恢复所有点对的可达性，查询次数符合限制。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1509,
+      "name": "Codeforces Round 715 (Div. 2)",
+      "date": "2021-04-16",
+      "url": "https://codeforces.com/contest/1509",
+      "type": "Div. 2",
+      "problemCount": 3,
+      "maxRating": 1800,
+      "problems": [
+        {
+          "key": "1509A",
+          "index": "A",
+          "slot": "A",
+          "title": "Average Height",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1509/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/89644",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定若干成员的身高，可以任意调整他们在线上的排列顺序。若相邻两人的平均身高是整数，这一对就算上镜；要求输出一种排列，使上镜的相邻对数量最多。",
+          "transformedStatement": "将每个身高替换为奇偶标签：相邻标签相同当且仅当该对上镜。于是问题转化为排列这些标签，使相邻标签不同的边界数量最少。",
+          "keyObservations": [
+            "两人的平均身高为整数，当且仅当身高奇偶性相同；因此是否上镜只由奇偶性决定。",
+            "把所有偶数身高排在一起、所有奇数身高排在一起，至多只在两组交界处出现一个奇偶不同的相邻对，从而把不上镜的相邻对压到最少。"
+          ],
+          "solutionBrief": "按身高奇偶性分组，先输出所有偶数，再输出所有奇数。组内相邻成员奇偶性相同，只有两组交界处可能出现不上镜的一对，因此该排列最大化上镜相邻对数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1509B",
+          "index": "B",
+          "slot": "B",
+          "title": "TMT Document",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1509/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/89644",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定一个仅由 T 和 M 组成、长度为 3 的倍数的字符串。可以把每个字符恰好分配到一个子序列中，要求每个子序列按原字符串顺序都是 TMT；判断是否能够完成这种划分。",
+          "transformedStatement": "令 $k=n/3$，将 M 的位置依次记为 $m_1,\u001bm_2,\u001b\\ldots,m_k$，将 T 的位置记为 $t_1,\u001bt_2,\u001b\\ldots,t_{2k}$。问题等价于检查每个 $i$ 是否都有 $t_i<m_i<t_{i+k}$，满足时按这三处位置直接配对即可。",
+          "keyObservations": [
+            "若字符串长度为 $3k$，可分成 $k$ 个 TMT，因此必须恰有 $k$ 个 M 和 $2k$ 个 T；数量不符时无需考虑位置。",
+            "按从左到右编号 M 的位置为 $m_i$、T 的位置为 $t_i$，第 $i$ 个 M 左侧至少要有 $i$ 个 T，故必须满足 $t_i<m_i$。",
+            "对称地，第 $i$ 个 M 右侧必须留有足够的 T，等价于 $m_i<t_{i+k}$；两侧条件同时成立时，直接配成 $(t_i,m_i,t_{i+k})$ 即可构造全部子序列。"
+          ],
+          "solutionBrief": "设 $n=3k$，先检查 M、T 数量是否分别为 $k$、$2k$。再从左到右记录 M 的位置 $m_i$ 和 T 的位置 $t_i$，当且仅当所有 $i$ 都满足 $t_i<m_i<t_{i+k}$ 时答案为 YES；此时按对应位置组成 $k$ 个 TMT 子序列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1509C",
+          "index": "C",
+          "slot": "C",
+          "title": "The Sports Festival",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1509/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/89644",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 名成员的速度，可以任意调整他们的出场顺序。每完成一名成员的出场，就计算已出场成员中的最高速度与最低速度之差，要求选择顺序，使所有阶段的差异值之和最小。",
+          "transformedStatement": "将速度排序后，把安排过程建模为不断缩小一个连续区间：每一步从区间左端或右端选一人放到序列末尾。求从完整区间开始的最小累计代价，其中当前区间两端之差计入本步代价。",
+          "keyObservations": [
+            "当最小速度和最大速度都已出现在某个前缀中，之后每个前缀的差异值都达到全局最大值；把这两个端点中较晚出现的一个移到最后不会增大答案。",
+            "反复应用端点移到末尾的结论，可知最优排列的每个前缀对应排序后数组中的一个连续区间，因此只需考虑从区间两端逐个取人的顺序。",
+            "区间 $[l,r]$ 的首尾速度差会计入当前阶段，而下一步只需在去掉左端或右端后继续，因此状态转移为 $dp(l,r)=s_r-s_l+\\min(dp(l+1,r),dp(l,r-1))$。"
+          ],
+          "solutionBrief": "先将速度排序，令 $dp(l,r)$ 表示只安排区间 $[l,r]$ 时的最小差异和。区间长度为 1 时答案为 0；否则按移除左端或右端转移，最终求 $dp(1,n)$，时间复杂度为 $O(n^2)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
