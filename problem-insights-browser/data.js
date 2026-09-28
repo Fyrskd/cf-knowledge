@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3448,
+    "total_problems": 3454,
     "source_total_problems": 3456,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3448,
-    "with_editorial_brief": 3150,
-    "with_solution_brief": 3152,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3454,
+    "with_editorial_brief": 3156,
+    "with_solution_brief": 3158,
     "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2510,
+    "ai_override_count": 2516,
     "primary_topic_count": 13,
-    "contest_count": 531,
+    "contest_count": 532,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "几何": 82,
-    "构造与贪心": 1111,
+    "构造与贪心": 1113,
+    "数据结构": 327,
+    "组合计数与概率": 263,
+    "几何": 83,
     "数论与同余": 366,
     "树结构": 167,
-    "组合计数与概率": 261,
-    "数据结构": 326,
     "图论与网络流": 225,
     "基础实现与模拟": 215,
     "字符串": 182,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "交互": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2190,
+    "ai_generated_with_editorial": 2196,
     "missing_editorial": 296,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -106374,6 +106374,200 @@ window.CF_INSIGHTS_DATA = {
             "当 $cnt\\ge k$ 时，可将同一类型的所有道具放入同一个集合，并把这些类型划分到 $k$ 个非空集合中，使每种类型只在一个孩子处计数，恰好得到总力量 $cnt$。"
           ],
           "solutionBrief": "先统计数组中的不同类型数 $cnt$。对每个团队规模 $k$，利用上述两种分配构造与下界匹配，答案直接为 $\\max(k,cnt)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1641,
+      "name": "Codeforces Round 773 (Div. 1)",
+      "date": "2022-02-23",
+      "url": "https://codeforces.com/contest/1641",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1641A",
+          "index": "A",
+          "slot": "A",
+          "title": "Great Sequence",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1641/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100249",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一个正整数序列和 $x$，每次可以向序列末尾添加任意正整数。要求最终能重排成若干对，使每对中的第二个数等于第一个数乘以 $x$，求最少需要添加多少个数。",
+          "transformedStatement": "把序列视为带重复元素的多重集合：每个数 $v$ 必须消耗一个 $v\\times x$ 才能形成合法对；若该倍数缺失，就补入一个倍数。按数值递增处理即可决定所有配对。",
+          "keyObservations": [
+            "由于 $x\\ge 2$，当前最小数不可能作为其他数乘以 $x$ 后的结果，只能寻找它对应的倍数作为配对对象。",
+            "一个数 $v$ 的合法配对对象唯一是 $v\\times x$；按从小到大处理后，目标倍数尚未被提前消耗，因此只需检查其剩余数量。",
+            "若多重集合中没有 $v\\times x$，补入一个该数即可完成当前配对；否则直接消耗一个 $v$ 和一个 $v\\times x$，每一步都是必要且独立的。"
+          ],
+          "solutionBrief": "统计各数出现次数，并按数值从小到大处理。对每个 $v$，若仍有一个 $v\\times x$ 就配对并各减少一次；否则答案加一，表示补入该倍数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1641B",
+          "index": "B",
+          "slot": "B",
+          "title": "Repetitions Decoding",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1641/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100249",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定整数数组，每次可在任意位置后插入两个相等的数，重复若干次后，要把最终数组划分为若干连续片段，使每个片段的后半段完全等于前半段。需要判断是否可行；若可行，输出插入操作及各片段长度，否则输出 $-1$。",
+          "transformedStatement": "把插入操作视为一种前缀反转工具：对选定前缀依次插入对应元素的重复对，就能生成一个可立即切出的 tandem repeat，并使剩余前缀反转。借此可任意重排数组，问题核心只剩下检查每个数的出现次数是否均为偶数。",
+          "keyObservations": [
+            "每个数的出现次数奇偶性在插入操作后保持不变，而最终每个 tandem repeat 各元素都成对出现，因此所有数的出现次数必须为偶数。",
+            "对任意前缀，可以依次插入相应元素的重复对，使新增部分与该前缀组成 tandem repeat；删去这个已完成的块后，原数组前缀等价于被反转。",
+            "由于反转前缀可以把任意元素移到数组开头，反复操作即可按数值重排数组；当所有出现次数均为偶数时，排序后的数组可直接按相邻相等元素组成长度为 $2$ 的 tandem repeat。"
+          ],
+          "solutionBrief": "先统计每个数的出现次数，存在奇数次则无解。否则利用插入重复对实现前缀反转，从而逐步将数组排序；最后把排序数组按相邻相等的两个元素切分，并输出所有插入操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1641C",
+          "index": "C",
+          "slot": "C",
+          "title": "Anonymity Is Important",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1641/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/100249",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dsu",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 名按队列编号的人，医生会公布若干区间信息：区间 $[l,r]$ 中是否至少有一名病人（$x=0$ 表示没有，$x=1$ 表示有）。在所有公布信息都成立的前提下，对每次询问给定的位置，判断该人的状态是健康、患病还是无法确定。",
+          "transformedStatement": "把未被任何 $x=0$ 区间覆盖的位置视为仍可能患病的候选点；$x=1$ 区间只有在其中某个候选点被所有其他候选排除时，才能唯一确定该点患病。通过候选点的相邻位置和正区间端点的最小值完成判定。",
+          "keyObservations": [
+            "所有未被某个 $x=0$ 区间覆盖的人仍可能患病；被覆盖的人可直接判定为健康，因此用集合维护剩余候选位置。",
+            "处理 $x=0$ 区间时，区间内所有候选都必须删除；用有序集合逐个跳过已删除位置，可保证每个位置最多被删除一次。",
+            "对每个 $x=1$ 区间 $[l,r]$，在左端点 $l$ 记录其右端点，并维护区间最小右端点，从而快速判断正区间是否排除了候选者两侧的其他人。",
+            "候选者 $i$ 左右最近候选为 $L,R$ 时，若 $[L+1,i]$ 中记录的最小右端点小于 $R$，则存在一个包含 $i$ 且不含其他候选者的正区间，故 $i$ 必患病；否则状态仍不确定。"
+          ],
+          "solutionBrief": "用有序集合维护未被零区间覆盖的候选病人。对每个正区间按左端点记录右端点，并用线段树维护区间最小值；查询候选者 $i$ 的相邻候选 $L,R$，若区间 $[L+1,i]$ 的最小右端点小于 $R$，则判定其患病，否则未知。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1641D",
+          "index": "D",
+          "slot": "D",
+          "title": "Two Arrays",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1641/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/100249",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "combinatorics",
+            "greedy",
+            "hashing",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定 $n$ 个各含 $m$ 个互不相同整数的数组及权值 $w_i$，选择两个数组，使它们合并后的 $2m$ 个数全部不同，也就是两数组没有公共元素。求所有满足条件的数组对中 $w_i+w_j$ 的最小值；若不存在则输出 $-1$。",
+          "transformedStatement": "把每个数组抽象成一个带权集合，问题转化为寻找权值和最小的不相交集合对。对每个集合展开全部非空子集，用交替符号统计来判定两个集合是否相交，并在权值排序后维护候选区间。",
+          "keyObservations": [
+            "两数组合格等价于对应集合完全不相交，因此目标是按权值最小化一对不相交集合的权值和。",
+            "对数组 $a$ 的所有非空子集建立记录，并查询数组 $b$ 的子集：按子集大小奇偶加减后，交集非空时结果为 $1$，完全不交时为 $0$，从而能在 $O(2^m)$ 内判断是否存在相交数组。",
+            "将数组按 $w$ 排序后维护一对当前可行边界；边界向内收缩时，只需检查嵌套区间中的可行对，双指针的单向移动避免了重复扫描。",
+            "由于 $m\\leq 5$，每个数组仅产生 $2^m$ 个子集，集合记录与查询总复杂度可控制在 $O(n\\cdot 2^m)$。"
+          ],
+          "solutionBrief": "把每个数组视为集合，按权值排序。用包含所有非空子集的哈希结构判断某数组与当前集合中是否相交，再用双指针维护并收缩可行区间，求最小权值和；不存在不相交数组对时输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1641E",
+          "index": "E",
+          "slot": "E",
+          "title": "Special Positions",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1641/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/100249",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "代数、矩阵与多项式",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "divide and conquer",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定数组 $a$ 和按顺序排列的 $m$ 个特殊位置，等概率选择这些位置的一个非空子集。每个数组下标取距所选位置最近者的距离，与 $a_i$ 相乘后求和；要求输出该随机总和的期望值，结果对 $998244353$ 取模。",
+          "transformedStatement": "把每个数组位置的贡献拆成最近特殊位置在左侧或右侧两类，并按左右端点关于该位置等距的条件 $i+j=2pos$ 计数。子集选择数被压缩为特殊位置右侧或左侧的幂次权值，剩余任务是批量求带权配对和。",
+          "keyObservations": [
+            "把每个位置的最近特殊点按“左侧最近”与“右侧最近”拆分后，贡献可归结为满足 $i+j=2pos$ 的特殊点对，从最近距离改成按中点配对计数。",
+            "固定左端点 $i$ 时，其右侧未受限特殊点的选择数可合并为权值 $suf_i=2^{cnt_i}$，因此不必逐个枚举子集，只需计算带权配对和。",
+            "分治时只处理跨越中点的 $i<j$，令左半权值形成多项式、右半权值形成多项式；卷积系数同时对应多个 $i+j$，可批量得到所有中点位置的计数和及下标加权和。",
+            "左右两种最近点情况可用同一方法反向计算；等距时调整一侧的可选特殊点数量为严格右侧数量，从而避免同一子集被重复计数。"
+          ],
+          "solutionBrief": "将非空特殊位置子集的贡献按最近点在左、右两侧拆分，用 $2^{cnt}$ 统计其余选择。分治结合卷积批量计算满足 $i+j=2pos$ 的配对和及加权和，反向处理另一侧并修正等距情况，最后乘以非空子集数的模逆。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1641F",
+          "index": "F",
+          "slot": "F",
+          "title": "Covering Circle",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1641/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/100249",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "geometry"
+          ],
+          "statementBrief": "给定按顺序排列的 $n$ 个平面点，需要选择一个连续的长度为 $l$ 的子段，再画一个圆，使圆内或圆周上至少包含该子段中的 $k$ 个点。求所有选择下该圆可能达到的最小半径。",
+          "transformedStatement": "把目标圆半径固定为 $r$，将每个点替换为以它为圆心、半径 $r$ 的圆；问题变为寻找下标跨度小于 $l$ 的 $k$ 个圆是否有公共交点，并进一步固定一个边界锚点，把公共交点转化为圆周上的弧覆盖。",
+          "keyObservations": [
+            "半径固定为 $r$ 时，点 $A_i$ 能被目标圆覆盖等价于以 $A_i$ 为圆心、$r$ 为半径的圆族存在公共交点；所选点只需满足最大下标与最小下标之差小于 $l$。",
+            "一组圆若有公共交点，则存在某个成员圆的边界包含一个公共交点，因此可枚举锚点 $A_j$，把其他圆与锚点圆的交集转化为圆周上的弧覆盖。",
+            "固定锚点和半径后，扫描这些弧的端点即可判断是否有至少 $k-1$ 个下标跨度不超过 $l-1$ 的弧同时覆盖某点，区间下标条件由线段树维护。",
+            "只有满足 $|A_iA_j|\\le 2r$ 的点才会产生弧；用边长 $2r$ 的网格只检查锚点所在格及周围八格，随机分布下候选数期望为 $O(k)$，半径变化时重建网格。"
+          ],
+          "solutionBrief": "从一个足够大的半径开始枚举锚点 $j$，用网格筛出可能相交的点；对每个锚点通过弧端点扫描和线段树判断可行性，若当前半径可行则二分缩小答案。随机分布下半径更新期望为 $O(\\log n)$，总复杂度为 $O(nk\\log n+k\\log n\\log\\varepsilon^{-1})$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
