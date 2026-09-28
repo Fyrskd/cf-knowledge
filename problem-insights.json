@@ -15,19 +15,311 @@
     ]
   },
   "summary": {
-    "total_problems": 3306,
+    "total_problems": 3313,
     "source_total_problems": 3316,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3306,
-    "with_editorial_brief": 3025,
-    "with_solution_brief": 3027,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3313,
+    "with_editorial_brief": 3032,
+    "with_solution_brief": 3034,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2368,
+    "ai_override_count": 2375,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1674A",
+      "contest_id": 1674,
+      "title": "Number Transformation",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1674/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/102482",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "给定正整数 $x,y$，选择正整数 $a,b$，把当前数连续进行恰好 $a$ 次“乘以 $b$”的操作，要求最终变成 $y$。若存在满足范围的方案，输出任意一组 $a,b$；否则输出 $0,0$。",
+      "transformed_statement": "连续乘法可合并为要求 $y=x\\cdot b^a$。题解进一步固定 $a=1$，于是问题等价于判断 $y$ 是否能被 $x$ 整除，并在可整除时取 $b=y/x$。",
+      "key_observations": [
+        "连续进行 $a$ 次乘法后，最终数值等于 $x\\cdot b^a$，因此结果一定是 $x$ 的倍数；$x$ 不整除 $y$ 时必然无解。",
+        "只要 $x$ 整除 $y$，就可固定取 $a=1$，令 $b=y/x$，一次操作即可得到 $y$，无需寻找更复杂的幂分解。"
+      ],
+      "solution_brief": "将 $a$ 次操作合并为乘以 $b^a$。若 $y$ 不是 $x$ 的倍数，输出 $0,0$；否则取 $a=1$、$b=y/x$，该构造直接成立。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:25:08+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1674B",
+      "contest_id": 1674,
+      "title": "Dictionary",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1674/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/102482",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [],
+      "original_tags": [
+        "combinatorics",
+        "math"
+      ],
+      "statement_brief": "给定一个由两个不同小写字母组成的单词。所有这样的有序字母对按首字母、再按第二字母的字典序排列，要求输出给定单词在这份完整字典中的编号。",
+      "transformed_statement": "把单词看成 26×26 网格中的有序单元格，主对角线上的相同字母组合被删除；按行优先顺序遍历剩余单元格，目标单元格之前的数量加一就是答案。",
+      "key_observations": [
+        "按首字母可将字典划分为 26 个连续区块，每个区块包含除首字母外的 25 个可能第二字母，因此跨区块位置可直接累计计算。",
+        "固定首字母后，第二字母仍按字母表顺序排列，只需跳过与首字母相同的非法组合，就能得到目标词在本区块中的相对位置。",
+        "所有合法单词正好对应 26×26 网格中去掉主对角线的有序点，按行优先遍历这些点即可统计目标点之前的数量并加一得到答案。"
+      ],
+      "solution_brief": "按字典序枚举首字母和第二字母，跳过两个字母相同的组合；遇到测试单词时输出此前已枚举的合法单词数加一。也可以按首字母区块和第二字母相对排名直接计算。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:24:56+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1674C",
+      "contest_id": 1674,
+      "title": "Infinite Replacement",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1674/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/102482",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "字符串",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "implementation",
+        "strings"
+      ],
+      "statement_brief": "给定只含字母 `a` 的字符串 $s$ 和任意小写字符串 $t$。每次可把 $s$ 中任意一个 `a` 替换为整个字符串 $t$，可操作任意次（包括零次）；要求统计所有不同结果，若数量无限则输出 $-1$。",
+      "transformed_statement": "关键在于判断替换模板 $t$ 是否会留下可继续操作的 `a`：若会且模板改变字符串，长度可无限增长；若不会，则每个初始位置只是独立决定替换或保留，从而转化为子集计数。",
+      "key_observations": [
+        "只要 $t$ 含有字母 `a`，替换后仍会产生可继续替换的位置；当 $t\\ne$ `a` 时长度每次都会增加，因此能够得到无限多个不同字符串。",
+        "当 $t=$ `a` 时每次操作都不改变字符串，所有操作结果只有初始字符串，答案为 $1$。",
+        "当 $t$ 不含 `a` 时，每个初始位置的 `a` 最多替换一次，最终结果只由选择替换哪些位置决定；每个位置有替换或不替换两种选择，所以答案为 $2^{|s|}$。"
+      ],
+      "solution_brief": "分三种情况判断：若 $t=$ `a`，答案为 $1$；若 $t$ 含 `a` 且不等于 `a`，长度可无限增长，输出 $-1$；若 $t$ 不含 `a`，每个位置独立选择是否替换，答案为 $2^{|s|}$。每组只需线性扫描 $s,t$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:24:38+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1674D",
+      "contest_id": 1674,
+      "title": "A-B-C Sort",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1674/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/102482",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "数据结构"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "implementation",
+        "sortings"
+      ],
+      "statement_brief": "给定初始数组 a，先按允许的端点取数规则将元素转移形成 b，再按同类规则从 b 转移形成 c；每一步只能处理当前数组的端部并可选择操作顺序。判断是否存在选择方式，使最终数组 c 按非递减顺序排列。",
+      "transformed_statement": "题目等价于判断：从 a 的右侧向左划分相邻二元组后，每个二元组只能在内部交换，二元组之间不能交换；能否仅通过这些局部交换得到整体非递减数组。",
+      "key_observations": [
+        "原数组末尾两个元素最终只能占据 c 的末尾两个位置，且二者的先后顺序可以交换；因此它们不会与更前面的元素混合。",
+        "按同样的结构向前推导，数组会被划分为从右向左的相邻二元组，每个二元组内部可以交换，但不同二元组之间的相对位置不会改变。",
+        "将每个二元组内部按非递减序排列后，如果整体数组已经非递减，则这些局部交换足以构造有序的 c；否则任意允许操作都无法修复跨二元组产生的逆序。"
+      ],
+      "solution_brief": "从数组右侧开始按相邻两个元素分组。每组内部排序，保留组与组之间的顺序；最后检查处理后的整体数组是否非递减，满足则输出 YES，否则输出 NO。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:24:25+00:00",
+          "quality_flags": [
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1674E",
+      "contest_id": 1674,
+      "title": "Breaking the Wall",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1674/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/102482",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "constructive algorithms",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "墙由一排耐久度为 $a_i$ 的段组成；每次可攻击任意一段，使目标减 $2$、相邻段各减 $1$，且可继续攻击已损坏的段。求至少损坏两段所需的最少攻击次数。",
+      "transformed_statement": "把目标固定为一对墙段，并按它们相距 $1$、$2$ 或至少 $3$ 分类求最小代价：相距越远越能独立处理，相距两段时则利用同一次攻击共享伤害。",
+      "key_observations": [
+        "两段距离超过 $2$ 时，一次攻击不会同时伤害它们，因此应独立击破；其代价是两段耐久度的 $\u0000ceil(a/2)\u0000$ 之和，候选可由全局最小耐久度两段给出。",
+        "相隔一段的两段可以通过攻击中间段或直接攻击目标，把每次的 $2$ 点伤害任意分配给两段，所以击破代价等于 $\u0000ceil((a_i+a_{i+2})/2)\u0000$。",
+        "相邻两段中，先持续攻击耐久度较高者；经过 $x-y$ 次后两者耐久相等。若 $2y\\le x$，两段会在此之前同时破坏，否则对剩余的等耐久状态按每两次攻击造成总计 $3$ 点伤害处理。",
+        "只需分别计算三类距离的最小代价并取最小值，因为任意一对目标段必属于其中一类，且每类都已得到对应的最优攻击方式。"
+      ],
+      "solution_brief": "枚举相邻段和间隔一段的所有对子，按上述公式计算代价；距离更远时取两段最小独立击破代价。所有候选取最小值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:23:33+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1674F",
+      "contest_id": 1674,
+      "title": "Desktop Rearrangement",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1674/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/102482",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "data structures",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "桌面是由空格和图标组成的 $n\\times m$ 矩阵，合法布局要求图标填满若干最左列，并可在下一列从上到下占据一段，其他位置不能有图标。每次查询永久翻转一个格子的图标状态，允许把图标移到任意空格，需输出使当前桌面合法所需的最少移动次数。",
+      "transformed_statement": "按列从上到下将矩阵展平为字符串；若当前有 $k$ 个图标，合法状态等价于图标恰好位于字符串前 $k$ 个位置。因此答案转化为前缀 $[0,k)$ 中空格的数量。",
+      "key_observations": [
+        "按列优先把矩阵展平成字符串后，题目中的“完整列加下一列前缀”恰好对应字符串前缀。",
+        "若桌面上有 $k$ 个图标，任意合法布局都必须占据展平串的前 $k$ 个位置，因此最少移动次数等于该前缀中的空格数。",
+        "一次翻转只会改变当前位置以及图标总数对应的前缀边界，所以答案变化量不超过 $1$，无需维护复杂区间结构。",
+        "处理翻转时先更新旧前缀内当前位置的贡献，再根据图标总数增减检查新进入或离开前缀的边界位置即可。"
+      ],
+      "solution_brief": "将矩阵按列优先展平，维护图标总数 $k$ 及前 $k$ 位中的空格数。每次翻转只需处理被翻转位置和因 $k$ 改变而产生的边界位置，预处理 $O(nm)$、每次查询 $O(1)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:23:03+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1674G",
+      "contest_id": 1674,
+      "title": "Remove Directed Edges",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1674/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/102482",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "动态规划与状态设计"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "dp",
+        "graphs"
+      ],
+      "statement_brief": "给定一个无环有向图，可删除任意边，但每个点的入度和出度若原本为正都必须严格减少，原为零则保持为零。删除后，集合中任意两点之间必须存在某一方向的路径，求这样的集合最大能有多少个点。",
+      "transformed_statement": "题解将 cute 集合重述为一条有向路径，并只保留路径边。于是问题变为寻找最长路径：首点原出度至少为 $2$，尾点原入度至少为 $2$，所有中间点原入、出度都至少为 $2$。",
+      "key_observations": [
+        "最优 cute 集合一定能扩充为一条有向路径：若相邻选点间只有多边路径，可把路径上的中间点加入集合而不破坏可达性。",
+        "只保留选定路径的边即可满足删除条件，因此路径首点需有至少两个出边，尾点需有至少两个入边，中间点需同时有至少两个入边和出边。",
+        "将路径按终点方向定义状态：以某点为起点的最长合法后缀可由其出边连接到的状态转移得到，从而把集合问题化为 DAG 上的最长路径 DP。",
+        "单点始终可行；分别枚举合法首点和合法尾点即可覆盖路径长度为一及更长的情况，整体只需处理每条边一次。"
+      ],
+      "solution_brief": "先证明最优 cute 集合可取为一条有向路径，并只保留该路径。路径首点需有至少两个出边，尾点需有至少两个入边，中间点两种度数都至少为二；在 DAG 逆拓扑计算最长合法路径 DP，答案取所有合法首点的最优转移及单点，复杂度为 $O(n+m)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:22:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 8,
       "problem_key": "1675A",
