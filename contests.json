@@ -1,5 +1,16 @@
 [
   {
+    "id": 1544,
+    "name": "VK Cup 2021 - Elimination (Engine)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 10800,
+    "startTimeSeconds": 1626532500,
+    "relativeTimeSeconds": 164095255,
+    "date": "2021-07-17"
+  },
+  {
     "id": 1553,
     "name": "Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2)",
     "type": "CF",

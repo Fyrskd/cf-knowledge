@@ -8,6 +8,28 @@
     "raw_sha256": "e02bf41675dc0dbc425a56dd042c753b3411dbe71c57032363c612b54b0bb7d8"
   },
   {
+    "url": "https://codeforces.com/blog/entry/92951",
+    "blog_entry_id": 92951,
+    "title": "Codeforces Round #733 Editorial (all problems)",
+    "author": "tourist",
+    "creation_time": "2021-07-17",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "contest editorial (contest-page)",
+    "section_count": 8,
+    "covered_problems": [
+      "1530A",
+      "1530B",
+      "1530C",
+      "1530D",
+      "1530E",
+      "1530F",
+      "1530G",
+      "1530H"
+    ],
+    "raw_sha256": "52677d60a26378c96479170b4666b307612c2aeac2999e705bb155a6baec7efa"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/93149",
     "blog_entry_id": 93149,
     "title": "Editorial for Codeforces Round #734 (Div.3)",

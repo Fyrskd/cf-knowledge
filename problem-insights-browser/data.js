@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3910,
-    "source_total_problems": 3910,
+    "total_problems": 3918,
+    "source_total_problems": 3918,
     "filtered_out_problems": 0,
-    "with_statement_brief": 3910,
+    "with_statement_brief": 3918,
     "with_editorial_brief": 3581,
     "with_solution_brief": 3583,
-    "missing_editorial_brief": 327,
+    "missing_editorial_brief": 335,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2972,
     "primary_topic_count": 13,
-    "contest_count": 606,
+    "contest_count": 607,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "动态规划与状态设计": 321,
+    "构造与贪心": 1269,
+    "图论与网络流": 257,
+    "组合计数与概率": 300,
     "数论与同余": 415,
     "字符串": 208,
-    "构造与贪心": 1265,
-    "图论与网络流": 256,
     "数据结构": 374,
-    "组合计数与概率": 299,
-    "动态规划与状态设计": 319,
     "树结构": 184,
     "交互": 114,
     "基础实现与模拟": 245,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 335,
     "ai_generated_with_editorial": 2601,
     "ai_generated_partial_editorial": 89,
-    "missing_editorial": 327,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -120407,6 +120407,214 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "先将阶梯数组切分为最长阶梯长度序列，再对相邻段不能合并的条件做容斥。动态规划记录区间端点类型及违反约束数；分治合并时将约束数视作多项式次数，用 FFT 卷积合并，复杂度为 $O(n\\log^2 n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1544,
+      "name": "VK Cup 2021 - Elimination (Engine)",
+      "date": "2021-07-17",
+      "url": "https://codeforces.com/contest/1544",
+      "type": "Others",
+      "problemCount": 8,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1544A",
+          "index": "A",
+          "slot": "A",
+          "title": "Binary Decimal",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1544/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "交互"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Binary Decimal；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1544B",
+          "index": "B",
+          "slot": "B",
+          "title": "Putting Plates",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1544/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "题面已抓取：Putting Plates；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1544C",
+          "index": "C",
+          "slot": "C",
+          "title": "Pursuit",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1544/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "几何"
+          ],
+          "originalTags": [
+            "binary search",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Pursuit；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1544D",
+          "index": "D",
+          "slot": "D",
+          "title": "Secret Santa",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1544/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计",
+            "交互"
+          ],
+          "originalTags": [
+            "graphs",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Secret Santa；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1544E",
+          "index": "E",
+          "slot": "E",
+          "title": "Minimax",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1544/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "数论与同余",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "expression parsing",
+            "greedy",
+            "implementation",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Minimax；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1544F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bingo",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1544/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "probabilities"
+          ],
+          "statementBrief": "题面已抓取：Bingo；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1544G",
+          "index": "G",
+          "slot": "G",
+          "title": "What a Reversal",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1544/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "动态规划与状态设计",
+            "博弈"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "题面已抓取：What a Reversal；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1544H",
+          "index": "H",
+          "slot": "H",
+          "title": "Turing's Award",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1544/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "题面已抓取：Turing's Award；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
