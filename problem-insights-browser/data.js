@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3209,
+    "total_problems": 3214,
     "source_total_problems": 3216,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3209,
-    "with_editorial_brief": 2928,
-    "with_solution_brief": 2930,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3214,
+    "with_editorial_brief": 2933,
+    "with_solution_brief": 2935,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2271,
+    "ai_override_count": 2276,
     "primary_topic_count": 13,
-    "contest_count": 491,
+    "contest_count": 492,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1023,
+    "构造与贪心": 1025,
+    "动态规划与状态设计": 272,
+    "几何": 78,
+    "图论与网络流": 203,
     "字符串": 168,
     "交互": 100,
-    "图论与网络流": 202,
     "基础实现与模拟": 196,
     "数论与同余": 342,
     "数据结构": 301,
     "树结构": 159,
-    "动态规划与状态设计": 271,
     "博弈": 101,
     "组合计数与概率": 247,
-    "几何": 77,
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1969,
+    "ai_generated_with_editorial": 1974,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -99113,6 +99113,165 @@ window.CF_INSIGHTS_DATA = {
             "为每个位置补充 $a_i>=0$ 到 $a_i>=k+1$ 的边界变量，并强制合法边界真值，可直接从 2-SAT 赋值恢复数组；图规模为 $O((n+m)k)$。"
           ],
           "solutionBrief": "以每个位置的阈值条件“$a_i>=x$”作为 2-SAT 变量，将非递减、禁止取值及两数和上下界转成蕴含边。求强连通分量判定可行性，再由阈值赋值恢复 $a_i$，总复杂度 $O((n+m)k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1689,
+      "name": "Codeforces Round 798 (Div. 2)",
+      "date": "2022-06-10",
+      "url": "https://codeforces.com/contest/1689",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1689A",
+          "index": "A",
+          "slot": "A",
+          "title": "Lex String",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1689/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103471",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定两个互不含相同字符的字符串 $a,b$，每次从其中一个字符串取出一个字符接到 $c$ 末尾，且连续从同一字符串取字符不能超过 $k$ 次；当任一字符串为空时停止，求字典序最小的 $c$。",
+          "transformedStatement": "把两串看成已排序的字符队列，每次只能从各自队首取一个字符；问题变成带连续来源限制的最小字典序双路归并。",
+          "keyObservations": [
+            "每次若未达到连续取同一字符串的上限，应在两边当前最小字符中选更小者，才能保证当前前缀字典序最优。",
+            "若连续从某个字符串取了 $k$ 个字符，下一步必须切换到另一字符串，因此可直接覆盖普通的最小字符选择。",
+            "从某个字符串取字符后将其连续计数加一、另一方计数清零，两个计数足以表示后续是否被迫切换。",
+            "先将两串排序，再从末端依次取最小字符，可把每次寻找当前最小值转化为常数时间操作。"
+          ],
+          "solutionBrief": "将两串分别排序，使末端为当前最小字符。每次比较两端并优先取较小者；若该来源已连续取了 $k$ 次，则强制取另一串，同时更新连续计数，直到任一串为空。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1689B",
+          "index": "B",
+          "slot": "B",
+          "title": "Mystic Permutation",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1689/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103471",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的排列 $p$，构造另一个排列 $q$，要求每个位置都满足 $q_i\\ne p_i$。在所有满足条件的排列中输出字典序最小者；若不存在则输出 $-1$。",
+          "transformedStatement": "把问题看成给排列 $[1,2,\\ldots,n]$ 消除与 $p$ 的逐位置冲突：从左到右固定答案，冲突时交换相邻元素，最后单独处理末两位，以保留最小的可行前缀。",
+          "keyObservations": [
+            "当 $n=1$ 时唯一元素无法换到别的位置，因此不存在满足条件的排列；$n\\ge2$ 时总能通过调整得到答案。",
+            "按位置从左到右处理：若当前位置的候选值等于原排列对应值，就与下一位置交换，从而立即消除冲突，同时只影响尚未处理的位置。",
+            "处理完前 $n-1$ 个位置后，若最后一位仍冲突，只需交换末两位；末两位互换必能使两处都避开原值，并保持前面位置不变。",
+            "从初始排列 $[1,2,\\ldots,n]$ 出发进行上述局部交换，前面位置一旦确定就不再改变，因此每一步都保留字典序最小的可行前缀。"
+          ],
+          "solutionBrief": "除 $n=1$ 输出 $-1$ 外，令答案初始为 $[1,2,\\ldots,n]$。从左到右检查，若当前位置与原排列相等则交换它和下一位；最后若末位仍冲突，再交换末两位，即可得到字典序最小答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1689C",
+          "index": "C",
+          "slot": "C",
+          "title": "Infected Tree",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1689/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/103471",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的二叉树，根节点已感染。反复删除一个与感染顶点直接相连的顶点，并让感染继续扩散；被删除的顶点不算获救，求最终最多能保存多少个顶点。",
+          "transformedStatement": "把感染过程看成沿树向下选择一条继续扩散的分支：在感染节点的两个孩子中删除一个，让感染进入另一个；被删除孩子的其余子树可整体视为获救，再递归处理感染分支。",
+          "keyObservations": [
+            "若感染位于节点 $i$，最优操作可设为删除它的一个孩子，再让感染进入另一个孩子；因此感染至多继续影响一个子树，另一个子树除被删除根外全部获救。",
+            "定义 $dp_i$ 为感染节点 $i$ 且只在其子树内操作时的最大获救数，若孩子为 $a,b$，则有 $dp_i=\\max(dp_a+s_b-1,dp_b+s_a-1)$。",
+            "子树大小 $s_i$ 同时表示选择另一侧时可直接获救的顶点数，故后序计算 $s_i$ 与 $dp_i$ 即可在线性时间内完成所有转移。"
+          ],
+          "solutionBrief": "通过后序 DFS 计算每个节点的子树大小 $s_i$ 和状态 $dp_i$。对每个内部节点枚举删除哪个孩子，用 $dp_i=\\max(dp_a+s_b-1,dp_b+s_a-1)$ 转移，答案为 $dp_1$，总复杂度 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1689D",
+          "index": "D",
+          "slot": "D",
+          "title": "Lena and Matrix",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1689/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/103471",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "geometry",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个由黑白格组成的 $n\\times m$ 矩阵，必须选择一个格子，使它到所有黑色格子的曼哈顿距离中的最大值最小。输出任意一个达到该最小最大距离的格子坐标。",
+          "transformedStatement": "把每个黑格映射到两个对角投影值 $i+j$ 和 $i-j$；对候选格而言，最远黑格距离可由这两个投影的四个全局极值确定，因此问题转化为枚举候选格并比较四个代表点的距离。",
+          "keyObservations": [
+            "对任意候选格，所有黑格的曼哈顿距离最大值只由黑格坐标的 $i+j$ 和 $i-j$ 的四个极值决定，因此只需保留四个代表黑格。",
+            "将黑格按四个对角投影的最小值和最大值压缩后，可在每个候选格上用这四个代表计算真实的最远距离，避免遍历全部黑格。",
+            "遍历所有矩阵格并选取上述最大距离最小的位置即可；四个极值代表的数量是常数，所以总复杂度为 $O(nm)$。"
+          ],
+          "solutionBrief": "扫描所有黑格，分别维护 $i+j$ 与 $i-j$ 的最小、最大值及对应位置。随后枚举每个格子，只计算它到这四个代表黑格的最大曼哈顿距离，取最小者作为答案，复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1689E",
+          "index": "E",
+          "slot": "E",
+          "title": "ANDfinity",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1689/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/103471",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "dsu",
+            "graphs"
+          ],
+          "statementBrief": "给定非负整数数组，把每个元素视为一个顶点；当两个元素的按位与大于 $0$ 时连边。每次可选择一个元素加一或减一（保持非负），要求用最少操作使图连通，并输出操作次数和得到的数组。",
+          "transformedStatement": "先强制修复所有零顶点，再把每个数的置位比特看作节点，并连接同一数中的比特；原图连通性转化为这个至多 $31$ 个节点的比特图连通性。随后只需判断零次、一次修改，或用最高最低位的两个元素构造两次修改。",
+          "keyObservations": [
+            "所有为 $0$ 的元素都必须先加 $1$，否则对应顶点没有边；这一步是不可避免的最小代价。",
+            "只保留数组中出现的比特，并把同一元素的所有置位比特连成一组，则原图连通等价于这个比特图连通，从而可在至多 $31$ 个比特上判定连通性。",
+            "在修正零元素后，枚举每个位置加一或减一即可准确判断是否只需一次额外操作；若都不行，答案至多还需两次。",
+            "取最低位最高的元素：减去其中一个并给另一个同层元素加一，可避免破坏最高层比特的连通，同时把其余比特接入，因此两次操作必然足够。"
+          ],
+          "solutionBrief": "先把所有零元素加一并计入操作数。用比特图判断当前图是否连通；若不连通，枚举一次加一或减一。若仍无解，选择最低位最高的两个元素，分别减一和加一，答案即为基础操作数加二。总复杂度为 $O(n^2\\log A)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
