@@ -15,19 +15,347 @@
     ]
   },
   "summary": {
-    "total_problems": 4049,
+    "total_problems": 4057,
     "source_total_problems": 4057,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 4049,
-    "with_editorial_brief": 3703,
-    "with_solution_brief": 3705,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4057,
+    "with_editorial_brief": 3711,
+    "with_solution_brief": 3713,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3111,
+    "ai_override_count": 3119,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1520A",
+      "contest_id": 1520,
+      "title": "Do Not Be Distracted!",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1520/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/90342",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "implementation"
+      ],
+      "statement_brief": "给定 Polycarp 每天完成的任务字母记录。开始一项任务后必须连续完成，切换到其他任务后不能返回；判断这份记录是否可能符合规则。",
+      "transformed_statement": "将每种任务单独考察：它从首次出现到末次出现的整个区间都必须属于同一段连续任务。问题由判断操作过程是否合法，转化为检查各字母的出现区间是否被其他字母打断。",
+      "key_observations": [
+        "若某任务在记录中出现多段，那么从它第一次出现到最后一次出现之间必须每天都在做这项任务；否则就说明中途切换后又返回，违反规则。",
+        "因此只需检查每种任务第一次和最后一次出现之间的字符是否全都相同，无须逐日模拟操作过程。"
+      ],
+      "solution_brief": "对每种出现过的任务，找到它在字符串中的首次和末次位置，并检查这段区间是否全由该任务组成；若存在其他字母则输出 NO，否则输出 YES。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T22:54:33+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1520B",
+      "contest_id": 1520,
+      "title": "Ordinary Numbers",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1520/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/90342",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "brute force",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定正整数 $n$，普通数指十进制表示中所有数字都相同的正整数。要求统计从 $1$ 到 $n$（含端点）之间有多少个普通数。",
+      "transformed_statement": "将每个普通数表示为重复数字 $d$ 乘以位权和 $10^0+10^1+\\cdots+10^k$，问题就转化为统计满足该表达式不超过 $n$ 的参数对 $(d,k)$。",
+      "key_observations": [
+        "每个普通数都能唯一表示为一位数字 $d$ 重复 $k+1$ 次，即 $d(10^0+10^1+\\cdots+10^k)$，因此计数可转为统计满足不超过 $n$ 的参数对。",
+        "首位数字 $d$ 只有 $1$ 到 $9$，而位数受 $n\\le 10^9$ 限制；枚举这些有限参数并逐个判断大小即可得到答案。"
+      ],
+      "solution_brief": "枚举重复的数字 $d\\in[1,9]$ 和重复位数对应的 $k\\in[0,8]$，构造 $d(10^0+10^1+\\cdots+10^k)$；统计其中不超过 $n$ 的数目。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T22:54:24+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1520C",
+      "contest_id": 1520,
+      "title": "Not Adjacent Matrix",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1520/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/90342",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms"
+      ],
+      "statement_brief": "给定正整数 $n$，要用 $1$ 到 $n^2$ 各一次填满一个 $n\\times n$ 方阵，使每对共边的格子中的数字之差都不等于 $1$。对每个测试规模输出这样的矩阵；若不存在则报告无解。",
+      "transformed_statement": "把方阵格子按坐标和的奇偶性分成棋盘两色：所有共边格子必然分属不同颜色。于是问题可转化为按颜色分组并安排数字，使两组交界处也不会让相邻格子得到连续编号；题解采用组内字典序的排列方式完成构造。",
+      "key_observations": [
+        "棋盘染色后，任意共边的两个格子必属不同颜色，因此只需安排两种颜色对应的数字区间，避免边界处相邻格子拿到连续数字。",
+        "按颜色分组后，再在组内按行列字典序编号，可以构造出满足条件的排列；题解给出的 $3\\times3$ 示例展示了这种安排。",
+        "$n=2$ 是唯一无解的规模；其余规模使用上述构造，$n=1$ 时也可直接填入唯一数字。"
+      ],
+      "solution_brief": "将格子按棋盘染色分成两组，先按白格、后按黑格排列，并在每组内按行列字典序排列；依次填入 $1$ 到 $n^2$。$n=2$ 输出无解，其余规模输出构造矩阵。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T22:54:15+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1520D",
+      "contest_id": 1520,
+      "title": "Same Differences",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1520/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/90342",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "data structures",
+        "hashing",
+        "math"
+      ],
+      "statement_brief": "给定整数数组 $a$，要统计满足 $i<j$ 且 $a_j-a_i=j-i$ 的下标对 $(i,j)$ 数量。题目不要求修改数组，只需对每组输入输出符合条件的配对总数。",
+      "transformed_statement": "把每个位置的值改记为 $b_i=a_i-i$，则原条件等价于 $b_i=b_j$。问题因此转化为统计变换后数组中相同值的下标对数量。",
+      "key_observations": [
+        "将条件移项可得 $a_j-j=a_i-i$，因此原本同时涉及数值差和下标差的配对条件，等价于比较两个变换值是否相同。",
+        "每个下标对只需统计一次，而变换值相同的任意两个位置都满足条件；所以按变换值分组后，各组大小为 $k$ 时贡献 $\binom{k}{2}$。"
+      ],
+      "solution_brief": "对每个位置计算 $b_i=a_i-i$，统计每种 $b_i$ 的出现次数。若某值出现 $k$ 次，它产生 $\binom{k}{2}$ 个合法下标对；将各组贡献相加即可。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T22:53:54+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1520E",
+      "contest_id": 1520,
+      "title": "Arranging The Sheep",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1520/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/90342",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定由空位和羊组成的长度为 $n$ 的字符串，每次可以把一只羊向左或向右移动一格，但目标格必须存在且为空。要求计算最少移动次数，使所有羊最终占据连续位置，中间没有空位。",
+      "transformed_statement": "保持羊的相对顺序，把第 $i$ 只羊的位置 $x_i$ 减去编号 $i$，则排成一排等价于让这些值对齐；问题转为选择共同位置，使总绝对偏差最小，并以中间羊确定锚点位置。",
+      "key_observations": [
+        "羊的相对顺序不会改变，因此若第 $i$ 只羊最终位于 $p_i$，排成连续队列就要求 $p_i=p_1+i-1$，把整体平移量确定后，各只羊的位置也随之确定。",
+        "将第 $i$ 只羊的位置改写为 $x_i-i$ 后，所有羊排成一排等价于让这些值对齐到同一个整数；最小化绝对移动总量由中位数位置决定。",
+        "取中间的羊作为队列锚点时，最终位置可写成 $x_m-m+i$，从而每只羊的移动量直接是 $|x_i-(x_m-m+i)|$，无需搜索最终队列放置位置。"
+      ],
+      "solution_brief": "记录所有羊的位置 $x_i$，令 $k$ 为羊的数量，并取中间羊的编号 $m$。按题解给出的锚点方案，最终连续队列中第 $i$ 只羊位于 $x_m-m+i$，累加各羊与该位置的距离即为最少移动次数。题解将 $m$ 写成依赖 $n$ 的量，与上下文不符；此处按中间羊的编号理解。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T22:53:45+00:00",
+          "quality_flags": [
+            "editorial_index_typo"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1520F1",
+      "contest_id": 1520,
+      "title": "Guess the K-th Zero (Easy version)",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1520/problem/F1",
+      "editorial_url": "https://codeforces.com/blog/entry/90342",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "interactive"
+      ],
+      "statement_brief": "隐藏数组长度为 $n$，元素只有 0 和 1；本版本只需回答一次给定的 $k$，找出从左向右数第 $k$ 个零的位置。程序每次可查询一个前缀中零的数量，最多查询 20 次，并需输出该零的位置。",
+      "transformed_statement": "将目标位置视为当前候选区间内排名为 $k$ 的零。查询候选区间左半部分的零数后，可确定目标属于哪一半；若进入右半，则把局部排名扣除左半的零数。",
+      "key_observations": [
+        "对区间左半部分查询零的数量后，若数量不少于 $k$，第 $k$ 个零必在左半；否则它在右半，且在右半的排名变为 $k-x$，其中 $x$ 是左半的零数。",
+        "每次将包含目标零的区间缩小一半，并同步修正目标排名，因此至多用 $\\lceil\\log_2 n\\rceil$ 次查询即可定位，符合 20 次限制。"
+      ],
+      "solution_brief": "维护一个必定包含第 $k$ 个零的区间。查询其中点左侧的零数，据此选择左半区间或右半区间；选择右半时将 $k$ 减去左侧零数。区间不断减半，最终得到目标位置。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T22:53:27+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1520F2",
+      "contest_id": 1520,
+      "title": "Guess the K-th Zero (Hard version)",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1520/problem/F2",
+      "editorial_url": "https://codeforces.com/blog/entry/90342",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "数据结构",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "constructive algorithms",
+        "data structures",
+        "interactive"
+      ],
+      "statement_brief": "有一个长度为 $n$ 的隐藏 0/1 数组，需要依次回答 $t$ 次给定的 $k$：指出当前从左数第 $k$ 个零的位置。每次答对后，该位置的零会变成一，数组随之改变；程序需在总请求数限制内与交互器通信并完成全部回答。",
+      "transformed_statement": "把寻找当前第 $k$ 个零的过程视为在区间二分树上发出请求，并把每个请求视为对应树节点上的信息获取。核心任务不仅是定位零，还要复用已获得的节点响应，使多次测试所涉及的不同节点总数受限于给出的上界。",
+      "key_observations": [
+        "把数组区间对应到二分树节点后，同一节点的请求结果可以复用；记住已询问的结果，就能避免多次测试中重复发送相同请求。",
+        "二分树高度不超过 $18$；前 $14$ 层的节点总数至多为 $2^{14}-1$，之后至多每个测试对应每层一个节点，因此请求节点数上界为 $2^{14}-1+4\\cdot10^4=56383$，满足总请求限制。"
+      ],
+      "solution_brief": "沿用简单版的定位方案，并缓存每次请求的响应，遇到相同请求时直接复用。将请求映射到区间二分树的节点，利用节点数上界证明总请求不超过 $6\\cdot10^4$。给出的题解没有展开具体请求格式和定位过程。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T22:53:17+00:00",
+          "quality_flags": [
+            "partial_editorial",
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 8,
+      "problem_key": "1520G",
+      "contest_id": 1520,
+      "title": "To Go Or Not To Go?",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1520/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/90342",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "dfs and similar",
+        "graphs",
+        "greedy",
+        "implementation",
+        "shortest paths"
+      ],
+      "statement_brief": "给定一个 $n\\times m$ 网格，起点在左上角、终点在右下角，二者均无传送点。每次可花费 $w$ 移动到相邻格；也可在任意两个传送点间传送，费用为两点各自标注费用之和。求到达终点的最小时间。",
+      "transformed_statement": "把路线分成不传送和传送一次两类：前者只需计算起终点的最短步行距离；后者可分别优化到达传送点前的步行加传送点费用，以及传送后到终点的步行加传送点费用，再合并两侧最优值。",
+      "key_observations": [
+        "连续使用两次传送没有必要：若先从传送点 A 到 B，再从 C 到 D，直接从 A 到 D 的费用更低，因此只需比较不传送和传送一次。",
+        "传送一次时，出发传送点与到达传送点的选择彼此独立；分别取从起点可达的最小“步行距离加传送点费用”，以及从终点反向计算的同类最小值，就能得到最佳传送方案。",
+        "不使用传送时，所有相邻格移动费用相同且格子均可步行经过，因此最短步行时间由起终点间的曼哈顿距离确定。"
+      ],
+      "solution_brief": "比较两种方案：全程步行的最短时间，以及步行到一个传送点、传送一次、再步行到终点的最短时间。后者分别求起点侧和终点侧最小的步行距离加传送费用，再将两者相加；取两种方案的较小值。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T22:52:59+00:00",
+          "quality_flags": [
+            "partial_editorial"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 9,
       "problem_key": "1521A",
