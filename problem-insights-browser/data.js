@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3432,
+    "total_problems": 3434,
     "source_total_problems": 3436,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3432,
-    "with_editorial_brief": 3134,
-    "with_solution_brief": 3136,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3434,
+    "with_editorial_brief": 3136,
+    "with_solution_brief": 3138,
     "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2494,
+    "ai_override_count": 2496,
     "primary_topic_count": 13,
     "contest_count": 528,
     "rating_min": 800,
@@ -50,16 +50,16 @@ window.CF_INSIGHTS_DATA = {
     "数论与同余": 364,
     "动态规划与状态设计": 282,
     "图论与网络流": 223,
-    "数据结构": 323,
+    "数据结构": 324,
     "代数、矩阵与多项式": 24,
     "树结构": 166,
-    "组合计数与概率": 258,
+    "组合计数与概率": 259,
     "几何": 81,
     "博弈": 106,
     "交互": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2174,
+    "ai_generated_with_editorial": 2176,
     "missing_editorial": 296,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -334,7 +334,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-25",
       "url": "https://codeforces.com/contest/2267",
       "type": "Div. 2",
-      "problemCount": 7,
+      "problemCount": 8,
       "maxRating": null,
       "problems": [
         {
@@ -505,6 +505,42 @@ window.CF_INSIGHTS_DATA = {
             "一次变换直接生成全部 $\\binom n2$ 个两两异或值并取最小的 $n$ 个，单轮复杂度为 $O(n^2\\log n)$，逐轮预处理后即可独立回答所有查询。"
           ],
           "solutionBrief": "反复生成所有两两异或值，排序后保留最小的 $n$ 个作为下一状态，同时记录每轮的最大值减最小值。由于最高位至多在两轮内消失且总轮数不超过 $9$，预处理所有状态后，查询超过终止轮数时直接输出 $0$；总复杂度为 $O(n^2\\log n\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2267F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "XOR Transformations (Hard Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2267/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/157126",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "greedy",
+            "math",
+            "sortings",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "给定一个含 $n$ 个非负整数的数组。一次变换计算所有下标对 $i<j$ 的异或值，选出其中最小的 $n$ 个替换原数组；每个查询独立从初始数组出发，要求经过 $x$ 次变换后数组最大值与最小值之差。",
+          "transformedStatement": "将每个无序数对视为两个方向的异或贡献，使每个值出现两次；于是一次变换等价于生成全局最小的 $2n$ 个有向异或值并取奇数位置。利用 Trie 提供的单元素异或排名查询，再做多路归并生成这些值。",
+          "keyObservations": [
+            "把无序数对改看成有向数对后，每个原始异或值恰好出现两次，因此全局取最小的 $2n$ 个有向结果，再取其中奇数位置，就等价于取最小的 $n$ 个无序数对结果。",
+            "对固定 $a_i$，所有 $a_i$ 与其他元素的异或值可由二进制 Trie 支持按排名查询；维护每个 $i$ 当前尚未取出的排名，就能像多路归并一样逐个选出全局最小值。",
+            "每次选出某个 $i$ 的当前最小候选后，只需将其计数器加一，其他候选保持不变，从而避免重新枚举全部数对。",
+            "题解将上述过程用于连续变换，并按值域位数预处理状态，整体复杂度控制在 $O(n\\log^2 A)$，其中单次变换为 $O(n\\log A)$。"
+          ],
+          "solutionBrief": "用二进制 Trie 查询每个元素的第 $k$ 小异或值，再通过维护各元素的排名指针进行多路归并。每次生成最小的 $2n$ 个有向异或值，取奇数位置得到下一数组；预处理连续状态后按查询的变换次数取答案。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
@@ -92155,7 +92191,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2022-09-29",
       "url": "https://codeforces.com/contest/1739",
       "type": "Educational",
-      "problemCount": 5,
+      "problemCount": 6,
       "maxRating": 2600,
       "problems": [
         {
@@ -92208,6 +92244,37 @@ window.CF_INSIGHTS_DATA = {
             "当 $d_i=0$ 时加法和减法产生相同的 $a_i$，不会形成不同数组，故这类位置不应判定为多解。"
           ],
           "solutionBrief": "先令 $a_1=d_1$，随后全部取加法构造 $a_i=a_{i-1}+d_i$。检查每个 $i>1$：若 $d_i>0$ 且 $a_{i-1}\\ge d_i$，减法也合法，输出 $-1$；否则输出构造出的数组。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1739C",
+          "index": "C",
+          "slot": "C",
+          "title": "Card Game",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1739/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/107461",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "博弈"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "dp",
+            "games"
+          ],
+          "statementBrief": "有 $n$ 张编号互不相同的牌，双方各分得 $n/2$ 张。亚历克斯先行动，当前玩家打出一张牌后，对手必须用更大的牌回应；若无法回应则输，双方都无牌时和棋。假设双方最优，统计所有等分牌方案中亚历克斯获胜、鲍里斯获胜和和棋的方案数。",
+          "transformedStatement": "把从大到小的每张牌改写为归属字符 $A$ 或 $B$，将对局结果转化为该分配串与唯一和棋串 $BAABBAAB\\text{…}$ 的首次偏离类型；随后只需在保证 $A、B$ 数量相等的前提下计数。",
+          "keyObservations": [
+            "若最高牌 $n$ 属于亚历克斯，他可立即打出并获胜，因此和棋分配中最高牌必须属于鲍里斯。",
+            "按牌面从高到低处理时，为保持和棋，归属必须依次符合 $B,A,A,B$ 的循环模式；每次偏离该模式后，胜负已由首次偏离决定。",
+            "把分配表示为字符序列后，首次与和棋模式不同的位置决定胜者，因此后缀只需满足双方牌数各为 $n/2$，不再影响胜负。",
+            "用状态 $dp_{x,y,t}$ 记录已放置 $x$ 张亚历克斯的牌、$y$ 张鲍里斯的牌，以及当前仍和棋、已确定亚历克斯胜或已确定鲍里斯胜，终点状态直接给出三类计数。"
+          ],
+          "solutionBrief": "将牌按从大到小写成由 $A/B$ 组成的分配串，和棋唯一对应模式 $BAABBAAB ext{…}$。比较首次偏离位置即可确定胜者，再用 $dp_{x,y,t}$ 统计达到各类状态且双方各有 $n/2$ 张牌的方案数。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },

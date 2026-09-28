@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T05:19:36+00:00",
+  "updated_at": "2026-09-28T05:40:54+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -22192,28 +22192,28 @@
       "editorial_url": "https://codeforces.com/blog/entry/157126",
       "editorial_quality": "complete",
       "model": "gpt-5.6-luna",
-      "input_hash": "13236e60395f762d962136b1b1a8a9c9f85e4cb5abb277225c48b4f8b3894c80",
-      "generated_at": "2026-09-26T21:47:17+00:00",
+      "input_hash": "50831ee2bc45d5d3c7151ef74bad97b13917d8bc2f6580777d986fce6e895bdf",
+      "generated_at": "2026-09-28T05:40:11+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定非负整数数组。一次操作枚举所有下标对 $i<j$ 的异或值，取其中最小的 $n$ 个作为新数组；每个查询独立地从原数组开始执行 $x$ 次操作，要求最终数组的最大值减最小值。",
-        "transformed_statement": "题解将一次操作建模为 $n$ 个“固定一个起点、与其他元素异或”的有序值序列的多路归并：用 Trie 查询各序列当前第 $k$ 小值，取全局最小的前 $2n$ 项并保留奇数位置。",
+        "statement_brief": "给定一个含 $n$ 个非负整数的数组。一次变换计算所有下标对 $i<j$ 的异或值，选出其中最小的 $n$ 个替换原数组；每个查询独立从初始数组出发，要求经过 $x$ 次变换后数组最大值与最小值之差。",
+        "transformed_statement": "将每个无序数对视为两个方向的异或贡献，使每个值出现两次；于是一次变换等价于生成全局最小的 $2n$ 个有向异或值并取奇数位置。利用 Trie 提供的单元素异或排名查询，再做多路归并生成这些值。",
         "key_observations": [
-          "一次变换可看成合并每个元素与其他元素异或值组成的有序序列，从各序列当前最小值中依次取出全局最小值，避免枚举全部无序对。",
-          "每个无序对的异或值在按起点区分的序列中恰好出现两次，因此取出前 $2n$ 个有序结果的奇数位置，正好得到原变换所需的 $n$ 个最小值。",
-          "对固定元素求第 $k$ 小异或值可用二进制 Trie 按位统计，从而支持按需取得各序列的当前项；单次变换复杂度为 $O(n\\log^2 A)$。"
+          "把无序数对改看成有向数对后，每个原始异或值恰好出现两次，因此全局取最小的 $2n$ 个有向结果，再取其中奇数位置，就等价于取最小的 $n$ 个无序数对结果。",
+          "对固定 $a_i$，所有 $a_i$ 与其他元素的异或值可由二进制 Trie 支持按排名查询；维护每个 $i$ 当前尚未取出的排名，就能像多路归并一样逐个选出全局最小值。",
+          "每次选出某个 $i$ 的当前最小候选后，只需将其计数器加一，其他候选保持不变，从而避免重新枚举全部数对。",
+          "题解将上述过程用于连续变换，并按值域位数预处理状态，整体复杂度控制在 $O(n\\log^2 A)$，其中单次变换为 $O(n\\log A)$。"
         ],
-        "solution_brief": "本地题解正文不足。现有部分仅说明：用二进制 Trie 求每个元素的第 $k$ 小异或值，再归并这些序列生成一次变换，单次复杂度为 $O(n\\log^2 A)$；如何处理任意大的多次变换查询未给出。",
+        "solution_brief": "用二进制 Trie 查询每个元素的第 $k$ 小异或值，再通过维护各元素的排名指针进行多路归并。每次生成最小的 $2n$ 个有向异或值，取奇数位置得到下一数组；预处理连续状态后按查询的变换次数取答案。",
         "primary_topic": "数据结构",
         "secondary_topics": [
+          "数论与同余",
           "构造与贪心"
         ],
-        "extraction_status": "ai_generated_partial_editorial",
-        "source_provenance": "题意来自 statement；单次变换的 Trie 与归并方法来自 editorial；tags 仅用于主题归类。",
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text，以及 tags 中的数据结构、位运算和贪心相关信息。",
         "quality_flags": [
-          "editorial_depends_on_missing_f1_explanation",
-          "incomplete_multi_transformation_query_strategy",
-          "partial_editorial"
+          "editorial依赖未提供的F1说明，连续变换的终止与查询边界细节未在正文展开"
         ]
       }
     },
@@ -74632,6 +74632,37 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial_text 以及 implementation 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1739C": {
+      "problem_key": "1739C",
+      "title": "Card Game",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1739/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/107461",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3feea20dc47d23e71b8158269274ca1fb62cb2992a30e3446718f1a05a625100",
+      "generated_at": "2026-09-28T05:40:54+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 张编号互不相同的牌，双方各分得 $n/2$ 张。亚历克斯先行动，当前玩家打出一张牌后，对手必须用更大的牌回应；若无法回应则输，双方都无牌时和棋。假设双方最优，统计所有等分牌方案中亚历克斯获胜、鲍里斯获胜和和棋的方案数。",
+        "transformed_statement": "把从大到小的每张牌改写为归属字符 $A$ 或 $B$，将对局结果转化为该分配串与唯一和棋串 $BAABBAAB\\text{…}$ 的首次偏离类型；随后只需在保证 $A、B$ 数量相等的前提下计数。",
+        "key_observations": [
+          "若最高牌 $n$ 属于亚历克斯，他可立即打出并获胜，因此和棋分配中最高牌必须属于鲍里斯。",
+          "按牌面从高到低处理时，为保持和棋，归属必须依次符合 $B,A,A,B$ 的循环模式；每次偏离该模式后，胜负已由首次偏离决定。",
+          "把分配表示为字符序列后，首次与和棋模式不同的位置决定胜者，因此后缀只需满足双方牌数各为 $n/2$，不再影响胜负。",
+          "用状态 $dp_{x,y,t}$ 记录已放置 $x$ 张亚历克斯的牌、$y$ 张鲍里斯的牌，以及当前仍和棋、已确定亚历克斯胜或已确定鲍里斯胜，终点状态直接给出三类计数。"
+        ],
+        "solution_brief": "将牌按从大到小写成由 $A/B$ 组成的分配串，和棋唯一对应模式 $BAABBAAB ext{…}$。比较首次偏离位置即可确定胜者，再用 $dp_{x,y,t}$ 统计达到各类状态且双方各有 $n/2$ 张牌的方案数。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "博弈"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则、完整题解中的和棋模式与首次偏离判定，以及标签信息整理。",
         "quality_flags": []
       }
     }
