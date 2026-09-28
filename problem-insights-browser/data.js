@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3293,
+    "total_problems": 3299,
     "source_total_problems": 3302,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3293,
-    "with_editorial_brief": 3012,
-    "with_solution_brief": 3014,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3299,
+    "with_editorial_brief": 3018,
+    "with_solution_brief": 3020,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2355,
+    "ai_override_count": 2361,
     "primary_topic_count": 13,
-    "contest_count": 506,
+    "contest_count": 507,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1054,
+    "字符串": 173,
+    "图论与网络流": 212,
+    "几何": 80,
+    "动态规划与状态设计": 277,
     "数据结构": 316,
-    "图论与网络流": 211,
     "组合计数与概率": 250,
-    "动态规划与状态设计": 276,
     "基础实现与模拟": 204,
-    "构造与贪心": 1052,
-    "字符串": 172,
     "树结构": 161,
-    "几何": 79,
     "数论与同余": 346,
     "博弈": 103,
     "代数、矩阵与多项式": 23,
     "交互": 100
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2053,
+    "ai_generated_with_editorial": 2059,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -101702,6 +101702,198 @@ window.CF_INSIGHTS_DATA = {
             "$H(n)$ 可写成 $p^{n+1}g_k(n)-p g_k(0)$，其中 $g_k$ 是关于 $n$ 的 $k$ 次多项式；由 $p g_k(n)-g_k(n-1)=n^k$ 求出插值点，再用多点求值获得所有 $H(a_i)$。"
           ],
           "solutionBrief": "对固定区间维护四个聚合量，推导加入一个位置后的 $4\\times4$ 矩阵转移，并用矩阵乘积求所有区间贡献。通过多项式插值与多点求值批量计算 $\\sum_{q=1}^{a_i}p^q q^k$，总复杂度为 $O(k\\log^2 k+n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1670,
+      "name": "Codeforces Round 788 (Div. 2)",
+      "date": "2022-05-06",
+      "url": "https://codeforces.com/contest/1670",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1670A",
+          "index": "A",
+          "slot": "A",
+          "title": "Prof. Slim",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1670/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/102579",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一个非零整数数组，每次可交换两个元素的正负号，操作次数不限。判断能否通过这些操作使数组按非降序排列，并输出 YES 或 NO。",
+          "transformedStatement": "把问题转化为固定绝对值序列、只重新分配负号位置：若共有 $k$ 个负数，最终前 $k$ 个绝对值须非递增，后面的绝对值须非递减。",
+          "keyObservations": [
+            "正负号交换不会改变各元素的绝对值，也不会改变负数总数；设负数个数为 $k$，最终前 $k$ 个位置必须放负数。",
+            "负数放到前缀后，按非降序排列等价于它们的绝对值非递增；因此原数组前 $k$ 个绝对值必须非递增。",
+            "剩余元素都为正数，按非降序排列等价于绝对值非递减；检查这两个区间即可在线性时间内判定。"
+          ],
+          "solutionBrief": "统计负数个数 $k$，检查数组绝对值在前 $k$ 个位置是否非递增、其余位置是否非递减；两段都满足则输出 YES，否则输出 NO，单个测试用例复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1670B",
+          "index": "B",
+          "slot": "B",
+          "title": "Dorms War",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1670/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/102579",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定密码字符串和一组特殊字母。每次运行程序时，每个特殊字母都会删除它当前左侧紧邻的一个字符，删除后字符串拼接；求在字符串无法继续执行有效删除前，最多能运行多少次。",
+          "transformedStatement": "把特殊字母统一看作 `1`、其他字母看作 `0`，问题变成多个以 `1` 结尾的零段相互传递删除效果：统计每段前置 `0` 被清空并完成特殊字符替代所需的时间，再取最大值。",
+          "keyObservations": [
+            "把非特殊字符视为 `0`、特殊字符视为 `1` 后，字符具体字母不再重要；每轮的效果就是每个 `1` 删除其左侧紧邻字符。",
+            "只有特殊字符左侧、且位于某个以特殊字符结尾的分段中的非特殊字符会被删除；末尾没有特殊字符保护的非特殊后缀不会影响答案。",
+            "将字符串按每个特殊字符划分为若干段后，第一个分段清空前置 `0` 需要其数量轮；其余分段还需额外一轮，让本段的 `1` 替代前一段的 `1`，因此取各段所需时间的最大值。"
+          ],
+          "solutionBrief": "将字符串转成二进制标记，扫描每个以特殊字符结尾的分段。设段内前置非特殊字符数为 $z$，首段代价为 $z$，其他段代价为 $z+1$；答案是这些代价的最大值，末尾非特殊后缀忽略。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1670C",
+          "index": "C",
+          "slot": "C",
+          "title": "Where is the Pizza?",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1670/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/102579",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的排列 $a,b$，构造排列 $c$：每个位置 $c_i$ 必须从 $a_i$ 或 $b_i$ 中选择；部分位置通过 $d_i$ 指定了必须取的值，$d_i=0$ 表示不限制。请统计满足这些条件的不同排列 $c$ 数量，并对 $10^9+7$ 取模。",
+          "transformedStatement": "把每个位置转化为连接数值 $a_i$ 和 $b_i$ 的边，得到由环组成的连通块；每个环选择一种统一方向，对应整块取 $a$ 或整块取 $b$，已知值会固定该方向。",
+          "keyObservations": [
+            "把每个位置的 $a_i$ 与 $b_i$ 连边后，因两数组都是排列，非平凡连通块必为环；环内只能整体选择 $a$ 或整体选择 $b$，因此恰有两种方案。",
+            "大小为 $1$ 的连通块满足 $a_i=b_i$，只有一种选择，不会贡献答案中的因子。",
+            "若某个连通块包含已知的 $d_i$，其选择方向就被固定；只有完全没有已知值的非平凡连通块贡献一个因子 $2$。",
+            "答案等于自由非平凡连通块数量为 $p$ 时的 $2^p$，用并查集合并每条 $(a_i,b_i)$ 边并取模计算。"
+          ],
+          "solutionBrief": "将每个位置的 $a_i,b_i$ 视为一条边，用并查集求连通块。统计大小大于 $1$ 且所有位置均未被 $d$ 约束的块数 $p$，答案为 $2^p\\bmod 10^9+7$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1670D",
+          "index": "D",
+          "slot": "D",
+          "title": "Very Suspicious",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1670/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/102579",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "geometry",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "在无限六边形网格上，可以依次添加平行于六边形三组边方向的直线；形成的等边三角形内部不能穿过任何直线或六边形边。给定 $n$，求至少形成 $n$ 个空等边三角形所需添加的最少直线数。",
+          "transformedStatement": "把直线按三种斜率分组，设数量为 $a,b,c$，最大三角形数等于 $2(ab+bc+ca)$。问题转化为：给定总数 $a+b+c=N$ 时取最均衡的三组，并寻找使该数量达到 $n$ 的最小 $N$。",
+          "keyObservations": [
+            "每个由两条不同方向直线交于六边形中心的位置都会产生恰好 $2$ 个空等边三角形，因此目标可转为最大化这类交点数。",
+            "设三种方向的直线数为 $a,b,c$，交点数为 $ab+bc+ca$；若两组数量相差超过 $1$，把一条直线移到较小组会增加交点，所以三组应尽量均衡。",
+            "按三个方向循环添加直线时，每次新增交点数为 $0,1,2,2,3,4,4,5,6,\u0000dots$；每三个增量一组，第 $i$ 组为 $2i,2i+1,2i+2$，便于按完整组快速计算。",
+            "直线数量增加后可形成的三角形数量单调不减，因此先计算给定直线数的最大三角形数，再二分满足至少 $n$ 个三角形的最小直线数。"
+          ],
+          "solutionBrief": "将三种方向的直线数量保持尽量均衡。用循环顺序计算 $N$ 条线产生的交点数及三角形数，再对直线数量二分，找出三角形数不少于 $n$ 的最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1670E",
+          "index": "E",
+          "slot": "E",
+          "title": "Hemose on the Tree",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1670/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/102579",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "给定一个有 $n=2^p$ 个顶点的树，需要把 $1$ 到 $2n-1$ 的所有整数恰好分配给全部顶点和边。选择一个根后，定义根到任意顶点或边的路径代价为路径上所有值的异或，目标是构造分配和根，使最大代价最小。",
+          "transformedStatement": "令 $H=2^p$，把除 $H$ 外的数按 $(x,x+H)$ 配对。问题转化为：以任意根为起点，利用节点与其父边的配对分配，让路径异或始终不超过 $H$，同时证明任何方案都无法低于该值。",
+          "keyObservations": [
+            "设 $H=2^p$，任意赋值中从根沿路径首次遇到含第 $p$ 位的值时，前缀异或也含该位，因此最大代价至少为 $H$。",
+            "根赋值为 $H$，其余数恰好组成 $H-1$ 对 $(x,x+H)$，其中 $1\\le x<H$；这样既使用所有值，又能分别控制高位。",
+            "对子节点，根据父节点是否含第 $p$ 位，将节点与对应边分别赋为 $x$、$x+H$ 或反过来，使根到节点的异或只在 $0,H$ 间交替，而根到边的异或为某个 $x<H$。",
+            "上述构造的所有路径代价都不超过 $H$，结合下界可知最小可能的最大代价正好是 $H$。"
+          ],
+          "solutionBrief": "取任意根，令 $H=2^p$ 并给根赋值 $H$。将其余值配成 $(x,x+H)$；遍历树时按父节点高位状态决定节点和边的分配方向，从而让所有路径异或不超过 $H$，达到理论下界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1670F",
+          "index": "F",
+          "slot": "F",
+          "title": "Jee, You See?",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1670/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/102579",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "dp"
+          ],
+          "statementBrief": "给定长度为 $n$ 的非负整数数组，要求所有元素的按位异或等于 $z$，且元素总和位于区间 $[l,r]$ 内。请统计满足这些条件的数组数量，并对 $10^9+7$ 取模。",
+          "transformedStatement": "先定义 $G(X)$ 为总和不超过 $X$ 且整体异或为 $z$ 的数组数，再按二进制位同时构造所有元素。状态只记录当前上界与已构造部分之间的截断差值，最后用 $G(r)-G(l-1)$ 得到区间答案。",
+          "keyObservations": [
+            "将和落在区间 $[l,r]$ 转为计算前缀函数 $G(X)$：满足总和不超过 $X$ 的方案数，最终答案为 $G(r)-G(l-1)$。",
+            "处理某个二进制位时，若恰有 $c$ 个数组元素该位为 $1$，则有 ${n\\choose c}$ 种分配方式；同时 $c$ 的奇偶性必须等于 $z$ 在该位的取值。",
+            "用“当前上界剩余量与已生成位贡献的差值”作为状态，并将其截断到 $2n$；当差值至少为 $2n$ 时，后续任意位选择都不会超出上界。",
+            "从低位到高位推进时，选择 $c$ 个当前位为 $1$ 后，差值更新为 $2(k-c+b)$，其中 $b$ 是上界 $X$ 的当前位，从而只需保留至多 $2n+1$ 个状态。"
+          ],
+          "solutionBrief": "对每个上界 $X$，按二进制位做 DP，状态记录截断后的剩余差值；转移枚举当前位的 $1$ 的个数，用组合数分配位置，并按 $z$ 的位限制奇偶性。分别计算 $G(r)$ 与 $G(l-1)$ 后作差。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
