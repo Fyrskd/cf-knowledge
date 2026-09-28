@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3831,
+    "total_problems": 3833,
     "source_total_problems": 3835,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3831,
-    "with_editorial_brief": 3514,
-    "with_solution_brief": 3516,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3833,
+    "with_editorial_brief": 3516,
+    "with_solution_brief": 3518,
     "missing_editorial_brief": 315,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2892,
+    "ai_override_count": 2895,
     "primary_topic_count": 13,
     "contest_count": 594,
     "rating_min": 800,
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 406,
-    "构造与贪心": 1243,
+    "基础实现与模拟": 241,
+    "构造与贪心": 1244,
+    "动态规划与状态设计": 314,
+    "数论与同余": 405,
     "数据结构": 366,
-    "动态规划与状态设计": 313,
     "交互": 112,
-    "基础实现与模拟": 240,
     "组合计数与概率": 292,
     "图论与网络流": 249,
     "字符串": 200,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2538,
     "missing_editorial": 315,
-    "ai_generated_with_editorial": 2536,
     "ai_generated_partial_editorial": 87,
     "low_confidence": 1,
     "manual_override": 891,
@@ -118035,9 +118035,61 @@ window.CF_INSIGHTS_DATA = {
       "date": "2021-08-24",
       "url": "https://codeforces.com/contest/1561",
       "type": "Div. 2",
-      "problemCount": 1,
+      "problemCount": 3,
       "maxRating": 1700,
       "problems": [
+        {
+          "key": "1561A",
+          "index": "A",
+          "slot": "A",
+          "title": "Simply Strange Sort",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1561/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一个长度为奇数的 $1$ 到 $n$ 的排列。算法按轮次交替检查两组不重叠的相邻位置：若一对元素左大右小就交换，否则不变；求排列第一次变为递增序列所需的轮数，初始有序时答案为 $0$。",
+          "transformedStatement": "把过程视为奇偶排序的离散阶段：第 $1$、$3$、$$ 轮处理从第一个元素开始的相邻对，第 $2$、$4$、$$ 轮处理从第二个元素开始的相邻对；每个阶段完成一批独立的逆序消除。",
+          "keyObservations": [
+            "每轮只处理一组互不重叠的相邻位置：第奇数轮比较第 $1,2$、$3,4$ 等位置，第偶数轮比较第 $2,3$、$4,5$ 等位置，因此同一轮内的交换不会互相干扰。",
+            "每次只交换逆序相邻元素，直接按轮次模拟即可精确得到首次有序的时刻；若初始数组已有序，则无需执行任何轮次。",
+            "任意长度为 $n$ 的排列最多经过 $n$ 轮即可有序，逆序排列可以达到这个上界，因此逐轮模拟的总复杂度为 $O(n^2)$。"
+          ],
+          "solutionBrief": "按轮次交替处理两种相邻下标集合：第 $0$ 轮处理下标 $0,2,4,$，下一轮处理下标 $1,3,5,$。对每对相邻元素按需交换，直到排列有序；答案就是执行的轮数，最多为 $n$，总复杂度 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1561C",
+          "index": "C",
+          "slot": "C",
+          "title": "Deep Down Below",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1561/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "英雄拥有力量值，必须按任意顺序进入每个洞穴且不能中途离开；洞穴中的怪物必须按给定顺序逐个战斗，只有力量严格大于怪物护甲才能获胜，每击败一个怪物力量加一。求能通关所有洞穴所需的最小初始力量。",
+          "transformedStatement": "把每个洞穴压缩为一项需求 $b_i$ 和收益 $k_i$：力量超过 $b_i$ 即可完整通关并增加 $k_i$。随后将这些项目按需求 $b_i$ 排序，求覆盖所有前缀需求所需的最小初始值。",
+          "keyObservations": [
+            "洞穴内第 $j$ 个怪物要求入洞时初始力量满足 $x+j-1>a_{i,j}$，因此整洞只需检查 $x>b_i$，通关后力量固定增加 $k_i$。",
+            "若按 $b_i$ 非递减顺序进入洞穴，任意相邻逆序洞穴都可交换而不增加要求，因此该顺序始终最优。",
+            "排序后第 $i$ 个洞穴的进入条件可统一写成 $x+ ext{此前击败的怪物数}>b_i$，取所有条件中的最大缺口即可得到最小初始力量。"
+          ],
+          "solutionBrief": "对每个洞穴计算 $b_i=\\max_j(a_{i,j}-(j-1))$，它表示进入该洞穴所需满足的严格力量下界。按 $b_i$ 非递减排序，令 $p=\\max_i(b_i-\\sum_{r<i}k_r)$，答案为 $p+1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1561D1",
           "index": "D1",
@@ -118046,12 +118098,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1700,
           "problemUrl": "https://codeforces.com/contest/1561/problem/D1",
           "editorialUrl": "https://codeforces.com/blog/entry/94216",
-          "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "数据结构",
-            "构造与贪心"
-          ],
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "data structures",
@@ -118059,7 +118107,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Up the Strip (simplified version)；本地暂无可用题解正文。",
+          "statementBrief": "有一条编号为 $1$ 到 $n$ 的竖直条带，棋子初始在第 $n$ 格；每次从当前位置向上移动一步，操作示例包括选择减法参数或除法参数，直到到达第 $1$ 格。需要统计所有使用至少一步移动、从 $n$ 到 $1$ 的不同操作方案数，并对质数 $m$ 取模；但本地题面缺少两类操作的完整定义。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

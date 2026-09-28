@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T13:32:43+00:00",
+  "updated_at": "2026-09-28T13:37:21+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -86654,6 +86654,89 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text、editorial_text，并参考 tags 中的 math 与 greedy。",
         "quality_flags": []
+      }
+    },
+    "1561D1": {
+      "problem_key": "1561D1",
+      "title": "Up the Strip (simplified version)",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1561/problem/D1",
+      "editorial_url": "https://codeforces.com/blog/entry/94216",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "882110d67d6633da1c8ade6d09fa9e22a4bea663d57c9e9c3ae85180fca830ff",
+      "generated_at": "2026-09-28T13:36:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有一条编号为 $1$ 到 $n$ 的竖直条带，棋子初始在第 $n$ 格；每次从当前位置向上移动一步，操作示例包括选择减法参数或除法参数，直到到达第 $1$ 格。需要统计所有使用至少一步移动、从 $n$ 到 $1$ 的不同操作方案数，并对质数 $m$ 取模；但本地题面缺少两类操作的完整定义。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和题目标签；editorial_text 为空，仅有 editorial URL。",
+        "quality_flags": [
+          "incomplete_statement",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1561C": {
+      "problem_key": "1561C",
+      "title": "Deep Down Below",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1561/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/94216",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c36d1d7691d4d3cf0e29d5ea6794e204b75ef6f166aa8db25257467d622f6886",
+      "generated_at": "2026-09-28T13:37:02+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "英雄拥有力量值，必须按任意顺序进入每个洞穴且不能中途离开；洞穴中的怪物必须按给定顺序逐个战斗，只有力量严格大于怪物护甲才能获胜，每击败一个怪物力量加一。求能通关所有洞穴所需的最小初始力量。",
+        "transformed_statement": "把每个洞穴压缩为一项需求 $b_i$ 和收益 $k_i$：力量超过 $b_i$ 即可完整通关并增加 $k_i$。随后将这些项目按需求 $b_i$ 排序，求覆盖所有前缀需求所需的最小初始值。",
+        "key_observations": [
+          "洞穴内第 $j$ 个怪物要求入洞时初始力量满足 $x+j-1>a_{i,j}$，因此整洞只需检查 $x>b_i$，通关后力量固定增加 $k_i$。",
+          "若按 $b_i$ 非递减顺序进入洞穴，任意相邻逆序洞穴都可交换而不增加要求，因此该顺序始终最优。",
+          "排序后第 $i$ 个洞穴的进入条件可统一写成 $x+ ext{此前击败的怪物数}>b_i$，取所有条件中的最大缺口即可得到最小初始力量。"
+        ],
+        "solution_brief": "对每个洞穴计算 $b_i=\\max_j(a_{i,j}-(j-1))$，它表示进入该洞穴所需满足的严格力量下界。按 $b_i$ 非递减排序，令 $p=\\max_i(b_i-\\sum_{r<i}k_r)$，答案为 $p+1$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则、完整 editorial_text 及其 greedy/sortings 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1561A": {
+      "problem_key": "1561A",
+      "title": "Simply Strange Sort",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1561/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/94216",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "916219a3f1402af28365de9a0e32761ad4c5779ba41872f8f97cf79ff0efccb6",
+      "generated_at": "2026-09-28T13:37:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为奇数的 $1$ 到 $n$ 的排列。算法按轮次交替检查两组不重叠的相邻位置：若一对元素左大右小就交换，否则不变；求排列第一次变为递增序列所需的轮数，初始有序时答案为 $0$。",
+        "transformed_statement": "把过程视为奇偶排序的离散阶段：第 $1$、$3$、$$ 轮处理从第一个元素开始的相邻对，第 $2$、$4$、$$ 轮处理从第二个元素开始的相邻对；每个阶段完成一批独立的逆序消除。",
+        "key_observations": [
+          "每轮只处理一组互不重叠的相邻位置：第奇数轮比较第 $1,2$、$3,4$ 等位置，第偶数轮比较第 $2,3$、$4,5$ 等位置，因此同一轮内的交换不会互相干扰。",
+          "每次只交换逆序相邻元素，直接按轮次模拟即可精确得到首次有序的时刻；若初始数组已有序，则无需执行任何轮次。",
+          "任意长度为 $n$ 的排列最多经过 $n$ 轮即可有序，逆序排列可以达到这个上界，因此逐轮模拟的总复杂度为 $O(n^2)$。"
+        ],
+        "solution_brief": "按轮次交替处理两种相邻下标集合：第 $0$ 轮处理下标 $0,2,4,$，下一轮处理下标 $1,3,5,$。对每对相邻元素按需交换，直到排列有序；答案就是执行的轮数，最多为 $n$，总复杂度 $O(n^2)$。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 中的排列与相邻交换规则，以及 editorial 中的奇偶轮模拟代码和复杂度结论；tags 仅用于主题辅助判断。",
+        "quality_flags": [
+          "题面中关于每轮具体下标范围的文字不完整，但可由题解代码确定奇偶轮规则"
+        ]
       }
     }
   }
