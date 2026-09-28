@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4024,
+    "total_problems": 4026,
     "source_total_problems": 4026,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4024,
-    "with_editorial_brief": 3678,
-    "with_solution_brief": 3680,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4026,
+    "with_editorial_brief": 3680,
+    "with_solution_brief": 3682,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3086,
+    "ai_override_count": 3088,
     "primary_topic_count": 13,
-    "contest_count": 624,
+    "contest_count": 625,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1305,
+    "构造与贪心": 1307,
     "数论与同余": 423,
     "组合计数与概率": 314,
     "交互": 118,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "几何": 94
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2689,
+    "ai_generated_with_editorial": 2691,
     "missing_editorial": 344,
     "ai_generated_partial_editorial": 98,
     "low_confidence": 1,
@@ -123775,6 +123775,73 @@ window.CF_INSIGHTS_DATA = {
             "找到值为 $1$ 和 $2$ 的位置后，查询这两个位置与任意 $x$，结果恒为 $p[x]-2$；所有剩余排列值可直接恢复，再利用已知 $p[1]<p[2]$ 判断是否需要整体反转。"
           ],
           "solutionBrief": "穷举固定 $13$ 个位置的三元组，找到查询值足够小的一组并取其中一对近邻值位置。扫描第三个位置以定位排列端点，再用至多两次查询确定其相邻值的位置。以值为 $1,2$ 的位置查询其余元素即可恢复排列，最后按 $p[1]<p[2]$ 校正方向。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1529,
+      "name": "Codeforces Round 722 (Div. 2)",
+      "date": "2021-05-24",
+      "url": "https://codeforces.com/contest/1529",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1529A",
+          "index": "A",
+          "slot": "A",
+          "title": "Eshag Loves Big Arrays",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1529/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/91058",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定整数数组，可以反复选择一个子序列，并删除其中所有严格大于该子序列平均值的元素。求经过任意次操作后最多能删除多少个数组元素。",
+          "transformedStatement": "问题可转化为确定哪些元素必然保留，以及其余元素能否逐个删除：全局最小值无法被操作删去，而每个更大的元素都可与一个最小值组成二元素子序列并被删除。",
+          "keyObservations": [
+            "全局最小值不可能被删除：任何包含它的子序列平均值都不低于它，因此它不会严格大于平均值；这给出了必须保留的元素下界。",
+            "对任意大于全局最小值的元素，单独选它和一个最小值，二者平均值严格小于较大者，所以这次操作能删掉该元素而保留最小值。",
+            "逐个删除所有非最小值后即可达到下界，因此最大删除数等于数组长度减去最小值的出现次数。"
+          ],
+          "solutionBrief": "统计数组最小值出现次数。每个最小值都无法删除，而每个更大的元素都能与一个最小值配对并被删除，因此答案为 $n-cnt_{min}$，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1529B",
+          "index": "B",
+          "slot": "B",
+          "title": "Sifid and Strange Subsequences",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1529/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/91058",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定整数数组，子序列若任意两元素的绝对差都不小于该子序列的最大元素，就称为奇异子序列。可删除任意元素来选取子序列，要求求出最长奇异子序列的长度。",
+          "transformedStatement": "把候选子序列拆成非正数与正数：先选入全部非正数，再判断能否额外加入一个正数。由于正数最多选一个，只需用最小正数检验它与非正数集合的差值约束。",
+          "keyObservations": [
+            "任何两个正数的差都小于其中较大的数，因此奇异子序列至多包含一个正数。",
+            "所有非正数都可以一起选入：它们之间的差不小于其中较大的数，所以先选全体非正数不会破坏条件。",
+            "若要再加入正数，最小正数最容易满足与已有元素的差值限制；将非正数排序后，只需检查相邻元素的差是否都至少为该正数。"
+          ],
+          "solutionBrief": "先统计并保留所有非正数，至多再加入一个正数。取数组中的最小正数，排序非正数并检查相邻差；若每个相邻差都不小于它，答案加一，否则答案仅为非正数个数。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

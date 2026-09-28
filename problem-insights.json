@@ -15,19 +15,101 @@
     ]
   },
   "summary": {
-    "total_problems": 4024,
+    "total_problems": 4026,
     "source_total_problems": 4026,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4024,
-    "with_editorial_brief": 3678,
-    "with_solution_brief": 3680,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4026,
+    "with_editorial_brief": 3680,
+    "with_solution_brief": 3682,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3086,
+    "ai_override_count": 3088,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1529A",
+      "contest_id": 1529,
+      "title": "Eshag Loves Big Arrays",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1529/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/91058",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定整数数组，可以反复选择一个子序列，并删除其中所有严格大于该子序列平均值的元素。求经过任意次操作后最多能删除多少个数组元素。",
+      "transformed_statement": "问题可转化为确定哪些元素必然保留，以及其余元素能否逐个删除：全局最小值无法被操作删去，而每个更大的元素都可与一个最小值组成二元素子序列并被删除。",
+      "key_observations": [
+        "全局最小值不可能被删除：任何包含它的子序列平均值都不低于它，因此它不会严格大于平均值；这给出了必须保留的元素下界。",
+        "对任意大于全局最小值的元素，单独选它和一个最小值，二者平均值严格小于较大者，所以这次操作能删掉该元素而保留最小值。",
+        "逐个删除所有非最小值后即可达到下界，因此最大删除数等于数组长度减去最小值的出现次数。"
+      ],
+      "solution_brief": "统计数组最小值出现次数。每个最小值都无法删除，而每个更大的元素都能与一个最小值配对并被删除，因此答案为 $n-cnt_{min}$，复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T22:27:42+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1529B",
+      "contest_id": 1529,
+      "title": "Sifid and Strange Subsequences",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1529/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/91058",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "greedy",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "给定整数数组，子序列若任意两元素的绝对差都不小于该子序列的最大元素，就称为奇异子序列。可删除任意元素来选取子序列，要求求出最长奇异子序列的长度。",
+      "transformed_statement": "把候选子序列拆成非正数与正数：先选入全部非正数，再判断能否额外加入一个正数。由于正数最多选一个，只需用最小正数检验它与非正数集合的差值约束。",
+      "key_observations": [
+        "任何两个正数的差都小于其中较大的数，因此奇异子序列至多包含一个正数。",
+        "所有非正数都可以一起选入：它们之间的差不小于其中较大的数，所以先选全体非正数不会破坏条件。",
+        "若要再加入正数，最小正数最容易满足与已有元素的差值限制；将非正数排序后，只需检查相邻元素的差是否都至少为该正数。"
+      ],
+      "solution_brief": "先统计并保留所有非正数，至多再加入一个正数。取数组中的最小正数，排序非正数并检查相邻差；若每个相邻差都不小于它，答案加一，否则答案仅为非正数个数。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T22:27:31+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 3,
       "problem_key": "1526A",
