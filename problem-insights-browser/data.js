@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3688,
+    "total_problems": 3696,
     "source_total_problems": 3698,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3688,
-    "with_editorial_brief": 3376,
-    "with_solution_brief": 3378,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3696,
+    "with_editorial_brief": 3384,
+    "with_solution_brief": 3386,
     "missing_editorial_brief": 310,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2750,
+    "ai_override_count": 2758,
     "primary_topic_count": 13,
-    "contest_count": 569,
+    "contest_count": 570,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 385,
-    "构造与贪心": 1198,
+    "基础实现与模拟": 234,
+    "数论与同余": 386,
+    "构造与贪心": 1202,
+    "图论与网络流": 240,
     "字符串": 195,
     "组合计数与概率": 278,
     "交互": 108,
     "数据结构": 352,
     "几何": 90,
     "博弈": 112,
-    "基础实现与模拟": 232,
-    "图论与网络流": 239,
     "树结构": 177,
     "动态规划与状态设计": 297,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2407,
+    "ai_generated_with_editorial": 2415,
     "ai_generated_partial_editorial": 78,
     "missing_editorial": 310,
     "low_confidence": 1,
@@ -113680,6 +113680,231 @@ window.CF_INSIGHTS_DATA = {
             "最佳子序列长度为 n−1 且 n 为奇数时，构造出的数组实际是良好的特殊情形；计算坏数组时跳过这类转移即可避免重复计数。"
           ],
           "solutionBrief": "按数组长度和总共出现的比特数建立 DP，利用唯一最佳子序列从较短良好数组转移计数。转移系数由位置选择、比特选择、带容斥的正数排列及已有比特填入组成，复杂度为 $O(n^4)$；总答案由总数组数减去坏数组数得到。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1607,
+      "name": "Codeforces Round 753 (Div. 3)",
+      "date": "2021-11-02",
+      "url": "https://codeforces.com/contest/1607",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2300,
+      "problems": [
+        {
+          "key": "1607A",
+          "index": "A",
+          "slot": "A",
+          "title": "Linear Keyboard",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1607/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/96604",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一行按任意顺序排列的 26 个小写字母键盘，以及要输入的单词。手指从第一个字母开始且首次定位不耗时，之后每按一个字母都必须移动到对应按键，移动代价是两键位置之差的绝对值；求输入完整单词的最小总时间。",
+          "transformedStatement": "把键盘视为字母到整数位置的映射，将输入单词转化为位置序列；问题等价于求该序列中每两个相邻位置的绝对差之和。",
+          "keyObservations": [
+            "首次按下字母不产生移动时间，因此总耗时只由单词中相邻字符在键盘上的位置差贡献。",
+            "将键盘字符串预处理为字母到位置的映射后，每一对相邻字符的代价可直接计算，避免反复查找位置。",
+            "总答案等于所有相邻位置差的绝对值之和，逐字符累加即可覆盖整个输入单词。"
+          ],
+          "solutionBrief": "记录每个字母在键盘中的位置，遍历单词的相邻字符并累加位置差的绝对值；首字符无需计费。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1607B",
+          "index": "B",
+          "slot": "B",
+          "title": "Odd Grasshopper",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1607/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/96604",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "蚱蜢从整数坐标 $x_0$ 出发，第 $i$ 分钟必须跳跃距离 $i$：当前位置为偶数就向左跳，否则向右跳。给定跳跃次数 $n$，求完成这些跳跃后的坐标。",
+          "transformedStatement": "把运动拆成从 $0$ 出发的位移 $D$：四次跳跃构成可重复的方向与位移模式；初始点的奇偶性只决定这套位移是否整体反向。",
+          "keyObservations": [
+            "从坐标 $0$ 出发时，每连续四次跳跃的净位移模式重复：先左、再右、再右、再左，并在四次后回到 $0$。",
+            "因此从 $0$ 出发的位移 $D$ 只由 $n$ 对 $4$ 的余数决定：余数为 $1,2,3,0$ 时分别是 $-n,1,n+1,0$。",
+            "初始坐标为偶数时，实际每步方向与从 $0$ 出发相同；为奇数时每步方向全部相反，所以答案分别为 $x_0+D$ 和 $x_0-D$。"
+          ],
+          "solutionBrief": "按 $n$ 对 $4$ 的余数计算从 $0$ 出发的位移 $D$，再根据 $x_0$ 的奇偶性输出 $x_0+D$ 或 $x_0-D$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1607C",
+          "index": "C",
+          "slot": "C",
+          "title": "Minimum Extraction",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1607/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/96604",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "sortings"
+          ],
+          "statementBrief": "给定一个整数数组。只要数组长度大于 $1$，就可以删除当前最小元素，并将这个最小值从所有剩余元素中减去；可重复操作任意次或不操作，要求最终数组最小元素的最大可能值。",
+          "transformedStatement": "把数组视为无序多重集合并升序排列为 $b$。连续操作会依次消去排序后的前缀，第 $c$ 次操作后的最小值等于相邻元素差 $b_{c+1}-b_c$，因此问题转化为在首元素和所有相邻差中取最大值。",
+          "keyObservations": [
+            "元素的原始顺序不影响每一步的元素集合，因此可先将数组升序排列，转化为研究相邻大小关系。",
+            "进行第 $c$ 次操作后，剩余元素可表示为 $b_{c+1}-b_c,b_{c+2}-b_c,\u001dots$，所以当前最小值恰为下一组相邻差 $b_{c+1}-b_c$。",
+            "所有可能的最终最小值只包括不操作时的 $b_1$ 和每个相邻差，取它们的最大值即可覆盖任意操作次数。"
+          ],
+          "solutionBrief": "将数组升序排序为 $b$，答案取 $b_1$ 与所有相邻差 $b_i-b_{i-1}$ 的最大值。因为操作次数对应依次跳过前缀，每次产生的最小值正是下一相邻差。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1607D",
+          "index": "D",
+          "slot": "D",
+          "title": "Blue-Red Permutation",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1607/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/96604",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个由蓝色和红色元素组成的数组；每次可将蓝色元素减小 1，或将红色元素增大 1，操作次数任意。判断能否把数组变成 $1$ 到 $n$ 恰好各出现一次的排列。",
+          "transformedStatement": "把问题转化为给每个元素分配一个不同的目标位置值：蓝色只能匹配不超过其原值的目标，红色只能匹配不小于其原值的目标；按蓝色优先、原值升序后逐位检查匹配。",
+          "keyObservations": [
+            "若某个可行排列中蓝色结果大于红色结果，可同步把蓝色减小、红色增大并交换二者，因此可规范为蓝色占据较小值、红色占据较大值。",
+            "同色元素的最终值可按原值单调匹配：较大的输入值分配较大的目标值不会破坏可行性，从而只需按原值排序。",
+            "将元素按“蓝色优先、同色按原值升序”排序后，第 $t$ 个元素只需匹配目标值 $t$；蓝色要求 $a_t\\ge t$，红色要求 $a_t\\le t$。"
+          ],
+          "solutionBrief": "按颜色优先、原值升序排列元素，并依次把它们匹配到 $1$ 到 $n$。蓝色只能减小，检查 $a_t\\ge t$；红色只能增大，检查 $a_t\\le t$，全部满足则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1607E",
+          "index": "E",
+          "slot": "E",
+          "title": "Robot on the Board 1",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1607/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/96604",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "机器人在 $n\\times m$ 棋盘上任选起点，必须按顺序执行字符串中的上下左右移动；一旦某次移动越过边界，后续命令不能再执行。求能成功执行最多命令的起点坐标。",
+          "transformedStatement": "把每个命令前缀看成相对起点的位移轨迹，分别记录横向和纵向的最大、最小位移；问题等价于寻找最长前缀，使横向跨度不超过 $m-1$、纵向跨度不超过 $n-1$。",
+          "keyObservations": [
+            "对任意起点，前缀移动轨迹的横向跨度等于最右位移与最左位移绝对值之和；因此只需判断该跨度是否不超过 $m-1$。",
+            "纵向同理，轨迹可容纳在高度为 $n$ 的棋盘中当且仅当最大下移与最大上移绝对值之和不超过 $n-1$。",
+            "逐条加入命令并维护四个方向的最大位移；一旦横向或纵向跨度超过容量，当前命令无法成功，之前的前缀就是最长可执行前缀。",
+            "在最长合法前缀中，将起点放在 $(\\text{最大上移}+1,\\text{最大左移}+1)$，即可同时留出上下左右所需空间，因此该起点必然可执行整个前缀。"
+          ],
+          "solutionBrief": "扫描命令，维护当前横纵位移及四个方向的最大位移。若加入一条命令后横向跨度超过 $m-1$ 或纵向跨度超过 $n-1$，停止并使用此前的极值；答案起点为 $(\\text{最大上移}+1,\\text{最大左移}+1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1607F",
+          "index": "F",
+          "slot": "F",
+          "title": "Robot on the Board 2",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1607/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/96604",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "棋盘每个格子写有 L、R、D 或 U，机器人从任意格子出发，每次执行当前格子的方向指令并移动到相邻格子，越出棋盘也算完成该次指令；若再次到达已走过的格子则停止。求能完成最多指令的起点及对应步数。",
+          "transformedStatement": "将棋盘建模为每个格子至多一条出边的函数图，棋盘外视为终点；对每条未处理轨迹，按其最终离开、形成环或接入已知节点的类型反向计算到停止所需的步数。",
+          "keyObservations": [
+            "每个格子唯一决定下一步，整张棋盘可视为带有棋盘外终点的函数图，因此一条轨迹只会离开棋盘或首次进入已走过的环。",
+            "若轨迹离开棋盘，从路径末端反向编号即可得到各格子的步数；若轨迹形成长度为 $t$ 的环，环上每个格子的答案都为 $t$。",
+            "当前路径若接入此前已处理的格子 $(r_0,c_0)$，则路径上距它为 $i$ 的格子答案为 $d[r_0][c_0]+i$，从而无需重新模拟后缀。",
+            "沿当前轨迹反向回填并把已赋值数组同时作为访问标记，可保证每个格子只被处理一次，最后取最大的 $d[r][c]$。"
+          ],
+          "solutionBrief": "把每个格子视为唯一出边的函数图节点，逐条追踪尚未处理的路径；遇到棋盘边界、当前路径中的环或已处理节点时，分别反向回填步数。所有节点处理完后扫描最大值并输出其坐标。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1607G",
+          "index": "G",
+          "slot": "G",
+          "title": "Banquet Preparations 1",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1607/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/96604",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "代数、矩阵与多项式",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 道菜，第 $i$ 道含 $a_i$ 克鱼和 $b_i$ 克肉。品尝者必须从每道菜恰好吃掉 $m$ 克，可自行决定其中鱼肉分配但不能超过库存；要求最小化剩余所有菜中鱼总量与肉总量之差的绝对值，并输出一种方案。",
+          "transformedStatement": "令 $T=\\sum a_i-\\sum b_i$，把每道菜的选择只抽象为吃掉的鱼量。总吃鱼量落在 $[nm-B,A]$，最终有符号差值为 $T+nm-2F$，于是问题转化为在固定奇偶性的区间中寻找最接近 $0$ 的数。",
+          "keyObservations": [
+            "第 $i$ 道菜最多能吃的鱼和肉分别是 $\u0000min(a_i,m)$ 与 $\u0000min(b_i,m)$，因此总鱼量 $F$ 的可行范围是 $nm-B\\le F\\le A$。",
+            "吃掉总鱼量 $F$ 后，有符号差值变为 $T+nm-2F$，所以所有可达差值构成一个固定奇偶性的整数区间。",
+            "最优答案就是该区间中绝对值最小的数；区间跨过 $0$ 时，只需检查满足奇偶性的 $-1,0,1$。",
+            "每道菜必须先吃至少 $\u0000max(m-b_i,0)$ 克鱼，剩余目标鱼量再逐道贪心补足，补足量不超过该菜的可选容量。"
+          ],
+          "solutionBrief": "设初始有符号差值为 $T$，计算总鱼量可达范围 $[nm-B,A]$，把它映射为固定奇偶性的最终差值区间，取其中绝对值最小者。再令目标总鱼量为 $F$，先分配各道菜必吃的鱼量，再贪心补齐，肉量由 $m-x_i$ 得到。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1607H",
+          "index": "H",
+          "slot": "H",
+          "title": "Banquet Preparations 2",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1607/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/96604",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 道菜，第 $i$ 道含 $a_i$ 克鱼肉和 $b_i$ 克肉。品尝者必须从每道菜中吃掉恰好 $m_i$ 克，并可自行决定其中两种食物的分配；目标是让品尝后不同菜品的数量最少，并输出一种达到最小值的方案。",
+          "transformedStatement": "将每道菜表示为品尝后可能的剩余鱼肉重量区间，并按品尝后剩余总重量 $a_i+b_i-m_i$ 分组；每组问题等价于用最少的点命中全部区间。",
+          "keyObservations": [
+            "每道菜品尝后剩余总重量固定为 $G_i=a_i+b_i-m_i$，因此只有 $G_i$ 相同的菜才可能变得相同，且此时剩余鱼肉重量相同即可保证整道菜相同。",
+            "第 $i$ 道菜品尝后剩余鱼肉重量可取整数区间 $[\\max(0,a_i-m_i),\\ a_i+\\min(0,b_i-m_i)]$ 内的任意值，将原问题转为区间选点。",
+            "同一 $G$ 分组内，每个选中的点代表一种最终菜品，目标是用最少点命中所有区间；每次取当前右端点最小区间的右端点是最优的，因为向右取不会减少对其他区间的覆盖。",
+            "若区间选择剩余鱼肉为 $x$，则应从原菜中吃掉 $a_i-x$ 克鱼肉和 $m_i-(a_i-x)$ 克肉，从而可直接恢复操作方案。"
+          ],
+          "solutionBrief": "按 $G_i=a_i+b_i-m_i$ 分组，将每道菜转成可行的剩余鱼肉区间。组内按右端点排序，贪心选择未覆盖区间的右端点并覆盖包含它的区间；选点数即最小 variety，再据此输出鱼肉和肉的食用量。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
