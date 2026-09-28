@@ -8,6 +8,25 @@
     "raw_sha256": "5f3dd07045859f3e77507947bf858a5d2552c6ea0c89da1b94c474f8425c1786"
   },
   {
+    "url": "https://codeforces.com/blog/entry/99442",
+    "blog_entry_id": 99442,
+    "title": "Editorial of Codeforces Round #769",
+    "author": "Vladithur",
+    "creation_time": "2022-01-29",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Editorial of Codeforces Round #769",
+    "section_count": 5,
+    "covered_problems": [
+      "1632A",
+      "1632B",
+      "1632C",
+      "1632D",
+      "1632E2"
+    ],
+    "raw_sha256": "b600e476213984ed1a126282e85f7d0e43491baf6fca598e521feb638d17a780"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/100780",
     "blog_entry_id": 100780,
     "title": "Codeforces Round #777 Editorial",

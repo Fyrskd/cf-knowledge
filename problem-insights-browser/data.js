@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3492,
-    "source_total_problems": 3494,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 3492,
+    "total_problems": 3493,
+    "source_total_problems": 3500,
+    "filtered_out_problems": 7,
+    "with_statement_brief": 3493,
     "with_editorial_brief": 3194,
     "with_solution_brief": 3196,
-    "missing_editorial_brief": 296,
+    "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2554,
     "primary_topic_count": 13,
-    "contest_count": 538,
+    "contest_count": 539,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "图论与网络流": 229,
     "基础实现与模拟": 218,
     "构造与贪心": 1131,
     "动态规划与状态设计": 285,
-    "图论与网络流": 228,
     "数据结构": 333,
     "字符串": 183,
     "数论与同余": 367,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 106
   },
   "statusCounts": {
+    "missing_editorial": 297,
     "ai_generated_with_editorial": 2233,
     "ai_generated_partial_editorial": 70,
-    "missing_editorial": 296,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -107727,6 +107727,46 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "根树后维护各点后代数奇偶。激活叶子时翻转根到该点路径的状态，用树链剖分和懒标记线段树维护状态计数及匹配边；奇偶两类数量相等时即可得到完美匹配。",
           "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1632,
+      "name": "Codeforces Round 769 (Div. 2)",
+      "date": "2022-01-30",
+      "url": "https://codeforces.com/contest/1632",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1632E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Distance Tree (easy version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1632/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/99442",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Distance Tree (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }

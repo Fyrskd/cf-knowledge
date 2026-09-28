@@ -1,5 +1,16 @@
 [
   {
+    "id": 1632,
+    "name": "Codeforces Round 769 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1643553300,
+    "relativeTimeSeconds": 147025330,
+    "date": "2022-01-30"
+  },
+  {
     "id": 1633,
     "name": "Educational Codeforces Round 122 (Rated for Div. 2)",
     "type": "ICPC",
