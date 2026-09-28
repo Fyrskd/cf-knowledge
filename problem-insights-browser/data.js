@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3932,
+    "total_problems": 3934,
     "source_total_problems": 3934,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 3932,
-    "with_editorial_brief": 3595,
-    "with_solution_brief": 3597,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3934,
+    "with_editorial_brief": 3597,
+    "with_solution_brief": 3599,
     "missing_editorial_brief": 335,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2994,
+    "ai_override_count": 2996,
     "primary_topic_count": 13,
-    "contest_count": 609,
+    "contest_count": 610,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1278,
+    "构造与贪心": 1279,
+    "数论与同余": 416,
     "组合计数与概率": 302,
     "动态规划与状态设计": 322,
     "图论与网络流": 257,
     "字符串": 210,
-    "数论与同余": 415,
     "数据结构": 374,
     "树结构": 184,
     "交互": 114,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2615,
+    "ai_generated_with_editorial": 2617,
     "missing_editorial": 335,
     "ai_generated_partial_editorial": 89,
     "low_confidence": 1,
@@ -121022,6 +121022,69 @@ window.CF_INSIGHTS_DATA = {
             "每个石头的最优出边只需考察最接近 $a_i-d$ 和 $a_i+d$ 的两侧候选；按坐标扫描并维护不同连通块的候选，可将每轮找边降至线性时间。"
           ],
           "solutionBrief": "为每对石头建立权值为 $|d-|a_u-a_v||$ 的边，构造该完全图的最小生成树。沿以起点 $s$ 为根的树遍历，求出到各点路径上的最大边权；查询给定 $k$ 时，比较该值是否不超过 $k$。最小生成树可用 Borůvka 构造，寻找各块候选边可用有序集合，或用扫描优化。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1546,
+      "name": "Codeforces Round 732 (Div. 2)",
+      "date": "2021-07-11",
+      "url": "https://codeforces.com/contest/1546",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1200,
+      "problems": [
+        {
+          "key": "1546A",
+          "index": "A",
+          "slot": "A",
+          "title": "AquaMoon and Two Arrays",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1546/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/92739",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的非负整数数组 $a$ 和 $b$，每次可选两个下标 $i,j$，将 $a_i$ 减一并将 $a_j$ 加一。要求判断能否通过若干次操作使 $a=b$；若能，输出任意一组操作，否则输出 -1。",
+          "transformedStatement": "把每个位置相对目标值的差 $a_i-b_i$ 看作多余或不足：操作将一个单位从正差位置转移到负差位置。问题因此化为总差为零时配对并消除所有正、负差单位。",
+          "keyObservations": [
+            "每次操作只是把数组 $a$ 的一个单位从位置 $i$ 移到位置 $j$，因此 $a$ 的元素总和保持不变；总和不同就不可能变成 $b$。",
+            "若两数组总和相等，所有多出的单位总数必等于所有缺少的单位总数；每次从 $a_i>b_i$ 的位置移一个单位到 $a_j<b_j$ 的位置，都会同时减少一处多余和一处不足，最终使两数组相等。"
+          ],
+          "solutionBrief": "先比较两数组元素总和，不相等则输出 -1。总和相等时，反复选择一个当前值大于目标值的位置和一个小于目标值的位置，将前者减一、后者加一，并记录这次操作，直到数组相等。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1546B",
+          "index": "B",
+          "slot": "B",
+          "title": "AquaMoon and Stolen String",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1546/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/92739",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "给定 n 个等长字符串（n 为奇数），其中有一个字符串被偷走；其余字符串两两配对，每对可选择至少一列、至多 m 列交换两个字符串对应位置的字母，之后这些字符串会被打乱。要求找出被偷走的字符串。",
+          "transformedStatement": "把原始字符串和打乱后的字符串按列合并统计：每对字符串在交换前后该列的字母总数不变，因此配对部分在合并统计中对每种字母都贡献偶数次，奇数次出现的字母对应被偷字符串该列的字符。",
+          "keyObservations": [
+            "每对字符串在交换后仍保留该对在每一列的字母总数，因此把原始字符串与打乱后的字符串合并统计时，配对部分对每个字母的贡献都是偶数。",
+            "合并统计后，每列唯一出现奇数次的字母就是被偷字符串该列的字母；逐列确定即可还原整串。"
+          ],
+          "solutionBrief": "对每一列统计初始的 n 个字符串和剩余的 n-1 个字符串中各字母的出现次数，取出现奇数次的字母作为答案在该列的字符。逐列拼接即可得到被偷字符串。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

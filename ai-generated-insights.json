@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T20:59:47+00:00",
+  "updated_at": "2026-09-28T21:04:00+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -89637,6 +89637,62 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "题意依据 statement_text；最大总和、构造方式及答案公式依据 editorial_text。",
+        "quality_flags": []
+      }
+    },
+    "1546B": {
+      "problem_key": "1546B",
+      "title": "AquaMoon and Stolen String",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1546/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/92739",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "4252ef77e0a83708adeb6a53f2091194c45e7ba3415f2047725efe1dae877bd3",
+      "generated_at": "2026-09-28T21:03:48+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 n 个等长字符串（n 为奇数），其中有一个字符串被偷走；其余字符串两两配对，每对可选择至少一列、至多 m 列交换两个字符串对应位置的字母，之后这些字符串会被打乱。要求找出被偷走的字符串。",
+        "transformed_statement": "把原始字符串和打乱后的字符串按列合并统计：每对字符串在交换前后该列的字母总数不变，因此配对部分在合并统计中对每种字母都贡献偶数次，奇数次出现的字母对应被偷字符串该列的字符。",
+        "key_observations": [
+          "每对字符串在交换后仍保留该对在每一列的字母总数，因此把原始字符串与打乱后的字符串合并统计时，配对部分对每个字母的贡献都是偶数。",
+          "合并统计后，每列唯一出现奇数次的字母就是被偷字符串该列的字母；逐列确定即可还原整串。"
+        ],
+        "solution_brief": "对每一列统计初始的 n 个字符串和剩余的 n-1 个字符串中各字母的出现次数，取出现奇数次的字母作为答案在该列的字符。逐列拼接即可得到被偷字符串。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的成对交换规则及 editorial 中按列利用奇偶性还原字符的说明。",
+        "quality_flags": []
+      }
+    },
+    "1546A": {
+      "problem_key": "1546A",
+      "title": "AquaMoon and Two Arrays",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1546/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/92739",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "9ae61e88a5d55db4e74999be43b88bd2fbf36b811c4ec9fa8b77b1ca300344d0",
+      "generated_at": "2026-09-28T21:04:00+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度为 $n$ 的非负整数数组 $a$ 和 $b$，每次可选两个下标 $i,j$，将 $a_i$ 减一并将 $a_j$ 加一。要求判断能否通过若干次操作使 $a=b$；若能，输出任意一组操作，否则输出 -1。",
+        "transformed_statement": "把每个位置相对目标值的差 $a_i-b_i$ 看作多余或不足：操作将一个单位从正差位置转移到负差位置。问题因此化为总差为零时配对并消除所有正、负差单位。",
+        "key_observations": [
+          "每次操作只是把数组 $a$ 的一个单位从位置 $i$ 移到位置 $j$，因此 $a$ 的元素总和保持不变；总和不同就不可能变成 $b$。",
+          "若两数组总和相等，所有多出的单位总数必等于所有缺少的单位总数；每次从 $a_i>b_i$ 的位置移一个单位到 $a_j<b_j$ 的位置，都会同时减少一处多余和一处不足，最终使两数组相等。"
+        ],
+        "solution_brief": "先比较两数组元素总和，不相等则输出 -1。总和相等时，反复选择一个当前值大于目标值的位置和一个小于目标值的位置，将前者减一、后者加一，并记录这次操作，直到数组相等。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的操作与构造要求，以及 editorial_text 给出的总和判定和单位转移方案。",
         "quality_flags": []
       }
     }
