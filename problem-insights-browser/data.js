@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3275,
+    "total_problems": 3284,
     "source_total_problems": 3287,
-    "filtered_out_problems": 12,
-    "with_statement_brief": 3275,
-    "with_editorial_brief": 2994,
-    "with_solution_brief": 2996,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3284,
+    "with_editorial_brief": 3003,
+    "with_solution_brief": 3005,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2337,
+    "ai_override_count": 2346,
     "primary_topic_count": 13,
-    "contest_count": 503,
+    "contest_count": 504,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1049,
-    "基础实现与模拟": 200,
-    "字符串": 171,
+    "基础实现与模拟": 202,
+    "构造与贪心": 1051,
+    "字符串": 172,
+    "数据结构": 313,
+    "树结构": 161,
+    "几何": 79,
     "动态规划与状态设计": 275,
     "图论与网络流": 210,
     "数论与同余": 346,
-    "数据结构": 311,
     "组合计数与概率": 249,
     "博弈": 103,
-    "树结构": 160,
     "代数、矩阵与多项式": 23,
-    "几何": 78,
     "交互": 100
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2035,
+    "ai_generated_with_editorial": 2044,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -101177,6 +101177,265 @@ window.CF_INSIGHTS_DATA = {
             "对每条非树边在较低端点加一、较高端点减一，再对子树求和即可得到每条树边割上的跨边数量；分别统计坏边和好边，就能在线性时间筛出候选树边。"
           ],
           "solutionBrief": "先用 DFS 染色并区分好边、坏边。若坏非树边至多一条则直接构造；否则用差分统计每条树边割开的坏边与好边数量，寻找“坏边全跨割、好边不跨割”的树边，翻转其子树颜色并选择包含被删边两端的颜色部。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1676,
+      "name": "Codeforces Round 790 (Div. 4)",
+      "date": "2022-05-10",
+      "url": "https://codeforces.com/contest/1676",
+      "type": "Div. 4",
+      "problemCount": 9,
+      "maxRating": 1500,
+      "problems": [
+        {
+          "key": "1676A",
+          "index": "A",
+          "slot": "A",
+          "title": "Lucky?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1676/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/102710",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "每个票据是一个可能含前导零的六位数字字符串。对每个票据分别计算前三位和后三位的数字和，若两者相等输出“YES”，否则输出“NO”。",
+          "transformedStatement": "把每个测试用例抽象为两个长度为 3 的数字序列，只需判断它们的元素总和是否相等；字符串表示保证六个位置及前导零都被保留。",
+          "keyObservations": [
+            "将票据保留为长度为 6 的字符串，可直接按字符位置划分前后两组三位，避免前导零被数值读入时丢失。",
+            "幸运条件等价于比较两个三位数字组的位和：计算下标 $0$ 到 $2$ 与下标 $3$ 到 $5$ 的数字和，结果相等则输出“YES”，否则输出“NO”。"
+          ],
+          "solutionBrief": "逐组读入六位字符串，将字符转换为数字，分别累加前三位和后三位；两者相等输出“YES”，否则输出“NO”。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1676B",
+          "index": "B",
+          "slot": "B",
+          "title": "Equal Candies",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1676/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/102710",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个盒子，第 $i$ 个盒子含 $a_i$ 颗糖。每次只能从任意盒子吃掉若干颗糖，不能补回；要求所有盒子最终糖果数相同，求最少需要吃掉的糖果总数。",
+          "transformedStatement": "把最终统一数量设为 $x$，则必须满足 $x\\leq\\min_i a_i$，总消耗为 $\\sum_i(a_i-x)$；使消耗最小的可行选择是 $x=\\min_i a_i$。",
+          "keyObservations": [
+            "由于每个盒子只能减少糖果，最终统一后的数量不能超过初始最小值；取更大的数量必然无法由最小盒子达到。",
+            "统一数量取最小值 $m$ 时，每个盒子必须吃掉 $a_i-m$ 颗糖果，因此总消耗唯一确定为 $\u001b[?]$。"
+          ],
+          "solutionBrief": "先求所有盒子中的最小糖果数 $m$，将每个盒子减少到 $m$，答案为所有 $a_i-m$ 的总和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1676C",
+          "index": "C",
+          "slot": "C",
+          "title": "Most Similar Words",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1676/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/102710",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 个长度均为 $m$ 的小写字符串。每次可任选一个字符串的一个位置，将字母改为字母表中的前一个或后一个字母；对每对字符串，求把它们变成相同字符串所需的最少操作次数，最后输出所有字符串对中的最小值。",
+          "transformedStatement": "把一对字符串的相等化过程拆成 $m$ 个彼此独立的位置问题：每个位置的代价是两个字符在字母表中的距离，整对字符串的代价为这些距离之和，再在所有字符串对中取最小值。",
+          "keyObservations": [
+            "两个字符串在同一位置的字符可以独立调整，因此该位置的最小代价等于两个字母在字母表中的距离，即字符编码差的绝对值。",
+            "整对字符串变相等的最小操作次数是所有位置代价之和，目标字符串无需枚举，因为每个位置取向任一字符都可达到这一下界。",
+            "全局答案就是所有字符串对的上述距离最小值；由于只需比较每对字符串，直接枚举配对即可覆盖最优解。"
+          ],
+          "solutionBrief": "对每一对字符串逐位置计算字符编码差的绝对值并求和，取所有字符串对中的最小值。字符位置相互独立，无需实际构造相等后的字符串。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1676D",
+          "index": "D",
+          "slot": "D",
+          "title": "X-Sum",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1676/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/102710",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的非负整数棋盘，选择一个格子放置主教。主教可沿四个对角方向攻击任意距离的格子，放置位置本身也计入攻击范围；要求最大化所有被攻击格子的数值总和。",
+          "transformedStatement": "把每个候选格子的攻击范围重述为经过该格子的两条完整对角线：一条满足行列差固定，另一条满足行列和固定。计算这两条对角线的和并扣除重复的中心格子，再在所有候选位置中取最大值。",
+          "keyObservations": [
+            "放置位置为 $(i,j)$ 时，被攻击的格子恰好是经过该点的两条对角线，因而无需模拟移动，只需计算这两条线的总和。",
+            "两条对角线在放置点唯一相交，若分别求和后直接相加会重复计算中心格子，因此应减去 $a_{i,j}$。",
+            "每个位置沿四个对角方向遍历的格子数为 $O(\\max(n,m))$，枚举全部位置即可在 $O(nm\\max(n,m))$ 内求出最大值。"
+          ],
+          "solutionBrief": "对每个格子枚举四个对角方向，累加所有被该位置的主对角线和副对角线覆盖的数值，并取最大和；中心格子只计一次。总复杂度为 $O(nm\\max(n,m))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1676E",
+          "index": "E",
+          "slot": "E",
+          "title": "Eating Queries",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1676/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/102710",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 个含糖量为 $a_i$ 的糖果，每个查询要求从中选择并吃掉若干颗、每颗最多一次，使摄入糖量至少达到 $x_j$；不同查询彼此独立。对每个查询输出所需的最少糖果数，若无法达到则输出 $-1$。",
+          "transformedStatement": "把一次查询等价为：在按含糖量从大到小排列的数组中取最短前缀，使其前缀和达到 $x_j$。预处理所有前缀和后，问题变成查找第一个不小于目标值的前缀。",
+          "keyObservations": [
+            "为了用最少糖果达到目标，应优先选择含糖量最高的糖果；任意较小糖果替换已选的大糖果都不会增加总糖量，因此最优集合是降序排列后的前缀。",
+            "将降序糖果的前缀和预处理后，每个查询转化为寻找第一个满足前缀和 $\u001f\\geq x$ 的位置，从而无需逐个尝试糖果。",
+            "由于所有糖果含糖量均为正，前缀和严格递增，目标位置具有单调性，可以用二分查找；若总和仍小于 $x$，则答案为 $-1$。"
+          ],
+          "solutionBrief": "将糖果按含糖量降序排列并计算前缀和。每个查询在前缀和中二分查找第一个不小于 $x$ 的位置，位置即最少糖果数；若总和不足则输出 $-1$。总复杂度为 $O(n+q\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1676F",
+          "index": "F",
+          "slot": "F",
+          "title": "Longest Strike",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1676/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/102710",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "implementation",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组和整数 $k$，选择整数区间 $[l,r]$，要求区间内每个整数都在数组中至少出现 $k$ 次；在满足条件的区间中最大化 $r-l$，无解时输出 $-1$。",
+          "transformedStatement": "先把出现次数至少为 $k$ 的数筛出并升序排列，再把它们划分为相邻差均为 $1$ 的连续段；原问题转化为寻找首尾差最大的连续段。",
+          "keyObservations": [
+            "一个数是否能出现在答案中只由出现次数决定：频率至少为 $k$ 的数称为 good，其他数会直接阻断任何覆盖它们的区间。",
+            "将所有 good 数按升序排列后，合法答案恰好对应其中相邻差都为 $1$ 的连续段；相邻差大于 $1$ 就必须断开。",
+            "扫描这些连续段并比较首尾差值即可选出最长区间，因为目标是最大化 $r-l$，而不是最大化元素出现次数。"
+          ],
+          "solutionBrief": "统计每个值的出现次数，保留频率至少为 $k$ 的值并按升序检查连续段。遇到相邻差大于 $1$ 就重新开始，记录首尾差最大的段；不存在 good 值时输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1676G",
+          "index": "G",
+          "slot": "G",
+          "title": "White-Black Balanced Subtrees",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1676/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/102710",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一棵根为 1 的有根树及每个顶点的黑白颜色。对每个顶点，以它为根的子树若白色顶点数等于黑色顶点数就称为平衡子树，要求统计所有平衡子树的数量。",
+          "transformedStatement": "把每个顶点颜色转化为白色贡献 $+1$、黑色贡献 $-1$，则顶点子树平衡等价于该子树贡献和为 $0$。通过后序合并子树贡献，同时统计满足条件的顶点即可。",
+          "keyObservations": [
+            "每个顶点对应一个以它为根的唯一子树，因此只需判断每个顶点子树中的白、黑数量是否相等并累加满足条件的顶点数。",
+            "处理顶点时，其子树的白色数和黑色数等于自身颜色贡献与所有子节点对应计数之和；这样无需显式枚举子树。",
+            "从叶子向根合并后，当前顶点的两种颜色计数已经完整，检查二者是否相等即可确定该顶点子树是否平衡。"
+          ],
+          "solutionBrief": "将白色记为一类、黑色记为另一类，按后序顺序处理树。每个顶点维护其子树的白色数、黑色数及平衡子树数量，先合并所有子节点并计入自身颜色，再在两种颜色数相等时增加答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1676H1",
+          "index": "H1",
+          "slot": "H",
+          "title": "Maximum Crossings (Easy Version)",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1676/problem/H1",
+          "editorialUrl": "https://codeforces.com/blog/entry/102710",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force"
+          ],
+          "statementBrief": "给定上下两排各有 $n$ 个线段的端子，第 $i$ 个上方线段必须用直线连接到下方的第 $a_i$ 个线段，端点不能取在线段端点上。可以自由选择各线的具体端点，要求最大化任意两根线共享点的交叉数量。",
+          "transformedStatement": "把每对上方下标 $i<j$ 的线单独比较：目标编号顺序反转或相等时可形成交叉，目标编号严格递增时不能交叉。因此答案等价于数组中满足 $i<j$ 且 $a_i\\ge a_j$ 的下标对数量。",
+          "keyObservations": [
+            "对位置满足 $i<j$ 的两根线，若 $a_i<a_j$，它们的上下端顺序一致，无法相交；若 $a_i>a_j$，端点顺序相反，必然相交。",
+            "当 $a_i=a_j$ 时，可以把它们落在同一底部线段上的位置反向安排，从而让这对线相交；同一目标线段中的所有线也能两两相交。",
+            "因此每一对下标 $i<j$ 的贡献恰好是条件 $a_i\\ge a_j$ 是否成立，几何布线问题转化为统计满足该不等式的下标对。"
+          ],
+          "solutionBrief": "枚举所有下标对 $i<j$，若 $a_i\\ge a_j$ 就将答案加一。根据端点顺序判定，所有满足条件的线对都可同时实现相交，因此复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1676H2",
+          "index": "H2",
+          "slot": "H",
+          "title": "Maximum Crossings (Hard Version)",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1676/problem/H2",
+          "editorialUrl": "https://codeforces.com/blog/entry/102710",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$，上、下两个终端各有按顺序编号的线段；必须从上方第 $i$ 段向下方第 $a_i$ 段连接一条直线，端点不能取在线段端点上。可自由选择各条线的具体端点，求最多能让多少对导线相交。",
+          "transformedStatement": "把每条导线视为从上方位置 $i$ 连到下方位置 $a_i$ 的连线，则最大交叉数等价于统计下标满足 $i<j$ 且 $a_i\\ge a_j$ 的数对，即数组中的非严格逆序对。",
+          "keyObservations": [
+            "两根编号为 $i<j$ 的导线能够形成交叉，当且仅当 $a_i\\ge a_j$，因此几何布线问题等价于统计非严格逆序对。",
+            "固定右端点 $j$ 时，新增加的交叉数就是此前位置中满足 $a_i\\ge a_j$ 的元素个数，答案可按下标从左到右累加。",
+            "用树状数组维护已经出现的各个 $a_i$ 的频次，并查询不小于当前值的数量，即可在 $O(n\\log n)$ 内完成计数。"
+          ],
+          "solutionBrief": "将最大交叉数转化为统计所有 $i<j$ 且 $a_i\\ge a_j$ 的数对。按下标扫描，用树状数组维护已出现值的频次，查询此前不小于 $a_j$ 的元素数量并累加，复杂度为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
