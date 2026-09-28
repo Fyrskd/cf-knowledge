@@ -15,19 +15,281 @@
     ]
   },
   "summary": {
-    "total_problems": 3249,
+    "total_problems": 3255,
     "source_total_problems": 3258,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3249,
-    "with_editorial_brief": 2968,
-    "with_solution_brief": 2970,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3255,
+    "with_editorial_brief": 2974,
+    "with_solution_brief": 2976,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2311,
+    "ai_override_count": 2317,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1682A",
+      "contest_id": 1682,
+      "title": "Palindromic Indices",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1682/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/103097",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "给定一个长度为 $n$ 的回文字符串，每次选择一个下标并删除该位置的字符，判断删除后字符串是否仍为回文。对每个下标独立判断，统计能保持回文的下标数量。",
+      "transformed_statement": "将删除位置按回文对称性折叠到字符串中心：可删除的位置恰好对应中心向外连续、且字符都等于中心字符的区段，答案由该区段长度和字符串奇偶性直接计算。",
+      "key_observations": [
+        "删除左半部分的某个位置后，原字符串两侧的前缀仍自动匹配，因此只需检查删除位置内侧对应的剩余中心区间是否为回文。",
+        "对称性将上述条件化为：被删除字符必须属于中心向外连续相同字符段；该段之外再删除就会破坏相邻位置的回文匹配。",
+        "中心相同字符段长度为 $c$ 时，偶数长度字符串贡献 $2c$ 个位置，奇数长度字符串的中心位置被重复计算一次，因此答案为 $2c-(n\\bmod 2)$。"
+      ],
+      "solution_brief": "从字符串中心向左统计与中心字符连续相同的位置数 $c$。利用回文对称性，中心段左右两侧均可删除；奇数长度时中心位置只计一次，输出 $2c-(n\\bmod 2)$，总复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:26:57+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1682B",
+      "contest_id": 1682,
+      "title": "AND Sorting",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1682/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/103097",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "sortings"
+      ],
+      "statement_brief": "给定一个 $0$ 到 $n-1$ 的非递减排列。固定非负整数 $X$ 后，每次可以交换两个元素，但要求这两个元素的按位与恰好等于 $X$；求能通过有限次此类交换将排列排成升序的最大 $X$。",
+      "transformed_statement": "只关注当前不在正确位置的元素：它们必须参与交换，所以 $X$ 受到这些元素共同按位与的限制。令 $X$ 为所有错位元素的按位与，再利用排列中值为 $X$ 的元素作为中转位置，即可实现任意两个错位元素之间的交换并完成排序。",
+      "key_observations": [
+        "任何初始位置错误的元素最终都必须参与至少一次交换，因此 $X$ 必须是所有满足 $p_i\\ne i$ 的元素的子掩码，答案至多为它们的按位与。",
+        "取这些错位元素的按位与作为 $X$ 后，所有错位元素都包含 $X$ 的全部位，因此任意两个错位元素的按位与都等于 $X$。",
+        "由于 $X$ 本身一定出现在排列中，可借助存放 $X$ 的位置，把任意两个错位元素的交换拆成三次合法交换，从而能够完成排序。"
+      ],
+      "solution_brief": "遍历排列，初始化答案为全 1 掩码；对每个错位元素 $p_i\\ne i$ 做按位与。所得值既是所有可行 $X$ 的上界，又能通过存放 $X$ 的位置实现任意必要交换，因此直接输出该按位与，复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:26:46+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1682C",
+      "contest_id": 1682,
+      "title": "LIS or Reverse LIS?",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1682/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/103097",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "组合计数与概率",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定一个正整数数组，可以任意重排其元素。数组的美丽度是原数组严格递增子序列长度与反转数组严格递增子序列长度的较小值，要求求所有重排中的最大美丽度。",
+      "transformed_statement": "把反转数组的 LIS 改写为原数组的最长严格递减子序列（LDS），问题转化为分配不同数值的出现次数，使 LIS 与 LDS 尽可能平衡。",
+      "key_observations": [
+        "反转后的严格递增子序列等价于原数组的严格递减子序列，因此目标是同时最大化 LIS 和 LDS 的较小者。",
+        "一个元素不可能同时在严格递增子序列和严格递减子序列中出现两次；两类最优子序列最多共享一个位置，这限制了两者的总分配。",
+        "出现次数至少为 $2$ 的不同元素可各取一个副本分别放入 LIS 和 LDS，稳定地为两者各贡献 $1$；多余副本无法继续贡献。",
+        "出现次数为 $1$ 的元素应尽量在两类子序列间均分，若存在单例则可让一个单例同时作为唯一公共元素，因此答案为 $t+\\lceil s/2\\rceil$，其中 $t$ 是重复值种类数、$s$ 是单例种类数。"
+      ],
+      "solution_brief": "统计每个不同值的出现次数：出现至少两次的值计入 $t$，恰好一次的值计入 $s$。利用重复值分别服务于 LIS 和 LDS，并均分单例，输出 $t+(s+1)/2$；用映射统计频次即可。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:26:32+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1682D",
+      "contest_id": 1682,
+      "title": "Circular Spanning Tree",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1682/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/103097",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "树结构",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "implementation",
+        "trees"
+      ],
+      "statement_brief": "给定按圆周排列的 $n$ 个顶点和二进制串 $s$，要求构造一棵树：每个顶点的度数奇偶性必须与对应字符一致，且直线边不能在内部相交；若无法构造则输出 NO，否则输出任意满足条件的 $n-1$ 条边。",
+      "transformed_statement": "将圆周视为循环序列，先旋转编号使某个 1 的前驱成为中心点，再把其余顶点划分为若干个以 1 结尾的连续段；每段建链并由中心连接段首，从而把度数约束转化为段结构。",
+      "key_observations": [
+        "若所有字符都是 0，树中没有奇度顶点而不可能成立；若 1 的数量为奇数，则由度数和必须为偶数也不可能成立。",
+        "把圆周编号循环平移，使某个字符 1 的前一个顶点成为 1 号点，即可让剩余字符串分解为若干个恰含一个 1 且以 1 结尾的连续段。",
+        "每段内部按相邻顺序连成链，再把 1 号点连到每段起点；段内 0 点获得度数 2，段尾 1 点获得奇度，中心点的度数奇偶性也与原字符一致。",
+        "各段对应圆周上的连续区间，中心连段首并不会产生内部交叉，因此该构造同时满足树结构和几何不相交条件。"
+      ],
+      "solution_brief": "统计 1 的数量，若为 0 或奇数则输出 NO。否则找到某个 1 的前驱并循环移位，以该点为中心按连续段建链并连接各段起点，最后还原编号；总复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:26:15+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1682E",
+      "contest_id": 1682,
+      "title": "Unordered Swaps",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1682/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/103097",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心",
+        "树结构"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "graphs",
+        "greedy",
+        "math",
+        "sortings",
+        "trees"
+      ],
+      "statement_brief": "给定一个置换，以及 Alice 为用最少次数将其排序而执行的 $m$ 次位置交换，但这些交换的记录顺序被打乱。请重新排列这 $m$ 个交换，使按该顺序执行后置换变为有序；题目保证至少存在一种合法顺序。",
+      "transformed_statement": "把置换的每个环视为独立子问题，并把给定交换看作连接环上顶点的边。对每个顶点确定其 incident 边必须遵守的先后关系，再将这些关系组成交换编号之间的有向无环图，问题转化为求其任意拓扑序。",
+      "key_observations": [
+        "将置换分解为若干环后，不同环必须独立处理；若一次交换把两个环合并，就无法在最少交换次数内完成排序。",
+        "同一置换环中的给定交换边必须构成一棵树，否则存在两个互不连通的顶点集合，无法分别交换并保持该环的元素集合约束。",
+        "对环上任意顶点 $u$，按环方向排列与 $u$ 相连的邻点后，边必须依次使用；跳过前面的边会使其两端落入不同子环，之后无法再使用该边。",
+        "把每个交换视为一个节点，并为每个顶点相邻边的连续使用顺序连有向边；这些约束的任意拓扑序都同时满足所有局部顺序，因此就是合法的交换顺序。"
+      ],
+      "solution_brief": "先分解置换环，并在每个环内按环方向为每个顶点排序相邻交换边，给相邻边建立先后约束。对所有交换约束图做拓扑排序，输出得到的交换编号；题目保证该图可行。整体复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:25:51+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1682F",
+      "contest_id": 1682,
+      "title": "MCMF?",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1682/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/103097",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "图论与网络流",
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "data structures",
+        "flows",
+        "graphs",
+        "greedy",
+        "sortings",
+        "two pointers"
+      ],
+      "statement_brief": "给定非降数组 $a$ 和非零权值数组 $b$。对每个查询区间 $[l,r]$（保证区间内 $b$ 的和为 $0$），将 $b_i<0$ 的位置提供 $|b_i|$ 个单位、$b_i>0$ 的位置接收 $b_i$ 个单位，每个单位配对代价为对应 $a$ 值之差的绝对值，求最小总费用并对 $10^9+7$ 取模。",
+      "transformed_statement": "把原最大流最小费用问题改写成：复制每个位置 $|b_i|$ 次，在负权位置与正权位置之间做最小代价匹配，单次匹配费用为 $|a_i-a_j|$。再用从各起点开始的后缀贪心模拟，把平衡区间答案转化为两个后缀值之差。",
+      "key_observations": [
+        "把 $b_i<0$ 的位置视为 $|b_i|$ 个左侧元素、把 $b_i>0$ 的位置视为右侧元素；交叉配对可交换为不交叉配对，因此按 $a$ 的有序顺序匹配就是最优的。",
+        "对任意满足区间 $b$ 和为 $0$ 的查询，完整后缀模拟值之差 $ans_l-ans_{r+1}$ 恰好抵消区间外的未配对贡献，等于该区间答案。",
+        "固定位置 $i$ 后，它对不同起点后缀的贡献只由起点前缀和所在范围决定，并且在各范围内是常数或关于前缀和的一次函数，因此可用两类树状数组维护。",
+        "正、负 $b_i$ 对应的贡献形式对称，可以分别处理后相加；扫描到某个起点后立即移除该位置的贡献，保证树状数组只服务于后续起点。"
+      ],
+      "solution_brief": "将流网络化为带 multiplicity 的二分匹配，利用有序不交叉匹配得到贪心贡献。预处理所有后缀的模拟值，用前缀和离散化并以树状数组维护区间常数及一次函数贡献；查询答案为 $ans_l-ans_{r+1}$，最后取模。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:25:34+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 7,
       "problem_key": "1681A",
