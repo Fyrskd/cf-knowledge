@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3160,
+    "total_problems": 3167,
     "source_total_problems": 3169,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3160,
-    "with_editorial_brief": 2879,
-    "with_solution_brief": 2881,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3167,
+    "with_editorial_brief": 2886,
+    "with_solution_brief": 2888,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2222,
+    "ai_override_count": 2229,
     "primary_topic_count": 13,
-    "contest_count": 483,
+    "contest_count": 484,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -38,28 +38,28 @@ window.CF_INSIGHTS_DATA = {
     "基础实现与模拟",
     "字符串",
     "树结构",
-    "博弈",
     "交互",
+    "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 338,
-    "构造与贪心": 1008,
-    "组合计数与概率": 245,
+    "基础实现与模拟": 192,
+    "构造与贪心": 1011,
+    "交互": 99,
+    "组合计数与概率": 246,
+    "数论与同余": 339,
     "动态规划与状态设计": 267,
-    "基础实现与模拟": 191,
     "字符串": 167,
     "数据结构": 297,
     "图论与网络流": 195,
     "树结构": 156,
-    "交互": 98,
     "几何": 77,
     "博弈": 99,
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1921,
+    "ai_generated_with_editorial": 1928,
     "low_confidence": 1,
     "ai_generated_partial_editorial": 67,
     "missing_editorial": 279,
@@ -97616,6 +97616,220 @@ window.CF_INSIGHTS_DATA = {
             "所有初始元素的当前最大值会随 $L$ 下降而单调不增，因此用频次数组和指针维护仍出现的最大值，即可在线更新候选答案。"
           ],
           "solutionBrief": "把每个初始数看成可拆成若干乘积因子，倒序枚举下界 $L$。维护每个数在因子均不小于 $L$ 时的最小最大因子，并只更新 $L$ 的倍数；再用频次和指针维护初始元素中的最大值，取最小范围。总复杂度为 $O(vmax\\log vmax)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1698,
+      "name": "Codeforces Round 803 (Div. 2)",
+      "date": "2022-06-28",
+      "url": "https://codeforces.com/contest/1698",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1698A",
+          "index": "A",
+          "slot": "A",
+          "title": "XOR Mixup",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1698/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/104310",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "brute force"
+          ],
+          "statementBrief": "有一个长度为 $n-1$ 的数组，先计算所有元素的按位异或值 $x$，将 $x$ 加到数组末尾后随机打乱。给出打乱后的长度为 $n$ 的数组，要求输出一个可能的 $x$；若有多个答案，输出任意一个即可。",
+          "transformedStatement": "把题目转化为：最终数组由某个数组及其全部元素异或值组成，因此最终所有元素的异或和为 $0$。在这个零异或数组中，任意一个元素都等于其余元素的异或，所以任取一个元素作为答案。",
+          "keyObservations": [
+            "结果数组中所有元素的异或和为 $0$：原数组异或值为 $x$，再加入一个 $x$ 后两者相互抵消。",
+            "由于总异或为 $0$，任意一个元素都等于其余所有元素的异或，因此可以把任意元素视为被加入的 $x$，无需恢复打乱前的顺序。",
+            "只需读取并输出数组中的任意一个元素即可；遍历或计算整体异或都不是必要的。"
+          ],
+          "solutionBrief": "加入的数 $x$ 与原数组异或和相同，因此最终数组的总异或为 $0$。于是任意元素都等于其余元素的异或，可以直接输出数组中的第一个元素，时间复杂度为 $O(1)$（若需读入数组则为 $O(n)$）。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1698B",
+          "index": "B",
+          "slot": "B",
+          "title": "Rising Sand",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1698/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/104310",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一排沙堆，中间堆若严格多于左右邻堆之和就算过高。每次可选择连续的 $k$ 个堆并把它们都增加 $1$，可操作任意次，求最终能同时得到的过高堆最大数量。",
+          "transformedStatement": "核心只需区分 $k=1$ 与 $k\\ge2$：前者可以独立制造互不相邻的过高堆，后者任何被增加的堆都会连带增加邻堆，因此操作无法制造新的过高堆。",
+          "keyObservations": [
+            "任意两个相邻的中间堆不可能同时过高，因为每个过高堆都严格大于相邻两堆之和，因此答案最多为 $\\lfloor (n-1)/2 \\rfloor$。",
+            "当 $k=1$ 时，可以分别反复增加互不相邻的中间堆，使它们任意高，因而达到上界 $\\lfloor (n-1)/2 \\rfloor$。",
+            "当 $k\\ge 2$ 时，每次增加某个堆都会同时增加至少一个相邻堆；原本不过高的堆无法因此变为过高，所以操作不会增加答案，直接保留初始过高堆即可。"
+          ],
+          "solutionBrief": "若 $k=1$，答案为 $\\lfloor (n-1)/2 \\rfloor$。若 $k\\ge2$，统计初始满足 $a_i>a_{i-1}+a_{i+1}$ 的中间堆数量；复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1698C",
+          "index": "C",
+          "slot": "C",
+          "title": "3SUM Closure",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1698/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/104310",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures"
+          ],
+          "statementBrief": "给定一个数组，要求对任意三个不同位置的元素，其和都必须等于数组中某个元素。判断该数组是否满足这一 3SUM-closed 条件，并输出 YES 或 NO。",
+          "transformedStatement": "先利用极值性质证明合法数组中正数和负数各不超过两个、零只需保留两个，将原问题化为对至多六个代表元素枚举三元组，并查询每个和是否属于原数组。",
+          "keyObservations": [
+            "若数组含有至少三个正数，取其中最大的三个，它们的和严格大于三者中的每一个，不可能仍在数组中，因此正数至多有 $2$ 个。",
+            "同理，取最小的三个负数可知负数至多有 $2$ 个；否则它们的和小于数组中的所有这三个数，不可能属于数组。",
+            "超过 $2$ 个零不会产生新的三元组和，因此可只保留 $2$ 个零，把待检查数组缩减到至多 $6$ 个元素。",
+            "缩减后枚举所有不同位置的三元组，并检查其和是否在原数组中，即可直接判定条件，枚举规模为常数。"
+          ],
+          "solutionBrief": "保留至多两个正数、两个负数和两个零，得到最多 $6$ 个元素；再枚举缩减数组中的所有三元组，用原数组集合判断三元组和是否存在。若全部存在则输出 YES，否则输出 NO，复杂度为 $O(n+6^3)$ 或 $O(n+6^4)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1698D",
+          "index": "D",
+          "slot": "D",
+          "title": "Fixed Point Guessing",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1698/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/104310",
+          "primaryTopic": "交互",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "interactive"
+          ],
+          "statementBrief": "有一个长度为奇数的数组，初始为 $[1,2,\u0000ldots,n]$；评测机选取若干互不相交的位置对并交换每对元素，因此恰有一个元素仍在原位置。每次可询问一个子数组，返回其中元素的升序排列，需在不超过 $15$ 次询问内找出未改变位置的元素。",
+          "transformedStatement": "把区间询问转化为判定：统计子数组 $[l,r]$ 中数值也属于 $[l,r]$ 的元素个数，并只看其奇偶性；奇数恰好等价于固定点位于该区间，于是答案位置可通过区间二分确定。",
+          "keyObservations": [
+            "对查询区间 $[l,r]$，统计返回值中落在 $[l,r]$ 的元素个数；每个被交换的数对对该计数的贡献只能是 $0$ 或 $2$。",
+            "唯一未交换的元素对计数贡献为 $1$（它在区间内时）或 $0$，因此计数为奇数当且仅当固定点位于 $[l,r]$。",
+            "上述奇偶判定给出了固定点是否在任意候选区间内的判定器，可据此不断二分位置；$n<10^4$ 时最多需要 $14$ 次查询。"
+          ],
+          "solutionBrief": "每次查询区间后，统计返回序列中值也位于该区间的元素数。奇数表示固定点在区间内，据此二分查找，最多使用 $14$ 次查询。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1698E",
+          "index": "E",
+          "slot": "E",
+          "title": "PermutationForces II",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1698/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/104310",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "greedy",
+            "sortings",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "给定排列 $a$、力量 $s$ 和含若干 $-1$ 的目标数组 $b$；需要用题面规定的力量受限操作在 $n$ 步内把 $a$ 变成完整排列 $b$，并把每个 $-1$ 替换为未使用的数。求满足可达条件的填法数量，答案对 $998244353$ 取模；本地题面未给出每步操作的具体描述。",
+          "transformedStatement": "先假设 $b$ 已完整确定，把其元素升序重排并同步重排 $a$，目标等价于变成单位排列；题解证明可达性等价于逐位置满足 $a_i-s\\le b_i$，再对缺失值进行带后缀候选集的匹配计数。",
+          "keyObservations": [
+            "固定完整排列 $b$ 时，所需最小力量等于所有位置中 $a_i-b_i$ 的最大值，因此可行性恰好是对每个 $i$ 满足 $a_i-s\\le b_i$。",
+            "将 $b$ 的元素按从小到大重排并同步重排 $a$ 后，目标变为把数组变成单位排列；第 $i$ 个元素必须在对应步骤归位，前面发生的交换不会破坏该最大差值判定。",
+            "设缺失值按升序为 $m_1,\\dots,m_k$，对缺失位置 $i$，可选值构成满足 $m_j\\ge a_i-s$ 的后缀，因此选择数随 $a_i$ 增大而减少。",
+            "按 $a_i$ 从大到小处理缺失位置时，可选集合按包含关系排列；第几个处理的位置只需将其后缀选择数减去已占用数量，答案是这些数量的乘积。"
+          ],
+          "solutionBrief": "先检查所有已知的 $b_i$ 是否满足 $a_i-b_i\\le s$。将缺失值排序，对每个缺失位置二分得到满足 $m_j\\ge a_i-s$ 的后缀长度，再按 $a_i$ 降序依次相乘可用数量，结果取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1698F",
+          "index": "F",
+          "slot": "F",
+          "title": "Equal Reversal",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1698/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/104310",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定数组 $a$ 以及其一个排列 $b$，操作是选择两个端点元素相等的连续子数组并反转它。需要在不超过 $n^2$ 次操作内把 $a$ 变成 $b$，或判断无解并输出任意合法操作序列。",
+          "transformedStatement": "把数组看成由相邻值对组成的无向图上的一条遍历；允许的反转只是改变某段遍历方向，因此问题转化为判断两端点和无向邻接结构是否相同，并据此逐项构造目标前缀。",
+          "keyObservations": [
+            "数组首元素和末元素在操作中不会改变，因此目标数组必须满足 $a_1=b_1$ 且 $a_n=b_n$。",
+            "所有相邻元素形成的无向值对集合在反转操作后保持不变，因此两数组必须具有相同的相邻无向边结构。",
+            "上述端点与邻接结构条件不仅必要而且充分：按目标数组从左到右固定元素，利用相同值作为反转端点，每个位置至多需要两次操作。",
+            "固定前缀后，若目标下一个值不在当前位置，只需寻找与当前首值相等的另一端点；反转该区间即可把所需相邻值移到前缀末端。"
+          ],
+          "solutionBrief": "先检查两端元素及相邻无向值对结构是否一致，不满足则输出 NO。满足时从左到右固定目标前缀：寻找合适的同值端点并反转对应区间，每个位置至多两次，输出构造出的操作序列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1698G",
+          "index": "G",
+          "slot": "G",
+          "title": "Long Binary String",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1698/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/104310",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "math",
+            "matrices",
+            "meet-in-the-middle",
+            "number theory"
+          ],
+          "statementBrief": "给定一个二进制串 $s$，可以反复选择任意起点，把 $s$ 中为 $1$ 的位置对应到超长全零串上并逐位异或翻转。要求在所有最终恰有两个 $1$ 的可达串中取字典序最大者；若不存在则输出 $-1$，否则输出这两个 $1$ 的位置。",
+          "transformedStatement": "忽略 $s$ 的前导零后，将它编码为 $\u0000/1$ 域多项式 $P(x)$；所有操作结果正好是 $P(x)$ 乘以任意多项式。两枚 $1$ 的结果等价于寻找最小 $k$，使 $P(x)$ 整除 $x^k+1$，也就是求 $x$ 模 $P(x)$ 的乘法阶。",
+          "keyObservations": [
+            "去掉字符串 $s$ 的前导零不会影响可达结果的相对形状，只需最后把对应位置整体平移回来。",
+            "把 $s$ 视为 $\u0000/1$ 域上的多项式 $P(x)$；一次平移相当于乘以单项式，重复操作后的结果统一写成 $P(x)Q(x)$。",
+            "最终恰有两个 $1$ 时，需要存在 $k$ 使 $P(x)Q(x)=x^k+1$，等价于 $x^k\\equiv1\\pmod{P(x)}$，因此两枚 $1$ 的间距由 $x$ 在 $P(x)$ 模下的阶决定。",
+            "利用多项式分解，或将幂的计算分成两半进行 baby-step-giant-step/折半枚举，可以在 $O(2^{|s|/2}|s|^2)$ 或 $O(2^{|s|/2}|s|)$ 时间内求出所需间距。"
+          ],
+          "solutionBrief": "去掉前导零后，将 $s$ 转为 $\u0000/1$ 域多项式 $P$。求最小的 $k$ 使 $x^k\\equiv1\\pmod P$，它给出字典序最大结果中两个 $1$ 的间距，再加回前导零造成的整体偏移；可用多项式分解或折半搜索求解。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
