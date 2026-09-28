@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3134,
+    "total_problems": 3141,
     "source_total_problems": 3143,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3134,
-    "with_editorial_brief": 2854,
-    "with_solution_brief": 2855,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3141,
+    "with_editorial_brief": 2861,
+    "with_solution_brief": 2862,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2196,
+    "ai_override_count": 2203,
     "primary_topic_count": 13,
-    "contest_count": 479,
+    "contest_count": 480,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1000,
-    "基础实现与模拟": 187,
+    "字符串": 166,
+    "基础实现与模拟": 190,
+    "数据结构": 295,
+    "构造与贪心": 1001,
     "组合计数与概率": 244,
-    "数据结构": 294,
     "交互": 98,
     "图论与网络流": 194,
     "动态规划与状态设计": 266,
     "数论与同余": 335,
-    "字符串": 164,
     "树结构": 154,
     "几何": 77,
     "博弈": 99,
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1896,
+    "ai_generated_with_editorial": 1903,
     "ai_generated_partial_editorial": 67,
     "missing_editorial": 279,
     "manual_override": 891,
@@ -96843,6 +96843,212 @@ window.CF_INSIGHTS_DATA = {
             "因此通常用两次查询确定三道题；剩余一两道题单独比较即可，在约 $2n/3$ 次查询内完成确定性构造。"
           ],
           "solutionBrief": "先查询全 T 与交替 TF 作为基准，再按两位分组。比较把两位改成 FF 后的差值可识别 TT、FF 或混合；混合时借助第三位和交替基准，用一次查询区分四种情况，从而两次查询确定三位，末尾少数位置单独处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1703,
+      "name": "Codeforces Round 806 (Div. 4)",
+      "date": "2022-07-12",
+      "url": "https://codeforces.com/contest/1703",
+      "type": "Div. 4",
+      "problemCount": 7,
+      "maxRating": 1600,
+      "problems": [
+        {
+          "key": "1703A",
+          "index": "A",
+          "slot": "A",
+          "title": "YES or YES?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1703/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/104786",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定多个长度为 3、由英文字母组成的字符串。若每个位置分别与“Y”“E”“S”对应，且不区分大小写，则输出“YES”；否则输出“NO”。",
+          "transformedStatement": "将每个输入字符串视为大小写归一化后的字符串：先把三字符全部转换为同一大小写，再判断它是否恰好为 `$yes$`。这把 8 种合法大小写组合统一成一次字符串比较。",
+          "keyObservations": [
+            "大小写差异不影响判定，因此可先将输入统一转换为小写，再只需比较是否等于 `$yes$`，避免枚举全部 8 种大小写组合。",
+            "字符串长度固定为 3，统一大小写后逐位置检查为 `$y$`、`$e$`、`$s$` 即可完成判定；每个测试用例的处理量为常数。"
+          ],
+          "solutionBrief": "对每个长度为 3 的字符串统一转换为小写，若结果等于 `$yes$` 输出“YES”，否则输出“NO”。每个测试用例的复杂度为 $\u001b[0mO(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1703B",
+          "index": "B",
+          "slot": "B",
+          "title": "ICPC Balloons",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1703/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/104786",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "给定按解决顺序排列的长度为 $n$ 的大写字母字符串，每个字符表示一道被解决的问题。每次解决问题获得 1 个气球；某问题第一次被任何队伍解决时额外获得 1 个气球，求所有解决行为获得的气球总数。",
+          "transformedStatement": "把每个字符的贡献拆成固定的首次基础贡献：每次出现贡献 $1$，每种不同字符的第一次出现再贡献 $1$，因此答案等于字符串长度加不同字符数。",
+          "keyObservations": [
+            "同一问题第一次出现在字符串中时贡献 $2$ 个气球，之后每次只贡献 $1$ 个；因此只需记录该问题是否已经出现。",
+            "总气球数可等价写成 $n+$ 字符串中不同问题的数量：每次解题先贡献 $1$，每种问题的首次出现再额外贡献 $1$。",
+            "按字符串从左到右处理，并在首次遇到字符时标记它，就能在一次遍历中同时维护首次出现次数和总答案。"
+          ],
+          "solutionBrief": "用布尔数组或集合记录每个问题是否已被解决。遍历字符串：若字符首次出现，答案加 $2$ 并标记；否则加 $1$。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1703C",
+          "index": "C",
+          "slot": "C",
+          "title": "Cypher",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1703/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/104786",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "密码由 $n$ 个数字轮组成；每个轮子从某个初始数字出发，依次执行给定的 U/D 操作，最终显示数字 $a_i$。已知最终数字和每个轮子的操作序列，要求恢复所有轮子的初始数字。",
+          "transformedStatement": "把每个轮子独立看成一个模 $10$ 的状态变换，从最终状态出发，按操作串逆序逐个应用对应逆变换，即可得到初始状态。",
+          "keyObservations": [
+            "最终数字到初始数字的恢复必须按动作序列逆序处理，因为每个动作都要撤销最后一次变化。",
+            "数字始终在 $0$ 到 $9$ 间循环，因此撤销一次加法是减 $1$，撤销一次减法是加 $1$，越界时分别回到 $9$ 或 $0$。",
+            "每个轮子彼此独立，只需从其最终数字出发处理对应字符串，不需要维护轮子之间的状态。"
+          ],
+          "solutionBrief": "对每个轮子的动作串从后往前处理，逐步撤销动作：D 的逆操作使数字减 $1$，U 的逆操作使数字加 $1$，并在 $0$ 到 $9$ 间循环。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1703D",
+          "index": "D",
+          "slot": "D",
+          "title": "Double Strings",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1703/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/104786",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 个长度不超过 $8$ 的非空小写字符串。对每个字符串，判断是否能从给定列表中选出两个字符串（允许选到同一个），按顺序拼接后恰好得到它，并输出对应的 $0/1$ 结果。",
+          "transformedStatement": "把问题转化为集合查找：对每个目标串枚举所有非空切分点，将其拆成前缀和后缀；只要这两个子串都属于输入字符串集合，该目标串就可被表示。",
+          "keyObservations": [
+            "因为两个组成串都非空，长度为 $L$ 的字符串只需检查 $L-1$ 个切分位置，因此每个字符串最多产生 $7$ 组候选前后缀。",
+            "将所有输入字符串存入可查询的集合后，某个切分有效当且仅当前缀和后缀都在集合中，重复字符串及两段相同的情况自然得到支持。",
+            "每个字符串的候选切分数量由最大长度限制为常数，整体只需进行有限次集合查询，避免枚举字符串对。"
+          ],
+          "solutionBrief": "用集合记录所有出现过的字符串。对每个字符串枚举每个非空切分点，检查前缀和后缀是否都在集合中；存在有效切分则输出 $1$，否则输出 $0$。复杂度为 $O(\\ell n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1703E",
+          "index": "E",
+          "slot": "E",
+          "title": "Mirror Grid",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1703/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/104786",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个由 0 和 1 组成的 $n\\times n$ 方格，每次可选择一个格子将其翻转。求至少翻转多少次，才能使方格在旋转 $0^\\circ$、$90^\\circ$、$180^\\circ$ 和 $270^\\circ$ 后都完全相同。",
+          "transformedStatement": "把四次旋转互相对应的格子划分为等价类；每个等价类必须统一成全 0 或全 1，独立选择代价更小的统一方向，再累加所有类的代价。",
+          "keyObservations": [
+            "四次旋转会把若干格子划入同一个等价类，同一类中的格子最终必须全部相同，从而可独立处理每一类。",
+            "一个等价类若有 $k$ 个格子、其中有 $x$ 个 1，则统一为 0 或 1 的最小代价是 $\\min(x,k-x)$，分别对应翻转所有 1 或所有 0。",
+            "所有等价类互不影响，因此将各类的最小代价相加即可得到全局最优答案；直接枚举格子及其旋转位置，复杂度为 $O(n^2)$。"
+          ],
+          "solutionBrief": "对每个未处理格子，找出它在旋转 $0^\\circ$、$90^\\circ$、$180^\\circ$、$270^\\circ$ 后对应的等价类，统计其中 1 的数量，用 $\\min(\\text{1 的个数},\\text{类大小}-\\text{1 的个数})$ 更新答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1703F",
+          "index": "F",
+          "slot": "F",
+          "title": "Yet Another Problem About Pairs Satisfying an Inequality",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1703/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/104786",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定数组 $a$，统计下标对 $(i,j)$ 的数量，使其满足 $a_i<i<a_j<j$。每个测试用例只需输出满足该不等式链的有序下标对数量。",
+          "transformedStatement": "将每个位置分为可作为端点的位置与不可用位置：只有满足 $a_k<k$ 的位置才能参与。于是问题转化为从左到右对每个可用右端点 $j$，统计此前可用且下标小于 $a_j$ 的位置数。",
+          "keyObservations": [
+            "若 $a_i\\ge i$，下标 $i$ 不可能出现在任何合法对中，因此可先过滤掉这类位置。",
+            "过滤后两端条件 $a_i<i$ 与 $a_j<j$ 已自动满足，合法性只剩下此前位置 $i<a_j$。",
+            "从左到右处理 $j$ 时，已保留的候选下标天然递增，因此可在有序列表中统计小于 $a_j$ 的下标数量。"
+          ],
+          "solutionBrief": "先保留所有满足 $a_k<k$ 的位置。依次枚举右端点 $j$，在此前保留的递增下标列表中二分统计小于 $a_j$ 的数量，累加后再加入 $j$；总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1703G",
+          "index": "G",
+          "slot": "G",
+          "title": "Good Key, Bad Key",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1703/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/104786",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个箱子，必须按顺序打开。好钥匙打开当前箱子并支付 $k$ 枚硬币，坏钥匙免费但会使当前及之后未打开箱子的硬币依次减半；允许余额为负，求打开全部箱子后最多能得到多少硬币。",
+          "transformedStatement": "把每种开箱方案重述为选择好钥匙前缀和坏钥匙后缀：前缀收益直接累加并扣除钥匙费用，后缀中每个箱子的收益按照它经历的坏钥匙次数逐次减半。",
+          "keyObservations": [
+            "若某处先用坏钥匙再用好钥匙，交换为先好后坏不会变差，因为前者收益为 $\\lfloor a_i/2\\rfloor+\\lfloor a_{i+1}/2\\rfloor-k$，后者为 $a_i+\\lfloor a_{i+1}/2\\rfloor-k$。",
+            "因此最优方案必为一段好钥匙前缀，之后全部使用坏钥匙，原本的任意选择序列被压缩为枚举分界点。",
+            "分界点确定后，坏钥匙会让后续箱子依次多减半一次；由于 $a_i\\le 10^9$，最多模拟约 $30$ 个后缀箱子，之后贡献均为 $0$。"
+          ],
+          "solutionBrief": "枚举好钥匙前缀长度，维护该前缀获得的硬币；对后缀模拟坏钥匙造成的逐次减半，只需计算约 $30$ 个箱子。取所有分界点的最大总收益，复杂度为 $O(n\\log a_i)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
