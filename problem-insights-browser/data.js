@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3214,
+    "total_problems": 3221,
     "source_total_problems": 3223,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3214,
-    "with_editorial_brief": 2933,
-    "with_solution_brief": 2935,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3221,
+    "with_editorial_brief": 2940,
+    "with_solution_brief": 2942,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2276,
+    "ai_override_count": 2283,
     "primary_topic_count": 13,
-    "contest_count": 492,
+    "contest_count": 493,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1025,
+    "构造与贪心": 1029,
+    "基础实现与模拟": 197,
+    "图论与网络流": 204,
+    "数据结构": 302,
     "动态规划与状态设计": 272,
     "几何": 78,
-    "图论与网络流": 203,
     "字符串": 168,
     "交互": 100,
-    "基础实现与模拟": 196,
     "数论与同余": 342,
-    "数据结构": 301,
     "树结构": 159,
     "博弈": 101,
     "组合计数与概率": 247,
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1974,
+    "ai_generated_with_editorial": 1981,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -99272,6 +99272,212 @@ window.CF_INSIGHTS_DATA = {
             "取最低位最高的元素：减去其中一个并给另一个同层元素加一，可避免破坏最高层比特的连通，同时把其余比特接入，因此两次操作必然足够。"
           ],
           "solutionBrief": "先把所有零元素加一并计入操作数。用比特图判断当前图是否连通；若不连通，枚举一次加一或减一。若仍无解，选择最低位最高的两个元素，分别减一和加一，答案即为基础操作数加二。总复杂度为 $O(n^2\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1690,
+      "name": "Codeforces Round 797 (Div. 3)",
+      "date": "2022-06-07",
+      "url": "https://codeforces.com/contest/1690",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1690A",
+          "index": "A",
+          "slot": "A",
+          "title": "Print a Pedestal (Codeforces logo?)",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1690/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103658",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 个方块，必须全部分成高度为 $h_2,h_1,h_3$ 的三个台阶，分别对应第二、第一、第三名，并满足 $0<h_3<h_2<h_1$。要求构造一个使第一名高度 $h_1$ 尽可能小的方案，若有多个则任选。",
+          "transformedStatement": "把问题转化为寻找最小可行的 $h_1$：固定它后，将剩余方块 $n-h_1$ 尽量平均分给第二、第三名，再在必要时调整一块以满足严格大小关系。",
+          "keyObservations": [
+            "固定第一名高度 $h_1$ 后，剩余的 $n-h_1$ 个方块应尽量平均分给 $h_2,h_3$，这样最容易满足两者严格递减。",
+            "若平均分后出现 $h_2=h_3$，将一个方块从 $h_3$ 移到 $h_2$，即可保持总和不变并制造严格不等关系。",
+            "按 $h_1$ 从小到大尝试，首次满足 $h_1>h_2>h_3>0$ 的方案就是第一名平台高度最小的答案。"
+          ],
+          "solutionBrief": "从小到大枚举 $h_1$，将剩余方块尽量均分为 $h_2,h_3$；若两者相等则从 $h_3$ 向 $h_2$ 调整一个方块。首次满足严格递减且均为正数时输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1690B",
+          "index": "B",
+          "slot": "B",
+          "title": "Array Decrements",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1690/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103658",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定两个非负整数数组 $a,b$，每次操作把 $a$ 中所有当前大于 $0$ 的元素同时减 $1$，可操作任意次。判断能否恰好将 $a$ 变为 $b$。",
+          "transformedStatement": "把每个位置的下降量写成 $a_i-b_i$：目标仍为正的位置必须同步下降相同次数，而目标为零的位置可以更早停止，因此转化为差值一致性与上界检查。",
+          "keyObservations": [
+            "若存在 $a_i<b_i$，该位置只能减少不能增加，因此必然无解。",
+            "所有满足 $b_i>0$ 的位置在整个过程中始终为正，必须经历相同次数的全体递减，因此它们的差值 $a_i-b_i$ 必须全部相等。",
+            "设正目标位置的公共差值为 $d$，则目标为 $0$ 的位置可以提前降到零并停止变化，所以只需满足 $a_i-b_i=a_i\\le d$。"
+          ],
+          "solutionBrief": "先检查是否有 $a_i<b_i$，再取所有 $b_i>0$ 位置的差值并验证相等；对 $b_i=0$ 的位置检查 $a_i$ 不超过该公共差值。全部满足则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1690C",
+          "index": "C",
+          "slot": "C",
+          "title": "Restoring the Duration of Tasks",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1690/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/103658",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 个按到达时间递增给出的任务，单个执行者必须按到达顺序处理；任务到达后若执行者忙碌就等待，否则立即开始，所有任务的完成时间 $f_i$ 已知。求每个任务从开始执行到完成的持续时间 $d_i$。",
+          "transformedStatement": "将过程抽象为单台执行者上的 FIFO 排队：第 $i$ 个任务的开始时间由自身到达时间和前一任务完成时间共同决定，即 $\\max(s_i,f_{i-1})$，再用已知完成时间减去该开始时间得到持续时间。",
+          "keyObservations": [
+            "第 $i$ 个任务的实际开始时间不是到达时间，而是 $\\max(s_i,f_{i-1})$；这同时处理了机器空闲和前一任务未完成两种情况。",
+            "任务按到达顺序执行且不会插队，因此第 $i$ 个任务的持续时间唯一确定为 $f_i-\\max(s_i,f_{i-1})$，无需模拟队列内部细节。",
+            "处理完当前任务后将当前时间更新为 $f_i$，这个不变量保证下一任务的开始时间始终是前一任务完成与其到达时间的较大值。"
+          ],
+          "solutionBrief": "按到达顺序维护上一任务的完成时间。第一个任务从时间 $s_1$ 或初始时间 $0$ 中较晚者开始，之后第 $i$ 个任务从 $\\max(s_i,f_{i-1})$ 开始，因此答案为 $f_i-\\max(s_i,f_{i-1})$；处理后更新当前完成时间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1690D",
+          "index": "D",
+          "slot": "D",
+          "title": "Black and White Stripe",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1690/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/103658",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定由黑格和白格组成、长度为 $n$ 的条带，每次只能把白格重涂成黑格。要求求出至少需要重涂多少个格子，才能使条带中出现一段连续的 $k$ 个黑格。",
+          "transformedStatement": "把目标连续黑段视为原条带中的一个长度为 $k$ 的窗口；窗口内所有白格都必须被重涂，而窗口外无需操作，因此答案就是所有窗口白格数的最小值。",
+          "keyObservations": [
+            "最终形成的连续黑色段必然对应原串中的某个长度为 $k$ 的连续区间，因此该区间内的白格数量就是需要重涂的次数。",
+            "全局最优答案等价于所有长度为 $k$ 的窗口中白格数量的最小值，从而把重涂问题转化为固定长度区间计数。",
+            "窗口右移一格时只需加入新右端字符并移除旧左端字符即可更新白格数，因此无需重复统计每个区间，能够在线性时间内完成比较。"
+          ],
+          "solutionBrief": "枚举所有长度为 $k$ 的连续窗口，统计其中白格数并取最小值。用滑动窗口在右移时增删端点字符，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1690E",
+          "index": "E",
+          "slot": "E",
+          "title": "Price Maximization",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1690/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/103658",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定偶数个物品及其重量，必须把所有物品两两配成 $n/2$ 个包裹；重量为 $x$ 的包裹价值是 $\\lfloor x/k\\rfloor$。需要选择配对方式，使所有包裹价值之和最大。",
+          "transformedStatement": "将每个重量写成商与余数：配成一对时，两个商固定贡献答案，只有两个余数之和是否达到 $k$ 会额外贡献 $1$。问题因此转化为：在所有余数中最大化余数和至少为 $k$ 的配对数量。",
+          "keyObservations": [
+            "每对物品的总价值可分解为两件物品各自的商之和，再加上余数之和是否达到 $k$ 的额外贡献，因此先把所有商 $\\lfloor a_i/k\\rfloor$ 直接计入答案。",
+            "去除每个重量中可独立计入的整除部分后，只需将余数配对，并最大化余数和至少为 $k$ 的配对数量。",
+            "余数排序后，若最小余数与最大余数之和小于 $k$，则最小余数无法与任何余数形成有效配对；否则将这两个余数配成一对不会减少可获得的有效配对数。该性质支持双指针统计。"
+          ],
+          "solutionBrief": "先累加所有 $\\lfloor a_i/k\\rfloor$，再将余数排序。用双指针统计余数和不少于 $k$ 的配对：若两端之和达标则计数并同时移动，否则丢弃当前最小余数。总答案为基础商之和加有效配对数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1690F",
+          "index": "F",
+          "slot": "F",
+          "title": "Shifting String",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1690/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/103658",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余",
+            "字符串"
+          ],
+          "originalTags": [
+            "graphs",
+            "math",
+            "number theory",
+            "strings"
+          ],
+          "statementBrief": "给定长度同为 $n$ 的字符串 $s$ 和置换 $p$。每次操作把新字符串第 $i$ 位设为当前字符串第 $p_i$ 位，重复操作直到字符串首次恢复初始状态，求所需的最少操作次数。",
+          "transformedStatement": "把置换看成若干不相交环；每个环上的字符独立循环平移，先求该环恢复原序列的最小周期，再求所有环周期的最小公倍数。",
+          "keyObservations": [
+            "置换的映射图由若干不相交环组成，操作不会让字符跨环移动，因此可以分别计算每个环恢复原状所需的步数。",
+            "一个长度为 $len$ 的环每次操作相当于其字符序列循环平移一格，最小恢复步数是使平移后的序列等于原序列的最小正位移。",
+            "若第 $j$ 个环的最小恢复步数为 $k_j$，则全串同时恢复当且仅当操作次数是每个 $k_j$ 的倍数，因此答案为所有 $k_j$ 的最小公倍数。"
+          ],
+          "solutionBrief": "将置换分解为不相交环；对每个环枚举位移，找出字符序列恢复原样的最小正位移 $k_j$，最后计算所有 $k_j$ 的最小公倍数。单个环可用 $O(len^2)$ 检查。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1690G",
+          "index": "G",
+          "slot": "G",
+          "title": "Count the Trains",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1690/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/103658",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 节独立车厢从左向右排列并同时向左行驶，第 $i$ 节的最高速度为 $a_i$，且不能超过前方车厢的速度，因此最终速度由前缀限制决定。消息按顺序给出，每次把指定车厢的最高速度降低 $d$，修改会保留到后续消息；每次修改后求由相同最终速度组成的连续车厢段数量。",
+          "transformedStatement": "将每节车厢的最终速度视为数组 $a$ 的前缀最小值；问题转化为动态维护前缀最小值严格下降的位置，即这些位置划分出的连续区间数量。减小某个 $a_k$ 时，只会新增位置 $k$，并删去其右侧被新前缀最小值覆盖的位置。",
+          "keyObservations": [
+            "第 $i$ 节车的最终速度等于前缀最小值 $\u0000min(a_1,\u0000dots,a_i)$，因此火车起点恰好是前缀最小值严格下降的位置。",
+            "维护所有火车起点的有序集合并加入哨兵 $0$，集合大小直接等于当前火车数量，从而无需重算整段前缀最小值。",
+            "将 $a_k$ 降低后，只需考察集合中不超过 $k$ 的最右起点：若新值更小，$k$ 成为新起点；其后的所有起点若对应值大于新值都会被覆盖并删除。",
+            "每次更新只会插入至多一个新起点，并删除连续的一段失效起点，因此用有序集合可在 $O(\\log n)$ 级别处理一次消息。"
+          ],
+          "solutionBrief": "把最终速度转化为前缀最小值，维护其严格下降位置的有序集合。更新 $a_k$ 后，从 $k$ 左侧最近的起点判断是否插入 $k$，再删除后方所有值大于新 $a_k$ 的起点；集合大小即答案，单次复杂度为 $O(\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
