@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T20:00:20+00:00",
+  "updated_at": "2026-09-28T20:04:54+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -88714,6 +88714,36 @@
         "quality_flags": [
           "statement_inferred"
         ]
+      }
+    },
+    "1685B": {
+      "problem_key": "1685B",
+      "title": "Linguistics",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1685/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/103198",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "8d2dc8cbb40f25239f86183e8cdd24c35b72638915ff87b78d48f5b8ae8e1d4a",
+      "generated_at": "2026-09-28T20:04:54+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定只含 `A`、`B` 的字符串，以及四种词 `A`、`B`、`AB`、`BA` 各自必须使用的次数。判断能否将这些词各用恰好一次并按任意顺序拼接，恰好得到给定字符串。",
+        "transformed_statement": "先把问题转成在原字符串中选出互不重叠的 `AB`、`BA` 子串，数量分别为 $c,d$；其余位置由单字符词填满。由于相同字符之间不能被这两字符词覆盖，可按相同字符处分段，只需汇总各交替段提供的普通容量及方向匹配时的额外容量。",
+        "key_observations": [
+          "字符总数匹配还不够，但只要能在字符串中选出互不重叠的 $c$ 个 `AB` 和 $d$ 个 `BA`，其余字符就能分别作为单字词填完。",
+          "相邻相同字符之间不可能放置 `AB` 或 `BA` 词，因此可以把字符串切成若干交替段，分别计算可放置的词对。",
+          "长度为 $2k$、以 `A` 开头的交替段，通常只能提供总计 $k-1$ 个词对；若全部放 `AB`，则能提供 $k$ 个，这构成只对 `AB` 有利的额外容量，`B` 开头的段对 `BA` 同理。",
+          "额外容量应优先分配给较短的同类型偶长段；交换论证表明，若某个较短段未用额外容量而较长段用了，调整分配不会使可行性变差。"
+        ],
+        "solution_brief": "先检查 `A` 的数量是否等于 $a+c+d$。再将字符串切成最大交替段：奇数长度段及偶数长度段的普通容量分别为 $\\lfloor |t|/2\\rfloor$ 和 $|t|/2-1$；偶数段若起始方向与目标词一致，可额外贡献一个该方向的词。按长度从小到大使用这些额外容量，之后用剩余容量补足两类词，并检查数量是否恰好达到 $c,d$。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面给出的词语及数量要求，以及 editorial 中的字符计数检查、交替段建模和贪心正确性论证。",
+        "quality_flags": []
       }
     }
   }

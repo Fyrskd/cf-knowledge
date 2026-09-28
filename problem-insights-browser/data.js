@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3900,
+    "total_problems": 3901,
     "source_total_problems": 3901,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 3900,
-    "with_editorial_brief": 3571,
-    "with_solution_brief": 3573,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3901,
+    "with_editorial_brief": 3572,
+    "with_solution_brief": 3574,
     "missing_editorial_brief": 327,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2962,
+    "ai_override_count": 2963,
     "primary_topic_count": 13,
     "contest_count": 605,
     "rating_min": 800,
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "数论与同余": 414,
-    "字符串": 205,
+    "字符串": 206,
     "构造与贪心": 1264,
     "动态规划与状态设计": 319,
     "树结构": 184,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2592,
+    "ai_generated_with_editorial": 2593,
     "missing_editorial": 327,
     "ai_generated_partial_editorial": 88,
     "low_confidence": 1,
@@ -100108,7 +100108,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2022-05-25",
       "url": "https://codeforces.com/contest/1685",
       "type": "Div. 1",
-      "problemCount": 5,
+      "problemCount": 6,
       "maxRating": 3500,
       "problems": [
         {
@@ -100134,6 +100134,36 @@ window.CF_INSIGHTS_DATA = {
             "没有上述重复边界时，按 $(a_1,a_{m+1},a_2,a_{m+2},\\ldots,a_m,a_{2m})$ 交错排列，小数与大数交替，所有相邻三元组都形成严格峰谷，且首尾相接也满足条件。"
           ],
           "solutionBrief": "奇数长度直接输出 NO。偶数长度排序，若存在 $2\\le i\\le m-1$ 使 $a_i=a_{i+m-1}$ 则无解；否则输出交错序列 $(a_1,a_{m+1},a_2,a_{m+2},\\ldots,a_m,a_{2m})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1685B",
+          "index": "B",
+          "slot": "B",
+          "title": "Linguistics",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1685/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103198",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定只含 `A`、`B` 的字符串，以及四种词 `A`、`B`、`AB`、`BA` 各自必须使用的次数。判断能否将这些词各用恰好一次并按任意顺序拼接，恰好得到给定字符串。",
+          "transformedStatement": "先把问题转成在原字符串中选出互不重叠的 `AB`、`BA` 子串，数量分别为 $c,d$；其余位置由单字符词填满。由于相同字符之间不能被这两字符词覆盖，可按相同字符处分段，只需汇总各交替段提供的普通容量及方向匹配时的额外容量。",
+          "keyObservations": [
+            "字符总数匹配还不够，但只要能在字符串中选出互不重叠的 $c$ 个 `AB` 和 $d$ 个 `BA`，其余字符就能分别作为单字词填完。",
+            "相邻相同字符之间不可能放置 `AB` 或 `BA` 词，因此可以把字符串切成若干交替段，分别计算可放置的词对。",
+            "长度为 $2k$、以 `A` 开头的交替段，通常只能提供总计 $k-1$ 个词对；若全部放 `AB`，则能提供 $k$ 个，这构成只对 `AB` 有利的额外容量，`B` 开头的段对 `BA` 同理。",
+            "额外容量应优先分配给较短的同类型偶长段；交换论证表明，若某个较短段未用额外容量而较长段用了，调整分配不会使可行性变差。"
+          ],
+          "solutionBrief": "先检查 `A` 的数量是否等于 $a+c+d$。再将字符串切成最大交替段：奇数长度段及偶数长度段的普通容量分别为 $\\lfloor |t|/2\\rfloor$ 和 $|t|/2-1$；偶数段若起始方向与目标词一致，可额外贡献一个该方向的词。按长度从小到大使用这些额外容量，之后用剩余容量补足两类词，并检查数量是否恰好达到 $c,d$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
