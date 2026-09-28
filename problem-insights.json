@@ -15,19 +15,272 @@
     ]
   },
   "summary": {
-    "total_problems": 3263,
+    "total_problems": 3269,
     "source_total_problems": 3272,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3263,
-    "with_editorial_brief": 2982,
-    "with_solution_brief": 2984,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3269,
+    "with_editorial_brief": 2988,
+    "with_solution_brief": 2990,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2325,
+    "ai_override_count": 2331,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1679A",
+      "contest_id": 1679,
+      "title": "AvtoBus",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1679/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/102859",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "greedy",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "车队只有 4 轮和 6 轮两种公交车，已知所有公交车的轮子总数为 $n$。请判断是否存在这样的车队；若存在，输出公交车数量的最小值和最大值，否则输出 $-1$。",
+      "transformed_statement": "设两种公交车数量分别为 $x,y$，将轮数约束写成 $4x+6y=n$，再除以 2 转为用若干个 $2$ 和 $3$ 组成 $n/2$；分别让 $2$ 或 $3$ 的个数尽可能多即可得到数量上下界。",
+      "key_observations": [
+        "总轮数满足 $4x+6y=n$，因此 $n$ 为奇数时必无解；同时每辆车至少有 4 个轮子，所以 $n=2$ 也无解。",
+        "令 $m=n/2$，则问题等价于用若干个 $2$ 和 $3$ 拼出 $m$；为使公交车数量最多，应尽量使用 $2$，答案为 $\\lfloor n/2\\rfloor$。",
+        "为使公交车数量最少，应尽量使用 $3$；根据 $m$ 除以 $3$ 的余数补入一个或两个 $2$，统一得到最小数量 $\\lceil n/3\\rceil$。"
+      ],
+      "solution_brief": "设两轴和三轴公交车数量为 $x,y$，满足 $4x+6y=n$。奇数或 $n=2$ 无解；否则最大数量为 $\\lfloor n/2\\rfloor$，最小数量为 $\\lceil n/3\\rceil$，逐组常数时间计算。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:39:15+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1679B",
+      "contest_id": 1679,
+      "title": "Stone Age Problem",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1679/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/102859",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "data structures",
+        "implementation"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组，依次执行两类操作：把某个位置改成指定值，或把整个数组所有元素同时改成指定值。每次操作后输出当前数组所有元素的总和。",
+      "transformed_statement": "将全局赋值视为带时间戳的延迟覆盖，将每个位置的单点修改也记录时间戳；比较两者先后即可确定该位置当前值，同时单独维护数组总和。",
+      "key_observations": [
+        "用查询编号比较全局赋值与单点赋值的先后：若全局赋值时间晚于该位置最后一次单点修改，该位置当前值就是全局值，否则保留单点修改值，从而无需真正重建数组。",
+        "维护总和而不是逐项求和；单点修改时只需减去该位置的旧值并加上新值，全局赋值后总和直接变为 $n\\times x$。",
+        "每个位置只保存最后一次单点修改的时间和值，配合全局赋值的最后时间和值即可恢复任意位置当前状态，因此所有查询都能做到均摊 $O(1)$。"
+      ],
+      "solution_brief": "维护总和、最近一次全局赋值及每个位置最近一次单点修改的时间和值。单点修改时按时间戳判断旧值并更新总和；全局赋值直接令总和为 $n\\times x$。总复杂度 $O(n+q)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:38:57+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1679C",
+      "contest_id": 1679,
+      "title": "Rooks Defenders",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1679/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/102859",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "data structures",
+        "implementation"
+      ],
+      "statement_brief": "给定一个 $n\\times n$ 棋盘，按顺序执行放置车、移除车或查询子矩形操作；车能攻击同一行或同一列（包括所在格）。每次查询需判断子矩形中的每个格子是否都至少被一辆车攻击。",
+      "transformed_statement": "将“子矩形完全被攻击”转化为：矩形覆盖的所有行都有车，或覆盖的所有列都有车。于是只需动态维护空行、空列，并检查两个对应区间是否存在空位置。",
+      "key_observations": [
+        "子矩形中的所有格子均被攻击，当且仅当其中每一行都有车，或其中每一列都有车；否则可选出空行与空列形成未被攻击的交点。",
+        "只维护没有车的行集合和列集合，矩形查询只需判断两个区间中是否分别存在空行或空列，从而把覆盖判断转为区间存在性判断。",
+        "用行、列的车数统计处理增删：计数从 $0$ 变为正数时移出空集合，减回 $0$ 时加入空集合，保证集合状态始终准确。"
+      ],
+      "solution_brief": "维护每行、每列的车数及空行空列集合。增删车时更新计数和集合；查询时用二分判断矩形行区间或列区间是否含空位置，均无空位置则输出 Yes。总复杂度为 $O(q\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:38:46+00:00",
+          "quality_flags": [
+            "statement中三种查询的具体格式缺失，但可由editorial中的增删操作和查询描述补全"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1679D",
+      "contest_id": 1679,
+      "title": "Toss a Coin to Your Graph...",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1679/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/102859",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "动态规划与状态设计"
+      ],
+      "original_tags": [
+        "binary search",
+        "dfs and similar",
+        "dp",
+        "graphs"
+      ],
+      "statement_brief": "给定一个带正整数 $a_i$ 的有向图，硬币可从任意顶点出发，并在每次操作沿一条有向边移动；初始顶点和每次到达顶点的数值都会记录。必须恰好移动 $k-1$ 次，求记录值最大值的最小可能值；若无法完成则输出 $-1$。",
+      "transformed_statement": "把候选答案设为阈值 $x$，仅保留数值不超过 $x$ 的顶点，问题转化为判断该子图中是否存在长度恰为 $k-1$ 的有向行走；有环时可循环延长，无环时转为最长路径判定。",
+      "key_observations": [
+        "答案关于阈值 $x$ 单调：若存在所有顶点值不超过 $x$ 的合法路线，则更大的阈值也可行，因此可以二分最小可行值。",
+        "固定阈值后只保留 $a_i\\le x$ 的顶点，原问题等价于判断该诱导子图中是否存在恰好包含 $k-1$ 条边的有向行走。",
+        "若保留图含有有向环，就能反复绕环并补足任意长度；否则图是 DAG，只需比较最长有向路径长度与 $k-1$。",
+        "在 DAG 中令 $dp[v]$ 表示从顶点 $v$ 出发的最长路径边数，按拓扑序计算即可完成可行性判定。"
+      ],
+      "solution_brief": "二分最大顶点值阈值 $x$，删除所有 $a_i>x$ 的顶点。检查剩余图：有环则可行；无环时拓扑排序并用 $dp[v]$ 求最长路径，判断是否至少为 $k-1$。若整体无法完成所需步数则输出 $-1$，复杂度为 $O((n+m)\\log MAX)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:38:28+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1679E",
+      "contest_id": 1679,
+      "title": "Typical Party in Dorm",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1679/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/102859",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "字符串",
+        "动态规划与状态设计"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "combinatorics",
+        "dp",
+        "strings"
+      ],
+      "statement_brief": "给定一个由前 17 个小写字母和问号组成的字符串。每次查询给出一个字母集合，所有问号都可独立替换为集合中的任意字母；要求统计所有替换结果中回文子串数量之和，其中不同起止位置的子串分别计数，答案对 $998244353$ 取模。",
+      "transformed_statement": "把每个子串看作一个待判定区间：对称位置必须匹配，区间中问号与区间外问号共同产生若干自由选择。每个可行区间被压缩为必要字符集合 $P$ 和幂指数 $k$，查询只需判断 $P\\subseteq Q$ 并累加 $|Q|^k$。",
+      "key_observations": [
+        "固定一个子串区间后，若存在两个非问号且不同的对称字符，该区间永远不可能成为回文，可直接丢弃，从而只处理其余区间。",
+        "其余区间只需记录必要字符集合 $P$ 和指数 $k=d+f$：当且仅当 $P\\subseteq Q$ 时，该区间在查询中的贡献为 $|Q|^k$，把回文判定转成集合包含关系。",
+        "$k$ 与查询集合无关，因此可按区间的 $P$ 汇总贡献，并对每种 $|Q|$ 分别建立掩码数组，避免逐查询遍历全部子串。",
+        "查询答案是所有 $P\\subseteq Q$ 的数组值之和，可用子集和变换预处理；区间的 $P,k$ 能由去掉两端字符的区间递推得到。"
+      ],
+      "solution_brief": "枚举每个回文中心并递推区间信息，记录必要字符掩码 $P$ 与指数 $k$，排除固定冲突区间。对每种集合大小累计 $|Q|^k$ 到掩码数组，再做子集和变换回答所有查询，复杂度为 $O(17n^2+17^2 2^{17})$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:38:11+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1679F",
+      "contest_id": 1679,
+      "title": "Formalism for Formalism",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1679/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/102859",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [],
+      "original_tags": [
+        "bitmasks",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定长度为$n$的、允许前导零的十进制数字串，以及若干数字对。每次可交换相邻位置上的两个数字，但这两个数字必须构成给定的一对；若能通过若干次交换互相转换，则两串等价。要求所有$[0,10^n)$中的数字最多能选出多少个两两不等价的数。",
+      "transformed_statement": "把给定数字对建成十个顶点的无向图，并为每个等价类选择字典序最小代表元。题目转化为统计不含特定递减闭合片段的长度为$n$的字符串数量，再用从右向左的掩码自动机进行计数。",
+      "key_observations": [
+        "把数字对视为十个数字构成的无向图边；等价类代表元就是字典序最小的字符串，因此只需统计所有可能的代表元。",
+        "代表元不能含有特定的递减闭合片段：若左端数字大于右端数字，且右端数字依次与中间数字及左端数字相连，就能继续交换变小。",
+        "从右向左构造代表元时，$mask$记录当前允许向前连接的数字；加入数字$c$若会与某个更小的掩码数字相连则非法，否则新掩码由$c$及满足条件的旧数字组成。",
+        "所有$(c,mask)$的转移可预处理，使每一位只需枚举数字和掩码转移，避免重复计算图上的连边条件。"
+      ],
+      "solution_brief": "将等价类代表元转化为满足局部禁止模式的数字串。用$dp[suff][mask]$从右向左统计构造数量，预处理每个$(c,mask)$是否合法及其新掩码，再进行$n$层转移。复杂度为$O(2^{10}\\cdot10^2+n\\cdot2^{10}\\cdot10)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:37:51+00:00",
+          "quality_flags": [
+            "statement_text中的交换条件和结尾存在截断，但核心规则可由editorial补足"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 7,
       "problem_key": "1684A",
