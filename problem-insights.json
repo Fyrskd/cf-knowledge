@@ -15,19 +15,283 @@
     ]
   },
   "summary": {
-    "total_problems": 3852,
+    "total_problems": 3858,
     "source_total_problems": 3860,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3852,
-    "with_editorial_brief": 3529,
-    "with_solution_brief": 3531,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3858,
+    "with_editorial_brief": 3535,
+    "with_solution_brief": 3537,
     "missing_editorial_brief": 321,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2914,
+    "ai_override_count": 2920,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1559A",
+      "contest_id": 1559,
+      "title": "Mocha and Math",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1559/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/93898",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "给定一个整数序列。每次可选任意区间，并同时把区间内每个位置与其关于区间中心对称的位置做按位与；操作可进行任意次，要求最小化最终序列中的最大值。",
+      "transformed_statement": "把问题拆成独立的二进制位：最终能保留的位必须在所有元素中都存在，而反复对称按位与可以消去其他位，因此目标转化为求整个数组的按位与。",
+      "key_observations": [
+        "按二进制位独立考察：按位与操作只能保留两数共同为 $1$ 的位，绝不会新增任何位，因此最终保留下来的位必须在所有 $a_i$ 中都出现。",
+        "若某一位并非所有元素都为 $1$，通过区间内对称位置的按位与可以消去该位；因此它不应出现在最小可能的最大值中。",
+        "重复操作可以把各位置共同拥有的位保留下来，使每个位置都达到全数组按位与的结果，所以最小最大值就是 $a_1\\&a_2\\&\\cdots\\&a_n$。",
+        "将答案初始化为 $a_1$，依次与其余元素按位与即可直接得到上述公共位集合。"
+      ],
+      "solution_brief": "答案等于所有元素的按位与。初始化 $x=a_1$，依次执行 $x=x\\&a_i$；每一位只有在所有元素中都为 $1$ 时才能保留，所得 $x$ 即最小可能的最大值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T14:23:42+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1559B",
+      "contest_id": 1559,
+      "title": "Mocha and Red and Blue",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1559/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/93898",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "dp",
+        "greedy"
+      ],
+      "statement_brief": "给定一排长度为 $n$ 的方格，其中部分已染成红色或蓝色，其余位置为 `?`。必须为每个空格选择红色或蓝色，使相邻且同色的方格对数最少，并输出任意一种最优染色结果。",
+      "transformed_statement": "把问题拆成若干个连续的 `?` 段：每段内部采用两种交替序列之一，因此内部代价为零；最终只需根据该段左右固定端点，选择边界代价更小的方向。",
+      "key_observations": [
+        "每个连续的 `?` 段内部应交替染成 `RBRB...` 或 `BRBR...`，这样段内不会产生相邻同色对，从而只需处理两端与已确定方格的连接。",
+        "若连续 `?` 段的一侧有已染色方格，选择首个或末个方格为其相反颜色即可消除该侧的不完美边；随后按交替规律填完整段。",
+        "当连续 `?` 段两侧都有固定颜色时，两种交替方向只会影响两条边界，根据段长奇偶性选择边界代价较小的方向即可达到最优。",
+        "没有固定邻居的连续 `?` 段可以任选一种交替方向，因为其内部不产生不完美边，且不会影响其他位置。"
+      ],
+      "solution_brief": "按连续 `?` 段分别处理：优先让有固定邻居的一端与其异色，再交替填充整段；两端均固定时比较两种方向的边界代价。整体线性扫描即可构造任意最优答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T14:23:22+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1559C",
+      "contest_id": 1559,
+      "title": "Mocha and Hiking",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1559/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/93898",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "graphs"
+      ],
+      "statement_brief": "有 $n+1$ 个村庄，村庄 $1$ 到 $n$ 依次形成有向链；对每个 $i$，若 $a_i=0$ 则有道路 $i\\to n+1$，若为 $1$ 则有道路 $n+1\\to i$。要求从任意村庄出发，沿有向道路恰好访问每个村庄一次，并输出任意合法顺序。",
+      "transformed_statement": "把村庄 $1,2,\\ldots,n$ 视为固定主链，只需决定把特殊村庄 $n+1$ 放在链首、链尾，或插入某个断点；合法插入位置对应相邻标记从 $0$ 变为 $1$。",
+      "key_observations": [
+        "当 $a_1=1$ 时，存在道路 $(n+1)\\to1$，将村庄 $n+1$ 放在链 $1\\to2\\to\\cdots\\to n$ 前面即可覆盖所有村庄。",
+        "当 $a_n=0$ 时，存在道路 $n\\to(n+1)$，将村庄 $n+1$ 接在链 $1\\to2\\to\\cdots\\to n$ 末尾即可得到合法路径。",
+        "若前两种情况均不成立，则 $a_1=0,a_n=1$，二进制序列中必有相邻变化 $a_i=0,a_{i+1}=1$；把 $n+1$ 插入 $i$ 与 $i+1$ 之间即可连接两侧。",
+        "上述三种情况覆盖所有输入，并且每种构造都只使用相邻链边及题目给出的与村庄 $n+1$ 相连的道路，因此必然得到哈密顿路径。"
+      ],
+      "solution_brief": "先按 $1\\to2\\to\\cdots\\to n$ 建立主链：若 $a_1=1$，把 $n+1$ 放在开头；否则若 $a_n=0$，放在末尾；否则寻找相邻的 $0,1$，将其插入对应断点之间。找不到合法位置则输出 $-1$，但按上述覆盖性实际上总能构造。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T14:23:03+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1559D1",
+      "contest_id": 1559,
+      "title": "Mocha and Diana (Easy Version)",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1559/problem/D1",
+      "editorial_url": "https://codeforces.com/blog/entry/93898",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "数据结构",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "dsu",
+        "graphs",
+        "greedy",
+        "trees"
+      ],
+      "statement_brief": "给定两片都无环的森林，它们拥有相同的 $n$ 个节点。每次选择一条边并同时加入两片森林，且两边加入后都不能出现环；要求求出最多能加入多少条边，并输出这些边。",
+      "transformed_statement": "把两片森林分别抽象为两个连通关系，并查找两个端点在两种关系下都属于不同连通块的点对。每次选择这样的点对，相当于同时合并两个并查集中的集合。",
+      "key_observations": [
+        "一条边可加入当且仅当其两个端点在两片森林中都不连通；加入后会在两边各合并两个连通块，因此不会产生环。",
+        "若两片森林都仍有多个连通块，则必能找到一对在两边都不连通的端点；因此无法继续添加时，至少有一片森林已经连成一棵树。",
+        "按任意顺序枚举所有端点对，遇到同时满足两边连通性条件的边就加入；每次操作都减少两边的连通块数量，直到达到最大可添加数量。"
+      ],
+      "solution_brief": "分别用并查集维护两片森林的连通块。枚举每对节点，若它们在两边都属于不同连通块，就把该边同时加入两边并合并集合；遍历结束后输出所有加入的边，复杂度为 $O(n^2)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T14:22:43+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1559D2",
+      "contest_id": 1559,
+      "title": "Mocha and Diana (Hard Version)",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1559/problem/D2",
+      "editorial_url": "https://codeforces.com/blog/entry/93898",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "数据结构",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "dfs and similar",
+        "dsu",
+        "graphs",
+        "greedy",
+        "trees",
+        "two pointers"
+      ],
+      "statement_brief": "给定两个都无环的 $n$ 点森林，每次可选择一条边并同时加入两人的森林，但加入后两边都必须仍无环。要求求出最多能加入的边数，并输出一组达到最大值的边。",
+      "transformed_statement": "将两个森林的连通块分别抽象为行和列，顶点对应行列交叉处的非空格子；一次合法加边就是选择不同行、不同列的两个格子，并把这两行和两列分别合并。",
+      "key_observations": [
+        "把两个森林的连通块分别视为行和列，每个顶点落在一个格子中；选取不同的行与不同的列中的两个非空格子连边，恰好保证两边森林都不成环，并同时合并对应行列。",
+        "维护每行包含的列集合及每列包含的行集合；合并时把较小集合并入较大集合，可将每个元素的迁移次数控制在 $O(\\log n)$。",
+        "设行数不多于列数时，若存在某行包含多个列，就能将它与任意其他行配对；若所有行都是单列集合，则这些列必互不相同，任取两行即可开始合并。",
+        "每个格子保留一个原图顶点作为代表，行列合并时同步更新代表，因此找到的格子对可以直接还原为要输出的原顶点边。"
+      ],
+      "solution_brief": "用两个森林的连通块建立行列网格，维护行列的非空交叉关系及每格代表点。反复选择不同的行、列对应的两个格子加边并合并行列；集合采用小并大维护，直到无法继续，复杂度为 $O(n\\log^2 n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T14:22:19+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1559E",
+      "contest_id": 1559,
+      "title": "Mocha and Stars",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1559/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/93898",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "fft",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定 $n$ 个整数的取值区间 $[l_i,r_i]$，从每个区间选出一个亮度值，使所有值的总和不超过 $m$ 且它们的最大公约数为 $1$。要求统计不同的有序选择方案数，并对 $998244353$ 取模。",
+      "transformed_statement": "先忽略最大公约数条件，计算各位置取值在区间内且总和不超过上限的方案数；再按公共因数 $d$ 分类，用莫比乌斯反演对所有同时被 $d$ 整除的方案进行加权求和。",
+      "key_observations": [
+        "用前缀和优化背包 DP 计算区间取值且总和不超过 $M$ 的方案数，单次复杂度降为 $O(nM)$。",
+        "利用恒等式 $[\\\\gcd(a_1,\\ldots,a_n)=1]=\\sum_{d\\mid\\gcd(a_1,\\ldots,a_n)}\\mu(d)$，将互质限制转化为对公因数 $d$ 的带符号计数。",
+        "固定公因数 $d$ 后令 $a_i=db_i$，每个区间变为 $[\\lceil l_i/d\\rceil,\\lfloor r_i/d\\rfloor]$，总和上限变为 $\\lfloor M/d\\rfloor$，因此可直接复用同一个 DP。",
+        "所有 $d>M$ 都不可能产生正数元组，枚举 $d\\le M$ 后总复杂度为 $O(nM\\log M)$。"
+      ],
+      "solution_brief": "先用前缀和优化的背包 DP 求区间取值且总和不超过上限的方案数。再用莫比乌斯反演处理最大公约数为 $1$ 的限制；对每个 $d$ 缩放区间和总和上限并乘以 $\\mu(d)$ 累加，复杂度为 $O(nM\\log M)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T14:21:51+00:00",
+          "quality_flags": [
+            "statement_condition_formatting_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 7,
       "problem_key": "1560A",
