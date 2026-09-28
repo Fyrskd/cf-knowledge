@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3175,
+    "total_problems": 3181,
     "source_total_problems": 3183,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3175,
-    "with_editorial_brief": 2894,
-    "with_solution_brief": 2896,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3181,
+    "with_editorial_brief": 2900,
+    "with_solution_brief": 2902,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2237,
+    "ai_override_count": 2243,
     "primary_topic_count": 13,
-    "contest_count": 485,
+    "contest_count": 486,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1017,
+    "动态规划与状态设计": 269,
+    "图论与网络流": 198,
     "数论与同余": 340,
-    "构造与贪心": 1013,
-    "图论与网络流": 197,
     "组合计数与概率": 247,
     "数据结构": 298,
-    "动态规划与状态设计": 268,
     "基础实现与模拟": 192,
     "交互": 99,
     "字符串": 167,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1935,
+    "ai_generated_with_editorial": 1941,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -98082,6 +98082,183 @@ window.CF_INSIGHTS_DATA = {
             "固定边界后，可行的替换位置构成前缀或后缀，因而能用双指针和前缀和合并所有位置；两侧计数分别为 $cntpos,cntneg$ 时，主要计算量为 $O(n ext{·}cntpos ext{·}cntneg)$。"
           ],
           "solutionBrief": "把正、负数按绝对值排序，利用 DP 统计各子集选出的最大绝对值块及边界替换的乘积贡献。预处理替换位置的单调区间，用双指针和前缀和将复杂度降至 $O(n ext{·}cntpos ext{·}cntneg)$，最后对 $10^9+7$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1700,
+      "name": "Codeforces Round 802 (Div. 2)",
+      "date": "2022-06-19",
+      "url": "https://codeforces.com/contest/1700",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1700A",
+          "index": "A",
+          "slot": "A",
+          "title": "Optimal Path",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1700/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103978",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 表格，格子 $(i,j)$ 中的数为 $(i-1)m+j$。乌龟从 $(1,1)$ 出发，每步只能向下或向右移动到相邻格子，必须到达 $(n,m)$，求经过所有格子数之和的最小值。",
+          "transformedStatement": "把路径中的“先下后右”局部片段交换成“先右后下”：两者到达同一位置且步数不变，但后者经过的中间格子更小。因此问题等价于确定唯一的规范路径：先横向走完第一行，再纵向走到右下角。",
+          "keyObservations": [
+            "所有路径都恰好经过 $n+m-1$ 个格子，因此只需比较路径中间格子的数值总和。",
+            "相邻的“先下后右”可交换为“先右后下”，中间格子的数值减少 $m-1$；反复交换后最优路径必为先走完整第一行，再沿最后一列向下。",
+            "最优路径的数值分成第一行的 $1$ 到 $m$，以及最后一列的 $2m$ 到 $nm$，可直接用等差数列求和。"
+          ],
+          "solutionBrief": "利用交换论证将所有向右移动安排在向下移动之前，得到“先走第一行、再走最后一列”的最优路径。答案为 $\\frac{m(m-1)}{2}+m\\cdot\\frac{n(n+1)}{2}$，每组可 $O(1)$ 计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1700B",
+          "index": "B",
+          "slot": "B",
+          "title": "Palindromic Numbers ",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1700/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103978",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个没有前导零的 $n$ 位正整数 $X$，需要构造另一个同样为 $n$ 位且无前导零的正整数 $Y$，使 $X+Y$ 是回文数；存在多个答案时任选其一。",
+          "transformedStatement": "不直接搜索回文和，而是把目标和固定为全由 $9$ 或全由 $1$ 组成的回文数，再令答案等于该目标数减去 $X$，并根据 $X$ 的首位选择能保证结果为 $n$ 位的目标。",
+          "keyObservations": [
+            "若输入首位不是 $9$，取 $Y=10^n-1-X$，则 $X+Y$ 是由 $n$ 个 $9$ 组成的回文数，且 $Y$ 必为 $n$ 位数。",
+            "若输入首位是 $9$，取 $Y=10^{n+1}/9-X$，则 $X+Y$ 是由 $n+1$ 个 $1$ 组成的回文数，同时相减结果恰好是正的 $n$ 位数。",
+            "可以先按位计算 $(10^n-1)-X$，若首位为 $9$ 导致结果不足 $n$ 位，再加上 $10^{n+1}/9-(10^n-1)$，从而统一实现并保持 $O(n)$ 复杂度。"
+          ],
+          "solutionBrief": "按输入首位分情况构造：首位非 $9$ 时输出 $10^n-1-X$；首位为 $9$ 时输出 $10^{n+1}/9-X$。两种情况下的和分别是全 $9$ 或全 $1$ 的回文数，可按位相减在线性时间内完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1700C",
+          "index": "C",
+          "slot": "C",
+          "title": "Helping the Nature",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1700/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/103978",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 棵树的湿度数组，允许对整个数组、某个前缀或某个后缀按单位执行加减操作，目标是把所有元素变成 $0$。需要求达到目标所需的最少操作次数。",
+          "transformedStatement": "把数组转化为相邻差值 $d_i=a_{i+1}-a_i$：前缀或后缀操作负责消除这些差值，处理完后只剩一个统一的常数值，再用对整个数组的统一操作将其归零。",
+          "keyObservations": [
+            "相邻元素的差值必须被消除：若 $a_{i+1}-a_i>0$，至少要对后缀执行该差值次数的减法；若差值为负，则对前缀执行 $|a_{i+1}-a_i|$ 次减法，因此这些操作次数是不可避免的。",
+            "处理每个相邻差值后，数组会变成所有元素相同的常数；前缀和后缀操作的净效果可在线性扫描中计算，不必实际逐次执行操作。",
+            "当数组已全部等于 $x$ 时，只需对整个数组执行 $|x|$ 次统一加减即可归零，因此总答案是消除相邻差值的次数与 $|x|$ 之和。"
+          ],
+          "solutionBrief": "用差分数组处理相邻元素。每个差值的绝对值对应必须执行的前缀或后缀减法次数；线性计算这些操作后的公共值 $x$，再加上把全数组变为 $0$ 所需的 $|x|$ 次统一操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1700D",
+          "index": "D",
+          "slot": "D",
+          "title": "River Locks",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1700/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/103978",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个依次相连的锁，第 $i$ 个容量为 $v_i$；打开某根水管后每秒向对应锁注入 1 升，溢出的水会立即流向下一把锁，最后溢出系统。每个独立查询中从全空开始同时打开若干水管，要求在 $t$ 秒内填满所有锁，求所需的最少水管数，无法完成则输出 $-1$。",
+          "transformedStatement": "把可选水管数量限制为前缀长度 $i$，将每个候选方案的完成时间拆成两项：前 $i$ 个锁自身的前缀约束，以及全体锁所需的总进水量约束；由此得到关于 $i$ 的单调可行性判定。",
+          "keyObservations": [
+            "为了填满所有锁，若打开若干水管，只需考虑从第一个开始的连续前缀；增加更靠前的水管不会减少可用水量，因此不会使完成时间变差。",
+            "令 $pref_i$ 为前 $i$ 个容量之和，打开前 $i$ 根水管填满前 $i$ 个锁的时间满足 $dp_i=\\max(dp_{i-1},\\lceil pref_i/i\\rceil)$；前者保证已有锁完成，后者保证总进水量足够。",
+            "最终要填满全部 $n$ 个锁时，若打开前 $i$ 根水管，完成时间为 $\\max(dp_i,\\lceil pref_n/i\\rceil)$，分别对应前缀内部约束和全系统总水量约束。",
+            "打开的水管越多，完成时间不会增加，因此每个查询的可行性关于水管数量单调，可二分最小可行前缀；若全部水管仍无法在给定时间完成则输出 $-1$。"
+          ],
+          "solutionBrief": "预处理容量前缀和，并用 $dp_i=\\max(dp_{i-1},\\lceil pref_i/i\\rceil)$ 求打开前缀水管的内部完成时间。查询时用 $\\max(dp_i,\\lceil pref_n/i\\rceil)\\le t$ 的单调性二分最小 $i$；全开仍不满足则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1700E",
+          "index": "E",
+          "slot": "E",
+          "title": "Serega the Pirate",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1700/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/103978",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个包含 $1$ 到 $nm$ 各一次的网格。可以反复沿共享边移动并重复访问单元格，要求第一次访问数字 $1,2,\u0000dots,nm$ 的顺序递增；每次操作可交换任意两个单元格的数字，需判断最少交换次数是 $0$、$1$ 还是至少 $2$，若为 $1$ 还要统计可行交换对数。",
+          "transformedStatement": "把“存在按编号首次访问的网格路径”转化为局部条件：每个编号大于 $1$ 的单元格必须能从一个更小编号的邻居进入。于是交换问题变成消除所有不满足该条件的坏单元格。",
+          "keyObservations": [
+            "可行性的充要条件是：除数字 $1$ 外，每个单元格都至少有一个四联通邻居的数字更小；满足后可沿已访问的小数值区域逐步构造合法路径。",
+            "若存在坏单元格，则一次交换必须涉及该坏单元格或它的邻居，否则该单元格的“无更小邻居”状态不会改变，因此候选交换对只有线性数量。",
+            "交换只会影响两个端点及其邻居是否为坏单元格；维护坏单元格总数后，每个候选交换只需局部重算即可判断结果。"
+          ],
+          "solutionBrief": "先按“每个非 $1$ 单元格有更小邻居”统计坏点。若坏点数为零则答案为 $0$；否则只枚举坏点及其邻居相关的交换对，局部更新受影响点的坏状态，统计能使坏点归零的交换数；若没有则输出至少 $2$。总复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1700F",
+          "index": "F",
+          "slot": "F",
+          "title": "Puzzle",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1700/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/103978",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $2\\times n$ 的 01 矩阵和目标矩阵，每次只能交换相邻格子中的两个值，要求把初始排列变成目标排列。求所需的最少交换次数；若无法实现则输出 $-1$。",
+          "transformedStatement": "将每个初始的 $1$ 与目标位置的 $1$ 进行最小代价匹配，并把横向移动表示为两行前缀 $1$ 数差；跨行移动一个 $1$ 等价于对某个后缀的两行差值做相反调整。",
+          "keyObservations": [
+            "两张矩阵中 $1$ 的总数不同则必然无解；总数相同后，可把每个初始 $1$ 与目标 $1$ 匹配，移动代价等于两格的曼哈顿距离。",
+            "固定每个 $1$ 最终所在的行后，横向移动代价可由两行各列前缀 $1$ 数差的绝对值之和表示，跨行的 $1$ 还需额外贡献一次操作。",
+            "把第 $j$ 列的 $1$ 换行，会同时改变两行从第 $j$ 列开始的所有前缀差，因此原问题等价为对差数组执行同一后缀的相反增减，并最小化操作数与绝对值和。",
+            "从左到右处理时，只有两行差值符号相反才值得在当前后缀换行；每次消去两者绝对值的较小部分不会增加最优代价，三角不等式保证其余换行可延后处理。"
+          ],
+          "solutionBrief": "先检查两矩阵的 $1$ 总数是否相等。维护两行前缀差，从左到右对符号相反的差值执行后缀换行，次数取两者绝对值较小者；答案为换行次数与最终两行差值绝对值和，整体 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
