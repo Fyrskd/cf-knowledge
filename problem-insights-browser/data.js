@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 291,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2467,
+    "ai_override_count": 2474,
     "primary_topic_count": 13,
     "contest_count": 524,
     "rating_min": 800,
@@ -44,9 +44,11 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1102,
+    "基础实现与模拟": 211,
     "字符串": 181,
+    "构造与贪心": 1100,
     "数论与同余": 362,
+    "代数、矩阵与多项式": 24,
     "图论与网络流": 220,
     "数据结构": 322,
     "树结构": 166,
@@ -54,9 +56,7 @@ window.CF_INSIGHTS_DATA = {
     "几何": 81,
     "博弈": 106,
     "动态规划与状态设计": 280,
-    "基础实现与模拟": 210,
-    "交互": 101,
-    "代数、矩阵与多项式": 23
+    "交互": 101
   },
   "statusCounts": {
     "missing_editorial": 291,
@@ -105146,17 +105146,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1652/problem/A",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "几何"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "greedy",
             "implementation",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Maximum Cake Tastiness；本地暂无可用题解正文。",
+          "statementBrief": "给定一列重量为 $a_i$ 的蛋糕块，蛋糕美味度是所有相邻两块重量之和的最大值。最多一次选择一个连续子段并将其反转，求操作后能达到的最大美味度。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -105172,13 +105169,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1652/problem/B",
           "editorialUrl": "",
           "primaryTopic": "字符串",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "strings"
           ],
-          "statementBrief": "题面已抓取：Prefix Removals；本地暂无可用题解正文。",
+          "statementBrief": "给定一个由小写字母组成的字符串。每次找出当前串中还能在其他位置作为连续子串出现的最长非空前缀，删除这段前缀并重复；若不存在这样的前缀就停止，输出最终字符串。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -105195,15 +105190,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "数据结构",
-            "动态规划与状态设计",
-            "图论与网络流"
+            "数据结构"
           ],
           "originalTags": [
             "data structures",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Alice and the Cake；本地暂无可用题解正文。",
+          "statementBrief": "给定最终排成任意顺序的 $n$ 块蛋糕及其重量。蛋糕起初是一整块，每次选择重量至少为 $2$ 的一块，将其切成重量分别为向下取整的 $w/2$ 和向上取整的 $w/2$ 的两块，共切 $n-1$ 次；判断是否存在某个初始重量和切分顺序得到给定数组。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -105220,9 +105213,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "数论与同余",
           "secondaryTopics": [
-            "树结构",
-            "动态规划与状态设计",
-            "博弈"
+            "图论与网络流"
           ],
           "originalTags": [
             "implementation",
@@ -105230,7 +105221,7 @@ window.CF_INSIGHTS_DATA = {
             "number theory",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Potion Brewing Class；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n$ 种原料及 $n-1$ 条比例要求，每条要求规定两种原料用量之比为 $x:y$。需要为每种原料选取正整数用量，使所有比例同时满足，并使总用量最小，输出该最小总量对 $998244353$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -105245,18 +105236,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/1652/problem/E",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "图论与网络流",
-            "动态规划与状态设计",
-            "博弈"
-          ],
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "graphs",
             "math"
           ],
-          "statementBrief": "题面已抓取：Arithmetic Operations；本地暂无可用题解正文。",
+          "statementBrief": "给定整数数组，每次可任选一个下标，并把该位置改成任意整数，操作可进行任意次。要求把数组变成等差数列，并求所需的最少修改次数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -105273,16 +105260,14 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "字符串",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "数据结构",
-            "数论与同余"
+            "数据结构"
           ],
           "originalTags": [
             "bitmasks",
             "data structures",
             "strings"
           ],
-          "statementBrief": "题面已抓取：Minimal String Xoration；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $2^n$ 的字符串 $s$。选择一个 $j\\in[0,2^n-1]$，将新串第 $i$ 位设为 $s_{i\\oplus j}$，得到一种 xoration；要求在所有选择中输出字典序最小的新串。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -105300,7 +105285,6 @@ window.CF_INSIGHTS_DATA = {
           "primaryTopic": "图论与网络流",
           "secondaryTopics": [
             "树结构",
-            "数据结构",
             "数论与同余"
           ],
           "originalTags": [
@@ -105309,7 +105293,7 @@ window.CF_INSIGHTS_DATA = {
             "shortest paths",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Snowy Mountain；本地暂无可用题解正文。",
+          "statementBrief": "给定一棵树和若干基地，点的高度是到最近基地的距离。每名滑雪者从一个点、初始能量为 $0$ 出发，每次可沿边移动：下坡获得 $1$ 点能量，同高消耗 $1$ 点能量，上坡禁止；能量始终不能为负，求每个起点能连续移动的最大边数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

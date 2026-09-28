@@ -24,7 +24,7 @@
     "missing_editorial_brief": 291,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2467,
+    "ai_override_count": 2474,
     "primary_topic_count": 13
   },
   "records": [
@@ -37,17 +37,14 @@
       "problem_url": "https://codeforces.com/contest/1652/problem/A",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "几何"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "greedy",
         "implementation",
         "sortings"
       ],
-      "statement_brief": "题面已抓取：Maximum Cake Tastiness；本地暂无可用题解正文。",
+      "statement_brief": "给定一列重量为 $a_i$ 的蛋糕块，蛋糕美味度是所有相邻两块重量之和的最大值。最多一次选择一个连续子段并将其反转，求操作后能达到的最大美味度。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -55,9 +52,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:54:38+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 2,
@@ -69,13 +77,11 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "字符串",
-      "secondary_topics": [
-        "动态规划与状态设计"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "strings"
       ],
-      "statement_brief": "题面已抓取：Prefix Removals；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由小写字母组成的字符串。每次找出当前串中还能在其他位置作为连续子串出现的最长非空前缀，删除这段前缀并重复；若不存在这样的前缀就停止，输出最终字符串。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -83,9 +89,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:54:22+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 3,
@@ -98,15 +114,13 @@
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
       "secondary_topics": [
-        "数据结构",
-        "动态规划与状态设计",
-        "图论与网络流"
+        "数据结构"
       ],
       "original_tags": [
         "data structures",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Alice and the Cake；本地暂无可用题解正文。",
+      "statement_brief": "给定最终排成任意顺序的 $n$ 块蛋糕及其重量。蛋糕起初是一整块，每次选择重量至少为 $2$ 的一块，将其切成重量分别为向下取整的 $w/2$ 和向上取整的 $w/2$ 的两块，共切 $n-1$ 次；判断是否存在某个初始重量和切分顺序得到给定数组。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -114,9 +128,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:53:45+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 4,
@@ -129,9 +153,7 @@
       "editorial_quality": "missing_url",
       "primary_topic": "数论与同余",
       "secondary_topics": [
-        "树结构",
-        "动态规划与状态设计",
-        "博弈"
+        "图论与网络流"
       ],
       "original_tags": [
         "implementation",
@@ -139,7 +161,7 @@
         "number theory",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Potion Brewing Class；本地暂无可用题解正文。",
+      "statement_brief": "给定 $n$ 种原料及 $n-1$ 条比例要求，每条要求规定两种原料用量之比为 $x:y$。需要为每种原料选取正整数用量，使所有比例同时满足，并使总用量最小，输出该最小总量对 $998244353$ 取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -147,9 +169,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:53:26+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_not_available",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 5,
@@ -160,18 +193,14 @@
       "problem_url": "https://codeforces.com/contest/1652/problem/E",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "图论与网络流",
-        "动态规划与状态设计",
-        "博弈"
-      ],
+      "primary_topic": "代数、矩阵与多项式",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "graphs",
         "math"
       ],
-      "statement_brief": "题面已抓取：Arithmetic Operations；本地暂无可用题解正文。",
+      "statement_brief": "给定整数数组，每次可任选一个下标，并把该位置改成任意整数，操作可进行任意次。要求把数组变成等差数列，并求所需的最少修改次数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -179,9 +208,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:53:11+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 6,
@@ -194,16 +233,14 @@
       "editorial_quality": "missing_url",
       "primary_topic": "字符串",
       "secondary_topics": [
-        "动态规划与状态设计",
-        "数据结构",
-        "数论与同余"
+        "数据结构"
       ],
       "original_tags": [
         "bitmasks",
         "data structures",
         "strings"
       ],
-      "statement_brief": "题面已抓取：Minimal String Xoration；本地暂无可用题解正文。",
+      "statement_brief": "给定长度为 $2^n$ 的字符串 $s$。选择一个 $j\\in[0,2^n-1]$，将新串第 $i$ 位设为 $s_{i\\oplus j}$，得到一种 xoration；要求在所有选择中输出字典序最小的新串。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -211,9 +248,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:52:57+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 7,
@@ -227,7 +274,6 @@
       "primary_topic": "图论与网络流",
       "secondary_topics": [
         "树结构",
-        "数据结构",
         "数论与同余"
       ],
       "original_tags": [
@@ -236,7 +282,7 @@
         "shortest paths",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Snowy Mountain；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵树和若干基地，点的高度是到最近基地的距离。每名滑雪者从一个点、初始能量为 $0$ 出发，每次可沿边移动：下坡获得 $1$ 点能量，同高消耗 $1$ 点能量，上坡禁止；能量始终不能为负，求每个起点能连续移动的最大边数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -244,9 +290,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:52:44+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 8,
