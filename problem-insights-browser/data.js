@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3368,
+    "total_problems": 3375,
     "source_total_problems": 3378,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3368,
-    "with_editorial_brief": 3082,
-    "with_solution_brief": 3084,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3375,
+    "with_editorial_brief": 3089,
+    "with_solution_brief": 3091,
     "missing_editorial_brief": 284,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2430,
+    "ai_override_count": 2437,
     "primary_topic_count": 13,
-    "contest_count": 518,
+    "contest_count": 519,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1086,
+    "构造与贪心": 1089,
+    "数论与同余": 353,
+    "字符串": 177,
+    "数据结构": 321,
     "树结构": 165,
-    "数论与同余": 352,
-    "数据结构": 320,
     "图论与网络流": 216,
     "博弈": 105,
     "动态规划与状态设计": 280,
     "组合计数与概率": 255,
     "基础实现与模拟": 210,
-    "字符串": 175,
     "交互": 101,
     "几何": 80,
     "代数、矩阵与多项式": 23
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2122,
+    "ai_generated_with_editorial": 2129,
     "missing_editorial": 284,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -103976,6 +103976,219 @@ window.CF_INSIGHTS_DATA = {
             "对区间反复查询最小值并暂时改为无穷大即可取出至多 31 个候选；这些候选覆盖最优数对，因此枚举它们的两两按位或就能得到答案。"
           ],
           "solutionBrief": "用线段树支持区间最小值查询。每次取出区间内最小的至多 31 个数，暂时删除后恢复，再枚举所有候选对的按位或并取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1660,
+      "name": "Codeforces Round 780 (Div. 3)",
+      "date": "2022-03-31",
+      "url": "https://codeforces.com/contest/1660",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "1660A",
+          "index": "A",
+          "slot": "A",
+          "title": "Vasya and Coins",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1660/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/101526",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "每组给出 $a$ 枚面值 1 和 $b$ 枚面值 2 的硬币，每枚硬币最多使用一次。要求找出最小的正整数金额，使得 Vasya 无法恰好用这些硬币支付。",
+          "transformedStatement": "将问题转化为求硬币子集和中第一个缺失的正整数：先判断是否存在面值 1 的硬币，再确定可连续表示的金额区间及其右端点。",
+          "keyObservations": [
+            "若没有任何 1 面值硬币，金额 $1$ 无法支付，因此答案立即是 $1$。",
+            "拥有至少一枚 1 面值硬币时，前 $b$ 枚 2 面值硬币可补出偶数金额，结合 1 面值硬币可连续覆盖 $1$ 到 $2b+a$。",
+            "达到最大可支付金额 $2b+a$ 后，金额 $2b+a+1$ 无法再由现有硬币组成，因此答案就是 $2b+a+1$。"
+          ],
+          "solutionBrief": "分两种情况直接计算：若 $a=0$，无法支付 $1$，答案为 $1$；否则所有 $1$ 到 $2b+a$ 都能凑出，答案为 $2b+a+1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1660B",
+          "index": "B",
+          "slot": "B",
+          "title": "Vlad and Candies",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1660/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/101526",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 类糖果及每类数量。每次必须从当前剩余数量最多的类型中吃一颗（并列时任选），且相邻两次不能吃同一类型；判断能否吃完全部糖果。",
+          "transformedStatement": "将各类型数量看成若干堆，过程要求每次从最高堆取出一枚且不能连续取同一堆。只需比较最高堆和次高堆的高度：高度差不超过 $1$ 时可以逐层交替平衡，否则会被迫连续取最高堆。",
+          "keyObservations": [
+            "若最大数量与第二大数量相差至少 $2$，吃掉一个最大类型后它仍严格最多，下一步被迫继续吃同一类型，因此必然失败。",
+            "若前两大数量相差不超过 $1$，就能交替食用这两类，先把它们降到第三大数量，再把第三类加入交替过程；重复此过程可覆盖所有类型。",
+            "因此可行性只由数量最多的两类决定，判定条件是最大值与次大值之差不超过 $1$；只有一种类型时可将次大值视为 $0$。"
+          ],
+          "solutionBrief": "找出数量最多和第二多的糖果类型，若两者数量差大于 $1$ 输出 NO，否则输出 YES。差距过大时最大类会被连续强制选择；差距不大时可按层次交替消耗各类。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1660C",
+          "index": "C",
+          "slot": "C",
+          "title": "Get an Even String",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1660/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/101526",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个小写字母串，可以删除任意位置的字符，剩余字符顺序不变。要求剩余串能拆成若干个长度为 2 且两字符相同的连续块，求最少删除多少字符。",
+          "transformedStatement": "把问题改写为从原串选取最长子序列，使其依次由相同字符组成的二元组连接而成。扫描每个尚未配对的区间，首次遇到重复字符就闭合当前二元组，并从其后重新开始。",
+          "keyObservations": [
+            "将删除后的结果看作原串的一个子序列，目标等价于保留最长的、能按相邻相等字符两两分组的子序列。",
+            "从上一个完整对子之后开始，遇到某字符第二次出现时立即组成一对，可以确定性地增加两个保留字符；等待不会增加当前前缀能形成的对子数量。",
+            "一个对子确定后，下一对的两个字符都必须出现在它的末尾之后，因此必须清空此前记录的字符，重新处理后缀。",
+            "若贪心保留长度为 $m$，删除数就是总长度减去保留长度，即答案为 $n-m$。"
+          ],
+          "solutionBrief": "扫描字符串并维护当前对子之后出现过的字符。首次出现就记录，再次出现时立即形成一个长度为 2 的相等对子，将保留长度加 2 并清空记录；最终输出 $n-m$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1660D",
+          "index": "D",
+          "slot": "D",
+          "title": "Maximum Product Strikes Back",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1660/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/101526",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个元素在 $[-2,2]$ 内的数组，可以删除任意长度的前缀和后缀，也可以删除整个数组。要求输出应删除的前缀、后缀长度，使剩余连续数组的元素乘积最大；空数组乘积定义为 $1$。",
+          "transformedStatement": "把数组按零拆成若干个不含零的连续区间；对每段只需寻找乘积为正且绝对值最大的保留子段，负乘积区间通过从左端或右端删到最近的负数来修正符号。",
+          "keyObservations": [
+            "删空数组得到乘积 $1$，因此最优保留部分只需考虑乘积为正的连续子数组，零应作为分隔点处理。",
+            "在一个不含零的区间中，若整体乘积为正，则继续删除不会提高乘积，因为被删除部分的正乘积至少为 $1$。",
+            "若区间乘积为负，只需删除左侧直到第一个负数，或右侧直到最后一个负数；这两种方案分别去掉一个负因子，其他删法不会保留更多绝对值。",
+            "非零元素的绝对值只有 $1$ 和 $2$，正候选的乘积大小只由其中 $2$ 的数量决定，因此比较两种候选保留段中的 $2$ 的个数即可。"
+          ],
+          "solutionBrief": "按零分割数组，逐段处理非零区间。正乘积区间完整保留；负乘积区间比较删去左前缀或右后缀后的两个正候选，保留包含更多 $2$ 的方案，并记录对应删除数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1660E",
+          "index": "E",
+          "slot": "E",
+          "title": "Matrix and Shifts",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1660/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/101526",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 的 01 矩阵，可以先任意次免费地循环移位所有行或列，再对单元格进行 XOR 操作，每次 XOR 付费一次。求将矩阵变为主对角线全为 1、其余位置全为 0 所需的最少费用。",
+          "transformedStatement": "把每种行列循环移位后的主对角线视为原矩阵的一条环形对角线；选择其中 1 最多的一条作为目标主对角线，其余不匹配的位置统一通过 XOR 修正。",
+          "keyObservations": [
+            "循环移位后，主对角线只能对应原矩阵的一条环形对角线，因此只需统计每条环形对角线上的 1 的数量。",
+            "若选中的环形对角线含有 $Max$ 个 1，则其中 $n-Max$ 个 0 需要翻成 1，矩阵其余位置的 $sum-Max$ 个 1 需要翻成 0。",
+            "移位不产生代价，最优策略必然选择包含 1 数量最多的环形对角线，从而答案为 $n+sum-2Max$。"
+          ],
+          "solutionBrief": "统计矩阵中 1 的总数 $sum$，枚举每条环形对角线并求其中的 1 数量最大值 $Max$。将该对角线移到主对角线后，最少需要 $n+sum-2Max$ 次 XOR 操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1660F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Promising String (easy version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1660/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/101526",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定只含 `+` 和 `-` 的字符串，每次可以把两个相邻的 `-` 替换成一个 `+`。统计所有能经过若干次操作（也可以不操作）变成加号、减号数量相等的非空连续子串，并按出现位置计数。",
+          "transformedStatement": "把每个字符转成数值：`+` 为 $1$、`-` 为 $-1$。问题转化为统计平衡和不大于 $0$ 且是 $3$ 的倍数的非空子数组，其中平衡和由两个前缀和之差得到。",
+          "keyObservations": [
+            "一次把相邻两个 `-` 替换成 `+` 会使“加号数减去减号数”的平衡值增加 $3$，因此最终变为平衡要求初始值不大于 $0$ 且是 $3$ 的倍数。",
+            "当减号比加号至少多 $2$ 个时必存在相邻的两个减号；所以对初始平衡值为负的 $3$ 的倍数的子串，可以持续操作直到平衡值变为 $0$。",
+            "子串平衡值等于两个前缀平衡值之差，因此枚举子串端点即可用前缀和在 $O(1)$ 时间判断其是否满足“差值不正且为 $3$ 的倍数”。"
+          ],
+          "solutionBrief": "令 `+` 贡献 $1$、`-` 贡献 $-1$，枚举所有非空子串并用前缀和求平衡值。若该值不大于 $0$ 且为 $3$ 的倍数，则计入答案；这是因为每次操作使平衡值增加 $3$，且负的合法状态始终能找到相邻减号。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1660F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Promising String (hard version)",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1660/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/101526",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "字符串",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "implementation",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定只含 `+` 和 `-` 的字符串，可以反复把相邻的两个 `-` 替换成一个 `+`。统计所有非空连续子串中，有多少个能通过这些操作变成含有相同数量 `+`、`-` 的平衡串，并按出现位置重复计数。",
+          "transformedStatement": "把每个前缀映射为平衡值 $p_i=\\#(+)-\\#(-)$；对右端点 $j$，合法左边界恰好是满足 $p_i\\ge p_j$ 且 $p_i\\equiv p_j\\pmod 3$ 的此前前缀边界，因此问题化为带顺序限制的同余分组前缀计数。",
+          "keyObservations": [
+            "一次把相邻的两个 `-` 替换为一个 `+`，会使“`+` 数减 `-` 数”的平衡值增加 $3$，因此子串可变平衡当且仅当其平衡值不大于 $0$ 且是 $3$ 的倍数。",
+            "设前缀平衡为 $p_i$，子串 $(i+1..j)$ 的平衡值为 $p_j-p_i$；条件等价于 $p_i\\ge p_j$ 且 $p_i\\equiv p_j\\pmod 3$，把字符串判断转为前缀边界配对计数。",
+            "只需按前缀平衡对 $3$ 取模分组，并统计此前出现过且数值不小于当前 $p_j$ 的边界；这样每个右端点都能直接得到合法左端点数量。"
+          ],
+          "solutionBrief": "将 `+` 记为 $+1$、`-` 记为 $-1$，扫描前缀平衡。对每个当前值 $p_j$，在同余类 $p_j\\bmod 3$ 中查询此前满足 $p_i\\ge p_j$ 的前缀数量，并加入答案；用按平衡值维护的计数结构支持该查询。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
