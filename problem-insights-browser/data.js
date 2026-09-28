@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4093,
+    "total_problems": 4099,
     "source_total_problems": 4099,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4093,
-    "with_editorial_brief": 3747,
-    "with_solution_brief": 3749,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4099,
+    "with_editorial_brief": 3753,
+    "with_solution_brief": 3755,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3155,
+    "ai_override_count": 3161,
     "primary_topic_count": 13,
-    "contest_count": 636,
+    "contest_count": 637,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1328,
+    "构造与贪心": 1331,
+    "图论与网络流": 274,
+    "树结构": 193,
+    "数据结构": 388,
     "动态规划与状态设计": 335,
     "数论与同余": 430,
     "组合计数与概率": 320,
-    "数据结构": 387,
-    "图论与网络流": 273,
-    "树结构": 192,
     "几何": 96,
     "基础实现与模拟": 252,
     "交互": 121,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2751,
+    "ai_generated_with_editorial": 2757,
     "ai_generated_partial_editorial": 105,
     "missing_editorial": 344,
     "low_confidence": 1,
@@ -125857,6 +125857,206 @@ window.CF_INSIGHTS_DATA = {
             "区间 $[l,r]$ 的首尾速度差会计入当前阶段，而下一步只需在去掉左端或右端后继续，因此状态转移为 $dp(l,r)=s_r-s_l+\\min(dp(l+1,r),dp(l,r-1))$。"
           ],
           "solutionBrief": "先将速度排序，令 $dp(l,r)$ 表示只安排区间 $[l,r]$ 时的最小差异和。区间长度为 1 时答案为 0；否则按移除左端或右端转移，最终求 $dp(1,n)$，时间复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1508,
+      "name": "Codeforces Round 715 (Div. 1)",
+      "date": "2021-04-16",
+      "url": "https://codeforces.com/contest/1508",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1508A",
+          "index": "A",
+          "slot": "A",
+          "title": "Binary Literature",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1508/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/89644",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定三个长度均为 $2n$ 的二进制串，可以输出任意一个长度不超过 $3n$ 的二进制串；要求至少有两个给定串能通过删除若干字符（也可以不删）成为该串的子序列。",
+          "transformedStatement": "把任务转化为构造两个输入串的共同超序列：只要选出的两串拥有长度至少为 $n$ 的公共子序列，就能共享这部分并合并剩余字符，使结果长度不超过 $3n$。也可把构造过程视为三个指针同步消耗字符，直至某个串被完整表示。",
+          "keyObservations": [
+            "三个长度为 $2n$ 的二进制串中，每个串至少有一种字符出现不少于 $n$ 次；三个高频字符只有两种取值，因此至少有两个串的高频字符相同。",
+            "若两串有长度为 $n$ 的公共子序列，把它们各自剩余字符按原顺序插入公共部分即可得到同时包含两串的超序列，长度为 $4n-n=3n$。",
+            "逐位查看三个串当前指向的字符时，必有至少两个相同；输出该字符并推进匹配的指针，可以同时消耗至少两个串的字符。",
+            "指针合并法在某个串读完时，输出长度为 $k$ 的部分串已消耗至少 $2k$ 个字符；另两个串中至少一个已前进不少于 $k-n$ 位，因此补完该串所需字符后总长度不超过 $3n$。"
+          ],
+          "solutionBrief": "可选取高频字符相同的两串，以该字符重复 $n$ 次作为公共子序列，再将两串其余字符按顺序合并，得到长度至多 $3n$ 的答案。题解还给出三指针构造：每步输出至少两个当前字符共有的位并推进对应指针，某串完成后补齐另一串即可保证长度限制。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1508B",
+          "index": "B",
+          "slot": "B",
+          "title": "Almost Sorted",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1508/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/89644",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "binary search",
+            "combinatorics",
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定正整数 $n$，考虑 $1$ 到 $n$ 的所有排列，其中每对相邻元素都满足 $a_{i+1}\\ge a_i-1$。将这些排列按字典序排列，要求输出第 $k$ 个排列；若不存在则输出 $-1$。",
+          "transformedStatement": "把合法排列拆成若干个极大的连续下降段，每段按连续整数递减，段长序列唯一确定排列。再用 $n-1$ 位二进制串编码段边界，使第 $k$ 个排列直接对应数值为 $k-1$ 的编码串，并据此恢复各段和排列本身。",
+          "keyObservations": [
+            "每个最大连续下降段只能按相邻整数递减，因此整段由其长度确定；所有段长依次给出时，整张排列也唯一。",
+            "用长度为 $n-1$ 的二进制串记录段边界：段末位置记为 $0$，其余位置记为 $1$，即可与所有合法排列一一对应。",
+            "按字典序排列时，这些二进制串对应的整数也递增，因此第 $k$ 个排列对应整数 $k-1$，超出 $n-1$ 位二进制串范围时答案不存在。"
+          ],
+          "solutionBrief": "若 $k>2^{n-1}$，输出 $-1$；否则将 $k-1$ 写成 $n-1$ 位二进制串，根据其中的段边界确定各下降段长度，再按段依次构造排列。时间复杂度为 $O(n+\\log k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1508C",
+          "index": "C",
+          "slot": "C",
+          "title": "Complete the MST",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1508/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/89644",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一个含 $n$ 个点的完全无向图，其中 $m$ 条边已有正权，其余边权未知且至少有一条。需要给所有未知边赋非负权，使全图边权异或和为零，并使所得图的最小生成树权值尽可能小。",
+          "transformedStatement": "把未知边权的选择压缩为：至多一条未知边承担已知边权异或和 $x$，其余未知边取零。随后考察未知边构成的连通分量及其是否含环，判断这条权为 $x$ 的边能否被生成树绕开，或能否被某条已知边替换。",
+          "keyObservations": [
+            "令已知边权的异或和为 $x$；把所有未赋权边中至多一条设为 $x$、其余设为 $0$，即可满足总异或为零，并把可能的正权代价集中到一条边上。",
+            "先把未赋权边形成的连通分量收缩，再用已知边中必要的最小边连接这些分量；这些边构成必须计入生成树的部分。",
+            "若未赋权边中存在环，可把权重 $x$ 放在环上的一条边，其余未赋权边取零，生成树可绕开这条正权边，因此无需为 $x$ 付费。",
+            "若未赋权边无环，额外的已知边可以替换生成树中的一条未赋权边；因此只需比较 $x$ 与这类边的最小权重，选择代价较小的方案。"
+          ],
+          "solutionBrief": "计算已知边权的异或和 $x$，并先用未赋权边建立连通分量，再按权值选取连接这些分量所必需的已知边。若未赋权边有环，答案就是这些必要边权之和；若无环，再将 $x$ 与可替换未赋权边的最小额外已知边权比较，取较小代价加入答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1508D",
+          "index": "D",
+          "slot": "D",
+          "title": "Swap Pass",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1508/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/89644",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "geometry",
+            "sortings"
+          ],
+          "statementBrief": "平面上给出 $n$ 个互不重合且无三点共线的点，每点带有一个构成 $1$ 到 $n$ 排列的标签。每次选择两个点交换其标签，并在这两点间画线段；要求所有操作后第 $i$ 个点的标签为 $i$，且任意两条画出的线段只能在共同端点相交，并求出任意可行操作序列或判定无解。",
+          "transformedStatement": "将标签排列改写为“点指向当前标签对应点”的置换环；问题转为先用不冲突的点对交换合并这些环，再用一组安全的操作边把唯一的环还原为正确标签。几何上以枢轴的极角顺序组织合并边和整理边，并处理至多一条边界冲突边。",
+          "keyObservations": [
+            "把每个点指向其当前标签所对应的点，排列便分解为若干环；在同一环内沿箭头对应的点对依次交换，可以在不产生内部相交的情况下完成该环。",
+            "在两个不同环中选取一点对进行交换会把两个环合并，因此只需先合并所有环，再处理一个环。",
+            "以一个点为枢轴，按其他点相对枢轴的极角排序后，相邻点之间的边可用于合并环，而枢轴连向各点的边可用于最终整理标签；两类边的几何布局使操作能避开内部相交。",
+            "若枢轴位于凸包边界，至多一条相邻点之间的边可能与其他操作边冲突；识别并避开这条边即可保留构造。"
+          ],
+          "solutionBrief": "先将排列表示为若干环，利用极角排序得到的相邻点边合并各环，再用枢轴到各点的边完成单环内的标签整理。边界枢轴可能产生一条冲突边，按题解给出的方式识别并避开；总操作数约为最坏 $3n/2$，时间复杂度可为 $O(n\\log n)$ 或 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1508E",
+          "index": "E",
+          "slot": "E",
+          "title": "Tree Calendar",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1508/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/89644",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "data structures",
+            "dfs and similar",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根、边均从父节点指向子节点的树，以及当前节点标签排列。每天按规定将标签沿树向最小编号叶子推送；需要判断当前排列能否由某个 DFS 序列经过这些操作得到，若能则输出经过天数和原始 DFS 序列。",
+          "transformedStatement": "将操作过程拆成按标签递增的推送阶段：已处理标签固定在后序位置，未处理部分保留偏移后的先序。由此从当前排列恢复候选子节点次序，识别正在推送的标签并逆向还原，再检查两部分结构是否一致，同时累计推送所需天数。",
+          "keyObservations": [
+            "每完成一次将当前值从根推向最小编号叶子的过程，已处理的值会占据对应的后序位置，未处理部分则仍构成偏移后的先序；因此当前排列可拆成两个有序部分来检验。",
+            "任意节点的子节点相对顺序在操作过程中保持不变，故可按当前标签排序子节点，并据此恢复用于校验的先序结构。",
+            "当前正在推送的值等于根标签减一；它必须位于其后序编号对应节点的祖先链上，否则当前排列不可能由合法过程产生。",
+            "值从根移动到当前位置所经历的天数等于该节点深度，因此已完成或正在推送的值对总天数的贡献可由节点高度累加。"
+          ],
+          "solutionBrief": "按当前标签对各节点子节点排序，恢复候选先序，并令当前推送值为根标签减一。检查该值能否到达其对应后序位置，再逆向撤销推送并核验其余标签是否符合后序与偏移先序结构；合法时由相关节点高度求经过天数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1508F",
+          "index": "F",
+          "slot": "F",
+          "title": "Optimal Encoding",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1508/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/89644",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的排列，以及 $q$ 个位置区间。对每个 $k$，由前 $k$ 个区间定义与原排列相似的排列集合，并用 DAG 编码该集合；要求分别求出每个 $k$ 的编码所需的最少边数。",
+          "transformedStatement": "对每个区间，在其覆盖的位置之间加入符合原排列顺序的有向约束边；满足全部约束的排列就是该区间集合对应的排列。最少编码边数等于删去所有可由其他路径替代的边后剩余的边数，因此可围绕候选边及其随查询前缀变化的生效区间计数。",
+          "keyObservations": [
+            "若 DAG 中存在一条长度至少为 2 的路径连接 $u$ 和 $v$，则直接边 $u\\to v$ 可删而不改变满足该 DAG 的排列集合；因此只需保留不可由其他路径替代的边。",
+            "对固定顶点 $u$，候选右边按终点位置递增时，终点的排列值递减；这种单调性使边的 destroyer 可用双指针成批确定。",
+            "候选边从首次被某个区间覆盖时开始生效，在被 destroyer 隐藏或被更远的同向候选边取代时失效，因此每条边对答案的贡献对应一个时间区间。",
+            "用 Mo 算法移动区间端点时，候选边集合每次只发生常数级变化，故所有查询中出现过的候选边总数为 $O(n\\sqrt q)$。"
+          ],
+          "solutionBrief": "把每个查询区间诱导的偏序关系表示为 DAG，并只考虑排列值相邻的候选边。确定每条候选边的 destroyer 及其生效时间区间，再统计各时刻仍需保留的边数。题解给出的总复杂度为 $O(n\\sqrt q\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
