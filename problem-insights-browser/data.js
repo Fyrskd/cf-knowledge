@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3412,
-    "source_total_problems": 3415,
+    "total_problems": 3418,
+    "source_total_problems": 3421,
     "filtered_out_problems": 3,
-    "with_statement_brief": 3412,
+    "with_statement_brief": 3418,
     "with_editorial_brief": 3119,
     "with_solution_brief": 3121,
-    "missing_editorial_brief": 291,
+    "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2474,
     "primary_topic_count": 13,
-    "contest_count": 524,
+    "contest_count": 525,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1103,
+    "数论与同余": 363,
+    "树结构": 167,
+    "动态规划与状态设计": 281,
     "基础实现与模拟": 211,
     "字符串": 181,
-    "构造与贪心": 1100,
-    "数论与同余": 362,
     "代数、矩阵与多项式": 24,
     "图论与网络流": 220,
     "数据结构": 322,
-    "树结构": 166,
     "组合计数与概率": 258,
     "几何": 81,
     "博弈": 106,
-    "动态规划与状态设计": 280,
     "交互": 101
   },
   "statusCounts": {
-    "missing_editorial": 291,
+    "missing_editorial": 297,
     "ai_generated_with_editorial": 2159,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -105299,6 +105299,166 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 1647,
+      "name": "Codeforces Round 777 (Div. 2)",
+      "date": "2022-03-11",
+      "url": "https://codeforces.com/contest/1647",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3100,
+      "problems": [
+        {
+          "key": "1647A",
+          "index": "A",
+          "slot": "A",
+          "title": "Madoka and Math Dad",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1647/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100780",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Madoka and Math Dad；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1647B",
+          "index": "B",
+          "slot": "B",
+          "title": "Madoka and the Elegant Gift",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1647/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100780",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Madoka and the Elegant Gift；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1647C",
+          "index": "C",
+          "slot": "C",
+          "title": "Madoka and Childish Pranks",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1647/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/100780",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率",
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Madoka and Childish Pranks；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1647D",
+          "index": "D",
+          "slot": "D",
+          "title": "Madoka and the Best School in Russia",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1647/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/100780",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Madoka and the Best School in Russia；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1647E",
+          "index": "E",
+          "slot": "E",
+          "title": "Madoka and the Sixth-graders",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1647/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/100780",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Madoka and the Sixth-graders；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1647F",
+          "index": "F",
+          "slot": "F",
+          "title": "Madoka and Laziness",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1647/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/100780",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构",
+            "几何"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Madoka and Laziness；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
