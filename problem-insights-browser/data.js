@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3948,
+    "total_problems": 3954,
     "source_total_problems": 3954,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 3948,
-    "with_editorial_brief": 3610,
-    "with_solution_brief": 3612,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3954,
+    "with_editorial_brief": 3616,
+    "with_solution_brief": 3618,
     "missing_editorial_brief": 336,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3010,
+    "ai_override_count": 3016,
     "primary_topic_count": 13,
-    "contest_count": 612,
+    "contest_count": 613,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数论与同余": 418,
+    "构造与贪心": 1285,
+    "组合计数与概率": 305,
+    "交互": 116,
     "基础实现与模拟": 246,
     "字符串": 211,
-    "构造与贪心": 1283,
     "动态规划与状态设计": 323,
-    "数论与同余": 417,
     "图论与网络流": 258,
-    "组合计数与概率": 304,
     "几何": 94,
     "数据结构": 376,
     "树结构": 184,
-    "交互": 114,
     "博弈": 113,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2627,
+    "ai_generated_with_editorial": 2633,
     "ai_generated_partial_editorial": 92,
     "missing_editorial": 336,
     "low_confidence": 1,
@@ -121497,6 +121497,199 @@ window.CF_INSIGHTS_DATA = {
             "一次从顶点 $1$ 开始的 DFS 已能区分不可达点；将灰边、黑边对应的影响分别传播后，有限路径数量只需归为恰好一条或至少两条，无须逐条计数。"
           ],
           "solutionBrief": "从顶点 $1$ 做 DFS，记录搜索边指向灰色顶点和黑色顶点的目标。分别从两类目标继续遍历：灰色类可达点答案为 $-1$，黑色类可达点若未被前者覆盖则答案为 $2$；其余已访问点为 $1$，未访问点为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1543,
+      "name": "Codeforces Round 730 (Div. 2)",
+      "date": "2021-07-07",
+      "url": "https://codeforces.com/contest/1543",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1543A",
+          "index": "A",
+          "slot": "A",
+          "title": "Exciting Bets",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1543/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/92582",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题目给出两个非负整数 $a,b$，允许反复执行两种操作并观察它们的最大公约数，要求求出最大可能的最大公约数以及达到该值所需的最少操作次数。提供的题面记录提到存在两种操作，但没有写出操作规则。",
+          "transformedStatement": "依据题解，可将目标改写为：在保持 $a-b$ 不变的前提下，把一个数调整到差值的倍数，使两数最大公约数达到差值；再比较调整到相邻倍数的步数。相等时差值为零，题解指出最大公约数可无限增大。",
+          "keyObservations": [
+            "每次操作保持 $a-b$ 不变，因此当 $a\\ne b$ 时，任何状态的最大公约数都不可能超过 $|a-b|$；把其中一个数调整为差值的倍数即可达到这个上界。",
+            "设 $g=|a-b|$，达到最大公约数等价于把较小数调整到 $g$ 的倍数；向下或向上调整的步数分别为余数和 $g$ 减余数，因此取两者较小值。",
+            "当 $a=b$ 时，差值为零且题解说明可以无限次执行第一种操作，使最大公约数无限增大，所以输出 $0\\ 0$。"
+          ],
+          "solutionBrief": "若 $a=b$，输出 $0\\ 0$。否则令 $g=|a-b|$，最大可能的最大公约数为 $g$；最少操作数为 $\\min(a\\bmod g,\\ g-a\\bmod g)$，每组数据可在常数时间内计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1543B",
+          "index": "B",
+          "slot": "B",
+          "title": "Customising the Track",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1543/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/92582",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 段轨道及每段的车辆数，每次可以把一辆车从当前轨道移到任意另一段，车辆总数不变。轨道不便度是所有轨道对车辆数差的绝对值之和，求经过任意次操作后能达到的最小不便度。",
+          "transformedStatement": "把问题视为在固定车辆总数下重新分配到 $n$ 段：最优分配使各段车辆数尽可能均衡。于是只需由总数的商和余数确定两种轨道数量，再统计这两类之间的段对。",
+          "keyObservations": [
+            "若最大值与最小值相差至少 $2$，把最大值减 $1$、最小值加 $1$ 会严格降低总不便度，因此最优时任意两段车辆数至多相差 $1$。",
+            "操作只会在轨道间转移车辆，所以车辆总数保持不变；总数除以 $n$ 的余数决定有多少段取较大的均衡值。",
+            "均衡后各段只有两个可能取值，且它们相差 $1$；不便度仅来自取值不同的段对，段对数量为 $r(n-r)$，其中 $r$ 是总数对 $n$ 取余。"
+          ],
+          "solutionBrief": "设车辆总数为 $S$，均衡分配后有 $r=S\\bmod n$ 段比其余轨道多一辆。不同取值的段对恰有 $r(n-r)$ 对，因此答案为该乘积，扫描数组求和即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1543C",
+          "index": "C",
+          "slot": "C",
+          "title": "Need for Pink Slips",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1543/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/92582",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dfs and similar",
+            "implementation",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "每次比赛后，从现金、扣押解除标记和粉色车券中按当前概率抽取一项；抽到粉色车券即结束，抽到另外两项则按规则减少该项概率，并将减少量在其余有效奖品间平分，概率不大于减少量时该项失效。求抽到粉色车券前需要进行的比赛次数的期望。",
+          "transformedStatement": "将每种奖品当前的抽取概率及其是否有效作为递归状态；粉色奖品对应终止分支，抽到另外两种奖品则按概率变化生成后继状态。目标转为对所有抽取路径的概率加权长度求和，而路径长度由每次概率调整至少增加粉色概率的性质限制。",
+          "keyObservations": [
+            "抽到非粉色奖品后，只有该奖品的概率会减少；减少量不超过当前概率时，该奖品会失效并将概率均分给其他仍有效奖品，因此失效事件全程最多发生两次。",
+            "粉色奖品的概率不会下降；每次未使奖品失效的调整都会让它至少增加 $v/2$，而 $v\\ge 0.1$，所以这类调整最多发生 $20$ 次即可使其达到 $1$。",
+            "每条抽取序列因此最多包含约 $22$ 次非粉色结果，枚举所有分支的规模足够小，可以递归累加每条路径的概率加权抽取次数。"
+          ],
+          "solutionBrief": "递归枚举抽到现金或扣押解除标记后的状态转移，并按该结果的概率累加“本次抽取加后续期望”；抽到粉色奖品时贡献当前概率作为终止分支。利用每条路径长度上界控制枚举规模，并谨慎处理浮点数比较。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1543D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "RPD and Rap Sheet (Easy Version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1543/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/92582",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "系统初始密码是 $0$ 到 $n-1$ 之间的某个数，每次可以猜一个数；猜错后，若当前密码为 $x$、所猜数为 $y$，系统会把密码改为满足 $x\\oplus z=y$ 的数。最多可猜 $n$ 次，需要设计查询序列以确保最终猜中密码。",
+          "transformedStatement": "由于猜错后新密码为当前密码与猜测值的异或，查询序列可设计成逐轮抵消已有偏移：若原密码为 $x$，第 $i$ 轮后密码保持为 $x\\oplus(i-1)$，从而第 $x+1$ 轮的查询能与当前密码相等。",
+          "keyObservations": [
+            "错误猜测后的新密码满足 $z=x\\oplus y$，因此每次错误猜测会把当前密码与所猜数异或。",
+            "若原密码为 $x$，让第 $i$ 次猜测后的密码始终变为 $x\\oplus(i-1)$，则第 $x+1$ 次猜测恰好命中；这一不变量把未知密码的辨认融入固定查询序列。",
+            "相邻查询取 $q_1=0$、$q_i=(i-1)\\oplus(i-2)$，能抵消前一轮的异或偏移并推进一位，因此无需根据错误反馈推断密码。"
+          ],
+          "solutionBrief": "利用错误后密码变为当前密码与猜测值的异或，依次输出 $0$，再输出 $(i-1)\\oplus(i-2)$。这样原密码为 $x$ 时，第 $x+1$ 次猜测会命中，且至多使用 $n$ 次查询；每次查询后读取是否成功，成功则停止。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1543D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "RPD and Rap Sheet (Hard Version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1543/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/92582",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "每组给定 $n$ 和进制 $k$，密码初始为 $0$ 到 $n-1$ 中的某个数。每次可猜一个数；猜中即成功，猜错时若旧密码为 $x$、猜测为 $y$，系统将密码改为满足 $x\\oplus_k z=y$ 的 $z$，其中 $\\oplus_k$ 是对应 $k$ 进制数位逐位相加后模 $k$；要求最多猜 $n$ 次破解密码。",
+          "transformedStatement": "将系统的更新关系逐位反解为 $z=y\\ominus_k x$，其中 $a\\ominus_k b$ 表示数位逐位计算 $(a-b)\\bmod k$。问题由此转化为设计一列猜测，使密码经过每次错误更新后都能用原密码与当前猜测次数的交替逐位作差表示，并在至多 $n$ 次内命中。",
+          "keyObservations": [
+            "按 $k$ 进制数位看，猜错后新密码满足 $z_j=(y_j-x_j)\\bmod k$，即整体为 $y\\ominus_k x$；这种运算不像二进制异或那样自反，因此不能直接沿用简单的异或构造。",
+            "对每个数位都有 $(a\\ominus_k b)\\ominus_k(a\\ominus_k c)=c\\ominus_k b$ 和 $(b\\ominus_k a)\\ominus_k(c\\ominus_k a)=b\\ominus_k c$，这两种消去关系使密码状态可以按猜测次数交替化简。",
+            "令首个猜测为 $0$，之后按次数奇偶选择相邻整数的差：偶数次猜 $(i-2)\\ominus_k(i-1)$，奇数次猜 $(i-1)\\ominus_k(i-2)$；归纳可得经过 $i$ 次后，密码由原密码与 $i-1$ 按奇偶次序作差，下一次猜测恰好命中。",
+            "这些数位运算可逐位转换为十进制结果，单次耗时为 $O(\\log_k n)$；因此按上述公式生成全部猜测，总耗时为 $O(n\\log_k n)$。"
+          ],
+          "solutionBrief": "把猜错后的密码更新写成逐位模 $k$ 减法。首猜 $0$，之后根据猜测次数奇偶，对相邻整数作相反方向的逐位模 $k$ 减法；利用消去恒等式可证明每次更新后的密码状态，并保证初始密码为 $x$ 时至多第 $x+1$ 次猜中。逐位转换生成猜测，复杂度为 $O(n\\log_k n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1543E",
+          "index": "E",
+          "slot": "E",
+          "title": "The Final Pursuit",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1543/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/92582",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "divide and conquer",
+            "graphs",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个顶点编号经过任意置换的 $n$ 维超立方体图，需要输出一组顶点映射，使其对应标准超立方体编号，并给每个顶点分配 $0$ 到 $n-1$ 的颜色。要求每个顶点的 $n$ 个邻居中，每种颜色都至少出现一次；若无法满足则报告无解。",
+          "transformedStatement": "把输入图视为标准超立方体经过未知顶点置换得到的图：先恢复每个标准二进制编号对应的输入顶点，再在标准图上构造满足邻居颜色互异的着色并映射回去。着色条件等价于每个顶点的每个单比特翻转邻居分别对应一种颜色。",
+          "keyObservations": [
+            "超立方体中相邻点恰好相差一个二进制位，因此只要恢复每个简单立方体编号对应的输入顶点，就能在标准编号上设计着色，再映射回原图。",
+            "任意顶点的 $n$ 个邻居必须各有一种颜色；统计所有顶点的邻居后可知每种颜色在全图出现 $2^n/n$ 次，因此只有当 $n$ 是 2 的幂时才可能着色。",
+            "按标准编号 $u$ 的二进制位计算颜色 $\\bigoplus_i i\\cdot b_i$，翻转第 $c_1\\oplus c_2$ 位会把颜色从 $c_1$ 变成 $c_2$，从而保证每个顶点的邻居包含全部颜色。",
+            "恢复编号时，若两个较小编号的标准顶点都与待求点相邻，它们相差恰好两位；在输入图中同时邻接这两个对应点的候选只有两个，而较小的另一个候选已处理，因此可唯一确定当前映射。"
+          ],
+          "solutionBrief": "先利用标准超立方体的二进制邻接结构，按编号递增恢复输入图到标准图的顶点映射。若 $n$ 不是 2 的幂则输出无解；否则按二进制位异或构造标准图着色，再通过映射还原到输入图。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
