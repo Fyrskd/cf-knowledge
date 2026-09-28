@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3224,
+    "total_problems": 3230,
     "source_total_problems": 3232,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3224,
-    "with_editorial_brief": 2943,
-    "with_solution_brief": 2945,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3230,
+    "with_editorial_brief": 2949,
+    "with_solution_brief": 2951,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2286,
+    "ai_override_count": 2292,
     "primary_topic_count": 13,
-    "contest_count": 494,
+    "contest_count": 495,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1032,
+    "图论与网络流": 205,
+    "数论与同余": 343,
+    "组合计数与概率": 248,
+    "代数、矩阵与多项式": 23,
     "基础实现与模拟": 198,
-    "构造与贪心": 1030,
     "字符串": 169,
-    "图论与网络流": 204,
     "数据结构": 302,
     "动态规划与状态设计": 272,
     "几何": 78,
     "交互": 100,
-    "数论与同余": 342,
     "树结构": 159,
-    "博弈": 101,
-    "组合计数与概率": 247,
-    "代数、矩阵与多项式": 22
+    "博弈": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1984,
+    "ai_generated_with_editorial": 1990,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -99572,6 +99572,202 @@ window.CF_INSIGHTS_DATA = {
             "初始字符串长度为 $1$，所以统计结果中应只有一个字符具有奇数出现次数，这也保证了答案唯一。"
           ],
           "solutionBrief": "读取每个测试用例的 $2n$ 个操作串和最终串，统计所有字符出现次数的奇偶性。出现奇数次的唯一字符就是初始字符串；也可用字符异或直接实现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1687,
+      "name": "Codeforces Round 796 (Div. 1)",
+      "date": "2022-06-03",
+      "url": "https://codeforces.com/contest/1687",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1687A",
+          "index": "A",
+          "slot": "A",
+          "title": "The Enchanted Forest",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1687/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103493",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "森林有 $n$ 个沿直线排列的位置，每个位置初始有一定数量的蘑菇。Marisa 在第 0 分钟选择起点且不能收集，之后每分钟移动到相邻位置并收集，收集后各位置都会再生一个蘑菇；求 $k$ 分钟内最多能收集多少蘑菇。",
+          "transformedStatement": "把总收益拆成初始蘑菇收益与再生蘑菇收益：当时间不超过位置数时，路径对应一个长度为 $k$ 的连续区间；当时间更长时，先覆盖全部位置，再利用剩余时间收集再生蘑菇。",
+          "keyObservations": [
+            "当 $k\\le n$ 时，最优路径可连续经过一个长度为 $k$ 的区间，因此初始蘑菇贡献是所有长度为 $k$ 子数组和的最大值。",
+            "同一条连续路径同时最大化新增蘑菇：第 $1$ 次收集新增 $0$ 个，之后依次可得 $1,\\ldots,k-1$ 个，总贡献为 $k(k-1)/2$。",
+            "当 $k>n$ 时，可以在前 $n$ 次移动中经过所有位置；之后每个位置都能持续贡献，新增部分为 $(k-1+k-n)n/2$。",
+            "用前缀和在线性时间求最大长度为 $k$ 的区间和，并按 $k\\le n$ 或 $k>n$ 分情况计算。"
+          ],
+          "solutionBrief": "用前缀和求最大长度为 $\\min(k,n)$ 的连续区间。若 $k\\le n$，答案为区间和最大值加 $k(k-1)/2$；否则为所有初始蘑菇总数加 $(k-1+k-n)n/2$，总复杂度 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1687B",
+          "index": "B",
+          "slot": "B",
+          "title": "Railway System",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1687/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103493",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "交互",
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "interactive",
+            "sortings"
+          ],
+          "statementBrief": "给定一个可能不连通且允许重边的无向铁路图，每次可用长度为 $m$ 的二进制串指定哪些边启用，模拟器返回该子图保持原连通性所需的最大生成森林总边长。需要在不超过 $2m$ 次查询内，求所有边启用时最小生成森林的总长度。",
+          "transformedStatement": "把模拟器返回值视为所选子图的最大生成森林权值：单边查询恢复边权，随后按边权递增查询边集前缀，用容量是否增加来模拟 Kruskal 对每条边的取舍。",
+          "keyObservations": [
+            "只开启第 $i$ 条边时，最大生成森林容量恰好等于该边长度，因此前 $m$ 次查询可以独立恢复所有边权。",
+            "按边权非递减加入边时，容量增量等于当前边权，当且仅当这条边连接此前不同连通块；这正是 Kruskal 判断边是否属于最小生成森林的条件。",
+            "对每个按序前缀查询比较相邻容量：若增量为当前边权，就计入答案，否则说明该边在此前路径已被替代；最终累加所有被选边权。"
+          ],
+          "solutionBrief": "先用单边查询得到每条边长度，再按长度排序。依次查询已加入边的前缀，若容量增加等于当前边长，则该边被 Kruskal 选入最小生成森林；累加这些边长并输出。总查询数为 $2m$，计算复杂度为 $O(m^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1687C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sanae and Giant Robot",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1687/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/103493",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dsu",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定初始数组 $a$、目标数组 $b$ 以及若干可用区间。每次可选择一个给定区间，把其中的 $a_i$ 全部替换为 $b_i$，但替换前后整个数组元素和必须相同；判断经过任意次操作（也可以不操作）后能否将 $a$ 变成 $b$。",
+          "transformedStatement": "令每个位置表示 $a_i-b_i$，再用前缀和 $s_i$ 描述状态。一次区间操作等价于在满足 $s_{l-1}=s_r$ 时，把区间内部的前缀状态统一改成端点值；只需研究如何利用两端为零的区间把所有前缀状态变为零。",
+          "keyObservations": [
+            "令 $s_i=\\sum_{k=1}^{i}(a_k-b_k)$，对区间 $[l,r]$ 的操作合法当且仅当 $s_{l-1}=s_r$，且操作后会把中间的 $s_i$（$l\\le i<r$）统一赋为该端点值。",
+            "目标是让所有前缀差值为 $0$；把非零值改成非零值不会帮助达成目标，因此只需考虑两个端点均为 $0$ 的区间，并将其中的非零内部位置清零。",
+            "每个位置的前缀值最多被清零一次，所以可以维护尚未处理的位置集合；当区间两端都变为零时，一次性删除其内部位置即可得到 $O((n+m)\\log n)$ 的处理过程。"
+          ],
+          "solutionBrief": "将差数组转为前缀和 $s$。用可删除位置集合维护尚未变为零的前缀点：初始删除零点，当某个给定区间的两个端点都为零时，清除其内部所有位置。最终集合为空则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1687D",
+          "index": "D",
+          "slot": "D",
+          "title": "Cute number",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1687/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/103493",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dsu",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个非降正整数数组，每次必须给所有元素同时加上同一个非负整数 $k$。若整数到下一个平方数的距离严格大于它到不超过它的最大平方数的距离，则称其为可爱数；要求使所有 $a_i+k$ 都可爱时的最小 $k$。",
+          "transformedStatement": "把可爱数重述为落在某个区间 $[w^2,w^2+w]$ 中。枚举第一个元素所属的区间编号，并将其余元素的条件转化为对同一平移量的连续范围约束，再利用编号跳跃点压缩处理。",
+          "keyObservations": [
+            "严格不等式可整数化为：$x$ 可爱当且仅当存在 $w$ 使 $w^2\\le x\\le w^2+w$，从而把判定转成落入连续整数区间。",
+            "答案满足 $k\\le a_n^2$，且首个元素对应的区间编号 $w$ 不超过 $a_n$，因此只需枚举有限个 $w$。",
+            "固定 $a_1+k$ 所属的编号后，依次加入各个 $a_i$ 的约束时，可行的端点范围始终是一个区间，避免枚举每个 $k$。",
+            "编号发生变化的位置称为跳跃点；固定初始编号为 $w$ 时跳跃点不超过 $a_n/w$ 个，用集合合并相邻段后，总复杂度降为 $O(a_n\\log a_n)$。"
+          ],
+          "solutionBrief": "去重后按编号 $w$ 从小到大枚举 $a_1+k$ 所属的可爱区间，维护所有元素同时满足条件时的连续可行范围；只处理编号跳跃点，并用集合合并相邻段，首个可行范围给出最小 $k$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1687E",
+          "index": "E",
+          "slot": "E",
+          "title": "Become Big For Me",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1687/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/103493",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数序列 $a$，初始有 $v=1$。每次选择若干下标组成子序列，可令 $v$ 乘以这些元素的最小公倍数，或除以该最小公倍数（除法时不要求结果始终为整数）；要求在不超过 $10^5$ 次操作且所选元素总数不超过 $10^6$ 的条件下，使 $v$ 等于所有不同元素乘积 $a_i a_j$ 的最大公因数，并输出任意操作序列。",
+          "transformedStatement": "先寻找一个至多14个元素的代表集合，使其两两乘积的最大公因数与原序列相同；随后把该目标表示成所有非空子集最小公倍数的有符号幂乘积，并将正负幂分别转成放大和缩小操作。",
+          "keyObservations": [
+            "对任意素数 $p$，两两乘积的最大公因数在 $p$ 上的指数等于所有 $a_i$ 的两个最小指数之和，从而问题可按素因子独立处理。",
+            "容斥可把“两个最小值之和”改写为各非空子集最大值的线性组合，因此目标数等于各子集最小公倍数按系数 $(-1)^{|T|}(|T|-2)$ 的乘积。",
+            "若选出集合 $c$ 使其两两乘积的最大公因数不变，只需枚举 $c$ 的所有非空子集；每个子集按系数正负重复执行放大或缩小。",
+            "先为数组构造至多 $7$ 个元素的子集，使其整体最大公因数不变，再分别对该子集及其补集构造并取并集，可得到大小至多 $14$ 的 $c$，满足操作总量限制。"
+          ],
+          "solutionBrief": "按素因子指数推导容斥公式，将目标表示为子集最小公倍数的乘积。贪心找出至多14个代表元素保持两两乘积最大公因数，再枚举全部子集并按系数执行放大或缩小操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1687F",
+          "index": "F",
+          "slot": "F",
+          "title": "Koishi's Unconscious Permutation",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1687/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/103493",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 和 $s$，考虑 $1$ 到 $n$ 的所有排列；若恰有 $s$ 个相邻位置满足后一项等于前一项加一，则称其美丽。对每个 $k\nange[0,n-1]$，求美丽排列中恰有 $k$ 个相邻上升位置 $p_i<p_{i+1}$ 的数量，结果模 $998244353$。",
+          "transformedStatement": "令 $m=n-s$，先统计长度为 $m$ 且任意相邻位置都不满足 $p_i+1=p_{i+1}$ 的 good 排列，并按普通上升次数分类；原答案通过二项式反演从这些分类计数恢复，且前 $s$ 个上升次数答案必为零。",
+          "keyObservations": [
+            "每个满足 $p_i+1=p_{i+1}$ 的相邻位置必然也是上升位置，因此 $k<s$ 的答案为 $0$，其余答案可统一转化处理。",
+            "二项式反演把原问题化为长度 $n-s$ 且不存在相邻关系 $p_i+1=p_{i+1}$ 的 good 排列，并将上升段计数写成 Eulerian 数的交错和。",
+            "将 Eulerian 数的生成函数代入交错和后，多个求和可合并为同一个二元系数提取问题，从而避免逐个计算所有 Eulerian 数。",
+            "变量代换与指数生成函数展开后，系数由第二类 Stirling 数和 $\u0000\\sum_{i=0}^m\\binom{-s}{i}s^{m-i}$ 组成；后者可用 $2\\times2$ 矩阵的分治乘积计算，再结合 NTT 完成多项式运算。"
+          ],
+          "solutionBrief": "先用二项式反演转为长度 $n-s$ 的 good 排列计数，再以 Eulerian 数生成函数进行系数变换；最终借助第二类 Stirling 数、矩阵分治和 NTT 在模 $998244353$ 下求出全部答案。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
