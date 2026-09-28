@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3962,
-    "source_total_problems": 3962,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 3962,
+    "total_problems": 3963,
+    "source_total_problems": 3968,
+    "filtered_out_problems": 5,
+    "with_statement_brief": 3963,
     "with_editorial_brief": 3618,
     "with_solution_brief": 3620,
-    "missing_editorial_brief": 342,
+    "missing_editorial_brief": 343,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 3024,
     "primary_topic_count": 13,
-    "contest_count": 615,
+    "contest_count": 616,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "动态规划与状态设计": 324,
     "构造与贪心": 1287,
     "基础实现与模拟": 247,
     "数论与同余": 420,
     "组合计数与概率": 308,
     "交互": 116,
     "字符串": 211,
-    "动态规划与状态设计": 323,
     "图论与网络流": 258,
     "几何": 94,
     "数据结构": 376,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 343,
     "ai_generated_with_editorial": 2635,
-    "missing_editorial": 342,
     "ai_generated_partial_editorial": 92,
     "low_confidence": 1,
     "manual_override": 891,
@@ -121905,6 +121905,42 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "记录每个数值对应的下标，只枚举乘积不超过 $2n$ 的数值对；若它们所在下标满足 $i<j$ 且乘积等于 $i+j$，答案加一。候选对总数为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1540,
+      "name": "Codeforces Round 728 (Div. 1)",
+      "date": "2021-06-25",
+      "url": "https://codeforces.com/contest/1540",
+      "type": "Div. 1",
+      "problemCount": 1,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1540C1",
+          "index": "C1",
+          "slot": "C",
+          "title": "Converging Array (Easy Version)",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1540/problem/C1",
+          "editorialUrl": "https://codeforces.com/blog/entry/92199",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "组合计数与概率",
+            "交互"
+          ],
+          "originalTags": [
+            "dp",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Converging Array (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }

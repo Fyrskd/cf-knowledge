@@ -8,6 +8,27 @@
     "raw_sha256": "e02bf41675dc0dbc425a56dd042c753b3411dbe71c57032363c612b54b0bb7d8"
   },
   {
+    "url": "https://codeforces.com/blog/entry/92199",
+    "blog_entry_id": 92199,
+    "title": "Codeforces Round #728 Editorial",
+    "author": "PurpleCrayon",
+    "creation_time": "2021-06-25",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Tutorial",
+    "section_count": 7,
+    "covered_problems": [
+      "1540A",
+      "1540B",
+      "1540C2",
+      "1540D",
+      "1540E",
+      "1541A",
+      "1541B"
+    ],
+    "raw_sha256": "7f969d873e41d37fec2f5d489fc914b0f02eb94426e9abe8cce82715603df04a"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/92492",
     "blog_entry_id": 92492,
     "title": "Tutorial of Codeforces Round 729 (Div.2)",
