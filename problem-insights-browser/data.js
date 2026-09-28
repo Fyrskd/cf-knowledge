@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3899,
+    "total_problems": 3900,
     "source_total_problems": 3901,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 3899,
-    "with_editorial_brief": 3570,
-    "with_solution_brief": 3572,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 3900,
+    "with_editorial_brief": 3571,
+    "with_solution_brief": 3573,
     "missing_editorial_brief": 327,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2961,
+    "ai_override_count": 2962,
     "primary_topic_count": 13,
     "contest_count": 605,
     "rating_min": 800,
@@ -46,7 +46,7 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "数论与同余": 414,
     "字符串": 205,
-    "构造与贪心": 1263,
+    "构造与贪心": 1264,
     "动态规划与状态设计": 319,
     "树结构": 184,
     "组合计数与概率": 298,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2591,
+    "ai_generated_with_editorial": 2592,
     "missing_editorial": 327,
     "ai_generated_partial_editorial": 88,
     "low_confidence": 1,
@@ -96284,9 +96284,39 @@ window.CF_INSIGHTS_DATA = {
       "date": "2022-07-18",
       "url": "https://codeforces.com/contest/1706",
       "type": "Div. 2",
-      "problemCount": 5,
+      "problemCount": 6,
       "maxRating": 2400,
       "problems": [
+        {
+          "key": "1706A",
+          "index": "A",
+          "slot": "A",
+          "title": "Another String Minimization Problem",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1706/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/105008",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "2-sat",
+            "constructive algorithms",
+            "greedy",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $m$、初始全为 $B$ 的字符串，以及 $n$ 个介于 $1$ 和 $m$ 之间的整数。依次处理每个数 $a_i$，可将位置 $a_i$ 或位置 $m+1-a_i$ 改成 $A$；要求输出所有操作后字典序最小的字符串。",
+          "transformedStatement": "把位置 $x$ 与 $m+1-x$ 视为一组：每次操作只影响对应的一组位置。统计或逐次处理每组被选中的次数，即可决定这组最终应有零个、一个或两个位置变成 $A$，并在只选一个时优先选左侧位置；中心位置与自身成对时只需处理一次该位置。",
+          "keyObservations": [
+            "每个数值 $a_i$ 对应一对关于字符串中心对称的位置，操作可把其中一个位置改成 $A$；因此各对位置的选择可以分别处理。",
+            "若一对位置中尚有字符不是 $A$，优先把较靠左的位置改成 $A$，因为首次不同的位置越靠左为 $A$，所得字符串越小。",
+            "同一对位置被操作至少两次时，可以分别把两个位置都改成 $A$；因此最终结果只取决于该位置对出现零次、一次还是至少两次。"
+          ],
+          "solutionBrief": "依次处理每个 $a_i$，令 $x=\\min(a_i,m+1-a_i)$。若位置 $x$ 尚不是 $A$，就将它改为 $A$；否则改对称位置 $m+1-x$。这样每次都优先选择可选位置中更靠左的一个，得到字典序最小的字符串。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1706B",
           "index": "B",
