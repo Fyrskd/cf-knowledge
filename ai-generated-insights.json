@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T02:06:42+00:00",
+  "updated_at": "2026-09-28T02:10:33+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -68737,6 +68737,63 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 和 editorial_text 提炼；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1686B": {
+      "problem_key": "1686B",
+      "title": "Odd Subarrays",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1686/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/103198",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0bf33a557d663047630f169feda27fea8c2598a60a52d20c4eb03050a71e5639",
+      "generated_at": "2026-09-28T02:10:11+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $1$ 到 $n$ 的排列，将其划分成若干个连续且不重叠的子数组。子数组的逆序对数量为奇数时称为奇数子数组，要求选择划分方式，使奇数子数组的数量最大。",
+        "transformed_statement": "题解将问题化为选择尽量多条互不共享位置的相邻下降边 $p_i>p_{i+1}$：每条边组成一个长度为 $2$ 的奇数段，其余元素单独成段；等价地，这是一个路径上的最大不相邻下降边选择问题。",
+        "key_observations": [
+          "任意非奇数子数组都可拆成若干单元素而不减少答案，因此最优划分无需保留长度超过 $2$ 的非奇数段。",
+          "长度至少为 $3$ 的奇数子数组必含相邻下降对 $b_i>b_{i+1}$，可只保留这两个元素组成奇数段，其余元素单独成段，因此奇数贡献可局部化为下降相邻对。",
+          "令 $dp_i$ 表示前 $i$ 个元素的最大贡献，则末尾元素单独放置或与前一元素配对，转移为 $dp_i=\\max(dp_{i-1},dp_{i-2}+[p_{i-1}>p_i])$，从而线性求解。",
+          "由于两个下降相邻对不能共享元素，按从左到右遇到 $p_{i-1}>p_i$ 就配对并跳过下一位置，直接得到与动态规划相同的最大数量。"
+        ],
+        "solution_brief": "先证明最优划分可全部由长度不超过 $2$ 的子数组组成；长度为 $2$ 的子数组奇当且仅当左值大于右值。于是用上述一维 DP 求解，或从左到右贪心匹配不重叠的相邻下降对，复杂度为 $O(n)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 对奇数子数组和连续划分规则进行概括；tags 仅用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1686A": {
+      "problem_key": "1686A",
+      "title": "Everything Everywhere All But One",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1686/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/103198",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "37f0bd68ec06008297b71802d50bd431674f3c1c3aac823abd3df54bd767a930",
+      "generated_at": "2026-09-28T02:10:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定含 $n$ 个整数的数组。每次选择其中 $n-1$ 个元素，并把这 $n-1$ 个元素都替换为它们的算术平均值；可重复进行有限次，判断能否最终让所有元素相等。",
+        "transformed_statement": "把一次操作后的数组抽象为“$n-1$ 个相同值加 1 个例外值”。若第一次没有直接全相等，这种结构之后会一直保留且两值不会合并，因此问题等价于判断是否存在一个元素等于其余元素的平均值。",
+        "key_observations": [
+          "第一次操作后，数组必然变成 $n-1$ 个相同的数 $x$ 和 1 个未被选择的数 $y$；因此只需判断是否能在这一步直接得到全相等。",
+          "若 $x\\ne y$，下一次操作要么选中全部 $x$ 而数组不变，要么选中 $n-2$ 个 $x$ 与 $y$，结果仍是一个数出现 1 次、另一个数出现 $n-1$ 次，且两者仍不相等。",
+          "排除位置 $i$ 的 $n-1$ 个数的平均值等于 $a_i$，当且仅当总和满足 $\\sum a_j=n\\cdot a_i$；存在这样的 $i$ 就能一步完成，否则永远无法完成。"
+        ],
+        "solution_brief": "枚举每个位置作为未选择元素，判断其值是否等于其余 $n-1$ 个数的平均值，即检查总和是否为 $n\\cdot a_i$。满足则输出 YES，否则输出 NO。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面操作定义、完整 editorial 的状态转移分析，以及 tags 中的 greedy。",
         "quality_flags": []
       }
     }

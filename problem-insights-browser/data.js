@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3236,
+    "total_problems": 3238,
     "source_total_problems": 3240,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3236,
-    "with_editorial_brief": 2955,
-    "with_solution_brief": 2957,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3238,
+    "with_editorial_brief": 2957,
+    "with_solution_brief": 2959,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2298,
+    "ai_override_count": 2300,
     "primary_topic_count": 13,
-    "contest_count": 496,
+    "contest_count": 497,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,8 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1035,
+    "动态规划与状态设计": 273,
     "数论与同余": 344,
-    "构造与贪心": 1034,
     "数据结构": 304,
     "树结构": 160,
     "图论与网络流": 205,
@@ -53,13 +54,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 23,
     "基础实现与模拟": 198,
     "字符串": 169,
-    "动态规划与状态设计": 272,
     "几何": 78,
     "交互": 100,
     "博弈": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1996,
+    "ai_generated_with_editorial": 1998,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -99964,6 +99964,69 @@ window.CF_INSIGHTS_DATA = {
             "换根后旧根子树大小变为 $size_{old}(OR)-size_{old}(NR)$，新根子树大小变为 $n$；结合三项组合数差分即可重算两者贡献并累加所有根的答案。"
           ],
           "solutionBrief": "先以任意节点为根计算各子树大小和 $cnt(v)$，得到该根的贡献。再沿树换根；每次只更新旧根、新根的大小与 $cnt$，并用贡献差维护答案，最后累加所有根的结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1686,
+      "name": "Codeforces Round 794 (Div. 2)",
+      "date": "2022-05-25",
+      "url": "https://codeforces.com/contest/1686",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 800,
+      "problems": [
+        {
+          "key": "1686A",
+          "index": "A",
+          "slot": "A",
+          "title": "Everything Everywhere All But One",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1686/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103198",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定含 $n$ 个整数的数组。每次选择其中 $n-1$ 个元素，并把这 $n-1$ 个元素都替换为它们的算术平均值；可重复进行有限次，判断能否最终让所有元素相等。",
+          "transformedStatement": "把一次操作后的数组抽象为“$n-1$ 个相同值加 1 个例外值”。若第一次没有直接全相等，这种结构之后会一直保留且两值不会合并，因此问题等价于判断是否存在一个元素等于其余元素的平均值。",
+          "keyObservations": [
+            "第一次操作后，数组必然变成 $n-1$ 个相同的数 $x$ 和 1 个未被选择的数 $y$；因此只需判断是否能在这一步直接得到全相等。",
+            "若 $x\\ne y$，下一次操作要么选中全部 $x$ 而数组不变，要么选中 $n-2$ 个 $x$ 与 $y$，结果仍是一个数出现 1 次、另一个数出现 $n-1$ 次，且两者仍不相等。",
+            "排除位置 $i$ 的 $n-1$ 个数的平均值等于 $a_i$，当且仅当总和满足 $\\sum a_j=n\\cdot a_i$；存在这样的 $i$ 就能一步完成，否则永远无法完成。"
+          ],
+          "solutionBrief": "枚举每个位置作为未选择元素，判断其值是否等于其余 $n-1$ 个数的平均值，即检查总和是否为 $n\\cdot a_i$。满足则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1686B",
+          "index": "B",
+          "slot": "B",
+          "title": "Odd Subarrays",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1686/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103198",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列，将其划分成若干个连续且不重叠的子数组。子数组的逆序对数量为奇数时称为奇数子数组，要求选择划分方式，使奇数子数组的数量最大。",
+          "transformedStatement": "题解将问题化为选择尽量多条互不共享位置的相邻下降边 $p_i>p_{i+1}$：每条边组成一个长度为 $2$ 的奇数段，其余元素单独成段；等价地，这是一个路径上的最大不相邻下降边选择问题。",
+          "keyObservations": [
+            "任意非奇数子数组都可拆成若干单元素而不减少答案，因此最优划分无需保留长度超过 $2$ 的非奇数段。",
+            "长度至少为 $3$ 的奇数子数组必含相邻下降对 $b_i>b_{i+1}$，可只保留这两个元素组成奇数段，其余元素单独成段，因此奇数贡献可局部化为下降相邻对。",
+            "令 $dp_i$ 表示前 $i$ 个元素的最大贡献，则末尾元素单独放置或与前一元素配对，转移为 $dp_i=\\max(dp_{i-1},dp_{i-2}+[p_{i-1}>p_i])$，从而线性求解。",
+            "由于两个下降相邻对不能共享元素，按从左到右遇到 $p_{i-1}>p_i$ 就配对并跳过下一位置，直接得到与动态规划相同的最大数量。"
+          ],
+          "solutionBrief": "先证明最优划分可全部由长度不超过 $2$ 的子数组组成；长度为 $2$ 的子数组奇当且仅当左值大于右值。于是用上述一维 DP 求解，或从左到右贪心匹配不重叠的相邻下降对，复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
