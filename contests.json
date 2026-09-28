@@ -1,5 +1,16 @@
 [
   {
+    "id": 1550,
+    "name": "Educational Codeforces Round 111 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1626273300,
+    "relativeTimeSeconds": 164355644,
+    "date": "2021-07-14"
+  },
+  {
     "id": 1530,
     "name": "Codeforces Round 733 (Div. 1 + Div. 2, based on VK Cup 2021 - Elimination (Engine))",
     "type": "CF",
