@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3788,
+    "total_problems": 3794,
     "source_total_problems": 3796,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3788,
-    "with_editorial_brief": 3473,
-    "with_solution_brief": 3475,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3794,
+    "with_editorial_brief": 3479,
+    "with_solution_brief": 3481,
     "missing_editorial_brief": 313,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2850,
+    "ai_override_count": 2856,
     "primary_topic_count": 13,
-    "contest_count": 587,
+    "contest_count": 588,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1231,
+    "图论与网络流": 247,
+    "构造与贪心": 1232,
+    "动态规划与状态设计": 310,
+    "数据结构": 361,
     "组合计数与概率": 289,
     "数论与同余": 401,
-    "数据结构": 360,
-    "动态规划与状态设计": 308,
     "树结构": 182,
-    "图论与网络流": 245,
     "交互": 110,
     "字符串": 199,
     "基础实现与模拟": 236,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2498,
+    "ai_generated_with_editorial": 2504,
     "ai_generated_partial_editorial": 84,
     "missing_editorial": 313,
     "low_confidence": 1,
@@ -116741,6 +116741,191 @@ window.CF_INSIGHTS_DATA = {
             "维护已处理偶数在 $b$ 中的最左位置，就能对每个奇数立即计算最优配对，避免枚举所有位置对并将总复杂度降为 $O(n)$。"
           ],
           "solutionBrief": "记录每个数在对应数组中的位置，按数值从大到小扫描。处理奇数时，已加入的偶数都大于它，用当前偶数的最小位置与该奇数位置计算 $i+j-2$；处理偶数则更新最小位置，取所有候选的最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1572,
+      "name": "Codeforces Round 743 (Div. 1)",
+      "date": "2021-09-18",
+      "url": "https://codeforces.com/contest/1572",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1572A",
+          "index": "A",
+          "slot": "A",
+          "title": "Book",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1572/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/95086",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dp",
+            "graphs",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "有一本按章节编号从 $1$ 到 $n$ 的书，每章列出必须先理解的其他章节。你从头到尾反复阅读整本书；读到某章时，只有其所有依赖已被理解才能理解它，求理解全书所需的阅读轮数，无法完成则输出 $-1$。",
+          "transformedStatement": "将每条“章节依赖”表示为有向边，并把一次完整阅读中因章节编号顺序产生的等待量编码为边权：依赖编号更小权为 $0$，否则权为 $1$；问题转化为 DAG 上的最长加权路径。",
+          "keyObservations": [
+            "依赖关系形成有向图后，若存在环则环内章节永远无法先被理解，因此答案直接为 $-1$。",
+            "对依赖边 $a\\to b$，若被依赖章节编号 $b$ 小于当前章节 $a$，同一轮即可利用；否则必须多等一轮，边权分别为 $0$ 和 $1$。",
+            "在 DAG 中，章节被理解所需的阅读轮数等于从任意起点到它的最大加权路径值加 $1$，因此拓扑序上的最长路 DP 可直接得到答案。"
+          ],
+          "solutionBrief": "建立“章节依赖”有向图：边 $a\\to b$ 的权值在 $a>b$ 时为 $0$，否则为 $1$。先拓扑排序判环；若无环，按拓扑序计算最大加权路径，答案为最大值加 $1$，总复杂度为 $O(n+\\sum k_i)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1572B",
+          "index": "B",
+          "slot": "B",
+          "title": "Xor of 3",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1572/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/95086",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个只含 $0$ 和 $1$ 的数组，每次可选择三个连续元素，并把这三个元素都替换为它们的异或值。请对每组数据构造一系列操作，把整个数组变成全 $0$；若无法做到则报告无解。",
+          "transformedStatement": "把操作视为在长度为 $3$ 的区间上统一赋为区间异或值。先利用全局异或不变量判定可行性，再将偶数长度数组拆成两个满足条件的奇数长度区间，分别使用固定的正向—逆向构造。",
+          "keyObservations": [
+            "一次操作把三个连续元素全部改成这三个元素的异或值；由于三个相同值的异或仍为该值，整个数组的异或和保持不变，因此总异或为 $1$ 时必不可能全变为 $0$。",
+            "当 $n$ 为奇数且总异或为 $0$ 时，先按起点 $1,3,\\ldots,n-2$ 正向处理，使相邻的偶数位置对相等并让末尾三个元素归零，再按起点 $n-4,n-6,\\ldots,1$ 逆向处理即可全部归零。",
+            "当 $n$ 为偶数时，只要找到一个奇数长度且异或和为 $0$ 的前缀，前缀与剩余奇数长度后缀都能独立套用奇数长度构造；若不存在这样的前缀，操作会始终保持某些相邻成对元素相等，首元素无法变为 $0$。",
+            "按上述固定顺序处理时，每个位置只被有限次纳入三元组，总操作数不超过 $n$，因此可在线性时间内构造答案。"
+          ],
+          "solutionBrief": "先检查全数组异或和；为 $1$ 时无解。奇数长度按固定的正向起点和逆向起点操作。偶数长度寻找异或为 $0$ 的奇数前缀，将前缀和后缀分别按奇数长度方案处理；找不到则无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1572C",
+          "index": "C",
+          "slot": "C",
+          "title": "Paint",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1572/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/95086",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一行由颜色组成的 $n$ 个像素，每次选择一个像素，把与它连续相邻且同色的整段改成任意颜色。求把整行变成同一种颜色所需的最少操作次数。",
+          "transformedStatement": "把问题改写为：先以至多 $n-1$ 次操作完成统一染色，再最大化因首尾出现相同颜色而可省下的次数。用 $dp[i][j]$ 表示区间统一时的最大节省量。",
+          "keyObservations": [
+            "任意区间最多需要其长度减一​​次操作；因此将目标转为最大化可省去的操作数，答案为 $n-1-dp[1][n]$。",
+            "形如 $[a,b,a]$ 的区间可直接把中间像素改成 $a$，比先后处理两端少一次操作，这正是一次“节省”的来源。",
+            "若 $a_i=a_k$，可将位置 $i$ 与 $k$ 配对并节省一次操作，区间内部独立处理，得到 $1+dp[i+1][k-1]+dp[k][j]$。",
+            "每种颜色最多出现 $20$ 次，所以枚举与 $i$ 同色的位置而非所有位置，区间 DP 总复杂度降为 $O(20n^2)$。"
+          ],
+          "solutionBrief": "定义 $dp[i][j]$ 为把区间 $[i,j]$ 染成同色时最多能省下的操作数。转移为不配对位置 $i$，或枚举 $k>i$ 且 $a_i=a_k$，取 $1+dp[i+1][k-1]+dp[k][j]$；最终答案是 $n-1-dp[1][n]$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1572D",
+          "index": "D",
+          "slot": "D",
+          "title": "Bridge Club",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1572/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/95086",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "flows",
+            "graph matchings",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "有 $2^n$ 名玩家，第 $i$ 名玩家对第 $j$ 个主题的观点由 $i$ 的第 $j$ 位二进制位决定。每名玩家至多参加一个两人队伍，且一对玩家只能在恰好一个主题上观点不同；最多组建 $k$ 对，求所有参赛玩家付款总额的最大值。",
+          "transformedStatement": "把玩家作为顶点，只在二进制编号汉明距离为 $1$ 的两个顶点间连边，并令边权为两端付款之和；目标变成在这个超立方体二分图中选取至多 $k$ 条互不共享端点的边，使边权和最大。",
+          "keyObservations": [
+            "两名不同玩家能组队当且仅当二进制编号的汉明距离为 $1$，因此可行关系正是 $n$ 维超立方体的边。",
+            "按正负观点数量的奇偶性划分玩家后，每条可行边连接两侧，原图因此是二分图，问题转化为边权 $a_i+a_j$ 的最大权匹配。",
+            "任意已选边会排除其两个端点相邻的边，最多影响 $2n-1$ 条边；所以只保留全图权值最大的 $(2n-1)(k-1)+1$ 条边，仍必有最优匹配可取。",
+            "原图有约 $n2^n$ 条边，不能整体排序；用 Quickselect 在线性于边数的时间内找出上述权值最大的边，再在稀疏图上做费用流。"
+          ],
+          "solutionBrief": "将每个可行配对建成权值为 $a_i+a_j$ 的二分图边。利用端点冲突上界，只保留权值最大的 $(2n-1)(k-1)+1$ 条边；用 Quickselect 筛边后，在稀疏二分图上通过费用流求至多 $k$ 条边的最大权匹配。总复杂度为 $O(n2^n+nk^2\\\\log(kn))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1572E",
+          "index": "E",
+          "slot": "E",
+          "title": "Polygon",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1572/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/95086",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "geometry"
+          ],
+          "statementBrief": "给定一个严格凸多边形，选择 $k$ 条连接顶点的切线将其划分为 $k+1$ 个区域，目标是最大化其中面积最小的区域；输出该最大面积乘以 $2$ 的整数值。",
+          "transformedStatement": "固定阈值 $w$，问题变为判断能否通过不交叉的顶点切分得到至少 $k+1$ 个面积至少为 $w$ 的区域。把一段顶点区间看作可被虚拟弦截出的子问题，并记录其中已切出的合格区域数与剩余部分的最大面积。",
+          "keyObservations": [
+            "将“最小区域面积最大化”转为判定给定阈值 $w$ 是否能得到至少 $k+1$ 个面积不小于 $w$ 的区域，从而答案具有单调性。",
+            "对顶点区间 $(i,j)$，只保留“已形成区域数最多；数量相同时剩余区域面积最大”的状态，因为更多区域或更大剩余面积都不会使后续切分变差。",
+            "枚举剩余区域包含的分割点 $t$，由 $dp_{i,t}$ 与 $dp_{t,j}$ 合并得到 $dp_{i,j}$；当该区间的剩余面积至少为 $w$ 时，才能再将其作为一个合格区域切下。",
+            "整个多边形对应的状态能形成至少 $k+1$ 个合格区域，当且仅当阈值 $w$ 可行；对该条件二分即可得到最大答案。"
+          ],
+          "solutionBrief": "二分答案 $w$，判定能否用顶点间的切线把凸多边形分成至少 $k+1$ 个面积不小于 $w$ 的区域。区间 DP 维护最多区域数及其最大剩余面积，按区域数优先、剩余面积次优合并，复杂度为 $O(n^3\\\\log 10^{16})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1572F",
+          "index": "F",
+          "slot": "F",
+          "title": "Stations",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1572/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/95086",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures"
+          ],
+          "statementBrief": "有 $n$ 个依次排列的城市，每个城市的广播站有范围；初始第 $i$ 个站的范围为 $i$。重建城市 $c$ 的站点并把新范围设为 $g$ 后，信号阻挡会影响其他站点的有效覆盖；每次查询给出区间 $[l,r]$，要求输出该区间内数组 $b_j$ 的总和。",
+          "transformedStatement": "不直接模拟信号传播，而维护每个站点在阻挡影响下的有效终点 $w_i$，以及各城市被有效覆盖的贡献数组 $b$。一次重建被等价为对 $w$ 的前缀区间取最小值、一个点赋值，并将这些变化批量转化为 $b$ 上的区间加法。",
+          "keyObservations": [
+            "把数组 $w$ 定义为考虑其他站点阻挡后的实际广播终点；重建城市 $c$ 时，前缀 $(1,c-1)$ 的终点统一执行 $\\\\min(w_j,c-1)$，再将 $w_c$ 设为新范围 $g$。",
+            "将 $w_c$ 设为 $g$ 对数组 $b$ 的影响可合并为在区间 $(c,g)$ 加 $1$，因此一次点更新只需一次区间加。",
+            "前缀取 $\\\\min$ 可能同时降低许多 $w_j$；若线段树节点中有 $p$ 个值从 $r$ 降低，则这些变化对 $b$ 等价于在区间 $(c,r)$ 统一减去 $p$，无需逐个处理。",
+            "线段树 Beats 能在执行区间取最小值时统计节点内各终点的批量变化，配合维护 $b$ 的区间加和区间求和结构，将总复杂度控制为 $O((n+q)\\\\log^2 n)$。"
+          ],
+          "solutionBrief": "维护有效广播终点数组 $w$：重建 $c$ 时对前缀做区间取最小值并单点赋值。用线段树 Beats 批量获知 $w$ 的下降，再把对应影响转成 $b$ 上的区间加；另一棵支持区间加和区间和的线段树回答查询。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
