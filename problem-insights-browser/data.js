@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3704,
+    "total_problems": 3710,
     "source_total_problems": 3712,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3704,
-    "with_editorial_brief": 3392,
-    "with_solution_brief": 3394,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3710,
+    "with_editorial_brief": 3398,
+    "with_solution_brief": 3400,
     "missing_editorial_brief": 310,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2766,
+    "ai_override_count": 2772,
     "primary_topic_count": 13,
-    "contest_count": 572,
+    "contest_count": 573,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1205,
+    "字符串": 196,
+    "构造与贪心": 1208,
+    "动态规划与状态设计": 300,
+    "树结构": 178,
     "数论与同余": 387,
-    "动态规划与状态设计": 299,
     "组合计数与概率": 280,
     "基础实现与模拟": 234,
     "图论与网络流": 240,
-    "字符串": 195,
     "交互": 108,
     "数据结构": 352,
     "几何": 90,
     "博弈": 112,
-    "树结构": 177,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2420,
+    "ai_generated_with_editorial": 2426,
     "ai_generated_partial_editorial": 81,
     "missing_editorial": 310,
     "low_confidence": 1,
@@ -114151,6 +114151,188 @@ window.CF_INSIGHTS_DATA = {
             "每个不含目标向量的序列按其生成空间的维数被容斥计数恰好一次，链数的交错和由归纳恒等式化为 $1$，从而得到闭式并可在 $O(k+\\log n)$ 内计算。"
           ],
           "solutionBrief": "把向量视为 $\\mathbb F_2^k$ 中的元素。$x=0$ 时直接计数线性无关序列；$x\\ne0$ 时用换基化为 $x=1$，对包含目标向量的降维子空间链做容斥，按前缀积计算闭式。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1606,
+      "name": "Educational Codeforces Round 116 (Rated for Div. 2)",
+      "date": "2021-10-29",
+      "url": "https://codeforces.com/contest/1606",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1606A",
+          "index": "A",
+          "slot": "A",
+          "title": "AB Balance",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1606/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/96454",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "给定只含 `a` 和 `b` 的字符串。每次可任选一个位置，将该字符改成 `a` 或 `b`；要求用最少修改次数使子串 `ab` 与 `ba` 的出现次数相等，并输出任意达到条件的字符串。",
+          "transformedStatement": "将 `ab` 和 `ba` 看作字符串中两种方向相反的相邻字符转移；两者数量之差只由字符串首尾字符决定，因此目标等价于让首尾字符相同。",
+          "keyObservations": [
+            "把字符串中的相邻变化看成从 `a` 到 `b` 或从 `b` 到 `a` 的转移；两类转移会交替出现，因此数量差由首尾字符决定。",
+            "当首字符和末字符相同时，`AB(s)=BA(s)`，无需修改；这直接把判定降为检查两个端点。",
+            "当首尾字符不同时，原串不可能平衡，但修改首字符或末字符即可让端点相同，因此最少只需 1 次修改。"
+          ],
+          "solutionBrief": "检查首尾字符：相同则原样输出；不同则把首字符改成末字符（或反之），输出修改后的字符串。这样分别需要 0 次或 1 次操作，且均为最优。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1606B",
+          "index": "B",
+          "slot": "B",
+          "title": "Update Files",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1606/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/96454",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "最初只有第 1 台电脑拥有更新文件；每小时，一台已更新电脑可通过一根网线把文件复制给另一台电脑，但一台电脑同时只能连接一根网线，学校总共只有 $k$ 根网线。求让全部 $n$ 台电脑获得文件所需的最少小时数。",
+          "transformedStatement": "把过程抽象为已更新电脑数 $cur$ 的增长：初始 $cur=1$，每小时执行 $cur\\leftarrow cur+\\min(cur,k)$，直到 $cur\\ge n$；求达到目标所需的最少轮数。",
+          "keyObservations": [
+            "当前已有更新的电脑数为 $cur$ 时，一小时最多新增 $\\min(cur,k)$ 台：每台已更新电脑至多复制一次，同时总共受 $k$ 根网线限制。",
+            "当 $cur\\le k$ 时，每小时都能让电脑数翻倍；当 $cur>k$ 后，每小时固定增加 $k$ 台，因此过程分为翻倍阶段和线性增长阶段。",
+            "每小时都取最大新增量不会损害后续可行性，所以先模拟翻倍直到达到或超过 $k$，剩余电脑数直接按每小时增加 $k$ 台计算。",
+            "线性阶段所需小时数是剩余数量除以 $k$ 的向上取整，可用整数式 $\\lfloor((n-cur)+k-1)/k\\rfloor$ 避免浮点误差。"
+          ],
+          "solutionBrief": "维护已完成更新的电脑数 $cur$。在 $cur\\le k$ 时不断令其翻倍；超过 $k$ 后，每小时增加 $k$，将剩余数量用向上取整的除法计入答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1606C",
+          "index": "C",
+          "slot": "C",
+          "title": "Banknotes",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1606/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/96454",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "number theory"
+          ],
+          "statementBrief": "给定若干面额为 $10^{a_i}$ 的钞票且最低面额为 $1$，可以任意选择各面额钞票来凑出金额。求最小的正整数 $s$，使得凑出它至少需要 $k+1$ 张钞票。",
+          "transformedStatement": "把金额表示为各面额钞票数量的加权和，并利用十进制面额结构：对每个非最高面额，其数量有上限为下一个面额与当前面额的倍率减一；寻找总张数为 $k+1$ 时金额最小的这种表示。",
+          "keyObservations": [
+            "按面额从大到小取尽可能多的钞票，所得就是最少钞票数；处理完面额 $10^{a_i}$ 后，余数小于该面额。",
+            "在相邻面额 $10^{a_i}$ 与 $10^{a_{i+1}}$ 之间，较小面额最多取 $10^{a_{i+1}-a_i}-1$ 张，否则可被更高面额替换而减少总张数。",
+            "要找第一个满足 $f(s)>k$ 的金额，可令所需张数为 $k+1$，从小面额开始尽量填满上述上限；剩余张数放到更高面额能使金额最小。"
+          ],
+          "solutionBrief": "先利用高面额到低面额的贪心确定最少张数。再令剩余张数为 $k+1$，从最低面额开始取 $\u001b[?min$（剩余张数、相邻面额倍率减一）张，最后把剩余张数放到最高面额，累加金额即为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1606D",
+          "index": "D",
+          "slot": "D",
+          "title": "Red-Blue Matrix",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1606/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/96454",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一个整数矩阵，先把每行染成红色或蓝色且两种颜色都要出现，再选择一个列切口，将矩阵分成左右两部分。要求左、右两部分分别满足红蓝元素的大小关系，输出任意满足条件的染色和切口，否则输出 NO。",
+          "transformedStatement": "将行按首列元素升序排列，把染色抽象为一个分界：前缀为蓝色、后缀为红色；随后枚举分界行与列切口，用左侧蓝小于红、右侧红小于蓝的极值不等式判定。",
+          "keyObservations": [
+            "按首列元素对行排序后，若某行被染红，则其后的行也必须染红；因此合法染色只可能是蓝色前缀接红色后缀。",
+            "固定分界行和列切口后，左侧只需验证蓝色区域所有元素小于红色区域所有元素，右侧只需验证红色区域所有元素小于蓝色区域所有元素。",
+            "两个子矩阵间的全体元素比较可分别转化为最大值小于最小值，因而能用前缀/后缀极值在 $O(1)$ 时间检查。",
+            "枚举 $n-1$ 个染色分界和 $m-1$ 个列切口即可覆盖所有可能方案，总复杂度为 $O(n\\log n+nm)$。"
+          ],
+          "solutionBrief": "按首列排序，使染色形态固定为蓝色前缀、红色后缀；预处理各列分区的前缀/后缀最大最小值，枚举分界行与切口并检查两侧不等式，找到即输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1606E",
+          "index": "E",
+          "slot": "E",
+          "title": "Arena",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1606/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/96454",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 名英雄，初始生命值 $a_i$ 可独立取 $1$ 到 $x$。每轮开始时，每名存活英雄同时对其他所有存活英雄造成 1 点伤害，生命值低于 1 的英雄死亡；若某轮后恰好剩 1 人则产生胜者，求不会产生胜者的初始生命值方案数。",
+          "transformedStatement": "把战斗抽象为状态 $(i,j)$：当前有 $i$ 名英雄存活，且每人已承受累计伤害 $j$。下一轮统一增加 $i-1$ 点伤害，按生命值是否落入 $(j,\\min(x,j+i-1)]$ 来决定本轮死亡者，并进行组合计数。",
+          "keyObservations": [
+            "同一轮中所有存活英雄同时受到相同伤害，因此只需按累计伤害 $j$ 划分生命值，下一轮累计伤害为 $nj=\\min(x,j+i-1)$。",
+            "若当前有 $i$ 名存活英雄、下一轮剩下 $k$ 名，死亡者的生命值必须落在 $(j,nj]$，故转移系数为 $\\binom{i}{i-k}(nj-j)^{i-k}$。",
+            "恰好剩下 1 名英雄会产生胜者，相关状态不能继续计入；只有剩下 0 名时才形成无胜者结局，因此答案是所有 $dp_{0,j}$ 之和。",
+            "初始状态为 $dp_{n,0}=1$，状态中的 $j$ 表示所有当前存活英雄已经受到的累计伤害，未死亡英雄的生命值选择留待后续转移计数。"
+          ],
+          "solutionBrief": "设 $dp_{i,j}$ 表示有 $i$ 名英雄存活且累计受到 $j$ 点伤害的方案数。枚举下一轮存活数 $k$，用 $\\binom{i}{i-k}(nj-j)^{i-k}$ 计数本轮死亡英雄，跳过 $k=1$，最后累加所有 $dp_{0,j}$，全程对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1606F",
+          "index": "F",
+          "slot": "F",
+          "title": "Tree Queries",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1606/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/96454",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根的树。每次查询给出顶点 $v$ 和代价 $k$，可以按任意顺序删除除根和 $v$ 外的顶点；删除后其孩子会直接成为其父亲的孩子。设删除了 $m$ 个顶点、最终 $v$ 有 $c(v)$ 个孩子，求 $c(v)-m k$ 的最大值；查询之间互不影响。",
+          "transformedStatement": "把每个查询转化为对子树的独立决策：对 $v$ 的每个孩子，要么保留并贡献 $1$，要么删除并支付 $k$，继而获得该子树的最优值。于是可用 $f(v,k)$ 递推，并把每个顶点何时值得删除表示成随 $k$ 变化的阈值事件。",
+          "keyObservations": [
+            "固定查询点后，各个子树的删除决策彼此独立；对孩子 $u$，保留它贡献 $1$，删除它则贡献 $f(u,k)-k$，因此贡献取两者较大值。",
+            "$f(v,k)$ 随 $k$ 减小时不会下降；若某个顶点在参数 $k$ 下值得删除，则在更小参数下也值得删除，从而每个顶点对应一个删除阈值 $opt(u)$。",
+            "按 $k$ 从大到小处理删除事件，并在相同阈值时按深度从深到浅处理，可保证子树顶点先并入父节点，维护状态始终对应当前最优结构。",
+            "删除顶点的影响可能传递到已经被删除、后来成为祖先的顶点，因此不能只更新当前父亲；需要对原树中该顶点到当前父亲的整条路径做加法更新。"
+          ],
+          "solutionBrief": "用递推式计算子树决策，并为每个顶点求其最值得删除的参数阈值。按阈值逆序处理事件，用并查集维护当前父亲，用欧拉序上的树状数组或线段树完成路径加法，再同步回答查询。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

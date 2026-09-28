@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T11:14:18+00:00",
+  "updated_at": "2026-09-28T11:20:21+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -82835,6 +82835,187 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 codeforces_tags 提炼。",
+        "quality_flags": []
+      }
+    },
+    "1606F": {
+      "problem_key": "1606F",
+      "title": "Tree Queries",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1606/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/96454",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ab1e869f4fa52d3737b65485fd49a3fb1ddfc88ba68be0a8c33b78f5dc274325",
+      "generated_at": "2026-09-28T11:18:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵以 1 为根的树。每次查询给出顶点 $v$ 和代价 $k$，可以按任意顺序删除除根和 $v$ 外的顶点；删除后其孩子会直接成为其父亲的孩子。设删除了 $m$ 个顶点、最终 $v$ 有 $c(v)$ 个孩子，求 $c(v)-m k$ 的最大值；查询之间互不影响。",
+        "transformed_statement": "把每个查询转化为对子树的独立决策：对 $v$ 的每个孩子，要么保留并贡献 $1$，要么删除并支付 $k$，继而获得该子树的最优值。于是可用 $f(v,k)$ 递推，并把每个顶点何时值得删除表示成随 $k$ 变化的阈值事件。",
+        "key_observations": [
+          "固定查询点后，各个子树的删除决策彼此独立；对孩子 $u$，保留它贡献 $1$，删除它则贡献 $f(u,k)-k$，因此贡献取两者较大值。",
+          "$f(v,k)$ 随 $k$ 减小时不会下降；若某个顶点在参数 $k$ 下值得删除，则在更小参数下也值得删除，从而每个顶点对应一个删除阈值 $opt(u)$。",
+          "按 $k$ 从大到小处理删除事件，并在相同阈值时按深度从深到浅处理，可保证子树顶点先并入父节点，维护状态始终对应当前最优结构。",
+          "删除顶点的影响可能传递到已经被删除、后来成为祖先的顶点，因此不能只更新当前父亲；需要对原树中该顶点到当前父亲的整条路径做加法更新。"
+        ],
+        "solution_brief": "用递推式计算子树决策，并为每个顶点求其最值得删除的参数阈值。按阈值逆序处理事件，用并查集维护当前父亲，用欧拉序上的树状数组或线段树完成路径加法，再同步回答查询。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text 和 codeforces_tags；核心递推、阈值事件及路径更新来自题解。",
+        "quality_flags": []
+      }
+    },
+    "1606E": {
+      "problem_key": "1606E",
+      "title": "Arena",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1606/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/96454",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0993ff87bb3b019a753c46e3e1292bd47e77041d26e6a841cb8da70621232566",
+      "generated_at": "2026-09-28T11:18:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 名英雄，初始生命值 $a_i$ 可独立取 $1$ 到 $x$。每轮开始时，每名存活英雄同时对其他所有存活英雄造成 1 点伤害，生命值低于 1 的英雄死亡；若某轮后恰好剩 1 人则产生胜者，求不会产生胜者的初始生命值方案数。",
+        "transformed_statement": "把战斗抽象为状态 $(i,j)$：当前有 $i$ 名英雄存活，且每人已承受累计伤害 $j$。下一轮统一增加 $i-1$ 点伤害，按生命值是否落入 $(j,\\min(x,j+i-1)]$ 来决定本轮死亡者，并进行组合计数。",
+        "key_observations": [
+          "同一轮中所有存活英雄同时受到相同伤害，因此只需按累计伤害 $j$ 划分生命值，下一轮累计伤害为 $nj=\\min(x,j+i-1)$。",
+          "若当前有 $i$ 名存活英雄、下一轮剩下 $k$ 名，死亡者的生命值必须落在 $(j,nj]$，故转移系数为 $\\binom{i}{i-k}(nj-j)^{i-k}$。",
+          "恰好剩下 1 名英雄会产生胜者，相关状态不能继续计入；只有剩下 0 名时才形成无胜者结局，因此答案是所有 $dp_{0,j}$ 之和。",
+          "初始状态为 $dp_{n,0}=1$，状态中的 $j$ 表示所有当前存活英雄已经受到的累计伤害，未死亡英雄的生命值选择留待后续转移计数。"
+        ],
+        "solution_brief": "设 $dp_{i,j}$ 表示有 $i$ 名英雄存活且累计受到 $j$ 点伤害的方案数。枚举下一轮存活数 $k$，用 $\\binom{i}{i-k}(nj-j)^{i-k}$ 计数本轮死亡英雄，跳过 $k=1$，最后累加所有 $dp_{0,j}$，全程对 $998244353$ 取模。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "组合计数与概率",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则、完整 editorial_text，以及 metadata 中的 combinatorics、dp、math 标签。",
+        "quality_flags": []
+      }
+    },
+    "1606D": {
+      "problem_key": "1606D",
+      "title": "Red-Blue Matrix",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1606/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/96454",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f4b2e7372977b9c9d6956492de390f72af153bd2af2fad4a55b16a972361d3b2",
+      "generated_at": "2026-09-28T11:19:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数矩阵，先把每行染成红色或蓝色且两种颜色都要出现，再选择一个列切口，将矩阵分成左右两部分。要求左、右两部分分别满足红蓝元素的大小关系，输出任意满足条件的染色和切口，否则输出 NO。",
+        "transformed_statement": "将行按首列元素升序排列，把染色抽象为一个分界：前缀为蓝色、后缀为红色；随后枚举分界行与列切口，用左侧蓝小于红、右侧红小于蓝的极值不等式判定。",
+        "key_observations": [
+          "按首列元素对行排序后，若某行被染红，则其后的行也必须染红；因此合法染色只可能是蓝色前缀接红色后缀。",
+          "固定分界行和列切口后，左侧只需验证蓝色区域所有元素小于红色区域所有元素，右侧只需验证红色区域所有元素小于蓝色区域所有元素。",
+          "两个子矩阵间的全体元素比较可分别转化为最大值小于最小值，因而能用前缀/后缀极值在 $O(1)$ 时间检查。",
+          "枚举 $n-1$ 个染色分界和 $m-1$ 个列切口即可覆盖所有可能方案，总复杂度为 $O(n\\log n+nm)$。"
+        ],
+        "solution_brief": "按首列排序，使染色形态固定为蓝色前缀、红色后缀；预处理各列分区的前缀/后缀最大最小值，枚举分界行与切口并检查两侧不等式，找到即输出。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意对象和操作来自 statement_text；两侧比较条件、排序结论、极值检查与复杂度来自 editorial_text；tags 用于辅助主题归类。",
+        "quality_flags": [
+          "statement_properties_truncated"
+        ]
+      }
+    },
+    "1606C": {
+      "problem_key": "1606C",
+      "title": "Banknotes",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1606/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/96454",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7f0fdf068022bb0d342611020c635a6df3637082608464130c9688795090706f",
+      "generated_at": "2026-09-28T11:19:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干面额为 $10^{a_i}$ 的钞票且最低面额为 $1$，可以任意选择各面额钞票来凑出金额。求最小的正整数 $s$，使得凑出它至少需要 $k+1$ 张钞票。",
+        "transformed_statement": "把金额表示为各面额钞票数量的加权和，并利用十进制面额结构：对每个非最高面额，其数量有上限为下一个面额与当前面额的倍率减一；寻找总张数为 $k+1$ 时金额最小的这种表示。",
+        "key_observations": [
+          "按面额从大到小取尽可能多的钞票，所得就是最少钞票数；处理完面额 $10^{a_i}$ 后，余数小于该面额。",
+          "在相邻面额 $10^{a_i}$ 与 $10^{a_{i+1}}$ 之间，较小面额最多取 $10^{a_{i+1}-a_i}-1$ 张，否则可被更高面额替换而减少总张数。",
+          "要找第一个满足 $f(s)>k$ 的金额，可令所需张数为 $k+1$，从小面额开始尽量填满上述上限；剩余张数放到更高面额能使金额最小。"
+        ],
+        "solution_brief": "先利用高面额到低面额的贪心确定最少张数。再令剩余张数为 $k+1$，从最低面额开始取 $\u001b[?min$（剩余张数、相邻面额倍率减一）张，最后把剩余张数放到最高面额，累加金额即为答案。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面、完整 editorial_text 及 greedy、number theory 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1606B": {
+      "problem_key": "1606B",
+      "title": "Update Files",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1606/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/96454",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e0b755c7d5c731e1757ac53cc9bd43548aba588752a01fbd6e89b82937c22542",
+      "generated_at": "2026-09-28T11:20:05+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "最初只有第 1 台电脑拥有更新文件；每小时，一台已更新电脑可通过一根网线把文件复制给另一台电脑，但一台电脑同时只能连接一根网线，学校总共只有 $k$ 根网线。求让全部 $n$ 台电脑获得文件所需的最少小时数。",
+        "transformed_statement": "把过程抽象为已更新电脑数 $cur$ 的增长：初始 $cur=1$，每小时执行 $cur\\leftarrow cur+\\min(cur,k)$，直到 $cur\\ge n$；求达到目标所需的最少轮数。",
+        "key_observations": [
+          "当前已有更新的电脑数为 $cur$ 时，一小时最多新增 $\\min(cur,k)$ 台：每台已更新电脑至多复制一次，同时总共受 $k$ 根网线限制。",
+          "当 $cur\\le k$ 时，每小时都能让电脑数翻倍；当 $cur>k$ 后，每小时固定增加 $k$ 台，因此过程分为翻倍阶段和线性增长阶段。",
+          "每小时都取最大新增量不会损害后续可行性，所以先模拟翻倍直到达到或超过 $k$，剩余电脑数直接按每小时增加 $k$ 台计算。",
+          "线性阶段所需小时数是剩余数量除以 $k$ 的向上取整，可用整数式 $\\lfloor((n-cur)+k-1)/k\\rfloor$ 避免浮点误差。"
+        ],
+        "solution_brief": "维护已完成更新的电脑数 $cur$。在 $cur\\le k$ 时不断令其翻倍；超过 $k$ 后，每小时增加 $k$，将剩余数量用向上取整的除法计入答案。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 greedy、implementation、math 标签。",
+        "quality_flags": []
+      }
+    },
+    "1606A": {
+      "problem_key": "1606A",
+      "title": "AB Balance",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1606/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/96454",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "797f689dea75309995590675ee043aa79e054ab2bedee4d06e6a1925d97106f7",
+      "generated_at": "2026-09-28T11:20:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定只含 `a` 和 `b` 的字符串。每次可任选一个位置，将该字符改成 `a` 或 `b`；要求用最少修改次数使子串 `ab` 与 `ba` 的出现次数相等，并输出任意达到条件的字符串。",
+        "transformed_statement": "将 `ab` 和 `ba` 看作字符串中两种方向相反的相邻字符转移；两者数量之差只由字符串首尾字符决定，因此目标等价于让首尾字符相同。",
+        "key_observations": [
+          "把字符串中的相邻变化看成从 `a` 到 `b` 或从 `b` 到 `a` 的转移；两类转移会交替出现，因此数量差由首尾字符决定。",
+          "当首字符和末字符相同时，`AB(s)=BA(s)`，无需修改；这直接把判定降为检查两个端点。",
+          "当首尾字符不同时，原串不可能平衡，但修改首字符或末字符即可让端点相同，因此最少只需 1 次修改。"
+        ],
+        "solution_brief": "检查首尾字符：相同则原样输出；不同则把首字符改成末字符（或反之），输出修改后的字符串。这样分别需要 0 次或 1 次操作，且均为最优。",
+        "primary_topic": "字符串",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 的操作与目标、editorial 的首尾字符结论，以及 tags 中的字符串分类。",
         "quality_flags": []
       }
     }
