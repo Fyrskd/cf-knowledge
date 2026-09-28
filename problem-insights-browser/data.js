@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3508,
+    "total_problems": 3515,
     "source_total_problems": 3517,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3508,
-    "with_editorial_brief": 3209,
-    "with_solution_brief": 3211,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3515,
+    "with_editorial_brief": 3216,
+    "with_solution_brief": 3218,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2570,
+    "ai_override_count": 2577,
     "primary_topic_count": 13,
-    "contest_count": 542,
+    "contest_count": 543,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1138,
+    "构造与贪心": 1140,
+    "字符串": 184,
+    "动态规划与状态设计": 289,
+    "树结构": 170,
+    "几何": 84,
     "数论与同余": 369,
-    "动态规划与状态设计": 287,
     "组合计数与概率": 265,
     "图论与网络流": 230,
     "基础实现与模拟": 219,
-    "树结构": 169,
     "数据结构": 333,
-    "字符串": 183,
     "交互": 102,
-    "几何": 83,
     "代数、矩阵与多项式": 24,
     "博弈": 106
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2248,
+    "ai_generated_with_editorial": 2254,
+    "ai_generated_partial_editorial": 71,
     "missing_editorial": 297,
-    "ai_generated_partial_editorial": 70,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -108226,6 +108226,232 @@ window.CF_INSIGHTS_DATA = {
             "当 $l=r$ 时只有一个元素，除 $1$ 外其 GCD 本身就大于 $1$；因此单元素区间只需特判 $l=r=1$。"
           ],
           "solutionBrief": "计算区间内奇数个数作为最少合并次数；若 $l=r=1$ 则必为 NO，否则当奇数个数不超过 $k$ 时输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1628,
+      "name": "Codeforces Round 767 (Div. 1)",
+      "date": "2022-01-22",
+      "url": "https://codeforces.com/contest/1628",
+      "type": "Div. 1",
+      "problemCount": 7,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1628A",
+          "index": "A",
+          "slot": "A",
+          "title": "Meximum Array",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1628/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/99276",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定非负整数数组，反复选择当前数组的一个非空前缀，将该前缀删除并把其元素集合的 MEX 追加到新数组。要求选择每次前缀长度，使最终得到的数组按字典序最大，并输出该数组。",
+          "transformedStatement": "把连续删除前缀等价看成将原数组从左到右切成若干连续段，每段贡献该段的 MEX；目标是让这些贡献组成的序列字典序最大。每次应针对当前后缀，找出其 MEX，并取达到该 MEX 的最短前缀作为下一段。",
+          "keyObservations": [
+            "当前剩余后缀中可得到的首个最大值就是整个后缀的 MEX；任何前缀的 MEX 都不可能超过它，因此首个输出值被唯一确定。",
+            "为得到该 MEX，应截取达到它的最短前缀；这样首项相同且保留最多元素，能为后续字典序比较提供更大空间。",
+            "每次截断后，剩余部分仍是原数组的一个后缀，问题完全独立地重复，因此可从左到右贪心切分。",
+            "预处理每个位置开始的后缀 MEX，并在当前位置寻找首次达到该值的位置，即可在线性或 $O(n\\log n)$ 时间完成所有切分。"
+          ],
+          "solutionBrief": "预处理每个后缀的 MEX。当前位置为 $p$ 时，令目标为后缀 $[p,n]$ 的 MEX，向右找到第一个使区间 MEX 达到目标的位置并切出；重复处理剩余后缀。复杂度可为 $O(n)$ 或 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1628B",
+          "index": "B",
+          "slot": "B",
+          "title": "Peculiar Movie Preferences",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1628/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/99276",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定按顺序排列的 $n$ 个非空字符串，每个长度至多为 $3$。可以删除任意场景但必须保持剩余字符串的顺序；将剩余字符串拼接后，判断是否能得到一个非空回文串。",
+          "transformedStatement": "题解将问题化为寻找一个单串回文或一对按顺序拼接成回文的字符串，并证明不需要考虑超过两个字符串。扫描序列时，只需根据当前串长度匹配有限的历史逆串形式。",
+          "keyObservations": [
+            "由于每个字符串长度至多为 $3$，任意可行子序列都能缩短为包含 $1$ 个或 $2$ 个字符串的可行子序列；两端字符串等长时必须互为逆串，长度不同则只可能为 $2$ 和 $3$，中间字符可作为回文中心。",
+            "若当前字符串长度为 $2$，只需检查之前是否出现过它的逆串，或出现过“它的逆串再追加一个字符”的长度为 $3$ 的字符串。",
+            "若当前字符串长度为 $3$，只需检查之前是否出现过它的逆串，或出现过其后两个字符的逆串；这正好覆盖长度为 $3$ 与长度为 $2$ 的配对回文。",
+            "若存在长度为 $1$ 的字符串或其他单个回文字符串即可立即成功，因此后续只需处理长度为 $2$、$3$ 的字符串并按顺序查询历史出现情况。"
+          ],
+          "solutionBrief": "先检查每个字符串自身是否为回文。随后从左到右记录已出现字符串：长度为 $2$ 或 $3$ 的当前串分别查询上述两类可能的前驱，命中即输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1628C",
+          "index": "C",
+          "slot": "C",
+          "title": "Grid Xor",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1628/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/99276",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "给定一个边长为偶数的 $n\\times n$ 整数网格，但只知道每个格子四联通相邻格中所有数的异或和。需要利用这些信息，求原网格全部 $n^2$ 个数的异或和。",
+          "transformedStatement": "不恢复原网格，而是选择若干个已知的“邻居异或值”进行异或，使每个原格在这些值中被计入奇数次；这样所有原格恰好留下一个整体异或贡献。",
+          "keyObservations": [
+            "把一次记忆值看成对其四个相邻原格的同时贡献；只要让每个原格的总贡献次数为奇数，所有重复项就会在异或中抵消，剩下整张原网格的异或和。",
+            "按行从第2行开始扫描，并依据上方格子的当前贡献次数奇偶决定是否选当前记忆值，可逐步维持贡献奇偶，最终使每个格子恰好具有奇数次贡献。",
+            "由于异或只取贡献次数的奇偶，选中的记忆值直接异或即可得到目标，不需要恢复任何单独的原网格元素。"
+          ],
+          "solutionBrief": "将每个输入值视为对相邻原格的贡献。逐行扫描第2行至末行：若当前格上方原格的贡献次数为偶数，就选中该输入值并加入答案；该构造使所有原格贡献次数为奇数，因此选中值的异或就是整张原网格的异或和。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1628D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Game on Sum (Easy Version)",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1628/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/99276",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "博弈",
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "games",
+            "math"
+          ],
+          "statementBrief": "Alice 与 Bob 进行 $n$ 回合：每回合 Alice 选择 $[0,k]$ 内的实数，Bob 在知道该数后选择将其加到分数或从分数中减去；Bob 全程至少要选择加法 $m$ 次，且 Alice 能看到上一回合的操作。双方最优 play 时，求最终分数并对 $10^9+7$ 取模。",
+          "transformedStatement": "把博弈重述为状态 $DP[i][j]$：还剩 $i$ 回合、Bob 还必须进行 $j$ 次加法。当前选择 $x$ 后，两个后继分数分别是加法子状态加 $x$ 与减法子状态减 $x$，Alice 通过平衡这两条直线来最大化 Bob 取最小后的结果。",
+          "keyObservations": [
+            "将剩余 $i$ 回合和 Bob 还必须进行的加法次数 $j$ 作为状态，得到与原博弈同构的子问题，避免记录完整历史。",
+            "当前选数为 $x$ 时，Bob 加法对应 $DP[i-1][j-1]+x$，减法对应 $DP[i-1][j]-x$；Bob 取两者较小值。",
+            "两种结果关于 $x$ 是一增一减的直线，Alice 最大化它们的较小值，因此在交点处取最优，得到 $DP[i][j]=(DP[i-1][j-1]+DP[i-1][j])/2$。",
+            "边界状态为 $DP[i][0]=0$ 和 $DP[i][i]=i\file k$；转移中的除以 $2$ 在模 $10^9+7$ 下使用逆元计算。"
+          ],
+          "solutionBrief": "设 $DP[i][j]$ 为剩余 $i$ 回合且 Bob 至少还需加 $j$ 次时的最优分数。由加法和减法两种结果的交点平衡选择，转移为 $DP[i][j]=(DP[i-1][j-1]+DP[i-1][j])/2$，配合边界并用模逆元计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1628D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Game on Sum (Hard Version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1628/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/99276",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "博弈"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "games",
+            "math"
+          ],
+          "statementBrief": "Alice 与 Bob 进行 $n$ 回合：每回合 Alice 先选取一个 $[0,k]$ 内的实数，Bob 看见后决定将其加到当前分数或减去；Bob 全程至少要选择加分 $m$ 次，且 Alice 下一回合能看到上一回合的加减决定。双方最优 खेल时，求最终分数并按模 $10^9+7$ 输出。",
+          "transformedStatement": "将博弈抽象为网格状态 $DP[i][j]$：$i$ 表示已完成回合数，$j$ 表示 Bob 已加分次数；目标是由边界状态沿两种状态转移到 $DP[n][m]$，再把递推解释成带权路径贡献。",
+          "keyObservations": [
+            "最优策略的价值可表示为状态 $DP[i][j]$，其中 $i$ 是已进行回合数、$j$ 是 Bob 已加分的次数，非边界状态满足 $DP[i][j]=(DP[i-1][j-1]+DP[i-1][j])/2$。",
+            "边界状态为 $DP[i][0]=0$ 与 $DP[i][i]=ki$，分别对应 Bob 全部减分和全部加分；因此目标是计算 $DP[n][m]$。",
+            "把递推展开为网格路径后，边界状态 $DP[i][i]$ 对目标的贡献可按路径数统计；避开其他边界状态的路径数为 $\\binom{n-i-1}{m-i}$，所有路径还需统一乘上 $2^{-(n-i)}$。",
+            "将每个对角边界状态的贡献求和即可得到答案，从而无需保存完整的二维 DP 表。"
+          ],
+          "solutionBrief": "设 $DP[i][j]$ 为进行 $i$ 回合且 Bob 已加分 $j$ 次时的最优值，使用边界 $DP[i][0]=0、DP[i][i]=ki$ 和平均递推。将递推展开为路径贡献，按组合数统计每个对角边界状态对 $DP[n][m]$ 的贡献并求和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1628E",
+          "index": "E",
+          "slot": "E",
+          "title": "Groceries in Meteor Town",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1628/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/99276",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dsu",
+            "trees"
+          ],
+          "statementBrief": "给定一棵边带陨石危险值的树，所有店铺初始关闭。每次可将编号区间 $[l,r]$ 内店铺全部开放或全部关闭；给定建筑物 $x$ 时，求从 $x$ 到某个开放店铺的路径上可能遇到的最大危险值，没有开放店铺则输出 $-1$。",
+          "transformedStatement": "把原树按“当前连通块中的最大边”递归拆分，得到边权位于内部节点、建筑物位于叶子的重构树。于是查询变成：在开放叶子集合中，求与叶子 $x$ 的 LCA 权值最大者，并用中序序列的两个极端开放叶子代表整个集合。",
+          "keyObservations": [
+            "删除当前连通块中权值最大的边后，跨越该边的路径两端必在两个不同子树中，因此可递归构造一棵以边为内部节点、建筑物为叶子的重构树。",
+            "在重构树中，两点路径上的最大边权等于它们对应叶子的最近公共祖先权值，所以原问题转化为查询某建筑物与开放建筑物集合的最大 LCA 权值。",
+            "开放建筑物在重构树的中序序列中只需保留最左和最右者；对任意查询点，与整个开放集合的最大值可由它分别与这两个端点的 LCA 取最大得到，从而把集合查询压缩为两个点查询。",
+            "用区间数据结构维护中序序列中开放建筑物的最左、最右位置，区间开放或关闭后即可快速取得端点；若没有开放建筑物则答案为 $-1$。"
+          ],
+          "solutionBrief": "按最大边递归构造重构树，并记录每个建筑物在其中序序列的位置。用区间数据结构维护开放建筑物的最左、最右位置；查询建筑物与两端点的 LCA 权值最大值，无开放店铺时输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1628F",
+          "index": "F",
+          "slot": "F",
+          "title": "Spaceship Crisis Management",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1628/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/99276",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "geometry",
+            "sortings"
+          ],
+          "statementBrief": "给定目标原点、若干互不相交的线段和多个起点。飞船从每个起点沿某个方向直线漂移，撞到线段后按与线段夹角的题设规则滑行并改变离开方向；判断是否存在一种初始方向，使飞船最终到达原点。",
+          "transformedStatement": "把每条线段视为一个固定出口、可改变运动方向的状态：对每个方向判断射线首先击中的线段及其后续可达性，只保留线段最近点指向目标和起点指向目标等相关方向。",
+          "keyObservations": [
+            "同一线段的出口位置是固定的，入射方向只会影响离开线段的方向，因此可预处理每条线段哪些方向能继续到达目标。",
+            "只需考虑两类相关方向：某条线段到目标最近点的方向，以及某个查询起点到目标的方向；其他方向不会改变可行性判断。",
+            "按线段到目标的距离处理后，某个方向击中线段时，只需判断它是否能直接到达目标，或转移到一个已知可行的更近线段。",
+            "固定起点后，线段到该起点的距离随射线角度形成两两至多相交的函数族，可用 Li Chao 树快速找出某个方向首先击中的线段。"
+          ],
+          "solutionBrief": "提取所有相关方向，按线段到目标的距离做方向可行性 DP。对每个起点建立 Li Chao 树，维护各线段随射线角度的距离函数，从而快速查询首个被击中的线段，整体复杂度为 $O((n+q)^2\\log(n+q))$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
