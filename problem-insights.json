@@ -15,19 +15,377 @@
     ]
   },
   "summary": {
-    "total_problems": 3167,
+    "total_problems": 3175,
     "source_total_problems": 3177,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3167,
-    "with_editorial_brief": 2886,
-    "with_solution_brief": 2888,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3175,
+    "with_editorial_brief": 2894,
+    "with_solution_brief": 2896,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2229,
+    "ai_override_count": 2237,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1696A",
+      "contest_id": 1696,
+      "title": "NIT orz!",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1696/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/103479",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "greedy"
+      ],
+      "statement_brief": "给定一个数组 $a$ 和整数 $z$。每次可选择一个数组元素，用它与当前 $z$ 按位 OR 更新该元素，并让 $z$ 与该元素按位 AND 更新；操作可进行任意次。求操作后数组中最大元素可能达到的最大值。",
+      "transformed_statement": "把目标拆成对每个初始元素单独考察：它最多能获得初始 $z$ 中仍可保留的位，因此候选上界是 $a_i\\mathbin{|}z$；一次选择该元素即可达到这个候选值，故答案是所有候选值的最大值。",
+      "key_observations": [
+        "每次操作后，$z$ 会变为原来的子掩码，因此它不会新增任何二进制位，只会逐步减少可用位。",
+        "若最终第 $i$ 个元素经过多次操作，其所有新增位都来自初始 $a_i$ 或初始 $z$，所以始终满足 $a_i'\\le(a_i\\mathbin{|}z)$。",
+        "因此任意操作序列得到的数组最大值都不超过 $S=\\max_i(a_i\\mathbin{|}z)$；直接对某个元素操作一次即可达到对应的 $a_i\\mathbin{|}z$，上界可以取得。"
+      ],
+      "solution_brief": "对每个 $a_i$ 计算 $a_i\\mathbin{|}z$ 并取最大值。一次操作即可达到该值；之后 $z$ 只会通过按位 AND 丢失位，因此任何元素都不可能超过自己的初始 $a_i\\mathbin{|}z$。复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:58:31+00:00",
+          "quality_flags": [
+            "statement_operation_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1696B",
+      "contest_id": 1696,
+      "title": "NIT Destroys the Universe",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1696/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/103479",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy"
+      ],
+      "statement_brief": "给定一个整数数组，允许反复选择连续区间并执行题面规定的操作，目标是把所有数组元素变成 $0$，求所需的最少操作次数。当前记录缺少该操作的具体定义，因此无法完整还原每次操作如何改变区间。",
+      "transformed_statement": "题解将问题转化为观察数组中非零元素的连通段数量：全零对应 $0$ 次，非零元素只有一个连续段对应 $1$ 次，存在多个非零连续段对应 $2$ 次。具体操作的等价含义因原题面缺失而无法进一步展开。",
+      "key_observations": [
+        "最多执行两次操作即可完成：对整个数组操作至多两次总能清零；题解明确指出数组含零时需要两次，否则一次即可。",
+        "答案为 $0$ 当且仅当数组全为零，因此无需进行任何操作。",
+        "所有非零元素恰好构成一个连续段时答案为 $1$；只需检查首个和末个非零位置之间是否不存在零。",
+        "非零元素分成多个连续段时答案为 $2$，因为一次操作无法同时覆盖这些分离的区域，而两次操作足以完成。"
+      ],
+      "solution_brief": "扫描数组找非零元素的最左、最右位置：全零输出 $0$；若两者之间全为非零，输出 $1$；否则输出 $2$。总复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:58:12+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "partial_editorial",
+            "statement_incomplete_operation_definition"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1696C",
+      "contest_id": 1696,
+      "title": "Fishingprince Plays With Array",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1696/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/103479",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定数组 $a$、数组 $b$ 和魔数 $m$。每次可把一个能被 $m$ 整除的数展开成 $m$ 个相等的商，也可把连续的 $m$ 个相等数合并成其 $m$ 倍；判断能否经过任意次操作把 $a$ 变成 $b$。",
+      "transformed_statement": "把每个数组映射为其规范展开形：连续相等元素先按段处理，并将每个段的数值不断除以 $m$，同时把段长度乘以 $m$，直到数值不再被 $m$ 整除；问题转化为比较两个规范序列。",
+      "key_observations": [
+        "两种操作互为逆操作，因此只需把两个数组都变换到同一个不可再展开的中间状态。",
+        "将可被 $m$ 整除的元素反复展开为 $m$ 个相等的 $a_i/m$，所得规范形与操作顺序无关。",
+        "一次合并只改变对应连续相等段；在规范化时压缩连续相等元素即可避免显式生成过长数组。",
+        "任意原操作都不改变最终规范形：展开显然不变，合并后的元素仍会在规范化过程中继续展开回原贡献。"
+      ],
+      "solution_brief": "把数组压缩成连续相等段，并对每个值反复除以 $m$、同步将段长度乘以 $m$，直到该值不能再除。两数组的规范序列完全相同则输出 Yes，否则输出 No；复杂度为 $O((n+k)\\log_m V)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:57:58+00:00",
+          "quality_flags": [
+            "statement_operation_text_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1696D",
+      "contest_id": 1696,
+      "title": "Permutation Graph",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1696/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/103479",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "constructive algorithms",
+        "data structures",
+        "divide and conquer",
+        "greedy",
+        "shortest paths"
+      ],
+      "statement_brief": "给定一个排列，把位置作为顶点；若区间 $[i,j]$ 的两个端点恰好分别是该区间的最小值和最大值，就在它们之间连一条长度为 $1$ 的无向边。要求图中从位置 $1$ 到位置 $n$ 的最短路径长度。",
+      "transformed_statement": "将最短路按排列中的极值位置分解：全局最大值所在位置是左右两部分之间的必经分界；每一侧再由区间最小值位置继续划分，并把极值端点之间的连接视为一步。",
+      "key_observations": [
+        "设最大值 $n$ 位于位置 $k$，任何跨过 $k$ 的区间都不可能产生连接左右两侧端点的边，因此从位置 $1$ 到位置 $n$ 的路径必经 $k$。",
+        "在求 $dis(1,k)$ 时，设区间 $[1,k]$ 的最小值位于 $j$；位置 $j$ 与 $k$ 必有直接边，且路径从 $1$ 到 $k$ 必须经过 $j$，所以问题缩减为 $dis(1,j)+1$，右侧可对称处理。",
+        "递归过程中只会处理左端为 $1$ 或右端为 $n$ 的区间，因此只需预处理前缀和后缀的最小值、最大值位置即可在线性时间内完成缩减。"
+      ],
+      "solution_brief": "先找到最大值 $n$ 的位置 $k$，将答案拆为 $dis(1,k)+dis(k,n)$。对每一侧不断取当前区间的另一端极值位置，利用该位置与边界点必有直接边进行递归缩减；预处理前后缀极值后，总复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:57:36+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1696E",
+      "contest_id": 1696,
+      "title": "Placing Jinas",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1696/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/103479",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "math"
+      ],
+      "statement_brief": "给定一个无限网格和非递增序列 $a$：第 $x$ 行前 $a_x$ 个格子为白色，其余为黑色，初始只有 $(0,0)$ 有一个玩偶。每次将一个玩偶向右或向下移动一格（题面该操作描述缺失），目标是让所有白格没有玩偶，求最少操作次数并对 $10^9+7$ 取模。",
+      "transformed_statement": "把每个白格 $(i,j)$ 的操作次数视为从 $(0,0)$ 通过向右、向下单位移动到达它的路径数；总答案就是白色区域内这些路径数之和，再按行利用组合数求和恒等式压缩。",
+      "key_observations": [
+        "白色区域向左、向上封闭：若 $(i,j)$ 为白格，则其上方和左方也为白格，因此到达该格的玩偶数量满足相邻两格贡献相加的递推。",
+        "到达白格 $(i,j)$ 的操作次数等于从 $(0,0)$ 走到它、每步向右或向下的路径数，因此 $f(i,j)=\\binom{i+j}{j}$。",
+        "按行累加白格贡献后，可用恒等式 $\\sum_{j=0}^{a_i-1}\\binom{i+j}{i}=\\binom{i+a_i}{i+1}$ 消去内层枚举，把答案化为每行一个组合数。"
+      ],
+      "solution_brief": "令 $f(i,j)$ 表示在白格 $(i,j)$ 上执行操作的次数。由上方和左方转移得 $f(i,j)=\\binom{i+j}{j}$，再对每行白格求和并用组合恒等式化为 $\\sum_{i=0}^n\\binom{i+a_i}{i+1}$，预处理组合数后计算。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:57:10+00:00",
+          "quality_flags": [
+            "statement_operation_rule_missing"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1696F",
+      "contest_id": 1696,
+      "title": "Tree Recovery",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1696/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/103479",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "树结构",
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "dfs and similar",
+        "dsu",
+        "graphs",
+        "trees"
+      ],
+      "statement_brief": "给定 $n$ 个带编号顶点之间的等距关系：对每个点对 $(x,y)$ 和顶点 $z$，已知 $d(x,z)$ 是否等于 $d(y,z)$。需要恢复一棵满足全部关系的无向树，或报告不存在这样的树。",
+      "transformed_statement": "将每个无序点对 $(a,b)$ 看作辅助图顶点；对共享端点的 $(a,b)$ 与 $(b,c)$，若已知 $d(a,b)=d(b,c)$，就在辅助图中连边。真实树的 $n-1$ 条边对应一个大小为 $n-1$ 的连通分量，候选分量再通过原关系整体校验。",
+      "key_observations": [
+        "把每个无序点对 $(a,b)$ 视为辅助图中的一个顶点；若共享端点的两点对为 $(a,b)$、$(b,c)$，且输入表明 $d(a,b)=d(c,b)$，就连接它们，从而让真实树边对应的点对能够相互连通。",
+        "真实树中的每条边长度都是 $1$，因此任意两条相邻树边 $(a,b)$、$(b,c)$ 都满足 $d(a,b)=d(b,c)$；所有树边对应的点对恰好形成大小为 $n-1$ 的连通分量。",
+        "找到大小为 $n-1$ 的候选分量后，将其中的点对当作树边并重新检查全部等距关系；完整验证可以排除辅助图中由其他点对产生的伪候选。",
+        "大小为 $n-1$ 的候选分量数量至多为 $n/2$，因此枚举候选并验证的总复杂度为 $O(n^4)$。"
+      ],
+      "solution_brief": "建立以无序点对为顶点的辅助图：共享端点且对应距离相等时连边。枚举大小为 $n-1$ 的连通分量，把其中点对作为树边并验证全部输入关系；若无候选则输出无解，复杂度为 $O(n^4)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:56:52+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1696G",
+      "contest_id": 1696,
+      "title": "Fishingprince Plays With Array Again",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1696/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/103479",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "代数、矩阵与多项式",
+        "几何"
+      ],
+      "original_tags": [
+        "brute force",
+        "data structures",
+        "geometry",
+        "math"
+      ],
+      "statement_brief": "给定正整数数组、参数 $x,y$，定义在题目规定的削减操作下把所有元素变为不大于 $0$ 所需的最短时间 $f$。随后对数组进行更新并查询某个区间对应数组的 $f$ 值；但本地记录未保留两类查询的具体参数及削减操作文字。",
+      "transformed_statement": "对每个待求区间 $A$，把最短削减时间建模为线性规划，再转为对偶：最大化 $\\sum A_i x_i$，其中相邻变量满足两组线性约束。利用对偶最优顶点的三种状态，把区间答案抽象成转移矩阵乘积。",
+      "key_observations": [
+        "将把数组全部降到非正所需的最短时间写成线性规划：每个位置的约束表示相邻操作对该位置的总削减量必须达到其初值。",
+        "线性规划对偶中的变量 $x_i$ 只受相邻两项的线性不等式约束；当 $x\\le y$ 时，存在最优顶点使每个变量只取 $0$、$1/(x+y)$、$1/y$ 三种值，从而把连续优化压成三状态 DP。",
+        "对偶目标是最大化 $\\sum A_i x_i$，因此每个位置的数组值只作为对应状态的线性权重，状态之间的转移只由 $x,y$ 决定。",
+        "区间查询可表示为状态转移矩阵的乘积，单点修改只影响一个矩阵；在线段树中维护矩阵乘积即可支持动态更新与区间求值。"
+      ],
+      "solution_brief": "把每个区间的答案转为线性规划对偶，利用最优顶点仅含三种取值建立三状态 DP；将位置转移写成矩阵，线段树维护矩阵乘积，支持修改和区间查询。分数统一化后可用整数保存。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:55:56+00:00",
+          "quality_flags": [
+            "statement_incomplete_operations",
+            "statement_inferred_query_format"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 8,
+      "problem_key": "1696H",
+      "contest_id": 1696,
+      "title": "Maximum Product?",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1696/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/103479",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "组合计数与概率",
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "brute force",
+        "combinatorics",
+        "dp",
+        "greedy",
+        "implementation",
+        "math",
+        "two pointers"
+      ],
+      "statement_brief": "给定含 $n$ 个整数的多重集合 $A$ 和整数 $k$。对 $A$ 的每个按下标区分的子集 $B$，从中恰好选 $k$ 个元素使乘积最大，定义该最大值为 $f(B)$（不足 $k$ 个元素时贡献为 $0$），求所有子集的 $f(B)$ 之和并对 $10^9+7$ 取模。",
+      "transformed_statement": "把每个子集的最优选择重述为：先取绝对值最大的 $k$ 个元素，再通过至多一次边界替换修正负数奇偶性；随后按正负类别和排序位置统计这些选择在全部子集中的乘积总贡献。",
+      "key_observations": [
+        "对每个子集只需考虑恰好选出的 $k$ 个数；若子集大小不足 $k$，其贡献为 $0$，从而总和可按子集独立计数。",
+        "若子集含有非负数，先取绝对值最大的 $k$ 个数；当负数个数为奇数时，只需在“替换最小正数”和“替换绝对值最大的未选负数”两种边界方案中取优。",
+        "将正数和负数按绝对值排序后，选中块的边界由正、负两侧的位置决定，其他未参与边界判断的元素只产生 $2$ 的幂次选择因子，可用 DP 累加产品贡献。",
+        "固定边界后，可行的替换位置构成前缀或后缀，因而能用双指针和前缀和合并所有位置；两侧计数分别为 $cntpos,cntneg$ 时，主要计算量为 $O(n ext{·}cntpos ext{·}cntneg)$。"
+      ],
+      "solution_brief": "把正、负数按绝对值排序，利用 DP 统计各子集选出的最大绝对值块及边界替换的乘积贡献。预处理替换位置的单调区间，用双指针和前缀和将复杂度降至 $O(n ext{·}cntpos ext{·}cntneg)$，最后对 $10^9+7$ 取模。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:55:27+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 9,
       "problem_key": "1698A",
