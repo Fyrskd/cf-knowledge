@@ -15,19 +15,101 @@
     ]
   },
   "summary": {
-    "total_problems": 3187,
+    "total_problems": 3189,
     "source_total_problems": 3191,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3187,
-    "with_editorial_brief": 2906,
-    "with_solution_brief": 2908,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3189,
+    "with_editorial_brief": 2908,
+    "with_solution_brief": 2910,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2249,
+    "ai_override_count": 2251,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1694A",
+      "contest_id": 1694,
+      "title": "Creep",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1694/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/103952",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定 $a$ 个 `0` 和 $b$ 个 `1`，排列成二进制字符串。一个前缀的分数是其中 `0` 与 `1` 数量之差的绝对值，字符串的蠕动度是所有前缀分数的最大值；要求构造蠕动度最小的字符串。",
+      "transformed_statement": "将每个 `01` 视为一个平衡块：块结束时前缀差回到 $0$，块内部最大差为 $1$；剩余单一字符从零开始累积差值，最终只由数量差 $|a-b|$ 决定。",
+      "key_observations": [
+        "任意非空二进制串的首个前缀分数都是 $1$，完整字符串的分数是 $|a-b|$，因此答案至少为 $\\max(1,|a-b|)$。",
+        "每次同时剩余两种字符时加入 `01`，两个字符后的前缀差回到 $0$，中间最多达到 $1$，不会额外扩大最大分数。",
+        "成对加入后只剩一种字符；连续加入剩余字符时，分数从 $0$ 单调增至 $|a-b|$，所以整体蠕动度恰为 $\\max(1,|a-b|)$。"
+      ],
+      "solution_brief": "下界由首字符和最终整体差值给出。不断在两类字符都未用完时追加 `01`，再追加剩余的同类字符；该构造达到 $\\max(1,|a-b|)$，复杂度为 $O(a+b)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T01:13:22+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1694B",
+      "contest_id": 1694,
+      "title": "Paranoid String",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1694/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/103952",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy"
+      ],
+      "statement_brief": "给定二进制串，反复对相邻且不同的字符执行题目规定的两种缩短操作，每次删除其中一个字符，直到只剩一个字符。求所有子串中能够完成这一过程的子串数量。",
+      "transformed_statement": "题解将可行性转化为末尾相邻字符的判定：长度为 $1$ 的子串必然合法；更长子串当且仅当其最后两个字符不同。于是按右端点统计，出现相邻变化时贡献全部更短起点。",
+      "key_observations": [
+        "长度大于 $1$ 的子串是否可约，完全由末尾两个字符决定：只有 $T_{m-1}\\ne T_m$ 时才是 paranoid；末尾相等的两个字符永远无法被消去。",
+        "当末尾字符不同且长度至少为 $3$ 时，根据末尾三字符是 $010$ 还是 $110$，选择对应相邻对操作即可把末尾化为 $10$，从而递归缩短字符串。",
+        "固定右端点 $r$ 时，若 $S[r]\\ne S[r-1]$，所有起点 $1\\ldots r-1$ 都产生合法子串，因此该右端点贡献 $r-1$；否则没有长度大于 $1$ 的贡献。"
+      ],
+      "solution_brief": "先计入全部 $n$ 个长度为 $1$ 的子串，再扫描相邻字符；若 $S[r]\\ne S[r-1]$，答案加上 $r-1$。总复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T01:13:06+00:00",
+          "quality_flags": [
+            "statement_operation_text_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 3,
       "problem_key": "1695A",

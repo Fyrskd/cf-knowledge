@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T01:09:43+00:00",
+  "updated_at": "2026-09-28T01:13:22+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -67259,6 +67259,66 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面规则与完整 editorial 提炼，tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1694B": {
+      "problem_key": "1694B",
+      "title": "Paranoid String",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1694/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/103952",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c9641b4377b976a037c50f293c03de4dea9bd3acfa7bd8a30a9d18e4a4deeb73",
+      "generated_at": "2026-09-28T01:13:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定二进制串，反复对相邻且不同的字符执行题目规定的两种缩短操作，每次删除其中一个字符，直到只剩一个字符。求所有子串中能够完成这一过程的子串数量。",
+        "transformed_statement": "题解将可行性转化为末尾相邻字符的判定：长度为 $1$ 的子串必然合法；更长子串当且仅当其最后两个字符不同。于是按右端点统计，出现相邻变化时贡献全部更短起点。",
+        "key_observations": [
+          "长度大于 $1$ 的子串是否可约，完全由末尾两个字符决定：只有 $T_{m-1}\\ne T_m$ 时才是 paranoid；末尾相等的两个字符永远无法被消去。",
+          "当末尾字符不同且长度至少为 $3$ 时，根据末尾三字符是 $010$ 还是 $110$，选择对应相邻对操作即可把末尾化为 $10$，从而递归缩短字符串。",
+          "固定右端点 $r$ 时，若 $S[r]\\ne S[r-1]$，所有起点 $1\\ldots r-1$ 都产生合法子串，因此该右端点贡献 $r-1$；否则没有长度大于 $1$ 的贡献。"
+        ],
+        "solution_brief": "先计入全部 $n$ 个长度为 $1$ 的子串，再扫描相邻字符；若 $S[r]\\ne S[r-1]$，答案加上 $r-1$。总复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 的子串定义与操作目标、editorial 的可行性判定和计数公式，并参考 tags。",
+        "quality_flags": [
+          "statement_operation_text_incomplete"
+        ]
+      }
+    },
+    "1694A": {
+      "problem_key": "1694A",
+      "title": "Creep",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1694/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/103952",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0fac9ea7ffa5abe97341d30d7ff6ae1fdd586b53d4e008635cf6b30cf4a18453",
+      "generated_at": "2026-09-28T01:13:22+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $a$ 个 `0` 和 $b$ 个 `1`，排列成二进制字符串。一个前缀的分数是其中 `0` 与 `1` 数量之差的绝对值，字符串的蠕动度是所有前缀分数的最大值；要求构造蠕动度最小的字符串。",
+        "transformed_statement": "将每个 `01` 视为一个平衡块：块结束时前缀差回到 $0$，块内部最大差为 $1$；剩余单一字符从零开始累积差值，最终只由数量差 $|a-b|$ 决定。",
+        "key_observations": [
+          "任意非空二进制串的首个前缀分数都是 $1$，完整字符串的分数是 $|a-b|$，因此答案至少为 $\\max(1,|a-b|)$。",
+          "每次同时剩余两种字符时加入 `01`，两个字符后的前缀差回到 $0$，中间最多达到 $1$，不会额外扩大最大分数。",
+          "成对加入后只剩一种字符；连续加入剩余字符时，分数从 $0$ 单调增至 $|a-b|$，所以整体蠕动度恰为 $\\max(1,|a-b|)$。"
+        ],
+        "solution_brief": "下界由首字符和最终整体差值给出。不断在两类字符都未用完时追加 `01`，再追加剩余的同类字符；该构造达到 $\\max(1,|a-b|)$，复杂度为 $O(a+b)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text，以及 tags 中的 greedy 和 implementation。",
         "quality_flags": []
       }
     }

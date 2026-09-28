@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3187,
+    "total_problems": 3189,
     "source_total_problems": 3191,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3187,
-    "with_editorial_brief": 2906,
-    "with_solution_brief": 2908,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3189,
+    "with_editorial_brief": 2908,
+    "with_solution_brief": 2910,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2249,
+    "ai_override_count": 2251,
     "primary_topic_count": 13,
-    "contest_count": 487,
+    "contest_count": 488,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,11 +44,11 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1019,
     "博弈": 101,
     "动态规划与状态设计": 270,
     "树结构": 158,
     "图论与网络流": 199,
-    "构造与贪心": 1017,
     "数论与同余": 340,
     "组合计数与概率": 247,
     "数据结构": 298,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1947,
+    "ai_generated_with_editorial": 1949,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -98445,6 +98445,71 @@ window.CF_INSIGHTS_DATA = {
             "各连通分量独立构造 $2\\times k$ 网格后横向拼接，得到整体的 $2\\times n$ 网格，同时两种铺法在任意骨牌位置上都不会重合。"
           ],
           "solutionBrief": "把数字视为顶点、骨牌视为允许重边和自环的边。若存在仅含一条边的连通分量则无解；否则对每个分量做 DFS，取得首尾相同的遍历序列，去掉末尾后环形填入 $2\\times k$ 网格，再拼接所有分量。整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1694,
+      "name": "Codeforces Round 800 (Div. 2)",
+      "date": "2022-06-16",
+      "url": "https://codeforces.com/contest/1694",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1200,
+      "problems": [
+        {
+          "key": "1694A",
+          "index": "A",
+          "slot": "A",
+          "title": "Creep",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1694/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103952",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定 $a$ 个 `0` 和 $b$ 个 `1`，排列成二进制字符串。一个前缀的分数是其中 `0` 与 `1` 数量之差的绝对值，字符串的蠕动度是所有前缀分数的最大值；要求构造蠕动度最小的字符串。",
+          "transformedStatement": "将每个 `01` 视为一个平衡块：块结束时前缀差回到 $0$，块内部最大差为 $1$；剩余单一字符从零开始累积差值，最终只由数量差 $|a-b|$ 决定。",
+          "keyObservations": [
+            "任意非空二进制串的首个前缀分数都是 $1$，完整字符串的分数是 $|a-b|$，因此答案至少为 $\\max(1,|a-b|)$。",
+            "每次同时剩余两种字符时加入 `01`，两个字符后的前缀差回到 $0$，中间最多达到 $1$，不会额外扩大最大分数。",
+            "成对加入后只剩一种字符；连续加入剩余字符时，分数从 $0$ 单调增至 $|a-b|$，所以整体蠕动度恰为 $\\max(1,|a-b|)$。"
+          ],
+          "solutionBrief": "下界由首字符和最终整体差值给出。不断在两类字符都未用完时追加 `01`，再追加剩余的同类字符；该构造达到 $\\max(1,|a-b|)$，复杂度为 $O(a+b)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1694B",
+          "index": "B",
+          "slot": "B",
+          "title": "Paranoid String",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1694/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103952",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定二进制串，反复对相邻且不同的字符执行题目规定的两种缩短操作，每次删除其中一个字符，直到只剩一个字符。求所有子串中能够完成这一过程的子串数量。",
+          "transformedStatement": "题解将可行性转化为末尾相邻字符的判定：长度为 $1$ 的子串必然合法；更长子串当且仅当其最后两个字符不同。于是按右端点统计，出现相邻变化时贡献全部更短起点。",
+          "keyObservations": [
+            "长度大于 $1$ 的子串是否可约，完全由末尾两个字符决定：只有 $T_{m-1}\\ne T_m$ 时才是 paranoid；末尾相等的两个字符永远无法被消去。",
+            "当末尾字符不同且长度至少为 $3$ 时，根据末尾三字符是 $010$ 还是 $110$，选择对应相邻对操作即可把末尾化为 $10$，从而递归缩短字符串。",
+            "固定右端点 $r$ 时，若 $S[r]\\ne S[r-1]$，所有起点 $1\\ldots r-1$ 都产生合法子串，因此该右端点贡献 $r-1$；否则没有长度大于 $1$ 的贡献。"
+          ],
+          "solutionBrief": "先计入全部 $n$ 个长度为 $1$ 的子串，再扫描相邻字符；若 $S[r]\\ne S[r-1]$，答案加上 $r-1$。总复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
