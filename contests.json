@@ -1,5 +1,16 @@
 [
   {
+    "id": 1523,
+    "name": "Deltix Round, Spring 2021 (open for everyone, rated, Div. 1 + Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1622385300,
+    "relativeTimeSeconds": 168248260,
+    "date": "2021-05-30"
+  },
+  {
     "id": 1535,
     "name": "Educational Codeforces Round 110 (Rated for Div. 2)",
     "type": "ICPC",
