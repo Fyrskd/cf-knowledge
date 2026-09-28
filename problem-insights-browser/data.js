@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3624,
+    "total_problems": 3630,
     "source_total_problems": 3632,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3624,
-    "with_editorial_brief": 3318,
-    "with_solution_brief": 3320,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3630,
+    "with_editorial_brief": 3324,
+    "with_solution_brief": 3326,
     "missing_editorial_brief": 304,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2686,
+    "ai_override_count": 2692,
     "primary_topic_count": 13,
-    "contest_count": 559,
+    "contest_count": 560,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1177,
+    "数论与同余": 377,
+    "构造与贪心": 1178,
+    "基础实现与模拟": 230,
+    "动态规划与状态设计": 295,
+    "博弈": 110,
+    "组合计数与概率": 275,
     "图论与网络流": 236,
-    "组合计数与概率": 274,
     "几何": 89,
     "字符串": 191,
-    "基础实现与模拟": 229,
-    "数论与同余": 376,
     "数据结构": 343,
-    "博弈": 109,
     "树结构": 175,
     "交互": 106,
-    "动态规划与状态设计": 294,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2359,
     "missing_editorial": 304,
-    "ai_generated_with_editorial": 2353,
     "ai_generated_partial_editorial": 74,
     "low_confidence": 1,
     "manual_override": 891,
@@ -111783,6 +111783,180 @@ window.CF_INSIGHTS_DATA = {
             "按原字符串编号离线扫描，用树状数组维护当前编号以前的后缀起点；对区间 $[l,r]$ 做两次前缀版本差分即可筛掉其他字符串。"
           ],
           "solutionBrief": "把原字符串、重链及其反向串拼成总串，建立后缀数组、LCP 与 RMQ。用重链分解计算路径串和后缀的 LCP，二分得到匹配后缀区间；再按字符串编号离线扫描，以树状数组统计该区间内属于 $[l,r]$ 的后缀起点。总复杂度为 $O((n+q)\\log^2 n)$，空间复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1613,
+      "name": "Educational Codeforces Round 118 (Rated for Div. 2)",
+      "date": "2021-12-01",
+      "url": "https://codeforces.com/contest/1613",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1613A",
+          "index": "A",
+          "slot": "A",
+          "title": "Длинное сравнение",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1613/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/97467",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "每个数由正整数 $x$ 后追加 $p$ 个零组成，即数值为 $x\\times10^p$。给出两数的 $(x,p)$，要求判断第一数小于、等于还是大于第二数。",
+          "transformedStatement": "把题目转化为比较 $x_1\\times10^{p_1}$ 与 $x_2\\times10^{p_2}$，先约去两者共有的十进制因子，再利用剩余指数和数值上界完成比较，避免构造超大整数。",
+          "keyObservations": [
+            "把追加 $p$ 个零等价为数值 $x\\times10^p$，同时除去两数共有的 $10^{\\min(p_1,p_2)}$ 不会改变比较结果。",
+            "消去公共零后，至少有一个数的剩余指数为 $0$，因此它的实际数值不超过 $10^6$，无需构造超大整数。",
+            "若另一个数的剩余指数至少为 $7$，它至少为 $10^7$，必然大于指数为 $0$ 的数；否则直接计算两个不超过可处理范围的数并比较。"
+          ],
+          "solutionBrief": "将两数表示为 $x_i10^{p_i}$，先从两个指数中同时减去最小值。若剩余指数至少为 $7$，利用数值上下界直接判定；否则计算缩小后的数值并比较。每组测试为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1613B",
+          "index": "B",
+          "slot": "B",
+          "title": "Отсутствующий остаток",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1613/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/97467",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定由互不相同正整数组成的数组，需要输出至多 $\\lfloor n/2\\rfloor$ 个互不相同的有序对 $(x,y)$；其中 $x,y$ 都来自数组且 $x\\ne y$，并要求余数 $x\\bmod y$ 不在数组中。任意满足条件的对及其顺序都可以输出。",
+          "transformedStatement": "把问题转化为寻找一个统一的除数：取数组最小值 $y$，再将其他元素分别与它组成有序对。所有对应余数都小于 $y$，因而自动避开数组中的所有元素。",
+          "keyObservations": [
+            "设 $y$ 为数组中的最小值，则任意不同的 $x$ 都满足 $x\\bmod y<y$；由于数组元素均为正且 $y$ 最小，该余数不可能出现在数组中。",
+            "固定最小值作为第二个数后，每个其他元素都能独立形成合法有序对，因此只需任选 $\\lfloor n/2\\rfloor$ 个元素作为 $x$，无需处理配对冲突。",
+            "可产生的候选对数量为 $n-1$，而 $n-1\\ge\\lfloor n/2\\rfloor$，所以总能满足输出数量要求。"
+          ],
+          "solutionBrief": "找出数组最小值 $y$，任选 $\\lfloor n/2\\rfloor$ 个其他元素作为 $x$，输出 $(x,y)$。因为 $x\\bmod y<y$ 且小于数组最小值，所以余数一定不在数组中；每个测试用例线性处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1613C",
+          "index": "C",
+          "slot": "C",
+          "title": "Отравленный кинжал",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1613/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/97467",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search"
+          ],
+          "statementBrief": "给定按时间发生的 $n$ 次攻击，每次攻击会让毒效从当前秒开始持续 $k$ 秒并造成每秒 1 点伤害；若毒效尚未结束就再次攻击，旧效果会被取消并重新计时。求使总伤害至少达到龙的生命值 $h$ 所需的最小 $k$。",
+          "transformedStatement": "把每次攻击的毒伤按相邻攻击之间的时间段分摊：第 $i$ 次攻击贡献 $\\min(k,a_{i+1}-a_i)$，最后一次贡献 $k$，于是问题转化为寻找使该总和达到 $h$ 的最小整数 $k$。",
+          "keyObservations": [
+            "第 $i$ 次攻击造成的毒伤只持续到下一次攻击，因此在两次攻击间隔为 $d$ 时贡献是 $\\min(k,d)$，避免重复计算被刷新部分。",
+            "最后一次攻击后没有后续刷新，毒效完整持续 $k$ 秒，因此总伤害包含单独的末项 $k$。",
+            "总伤害 $k+\\sum_{i=1}^{n-1}\\min(k,a_{i+1}-a_i)$ 随 $k$ 增大而不减，故“伤害至少为 $h$”具有单调性，可二分最小可行值。"
+          ],
+          "solutionBrief": "固定毒效持续时间 $k$，按相邻攻击间隔计算总伤害：$k+\\sum\\min(k,a_{i+1}-a_i)$。由于该函数关于 $k$ 单调不减，二分查找满足总伤害至少为 $h$ 的最小 $k$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1613D",
+          "index": "D",
+          "slot": "D",
+          "title": "MEX-последовательности",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1613/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/97467",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定非负整数数组，按下标递增选择一个非空子序列；对该子序列的每个前缀，都要求其中最后加入的数与该前缀 MEX 的绝对差不超过 $1$。求满足条件的子序列数量，按 $998244353$ 取模；不同下标选择需分别计数。",
+          "transformedStatement": "将合法子序列按其出现结构分为两类：数值块按 $0,1,\u0002dots$ 依次推进的类型，以及推进到某个 MEX 后只在相邻的两个值之间延续的类型。扫描原数组时，用“形态类型 + 当前 MEX”作为状态，并按新元素与 MEX 的关系转移。",
+          "keyObservations": [
+            "合法序列只有两种形态：各数值按 $0,1,\u0002dots,x$ 分块出现，或在连续前缀后交替加入 $x-1$ 与 $x+1$；这将任意前缀约束压缩为两类状态。",
+            "对第一类状态且当前 MEX 为 $j$，只能加入 $j-1,j,j+1$：分别保持第一类、使 MEX 增至 $j+1$、转入第二类，其余值都会立即违反约束。",
+            "对第二类状态且当前 MEX 为 $j$，只能加入 $j-1$ 或 $j+1$，二者都保持第二类；加入 $j$ 会使 MEX 跳过一个数，从而不合法。",
+            "按数组顺序更新两个一维状态数组即可，因为每个元素只影响常数个 MEX 状态，避免保存所有前缀层并将空间降至 $O(n)$。"
+          ],
+          "solutionBrief": "扫描数组，设两组 DP 分别统计两种合法形态、当前 MEX 为 $j$ 的子序列数。根据当前元素与 $j$ 的关系执行上述常数种转移，初始空序列状态为第一类的 MEX $0$，最后汇总两组状态并扣除空序列，结果对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1613E",
+          "index": "E",
+          "slot": "E",
+          "title": "Сумасшедший робот",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1613/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/97467",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "graphs"
+          ],
+          "statementBrief": "给定一个有障碍的网格和唯一实验室，机器人位于任意空闲格时，每一步可发送一个方向命令；机器人必须选择不同于命令的非障碍相邻方向移动，若没有可选方向则原地不动。对每个空闲格判断能否在每步适当发令、无论机器人如何选择都最终到达实验室，并将能做到的格子标为“+”。",
+          "transformedStatement": "将过程建模为博弈图：先手选择要排除的方向，后手从其余可行邻居中选择移动。目标是求从实验室反向计算的必胜区域，即每个格子至少有一个已纳入必胜区域的邻居，且最多只剩一个尚未判定的邻居。",
+          "keyObservations": [
+            "把状态拆成“机器人所在格子、当前轮到谁选方向”：到达实验室立即胜利，其余状态先视为未确定，避免直接处理“无论机器人怎么选”的量词。",
+            "某个格子可被强制到达实验室，当且仅当它有至少一个已确定可赢的邻居，且未确定的可走邻居不超过一个；发送对应方向即可排除这个邻居。",
+            "从实验室向外传播可赢状态，并为每个格子维护尚未确定的邻居数；每确定一个邻居可赢，就将该计数减一，计数降至 $1$ 或 $0$ 时该格子即可加入传播。",
+            "传播过程中只有从实验室可达的可赢状态会被处理，因此每个格子和相邻关系只需处理常数次，整体复杂度为 $O(nm)$。"
+          ],
+          "solutionBrief": "将问题视为双方轮流选择方向的博弈：先手指定一个方向，机器人从其他未封锁方向中任选其一。以实验室为起点进行 BFS/DFS，维护每格尚未确定的邻居数；某格存在已赢邻居且剩余未赢邻居不超过一个时标记为可赢，最终将这些格子改为“+”。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1613F",
+          "index": "F",
+          "slot": "F",
+          "title": "Раскраска дерева",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1613/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/97467",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "divide and conquer",
+            "fft"
+          ],
+          "statementBrief": "给定以 1 为根的树，将所有顶点一一染成颜色 $1$ 到 $n$，每种颜色恰好使用一次。若某个非根顶点的颜色恰好比父节点小 $1$，则染色不美丽；要求统计美丽染色数并对 $998244353$ 取模。",
+          "transformedStatement": "把每条父子边视为一个不允许发生的约束，使用容斥统计违规边集合。合法的违规集合要求同一父节点至多选一条通向孩子的边，其计数由各节点的多项式 $1+d_i x$ 的乘积统一表示。",
+          "keyObservations": [
+            "对每条父子边设一个“违规事件”，容斥中若选了 $k$ 个事件，则这些边强制确定 $k$ 个子节点的颜色，剩余可自由分配的颜色数为 $(n-k)!$。",
+            "同一父节点不能同时违反通向两个孩子的约束，因此可选违规边集合的数量不是简单组合数，而是按每个节点独立选择至多一条出边。",
+            "设节点 $i$ 有 $d_i$ 个孩子，则选取违规边的生成函数为 $1+d_i x$；所有节点相乘后，$x^k$ 的系数就是恰好选取 $k$ 条合法违规边的方案数。",
+            "将容斥所需的多项式乘积用分治合并并结合 FFT 计算，可将原本的二次背包降为 $O(n\\log^2 n)$。"
+          ],
+          "solutionBrief": "对父子约束使用容斥。恰好选取 $k$ 条违规边的方案数是多项式 $\\prod_i(1+d_i x)$ 的系数，贡献为 $(-1)^k(n-k)!$；用分治 FFT 求出全部系数后累加。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
