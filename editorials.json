@@ -8,6 +8,28 @@
     "raw_sha256": "e02bf41675dc0dbc425a56dd042c753b3411dbe71c57032363c612b54b0bb7d8"
   },
   {
+    "url": "https://codeforces.com/blog/entry/93149",
+    "blog_entry_id": 93149,
+    "title": "Editorial for Codeforces Round #734 (Div.3)",
+    "author": "MrPaul_TUser",
+    "creation_time": "2021-07-24",
+    "original_locale": "ru",
+    "source": "codeforces-blog",
+    "label": "Editorial for Codeforces Round #734 (Div.3)",
+    "section_count": 8,
+    "covered_problems": [
+      "1551A",
+      "1551B1",
+      "1551B2",
+      "1551C",
+      "1551D1",
+      "1551D2",
+      "1551E",
+      "1551F"
+    ],
+    "raw_sha256": "074bb17a767b60f04c4888fd44474c64048458ba12e58254202c9f0ed861ebc1"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/93321",
     "blog_entry_id": 93321,
     "title": "Editorial of Codeforces Round #735 (Div. 2)",

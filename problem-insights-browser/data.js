@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3891,
-    "source_total_problems": 3893,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 3891,
+    "total_problems": 3892,
+    "source_total_problems": 3901,
+    "filtered_out_problems": 9,
+    "with_statement_brief": 3892,
     "with_editorial_brief": 3563,
     "with_solution_brief": 3565,
-    "missing_editorial_brief": 326,
+    "missing_editorial_brief": 327,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2953,
     "primary_topic_count": 13,
-    "contest_count": 604,
+    "contest_count": 605,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,8 +44,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1260,
     "字符串": 204,
-    "构造与贪心": 1259,
     "组合计数与概率": 298,
     "动态规划与状态设计": 318,
     "交互": 114,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 327,
     "ai_generated_with_editorial": 2584,
     "ai_generated_partial_editorial": 88,
-    "missing_editorial": 326,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -119831,6 +119831,38 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "先按集合交集求连通分量，并按并集的包含关系建森林。对每个分量按歌手的成员关系划分等价类，依据逐集合切分规则判断其序列是否唯一（至多反转）；将子分量压成单元素后，各类贡献阶乘，合法答案为所有分量贡献之积。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1551,
+      "name": "Codeforces Round 734 (Div. 3)",
+      "date": "2021-07-23",
+      "url": "https://codeforces.com/contest/1551",
+      "type": "Div. 3",
+      "problemCount": 1,
+      "maxRating": 1700,
+      "problems": [
+        {
+          "key": "1551D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Domino (easy version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1551/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/93149",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Domino (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }

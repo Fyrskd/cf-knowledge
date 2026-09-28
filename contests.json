@@ -1,5 +1,16 @@
 [
   {
+    "id": 1551,
+    "name": "Codeforces Round 734 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1627050900,
+    "relativeTimeSeconds": 163557000,
+    "date": "2021-07-23"
+  },
+  {
     "id": 1552,
     "name": "Codeforces Global Round 15",
     "type": "CF",
