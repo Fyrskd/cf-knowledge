@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3431,
+    "total_problems": 3433,
     "source_total_problems": 3436,
-    "filtered_out_problems": 5,
-    "with_statement_brief": 3431,
-    "with_editorial_brief": 3132,
-    "with_solution_brief": 3134,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3433,
+    "with_editorial_brief": 3134,
+    "with_solution_brief": 3136,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2493,
+    "ai_override_count": 2495,
     "primary_topic_count": 13,
-    "contest_count": 527,
+    "contest_count": 528,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "基础实现与模拟": 215,
+    "构造与贪心": 1107,
     "字符串": 182,
     "数论与同余": 364,
-    "构造与贪心": 1106,
     "动态规划与状态设计": 282,
     "图论与网络流": 223,
-    "基础实现与模拟": 214,
     "数据结构": 324,
     "代数、矩阵与多项式": 24,
     "树结构": 166,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "交互": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2172,
+    "ai_generated_with_editorial": 2174,
     "missing_editorial": 297,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -105833,6 +105833,66 @@ window.CF_INSIGHTS_DATA = {
             "预先求出从 $s$ 到各点的最短距离后，按实际路径长度递增传播两类状态并累加方案数，即可同时统计最短路径和恰好多一条边的路径。"
           ],
           "solutionBrief": "先从 $s$ BFS 求最短距离，再在每个顶点保留长度为最短距离或加 $1$ 的到达状态。按路径长度递增转移并统计方案数，累加到达 $t$ 的两种状态；由于符合条件的路径不会重复顶点，计数不会产生回路问题。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1649,
+      "name": "Codeforces Round 775 (Div. 2, based on Moscow Open Olympiad in Informatics)",
+      "date": "2022-03-06",
+      "url": "https://codeforces.com/contest/1649",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1300,
+      "problems": [
+        {
+          "key": "1649A",
+          "index": "A",
+          "slot": "A",
+          "title": "Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1649/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100592",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定由陆地和水域组成的连续位置，首尾一定是陆地。只能在相邻陆地间免费移动，也可从陆地向更远的陆地跳跃并支付跳跃距离；求从第一处到最后一处所需的最少金币。",
+          "transformedStatement": "把免费移动看成只能在起点侧和终点侧的连续陆地区间内扩展；问题转化为找出这两个区间的边界 $l,r$，并用一次付费跳跃跨越中间全部水域。",
+          "keyObservations": [
+            "从起点沿相邻陆地免费移动后，能到达的最远位置是首段连续陆地的末端 $l$；从终点反向看，能免费到达终点的最左位置是末段连续陆地的起点 $r$。",
+            "所有水域都位于 $l$ 与 $r$ 之间，因此直接从 $l$ 跳到 $r$ 一次即可跨过全部障碍，花费为 $r-l$。",
+            "若存在水域，任何路线都必须从起点侧陆地跨到终点侧陆地，所需付费跳跃的总跨度至少为 $r-l$，所以直接跨越达到最优；无水域时答案为 $0$。"
+          ],
+          "solutionBrief": "若数组全为陆地，答案为 $0$。否则扫描起点侧连续的陆地得到 $l$，从终点反向扫描连续陆地得到 $r$，输出 $r-l$，即一次付费跳跃跨过所有水域。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1649B",
+          "index": "B",
+          "slot": "B",
+          "title": "Game of Ball Passing",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1649/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100592",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 名球员，第 $i$ 名球员在整个过程中传球 $a_i$ 次；球可以在球员之间反复传递，同一个球可连续参与多次传球。已知每人的传球次数，要求所有传球都能实现时所需球的最少数量。",
+          "transformedStatement": "把每个球看成一条按时间排列的传球链：一名球员的传球可以由此前接到的球继续完成。问题转化为用尽可能少的链覆盖所有传球次数，关键在于最大传球次数能否被其他传球衔接。",
+          "keyObservations": [
+            "设总传球数为 $S$、最多传球者为 $M$；当 $2M\\le S$ 且 $S>0$ 时，所有传球可以串成同一条球的传递链，因此只需一个球。",
+            "最多传球者的传球次数超过其他人的总次数时，其他传球最多只能衔接 $S-M$ 次，剩余的 $2M-S$ 次必须由不同的球开启，因此需要 $2M-S$ 个球。",
+            "当 $S=0$ 时没有任何传球，答案为 $0$；否则答案统一为 $\\max(1,2M-S)$。"
+          ],
+          "solutionBrief": "统计传球总数 $S$ 和最大值 $M$。若 $S=0$，答案为 $0$；否则输出 $\\max(1,2M-S)$。当最大传球次数不超过其余次数总和时可串成一条链，否则由无法衔接的剩余传球数决定球数。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

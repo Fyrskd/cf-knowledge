@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T05:15:32+00:00",
+  "updated_at": "2026-09-28T05:19:36+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -74578,6 +74578,60 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的相邻字符删除规则、目标字符定义，以及 editorial 对奇数位置条件的说明。",
+        "quality_flags": []
+      }
+    },
+    "1649B": {
+      "problem_key": "1649B",
+      "title": "Game of Ball Passing",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1649/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/100592",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "02018272adf89bb6b57fdf23bd963ea946e3b3f5171080a1cc73428523421b9b",
+      "generated_at": "2026-09-28T05:19:17+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 名球员，第 $i$ 名球员在整个过程中传球 $a_i$ 次；球可以在球员之间反复传递，同一个球可连续参与多次传球。已知每人的传球次数，要求所有传球都能实现时所需球的最少数量。",
+        "transformed_statement": "把每个球看成一条按时间排列的传球链：一名球员的传球可以由此前接到的球继续完成。问题转化为用尽可能少的链覆盖所有传球次数，关键在于最大传球次数能否被其他传球衔接。",
+        "key_observations": [
+          "设总传球数为 $S$、最多传球者为 $M$；当 $2M\\le S$ 且 $S>0$ 时，所有传球可以串成同一条球的传递链，因此只需一个球。",
+          "最多传球者的传球次数超过其他人的总次数时，其他传球最多只能衔接 $S-M$ 次，剩余的 $2M-S$ 次必须由不同的球开启，因此需要 $2M-S$ 个球。",
+          "当 $S=0$ 时没有任何传球，答案为 $0$；否则答案统一为 $\\max(1,2M-S)$。"
+        ],
+        "solution_brief": "统计传球总数 $S$ 和最大值 $M$。若 $S=0$，答案为 $0$；否则输出 $\\max(1,2M-S)$。当最大传球次数不超过其余次数总和时可串成一条链，否则由无法衔接的剩余传球数决定球数。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的传球规则、样例说明和 editorial_text；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1649A": {
+      "problem_key": "1649A",
+      "title": "Game",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1649/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/100592",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7e9025a6ac8ee48129ac75928726e3765bebb5b678949d82e6ce873e6523a07e",
+      "generated_at": "2026-09-28T05:19:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定由陆地和水域组成的连续位置，首尾一定是陆地。只能在相邻陆地间免费移动，也可从陆地向更远的陆地跳跃并支付跳跃距离；求从第一处到最后一处所需的最少金币。",
+        "transformed_statement": "把免费移动看成只能在起点侧和终点侧的连续陆地区间内扩展；问题转化为找出这两个区间的边界 $l,r$，并用一次付费跳跃跨越中间全部水域。",
+        "key_observations": [
+          "从起点沿相邻陆地免费移动后，能到达的最远位置是首段连续陆地的末端 $l$；从终点反向看，能免费到达终点的最左位置是末段连续陆地的起点 $r$。",
+          "所有水域都位于 $l$ 与 $r$ 之间，因此直接从 $l$ 跳到 $r$ 一次即可跨过全部障碍，花费为 $r-l$。",
+          "若存在水域，任何路线都必须从起点侧陆地跨到终点侧陆地，所需付费跳跃的总跨度至少为 $r-l$，所以直接跨越达到最优；无水域时答案为 $0$。"
+        ],
+        "solution_brief": "若数组全为陆地，答案为 $0$。否则扫描起点侧连续的陆地得到 $l$，从终点反向扫描连续陆地得到 $r$，输出 $r-l$，即一次付费跳跃跨过所有水域。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 以及 implementation 标签提炼。",
         "quality_flags": []
       }
     }
