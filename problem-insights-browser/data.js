@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3243,
+    "total_problems": 3249,
     "source_total_problems": 3252,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3243,
-    "with_editorial_brief": 2962,
-    "with_solution_brief": 2964,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3249,
+    "with_editorial_brief": 2968,
+    "with_solution_brief": 2970,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2305,
+    "ai_override_count": 2311,
     "primary_topic_count": 13,
-    "contest_count": 498,
+    "contest_count": 499,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1039,
-    "数据结构": 305,
+    "博弈": 102,
+    "基础实现与模拟": 199,
+    "构造与贪心": 1040,
+    "图论与网络流": 206,
+    "数据结构": 307,
     "动态规划与状态设计": 273,
     "数论与同余": 344,
     "树结构": 160,
-    "图论与网络流": 205,
     "组合计数与概率": 248,
     "代数、矩阵与多项式": 23,
-    "基础实现与模拟": 198,
     "字符串": 169,
     "几何": 78,
-    "交互": 100,
-    "博弈": 101
+    "交互": 100
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2003,
+    "ai_generated_with_editorial": 2009,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -100178,6 +100178,195 @@ window.CF_INSIGHTS_DATA = {
             "用 $S=\\sum_{i=1}^{n}(pos(i\\bmod(n+1)+1)-pos(i))\\bmod(2n+1)$ 判断一段数是否按环上递增顺序排列；$S=2n+1$ 当且仅当顺序成立，交换后只需 $O(1)$ 更新。"
           ],
           "solutionBrief": "把元素按是否小于或大于 $n+1$ 映射为 $-1/1$，用线段树维护循环前缀和并寻找平衡起点；再用环上位置和检查两条特殊递增链。若平衡或任一链被破坏则输出对应移位，否则输出 $-1$，单次复杂度 $O(\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1681,
+      "name": "Educational Codeforces Round 129 (Rated for Div. 2)",
+      "date": "2022-05-23",
+      "url": "https://codeforces.com/contest/1681",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1681A",
+          "index": "A",
+          "slot": "A",
+          "title": "Game with Cards",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1681/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103163",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "games",
+            "greedy"
+          ],
+          "statementBrief": "Alice 和 Bob 轮流出牌，后出牌者必须选择一张严格大于上一张牌的牌；无法出牌者输。分别假设 Alice 或 Bob 先手，判断两种情况下的赢家。",
+          "transformedStatement": "将整局游戏的可行动性压缩为全体牌的最大值 $x$：打出 $x$ 后对手必无更大牌可接，因而只需判断 $x$ 属于谁以及谁先行动。",
+          "keyObservations": [
+            "全体牌中的最大值 $x$ 决定胜负：打出 $x$ 后对手不可能再打出更大的牌，因此游戏至多在此处结束。",
+            "若只有一方拥有 $x$，该方无论先后都能在自己的回合打出 $x$，随后对手无法行动，所以该方必胜。",
+            "若双方都拥有 $x$，先行动者直接打出 $x$，对手无法响应，因此胜者就是当前的先手玩家。"
+          ],
+          "solutionBrief": "找出双方所有牌中的最大值。若最大值只属于一方，该方在先手或后手时都获胜；若双方都有最大值，则谁先行动谁获胜，分别输出两种先手情况下的赢家。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1681B",
+          "index": "B",
+          "slot": "B",
+          "title": "Card Trick",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1681/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103163",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一副由 $n$ 张不同数字牌组成的牌堆，并按顺序进行 $m$ 次洗牌；第 $j$ 次将顶部 $b_j$ 张牌整体移到牌堆底部，保持其内部顺序不变。求全部操作完成后最上面的牌的数字。",
+          "transformedStatement": "把牌堆表示为循环数组：第 $j$ 次操作就是整体左移 $b_j$ 位，所有操作合并成左移总量 $\\sum b_j\\bmod n$，再读取该偏移位置的原牌。",
+          "keyObservations": [
+            "每次把顶部 $b_j$ 张牌移到末尾且保持顺序，等价于将整个数组向左循环移动 $b_j$ 位，因此操作只改变整体起点。",
+            "连续循环移位可以合并为总位移，位移超过 $n$ 的部分不会产生新效果，所以只需计算 $\\sum b_j \\bmod n$。",
+            "左移 $x$ 位后，原数组下标为 $x$ 的元素会成为顶部牌，因此答案直接是 $a_{(\\sum b_j\\bmod n)}$（按 $0$ 下标）。"
+          ],
+          "solutionBrief": "将每次洗牌视为左循环移位，累加所有 $b_j$ 并对 $n$ 取模，最后输出原数组对应偏移下标的元素。每组复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1681C",
+          "index": "C",
+          "slot": "C",
+          "title": "Double Sort",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1681/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/103163",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组，每次选择两个不同位置，同时交换这两个位置在两个数组中的元素，最多操作 $10^4$ 次。要求判断能否使两个数组都按非递减顺序排列；若能，输出任意合法交换序列，否则输出 $-1$。",
+          "transformedStatement": "把两个数组的同一位置合并为二元组 $(a_i,b_i)$，问题转化为只交换二元组位置，使其按先比较 $a$、再比较 $b$ 的字典序排列；该顺序恰好保证两个分量数组同时有序。",
+          "keyObservations": [
+            "最终位置的顺序必须先按 $a$ 非递减排列；在 $a$ 相等的连续块内，$b$ 也必须非递减，否则任何交换都无法同时满足两数组有序。",
+            "因此目标等价于按二元组 $(a_i,b_i)$ 的字典序排列，交换位置时必须整体交换二元组，不会破坏元素配对关系。",
+            "将当前二元组序列变成该目标顺序即可得到合法操作；即使使用冒泡式交换，最多需要 $n(n-1)/2$ 次，满足 $n\\le100$ 时的操作上限。"
+          ],
+          "solutionBrief": "把每个位置视为二元组 $(a_i,b_i)$，按先 $a$ 后 $b$ 的字典序确定目标排列。若当前排列无法通过交换变成该顺序则输出 $-1$；否则用逐位置交换或冒泡交换实现目标排列并输出交换记录。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1681D",
+          "index": "D",
+          "slot": "D",
+          "title": "Required Length",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1681/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/103163",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "hashing",
+            "shortest paths"
+          ],
+          "statementBrief": "给定整数 $x$ 和目标位数 $n$，每次可选择当前十进制表示中出现的一个数字 $y$，将 $x$ 替换为 $x\\cdot y$。求使 $x$ 的无前导零十进制表示恰好变为 $n$ 位所需的最少操作数；无法达到时输出 $-1$。",
+          "transformedStatement": "把问题建模为可达整数构成的有向图：从当前数连向乘以其某个出现数字后的数，每条边代价为 $1$；由于正数始终具有 $x\\cdot2^a\\cdot3^b\\cdot5^c\\cdot7^d$ 的形式，可在有限状态图上求到任意 $n$ 位节点的最短距离。",
+          "keyObservations": [
+            "只考虑当前最大的数字并不保证最优，因为较小数字可能先制造出更大的后续乘数；因此必须保留所有可选数字的分支。",
+            "除去乘以 $0$ 的无效操作后，所有可达正整数都可表示为 $x\\cdot2^a\\cdot3^b\\cdot5^c\\cdot7^d$，这把无限搜索限制为有限状态集合。",
+            "当数值小于 $10^{19}$ 时，四种质因子指数分别有有限上界，候选状态约为 150 万量级，因此可以完整搜索而不会遗漏可行路径。",
+            "每次操作的代价均为 $1$，把可达整数视为有向图节点、合法乘法视为边后，首次到达 $n$ 位数的层数就是最少操作次数。"
+          ],
+          "solutionBrief": "将每个可达正整数作为状态，按其十进制表示中的每个数字生成乘法转移；忽略乘以 $0$ 的无效分支，在有限状态空间上用 BFS 或等价的记忆化搜索，首次得到 $n$ 位数时返回操作次数，搜不到则返回 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1681E",
+          "index": "E",
+          "slot": "E",
+          "title": "Labyrinth Adventures",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1681/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/103163",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "matrices",
+            "shortest paths"
+          ],
+          "statementBrief": "迷宫是由 $n$ 层组成的方形网格，每层之间有两个双向门；在没有墙阻挡时只能向相邻格移动，跨层必须通过门。对每个查询，要求计算从一个格子到另一个格子的最少移动次数。",
+          "transformedStatement": "将每层压缩成两个门状态：层内移动代价由曼哈顿距离给出，跨相邻层则形成一个 $2\\times2$ 的最短路转移；连续多层转移通过倍增预处理合并。",
+          "keyObservations": [
+            "任意向下再回到同一层的路径，都可用该层内两点间的曼哈顿路径替代，因此最优路线不会进入更低层。",
+            "跨层查询可表示为：先到起点层的某个门，依次经过相邻层的门，最后从终点层的某个门到达目标格。",
+            "两层门之间只有 $2\\times2$ 种状态，跨越连续层段的最短距离可按中间层门枚举并进行最小加法合并。",
+            "预处理跨越 $2^k$ 层的门间距离后，每次查询用 $O(\\log n)$ 次倍增跳到终点层前，再枚举最后一个门即可。"
+          ],
+          "solutionBrief": "先证明最优路径不会下降，并将相邻层门之间的距离作为 $2\\times2$ 转移。预处理跨越 $2^k$ 层的最短门间距离，查询时倍增跳跃并处理起终点层，整体复杂度为 $O((n+m)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1681F",
+          "index": "F",
+          "slot": "F",
+          "title": "Unique Occurrences",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1681/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/103163",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "dp",
+            "dsu",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带整数边权的树。对每对顶点，查看它们之间唯一简单路径，计算其中恰好出现一次的不同边权数量，最后求所有顶点对 $v<u$ 的该数量之和。",
+          "transformedStatement": "固定一种边权，把同色边视为 good，其余边视为 bad，统计恰好经过一条 good 边的顶点对；再对所有边权独立求和。题解用相关顶点构成虚树，并压缩不含 good 边的区域。",
+          "keyObservations": [
+            "把答案按边权分颜色计贡献：某种颜色在一条路径上恰好出现一次，当且仅当该颜色为这条路径贡献 $1$，因此各颜色可以独立统计后求和。",
+            "固定颜色后将同色边标为 good，其余边标为 bad；问题转化为统计包含 $0$ 或 $1$ 条 good 边的路径，并在顶点处合并不同子树的路径贡献。",
+            "只保留与 good 边相邻的顶点构成虚树，未保留区域内的路径不可能含 good 边，可用真实子树大小减去虚树子树规模直接汇总为 $0$ 条 good 边的路径。",
+            "虚树不必显式加入相邻顶点的 LCA，只需加入整棵树根并连接没有虚树父亲的节点；这种连接不会改变上述路径计数。"
+          ],
+          "solutionBrief": "按颜色分别统计恰好包含一条该颜色边的顶点对。对固定颜色建立由相关顶点组成的虚树，在虚树上维护路径含 $0$ 或 $1$ 条 good 边的数量，并用真实子树大小补足被压缩区域；汇总所有颜色，整体复杂度可达 $O(n\\log n)$ 或 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
