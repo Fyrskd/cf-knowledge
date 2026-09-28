@@ -1,5 +1,16 @@
 [
   {
+    "id": 1588,
+    "name": "Codeforces Round 755 (Div. 1, based on Technocup 2022 Elimination Round 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1636869900,
+    "relativeTimeSeconds": 153721758,
+    "date": "2021-11-14"
+  },
+  {
     "id": 1589,
     "name": "Codeforces Round 755 (Div. 2, based on Technocup 2022 Elimination Round 2)",
     "type": "CF",
