@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3712,
+    "total_problems": 3718,
     "source_total_problems": 3720,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3712,
-    "with_editorial_brief": 3400,
-    "with_solution_brief": 3402,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3718,
+    "with_editorial_brief": 3406,
+    "with_solution_brief": 3408,
     "missing_editorial_brief": 310,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2774,
+    "ai_override_count": 2780,
     "primary_topic_count": 13,
-    "contest_count": 574,
+    "contest_count": 575,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1209,
+    "数论与同余": 389,
+    "图论与网络流": 241,
+    "构造与贪心": 1211,
+    "数据结构": 353,
     "基础实现与模拟": 235,
     "字符串": 196,
     "动态规划与状态设计": 300,
     "树结构": 178,
-    "数论与同余": 387,
     "组合计数与概率": 280,
-    "图论与网络流": 240,
     "交互": 108,
-    "数据结构": 352,
     "几何": 90,
     "博弈": 112,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2428,
+    "ai_generated_with_editorial": 2434,
     "ai_generated_partial_editorial": 81,
     "missing_editorial": 310,
     "low_confidence": 1,
@@ -114396,6 +114396,201 @@ window.CF_INSIGHTS_DATA = {
             "题解指出至多经过 $n$ 步、甚至至多 $\\\\log n$ 步后数组会进入重复状态，因此只需预处理前若干个状态，超大的 $k$ 可直接复用后续规律。"
           ],
           "solutionBrief": "逐步统计当前数组中各值的出现次数，并据此生成下一数组；预处理直到状态稳定或重复。查询时用 $k=0$ 的初始状态或预处理状态直接回答，超大步数复用重复后的状态。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1601,
+      "name": "Codeforces Round 751 (Div. 1)",
+      "date": "2021-10-25",
+      "url": "https://codeforces.com/contest/1601",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1601A",
+          "index": "A",
+          "slot": "A",
+          "title": "Array Elimination",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1601/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/95865",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定非负整数数组，先固定一个 $k$，之后每次选择 $k$ 个具有非零按位与的元素，用它们的按位与清除这些元素中的对应公共二进制位；操作可重复进行。要求输出所有能最终把整个数组变为全零的 $k$，按升序排列。",
+          "transformedStatement": "把每个二进制位独立看待：记录该位在多少个数组元素中出现。固定 $k$ 后，问题转化为判断这 30 个出现次数是否都能被 $k$ 整除，即求这些计数的全部公因数。",
+          "keyObservations": [
+            "对每个二进制位分别计数；一次操作要么同时清除所选 $k$ 个数中的该位，要么不影响该位，因此该位出现次数必须能被 $k$ 整除。",
+            "这些整除条件不仅必要而且充分：若数组仍有非零元素，就存在某个出现次数非零的位；当它能被 $k$ 整除时，至少有 $k$ 个数含该位，可以继续进行消除。",
+            "答案等价于所有 30 个二进制位出现次数的公因数，并限制在 $1\\le k\\le n$；出现次数为 $0$ 的位不会额外限制 $k$。"
+          ],
+          "solutionBrief": "统计每个二进制位在数组中为 1 的元素数量，枚举 $k=1$ 到 $n$，保留能整除所有这些计数的 $k$，再按升序输出。总复杂度为 $O(n\\log C)$，其中 $C$ 是数值上界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1601B",
+          "index": "B",
+          "slot": "B",
+          "title": "Frog Traveler",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1601/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/95865",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "shortest paths",
+            "two pointers"
+          ],
+          "statementBrief": "青蛙位于深度 $n$，在深度 $i$ 时一次最多向上跳 $a_i$ 米，可选择跳 $0$ 到 $a_i$ 米；落到深度 $j$ 后必须休息，并向下滑到 $j+b_j$。求到达地面深度 $0$ 所需的最少跳数，并输出每次跳跃后、下滑前的落点序列；无法到达则输出 $-1$。",
+          "transformedStatement": "把一次操作抽象为从当前深度 $i$ 选择 $j\\in[i-a_i,i]$，再转移到 $j+b_j$ 的有向边。问题变成求从 $n$ 到 $0$ 的最短路，并通过反向按层扩展所有能转移到已知位置的区间状态来恢复路径。",
+          "keyObservations": [
+            "一次跳跃可表示为：从深度 $i$ 选择落点 $j\\in[i-a_i,i]$，休息后到达深度 $j+b_j$。",
+            "若已知位置 $v$ 的最少跳数为 $d$，则所有满足 $u+b_u=v$ 的落点 $u$，都能让任意区间包含 $u$ 的位置 $j$ 在 $d+1$ 跳内到达。",
+            "位置 $j$ 可作为落点当且仅当 $j\\ge u$ 且 $j-a_j\\le u$；因此可按左端点筛出尚未处理的区间，并保证每个位置只被扩展一次。",
+            "按跳数分层处理反向可达位置等价于 BFS，首次确定的位置即获得最少跳数，同时记录对应落点即可反推出答案序列。"
+          ],
+          "solutionBrief": "将每个位置的最少跳数视为从该位置到 $0$ 的距离。按距离分层反向扩展：由已确定的 $v$ 找出所有满足 $u+b_u=v$ 的落点，再用线段树按区间左端点提取包含 $u$ 的未处理位置，记录前驱并继续 BFS；每个位置只处理一次，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1601C",
+          "index": "C",
+          "slot": "C",
+          "title": "Optimal Insertion",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1601/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/95865",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定数组 $a$ 和 $b$，必须保持 $a$ 中元素的原有顺序，把 $b$ 的所有元素以任意顺序插入到开头、元素之间或末尾，得到数组 $c$。要求最小化 $c$ 中满足前项大于后项的下标对数量，并输出最小逆序数。",
+          "transformedStatement": "先将 $b$ 排序，把每个 $b_i$ 抽象为插入到 $a$ 的某个间隙前的位置 $p_i$。问题转化为在满足 $p_1\\le\\cdots\\le p_m$ 的条件下，最小化每个元素与左右两侧 $a$ 元素产生的新增逆序数。",
+          "keyObservations": [
+            "将 $b$ 按非降序放入结果最优；若两个插入元素顺序与数值相反，交换它们不会增加且会减少逆序对。",
+            "设 $p_i$ 为 $b_i$ 插入到 $a_{p_i}$ 前的位置，最优方案满足 $p_1\\le p_2\\le\\cdots\\le p_m$，因此位置选择具有单调性。",
+            "固定 $b_i$ 的插入位置后，它产生的新增逆序数是左侧大于它的 $a$ 元素数，加上右侧小于它的 $a$ 元素数。",
+            "利用位置单调性分治求各 $p_i$：每层只扫描对应候选区间，求出中点位置后将左右元素的候选范围分别限制在其两侧。"
+          ],
+          "solutionBrief": "先将 $b$ 排序，并为每个元素确定单调的插入位置。分治处理元素区间，在候选位置区间内扫描，按左右两侧的大小关系求最优位置；最后依据这些位置计算原数组逆序数与新增逆序数，总复杂度为 $O((n+m)\\log(n+m))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1601D",
+          "index": "D",
+          "slot": "D",
+          "title": "Difficult Mountain",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1601/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/95865",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定初始山路难度 $d$，每名登山者有技能 $s_i$ 和整洁度 $a_i$。按自选顺序行动时，只有当前难度不超过其技能者能登山；登山后难度变为 $\\max(当前难度,a_i)$，求最多能登山的人数。",
+          "transformedStatement": "把每名登山者视为配对 $(s_i,a_i)$，要求存在一个排列，使每一步都有 $\\max(d,a_{p_1},\\ldots,a_{p_{i-1}})\\le s_{p_i}$。通过识别互相不相容的配对并删除可被更优配对替代者，再求最大可行子集。",
+          "keyObservations": [
+            "初始难度为 $d$ 时，所有 $s_i<d$ 的登山者永远无法出场，因此可直接删除，剩余问题从 $D=d$ 开始。",
+            "若两人满足 $s_i<a_j\\le s_j<a_i$，他们彼此都不能排在对方之后；保留 $j$ 替代 $i$ 不会降低可行性，因为 $s_j>s_i$ 且 $a_j<a_i$。",
+            "满足 $a_i\\le s_i$ 的登山者之间不存在不相容关系；用双指针和按 $a$ 降序维护的集合，可删除所有会被这类登山者支配的 $s<a$ 配对。",
+            "对剩余配对按 $a$ 递增处理时，当前 $D\\le s_i$ 的配对应优先选择；它把难度变为 $\\max(D,a_i)$，选择最小可行 $a_i$ 能为后续保留最多空间，扫描即可得到最大可行子集。"
+          ],
+          "solutionBrief": "先删除 $s_i<d$ 的人，将配对分为 $a_i\\le s_i$ 与 $s_i<a_i$。按双指针和有序集合删除被前一类支配的配对；对剩余配对按 $a$ 递增扫描，若当前难度 $D\\le s_i$ 就选取并令 $D=\\max(D,a_i)$，统计选择数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1601E",
+          "index": "E",
+          "slot": "E",
+          "title": "Phys Ed Online",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1601/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/95865",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 天票价数组，第 $i$ 天可购买任意数量的票；票可在购买当天或之后激活，激活后连续有效 $k$ 天。每名学生要覆盖区间 $[l,r]$ 的每天访问，且必须在第 $l$ 天至少购买一张票，求完成覆盖的最小花费。",
+          "transformedStatement": "先固定在 $l$ 激活第一张票，把后续覆盖边界按每隔 $k$ 天划分。每个边界对应一个滑动区间最低票价，整个询问等价于这些最低价序列的前缀最小值之和，再加上首日票价。",
+          "keyObservations": [
+            "每名学生必须在起点 $l$ 购买并使用一张票，之后每隔 $k$ 天只需决定下一段覆盖所需的购票成本。",
+            "令 $b_i$ 为区间 $[i-k,i]$ 的最低票价，则后续各段的最优成本转化为序列 $b_l,b_{l+k},b_{l+2k}, ...$ 的前缀最小值之和，从而消除了具体激活时刻的选择。",
+            "前缀最小值可以由每个位置右侧第一个更小值 $nxt_i$ 分段计算，满足 $dp_i=dp_{nxt_i}+c_i(nxt_i-i)$，避免逐项扫描。",
+            "区间前缀最小值和可先找到区间最小值位置 $p$，再用 $dp_l-dp_p+(r-p+1)c_p$ 合并，区间最小值查询可用离线 RMQ 完成。"
+          ],
+          "solutionBrief": "用单调队列预处理滑动窗口最小票价，将每个询问转成等间隔序列上的前缀最小值和；再用单调栈求右侧首个更小值并递推后缀贡献，结合离线 RMQ 查询区间最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1601F",
+          "index": "F",
+          "slot": "F",
+          "title": "Two Sorts",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1601/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/95865",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "binary search",
+            "dfs and similar",
+            "math",
+            "meet-in-the-middle"
+          ],
+          "statementBrief": "将 $1$ 到 $n$ 视为字符串并按字典序排序，得到排列 $a$，其中 $a_i$ 是第 $i$ 个数。对每个位置计算 $(i-a_i)\\bmod 998244353$，求这些非负余数之和再对 $10^9+7$ 取模。",
+          "transformedStatement": "令 $b_i$ 表示整数 $i$ 在字典序排列中的位置，则把问题转化为计算所有 $((b_i-i)\\bmod M)$ 的总和。$b_i$ 可由比 $i$ 字典序更小的整数数量得到，再按数字前缀和长度对这些整数进行分组计数。",
+          "keyObservations": [
+            "将排列求和改写为逆排列：若 $b_i$ 表示整数 $i$ 在字典序排列中的位置，则原式等于 $\u00024\\sum_{i=1}^{n}((b_i-i)\\bmod M)\\u00024$，避免直接构造整个排列。",
+            "$b_i$ 等于字典序中不超过 $i$ 的元素数量，因此可按 $i$ 的长度、与 $n$ 首个不同的位置及对应数字分类；每类中的数字可表示为固定前缀加任意后缀。",
+            "对固定分类，$i$ 和 $b_i$ 都是后缀数字变量及常数的线性组合，所以 $b_i-i$ 也保持线性；只需统计其模 $M$ 的分布，而不必逐个生成整数。",
+            "把自由后缀拆成前后两半分别枚举，再匹配两半对模 $M$ 的贡献即可完成求和；边界 $n$ 只影响掩码匹配数量的少数情况。"
+          ],
+          "solutionBrief": "先用逆排列把目标改写为对 $((b_i-i)\\bmod M)$ 求和，再按数字长度、相对 $n$ 的首个差异位置和数字分组。每组中 $b_i-i$ 对自由后缀数字是线性的，使用折半枚举并按模 $M$ 匹配贡献，整体复杂度为 $O(\\sqrt n\\,\\operatorname{poly}(\\log n))$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
