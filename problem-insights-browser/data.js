@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3743,
+    "total_problems": 3750,
     "source_total_problems": 3752,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3743,
-    "with_editorial_brief": 3430,
-    "with_solution_brief": 3432,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3750,
+    "with_editorial_brief": 3437,
+    "with_solution_brief": 3439,
     "missing_editorial_brief": 311,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2805,
+    "ai_override_count": 2812,
     "primary_topic_count": 13,
-    "contest_count": 579,
+    "contest_count": 580,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 395,
+    "图论与网络流": 242,
+    "基础实现与模拟": 236,
+    "数论与同余": 396,
+    "组合计数与概率": 283,
+    "动态规划与状态设计": 305,
+    "字符串": 198,
     "构造与贪心": 1217,
     "树结构": 180,
-    "动态规划与状态设计": 304,
     "数据结构": 357,
     "交互": 109,
-    "组合计数与概率": 281,
-    "字符串": 197,
-    "图论与网络流": 241,
-    "基础实现与模拟": 235,
     "几何": 90,
     "博弈": 112,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2457,
+    "ai_generated_with_editorial": 2464,
     "ai_generated_partial_editorial": 82,
     "missing_editorial": 311,
     "low_confidence": 1,
@@ -115338,6 +115338,233 @@ window.CF_INSIGHTS_DATA = {
             "查询中的奇偶位置计数可由全局前缀计数相减得到；即使子串起点改变导致奇偶类别交换，取绝对值后答案不变。"
           ],
           "solutionBrief": "预处理每个前缀中全局奇数位和偶数位方括号数量。对查询 $[l,r]$ 分别作前缀差，输出两者差值的绝对值；其依据是方括号奇偶计数相等当且仅当无需付费修改。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1598,
+      "name": "Educational Codeforces Round 115 (Rated for Div. 2)",
+      "date": "2021-10-10",
+      "url": "https://codeforces.com/contest/1598",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 3200,
+      "problems": [
+        {
+          "key": "1598A",
+          "index": "A",
+          "slot": "A",
+          "title": "Computer Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1598/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/95890",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "给定一个两行 $n$ 列的网格，角色从左上角出发，每次可移动到边或角相邻的格子，但进入标记为 `1` 的陷阱格会失败。判断是否能在不经过陷阱的情况下到达右下角。",
+          "transformedStatement": "把网格看成按列推进的可达性问题：由于两行允许斜向移动，判断是否每一列至少存在一个安全格；只要出现全是陷阱的一列，路径就会被截断。",
+          "keyObservations": [
+            "由于只有两行，从第 $i$ 列任意一格都能通过横向或斜向移动到第 $i+1$ 列的任意一格，因此相邻两列只要各有一个安全格就一定能衔接。",
+            "只要每一列至少有一个安全格，就能逐列推进并最终到达终点；起点和终点已保证安全，所以不需要额外检查路径形状。",
+            "若某列的两个格子都是陷阱，则角色无法进入该列，后续所有列也不可达；因此判定条件等价于不存在全为陷阱的列。"
+          ],
+          "solutionBrief": "逐列检查两行字符：若存在某列两个位置都是 `1`，该列无法进入，答案为 NO；否则每列都有安全格，可逐列移动到终点，答案为 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1598B",
+          "index": "B",
+          "slot": "B",
+          "title": "Groups",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1598/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/95890",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "给定 $n$ 名学生及其对周一至周五的出席偏好。选择两个不同的上课日，并把学生分成两个等大组，每名学生只能分到自己在对应组上课日方便出席的组；判断是否存在可行安排。",
+          "transformedStatement": "把候选日期对固定为 $(a,b)$，学生只需按是否支持 $a$、是否支持 $b$ 分为四类；检查无双拒绝者且两类单日支持人数均不超过 $n/2$，即可判断该日期对能否完成等分。",
+          "keyObservations": [
+            "固定两个上课日后，学生按“两个都不方便、仅方便第一天、仅方便第二天、两天都方便”分成四类，问题只需统计这四类人数。",
+            "若有人对两个选定日期都不方便，则无法分组；仅方便某一天的人数若超过 $n/2$，也无法填满等大组。",
+            "当上述限制均满足时，先把所有仅方便某一天的学生放入对应组，再从两天都方便的学生中补足第一组，剩余学生自动进入第二组，因此条件也是充分的。",
+            "由于只有 5 天，枚举每个不同日期对并检查上述条件即可覆盖所有可能方案。"
+          ],
+          "solutionBrief": "枚举两个不同日期，将学生按对这两天的可行性分成四类。若存在两天都不可行的学生，或任一单日专属人数超过 $n/2$，则该日期对失败；否则可用同时可行的学生补齐两组，存在成功日期对就输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1598C",
+          "index": "C",
+          "slot": "C",
+          "title": "Delete Two Elements",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1598/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/95890",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "implementation",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个整数数组，先计算全数组的平均值。必须删除两个不同位置的元素，统计删除后剩余数组的平均值仍等于原平均值的下标对数量。",
+          "transformedStatement": "设数组总和为 $s$。删除两个元素保持平均值不变，当且仅当这两个元素的和等于 $\\frac{2s}{n}$，于是问题转化为统计满足指定和的下标对。",
+          "keyObservations": [
+            "删除两项后平均值不变，等价于被删两项的和为原总和的两倍除以 $n$，因此无需处理剩余数组。",
+            "若目标和 $\\frac{2s}{n}$ 不是整数，则不存在满足条件的数对，可直接判定答案为 $0$。",
+            "对每个元素 $a_i$，配对元素必须是 $\\frac{2s}{n}-a_i$，用出现次数统计即可累计候选位置。",
+            "累计时同一位置会在自身匹配和反向枚举中产生重复：先扣除满足 $2a_i=\\frac{2s}{n}$ 的自匹配，再将总数除以 $2$。"
+          ],
+          "solutionBrief": "先求数组总和 $s$，判断 $2s$ 是否能被 $n$ 整除；否则答案为 $0$。令目标和为 $2s/n$，统计每个值的出现次数，累加其与目标和的互补值的次数，修正自匹配后除以 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1598D",
+          "index": "D",
+          "slot": "D",
+          "title": "Training Session",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1598/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/95890",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "几何"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "geometry",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 道互不相同的题，每道题有主题和难度；任选恰好 3 道组成训练集。若三道题的主题两两不同，或难度两两不同，则选择有效，求有效三元组数量。",
+          "transformedStatement": "把每道题视为平面上的点 $(主题,难度)$，先统计所有三点组合，再计算同时含有一对同主题点和一对同难度点的坏三元组。坏三元组可唯一表示为一个中心点、一个同横坐标点和一个同纵坐标点。",
+          "keyObservations": [
+            "一个不合格三元组必须同时存在同主题的一对和同难度的一对；由于不存在完全相同的点，它必然呈现为中心题目加上一个同主题题目和一个同难度题目的形状。",
+            "固定中心题目 $(x,y)$ 后，同主题题目有 $cntT_x-1$ 种、同难度题目有 $cntD_y-1$ 种，因此该中心产生 $(cntT_x-1)(cntD_y-1)$ 个不合格选择。",
+            "每个不合格三元组只有唯一的中心题目，所以按中心累加不会重复计数；从总数中扣除即可得到合法答案。"
+          ],
+          "solutionBrief": "先统计每个主题和每个难度的出现次数。合法三元组数为总组合数 $n(n-1)(n-2)/6$，再对每道题 $(x,y)$ 扣除 $(cntT_x-1)(cntD_y-1)$ 个以它为中心的不合格三元组。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1598E",
+          "index": "E",
+          "slot": "E",
+          "title": "Staircases",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1598/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/95890",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个最初全为空闲的 $n\\times m$ 网格，阶梯路径是从一个单元格出发，只向下和向右移动，并按“先下后右”或“先右后下”形成的路径；单格路径也算有效。每次翻转一个单元格的空闲/锁定状态，要求输出当前完全由空闲单元格组成的不同阶梯路径数量。",
+          "transformedStatement": "把所有非单格阶梯归入唯一一条无法继续延伸的基准阶梯；问题转化为统计这些基准阶梯上的空闲连续段，并在单元格翻转时维护经过该格的两类路径贡献。�注意单格路径属于两类描述的交集，只能计数一次。�",
+          "keyObservations": [
+            "除单格路径外，每条阶梯路径只属于“先向下后向右”或“先向右后向下”中的一种，因此两类可以分别计数，最后只需避免重复计算单格路径。",
+            "所有长度至少为两格的路径都是某条无法继续延伸的基准阶梯的连续段；基准阶梯数量为 $O(n+m)$，所以初始计数可转化为分别统计这些阶梯上的连续段数量。",
+            "翻转一个单元格时，经过它的阶梯数量可按两侧可延伸的连续空闲长度分解为两个方向选择数的乘积；单元格变空闲时加入该贡献，变锁定时移除该贡献。",
+            "将每条基准阶梯单独看成一条线，并维护其中相邻空闲单元格组成的连续段，就能在更新时只处理该单元格所在的两条基准阶梯。"
+          ],
+          "solutionBrief": "先枚举从边界出发且无法继续延伸的基准阶梯，统计其连续段贡献并补上单格路径。每次翻转时，在两类方向中分别计算该格两侧连续空闲延伸数的乘积，按状态变化增减答案，并用连续段维护更新。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1598F",
+          "index": "F",
+          "slot": "F",
+          "title": "RBS",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1598/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/95890",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定 $n$ 个只含括号的非空字符串，可以任意重排字符串的顺序，但不能改变字符串内部字符。要求最大化拼接结果的非空前缀中属于正规括号序列的数量。",
+          "transformedStatement": "把每个字符串视为一次改变总余额并可能首次跌破零的转移；对已选字符串集合做子集 DP，集合决定当前余额，额外记录此前是否已经出现负余额，并统计每次追加带来的合法零余额前缀。",
+          "keyObservations": [
+            "选定字符串集合后，当前总括号平衡值由集合唯一决定，因此状态无需单独记录余额，只需记录已选集合和此前是否出现负余额。",
+            "若当前余额为 $b$，追加字符串时只有局部余额等于 $-b$ 的前缀可能成为 RBS；在该位置之前不能出现局部余额 $-b-1$，否则全局前缀已失效。",
+            "对每个字符串按局部余额建立各余额对应的位置有序表，即可用二分统计首次跌破合法范围前的有效零余额前缀数量，避免逐字符模拟。",
+            "一旦此前出现过负余额，后续前缀不可能再是 RBS，因此该标记只需单向变为真，并可跳过后续计数。"
+          ],
+          "solutionBrief": "预处理每个字符串的总余额、前缀最小余额及各余额出现位置。用子集 DP 记录已选字符串和是否曾跌破零；转移时依据最小余额更新标记，并用有序位置表和二分统计新增 RBS 前缀，复杂度为 $O(2^n\\log A+A\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1598G",
+          "index": "G",
+          "slot": "G",
+          "title": "The Sum of Good Numbers",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1598/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/95890",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "hashing",
+            "math",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定由若干个不含数字 0 的正整数连续拼接成的字符串 $s$，以及同样不含数字 0 的整数 $x$。需要找出 $s$ 中两个相邻且非空的子串，使它们代表的整数之和为 $x$，并输出这两个子串的位置；答案保证存在。",
+          "transformedStatement": "将问题改写为：在拼接串中定位一对相邻子串，并按较大加数长度是 $|x|-1$ 还是 $|x|$ 分类。对长度为 $|x|$ 的情况，再用其与 $x$ 的最长公共前缀确定另一段的有限候选长度，最后验证大整数加法。",
+          "keyObservations": [
+            "设较大加数为 $a$、较小加数为 $b$，若 $|a|=|x|-1$，则两者长度都必须是 $|x|-1$，候选位置只需检查相邻的等长子串。",
+            "若 $|a|=|x|$，设 $a$ 与 $x$ 的最长公共前缀长度为 $lcp$，则 $|b|$ 只可能为 $|x|-lcp$ 或 $|x|-lcp-1$，从而将长度选择压缩为两种。",
+            "由于较大数可能位于较小数前面或后面，只需枚举这些长度和两种相对顺序，候选总数为 $O(n)$，而不是枚举所有切分。",
+            "对候选子串及其加法关系使用字符串哈希快速比较，避免直接处理长度可达 $2\\cdot10^5$ 的整数。"
+          ],
+          "solutionBrief": "按较大加数长度为 $|x|-1$ 或 $|x|$ 分类；第二类利用与 $x$ 的最长公共前缀确定较小加数的两种长度，再枚举前后顺序，用多模哈希验证候选和。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
