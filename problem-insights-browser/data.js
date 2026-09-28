@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3440,
+    "total_problems": 3446,
     "source_total_problems": 3448,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3440,
-    "with_editorial_brief": 3142,
-    "with_solution_brief": 3144,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3446,
+    "with_editorial_brief": 3148,
+    "with_solution_brief": 3150,
     "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2502,
+    "ai_override_count": 2508,
     "primary_topic_count": 13,
-    "contest_count": 529,
+    "contest_count": 530,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数论与同余": 366,
+    "构造与贪心": 1110,
+    "树结构": 167,
     "组合计数与概率": 261,
     "数据结构": 326,
     "图论与网络流": 225,
     "基础实现与模拟": 215,
-    "构造与贪心": 1107,
     "字符串": 182,
-    "数论与同余": 364,
     "动态规划与状态设计": 282,
     "代数、矩阵与多项式": 24,
-    "树结构": 166,
     "几何": 81,
     "博弈": 106,
     "交互": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2182,
+    "ai_generated_with_editorial": 2188,
     "missing_editorial": 296,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -106128,6 +106128,192 @@ window.CF_INSIGHTS_DATA = {
             "覆盖集合相同的树边在 DFS 树上形成嵌套的竖直簇；遍历第二条边时用区间加和区间最大值，只保留同簇候选，从而计算恰好经过两条边之一的需求数。"
           ],
           "solutionBrief": "先对图做 DFS，统计每条树边的需求路径数、非树边覆盖数和随机 64 位哈希。分别处理桥相关的前三类情况；对哈希相同的树边按 DFS 顺序分簇，用支持区间加与区间最大值的线段树维护候选答案，整体复杂度为 $O(m+(n+k)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1646,
+      "name": "Codeforces Round 774 (Div. 2)",
+      "date": "2022-03-04",
+      "url": "https://codeforces.com/contest/1646",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1646A",
+          "index": "A",
+          "slot": "A",
+          "title": "Square Counting",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1646/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100584",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n+1$ 的整数序列及其总和 $s$。每个元素要么属于 $[0,n-1]$，要么等于 $n^2$；求序列中等于 $n^2$ 的元素个数。",
+          "transformedStatement": "把总和拆成 $s=x\\cdot n^2+u$，其中 $x$ 是目标个数，$u$ 是其余元素之和。由于 $u$ 最多为 $(n-1)(n+1)=n^2-1$，问题等价于求 $s$ 除以 $n^2$ 的整数商。",
+          "keyObservations": [
+            "设有 $x$ 个元素等于 $n^2$，其余元素之和为 $u$；由于其余每项至多为 $n-1$，且共有 $n+1$ 项，所以 $u\\le(n-1)(n+1)=n^2-1$。",
+            "总和满足 $s=x\\cdot n^2+u$，而 $u<n^2$，因此对 $s$ 整除 $n^2$ 向下取整后恰好得到 $x$，不会受到其他元素贡献的进位影响。"
+          ],
+          "solutionBrief": "每组数据直接计算 $\\left\\lfloor s/n^2\\right\\rfloor$。因为所有非 $n^2$ 元素的总和严格小于 $n^2$，商的整数部分正好是 $n^2$ 的出现次数，单组复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1646B",
+          "index": "B",
+          "slot": "B",
+          "title": "Quality vs Quantity",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1646/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100584",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一组非负整数，每个数至多染成红色或蓝色，也可以不染色。要求判断能否使红色元素总和大于蓝色总和，同时红色元素个数严格少于蓝色元素个数。",
+          "transformedStatement": "把方案按红色数量 $k$ 归一化为蓝色数量 $k+1$，再将问题转化为：排序后，是否存在某个 $k$，使最大的 $k$ 个数之和大于最小的 $k+1$ 个数之和。",
+          "keyObservations": [
+            "固定红色元素数量为 $k$ 后，若蓝色数量超过 $k+1$，删除多余蓝色元素会降低蓝色总和，因此只需考虑蓝色数量恰为 $k+1$。",
+            "在固定数量下，红色应选择最大的 $k$ 个数、蓝色应选择最小的 $k+1$ 个数；这是对任意方案同时增强红色总和、减小蓝色总和的最优替换。",
+            "排序后用前缀和与后缀和分别表示最小的 $k+1$ 个数之和及最大的 $k$ 个数之和，遍历 $k$ 即可检查所有规范化方案。"
+          ],
+          "solutionBrief": "将数组排序并计算前缀、后缀和。枚举红色数量 $k$，比较最大的 $k$ 个数之和与最小的 $k+1$ 个数之和；任意一次比较满足前者更大即可输出 YES，否则输出 NO，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1646C",
+          "index": "C",
+          "slot": "C",
+          "title": "Factorials and Powers of Two",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1646/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/100584",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n$，一个数若是某个 $2$ 的幂或阶乘就称为 powerful。要求将 $n$ 表示成若干个数值互不相同的 powerful 数之和，并求所需项数的最小值；无法表示时输出 $-1$。",
+          "transformedStatement": "把方案拆成“选哪些阶乘”和“用不同的 $2$ 的幂补足剩余值”两部分：前者枚举子集，后者等价于读取剩余数的二进制位，因此只需比较各阶乘子集对应的项数。",
+          "keyObservations": [
+            "固定要选的阶乘集合后，剩余部分只能用二进制表示，因此幂次为 $2$ 的数的选法唯一，项数是剩余数二进制中 $1$ 的个数。",
+            "阶乘 $1$ 和 $2$ 分别会与幂次 $2$ 的数重复，因此枚举阶乘时应排除它们，避免违反“数值互异”。",
+            "当选中 $f$ 个阶乘且总和为 $s$ 时，方案总项数可直接写成 $f+\\operatorname{ones}(n-s)$，枚举所有阶乘子集取最小值即可。",
+            "由于 $n\\le 10^{12}$，只需考虑满足 $k!\\le n$ 的阶乘，最多到 $14!$，所以子集数量足以直接枚举。"
+          ],
+          "solutionBrief": "排除阶乘 $1$、$2$ 后，枚举所有不超过 $n$ 的阶乘子集。对每个子集计算和 $s$，若 $s\\le n$，剩余值 $n-s$ 用二进制唯一拆成不同的 $2$ 的幂，答案候选为所选阶乘数加其二进制 $1$ 的个数，取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1646D",
+          "index": "D",
+          "slot": "D",
+          "title": "Weight the Tree",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1646/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/100584",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，为每个顶点赋正整数权值；若某点权值等于所有邻居权值之和，则称其为 good。要求先最大化 good 顶点数，再在达到最大数量的方案中最小化全部权值之和，并输出一种赋值。",
+          "transformedStatement": "当 $n>2$ 时，问题等价于在树上寻找最大独立集：选中的顶点作为 good，选中点权值设为度数、未选点权值设为 $1$，从而同时得到最大数量和最小权值和；$n=2$ 单独处理。",
+          "keyObservations": [
+            "当 $n>2$ 时，一条边的两个端点不可能同时为 good：较小权值端点无法等于包含较大邻居权值的邻居和，因此所有 good 点构成独立集。",
+            "任意独立集都能实现为 good 点集：独立集外权值设为 $1$，独立集内顶点设为其度数；同时这是该独立集下总权值最小的方案，因为每个顶点权值至少为 $1$，good 点权值至少为其度数。",
+            "树上 DP 为每个顶点记录“选为 good”和“不选为 good”两种状态下的最大数量及其最小权值和；选中当前点时子节点必须不选，否则子节点取两种状态中更优者。",
+            "重建时若当前点的两种选择都能保持最优，应优先将其设为不 good，以避免与尚未确定的父节点选择冲突；最终按选中状态赋予度数或 $1$。"
+          ],
+          "solutionBrief": "$n=2$ 时直接赋两点权值 $1$。否则 good 点必为独立集，且独立集外赋 $1$、独立集内赋度数即可最小化权值和；树 DP 维护两种选点状态的最大数量及最小和，并据此重建，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1646E",
+          "index": "E",
+          "slot": "E",
+          "title": "Power Board",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1646/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/100584",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的矩阵，第 $i$ 行第 $j$ 列填入 $i^j$。需要统计整个矩阵中不同整数的数量。",
+          "transformedStatement": "把所有矩阵元素按其非完全幂底数分组：同组元素写成 $x^{ij}$，其中 $i$ 遍历不超过 $n$ 的幂次数、$j$ 遍历 $1$ 到 $m$；每组再等价为统计乘积 $ij$ 的不同取值数。",
+          "keyObservations": [
+            "任意正整数都可唯一归入某个非完全幂底数 $x$ 的幂序列；不同非完全幂底数的序列不会产生相同结果，因此各序列贡献可以独立相加。",
+            "固定非完全幂底数 $x$ 后，相关行的所有数都是 $x^{ij}$，其中 $1\\le i\\le k$、$1\\le j\\le m$；由于幂指数不同会对应不同结果，贡献等于乘积集合 $\\{ij\\}$ 的大小，与 $x$ 的具体数值无关。",
+            "若 $x^k\\le n$，则 $k\\le\\lfloor\\log_x n\\rfloor$，所以只需预处理很小范围内每个 $k$ 的乘积集合大小；依次标记 $i,2i,\\ldots,mi$，即可增量得到该值。",
+            "非完全幂底数 $x$ 的贡献只由其能产生的最大幂次数 $k$ 决定，枚举 $x\\le n$ 并判断是否为完全幂后，按对应的 $k$ 累加预处理结果。"
+          ],
+          "solutionBrief": "将行号按非完全幂底数的幂序列划分。对每个底数，贡献转化为 $1\\le i\\le k,1\\le j\\le m$ 的不同乘积数；预处理各 $k$ 的乘积集合大小，再枚举并判断完全幂底数累加，复杂度为 $\\mathcal O(m\\log n+n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1646F",
+          "index": "F",
+          "slot": "F",
+          "title": "Playing Around the Table",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1646/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/100584",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 位玩家围坐成环，每人持有 $n$ 张牌，所有牌面 $1$ 到 $n$ 各出现恰好 $n$ 次。每次所有玩家同时选择一张牌传给右手边的人，要求构造不超过 $n^2-n$ 次操作，使玩家 $i$ 最终持有的全部牌面都为 $i$。",
+          "transformedStatement": "先把目标拆成两个阶段：将每位玩家的牌变成互不重复的“多样”状态，再利用环上的固定循环传递把这些牌排列到对应玩家；第一阶段通过重复牌传递和总移动距离控制步数。",
+          "keyObservations": [
+            "把“每位玩家的牌面各不相同”作为中间目标；已有此性质的玩家传出与将收到的牌面相同的牌，就能保持该性质不被破坏。",
+            "第一阶段始终让非多样玩家传出一张重复牌；若某张具体牌再次被同一玩家传出，就会推出该牌至少有 $n+1$ 张，因此过程必然终止。",
+            "对同一牌面按移动距离计势能，距离至少为 $x$ 的牌至多有 $n-x$ 张，所以该牌面总移动距离至多为 $1+2+\\cdots+(n-1)=n(n-1)/2$，从而第一阶段至多需要 $n(n-1)/2$ 步。",
+            "达到每位玩家牌面互异后，按 $j=1$ 到 $n-1$，让玩家 $i$ 连续 $j$ 次传出牌面 $((i-j)\\bmod n)+1$；这些循环传递共 $n(n-1)/2$ 步后，每位玩家恰好只保留自己的牌面。"
+          ],
+          "solutionBrief": "分两阶段构造：先反复传出重复牌，使所有玩家的牌面互不相同，并用移动距离势能证明步数上界；再按循环偏移顺序执行固定传递方案，使每位玩家最终全是自己的牌面。维护各玩家的重复牌集合可实现 $O(n^3)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
