@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3934,
-    "source_total_problems": 3934,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 3934,
+    "total_problems": 3935,
+    "source_total_problems": 3941,
+    "filtered_out_problems": 6,
+    "with_statement_brief": 3935,
     "with_editorial_brief": 3597,
     "with_solution_brief": 3599,
-    "missing_editorial_brief": 335,
+    "missing_editorial_brief": 336,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2996,
     "primary_topic_count": 13,
-    "contest_count": 610,
+    "contest_count": 611,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "动态规划与状态设计": 323,
     "构造与贪心": 1279,
     "数论与同余": 416,
     "组合计数与概率": 302,
-    "动态规划与状态设计": 322,
     "图论与网络流": 257,
     "字符串": 210,
     "数据结构": 374,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 336,
     "ai_generated_with_editorial": 2617,
-    "missing_editorial": 335,
     "ai_generated_partial_editorial": 89,
     "low_confidence": 1,
     "manual_override": 891,
@@ -121087,6 +121087,42 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "对每一列统计初始的 n 个字符串和剩余的 n-1 个字符串中各字母的出现次数，取出现奇数次的字母作为答案在该列的字符。逐列拼接即可得到被偷字符串。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1545,
+      "name": "Codeforces Round 732 (Div. 1)",
+      "date": "2021-07-11",
+      "url": "https://codeforces.com/contest/1545",
+      "type": "Div. 1",
+      "problemCount": 1,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1545E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "AquaMoon and Time Stop (easy version)",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1545/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/92739",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "几何",
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "题面已抓取：AquaMoon and Time Stop (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }

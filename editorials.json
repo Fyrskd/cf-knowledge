@@ -8,6 +8,32 @@
     "raw_sha256": "e02bf41675dc0dbc425a56dd042c753b3411dbe71c57032363c612b54b0bb7d8"
   },
   {
+    "url": "https://codeforces.com/blog/entry/92739",
+    "blog_entry_id": 92739,
+    "title": "Codeforces Round #732 Editorial",
+    "author": "Cirno_9baka",
+    "creation_time": "2021-07-11",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round #732 Editorial",
+    "section_count": 12,
+    "covered_problems": [
+      "1545A",
+      "1545B",
+      "1545C",
+      "1545D",
+      "1545E2",
+      "1545F",
+      "1546A",
+      "1546B",
+      "1546C",
+      "1546D",
+      "1546E",
+      "1546F"
+    ],
+    "raw_sha256": "8cf796fbbcafd025e3ae7084a693902f7cebf1ac68f050071311fbd2f9912bf3"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/92951",
     "blog_entry_id": 92951,
     "title": "Codeforces Round #733 Editorial (all problems)",
