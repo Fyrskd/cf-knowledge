@@ -1,5 +1,16 @@
 [
   {
+    "id": 1615,
+    "name": "Codeforces Global Round 18",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1640356500,
+    "relativeTimeSeconds": 150227062,
+    "date": "2021-12-24"
+  },
+  {
     "id": 1622,
     "name": "Educational Codeforces Round 120 (Rated for Div. 2)",
     "type": "ICPC",
