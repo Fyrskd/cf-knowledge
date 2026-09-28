@@ -1,5 +1,16 @@
 [
   {
+    "id": 1654,
+    "name": "Codeforces Round 778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1647776100,
+    "relativeTimeSeconds": 142794511,
+    "date": "2022-03-20"
+  },
+  {
     "id": 1657,
     "name": "Educational Codeforces Round 125 (Rated for Div. 2)",
     "type": "ICPC",
