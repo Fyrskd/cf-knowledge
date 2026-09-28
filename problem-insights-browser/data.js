@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3557,
+    "total_problems": 3562,
     "source_total_problems": 3564,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3557,
-    "with_editorial_brief": 3258,
-    "with_solution_brief": 3260,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3562,
+    "with_editorial_brief": 3263,
+    "with_solution_brief": 3265,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2619,
+    "ai_override_count": 2624,
     "primary_topic_count": 13,
-    "contest_count": 549,
+    "contest_count": 550,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "基础实现与模拟": 221,
+    "基础实现与模拟": 223,
+    "构造与贪心": 1158,
+    "组合计数与概率": 268,
     "字符串": 187,
     "几何": 86,
     "动态规划与状态设计": 292,
     "代数、矩阵与多项式": 25,
     "图论与网络流": 231,
-    "组合计数与概率": 267,
-    "构造与贪心": 1156,
     "交互": 104,
     "数据结构": 338,
     "树结构": 173,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "数论与同余": 370
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2295,
-    "ai_generated_partial_editorial": 72,
+    "ai_generated_with_editorial": 2299,
+    "ai_generated_partial_editorial": 73,
     "missing_editorial": 297,
     "low_confidence": 1,
     "manual_override": 891,
@@ -109758,6 +109758,164 @@ window.CF_INSIGHTS_DATA = {
             "递归结果需要额外处理某个交叉子问题一侧未选元素的情况，并用组合计数补上只选单侧或空侧导致的方案，最终通过排除空集得到答案。"
           ],
           "solutionBrief": "先按 $x$ 最高有效位以上的前缀分组，组间独立计数。组内递归按当前位拆分两侧元素：$x_i=0$ 时只保留同位组合，$x_i=1$ 时合并两个独立交叉子问题，并补充一侧为空的组合计数；总复杂度为 $O(30n)$，结果对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1623,
+      "name": "Codeforces Round 763 (Div. 2)",
+      "date": "2021-12-28",
+      "url": "https://codeforces.com/contest/1623",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1623A",
+          "index": "A",
+          "slot": "A",
+          "title": "Robot Cleaner",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1623/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/98463",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "房间是 $n\\times m$ 的网格，机器人从指定格子出发，初始每秒同时向下、向右移动一格；撞到对应墙壁前先反向，再完成移动。机器人每秒会清扫与当前位置同一行或同一列的所有格子，求它首次清扫唯一脏格所需的时间。",
+          "transformedStatement": "将二维斜向反弹运动投影为独立的行坐标与列坐标一维往返运动：只要任一投影先到达脏格对应坐标，二维位置就处于同一行或同一列，因此答案是两个一维到达时间的最小值。",
+          "keyObservations": [
+            "机器人清扫条件是当前行等于脏格所在行或当前列等于脏格所在列，因此行坐标和列坐标可以分别作为两个独立的一维追踪问题，答案取两者到达时间的最小值。",
+            "在长度为 $n$ 的一维走廊中，若起点 $x\\le y$，机器人沿初始方向直接到达目标，时间为 $y-x$。",
+            "若一维起点 $x>y$，机器人必须先走到右端点再反向到达目标，时间为 $(n-x)+(n-y)=2n-x-y$。",
+            "墙壁反射只改变对应坐标的运动方向，行列投影彼此独立；任一投影先与目标坐标重合时，机器人就能清扫脏格。"
+          ],
+          "solutionBrief": "分别计算行坐标和列坐标的一维到达时间：若起点不超过目标则为差值，否则为到右端再返回的时间 $2L-x-y$。取行、列两种时间的最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1623B",
+          "index": "B",
+          "slot": "B",
+          "title": "Game on Ranges",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1623/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/98463",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "初始只有区间 $[1,n]$。每次 Alice 选择一个当前区间 $[l,r]$，Bob 在其中选数 $d$，随后该区间被删除，并加入左右子区间 $[l,d-1]$ 与 $[d+1,r]$（非空时）；给出 Alice 依次选过的全部区间但顺序打乱，要求为每个区间恢复 Bob 选择的 $d$。",
+          "transformedStatement": "把每个被选择的区间看作一棵拆分树中的节点：其对应数字 $d$ 被删除，而左右子节点必须正好是 $[l,d-1]$ 和 $[d+1,r]$。于是恢复答案转化为在输入区间集合中寻找满足子区间存在性的唯一分割点。",
+          "keyObservations": [
+            "对区间 $[l,r]$ 选择的数 $d$ 恰好是它被拆出的左右子区间边界；因此当 $d>l$ 时必须存在 $[l,d-1]$，当 $d<r$ 时必须存在 $[d+1,r]$。",
+            "长度为 $1$ 的区间无法继续拆分，其对应数字唯一为端点 $l$，可直接确定。",
+            "将所有输入区间做存在性标记后，对每个 $d\\in[l,r]$ 检查两个子区间是否存在即可筛出唯一答案，避免重放 Alice 与 Bob 的操作顺序。",
+            "每个区间最多枚举长度为 $n$ 的候选数字，所有区间总数也是 $n$，因此总时间复杂度为 $O(n^2)$。"
+          ],
+          "solutionBrief": "用二维标记记录输入中出现的区间。对每个 $[l,r]$ 枚举 $d\\in[l,r]$，检查存在的左右子区间是否分别为 $[l,d-1]$ 和 $[d+1,r]$；长度为 $1$ 时答案就是 $l$。有效数据保证筛出的 $d$ 唯一，复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1623C",
+          "index": "C",
+          "slot": "C",
+          "title": "Balanced Stone Heaps",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1623/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/98463",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 堆石头，可对每个位置至多进行一次转移：从第 $i$ 堆取出 $3d$ 个石头，将 $2d$ 个放入第 $i-2$ 堆、$d$ 个放入第 $i-1$ 堆，且取出的数量不能超过该堆原有石头。求操作后最小堆石头数的最大值。",
+          "transformedStatement": "把“最大化最终最小值”转成判定某个阈值 $x$ 是否能让所有堆达到至少 $x$；判定时按下标从右向左分配每个堆可贡献的多余石头，使资源只能流向前两堆。",
+          "keyObservations": [
+            "将目标答案改写为判定阈值 $x$：只需判断能否让所有堆至少有 $x$ 个石头，答案具有单调性。",
+            "按从右到左处理堆时，第 $i$ 堆新增的石头不能继续作为本堆原有资源使用，因此可转移量受原始 $h_i$ 和当前超出量同时限制。",
+            "若当前第 $i$ 堆有至少 $x$ 个石头，应尽量转移资源；取 $d=\\left\\lfloor\\frac{\\min(h_i,h'_i-x)}{3}\\right\\rfloor$，向前两堆分别增加 $2d$ 和 $d$，不会损害已满足的阈值。",
+            "从右向左贪心后所有堆都达到 $x$ 当且仅当该阈值可行，因此可据此完成判定。"
+          ],
+          "solutionBrief": "二分最小堆的目标值 $x$。判定时从右向左处理，每堆最多使用其原始石头中的三分之一，并将可转移的 $3d$ 个石头按 $2d,d$ 分给前两堆；最终全部达到 $x$ 即可行。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1623D",
+          "index": "D",
+          "slot": "D",
+          "title": "Robot Cleaner Revisit",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1623/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/98463",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "机器人在 $n\\times m$ 房间内从指定格出发，初始沿行、列正方向移动；撞到对应墙壁时反射方向。每秒（包括开始移动前）以概率 $p/100$ 清洁当前位置所在的整行和整列，否则不清洁；求它清洁唯一脏格所需时间的期望值。",
+          "transformedStatement": "把机器人当前位置与两个移动方向组成有限状态，忽略清洁成功后的后续过程。机器人在这些状态上确定性循环，而每个状态只需标记是否能清洁目标格，并用失败概率写出相邻状态期望值的线性递推。",
+          "keyObservations": [
+            "将位置和当前运动方向共同视为状态后，机器人按确定规则循环经过有限个状态，因此期望值只需在一个周期上建立方程。",
+            "若当前状态能清洁目标格，未成功的概率为 $q=1-p/100$；否则必然经过 $1$ 秒，统一可写成 $E_i=a_i(1+E_{i+1})$，其中 $a_i$ 分别为 $q$ 或 $1$。",
+            "沿周期反向展开嵌套方程后，初始状态满足 $x=u+vx$，所以答案为 $x=u/(1-v)$，避免逐状态求解线性方程组。",
+            "无需显式找出周期，模拟恰好 $4(n-1)(m-1)$ 个状态即可覆盖整数个周期，再反向维护 $u,v$；该次数始终是实际周期长度的倍数。"
+          ],
+          "solutionBrief": "令 $q=1-p/100$，把位置和方向组成确定性循环状态。按周期反向维护方程的常数项与 $x$ 的系数，得到 $x=u+vx$，最终输出 $u/(1-v)$；周期可用 $4(n-1)(m-1)$ 次迭代覆盖。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1623E",
+          "index": "E",
+          "slot": "E",
+          "title": "Middle Duplication",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1623/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/98463",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构",
+            "字符串"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "greedy",
+            "strings",
+            "trees"
+          ],
+          "statementBrief": "给定一棵根为 1 的二叉树，每个节点有一个字符标签；树的字符串是节点按中序遍历排列的标签连接。最多选择 $k$ 个节点将标签重复一次，但非根节点只有在父节点也已重复时才能重复，要求所得字符串字典序最小。",
+          "transformedStatement": "把问题改写为：在中序字符序列上选择一个满足祖先闭包的复制集合。先判断每个位置复制是否有利，再按中序贪心决定首次触发位置，并用未复制祖先数量计算新增选择的预算成本。",
+          "keyObservations": [
+            "节点是否值得复制只由其中序串中它之后遇到的首个不同字符决定：该字符更小才会变优，否则复制会让答案变大或无变化。",
+            "最先应复制中序遍历中最靠前的可复制节点；因为复制它会影响更早位置，任何更晚节点都无法抵消该处的字典序劣化。",
+            "复制一个节点必须连带复制未处理的祖先，所需代价等于当前仍未复制的祖先数；因此遍历时用 cost 表示该节点的实际花费。",
+            "若左子树中已有节点被复制，当前节点必须复制；只有左子树未触发复制且当前节点有利时才主动复制，并将右子树的新代价重置为 $1$。"
+          ],
+          "solutionBrief": "先通过中序 DFS 得到初始字符串及每个节点之后的首个不同字符，标记复制后会变小的节点。再按中序处理，维护复制当前节点的实际代价：左子树触发复制则被迫复制当前点，否则在节点有利且预算足够时复制；复制后以代价 $1$ 进入右子树。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
