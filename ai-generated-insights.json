@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T13:43:17+00:00",
+  "updated_at": "2026-09-28T13:49:03+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -86917,6 +86917,165 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial_text 中的变量建模与闭式结论，以及 tags 中的 math。",
         "quality_flags": []
+      }
+    },
+    "1563F": {
+      "problem_key": "1563F",
+      "title": "Strange Sort",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1563/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/94216",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "2435c8e77a1958b05d234129ca3eb7e39c70906a27da6fe4328073f87eac17d5",
+      "generated_at": "2026-09-28T13:47:35+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为奇数的 $1$ 到 $n$ 的排列。第 $i$ 轮中，若 $i$ 为奇数就依次比较 $(1,2),(3,4),\\ldots$，否则比较 $(2,3),(4,5),\\ldots$；每对相邻元素在左值更大时交换，求排列第一次变为升序所需的轮数，初始有序则为 $0$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_url 仅有链接，editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "solution_unavailable",
+          "statement_only"
+        ]
+      }
+    },
+    "1563E": {
+      "problem_key": "1563E",
+      "title": "Down Below",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/1563/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/94216",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "04fa403098b7a5e617a700c97dca6e84a550430441553e629bed36f34eed4884",
+      "generated_at": "2026-09-28T13:47:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个连通无向洞穴图，英雄从洞穴 $1$ 出发，每次沿隧道移动但不能连续两次使用同一条隧道反向返回。首次进入其他洞穴时，若当前力量严格大于怪物值 $a_i$ 就击败它并增加 $b_i$，求能击败所有怪物所需的最小初始力量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags 中的 graphs；editorial_text 为空，仅提供 editorial URL。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1563D": {
+      "problem_key": "1563D",
+      "title": "Top-Notch Insertions",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1563/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/94216",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9c271b7d1acca5d2ebe4127a3eec241d39fc85f3cabeb451d731fa4de11302db",
+      "generated_at": "2026-09-28T13:48:08+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的整数序列，按插入排序从左到右处理每个位置：若当前值不小于前一项则跳过，否则将它插入前缀中第一个严格更大的位置，并记录原位置到新位置。要求统计取值均在 $1$ 到 $n$（允许重复）且恰好按给定顺序产生全部 $m$ 次插入的初始序列数量，结果对 $998244353$ 取模。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 与 codeforces_tags 中的 combinatorics；editorial_url 仅提供链接，未提供题解正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1563C": {
+      "problem_key": "1563C",
+      "title": "Bottom-Tier Reversals",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1563/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/94216",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9293477d2949ad1c27aaaedb2705d13dcb71fceb4955c8118d2cf60cce0dc156",
+      "generated_at": "2026-09-28T13:48:30+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为奇数的排列。每次可以选择任意奇数长度的前缀并将其反转，要求输出不超过 $\\frac{5n}{2}$ 次操作后变为升序排列的操作长度序列；若不存在则输出 $-1$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_url 仅提供链接，未包含题解正文。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "editorial_url_only",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1563B": {
+      "problem_key": "1563B",
+      "title": "Up the Strip",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1563/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/94216",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b23933f8c595b741d86a04fa4b421e192a08af21a4dc5721f8e0a0697870b03c",
+      "generated_at": "2026-09-28T13:48:51+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有一条编号为 $1$ 到 $n$ 的竖直条带，棋子从 $n$ 出发，反复向上移动直到 $1$。处于 $x>1$ 时，可选择减去任意 $y\\in[1,x-1]$，或选择 $z\\in[2,x]$ 移到 $\\lfloor x/z\\rfloor$；参数不同即使终点相同也算不同方案，求所有移动序列数量对 $m$ 取模。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 提取题意与单步方案计数结构；editorial_url 仅提供链接且无题解正文，codeforces_tags 仅用于主题分类。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1563A": {
+      "problem_key": "1563A",
+      "title": "Charmed by the Game",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1563/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/94216",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "772463e52135706ed411c9eb2ae69a55fbda4930fb26c5f0dc45a31a559d5642",
+      "generated_at": "2026-09-28T13:49:03+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "网球比赛由若干局组成，每局一人发球、另一人接发，发球者在相邻两局间交替。已知 Alice 和 Borys 分别赢了 $a$、$b$ 局，但首局谁发球及各局胜者顺序未知；求所有可能出现的破发总数，其中破发指接发球者赢得该局。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 与 codeforces_tags；editorial_url 仅提供链接，editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
       }
     }
   }

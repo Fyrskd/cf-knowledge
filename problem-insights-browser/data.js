@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 321,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2901,
+    "ai_override_count": 2907,
     "primary_topic_count": 13,
     "contest_count": 596,
     "rating_min": 800,
@@ -38,24 +38,24 @@ window.CF_INSIGHTS_DATA = {
     "基础实现与模拟",
     "字符串",
     "树结构",
-    "博弈",
     "交互",
+    "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "博弈": 113,
+    "数论与同余": 407,
     "动态规划与状态设计": 316,
-    "构造与贪心": 1247,
+    "构造与贪心": 1246,
     "组合计数与概率": 294,
     "图论与网络流": 251,
-    "数论与同余": 406,
+    "基础实现与模拟": 242,
     "数据结构": 367,
-    "基础实现与模拟": 241,
     "交互": 112,
     "字符串": 200,
     "树结构": 183,
     "几何": 90,
+    "博弈": 112,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
@@ -118317,14 +118317,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1300,
           "problemUrl": "https://codeforces.com/contest/1563/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/94216",
-          "primaryTopic": "博弈",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
           "originalTags": [
             "math"
           ],
-          "statementBrief": "题面已抓取：Charmed by the Game；本地暂无可用题解正文。",
+          "statementBrief": "网球比赛由若干局组成，每局一人发球、另一人接发，发球者在相邻两局间交替。已知 Alice 和 Borys 分别赢了 $a$、$b$ 局，但首局谁发球及各局胜者顺序未知；求所有可能出现的破发总数，其中破发指接发球者赢得该局。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -118340,15 +118338,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1563/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/94216",
           "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "数论与同余",
-            "组合计数与概率",
-            "图论与网络流"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "dp"
           ],
-          "statementBrief": "题面已抓取：Up the Strip；本地暂无可用题解正文。",
+          "statementBrief": "有一条编号为 $1$ 到 $n$ 的竖直条带，棋子从 $n$ 出发，反复向上移动直到 $1$。处于 $x>1$ 时，可选择减去任意 $y\\in[1,x-1]$，或选择 $z\\in[2,x]$ 移到 $\\lfloor x/z\\rfloor$；参数不同即使终点相同也算不同方案，求所有移动序列数量对 $m$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -118364,15 +118358,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1563/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/94216",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "动态规划与状态设计",
-            "字符串"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms"
           ],
-          "statementBrief": "题面已抓取：Bottom-Tier Reversals；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为奇数的排列。每次可以选择任意奇数长度的前缀并将其反转，要求输出不超过 $\\frac{5n}{2}$ 次操作后变为升序排列的操作长度序列；若不存在则输出 $-1$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -118388,15 +118378,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1563/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/94216",
           "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [
-            "数论与同余",
-            "动态规划与状态设计",
-            "字符串"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "combinatorics"
           ],
-          "statementBrief": "题面已抓取：Top-Notch Insertions；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $n$ 的整数序列，按插入排序从左到右处理每个位置：若当前值不小于前一项则跳过，否则将它插入前缀中第一个严格更大的位置，并记录原位置到新位置。要求统计取值均在 $1$ 到 $n$（允许重复）且恰好按给定顺序产生全部 $m$ 次插入的初始序列数量，结果对 $998244353$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -118412,14 +118398,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1563/problem/E",
           "editorialUrl": "https://codeforces.com/blog/entry/94216",
           "primaryTopic": "图论与网络流",
-          "secondaryTopics": [
-            "博弈",
-            "动态规划与状态设计"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "graphs"
           ],
-          "statementBrief": "题面已抓取：Down Below；本地暂无可用题解正文。",
+          "statementBrief": "给定一个连通无向洞穴图，英雄从洞穴 $1$ 出发，每次沿隧道移动但不能连续两次使用同一条隧道反向返回。首次进入其他洞穴时，若当前力量严格大于怪物值 $a_i$ 就击败它并增加 $b_i$，求能击败所有怪物所需的最小初始力量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -118434,16 +118417,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": 3300,
           "problemUrl": "https://codeforces.com/contest/1563/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/94216",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "动态规划与状态设计",
-            "图论与网络流"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Strange Sort；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为奇数的 $1$ 到 $n$ 的排列。第 $i$ 轮中，若 $i$ 为奇数就依次比较 $(1,2),(3,4),\\ldots$，否则比较 $(2,3),(4,5),\\ldots$；每对相邻元素在左值更大时交换，求排列第一次变为升序所需的轮数，初始有序则为 $0$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
