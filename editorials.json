@@ -8,6 +8,25 @@
     "raw_sha256": "5f3dd07045859f3e77507947bf858a5d2552c6ea0c89da1b94c474f8425c1786"
   },
   {
+    "url": "https://codeforces.com/blog/entry/98463",
+    "blog_entry_id": 98463,
+    "title": "Codeforces Round #763 (Div. 2) Editorial",
+    "author": "darkkcyan",
+    "creation_time": "2021-12-28",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round #763 (Div. 2) Editorial",
+    "section_count": 5,
+    "covered_problems": [
+      "1623A",
+      "1623B",
+      "1623C",
+      "1623D",
+      "1623E"
+    ],
+    "raw_sha256": "8e0bd8fce4bee74daf9e46fa7d6c9975a5697ebe392f08fcb0ccd52e93de789e"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/99442",
     "blog_entry_id": 99442,
     "title": "Editorial of Codeforces Round #769",

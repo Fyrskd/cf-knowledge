@@ -1,5 +1,16 @@
 [
   {
+    "id": 1623,
+    "name": "Codeforces Round 763 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1640698500,
+    "relativeTimeSeconds": 149884421,
+    "date": "2021-12-28"
+  },
+  {
     "id": 1616,
     "name": "Good Bye 2021: 2022 is NEAR",
     "type": "CF",
