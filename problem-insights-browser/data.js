@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3830,
-    "source_total_problems": 3832,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 3830,
+    "total_problems": 3831,
+    "source_total_problems": 3835,
+    "filtered_out_problems": 4,
+    "with_statement_brief": 3831,
     "with_editorial_brief": 3514,
     "with_solution_brief": 3516,
-    "missing_editorial_brief": 314,
+    "missing_editorial_brief": 315,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2892,
     "primary_topic_count": 13,
-    "contest_count": 593,
+    "contest_count": 594,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 405,
+    "数论与同余": 406,
     "构造与贪心": 1243,
     "数据结构": 366,
     "动态规划与状态设计": 313,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 315,
     "ai_generated_with_editorial": 2536,
     "ai_generated_partial_editorial": 87,
-    "missing_editorial": 314,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -118026,6 +118026,45 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "按 $n$ 分三档处理：小规模询问所有数对并从最大最小公倍数递归剔除最大值；中规模用随机配对找最大质因子；大规模随机寻找两个大质因子定位质数，再用 $\\operatorname{lcm}(p,a_i)/p$ 恢复元素。",
           "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "partial"
+        }
+      ]
+    },
+    {
+      "id": 1561,
+      "name": "Codeforces Round 740 (Div. 2, based on VK Cup 2021 - Final (Engine))",
+      "date": "2021-08-24",
+      "url": "https://codeforces.com/contest/1561",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 1700,
+      "problems": [
+        {
+          "key": "1561D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Up the Strip (simplified version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1561/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Up the Strip (simplified version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }

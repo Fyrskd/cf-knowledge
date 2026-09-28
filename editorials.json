@@ -8,6 +8,28 @@
     "raw_sha256": "5f3dd07045859f3e77507947bf858a5d2552c6ea0c89da1b94c474f8425c1786"
   },
   {
+    "url": "https://codeforces.com/blog/entry/94216",
+    "blog_entry_id": 94216,
+    "title": "Codeforces Round #740 Editorial",
+    "author": "tourist",
+    "creation_time": "2021-08-24",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round #740 Editorial",
+    "section_count": 8,
+    "covered_problems": [
+      "1558A",
+      "1558B",
+      "1558C",
+      "1558D",
+      "1558E",
+      "1558F",
+      "1561A",
+      "1561C"
+    ],
+    "raw_sha256": "6fdd58d138d30fd11630acb0ed9bc5e10b05c87c7bf586cb31d3fc3c6395d716"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/94278",
     "blog_entry_id": 94278,
     "title": "Editorial of Codeforces Round 741 (Div. 2)",
