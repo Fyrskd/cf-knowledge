@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T07:56:00+00:00",
+  "updated_at": "2026-09-28T08:07:33+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -78159,6 +78159,250 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面规则与完整 editorial，tags 仅用于确认构造题属性。",
+        "quality_flags": []
+      }
+    },
+    "1616H": {
+      "problem_key": "1616H",
+      "title": "Keep XOR Low",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/1616/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/98501",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f010eae500a43723b7ba7912a50c370536c1be003d8f4c8fc186f75b236cc7d9",
+      "generated_at": "2026-09-28T08:04:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组和整数 $x$，要从下标中选出一个非空子集，使所选任意两项的按位异或都不超过 $x$。求满足条件的非空下标子集数量，并对 $998244353$ 取模。",
+        "transformed_statement": "先把元素按 $x$ 的最高有效位以上前缀分组，因为合法集合不能跨组选择；每组再视为两侧元素的递归配对问题，按位分析两侧能否同时取元素，并合并独立子问题的计数。",
+        "key_observations": [
+          "任意合法子集中的元素必须拥有相同的高位前缀；不同前缀的元素异或会在最高不同位超过 $x$，因此可以先按此前缀分组并分别计数。",
+          "在同一前缀组内，若只选最高相关位相同的一侧，则组内任意子集都合法；只有同时选两侧元素时，才需要继续检查更低位的异或限制。",
+          "递归处理两侧元素在当前位的 $0/1$ 分组：当 $x_i=0$ 时，跨不同位的组合不能共存，问题被限制到对应的同位子组；当 $x_i=1$ 时，两种交叉配对 $(a_0,b_1)$ 与 $(a_1,b_0)$ 相互独立，可分别计数后合并。",
+          "递归结果需要额外处理某个交叉子问题一侧未选元素的情况，并用组合计数补上只选单侧或空侧导致的方案，最终通过排除空集得到答案。"
+        ],
+        "solution_brief": "先按 $x$ 最高有效位以上的前缀分组，组间独立计数。组内递归按当前位拆分两侧元素：$x_i=0$ 时只保留同位组合，$x_i=1$ 时合并两个独立交叉子问题，并补充一侧为空的组合计数；总复杂度为 $O(30n)$，结果对 $998244353$ 取模。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "数论与同余",
+          "数据结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的成对异或约束，以及 editorial_text 对前缀分组、按位递归和 $O(30n)$ 复杂度的说明；tags 仅用于主题辅助判断。",
+        "quality_flags": [
+          "editorial未给出各类空侧情况的显式组合公式"
+        ]
+      }
+    },
+    "1616G": {
+      "problem_key": "1616G",
+      "title": "Just Add an Edge",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1616/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/98501",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7f51e4a239f683b55fe06a3644dfd72c390637362a0de2fb7e3fa1a870d7c8a4",
+      "generated_at": "2026-09-28T08:04:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个有向无环图，所有已有边均从较小编号指向较大编号。对每个满足 $x>y$ 的顶点对，加入一条边 $x\\to y$，统计加入后图中存在覆盖全部顶点且每个顶点只经过一次的有向路径的顶点对数量。",
+        "transformed_statement": "把哈密顿路径视为由连续编号顶点形成的默认链；加入一条反向边后，候选路径可重述为两条互不相交的链通过该边拼接，并在相邻编号边界之间进行状态转移。若原图缺少连续边 $y\\to(y+1)$，则以该断点作为所有有效状态连接的枢纽。",
+        "key_observations": [
+          "若原图已有哈密顿路径，由于所有边都从小编号指向大编号，该路径只能是 $1\\to2\\to\\cdots\\to n$，因此任意 $x>y$ 都满足条件，答案为 $\\binom{n}{2}$。",
+          "若原图没有哈密顿路径，加入的反向边只能把顶点组织成两条互不相交的连续链，并通过该新增边连接；可将可行性转化为相邻边界对之间的转移。",
+          "用 $dp_{x,x+1}$ 与 $dp_{x+1,x}$ 表示两条链当前末端的顺序，只保留两个连续编号顶点处于不同链的状态，从而统计可从 $(b,b+1)$ 转移到 $(a-1,a)$ 的新增边对。",
+          "原图缺少某条连续边 $y\\to(y+1)$ 时，所有相关状态之间的连接都必须经过这条断点；从 $(y,y+1)$ 沿两个方向 DFS，即可统计所需状态而无需维护全部状态集合。"
+        ],
+        "solution_brief": "先判断原图是否含有 $1\\to2\\to\\cdots\\to n$；若有则答案为 $\\binom{n}{2}$。否则把加入反向边后的哈密顿路径抽象为两条不相交链，用两个末端顺序状态转移，并利用缺失的连续边作为断点，从该断点双向 DFS 统计可行端点对。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的图定义与计数目标，以及 editorial_text 中的两链结构、DP 状态和断点 DFS 方法；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1616F": {
+      "problem_key": "1616F",
+      "title": "Tricolor Triangles",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/1616/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/98501",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3236a52f469f311148601ae35343f76e4a1717ccbd7a77ad3f051ef13f68245e",
+      "generated_at": "2026-09-28T08:05:02+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个带有部分边颜色的简单无向图，每条未染色边必须被染成 $1、2、3$ 之一。要求任意三个两两相邻的顶点所成三角形中，三条边的颜色要么全部相同、要么两两不同；请输出一种完整染色，若不存在则输出 $-1$。",
+        "transformed_statement": "把每条边抽象为一个模 $3$ 变量，并将颜色 $3$ 视为余数 $0$；于是每个三角形约束等价于三条边变量之和为 $0\\pmod 3$，整题转化为带固定变量的模 $3$ 线性方程组可解性与构造问题。",
+        "key_observations": [
+          "三角形的三条边满足题意，当且仅当其颜色和能被 $3$ 整除，因此“全同或全异”的条件可统一改写为一个模 $3$ 线性方程。",
+          "把颜色 $1,2,3$ 分别视为模 $3$ 的数值后，每个三角形产生方程 $x_{ab}+x_{bc}+x_{ac}=0\\pmod 3$，未染色边成为变量，已染色边成为固定约束。",
+          "只需枚举图中的三角形并建立这些方程；方程组的解同时满足所有三角形条件，线性消元检测矛盾并可恢复一组合法染色。",
+          "三角形数量至多为 $m\\sqrt m$，而变量数为 $m$，因此方程组规模受到控制，适合用模 $3$ 的高斯消元求解。"
+        ],
+        "solution_brief": "将每条边的颜色作为模 $3$ 变量，为每个三角形加入三边和为 $0$ 的方程，并代入已知颜色。对该线性方程组进行模 $3$ 高斯消元；若矛盾则输出 $-1$，否则给自由变量任意值并恢复所有边的颜色。",
+        "primary_topic": "代数、矩阵与多项式",
+        "secondary_topics": [
+          "图论与网络流",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 中的三角形染色条件，以及 editorial 中关于模 $3$ 线性方程组、高斯消元和三角形数量上界的说明；tags 用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1616E": {
+      "problem_key": "1616E",
+      "title": "Lexicographically Small Enough",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1616/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/98501",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0e27389b72a818a4a8642c0c30f1c517f1326d367160943871c8fd3e0d8863b6",
+      "generated_at": "2026-09-28T08:05:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个等长字符串 $s,t$，每次只能交换 $s$ 中一对相邻字符。求至少经过多少次交换后能使 $s$ 按字典序小于 $t$；若无法做到则输出 $-1$。",
+        "transformed_statement": "从左到右保持已构造部分与 $t$ 相同，在某个位置首次放置小于 $t$ 当前字符的后缀字符；每个候选的代价就是把该字符通过相邻交换移到该位置的成本。",
+        "key_observations": [
+          "固定前缀与 $t$ 相同后，只需在当前位置放入一个小于 $t[i]$ 的字符即可结束比较，因此答案是各个分歧位置候选代价的最小值。",
+          "把某个后缀字符移到当前位置的代价等于它跨过的、尚未取出的字符数；在每个位置选择最近的可用字符即可得到该候选的最小移动代价。",
+          "处理完与 $t[i]$ 相同的字符后将其从可用序列删除，并持续维护原下标到当前下标的映射，从而能计算后续候选的相邻交换次数。"
+        ],
+        "solution_brief": "逐位构造与 $t$ 相同的前缀；在每个位置尝试取一个更小字符，计算其移到当前位置的最少相邻交换并更新答案。若能取等字符则删除它并继续，否则停止。用树状数组维护未取字符数量。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "数据结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意来自 statement，核心策略与数据结构来自 editorial，字符串和数据结构分类参考 tags。",
+        "quality_flags": [
+          "statement_lex_definition_truncated"
+        ]
+      }
+    },
+    "1616D": {
+      "problem_key": "1616D",
+      "title": "Keep the Average High",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1616/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/98501",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4b5a997df85915bad440961a9b373337ce6f10670f50b308b85c975e5c4d3db8",
+      "generated_at": "2026-09-28T08:05:56+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数数组和整数 $x$，选择尽可能多的位置。对任意长度至少为 $2$ 的连续子段，若其中所有位置都被选中，则该子段元素平均值必须至少为 $x$；求最多能选多少个位置。",
+        "transformed_statement": "将数组改写为 $b_i=a_i-x$，问题等价于选最多位置，使任意完全由连续选中位置组成的、长度至少为 $2$ 的区间，其 $b$ 元素和都不小于 $0$。",
+        "key_observations": [
+          "把每个元素改为 $b_i=a_i-x$ 后，选中区间需满足元素和非负，原本的平均值约束被转成区间和约束。",
+          "若一段连续选中区间的和为负，则其中必有长度为 $2$ 或 $3$ 的连续负和子段，因此无需检查更长区间。",
+          "加入当前位置并选中时，只需检查它与前一个、前两个连续选中元素组成的长度 $2$ 和 $3$ 区间，从而状态只需记录末两位是否选中。"
+        ],
+        "solution_brief": "令 $b_i=a_i-x$，用 DP 扫描数组并记录最后两个位置的选取状态。转移时禁止新形成的长度 $2$ 或 $3$ 连续选中段的 $b$ 和为负，取最大选中数量。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 中的选取条件与样例说明。",
+        "quality_flags": []
+      }
+    },
+    "1616C": {
+      "problem_key": "1616C",
+      "title": "Representative Edges",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1616/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/98501",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "be820991dc38e9080509d239b0f6207ab112f477c2d0aff120b3a748fd926f07",
+      "generated_at": "2026-09-28T08:06:17+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数数组，每次可以把任意一个元素替换成任意实数。要求修改后，对每个连续子数组，其元素和都等于首尾元素平均值乘以子数组长度，求使数组满足条件所需的最少修改次数。",
+        "transformed_statement": "把目标数组重述为等差数列：在下标和值组成的平面上，所有未修改元素应落在同一条直线上。枚举两项保留值即可确定这条直线，再计算其余位置需要修改的数量。",
+        "key_observations": [
+          "题目条件等价于任意相邻三项满足 $a_{k+2}-a_{k+1}=a_{k+1}-a_k$，因此目标数组必须是等差数列。",
+          "若保留位置 $i,j$ 的值，则等差数列在任意位置 $k$ 的值被唯一确定为 $a_i+(a_j-a_i)\\frac{k-i}{j-i}$，无需再枚举修改后的实数。",
+          "固定两项后，逐项检查原值是否等于该等差数列对应值即可统计必须替换的位置；最大化保留项数就等价于最小化操作次数。",
+          "将所有元素改成同一个值始终只需 $n-1$ 次，因此可作为无须依赖两个不同位置的基准方案。"
+        ],
+        "solution_brief": "先利用“好数组等价于等差数列”的结论。枚举被保留的两个位置，按它们确定整条等差数列，统计与原数组不相等的项数并取最小值；同时用全相等数组的 $n-1$ 次修改作为基准。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 geometry、brute force、math、implementation 标签。",
+        "quality_flags": []
+      }
+    },
+    "1616B": {
+      "problem_key": "1616B",
+      "title": "Mirror in the String",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1616/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/98501",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "21df8a4e2d6548d171a5d859694ff558e9e7f1a30b7e02b1a500b9fbf024a82c",
+      "generated_at": "2026-09-28T08:07:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的小写字符串，选择一个位置 $k$，在第 $k$ 个字符后放置镜子，看到的字符串为 $s_1\\ldots s_k s_k\\ldots s_1$。对所有合法的 $k$，求字典序最小的可见字符串。",
+        "transformed_statement": "把每个位置 $k$ 看作一个候选字符串，只比较相邻位置产生的候选：它们共享前缀，是否值得把镜面向右移动由新字符与当前末字符的大小关系决定，从而转化为寻找最长的相邻非递增前缀。",
+        "key_observations": [
+          "比较相邻选择 $k$ 和 $k+1$ 时，两种结果共享前缀 $s_1s_2\\ldots s_k$，决定优劣的关键是 $s_{k+1}$ 与 $s_k$ 的大小关系。",
+          "当新增字符满足 $s_{k+1}\\le s_k$ 时，继续扩大镜面前缀不会使结果变差，因此候选答案只需考虑一个最长的相邻字符非递增前缀。",
+          "若无法从第一个字符继续满足上述条件，则最优选择是 $k=1$，结果为 $s_1s_1$；否则将该最长前缀与其反向拼接即可。"
+        ],
+        "solution_brief": "逐步比较镜面放置在相邻位置时的结果。按题解结论，找到满足相邻字符非递增条件的最长前缀；若不能延伸则输出 $s_1s_1$，否则输出该前缀与其逆序的拼接。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的镜像构造规则、editorial_text 的相邻候选比较结论，以及 tags 中的 greedy 和 strings。",
+        "quality_flags": [
+          "statement_formatting_corrupted"
+        ]
+      }
+    },
+    "1616A": {
+      "problem_key": "1616A",
+      "title": "Integer Diversity",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1616/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/98501",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1c334cd10ae98389588ee6c12d321778feb93b9078e86ee0e2beefb463fb502a",
+      "generated_at": "2026-09-28T08:07:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，可以任选一个子集，将其中每个数分别变为相反数，未选数字保持不变。求操作后数组中最多能同时出现多少个不同的数。",
+        "transformed_statement": "按绝对值把元素分组：同一组只能产生对应的正负两个值，零只有一个值；各组选择符号互不干扰，答案转化为所有分组可产生的不同值数量之和。",
+        "key_observations": [
+          "把所有数按绝对值分组后，不同绝对值之间互不影响，因此总答案可以按组独立贡献并求和。",
+          "绝对值为 $0$ 的数无论是否取反都只有一个可能值，所以该组贡献至多为 $1$。",
+          "对于任意正绝对值 $x$，该组最多产生 $x$ 与 $-x$ 两种值；出现次数至少为 $2$ 时可分别赋予两种符号，否则只能贡献一种。",
+          "因此每组贡献分别是 $\\min(1,f(0))$ 和 $\\min(2,f(x))$，只需统计各绝对值出现次数即可直接得到最优值。"
+        ],
+        "solution_brief": "统计每个绝对值的出现次数。零值贡献 $\\min(1,f(0))$，正绝对值 $x$ 贡献 $\\min(2,f(x))$；将所有贡献相加即可。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 以及 implementation 标签提炼。",
         "quality_flags": []
       }
     }
