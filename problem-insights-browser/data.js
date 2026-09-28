@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3698,
+    "total_problems": 3704,
     "source_total_problems": 3706,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3698,
-    "with_editorial_brief": 3386,
-    "with_solution_brief": 3388,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3704,
+    "with_editorial_brief": 3392,
+    "with_solution_brief": 3394,
     "missing_editorial_brief": 310,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2760,
+    "ai_override_count": 2766,
     "primary_topic_count": 13,
-    "contest_count": 571,
+    "contest_count": 572,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1204,
+    "构造与贪心": 1205,
+    "数论与同余": 387,
+    "动态规划与状态设计": 299,
+    "组合计数与概率": 280,
     "基础实现与模拟": 234,
-    "数论与同余": 386,
     "图论与网络流": 240,
     "字符串": 195,
-    "组合计数与概率": 278,
     "交互": 108,
     "数据结构": 352,
     "几何": 90,
     "博弈": 112,
     "树结构": 177,
-    "动态规划与状态设计": 297,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2416,
-    "ai_generated_partial_editorial": 79,
+    "ai_generated_with_editorial": 2420,
+    "ai_generated_partial_editorial": 81,
     "missing_editorial": 310,
     "low_confidence": 1,
     "manual_override": 891,
@@ -113965,6 +113965,194 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "若 $n$ 为偶数，全部单点分组即可。若 $n$ 为奇数，只需检查是否存在 $a_i\\ge a_{i+1}$；存在则合并这两个位置、其余单点分组，否则数组严格递增而无解。",
           "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "partial"
+        }
+      ]
+    },
+    {
+      "id": 1603,
+      "name": "Codeforces Round 752 (Div. 1)",
+      "date": "2021-10-30",
+      "url": "https://codeforces.com/contest/1603",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3200,
+      "problems": [
+        {
+          "key": "1603A",
+          "index": "A",
+          "slot": "A",
+          "title": "Di-visible Confusion",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1603/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/96460",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定整数序列，每次可选择一个当前位置 $i$，仅当该位置元素不被 $i+1$ 整除时才能删除；删除后序列重新编号并继续操作。判断是否存在一种删除顺序，最终将整个序列删空。",
+          "transformedStatement": "把原序列中第 $i$ 个元素能出现过的位置抽象为 $1$ 到 $i$，于是它可删除当且仅当 $2$ 到 $i+1$ 中至少有一个数不整除它；逐元素检查这一条件即可判定整体可行性。",
+          "keyObservations": [
+            "原位置为 $i$ 的元素在被删除前只能移动到位置 $1$ 到 $i$，因此必须存在某个 $d\\in[2,i+1]$ 使 $a_i$ 不被 $d$ 整除；否则它无论何时都无法删除。",
+            "若每个元素都满足上述条件，则总能按归纳方式删除：删除前缀时，等前缀长度降到合适位置，就先删除当前元素，再继续处理其余元素。",
+            "当 $i\\ge 22$ 时，若 $a_i$ 被 $2$ 到 $i+1$ 的所有整数整除，则它至少被 $\\operatorname{lcm}(2,3,\\ldots,23)>10^9$ 整除，与 $a_i\\le 10^9$ 矛盾，因此只需暴力检查前 $21$ 个位置。"
+          ],
+          "solutionBrief": "对每个 $i<22$，检查 $2$ 到 $i+1$ 中是否存在不整除 $a_i$ 的数；若不存在则输出 NO。$i\\ge22$ 时由最小公倍数界限自动满足，全部通过则输出 YES，复杂度为 $O(n+21^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1603B",
+          "index": "B",
+          "slot": "B",
+          "title": "Moderate Modular Mode",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1603/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/96460",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定两个偶数 $x,y$，构造一个 $1\\le n\\le 2\\cdot10^{18}$，使 $n\\bmod x=y\\bmod n$；存在多个答案时输出任意一个。",
+          "transformedStatement": "将问题按 $x>y$ 与 $x\\le y$ 分情况：前者直接让 $n=x+y$，后者把 $y$ 拆成若干个长度为 $x$ 的整段和一个偶数余量，再取最后余量的一半作为构造偏移。",
+          "keyObservations": [
+            "当 $x>y$ 时，取 $n=x+y$，两边余数都等于 $y$，因此直接满足条件。",
+            "当 $x\\le y$ 时，任何解都必须满足 $x\\le n\\le y$；否则一侧余数分别会严格小于 $n$ 或严格小于 $x$，无法相等。",
+            "令 $p=y-(y\\bmod x)$，由于 $x,y$ 都是偶数，$y-p$ 为偶数；取 $n=p+(y-p)/2$ 后，两边余数都等于 $(y-p)/2$。"
+          ],
+          "solutionBrief": "分情况构造：若 $x>y$，输出 $x+y$；否则输出 $n=y-(y\\bmod x)/2$。后者利用 $y\\bmod x$ 为偶数，使 $n\\bmod x$ 与 $y\\bmod n$ 均等于该余数的一半。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1603C",
+          "index": "C",
+          "slot": "C",
+          "title": "Extreme Extension",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1603/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/96460",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数数组，每次可选择一个元素，将它拆成两个正整数并保持总和不变，所得数组长度增加；目标是用最少操作使数组非降。求所有非空连续子数组极值之和，并对 $998244353$ 取模。",
+          "transformedStatement": "把一个子数组的处理过程重写为从右向左消除下降：当前位置按右邻值拆成尽量少的段，并只保留拆分后最左段的值。对所有子数组维护其最终首元素的计数状态，再累加每次拆分产生的操作贡献。",
+          "keyObservations": [
+            "处理最右侧的下降位置时，必须把当前值拆成每个不超过右邻值的非降序列；取段数 $k=\\lceil a_i/a_{i+1}\\rceil$ 可使操作次数 $k-1$ 最少，并令首段为 $\\lfloor a_i/k\\rfloor$ 以保留最大的前缀值。",
+            "将上述贪心过程从右向左执行后，数组前缀只需保留“最终首元素为 $x$”这一状态；状态转移为 $x\\rightarrow\\left\\lfloor a_i/\\lceil a_i/x\\rceil\\right\\rfloor$，从而把所有子数组的处理转化为状态计数。",
+            "对固定 $a_i$，转移结果属于序列 $\\lfloor a_i/k\\rfloor$ 的不同取值，而该序列最多有 $O(\\sqrt{a_i})$ 个不同值，因此每个位置只需维护少量状态。",
+            "每个状态代表一批具有相同当前首元素的子数组；把该批次数乘以对应位置可产生的左端点数量和本次拆分次数，即可用贡献法累加所有子数组的极值。"
+          ],
+          "solutionBrief": "先用从右向左的贪心求单个数组的极值：下降处拆成 $k=\\lceil a_i/a_{i+1}\\rceil$ 段，并将 $a_i$ 更新为 $\\lfloor a_i/k\\rfloor$。再以最终首元素为状态统计所有子数组，利用整除分块后不同状态数为 $O(\\sqrt{10^5})$，通过贡献法求和；总复杂度 $O(n\\sqrt{10^5})$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1603D",
+          "index": "D",
+          "slot": "D",
+          "title": "Artistic Partition",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1603/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/96460",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "divide and conquer",
+            "dp",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n,k$，将 $1$ 到 $n$ 划分为 $k$ 个连续非空区间 $[x_i+1,x_{i+1}]$，其中边界满足 $0=x_1<\\cdots<x_{k+1}=n$。每个区间的代价是其中满足 $i\\le j$ 且 $\\gcd(i,j)$ 不小于区间左端点的整数对数量，要求最小化所有区间代价之和。",
+          "transformedStatement": "先忽略每个区间内的对角线配对，把严格条件改为 $i<j$；这些被忽略的贡献总数恒为 $n$。对严格版本设区间代价为 $c(l,r)$，则用 $dp[n][k]=\\min_i(dp[i-1][k-1]+c(i,n))$ 求最优分割。",
+          "keyObservations": [
+            "去掉每个区间中 $i=j$ 的配对后，所有对角线贡献总计恒为 $n$，因此可先求严格不等式版本，最后统一加回 $n$。",
+            "将最大公约数按其恰好取值 $d$ 分类，并约去公因子后，区间代价可写为 $c(l,r)=\\sum_{d=l}^{r}p(\\lfloor r/d\\rfloor)$，其中 $p(x)=\\sum_{i=1}^{x}\\phi(i)$。",
+            "序列 $\\lfloor r/d\\rfloor$ 只有 $O(\\sqrt r)$ 个不同值；按相同商分块并预处理后，任意 $c(l,r)$ 可在 $O(1)$ 时间得到。",
+            "代价满足四边形不等式，因此区间 DP 的最优转移点具有单调性，可用分治 DP 将 $O(n^2)$ 的转移部分降至 $O(n\\log^2 n)$。"
+          ],
+          "solutionBrief": "先用欧拉函数前缀和及商分块预处理区间代价，再建立分段 DP。四边形不等式保证可用分治 DP 优化转移；只需预处理 $k\\le17$，最终给严格配对版本加上 $n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1603E",
+          "index": "E",
+          "slot": "E",
+          "title": "A Perfect Problem",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1603/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/96460",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数序列，每个元素在 $1$ 到 $n+1$ 之间。一个非空子序列若满足最大值乘最小值不少于所有元素之和则称为 good；要求统计所有非空子序列都 good 的 perfect 序列数量，并对质数 $M$ 取模。",
+          "transformedStatement": "先把序列视为排好序的多重集合，只检查其前缀不等式。固定最小值 $a_1$ 后减去它，将计数转化为：每个 $b_i$ 非负、总和至多为 $a_1$，同时大数值必须按由排序条件产生的最低出现次数出现。",
+          "keyObservations": [
+            "完美性与元素顺序无关，因此可先对序列排序，最后用重复元素的排列数恢复所有原序列的计数。",
+            "对排好序的序列，只需检查所有前缀是否满足 $a_1a_i\\ge\\sum_{j=1}^{i}a_j$；该条件可推出任意子数组都满足要求，从而避免枚举子序列。",
+            "必有 $a_i\\ge i$；若 $a_i=i$，则前 $i$ 个元素必须全部等于 $i$，因此最大值只能是 $n$ 或 $n+1$，且最大值为 $n$ 时只有全为 $n$ 的序列。",
+            "固定最小值 $a_1$ 并令 $b_i=a_i-a_1$ 后，问题转为计数满足总和不超过 $a_1$、各值出现次数有下界的多重集合；当 $a_1<n-2\\sqrt n$ 时这些下界已迫使总和过大，因此只需处理 $O(\\sqrt n)$ 个最小值。"
+          ],
+          "solutionBrief": "先按最小值分类，并将元素减去最小值。对每类用按数值从大到小处理的 DP，状态记录已选元素数、总和及当前值，利用出现次数和排列权重计数；小最小值由平方根界排除，答案对 $M$ 取模。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1603F",
+          "index": "F",
+          "slot": "F",
+          "title": "October 18, 2017",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1603/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/96460",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定 $\\mathbb F_2^k$ 中的长度为 $n$ 的向量序列，以及目标向量 $x$，统计其生成的线性空间不包含 $x$ 的序列数量，并对 $998244353$ 取模。序列元素可重复，需对每组 $n,k,x$ 输出答案。",
+          "transformedStatement": "问题转化为：在 $k$ 维二元向量空间中，统计生成空间避开目标向量 $x$ 的有序序列。$x=0$ 时这是计数线性无关序列；$x\\ne0$ 时固定为目标 $1$，通过包含 $1$ 的降维子空间链进行容斥。",
+          "keyObservations": [
+            "当 $x=0$ 时，合法条件等价于 $a_1,\u001b[0m\\ldots,a_n$ 线性无关；第 $i$ 个元素有 $2^k-2^{i-1}$ 种选择，因此 $n>k$ 时答案为 $0$。",
+            "当 $x\\ne0$ 时，任意非零 $x$ 都可通过换基化为 $1$，所以答案只取决于 $x$ 是否为零，而不取决于其具体数值。",
+            "对包含目标向量的子空间链进行容斥：连续选取若干个降一维且包含目标的子空间，最后进入一个不包含目标的子空间；固定链后，序列每项有 $2^{k-i}$ 种选择。",
+            "每个不含目标向量的序列按其生成空间的维数被容斥计数恰好一次，链数的交错和由归纳恒等式化为 $1$，从而得到闭式并可在 $O(k+\\log n)$ 内计算。"
+          ],
+          "solutionBrief": "把向量视为 $\\mathbb F_2^k$ 中的元素。$x=0$ 时直接计数线性无关序列；$x\\ne0$ 时用换基化为 $x=1$，对包含目标向量的降维子空间链做容斥，按前缀积计算闭式。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
