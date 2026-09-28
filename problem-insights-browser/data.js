@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3405,
-    "source_total_problems": 3408,
+    "total_problems": 3412,
+    "source_total_problems": 3415,
     "filtered_out_problems": 3,
-    "with_statement_brief": 3405,
+    "with_statement_brief": 3412,
     "with_editorial_brief": 3119,
     "with_solution_brief": 3121,
-    "missing_editorial_brief": 284,
+    "missing_editorial_brief": 291,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2467,
     "primary_topic_count": 13,
-    "contest_count": 523,
+    "contest_count": 524,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1099,
-    "字符串": 179,
-    "数论与同余": 361,
+    "构造与贪心": 1102,
+    "字符串": 181,
+    "数论与同余": 362,
+    "图论与网络流": 220,
     "数据结构": 322,
     "树结构": 166,
     "组合计数与概率": 258,
     "几何": 81,
-    "图论与网络流": 219,
     "博弈": 106,
     "动态规划与状态设计": 280,
     "基础实现与模拟": 210,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 23
   },
   "statusCounts": {
+    "missing_editorial": 291,
     "ai_generated_with_editorial": 2159,
-    "missing_editorial": 284,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
     "manual_override": 891,
@@ -105126,6 +105126,195 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "用五类区间计数描述最小值端点状态，先在受约束前缀内递推，再利用后缀平移不变性转成卷积；通过生成函数解微分方程，整体复杂度为 $O(nm+n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1652,
+      "name": "Технокубок 2022 - Финал",
+      "date": "2022-03-20",
+      "url": "https://codeforces.com/contest/1652",
+      "type": "Others",
+      "problemCount": 7,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1652A",
+          "index": "A",
+          "slot": "A",
+          "title": "Maximum Cake Tastiness",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "几何"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Maximum Cake Tastiness；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652B",
+          "index": "B",
+          "slot": "B",
+          "title": "Prefix Removals",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Prefix Removals；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652C",
+          "index": "C",
+          "slot": "C",
+          "title": "Alice and the Cake",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Alice and the Cake；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652D",
+          "index": "D",
+          "slot": "D",
+          "title": "Potion Brewing Class",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计",
+            "博弈"
+          ],
+          "originalTags": [
+            "implementation",
+            "math",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Potion Brewing Class；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652E",
+          "index": "E",
+          "slot": "E",
+          "title": "Arithmetic Operations",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "动态规划与状态设计",
+            "博弈"
+          ],
+          "originalTags": [
+            "brute force",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Arithmetic Operations；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652F",
+          "index": "F",
+          "slot": "F",
+          "title": "Minimal String Xoration",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Minimal String Xoration；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "1652G",
+          "index": "G",
+          "slot": "G",
+          "title": "Snowy Mountain",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1652/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "graphs",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Snowy Mountain；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
         }
       ]
     }
