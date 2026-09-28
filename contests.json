@@ -1,5 +1,16 @@
 [
   {
+    "id": 1671,
+    "name": "Educational Codeforces Round 127 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1650638100,
+    "relativeTimeSeconds": 139928646,
+    "date": "2022-04-22"
+  },
+  {
     "id": 1672,
     "name": "Codeforces Global Round 20",
     "type": "CF",
