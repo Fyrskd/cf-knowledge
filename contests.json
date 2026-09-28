@@ -1,5 +1,16 @@
 [
   {
+    "id": 1658,
+    "name": "Codeforces Round 779 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1648391700,
+    "relativeTimeSeconds": 142177716,
+    "date": "2022-03-27"
+  },
+  {
     "id": 1660,
     "name": "Codeforces Round 780 (Div. 3)",
     "type": "ICPC",
