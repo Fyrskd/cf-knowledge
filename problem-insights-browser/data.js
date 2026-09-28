@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4038,
+    "total_problems": 4044,
     "source_total_problems": 4044,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4038,
-    "with_editorial_brief": 3692,
-    "with_solution_brief": 3694,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4044,
+    "with_editorial_brief": 3698,
+    "with_solution_brief": 3700,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3100,
+    "ai_override_count": 3106,
     "primary_topic_count": 13,
-    "contest_count": 627,
+    "contest_count": 628,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 424,
+    "数论与同余": 425,
+    "构造与贪心": 1309,
+    "动态规划与状态设计": 331,
+    "组合计数与概率": 318,
+    "图论与网络流": 266,
     "博弈": 116,
-    "组合计数与概率": 317,
     "树结构": 190,
-    "动态规划与状态设计": 330,
-    "图论与网络流": 265,
-    "构造与贪心": 1307,
     "交互": 118,
     "基础实现与模拟": 250,
     "数据结构": 384,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "几何": 94
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2703,
+    "ai_generated_with_editorial": 2709,
     "missing_editorial": 344,
     "ai_generated_partial_editorial": 98,
     "low_confidence": 1,
@@ -124210,6 +124210,188 @@ window.CF_INSIGHTS_DATA = {
             "扫描右端点时，新位置 $p$ 的贡献会加入所有满足 $k<prev[p]$ 的边界候选，因此只需对这段候选区间做统一加值，就能维护各转移的区间代价。"
           ],
           "solutionBrief": "令 $dp[i][j]$ 表示前 $j$ 个元素切成 $i$ 段的最小代价。固定段数并从左向右扫描右端点，用线段树维护各分割边界对应的 $dp[i-1][k]+cost(k+1,j)$；每加入一个位置，就对 $k<prev[p]$ 的候选区间加上 $p-prev[p]$，并查询最小值。复杂度为 $O(nk\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1525,
+      "name": "Educational Codeforces Round 109 (Rated for Div. 2)",
+      "date": "2021-05-16",
+      "url": "https://codeforces.com/contest/1525",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1525A",
+          "index": "A",
+          "slot": "A",
+          "title": "Potion-making",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1525/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/90793",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "初始容器为空，每步可倒入一升精华液或一升水；最终精华液必须恰占总体积的 $k\\%$，水占其余比例。求达到该精确比例所需的最少倒入步数。",
+          "transformedStatement": "把步数视为整数总升数 $e+w$，并将比例条件改写为 $100e=k(e+w)$。问题等价于寻找最小正整数总体积，使其能按整数升数分成满足指定百分比的两种材料，这由 $\\gcd(k,100)$ 决定。",
+          "keyObservations": [
+            "若倒入精华液和水的整数升数分别为 $e,w$，比例要求等价于 $e/(e+w)=k/100$；因此 $100e=k(e+w)$。",
+            "令 $x=100/(e+w)$，则必须有 $k=xe$ 且 $100=x(e+w)$，所以 $x$ 必须同时整除 $k$ 和 $100$。",
+            "总升数为 $100/x$，要使其最小就要让 $x$ 尽可能大；取 $x=\\gcd(k,100)$ 可得到最小步数。"
+          ],
+          "solutionBrief": "每一步倒入一升某种材料，因此步数就是总升数。设 $x=100/(e+w)$，满足比例要求时 $x$ 必须整除 $k$ 和 $100$；最大可取值为 $\\gcd(k,100)$，答案为 $100/\\gcd(k,100)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1525B",
+          "index": "B",
+          "slot": "B",
+          "title": "Permutation Sort",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1525/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/90793",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定 $1$ 到 $n$ 的一个排列，每次可任选一个非整个数组的连续子数组，并任意重排其中元素。求将排列升序排列所需的最少操作次数。",
+          "transformedStatement": "无需考虑排列内部元素的具体顺序，只需检查两端是否已经固定为正确值，或是否正好分别为最大值和最小值；这些端点情形决定最少操作数，其余排列统一可用两次操作完成。",
+          "keyObservations": [
+            "若排列已升序则无需操作；若首项是 $1$ 或末项是 $n$，可重排除已固定端点外的整个区间，一次完成排序。",
+            "若首项为 $n$ 且末项为 $1$，这两个极值都必须移到对侧端点，而一次操作不能覆盖整个数组；题解给出的三次区间重排可以完成，且两次不足。",
+            "除上述情形外，题解指出任意排列都能在两次合法区间重排内排好，因此答案只需由是否有序及两端元素分类决定。"
+          ],
+          "solutionBrief": "检查排列是否已排序，以及首项是否为 $1$、末项是否为 $n$，或首末项是否分别为 $n$ 和 $1$。对应答案依次为 $0$、$1$、$3$；其余情况答案为 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1525C",
+          "index": "C",
+          "slot": "C",
+          "title": "Robot Collisions",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1525/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/90793",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 个机器人从互不相同的整数坐标出发，在区间 $[0,m]$ 上以单位速度沿左右方向移动；到达任一墙壁会立即反向。多个机器人在同一整数坐标相遇时会爆炸，爆炸后的机器人不再参与碰撞；求每个机器人是否爆炸及其爆炸时间，未爆炸输出 $-1$。",
+          "transformedStatement": "按起点奇偶性拆成互不碰撞的子问题，再把墙壁反射改写为直线上的等效出发位置。每组排序扫描时用栈配对相向机器人，处理完后再对栈中机器人按反射后的相遇顺序配对。",
+          "keyObservations": [
+            "奇偶坐标的机器人在整数时刻始终处于对应奇偶性的坐标，因此奇、偶坐标组之间不可能发生整数坐标碰撞，问题可拆成两组独立处理。",
+            "将机器人按起点排序后，在不考虑墙壁反射的直线上，向左机器人只会与其左侧最近的尚存向右机器人相撞；因此用栈配对即可，碰撞时间为两者位置差的一半。",
+            "处理左行机器人时若栈为空，可把它等效为从坐标 $-x$ 向右出发；这保留其与后续机器人的碰撞时间，同时避免显式模拟左墙反射。",
+            "扫描结束后栈中剩余机器人会先后在右墙反射并从栈顶开始两两相撞；可将栈顶机器人等效为从 $2m-x$ 向左出发，再按对计算碰撞时间。"
+          ],
+          "solutionBrief": "按起点排序，并分别处理奇、偶坐标机器人。扫描时用栈匹配相向而行的机器人；栈空时的左行机器人用坐标 $-x$ 等效处理。扫描结束后，对栈中机器人从栈顶起两两配对，并用右墙反射后的等效坐标 $2m-x$ 计算时间；未配对者答案为 $-1$。总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1525D",
+          "index": "D",
+          "slot": "D",
+          "title": "Armchairs",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1525/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/90793",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "flows",
+            "graph matchings",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 个从左到右编号的座位，部分座位最初有人坐，且人数不超过座位数的一半。每次可让一人移到一个当前空座，耗时为两座位编号之差；操作必须依次完成，求让所有最初有人坐的座位都变空的最少总时间。",
+          "transformedStatement": "把问题改写为：为每个初始有人坐的位置选择一个初始空座作为最终位置，使所有被选空座与起点一一配对，并最小化距离总和。最优配对可按起点和终点的位置顺序对应，因此只需决定哪些空座成为终点。",
+          "keyObservations": [
+            "把起点和最终座位分别按位置排序后，按相同顺序配对不会增加总路程；交叉配对若两人移动方向相反，交换配对还能消除重叠路段。",
+            "因此只需从初始空座中选出与人数相同的终点，配对关系便由排序唯一确定，避免枚举所有匹配方式。",
+            "按座位从左到右处理时，记录已选作终点的空座数量，就能确定下一个终点对应第几个起点，从而用二维状态累计最小移动距离。"
+          ],
+          "solutionBrief": "将初始有人坐的位置与选定的空座终点分别排序，并按顺序配对。扫描座位，用 DP 选择终点：遇到初始空座时可跳过，或将其作为下一个终点并加入对应两位置的距离；复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1525E",
+          "index": "E",
+          "slot": "E",
+          "title": "Assimilation IV",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1525/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/90793",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "probabilities",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 座城市和 $m$ 个点，每回合从尚未建造纪念碑的城市中等概率选择一座建造，持续 $n$ 回合。纪念碑建成后，从建造回合起其控制半径每回合增加 $1$，求全部回合结束时被至少一座纪念碑控制的点数的期望，并对给定模数取值。",
+          "transformedStatement": "将目标拆成每个点被控制的概率之和；对单个点，按各城市到它的距离确定纪念碑必须在何时建成才有效，再统计随机城市排列中没有任何有效建造的排列比例。",
+          "keyObservations": [
+            "期望点数可按点拆开求和，因此只需分别计算每个点最终未被控制的概率，不必追踪多个点之间的联合事件。",
+            "若某点到城市的距离为 $x$，该城的纪念碑在第 $n+1-x$ 步之前建成就能控制此点；因此每个城市可按最晚有效建造时刻分类。",
+            "把各时刻仍可有效建造的城市数记为 $cnt[k]$，未控制该点的排列数可逐步计数：第 $k$ 步的可选数由此前累计的候选数减去已用城市数得到。",
+            "随机建造顺序在所有 $n!$ 个城市排列中等概率，因此未控制概率等于未控制排列数除以 $n!$，再用其补数作为该点的期望贡献。"
+          ],
+          "solutionBrief": "利用期望的线性性逐点计算。对每个点按距离统计各建造时刻仍可使其被控制的城市数，计数不满足控制条件的城市排列数；除以 $n!$ 得到未控制概率，用其补数累加，并在模 $998244353$ 下计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1525F",
+          "index": "F",
+          "slot": "F",
+          "title": "Goblins And Gnomes",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1525/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/90793",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "flows",
+            "graph matchings"
+          ],
+          "statementBrief": "城市由 $n$ 个大厅和有向隧道组成，隧道网络无环；第 $i$ 波有 $i$ 个哥布林从不同大厅出发，并沿不重复经过大厅的路线尽量多地掠夺大厅。每波前可以花一分钟封锁某个大厅的全部入边或全部出边，封锁会持续到之后的波次；准备 $t_i$ 分钟后通过第 $i$ 波可得 $\\max(0,x_i-t_i y_i)$ 分，若某波掠夺全部大厅则失败，目标是在通过波次的前提下最大化总分。",
+          "transformedStatement": "把哥布林的路线视为互不相交的有向路径，先求覆盖所有大厅所需的最少路径数；这等价于构造二分图并求最大匹配。封锁一个大厅的入边或出边，对应删除二分图一侧某顶点的关联边；逐步降低匹配规模即可表示逐步提高城市的防御能力，随后优化各波的准备时间和得分。",
+          "keyObservations": [
+            "固定隧道后，能覆盖所有大厅的最少哥布林数等于 DAG 的最小顶点不相交路径覆盖数；把每条隧道对应为二分图中的一条边后，该数等于大厅数减最大匹配数。",
+            "一次准备操作会删除二分图中某个顶点关联的所有边，因此最大匹配数至多减少 $1$；从最小点覆盖中删除一个顶点，则能使匹配数恰好减少 $1$。",
+            "每次准备操作都会让城市能抵御的哥布林数增加 $1$，所以可以先构造逐步降低最大匹配的操作序列，再用状态记录已通过波次和当前匹配规模来优化得分。"
+          ],
+          "solutionBrief": "将大厅路径覆盖转化为二分图最大匹配，最少路径数为 $n-|M|$。准备时删除一个顶点的关联边，并按每步使最大匹配减少 $1$ 的顺序选点；再以已通过波次和当前匹配规模为状态进行 DP，权衡准备时间与各波得分。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
