@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3238,
+    "total_problems": 3243,
     "source_total_problems": 3246,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3238,
-    "with_editorial_brief": 2957,
-    "with_solution_brief": 2959,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3243,
+    "with_editorial_brief": 2962,
+    "with_solution_brief": 2964,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2300,
+    "ai_override_count": 2305,
     "primary_topic_count": 13,
-    "contest_count": 497,
+    "contest_count": 498,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1035,
+    "构造与贪心": 1039,
+    "数据结构": 305,
     "动态规划与状态设计": 273,
     "数论与同余": 344,
-    "数据结构": 304,
     "树结构": 160,
     "图论与网络流": 205,
     "组合计数与概率": 248,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1998,
+    "ai_generated_with_editorial": 2003,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -100027,6 +100027,157 @@ window.CF_INSIGHTS_DATA = {
             "由于两个下降相邻对不能共享元素，按从左到右遇到 $p_{i-1}>p_i$ 就配对并跳过下一位置，直接得到与动态规划相同的最大数量。"
           ],
           "solutionBrief": "先证明最优划分可全部由长度不超过 $2$ 的子数组组成；长度为 $2$ 的子数组奇当且仅当左值大于右值。于是用上述一维 DP 求解，或从左到右贪心匹配不重叠的相邻下降对，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1685,
+      "name": "Codeforces Round 794 (Div. 1)",
+      "date": "2022-05-25",
+      "url": "https://codeforces.com/contest/1685",
+      "type": "Div. 1",
+      "problemCount": 5,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1685A",
+          "index": "A",
+          "slot": "A",
+          "title": "Circular Local MiniMax",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1685/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103198",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一组整数，要求将它们全部重排到圆环上，使每个数都严格大于左右两个邻居，或严格小于左右两个邻居。对每组数据判断是否存在这样的排列；存在时输出任意一种，否则输出 NO。",
+          "transformedStatement": "把每个位置抽象为局部极小或局部极大，先利用圆环上的峰谷交替性判断奇偶性；偶数时排序后将前半段与后半段交错放置，并检查中间区间的重复值是否破坏严格不等式。",
+          "keyObservations": [
+            "局部极小与局部极大必须交替出现，因此圆环上的位置类型周期为 2；当 $n$ 为奇数时首尾类型冲突，必然无解。",
+            "令 $n=2m$ 并排序为 $a_1\\le\\cdots\\le a_{2m}$；若某个 $2\\le i\\le m-1$ 满足 $a_i=a_{i+m-1}$，这 $m$ 个不小于该值的元素会被迫占据同一类交替位置，无法全部严格成为极大或极小，因此无解。",
+            "没有上述重复边界时，按 $(a_1,a_{m+1},a_2,a_{m+2},\\ldots,a_m,a_{2m})$ 交错排列，小数与大数交替，所有相邻三元组都形成严格峰谷，且首尾相接也满足条件。"
+          ],
+          "solutionBrief": "奇数长度直接输出 NO。偶数长度排序，若存在 $2\\le i\\le m-1$ 使 $a_i=a_{i+m-1}$ 则无解；否则输出交错序列 $(a_1,a_{m+1},a_2,a_{m+2},\\ldots,a_m,a_{2m})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1685C",
+          "index": "C",
+          "slot": "C",
+          "title": "Bring Balance",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1685/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/103198",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个含有相同数量左右括号的字符串，每次可以反转任意一个连续子串，要求求出将其变成平衡括号序列所需的最少操作次数，并输出一组达到最少次数的反转区间。平衡括号序列要求每个前缀中左括号不少于右括号。",
+          "transformedStatement": "把字符串转成由 $1$ 和 $-1$ 组成的序列，将目标转化为让所有前缀和非负。题解先用最大前缀和位置构造至多两次反转，再利用负前缀的最左、最右位置压缩一次反转的候选范围。",
+          "keyObservations": [
+            "将左括号记为 $1$、右括号记为 $-1$ 后，括号序列平衡等价于总和为 $0$ 且所有前缀和非负。",
+            "取前缀和最大的分界点 $i$，依次反转 $[1,i]$ 与 $[i+1,2n]$；最大值性质保证两段反转后的所有前缀和都非负，因此答案最多为 $2$。",
+            "若原序列不平衡且只允许一次反转，反转区间必须覆盖最左和最右的负前缀位置；左右端点分别取对应范围内前缀和最大的下标即可得到唯一需要检查的候选区间。",
+            "反转候选区间后，只需检查区间内部产生的前缀和；区间外的前缀和保持非负，因此一次操作是否可行可以直接验证。"
+          ],
+          "solutionBrief": "先检查原串是否平衡。否则取前缀和最大点，反转其左侧前缀和右侧后缀，构造出至多两次操作；同时找最左、最右负前缀，选两侧前缀和最大的端点组成候选区间，验证一次反转是否成功，成功则输出一次，否则输出两次构造。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1685D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Permutation Weight (Easy Version)",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1685/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/103198",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dsu"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列 $p$，要构造另一个排列 $q$。其权值是环状相邻项之和：每个位置 $i$ 贡献 $|q_i-p_{q_{i+1}}|$，其中下标按环连接；要求输出任意一个权值最小的 $q$。",
+          "transformedStatement": "把 $p$ 看成若干置换环，通过交换不同环中相邻编号的出边逐步合并成单环置换 $p'$；随后让 $q$ 沿 $p'$ 的逆环满足 $q_i=p'_{q_{i+1}}$，将目标转化为控制 $p$ 到 $p'$ 的总改变量。",
+          "keyObservations": [
+            "权值为零当且仅当能对所有相邻位置满足 $q_i=p_{q_{i+1}}$，这等价于 $p$ 本身只有一个环，因此应先按置换环分解问题。",
+            "若 $p$ 有 $k$ 个环，最小权值为 $2(k-1)$；每次交换两个不同环中顶点的出边会恰好合并两个环，并使总改变量至多增加 $2$。",
+            "按 $x=1$ 到 $n-1$ 检查 $x,x+1$，若它们当前属于不同环就交换 $p'_x,p'_{x+1}$，最终恰好把所有环合并为一个环。",
+            "对合并后的单环置换 $p'$ 构造满足 $q_i=p'_{q_{i+1}}$ 的排列，则原权值恰好等于 $\u0000sum_i|p_i-p'_i|$，从而达到 $2(k-1)$。"
+          ],
+          "solutionBrief": "先分解 $p$ 的环。依次检查相邻数，若它们在不同环中则交换对应出边，将所有环合并成单环置换 $p'$；再沿 $p'$ 的逆方向构造满足 $q_i=p'_{q_{i+1}}$ 的排列，即得到最小权值方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1685D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Permutation Weight (Hard Version)",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1685/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/103198",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列 $p$，选择另一个排列 $q$。其权值是环式相邻项之和 $\\sum_i |q_i-p_{q_{i+1}}|$（下标循环），要求先使权值最小，再在所有最优排列中输出字典序最小的 $q$。",
+          "transformedStatement": "将每条 $q_i\\to p_{q_{i+1}}$ 看作图边：图由若干环组成，并按 $p$ 的原始环把顶点归类。问题转化为构造满足最小总环代价、且这些原始环之间连接连通的图，并逐前缀检查其可扩展性。",
+          "keyObservations": [
+            "把由边 $q_i\\to p_{q_{i+1}}$ 组成的图按环分解后，每个长度为 $m$ 的环贡献至少 $2(m-1)$；因此总权值下界是 $2(k-1)$，其中 $k$ 是 $p$ 的环数。",
+            "达到下界时，每个图环必须由连续整数构成，并沿环先递增到最大值、再递减回最小值；这些环在 $p$ 的 $k$ 个环之间形成的连接图还必须连通。",
+            "由于 $q$ 的循环移位权值不变，可固定 $q_1=1$，再逐位尝试最小未用值；只需判断当前前缀能否扩展为达到下界的合法图。",
+            "前缀边对应的左右区间不能同向内部相交、不能跨过自环点；由相邻整数区间诱导的环图必须分别满足无环与连通，这些条件足以判断前缀可扩展。"
+          ],
+          "solutionBrief": "先求 $p$ 的环并得到 $k$，最优权值为 $2(k-1)$。固定 $q_1=1$，按字典序逐位尝试候选值，用区间相交、自环及环图的森林/连通条件判定能否扩展到最优解；复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1685E",
+          "index": "E",
+          "slot": "E",
+          "title": "The Ultimate LIS Problem",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1685/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/103198",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $2n+1$ 的排列。每次操作交换两个指定位置的元素，操作后要输出一个循环移位，使该序列的最长严格递增子序列长度不超过 $n$；若不存在这样的移位则输出 $-1$。",
+          "transformedStatement": "把 $1$ 到 $n$ 映射为 $-1$、$n+2$ 到 $2n+1$ 映射为 $1$，将问题转化为寻找前缀和非负的循环起点；只有围绕特殊元素 $n+1$ 的两条环上递增链同时成立时，所有移位才会失败。",
+          "keyObservations": [
+            "将除 $n+1$ 外的数映射为 $-1$ 或 $1$；选取前缀和始终非负的循环起点后，不含 $n+1$ 的递增子序列长度不可能达到 $n+1$，因此危险情况必然经过 $n+1$。",
+            "若某个循环移位仍有 LIS 至少为 $n+1$，则必须同时满足 $n+1,n+2,\u0006,2n+1$ 和 $1,2,\u0006,n+1$ 分别按环上顺序出现；任一顺序被破坏即可直接构造合格移位。",
+            "用线段树维护映射序列的区间和与最小前缀和，可在循环数组中寻找使所有前缀和非负的起点，从而在平衡条件成立时确定答案移位。",
+            "用 $S=\\sum_{i=1}^{n}(pos(i\\bmod(n+1)+1)-pos(i))\\bmod(2n+1)$ 判断一段数是否按环上递增顺序排列；$S=2n+1$ 当且仅当顺序成立，交换后只需 $O(1)$ 更新。"
+          ],
+          "solutionBrief": "把元素按是否小于或大于 $n+1$ 映射为 $-1/1$，用线段树维护循环前缀和并寻找平衡起点；再用环上位置和检查两条特殊递增链。若平衡或任一链被破坏则输出对应移位，否则输出 $-1$，单次复杂度 $O(\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
