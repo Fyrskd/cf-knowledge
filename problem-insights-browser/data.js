@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3843,
+    "total_problems": 3845,
     "source_total_problems": 3847,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3843,
-    "with_editorial_brief": 3520,
-    "with_solution_brief": 3522,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3845,
+    "with_editorial_brief": 3522,
+    "with_solution_brief": 3524,
     "missing_editorial_brief": 321,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2905,
+    "ai_override_count": 2907,
     "primary_topic_count": 13,
     "contest_count": 596,
     "rating_min": 800,
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 406,
+    "数论与同余": 407,
     "动态规划与状态设计": 316,
     "构造与贪心": 1245,
     "组合计数与概率": 294,
     "图论与网络流": 251,
     "基础实现与模拟": 242,
-    "数据结构": 367,
+    "数据结构": 368,
     "交互": 112,
     "字符串": 200,
     "树结构": 183,
@@ -60,7 +60,7 @@ window.CF_INSIGHTS_DATA = {
   },
   "statusCounts": {
     "missing_editorial": 321,
-    "ai_generated_with_editorial": 2542,
+    "ai_generated_with_editorial": 2544,
     "ai_generated_partial_editorial": 87,
     "low_confidence": 1,
     "manual_override": 891,
@@ -149,7 +149,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-26",
       "url": "https://codeforces.com/contest/2268",
       "type": "Div. 1",
-      "problemCount": 4,
+      "problemCount": 6,
       "maxRating": null,
       "problems": [
         {
@@ -175,6 +175,70 @@ window.CF_INSIGHTS_DATA = {
             "将必然删除的元素直接累加，再从剩余序列的两端逐对取较大值，恰好覆盖所有可获得的删除贡献，整个过程只需线性扫描。"
           ],
           "solutionBrief": "先累加必然会被删除的中间区间；其余元素按原数组对称位置配对，每对只能删除一个，取两者较大值。用双指针从剩余序列两端配对，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2268B",
+          "index": "B",
+          "slot": "B",
+          "title": "What a SauSaGe! It's All Meat",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "给定每个口味的数量，更新会永久地把某个位置改为指定值。每次求最大可使数量被 $3$ 整除的元素数；可反复选择相邻两个位置，并对它们同时异或 $3k$（$1\\leq k\\leq5$），这些操作只对当前状态假设进行。",
+          "transformedStatement": "把每个数量视为四位二进制数，操作是在两个位置上同步异或特定掩码。题目等价于判断每个元素的 popcount 奇偶性是否能成为 $3$ 的倍数，最终答案转化为统计 popcount 为偶数的位置数。",
+          "keyObservations": [
+            "每次操作使用的掩码为 $3,6,9,12,15$，它们都含偶数个 $1$，所以每个位置的二进制 $1$ 的奇偶性始终不变。",
+            "连续操作相邻位置后，可等价于对任意两个位置同时异或同一掩码；组合这些掩码还能得到任意四位中含偶数个 $1$ 的掩码。",
+            "奇数个 $1$ 的元素不可能变成 $3$ 的倍数，而偶数个 $1$ 的元素总能通过与其他位置配合变成 $0$ 或其他 $3$ 的倍数，因此答案恰为偶数 popcount 元素的数量。",
+            "更新只改变一个元素的贡献，因此维护旧值和新值是否具有偶数 popcount 即可在 $O(1)$ 时间修正答案。"
+          ],
+          "solutionBrief": "维护数组中二进制 popcount 为偶数的元素数量。操作保持 popcount 奇偶性，且题解证明所有偶数 popcount 元素都能同时变为 All-Meat；每次更新删除旧贡献并加入新贡献。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2268C",
+          "index": "C",
+          "slot": "C",
+          "title": "KiaKio and Energy Intervals",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "greedy",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组，每次选择满足 $l<r$ 的连续区间，令区间最大值为 $m$，将区间内每个数与 $m$ 按位与后全部异或。要求在所有区间中求这个结果的最大值。",
+          "transformedStatement": "把区间结果表示为两个前缀异或的按位与，并用最大笛卡尔树按区间最大值划分候选区间；固定答案掩码后，问题变成寻找满足异或关系的两组前缀端点。",
+          "keyObservations": [
+            "按位与可分配到异或上，因此区间值等于 $(p_{l-1}\\oplus p_r)\\mathbin{\\&}m$，问题转为匹配两个前缀端点及区间最大值。",
+            "最大笛卡尔树中，区间 $[l,r]$ 的最大值对应其端点的最近公共祖先；若该祖先为 $v$，两端前缀下标分别落在 $[L_v-1,v-1]$ 与 $[v,R_v]$。",
+            "固定候选掩码 $M$ 后，令 $s_i$ 为 $a_i\\mathbin{\\&}M$ 的前缀异或，则可行条件是 $(a_v\\mathbin{\\&}M)=M$ 且存在 $s_x\\oplus s_y=M$；必须排除 $(x,y)=(v-1,v)$ 对应的单元素区间。",
+            "在笛卡尔树上优先处理较小子树并将其端点与较大侧频次数组合，可使每个端点至多被扫描 $O(\\log n)$ 次，从而在线性对数时间内完成一次掩码判定。"
+          ],
+          "solutionBrief": "从最高位到最低位贪心构造答案掩码。每次用最大笛卡尔树和小并大遍历检查前缀异或配对，单次判定为 $O(n\\log n)$，总复杂度为 $O(18n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
