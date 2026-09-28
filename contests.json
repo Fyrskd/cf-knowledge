@@ -1,5 +1,16 @@
 [
   {
+    "id": 1609,
+    "name": "Deltix Round, Autumn 2021 (open for everyone, rated, Div. 1 + Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1638110100,
+    "relativeTimeSeconds": 152478335,
+    "date": "2021-11-28"
+  },
+  {
     "id": 1613,
     "name": "Educational Codeforces Round 118 (Rated for Div. 2)",
     "type": "ICPC",
