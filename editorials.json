@@ -8,6 +8,25 @@
     "raw_sha256": "e02bf41675dc0dbc425a56dd042c753b3411dbe71c57032363c612b54b0bb7d8"
   },
   {
+    "url": "https://codeforces.com/blog/entry/93321",
+    "blog_entry_id": 93321,
+    "title": "Editorial of Codeforces Round #735 (Div. 2)",
+    "author": "YouKn0wWho",
+    "creation_time": "2021-07-29",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Editorial of Codeforces Round #735 (Div. 2)",
+    "section_count": 5,
+    "covered_problems": [
+      "1554A",
+      "1554B",
+      "1554C",
+      "1554D",
+      "1554E"
+    ],
+    "raw_sha256": "57b4671bf5209bb0c658d1c4485a50b756d8c3f8709492045fdaf655c52d4039"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/93586",
     "blog_entry_id": 93586,
     "title": "Codeforces Round 736 Editorial",
