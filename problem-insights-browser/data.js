@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4032,
+    "total_problems": 4038,
     "source_total_problems": 4038,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4032,
-    "with_editorial_brief": 3686,
-    "with_solution_brief": 3688,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4038,
+    "with_editorial_brief": 3692,
+    "with_solution_brief": 3694,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3094,
+    "ai_override_count": 3100,
     "primary_topic_count": 13,
-    "contest_count": 626,
+    "contest_count": 627,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "树结构": 189,
-    "组合计数与概率": 316,
+    "数论与同余": 424,
+    "博弈": 116,
+    "组合计数与概率": 317,
+    "树结构": 190,
+    "动态规划与状态设计": 330,
     "图论与网络流": 265,
     "构造与贪心": 1307,
-    "数论与同余": 423,
     "交互": 118,
     "基础实现与模拟": 250,
     "数据结构": 384,
-    "动态规划与状态设计": 329,
     "字符串": 217,
-    "博弈": 114,
     "代数、矩阵与多项式": 26,
     "几何": 94
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2697,
+    "ai_generated_with_editorial": 2703,
     "missing_editorial": 344,
     "ai_generated_partial_editorial": 98,
     "low_confidence": 1,
@@ -124030,6 +124030,186 @@ window.CF_INSIGHTS_DATA = {
             "利用幂的第二类斯特林数展开，可把上述加权和改写为含 $S(k,i)$、$i!$ 与组合数的求和；这些斯特林数可通过 FFT 在 $O(k\\log k)$ 时间内求出。"
           ],
           "solutionBrief": "将数组计数转为循环停车配置计数，并利用循环平移关系修正比例。固定兼容值的出现次数后计数，再用第二类斯特林数展开求和；通过 FFT 计算所需斯特林数，整体复杂度为 $O(k\\log k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1527,
+      "name": "Codeforces Round 721 (Div. 2)",
+      "date": "2021-05-20",
+      "url": "https://codeforces.com/contest/1527",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1527A",
+          "index": "A",
+          "slot": "A",
+          "title": "And Then There Were K",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1527/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/90939",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks"
+          ],
+          "statementBrief": "给定整数 $n$，选择一个整数 $k$，将从 $n$ 到 $k$ 的所有整数连续进行按位与，即计算 $n\\ \\&\\ (n-1)\\ \\&\\cdots\\&\\ k$。要求找到使结果为 $0$ 的最大 $k$。",
+          "transformedStatement": "把连续按位与理解为逐位检查区间 $[k,n]$：某一位只要在区间内出现过 $0$，结果的这一位就为 $0$。问题因此转化为找到区间首次包含最高置位为 $0$ 的数时对应的最大下界。",
+          "keyObservations": [
+            "区间中只要有一个整数的某一位为 $0$，连续按位与的这一位就会变成 $0$；因此可逐位判断整个区间是否还保留某个置位。",
+            "设 $p$ 是不大于 $n$ 的最大二次幂，则当下界降到 $p-1$ 时，区间首次包含最高位为 $0$ 的数，最高位因此被清除。",
+            "若下界大于 $p-1$，区间内所有数的最高位都为 $1$，按位与必不为 $0$，所以答案恰为 $p-1$。"
+          ],
+          "solutionBrief": "令 $p$ 为不大于 $n$ 的最大二次幂，答案为 $p-1$。因为从 $n$ 连续与到 $p-1$ 时最高位首次被清零，而任何更大的下界都会使区间内所有数的最高位保持为 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1527B1",
+          "index": "B1",
+          "slot": "B",
+          "title": "Palindrome Game (easy version)",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1527/problem/B1",
+          "editorialUrl": "https://codeforces.com/blog/entry/90939",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games"
+          ],
+          "statementBrief": "Alice 与 Bob 轮流操作一个由 0 和 1 组成的回文串，Alice 先手；目标是让串中的字符全部变成 1。游戏结束时比较双方花费，花费较少者获胜，花费相同则平局；但给出的题面文本没有列出具体操作规则。",
+          "transformedStatement": "题解将局面归结为初始零的数量及其奇偶性：回文保证非中心零成对，奇数零时还存在一个中心零；围绕这一结构安排最后阶段的操作，以决定哪方花费更多。缺少的操作定义无法从题面文本中完整还原。",
+          "keyObservations": [
+            "初始串是回文，因此非中心位置的零总成对出现；这使零的总数奇偶性决定谁能在最后阶段获得费用优势。",
+            "零数为偶数时，Bob 可对应 Alice 的非中心操作保持回文，并在只剩一个零时反转，最终使 Alice 多花钱。",
+            "零数为奇数且大于 $1$ 时，Alice 先处理中心零，随后把局面转成偶数零的应对策略，从而让 Bob 多花钱。",
+            "零数为 $1$ 时不满足上述奇偶策略的胜负结论，结果为平局。"
+          ],
+          "solutionBrief": "统计零的个数：偶数时 Bob 获胜；奇数且大于 $1$ 时 Alice 获胜；恰有一个零时平局。策略依据是利用回文串中非中心零成对出现，并在中心零或最后一个零处改变应对方式。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1527B2",
+          "index": "B2",
+          "slot": "B",
+          "title": "Palindrome Game (hard version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1527/problem/B2",
+          "editorialUrl": "https://codeforces.com/blog/entry/90939",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games"
+          ],
+          "statementBrief": "Alice 和 Bob 轮流操作一个至少含一个 `0` 的二进制字符串，Alice 先手；每回合可将一个 `0` 改为 `1` 并支付费用，或按规则反转字符串。字符串全为 `1` 时游戏结束，双方最优行动，比较各自花费：少者获胜，花费相同则平局。",
+          "transformedStatement": "不必保留字符串的完整形态，而是把它看成若干对称字符对及可能存在的中间字符；游戏因此转化为在这些计数和上一手是否反转所确定的状态间，最小化双方的后续花费差。反转只影响操作可用性，不改变对称对计数。",
+          "keyObservations": [
+            "除反转操作外，字符串的具体排列不影响后续决策；把对称位置压缩为 `00` 对数、`01/10` 对数和中间位是否为 `0`，就能描述状态。",
+            "反转不花钱，但只有在上一手不是反转且存在不相等的对称位时才有意义，因此用 `rev` 记录上一手操作即可限制反转转移。",
+            "花费操作会改变对称对的类别：将 `00` 对中的一个 `0` 改成 `1` 会使其变成不相等对；处理不相等对则会减少其数量，这使状态转移只需更新计数。",
+            "在每个状态保存双方后续花费差的最优值，便可用其正负或零分别判定胜者或平局。"
+          ],
+          "solutionBrief": "将状态压缩为对称 `00` 对数、不相等对数、中间位是否为 `0` 及上一手是否反转，并对各合法操作计算最优花费差。按题解给出的差值符号判定 Alice 胜、Bob 胜或平局；题解还提到非回文串的策略结论及一个平局特例。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1527C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sequence Pair Weight",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1527/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/90939",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "hashing",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定整数序列，一个连续子段的权值是其中取值相同的下标对数量。对每个连续子段，子段可通过删除原序列开头和末尾的若干元素得到，要求计算所有连续子段权值之和。",
+          "transformedStatement": "将所有子段按右端点分类，并把权值拆成相等元素对的贡献。固定右端点 $i$ 后，每个此前同值位置 $j$ 会在恰好 $j$ 个子段中与 $i$ 配对，因此只需累计各数值此前出现位置的下标和。",
+          "keyObservations": [
+            "按子段右端点归类后，令 $dp_i$ 表示所有右端点为 $i$ 的子段权值之和，则总答案是各个 $dp_i$ 之和。",
+            "对每个此前出现且与 $a_i$ 相等的位置 $j$，有恰好 $j$ 个以 $i$ 结尾的子段同时包含 $j$ 和 $i$，因此这对位置贡献 $j$，而不是只贡献一次。",
+            "新位置 $i$ 带来的增量只取决于此前相同值的位置下标之和；按数值维护下标和，就能在处理每个位置时快速得到增量。"
+          ],
+          "solutionBrief": "从左到右计算以每个位置 $i$ 结尾的子段权值总和：在前一项的基础上，加上所有此前与 $a_i$ 相同的位置下标之和。用映射按数值维护下标和，并累加各位置的结果；答案可能较大，需使用 64 位整数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1527D",
+          "index": "D",
+          "slot": "D",
+          "title": "MEX Tree",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1527/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/90939",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "implementation",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一棵节点编号为 $0$ 到 $n-1$ 的树。对每个 $k=0,\u001fn$，统计所有不同端点的无序节点对，使两端点间最短路径（含端点）上的节点编号的 MEX 恰为 $k$。",
+          "transformedStatement": "把答案改写为“路径 MEX 至少为 $i$”的数量减去“路径 MEX 大于 $i$”的数量。随着 $i$ 增大，问题转为维护是否存在包含节点 $0,\u001fi$ 的路径，以及这类路径的数量。",
+          "keyObservations": [
+            "路径的 MEX 恰为 $i$，等于包含标签 $0$ 到 $i-1$ 的路径数减去还包含标签 $i$ 的路径数，因此可按 $i$ 递增维护前缀计数。",
+            "已包含当前标签前缀的路径，其端点可用一条由两端点构成的路径来刻画；加入新节点时沿父节点向上找到已有路径的首次交点，便能判断新节点是否仍可与前缀共存于某条路径。",
+            "若首次交点是当前路径的一个端点，加入节点后仍有路径包含整个新前缀；满足条件的路径数可由相应子树大小的乘积计出，从而更新下一轮的前缀路径数。",
+            "若首次交点不是端点，则不存在包含新前缀的路径；当前剩余的前缀路径全部贡献给本轮 MEX，之后更大的 MEX 数量也为零。"
+          ],
+          "solutionBrief": "以节点 $0$ 为根计算子树大小，并按标签递增维护包含标签前缀的路径数。对每个新节点沿父链寻找与已维护路径的首次交点；交点为端点时用子树大小乘积更新前缀计数，否则当前计数全部成为该 MEX 的答案，后续答案为零。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1527E",
+          "index": "E",
+          "slot": "E",
+          "title": "Partition Game",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1527/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/90939",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "divide and conquer",
+            "dp"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组，要将其按顺序切成恰好 $k$ 个非空连续段。每段的代价是该段中每种不同数值的最后出现位置与首次出现位置之差，求所有段代价之和的最小值。",
+          "transformedStatement": "把每个数值在一段中的末次位置减首次位置，改写为该数值相邻出现位置差之和。于是每个非首次出现位置贡献当前位置与前一次出现位置之差，但只有前一次出现仍落在当前段内时才计入。",
+          "keyObservations": [
+            "一个值的末次位置与首次位置之差，等于它每次相邻出现位置差的总和；因此区间代价可按每个非首次出现位置的贡献累加。",
+            "对位置 $p$，令 $b[p]=p-prev[p]$，其中 $prev[p]$ 是该值在 $p$ 之前最近一次出现的位置；分段边界为 $k$ 时，只有 $prev[p]>k$ 的贡献属于当前段。",
+            "扫描右端点时，新位置 $p$ 的贡献会加入所有满足 $k<prev[p]$ 的边界候选，因此只需对这段候选区间做统一加值，就能维护各转移的区间代价。"
+          ],
+          "solutionBrief": "令 $dp[i][j]$ 表示前 $j$ 个元素切成 $i$ 段的最小代价。固定段数并从左向右扫描右端点，用线段树维护各分割边界对应的 $dp[i-1][k]+cost(k+1,j)$；每加入一个位置，就对 $k<prev[p]$ 的候选区间加上 $p-prev[p]$，并查询最小值。复杂度为 $O(nk\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
