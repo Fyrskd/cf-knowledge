@@ -15,19 +15,363 @@
     ]
   },
   "summary": {
-    "total_problems": 3255,
+    "total_problems": 3263,
     "source_total_problems": 3266,
-    "filtered_out_problems": 11,
-    "with_statement_brief": 3255,
-    "with_editorial_brief": 2974,
-    "with_solution_brief": 2976,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3263,
+    "with_editorial_brief": 2982,
+    "with_solution_brief": 2984,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2317,
+    "ai_override_count": 2325,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1684A",
+      "contest_id": 1684,
+      "title": "Digit Minimization",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1684/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/102995",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "字符串",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "games",
+        "math",
+        "strings"
+      ],
+      "statement_brief": "给定一个十进制表示中不含数字 $0$ 的整数，Alice 与 Bob 轮流操作：Alice 每回合交换两个不同位置的数字，Bob 随后删除最末位数字，直到只剩一位。求 Alice 最优操作后能得到的最小整数。",
+      "transformed_statement": "把过程看成逐轮从右端删除数字，而 Alice 通过交换控制某个候选数字是否进入最终的两位状态；最后一轮交换决定两位中的哪一位留下，因此问题转化为判断哪些数字能够被保留到末尾。",
+      "key_observations": [
+        "当数字长度为 $2$ 时，首轮交换被强制进行，Bob 删除原来的首位，因此最终只能得到原来的第二位数字。",
+        "当长度至少为 $3$ 时，可以把任意指定数字保留到最后两位：先将它放到不会被删除的位置，并在后续交换中避免其被 Bob 删除。",
+        "最后只剩两位时，把目标数字交换到首位，Bob 删除另一位，因此长度至少为 $3$ 时 Alice 可以选择原数字中的最小数字作为答案。"
+      ],
+      "solution_brief": "设数字长度为 $k$。$k=2$ 时答案是原来的第二位；$k\\ge3$ 时 Alice 能将任意数字保留到最后并最终留下它，因此答案为所有数字中的最小值。题面中的单数字情况也可直接返回自身。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:34:12+00:00",
+          "quality_flags": [
+            "editorial_inconsistency"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1684B",
+      "contest_id": 1684,
+      "title": "Z mod X = C",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1684/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/102995",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "给定正整数 $a<b<c$，需要构造正整数 $x,y,z$，使 $x$ 除以 $y$ 的余数为 $a$、$y$ 除以 $z$ 的余数为 $b$、$z$ 除以 $x$ 的余数为 $c$，输出任意一组满足条件的数。",
+      "transformed_statement": "把三个取模条件重写为逐层累加的关系：令最小层为 $z=c$，再令 $y=z+b$、$x=y+a$；只要每个目标余数小于对应除数，就能直接满足条件。",
+      "key_observations": [
+        "令 $x=a+b+c,y=b+c,z=c$，三数形成逐层去掉前缀的和链，使每个被除数都只比除数多出目标余数。",
+        "由于 $a<b<c$，有 $a<b+c$、$b<c$、$c<a+b+c$，因此三次取模都直接得到对应的较小数。",
+        "构造只依赖三个数的大小关系，不需要搜索；并且各变量均为正数且不超过题目允许范围。"
+      ],
+      "solution_brief": "对每组 $a<b<c$，直接输出 $x=a+b+c$、$y=b+c$、$z=c$。利用三者的大小关系，依次得到 $x\\bmod y=a$、$y\\bmod z=b$、$z\\bmod x=c$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:33:40+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1684C",
+      "contest_id": 1684,
+      "title": "Column Swapping",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1684/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/102995",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "sortings"
+      ],
+      "statement_brief": "给定一个 $n\\times m$ 的正整数网格，每次必须选择两列并交换，所选列可以相同。要求判断一次交换后是否能让每一行都按非降序排列；若可以，输出任意可行的两列，否则输出 $-1$。",
+      "transformed_statement": "把一次列交换对某个坏行的影响看成最多修正两个位置：将该行与自身排序结果比较，候选列只能来自两者不一致的位置，再验证这次全局列交换是否同时修复所有行。",
+      "key_observations": [
+        "若某行当前不是非降序，设其排序结果为另一行；一次交换至多改变该行两个位置，因此两行不同的位置超过 $2$ 个时必然无解。",
+        "找到至多两个不一致的位置后，交换对应列是使该行恢复有序的唯一候选操作，从而将全局搜索缩为一次候选交换。",
+        "候选交换不仅要修复选出的行，还必须逐行检查整个网格；若任一行仍无序，则不存在其他可行交换。",
+        "若网格原本已经有序，可交换同一列，满足“恰好操作一次”且不改变网格。"
+      ],
+      "solution_brief": "先检查网格是否已有序；若是则输出任意列与自身。否则取一行与其排序结果比较，若不同位置超过 $2$ 个则无解；否则交换这些位置对应的列，再检查所有行是否非降序，成功则输出列号，否则输出 $-1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:33:29+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1684D",
+      "contest_id": 1684,
+      "title": "Traps",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1684/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/102995",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "有 $n$ 个陷阱，必须按编号顺序通过；每个陷阱有基础伤害 $a_i$，最多可跳过 $k$ 个。跳过一个陷阱不会受其伤害，但会使之后每个未跳过陷阱的伤害额外增加 1，求可能承受的最小总伤害。",
+      "transformed_statement": "把每次跳跃产生的后续加伤改写为跳过位置 $i$ 的固定代价 $n-i$，并额外加入与选择无关的常数 $\\frac{k(k-1)}{2}$；于是问题转为从 $b_i=a_i-(n-i)$ 中选出 $k$ 个最大值。",
+      "key_observations": [
+        "最优解一定使用全部 $k$ 次跳跃，因为若少用一次，可以跳过最后一个仍会受伤害的陷阱且不会引入后续额外伤害。",
+        "将跳过第 $i$ 个陷阱视为立即承受 $n-i$ 点额外伤害后，真实顺序带来的差异恒为 $\\frac{k(k-1)}{2}$，与所选陷阱无关。",
+        "跳过第 $i$ 个陷阱的有效收益是 $b_i=a_i-(n-i)$；因此只需选择 $b_i$ 最大的 $k$ 个位置，最大化总减伤。"
+      ],
+      "solution_brief": "先计算所有 $b_i=a_i-(n-i)$，取其中最大的 $k$ 个。答案为总和 $\\sum a_i$ 减去这些 $b_i$ 之和，再加上固定项 $\\frac{k(k-1)}{2}$；排序后即可求出。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:33:12+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1684E",
+      "contest_id": 1684,
+      "title": "MEX vs DIFF",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1684/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/102995",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "constructive algorithms",
+        "data structures",
+        "greedy",
+        "two pointers"
+      ],
+      "statement_brief": "给定一个含非负整数的数组，每次操作可把任意一个元素改成任意非负整数，最多操作 $k$ 次。数组代价定义为不同元素个数 DIFF 减去缺失的最小非负整数 MEX，要求求操作后能够得到的最小代价。",
+      "transformed_statement": "把问题改写为枚举最终 MEX $m$：围绕目标集合 $0,1,\u0000dots,m-1$，统计缺失值和必须改走的元素，并选择代价最小的元素作为填洞来源；再在操作次数限制内比较各个 $m$ 的 DIFF$-m$。",
+      "key_observations": [
+        "最终的 MEX 只可能取 $0$ 到 $n$，因此可以固定目标 $m$，逐个评估达到该 MEX 的最小代价。",
+        "固定 $m$ 后，必须补齐 $0$ 到 $m-1$ 中缺失的数，并移除所有会阻碍 MEX 为 $m$ 的元素；这些缺失位置可视为需要填补的“洞”。",
+        "填洞时优先改用大于 $m$ 且出现次数少的数，因为覆盖一个洞使 MEX 至少增加 $1$，而 DIFF 至多增加 $1$；只有这些数用完后，才使用 $0$ 到 $m$ 中的重复元素。",
+        "按 MEX 从小到大推进时，只需维护大于当前 MEX 的低频元素集合、未填洞数量和 $0$ 到当前 MEX 范围内的重复元素数量，即可复用相邻状态的信息。"
+      ],
+      "solution_brief": "枚举目标 MEX $m$，利用频次信息贪心选择改动来源：先使用大于 $m$ 的低频值，再使用范围内的重复值填洞并处理非法值。随着 $m$ 增大，维护有序集合、洞数和重复元素数，计算所有可行状态中的最小 DIFF$-$MEX。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:32:51+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1684F",
+      "contest_id": 1684,
+      "title": "Diverse Segments",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1684/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/102995",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "data structures",
+        "two pointers"
+      ],
+      "statement_brief": "给定数组和 $m$ 个区间，最多选择一次连续子段，并把其中每个元素改成任意整数。操作后要求每个给定区间内的元素两两不同，求所需操作子段的最短长度；若原数组已满足条件则输出 $0$。",
+      "transformed_statement": "将问题改写为覆盖冲突对：每个给定区间内相等的两个位置都必须至少有一个落在操作区间 $[L,R]$ 中。于是问题变成寻找能覆盖全部冲突对一端点的最短连续区间。",
+      "key_observations": [
+        "把每个给定区间中的相等元素对视为冲突；操作区间必须覆盖每个冲突对的至少一个端点，否则这对元素无法同时变得不同。",
+        "固定操作左端点为 $1$ 时，令 $f(r)$ 为以 $r$ 结尾且元素全不同的最短区间；给定区间 $[l_j,r_j]$ 若 $f(r_j)>l_j$，则右端点必须满足 $R\\ge f(r_j)-1$。",
+        "左端点右移时，满足条件的最小右端点不会左移，因此可以单调维护 $R$，避免重复搜索所有区间。",
+        "若当前区间右移后失效，必有与被移出的元素 $a_L$ 相等的位置仍和它同属某个给定区间；对区间外位置只需找到最小的必要右端点，并用区间数据结构判断共同覆盖关系。"
+      ],
+      "solution_brief": "先用双指针求每个右端点对应的最短全异后缀，确定 $L=1$ 时的最小 $R$；随后递增 $L$，利用 $R$ 的单调性和元素相等位置的查询更新它，并取所有 $[L,R]$ 的最小长度。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:32:18+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1684G",
+      "contest_id": 1684,
+      "title": "Euclid Guess",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1684/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/102995",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "数论与同余",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "flows",
+        "graph matchings",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定长度为 $n$ 的整数多重集合 $t$，要求构造不超过 $2\\cdot10^4$ 个正整数对 $(a,b)$，其中 $a,b\\le m$。对每个二元组运行欧几里得算法并收集其连续非零余数（包括最终最大公约数），再将全部结果打乱后应恰好得到给定的 $t$；无法构造时报告无解。",
+      "transformed_statement": "把每个输入数视为某条欧几里得余数链中的元素：小数可单独成为长度为一的链，而大于 $m/3$ 的数只能接一个满足整除关系和上界约束的小数。于是问题转化为用二分图匹配为所有大数分配不同的小数后分别构造这些链。",
+      "key_observations": [
+        "当 $x\\le m/3$ 时，二元组 $(3x,2x)$ 的欧几里得算法只产生余数 $x$，因此这类数可以独立构造。",
+        "若首个余数 $x>m/3$，由于两个数均不超过 $m$，前两步必须满足 $a=b+x$、$b=x+y$；因此后继余数 $y$ 必须整除 $x$ 且满足 $2x+y\\le m$。",
+        "所有大于 $m/3$ 的数都必须匹配一个不超过 $m/3$ 的可用后继，匹配边表示“后继整除当前数且满足上界”；覆盖左部的二分图匹配正好保证每个大数都能嵌入某个合法欧几里得余数链。",
+        "匹配后，已使用的小数与大数由相应链构造，其余小数用 $(3x,2x)$ 单独构造；若无法覆盖左部，则不存在满足条件的数组。"
+      ],
+      "solution_brief": "将 $t_i>m/3$ 的元素放入二分图左部，小元素放入右部；连接条件为右值整除左值且 $2x+y\\le m$。寻找覆盖左部的匹配，用 $(2x+y,x+y)$ 生成链；未匹配的小值用 $(3x,2x)$ 生成，匹配失败则无解。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:31:52+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 8,
+      "problem_key": "1684H",
+      "contest_id": 1684,
+      "title": "Hard Cut",
+      "rating": 3400,
+      "problem_url": "https://codeforces.com/contest/1684/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/102995",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "divide and conquer",
+        "math"
+      ],
+      "statement_brief": "给定一个二进制字符串，必须把它完整切成若干个互不重叠且保持原顺序的连续子串；每个子串解释为二进制整数，要求这些整数之和是某个 $2$ 的幂。需要输出任意合法切法，若不存在则报告无解。",
+      "transformed_statement": "不直接处理子串数值，而是按每段包含的 $1$ 的数量递归分配目标和：整体目标取为 $2^{\\lceil\\log_2 k\\rceil}$，再把含有近半个 $1$ 的前后两部分分别构造成两个幂次和。小规模数量作为递归基处理。",
+      "key_observations": [
+        "若字符串含有 $k=0$ 个 $1$，所有切段的二进制值之和只能为 $0$，因此无解；只要 $k>0$，题解给出了可行构造。",
+        "当 $k\\ge 12$ 时，将字符串切成含有近似相等数量 $\\lfloor k/2\\rfloor$ 和 $\\lceil k/2\\rceil$ 个 $1$ 的两段，分别构造对应幂次和；两段的目标和相加恰好为 $2^{\\lceil\\log_2 k\\rceil}$，从而递归降低规模。",
+        "把相邻的两个 $1$ 合并成一个短二进制段，或在它们不相邻时取出形如 $10$ 与 $1$ 的段，可以在保留其余单字符切法的同时逐步调整总和，因此对 $k$ 个 $1$ 可覆盖从 $k$ 到 $\\lfloor3k/2\\rfloor$ 的目标值。",
+        "$k=9,10$ 不能直接由上述区间覆盖，题解通过检查最左侧 $1$ 开始的三个字符，转化为已知的小规模目标；再配合 $k=4$ 时构造和为 $8$、$k=7$ 时构造和为 $11$ 的辅助方案，补齐所有小规模边界。"
+      ],
+      "solution_brief": "统计 $1$ 的数量，$k=0$ 时无解。小规模 $k$ 使用有限构造；当 $k\\ge12$ 时按 $1$ 的数量近半递归切分，令两段和分别为对应的 $2^{\\lceil\\log_2 k'\\rceil}$，其和即为目标幂次。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:31:29+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 9,
       "problem_key": "1682A",
