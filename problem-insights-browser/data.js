@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4044,
+    "total_problems": 4049,
     "source_total_problems": 4049,
-    "filtered_out_problems": 5,
-    "with_statement_brief": 4044,
-    "with_editorial_brief": 3698,
-    "with_solution_brief": 3700,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4049,
+    "with_editorial_brief": 3703,
+    "with_solution_brief": 3705,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3106,
+    "ai_override_count": 3111,
     "primary_topic_count": 13,
-    "contest_count": 628,
+    "contest_count": 629,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1312,
+    "交互": 119,
+    "树结构": 191,
     "数论与同余": 425,
-    "构造与贪心": 1309,
     "动态规划与状态设计": 331,
     "组合计数与概率": 318,
     "图论与网络流": 266,
     "博弈": 116,
-    "树结构": 190,
-    "交互": 118,
     "基础实现与模拟": 250,
     "数据结构": 384,
     "字符串": 217,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "几何": 94
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2709,
+    "ai_generated_with_editorial": 2712,
+    "ai_generated_partial_editorial": 100,
     "missing_editorial": 344,
-    "ai_generated_partial_editorial": 98,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -124393,6 +124393,160 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "将大厅路径覆盖转化为二分图最大匹配，最少路径数为 $n-|M|$。准备时删除一个顶点的关联边，并按每步使最大匹配减少 $1$ 的顺序选点；再以已通过波次和当前匹配规模为状态进行 DP，权衡准备时间与各波得分。",
           "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1521,
+      "name": "Codeforces Round 720 (Div. 2)",
+      "date": "2021-05-07",
+      "url": "https://codeforces.com/contest/1521",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1521A",
+          "index": "A",
+          "slot": "A",
+          "title": "Nastia and Nearly Good Numbers",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1521/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/90477",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $A,B$，good 数是 $AB$ 的倍数，nearly good 数是 $A$ 的倍数但不是 $AB$ 的倍数。每组数据要构造三个互不相同的正整数，使其中恰有一个是 good 数、另外两个是 nearly good 数，并满足前两个数之和等于第三个数；若无法构造则报告无解。",
+          "transformedStatement": "将目标转化为：找三个数都含因子 $A$，其中一个的剩余因子含 $B$、另两个的剩余因子不含 $B$，同时满足加法关系。令剩余因子分别为 $1,B,B+1$，即可直接满足这些条件；$B=1$ 时 nearly good 数不存在。",
+          "keyObservations": [
+            "按题意示例，good 数是 $AB$ 的倍数，nearly good 数是 $A$ 的倍数但不是 $AB$ 的倍数；因此构造时只需让三数都含因子 $A$，并分别控制剩余因子是否含 $B$。",
+            "取 $x=A$、$y=AB$、$z=A(B+1)$，则 $y$ 是 good 数，而 $x$ 和 $z$ 均不是 $AB$ 的倍数；同时 $x+y=z$，且当 $B>1$ 时三数互不相同。",
+            "当 $B=1$ 时，$AB=A$，不存在能被 $A$ 整除但不能被 $AB$ 整除的数，因此无法得到题目要求的 nearly good 数。"
+          ],
+          "solutionBrief": "若 $B=1$，输出无解。否则构造 $x=A$、$y=AB$、$z=A(B+1)$：其中 $y$ 是 good 数，$x,z$ 是 nearly good 数，且 $x+y=z$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1521B",
+          "index": "B",
+          "slot": "B",
+          "title": "Nastia and a Good Array",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1521/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/90477",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组，可选择两个不同下标，并把这两个位置改成正整数；操作前后这两个数的较小值必须相同。要求至多操作 $n$ 次，使所有相邻元素的最大公约数都为 $1$，并输出一种操作方案。",
+          "transformedStatement": "把最小元素所在位置作为固定锚点，令每个位置的最终值等于最小值加上它与锚点的距离。这样数组沿锚点两侧形成步长为 $1$ 的序列，互质要求转化为保证相邻值连续。",
+          "keyObservations": [
+            "取数组最小值 $x$ 所在位置为锚点，并始终让锚点保留 $x$；由于其他位置的值都不小于 $x$，每次把锚点和另一位置改成 $x$ 与新值都满足操作的最小值约束。",
+            "将距锚点为 $d$ 的位置改为 $x+d$，则数组从锚点向两侧分别按每步加一排列，因此任意相邻元素的差为 $1$。",
+            "相邻构造值是两个连续正整数，故它们的最大公约数为 $1$，直接满足数组的 good 条件。"
+          ],
+          "solutionBrief": "找到最小值 $x$ 及其位置 $pos$，对每个 $i\\ne pos$ 执行操作 $(pos,i,x,x+|pos-i|)$。锚点保持为 $x$，其余元素按到锚点的距离递增，最终相邻数互为连续整数，因而互质；共需至多 $n-1$ 次操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1521C",
+          "index": "C",
+          "slot": "C",
+          "title": "Nastia and a Hidden Permutation",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1521/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/90477",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "interactive"
+          ],
+          "statementBrief": "给定一个长度为 $n$、由 $1$ 到 $n$ 组成的固定隐藏排列。每次可选择参数 $t\\in\\{1,2\\}$、两个不同位置和 $x\\in[1,n-1]$进行查询，并根据排列元素得到回复；最多查询 $\\lfloor 3n/2\\rfloor+30$ 次，要求还原整个排列。",
+          "transformedStatement": "把还原任务拆成互不重叠的位置对：先从查询回复中确定每对的较大元素及其位置，再恢复较小元素；若位置数为奇数，未配对位置由排列中缺失的数唯一确定。",
+          "keyObservations": [
+            "先用一次查询得到一对位置中较大值的候选值；若候选为 $n-1$，它可能只是位置值为 $n$ 时产生的假象，因此需额外查询排除这种情况。",
+            "已知一对中的最大值后，再通过查询结果判断最大值属于哪个位置；随后用一次查询即可恢复该对的另一个值。",
+            "将位置两两配对后可独立恢复每一对；若 $n$ 为奇数，剩余位置的值可由排列中尚未出现的数确定。"
+          ],
+          "solutionBrief": "按位置两两分组。每对先查询较大值候选，必要时额外确认是否出现了 $n$；确定较大值所在位置后，再查询恢复另一值。奇数长度时，最后一个位置填入尚未使用的数，查询数不超过题目限制。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1521D",
+          "index": "D",
+          "slot": "D",
+          "title": "Nastia Plays with a Tree",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1521/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/90477",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "greedy",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵无权树，每次操作必须删除当前存在的一条边，再添加一条边；删除后图可以暂时不连通。要求输出最少操作次数及操作方案，使最终每个顶点的度数都不超过 $2$，即得到一条竹子。",
+          "transformedStatement": "把每次操作拆成删边与加边两部分：若删去 $x$ 条边，会得到 $x+1$ 个分量；先让每个分量都成为竹子，再用 $x$ 条新边连接不同分量的叶子。因此核心是最少删除多少边才能把原树切分为竹子分量。",
+          "keyObservations": [
+            "若删除 $x$ 条边，原树会变成 $x+1$ 个连通分量；要能再用 $x$ 次加边连成一条竹子，每个分量本身都必须是竹子。",
+            "删除边后，只需把不同分量中的叶子依次连接，就能将这些竹子合成一条竹子；因此目标转化为尽量少删边，使所有分量都没有度数超过 $2$ 的点。",
+            "后序处理时，顶点至多保留两个子边；若它还有父边且子边数至少为 $2$，就切断父边，否则在子边中切断多出的部分，从而使保留的子树保持竹子形态。"
+          ],
+          "solutionBrief": "以任意顶点为根进行后序处理。设当前点有 $c_v$ 个子节点：$c_v\\le 1$ 时不切边；$c_v=2$ 时若有父节点则切断父边；$c_v>2$ 时若有父节点则切断父边，并切断 $c_v-2$ 条子边。删除后得到竹子分量，再按题解所述连接不同分量的叶子。给定题解正文在此处截断，未提供完整输出构造细节。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1521E",
+          "index": "E",
+          "slot": "E",
+          "title": "Nastia and a Beautiful Matrix",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1521/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/90477",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定 $k$ 种数字，每种数字 $i$ 有 $a_i$ 个，共有 $m$ 个。要把这些数字放入一个方阵，空格用 $0$ 表示，并满足题目定义的“美丽矩阵”条件；要求构造边长最小的方阵。提供的题面未显示该条件的具体内容。",
+          "transformedStatement": "题解将固定边长 $n$ 的构造可行性归结为两项容量约束：总数字数不超过 $n^2-\\lfloor n/2\\rfloor^2$，任一种数字的频次不超过 $n\\lceil n/2\\rceil$；随后用分区结构实现满足约束的摆放。原题面的定义缺失，故不能进一步准确重述其局部限制。",
+          "keyObservations": [
+            "固定矩阵边长为 $n$ 后，可行性由总数字数和最高频数字的出现次数分别限制；它们必须满足 $sum \\le n^2-\\lfloor n/2\\rfloor^2$ 与 $mx \\le n\\lceil n/2\\rceil$。",
+            "把格子划分为红、黄、蓝、白四类后，红格与黄格可安排成不放置相同数字的区域，蓝格用于容纳红格无法放下的最高频数字。",
+            "红格与蓝格的总容量为 $n\\lceil n/2\\rceil$，恰好覆盖最高频数字的可行性上界；红格安排后，其余数字可任意填入剩余可用位置。"
+          ],
+          "solutionBrief": "先二分寻找满足总数字数及最高频次数量上界的最小边长 $n$。按题解给出的红、黄、蓝、白格结构构造：优先将最高频数字填入红格，放不下的部分放入蓝格，再填入其余数字。原题面缺失了美丽矩阵的具体条件，无法完整复述构造细节。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "complete"
         }
       ]
