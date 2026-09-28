@@ -8,6 +8,28 @@
     "raw_sha256": "5f3dd07045859f3e77507947bf858a5d2552c6ea0c89da1b94c474f8425c1786"
   },
   {
+    "url": "https://codeforces.com/blog/entry/94803",
+    "blog_entry_id": 94803,
+    "title": "Codeforces Global Round 16 Editorial",
+    "author": "Artyom123",
+    "creation_time": "2021-09-12",
+    "original_locale": "ru",
+    "source": "codeforces-blog",
+    "label": "Codeforces Global Round 16 Editorial",
+    "section_count": 8,
+    "covered_problems": [
+      "1566A",
+      "1566B",
+      "1566C",
+      "1566D2",
+      "1566E",
+      "1566F",
+      "1566G",
+      "1566H"
+    ],
+    "raw_sha256": "15ea9ee6e4e0e8d4c9d7f643d17a06cc1681a9249762dbce62feb29dc6a529d3"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/96267",
     "blog_entry_id": 96267,
     "title": "Codeforces Round #750 (Div.2) Editorial",

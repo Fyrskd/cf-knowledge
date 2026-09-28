@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3794,
-    "source_total_problems": 3796,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 3794,
+    "total_problems": 3795,
+    "source_total_problems": 3805,
+    "filtered_out_problems": 10,
+    "with_statement_brief": 3795,
     "with_editorial_brief": 3479,
     "with_solution_brief": 3481,
-    "missing_editorial_brief": 313,
+    "missing_editorial_brief": 314,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2856,
     "primary_topic_count": 13,
-    "contest_count": 588,
+    "contest_count": 589,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,8 +44,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1233,
     "图论与网络流": 247,
-    "构造与贪心": 1232,
     "动态规划与状态设计": 310,
     "数据结构": 361,
     "组合计数与概率": 289,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 314,
     "ai_generated_with_editorial": 2504,
     "ai_generated_partial_editorial": 84,
-    "missing_editorial": 313,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -116928,6 +116928,43 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "维护有效广播终点数组 $w$：重建 $c$ 时对前缀做区间取最小值并单点赋值。用线段树 Beats 批量获知 $w$ 的下降，再把对应影响转成 $b$ 上的区间加；另一棵支持区间加和区间和的线段树回答查询。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1566,
+      "name": "Codeforces Global Round 16",
+      "date": "2021-09-12",
+      "url": "https://codeforces.com/contest/1566",
+      "type": "Global",
+      "problemCount": 1,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1566D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Seating Arrangements (easy version) ",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1566/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/94803",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "图论与网络流",
+            "博弈"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Seating Arrangements (easy version) ；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
