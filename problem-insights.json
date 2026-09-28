@@ -15,19 +15,374 @@
     ]
   },
   "summary": {
-    "total_problems": 3568,
+    "total_problems": 3576,
     "source_total_problems": 3578,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3568,
-    "with_editorial_brief": 3269,
-    "with_solution_brief": 3271,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3576,
+    "with_editorial_brief": 3277,
+    "with_solution_brief": 3279,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2630,
+    "ai_override_count": 2638,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1615A",
+      "contest_id": 1615,
+      "title": "Closing The Gap",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1615/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/98253",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定一排 $n$ 座建筑及其高度。每天可按题目规定在建筑间调整高度，目标是在任意多次操作后，使最高与最低建筑的高度差最小，并输出这个最小差值。",
+      "transformed_statement": "把问题转化为判断能否将所有高度调整为同一个整数：极值操作保证最终高度差至多为 $1$，而总高度之和保持不变，因此只需检查总和是否能被建筑数 $n$ 整除。",
+      "key_observations": [
+        "当当前最大高度与最小高度之差大于 $1$ 时，对这两个建筑执行操作能让它们更接近，因此高度差最终一定可以降到至多 $1$。",
+        "每次操作都不改变所有建筑高度之和；若总和不能被 $n$ 整除，就不可能让所有建筑高度相等，答案只能是 $1$。",
+        "若总和能被 $n$ 整除，则平均高度为整数，并且在高度差已可降至至多 $1$ 的基础上可以达到全部相等，答案为 $0$。"
+      ],
+      "solution_brief": "先求数组总和 $S$。操作可不断缩小最大值与最小值之差，使最终答案只可能为 $0$ 或 $1$；根据 $S\\bmod n$ 判断能否全部变成整数平均值，整除时输出 $0$，否则输出 $1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T08:25:25+00:00",
+          "quality_flags": [
+            "statement_operation_rule_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1615B",
+      "contest_id": 1615,
+      "title": "And It's Non-Zero",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1615/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/98253",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定包含所有整数 $l$ 到 $r$ 的数组，每次可删除任意元素，目标是最少删除多少个元素，使剩余元素的按位与不为 $0$。",
+      "transformed_statement": "不直接最小化删除数，而是最大化保留的子序列长度；固定一个公共为 $1$ 的二进制位后，只保留区间中该位为 $1$ 的所有数即可。",
+      "key_observations": [
+        "最终按位与非零，当且仅当选出的所有元素在至少一个二进制位上都为 $1$，因此可以枚举这个共同为 $1$ 的位。",
+        "固定第 $b$ 位后，所有该位为 $1$ 的元素都可以保留，且任何合法子序列只能从这些元素中选择，所以最大保留数量就是该位为 $1$ 的元素个数。",
+        "允许最终按位与含有多个 $1$ 位并不影响覆盖性，因为它必然也包含某个被枚举的公共位；因此答案是总数减去各位计数的最大值。",
+        "对每个二进制位预处理前缀计数，即可用区间差得到 $[l,r]$ 中该位为 $1$ 的元素数量，避免逐个测试区间内的数。"
+      ],
+      "solution_brief": "将删除问题转为最大化保留元素数。枚举二进制位，统计区间内该位为 $1$ 的元素数，取最大值后用区间长度减去它；各位计数通过前缀和预处理。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T08:25:07+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1615C",
+      "contest_id": 1615,
+      "title": "Menorah",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1615/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/98253",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "brute force",
+        "graphs",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定初始亮灭状态二进制串 $a$ 和目标串 $b$。每次只能选择当前点亮的一根蜡烛使其保持点亮，同时让其余所有蜡烛全部翻转；求变成 $b$ 所需的最少操作次数，无法实现则输出 $-1$。",
+      "transformed_statement": "将每个位置抽象为目标变化类型 $(a_i,b_i)$，并按操作次数奇偶拆分：偶数次等价于交换亮与灭的位置；奇数次则剥离第一次操作后转成偶数次交换问题。",
+      "key_observations": [
+        "把位置按 $(a_i,b_i)$ 分成四类后，位置本身不再重要，只需统计各类数量，因为操作对未选蜡烛的影响完全相同。",
+        "连续两次操作时，所有未选蜡烛翻转两次恢复原状；若选不同蜡烛，整体效果等价于交换一个 $1$ 和一个 $0$，因此偶数次操作本质上只是在调整亮蜡烛的位置。",
+        "偶数次操作可行当且仅当 $a$ 与 $b$ 中 $1$ 的数量相同，且最少操作数等于两串不同位置的数量；每次交换可同时修正两个不匹配位置。",
+        "奇数次操作可先枚举第一次选择类型为 $10$ 或 $11$ 的蜡烛，再把剩余过程转化为偶数次情形，取所有可行方案中的最小值。"
+      ],
+      "solution_brief": "按蜡烛的 $(a_i,b_i)$ 类型计数。分别处理偶数和奇数操作：偶数时要求两串亮蜡烛数量相等，答案为不同比特数；奇数时枚举第一次选 $10$ 或 $11$ 类型，更新状态后套用偶数情形，取最小可行值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T08:24:50+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1615D",
+      "contest_id": 1615,
+      "title": "X(or)-mas Tree",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1615/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/98253",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "树结构",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "dfs and similar",
+        "dsu",
+        "graphs",
+        "trees"
+      ],
+      "statement_brief": "给定一棵带整数边权的树，部分边权未知。每位精灵给出两个节点，并报告两点路径上所有边权异或结果的二进制置位数奇偶；需要判断这些记忆是否能与已知边权同时成立，并在可能时补全未知边。",
+      "transformed_statement": "只保留每条边权的置位数奇偶，把树上的路径奇偶约束改写为顶点势值 $r_a\\oplus r_b=c$；已知边和精灵记忆都变成带异或权的无向关系边。",
+      "key_observations": [
+        "异或结果的置位数奇偶只取决于各边权置位数奇偶的异或，因此每条边权可先压缩为 $0/1$。",
+        "把根到节点的边权异或记为 $r_i$ 后，路径约束等价于 $r_a\\oplus r_b=c$，从路径信息转成顶点势值关系。",
+        "已知边也可视为只含该单条边的约束加入关系图，从而统一处理已知边和精灵给出的路径条件。",
+        "在每个关系图连通块中，任选一个顶点势值即可唯一推出其余势值；若遍历时同一顶点被推出矛盾，则所有配置都不可能。"
+      ],
+      "solution_brief": "先将每条边权替换为其二进制置位数的奇偶。以根到各点的异或值 $r_i$ 建立带异或权关系图：已知边和每条精灵路径分别提供 $r_a\\oplus r_b=c$。在各连通块中 DFS 推导 $r_i$ 并检查冲突，最后令原树边 $(a,p)$ 的压缩值为 $r_a\\oplus r_p$，据此保留已知边并填写未知边。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T08:24:28+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1615E",
+      "contest_id": 1615,
+      "title": "Purple Crayon",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1615/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/98253",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "树结构",
+        "构造与贪心",
+        "数据结构"
+      ],
+      "original_tags": [
+        "data structures",
+        "dfs and similar",
+        "games",
+        "graphs",
+        "greedy",
+        "math",
+        "sortings",
+        "trees"
+      ],
+      "statement_brief": "给定一棵以 1 为根、初始全白的树，红方先选择节点进行规定的着色操作且最多选择 $k$ 次，随后蓝方在剩余节点上操作；祖先与后代之间的选择会相互限制。最终设白、红、蓝节点数为 $w,r,b$，双方最优博弈下求得分 $w(r-b)$。",
+      "transformed_statement": "固定红方恰好选择 $i$ 个节点，把每个选择对蓝方造成的祖先方向限制表示为从该节点到根的路径；问题变为最大化这 $i$ 条路径的并集大小，再根据剩余可行蓝节点数计算博弈得分。",
+      "key_observations": [
+        "将得分改写为 $r(n-r)-b(n-b)$ 后，蓝方只需让 $b$ 尽量接近 $\frac n2$；因此在可行范围为 $[0,B]$ 时，最优取 $b=\\min(B,\\lfloor n/2\\rfloor)$。",
+        "若蓝方能染出恰好 $x$ 个节点，就能通过去掉某个已染子树的根再染出 $x-1$ 个节点，因此可行数量构成从 $0$ 到某个上界的连续区间。",
+        "固定红方选择 $i$ 个节点后，红方应最大化根路径并集的大小 $m_i$，因为这些路径限制了蓝方可染节点，使蓝方数量上界降为 $n-m_i$。",
+        "按深度从大到小处理节点，记录其向根延伸到首个已标记点所新增的节点数 $c_v$；按 $c_v$ 降序取前 $i$ 个即可得到 $m_i$，正确性来自在剩余森林中始终可用最深叶节点替换原选择。"
+      ],
+      "solution_brief": "枚举红方操作次数 $i\\le k$。用深度降序和并集增量计算选 $i$ 个节点时的最大根路径覆盖 $m_i$，令蓝方上界为 $n-m_i$；代入 $i(n-i)-b(n-b)$，其中 $b=\\min(n-m_i,\\lfloor n/2\\rfloor)$，取最大值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T08:24:06+00:00",
+          "quality_flags": [
+            "statement_operation_text_missing"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1615F",
+      "contest_id": 1615,
+      "title": "LEGOndary Grandmaster",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1615/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/98253",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定长度为 $n$ 的起始和结束条带，每个位置是有积木、无积木或未知。每秒只能在相邻两个位置同时添加两块（两处均空）或删除两块（两处均有）；对所有未知位置的补全，若能变换则取最少秒数，不能变换记为 0，求所有起止状态对的时间总和。",
+      "transformed_statement": "按题解将两串偶数位置的固定比特同时翻转后，原问题变成：统计所有补全后的二进制串对，通过相邻交换互相变换的最小代价，并累加其前缀 1 数差绝对值之和。用切分点两侧的差值计数将补全独立组合。",
+      "key_observations": [
+        "同时翻转起点和终点串中所有偶数位置的固定比特后，一次相邻增删操作等价于交换一对相邻比特，从而把原操作转化为相邻交换。",
+        "固定两串后，若变换后的 1 的总数不同则无法到达；相同为 $k$ 时，第 $i$ 个 1 必须按顺序匹配，最少交换次数是各位置差绝对值之和。",
+        "令前缀中 1 的数量差为 $a_i-b_i$，每个跨过位置 $i$ 的 1 恰好贡献一次交换，因此总时间等于所有前缀差绝对值之和。",
+        "用前缀 DP 统计达到差值 $j$ 的补全数、用后缀 DP 统计剩余补全数，在每个切分点配对差值 $j$ 与 $-j$，即可累加所有补全对的贡献。"
+      ],
+      "solution_brief": "先翻转两串的偶数位，将操作化为相邻交换；固定补全的代价是前缀 1 数差绝对值之和。用前缀、后缀 DP 分别统计差值 $j$ 的补全数，在每个切口配对互补差值并累加 $|j|$，得到所有状态对的总和。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T08:23:12+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1615G",
+      "contest_id": 1615,
+      "title": "Maximum Adjacent Pairs",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1615/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/98253",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "graph matchings"
+      ],
+      "statement_brief": "给定一个含 $0$ 的长度为 $n$ 的数组，每个 $0$ 都可独立替换为 $1$ 到 $n$ 的任意整数，非零元素不能修改。数组价值是能形成相邻相等对子的不重复整数个数，要求构造价值最大的数组。",
+      "transformed_statement": "将连续零段分别抽象为可产生固定数量内部配对、并可能额外占用左右边界数字的局部结构；把“额外让某个数字出现相邻对”转化为辅助图中的选边问题，要求所选边构成匹配。",
+      "key_observations": [
+        "长度为 $2m+1$ 的零段可固定贡献 $m$ 个内部相邻对子，并至多再与左右边界中的一个数字配对；因此只需决定是否占用一个边界数字。",
+        "长度为 $2m$ 的零段要么贡献 $m$ 个内部对子，要么贡献 $m-1$ 个内部对子并同时与两侧边界数字配对；只与一侧配对不会更优。",
+        "把每个数字视为一个顶点，把偶数零段建成连接两侧数字的边、奇数零段建成连接两侧数字的辅助顶点，并为已有相邻对的数字连接专属辅助顶点，匹配即可保证每个数字最多被计数一次。",
+        "所有零段的内部贡献是固定基线，额外可获得的不同数字数量等于图的最大匹配大小，因此答案为最大匹配数加上各零段的 $\\lfloor len/2\\rfloor$ 之和。"
+      ],
+      "solution_brief": "按零段奇偶性建立辅助图，最大匹配选择哪些边界数字能额外形成相邻对；已有相邻对用专属叶子锁定。先求二分图匹配，再从其上用 Edmonds 方法增广，并依据匹配结果填充零段。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T08:22:44+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 8,
+      "problem_key": "1615H",
+      "contest_id": 1615,
+      "title": "Reindeer Games",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/1615/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/98253",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心",
+        "几何"
+      ],
+      "original_tags": [
+        "binary search",
+        "constructive algorithms",
+        "data structures",
+        "divide and conquer",
+        "flows",
+        "graphs",
+        "shortest paths"
+      ],
+      "statement_brief": "有 $n$ 个分数为 $a_i$ 的对象；每次可任选一个对象将分数加 $1$ 或减 $1$，负分数也允许。给定有向要求 $(u,v)$，操作结束后必须满足 $b_u\\le b_v$，要求用最少操作达到全部要求，并输出任意最优的最终分数。",
+      "transformed_statement": "把每条要求视为约束图中的有向边，并寻找端点互不相同的可达点对，使对应的分数差之和最大；这个最大下界用带费用网络流求出，再由其残量图的最长路势构造最终分数。",
+      "key_observations": [
+        "若约束图中存在从 $u$ 到 $v$ 的路径，则最终必须满足 $b_u\\le b_v$，因此这对端点至少贡献 $a_u-a_v$ 的变化下界。",
+        "选取端点互不相同的可达点对后，下界可表示为端点收益之和；将每条约束边设为无限容量、费用 $a_u-a_v$，并用源汇边限制每个点至多作为一次端点，即转化为最大费用流。",
+        "最大费用流的残量图中，从源点计算最长路距离 $d_u$，令 $b_u=a_u+d_u$；约束边的松弛不等式直接保证所有 $b_u\\le b_v$。",
+        "未被配对的点距离必为 $0$，每个配对端点最终被调整到同一数值且变化方向受原分数夹住，因此总调整量恰好不超过流的费用下界，构造达到最优。"
+      ],
+      "solution_brief": "把约束建成带费用的最大费用流：原边容量无限、费用为 $a_u-a_v$，源汇边容量为 $1$。在最大费用流残量图上求最长路距离，输出 $b_u=a_u+d_u$；该构造满足约束且达到流给出的最优下界，复杂度为 $O(nm\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T08:22:22+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 9,
       "problem_key": "1622A",
