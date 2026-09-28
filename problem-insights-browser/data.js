@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3675,
+    "total_problems": 3682,
     "source_total_problems": 3684,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3675,
-    "with_editorial_brief": 3363,
-    "with_solution_brief": 3365,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3682,
+    "with_editorial_brief": 3370,
+    "with_solution_brief": 3372,
     "missing_editorial_brief": 310,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2737,
+    "ai_override_count": 2744,
     "primary_topic_count": 13,
-    "contest_count": 567,
+    "contest_count": 568,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数据结构": 351,
-    "数论与同余": 382,
-    "构造与贪心": 1194,
-    "交互": 107,
+    "数论与同余": 383,
+    "构造与贪心": 1196,
+    "交互": 108,
+    "数据结构": 352,
+    "字符串": 194,
+    "几何": 90,
     "博弈": 112,
-    "字符串": 193,
     "基础实现与模拟": 232,
     "图论与网络流": 239,
     "组合计数与概率": 277,
     "树结构": 177,
     "动态规划与状态设计": 297,
-    "几何": 89,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2401,
     "ai_generated_partial_editorial": 78,
     "missing_editorial": 310,
-    "ai_generated_with_editorial": 2394,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -113285,6 +113285,211 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "用 $B=\\lfloor\\sqrt n\\rfloor$ 分块数组，并把置换分解成环。小环逐元素维护，大环按大小约为 $B$ 的环块维护统一增量；为每个环块预处理其在数组块前缀中的元素计数，以快速计算区间贡献。环结构变化时进行 split-rebuild，整体复杂度记为 $O(n\\sqrt n)$。",
           "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1584,
+      "name": "Technocup 2022 - Elimination Round 2",
+      "date": "2021-11-14",
+      "url": "https://codeforces.com/contest/1584",
+      "type": "Others",
+      "problemCount": 7,
+      "maxRating": 3200,
+      "problems": [
+        {
+          "key": "1584A",
+          "index": "A",
+          "slot": "A",
+          "title": "Mathematical Addition",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1584/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "每个测试用例给出正整数 $u,v$，要求构造一对不同时为零的整数 $x,y$，满足 $x/u+y/v=(x+y)/(u+v)$，且二者绝对值均不超过 $10^{18}$。存在多组解时输出任意一组。",
+          "transformedStatement": "把分式等式清除分母后，问题转化为寻找非零整数解 $xv^2+yu^2=0$ 的齐次线性方程；选取两项分别抵消即可完成构造。",
+          "keyObservations": [
+            "两边同乘正数 $uv(u+v)$ 后，原分式方程等价于 $xv^2+yu^2=0$，从而消除了分母并转成一次齐次关系。",
+            "取 $x=-u^2$、$y=v^2$ 可直接使 $xv^2+yu^2=0$；由于 $u,v\\ge1$，两者均非零，且绝对值不超过 $10^{18}$，自动满足限制。"
+          ],
+          "solutionBrief": "将方程两边乘以 $uv(u+v)$ 并化简为 $xv^2+yu^2=0$，直接输出 $x=-u^2$、$y=v^2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1584B",
+          "index": "B",
+          "slot": "B",
+          "title": "Coloring Rectangles",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1584/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的网格矩形，可以反复沿网格线把原矩形或已有矩形切成两个矩形，但最终不能出现 $1\\times1$ 矩形。随后每个最终矩形内部共边相邻的格子必须染成不同颜色，求至少需要染蓝的格子数。",
+          "transformedStatement": "把问题看成将总面积 $nm$ 划分为面积不为 $1$ 的矩形，并对每块选择棋盘染色中较少的一类作为蓝色；目标转化为在满足可构造分块的前提下，使各块蓝色数量之和最小。",
+          "keyObservations": [
+            "每块矩形必须采用棋盘式双色，因此面积为偶数时至少染蓝一半，面积为奇数时染蓝数量为 $(S-1)/2$；因禁止面积为 $1$，任意合法块的蓝色占比至少为 $1/3$。",
+            "对所有分块求和可得染蓝数量至少为 $nm/3$，而答案必须是整数，所以答案下界是 $\u001cceil nm/3 \u001d$。",
+            "按两边除以 $3$ 的余数构造分割：主体切成 $1\\times3$ 条带，余数为 $(1,1)$ 或 $(2,2)$ 时补一个面积 $4$ 的矩形，余数为 $(1,2)$ 时补一个 $1\\times2$ 矩形，从而达到该整数下界。"
+          ],
+          "solutionBrief": "每个分块按棋盘格染色并选择较少的一色。单块蓝色比例至少为 $1/3$，故答案至少为 $\u001cceil nm/3 \u001d$；根据两边模 $3$ 的余数用 $1\\times3$ 条带及面积 $2$ 或 $4$ 的补块构造，最终答案为 $\u001cceil nm/3 \u001d$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1584C",
+          "index": "C",
+          "slot": "C",
+          "title": "Two Arrays",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1584/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定两个长度相同的整数数组，要求判断能否对数组 $a$ 做一次规定变换得到数组 $b$。该变换允许元素保持不变或增加 $1$，并可重新安排元素对应关系；对每组数据输出是否可行。",
+          "transformedStatement": "把一次变换看成对 $a$ 的元素逐个选择“增加 $0$ 或 $1$”，再将所得多重集合与 $b$ 匹配；排序后问题等价于判断每个对应位置是否满足 $b_i\\in\\{a_i,a_i+1\\}$。",
+          "keyObservations": [
+            "将数组排序后，只需比较相同排名的元素；最小元素无法与更大的目标元素跨过中间值匹配，因此这种匹配可递归缩小到剩余元素。",
+            "每个 $a_i$ 在变换后只能保持为 $a_i$ 或增加到 $a_i+1$，所以排序后必须满足 $a_i=b_i$ 或 $a_i+1=b_i$。",
+            "若最小元素与目标最小元素相等，可以直接匹配并删除；若恰好相差 $1$，则必须对它增加 $1$ 后匹配，这保证了逐位判断的充分性。"
+          ],
+          "solutionBrief": "分别排序两个数组，逐位检查 $b_i$ 是否等于 $a_i$ 或 $a_i+1$；全部满足则输出 YES，否则输出 NO。排序复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1584D",
+          "index": "D",
+          "slot": "D",
+          "title": "Guess the Permutation",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1584/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "binary search",
+            "combinatorics",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "数组初始为 $1,2,\\ldots,n$，选定 $i<j<k$ 且 $j-i>1$，分别反转区间 $[i,j-1]$ 和 $[j,k]$。你只能询问任意子区间的逆序对数量，需在不超过 40 次询问内找出 $i,j,k$。",
+          "transformedStatement": "把两段反转产生的结构视为两个递减块：总逆序数给出两段长度的组合数之和；后缀查询用来定位第一个反转块的左端点，再由差值拆出两段长度。",
+          "keyObservations": [
+            "长度为 $l$ 的被反转递增连续段变成递减段，恰好产生 $\binom{l}{2}$ 个逆序对，因此全数组逆序数为 $\binom{k-j+1}{2}+\binom{j-i}{2}$。",
+            "后缀 $[x,n]$ 的逆序数等于总数当且仅当两个反转段都完整落在后缀中，即 $x\\le i$；该条件具有单调性，可二分确定 $i$。",
+            "查询后缀 $[i+1,n]$ 得到 $B$ 后，$A-B=j-i-1$，因为该差值恰好对应位置 $i+1$ 到 $j-1$ 中小于 $a_i$ 的元素数量。",
+            "得到 $j-i$ 后，可由 $\\binom{k-j+1}{2}=A-\\binom{j-i}{2}$ 唯一确定 $k-j+1$，进而恢复 $j$ 和 $k$。"
+          ],
+          "solutionBrief": "先查询全数组逆序数 $A$，利用后缀逆序数是否等于 $A$ 的单调性二分出 $i$；再查询 $[i+1,n]$ 得到 $j-i-1$，用组合数公式求出 $k-j+1$，从而恢复三点。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1584E",
+          "index": "E",
+          "slot": "E",
+          "title": "Game with Stones",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1584/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "博弈",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "games",
+            "greedy"
+          ],
+          "statementBrief": "给定一列石堆，每次只能选择两个相邻且非空的石堆各取一颗；石堆变空后其两侧不会重新相邻。若最终所有石堆都为空则称该子段获胜，要求统计数组中获胜连续子段的数量。",
+          "transformedStatement": "把每个候选序列改写为逐堆消去后的交替剩余量 $c_i=a_i-c_{i-1}$：合法性要求所有中间剩余量非负，结尾剩余量为零。对每个左端点，将局部量转成全局 $c$ 上按奇偶的阈值与等值查询。",
+          "keyObservations": [
+            "首堆的石子只能与第二堆配对；若第二堆不足则必败，否则必须先清空首堆并从第二堆扣除相同数量，从而可递归地贪心消去前缀。",
+            "对一个序列定义剩余量 $c_0=0,\u0001c_i=a_i-c_{i-1}$，该序列可获胜当且仅当所有 $c_i\\ge 0$ 且最后的 $c_n=0$。",
+            "固定左端点 $l$ 后，局部剩余量满足 $c_i^l=c_{l+i-1}+(-1)^{i-1}c_{l-1}$；按位置奇偶分类后，首次负值变成后缀中首次小于某阈值的位置查询。",
+            "首次负值之前的局部零值恰好对应可行的右端点；全局按奇偶维护区间最小值以找首次越界，并用各值的位置表二分统计等值点，整体复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "先用贪心消去首堆，得到交替剩余量 $c$ 及“全非负且末项为零”的判定。固定左端点后利用局部量与全局 $c$ 的关系按奇偶查询首次负值，再统计此前等于目标值的位置；线段树找首次越界，位置表二分计数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1584F",
+          "index": "F",
+          "slot": "F",
+          "title": "Strange LCS",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1584/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "graphs",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 个仅含大小写英文字母的字符串，且每个字符在每个字符串中最多出现两次。只能通过删除字符取得子序列，要求找出同时是所有字符串子序列的最长字符串，并输出其长度和任意一种答案。",
+          "transformedStatement": "把每个候选匹配表示为一个字符及其在各字符串中选择的出现位置，用位掩码区分第一次或第二次出现；若两个状态的位置在所有字符串中都严格递增，就连成有向边，问题变为求这张 DAG 的最长路径。",
+          "keyObservations": [
+            "把一个匹配字符表示为“字符 + 每个串选择第一次或第二次出现”的状态，状态总数为 $O(|\\Sigma|2^n)$，从而统一表示所有可能的匹配位置。",
+            "若前后两个状态在所有字符串中的位置都严格递增，则它们可连续加入公共子序列；因此公共子序列等价于该有向无环图中的路径。",
+            "固定当前状态和下一个字符时，只需选择所有合法位置中最靠左的那组位置；任何更靠右且可达的同字符状态都不会带来更优后续路径，可删除其余边。",
+            "每个状态对每种字符最多保留一条转移，最长公共子序列转为 DAG 最长路；按记录的转移即可恢复具体序列，整体复杂度为 $O(n|\\Sigma|^2 2^n)$。"
+          ],
+          "solutionBrief": "将每个字符的出现位置选择编码为位掩码，状态按所有字符串中的位置排序形成 DAG。对每个当前状态和目标字符仅保留最靠左的合法后继，做最长路 DP，并记录转移恢复答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1584G",
+          "index": "G",
+          "slot": "G",
+          "title": "Eligible Segments",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1584/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
+          "originalTags": [
+            "geometry"
+          ],
+          "statementBrief": "给定平面上 $n$ 个互不相同的点和距离阈值 $R$，对每对点作线段。若所有给定点到该线段的距离都不超过 $R$，则称这对点合格，要求统计合格的点对数量。",
+          "transformedStatement": "把一条线段的覆盖条件拆成从两个端点出发的相反射线条件。固定一个起点后，每个点都会限制射线方向落在一个由切线确定的角区域内，所有区域的交集就是允许的方向集合。",
+          "keyObservations": [
+            "线段到点的距离等于该点到两条端点射线距离的较大值，因此一对端点合格当且仅当两个方向的射线都满足覆盖条件。",
+            "固定起点 $P_i$ 和被检查点 $P_k$ 后，满足射线到 $P_k$ 的距离不超过 $R$ 的方向构成一个由圆的两条切线界定的角区域，从而把距离约束转成方向约束。",
+            "对固定起点求出所有点对应角区域的交集后，只需检查候选端点方向是否落在交集中；再同时验证反向射线即可判断整条线段，整体复杂度为 $O(n^2)$。"
+          ],
+          "solutionBrief": "枚举每个点作为起点，将其他点的距离约束转化为方向角区域并求交集。候选射线方向必须落入交集，且反向射线也需满足同样条件；统计满足条件的无序端点对，复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]

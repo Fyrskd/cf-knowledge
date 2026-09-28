@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T10:36:45+00:00",
+  "updated_at": "2026-09-28T10:42:46+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -81960,6 +81960,212 @@
         "quality_flags": [
           "query_formats_missing",
           "statement_incomplete"
+        ]
+      }
+    },
+    "1584G": {
+      "problem_key": "1584G",
+      "title": "Eligible Segments",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1584/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "6da252851038915278c0dd92c6afd628518332fea1f3788c2f2e3e502e216905",
+      "generated_at": "2026-09-28T10:40:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定平面上 $n$ 个互不相同的点和距离阈值 $R$，对每对点作线段。若所有给定点到该线段的距离都不超过 $R$，则称这对点合格，要求统计合格的点对数量。",
+        "transformed_statement": "把一条线段的覆盖条件拆成从两个端点出发的相反射线条件。固定一个起点后，每个点都会限制射线方向落在一个由切线确定的角区域内，所有区域的交集就是允许的方向集合。",
+        "key_observations": [
+          "线段到点的距离等于该点到两条端点射线距离的较大值，因此一对端点合格当且仅当两个方向的射线都满足覆盖条件。",
+          "固定起点 $P_i$ 和被检查点 $P_k$ 后，满足射线到 $P_k$ 的距离不超过 $R$ 的方向构成一个由圆的两条切线界定的角区域，从而把距离约束转成方向约束。",
+          "对固定起点求出所有点对应角区域的交集后，只需检查候选端点方向是否落在交集中；再同时验证反向射线即可判断整条线段，整体复杂度为 $O(n^2)$。"
+        ],
+        "solution_brief": "枚举每个点作为起点，将其他点的距离约束转化为方向角区域并求交集。候选射线方向必须落入交集，且反向射线也需满足同样条件；统计满足条件的无序端点对，复杂度为 $O(n^2)$。",
+        "primary_topic": "几何",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，算法细节来自 editorial；题目分类来自 tags。",
+        "quality_flags": []
+      }
+    },
+    "1584F": {
+      "problem_key": "1584F",
+      "title": "Strange LCS",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1584/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "54a7a69023437c151ab08422e5b32b88632b41fe445bfc2c5f1c59ff1b0a7bdc",
+      "generated_at": "2026-09-28T10:40:54+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个仅含大小写英文字母的字符串，且每个字符在每个字符串中最多出现两次。只能通过删除字符取得子序列，要求找出同时是所有字符串子序列的最长字符串，并输出其长度和任意一种答案。",
+        "transformed_statement": "把每个候选匹配表示为一个字符及其在各字符串中选择的出现位置，用位掩码区分第一次或第二次出现；若两个状态的位置在所有字符串中都严格递增，就连成有向边，问题变为求这张 DAG 的最长路径。",
+        "key_observations": [
+          "把一个匹配字符表示为“字符 + 每个串选择第一次或第二次出现”的状态，状态总数为 $O(|\\Sigma|2^n)$，从而统一表示所有可能的匹配位置。",
+          "若前后两个状态在所有字符串中的位置都严格递增，则它们可连续加入公共子序列；因此公共子序列等价于该有向无环图中的路径。",
+          "固定当前状态和下一个字符时，只需选择所有合法位置中最靠左的那组位置；任何更靠右且可达的同字符状态都不会带来更优后续路径，可删除其余边。",
+          "每个状态对每种字符最多保留一条转移，最长公共子序列转为 DAG 最长路；按记录的转移即可恢复具体序列，整体复杂度为 $O(n|\\Sigma|^2 2^n)$。"
+        ],
+        "solution_brief": "将每个字符的出现位置选择编码为位掩码，状态按所有字符串中的位置排序形成 DAG。对每个当前状态和目标字符仅保留最靠左的合法后继，做最长路 DP，并记录转移恢复答案。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "图论与网络流",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags 中的字符串、bitmasks、DP、graphs、greedy 信息整理。",
+        "quality_flags": []
+      }
+    },
+    "1584E": {
+      "problem_key": "1584E",
+      "title": "Game with Stones",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1584/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "6d05ecf8bd3cff7e0db0d332316941816eb63953fe2e6b45cc29ef61dc9b7205",
+      "generated_at": "2026-09-28T10:41:16+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一列石堆，每次只能选择两个相邻且非空的石堆各取一颗；石堆变空后其两侧不会重新相邻。若最终所有石堆都为空则称该子段获胜，要求统计数组中获胜连续子段的数量。",
+        "transformed_statement": "把每个候选序列改写为逐堆消去后的交替剩余量 $c_i=a_i-c_{i-1}$：合法性要求所有中间剩余量非负，结尾剩余量为零。对每个左端点，将局部量转成全局 $c$ 上按奇偶的阈值与等值查询。",
+        "key_observations": [
+          "首堆的石子只能与第二堆配对；若第二堆不足则必败，否则必须先清空首堆并从第二堆扣除相同数量，从而可递归地贪心消去前缀。",
+          "对一个序列定义剩余量 $c_0=0,\u0001c_i=a_i-c_{i-1}$，该序列可获胜当且仅当所有 $c_i\\ge 0$ 且最后的 $c_n=0$。",
+          "固定左端点 $l$ 后，局部剩余量满足 $c_i^l=c_{l+i-1}+(-1)^{i-1}c_{l-1}$；按位置奇偶分类后，首次负值变成后缀中首次小于某阈值的位置查询。",
+          "首次负值之前的局部零值恰好对应可行的右端点；全局按奇偶维护区间最小值以找首次越界，并用各值的位置表二分统计等值点，整体复杂度为 $O(n\\log n)$。"
+        ],
+        "solution_brief": "先用贪心消去首堆，得到交替剩余量 $c$ 及“全非负且末项为零”的判定。固定左端点后利用局部量与全局 $c$ 的关系按奇偶查询首次负值，再统计此前等于目标值的位置；线段树找首次越界，位置表二分计数。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "博弈",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则、完整 editorial_text，以及 tags 中的数据结构、博弈和贪心信息整理。",
+        "quality_flags": []
+      }
+    },
+    "1584D": {
+      "problem_key": "1584D",
+      "title": "Guess the Permutation",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1584/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "14575bb0932c16d6f9254f07af8d5761c3b34a6e2dc6fbd86ae099872083d9bf",
+      "generated_at": "2026-09-28T10:41:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "数组初始为 $1,2,\\ldots,n$，选定 $i<j<k$ 且 $j-i>1$，分别反转区间 $[i,j-1]$ 和 $[j,k]$。你只能询问任意子区间的逆序对数量，需在不超过 40 次询问内找出 $i,j,k$。",
+        "transformed_statement": "把两段反转产生的结构视为两个递减块：总逆序数给出两段长度的组合数之和；后缀查询用来定位第一个反转块的左端点，再由差值拆出两段长度。",
+        "key_observations": [
+          "长度为 $l$ 的被反转递增连续段变成递减段，恰好产生 $\binom{l}{2}$ 个逆序对，因此全数组逆序数为 $\binom{k-j+1}{2}+\binom{j-i}{2}$。",
+          "后缀 $[x,n]$ 的逆序数等于总数当且仅当两个反转段都完整落在后缀中，即 $x\\le i$；该条件具有单调性，可二分确定 $i$。",
+          "查询后缀 $[i+1,n]$ 得到 $B$ 后，$A-B=j-i-1$，因为该差值恰好对应位置 $i+1$ 到 $j-1$ 中小于 $a_i$ 的元素数量。",
+          "得到 $j-i$ 后，可由 $\\binom{k-j+1}{2}=A-\\binom{j-i}{2}$ 唯一确定 $k-j+1$，进而恢复 $j$ 和 $k$。"
+        ],
+        "solution_brief": "先查询全数组逆序数 $A$，利用后缀逆序数是否等于 $A$ 的单调性二分出 $i$；再查询 $[i+1,n]$ 得到 $j-i-1$，用组合数公式求出 $k-j+1$，从而恢复三点。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "组合计数与概率"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，结合 tags 中的 interactive、combinatorics 和 binary search。",
+        "quality_flags": []
+      }
+    },
+    "1584C": {
+      "problem_key": "1584C",
+      "title": "Two Arrays",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1584/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "05264622da8cd4f969b08aaa43e4eb25b81605f30351639707459aa1a4887c53",
+      "generated_at": "2026-09-28T10:42:03+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度相同的整数数组，要求判断能否对数组 $a$ 做一次规定变换得到数组 $b$。该变换允许元素保持不变或增加 $1$，并可重新安排元素对应关系；对每组数据输出是否可行。",
+        "transformed_statement": "把一次变换看成对 $a$ 的元素逐个选择“增加 $0$ 或 $1$”，再将所得多重集合与 $b$ 匹配；排序后问题等价于判断每个对应位置是否满足 $b_i\\in\\{a_i,a_i+1\\}$。",
+        "key_observations": [
+          "将数组排序后，只需比较相同排名的元素；最小元素无法与更大的目标元素跨过中间值匹配，因此这种匹配可递归缩小到剩余元素。",
+          "每个 $a_i$ 在变换后只能保持为 $a_i$ 或增加到 $a_i+1$，所以排序后必须满足 $a_i=b_i$ 或 $a_i+1=b_i$。",
+          "若最小元素与目标最小元素相等，可以直接匹配并删除；若恰好相差 $1$，则必须对它增加 $1$ 后匹配，这保证了逐位判断的充分性。"
+        ],
+        "solution_brief": "分别排序两个数组，逐位检查 $b_i$ 是否等于 $a_i$ 或 $a_i+1$；全部满足则输出 YES，否则输出 NO。排序复杂度为 $O(n\\log n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text 及 tags 提炼；题面中的变换定义在记录中缺失，具体效果由题解中的等价判定补足。",
+        "quality_flags": [
+          "statement_transformation_definition_truncated"
+        ]
+      }
+    },
+    "1584B": {
+      "problem_key": "1584B",
+      "title": "Coloring Rectangles",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1584/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9124bc177c37d2e47d479e3b3b72f65fd60154779873796fd6e7fe1407985033",
+      "generated_at": "2026-09-28T10:42:31+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times m$ 的网格矩形，可以反复沿网格线把原矩形或已有矩形切成两个矩形，但最终不能出现 $1\\times1$ 矩形。随后每个最终矩形内部共边相邻的格子必须染成不同颜色，求至少需要染蓝的格子数。",
+        "transformed_statement": "把问题看成将总面积 $nm$ 划分为面积不为 $1$ 的矩形，并对每块选择棋盘染色中较少的一类作为蓝色；目标转化为在满足可构造分块的前提下，使各块蓝色数量之和最小。",
+        "key_observations": [
+          "每块矩形必须采用棋盘式双色，因此面积为偶数时至少染蓝一半，面积为奇数时染蓝数量为 $(S-1)/2$；因禁止面积为 $1$，任意合法块的蓝色占比至少为 $1/3$。",
+          "对所有分块求和可得染蓝数量至少为 $nm/3$，而答案必须是整数，所以答案下界是 $\u001cceil nm/3 \u001d$。",
+          "按两边除以 $3$ 的余数构造分割：主体切成 $1\\times3$ 条带，余数为 $(1,1)$ 或 $(2,2)$ 时补一个面积 $4$ 的矩形，余数为 $(1,2)$ 时补一个 $1\\times2$ 矩形，从而达到该整数下界。"
+        ],
+        "solution_brief": "每个分块按棋盘格染色并选择较少的一色。单块蓝色比例至少为 $1/3$，故答案至少为 $\u001cceil nm/3 \u001d$；根据两边模 $3$ 的余数用 $1\\times3$ 条带及面积 $2$ 或 $4$ 的补块构造，最终答案为 $\u001cceil nm/3 \u001d$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 的切割与染色规则、editorial 的比例下界和按模 $3$ 分类构造，并参考 tags 中的 greedy、math。",
+        "quality_flags": []
+      }
+    },
+    "1584A": {
+      "problem_key": "1584A",
+      "title": "Mathematical Addition",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1584/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ea6d20197800cbf3bd7d92e8be3ce5cd56a30866768d427f9b64612f2ed9ce7a",
+      "generated_at": "2026-09-28T10:42:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "每个测试用例给出正整数 $u,v$，要求构造一对不同时为零的整数 $x,y$，满足 $x/u+y/v=(x+y)/(u+v)$，且二者绝对值均不超过 $10^{18}$。存在多组解时输出任意一组。",
+        "transformed_statement": "把分式等式清除分母后，问题转化为寻找非零整数解 $xv^2+yu^2=0$ 的齐次线性方程；选取两项分别抵消即可完成构造。",
+        "key_observations": [
+          "两边同乘正数 $uv(u+v)$ 后，原分式方程等价于 $xv^2+yu^2=0$，从而消除了分母并转成一次齐次关系。",
+          "取 $x=-u^2$、$y=v^2$ 可直接使 $xv^2+yu^2=0$；由于 $u,v\\ge1$，两者均非零，且绝对值不超过 $10^{18}$，自动满足限制。"
+        ],
+        "solution_brief": "将方程两边乘以 $uv(u+v)$ 并化简为 $xv^2+yu^2=0$，直接输出 $x=-u^2$、$y=v^2$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据statement中的输入输出约束，以及editorial给出的方程化简和构造方案；tags提供math分类。",
+        "quality_flags": [
+          "statement中的核心方程排版缺失，依据editorial补全"
         ]
       }
     }
