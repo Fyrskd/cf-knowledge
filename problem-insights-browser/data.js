@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3809,
+    "total_problems": 3815,
     "source_total_problems": 3817,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3809,
-    "with_editorial_brief": 3493,
-    "with_solution_brief": 3495,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3815,
+    "with_editorial_brief": 3499,
+    "with_solution_brief": 3501,
     "missing_editorial_brief": 314,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2871,
+    "ai_override_count": 2877,
     "primary_topic_count": 13,
-    "contest_count": 590,
+    "contest_count": 591,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "字符串": 200,
+    "构造与贪心": 1240,
+    "组合计数与概率": 291,
+    "数据结构": 364,
     "基础实现与模拟": 239,
-    "构造与贪心": 1237,
-    "组合计数与概率": 290,
-    "数据结构": 363,
     "动态规划与状态设计": 312,
     "树结构": 183,
     "数论与同余": 402,
     "图论与网络流": 247,
     "交互": 110,
-    "字符串": 199,
     "几何": 90,
     "博弈": 112,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2518,
+    "ai_generated_with_editorial": 2524,
     "missing_editorial": 314,
     "ai_generated_partial_editorial": 84,
     "low_confidence": 1,
@@ -117389,6 +117389,188 @@ window.CF_INSIGHTS_DATA = {
             "大小至少为 $4$ 的字母组可拆出一个包含其首元素的二元组，再递归处理剩余部分，从配对状态向一般偶数分组状态传播结果。"
           ],
           "solutionBrief": "先枚举字母首次出现顺序规范化后的偶数分组。对每个分组枚举其拆成二元组的方式，并以已用二元组集合和末对做哈密顿路径 DP；再通过拆出二元组的递推，把配对结果传播到原分组。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1567,
+      "name": "Codeforces Round 742 (Div. 2)",
+      "date": "2021-09-05",
+      "url": "https://codeforces.com/contest/1567",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1567A",
+          "index": "A",
+          "slot": "A",
+          "title": "Domino Disaster",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1567/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/94581",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个已用 $1\\times2$ 骨牌完整铺满的 $2\\times n$ 网格，并看到其中一行：`L/R` 表示横向骨牌的左右半部，`U/D` 表示竖直骨牌的上下半部。请输出另一行的编码；若有多种答案，输出任意一种。",
+          "transformedStatement": "将恢复过程转化为逐列字符映射：竖直骨牌跨越两行，所以 `U` 与 `D` 互换；横向骨牌只占当前行的相邻两格，另一行对应位置也保留 `L`、`R`。",
+          "keyObservations": [
+            "竖直骨牌同时覆盖两行同一列，因此已知行中的 `U` 在另一行必为 `D`，`D` 必为 `U`，可直接逐列确定。",
+            "已知行中的 `L`、`R` 已组成横向骨牌并占满对应两列，这些位置在另一行不能再使用竖直骨牌，只能保持同样的 `L`、`R` 组合。",
+            "由于输入保证至少存在一种完整铺法，逐字符执行 `U↔D`、`L/R` 不变即可得到一个合法的另一行，无需搜索不同铺法。"
+          ],
+          "solutionBrief": "从左到右扫描字符串：遇到 `U` 输出 `D`，遇到 `D` 输出 `U`，遇到 `L` 或 `R` 原样输出。竖直骨牌交换上下半部，横向骨牌在另一行保持相同方向，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1567B",
+          "index": "B",
+          "slot": "B",
+          "title": "MEXor Mixup",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1567/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/94581",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "greedy"
+          ],
+          "statementBrief": "给定正整数 $a$ 和非负整数 $b$，要求构造一个非负整数数组，使其 MEX 为 $a$、所有元素异或和为 $b$。可以自由选择数组元素，目标是求满足条件的最短数组长度。",
+          "transformedStatement": "先固定必须出现的集合 $[0,a-1]$，其异或值记为 $x$；问题转化为用尽量少的、不能等于 $a$ 的附加元素，把整体异或值从 $x$ 修正为 $b$。",
+          "keyObservations": [
+            "MEX 为 $a$ 强制数组包含 $0$ 到 $a-1$ 且不包含 $a$，因此先取这 $a$ 个数可达到最短基础长度。",
+            "设基础数组异或值为 $x$，若需补一个数，唯一选择是 $x\\oplus b$；当它不等于 $a$ 时不会破坏 MEX，答案只增加 $1$。",
+            "当 $x\\oplus b=a$ 时唯一修正值被禁止加入，必须补两个不等于 $a$ 的数使其异或为所需修正值，因此答案增加 $2$。"
+          ],
+          "solutionBrief": "先计算 $0,1,\\dots,a-1$ 的异或值 $x$。若 $x=b$，答案为 $a$；若 $x\\oplus b\\ne a$，补一个数，答案为 $a+1$；否则需补两个数，答案为 $a+2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1567C",
+          "index": "C",
+          "slot": "C",
+          "title": "Carrying Conundrum",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1567/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/94581",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "Alice 将两个正整数按十进制逐列相加，但产生的进位不是传到下一列，而是传到左边第二列。给定她最终显示的正整数 $n$，求所有能得到该结果的有序正整数对数量，交换两个数视为不同。",
+          "transformedStatement": "把 $n$ 的十进制位按奇偶位置拆成两组并压缩为 $a,b$。由于进位不会在两组之间传递，问题转化为分别选择两组非负数之和为 $a$ 和 $b$，再交错合并成原数。",
+          "keyObservations": [
+            "由于进位只跳到左边第二列，奇数位和偶数位彼此独立；将 $n$ 的十进制数字按位奇偶抽出并分别压缩为 $a,b$ 后，原问题等价于两组独立的普通加法。",
+            "两个非负整数之和为 $a$ 的有序分配有 $a+1$ 种，另一组有 $b+1$ 种；交错合并两组数字可唯一还原一对原数，因此总数为 $(a+1)(b+1)$。",
+            "其中恰有两种分配会使第一个或第二个原数为 $0$，而题目要求正整数，所以答案需减去 $2$。"
+          ],
+          "solutionBrief": "从低位开始把 $n$ 的数字交替分到两组并压缩，得到 $a,b$。答案为 $(a+1)(b+1)-2$：先分别计数两组非负数分配，再排除一个原数为零的两种情况，处理每个测试用例只需扫描十进制数字。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1567D",
+          "index": "D",
+          "slot": "D",
+          "title": "Expression Evaluation Error",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1567/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/94581",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $s$ 和数量 $n$，Bob 要写下恰好 $n$ 个正整数且它们的十进制和为 $s$。Alice 将每个数的十进制表示误读为十一进制后求和，要求构造使这个总和最大的写法。",
+          "transformedStatement": "把问题转化为将 $s$ 分解成若干十进制幂的组合：无十一进制进位时可达到把 $s$ 的十进制数字直接当作十一进制数字的上界；数量不够时再按最优顺序拆分幂。",
+          "keyObservations": [
+            "把十进制的 $s$ 按位看成十一进制数，Alice 的总和在最高位到最低位上都不可能超过对应位，因此该数是答案上界。",
+            "将 $s$ 拆成各十进制位对应的若干个 $10^k$ 单位时，各位总和小于 $11$，不会产生进位，恰好达到上述上界。",
+            "当需要的数多于十进制位数字之和时，应优先拆分最小的可拆分幂 $10^k$，替换为 $10^{k-1}$ 与 $9\\cdot10^{k-1}$；这样增加一个数并尽量保持高位最优。"
+          ],
+          "solutionBrief": "先按十进制位拆出若干个 $10^k$ 单位，并合并单位得到恰好 $n$ 个正数；若数量不足，则反复选择最小的可拆分幂，按 $10^k=10^{k-1}+9\\cdot10^{k-1}$ 拆分。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1567E",
+          "index": "E",
+          "slot": "E",
+          "title": "Non-Decreasing Dilemma",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1567/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/94581",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "math"
+          ],
+          "statementBrief": "给定数组，操作分为两类：将某个位置的元素修改为指定值，或询问区间 $[l,r]$ 内非递减连续子数组的数量。每次区间查询都要输出满足相邻元素不下降的连续子数组总数。",
+          "transformedStatement": "把查询区间拆成若干条极大的连续非递减链；长度为 $x$ 的链贡献 $x(x+1)/2$。用线段树维护区间两端可延伸的链及内部贡献，从而支持修改和区间合并。",
+          "keyObservations": [
+            "长度为 $x$ 的连续非递减段贡献恰好为 $x(x+1)/2$ 个子数组，因此答案可转化为统计查询区间内各段长度。",
+            "相邻两段合并时，只有左段后缀与右段前缀在边界满足非递减关系才会连成更长的链，其余信息无需展开。",
+            "线段树节点保存最长非递减前缀、最长非递减后缀、整段是否非递减及内部子数组数，足以在合并时完整表达区间。",
+            "按查询区间从左到右合并节点，并维护当前前缀的非递减后缀长度，即可在线计算跨越合并边界的新子数组数量。"
+          ],
+          "solutionBrief": "用线段树维护四项区间摘要：最长非递减前缀和后缀、整段是否非递减、内部非递减子数组数。合并时检查边界顺序并补上跨界贡献，单次更新或查询均为 $O(\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1567F",
+          "index": "F",
+          "slot": "F",
+          "title": "One-Four Overload",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1567/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/94581",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "2-sat",
+            "constructive algorithms",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "给定一个内部标有 X 的网格，需为所有格子填数：X 格按模 $5$ 取 $0$，普通格取 $1$ 或 $4$，并使每个 X 格周围的普通邻居中 $1$ 和 $4$ 数量相等。若无法满足则输出 NO，否则输出一种完整填法。",
+          "transformedStatement": "将问题改写为给非标记格二染色，使每个标记格相邻的两种颜色数量相同；先对八邻域连通块构造平面邻接图并二分染色，再用按列交替的掩码修正零个非标记邻居的局部情形。",
+          "keyObservations": [
+            "将数值条件化为模 $5$：标记格取 $0$，相邻非标记格中必须有相同数量的 $1$ 与 $4$，因此非标记邻居数必须为偶数。",
+            "把非标记格按八邻域连通成分处理，成分之间的邻接图可由标记格图的平面对偶得到；由于标记格图各点度数为 $2$ 或 $4$，该对偶图是二分图。",
+            "二分染色决定各连通成分取 $1$ 或 $4$，可同时满足拥有 $2$ 或 $4$ 个非标记邻居的标记格。",
+            "再叠加按列交替翻转的掩码，可处理没有非标记邻居的标记格；八邻域连通和局部四种形状保证掩码不会破坏其他标记格的平衡。"
+          ],
+          "solutionBrief": "把非标记格视为取模 $5$ 的 $1/4$，标记格取 $0$。对非标记格做八邻域连通并构造其邻接图，利用标记格图欧拉性证明该图二分染色；最后叠加偶数列掩码，得到满足所有局部平衡条件的赋值。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
