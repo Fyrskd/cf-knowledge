@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3696,
+    "total_problems": 3698,
     "source_total_problems": 3700,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3696,
-    "with_editorial_brief": 3384,
-    "with_solution_brief": 3386,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3698,
+    "with_editorial_brief": 3386,
+    "with_solution_brief": 3388,
     "missing_editorial_brief": 310,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2758,
+    "ai_override_count": 2760,
     "primary_topic_count": 13,
-    "contest_count": 570,
+    "contest_count": 571,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,9 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1204,
     "基础实现与模拟": 234,
     "数论与同余": 386,
-    "构造与贪心": 1202,
     "图论与网络流": 240,
     "字符串": 195,
     "组合计数与概率": 278,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2415,
-    "ai_generated_partial_editorial": 78,
+    "ai_generated_with_editorial": 2416,
+    "ai_generated_partial_editorial": 79,
     "missing_editorial": 310,
     "low_confidence": 1,
     "manual_override": 891,
@@ -113907,6 +113907,64 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "按 $G_i=a_i+b_i-m_i$ 分组，将每道菜转成可行的剩余鱼肉区间。组内按右端点排序，贪心选择未覆盖区间的右端点并覆盖包含它的区间；选点数即最小 variety，再据此输出鱼肉和肉的食用量。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1604,
+      "name": "Codeforces Round 752 (Div. 2)",
+      "date": "2021-10-30",
+      "url": "https://codeforces.com/contest/1604",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1604A",
+          "index": "A",
+          "slot": "A",
+          "title": "Era",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1604/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/96460",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定整数序列，每次可选一个整数并将其插入序列任意位置；操作后序列长度增加，原元素顺序不变。求至少插入多少次，使最终每个位置 $i$ 都满足 $a_i\\le i$。",
+          "transformedStatement": "把每个原元素 $a_i$ 的需求转化为位置缺口 $a_i-i$：若缺口为正，就必须在它前方增加至少这么多位置。所有元素共享插入带来的位移，因此只需处理最大缺口。",
+          "keyObservations": [
+            "若位置 $i$ 上有 $a_i>i$，至少要在它前面插入 $a_i-i$ 个元素，才能让它的新位置满足限制。",
+            "令 $m=\\max(0,\\max_i(a_i-i))$，所有位置所需的插入数量由最大缺口决定，因此答案至少为 $m$。",
+            "在序列开头连续插入 $m$ 个 $1$，会让所有原元素统一右移 $m$ 位，从而满足 $a_i\\le i+m$，说明下界可以达到。"
+          ],
+          "solutionBrief": "遍历所有位置，计算最大的缺口 $a_i-i$，答案为 $\\max(0,\\max_i(a_i-i))$。下界来自最违规元素；在开头插入同样数量的 $1$ 即可实现，因此该值最优。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1604B",
+          "index": "B",
+          "slot": "B",
+          "title": "XOR Specia-LIS-t",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1604/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/96460",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [],
+          "statementBrief": "给定整数序列，需将其划分为一个或多个连续且非空的子数组，每个元素恰好属于一组。计算各组最长严格递增子序列的长度，判断是否能使这些长度的按位异或等于 $0$。",
+          "transformedStatement": "先尝试让所有分组的 LIS 都为 $1$：单点分组总能做到，非递增相邻对也能合并后保持 LIS 为 $1$。唯一需要排除的是奇数长度的严格递增数组，此时每组贡献就是分组长度。",
+          "keyObservations": [
+            "将每个元素单独分组时，每组 LIS 都是 $1$；因此 $n$ 为偶数时有偶数个 $1$，异或结果直接为 $0$。",
+            "当存在相邻位置满足 $a_i\\ge a_{i+1}$ 时，把这两个元素合成一组，其 LIS 仍为 $1$，再把其余元素单独分组，可在 $n$ 为奇数时也得到偶数个贡献为 $1$ 的分组。",
+            "若数组严格递增，则任意子数组的 LIS 等于长度；此时问题等价于将奇数 $n$ 拆成若干长度，使长度和为 $n$ 且长度异或为 $0$。",
+            "长度异或为 $0$ 意味着二进制最低位为 $1$ 的分组数为偶数，从而所有分组长度之和为偶数，与奇数 $n$ 矛盾，因此严格递增且 $n$ 为奇数时无解。"
+          ],
+          "solutionBrief": "若 $n$ 为偶数，全部单点分组即可。若 $n$ 为奇数，只需检查是否存在 $a_i\\ge a_{i+1}$；存在则合并这两个位置、其余单点分组，否则数组严格递增而无解。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
         }
       ]
     }

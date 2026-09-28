@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T11:04:08+00:00",
+  "updated_at": "2026-09-28T11:08:13+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -82586,6 +82586,63 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial_text 及 tags 中的 implementation、strings。",
+        "quality_flags": []
+      }
+    },
+    "1604B": {
+      "problem_key": "1604B",
+      "title": "XOR Specia-LIS-t",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1604/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/96460",
+      "editorial_quality": "partial",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a2c0ce6135a53f1f3c3d1cab0335aace013e65dce64ed1d2b437ae1d2573bcb1",
+      "generated_at": "2026-09-28T11:07:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数序列，需将其划分为一个或多个连续且非空的子数组，每个元素恰好属于一组。计算各组最长严格递增子序列的长度，判断是否能使这些长度的按位异或等于 $0$。",
+        "transformed_statement": "先尝试让所有分组的 LIS 都为 $1$：单点分组总能做到，非递增相邻对也能合并后保持 LIS 为 $1$。唯一需要排除的是奇数长度的严格递增数组，此时每组贡献就是分组长度。",
+        "key_observations": [
+          "将每个元素单独分组时，每组 LIS 都是 $1$；因此 $n$ 为偶数时有偶数个 $1$，异或结果直接为 $0$。",
+          "当存在相邻位置满足 $a_i\\ge a_{i+1}$ 时，把这两个元素合成一组，其 LIS 仍为 $1$，再把其余元素单独分组，可在 $n$ 为奇数时也得到偶数个贡献为 $1$ 的分组。",
+          "若数组严格递增，则任意子数组的 LIS 等于长度；此时问题等价于将奇数 $n$ 拆成若干长度，使长度和为 $n$ 且长度异或为 $0$。",
+          "长度异或为 $0$ 意味着二进制最低位为 $1$ 的分组数为偶数，从而所有分组长度之和为偶数，与奇数 $n$ 矛盾，因此严格递增且 $n$ 为奇数时无解。"
+        ],
+        "solution_brief": "若 $n$ 为偶数，全部单点分组即可。若 $n$ 为奇数，只需检查是否存在 $a_i\\ge a_{i+1}$；存在则合并这两个位置、其余单点分组，否则数组严格递增而无解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "依据 statement_text 和 editorial_text；codeforces_tags 为空。",
+        "quality_flags": [
+          "partial_editorial"
+        ]
+      }
+    },
+    "1604A": {
+      "problem_key": "1604A",
+      "title": "Era",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1604/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/96460",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8c2815c2db476ebf3bc30add3c3a548e92e144ed4c2b411001e03710e28361f1",
+      "generated_at": "2026-09-28T11:08:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数序列，每次可选一个整数并将其插入序列任意位置；操作后序列长度增加，原元素顺序不变。求至少插入多少次，使最终每个位置 $i$ 都满足 $a_i\\le i$。",
+        "transformed_statement": "把每个原元素 $a_i$ 的需求转化为位置缺口 $a_i-i$：若缺口为正，就必须在它前方增加至少这么多位置。所有元素共享插入带来的位移，因此只需处理最大缺口。",
+        "key_observations": [
+          "若位置 $i$ 上有 $a_i>i$，至少要在它前面插入 $a_i-i$ 个元素，才能让它的新位置满足限制。",
+          "令 $m=\\max(0,\\max_i(a_i-i))$，所有位置所需的插入数量由最大缺口决定，因此答案至少为 $m$。",
+          "在序列开头连续插入 $m$ 个 $1$，会让所有原元素统一右移 $m$ 位，从而满足 $a_i\\le i+m$，说明下界可以达到。"
+        ],
+        "solution_brief": "遍历所有位置，计算最大的缺口 $a_i-i$，答案为 $\\max(0,\\max_i(a_i-i))$。下界来自最违规元素；在开头插入同样数量的 $1$ 即可实现，因此该值最优。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的插入操作规则及 editorial_text 的最大缺口证明，tags 仅用于主题辅助。",
         "quality_flags": []
       }
     }
