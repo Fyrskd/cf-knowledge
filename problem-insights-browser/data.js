@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3363,
+    "total_problems": 3368,
     "source_total_problems": 3371,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3363,
-    "with_editorial_brief": 3077,
-    "with_solution_brief": 3079,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3368,
+    "with_editorial_brief": 3082,
+    "with_solution_brief": 3084,
     "missing_editorial_brief": 284,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2425,
+    "ai_override_count": 2430,
     "primary_topic_count": 13,
-    "contest_count": 517,
+    "contest_count": 518,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1084,
-    "数论与同余": 351,
-    "数据结构": 319,
+    "构造与贪心": 1086,
+    "树结构": 165,
+    "数论与同余": 352,
+    "数据结构": 320,
     "图论与网络流": 216,
     "博弈": 105,
     "动态规划与状态设计": 280,
     "组合计数与概率": 255,
     "基础实现与模拟": 210,
     "字符串": 175,
-    "树结构": 164,
     "交互": 101,
     "几何": 80,
     "代数、矩阵与多项式": 23
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2117,
+    "ai_generated_with_editorial": 2122,
     "missing_editorial": 284,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -103814,6 +103814,168 @@ window.CF_INSIGHTS_DATA = {
             "达到阈值 $c$ 的传送点可能只需选取其中一部分；比较 $g(c+1),h(c+1)$ 与 $g(c),h(c)$ 后，才能补足使总能量不超过 $m$ 的最少数量。"
           ],
           "solutionBrief": "将每个区间的新增传送点视为独立决策，按整数均分公式计算代价。利用边际节省值不增，对节省阈值二分；每次在各区间内二分可加入数量，并在临界阈值处只补所需的部分传送点。总复杂度为 $O(n\\log^2 A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1665,
+      "name": "Codeforces Round 781 (Div. 2)",
+      "date": "2022-04-08",
+      "url": "https://codeforces.com/contest/1665",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1665A",
+          "index": "A",
+          "slot": "A",
+          "title": "GCD vs LCM",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1665/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/101663",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n$，要构造四个正整数 $a,b,c,d$，使它们的和为 $n$，并满足 $ ext{gcd}(a,b)=\\text{lcm}(c,d)$；存在多组答案时输出任意一组。",
+          "transformedStatement": "将后两个数固定为 $1$，使右侧最小公倍数等于 $1$；再将第二个数固定为 $1$，左侧最大公因数也自动等于 $1$，于是只需把剩余的 $n-3$ 放入第一个数。",
+          "keyObservations": [
+            "令 $c=d=1$ 后，$ ext{lcm}(c,d)=1$，因此只需让 $ ext{gcd}(a,b)=1$，原条件被化为更简单的互质构造。",
+            "再令 $b=1$，无论 $a$ 取何正整数都有 $ ext{gcd}(a,1)=1$；剩余数额确定为 $a=n-3$，且因 $n\\ge 4$ 保证其为正数。"
+          ],
+          "solutionBrief": "对每个 $n$ 输出 $a=n-3,b=1,c=1,d=1$。四数均为正且和为 $n$；同时 $ ext{gcd}(n-3,1)=1=\\text{lcm}(1,1)$，所以始终满足条件。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1665B",
+          "index": "B",
+          "slot": "B",
+          "title": "Array Cloning Technique",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1665/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/101663",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "初始只有一份长度为 $n$ 的数组。每次可以复制一份数组，或在两份数组之间交换元素；目标是用最少操作得到至少一份所有元素都相等的数组。",
+          "transformedStatement": "只跟踪某个候选值在一份数组中的数量：复制后，另一份数组最多提供同样多的该值，因此每轮能新增的数量是当前数量与剩余位置数的较小值；问题转化为将该数量扩展到 $n$ 的最小代价过程。",
+          "keyObservations": [
+            "目标元素应选原数组中出现次数最多的值；初始已有 $k$ 个该值时，任何其他选择都不会带来更大的首轮可扩展规模。",
+            "若当前某份数组含有 $c$ 个目标值，复制后可通过交换从另一份数组转移目标值；本轮最多新增 $\\min(c,n-c)$ 个。",
+            "每轮固定付出一次复制操作，再付出新增目标值数量次交换，因此令 $d=\\min(c,n-c)$，更新答案为 $1+d$、数量为 $c+d$。",
+            "当目标值数量达到 $n$ 时已有全相等副本；不断执行上述扩展即可得到最少操作数。"
+          ],
+          "solutionBrief": "统计出现次数最多的元素，设其当前数量为 $c$。每轮复制一份数组，再交换最多 $d=\\min(c,n-c)$ 个位置使目标元素集中，答案增加 $1+d$，并令 $c\\leftarrow c+d$，直到 $c=n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1665C",
+          "index": "C",
+          "slot": "C",
+          "title": "Tree Infection",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1665/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/101663",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定以顶点 $1$ 为根的树，所有顶点初始健康。每秒先进行传播、再进行一次注射：传播可让已感染顶点感染孩子，注射可任选一个健康顶点感染；求感染整棵树所需的最少秒数。",
+          "transformedStatement": "按父节点把未感染孩子分组，令每组大小为该父节点的孩子数，并加入根这一大小为 $1$ 的组。问题等价于：每秒所有非空组都减少 $1$，再选择一个组额外减少 $1$，求清空所有组的最短时间。",
+          "keyObservations": [
+            "不同父节点下的孩子感染过程彼此独立，因此只需统计每个父节点当前还有多少个健康孩子，不必保留完整树结构。",
+            "把每个父节点的孩子数视为一个待减少的整数：每秒所有正数自然减少一次，并可用一次注射让其中一个数额外减少一次。",
+            "注射阶段应按初始数量降序依次覆盖各组；这样能优先处理更大的组，并将前期每组获得注射后的剩余量统一转化为新的整数数组。",
+            "后续每秒把额外减少机会给当前剩余量最大的组不会更差，因为所有组都共享一次自然减少，额外减少较大的组能尽早清空一个瓶颈。"
+          ],
+          "solutionBrief": "统计每个顶点的孩子数，并额外加入根对应的大小为 $1$ 的组。将组大小降序排列，先依次用注射处理各组并同步扣除传播贡献；之后每秒让当前最大剩余组额外扣除一次，同时所有组统一扣除一次，删去非正数，直到数组为空。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1665D",
+          "index": "D",
+          "slot": "D",
+          "title": "GCD Guess",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1665/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/101663",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "交互"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "chinese remainder theorem",
+            "constructive algorithms",
+            "games",
+            "interactive",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "交互者固定一个 $1\\le x\\le10^9$ 的正整数。每次可选择两个不同的正整数 $a,b$，获得 $\\gcd(x+a,x+b)$；每组数据最多查询 30 次，最后必须输出所猜的 $x$。",
+          "transformedStatement": "把目标改写为逐位确定二进制表示：维护 $x$ 对当前 $2^k$ 的余数，并设计一次 gcd 查询来判断从模 $2^k$ 扩展到模 $2^{k+1}$ 时新增的那一位。",
+          "keyObservations": [
+            "已知 $x\\bmod 2^k=r$ 后，查询 $\\gcd(x+2^k-r,\\ x+2^{k+1}-r)$，结果只可能区分 $x-r$ 的下一位是 $0$ 还是 $1$，因此一次查询即可确定 $x\\bmod 2^{k+1}$。",
+            "查询中的两个数相差 $2^{k+1}$，且第一个数必为 $2^k$ 的倍数，所以最大公因数为 $2^{k+1}$ 当且仅当下一二进制位为 $1$；否则下一位为 $0$。",
+            "从 $x\\bmod 1=0$ 开始逐位恢复，连续处理 $30$ 个二进制位后得到 $x\\bmod 2^{30}$；由于 $1\\le x\\le 10^9<2^{30}$，该余数就是 $x$。"
+          ],
+          "solutionBrief": "维护当前已知余数 $r=x\\bmod 2^k$。查询两个相差 $2^{k+1}$ 且首项为 $2^k$ 倍数的数；若 gcd 为 $2^{k+1}$，就令 $r\\leftarrow r+2^k$，否则保持不变。重复 30 次即可得到 $x$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1665E",
+          "index": "E",
+          "slot": "E",
+          "title": "MinimizOR",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1665/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/101663",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "greedy",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个非负整数数组，每个查询提供区间 $[l,r]$，要求在该区间中选取两个不同位置的元素，计算它们的按位或，并输出所有选法中的最小值。每个查询独立处理，数组本身不会被修改。",
+          "transformedStatement": "把每个区间查询转化为：只需找出区间内最小的至多 31 个元素，再在这些候选之间寻找最小按位或。候选数量的上界来自对二进制最高位逐层归纳的证明。",
+          "keyObservations": [
+            "若区间内所有数都小于 $2^k$，最小按位或只需考虑其中最小的 $k+1$ 个数；该结论按最高位分类归纳，因此 30 位数只需保留 31 个候选。",
+            "考察最高位时，若至少两个候选该位为 0，最优结果可在这些数中继续最小化；若恰有一个为 0，则该位必为 1，但只需额外保留一个候选。",
+            "对区间反复查询最小值并暂时改为无穷大即可取出至多 31 个候选；这些候选覆盖最优数对，因此枚举它们的两两按位或就能得到答案。"
+          ],
+          "solutionBrief": "用线段树支持区间最小值查询。每次取出区间内最小的至多 31 个数，暂时删除后恢复，再枚举所有候选对的按位或并取最小值。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

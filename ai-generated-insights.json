@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T04:11:41+00:00",
+  "updated_at": "2026-09-28T04:16:46+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -72547,6 +72547,156 @@
           "operation_inferred_from_editorial",
           "statement_operation_missing_in_source"
         ]
+      }
+    },
+    "1665E": {
+      "problem_key": "1665E",
+      "title": "MinimizOR",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1665/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/101663",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "26d64effac00bfb1cca23073ce458406e54676983a01b11e205a04a531cb21c3",
+      "generated_at": "2026-09-28T04:15:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个非负整数数组，每个查询提供区间 $[l,r]$，要求在该区间中选取两个不同位置的元素，计算它们的按位或，并输出所有选法中的最小值。每个查询独立处理，数组本身不会被修改。",
+        "transformed_statement": "把每个区间查询转化为：只需找出区间内最小的至多 31 个元素，再在这些候选之间寻找最小按位或。候选数量的上界来自对二进制最高位逐层归纳的证明。",
+        "key_observations": [
+          "若区间内所有数都小于 $2^k$，最小按位或只需考虑其中最小的 $k+1$ 个数；该结论按最高位分类归纳，因此 30 位数只需保留 31 个候选。",
+          "考察最高位时，若至少两个候选该位为 0，最优结果可在这些数中继续最小化；若恰有一个为 0，则该位必为 1，但只需额外保留一个候选。",
+          "对区间反复查询最小值并暂时改为无穷大即可取出至多 31 个候选；这些候选覆盖最优数对，因此枚举它们的两两按位或就能得到答案。"
+        ],
+        "solution_brief": "用线段树支持区间最小值查询。每次取出区间内最小的至多 31 个数，暂时删除后恢复，再枚举所有候选对的按位或并取最小值。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的区间代价定义，以及编辑部关于 31 个最小数、线段树和归纳证明的主要方案；标签仅用于辅助归类。",
+        "quality_flags": []
+      }
+    },
+    "1665D": {
+      "problem_key": "1665D",
+      "title": "GCD Guess",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1665/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/101663",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9ae96bcbcc2a5a847843589c4ac7f923f29cb913346692c9909bd9ee5b727b51",
+      "generated_at": "2026-09-28T04:15:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "交互者固定一个 $1\\le x\\le10^9$ 的正整数。每次可选择两个不同的正整数 $a,b$，获得 $\\gcd(x+a,x+b)$；每组数据最多查询 30 次，最后必须输出所猜的 $x$。",
+        "transformed_statement": "把目标改写为逐位确定二进制表示：维护 $x$ 对当前 $2^k$ 的余数，并设计一次 gcd 查询来判断从模 $2^k$ 扩展到模 $2^{k+1}$ 时新增的那一位。",
+        "key_observations": [
+          "已知 $x\\bmod 2^k=r$ 后，查询 $\\gcd(x+2^k-r,\\ x+2^{k+1}-r)$，结果只可能区分 $x-r$ 的下一位是 $0$ 还是 $1$，因此一次查询即可确定 $x\\bmod 2^{k+1}$。",
+          "查询中的两个数相差 $2^{k+1}$，且第一个数必为 $2^k$ 的倍数，所以最大公因数为 $2^{k+1}$ 当且仅当下一二进制位为 $1$；否则下一位为 $0$。",
+          "从 $x\\bmod 1=0$ 开始逐位恢复，连续处理 $30$ 个二进制位后得到 $x\\bmod 2^{30}$；由于 $1\\le x\\le 10^9<2^{30}$，该余数就是 $x$。"
+        ],
+        "solution_brief": "维护当前已知余数 $r=x\\bmod 2^k$。查询两个相差 $2^{k+1}$ 且首项为 $2^k$ 倍数的数；若 gcd 为 $2^{k+1}$，就令 $r\\leftarrow r+2^k$，否则保持不变。重复 30 次即可得到 $x$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "交互"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；核心逐位恢复方案依据 editorial_text 的 Solution 1 及其代码；主题依据 tags。",
+        "quality_flags": [
+          "editorial中第一种方案的下标表述存在轻微不一致，摘要按其代码和查询逻辑整理"
+        ]
+      }
+    },
+    "1665C": {
+      "problem_key": "1665C",
+      "title": "Tree Infection",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1665/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/101663",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "6042d3bc1eeee7d48813c0d7d2cd35b0319e24d9d561ffbff16a79a2b2734f68",
+      "generated_at": "2026-09-28T04:16:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定以顶点 $1$ 为根的树，所有顶点初始健康。每秒先进行传播、再进行一次注射：传播可让已感染顶点感染孩子，注射可任选一个健康顶点感染；求感染整棵树所需的最少秒数。",
+        "transformed_statement": "按父节点把未感染孩子分组，令每组大小为该父节点的孩子数，并加入根这一大小为 $1$ 的组。问题等价于：每秒所有非空组都减少 $1$，再选择一个组额外减少 $1$，求清空所有组的最短时间。",
+        "key_observations": [
+          "不同父节点下的孩子感染过程彼此独立，因此只需统计每个父节点当前还有多少个健康孩子，不必保留完整树结构。",
+          "把每个父节点的孩子数视为一个待减少的整数：每秒所有正数自然减少一次，并可用一次注射让其中一个数额外减少一次。",
+          "注射阶段应按初始数量降序依次覆盖各组；这样能优先处理更大的组，并将前期每组获得注射后的剩余量统一转化为新的整数数组。",
+          "后续每秒把额外减少机会给当前剩余量最大的组不会更差，因为所有组都共享一次自然减少，额外减少较大的组能尽早清空一个瓶颈。"
+        ],
+        "solution_brief": "统计每个顶点的孩子数，并额外加入根对应的大小为 $1$ 的组。将组大小降序排列，先依次用注射处理各组并同步扣除传播贡献；之后每秒让当前最大剩余组额外扣除一次，同时所有组统一扣除一次，删去非正数，直到数组为空。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的感染规则、editorial_text 的独立分组与贪心模拟，以及 tags 中的树、贪心和排序信息。",
+        "quality_flags": []
+      }
+    },
+    "1665B": {
+      "problem_key": "1665B",
+      "title": "Array Cloning Technique",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1665/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/101663",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "656c1746cbf8ac2ba3c2e8a09d039b7dacf27c80cc7d209f93cb47fd85e0209d",
+      "generated_at": "2026-09-28T04:16:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "初始只有一份长度为 $n$ 的数组。每次可以复制一份数组，或在两份数组之间交换元素；目标是用最少操作得到至少一份所有元素都相等的数组。",
+        "transformed_statement": "只跟踪某个候选值在一份数组中的数量：复制后，另一份数组最多提供同样多的该值，因此每轮能新增的数量是当前数量与剩余位置数的较小值；问题转化为将该数量扩展到 $n$ 的最小代价过程。",
+        "key_observations": [
+          "目标元素应选原数组中出现次数最多的值；初始已有 $k$ 个该值时，任何其他选择都不会带来更大的首轮可扩展规模。",
+          "若当前某份数组含有 $c$ 个目标值，复制后可通过交换从另一份数组转移目标值；本轮最多新增 $\\min(c,n-c)$ 个。",
+          "每轮固定付出一次复制操作，再付出新增目标值数量次交换，因此令 $d=\\min(c,n-c)$，更新答案为 $1+d$、数量为 $c+d$。",
+          "当目标值数量达到 $n$ 时已有全相等副本；不断执行上述扩展即可得到最少操作数。"
+        ],
+        "solution_brief": "统计出现次数最多的元素，设其当前数量为 $c$。每轮复制一份数组，再交换最多 $d=\\min(c,n-c)$ 个位置使目标元素集中，答案增加 $1+d$，并令 $c\\leftarrow c+d$，直到 $c=n$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 的贪心算法与代码实现，并结合 statement_text 中的复制、交换示例；tags 提供了贪心和构造方向。",
+        "quality_flags": []
+      }
+    },
+    "1665A": {
+      "problem_key": "1665A",
+      "title": "GCD vs LCM",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1665/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/101663",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "84941c285e9980bc2c672d44d3556c636507858c00d4fc92194cc951a7de238d",
+      "generated_at": "2026-09-28T04:16:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数 $n$，要构造四个正整数 $a,b,c,d$，使它们的和为 $n$，并满足 $ ext{gcd}(a,b)=\\text{lcm}(c,d)$；存在多组答案时输出任意一组。",
+        "transformed_statement": "将后两个数固定为 $1$，使右侧最小公倍数等于 $1$；再将第二个数固定为 $1$，左侧最大公因数也自动等于 $1$，于是只需把剩余的 $n-3$ 放入第一个数。",
+        "key_observations": [
+          "令 $c=d=1$ 后，$ ext{lcm}(c,d)=1$，因此只需让 $ ext{gcd}(a,b)=1$，原条件被化为更简单的互质构造。",
+          "再令 $b=1$，无论 $a$ 取何正整数都有 $ ext{gcd}(a,1)=1$；剩余数额确定为 $a=n-3$，且因 $n\\ge 4$ 保证其为正数。"
+        ],
+        "solution_brief": "对每个 $n$ 输出 $a=n-3,b=1,c=1,d=1$。四数均为正且和为 $n$；同时 $ ext{gcd}(n-3,1)=1=\\text{lcm}(1,1)$，所以始终满足条件。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的和、最大公因数与最小公倍数条件，以及完整 editorial 给出的固定构造。",
+        "quality_flags": []
       }
     }
   }
