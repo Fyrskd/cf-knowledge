@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3863,
+    "total_problems": 3865,
     "source_total_problems": 3867,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3863,
-    "with_editorial_brief": 3540,
-    "with_solution_brief": 3542,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3865,
+    "with_editorial_brief": 3542,
+    "with_solution_brief": 3544,
     "missing_editorial_brief": 321,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2925,
+    "ai_override_count": 2927,
     "primary_topic_count": 13,
-    "contest_count": 599,
+    "contest_count": 600,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1252,
+    "数论与同余": 410,
+    "构造与贪心": 1253,
     "组合计数与概率": 295,
     "数据结构": 369,
     "交互": 113,
     "图论与网络流": 253,
-    "数论与同余": 409,
     "基础实现与模拟": 244,
     "字符串": 202,
     "动态规划与状态设计": 316,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2562,
+    "ai_generated_with_editorial": 2564,
     "missing_editorial": 321,
     "ai_generated_partial_editorial": 87,
     "low_confidence": 1,
@@ -118981,6 +118981,75 @@ window.CF_INSIGHTS_DATA = {
             "国王向上移动时重新扫描当前行；这种情况最多发生有限次，整套策略最多执行 $128$ 次皇后移动。"
           ],
           "solutionBrief": "先把皇后放在顶行，以逐行扫描确认国王至少隔一行，再下移皇后持续压迫。若国王向下则同步下移，若向上则重扫；最终将其逼入底部角落，最多约 $128$ 步。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1549,
+      "name": "Codeforces Round 736 (Div. 2)",
+      "date": "2021-08-01",
+      "url": "https://codeforces.com/contest/1549",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 800,
+      "problems": [
+        {
+          "key": "1549A",
+          "index": "A",
+          "slot": "A",
+          "title": "Gregor and Cryptography",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1549/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/93586",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定若干个不小于 $5$ 的素数 $P$，每组需要构造两个整数 $2\\le a<b\\le P$，使 $P$ 分别除以 $a$ 和 $b$ 所得的余数相同；任意合法的一对都可以输出。",
+          "transformedStatement": "将“两个除数得到相同余数”转化为寻找 $P-1$ 的两个不同因子：若 $a,b\\mid(P-1)$，则 $P\\bmod a=P\\bmod b=1$。因此可固定选择 $2$ 与 $P-1$，无需搜索或分解。",
+          "keyObservations": [
+            "因为 $P$ 是不小于 $5$ 的素数，所以 $P$ 为奇数，必有 $P\\bmod 2=1$。",
+            "$P-1$ 是偶数且为合数，选择其两个不同的大于 $1$ 的因子即可保证它们都整除 $P-1$，从而满足 $P$ 除以二者的余数都为 $1$。",
+            "无需分解 $P-1$：固定取 $a=2$、$b=P-1$，二者满足 $2\\le a<b\\le P$，并且都有余数 $1$，因此直接得到合法答案。"
+          ],
+          "solutionBrief": "对每个素数 $P$，直接输出 $a=2$ 和 $b=P-1$。由于 $P$ 为奇数且 $P\\bmod(P-1)=1$，两者余数均为 $1$；每组仅需常数时间处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1549B",
+          "index": "B",
+          "slot": "B",
+          "title": "Gregor and the Pawn Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1549/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/93586",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "flows",
+            "graph matchings",
+            "graphs",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定 $n\\times n$ 棋盘，敌兵固定在第 1 行，己方兵固定在第 $n$ 行。每次只能让一个己方兵上移一格，或在相邻斜上格有敌兵时吃掉它并移动；求最多有多少己方兵能到达第 1 行。",
+          "transformedStatement": "把每个己方兵的整段移动压缩为一次目的地选择：它只能占据本列空格，或吃掉左、右相邻列的敌兵。于是问题变成按列处理这些局部匹配关系，并用贪心最大化成功匹配数。",
+          "keyObservations": [
+            "由于敌方兵只在第 1 行且不会移动，每个己方兵最终只能到达自己所在列，或在最后一步斜移到相邻列。",
+            "从左到右处理己方兵时，若左侧敌兵存在就优先吃掉它；该列之后不会再被访问，因此不会损失最优性。",
+            "若左侧不可吃，己方兵可在本列没有敌兵时直上；否则尝试吃右侧敌兵，仍无法匹配时该兵不能到达顶行。",
+            "问题也可视为己方兵与可达顶行格子的二分图最大匹配，但题解采用的线性贪心已足以求出最大值。"
+          ],
+          "solutionBrief": "按列从左到右处理己方兵：优先吃左侧未被吃的敌兵；否则本列为空则直上；否则吃右侧敌兵。维护敌兵是否已被吃并累计成功数，整体复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
