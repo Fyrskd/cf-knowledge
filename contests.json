@@ -1,5 +1,16 @@
 [
   {
+    "id": 1650,
+    "name": "Codeforces Round 776 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1646750100,
+    "relativeTimeSeconds": 143822135,
+    "date": "2022-03-08"
+  },
+  {
     "id": 1651,
     "name": "Educational Codeforces Round 124 (Rated for Div. 2)",
     "type": "ICPC",
