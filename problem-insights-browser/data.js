@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4057,
+    "total_problems": 4066,
     "source_total_problems": 4066,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 4057,
-    "with_editorial_brief": 3711,
-    "with_solution_brief": 3713,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4066,
+    "with_editorial_brief": 3720,
+    "with_solution_brief": 3722,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3119,
+    "ai_override_count": 3128,
     "primary_topic_count": 13,
-    "contest_count": 630,
+    "contest_count": 631,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1317,
+    "几何": 95,
+    "动态规划与状态设计": 332,
+    "图论与网络流": 269,
+    "数据结构": 386,
     "基础实现与模拟": 252,
-    "构造与贪心": 1314,
     "数论与同余": 426,
     "交互": 121,
-    "图论与网络流": 267,
     "树结构": 191,
-    "动态规划与状态设计": 331,
     "组合计数与概率": 318,
     "博弈": 116,
-    "数据结构": 384,
     "字符串": 217,
-    "代数、矩阵与多项式": 26,
-    "几何": 94
+    "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2718,
-    "ai_generated_partial_editorial": 102,
+    "ai_generated_with_editorial": 2726,
+    "ai_generated_partial_editorial": 103,
     "missing_editorial": 344,
     "low_confidence": 1,
     "manual_override": 891,
@@ -124773,6 +124773,277 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "比较两种方案：全程步行的最短时间，以及步行到一个传送点、传送一次、再步行到终点的最短时间。后者分别求起点侧和终点侧最小的步行距离加传送费用，再将两者相加；取两种方案的较小值。",
           "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1515,
+      "name": "Codeforces Global Round 14",
+      "date": "2021-05-02",
+      "url": "https://codeforces.com/contest/1515",
+      "type": "Global",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1515A",
+          "index": "A",
+          "slot": "A",
+          "title": "Phoenix and Gold",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1515/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/90236",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 块重量互不相同的金块和危险重量 $x$，需要选择一个放置顺序，每次将一块放到秤上，秤上累计重量任何时刻都不能等于 $x$。若存在这样的顺序，输出该顺序；否则判断无解。",
+          "transformedStatement": "问题可转化为安排一个排列，使每个非空前缀的重量和都不等于 $x$。总和为 $x$ 时最后一个前缀必然违规；否则，只需在某个前缀即将达到 $x$ 时交换当前金块与下一块即可避开该值。",
+          "keyObservations": [
+            "若所有金块的总重量等于 $x$，最后一次放置后必然达到危险重量，因此无论顺序如何都无解。",
+            "若总重量不等于 $x$，按任意顺序逐个放置时，只有当前金块恰好使累计重量达到 $x$ 才需要调整；此时交换它与下一个尚未放置的金块即可避开，因为两块重量不同。",
+            "发生需要交换的情况时必然还有下一块可用：若当前已是最后一块且放入后达到 $x$，则总重量就会等于 $x$，与已排除的情形矛盾。"
+          ],
+          "solutionBrief": "先计算总重量；若等于 $x$，输出无解。否则按原顺序扫描，正常加入金块；若某块会使累计重量恰好变成 $x$，就先加入下一块，再加入当前块。总重量不等于 $x$ 保证这种调整时一定存在下一块，且重量互异保证交换后不会仍达到 $x$。复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1515B",
+          "index": "B",
+          "slot": "B",
+          "title": "Phoenix and Puzzle",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1515/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/90236",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "geometry",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n$ 块全等的直角等腰三角形拼片，可以移动和旋转拼片，但不能重叠，且必须用完所有拼片、不能留下空洞。判断能否将它们拼成一个正方形。",
+          "transformedStatement": "将拼片的两种边长视为 $1$ 和 $\\sqrt{2}$，考察正方形一条边由这两种边段组成的形式；利用正方形面积必须为有理数，转化为判断 $n$ 是否属于 $2x^2$ 或 $4x^2$。",
+          "keyObservations": [
+            "把直角等腰三角形的短直角边设为 $1$，斜边为 $\\sqrt{2}$；正方形一条边由这两类边段组成时，边长可写成 $a+\\sqrt{2}b$。",
+            "所有拼片面积之和是有理数，因此正方形面积 $(a+\\sqrt{2}b)^2$ 必须是有理数；这迫使 $a=0$ 或 $b=0$，排除了边上两种长度同时出现的情形。",
+            "若正方形边只由短边组成，则拼片数为 $2a^2$；若只由斜边组成，则拼片数为 $4b^2$，所以可行数量恰为 $2$ 倍或 $4$ 倍的完全平方数。"
+          ],
+          "solutionBrief": "判断 $n$ 是否为 $2x^2$ 或 $4x^2$，其中 $x$ 为正整数；满足任一条件输出 YES，否则输出 NO。构造可先用 $2$ 或 $4$ 块拼成小正方形，再用 $x$ 个小正方形拼成大正方形。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1515C",
+          "index": "C",
+          "slot": "C",
+          "title": "Phoenix and Towers",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1515/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/90236",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 块高度不超过 $x$ 的积木，要把每块恰好放入 $m$ 座塔中，每座塔至少有一块。要求任意两座塔的总高度差不超过 $x$；若能做到，输出每块积木所属的塔编号，否则输出无法构造。",
+          "transformedStatement": "将构造过程视为逐块增加塔高：处理每块时选择当前总高度最小的塔，使各塔高度保持均衡，并检查这一分配规则能否保证最终最大、最小塔高之差不超过 $x$。",
+          "keyObservations": [
+            "每块高度都不超过 $x$，每次把新块放到当前最矮的塔上；若最终最高塔与最低塔相差超过 $x$，这段差距就不可能由最后加入的单块造成，与每次选择最矮塔的规则矛盾。",
+            "每次只需知道各塔当前高度并取出最矮者，放入一块后更新其高度，因此无需预先规划所有分配。"
+          ],
+          "solutionBrief": "维护各塔当前高度，每次将下一块放入最矮的塔并记录塔编号。由于每块高度不超过 $x$，这样构造出的塔高差不会超过 $x$；用有序集合维护最矮塔，单测复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1515D",
+          "index": "D",
+          "slot": "D",
+          "title": "Phoenix and Socks",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1515/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/90236",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定 $n$ 只袜子，每只都有颜色和左右属性。每次花费 1 元可以改变一只袜子的颜色，或将其左右属性互换；要求让所有袜子恰好组成 $n/2$ 对同色的左右袜，求最小总费用。",
+          "transformedStatement": "先固定所有已经同色且左右相反的配对，只处理剩余袜子。之后问题转化为平衡两侧数量，并尽量把多数侧的同色袜通过换边直接配成对，以减少后续改色需求。",
+          "keyObservations": [
+            "先把已有的同色左右袜配成对并移出，因为改变这些袜子不会减少后续必须处理的数量。",
+            "消去已有配对后，左右袜数量之差决定了至少要把较多一侧的 $(L-R)/2$ 只袜子换到另一侧；若较多一侧有同色袜，优先换其中一只可立即组成一对，避免之后再为它改色。",
+            "数量相等或没有可利用的同色袜后，剩余袜子可通过换边平衡数量，再把未配对袜子的颜色改成另一侧对应袜子的颜色完成配对。"
+          ],
+          "solutionBrief": "先统计并移除已有的同色左右配对。对剩余袜子，令数量较多的一侧为多数侧；利用其中的同色袜优先换边成对，直到两侧数量相等或没有可利用的同色袜，再完成必要的换边与改色。按这些操作累计费用即可得到最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1515E",
+          "index": "E",
+          "slot": "E",
+          "title": "Phoenix and Computers",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1515/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/90236",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 台排成一列的电脑，开始时全部关闭。Phoenix 每次手动开启一台尚未自动开启的电脑；若某台内部电脑左右相邻的电脑都已开启，它就会自动开启。要求统计能使全部电脑开启的手动操作序列数，手动开启集合不同或顺序不同都算不同方案，并对给定素数 $M$ 取模。",
+          "transformedStatement": "把一段连续由人工开启的电脑视为一个块，块与块之间由自动开启的电脑分隔。于是问题转为计数这些块的划分与排列：每个长度为 $k$ 的块有 $2^{k-1}$ 种内部顺序，块与此前人工开启序列合并时再乘以相应的二项式交错数。",
+          "keyObservations": [
+            "一段连续电脑若全部由人工开启，其合法开启顺序数为 $2^{k-1}$；这使每段内部的顺序计数可直接计算。",
+            "自动开启的电脑把人工开启的电脑分隔成若干连续段，因此完整过程可按“人工段、自动电脑”从左到右切分。",
+            "合并已有的 $cnt$ 台人工电脑与新增的 $k$ 台人工电脑时，只需选择两组电脑在合并顺序中的相对位置，交错方式数为 $\\binom{cnt+k}{k}$。",
+            "DP 状态记录已处理前缀及其中人工开启的电脑数；追加一段人工电脑后，若尚未到末尾，紧接着的电脑作为自动开启点，从而唯一推进前缀。"
+          ],
+          "solutionBrief": "用 $dp[len][cnt]$ 统计前缀中人工开启 $cnt$ 台、边界处预留自动开启点的方案数。追加长度为 $k$ 的人工段时，乘上段内顺序数 $2^{k-1}$ 和交错合并数 $\\binom{cnt+k}{k}$；最终对 $dp[n+1][i]$ 求和，复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1515F",
+          "index": "F",
+          "slot": "F",
+          "title": "Phoenix and Earthquake",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1515/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/90236",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "有 $n$ 个城市和 $m$ 条候选道路，每个城市初始有一定沥青。每次修复一条道路会消耗 $x$ 吨沥青，且只能使用道路两端已连通部分的沥青；修好的道路允许在城市间转移沥青。要求判断能否修复 $n-1$ 条道路使所有城市连通，若能则输出一种修复顺序。",
+          "transformedStatement": "把已经由修好道路连成的城市集合视为一个连通块，其资源量为块内剩余沥青之和；修复候选边就是合并两个块，并要求两块资源总和至少为 $x$，合并后资源减少 $x$。目标因此变为按合法顺序合并图中的连通块，直到只剩一个。",
+          "keyObservations": [
+            "已修好的道路会让两端城市连通，因此它们可视作一个资源总量为当前沥青总和的连通块；修复连接两个块的道路要求资源总和至少为 $x$，修复后总量减少 $x$。",
+            "所有城市的沥青总量至少为 $(n-1)x$ 是必要条件；在此条件下总能找到一条可修复的道路，修复后剩余总量仍至少为 $(n-2)x$，从而可对剩余城市归纳。",
+            "若某个城市的沥青不少于 $x$，它可与任意相邻城市合并；否则若两城的沥青之和小于 $x$，在每城都小于 $x$ 的条件下总沥青会少于 $(n-1)x$，与可行条件矛盾。",
+            "只需保留一棵生成树即可保证连通；处理叶子时若它不能与父节点合并，就可先递归合并其余部分，并把这片叶子留到最后。"
+          ],
+          "solutionBrief": "若总沥青少于 $(n-1)x$，输出 NO。否则在合并连通块的过程中，维护各块沥青总量，选择资源足以支付道路消耗的相邻块并记录道路；题解给出优先队列配合并查集的实现，也可在生成树上用叶子递归构造，复杂度分别为 $O(m+n\\log n)$ 和 $O(m+n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1515G",
+          "index": "G",
+          "slot": "G",
+          "title": "Phoenix and Odometers",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1515/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/90236",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "graphs",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定带正长度的有向道路和多辆车，每辆车从指定路口出发，里程表初值为 $s$，每累计行驶到 $t$ 就清零；车可以反复经过道路，最后必须回到出发路口且里程表为零。对每辆车判断是否存在这样的行驶路线。",
+          "transformedStatement": "对每个起点所在的强连通分量，求所有闭合游走长度生成的最大公约数 $G$。里程表清零等价于存在非负整数 $k$ 使 $s+kt$ 是 $G$ 的倍数，因而可转化为判断 $\\gcd(t,G)$ 是否整除 $s$。",
+          "keyObservations": [
+            "在强连通分量内，任意顶点上的可实现闭合游走长度集合相同；可实现长度对加法封闭，因此其模意义由一个最大公约数刻画。",
+            "以分量内任意根建立树，并令 $\\phi(x)$ 为根到 $x$ 的树路长度；每条边 $(a,b,l)$ 都对应闭合游走长度 $\\phi(a)+l-\\phi(b)$，这些值的最大公约数恰好刻画所有可实现的闭合游走长度。",
+            "任意从 $a$ 到 $b$ 的游走长度模该最大公约数后恒为 $\\phi(b)-\\phi(a)$；因此只有同一强连通分量内的顶点才可能满足题目的返回要求。"
+          ],
+          "solutionBrief": "先求强连通分量；若起点所在分量不强连通，则无法保证能返回起点。对每个强连通分量建立树，计算各点的树路长度，并对所有边的 $\\phi(a)+l-\\phi(b)$ 求最大公约数 $G$。查询答案为起点在强连通分量内且 $s$ 是 $\\gcd(t,G)$ 的倍数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1515H",
+          "index": "H",
+          "slot": "H",
+          "title": "Phoenix and Bits",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1515/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/90236",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 个小于 $2^{20}$ 的整数，之后进行 $q$ 次查询。题面说明前三类查询各带有值域 $[l,r]$ 和参数 $x$，第四类查询带有值域 $[l,r]$ 并要求输出答案，但未写明各类型具体操作及第四类答案含义。",
+          "transformedStatement": "题解将数据看作按数值组织的二进制字典树：每次先抽取值域 $[l,r]$ 对应的部分，再对其中的数执行位运算并合并回去；区间统计也可在该结构中处理。",
+          "keyObservations": [
+            "按数值而非数组下标划分区间，可以在二进制字典树中拆出值域部分、单独处理后再合并，避免逐个修改区间内的数。",
+            "AND 可改写为先按全 1 掩码异或、再按 $x$ 取或、最后再按全 1 掩码异或；结合异或只需懒惰标记，可把范围操作归约为处理或操作。",
+            "或操作设置某一位时，若子树中该位全为 1 或全为 0，分别可直接跳过或整体异或；只有该位同时出现 0 和 1 时才需继续递归。",
+            "记录子树中各位是否同时存在 0 和 1，可衡量递归处理的混杂程度；一次或操作会消除所处理位的混杂，因此可用势能分析摊还递归代价。"
+          ],
+          "solutionBrief": "用二进制字典树维护所有数值，并按值域拆分出查询区间。异或用懒标记处理，AND 转化为或操作；或操作依据子树各位的混杂情况递归更新，之后合并字典树。题解给出的摊还复杂度为 $O((n+q)\\log^2 C)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1515I",
+          "index": "I",
+          "slot": "I",
+          "title": "Phoenix and Diamonds",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1515/problem/I",
+          "editorialUrl": "https://codeforces.com/blog/entry/90236",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 种钻石，每种有重量、价值和当前库存。每天可向某种钻石补货、出售指定数量，或给出背包容量并询问能装下的最大价值；补货和出售会改变后续库存，查询本身不改变库存。",
+          "transformedStatement": "将一次容量查询视为按价值从高到低依次尝试物品，并把重量按二次幂阈值分层：定位容量跨越阈值的位置后，先确定能取的重物品，再递归处理较轻物品，从而把查询拆成逐层定位问题。题面末尾截断，未完整展示首次查询的额外规则，因此摘要仅保留可确认的基本操作与目标。",
+          "keyObservations": [
+            "按价值从高到低处理物品时，背包剩余容量只会下降；当容量低于某个二次幂阈值后，后续不可能再装入更重的物品，因此可按重量区间递归处理。",
+            "把重量分成轻物品与重物品后，在容量降到阈值前会取所有遇到的轻物品；越过阈值后则不会再取重物品，从而把原问题拆成重物品定位和轻物品递归两部分。",
+            "越过上界阈值的位置可由区间重量和定位；此后至多还能取一件重物品，可用轻物品前缀重量与该重物品重量的组合判断是否装得下。",
+            "库存变化只改变各类型物品的数量；预留所有可能出现的物品位置并更新其参与的线段树，可在动态操作中复用同一查询结构。"
+          ],
+          "solutionBrief": "将物品按价值排序，并按重量的二次幂区间递归处理。用维护区间重量和的线段树定位容量跨过阈值的位置，再用轻物品前缀重量及重物品重量判断至多一件重物品是否可取；轻物品继续递归。离线预留位置以支持库存更新，复杂度为 $O((n+q)\\log n\\log C)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
