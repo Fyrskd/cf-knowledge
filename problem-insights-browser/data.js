@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3638,
+    "total_problems": 3644,
     "source_total_problems": 3646,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3638,
-    "with_editorial_brief": 3332,
-    "with_solution_brief": 3334,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3644,
+    "with_editorial_brief": 3338,
+    "with_solution_brief": 3340,
     "missing_editorial_brief": 304,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2700,
+    "ai_override_count": 2706,
     "primary_topic_count": 13,
-    "contest_count": 561,
+    "contest_count": 562,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1180,
+    "组合计数与概率": 276,
+    "动态规划与状态设计": 297,
+    "数据结构": 347,
     "数论与同余": 379,
     "字符串": 192,
     "图论与网络流": 237,
-    "数据结构": 346,
     "基础实现与模拟": 231,
-    "构造与贪心": 1178,
-    "动态规划与状态设计": 295,
     "博弈": 110,
-    "组合计数与概率": 275,
     "几何": 89,
     "树结构": 175,
     "交互": 106,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2366,
-    "ai_generated_partial_editorial": 75,
+    "ai_generated_with_editorial": 2371,
+    "ai_generated_partial_editorial": 76,
     "missing_editorial": 304,
     "low_confidence": 1,
     "manual_override": 891,
@@ -112207,6 +112207,178 @@ window.CF_INSIGHTS_DATA = {
             "每次只模拟最早可能发生变化的时间段，并额外覆盖包含询问时刻的时间段；相邻距离的有效减少次数总计为 $O(nk)$，从而把逐秒模拟压缩为有限次事件模拟。"
           ],
           "solutionBrief": "先用栈在线性时间内模拟一个指令周期，再按长度为 $k$ 的时间段维护相邻机器人距离。对持续接近且距离较大的相邻对，依据上一段的减少量直接跳过若干段；选择最早事件继续模拟，并覆盖询问时刻。总复杂度为 $O(nk(nk+q))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1614,
+      "name": "Codeforces Round 757 (Div. 2)",
+      "date": "2021-11-26",
+      "url": "https://codeforces.com/contest/1614",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1614A",
+          "index": "A",
+          "slot": "A",
+          "title": "Divan and a Store",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1614/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/97283",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "商店有 $n$ 块价格分别为 $a_i$ 的巧克力，Divan 只能购买价格不低于 $l$ 且不高于 $r$ 的巧克力；他可以选择若干块，每块最多购买一次，总花费不能超过 $k$。请计算他最多能买多少块。",
+          "transformedStatement": "先删除价格不在 $[l,r]$ 内的物品，再将问题转化为：从剩余价格中选出总和不超过 $k$ 的最多元素。对固定数量而言，选择最便宜的若干块总花费最小。",
+          "keyObservations": [
+            "只有价格在区间 $[l,r]$ 内的巧克力可购买，先过滤不合法价格不会影响最优解。",
+            "对合法价格排序后，购买最便宜的若干块能以最小花费获得任意固定数量，因此其前缀中能放入预算的最大长度就是答案。",
+            "按价格从小到大购买时，若当前巧克力已经买不起，后续价格只会更高，也不可能再买得起，因此可以直接停止扫描。"
+          ],
+          "solutionBrief": "筛出价格位于 $[l,r]$ 的巧克力并升序排序，依次购买；若加入当前价格后不超过预算 $k$ 就计数并扣除，否则停止。排序耗时为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1614B",
+          "index": "B",
+          "slot": "B",
+          "title": "Divan and a New Project ",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1614/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/97283",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "sortings"
+          ],
+          "statementBrief": "给定总部建筑 $0$ 和 $n$ 个建筑，第 $i$ 个建筑将在十年内被访问 $a_i$ 次；每次从总部往返该建筑需花费 $2|x_0-x_i|$ 分钟。请为所有建筑选择满足范围的整数坐标，使总步行时间最小，并输出最小时间及一种坐标安排。",
+          "transformedStatement": "把问题看成将访问权重 $a_i$ 分配给总部两侧的整数距离槽位：先固定总部为 $0$，再把较大的权重匹配给较近的槽位 $1,-1,2,-2,\u001b[0m$，从而最小化加权距离总和。",
+          "keyObservations": [
+            "访问次数更大的建筑应分配更小的到总部距离：若两个建筑距离分别为 $d_1<d_2$ 但访问次数相反，交换它们会使总时间不增，因此按 $a_i$ 从大到小分配距离即可保证最优。",
+            "总部固定在坐标 $0$ 时，其他建筑可使用的最小非零距离依次为 $1,1,2,2,3,3,\u001b[0m$，把建筑交替放在正负两侧即可同时取得这些最小距离。",
+            "因此将访问次数降序排列后依次放置到 $1,-1,2,-2,\u001b[0m$ 等坐标，总代价直接由 $T=2\\sum a_i|x_i|$ 计算。"
+          ],
+          "solutionBrief": "固定总部在 $0$，按访问次数降序排列建筑，并依次放到 $1,-1,2,-2,\u001b[0m$ 等位置；用 $2a_i|x_i|$ 累加得到最小总时间。排序主导复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1614C",
+          "index": "C",
+          "slot": "C",
+          "title": "Divan and bitwise operations",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1614/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/97283",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "constructive algorithms",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的非负整数数组，但数组本身未知；已知若干个连续区间及其元素的按位或，并且每个位置至少被一个区间覆盖。求所有非空子序列元素按位异或之和，任意可行答案均可，结果对 $10^9+7$ 取模。",
+          "transformedStatement": "不必恢复数组：区间按位或的总或就是全数组的按位或。将答案按二进制位拆开后，每个出现过的位在恰好 $2^{n-1}$ 个子序列异或中贡献，因此问题化为一次按位或与幂乘法。",
+          "keyObservations": [
+            "所有给定区间都覆盖原数组元素，因此各区间按位或的总或值，恰好等于整个数组的按位或值；这使得无需恢复任何单个元素。",
+            "对任意在数组中出现过的位，选取元素构成的全部子集里，恰有一半使该位被选中奇数次，即有 $2^{n-1}$ 个子集的异或结果包含这一位。",
+            "未出现在任何元素中的位不会对任何子序列异或产生贡献；因此可以按位独立计数，将整体按位或值乘以 $2^{n-1}$ 得到答案。"
+          ],
+          "solutionBrief": "先将所有区间给出的按位或值合并，得到原数组整体按位或值 $x$。每个出现在数组中的二进制位恰好出现在 $2^{n-1}$ 个非空子序列异或中，因此答案为 $x\\cdot2^{n-1}\\bmod 10^9+7$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1614D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Divan and Kostomuksha (easy version)",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1614/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/97283",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dp",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组，可以任意重排元素。按重排后的顺序计算每个前缀的最大公约数并求和，要求最大化这个总和。",
+          "transformedStatement": "把排列过程抽象为前缀最大公约数逐步下降的整除链：从状态 $j$ 变为其约数 $i$ 时，批量加入所有能被 $i$ 整除且尚未处理的元素，并累计它们对前缀的贡献。",
+          "keyObservations": [
+            "前缀最大公约数只能沿着整除关系下降，因此一次状态转移只需考虑旧值为 $j$、新值为其约数 $i$ 的情况。",
+            "若当前前缀最大公约数为 $i$，所有能被 $i$ 整除的元素都可以在状态改变前加入，每个元素贡献 $i$，从而一次性增加 $(cnt_i-cnt_j)\\cdot i$。",
+            "令 $dp_i$ 表示以当前状态 $i$ 处理可行元素时的最大前缀贡献，则从所有满足 $i\\mid j$ 的状态转移，并按 $i$ 从大到小计算以保证倍数状态已处理。"
+          ],
+          "solutionBrief": "统计每个 $i$ 的倍数元素数量 $cnt_i$，令 $dp_i=cnt_i\\cdot i$，再枚举所有倍数 $j$ 用 $dp_j+(cnt_i-cnt_j)i$ 更新 $dp_i$。按 $i$ 降序计算，复杂度为 $O(C\\log C)$，其中 $C=\\max a_i$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1614D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Divan and Kostomuksha (hard version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1614/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/97283",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dp",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组，可以任意重排元素。对重排后的每个前缀取最大公约数并求和，要求选择一种排列，使这个前缀最大公约数总和最大。",
+          "transformedStatement": "把排列过程抽象为前缀最大公约数的整除状态序列：每加入一个元素，当前状态只能变为原状态的约数。题解进一步只在相差一个质因子乘法的状态之间进行动态规划转移。",
+          "keyObservations": [
+            "重排后每个前缀的最大公约数只能沿整除关系递减，因此优化过程可以只关注可能出现的公约数状态。",
+            "题解指出，重新计算状态 $i$ 时只需枚举与它相差“乘上一个质因子”的状态 $j$，从而避免枚举所有状态对。",
+            "用线性筛同时生成质数并完成分解，可以高效找出这些质因子相邻状态，整体复杂度达到 $O(C\\log\\log C)$。"
+          ],
+          "solutionBrief": "将前缀最大公约数建模为整除状态上的动态规划，并仅在相差一个质因子乘法的状态之间转移；利用线性筛完成质数生成与分解以加速状态转移。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1614E",
+          "index": "E",
+          "slot": "E",
+          "title": "Divan and a Cottage",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1614/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/97283",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures"
+          ],
+          "statementBrief": "有一栋房屋，初始温度为第一天早晨给定的 $x$。每天先得到室外温度 $T_i$，房屋温度到次日会向 $T_i$ 移动一度；当天查询给出加密值，实际初始温度为 $(x'_i+lastans)\\bmod(10^9+1)$，回答后更新 $lastans$，要求回答每次经过当天后的房屋温度。",
+          "transformedStatement": "将问题视为维护函数 $ans(x)$：它表示初始温度 $x$ 经过当前若干天后的房屋温度。每天把函数值低于 $T_i$ 的部分整体加一、高于 $T_i$ 的部分整体减一，查询则是读取 $ans(x)$。",
+          "keyObservations": [
+            "把所有初始温度到当前次日温度的映射记为 $ans[temp]$，初始时 $ans[temp]=temp$，因此每次查询只需读取对应位置的当前值。",
+            "一天温度为 $T$ 时，所有当前值小于 $T$ 的映射统一加 $1$，大于 $T$ 的统一减 $1$，等于 $T$ 的保持不变；这把房屋演化转化为对函数值的分段批量修改。",
+            "在线段树节点维护覆盖区间内映射值的最小值和最大值后，若最大值小于 $T$ 可整段加一，若最小值大于 $T$ 可整段减一，从而跳过节点内部逐点处理。",
+            "若节点的最小值等于最大值且等于 $T$，该节点无需修改；结合节点的最小值和最大值即可判断整段是否同向变化。"
+          ],
+          "solutionBrief": "维护初始温度到当前房屋温度的映射。用隐式线段树保存各段映射值的最小值、最大值和懒加标记；每天按与 $T_i$ 的大小关系整段加一、减一或递归拆分，查询时读取 $ans[x_i]$，并按答案解密下一次输入。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
