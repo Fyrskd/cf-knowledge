@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3521,
+    "total_problems": 3527,
     "source_total_problems": 3529,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3521,
-    "with_editorial_brief": 3222,
-    "with_solution_brief": 3224,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3527,
+    "with_editorial_brief": 3228,
+    "with_solution_brief": 3230,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2583,
+    "ai_override_count": 2589,
     "primary_topic_count": 13,
-    "contest_count": 544,
+    "contest_count": 545,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1144,
+    "构造与贪心": 1146,
+    "博弈": 107,
+    "数论与同余": 370,
+    "动态规划与状态设计": 290,
+    "几何": 85,
     "树结构": 171,
     "组合计数与概率": 266,
     "字符串": 184,
-    "动态规划与状态设计": 289,
-    "几何": 84,
-    "数论与同余": 369,
     "图论与网络流": 230,
     "基础实现与模拟": 219,
     "数据结构": 333,
     "交互": 102,
-    "代数、矩阵与多项式": 24,
-    "博弈": 106
+    "代数、矩阵与多项式": 24
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2260,
+    "ai_generated_with_editorial": 2266,
     "ai_generated_partial_editorial": 71,
     "missing_editorial": 297,
     "low_confidence": 1,
@@ -108643,6 +108643,195 @@ window.CF_INSIGHTS_DATA = {
             "第 $j+1$ 轮对值 $v$ 的贡献为 $v\\cdot dp_{v,j}\\cdot n^{k-j-1}$；最后一轮后的变化无需维护，因此可使用 $\\operatorname{lcm}(1,\\ldots,k-1)$。"
           ],
           "solutionBrief": "将期望乘以 $n^k$，枚举所有索引选择序列。用 $L=\\operatorname{lcm}(1,\\ldots,k-1)$拆出不变的倍数部分，再在 $[0,L)$ 上做按轮次转移的计数 DP，并累计每轮贡献。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1627,
+      "name": "Codeforces Round 766 (Div. 2)",
+      "date": "2022-01-15",
+      "url": "https://codeforces.com/contest/1627",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1627A",
+          "index": "A",
+          "slot": "A",
+          "title": "Not Shading",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1627/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/99067",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由黑白格组成的网格，可选择任意黑格，将它所在的整行或整列染成黑色。求把指定位置染黑所需的最少操作次数；若无法做到则输出 $-1$。",
+          "transformedStatement": "只需按目标格、目标行、目标列以及全网格是否存在黑格进行分类：已有目标格对应 $0$，同所在行列有黑格对应 $1$，其他非全白网格都可通过“先染一行、再染目标列”在 $2$ 步内完成。",
+          "keyObservations": [
+            "目标格已经是黑色时无需操作，答案为 $0$，这是最直接的终止情况。",
+            "若目标格所在行或列已有黑格，就能直接选择该黑格并将整行或整列染黑，因此答案为 $1$。",
+            "若目标行、列都没有黑格但网格中存在黑格，先把任意黑格所在行染黑，此后每一列都有黑格，再将目标列染黑，答案必为 $2$。",
+            "若整个网格没有黑格，则没有任何可执行操作；结合目标格不是黑色时无法改变状态，答案为 $-1$。"
+          ],
+          "solutionBrief": "按优先级判断：目标格为黑色输出 $0$；目标行或列存在黑格输出 $1$；否则若网格存在任意黑格输出 $2$，全白则输出 $-1$。遍历网格即可在 $O(nm)$ 内完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1627B",
+          "index": "B",
+          "slot": "B",
+          "title": "Not Sitting",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1627/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/99067",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "games",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "教室座位组成 $n\\times m$ 网格。Tina 先用恰好 $k$ 桶颜料涂掉 $k$ 个座位，Rahul 选择未涂座位，随后 Tina 选择座位并希望离 Rahul 尽可能远，而 Rahul 预先按最优策略选座；对每个 $k=0,1,\\dots,nm-1$，求双方策略下 Rahul 与 Tina 的最终距离。",
+          "transformedStatement": "把 Tina 的最优落座限制等价为选择某个角落：对每个 Rahul 座位定义其到四个角的最大距离，再看 Tina 涂掉若干个最小定义值后，Rahul 在剩余座位中的最小值。于是每个 $k$ 的答案就是这些定义值排序后的第 $k$ 项。",
+          "keyObservations": [
+            "曼哈顿距离可拆成行差与列差，两维选择彼此独立，因此 Tina 的最优座位总能取四个角之一。",
+            "固定 Rahul 的座位后，Tina 能达到的最远距离是该座位到四个角的最大距离；这把双方选座博弈转成每个座位的一个数值。",
+            "Rahul 会选择未被涂掉的座位中该数值最小者，因此 Tina 应涂掉这些数值最小的座位，答案就是所有座位数值排序后的第 $k$ 个元素。"
+          ],
+          "solutionBrief": "计算每个座位到四个角的最大曼哈顿距离，将全部 $n m$ 个值升序排列；对于 $k=0,1,\u0000dots,nm-1$，输出排序数组下标为 $k$ 的值。复杂度为 $O(nm\\u0000log(nm))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1627C",
+          "index": "C",
+          "slot": "C",
+          "title": "Not Assigning",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1627/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/99067",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，需要为每条边赋一个正整数，使任意由一条或两条边组成的简单路径，其边权总和都是质数。请输出任意合法赋值；若不存在则输出 $-1$。",
+          "transformedStatement": "把条件局部化到每条边及任意两条相邻边：边权本身必须为质数，相邻边权之和也必须为质数。先用奇偶性排除分叉树，再把剩余结构视为一条路径进行交替构造。",
+          "keyObservations": [
+            "若某个顶点相邻至少三条边，设对应权值为 $x,y,z$；它们及两两之和都必须为质数，而两两之和至少为 $4$，只能是奇质数，从而要求三对权值分别奇偶相反，三者无法同时满足。",
+            "排除度数至少为 $3$ 的顶点后，树中所有顶点度数至多为 $2$；连通树因此必为一条路径，任意两条连续边构成全部两边路径。",
+            "沿路径交替赋值 $2,3$，单边权值是质数，任意相邻两边之和为 $5$ 也是质数，因此所有长度不超过两条边的路径都满足条件。"
+          ],
+          "solutionBrief": "先检查是否存在度数至少为 $3$ 的顶点；若存在输出 $-1$。否则从叶子出发遍历这条路径，并按边的顺序交替赋值 $2,3$，即可在线性时间内构造答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1627D",
+          "index": "D",
+          "slot": "D",
+          "title": "Not Adding",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1627/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/99067",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个由互不相同正整数组成的数组。每次选择数组中的两个数，若它们的 $\u001b[1m\\gcd\\u001b[0m$ 尚未出现，就把该 $\u001b[1m\\gcd\\u001b[0m$ 加入数组；求最多能进行多少次这样的操作。",
+          "transformedStatement": "把问题转化为：对每个不在初始集合中的 $x$，判断初始集合中所有 $x$ 的倍数的整体 $\u001b[1m\\gcd\\u001b[0m$ 是否恰好为 $x$；满足条件的 $x$ 都能被生成并计数。",
+          "keyObservations": [
+            "若最终能加入 $x$，所用元素的整体 $\\\\gcd$ 必须为 $x$，因此这些元素都只能是 $x$ 的倍数。",
+            "初始数组中所有 $x$ 的倍数的 $\\\\gcd$ 等于 $x$，当且仅当 $x$ 能通过逐步合并得到；按当前 $\u001b[1m\\gcd\\u001b[0m$ 与下一个元素合并即可实现。",
+            "所有可加入的数都由初始元素的某个子集生成，加入其他数不会扩大可生成集合，因此可以独立检查每个 $x$，只统计初始不存在的可生成值。"
+          ],
+          "solutionBrief": "设 $A$ 为初始最大值。对每个 $x\\in[1,A]$，枚举初始数组中所有 $x$ 的倍数并求其 $\u001b[1m\\gcd\\u001b[0m$；若结果为 $x$ 且 $x$ 原本不存在，则答案加一。整体复杂度为 $O(n+A\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1627E",
+          "index": "E",
+          "slot": "E",
+          "title": "Not Escaping",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1627/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/99067",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "implementation",
+            "shortest paths",
+            "two pointers"
+          ],
+          "statementBrief": "建筑有 $n$ 层、每层 $m$ 个房间，Ram 从 $(1,1)$ 出发；同层从房间 $j$ 移到 $k$ 会损失 $|j-k|x_i$ 点生命值。每条单向梯子可从低层指定房间到高层指定房间并获得健康值，要求到达 $(n,m)$ 的最小生命损失；无法到达则输出“NO ESCAPE”。",
+          "transformedStatement": "把整栋建筑压缩为起点、终点和所有梯子端点构成的有向状态图：同层状态之间按横向距离转移，梯子则提供跨楼层且代价为负奖励的转移；按楼层递增进行最短代价 DP。",
+          "keyObservations": [
+            "除起点、终点外，只有梯子的端点可能参与跨楼层转移；其余房间不会改变最优路径，因此状态数可压缩到至多 $2k+2$ 个。",
+            "所有梯子都从低楼层通向高楼层，所以按楼层递增处理时，当前楼层的状态只会来自已处理楼层，不会形成回环。",
+            "同一楼层两点间的代价是横坐标差乘该层系数，按横坐标排序后从左到右、再从右到左传播，即可求出经过任意同层中间点后的最小代价。",
+            "使用一条从 $(a,b)$ 到 $(c,d)$、奖励为 $h$ 的梯子会把代价从起点状态转移为 $dp(a,b)-h$，并用其更新终点状态。"
+          ],
+          "solutionBrief": "只保留起点、终点和所有梯子端点，按楼层排序处理。每层用双向扫描传播同层移动代价，再将各梯子的状态以减去奖励的形式转移到更高楼层；终点不可达则输出“NO ESCAPE”，总复杂度为 $O(k\\log k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1627F",
+          "index": "F",
+          "slot": "F",
+          "title": "Not Splitting",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1627/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/99067",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "geometry",
+            "graphs",
+            "greedy",
+            "implementation",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个边长为偶数 $k$ 的方格网格，以及按顺序给出的 $n$ 对相邻方格。允许沿网格线把网格切成两个连通且全等的部分，只保留两格位于同一部分的元素；要求保留下来的最长子序列长度。",
+          "transformedStatement": "将切线视为网格顶点图中从外边界到中心的路径，并把路径及其 $180^\\circ$ 旋转副本合并为完整切线。每条公共边的权值统计该边和旋转对应边上的输入对，于是问题转化为求边界到中心的最短加权路径。",
+          "keyObservations": [
+            "任意把正方形网格切成两块全等连通区域的切线，都必须关于网格中心旋转 $180^\\circ$ 对称，因此只需构造从边界到中心的半条切线。",
+            "一对相邻方格在切线两侧时必须删除；将每条网格边的权值设为该边及其旋转对应边上输入对的出现次数后，切线代价恰好等于被删除的对数。",
+            "网格外边界上的边权均为 $0$，所以从任意边界顶点出发即可覆盖所有边界起点；最短路径到中心的权值就是最少需要删除的元素数。",
+            "若路径与其旋转副本相交，交点之间可截去一段并得到更短的同终点路径，因此最短路径可对应合法的非自交对称切线。"
+          ],
+          "solutionBrief": "把每个相邻方格对映射为网格公共边，并把该边与其中心旋转 $180^\\circ$ 后的边权值同时加一。由于合法切线必具旋转对称性，答案为 $n$ 减去从边界到中心的最短路权值；在顶点图上运行 Dijkstra 即可。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
