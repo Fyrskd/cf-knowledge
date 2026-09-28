@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3349,
+    "total_problems": 3351,
     "source_total_problems": 3354,
-    "filtered_out_problems": 5,
-    "with_statement_brief": 3349,
-    "with_editorial_brief": 3063,
-    "with_solution_brief": 3065,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3351,
+    "with_editorial_brief": 3065,
+    "with_solution_brief": 3067,
     "missing_editorial_brief": 284,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2407,
+    "ai_override_count": 2413,
     "primary_topic_count": 13,
     "contest_count": 515,
     "rating_min": 800,
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1074,
+    "构造与贪心": 1076,
     "动态规划与状态设计": 280,
-    "树结构": 165,
+    "组合计数与概率": 255,
     "数论与同余": 350,
     "基础实现与模拟": 210,
     "字符串": 175,
-    "组合计数与概率": 254,
+    "树结构": 164,
     "博弈": 104,
     "交互": 101,
     "图论与网络流": 215,
@@ -60,7 +60,7 @@ window.CF_INSIGHTS_DATA = {
   },
   "statusCounts": {
     "missing_editorial": 284,
-    "ai_generated_with_editorial": 2103,
+    "ai_generated_with_editorial": 2105,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
     "manual_override": 891,
@@ -103281,8 +103281,8 @@ window.CF_INSIGHTS_DATA = {
       "date": "2022-04-19",
       "url": "https://codeforces.com/contest/1667",
       "type": "Div. 1",
-      "problemCount": 4,
-      "maxRating": 2900,
+      "problemCount": 6,
+      "maxRating": 3500,
       "problems": [
         {
           "key": "1667A",
@@ -103294,14 +103294,14 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/102013",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "博弈"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "brute force",
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Make it Increasing；本地暂无可用题解正文。",
+          "statementBrief": "给定正整数数组 $a$，初始数组 $b$ 的所有元素为 $0$。每次可选择一个位置，把对应的 $b_i$ 增加或减少 $a_i$；要求用最少操作使 $b$ 严格递增，即每个元素都大于前一个元素。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -103317,15 +103317,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1667/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/102013",
           "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "数据结构",
-            "组合计数与概率"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "data structures",
             "dp"
           ],
-          "statementBrief": "题面已抓取：Optimal Partition；本地暂无可用题解正文。",
+          "statementBrief": "给定一个整数数组，需要通过在元素之间选择边界，将其划分为若干个连续且非空的子数组。每段的价值等于其长度或相反数，取决于该段元素和是否为正，要求最大化所有子数组价值之和。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -103341,12 +103338,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1667/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/102013",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "几何"
+          ],
           "originalTags": [
             "constructive algorithms",
             "math"
           ],
-          "statementBrief": "题面已抓取：Half Queen Cover；本地暂无可用题解正文。",
+          "statementBrief": "给定一个 $n\\times n$ 棋盘，在若干格子放置半后。位于 $(a,b)$ 的半后可以攻击与它同一行、同一列或满足相同行列差 $a-b$ 的所有格子；要求输出覆盖整个棋盘所需的最少半后数量及任意一种放置方案。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -103361,11 +103360,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2900,
           "problemUrl": "https://codeforces.com/contest/1667/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/102013",
-          "primaryTopic": "树结构",
+          "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "构造与贪心",
-            "图论与网络流"
+            "树结构"
           ],
           "originalTags": [
             "constructive algorithms",
@@ -103373,12 +103370,71 @@ window.CF_INSIGHTS_DATA = {
             "dp",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Edge Elimination；本地暂无可用题解正文。",
+          "statementBrief": "给定一棵树，每次可以删除一条边，但被删边必须与当前仍存在的偶数条边相邻；相邻指两条边恰好共享一个端点。需要判断能否删光所有边，若可以则输出一种合法删除顺序，否则输出“NO”。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1667E",
+          "index": "E",
+          "slot": "E",
+          "title": "Centroid Probabilities",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1667/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/102013",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定奇数个带编号顶点，要求统计所有满足每个顶点 $i\\ge2$ 的父亲编号小于 $i$ 的树。对每个顶点 $i$，计算删除它后所有连通块大小都不超过 $(n-1)/2$ 的树的数量，并对 $998244353$ 取模。",
+          "transformedStatement": "把树固定根在顶点 $1$，将问题转化为按根树子树大小计数：重心是子树大小至少为 $S=(n+1)/2$ 的最大编号顶点，先统计每个顶点满足阈值的次数，再通过祖先路径关系反推出其成为重心的次数。",
+          "keyObservations": [
+            "以 1 为根时所有边都从较小编号指向较大编号，因此重心等于子树大小至少为 $S=(n+1)/2$ 的最大编号顶点。",
+            "对顶点 $i$ 统计其子树大小至少为 $S$ 的树数：枚举子树中除 $i$ 外的 $j$ 个顶点，得到 $dp_i=\\sum_{j=S-1}^{n-i}\\binom{n-i}{j}j!(n-j-2)!(i-1)$。",
+            "若树中重心是 $j>i$，则其到根的路径经过 $i$ 的树恰占 $1/i$，所以可由 $ans_i=dp_i-\\sum_{j>i}ans_j/i$ 排除重心在 $i$ 子树内部的情况。",
+            "将计数式化为固定阶乘乘积与逆阶乘的卷积，并用 NTT 一次求出所需前缀，随后用后缀和线性计算答案，总复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "令 $S=(n+1)/2$，先按子树大小阈值计数得到 $dp_i$，再利用重心路径经过顶点 $i$ 的比例 $1/i$ 倒序消去，最后把阶乘比转成卷积并用 NTT 加速。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1667F",
+          "index": "F",
+          "slot": "F",
+          "title": "Yin Yang",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1667/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/102013",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 网格，部分格子已染黑或白，且任意两个已染色格子不共边也不共角。需要给所有空格染色，使黑格通过公共边构成连通图、白格也通过公共边构成连通图，并判断是否能做到。",
+          "transformedStatement": "把问题转化为先控制外边界的两色连通性，再在内部铺设交替的双行同色条带，并用一侧色带连接它们；所有由预置颜色造成的断点都在局部区域修补。",
+          "keyObservations": [
+            "沿外边界观察颜色序列：若出现按顺序交替的 $B,W,B,W$，边界上的黑色或白色必然被分成至少两段，因此无解；否则可先把边界空格延续填色并保持两色各自连通。",
+            "在内部没有预置颜色时，将两行一组的条带交替染色，并用一侧整列连接所有同色条带；预置色不共享边角保证不会破坏条带的连通性。",
+            "预置边界会造成黑色条带断开、边界孤点或相邻条带不连通，但每类问题都只影响局部区域，可以通过翻转少量未固定格子修复，不必改变整体条带结构。",
+            "通过旋转网格选择合适方向，使边界与条带的连接条件成立；最后检查并局部补桥，同时避免修补产生对角接触导致的错误分割。"
+          ],
+          "solutionBrief": "先检查外边界是否含交替的 $BWBW$ 子序列，存在则无解。否则旋转到合适方向，按两行条带和侧边连接列构造，再针对边界孤点、条带断开等情况局部翻色修复，得到两色均连通的网格。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
