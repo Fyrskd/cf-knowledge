@@ -1,5 +1,16 @@
 [
   {
+    "id": 1553,
+    "name": "Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1626964500,
+    "relativeTimeSeconds": 163662878,
+    "date": "2021-07-22"
+  },
+  {
     "id": 1551,
     "name": "Codeforces Round 734 (Div. 3)",
     "type": "ICPC",
