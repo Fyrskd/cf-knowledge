@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T09:01:41+00:00",
+  "updated_at": "2026-09-28T09:15:06+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -79832,6 +79832,173 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面与 editorial_text；tags 提供了 math 和 sortings，但核心结论来自题解。",
         "quality_flags": []
+      }
+    },
+    "1591F": {
+      "problem_key": "1591F",
+      "title": "Non-equal Neighbours",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1591/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/97845",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5fbfe9ab375d0e4856d5881f6a83690b5d8f2b2cd377ac002d928998589d94a7",
+      "generated_at": "2026-09-28T09:13:31+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的正整数数组 $a$，要求统计长度同为 $n$ 的正整数数组 $b$ 的数量，并将答案对 $998244353$ 取模。但记录中缺少决定 $b$ 是否合法的具体条件，因此无法完整确定题目操作或限制。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据仅来自 statement、title、rating 和 tags；editorial_url 仅提供链接，editorial_text 为空。",
+        "quality_flags": [
+          "ambiguous_constraints",
+          "incomplete_statement",
+          "missing_editorial"
+        ]
+      }
+    },
+    "1591E": {
+      "problem_key": "1591E",
+      "title": "Frequency Queries",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1591/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/97845",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f164cb033b9fc92dd9f22d730325909e5d9fb09be1d13853b36f783f98480ce0",
+      "generated_at": "2026-09-28T09:13:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵以节点 $1$ 为根、每个节点带整数的树。每次询问给出节点 $v$ 及参数 $l,k$，需要先考虑从 $v$ 到根的路径上的数值，再按题面缺失的步骤处理并输出答案；当前记录未包含这些关键操作规则。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text、title 与 codeforces_tags；editorial_text 为空，editorial_url 仅提供链接。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "incomplete_statement",
+          "missing_editorial"
+        ]
+      }
+    },
+    "1591D": {
+      "problem_key": "1591D",
+      "title": "Yet Another Sorting Problem",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1591/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/97845",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d355c37baa45c16f3aaf9edca3f7647634b3af4ee15881172b0c99b9a8baaa8d",
+      "generated_at": "2026-09-28T09:14:04+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，每次可任选三个互不相同的位置，将这三个位置上的元素按循环方式移动，其他位置不变，操作次数可以为零。判断是否能仅靠这些三位置循环置换把数组变为非降序。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟",
+          "数论与同余"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text、题目标签和 URL；editorial_text 为空，editorial_url 仅为链接。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1591C": {
+      "problem_key": "1591C",
+      "title": "Minimize Distance",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1591/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/97845",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b4cffdbc47e892800edb6b3d85318eab562add343948ba69e6f510cedb2ae056",
+      "generated_at": "2026-09-28T09:14:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "数轴上有 $n$ 个仓库，坐标为 $x_i$，所有货物和销售员起初在原点；每次从原点最多携带 $k$ 袋货物，送到对应仓库后返回原点取下一批，最后一次送完后无需返回。求送完全部货物所需的最短总路程。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "几何"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意与操作规则来自 statement_text；主题分类参考 codeforces_tags；editorial_url 仅为链接，未提供正文。",
+        "quality_flags": [
+          "editorial_url_only",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1591B": {
+      "problem_key": "1591B",
+      "title": "Array Eversion",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1591/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/97845",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7723fbf1b4207c0557db0b8a37e4fc81c31a7f8724f51bbb0428b50abf6215d0",
+      "generated_at": "2026-09-28T09:14:48+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个数组，每次取当前末元素 $x$，稳定地把所有不大于 $x$ 的元素放到前面、所有大于 $x$ 的元素放到后面，再继续对新数组操作。求数组从初始状态开始首次停止变化所需的最少操作次数。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_url 仅为链接，未提供 editorial_text。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1591A": {
+      "problem_key": "1591A",
+      "title": "Life of a Flower",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1591/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/97845",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "fada1c26b280f061e792f6c550ec59da58c0f8f86169b39ec2310be39fa293e7",
+      "generated_at": "2026-09-28T09:15:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "每个测试用例给出连续 $n$ 天的浇水情况，其中 $a_i=1$ 表示第 $i$ 天浇水，$a_i=0$ 表示不浇水；花朵在第 1 天开始时高 $1$ 厘米。需要根据题目规定的生长过程，求 $n$ 天后的高度，若花朵死亡则输出 $-1$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement 和 tags；editorial_url 仅提供链接，editorial_text 为空。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "incomplete_statement_rules",
+          "missing_editorial"
+        ]
       }
     }
   }

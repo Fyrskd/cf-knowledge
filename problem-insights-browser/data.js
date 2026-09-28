@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 303,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2666,
+    "ai_override_count": 2672,
     "primary_topic_count": 13,
     "contest_count": 557,
     "rating_min": 800,
@@ -44,17 +44,17 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "图论与网络流": 236,
-    "构造与贪心": 1174,
+    "基础实现与模拟": 228,
+    "构造与贪心": 1173,
     "树结构": 175,
     "组合计数与概率": 271,
-    "基础实现与模拟": 226,
     "数论与同余": 375,
     "字符串": 190,
     "数据结构": 342,
     "交互": 106,
     "几何": 88,
     "动态规划与状态设计": 294,
+    "图论与网络流": 235,
     "博弈": 108,
     "代数、矩阵与多项式": 25
   },
@@ -111240,12 +111240,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1591/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/97845",
-          "primaryTopic": "图论与网络流",
+          "primaryTopic": "基础实现与模拟",
           "secondaryTopics": [],
           "originalTags": [
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Life of a Flower；本地暂无可用题解正文。",
+          "statementBrief": "每个测试用例给出连续 $n$ 天的浇水情况，其中 $a_i=1$ 表示第 $i$ 天浇水，$a_i=0$ 表示不浇水；花朵在第 1 天开始时高 $1$ 厘米。需要根据题目规定的生长过程，求 $n$ 天后的高度，若花朵死亡则输出 $-1$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -111260,14 +111260,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": 900,
           "problemUrl": "https://codeforces.com/contest/1591/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/97845",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Array Eversion；本地暂无可用题解正文。",
+          "statementBrief": "给定一个数组，每次取当前末元素 $x$，稳定地把所有不大于 $x$ 的元素放到前面、所有大于 $x$ 的元素放到后面，再继续对新数组操作。求数组从初始状态开始首次停止变化所需的最少操作次数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -111284,14 +111282,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/97845",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "几何",
-            "博弈"
+            "几何"
           ],
           "originalTags": [
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Minimize Distance；本地暂无可用题解正文。",
+          "statementBrief": "数轴上有 $n$ 个仓库，坐标为 $x_i$，所有货物和销售员起初在原点；每次从原点最多携带 $k$ 袋货物，送到对应仓库后返回原点取下一批，最后一次送完后无需返回。求送完全部货物所需的最短总路程。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -111308,9 +111305,8 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/97845",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "数据结构",
-            "图论与网络流",
-            "几何"
+            "基础实现与模拟",
+            "数论与同余"
           ],
           "originalTags": [
             "constructive algorithms",
@@ -111318,7 +111314,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Yet Another Sorting Problem；本地暂无可用题解正文。",
+          "statementBrief": "给定一个整数数组，每次可任选三个互不相同的位置，将这三个位置上的元素按循环方式移动，其他位置不变，操作次数可以为零。判断是否能仅靠这些三位置循环置换把数组变为非降序。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -111335,9 +111331,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/97845",
           "primaryTopic": "树结构",
           "secondaryTopics": [
-            "构造与贪心",
-            "数据结构",
-            "图论与网络流"
+            "数据结构"
           ],
           "originalTags": [
             "binary search",
@@ -111346,7 +111340,7 @@ window.CF_INSIGHTS_DATA = {
             "trees",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Frequency Queries；本地暂无可用题解正文。",
+          "statementBrief": "给定一棵以节点 $1$ 为根、每个节点带整数的树。每次询问给出节点 $v$ 及参数 $l,k$，需要先考虑从 $v$ 到根的路径上的数值，再按题面缺失的步骤处理并输出答案；当前记录未包含这些关键操作规则。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -111362,18 +111356,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1591/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/97845",
           "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "数据结构",
-            "数论与同余"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "combinatorics",
             "data structures",
             "dp",
             "math"
           ],
-          "statementBrief": "题面已抓取：Non-equal Neighbours；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $n$ 的正整数数组 $a$，要求统计长度同为 $n$ 的正整数数组 $b$ 的数量，并将答案对 $998244353$ 取模。但记录中缺少决定 $b$ 是否合法的具体条件，因此无法完整确定题目操作或限制。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
