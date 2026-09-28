@@ -15,19 +15,236 @@
     ]
   },
   "summary": {
-    "total_problems": 3155,
+    "total_problems": 3160,
     "source_total_problems": 3162,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3155,
-    "with_editorial_brief": 2875,
-    "with_solution_brief": 2876,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3160,
+    "with_editorial_brief": 2879,
+    "with_solution_brief": 2881,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2217,
+    "ai_override_count": 2222,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1699A",
+      "contest_id": 1699,
+      "title": "The Third Three Number Problem",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1699/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/108560",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "给定正整数 $n$，需要构造三个范围在 $[0,10^9]$ 内的整数 $a,b,c$，使 $(a\\oplus b)+(b\\oplus c)+(a\\oplus c)=n$；若不存在这样的三元组则输出 $-1$。",
+      "transformed_statement": "把目标表达式先按奇偶性分析：每个异或项与对应两数之和同奇偶，因此整体一定为偶数；偶数情形再用两个相同的 $n/2$ 和一个 $0$ 直接构造。",
+      "key_observations": [
+        "对任意两个整数，$a\\oplus b$ 与 $a+b$ 奇偶性相同，因此三项异或和的奇偶性等于 $2(a+b+c)$，必为偶数。",
+        "当 $n$ 为偶数时，取 $a=0,b=c=n/2$，三项分别为 $n/2,n/2,0$，恰好得到总和 $n$。",
+        "奇数 $n$ 因为不满足异或和必为偶数的必要条件，直接判定无解。"
+      ],
+      "solution_brief": "先利用 $a+b=(a\\oplus b)+2(a\\&b)$ 证明目标表达式必为偶数。若 $n$ 为偶数，输出 $(0,n/2,n/2)$；否则输出 $-1$，每组复杂度为 $O(1)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:46:34+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1699B",
+      "contest_id": 1699,
+      "title": "Almost Ternary Matrix",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1699/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/108560",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "matrices"
+      ],
+      "statement_brief": "给定两个偶数 $n,m$，需要构造一个 $n\\times m$ 的 0/1 矩阵。只把共享边的格子视为邻居，并要求每个格子恰好有两个与自身取值不同的邻居，输出任意满足条件的矩阵。",
+      "transformed_statement": "编辑将矩阵重述为行列两个独立的 4 周期分组：连续两行或两列共享一个标记，单元格取行标记与列标记的异或值，形成重复的 $2\\times2$ 同值块。但按给定题面检查，该模型对应的是两个同值邻居而非两个异值邻居。",
+      "key_observations": [
+        "题解把行、列分别按连续两个位置分组，并让分组标记以 4 为周期；单元格值由行标记与列标记是否不同决定，从而只需直接按坐标生成。",
+        "该构造在同一行组、列组内保持相同，跨越组边界才改变；在 $n,m$ 为偶数时，每个单元格恰好有两个同值的侧邻居。",
+        "题面要求的是恰好两个异值邻居，但题解公式在左上角等位置的异值邻居数为 $0$，因此题面条件与编辑给出的构造并不一致。"
+      ],
+      "solution_brief": "编辑给出的方案按 $4$ 周期生成行列标记，并令 $a[i][j]=((i\\bmod4\\le1)\\ne(j\\bmod4\\le1))$，逐格输出，复杂度为 $O(nm)$。但该矩阵满足的是每格恰有两个同值邻居，与所给题面中的“异值邻居”要求冲突。",
+      "extraction_status": "low_confidence",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:46:21+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "statement_editorial_inconsistency"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1699C",
+      "contest_id": 1699,
+      "title": "The Third Problem",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1699/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/108560",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "给定一个 $0$ 到 $n-1$ 的排列，统计有多少个排列 $b$ 与它相似：任意连续子数组在两者中的 MEX 都相同。答案对 $10^9+7$ 取模。",
+      "transformed_statement": "令 $p[x]$ 表示值 $x$ 在原排列中的位置，按 $0,1,\\ldots$ 递增加入这些位置。维护已处理位置的最小覆盖区间；下一个位置在区间外时被唯一确定，在区间内时只需从尚未占用的位置中选择。",
+      "key_observations": [
+        "单点区间的 MEX 直接固定了 0 的位置，因此相似排列中 0 必须出现在原排列中 0 的位置。",
+        "处理完 $0\\ldots k-1$ 后，维护它们在原排列中的最小覆盖区间 $[l,r]$；该区间外的区间 MEX 约束会限制下一个数的位置。",
+        "若 $p[k]$ 在当前区间外，$k$ 只能放在原位置并扩展区间；若在区间内，则可放入区间内尚未占用的位置，共 $(r-l+1)-k$ 种。",
+        "每个阶段的可选位置数彼此独立地乘入答案，因而只需按数值从小到大维护覆盖区间并进行模乘。"
+      ],
+      "solution_brief": "建立每个值的位置数组，令 $[l,r]$ 初始为 $0$ 的位置。依次处理 $k=1\\ldots n-1$：位置在区间外则扩展区间，在区间内则将答案乘以 $(r-l+1)-k$，全程对 $10^9+7$ 取模。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:45:42+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1699D",
+      "contest_id": 1699,
+      "title": "Almost Triple Deletions",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1699/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/108560",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "data structures",
+        "dp",
+        "greedy"
+      ],
+      "statement_brief": "给定整数数组，每次只能选择一对相邻且数值不同的元素同时删除，随后拼接剩余部分。进行任意次操作后，求最终能得到的全相等数组的最大长度。",
+      "transformed_statement": "把最终数组看成原数组中若干个相同值的保留元素组成的子序列；相邻保留元素之间以及两端的元素区间都必须能够独立完全删除，再用 DP 求最长可行的等值子序列。",
+      "key_observations": [
+        "一个区间能被完全删除，当且仅当长度为偶数且任意元素出现次数不超过区间长度的一半；这把操作可行性转化为频次判定。",
+        "保留的最终数组可视为等值下标子序列，两个连续保留元素之间的区间必须可完全删除，因此只需在等值位置间转移。",
+        "令 $dp[i]$ 表示以 $a_i$ 作为最后一个保留元素时的最大长度；若 $a_j=a_i$ 且中间区间可删除，就能从 $dp[j]$ 转移到 $dp[i]$。",
+        "最终保留序列之后的后缀也必须可删除，因此答案是所有可删除后缀对应的 $dp[i]$ 最大值；所有区间频次可在 $O(n^2)$ 中维护。"
+      ],
+      "solution_brief": "先用“长度为偶数且最大频次不超过一半”判定区间是否可完全删除，再以保留位置为状态，在等值位置之间通过可删除间隔转移。枚举所有区间并维护最大频次，整体复杂度为 $O(n^2)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:45:25+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1699E",
+      "contest_id": 1699,
+      "title": "Three Days Grace",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1699/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/108560",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数据结构",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "data structures",
+        "dp",
+        "greedy",
+        "math",
+        "number theory",
+        "two pointers"
+      ],
+      "statement_brief": "给定一个元素在 $1$ 到 $m$ 之间的多重集合。每次选择一个元素 $x$，用两个正整数 $p,q$ 替换它且满足 $pq=x$，集合大小增加 $1$；可操作任意次或不操作，求最终集合中最大值与最小值之差的最小可能值。",
+      "transformed_statement": "将每个初始元素独立改写为若干因子的乘积，最终集合由所有分解因子组成。枚举最终使用的最小因子 $L$，对每个初始数求在所有因子不小于 $L$ 时可达到的最小最大因子，再优化全局最大值与 $L$ 的差。",
+      "key_observations": [
+        "每个初始数都可独立拆成若干因子的乘积，最终多重集合恰好由这些分解中的所有因子组成，因此问题等价于选择各数的因式分解并最小化全局因子范围。",
+        "固定允许出现的最小因子为 $L$ 后，对每个数 $x$ 只需记录其所有因子均不小于 $L$ 时可达到的最小最大因子；这样全局答案就是初始元素对应这些最大值的最大值减 $L$。",
+        "从 $L$ 降到 $L-1$ 时，只有能被 $L-1$ 整除的数会受影响；对满足 $M\\ge (L-1)^2$ 的倍数，可用 $L-1$ 与 $M/(L-1)$ 的分解更新为 $dp[M]=\\min(dp[M],dp[M/(L-1)])$。",
+        "所有初始元素的当前最大值会随 $L$ 下降而单调不增，因此用频次数组和指针维护仍出现的最大值，即可在线更新候选答案。"
+      ],
+      "solution_brief": "把每个初始数看成可拆成若干乘积因子，倒序枚举下界 $L$。维护每个数在因子均不小于 $L$ 时的最小最大因子，并只更新 $L$ 的倍数；再用频次和指针维护初始元素中的最大值，取最小范围。总复杂度为 $O(vmax\\log vmax)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:44:58+00:00",
+          "quality_flags": [
+            "statement_inferred",
+            "statement_operation_text_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 6,
       "problem_key": "1701A",
