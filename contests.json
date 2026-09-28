@@ -1,5 +1,16 @@
 [
   {
+    "id": 1699,
+    "name": "Codeforces Round 804 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1656945300,
+    "relativeTimeSeconds": 133610833,
+    "date": "2022-07-04"
+  },
+  {
     "id": 1701,
     "name": "Educational Codeforces Round 131 (Rated for Div. 2)",
     "type": "ICPC",
