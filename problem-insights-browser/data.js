@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3786,
+    "total_problems": 3788,
     "source_total_problems": 3790,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3786,
-    "with_editorial_brief": 3471,
-    "with_solution_brief": 3473,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3788,
+    "with_editorial_brief": 3473,
+    "with_solution_brief": 3475,
     "missing_editorial_brief": 313,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2848,
+    "ai_override_count": 2850,
     "primary_topic_count": 13,
-    "contest_count": 586,
+    "contest_count": 587,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1229,
+    "构造与贪心": 1231,
     "组合计数与概率": 289,
     "数论与同余": 401,
     "数据结构": 360,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2496,
+    "ai_generated_with_editorial": 2498,
     "ai_generated_partial_editorial": 84,
     "missing_editorial": 313,
     "low_confidence": 1,
@@ -116677,6 +116677,70 @@ window.CF_INSIGHTS_DATA = {
             "设长度为 $j$ 的可用链有 $cnt_j$ 条，则长度计数满足 $dp_i=\\sum_j dp_{i-j}\\cdot cnt_j$；只遍历出现过的链长，利用不同链长数量为 $O(\\sqrt{k})$ 将复杂度降为 $O(m\\sqrt{k})$。"
           ],
           "solutionBrief": "先排除含重复元素的数组，再将其余数组转成元素间的有向相邻约束。保留既非分叉也非环的链式连通分量，按链长统计数量，用 $dp_i=\\sum_j dp_{i-j}cnt_j$ 计数长度为 $m$ 的链串接方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1573,
+      "name": "Codeforces Round 743 (Div. 2)",
+      "date": "2021-09-18",
+      "url": "https://codeforces.com/contest/1573",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1400,
+      "problems": [
+        {
+          "key": "1573A",
+          "index": "A",
+          "slot": "A",
+          "title": "Countdown",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1573/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/95086",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定一个允许前导零的 $n$ 位数字，每次可以将数字减 $1$ 或交换两个数位。求把它变成 $0$ 所需的最少操作次数。",
+          "transformedStatement": "把减法次数按数位和计价：末位非零时每次减法消耗一个数位和；末位为零时先交换一个正数位到末位，从而避免借位。于是问题转化为计算数位和及需要交换的正数位数量。",
+          "keyObservations": [
+            "每次将数字减 $1$ 且末位非零时，数位和恰好减少 $1$，因此至少需要进行 $s$ 次减法，其中 $s$ 是所有数字之和。",
+            "末位为 $0$ 时直接减一会产生借位，至少额外增加 $9$ 次减法；把末位与任意正数位交换后再减一更优。",
+            "每个非末位的正数字都必须通过一次交换移到末位才能避免借位，因此交换次数恰好是 $p$，答案为 $s+p$。"
+          ],
+          "solutionBrief": "统计所有数字之和 $s$，并统计除末位外的正数字个数 $p$。末位为正时直接减一，否则先与某个正数位交换；最少操作数为 $s+p$，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1573B",
+          "index": "B",
+          "slot": "B",
+          "title": "Swaps",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1573/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/95086",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组，$a$ 恰好包含所有奇数，$b$ 恰好包含所有偶数。每次可在任一数组中交换相邻元素，要求用最少操作使数组 $a$ 的字典序小于数组 $b$。",
+          "transformedStatement": "由于奇偶性保证两数组首位一定不同，目标可重述为把某个奇数移到 $a$ 的首位、把某个更大的偶数移到 $b$ 的首位，并最小化两者移动所需的相邻交换次数。答案即所有 $a_i<b_j$ 的 $i+j-2$ 中的最小值。",
+          "keyObservations": [
+            "由于 $a$ 中全是奇数、$b$ 中全是偶数，两数组首位必然不同，因此字典序条件等价于只让首元素满足 $a_1<b_1$。",
+            "把位置为 $i$ 的元素移到首位至少需要 $i-1$ 次相邻交换，且连续向前交换即可达到，因此选定 $a_i,b_j$ 作为首元素的代价是 $i+j-2$。",
+            "只需在所有满足 $a_i<b_j$ 的位置对中取最小代价；按数值从大到小处理时，已处理的偶数正好是大于当前奇数的候选。",
+            "维护已处理偶数在 $b$ 中的最左位置，就能对每个奇数立即计算最优配对，避免枚举所有位置对并将总复杂度降为 $O(n)$。"
+          ],
+          "solutionBrief": "记录每个数在对应数组中的位置，按数值从大到小扫描。处理奇数时，已加入的偶数都大于它，用当前偶数的最小位置与该奇数位置计算 $i+j-2$；处理偶数则更新最小位置，取所有候选的最小值。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
