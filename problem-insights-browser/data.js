@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3968,
+    "total_problems": 3974,
     "source_total_problems": 3974,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 3968,
-    "with_editorial_brief": 3623,
-    "with_solution_brief": 3625,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3974,
+    "with_editorial_brief": 3629,
+    "with_solution_brief": 3631,
     "missing_editorial_brief": 343,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3030,
+    "ai_override_count": 3036,
     "primary_topic_count": 13,
-    "contest_count": 616,
+    "contest_count": 617,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "组合计数与概率": 310,
+    "数据结构": 379,
+    "构造与贪心": 1289,
+    "动态规划与状态设计": 326,
     "图论与网络流": 259,
-    "组合计数与概率": 309,
-    "动态规划与状态设计": 325,
-    "数据结构": 377,
     "代数、矩阵与多项式": 26,
-    "构造与贪心": 1287,
     "基础实现与模拟": 247,
     "数论与同余": 420,
     "交互": 116,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 113
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2639,
+    "ai_generated_with_editorial": 2645,
     "missing_editorial": 343,
     "ai_generated_partial_editorial": 93,
     "low_confidence": 1,
@@ -122087,6 +122087,190 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "依据题解，先计算各厨师菜品首次变正的日期，再利用固定转移矩阵的特征向量分解，把贡献按日期维护并快速汇总。题解给出的复杂度为 $O(n^3+qn\\log n)$；但输入记录缺少具体查询格式与规则，无法完整说明如何应用到每种查询。",
           "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1539,
+      "name": "Codeforces Round 727 (Div. 2)",
+      "date": "2021-06-20",
+      "url": "https://codeforces.com/contest/1539",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1539A",
+          "index": "A",
+          "slot": "A",
+          "title": "Contest Start",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1539/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/91906",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "geometry",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "共有 $n$ 人依次参加比赛，第 $i$ 人在时间 $(i-1)x$ 开始、比赛持续 $t$ 分钟。每人结束时，其不满度等于此时已经开始（包括刚开始）但尚未结束的人数；求所有人的不满度之和。",
+          "transformedStatement": "令 $q=\\lfloor t/x\\rfloor$，把问题改为统计每位参赛者之后有多少人会在其结束前开始。每人的贡献只取决于后续人数与 $q$ 的较小值，因此总和可按贡献相同的前段和逐步递减的后段计算。",
+          "keyObservations": [
+            "对第 $i$ 位参赛者，只有编号更大的参赛者可能在其结束时尚未完成；符合条件的正是后续 $\\min(\\lfloor t/x\\rfloor,n-i)$ 位，因此每人的不满度可由后续人数直接确定。",
+            "令 $q=\\lfloor t/x\\rfloor$，前 $\\max(0,n-q)$ 人都恰有 $q$ 位后续参赛者尚未结束；之后每往后一人，这个数量递减 $1$，从而把总和拆成等值段与等差段。"
+          ],
+          "solutionBrief": "令 $q=\\lfloor t/x\\rfloor$。总不满度为 $\\max(0,n-q)q+\\min(n-1,q-1)\\min(n,q)/2$：前一项计算不满度为 $q$ 的参赛者，后一项求递减部分的等差和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1539B",
+          "index": "B",
+          "slot": "B",
+          "title": "Love Song",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1539/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/91906",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "字符串"
+          ],
+          "originalTags": [
+            "dp",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写字母组成的字符串和多个区间询问。对每个区间，将其中每个字母按其字母表编号重复相应次数，要求输出所得字符串的长度。",
+          "transformedStatement": "不必构造重复后的字符串：每个原字符对长度的贡献恰好是它的字母表编号，所以每个区间询问等价于求原串对应编号数组的区间和。",
+          "keyObservations": [
+            "字母的重复次数等于它在字母表中的编号，因此每个字符对最终长度的贡献固定为该编号，无需实际构造重复后的字符串。",
+            "区间答案就是区间内各字符编号之和；用前缀和后，可由两个前缀值之差直接得到任意子串的答案。"
+          ],
+          "solutionBrief": "将每个小写字母映射为其字母表编号，预处理这些编号的前缀和。对于询问区间 $[l,r]$，答案为前缀和之差，即 $pref[r]-pref[l-1]$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1539C",
+          "index": "C",
+          "slot": "C",
+          "title": "Stable Groups",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1539/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/91906",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 名学生的等级，将他们分成若干组，使每组按等级排序后相邻学生的等级差都不超过 $x$。可以额外邀请至多 $k$ 名等级任意选择的学生，要求确定包含所有原有及新增学生时，最少能分成多少个稳定组。",
+          "transformedStatement": "先把原学生排序并视为由若干相邻差不超过 $x$ 的连续段组成；每个大于 $x$ 的间隔都对应一次潜在合并，其代价由该间隔需要补入的学生数决定。问题转为在总预算 $k$ 内，选择代价最小的间隔进行合并。",
+          "keyObservations": [
+            "将学生按等级排序后，任意相邻差不超过 $x$ 的连续段本身稳定；相邻差超过 $x$ 的位置正好切开初始分组。",
+            "若要跨过差值为 $d>x$ 的间隔并合并两侧分组，至少需要加入 $\\lceil d/x\\rceil-1$ 名学生，因为每段相邻等级差最多为 $x$。",
+            "每次成功跨越一个间隔都会使分组数减少 $1$，因此应优先支付代价最小的间隔；预算无法支付下一个最小代价时，后续更贵的间隔也都无法支付。"
+          ],
+          "solutionBrief": "排序并统计相邻差大于 $x$ 的间隔，初始分组数为间隔数加一。计算每个间隔的合并代价 $\\lceil d/x\\rceil-1$，按代价递增依次使用预算 $k$ 合并，得到最少分组数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1539D",
+          "index": "D",
+          "slot": "D",
+          "title": "PriceFixed",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1539/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/91906",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "implementation",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 种商品，第 $i$ 种至少要买 $a_i$ 件；购买数量达到该种商品的门槛 $b_i$ 后可享受折扣。可以自行安排购买顺序，也可以多买某种商品，要求满足所有最低需求并使总花费最少。",
+          "transformedStatement": "把购买过程抽象为累计购买件数逐步解锁各商品的折扣：当前可折扣的商品可以批量处理；若尚无折扣可用，则选择折扣门槛最高的未处理商品来推进累计购买进度。按门槛排序后只需维护两端商品并成批结算。",
+          "keyObservations": [
+            "若某种商品已经能以折扣价购买，继续买它不会让总花费变差，因此可优先处理所有已解锁的折扣购买。",
+            "若当前没有折扣可用，购买未处理商品中折扣门槛 $b_i$ 最大的一种最有利，因为它最能推进后续商品进入折扣状态。",
+            "累计购买数量决定哪些商品已达到折扣门槛；因此可以按 $b_i$ 排序，并成批购买折扣商品或全价商品，而不必逐件模拟。"
+          ],
+          "solutionBrief": "按折扣门槛 $b_i$ 排序，用双指针分别维护尚未购买商品中门槛最小和最大的种类。累计购买量足以解锁折扣时批量按折扣价购买；否则批量购买门槛最大的商品以推进进度，得到 $O(n\\log n)$ 解法。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1539E",
+          "index": "E",
+          "slot": "E",
+          "title": "Game with Cards",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1539/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/91906",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "初始时左右手各有一张数字为 0 的牌。第 $i$ 次请求中，必须选择一只手，将其中的牌替换为数字 $k_i$；替换后左右手的数字都必须落在该次请求各自给定的区间内。判断能否完成全部请求，若可以还要给出每次替换左手还是右手的方案。",
+          "transformedStatement": "把每次新牌分配到左手或右手视为一串选择，并利用牌在下一次被替换前会一直留在手中的性质，把可行性转成检查连续查询区间内某张牌是否始终满足对应手的限制。后缀 DP 记录相邻新牌的左右手分配方向，从而连接这些区间并恢复操作方案。",
+          "keyObservations": [
+            "一张牌在被替换前会持续留在手中，因此若某张新牌在一段查询中始终留在同一只手，它的数值必须满足这段所有查询对该手的区间限制。",
+            "可以用相邻两张新牌分别放在左右手的两种方向作为后缀 DP 状态；转移时检查中间持续未更换的牌是否满足整段限制。",
+            "若存在多个可衔接的后缀状态，优先考虑最早的可行边界，因为它覆盖的限制更少，后续条件不会更严格。"
+          ],
+          "solutionBrief": "从后往前维护两类后缀可行状态，分别表示相邻两张新牌以不同方向放入左右手。转移检查未被替换的牌在对应查询区间内是否始终合规；选择最早的可行衔接边界即可在线性时间内完成判定，并据此恢复每次替换哪只手。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1539F",
+          "index": "F",
+          "slot": "F",
+          "title": "Strange Array",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1539/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/91906",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定整数数组，对每个位置 $i$，可任选一个包含 $i$ 的连续子段，将该子段升序排列，并按题目规定的位置确定排序后的中间元素。考察原来位于 $i$ 的元素在排序后与中间位置的距离，求每个位置在所有合法子段中的最大距离。",
+          "transformedStatement": "对固定元素，不必枚举包含它的子段或实际排序；其到中位数的距离可改写为子段中较小、相等、较大元素数量的表达式。再把左右两侧的计数分别表示为标记数组前缀和的极值查询。",
+          "keyObservations": [
+            "排序后元素到中位数的距离可由小于、等于和大于该元素的数量计算，因此无需模拟排序，只需分别最大化两种相对中位数位置下的计数表达式。",
+            "固定目标元素不大于中位数时，目标是最大化“大于数＋相等数－小于数”；左右两侧可分别转化为前缀和的区间最值。",
+            "按元素值从小到大处理时，已处理的更小元素对应的标记从 $1$ 变为 $-1$，其余仍为 $1$；每个位置只需修改一次，前缀和可用区间加与区间最值维护。",
+            "目标元素大于中位数的情况可用对称的计数公式处理，再与不大于中位数的情况取最大值，覆盖目标元素可能处于中位数任一侧的情况。"
+          ],
+          "solutionBrief": "按元素值排序处理每个位置，并分别计算目标元素位于中位数两侧时的最大距离。将计数目标拆成左右区间上的前缀和极值；随着当前值增大，把更小元素的标记由 $1$ 改为 $-1$，用支持区间加、区间最值的线段树维护，最终取两种情况的较大值。复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
