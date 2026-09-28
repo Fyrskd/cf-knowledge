@@ -24,7 +24,7 @@
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2474,
+    "ai_override_count": 2480,
     "primary_topic_count": 13
   },
   "records": [
@@ -37,13 +37,13 @@
       "problem_url": "https://codeforces.com/contest/1647/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/100780",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
+      "primary_topic": "基础实现与模拟",
       "secondary_topics": [],
       "original_tags": [
         "implementation",
         "math"
       ],
-      "statement_brief": "题面已抓取：Madoka and Math Dad；本地暂无可用题解正文。",
+      "statement_brief": "给定整数 $n$，构造一个十进制数：所有数字都不能为 0，相邻两位不能相同，且各位数字之和必须为 $n$。对每个测试用例输出满足条件的最大数。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -51,9 +51,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T05:00:32+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 2,
@@ -64,17 +74,15 @@
       "problem_url": "https://codeforces.com/contest/1647/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/100780",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "图论与网络流"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "brute force",
         "constructive algorithms",
         "graphs",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Madoka and the Elegant Gift；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由 0 和 1 组成的 $n\\times m$ 矩形表格，需要判断它是否满足题目所称的 elegant 条件，并输出“YES”或“NO”。但当前记录缺少 nice 子矩形及 elegant 的正式定义和配图规则。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -82,9 +90,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T05:00:15+00:00",
+          "quality_flags": [
+            "ambiguous_definition",
+            "incomplete_statement",
+            "missing_editorial",
+            "missing_visual_definition"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 3,
@@ -96,16 +116,12 @@
       "editorial_url": "https://codeforces.com/blog/entry/100780",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "组合计数与概率",
-        "几何"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Madoka and Childish Pranks；本地暂无可用题解正文。",
+      "statement_brief": "给定一个全为 $0$ 的 $n\\times m$ 网格。每次可选择任意矩形，将其涂成左上角为 $0$ 的棋盘格颜色；操作会覆盖旧颜色。要求用不超过 $n\\cdot m$ 次操作得到目标网格，或判断无解。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -113,9 +129,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:59:59+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 4,
@@ -127,18 +153,14 @@
       "editorial_url": "https://codeforces.com/blog/entry/100780",
       "editorial_quality": "url_only",
       "primary_topic": "数论与同余",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "构造与贪心",
-        "组合计数与概率"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "dp",
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Madoka and the Best School in Russia；本地暂无可用题解正文。",
+      "statement_brief": "给定一个已知是 $d$ 的倍数的整数 $x$，需要判断它能否写成至少两种不同的 beautiful numbers 乘积。不同表示按所使用的数字集合区分；题面同时说明每个 beautiful number 必须是 good number，但两者定义在记录中缺失。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -146,9 +168,21 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:59:28+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "incomplete_statement_definition",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 5,
@@ -159,18 +193,14 @@
       "problem_url": "https://codeforces.com/contest/1647/problem/E",
       "editorial_url": "https://codeforces.com/blog/entry/100780",
       "editorial_quality": "url_only",
-      "primary_topic": "树结构",
-      "secondary_topics": [
-        "数据结构",
-        "构造与贪心",
-        "数论与同余"
-      ],
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
       "original_tags": [
         "data structures",
         "dfs and similar",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Madoka and the Sixth-graders；本地暂无可用题解正文。",
+      "statement_brief": "教室有 $n$$ 张桌子，最初按排列 $b$ 安排编号为 $1$ 到 $n$ 的学生，门外还有编号更大的学生。经过若干次题面未完整给出的课堂操作后得到排列 $a$，要求找出所有可行初始排列中字典序最小的 $b$；当前记录缺少具体操作规则和完整输入。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -178,9 +208,22 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:59:10+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "incomplete_statement",
+            "low_confidence",
+            "missing_editorial",
+            "missing_operation_rules"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 6,
@@ -193,15 +236,13 @@
       "editorial_quality": "url_only",
       "primary_topic": "动态规划与状态设计",
       "secondary_topics": [
-        "构造与贪心",
-        "数据结构",
-        "几何"
+        "构造与贪心"
       ],
       "original_tags": [
         "dp",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Madoka and Laziness；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由互不相同正整数构成的数组，要把所有元素按原顺序分到两个非空子序列中，使每个子序列都先严格递增、再严格递减。求所有合法划分产生的两个子序列最大值组成的不同无序数对数量。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -209,9 +250,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:58:52+00:00",
+          "quality_flags": [
+            "algorithm_unverified",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 7,

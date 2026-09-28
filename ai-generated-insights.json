@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T04:54:38+00:00",
+  "updated_at": "2026-09-28T05:00:32+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -74023,6 +74023,172 @@
           "missing_editorial",
           "solution_unavailable",
           "statement_only"
+        ]
+      }
+    },
+    "1647F": {
+      "problem_key": "1647F",
+      "title": "Madoka and Laziness",
+      "rating": 3100,
+      "problem_url": "https://codeforces.com/contest/1647/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/100780",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f1cc9b0e1613a772ad83c432fc572b1adbdac42d15864e3258ce25912e5ffb0a",
+      "generated_at": "2026-09-28T04:58:52+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由互不相同正整数构成的数组，要把所有元素按原顺序分到两个非空子序列中，使每个子序列都先严格递增、再严格递减。求所有合法划分产生的两个子序列最大值组成的不同无序数对数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意与等价表述来自 statement_text；主题分类参考 codeforces_tags；editorial_url 仅为链接，未提供题解正文。",
+        "quality_flags": [
+          "algorithm_unverified",
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "1647E": {
+      "problem_key": "1647E",
+      "title": "Madoka and the Sixth-graders",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1647/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/100780",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "abbbff1af1c708963ec5cb647d7e7d31340f78d0f2c8533be57e7ab56f519da3",
+      "generated_at": "2026-09-28T04:59:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "教室有 $n$$ 张桌子，最初按排列 $b$ 安排编号为 $1$ 到 $n$ 的学生，门外还有编号更大的学生。经过若干次题面未完整给出的课堂操作后得到排列 $a$，要求找出所有可行初始排列中字典序最小的 $b$；当前记录缺少具体操作规则和完整输入。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据不完整的 statement_text 和 codeforces_tags；editorial 仅提供 URL，未包含题解正文。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "incomplete_statement",
+          "low_confidence",
+          "missing_editorial",
+          "missing_operation_rules"
+        ]
+      }
+    },
+    "1647D": {
+      "problem_key": "1647D",
+      "title": "Madoka and the Best School in Russia",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1647/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/100780",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "80301211f890a920b1e4808c14c99175b082e630268aaefca35ca9c2c2b7a945",
+      "generated_at": "2026-09-28T04:59:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个已知是 $d$ 的倍数的整数 $x$，需要判断它能否写成至少两种不同的 beautiful numbers 乘积。不同表示按所使用的数字集合区分；题面同时说明每个 beautiful number 必须是 good number，但两者定义在记录中缺失。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据不完整的 statement_text 和 codeforces_tags；editorial_text 为空，仅提供 editorial URL。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "incomplete_statement_definition",
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "1647C": {
+      "problem_key": "1647C",
+      "title": "Madoka and Childish Pranks",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1647/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/100780",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "220c0d9fa269ae37e9f49fc1478ad00fab3b0c9f5c8e053294e2e7e82256cb99",
+      "generated_at": "2026-09-28T04:59:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个全为 $0$ 的 $n\\times m$ 网格。每次可选择任意矩形，将其涂成左上角为 $0$ 的棋盘格颜色；操作会覆盖旧颜色。要求用不超过 $n\\cdot m$ 次操作得到目标网格，或判断无解。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_url 仅提供链接，未给出题解正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_truncated"
+        ]
+      }
+    },
+    "1647B": {
+      "problem_key": "1647B",
+      "title": "Madoka and the Elegant Gift",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1647/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/100780",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "87c2c0518117510f5c641e774bd334595468c80d426ab95920cda3d5377f97f4",
+      "generated_at": "2026-09-28T05:00:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由 0 和 1 组成的 $n\\times m$ 矩形表格，需要判断它是否满足题目所称的 elegant 条件，并输出“YES”或“NO”。但当前记录缺少 nice 子矩形及 elegant 的正式定义和配图规则。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 tags；editorial_text 为空，editorial_quality 标记为 url_only。",
+        "quality_flags": [
+          "ambiguous_definition",
+          "incomplete_statement",
+          "missing_editorial",
+          "missing_visual_definition"
+        ]
+      }
+    },
+    "1647A": {
+      "problem_key": "1647A",
+      "title": "Madoka and Math Dad",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1647/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/100780",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "70a9318a55a6ef99e8bd0b0e64ad043c167457259bb548ad7e94f73647fd7e82",
+      "generated_at": "2026-09-28T05:00:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数 $n$，构造一个十进制数：所有数字都不能为 0，相邻两位不能相同，且各位数字之和必须为 $n$。对每个测试用例输出满足条件的最大数。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面与 tags 提炼；editorial_text 为空，仅有题解链接元数据。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
         ]
       }
     }

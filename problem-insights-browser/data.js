@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2474,
+    "ai_override_count": 2480,
     "primary_topic_count": 13,
     "contest_count": 525,
     "rating_min": 800,
@@ -44,15 +44,15 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1103,
+    "基础实现与模拟": 213,
+    "构造与贪心": 1101,
     "数论与同余": 363,
-    "树结构": 167,
+    "数据结构": 323,
     "动态规划与状态设计": 281,
-    "基础实现与模拟": 211,
     "字符串": 181,
     "代数、矩阵与多项式": 24,
     "图论与网络流": 220,
-    "数据结构": 322,
+    "树结构": 166,
     "组合计数与概率": 258,
     "几何": 81,
     "博弈": 106,
@@ -105319,13 +105319,13 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1647/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/100780",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "基础实现与模拟",
           "secondaryTopics": [],
           "originalTags": [
             "implementation",
             "math"
           ],
-          "statementBrief": "题面已抓取：Madoka and Math Dad；本地暂无可用题解正文。",
+          "statementBrief": "给定整数 $n$，构造一个十进制数：所有数字都不能为 0，相邻两位不能相同，且各位数字之和必须为 $n$。对每个测试用例输出满足条件的最大数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -105340,17 +105340,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1200,
           "problemUrl": "https://codeforces.com/contest/1647/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/100780",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "图论与网络流"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "constructive algorithms",
             "graphs",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Madoka and the Elegant Gift；本地暂无可用题解正文。",
+          "statementBrief": "给定一个由 0 和 1 组成的 $n\\times m$ 矩形表格，需要判断它是否满足题目所称的 elegant 条件，并输出“YES”或“NO”。但当前记录缺少 nice 子矩形及 elegant 的正式定义和配图规则。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -105366,16 +105364,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1647/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/100780",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "组合计数与概率",
-            "几何"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Madoka and Childish Pranks；本地暂无可用题解正文。",
+          "statementBrief": "给定一个全为 $0$ 的 $n\\times m$ 网格。每次可选择任意矩形，将其涂成左上角为 $0$ 的棋盘格颜色；操作会覆盖旧颜色。要求用不超过 $n\\cdot m$ 次操作得到目标网格，或判断无解。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -105391,18 +105385,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1647/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/100780",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "构造与贪心",
-            "组合计数与概率"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "dp",
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Madoka and the Best School in Russia；本地暂无可用题解正文。",
+          "statementBrief": "给定一个已知是 $d$ 的倍数的整数 $x$，需要判断它能否写成至少两种不同的 beautiful numbers 乘积。不同表示按所使用的数字集合区分；题面同时说明每个 beautiful number 必须是 good number，但两者定义在记录中缺失。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -105417,18 +105407,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2500,
           "problemUrl": "https://codeforces.com/contest/1647/problem/E",
           "editorialUrl": "https://codeforces.com/blog/entry/100780",
-          "primaryTopic": "树结构",
-          "secondaryTopics": [
-            "数据结构",
-            "构造与贪心",
-            "数论与同余"
-          ],
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
           "originalTags": [
             "data structures",
             "dfs and similar",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Madoka and the Sixth-graders；本地暂无可用题解正文。",
+          "statementBrief": "教室有 $n$$ 张桌子，最初按排列 $b$ 安排编号为 $1$ 到 $n$ 的学生，门外还有编号更大的学生。经过若干次题面未完整给出的课堂操作后得到排列 $a$，要求找出所有可行初始排列中字典序最小的 $b$；当前记录缺少具体操作规则和完整输入。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -105445,15 +105431,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/100780",
           "primaryTopic": "动态规划与状态设计",
           "secondaryTopics": [
-            "构造与贪心",
-            "数据结构",
-            "几何"
+            "构造与贪心"
           ],
           "originalTags": [
             "dp",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Madoka and Laziness；本地暂无可用题解正文。",
+          "statementBrief": "给定一个由互不相同正整数构成的数组，要把所有元素按原顺序分到两个非空子序列中，使每个子序列都先严格递增、再严格递减。求所有合法划分产生的两个子序列最大值组成的不同无序数对数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
