@@ -8,6 +8,28 @@
     "raw_sha256": "5f3dd07045859f3e77507947bf858a5d2552c6ea0c89da1b94c474f8425c1786"
   },
   {
+    "url": "https://codeforces.com/blog/entry/96460",
+    "blog_entry_id": 96460,
+    "title": "Editorial of Codeforces Round #752",
+    "author": "YouKn0wWho",
+    "creation_time": "2021-10-30",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Editorial of Codeforces Round #752",
+    "section_count": 8,
+    "covered_problems": [
+      "1603A",
+      "1603B",
+      "1603C",
+      "1603D",
+      "1603E",
+      "1603F",
+      "1604A",
+      "1604B"
+    ],
+    "raw_sha256": "787100a271a2d174737f4a490fa3344de432949d81077bf3383cd7e89d64e7a5"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/96953",
     "blog_entry_id": 96953,
     "title": "Editorial for Technocup 2022 — Elimination Round 2 and Codeforces Round #755 (Div. 1, Div. 2)",
