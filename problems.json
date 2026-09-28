@@ -142606,5 +142606,82 @@
     "tags": [
       "math"
     ]
+  },
+  {
+    "contestId": 1591,
+    "index": "A",
+    "name": "Life of a Flower",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "rating": 800,
+    "tags": [
+      "implementation"
+    ]
+  },
+  {
+    "contestId": 1591,
+    "index": "B",
+    "name": "Array Eversion",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "rating": 900,
+    "tags": [
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 1591,
+    "index": "C",
+    "name": "Minimize Distance",
+    "type": "PROGRAMMING",
+    "points": 1500.0,
+    "rating": 1300,
+    "tags": [
+      "greedy",
+      "math"
+    ]
+  },
+  {
+    "contestId": 1591,
+    "index": "D",
+    "name": "Yet Another Sorting Problem",
+    "type": "PROGRAMMING",
+    "points": 2000.0,
+    "rating": 1900,
+    "tags": [
+      "constructive algorithms",
+      "data structures",
+      "math",
+      "sortings"
+    ]
+  },
+  {
+    "contestId": 1591,
+    "index": "E",
+    "name": "Frequency Queries",
+    "type": "PROGRAMMING",
+    "points": 2500.0,
+    "rating": 2400,
+    "tags": [
+      "binary search",
+      "data structures",
+      "dfs and similar",
+      "trees",
+      "two pointers"
+    ]
+  },
+  {
+    "contestId": 1591,
+    "index": "F",
+    "name": "Non-equal Neighbours",
+    "type": "PROGRAMMING",
+    "points": 3000.0,
+    "rating": 2400,
+    "tags": [
+      "combinatorics",
+      "data structures",
+      "dp",
+      "math"
+    ]
   }
 ]

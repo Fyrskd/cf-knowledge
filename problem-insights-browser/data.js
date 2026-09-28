@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3604,
-    "source_total_problems": 3606,
+    "total_problems": 3610,
+    "source_total_problems": 3612,
     "filtered_out_problems": 2,
-    "with_statement_brief": 3604,
+    "with_statement_brief": 3610,
     "with_editorial_brief": 3305,
     "with_solution_brief": 3307,
-    "missing_editorial_brief": 297,
+    "missing_editorial_brief": 303,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2666,
     "primary_topic_count": 13,
-    "contest_count": 556,
+    "contest_count": 557,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1171,
+    "图论与网络流": 236,
+    "构造与贪心": 1174,
+    "树结构": 175,
+    "组合计数与概率": 271,
     "基础实现与模拟": 226,
     "数论与同余": 375,
     "字符串": 190,
     "数据结构": 342,
     "交互": 106,
-    "树结构": 174,
     "几何": 88,
     "动态规划与状态设计": 294,
-    "组合计数与概率": 270,
-    "图论与网络流": 235,
     "博弈": 108,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 303,
     "ai_generated_with_editorial": 2340,
     "ai_generated_partial_editorial": 74,
-    "missing_editorial": 297,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -111220,6 +111220,165 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "把双方物品按价格排序并标记归属，按 $k$ 递增合并相邻价格差不超过 $k$ 的区间。每个区间保留其中原本属于 Monocarp 的件数，并用前缀和求最贵这些物品的总价。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1591,
+      "name": "Codeforces Round 759 (Div. 2, based on Technocup 2022 Elimination Round 3)",
+      "date": "2021-12-12",
+      "url": "https://codeforces.com/contest/1591",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1591A",
+          "index": "A",
+          "slot": "A",
+          "title": "Life of a Flower",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1591/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Life of a Flower；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1591B",
+          "index": "B",
+          "slot": "B",
+          "title": "Array Eversion",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1591/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Array Eversion；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1591C",
+          "index": "C",
+          "slot": "C",
+          "title": "Minimize Distance",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1591/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "博弈"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Minimize Distance；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1591D",
+          "index": "D",
+          "slot": "D",
+          "title": "Yet Another Sorting Problem",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1591/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "图论与网络流",
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Yet Another Sorting Problem；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1591E",
+          "index": "E",
+          "slot": "E",
+          "title": "Frequency Queries",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1591/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Frequency Queries；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1591F",
+          "index": "F",
+          "slot": "F",
+          "title": "Non-equal Neighbours",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1591/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Non-equal Neighbours；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
