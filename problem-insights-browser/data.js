@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4072,
+    "total_problems": 4080,
     "source_total_problems": 4080,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 4072,
-    "with_editorial_brief": 3726,
-    "with_solution_brief": 3728,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4080,
+    "with_editorial_brief": 3734,
+    "with_solution_brief": 3736,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3134,
+    "ai_override_count": 3142,
     "primary_topic_count": 13,
-    "contest_count": 632,
+    "contest_count": 633,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1321,
-    "图论与网络流": 271,
-    "几何": 95,
-    "动态规划与状态设计": 332,
+    "数论与同余": 427,
+    "构造与贪心": 1324,
+    "动态规划与状态设计": 333,
+    "树结构": 192,
+    "图论与网络流": 272,
+    "几何": 96,
     "数据结构": 386,
     "基础实现与模拟": 252,
-    "数论与同余": 426,
     "交互": 121,
-    "树结构": 191,
     "组合计数与概率": 318,
     "博弈": 116,
     "字符串": 217,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2732,
-    "ai_generated_partial_editorial": 103,
+    "ai_generated_with_editorial": 2738,
+    "ai_generated_partial_editorial": 105,
     "missing_editorial": 344,
     "low_confidence": 1,
     "manual_override": 891,
@@ -125230,6 +125230,240 @@ window.CF_INSIGHTS_DATA = {
             "一条锁对应宝箱到钥匙的无限容量边；只有选放该锁时，流才能沿这条边转移，因此 DP 可同时保证流量可行性并计入对应的锁费用。"
           ],
           "solutionBrief": "对给定锁集合建立网络：源点到宝箱的容量为金币数，钥匙到汇点的容量为购买价格，放置的锁对应宝箱到钥匙的无限容量边。Alice 获胜当且仅当最大流饱和所有源点边；利用宝箱金币数上限，以各源点边流量为核心状态，按宝箱与钥匙逐项决定是否放锁，求最小总费用。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1517,
+      "name": "Contest 2050 and Codeforces Round 718 (Div. 1 + Div. 2)",
+      "date": "2021-04-23",
+      "url": "https://codeforces.com/contest/1517",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1517A",
+          "index": "A",
+          "slot": "A",
+          "title": "Sum of 2050",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1517/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/89968",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "允许选取任意多个（可重复）形如 $2050\\cdot10^k$、其中 $k\\ge 0$ 的数相加来表示给定整数 $n$。对每个 $n$，求表示它所需的最少项数；无法表示时输出 $-1$。",
+          "transformedStatement": "所有可选项都含因子 $2050$，先检查 $n$ 是否为其倍数；整除后将问题缩放为用 $10$ 的幂表示商，最少项数等于商的十进制数位和。",
+          "keyObservations": [
+            "每个可选数都是 $2050$ 乘以 $10$ 的非负整数次幂，因此总和必为 $2050$ 的倍数；不满足时直接无解。",
+            "将 $n$ 除以 $2050$ 后，问题变成用若干个 $10$ 的幂表示商；商的十进制各位数字之和给出所需项数的最小值。"
+          ],
+          "solutionBrief": "先判断 $n$ 是否能被 $2050$ 整除；若不能，输出 $-1$。否则令 $m=n/2050$，答案为 $m$ 的十进制数位和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1517B",
+          "index": "B",
+          "slot": "B",
+          "title": "Morning Jogging",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1517/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/89968",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 段相邻检查点区间，每段提供 $m$ 条可选路径；$m$ 名跑者都必须依次跑完全部区间，每段的每条路径恰好由一名跑者使用。跑者疲劳值是其所选路径长度的最小值，要求安排路径使疲劳值总和最小。",
+          "transformedStatement": "把每名跑者对应的路线看作一列、每个区间看作一行，矩阵中的每个长度恰好分配一次；目标就是让各列的最小元素之和尽可能小，并构造排列使全局最小的 $m$ 个长度分别成为不同列的列最小值。",
+          "keyObservations": [
+            "每条路径都必须恰好分配给一名跑者，因此所有跑者疲劳值之和至少是全体 $nm$ 个长度中最小的 $m$ 个数之和。",
+            "可以把这 $m$ 个最小值分别放进不同跑者的路线中；由于每个相邻检查点区间各有 $m$ 条路径，按行调整排列后可让它们占据不同列，从而达到下界。",
+            "每名跑者的疲劳值取其整条路线上的最短路径长度，因此构造时需让选中的小值成为对应跑者路线中的最小值。"
+          ],
+          "solutionBrief": "答案下界是全体路径长度中最小的 $m$ 个数之和。标记这 $m$ 个数，并通过逐行调整排列将它们放到不同跑者的列中，使各列的最小值分别由这些数给出，达到下界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1517C",
+          "index": "C",
+          "slot": "C",
+          "title": "Fillomino 2",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1517/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/89968",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 棋盘主对角线上的排列 $p_1,\\ldots,p_n$，只需处理主对角线及其下方的格子。要求把这些格子划分成 $n$ 个连通区域，使第 $i$ 个对角线格子所在区域恰有 $p_i$ 个格子，并输出每格所属区域的数值。",
+          "transformedStatement": "把每个主对角线格子视为一个区域的起点，区域标签就是该区域的目标大小。问题转化为按起点依次扩展互不重叠的连通路径，每个起点最终占据指定数量的格子。",
+          "keyObservations": [
+            "每个对角线格子的数值就是它所属区域的目标大小，因此从该格出发还需填入恰好 $p_i-1$ 个格子。",
+            "区域可以构造成一条路径：每次优先向左填空格，左侧已占用时向下填；这样新格始终与当前区域相邻，且不会覆盖已有区域。",
+            "按对角线位置依次扩展区域即可覆盖整个下三角形；题解还指出这种构造与逐条副对角线填数的构造等价，因此解始终存在且唯一。"
+          ],
+          "solutionBrief": "按主对角线从上到下处理每个数 $x$，从对应格子开始扩展区域，直到区域包含 $x$ 个格子。每一步若左边格子未填就向左，否则向下，并将新格标为 $x$；最终输出下三角形中的区域编号。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1517D",
+          "index": "D",
+          "slot": "D",
+          "title": "Explorer Space",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1517/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/89968",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "dp",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的无向加权网格，相邻格点之间有边，边权表示经过该边增加的无聊度；每步必须沿一条边移动，允许重复经过边且重复计费。对每个格点分别求从该点出发、恰好走 $k$ 步后回到该点的最小总费用；若无法做到则输出 $-1$。",
+          "transformedStatement": "把偶数步闭合路线 $k=2h$ 转化为从起点出发、恰好走 $h$ 步且终点不限的最小费用路线：该路线可以原路折返，费用加倍即为最优闭合路线。于是只需按步数计算各格点的最小路线费用；奇数步则由二分图性质直接判为不可能。",
+          "keyObservations": [
+            "网格图是二分图，走奇数步必然到达与起点不同颜色的顶点，因此奇数步不可能回到起点。",
+            "对偶数步 $k=2h$，任意闭合路线的前后两段都可视为起点到中点的长度为 $h$ 的路线；两段费用都不低于最便宜的此类路线，所以最优闭合路线费用等于最便宜长度为 $h$ 的路线费用的两倍。",
+            "边权无向意味着任意长度为 $h$ 的路线都能原路返回，因而将其费用乘二即可构成合法的 $2h$ 步闭合路线，并达到上述下界。"
+          ],
+          "solutionBrief": "若 $k$ 为奇数，所有答案均为 $-1$。若 $k=2h$，用 DP 求每个格点出发、恰走 $h$ 步的最小费用：$dp_t(u)=\\min_{u\\to v}(w(u,v)+dp_{t-1}(v))$，并令 $dp_0(u)=0$；答案为 $2dp_h(u)$，总复杂度为 $O(nmk)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1517E",
+          "index": "E",
+          "slot": "E",
+          "title": "Group Photo",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1517/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/89968",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定 $n$ 个依次排成一列的人，每人持有字母牌 $C$ 或 $P$；照片是否合格受位置间隔规则限制，并要求持 $C$ 者对应的 $a_i$ 之和小于持 $P$ 者之和。要求统计不同的合格照片数量并对 $998244353$ 取模；但所给题面缺失了位置间隔规则的具体定义。",
+          "transformedStatement": "依据题解，可将问题转为枚举两种由位置间隔单调性导出的字母排列模式，再在每种模式中统计权值和满足严格不等式的方案；题解没有给出该计数的具体状态或公式。",
+          "keyObservations": [
+            "好照片的位置约束会迫使任意相邻的同类字母间隔至多为 $2$；否则另一类字母的间隔序列会违反单调性，从而把可行排列压缩为两种模式。",
+            "可行排列只有两类：一类是若干个 $P$ 后接若干个 $C$；另一类是由端点可选的字母包围、内部按交替结构排列的形式，因此可按模式分别计数。",
+            "对每种位置模式，还需筛出满足 $C$ 位置权值和小于 $P$ 位置权值和的排列；题解指出可用双指针或分治处理该计数，但未给出具体推导。"
+          ],
+          "solutionBrief": "先利用相邻同类位置的间隔单调性，将可行字母排列归纳为两种模式，再分别统计其中满足 $C$ 位置权值和小于 $P$ 位置权值和的方案。第二种模式的计数可按题解所述用双指针或分治；现有正文没有提供完整推导。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1517F",
+          "index": "F",
+          "slot": "F",
+          "title": "Reunion",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1517/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/89968",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵表示志愿者关系的树，每位志愿者独立地以 $1/2$ 概率出席。若存在某个顶点，使距离它不超过半径 $r$ 的所有志愿者都出席，则半径 $r$ 的论坛可以举办；等级是可举办论坛的最大半径，空集时为 $-1$、全员出席时为 $n$，要求等级的期望。",
+          "transformedStatement": "把缺席者标为黑点。等级不超过 $r$ 等价于每个顶点距离不超过 $r$ 的范围内都能找到黑点，也就是黑点的半径 $r$ 球覆盖整棵树；因此可按半径统计满足覆盖条件的方案数，再计算期望。",
+          "keyObservations": [
+            "半径为 $r$ 的论坛无法举办，当且仅当每个顶点半径为 $r$ 的球内都至少有一个缺席者；等价地，所有缺席者的半径 $r$ 球覆盖整棵树。",
+            "子树若存在未被覆盖的顶点，跨子树的缺席者可能继续覆盖它，因此只需记录最深未覆盖点的深度，无须再记录本子树缺席者的延伸能力。",
+            "子树若没有未覆盖点，后续合并只需关注最浅缺席点；这使每个子树的状态规模可限制在其深度范围内。"
+          ],
+          "solutionBrief": "枚举半径 $r$，用树形 DP 统计使论坛等级不超过 $r$ 的缺席方案数。子树状态按是否存在未覆盖点区分，分别记录最深未覆盖点或最浅缺席点；再由各半径对应的方案数计算期望。题解给出的复杂度为 $O(n^3)$，并提到可优化至 $O(n^2\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1517G",
+          "index": "G",
+          "slot": "G",
+          "title": "Starry Night Camping",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1517/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/89968",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "flows",
+            "graphs"
+          ],
+          "statementBrief": "平面上有若干带权帐篷，坐标互不相同；当帐篷的两个坐标都是偶数时，它是重要帐篷。可以删除任意一些帐篷，要求每个仍保留的重要帐篷周围都不出现题面规定的三帐篷禁形，目标是最大化剩余帐篷的总权重。给定文本未完整呈现禁形的具体条件。",
+          "transformedStatement": "将整数格点按坐标奇偶性标为 0、1、2、3，并连接相邻格点；题解指出，禁形可统一表示为标号依次为 0-1-2-3 的路径。于是问题成为选择最小总权重的删除点集，使其打断所有这类路径，再用总权重减去该最小代价得到最大保留权重。",
+          "keyObservations": [
+            "按坐标奇偶性给整数点标记为 0、1、2、3 后，题目中的每种禁形都对应相邻网格点构成的 0-1-2-3 路径，因此只需统一处理这类路径。",
+            "删除帐篷使所有禁路径都被打断，等价于在带权图中选择代价最小的点集，使其命中每条 0-1-2-3 路径；这把最大保留权重转成了最小删除权重。"
+          ],
+          "solutionBrief": "将整数格点按坐标奇偶性标为 0、1、2、3，并连接相邻格点。禁形对应标号为 0-1-2-3 的路径；因此求删除点的最小总权重以打断所有此类路径，题解指出可用最小割算法求解，答案为总权重减去最小删除权重。题解未提供最小割建图细节。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1517H",
+          "index": "H",
+          "slot": "H",
+          "title": "Fly Around the World",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1517/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/89968",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dp",
+            "geometry"
+          ],
+          "statementBrief": "给定每个检查点的高度区间、相邻检查点高度差区间，以及连续两段高度差变化量的区间。需要判断是否能选择实数高度 $b_1,\\ldots,b_n$，使所有高度、爬升角度和角度变化限制同时成立。",
+          "transformedStatement": "把前 $i$ 个检查点的可行选择压缩为平面状态 $(b_i,b_i-b_{i-1})$ 的集合。每增加一个检查点，该集合按角度变化区间扩展并接受高度与高度差限制的裁切；问题转为判断最终可行凸区域是否为空。",
+          "keyObservations": [
+            "只需记录末尾两项的状态 $(x,y)=(b_i,b_i-b_{i-1})$，因为下一步的高度、爬升量和角度变化都能由这两个量确定。",
+            "给定角度变化 $z$ 时，状态变为 $(x+y+z,y+z)$；因此先做线性变换 $x\\leftarrow x+y$，再沿 $(1,1)$ 方向平移，便统一表达了状态转移。",
+            "允许 $z$ 落在区间内时，新可行域是上述平移区域的并集；由于原区域凸，这个并集仍凸，之后的高度和爬升限制只是在其上裁切水平或竖直半平面。",
+            "每次变换和裁切后，凸多边形边的斜率仍属于 $0$、无穷大或 $1/k$（整数 $k\\le n$），故可用上下凸壳的双端队列及整体变换标记维护。"
+          ],
+          "solutionBrief": "维护所有可行末尾状态 $(b_i,b_i-b_{i-1})$ 构成的凸多边形。逐项执行线性变换、按角度变化区间扩展，再用高度和爬升限制裁切；用上下凸壳双端队列和整体标记实现，最终检查多边形是否非空，复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

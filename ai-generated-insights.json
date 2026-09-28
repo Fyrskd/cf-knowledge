@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T23:08:16+00:00",
+  "updated_at": "2026-09-28T23:14:25+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -93772,6 +93772,247 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的分包规则与示例，以及 editorial 给出的必要条件和构造。",
+        "quality_flags": []
+      }
+    },
+    "1517H": {
+      "problem_key": "1517H",
+      "title": "Fly Around the World",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1517/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/89968",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "1342543ddd1572792e52950e269b3b064a8cc0eb56ab741178236d1f617ea7fc",
+      "generated_at": "2026-09-28T23:12:29+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定每个检查点的高度区间、相邻检查点高度差区间，以及连续两段高度差变化量的区间。需要判断是否能选择实数高度 $b_1,\\ldots,b_n$，使所有高度、爬升角度和角度变化限制同时成立。",
+        "transformed_statement": "把前 $i$ 个检查点的可行选择压缩为平面状态 $(b_i,b_i-b_{i-1})$ 的集合。每增加一个检查点，该集合按角度变化区间扩展并接受高度与高度差限制的裁切；问题转为判断最终可行凸区域是否为空。",
+        "key_observations": [
+          "只需记录末尾两项的状态 $(x,y)=(b_i,b_i-b_{i-1})$，因为下一步的高度、爬升量和角度变化都能由这两个量确定。",
+          "给定角度变化 $z$ 时，状态变为 $(x+y+z,y+z)$；因此先做线性变换 $x\\leftarrow x+y$，再沿 $(1,1)$ 方向平移，便统一表达了状态转移。",
+          "允许 $z$ 落在区间内时，新可行域是上述平移区域的并集；由于原区域凸，这个并集仍凸，之后的高度和爬升限制只是在其上裁切水平或竖直半平面。",
+          "每次变换和裁切后，凸多边形边的斜率仍属于 $0$、无穷大或 $1/k$（整数 $k\\le n$），故可用上下凸壳的双端队列及整体变换标记维护。"
+        ],
+        "solution_brief": "维护所有可行末尾状态 $(b_i,b_i-b_{i-1})$ 构成的凸多边形。逐项执行线性变换、按角度变化区间扩展，再用高度和爬升限制裁切；用上下凸壳双端队列和整体标记实现，最终检查多边形是否非空，复杂度为 $O(n)$。",
+        "primary_topic": "几何",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面约束及所给完整 editorial；主题标签含 DP、geometry。",
+        "quality_flags": []
+      }
+    },
+    "1517G": {
+      "problem_key": "1517G",
+      "title": "Starry Night Camping",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1517/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/89968",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "755921f3f9166aeeef58cee88f3cae5f7d5e9dfbd138987f600d9b32d34aa339",
+      "generated_at": "2026-09-28T23:12:48+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "平面上有若干带权帐篷，坐标互不相同；当帐篷的两个坐标都是偶数时，它是重要帐篷。可以删除任意一些帐篷，要求每个仍保留的重要帐篷周围都不出现题面规定的三帐篷禁形，目标是最大化剩余帐篷的总权重。给定文本未完整呈现禁形的具体条件。",
+        "transformed_statement": "将整数格点按坐标奇偶性标为 0、1、2、3，并连接相邻格点；题解指出，禁形可统一表示为标号依次为 0-1-2-3 的路径。于是问题成为选择最小总权重的删除点集，使其打断所有这类路径，再用总权重减去该最小代价得到最大保留权重。",
+        "key_observations": [
+          "按坐标奇偶性给整数点标记为 0、1、2、3 后，题目中的每种禁形都对应相邻网格点构成的 0-1-2-3 路径，因此只需统一处理这类路径。",
+          "删除帐篷使所有禁路径都被打断，等价于在带权图中选择代价最小的点集，使其命中每条 0-1-2-3 路径；这把最大保留权重转成了最小删除权重。"
+        ],
+        "solution_brief": "将整数格点按坐标奇偶性标为 0、1、2、3，并连接相邻格点。禁形对应标号为 0-1-2-3 的路径；因此求删除点的最小总权重以打断所有此类路径，题解指出可用最小割算法求解，答案为总权重减去最小删除权重。题解未提供最小割建图细节。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意依据 statement_text；禁形的路径等价转化及最小割方向依据 editorial_text；tags 仅用于主题索引。",
+        "quality_flags": [
+          "partial_editorial",
+          "statement_incomplete"
+        ]
+      }
+    },
+    "1517F": {
+      "problem_key": "1517F",
+      "title": "Reunion",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1517/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/89968",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "52b8d5cb27521c6b35d291936c4d727b6ce73fadf940ffffde8a09c06ed92459",
+      "generated_at": "2026-09-28T23:13:07+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵表示志愿者关系的树，每位志愿者独立地以 $1/2$ 概率出席。若存在某个顶点，使距离它不超过半径 $r$ 的所有志愿者都出席，则半径 $r$ 的论坛可以举办；等级是可举办论坛的最大半径，空集时为 $-1$、全员出席时为 $n$，要求等级的期望。",
+        "transformed_statement": "把缺席者标为黑点。等级不超过 $r$ 等价于每个顶点距离不超过 $r$ 的范围内都能找到黑点，也就是黑点的半径 $r$ 球覆盖整棵树；因此可按半径统计满足覆盖条件的方案数，再计算期望。",
+        "key_observations": [
+          "半径为 $r$ 的论坛无法举办，当且仅当每个顶点半径为 $r$ 的球内都至少有一个缺席者；等价地，所有缺席者的半径 $r$ 球覆盖整棵树。",
+          "子树若存在未被覆盖的顶点，跨子树的缺席者可能继续覆盖它，因此只需记录最深未覆盖点的深度，无须再记录本子树缺席者的延伸能力。",
+          "子树若没有未覆盖点，后续合并只需关注最浅缺席点；这使每个子树的状态规模可限制在其深度范围内。"
+        ],
+        "solution_brief": "枚举半径 $r$，用树形 DP 统计使论坛等级不超过 $r$ 的缺席方案数。子树状态按是否存在未覆盖点区分，分别记录最深未覆盖点或最浅缺席点；再由各半径对应的方案数计算期望。题解给出的复杂度为 $O(n^3)$，并提到可优化至 $O(n^2\\log n)$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "组合计数与概率"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的论坛等级与独立出席概率，以及 editorial 中的覆盖等价转化和树形 DP 状态说明。",
+        "quality_flags": []
+      }
+    },
+    "1517E": {
+      "problem_key": "1517E",
+      "title": "Group Photo",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1517/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/89968",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "30f5a7ccaac9b837e9004f8f6f322f29f16bc42b11c7e521a37e78a6d44db7e5",
+      "generated_at": "2026-09-28T23:13:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个依次排成一列的人，每人持有字母牌 $C$ 或 $P$；照片是否合格受位置间隔规则限制，并要求持 $C$ 者对应的 $a_i$ 之和小于持 $P$ 者之和。要求统计不同的合格照片数量并对 $998244353$ 取模；但所给题面缺失了位置间隔规则的具体定义。",
+        "transformed_statement": "依据题解，可将问题转为枚举两种由位置间隔单调性导出的字母排列模式，再在每种模式中统计权值和满足严格不等式的方案；题解没有给出该计数的具体状态或公式。",
+        "key_observations": [
+          "好照片的位置约束会迫使任意相邻的同类字母间隔至多为 $2$；否则另一类字母的间隔序列会违反单调性，从而把可行排列压缩为两种模式。",
+          "可行排列只有两类：一类是若干个 $P$ 后接若干个 $C$；另一类是由端点可选的字母包围、内部按交替结构排列的形式，因此可按模式分别计数。",
+          "对每种位置模式，还需筛出满足 $C$ 位置权值和小于 $P$ 位置权值和的排列；题解指出可用双指针或分治处理该计数，但未给出具体推导。"
+        ],
+        "solution_brief": "先利用相邻同类位置的间隔单调性，将可行字母排列归纳为两种模式，再分别统计其中满足 $C$ 位置权值和小于 $P$ 位置权值和的方案。第二种模式的计数可按题解所述用双指针或分治；现有正文没有提供完整推导。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意依据 statement_text；位置模式与计数方法依据 editorial_text。原题中定义好照片的约束在所给题面文本里缺失。",
+        "quality_flags": [
+          "partial_editorial",
+          "statement_constraints_omitted"
+        ]
+      }
+    },
+    "1517D": {
+      "problem_key": "1517D",
+      "title": "Explorer Space",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1517/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/89968",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "b193e97f94bc22b74460dd20017679d8fa8ccccafb23170ab430f153b21eac83",
+      "generated_at": "2026-09-28T23:13:48+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times m$ 的无向加权网格，相邻格点之间有边，边权表示经过该边增加的无聊度；每步必须沿一条边移动，允许重复经过边且重复计费。对每个格点分别求从该点出发、恰好走 $k$ 步后回到该点的最小总费用；若无法做到则输出 $-1$。",
+        "transformed_statement": "把偶数步闭合路线 $k=2h$ 转化为从起点出发、恰好走 $h$ 步且终点不限的最小费用路线：该路线可以原路折返，费用加倍即为最优闭合路线。于是只需按步数计算各格点的最小路线费用；奇数步则由二分图性质直接判为不可能。",
+        "key_observations": [
+          "网格图是二分图，走奇数步必然到达与起点不同颜色的顶点，因此奇数步不可能回到起点。",
+          "对偶数步 $k=2h$，任意闭合路线的前后两段都可视为起点到中点的长度为 $h$ 的路线；两段费用都不低于最便宜的此类路线，所以最优闭合路线费用等于最便宜长度为 $h$ 的路线费用的两倍。",
+          "边权无向意味着任意长度为 $h$ 的路线都能原路返回，因而将其费用乘二即可构成合法的 $2h$ 步闭合路线，并达到上述下界。"
+        ],
+        "solution_brief": "若 $k$ 为奇数，所有答案均为 $-1$。若 $k=2h$，用 DP 求每个格点出发、恰走 $h$ 步的最小费用：$dp_t(u)=\\min_{u\\to v}(w(u,v)+dp_{t-1}(v))$，并令 $dp_0(u)=0$；答案为 $2dp_h(u)$，总复杂度为 $O(nmk)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "图论与网络流"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题目规则依据 statement_text；奇数步不可行、偶数步折半以及 DP 转移依据 editorial_text。",
+        "quality_flags": [
+          "statement_truncated"
+        ]
+      }
+    },
+    "1517C": {
+      "problem_key": "1517C",
+      "title": "Fillomino 2",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1517/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/89968",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "854e267689961d71ab1e8a6f0e8bf2bfadadeda4c9cb99cfed3424f0c090ad9c",
+      "generated_at": "2026-09-28T23:14:04+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times n$ 棋盘主对角线上的排列 $p_1,\\ldots,p_n$，只需处理主对角线及其下方的格子。要求把这些格子划分成 $n$ 个连通区域，使第 $i$ 个对角线格子所在区域恰有 $p_i$ 个格子，并输出每格所属区域的数值。",
+        "transformed_statement": "把每个主对角线格子视为一个区域的起点，区域标签就是该区域的目标大小。问题转化为按起点依次扩展互不重叠的连通路径，每个起点最终占据指定数量的格子。",
+        "key_observations": [
+          "每个对角线格子的数值就是它所属区域的目标大小，因此从该格出发还需填入恰好 $p_i-1$ 个格子。",
+          "区域可以构造成一条路径：每次优先向左填空格，左侧已占用时向下填；这样新格始终与当前区域相邻，且不会覆盖已有区域。",
+          "按对角线位置依次扩展区域即可覆盖整个下三角形；题解还指出这种构造与逐条副对角线填数的构造等价，因此解始终存在且唯一。"
+        ],
+        "solution_brief": "按主对角线从上到下处理每个数 $x$，从对应格子开始扩展区域，直到区域包含 $x$ 个格子。每一步若左边格子未填就向左，否则向下，并将新格标为 $x$；最终输出下三角形中的区域编号。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的棋盘、对角线排列及分区要求，以及 editorial 的两种构造说明。",
+        "quality_flags": []
+      }
+    },
+    "1517B": {
+      "problem_key": "1517B",
+      "title": "Morning Jogging",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1517/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/89968",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "bb372256b94ef5cdbf9d83607af9fa26904b6f4053030fc9dc1c676474b95356",
+      "generated_at": "2026-09-28T23:14:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 段相邻检查点区间，每段提供 $m$ 条可选路径；$m$ 名跑者都必须依次跑完全部区间，每段的每条路径恰好由一名跑者使用。跑者疲劳值是其所选路径长度的最小值，要求安排路径使疲劳值总和最小。",
+        "transformed_statement": "把每名跑者对应的路线看作一列、每个区间看作一行，矩阵中的每个长度恰好分配一次；目标就是让各列的最小元素之和尽可能小，并构造排列使全局最小的 $m$ 个长度分别成为不同列的列最小值。",
+        "key_observations": [
+          "每条路径都必须恰好分配给一名跑者，因此所有跑者疲劳值之和至少是全体 $nm$ 个长度中最小的 $m$ 个数之和。",
+          "可以把这 $m$ 个最小值分别放进不同跑者的路线中；由于每个相邻检查点区间各有 $m$ 条路径，按行调整排列后可让它们占据不同列，从而达到下界。",
+          "每名跑者的疲劳值取其整条路线上的最短路径长度，因此构造时需让选中的小值成为对应跑者路线中的最小值。"
+        ],
+        "solution_brief": "答案下界是全体路径长度中最小的 $m$ 个数之和。标记这 $m$ 个数，并通过逐行调整排列将它们放到不同跑者的列中，使各列的最小值分别由这些数给出，达到下界。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，构造与最优值依据 editorial_text；tags 仅用于辅助分类。",
+        "quality_flags": [
+          "statement_text_truncated"
+        ]
+      }
+    },
+    "1517A": {
+      "problem_key": "1517A",
+      "title": "Sum of 2050",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1517/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/89968",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "631bde7e4b663758709842ff78159b1aa9eab5742e26e98609b13a4e85388928",
+      "generated_at": "2026-09-28T23:14:25+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "允许选取任意多个（可重复）形如 $2050\\cdot10^k$、其中 $k\\ge 0$ 的数相加来表示给定整数 $n$。对每个 $n$，求表示它所需的最少项数；无法表示时输出 $-1$。",
+        "transformed_statement": "所有可选项都含因子 $2050$，先检查 $n$ 是否为其倍数；整除后将问题缩放为用 $10$ 的幂表示商，最少项数等于商的十进制数位和。",
+        "key_observations": [
+          "每个可选数都是 $2050$ 乘以 $10$ 的非负整数次幂，因此总和必为 $2050$ 的倍数；不满足时直接无解。",
+          "将 $n$ 除以 $2050$ 后，问题变成用若干个 $10$ 的幂表示商；商的十进制各位数字之和给出所需项数的最小值。"
+        ],
+        "solution_brief": "先判断 $n$ 是否能被 $2050$ 整除；若不能，输出 $-1$。否则令 $m=n/2050$，答案为 $m$ 的十进制数位和。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面和完整 editorial；标签仅作辅助参考。",
         "quality_flags": []
       }
     }
