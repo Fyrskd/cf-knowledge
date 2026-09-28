@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T15:04:08+00:00",
+  "updated_at": "2026-09-28T15:10:06+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -88442,6 +88442,246 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整 editorial_text、statement_text，并参考 tags 中的字符串与排序分类。",
+        "quality_flags": []
+      }
+    },
+    "1551F": {
+      "problem_key": "1551F",
+      "title": "Equidistant Vertices",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1551/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/93149",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "07c9c0cb13e2d65af4e378219b9fa91c7550228f303fd91082bd2d577b48c0a4",
+      "generated_at": "2026-09-28T15:08:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵含 $n$ 个顶点的树，需要选择恰好 $k$ 个不同顶点，使任意两点之间的树上距离都相等。求满足条件的顶点集合数量，并对 $10^9+7$ 取模。",
+        "transformed_statement": "对 $k\\ge3$，将合法集合重述为：存在唯一中心 $Q$，所有点位于同一距离层且分别来自 $Q$ 的不同相邻子树。固定 $Q$ 和距离后，只需统计每个分支的候选点数，并计算从不同分支选出 $k$ 个点的方案数。",
+        "key_observations": [
+          "当 $k=2$ 时任意两个顶点都满足条件，因此答案直接是 $\\frac{n(n-1)}{2}$。",
+          "当 $k\\ge 3$ 时，所有被选顶点必然存在唯一中心 $Q$，使它们到 $Q$ 的距离相等；这是由树上三条路径的公共交点及距离相等推出的。",
+          "固定中心 $Q$ 和距离层后，选中顶点必须来自 $Q$ 的不同相邻子树；否则两点路径会经过同一分支，导致它们之间距离小于其他点对。",
+          "设各子树在当前距离层包含 $cnt_i$ 个顶点，则逐个处理子树，用 $dp[i][j]$ 统计前 $i$ 个子树选 $j$ 个顶点；每个子树只能选一个，转移权值为 $cnt_i$。"
+        ],
+        "solution_brief": "$k=2$ 时直接计数。$k\\ge3$ 时枚举唯一中心 $Q$，按距离层统计各相邻子树中的顶点数，再用子树级 DP 计数从不同分支选出 $k$ 个顶点的方案，汇总所有 $Q$ 和层，复杂度为 $O(n^2k)$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "组合计数与概率",
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，并参考 tags 中的树、组合计数与 DP 标签。",
+        "quality_flags": []
+      }
+    },
+    "1551E": {
+      "problem_key": "1551E",
+      "title": "Fixed Points",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1551/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/93149",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "85209d67c222c3acb712c0e1efe776b065ca7d5b6ad94ce7d666c1ddf8e479bc",
+      "generated_at": "2026-09-28T15:08:34+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的整数序列，每次可以删除任意一个元素，右侧元素会左移并重新编号。求至少删除多少个元素，使剩余序列中至少有 $k$ 个位置满足元素值等于其新下标；若无法做到则输出 $-1$。",
+        "transformed_statement": "将删除后的序列视为原序列的一个子序列，按原顺序逐个决定保留或删除；若当前已有 $j$ 个元素被保留，则下一个保留元素的新下标为 $j+1$，据此最大化每种保留数量下的固定点数。",
+        "key_observations": [
+          "删除元素不会产生贡献；保留原序列第 $i+1$ 个元素时，它的新下标等于此前保留元素数量加一，因此是否成为固定点只由保留数量决定。",
+          "令 $dp[i][j]$ 表示处理前 $i$ 个元素且保留其中 $j$ 个时，最多能得到的固定点数量，就能同时覆盖删除与保留两种选择。",
+          "保留第 $i+1$ 个元素会转移到 $dp[i+1][j+1]$，并在 $a_{i+1}=j+1$ 时增加一个固定点；删除它则转移到 $dp[i+1][j]$。",
+          "最终应取满足 $dp[n][j]\\ge k$ 的最大 $j$，因为保留越多代表删除越少，答案为 $n-j$；不存在这样的 $j$ 时答案为 $-1$。"
+        ],
+        "solution_brief": "用二维 DP 处理原数组前缀：状态记录已处理元素数、保留元素数及最多固定点数。逐个元素选择删除或保留，保留时按当前新下标判断是否为固定点；最后取固定点数至少为 $k$ 的最大保留数，答案是 $n-j$，否则为 $-1$。复杂度为 $O(n^2)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的删除与固定点定义，以及 editorial_text 的完整 DP 转移和取答案方法；tags 仅用于主题辅助。",
+        "quality_flags": [
+          "statement_text末尾示例输出内容截断，但题目操作规则和目标明确"
+        ]
+      }
+    },
+    "1551D2": {
+      "problem_key": "1551D2",
+      "title": "Domino (hard version)",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1551/problem/D2",
+      "editorial_url": "https://codeforces.com/blog/entry/93149",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "777fb58a65dbe0046b0749e8b7e6f4dbd5401ba2e72f8c5d2b7a3c8d82b9dd20",
+      "generated_at": "2026-09-28T15:08:52+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times m$ 的方格，需用恰好 $nm/2$ 个不重叠骨牌铺满棋盘；每个骨牌覆盖共边的两个格子，可横放或竖放。要求恰好有 $k$ 个横向骨牌，并输出一种满足条件的铺法。",
+        "transformed_statement": "将棋盘按边长奇偶性拆分：偶数乘偶数时转化为若干可独立标记的 $2\\times2$ 块；一边为奇数时先固定一整行或一整列的水平骨牌，再把剩余部分转成偶数乘偶数棋盘。",
+        "key_observations": [
+          "当 $n,m$ 都为偶数时，水平骨牌和竖直骨牌都能按 $2\\times2$ 块配对，因此可行当且仅当 $k$ 为偶数。",
+          "当 $n$ 为奇数、$m$ 为偶数时，每列必须先承担一个水平骨牌端点，至少需要 $m/2$ 个水平骨牌；去掉顶行后剩余区域的水平数仍须为偶数，所以还需 $k-m/2$ 为偶数。",
+          "满足奇数行条件时，直接在顶行放置 $m/2$ 个水平骨牌，剩余 $(n-1)\\times m$ 区域的两边均为偶数，可独立按偶数矩形填充。",
+          "当 $m$ 为奇数时，将棋盘转置，并把目标水平数改为总骨牌数减去 $k$，解出后再转置回来即可。"
+        ],
+        "solution_brief": "按奇偶性判断可行条件。偶数边时用 $2\\times2$ 块填充；一边为奇数时先铺满奇数边对应的顶行或左列，再填充剩余偶数矩形；另一方向通过转置并交换水平、竖直数量处理。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟",
+          "组合计数与概率"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text、题目标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1551D1": {
+      "problem_key": "1551D1",
+      "title": "Domino (easy version)",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1551/problem/D1",
+      "editorial_url": "https://codeforces.com/blog/entry/93149",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "2c0b548dcfed285ace3b3edecc8823980967ad4ec87794b29ed89b5fb0e5ea8a",
+      "generated_at": "2026-09-28T15:09:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times m$ 的格子表，$nm$ 为偶数。需要用恰好 $nm/2$ 个互不重叠的骨牌覆盖全部格子，其中恰好 $k$ 个横放，其余竖放，判断是否存在这样的铺法。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "几何"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_url 仅提供链接，未包含题解正文。",
+        "quality_flags": [
+          "editorial_url_only",
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "1551C": {
+      "problem_key": "1551C",
+      "title": "Interesting Story",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1551/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/93149",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "288befded77f064e4edd4805fb0abc57a9bc4a10cb77d488d3cce9d02f3c78d2",
+      "generated_at": "2026-09-28T15:09:24+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干只含字母 a 到 e 的单词，可从中选择任意数量组成故事。若存在一个字母在所选全部单词中的出现次数，严格多于其他字母出现次数之和，则故事有趣；要求选择最多的单词数，无法选择非空有趣故事时输出 0。",
+        "transformed_statement": "把每个单词对目标字母 $c$ 的贡献表示为“$c$ 的出现次数减去其他字母总次数”。问题转化为：对每个 $c$，从这些贡献中选出尽可能多的数，使总和严格大于 $0$。",
+        "key_observations": [
+          "对固定字母 $c$，定义单词得分为该字母出现次数减去其余字母总次数；选词后总得分为各单词得分之和，正值恰好等价于故事有趣。",
+          "固定 $c$ 后，任意选取 $k$ 个单词时，得分最大的方案一定是得分最高的前 $k$ 个单词，因此只需考察降序排列后的前缀。",
+          "按得分降序累加，所有总得分仍为正的前缀都对应可行故事；取其中最长前缀即可得到该字母下的最优答案，再在五个字母间取最大值。"
+        ],
+        "solution_brief": "为每个字母分别计算每个单词的贡献 $f(s,c)$，将贡献降序排列并累加，找出总和大于 $0$ 的最长前缀。五个字母分别求解后取最大值；计算贡献为 $O(5\\sum |s_i|)$，排序总复杂度为 $O(5n\\log n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "字符串",
+          "组合计数与概率"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，结合 statement_text 和 tags[",
+        "quality_flags": [
+          "statement_text末尾截断，但题目核心规则和目标完整"
+        ]
+      }
+    },
+    "1551B2": {
+      "problem_key": "1551B2",
+      "title": "Wonderful Coloring - 2",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1551/problem/B2",
+      "editorial_url": "https://codeforces.com/blog/entry/93149",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "79897871e5e67c71824aa6fa6a33862001d795d8924a8fb4ee6a476e3f6bd541",
+      "generated_at": "2026-09-28T15:09:41+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的整数序列和 $k$ 种颜色，可将每个位置涂成一种颜色或不涂。要求同色位置的数值两两不同、每种颜色涂色数量相等，并在满足条件的方案中最大化涂色位置总数，输出一种方案。",
+        "transformed_statement": "每个数值最多贡献 $k$ 个位置；先为每个数值选取至多 $k$ 个出现位置并串成候选序列，再删除末尾少于 $k$ 的余数，使候选长度成为 $k$ 的倍数，最后按顺序循环赋予颜色。",
+        "key_observations": [
+          "同一数值最多只能涂出 $k$ 次，否则无法让这些位置分属不同颜色；因此它的有效贡献是 $\\min(k,cnt_x)$。",
+          "把每个数值选出的出现位置按数值分组拼成序列后，任意一组都不超过 $k$，循环分配颜色即可保证同组位置颜色互异。",
+          "总选中数必须被 $k$ 整除，删去拼接序列末尾的 $|p|\\bmod k$ 个位置是最少损失，因此保留位置数达到最大。",
+          "按位置序列循环使用颜色 $1,2,\\dots,k$，且长度是 $k$ 的倍数，所以每种颜色出现次数相同并且恰好使用全部颜色。"
+        ],
+        "solution_brief": "统计每个值的出现次数，并从其出现位置中选取至多 $k$ 个。将所有选中位置按值分组拼接，删去末尾不足整组的若干位置，再按拼接顺序循环分配 $k$ 种颜色，其余位置输出 $0$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅作辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1551B1": {
+      "problem_key": "1551B1",
+      "title": "Wonderful Coloring - 1",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1551/problem/B1",
+      "editorial_url": "https://codeforces.com/blog/entry/93149",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "be19a2fd63cc32796a2729b3397bbe689ea994be41dceaaa29323e6ddf7593ed",
+      "generated_at": "2026-09-28T15:09:52+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个小写字母串，每个字符可染红、染绿或不染；同色字符必须互不相同，且红绿字符数相等。要求在满足条件时最大化染色字符总数，并输出红色字符数。",
+        "transformed_statement": "把字母按出现次数分类：每种重复字母固定贡献一对异色字符，恰好出现一次的字母只能从中选出偶数个并平均分给两种颜色；因此问题转化为两类数量的直接计数。",
+        "key_observations": [
+          "出现至少两次的字母最多贡献两个被染色字符：选两个出现位置分别染红、绿，更多出现会导致同色重复。",
+          "设恰好出现一次的字母数为 $c_1$、出现至少两次的字母种类数为 $c_2$，重复字母先贡献 $c_2$ 个红色和 $c_2$ 个绿色字符。",
+          "唯一出现的字母彼此不同，可任意分配颜色；为保持两色数量相等，最多再选出各 $\frac{c_1}{2}$ 个，因此答案为 $c_2+\\lfloor c_1/2\\rfloor$。"
+        ],
+        "solution_brief": "统计恰好出现一次的字母数 $c_1$，以及出现至少两次的字母种类数 $c_2$。每个重复字母可分别染两色，唯一字母再成对分配，答案为 $c_2+\\lfloor c_1/2\\rfloor$。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的染色规则与 editorial_text 的计数推导，参考 tags 中的 greedy、strings。",
+        "quality_flags": []
+      }
+    },
+    "1551A": {
+      "problem_key": "1551A",
+      "title": "Polycarp and Coins",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1551/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/93149",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "bb8bcf2e88929c96bac91ae88c1c5e6e7495e27eb647d9327856ba3959161c37",
+      "generated_at": "2026-09-28T15:10:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定金额 $n$，只能使用面值 $1$ 和 $2$ 的硬币，选择非负整数数量 $c_1,c_2$，满足 $c_1+2c_2=n$。要求最小化两类硬币数量差 $|c_1-c_2|$，并输出任意最优方案。",
+        "transformed_statement": "把每组三枚硬币抽象为一枚 $1$ 元和一枚 $2$ 元，其总价值为 $3$；先取 $\floor n/3$ 组，再根据 $n$ 除以 $3$ 的余数补一枚对应面值的硬币。",
+        "key_observations": [
+          "令两种硬币数量都为 $\u0000lfloor n/3\nfloor$，它们当前总价值为 $3\floor n/3$，只需处理除以 $3$ 的余数。",
+          "当 $n\bmod 3=0$ 时两数相等且差值为 $0$，这是绝对差的理论下界，因此必然最优。",
+          "当余数为 $1$ 时补一枚面值 $1$ 的硬币，数量差为 $1$；当余数为 $2$ 时补一枚面值 $2$ 的硬币，数量差同样为 $1$。",
+          "若 $n$ 不被 $3$ 整除，两种硬币数量不可能相等，否则总价值会是 $3c_1$；因此差值至少为 $1$，上述构造达到下界。"
+        ],
+        "solution_brief": "对每个 $n$ 先令 $c_1=c_2=\floor n/3$。若余数为 $1$，令 $c_1$ 加一；若余数为 $2$，令 $c_2$ 加一；余数为 $0$ 时直接输出。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 及 tags 中的 greedy、math。",
         "quality_flags": []
       }
     }

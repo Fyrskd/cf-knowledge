@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3892,
+    "total_problems": 3899,
     "source_total_problems": 3901,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3892,
-    "with_editorial_brief": 3563,
-    "with_solution_brief": 3565,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3899,
+    "with_editorial_brief": 3570,
+    "with_solution_brief": 3572,
     "missing_editorial_brief": 327,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2953,
+    "ai_override_count": 2961,
     "primary_topic_count": 13,
     "contest_count": 605,
     "rating_min": 800,
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1260,
-    "字符串": 204,
+    "数论与同余": 414,
+    "字符串": 205,
+    "构造与贪心": 1263,
+    "动态规划与状态设计": 319,
+    "树结构": 184,
     "组合计数与概率": 298,
-    "动态规划与状态设计": 318,
     "交互": 114,
     "基础实现与模拟": 245,
-    "数论与同余": 413,
     "几何": 93,
     "博弈": 113,
     "数据结构": 372,
     "图论与网络流": 254,
-    "树结构": 183,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2591,
     "missing_editorial": 327,
-    "ai_generated_with_editorial": 2584,
     "ai_generated_partial_editorial": 88,
     "low_confidence": 1,
     "manual_override": 891,
@@ -119840,9 +119840,121 @@ window.CF_INSIGHTS_DATA = {
       "date": "2021-07-23",
       "url": "https://codeforces.com/contest/1551",
       "type": "Div. 3",
-      "problemCount": 1,
-      "maxRating": 1700,
+      "problemCount": 8,
+      "maxRating": 2200,
       "problems": [
+        {
+          "key": "1551A",
+          "index": "A",
+          "slot": "A",
+          "title": "Polycarp and Coins",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1551/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/93149",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定金额 $n$，只能使用面值 $1$ 和 $2$ 的硬币，选择非负整数数量 $c_1,c_2$，满足 $c_1+2c_2=n$。要求最小化两类硬币数量差 $|c_1-c_2|$，并输出任意最优方案。",
+          "transformedStatement": "把每组三枚硬币抽象为一枚 $1$ 元和一枚 $2$ 元，其总价值为 $3$；先取 $\floor n/3$ 组，再根据 $n$ 除以 $3$ 的余数补一枚对应面值的硬币。",
+          "keyObservations": [
+            "令两种硬币数量都为 $\u0000lfloor n/3\nfloor$，它们当前总价值为 $3\floor n/3$，只需处理除以 $3$ 的余数。",
+            "当 $n\bmod 3=0$ 时两数相等且差值为 $0$，这是绝对差的理论下界，因此必然最优。",
+            "当余数为 $1$ 时补一枚面值 $1$ 的硬币，数量差为 $1$；当余数为 $2$ 时补一枚面值 $2$ 的硬币，数量差同样为 $1$。",
+            "若 $n$ 不被 $3$ 整除，两种硬币数量不可能相等，否则总价值会是 $3c_1$；因此差值至少为 $1$，上述构造达到下界。"
+          ],
+          "solutionBrief": "对每个 $n$ 先令 $c_1=c_2=\floor n/3$。若余数为 $1$，令 $c_1$ 加一；若余数为 $2$，令 $c_2$ 加一；余数为 $0$ 时直接输出。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1551B1",
+          "index": "B1",
+          "slot": "B",
+          "title": "Wonderful Coloring - 1",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1551/problem/B1",
+          "editorialUrl": "https://codeforces.com/blog/entry/93149",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个小写字母串，每个字符可染红、染绿或不染；同色字符必须互不相同，且红绿字符数相等。要求在满足条件时最大化染色字符总数，并输出红色字符数。",
+          "transformedStatement": "把字母按出现次数分类：每种重复字母固定贡献一对异色字符，恰好出现一次的字母只能从中选出偶数个并平均分给两种颜色；因此问题转化为两类数量的直接计数。",
+          "keyObservations": [
+            "出现至少两次的字母最多贡献两个被染色字符：选两个出现位置分别染红、绿，更多出现会导致同色重复。",
+            "设恰好出现一次的字母数为 $c_1$、出现至少两次的字母种类数为 $c_2$，重复字母先贡献 $c_2$ 个红色和 $c_2$ 个绿色字符。",
+            "唯一出现的字母彼此不同，可任意分配颜色；为保持两色数量相等，最多再选出各 $\frac{c_1}{2}$ 个，因此答案为 $c_2+\\lfloor c_1/2\\rfloor$。"
+          ],
+          "solutionBrief": "统计恰好出现一次的字母数 $c_1$，以及出现至少两次的字母种类数 $c_2$。每个重复字母可分别染两色，唯一字母再成对分配，答案为 $c_2+\\lfloor c_1/2\\rfloor$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1551B2",
+          "index": "B2",
+          "slot": "B",
+          "title": "Wonderful Coloring - 2",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1551/problem/B2",
+          "editorialUrl": "https://codeforces.com/blog/entry/93149",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数序列和 $k$ 种颜色，可将每个位置涂成一种颜色或不涂。要求同色位置的数值两两不同、每种颜色涂色数量相等，并在满足条件的方案中最大化涂色位置总数，输出一种方案。",
+          "transformedStatement": "每个数值最多贡献 $k$ 个位置；先为每个数值选取至多 $k$ 个出现位置并串成候选序列，再删除末尾少于 $k$ 的余数，使候选长度成为 $k$ 的倍数，最后按顺序循环赋予颜色。",
+          "keyObservations": [
+            "同一数值最多只能涂出 $k$ 次，否则无法让这些位置分属不同颜色；因此它的有效贡献是 $\\min(k,cnt_x)$。",
+            "把每个数值选出的出现位置按数值分组拼成序列后，任意一组都不超过 $k$，循环分配颜色即可保证同组位置颜色互异。",
+            "总选中数必须被 $k$ 整除，删去拼接序列末尾的 $|p|\\bmod k$ 个位置是最少损失，因此保留位置数达到最大。",
+            "按位置序列循环使用颜色 $1,2,\\dots,k$，且长度是 $k$ 的倍数，所以每种颜色出现次数相同并且恰好使用全部颜色。"
+          ],
+          "solutionBrief": "统计每个值的出现次数，并从其出现位置中选取至多 $k$ 个。将所有选中位置按值分组拼接，删去末尾不足整组的若干位置，再按拼接顺序循环分配 $k$ 种颜色，其余位置输出 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1551C",
+          "index": "C",
+          "slot": "C",
+          "title": "Interesting Story",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1551/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/93149",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "greedy",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定若干只含字母 a 到 e 的单词，可从中选择任意数量组成故事。若存在一个字母在所选全部单词中的出现次数，严格多于其他字母出现次数之和，则故事有趣；要求选择最多的单词数，无法选择非空有趣故事时输出 0。",
+          "transformedStatement": "把每个单词对目标字母 $c$ 的贡献表示为“$c$ 的出现次数减去其他字母总次数”。问题转化为：对每个 $c$，从这些贡献中选出尽可能多的数，使总和严格大于 $0$。",
+          "keyObservations": [
+            "对固定字母 $c$，定义单词得分为该字母出现次数减去其余字母总次数；选词后总得分为各单词得分之和，正值恰好等价于故事有趣。",
+            "固定 $c$ 后，任意选取 $k$ 个单词时，得分最大的方案一定是得分最高的前 $k$ 个单词，因此只需考察降序排列后的前缀。",
+            "按得分降序累加，所有总得分仍为正的前缀都对应可行故事；取其中最长前缀即可得到该字母下的最优答案，再在五个字母间取最大值。"
+          ],
+          "solutionBrief": "为每个字母分别计算每个单词的贡献 $f(s,c)$，将贡献降序排列并累加，找出总和大于 $0$ 的最长前缀。五个字母分别求解后取最大值；计算贡献为 $O(5\\sum |s_i|)$，排序总复杂度为 $O(5n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1551D1",
           "index": "D1",
@@ -119852,17 +119964,108 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1551/problem/D1",
           "editorialUrl": "https://codeforces.com/blog/entry/93149",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "几何"
+          ],
           "originalTags": [
             "constructive algorithms",
             "math"
           ],
-          "statementBrief": "题面已抓取：Domino (easy version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个 $n\\times m$ 的格子表，$nm$ 为偶数。需要用恰好 $nm/2$ 个互不重叠的骨牌覆盖全部格子，其中恰好 $k$ 个横放，其余竖放，判断是否存在这样的铺法。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1551D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Domino (hard version)",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1551/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/93149",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的方格，需用恰好 $nm/2$ 个不重叠骨牌铺满棋盘；每个骨牌覆盖共边的两个格子，可横放或竖放。要求恰好有 $k$ 个横向骨牌，并输出一种满足条件的铺法。",
+          "transformedStatement": "将棋盘按边长奇偶性拆分：偶数乘偶数时转化为若干可独立标记的 $2\\times2$ 块；一边为奇数时先固定一整行或一整列的水平骨牌，再把剩余部分转成偶数乘偶数棋盘。",
+          "keyObservations": [
+            "当 $n,m$ 都为偶数时，水平骨牌和竖直骨牌都能按 $2\\times2$ 块配对，因此可行当且仅当 $k$ 为偶数。",
+            "当 $n$ 为奇数、$m$ 为偶数时，每列必须先承担一个水平骨牌端点，至少需要 $m/2$ 个水平骨牌；去掉顶行后剩余区域的水平数仍须为偶数，所以还需 $k-m/2$ 为偶数。",
+            "满足奇数行条件时，直接在顶行放置 $m/2$ 个水平骨牌，剩余 $(n-1)\\times m$ 区域的两边均为偶数，可独立按偶数矩形填充。",
+            "当 $m$ 为奇数时，将棋盘转置，并把目标水平数改为总骨牌数减去 $k$，解出后再转置回来即可。"
+          ],
+          "solutionBrief": "按奇偶性判断可行条件。偶数边时用 $2\\times2$ 块填充；一边为奇数时先铺满奇数边对应的顶行或左列，再填充剩余偶数矩形；另一方向通过转置并交换水平、竖直数量处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1551E",
+          "index": "E",
+          "slot": "E",
+          "title": "Fixed Points",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1551/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/93149",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "dp"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数序列，每次可以删除任意一个元素，右侧元素会左移并重新编号。求至少删除多少个元素，使剩余序列中至少有 $k$ 个位置满足元素值等于其新下标；若无法做到则输出 $-1$。",
+          "transformedStatement": "将删除后的序列视为原序列的一个子序列，按原顺序逐个决定保留或删除；若当前已有 $j$ 个元素被保留，则下一个保留元素的新下标为 $j+1$，据此最大化每种保留数量下的固定点数。",
+          "keyObservations": [
+            "删除元素不会产生贡献；保留原序列第 $i+1$ 个元素时，它的新下标等于此前保留元素数量加一，因此是否成为固定点只由保留数量决定。",
+            "令 $dp[i][j]$ 表示处理前 $i$ 个元素且保留其中 $j$ 个时，最多能得到的固定点数量，就能同时覆盖删除与保留两种选择。",
+            "保留第 $i+1$ 个元素会转移到 $dp[i+1][j+1]$，并在 $a_{i+1}=j+1$ 时增加一个固定点；删除它则转移到 $dp[i+1][j]$。",
+            "最终应取满足 $dp[n][j]\\ge k$ 的最大 $j$，因为保留越多代表删除越少，答案为 $n-j$；不存在这样的 $j$ 时答案为 $-1$。"
+          ],
+          "solutionBrief": "用二维 DP 处理原数组前缀：状态记录已处理元素数、保留元素数及最多固定点数。逐个元素选择删除或保留，保留时按当前新下标判断是否为固定点；最后取固定点数至少为 $k$ 的最大保留数，答案是 $n-j$，否则为 $-1$。复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1551F",
+          "index": "F",
+          "slot": "F",
+          "title": "Equidistant Vertices",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1551/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/93149",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵含 $n$ 个顶点的树，需要选择恰好 $k$ 个不同顶点，使任意两点之间的树上距离都相等。求满足条件的顶点集合数量，并对 $10^9+7$ 取模。",
+          "transformedStatement": "对 $k\\ge3$，将合法集合重述为：存在唯一中心 $Q$，所有点位于同一距离层且分别来自 $Q$ 的不同相邻子树。固定 $Q$ 和距离后，只需统计每个分支的候选点数，并计算从不同分支选出 $k$ 个点的方案数。",
+          "keyObservations": [
+            "当 $k=2$ 时任意两个顶点都满足条件，因此答案直接是 $\\frac{n(n-1)}{2}$。",
+            "当 $k\\ge 3$ 时，所有被选顶点必然存在唯一中心 $Q$，使它们到 $Q$ 的距离相等；这是由树上三条路径的公共交点及距离相等推出的。",
+            "固定中心 $Q$ 和距离层后，选中顶点必须来自 $Q$ 的不同相邻子树；否则两点路径会经过同一分支，导致它们之间距离小于其他点对。",
+            "设各子树在当前距离层包含 $cnt_i$ 个顶点，则逐个处理子树，用 $dp[i][j]$ 统计前 $i$ 个子树选 $j$ 个顶点；每个子树只能选一个，转移权值为 $cnt_i$。"
+          ],
+          "solutionBrief": "$k=2$ 时直接计数。$k\\ge3$ 时枚举唯一中心 $Q$，按距离层统计各相邻子树中的顶点数，再用子树级 DP 计数从不同分支选出 $k$ 个顶点的方案，汇总所有 $Q$ 和层，复杂度为 $O(n^2k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
