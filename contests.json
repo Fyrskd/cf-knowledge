@@ -1,5 +1,16 @@
 [
   {
+    "id": 1637,
+    "name": "Codeforces Global Round 19",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1644676500,
+    "relativeTimeSeconds": 145900599,
+    "date": "2022-02-12"
+  },
+  {
     "id": 1638,
     "name": "Codeforces Round 771 (Div. 2)",
     "type": "CF",
