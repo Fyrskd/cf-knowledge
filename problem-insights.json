@@ -15,19 +15,321 @@
     ]
   },
   "summary": {
-    "total_problems": 3617,
+    "total_problems": 3624,
     "source_total_problems": 3626,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3617,
-    "with_editorial_brief": 3312,
-    "with_solution_brief": 3314,
-    "missing_editorial_brief": 303,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3624,
+    "with_editorial_brief": 3318,
+    "with_solution_brief": 3320,
+    "missing_editorial_brief": 304,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2679,
+    "ai_override_count": 2686,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1608A",
+      "contest_id": 1608,
+      "title": "Find Array",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1608/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/97782",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "对每组给定的正整数 $n$，构造长度为 $n$ 的整数数组。数组元素都在 $[1,10^9]$ 内且严格递增；从第二个元素开始，每个元素都不能被前一个元素整除，输出任意满足条件的数组。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text (summary not ready; withheld)",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T09:27:05+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1608B",
+      "contest_id": 1608,
+      "title": "Build the Permutation",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1608/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/97782",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy"
+      ],
+      "statement_brief": "给定 $n,a,b$，要构造一个 $1$ 到 $n$ 的排列，使内部位置中恰有 $a$ 个满足左右都更小的局部极大值、$b$ 个满足左右都更大的局部极小值；不存在时输出 $-1$。",
+      "transformed_statement": "把局部极大值和局部极小值视为必须交替的锯齿节点：先用可行性条件确定锯齿段长度，再将最大的若干数字排成低、高交替的序列，其余数字递增接在前面。",
+      "key_observations": [
+        "局部极大值与局部极小值在排列中必须交替出现，因此两者数量之差不能超过 $1$。",
+        "每个局部极值都需要相邻位置支撑，首尾还需额外占位，所以必须满足 $a+b+2\\le n$。",
+        "当 $a\\ge b$ 时，用交替的低位与高位组成一段锯齿序列，可让内部位置恰好产生 $a$ 个极大值和 $b$ 个极小值。",
+        "若 $a<b$，先交换两者构造，再将每个值替换为 $n-p_i+1$，会互换局部极大值与局部极小值。"
+      ],
+      "solution_brief": "先检查 $a+b+2\\le n$ 且 $|a-b|\\le1$。令较大的计数对应极大值，取最大的 $a+b+2$ 个数交替放置低位和高位，其余较小数字递增放在前面；若 $a<b$，对构造结果做值域反转。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T09:26:53+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1608C",
+      "contest_id": 1608,
+      "title": "Game Master",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1608/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/97782",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心",
+        "数据结构"
+      ],
+      "original_tags": [
+        "data structures",
+        "dfs and similar",
+        "dp",
+        "graphs",
+        "greedy",
+        "two pointers"
+      ],
+      "statement_brief": "有 $n$ 名玩家，每次从剩余玩家中任选两人并选择一张地图对战，按该地图力量较高者获胜，败者被淘汰，直到只剩一人。请判断每名玩家是否存在某种对战安排，使他最终成为唯一冠军。",
+      "transformed_statement": "把每名玩家视为节点，若玩家 $u$ 能在任一地图击败玩家 $v$，就连边 $u\\to v$；题目转化为寻找能够到达第一张地图最强玩家的所有节点，并用两张力量排序链保留必要的可达性。",
+      "key_observations": [
+        "将比赛倒序观察：若当前已选玩家集合中的某人能击败玩家 $v$，就能把 $v$ 加入集合；最终能扩展到所有玩家，当且仅当起点能成为冠军。",
+        "建立有向图表示“能在某张地图击败对手”，玩家能夺冠等价于能到达第一张地图力量最大的玩家，因为该玩家能在第一张地图击败所有人。",
+        "按第一张和第二张地图的力量分别降序排列，只保留每个排序中相邻玩家的胜负边；这些链边仍保留所需的可达关系，使图边数降为 $O(n)$。",
+        "从第一张地图最强玩家出发在反图上遍历，能被遍历到的玩家恰好存在路径到该最强玩家，因此对应答案为 $1$。"
+      ],
+      "solution_brief": "把玩家建成“能击败”关系图，冠军候选者必须能到达第一张地图最强玩家。分别按两张地图力量降序，仅连接相邻玩家形成稀疏图，再从最强玩家在反图上 DFS，标记所有可达者。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T09:26:21+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1608D",
+      "contest_id": 1608,
+      "title": "Dominoes",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1608/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/97782",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "数论与同余",
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "fft",
+        "graphs",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定 $n$ 个不可旋转的骨牌，每个骨牌有左、右两个格子，部分格子已染成黑或白，其余可任选颜色。需要补全所有未染格，并判断能否重排骨牌，使每个骨牌的右格都与环中下一个骨牌的左格异色，求合法染色方案数。",
+      "transformed_statement": "把环上的相邻约束看成将每个右格与另一个骨牌的左格配成异色对，先统计黑白各有 $n$ 格的补色方案，再专门排除所有骨牌均为异色但模式不统一的情况。",
+      "key_observations": [
+        "合法排列会把每个右格与下一个骨牌的左格配成异色对，因此所有合法染色必须恰有 $n$ 个黑格和 $n$ 个白格。",
+        "忽略排列限制时，只需在未染色格中选择 $n-C_W$ 个染黑，方案数为 $C(2n-C_W-C_B,n-C_W)$；若已有某种颜色超过 $n$ 个则答案为 $0$。",
+        "若存在一个完全黑或完全白的骨牌，任意满足黑白数量平衡的染色都能通过重排并插入其他骨牌构成合法环，因此无需额外扣除。",
+        "当所有骨牌都为异色时，合法性要求所有骨牌模式都相同；可将每个骨牌取 $WB$ 或 $BW$ 的方案数相乘，再扣除两种全相同模式。"
+      ],
+      "solution_brief": "先检查黑白数量是否都不超过 $n$，用组合数统计补色后黑白各半的方案。若所有骨牌都可能染成异色，再用各骨牌可选的 $WB/BW$ 数量乘积统计异色染色，并扣除全为 $WB$ 或全为 $BW$ 的合法情况；存在单色骨牌时无需扣除。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T09:26:00+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1608E",
+      "contest_id": 1608,
+      "title": "The Cells on the Paper",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1608/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/97782",
+      "editorial_quality": "complete",
+      "primary_topic": "几何",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "implementation",
+        "sortings"
+      ],
+      "statement_brief": "给定无限网格上的 $n$ 个不同位置单元格，三种颜色各有 $n/3$ 个。可以删去任意单元格，要求每种颜色最终留下相同数量，并为三种颜色分别选择边平行于网格线且满足题目相对位置条件的三个矩形；求最多能留下多少个单元格。",
+      "transformed_statement": "把每色保留数记为 $t$，将三个矩形的相对位置归约为横向排列或“T”形排列，并枚举旋转方向和颜色顺序。每种固定布局都转化为检查能否从各颜色中选出 $t$ 个满足边界限制的点。",
+      "key_observations": [
+        "三个不相交矩形的最优相对位置只需考虑横向排列和“T”形排列，再枚举旋转与颜色顺序，几何情况即可降为有限种。",
+        "横向排列固定每种颜色保留数量为 $t$ 后，取第一种颜色最左的 $t$ 个、第三种颜色最右的 $t$ 个最有利；只需检查两者不交且中间包含足够多的第二种颜色。",
+        "“T”形排列中，先取第一种颜色最上方的 $t$ 个，再在剩余区域取第二种颜色最左的 $t$ 个，最后检查剩余区域是否有至少 $t$ 个第三种颜色。",
+        "若能保留 $t$ 个每色单元格，则保留更少数量也可行，因此可对 $t$ 二分；枚举四种旋转和六种颜色顺序即可覆盖所有候选布局。"
+      ],
+      "solution_brief": "令 $t$ 为每种颜色保留的单元格数，对横向和“T”形两类布局及其旋转、颜色排列分别二分 $t$。横向取两端极值点，T形依次取上方、左侧极值点，再检查第三色数量；最大答案为 $3t$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T09:25:27+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1608F",
+      "contest_id": 1608,
+      "title": "MEX counting",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1608/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/97782",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "implementation"
+      ],
+      "statement_brief": "给定长度为 $n$ 的非负整数数组 $b$，要构造数组 $a$，其中每个 $a_i$ 在 $[0,n]$ 内。对每个前缀 $a_1\\ldots a_i$，其 MEX 与 $b_i$ 的差的绝对值必须不超过 $k$，求满足条件的数组 $a$ 数量并对 $998244353$ 取模。",
+      "transformed_statement": "把逐前缀约束转化为在线处理数组元素的 DP：状态记录当前前缀的 MEX，以及所有大于该 MEX 的不同值的数量；大值本身只保留等价类信息。每次加入元素时分别处理 MEX 不变和跳变，并按 $mex+big$ 分组优化跳变求和。",
+      "key_observations": [
+        "只需保留当前前缀的 MEX 和大于 MEX 的不同元素个数 $big$；大元素的具体值可按出现位置及相等关系归类，不影响后续转移。",
+        "加入新元素但 MEX 不变时，选已有的 $mex+big$ 类有序值保持 $big$，选新的大元素则使 $big$ 增加 $1$。",
+        "若新元素等于当前 $mex$ 且连续区间 $mex+1$ 到 $mex_1-1$ 都已出现，MEX 才能跳到 $mex_1$；对应选择这些大元素出现位置的方案数为 $\\frac{big!}{(big-(mex_1-mex-1))!}$。",
+        "固定 $T=mex+big$ 后，MEX 跳转只从 $(mex,T-mex)$ 到 $(mex_1,T+1-mex_1)$，系数可拆成阶乘比；对 $dp\\cdot(T-mex)!$ 做前缀和即可把转移降为 $O(1)$。"
+      ],
+      "solution_brief": "设 $dp[pos][mex][big]$ 统计满足前缀限制的方案，按 MEX 是否变化转移，并只保留当前允许的至多 $2k+1$ 个 MEX。对 MEX 跳转按 $mex+big$ 分组做前缀和，整体复杂度为 $O(n^2k)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T09:25:05+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1608G",
+      "contest_id": 1608,
+      "title": "Alphabetic Tree",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1608/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/97782",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "树结构",
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "dfs and similar",
+        "hashing",
+        "string suffix structures",
+        "strings",
+        "trees"
+      ],
+      "statement_brief": "给定一棵带小写字母边权的树和 $m$ 个字符串。每次查询给出节点 $u,v$ 及编号区间 $[l,r]$，将 $u$ 到 $v$ 最短路径上的边字符按经过顺序拼成字符串，求它在第 $l$ 至第 $r$ 个输入字符串中出现的总次数。",
+      "transformed_statement": "把所有输入字符串以及树的重链正向、反向表示拼入一个总串；树上路径串被表示为若干总串子串。查询因此变成：在后缀数组中找出以该路径串为前缀的连续后缀区间，并统计起点属于指定字符串编号区间的后缀数量。",
+      "key_observations": [
+        "将树按重链剖分后，每条有向路径可拆成 $O(\\log n)$ 段；加入正向与反向重链后，每段都对应总串中的连续子串，从而能与普通后缀比较。",
+        "路径串与某个后缀的最长公共前缀可按重链分段逐段查询，并用总串的 LCP 结构跳过相同部分，因此一次比较降为 $O(\\log n)$。",
+        "所有以路径串为前缀的后缀在后缀数组中构成连续区间，二分两个边界即可把字符串匹配转化为区间计数。",
+        "按原字符串编号离线扫描，用树状数组维护当前编号以前的后缀起点；对区间 $[l,r]$ 做两次前缀版本差分即可筛掉其他字符串。"
+      ],
+      "solution_brief": "把原字符串、重链及其反向串拼成总串，建立后缀数组、LCP 与 RMQ。用重链分解计算路径串和后缀的 LCP，二分得到匹配后缀区间；再按字符串编号离线扫描，以树状数组统计该区间内属于 $[l,r]$ 的后缀起点。总复杂度为 $O((n+q)\\log^2 n)$，空间复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T09:24:49+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 8,
       "problem_key": "1585A",
