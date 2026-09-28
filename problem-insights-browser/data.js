@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3668,
-    "source_total_problems": 3670,
+    "total_problems": 3674,
+    "source_total_problems": 3676,
     "filtered_out_problems": 2,
-    "with_statement_brief": 3668,
+    "with_statement_brief": 3674,
     "with_editorial_brief": 3362,
     "with_solution_brief": 3364,
-    "missing_editorial_brief": 304,
+    "missing_editorial_brief": 310,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2730,
     "primary_topic_count": 13,
-    "contest_count": 565,
+    "contest_count": 566,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,7 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1192,
+    "动态规划与状态设计": 299,
+    "构造与贪心": 1195,
+    "交互": 107,
     "基础实现与模拟": 232,
     "数论与同余": 381,
     "图论与网络流": 239,
@@ -52,16 +54,14 @@ window.CF_INSIGHTS_DATA = {
     "数据结构": 350,
     "树结构": 177,
     "博弈": 111,
-    "动态规划与状态设计": 297,
     "字符串": 192,
     "几何": 89,
-    "交互": 106,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 310,
     "ai_generated_partial_editorial": 77,
     "ai_generated_with_editorial": 2394,
-    "missing_editorial": 304,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -113100,6 +113100,167 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "维护当前各元素出现次数及其频次分布。反复取最高频 $h$ 的 $k$ 个元素，加入 $(h-1)k(n-k)$，方案数乘 $(k!)^2$，并将它们次数各减 $2$；若 $h=1$，乘剩余元素排列数 $k!$ 后结束。按频次计数可在 $O(n+C)$ 内完成。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1589,
+      "name": "Codeforces Round 755 (Div. 2, based on Technocup 2022 Elimination Round 2)",
+      "date": "2021-11-14",
+      "url": "https://codeforces.com/contest/1589",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1589A",
+          "index": "A",
+          "slot": "A",
+          "title": "Mathematical Addition",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "交互"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Mathematical Addition；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1589B",
+          "index": "B",
+          "slot": "B",
+          "title": "Coloring Rectangles",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Coloring Rectangles；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1589C",
+          "index": "C",
+          "slot": "C",
+          "title": "Two Arrays",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "题面已抓取：Two Arrays；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1589D",
+          "index": "D",
+          "slot": "D",
+          "title": "Guess the Permutation",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "构造与贪心",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "combinatorics",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Guess the Permutation；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1589E",
+          "index": "E",
+          "slot": "E",
+          "title": "Game with Stones",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈",
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "games",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Game with Stones；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1589F",
+          "index": "F",
+          "slot": "F",
+          "title": "Strange LCS",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1589/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "字符串",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "graphs",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Strange LCS；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
