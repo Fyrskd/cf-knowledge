@@ -15,19 +15,267 @@
     ]
   },
   "summary": {
-    "total_problems": 3287,
+    "total_problems": 3293,
     "source_total_problems": 3296,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3287,
-    "with_editorial_brief": 3006,
-    "with_solution_brief": 3008,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3293,
+    "with_editorial_brief": 3012,
+    "with_solution_brief": 3014,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2349,
+    "ai_override_count": 2355,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1677A",
+      "contest_id": 1677,
+      "title": "Tokitsukaze and Strange Inequality",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1677/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/102631",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "data structures",
+        "dp"
+      ],
+      "statement_brief": "给定一个长度为 $n$ 的排列，需要统计所有下标四元组 $a<b<c<d$ 的数量，其中满足 $p_a<p_c$ 且 $p_b>p_d$。不同下标组成的四元组分别计数。",
+      "transformed_statement": "把每个中间下标 $b$ 的贡献表示为右侧可选的 $d$ 数量，并按 $c$ 从左到右动态删除不满足 $d>c$ 的部分；于是固定 $a,c$ 后只需查询区间 $(a,c)$ 内这些计数的总和。",
+      "key_observations": [
+        "固定中间位置 $b$，预处理其右侧满足 $p_b>p_d$ 的位置数；这样选定 $a,c$ 后，所有合法 $d$ 的贡献可按 $b$ 区间求和。",
+        "枚举 $c$ 时，从每个 $b<c$ 的计数中删除 $d=c$ 且 $p_b>p_c$ 的情况，使维护值恰好只统计 $d>c$ 的合法位置。",
+        "固定 $c$ 和满足 $p_a<p_c$ 的 $a$ 后，所需贡献是 $b\\in[a+1,c-1]$ 的计数和；对计数数组做前缀和即可在 $O(1)$ 时间取得该区间和。"
+      ],
+      "solution_brief": "先预处理每个 $b$ 右侧小于 $p_b$ 的元素数。按 $c$ 递增维护这些计数，删除把 $c$ 误当作 $d$ 的情况；对每个 $a<c$ 且 $p_a<p_c$，用前缀和累加 $b\\in(a,c)$ 的贡献，总复杂度为 $O(n^2)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:00:14+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1677B",
+      "contest_id": 1677,
+      "title": "Tokitsukaze and Meeting",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1677/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/102631",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "data structures",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "有 $n\\times m$ 个座位，学生按顺序进入；每次新学生坐到第 1 行第 1 列，原有学生依次向后移，行末学生移到下一行开头。输入每个学生是否 serious，要求在每位学生入座后分别统计含至少一名 serious 学生的行数和列数，并输出两者之和。",
+      "transformed_statement": "不模拟整个座位表，而将列按学生序号对 $m$ 取模分组；行则把时刻 $i$ 与 $i-m$ 配对，只判断最近的 serious 学生是否仍位于当前长度为 $m$ 的影响范围内。",
+      "key_observations": [
+        "列的好坏只由已经出现的 serious 学生在到达序号对 $m$ 取模后的类别决定；每类第一次出现 serious 时恰好新增一列好列，因此列数只增不减。",
+        "把时刻 $i$ 与 $i-m$ 对齐，相当于在同一行轨迹上加入一个新位置；这样行数可以按 $i\\bmod m$ 分组递推，避免重新检查整个座位表。",
+        "设最近的 serious 学生序号为 $j$，若 $i-j<m$，新加入的位置会使当前行变好并令对应计数增加；否则行的好坏与时刻 $i-m$ 相同。",
+        "每个时刻的答案是当前行计数与列计数之和，分别维护即可绕开座位整体移动。"
+      ],
+      "solution_brief": "按到达顺序处理学生，维护各列 residue 是否出现过 serious，并按 $i\\bmod m$ 维护行的累计好行数。用最近 serious 的位置判断当前行是否新增好行，输出两部分之和。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:59:57+00:00",
+          "quality_flags": [
+            "statement_text末尾截断，但核心规则和目标可由题面及题解确定"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1677C",
+      "contest_id": 1677,
+      "title": "Tokitsukaze and Two Colorful Tapes",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1677/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/102631",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "graphs",
+        "greedy"
+      ],
+      "statement_brief": "两条彩带各有 $n$ 种颜色且每种出现一次。为每种颜色分配一个互不相同的 $1$ 到 $n$ 的值，同色在两条带上的值必须相同；以两条带对应位置的值差绝对值之和为美丽度，求最大值。",
+      "transformed_statement": "把第一条带的每个位置连到第二条带中相同颜色的位置，得到一个位置置换并分解成若干环；问题转化为在每个环上安排全局互异的数，使交替的峰谷差值总和最大。",
+      "key_observations": [
+        "把第一条带的位置映射到第二条带中相同颜色的位置后，映射必然分解为若干环；每个环可独立决定标签交替产生贡献的结构。",
+        "环内按最大值、最小值交替放置标签时，相邻差值总和最大；奇环剩下的一个位置不影响贡献，可暂不处理。",
+        "去掉奇环中的中性位置后，只有局部峰值和谷值影响答案，峰值贡献 $2h_i$、谷值贡献 $-2h_i$，因此应把最大的标签放在峰值、最小的放在谷值。",
+        "设所有环中峰值数量为 $c=\\sum \\lfloor |C|/2\\rfloor$，全局最优值为 $2c(n-c)$，只需统计各环长度而无需显式构造标签。"
+      ],
+      "solution_brief": "将两条带建立位置映射并分解成环。每个长度为 $s$ 的环贡献 $\\lfloor s/2\\rfloor$ 个峰谷位置，令 $c$ 为总数，则把大数放峰、小数放谷后的最大答案是 $2c(n-c)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:59:27+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1677D",
+      "contest_id": 1677,
+      "title": "Tokitsukaze and Permutations",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1677/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/102631",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [],
+      "original_tags": [
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定长度为 $n$ 的排列 $p$，每次从左到右扫描相邻元素，若左边较大就交换，恰好执行 $k$ 次得到排列 $a$。只知道 $a$ 的值序列中部分位置（$v_i$ 为左侧大于 $a_i$ 的元素数），求所有可能原排列 $p$ 的数量。",
+      "transformed_statement": "把排列改写为满足 $0\\le c_i<i$ 的值序列；这种序列与排列一一对应。$k$ 次操作后，最终观测位置 $j\\le n-k$ 只由 $c_{j+k}$ 通过 $v_j=\\max(c_{j+k}-k,0)$ 决定，末尾 $k$ 位固定为零。",
+      "key_observations": [
+        "值序列 $c_i$ 对每个位置满足 $0\\le c_i<i$，并与原排列一一对应，因此只需统计可行的 $c$ 序列。",
+        "一次冒泡操作会令值序列整体左移，并把正值减一；执行 $k$ 次后，前 $n-k$ 个位置满足 $v_j=\\max(c_{j+k}-k,0)$，末尾 $k$ 个位置必为 $0$。",
+        "前 $k$ 个 $c_i$ 不影响最终序列，各有 $i$ 种取值，贡献因子为 $k!$；其余位置可按对应的观测值独立计数。",
+        "若观测值为正，则对应 $c_i$ 被唯一确定并需满足 $c_i\\le i-1$；若观测值为零，则 $c_i$ 有 $\\min(i-1,k)+1$ 种取值，缺失值则有 $i$ 种取值。"
+      ],
+      "solution_brief": "用值序列 $c$ 代替排列，利用 $k$ 次冒泡后的关系逐项统计。答案先乘前 $k$ 项的乘积，再根据 $V_{i-k}$ 为缺失、零或正数分别乘对应方案数；末尾 $k$ 个观测值非零时无解，复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:59:08+00:00",
+          "quality_flags": [
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1677E",
+      "contest_id": 1677,
+      "title": "Tokitsukaze and Beautiful Subsegments",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/1677/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/102631",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "data structures"
+      ],
+      "statement_brief": "给定一个长度为 $n$ 的排列，若子段中存在两个位置 $i<j$，使 $p_i p_j$ 等于该子段的最大值，则称子段美丽。每次给出区间 $[l,r]$，要求统计完全包含在其中的美丽子段数量。",
+      "transformed_statement": "将询问按右端点排序并扫描右端点 $R$，维护每个左端点 $x$ 对应区间 $[x,R]$ 是否及如何贡献答案；单调栈按最大值分块，因子关系决定一整段左端点的贡献变化。",
+      "key_observations": [
+        "固定右端点 $R$ 后，单调栈把所有左端点按区间最大值分成若干连续块；同一块内最大值相同，因此只需处理每个块何时产生合法乘积。",
+        "若某最大值块的最大值为 $x$，且块内存在位置 $k$ 满足 $p_kp_R=x$，则所有不超过 $k$ 的左端点对应区间都会同时变为美丽区间；该批左端点可用一次区间更新加入。",
+        "随着 $R$ 右移，被新最大值弹出的栈块不再继续贡献，未弹出的块只需根据 $p_R$ 的因子和倍数更新；由于排列值唯一，可通过位置反查判断因子是否落在当前块内。",
+        "线段树用时间戳和懒标记维护各左端点在当前 $R$ 下的累计贡献，查询 $[l,r]$ 时求左端点区间 $[l,r]$ 的和，从而离线回答所有右端点为 $r$ 的询问。"
+      ],
+      "solution_brief": "按右端点离线处理询问。单调栈维护最大值块；枚举当前值的因子或倍数，确定新产生的美丽左端点区间，并在线段树中更新。弹出栈块时清除其贡献，查询对应左端点和。总复杂度为 $O(n\\log n\\log n+q\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:58:31+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1677F",
+      "contest_id": 1677,
+      "title": "Tokitsukaze and Gems",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1677/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/102631",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定长度为 $n$ 的序列，第 $i$ 个位置有 $a_i$ 颗第 $i$ 类宝石。对每个连续区间 $[l,r]$，从各类宝石中分别选取不超过区间内现有数量的宝石，按所选数量计算权值，并求所有区间、所有选法的权值总和。",
+      "transformed_statement": "把一个区间表示为各类可选数量上界 $b_i$，先计算其所有子多重集的聚合贡献；沿序列加入位置时，用四个统计量描述旧方案，并将新增位置的选择枚举压缩成一个 $4\\times4$ 矩阵。于是原问题变成所有连续矩阵乘积贡献之和。",
+      "key_observations": [
+        "固定一个区间后，每种宝石的选择数彼此独立；维护“加权和”“非零种类数”“方案数”及它们的乘积，即可在加入一种宝石时完成四状态转移。",
+        "若新增位置含有 $y$ 颗宝石，其转移只需用到 $y+1$、$y$ 和 $H(y)=\\sum_{q=1}^{y}p^q q^k$，因此每个位置可以表示为一个固定维度的矩阵。",
+        "区间的贡献等价于对应位置矩阵乘积的一个状态分量；按右端点维护所有以该点结尾的区间，再累加各右端点结果即可覆盖所有区间。",
+        "$H(n)$ 可写成 $p^{n+1}g_k(n)-p g_k(0)$，其中 $g_k$ 是关于 $n$ 的 $k$ 次多项式；由 $p g_k(n)-g_k(n-1)=n^k$ 求出插值点，再用多点求值获得所有 $H(a_i)$。"
+      ],
+      "solution_brief": "对固定区间维护四个聚合量，推导加入一个位置后的 $4\\times4$ 矩阵转移，并用矩阵乘积求所有区间贡献。通过多项式插值与多点求值批量计算 $\\sum_{q=1}^{a_i}p^q q^k$，总复杂度为 $O(k\\log^2 k+n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T02:58:10+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 7,
       "problem_key": "1678A",
