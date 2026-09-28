@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3189,
+    "total_problems": 3195,
     "source_total_problems": 3197,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3189,
-    "with_editorial_brief": 2908,
-    "with_solution_brief": 2910,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3195,
+    "with_editorial_brief": 2914,
+    "with_solution_brief": 2916,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2251,
+    "ai_override_count": 2257,
     "primary_topic_count": 13,
-    "contest_count": 488,
+    "contest_count": 489,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1019,
+    "构造与贪心": 1021,
+    "树结构": 159,
+    "图论与网络流": 200,
+    "动态规划与状态设计": 271,
+    "数据结构": 299,
     "博弈": 101,
-    "动态规划与状态设计": 270,
-    "树结构": 158,
-    "图论与网络流": 199,
     "数论与同余": 340,
     "组合计数与概率": 247,
-    "数据结构": 298,
     "基础实现与模拟": 192,
     "交互": 99,
     "字符串": 167,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1949,
+    "ai_generated_with_editorial": 1955,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -98510,6 +98510,186 @@ window.CF_INSIGHTS_DATA = {
             "固定右端点 $r$ 时，若 $S[r]\\ne S[r-1]$，所有起点 $1\\ldots r-1$ 都产生合法子串，因此该右端点贡献 $r-1$；否则没有长度大于 $1$ 的贡献。"
           ],
           "solutionBrief": "先计入全部 $n$ 个长度为 $1$ 的子串，再扫描相邻字符；若 $S[r]\\ne S[r-1]$，答案加上 $r-1$。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1693,
+      "name": "Codeforces Round 800 (Div. 1)",
+      "date": "2022-06-16",
+      "url": "https://codeforces.com/contest/1693",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1693A",
+          "index": "A",
+          "slot": "A",
+          "title": "Directional Increase",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1693/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103952",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "有一个全为 $0$ 的数组和位于首元素的指针。每次可将指针所在元素加一并向右移动，或减一并向左移动，位置循环；操作结束时指针必须回到首元素，判断能否得到给定数组。",
+          "transformedStatement": "把每个位置执行向右操作的次数记为 $b_i$，相邻位置的向左操作次数由指针回到首元素的要求确定，于是目标数组满足 $a_i=b_i-b_{i-1}$；问题转为检查这组前缀累计次数是否非负且在首次为零后保持为零。",
+          "keyObservations": [
+            "设在第 $i$ 个位置执行第一类操作的次数为 $b_i$，则第二类操作在相邻位置的次数被唯一匹配，因而有 $a_i=b_i-b_{i-1}$，数组被转化为前缀和序列的可行性判断。",
+            "指针最终回到首元素要求所有位置的总增量为零，即数组总和必须为 $0$；此时可由 $b_1=a_1$ 递推得到各个 $b_i$。",
+            "所有 $b_i$ 必须非负，否则对应位置需要执行无法进行的负次数操作；若某个 $b_i=0$，则后续所有 $b_j$ 也必须为零，因为指针无法继续经过后面的元素。"
+          ],
+          "solutionBrief": "先检查数组总和是否为 $0$，再计算前缀和 $b_i$。若所有 $b_i\\ge0$ 且从某处出现 $0$ 后全部保持为 $0$，则可按递推顺序构造操作，否则输出 No。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1693B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fake Plastic Trees",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1693/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103952",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定以 1 为根的树，每个顶点初始值为 0，并要求最终值落在区间 $[l_v,r_v]$。每次选择一个顶点，对从根到该顶点的路径施加题面规定的增量操作，求满足所有区间限制所需的最少操作次数。",
+          "transformedStatement": "把每棵子树压缩成一个状态：在使用该子树内部最少操作的前提下，它最多能向父亲及更上方传递多少增量。父顶点只需比较所有儿子状态之和与自身下界，决定是否新增一次操作。",
+          "keyObservations": [
+            "同一顶点上的多次操作可以合并，因此最优方案中每个顶点至多作为操作起点一次；若在该点操作，可将其局部贡献取为 $r_v$。",
+            "设子树向父亲最多传递的值为 $mx_v$，则顶点 $v$ 从所有儿子收到的总值是各儿子 $mx_u$ 之和，这个总值完全决定是否还需在 $v$ 发起操作。",
+            "若儿子贡献总和小于 $l_v$，必须在 $v$ 操作并令 $mx_v=r_v$；否则无需新增操作，向上最多传递 $\\min(r_v,\\sum mx_u)$，从而保证 $v$ 的上界。",
+            "按后序处理整棵树即可同时得到最少操作数和每个子树的 $mx_v$，每条边、每个顶点只处理一次。"
+          ],
+          "solutionBrief": "后序遍历树，汇总儿子传来的最大值。若总和小于 $l_v$，答案加一并令 $mx_v=r_v$；否则令 $mx_v=\\min(r_v,总和)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1693C",
+          "index": "C",
+          "slot": "C",
+          "title": "Keshi in Search of AmShZ",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1693/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/103952",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "graphs",
+            "greedy",
+            "shortest paths"
+          ],
+          "statementBrief": "有一个有向图，Keshi 从城市 $1$ 出发要到城市 $n$。每天 AmShZ 可封锁当前城市的一条出路，或让 Keshi 沿未封锁出路移动；为应对他选择最不利的可达城市，求保证相遇所需的最少天数。",
+          "transformedStatement": "把每个城市的答案视为“到终点的移动天数加为控制下一步而必须封锁的更差出路数”。从终点反向处理时，已确定距离的后继逐个成为可选阈值，从而在线维护每个前驱的最优总代价。",
+          "keyObservations": [
+            "令 $dis_v$ 表示从城市 $v$ 到城市 $n$ 的最少后续天数；若当前要让行进落到某个后继，所有 $dis$ 更大的出口都必须先被封锁，因此代价是后继的 $dis$ 加上这些出口数量。",
+            "从终点按 $dis$ 递增处理节点时，尚未处理的出边恰好对应到达时间更晚的后继；每处理一条反向边，就能更新其起点选择该后继时的总代价。",
+            "Keshi 会选择未封锁出口中最差的可达城市，所以只需枚举一个作为阈值的后继；其余更差出口全部封锁后，剩余选择不会超过该后继的 $dis$。"
+          ],
+          "solutionBrief": "反向从城市 $n$ 做按距离递增的 Dijkstra。对每个前驱 $u$ 维护尚未处理的出边数；处理后继 $v$ 时，用“$dis_v$ 加仍需封锁的更差出口数”更新 $dis_u$，最终输出 $dis_1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1693D",
+          "index": "D",
+          "slot": "D",
+          "title": "Decinc Dividing",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1693/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/103952",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个$1$到$n$的排列。若一个子数组删除某个递减子序列后能变成递增序列，就称其为 Decinc；要求统计所有满足$1\\le l\\le r\\le n$的区间$[l,r]$数量。",
+          "transformedStatement": "把每个区间看成将元素划分为一个递增子序列和一个递减子序列的问题。对固定左端点，分别记录当当前位置放入递增组或递减组时，另一组末值能够达到的边界，并据此判断区间是否可行。",
+          "keyObservations": [
+            "删除一个递减子序列后剩余序列递增，等价于把区间元素划分为递增子序列和递减子序列，这使问题可按最后一个元素所属序列建模。",
+            "对固定左端点，$dp_{l,i}$记录以递增子序列结尾时递减子序列末值的最大可能值，$pd_{l,i}$对称记录递增子序列末值的最小可能值。",
+            "区间不可行当且仅当同时满足 $dp_{l,r}=-\\infty$ 和 $pd_{l,r}=+\\infty$，因此只需在向左扩展区间时维护这两个状态。",
+            "令$j$为$i$左侧最近的下降位置，则$dp_i$至多取$-\\infty,+\\infty,a_j,a_{j+1}$；中间位置可移入递增子序列，故每个状态至多变化三次，总更新次数为$O(n)$。"
+          ],
+          "solutionBrief": "从右向左枚举左端点，维护所有右端点的$dp$与$pd$状态；用状态是否同时陷入$dp=-\\infty、pd=+\\infty$判断非法区间，并利用每个状态至多三次变化，将总复杂度降为$O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1693E",
+          "index": "E",
+          "slot": "E",
+          "title": "Outermost Maximums",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1693/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/103952",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定首尾均为 $0$ 的数组。每次只能把当前最大值的最左出现位置改为其左侧较小元素中的最大值，或把当前最大值的最右出现位置改为其右侧较小元素中的最大值；求把所有元素变为 $0$ 所需的最少操作次数。",
+          "transformedStatement": "对固定元素 $a_i$，将其余位置按位于 $i$ 左侧或右侧标记，元素被处理后的过程等价于在按数值排列的标记串中，从目标标记出发反复跳到最近的左标记或右标记，直到跳出串；用区间转移合并跳跃代价。",
+          "keyObservations": [
+            "一个元素第一次变化时，它必须是当前最大值；两侧可降到的候选值分别是该元素左、右侧严格更小元素中的最大值，取较小者不会增加后续变化次数。",
+            "每次在当前最大值的最左端点和最右端点之间选择，比较两种选择对端点最终变化次数的影响；选择影响较小的一侧可同时保证该端点采用更优降值。",
+            "固定元素 $a_i$ 后，把所有位置按相对关系标为左侧、目标点或右侧，元素变化过程等价于在数值轴上不断跳向最近的左侧或右侧标记，目标是跳出字符串。",
+            "线段树维护区间从左/右需求进入并以左/右需求离开的四种最少跳数；枚举目标值时每个位置至多改变两种标记，因此可动态维护。"
+          ],
+          "solutionBrief": "先按贪心确定每个元素至少需要变化的次数，再将固定元素的过程转为左右标记间跳跃。枚举元素时动态修改标记，用维护四种进出方向代价的线段树求最少跳数，总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1693F",
+          "index": "F",
+          "slot": "F",
+          "title": "I Might Be Wrong",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1693/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/103952",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个二进制串，可反复选择任意连续子串，将其中的字符排序为若干个 $0$ 后接若干个 $1$，并支付该子串中 $0$ 与 $1$ 数量差的绝对值加 $1$ 枚硬币。求把整个字符串排序成所有 $0$ 在前、所有 $1$ 在后的最小总花费。",
+          "transformedStatement": "把字符 $0,1$ 分别看作步长 $-1,+1$，用前缀和折线表示字符串。一次零平衡操作对应选择两个等高点，并将两点之间的路径重排为先下降后上升；目标转化为用最少此类折线修正操作消除所有逆序。",
+          "keyObservations": [
+            "任意非零平衡区间的排序都能改写为若干次零平衡区间排序，总代价不增，因此只需考虑代价为 $1$ 的操作。",
+            "将 $0$ 记为 $-1$、$1$ 记为 $1$ 后，零平衡子串恰好对应前缀和相等的两个端点；排序会把端点间路径改成先下降后上升。",
+            "设 $i$ 是从后缀开始前缀和持续上升的最小位置；当 $a_i>0$ 时，取最早的 $j$ 使 $a_j=a_i$，操作区间 $[j,i]$，可直接消除当前最早的未排序结构。",
+            "AmShZ 贪心策略对已排序后缀越长所需操作数不会增加，并可用逆序数归纳证明：任意最优序列的首步都能交换或替换为该策略的首步。"
+          ],
+          "solutionBrief": "先证明所有操作都可改为零平衡、代价为 $1$ 的操作。用前缀和表示字符串，反复寻找最长的单调上升后缀；若对应值不大于 $0$，按题解一次处理，否则取最早相同前缀和的位置执行区间操作。该贪心通过已排序后缀和逆序数归纳证明最优。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
