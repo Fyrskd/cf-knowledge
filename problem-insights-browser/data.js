@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3424,
+    "total_problems": 3431,
     "source_total_problems": 3434,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3424,
-    "with_editorial_brief": 3125,
-    "with_solution_brief": 3127,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3431,
+    "with_editorial_brief": 3132,
+    "with_solution_brief": 3134,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2486,
+    "ai_override_count": 2493,
     "primary_topic_count": 13,
-    "contest_count": 526,
+    "contest_count": 527,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "字符串": 182,
+    "数论与同余": 364,
+    "构造与贪心": 1106,
+    "动态规划与状态设计": 282,
+    "图论与网络流": 223,
     "基础实现与模拟": 214,
-    "构造与贪心": 1103,
-    "图论与网络流": 222,
     "数据结构": 324,
-    "数论与同余": 363,
-    "动态规划与状态设计": 281,
-    "字符串": 181,
     "代数、矩阵与多项式": 24,
     "树结构": 166,
     "组合计数与概率": 258,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "交互": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2165,
+    "ai_generated_with_editorial": 2172,
     "missing_editorial": 297,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -105623,6 +105623,216 @@ window.CF_INSIGHTS_DATA = {
             "若整段法力超过怪物剩余生命，只需在线段树上定位法力前缀不超过该生命值的位置；被完全消耗的部分继续按段处理，部分消耗的塔单独保留。"
           ],
           "solutionBrief": "维护按最后清空时间分组的塔段，怪物到来时消耗塔的连续前缀并处理一个可能部分消耗的塔。用按恢复时间切换权值的持久化线段树查询段法力和及可消耗前缀，整体复杂度为 $O((n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1650,
+      "name": "Codeforces Round 776 (Div. 3)",
+      "date": "2022-03-08",
+      "url": "https://codeforces.com/contest/1650",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1650A",
+          "index": "A",
+          "slot": "A",
+          "title": "Deletions of Two Adjacent Letters",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1650/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100712",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个长度为奇数的字符串 $s$ 和目标字符 $c$。每次可删除 $s$ 中任意两个相邻字符，直到只剩一个字符；判断是否能通过这些操作最终留下 $c$。",
+          "transformedStatement": "把最终保留的字符视为原串中的某个位置：它左侧和右侧的字符都必须按长度为 $2$ 的块被删除，因此问题等价于判断 $c$ 是否出现在原串的奇数位置。",
+          "keyObservations": [
+            "最终留下的字符必须删去它前面的全部字符和后面的全部字符，因此两侧被删除的长度都必须是偶数。",
+            "每次删除两个相邻字符不会改变未被删除字符的原下标奇偶性，所以最终字符只能来自原字符串的奇数位置。",
+            "若字符 $c$ 位于奇数位置，就能成对删除其左侧和右侧字符，最终保留它；因此只需检查奇数位置是否出现 $c$。"
+          ],
+          "solutionBrief": "遍历字符串的奇数下标位置（按人类计数为第 $1,3,5,\u0012$ 个字符），若其中存在目标字符 $c$ 输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1650B",
+          "index": "B",
+          "slot": "B",
+          "title": "DIV + MOD",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1650/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100712",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定整数区间 $[l,r]$ 和固定正整数 $a$，对区间内每个整数 $x$ 定义 $f_a(x)=\\lfloor x/a\\rfloor+x\\bmod a$。只能选择一个 $x\\in[l,r]$，求该函数的最大值。",
+          "transformedStatement": "按商 $\\lfloor x/a\\rfloor$ 将整数划分为连续区间；每个区间内函数值随余数递增，因此只需比较当前区间的右端点 $r$，以及前一个商区间的最右点 $r-r\\bmod a-1$（若仍在 $[l,r]$ 内）。",
+          "keyObservations": [
+            "在固定商的区间内，$f_a(x)=\\lfloor x/a\\rfloor+x\\bmod a$ 随余数递增，因此当前最后一个商区间内只有端点 $r$ 可能最优。",
+            "若最优点位于 $r$ 所在商区间之前，其商最多为 $\\lfloor r/a\\rfloor-1$，而该区域能取得的最大余数为 $a-1$，所以只需检查边界点 $r-r\\bmod a-1$。",
+            "候选点 $r-r\\bmod a-1$ 只有在不小于 $l$ 时才属于给定区间；与 $r$ 比较函数值即可得到答案。"
+          ],
+          "solutionBrief": "令 $c=r-r\\bmod a-1$。计算 $f_a(r)$，若 $c\\ge l$ 再计算 $f_a(c)$，两者取最大值；因为当前商区间内端点 $r$ 最优，之前所有区间的最优值由 $c$ 代表。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1650C",
+          "index": "C",
+          "slot": "C",
+          "title": "Weight of the System of Nested Segments",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1650/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/100712",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "hashing",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "数轴上给定 $m$ 个带权且坐标不同的点，需要从中选点作为 $n$ 个线段的端点，使第一个线段包住第二个、第二个包住第三个，依次严格嵌套，并最小化所有端点权重之和。输出最小总权重及每条线段的端点编号。",
+          "transformedStatement": "把问题转化为两步：先选择总权重最小的 $2n$ 个点，再把它们按坐标排列，用最外侧两点组成外层线段、逐步向中间配对，得到嵌套结构。",
+          "keyObservations": [
+            "系统恰好使用 $2n$ 个端点，因此选取权重最小的 $2n$ 个点可使总权重达到最小；剩余点不会影响可行性。",
+            "将选中的点按坐标升序排列后，第 $i$ 个点与第 $2n+1-i$ 个点配对，端点会逐层向内收缩，从而自动形成严格嵌套。",
+            "只需保留原输入编号，最终按坐标排序后的对称位置输出编号，就能同时满足嵌套关系和输出要求。"
+          ],
+          "solutionBrief": "先按权重排序，选出权重最小的 $2n$ 个点并累加权重；再按坐标排序，将第 $i$ 个点与第 $2n+1-i$ 个点配对，输出这些点的原编号。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1650D",
+          "index": "D",
+          "slot": "D",
+          "title": "Twist the Permutation",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1650/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/100712",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "初始数组为 $[1,2,\\ldots,n]$，第 $i$ 步可将前 $i$ 个元素循环右移任意次数，后面的元素不变；依次完成 $n$ 步后得到给定排列。请判断该排列是否可达，并输出每一步的右移次数。",
+          "transformedStatement": "将所有操作倒序撤销：第 $i$ 步改为只处理前 $i$ 项并循环左移，把数字 $i$ 移到第 $i$ 个位置；由此逐个确定原操作的移位次数。",
+          "keyObservations": [
+            "从最终状态逆序撤销操作：处理第 $i$ 步时，只需把前 $i$ 个元素左移，使数字 $i$ 回到位置 $i$。",
+            "若数字 $i$ 在前缀中的下标为 `index`（从 $0$ 开始），左移次数为 $(index+1)\\bmod i$，正好把它移到前缀末端。",
+            "逆向左移与正向右移互为逆操作，因此逆向计算出的次数就是各步正向右移次数；整个过程需检查并固定每个位置的数字。",
+            "每个长度为 $i$ 的前缀有 $i$ 种循环移位选择，所有步骤共有 $n!$ 种选择，与排列数量相同，因此任意给定排列都可由该过程得到。"
+          ],
+          "solutionBrief": "从 $i=n$ 递减到 $2$，在当前数组前缀中找到数字 $i$ 的下标 `index`，记录答案为 $(index+1)\\bmod i$，并将前 $i$ 项左移该次数，使数字 $i$ 就位。第 $1$ 步答案为 $0$。总复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1650E",
+          "index": "E",
+          "slot": "E",
+          "title": "Rescheduling the Exam",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1650/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/100712",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "implementation",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 场考试安排在长度为 $d$ 天的会期中，考试日期互不相同。休息天数指会期开始到第一场考试、以及相邻考试之间的空闲天数；最多修改一场考试的日期且仍须保持日期互异，要求最大化所有这些休息天数中的最小值。",
+          "transformedStatement": "把考试日期之间的空闲天数视为若干休息段。先删除一场考试，再把它插回：要么放到现有日程末尾，要么放入最大内部休息段的中间；比较这两种位置对最小休息段的影响。形同JSON field: `transformed_statement` should be string. Fine. Need final exact. Wait accidental",
+          "keyObservations": [
+            "若移动的考试不属于当前最小休息段的两个端点，该最小段仍然存在，因此只需尝试这两个端点对应的考试。",
+            "删除候选考试后，将它放回某个内部休息段时，放在最大段的中间最优，所得局部最小休息天数为 $\\left\\lfloor\\frac{L-1}{2}\\right\\rfloor$。",
+            "删除候选考试后，放到最后一天附近的收益为 $d-a_{\\mathrm{last}}-1$；两种放置方式取较大值，再与其余休息段的最小值取最小即可得到该候选答案。"
+          ],
+          "solutionBrief": "计算所有相邻考试前的休息段，找出最小段并只尝试移动其两个端点。对每个候选，先删除考试，再比较放到日程末尾或最大内部空档中间的效果，取最优答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1650F",
+          "index": "F",
+          "slot": "F",
+          "title": "Vitaly and Advanced Useless Algorithms",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1650/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/100712",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 个按截止时间 $a_i$ 排列的任务，初始进度均为 $0\\%$。每个训练选项最多使用一次，使用后需等待指定时间并给某个任务增加进度；要求按任务顺序在各自截止时间前达到至少 $100\\%$，并输出所用选项。",
+          "transformedStatement": "把连续的绝对截止时间转成相邻截止时间之间的独立时间段：任务 $i$ 在容量 $a_i-a_{i-1}$ 内选择若干属于它的选项，使耗时不超容量且进度总和至少为 $100\\%$，再恢复选择方案。",
+          "keyObservations": [
+            "由于任务截止时间按非递减顺序排列，按截止时间先后完成任务不会损失可行性，因此任务可以依次独立安排。",
+            "任务 $i$ 可使用的总时间等价为 $a_i-a_{i-1}$（令 $a_0=0$）；前一任务若提前完成，空余时间可视为延后使用。",
+            "同一任务的选项构成一个 0/1 背包：以耗时为容量、累计进度为价值，达到至少 $100\\%$ 后记录转移来源即可恢复选项编号。",
+            "每个选项只属于一个任务，按任务编号依次输出恢复出的选项，就能同时满足使用次数限制和完成顺序。"
+          ],
+          "solutionBrief": "按截止时间顺序处理任务，将每个任务的可用时段设为 $a_i-a_{i-1}$。对该任务的选项做 0/1 背包，以耗时为容量、进度为价值并记录前驱；若无法达到 $100\\%$ 则无解，否则按任务顺序恢复并输出选项。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1650G",
+          "index": "G",
+          "slot": "G",
+          "title": "Counting Shortcuts",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1650/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/100712",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一张无向连通简单图、起点 $s$ 和终点 $t$，允许路径重复经过顶点或边。求所有长度不超过 $s$ 到 $t$ 最短路长度加 $1$ 的路径数量。",
+          "transformedStatement": "先把每个顶点的到达方式按“当前路径长度比从 $s$ 出发的最短距离多 $0$ 或 $1$”划分为两种状态，再在这些状态之间传播路径计数，最终统计终点的两类到达方式。",
+          "keyObservations": [
+            "任何重复顶点都会形成长度至少为 $2$ 的可删除回路；删除后会得到不超过最短长度减 $1$ 的路径，矛盾，因此符合条件的路径实际上都是简单路径。",
+            "对任意顶点，只需保留长度为其最短距离和最短距离加 $1$ 的两类到达状态；更长的前缀不可能参与总长度不超过最短路加 $1$ 的答案。",
+            "预先求出从 $s$ 到各点的最短距离后，按实际路径长度递增传播两类状态并累加方案数，即可同时统计最短路径和恰好多一条边的路径。"
+          ],
+          "solutionBrief": "先从 $s$ BFS 求最短距离，再在每个顶点保留长度为最短距离或加 $1$ 的到达状态。按路径长度递增转移并统计方案数，累加到达 $t$ 的两种状态；由于符合条件的路径不会重复顶点，计数不会产生回路问题。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
