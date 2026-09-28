@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3397,
+    "total_problems": 3405,
     "source_total_problems": 3408,
-    "filtered_out_problems": 11,
-    "with_statement_brief": 3397,
-    "with_editorial_brief": 3111,
-    "with_solution_brief": 3113,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3405,
+    "with_editorial_brief": 3119,
+    "with_solution_brief": 3121,
     "missing_editorial_brief": 284,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2459,
+    "ai_override_count": 2467,
     "primary_topic_count": 13,
-    "contest_count": 522,
+    "contest_count": 523,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1099,
+    "字符串": 179,
+    "数论与同余": 361,
+    "数据结构": 322,
+    "树结构": 166,
+    "组合计数与概率": 258,
     "几何": 81,
-    "构造与贪心": 1097,
-    "组合计数与概率": 257,
     "图论与网络流": 219,
-    "数论与同余": 360,
     "博弈": 106,
-    "字符串": 177,
-    "数据结构": 321,
-    "树结构": 165,
     "动态规划与状态设计": 280,
     "基础实现与模拟": 210,
     "交互": 101,
     "代数、矩阵与多项式": 23
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2151,
+    "ai_generated_with_editorial": 2159,
     "missing_editorial": 284,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -104868,6 +104868,262 @@ window.CF_INSIGHTS_DATA = {
             "无需显式枚举约束之间的冲突对，只需逐条访问路径上的顶点；总访问次数为 $\\sum |s_j|$，因此约束数量和总复杂度都保持在线性规模。"
           ],
           "solutionBrief": "沿每条树路径枚举顶点，确定每个顶点的两个候选字符，并为顶点取值与字符串方向的不匹配建立 2-SAT 子句。用 SCC 求解所有布尔变量，再还原顶点字符；路径可用 LCA 或按总路径长度逐步上移恢复，总复杂度为 $O(n+q+\\sum |s_j|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1654,
+      "name": "Codeforces Round 778 (Div. 1 + Div. 2, based on Technocup 2022 Final Round)",
+      "date": "2022-03-20",
+      "url": "https://codeforces.com/contest/1654",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1654A",
+          "index": "A",
+          "slot": "A",
+          "title": "Maximum Cake Tastiness",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1654/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100127",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一列重量为 $a_1,\bdots,a_n$ 的蛋糕块，蛋糕美味度是任意相邻两块重量之和的最大值。最多一次反转一个连续子段，求操作后可能达到的最大美味度。",
+          "transformedStatement": "把问题转化为：能否用一次区间反转让指定的两块蛋糕相邻。任意位置 $i<j$ 的两块都可通过反转 $[i,j-1]$ 配对，因此只需最大化任意两块重量之和。",
+          "keyObservations": [
+            "任取位置 $i<j$ 的两块蛋糕，反转区间 $[i,j-1]$ 后它们就会相邻，因此任意两块都能在一次操作中配对。",
+            "最终相邻两块的重量和不可能超过全数组中最大的两块重量之和，所以该上界也是答案。",
+            "只需在线性扫描中维护最大值和次大值即可得到答案，无需枚举反转区间。"
+          ],
+          "solutionBrief": "答案等于数组中最大和次大的两个重量之和。反转两者原位置之间的区间即可让它们相邻，而任何相邻块的和都不可能超过这两个最大值之和；线性扫描维护前两大值即可，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1654B",
+          "index": "B",
+          "slot": "B",
+          "title": "Prefix Removals",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1654/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100127",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "strings"
+          ],
+          "statementBrief": "给定一个小写字母串。只要当前串的某个非空前缀还在后方出现，就可以删除这个前缀，并可重复操作；求操作结束后剩下的字符串。",
+          "transformedStatement": "把所有操作视为删除原串的连续前缀，因此最终结果是某个后缀；问题转化为寻找最早一个不能再被删除的字符，即其右侧没有相同字符的位置。",
+          "keyObservations": [
+            "最终字符串一定是原串的某个后缀，删除操作只会不断去掉当前开头的一段。",
+            "一个字符若仍在它右侧出现，则可把包含它的可重复前缀一并删除；因此所有非最右出现位置的字符都能被移除。",
+            "最右出现位置的字符无法被删除，因为任何覆盖它的前缀都不可能在更靠后的位置再次出现。",
+            "答案起点是从左到右第一个字符的最右出现位置；从右向左维护频次数组即可在线确定它。"
+          ],
+          "solutionBrief": "统计每个字符的最右出现位置，找到最小的此类位置作为答案起点，输出原串从该位置开始的后缀。实现中可从右向左扫描，首次遇到某字符时记录位置，最终取最小位置。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1654C",
+          "index": "C",
+          "slot": "C",
+          "title": "Alice and the Cake",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1654/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/100127",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "蛋糕初始是一整块，重复 $n-1$ 次选择重量至少为 $2$ 的一块，将其切成 $\\lfloor w/2\\rfloor$ 与 $\\lceil w/2\\rceil$ 两块，最后任意排列得到数组 $a$。判断是否存在某个初始重量和切分顺序能得到该数组。",
+          "transformedStatement": "把最终数组视为目标多重集合，并从其元素总和构造一块蛋糕；不断取当前最大生成块，若能与目标最大值相等则配对，否则将其按二等分规则继续拆开，以检查两个多重集合能否完全一致。",
+          "keyObservations": [
+            "每次切分都保持总重量不变，因此唯一可能的初始重量是最终数组之和，即 $S=\\sum a_i$。",
+            "从重量为 $S$ 的单块蛋糕反向模拟时，若当前最大块大于目标最大值，它不可能直接匹配目标，只能继续切成 $\\lfloor w/2\\rfloor$ 和 $\\lceil w/2\\rceil$。",
+            "始终比较两边最大值：相等就配对删除，当前生成块更小则无法匹配；这保证了不会错过更大的目标块，并将可行性判断降为优先队列操作。"
+          ],
+          "solutionBrief": "令初始重量为数组和，维护目标数组与待拆分块的两个最大堆。若两边最大值相等则删除；生成块更大就按规则拆分，否则判定 NO。全部配对成功则为 YES，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1654D",
+          "index": "D",
+          "slot": "D",
+          "title": "Potion Brewing Class",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1654/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/100127",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "math",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "有 $n$ 种成分及 $n-1$ 条比例要求：每条要求指定成分 $i,j$ 的用量满足 $a_i/a_j=x/y$，且这些要求唯一确定相对比例。允许按这些比例取正整数用量，要求所有成分总用量最小，并输出其模 $998244353$ 的结果。",
+          "transformedStatement": "将比例关系建成一棵树，并把节点用量相对节点 $1$ 表示为有理数。问题转化为寻找使所有这些有理数同时变成整数的最小根倍数，即各节点分母的最小公倍数。",
+          "keyObservations": [
+            "由于共有 $n-1$ 条比例关系且比例唯一确定，各成分之间的关系图必为树，因此可从任意成分沿边唯一传播相对用量。",
+            "令成分 $1$ 的用量为 $1$，树上每个成分的用量都能表示为有理数 $c_i/d_i$，所以统一乘以所有 $d_i$ 的最小公倍数即可得到整数用量。",
+            "在 DFS 中维护当前有理用量的质因数指数；某条边只改变 $x,y$ 的质因数指数，单条边涉及 $O(\\log n)$ 个质因数。",
+            "对每个质数记录 DFS 过程中指数的最小值 $g_p$，将根用量乘以 $p^{-g_p}$，即可同时消除所有节点分母且保证根用量最小。"
+          ],
+          "solutionBrief": "把比例关系视为树边，从节点 $1$ 出发 DFS 传播各节点相对用量的质因数指数，并记录每个质数的最小指数。根节点乘上各质数的 $p^{-g_p}$ 后，所有用量成为整数且总和最小，再求所有节点用量之和模 $998244353$。复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1654E",
+          "index": "E",
+          "slot": "E",
+          "title": "Arithmetic Operations",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1654/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/100127",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "给定数组，每次可把一个元素修改为任意值，目标是在最少修改次数下使整个数组成为等差数列，即所有相邻差相等。求达到该目标所需的最少修改次数。",
+          "transformedStatement": "把每个元素表示为平面点 $(i,a_i)$；未被修改的点必须落在最终等差数列对应的一条直线上。因此问题转化为寻找同一直线上的最多原始点，再用总长度减去它。",
+          "keyObservations": [
+            "未被修改的位置必须满足同一个等差关系，因此目标等价于最大化保留在最终等差数列中的原数组元素数量，答案为 $n-$该最大数量。",
+            "固定公差 $d$ 后，位置 $i$ 能被保留当且仅当 $a_i-d i$ 相同；统计最大桶大小即可在 $O(n)$ 内处理一个 $d$。",
+            "当 $|d|<\\sqrt m$ 时枚举所有小公差，总复杂度为 $O(n\\sqrt m)$；负公差可通过反转数组转化为非负公差。",
+            "当 $d\\ge\\sqrt m$ 时，两个相距超过 $\\sqrt m$ 的保留位置不可能同时存在；因此只需在滑动窗口内连边，并求具有相同边标签的最长路径。"
+          ],
+          "solutionBrief": "把未修改元素视为平面点 $(i,a_i)$，寻找同一直线上的最多点。小公差枚举 $a_i-di$ 的最大桶；大公差在宽度 $\\sqrt m$ 的窗口内按斜率建边，DP 求同标签最长路径，整体复杂度为 $O(n\\sqrt m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1654F",
+          "index": "F",
+          "slot": "F",
+          "title": "Minimal String Xoration",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1654/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/100127",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "divide and conquer",
+            "greedy",
+            "hashing",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $2^n$ 的小写字母串 $s$，任选一个 $0\\le j<2^n$，按 $t_i=s_{i\\oplus j}$ 重新排列字符得到一个 xoration。要求输出所有可能结果中字典序最小的字符串。",
+          "transformedStatement": "把每个异或偏移量 $x$ 看作字符串 $f(s,x)$，目标变为同时比较全部 $2^n$ 个 $f(s,x)$ 的字典序。按前缀长度 $1,2,4,\\ldots,2^n$ 倍增维护这些偏移量的排名。",
+          "keyObservations": [
+            "长度为 $2^k$ 的前缀可以拆成两个长度为 $2^{k-1}$ 的块，第二块对应的异或偏移量正好是 $i\\mathbin{\\oplus}2^{k-1}$，因此可由两个已有排名合并比较。",
+            "维护所有异或偏移量按当前前缀字典序的排名，就能把比较完整字符串转化为比较二元组 $(v_i,v_{i\\mathbin{\\oplus}2^{k-1}})$。",
+            "从长度 $1$ 的字符排名开始倍增到长度 $2^n$，最终排名最小的偏移量对应整个字符串中字典序最小的 xoration。"
+          ],
+          "solutionBrief": "令 $f(s,x)_i=s_{i\\oplus x}$，维护所有 $x$ 的前缀字典序排名。每轮将长度 $2^{k-1}$ 的排名按 $(v_i,v_{i\\oplus 2^{k-1}})$ 合并，得到长度 $2^k$ 的排名；完成 $n$ 轮后输出排名最小的 $f(s,x)$。直接排序复杂度为 $O(2^n n^2)$，可用基数排序优化为 $O(2^n n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1654G",
+          "index": "G",
+          "slot": "G",
+          "title": "Snowy Mountain",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1654/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/100127",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "greedy",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "给定一棵带有若干基地的树，顶点高度是到最近基地的距离。滑雪者可重复经过边但不能上坡；下坡获得 1 点能量、平地消耗 1 点，要求对每个起点求能量始终非负时能滑行的最大边数。",
+          "transformedStatement": "将每个起点的最大路程改写为 $2h_v-w_v$，其中 $w_v$ 是到某个可翻转点并最终结束滑行时浪费的最小能量；固定可翻转点高度后，问题转成分层有向图上的带正负边权可达性与最短代价计算。",
+          "keyObservations": [
+            "把存在同高度邻点的顶点称为可翻转点；到达最低高度的可翻转点后反复走同高度边，可在不改变高度的情况下消耗剩余能量并延长路径。",
+            "若从高度为 $h_v$ 的顶点前往高度为 $h_u$ 的可翻转点并在那里往返，最终可滑行长度为 $2h_v-h_u$，因此只需最小化被浪费的能量 $w_v$。",
+            "所有可翻转点的高度总和为 $O(n)$，所以不同的 $w_v$ 取值至多为 $O(\\sqrt n)$；可按这些取值分别处理，避免为每个起点单独搜索。",
+            "固定一组同高度的可翻转点后，可计算每个顶点到该集合所需的最小能量：同层边代价为 $1$，下坡边代价为 $-1$，上坡边禁止，通过分层松弛得到可达起点集合。"
+          ],
+          "solutionBrief": "先计算各点到最近基地的高度，并找出有同高度邻点的可翻转点。将答案改写为 $2h_v-w_v$；利用可翻转点高度和为 $O(n)$，仅处理 $O(\\sqrt n)$ 个相关值，每次按高度分层，用同层代价 $1$、下坡代价 $-1$ 的最短路求最小浪费能量，总复杂度为 $O(n\\sqrt n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1654H",
+          "index": "H",
+          "slot": "H",
+          "title": "Three Minimums",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1654/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/100127",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "divide and conquer",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 个互不相同数构成的排列，以及长度为 $m$ 的由“<”“>”组成的字符串，要求排列满足题面针对任意区间定义的“good”条件，并使前 $m$ 个相邻位置符合字符串规定的大小关系。统计所有满足条件的排列数；但输入记录未完整给出 good 条件的具体定义。",
+          "transformedStatement": "题解把任意区间的排列按最小值及次小值是否位于端点分类，定义五类带首尾状态的区间计数，通过切分递推组合出整段答案；超过字符串约束范围后，这些状态只依赖长度。",
+          "keyObservations": [
+            "把区间内的好排列按最小值的位置切成左右两段；左右段分别以 1 或 2 开头、结尾的类型决定可行性，且两段元素的分配贡献组合数因子。",
+            "当区间以 1 开头、以 2 结尾时，题解将其递推为两端逐步扩展的结构：首个比较必须为上升、末个比较必须为下降，中间状态在 $a_{12}$ 与 $a_{21}$ 间转移。",
+            "比较约束只影响前 $m$ 个位置；区间完全越过这些位置后，各类计数只与区间长度有关，可将二维递推拆成有限前缀修正和一维卷积。",
+            "归一化计数后，卷积递推 $k x_k=v_{k-1}+sum_{i=0}^{k-1}x_i u_{k-1-i}$ 等价于生成函数微分方程 $X'=V+UX$，再用形式幂级数乘法与指数将复杂度降至 $O(nm+n\\log n)$。"
+          ],
+          "solutionBrief": "用五类区间计数描述最小值端点状态，先在受约束前缀内递推，再利用后缀平移不变性转成卷积；通过生成函数解微分方程，整体复杂度为 $O(nm+n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
