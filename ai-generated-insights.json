@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T21:33:18+00:00",
+  "updated_at": "2026-09-28T21:39:16+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -90505,6 +90505,192 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "题意依据 statement_text，构造与最优性依据 editorial_text；tags 仅作主题参考。",
+        "quality_flags": []
+      }
+    },
+    "1540E": {
+      "problem_key": "1540E",
+      "title": "Tasty Dishes",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1540/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/92199",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "cef6f0b41106a36bed985a45e7ce4b4310c505f8f3fc79fb3e0ca978f1b63812",
+      "generated_at": "2026-09-28T21:37:45+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 名厨师，第 $i$ 名厨师的初始菜品美味度为 $a_i$，且只能从编号更大的指定厨师处复制。厨师每天分两个阶段调整菜品，目标是提高自己的美味度；随后有两类查询，其中第一类互相独立，第二类会累积修改初始值，但记录未给出各阶段操作和查询的具体规则。",
+        "transformed_statement": "题解将过程抽象为每位厨师菜品首次变正的日期，以及所有厨师变正后由固定转移矩阵驱动的线性演化；查询答案则通过特征向量分解，将不同日期产生的贡献分别汇总。",
+        "key_observations": [
+          "只有菜品当前值为正时，厨师才会从相关操作中获益，因此负值或零值不会主动改变；这把变化时机归结为菜品首次变正的日期。",
+          "厨师首次变正的日期由其到初始正值厨师的最近距离决定；有限的距离对数量为 $O(n^2)$，因而可按这些日期分组处理贡献。",
+          "所有厨师变正后，后续更新可统一表示为固定转移矩阵的幂作用；该矩阵为对角矩阵，特征值是对角线上的厨师编号。",
+          "将单位向量分解到转移矩阵的特征向量基底后，每位厨师的贡献可按首次变正日期维护，再乘对应特征值的幂，从而避免逐次进行矩阵乘法。"
+        ],
+        "solution_brief": "依据题解，先计算各厨师菜品首次变正的日期，再利用固定转移矩阵的特征向量分解，把贡献按日期维护并快速汇总。题解给出的复杂度为 $O(n^3+qn\\log n)$；但输入记录缺少具体查询格式与规则，无法完整说明如何应用到每种查询。",
+        "primary_topic": "代数、矩阵与多项式",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意依据 statement_text；核心方法与复杂度依据 editorial_text。statement_text 未包含两类查询的具体定义。",
+        "quality_flags": [
+          "query_rules_missing",
+          "statement_incomplete"
+        ]
+      }
+    },
+    "1540D": {
+      "problem_key": "1540D",
+      "title": "Inverse Inversions",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1540/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/92199",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "fff33f3a04afdde6e6a1c2a5d9130b576c4152338e13155ad47b077c97b88f72",
+      "generated_at": "2026-09-28T21:38:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组 $b$，其中 $b_i$ 表示排列中位于第 $i$ 位之前且数值大于 $p_i$ 的元素个数。过程中可修改某个 $b_i$，也可查询排列中指定位置的值；每次查询都要输出对应答案。",
+        "transformed_statement": "将每个 $b_i$ 转换为 $c_i=i-b_i$，把排列重建看成从左到右插入元素：第 $i$ 个元素插入已有元素序列中的第 $c_i$ 个位置。动态查询则只需追踪目标元素经过后续插入后的所在位置，而不必显式维护完整排列。",
+        "key_observations": [
+          "把 $b_i$ 转成 $c_i=i-b_i$ 后，$c_i$ 表示比 $p_i$ 小且位于它右侧的元素数；从左到右插入时，当前元素应放在已有元素的第 $c_i$ 个位置。",
+          "查询某个位置对应的排列值时，不必重建整张排列，只需跟踪该元素在后续插入中的位置变化；每次插入仅在其插入位置不超过当前位置时改变答案。",
+          "将插入过程分块后，可为每块预处理位置经过该块后的映射，从而让查询跨块跳转；单点修改只影响所在块的相关映射。",
+          "块内各插入对位置的影响可表示为后缀变化；普通元素更新时边界至多移动一位，而被修改元素可能造成大范围变化，因此再对映射数组分块维护范围更新。"
+        ],
+        "solution_brief": "先用 $c_i=i-b_i$ 将数组转为逐个插入的位置约束，再以分块维护插入对指定元素位置的影响。查询通过块映射跳转，修改时更新所在块，并用第二层分块处理映射中的范围变化；题解给出的总复杂度为 $O(q\\sqrt{n\\log n})$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；插入建模、分块维护和复杂度依据 editorial_text。原题面中的查询格式缺失，操作含义参考题解中的更新与指定元素位置查询描述。",
+        "quality_flags": [
+          "statement_query_formats_omitted"
+        ]
+      }
+    },
+    "1540C2": {
+      "problem_key": "1540C2",
+      "title": "Converging Array (Hard Version)",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/1540/problem/C2",
+      "editorial_url": "https://codeforces.com/blog/entry/92199",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "e443e913db9472ab02e8fd1ecdc6a05d2d5b3316bffd0181eb5a3b03b68fe23a",
+      "generated_at": "2026-09-28T21:38:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的整数数组 $a$，其中每个 $a_i$ 可在 $0$ 到 $c_i$ 之间取值，并给定相邻位置的阈值数组 $b$。反复选择相邻位置 $i,i+1$，保持两数之和不变，并将差值 $a_{i+1}-a_i$ 调整为至少 $b_i$；对收敛后的首项 $F(a,b)$，需要回答每个 $x$ 下满足 $F(a,b)\\ge x$ 的数组数量，结果对 $10^9+7$ 取模。",
+        "transformed_statement": "把收敛过程抽象为最终数组的首项：它等于各前缀所给出的候选值 $(ap_i-bp_i)/i$ 的最小值。因此每个查询可转成一组关于原数组前缀和的下界条件，并据此计数数组，而不必模拟操作过程。",
+        "key_observations": [
+          "若相邻操作 $i$ 曾经实际改变过数组，最终必有 $f_{i+1}-f_i=b_i$；若最终差值严格大于 $b_i$，该操作从未发生，因此它把数组切成互不交换总和的两段。",
+          "设 $i$ 是第一个从未发生的操作，则前缀总和在过程中保持不变，且最终前缀呈等差形式，所以 $f_1=(ap_i-bp_i)/i$，其中 $ap_i=\u0000\\sum_{j=1}^{i}a_j$、$bp_i=\u0000\\sum_{j=1}^{i-1}(i-j)b_j$。",
+          "对任意前缀，上述比值都是最终首项的上界；而第一个未发生操作对应的前缀能取到等号，因此 $F(a,b)=\\min_i (ap_i-bp_i)/i$。",
+          "条件 $F(a,b)\\ge x$ 等价于所有前缀和满足 $ap_i\\ge ix+bp_i$，从而计数只需按前缀长度和前缀和做 DP；首项可能值范围有限，可预处理各阈值答案以应对大量查询。"
+        ],
+        "solution_brief": "将收敛后的首项表示为各前缀表达式 $(ap_i-bp_i)/i$ 的最小值。对每个阈值 $x$，用前缀和 DP 统计满足 $ap_i\\ge ix+bp_i$ 的数组；利用可能的首项范围预处理答案，再以常数时间回答每个查询。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；相邻操作规则、收敛值刻画和 DP 思路依据 editorial_text；tags 仅用于辅助分类。",
+        "quality_flags": [
+          "statement_operation_reconstructed_from_editorial"
+        ]
+      }
+    },
+    "1540C1": {
+      "problem_key": "1540C1",
+      "title": "Converging Array (Easy Version)",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1540/problem/C1",
+      "editorial_url": "https://codeforces.com/blog/entry/92199",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "cb9b3ae40eb20e5dd191c8d7e5039056c8f7133bd5a54c1a09f1c95883f19991",
+      "generated_at": "2026-09-28T21:38:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的上界数组 $c$、长度为 $n-1$ 的数组 $b$，以及阈值 $x$。过程会对数组 $a$ 无限次执行题面所述操作，且最终 $a_1$ 会收敛；每个 $a_i$ 必须是满足 $0\\le a_i\\le c_i$ 的整数。要求统计使收敛值 $F(a,b)\\ge x$ 的数组 $a$ 的数量，并对 $10^9+7$ 取模。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面；题解链接仅提供网址，未提供题解正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred",
+          "statement_truncated"
+        ]
+      }
+    },
+    "1540B": {
+      "problem_key": "1540B",
+      "title": "Tree Array",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1540/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/92199",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "5e46ca3397c4d0276a66a359411bf38803e1f1a4d2f28745f05212ed3a7a41e9",
+      "generated_at": "2026-09-28T21:39:01+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵有标号的树：先从所有节点中等概率选一个标记，之后每次从尚未标记且与已标记节点相邻的节点中等概率选一个标记，直到全部标记。按标记先后得到数组，要求其逆序对数量的期望，并对 $10^9+7$ 取模。",
+        "transformed_statement": "把期望拆成所有标签对的先后概率之和：固定初始节点为根后，针对 $a<b$ 计算 $b$ 是否先于 $a$ 被标记。该概率可由两点到其 LCA 的距离决定，再通过两条路径竞争完成的概率 DP 求出，最后对所有可能的初始根平均。",
+        "key_observations": [
+          "固定初始节点作为树根后，最终排列中标签对 $a<b$ 贡献逆序，当且仅当 $b$ 先于 $a$ 被标记，因此期望可按节点对的先后概率求和。",
+          "对一对节点令 $l= ext{LCA}(a,b)$；在标记过程到达 $l$ 之前，两侧竞争的相对概率不变，所以只需比较 $l$ 到两点的距离。",
+          "从 $l$ 向两侧扩展时，两条路径各自向目标推进的概率相同；即使存在不影响两侧的其他选择，最终先清空哪条路径的概率也与具体推进概率无关。",
+          "令 $F[x][y]$ 表示长度为 $y$ 的一侧先完成、早于长度为 $x$ 的另一侧完成的概率，则有 $F[x][y]=(F[x-1][y]+F[x][y-1])/2$，从而把每对节点的概率转成距离上的 DP。"
+        ],
+        "solution_brief": "枚举初始节点并将树以它为根。对所有标签对 $a<b$，求其 LCA 到两点的距离，并用 $F$ 表示的两路径先后完成概率累加；最后对所有根的结果取平均，模 $10^9+7$ 计算。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "树结构",
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的逐步标记规则及 editorial_text 的节点对概率转化、LCA 距离 DP 和对初始根取平均的方法。",
+        "quality_flags": []
+      }
+    },
+    "1540A": {
+      "problem_key": "1540A",
+      "title": "Great Graphs",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1540/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/92199",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "c20f9396b6b731905d10101ecface2d9491689cb667b4b7af0f57a51d7044f1a",
+      "generated_at": "2026-09-28T21:39:16+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个点从点 $1$ 出发的最短距离 $d_i$，可以自行设计有向道路，每条道路权重可为负，但不能形成负权环，且同一方向的点对至多有一条道路。要求构造与这些最短距离一致的道路图，使所有道路权重之和最小。",
+        "transformed_statement": "把每条候选边 $a\\to b$ 的权重视为受下界 $d_b-d_a$ 约束的成本；问题转为选择满足距离条件的边，使所有点可达且总权重最小。题解通过连接距离不增的点对，并利用距离最大的点补足可达路径来完成构造，再按距离排序计算总贡献。",
+        "key_observations": [
+          "若从点 $a$ 到点 $b$ 加边，边权必须至少为 $d_b-d_a$，否则经由已知最短距离为 $d_a$ 的点到达 $b$ 会得到更短路径；因此这给出了每条边权的下界。",
+          "对所有满足 $d_b\\le d_a$ 的有序点对加入权为 $d_b-d_a$ 的边，边权非正且不会缩短题目要求的距离，因而能以不增加总成本的方式让最大距离点连向所有较小距离点。",
+          "取距离最大的点 $x$，再从点 $1$ 连一条权为 $d_x$ 的边，就能经由 $1\\to x$ 再到任意点获得恰好对应的距离；因此无需为所有点对显式枚举边，可按距离排序汇总贡献。"
+        ],
+        "solution_brief": "任意边 $a\\to b$ 的权重至少为 $d_b-d_a$。按题解构造非正边连接距离不增的点对，并从点 $1$ 向最大距离点连边，即可保证所有最短距离符合给定数组。将距离排序后汇总边权贡献，避免枚举全部点对，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；建边下界、构造方式及排序优化依据 editorial_text，tags 仅用于辅助分类。",
         "quality_flags": []
       }
     }
