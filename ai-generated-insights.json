@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T03:25:08+00:00",
+  "updated_at": "2026-09-28T03:30:40+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -71041,6 +71041,188 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 的操作定义与 editorial_text 的等价转化和构造，tags 仅用于主题判断。",
+        "quality_flags": []
+      }
+    },
+    "1673F": {
+      "problem_key": "1673F",
+      "title": "Anti-Theft Road Planning",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1673/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/102389",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "237dd1694640458feaddd35624cbc597a05014dcf39ee820967f29df6e79162f",
+      "generated_at": "2026-09-28T03:28:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "在 $n\\times n$ 建筑网格中，为每对相邻建筑修建正整数长度的道路，总长度不超过 $48000$。小偷从左上角出发并任意移动；每次移动将道路长度异或进计数器，盗窃后报告并清零，要求根据连续 $k$ 次报告确定所有盗窃建筑的位置。",
+        "transformed_statement": "为每个建筑分配互异标号 $A_{i,j}$，把相邻道路长度设为两端标号的异或，使任意路线的报告只由盗窃前后建筑决定；问题转化为在总边权受限下构造低成本的二维 Gray Code，并在线解码位置。",
+        "key_observations": [
+          "若把建筑标号为 $A_{i,j}$，并令相邻道路长度为两端标号的异或，任意路径的累计异或都会化为起点与终点标号的异或，因此与具体路线无关。",
+          "令左上角标号为 $0$，每次盗窃报告值与上次位置标号异或；维护此前累计报告的异或，即可恢复当前建筑的唯一标号。",
+          "二维反射 Gray Code 让相邻标号的异或尽量集中在低位，从而降低所有道路总长度；完整 $32\\times32$ 构造的总长度为 $47616$。",
+          "先构造完整的 $32\\times32$ 标号矩阵，再截取左上角的 $n\\times n$ 子矩阵不会增加道路总长，且保留标号互异性。"
+        ],
+        "solution_brief": "用二维 Gray Code 为建筑分配互异标号，水平边长取相邻标号异或、竖直边长同理。根据报告值逐次异或恢复当前位置标号，再用标号到坐标的映射回答；取完整构造的前 $n$ 行列即可满足总长限制。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "交互",
+          "代数、矩阵与多项式"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，结合 statement_text 与 tags 中的构造、交互和位运算信息。",
+        "quality_flags": [
+          "statement_text截断",
+          "交互协议细节不完整"
+        ]
+      }
+    },
+    "1673E": {
+      "problem_key": "1673E",
+      "title": "Power or XOR?",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1673/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/102389",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5edc19bcb1c03510403aa0e76a8c250bd893f59d0cd7fe60deb7bb28ec17b9ca",
+      "generated_at": "2026-09-28T03:29:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $A_i=2^{B_i}$ 组成的表达式，所有相邻元素之间的运算符都可独立替换为幂运算或按位异或，要求异或运算至少出现 $k$ 次。求所有满足条件的表达式值的异或和，并对模数 $2^{2^{20}}$ 后以无前导零的二进制输出。",
+        "transformed_statement": "把表达式按异或切成若干连续的幂运算片段；每个被两侧异或包围的片段可独立贡献一个二进制位，贡献是否保留取决于其出现在合法表达式中的次数奇偶。",
+        "key_observations": [
+          "连续幂运算段的值始终是 $2^X$，其中 $X=B_l\\cdot A_{l+1}\\cdot\\ldots\\cdot A_r$，因此每个片段至多影响答案的一个二进制位。",
+          "模数为 $2^{2^{20}}$，当 $X\\ge 2^{20}$ 时该片段贡献为 $0$；又因 $A_i\\ge2$，有效幂运算段的长度至多为 $20$。",
+          "固定片段内部为幂、两侧为异或后，其余未固定运算符只决定合法表达式数量的奇偶性；至少选 $q$ 个异或的方案数奇偶可化为二项式系数奇偶，并由 Lucas 定理判断为子掩码关系。",
+          "最终答案是所有片段贡献的异或，因此只需在表达式数量为奇数时翻转对应的 $X$ 位，片段之间无需联合计数。"
+        ],
+        "solution_brief": "枚举每个起点向右至多扩展 $20$ 个位置，计算幂运算片段的指数 $X$。根据片段两侧固定异或后的剩余运算符数量，利用二项式系数奇偶性判断其是否出现奇数次；若是则翻转答案的第 $X$ 位，最后去掉高位前导零输出。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 bitmasks、combinatorics、math、number theory 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1673D": {
+      "problem_key": "1673D",
+      "title": "Lost Arithmetic Progression",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1673/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/102389",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "87ead34a7e0ca51889abfa49f773d41797ea6e65b3ffb0b37cd4f51e9673d9d0",
+      "generated_at": "2026-09-28T03:29:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定有限等差数列 $B$ 和数列 $C$，已知 $C$ 恰好由某个未知有限等差数列 $A$ 与 $B$ 的所有公共元素组成。要求统计所有可能的 $A$；若数量无穷输出 $-1$，否则输出数量对 $10^9+7$ 取模。",
+        "transformed_statement": "把未知数列 $A$ 表示为首项、公差和项数，并将交集 $A\\cap B=C$ 转化为公差条件 $\\operatorname{lcm}(p,q)=r$ 及首末项的严格边界条件；固定 $p$ 后独立计数首项与末项。",
+        "key_observations": [
+          "先验证 $C$ 是否完整包含于 $B$：首项、末项满足范围关系，且 $r$ 是 $q$ 的倍数、$c-b$ 是 $q$ 的倍数；任一条件失败答案即为 $0$。",
+          "若 $b>c-r$ 或 $b+(y-1)q<c+zr$，则可不断向前扩展首项或向后扩展末项，得到无穷多个候选数列，答案为 $-1$。",
+          "设候选数列 $A$ 的公差为 $p$，其与 $B$ 的交集公差必须满足 $\\operatorname{lcm}(p,q)=r$，因此 $p$ 必须是 $r$ 的因数，只需枚举这些因数。",
+          "固定满足条件的 $p$ 后，首项和末项各有 $r/p$ 种合法取值，候选数列数量贡献为 $(r/p)^2$，累加所有公差即可。"
+        ],
+        "solution_brief": "先检查 $C$ 是否是 $B$ 的子序列，并据两端位置判断候选是否无限。有限时枚举 $r$ 的因数 $p$，保留满足 $\\operatorname{lcm}(p,q)=r$ 的公差，每个贡献 $(r/p)^2$，求和取模。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "组合计数与概率"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的等差数列定义与交集要求，以及完整 editorial 的判定条件、计数公式和复杂度；tags 仅用于主题归类。",
+        "quality_flags": [
+          "statement_text末尾截断"
+        ]
+      }
+    },
+    "1673C": {
+      "problem_key": "1673C",
+      "title": "Palindrome Basis",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1673/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/102389",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a3c02eda744cff0394ff53d36000633155638a4194e8ecceda1665e5e56cf88c",
+      "generated_at": "2026-09-28T03:30:07+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数 $n$，每次可选任意正回文整数并把它们相加，允许重复使用；只要各回文数出现次数不同就算不同，而排列顺序不区分。求和为 $n$ 的不同多重集合数量，答案对 $10^9+7$ 取模。",
+        "transformed_statement": "先把所有不超过最大 $n$ 的回文数列成有序物品，再将问题转化为无序、可重复选取这些物品使总和为 $n$ 的整数划分计数；状态记录可用物品前缀和目标和。",
+        "key_observations": [
+          "不超过 $4\\cdot10^4$ 的回文数只有 $498$ 个，因此可以先完整枚举并作为有限种硬币处理。",
+          "题目区分的是每个回文数的使用次数而非排列顺序，所以它等价于使用回文数集合进行无序、可重复的整数划分。",
+          "处理第 $m$ 个回文数时，方案可分为“不使用它”和“至少使用一次”；后者去掉一个该数后仍可继续使用它，得到 $dp[k][m]=dp[k][m-1]+dp[k-p_m][m]$。",
+          "按回文数顺序递推并让同一列继续转移，恰好避免统计不同排列；预处理所有测试所需的 $dp$ 后即可 $O(1)$ 查询。"
+        ],
+        "solution_brief": "枚举所有不超过 $40000$ 的正回文数，按无序完全背包定义 $dp[k][m]$ 为只用前 $m$ 个回文数凑出 $k$ 的方案数。转移为不选当前数或选一次后继续使用，统一预处理并对 $10^9+7$ 取模。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的回文数多重集合定义，以及 editorial 中的回文数计数和完全划分 DP。",
+        "quality_flags": []
+      }
+    },
+    "1673B": {
+      "problem_key": "1673B",
+      "title": "A Perfectly Balanced String?",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1673/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/102389",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "56d4ee30d302dab05dcf4ea42bcd02b9e8bd4e142879d04d5161a46a30ddea34",
+      "generated_at": "2026-09-28T03:30:24+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定只含小写字母的字符串。对字符串的每个非空连续子串，以及原串中出现的任意两个字符，要求它们在该子串中的出现次数之差的绝对值不超过 $1$；判断原串是否满足这一条件。",
+        "transformed_statement": "令 $k$ 为原串中不同字符的数量，将问题转化为检查每个长度为 $k$ 的连续窗口是否包含 $k$ 个互不相同的字符；等价地，首个周期块无重复，之后每个字符都与前面 $k$ 位相同。",
+        "key_observations": [
+          "设字符串中不同字符数为 $k$，则任意长度为 $k$ 的连续子串都必须包含全部不同字符且恰好各出现一次；否则某字符出现至少两次，必有另一字符未出现，频次差会达到 $2$。",
+          "若所有长度为 $k$ 的窗口都由这 $k$ 个不同字符组成，则任意子串可分成若干个完整窗口和一个残块，各字符频次最多相差 $1$，因此该条件也充分。",
+          "上述窗口条件等价于：首个长度为 $k$ 的前缀字符互不相同，且对所有合法位置满足 $s_i=s_{i+k}$；因此只需找出首次重复前缀并检查周期延续。"
+        ],
+        "solution_brief": "统计字符串中不同字符数 $k$，先找到从开头开始的最长互不重复前缀；随后检查每个位置是否满足 $s_i=s_{i-k}$。全部满足则输出 YES，否则输出 NO。",
+        "primary_topic": "字符串",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的完美平衡定义、editorial 的长度 $k$ 窗口判定与周期等价条件，并参考 tags。",
+        "quality_flags": []
+      }
+    },
+    "1673A": {
+      "problem_key": "1673A",
+      "title": "Subtle Substring Subtraction",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1673/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/102389",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "72a1b1cbb0ea7caa5a0c8bdc1c49c18b302b953909e2ec2366c781cea5b0a523",
+      "generated_at": "2026-09-28T03:30:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "Alice 和 Bob 轮流从当前字符串中删除连续子串，Alice 只能删除偶数长度子串，Bob 只能删除奇数长度子串，直到字符串为空；双方所得分数是自己删除字符的字母价值总和。双方均最优行动，要求输出每轮获胜者及双方分数差。",
+        "transformed_statement": "把每个字符的字母价值视为总价值。偶数长度时整串价值归 Alice；奇数长度时问题等价于决定保留哪个端点给 Bob，Alice 选择让 Bob 得到首尾较小价值的端点。",
+        "key_observations": [
+          "当字符串长度为偶数时，Alice 可以一次删除整个字符串，立即拿走全部字符价值，因此答案是总价值且 Alice 获胜。",
+          "当长度为奇数时，Alice 删除长度为 $n-1$ 的前缀或后缀最优；若删除更短的偶数子串，Bob 可删除剩余部分并拿到至少一个端点，从而不会更有利。",
+          "奇数长度下，Alice 应留下两端字符中价值较小的一个给 Bob，因此 Bob 得分为两端字符价值的最小值，Alice 得分为总价值减去该值。",
+          "长度至少为 $3$ 的奇数串中，Alice 删除的部分包含至少两个正价值字符，所以 Alice 必胜；只有长度为 $1$ 时 Bob 获胜。"
+        ],
+        "solution_brief": "计算字符串总价值。长度为偶数时 Alice 删除整串；长度为奇数时比较首尾字符价值，让 Bob 留下较小者，按双方得分差判断胜负。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "博弈",
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的操作与计分规则，以及 editorial_text 的贪心结论；tags 用于辅助标注主题。",
         "quality_flags": []
       }
     }
