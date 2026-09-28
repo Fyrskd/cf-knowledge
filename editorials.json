@@ -8,6 +8,26 @@
     "raw_sha256": "e02bf41675dc0dbc425a56dd042c753b3411dbe71c57032363c612b54b0bb7d8"
   },
   {
+    "url": "https://codeforces.com/blog/entry/91520",
+    "blog_entry_id": 91520,
+    "title": "Codeforces Round #724 — Editorial",
+    "author": "rabaiBomkarBittalBang",
+    "creation_time": "2021-06-06",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round #724 — Editorial",
+    "section_count": 6,
+    "covered_problems": [
+      "1536A",
+      "1536B",
+      "1536C",
+      "1536D",
+      "1536E",
+      "1536F"
+    ],
+    "raw_sha256": "d2b39d51492fa515e1cb88f47fefc90e5ba21473d5076d684bba541a6ceff951"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/92199",
     "blog_entry_id": 92199,
     "title": "Codeforces Round #728 Editorial",

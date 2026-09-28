@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3997,
-    "source_total_problems": 3997,
+    "total_problems": 4003,
+    "source_total_problems": 4003,
     "filtered_out_problems": 0,
-    "with_statement_brief": 3997,
+    "with_statement_brief": 4003,
     "with_editorial_brief": 3652,
     "with_solution_brief": 3654,
-    "missing_editorial_brief": 343,
+    "missing_editorial_brief": 349,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 3059,
     "primary_topic_count": 13,
-    "contest_count": 620,
+    "contest_count": 621,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1298,
+    "构造与贪心": 1300,
+    "字符串": 215,
+    "数据结构": 380,
+    "图论与网络流": 265,
+    "博弈": 115,
     "数论与同余": 422,
-    "字符串": 214,
-    "图论与网络流": 264,
     "交互": 117,
     "动态规划与状态设计": 327,
     "树结构": 185,
-    "博弈": 114,
     "组合计数与概率": 310,
-    "数据结构": 379,
     "代数、矩阵与多项式": 26,
     "基础实现与模拟": 247,
     "几何": 94
   },
   "statusCounts": {
+    "missing_editorial": 349,
     "ai_generated_with_editorial": 2667,
     "ai_generated_partial_editorial": 94,
-    "missing_editorial": 343,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -122974,6 +122974,176 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "二分礼盒总数 $n$。对固定的 $n$，令 $k$ 为一种配方的份数，另一种配方为 $n-k$；依据两种糖果的库存限制求出 $k$ 的可行整数范围，并检查其是否非空。题解正文中的部分不等式方向与推导不一致，具体实现时应以库存不能超用为准。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1536,
+      "name": "Codeforces Round 724 (Div. 2)",
+      "date": "2021-06-06",
+      "url": "https://codeforces.com/contest/1536",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1536A",
+          "index": "A",
+          "slot": "A",
+          "title": "Omkar and Bad Story",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1536/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/91520",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms"
+          ],
+          "statementBrief": "题面已抓取：Omkar and Bad Story；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1536B",
+          "index": "B",
+          "slot": "B",
+          "title": "Prinzessin der Verurteilung",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1536/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/91520",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "图论与网络流",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Prinzessin der Verurteilung；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1536C",
+          "index": "C",
+          "slot": "C",
+          "title": "Diluc and Kaeya",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1536/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/91520",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数论与同余",
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "hashing",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Diluc and Kaeya；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1536D",
+          "index": "D",
+          "slot": "D",
+          "title": "Omkar and Medians",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1536/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/91520",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Omkar and Medians；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1536E",
+          "index": "E",
+          "slot": "E",
+          "title": "Omkar and Forest",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1536/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/91520",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余",
+            "几何"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "graphs",
+            "math",
+            "shortest paths"
+          ],
+          "statementBrief": "题面已抓取：Omkar and Forest；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1536F",
+          "index": "F",
+          "slot": "F",
+          "title": "Omkar and Akmar",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1536/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/91520",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "数论与同余",
+            "几何",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "chinese remainder theorem",
+            "combinatorics",
+            "constructive algorithms",
+            "fft",
+            "games",
+            "geometry",
+            "math",
+            "meet-in-the-middle",
+            "string suffix structures"
+          ],
+          "statementBrief": "题面已抓取：Omkar and Akmar；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "partial"
         }
       ]
     }
