@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3230,
+    "total_problems": 3236,
     "source_total_problems": 3238,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3230,
-    "with_editorial_brief": 2949,
-    "with_solution_brief": 2951,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3236,
+    "with_editorial_brief": 2955,
+    "with_solution_brief": 2957,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2292,
+    "ai_override_count": 2298,
     "primary_topic_count": 13,
-    "contest_count": 495,
+    "contest_count": 496,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1032,
+    "数论与同余": 344,
+    "构造与贪心": 1034,
+    "数据结构": 304,
+    "树结构": 160,
     "图论与网络流": 205,
-    "数论与同余": 343,
     "组合计数与概率": 248,
     "代数、矩阵与多项式": 23,
     "基础实现与模拟": 198,
     "字符串": 169,
-    "数据结构": 302,
     "动态规划与状态设计": 272,
     "几何": 78,
     "交互": 100,
-    "树结构": 159,
     "博弈": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1990,
+    "ai_generated_with_editorial": 1996,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -99768,6 +99768,202 @@ window.CF_INSIGHTS_DATA = {
             "变量代换与指数生成函数展开后，系数由第二类 Stirling 数和 $\u0000\\sum_{i=0}^m\\binom{-s}{i}s^{m-i}$ 组成；后者可用 $2\\times2$ 矩阵的分治乘积计算，再结合 NTT 完成多项式运算。"
           ],
           "solutionBrief": "先用二项式反演转为长度 $n-s$ 的 good 排列计数，再以 Eulerian 数生成函数进行系数变换；最终借助第二类 Stirling 数、矩阵分治和 NTT 在模 $998244353$ 下求出全部答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1691,
+      "name": "CodeCraft-22 and Codeforces Round 795 (Div. 2)",
+      "date": "2022-05-31",
+      "url": "https://codeforces.com/contest/1691",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1691A",
+          "index": "A",
+          "slot": "A",
+          "title": "Beat The Odds",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1691/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103212",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个整数序列，可以删除任意元素并保持其余元素的相对顺序。要求删除后每一对相邻元素之和都是偶数，求达到条件所需删除的最少元素数。",
+          "transformedStatement": "将每个元素只看作奇偶性：相邻和为偶数等价于相邻元素同奇偶，因此保留序列必须完全由奇数或完全由偶数组成；只需选择删除数量较少的那一类。",
+          "keyObservations": [
+            "两个相邻元素之和为偶数，当且仅当它们奇偶性相同；因此最终序列中不能相邻出现一奇一偶。",
+            "由于任意相邻位置都必须奇偶性相同，最终保留下来的所有元素必须全部为奇数或全部为偶数，问题转化为保留数量最多的一类。",
+            "删除全部奇数或全部偶数都能直接满足条件，因此最少删除数是两类数量中的较小值，即 $\\min(\\text{奇数个数},\\text{偶数个数})$。"
+          ],
+          "solutionBrief": "统计数组中的奇数和偶数数量。保留数量较多的那一类、删除另一类后，所有相邻和都为偶数；答案为 $\\min(\\text{奇数个数},\\text{偶数个数})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1691B",
+          "index": "B",
+          "slot": "B",
+          "title": "Shoe Shuffling",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1691/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103212",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定按非递减顺序排列的学生鞋码。需要把每双不可拆分的鞋重新分配，使每人不能拿自己的鞋且拿到的鞋码不小于自身鞋码；输出对应排列，无法完成则输出 $-1$。",
+          "transformedStatement": "把学生按相同鞋码划分为连续块。合法方案等价于在每个块内部单独做一个无固定点排列，不能把鞋从一个鞋码块转移到另一个块。",
+          "keyObservations": [
+            "虽然每个人只能拿到不小于自己尺码的鞋，但只要存在一次严格变大的分配，鞋码不小于该人的其他分配就无法补回，沿着转移链最终会使最小尺码缺少可穿的鞋，因此所有人实际上都必须拿到同尺码的鞋。",
+            "将相同尺码的学生划分为连续分组后，分组之间不能交换鞋子；因此每个分组必须独立完成一个无固定点的排列。",
+            "一个分组能完成换鞋当且仅当其大小至少为 $2$；对分组内下标做循环左移即可保证每个人拿到别人的鞋。"
+          ],
+          "solutionBrief": "按相同尺码划分连续分组。若某组只有一个人则无解；否则将该组下标循环移动一位，并令每人获得移动后对应位置的鞋子，所有分组处理完即得答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1691C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sum of Substrings",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1691/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/103212",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定一个二进制字符串，定义每一对相邻字符组成的十进制数之和为 $f(s)$。每次只能交换一对相邻字符，最多进行 $k$ 次，要求通过这些操作使 $f(s)$ 尽可能小。",
+          "transformedStatement": "把每个 `1` 看作带位置权重的贡献：首位权重为 $10$、末位为 $1$、其余位置为 $11$。相邻交换等价于付出移动距离，将 `1` 尽量送到两个低权重端点即可。",
+          "keyObservations": [
+            "每个位置的字符对总和贡献固定：首位权重为 $10$，末位为 $1$，中间位置均为 $11$，因此只需优化两个端点上的 `1`。",
+            "把最右侧的 `1` 向末端移动可将其贡献从 $11$ 降至 $1$，单位收益最大，应优先使用相邻交换次数完成这次移动。",
+            "若仍有交换次数，再把最左侧的 `1` 向首端移动，可将贡献从 $11$ 降至 $10$；其余 `1` 留在中间不会改变总贡献。"
+          ],
+          "solutionBrief": "将目标值改写为位置权重和：两端权重分别为 $10$、$1$，中间权重为 $11$。先用交换次数把最右侧的 `1` 尽量移到末端，再把最左侧的 `1` 尽量移到首端，最后按新位置计算总和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1691D",
+          "index": "D",
+          "slot": "D",
+          "title": "Max GEQ Sum",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1691/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/103212",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "divide and conquer",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定整数数组，要求判断是否对每个连续子数组都满足“子数组最大值不小于子数组元素总和”。若所有区间都满足输出 YES，否则输出 NO。",
+          "transformedStatement": "固定一个位置 $i$，只研究 $a_i$ 作为区间最大值时的所有子数组。利用左右最近更大元素限制范围，并将区间和比较转化为前缀和的区间极值查询。",
+          "keyObservations": [
+            "固定位置 $i$ 后，用左右最近的严格更大元素划定边界；在该边界内、包含 $i$ 的子数组都可把 $a_i$ 视为最大值进行检查。",
+            "若包含 $i$ 的区间 $[j,k]$ 的总和超过 $a_i$，则去掉 $a_i$ 后左右两侧和之和为正，因此至少一侧为正；对应的 $[j,i]$ 或 $[i,k]$ 也会超过 $a_i$，所以只需检查以 $i$ 为端点的区间。",
+            "以 $i$ 为右端点或左端点的区间和，分别可转化为前缀和的区间最小值或最大值查询，从而批量判断是否存在违规区间。",
+            "对每个位置完成上述检查即可覆盖所有可能的最大元素；区间边界用单调栈求出，前缀和极值用线段树查询。"
+          ],
+          "solutionBrief": "用单调栈求每个 $a_i$ 左右最近更大元素，确定它可能作为最大值的区间范围。根据关键等价性，只检查以 $i$ 为端点的子数组，并通过前缀和极值查询判断其和是否超过 $a_i$；整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1691E",
+          "index": "E",
+          "slot": "E",
+          "title": "Number of Groups",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1691/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/103212",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定若干条带红蓝颜色的闭区间，只有颜色不同且至少共享一个点的两个区间才直接相连；通过若干次直接连接可形成同一组。要求计算所有区间最终分成多少组。",
+          "transformedStatement": "把区间相交关系转化为从左到右的事件扫描：当前仍未结束的区间是活跃区间，新开始的区间只需与活跃异色区间建立连通关系，并用 DSU 维护传递连通块。",
+          "keyObservations": [
+            "扫描到某个区间的左端点时，所有仍活跃的异色区间都与它相交，因此可一次性合并到同一 DSU 连通块。",
+            "同色活跃区间在此前已通过异色区间连通；合并后只保留结束点最远者，就能代表所有同色区间对未来扫描的连接能力。",
+            "按端点从左到右处理时，区间到达右端点即可从对应颜色的活跃集合删除，从而只保留当前可能产生新连接的区间。"
+          ],
+          "solutionBrief": "将每个区间作为 DSU 节点，按所有端点从左到右扫描，维护两种颜色的活跃区间。遇到左端点时与所有活跃异色区间合并，并在该异色集合中只保留右端点最远者；遇到右端点则删除区间，最后统计 DSU 连通块数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1691F",
+          "index": "F",
+          "slot": "F",
+          "title": "K-Set Tree",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1691/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/103212",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一棵有 $n$ 个顶点的树和整数 $k$。对每个根节点 $r$ 及每个大小为 $k$ 的顶点集合 $S$，将树以 $r$ 为根，求包含 $S$ 的最小根子树大小 $f(r,S)$，并输出所有 $(r,S)$ 的总和。",
+          "transformedStatement": "固定根后，把每个集合 $S$ 唯一归类到其最小覆盖根节点 $v$，按该节点子树大小加权统计；随后把根沿边移动，用换根关系快速更新两个受影响节点。",
+          "keyObservations": [
+            "固定根为 $r$ 后，大小为 $k$ 且最小覆盖子树根恰为 $v$ 的集合数为 $cnt(v)=\\binom{size(v)}{k}-\\sum_{u\\text{ 为 }v\\text{ 的子节点}}\\binom{size(u)}{k}$，因为不满足条件的集合必完全落在某个子树中。",
+            "每个集合 $S$ 恰好对应一个最小覆盖子树根，因此固定根的总贡献可写为 $\\sum_v cnt(v)\\times size(v)$，避免逐个枚举集合。",
+            "从父节点换根到其子节点时，只有旧根和新根的子树大小及对应计数会改变，其余节点贡献保持不变，因此每次换根只需更新两个节点。",
+            "换根后旧根子树大小变为 $size_{old}(OR)-size_{old}(NR)$，新根子树大小变为 $n$；结合三项组合数差分即可重算两者贡献并累加所有根的答案。"
+          ],
+          "solutionBrief": "先以任意节点为根计算各子树大小和 $cnt(v)$，得到该根的贡献。再沿树换根；每次只更新旧根、新根的大小与 $cnt$，并用贡献差维护答案，最后累加所有根的结果。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
