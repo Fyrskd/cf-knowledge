@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3674,
+    "total_problems": 3675,
     "source_total_problems": 3677,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 3674,
-    "with_editorial_brief": 3362,
-    "with_solution_brief": 3364,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3675,
+    "with_editorial_brief": 3363,
+    "with_solution_brief": 3365,
     "missing_editorial_brief": 310,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2736,
+    "ai_override_count": 2737,
     "primary_topic_count": 13,
-    "contest_count": 566,
+    "contest_count": 567,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,6 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数据结构": 351,
     "数论与同余": 382,
     "构造与贪心": 1194,
     "交互": 107,
@@ -52,15 +53,14 @@ window.CF_INSIGHTS_DATA = {
     "基础实现与模拟": 232,
     "图论与网络流": 239,
     "组合计数与概率": 277,
-    "数据结构": 350,
     "树结构": 177,
     "动态规划与状态设计": 297,
     "几何": 89,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "ai_generated_partial_editorial": 78,
     "missing_editorial": 310,
-    "ai_generated_partial_editorial": 77,
     "ai_generated_with_editorial": 2394,
     "low_confidence": 1,
     "manual_override": 891,
@@ -113244,6 +113244,48 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1588,
+      "name": "Codeforces Round 755 (Div. 1, based on Technocup 2022 Elimination Round 2)",
+      "date": "2021-11-14",
+      "url": "https://codeforces.com/contest/1588",
+      "type": "Div. 1",
+      "problemCount": 1,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1588F",
+          "index": "F",
+          "slot": "F",
+          "title": "Jumping Through the Array",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1588/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/96953",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "graphs",
+            "two pointers"
+          ],
+          "statementBrief": "给定整数数组 $a$ 和一个置换 $p$，需要依次处理 $q$ 个三类查询，并输出所有类型 1 查询的答案。当前题面摘录没有提供三类查询的具体参数和操作规则；题解表明这些操作涉及置换环上的更新及环结构变化。",
+          "transformedStatement": "把置换视为若干个环，把环上的更新组织成环块；同时把数组区间按下标分成平方根大小的块。区间查询由数组块和环块之间的计数贡献组合得到，置换变化则通过局部拆分、合并重新维护环块。",
+          "keyObservations": [
+            "将置换 $p$ 分解为环后，类型 2 的整环加法可转化为对环上若干连续环块统一加值，避免逐元素更新。",
+            "按数组下标分成大小约为 $B=\\lfloor\\sqrt n\\rfloor$ 的块后，区间和只需处理两端 $O(B)$ 个元素及中间数组块。",
+            "长度小于 $B$ 的环直接逐元素更新；长度至少为 $B$ 的环维护大小在 $[B,2B-1]$ 的环块，从而把大环更新压缩为块级加法。",
+            "类型 3 改变环结构后采用 split-rebuild：拆分受影响的环块，合并过小块并拆分过大块，使环块总数保持为 $O(n/B)$。"
+          ],
+          "solutionBrief": "用 $B=\\lfloor\\sqrt n\\rfloor$ 分块数组，并把置换分解成环。小环逐元素维护，大环按大小约为 $B$ 的环块维护统一增量；为每个环块预处理其在数组块前缀中的元素计数，以快速计算区间贡献。环结构变化时进行 split-rebuild，整体复杂度记为 $O(n\\sqrt n)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
