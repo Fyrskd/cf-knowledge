@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3454,
+    "total_problems": 3460,
     "source_total_problems": 3462,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3454,
-    "with_editorial_brief": 3156,
-    "with_solution_brief": 3158,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3460,
+    "with_editorial_brief": 3162,
+    "with_solution_brief": 3164,
     "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2516,
+    "ai_override_count": 2522,
     "primary_topic_count": 13,
-    "contest_count": 532,
+    "contest_count": 533,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1113,
-    "数据结构": 327,
-    "组合计数与概率": 263,
+    "基础实现与模拟": 216,
+    "构造与贪心": 1116,
+    "数据结构": 328,
+    "组合计数与概率": 264,
     "几何": 83,
     "数论与同余": 366,
     "树结构": 167,
     "图论与网络流": 225,
-    "基础实现与模拟": 215,
     "字符串": 182,
     "动态规划与状态设计": 282,
     "代数、矩阵与多项式": 24,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "交互": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2196,
+    "ai_generated_with_editorial": 2202,
     "missing_editorial": 296,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -106568,6 +106568,193 @@ window.CF_INSIGHTS_DATA = {
             "只有满足 $|A_iA_j|\\le 2r$ 的点才会产生弧；用边长 $2r$ 的网格只检查锚点所在格及周围八格，随机分布下候选数期望为 $O(k)$，半径变化时重建网格。"
           ],
           "solutionBrief": "从一个足够大的半径开始枚举锚点 $j$，用网格筛出可能相交的点；对每个锚点通过弧端点扫描和线段树判断可行性，若当前半径可行则二分缩小答案。随机分布下半径更新期望为 $O(\\log n)$，总复杂度为 $O(nk\\log n+k\\log n\\log\\varepsilon^{-1})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1644,
+      "name": "Educational Codeforces Round 123 (Rated for Div. 2)",
+      "date": "2022-02-22",
+      "url": "https://codeforces.com/contest/1644",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1644A",
+          "index": "A",
+          "slot": "A",
+          "title": "Doors and Keys",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1644/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100227",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "走廊中依次排列三扇红、绿、蓝门以及各自唯一的钥匙，骑士只能从左向右前进，必须先拿到某颜色钥匙才能打开对应的门。判断他能否按顺序打开全部三扇门并到达终点。",
+          "transformedStatement": "将通行过程转化为三组独立的先后约束：钥匙 `r` 必须在门 `R` 前，`g` 在 `G` 前，`b` 在 `B` 前；只需检查这些约束是否全部成立。",
+          "keyObservations": [
+            "每种颜色的钥匙都必须出现在对应门之前，否则到达该门时无法打开，条件因此是三组独立的先后约束。",
+            "若当前遇到的第一扇门对应钥匙已经在前方出现过，就能立即打开它；移除这把钥匙和这扇门后，剩余部分仍是同类问题，因此所有钥匙均在门前时条件充分。",
+            "由于每种字符恰好出现一次，只需检查 `r` 是否在 `R` 前、`g` 是否在 `G` 前、`b` 是否在 `B` 前即可。"
+          ],
+          "solutionBrief": "扫描字符串，记录三把钥匙的位置，并检查每种颜色的钥匙是否都早于对应的门。全部满足则输出 YES，否则输出 NO，单个测试用例复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1644B",
+          "index": "B",
+          "slot": "B",
+          "title": "Anti-Fibonacci Permutation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1644/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100227",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定 $n$，需要输出 $n$ 个互不相同的长度为 $n$ 的排列，每个排列恰好包含 $1$ 到 $n$。对排列中每个位置 $i\\ge3$，必须满足 $p_{i-2}+p_{i-1}\\ne p_i$；输出任意满足条件的 $n$ 个排列。",
+          "transformedStatement": "把问题转化为构造一组排列，使从第三项开始的后缀严格递减。若 $p_{i-1}>p_i$ 且所有元素为正，则自动有 $p_{i-2}+p_{i-1}>p_i$，因此只需改变首元素并保持其余元素降序。",
+          "keyObservations": [
+            "将每个排列的首元素固定为不同的 $x$，其余元素按降序排列，就能自然得到 $n$ 个互不相同的排列。",
+            "后缀严格递减，因此对所有 $i\\ge 3$ 都有 $p_{i-1}>p_i$；再结合 $p_{i-2}>0$，可得 $p_{i-2}+p_{i-1}>p_i$，从而必然不满足 Fibonacci 等式。",
+            "不同排列的首元素分别为 $1,2,\\ldots,n$，所以输出结果既满足反 Fibonacci 条件，也不会重复。"
+          ],
+          "solutionBrief": "对每个 $x=1,2,\\ldots,n$，先放置 $x$，再将除 $x$ 外的所有数按降序排列。后缀递减使前两项之和始终大于当前项，因此每个排列都合法且互不相同。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1644C",
+          "index": "C",
+          "slot": "C",
+          "title": "Increase Subarray Sums",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1644/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/100227",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定整数数组和非负整数 $x$。对每个 $k=0,1,\\ldots,n$，必须选择恰好 $k$ 个不同位置并各加上 $x$，然后求修改后某个连续子数组的最大和；空子数组也允许，和为 $0$。",
+          "transformedStatement": "把问题改写为：对每个连续子数组，只保留它的长度 $l$ 与原始和；由于增量非负，该子数组在恰好修改 $k$ 个位置后的最佳值是其原始和加上 $\\min(k,l)x$，再在所有长度中取最大值。",
+          "keyObservations": [
+            "由于 $x\\ge 0$，固定一个长度为 $l$ 的目标子数组时，应优先把增量放在其中，实际增加量为 $\\min(k,l)\\cdot x$；多余位置可放到子数组外。",
+            "对于同一长度 $l$ 的所有子数组，增量项完全相同，因此只需保留该长度下原始和最大的子数组。",
+            "先求出每个长度 $l$ 的最大子数组和 $best[l]$，再对每个 $k$ 取 $\\max_l\\{best[l]+\\min(k,l)x\\}$，即可覆盖所有操作选择。",
+            "空子数组贡献为 $0$，因此每个答案都至少为 $0$，并可视为长度 $0$ 的候选。"
+          ],
+          "solutionBrief": "枚举所有连续子数组，按长度记录最大和 $best[l]$。对每个 $k$ 枚举长度 $l$，计算 $best[l]+\\min(k,l)x$ 的最大值，并与空子数组的 $0$ 比较；总复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1644D",
+          "index": "D",
+          "slot": "D",
+          "title": "Cross Coloring",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1644/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/100227",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有一个初始全白的 $n\\times m$ 网格，按给定顺序执行 $q$ 次操作：每次选择一个非白颜色，将指定行和指定列染成该颜色。要求计算所有可能最终染色方案的数量，结果对 $998244353$ 取模。",
+          "transformedStatement": "把每个单元格归因于覆盖它的最后一次操作；因此只需统计哪些操作至少留下一个单元格。逆序处理操作，将后续已染过的行列视为集合，以判断当前操作是否仍有可见贡献。",
+          "keyObservations": [
+            "最终每个非白单元格由覆盖它的最后一次操作决定，因此归属于同一最后操作的单元格颜色必然相同。",
+            "若某次操作在其后既被重新染过所在行又被重新染过所在列，则它覆盖的所有单元格都会被覆盖，因而不再影响最终图案。",
+            "若后续操作已经覆盖所有行或所有列，该操作同样不可能留下任何最终单元格；否则它至少保留一个单元格，其颜色选择贡献一个独立的 $k$ 倍。",
+            "从后往前处理时，只需维护已出现的行列集合以及是否已覆盖全部行或列，即可统计仍有贡献的操作次数。"
+          ],
+          "solutionBrief": "逆序扫描操作，维护已处理的行列集合。若当前操作的行、列都已出现，或所有行、所有列已出现，则它没有最终贡献；否则答案乘以 $k$。最终输出 $k^{cnt}\\bmod 998244353$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1644E",
+          "index": "E",
+          "slot": "E",
+          "title": "Expand the Path",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1644/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/100227",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "data structures",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "机器人从 $n\\times n$ 网格的 $(1,1)$ 出发，按只含 D（向下）和 R（向右）的序列移动；每次修改可将一个 D 或 R 复制成两个相同移动，且全过程不能越界。求所有可能修改后路径曾访问过的不同格子数。",
+          "transformedStatement": "不再枚举复制操作，而是把所有可达格子看成由两条极端路径围成的区域：一条优先扩展首个 R 和末个 D，另一条优先扩展首个 D 和末个 R；随后按行计算区域外的两块面积。",
+          "keyObservations": [
+            "所有可达格子被两条极端路径夹住：分别把第一个 R、最后一个 D，或第一个 D、最后一个 R 尽可能复制；因此无需枚举所有修改序列。",
+            "同一行中若有两个可达格子，则它们之间的格子也都可达，故可达区域按行形成连续区间，转而计算两侧未覆盖区域。",
+            "不在可达区域的格子分成上方和左方两部分；交换字符串中的 D、R 会交换这两部分，因此只需设计一个统计函数并调用两次。",
+            "统计上方区域时从字符串末尾倒推：每遇到 R，当前行的空白数增加 1；每遇到 D，就把当前空白数计入答案，直到处理到原串第一个 R。"
+          ],
+          "solutionBrief": "用两条极端复制路径确定可达区域的边界，计算 $n^2$ 减去上方和左方的未覆盖格子。倒序扫描统计一侧，再交换 D、R 统计另一侧，整体复杂度为 $O(|s|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1644F",
+          "index": "F",
+          "slot": "F",
+          "title": "Basis",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1644/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/100227",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "fft",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定长度为 $n$、元素取自 $1..k$ 的数组。可将每个元素连续复制若干次后截取回原长度，也可全局交换两个数值；若数组能由另一个数组经过一次操作得到，则称后者为前者的父数组。要求选出尽可能少的数组，使所有长度为 $n$ 的合法数组都拥有所选数组序列中的祖先。",
+          "transformedStatement": "全局交换只改变数值标签，所以把数组按相等位置划分来计数；重复复制操作则对应于按连续相等块长度进行可整除压缩。目标因此等价于统计块长（忽略最后一块）最大公因数为 $1$、且块数不超过 $k$ 的划分代表。",
+          "keyObservations": [
+            "全局交换两个数值只会改变标签，不改变相等关系，因此可把数组视为位置集合的划分；拥有不超过 $k$ 个非空块的划分数量为 $\\sum_{j=1}^{\\min(n,k)}S(n,j)$。",
+            "重复截断操作得到的数组由连续相等块组成，除最后一块外各块长度都能被操作参数整除；反过来满足该条件的数组也能由一次重复截断得到。",
+            "数组除最后一块外的块长最大公因数为 $1$，当且仅当它不能继续由重复截断操作得到；这把寻找最小基底转化为筛选块长最大公因数恰为 $1$ 的划分。",
+            "令 $B_i$ 表示所有相关块长都能被 $i$ 整除的数组数，则压缩每 $i$ 个位置得到 $B_i=A_{\\lceil n/i\\rceil}$；用莫比乌斯反演提取最大公因数为 $1$ 的数量。"
+          ],
+          "solutionBrief": "用第二类斯特林数计算 $A_t=\\sum_{j=1}^{\\min(t,k)}S(t,j)$，其固定 $t$ 的全部值可由卷积与 FFT 求出。去掉单块划分后，对 $A_{\\lceil n/i\\rceil}$ 使用莫比乌斯反演，答案为 $\\sum_{i=1}^n\\mu(i)(A_{\\lceil n/i\\rceil}-S(\\lceil n/i\\rceil,1))$；$n=1$ 或 $k=1$ 时单独处理。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
