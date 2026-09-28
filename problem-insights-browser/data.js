@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4018,
+    "total_problems": 4024,
     "source_total_problems": 4024,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4018,
-    "with_editorial_brief": 3672,
-    "with_solution_brief": 3674,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4024,
+    "with_editorial_brief": 3678,
+    "with_solution_brief": 3680,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3079,
+    "ai_override_count": 3086,
     "primary_topic_count": 13,
     "contest_count": 624,
     "rating_min": 800,
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1302,
+    "构造与贪心": 1305,
+    "数论与同余": 423,
+    "组合计数与概率": 314,
+    "交互": 118,
     "基础实现与模拟": 250,
     "数据结构": 384,
-    "组合计数与概率": 313,
     "动态规划与状态设计": 329,
     "字符串": 217,
     "树结构": 186,
-    "数论与同余": 422,
     "图论与网络流": 264,
-    "交互": 117,
     "博弈": 114,
     "代数、矩阵与多项式": 26,
     "几何": 94
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2689,
     "missing_editorial": 344,
-    "ai_generated_with_editorial": 2683,
     "ai_generated_partial_editorial": 98,
     "low_confidence": 1,
     "manual_override": 891,
@@ -123587,9 +123587,59 @@ window.CF_INSIGHTS_DATA = {
       "date": "2021-05-28",
       "url": "https://codeforces.com/contest/1526",
       "type": "Div. 2",
-      "problemCount": 1,
-      "maxRating": 1500,
+      "problemCount": 7,
+      "maxRating": 3000,
       "problems": [
+        {
+          "key": "1526A",
+          "index": "A",
+          "slot": "A",
+          "title": "Mean Inequality",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1526/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/91195",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "sortings"
+          ],
+          "statementBrief": "给定 $2n$ 个互不相同的整数，要将它们重排成一个首尾相接的环。要求环上每个数都不等于左右两个邻居的算术平均数，输出任意一种满足条件的排列。",
+          "transformedStatement": "把排好序的数分为连续的较小半部和较大半部，并让两半交替占据环上的位置。这样每个数的两个邻居都属于同一半，可用两半的严格大小关系保证均值条件成立；环长为偶数也确保首尾处同样适用这一结构。",
+          "keyObservations": [
+            "排序后将较小的一半与较大的一半分开，较大一半中的每个数都严格大于较小一半中的每个数，因此可用大小关系排除相邻两数的均值等于中间数。",
+            "把较大的一半放在环形序列的奇数位置、较小的一半放在偶数位置后，每个位置的两个邻居必然来自同一半；小数位置夹在两个大数之间，大数位置夹在两个小数之间，均值因此不可能等于该位置的数。"
+          ],
+          "solutionBrief": "将所有数排序，前一半作为较小部分、后一半作为较大部分，再交错输出小数和大数。环上每个位置的两个邻居都来自另一半，而两半严格分离，故其均值无法等于该位置的数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1526B",
+          "index": "B",
+          "slot": "B",
+          "title": "I Hate 1111",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1526/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/91195",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定整数 $x$，可以任意多次选取 $11,111,1111,\\ldots$ 中的数并相加。判断能否恰好得到 $x$，并输出 YES 或 NO。",
+          "transformedStatement": "把问题改写为判断 $x$ 是否能表示成 $A\\cdot11+B\\cdot111$，其中 $A,B$ 为非负整数；再将 $B$ 对 $11$ 取余，把表示判定缩减为有限次检查。",
+          "keyObservations": [
+            "所有长度至少为四位的全 1 数都能由 $11$ 和 $111$ 相加得到，因此无需考虑更大的数作为独立币值。",
+            "若 $x=A\\cdot11+B\\cdot111$，把 $B$ 写成 $11C+D$ 且 $0\\le D<11$ 后，可将 $11C\\cdot111$ 并入 $11$ 的系数；因此只需检查 $D=0,1,\\ldots,10$。",
+            "固定 $D$ 后，只需判断 $x-111D$ 是否为非负的 $11$ 的倍数，这把无限多种组合压缩成至多十一次简单检验。"
+          ],
+          "solutionBrief": "将所有可用数归约为 $11$ 和 $111$。枚举 $D=0,1,\\ldots,10$，检查 $x-111D$ 是否非负且能被 $11$ 整除；若有一个满足则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1526C1",
           "index": "C1",
@@ -123599,23 +123649,134 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1526/problem/C1",
           "editorialUrl": "https://codeforces.com/blog/entry/91195",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "数据结构",
-            "组合计数与概率"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "data structures",
             "dp",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Potions (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "有一排药水，必须从左到右依次经过；每到一瓶，可以选择喝下或跳过，喝下后健康值按该药水的数值变化。初始健康值为 0，且任何时刻都不能为负，求最多能喝下多少瓶。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1526C2",
+          "index": "C2",
+          "slot": "C",
+          "title": "Potions (Hard Version)",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1526/problem/C2",
+          "editorialUrl": "https://codeforces.com/blog/entry/91195",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 瓶药水按从左到右排列，每瓶饮用后会使生命值增加或减少 $a_i$。你从左向右经过每瓶，可以选择喝下或跳过，但喝完任意一瓶后生命值都必须非负；求最多能喝多少瓶。",
+          "transformedStatement": "把问题按前缀处理：每到一瓶，就尝试将它加入当前选择，并要求所选药水的累计生命值始终非负。若加入后总和为负，则从当前已选药水中删去贡献最小的一瓶，以尽可能保留选择数量并改善后续前缀的可行性。",
+          "keyObservations": [
+            "处理到当前位置时，若当前所选药水的总生命值为负，就必须从已选集合中删去药水；删掉其中数值最小的一瓶，能以一次删除获得最大的生命值恢复。",
+            "在每个前缀中，维护总和非负且尽可能多的药水即可；当总和首次变负时，移除最负药水不会减少可保留的数量，并使剩余集合更有利于后续选择。",
+            "用最小堆保存当前所选药水，就能在总和为负时快速找到并移除最负的一瓶，从而把逐前缀的选择过程压到 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "从左到右处理药水，先把当前药水加入所选集合并更新总和。若总和变为负数，就从集合中移除数值最小的药水并扣除其负贡献；用最小堆维护集合，最终堆的大小就是最多能喝的数量，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1526D",
+          "index": "D",
+          "slot": "D",
+          "title": "Kill Anton",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1526/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/91195",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "data structures",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定只含 A、N、O、T 的字符串，需输出一个字符完全相同但顺序任意的排列。Anton 每秒可交换相邻字符，并会用最少交换次数将该排列还原为原串；要求构造一个使还原时间最大的排列。",
+          "transformedStatement": "将目标排列相对原串的还原代价表示为位置映射的逆序数。进一步只需决定四种字符连续块的排列，并最大化该顺序中各字符对在原串里的逆序贡献之和。",
+          "keyObservations": [
+            "把每个字符从当前字符串到目标字符串的位置映射成一个排列后，最少相邻交换次数等于该排列的逆序数，因此目标是最大化逆序数。",
+            "存在一个最优目标串，使每种字符都集中成一个连续块；合并同字符的分散区段不会降低交换次数，因此只需考虑四种字符块的排列。",
+            "固定字符块顺序后，每对字符块的逆序贡献只由原串中这两种字符的相对先后次数决定，预先统计这些数量即可快速计算任一顺序的总贡献。"
+          ],
+          "solutionBrief": "将最少相邻交换次数转化为逆序数最大化。统计四种字符两两之间的相对顺序贡献，枚举 $4!$ 种字符块排列并选贡献最大的顺序，按各字符出现次数输出连续字符块；总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1526E",
+          "index": "E",
+          "slot": "E",
+          "title": "Oolimry and Suffix Array",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1526/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/91195",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的后缀数组和大小为 $k$ 的字符表，后缀数组列出字符串所有后缀按字典序排序后的起始位置。要求统计有多少个长度为 $n$、使用该字符表的字符串会产生给定后缀数组，答案对 $998244353$ 取模。",
+          "transformedStatement": "将字符串字符按后缀数组中的起始位置顺序重排后，相邻字符必须非递减；根据去掉首字符后的两个后缀在数组中的相对次序，部分相邻字符还必须严格递增。计数因此等价于满足这些差分下界且字符值不超过字母表范围的非负整数分配问题。",
+          "keyObservations": [
+            "比较后缀数组中相邻的两个后缀时，若它们去掉首字符后的后缀顺序与原顺序相反，首字符就必须严格递增；否则首字符只需不下降，因此只需统计这些强制严格递增的位置。",
+            "按后缀数组顺序重排字符串字符后，所有约束都变成相邻字符非递减，并在统计的位置严格递增；这将后缀排序条件转化为差分约束。",
+            "差分中有 `cnt` 项至少为 1，其余项及首尾补位项至少为 0；扣除这 `cnt` 个必需单位后，问题成为将剩余量分配给 `n+1` 个非负项，因而可用隔板法计数。"
+          ],
+          "solutionBrief": "建立每个位置在后缀数组中的排名，检查相邻后缀去掉首字符后的排名关系，统计首字符必须严格递增的次数 `cnt`。若 `k-cnt<0`，答案为 0；否则将首尾边界和相邻字符差分统一计数，答案为 $\\binom{n+k-cnt}{n}$，对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1526F",
+          "index": "F",
+          "slot": "F",
+          "title": "Median Queries",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1526/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/91195",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "interactive",
+            "probabilities"
+          ],
+          "statementBrief": "隐藏对象是一个满足 $p[1]<p[2]$ 的 $1$ 到 $n$ 的排列。每次可选三个不同位置，交互器返回这三个排列值两两差的中位数；需要在不超过 $2n+420$ 次查询内输出整个排列。",
+          "transformedStatement": "把三点查询改写为：若三处排列值依次为 $u<v<w$，返回值就是 $\\max(v-u,w-v)$。先找出值差较小的一对位置，用它们识别排列端点及相邻值，再借助已知值 $1,2$ 的位置将每个其他值转成一次查询结果的平移量，从而逐项还原排列。",
+          "keyObservations": [
+            "若已知 $p[a]<p[b]<p[c]$，查询结果等于 $\\max(p[b]-p[a],p[c]-p[b])$；因此小结果意味着三者排序后至少有一段间隔很短。",
+            "在任意选出的 $13$ 个位置中，必有一个三元组的查询值不超过 $\\lfloor(n-4)/6\\rfloor$；这使得其中一对元素的值差不超过 $\\lfloor(n-4)/3\\rfloor$。",
+            "对这对值差较小的位置查询所有第三个位置时，最大返回值对应排列端点 $1$ 或 $n$；由此可定位一个端点，另一个相邻端点至多有两个候选。",
+            "找到值为 $1$ 和 $2$ 的位置后，查询这两个位置与任意 $x$，结果恒为 $p[x]-2$；所有剩余排列值可直接恢复，再利用已知 $p[1]<p[2]$ 判断是否需要整体反转。"
+          ],
+          "solutionBrief": "穷举固定 $13$ 个位置的三元组，找到查询值足够小的一组并取其中一对近邻值位置。扫描第三个位置以定位排列端点，再用至多两次查询确定其相邻值的位置。以值为 $1,2$ 的位置查询其余元素即可恢复排列，最后按 $p[1]<p[2]$ 校正方向。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
