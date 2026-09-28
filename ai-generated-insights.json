@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T02:39:15+00:00",
+  "updated_at": "2026-09-28T02:44:22+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -69728,6 +69728,189 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整 statement_text 与 editorial_text，结合题目 tags 提取。",
+        "quality_flags": []
+      }
+    },
+    "1680F": {
+      "problem_key": "1680F",
+      "title": "Lenient Vertex Cover",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1680/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/102852",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c960d3a72f5cd87ae2a4f126ed3a69bfaa2d12f03011c22212d12c3cf2087340",
+      "generated_at": "2026-09-28T02:42:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个连通无向简单图，要选出一组顶点，使每条边至少有一个端点被选中，并且至多一条边的两个端点会同时被选中。请构造这样的点集并输出其顶点二进制标记；若不存在则输出 NO。",
+        "transformed_statement": "把至多一条“两端都被选”的边视为删去的坏边：目标转化为删除它后让图成为二分图，再依据二分染色选择点覆盖，并保证被删边的两个端点同属被选颜色部。",
+        "key_observations": [
+          "一个合法解等价于删去至多一条边后使剩余图二分；二分图的任一颜色部都能作为点覆盖，删去的边则必须让两个端点同时落在被选颜色部中。",
+          "对 DFS 树进行二分染色时，树边必连接不同颜色，非树边可分为好边和坏边；若坏的非树边不超过一条，直接选择一个颜色部即可得到答案。",
+          "删除 DFS 树边后，只需翻转该边下方子树的颜色；此时仅有跨越该子树与外部的边改变好坏状态，因此候选边必须让所有坏边跨过该割且没有好边跨过该割。",
+          "对每条非树边在较低端点加一、较高端点减一，再对子树求和即可得到每条树边割上的跨边数量；分别统计坏边和好边，就能在线性时间筛出候选树边。"
+        ],
+        "solution_brief": "先用 DFS 染色并区分好边、坏边。若坏非树边至多一条则直接构造；否则用差分统计每条树边割开的坏边与好边数量，寻找“坏边全跨割、好边不跨割”的树边，翻转其子树颜色并选择包含被删边两端的颜色部。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "树结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面、完整 editorial_text，以及 graphs、trees 等标签。",
+        "quality_flags": []
+      }
+    },
+    "1680E": {
+      "problem_key": "1680E",
+      "title": "Moving Chips",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1680/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/102852",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "328c80e5c0eafd52ea07d75c9687fb0af31ee913928a6b67ed7502063d0fe2d6",
+      "generated_at": "2026-09-28T02:42:57+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $2\\times n$ 的棋盘，部分格子有芯片。每次可将任意芯片移动到上下左右相邻的棋盘内格子；若目标格已有芯片，则目标芯片被吃掉。求最终恰好剩下一枚芯片所需的最少移动次数。",
+        "transformed_statement": "删去两端空列后，把问题重述为沿列扫描：左侧芯片向右汇聚、右侧芯片向左汇聚，并用当前列中唯一保留芯片所在的行作为动态规划状态。每列只需比较保持行不变或跨行的两类代价。",
+        "key_observations": [
+          "去掉首尾没有芯片的列不会影响答案，只需在剩余连续区间内处理。",
+          "最优方案存在一个最后发生合并的列；该列左侧芯片只向右、右侧芯片只向左移动，因此可按列从左到右处理。",
+          "处理到当前列时保留两个芯片并不会更优，因为可以先让其中一个吃掉另一个，再移动唯一芯片，代价不增。",
+          "状态只需记录当前列最终芯片所在的行；同一行转移代价为 $1+$另一行是否有芯片，换行到相邻列的代价恒为 $2$。"
+        ],
+        "solution_brief": "先删除首尾空列，令 $dp[i][r]$ 表示处理到第 $i$ 列且唯一保留芯片在第 $r$ 行的最小代价。初始化第一列后，按同列行转移和跨行转移更新，答案为最后一列两种行状态的最小值，复杂度为 $O(n)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial，算法细节主要来自 editorial；tags 用于辅助主题归类。",
+        "quality_flags": [
+          "editorial_transition_typo"
+        ]
+      }
+    },
+    "1680D": {
+      "problem_key": "1680D",
+      "title": "Dog Walking",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1680/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/102852",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9a95b5fdf44a52a010332c62f854c862997fda901fe02d09697168588b219d5b",
+      "generated_at": "2026-09-28T02:43:30+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定狗每分钟的位移数组，其中零表示未知位移；每个零可替换为 $[-k,k]$ 内的整数。要求替换后狗在第 $n$ 分钟回到位置 $0$，并最大化整个过程中访问过的不同整数点数量；若无法回到 $0$，输出 $-1$。",
+        "transformed_statement": "枚举一个循环位移，把它视为从狗访问过的最低位置重新开始，使最低前缀和固定为基准。问题转化为在总和为 $0$ 的条件下填充零项、最大化前缀和范围，最终答案是最大与最小位置之差加一。",
+        "key_observations": [
+          "把行走过程按任意循环位移重排，相当于枚举狗从某个全局最低点开始；此时最低位置固定，目标转为让前缀和最大。",
+          "对一个循环位移从左到右处理零项时，应在仍能用后续零项回到总和 $0$ 的前提下尽量取大；题解给出的取值为 $\\min(k,xk-s)$，其中 $s$ 是当前和、$x$ 是后续零项数。",
+          "若某个零项被迫小于 $-k$，该循环位移无法满足回到原点的要求；否则完成填值后再检查总和是否为 $0$。",
+          "固定循环位移后，狗经过每段整数位移时会访问端点之间的全部整数点，因此不同点数等于最大位置减最小位置再加一。"
+        ],
+        "solution_brief": "枚举数组的所有循环位移，模拟前缀和并贪心填充零项：每次取在可回到总和 $0$ 的条件下允许的最大值。若出现越界或最终未回到 $0$，丢弃该位移；否则用轨迹最大值减最小值加一更新答案，复杂度为 $O(n^2)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，结合 statement_text 与 tags 中的 brute force、greedy、math。",
+        "quality_flags": []
+      }
+    },
+    "1680C": {
+      "problem_key": "1680C",
+      "title": "Binary String",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1680/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/102852",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7676b8e62cd37f9b7d92b96b00b58a3e2172094dd8012853dda1eb7bd456865e",
+      "generated_at": "2026-09-28T02:43:49+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个只含 0 和 1 的字符串，先从开头删除若干字符，再从末尾删除若干字符，删除后可为空。代价是“被删除的 1 的数量”和“保留下来的 0 的数量”中的较大值，要求最小化该代价。",
+        "transformed_statement": "把操作等价为选择一个连续子串保留：子串外的所有字符被删除，目标变成最小化子串外 1 的数量与子串内 0 的数量的较大值。对给定上限 $k$，只需判断是否存在包含至少 $c-k$ 个 1 且至多 $k$ 个 0 的连续子串。",
+        "key_observations": [
+          "删除首尾字符后，剩余部分必定是一个连续子串；若总共有 $c$ 个 1，保留子串含有至少 $c-k$ 个 1 且至多 $k$ 个 0，就能使代价不超过 $k$。",
+          "固定保留的 1 的数量后，最优候选是由连续若干个 1 的首个位置到末个位置覆盖的子串，因为缩短覆盖范围只会减少其中的 0。",
+          "若代价 $k$ 可行，则增加允许删除的 1 或保留的 0 后仍然可行，因此可行性关于 $k$ 单调，可以二分最小代价。",
+          "记录所有 1 的位置后，枚举连续的 $c-k$ 个 1，检查其覆盖区间中的 0 数量是否不超过 $k$，即可完成固定 $k$ 的判定。"
+        ],
+        "solution_brief": "将操作转化为选择一个连续子串保留，代价为子串外被删掉的 1 数与子串内剩余的 0 数的较大值。对代价二分；固定 $k$ 时枚举连续的 $c-k$ 个 1，检查其最小覆盖区间内的 0 是否不超过 $k$。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 的首尾删除规则，以及 editorial 对代价、单调性和位置数组判定方法的说明；题目标签仅用于辅助归类。",
+        "quality_flags": [
+          "statement_cost_expression_truncated"
+        ]
+      }
+    },
+    "1680B": {
+      "problem_key": "1680B",
+      "title": "Robots",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1680/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/102852",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "70b61ab553c9fb8c2f717cdc0d547fec6718efb6e68672043bd164dadc6390db",
+      "generated_at": "2026-09-28T02:44:03+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由空格和机器人组成的 $n\\times m$ 网格，每次可让所有机器人同时向上、下、左或右移动一步；越出边界的机器人会爆炸，且整个过程中不能有机器人爆炸。判断能否通过任意次操作让至少一个机器人到达左上角。",
+        "transformed_statement": "把所有机器人的安全移动范围压缩为两个边界：最上方机器人所在行 $i$ 与最左方机器人所在列 $j$。目标等价于判断这两个边界的交点 $(i,j)$ 是否有机器人，因为它是唯一可能同时移动到左上角的机器人。",
+        "key_observations": [
+          "设最上方含机器人的行号为 $i$、最左方含机器人的列号为 $j$；为了让机器人到达左上角，至少需要向上 $i$ 次、向左 $j$ 次。",
+          "所有机器人同时向上 $i$ 次、向左 $j$ 次不会爆炸，因为不存在行号小于 $i$ 或列号小于 $j$ 的机器人。",
+          "最终能到达左上角的只能是初始位于 $(i,j)$ 的机器人，因此只需判断该交叉位置是否为 $R$，即可同时保证必要性与可行性。"
+        ],
+        "solution_brief": "扫描所有机器人，求含机器人的最小行号 $i$ 和最小列号 $j$。若 $(i,j)$ 是机器人，则让所有机器人先上移 $i$ 次再左移 $j$ 次即可；否则输出 NO。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，tags 仅用于主题判断。",
+        "quality_flags": []
+      }
+    },
+    "1680A": {
+      "problem_key": "1680A",
+      "title": "Minimums and Maximums",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1680/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/102852",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1e62cc6a2c137849b44ae1565ddb7771550bf0ae6c52607229f9102678e03c81",
+      "generated_at": "2026-09-28T02:44:22+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个次数区间，要求构造一个数组，使数组最小值的出现次数属于 $[l_1,r_1]$、最大值的出现次数属于 $[l_2,r_2]$；若所有元素相同，它们同时是最小值和最大值。求满足条件的最短数组长度。",
+        "transformed_statement": "只保留数组的最小值和最大值即可。设它们的出现次数为 $i,j$：若 $i=j$ 可合并为全相同数组，长度为 $i$；否则长度为 $i+j$，于是问题转化为在两个区间中选择最小代价的次数。",
+        "key_observations": [
+          "为了最小化长度，数组中只需保留最小值和最大值，因此最优数组至多包含两种不同元素。",
+          "若最小值出现次数 $i$ 与最大值出现次数 $j$ 相等，数组可以全部取同一个值，长度为 $i$；否则两类元素必须同时存在，长度为 $i+j$。",
+          "当两个允许次数区间有交集时，可令最小值和最大值出现次数相同，答案为交集左端点，即 $\u0000max(l_1,l_2)$；无交集时分别取最小次数，答案为 $l_1+l_2$。"
+        ],
+        "solution_brief": "只考虑数组中的最小值和最大值。若区间 $[l_1,r_1]$ 与 $[l_2,r_2]$ 相交，可让两者次数相同，答案为 $\\max(l_1,l_2)$；否则分别取最小允许次数，答案为 $l_1+l_2$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial，结合 tags 中的 brute force 和 math。",
         "quality_flags": []
       }
     }
