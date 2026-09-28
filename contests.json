@@ -1,5 +1,16 @@
 [
   {
+    "id": 1619,
+    "name": "Codeforces Round 762 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1640010900,
+    "relativeTimeSeconds": 150573110,
+    "date": "2021-12-20"
+  },
+  {
     "id": 1615,
     "name": "Codeforces Global Round 18",
     "type": "CF",
