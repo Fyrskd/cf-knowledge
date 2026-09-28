@@ -15,19 +15,227 @@
     ]
   },
   "summary": {
-    "total_problems": 4085,
+    "total_problems": 4090,
     "source_total_problems": 4090,
-    "filtered_out_problems": 5,
-    "with_statement_brief": 4085,
-    "with_editorial_brief": 3739,
-    "with_solution_brief": 3741,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4090,
+    "with_editorial_brief": 3744,
+    "with_solution_brief": 3746,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3147,
+    "ai_override_count": 3152,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1514A",
+      "contest_id": 1514,
+      "title": "Perfectly Imperfect Array",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1514/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/89810",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定一个正整数数组，可以通过删除任意数量的元素（也可以不删）得到子序列，但子序列必须非空。判断是否存在一个子序列，使其中所有元素的乘积不是完全平方数。",
+      "transformed_statement": "无需搜索不同的子序列：只需检查单个数组元素是否已经不是完全平方数；若没有，则所有元素都是平方数，任意非空子序列的乘积也必为平方数。",
+      "key_observations": [
+        "若数组中存在一个非完全平方数，单独选这个元素就是合法非空子序列，因此无需考虑其他元素。",
+        "若所有元素都是完全平方数，任意子序列的乘积仍是完全平方数，因为平方数相乘可写成若干整数乘积的平方。"
+      ],
+      "solution_brief": "检查数组中是否有非完全平方数：有则输出 YES；若全部都是完全平方数，则任何非空子序列的乘积都是完全平方数，输出 NO。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T23:49:03+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1514B",
+      "contest_id": 1514,
+      "title": "AND 0, Sum Big",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1514/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/89810",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "combinatorics",
+        "math"
+      ],
+      "statement_brief": "给定数组长度 $n$ 和二进制位数 $k$，数组元素由这 $k$ 位构成。要求数组所有元素的按位与为 $0$，先使元素总和最大，再统计达到最大总和的数组数，并对 $10^9+7$ 取模。",
+      "transformed_statement": "将数组按二进制位拆开：每一位都必须至少在一个位置取 $0$ 才能使整体按位与为 $0$。最大化总和后，每位恰好选择一个位置取 $0$，于是问题转为给 $k$ 个不同位各自选择 $n$ 个位置之一。",
+      "key_observations": [
+        "按每一位分别看，按位与为 $0$ 要求该位至少有一个数组元素为 $0$；若有多个元素为 $0$，该位对总和的贡献会减少，因此最大总和时恰好只有一个元素为 $0$。",
+        "最大总和下，每一位都可独立选择唯一一个置零的数组位置，因此各位选择互不影响，方案数相乘为 $n^k$。"
+      ],
+      "solution_brief": "对 $k$ 个二进制位分别选择一个数组位置置零，其余位置该位均为 $1$。最大总和要求每位恰好置零一次，因此答案为 $n^k$，对 $10^9+7$ 取模。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T23:48:56+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1514C",
+      "contest_id": 1514,
+      "title": "Product 1 Modulo N",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1514/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/89810",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy",
+        "number theory"
+      ],
+      "statement_brief": "给定整数 $n$，从按升序排列的 $1,2,\\ldots,n-1$ 中删除任意元素，保留其余元素组成子序列。要求子序列中元素的乘积模 $n$ 等于 $1$，并输出最长子序列及其长度。",
+      "transformed_statement": "先把候选范围缩为所有模 $n$ 的可逆元，因为含有非互质数的乘积不可能模 $n$ 为 $1$。再计算全部可逆元的乘积模 $n$；若结果不是 $1$，删除与该结果同值的元素即可修正乘积。",
+      "key_observations": [
+        "乘积模 $n$ 为 $1$ 时，乘积必须与 $n$ 互质，因此任何与 $n$ 不互质的候选数都不能入选。",
+        "将所有小于 $n$ 且与 $n$ 互质的数相乘并对 $n$ 取模，所得 $p$ 仍与 $n$ 互质，所以若 $p\\ne 1$，$p$ 本身就在候选集合中。",
+        "所有可行子序列只能由互质数构成；若全取后乘积为 $p\\ne1$，删去数值为 $p$ 的元素即可使乘积变为 $1$，因此只需删至多一个元素且已达最长。"
+      ],
+      "solution_brief": "枚举 $1$ 到 $n-1$ 中与 $n$ 互质的数，并计算它们的乘积模 $n$ 得到 $p$。若 $p=1$，输出全部；否则从集合中删去数值为 $p$ 的元素，再输出剩余元素及其数量。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T23:48:44+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1514D",
+      "contest_id": 1514,
+      "title": "Cut and Stick",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1514/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/89810",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "greedy",
+        "implementation",
+        "sortings"
+      ],
+      "statement_brief": "给定数组和多个区间查询。每次需把查询区间中的元素划分成若干个子序列，子序列不要求连续，且其中任何值的出现次数都不能超过该子序列长度的一半向上取整；求每个区间所需的最少子序列数。",
+      "transformed_statement": "对每个查询，问题可化为找出是否存在在区间内出现次数超过一半的元素，并求其频次 $f$。若存在，答案由该元素频次与区间长度 $m$ 决定，为 $2f-m$；否则整个区间作为一个子序列即可。",
+      "key_observations": [
+        "若区间内没有出现次数超过其长度一半的元素，整个区间就能作为一个子序列；否则只需关注出现最多的元素，其余元素可以合并处理。",
+        "设区间长度为 $m$、超高频元素出现 $f$ 次，最少子序列数为 $2f-m$：每个子序列中该元素比其他元素至多多一个，且按此差值安排即可达到下界。",
+        "若一个元素在某个区间出现次数超过区间长度的一半，它必在二分后的至少一个子区间中也超过该子区间长度的一半，因此线段树合并子区间候选时保留出现次数较多者，仍能找出超高频元素。",
+        "线段树给出的只是候选元素，不保证一般情况下是众数；但只要超高频元素存在，合并过程就能保留它，最后通过区间出现次数验证候选即可。"
+      ],
+      "solution_brief": "对每个查询用线段树合并得到超高频元素候选，并统计它在区间中的出现次数 $f$。若不存在出现次数超过区间长度一半的元素，答案为 $1$；否则答案为 $2f-m$，其中 $m$ 是区间长度。题解还给出了随机抽样候选的方案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T23:48:33+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1514E",
+      "contest_id": 1514,
+      "title": "Baby Ehab's Hyper Apartment",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1514/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/89810",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "交互",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "graphs",
+        "interactive",
+        "sortings",
+        "two pointers"
+      ],
+      "statement_brief": "房间之间任意两间恰有一条单向通道，但通道方向未知。你可以分别使用两类查询，第一类最多 $9n$ 次、第二类最多 $2n$ 次；需要输出每对房间之间是否存在有向路径，包括房间到自身的可达性。",
+      "transformed_statement": "将房间抽象为锦标赛图，先找一条包含全部顶点的哈密顿路径，再用路径边和少量关键向后边作为可达关系的骨架；任务转化为识别这些向后边所能扩展到的最远位置，并据此还原可达矩阵。",
+      "key_observations": [
+        "任意两间房之间恰有一个方向的通道，因此这是锦标赛图；把顶点分成两半并合并各自的哈密顿路径，每次比较两条路径的当前首点，就能构造覆盖所有房间的哈密顿路径。",
+        "哈密顿路径上向前的边不必单独保留，因为沿路径即可到达；因此只需筛选向后边中能到达比此前所有向后边更靠前位置的边。",
+        "从路径末端向前扫描时，维护当前向后边能触及的最远位置；批量查询可逐步收缩该边界，且每次查询都会让扫描位置或边界前移，因此总查询次数为线性级别。"
+      ],
+      "solution_brief": "先用单边查询进行归并，构造哈密顿路径。路径上的向前边可由路径本身替代；再从后向前扫描，只保留能把可达范围扩展到更靠前位置的向后边，并用双指针和批量查询确定这些边。这样可据保留边恢复所有点对的可达性，查询次数符合限制。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T23:48:19+00:00",
+          "quality_flags": [
+            "statement_query_details_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 6,
       "problem_key": "1516A",
