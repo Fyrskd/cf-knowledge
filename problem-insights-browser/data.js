@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3815,
+    "total_problems": 3823,
     "source_total_problems": 3825,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3815,
-    "with_editorial_brief": 3499,
-    "with_solution_brief": 3501,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3823,
+    "with_editorial_brief": 3507,
+    "with_solution_brief": 3509,
     "missing_editorial_brief": 314,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2877,
+    "ai_override_count": 2885,
     "primary_topic_count": 13,
-    "contest_count": 591,
+    "contest_count": 592,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数论与同余": 403,
+    "构造与贪心": 1241,
+    "基础实现与模拟": 240,
+    "交互": 111,
+    "数据结构": 365,
+    "组合计数与概率": 292,
+    "图论与网络流": 249,
     "字符串": 200,
-    "构造与贪心": 1240,
-    "组合计数与概率": 291,
-    "数据结构": 364,
-    "基础实现与模拟": 239,
     "动态规划与状态设计": 312,
     "树结构": 183,
-    "数论与同余": 402,
-    "图论与网络流": 247,
-    "交互": 110,
     "几何": 90,
     "博弈": 112,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2524,
+    "ai_generated_partial_editorial": 86,
+    "ai_generated_with_editorial": 2530,
     "missing_editorial": 314,
-    "ai_generated_partial_editorial": 84,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -117571,6 +117571,243 @@ window.CF_INSIGHTS_DATA = {
             "再叠加按列交替翻转的掩码，可处理没有非标记邻居的标记格；八邻域连通和局部四种形状保证掩码不会破坏其他标记格的平衡。"
           ],
           "solutionBrief": "把非标记格视为取模 $5$ 的 $1/4$，标记格取 $0$。对非标记格做八邻域连通并构造其邻接图，利用标记格图欧拉性证明该图二分染色；最后叠加偶数列掩码，得到满足所有局部平衡条件的赋值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1556,
+      "name": "Deltix Round, Summer 2021 (open for everyone, rated, Div. 1 + Div. 2)",
+      "date": "2021-08-29",
+      "url": "https://codeforces.com/contest/1556",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3300,
+      "problems": [
+        {
+          "key": "1556A",
+          "index": "A",
+          "slot": "A",
+          "title": "A Variety of Operations",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1556/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/94384",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "有两个初始均为 $0$ 的数 $a,b$，每次选择一个正整数 $k$，再从题面规定的三种操作中选一种修改它们；操作后数值可以为负。要求将它们变为给定的 $c,d$，求所需的最少操作次数，无法实现时输出 $-1$。",
+          "transformedStatement": "把问题转化为判断目标差值 $c-d$ 的奇偶性：差值奇偶性决定是否可达；在可达时，再按目标是否为初始状态、是否位于对角线 $c=d$ 以及是否为非对角点分类确定最少步数。由于记录缺失三种操作的公式，具体构造只能依据编辑中的结论概括。",
+          "keyObservations": [
+            "任意操作后 $a-b$ 的奇偶性保持不变；初始差值为 $0$，因此目标差值 $c-d$ 为奇数时必然无法到达。",
+            "对于 $c-d$ 为偶数的目标，编辑给出的构造至多需要两步，因此无需搜索更长的操作序列。",
+            "目标为 $(0,0)$ 时无需操作；目标满足 $c=d\\ne0$ 时一步可达；其余差值为偶数且 $c\\ne d$ 的情况恰好需要两步。"
+          ],
+          "solutionBrief": "先判断 $c-d$ 的奇偶性，奇数时输出 $-1$。否则按目标分类：$(0,0)$ 输出 $0$，$c=d\\ne0$ 输出 $1$，其余情况根据题解构造输出 $2$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1556B",
+          "index": "B",
+          "slot": "B",
+          "title": "Take Your Places!",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1556/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/94384",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个整数数组，每次只能交换两个相邻元素。要求通过最少交换，使数组中任意相邻元素的奇偶性都不同；若无法做到则输出 $-1$。",
+          "transformedStatement": "忽略具体数值，只保留每个元素的奇偶性，把目标转化为匹配两种交替模式：奇数开头或偶数开头。固定模式后，按顺序把下一个所需奇偶性的元素移到当前位置，并以移动距离计费。",
+          "keyObservations": [
+            "若奇数和偶数数量之差超过 $1$，不可能排列成交替奇偶；否则只需分别尝试奇数开头和偶数开头的目标模式。",
+            "固定目标模式后，当前位置应放入的奇偶性对应的最靠左可用元素一定最优；将它移到当前位置的相邻交换代价就是距离 $j-i$。",
+            "保持同一奇偶元素的原有相对顺序不会损失最优性，因此可用两个指针分别寻找下一个可用的奇数和偶数，并累加移动距离。"
+          ],
+          "solutionBrief": "统计奇偶数量，若差超过 $1$ 返回 $-1$。分别构造奇数开头、偶数开头的交替目标序列：依次取对应奇偶性的最靠左元素，累加其移动到当前位置的距离，取可行方案最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1556C",
+          "index": "C",
+          "slot": "C",
+          "title": "Compressed Bracket Sequence",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1556/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/94384",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "给定一个压缩括号序列：奇数位置表示连续的左括号数量，偶数位置表示连续的右括号数量。将其展开后，统计所有连续子串中属于合法括号序列的数量。",
+          "transformedStatement": "把候选子串抽象为首尾两个压缩块之间的选择：首块截取若干左括号，末块截取若干右括号，中间块全部保留；利用中间部分的平衡和最小前缀平衡判断哪些截取长度可行。",
+          "keyObservations": [
+            "合法子串必须从某个左括号块开始，并在其后的右括号块结束；因此只需枚举这类压缩块下标对。",
+            "固定首尾块后，中间括号序列完全确定；若首块取 $x$ 个左括号，则末块所需右括号数由整体平衡唯一决定。",
+            "中间序列的最小前缀平衡值给出 $x$ 的下界，而首尾块容量及最终平衡给出上界，故每对块的答案是一个整数区间的长度。",
+            "无需展开数量可达 $10^9$ 的括号，只需枚举块对并维护中间序列的总平衡和最小前缀平衡，整体复杂度为 $O(n^2)$。"
+          ],
+          "solutionBrief": "枚举作为起点的左括号块和作为终点的右括号块，逐步维护两者之间的总平衡与最小前缀平衡。根据首块取用数量的可行下界和上界，直接计算该块对贡献的方案数并累加，复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1556D",
+          "index": "D",
+          "slot": "D",
+          "title": "Take a Guess",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1556/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/94384",
+          "primaryTopic": "交互",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的非负整数序列，只能向交互者询问两个选定元素的按位或或按位与，最多询问 $2n$ 次；需要确定整个序列排序后的第 $k$ 小数。离线 hacking 格式直接给出该序列。",
+          "transformedStatement": "把每次按位或与按位与查询转化为获得两个元素的普通和，因为二者之和等于两元素之和；先恢复三个元素作为锚点，再以一个已知元素逐个恢复全数组。",
+          "keyObservations": [
+            "对任意两个数都有 $a+b=(a\\mathbin{\\vert}b)+(a\\mathbin{\\&}b)$，因此一次获得按位或与按位与的结果，就能得到这两个数的和。",
+            "获取前三个元素两两之间的和后，可用 $a_1=\\frac{(a_0+a_1)+(a_1+a_2)-(a_0+a_2)}{2}$ 恢复其中一个元素，再反推出另外两个。",
+            "已知任意一个元素后，只需查询它与每个未恢复元素的按位或和按位与，即可由两者之和恢复该元素，总查询次数为 $6+2(n-3)=2n$。",
+            "完整恢复数组后排序，目标就转化为直接取排序后的第 $k$ 个元素。"
+          ],
+          "solutionBrief": "利用按位或与按位与之和等于普通加法，先通过前三个元素的两两和恢复它们，再用其中一个元素恢复其余元素，查询数恰好不超过 $2n$，最后排序取第 $k$ 小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1556E",
+          "index": "E",
+          "slot": "E",
+          "title": "Equilibrium",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1556/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/94384",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组。对一个区间，可反复选择偶数个递增位置，并将所选奇数位置的 $a$ 加一、偶数位置的 $b$ 加一；每个区间独立操作，要求判断能否使区间内对应元素全部相等，并求最少操作次数，无法实现则输出 $-1$。",
+          "transformedStatement": "把每个位置改写为差值 $c_i=a_i-b_i$，一次操作就是在选定位置上依次施加 $+1,-1,+1,-1$，查询变成将一个差值区间归零所需的最少交替修正次数。",
+          "keyObservations": [
+            "令 $c_i=a_i-b_i$ 后，一次操作等价于在若干递增位置上对 $c$ 交替加减 $1$，目标变为把查询区间内所有差值变成零。",
+            "区间可行当且仅当总和为零、任意前缀和不为正、任意后缀和不为负；这些条件保证负贡献与其后的正贡献能够逐步配对消除。",
+            "任意子段的和在一次操作中至多改变 $1$，因此操作次数至少是区间内所有子段和绝对值的最大值。",
+            "按从左到右配对负数位置的 $+1$ 与其后的正数位置的 $-1$，可以达到上述下界，所以最少操作次数等于区间最大绝对子段和。"
+          ],
+          "solutionBrief": "对每个查询区间检查总和、前缀和与后缀和条件；不满足则输出 $-1$。满足时，答案是区间内最大绝对子段和，题解证明了从负位置到后续正位置的贪心配对能够达到该下界。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1556F",
+          "index": "F",
+          "slot": "F",
+          "title": "Sports Betting",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1556/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/94384",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "图论与网络流",
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "dp",
+            "graphs",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "有 $n$ 支队伍，每两队只比赛一次；队伍 $i$ 战胜队伍 $j$ 的概率为 $\\frac{a_i}{a_i+a_j}$。若一队能沿着直接胜负关系经过若干场比赛战胜所有其他队伍，则称其为胜者，要求胜者数量的期望值，并对 $10^9+7$ 取模。",
+          "transformedStatement": "把比赛结果看成有向图，胜者集合 $W$ 必须在图中形成一个彼此可达的部分，且外部没有边指向 $W$。于是先计算每个集合成为完整胜者集合的概率，再按集合大小加权求和。",
+          "keyObservations": [
+            "一个集合恰好是所有胜者，当且仅当集合内队伍彼此可达，且集合外没有队伍直接战胜集合内队伍；这把间接胜负条件转成了环与边界条件。",
+            "固定集合 $X,Y$ 时，要求 $X$ 中每队直接战胜 $Y$ 中每队的概率为 $G(X,Y)=\\prod_{x\\in X,y\\in Y}\\frac{a_x}{a_x+a_y}$，因为各场比赛结果相互独立。",
+            "集合 $W$ 内队伍彼此可达的概率可用容斥递推：$P(W)=1-\\sum_{\\varnothing\\ne S\\subsetneq W}P(S)G(S,W\\setminus S)$，从而按子集规模计算所有胜者集合概率。",
+            "将队伍划分为左右两半，按边的起点和终点所在半区预处理四类 $G$，即可把任意跨集合乘积快速合并，使所有容斥对的总复杂度降为 $O(3^n)$。"
+          ],
+          "solutionBrief": "对每个非空集合 $W$，用 $P(W)$ 表示其内部互相可达的概率，用 $G$ 表示跨集合直接胜出的概率，计算 $F(W)=P(W)G(W,ALL\\setminus W)$，累加 $|W|F(W)$。通过容斥求 $P$，并用左右分治预处理 $G$，总复杂度为 $O(3^n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1556G",
+          "index": "G",
+          "slot": "G",
+          "title": "Gates to Another World",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1556/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/94384",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "dsu",
+            "two pointers"
+          ],
+          "statementBrief": "有 $2^n$ 个编号为 $0$ 到 $2^n-1$ 的星球，两个编号恰好相差一个二进制位时相邻。每次可删除一个尚未删除的连续编号区间，或询问两个尚未删除星球在当前剩余图中是否仍可互相到达。",
+          "transformedStatement": "把删除过程倒序看成区间按各自时刻解除阻塞，并在 $n$ 维超立方体上递归划分最高位；用连续区间表示连通块，用带出现时刻的边连接两半的对应块。",
+          "keyObservations": [
+            "将操作倒序处理后，每个被删除区间可视为带有截止时刻的阻塞区间；区间在该时刻之后恢复，从而把动态删除转成按时间加入连通边。",
+            "按最高位把超立方体拆成两个低一维超立方体；两部分中相同相对位置的顶点只差最高位，因此天然存在一一对应的跨半边连接。",
+            "递归压缩后，每个压缩图顶点代表一个连续编号区间对应的连通块；合并两半时只需按区间顺序匹配跨半边边界，合并规模线性。",
+            "每个阻塞区间在递归中至多被拆分 $n$ 次，因此压缩图规模为 $O(nm)$；按边出现时刻倒序用 DSU 合并即可回答连通性。"
+          ],
+          "solutionBrief": "将查询倒序，使区间阻塞变为带恢复时刻的区间。递归按最高位构造并合并压缩图，记录跨连通块边的出现时刻；再按时刻用 DSU 加边回答询问，总复杂度为 $O(n^2m\\cdot ACK)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1556H",
+          "index": "H",
+          "slot": "H",
+          "title": "DIY Tree",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1556/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/94384",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "graphs",
+            "greedy",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "给定一个带正权的完全无向图，需要选出覆盖全部 $n$ 个顶点的生成树，并保证前 $k$ 个顶点的度数分别不超过 $d_i$；其余顶点没有度数限制。求满足条件的生成树的最小边权和。",
+          "transformedStatement": "将前 $k$ 个顶点视为特殊点，先枚举它们之间被选中的森林 $T$；固定 $T$ 后，从其余候选边中选择一个与 $T$ 合并无环且满足特殊点度数容量的最小权公共基。",
+          "keyObservations": [
+            "特殊点数 $k\\le 5$，因此可以枚举特殊点之间在最终树中形成的所有森林 $T$，把指数部分限制在特殊点上。",
+            "固定 $T$ 后，剩余边集要求与 $T$ 合并无环，这构成图拟阵；同时特殊点的度数上限构成分割拟阵，原问题转为两个拟阵交中的最小权公共基。",
+            "普通点之间只需保留其诱导子图的一棵最小生成树，另保留普通点与特殊点的边，候选边数降为 $O(nk)$，且不影响最优解。"
+          ],
+          "solutionBrief": "枚举特殊点诱导的森林 $T$，对固定 $T$ 在候选边上求两个拟阵交的最小权公共基：一个保证无环，另一个限制特殊点度数。若边数足够构成生成树，则用其与 $T$ 的总权值更新答案。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
