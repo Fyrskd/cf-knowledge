@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3480,
+    "total_problems": 3486,
     "source_total_problems": 3488,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3480,
-    "with_editorial_brief": 3182,
-    "with_solution_brief": 3184,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3486,
+    "with_editorial_brief": 3188,
+    "with_solution_brief": 3190,
     "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2542,
+    "ai_override_count": 2548,
     "primary_topic_count": 13,
-    "contest_count": 536,
+    "contest_count": 537,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1129,
+    "字符串": 183,
+    "数论与同余": 367,
+    "构造与贪心": 1130,
+    "交互": 102,
+    "图论与网络流": 227,
+    "数据结构": 332,
     "动态规划与状态设计": 284,
     "树结构": 168,
-    "数据结构": 331,
-    "图论与网络流": 226,
     "基础实现与模拟": 216,
     "组合计数与概率": 264,
     "几何": 83,
-    "数论与同余": 366,
-    "字符串": 182,
     "代数、矩阵与多项式": 24,
-    "博弈": 106,
-    "交互": 101
+    "博弈": 106
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2222,
+    "ai_generated_with_editorial": 2228,
     "missing_editorial": 296,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -107363,6 +107363,189 @@ window.CF_INSIGHTS_DATA = {
             "固定 $k$ 后只需使用权值降序排列的前缀和，所有答案即可由同一个排序结果统一得到。"
           ],
           "solutionBrief": "先计算原排列逆序数，令每个位置的权值为 $c_i=i-2p_i+1$，将权值降序排序并求前缀和。长度为 $k$ 的答案是 $inv-prefix_k-\\frac{k(k-1)}2$，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1634,
+      "name": "Codeforces Round 770 (Div. 2)",
+      "date": "2022-02-06",
+      "url": "https://codeforces.com/contest/1634",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1634A",
+          "index": "A",
+          "slot": "A",
+          "title": "Reverse and Concatenate",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1634/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/99563",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的字符串 $s$，每次可将当前字符串 $x$ 替换为 $x+rev(x)$ 或 $rev(x)+x$，恰好执行 $k$ 次，求所有可能最终字符串的不同数量。",
+          "transformedStatement": "核心只需区分初始字符串是否为回文串：回文串的两种操作完全等价；非回文串在第一次操作后产生两个不同的回文串，而后续操作不会让这两个结果合并。",
+          "keyObservations": [
+            "当 $k=0$ 时没有进行任何操作，因此只能得到原字符串，答案为 $1$。",
+            "若初始字符串是回文串，则两种操作都得到 $s+s$；结果仍是回文串，之后每次操作仍只有一种结果，所以答案始终为 $1$。",
+            "若初始字符串不是回文串，第一次操作得到 $s+rev(s)$ 与 $rev(s)+s$ 两个不同的回文串，因此至少产生两种结果。",
+            "不同的回文串经过后续操作仍不可能相同，因为每次新串的前缀会保留原回文串；所以这两个结果始终分别独立，答案为 $2$。"
+          ],
+          "solutionBrief": "先处理 $k=0$。否则判断 $s$ 是否为回文串：是则答案为 $1$；否则第一次操作产生两个不同结果，后续操作不会合并它们，答案为 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1634B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fortune Telling",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1634/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/99563",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "math"
+          ],
+          "statementBrief": "给定数组 $a$，从初始数 $d$ 出发按顺序处理每个 $a_i$，每次可将当前数加上 $a_i$ 或与 $a_i$ 做按位异或。Alice 从 $x$ 出发、Bob 从 $x+3$ 出发，求最终得到 $y$ 的人。",
+          "transformedStatement": "不再关注每一步选择及最终数值，只追踪奇偶性：加法和异或对奇偶性的影响相同，整个过程等价于根据数组和的奇偶性决定是否翻转初始奇偶性。",
+          "keyObservations": [
+            "对任意 $a_i$，执行加法或异或都会在 $a_i$ 为奇数时翻转当前数的奇偶性、为偶数时保持不变，因此两种操作对奇偶性完全等价。",
+            "经过全部操作后，结果奇偶性相对初始值是否翻转，只由数组元素和的奇偶性决定，从而无需枚举每一步的操作选择。",
+            "$x$ 与 $x+3$ 奇偶性相反；根据 $y$ 的奇偶性反推出初始奇偶性，即可唯一判断 Alice 或 Bob。"
+          ],
+          "solutionBrief": "计算数组和的奇偶性，判断初始数的奇偶性是否会被翻转：若和为偶数则保持，否则取反。将 $y$ 反推为初始奇偶性，与 $x$ 和 $x+3$ 的奇偶性比较，输出对应朋友。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1634C",
+          "index": "C",
+          "slot": "C",
+          "title": "OKEA",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1634/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/99563",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定 $n\\times k$ 的表格，必须把 $1$ 到 $nk$ 每个价格恰好放置一次。对任意一行的任意连续子段，平均价格都必须是整数；需要判断是否能做到，并在可行时构造表格。",
+          "transformedStatement": "把每行设计成同一模 $n$ 的等差数列：第 $i$ 行使用所有形如 $i+qn$ 的数。这样子段和能提取出子段长度作为因子；另一方面，长度至少为 $2$ 时每行必须保持单一奇偶性，从而导出奇偶性可行条件。",
+          "keyObservations": [
+            "当 $k>1$ 时，每行若同时出现奇数和偶数，相邻位置必有异 parity，长度为 $2$ 的子段平均值不是整数，因此每行必须全为同一奇偶性。",
+            "当 $k>1$ 且 $n$ 为奇数时，奇数行与偶数行数量必须相等，但总行数为奇数，故不存在合法排列。",
+            "当 $n$ 为偶数时，将第 $i$ 行放为 $i,i+n,i+2n,\\ldots,i+n(k-1)$；任意连续子段的和可写为 $L\\left(i+\\frac{n}{2}(l+r-2)\\right)$，其中 $L=r-l+1$，所以平均值必为整数。",
+            "当 $k=1$ 时，每行只有一个元素，不存在长度大于一的连续子段，因此任意排列都合法。"
+          ],
+          "solutionBrief": "若 $k=1$，任意排列即可。若 $k>1$，$n$ 为奇数时无解；$n$ 为偶数时第 $i$ 行依次放置 $i+qn$，其中 $0\\le q<k$，该构造覆盖 $1$ 到 $nk$ 且保证所有子段平均值为整数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1634D",
+          "index": "D",
+          "slot": "D",
+          "title": "Finding Zero",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1634/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/99563",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "有一个长度为 $n$ 的非负整数数组，其中恰好一个元素为零。每次可询问三个不同下标，得到这三个数的最大值与最小值之差；最多询问 $2n-2$ 次后，给出两个下标，只要其中一个指向零即可。",
+          "transformedStatement": "把问题转化为维护一个可能含零的候选集合：对四个候选位置查询每个位置的“其余三数极差”，利用两个最大结果对应非零位置的性质，每轮安全淘汰两个位置，直到只剩两个候选。",
+          "keyObservations": [
+            "对四个数分别查询其余三个数的极差；若其中含有零，两个最大的极差一定对应两个非零数，从而可安全丢弃它们。",
+            "若四个数都非零，上述规则仍然安全，因此每轮都能从当前候选集合中删去两个确定非零的位置。",
+            "从前四个位置开始，每次加入两个新位置并删去两个确定非零位置，最终只剩两个或三个位置；奇数长度时再加入一个已删位置处理一次即可。",
+            "偶数长度总查询次数为 $2n-4$，奇数长度为 $2n-2$，均不超过限制，因此剩余的两个位置中必有零。"
+          ],
+          "solutionBrief": "维护一个候选集合。对其中四个位置查询其余三者的极差，取查询值最大的两个位置判定为非零并删除；不断加入新位置并重复。若最后剩三个位置，补入一个已删除位置再处理一次，输出剩余两个位置。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1634E",
+          "index": "E",
+          "slot": "E",
+          "title": "Fair Share",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1634/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/99563",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dfs and similar",
+            "graph matchings",
+            "graphs"
+          ],
+          "statementBrief": "给定若干个偶数长度的数组，把每个元素出现位置分别放入两个多重集合 L 或 R；每个数组必须恰好一半放入 L，且最终 L、R 完全相同。请输出每个位置的分配方案，或判定无解。",
+          "transformedStatement": "将每个数组视为二部图左侧顶点，将每个不同数值视为右侧顶点，每次出现对应一条重边；问题转化为给所有边定向，使每个顶点入度等于出度，再按边方向输出 L/R。",
+          "keyObservations": [
+            "若某个数在所有数组中的总出现次数为奇数，则无法在两个多重集中保持相同数量，因此答案必为不存在。",
+            "把数组与数值建成带重边的二部图后，数组顶点度数因数组长度为偶数而为偶数，数值顶点度数因总出现次数为偶数而为偶数。",
+            "在每个连通分量中沿欧拉回路交替记录边的方向；同一顶点的入度等于出度，因而每个数组恰好分一半到两侧，每个数也恰好平分。"
+          ],
+          "solutionBrief": "先统计每个数的总出现次数，若有奇数次则输出 NO。否则建立数组顶点与数值顶点之间的多重二部图，对各连通分量求欧拉回路；从数组到数值的边标为 L，反向边标为 R。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1634F",
+          "index": "F",
+          "slot": "F",
+          "title": "Fibonacci Additions",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1634/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/99563",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "hashing",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组。一次操作选择区间 $[l,r]$，依次给其中元素加上 Fibonacci 数列 $F_1,F_2,\u001e$，并对 $MOD$ 取模；操作可作用于数组 A 或 B。每次操作后都要判断两个数组是否完全相等。",
+          "transformedStatement": "把两数组的差 $C=A-B$ 转换为满足 Fibonacci 递推的差分量 $D$。一次区间 Fibonacci 加法在 $D$ 中只产生起点和两个终点附近的脉冲变化，因此问题变成维护这些位置的模值并判断是否全部为零。",
+          "keyObservations": [
+            "令 $C_i=A_i-B_i$，再定义 $D_1=C_1$、$D_2=C_2-C_1$、$D_i=C_i-C_{i-1}-C_{i-2}$；由于该递推变换可逆，$A=B$ 等价于所有有效的 $D_i$ 都为 $0$。",
+            "对区间 $[l,r]$ 给 $A$ 做 Fibonacci 加法时，$D$ 只发生三处变化：$D_l$ 加 $1$，$D_{r+1}$ 减 $F_{r-l+2}$，$D_{r+2}$ 减 $F_{r-l+1}$；给 $B$ 操作时符号相反，因此区间修改转化为至多三次单点修改。",
+            "只需维护 $D_1$ 到 $D_n$ 中非零元素的数量；每次单点更新时同步修改该数量，即可在每次操作后用数量是否为零判断两个数组是否相等。",
+            "所有变化都在模 $MOD$ 下进行，预先计算 Fibonacci 数即可在端点更新时直接取得所需系数，避免逐项处理区间。"
+          ],
+          "solutionBrief": "计算差数组 $C=A-B$ 及其 Fibonacci 递推差分数组 $D$，用非零计数维护 $D_1..D_n$。每次 Fibonacci 加法只转化为至多三个端点单点更新，预处理 Fibonacci 后即可判断计数是否为零。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
