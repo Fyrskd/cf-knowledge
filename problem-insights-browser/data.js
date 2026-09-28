@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3718,
-    "source_total_problems": 3720,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 3718,
+    "total_problems": 3719,
+    "source_total_problems": 3728,
+    "filtered_out_problems": 9,
+    "with_statement_brief": 3719,
     "with_editorial_brief": 3406,
     "with_solution_brief": 3408,
-    "missing_editorial_brief": 310,
+    "missing_editorial_brief": 311,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2780,
     "primary_topic_count": 13,
-    "contest_count": 575,
+    "contest_count": 576,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "动态规划与状态设计": 301,
     "数论与同余": 389,
     "图论与网络流": 241,
     "构造与贪心": 1211,
     "数据结构": 353,
     "基础实现与模拟": 235,
     "字符串": 196,
-    "动态规划与状态设计": 300,
     "树结构": 178,
     "组合计数与概率": 280,
     "交互": 108,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 311,
     "ai_generated_with_editorial": 2434,
     "ai_generated_partial_editorial": 81,
-    "missing_editorial": 310,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -114593,6 +114593,42 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "先用逆排列把目标改写为对 $((b_i-i)\\bmod M)$ 求和，再按数字长度、相对 $n$ 的首个差异位置和数字分组。每组中 $b_i-i$ 对自由后缀数字是线性的，使用折半枚举并按模 $M$ 匹配贡献，整体复杂度为 $O(\\sqrt n\\,\\operatorname{poly}(\\log n))$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1582,
+      "name": "Codeforces Round 750 (Div. 2)",
+      "date": "2021-10-24",
+      "url": "https://codeforces.com/contest/1582",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 1800,
+      "problems": [
+        {
+          "key": "1582F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Korney Korneevich and XOR (easy version)",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1582/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/96267",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "交互"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Korney Korneevich and XOR (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
