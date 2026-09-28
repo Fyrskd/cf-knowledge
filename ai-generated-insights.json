@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T14:23:42+00:00",
+  "updated_at": "2026-09-28T14:29:34+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -87464,6 +87464,153 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial 中的二进制位分析与按位与结论，并参考 bitmasks、constructive algorithms、math 标签。",
+        "quality_flags": []
+      }
+    },
+    "1557E": {
+      "problem_key": "1557E",
+      "title": "Assiut Chess",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1557/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/93703",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8d82dd904b683e98ada601e3913291c5b4918527cc6fc12eade1251929f54ab8",
+      "generated_at": "2026-09-28T14:27:43+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "在 $8\\times8$ 棋盘上先固定放置皇后，随后国王秘密选择不同位置并先移动；国王每次只能向八个相邻方向移动且不能进入皇后攻击的行、列或对角线。你只能获知国王的移动方向，再移动皇后；当国王无合法移动时获胜。",
+        "transformed_statement": "把追捕问题转化为逐行收缩国王活动范围：皇后横向扫描当前行，用国王是否被迫竖直移动来判断双方的行距，再安全地下移，最终把国王限制到下方角落。",
+        "key_observations": [
+          "将目标设为把国王逼到右下或左下角；角落中的国王没有任何合法移动时即可获胜，从而把追捕转化为逐行压迫。",
+          "若国王位于后方至少两行，皇后可以安全地下移一行；若只相差一行则不能贸然下移，否则国王可能向上逃脱。",
+          "让皇后在当前行从左到右逐格扫描；若扫完八格国王始终没有向下移动，则国王不可能在下一行，否则必会被迫向下，因此可确认行距至少为两。",
+          "国王向上移动时重新扫描当前行；这种情况最多发生有限次，整套策略最多执行 $128$ 次皇后移动。"
+        ],
+        "solution_brief": "先把皇后放在顶行，以逐行扫描确认国王至少隔一行，再下移皇后持续压迫。若国王向下则同步下移，若向上则重扫；最终将其逼入底部角落，最多约 $128$ 步。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 的提示、逐行扫描策略与步数分析，并结合 statement_text 的交互规则和 tags。",
+        "quality_flags": []
+      }
+    },
+    "1557D": {
+      "problem_key": "1557D",
+      "title": "Ezzat and Grid",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1557/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/93703",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d313c477bcb6f9f37d741cbbb5574c00109e4827bb120fa1efce64a5f580c31b",
+      "generated_at": "2026-09-28T14:28:04+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个有 $n$ 行、$10^9$ 列的 01 网格，但只用 $m$ 个区间描述各行中的 1。可以删除任意行；删除后，任意相邻保留行必须存在至少一列同时为 1，要求删除的行数最少，并输出一种删除方案。",
+        "transformed_statement": "将网格转化为行的最长相容子序列：保留行按原顺序排列，连续两行相容当且仅当它们的 1 区间存在交集。对每个列维护以某个保留行结尾的最大长度，用区间操作完成转移。",
+        "key_observations": [
+          "删除行等价于保留一个最长行子序列，使相邻保留行的 1 区间有公共列；因此目标转为最大化保留行数。",
+          "对每个列位置维护当前最大链长度，处理第 $i$ 行时只需查询其所有 1 区间上的最大值，从而找到能接到第 $i$ 行的最优前驱。",
+          "若第 $i$ 行在区间 $[l,r]$ 含有 1，则把该区间所有位置更新为至少“前驱最优值 $+1$”；区间查询与区间取最大值正好对应相邻行存在公共列。",
+          "记录每行状态的前驱行即可在得到最长链后反向恢复保留行，未被恢复的行就是应删除的行。"
+        ],
+        "solution_brief": "把问题转为求最长的相容行子序列。线段树维护各列的最大链长度，处理每行时对其 1 区间做最大值查询，并用查询结果加一进行区间更新；记录前驱后反向恢复保留行，删除其余行。复杂度为 $O(n+m\\log 10^9)$，也可坐标压缩为 $O(n+m\\log m)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 中的 DP 状态、线段树区间查询与更新方案，以及 tags。",
+        "quality_flags": []
+      }
+    },
+    "1557C": {
+      "problem_key": "1557C",
+      "title": "Moamen and XOR",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1557/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/93703",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e995bb33f9d57ffe4e390895a923cac4aaab409261c2a75b42ca615df247b67b",
+      "generated_at": "2026-09-28T14:28:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的非负整数数组，每个元素小于 $2^k$。统计满足所有元素按位与的结果不小于所有元素按位异或结果的有序数组数量，并对 $10^9+7$ 取模。",
+        "transformed_statement": "把每个二进制位看成从 $n$ 个下标中选择一个子集来放置 $1$，再从高位到低位维护“按位与与按位异或相等”或“按位与已更大”两种关系。最终统计所有未在最高不同位上使按位与更小的逐位选择方案。",
+        "key_observations": [
+          "数组中每一位只需记录有多少个位置为 $1$，具体数值不会影响该位的按位与和按位异或结果，因此每一位可独立转化为选择下标子集。",
+          "从最高位向最低位比较按位与和按位异或；一旦更高位已经满足按位与更大，后续各位都可任意选择，而相等状态不能转移到按位与更小。",
+          "处于相等状态时，奇数个元素只能选择偶数个位置为 $1$ 或全部为 $1$ 才保持相等；偶数个元素的全部为 $1$ 会转移到按位与更大的状态。",
+          "偶数大小子集数量可用组合恒等式预处理为 $2^{n-1}$，再按是否排除“全部位置”修正，从而避免逐个枚举子集。"
+        ],
+        "solution_brief": "按最高位到最低位进行两状态 DP：记录当前按位与和按位异或仍相等，或按位与已经更大。相等状态的转移由合法的偶数大小子集数决定；奇数 $n$ 时全为 $1$ 仍相等，偶数 $n$ 时全为 $1$ 转入更大状态；更大状态每位有 $2^n$ 种选择。预处理组合数或等价的幂后，单组复杂度为 $O(n+k)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "数论与同余",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的按位与、按位异或计数条件，以及完整题解中的逐位状态设计和组合计数转化；标签仅用于辅助确定主题。",
+        "quality_flags": []
+      }
+    },
+    "1557B": {
+      "problem_key": "1557B",
+      "title": "Moamen and k-subarrays",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1557/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/93703",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0d72d43d82df4d4bfaf4f52f274c69d2e164dbaa7acb9373eec70345ce8d80f4",
+      "generated_at": "2026-09-28T14:29:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个元素互不相同的数组，必须先把它划分成恰好 $k$ 个连续子数组，再任意重排这些子数组并拼接。判断是否能通过这种操作将整个数组按非递减顺序排列。",
+        "transformed_statement": "把每个元素替换为它在整体有序数组中的排名。问题转化为：按原顺序划分出若干段，使每段包含连续排名且内部顺序正确，并判断最少需要的段数是否不超过 $k$。",
+        "key_observations": [
+          "将数组按原顺序划分后只能整体重排各段，因此同一段中的元素必须对应排序数组中的连续区间，才能拼成全局有序数组。",
+          "最小段数等于相邻元素在排序后不连续的位置数量加一；扫描原数组，若当前元素不是前一个元素的后继就必须新开一段。",
+          "若最小段数不超过给定的 $k$，可继续切分已有段得到恰好 $k$ 段；否则无法完成排序，因此只需比较二者大小。"
+        ],
+        "solution_brief": "先将所有元素排序并建立每个值的排名。按原数组扫描：若当前元素的排名正好比前一个大一，则并入同一段，否则段数加一。得到最小段数 $mnK$ 后，判断 $mnK\\le k$ 即可。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 中的数组排序目标与 editorial 的两条提示、完整解法；tags 提供了 greedy 与 sortings 信息。",
+        "quality_flags": []
+      }
+    },
+    "1557A": {
+      "problem_key": "1557A",
+      "title": "Ezzat and Two Subsequences",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1557/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/93703",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "927d5d657ec3f24d195d5bfb30ae2d4d3a22051a8e047e6957d5da392de4ea62",
+      "generated_at": "2026-09-28T14:29:34+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，必须把所有元素划分成两个非空子序列，每个元素恰好属于其中一组；一组的得分是该组元素平均值，要求最大化两组平均值之和。",
+        "transformed_statement": "把问题转化为决定最大元素是否应与其他元素同组：排序后利用平均值的范围性质证明，最优划分是最大元素单独成组，其余元素组成另一组。",
+        "key_observations": [
+          "任意一组数的平均值都不小于该组最小值且不大于最大值，这为比较不同分组的平均值提供了范围约束。",
+          "将数组升序排列后，包含最大值的子序列若再加入其他元素，其平均值会被不超过次大值的元素拉低；因此让最大值单独成组不会比任何合并方案更差。",
+          "最大值单独成组后，另一组必然包含其余全部元素，所以最优答案直接化为最大元素加上剩余元素的平均值。"
+        ],
+        "solution_brief": "设最大元素为 $M$，将它单独放入一个非空子序列，其余 $n-1$ 个元素放入另一组。由平均值介于组内最小值和最大值之间可证明，给 $M$ 再加入任何元素都不会提高两组平均值之和，因此答案为 $M+\\frac{\\text{总和}-M}{n-1}$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 的平均值范围证明与 statement_text 的分组定义，结合 tags 中的数学和排序提示。",
         "quality_flags": []
       }
     }
