@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3652,
+    "total_problems": 3661,
     "source_total_problems": 3663,
-    "filtered_out_problems": 11,
-    "with_statement_brief": 3652,
-    "with_editorial_brief": 3346,
-    "with_solution_brief": 3348,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3661,
+    "with_editorial_brief": 3355,
+    "with_solution_brief": 3357,
     "missing_editorial_brief": 304,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2714,
+    "ai_override_count": 2723,
     "primary_topic_count": 13,
-    "contest_count": 563,
+    "contest_count": 564,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1184,
+    "数论与同余": 380,
+    "构造与贪心": 1188,
+    "组合计数与概率": 277,
+    "数据结构": 350,
+    "树结构": 177,
+    "博弈": 111,
     "图论与网络流": 238,
-    "树结构": 176,
-    "数据结构": 349,
-    "组合计数与概率": 276,
     "动态规划与状态设计": 297,
-    "数论与同余": 379,
     "字符串": 192,
     "基础实现与模拟": 231,
-    "博弈": 110,
     "几何": 89,
     "交互": 106,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2379,
+    "ai_generated_with_editorial": 2388,
     "ai_generated_partial_editorial": 76,
     "missing_editorial": 304,
     "low_confidence": 1,
@@ -112615,6 +112615,278 @@ window.CF_INSIGHTS_DATA = {
             "若某颗糖果上方没有可接手的机器人，就必须新增一次从顶行放入机器人，并将其加入当前状态集合。"
           ],
           "solutionBrief": "按 $x+y$ 奇偶性拆成两个独立子问题，并对行做平移，将移动改写为向下或向右下。逐列从下到上处理糖果，维护机器人位置集合；优先用上方最近位置接手，否则答案加一。集合实现为 $O(nm\\log n)$，向量双指针可达 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1610,
+      "name": "Codeforces Global Round 17",
+      "date": "2021-11-23",
+      "url": "https://codeforces.com/contest/1610",
+      "type": "Global",
+      "problemCount": 9,
+      "maxRating": 3300,
+      "problems": [
+        {
+          "key": "1610A",
+          "index": "A",
+          "slot": "A",
+          "title": "Anti Light's Cell Guessing",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1610/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/97179",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 网格，隐藏了一个格子。你可以预先选择若干格子并获得隐藏格子到它们的曼哈顿距离，且知道每个距离对应哪个询问格子；要求求出无论隐藏位置如何都能唯一确定它所需的最少询问数。",
+          "transformedStatement": "把问题转化为：选择最少的参考格子，使每个网格位置对应的距离向量都不同。二维网格用同一列的上下端点恢复两个坐标，而单个参考点因相邻位置同距而产生碰撞。",
+          "keyObservations": [
+            "当网格只有一个格子时无需询问，答案为 $0$；若恰有一个维度为 $1$，从 $(1,1)$ 询问一次即可由距离唯一确定另一维坐标。",
+            "当 $n,m\\ge 2$ 时，询问 $(1,1)$ 和 $(n,1)$，两次距离之和为 $n-1+2j-2$，可先确定列 $j$，再由第一次距离确定行 $i$。",
+            "当 $n,m\\ge 2$ 时，任意一个被询问格子至少有两个相邻格子到它的曼哈顿距离都为 $1$，因此一次距离无法区分所有隐藏位置，答案不可能为 $1$。"
+          ],
+          "solutionBrief": "按网格尺寸分类：$1\\times1$ 时答案为 $0$；单行或单列时一次询问足够；二维网格用上下两个端点询问可唯一还原坐标，同时相邻格子的同距性证明一次询问不够，因此答案为 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1610B",
+          "index": "B",
+          "slot": "B",
+          "title": "Kalindrome Array",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1610/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/97179",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组，可以选择一个整数 $x$，删除数组中任意一些值为 $x$ 的元素（也可以一个都不删），再将剩余元素拼接。判断能否通过这种操作得到回文数组，并输出 YES 或 NO。",
+          "transformedStatement": "把问题转化为处理首个对称失配：可选删除值只可能是失配位置两端的某一个值。分别假设删除该值的全部元素，用双指针检查剩余序列是否保持回文。",
+          "keyObservations": [
+            "找到首个不相等的对称位置 $i$ 后，允许删除的数值必须是 $a_i$ 或 $a_{n+1-i}$，否则这两个元素都保留且仍无法匹配。",
+            "虽然题目允许只删除所选数值的一部分，但检验某个候选值时删除它的全部出现不会破坏可行性，因此只需分别测试两个候选值。",
+            "对固定候选值，用双指针从两端向中间比较；遇到不等元素时，只有包含候选值的一侧能被跳过，否则立即判定失败。"
+          ],
+          "solutionBrief": "先找首个不相等的对称元素对，将其两个值分别作为候选删除值。对每个候选值，用双指针跳过该值并检查剩余序列是否为回文；任一候选成功即输出 YES。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1610C",
+          "index": "C",
+          "slot": "C",
+          "title": "Keshi Is Throwing a Party",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1610/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/97179",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 个朋友，第 $i$ 人的财富为 $i$。选择若干人参加聚会；若最终邀请 $x$ 人，每位受邀者都必须满足比他富的人数不超过 $a_i$、比他穷的人数不超过 $b_i$，求最多能邀请多少人。",
+          "transformedStatement": "固定目标人数 $x$，将受邀者按财富从低到高排列为 $p_1<p_2<\\cdots<p_x$。第 $i$ 个位置的候选人 $v$ 必须满足 $x-1-a_v\\le i-1\\le b_v$，问题转为寻找这样一条严格递增的候选序列。",
+          "keyObservations": [
+            "若受邀者按财富从低到高排名为第 $i$ 位，则他面对的富人和穷人数分别是 $x-i$ 与 $i-1$，条件可直接转为 $x-1-a_v\\le i-1\\le b_v$。",
+            "固定邀请人数 $x$ 时，每个排名都选择满足条件的最穷且财富高于前一人的朋友；选择更穷者会为后续排名保留更多候选人。",
+            "若贪心得到的前缀位置始终不超过任意可行方案对应位置，则贪心失败意味着不存在可行的 $x$ 人方案，从而保证判定正确。",
+            "可行的邀请人数具有单调性：从一个满足条件的邀请集合中删人后，每个人面对的富人和穷人都不会增加，因此可以二分最大人数。"
+          ],
+          "solutionBrief": "二分答案 $x$。判定时按财富从低到高逐个排名，选择满足 $x-1-a_v\\le i-1\\le b_v$ 的最小可用编号；贪心判定整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1610D",
+          "index": "D",
+          "slot": "D",
+          "title": "Not Quite Lee",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1610/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/97179",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定数组 $a$，每个非空子序列 $b$ 都可尝试为其每个元素长度构造一个连续整数序列，并允许整体平移；若能使所有序列元素总和为零，则称 $b$ 为 good。要求按下标位置计数所有 good 子序列，并对 $10^9+7$ 取模。",
+          "transformedStatement": "对候选子序列 $c$，先固定每个长度为 $c_i$ 的序列为 $0$ 到 $c_i-1$，再把整体平移量视为未知整数；问题等价于判断 $gcd(c_i)$ 是否整除 $\\sum_i c_i(c_i-1)/2$，随后按最大公因数的 $2$-进制阶分组计数。",
+          "keyObservations": [
+            "长度为 $c_i$ 的连续整数序列整体平移后，总和可改变 $x_i c_i$；因此存在平移使总和为零，当且仅当 $gcd(c_1,\u0005dots,c_k)$ 整除初始总和。",
+            "取每个序列为 $0,1,\u0005dots,c_i-1$ 时初始总和是 $\u0005sum_i c_i(c_i-1)/2$；若最大公因数为奇数，它必然整除该总和。",
+            "设最大公因数的二进制因子恰为 $2^l$，则只需检查未被 $2^{l+1}$ 整除的 $c_i$ 个数是否为偶数，这把整除条件转成了奇偶计数。",
+            "令 $x$ 为能被 $2^l$ 整除的元素数、$y$ 为能被 $2^{l+1}$ 整除的元素数，则该层贡献为 $2^{x-1}-2^y$；$l=0$ 单独统计所有含奇数元素的非空子序列。"
+          ],
+          "solutionBrief": "用最大公因数判定单个子序列是否 good，再按其 $2$-进制阶分类计数：$l\\ge1$ 贡献 $2^{x-1}-2^y$，$l=0$ 统计含奇数元素的子序列，整体复杂度为 $O(n\\log 10^9)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1610E",
+          "index": "E",
+          "slot": "E",
+          "title": "AmShZ and G.O.A.T.",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1610/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/97179",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个非降序整数数组。若数组的某个非空子序列中，大于其平均值的元素个数严格多于小于平均值的元素个数，则称该子序列为 terrible；含有这种子序列的数组为 bad，否则为 good。求最少删除多少个元素，才能使原数组变成 good。",
+          "transformedStatement": "不直接判断删除后的数组，而是求最长的 good 子序列。固定其首元素后，按当前末元素确定后继下界，逐步选择满足 $a_i\\ge2a_k-a_s$ 的最小可行元素，并对首值重复出现的情况单独计数。",
+          "keyObservations": [
+            "固定保留序列的首个元素 $a_s$ 后，若当前最后选的是 $a_k$，下一个元素必须从下标大于 $k$ 且满足 $a_i\\ge 2a_k-a_s$ 的位置开始；取最小这样的元素能为后续留下最多选择。",
+            "贪心选出的后续元素满足 $b_{j+1}-b_1\\ge 2(b_j-b_1)$，因此不同取值的间隔至少翻倍，单个起点的转移次数只有 $O(\\log a_n)$。",
+            "相同起点值的重复元素需要作为重复计数单独处理；只从每个不同取值的首次位置尝试即可，因为同值元素不会改变从该起点出发的核心转移。",
+            "最大化满足条件的最长 good 子序列长度后，删除答案就是原数组长度减去该长度，从而把删除问题转成保留问题。"
+          ],
+          "solutionBrief": "按每个不同的起点值构造最长 good 子序列：每次用二分找到首个满足 $a_i\\ge2a_k-a_s$ 的后继，并按题解规则计入起点重复值。利用差值翻倍限制转移次数，取最长长度 $L$，答案为 $n-L$，总复杂度为 $O(n\\log n\\log a_n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1610F",
+          "index": "F",
+          "slot": "F",
+          "title": "Mashtali: a Space Oddysey",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1610/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/97179",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs"
+          ],
+          "statementBrief": "给定一个边权只有 $1$ 或 $2$ 的无向多重图，必须为每条边选择一个方向。顶点的出入权分别是出边和入边权重之和，要求最大化满足 $|d^+(v)-d^-(v)|=1$ 的顶点数，并输出达到最大值的定向。",
+          "transformedStatement": "把目标转化为：先用每个顶点的加权度奇偶性确定可成为 Oddysey 顶点的上界，再递归消去顶点处的两条等权边，将问题化为边权交替的路径与环定向，最后还原原图方向。",
+          "keyObservations": [
+            "设顶点的加权度为 $c_v$，则 $d^+(v)-d^-(v)\\equiv c_v\\pmod 2$；因此只有 $c_v$ 为奇数时才可能满足绝对值为 $1$，这是答案的上界。",
+            "若顶点 $v$ 的两条关联边权相同，可将路径 $x-v-y$ 压缩为一条 $x-y$ 边；之后按原方向展开时，$v$ 的流入流出贡献相等，所有顶点的差值保持不变。",
+            "不断压缩后，剩余连通部分是边权交替的路径或环；将路径、环沿同一方向定向，可使其中所有加权度为奇数的顶点都满足 $|d^+-d^-|=1$。",
+            "因此最大 beauty 等于加权度为奇数的顶点数，压缩过程中的方向展开即可恢复原图的一组最优定向。"
+          ],
+          "solutionBrief": "计算每个顶点的加权度奇偶性作为答案。递归压缩同一顶点处两条等权边，先在剩余的交替路径或环上定向，再逆序展开压缩边；展开保持各顶点的出入权差不变。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1610G",
+          "index": "G",
+          "slot": "G",
+          "title": "AmShZ Wins a Bet",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1610/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/97179",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "字符串"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "hashing"
+          ],
+          "statementBrief": "给定一个以 ')' 开头的括号字符串 $S$。对字符串可反复切成连续的 $A,B,C$ 三段并交换后两段，得到 $ACB$；已知 $S$ 是操作后的结果，要求找出所有可能初始字符串中字典序最小的一个。",
+          "transformedStatement": "题解把问题转成后缀候选的字典序最小化：每个候选后缀对应倒置 Trie 中从节点到根的字符路径，通过共享路径、快速比较和反向重连维护最小表示。",
+          "keyObservations": [
+            "所有候选初串可归约为若干后缀对应的字符串，因而可用一棵共享后缀的倒置 Trie 统一表示，避免逐个比较完整字符串。",
+            "从节点向根连接的边字符依次拼接就是该后缀候选；比较两个候选时，只需找到它们首个不同字符即可确定字典序。",
+            "为定位首个不同字符，题解为每个节点预处理到 $2^i$ 级祖先的路径哈希，并结合二进制提升跳过相同前缀，使一次比较降为 $O(\\log n)$。",
+            "按位置从后向前合并候选，并在当前候选更小时改接相应父边，可保留字典序最小表示；整套处理复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "将后缀候选建成带字符边的倒置 Trie，利用路径哈希和二进制提升比较候选字典序，再按从后向前的规则重连父节点，最终从根回溯得到最小初串，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1610H",
+          "index": "H",
+          "slot": "H",
+          "title": "Squid Game",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1610/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/97179",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树和每名玩家的两个特殊顶点。每次可选择一个顶点；对每名仍在场的玩家，取该顶点到其两特殊顶点路径上最近的点，若该点是路径内部而非端点，则玩家被淘汰。求淘汰所有玩家所需的最少操作次数，无法完成时输出 $-1$。",
+          "transformedStatement": "把每次操作视为在树上放置一个标记点：玩家当且仅当其端点路径被某个标记点从内部命中时被覆盖。固定根后，将玩家路径按端点的祖先关系分为 cross-edge 与 back-edge，先贪心覆盖后者，再处理未覆盖的前者。",
+          "keyObservations": [
+            "固定一个已选择顶点为根时，只有两个端点位于不同子树的玩家会被该顶点消除；这类路径可统一视为需要覆盖的 cross-edge。",
+            "对固定根下的 back-edge，按路径中较低者优先处理，并选择其路径上仅次于最高点的顶点；由于不存在更低的未覆盖边，这样不会破坏此前覆盖效果。",
+            "先以顶点 1 为根贪心覆盖所有 back-edge；若仍有未覆盖的 cross-edge，则所有已有选择都落在其两个端点的子树内，必须额外选择一个顶点，而选择根 1 即可同时消除它。",
+            "用树上区间覆盖信息判断路径是否已被选择顶点覆盖，可将贪心过程从逐边检查降为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "将已选择的顶点视为标记点。以 1 为根忽略 cross-edge，按最低未覆盖 back-edge 贪心标记其路径上仅次于最高点的顶点，并用 Fenwick 树维护覆盖；最后若仍有 cross-edge 未覆盖，补选根 1，否则输出标记数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1610I",
+          "index": "I",
+          "slot": "I",
+          "title": "Mashtali vs AtCoder",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1610/problem/I",
+          "editorialUrl": "https://codeforces.com/blog/entry/97179",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "games",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，最初只有部分顶点被钉在地面上；两名玩家轮流按规则切断一条仍存在的边，无法操作者失败。对每个 $k$，只把顶点 $1..k$ 视为钉住点并在双方最优时判断胜者，输出长度为 $n$ 的胜负串。",
+          "transformedStatement": "将钉住顶点两两路径上的顶点视为黑色，黑色核心内部的边只保留奇偶信息；连接白色区域的灰边独立携带对应白色子树的 Grundy 值，游戏被转化为这些值与黑边奇偶的异或。每次加入新钉住点时增量扩展黑色核心。",
+          "keyObservations": [
+            "把所有位于任意两个钉住顶点路径上的顶点染黑后，黑边只贡献边数奇偶，灰边则贡献其连接白色子树的 Grundy 值，整体 Grundy 是两者异或。",
+            "新增钉住顶点时，只需沿其到根的方向把经过的白色边重新染黑；每条边至多被重新处理一次，因此可在线维护所有前缀场景。",
+            "当黑边数为偶数时，游戏等价于各个白色子树 Grundy 的异或；当目标值需要改变更高位时，可在某条灰边对应的子树内操作。",
+            "黑边数为奇数时，题解将黑色核心分解为路径，并在一条奇长度路径上使用两钉住点情形，切边后递归处理两侧，从而保证任意更小 Grundy 值可达。"
+          ],
+          "solutionBrief": "维护钉住点路径形成的黑色核心：灰边附着白色子树的 Grundy 异或黑边数奇偶即为总 Grundy。按顶点编号递增加入钉住点，沿根方向重染白边并维护该值；总 Grundy 非零则先手胜。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
