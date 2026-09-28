@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3120,
+    "total_problems": 3122,
     "source_total_problems": 3124,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3120,
-    "with_editorial_brief": 2840,
-    "with_solution_brief": 2841,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3122,
+    "with_editorial_brief": 2842,
+    "with_solution_brief": 2843,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2182,
+    "ai_override_count": 2184,
     "primary_topic_count": 13,
-    "contest_count": 476,
+    "contest_count": 477,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数论与同余": 335,
+    "构造与贪心": 997,
     "动态规划与状态设计": 264,
-    "构造与贪心": 996,
     "图论与网络流": 193,
     "基础实现与模拟": 185,
     "数据结构": 292,
     "字符串": 164,
     "树结构": 154,
     "几何": 77,
-    "数论与同余": 334,
     "博弈": 99,
     "代数、矩阵与多项式": 22,
     "组合计数与概率": 243,
     "交互": 97
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1883,
+    "ai_generated_with_editorial": 1885,
     "ai_generated_partial_editorial": 66,
     "missing_editorial": 279,
     "manual_override": 891,
@@ -96402,6 +96402,71 @@ window.CF_INSIGHTS_DATA = {
             "预处理所有相邻点的连通时间后，原查询只需对对应数组区间求最大值；可用稀疏表或线段树完成。"
           ],
           "solutionBrief": "把边编号作为权值，用 Kruskal 建最小生成树；对每个 $i$ 求树上 $i-1$ 到 $i$ 路径的最大边权 $f(i)$。查询 $[l,r]$ 的答案为 $\\max_{i=l+1}^{r}f(i)$，再用稀疏表或线段树回答区间最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1708,
+      "name": "Codeforces Round 808 (Div. 2)",
+      "date": "2022-07-16",
+      "url": "https://codeforces.com/contest/1708",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1708A",
+          "index": "A",
+          "slot": "A",
+          "title": "Difference Operations",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1708/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/104930",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个正整数数组，每次可选取位置 $i\\ge2$，将该位置的数减去前一位置的数，并重复任意次。判断能否最终使除第一项外的所有元素都变为 $0$。",
+          "transformedStatement": "把过程反向考虑：从 $[a_1,0,\\ldots,0]$ 出发，每次将前一项加到某个后续位置，判断能否生成原数组。这样问题等价于检查每个 $a_i\\ (i\\ge2)$ 是否为 $a_1$ 的倍数。",
+          "keyObservations": [
+            "$a_1$始终不变，因此对任意 $i\\ge2$，$a_i$ 的可达数值都保持为 $a_1$ 的倍数；不是倍数就不可能归零。",
+            "若所有 $a_i\\ (i\\ge2)$ 都是 $a_1$ 的倍数，可逐项利用前一项把它们调整为 $a_1$，再依次减为 $0$，因此该条件也充分。",
+            "逆向看，初始状态 $[a_1,0,\\ldots,0]$ 只能通过把前一项加到当前项来生成数组，所以每个元素必须是 $a_1$ 的倍数。"
+          ],
+          "solutionBrief": "检查所有 $i\\ge2$ 是否满足 $a_i\\bmod a_1=0$。若全部满足则输出 YES，否则输出 NO；依据是操作过程中各项相对 $a_1$ 的倍数性不变，且满足条件时可逐项归零。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1708B",
+          "index": "B",
+          "slot": "B",
+          "title": "Difference of GCDs",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1708/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/104930",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定 $n,l,r$，要构造长度为 $n$ 的数组，使每个 $a_i$ 位于闭区间 $[l,r]$，并且 $\\gcd(i,a_i)$ 两两不同。若无法构造输出 NO，否则输出任意满足条件的数组。",
+          "transformedStatement": "互异的第 $i$ 项最大只能达到 $i$，因此这些 GCD 被强制为 $1,2,\\ldots,n$；问题转化为对每个 $i$，在 $[l,r]$ 中寻找一个 $i$ 的倍数。",
+          "keyObservations": [
+            "因为 $\\gcd(i,a_i)\\le i$ 且所有值互不相同，按 $i=1,2,\\ldots,n$ 归纳可知第 $i$ 个最大可能值必须被取到，即 $\\gcd(i,a_i)=i$。",
+            "条件 $\\gcd(i,a_i)=i$ 等价于 $a_i$ 是 $i$ 的倍数，因此每个位置可以独立选择区间 $[l,r]$ 中的任意一个 $i$ 的倍数。",
+            "区间中最小的 $i$ 的倍数是 $\\left(\\left\\lfloor\\frac{l-1}{i}\\right\\rfloor+1\\right)i$；它超过 $r$ 时无解，否则直接将其作为 $a_i$ 即可。"
+          ],
+          "solutionBrief": "对每个 $i$，先由互异性推出必须满足 $\\gcd(i,a_i)=i$，再取区间 $[l,r]$ 内最小的 $i$ 的倍数作为 $a_i$。若该倍数超过 $r$，输出 NO；否则输出全部构造值。每组复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

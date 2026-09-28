@@ -15,19 +15,104 @@
     ]
   },
   "summary": {
-    "total_problems": 3120,
+    "total_problems": 3122,
     "source_total_problems": 3124,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3120,
-    "with_editorial_brief": 2840,
-    "with_solution_brief": 2841,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3122,
+    "with_editorial_brief": 2842,
+    "with_solution_brief": 2843,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2182,
+    "ai_override_count": 2184,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1708A",
+      "contest_id": 1708,
+      "title": "Difference Operations",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1708/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/104930",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定一个正整数数组，每次可选取位置 $i\\ge2$，将该位置的数减去前一位置的数，并重复任意次。判断能否最终使除第一项外的所有元素都变为 $0$。",
+      "transformed_statement": "把过程反向考虑：从 $[a_1,0,\\ldots,0]$ 出发，每次将前一项加到某个后续位置，判断能否生成原数组。这样问题等价于检查每个 $a_i\\ (i\\ge2)$ 是否为 $a_1$ 的倍数。",
+      "key_observations": [
+        "$a_1$始终不变，因此对任意 $i\\ge2$，$a_i$ 的可达数值都保持为 $a_1$ 的倍数；不是倍数就不可能归零。",
+        "若所有 $a_i\\ (i\\ge2)$ 都是 $a_1$ 的倍数，可逐项利用前一项把它们调整为 $a_1$，再依次减为 $0$，因此该条件也充分。",
+        "逆向看，初始状态 $[a_1,0,\\ldots,0]$ 只能通过把前一项加到当前项来生成数组，所以每个元素必须是 $a_1$ 的倍数。"
+      ],
+      "solution_brief": "检查所有 $i\\ge2$ 是否满足 $a_i\\bmod a_1=0$。若全部满足则输出 YES，否则输出 NO；依据是操作过程中各项相对 $a_1$ 的倍数性不变，且满足条件时可逐项归零。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:13:59+00:00",
+          "quality_flags": [
+            "statement_inferred",
+            "statement_operation_omitted"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1708B",
+      "contest_id": 1708,
+      "title": "Difference of GCDs",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1708/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/104930",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "给定 $n,l,r$，要构造长度为 $n$ 的数组，使每个 $a_i$ 位于闭区间 $[l,r]$，并且 $\\gcd(i,a_i)$ 两两不同。若无法构造输出 NO，否则输出任意满足条件的数组。",
+      "transformed_statement": "互异的第 $i$ 项最大只能达到 $i$，因此这些 GCD 被强制为 $1,2,\\ldots,n$；问题转化为对每个 $i$，在 $[l,r]$ 中寻找一个 $i$ 的倍数。",
+      "key_observations": [
+        "因为 $\\gcd(i,a_i)\\le i$ 且所有值互不相同，按 $i=1,2,\\ldots,n$ 归纳可知第 $i$ 个最大可能值必须被取到，即 $\\gcd(i,a_i)=i$。",
+        "条件 $\\gcd(i,a_i)=i$ 等价于 $a_i$ 是 $i$ 的倍数，因此每个位置可以独立选择区间 $[l,r]$ 中的任意一个 $i$ 的倍数。",
+        "区间中最小的 $i$ 的倍数是 $\\left(\\left\\lfloor\\frac{l-1}{i}\\right\\rfloor+1\\right)i$；它超过 $r$ 时无解，否则直接将其作为 $a_i$ 即可。"
+      ],
+      "solution_brief": "对每个 $i$，先由互异性推出必须满足 $\\gcd(i,a_i)=i$，再取区间 $[l,r]$ 内最小的 $i$ 的倍数作为 $a_i$。若该倍数超过 $r$，输出 NO；否则输出全部构造值。每组复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:13:44+00:00",
+          "quality_flags": [
+            "editorial中“less than r”与题面闭区间端点略有歧义，按题意采用“不超过r”的判定"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 4,
       "problem_key": "1706B",
