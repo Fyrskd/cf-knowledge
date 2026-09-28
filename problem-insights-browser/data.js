@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3357,
+    "total_problems": 3363,
     "source_total_problems": 3366,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3357,
-    "with_editorial_brief": 3071,
-    "with_solution_brief": 3073,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3363,
+    "with_editorial_brief": 3077,
+    "with_solution_brief": 3079,
     "missing_editorial_brief": 284,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2419,
+    "ai_override_count": 2425,
     "primary_topic_count": 13,
-    "contest_count": 516,
+    "contest_count": 517,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1080,
+    "构造与贪心": 1084,
+    "数论与同余": 351,
+    "数据结构": 319,
     "图论与网络流": 216,
     "博弈": 105,
     "动态规划与状态设计": 280,
     "组合计数与概率": 255,
-    "数论与同余": 350,
     "基础实现与模拟": 210,
     "字符串": 175,
     "树结构": 164,
     "交互": 101,
-    "数据结构": 318,
     "几何": 80,
     "代数、矩阵与多项式": 23
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2111,
+    "ai_generated_with_editorial": 2117,
     "missing_editorial": 284,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -103629,6 +103629,191 @@ window.CF_INSIGHTS_DATA = {
             "星形树的非立即结束局面中，设 $d$ 为排序所需最少交换次数、$x$ 为令牌在中心或叶子的指示量，则每回合 $d+x$ 的奇偶性不变，最终胜负由其奇偶性决定。"
           ],
           "solutionBrief": "先处理已排序或可一步完成的情况。直径至少为 $3$ 时 Alice 必胜；星形树中按中心是否标记、令牌位置及其是否能首步解除中心标记分类，并用排序最少交换数 $d$ 与位置量 $x$ 的奇偶性判定。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1661,
+      "name": "Educational Codeforces Round 126 (Rated for Div. 2)",
+      "date": "2022-04-09",
+      "url": "https://codeforces.com/contest/1661",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1661A",
+          "index": "A",
+          "slot": "A",
+          "title": "Array Balancing",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1661/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/101790",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组。每次可选定位置 $p$，将从 $p$ 到末尾的所有位置上的 $a_i$ 与 $b_i$ 互换；求经过任意次操作后，两个数组各自相邻元素绝对差之和的最小值。",
+          "transformedStatement": "把每个位置看成一对可交换的数，后缀交换相当于改变后缀的配对方向。每条相邻边只需比较“同列连接”和“交叉连接”的代价，并从左到右确定是否翻转当前后缀。",
+          "keyObservations": [
+            "对相邻位置 $p-1,p$，若保持原配对的代价大于交叉配对，交换后缀 $p..n$ 可严格降低边界代价。",
+            "交换整个后缀不会改变后缀内部相邻边的代价，前缀也不受影响，因此一次操作只影响边界 $(p-1,p)$。",
+            "从左到右处理边界时，后续后缀交换不会再改变已经处理的前缀边界，所以每个位置只需根据当前两列的局部比较决定是否交换。"
+          ],
+          "solutionBrief": "从左到右检查每个边界。若原配对代价 $|a_{i-1}-a_i|+|b_{i-1}-b_i|$ 大于交叉配对代价，就交换位置 $i$ 到 $n$ 的所有对应元素；实现时等价于只交换当前位置的 $a_i,b_i$。最终计算相邻差之和，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1661B",
+          "index": "B",
+          "slot": "B",
+          "title": "Getting Zero",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1661/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/101790",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "greedy",
+            "shortest paths"
+          ],
+          "statementBrief": "给定若干个模 $32768$ 的整数。每次可将当前数加一或乘以二，按模 $32768$ 计算；对每个数分别求使其变为 $0$ 所需的最少操作次数。",
+          "transformedStatement": "把操作序列规范化为“先加一若干次，再统一乘二若干次”，于是每个数只需寻找最小的非负 $x,y$，使 $(a_i+x)2^y$ 被 $32768$ 整除。",
+          "keyObservations": [
+            "因为 $32768=2^{15}$，连续乘以 $2$ 至多 $15$ 次就能使任意数模 $32768$ 后变为 $0$，因此最优答案不超过 $15$。",
+            "任意最优操作序列都可整理为先执行若干次加一、再执行若干次乘二；乘二后的加一可通过交换或替换移到前面，不增加操作数。",
+            "因此只需枚举加一次数 $cntAdd$ 和乘二次数 $cntMul$，检查 $(v+cntAdd)\\cdot 2^{cntMul}\\bmod 32768=0$，取两者之和的最小值。"
+          ],
+          "solutionBrief": "对每个数枚举 $cntAdd,cntMul\\le15$，假设先加一再乘二；若 $(a_i+cntAdd)2^{cntMul}$ 模 $32768$ 为 $0$，就用 $cntAdd+cntMul$ 更新答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1661C",
+          "index": "C",
+          "slot": "C",
+          "title": "Water the Trees",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1661/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/101790",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 棵树的初始高度。第 $j$ 天最多浇一棵树：奇数天可使它长高 $1$，偶数天可使它长高 $2$，也可以不浇水；求让所有树最终高度相同所需的最少天数，多组测试独立计算。",
+          "transformedStatement": "把问题改写为：对目标高度 $M$ 或 $M+1$，判断前 $mid$ 天提供的加 $1$ 与加 $2$ 操作是否足以覆盖所有树的高度差；可行性单调后对天数二分。",
+          "keyObservations": [
+            "最终统一高度只需检查初始最大值 $M$ 和 $M+1$；更高目标可删去多余浇水操作而不优于目标 $M$。",
+            "固定目标后，在给定天数内可用的操作数分别是 $\\lceil mid/2\\rceil$ 次加 $1$ 和 $\\lfloor mid/2\\rfloor$ 次加 $2$，因为每天最多浇一棵树且操作类型由日期奇偶决定。",
+            "应优先把加 $2$ 操作用在仍至少需要增长 $2$ 的树上，再用加 $1$ 补齐剩余差值；这样先最大化高效操作，剩余需求只需检查是否不超过可用的加 $1$ 次数。",
+            "天数越多，可用的两类操作数都不会减少，因此可行性单调，可以对答案天数进行二分。"
+          ],
+          "solutionBrief": "分别以 $M$、$M+1$ 为目标高度。对每个目标二分最少天数；判定时统计可用的加 $1$、加 $2$ 次数，贪心使用加 $2$ 覆盖差值至少为 $2$ 的部分，再检查剩余差值是否能由加 $1$ 完成。单组复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1661D",
+          "index": "D",
+          "slot": "D",
+          "title": "Progressions Covering",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1661/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/101790",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定全为 $0$ 的数组 $a$ 和目标数组 $b$。每次可选择长度恰为 $k$ 的连续子段，在其上依次加上 $1,2,\\ldots,k$；要求最终所有 $a_i\\ge b_i$，求最少操作次数。",
+          "transformedStatement": "将每次操作视为沿固定长度向左产生递减贡献的区间事件，从右向左处理目标位置：维护尚未结束操作的当前总贡献，当前位置不足时只补充能贡献最多的新操作。",
+          "keyObservations": [
+            "从右向左处理时，覆盖当前位置且能延伸到最左侧的操作起点被唯一确定；用它补当前缺口不会削弱对尚未处理位置的覆盖能力。",
+            "从位置 $i$ 向左移动一格，每个仍生效的等差操作贡献减少 $1$，因此所有已有操作的总贡献可用 `sum` 每次减去 `cnt` 维护。",
+            "当前位置的单个新操作最多贡献 $el=\\min(k,i+1)$，所以剩余需求为正时，至少需要 $\\lceil b_i/el\\rceil$ 个操作；一次加入该数量即可达到最少。",
+            "新加入的操作向左延伸固定长度，越过其左端后不再贡献，用 `closed` 记录结束事件即可在之后及时从活跃操作数中移除。"
+          ],
+          "solutionBrief": "从右向左维护已有操作在当前位置的总贡献 `sum`、活跃操作数 `cnt` 及结束事件。扣除已有贡献后，若仍有缺口，就按单个新操作的最大贡献 $\\min(k,i+1)$ 加入所需的最少数量，并记录其左端结束位置，整体 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1661E",
+          "index": "E",
+          "slot": "E",
+          "title": "Narrow Components",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1661/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/101790",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "dsu",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一个由 $3$ 行、$n$ 列组成的矩阵，字符 $1$ 表示自由格、$0$ 表示被占用格；上下或左右相邻的自由格可以连通。每次查询给出列区间 $[l,r]$，要求计算只保留这些列后自由格形成的连通块数量。",
+          "transformedStatement": "把每个查询转化为区间内自由格数减去生成森林边数的问题；全局按列构造的森林对内部连通块有效，只有左端连续的“101”列可能因被区间边界截断而需要形状分类修正。",
+          "keyObservations": [
+            "按列从左到右处理，每列先合并竖直相邻格，再合并与前列的水平边；所得生成森林在每个列前缀上都正确。",
+            "区间连通块数可表示为自由格数量减去生成森林边数，但区间左边界可能截断全局连通块，需单独修正。",
+            "除形状“101”外，左端列的自由格连通关系不会受左侧影响；因此只需处理左端连续的一段“101”列。",
+            "找到首个非“101”列后，前缀修正只由该列形状决定：全为“101”时答案为 $2$，遇到“111”补 $0$，遇到“000”或“010”补 $2$，其他情况补 $1$。"
+          ],
+          "solutionBrief": "用 DSU 按列建立全矩阵的生成森林，并预处理自由格数与森林边数的前缀和。每个查询定位首个非“101”列，在其后用“自由格数减边数”，再按前缀形状补上 $0/1/2$ 个连通块；总复杂度为 $O(n\\alpha(n)+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1661F",
+          "index": "F",
+          "slot": "F",
+          "title": "Teleporters",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1661/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/101790",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy"
+          ],
+          "statementBrief": "直线上已有位于 $0,a_1,\u0000\u0000,a_n$ 的传送点；任意两个传送点之间可以传送，消耗两点距离的平方。可以在整数位置安装新传送点，要求从 $0$ 到 $a_n$ 的总消耗不超过 $m$，求最少需要安装多少个。",
+          "transformedStatement": "把相邻已有传送点之间的距离看成独立区间；在长度为 $x$ 的区间放置 $k$ 个新点，就是把它划成 $k+1$ 个整数长度的连续段，并最小化这些段长度平方和，随后在所有区间间分配新增点。",
+          "keyObservations": [
+            "新增传送点只会影响其所在的相邻区间，因此各初始区间可以分别计算代价，再统一分配新增传送点。",
+            "长度为 $x$ 的区间加入 $k$ 个传送点后，最优划分是各段长度之差至多为 $1$，从而可直接用 $f(x,k)$ 计算最小平方和。",
+            "同一区间中连续增加传送点带来的节省值不增，因此可以按节省值设阈值，并对每个区间二分能取得的传送点数量。",
+            "达到阈值 $c$ 的传送点可能只需选取其中一部分；比较 $g(c+1),h(c+1)$ 与 $g(c),h(c)$ 后，才能补足使总能量不超过 $m$ 的最少数量。"
+          ],
+          "solutionBrief": "将每个区间的新增传送点视为独立决策，按整数均分公式计算代价。利用边际节省值不增，对节省阈值二分；每次在各区间内二分可加入数量，并在临界阈值处只补所需的部分传送点。总复杂度为 $O(n\\log^2 A)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
