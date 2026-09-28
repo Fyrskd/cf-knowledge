@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3870,
+    "total_problems": 3871,
     "source_total_problems": 3873,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 3870,
-    "with_editorial_brief": 3542,
-    "with_solution_brief": 3544,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3871,
+    "with_editorial_brief": 3543,
+    "with_solution_brief": 3545,
     "missing_editorial_brief": 326,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2927,
+    "ai_override_count": 2933,
     "primary_topic_count": 13,
     "contest_count": 601,
     "rating_min": 800,
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1255,
+    "图论与网络流": 254,
+    "数论与同余": 411,
     "组合计数与概率": 296,
     "几何": 92,
-    "数论与同余": 410,
-    "数据结构": 369,
+    "数据结构": 370,
+    "构造与贪心": 1253,
     "交互": 113,
-    "图论与网络流": 253,
     "基础实现与模拟": 244,
     "字符串": 202,
     "动态规划与状态设计": 316,
@@ -60,7 +60,7 @@ window.CF_INSIGHTS_DATA = {
   },
   "statusCounts": {
     "missing_editorial": 326,
-    "ai_generated_with_editorial": 2564,
+    "ai_generated_with_editorial": 2565,
     "ai_generated_partial_editorial": 87,
     "low_confidence": 1,
     "manual_override": 891,
@@ -119061,8 +119061,8 @@ window.CF_INSIGHTS_DATA = {
       "date": "2021-08-01",
       "url": "https://codeforces.com/contest/1548",
       "type": "Div. 1",
-      "problemCount": 5,
-      "maxRating": 3300,
+      "problemCount": 6,
+      "maxRating": 3400,
       "problems": [
         {
           "key": "1548A",
@@ -119072,17 +119072,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1400,
           "problemUrl": "https://codeforces.com/contest/1548/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/93586",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "图论与网络流",
-            "组合计数与概率"
-          ],
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "graphs",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Web of Lies；本地暂无可用题解正文。",
+          "statementBrief": "有编号为 $1$ 到 $n$、力量等于编号的贵族，以及若干互相的友谊关系。每次查询都从所有贵族存活、原始友谊存在的状态开始：反复同时删除所有满足题面脆弱条件的贵族及其友谊，直到无人脆弱，最后询问剩余贵族数量；具体三类查询格式在给定文本中缺失。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -119097,11 +119094,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1800,
           "problemUrl": "https://codeforces.com/contest/1548/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/93586",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数论与同余",
-            "数据结构"
-          ],
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "data structures",
@@ -119110,7 +119104,7 @@ window.CF_INSIGHTS_DATA = {
             "number theory",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Integers Have Friends；本地暂无可用题解正文。",
+          "statementBrief": "给定一个元素互不相同的正整数数组，连续子数组若存在某个整数 $m\\ge2$，使其中所有数除以 $m$ 的余数相同，就称为友好组。需要求数组中最长友好组的长度。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -119126,18 +119120,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1548/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/93586",
           "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "代数、矩阵与多项式",
-            "数据结构"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "combinatorics",
             "dp",
             "fft",
             "math"
           ],
-          "statementBrief": "题面已抓取：The Three Little Pigs；本地暂无可用题解正文。",
+          "statementBrief": "大会第 $t$ 分钟结束时共有 $3t$ 头猪。狼可以选择一个时刻到达，并从当时已有的猪中恰好选择 $x$ 头；每次询问独立，要求对给定的 $x$ 统计所有不同到达时刻和选择集合的方案数，结果模 $10^9+7$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -119154,8 +119144,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/93586",
           "primaryTopic": "几何",
           "secondaryTopics": [
-            "数论与同余",
-            "动态规划与状态设计"
+            "数论与同余"
           ],
           "originalTags": [
             "bitmasks",
@@ -119163,7 +119152,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Gregor and the Odd Cows (Easy)；本地暂无可用题解正文。",
+          "statementBrief": "平面上给出若干个坐标均为偶数且任意三点不共线的栅栏桩。每次任选三个不同栅栏桩连成三角形；若三角形面积为整数且严格内部的整点数量为奇数，则称其有趣，求有趣三角形的数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -119179,22 +119168,52 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1548/problem/D2",
           "editorialUrl": "https://codeforces.com/blog/entry/93586",
           "primaryTopic": "几何",
-          "secondaryTopics": [
-            "数论与同余",
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "geometry",
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Gregor and the Odd Cows (Hard)；本地暂无可用题解正文。",
+          "statementBrief": "平面上给出若干互不重合且任意三点不共线的栅栏柱，每次选择三个柱子连接成三角形。若三角形面积为整数，且严格位于其内部的整点坐标奶牛数量为奇数，则称其有趣，要求统计有趣三角形的数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1548E",
+          "index": "E",
+          "slot": "E",
+          "title": "Gregor and the Two Painters",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1548/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/93586",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "graphs",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n\\times m$ 网格，第 $i$ 行涂 $a_i$ 层、第 $j$ 列涂 $b_j$ 层，因此格子 $(i,j)$ 有 $a_i+b_j$ 层；总层数不超过 $x$ 的格子称为坏格。求按边相邻形成的极大坏格连通块数量。",
+          "transformedStatement": "把每个坏连通块替换为其中油漆总层数唯一最小的代表格。对每行、每列预处理跨越连续可达区间时必经的阈值 $na_i,nb_j$，再将代表条件转化为三条关于 $a_i,b_j,na_i,nb_j$ 的不等式并批量计数。",
+          "keyObservations": [
+            "每个坏连通块恰好有一个代表：代表格在同一行或列中沿连续坏格可达的范围内，没有更小的油漆总层数。",
+            "代表格必是其连通块中的唯一最小值格，因此统计代表格即可替代直接搜索所有连通块。",
+            "对行 $i$，用左右最近的更小 $a$ 值划出可达范围，并令 $na_i$ 为两侧区间最大值的较小者；跨行通往更小格必须经过至少 $na_i$ 的行。",
+            "格子 $(i,j)$ 为代表当且仅当 $a_i+b_j\\le x$、$na_i+b_j>x$ 且 $a_i+nb_j>x$，于是二维连通性判定转成三组不等式计数。"
+          ],
+          "solutionBrief": "先用单调栈求各行、列的 $na,nb$，再按 $na_i-a_i$ 与 $nb_j-b_j$ 降序扫描。用两个树状数组维护已处理的 $a_i$ 或 $b_j$，查询区间 $(x-na_i,x-a_i]$ 等，从而统计满足三条不等式的代表格数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
