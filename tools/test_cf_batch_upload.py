@@ -315,6 +315,15 @@ class BatchUploadTests(unittest.TestCase):
                         dt.datetime(2026, 9, 25, tzinfo=dt.timezone.utc).timestamp()
                     ),
                 },
+                {
+                    "id": 1596,
+                    "name": "Технокубок 2022 - Ознакомительный Раунд 2",
+                    "type": "CF",
+                    "phase": "FINISHED",
+                    "startTimeSeconds": int(
+                        dt.datetime(2021, 11, 12, tzinfo=dt.timezone.utc).timestamp()
+                    ),
+                },
             ]
             result = load_candidates(
                 contests_path=root / "contests.json",

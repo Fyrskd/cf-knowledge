@@ -1424,13 +1424,22 @@ def is_codeforces_contest(contest: dict[str, object]) -> bool:
     though they are still Codeforces contests.  Keep the historical ``CF``
     entries and admit only clearly Codeforces-branded ``ICPC`` entries so
     unrelated ICPC regional contests and online mirrors remain excluded.
+    Familiarization and practice rounds have no public problemset or standings,
+    so they are not crawlable contests even when the API labels them ``CF``.
     """
+    name = str(contest.get("name") or "")
+    normalized_name = name.casefold()
+    if (
+        "ознакомительный раунд" in normalized_name
+        or "practice round" in normalized_name
+    ):
+        return False
+
     contest_type = contest.get("type")
     if contest_type == "CF":
         return True
     if contest_type != "ICPC":
         return False
-    name = str(contest.get("name") or "")
     return name.startswith(("Codeforces ", "Educational Codeforces "))
 
 

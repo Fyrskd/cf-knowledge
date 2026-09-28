@@ -67,6 +67,28 @@ class DynamicTutorialTests(unittest.TestCase):
             )
         self.assertEqual([item["id"] for item in result], [2266])
 
+    def test_practice_contests_without_public_problemsets_are_excluded(self) -> None:
+        self.assertFalse(cf.is_codeforces_contest({
+            "id": 1596,
+            "type": "CF",
+            "name": "Технокубок 2022 - Ознакомительный Раунд 2",
+        }))
+        self.assertFalse(cf.is_codeforces_contest({
+            "id": 874,
+            "type": "CF",
+            "name": "Technocup 2018 - Practice Round 2",
+        }))
+        self.assertTrue(cf.is_codeforces_contest({
+            "id": 1584,
+            "type": "CF",
+            "name": "Technocup 2022 - Elimination Round 2",
+        }))
+        self.assertTrue(cf.is_codeforces_contest({
+            "id": 1652,
+            "type": "CF",
+            "name": "Технокубок 2022 - Финал",
+        }))
+
     def test_problem_metadata_falls_back_to_contest_standings(self) -> None:
         def fake_cf_api(_fetcher: object, method: str, **params: object) -> dict:
             if method == "problemset.problems":
