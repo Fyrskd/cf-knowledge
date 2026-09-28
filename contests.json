@@ -1,5 +1,16 @@
 [
   {
+    "id": 1616,
+    "name": "Good Bye 2021: 2022 is NEAR",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1640792100,
+    "relativeTimeSeconds": 149790387,
+    "date": "2021-12-29"
+  },
+  {
     "id": 1621,
     "name": "Hello 2022",
     "type": "CF",
