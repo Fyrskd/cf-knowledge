@@ -1,5 +1,16 @@
 [
   {
+    "id": 1594,
+    "name": "Codeforces Round 747 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1633705500,
+    "relativeTimeSeconds": 156892076,
+    "date": "2021-10-08"
+  },
+  {
     "id": 1598,
     "name": "Educational Codeforces Round 115 (Rated for Div. 2)",
     "type": "ICPC",
