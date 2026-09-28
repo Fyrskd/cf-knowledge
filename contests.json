@@ -1,5 +1,16 @@
 [
   {
+    "id": 1558,
+    "name": "Codeforces Round 740 (Div. 1, based on VK Cup 2021 - Final (Engine))",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1629815700,
+    "relativeTimeSeconds": 160787018,
+    "date": "2021-08-24"
+  },
+  {
     "id": 1561,
     "name": "Codeforces Round 740 (Div. 2, based on VK Cup 2021 - Final (Engine))",
     "type": "CF",
