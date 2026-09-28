@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3486,
+    "total_problems": 3492,
     "source_total_problems": 3494,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3486,
-    "with_editorial_brief": 3188,
-    "with_solution_brief": 3190,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3492,
+    "with_editorial_brief": 3194,
+    "with_solution_brief": 3196,
     "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2548,
+    "ai_override_count": 2554,
     "primary_topic_count": 13,
-    "contest_count": 537,
+    "contest_count": 538,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "基础实现与模拟": 218,
+    "构造与贪心": 1131,
+    "动态规划与状态设计": 285,
+    "图论与网络流": 228,
+    "数据结构": 333,
     "字符串": 183,
     "数论与同余": 367,
-    "构造与贪心": 1130,
     "交互": 102,
-    "图论与网络流": 227,
-    "数据结构": 332,
-    "动态规划与状态设计": 284,
     "树结构": 168,
-    "基础实现与模拟": 216,
     "组合计数与概率": 264,
     "几何": 83,
     "代数、矩阵与多项式": 24,
     "博弈": 106
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2228,
+    "ai_generated_with_editorial": 2233,
+    "ai_generated_partial_editorial": 70,
     "missing_editorial": 296,
-    "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -107547,6 +107547,185 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "计算差数组 $C=A-B$ 及其 Fibonacci 递推差分数组 $D$，用非零计数维护 $D_1..D_n$。每次 Fibonacci 加法只转化为至多三个端点单点更新，预处理 Fibonacci 后即可判断计数是否为零。",
           "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1633,
+      "name": "Educational Codeforces Round 122 (Rated for Div. 2)",
+      "date": "2022-01-31",
+      "url": "https://codeforces.com/contest/1633",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1633A",
+          "index": "A",
+          "slot": "A",
+          "title": "Div. 7",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1633/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/99539",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force"
+          ],
+          "statementBrief": "给定一个不含前导零的整数，每次可以修改其中的数字，要求修改后仍无前导零且能被 $7$ 整除。对每个测试用例输出修改位数最少的任意结果；若原数已满足条件则原样输出。",
+          "transformedStatement": "把问题转化为固定除末位外的前缀，只枚举新的末位数字 $0$ 到 $9$，寻找使整体模 $7$ 为零的候选；原数不整除时该候选保证只需一次修改。",
+          "keyObservations": [
+            "若原数不能被 $7$ 整除，至少必须修改一位；因此只要找到一次修改即可达到最少次数。",
+            "固定除最后一位外的前缀，枚举末位数字 $0$ 到 $9$，总能找到一个使完整数字被 $7$ 整除的末位，因此最多修改一位且不会产生前导零。",
+            "若原数已经是 $7$ 的倍数，零次修改严格优于任何修改，直接保留原数即可。"
+          ],
+          "solutionBrief": "对每个数先判断是否能被 $7$ 整除；若不能，保留前面的数字，依次尝试把最后一位改为 $0$ 至 $9$，输出第一个能被 $7$ 整除的结果。这样恰好只修改一位，达到最少修改次数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1633B",
+          "index": "B",
+          "slot": "B",
+          "title": "Minority",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1633/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/99539",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定一个只含 0 和 1 的字符串，必须恰好选择一个连续子串：若其中一种字符数量严格更少，就删除该子串内所有这种字符；数量相等时不删除。求一次操作最多能删除多少字符。",
+          "transformedStatement": "把操作结果视为所选子串中两种字符数量较小者；目标是在连续子串中最大化这个少数数量。比较整串的全局计数，并单独处理两者相等时整串无法触发删除的情况。",
+          "keyObservations": [
+            "无论选择哪个子串，被删除的字符总数都不超过整串中出现次数较少的字符数，因此全局少数数量是答案上界。",
+            "若整串中 0 和 1 的数量不同，直接选择整串，较少字符就是严格少数，能够达到上述上界。",
+            "若整串中两种字符数量都为 $m$，选择整串不会删除任何字符；去掉末尾一个字符后两种数量变为 $m-1$ 与 $m$，可删除 $m-1$ 个，因此答案是 $m-1$。"
+          ],
+          "solutionBrief": "统计整串中 0 和 1 的数量。数量不等时答案为较小者；数量相等时答案为该数量减一。按每个测试串线性统计即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1633C",
+          "index": "C",
+          "slot": "C",
+          "title": "Kill the Monster",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1633/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/99539",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "角色与怪物轮流进行攻击，任一方生命值降至非正时战斗结束；角色可在战斗前用至多 $k$ 枚硬币，每枚选择提升攻击力 $w$ 或生命值 $a$，要求判断能否击败怪物。",
+          "transformedStatement": "将战斗转化为比较双方所需攻击次数：固定使用 $x$ 枚硬币升级武器、其余用于护甲后，检查 $\\lceil h_M/(d_C+xw)\\rceil\\leq\\lceil(h_C+(k-x)a)/d_M\\rceil$ 是否成立。",
+          "keyObservations": [
+            "角色击败怪物所需攻击次数是 $\\lceil h_M/d_C\\rceil$，怪物击败角色所需攻击次数是 $\\lceil h_C/d_M\\rceil$；前者不大于后者时角色获胜。",
+            "每枚硬币只能用于武器或护甲，且升级收益非负，因此枚举武器升级数 $x$ 后，可将其余 $k-x$ 枚用于护甲，不会劣于少花硬币。",
+            "武器升级数确定后，角色的攻击力与生命值也随之确定，战斗胜负即可由两次击杀所需攻击次数直接判定。"
+          ],
+          "solutionBrief": "枚举武器升级数 $x=0\\ldots k$，令攻击力为 $d_C+xw$、生命值为 $h_C+(k-x)a$，比较双方所需攻击次数；存在一组分配使角色先完成击杀即可输出 YES。总复杂度为 $O(k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1633D",
+          "index": "D",
+          "slot": "D",
+          "title": "Make Them Equal",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1633/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/99539",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "数组初始有 $n$ 个全为 $1$ 的元素。一次操作选择一个位置和正整数 $x$，把该元素增加 $\\lfloor a_i/x\\rfloor$；最多操作 $k$ 次后，只有恰好变成对应 $b_i$ 的位置才能获得 $c_i$ 枚金币，求最多金币数。",
+          "transformedStatement": "先独立计算每个目标值 $v$ 从 $1$ 出发所需的最少操作数 $d_v$，再把达到 $b_i$ 看成消耗 $d_{b_i}$ 次操作并获得 $c_i$ 价值的物品，整体转化为容量受限的 0/1 背包。",
+          "keyObservations": [
+            "单个位置从 $1$ 变到目标值 $v$ 的最少操作数只由 $v$ 决定，可预处理距离 $d_v$，转移为 $i\\to i+\\lfloor i/x\\rfloor$（$1\\le x\\le i$）。",
+            "每个位置若最终取到 $b_i$，就相当于选择一个重量为 $d_{b_i}$、价值为 $c_i$ 的物品；未选择的位置不贡献金币，因此原问题等价于容量为 $k$ 的 0/1 背包。",
+            "当 $b_i\\le 1000$ 时，所有最短距离 $d_v$ 不超过 $12$，所以总有效重量不超过 $12n$；将容量截为 $\\min(k,12n)$，即可避免直接按可能很大的 $k$ 做背包。"
+          ],
+          "solutionBrief": "先用 BFS 或 DP 预处理从 $1$ 到各个 $v\\le1000$ 的最少操作数 $d_v$，转移为 $i\\to i+\\lfloor i/x\\rfloor$。再把每个位置视为重量 $d_{b_i}$、价值 $c_i$ 的物品，将 $k$ 截为 $\\min(k,12n)$ 后进行 0/1 背包。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1633E",
+          "index": "E",
+          "slot": "E",
+          "title": "Spanning Tree Queries",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1633/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/99539",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "math",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定一个连通带权无向图。每次给定整数 $x$，从图中选择一棵生成树，令其每条边产生代价 $|w-x|$，要求最小化这些代价之和；前 $p$ 个查询直接给出，其余按 $q_j=(q_{j-1}a+b)\\bmod c$ 生成，最终输出所有答案的异或和。",
+          "transformedStatement": "把参数 $x$ 轴按所有边权以及任意两条边权的中点切成区间：区间内按 $|w-x|$ 的边序固定，Kruskal 选出的生成树也固定；该树的总代价则是关于 $x$ 的一次函数。",
+          "keyObservations": [
+            "任意两条权重不同的边只会在 $x=(w_1+w_2)/2$ 处交换绝对差排序，因此全体边的排序最多发生 $O(m^2)$ 次变化。",
+            "将所有边权 $w_i$ 也加入分段边界后，每个区间内每条边的代价始终单调增或单调减，避免了区间内斜率变化。",
+            "固定一个区间内的边排序后，按该顺序执行 Kruskal 得到的生成树不变，因此只需在区间起点计算一次树及其代价。",
+            "若当前生成树中有 $r$ 条边的权重低于 $x$，区间内代价斜率为 $2r-(n-1)$，所以可用该斜率从区间起点线性计算任意查询答案。"
+          ],
+          "solutionBrief": "按所有边权和两两权重中点划分 $x$ 的区间；每个区间内按 $|w-x|$ 排序固定，用 Kruskal 求生成树，并记录其中代价递增的边数，从而线性计算区间内答案。对每个查询二分定位区间，生成查询并累加所有答案的异或值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1633F",
+          "index": "F",
+          "slot": "F",
+          "title": "Perfect Matching",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1633/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/99539",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "交互"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以顶点 $1$ 为特殊根的树，初始只有顶点 $1$ 激活；程序在线处理若干种交互查询，后续查询只能在输出上一问答案后读取。记录未提供类型 $1$、$2$ 的具体操作和输出格式，但题解表明操作会逐步激活新叶子，并要求维护当前树的完美匹配及相关答案。",
+          "transformedStatement": "把动态激活过程看成向已知根树中加入叶子：每次加入叶子都会使该叶到根路径上的后代数奇偶全部翻转。问题转化为维护奇偶分类、两类顶点数量以及连接奇类顶点的边集合。",
+          "keyObservations": [
+            "将树根定为 $1$，按“自身及后代总数”的奇偶给顶点分类；新增叶子只会翻转其到根路径上所有顶点的类别，其他顶点不变。",
+            "在存在完美匹配时，按最深叶子不断与父亲配对不会使树分裂；每次配对的叶子必为奇类、父亲必为偶类。",
+            "完美匹配存在当且仅当奇类顶点与偶类顶点数量相等，此时每个奇类顶点与父亲相连的边就是匹配边。",
+            "激活新叶子等价于对根到该点的路径统一翻转奇偶状态，并维护通向奇类顶点的边信息；因此可用树链剖分把路径操作拆成区间，再由带懒标记线段树维护。"
+          ],
+          "solutionBrief": "根树后维护各点后代数奇偶。激活叶子时翻转根到该点路径的状态，用树链剖分和懒标记线段树维护状态计数及匹配边；奇偶两类数量相等时即可得到完美匹配。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "complete"
         }
       ]
