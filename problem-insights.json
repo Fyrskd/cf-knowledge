@@ -15,19 +15,187 @@
     ]
   },
   "summary": {
-    "total_problems": 3493,
+    "total_problems": 3498,
     "source_total_problems": 3500,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3493,
-    "with_editorial_brief": 3194,
-    "with_solution_brief": 3196,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3498,
+    "with_editorial_brief": 3199,
+    "with_solution_brief": 3201,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2554,
+    "ai_override_count": 2560,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1632A",
+      "contest_id": 1632,
+      "title": "ABC",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1632/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/99442",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "字符串"
+      ],
+      "original_tags": [
+        "implementation"
+      ],
+      "statement_brief": "给定只含 $0$ 和 $1$ 的字符串，可以任意重排字符。要求判断能否得到一个字符串，使其不存在长度大于 $1$ 的回文子串，并输出 YES 或 NO。",
+      "transformed_statement": "把条件集中到最短可能的回文：相邻字符必须不同，任意连续三个字符的首尾也必须不同。于是只需分析前三位；二进制字符无法满足三位两两不同，故长度至少为 $3$ 时统一不可行。",
+      "key_observations": [
+        "长度至少为 $3$ 时，前三个字符必须两两不同：相邻不同是避免长度 $2$ 回文，而首尾不同是避免长度 $3$ 回文；这把任意长串问题缩小到前三位。",
+        "二进制字符只有 $0$ 和 $1$，无法构成三个两两不同的字符，因此任何 $n\\ge3$ 的重排都不可能满足条件。",
+        "当 $n\\le2$ 时，只需检查重排后是否存在相邻相等字符：长度为 $1$ 必然可行，长度为 $2$ 仅当两个字符不同才可行。"
+      ],
+      "solution_brief": "按长度直接判定：$n\\ge3$ 时前三位不可能两两不同，答案为 NO；$n=1$ 时为 YES，$n=2$ 时当且仅当两个字符不同为 YES。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T07:01:26+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1632B",
+      "contest_id": 1632,
+      "title": "Roof Construction",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1632/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/99442",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms"
+      ],
+      "statement_brief": "给定 $n$ 根连续柱子，必须把 $0$ 到 $n-1$ 的高度各使用一次。柱子顺序形成排列，施工代价是所有相邻高度异或值的最大值，要求构造代价最小的任意排列。",
+      "transformed_statement": "把高度按 $2^k$ 这一最高关键位分成低位组和高位组，其中 $k$ 是 $n-1$ 的最高位；目标转化为让两组只在一次边界处切换，并把组内异或控制在 $2^k$ 以下。",
+      "key_observations": [
+        "令 $k$ 为 $n-1$ 的最高位，$0$ 到 $n-1$ 中既有第 $k$ 位为 $0$ 的数，也有第 $k$ 位为 $1$ 的数，因此任意排列都存在跨组相邻对，代价至少为 $2^k$。",
+        "按最高位把数分成两组后，先输出低组的 $2^k-1$ 到 $0$，再输出高组的 $2^k$ 到 $n-1$，组内相邻异或值都小于 $2^k$。",
+        "两组交界处为 $0$ 与 $2^k$，异或值恰为 $2^k$，所以该构造达到下界并取得最小代价。"
+      ],
+      "solution_brief": "令 $k$ 为 $n-1$ 的最高位，输出 $2^k-1,2^k-2,\u0007ldots,0,2^k,2^k+1,\u0007ldots,n-1$。任意排列代价至少为 $2^k$，该排列的所有相邻异或均不超过它，故构造最优，时间复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T07:01:06+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1632C",
+      "contest_id": 1632,
+      "title": "Strange Test",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1632/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/99442",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "binary search",
+        "bitmasks",
+        "brute force",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定正整数 $a<b$，每次可以将 $a$ 加一、将 $b$ 加一，或把 $a$ 替换为 $a|b$；这些操作可任意进行，要求使两数相等的最少操作次数。",
+      "transformed_statement": "把方案分为不使用第三操作和使用一次第三操作两类；后一类先用加法得到 $a',b'$，再令 $a=a'|b'$ 并把 $b'$ 增加到该值，从而转化为最小化 $a'+(a'|b')$。",
+      "key_observations": [
+        "第三种操作至多使用一次：它不会减小 $a$，且使用后有 $b\\le a$，此后继续增加 $b$ 即可，不再需要使用它。",
+        "完全不使用第三种操作时，只能把 $a$ 增加到 $b$，因此答案为 $b-a$。",
+        "若先通过前两种操作得到 $a',b'$，再使用第三种操作并把 $b'$ 补到 $a'\\mathbin{|}b'$，总代价可化为 $a'+(a'\\mathbin{|}b')+(1-a-b)$，所以只需最小化前两项。",
+        "固定 $a'$ 后，从高位到低位构造使 $a'\\mathbin{|}b'$ 最小的 $b'$：在首次遇到 $a'$ 为 $1$ 而原始 $b$ 为 $0$ 的位时设为 $1$ 并停止，之前各位按 $b$ 的对应位取值。"
+      ],
+      "solution_brief": "答案取不使用第三操作的 $b-a$ 与使用它的最优方案最小值。枚举 $a'\\in[a,b]$，按位贪心构造使 $a'|b'$ 最小的 $b'\\ge b$，计算 $a'+(a'|b')+1-a-b$；总复杂度为 $O(b\\log b)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T07:00:35+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1632D",
+      "contest_id": 1632,
+      "title": "New Year Concert",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1632/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/99442",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心",
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "greedy",
+        "math",
+        "number theory",
+        "two pointers"
+      ],
+      "statement_brief": "给定场景时长数组。对每个非空前缀，可以反复把任意位置改成任意正整数；若存在连续子段的 GCD 等于子段长度，观众会感到无聊。求使前缀不含这类子段所需修改的最少次数。",
+      "transformed_statement": "先把满足区间 GCD 等于区间长度的连续子段视为坏区间。一次修改可选一个位置并消灭所有经过它的坏区间，因此每个前缀的答案转化为覆盖其全部坏区间所需的最少点数。",
+      "key_observations": [
+        "固定左端点时，区间 GCD 随右端点右移不会增大，而区间长度严格增加，因此条件 $\u0000gcd\\ge\\text{长度}$ 具有单调性，可定位每个左端点最远的候选区间。",
+        "若某区间满足 $\u0000gcd=\\text{长度}$，它必是该左端点下满足 $\u0000gcd\\ge\\text{长度}$ 的最远区间；因此每个左端点至多产生一个坏区间，总数不超过 $n$。",
+        "把被选位置改成足够大的质数后，所有包含该位置的坏区间都会消失，且不会产生新坏区间，所以问题等价于用最少位置覆盖全部坏区间。",
+        "坏区间彼此不嵌套，覆盖区间的最优策略是反复选择右端点最小的区间，并在其右端点修改一个位置；这保证覆盖当前区间且不会损害后续选择。"
+      ],
+      "solution_brief": "将满足区间 GCD 等于区间长度的区间标为坏区间。利用 GCD 查询和单调性找出它们，再把修改操作转化为最少点覆盖坏区间；按右端点贪心即可得到每个前缀的答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T07:00:13+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 5,
       "problem_key": "1632E1",
@@ -39,9 +207,7 @@
       "editorial_quality": "url_only",
       "primary_topic": "图论与网络流",
       "secondary_topics": [
-        "树结构",
-        "构造与贪心",
-        "数据结构"
+        "几何"
       ],
       "original_tags": [
         "binary search",
@@ -51,7 +217,7 @@
         "shortest paths",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Distance Tree (easy version)；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵所有边权均为 $1$、根为顶点 $1$ 的树。对每个 $x=1,\u001cn\u001d$，允许临时在任意两个顶点之间添加一条权重为 $x$ 的无向边，随后按新图中的最短路计算距离，并求所有顶点到顶点 $1$ 的最大距离的最小可能值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -59,9 +225,63 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T06:59:50+00:00",
+          "quality_flags": [
+            "ambiguous_statement_definition",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1632E2",
+      "contest_id": 1632,
+      "title": "Distance Tree (hard version)",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1632/problem/E2",
+      "editorial_url": "https://codeforces.com/blog/entry/99442",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "binary search",
+        "dfs and similar",
+        "shortest paths",
+        "trees"
+      ],
+      "statement_brief": "给定一棵所有边权为 1 的树，以顶点 1 为根。对每个 $x=1,\\ldots,n$，允许临时在任意两个顶点间添加一条权值为 $x$ 的边，然后使所有顶点到顶点 1 的最大距离尽可能小，求该最小值 $f(x)$。",
+      "transformed_statement": "把问题改写为：根到各点的原深度中，超过目标上界 $A$ 的点必须通过新增边改善。最优新增边连接根与某个中点，因此只需考察这些超深点集合的最大两两距离及其减半后的代价。",
+      "key_observations": [
+        "最优新增边可以取为 $(1,u)$，因此无需枚举两个任意端点，只需决定把哪个顶点通过新边连接到根。",
+        "固定目标上界 $A$ 后，只需处理原深度大于 $A$ 的顶点；若这些顶点的最大两两距离为 $F_A$，则可行条件为所有深度已不超标，或满足 $\\\\lceil F_A/2\\\\rceil+x\\\\le A$。",
+        "$F_A$ 随 $A$ 增大单调不增，因此可以对每个 $x$ 二分最小可行的 $A$，并利用 $x$ 增大时答案不减的性质用双指针推进。",
+        "对每个顶点取最深的两个子树分支，若其深度为 $a_v\\ge b_v$，则它们形成的跨分支路径长度为 $a_v+b_v-2\\cdot depth_v$，可在阈值 $b_v-1$ 处更新；再做后缀最大值即可得到所有 $F_A$。"
+      ],
+      "solution_brief": "以 1 为根预处理深度，并用每个顶点最深的两个子树分支在线性时间构造所有阈值下的最大距离 $F_A$。固定 $x$ 后依据 $\\lceil F_A/2\\rceil+x\\le A$ 判定可行性，结合单调性求出各个 $f(x)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T06:59:32+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 7,
