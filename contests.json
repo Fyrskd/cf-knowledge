@@ -1,5 +1,16 @@
 [
   {
+    "id": 1586,
+    "name": "Codeforces Round 749 (Div. 1 + Div. 2, based on Technocup 2022 Elimination Round 1)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1634468700,
+    "relativeTimeSeconds": 156126820,
+    "date": "2021-10-17"
+  },
+  {
     "id": 1582,
     "name": "Codeforces Round 750 (Div. 2)",
     "type": "CF",
