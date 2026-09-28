@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3941,
+    "total_problems": 3948,
     "source_total_problems": 3948,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3941,
-    "with_editorial_brief": 3603,
-    "with_solution_brief": 3605,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3948,
+    "with_editorial_brief": 3610,
+    "with_solution_brief": 3612,
     "missing_editorial_brief": 336,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3003,
+    "ai_override_count": 3010,
     "primary_topic_count": 13,
-    "contest_count": 611,
+    "contest_count": 612,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1281,
+    "基础实现与模拟": 246,
+    "字符串": 211,
+    "构造与贪心": 1283,
+    "动态规划与状态设计": 323,
+    "数论与同余": 417,
+    "图论与网络流": 258,
     "组合计数与概率": 304,
     "几何": 94,
     "数据结构": 376,
-    "数论与同余": 416,
-    "动态规划与状态设计": 322,
-    "图论与网络流": 257,
-    "字符串": 210,
     "树结构": 184,
     "交互": 114,
-    "基础实现与模拟": 245,
     "博弈": 113,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2620,
+    "ai_generated_with_editorial": 2627,
     "ai_generated_partial_editorial": 92,
     "missing_editorial": 336,
     "low_confidence": 1,
@@ -121285,6 +121285,219 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "按每批约 $\\sqrt n$ 个操作分块，将本批修改过的位置标为动态点，其余作为静态点。将三元组依动态位置组成划分为八类，结合静态预处理、动态枚举和离线区间计数处理各类，达到 $O(n+m\\sqrt n)$。",
           "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1547,
+      "name": "Codeforces Round 731 (Div. 3)",
+      "date": "2021-07-10",
+      "url": "https://codeforces.com/contest/1547",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "1547A",
+          "index": "A",
+          "slot": "A",
+          "title": "Shortest Path with Obstacle",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1547/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/92715",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定无限方格网格上的起点 $A$、终点 $B$ 和一个禁止进入的格子 $F$，每一步只能移动到上下左右相邻的格子，且路径不能经过 $F$。求从 $A$ 到 $B$ 的最短步数。",
+          "transformedStatement": "先把问题转化为判断禁行格是否属于每一条曼哈顿最短路径。只有起点和终点共行或共列且禁行格严格夹在两者之间时才会受阻，此时求绕行后的距离；其他情况直接取曼哈顿距离即可。",
+          "keyObservations": [
+            "不考虑禁行格时，最短路长是两坐标差的绝对值之和；只有禁行格落在所有这类最短路线的共同必经位置时，答案才会增加。",
+            "禁行格只有在起点和终点同一行或同一列、且严格位于两者之间时，才会阻断所有最短路线，因此只需检查这两种对齐情形。",
+            "发生阻断时绕开禁行格只需多走两步，所以答案是在曼哈顿距离上增加 $2$；若禁行格不在两端之间，则最短距离不变。"
+          ],
+          "solutionBrief": "先计算起点到终点的曼哈顿距离。若两点同一行或同一列，且禁行格与它们共线并严格处于两点之间，则将距离加 $2$；否则答案就是原距离。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1547B",
+          "index": "B",
+          "slot": "B",
+          "title": "Alphabetical Strings",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1547/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/92715",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定一个仅含小写字母、长度不超过 26 的字符串。构造时必须从 `a` 开始，依次加入后续字母，每次只能把当前字母加到已构造字符串的左端或右端；判断给定字符串能否由此得到。",
+          "transformedStatement": "把 `a` 所在位置作为初始区间，按字母顺序检查后续字符是否恰好位于当前区间的左邻位或右邻位。整个判定因此转化为连续扩展字符串区间的问题。",
+          "keyObservations": [
+            "构造过程从字母 `a` 开始，之后每次只能把下一个字母加到当前字符串的左端或右端，因此已构造部分始终是原串中的一个连续区间。",
+            "若当前已匹配区间是 $[L,R]$，下一个字母必须位于 $L-1$ 或 $R+1$；检查这一条件即可逐步验证构造过程，而不必枚举左右添加方案。",
+            "每个字母只会在构造时加入一次，所以从 `a` 开始依次检查到字符串长度对应的字母，若每次都能扩展区间，原串就符合规则。"
+          ],
+          "solutionBrief": "找到 `a` 在字符串中的位置，将左右指针都设为该位置。依次检查后续字母：若它紧邻当前区间左侧或右侧，就相应扩展区间；若不存在或不在两端相邻位置，则输出 NO。全部检查通过则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1547C",
+          "index": "C",
+          "slot": "C",
+          "title": "Pair Programming",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1547/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/92715",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "文件开始时有 $k$ 行，两人各自按给定顺序执行操作：操作值为 $0$ 表示在末尾追加一行，正数表示修改对应行。需要交错合并两人的操作、保持各自内部顺序，并保证每次修改的行已经存在；求一个合法合并序列，若不存在则报告无解。",
+          "transformedStatement": "把问题看作从当前文件长度出发，依次消费两条操作序列：追加操作会增加可修改的行数，修改操作则必须满足目标行号不超过当前长度。每一步只需判断两人的当前操作中是否存在可执行者，并据此推进对应序列。",
+          "keyObservations": [
+            "追加一行只会增加当前文件长度，不会让此前合法的操作前缀失效，因此轮到谁的操作是 0，就可以立即执行并增加文件长度。",
+            "修改操作只要求目标行已经存在；若两人的当前操作中有合法修改，就先执行它，不会妨碍另一人的后续操作，因为文件长度不会减少。",
+            "若两人的当前修改目标都超过当前文件长度，那么在遵守各自操作顺序的前提下，下一步无论选谁都会非法，因此不存在合法合并序列。"
+          ],
+          "solutionBrief": "用两个指针分别指向两人的下一项操作，并维护当前文件行数。优先执行当前可做的追加或修改；若双方当前修改都指向尚不存在的行，则判定无解。两组操作都处理完后输出构造序列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1547D",
+          "index": "D",
+          "slot": "D",
+          "title": "Co-growing Sequence",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1547/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/92715",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定非负整数序列 $x$，需要构造同长度的非负整数序列 $y$，使相邻项 $x_i\\oplus y_i$ 的所有 $1$ 位都包含在 $x_{i+1}\\oplus y_{i+1}$ 的 $1$ 位中。要求输出满足条件且按字典序最小的 $y$。",
+          "transformedStatement": "把 $x_i\\oplus y_i$ 看作需要逐项扩展的位集合。已知前一项的位集合后，当前 $y_i$ 只需在前一项为 $1$ 的位置上配合 $x_i$ 补足缺失位，其余位置取零以实现当前项最小化。",
+          "keyObservations": [
+            "逐项按字典序最小化即可：前面的 $y$ 已固定后，当前 $y_i$ 的选择只需满足与前一项的增长约束，因此可以独立取最小。",
+            "令 $t=x_{i-1}\\oplus y_{i-1}$，只有 $t$ 中为 $1$ 的位会约束 $x_i\\oplus y_i$；在这些位上，若 $x_i$ 为 $0$ 就必须令 $y_i$ 为 $1$，若 $x_i$ 为 $1$ 就令 $y_i$ 为 $0$。",
+            "所有未受约束的位都可以在 $y_i$ 中取 $0$，所以逐位规则给出的数就是当前最小可行值，统一写成 $y_i=(t\\,|\\,x_i)\\oplus x_i$。"
+          ],
+          "solutionBrief": "令 $y_1=0$。对每个 $i\\ge2$，取 $t=x_{i-1}\\oplus y_{i-1}$，并设 $y_i=(t\\,|\\,x_i)\\oplus x_i$，强制补齐前一项要求的位，同时把无约束位置零，从而得到字典序最小的序列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1547E",
+          "index": "E",
+          "slot": "E",
+          "title": "Air Conditioners",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1547/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/92715",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "implementation",
+            "shortest paths",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "一条长度为 $n$ 的线段上有若干空调，每台位于不同格子并设定温度 $t_j$。格子 $i$ 的温度是所有空调的设定温度加上到该格距离后的最小值，要求输出每个格子的温度。",
+          "transformedStatement": "把每台空调对左右格子的影响视为每远离一格温度增加 $1$ 的传播过程。分别计算来自左侧和右侧的最低传播温度，再逐格取两者较小值，即可覆盖所有空调来源。",
+          "keyObservations": [
+            "从左侧传来的影响到相邻格只会增加 $1$，因此当前位置的左侧最小温度可由前一格的结果加 $1$，再与当前位置空调温度取较小值得到。",
+            "从右侧传播具有对称性，反向扫描即可得到右侧空调对每格的最小贡献。",
+            "任意空调到某格的路径都来自其左侧或右侧，因此左右两种贡献的较小值恰好是所有空调影响的全局最小值。"
+          ],
+          "solutionBrief": "将无空调的位置视为温度无穷大，分别从左到右、从右到左扫描；每步把前一格的影响加 $1$，并与当前位置空调温度取最小值。每格答案取两次扫描结果的较小值，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1547F",
+          "index": "F",
+          "slot": "F",
+          "title": "Array Stabilization (GCD version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1547/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/92715",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的正整数循环数组。每一步同时用当前位置与右侧相邻位置（末尾的右侧是开头）的 GCD 替换每个元素；求经过最少多少步后数组所有元素相等，若初始时已相等则答案为 $0$。",
+          "transformedStatement": "第 $k$ 步的每个值对应原数组中一个长度为 $k+1$ 的循环连续段的 GCD。因而寻找最早的全相等时刻，可转为寻找原数组中 GCD 大于 $1$ 的最长循环连续段；整体 GCD 只决定最终相等的数值，不影响步数。",
+          "keyObservations": [
+            "经过 $k$ 步后，位置 $j$ 的值等于原数组中从 $j$ 开始、长度为 $k+1$ 的循环连续段的 GCD；相邻段合并时，GCD 的幂等性使这一关系成立。",
+            "所有元素最终都变为原数组整体 GCD。将元素除以整体 GCD 后，稳定条件等价于每个长度为 $k+1$ 的循环连续段都不是全由某个质因子整除。",
+            "一个连续段的 GCD 大于 $1$，等价于段内所有元素共享至少一个质因子；因此答案可转化为循环数组中共享质因子的最长连续段长度。",
+            "同一质因子对应的连续段若逐个位置重复扩展会被多次处理；处理完一个段后从相关数的质因子集合中移除该质因子，便可避免重复扫描。"
+          ],
+          "solutionBrief": "先求数组整体 GCD，并将所有元素除以它。答案等于循环数组中 GCD 大于 $1$ 的最长连续段长度；可分解各元素质因子，按质因子扩展连续段并更新答案，处理后移除该质因子以避免重复扫描。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1547G",
+          "index": "G",
+          "slot": "G",
+          "title": "How Many Paths?",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1547/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/92715",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一个允许有自环的有向图，以顶点 $1$ 为起点，路径是连续的有向边序列，空序列也算从顶点到自身的一条路径。对每个顶点输出从 $1$ 到它的路径数类别：不可达、恰好一条、有限且至少两条，或无限多条。",
+          "transformedStatement": "不直接计算每个点的路径总数，而是通过从 $1$ 出发的 DFS 分类交叉边：指向灰色点的边标出环所致的无限路径来源，指向黑色点的边标出多路径来源，再将两种影响分别传递到后继点并优先判定无限情况。",
+          "keyObservations": [
+            "DFS 遇到指向灰色顶点的边时发现了可达有向环；从环上顶点继续可达的所有点都有无限条路径，因此只需标记并向外传播。",
+            "DFS 遇到指向黑色顶点的边时，目标点存在另一条到达路径的可能；从这类顶点继续可达的点至少有两条路径，最后要排除已标为无限路径的点。",
+            "一次从顶点 $1$ 开始的 DFS 已能区分不可达点；将灰边、黑边对应的影响分别传播后，有限路径数量只需归为恰好一条或至少两条，无须逐条计数。"
+          ],
+          "solutionBrief": "从顶点 $1$ 做 DFS，记录搜索边指向灰色顶点和黑色顶点的目标。分别从两类目标继续遍历：灰色类可达点答案为 $-1$，黑色类可达点若未被前者覆盖则答案为 $2$；其余已访问点为 $1$，未访问点为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
