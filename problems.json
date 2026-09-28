@@ -142606,5 +142606,71 @@
     "tags": [
       "math"
     ]
+  },
+  {
+    "contestId": 1563,
+    "index": "A",
+    "name": "Charmed by the Game",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "rating": 1300,
+    "tags": [
+      "math"
+    ]
+  },
+  {
+    "contestId": 1563,
+    "index": "B",
+    "name": "Up the Strip",
+    "type": "PROGRAMMING",
+    "points": 1250.0,
+    "rating": 1900,
+    "tags": [
+      "dp"
+    ]
+  },
+  {
+    "contestId": 1563,
+    "index": "C",
+    "name": "Bottom-Tier Reversals",
+    "type": "PROGRAMMING",
+    "points": 1500.0,
+    "rating": 2000,
+    "tags": [
+      "constructive algorithms"
+    ]
+  },
+  {
+    "contestId": 1563,
+    "index": "D",
+    "name": "Top-Notch Insertions",
+    "type": "PROGRAMMING",
+    "points": 2000.0,
+    "rating": 2600,
+    "tags": [
+      "combinatorics"
+    ]
+  },
+  {
+    "contestId": 1563,
+    "index": "E",
+    "name": "Down Below",
+    "type": "PROGRAMMING",
+    "points": 3000.0,
+    "rating": 3000,
+    "tags": [
+      "graphs"
+    ]
+  },
+  {
+    "contestId": 1563,
+    "index": "F",
+    "name": "Strange Sort",
+    "type": "PROGRAMMING",
+    "points": 3500.0,
+    "rating": 3300,
+    "tags": [
+      "sortings"
+    ]
   }
 ]
