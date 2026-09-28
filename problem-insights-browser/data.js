@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3562,
+    "total_problems": 3568,
     "source_total_problems": 3570,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3562,
-    "with_editorial_brief": 3263,
-    "with_solution_brief": 3265,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3568,
+    "with_editorial_brief": 3269,
+    "with_solution_brief": 3271,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2624,
+    "ai_override_count": 2630,
     "primary_topic_count": 13,
-    "contest_count": 550,
+    "contest_count": 551,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "几何": 87,
+    "构造与贪心": 1161,
+    "组合计数与概率": 269,
+    "数论与同余": 371,
     "基础实现与模拟": 223,
-    "构造与贪心": 1158,
-    "组合计数与概率": 268,
     "字符串": 187,
-    "几何": 86,
     "动态规划与状态设计": 292,
     "代数、矩阵与多项式": 25,
     "图论与网络流": 231,
     "交互": 104,
     "数据结构": 338,
     "树结构": 173,
-    "博弈": 107,
-    "数论与同余": 370
+    "博弈": 107
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2299,
+    "ai_generated_with_editorial": 2305,
     "ai_generated_partial_editorial": 73,
     "missing_editorial": 297,
     "low_confidence": 1,
@@ -109916,6 +109916,188 @@ window.CF_INSIGHTS_DATA = {
             "若左子树中已有节点被复制，当前节点必须复制；只有左子树未触发复制且当前节点有利时才主动复制，并将右子树的新代价重置为 $1$。"
           ],
           "solutionBrief": "先通过中序 DFS 得到初始字符串及每个节点之后的首个不同字符，标记复制后会变小的节点。再按中序处理，维护复制当前节点的实际代价：左子树触发复制则被迫复制当前点，否则在节点有利且预算足够时复制；复制后以代价 $1$ 进入右子树。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1622,
+      "name": "Educational Codeforces Round 120 (Rated for Div. 2)",
+      "date": "2021-12-27",
+      "url": "https://codeforces.com/contest/1622",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1622A",
+          "index": "A",
+          "slot": "A",
+          "title": "Construct a Rectangle",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1622/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/98453",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "geometry",
+            "math"
+          ],
+          "statementBrief": "给定三根整数长度的木棍，必须恰好选择一根拆成两段正整数长度的木棍，随后用四根木棍组成矩形（正方形也算）。判断是否存在一种拆分方式使其能够组成矩形。",
+          "transformedStatement": "将组成矩形等价转化为四根木棍恰好形成两对相等长度。枚举被拆木棍后，剩余两根相等时需要等长拆分；剩余两根不等时需要拆出这两个长度。",
+          "keyObservations": [
+            "四根木棍能组成矩形，当且仅当长度可以分成两组相等的两根；因此不需要考虑摆放顺序，只需判断长度配对。",
+            "若不被拆的两根长度相等，则被拆木棍必须拆成两段相等，且其长度必须为偶数，这样得到第二组相等木棍。",
+            "若不被拆的两根长度不同，则拆出的两段只能分别等于它们，因此待拆木棍长度必须等于另外两根长度之和。",
+            "对三根木棍分别作为待拆木棍检查上述条件即可，每组数据只需进行常数次判断。"
+          ],
+          "solutionBrief": "枚举被拆的木棍。其余两根相等时，检查被拆木棍是否为偶数；其余两根不等时，检查被拆木棍是否等于两者之和，满足任一情况即可输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1622B",
+          "index": "B",
+          "slot": "B",
+          "title": "Berland Music",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1622/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/98453",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个排列 $p$ 表示 $n$ 首歌的原评分，以及由 0/1 表示不喜欢或喜欢的字符串。重新排列评分得到排列 $q$，要求每首不喜欢歌曲的评分都低于每首喜欢歌曲的评分，并最小化 $\\sum_i|p_i-q_i|$。",
+          "transformedStatement": "先按投票将位置划分为两组：不喜欢组固定使用最小的 $k$ 个评分，喜欢组使用其余评分；问题转化为在每组内部把原评分匹配到连续目标排名，使绝对差之和最小。",
+          "keyObservations": [
+            "设 $k$ 为不喜欢歌曲数量；有效排列中所有不喜欢歌曲必须占据评分 $1..k$，喜欢歌曲占据 $k+1..n$，因此两类位置可分开处理。",
+            "对同一类别的原评分排序后依次分配连续新评分，可使绝对差总和最小；若分配中存在逆序，交换相邻逆序不会增加代价。",
+            "分别按 $(s_i,p_i,i)$ 的类别和原评分排序，再将对应连续排名写回原位置，即可同时满足分组限制与最小代价。"
+          ],
+          "solutionBrief": "令 $k$ 为 0 的数量，给所有不喜欢歌曲分配 $1..k$，给喜欢歌曲分配 $k+1..n$。两组内分别按 $p_i$ 升序排列，并按顺序写入对应评分；总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1622C",
+          "index": "C",
+          "slot": "C",
+          "title": "Set or Decrease",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1622/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/98453",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定整数数组，每步可以把某个元素减去 $1$，或把某个元素改成另一个元素当前的值；允许元素变为负数。求使数组总和不超过 $k$ 所需的最少操作次数。",
+          "transformedStatement": "将方案重排为：先只减少排序后的最小元素，再把若干个最大元素赋成这个新最小值。若赋值 $y$ 个元素、最小值减少 $x$，则只需检查最终总和 $(a_1-x)(y+1)+P(n-y)-a_1$ 是否不超过 $k$。",
+          "keyObservations": [
+            "把所有减法操作集中到当前最小元素上不会变差；若原本分散减少多个元素，可将减少量合并到更小者，并把相关赋值目标同步替换。",
+            "所有减法应先于赋值操作执行，且赋值时应把最大的若干元素改成减少后的最小值，因此只需枚举被赋值的元素个数。",
+            "排序后若赋值 $y$ 个最大元素、把最小值减少 $x$，最终总和为 $(a_1-x)(y+1)+P(n-y)-a_1$，前缀和即可快速计算。",
+            "固定 $y$ 后，满足总和不超过 $k$ 所需的最小减少量可由不等式直接求出，再在 $0\\le y<n$ 中取操作数 $x+y$ 的最小值。"
+          ],
+          "solutionBrief": "排序并预处理前缀和。枚举把多少个最大元素赋成修改后的最小值，按总和不超过 $k$ 的不等式求最小减法次数 $x$，取所有 $x+y$ 的最小值；初始总和已达标时答案为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1622D",
+          "index": "D",
+          "slot": "D",
+          "title": "Shuffle",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1622/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/98453",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个二进制串，至多一次选择一个恰好含 $k$ 个 $1$ 的连续子串，并任意打乱其中字符。要求统计包括不操作在内，所有不同结果串的数量，答案对 $998244353$ 取模。",
+          "transformedStatement": "不直接枚举被打乱的子串，而是枚举结果中第一个和最后一个发生变化的位置。固定这两个边界后，端点字符必须翻转，区间内部剩余字符的排列数量可用组合数计算。",
+          "keyObservations": [
+            "任意非原串结果都唯一对应于首个和末个被改变的位置 $i<j$，因此按这两个边界计数不会重复。",
+            "位置 $i,j$ 能被同一个可重排子串覆盖，当且仅当全串至少有 $k$ 个 $1$，且区间 $[i,j]$ 内的 $1$ 不超过 $k$。",
+            "固定两端必须变成相反字符后，区间剩余位置只需排列剩余的 $0$ 和 $1$；若数量为 $c'_0,c'_1$，方案数为 $\\binom{c'_0+c'_1}{c'_0}$。"
+          ],
+          "solutionBrief": "枚举首个、末个改变的位置 $i<j$，检查区间能否被包含在含恰好 $k$ 个 $1$ 的子串中。统计区间内 $0/1$ 数量，固定两端为翻转后的字符，剩余位置贡献组合数 $\\binom{c'_0+c'_1}{c'_0}$；累加所有边界并加上原串，复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1622E",
+          "index": "E",
+          "slot": "E",
+          "title": "Math Test",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1622/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/98453",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 名学生参加包含 $m$ 道题的考试，第 $j$ 题的分值是排列 $p$ 中的一个数，答对该题的学生获得对应分值。已知每名学生预期得分 $x_i$ 及其答题正误，要求安排题目分值，使所有学生实际得分与预期得分之差绝对值之和最大。",
+          "transformedStatement": "把每个学生的绝对值贡献改写为两种符号中的一种，并枚举所有符号组合；固定组合后，题目分值分配变成按题目线性系数排序、最大化乘积和的问题。",
+          "keyObservations": [
+            "每个绝对值都可看成在两种符号中取较大者，因此枚举所有学生的符号选择，就能把原目标转为带符号的线性表达式。",
+            "固定符号后，第 $j$ 道题的分值只通过系数 $val_j$ 影响总和；与 $x_i$ 相关的部分成为常数，问题降为最大化各题分值与 $val_j$ 的乘积和。",
+            "若 $val_i>val_j$ 却分配了 $p_i<p_j$，交换两题分值会增加目标值，因此应按 $val$ 升序给题目分配 $1$ 到 $m$。",
+            "某组符号在所得排列下可能与实际绝对值方向不一致，但无需单独校验；对每个排列，绝对值恰好对应某组符号，枚举全部符号后仍能取得全局最优值。"
+          ],
+          "solutionBrief": "枚举 $2^n$ 种学生得分符号。对每种符号计算每道题的系数 $val_j$，按系数升序将分值 $1 ext{ 到 }m$ 分配给题目，并保留带符号目标值最大的排列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1622F",
+          "index": "F",
+          "slot": "F",
+          "title": "Quadratic Set",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1622/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/98453",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "hashing",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定集合 $\\{1,2,\\dots,n\\}$，选择其中尽可能多的数，使所选元素阶乘的乘积是某个整数的平方；输出任意一个最大规模的选择结果。",
+          "transformedStatement": "把每个 $i!$ 转化为质因数指数的奇偶向量，题目就变成删除尽可能少的向量，使剩余向量异或为零；用随机哈希压缩并快速匹配一项或两项删除。",
+          "keyObservations": [
+            "将每个阶乘分解后的质因数奇偶性表示为向量；所有向量异或为零，恰好等价于阶乘乘积为完全平方数，因此可用随机 64 位质数哈希近似表示该向量。",
+            "当 $n=2k$ 时，全部阶乘的乘积可化为平方乘以 $2^k k!$；据 $k$ 的奇偶性删除 $k!$，或同时删除 $2!$ 与 $k!$，即可分别得到规模至少为 $n-1$ 或 $n-2$ 的构造。",
+            "奇数 $n$ 至少可由 $n-1$ 的解再删除 $n!$ 得到规模少一的解；在必要的 $n\\equiv3\\pmod4$ 情况下，删除 $2!$、$((n-1)/2)!$ 和 $n!$ 可保证剩余乘积为平方。",
+            "先计算所有 $H(i!)$ 并记录反向映射：总哈希为零时不删元素；否则分别查找一个或两个阶乘哈希抵消总哈希，若都不存在则使用三元素删除构造，从而验证答案规模 $n,n-1,n-2,n-3$。"
+          ],
+          "solutionBrief": "用随机质数哈希表示质因数奇偶性，递推计算所有 $H(i!)$ 及总哈希。依次检查删除 $0$、$1$、$2$ 个阶乘能否使哈希归零；若不能，则按奇数情形给出的三元素构造删除，得到最大规模解。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
