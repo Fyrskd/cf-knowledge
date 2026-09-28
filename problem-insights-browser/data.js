@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 335,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2972,
+    "ai_override_count": 2980,
     "primary_topic_count": 13,
     "contest_count": 607,
     "rating_min": 800,
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "动态规划与状态设计": 321,
-    "构造与贪心": 1269,
-    "图论与网络流": 257,
+    "构造与贪心": 1270,
+    "字符串": 209,
     "组合计数与概率": 300,
+    "动态规划与状态设计": 320,
     "数论与同余": 415,
-    "字符串": 208,
+    "图论与网络流": 256,
     "数据结构": 374,
     "树结构": 184,
     "交互": 114,
@@ -120427,14 +120427,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1544/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/92951",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "交互"
-          ],
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
           "originalTags": [
             "math"
           ],
-          "statementBrief": "题面已抓取：Binary Decimal；本地暂无可用题解正文。",
+          "statementBrief": "给定正整数 $n$，可以把它表示为若干个正整数之和，每个加数的十进制表示只能包含数字 $0$ 和 $1$，且加数可以重复。要求输出所需加数的最小数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -120450,14 +120448,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1544/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/92951",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "图论与网络流"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms"
           ],
-          "statementBrief": "题面已抓取：Putting Plates；本地暂无可用题解正文。",
+          "statementBrief": "给定一个由 $h\\times w$ 个格子组成的矩形，只能在最上、最下、最左或最右一圈的格子放盘子。任意两个盘子不能位于共边或共角的格子中；要求输出一种合法摆放，使盘子数量最多。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -120473,15 +120468,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1544/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/92951",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "几何"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Pursuit；本地暂无可用题解正文。",
+          "statementBrief": "已完成的每个阶段，你和 Ilya 各有 0 到 100 分；总成绩只累加已完成阶段中最高的 $k-\\lfloor k/4\\rfloor$ 个分数。还可以进行若干新阶段，求最少需要增加多少阶段，才能通过理论上可能的得分安排使你的总成绩达到或超过 Ilya。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -120496,18 +120488,17 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1600,
           "problemUrl": "https://codeforces.com/contest/1544/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/92951",
-          "primaryTopic": "图论与网络流",
+          "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "构造与贪心",
-            "动态规划与状态设计",
-            "交互"
+            "图论与网络流",
+            "数论与同余"
           ],
           "originalTags": [
             "graphs",
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Secret Santa；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 名员工，每人希望给指定的一名员工送礼。需要为每人指定一名收礼者，使所有收礼者互不相同且任何人都不能送给自己；求一种有效分配，使满足心愿的员工人数最多。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -120522,12 +120513,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2100,
           "problemUrl": "https://codeforces.com/contest/1544/problem/E",
           "editorialUrl": "https://codeforces.com/blog/entry/92951",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "字符串",
-            "数论与同余",
-            "动态规划与状态设计"
-          ],
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "expression parsing",
@@ -120536,7 +120523,7 @@ window.CF_INSIGHTS_DATA = {
             "sortings",
             "strings"
           ],
-          "statementBrief": "题面已抓取：Minimax；本地暂无可用题解正文。",
+          "statementBrief": "给定一个由小写字母组成的字符串，可以任意重排字符，但每种字符的出现次数必须保持不变。要求先使所得字符串的前缀函数最大值尽可能小，再在满足该最优值的字符串中选字典序最小者。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -120552,17 +120539,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1544/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/92951",
           "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "构造与贪心",
-            "数论与同余"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "bitmasks",
             "brute force",
             "probabilities"
           ],
-          "statementBrief": "题面已抓取：Bingo；本地暂无可用题解正文。",
+          "statementBrief": "给定一个 $n\\times n$ 表格，每个格子对应一个相互独立、发生概率为 $a_{i,j}\\cdot10^{-4}$ 的事件。若至少有一整行、一整列、主对角线或副对角线上的事件全部发生，则称表格获胜；要求计算获胜概率并对 $31607$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -120578,15 +120561,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1544/problem/G",
           "editorialUrl": "https://codeforces.com/blog/entry/92951",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "字符串",
-            "动态规划与状态设计",
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms"
           ],
-          "statementBrief": "题面已抓取：What a Reversal；本地暂无可用题解正文。",
+          "statementBrief": "给定两个等长的 01 字符串和整数 $k$。每步可选择当前字符串中恰好含 $k$ 个 1 的一个连续子串并将其反转；要求在不超过 $4n$ 步内使两个字符串相同，或判断无法做到。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -120602,14 +120581,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1544/problem/H",
           "editorialUrl": "https://codeforces.com/blog/entry/92951",
           "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "图论与网络流"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "dp"
           ],
-          "statementBrief": "题面已抓取：Turing's Award；本地暂无可用题解正文。",
+          "statementBrief": "给定一个排列，Alan 从无限数轴的 0 号格开始，依次写入排列元素：第一个数写在 0 号格，此后每步可留在原格或向左、向右移动一格，再将当前数写入所在格；若格子已有数则覆盖。全部写完后按格子从左到右读取未空格中的数，要求最大化所得序列的最长递增子序列长度。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

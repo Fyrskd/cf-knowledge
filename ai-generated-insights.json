@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T20:35:07+00:00",
+  "updated_at": "2026-09-28T20:41:46+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -89015,6 +89015,212 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的有趣数定义及 editorial_text 的完整推导；tags 仅作主题参考。",
         "quality_flags": []
+      }
+    },
+    "1544H": {
+      "problem_key": "1544H",
+      "title": "Turing's Award",
+      "rating": 3400,
+      "problem_url": "https://codeforces.com/contest/1544/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/92951",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "f9d0090b01dd9fab3a3e650be39b93724f88f03ef507c7c4924106aa307e5d4f",
+      "generated_at": "2026-09-28T20:40:24+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个排列，Alan 从无限数轴的 0 号格开始，依次写入排列元素：第一个数写在 0 号格，此后每步可留在原格或向左、向右移动一格，再将当前数写入所在格；若格子已有数则覆盖。全部写完后按格子从左到右读取未空格中的数，要求最大化所得序列的最长递增子序列长度。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_url 仅提供链接，editorial_text 为空，tags 仅用于主题索引。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1544G": {
+      "problem_key": "1544G",
+      "title": "What a Reversal",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1544/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/92951",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "1651b85e16974698d13ecd2fc3ec9ea5f0732eff4ee2b37fcae876221e72c447",
+      "generated_at": "2026-09-28T20:40:41+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个等长的 01 字符串和整数 $k$。每步可选择当前字符串中恰好含 $k$ 个 1 的一个连续子串并将其反转；要求在不超过 $4n$ 步内使两个字符串相同，或判断无法做到。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；题解链接仅提供 URL，未提供 editorial 正文；主题参考 tags。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1544F": {
+      "problem_key": "1544F",
+      "title": "Bingo",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1544/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/92951",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "1ffa5ae822f6c74b162e9bd99b8c977fbc8798796f7a413051f79c5ae8db8654",
+      "generated_at": "2026-09-28T20:40:49+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times n$ 表格，每个格子对应一个相互独立、发生概率为 $a_{i,j}\\cdot10^{-4}$ 的事件。若至少有一整行、一整列、主对角线或副对角线上的事件全部发生，则称表格获胜；要求计算获胜概率并对 $31607$ 取模。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement；editorial 仅提供链接，未提供题解正文。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "1544E": {
+      "problem_key": "1544E",
+      "title": "Minimax",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1544/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/92951",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "b3903d81687fef480d3fee11910d909d3b599d1b2e008468169bac89ef460f76",
+      "generated_at": "2026-09-28T20:40:56+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由小写字母组成的字符串，可以任意重排字符，但每种字符的出现次数必须保持不变。要求先使所得字符串的前缀函数最大值尽可能小，再在满足该最优值的字符串中选字典序最小者。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "字符串",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_url 仅提供链接且 editorial_text 为空，tags 仅用于辅助分类。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "1544D": {
+      "problem_key": "1544D",
+      "title": "Secret Santa",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1544/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/92951",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "60afad0a604271db58c5da1e2b7652aaa1e303fdf6a1623959e56624a662239d",
+      "generated_at": "2026-09-28T20:41:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 名员工，每人希望给指定的一名员工送礼。需要为每人指定一名收礼者，使所有收礼者互不相同且任何人都不能送给自己；求一种有效分配，使满足心愿的员工人数最多。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "图论与网络流",
+          "数论与同余"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意与约束依据 statement_text；editorial_text 为空，分类参考 tags。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1544C": {
+      "problem_key": "1544C",
+      "title": "Pursuit",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1544/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/92951",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "5e9baf6675e404d05e443d7befa4f1210ea7f68de4878756dd6054e073fb851c",
+      "generated_at": "2026-09-28T20:41:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "已完成的每个阶段，你和 Ilya 各有 0 到 100 分；总成绩只累加已完成阶段中最高的 $k-\\lfloor k/4\\rfloor$ 个分数。还可以进行若干新阶段，求最少需要增加多少阶段，才能通过理论上可能的得分安排使你的总成绩达到或超过 Ilya。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_text 为空，tags 仅作元数据参考，未据此补写算法。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "1544B": {
+      "problem_key": "1544B",
+      "title": "Putting Plates",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1544/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/92951",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "cc97fee6293d556271a30590d2598973ae100c695e2b2e94238480c08c85e9b3",
+      "generated_at": "2026-09-28T20:41:39+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由 $h\\times w$ 个格子组成的矩形，只能在最上、最下、最左或最右一圈的格子放盘子。任意两个盘子不能位于共边或共角的格子中；要求输出一种合法摆放，使盘子数量最多。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_text 为空，标签仅用于主题分类。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "1544A": {
+      "problem_key": "1544A",
+      "title": "Binary Decimal",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1544/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/92951",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "56ef913512d328049c14aaa5f2bbcfbf8e834604f21b20fd48f4e898975bf1aa",
+      "generated_at": "2026-09-28T20:41:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数 $n$，可以把它表示为若干个正整数之和，每个加数的十进制表示只能包含数字 $0$ 和 $1$，且加数可以重复。要求输出所需加数的最小数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；题解正文为空，未从 URL 或标签补充算法。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
       }
     }
   }
