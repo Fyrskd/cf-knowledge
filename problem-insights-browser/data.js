@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3845,
+    "total_problems": 3852,
     "source_total_problems": 3854,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3845,
-    "with_editorial_brief": 3522,
-    "with_solution_brief": 3524,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3852,
+    "with_editorial_brief": 3529,
+    "with_solution_brief": 3531,
     "missing_editorial_brief": 321,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2907,
+    "ai_override_count": 2914,
     "primary_topic_count": 13,
-    "contest_count": 596,
+    "contest_count": 597,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 407,
+    "基础实现与模拟": 244,
+    "数论与同余": 408,
+    "字符串": 202,
+    "构造与贪心": 1247,
     "动态规划与状态设计": 316,
-    "构造与贪心": 1245,
     "组合计数与概率": 294,
     "图论与网络流": 251,
-    "基础实现与模拟": 242,
     "数据结构": 368,
     "交互": 112,
-    "字符串": 200,
     "树结构": 183,
     "几何": 90,
     "博弈": 112,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2551,
     "missing_editorial": 321,
-    "ai_generated_with_editorial": 2544,
     "ai_generated_partial_editorial": 87,
     "low_confidence": 1,
     "manual_override": 891,
@@ -118430,6 +118430,212 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1560,
+      "name": "Codeforces Round 739 (Div. 3)",
+      "date": "2021-08-18",
+      "url": "https://codeforces.com/contest/1560",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "1560A",
+          "index": "A",
+          "slot": "A",
+          "title": "Dislike of Threes",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1560/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/94009",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定正整数序列：按递增顺序保留所有既不能被 $3$ 整除、个位又不是 $3$ 的数。对每个测试用例，输出该序列的第 $k$ 个元素。",
+          "transformedStatement": "将问题看成对正整数流进行过滤：依次判断每个数是否满足两个条件，并把通过过滤的数编号；目标是找到编号为 $k$ 的数。",
+          "keyObservations": [
+            "序列中的元素正好是满足“不能被 $3$ 整除且个位不是 $3$”的正整数，因此只需按数值递增逐个筛选。",
+            "维护已筛出的喜欢数字个数；当计数首次达到 $k$ 时，当前整数就是第 $k$ 个元素，可以立即停止。",
+            "当 $k\\le1000$ 时，第 $1000$ 个答案为 $1666$，所以最多检查 $1666$ 个正整数，直接枚举足够高效。"
+          ],
+          "solutionBrief": "从 $1$ 开始递增枚举整数，若该数不被 $3$ 整除且个位数不是 $3$，就将计数加一；计数达到 $k$ 时输出当前数。对每个测试用例独立执行即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1560B",
+          "index": "B",
+          "slot": "B",
+          "title": "Who's Opposite?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1560/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/94009",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "偶数名编号为 $1$ 到 $n$ 的人等间距围成圆，编号按顺时针递增；已知编号为 $a$ 的人与编号为 $b$ 的人互相正对。要求找出与编号 $c$ 的人正对的编号，若不存在满足条件的圆则输出 $-1$。",
+          "transformedStatement": "把“正对”转化为编号在圆周上相差半圈：由已知对面关系直接确定圆周人数 $n$，再在编号范围内寻找与 $c$ 相差 $n/2$ 的唯一合法编号。",
+          "keyObservations": [
+            "已知 $a$ 与 $b$ 相对时，两者标签差决定半圆间距，因此总人数唯一为 $n=2|a-b|$，不必枚举圆的大小。",
+            "只有当 $a,b,c$ 都满足 $1\\le x\\le n$ 时，三个人才能出现在该圆中；否则不存在合法圆，直接返回 $-1$。",
+            "与 $c$ 相对的人和它相差半圈，因此候选编号只有 $c+\\frac n2$ 与 $c-\\frac n2$，选择落在 $[1,n]$ 内的那个即可。"
+          ],
+          "solutionBrief": "令 $n=2|a-b|$。若 $a,b,c$ 中任一编号超过 $n$，输出 $-1$；否则检查 $c\\pm n/2$，输出落在 $[1,n]$ 内的候选编号。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1560C",
+          "index": "C",
+          "slot": "C",
+          "title": "Infinity Table",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1560/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/94009",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "无限表格从左上角的 $1$ 开始填数：每轮先在第一行最左侧空格填入数字，再沿当前单元格向下，直到左侧出现空格，随后沿这一行从右向左填到第一列。给定数字 $k$，求它所在单元格的行号和列号。",
+          "transformedStatement": "把填数过程划分为层：第 $i$ 层从第 $i$ 列向下延伸 $i$ 个位置，再沿第 $i$ 行向左延伸，层内数字连续覆盖区间 $[1+(i-1)^2,\\,i^2]$；问题转化为先定位层，再根据层内偏移判断位于竖段还是横段。",
+          "keyObservations": [
+            "第 $i$ 层包含从第 $1$ 行向下再向左填出的连续单元格，共有 $2i-1$ 个，因此其起始数字为 $x_i=1+(i-1)^2$。",
+            "对位于第 $i$ 层的数字，令层内偏移为 $m=k-x_i+1$；前 $i$ 个位置沿第 $i$ 列向下填，所以当 $m\\le i$ 时坐标为 $(m,i)$。",
+            "当 $m>i$ 时，剩余位置沿第 $i$ 行从右向左填，行号固定为 $i$，列号为 $2i-m$，从而无需逐格模拟。",
+            "由 $1+(i-1)^2\\le k<1+i^2$ 可得所在层为 $i=\\lceil\\sqrt{k}\\rceil$，也可以用整数循环避免浮点误差。"
+          ],
+          "solutionBrief": "将数字按层划分，第 $i$ 层起点为 $1+(i-1)^2$，先确定 $i=\\lceil\\sqrt{k}\\rceil$，再计算层内偏移 $m$。若 $m\\le i$，输出 $(m,i)$；否则输出 $(i,2i-m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1560D",
+          "index": "D",
+          "slot": "D",
+          "title": "Make a Power of Two",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1560/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/94009",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定一个整数，每次可以删除其中一位数字，或在数字末尾追加一位数字，操作顺序和次数不限；删除后即使产生前导零也保留。要求用最少操作把它变成一个没有前导零的 $2^k$。",
+          "transformedStatement": "枚举目标幂 $x$，把原数和目标都视为字符串：尽量保留原串中按顺序匹配目标前缀的字符，其余原字符删除，目标未匹配部分从末尾追加；于是每个目标的代价可直接由最大匹配长度计算。",
+          "keyObservations": [
+            "固定目标幂 $x$ 后，原数中保留的数字必须按顺序构成 $x$ 的前缀；双指针尽早匹配相同字符可得到最多保留位数。",
+            "若匹配了 $taken$ 位，未匹配的原位需删除、目标剩余位需追加，因此代价为 $|s_n|+|s_x|-2\\cdot taken$。",
+            "先枚举所有小于 $10^{18}$ 的 $2$ 的幂即可覆盖最优解：对至多 $9$ 位输入，答案不超过 $d+1$，而代价不超过 $d$ 的目标长度不超过 $2d$。",
+            "对每个候选幂取上述代价最小值；目标本身无前导零，因此最终结果的格式限制自动满足。"
+          ],
+          "solutionBrief": "预生成所有小于 $10^{18}$ 的 $2$ 的幂。对每个目标串与 $n$ 做双指针匹配，求其作为原串子序列前缀时的最大匹配长度 $taken$，用 $|s_n|+|s_x|-2taken$ 计算删除和追加次数，取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1560E",
+          "index": "E",
+          "slot": "E",
+          "title": "Polycarp and String Transformation",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1560/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/94009",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "implementation",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定某个未知初始串经过反复操作得到的最终串：每次先把当前串接到结果串末尾，再选择一个字母并删除当前串中该字母的所有出现，直到当前串为空。要求还原初始串和每次删除的字母顺序；若无法还原则报告无解。",
+          "transformedStatement": "把最终串看成所有删除前状态字符串的连续拼接。删除顺序由各字母在该拼接串中的最后出现位置决定，而每个字母的初始次数由其总出现次数除以存活的状态数得到。",
+          "keyObservations": [
+            "每个字母的最后一次出现位置按从前到后排列，正好对应它们被删除的先后顺序，因此可直接确定删除序列。",
+            "若某字母在第 $k$ 步被删除，设其在初始串中出现 $c_k$ 次，则它会出现在前 $k$ 个状态中，所以在最终串中出现次数必须是 $k\\cdot c_k$。",
+            "由最终串中的出现次数除以删除步数即可恢复各字母在初始串中的次数；若不能整除，则不存在合法还原。",
+            "初始串长度等于所有 $c_k$ 之和，因此它必须是最终串的对应前缀；再按删除序列模拟完整过程，可排除计数一致但过程不合法的情况。"
+          ],
+          "solutionBrief": "按字母在最终串中的最后出现位置确定删除顺序。设字母第 $k$ 步删除、在最终串出现 $d$ 次，则初始出现次数为 $d/k$；全部整除后取总次数对应的前缀，并模拟删除过程验证，否则输出无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1560F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Nearest Beautiful Number (easy version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1560/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/94009",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "greedy"
+          ],
+          "statementBrief": "给定整数 $n$ 和 $k$，要求找出不小于 $n$ 的最小整数 $x$，使其十进制表示中出现的不同数字不超过 $k$ 个。每个测试独立处理；本题中 $k\\le 2$，且表示不能有前导零。",
+          "transformedStatement": "把问题转化为枚举允许使用的一个或两个数字集合，在固定集合下寻找与 $n$ 同长度的最小字符串：尽可能匹配前缀，并在首次无法匹配处做最小的合法增大。",
+          "keyObservations": [
+            "由于全为 $9$ 的同长度数本身只含一种数字，答案既不超过也不少于 $n$ 的位数，因此答案与 $n$ 具有相同位数。",
+            "固定允许使用的一个或两个数字后，候选答案应尽可能保留 $n$ 的前缀；在第一个无法继续匹配的位置增大数字，并把后缀全部填成允许的最小数字即可得到该集合下的最小候选。",
+            "当 $k=1$ 时，合法的同长度数只能由一个非零数字重复组成，因此只需检查 $9$ 个候选数。",
+            "当 $k=2$ 时枚举数字对 $a<b$ 及其可匹配前缀；若首个不属于该数字对的数字小于 $a$，填入 $a$，若介于 $a$ 与 $b$ 之间则填入 $b$，从而覆盖该数字对下的最优答案。"
+          ],
+          "solutionBrief": "先确定答案与 $n$ 位数相同。$k=1$ 时枚举单一数字构成的数；$k=2$ 时若 $n$ 已合法则直接输出，否则枚举数字对和可保留前缀，在首个无法匹配的位置选择最小可行增大数字，并用较小数字填充后缀，取所有候选最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1560F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Nearest Beautiful Number (hard version)",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1560/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/94009",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定整数 $n$ 和 $k$，要求找出最小的 $x\\ge n$，使得 $x$ 的十进制表示没有前导零且至多包含 $k$ 种不同数字。每组数据只需输出这个最小的 $k$-beautiful 数。",
+          "transformedStatement": "把问题转化为寻找不小于 $n$ 的同长度字典序最小数字串，并限制整串使用的数字种类不超过 $k$；先尽量保留 $n$ 的合法前缀，再在最靠右可行的位置增大数字，后缀填最小允许数字。",
+          "keyObservations": [
+            "答案与 $n$ 的位数相同：不可能超过同位数的全 $9$ 数，而该数本身是 $1$-beautiful，因此无需考虑更长位数。",
+            "最小化数值等价于按从高位到低位贪心；先保留包含不超过 $k$ 种数字的最长前缀，再处理其后的第一位。",
+            "若当前前缀已使用恰好 $k$ 种数字，下一位只能改成前缀中严格大于原数字的最小可用数字；若不存在，就必须缩短前缀并回退。",
+            "确定首个需要增大的位置后，后缀应全部填入当前允许的最小数字，从而在保持不小于 $n$ 的同时取得最小结果。"
+          ],
+          "solutionBrief": "先找出 $n$ 的最长合法前缀；若整串合法则直接输出。否则将该前缀视为数加一，后缀置零，重复此过程，直到得到合法数；该做法复杂度为 $O(m^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
