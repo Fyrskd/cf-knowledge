@@ -1,5 +1,16 @@
 [
   {
+    "id": 1665,
+    "name": "Codeforces Round 781 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1649428500,
+    "relativeTimeSeconds": 141140269,
+    "date": "2022-04-08"
+  },
+  {
     "id": 1661,
     "name": "Educational Codeforces Round 126 (Rated for Div. 2)",
     "type": "ICPC",
