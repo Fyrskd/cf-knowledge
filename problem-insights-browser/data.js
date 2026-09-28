@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3351,
+    "total_problems": 3357,
     "source_total_problems": 3360,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3351,
-    "with_editorial_brief": 3065,
-    "with_solution_brief": 3067,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3357,
+    "with_editorial_brief": 3071,
+    "with_solution_brief": 3073,
     "missing_editorial_brief": 284,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2413,
+    "ai_override_count": 2419,
     "primary_topic_count": 13,
-    "contest_count": 515,
+    "contest_count": 516,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1076,
+    "构造与贪心": 1080,
+    "图论与网络流": 216,
+    "博弈": 105,
     "动态规划与状态设计": 280,
     "组合计数与概率": 255,
     "数论与同余": 350,
     "基础实现与模拟": 210,
     "字符串": 175,
     "树结构": 164,
-    "博弈": 104,
     "交互": 101,
-    "图论与网络流": 215,
     "数据结构": 318,
     "几何": 80,
     "代数、矩阵与多项式": 23
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2111,
     "missing_editorial": 284,
-    "ai_generated_with_editorial": 2105,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
     "manual_override": 891,
@@ -103433,6 +103433,202 @@ window.CF_INSIGHTS_DATA = {
             "通过旋转网格选择合适方向，使边界与条带的连接条件成立；最后检查并局部补桥，同时避免修补产生对角接触导致的错误分割。"
           ],
           "solutionBrief": "先检查外边界是否含交替的 $BWBW$ 子序列，存在则无解。否则旋转到合适方向，按两行条带和侧边连接列构造，再针对边界孤点、条带断开等情况局部翻色修复，得到两色均连通的网格。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1659,
+      "name": "Codeforces Round 782 (Div. 2)",
+      "date": "2022-04-17",
+      "url": "https://codeforces.com/contest/1659",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1659A",
+          "index": "A",
+          "slot": "A",
+          "title": "Red Versus Blue",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1659/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100938",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的比赛序列，其中 R 出现 $r$ 次、B 出现 $b$ 次且 $b<r$。需要排列这些字符，使任意一方连续获胜的最长长度尽可能小，并输出任意一个最优字符串。",
+          "transformedStatement": "把 B 作为分隔 R 的 $b$ 个隔板，问题转化为将 $r$ 个 R 分配到 $b+1$ 个区间，使最大区间大小最小；再在相邻区间之间放置 B。",
+          "keyObservations": [
+            "把 $b$ 个 B 看作分隔符，可形成 $b+1$ 个 R 区间，因此至少有一个区间包含不少于 $\\lceil r/(b+1)\\rceil$ 个 R。",
+            "令 $p=\\lfloor r/(b+1)\\rfloor$、$q=r\\bmod(b+1)$，让每个区间放 $p$ 个 R，并在恰好 $q$ 个区间多放一个 R，即可达到下界。",
+            "由于 $r>b$，有 $p\\ge1$，所以各个 B 都被 R 隔开，B 的最长连续段仅为 $1$，不会超过构造出的 R 段长度。"
+          ],
+          "solutionBrief": "将字符串划分为 $b+1$ 个 R 区间，区间之间各放一个 B。每个区间先放 $p=\\lfloor r/(b+1)\\rfloor$ 个 R，再给 $q$ 个区间各补一个 R，即可使最长连续相同字符达到最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1659B",
+          "index": "B",
+          "slot": "B",
+          "title": "Bit Flipping",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1659/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100938",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的二进制串，必须进行恰好 $k$ 次操作；每次选择一个位置，并翻转除该位置外的所有位。要求得到字典序最大的最终字符串，同时输出每个位置被选择的次数。",
+          "transformedStatement": "令 $f_i$ 表示位置 $i$ 被跳过翻转的次数，则该位实际翻转 $k-f_i$ 次，最终状态只由这个次数的奇偶性决定；问题转化为在总和为 $k$ 的条件下，从左到右尽量让各位变为 $1$。",
+          "keyObservations": [
+            "第 $i$ 位并非在选中时翻转，而是在其余操作中翻转，因此最终翻转次数是 $k-f_i$，只需关注其奇偶性。",
+            "固定 $k$ 的奇偶性后，每一位想变成 $1$ 所需的最小 $f_i$ 只可能是 $0$ 或 $1$；从左到右优先满足前面的位，能直接保证字典序最优。",
+            "前面位置用掉的选择次数越少，剩余次数越多；无法继续改善前缀后，把所有剩余选择次数放到最后一位，不会影响更早位置。",
+            "最终字符串可根据每一位的初始值以及 $(k-f_i)\\bmod 2$ 直接计算，无需逐步模拟操作。"
+          ],
+          "solutionBrief": "维护每位被选中的次数 $f_i$。按从左到右的顺序，若当前位变成 $1$ 需要额外选择一次且仍有次数，就优先使用；处理完前 $n-1$ 位后将剩余次数全部给最后一位，再依据 $(k-f_i)$ 的奇偶性构造答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1659C",
+          "index": "C",
+          "slot": "C",
+          "title": "Line Empire",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1659/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/100938",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "数轴上首都初始在 $0$，有位置递增的王国 $x_1,\\ldots,x_n$。可以将首都移动到王国位置并按距离付费，也可以让当前首都征服王国并按其与首都的距离付费；求征服全部王国的最小总费用，最后首都位置不限。",
+          "transformedStatement": "将过程划分为若干段：首都固定在某个 $x_i$ 时征服一批后续王国，再移动到新的位置。用前缀和表示各段征服距离，并利用移动距离的望远镜相消，把问题转化为枚举最终首都位置的最小化。",
+          "keyObservations": [
+            "最优方案始终按位置从左到右推进；向左移动不会减少任何后续征服距离，因此可只考虑递增的首都位置。",
+            "若首都从 $x_i$ 移到 $x_j$，移动费用为 $a(x_j-x_i)$；连续移动的距离会望远镜式相消，最终只贡献 $a x_f$。",
+            "把每段由固定首都征服的王国合并后，征服费用可写成 $b(p_n-C)$，其中 $C$ 是各段长度乘其首都位置之和。",
+            "固定最终首都为 $x_f$ 时，让首都经过 $x_1,\u001bx_2,\u001c\\ldots,x_f$ 可最大化 $C$，从而答案为枚举 $f$ 的公式并取最小值。"
+          ],
+          "solutionBrief": "设 $x_0=0$，计算前缀和 $p_i$。枚举最终首都 $x_f$，固定它时最优是依次经过所有更左的王国，费用为 $a x_f+b(p_n-p_f-(n-f-1)x_f)$，取所有 $f\\in[0,n]$ 的最小值，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1659D",
+          "index": "D",
+          "slot": "D",
+          "title": "Reverse Sort Sum",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1659/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/100938",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "implementation",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个由二进制数组 $A$ 生成的数组 $C$：对每个 $k=1,\\ldots,n$，将 $A$ 的前 $k$ 个元素升序排列得到 $B_k$，再把所有 $B_k$ 按位置求和得到 $C$。要求构造任意一个能生成给定 $C$ 的二进制数组 $A$。",
+          "transformedStatement": "把问题看成从右向左逐步撤销 $B_n,B_{n-1},\\ldots$ 的过程。当前数组末位决定原数组末位，而被撤销的 $B_n$ 只是在最后 $k$ 个位置各贡献一个 1，因此每一步转化为一次后缀减法和剩余 1 数量的更新。",
+          "keyObservations": [
+            "所有前缀排序都不会改变数组中 1 的总数，因此若 $S=\\sum c_i$，原数组中 1 的数量必为 $k=S/n$，这先确定了全局计数。",
+            "处理当前最后位置时，若原数组末位为 1，则它在每个 $B_i$ 的末位都是 1，必有 $c_n=n$；若末位为 0，则只有 $B_n$ 可能在末位产生 1，因此当 $k>0$ 时 $c_n=1$，否则为 0。",
+            "$B_n$ 中的 1 必然构成长度为 $k$ 的后缀，所以确定末位后，只需从当前 $C$ 的最后 $k$ 个位置统一减去 1，就等价于移除 $B_n$ 并递归处理前面的数组。",
+            "从右向左移除这些后缀贡献时，修改范围始终是后缀，可用一个不断变化的边界记录累计减法，避免逐项更新，从而在线性时间内恢复答案。"
+          ],
+          "solutionBrief": "先用 $S=\\sum c_i$ 求出原数组中 1 的数量 $k=S/n$。从右向左判断当前位置：值为 $n$ 时放 1，否则在 $k>0$ 时放 0；随后将当前剩余数组最后 $k$ 项减一，模拟移除 $B_n$，若放置了 1 则令 $k$ 减一。后缀减法用边界和累计偏移维护，整体为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1659E",
+          "index": "E",
+          "slot": "E",
+          "title": "AND-MEX Walk",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1659/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/100938",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "dsu",
+            "graphs"
+          ],
+          "statementBrief": "给定带非负整数权的无向连通图，允许在图中从起点走到终点且顶点可重复。按行走边权的每个非空前缀依次取按位与，再求这些结果的 MEX；对每个查询，要求从 $u$ 到 $v$ 的最小可能长度。",
+          "transformedStatement": "把每次查询转化为三种可判定情形：寻找某一位全程保持为 $1$ 的路径得到答案 $0$；寻找先沿低位和某高位均为 $1$ 的边到达偶数边端点的路径得到答案 $1$；两者都不存在时答案为 $2$。",
+          "keyObservations": [
+            "所有前缀按位与的结果按位单调递减，因此不可能同时出现 $1$ 和 $2$；若 MEX 大于 $2$，序列必须含有 $0,1,2$，矛盾，所以答案只可能是 $0,1,2$。",
+            "答案为 $0$ 当且仅当存在某个二进制位，使 $u$ 到 $v$ 能完全沿该位为 $1$ 的边行走；对每一位建连通分量即可判定。",
+            "若答案不是 $0$，先沿着第 $0$ 位为 $1$ 且某个高位为 $1$ 的边走，使当前按位与为大于 $1$ 的奇数，再经过一条偶数权边即可永久去掉第 $0$ 位，且之后不可能出现 $1$，因此答案为 $1$ 与终点 $v$ 无关。",
+            "对每个高位建立上述受限连通分量，并标记其中是否有节点连接偶数权边；若 $u$ 所在分量被标记，就能构造答案 $1$，否则根据上界答案必为 $2$。"
+          ],
+          "solutionBrief": "预处理每个二进制位上满足条件的边，用 DSU 求连通分量。查询时先检查是否存在一位让 $u,v$ 同分量以判定答案 $0$；再检查第 $0$ 位与某高位同时为 $1$ 的分量是否接有偶数边，判定答案 $1$，否则为 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1659F",
+          "index": "F",
+          "slot": "F",
+          "title": "Tree and Permutation Game",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1659/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/100938",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "树结构",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "games",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树、一个排列和令牌初始位置。Alice 每回合选择两个不等的顶点编号且令牌不在其上，交换排列中它们的位置；随后 Bob 必须把令牌移到相邻顶点。Alice 先手，目标是把排列排成升序，求最优对弈下的胜者。",
+          "transformedStatement": "将排列中 $p_i\\ne i$ 的位置压缩为标记点，先研究如何把标记点减少到两个；树直径至少为 $3$ 时可强制处理这两个点，直径为 $2$ 时则转化为星形树上的中心状态与最少交换次数奇偶性判断。",
+          "keyObservations": [
+            "把不满足 $p_i=i$ 的位置视为标记点；任意超过两个标记点时，都能通过一次交换消去一个标记点，故局面可压缩到两个标记点。",
+            "树的直径至少为 $3$ 时，Alice 能利用标记点与令牌的相对移动，把两个标记点送到直径端部的连续四点中并强制完成排序。",
+            "直径为 $2$ 时树必为星形；若中心被标记且令牌在中心，Bob 可在中心与相关叶子间往返，令游戏无限进行。",
+            "星形树的非立即结束局面中，设 $d$ 为排序所需最少交换次数、$x$ 为令牌在中心或叶子的指示量，则每回合 $d+x$ 的奇偶性不变，最终胜负由其奇偶性决定。"
+          ],
+          "solutionBrief": "先处理已排序或可一步完成的情况。直径至少为 $3$ 时 Alice 必胜；星形树中按中心是否标记、令牌位置及其是否能首步解除中心标记分类，并用排序最少交换数 $d$ 与位置量 $x$ 的奇偶性判定。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
