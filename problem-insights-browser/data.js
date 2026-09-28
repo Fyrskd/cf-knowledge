@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3990,
+    "total_problems": 3997,
     "source_total_problems": 3997,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3990,
-    "with_editorial_brief": 3645,
-    "with_solution_brief": 3647,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3997,
+    "with_editorial_brief": 3652,
+    "with_solution_brief": 3654,
     "missing_editorial_brief": 343,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3052,
+    "ai_override_count": 3059,
     "primary_topic_count": 13,
-    "contest_count": 619,
+    "contest_count": 620,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1294,
+    "构造与贪心": 1298,
+    "数论与同余": 422,
+    "字符串": 214,
     "图论与网络流": 264,
     "交互": 117,
     "动态规划与状态设计": 327,
     "树结构": 185,
     "博弈": 114,
-    "字符串": 213,
     "组合计数与概率": 310,
     "数据结构": 379,
     "代数、矩阵与多项式": 26,
     "基础实现与模拟": 247,
-    "数论与同余": 420,
     "几何": 94
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2660,
+    "ai_generated_with_editorial": 2667,
     "ai_generated_partial_editorial": 94,
     "missing_editorial": 343,
     "low_confidence": 1,
@@ -122769,6 +122769,209 @@ window.CF_INSIGHTS_DATA = {
             "不同提示点的答案可通过沿树换根维护各邻接子树的 $dp[c_i]+i$ 最大值来计算；前缀、后缀最大值排除新根方向，避免每个根重新排序或枚举所有子树对。"
           ],
           "solutionBrief": "以提示点为根，树形 DP 计算定位单个链端点的最坏查询数：子树按 DP 值降序处理，答案为各子树 DP 值加处理序号的最大值。根处合并两条链的代价，并通过换根和前后缀最大值求出所有提示点中的最大值；交互阶段按这些结构逐步确定端点，并处理 DP 中略去的端点重合等特殊情况。总复杂度为 $O(n\\log n)$，空间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1538,
+      "name": "Codeforces Round 725 (Div. 3)",
+      "date": "2021-06-10",
+      "url": "https://codeforces.com/contest/1538",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "1538A",
+          "index": "A",
+          "slot": "A",
+          "title": "Stone Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1538/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/91637",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "一排有 $n$ 块力量互不相同的石头，每次只能删除当前最左端或最右端的石头。求至少删除多少次，才能同时删除力量最小和最大的两块石头。",
+          "transformedStatement": "问题可化为比较最小值与最大值的位置所对应的四种端点删除策略：从两端分别处理目标，或从同一端连续删除直到两者都被移除；答案是这些方案所需步数的最小值。",
+          "keyObservations": [
+            "只需考虑先从左侧删到较小值、再从右侧删到较大值，或反过来这两种分侧方案；它们覆盖了两块石头分别从两端移除的情况。",
+            "若从同一端连续删除直到两块目标石头都被删掉，则只需比较从左端和从右端删除到较远目标位置的代价，因此总共只需比较四种候选方案。"
+          ],
+          "solutionBrief": "记录最小值和最大值的位置，分别计算从左侧先后删除、从右侧先后删除，以及从单侧删除至两者都被移除的四种操作数，取其中最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1538B",
+          "index": "B",
+          "slot": "B",
+          "title": "Friends and Candies",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1538/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/91637",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个朋友，第 $i$ 人有 $a_i$ 颗糖。Polycarp 可以选出 $k$ 个朋友并重新分配这 $k$ 人的糖果，使所有朋友最终糖果数相同；求能够做到这一点的最小 $k$，若无法做到则输出 $-1$。",
+          "transformedStatement": "把问题转化为确定全体最终均分值：总糖果数必须能被人数整除。均分值确定后，所有糖果数高于该值的人都必须参与，其他人可以不选，因此只需统计超额者。",
+          "keyObservations": [
+            "糖果总数不变，因此最终每人只能得到总数除以人数的整数份；总数不能被人数整除时，无论选谁都无法实现目标。",
+            "凡是当前糖果数高于最终均分值的朋友都必须被选中，否则其糖果数无法减少到均分值；而不高于均分值的人不必选，因此最少人数就是超出均分值的人数。"
+          ],
+          "solutionBrief": "计算糖果总数并检查能否被 $n$ 整除；不能整除则输出 $-1$。否则求均分值，统计糖果数严格大于该值的朋友人数，这就是最小的 $k$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1538C",
+          "index": "C",
+          "slot": "C",
+          "title": "Number of Pairs",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1538/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/91637",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组和界限 $l,r$，需要统计所有下标对 $i<j$，使对应两个数的和满足 $l\\le a_i+a_j\\le r$。每个无序下标对只计一次。",
+          "transformedStatement": "将目标区间拆成两个前缀问题：分别求和不超过 $r$ 与不超过 $l-1$ 的配对数，再作差。对每个前缀问题，排序后固定一个数，把配对条件转成另一个数不超过相应阈值的计数。",
+          "keyObservations": [
+            "区间和条件可转化为两个前缀计数之差：不超过 $r$ 的配对数，减去不超过 $l-1$ 的配对数，即恰好落在 $[l,r]$ 内的配对数。",
+            "数组排序后，固定一个元素 $a_i$，满足和不超过阈值 $x$ 的另一个元素必须满足 $a_j\\le x-a_i$；因此可用二分统计符合条件的元素数。",
+            "计数要求下标不同且每对只计一次，固定元素逐个统计时需排除自身，并避免将同一无序配对重复计数。"
+          ],
+          "solutionBrief": "分别计算元素和不超过 $r$、不超过 $l-1$ 的配对数，前者减后者得到答案。对每个阈值先排序数组，再固定一个元素，通过二分统计满足 $a_j\\le x-a_i$ 的元素数量，并处理自身与重复计数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1538D",
+          "index": "D",
+          "slot": "D",
+          "title": "Another Problem About Dividing Numbers",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1538/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/91637",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $a,b$ 和操作次数 $k$，每次通过除法改变其中一个数，目标是恰好进行 $k$ 次后使两数相等。判断是否存在这样的操作序列；所给题面没有完整显示每步允许的具体除法规则。",
+          "transformedStatement": "将每个数可连续进行的除法操作数视为其质因数个数（按重数计），得到操作数上界；再按两数是否相等、是否互相整除，确定使它们相等所需的最少操作数，并判断 $k$ 是否落在可行范围内。题面缺失的操作细节由 editorial 的分析补足，故此建模依赖该分析所述规则。",
+          "keyObservations": [
+            "把每次除法拆成除以一个质因数的操作，就能得到最多操作数：把 $a$、$b$ 分别完全降到 $1$，上限为两数质因数个数之和（按重数计）。",
+            "最少操作数只取决于两数关系：相等时为 $0$；一数整除另一数时为 $1$；否则为 $2$，因为可以先把两数变成它们的最大公因数。",
+            "除最少操作数为 $1$ 的特殊情形外，最少与最多之间的每个操作数都可实现；但恰好一步只能对应最少步数为 $1$ 的情形。"
+          ],
+          "solutionBrief": "计算两数质因数个数之和作为最大操作数，再根据相等、整除关系确定最小操作数。若 $k$ 位于最小值与最大值之间则通常可行；当 $k=1$ 时，还必须恰好是最小操作数为 $1$ 的情形。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1538E",
+          "index": "E",
+          "slot": "E",
+          "title": "Funny Substrings",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1538/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/91637",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "hashing",
+            "implementation",
+            "matrices",
+            "strings"
+          ],
+          "statementBrief": "程序由若干条赋值语句组成，每条语句将一个字符串写入变量，或将两个已有变量的字符串拼接后写入变量。字符串可能因拼接而极长，要求输出最后一条语句所写入字符串中子串 `haha` 的出现次数。",
+          "transformedStatement": "不实际构造拼接后的完整字符串，而把每个变量表示为长度、`haha` 出现次数以及前三个和后三个字符。拼接时只需检查两段边界是否产生新的 `haha`，并据此合并摘要。",
+          "keyObservations": [
+            "拼接后新出现的 `haha` 只能跨越两段字符串的接缝，因此只需检查左串末尾与右串开头组成的短串。",
+            "保留每段字符串的前三个字符和后三个字符，足以覆盖接缝两侧可能参与匹配的字符；无需保存可能长达指数级的完整字符串。",
+            "拼接结果的出现次数等于两段原有次数与接缝新增次数之和，因此这些摘要信息可以逐条赋值递推。"
+          ],
+          "solutionBrief": "对每个变量维护字符串长度、`haha` 的出现次数、前三个字符和后三个字符。拼接两个变量时，将长度和次数相加，并额外统计末尾与开头拼成的短串中的 `haha`；前缀和后缀按拼接规则更新，长度不足三时需特别处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1538F",
+          "index": "F",
+          "slot": "F",
+          "title": "Interesting Function",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1538/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/91637",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定整数 $l<r$，从 $l$ 开始反复加一，直到得到 $r$。每次加一都统计十进制表示中发生变化的数字位，求整个过程中变化位数的总和。",
+          "transformedStatement": "不必模拟 $r-l$ 次加一，而是按十进制位分别计数：第 $i$ 位的变化次数由 $l$ 与 $r$ 除以 $10^i$ 后的整数商之差给出，再将各位贡献相加。",
+          "keyObservations": [
+            "把总变化量拆成每个十进制位分别计数后，最低位每次加一都会变化，因此贡献恰为 $r-l$。",
+            "第 $k$ 位仅在跨过对应的十进制进位边界时变化，其次数等于 $\\lfloor r/10^{k-1}\\rfloor-\\lfloor l/10^{k-1}\\rfloor$，从而把高位计数归约为缩小十倍后的同类问题。"
+          ],
+          "solutionBrief": "逐位累加变化次数：答案为各位的 $\\lfloor r/10^i\\rfloor-\\lfloor l/10^i\\rfloor$ 之和，其中 $i$ 从 $0$ 开始，直到商为零。依次将 $l,r$ 整除以 $10$ 并累加对应差值即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1538G",
+          "index": "G",
+          "slot": "G",
+          "title": "Gift Set",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1538/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/91637",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math",
+            "ternary search"
+          ],
+          "statementBrief": "Polycarp 有 $x$ 颗红糖和 $y$ 颗蓝糖，每份礼盒可以由 $a$ 颗红糖、$b$ 颗蓝糖组成，也可以由 $a$ 颗蓝糖、$b$ 颗红糖组成。每颗糖最多使用一次，求最多能制作多少份礼盒。",
+          "transformedStatement": "把目标改为判定能否制作固定数量 $n$ 的礼盒：设其中一种配方使用 $k$ 份，另一种便使用 $n-k$ 份。两种颜色的库存限制共同给出 $k$ 的范围，判断范围内是否有满足 $0\\le k\\le n$ 的整数即可。",
+          "keyObservations": [
+            "若能制作 $n$ 份礼盒，就能通过不制作部分礼盒得到任意更小数量，因此可行性随 $n$ 单调，最大数量可用二分定位。",
+            "固定制作 $n$ 份后，只需确定其中一种配方使用几份；另一种配方的份数随之确定，资源限制因此转化为对一个整数变量的上下界。",
+            "判断固定数量是否可行，关键是看两种颜色的糖果分别给出的变量范围与 $[0,n]$ 是否存在整数交集；存在时即可分配配方，否则不可行。"
+          ],
+          "solutionBrief": "二分礼盒总数 $n$。对固定的 $n$，令 $k$ 为一种配方的份数，另一种配方为 $n-k$；依据两种糖果的库存限制求出 $k$ 的可行整数范围，并检查其是否非空。题解正文中的部分不等式方向与推导不一致，具体实现时应以库存不能超用为准。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
