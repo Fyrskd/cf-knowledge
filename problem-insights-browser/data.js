@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3877,
+    "total_problems": 3882,
     "source_total_problems": 3884,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3877,
-    "with_editorial_brief": 3549,
-    "with_solution_brief": 3551,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3882,
+    "with_editorial_brief": 3554,
+    "with_solution_brief": 3556,
     "missing_editorial_brief": 326,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2939,
+    "ai_override_count": 2944,
     "primary_topic_count": 13,
-    "contest_count": 602,
+    "contest_count": 603,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 412,
+    "构造与贪心": 1256,
+    "基础实现与模拟": 245,
+    "数论与同余": 413,
     "几何": 93,
     "博弈": 113,
     "字符串": 203,
     "数据结构": 372,
     "图论与网络流": 254,
     "组合计数与概率": 296,
-    "构造与贪心": 1253,
     "交互": 113,
-    "基础实现与模拟": 244,
     "动态规划与状态设计": 316,
     "树结构": 183,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2571,
+    "ai_generated_with_editorial": 2575,
+    "ai_generated_partial_editorial": 88,
     "missing_editorial": 326,
-    "ai_generated_partial_editorial": 87,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -119396,6 +119396,160 @@ window.CF_INSIGHTS_DATA = {
             "树路径上的占用情况可转为边权和查询：每条树边至多被标记一次，用欧拉序 Fenwick 树维护根路径和，再通过 LCA 得到任意路径的占用总数。"
           ],
           "solutionBrief": "先用 DSU 按查询顺序提取生成森林，所有树边直接接受。对每条非树边，利用根到点异或值计算闭合环的异或和，并用 LCA 加 Fenwick 树判断其树路径是否已被其他环占用；两项都满足才接受并标记路径。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1554,
+      "name": "Codeforces Round 735 (Div. 2)",
+      "date": "2021-07-29",
+      "url": "https://codeforces.com/contest/1554",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2600,
+      "problems": [
+        {
+          "key": "1554A",
+          "index": "A",
+          "slot": "A",
+          "title": "Cherry",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1554/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/93321",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定一个正整数数组，任选满足 $l<r$ 的连续子数组，取该子数组最大值与最小值的乘积。对每个测试用例，求所有连续子数组中这一乘积的最大值。",
+          "transformedStatement": "把任意连续区间视为逐步向右扩展的对象：扩展只会使最小值不增，只有新元素成为更大最大值时才可能改善答案；进一步可将所有候选归约为长度为 $2$ 的相邻区间。",
+          "keyObservations": [
+            "向区间右端加入新元素时，最小值不会增大，因此只有新元素超过原最大值时，乘积才可能变大。",
+            "当新增元素成为区间最大值时，若左端点不是唯一的最小值，去掉左端点不会降低乘积；否则去掉左端点后最小值变大，乘积反而更优。",
+            "因此任意长度大于 $2$ 的区间都不会优于其中更短的候选区间，答案只需比较所有相邻元素对的乘积。"
+          ],
+          "solutionBrief": "利用区间扩展时的单调性证明：长度超过 $2$ 的区间可被更短区间替代而不劣。于是遍历每个相邻位置，计算 $a_i a_{i+1}$ 并取最大值，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1554B",
+          "index": "B",
+          "slot": "B",
+          "title": "Cobb",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1554/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/93321",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组和整数 $k$，从所有满足 $1\\le i<j\\le n$ 的下标对中计算 $i\\cdot j-k\\cdot(a_i\\,|\\,a_j)$，其中 $|$ 是按位或。对每组数据输出这个表达式的最大值。",
+          "transformedStatement": "把问题看成“下标乘积收益”与“按位或惩罚”的比较：先用 $a_i|a_j$ 的上界构造一个全局基准，再证明足够靠前的下标不可能超过该基准，最终只需在数组末尾的小范围内枚举配对。",
+          "keyObservations": [
+            "由于 $k\\le 100$ 且 $a_i\\le n$，惩罚项最多为 $2kn$，而下标乘积可达 $n^2$，因此最优下标必须集中在数组末尾。",
+            "任意包含下标 $i$ 的配对，其值至多可用 $f(i,n)\\le in$ 表示；而任意配对至少不差于下界 $f(n-1,n)\\ge n^2-2kn-n$。",
+            "当 $i<n-2k$ 时有 $in<n^2-2kn-n$，所以该下标不可能参与最优解，只需检查下标不小于 $n-2k$ 的后缀。",
+            "候选后缀长度为 $O(k)$，枚举其中所有满足 $i<j$ 的配对即可将全局搜索降为 $O(k^2)$。"
+          ],
+          "solutionBrief": "用 $a_i|a_j\\le 2n$ 给惩罚项设界，并与候选基准对比，证明最优配对的两个下标都在末尾约 $2k$ 个位置内；枚举该后缀所有配对，直接计算 $i\\cdot j-k\\cdot(a_i|a_j)$ 取最大值，复杂度为 $O(k^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1554C",
+          "index": "C",
+          "slot": "C",
+          "title": "Mikasa",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1554/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/93321",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定整数 $n,m$，取序列 $n\\oplus0,n\\oplus1,\u0000ldots,n\\oplus m$，其中 $\\oplus$ 是按位异或。要求找出该序列中没有出现的最小非负整数，即它的 MEX。",
+          "transformedStatement": "一个候选数 $k$ 出现，当且仅当反推出的下标 $x=n\\oplus k$ 满足 $0\\le x\\le m$。因此答案就是最小的 $k$，使 $n\\oplus k\\ge m+1$，再按二进制从高位贪心构造。",
+          "keyObservations": [
+            "一个数 $k$ 出现在序列中，当且仅当存在 $x=n\\oplus k\\le m$，因此判断出现性可直接转化为检查 $n\\oplus k$ 是否不超过 $m$。",
+            "MEX 等价于寻找最小的非负整数 $k$，使得 $n\\oplus k\\ge m+1$；这把集合缺失问题转成了单个数值的位比较问题。",
+            "从最高位向最低位构造 $k$：当当前异或位必须保持与 $m+1$ 相等时按位补齐；若异或位可变为 $1$ 而目标位为 $0$，立即得到更大的结果并将剩余位设为 $0$，从而保证 $k$ 最小。",
+            "在高位前缀仍相等时，若 $n$ 当前位为 $0$、目标位为 $1$，$k$ 的当前位必须取 $1$；否则异或结果会小于目标值。"
+          ],
+          "solutionBrief": "令 $p=m+1$，将问题转为求最小 $k$ 使 $n\\oplus k\\ge p$。从高位到低位贪心构造：保持前缀相等，必要时补位；一旦异或结果在某位超过 $p$，后续位全部取零。每组复杂度为 $O(\\log n)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1554D",
+          "index": "D",
+          "slot": "D",
+          "title": "Diane",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1554/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/93321",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定整数 $n$，要构造一个长度为 $n$、只含小写英文字母的字符串。要求它的每个非空连续子串在整个字符串中出现奇数次，输出任意满足条件的字符串。",
+          "transformedStatement": "把目标拆成两类子串处理：纯 `a` 子串由左右两段不同长度的 `a` 串共同贡献，含特殊分隔字符的子串则通过唯一边界位置保证只出现一次。",
+          "keyObservations": [
+            "将字符串拆成两段连续的 `a` 串，并令长度分别为 $k$ 和 $k-1$；任意只含 `a` 的子串在两段中的出现次数之和为 $(k-r+1)+(k-r)=2k-2r+1$，始终为奇数。",
+            "在两段 `a` 串之间加入 `b`（奇数长度时再加入 `c`），所有包含分隔字符的子串由左右边界长度唯一确定，因此各出现恰好一次。",
+            "取 $k=\\lfloor n/2\\rfloor$，即可用 `a^k+b+a^(k-1)` 覆盖偶数长度，用 `a^k+bc+a^(k-1)` 覆盖奇数长度；$n=1$ 时直接输出任意单个字母。"
+          ],
+          "solutionBrief": "令 $k=\\lfloor n/2\\rfloor$。$n$ 为偶数时输出 `a^k+b+a^(k-1)`，奇数时输出 `a^k+bc+a^(k-1)`；$n=1$ 输出任意单字母。两段 `a` 对纯 `a` 子串贡献奇数次，含分隔字符的子串各出现一次，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1554E",
+          "index": "E",
+          "slot": "E",
+          "title": "You",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1554/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/93321",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一棵有 $n$ 个点的树，初始每个点的数值为 $0$；每次从未删除的点中选一个并删除，把它当前相连的边归给该点，直到所有点都被删除。对每个 $k=1..n$，求最终序列中所有数的最大公因数恰为 $k$ 的不同序列数量。",
+          "transformedStatement": "把每条边看成独立选择归属端点：某点的 $a_i$ 就是归给它的边数。问题转为统计端点分配方案中各点计数的 gcd，并先统计所有计数都被 $k$ 整除的方案。",
+          "keyObservations": [
+            "每条边最终恰好归属于它的一个端点，因此删除顺序等价于给每条边定向，所有可能序列共有 $2^{n-1}$ 个。",
+            "设 $f_k$ 为所有 $a_i$ 都被 $k$ 整除的序列数；当 $k>1$ 时，按根树后自底向上处理，每个子节点边的归属会唯一决定父节点的取值，故 $f_k$ 只能为 $0$ 或 $1$。",
+            "所有 $a_i$ 之和恒为 $n-1$，所以若 $k$ 不整除 $n-1$，就不可能所有 $a_i$ 都被 $k$ 整除，从而无需处理该 $k$。",
+            "令 $h_k$ 表示最大公因数恰为 $k$ 的序列数，则 $f_k=h_k- extstyle ext{所有 }h_{ik}(i\\ge2)\\text{ 之和}$，按倍数逆序扣除即可得到答案。"
+          ],
+          "solutionBrief": "将删除过程转为边向端点分配，枚举 $n-1$ 的约数 $k$，用树上自底向上过程判定唯一的全体可被 $k$ 整除方案；再按倍数关系反演 gcd 恰为 $k$ 的数量。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
