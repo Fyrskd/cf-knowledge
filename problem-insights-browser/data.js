@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3375,
+    "total_problems": 3382,
     "source_total_problems": 3385,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3375,
-    "with_editorial_brief": 3089,
-    "with_solution_brief": 3091,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3382,
+    "with_editorial_brief": 3096,
+    "with_solution_brief": 3098,
     "missing_editorial_brief": 284,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2437,
+    "ai_override_count": 2444,
     "primary_topic_count": 13,
-    "contest_count": 519,
+    "contest_count": 520,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1089,
-    "数论与同余": 353,
+    "构造与贪心": 1091,
+    "组合计数与概率": 256,
+    "数论与同余": 356,
+    "博弈": 106,
     "字符串": 177,
     "数据结构": 321,
     "树结构": 165,
     "图论与网络流": 216,
-    "博弈": 105,
     "动态规划与状态设计": 280,
-    "组合计数与概率": 255,
     "基础实现与模拟": 210,
     "交互": 101,
     "几何": 80,
     "代数、矩阵与多项式": 23
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2129,
+    "ai_generated_with_editorial": 2136,
     "missing_editorial": 284,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -104189,6 +104189,226 @@ window.CF_INSIGHTS_DATA = {
             "只需按前缀平衡对 $3$ 取模分组，并统计此前出现过且数值不小于当前 $p_j$ 的边界；这样每个右端点都能直接得到合法左端点数量。"
           ],
           "solutionBrief": "将 `+` 记为 $+1$、`-` 记为 $-1$，扫描前缀平衡。对每个当前值 $p_j$，在同余类 $p_j\\bmod 3$ 中查询此前满足 $p_i\\ge p_j$ 的前缀数量，并加入答案；用按平衡值维护的计数结构支持该查询。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1658,
+      "name": "Codeforces Round 779 (Div. 2)",
+      "date": "2022-03-27",
+      "url": "https://codeforces.com/contest/1658",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1658A",
+          "index": "A",
+          "slot": "A",
+          "title": "Marin and Photoshoot",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1658/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/101302",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定由 $0/1$ 表示男性和女性的二进制串，可在任意位置邀请新人加入但不能删除原有成员。要求最终每个长度至少为 $2$ 的连续片段中女性数不少于男性数，求最少需要邀请多少人。",
+          "transformedStatement": "把合法性转化为：原有男性按顺序排列后，任意相邻两个男性之间必须至少隔着两个女性。因此问题变成对每个相邻 $0$ 对补足其间的女性缺口，并将缺口相加。",
+          "keyObservations": [
+            "任意两个相邻男性之间至少需要两个女性；否则取包含这两个男性的最短连续片段即可违反条件。",
+            "这个条件也是充分的：含有 $x\\ge 2$ 个男性的片段，男性之间至少有 $2(x-1)\\ge x$ 个女性，因此所有片段都满足要求。",
+            "只需检查原串中相邻两个 $0$ 的距离 $d$：它们之间已有 $d-1$ 个女性，还需补充 $\\max(0,3-d)$ 个女性，各段补充数可独立相加。"
+          ],
+          "solutionBrief": "记录原串中所有男性的位置，逐对计算相邻位置间已有的女性数量。若不足两个，就在两人之间补入缺少的女性，答案为所有缺口之和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1658B",
+          "index": "B",
+          "slot": "B",
+          "title": "Marin and Anti-coprime Permutation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1658/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/101302",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $n$，统计所有排列 $p$，使 $1p_1,2p_2,\u001a\\ldots,np_n$ 的最大公因数大于 $1$。每个排列必须恰好使用 $1$ 到 $n$ 各一次，答案对 $998244353$ 取模。",
+          "transformedStatement": "把条件转化为寻找一种排列，使所有位置与对应数的乘积共享因子；题解证明公共因子只能是 $2$，于是问题等价于将偶数放到奇数位置、奇数放到偶数位置并计数。",
+          "keyObservations": [
+            "若最大公因数含有奇素因子 $p>2$，每个位置或其对应数都必须被 $p$ 整除，但可用的相关位置和数总数不足以覆盖全部配对，因此不可能成立。",
+            "最大公因数不可能含有 $4$ 的因子：位置 $2$ 对应的 $p_2$ 为奇数，所以 $2p_2$ 不能被 $4$ 整除；因此可行时最大公因数只能是 $2$。",
+            "最大公因数为 $2$ 等价于奇数位置放偶数、偶数位置放奇数；若 $n$ 为奇数，两类数量不等，无法完成匹配。",
+            "当 $n$ 为偶数时，奇数位置放置偶数有 $(n/2)!$ 种，剩余偶数位置放置奇数也有 $(n/2)!$ 种，乘法原理得到答案为 $((n/2)!)^2$。"
+          ],
+          "solutionBrief": "先证明公共最大公因数只能为 $2$。因此 $n$ 为奇数时答案为 $0$；$n$ 为偶数时分别排列偶数到奇数位置、奇数到偶数位置，答案为 $((n/2)!)^2$，按模数计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1658C",
+          "index": "C",
+          "slot": "C",
+          "title": "Shinju and the Lost Permutation",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1658/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/101302",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $c$，其中 $c_i$ 表示某个排列的第 $i-1$ 次循环右移后，其前缀最大值数组中不同数值的数量。需要判断是否存在一个 $1$ 到 $n$ 的排列，使所有循环移位按该顺序得到的 power 恰好等于 $c$。",
+          "transformedStatement": "把循环移位的起点重新选择为 power 为 $1$ 的位置，并将 $c$ 旋转至首项为 $1$；问题转化为判断该序列是否能沿循环方向以每步至多增加 $1$ 的方式变化。",
+          "keyObservations": [
+            "恰好只有一个循环移位的首元素为 $n$，因此其前缀最大值始终为 $n$，对应的 power 才是 $1$；$1$ 的数量不是一个时答案必为 NO。",
+            "由于只需判定存在性，可以把数组循环旋转到唯一的 $1$ 开头，这等价于选择首元素为 $n$ 的循环移位作为初始状态。",
+            "相邻移位的 power 若发生增加，增加量只能是 $1$；因此旋转后若存在相邻差值大于 $1$，就不可能由任何排列产生。",
+            "除上述条件外不存在额外障碍：旋转后首项为 $1$ 且所有相邻差值不超过 $1$ 时，题解给出的构造可生成满足条件的排列。"
+          ],
+          "solutionBrief": "先检查数组中 $1$ 是否恰好出现一次；否则输出 NO。将数组旋转到 $1$ 开头，检查所有相邻差值是否超过 $1$，若超过则输出 NO，否则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1658D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "388535 (Easy Version)",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1658/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/101302",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "math"
+          ],
+          "statementBrief": "给定 $l=0$、$r$ 和一个由区间内整数经过同一个秘密整数 $x$ 的按位异或后得到的数组，数组顺序可能被打乱。请找出任意一个能够生成该数组的 $x$。",
+          "transformedStatement": "将问题转化为：已知多重集合由 $\\{i\\oplus x\\mid 0\\le i\ne r\\u007f\\}$ 生成，按二进制位分别比较异或前后 $0/1$ 的数量，从而独立恢复 $x$ 的每一位。",
+          "keyObservations": [
+            "最终数组的顺序不影响答案，因此只需统计每个二进制位上 $0$ 和 $1$ 的数量，避免恢复元素排列。",
+            "区间 $[0,r]$ 中每个二进制位的前缀满足 $0$ 的数量不少于 $1$；与 $x$ 异或后，若该位的 $1$ 更多，则说明 $x$ 在该位为 $1$。",
+            "若某一位的 $0$ 与 $1$ 数量相等，整体翻转该位不会改变多重集合，因此该位的 $x$ 可以任取，设为 $0$ 即可。",
+            "各二进制位的判断彼此独立，将所有满足“$1$ 多于 $0$”的位合并即可得到一个合法的 $x$。"
+          ],
+          "solutionBrief": "把最终数组看作区间 $[0,r]$ 中每个数与同一个 $x$ 异或后形成的多重集合。逐位统计数组中 $0/1$ 的数量：$1$ 更多则答案该位为 $1$，相等则取 $0$，最后合并各位。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1658D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "388535 (Hard Version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1658/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/101302",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "给定整数区间 $[l,r]$ 以及一个由区间内每个整数与同一个隐藏整数 $x$ 异或得到的最终数组，数组中的元素顺序可能被打乱。请找出任意一个能够生成该最终数组的 $x$。",
+          "transformedStatement": "将问题重述为：给定无序集合 $A$，寻找 $x$ 使得 $\\{a\\oplus x\\mid a\\in A\\}$ 恰好是连续区间 $[l,r]$；利用最低位互补配对递归消除低位，剩余情形只需验证少量候选。",
+          "keyObservations": [
+            "最终数组的顺序无关，核心是判断集合是否恰好等于 $i\\oplus x\\mid l\\le i heta\\le r$；因此验证候选 $x$ 只需检查每个 $a_i\\oplus x$ 是否落在区间内。",
+            "当 $l$ 为偶数且 $r$ 为奇数时，区间由完整的 $(2k,2k+1)$ 对组成，异或后仍表现为低位互补；去掉所有数的最低位可递归缩小区间，最后再恢复被去掉的 $x$ 的低位。",
+            "无法继续缩位时，寻找集合中缺少其低位互补数的元素即可锁定边界相关候选；根据 $l$ 的奇偶性至多得到两个 $x$，逐一检查区间约束即可确定答案。",
+            "若 $a\\oplus b=1$，则 $(a\\oplus x)\\oplus(b\\oplus x)=1$，所以低位互补关系不受同一个隐藏数 $x$ 破坏，可用于识别配对与候选。"
+          ],
+          "solutionBrief": "把数组视为区间 $[l,r]$ 中每个数与同一 $x$ 异或后的无序集合。当区间覆盖完整低位配对时右移递归；否则利用缺少低位互补元素的位置生成至多两个候选，并检查所有值是否回到区间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1658E",
+          "index": "E",
+          "slot": "E",
+          "title": "Gojou and Matrix Game",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1658/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/101302",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "几何"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "games",
+            "hashing",
+            "implementation",
+            "math",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定一个分值互异的 $n\\times n$ 棋盘，Marin 与 Gojou 轮流落子，Marin 先手；每次落子会获得所选格子的分值，格子可以重复使用。除首步外，后续落子需满足题目规定的距离限制和分值递增规则；对每个可能的首落子格子，求双方最优行动后的胜负结果。",
+          "transformedStatement": "把每个格子作为一个状态：从当前格子只能转移到分值更高且曼哈顿距离大于 $k$ 的格子，无法转入必胜状态的一方获胜。按分值降序求状态胜负，并将曼哈顿距离改写为 $i+j$ 与 $i-j$ 两个坐标上的最大差。",
+          "keyObservations": [
+            "若当前玩家被迫走到比上一手分值更低的格子，对手可以反复选择上一格，经过超长对局后当前玩家必败，因此只需考虑分值严格递增的有效着法。",
+            "把每个格子视为状态后，能走到的后继格子必须同时满足分值更高且与当前格子的曼哈顿距离大于 $k$；当前状态必胜当且仅当所有后继状态都必败。",
+            "曼哈顿距离满足 $|x-x'|+|y-y'|=\\max(|(x+y)-(x'+y')|,|(x-y)-(x'-y')|)$，所以只需维护已判定为必胜格子的两组坐标最小值和最大值，即可判断是否存在必胜后继。",
+            "按格子分值从大到小处理时，所有可能的后继状态已经确定；当前格子必胜等价于所有必胜格子都与它的距离不超过 $k$，从而避免逐格检查全部转移。"
+          ],
+          "solutionBrief": "将游戏化为分值严格递增且相邻两手曼哈逊距离大于 $k$ 的状态博弈。按分值降序计算胜负，维护必胜格子在 $i+j$、$i-j$ 两个坐标上的极值，快速判断当前格子是否能走向必胜状态。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1658F",
+          "index": "F",
+          "slot": "F",
+          "title": "Juju and Binary String",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1658/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/101302",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的二进制串，选择若干个两两不相交且按位置排列的子段，将它们拼接成长度为 $m$ 的串，并要求拼接串中 1 的比例与原串相同。求所需子段数的最小值及一种选择方案；不存在时输出 $-1$。",
+          "transformedStatement": "把选择的子段看成环形字符串上的一个长度为 $m$ 的窗口：窗口不跨环边界时是一段，跨边界时可拆成原串前缀和后缀两段。问题转化为寻找包含指定数量 1 的环形窗口。",
+          "keyObservations": [
+            "设原串有 $b$ 个 1、$w$ 个 0，则所选总长度为 $m$ 时必须包含恰好 $mb/(b+w)$ 个 1；该值非整数时无解，等价于 $m$ 不是 $(b+w)/\\gcd(b,w)$ 的倍数。",
+            "把长度为 $m$ 的子串窗口放到环形字符串上，相邻窗口的 1 的数量至多变化 $1$，因此会取遍最小值与最大值之间的所有整数；目标数量等于所有窗口计数的平均值，必然能被某个窗口取得。",
+            "环上的目标窗口若不跨边界，就对应一个连续子段；若跨边界，则恰好拆成前缀和后缀两个不相交子段，因此答案最多为 $2$。",
+            "先寻找不跨边界的满足窗口即可得到最小答案 $1$；否则寻找跨边界窗口并拆成两段，前缀和可在线性时间内完成计数。"
+          ],
+          "solutionBrief": "统计原串中 1 和 0 的数量，先判断目标长度对应的 1 数是否为整数。将字符串视为环，在线性扫描长度为 $m$ 的窗口；先输出不跨边界的窗口，否则把跨边界窗口拆为前缀与后缀两段。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
