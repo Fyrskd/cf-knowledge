@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3901,
+    "total_problems": 3910,
     "source_total_problems": 3910,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3901,
-    "with_editorial_brief": 3572,
-    "with_solution_brief": 3574,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3910,
+    "with_editorial_brief": 3581,
+    "with_solution_brief": 3583,
     "missing_editorial_brief": 327,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2963,
+    "ai_override_count": 2972,
     "primary_topic_count": 13,
-    "contest_count": 605,
+    "contest_count": 606,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 414,
-    "字符串": 206,
-    "构造与贪心": 1264,
+    "数论与同余": 415,
+    "字符串": 208,
+    "构造与贪心": 1265,
+    "图论与网络流": 256,
+    "数据结构": 374,
+    "组合计数与概率": 299,
     "动态规划与状态设计": 319,
     "树结构": 184,
-    "组合计数与概率": 298,
     "交互": 114,
     "基础实现与模拟": 245,
     "几何": 93,
     "博弈": 113,
-    "数据结构": 372,
-    "图论与网络流": 254,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2593,
+    "ai_generated_with_editorial": 2601,
+    "ai_generated_partial_editorial": 89,
     "missing_editorial": 327,
-    "ai_generated_partial_editorial": 88,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -120124,6 +120124,287 @@ window.CF_INSIGHTS_DATA = {
             "设各子树在当前距离层包含 $cnt_i$ 个顶点，则逐个处理子树，用 $dp[i][j]$ 统计前 $i$ 个子树选 $j$ 个顶点；每个子树只能选一个，转移权值为 $cnt_i$。"
           ],
           "solutionBrief": "$k=2$ 时直接计数。$k\\ge3$ 时枚举唯一中心 $Q$，按距离层统计各相邻子树中的顶点数，再用子树级 DP 计数从不同分支选出 $k$ 个顶点的方案，汇总所有 $Q$ 和层，复杂度为 $O(n^2k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1553,
+      "name": "Harbour.Space Scholarship Contest 2021-2022 (open for everyone, rated, Div. 1 + Div. 2)",
+      "date": "2021-07-22",
+      "url": "https://codeforces.com/contest/1553",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 9,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1553A",
+          "index": "A",
+          "slot": "A",
+          "title": "Digits Sum",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1553/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/93105",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "定义 $S(x)$ 为十进制数 $x$ 的各位数字之和；若 $S(x+1)<S(x)$，则称 $x$ 有趣。给定整数 $n$，要求统计满足 $1\\le x\\le n$ 的有趣整数个数。",
+          "transformedStatement": "判断 $x$ 是否有趣只需考察个位：个位不是 $9$ 时数位和增加，个位为 $9$ 时进位会使数位和减少。因此问题等价于统计 $[1,n]$ 中个位为 $9$ 的整数。",
+          "keyObservations": [
+            "若 $x$ 的个位不是 $9$，加一只会使个位数字增加 $1$，其余位不变，因此数位和增加而非减少。",
+            "若 $x$ 以 $9$ 结尾，加一会把末尾连续的 $9$ 变成 $0$，并使前一位至多增加 $1$，所以数位和必然减少；有趣数恰好就是个位为 $9$ 的数。",
+            "每十个整数中恰有一个个位为 $9$，统计区间 $[1,n]$ 中这类数可直接得到答案 $\\lfloor (n+1)/10 \\rfloor$。"
+          ],
+          "solutionBrief": "有趣数恰好是个位为 $9$ 的整数，因此每组答案为 $\\lfloor (n+1)/10 \\rfloor$，可在 $O(1)$ 时间内计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1553B",
+          "index": "B",
+          "slot": "B",
+          "title": "Reverse String",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1553/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/93105",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "hashing",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定字符串 $s$，先把芯片放在任意字符上，记录该字符；随后必须先向右移动若干次，再向左移动若干次，每次移动后都记录芯片所在字符。判断能否通过这样的操作恰好写出给定字符串 $t$。",
+          "transformedStatement": "把一次操作表示为起点、向右步数和向左步数；生成串长度等于总记录次数，因此固定起点与向右步数后，可由 $|t|$ 确定向左步数，问题转为检查对应路线的字符序列是否等于 $t$。",
+          "keyObservations": [
+            "固定起点和向右移动次数后，芯片先向右再向左的路线就确定了；目标串长度还会唯一确定向左移动次数，因此无需枚举所有三种参数组合。",
+            "一次合法路线写出的字符依次来自起点到右端点，再从右端点往左走；据此逐项比较即可判断该路线是否生成目标串。"
+          ],
+          "solutionBrief": "枚举芯片的起点和向右移动次数，由目标串长度算出向左移动次数，再按“向右后向左”的顺序比较生成的字符与目标串。枚举参数有 $O(n^2)$ 种，每次比较至多 $O(n)$，总复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1553C",
+          "index": "C",
+          "slot": "C",
+          "title": "Penalty",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1553/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/93105",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "博弈"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "点球最多踢 10 次，两队交替踢球且第一队先踢；每次已进球的队伍若领先到另一队用完剩余机会也无法追平，比赛就立即停止。给定每次预测为进球、未进球或未知，要求安排未知结果，使比赛尽可能早结束，并输出最少踢球次数。",
+          "transformedStatement": "把未知预测视为可选择的进球结果，目标是在遵守固定踢球顺序的情况下，尽早让一队的领先优势超过对手剩余踢球数所能弥补的范围。题解将未知结果的安排缩减为两种：一队的未知球全进、另一队的未知球全不进，再比较停止时刻。",
+          "keyObservations": [
+            "固定所有问号的进球结果后，按踢球顺序模拟比分和剩余踢球数，就能确定裁判最早何时可以停止比赛。",
+            "为了尽早确定胜负，最优安排是让一队尚未踢的问号都进球、另一队尚未踢的问号都不进球，因此只需检查两种相反的安排。"
+          ],
+          "solutionBrief": "分别尝试让先踢队的问号全进、后踢队的问号全进，并将另一队的问号全设为不进球。对每种安排模拟比分，检查领先方何时已无法被追平，取两种结果中的较早停止次数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1553D",
+          "index": "D",
+          "slot": "D",
+          "title": "Backspace",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1553/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/93105",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定小写字符串 $s$ 和 $t$，按顺序输入 $s$ 的每个字符时，可以选择正常输入该字符，也可以按退格键；退格会删除当前文本末尾尚未删除的字符，若文本为空则不产生变化。判断是否存在选择方式使最终文本恰为 $t$。",
+          "transformedStatement": "把问题改为从右向左检查 $s$ 是否能留下与 $t$ 一致的字符：匹配时同时消耗一个字符，不匹配时通过一次退格跳过当前字符及其左侧一个字符，判断最终能否消耗完整个 $t$。",
+          "keyObservations": [
+            "从右向左处理时，若当前字符不能匹配目标串末尾，就可以用该字符触发退格并同时删掉它左边最近的一个尚未处理字符，因此目标匹配位置不变而源串位置一次跳过两个。",
+            "若当前源字符与目标末尾相同，匹配它不会妨碍后续更靠左的字符处理，所以可以直接配对并让两个指针各左移一位。",
+            "每次退格只能删除当前已输入内容的末尾字符；从右向左的配对与成对跳过，正好刻画了这种后进先出的删除顺序。"
+          ],
+          "solutionBrief": "用两个指针分别从 $s$、$t$ 的末尾向左扫描。字符相同则同时左移；否则在 $s$ 中跳过当前字符及其左邻字符，表示当前字符改按退格并删除一个已输入字符。若能匹配完 $t$，输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1553E",
+          "index": "E",
+          "slot": "E",
+          "title": "Permutation Shift",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1553/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/93105",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "constructive algorithms",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "给定一个排列，它由长度为 $n$ 的恒等排列先循环右移 $k$ 位、再进行至多 $m$ 次交换得到。要求找出所有可能的循环右移量 $k$。",
+          "transformedStatement": "对每个位置计算它对应的循环右移量，并按移位排列与目标排列相同的位置数筛出少量候选；再把两排列的逐项对应关系建成无向图，用连通块数确定最少交换次数。",
+          "keyObservations": [
+            "对固定的循环右移量 $k$，先将 $1$ 到 $n$ 改为 $0$ 到 $n-1$，移位后的第 $i$ 项就是 $(i-k)\\bmod n$，因此可以直接比较它与给定排列。",
+            "把目标排列与移位后的排列逐项连边，最少交换次数等于 $n-c$，其中 $c$ 是所得无向图的连通块数；这把交换最优化转成了连通块计数。",
+            "至多 $m$ 次交换最多改变 $2m$ 个位置，所以可行的 $k$ 必须至少匹配 $n-2m$ 个位置；而每个位置恰好给一个 $k$ 贡献一次匹配，因此候选移位量至多有 $n/(n-2m)\\le 3$ 个。",
+            "只需统计每个 $k$ 的匹配位置数，再对达到下界的少数候选计算最少交换次数，避免逐一检查全部 $n$ 种移位。"
+          ],
+          "solutionBrief": "将排列元素改为从 $0$ 开始编号，统计每个循环右移量 $k$ 与目标排列相同的位置数，仅保留至少有 $n-2m$ 个匹配位置的候选。对每个候选构造移位排列与目标排列之间的无向边图，以 $n-c$（$c$ 为连通块数）计算最少交换次数，保留不超过 $m$ 次的移位量；总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1553F",
+          "index": "F",
+          "slot": "F",
+          "title": "Pairwise Modulo",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1553/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/93105",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "给定一个由互不相同正整数组成的数组，对每个前缀 $1..k$，计算其中所有有序下标对 $(i,j)$ 的 $a_i\\bmod a_j$ 之和，并输出 $p_1$ 到 $p_n$。下标可以相同，此时对应余数为零。",
+          "transformedStatement": "把每个前缀的有序数对按下标关系拆为 $i>j$ 和 $i<j$ 两类，再将余数改写为被除数减去除数乘商。两类贡献都可按数值区间分组：一类向未来值域区间加贡献，另一类查询先前元素落入各倍数区间的总贡献。",
+          "keyObservations": [
+            "用 $x \\bmod y=x-y\\lfloor x/y\\rfloor$ 展开余数后，按下标顺序拆成 $i>j$ 与 $i<j$ 两部分，可分别增量计算，且总和就是两部分之和。",
+            "对于较晚加入的数 $a_k$，固定较早的 $a_i$ 后，$-a_i\\lfloor a_k/a_i\\rfloor$ 在每个区间 $[d a_i,(d+1)a_i)$ 内为常数，因此可把贡献预先加到值域区间，再查询 $a_k$。",
+            "反向部分固定当前 $a_k$，较早数落在 $[d a_k,(d+1)a_k)$ 时各贡献 $-d a_k$；按数值维护先前元素并查询这些区间即可，剩余的先前元素之和用前缀和取得。",
+            "每个值只需处理其不超过 $M$ 的倍数区间；因输入值互异，区间处理总量受调和级数约束，从而避免枚举所有数对。"
+          ],
+          "solutionBrief": "将答案拆成两个方向的有序数对贡献，并用余数恒等式展开。一个方向对未来值域区间做加法、查询当前值；另一个方向按已出现数值做单点更新并查询倍数区间，同时用前缀和处理线性项。借助互异数值带来的调和级数界，整体复杂度为 $O(M\\log M\\log n)$，空间复杂度为 $O(n+M)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1553G",
+          "index": "G",
+          "slot": "G",
+          "title": "Common Divisor Graph",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1553/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/93105",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dsu",
+            "graphs",
+            "hashing",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定互不相同的正整数，每个整数是图中的一个点；两个点的数值有大于 $1$ 的公因数时相连。每次可选一个已有值 $a_i$，新增值 $a_i(1+a_i)$ 并按同一规则与已有值连边；每个查询从初始序列重新开始，要求使指定两点连通所需的最少新增点数。",
+          "transformedStatement": "将每个数视为其不同质因子的集合，用这些因子表示初始图的连通分量。一次新增操作可抽象为在相关初始分量之间加入代价为 $1$ 的连接，于是每个查询只需判断起终点是否同分量、是否能通过一条这种连接相连；否则答案为 $2$。",
+          "keyObservations": [
+            "两个数不互质当且仅当它们共享某个质因子，因此初始图可压缩为原数与其质因子之间的连通关系。",
+            "答案至多为 $2$：对起点或终点各做一次操作，可分别借助相邻的偶数值连通；所以只需判断答案是否为 $0$ 或 $1$。",
+            "把创建 $a_i(a_i+1)$ 理解为同时接入 $a_i$ 和 $a_i+1$ 的质因子，单次操作造成的连通关系可归结为相关初始连通分量之间的代价为 $1$ 的边。",
+            "单次操作的边不仅连接 $a_i$ 所在分量与 $a_i+1$ 的质因子分量，也要连接 $a_i+1$ 的各个不同质因子分量；否则会漏掉操作发生在与起终点都不同的分量上的情况。"
+          ],
+          "solutionBrief": "先用原数与其质因子建立初始连通分量。对每个 $a_i$，依据 $a_i+1$ 的不同质因子，在分量间加入代价为 $1$ 的连接，包括连接 $a_i$ 所在分量与这些质因子分量，以及这些质因子分量之间的连接。查询若起终点同属初始分量则答 $0$；否则若它们之间存在一条代价为 $1$ 的连接则答 $1$，否则答 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1553H",
+          "index": "H",
+          "slot": "H",
+          "title": "XOR and Distance",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1553/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/93105",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "divide and conquer",
+            "trees"
+          ],
+          "statementBrief": "给定一个由互不相同的非负整数构成的数组，以及位宽 $k$。对每个 $x=0,1,\\ldots,2^k-1$，将数组中每个数分别与 $x$ 按位异或，求变换后任意两数绝对差的最小值，并输出所有 $x$ 对应的结果。",
+          "transformedStatement": "把数值范围看成按二进制前缀递归划分的区间树；对固定的 $x$，异或会交换树中由相应位控制的左右子树。于是问题转化为维护树的最小两两距离，并高效遍历所有这些层交换状态以读取根节点答案。",
+          "keyObservations": [
+            "每个二进制前缀区间只需记录其中元素的最小值、最大值和最小两两距离；合并左右子树时，跨子树的最近距离只可能由左侧最大值与右侧最小值决定。",
+            "对所有元素异或同一个 $x$，等价于按 $x$ 的各位交换二进制树相应层的左右子树，因此一次翻转只需重算受影响的树层。",
+            "按从高位开始变化的 Gray 码枚举 $x$，第 $i$ 位翻转时仅需重建相应前缀层，累计重建工作为 $O(2^k k)$，从而能输出全部 $2^k$ 个答案。",
+            "某个子树内的异或只取决于掩码在该子树位宽内的低位部分；因此也可为节点保存对应的多种异或版本。"
+          ],
+          "solutionBrief": "建立按二进制区间划分的树，节点保存最小值、最大值、最小两两距离及区间长度。初始建好 $x=0$ 的结构后，使用从高位变化的 Gray 码枚举异或掩码，每次翻转对应层并重算受影响节点，根节点答案即为 $f(x)$；总重建量为 $O(2^k k)$。题解还提及按子树低位异或结果保存节点多版本的方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1553I",
+          "index": "I",
+          "slot": "I",
+          "title": "Stairs",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1553/problem/I",
+          "editorialUrl": "https://codeforces.com/blog/entry/93105",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "divide and conquer",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$，它记录一个 $1$ 到 $n$ 的排列中每个位置所处的最长连续值阶梯长度；阶梯中的值按递增或递减顺序连续。要求统计能产生恰好该数组的排列数，并对 $998244353$ 取模。",
+          "transformedStatement": "将数组切成若干段，每段对应一个最长阶梯；统计这些段分配值区间及方向的方式，同时排除相邻段合并成更长阶梯的情况。把相邻段的合并限制转成容斥计数，再按区间端点类型和违反限制数进行分治卷积。",
+          "keyObservations": [
+            "每个位置所属的最长阶梯唯一，因此可以从左向右按 $a_1,a_{a_1+1},\\ldots$ 切分数组；每段长度等于该段所有位置上的 $a_i$。",
+            "切分后，每段对应一个值区间，段的排列方向也有选择；但相邻段可能合并成更长阶梯，因此仅计算段的排列和方向会重复计数。",
+            "把每对相邻段不能合并视为一条约束，对被违反的约束数做容斥，就能将“恰好不合并”的计数转成分段计数。",
+            "分治合并两侧区间时，违反约束数是两侧计数的和；对该维度的多项式做卷积即可合并，跨界违反约束时再乘上对应的合并系数。"
+          ],
+          "solutionBrief": "先将阶梯数组切分为最长阶梯长度序列，再对相邻段不能合并的条件做容斥。动态规划记录区间端点类型及违反约束数；分治合并时将约束数视作多项式次数，用 FFT 卷积合并，复杂度为 $O(n\\log^2 n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
