@@ -1,5 +1,16 @@
 [
   {
+    "id": 1629,
+    "name": "Codeforces Round 767 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1642862100,
+    "relativeTimeSeconds": 147717480,
+    "date": "2022-01-22"
+  },
+  {
     "id": 1630,
     "name": "Codeforces Round 768 (Div. 1)",
     "type": "CF",
