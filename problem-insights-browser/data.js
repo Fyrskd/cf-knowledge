@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3823,
+    "total_problems": 3830,
     "source_total_problems": 3832,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3823,
-    "with_editorial_brief": 3507,
-    "with_solution_brief": 3509,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3830,
+    "with_editorial_brief": 3514,
+    "with_solution_brief": 3516,
     "missing_editorial_brief": 314,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2885,
+    "ai_override_count": 2892,
     "primary_topic_count": 13,
-    "contest_count": 592,
+    "contest_count": 593,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -38,29 +38,29 @@ window.CF_INSIGHTS_DATA = {
     "基础实现与模拟",
     "字符串",
     "树结构",
-    "博弈",
     "交互",
+    "博弈",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 403,
-    "构造与贪心": 1241,
+    "数论与同余": 405,
+    "构造与贪心": 1243,
+    "数据结构": 366,
+    "动态规划与状态设计": 313,
+    "交互": 112,
     "基础实现与模拟": 240,
-    "交互": 111,
-    "数据结构": 365,
     "组合计数与概率": 292,
     "图论与网络流": 249,
     "字符串": 200,
-    "动态规划与状态设计": 312,
     "树结构": 183,
     "几何": 90,
     "博弈": 112,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_partial_editorial": 86,
-    "ai_generated_with_editorial": 2530,
+    "ai_generated_with_editorial": 2536,
+    "ai_generated_partial_editorial": 87,
     "missing_editorial": 314,
     "low_confidence": 1,
     "manual_override": 891,
@@ -117810,6 +117810,222 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "枚举特殊点诱导的森林 $T$，对固定 $T$ 在候选边上求两个拟阵交的最小权公共基：一个保证无环，另一个限制特殊点度数。若边数足够构成生成树，则用其与 $T$ 的总权值更新答案。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1562,
+      "name": "Codeforces Round 741 (Div. 2)",
+      "date": "2021-08-26",
+      "url": "https://codeforces.com/contest/1562",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1562A",
+          "index": "A",
+          "slot": "A",
+          "title": "The Miracle and the Sleeper",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1562/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/94278",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定整数区间 $[l,r]$，选择满足 $r\\ge a\\ge b\\ge l$ 的整数对，计算 $a\\bmod b$，并求所有合法选择中的最大值。每个测试用例独立求解。",
+          "transformedStatement": "把问题转化为判断区间是否包含 $c=\\lfloor r/2\\rfloor+1$：包含时使用除数 $c$，不包含时所有可选除数都超过 $r/2$，答案退化为最大数 $r$ 减最小除数 $l$。",
+          "keyObservations": [
+            "令阈值为 $c=\\lfloor r/2\\rfloor+1$；区间包含 $c$ 时，取 $(a,b)=(r,c)$ 可得到最大余数 $\\lfloor(r-1)/2\\rfloor$。",
+            "若 $l>c$，则所有合法的 $b$ 都满足 $b>r/2$，所以 $r\\bmod b=r-b$；该值随 $b$ 增大而减小，最优选择是 $(a,b)=(r,l)$。",
+            "因此答案只需判断区间是否包含 $c$，无需枚举 $(a,b)$，可直接按两种情况计算。"
+          ],
+          "solutionBrief": "设 $c=\\lfloor r/2\\rfloor+1$。若 $l\\le c$，答案为 $\\lfloor(r-1)/2\\rfloor$；否则所有除数都大于 $r/2$，取 $(r,l)$ 得到答案 $r-l$。每组只需常数次计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1562B",
+          "index": "B",
+          "slot": "B",
+          "title": "Scenes From a Memory",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1562/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/94278",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个十进制表示中不含 $0$ 的正整数，可以删除任意数量但不能删光数字，且保留数字的相对顺序。要求删除尽可能多的数字，使剩余数字表示的整数为 $1$ 或合数，并输出剩余位数及数字；题目保证至少存在一种可行删除方案。",
+          "transformedStatement": "把问题转化为寻找一个最短的非空数字子序列，使其组成的数不是质数。题解证明可行答案始终只需保留一位或两位，并按特殊单数字、重复数字、末位为 $2/5$ 以及受限三位结构分类构造。",
+          "keyObservations": [
+            "若数字含有 $1、4、6、8、9$，单独保留该位就得到非质数，因此只需保留 $1$ 位即可达到最优。",
+            "若没有上述数字但存在重复数字，保留两个相同数字得到 $22、33、55$ 或 $77$，它们都能被 $11$ 整除。",
+            "若数字 $2$ 或 $5$ 出现在首位以外，任选它与一个更靠前的数字组成两位数；该数末位为 $2$ 或 $5$，必为合数。",
+            "以上情况都不存在时，数字结构被限制为 $237、273、537、573$ 之一（或长度更短），其中总能选出和为 $9$ 的两位数字，得到可被 $3$ 整除的非质数。"
+          ],
+          "solutionBrief": "按优先级寻找可单独保留的非质数数字；否则寻找重复数字或以 $2/5$ 结尾的两位数；若均不存在，检查受限的三位结构并选出两位数。这样每组只需线性扫描，且保证剩余位数不超过 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1562C",
+          "index": "C",
+          "slot": "C",
+          "title": "Rings",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1562/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/94278",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的二进制字符串，把任意子串按二进制解释成非负整数。需要选择两个子串区间，使它们对应数值的比值处于允许范围内（相差不超过因子 $2$），并输出四个端点；任意合法方案均可。",
+          "transformedStatement": "将目标转化为寻找两个数值相等或恰好相差因子 $2$ 的子串：前导零可制造相等值，末尾零可制造二倍关系。按字符串中 $0$ 位于前半还是后半选择对应区间。",
+          "keyObservations": [
+            "若字符串全为 $1$，区间 $[1,n-1]$ 与 $[2,n]$ 形成完全相同的子串，因此数值相等，直接满足比值限制。",
+            "若左半部分存在位置 $k$ 的 $0$，取 $[k,n]$ 和 $[k+1,n]$；前者仅比后者多一个前导零，二者数值相等。",
+            "若左半部分没有 $0$ 而右半部分的位置 $k$ 有 $0$，取 $[1,k]$ 和 $[1,k-1]$；前一个二进制数末尾多一个零，数值恰为后一个的 $2$ 倍。"
+          ],
+          "solutionBrief": "把字符串按前后两半处理。若左半有 $0$，取该位置及其后缀和去掉首位后的后缀，数值相等；否则右半必有 $0$，取从首位到该位置及其前一位，两个数相差因子 $2$。全为 $1$ 时取 $[1,n-1]$ 与 $[2,n]$。每组只需线性扫描。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1562D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Two Hundred Twenty One (easy version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1562/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/94278",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "有一排带有 $+1$ 或 $-1$ 电荷的杆。对每个区间 $[l,r]$，允许删除任意数量的杆，剩余杆按原顺序重新交替计正负，求使交错和为零所需删除的最少杆数；全部删除时和视为零。",
+          "transformedStatement": "对每个查询区间先计算原始交错和 $s$，再只按区间长度奇偶性判断最少删除数：$s=0$ 时为 $0$，否则奇数长度为 $1$、偶数长度为 $2$；区间和由带符号前缀和维护。",
+          "keyObservations": [
+            "若区间交错和已为零，无需删除；否则区间长度为奇数时，删除数量的奇偶性要求至少为奇数。",
+            "定义删除第 $i$ 根后的交错和为 $b_i$，相邻 $b_i$ 的差绝对值只可能是 $0$ 或 $2$，这保证奇数长度且原和非零时必有某个 $b_i=0$。",
+            "当区间长度为偶数且原和非零时，删除数量不能为 $1$，而题解证明删除两根总能达到零，因此答案固定为 $2$。",
+            "区间交错和可由带符号的前缀和在 $O(1)$ 时间内求出，从而每个询问只需判断区间和及长度奇偶性。"
+          ],
+          "solutionBrief": "用带符号前缀和计算每个区间的交错和 $s$。若 $s=0$ 答案为 $0$；否则区间长度为奇数时删 $1$ 根，为偶数时删 $2$ 根。预处理前缀和后每个询问 $O(1)$，单测总复杂度为 $O(n+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1562D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Two Hundred Twenty One (hard version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1562/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/94278",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "有一排编号为 $1$ 到 $n$ 的带电杆，每根电荷为 $1$ 或 $-1$；对查询区间 $[l,r]$，允许删除其中若干根，剩余杆按原顺序重新交替计算电荷和。要求删除数量最少，并输出被删除杆的编号，使该和为 $0$；若原和已为零则不删除，空集合也视为满足条件。",
+          "transformedStatement": "将每个查询区间的交错和表示为前缀量，并把“删除某根后和为零”转化为辅助序列中的匹配位置查询。奇数区间直接寻找一个匹配点，偶数区间先固定删除左端点，再寻找第二个匹配点。",
+          "keyObservations": [
+            "若区间交错和已经为 $0$，无需删除；否则奇数长度区间至少删除 $1$ 根，偶数长度区间不可能只删 $1$ 根，因此答案分别固定为 $1$ 和 $2$。",
+            "把删除一根后的交错和改写为前缀辅助量 $b$ 的匹配条件后，问题变成在奇数长度区间内寻找一个满足条件的位置，从而不必枚举删除点。",
+            "辅助序列满足相邻值差的绝对值不超过 $2$，且各值为偶数；端点异号或有一个为零时，二分缩小区间仍能保证匹配位置存在。",
+            "偶数长度且交错和非零时先删除左端点，再在剩余区间中按同样的匹配条件寻找第二个位置，因此总删除数为 $2$。"
+          ],
+          "solutionBrief": "用交错前缀和快速判断每个查询区间的总和。总和为零输出 $0$；否则奇数长度区间二分寻找一个可删位置，偶数长度区间先删左端点，再二分寻找第二个位置，整体复杂度为每组 $O(n+q\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1562E",
+          "index": "E",
+          "slot": "E",
+          "title": "Rescue Niwen!",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1562/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/94278",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的字符串，按起点从左到右、同一起点按终点递增列出所有连续子串，得到其 expansion。要求按字典序严格递增，从该序列中选出最长子序列并输出长度。",
+          "transformedStatement": "将答案重述为若干个按起点递增排列的后缀前缀块：每个块连续取某个后缀的若干前缀，并要求后一块的后缀大于前一块的后缀；状态按最后一个后缀的起点划分。",
+          "keyObservations": [
+            "最长递增子序列可规范为若干连续前缀块：每个选定起点都从某个前缀开始，连续取到该位置的后缀。",
+            "若连续选择起点为 $j<i$，只有当后缀 $s[i..n]$ 大于 $s[j..n]$ 时才能转移；两后缀的最长公共前缀决定新块应从哪里开始。",
+            "设两后缀最长公共前缀长度为 $d$，则新块可加入的字符串数量为 $n-(i+d)+1$，因为从第一个不同字符对应的前缀起都严格变大。",
+            "最长公共前缀可用 $d[i][j]=1+d[i+1][j+1]$（当 $s_i=s_j$）的二维递推求出，从而整体 DP 达到 $O(n^2)$。"
+          ],
+          "solutionBrief": "先用二维 DP 求任意两个后缀的最长公共前缀，再令 $dp_i$ 表示递增子序列最后取到后缀 $s[i..n]$ 的最大长度。枚举前一个后缀 $j$，若 $s[i..n]>s[j..n]$，按最长公共前缀计算可追加的连续前缀块，取最大值；答案为所有 $dp_i$ 的最大值，复杂度 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1562F",
+          "index": "F",
+          "slot": "F",
+          "title": "Tubular Bells",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1562/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/94278",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "数论与同余",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "interactive",
+            "math",
+            "number theory",
+            "probabilities"
+          ],
+          "statementBrief": "有 $n$ 个管子，其长度是区间 $[l,r]$ 中所有整数的一个未知排列，且 $r-l+1=n$。每次可选两个不同位置询问其长度的最小公倍数，最多询问 $n+5000$ 次；需要在不知道 $l,r$ 的情况下恢复整个排列。",
+          "transformedStatement": "把恢复排列转化为寻找一个可辨识的质数锚点：利用数对最小公倍数中的大质因子定位某个元素，再通过 $\\operatorname{lcm}(p,a_i)/p$ 区分并直接恢复不含该质因子的元素，最后处理剩余小数或含 $p$ 的元素。",
+          "keyObservations": [
+            "当 $n<100$ 时，所有数对的最大最小公倍数必来自 $r-1,r$；识别出包含 $r$ 的位置后逐步剔除它，就能按从大到小恢复整个排列。",
+            "对 $100\\le n<10000$，将位置随机配对并观察各个最小公倍数中的最大质因子；最大质因子所在的一对必包含该质数本身，再用一次额外查询确定其位置。",
+            "找到最大质数 $p$ 后，对任意位置计算 $\\operatorname{lcm}(p,a_i)/p$：若结果大于阈值 $c$，则它直接等于 $a_i$，否则该数含有 $p$ 或不超过 $c$，因此剩余元素可由最大质数继续还原。",
+            "取 $c=500$ 使 $c^2>200000$；随机寻找含两个大质因子的最小公倍数即可定位两个质数，随机排列使误判概率很低，并将大规模情形的查询控制在约 $700$ 次。"
+          ],
+          "solutionBrief": "按 $n$ 分三档处理：小规模询问所有数对并从最大最小公倍数递归剔除最大值；中规模用随机配对找最大质因子；大规模随机寻找两个大质因子定位质数，再用 $\\operatorname{lcm}(p,a_i)/p$ 恢复元素。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
         }
       ]
     }
