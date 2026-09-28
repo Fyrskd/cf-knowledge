@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T11:51:02+00:00",
+  "updated_at": "2026-09-28T12:05:43+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -83774,6 +83774,241 @@
         "quality_flags": [
           "editorial标题中的题号与题目元数据不一致，但正文算法与题目匹配"
         ]
+      }
+    },
+    "1593G": {
+      "problem_key": "1593G",
+      "title": "Changing Brackets",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1593/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/96034",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e17db8fed302d3c2cc61b9540b61e856c83faea4c5001e89e42a05b595e38d0b",
+      "generated_at": "2026-09-28T12:03:30+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定只含圆括号和方括号的字符串。对每个独立查询的偶数长度子串，允许按题目规定付费修改括号，使其成为正确括号序列，并求所需的最小代价。",
+        "transformed_statement": "把子串中的方括号按子串内位置分为奇数位和偶数位两类，问题等价于让两类方括号数量平衡；最小代价就是两类数量之差的绝对值，再用前缀计数快速回答区间查询。",
+        "key_observations": [
+          "在子串内部按位置奇偶统计方括号，正确括号序列中每一对匹配的方括号必跨越奇偶位置，因此方括号总数在两类位置中必须相等。",
+          "若奇偶位置上的方括号数量相等，则可递归地匹配相邻的异奇偶方括号，并将中间及剩余部分构造成正确括号序列，所以无需付费修改。",
+          "若两类数量不等，至少要修改差值个方括号才能消除必要条件的失衡；直接把多出的一类改成圆括号即可达到该下界，答案为 $|cnt_{odd}-cnt_{even}|$。",
+          "查询中的奇偶位置计数可由全局前缀计数相减得到；即使子串起点改变导致奇偶类别交换，取绝对值后答案不变。"
+        ],
+        "solution_brief": "预处理每个前缀中全局奇数位和偶数位方括号数量。对查询 $[l,r]$ 分别作前缀差，输出两者差值的绝对值；其依据是方括号奇偶计数相等当且仅当无需付费修改。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，核心结论、构造与前缀计数方法依据 editorial_text，主题参考 tags；题面中的具体操作段落不完整。",
+        "quality_flags": [
+          "statement_operation_section_truncated"
+        ]
+      }
+    },
+    "1593F": {
+      "problem_key": "1593F",
+      "title": "Red-Black Number",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1593/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/96034",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1f18db864bd33833804d31bcb010ea042f8b70fef4dcaecb5aff0e24e48172c5",
+      "generated_at": "2026-09-28T12:03:52+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个允许含前导零的 $n$ 位十进制数，把每一位染成红色或黑色，按原顺序分别组成两个数，且两种颜色都至少使用一次。要求红色数能被 $A$ 整除、黑色数能被 $B$ 整除，并输出使两种颜色位数差 $|r-b|$ 最小的任意染色方案。",
+        "transformed_statement": "将数字序列划分为两个保持原顺序的子序列：红色子序列只需维护对 $A$ 的余数，黑色子序列只需维护对 $B$ 的余数，同时把红色数量作为优化维度，寻找两个余数都为零的可达终态。",
+        "key_observations": [
+          "把染色过程视为按原顺序将每个数字分配给红色或黑色子序列，两个子序列分别维护对 $A$、$B$ 的余数即可判断整除性。",
+          "处理前 $i$ 位时，状态加入红色数字数量 $r$，即可在终点用 $|r-(n-r)|=|2r-n|$ 直接比较颜色数量差。",
+          "追加数字 $d$ 时，余数按十进制更新为 $(rem\\times 10+d)\\bmod m$；因此只需记录两个余数，不必保存实际形成的两个大数。",
+          "记录每个可达状态的前驱和当前数字颜色，就能从满足两个余数均为 $0$ 且两种颜色都非空的最优终态反向恢复答案。"
+        ],
+        "solution_brief": "设状态为已处理位置、红色数量及红黑两数的余数，逐位尝试染红或染黑并记录前驱。枚举末尾红色数量，在两余数均为 $0$ 且两色非空的状态中选 $|2r-n|$ 最小者，再回溯输出染色方案。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数论与同余",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 的状态设计与转移说明，并结合 statement_text 的染色规则和目标；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1593E": {
+      "problem_key": "1593E",
+      "title": "Gardener and Tree",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1593/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/96034",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "19512e893fab792469bb4b1cfb31e42551337fc52362294aac6a926192f64601",
+      "generated_at": "2026-09-28T12:04:12+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵无根树，每次操作同时删除当前树中所有叶子（度数不超过 $1$ 的顶点），连续执行 $k$ 次；树为空后后续操作不再改变它。求操作结束后还剩多少个顶点。",
+        "transformed_statement": "将无限次删叶过程看成从外向内的分层剥离，为每个顶点计算其被删除的轮次；答案就是删除轮次大于 $k$ 的顶点数。",
+        "key_observations": [
+          "把每个顶点标记为被删除的轮次：初始度数不超过 $1$ 的顶点都在第 $1$ 轮删除，从而把同步删叶子转化为按轮次传播。",
+          "删除一个顶点只会影响仍存活邻居的当前度数；邻居度数降到 $1$ 时，其删除轮次确定为当前顶点轮次加 $1$，并加入队列。",
+          "每个顶点只需入队一次，因此无需逐轮重建树；顶点在前 $k$ 轮后仍存在，当且仅当其删除轮次大于 $k$。"
+        ],
+        "solution_brief": "维护每个顶点的当前剩余度数和删除轮次。将所有初始叶子入队，依次删除并更新邻居；邻居度数降至 $1$ 时标记为下一轮删除。最后统计删除轮次大于 $k$ 的顶点。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的删叶操作和 editorial_text 的队列、剩余度数及删除轮次方法；tags 用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1593D2": {
+      "problem_key": "1593D2",
+      "title": "Half of Same",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1593/problem/D2",
+      "editorial_url": "https://codeforces.com/blog/entry/96034",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c94d747195ed8d07828bc2fba22849bf3d586d3a2d709bfe3d5eefc23729a5bc",
+      "generated_at": "2026-09-28T12:04:38+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个偶数长度数组和正整数 $k$；每次可任选一个元素并将其减去 $k$，重复任意次。求能否使至少一半元素相等时的最大 $k$；若原数组已有至少一半元素相同，则答案为 $-1$，表示 $k$ 可无限大。",
+        "transformed_statement": "把一组最终相等的元素固定为其原始值中的最小者，问题转化为寻找最大的正整数 $k$，使至少 $n/2$ 个元素与该最小值的差都能被 $k$ 整除；相等元素对应差值为零，直接计入。",
+        "key_observations": [
+          "若至少有 $n/2$ 个原数已经相同，$k$ 可任意大，因为只对这些数执行相同次数的减法即可，因此答案为 $-1$。",
+          "设目标集合中的最小原数为 $a_{i_0}$；其他数能通过减去若干个 $k$ 变成它，当且仅当差值 $a_i-a_{i_0}$ 是 $k$ 的倍数。",
+          "固定 $a_{i_0}$ 后，只需枚举每个正差值的全部约数，并统计对应约数能整除多少个差值；加上等于最小值的数量达到 $n/2$ 时，该约数就是可行的 $k$。",
+          "枚举所有元素作为目标集合最小值不会漏解，因为任意可行集合都可选其中最小原数作为最终统一值。"
+        ],
+        "solution_brief": "先检查是否已有至少一半元素相同，若是则输出 $-1$。否则枚举目标集合的最小元素，分解其与其他更大元素的差值，统计各约数能覆盖的元素数量；满足覆盖至少 $n/2$ 个元素的最大约数即为答案，复杂度为 $O(n^2\\sqrt A)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial 正文及标签中的 brute force、math、number theory 提炼。",
+        "quality_flags": []
+      }
+    },
+    "1593D1": {
+      "problem_key": "1593D1",
+      "title": "All are Same",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1593/problem/D1",
+      "editorial_url": "https://codeforces.com/blog/entry/96034",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1f49b2ceaa9c0b8bcf1c5ef2716604f57d8a52271e07b2c7a141d0f94d04a12e",
+      "generated_at": "2026-09-28T12:04:56+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个偶数长度的整数数组，每次任选一个元素并从中减去同一个正整数 $k$，可进行任意次。要求使所有元素最终相等时可能的最大 $k$；若 $k$ 可以任意大则输出 $-1$。",
+        "transformed_statement": "把最终相等条件改写为：每个元素都应能通过减去若干个 $k$ 变成数组最小值，因此所有元素与最小值的差必须被 $k$ 整除。最大可行值于是转化为这些差值的最大公约数。",
+        "key_observations": [
+          "若所有元素初始相同，任意正整数 $k$ 都可对每个元素减一次，因此答案无上界，输出 $-1$。",
+          "固定 $k$ 后，设每个元素被减了 $q_i$ 次；取最小的 $q_i$ 对应元素作为不再操作的基准，它必然是数组最小值。",
+          "因此每个差值 $a_i- ext{min}(a)$ 必须是 $k$ 的倍数，且满足条件的最大 $k$ 正好是所有差值的最大公约数。"
+        ],
+        "solution_brief": "先判断数组是否全部相等；若相等则 $k$ 可任意大，输出 $-1$。否则以最小值为基准，计算所有 $a_i- ext{min}(a)$ 的最大公约数，即为答案。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text；题目标签提供了 math、number theory 方向。",
+        "quality_flags": []
+      }
+    },
+    "1593C": {
+      "problem_key": "1593C",
+      "title": "Save More Mice",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1593/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/96034",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "dc857389b9affe5140e30d4c50ca6c939a986a51a512e40139c53c433e4468b5",
+      "generated_at": "2026-09-28T12:05:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "数轴上猫在 $0$、洞在 $n$，有 $k$ 只老鼠位于两者之间。每秒先选择一只老鼠向右移动一步，抵达洞口即获救；随后猫向右移动一步并吃掉其到达位置上的老鼠，求最多能救下多少只。",
+        "transformed_statement": "把每只老鼠改写为到洞口的距离 $r_i=n-x_i$。目标转化为选择尽量多的老鼠，使它们的距离总和严格小于 $n$；最优选择必是距离最小的若干只。",
+        "key_observations": [
+          "固定要救 $m$ 只时，应选择离洞最近的 $m$ 只；用更远的老鼠替换更近的老鼠只会增大总移动距离，因此不会更优。",
+          "选中老鼠到洞的距离总和记为 $R$，这些老鼠能全部获救当且仅当 $R<n$；每秒只能移动一只老鼠，而猫也同步前进，等号时最后一只无法领先猫到达洞口。",
+          "若 $R<n$，首步移动后猫不会吃到老鼠，且问题规模等价变为猫到洞距离减一、剩余总距离减一，严格不等式持续成立直到所有老鼠获救。",
+          "将距离排序后，前缀和随选取数量单调增加，因此扫描最大的前缀长度且保持前缀和小于 $n$，即可得到答案。"
+        ],
+        "solution_brief": "把每只老鼠转为到洞的距离并升序排列。依次累加最近老鼠的距离，求满足前缀和 $<n$ 的最大数量；该数量就是最多能救下的老鼠数。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的移动与捕食规则，以及 editorial_text 给出的距离总和判定和最近老鼠贪心。",
+        "quality_flags": []
+      }
+    },
+    "1593B": {
+      "problem_key": "1593B",
+      "title": "Make it Divisible by 25",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1593/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/96034",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "63e78cca19b5c5b28cb918f787443b382c7fc74a3591bf73ffd69d0fee15c68e",
+      "generated_at": "2026-09-28T12:05:30+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个无前导零的正整数，每次可删除任意一个数字，但不能删到空数；删除后前导零会自动去除。求最少删除多少位，使剩余正整数能被 $25$ 整除。",
+        "transformed_statement": "将问题转化为：从原数字中按顺序保留一个末尾子序列，使其最后两位分别为 $00$、$25$、$50$ 或 $75$；对每种目标末尾计算最少删除数并取最小值。",
+        "key_observations": [
+          "正整数能被 $25$ 整除，当且仅当末两位是 $00$、$25$、$50$ 或 $75$，因此只需分别尝试保留这四种末尾。",
+          "固定目标末尾 $XY$ 后，应从右向左先找到数字 $Y$，再在其左侧找到数字 $X$；删除两者之间及右侧跳过的数字即可，且保留更靠右的匹配不会增加删除数。",
+          "某种末尾若无法按顺序找到两个数字则不可行，所有可行方案中的最小删除次数就是答案。"
+        ],
+        "solution_brief": "枚举 $00$、$25$、$50$、$75$ 四种目标末尾。对每种末尾从右向左寻找第二位，再在其左侧寻找第一位，统计需要删除的数字数量；取所有可行方案的最小值。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余",
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的删除规则与整除目标，以及 editorial 中关于四种末尾和从右向左匹配的完整说明。",
+        "quality_flags": []
+      }
+    },
+    "1593A": {
+      "problem_key": "1593A",
+      "title": "Elections",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1593/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/96034",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c23f13a114bb3b05b8be9c2aab5edfc3c5586426171f9e9c212b5af8cef900f0",
+      "generated_at": "2026-09-28T12:05:43+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "三名候选人的得票数分别为 $a,b,c$。对每名候选人独立计算最少需要新增多少票，使其最终票数严格高于另外两人；新增某人的票数不影响其他人的答案。",
+        "transformed_statement": "固定一个候选人后，将目标转化为达到“最大对手票数加 $1$”的阈值问题；所需新增票数就是该阈值与其当前票数之差的非负部分，三人分别套用同一公式。",
+        "key_observations": [
+          "候选人获胜必须严格超过两名对手，因此其最终票数至少为两名对手票数最大值加 $1$，将严格不等式转成明确阈值。",
+          "每名候选人的新增票数独立计算，不会把给某人的票加入其他候选人的票数，因此可以分别使用原始的三组票数。",
+          "当候选人当前票数已达到获胜阈值时无需加票，否则答案是阈值减当前票数，统一写为 $\\max(0,\\text{最大对手票数}+1-\\text{当前票数})$。"
+        ],
+        "solution_brief": "对每名候选人分别计算：取另外两人的较大票数，加 $1$ 得到严格获胜所需票数，再与当前票数作差并用 $\\max(0,\\cdot)$ 截断为非负数。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，tags 提供 math 分类。",
+        "quality_flags": []
       }
     }
   }

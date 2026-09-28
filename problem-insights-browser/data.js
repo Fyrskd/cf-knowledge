@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3735,
+    "total_problems": 3743,
     "source_total_problems": 3745,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3735,
-    "with_editorial_brief": 3422,
-    "with_solution_brief": 3424,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3743,
+    "with_editorial_brief": 3430,
+    "with_solution_brief": 3432,
     "missing_editorial_brief": 311,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2797,
+    "ai_override_count": 2805,
     "primary_topic_count": 13,
-    "contest_count": 578,
+    "contest_count": 579,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 392,
-    "构造与贪心": 1215,
-    "数据结构": 356,
+    "数论与同余": 395,
+    "构造与贪心": 1217,
+    "树结构": 180,
+    "动态规划与状态设计": 304,
+    "数据结构": 357,
     "交互": 109,
-    "树结构": 179,
     "组合计数与概率": 281,
     "字符串": 197,
-    "动态规划与状态设计": 303,
     "图论与网络流": 241,
     "基础实现与模拟": 235,
     "几何": 90,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2449,
+    "ai_generated_with_editorial": 2457,
     "ai_generated_partial_editorial": 82,
     "missing_editorial": 311,
     "low_confidence": 1,
@@ -115099,6 +115099,245 @@ window.CF_INSIGHTS_DATA = {
             "查询答案的补偿金额可写成 $\\max(\\mathrm{maxEdge}(x,\\mathrm{代表点}),\\mathrm{tol}[u])$，其中前者处理起点到最高点的路径，后者覆盖最高点之间的路径。"
           ],
           "solutionBrief": "按车辆数降序离线处理查询，并加入容量足够的道路维护 DSU。每个连通块记录最高 enjoyment、代表点及最高点间路径最大 toll；用二进制提升求两点路径最大边，查询时取起点到代表点与块内 tol 的较大值，复杂度为 $O((n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1593,
+      "name": "Codeforces Round 748 (Div. 3)",
+      "date": "2021-10-13",
+      "url": "https://codeforces.com/contest/1593",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1593A",
+          "index": "A",
+          "slot": "A",
+          "title": "Elections",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1593/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/96034",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "三名候选人的得票数分别为 $a,b,c$。对每名候选人独立计算最少需要新增多少票，使其最终票数严格高于另外两人；新增某人的票数不影响其他人的答案。",
+          "transformedStatement": "固定一个候选人后，将目标转化为达到“最大对手票数加 $1$”的阈值问题；所需新增票数就是该阈值与其当前票数之差的非负部分，三人分别套用同一公式。",
+          "keyObservations": [
+            "候选人获胜必须严格超过两名对手，因此其最终票数至少为两名对手票数最大值加 $1$，将严格不等式转成明确阈值。",
+            "每名候选人的新增票数独立计算，不会把给某人的票加入其他候选人的票数，因此可以分别使用原始的三组票数。",
+            "当候选人当前票数已达到获胜阈值时无需加票，否则答案是阈值减当前票数，统一写为 $\\max(0,\\text{最大对手票数}+1-\\text{当前票数})$。"
+          ],
+          "solutionBrief": "对每名候选人分别计算：取另外两人的较大票数，加 $1$ 得到严格获胜所需票数，再与当前票数作差并用 $\\max(0,\\cdot)$ 截断为非负数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1593B",
+          "index": "B",
+          "slot": "B",
+          "title": "Make it Divisible by 25",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1593/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/96034",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "字符串"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个无前导零的正整数，每次可删除任意一个数字，但不能删到空数；删除后前导零会自动去除。求最少删除多少位，使剩余正整数能被 $25$ 整除。",
+          "transformedStatement": "将问题转化为：从原数字中按顺序保留一个末尾子序列，使其最后两位分别为 $00$、$25$、$50$ 或 $75$；对每种目标末尾计算最少删除数并取最小值。",
+          "keyObservations": [
+            "正整数能被 $25$ 整除，当且仅当末两位是 $00$、$25$、$50$ 或 $75$，因此只需分别尝试保留这四种末尾。",
+            "固定目标末尾 $XY$ 后，应从右向左先找到数字 $Y$，再在其左侧找到数字 $X$；删除两者之间及右侧跳过的数字即可，且保留更靠右的匹配不会增加删除数。",
+            "某种末尾若无法按顺序找到两个数字则不可行，所有可行方案中的最小删除次数就是答案。"
+          ],
+          "solutionBrief": "枚举 $00$、$25$、$50$、$75$ 四种目标末尾。对每种末尾从右向左寻找第二位，再在其左侧寻找第一位，统计需要删除的数字数量；取所有可行方案的最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1593C",
+          "index": "C",
+          "slot": "C",
+          "title": "Save More Mice",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1593/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/96034",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "greedy"
+          ],
+          "statementBrief": "数轴上猫在 $0$、洞在 $n$，有 $k$ 只老鼠位于两者之间。每秒先选择一只老鼠向右移动一步，抵达洞口即获救；随后猫向右移动一步并吃掉其到达位置上的老鼠，求最多能救下多少只。",
+          "transformedStatement": "把每只老鼠改写为到洞口的距离 $r_i=n-x_i$。目标转化为选择尽量多的老鼠，使它们的距离总和严格小于 $n$；最优选择必是距离最小的若干只。",
+          "keyObservations": [
+            "固定要救 $m$ 只时，应选择离洞最近的 $m$ 只；用更远的老鼠替换更近的老鼠只会增大总移动距离，因此不会更优。",
+            "选中老鼠到洞的距离总和记为 $R$，这些老鼠能全部获救当且仅当 $R<n$；每秒只能移动一只老鼠，而猫也同步前进，等号时最后一只无法领先猫到达洞口。",
+            "若 $R<n$，首步移动后猫不会吃到老鼠，且问题规模等价变为猫到洞距离减一、剩余总距离减一，严格不等式持续成立直到所有老鼠获救。",
+            "将距离排序后，前缀和随选取数量单调增加，因此扫描最大的前缀长度且保持前缀和小于 $n$，即可得到答案。"
+          ],
+          "solutionBrief": "把每只老鼠转为到洞的距离并升序排列。依次累加最近老鼠的距离，求满足前缀和 $<n$ 的最大数量；该数量就是最多能救下的老鼠数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1593D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "All are Same",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1593/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/96034",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个偶数长度的整数数组，每次任选一个元素并从中减去同一个正整数 $k$，可进行任意次。要求使所有元素最终相等时可能的最大 $k$；若 $k$ 可以任意大则输出 $-1$。",
+          "transformedStatement": "把最终相等条件改写为：每个元素都应能通过减去若干个 $k$ 变成数组最小值，因此所有元素与最小值的差必须被 $k$ 整除。最大可行值于是转化为这些差值的最大公约数。",
+          "keyObservations": [
+            "若所有元素初始相同，任意正整数 $k$ 都可对每个元素减一次，因此答案无上界，输出 $-1$。",
+            "固定 $k$ 后，设每个元素被减了 $q_i$ 次；取最小的 $q_i$ 对应元素作为不再操作的基准，它必然是数组最小值。",
+            "因此每个差值 $a_i- ext{min}(a)$ 必须是 $k$ 的倍数，且满足条件的最大 $k$ 正好是所有差值的最大公约数。"
+          ],
+          "solutionBrief": "先判断数组是否全部相等；若相等则 $k$ 可任意大，输出 $-1$。否则以最小值为基准，计算所有 $a_i- ext{min}(a)$ 的最大公约数，即为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1593D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Half of Same",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1593/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/96034",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个偶数长度数组和正整数 $k$；每次可任选一个元素并将其减去 $k$，重复任意次。求能否使至少一半元素相等时的最大 $k$；若原数组已有至少一半元素相同，则答案为 $-1$，表示 $k$ 可无限大。",
+          "transformedStatement": "把一组最终相等的元素固定为其原始值中的最小者，问题转化为寻找最大的正整数 $k$，使至少 $n/2$ 个元素与该最小值的差都能被 $k$ 整除；相等元素对应差值为零，直接计入。",
+          "keyObservations": [
+            "若至少有 $n/2$ 个原数已经相同，$k$ 可任意大，因为只对这些数执行相同次数的减法即可，因此答案为 $-1$。",
+            "设目标集合中的最小原数为 $a_{i_0}$；其他数能通过减去若干个 $k$ 变成它，当且仅当差值 $a_i-a_{i_0}$ 是 $k$ 的倍数。",
+            "固定 $a_{i_0}$ 后，只需枚举每个正差值的全部约数，并统计对应约数能整除多少个差值；加上等于最小值的数量达到 $n/2$ 时，该约数就是可行的 $k$。",
+            "枚举所有元素作为目标集合最小值不会漏解，因为任意可行集合都可选其中最小原数作为最终统一值。"
+          ],
+          "solutionBrief": "先检查是否已有至少一半元素相同，若是则输出 $-1$。否则枚举目标集合的最小元素，分解其与其他更大元素的差值，统计各约数能覆盖的元素数量；满足覆盖至少 $n/2$ 个元素的最大约数即为答案，复杂度为 $O(n^2\\sqrt A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1593E",
+          "index": "E",
+          "slot": "E",
+          "title": "Gardener and Tree",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1593/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/96034",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "greedy",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给定一棵无根树，每次操作同时删除当前树中所有叶子（度数不超过 $1$ 的顶点），连续执行 $k$ 次；树为空后后续操作不再改变它。求操作结束后还剩多少个顶点。",
+          "transformedStatement": "将无限次删叶过程看成从外向内的分层剥离，为每个顶点计算其被删除的轮次；答案就是删除轮次大于 $k$ 的顶点数。",
+          "keyObservations": [
+            "把每个顶点标记为被删除的轮次：初始度数不超过 $1$ 的顶点都在第 $1$ 轮删除，从而把同步删叶子转化为按轮次传播。",
+            "删除一个顶点只会影响仍存活邻居的当前度数；邻居度数降到 $1$ 时，其删除轮次确定为当前顶点轮次加 $1$，并加入队列。",
+            "每个顶点只需入队一次，因此无需逐轮重建树；顶点在前 $k$ 轮后仍存在，当且仅当其删除轮次大于 $k$。"
+          ],
+          "solutionBrief": "维护每个顶点的当前剩余度数和删除轮次。将所有初始叶子入队，依次删除并更新邻居；邻居度数降至 $1$ 时标记为下一轮删除。最后统计删除轮次大于 $k$ 的顶点。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1593F",
+          "index": "F",
+          "slot": "F",
+          "title": "Red-Black Number",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1593/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/96034",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "implementation",
+            "math",
+            "meet-in-the-middle"
+          ],
+          "statementBrief": "给定一个允许含前导零的 $n$ 位十进制数，把每一位染成红色或黑色，按原顺序分别组成两个数，且两种颜色都至少使用一次。要求红色数能被 $A$ 整除、黑色数能被 $B$ 整除，并输出使两种颜色位数差 $|r-b|$ 最小的任意染色方案。",
+          "transformedStatement": "将数字序列划分为两个保持原顺序的子序列：红色子序列只需维护对 $A$ 的余数，黑色子序列只需维护对 $B$ 的余数，同时把红色数量作为优化维度，寻找两个余数都为零的可达终态。",
+          "keyObservations": [
+            "把染色过程视为按原顺序将每个数字分配给红色或黑色子序列，两个子序列分别维护对 $A$、$B$ 的余数即可判断整除性。",
+            "处理前 $i$ 位时，状态加入红色数字数量 $r$，即可在终点用 $|r-(n-r)|=|2r-n|$ 直接比较颜色数量差。",
+            "追加数字 $d$ 时，余数按十进制更新为 $(rem\\times 10+d)\\bmod m$；因此只需记录两个余数，不必保存实际形成的两个大数。",
+            "记录每个可达状态的前驱和当前数字颜色，就能从满足两个余数均为 $0$ 且两种颜色都非空的最优终态反向恢复答案。"
+          ],
+          "solutionBrief": "设状态为已处理位置、红色数量及红黑两数的余数，逐位尝试染红或染黑并记录前驱。枚举末尾红色数量，在两余数均为 $0$ 且两色非空的状态中选 $|2r-n|$ 最小者，再回溯输出染色方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1593G",
+          "index": "G",
+          "slot": "G",
+          "title": "Changing Brackets",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1593/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/96034",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定只含圆括号和方括号的字符串。对每个独立查询的偶数长度子串，允许按题目规定付费修改括号，使其成为正确括号序列，并求所需的最小代价。",
+          "transformedStatement": "把子串中的方括号按子串内位置分为奇数位和偶数位两类，问题等价于让两类方括号数量平衡；最小代价就是两类数量之差的绝对值，再用前缀计数快速回答区间查询。",
+          "keyObservations": [
+            "在子串内部按位置奇偶统计方括号，正确括号序列中每一对匹配的方括号必跨越奇偶位置，因此方括号总数在两类位置中必须相等。",
+            "若奇偶位置上的方括号数量相等，则可递归地匹配相邻的异奇偶方括号，并将中间及剩余部分构造成正确括号序列，所以无需付费修改。",
+            "若两类数量不等，至少要修改差值个方括号才能消除必要条件的失衡；直接把多出的一类改成圆括号即可达到该下界，答案为 $|cnt_{odd}-cnt_{even}|$。",
+            "查询中的奇偶位置计数可由全局前缀计数相减得到；即使子串起点改变导致奇偶类别交换，取绝对值后答案不变。"
+          ],
+          "solutionBrief": "预处理每个前缀中全局奇数位和偶数位方括号数量。对查询 $[l,r]$ 分别作前缀差，输出两者差值的绝对值；其依据是方括号奇偶计数相等当且仅当无需付费修改。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
