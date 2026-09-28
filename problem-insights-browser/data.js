@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3128,
+    "total_problems": 3134,
     "source_total_problems": 3136,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3128,
-    "with_editorial_brief": 2848,
-    "with_solution_brief": 2849,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3134,
+    "with_editorial_brief": 2854,
+    "with_solution_brief": 2855,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2190,
+    "ai_override_count": 2196,
     "primary_topic_count": 13,
-    "contest_count": 478,
+    "contest_count": 479,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 998,
-    "基础实现与模拟": 186,
+    "构造与贪心": 1000,
+    "基础实现与模拟": 187,
+    "组合计数与概率": 244,
+    "数据结构": 294,
+    "交互": 98,
     "图论与网络流": 194,
     "动态规划与状态设计": 266,
-    "数据结构": 293,
     "数论与同余": 335,
     "字符串": 164,
     "树结构": 154,
     "几何": 77,
     "博弈": 99,
-    "代数、矩阵与多项式": 22,
-    "组合计数与概率": 243,
-    "交互": 97
+    "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1891,
-    "ai_generated_partial_editorial": 66,
+    "ai_generated_with_editorial": 1896,
+    "ai_generated_partial_editorial": 67,
     "missing_editorial": 279,
     "manual_override": 891,
     "statement_derived": 1
@@ -96659,6 +96659,190 @@ window.CF_INSIGHTS_DATA = {
             "令 $n=2^h\\cdot o$ 且 $o$ 为奇数，把相差 $2^h$ 的位置组成一组即可复用递归；状态结构类似线段树，单点修改只影响 $O(\\log n)$ 个节点。"
           ],
           "solutionBrief": "先在长度为 $2^h$ 的数组上递归计算总异或约束，并用三种压缩分布表示 DP。对一般 $n$ 按 $n=2^h o$ 分组处理，再以类似线段树的结构支持修改，初始计算 $O(n)$、每次修改 $O(\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1705,
+      "name": "Codeforces Round 807 (Div. 2)",
+      "date": "2022-07-15",
+      "url": "https://codeforces.com/contest/1705",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1705A",
+          "index": "A",
+          "slot": "A",
+          "title": "Mark the Photographer",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1705/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/104881",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定 $2n$ 个人的身高，要把他们分成前后两排，每排 $n$ 人，并为每个位置配成一列，要求后排对应的人至少比前排高 $x$。判断是否存在满足所有列要求的排列。",
+          "transformedStatement": "将问题重述为：排序得到 $a[0..2n-1]$ 后，判断第 $i$ 个较矮者与第 $n+i$ 个较高者能否作为固定配对；可行性等价于每一对的身高差都至少为 $x$。",
+          "keyObservations": [
+            "排序后，对任意 i，区间 $[a[i],a[n+i]]$ 内有至少 $n+1$ 人；其中两人必在同一列，因此必须满足 $a[n+i]-a[i] >= x$。",
+            "将前排安排为较高的 $a[n],...,a[2n-1]$，后排安排为较低的 $a[0],...,a[n-1]$，并按相同顺序配对时，所有列同时达到条件，故这些不等式也充分。",
+            "交换论证表明，任意可行方案都能调整为高矮两组分别排序且同序配对，因此只需检查固定的 $n$ 对位置差。"
+          ],
+          "solutionBrief": "对每组数据将 $2n$ 个身高升序排序，检查所有 $i=0,...,n-1$ 是否满足 $a[n+i]-a[i] >= x$。全部满足则输出 YES，否则输出 NO；排序复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1705B",
+          "index": "B",
+          "slot": "B",
+          "title": "Mark the Dust Sweeper",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1705/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/104881",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定 $n$ 个房间及非负灰尘量，机器可按题面规定的三步操作转移灰尘，目标是把灰尘整理到最后一个房间，并求最少操作次数。但当前题面摘录缺少这三步操作的具体规则，因此无法完整复述每次操作的限制。",
+          "transformedStatement": "题解将问题转化为两部分代价：先处理去掉开头连续零后的前 $n-1$ 个位置，其中每个零贡献一次额外操作；随后把这些位置的全部灰尘移入第 $n$ 个位置。总答案为前缀灰尘总量加零的数量。",
+          "keyObservations": [
+            "删除数组开头连续的零后，前缀中的零才需要额外处理；这些零的数量记为 $k$，因为每个零最多只能让答案减少 $1$。",
+            "先填满前 $n-1$ 个位置中的零，再把前 $n-1$ 个位置的灰尘逐单位移到第 $n$ 个位置，可行操作数为 $k+\\sum_{i=1}^{n-1}a_i$。",
+            "任意操作至多使上述总量减少 $1$：若目标是第 $n$ 个房间，只减少灰尘总量；否则至多填补一个零，因此该构造达到最小值。"
+          ],
+          "solutionBrief": "跳过开头连续的零，统计其后的前 $n-1$ 项之和，并额外统计其中的零。答案为两者之和；按先填零、再将灰尘移到末项的顺序即可达到。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1705C",
+          "index": "C",
+          "slot": "C",
+          "title": "Mark and His Unfinished Essay",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1705/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/104881",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "给定一个初始字符串，按顺序进行 $c$ 次操作：每次从当前字符串截取区间 $[l,r]$，将这段子串追加到末尾。所有追加完成后，回答 $q$ 次查询，求最终字符串第 $k$ 个字符。",
+          "transformedStatement": "不实际构造不断变长的字符串，而是把每次追加看成一个连续位置块，并记录该块到原来源区间的固定位移。查询位置从最后一次操作逆向映射，直到落入初始字符串。",
+          "keyObservations": [
+            "每次追加的整段字符都对应当前字符串中的一个连续来源区间，因此只需记录追加块的起点和长度，而不必实际扩展字符串。",
+            "若最终位置 $k$ 落在第 $i$ 次追加块中，它对应来源位置 $k-(a_i-l_i)$；向前映射后位置严格回到更早的字符串范围。",
+            "对每个查询从最后一次操作逆序检查追加块，持续把位置映射回初始串，最终直接访问初始字符串即可。"
+          ],
+          "solutionBrief": "记录每次追加块在当前串中的区间及其与来源区间的位移。查询时从后往前判断位置是否属于该追加块，若属于就减去位移，直到回到初始串并输出对应字符；复杂度为 $O(cq)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1705D",
+          "index": "D",
+          "slot": "D",
+          "title": "Mark and Lightbulbs",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1705/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/104881",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定初始二进制串 $s$ 和目标串 $t$，通过题解所述操作改变灯泡状态；操作不会改变首尾，并在相邻异或串中交换一对相邻的不同位。要求求出变换所需的最少操作次数，无法变换时输出 $-1$。",
+          "transformedStatement": "把每个字符串改写为长度为 $n-1$ 的相邻异或串，原问题转化为将初始串中的若干个 $1$ 沿位置左右移动到目标位置；保持这些 $1$ 的相对顺序时，最小代价是对应位置距离之和。",
+          "keyObservations": [
+            "首位灯泡无法被操作改变，因此只要 $s_1\\ne t_1$ 或 $s_n\\ne t_n$，就一定无解。",
+            "将字符串转为相邻异或串 $d_i=s_i\\oplus s_{i+1}$ 后，一次操作等价于交换相邻的不同位，因此其中 $1$ 的总数保持不变。",
+            "若初末异或串中 $1$ 的位置分别为 $a_1<\\cdots<a_k$ 和 $b_1<\\cdots<b_k$，这些 $1$ 不能互相穿过，最小操作数就是逐一匹配后的距离和 $\\sum_{i=1}^{k}|a_i-b_i|$。"
+          ],
+          "solutionBrief": "先检查首尾字符是否相同；再记录 $s,t$ 的相邻异或串中所有 $1$ 的位置。数量不同则无解，否则按位置顺序配对，答案为对应位置差绝对值之和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1705E",
+          "index": "E",
+          "slot": "E",
+          "title": "Mark and Professor Koro",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1705/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/104881",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "combinatorics",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "黑板上有 $n$ 个正整数；每次可将两个相同的数 $x$ 合并为一个 $x+1$，反复操作后求黑板上可能出现的最大数。随后会持续修改某个位置的数值，每次修改后都要重新回答该最大值。",
+          "transformedStatement": "把每个数 $x$ 视为权值 $2^x$，合并操作就是把两个 $2^x$ 合成一个 $2^{x+1}$，所以问题等价于动态维护 $S=\\sum_i2^{a_i}$ 的最高二进制位。",
+          "keyObservations": [
+            "合并两个相同的数 $x$ 为一个 $x+1$ 不改变权值和 $S=\\sum 2^{a_i}$，因此最终可达最大值不超过 $\\lfloor\\log_2 S\\rfloor$。",
+            "不断合并直到所有数互异；若末态最大数为 $b_k$，则 $S=\\sum 2^{b_i}<2^{b_k+1}$，结合上界可知答案恰为 $\\lfloor\\log_2 S\\rfloor$。",
+            "每次修改只需从二进制计数中删除 $2^{旧值}$、加入 $2^{新值}$；连续的进位或借位区间可整体翻转，从而避免显式维护超大整数。"
+          ],
+          "solutionBrief": "将答案化为 $S=\\sum 2^{a_i}$ 的最高位。用位集或懒标记线段树维护 $S$ 的二进制表示：更新时处理一次删除和加入，分别模拟借位、进位，再输出最高置位。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1705F",
+          "index": "F",
+          "slot": "F",
+          "title": "Mark and the Online Exam",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1705/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/104881",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "interactive",
+            "probabilities"
+          ],
+          "statementBrief": "有 $n$ 道答案固定的判断题，每次可提交一个长度为 $n$、仅含 T/F 的答案串，评分系统返回其中答对的题数，最多查询 675 次。需要据此确定全部正确答案并提交答案串；非交互改题格式中则直接给出答案键。",
+          "transformedStatement": "把一次查询看成对答案串的逐位匹配计数，并用两个固定查询作基准。通过比较少数位置被翻转前后的计数差，将全局识别转化为每组三个位置的有限种差值分类问题。",
+          "keyObservations": [
+            "以全为 T 和交替的 TF 作为固定基准，查询差值只反映被修改位置的正确数变化，从而消除其他题目的干扰。",
+            "将全 T 基准中的相邻两位同时改为 F：差值为 $+2$ 时答案是 FF，差值为 $-2$ 时答案是 TT，否则必为 TF 或 FT。",
+            "若一对答案混合，再相对交替基准同时修改这两位及第三位，差值恰为 $-3,-1,+1,+3$ 之一，可唯一确定两位顺序和第三位答案。",
+            "因此通常用两次查询确定三道题；剩余一两道题单独比较即可，在约 $2n/3$ 次查询内完成确定性构造。"
+          ],
+          "solutionBrief": "先查询全 T 与交替 TF 作为基准，再按两位分组。比较把两位改成 FF 后的差值可识别 TT、FF 或混合；混合时借助第三位和交替基准，用一次查询区分四种情况，从而两次查询确定三位，末尾少数位置单独处理。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
