@@ -15,19 +15,411 @@
     ]
   },
   "summary": {
-    "total_problems": 3882,
+    "total_problems": 3891,
     "source_total_problems": 3893,
-    "filtered_out_problems": 11,
-    "with_statement_brief": 3882,
-    "with_editorial_brief": 3554,
-    "with_solution_brief": 3556,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3891,
+    "with_editorial_brief": 3563,
+    "with_solution_brief": 3565,
     "missing_editorial_brief": 326,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2944,
+    "ai_override_count": 2953,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1552A",
+      "contest_id": 1552,
+      "title": "Subsequence Permutation",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1552/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/93199",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [],
+      "original_tags": [
+        "sortings",
+        "strings"
+      ],
+      "statement_brief": "给定一个小写字母串，可以选择任意 $k$ 个位置并将这些位置上的字符任意重排，其他位置保持不变，且该操作必须执行一次。求使整个字符串按字母序排列所需的最小 $k$。",
+      "transformed_statement": "先把原串排序得到目标串，将问题转化为统计两串对应位置字符不同的数量；这些不匹配位置正是必须参与重排的位置。",
+      "key_observations": [
+        "最终字符串只能是原字符串字符的重排结果，目标唯一确定为按字母序排序后的字符串。",
+        "只需选出原串与排序串字符不同的位置；这些位置上的字符 multiset 与目标位置所需字符 multiset 相同，重排后即可得到排序串。",
+        "若少选一个不匹配位置，该位置字符保持不变且仍不同于目标字符，因此结果不可能有序；答案就是不匹配位置数。"
+      ],
+      "solution_brief": "将字符串排序得到 $t$，逐位比较原串与 $t$，统计字符不同的位置数 $m$。选中这些位置并按目标字符重排即可；少选任何一个不匹配位置都会失败，因此答案为 $m$，复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T15:04:08+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1552B",
+      "contest_id": 1552,
+      "title": "Running for Gold",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1552/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/93199",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "graphs",
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "给定 $n$ 名运动员在 5 场往届马拉松中的名次；若运动员 $x$ 至少在 3 场名次优于 $y$，就称 $x$ 优于 $y$。要求找出一名优于所有其他运动员的编号；若不存在则报告无解。",
+      "transformed_statement": "把运动员看成完全有向比较图：每对运动员恰有一个方向表示谁在至少 3 场中更强。目标是找出出边指向所有其他点的顶点，并用候选淘汰扫描定位它。",
+      "key_observations": [
+        "由于只有 5 场且每场名次不同，若运动员 $x$ 不在至少 3 场胜过 $y$，则 $y$ 必在至少 3 场胜过 $x$，两人的优劣关系恰好有一个方向。",
+        "最多只有一名运动员能优于所有其他人；若有两名，则其中一人不可能在至少 3 场胜过另一人，产生矛盾。",
+        "顺序扫描并维护候选人 $w$：若 $w$ 胜过当前运动员则当前人可淘汰；否则当前人必胜过 $w$，因此将候选改为当前人不会丢失真正答案。",
+        "扫描结束后的候选只保证未被上述过程淘汰，仍需逐一检查其是否胜过所有运动员，以排除不存在全胜者的情况。"
+      ],
+      "solution_brief": "利用五场比较中的互补性维护唯一可能的候选人。扫描时保留能击败当前候选者的运动员，最后再检查候选者是否确实击败所有人；总复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T15:03:56+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1552C",
+      "contest_id": 1552,
+      "title": "Maximize the Intersections",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1552/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/93199",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "构造与贪心",
+        "几何"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "constructive algorithms",
+        "geometry",
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "圆周上有 $2n$ 个点，已有 $k$ 条端点互不重复的弦。必须把剩余点两两配对画出 $n-k$ 条新弦，选择配对方式后，求所有弦产生的交点总数的最大值。",
+      "transformed_statement": "忽略原编号，只按顺时针给所有自由点重新编号；问题转化为在这些点上构造一组新增弦，使新增弦之间尽可能全部相交，再统计它们与既有弦的总交点数。",
+      "key_observations": [
+        "若两条新增弦不相交，将端点交叉重连；任意其他弦与这两条弦相交的条数保持不变，但两条新弦互相相交，因此总数严格增加。",
+        "所有新增弦两两相交时，按自由点的顺序只能将第 $i$ 个点与第 $i+(n-k)$ 个点配对，形成唯一的星形配置。",
+        "因此最优解可固定新增弦的配对方式，再直接统计所有黑弦与红弦之间以及同色弦之间的两两相交次数。"
+      ],
+      "solution_brief": "令 $m=n-k$，按自由点的环上顺序编号，将点 $i$ 与点 $i+m$ 相连。交换论证表明任何非星形配置都能改进交点数；构造后枚举全部弦对，用端点交错判断是否相交，复杂度为 $O(n^2)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T15:03:36+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1552D",
+      "contest_id": 1552,
+      "title": "Array Differentiation",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1552/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/93199",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "代数、矩阵与多项式",
+        "动态规划与状态设计"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "constructive algorithms",
+        "dfs and similar",
+        "dp",
+        "graphs",
+        "math"
+      ],
+      "statement_brief": "给定长度为 $n$ 的整数序列 $a$，需要判断是否能构造同样长度的整数序列 $b$，使每个 $a_i$ 都等于某两个位置的差 $b_j-b_k$，其中两个位置可以相同且可重复使用。对每组数据输出是否存在这样的 $b$。",
+      "transformed_statement": "把每个表示式 $a_i=b_j-b_k$ 看成图中从 $j$ 到 $k$ 的有向边；由于边数等于顶点数，任意合法表示都会产生一个环，而环上的差值相消等价于寻找一个非空子集，使元素取正负号后的总和为 $0$。",
+      "key_observations": [
+        "若存在合法的 $b$，把每个 $a_i$ 表示成有向边 $j_i\\to k_i$，则得到 $n$ 个点、$n$ 条边的图，必含一个环。",
+        "沿环将相邻的 $b$ 作差并相加，所有 $b$ 会抵消，因此合法性必然推出某个非空子集的元素带符号和为 $0$。",
+        "反过来，任意非空子集满足带符号和为 $0$ 时，可沿该序列递推构造对应的 $b$，其余位置直接设为 $a_i$，从而得到合法解。",
+        "每个元素只有“不选、取正号、取负号”三种状态，枚举全部 $3^n-1$ 种选择即可判定，约束 $n\\le 10$ 时足够。"
+      ],
+      "solution_brief": "将每个 $a_i$ 看成图上一条边对应的差值。合法解存在当且仅当存在非空子集及符号使带符号和为 $0$；枚举每项的不选、取正或取负三种状态，找到零和即输出 YES，否则输出 NO，复杂度为 $O(n3^n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T15:03:21+00:00",
+          "quality_flags": [
+            "statement_format_corrupted",
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1552E",
+      "contest_id": 1552,
+      "title": "Colors and Intervals",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1552/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/93199",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "data structures",
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "给定长度为 $nk$ 的颜色序列，每种颜色恰好出现 $k$ 次。需为每种颜色选择一个由其相邻两次出现确定的区间，使每种颜色恰选一次，且序列中的任意位置被选中区间覆盖的次数不超过 $\\lceil n/(k-1)\\rceil$。",
+      "transformed_statement": "把每种颜色转化为按出现顺序排列的 $k-1$ 个相邻出现区间；问题变为从每种颜色的候选区间中选一个，并分成若干轮，使同轮数量不超过 $q$、不同轮区间互不相交。",
+      "key_observations": [
+        "每种颜色只需在相邻两次出现之间选一个区间，因此可将每种颜色的选择限制为 $k-1$ 个候选间隔。",
+        "令每轮容量为 $q=\\lceil n/(k-1)\\rceil$，按下一次出现位置排序并选出前 $q$ 个未处理颜色，可在恰好 $k-1$ 轮内覆盖所有颜色。",
+        "不同轮次选出的区间必然不相交：较早轮次区间的右端点早于较晚轮次颜色在更早位置的出现，因此覆盖次数只需控制同一轮。",
+        "每轮最多选择 $q$ 个区间，且跨轮区间互不相交，所以任意位置最多被 $q$ 个区间覆盖，同时每种颜色只被选择一次。"
+      ],
+      "solution_brief": "记录每种颜色的出现位置。设 $q=\\lceil n/(k-1)\\rceil$，第 $t$ 轮按未选颜色的第 $t+1$ 次出现位置排序，取前 $q$ 个并输出其第 $t$、$t+1$ 次出现位置构成的区间，直到所有颜色均被选择。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T15:02:58+00:00",
+          "quality_flags": [
+            "statement_format_corrupted"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1552F",
+      "contest_id": 1552,
+      "title": "Telepanting",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1552/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/93199",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "数据结构",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "dp",
+        "sortings"
+      ],
+      "statement_brief": "蚂蚁从位置 $0$ 以速度 $1$ 向右移动，依次遇到按位置递增排列的传送门。未激活的传送门会被激活并让蚂蚁继续前进，已激活的传送门会把蚂蚁传送到更左侧的 $y_i$ 并变为未激活；求蚂蚁到达 $x_n+1$ 所需时间对 $998244353$ 取模。",
+      "transformed_statement": "把过程抽象为各传送门的“回返时间”：令 $q_i$ 表示前 $i$ 个传送门均激活时，从 $x_i$ 触发传送并再次回到 $x_i$ 的时间。传送到 $y_i$ 后会依次触发第 $j_i$ 至第 $i-1$ 个回返过程，其中 $j_i$ 是第一个满足 $y_i<x_{j_i}$ 的位置。",
+      "key_observations": [
+        "无论当前蚂蚁位于何处，所有严格位于其左侧的传送门都已激活；该不变量保证回退后只需处理更小编号的传送门。",
+        "设从 $x_i$ 出发并令前 $i$ 个传送门均激活，回到 $x_i$ 所需时间为 $q_i$；传送到 $y_i$ 后依次经历编号 $j_i$ 到 $i-1$ 的回返过程，因此 $q_i=(x_i-y_i)+\u00024q_{j_i}+\u0004cdots+q_{i-1}$。",
+        "初始已激活的传送门各额外贡献一次对应的回返时间，所以总答案等于基础行走时间 $x_n+1$ 加上所有初始激活传送门的 $q_i$ 之和。",
+        "$j_i$ 是满足 $y_i<x_{j_i}$ 的最小编号，可二分得到；用 $q$ 的前缀和计算区间和后，整体复杂度为 $O(n\\log n)$。"
+      ],
+      "solution_brief": "维护从每个传送门出发、最终回到该位置的时间 $q_i$。利用不变量得到递推式，通过二分确定 $j_i$，再用前缀和求区间贡献；答案为 $x_n+1$ 加上初始激活传送门的 $q_i$ 总和，复杂度 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T15:02:28+00:00",
+          "quality_flags": [
+            "statement_operation_text_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1552G",
+      "contest_id": 1552,
+      "title": "A Serious Referee",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/1552/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/93199",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "数据结构",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "brute force",
+        "dfs and similar",
+        "sortings"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组和固定顺序的 $k$ 次操作；每次选择一组下标，只将这些位置上的元素按非降序排列，其他位置不变。判断该操作序列是否能把任意整数数组最终排成整体非降序，能则输出 ACCEPTED，否则输出 REJECTED。",
+      "transformed_statement": "将“对任意整数数组排序”转化为“所有二值数组都被排好”：状态表示前若干步后已涉及位置上的可达 $0/1$ 配置。每次只需枚举新覆盖位置中 $1$ 的数量，因为被选子序列排序后的形态由选中位置的 $1$ 总数唯一决定。",
+      "key_observations": [
+        "只需验证二值数组：若所有 $0/1$ 数组都被排成非降序，则任意整数数组也会被正确排序，从而把值域问题化为有限状态问题。",
+        "第 $i$ 步后只记录已被涉及位置 $T_i$ 上的二值函数；新加入位置在本步排序前的 $1$ 的数量可任意选择，因此每个旧状态只产生 $|S_{i+1}\\setminus T_i|+1$ 个后继状态。",
+        "排序选中位置后，其结果只由这些位置中 $1$ 的总数决定；未选位置保持旧值，所以可用位掩码直接生成转移并去重。",
+        "最终必须满足所有位置都属于 $T_k$，且所有可达位掩码对应的序列在原下标顺序上非降序；否则存在二值反例。"
+      ],
+      "solution_brief": "用零一原则将问题化为二值数组。逐步维护已覆盖位置上的所有可达位掩码；转移时枚举新位置中 $1$ 的数量，并将当前选中子序列重排为非降序。最后检查覆盖全部位置且每个可达状态均非降序，可用位运算加速。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T15:01:52+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 8,
+      "problem_key": "1552H",
+      "contest_id": 1552,
+      "title": "Guess the Perimeter",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1552/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/93199",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "binary search",
+        "interactive",
+        "number theory"
+      ],
+      "statement_brief": "平面上有一个边与坐标轴平行、顶点坐标均在 $1$ 到 $200$ 的隐藏矩形。每次可选择任意非空可行点子集，交互器返回其中位于矩形内部或边界上的点数，最多询问 $4$ 次，最后必须确定并输出矩形周长。",
+      "transformed_statement": "不直接定位矩形，而是设底边长、高分别为 $b,h$，通过询问横坐标为 $d$ 的倍数的所有点，提取 $(b+1)(h+1)$ 及 $b+1$ 的最高二次幂因子，再由计数公式恢复两条边长。",
+      "key_observations": [
+        "令 $f(d)$ 表示询问所有横坐标能被 $d$ 整除的可行点，若矩形底边长为 $b$、高为 $h$，则 $f(1)=(b+1)(h+1)$。",
+        "有 $d f(d)=f(1)$ 当且仅当 $d\\mid b+1$，因此可以把询问结果转化为判断某个 $d$ 是否整除底边点数。",
+        "设 $p$ 是整除 $b+1$ 的最高次幂 $2^k$，则 $\\left|2f(2p)-f(1)/p\\right|=h+1$，从而在确定 $p$ 后同时得到高的点数。",
+        "$p$ 只可能是 $1,2,\\ldots,128$ 中的二次幂，利用整除条件对这些候选值二分，配合 $f(1)$ 总共不超过 $4$ 次询问。"
+      ],
+      "solution_brief": "先询问全部可行点得到 $f(1)$，再用集合 $x\\equiv0\\pmod d$ 的询问判断 $d\\mid b+1$，二分求出其中最大的二次幂因子 $p$。由 $f(2p)$ 的公式求出 $h+1$，再恢复 $b+1$，输出周长 $2(b+h)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T15:01:28+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 9,
+      "problem_key": "1552I",
+      "contest_id": 1552,
+      "title": "Organizing a Music Festival",
+      "rating": 3400,
+      "problem_url": "https://codeforces.com/contest/1552/problem/I",
+      "editorial_url": "https://codeforces.com/blog/entry/93199",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "图论与网络流",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "math"
+      ],
+      "statement_brief": "给定 $n$ 名歌手和 $m$ 个朋友，每位朋友喜欢一个歌手集合。需要排列全部歌手；对每位朋友，他喜欢的所有歌手必须在排列中连续出现，内部顺序不限，求满足全部朋友要求的排列数并对 $998244353$ 取模。",
+      "transformed_statement": "将每个喜欢集合视为约束区间，在集合交集图中分解连通分量；分量内按“属于哪些集合”划分歌手等价类，问题转化为排列这些类使每个约束成为连续区间，并处理分量间的嵌套包含关系。",
+      "key_observations": [
+        "把朋友集合建成“有交集即相连”的图；不同连通分量的歌手集合要么 disjoint，要么存在包含关系，因此可组织成按集合包含的森林。",
+        "在一个连通分量内，若两名歌手属于完全相同的朋友集合，则它们可以合并为一个等价类；每个朋友集合必须对应这些等价类序列中的一个连续区间。",
+        "含至少两个不同朋友集合的分量，其等价类的合法排列至多有两个，且互为反转；逐个加入集合时，若它切分了已有序列中的三个及以上等价类，就不可能形成合法排列。",
+        "把子分量整体压缩成一个元素后，各等价类内部的排列彼此独立；每类贡献相应元素数的阶乘，分量含多个等价类时再乘以 $2$。"
+      ],
+      "solution_brief": "先按集合交集求连通分量，并按并集的包含关系建森林。对每个分量按歌手的成员关系划分等价类，依据逐集合切分规则判断其序列是否唯一（至多反转）；将子分量压成单元素后，各类贡献阶乘，合法答案为所有分量贡献之积。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T15:01:04+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 10,
       "problem_key": "1554A",
