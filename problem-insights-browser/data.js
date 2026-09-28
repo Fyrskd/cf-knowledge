@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3610,
+    "total_problems": 3617,
     "source_total_problems": 3619,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3610,
-    "with_editorial_brief": 3305,
-    "with_solution_brief": 3307,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3617,
+    "with_editorial_brief": 3312,
+    "with_solution_brief": 3314,
     "missing_editorial_brief": 303,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2672,
+    "ai_override_count": 2679,
     "primary_topic_count": 13,
-    "contest_count": 557,
+    "contest_count": 558,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "基础实现与模拟": 228,
-    "构造与贪心": 1173,
+    "基础实现与模拟": 229,
+    "构造与贪心": 1175,
+    "数论与同余": 376,
+    "数据结构": 343,
+    "组合计数与概率": 272,
+    "博弈": 109,
     "树结构": 175,
-    "组合计数与概率": 271,
-    "数论与同余": 375,
     "字符串": 190,
-    "数据结构": 342,
     "交互": 106,
     "几何": 88,
     "动态规划与状态设计": 294,
     "图论与网络流": 235,
-    "博弈": 108,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2347,
     "missing_editorial": 303,
-    "ai_generated_with_editorial": 2340,
     "ai_generated_partial_editorial": 74,
     "low_confidence": 1,
     "manual_override": 891,
@@ -111369,6 +111369,204 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1585,
+      "name": "Technocup 2022 - Elimination Round 3",
+      "date": "2021-12-12",
+      "url": "https://codeforces.com/contest/1585",
+      "type": "Others",
+      "problemCount": 7,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1585A",
+          "index": "A",
+          "slot": "A",
+          "title": "Life of a Flower",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1585/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "花在第 $1$ 天开始时高 $1$ 厘米，给定连续 $n$ 天是否浇水的 $0/1$ 序列。按相邻两天的浇水情况更新花的高度：连续两天未浇水则花死亡，最后输出花的高度，死亡时输出 $-1$。",
+          "transformedStatement": "把每天的状态仅抽象为“今天是否浇水”和“昨天是否浇水”的相邻转移：$11$ 增长 $5$，$01$ 增长 $1$，$10$ 不变，$00$ 直接判死。这样问题转化为一次线性扫描。",
+          "keyObservations": [
+            "花是否死亡只取决于相邻两天：出现连续两个未浇水日就立即死亡，因此可以从左到右扫描并提前结束。",
+            "当前日浇水且前一日浇水时高度增加 $5$；当前日浇水但前一日未浇水时只增加 $1$，增长量完全由这两个状态决定。",
+            "当前日未浇水且前一日浇水时高度不变；首日按初始高度处理，因此只需额外维护前一天是否浇水。"
+          ],
+          "solutionBrief": "从初始高度 $1$ 开始顺序处理每天的浇水状态，依据当前日和前一日的组合更新高度；若连续两天未浇水则输出 $-1$，否则输出最终高度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1585B",
+          "index": "B",
+          "slot": "B",
+          "title": "Array Eversion",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1585/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定数组，每次取当前末元素 $x$，将数组稳定地分成不大于 $x$ 的元素和大于 $x$ 的元素，并按两部分顺序重新拼接。重复操作，求数组从第几次操作后不再变化的最小次数。",
+          "transformedStatement": "不必模拟整个数组，只追踪每次操作后的末元素：它等于原序列中当前值右侧方向上最右的严格更大元素；答案就是从初始末元素开始不断跳到该元素，直到无法继续的跳转次数。",
+          "keyObservations": [
+            "一次操作后的新末元素一定是原数组中最右侧的、严格大于当前末元素的值；若不存在这样的值，当前末元素就是全数组最大值，操作不再改变数组。",
+            "沿着“从右侧寻找更大值”的过程，末元素严格递增，因此每次找到的新位置都在上一次位置左侧，形成一条不会回退的链。",
+            "用一个从右向左移动的指针寻找下一项时，被跳过的元素都不大于当前末元素，之后末元素只会变大，所以这些元素无需再次检查。"
+          ],
+          "solutionBrief": "令当前值为末元素，从右向左寻找最右侧的大于当前值的元素；找到后计数、更新当前值，并从该位置左侧继续搜索。找不到时数组已稳定，计数即答案，整体扫描为线性。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1585C",
+          "index": "C",
+          "slot": "C",
+          "title": "Minimize Distance",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1585/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 个仓库位于数轴上，所有货物在原点，旅行者每次最多携带 $k$ 袋，前往对应仓库送货后返回原点领取下一批；全部送完后最后一次可以不返回。求完成配送所需的最短总路程。",
+          "transformedStatement": "把仓库按原点左右两侧拆开，并将每侧位置转成到原点的距离。每趟从某侧最远的未配送仓库开始，顺路覆盖该侧另外至多 $k-1$ 个更近仓库，因此每侧只需对降序距离每隔 $k$ 个取一个行程距离，最后免除全局最远点的一次返程。",
+          "keyObservations": [
+            "正负两侧的仓库可以分开处理，因为一次跨过原点不会比在同一侧完成运输更优，从而避免无谓的往返。",
+            "在某一侧前往尚未配送的最远仓库时，可顺便携带该侧距离更近的另外 $k-1$ 个仓库，因此每次配送只需计入这一组中最远点的距离。",
+            "将同侧仓库按距原点从远到近排列后，每隔 $k$ 个位置选一个最远点作为一趟行程的费用；所有行程先按往返计费，再减去全局最远仓库的距离，因为最后一趟无需返回原点。"
+          ],
+          "solutionBrief": "按正负两侧分别收集距离并降序排列，每隔 $k$ 个距离累加一次，得到各趟行程的最远距离。答案为这些距离和的两倍，再减去所有仓库中的最大距离。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1585D",
+          "index": "D",
+          "slot": "D",
+          "title": "Yet Another Sorting Problem",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1585/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "给定一个整数数组，每次可选取三个互不相同的位置，将这三处元素按循环方向移动，其他位置不变；可以进行任意次操作，判断能否把数组变为非降序排列。",
+          "transformedStatement": "把每个数组状态视为对元素位置的置换：3-循环只能实现偶置换。若有重复值，交换相同值不会改变排序结果，可调整排序置换的奇偶性；若全不重复，则只需判断唯一排序置换是否为偶置换。",
+          "keyObservations": [
+            "任意 3-循环都是偶置换，且所有 3-循环只能生成偶置换，因此可行性的核心是是否存在偶置换把数组变成非降序。",
+            "数组含有相同元素时，任意排序置换若为奇置换，都可交换两个相同元素而不改变结果，从而改成偶置换，所以答案必为 YES。",
+            "数组元素互异时，目标非降序排列唯一，排序所需置换的奇偶性也唯一；只有该置换为偶置换时才能通过 3-循环完成排序。"
+          ],
+          "solutionBrief": "先判断数组是否存在重复元素；有重复元素时直接输出 YES。元素互异时，将每个元素映射到其在有序数组中的位置，计算该置换的奇偶性：偶置换输出 YES，奇置换输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1585E",
+          "index": "E",
+          "slot": "E",
+          "title": "Frequency Queries",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1585/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "给定一棵根为 $1$、每个节点带整数的树。每次查询给出节点 $v$、阈值 $l$ 和排名 $k$，统计根到 $v$ 路径上各整数的出现次数，并按出现次数从小到大考虑所有次数至少为 $l$ 的整数，输出其中第 $k$ 个（并列时任意均可）。",
+          "transformedStatement": "把查询转化为维护当前 DFS 路径上的频次数组：将数值按频次排序，查询等价于从第一个频次不小于 $l$ 的位置开始取第 $k$ 项；节点进出只需增减一个数值的频次。",
+          "keyObservations": [
+            "对节点 $v$ 的查询只需统计根到 $v$ 的路径上各数值出现次数，路径外节点的计数不会影响答案。",
+            "将数值按当前出现次数非降序排列后，满足频次至少为 $l$ 的数值正好从位置 $lb_l$ 开始，因此答案是该位置后的第 $k$ 个数值。",
+            "DFS 进入节点时加入其权值、离开时撤销，可使当前计数始终对应一条根到当前节点的路径。",
+            "单个计数增减只会让一个数值跨过相邻频次数块；通过交换排列中的两个位置并维护逆排列和边界即可常数时间更新。"
+          ],
+          "solutionBrief": "DFS 维护当前根到节点路径上的频次数组，并在线维护按频次排序的数值排列、逆排列及各频次块边界。查询从频次至少为 $l$ 的起点取第 $k$ 个数值，单次操作均为 $O(1)$，总复杂度为 $O(n+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1585F",
+          "index": "F",
+          "slot": "F",
+          "title": "Non-equal Neighbours",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1585/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定正整数数组 $a$，统计所有正整数数组 $b$ 的数量，其中每个位置满足 $b_i\\le a_i$，且相邻元素必须不同，即 $b_i\\ne b_{i+1}$。将答案对 $998244353$ 取模后输出。",
+          "transformedStatement": "把“不等邻居”改写为对事件 $b_i=b_{i+1}$ 做容斥：选定若干相等关系后，$b$ 被划成若干连续常值段，每段的取值数等于该段 $a$ 的最小值，问题转为带奇偶符号的分段计数。",
+          "keyObservations": [
+            "对每个相邻位置相等的条件做容斥；选中的相等边会把数组划分为若干连续段，从而把复杂的相邻限制转化为分段计数。",
+            "若一段为 $[j,i]$ 且其中所有 $b$ 值相同，该段公共正整数的可选数量是 $f(j,i)=\\min_{j\\le t\\le i}a_t$，因为它必须同时满足所有位置的上界。",
+            "容斥符号只由分段数决定，因此用 $dp[i][p]$ 表示前 $i$ 个位置划分后、段数奇偶性为 $p$ 的累计值；枚举最后一段即可转移。",
+            "固定右端点时，区间最小值随左端点移动只会单调变化；用维护不同最小值区间的单调栈合并相同贡献，可将二次转移降为线性。"
+          ],
+          "solutionBrief": "对相邻相等事件应用容斥，将选中的相等边形成的连续段按区间最小上界计数。按段数奇偶做 DP，并用单调栈维护以当前位置结尾的区间最小值及其贡献，将复杂度降至 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1585G",
+          "index": "G",
+          "slot": "G",
+          "title": "Poachers",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1585/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/97845",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dp",
+            "games",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一个由多棵有根树组成的森林，双方轮流选择一棵树和不超过其秩的正整数深度，删除该深度及以上的所有顶点，剩余部分拆成若干棵树继续游戏。轮到玩家时若森林为空则输，要求判断双方最优 play 下先手 Alice 是否获胜。",
+          "transformedStatement": "将每棵子树视为一个独立组合博弈，按允许的切割深度维护其后继局面 Grundy 值数组；多个子树合并时使用对应状态的异或，整棵子树的值则是这些后继值的 MEX。",
+          "keyObservations": [
+            "任意局面都可视为初始树的子树或若干子树的组合，因此只需为每个初始子树根计算 Grundy 值。",
+            "把子树的每种切割深度按从大到小存成数组；多子节点时，同一深度的局面 Grundy 值等于所有子节点对应值的异或，另加“不再切割”的异或值。",
+            "子树的可行切割深度最多为最小子树秩，因此合并时保留秩最小的数组作为载体，避免处理超过可行深度的状态。",
+            "显式维护数组 MEX，并用硬币法支付数组合并与集合操作；每个节点只贡献常数级硬币，总复杂度为 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "用 Sprague–Grundy 理论做树形 DP：每个子树维护按切割深度排列的 Grundy 数组及整体 MEX。单子节点直接扩展，多子节点按最小秩数组逐位异或并补上子树整体异或值；用集合维护 MEX，借助硬币法保证总复杂度 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
