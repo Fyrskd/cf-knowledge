@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3527,
+    "total_problems": 3533,
     "source_total_problems": 3535,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3527,
-    "with_editorial_brief": 3228,
-    "with_solution_brief": 3230,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3533,
+    "with_editorial_brief": 3234,
+    "with_solution_brief": 3236,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2589,
+    "ai_override_count": 2595,
     "primary_topic_count": 13,
-    "contest_count": 545,
+    "contest_count": 546,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1146,
+    "构造与贪心": 1148,
+    "动态规划与状态设计": 291,
+    "数据结构": 335,
+    "树结构": 172,
     "博弈": 107,
     "数论与同余": 370,
-    "动态规划与状态设计": 290,
     "几何": 85,
-    "树结构": 171,
     "组合计数与概率": 266,
     "字符串": 184,
     "图论与网络流": 230,
     "基础实现与模拟": 219,
-    "数据结构": 333,
     "交互": 102,
     "代数、矩阵与多项式": 24
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2266,
-    "ai_generated_partial_editorial": 71,
+    "ai_generated_with_editorial": 2271,
+    "ai_generated_partial_editorial": 72,
     "missing_editorial": 297,
     "low_confidence": 1,
     "manual_override": 891,
@@ -108833,6 +108833,198 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "把每个相邻方格对映射为网格公共边，并把该边与其中心旋转 $180^\\circ$ 后的边权值同时加一。由于合法切线必具旋转对称性，答案为 $n$ 减去从边界到中心的最短路权值；在顶点图上运行 Dijkstra 即可。",
           "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1625,
+      "name": "Codeforces Round 765 (Div. 2)",
+      "date": "2022-01-12",
+      "url": "https://codeforces.com/contest/1625",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1625A",
+          "index": "A",
+          "slot": "A",
+          "title": "Ancient Civilization",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1625/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/99031",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给出同一个长度为 $\\ell$ 的二进制单词的 $n$ 个整数表示，允许答案是任意 $\\ell$ 位二进制数。定义答案与每个表示在不同位置的总数之和为接近度，要求找出使该值最小的单词表示。",
+          "transformedStatement": "把总汉明距离拆成每个二进制位的独立不匹配次数；对每一位分别选择出现次数更多的比特，组合后得到全局最优答案。",
+          "keyObservations": [
+            "汉明距离可以按二进制位分别计数；某一位的总贡献只取决于答案该位与所有输入位的匹配情况，因此各位可以独立决定。",
+            "若某位中 0 的数量多于 1，则答案该位取 0 可减少不匹配数；否则取 1，在数量相等时取 1 也同样最优。",
+            "最终答案的每一位都是对应位置的多数值，因此不必从给定数字中选择，直接逐位统计即可得到最小总距离的表示。"
+          ],
+          "solutionBrief": "对每个测试用例逐位统计所有 $x_i$ 的 0 和 1。每一位 0 多就设置为 0，否则设置为 1；将这些位合并即为答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1625B",
+          "index": "B",
+          "slot": "B",
+          "title": "Elementary Particles",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1625/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/99031",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的粒子类型数组，要选出两个边界不同、长度相同的连续子段；若两段在某个相同相对位置上的类型相同，则称它们和谐。求和谐子段对可能达到的最大长度。",
+          "transformedStatement": "把和谐条件转化为寻找两个相等元素 $a_u=a_v$，让它们在两段中对齐。固定 $u<v$ 后，最优两段可扩展为右段到数组末尾，长度为 $n-(v-u)$，所以问题变成寻找最近的相等位置对。",
+          "keyObservations": [
+            "若两个和谐子段中相同元素位于位置 $u,v$，则可将右侧子段扩展到数组末尾，和谐性不会改变，从而只需考虑右端点在 $n$ 的方案。",
+            "对一对相等位置 $u<v$，以它们作为两个子段的同一位置并向两侧扩展，可得到最大长度 $n-(v-u)$；因此距离越近，答案越大。",
+            "全局最优只需寻找最近的一对相等元素，答案等于 $n$ 减去它们的位置差；按每种类型记录出现位置后，只检查相邻出现位置即可。"
+          ],
+          "solutionBrief": "记录每种粒子类型的出现位置，枚举同类型相邻位置差的最小值 $d$，输出 $n-d$。若不存在重复类型，则无法组成和谐子段对。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1625C",
+          "index": "C",
+          "slot": "C",
+          "title": "Road Optimization",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1625/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/99031",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "道路上按位置排列着设置限速的标志，车辆从起点驶向终点；遇到一个标志后，直到下一个标志前的每公里都使用该标志规定的通行时间。政府最多删除 $k$ 个标志，但不能删除起点标志，要求使全程行驶时间最短。",
+          "transformedStatement": "把删除后的道路划分为若干段：每段由前一个保留标志提供限速。问题转化为按位置选择保留标志，并计算相邻保留标志之间的段耗时，同时限制被跳过的标志总数不超过 $k$。",
+          "keyObservations": [
+            "删除若干标志后，从保留的第 $i$ 个标志直接行驶到第 $pos$ 个标志，整段都使用 $i$ 的限速，因此耗时为 $b_i\\times(b_{pos}-b_i)$。",
+            "只需记录当前最后保留的标志和已删除数量；两者确定此前最优耗时，并可一次跳过中间所有标志。",
+            "从 $i$ 跳到 $pos$ 会删除恰好 $pos-i-1$ 个标志，因此转移后的删除数为 $j+pos-i-1$，避免逐段枚举删除方案。",
+            "终点状态允许使用不超过 $k$ 次删除，取所有 $dp_{n,j}$ 的最小值即可；直接转移枚举下一保留标志得到 $O(n^3)$。"
+          ],
+          "solutionBrief": "设 $dp_{i,j}$ 表示处理到第 $i$ 个标志、保留第 $i$ 个标志且删除了 $j$ 个标志时的最短时间。枚举下一个保留的标志 $pos$，转移为 $dp_{pos,j+pos-i-1}=\\min(dp_{pos,j+pos-i-1},dp_{i,j}+b_i(b_{pos}-b_i))$，最后取 $j\\le k$ 的最小值，复杂度为 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1625D",
+          "index": "D",
+          "slot": "D",
+          "title": "Binary Spiders",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1625/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/99031",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "implementation",
+            "math",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定 $n$ 只蜘蛛及其腿数，选择至少两只作为防御者，要求任意两只蜘蛛的腿数按位异或都至少为 $k$。需要求最多能选择多少只，并输出她们的下标；若无法选择至少两只则输出 $-1$。",
+          "transformedStatement": "把选中的腿数排序后，合法性等价于每对相邻选中数的异或值都至少为 $k$。于是问题变为按排序顺序求满足异或阈值的最长链，并用 Trie 加速前驱状态查询。",
+          "keyObservations": [
+            "对任意选出的数字集合，排序后所有数对的最小异或值等于相邻数的最小异或值，因此只需检查相邻选中元素。",
+            "将选中序列按数值排序后，设 $dp_i$ 为以 $a_i$ 作为最大元素的最长合法集合长度，转移只需寻找满足 $a_j\\oplus a_i\\ge k$ 的前驱。",
+            "二进制 Trie 的每个节点维护其子树中的最大 $dp$；按位比较异或结果与 $k$，在某位异或为 $1$ 且 $k$ 为 $0$ 时可直接取整棵分支，从而快速完成转移。",
+            "为每个状态记录达到最大值的前驱即可回溯出下标；若最长长度小于 $2$，则不存在合法防御者集合。"
+          ],
+          "solutionBrief": "先按腿数排序，把问题转为寻找异或值至少为 $k$ 的最长合法序列。用二进制 Trie 维护各子树的最大 $dp$，查询每个元素的最佳前驱并记录前驱下标，最后回溯输出；若长度不足 $2$，输出 $-1$。复杂度为 $O(n\\log\\max a_i)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1625E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Cats on the Upgrade (easy version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1625/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/99031",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "dp",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定只含左右括号的字符串，多次查询区间 $[l,r]$；保证每个查询区间本身是非空且首尾不是点的合法括号序列。对每次查询，要求统计其中有多少个连续子串也是 simple RBS，即能通过删除单个点或连续的“()”消为空、且不为空并以括号开头和结尾。",
+          "transformedStatement": "把括号的嵌套关系抽象成树：每个匹配括号对对应一个节点，其内部的相邻子节点构成可连续选取的 RBS 块。于是问题转化为统计各节点内部及指定子节点区间中所有连续孩子区间的数量。",
+          "keyObservations": [
+            "将无法匹配的括号替换为点后，整个字符串成为 RBS；由于查询区间本身是 simple RBS，任何查询都不会跨过这些点，因此可只处理匹配括号形成的结构。",
+            "扫描括号建立包含关系树：遇到左括号进入新节点，遇到右括号回到父节点；每个节点对应一个被一对括号包围的 RBS，节点的孩子对应其内部连续的基本块。",
+            "某节点的 $k$ 个孩子可以连续选取任意非空区间组成一个 simple RBS，因此该节点新产生的数量是 $k(k+1)/2$，再加上所有孩子内部的 RBS 数量。",
+            "查询区间的答案也可按同样的“孩子区间贡献加内部贡献”规则计算；预处理树上的计数并定位区间对应的节点或边界后即可快速回答。"
+          ],
+          "solutionBrief": "先用栈匹配括号，把无法匹配的括号视为点；再按括号嵌套关系建树。对每个节点统计其子树中的 RBS 数量，其中连续选取 $k$ 个孩子贡献 $k(k+1)/2$，查询时合并对应区间的贡献，复杂度可做到每次 $O(\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1625E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Cats on the Upgrade (hard version)",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1625/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/99031",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "字符串"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一个只含“(”和“)”的字符串，并进行若干查询；硬版本额外允许删除操作。题面在查询格式处被截断，因此只能确认需要处理删除后的结构以及另一类区间查询，具体参数和答案定义无法从给定内容完整恢复。",
+          "transformedStatement": "把匹配括号的嵌套关系抽象成树：每个节点的直接子结构数为 $k$，贡献 $k(k+1)/2$，整棵子树答案是这些局部贡献之和；删除字符对应树上叶子的临时移除及其祖先路径上的贡献变化。",
+          "keyObservations": [
+            "将括号结构组织成一棵层次树后，节点的直接子节点数为 $k$ 时，其局部贡献是 $k(k+1)/2$，表示连续选取子结构的计数，从而把区间答案转化为树上 DP。",
+            "删除一个不属于当前查询节点直接子节点的叶子时，其父节点的子节点数减少，答案恰好减少该父节点原有的子节点数；这个变化会沿叶到根路径保持不变地向上传播。",
+            "把每个节点只存局部贡献 $k(k+1)/2$，而不是存整棵子树的 DP 值后，节点答案变为子树权值和，因此可用 DFS 序将子树查询转为区间和，并用 Fenwick 树维护。",
+            "删除叶子若它正是所查询节点的直接子节点，不能直接套用普通路径减法，需要单独处理；分块方案通过每约 $\u001a\\sqrt n$ 次查询重建整棵树来限制这类动态修改的影响。"
+          ],
+          "solutionBrief": "将括号层次转为树，并以 $k(k+1)/2$ 作为节点局部贡献。硬版本可每约 $\\sqrt n$ 次操作重建并处理临时删除；更优做法用 DFS 序和 Fenwick 树维护子树和，使总复杂度达到 $O((n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "complete"
         }
       ]
