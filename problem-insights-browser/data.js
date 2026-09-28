@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3141,
+    "total_problems": 3149,
     "source_total_problems": 3151,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3141,
-    "with_editorial_brief": 2861,
-    "with_solution_brief": 2862,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3149,
+    "with_editorial_brief": 2869,
+    "with_solution_brief": 2870,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2203,
+    "ai_override_count": 2211,
     "primary_topic_count": 13,
-    "contest_count": 480,
+    "contest_count": 481,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1004,
+    "数据结构": 296,
+    "图论与网络流": 195,
+    "数论与同余": 336,
+    "树结构": 156,
     "字符串": 166,
     "基础实现与模拟": 190,
-    "数据结构": 295,
-    "构造与贪心": 1001,
     "组合计数与概率": 244,
     "交互": 98,
-    "图论与网络流": 194,
     "动态规划与状态设计": 266,
-    "数论与同余": 335,
-    "树结构": 154,
     "几何": 77,
     "博弈": 99,
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1903,
+    "ai_generated_with_editorial": 1911,
     "ai_generated_partial_editorial": 67,
     "missing_editorial": 279,
     "manual_override": 891,
@@ -97049,6 +97049,231 @@ window.CF_INSIGHTS_DATA = {
             "分界点确定后，坏钥匙会让后续箱子依次多减半一次；由于 $a_i\\le 10^9$，最多模拟约 $30$ 个后缀箱子，之后贡献均为 $0$。"
           ],
           "solutionBrief": "枚举好钥匙前缀长度，维护该前缀获得的硬币；对后缀模拟坏钥匙造成的逐次减半，只需计算约 $30$ 个箱子。取所有分界点的最大总收益，复杂度为 $O(n\\log a_i)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1702,
+      "name": "Codeforces Round 805 (Div. 3)",
+      "date": "2022-07-10",
+      "url": "https://codeforces.com/contest/1702",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1702A",
+          "index": "A",
+          "slot": "A",
+          "title": "Round Down the Price",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1702/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/104763",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定商品价格 $m$，每次测试中只能将价格减少任意非负整数，使最终价格恰好成为不超过 $m$ 的最大整十幂（形如 $1、10、100$）。求需要减少的金额。",
+          "transformedStatement": "将问题转化为按十进制位数确定目标值：若 $m$ 有 $len$ 位，则目标圆数是最高位为 $1$、其余位全为 $0$ 的 $10^{len-1}$，再计算两者差值。",
+          "keyObservations": [
+            "对正整数 $m$，不超过它且位数相同的最大整十幂必然是由 $1$ 加上若干个 $0$ 组成的数，即 $10^{len-1}$，其中 $len$ 是 $m$ 的十进制位数。",
+            "所有更大的整十幂至少需要更多位数，因此不可能不超过 $m$；确定 $m$ 的位数后，目标圆数唯一，答案直接是 $m-10^{len-1}$。"
+          ],
+          "solutionBrief": "统计 $m$ 的十进制位数 $len$，构造圆数 $10^{len-1}$，输出 $m-10^{len-1}$。由于更大的整十幂位数更多且超过 $m$，该圆数就是不超过 $m$ 的最大者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1702B",
+          "index": "B",
+          "slot": "B",
+          "title": "Polycarp Writes a String from Memory",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1702/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/104763",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定一个非空小写字符串，Polycarp 只能按顺序把字符追加到末尾；每天最多记住 $3$ 种不同字母，并用当天记住的字母书写任意连续部分。求完整写出该字符串所需的最少天数。",
+          "transformedStatement": "将字符串划分为尽可能少的连续片段，使每个片段包含的不同字母数不超过 $3$；答案就是这种划分的最少片段数。",
+          "keyObservations": [
+            "由于只能按原顺序从末尾追加，某一天负责的内容必然是字符串的一个连续片段，且片段中不同字母数不超过 $3$。",
+            "从当前片段继续加入字符时，只有当不同字母数变为 $4$ 才必须开启新的一天；提前换天不会减少总天数，因此每段尽量延长是最优的。",
+            "扫描时维护当前天出现过的字母集合，遇到新字母且集合已有 $3$ 种就计入新的一天并清空集合，再记录当前字符。"
+          ],
+          "solutionBrief": "从左到右维护当天记住的不同字母集合。若加入当前字符后种类仍不超过 $3$，继续当天书写；否则天数加一并以当前字符开启新的一天。初始天数为 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1702C",
+          "index": "C",
+          "slot": "C",
+          "title": "Train and Queries",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1702/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/104763",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定一列按固定顺序行驶的火车站点，路线允许重复经过同一站，乘客只能沿路线向前乘坐。对每个不同站点对 $(a,b)$，判断是否能从站点 $a$ 乘到站点 $b$。",
+          "transformedStatement": "把路线视为站点值到出现位置集合的映射；询问转化为判断是否存在位置 $i<j$，使得 $u_i=a$ 且 $u_j=b$，等价于比较 $a$ 的首次位置和 $b$ 的末次位置。",
+          "keyObservations": [
+            "对每个站点只需记录它在路线中的最早和最晚出现位置，因为从 $a$ 到 $b$ 可行当且仅当存在 $a$ 的位置早于某个 $b$ 的位置。",
+            "将可行性条件化为 $first[a] < last[b]$，即可处理重复站点，并避免为每个询问枚举路线区间。",
+            "若任一询问站点未出现在路线中则必定不可达；否则只比较两个端点的最早、最晚出现位置即可独立回答。"
+          ],
+          "solutionBrief": "用字典记录每个站点在路线中的首次和末次出现位置。对询问 $(a,b)$，若有站点不存在，或 $first[a] \\ge last[b]$，答 NO；否则答 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1702D",
+          "index": "D",
+          "slot": "D",
+          "title": "Not a Cheap String",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1702/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/104763",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定由小写字母组成的字符串，每个字母的价格为其字母序号，字符串价格是所有字符价格之和。可以删除任意字符但保持剩余字符顺序，要求删除最少字符，使最终字符串价格不超过 $p$，并输出任意一个满足条件的结果。",
+          "transformedStatement": "把问题转化为：在每种价值为 $1$ 到 $26$ 的字符中选择删除数量，使删去的总价值至少覆盖超出的价格，同时删除数量最少；优先删高价值字符，再按原位置重建子序列。",
+          "keyObservations": [
+            "为了在删除数量最少的前提下降低总价，应优先删除价格最高的字母；若某个较低价字母被删除而更高价字母保留，交换两者不会增加删除数且能使总价更低。",
+            "只需统计每种字母需要删除多少个，再按价格从高到低扣除超出的总价，避免逐个尝试删除位置。",
+            "删除决定只依赖字母种类和数量，最终从左到右输出字符串并跳过对应数量，即可自动保持剩余字母的原有顺序。"
+          ],
+          "solutionBrief": "统计各字母出现次数。若总价超过 $p$，从价格 $26$ 到 $1$ 依次删除对应字母，直到总价不超过 $p$；最后按原顺序输出未被删除的字符。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1702E",
+          "index": "E",
+          "slot": "E",
+          "title": "Split Into Two Sets",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1702/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/104763",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dfs and similar",
+            "dsu",
+            "graphs"
+          ],
+          "statementBrief": "给定 $n$ 张骨牌，每张含两个 $1$ 到 $n$ 的数字。必须把每张骨牌恰好放入两个集合之一，使每个集合内所有数字都不重复，判断是否能够完成这种划分。",
+          "transformedStatement": "把数字作为顶点、骨牌作为边形成多重图。可行性等价于每个顶点恰有两次出现，且图中的每个环长度为偶数，从而能将环上的边交替分到两组。",
+          "keyObservations": [
+            "若划分可行，每组中的数字都互不相同且最多包含 $n$ 个数字；总共有 $2n$ 个数字，因此两组都必须恰好包含 $n$ 个数字，并且每个数字全局出现恰好两次。",
+            "把数字视为顶点、骨牌视为连接两端数字的边后，每个顶点的度数都应为 $2$；因此各连通分量是环，问题转化为判断这些环能否交替选择边。",
+            "同一环中的相邻边必须分到不同集合，所以只有偶数长度的环可以交替着色；出现奇环时无论如何都会有同组重复数字。",
+            "检查每个数字出现次数并遍历各环的长度即可在线性时间内判定，无需实际构造两组骨牌。"
+          ],
+          "solutionBrief": "统计每个数字的出现次数，若不是恰好 $2$ 次则输出 NO。将骨牌建成边并遍历每个连通分量；由于各点度数为 $2$，分量是环，检查环长是否全为偶数，全部满足则输出 YES，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1702F",
+          "index": "F",
+          "slot": "F",
+          "title": "Equate Multisets",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1702/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/104763",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定两个各含 $n$ 个正整数的多重集合 $a$ 和 $b$，只能修改 $b$：每次任选一个元素，将它乘以 $2$ 或替换为其向下取整的一半；$a$ 不能改变。判断经过任意次操作后，能否使两个多重集合完全相等。",
+          "transformedStatement": "先把 $a$ 的每个元素压缩为去除全部因子 $2$ 后的奇数核心，问题转化为只用反复向下除以 $2$，将 $b$ 的元素逐个匹配到这些奇数核心。",
+          "keyObservations": [
+            "将多重集合 $a$ 中每个数不断除以 $2$，得到其最大的奇数因子；原问题等价于把 $b$ 变成这些奇数因子，因为之后可再通过乘 $2$ 恢复原数。",
+            "目标集合中的数全部为奇数，因此对 $b$ 中元素进行乘 $2$ 不会直接得到目标；处理元素时只需反复执行向下除以 $2$。",
+            "每次取当前最大的 $b$ 元素：若它存在于目标多重集合中就配对删除，否则只能将其变为 $\\lfloor x/2\\rfloor$；当 $x=1$ 仍无法匹配时立即判定失败。"
+          ],
+          "solutionBrief": "先把 $a$ 中每个数去掉所有因子 $2$，得到奇数目标集合。反复取 $b$ 的最大元素，若能在目标集合中匹配则删除，否则将其替换为 $\\lfloor x/2\\rfloor$；若 $x=1$ 仍不匹配则输出 NO，全部匹配则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1702G1",
+          "index": "G1",
+          "slot": "G",
+          "title": "Passable Paths (easy version)",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1702/problem/G1",
+          "editorialUrl": "https://codeforces.com/blog/entry/104763",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树和若干顶点集合。每次询问要求判断是否存在一条简单路径，使其经过集合中的所有顶点（路径还可经过其他顶点）；可行输出 YES，否则输出 NO。",
+          "transformedStatement": "把问题改写为：点集的最小连接路径是否本身是一条简单路径。固定点集里最深的顶点作为一端后，只需检查其余点是否沿同一条向下延伸的链分布。",
+          "keyObservations": [
+            "包含给定点集的最短路径，其两个端点必属于点集，因此只需判断点集能否落在同一条简单路径上。",
+            "以任意顶点为根时，点集里深度最大的顶点可以作为这条最短路径的一个端点，从而固定检查方向。",
+            "以该端点重新看树，若点集可由一条路径覆盖，则恰有一个点集顶点的子树中不再含其他点集顶点；分支会产生多个这样的末端。"
+          ],
+          "solutionBrief": "预处理树的深度，取查询点集中深度最大的顶点作为根方向的一端；检查点集顶点中有多少个没有其他点集顶点位于其子树内，恰为一个则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1702G2",
+          "index": "G2",
+          "slot": "G",
+          "title": "Passable Paths (hard version)",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1702/problem/G2",
+          "editorialUrl": "https://codeforces.com/blog/entry/104763",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，每个查询提供一个顶点集合；如果存在一条不重复经过边的简单路径，使其经过集合中的所有顶点（也可以经过其他顶点），则该集合称为可通行。对每个查询判断集合是否可通行，输出 YES 或 NO。",
+          "transformedStatement": "把一条候选路径根向上看成从两个端点分别走到它们的 LCA 的两条祖先链；问题转化为判断查询顶点能否全部分配到这两条链，并且两链只在合法的 LCA 处相接。",
+          "keyObservations": [
+            "rooted tree 后，任意一条端点为 $a,b$ 的简单路径都由两条向上链组成，并在 $lca(a,b)$ 处相接；因此目标集合必须能被划分到这两条链上。",
+            "取集合中最深顶点作为第一端点时，满足 $lca(a,x)=x$ 的查询顶点正好可归入第一条向上链；删去这些顶点后，剩余顶点至多只能来自第二条向上链。",
+            "若删去第一条链后仍有顶点，则取剩余顶点中最深者作为第二端点，并检查其余顶点是否都是它的祖先；存在不满足者说明集合无法落在同一条简单路径上。",
+            "两条向上链只能在两端点的 $lca$ 处相交，因此还需满足 $depth(lca(a,b))\\leq$ 查询集合中的最小深度，避免集合包含分叉点上方的公共祖先。"
+          ],
+          "solutionBrief": "预处理树上深度和 LCA。每次按深度从深到浅处理顶点，先提取最深顶点的祖先链，再对未处理部分提取第二条祖先链；若有剩余顶点或两链的 LCA 深于集合最浅点则回答 NO，否则回答 YES。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
