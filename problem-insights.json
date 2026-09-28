@@ -15,19 +15,318 @@
     ]
   },
   "summary": {
-    "total_problems": 3661,
+    "total_problems": 3668,
     "source_total_problems": 3670,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3661,
-    "with_editorial_brief": 3355,
-    "with_solution_brief": 3357,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3668,
+    "with_editorial_brief": 3362,
+    "with_solution_brief": 3364,
     "missing_editorial_brief": 304,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2723,
+    "ai_override_count": 2730,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1612A",
+      "contest_id": 1612,
+      "title": "Distance",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1612/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/97164",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "几何"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms"
+      ],
+      "statement_brief": "给定曼哈顿距离下的两点：$A=(0,0)$ 和 $B=(x,y)$，要求构造一个点 $C$，使其满足题面列出的距离约束；若不存在则报告无解。但当前本地记录在“满足以下条件”后缺失了具体约束内容。",
+      "transformed_statement": "题解将其中明确出现的条件 $d(A,C)+d(B,C)=d(A,B)$ 重述为：$C$ 位于 $A$ 到 $B$ 的某条最短曼哈顿路径上。因此可将问题转为在坐标范围 $0$ 到 $50$ 内寻找满足其余条件的路径点。",
+      "key_observations": [
+        "条件 $d(A,C)+d(B,C)=d(A,B)$ 说明 $C$ 必须位于从 $A$ 到 $B$ 的某条最短曼哈顿路径上，因此无需检查范围外的点。",
+        "由于 $x,y$ 的范围都不超过 $50$，枚举 $C$ 的两个坐标在 $[0,50]$ 内的所有取值即可覆盖所有可能答案，判定过程为常数级有限枚举。"
+      ],
+      "solution_brief": "题面中的具体约束列表在记录中缺失。题解明确建议枚举 $C$ 的坐标 $0$ 到 $50$，检查其是否满足题面距离条件；曼哈顿距离和等于 $d(A,B)$ 时，$C$ 必在最短路径上。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:27:41+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "partial_statement",
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1612B",
+      "contest_id": 1612,
+      "title": "Special Permutation",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1612/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/97164",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy"
+      ],
+      "statement_brief": "给定偶数长度 $n$ 及 $a,b$，要构造一个包含 $1$ 到 $n$ 各一次的排列。排列分为左右两个等长部分，要求左半部分的最小值为 $a$、右半部分的最大值为 $b$；无法构造时输出 $-1$。",
+      "transformed_statement": "把问题看成将全部数字划分到两个固定大小的半区：左区锁定 $a$ 并尽量放大其余元素，右区锁定 $b$ 并尽量缩小其余元素，填完后验证两个极值条件。",
+      "key_observations": [
+        "左半部分必须包含 $a$ 且其余元素都大于等于 $a$，右半部分必须包含 $b$ 且其余元素都小于等于 $b$，因此两个半区的极值条件可分别独立检查。",
+        "将 $a$ 固定放入左半、$b$ 固定放入右半后，优先把最大的剩余数放入左半、最小的剩余数放入右半，可最大化左半元素并最小化右半元素。",
+        "按上述规则填满后直接验证两半的最小值和最大值；若仍不满足，说明该构造不可行并输出 $-1$。"
+      ],
+      "solution_brief": "先把 $a$ 放入左半、$b$ 放入右半，再用最大的剩余数填左半、最小的剩余数填右半，最后检查左半最小值是否为 $a$、右半最大值是否为 $b$；不满足则输出 $-1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:27:03+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1612C",
+      "contest_id": 1612,
+      "title": "Chat Ban",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1612/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/97164",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "binary search",
+        "math"
+      ],
+      "statement_brief": "给定大小为 $k$ 的表情三角形，消息长度依次为 $1,2,\u0007ldots,k,k-1,\u0007ldots,1$。按顺序发送消息，累计发送至少 $x$ 个表情时立即被封禁且当前消息计入答案；求被封禁前发送的消息数，若始终未达到则输出全部 $2k-1$ 条。",
+      "transformed_statement": "把每个消息前缀映射为累计表情数函数：上升段使用三角数，下降段用两个三角数之差表示。问题等价于在消息位置上寻找累计表情数首次达到 $x$ 的位置。",
+      "key_observations": [
+        "发送前 $y<k$ 条消息时，表情总数是三角数 $y(y+1)/2$，因此达到封禁阈值可直接转化为一个不等式判断。",
+        "发送到下降段时，前缀表情数可表示为 $cnt(k)+cnt(k-1)-cnt(2k-1-y)$，避免逐条模拟下降过程。",
+        "发送的消息数越多，累计表情数单调不减，因此“前 $y$ 条消息是否达到 $x$”具有单调性，可寻找首次满足条件的位置。",
+        "若完整三角形的总表情数仍小于 $x$，整个过程都不会被封禁，答案固定为 $2k-1$。"
+      ],
+      "solution_brief": "用分段等差数列公式计算前 $y$ 条消息的累计表情数，在区间 $[1,2k-1]$ 上二分最小的满足累计数至少为 $x$ 的 $y$；若不存在则输出 $2k-1$。每组复杂度为 $O(\\log k)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:26:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1612D",
+      "contest_id": 1612,
+      "title": "X-Magic Pair",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1612/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/97164",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定正整数对 $(a,b)$ 和目标 $x$，每次可从一个数中减去另一个数，按题目允许的两种方向重复操作且不能得到负数。判断经过任意次操作后，是否能让 $a$ 或 $b$ 恰好等于 $x$。",
+      "transformed_statement": "把问题重述为欧几里得式减法轨迹上的可达性：固定较小数时，较大数沿等差序列递减；只需在轨迹经过 $x$ 或两数大小关系改变的位置停下，其余连续步骤可批量处理。",
+      "key_observations": [
+        "任意合法操作序列都可规整为不断从较大数中减去较小数，并在两数大小关系改变时交换角色，因此只需跟踪欧几里得式减法过程。",
+        "固定较小数 $b$ 后，较大数会按 $a,a-b,a-2b,$ 变化；因此可整段跳过不会经过 $x$ 或改变大小关系的减法。",
+        "每次批量跳跃的步数由“即将满足 $b\\ge a-b$”和“即将让某个数等于 $x$”中的更早事件决定，避免逐次模拟。",
+        "该过程持续缩小数对中的较大数，最终在得到 $x$ 或某个数变为 $0$ 时结束，整体复杂度为每组 $O(\\log a)$。"
+      ],
+      "solution_brief": "先令 $a\\ge b$，按欧几里得减法模拟：批量跳过连续的 $a:=a-b$，但不能跳过越过 $x$ 或大小关系变化的步骤；交换两数后继续，若任一数等于 $x$ 则输出 YES。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:26:20+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1612E",
+      "contest_id": 1612,
+      "title": "Messages",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1612/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/97164",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "组合计数与概率",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "dp",
+        "greedy",
+        "probabilities",
+        "sortings"
+      ],
+      "statement_brief": "有 $n$ 名学生，每名学生指定希望阅读的消息 $m_i$，且最多阅读 $k_i$ 条。可以钉选任意条消息；若钉选数不超过 $k_i$，学生阅读全部钉选消息，否则从中等概率选择恰好 $k_i$ 条，要求选择钉选消息集合以最大化读到各自目标消息的期望人数。",
+      "transformed_statement": "固定钉选数量 $t$ 后，把每条消息视为一个候选物品：所有目标是该消息的学生共同贡献 $\\min(1,k_i/t)$，该消息的总分即这些贡献之和。问题转化为枚举 $t$ 并选取得分最高的 $t$ 条消息。",
+      "key_observations": [
+        "期望人数可按学生分别求和，因此无需考虑学生之间的随机选择是否相关。",
+        "固定钉选数量为 $t$ 时，目标消息被钉住的学生贡献为 $\\min(1,k_i/t)$，否则贡献为 $0$；于是每条消息都能独立计算总贡献。",
+        "固定 $t$ 后，最优方案必然选择贡献最大的 $t$ 条消息，因为选中消息之间没有额外限制。",
+        "由于所有 $k_i\\le 20$，当 $t>20$ 时每条消息的贡献都是其在 $t=20$ 时的 $20/t$ 倍，选取更多消息后的总贡献不会超过前 $20$ 条的总贡献。"
+      ],
+      "solution_brief": "枚举钉选数量 $t=1..20$。对每条消息汇总所有目标为它的学生贡献，其中单个学生贡献为 $\\min(1,k_i/t)$，再选贡献最大的 $t$ 条消息并取最大期望值；超过 $20$ 条无需考虑。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:25:50+00:00",
+          "quality_flags": [
+            "statement_output_section_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1612F",
+      "contest_id": 1612,
+      "title": "Armor and Weapons",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1612/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/97164",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "dp",
+        "greedy",
+        "shortest paths"
+      ],
+      "statement_brief": "有 $n$ 套护甲和 $m$ 把武器，初始拥有第 1 套护甲和第 1 把武器；组合 $(i,j)$ 的战力通常为 $i+j$，给定的协同组合战力额外加 1。每小时可获得一件新装备，但获得编号为 $k$ 的装备前，当前某个护甲与武器的组合战力必须至少为 $k$；求获得第 $n$ 套护甲和第 $m$ 把武器所需的最少小时数。",
+      "transformed_statement": "将已获得装备压缩为最高编号状态 $(x,y)$，每条边对应在当前组合下取得最高可得的护甲或武器。于是问题是从 $(1,1)$ 到 $(n,m)$ 的最短路，并在每个 BFS 层只保留坐标意义下的非支配状态。",
+      "key_observations": [
+        "同类装备中编号更大的永远不劣，因此状态只需记录当前拥有的最高护甲与最高武器，且每次应优先取得能达到的最高装备。",
+        "把每个状态 $(x,y)$ 视为顶点，边表示用当前组合在一小时内取得最高可得的护甲或武器，答案等价于从 $(1,1)$ 到 $(n,m)$ 的最短路。",
+        "同一 BFS 层中，若状态 $(x',y')$ 满足 $x'\\le x$ 且 $y'\\le y$，则前者未来永远不可能优于后者，可以删除以避免遍历整个 $n\\times m$ 状态空间。",
+        "当 $n\\ge m$ 时，可在 $O(\\log m)$ 步左右到达 $(m,m)$，再用约 $n/m$ 步提升护甲；结合每层至多保留 $m$ 个非支配状态，可将访问量控制在 $O(m\\log m+n)$。"
+      ],
+      "solution_brief": "利用装备编号的单调支配关系，将过程建模为状态 $(x,y)$ 上的最短路。按 BFS 分层扩展每个状态能取得的最高护甲或武器，并删除同层被坐标同时不小于的状态，从而只搜索 Pareto 前沿。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:25:30+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1612G",
+      "contest_id": 1612,
+      "title": "Max Sum Array",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1612/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/97164",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "constructive algorithms",
+        "greedy",
+        "sortings"
+      ],
+      "statement_brief": "给定每个整数 $i$ 必须出现恰好 $c_i$ 次，任意重排组成数组 $a$。定义所有相同元素位置对的距离之和 $f(a)$，要求最大化 $f(a)$，并统计达到最大值的数组数量，均对 $10^9+7$ 取模。",
+      "transformed_statement": "将排列过程看成从外向内逐层放置元素：当前出现次数最多的元素必须占据两端；若有多个并列最高频元素，就同时占据两端对应数量的位置，剥去后继续处理剩余频次。",
+      "key_observations": [
+        "最优排列的首位和末位必须放置当前出现次数最多的元素；否则交换首位与更高频元素会严格增加总距离，排除了非最优结构。",
+        "若有 $k$ 个并列最高频元素，它们必须占据两端各 $k$ 个位置；这些元素的总贡献恒为 $(h-1)k(n-k)$，与两端内部的排列顺序无关。",
+        "去掉两端的这 $k$ 个元素后，每个最高频元素的剩余次数减 $2$，问题保持同型，因此可以按频次层递归剥离。",
+        "每层两端的 $k$ 个元素可分别任意排列，方案数乘以 $(k!)^2$；若当前最高频为 $1$，剩余元素只能各出现一次，方案数再乘 $k!$ 且贡献为零。"
+      ],
+      "solution_brief": "维护当前各元素出现次数及其频次分布。反复取最高频 $h$ 的 $k$ 个元素，加入 $(h-1)k(n-k)$，方案数乘 $(k!)^2$，并将它们次数各减 $2$；若 $h=1$，乘剩余元素排列数 $k!$ 后结束。按频次计数可在 $O(n+C)$ 内完成。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:25:08+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 8,
       "problem_key": "1610A",

@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3661,
+    "total_problems": 3668,
     "source_total_problems": 3670,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3661,
-    "with_editorial_brief": 3355,
-    "with_solution_brief": 3357,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3668,
+    "with_editorial_brief": 3362,
+    "with_solution_brief": 3364,
     "missing_editorial_brief": 304,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2723,
+    "ai_override_count": 2730,
     "primary_topic_count": 13,
-    "contest_count": 564,
+    "contest_count": 565,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 380,
-    "构造与贪心": 1188,
+    "构造与贪心": 1192,
+    "基础实现与模拟": 232,
+    "数论与同余": 381,
+    "图论与网络流": 239,
     "组合计数与概率": 277,
     "数据结构": 350,
     "树结构": 177,
     "博弈": 111,
-    "图论与网络流": 238,
     "动态规划与状态设计": 297,
     "字符串": 192,
-    "基础实现与模拟": 231,
     "几何": 89,
     "交互": 106,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2388,
-    "ai_generated_partial_editorial": 76,
+    "ai_generated_partial_editorial": 77,
+    "ai_generated_with_editorial": 2394,
     "missing_editorial": 304,
     "low_confidence": 1,
     "manual_override": 891,
@@ -112887,6 +112887,217 @@ window.CF_INSIGHTS_DATA = {
             "黑边数为奇数时，题解将黑色核心分解为路径，并在一条奇长度路径上使用两钉住点情形，切边后递归处理两侧，从而保证任意更小 Grundy 值可达。"
           ],
           "solutionBrief": "维护钉住点路径形成的黑色核心：灰边附着白色子树的 Grundy 异或黑边数奇偶即为总 Grundy。按顶点编号递增加入钉住点，沿根方向重染白边并维护该值；总 Grundy 非零则先手胜。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1612,
+      "name": "Educational Codeforces Round 117 (Rated for Div. 2)",
+      "date": "2021-11-22",
+      "url": "https://codeforces.com/contest/1612",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1612A",
+          "index": "A",
+          "slot": "A",
+          "title": "Distance",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1612/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/97164",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定曼哈顿距离下的两点：$A=(0,0)$ 和 $B=(x,y)$，要求构造一个点 $C$，使其满足题面列出的距离约束；若不存在则报告无解。但当前本地记录在“满足以下条件”后缺失了具体约束内容。",
+          "transformedStatement": "题解将其中明确出现的条件 $d(A,C)+d(B,C)=d(A,B)$ 重述为：$C$ 位于 $A$ 到 $B$ 的某条最短曼哈顿路径上。因此可将问题转为在坐标范围 $0$ 到 $50$ 内寻找满足其余条件的路径点。",
+          "keyObservations": [
+            "条件 $d(A,C)+d(B,C)=d(A,B)$ 说明 $C$ 必须位于从 $A$ 到 $B$ 的某条最短曼哈顿路径上，因此无需检查范围外的点。",
+            "由于 $x,y$ 的范围都不超过 $50$，枚举 $C$ 的两个坐标在 $[0,50]$ 内的所有取值即可覆盖所有可能答案，判定过程为常数级有限枚举。"
+          ],
+          "solutionBrief": "题面中的具体约束列表在记录中缺失。题解明确建议枚举 $C$ 的坐标 $0$ 到 $50$，检查其是否满足题面距离条件；曼哈顿距离和等于 $d(A,B)$ 时，$C$ 必在最短路径上。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1612B",
+          "index": "B",
+          "slot": "B",
+          "title": "Special Permutation",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1612/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/97164",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定偶数长度 $n$ 及 $a,b$，要构造一个包含 $1$ 到 $n$ 各一次的排列。排列分为左右两个等长部分，要求左半部分的最小值为 $a$、右半部分的最大值为 $b$；无法构造时输出 $-1$。",
+          "transformedStatement": "把问题看成将全部数字划分到两个固定大小的半区：左区锁定 $a$ 并尽量放大其余元素，右区锁定 $b$ 并尽量缩小其余元素，填完后验证两个极值条件。",
+          "keyObservations": [
+            "左半部分必须包含 $a$ 且其余元素都大于等于 $a$，右半部分必须包含 $b$ 且其余元素都小于等于 $b$，因此两个半区的极值条件可分别独立检查。",
+            "将 $a$ 固定放入左半、$b$ 固定放入右半后，优先把最大的剩余数放入左半、最小的剩余数放入右半，可最大化左半元素并最小化右半元素。",
+            "按上述规则填满后直接验证两半的最小值和最大值；若仍不满足，说明该构造不可行并输出 $-1$。"
+          ],
+          "solutionBrief": "先把 $a$ 放入左半、$b$ 放入右半，再用最大的剩余数填左半、最小的剩余数填右半，最后检查左半最小值是否为 $a$、右半最大值是否为 $b$；不满足则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1612C",
+          "index": "C",
+          "slot": "C",
+          "title": "Chat Ban",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1612/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/97164",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "binary search",
+            "math"
+          ],
+          "statementBrief": "给定大小为 $k$ 的表情三角形，消息长度依次为 $1,2,\u0007ldots,k,k-1,\u0007ldots,1$。按顺序发送消息，累计发送至少 $x$ 个表情时立即被封禁且当前消息计入答案；求被封禁前发送的消息数，若始终未达到则输出全部 $2k-1$ 条。",
+          "transformedStatement": "把每个消息前缀映射为累计表情数函数：上升段使用三角数，下降段用两个三角数之差表示。问题等价于在消息位置上寻找累计表情数首次达到 $x$ 的位置。",
+          "keyObservations": [
+            "发送前 $y<k$ 条消息时，表情总数是三角数 $y(y+1)/2$，因此达到封禁阈值可直接转化为一个不等式判断。",
+            "发送到下降段时，前缀表情数可表示为 $cnt(k)+cnt(k-1)-cnt(2k-1-y)$，避免逐条模拟下降过程。",
+            "发送的消息数越多，累计表情数单调不减，因此“前 $y$ 条消息是否达到 $x$”具有单调性，可寻找首次满足条件的位置。",
+            "若完整三角形的总表情数仍小于 $x$，整个过程都不会被封禁，答案固定为 $2k-1$。"
+          ],
+          "solutionBrief": "用分段等差数列公式计算前 $y$ 条消息的累计表情数，在区间 $[1,2k-1]$ 上二分最小的满足累计数至少为 $x$ 的 $y$；若不存在则输出 $2k-1$。每组复杂度为 $O(\\log k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1612D",
+          "index": "D",
+          "slot": "D",
+          "title": "X-Magic Pair",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1612/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/97164",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数对 $(a,b)$ 和目标 $x$，每次可从一个数中减去另一个数，按题目允许的两种方向重复操作且不能得到负数。判断经过任意次操作后，是否能让 $a$ 或 $b$ 恰好等于 $x$。",
+          "transformedStatement": "把问题重述为欧几里得式减法轨迹上的可达性：固定较小数时，较大数沿等差序列递减；只需在轨迹经过 $x$ 或两数大小关系改变的位置停下，其余连续步骤可批量处理。",
+          "keyObservations": [
+            "任意合法操作序列都可规整为不断从较大数中减去较小数，并在两数大小关系改变时交换角色，因此只需跟踪欧几里得式减法过程。",
+            "固定较小数 $b$ 后，较大数会按 $a,a-b,a-2b,$ 变化；因此可整段跳过不会经过 $x$ 或改变大小关系的减法。",
+            "每次批量跳跃的步数由“即将满足 $b\\ge a-b$”和“即将让某个数等于 $x$”中的更早事件决定，避免逐次模拟。",
+            "该过程持续缩小数对中的较大数，最终在得到 $x$ 或某个数变为 $0$ 时结束，整体复杂度为每组 $O(\\log a)$。"
+          ],
+          "solutionBrief": "先令 $a\\ge b$，按欧几里得减法模拟：批量跳过连续的 $a:=a-b$，但不能跳过越过 $x$ 或大小关系变化的步骤；交换两数后继续，若任一数等于 $x$ 则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1612E",
+          "index": "E",
+          "slot": "E",
+          "title": "Messages",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1612/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/97164",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "probabilities",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 名学生，每名学生指定希望阅读的消息 $m_i$，且最多阅读 $k_i$ 条。可以钉选任意条消息；若钉选数不超过 $k_i$，学生阅读全部钉选消息，否则从中等概率选择恰好 $k_i$ 条，要求选择钉选消息集合以最大化读到各自目标消息的期望人数。",
+          "transformedStatement": "固定钉选数量 $t$ 后，把每条消息视为一个候选物品：所有目标是该消息的学生共同贡献 $\\min(1,k_i/t)$，该消息的总分即这些贡献之和。问题转化为枚举 $t$ 并选取得分最高的 $t$ 条消息。",
+          "keyObservations": [
+            "期望人数可按学生分别求和，因此无需考虑学生之间的随机选择是否相关。",
+            "固定钉选数量为 $t$ 时，目标消息被钉住的学生贡献为 $\\min(1,k_i/t)$，否则贡献为 $0$；于是每条消息都能独立计算总贡献。",
+            "固定 $t$ 后，最优方案必然选择贡献最大的 $t$ 条消息，因为选中消息之间没有额外限制。",
+            "由于所有 $k_i\\le 20$，当 $t>20$ 时每条消息的贡献都是其在 $t=20$ 时的 $20/t$ 倍，选取更多消息后的总贡献不会超过前 $20$ 条的总贡献。"
+          ],
+          "solutionBrief": "枚举钉选数量 $t=1..20$。对每条消息汇总所有目标为它的学生贡献，其中单个学生贡献为 $\\min(1,k_i/t)$，再选贡献最大的 $t$ 条消息并取最大期望值；超过 $20$ 条无需考虑。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1612F",
+          "index": "F",
+          "slot": "F",
+          "title": "Armor and Weapons",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1612/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/97164",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "shortest paths"
+          ],
+          "statementBrief": "有 $n$ 套护甲和 $m$ 把武器，初始拥有第 1 套护甲和第 1 把武器；组合 $(i,j)$ 的战力通常为 $i+j$，给定的协同组合战力额外加 1。每小时可获得一件新装备，但获得编号为 $k$ 的装备前，当前某个护甲与武器的组合战力必须至少为 $k$；求获得第 $n$ 套护甲和第 $m$ 把武器所需的最少小时数。",
+          "transformedStatement": "将已获得装备压缩为最高编号状态 $(x,y)$，每条边对应在当前组合下取得最高可得的护甲或武器。于是问题是从 $(1,1)$ 到 $(n,m)$ 的最短路，并在每个 BFS 层只保留坐标意义下的非支配状态。",
+          "keyObservations": [
+            "同类装备中编号更大的永远不劣，因此状态只需记录当前拥有的最高护甲与最高武器，且每次应优先取得能达到的最高装备。",
+            "把每个状态 $(x,y)$ 视为顶点，边表示用当前组合在一小时内取得最高可得的护甲或武器，答案等价于从 $(1,1)$ 到 $(n,m)$ 的最短路。",
+            "同一 BFS 层中，若状态 $(x',y')$ 满足 $x'\\le x$ 且 $y'\\le y$，则前者未来永远不可能优于后者，可以删除以避免遍历整个 $n\\times m$ 状态空间。",
+            "当 $n\\ge m$ 时，可在 $O(\\log m)$ 步左右到达 $(m,m)$，再用约 $n/m$ 步提升护甲；结合每层至多保留 $m$ 个非支配状态，可将访问量控制在 $O(m\\log m+n)$。"
+          ],
+          "solutionBrief": "利用装备编号的单调支配关系，将过程建模为状态 $(x,y)$ 上的最短路。按 BFS 分层扩展每个状态能取得的最高护甲或武器，并删除同层被坐标同时不小于的状态，从而只搜索 Pareto 前沿。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1612G",
+          "index": "G",
+          "slot": "G",
+          "title": "Max Sum Array",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1612/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/97164",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定每个整数 $i$ 必须出现恰好 $c_i$ 次，任意重排组成数组 $a$。定义所有相同元素位置对的距离之和 $f(a)$，要求最大化 $f(a)$，并统计达到最大值的数组数量，均对 $10^9+7$ 取模。",
+          "transformedStatement": "将排列过程看成从外向内逐层放置元素：当前出现次数最多的元素必须占据两端；若有多个并列最高频元素，就同时占据两端对应数量的位置，剥去后继续处理剩余频次。",
+          "keyObservations": [
+            "最优排列的首位和末位必须放置当前出现次数最多的元素；否则交换首位与更高频元素会严格增加总距离，排除了非最优结构。",
+            "若有 $k$ 个并列最高频元素，它们必须占据两端各 $k$ 个位置；这些元素的总贡献恒为 $(h-1)k(n-k)$，与两端内部的排列顺序无关。",
+            "去掉两端的这 $k$ 个元素后，每个最高频元素的剩余次数减 $2$，问题保持同型，因此可以按频次层递归剥离。",
+            "每层两端的 $k$ 个元素可分别任意排列，方案数乘以 $(k!)^2$；若当前最高频为 $1$，剩余元素只能各出现一次，方案数再乘 $k!$ 且贡献为零。"
+          ],
+          "solutionBrief": "维护当前各元素出现次数及其频次分布。反复取最高频 $h$ 的 $k$ 个元素，加入 $(h-1)k(n-k)$，方案数乘 $(k!)^2$，并将它们次数各减 $2$；若 $h=1$，乘剩余元素排列数 $k!$ 后结束。按频次计数可在 $O(n+C)$ 内完成。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
