@@ -8,6 +8,28 @@
     "raw_sha256": "e02bf41675dc0dbc425a56dd042c753b3411dbe71c57032363c612b54b0bb7d8"
   },
   {
+    "url": "https://codeforces.com/blog/entry/93586",
+    "blog_entry_id": 93586,
+    "title": "Codeforces Round 736 Editorial",
+    "author": "Agnimandur",
+    "creation_time": "2021-08-06",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round 736 Editorial",
+    "section_count": 8,
+    "covered_problems": [
+      "1548E",
+      "1549A",
+      "1549B",
+      "1549C",
+      "1549D",
+      "1549E",
+      "1549F1",
+      "1549F2"
+    ],
+    "raw_sha256": "4820165aed2f84837f020cfce57a416fd41fe6866ae59630254f2f86001be6da"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/94216",
     "blog_entry_id": 94216,
     "title": "Codeforces Round #740 Editorial",

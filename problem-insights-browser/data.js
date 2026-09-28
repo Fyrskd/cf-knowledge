@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3865,
-    "source_total_problems": 3867,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 3865,
+    "total_problems": 3870,
+    "source_total_problems": 3873,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3870,
     "with_editorial_brief": 3542,
     "with_solution_brief": 3544,
-    "missing_editorial_brief": 321,
+    "missing_editorial_brief": 326,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2927,
     "primary_topic_count": 13,
-    "contest_count": 600,
+    "contest_count": 601,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,9 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1255,
+    "组合计数与概率": 296,
+    "几何": 92,
     "数论与同余": 410,
-    "构造与贪心": 1253,
-    "组合计数与概率": 295,
     "数据结构": 369,
     "交互": 113,
     "图论与网络流": 253,
@@ -54,13 +55,12 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 202,
     "动态规划与状态设计": 316,
     "树结构": 183,
-    "几何": 90,
     "博弈": 112,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 326,
     "ai_generated_with_editorial": 2564,
-    "missing_editorial": 321,
     "ai_generated_partial_editorial": 87,
     "low_confidence": 1,
     "manual_override": 891,
@@ -119052,6 +119052,149 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "按列从左到右处理己方兵：优先吃左侧未被吃的敌兵；否则本列为空则直上；否则吃右侧敌兵。维护敌兵是否已被吃并累计成功数，整体复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1548,
+      "name": "Codeforces Round 736 (Div. 1)",
+      "date": "2021-08-01",
+      "url": "https://codeforces.com/contest/1548",
+      "type": "Div. 1",
+      "problemCount": 5,
+      "maxRating": 3300,
+      "problems": [
+        {
+          "key": "1548A",
+          "index": "A",
+          "slot": "A",
+          "title": "Web of Lies",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1548/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/93586",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Web of Lies；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1548B",
+          "index": "B",
+          "slot": "B",
+          "title": "Integers Have Friends",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1548/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/93586",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "divide and conquer",
+            "math",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "题面已抓取：Integers Have Friends；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1548C",
+          "index": "C",
+          "slot": "C",
+          "title": "The Three Little Pigs",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1548/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/93586",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式",
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：The Three Little Pigs；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1548D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Gregor and the Odd Cows (Easy)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1548/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/93586",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数论与同余",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "geometry",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Gregor and the Odd Cows (Easy)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1548D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Gregor and the Odd Cows (Hard)",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1548/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/93586",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "geometry",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Gregor and the Odd Cows (Hard)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
