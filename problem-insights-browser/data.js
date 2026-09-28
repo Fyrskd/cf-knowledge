@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3181,
+    "total_problems": 3187,
     "source_total_problems": 3189,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3181,
-    "with_editorial_brief": 2900,
-    "with_solution_brief": 2902,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3187,
+    "with_editorial_brief": 2906,
+    "with_solution_brief": 2908,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2243,
+    "ai_override_count": 2249,
     "primary_topic_count": 13,
-    "contest_count": 486,
+    "contest_count": 487,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -38,28 +38,28 @@ window.CF_INSIGHTS_DATA = {
     "基础实现与模拟",
     "字符串",
     "树结构",
-    "交互",
     "博弈",
+    "交互",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "博弈": 101,
+    "动态规划与状态设计": 270,
+    "树结构": 158,
+    "图论与网络流": 199,
     "构造与贪心": 1017,
-    "动态规划与状态设计": 269,
-    "图论与网络流": 198,
     "数论与同余": 340,
     "组合计数与概率": 247,
     "数据结构": 298,
     "基础实现与模拟": 192,
     "交互": 99,
     "字符串": 167,
-    "树结构": 156,
     "几何": 77,
-    "博弈": 99,
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1941,
+    "ai_generated_with_editorial": 1947,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -98259,6 +98259,192 @@ window.CF_INSIGHTS_DATA = {
             "从左到右处理时，只有两行差值符号相反才值得在当前后缀换行；每次消去两者绝对值的较小部分不会增加最优代价，三角不等式保证其余换行可延后处理。"
           ],
           "solutionBrief": "先检查两矩阵的 $1$ 总数是否相等。维护两行前缀差，从左到右对符号相反的差值执行后缀换行，次数取两者绝对值较小者；答案为换行次数与最终两行差值绝对值和，整体 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1695,
+      "name": "Codeforces Round 801 (Div. 2) and EPIC Institute of Technology Round",
+      "date": "2022-06-18",
+      "url": "https://codeforces.com/contest/1695",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1695A",
+          "index": "A",
+          "slot": "A",
+          "title": "Subrectangle Guess",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1695/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103996",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [],
+          "originalTags": [
+            "games"
+          ],
+          "statementBrief": "给定一个元素互不相同的 $n\\times m$ 网格，Michael 先选择子矩形的高 $h$ 和宽 $w$，Joe 再隐藏选择任意一个 $h\\times w$ 子矩形。Michael 必须无论 Joe 选哪里都猜中其中最大值，并求能保证获胜的最小面积 $h\\times w$。",
+          "transformedStatement": "问题等价于选择最小的高宽，使任意合法子矩形都包含全局最大值。若最大值在 $(i,j)$，则分别计算覆盖它到四条边所需的最大行距和列距，两个方向独立决定答案。",
+          "keyObservations": [
+            "全局最大值唯一；由于总能选到包含它的子矩形，想让所有隐藏位置的答案一致，就必须让每个 $h\\times w$ 子矩形都包含全局最大值。",
+            "设最大值位于 $(i,j)$，离它最远的网格位置必是四个角之一，因此只需保证子矩形能覆盖最远角，而不必检查其他位置。",
+            "覆盖最大值到边界的需求在行、列方向彼此独立，所需最小高宽分别为 $\\max(i,n-i+1)$ 和 $\\max(j,m-j+1)$，面积为二者乘积。"
+          ],
+          "solutionBrief": "扫描网格找到全局最大值的位置 $(i,j)$。为保证任意隐藏子矩形都包含它，最小高宽分别取到上下边界、左右边界的较大距离，答案为 $\\max(i,n-i+1)\\times\\max(j,m-j+1)$，扫描复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1695B",
+          "index": "B",
+          "slot": "B",
+          "title": "Circle Game",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1695/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103996",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "games",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 堆按圆环排列的石头，Mike 先手；每次玩家必须从当前指定的堆中取出至少一个石头，下一回合转到顺时针的下一堆，若轮到空堆则立即输。双方最优行动，判断最终获胜者。",
+          "transformedStatement": "把回合顺序按堆编号展开：当 $n$ 为奇数时，首堆会在一圈后再次轮到对手；当 $n$ 为偶数时，双方分别只负责奇数堆或偶数堆，问题转化为比较所有石堆中最小值的最左位置奇偶性。",
+          "keyObservations": [
+            "当 $n$ 为奇数时，Mike 首回合清空第 $1$ 堆；经过完整一圈后，Joe 被迫再次操作这堆并立即无石可取，因此 Mike 必胜。",
+            "当 $n$ 为偶数时，Mike 始终只操作奇数编号的堆，Joe 始终只操作偶数编号的堆，双方的石堆完全独立，胜负可分别判断。",
+            "在偶数堆情况下，玩家每次取恰好 $1$ 个石头才能让自己的回合尽可能延后，因此最先变空的堆必是全局最小堆；其编号为奇数则 Mike 输，为偶数则 Joe 输。"
+          ],
+          "solutionBrief": "若 $n$ 为奇数，输出 Mike。若 $n$ 为偶数，找到最小的 $a_i$ 及其最左位置：位置为奇数输出 Joe，否则输出 Mike。复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1695C",
+          "index": "C",
+          "slot": "C",
+          "title": "Zero Path",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1695/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/103996",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "graphs",
+            "greedy",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个只含 $1$ 和 $-1$ 的 $n×m$ 网格，从左上角出发，每次只能向右或向下移动，直到右下角；路径和包括起点和终点格子的值。判断是否存在一条路径，使所有经过格子的总和恰好为 $0$。",
+          "transformedStatement": "把每条路径表示为由 `R` 和 `D` 组成的固定长度移动串，并把问题转化为判断终点可达到的路径和区间是否覆盖 $0$；路径之间可通过交换相邻的 `R,D` 逐步转换。",
+          "keyObservations": [
+            "路径包含固定的 $n+m-1$ 个格子；当 $n+m$ 为偶数时格子数为奇数，所有路径和必为奇数，因此不可能为 $0$。",
+            "对每个格子同时记录到达它的最大和最小路径和，利用最后一步只能来自上方或左方，得到两个独立的 $O(nm)$ 状态转移。",
+            "任意两条路径都可通过交换路径串中相邻的不同移动字符逐步互相转换，每次只替换一个局部格子，路径和变化必为 $-2$、$0$ 或 $2$。",
+            "当最小路径和不大于 $0$ 且最大路径和不小于 $0$ 时，沿上述转换过程和以步长至多 $2$ 变化，结合所有路径和为偶数，可保证经过和为 $0$ 的路径。"
+          ],
+          "solutionBrief": "先用路径长度奇偶性排除 $n+m$ 为偶数的情况。否则在网格 DP 中求到每个格子的最大、最小路径和；若终点区间包含 $0$，利用路径间局部交换的连续变化性质判定为 YES，否则为 NO，复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1695D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Tree Queries (Easy Version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1695/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/103996",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵无根树和一个未知顶点 $x$，你可以预先选择若干顶点进行查询；全部查询完成后，会分别得到每个查询点到 $x$ 的最短路长度。要求无论 $x$ 是哪个顶点，都能仅凭这些距离唯一确定它，并求所需查询数的最小值。",
+          "transformedStatement": "枚举一个必选查询点作为根，把树分成子树。定义 $ans[v]$ 为在 $v$ 或其子树外已有查询时，区分 $v$ 子树全部顶点所需的额外查询数；通过限制无查询子树的数量进行树形 DP。",
+          "keyObservations": [
+            "固定一个被查询的根后，处理子树时可假设该点或子树外已有查询，因此每个子树只需计算额外查询数，问题可递归分解。",
+            "同一节点的多个子树中至多一个可以完全没有查询；否则这些子树内的顶点对所有查询得到相同的距离差模式，无法互相区分。",
+            "若有 $x$ 个子树没有查询，在其中任取 $x-1$ 个子树补充查询即可区分它们，因此状态转移为 $ans[v]=\\sum_c ans[c]+\\max(0,x-1)$。",
+            "枚举每个顶点作为已查询根并进行一次树形递归，所得 $ans[root]+1$ 覆盖该根查询，取最小值即可得到全局最优。"
+          ],
+          "solutionBrief": "当 $n=1$ 时答案为 $0$。否则枚举查询根，将树有根化；定义 $ans[v]$ 为已有根或子树外查询时区分子树所需的最少额外查询，按子节点状态用上述公式递归计算，答案取所有根的 $ans[root]+1$ 最小值，整体复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1695D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Tree Queries (Hard Version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1695/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/103996",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵无根树和未知顶点 $x$，可以预先选择若干顶点进行查询，随后分别得到它们到 $x$ 的最短路长度。求最少需要多少次查询，才能无论 $x$ 位于何处都唯一确定它。",
+          "transformedStatement": "把查询集合视为给树上顶点生成距离签名的标记点集合，并用“每个子树中有标记点或其外部有标记点”的条件保证签名可区分；再通过选高阶顶点为根和 DFS 统计最小标记数。",
+          "keyObservations": [
+            "要保证任意顶点都能被距离信息区分，只需让每个顶点自身被查询，或在其子树外放置查询点；这把全局辨识条件转化为子树覆盖条件。",
+            "当根的度数至少为 $3$ 时，D1 的 DFS 递推会保证根的至少 $degree[root]-1\\ge 2$ 个子树含有查询点，因此其他顶点都能在子树外找到查询点，根本身无需查询。",
+            "因此可任选一个度数至少为 $3$ 的顶点作为根，直接复用 D1 的 DFS 计数并省去根查询；无需强制把根计入答案。",
+            "若树中不存在度数至少为 $3$ 的顶点，树就是一条路径，查询任意端点即可唯一确定隐藏顶点；单点树则无需查询。"
+          ],
+          "solutionBrief": "若树不是路径，选任意度数至少为 $3$ 的顶点作根，按 D1 的 DFS 递推统计各子树所需查询点，且不查询根。DFS 保证至少两个根子树含查询点，从而满足所有顶点的区分条件。路径答案为 $1$，单点答案为 $0$，总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1695E",
+          "index": "E",
+          "slot": "E",
+          "title": "Ambiguous Dominoes",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1695/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/103996",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs"
+          ],
+          "statementBrief": "给定 $n$ 张可旋转的骨牌 $(x_i,y_i)$，需要重建一个含 $2n$ 个格子的网格，并给出两种都恰好使用这些骨牌、且数字与覆盖格匹配的铺法。要求任意一张骨牌在两种铺法中都不能覆盖同一对格子；若无法做到则输出无解。",
+          "transformedStatement": "将每张骨牌看作数字顶点之间的一条边；目标是在每个连通分量中构造一个顶点环，使每条边在环的两种交错配对中各出现一次，再把各分量的环拼成一个 $2\\times n$ 网格。",
+          "keyObservations": [
+            "若某个连通分量只有一条边，则该骨牌的两个数字不会出现在其他骨牌中，因此它在两种铺法中的位置都被唯一确定，必然无法满足条件。",
+            "对含有 $k$ 条边的连通分量进行 DFS，并记录每次经过的顶点；每条边恰好被正向、反向各经过一次，得到长度为 $2k+1$ 且首尾相同的顶点序列。",
+            "DFS 序列中每条边的两次出现分别位于奇偶位置；因此去掉末尾重复顶点后，按环形顺序放入 $2\\times k$ 网格，每条骨牌恰好在两种相反方向的铺法中各出现一次。",
+            "各连通分量独立构造 $2\\times k$ 网格后横向拼接，得到整体的 $2\\times n$ 网格，同时两种铺法在任意骨牌位置上都不会重合。"
+          ],
+          "solutionBrief": "把数字视为顶点、骨牌视为允许重边和自环的边。若存在仅含一条边的连通分量则无解；否则对每个分量做 DFS，取得首尾相同的遍历序列，去掉末尾后环形填入 $2\\times k$ 网格，再拼接所有分量。整体复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
