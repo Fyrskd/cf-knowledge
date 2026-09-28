@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3591,
+    "total_problems": 3597,
     "source_total_problems": 3599,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3591,
-    "with_editorial_brief": 3292,
-    "with_solution_brief": 3294,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3597,
+    "with_editorial_brief": 3298,
+    "with_solution_brief": 3300,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2653,
+    "ai_override_count": 2659,
     "primary_topic_count": 13,
-    "contest_count": 554,
+    "contest_count": 555,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1167,
+    "字符串": 189,
+    "构造与贪心": 1169,
+    "交互": 106,
+    "树结构": 174,
     "几何": 88,
     "数论与同余": 373,
     "数据结构": 341,
     "动态规划与状态设计": 294,
     "组合计数与概率": 270,
-    "字符串": 188,
     "基础实现与模拟": 225,
     "图论与网络流": 235,
     "博弈": 108,
-    "代数、矩阵与多项式": 25,
-    "交互": 104,
-    "树结构": 173
+    "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2328,
+    "ai_generated_with_editorial": 2334,
     "ai_generated_partial_editorial": 73,
     "missing_editorial": 297,
     "low_confidence": 1,
@@ -110811,6 +110811,206 @@ window.CF_INSIGHTS_DATA = {
             "得到所有 $G(x)$ 后，用 SOS DP 求每个选中掩码对应的并集数量，再乘以该集合大小与下标和，按题意对全部掩码结果取异或。"
           ],
           "solutionBrief": "先递推计算每个集合的共同子序列数 $H(x)$，再通过取反掩码和逆 SOS DP 从 $H$ 恢复特征掩码计数 $G$。利用子集和得到每个集合的并集计数，结合集合大小、下标和计算最终异或；复杂度为 $O(2^n(n+A))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1617,
+      "name": "Codeforces Round 761 (Div. 2)",
+      "date": "2021-12-16",
+      "url": "https://codeforces.com/contest/1617",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1617A",
+          "index": "A",
+          "slot": "A",
+          "title": "Forbidden Subsequence",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1617/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/97920",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定字符串 $S$ 和由 `a`、`b`、`c` 各出现一次组成的字符串 $T$，可以任意重排 $S$。要求构造一个字典序最小的排列 $S'$，使 $T$ 不是 $S'$ 的子序列。",
+          "transformedStatement": "先考虑 $S$ 的整体升序排列；除非它恰好包含目标子序列，否则它已经是答案。唯一需要调整的是 $T=abc$ 且三种字母都出现时，将相关字母改排为 `a`、`c`、`b` 的分块顺序。",
+          "keyObservations": [
+            "全局排序是所有排列中字典序最小的候选；由于排序后字母顺序为 `abc`，只有当 $T=abc$ 且 $S$ 同时含有三种字母时它才会包含禁 subsequence。",
+            "当 $T=abc$ 且三种字母都存在时，所有 `a` 后不能出现 `b` 再出现 `c`，因此应将 `c` 放在 `b` 前；其余字符继续按升序放置即可避免 `abc`。",
+            "在特殊情形下保留尽可能长的 `a` 前缀，并按 `a^*c^*b^*` 排列，能在不形成 `abc` 的前提下保持每个位置尽量小，从而得到字典序最小排列。"
+          ],
+          "solutionBrief": "先将 $S$ 排序。若 $T\\ne abc$ 或 $S$ 缺少 `a`、`b`、`c`，直接输出排序结果；否则输出所有 `a`、再所有 `c`、再所有 `b`，最后按升序输出其余字符。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1617B",
+          "index": "B",
+          "slot": "B",
+          "title": "GCD Problem",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1617/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/97920",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "对每个给定的正整数 $n$，要找出三个互不相同的正整数 $a,b,c$，满足 $a+b+c=n$ 且 $\\gcd(a,b)=c$。每组数据输出任意一组满足条件的三元组。",
+          "transformedStatement": "题解先固定 $c=1$，于是只需把 $n-1$ 拆成两个互不相同且互质的正整数 $a,b$；再按 $n$ 模 $2$ 或模 $4$ 的结果直接构造这两个数。",
+          "keyObservations": [
+            "总能令 $c=1$，问题因此化为寻找两个互不相同的正整数 $a,b$，使 $a+b=n-1$ 且互质。",
+            "当 $n$ 为偶数时取 $(a,b,c)=(n-3,2,1)$；此时 $n-3$ 为奇数，所以与 $2$ 互质。",
+            "当 $n\\equiv1\\pmod4$ 时取 $(\\lfloor n/2\\rfloor-1,\\lfloor n/2\\rfloor+1,1)$，两数之差为 $2$ 且均为奇数，故最大公因数为 $1$。",
+            "当 $n\\equiv3\\pmod4$ 时取 $(\\lfloor n/2\\rfloor-2,\\lfloor n/2\\rfloor+2,1)$，两数之差为 $4$ 且均为奇数，公因数只能为 $1$。"
+          ],
+          "solutionBrief": "固定 $c=1$，再按 $n$ 的奇偶性构造 $a,b$。偶数时输出 $(n-3,2,1)$；奇数时根据 $n\\bmod4$ 选择关于 $n/2$ 对称、且差值为 $2$ 或 $4$ 的两个奇数，从而保证互质、和为 $n-1$ 且三数互异。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1617C",
+          "index": "C",
+          "slot": "C",
+          "title": "Paprika and Permutation",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1617/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/97920",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的正整数数组，每次可选一个元素和正整数 $x$，将该元素替换为它除以 $x$ 的余数。求把数组变成 $1$ 到 $n$ 的排列所需的最少操作数；若无法做到则输出 $-1$。",
+          "transformedStatement": "先固定保留每个 $1..n$ 中出现值的一个副本，把其余元素视为必须修改的源值，并将它们匹配到未出现的目标值。源值 $x$ 能改成较小目标 $y$ 当且仅当 $2y<x$，于是问题转为按降序进行可行匹配。",
+          "keyObservations": [
+            "对每个出现在 $[1,n]$ 中的值只保留一个原位置，其他元素都必须修改；因此操作次数在可行时固定为“重复或越界元素”的数量。",
+            "若源值为 $x$、目标缺失值为 $y$ 且需要修改，则可达当且仅当 $2y<x$；可取模数 $x-y$ 实现 $x\\bmod(x-y)=y$，而一次取模得到的正余数严格小于 $x/2$。",
+            "将待修改元素按值降序、缺失目标也按值降序配对；若当前最大的源值连当前最大的缺失值都无法满足 $2y<x$，则更小的源值也无法完成该匹配，因此可以直接判定无解。",
+            "保留合法值的任意一个重复副本不会损失最优性：把较小源值改走、较大源值占用该值，可交换为保留较小值并让较大值承担更小目标，操作数不增且可达性不变或变好。"
+          ],
+          "solutionBrief": "用集合记录尚未占用的 $1..n$。保留每个合法值的首次出现，其余值排序后从大到小匹配当前最大的缺失值；若不满足 $2y<x$ 则无解，否则答案就是待修改元素数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1617D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Too Many Impostors (easy version)",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1617/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/97920",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "interactive"
+          ],
+          "statementBrief": "有 $n$ 名玩家，其中冒充者数量 $k$ 满足 $n/3<k<2n/3$。每次可询问三个不同玩家，得到其中冒充者是否多于船员的答案；最多询问 $2n$ 次后，输出 $k$ 及所有冒充者的编号。",
+          "transformedStatement": "把玩家身份视为二值标记，先在环上询问 $(1,2,3),(2,3,4),\\ldots,(n,1,2)$。相邻查询只差一个端点，结果变化即可暴露一对身份相反的玩家，再用这对玩家作为固定校准组判定全部其他位置。",
+          "keyObservations": [
+            "相邻三元组共享两名玩家；若查询结果不同，则两个不重合玩家身份必相反，从而立即得到一名船员和一名冒充者。",
+            "将三元组按环形顺序查询后必存在结果变化，否则身份分布会使某一类人数不超过 $n/3$，与两类人数都超过 $n/3$ 矛盾。",
+            "已知一名船员 $a$ 和一名冒充者 $d$ 后，查询 $(a,d,x)$：结果为 $0$ 当且仅当 $x$ 是冒充者，因此可独立判定其余所有玩家。",
+            "先进行 $n$ 次环形查询，再判定其余 $n-2$ 人，总查询数为 $2n-2$，满足 easy version 的限制。"
+          ],
+          "solutionBrief": "查询所有环形三元组，寻找相邻结果不同的位置，由此确定一名船员和一名冒充者；再用这两人与每个其余玩家组成三元组，依据结果分类并统计冒充者数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1617D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Too Many Impostors (hard version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1617/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/97920",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 名玩家，其中冒充者数量未知但严格在 $n/3$ 与 $2n/3$ 之间。每次可选择三个不同玩家，询问其中冒充者是否更多；返回 0 表示冒充者更多，否则返回 1，最多询问 $n+6$ 次后，输出冒充者数量及所有冒充者编号。",
+          "transformedStatement": "把玩家划分为连续三人组，先记录每组的多数身份，再在相邻多数不同的组之间用重叠询问提取一名冒充者和一名船员作为身份锚点；之后将每组三人的身份构型判定转化为带两个已知锚点的少量二元查询。",
+          "keyObservations": [
+            "将玩家按连续三人分组并询问多数身份；由于冒充者数量严格介于总人数的三分之一和三分之二之间，分组结果中必有 0 和 1，因此序列中存在相邻结果不同的两组。",
+            "对相邻两组补问两个重叠三元组，四个连续窗口中出现结果变化；变化的相邻窗口共享两人，两个不同端点必为不同身份，从而同时找到一个冒充者和一个船员。",
+            "已知一个冒充者和一个船员后，每个原始三人组只剩四种身份构型；用一次询问先把可能性缩减为两种，再用已知两人的三元组询问确定剩余身份。",
+            "若待处理三人组包含已知冒充者或船员，可直接用已知两人逐个询问，仍不超过每组三次询问的整体预算。"
+          ],
+          "solutionBrief": "先询问所有连续三人组，寻找结果不同的相邻组，并补问两个重叠组以确定一名冒充者和一名船员。随后利用这两个已知身份，每个三人组至多再问两次，恢复所有身份并输出冒充者数量及编号，总询问数约为 $n+2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1617E",
+          "index": "E",
+          "slot": "E",
+          "title": "Christmas Chocolates",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1617/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/97920",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "games",
+            "graphs",
+            "implementation",
+            "math",
+            "number theory",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "给定 $n$ 个互不相同的非负整数及其下标，先选两个不同下标 $x,y$。每次可选一个满足 $2^k\\ge a_x$ 的 $k$，将第 $x$ 个数改为 $2^k-a_x$，直到它与第 $y$ 个数相等；对手最小化交换次数，你要选择一对下标使该最小次数最大，并输出下标和次数。",
+          "transformedStatement": "把每个非负整数作为图节点，当两个数之和为某个 $2^k$ 时连边；一次合法交换就是沿边移动。因此问题转化为在这棵树的给定节点中寻找距离最大的节点对，即求受限直径。",
+          "keyObservations": [
+            "把数值视为节点，并令两个节点在和为某个 $2^k$ 时相连；一次交换正好对应沿一条边移动。",
+            "对任意正节点 $v$，小于它且满足 $v+u=2^k$ 的节点至多一个，因此以 $0$ 为根后该无限图是一棵树。",
+            "所有给定节点的树深度仅为 $O(\\log \\max a_i)$，只需生成它们的祖先，节点总数为 $O(n\\log \\max a_i)$。",
+            "树上给定节点对的最远距离可由各祖先处最深的两条不同来源路径之和得到，因此维护每个节点的两个最大深度即可。"
+          ],
+          "solutionBrief": "将交换建模为树上的移动，节点 $v$ 的父节点是“不小于 $v$ 的最小二次幂减去 $v$”。生成所有给定节点的祖先，并在每个节点维护来自不同原节点的两条最深路径，取最大路径和及对应下标。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
