@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3115,
+    "total_problems": 3120,
     "source_total_problems": 3122,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3115,
-    "with_editorial_brief": 2835,
-    "with_solution_brief": 2836,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3120,
+    "with_editorial_brief": 2840,
+    "with_solution_brief": 2841,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2177,
+    "ai_override_count": 2182,
     "primary_topic_count": 13,
-    "contest_count": 475,
+    "contest_count": 476,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "动态规划与状态设计": 264,
+    "构造与贪心": 996,
+    "图论与网络流": 193,
     "基础实现与模拟": 185,
     "数据结构": 292,
     "字符串": 164,
     "树结构": 154,
-    "动态规划与状态设计": 262,
-    "构造与贪心": 994,
     "几何": 77,
-    "图论与网络流": 192,
     "数论与同余": 334,
     "博弈": 99,
     "代数、矩阵与多项式": 22,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "交互": 97
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1878,
+    "ai_generated_with_editorial": 1883,
     "ai_generated_partial_editorial": 66,
     "missing_editorial": 279,
     "manual_override": 891,
@@ -96232,6 +96232,176 @@ window.CF_INSIGHTS_DATA = {
             "忽略当前节点上限时，合并两个子树是对 DP 数组做卷积；加入上限时按 $\\min(a,x)$ 汇总，可用后缀和在线性时间完成，整体复杂度降为 $O(nk\\log k)$。"
           ],
           "solutionBrief": "将问题建模为深度为 $n$ 的二叉 Trie，按深度维护“子树最大容量恰为 $i$”的方案数。子树合并用 FFT 卷积，节点容量限制用后缀和处理，最后统计整体最大容量为 $f$ 的方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1706,
+      "name": "Codeforces Round 809 (Div. 2)",
+      "date": "2022-07-18",
+      "url": "https://codeforces.com/contest/1706",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1706B",
+          "index": "B",
+          "slot": "B",
+          "title": "Making Towers",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1706/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/105008",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定按顺序排列的带颜色方块，必须依次把它们放到无限网格上，且放置过程中不能向下放置。对每种颜色分别选择部分方块组成竖直同色塔，求能够形成的最大塔高；无法形成则为 $0$。",
+          "transformedStatement": "把可组成同色塔的选择序列转化为：相邻选中方块在原序列中的下标必须具有相反奇偶性。于是每种颜色只需维护“最后选中下标为偶数/奇数”的最大长度，并进行交替转移。",
+          "keyObservations": [
+            "同色方块的原序下标能组成塔中相邻两层，当且仅当下标奇偶性不同；同奇偶时坐标奇偶性无法满足竖直相邻，不同奇偶时可通过绕开放方向放置中间方块实现。",
+            "对每种颜色，后续转移只关心当前塔最后一个方块下标的奇偶性，因此无需记录具体下标，只维护两种奇偶状态的最大塔高。",
+            "扫描到下标为 $p$ 的颜色 $c$ 时，只能从颜色 $c$ 的 $1-p$ 状态转移并加一；同奇偶状态保持最大值，从而将二次枚举压缩为线性扫描。"
+          ],
+          "solutionBrief": "按序扫描方块，为每种颜色维护最后下标为偶数或奇数时的最大塔高。当前方块只能接在相反奇偶状态后，更新对应状态；各颜色两种状态的最大值即答案，整体线性处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1706C",
+          "index": "C",
+          "slot": "C",
+          "title": "Qpwoeirut And The City",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1706/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/105008",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "flows",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "城市由一排高度为 $h_i$ 的楼组成，内部楼若严格高于左右相邻楼则算作高楼；只能在任意楼顶增加楼层，不能拆除已有楼层。要求先让高楼数量最大，再求达到该最大数量所需增加的最少楼层数。",
+          "transformedStatement": "将问题转化为：在内部位置中选择最多的互不相邻位置，并为每个被选位置支付使其高于两侧邻楼的局部补层代价；奇数长度的选择模式固定，偶数长度只需滑动枚举唯一的连续未选位置对。",
+          "keyObservations": [
+            "相邻两栋楼不可能同时成为高楼，因此最多只能选择交替位置；奇数长度时最优高楼位置唯一，偶数长度时只需枚举唯一一对连续普通楼的位置。",
+            "把指定位置变成高楼的代价是分别补足其左右邻居与自身之间的高度差，代价为 $max(0,h_{i-1}-h_i+1)+max(0,h_{i+1}-h_i+1)$；选中的高楼互不相邻，所以各位置代价可以独立相加。",
+            "奇数长度直接累加位置 $2,4,\\ldots,n-1$ 的代价；偶数长度沿着连续普通楼的位置移动配置时，只有被移入或移出的两个位置贡献变化，因此可以用 $O(1)$ 更新并在线性时间内取最小值。"
+          ],
+          "solutionBrief": "先为每个内部位置计算成为高楼所需的局部补层代价。奇数长度直接累加固定的交替位置；偶数长度枚举连续普通楼的位置，用相邻配置的差分在 $O(1)$ 内更新总费用，取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1706D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Chopping Carrots (Easy Version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1706/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/105008",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "number theory"
+          ],
+          "statementBrief": "给定非降数组 $a$ 和整数 $k$，为每个 $a_i$ 独立选择整数 $p_i\\in[1,k]$，令对应值为 $\\lfloor a_i/p_i\\rfloor$。要求最小化这些值中的最大值与最小值之差。",
+          "transformedStatement": "把问题按最终最小商值的下界 $v$ 分情况：先要求所有 $\\lfloor a_i/p_i\\rfloor\\ge v$，再在该约束下尽量压低最大商。每个位置可独立选择最大的可行 $p_i$，于是该分情况只需计算一个确定的商值范围。",
+          "keyObservations": [
+            "固定所有商值都至少为 $v$ 后，每个 $p_i$ 应取满足条件的最大值，因为增大 $p_i$ 只会减小商值，从而使最大商尽可能小。",
+            "满足 $\u0007lfloor a_i/p_i\u0007rfloor\\ge v$ 的最大合法选择是 $p_i=\\min(k,\\u0007lfloor a_i/v\\u0007rfloor)$；当 $v=0$ 时直接取 $p_i=k$。",
+            "枚举可能的最小商值 $v$，固定下界后的最优代价可由“最小化后的最大商减去 $v$”得到，取所有候选值中的最小者即可。",
+            "由于 $a_i$ 已排序，最小商值不会超过 $a_1$，因此只需枚举 $0\\le v\\le a_1$，总复杂度为 $O(n\\cdot a_1)$。"
+          ],
+          "solutionBrief": "枚举商值下界 $v$。对每个元素取满足商至少为 $v$ 的最大合法 $p_i$，即 $\\min(k,\\lfloor a_i/v\\rfloor)$（$v=0$ 时取 $k$），计算所得最大商减 $v$，遍历 $0$ 到 $a_1$ 取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1706D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Chopping Carrots (Hard Version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1706/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/105008",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "greedy",
+            "math",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "给定非降数组 $a$ 和整数 $k$，为每个元素选择一个 $1\\le p_i\\le k$，得到商值 $\\lfloor a_i/p_i\\rfloor$。要求使这些商值的最大值与最小值之差最小，并输出该最小差值。",
+          "transformedStatement": "把答案按商值序列的最小值 $v$ 分类：对每个 $a_i$ 独立选择最大的合法 $p_i$，使其商仍至少为 $v$；这样得到该 $v$ 下最小可能的最大商值 $M(v)$，再求 $M(v)-v$ 的最小值。",
+          "keyObservations": [
+            "固定最终序列的最小商值为 $v$ 后，每个 $p_i$ 都应取满足 $p_i\\le k$ 且 $\\lfloor a_i/p_i\\rfloor\\ge v$ 的最大值；这样不会降低最小值，并能独立压低该位置的商值。",
+            "对单个 $a_i$，当 $p$ 在 $1$ 到 $k$ 间变化时，$\\lfloor a_i/p\\rfloor$ 只有 $O(\\min(k,\\sqrt{a_i}))$ 个不同值，因此只需处理商值跳变的端点。",
+            "若该元素的不同商值依次为 $s_1<s_2<\\cdots<s_x$，则当 $s_j<v\\le s_{j+1}$ 时，它对最大商值的下界恒为 $s_{j+1}$；区间更新可压缩为只在 $s_j+1$ 处记录一次。",
+            "所有端点贡献取前缀最大值即可得到 $M(v)$，其中 $M(v)$ 是固定最小值 $v$ 时可达到的最小最大商值，答案为所有 $v$ 的 $M(v)-v$ 最小值。"
+          ],
+          "solutionBrief": "枚举最小商值 $v$，对每个 $a_i$ 取满足商不少于 $v$ 的最大合法除数。利用整数除法商值的 $O(\\min(k,\\sqrt{a_i}))$ 个不同结果，在端点处更新下界数组，再做前缀最大值并最小化 $M(v)-v$。复杂度为 $O(\\sum_i\\min(k,\\sqrt{a_i})+a_1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1706E",
+          "index": "E",
+          "slot": "E",
+          "title": "Qpwoeirut and Vertices",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1706/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/105008",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "dsu",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一张按输入顺序编号的连通无向图，只能使用前 $k$ 条边。对每个区间 $[l,r]$，求使顶点 $l,l+1,\\ldots,r$ 全部连通所需的最小非负整数 $k$；若 $l=r$，答案为 $0$。",
+          "transformedStatement": "先定义 $f(i)$ 为仅使用边前缀时使相邻顶点 $i-1$ 与 $i$ 连通所需的最小长度。由于区间连通恰好要求所有相邻对连通，原问题等价于求 $f(l+1),\\ldots,f(r)$ 的最大值；这些 $f(i)$ 可由按边编号加权的最小生成树路径最大边得到。",
+          "keyObservations": [
+            "区间内所有顶点连通等价于每一对相邻编号顶点都连通，因此区间答案是相邻点答案的最大值，查询转化为静态区间最大值。",
+            "将第 $i$ 条边的权值设为 $i$ 后，最小生成树上 $i-1$ 到 $i$ 路径的最大边权，正好是这两个顶点首次连通所需的最小前缀长度。",
+            "Kruskal 过程中未进入最小生成树的边，在它被处理前其端点已经由更早边连通，因此不会改善任何顶点对的最早连通时间。",
+            "预处理所有相邻点的连通时间后，原查询只需对对应数组区间求最大值；可用稀疏表或线段树完成。"
+          ],
+          "solutionBrief": "把边编号作为权值，用 Kruskal 建最小生成树；对每个 $i$ 求树上 $i-1$ 到 $i$ 路径的最大边权 $f(i)$。查询 $[l,r]$ 的答案为 $\\max_{i=l+1}^{r}f(i)$，再用稀疏表或线段树回答区间最大值。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
