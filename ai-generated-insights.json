@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T02:49:57+00:00",
+  "updated_at": "2026-09-28T02:54:26+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -70168,6 +70168,93 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的幸运票据定义和 editorial_text 中的字符串扫描、两段求和方法；tags 仅用于主题归类。",
         "quality_flags": []
+      }
+    },
+    "1678B2": {
+      "problem_key": "1678B2",
+      "title": "Tokitsukaze and Good 01-String (hard version)",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1678/problem/B2",
+      "editorial_url": "https://codeforces.com/blog/entry/102631",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "2aa6218e0ce4fe1159757929fc3750f5b6de8d3ab56ff07319ab2059cb8bbf13",
+      "generated_at": "2026-09-28T02:53:51+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为偶数的二进制串，每次可把任意位置改成 $0$ 或 $1$。将修改后的串按最少数量分成连续且每段字符相同的子段，要求所有子段长度为偶数；求使其合法的最少修改次数，以及在这些最少修改方案中可达到的最少子段数。",
+        "transformed_statement": "把字符串固定划分为相邻的二元块；合法性等价于每个块都变成 $00$ 或 $11$。先最小化各块变成同值块的修改代价，再选择块类型以最小化整串中的连续类型段数。",
+        "key_observations": [
+          "因为所有同值连续段长度都必须为偶数，合法字符串的分界只能出现在偶数位置，所以固定二元块 $(s_1,s_2),(s_3,s_4),\\ldots$ 内必须同值。",
+          "混合块 $01/10$ 至少要修改一个字符，且改成 $00$ 或 $11$ 恰好只需一次；因此最少操作数就是混合块数量。",
+          "为减少最终段数，可将每个混合块改成与相邻同值块一致的类型，使其不新增分段；最终只需统计同值块序列中的类型切换次数，若没有同值块则答案仍为 $1$。"
+        ],
+        "solution_brief": "按位置两两分块。统计 $01/10$ 块得到最少修改次数；对 $00/11$ 块按顺序忽略混合块，统计相邻类型切换，最终分段数为切换次数加一，若没有同值块则取 $1$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的合法性与操作定义、editorial_text 的贪心和 DP 说明，并参考 tags。",
+        "quality_flags": []
+      }
+    },
+    "1678B1": {
+      "problem_key": "1678B1",
+      "title": "Tokitsukaze and Good 01-String (easy version)",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1678/problem/B1",
+      "editorial_url": "https://codeforces.com/blog/entry/102631",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "dd2cddde2ea4f23878ae5a8071cbf1329fb1feea4e270bd594be0c1f42ca2ddc",
+      "generated_at": "2026-09-28T02:54:08+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为偶数的 01 字符串，每次可把任意一个位置改成 0 或 1。修改后按相同字符的最长连续段划分，要求每段长度均为偶数，求达到要求的最少修改次数。",
+        "transformed_statement": "将字符串固定划分为相邻的长度为 $2$ 的二元组；题目等价于把每个二元组变成 `00` 或 `11`，因为这样且仅这样能保证所有最长连续段的长度为偶数。",
+        "key_observations": [
+          "由于每个连续段都必须为偶数长度，字符串中从左到右固定的每一对位置 $(1,2),(3,4),\\ldots$ 必须包含相同字符；否则某个连续段会在一对内部结束。",
+          "每个二元组独立处理：相同的二元组无需修改，不同的 `01` 或 `10` 至少要翻转一个字符，且翻转其中任意一个即可变成合法二元组。",
+          "把所有不同二元组各修改一次后，每个二元组都相同，相邻连续段的边界只能出现在二元组之间，因此所有连续段长度都是偶数，达到下界。"
+        ],
+        "solution_brief": "将字符串按固定位置分成长度为 $2$ 的二元组，统计其中字符不同的组数。每个不同组最少需要一次翻转，且全部处理后一定满足条件，因此答案就是不同二元组的数量。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的合法分段与单字符修改规则，以及 editorial 的二元组贪心说明；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1678A": {
+      "problem_key": "1678A",
+      "title": "Tokitsukaze and All Zero Sequence",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1678/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/102631",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0aae97792a4eb70b9b44b1b1349ef9356c46796a919395acca1a61db43d28514",
+      "generated_at": "2026-09-28T02:54:26+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的整数序列。每次选择两个不同位置：较大数改成较小数；若两数相等，则将其中一个变为 $0$。求把整个序列变成全 $0$ 所需的最少操作次数。",
+        "transformed_statement": "把 $0$ 看作可以逐个消灭非零元素的“工具”：先计算已有零能直接处理多少元素，再判断无零时需要几步制造第一个零——有重复值需一步，全不重复需两步。",
+        "key_observations": [
+          "已有 $0$ 时，选它和任意非零数即可在一次操作中把该非零数变为 $0$，因此每个非零元素各需一次操作，答案为 $n-cnt_0$。",
+          "没有 $0$ 且存在两个相等数时，选这两个数一次即可产生 $0$，之后处理其余 $n-1$ 个非零数，答案为 $n$。",
+          "没有 $0$ 且所有数互不相等时，首次操作只能让两个数相等，第二次才能产生 $0$；随后还需处理剩余非零数，答案为 $n+1$。"
+        ],
+        "solution_brief": "统计零的个数；若已有零，答案是非零元素数量。否则检查是否有重复值：有重复答案为 $n$，全不重复答案为 $n+1$。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面示例、完整 editorial 和 implementation 标签；操作规则由示例及题解共同还原。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
       }
     }
   }

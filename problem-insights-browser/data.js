@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3284,
+    "total_problems": 3287,
     "source_total_problems": 3290,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 3284,
-    "with_editorial_brief": 3003,
-    "with_solution_brief": 3005,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3287,
+    "with_editorial_brief": 3006,
+    "with_solution_brief": 3008,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2346,
+    "ai_override_count": 2349,
     "primary_topic_count": 13,
-    "contest_count": 504,
+    "contest_count": 505,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,8 +44,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "基础实现与模拟": 202,
-    "构造与贪心": 1051,
+    "基础实现与模拟": 204,
+    "构造与贪心": 1052,
     "字符串": 172,
     "数据结构": 313,
     "树结构": 161,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "交互": 100
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2044,
+    "ai_generated_with_editorial": 2047,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -101436,6 +101436,95 @@ window.CF_INSIGHTS_DATA = {
             "用树状数组维护已经出现的各个 $a_i$ 的频次，并查询不小于当前值的数量，即可在 $O(n\\log n)$ 内完成计数。"
           ],
           "solutionBrief": "将最大交叉数转化为统计所有 $i<j$ 且 $a_i\\ge a_j$ 的数对。按下标扫描，用树状数组维护已出现值的频次，查询此前不小于 $a_j$ 的元素数量并累加，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1678,
+      "name": "Codeforces Round 789 (Div. 2)",
+      "date": "2022-05-08",
+      "url": "https://codeforces.com/contest/1678",
+      "type": "Div. 2",
+      "problemCount": 3,
+      "maxRating": 1800,
+      "problems": [
+        {
+          "key": "1678A",
+          "index": "A",
+          "slot": "A",
+          "title": "Tokitsukaze and All Zero Sequence",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1678/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/102631",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数序列。每次选择两个不同位置：较大数改成较小数；若两数相等，则将其中一个变为 $0$。求把整个序列变成全 $0$ 所需的最少操作次数。",
+          "transformedStatement": "把 $0$ 看作可以逐个消灭非零元素的“工具”：先计算已有零能直接处理多少元素，再判断无零时需要几步制造第一个零——有重复值需一步，全不重复需两步。",
+          "keyObservations": [
+            "已有 $0$ 时，选它和任意非零数即可在一次操作中把该非零数变为 $0$，因此每个非零元素各需一次操作，答案为 $n-cnt_0$。",
+            "没有 $0$ 且存在两个相等数时，选这两个数一次即可产生 $0$，之后处理其余 $n-1$ 个非零数，答案为 $n$。",
+            "没有 $0$ 且所有数互不相等时，首次操作只能让两个数相等，第二次才能产生 $0$；随后还需处理剩余非零数，答案为 $n+1$。"
+          ],
+          "solutionBrief": "统计零的个数；若已有零，答案是非零元素数量。否则检查是否有重复值：有重复答案为 $n$，全不重复答案为 $n+1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1678B1",
+          "index": "B1",
+          "slot": "B",
+          "title": "Tokitsukaze and Good 01-String (easy version)",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1678/problem/B1",
+          "editorialUrl": "https://codeforces.com/blog/entry/102631",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个长度为偶数的 01 字符串，每次可把任意一个位置改成 0 或 1。修改后按相同字符的最长连续段划分，要求每段长度均为偶数，求达到要求的最少修改次数。",
+          "transformedStatement": "将字符串固定划分为相邻的长度为 $2$ 的二元组；题目等价于把每个二元组变成 `00` 或 `11`，因为这样且仅这样能保证所有最长连续段的长度为偶数。",
+          "keyObservations": [
+            "由于每个连续段都必须为偶数长度，字符串中从左到右固定的每一对位置 $(1,2),(3,4),\\ldots$ 必须包含相同字符；否则某个连续段会在一对内部结束。",
+            "每个二元组独立处理：相同的二元组无需修改，不同的 `01` 或 `10` 至少要翻转一个字符，且翻转其中任意一个即可变成合法二元组。",
+            "把所有不同二元组各修改一次后，每个二元组都相同，相邻连续段的边界只能出现在二元组之间，因此所有连续段长度都是偶数，达到下界。"
+          ],
+          "solutionBrief": "将字符串按固定位置分成长度为 $2$ 的二元组，统计其中字符不同的组数。每个不同组最少需要一次翻转，且全部处理后一定满足条件，因此答案就是不同二元组的数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1678B2",
+          "index": "B2",
+          "slot": "B",
+          "title": "Tokitsukaze and Good 01-String (hard version)",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1678/problem/B2",
+          "editorialUrl": "https://codeforces.com/blog/entry/102631",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定长度为偶数的二进制串，每次可把任意位置改成 $0$ 或 $1$。将修改后的串按最少数量分成连续且每段字符相同的子段，要求所有子段长度为偶数；求使其合法的最少修改次数，以及在这些最少修改方案中可达到的最少子段数。",
+          "transformedStatement": "把字符串固定划分为相邻的二元块；合法性等价于每个块都变成 $00$ 或 $11$。先最小化各块变成同值块的修改代价，再选择块类型以最小化整串中的连续类型段数。",
+          "keyObservations": [
+            "因为所有同值连续段长度都必须为偶数，合法字符串的分界只能出现在偶数位置，所以固定二元块 $(s_1,s_2),(s_3,s_4),\\ldots$ 内必须同值。",
+            "混合块 $01/10$ 至少要修改一个字符，且改成 $00$ 或 $11$ 恰好只需一次；因此最少操作数就是混合块数量。",
+            "为减少最终段数，可将每个混合块改成与相邻同值块一致的类型，使其不新增分段；最终只需统计同值块序列中的类型切换次数，若没有同值块则答案仍为 $1$。"
+          ],
+          "solutionBrief": "按位置两两分块。统计 $01/10$ 块得到最少修改次数；对 $00/11$ 块按顺序忽略混合块，统计相邻类型切换，最终分段数为切换次数加一，若没有同值块则取 $1$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
