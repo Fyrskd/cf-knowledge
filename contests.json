@@ -1,5 +1,16 @@
 [
   {
+    "id": 1560,
+    "name": "Codeforces Round 739 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1629297300,
+    "relativeTimeSeconds": 161307433,
+    "date": "2021-08-18"
+  },
+  {
     "id": 1563,
     "name": "VK Cup 2021 - Final (Engine)",
     "type": "CF",
