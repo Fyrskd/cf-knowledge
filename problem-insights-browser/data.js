@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3149,
+    "total_problems": 3155,
     "source_total_problems": 3157,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3149,
-    "with_editorial_brief": 2869,
-    "with_solution_brief": 2870,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3155,
+    "with_editorial_brief": 2875,
+    "with_solution_brief": 2876,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2211,
+    "ai_override_count": 2217,
     "primary_topic_count": 13,
-    "contest_count": 481,
+    "contest_count": 482,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1004,
-    "数据结构": 296,
+    "基础实现与模拟": 191,
+    "构造与贪心": 1007,
+    "字符串": 167,
+    "数据结构": 297,
     "图论与网络流": 195,
     "数论与同余": 336,
     "树结构": 156,
-    "字符串": 166,
-    "基础实现与模拟": 190,
     "组合计数与概率": 244,
     "交互": 98,
     "动态规划与状态设计": 266,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1911,
+    "ai_generated_with_editorial": 1917,
     "ai_generated_partial_editorial": 67,
     "missing_editorial": 279,
     "manual_override": 891,
@@ -97274,6 +97274,190 @@ window.CF_INSIGHTS_DATA = {
             "两条向上链只能在两端点的 $lca$ 处相交，因此还需满足 $depth(lca(a,b))\\leq$ 查询集合中的最小深度，避免集合包含分叉点上方的公共祖先。"
           ],
           "solutionBrief": "预处理树上深度和 LCA。每次按深度从深到浅处理顶点，先提取最深顶点的祖先链，再对未处理部分提取第二条祖先链；若有剩余顶点或两链的 LCA 深于集合最浅点则回答 NO，否则回答 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1701,
+      "name": "Educational Codeforces Round 131 (Rated for Div. 2)",
+      "date": "2022-07-08",
+      "url": "https://codeforces.com/contest/1701",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1701A",
+          "index": "A",
+          "slot": "A",
+          "title": "Grass Field",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1701/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/104671",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $2\\times2$ 的草地网格，每次可选择一行和一列并清除这整行整列的草。求把所有有草的格子清空所需的最少操作次数。",
+          "transformedStatement": "问题只需判断四个格子的集合是否为空、是否等于整个网格：空集需要 $0$ 次，非空且非满集可通过避开一个空格用 $1$ 次覆盖，其余情况即满集需要 $2$ 次。",
+          "keyObservations": [
+            "若四个格子全有草，一次操作选定一行和一列只能覆盖三个不同格子，因此必然至少需要两次，且两次可以清空全部草。",
+            "只要存在一个空格，选择不经过该空格的另一行和另一列，就能覆盖其余三个格子，因此一次操作足够清空所有草。",
+            "没有草时无需操作；因此答案仅由草的数量是否为零、是否填满整个 $2\\times2$ 网格决定。"
+          ],
+          "solutionBrief": "统计四个格子的状态：全为 $0$ 时答案为 $0$，全为 $1$ 时答案为 $2$，其他情况存在空格，可选其所在行列之外的行和列，一次清除全部草，答案为 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1701B",
+          "index": "B",
+          "slot": "B",
+          "title": "Permutation",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1701/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/104671",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$，要同时选择一个正整数 $d$ 和一个 $1$ 到 $n$ 的排列。排列的代价是满足相邻元素 $p_i\\cdot d=p_{i+1}$ 的位置数量，要求构造使代价最大的 $d$ 和排列。",
+          "transformedStatement": "把排列拆成若干条乘法链 $x,xd,xd^2,\\dots$，其中链首不能被 $d$ 整除；将各链依次拼接后，总代价等于元素总数减去链数，即 $\\lfloor n/d\\rfloor$。",
+          "keyObservations": [
+            "固定 $d\\ge 2$ 时，能作为相邻对左端点的数必须满足 $i\\le\\lfloor n/d\\rfloor$，因此代价至多为 $\\lfloor n/d\\rfloor$。",
+            "按“不能被 $d$ 整除”的起点划分链 $x,xd,xd^2,\\dots$，每个数恰好属于一条链；链内连续排列可让除末元素外的每个元素贡献一次代价。",
+            "这些链共有 $n-\\lfloor n/d\\rfloor$ 条，所以拼接后代价正好为 $\\lfloor n/d\\rfloor$，从而取最小的有效 $d=2$ 即可达到最大值。"
+          ],
+          "solutionBrief": "对每组数据固定取 $d=2$。枚举所有奇数 $x$，依次输出链 $x,2x,4x,\\dots\\le n$；这些链拼接后构成排列，并达到最大代价。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1701C",
+          "index": "C",
+          "slot": "C",
+          "title": "Schedule Management",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1701/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/104671",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 名工人和 $m$ 项任务，每项任务指定一名擅长工人。任务可分配给任意工人，擅长者用 1 小时，否则用 2 小时；工人并行工作且同一时间只能做一项任务，求全部任务完成所需的最短时间。",
+          "transformedStatement": "将候选答案固定为总时长 $T$：每名工人先处理自己擅长的任务，剩余时间按每项 2 小时折算为额外容量，再判断这些容量能否覆盖所有尚未完成的任务。由于该判定随 $T$ 增大而保持可行，答案转化为最小可行阈值。",
+          "keyObservations": [
+            "完成时间固定为 $T$ 时，每名工人先做自己擅长的任务，最多完成 $\\min(T,cnt_i)$ 个，从而优先利用 1 小时任务。",
+            "工人 $i$ 做完擅长任务后的剩余时间只能处理不擅长任务，因此还能完成 $\\left\\lfloor\\frac{T-\\min(T,cnt_i)}{2}\\right\\rfloor$ 个。",
+            "所有未完成的擅长任务都可交给其他工人以 2 小时完成；只要它们的总数不超过所有工人的剩余容量，时间 $T$ 就可行。",
+            "可行性关于 $T$ 单调：若能在 $T$ 小时内完成，就一定能在更长时间内完成，因此答案可在 $[1,2m]$ 内二分。"
+          ],
+          "solutionBrief": "统计每名工人擅长的任务数。二分总完成时间 $T$，先计算各自能完成的擅长任务，再累加剩余时间可完成的不擅长任务；若足以覆盖未完成任务则判定可行，取最小可行值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1701D",
+          "index": "D",
+          "slot": "D",
+          "title": "Permutation Restoration",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1701/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/104671",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "math",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $b$，它由某个 $1$ 到 $n$ 的排列 $a$ 按 $b_i=\\lfloor i/a_i\\rfloor$ 逐位置计算得到。请恢复任意一个满足所有位置关系的排列 $a$。",
+          "transformedStatement": "把每个位置 $i$ 转化为一个允许分配给它的整数区间；问题变成将数值 $1,2,\\ldots,n$ 各分配给一个包含该数的区间，并保证每个区间恰好使用一次。配对时采用按值递增、优先结束区间的匹配模型。",
+          "keyObservations": [
+            "由 $\u0000b_i=\\lfloor i/a_i\\rfloor$ 可得 $i/(b_i+1)<a_i\\le i/b_i$；当 $b_i=0$ 时右界取为 $n$，因此每个位置对应一个可选值区间。",
+            "恢复过程等价于把 $1$ 到 $n$ 的每个数匹配给一个包含它的区间，且每个区间只能匹配一个数。",
+            "处理当前最小值 $x$ 时，若多个未匹配区间都能容纳它，应选择右端点最小者；它最早结束，避免被后续更大的值错过。",
+            "按左端点排序并逐个加入当前值可覆盖的区间，再用集合维护活动区间的最小右端点，就能在线完成上述匹配。"
+          ],
+          "solutionBrief": "将每个位置转成允许取值区间，按左端点排序后从小到大处理数值。把已开放区间加入集合，每次把当前值分配给右端点最小的区间，并记录对应的 $a_i$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1701E",
+          "index": "E",
+          "slot": "E",
+          "title": "Text Editor",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1701/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/104671",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定原文本 $s$ 和目标文本 $t$，光标初始位于 $s$ 的末尾；每步可按题目规定移动光标、删除字符或跳到文本首尾，目标是在保持字符顺序的前提下把 $s$ 编辑成 $t$。求最少操作次数，若无法得到则输出 $-1$。",
+          "transformedStatement": "把一次最优编辑过程按唯一一次 Home 分成两段：先从某个位置 $pos$ 向左处理原串后缀并匹配 $t$ 的后缀，再回到开头处理剩余前缀；枚举 $pos$ 和后缀长度后，两段分别转化为后缀可匹配性与反转前缀最长公共前缀问题。",
+          "keyObservations": [
+            "最优操作序列至多按一次 Home，且无需按 End；因此可按 Home 的位置把处理过程划分为后缀阶段和前缀阶段。",
+            "固定分界点 $pos$ 与目标后缀长度 $suf$ 后，处理原串后缀只需从右向左逐字符判断保留或删除，操作次数恒为 $n-pos$，与 $suf$ 无关。",
+            "目标后缀能否由原串后缀得到，可为每个目标后缀预处理其在原串中的最右可匹配位置，从而在线性时间判断所有后缀方案。",
+            "前缀处理的关键是保留反转后前缀与目标前缀的最长公共前缀；其长度由 Z 函数给出，剩余字符需要删除，并额外计算一次 Home 操作。"
+          ],
+          "solutionBrief": "枚举按下 Home 的位置 $pos$ 及目标后缀长度 $suf$。预处理目标后缀在原串后缀中的可行性和反转前缀的最长公共前缀，用 $O(1)$ 合并两部分代价并取最小值；总复杂度 $O(n^2)$，空间 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1701F",
+          "index": "F",
+          "slot": "F",
+          "title": "Points",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1701/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/104671",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "implementation",
+            "math",
+            "matrices"
+          ],
+          "statementBrief": "坐标线上有一个初始为空的点集，每次给出坐标 $a_i$，对该坐标执行点的加入或删除更新，并在每次更新后统计美丽三元组数量。三元组需满足 $i<j<k$ 且 $k-i\\le d$，要求输出每次操作后的数量。",
+          "transformedStatement": "把每个已有点 $i$ 的贡献定义为其右侧距离不超过 $d$ 的点数 $f(i)$ 任选两个；于是答案是所有已有点的 $\\frac{f(i)(f(i)-1)}{2}$ 之和，而一次点更新只会让左侧长度不超过 $d$ 的区间统一改变 $f$。",
+          "keyObservations": [
+            "固定最左点 $i$ 后，美丽三元组数量只由其右侧距离不超过 $d$ 的点数 $f(i)$ 决定，贡献为 $\\frac{f(i)(f(i)-1)}{2}$，因此总答案可转化为所有有效点贡献之和。",
+            "插入或删除坐标 $x$ 时，只有区间 $[x-d,x-1]$ 内已有点的 $f(i)$ 会统一加一或减一，这把单点变化转成了区间整体修改。",
+            "贡献函数可写为 $\\frac{f(i)^2-f(i)}{2}$，所以线段树只需维护有效点上的 $\\sum f(i)$ 与 $\\sum f(i)^2$；区间加一时二次和可由展开式直接更新。",
+            "线段树叶子需额外标记该坐标是否当前存在，内部节点只汇总有效点贡献，从而避免把空坐标计入答案。"
+          ],
+          "solutionBrief": "用带懒标记的线段树维护各坐标的 $f(i)$、$f(i)^2$ 及存在标记。更新点 $x$ 时对 $[x-d,x-1]$ 区间加减一，并切换 $x$ 的有效状态；根节点即可给出总贡献，复杂度为 $O(A+q\\log A)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
