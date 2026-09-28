@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4080,
+    "total_problems": 4085,
     "source_total_problems": 4085,
-    "filtered_out_problems": 5,
-    "with_statement_brief": 4080,
-    "with_editorial_brief": 3734,
-    "with_solution_brief": 3736,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4085,
+    "with_editorial_brief": 3739,
+    "with_solution_brief": 3741,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3142,
+    "ai_override_count": 3147,
     "primary_topic_count": 13,
-    "contest_count": 633,
+    "contest_count": 634,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 427,
-    "构造与贪心": 1324,
-    "动态规划与状态设计": 333,
+    "构造与贪心": 1326,
+    "动态规划与状态设计": 334,
+    "数论与同余": 428,
+    "组合计数与概率": 319,
     "树结构": 192,
     "图论与网络流": 272,
     "几何": 96,
     "数据结构": 386,
     "基础实现与模拟": 252,
     "交互": 121,
-    "组合计数与概率": 318,
     "博弈": 116,
     "字符串": 217,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2738,
+    "ai_generated_with_editorial": 2743,
     "ai_generated_partial_editorial": 105,
     "missing_editorial": 344,
     "low_confidence": 1,
@@ -125464,6 +125464,162 @@ window.CF_INSIGHTS_DATA = {
             "每次变换和裁切后，凸多边形边的斜率仍属于 $0$、无穷大或 $1/k$（整数 $k\\le n$），故可用上下凸壳的双端队列及整体变换标记维护。"
           ],
           "solutionBrief": "维护所有可行末尾状态 $(b_i,b_i-b_{i-1})$ 构成的凸多边形。逐项执行线性变换、按角度变化区间扩展，再用高度和爬升限制裁切；用上下凸壳双端队列和整体标记实现，最终检查多边形是否非空，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1516,
+      "name": "Codeforces Round 717 (Div. 2)",
+      "date": "2021-04-21",
+      "url": "https://codeforces.com/contest/1516",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1516A",
+          "index": "A",
+          "slot": "A",
+          "title": "Tit for Tat",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1516/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/89846",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的非负整数数组，最多进行 $k$ 次操作；每次从一个元素取走 $1$ 并把这 $1$ 加到另一个元素，且元素不能变成负数。要求输出能得到的字典序最小数组。",
+          "transformedStatement": "将目标拆成依次最小化 $a_1,a_2,\u0000ldots,a_{n-1}$：每次把一个单位从当前最靠左的非零位置转移到末尾，直到该位置归零或操作次数耗尽。",
+          "keyObservations": [
+            "字典序只由第一个不同的位置决定，因此应按下标从左到右尽量减小元素，不能为了减小后面的元素牺牲前面的元素。",
+            "每次把当前最靠左的非零元素减 $1$，并把这一单位加到末尾，既让更早位置尽可能小，也满足操作中的总量转移。",
+            "某个位置最多只能减到 $0$；用完操作次数或前 $n-1$ 个元素都变为 $0$ 后，继续操作都无法进一步改善字典序。"
+          ],
+          "solutionBrief": "从左到右处理前 $n-1$ 个元素，把尽可能多的操作用于当前元素：每次将其减 $1$，并将 $1$ 加到最后一个元素。若操作次数用尽则停止；若前 $n-1$ 个元素全为 $0$，也无需继续。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1516B",
+          "index": "B",
+          "slot": "B",
+          "title": "AGAGA XOOORRR",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1516/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/89846",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个整数数组，每次可以选择两个相邻元素，将它们替换为这两个数的异或值，并重复操作。判断能否在至少保留两个元素的情况下，使数组中所有元素相等。",
+          "transformedStatement": "把每个最终元素对应的原数组连续区间视为一段；每段的异或值就是该元素。于是只需判断数组能否划分为至少两段、且各段异或值相等，并可将候选段数缩减到两段或三段。",
+          "keyObservations": [
+            "反向看合并过程，最终每个元素都对应原数组中的一段连续区间，因此问题等价于把数组划分成若干段，并要求各段异或值相等。",
+            "只需考虑划分成两段或三段：若已有至少四段，可取连续的三段合并；三段异或值相同，其合并后的异或值仍相同，段数减少两段。",
+            "划分成两段时，整段异或为零即可：此时任意切分位置两侧的异或值相等；因此两段情形可直接检查整体异或。"
+          ],
+          "solutionBrief": "将合并结果转化为连续分段的异或值。检查整体异或为零的两段情况，或枚举两个切分位置检查三段异或是否相等；存在至少两段的可行划分则输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1516C",
+          "index": "C",
+          "slot": "C",
+          "title": "Baby Ehab Partitions Again",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1516/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/89846",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定正整数数组，每个元素都必须分到两个互不重叠的子序列之一；若两组元素和相等，则数组不是 good。要求删除最少数量的元素，使剩余数组无法再被等和划分，并输出删除元素的下标。",
+          "transformedStatement": "等和划分等价于判断是否有子集和等于总和的一半。若当前数组可等分，则利用整体除以 $2$ 保持可等分性，直到找到奇数元素；删除该元素后总和为奇数，便不可能等分。",
+          "keyObservations": [
+            "数组能被分成两组等和，当且仅当存在子集和等于总和的一半，因此可用子集和背包判定数组是否已经是 good。",
+            "若总和为偶数且存在奇数元素，删除该奇数后总和变为奇数，剩余数组不可能再等和划分，所以至多删除一个元素即可。",
+            "所有元素同时除以 $2$ 不会改变是否存在等和划分；反复缩放后取一个变成奇数的元素删除即可，等价于删除二进制末尾零最少的元素。"
+          ],
+          "solutionBrief": "用子集和背包检查是否存在和为总和一半的子集；若不存在则无需删除。否则，选择二进制末尾零最少的元素删除，它在整体反复除以 $2$ 后为奇数，删除后总和为奇数，剩余数组必为 good。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1516D",
+          "index": "D",
+          "slot": "D",
+          "title": "Cut",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1516/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/89846",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "graphs",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "给定正整数数组，并对多个区间分别查询。每个区间可划分为若干连续子数组，要求每段的元素乘积等于该段的最小公倍数；求每个区间所需的最少段数。",
+          "transformedStatement": "将每个合法段视为两两互质的连续区间；对每个起点预先确定首次无法继续扩展的位置，把区间最少分段转化为沿这些位置反复跳转，并统计跳过右端点前的跳数。",
+          "keyObservations": [
+            "一段的乘积等于最小公倍数，当且仅当任意两个元素互质；因此可行性可以转化为检查区间内是否有共享质因子的元素对。",
+            "从左端点开始时，把当前段尽可能延长到首次违反互质条件的位置之前不会增加段数；每段的起点于是由跳转位置 go 决定。",
+            "计算 go 时只看当前位置的质因子会漏掉后方两个元素之间的冲突；取 go_l 与 go_{l+1} 的较小值，就能同时覆盖这些后缀冲突。",
+            "从 l 反复跳到 go_l 是一个确定的递增跳转过程，预处理连续 $2^k$ 次跳转后，可快速统计不超过查询右端点的跳数。"
+          ],
+          "solutionBrief": "用质因数的后续出现位置计算每个起点的最早冲突位置，并结合相邻位置的 go 值补全后缀冲突。随后预处理 go 跳转的倍增表，每个区间查询通过从大到小跳跃统计最少分段数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1516E",
+          "index": "E",
+          "slot": "E",
+          "title": "Baby Ehab Plays with Permutations",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1516/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/89846",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个编号为 $1$ 到 $n$ 的方块排成一列，每次可以任选两个方块并交换位置。对每个 $j=1,2,\\ldots,k$，求恰好交换 $j$ 次后可能得到的不同排列数，答案对 $10^9+7$ 取模。",
+          "transformedStatement": "将问题改为统计置换的最少交换次数分布：恰做 $j$ 次能到达的排列，恰是最少交换次数不超过 $j$ 且与 $j$ 奇偶性相同的排列。再按实际移动的位置集合划分，集合大小最多为 $2j$，并用容斥保证集合中的每个位置确实发生移动。",
+          "keyObservations": [
+            "置换的最少交换次数可按位置递推：最后一个位置若已正确则直接忽略，否则把该位置的数换到正确位置，得到 $dp[n][j]=dp[n-1][j]+(n-1)dp[n-1][j-1]$。",
+            "额外操作可以用两次互换抵消，而置换的交换次数奇偶性固定，因此恰做 $j$ 次可达的置换，其最少交换次数只能是 $j,j-2,j-4,\\ldots$。",
+            "做 $j$ 次交换至多改变 $2j$ 个位置；按实际发生移动的位置集合计数时，必须要求集合内没有不动点，才能避免同一置换因选了不同的多余位置而重复计数。",
+            "要求所有位置都移动的置换数可由容斥得到：固定 $f$ 个位置后，剩余部分的最少交换次数分布为 $dp[n-f][j]$，故可对固定点数求交错和。"
+          ],
+          "solutionBrief": "先用递推计算长度为 $n$、最少需 $j$ 次交换的置换数，再用容斥得到指定支撑集内所有元素都移动的置换数。对每种支撑集大小 $i\\le 2k$，乘以选择位置的组合数，并累加最少交换次数与 $j$ 同奇偶且不超过 $j$ 的情况；大规模 $n$ 下只需处理至多 $2k$ 个位置的计数。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
