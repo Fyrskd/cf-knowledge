@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3764,
+    "total_problems": 3766,
     "source_total_problems": 3768,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3764,
-    "with_editorial_brief": 3449,
-    "with_solution_brief": 3451,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3766,
+    "with_editorial_brief": 3451,
+    "with_solution_brief": 3453,
     "missing_editorial_brief": 313,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2826,
+    "ai_override_count": 2828,
     "primary_topic_count": 13,
-    "contest_count": 582,
+    "contest_count": 583,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1221,
+    "组合计数与概率": 285,
+    "构造与贪心": 1222,
     "树结构": 181,
     "交互": 110,
     "图论与网络流": 244,
     "数论与同余": 399,
     "字符串": 199,
-    "组合计数与概率": 284,
     "动态规划与状态设计": 306,
     "基础实现与模拟": 236,
     "数据结构": 357,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2475,
+    "ai_generated_with_editorial": 2477,
     "ai_generated_partial_editorial": 83,
     "missing_editorial": 313,
     "low_confidence": 1,
@@ -115988,6 +115988,77 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "将题目先化为改造网格上的两类操作：基础操作处理剩余黑格，配对操作花费 $2$ 并对应二分图中的一条边。求可行边的最大匹配，枚举匹配大小 $k$，计算剩余黑格数与 $2k$ 的总费用并取最小值。",
           "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1581,
+      "name": "Codeforces Round 745 (Div. 2)",
+      "date": "2021-09-30",
+      "url": "https://codeforces.com/contest/1581",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1200,
+      "problems": [
+        {
+          "key": "1581A",
+          "index": "A",
+          "slot": "A",
+          "title": "CQXYM Count Permutations",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1581/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/95477",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $n$，考虑由 $1$ 到 $2n$ 组成的所有排列。统计其中相邻位置满足 $p_i<p_{i+1}$ 的次数至少为 $n$ 的排列数量，并对 $10^9+7$ 取模。",
+          "transformedStatement": "将每个排列与把所有数值反向替换为 $2n+1-p_i$ 的排列配对；该变换会把每个相邻比较的升降关系完全反转，从而把计数问题转化为求全部 $(2n)!$ 个排列的一半。",
+          "keyObservations": [
+            "将排列中的每个值反向替换为 $2n+1-p_i$，每个相邻大小关系都会反转，因此上升次数 $k$ 变为 $2n-1-k$。",
+            "对于一对互补排列，上升次数分别为 $k$ 和 $2n-1-k$，恰好只有一个达到至少 $n$ 次，因此满足条件的排列数占总数的一半。",
+            "答案等于 $(2n)!/2$，可用递推式 $f_i=f_{i-1}(2i-1)(2i)$ 预处理所有结果。"
+          ],
+          "solutionBrief": "把每个排列与按值反转得到的互补排列配对；两者的上升次数之和为 $2n-1$，所以每对恰有一个合格。答案为 $(2n)!/2$，预处理阶乘乘积即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1581B",
+          "index": "B",
+          "slot": "B",
+          "title": "Diameter of Graph",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1581/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/95477",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 个顶点和恰好 $m$ 条边，要求构造一个无自环、无重边的连通无向图，使任意两点最短路距离的最大值（直径）严格小于 $k-1$。每条边连接两个不同顶点且同一对顶点至多一条边，判断是否存在这样的图。",
+          "transformedStatement": "将问题转为判断给定边数能达到的最小可构造直径：边数不足以连通或超过简单图上限时不可行；其余情况下，单点、完全图和非完全连通图的目标直径分别按 $0$、$1$、$2$ 分类判断。",
+          "keyObservations": [
+            "简单无向图连通至少需要 $n-1$ 条边，且最多只能有 $\\frac{n(n-1)}{2}$ 条边；超出该范围时分别无法连通或必然出现重边。",
+            "当 $n>1$ 且边数达到完全图上限时，图只能是完全图，直径为 $1$，因此严格不超过要求等价于 $k>2$。",
+            "当 $n>1$ 且 $n-1\\le m<\\frac{n(n-1)}{2}$ 时，可从星形树开始补边，使图保持直径至多为 $2$；由于不是完全图，直径恰为 $2$，因此需要 $k>3$。",
+            "$n=1$ 时唯一顶点图的直径为 $0$，只需判断 $k>1$；这说明边界情况不能套用一般连通图结论。"
+          ],
+          "solutionBrief": "先检查 $m$ 是否位于 $[n-1,\\frac{n(n-1)}2]$。之后按 $n=1$、完全图、非完全连通图分类：对应直径分别为 $0$、$1$、可构造为 $2$，再判断是否满足直径严格小于 $k-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]

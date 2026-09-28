@@ -15,19 +15,108 @@
     ]
   },
   "summary": {
-    "total_problems": 3764,
+    "total_problems": 3766,
     "source_total_problems": 3768,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3764,
-    "with_editorial_brief": 3449,
-    "with_solution_brief": 3451,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3766,
+    "with_editorial_brief": 3451,
+    "with_solution_brief": 3453,
     "missing_editorial_brief": 313,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2826,
+    "ai_override_count": 2828,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1581A",
+      "contest_id": 1581,
+      "title": "CQXYM Count Permutations",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1581/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/95477",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定正整数 $n$，考虑由 $1$ 到 $2n$ 组成的所有排列。统计其中相邻位置满足 $p_i<p_{i+1}$ 的次数至少为 $n$ 的排列数量，并对 $10^9+7$ 取模。",
+      "transformed_statement": "将每个排列与把所有数值反向替换为 $2n+1-p_i$ 的排列配对；该变换会把每个相邻比较的升降关系完全反转，从而把计数问题转化为求全部 $(2n)!$ 个排列的一半。",
+      "key_observations": [
+        "将排列中的每个值反向替换为 $2n+1-p_i$，每个相邻大小关系都会反转，因此上升次数 $k$ 变为 $2n-1-k$。",
+        "对于一对互补排列，上升次数分别为 $k$ 和 $2n-1-k$，恰好只有一个达到至少 $n$ 次，因此满足条件的排列数占总数的一半。",
+        "答案等于 $(2n)!/2$，可用递推式 $f_i=f_{i-1}(2i-1)(2i)$ 预处理所有结果。"
+      ],
+      "solution_brief": "把每个排列与按值反转得到的互补排列配对；两者的上升次数之和为 $2n-1$，所以每对恰有一个合格。答案为 $(2n)!/2$，预处理阶乘乘积即可。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:29:30+00:00",
+          "quality_flags": [
+            "editorial_notation_inconsistency",
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1581B",
+      "contest_id": 1581,
+      "title": "Diameter of Graph",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1581/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/95477",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "图论与网络流",
+        "基础实现与模拟",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "graphs",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定 $n$ 个顶点和恰好 $m$ 条边，要求构造一个无自环、无重边的连通无向图，使任意两点最短路距离的最大值（直径）严格小于 $k-1$。每条边连接两个不同顶点且同一对顶点至多一条边，判断是否存在这样的图。",
+      "transformed_statement": "将问题转为判断给定边数能达到的最小可构造直径：边数不足以连通或超过简单图上限时不可行；其余情况下，单点、完全图和非完全连通图的目标直径分别按 $0$、$1$、$2$ 分类判断。",
+      "key_observations": [
+        "简单无向图连通至少需要 $n-1$ 条边，且最多只能有 $\\frac{n(n-1)}{2}$ 条边；超出该范围时分别无法连通或必然出现重边。",
+        "当 $n>1$ 且边数达到完全图上限时，图只能是完全图，直径为 $1$，因此严格不超过要求等价于 $k>2$。",
+        "当 $n>1$ 且 $n-1\\le m<\\frac{n(n-1)}{2}$ 时，可从星形树开始补边，使图保持直径至多为 $2$；由于不是完全图，直径恰为 $2$，因此需要 $k>3$。",
+        "$n=1$ 时唯一顶点图的直径为 $0$，只需判断 $k>1$；这说明边界情况不能套用一般连通图结论。"
+      ],
+      "solution_brief": "先检查 $m$ 是否位于 $[n-1,\\frac{n(n-1)}2]$。之后按 $n=1$、完全图、非完全连通图分类：对应直径分别为 $0$、$1$、可构造为 $2$，再判断是否满足直径严格小于 $k-1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:29:02+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 3,
       "problem_key": "1592A",
