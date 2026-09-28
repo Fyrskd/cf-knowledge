@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3845,
+    "total_problems": 3843,
     "source_total_problems": 3847,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 3845,
-    "with_editorial_brief": 3522,
-    "with_solution_brief": 3524,
+    "filtered_out_problems": 4,
+    "with_statement_brief": 3843,
+    "with_editorial_brief": 3520,
+    "with_solution_brief": 3522,
     "missing_editorial_brief": 321,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2907,
+    "ai_override_count": 2905,
     "primary_topic_count": 13,
     "contest_count": 596,
     "rating_min": 800,
@@ -44,9 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 407,
+    "数论与同余": 406,
     "动态规划与状态设计": 316,
-    "构造与贪心": 1246,
+    "构造与贪心": 1245,
     "组合计数与概率": 294,
     "图论与网络流": 251,
     "基础实现与模拟": 242,
@@ -60,7 +60,7 @@ window.CF_INSIGHTS_DATA = {
   },
   "statusCounts": {
     "missing_editorial": 321,
-    "ai_generated_with_editorial": 2544,
+    "ai_generated_with_editorial": 2542,
     "ai_generated_partial_editorial": 87,
     "low_confidence": 1,
     "manual_override": 891,
@@ -149,7 +149,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-26",
       "url": "https://codeforces.com/contest/2268",
       "type": "Div. 1",
-      "problemCount": 6,
+      "problemCount": 4,
       "maxRating": null,
       "problems": [
         {
@@ -175,68 +175,6 @@ window.CF_INSIGHTS_DATA = {
             "将必然删除的元素直接累加，再从剩余序列的两端逐对取较大值，恰好覆盖所有可获得的删除贡献，整个过程只需线性扫描。"
           ],
           "solutionBrief": "先累加必然会被删除的中间区间；其余元素按原数组对称位置配对，每对只能删除一个，取两者较大值。用双指针从剩余序列两端配对，时间复杂度为 $O(n)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2268B",
-          "index": "B",
-          "slot": "B",
-          "title": "What a SauSaGe! It's All Meat",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2268/problem/B",
-          "editorialUrl": "https://codeforces.com/blog/entry/157140",
-          "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "构造与贪心"
-          ],
-          "originalTags": [
-            "bitmasks",
-            "brute force",
-            "math"
-          ],
-          "statementBrief": "给定 $n$ 个小于 $16$ 的数量，并进行若干次永久更新。每次回答时，可任意多次选择相邻两个元素，并对二者同时异或 $3k$（$1\\le k\\le5$）；求最多能让多少个元素变成 $3$ 的倍数。操作只用于当前状态，不影响后续更新。",
-          "transformedStatement": "将相邻操作等价扩展为：可选择任意两个元素，同时异或任意置位数为偶数的四位掩码。于是奇数 popcount 元素不可达，而所有偶数 popcount 元素总能同时构造为 $3$ 的倍数，问题转化为统计这类元素。",
-          "keyObservations": [
-            "所有可用掩码 $3,6,9,12,15$ 的二进制置位数均为偶数，因此操作保持每个数的 popcount 奇偶性；奇数 popcount 的元素永远不能变成 $3$ 的倍数。",
-            "沿相邻边连续操作可把同一掩码只作用于任意两个元素；组合操作后，任意偶数 popcount 的四位掩码都可以用于这两个元素。",
-            "若存在奇数 popcount 元素，可将其作为缓冲，对每个偶数 popcount 元素与缓冲同时异或该元素，使前者变为 $0$，从而达到所有可行元素都计入答案。",
-            "若全部元素的 popcount 均为偶数，可先把数组化为 $[x,0,\u001b[0m\\ldots,0]$，其中 $x$ 为全数组异或和；仅剩 $x=5$ 或 $10$ 时，再对前两个元素异或 $3$ 即可全部变为 $3$ 的倍数。"
-          ],
-          "solutionBrief": "答案恰为数组中 popcount 为偶数的元素个数。维护该计数即可：更新时减去旧值是否满足偶数 popcount，再加上新值，初始处理为 $O(n)$，每次更新为 $O(1)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2268C",
-          "index": "C",
-          "slot": "C",
-          "title": "KiaKio and Energy Intervals",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2268/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/157140",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构"
-          ],
-          "originalTags": [
-            "binary search",
-            "bitmasks",
-            "brute force",
-            "data structures",
-            "divide and conquer",
-            "greedy",
-            "two pointers"
-          ],
-          "statementBrief": "给定数组，每次选择一个至少包含两个元素的连续区间，取区间最大值 $m$，将区间内每个数与 $m$ 按位与后全部按位异或。求所有合法区间能产生的最大结果。",
-          "transformedStatement": "将每个区间表示为两个前缀异或端点，并用最大笛卡尔树的 LCA 表示区间最大值；问题转为寻找满足指定掩码的端点对，再逐位贪心构造答案。",
-          "keyObservations": [
-            "按位与可分配到异或上，因此区间值等于 $(p_{l-1}\\oplus p_r)\\mathbin{\\&}m$，只需关注两个前缀端点和区间最大值。",
-            "最大笛卡尔树中，区间 $[l,r]$ 的最大值对应其端点节点的 LCA；若 LCA 为 $v$，两端前缀下标分别落在 $[L-1,v-1]$ 与 $[v,R]$。",
-            "固定候选掩码 $M$ 后，令 $s_i$ 为 $a_i\\mathbin{\\&}M$ 的前缀异或；可行条件化为 $(a_v\\mathbin{\\&}M)=M$ 且存在 $s_x\\oplus s_y=M$。",
-            "小子树优先扫描并将大子树前缀异或保留在计数表中，每个端点至多被扫描 $O(\\log n)$ 次；同时必须排除 $(v-1,v)$ 对应的单元素区间。"
-          ],
-          "solutionBrief": "建立最大笛卡尔树，按答案高位到低位贪心试加掩码 $M$。每次用掩码后的前缀异或，在树上以小合并大检查互补值；单次检查 $O(n\\log n)$，总复杂度 $O(18n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
