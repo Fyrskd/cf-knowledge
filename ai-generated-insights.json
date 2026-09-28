@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T11:30:32+00:00",
+  "updated_at": "2026-09-28T11:37:48+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -83261,6 +83261,240 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题解中的按位计数、整除性证明与复杂度说明，并结合题面给出的数组和操作定义。",
+        "quality_flags": []
+      }
+    },
+    "1582G": {
+      "problem_key": "1582G",
+      "title": "Kuzya and Homework",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1582/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/96267",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "c159eb666c2953d9efa691e95054fb3768847720f0d95fb3f92949f2a903d627",
+      "generated_at": "2026-09-28T11:35:08+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数数组和由乘号、除号组成的操作数组。对每个连续区间，从区间第一个数开始，依次按操作将后续数乘入或除入；若整个计算路径中的每个结果都是整数，则称区间简单，要求统计所有简单区间的数量。",
+        "transformed_statement": "把每个质数的指数变化单独观察：乘法增加指数、除法减少指数，区间合法等价于每个质数对应的括号序列从左到右余额始终非负。进一步为每个位置计算其可支持的最小左端点，再统计区间最小值满足约束的区间。",
+        "key_observations": [
+          "对每个质数分别记录指数变化：乘法对应开括号、除法对应闭括号；一个区间合法当且仅当所有质数的括号序列前缀余额始终非负。",
+          "从左到右处理位置时，对每个质数维护带重复下标的栈；除法需要弹出对应次数，若栈为空则该位置不可能作为合法区间的一部分。",
+          "令 $nxt_i$ 表示第 $i$ 个操作能保持整数时允许的最小左端点，则区间 $[l,r]$ 合法当且仅当区间内所有 $nxt_i$ 都不小于 $l$，即 $l\\le\\min_{i\\in[l,r]}nxt_i$。",
+          "固定左端点后，满足条件的右端点具有连续性，可在线段树上维护区间最小值并寻找最远右端点，也可用单调栈线性统计。"
+        ],
+        "solution_brief": "将每个质数的因子指数转为括号余额，用质数出现位置的栈计算每个位置的 $nxt_i$；随后统计满足区间最小 $nxt_i\\ge l$ 的区间，可用线段树或单调栈完成。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的区间计算规则，以及 editorial_text 中的质因子括号化、$nxt$ 构造和区间最小值统计方法；tags 辅助确认主题。",
+        "quality_flags": []
+      }
+    },
+    "1582F2": {
+      "problem_key": "1582F2",
+      "title": "Korney Korneevich and XOR (hard version)",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1582/problem/F2",
+      "editorial_url": "https://codeforces.com/blog/entry/96267",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8671c692c8de3b19ad00f83148540b075b438e29c6de4f2034cc4e8aeef01cca",
+      "generated_at": "2026-09-28T11:35:30+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组，可以删除任意元素保留一个子序列，但保留后的数值必须严格递增且顺序不变。要求找出所有可能作为该子序列元素异或和的非负整数，并按升序输出。",
+        "transformed_statement": "从左到右处理数组前缀，设 $g_t$ 收集所有末元素小于 $t$ 的递增子序列异或值；遇到 $a_i$ 时，从 $g_{a_i}$ 取状态并异或 $a_i$，再转入所有更大的阈值状态。",
+        "key_observations": [
+          "用 $g_t$ 表示当前前缀中末值小于 $t$ 的递增子序列可得到的所有异或值，从而将“能否追加当前数”转化为查找 $g_{a_i}$。",
+          "处理 $a_i$ 时，$g_{a_i}$ 中的每个 $f$ 都能转移为 $f\\oplus a_i$，并放入所有 $g_t$（$t>a_i$），恰好保证追加后序列仍严格递增。",
+          "向一段连续状态传播同一个异或值时，若它已在某个位置 $r$ 出现，则更大的状态也已包含它，因此只需传播到首次重复处，避免重复更新。",
+          "每个异或值在状态下标方向只需处理线性次传播，结合只处理数组中出现的值，可将总复杂度降为 $O(n+(\\max a)^2)$。"
+        ],
+        "solution_brief": "按数组顺序维护各阈值状态 $g_t$，其中存储末值小于 $t$ 的递增子序列异或值。用 $g_{a_i}$ 生成 $f\\oplus a_i$ 并向更大阈值传播；利用同一异或值的首次重复位置截断传播，最终汇总可达异或值，复杂度为 $O(n+(\\max a)^2)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的递增子序列与异或定义，以及 editorial_text 的状态转移、重复传播截断和复杂度分析；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1582F1": {
+      "problem_key": "1582F1",
+      "title": "Korney Korneevich and XOR (easy version)",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1582/problem/F1",
+      "editorial_url": "https://codeforces.com/blog/entry/96267",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ac5b1c61cf57e5a86ac0b3557022c000dd8904194941dd39c4e541a99543ecc5",
+      "generated_at": "2026-09-28T11:35:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组，可以删除任意元素并保留原顺序，选出的子序列必须严格递增。要求找出所有可能作为该子序列元素异或和的非负整数，并按递增顺序输出。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 与 codeforces_tags；editorial_url 仅提供链接，未包含题解正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1582E": {
+      "problem_key": "1582E",
+      "title": "Pchelyonok and Segments",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1582/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/96267",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "2a4c3eff191eba65e1dafe93c622d7e4ae448bdff2a631b80b2df94a377c2b06",
+      "generated_at": "2026-09-28T11:36:55+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组，要选择若干个互不重叠的连续子段，使它们从左到右的长度依次为 $k,k-1,...,1$，且子段元素和严格递增。求满足条件的最大 $k$。",
+        "transformed_statement": "把方案看成从左到右拼接的长度递减链：在后缀 $i...n$ 中，状态 $f(i,j)$ 保存长度为 $j$ 的当前首段所能取得的最大和，并用后缀是否存在更大首段和来验证剩余链。",
+        "key_observations": [
+          "每个合法方案必须使用长度为 $k,k-1,...,1$ 的子段，因此总长度至少为 $k(k+1)/2$，直接将候选 $k$ 限制在 $O(\\sqrt n)$ 范围内。",
+          "令 $f(i,j)$ 表示在后缀 $i...n$ 中，以长度 $j$ 的子段作为当前首段时可达到的最大首段和；这样只需记录一个边界和，就能表示后续长度递减且和递增的整组方案。",
+          "处理位置 $i$ 时，要么跳过该元素继承 $f(i+1,j)$，要么选取区间 $[i,i+j-1]$；只有后缀状态 $f(i+j,j-1)$ 的首段和大于当前区间和时，才能保证和严格递增。",
+          "区间和由前缀和在常数时间内计算，使每个 $i,j$ 状态只需常数次转移，总状态数为 $O(n\\sqrt n)$。"
+        ],
+        "solution_brief": "先用 $k(k+1)/2\\le n$ 限制最大候选值，再按后缀位置和当前长度建立 $f(i,j)$。转移为跳过当前位置或选择长度 $j$ 的区间，并用后缀状态判断和是否严格递增；前缀和快速求区间和。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面数组与子段要求，以及题解中的三角长度上界、后缀 DP 转移和前缀和做法。",
+        "quality_flags": [
+          "题面中原有条件列表格式缺失，关键约束由题解补充确认"
+        ]
+      }
+    },
+    "1582D": {
+      "problem_key": "1582D",
+      "title": "Vupsen, Pupsen and 0",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1582/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/96267",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "bf57b3cae1428eb615f22f4d0dd6e1a9e28422a9fa98e00d5b14a6a9a8e3264b",
+      "generated_at": "2026-09-28T11:37:11+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个不含 0 的整数数组 $a$，需要构造同长度数组 $b$，要求每个 $b_i$ 都非零、所有绝对值之和不超过 $10^9$，并满足对应乘积之和为 0。输出任意满足条件的 $b$。",
+        "transformed_statement": "把整体点积为零的要求拆成若干个局部零和块：偶数长度用二元块抵消，奇数长度把最后三个元素作为一个特殊三元块处理，其余部分仍按二元块处理。",
+        "key_observations": [
+          "当 $n$ 为偶数时，将元素两两配对并令一对对应的 $b$ 为 $(a_{i+1},-a_i)$，可使每对的点积贡献恰好抵消。",
+          "当 $n$ 为奇数时，前 $n-3$ 个元素仍可两两处理；末尾三个非零数中必有同号的两个数，因此它们的和不为 0。",
+          "对末尾三元组选同号元素 $a_i,a_j$ 和剩余元素 $a_k$，设置 $b_i=b_j=-a_k$、$b_k=a_i+a_j$，既保持三项和为 0，又保证三个 $b$ 都非零。",
+          "构造出的 $b$ 的绝对值总和不超过原数组绝对值总和的同阶上界，满足题目的 $10^9$ 限制。"
+        ],
+        "solution_brief": "偶数长度时两两配对，直接输出 $(a_{i+1},-a_i)$。奇数长度时保留最后三个数，找出其中同号的两个数并按三元组公式构造，其余元素照常配对；这样点积为零且所有 $b_i$ 非零，绝对值总和也满足限制。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，结合 tags 中的构造算法和数学分类。",
+        "quality_flags": []
+      }
+    },
+    "1582C": {
+      "problem_key": "1582C",
+      "title": "Grandma Capa Knits a Scarf",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1582/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/96267",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "958c9949316f5e790be0d8bb96d2b80697491df7cad1ef220a4cbba335d7c7a7",
+      "generated_at": "2026-09-28T11:37:26+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定字符串，并选择一个小写字母作为唯一可删除的字符；可以删除该字母的任意多个出现位置，但不能删除其他字符。求最少删除多少个字符才能得到回文串；若无法做到则输出 $-1$。",
+        "transformed_statement": "固定候选字母 $c$ 后，把问题转化为从字符串两端向中心扫描：匹配的两端保留，不匹配时只能删除等于 $c$ 的端点；扫描成功即得到该 $c$ 下的最优删除数。",
+        "key_observations": [
+          "固定要删除的字母为 $c$ 后，若两端字符不同，合法方案必须删除其中一个；若两端都不是 $c$，则立即判定无解。",
+          "两端字符相同时，保留这对字符不会增加删除数，也不会破坏回文结构，因此可以同时向内移动指针。",
+          "两端不等且恰有一端等于 $c$ 时，该端字符是唯一可删除选择，删除过程因此被完全确定，不需要搜索分支。",
+          "分别尝试 26 个候选字母并取最小删除数，覆盖所有可能的操作方案；每次扫描复杂度为 $O(n)$。"
+        ],
+        "solution_brief": "枚举要删除的字母 $c$，用左右指针向内检查。相等时保留并收缩；不等时删除等于 $c$ 的一端，否则该字母不可行。取所有可行方案的最小删除数。总复杂度为 $O(26n)$。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text，以及 tags 中的字符串和贪心相关信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "1582B": {
+      "problem_key": "1582B",
+      "title": "Luntik and Subsequences",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1582/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/96267",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1677769a90d01dc593aa779134a5e703865c5a331257e247ed3d965bfba2575c",
+      "generated_at": "2026-09-28T11:37:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个非负整数数组，先求所有元素总和 $s$，再统计元素和恰为 $s-1$ 的子序列数量。子序列通过删除任意数量的元素得到，空子序列也允许。",
+        "transformed_statement": "将目标子序列看成从原数组删除元素：被删元素总和必须为 $1$。由于数组非负，这等价于删除一个 $1$，并独立决定每个 $0$ 是否删除。",
+        "key_observations": [
+          "子序列可视为从原数组中删除元素；因所有元素非负，要使总和减少 $1$，被删除的非零元素只能恰好是一个 $1$。",
+          "删除任意数量的 $0$ 不改变总和，每个零都有保留或删除两种独立选择，因此产生 $2^{c_0}$ 种方案。",
+          "删除一个 $1$ 有 $c_1$ 种选择，且与零元素的删除选择相互独立，所以答案为 $2^{c_0}\\cdot c_1$。"
+        ],
+        "solution_brief": "统计数组中的 $0$ 和 $1$。所有合法子序列都对应于删除恰好一个 $1$，并任意删除若干个 $0$，因此输出 $2^{c_0}\\cdot c_1$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的子序列与总和定义，以及 editorial_text 给出的计数公式；tags 提示组合计数与数学。",
+        "quality_flags": []
+      }
+    },
+    "1582A": {
+      "problem_key": "1582A",
+      "title": "Luntik and Concerts",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1582/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/96267",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a857d75c5bd26d5e31a11a20db64dc2624f56baa5e24c40b05f8c170a6510fbf",
+      "generated_at": "2026-09-28T11:37:48+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $a$ 首一分钟、$b$ 首两分钟和 $c$ 首三分钟的歌曲，必须把每首歌恰好分到两个演唱会之一。求两场演唱会总时长绝对差的最小值。",
+        "transformed_statement": "把问题转化为：从总时长 $S=a+2b+3c$ 的歌曲中选出一场，使其时长尽量接近 $S/2$；题解证明任意 $0$ 到 $S$ 的整数时长都可组成，因此只需判断 $S$ 的奇偶性。",
+        "key_observations": [
+          "总时长为 $S=a+2b+3c$，且因三种歌曲数量都至少为 $1$，任意整数时长 $0$ 到 $S$ 都能由部分歌曲组成。",
+          "既然可以选出恰为 $\frac{S}{2}$ 的演唱会，$S$ 为偶数时两场可等长，答案为 $0$。",
+          "$S$ 为奇数时两场时长之差不可能小于 $1$，而选取 $\floor{S/2}$ 与 $ ceil{S/2}$ 可达到该下界，因此答案为 $S\bmod 2$。"
+        ],
+        "solution_brief": "计算全部歌曲总时长 $S=a+2b+3c$，利用任意 $0$ 到 $S$ 的时长都可凑出，将歌曲分成总时长尽量接近两半的两场，答案直接是 $S\bmod 2$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的歌曲分配规则和完整 editorial_text；tags 提供 math 分类。",
         "quality_flags": []
       }
     }
