@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3446,
+    "total_problems": 3448,
     "source_total_problems": 3450,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3446,
-    "with_editorial_brief": 3148,
-    "with_solution_brief": 3150,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3448,
+    "with_editorial_brief": 3150,
+    "with_solution_brief": 3152,
     "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2508,
+    "ai_override_count": 2510,
     "primary_topic_count": 13,
-    "contest_count": 530,
+    "contest_count": 531,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,8 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "几何": 82,
+    "构造与贪心": 1111,
     "数论与同余": 366,
-    "构造与贪心": 1110,
     "树结构": 167,
     "组合计数与概率": 261,
     "数据结构": 326,
@@ -54,12 +55,11 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 182,
     "动态规划与状态设计": 282,
     "代数、矩阵与多项式": 24,
-    "几何": 81,
     "博弈": 106,
     "交互": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2188,
+    "ai_generated_with_editorial": 2190,
     "missing_editorial": 296,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -106314,6 +106314,66 @@ window.CF_INSIGHTS_DATA = {
             "达到每位玩家牌面互异后，按 $j=1$ 到 $n-1$，让玩家 $i$ 连续 $j$ 次传出牌面 $((i-j)\\bmod n)+1$；这些循环传递共 $n(n-1)/2$ 步后，每位玩家恰好只保留自己的牌面。"
           ],
           "solutionBrief": "分两阶段构造：先反复传出重复牌，使所有玩家的牌面互不相同，并用移动距离势能证明步数上界；再按循环偏移顺序执行固定传递方案，使每位玩家最终全是自己的牌面。维护各玩家的重复牌集合可实现 $O(n^3)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1642,
+      "name": "Codeforces Round 773 (Div. 2)",
+      "date": "2022-02-23",
+      "url": "https://codeforces.com/contest/1642",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 900,
+      "problems": [
+        {
+          "key": "1642A",
+          "index": "A",
+          "slot": "A",
+          "title": "Hard Way",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1642/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100249",
+          "primaryTopic": "几何",
+          "secondaryTopics": [],
+          "originalTags": [
+            "geometry"
+          ],
+          "statementBrief": "给定一个顶点坐标均为非负的三角形。边界上的点若能从直线 $y=0$ 上某点沿一条不穿过三角形内部的直线到达，则称为安全点；求所有不安全边界部分的总长度。",
+          "transformedStatement": "把每条边分别判断：非水平边全部安全；水平边只有在三角形的第三个顶点位于其下方时才构成不安全的上边。因此问题化为识别这条水平边并计算其长度。",
+          "keyObservations": [
+            "任意不水平的边都与直线 $y=0$ 的延长线相交，因此该边上的每个点都能沿同一直线到达，不会产生不安全部分。",
+            "水平边只有在第三个顶点的 $y$ 坐标更低时才是不安全的上边；此时从 $y=0$ 出发到其上的点必穿过三角形内部。",
+            "因此答案至多来自一条水平边：若存在上方水平边，答案就是该边两端点的欧氏距离，否则答案为 $0$。"
+          ],
+          "solutionBrief": "检查三对顶点是否形成水平边。若某边水平且第三个顶点的 $y$ 坐标更小，则该边是不安全部分，累加其长度；否则答案为 $0$。长度用欧氏距离计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1642B",
+          "index": "B",
+          "slot": "B",
+          "title": "Power Walking",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1642/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100249",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定 $n$ 个不同类型的道具，将全部道具分给 $k$ 个孩子；每个孩子至少得到一个道具，且一个道具只能给一个孩子。孩子的力量是其收到的不同类型数，要求对每个 $k=1,2,\\ldots,n$ 求团队力量总和的最小值。",
+          "transformedStatement": "把每种类型的所有出现位置视为可整体放入某个孩子的贡献：同一类型若只由一个孩子持有，只计一次。问题转化为在满足每个孩子非空的前提下，同时满足“孩子数下界”和“类型数下界”，并构造达到较大者的分配。",
+          "keyObservations": [
+            "每个孩子至少收到一个道具，因此每个孩子的力量至少为 $1$，总力量下界是 $k$；这对应于把多余道具集中分配而不增加新的类型贡献。",
+            "不同类型至少各贡献一次，因此总力量至少为不同类型数 $cnt$；所以答案至少是 $\\\\max(k,cnt)$。",
+            "当 $cnt\\le k$ 时，可让每种类型单独形成一个集合，再把剩余的 $k-cnt$ 个孩子各分到一个道具，恰好得到总力量 $k$。",
+            "当 $cnt\\ge k$ 时，可将同一类型的所有道具放入同一个集合，并把这些类型划分到 $k$ 个非空集合中，使每种类型只在一个孩子处计数，恰好得到总力量 $cnt$。"
+          ],
+          "solutionBrief": "先统计数组中的不同类型数 $cnt$。对每个团队规模 $k$，利用上述两种分配构造与下界匹配，答案直接为 $\\max(k,cnt)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

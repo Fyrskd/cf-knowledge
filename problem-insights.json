@@ -15,19 +15,94 @@
     ]
   },
   "summary": {
-    "total_problems": 3446,
+    "total_problems": 3448,
     "source_total_problems": 3450,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3446,
-    "with_editorial_brief": 3148,
-    "with_solution_brief": 3150,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3448,
+    "with_editorial_brief": 3150,
+    "with_solution_brief": 3152,
     "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2508,
+    "ai_override_count": 2510,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1642A",
+      "contest_id": 1642,
+      "title": "Hard Way",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1642/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/100249",
+      "editorial_quality": "complete",
+      "primary_topic": "几何",
+      "secondary_topics": [],
+      "original_tags": [
+        "geometry"
+      ],
+      "statement_brief": "给定一个顶点坐标均为非负的三角形。边界上的点若能从直线 $y=0$ 上某点沿一条不穿过三角形内部的直线到达，则称为安全点；求所有不安全边界部分的总长度。",
+      "transformed_statement": "把每条边分别判断：非水平边全部安全；水平边只有在三角形的第三个顶点位于其下方时才构成不安全的上边。因此问题化为识别这条水平边并计算其长度。",
+      "key_observations": [
+        "任意不水平的边都与直线 $y=0$ 的延长线相交，因此该边上的每个点都能沿同一直线到达，不会产生不安全部分。",
+        "水平边只有在第三个顶点的 $y$ 坐标更低时才是不安全的上边；此时从 $y=0$ 出发到其上的点必穿过三角形内部。",
+        "因此答案至多来自一条水平边：若存在上方水平边，答案就是该边两端点的欧氏距离，否则答案为 $0$。"
+      ],
+      "solution_brief": "检查三对顶点是否形成水平边。若某边水平且第三个顶点的 $y$ 坐标更小，则该边是不安全部分，累加其长度；否则答案为 $0$。长度用欧氏距离计算。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T05:59:24+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1642B",
+      "contest_id": 1642,
+      "title": "Power Walking",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1642/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/100249",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy"
+      ],
+      "statement_brief": "给定 $n$ 个不同类型的道具，将全部道具分给 $k$ 个孩子；每个孩子至少得到一个道具，且一个道具只能给一个孩子。孩子的力量是其收到的不同类型数，要求对每个 $k=1,2,\\ldots,n$ 求团队力量总和的最小值。",
+      "transformed_statement": "把每种类型的所有出现位置视为可整体放入某个孩子的贡献：同一类型若只由一个孩子持有，只计一次。问题转化为在满足每个孩子非空的前提下，同时满足“孩子数下界”和“类型数下界”，并构造达到较大者的分配。",
+      "key_observations": [
+        "每个孩子至少收到一个道具，因此每个孩子的力量至少为 $1$，总力量下界是 $k$；这对应于把多余道具集中分配而不增加新的类型贡献。",
+        "不同类型至少各贡献一次，因此总力量至少为不同类型数 $cnt$；所以答案至少是 $\\\\max(k,cnt)$。",
+        "当 $cnt\\le k$ 时，可让每种类型单独形成一个集合，再把剩余的 $k-cnt$ 个孩子各分到一个道具，恰好得到总力量 $k$。",
+        "当 $cnt\\ge k$ 时，可将同一类型的所有道具放入同一个集合，并把这些类型划分到 $k$ 个非空集合中，使每种类型只在一个孩子处计数，恰好得到总力量 $cnt$。"
+      ],
+      "solution_brief": "先统计数组中的不同类型数 $cnt$。对每个团队规模 $k$，利用上述两种分配构造与下界匹配，答案直接为 $\\max(k,cnt)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T05:59:08+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 3,
       "problem_key": "1646A",
