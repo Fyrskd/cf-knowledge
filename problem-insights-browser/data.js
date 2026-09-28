@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3533,
+    "total_problems": 3540,
     "source_total_problems": 3542,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3533,
-    "with_editorial_brief": 3234,
-    "with_solution_brief": 3236,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3540,
+    "with_editorial_brief": 3241,
+    "with_solution_brief": 3243,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2595,
+    "ai_override_count": 2602,
     "primary_topic_count": 13,
-    "contest_count": 546,
+    "contest_count": 547,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,7 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1148,
+    "构造与贪心": 1152,
+    "基础实现与模拟": 220,
+    "字符串": 185,
+    "交互": 103,
     "动态规划与状态设计": 291,
     "数据结构": 335,
     "树结构": 172,
@@ -52,14 +55,11 @@ window.CF_INSIGHTS_DATA = {
     "数论与同余": 370,
     "几何": 85,
     "组合计数与概率": 266,
-    "字符串": 184,
     "图论与网络流": 230,
-    "基础实现与模拟": 219,
-    "交互": 102,
     "代数、矩阵与多项式": 24
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2271,
+    "ai_generated_with_editorial": 2278,
     "ai_generated_partial_editorial": 72,
     "missing_editorial": 297,
     "low_confidence": 1,
@@ -109025,6 +109025,220 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "将括号层次转为树，并以 $k(k+1)/2$ 作为节点局部贡献。硬版本可每约 $\\sqrt n$ 次操作重建并处理临时删除；更优做法用 DFS 序和 Fenwick 树维护子树和，使总复杂度达到 $O((n+q)\\log n)$。",
           "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1624,
+      "name": "Codeforces Round 764 (Div. 3)",
+      "date": "2022-01-10",
+      "url": "https://codeforces.com/contest/1624",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1624A",
+          "index": "A",
+          "slot": "A",
+          "title": "Plus One on the Subset",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1624/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/98942",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定一个整数数组，每次可任选若干下标，并将这些位置的元素同时加 $1$，也可以不操作。求至少进行多少次操作，才能使数组所有元素相等。",
+          "transformedStatement": "把目标公共值固定为初始最大值：最大元素无需增加，而每轮将所有低于当前最大值的元素加一，直到它们全部追上最大值；问题转化为填平最大值与最小值的差距。",
+          "keyObservations": [
+            "最终公共值不必超过初始最大值，因为最大元素无需增加，增大目标只会额外消耗操作次数。",
+            "每次操作中最小元素至多增加 $1$，而它至少要增加到初始最大值，因此操作次数至少为 $\\max(a)-\\min(a)$。",
+            "每轮选择所有当前小于最大值的元素并增加 $1$，可使整体差距缩小 $1$，经过 $\\max(a)-\\min(a)$ 轮后全部达到最大值。"
+          ],
+          "solutionBrief": "答案就是数组最大值与最小值之差。最小值至少需要这么多次增加；每轮把所有低于当前最大值的元素加一即可达到该下界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1624B",
+          "index": "B",
+          "slot": "B",
+          "title": "Make AP",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1624/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/98942",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $a,b,c$，必须恰好选择其中一个数并乘以正整数 $m$（允许 $m=1$），且不能改变顺序。判断操作后序列 $[a,b,c]$ 是否能成为等差数列。",
+          "transformedStatement": "将问题转化为分别固定两项、反推出被修改项在等差数列中的唯一目标值：修改首项时为 $2b-c$，中项时为 $(a+c)/2$，末项时为 $2b-a$，再检查该目标值是否是原项的正整数倍。",
+          "keyObservations": [
+            "三项构成等差数列等价于中间项满足 $2b'=a'+c'$，因此只需判断修改后的目标值是否能由原值乘以正整数得到。",
+            "若修改 $a$，目标值必须是 $2b-c$；若修改 $b$，目标值必须是 $(a+c)/2$；若修改 $c$，目标值必须是 $2b-a$，每种情况都由未修改的两项唯一确定。",
+            "某项可行当且仅当对应目标值为正且能被原项整除，商就是允许的正整数 $m$；枚举三项覆盖所有操作位置，$m=1$也会自然处理原序列已是等差数列的情况。"
+          ],
+          "solutionBrief": "分别假设修改 $a$、$b$、$c$，计算其为等差数列所需的目标值，检查目标值为正且能被原值整除；任一情况成立即输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1624C",
+          "index": "C",
+          "slot": "C",
+          "title": "Division by Two and Permutation",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1624/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/98942",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "flows",
+            "graph matchings",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 个正整数，每次可任选一个元素并将其替换为 $\floor{a_i/2}$，操作次数可为零。判断能否通过这些操作使数组恰好包含 $1$ 到 $n$ 各一次，即成为一个排列。",
+          "transformedStatement": "把每个元素看成一条由反复折半产生的候选值链，问题转化为：为每个元素选择一个不同的目标值，使所有目标值恰好覆盖 $1\\sim n$；题解用原值降序的贪心依次完成匹配。",
+          "keyObservations": [
+            "每个原数只能沿着链 $x,\f\floor{x/2},\f\floor{x/4},\f ext{...}$ 变化，因此它能贡献的目标值集合是固定的逐次折半结果。",
+            "大于 $n$ 的数不可能出现在最终排列中；若当前值已被占用，就继续折半，直到得到 $1\\sim n$ 中尚未使用的值。",
+            "按原数组值从大到小处理，可以先为数值较大的元素保留可行目标；若某元素最终折到 $0$，说明它的所有正数候选都已超出范围或被占用，不可能完成排列。"
+          ],
+          "solutionBrief": "将数组降序处理，并为每个元素反复除以 $2$：当结果大于 $n$ 或已被使用时继续折半。若得到 $0$ 则输出 NO，否则标记该值并最终输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1624D",
+          "index": "D",
+          "slot": "D",
+          "title": "Palindromes Coloring",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1624/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/98942",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定一个字符串，要把任意部分字符染成 $k$ 种颜色，且每种颜色都必须出现；同色字符可以任意交换位置，最终每种颜色形成一个字符串。要求使这 $k$ 个字符串全为回文，并最大化其中最短字符串的长度。",
+          "transformedStatement": "把字母只按出现次数处理：同一种字母的两个字符可组成一层对称位置，每种颜色先分配相同数量的字母对；所有颜色若仍各有一个未配对字符，就可再统一增加一个回文中心。",
+          "keyObservations": [
+            "相同字母的两个 экземпляр 可以组成回文两端；设所有字母贡献的配对总数为 $P$，则每种颜色最多先获得 $\floor(P/k)$ 对，形成统一的成对层数。",
+            "每个颜色分到相同数量的字母对后，剩余可用字符数为 $n-2k\floor(P/k)$；若该数量至少为 $k$，就能给每种颜色各放一个中心字符，使最短长度再增加 $1$。",
+            "未使用字符无需染色，且中心字符不要求成对，因此最优答案只由完整配对层数和是否能覆盖全部 $k$ 个中心决定。"
+          ],
+          "solutionBrief": "统计每个字母可形成的配对数并求总和 $P$。令 $q=\floor(P/k)$，基础答案为 $2q$；若剩余字符数 $n-2qk\\\\ge k$，则答案加一。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1624E",
+          "index": "E",
+          "slot": "E",
+          "title": "Masha-forgetful",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1624/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/98942",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "hashing",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 个等长已知电话号码和一个长度为 $m$ 的目标号码，需要把目标串按顺序切成若干段；每段长度至少为 $2$，且必须是某个已知号码中的连续子串。输出任意一种可行分解，并说明每段来自哪个已知号码及其位置。",
+          "transformedStatement": "将允许的任意长片段等价替换为长度仅为 $2$ 或 $3$ 的片段集合：先建立所有已知二位、三位子串及其来源，再把目标串视为由这些片段组成的路径，判断前缀是否可达并恢复路径。",
+          "keyObservations": [
+            "任意长度至少为 $2$ 的片段都能拆成若干个长度为 $2$ 或 $3$ 的片段，因此只需记录已知号码中的二位和三位连续子串。",
+            "对目标串前缀定义可达状态：若前缀长度为 $i$ 可构成，则检查末尾长度为 $2$、$3$ 的子串是否在已知号码中出现，即可转移到 $i+2$ 或 $i+3$。",
+            "为每个二位、三位子串保存一个出现它的号码及位置，DP 找到完整前缀后沿前驱反向恢复分段和对应来源。"
+          ],
+          "solutionBrief": "读入所有已知号码，记录其中每个二位、三位子串的一处来源。用 DP 判断目标串各前缀能否由这些子串拼成，并保存前驱；若完整可达，则回溯输出分段及来源。预处理复杂度为 $O(nm)$，DP 为 $O(m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1624F",
+          "index": "F",
+          "slot": "F",
+          "title": "Interacdive Problem",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1624/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/98942",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "interactive"
+          ],
+          "statementBrief": "给定 $n$ 和一个初始未知数 $x$，每次可查询并给当前数增加指定值，交互器返回当前数除以 $n$ 的整数商；在不超过 $10$ 次查询内确定当前数对 $n$ 的余数并输出答案。离线破解时输入隐藏的 $x,n$。",
+          "transformedStatement": "把未知量改写为当前数除以 $n$ 的商与余数，目标只剩定位余数。对候选余数区间 $[l,r)$，通过增加 $n-m$ 使是否跨过 $n$ 的倍数成为关于阈值 $m$ 的判定，从而递归缩小并平移候选区间。",
+          "keyObservations": [
+            "查询后返回的商值是否增加，恰好判断当前余数是否落在阈值 $m$ 的右侧，因此一次查询能把候选区间二分。",
+            "对候选余数区间 $[l,r)$ 取中点 $m$，增加 $n-m$ 后根据是否跨过下一个 $n$ 的倍数确定所在半区，再把区间平移到查询后的余数范围。",
+            "最终目标只需确定当前数对 $n$ 的余数；候选范围长度至多 $n-1\\le 999$，二分次数不超过 $10$ 次。"
+          ],
+          "solutionBrief": "维护当前余数的候选半开区间。每次取中点 $m$，查询增加 $n-m$，根据商值是否变化判断余数位于哪一半，并同步平移区间；最多二分 $10$ 次后输出余数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1624G",
+          "index": "G",
+          "slot": "G",
+          "title": "MinOr Tree",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1624/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/98942",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "给定一个连通的带权无向图，需要选择恰好 $n-1$ 条边，使它们构成不含环且保持连通的生成树。目标是最小化所选边权值的按位或结果，并输出这个最小值。",
+          "transformedStatement": "把答案视为一个位掩码 $M$：只允许使用权值中所有置位都包含在 $M$ 内的边。于是问题等价于寻找最小的 $M$，使这些允许边构成的子图连通，再从高位到低位贪心删去可删的位。",
+          "keyObservations": [
+            "候选答案为掩码 $M$ 时，只保留满足 $(w\\mathbin{\\&}\\sim M)=0$ 的边；这些边组成的子图连通，当且仅当存在一棵生成树的按位或不超过 $M$。",
+            "按从高位到低位尝试清除答案位，因为数值最小化优先压低高位；某位清除后若可行就永久删除，否则必须恢复。",
+            "可行性只需判断筛选后子图是否连通：连通图必然含有生成树，因此无需直接枚举或构造生成树。"
+          ],
+          "solutionBrief": "从覆盖权值的全 1 掩码开始，按高位到低位尝试删位。每次仅使用权值是当前掩码子掩码的边，并用 DFS 或并查集检查连通性；连通则保留删位结果，否则恢复该位。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
