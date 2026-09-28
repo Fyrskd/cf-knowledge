@@ -1,5 +1,16 @@
 [
   {
+    "id": 1526,
+    "name": "Codeforces Round 723 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1622210700,
+    "relativeTimeSeconds": 168423237,
+    "date": "2021-05-28"
+  },
+  {
     "id": 1523,
     "name": "Deltix Round, Spring 2021 (open for everyone, rated, Div. 1 + Div. 2)",
     "type": "CF",

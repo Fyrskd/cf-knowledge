@@ -8,6 +8,27 @@
     "raw_sha256": "e02bf41675dc0dbc425a56dd042c753b3411dbe71c57032363c612b54b0bb7d8"
   },
   {
+    "url": "https://codeforces.com/blog/entry/91195",
+    "blog_entry_id": 91195,
+    "title": "Codeforces Round #723 (Div. 2) Editorial",
+    "author": "errorgorn",
+    "creation_time": "2021-05-28",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round #723 (Div. 2) Editorial",
+    "section_count": 7,
+    "covered_problems": [
+      "1526A",
+      "1526B",
+      "1526C1",
+      "1526C2",
+      "1526D",
+      "1526E",
+      "1526F"
+    ],
+    "raw_sha256": "5a9ca67584553c5804001220bec824e66c9bb10d8da5131e6181ceb94e6eeb9c"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/91520",
     "blog_entry_id": 91520,
     "title": "Codeforces Round #724 — Editorial",

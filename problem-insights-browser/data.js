@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4017,
-    "source_total_problems": 4017,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4017,
+    "total_problems": 4018,
+    "source_total_problems": 4024,
+    "filtered_out_problems": 6,
+    "with_statement_brief": 4018,
     "with_editorial_brief": 3672,
     "with_solution_brief": 3674,
-    "missing_editorial_brief": 343,
+    "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 3079,
     "primary_topic_count": 13,
-    "contest_count": 623,
+    "contest_count": 624,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,8 +44,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1302,
     "基础实现与模拟": 250,
-    "构造与贪心": 1301,
     "数据结构": 384,
     "组合计数与概率": 313,
     "动态规划与状态设计": 329,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "几何": 94
   },
   "statusCounts": {
+    "missing_editorial": 344,
     "ai_generated_with_editorial": 2683,
     "ai_generated_partial_editorial": 98,
-    "missing_editorial": 343,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -123578,6 +123578,44 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "先用区间最大值结构为每个位置确定最优下一跳，再建立按跳数的二进制分层 DP，记录不同删除预算下可到达的状态及最远原位置。回答查询时逐层尝试跳跃，同时避免越过右端点，最后用一次跳跃到达终点并取最小跳数。题解给出的预处理复杂度为 $O(nk^2\\log n)$，每次查询为 $O(k^2\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1526,
+      "name": "Codeforces Round 723 (Div. 2)",
+      "date": "2021-05-28",
+      "url": "https://codeforces.com/contest/1526",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 1500,
+      "problems": [
+        {
+          "key": "1526C1",
+          "index": "C1",
+          "slot": "C",
+          "title": "Potions (Easy Version)",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1526/problem/C1",
+          "editorialUrl": "https://codeforces.com/blog/entry/91195",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Potions (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
