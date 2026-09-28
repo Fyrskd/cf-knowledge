@@ -3,8 +3,8 @@ window.CF_INSIGHTS_DATA = {
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 3597,
-    "source_total_problems": 3599,
-    "filtered_out_problems": 2,
+    "source_total_problems": 3606,
+    "filtered_out_problems": 9,
     "with_statement_brief": 3597,
     "with_editorial_brief": 3298,
     "with_solution_brief": 3300,
