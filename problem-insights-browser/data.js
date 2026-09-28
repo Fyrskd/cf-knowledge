@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3766,
+    "total_problems": 3772,
     "source_total_problems": 3774,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3766,
-    "with_editorial_brief": 3451,
-    "with_solution_brief": 3453,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3772,
+    "with_editorial_brief": 3457,
+    "with_solution_brief": 3459,
     "missing_editorial_brief": 313,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2828,
+    "ai_override_count": 2834,
     "primary_topic_count": 13,
-    "contest_count": 583,
+    "contest_count": 584,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "组合计数与概率": 285,
+    "数据结构": 359,
+    "动态规划与状态设计": 307,
+    "树结构": 182,
+    "图论与网络流": 245,
+    "组合计数与概率": 286,
     "构造与贪心": 1222,
-    "树结构": 181,
     "交互": 110,
-    "图论与网络流": 244,
     "数论与同余": 399,
     "字符串": 199,
-    "动态规划与状态设计": 306,
     "基础实现与模拟": 236,
-    "数据结构": 357,
     "几何": 90,
     "博弈": 112,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2477,
+    "ai_generated_with_editorial": 2483,
     "ai_generated_partial_editorial": 83,
     "missing_editorial": 313,
     "low_confidence": 1,
@@ -116058,6 +116058,202 @@ window.CF_INSIGHTS_DATA = {
             "$n=1$ 时唯一顶点图的直径为 $0$，只需判断 $k>1$；这说明边界情况不能套用一般连通图结论。"
           ],
           "solutionBrief": "先检查 $m$ 是否位于 $[n-1,\\frac{n(n-1)}2]$。之后按 $n=1$、完全图、非完全连通图分类：对应直径分别为 $0$、$1$、可构造为 $2$，再判断是否满足直径严格小于 $k-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1580,
+      "name": "Codeforces Round 745 (Div. 1)",
+      "date": "2021-09-30",
+      "url": "https://codeforces.com/contest/1580",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1580A",
+          "index": "A",
+          "slot": "A",
+          "title": "Portal",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1580/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/95477",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由 $0/1$ 组成的 $n\\times m$ 网格，一次操作可翻转任意一个格子。需要选取一个高度至少为 $5$、宽度至少为 $4$ 的子矩形，使其除四个角外的边界全为 $1$、内部全为 $0$，并求达到这种门户形状所需的最少操作数。",
+          "transformedStatement": "把每个候选子矩形的目标状态固定为“上下边去掉角后为 $1$、左右边内部为 $1$、严格内部为 $0$”，其代价等于不符合目标的格子数；固定上下边界后，再将左右端点的贡献拆开并用后缀最小值合并。",
+          "keyObservations": [
+            "门户矩形的高度至少为 $5$、宽度至少为 $4$；除四个角外，边界应为 $1$、内部应为 $0$，因此每个候选矩形的代价就是这些位置与目标状态不同的数量。",
+            "固定上边界和下边界后，候选矩形的内部、上下边和左右边的修改数都能由二维前缀和在 $O(1)$ 时间内计算。",
+            "固定上下边界时，枚举左端点后，右端点相关的代价可以预处理后缀最小值，从而把左右端点的二重枚举降为线性扫描。"
+          ],
+          "solutionBrief": "用二维前缀和快速计算任意候选门户的修改数，枚举上下边界；对每组上下边界预处理右端点代价的后缀最小值，再枚举左端点得到全局最小值，复杂度为 $O(n^2m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1580B",
+          "index": "B",
+          "slot": "B",
+          "title": "Mathematics Curriculum",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1580/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/95477",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定 $1$ 到 $n$ 的排列。对每个数 $x$，考虑所有包含它的连续子段，统计这些子段最大值的不同取值数；若恰好为 $m$，则称 $x$ 为 good。要求计算恰有 $k$ 个 good 数的排列数量，并对 $p$ 取模。",
+          "transformedStatement": "把排列视为以全局最大值为根的笛卡尔树；根的位置将其余元素分成左右两个独立子排列，递归状态同时记录子树规模、最大值种类参数和满足条件的元素数。",
+          "keyObservations": [
+            "把排列的最大值作为笛卡尔树根后，根左侧与右侧的元素集合及相对顺序彼此独立，问题可递归拆成两个子排列。",
+            "固定最大值位置为 $a$ 后，左右子树分别有 $a-1$ 和 $l-a$ 个元素；具体数值分配产生组合因子 $\\binom{l-1}{a-1}$。",
+            "状态 $f_{l,s,d}$ 汇总长度为 $l$ 的子排列，其中 $s$ 表示相关子段最大值种类的累计参数、$d$ 表示满足条件的元素数量，使左右子树的贡献可以卷积合并。",
+            "递归深度达到目标参数后，若计数条件满足，剩余元素可任意排列并贡献阶乘；否则该状态无解，从而得到边界条件。"
+          ],
+          "solutionBrief": "将排列建成以最大值为根的笛卡尔树。枚举根的位置，用组合数分配左右两侧的数值，并把两棵子树的状态卷积合并；记忆化计算状态，最终取 $f_{n,m,k}$，复杂度为 $O(n^2m^2k)$，空间复杂度为 $O(nmk)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1580C",
+          "index": "C",
+          "slot": "C",
+          "title": "Train Maintenance",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1580/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/95477",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 种列车，每种至多同时存在一辆。列车在加入当天先工作 $x_i$ 天，再维护 $y_i$ 天，之后按此周期交替；每天会加入或移除一辆指定型号的列车，移除当天不计入维护。要求输出每一天正在维护的列车数量。",
+          "transformedStatement": "把每辆车的状态表示为周期 $p=x_i+y_i$ 上的余数：加入日为 $s_i$ 时，第 $t$ 天维护当且仅当 $(t-s_i)\\bmod p\\geq x_i$。再按 $p$ 是否较大，将贡献分别转成未来维护区间的差分修改或周期余数计数。",
+          "keyObservations": [
+            "按周期 $p=x_i+y_i$ 分类：当 $p>\u001csqrt(m)$ 时，一辆车在整个操作期间只会经历至多 $O(\\sqrt m)$ 个维护区间，因此可以逐段处理。",
+            "新增车辆后，其每个维护区间都可转化为差分数组上的一次区间加法；删除时撤销该车尚未结束的所有区间贡献，前缀和即可得到当天的大周期车辆数。",
+            "当 $p\\leq\\sqrt m$ 时，车辆是否维护只取决于 $(t-s_i)\\bmod p$ 是否满足 $\u001c\\geq x_i$，因此可按周期和余数统计所有当前车辆。",
+            "查询第 $t$ 天时，对每个小周期 $p$ 取余数 $t\\bmod p$ 的计数并求和，避免逐车判断，使每次操作只需遍历所有小周期。"
+          ],
+          "solutionBrief": "令周期为 $p=x_i+y_i$，按 $p$ 与约为 $\\sqrt m$ 的阈值分类。大周期车辆逐个生成维护区间并用差分数组维护；小周期车辆按 $(t-s_i)\\bmod p$ 统计维护余数。每次操作更新对应结构，输出差分前缀和与小周期统计之和，复杂度为 $O(m\\sqrt m)$，空间为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1580D",
+          "index": "D",
+          "slot": "D",
+          "title": "Subsequence",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1580/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/95477",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "divide and conquer",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一个元素互不相同的数组，要按原顺序选出长度为 $m$ 的子序列。选中位置对 $(b_i,b_j)$ 的代价由区间 $[b_i,b_j]$ 的最小值决定，要求最大化 $m$ 倍所选元素总和减去所有有序位置对的代价。",
+          "transformedStatement": "把数组建成以区间最小值为祖先的笛卡尔树，并把父子边权设为数值差；原目标等价于在树上选 $m$ 个节点，使所有选中节点对的树上距离总和最大。",
+          "keyObservations": [
+            "原式可改写为所有被选位置对 $(i,j)$ 的贡献 $a_i+a_j-2f(i,j)$，从而消除有序双重求和的复杂性。",
+            "区间最小值对应最小笛卡尔树中两点的最近公共祖先，因此 $a_i+a_j-2f(i,j)$ 恰好是边权为父子值差时的树上距离。",
+            "固定最终选择 $m$ 个点时，某个子树边下选了 $j$ 个点，则该边跨越的选中点对数量是 $j(m-j)$，所以边贡献可独立计为边权乘此数量。",
+            "令 $dp[u][k]$ 表示在节点 $u$ 子树中选 $k$ 个点的最大距离和，合并左右子树并决定是否选根节点即可覆盖所有点对，整体复杂度为 $O(n^2)$。"
+          ],
+          "solutionBrief": "先建立以区间最小值为父节点的笛卡尔树，并将父子边权设为两端点值之差。树上选恰好 $m$ 个点最大化两两距离和；子树背包合并时，子树选 $j$ 点的边贡献为 $j(m-j)$ 乘边权。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1580E",
+          "index": "E",
+          "slot": "E",
+          "title": "Railway Construction",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1580/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/95477",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心",
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "data structures",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个连通的正权无向铁路图，站点 1 为起点；可以从任意站点修建指向任意终点的单向铁路，长度自定，但费用只由出发站决定。要求修建后每个站点到 1 的最短距离不变，且存在两条除起点和终点外不共站的最短路；费用会多次增加，每次询问增加后的最小修建成本。",
+          "transformedStatement": "先按站点到 1 的最短距离定向并筛出原图中的最短路边，形成 DAG；问题变成给每个非源点补足至少两条入边，其中新增边从更低距离层连接而不改变距离，并最小化其出发点费用。",
+          "keyObservations": [
+            "所有新增边若要成为最短路的一部分，只能从距离更小的站点指向目标站点；因此先求源点 1 的最短距离，再只保留满足距离递增的原边，得到按距离拓扑的 DAG。",
+            "在每个非源点拥有至少两条入边时，可以归纳证明存在两条除端点外互不相交的最短路；所以原目标等价为给每个入边不足两条的点补边。",
+            "对入边不足的点，补边代价只取决于起点，最优起点是所有更低层站点中代价最小且不与其唯一原入边重复的站点；按距离扫描时只需维护最小和次小代价。",
+            "逆序处理费用增加事件后，代价变化只影响按距离排列的某个后缀；将后缀按最小、次小候选分成区间，并用集合与线段树维护区间变化及被唯一父节点禁止的目标计数，使总复杂度降为 $O((n+q)\\log n)$。"
+          ],
+          "solutionBrief": "先用最短路得到最短路 DAG，并把要求转化为为入度不足的点补一条来自更低层站点的边。固定费用时按距离维护最小、次小候选；事件离线逆序处理，维护候选区间和受父边限制的点数，使用集合与线段树增量更新答案，复杂度为 $O(mlogm+(n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1580F",
+          "index": "F",
+          "slot": "F",
+          "title": "Problems for Codeforces",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1580/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/95477",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "代数、矩阵与多项式",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的非负整数序列 $(a_1,\\ldots,a_n)$，要求每对相邻元素及首尾元素都满足和小于 $m$。求满足条件的不同序列数量，并对 $998244353$ 取模。",
+          "transformedStatement": "把环上的数按阈值 $h=\\lceil m/2\\rceil$ 分成高值与低值：高值之间不能相邻，减去 $h$ 后递归得到更小参数的问题；切环形成奇、偶长度段，再用两类段的生成函数恢复环的计数。",
+          "keyObservations": [
+            "令 $h=\\lceil m/2\\rceil$，满足相邻和小于 $m$ 的两个数中至多一个不小于 $h$，因此高值位置会把环切分成受限的交替段。",
+            "切开后，各段只能具有固定的奇偶长度模式：除首尾段外均为奇数长度，首尾段在特定情形下为偶数长度；这使整体计数能由奇、偶段生成函数组合。",
+            "设 $A$、$B$ 分别表示奇、偶段的生成函数，环的生成函数可化为 $A+B^2/(1-x-A)$（$m$ 为奇数）或 $A+B^2/(1-A)$（$m$ 为偶数），从而把计数转成形式幂级数求系数。",
+            "每次将高值减去 $h$ 都把参数规模降至约 $m/2$；各层所需的多项式乘法和求逆用 NTT 完成，总复杂度为 $O(n\\log n\\log m)$。"
+          ],
+          "solutionBrief": "递归处理参数 $m$ 的二进制层次，按阈值 $\\lceil m/2\\rceil$ 将环分段，维护奇、偶段生成函数。根据 $m$ 的奇偶建立有理生成函数，使用多项式求逆和 NTT 求出所需系数并合并答案。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
