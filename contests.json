@@ -1,5 +1,16 @@
 [
   {
+    "id": 1649,
+    "name": "Codeforces Round 775 (Div. 2, based on Moscow Open Olympiad in Informatics)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1646560500,
+    "relativeTimeSeconds": 144012110,
+    "date": "2022-03-06"
+  },
+  {
     "id": 1650,
     "name": "Codeforces Round 776 (Div. 3)",
     "type": "ICPC",
