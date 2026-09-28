@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3460,
+    "total_problems": 3466,
     "source_total_problems": 3468,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3460,
-    "with_editorial_brief": 3162,
-    "with_solution_brief": 3164,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3466,
+    "with_editorial_brief": 3168,
+    "with_solution_brief": 3170,
     "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2522,
+    "ai_override_count": 2528,
     "primary_topic_count": 13,
-    "contest_count": 533,
+    "contest_count": 534,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1119,
+    "动态规划与状态设计": 283,
+    "图论与网络流": 226,
+    "数据结构": 329,
     "基础实现与模拟": 216,
-    "构造与贪心": 1116,
-    "数据结构": 328,
     "组合计数与概率": 264,
     "几何": 83,
     "数论与同余": 366,
     "树结构": 167,
-    "图论与网络流": 225,
     "字符串": 182,
-    "动态规划与状态设计": 282,
     "代数、矩阵与多项式": 24,
     "博弈": 106,
     "交互": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2202,
+    "ai_generated_with_editorial": 2208,
     "missing_editorial": 296,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -106755,6 +106755,187 @@ window.CF_INSIGHTS_DATA = {
             "令 $B_i$ 表示所有相关块长都能被 $i$ 整除的数组数，则压缩每 $i$ 个位置得到 $B_i=A_{\\lceil n/i\\rceil}$；用莫比乌斯反演提取最大公因数为 $1$ 的数量。"
           ],
           "solutionBrief": "用第二类斯特林数计算 $A_t=\\sum_{j=1}^{\\min(t,k)}S(t,j)$，其固定 $t$ 的全部值可由卷积与 FFT 求出。去掉单块划分后，对 $A_{\\lceil n/i\\rceil}$ 使用莫比乌斯反演，答案为 $\\sum_{i=1}^n\\mu(i)(A_{\\lceil n/i\\rceil}-S(\\lceil n/i\\rceil,1))$；$n=1$ 或 $k=1$ 时单独处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1635,
+      "name": "Codeforces Round 772 (Div. 2)",
+      "date": "2022-02-20",
+      "url": "https://codeforces.com/contest/1635",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1635A",
+          "index": "A",
+          "slot": "A",
+          "title": "Min Or Sum",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1635/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100153",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "greedy"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的非负整数数组。每次可选两个位置，将这两个数替换为任意一对按位或结果与原来相同的数；操作可进行任意次，求数组元素总和的最小值。",
+          "transformedStatement": "把问题转化为在保持全数组按位或不变的前提下，尽量把所有置位比特集中到一个元素中；目标值就是这个全局按位或。",
+          "keyObservations": [
+            "所有元素的整体按位或在操作后保持不变，记为 $m$，因此最终数组的总和不可能小于 $m$。",
+            "每个元素都包含整体或结果中的部分置位比特，所以数组和满足 $a_1+\u00160+\u0004cdots+a_n\\ge m$，得到答案下界。",
+            "可依次把第 $i$ 个元素与第 $i+1$ 个元素合并为按位或，并将第 $i$ 个元素置零，最终构造出只有一个元素为 $m$、其余为零的数组。"
+          ],
+          "solutionBrief": "计算所有元素的按位或 $m$。整体按位或是不变量且总和至少为 $m$；通过逐项把按位或结果转移到后一个位置并将前一个置零，可达到总和 $m$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1635B",
+          "index": "B",
+          "slot": "B",
+          "title": "Avoid Local Maximums",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1635/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100153",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定一个整数数组，每次可把任意一个元素替换为 $1$ 到 $10^9$ 的任意整数。要求用最少次数修改，使数组中不存在严格大于左右邻居的局部最大值，并输出最少次数及修改后的数组。",
+          "transformedStatement": "先列出所有局部最大值的位置，再按相邻位置差为 $2$ 将它们分成峰值组；每次修改至多消除同组中的两个峰值，因此答案转化为各组 $\\lceil L/2\\rceil$ 之和，并由右邻居修改策略实现。",
+          "keyObservations": [
+            "从左到右遇到局部最大值时，修改其右邻居为 $\\max(a_i,a_{i+2})$，可同时消除当前位置及可能相隔两位的下一个峰值。",
+            "把所有初始局部最大值按下标差为 $2$ 分成若干组后，一次操作最多消除两个峰值，且无法同时影响不同组，因此长度为 $L$ 的组至少需要 $\\lceil L/2\\rceil$ 次操作。",
+            "上述从左到右的修改恰好每次覆盖同组中至多两个峰值，达到每组的下界，所以所有组所需操作数之和就是最优答案。"
+          ],
+          "solutionBrief": "从左到右扫描数组；遇到局部最大值就修改右邻居，使其变为当前位置与下下个元素的较大值，从而尽量同时消除两个峰值。统计修改次数并输出数组，末端峰值按边界情况处理。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1635C",
+          "index": "C",
+          "slot": "C",
+          "title": "Differential Sorting",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1635/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/100153",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定数组，每次可选择 $x<y<z$，把 $a_x$ 替换为 $a_y-a_z$，最多操作 $n$ 次；要求输出任意操作序列使数组非递减，或在无法做到时输出 $-1$。",
+          "transformedStatement": "把最后两个元素视为不可变的锚点：当末元素非负时，用它们把所有前缀元素统一改成 $a_{n-1}-a_n$；当末元素为负时，证明任何修改都会破坏有序性。",
+          "keyObservations": [
+            "最后两个位置永远不能被修改，因此若初始有 $a_{n-1}>a_n$，非递减目标必然无法达到。",
+            "当 $a_n\\ge 0$ 时，对每个 $i<n-1$ 执行 $(i,n-1,n)$，会令 $a_i=a_{n-1}-a_n\\le a_{n-1}$；所有前缀相等且后两项有序，因而整体有序。",
+            "当 $a_n<0$ 时，若进行了最后一次操作，为使最终数组有序，位置 $z$ 的值必须为负；于是新值 $a_y-a_z>a_y$，直接破坏位置 $x<y$ 的非递减性，因此任何有效方案都不能包含操作。",
+            "因此在 $a_n<0$ 的情况下只有初始数组已经非递减时可行，直接输出零次操作即可。"
+          ],
+          "solutionBrief": "先检查不可修改的最后两项。若 $a_{n-1}>a_n$ 输出 $-1$；若 $a_n\\ge0$，对所有 $i=1..n-2$ 输出 $(i,n-1,n)$；若 $a_n<0$，仅在原数组已非递减时输出零次操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1635D",
+          "index": "D",
+          "slot": "D",
+          "title": "Infinite Set",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1635/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/100153",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "字符串",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "math",
+            "matrices",
+            "number theory",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 个互不相同的正整数作为集合 $S$ 的初始元素；每次可将集合中的数 $x$ 生成 $2x+1$ 或 $4x$，并可重复操作。求最终无限集合中严格小于 $2^p$ 的不同元素个数，答案对 $10^9+7$ 取模。",
+          "transformedStatement": "将整数按 $f(x)=\\lfloor\\log_2x\\rfloor$ 分层：两种生成操作把元素分别从第 $i$ 层送到第 $i+1$、第 $i+2$ 层。先去掉可由其他初始数生成的种子，再统计各层的线性递推数量。",
+          "keyObservations": [
+            "按二进制位数分层，记 $f(x)=\\lfloor\\log_2x\\rfloor$；操作 $x\\to2x+1$ 和 $x\\to4x$ 分别使层数增加 $1$ 和 $2$，因此生成数量满足斐波那契式转移。",
+            "若某个初始数能由另一个初始数经过若干次操作得到，它不会带来新元素；删除这类冗余初始数后，每个保留初始数只需按其所在层贡献一次。",
+            "对当前数 $x$，可能的直接前驱只有 $(x-1)/2$（当 $x$ 为奇数）和 $x/4$（当 $x$ 能被 $4$ 整除），且前驱严格更小；按数值排序后即可用已保留集合判断当前数是否冗余。",
+            "设 $g(i)$ 为保留初始数中满足 $f(a_j)=i$ 的数量，则第 $i$ 层总数满足 $dp_i=dp_{i-1}+dp_{i-2}+g(i)$，答案是前 $p$ 层之和。"
+          ],
+          "solutionBrief": "先按升序删除能由其他初始数生成的冗余元素，再统计各二进制长度层的初始贡献。利用两种操作分别增加 $1$、$2$ 层，计算 $dp_i=dp_{i-1}+dp_{i-2}+g(i)$，累加 $i<p$ 的层数，复杂度为 $O(n\\log n\\log C+p)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1635E",
+          "index": "E",
+          "slot": "E",
+          "title": "Cars ",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1635/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/100153",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "2-sat",
+            "constructive algorithms",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 辆车分别位于不同整数坐标，并朝向左或右；车辆可按其朝向以任意恒定正速度运动，经过时相交后继续前进。给出若干对车辆必须永不相遇或无论速度如何都必相遇的关系，要求构造所有车辆的方向和坐标，或判断无解。",
+          "transformedStatement": "把每辆车抽象为二分图顶点：每条关系要求两个端点方向相反。方向确定后，再把“无关/必相遇”分别转化为坐标之间的严格先后约束，问题变成判断这些约束是否构成有向无环图并输出其拓扑序。",
+          "keyObservations": [
+            "有关系的两辆车必须朝相反方向，否则相遇与否会随速度选择改变；因此关系图必须是二分图，二分染色直接决定两类方向。",
+            "若车 $i$ 向左，关系“无关”必然要求 $x_i<x_j$，而关系“必相遇”必然要求 $x_j<x_i$；方向取反时不等式也随之反向。",
+            "所有位置限制都可转成严格不等式 $x_u<x_v$，并建成有向图；有向环意味着不可能同时满足这些位置关系。",
+            "位置有解时，对不等式图做拓扑排序并按拓扑顺序赋予不同整数坐标，即可保证车辆位置互异且满足全部关系。"
+          ],
+          "solutionBrief": "先将每条关系视为无向边并进行二分染色，若非二分图则无解；染色确定车辆方向。再依据关系类型和方向建立位置不等式图，若有环则无解，否则拓扑排序后赋予不同坐标。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1635F",
+          "index": "F",
+          "slot": "F",
+          "title": "Closest Pair ",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1635/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/100153",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "数轴上有按坐标递增排列的 $n$ 个带正权重点，点对 $(i,j)$ 的代价为 $|x_i-x_j|(w_i+w_j)$。每次给定下标区间 $[l,r]$，只能考虑其中的不同点，要求输出所有点对的最小代价。",
+          "transformedStatement": "对每个点只保留其左侧和右侧最近的、权值不超过自身的点对；所有区间答案都能在这些候选中取得。把候选点对看成端点为下标、权值为代价的线段，问题变为查询完全包含在 $[l,r]$ 中的最小线段权值。",
+          "keyObservations": [
+            "若最优点对为 $(a,b)$ 且 $w_a\\le w_b$，则 $a$ 必须是 $b$ 左侧最近的权值不超过 $w_b$ 的点；否则用更近且权值更小的点替代可改进答案。",
+            "同理，若 $w_a>w_b$，则 $b$ 必须是 $a$ 右侧最近的权值不超过 $w_a$ 的点，因此只需保留每个点的左右两个候选配对。",
+            "上述候选限制对区间查询仍成立，所以每个候选点对可视为带权线段；查询转化为寻找完全包含于 $[l,r]$ 的最小权线段。",
+            "左右最近的不超过关系可由单调栈求出；按区间端点扫描候选线段，并用支持单点更新和前缀最小值的数据结构回答覆盖查询。"
+          ],
+          "solutionBrief": "用单调栈求每个点左、右侧最近的权值不超过它的点，生成至多 $2n$ 个候选点对。将候选对视为带权线段后，通过扫描线和支持单点更新、前缀最小值的数据结构，查询完全落在 $[l,r]$ 内的最小线段权值，复杂度为 $O((n+q)\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
