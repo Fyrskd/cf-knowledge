@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3466,
+    "total_problems": 3472,
     "source_total_problems": 3474,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3466,
-    "with_editorial_brief": 3168,
-    "with_solution_brief": 3170,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3472,
+    "with_editorial_brief": 3174,
+    "with_solution_brief": 3176,
     "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2528,
+    "ai_override_count": 2534,
     "primary_topic_count": 13,
-    "contest_count": 534,
+    "contest_count": 535,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1119,
+    "构造与贪心": 1123,
+    "数据结构": 331,
     "动态规划与状态设计": 283,
     "图论与网络流": 226,
-    "数据结构": 329,
     "基础实现与模拟": 216,
     "组合计数与概率": 264,
     "几何": 83,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "交互": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2208,
+    "ai_generated_with_editorial": 2214,
     "missing_editorial": 296,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -106936,6 +106936,191 @@ window.CF_INSIGHTS_DATA = {
             "左右最近的不超过关系可由单调栈求出；按区间端点扫描候选线段，并用支持单点更新和前缀最小值的数据结构回答覆盖查询。"
           ],
           "solutionBrief": "用单调栈求每个点左、右侧最近的权值不超过它的点，生成至多 $2n$ 个候选点对。将候选对视为带权线段后，通过扫描线和支持单点更新、前缀最小值的数据结构，查询完全落在 $[l,r]$ 内的最小线段权值，复杂度为 $O((n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1638,
+      "name": "Codeforces Round 771 (Div. 2)",
+      "date": "2022-02-14",
+      "url": "https://codeforces.com/contest/1638",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3200,
+      "problems": [
+        {
+          "key": "1638A",
+          "index": "A",
+          "slot": "A",
+          "title": "Reverse",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1638/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/99942",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个由 $1$ 到 $n$ 组成的排列，必须恰好选择一个区间并将其中元素反转，区间长度可以为 $1$。输出执行这次操作后能够得到的字典序最小排列。",
+          "transformedStatement": "先固定排列中形如 $p_k=k$ 的最长正确前缀；令 $i$ 为第一个错位位置，再把数值 $i$ 所在位置 $j$ 通过反转区间 $[i,j]$ 移到位置 $i$，从而最小化首个可改善位置。",
+          "keyObservations": [
+            "已正确排列的最长前缀 $p_k=k$ 不应被改变，因为位置 $k$ 不可能放入小于 $k$ 的未使用元素，保持它能确保字典序最优。",
+            "设 $i$ 是第一个满足 $p_i\\ne i$ 的位置，则该位置应尽量放入数值 $i$；由于排列唯一，数值 $i$ 位于某个位置 $j>i$。",
+            "反转区间 $[i,j]$ 会把 $i$ 移到位置 $i$，同时保留前缀不变，因此直接最小化了第一个可改进的位置；若不存在此位置，任意一次长度为 $1$ 的反转都只能保持原排列。"
+          ],
+          "solutionBrief": "从左到右找到第一个 $p_i\\ne i$ 的位置，在线性扫描中定位数值 $i$ 的位置 $j$，反转 $[i,j]$。若所有位置都满足 $p_i=i$，则不改变排列；总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1638B",
+          "index": "B",
+          "slot": "B",
+          "title": "Odd Swap Sort",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1638/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/99942",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个数组，每次只能选择相邻的两个元素，并在它们奇偶性不同（即元素和为奇数）时交换。判断经过任意次这类交换后，数组是否能够变为非降序。",
+          "transformedStatement": "把原数组看成奇数序列与偶数序列的交错合并：允许的交换只能改变两类元素的交错位置，不能改变任一类内部的相对顺序。因此问题转化为判断两条奇偶子序列是否都已非降序。",
+          "keyObservations": [
+            "相邻元素和为奇数等价于二者奇偶性不同，因此操作只能交换一个奇数和一个偶数。",
+            "同奇偶元素彼此无法交换，所以它们在数组中的相对顺序不变；若任一奇偶子序列存在逆序，就不可能排成非降序。",
+            "若奇数子序列和偶数子序列都已非降序，冒泡排序遇到的每个逆序相邻对必然奇偶不同，因此所有交换都合法，最终一定能排序。"
+          ],
+          "solutionBrief": "分别提取数组中的奇数子序列和偶数子序列，检查它们是否各自非降序。若有一个存在逆序则输出 No；否则将两类元素交错合并时可用合法的冒泡交换完成排序，输出 Yes。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1638C",
+          "index": "C",
+          "slot": "C",
+          "title": "Inversion Graph",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1638/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/99942",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "data structures",
+            "dsu",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "给定一个排列，在位置 $i<j$ 且 $p_i>p_j$ 时连接顶点 $i,j$，形成无向图。需要按照这些逆序关系构图，并求图中连通分量的数量。",
+          "transformedStatement": "把排列从左到右处理，将当前前缀的每个连通分量表示为连续位置段，并在栈中维护该段的最小值和最大值；相邻段是否应合并，只由左段最大值与右段最小值的比较决定。",
+          "keyObservations": [
+            "处理任意前缀时，各连通分量必是连续位置段；加入新位置只需从栈顶开始合并相邻段，从而无需显式建图。",
+            "对相邻段，左段最大值大于右段最小值，当且仅当两段间存在逆序边，因此只需比较这两个端点信息即可判断是否连通。",
+            "合并后的段仍是连续段，只需更新最小值和最大值并继续向下检查，保证每个位置至多入栈、出栈一次，得到线性复杂度。"
+          ],
+          "solutionBrief": "从左到右扫描排列，用栈维护当前前缀的连通段及其最小、最大值。加入单点后，只要栈顶两段满足左段最大值大于右段最小值就合并，并持续检查；最终栈大小即答案，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1638D",
+          "index": "D",
+          "slot": "D",
+          "title": "Big Brush",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1638/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/99942",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 颜色网格，初始所有格子未着色；每次可选择一个 $2\\times2$ 区域并把四格同时涂成同一种颜色，操作可重复。请构造不超过 $nm$ 次操作得到该最终网格（每格都曾被涂色），或判断无解。",
+          "transformedStatement": "把正向绘制改为逆向撤销：先寻找最后一次覆盖的四格同色区域；已被更晚操作覆盖的格子视为颜色任意的特殊格，随后只要求候选 2×2 中其余格子同色，并持续扩展可撤销区域。",
+          "keyObservations": [
+            "最后一次操作覆盖的 2×2 区域四格必须同色；逆向处理时，被后续操作覆盖过的格子可标记为特殊格，其原始颜色不再重要。",
+            "逆向加入一个操作的充要条件是：该 2×2 区域内所有非特殊格颜色相同，因此无需要求特殊格与它们同色。",
+            "每当一个格子变为特殊格，只需检查包含它的至多 9 个 2×2 区域；每个格子只会首次变特殊，因而总操作数和检查规模均为 $O(nm)$。",
+            "逆向记录的操作顺序反转后就是正向绘制顺序；若队列耗尽仍有非特殊格，说明不存在任何可作为当前最后操作的区域，答案为 -1。"
+          ],
+          "solutionBrief": "从所有四格同色的 2×2 区域入队，逆向执行：取出满足非特殊格同色的区域，将其非特殊格标记为特殊并触发邻近区域检查。若所有格子都被处理，反转记录序列输出；否则输出 -1。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1638E",
+          "index": "E",
+          "slot": "E",
+          "title": "Colorful Operations",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1638/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/99942",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "有一个长度为 $n$ 的数组，所有元素初值为 $0$、颜色为 $1$。每次查询可给某种颜色的所有元素统一加值、把区间 $[l,r]$ 全部染成指定颜色，或询问某个位置的当前值；输出所有第三类查询的答案。",
+          "transformedStatement": "将数组抽象为按位置排列的同色极大区间，并把“按颜色加值”拆成颜色级延迟量与位置级补偿值；区间染色转化为分裂、覆盖区间合并及边界修正。",
+          "keyObservations": [
+            "把按颜色统一增加的操作延迟为 `lazy[color]`；单点改色时先补上旧颜色的延迟，再减去新颜色的延迟，使该位置重新与颜色延迟账本一致。",
+            "维护颜色相同的极大连续区间；区间染色只需处理被完整覆盖的区间及至多两个端点分裂出的内部部分，从而避免逐元素修改。",
+            "被染色区间完整覆盖的颜色段会合并，使区间数量减少；一次操作至多新增两个分裂段，因此按区间数量作势能分析，总处理的区间变化次数为 $O(q)$。",
+            "染色后对区间的实际增量不能只靠颜色懒标记，还需用 Fenwick 树或线段树对区间补偿值做范围加法，使每次区间处理为 $O(\\log n)$。"
+          ],
+          "solutionBrief": "用集合维护按位置排列的同色极大区间，用 `lazy[color]` 延迟记录颜色增量；染色时分裂端点、合并内部区间，并通过 Fenwick 树处理范围补偿。势能分析保证总区间变化为 $O(q)$，总复杂度 $O(n+q\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1638F",
+          "index": "F",
+          "slot": "F",
+          "title": "Two Posters",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1638/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/99942",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 个宽度为 $1$、高度为 $h_i$ 的竖直面板，开始时顶部都连接在横杆上；可将每块面板向上移动任意整数距离，但底部必须仍在横杆下方或与其重合。调整后，在横杆上下各放一张完全位于面板内且不越过横杆的海报，海报面积可为 $0$，求两张海报覆盖面积之和的最大值。",
+          "transformedStatement": "把两张海报抽象为覆盖连续面板区间的定高矩形，按区间不相交、部分重叠、完全重叠分类。固定两张高度后，用不能同时容纳两张海报的面板切出公共区间，并以其最矮面板作为瓶颈代表来枚举候选结构。",
+          "keyObservations": [
+            "若两张海报覆盖的面板区间不相交，区间之间可作为分界；分界左、右两侧分别求单张海报最优值即可合并。",
+            "固定两张海报高度为 $h_1,h_2$ 后，满足 $h_i<h_1+h_2$ 的面板不能被两张海报同时覆盖，其余面板构成可能的公共区间。",
+            "公共区间必须是极大的连续灰色段；以其中最矮且最左的面板为代表向两侧扩展，可为每个代表面板唯一确定候选区间，因此候选数降为 $O(n)$。",
+            "固定代表区间后，最优解必须由公共区间的瓶颈或两张海报各自的瓶颈约束；分别处理部分重叠和完全重叠，并用双指针枚举高度变化。"
+          ],
+          "solutionBrief": "按两张海报是否相交分类。对不相交情况枚举分界并预处理单海报最优值；对相交情况用最矮面板确定 $O(n)$ 个候选公共区间，再结合前后缀信息和双指针处理两类重叠，整体复杂度为 $O(n^2)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
