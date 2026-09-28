@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3345,
-    "source_total_problems": 3348,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 3345,
+    "total_problems": 3349,
+    "source_total_problems": 3354,
+    "filtered_out_problems": 5,
+    "with_statement_brief": 3349,
     "with_editorial_brief": 3063,
     "with_solution_brief": 3065,
-    "missing_editorial_brief": 280,
+    "missing_editorial_brief": 284,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 2407,
     "primary_topic_count": 13,
-    "contest_count": 514,
+    "contest_count": 515,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1074,
+    "动态规划与状态设计": 280,
+    "树结构": 165,
     "数论与同余": 350,
-    "构造与贪心": 1072,
     "基础实现与模拟": 210,
     "字符串": 175,
-    "树结构": 164,
     "组合计数与概率": 254,
     "博弈": 104,
     "交互": 101,
     "图论与网络流": 215,
     "数据结构": 318,
-    "动态规划与状态设计": 279,
     "几何": 80,
     "代数、矩阵与多项式": 23
   },
   "statusCounts": {
+    "missing_editorial": 284,
     "ai_generated_with_editorial": 2103,
-    "missing_editorial": 280,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
     "manual_override": 891,
@@ -103272,6 +103272,113 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "把相邻落座者之间所需空椅数设为两者需求的最大值，并按需求非递减顺序安排。最少总椅数为 $n+\\sum a_i-\\min(a_i)+\\max(a_i)$，不超过 $m$ 即输出 YES。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1667,
+      "name": "Codeforces Round 783 (Div. 1)",
+      "date": "2022-04-19",
+      "url": "https://codeforces.com/contest/1667",
+      "type": "Div. 1",
+      "problemCount": 4,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1667A",
+          "index": "A",
+          "slot": "A",
+          "title": "Make it Increasing",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1667/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/102013",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Make it Increasing；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1667B",
+          "index": "B",
+          "slot": "B",
+          "title": "Optimal Partition",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1667/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/102013",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "题面已抓取：Optimal Partition；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1667C",
+          "index": "C",
+          "slot": "C",
+          "title": "Half Queen Cover",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1667/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/102013",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Half Queen Cover；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1667D",
+          "index": "D",
+          "slot": "D",
+          "title": "Edge Elimination",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1667/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/102013",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Edge Elimination；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }

@@ -8,6 +8,28 @@
     "raw_sha256": "fa89a503b50feeb91aba308c25cdee0a9d5ab0a8cda3bf69642f79d9854267d3"
   },
   {
+    "url": "https://codeforces.com/blog/entry/102013",
+    "blog_entry_id": 102013,
+    "title": "Codeforces Round #783 Editorial",
+    "author": "peti1234",
+    "creation_time": "2022-04-18",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round #783 Editorial",
+    "section_count": 8,
+    "covered_problems": [
+      "1667E",
+      "1667F",
+      "1668A",
+      "1668B",
+      "1668C",
+      "1668D",
+      "1668E",
+      "1668F"
+    ],
+    "raw_sha256": "8d0305584061eb38da5cdf143e2e7c5d2dabb6bf1894802ee2da727bce914855"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/105919",
     "blog_entry_id": 105919,
     "title": "Codeforces Round #813 (Div. 2) Editorial",
