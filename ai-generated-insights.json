@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T01:20:29+00:00",
+  "updated_at": "2026-09-28T01:26:28+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -67504,6 +67504,243 @@
         "quality_flags": [
           "statement_operations_reconstructed_from_example"
         ]
+      }
+    },
+    "1692H": {
+      "problem_key": "1692H",
+      "title": "Gambling",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1692/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/103883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5712558cb643d6ed3a7ab1afbc234273330614d907fef2399627e78262f7b8b8",
+      "generated_at": "2026-09-28T01:24:34+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定骰子在 $n$ 轮中依次出现的数列。Marian 选择一个固定数字 $a$ 和连续轮次区间 $[l,r]$，每轮都猜 $a$：猜中资金翻倍，猜错资金减半，初始资金为 1；要求最大化区间结束时的资金并输出 $a,l,r$。",
+        "transformed_statement": "固定 $a$ 后，把每轮改写为 $b_i=1$（$x_i=a$）或 $b_i=-1$（否则），区间最终资金为 $2^{\\sum_{i=l}^{r}b_i}$，所以问题变成对每个候选 $a$ 求 $b$ 的最大子段和。",
+        "key_observations": [
+          "固定猜测值 $a$ 后，每次猜中贡献 $+1$、猜错贡献 $-1$；最终金额是 $2^{\\sum b_i}$，因此目标等价于求数组 $b$ 的最大子段和。",
+          "最优的 $a$ 只需从数组中出现过的数值里选择；未出现的数值在任何区间都只产生负贡献，而出现值的单点区间即可产生正贡献。",
+          "对每个候选值维护对应的 $+1/-1$ 数组，线段树保存区间总和、最大前缀和、最大后缀和及最大子段和，从而在符号更新后快速得到最优区间。",
+          "所有候选值的出现位置总数为 $n$，增量修改和查询总量为 $O(n)$，因此整体复杂度为 $O(n\\log n)$。"
+        ],
+        "solution_brief": "枚举数组中出现过的每个候选值，将其出现位置设为 $+1$、其他位置设为 $-1$，用线段树维护最大子段和。最大子段对应的左右端点与候选值 $a$ 即为答案，整体复杂度为 $O(n\\log n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的连续区间下注规则，以及 editorial_text 给出的 $+1/-1$ 转化、最大子段和与线段树方案；tags 仅用于主题归类。",
+        "quality_flags": [
+          "statement_tail_incomplete"
+        ]
+      }
+    },
+    "1692G": {
+      "problem_key": "1692G",
+      "title": "2^Sort",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1692/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/103883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "724203068eb2073ba305039978c276bcc2772af4cce4fe3b4521fd340a0b31d0",
+      "generated_at": "2026-09-28T01:24:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的正整数数组和整数 $k$，对每个长度为 $k+1$ 的连续子数组，将第 $j$ 个元素乘以 $2^j$（从 $j=0$ 开始），要求所得序列严格递增。求满足条件的子数组起点数量。",
+        "transformed_statement": "把每个相邻位置抽象为布尔值 $b_i=[a_i<2a_{i+1}]$；原问题等价于统计数组 $b$ 中长度为 $k$ 且全部为 $1$ 的连续区间。",
+        "key_observations": [
+          "相邻两项的加权不等式 $2^x a_i<2^{x+1}a_{i+1}$ 可约去公共因子，等价于 $a_i<2a_{i+1}$，因此无需实际计算幂次。",
+          "一个长度为 $k+1$ 的原数组区间满足条件，当且仅当其中连续的 $k$ 个相邻位置都满足 $a_j<2a_{j+1}$。",
+          "将每个相邻位置转成 $b_j=[a_j<2a_{j+1}]$ 后，答案就是二进制数组中全为 $1$ 的长度为 $k$ 的子数组数量，问题降为固定窗口计数。",
+          "滑动窗口只维护当前窗口内 $1$ 的个数；窗口右移时加入新值并移除旧值，计数等于 $1$ 的个数为 $k$ 的窗口即可保证线性复杂度。"
+        ],
+        "solution_brief": "先构造 $b_i=[a_i<2a_{i+1}]$。用滑动窗口维护长度为 $k$ 的 $b$ 子数组中 $1$ 的数量，数量等于 $k$ 时答案加一；每组复杂度为 $O(n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题解正文，并结合题面给出的数组、$n$、$k$ 及计数要求。",
+        "quality_flags": []
+      }
+    },
+    "1692F": {
+      "problem_key": "1692F",
+      "title": "3SUM",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1692/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/103883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b2394a2bd518905a5df1093e3c77303b7685436edf76615d7f5f42e397c5a0fa",
+      "generated_at": "2026-09-28T01:25:02+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组，需要选择三个互不相同的下标，使对应三个数的和的个位数字为 3；若存在则输出 YES，否则输出 NO。每个下标只能使用一次。",
+        "transformed_statement": "将每个元素替换为其个位数字，并把每种个位数字的出现次数截断为最多 3 次；问题转化为在至多 30 个数字中寻找三个不同位置，使它们的和模 10 等于 3。",
+        "key_observations": [
+          "三数之和是否以 3 结尾只取决于末位数字，即判断 $a_i+a_j+a_k\\equiv3\\pmod{10}$，因此可以丢弃每个数的高位。",
+          "同一末位数字出现超过 3 次时，多出的副本不可能被同一个三元组同时使用，保留至多 3 个即可。",
+          "压缩后数组长度最多为 $10\\times3=30$，枚举所有三个不同位置的组合就能覆盖全部可能，复杂度为 $O(n+\\min(n,30)^3)$。"
+        ],
+        "solution_brief": "先将所有数替换为末位，并对每种末位最多保留 3 个元素。然后枚举压缩数组中的所有三元组，若三数之和对 10 取模为 3 就输出 YES，否则输出 NO。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial、题面中的三下标限制，以及 tags 中的 brute force 和 math。",
+        "quality_flags": []
+      }
+    },
+    "1692E": {
+      "problem_key": "1692E",
+      "title": "Binary Deque",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1692/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/103883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "01ce061f85c713de8d1f282ffd9c94675ffcd09f11b75ca6430396640fd50df3",
+      "generated_at": "2026-09-28T01:25:29+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个只含 $0$ 和 $1$ 的数组，每次操作只能删除当前数组的第一个或最后一个元素。求经过最少操作后，使剩余数组元素和恰好为 $s$；若无法达到则输出 $-1$。",
+        "transformed_statement": "首尾删除后留下的必是原数组的一个连续子数组，因此目标变为寻找和为 $s$ 的最长连续子数组，再用原长度减去它的长度得到最少操作数。",
+        "key_observations": [
+          "每次只能删除首尾元素，因此最终保留下来的部分一定是原数组的连续子数组；操作次数等于 $n$ 减去该子数组长度。",
+          "问题可转化为寻找和恰好为 $s$ 的最长连续子数组，最长者对应最少删除次数。",
+          "由于数组元素非负，前缀和具有单调性；固定一个端点后，可以用前缀和快速计算区间和，并二分定位满足目标和的另一端点。",
+          "若原数组总和小于 $s$，任何删除操作都只会使总和继续减少，因此答案必为 $-1$。"
+        ],
+        "solution_brief": "先计算前缀和，枚举连续子数组的一端，用前缀和的单调性二分查找和为 $s$ 的另一端，记录最长区间长度；答案为 $n-$最长长度。若不存在目标区间则输出 $-1$。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text，并参考 tags 中的 binary search、two pointers。",
+        "quality_flags": [
+          "editorial对含零数组的“严格递增”表述不严谨，边界相同前缀和需谨慎处理"
+        ]
+      }
+    },
+    "1692D": {
+      "problem_key": "1692D",
+      "title": "The Clock",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1692/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/103883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0fd0dce7280e1f7e50e7fd21a4e5740897d4acb4733eaef085ca17b1ac59d162",
+      "generated_at": "2026-09-28T01:25:48+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 24 小时制时间 `HH:MM` 和间隔 $x$ 分钟，Victor 从该时间开始每隔 $x$ 分钟查看一次时钟，时间跨天后继续循环。求他无限查看过程中能看到的不同回文时间数量。",
+        "transformed_statement": "把一天抽象为模 $1440$ 的环，初始时刻是一个分钟位置，每次沿环前进 $x$；只需遍历从初始位置出发的周期状态，并统计其中满足时间字符串正读反读相同的状态。",
+        "key_observations": [
+          "时间状态只有一天内的 $1440$ 个分钟位置，因此从初始时刻按步长 $x$ 推进，最多检查 $1440$ 次就会回到已访问状态。",
+          "将每个时刻转换为分钟数并对 $1440$ 取模，可统一处理跨天加法，避免单独维护小时和分钟进位。",
+          "时刻 `HH:MM` 是回文，当且仅当小时的两位数字倒序后等于分钟，因此遍历周期内的不同状态并直接检查该条件即可。"
+        ],
+        "solution_brief": "把起始时间转为分钟数，反复执行 $cur=(cur+x)\\bmod 1440$，直到再次遇到已访问时刻；对每个不同状态检查其 `HH:MM` 是否回文并计数。每组数据最多处理 $1440$ 个状态，因而可视为常数复杂度。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，以及 statement_text 中的 24 小时循环时间规则和回文定义；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1692C": {
+      "problem_key": "1692C",
+      "title": "Where's the Bishop?",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1692/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/103883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "bec69309637f41a01eead126ce573651e321d37649799da872b27d2846efe2ce",
+      "generated_at": "2026-09-28T01:26:02+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $8\\times 8$ 棋盘，恰有一个主教位于第 2 至第 7 行、列之间；所有被主教沿四个方向无限距离斜线攻击的格子（包括所在格）已标为 `#`，其余为 `.`。对每组棋盘找出主教的行号和列号。",
+        "transformed_statement": "将整条对角线攻击关系转化为内部某个中心格周围的固定局部模式：中心及左上、右上、左下、右下四格必须均为 `#`。扫描该模式的唯一中心即可得到答案。",
+        "key_observations": [
+          "由于主教不在边缘，其所在格及四个斜向相邻格一定都被标记，形成 3×3 局部模式 `#.#/.#./#.#`，因此可直接定位中心格。",
+          "题目保证只有一个非边缘位置符合该模式，扫描所有内部格并检查四个对角邻居即可避免处理整条对角线。",
+          "棋盘大小固定为 $8\\times 8$，所以每组数据的扫描工作量是常数，时间复杂度为 $O(1)$。"
+        ],
+        "solution_brief": "遍历第 2 至第 7 行和列，若当前位置及其四个对角相邻格均为 `#`，则输出当前位置。题目保证这样的中心唯一。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "几何"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的棋盘与攻击规则，以及 editorial_text 提供的 3×3 模式扫描方法和复杂度说明。",
+        "quality_flags": []
+      }
+    },
+    "1692B": {
+      "problem_key": "1692B",
+      "title": "All Distinct",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1692/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/103883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "2e6edc0ae7bdb53814cb020001f4711d79d58fa73639ad75a8739e809ea0d327",
+      "generated_at": "2026-09-28T01:26:18+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $n$ 的整数数组，每次可选择两个不同下标并同时删除对应元素，重复操作后要求剩余数组中的元素全部互不相同。在满足这一条件的前提下，求剩余数组可能达到的最大长度。",
+        "transformed_statement": "把问题转化为：设数组有 $x$ 个不同值，选择一个不超过 $x$ 且与原长度 $n$ 同奇偶的最大目标长度；因为每次删除两个元素，长度只能按步长 $2$ 下降。",
+        "key_observations": [
+          "每次操作都会删除恰好两个元素，因此最终数组长度与原长度 $n$ 同奇偶，不能任意取不同元素的数量。",
+          "设数组中的不同元素个数为 $x$，最终长度至多为 $x$；在不超过 $x$ 的数中，只有与 $n$ 同奇偶的最大值可达。",
+          "若 $x$ 与 $n$ 同奇偶，可以保留每种元素的一个副本并成对删除其余元素；否则删去一个不同元素后即可达到 $x-1$，因此该目标始终可构造。"
+        ],
+        "solution_brief": "统计不同元素个数 $x$。若 $x$ 与 $n$ 同奇偶，答案为 $x$；否则答案为 $x-1$。原因是每次删除两个元素，最终长度必须保持与 $n$ 同奇偶，同时不能超过不同元素总数。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的成对删除规则和 editorial 中关于长度奇偶性、不同元素数量的结论；未依赖 tags 补充算法。",
+        "quality_flags": []
+      }
+    },
+    "1692A": {
+      "problem_key": "1692A",
+      "title": "Marathon",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1692/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/103883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d1890a591e195311367c9ce0e27d5484c8dc515051a8ab7485dd0b5b8b069342",
+      "generated_at": "2026-09-28T01:26:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "每组给出 Timur 跑过的距离 $a$，以及另外三名参赛者的距离 $b,c,d$。统计这三人中距离严格大于 $a$ 的人数，即输出跑在 Timur 前面的人数。",
+        "transformed_statement": "将排名问题转化为对集合 $b,c,d$ 逐个进行阈值判断：统计其中满足 $x>a$ 的元素个数。三次独立判断的结果之和就是答案。",
+        "key_observations": [
+          "“跑在前面”恰好等价于其他人的距离大于 Timur 的距离，因此无需比较三人的相对顺序，只需分别判断 $b,c,d>a$。",
+          "每个其他参与者的判断彼此独立，满足条件一次就将答案加一，四个数互异也保证不存在相等时的处理歧义。"
+        ],
+        "solution_brief": "对每组数据分别检查 $b、c、d$ 是否大于 $a$，每满足一次就计数加一，输出计数。单组复杂度为 $O(1)$。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的排名定义和 editorial_text 中的直接计数方法，结合 tags 中的 implementation。",
+        "quality_flags": []
       }
     }
   }
