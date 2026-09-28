@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3576,
+    "total_problems": 3584,
     "source_total_problems": 3586,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3576,
-    "with_editorial_brief": 3277,
-    "with_solution_brief": 3279,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3584,
+    "with_editorial_brief": 3285,
+    "with_solution_brief": 3287,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2638,
+    "ai_override_count": 2646,
     "primary_topic_count": 13,
-    "contest_count": 552,
+    "contest_count": 553,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "字符串": 188,
+    "基础实现与模拟": 225,
+    "构造与贪心": 1165,
+    "图论与网络流": 235,
+    "数据结构": 340,
     "数论与同余": 372,
-    "数据结构": 339,
-    "构造与贪心": 1162,
-    "图论与网络流": 234,
     "博弈": 108,
     "动态规划与状态设计": 293,
     "几何": 87,
     "组合计数与概率": 269,
-    "基础实现与模拟": 223,
-    "字符串": 187,
     "代数、矩阵与多项式": 25,
     "交互": 104,
     "树结构": 173
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2313,
+    "ai_generated_with_editorial": 2321,
     "ai_generated_partial_editorial": 73,
     "missing_editorial": 297,
     "low_confidence": 1,
@@ -110356,6 +110356,248 @@ window.CF_INSIGHTS_DATA = {
             "未被配对的点距离必为 $0$，每个配对端点最终被调整到同一数值且变化方向受原分数夹住，因此总调整量恰好不超过流的费用下界，构造达到最优。"
           ],
           "solutionBrief": "把约束建成带费用的最大费用流：原边容量无限、费用为 $a_u-a_v$，源汇边容量为 $1$。在最大费用流残量图上求最长路距离，输出 $b_u=a_u+d_u$；该构造满足约束且达到流给出的最优下界，复杂度为 $O(nm\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1619,
+      "name": "Codeforces Round 762 (Div. 3)",
+      "date": "2021-12-20",
+      "url": "https://codeforces.com/contest/1619",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1619A",
+          "index": "A",
+          "slot": "A",
+          "title": "Square String?",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1619/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/98159",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定多个仅含小写字母的字符串。若一个字符串能表示为某个字符串连续写两遍，则称其为 square；对每个输入字符串判断是否满足该条件并输出 YES 或 NO。",
+          "transformedStatement": "将目标等价转化为：字符串长度必须为偶数，且前半段与后半段完全相同。于是判定只需检查两段对应位置的字符是否一致。",
+          "keyObservations": [
+            "字符串由同一个子串连续重复两次时，总长度必须为偶数；奇数长度可直接判定为 NO。",
+            "长度为 $n$ 时，只需比较前半段与后半段的对应字符；所有位置都相同恰好等价于字符串是某个子串重复两次。"
+          ],
+          "solutionBrief": "对每个字符串先判断长度奇偶。若为奇数输出 NO；否则逐位比较前后两个长度为 $n/2$ 的部分，完全相同输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1619B",
+          "index": "B",
+          "slot": "B",
+          "title": "Squares and Cubes",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1619/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/98159",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定多个正整数 $n$，考虑区间 $[1,n]$ 中所有能表示为正整数平方或正整数立方的数；平方数与立方数同时满足时只计一次。对每组 $n$，求这类整数的数量。",
+          "transformedStatement": "将目标集合重述为所有满足 $i^2\\le n$ 或 $i^3\\le n$ 的幂值的并集：分别枚举平方值和立方值，合并后统计不同元素个数。",
+          "keyObservations": [
+            "所有符合条件的数都能表示为某个正整数的平方或立方，因此只需枚举满足 $i^2\\le n$ 与 $i^3\\le n$ 的根并收集结果。",
+            "平方数和立方数可能重合，例如完全六次方；使用集合去重后取集合大小，正好对应题目要求的并集计数。",
+            "当 $n\\le 10^9$ 时，平方根枚举最多约 $31622$ 个，直接生成所有候选值即可满足范围要求。"
+          ],
+          "solutionBrief": "对每组 $n$，枚举所有不超过 $n$ 的正整数平方和立方，将它们加入集合以自动去除同时为平方数和立方数的重复项，最后输出集合大小。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1619C",
+          "index": "C",
+          "slot": "C",
+          "title": "Wrong Addition",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1619/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/98159",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定正整数 $a$ 和目标串 $s$。将 $a$ 与待求的正整数 $b$ 右对齐，逐列相加但不进位，并把每列得到的 $0$ 到 $18$ 的和按从高位到低位直接拼接成结果；要求找出能得到 $s$ 的 $b$，不存在则输出 $-1$。",
+          "transformedStatement": "把 $s$ 看成由各列数字和组成的连续数字块，已知每个块必须对应一个 $a$ 的数字与一个 $b$ 的数字之和；从右端贪心恢复这些一位或两位块及 $b$ 的各位。",
+          "keyObservations": [
+            "每一列的两个数字之和只可能是 $0$ 到 $18$，因此结果串从右向左时，每个 $a$ 的数字对应一个一位块或一个两位块。",
+            "设当前 $a$ 数字为 $x$、结果末位为 $y$；若 $x\\le y$，当前块只能是 $y$，对应的 $b$ 数字为 $y-x$。",
+            "若 $x>y$，当前块不可能是一位数，必须连同结果的前一位组成 $10$ 到 $18$；否则无法由两个数字相加得到。",
+            "处理完 $a$ 后结果串也必须恰好用完；若仍有未匹配数字，或两位块不在 $10$ 到 $18$，则答案为 $-1$。"
+          ],
+          "solutionBrief": "从右向左逐位解析结果串：若末位不小于当前 $a$ 数字，就取一位并相减；否则取末两位，要求其在 $10$ 到 $18$，再相减得到 $b$ 的一位。所有数字必须恰好匹配，否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1619D",
+          "index": "D",
+          "slot": "D",
+          "title": "New Year's Problem",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1619/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/98159",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有 $m$ 家商店和 $n$ 位朋友，给定从每家商店为每位朋友购买礼物时带来的欢乐值。必须给每人一件礼物，最多访问 $n-1$ 家商店，同一家商店可购买任意多件，目标是最大化所有朋友中最低的欢乐值。",
+          "transformedStatement": "将问题改写为阈值判定：给定目标欢乐值 $x$，要求每位朋友至少有一家可选商店达到 $x$，并且至少一家商店能同时满足两位朋友，从而把所需访问的商店数压到 $n-1$ 以内。",
+          "keyObservations": [
+            "固定最低欢乐值 $x$ 后，只需判断每位朋友是否至少有一家商店能提供不低于 $x$ 的礼物。",
+            "最多访问 $n-1$ 家商店意味着必须让某一家商店负责至少两位朋友；因此还需存在一家商店对至少两位朋友的欢乐值都达到 $x$。",
+            "上述两个条件同时满足时，可为每位朋友选择合格商店，且因某店承担两人，使用的不同商店数至多为 $n-1$，所以判定充分。",
+            "可获得的最低欢乐值具有单调性：能达到 $x$ 就一定能达到更小值，不能达到 $x$ 也不可能达到更大值，因此答案可二分。"
+          ],
+          "solutionBrief": "二分最低欢乐值 $x$。线性扫描表格，检查每位朋友是否有合格商店，并统计是否存在一家商店能为至少两位朋友提供合格礼物；两项均满足则判定可行。总复杂度为 $O(nm\\log(nm))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1619E",
+          "index": "E",
+          "slot": "E",
+          "title": "MEX and Increments",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1619/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/98159",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定含 $n$ 个非负整数的数组，每次只能选择一个位置并将其元素加 $1$，同一位置可以重复操作。对每个 $i\\in[0,n]$，求把数组的 MEX 恰好变成 $i$ 所需的最少操作次数；无法做到则输出 $-1$。",
+          "transformedStatement": "将数组排序后按数值递增处理：对每个值保留一个元素作为 MEX 前缀的代表，其余重复元素作为可移动资源；缺失的前缀值由较小的额外元素递增补齐，并用栈选择代价最小的资源。",
+          "keyObservations": [
+            "目标 MEX 为 $i$ 等价于数组中必须保留每个 $0,1,\\ldots,i-1$，且所有值为 $i$ 的元素都必须被递增移走。",
+            "同一数值多出的出现次数可以作为可移动资源放入栈中；遇到缺失的前缀值时，用一个不超过它的额外元素补上，问题转化为资源匹配。",
+            "补缺时优先使用数值最大的可用额外元素，可使增量代价最小；因此按值递增扫描并维护栈即可得到每个目标 MEX 的最小代价。",
+            "当需要补齐某个前缀值却没有可用额外元素时，后续更大的 MEX 也都无法实现，答案统一为 $-1$。"
+          ],
+          "solutionBrief": "先排序并统计频次，递增枚举目标 MEX。每个值保留一个代表，多余元素入栈；缺失的前缀值用最大的可用额外元素补齐并累加增量代价，同时处理目标值本身及剩余元素的移动，栈空时记为 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1619F",
+          "index": "F",
+          "slot": "F",
+          "title": "Let's Play the Hat?",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1619/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/98159",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 名玩家、$m$ 张桌子和 $k$ 局游戏。每局必须把所有玩家分别安排到各桌且每人只参加一张桌；要求各桌人数尽量均衡，并让玩家在较大的桌子上参加的局数公平，输出任意满足条件的 $k$ 轮分桌方案。",
+          "transformedStatement": "把每局分成大桌和小桌：$n\\bmod m$ 张大桌各坐 $\\lceil n/m\\rceil$ 人，其余桌各坐 $\\lfloor n/m\\rfloor$ 人。将玩家编号看成环，每轮把长度为 $p=(n\\bmod m)\\lceil n/m\\rceil$ 的循环区间指定为大桌玩家，并把区间起点逐轮平移 $p$。",
+          "keyObservations": [
+            "每局桌人数要尽量均衡：有 $n\\bmod m$ 张大桌，每张坐 $\\lceil n/m\\rceil$ 人，其余桌坐 $\\lfloor n/m\\rfloor$ 人；因此公平性只需平衡玩家进入大桌的次数。",
+            "每局选出连续循环区间中的 $p=(n\\bmod m)\\lceil n/m\\rceil$ 名玩家坐大桌，其余玩家坐小桌；这样大桌人数和大桌数量都自动满足要求。",
+            "下一局将区间起点增加 $p$（模 $n$）即可轮换大桌资格，因为 $p<n$，任意两名玩家的大桌次数差不会达到 $2$。",
+            "按循环顺序每 $\\lceil n/m\\rceil$ 人切分大桌区间、再按 $\\lfloor n/m\\rfloor$ 人切分小桌区间，恰好得到 $m$ 张桌且覆盖所有玩家。"
+          ],
+          "solutionBrief": "计算大桌人数 $B=\\lceil n/m\\rceil$ 及大桌玩家总数 $p=(n\\bmod m)B$。第 $i$ 局从 $(i-1)p\\bmod n$ 开始循环取 $p$ 人分配给大桌，再将其余人分配给小桌；每局起点平移保证大桌次数公平。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1619G",
+          "index": "G",
+          "slot": "G",
+          "title": "Unusual Minesweeper",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1619/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/98159",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "dfs and similar",
+            "dsu",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "有若干位置和倒计时已知的矿井；矿井爆炸时会瞬间引爆同横线或竖线上距离不超过 $k$ 的矿井，并继续触发链式爆炸。玩家从第 $0$ 秒起每秒可手动引爆一枚矿井，求引爆全部矿井所需的最少秒数。",
+          "transformedStatement": "把矿井建成图：同一横线或竖线上距离不超过 $k$ 的相邻矿井相连，图的连通分量就是可被一次爆炸整体清除的单位；每个分量用其最小倒计时代表，再安排自动与手动清除的分界。",
+          "keyObservations": [
+            "同一横线或竖线上相邻矿井的坐标差不超过 $k$ 时可连边；连通分量正好表示一次链式爆炸能够整体引爆的矿井集合。",
+            "一个连通分量若未被手动引爆，最早会在该分量内最小计时器到期时整体爆炸，因此每个分量只需保留一个最小计时值。",
+            "固定自动爆炸的时间分界后，计时值不超过分界的分量会自动完成，其余分量只能按每秒一枚的限制手动引爆。",
+            "将各分量的最小计时值排序并枚举分界点，候选答案由自动爆炸完成时间和手动处理剩余分量所需时间的较大值决定，取所有分界中的最小值。"
+          ],
+          "solutionBrief": "按每个横坐标、纵坐标分别排序，用并查集合并坐标差不超过 $k$ 的相邻矿井。求每个连通分量的最小计时器并排序，枚举自动爆炸与手动引爆的分界，取完成时间最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1619H",
+          "index": "H",
+          "slot": "H",
+          "title": "Permutation and Queries",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1619/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/98159",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列，依次处理两类操作：类型 1 交换排列中位置 $x,y$ 的元素；类型 2 从位置 $i$ 出发反复应用排列映射 $k$ 次，即求 $p^k(i)$。对每个类型 2 操作输出结果。",
+          "transformedStatement": "把排列看成函数图，并维护固定步长的跳转函数 $a_i=p^Q(i)$。每次幂运算被分解为若干个长度为 $Q$ 的块和一个不足 $Q$ 步的尾段；交换操作则转化为局部修正逆排列链上的块跳转。",
+          "keyObservations": [
+            "将排列视为函数，定义 $a_i=p^Q(i)$（$Q\\approx\\sqrt n$），任意 $p^k(i)$ 都能拆成若干次整块跳转和至多 $Q-1$ 次单步移动。",
+            "交换 $p_x,p_y$ 只会影响以 $x$ 或 $y$ 为起点、沿逆排列回溯至多 $Q$ 步的 $a$ 值，其余整块跳转保持不变。",
+            "维护逆排列 $r$ 后，若已知 $a_x=p^Q(x)$，则前驱位置满足 $a_{r_x}=r_{a_x}$，因此可沿逆排列链逐项重算受影响的块跳转。",
+            "每次查询只需结合块跳转与少量单步移动，更新也只涉及两条长度至多为 $Q$ 的逆链，从而将总复杂度控制在 $O((n+q)\\sqrt n)$。"
+          ],
+          "solutionBrief": "取 $Q\\approx\\sqrt n$，预处理 $a_i=p^Q(i)$和逆排列 $r$。查询 $p^k(i)$时先进行整块跳转，再做不足 $Q$ 步的直接移动；交换后只沿 $x,y$ 的逆排列链重算受影响的 $a$，总复杂度为 $O((n+q)\\sqrt n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
