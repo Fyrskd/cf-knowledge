@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3343,
+    "total_problems": 3345,
     "source_total_problems": 3348,
-    "filtered_out_problems": 5,
-    "with_statement_brief": 3343,
-    "with_editorial_brief": 3061,
-    "with_solution_brief": 3063,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3345,
+    "with_editorial_brief": 3063,
+    "with_solution_brief": 3065,
     "missing_editorial_brief": 280,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2405,
+    "ai_override_count": 2407,
     "primary_topic_count": 13,
-    "contest_count": 513,
+    "contest_count": 514,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数论与同余": 350,
+    "构造与贪心": 1072,
     "基础实现与模拟": 210,
-    "数论与同余": 349,
     "字符串": 175,
-    "构造与贪心": 1071,
     "树结构": 164,
     "组合计数与概率": 254,
     "博弈": 104,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 23
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2103,
     "missing_editorial": 280,
-    "ai_generated_with_editorial": 2101,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
     "manual_override": 891,
@@ -103204,6 +103204,72 @@ window.CF_INSIGHTS_DATA = {
             "按位权从高到低处理：只要剩余操作数足够就补齐该位，因为更高位的提升必然优先于任意低位收益。"
           ],
           "solutionBrief": "统计每一位已有 $1$ 的元素数，从最高位到最低位计算补齐该位所需的 $n-c_i$ 次操作；若预算足够就扣除并将该位加入答案，否则跳过。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1668,
+      "name": "Codeforces Round 783 (Div. 2)",
+      "date": "2022-04-19",
+      "url": "https://codeforces.com/contest/1668",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 900,
+      "problems": [
+        {
+          "key": "1668A",
+          "index": "A",
+          "slot": "A",
+          "title": "Direction Change",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1668/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/102013",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 网格，起点为左上角、目标为右下角；每次可上下左右移动一步，但不能连续两次朝同一方向移动，也不能走出网格。对每组数据求最少步数，若无法到达则输出 $-1$。",
+          "transformedStatement": "利用行列对称性设较长边为 $n$、较短边为 $m$，问题转化为：在不能连续使用同一方向的条件下，安排至少 $n-1$ 次长边移动，并用其他方向移动隔开，同时满足路径奇偶性。",
+          "keyObservations": [
+            "利用行列对称性令 $n\\ge m$，只有较长方向的尺寸会决定主要步数，便于统一处理两种方向。",
+            "至少要向下移动 $n-1$ 次，且这些移动不能相邻，因此至少还需插入 $n-2$ 次其他方向移动，得到下界 $2n-3$。",
+            "每次移动都会改变行列坐标和的奇偶性；起点与终点奇偶性相同的情况下，总步数必须为偶数，因此下界在需要时增加 $1$。",
+            "交替向下、向右到达第 $m$ 列后，用“下、左、下、右”循环实现每 4 步下降两格，从而达到上述下界；但当 $m=1,n\\ge3$ 时无法完成。"
+          ],
+          "solutionBrief": "交换 $n,m$ 使 $n\\ge m$。若 $m=1$ 且 $n\\ge3$ 输出 $-1$，否则答案为 $2n-2-(n+m)\\bmod 2$；该式由必要步数、奇偶性和交替移动构造共同得到。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1668B",
+          "index": "B",
+          "slot": "B",
+          "title": "Social Distance",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1668/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/102013",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "有 $m$ 把椅子首尾相接成圆，$n$ 个人分别要求自己左右两侧至少有 $a_i$ 把连续空椅；若某人坐在某椅子上，距离不超过其需求的位置都不能坐别人。判断能否安排所有人入座并满足全部限制。",
+          "transformedStatement": "把入座者按圆周顺序排列；对于相邻两人，夹在他们之间的空椅数必须至少等于两人需求的最大值。问题因此变为寻找一种圆排列，使所有相邻间隔需求之和加上 $n$ 把有人占用的椅子不超过 $m$。",
+          "keyObservations": [
+            "圆周上相邻两人之间的空椅数量至少为两人需求值的较大者，因此总空椅数转化为相邻需求值最大值之和。",
+            "将需求值按非递减顺序排成圆后，相邻最大值之和达到最小值，具体为 $a_2+a_3+\\cdots+a_{n-1}+2a_n$。",
+            "最大的若干需求值在相邻间隔和中必须重复计入，而递增排列恰好达到这一下界，因此只需统计总需求、最小值和最大值。"
+          ],
+          "solutionBrief": "把相邻落座者之间所需空椅数设为两者需求的最大值，并按需求非递减顺序安排。最少总椅数为 $n+\\sum a_i-\\min(a_i)+\\max(a_i)$，不超过 $m$ 即输出 YES。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
