@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T07:47:40+00:00",
+  "updated_at": "2026-09-28T07:56:00+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -77881,6 +77881,284 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 的操作规则与 editorial_text 的核心结论，结合 tags 中的 math。",
+        "quality_flags": []
+      }
+    },
+    "1621I": {
+      "problem_key": "1621I",
+      "title": "Two Sequences",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1621/problem/I",
+      "editorial_url": "https://codeforces.com/blog/entry/98654",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "08901a051c9c1db262b797c03ec0eab1287335225b3bdafe2c9cbd8f9e06d4f8",
+      "generated_at": "2026-09-28T07:52:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组 $A$，定义一次变换：对长度 $i=1..n$，找当前数组中字典序最小的连续子数组，长度为 $i$，并用它覆盖当前数组最后 $i$ 个元素，前面的元素保持不变。令 $B_0=A$，之后反复对 $B_{i-1}$ 做一次完整变换得到 $B_i$；回答各次查询中指定的 $B_i$ 的第 $j$ 个元素。",
+        "transformed_statement": "把一次完整变换视为依次改写后缀的过程，并将所有中间数组视为同一个数组的演化。稳定性由前缀中首个上升位置诱导的相等块增长决定；实际模拟时，把每步选出的后缀抽象成初始数组子串队列，并只比较由最小后缀及周期结构产生的候选。",
+        "key_observations": [
+          "反复应用一次完整变换会迅速扩大首个相等块；对长度不超过 $10^5$ 的数组，至多应用 $6$ 次后数组稳定，从而只需处理常数次变换。",
+          "每个前缀的字典序最小后缀可以由后缀数组及最长公共前缀信息维护；新元素加入时，只有与当前前缀相关的一段候选后缀会改变相对顺序。",
+          "设前缀 $c_1 ext{..}c_r$ 的最小后缀起点为 $l$，并令 $k$ 是使 $c_l ext{..}c_r$ 成为 $c_k ext{..}c_r$ 无前缀周期的最小位置，则第 $n-r+1$ 步的最小子数组起点只可能是 $l$ 或 $k$。",
+          "变换产生的后缀可表示为若干初始数组子串组成的队列；用线段树维护哈希并二分最长公共前缀，即可快速比较和拼接这些子串。"
+        ],
+        "solution_brief": "先证明至多 $6$ 次完整变换后稳定。随后用后缀数组维护各前缀的最小后缀，用周期位置将每步候选起点缩减为两个，再以子串队列、线段树哈希和二分比较模拟变换；总复杂度为 $O(n\\log^2 n\\log\\log n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，结合 statement_text 与 codeforces_tags 提炼。",
+        "quality_flags": []
+      }
+    },
+    "1621H": {
+      "problem_key": "1621H",
+      "title": "Trains and Airplanes",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1621/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/98654",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "dbcbc0b26e5e52bcf00a85e05cbdfa5500ded80fbc403711459ba9783d27ce10",
+      "generated_at": "2026-09-28T07:52:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "铁路网络是一棵以车站 $1$ 为根的带权树，游客从某个车站沿唯一路径乘车到车站 $1$；他可在任意时刻购买任意区域的票，每隔 $T$ 分钟检查一次，未持票所在区域需缴纳罚款。对每个查询给出的候选起点集合，求选择起点并合理购票后所需的最小总费用。",
+        "transformed_statement": "对起点 $v$，不再模拟每次检查，而是统计旅途中各区域被检查的次数；该区域的费用就是 $\\min(\\text{扫描次数}\\times\\text{罚款},\\text{票价})$。同一查询内只需按起点离开初始区域的时间模 $T$ 划分少量区间，因为每个区域的扫描次数只会在两个相邻值之间变化。",
+        "key_observations": [
+          "固定起点后，各区域的最优支付额彼此独立，总代价可写为各区域的 $\\min(\\text{scans}_{v,z}\\cdot fine_z,pass_z)$ 之和。",
+          "同一查询集合 $A_i$ 中任意两个起点对每个区域的扫描次数至多相差 $1$，因此不同扫描向量的数量从按顶点枚举降为至多 $O(2^k)$。",
+          "把起点离开其所属区域的时刻记为 $t\\bmod T$，每个区域的扫描次数只在一个圆周区间内取较小值；所有区间至多切出 $O(k)$ 个部分，因此每个查询只需检查至多约 $2k$ 类候选。",
+          "沿树向根跳到下一个不同区域的顶点，可计算起点的扫描基准和各区域对应区间；再对这些区间做扫描线并合并子树信息，就能在线性于 $k$ 的时间回答查询。"
+        ],
+        "solution_brief": "预处理每个顶点离开所属区域的位置、到根的时间及扫描基准。对查询集合按起点离开区域的时刻模 $T$ 划分至多 $O(k)$ 段，用区间扫描线维护各区域的最小支付额，复杂度为 $O(nk\\log k+qk)$，空间 $O(nk)$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "图论与网络流",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；核心建模、区间划分、预处理方式与复杂度依据 editorial_text；树与图相关分类参考 tags。",
+        "quality_flags": [
+          "statement_text截断，查询集合的完整定义缺失"
+        ]
+      }
+    },
+    "1621G": {
+      "problem_key": "1621G",
+      "title": "Weighted Increasing Subsequences",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1621/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/98654",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b7ed81e16065e5eadf48ae881aacfbbda1fcc4fa877dfeae8ffec62ba1bf1cf7",
+      "generated_at": "2026-09-28T07:53:31+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数序列，任选下标递增且数值严格递增的子序列。对每条子序列，统计其中有多少个元素在该子序列末尾之后还能在原序列中找到更大的数，最后求所有递增子序列权重之和。",
+        "transformed_statement": "把元素视为按 $(a_i,-i)$ 排序得到的互异排列，并按每个被选元素分别计贡献。固定元素后，用其右侧临界后缀最大值划分可贡献与不可贡献的子序列，再转化为三类递增子序列计数。",
+        "key_observations": [
+          "将每个元素替换为二元组 $(a_i,-i)$ 后，严格递增关系保持不变且所有元素互异，因此可按排列处理重复值。",
+          "若递增子序列中的某个元素能被权重计入，则它之前选取的所有元素也必然能计入，所以每条子序列的有效元素构成前缀。",
+          "固定元素 $a_i$ 后，取其右侧第一个值大于 $a_i$ 的后缀最大值位置 $x$；包含 $a_i$ 的子序列中，只有恰好以 $x$ 结尾的子序列不贡献该元素。",
+          "包含 $a_i$ 的递增子序列数等于以它结尾的数量与以它开头的数量之积；再减去从 $a_i$ 开始并以临界位置 $x$ 结束的数量即可得到其总贡献。"
+        ],
+        "solution_brief": "先求每个位置右侧的临界后缀最大值，再用递推统计以每个元素结尾、以其开头及连接到临界位置的递增子序列数。用坐标压缩和树状数组将这些计数合并，所有贡献相加，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，以及 data structures、dp、math 标签；核心计数与树状数组优化来自 editorial。",
+        "quality_flags": []
+      }
+    },
+    "1621F": {
+      "problem_key": "1621F",
+      "title": "Strange Instructions",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1621/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/98654",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b0d3cf2713c1e33858f12b8b9eb2cdf30961d30d99c308ce096626f5bd77c262",
+      "generated_at": "2026-09-28T07:53:51+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定二进制串，可反复把子串 00 合并为 0 获得 $a$，把 11 合并为 1 获得 $b$，或删除任意一个 0 并支付 $c$。操作编号为 1、2、3，连续两次操作的编号奇偶性不能相同，求遵守规则时的最大收益。",
+        "transformed_statement": "把字符串压缩为交替的 0/1 连续块：操作 2 消耗一个可合并的 1，操作 1 消耗块中的 0，操作 3 删除 0 并可能合并相邻的 1 块。问题转化为在奇偶交替约束下，按块的位置和长度选择两类删除操作。",
+        "key_observations": [
+          "由于操作 1、3 编号同为奇数而操作 2 为偶数，合法序列必须在“操作 1 或 3”和操作 2之间交替。",
+          "所有操作 2 对后续结构等价，只需维护其可执行次数；该次数等于当前 1 的数量减去 1 块的数量，操作 2 使其减一，删除中间 0 块的操作 3 可使其加一。",
+          "删除中间 0 块会合并两侧的 1 块，因此比删除端点 0 块更有利；当没有操作 2 时，只有删除中间块才能继续交替。",
+          "若仍有操作 2，应优先从最短的中间 0 块执行操作 1，以尽量制造长度为 1 的块；操作 1 在操作 3 之后至多需要作为最后一步出现。"
+        ],
+        "solution_brief": "按 0/1 连续段维护字符串，固定第一步的奇偶性并模拟。轮到操作 2 时只要仍可执行就进行；轮到奇数操作时，依据操作 2 是否可用，按“中间块操作 1、端点操作 1、中间块操作 3、端点操作 3”的优先级选择，并在每步更新收益。用排序维护块长，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 data structures、greedy、implementation 标签。",
+        "quality_flags": []
+      }
+    },
+    "1621E": {
+      "problem_key": "1621E",
+      "title": "New School",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1621/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/98654",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9cd5f1c51ab47a19c3b89d62c0985f288bf218803b221e5cdec5e6f7125e2d2f",
+      "generated_at": "2026-09-28T07:54:12+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 名教师和 $m$ 组学生，每组必须分配一名不同教师，且该组学生平均年龄不能超过教师年龄。恰有一名学生拒学、其所在组人数减少一人；需要对每名学生判断删除他后是否仍能完成合法分配。",
+        "transformed_statement": "把分配问题重述为：将教师年龄和各组平均年龄降序排列后，检查每个组是否能与同排名教师匹配。删除一个学生只产生一个新的组平均年龄，因此问题转化为该值插入有序序列后，受影响位置比较条件是否仍全部成立。",
+        "key_observations": [
+          "将所有组的平均年龄与教师年龄分别降序排列后，可行当且仅当第 $i$ 个组的平均年龄不超过第 $i$ 个教师年龄；这是由最严格的前缀匹配条件保证的。",
+          "拒绝某名学生只会改变其所在组的平均年龄，该组在排序中的位置移动后，中间各组整体向原位置方向移动一格。",
+          "删除学生后的新平均年龄确定后，可用二分查找其在有序平均年龄中的新位置；位置未变化的组直接比较，移动区间只需比较相邻位置的配对关系。",
+          "把所有固定位置的比较和移动区间的比较预处理为前缀信息，就能在每个学生的询问中快速判断，而不必重新匹配全部教师。"
+        ],
+        "solution_brief": "先将教师年龄和各组平均年龄降序排列，用逐位比较判断当前匹配是否可行。对每名学生计算删除后的组平均年龄，二分其新排名，并结合前缀信息检查未移动位置及移动区间的约束。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 的排序匹配、位置移动、二分和前缀和方法，并结合 statement_text 的分组与删除规则；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1621D": {
+      "problem_key": "1621D",
+      "title": "The Winter Hike",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1621/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/98654",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "263dde384e299ad47e536ad83448bd20882973c6f12fb4478d9a30c702306d82",
+      "generated_at": "2026-09-28T07:54:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $2n\\times2n$ 的环形网格，朋友初始占据左上角 $n\\times n$ 区域；每次可让整行或整列的所有朋友循环移动一格，经过有积雪的格子前需付费清除积雪。要求安排移动，使朋友最终恰好占据右下角 $n\\times n$ 区域，并最小化清雪总代价。",
+        "transformed_statement": "把问题分成必须清除的右下目标区域和负责打通初始区域到目标区域的一个边界入口：目标区域全部计入固定代价，只需在 8 个由四个角点首次移动可能到达的边界格子中选择一个作为额外入口。",
+        "key_observations": [
+          "右下角的 $n\\times n$ 个格子最终各需站一名朋友，因此这些格子的积雪无论如何都必须清除，代价固定为它们的代价总和。",
+          "四个角点朋友第一次受到影响时，只可能进入题解列出的 8 个边界格子；因此至少还要清除其中一个格子，额外代价下界是这 8 个格子的最小代价。",
+          "清除 $(n,n+1)$ 后，交替将第 $n$ 行右移和第 $n+1$ 列下移共 $2n$ 次，再分别移动右下区域右移、左上区域下移，即可把朋友逐步送入目标区域；其他 7 个候选格子对称。",
+          "完成一批朋友的转移后，剩余布局保持同样结构，可以重复该操作序列，因此清除右下区域加一个最便宜边界格子就足以完成全部转移。"
+        ],
+        "solution_brief": "答案为右下角 $n\\times n$ 区域所有格子的代价总和，再加上 8 个候选边界格子中的最小代价。必要性来自最终占位和四个角点的首次移动，充分性由交替移动边界行列并递归处理剩余朋友构造。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟",
+          "几何"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据statement_text，代价模型、必要性分析与构造依据editorial_text，主题参考tags。",
+        "quality_flags": [
+          "statement_text截断，操作定义和代价说明部分缺失；依据editorial补足题意"
+        ]
+      }
+    },
+    "1621C": {
+      "problem_key": "1621C",
+      "title": "Hidden Permutations",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1621/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/98654",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "48af58df028cc5d2411fb306cc8df52ec5ca134dfa3ba96032845650916630ee",
+      "generated_at": "2026-09-28T07:54:56+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "评测机有一个未知的长度为 $n$ 的置换 $p$，并维护初始为恒等置换的 $q$。每次查询某个 $q_i$ 后，先返回该值，再把整个数组更新为 $q'_i=q_{p_i}$；最多查询 $2n$ 次，最终输出完整的 $p$。",
+        "transformed_statement": "把重复查询固定位置看成沿置换 $p$ 反复跳转：返回值依次是该位置所在环上的元素。于是问题转化为从若干个未访问起点恢复置换的所有环。",
+        "key_observations": [
+          "固定查询位置 $i$ 时，经过 $k$ 次整体更新后得到的值是 $p^k_i$，因此重复查询同一位置会依次暴露其在置换中的轨道。",
+          "一个环上的轨道会依次访问该环的所有元素，且序列中元素 $x$ 的下一个值恰好是 $p_x$，所以可直接恢复整个环的映射。",
+          "发现轨道回到起点后即可结束该环；长度为 $len$ 的环使用 $len+1$ 次查询，所有环总计 $n+$环数次，不超过 $2n$。"
+        ],
+        "solution_brief": "从每个尚未确定的位置开始反复查询，记录其轨道；查询值回到起点时停止，并令轨道中每个元素的后继为其 $p$ 值。所有环处理完即可恢复置换，查询总数为 $n+$环数。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "图论与网络流",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的交互规则、操作限制，以及 editorial_text 对置换环轨道查询方法的说明；tags 用于主题归类。",
+        "quality_flags": [
+          "statement_truncated"
+        ]
+      }
+    },
+    "1621B": {
+      "problem_key": "1621B",
+      "title": "Integers Shop",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1621/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/98654",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7bec4f182d44bcddea0857fd051be6c9b6a9730299a7a98fcae48f652342ea97",
+      "generated_at": "2026-09-28T07:55:22+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "商店按顺序提供若干带费用的整数区间，只能购买当前前缀中的区间；购买后，所有已购区间覆盖的整数以及位于已购最小整数和最大整数之间的未购整数都会获得。对每个前缀，求获得整数数量最多时的最低花费。",
+        "transformed_statement": "把每个前缀抽象为需要覆盖的整体区间：其左端是所有可用区间的最小左端点，右端是最大右端点。可用一个最长区间直接覆盖，或用分别包含这两个端点的两个区间共同覆盖，比较两种费用即可。",
+        "key_observations": [
+          "最终能获得的整数必然构成从已购最小值到最大值的完整区间，因此最大覆盖范围由当前前缀中的最小左端点和最大右端点决定。",
+          "要覆盖当前最小左端点和最大右端点，可以分别选择包含它们的最便宜区间；两者的费用之和给出覆盖全局范围的一种方案。",
+          "若单个区间本身覆盖范围最大，则直接购买它可能更便宜；因此只需比较最长区间的最低费用与两端区间费用之和。",
+          "加入新区间时，最小左端点、最大右端点、最长区间及对应最低费用都只会被新区间更新，从而可在线性时间维护答案。"
+        ],
+        "solution_brief": "对每个前缀维护最小左端点及其最小费用、最大右端点及其最小费用，以及最长区间的长度和最小费用。答案是购买最长区间的费用与分别覆盖两端的费用之和的较小值；每加入一个区间只需更新这些信息。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 data structures、greedy、implementation 标签整理。",
+        "quality_flags": []
+      }
+    },
+    "1621A": {
+      "problem_key": "1621A",
+      "title": "Stable Arrangement of Rooks",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1621/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/98654",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d9b4937a2f550d6416a6a854aba6e029ae986cb80eb427e49ce7176008785a4b",
+      "generated_at": "2026-09-28T07:56:00+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "在 $n\\times n$ 棋盘上放置 $k$ 个车，初始要求任意两车不在同一行或同一列。若把任一车沿共享边移动一格后会产生同行或同列冲突，则布局稳定；请构造稳定布局，否则输出 $-1$。",
+        "transformed_statement": "稳定性的等价条件是：任意两车既不能处于相邻行，也不能处于相邻列。于是问题转化为在行列坐标中选出 $k$ 个互不重复且相邻距离至少为 $2$ 的位置，并给出一种构造。",
+        "key_observations": [
+          "若两车位于相邻行，沿行方向移动其中一车即可与另一车同行而产生冲突，因此稳定布局中任意两车的行号不能相邻；列号同理。",
+          "把行按 $(1,2)、(3,4)$ 等分组，每组至多放一车，所以稳定布局最多有 $\\lceil n/2\\rceil=\\lfloor(n+1)/2\\rfloor$ 车。",
+          "当 $k\\le\\lfloor(n+1)/2\\rfloor$ 时，将车放在 $(1,1),(3,3),\\ldots,(2k-1,2k-1)$；任意一步移动都会进入空行或空列，布局仍不会产生攻击。"
+        ],
+        "solution_brief": "稳定布局存在当且仅当 $k\\le\\lfloor(n+1)/2\\rfloor$。超过上限输出 $-1$，否则依次在 $(2i-1,2i-1)$ 放置车即可。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则与完整 editorial，tags 仅用于确认构造题属性。",
         "quality_flags": []
       }
     }
