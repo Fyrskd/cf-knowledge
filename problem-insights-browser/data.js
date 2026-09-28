@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3803,
+    "total_problems": 3809,
     "source_total_problems": 3811,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3803,
-    "with_editorial_brief": 3487,
-    "with_solution_brief": 3489,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3809,
+    "with_editorial_brief": 3493,
+    "with_solution_brief": 3495,
     "missing_editorial_brief": 314,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2865,
+    "ai_override_count": 2871,
     "primary_topic_count": 13,
-    "contest_count": 589,
+    "contest_count": 590,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1236,
-    "基础实现与模拟": 237,
+    "基础实现与模拟": 239,
+    "构造与贪心": 1237,
+    "组合计数与概率": 290,
+    "数据结构": 363,
+    "动态规划与状态设计": 312,
     "树结构": 183,
-    "动态规划与状态设计": 311,
-    "数据结构": 362,
     "数论与同余": 402,
     "图论与网络流": 247,
-    "组合计数与概率": 289,
     "交互": 110,
     "字符串": 199,
     "几何": 90,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2512,
+    "ai_generated_with_editorial": 2518,
     "missing_editorial": 314,
     "ai_generated_partial_editorial": 84,
     "low_confidence": 1,
@@ -117206,6 +117206,189 @@ window.CF_INSIGHTS_DATA = {
             "每个分组内只需找出若干元素使异或等于目标值：高斯消元生成不同大小的可行子集，再用按分组的大小 DP 恰好凑出 $n$ 个元素。"
           ],
           "solutionBrief": "按不同质因子集合分组，只查询非空分组代表；用异或容斥恢复各组目标异或。对每组通过高斯消元构造满足目标的候选子集，再用大小 DP 选出总数为 $n$ 的集合。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1569,
+      "name": "Educational Codeforces Round 113 (Rated for Div. 2)",
+      "date": "2021-09-08",
+      "url": "https://codeforces.com/contest/1569",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1569A",
+          "index": "A",
+          "slot": "A",
+          "title": "Balanced Substring",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1569/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/94721",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个只含 `a` 和 `b` 的字符串，需要找出一个非空连续子串，使其中 `a` 与 `b` 的数量相等；输出其左右端点。若不存在这样的子串，输出 `-1 -1`。",
+          "transformedStatement": "将“寻找任意平衡连续区间”缩小为寻找一对相邻且不同的字符：`ab` 或 `ba` 已经是满足条件的长度为 $2$ 的区间，因此只需在线性扫描中检查所有相邻字符对。",
+          "keyObservations": [
+            "任何平衡子串都必须同时含有至少一个 `a` 和一个 `b`，因此其中必然存在一对相邻且不同的字符。",
+            "相邻的 `ab` 或 `ba` 本身就是长度为 $2$ 的平衡子串，所以找到任意相邻异字符即可，不必继续检查更长区间。",
+            "若所有相邻字符都相同，则整个字符串只有一种字符，不可能存在平衡子串；线性扫描即可完成判定。"
+          ],
+          "solutionBrief": "逐个检查相邻字符对；若发现 `s[i] != s[i+1]`，输出这两个位置，因为它们构成平衡子串。若不存在这样的相邻对，输出 `-1 -1`。每组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1569B",
+          "index": "B",
+          "slot": "B",
+          "title": "Chess Tournament",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1569/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/94721",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "有 $n$ 名选手进行两两一场的比赛，结果可以是一方胜另一方负，或双方和棋。类型 1 选手不能输，类型 2 选手需要至少赢一场；请判断能否安排所有比赛，并在可行时输出任意一种结果矩阵。",
+          "transformedStatement": "把所有涉及类型 1 的比赛固定为和棋后，问题等价于：仅在类型 2 选手之间安排比赛，使每人至少有一场胜利；这可转化为在这些选手上构造一个有向环。",
+          "keyObservations": [
+            "类型 1 的选手不能输，因此涉及类型 1 的所有比赛统一设为和棋，既不会伤害类型 1，也不会让类型 2 获得额外约束。",
+            "类型 2 的选手必须至少赢一场，所以只需处理类型 2 之间的比赛；让它们形成一个有向环即可保证每人恰好获得一胜。",
+            "类型 2 选手数量为 1 或 2 时无法让每人都获胜：一个人没有对手，两个玩家也不可能同时赢同一场比赛；数量至少为 3 时环形构造可行。"
+          ],
+          "solutionBrief": "先将所有涉及类型 1 的比赛设为和棋。若类型 2 不足 3 人则输出 NO；否则按任意顺序让相邻类型 2 选手依次获胜，并让最后一人战胜第一人，其余比赛和棋。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1569C",
+          "index": "C",
+          "slot": "C",
+          "title": "Jury Meeting",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1569/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/94721",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "给定每位成员准备的任务数，先确定成员的排列顺序，再按该顺序逐轮描述任务；每位仍有任务的成员每轮描述一个。若没有成员连续描述自己准备的两个或更多任务，则排列称为合法，求合法排列数量并对 $998244353$ 取模。",
+          "transformedStatement": "把排列按任务数的最大值分类：最大值重复时所有排列合法；最大值唯一时，只需判断最大值成员与任务数等于最大值减一的成员之间的相对位置，并通过计算坏排列数得到答案。",
+          "keyObservations": [
+            "若最大值至少出现两次，则最后一轮不会只有一个成员发言，因此任意排列都满足条件，答案是 $n!$。",
+            "最大值唯一时，设其位置为 $x$；在第 $a_x$ 轮只有成员 $x$ 还有任务，因此前一轮必须有成员排在 $x$ 后面发言，否则会连续发言。",
+            "令 $k$ 为满足 $a_i=a_x-1$ 的成员数，坏排列恰好是这 $k+1$ 个关键成员中最大值成员排在最后的排列，数量为 $n!/(k+1)$。"
+          ],
+          "solutionBrief": "统计最大值的出现次数。若最大值不唯一，答案为 $n!$；否则令 $k$ 为等于最大值减一的元素个数，答案为 $n!-n!/(k+1)$。预处理阶乘，并用模逆元计算除法。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1569D",
+          "index": "D",
+          "slot": "D",
+          "title": "Inconvenient Pairs",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1569/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/94721",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "implementation",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "城市由整条贯穿网格的竖直街道和水平街道组成，所有人都位于至少一条街上。两人只能沿街行走；若两点间最短街道路程严格大于曼哈顿距离，则称为不便 זוג，要求统计所有不便 זוג 的数量。",
+          "transformedStatement": "把每个人放入由其相邻街道围成的横向、纵向开区间中：若另一人落入任一对应开区间，就会产生额外绕行。由于每个点至少在一条街上，两个方向的条件不会同时成立，可分别统计区间内的点对。",
+          "keyObservations": [
+            "对每个人取其左右相邻竖街与上下相邻横街；另一点若落入对应开区间，就必然要先绕到边界街，路径长度超过曼哈顿距离。",
+            "每个人位于至少一条街上，因此两个坐标方向的相邻街区间至少有一个退化；另一点不可能同时落入两个开区间，所以竖直和水平方向的坏对可以独立计数。",
+            "按一个坐标排序并按同街坐标分组，先查询整组再更新，能排除两人位于同一条该方向街道时不应计入的情况。",
+            "将点按另一坐标相邻街道之间的区间分类；查询某点所在开区间对应的计数桶，就能在线性维护中统计此前落入该区间的点。"
+          ],
+          "solutionBrief": "对每个点用二分找到相邻的横、竖街道。分别按横坐标、纵坐标排序并按同街分组，组内先查询、后更新区间计数桶；查询到的开区间点数累加答案。总复杂度为 $O(n+m+k(\\log k+\\log n+\\log m))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1569E",
+          "index": "E",
+          "slot": "E",
+          "title": "Playoff Restoration",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1569/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/94721",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "hashing",
+            "implementation",
+            "meet-in-the-middle"
+          ],
+          "statementBrief": "有 $2^k$ 支球队按固定淘汰赛树比赛：每轮相邻胜者继续对阵，输者按被淘汰的轮次获得名次，最终冠军为第 1 名。已知 $k$、整数 $A$ 以及哈希值 $h=\\sum i\\cdot A^{p_i}\\bmod 998244353$，需要恢复任意一份符合哈希的球队名次，若不存在则报告无解。",
+          "transformedStatement": "把每场比赛的胜负视为二进制选择；当 $k=5$ 时切成两棵包含 16 支球队的子树，分别计算两边对总哈希的贡献，再通过模意义下的两数配对合并，并枚举决赛胜负关系。",
+          "keyObservations": [
+            "当 $k<5$ 时，全部 $2^k-1$ 场比赛各自只有两种结果，直接枚举所有比赛结果即可覆盖全部合法名次表。",
+            "当 $k=5$ 时，将球队分为 $1..16$ 与 $17..32$ 两组；每组内部有 $15$ 场比赛，因此可分别枚举 $2^{15}$ 种结果，避免枚举全场比赛。",
+            "固定决赛胜者后，一组内部的比赛结果会唯一决定该组所有球队的最终名次及贡献 $h_i$，所以可将每种结果映射为可达的组哈希值。",
+            "枚举第二组结果得到 $h_2$ 后，只需查找是否存在 $h_1$ 满足 $(h_1+h_2)\\bmod 998244353=h$；分别处理第一组或第二组赢得决赛的两种情况即可。"
+          ],
+          "solutionBrief": "枚举所有比赛结果；$k=5$ 时按前后两组各自枚举 $2^{15}$ 种结果，记录一组可达的哈希值，再用模逆向匹配另一组，并分别尝试两种决赛胜者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1569F",
+          "index": "F",
+          "slot": "F",
+          "title": "Palindromic Hamiltonian Path",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1569/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/94721",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "字符串",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "hashing"
+          ],
+          "statementBrief": "给定一个有 $n$ 个顶点的简单无向图（$n$ 为偶数），要给每个顶点标上前 $k$ 个字母之一。若存在一条访问每个顶点恰好一次的路径，使沿路径读出的字母串为回文串，则该标号方案为 good；求 good 字符串的数量。",
+          "transformedStatement": "将一个标号方案按字母首次出现顺序规范化为若干相同字母分组；由于回文路径从两端配对顶点，每组大小必须为偶数。问题转化为：能否把各组拆成顶点对，并按某种顺序排列，使相邻两对之间存在同向或交叉的边连接。",
+          "keyObservations": [
+            "长度为偶数的回文要求每种字母出现偶数次，因此只需枚举规范化的偶数大小分组，而不必枚举全部 $k^n$ 个字符串。",
+            "把每个偶数大小字母组拆成若干对后，回文路径等价于依次经过这些顶点对；相邻两对必须同时满足同向或交叉的两条图边。",
+            "固定一种配对后，用“已访问的顶点对集合+最后一对”描述状态，即可判断是否存在经过全部配对的路径。",
+            "大小至少为 $4$ 的字母组可拆出一个包含其首元素的二元组，再递归处理剩余部分，从配对状态向一般偶数分组状态传播结果。"
+          ],
+          "solutionBrief": "先枚举字母首次出现顺序规范化后的偶数分组。对每个分组枚举其拆成二元组的方式，并以已用二元组集合和末对做哈密顿路径 DP；再通过拆出二元组的递推，把配对结果传播到原分组。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
