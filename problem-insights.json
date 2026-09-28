@@ -15,19 +15,403 @@
     ]
   },
   "summary": {
-    "total_problems": 3382,
+    "total_problems": 3391,
     "source_total_problems": 3394,
-    "filtered_out_problems": 12,
-    "with_statement_brief": 3382,
-    "with_editorial_brief": 3096,
-    "with_solution_brief": 3098,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3391,
+    "with_editorial_brief": 3105,
+    "with_solution_brief": 3107,
     "missing_editorial_brief": 284,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2444,
+    "ai_override_count": 2453,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1656A",
+      "contest_id": 1656,
+      "title": "Good Pairs",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1656/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/101211",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "给定一个正整数数组，选择两个下标 $i,j$（允许相等），要求对每个下标 $k$ 都满足 $|a_i-a_k|+|a_k-a_j|=|a_i-a_j|$。输出任意一对满足条件的下标。",
+      "transformed_statement": "把条件视为实数轴上的三点取等：对每个 $a_k$，它必须位于端点值 $a_i$ 与 $a_j$ 之间。因此将数组最小值和最大值作为两个端点即可覆盖所有元素。",
+      "key_observations": [
+        "绝对值三角不等式取等，当且仅当中间数位于两端数之间；因此只需让所有数组元素都落在端点区间内。",
+        "取数组最大值和最小值对应的下标作为两端，则任意元素都夹在二者之间，等式可直接展开为 $a_i-a_k+a_k-a_j=a_i-a_j$。"
+      ],
+      "solution_brief": "遍历数组找到最大值下标和最小值下标，输出这两个下标。所有元素都位于最小值与最大值之间，所以它们构成合法 good pair。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:36:08+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1656B",
+      "contest_id": 1656,
+      "title": "Subtract Operation",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1656/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/101211",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "data structures",
+        "greedy",
+        "math",
+        "two pointers"
+      ],
+      "statement_brief": "给定一个整数列表和正整数 $k$。每次选择并删除一个元素 $x$，再把 $x$ 从所有剩余元素中减去；重复 $n-1$ 次后只剩一个数，判断能否让它等于 $k$。",
+      "transformed_statement": "不再枚举删除顺序，而将最终结果建模为两个原数组元素的有序差值：留下的元素减去最后删除的元素。问题因此转化为判断数组中是否存在差值恰为 $k$ 的一对元素。",
+      "key_observations": [
+        "删除元素 $a_j$ 后，其他元素都可表示为原值与 $a_j$ 的差，之前的减法会在差值中抵消，因此复杂操作序列可压缩为原数组中的一对元素。",
+        "最终留下的元素等于其原始值减去最后一次被删除元素的原始值，所以只需判断是否存在两个元素满足 $a_i-a_j=k$。",
+        "将数组排序后，固定较小值时差值随较大值单调变化，双指针即可在线性扫描中判断是否存在目标差值。"
+      ],
+      "solution_brief": "把操作序列等价转化为寻找两个数组元素的差值 $k$。每组数据排序后用双指针检查是否存在 $a_i-a_j=k$，找到则输出 YES，否则输出 NO，复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:35:58+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1656C",
+      "contest_id": 1656,
+      "title": "Make Equal With Mod",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1656/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/101211",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math",
+        "number theory",
+        "sortings"
+      ],
+      "statement_brief": "给定一个非负整数数组，每次可选择任意整数 $x\\ge2$，并将所有元素同时替换为对 $x$ 取模的余数；可操作任意次或不操作，判断能否使所有元素相等。",
+      "transformed_statement": "题解将问题归结为数组中是否出现 $1$ 以及是否存在相邻整数：不含 $1$ 时构造全零，含 $1$ 且无相邻数时构造全一，而两者同时出现时不可行。",
+      "key_observations": [
+        "数组中没有 $1$ 时，反复取当前最大值作为模数，会只把最大值变为 $0$，最终所有元素都能变成 $0$。",
+        "数组含有 $1$ 且不存在相邻整数时，反复取最大值减一作为模数，可逐步把最大值变为 $1$，其他元素保持不变，最终全为 $1$。",
+        "若数组含有 $1$ 以及某对相邻数 $m,m+1$，最终公共值只能是 $1$；为避免产生 $0$，模数不能整除任何正数，而这无法消除该相邻对的差异，因此答案为 NO。"
+      ],
+      "solution_brief": "检查数组是否含有 $1$ 以及是否存在相邻整数。没有 $1$ 时答案必为 YES；含有 $1$ 时，存在相邻整数则为 NO，否则为 YES。排序后扫描相邻元素即可完成判断。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:35:40+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1656D",
+      "contest_id": 1656,
+      "title": "K-good",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1656/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/101211",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定正整数 $n$，要选一个 $k\\ge2$，把 $n$ 表示成 $k$ 个正整数之和，并要求这 $k$ 个数除以 $k$ 后得到两两不同的余数。输出任意满足条件的 $k$；若不存在则输出 $-1$。",
+      "transformed_statement": "把问题转化为判断整数 $k$ 是否同时满足 $n\\ge k(k+1)/2$ 且 $n\\equiv k(k+1)/2\\pmod{k}$：从 $1,2,\\dots,k$ 出发，只需把某项增加若干个 $k$，即可构造所有这类总和。",
+      "key_observations": [
+        "不同余数必然覆盖模 $k$ 的全部剩余类，因此最小总和为 $1+2+\\dots+k=k(k+1)/2$；在任意一项上反复增加 $k$，可得到所有满足同余条件且不小于该总和的 $n$。",
+        "当 $k$ 为偶数时，同余条件等价于 $k$ 整除 $2n$ 但不整除 $n$；满足该条件的最小候选是 $k_1=2^{\\nu_2(n)+1}$，只需先检查其三角和是否不超过 $n$。",
+        "若 $k_1$ 不满足大小条件，令 $k_2=2n/k_1$；它是奇数且为 $n$ 的因子，并由 $k_1(k_1+1)>2n$ 可得 $k_2\\le k_1-1$，从而 $k_2(k_2+1)/2\\le n$，必然可行。",
+        "若 $k_2=1$，则 $n$ 是 $2$ 的幂；此时唯一可能的奇数候选为 $1$，而最小偶数候选 $k_1=2n$ 也不满足大小条件，因此不存在合法的 $k$。"
+      ],
+      "solution_brief": "利用可行性等价条件筛选候选：先取不整除 $n$ 的最小二次幂 $k_1$，若三角和不超过 $n$ 则输出它；否则输出 $k_2=2n/k_1$，但 $k_2=1$ 时输出 $-1$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:35:13+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1656E",
+      "contest_id": 1656,
+      "title": "Equal Tree Sums",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1656/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/101211",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "树结构"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "math",
+        "trees"
+      ],
+      "statement_brief": "给定一棵无根无向树，为每个顶点赋一个范围内的非零整数权值。删除任意一个顶点后，要求剩余每个连通分量的权值总和都相同，构造任意满足条件的赋值。",
+      "transformed_statement": "将树二染色，并把每个顶点的权值设为其度数乘以颜色符号。把连通分量中的顶点度数和按边展开后，内部边的两端贡献相互抵消，只剩删除点与该分量之间的边贡献。",
+      "key_observations": [
+        "树必然可以二染色；给同一颜色统一符号后，每条边两端的符号相反，为后续逐边抵消提供基础。",
+        "令顶点权值为其度数乘以所在颜色的符号，即取 $a_v=\\pm\\deg(v)$；由于树中每个顶点度数非零，权值自动满足非零限制。",
+        "删除顶点 $u$ 后，每个剩余连通块内部的边对权值和贡献为 $+1-1=0$，只有与 $u$ 相连的那条边留下同一个符号贡献，因此所有连通块的权值和相等。"
+      ],
+      "solution_brief": "对树进行二染色，同色使用同一符号；对每个顶点 $v$ 输出 $a_v=\\deg(v)$ 或 $-\\deg(v)$。删除任意顶点后，各剩余连通块内部边的贡献两两抵消，每块只剩相同的边界贡献。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:34:50+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1656F",
+      "contest_id": 1656,
+      "title": "Parametric MST",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1656/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/101211",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "数论与同余",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "constructive algorithms",
+        "graphs",
+        "greedy",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "给定 $n$ 个数，构造完全图，并令顶点 $i,j$ 间边权为 $a_i a_j+t(a_i+a_j)$，其中 $t$ 可取任意实数。对每个 $t$ 求最小生成树费用形成的函数 $f(t)$，判断其是否有上界；有则输出最大值，否则输出 INF。",
+      "transformed_statement": "把边权改写为 $(a_i+t)(a_j+t)-t^2$。对固定 $t$，每个顶点的最优连接对象只由 $a_i+t$ 的正负决定，因此 MST 只会在 $t=-a_i$ 这些事件点改变，可转为分段线性函数扫描。",
+      "key_observations": [
+        "令 $b_i(t)=a_i+t$ 后，边权可写为 $b_i(t)b_j(t)-t^2$；固定顶点时，最优邻点只可能是排序后的最小端点或最大端点。",
+        "当 $b_i(t)$ 有正有负时，将负值顶点连到最大端点、其余顶点连到最小端点，得到包含 $n-1$ 条边的连通图，因此就是该参数下的最小生成树。",
+        "最小生成树结构只会在某个 $b_i(t)$ 变号时改变，即 $t=-a_i$；所以总费用是分段一次函数，可按排序后的断点顺序用累计和逐段更新。",
+        "通过计算两端区间的斜率即可判断 $t\\to\\pm\\infty$ 时费用是否趋于 $+\\infty$；若不会无界，则在各断点评估分段函数并取最大值。"
+      ],
+      "solution_brief": "先排序 $a_i$，用 $b_i=a_i+t$ 将最优邻点归结为两端点，构造每个区间内的 MST。事件仅发生在 $t=-a_i$，利用累计和维护费用与斜率；检查两侧无穷远的斜率后，扫描断点取最大值，否则输出 INF。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:34:26+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1656G",
+      "contest_id": 1656,
+      "title": "Cycle Palindrome",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1656/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/101211",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "图论与网络流",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "graphs",
+        "math"
+      ],
+      "statement_brief": "给定长度为 $n$ 的整数序列，需寻找一个 $n$-环置换 $sigma$，使按下标 $sigma(1),sigma(2),sigma(3),\\ldots,sigma(n)$ 取出的数列成为回文；若存在输出任意这样的置换，否则输出 NO。",
+      "transformed_statement": "把问题视为：先安排一个满足镜像位置数值相等的置换，再把其多个置换环通过保持镜像对称的后继交换逐步合并，最终得到覆盖全部下标的单一环。",
+      "key_observations": [
+        "回文排列要求每种数的出现次数均为偶数，至多一种数出现奇数次；这是忽略环约束时也必须满足的多重集合条件。",
+        "当 $n$ 为奇数时，原序列中央位置的数不能只出现一次，否则回文中心会迫使对应位置成为不允许的固定点。",
+        "先构造任意回文排列，再交换镜像位置的映射值，不会破坏回文性质，却能把包含 $i$ 与 $n-i+1$ 的两个置换环合并；并查集可维护这些环的归属。",
+        "所有环都满足镜像位置同环后，沿各环代表元重新交叉连接即可合成一个大环；奇数长度时避开中央位置作为代表元，且需保证中央所在环不是单点环。"
+      ],
+      "solution_brief": "先检查各数的奇偶计数，以及奇数长度时中央位置的数是否只出现一次。构造一个回文排列后，通过交换镜像位置的后继并用并查集合并置换环，最后重新连接所有对称环成为一个环；奇数长度时避开中央位置。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:34:05+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 8,
+      "problem_key": "1656H",
+      "contest_id": 1656,
+      "title": "Equal LCM Subsets",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1656/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/101211",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "data structures",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定两个由不同正整数构成的集合 $A$、$B$，分别从两边选取非空子集 $S_A$、$S_B$，要求两子集元素的最小公倍数相等。需要判断是否存在这样的选择；若存在，输出任意一对子集，否则输出 NO。",
+      "transformed_statement": "把“能否选出相同 LCM”转化为逐元素检查质因子幂次支配关系：用 $f(a,B)=\\gcd_{b\\in B}(a/\\gcd(a,b))$ 表示 $a$ 相对整组 $B$ 的不可匹配部分，并持续删除不可参与匹配的元素。",
+      "key_observations": [
+        "对每个 $a$ 计算相对当前 $B$ 的剩余因子 $f(a,B)=\\gcd_{b\\in B}(a/\\gcd(a,b))$；若 $f(a,B)>1$，则 $a$ 含有某个质因子幂次超过整个 $B$，因此不可能出现在合法子集中。",
+        "若所有 $a\\in A$ 和 $b\\in B$ 都满足对应剩余因子为 $1$，则两整个集合的 LCM 相等，直接取当前两集合作为答案即可。",
+        "被判定为剩余因子大于 $1$ 的元素无法参与任何合法方案，因此删除它不会损失答案；反复删除后若某集合为空则无解。",
+        "为每个元素建立另一集合上的区间 GCD 树，删除一个元素只需更新相关叶到根的路径，从而动态维护所有剩余因子。"
+      ],
+      "solution_brief": "维护每个元素相对另一集合的剩余因子。若某值大于 $1$，删除该元素；否则两边当前集合的 LCM 相等，输出全部剩余元素。用每个元素对应的区间 GCD 树支持删除后的快速更新。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:33:30+00:00",
+          "quality_flags": [
+            "editorial_notation_inconsistency"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 9,
+      "problem_key": "1656I",
+      "contest_id": 1656,
+      "title": "Neighbour Ordering",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1656/problem/I",
+      "editorial_url": "https://codeforces.com/blog/entry/101211",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "graphs"
+      ],
+      "statement_brief": "给定一个无向连通简单图，为每个顶点排列其全部邻居。要求每个简单环在这些局部邻接顺序下都具有一致的环行方向；判断是否存在这样的排列，若存在则构造任意一种。",
+      "transformed_statement": "先按双连通分量拆分问题；对单个双连通分量，合法性等价于存在一个哈密顿环，且所有非环边作为圆周弦互不交叉。找到该环后按同一圆周方向排列各顶点邻居即可。",
+      "key_observations": [
+        "不同双连通分量中的邻居相对次序不会共同影响任何简单环，因此可分别处理各分量，再任意交错合并每个顶点的分量内列表。",
+        "双连通图若存在合法邻居序，必有哈密顿环；否则最长环可通过分量外路径扩展，或形成违反环上方向一致性的结构。",
+        "DFS树中合法图的每个顶点至多有两个孩子，按代表性返祖边分组后，树边会分成若干条向上的路径，并可交替展开这些路径得到哈密顿环。",
+        "得到哈密顿环后，所有非环边必须在圆周上不相交；反之，按固定方向的圆周距离排列每个顶点的邻居即可保证所有简单环方向一致。"
+      ],
+      "solution_brief": "先分解双连通分量。对每个分量做一次DFS，利用Low值检查并划分路径，在线性时间构造候选哈密顿环；若条件失败则输出NO。再检查非环边是否相交，最后按环方向距离排序邻接表并合并各分量结果。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:32:59+00:00",
+          "quality_flags": [
+            "statement_text未完整给出good neighbour ordering的判定条件，相关含义依据editorial重述"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 10,
       "problem_key": "1658A",
