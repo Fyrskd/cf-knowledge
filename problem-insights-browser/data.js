@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3597,
+    "total_problems": 3604,
     "source_total_problems": 3606,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3597,
-    "with_editorial_brief": 3298,
-    "with_solution_brief": 3300,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3604,
+    "with_editorial_brief": 3305,
+    "with_solution_brief": 3307,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2659,
+    "ai_override_count": 2666,
     "primary_topic_count": 13,
-    "contest_count": 555,
+    "contest_count": 556,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "字符串": 189,
-    "构造与贪心": 1169,
+    "构造与贪心": 1171,
+    "基础实现与模拟": 226,
+    "数论与同余": 375,
+    "字符串": 190,
+    "数据结构": 342,
     "交互": 106,
     "树结构": 174,
     "几何": 88,
-    "数论与同余": 373,
-    "数据结构": 341,
     "动态规划与状态设计": 294,
     "组合计数与概率": 270,
-    "基础实现与模拟": 225,
     "图论与网络流": 235,
     "博弈": 108,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2334,
-    "ai_generated_partial_editorial": 73,
+    "ai_generated_with_editorial": 2340,
+    "ai_generated_partial_editorial": 74,
     "missing_editorial": 297,
     "low_confidence": 1,
     "manual_override": 891,
@@ -111011,6 +111011,213 @@ window.CF_INSIGHTS_DATA = {
             "树上给定节点对的最远距离可由各祖先处最深的两条不同来源路径之和得到，因此维护每个节点的两个最大深度即可。"
           ],
           "solutionBrief": "将交换建模为树上的移动，节点 $v$ 的父节点是“不小于 $v$ 的最小二次幂减去 $v$”。生成所有给定节点的祖先，并在每个节点维护来自不同原节点的两条最深路径，取最大路径和及对应下标。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1618,
+      "name": "Codeforces Round 760 (Div. 3)",
+      "date": "2021-12-14",
+      "url": "https://codeforces.com/contest/1618",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1618A",
+          "index": "A",
+          "slot": "A",
+          "title": "Polycarp and Sums of Subsequences",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1618/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/97927",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定三个正整数数组的全部 7 个非空子序列和，并已按非降序排列。需要恢复任意一个能产生这 7 个和的原数组；子序列按选取元素的下标区分。",
+          "transformedStatement": "利用元素为正且数组顺序可任意重排，将恢复问题规范化为 $a_1\\le a_2\\le a_3$：排序后的和数组首项、次项分别对应 $a_1,a_2$，末项对应三者总和。",
+          "keyObservations": [
+            "子序列的索引顺序不会影响各元素和，因此可将原数组重排为 $a_1\\le a_2\\le a_3$，只需恢复一个有序解。",
+            "元素均为正数时，所有非空子序列和中的最小值是 $a_1$，第二小值是 $a_2$，所以有 $b_1=a_1$、$b_2=a_2$。",
+            "最大子序列和必然选取全部三个元素，因此 $b_7=a_1+a_2+a_3$，可直接计算 $a_3=b_7-b_1-b_2$。"
+          ],
+          "solutionBrief": "将数组视为有序的 $a_1\\le a_2\\le a_3$。由于元素均为正数，$b_1,b_2$ 分别是前两个元素，最大和为总和，因此输出 $b_1,b_2,b_7-b_1-b_2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1618B",
+          "index": "B",
+          "slot": "B",
+          "title": "Missing Bigram",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1618/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/97927",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定长度为$n$的二进制字符串删除一个二元组后留下的$n-2$个相邻二元组，按原顺序排列。请构造任意长度为$n$、只含'a'和'b'的字符串，使删除其一个二元组后恰好得到输入序列。",
+          "transformedStatement": "把输入看成被删除一个节点后的相邻字符边序列：正常相邻二元组首尾相接，唯一不相接的位置暴露缺失边；若没有断点，则在序列末尾补一条边。",
+          "keyObservations": [
+            "完整大串中相邻二元组必须首尾重叠，即前者第二字符等于后者第一字符；删除一个二元组后，唯一可能的断点正表现为相邻输入二元组不重叠。",
+            "若存在断点，缺失二元组的两个字符必为断点左侧二元组的第二字符和右侧二元组的第一字符，插入后即可恢复完整二元组序列。",
+            "若所有相邻二元组都重叠，输入本身对应长度为$n-1$的连续字符串；在末尾补一个以最后字符开头的二元组即可得到长度为$n$的合法答案。",
+            "完整二元组序列确定字符串：取首个二元组的首字符，再依次追加每个二元组的第二字符，因此恢复过程只需线性扫描。"
+          ],
+          "solutionBrief": "扫描相邻二元组，寻找前者末字符与后者首字符不同的断点；找到则插入缺失二元组，否则在末尾补任意合法二元组。随后由完整二元组序列恢复字符串，复杂度为$O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1618C",
+          "index": "C",
+          "slot": "C",
+          "title": "Paint the Array",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1618/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/97927",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定一个正整数数组，选择正整数 $d$：能被 $d$ 整除的元素染红，其余染蓝。要求相邻元素颜色始终不同，输出任意可行的 $d$；若不存在则输出 $0$。",
+          "transformedStatement": "合法染色必然让奇数位置和偶数位置分别使用两种颜色。于是问题转化为：选择一个 $d$，使一组位置上的所有数都被 $d$ 整除，而另一组位置上的数都不被 $d$ 整除。",
+          "keyObservations": [
+            "相邻元素颜色不能相同，等价于奇数位和偶数位必须分别染成两种不同颜色，因此只需检查两种奇偶位分配方案。",
+            "若要求奇数位都被 $d$ 整除，则 $d$ 必须是奇数位所有数的最大公约数的约数；直接检查该最大公约数即可代表所有候选约数。",
+            "若奇数位的最大公约数整除任意偶数位元素，则它的每个约数也整除该元素，因此该方案不可能满足偶数位全部不整除。",
+            "分别以奇数位和偶数位的最大公约数作为候选并验证对侧元素，两个候选都失败时才无解。"
+          ],
+          "solutionBrief": "分别求奇数位、偶数位元素的最大公约数。若一个最大公约数不整除对侧任何元素，就输出它；两个候选都失败则输出 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1618D",
+          "index": "D",
+          "slot": "D",
+          "title": "Array and Operations",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1618/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/97927",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 个整数，必须恰好进行 $k$ 次操作；每次选择两个不同位置的元素，删除它们并将前者除以后者的向下取整值加入得分。完成所有操作后，把数组中剩余元素之和也加入得分，求可能得到的最小总分。",
+          "transformedStatement": "将数组排序后，问题等价于保留最小的 $n-2k$ 个数直接计分，并把其余数分成 $k$ 个分子—分母对，使分母为最大的 $k$ 个数、分子为其前面的 $k$ 个数，再最小化这些商的总和。",
+          "keyObservations": [
+            "最优方案必选最大的 $k$ 个数作为分母：用更大的未选元素替换较小分母不会增加任何向下取整后的商。",
+            "分母确定后，分子应选排序后紧接着的 $k$ 个较大元素；这样每个商只可能是 $0$ 或 $1$，避免为降低商而留下更大的数组元素。",
+            "此时商为 $1$ 当且仅当配对的分子与分母数值相等，因此目标转化为尽量减少相等配对；按两个区间的相同排序顺序配对即可达到最少。"
+          ],
+          "solutionBrief": "排序数组后，将最大的 $k$ 个数作为分母、其前面的 $k$ 个数作为分子，并按排序顺序配对；剩余最小的 $n-2k$ 个数直接计入答案。答案为剩余元素之和加各配对的向下取整商。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1618E",
+          "index": "E",
+          "slot": "E",
+          "title": "Singers' Tour",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1618/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/97927",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个城镇围成一圈，第 $i$ 位歌手从自己的城镇出发顺时针访问所有城镇，演出时长依次为 $a_i,2a_i,\\ldots,na_i$。给出每个城镇所有演出的总时长 $b_i$，要求构造任意一组正整数 $a_i$，若不存在则输出 NO。",
+          "transformedStatement": "把每个城镇的总时长视为 $a_i$ 的循环线性组合：先对全部方程求和得到所有 $a_i$ 的总和，再对相邻城镇方程作差，直接反推出每个变量。需要验证总和的整除性及每项的正整数性。",
+          "keyObservations": [
+            "所有城镇总时长的加权展开中，每个 $a_i$ 的系数都相同，因而可由总和直接得到 $S=\\sum a_i$。",
+            "相邻城镇的总时长之差会消去大部分项，满足 $b_i-b_{i-1}=S-na_i$，所以每个 $a_i$ 都能独立由相邻的 $b$ 值恢复。",
+            "总和必须能推出整数 $S$，且恢复出的每个 $a_i$ 必须为正整数；这些条件不满足时不存在合法序列，满足时恢复值即为答案。"
+          ],
+          "solutionBrief": "先计算 $S=\\frac{2\\sum b_i}{n(n+1)}$，检查整除性；再用 $a_i=\\frac{S-b_i+b_{i-1}}{n}$ 恢复各项，并检查是否均为正整数。整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1618F",
+          "index": "F",
+          "slot": "F",
+          "title": "Reverse",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1618/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/97927",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "dfs and similar",
+            "implementation",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定正整数 $x,y$。每次把 $x$ 写成无前导零的二进制串，在末尾补上 $0$ 或 $1$，再反转并将结果作为新的 $x$；可操作任意次，判断能否最终得到 $y$。",
+          "transformedStatement": "把一次操作后的二进制串视为稳定状态：补 $0$ 等价于反转，补 $1$ 等价于反转后在开头加一个 $1$。因此从第一次操作产生的两个串及其反转出发，只需判断目标是否是某个核心串两侧添加若干个 $1$ 后得到的结果。",
+          "keyObservations": [
+            "第一次操作后，二进制串一定以 $1$ 开头并以 $1$ 结尾，因此后续操作不会再因前导零丢失有效位。",
+            "在稳定状态下，补 $0$ 的效果等价于直接翻转二进制串，补 $1$ 的效果等价于翻转后在开头添加一个 $1$，所以状态变化具有固定形式。",
+            "所有可达串都能表示为若干个前置 $1$、一个核心串、若干个后置 $1$；核心串只需取第一次补 $0$ 或补 $1$ 得到的串及其反转，因而只需检查四类模板。",
+            "模板检查只覆盖至少进行一次操作的情况，还必须单独判断初始的 $x$ 是否已经等于 $y$，以处理零次操作。"
+          ],
+          "solutionBrief": "将 $x$ 转为二进制，分别模拟第一次补 $0$ 和补 $1$，得到两个核心串及其反转。根据后续只能反转或在反转结果前添加 $1$，检查 $y$ 是否属于四个核心模板外侧扩展出的形式，并额外判断 $x=y$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1618G",
+          "index": "G",
+          "slot": "G",
+          "title": "Trader Problem",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1618/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/97927",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dsu",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "Monocarp 有价格为 $a_i$ 的物品，对方有价格为 $b_i$ 的物品。每次可拿价格为 $x$ 的己方物品，交换对方一件价格不超过 $x+k$ 的物品，且可重复交易、使用新获得的物品；对每个独立的 $k$，求最终能拥有的物品总价最大值。",
+          "transformedStatement": "将每件物品视为按价格排列的顶点，价格差不超过 $k$ 的物品可连边；可经多次交易互换当且仅当处于同一连通区间。每个区间只需把 Monocarp 原有件数分配给其中最贵的物品。",
+          "keyObservations": [
+            "固定 $k$ 后，两件物品价格差不超过 $k$ 就能通过交易方向和中间交换实现相互转移，因此可交换性等价于它们属于同一连通分量。",
+            "按价格排序后，只需连接相邻且价格差不超过 $k$ 的物品；这些边已经足以形成完整的连通分量，且每个分量是连续区间。",
+            "一个分量内最终仍由 Monocarp 持有原先属于他的物品数量，因此最优结果是取该分量中最贵的同样数量件物品。",
+            "将所有查询按 $k$ 从小到大处理，随着阈值增大只会合并相邻区间；用并查集或区间集合维护合并，并借助两组前缀和快速求区间内最贵若干件的总价。"
+          ],
+          "solutionBrief": "把双方物品按价格排序并标记归属，按 $k$ 递增合并相邻价格差不超过 $k$ 的区间。每个区间保留其中原本属于 Monocarp 的件数，并用前缀和求最贵这些物品的总价。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
