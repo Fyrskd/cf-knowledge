@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T07:11:43+00:00",
+  "updated_at": "2026-09-28T07:16:02+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -76830,6 +76830,65 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 确定配对目标，依据完整 editorial_text 提炼补数配对和三种构造；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1629B": {
+      "problem_key": "1629B",
+      "title": "GCD Arrays",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1629/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/99276",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "426eee6f9b6a929ff60478b21d6e974a9a1a322b2ecb038548f80592ecd12193",
+      "generated_at": "2026-09-28T07:15:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定由连续整数 $l,l+1,\\ldots,r$ 组成的数组。每次可选两个元素合并为它们的乘积，最多进行 $k$ 次，判断能否使最终数组的整体 GCD 大于 $1$。",
+        "transformed_statement": "把目标转化为选择一个所有最终元素共享的质因子：含该质因子的元素作为保留核心，不含它的元素各需通过一次乘积合并接入；于是问题变为寻找区间内出现次数最多的质因子，并比较未覆盖元素数与 $k$。",
+        "key_observations": [
+          "要让整体 GCD 大于 $1$，所有元素必须共享某个质因子；固定质因子后，应把不含它的元素分别与含它的元素合并，因此最少操作数等于数组长度减去该质因子的出现次数。",
+          "连续整数区间中，质因子 $2$ 的出现次数不少于其他质因子；因此区间长度大于 $1$ 时，最优目标是让所有元素最终共享因子 $2$。",
+          "每个奇数都必须通过一次合并与偶数结合，偶数无需处理，所以最少操作数就是区间内奇数个数，即 $(r-l+1)-(\\lfloor r/2\\rfloor-\\lfloor (l-1)/2\\rfloor)$。",
+          "当 $l=r$ 时只有一个元素，除 $1$ 外其 GCD 本身就大于 $1$；因此单元素区间只需特判 $l=r=1$。"
+        ],
+        "solution_brief": "计算区间内奇数个数作为最少合并次数；若 $l=r=1$ 则必为 NO，否则当奇数个数不超过 $k$ 时输出 YES。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 中的连续整数数组与示例、editorial 中的合并和奇数计数结论，以及 tags 中的 greedy、math、number theory。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1629A": {
+      "problem_key": "1629A",
+      "title": "Download More RAM",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1629/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/99276",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "909729017e1522e66d42f2a45132eb418f67ee61d7583dbfa739a9999ab2493e",
+      "generated_at": "2026-09-28T07:16:02+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定初始内存 $k$ 和 $n$ 个软件；第 $i$ 个软件只能使用一次，运行时要求当前内存至少为 $a_i$，结束后永久增加 $b_i$。需要选择并安排可执行的软件，使最终内存最大。",
+        "transformed_statement": "把每个软件视为“内存门槛 $a_i$ 与收益 $b_i$”的任务：当前内存达到门槛即可获得收益。由于收益始终为正且门槛排序后具有单调性，只需按 $a_i$ 升序扫描并不断执行可行任务。",
+        "key_observations": [
+          "软件运行时占用的内存会归还，因此只要当前内存达到 $a_i$，使用它必然使内存永久增加 $b_i$，没有放弃的理由。",
+          "对同一组最终使用的软件，无论可行执行顺序如何，最终内存都等于初始值加上这些软件的 $b_i$ 之和，因此关键是判断哪些软件能被逐步解锁。",
+          "按所需内存 $a_i$ 从小到大处理时，当前软件若无法运行，则后续软件的需求更高，也都无法运行；因此一次扫描即可得到全部可执行软件。"
+        ],
+        "solution_brief": "将软件按所需内存 $a_i$ 升序排列，依次扫描：若当前内存足够，就执行该软件并累加 $b_i$；遇到第一个无法执行的软件即可停止，最终内存即为答案，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text，并参考 tags 中的 greedy 与 sortings。",
         "quality_flags": []
       }
     }

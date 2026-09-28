@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3506,
+    "total_problems": 3508,
     "source_total_problems": 3510,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3506,
-    "with_editorial_brief": 3207,
-    "with_solution_brief": 3209,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3508,
+    "with_editorial_brief": 3209,
+    "with_solution_brief": 3211,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2568,
+    "ai_override_count": 2570,
     "primary_topic_count": 13,
-    "contest_count": 541,
+    "contest_count": 542,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1137,
+    "构造与贪心": 1138,
+    "数论与同余": 369,
     "动态规划与状态设计": 287,
     "组合计数与概率": 265,
     "图论与网络流": 230,
     "基础实现与模拟": 219,
-    "数论与同余": 368,
     "树结构": 169,
     "数据结构": 333,
     "字符串": 183,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 106
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2246,
+    "ai_generated_with_editorial": 2248,
     "missing_editorial": 297,
     "ai_generated_partial_editorial": 70,
     "low_confidence": 1,
@@ -108160,6 +108160,72 @@ window.CF_INSIGHTS_DATA = {
             "新图是 DAG，Dilworth 定理将最大反链大小转为二分图最大匹配；若匹配数为 $M$，删除数为 $M-n$。"
           ],
           "solutionBrief": "预处理每个数的真因数并建立整除有向边，复制图并加入复制点到原点的边。对得到的两层 DAG 建二分图，用 Hopcroft–Karp 求最大匹配 $M$，答案为 $M-n$；总复杂度为 $O(n\\log n\\sqrt n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1629,
+      "name": "Codeforces Round 767 (Div. 2)",
+      "date": "2022-01-22",
+      "url": "https://codeforces.com/contest/1629",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 800,
+      "problems": [
+        {
+          "key": "1629A",
+          "index": "A",
+          "slot": "A",
+          "title": "Download More RAM",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1629/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/99276",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定初始内存 $k$ 和 $n$ 个软件；第 $i$ 个软件只能使用一次，运行时要求当前内存至少为 $a_i$，结束后永久增加 $b_i$。需要选择并安排可执行的软件，使最终内存最大。",
+          "transformedStatement": "把每个软件视为“内存门槛 $a_i$ 与收益 $b_i$”的任务：当前内存达到门槛即可获得收益。由于收益始终为正且门槛排序后具有单调性，只需按 $a_i$ 升序扫描并不断执行可行任务。",
+          "keyObservations": [
+            "软件运行时占用的内存会归还，因此只要当前内存达到 $a_i$，使用它必然使内存永久增加 $b_i$，没有放弃的理由。",
+            "对同一组最终使用的软件，无论可行执行顺序如何，最终内存都等于初始值加上这些软件的 $b_i$ 之和，因此关键是判断哪些软件能被逐步解锁。",
+            "按所需内存 $a_i$ 从小到大处理时，当前软件若无法运行，则后续软件的需求更高，也都无法运行；因此一次扫描即可得到全部可执行软件。"
+          ],
+          "solutionBrief": "将软件按所需内存 $a_i$ 升序排列，依次扫描：若当前内存足够，就执行该软件并累加 $b_i$；遇到第一个无法执行的软件即可停止，最终内存即为答案，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1629B",
+          "index": "B",
+          "slot": "B",
+          "title": "GCD Arrays",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1629/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/99276",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定由连续整数 $l,l+1,\\ldots,r$ 组成的数组。每次可选两个元素合并为它们的乘积，最多进行 $k$ 次，判断能否使最终数组的整体 GCD 大于 $1$。",
+          "transformedStatement": "把目标转化为选择一个所有最终元素共享的质因子：含该质因子的元素作为保留核心，不含它的元素各需通过一次乘积合并接入；于是问题变为寻找区间内出现次数最多的质因子，并比较未覆盖元素数与 $k$。",
+          "keyObservations": [
+            "要让整体 GCD 大于 $1$，所有元素必须共享某个质因子；固定质因子后，应把不含它的元素分别与含它的元素合并，因此最少操作数等于数组长度减去该质因子的出现次数。",
+            "连续整数区间中，质因子 $2$ 的出现次数不少于其他质因子；因此区间长度大于 $1$ 时，最优目标是让所有元素最终共享因子 $2$。",
+            "每个奇数都必须通过一次合并与偶数结合，偶数无需处理，所以最少操作数就是区间内奇数个数，即 $(r-l+1)-(\\lfloor r/2\\rfloor-\\lfloor (l-1)/2\\rfloor)$。",
+            "当 $l=r$ 时只有一个元素，除 $1$ 外其 GCD 本身就大于 $1$；因此单元素区间只需特判 $l=r=1$。"
+          ],
+          "solutionBrief": "计算区间内奇数个数作为最少合并次数；若 $l=r=1$ 则必为 NO，否则当奇数个数不超过 $k$ 时输出 YES。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
