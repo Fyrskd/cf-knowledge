@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4009,
+    "total_problems": 4017,
     "source_total_problems": 4017,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 4009,
-    "with_editorial_brief": 3664,
-    "with_solution_brief": 3666,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4017,
+    "with_editorial_brief": 3672,
+    "with_solution_brief": 3674,
     "missing_editorial_brief": 343,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3071,
+    "ai_override_count": 3079,
     "primary_topic_count": 13,
-    "contest_count": 622,
+    "contest_count": 623,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "基础实现与模拟": 248,
-    "构造与贪心": 1300,
+    "基础实现与模拟": 250,
+    "构造与贪心": 1301,
+    "数据结构": 384,
+    "组合计数与概率": 313,
+    "动态规划与状态设计": 329,
     "字符串": 217,
-    "数据结构": 382,
     "树结构": 186,
-    "组合计数与概率": 312,
     "数论与同余": 422,
     "图论与网络流": 264,
     "交互": 117,
-    "动态规划与状态设计": 327,
     "博弈": 114,
     "代数、矩阵与多项式": 26,
     "几何": 94
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2676,
-    "ai_generated_partial_editorial": 97,
+    "ai_generated_with_editorial": 2683,
+    "ai_generated_partial_editorial": 98,
     "missing_editorial": 343,
     "low_confidence": 1,
     "manual_override": 891,
@@ -123347,6 +123347,235 @@ window.CF_INSIGHTS_DATA = {
             "字符串较短而数量较多时，可枚举每个字符串的待排序区间并查找排序后的结果；为避免同一结果被多个区间重复计数，只考虑排序会改变区间首尾字符的区间。"
           ],
           "solutionBrief": "先按字符多重集分组，不同组的配对贡献为 $1337$。组内配对贡献为 $1$ 或 $2$，通过统计一次操作可达的配对数来计算；对字符串较长的组逐对检查，对字符串较短且数量较多的组则枚举排序区间并查询结果是否存在。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1523,
+      "name": "Deltix Round, Spring 2021 (open for everyone, rated, Div. 1 + Div. 2)",
+      "date": "2021-05-30",
+      "url": "https://codeforces.com/contest/1523",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1523A",
+          "index": "A",
+          "slot": "A",
+          "title": "Game of Life",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1523/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/91271",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定由 0 和 1 组成的长度为 $n$ 的数组，以及演化轮数 $m$。每轮按照题目定义的规则更新细胞状态，要求输出经过 $m$ 轮演化后的数组；但本地题面未包含具体的逐格更新规则。",
+          "transformedStatement": "将任务视为重复应用同一状态转移，直到达到第 $m$ 轮或进入不再变化的稳定状态；editorial 指出最多经过 $n$ 轮即可稳定，因此大于该界的轮数无需继续推进状态。",
+          "keyObservations": [
+            "每轮至少会新增一个存活细胞；若某轮没有新增，状态就与上一轮相同，之后也不会再变化，因此演化至多持续 $n$ 轮。",
+            "题目要求的是第 $m$ 轮状态，但过程在至多 $n$ 轮后已稳定，所以当 $m$ 更大时无需继续模拟。"
+          ],
+          "solutionBrief": "按题目规则逐轮模拟数组演化；一旦状态不再变化即可停止。最多模拟 $n$ 轮，每轮处理 $n$ 个位置，总复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1523B",
+          "index": "B",
+          "slot": "B",
+          "title": "Lord of the Values",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1523/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/91271",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定一个长度为偶数的正整数数组，可反复选取 $i<j$，执行类型 $1$ 的赋值 $(a_i,a_j)\\leftarrow(a_i-a_j,a_j)$，或类型 $2$ 的赋值 $(a_i,a_j)\\leftarrow(a_i,a_j-a_i)$。请构造不超过 $5000$ 次操作，使所有元素最终都变为原值的相反数，且每步元素绝对值不超过 $10^{18}$。",
+          "transformedStatement": "把目标拆成若干互不相交的二元子问题：只需为任意一对 $(a,b)$ 找到能同时变为 $(-a,-b)$ 的操作序列，再将该序列应用于相邻配对即可覆盖全数组。题解给出的固定序列是类型 $1,2,1,2,1,2$。",
+          "keyObservations": [
+            "对一对数 $(a,b)$ 连续执行类型 $1,2,1,2,1,2$ 后，二者恰好同时变为 $(-a,-b)$，因此可把目标转化为独立处理数对。",
+            "因为 $n$ 为偶数，按相邻下标两两配对即可覆盖所有变量；每对只需 $6$ 次操作，总操作数为 $3n$，满足上限。"
+          ],
+          "solutionBrief": "将数组按相邻位置配成数对，对每对依次输出类型 $1,2,1,2,1,2$ 的操作。该序列会把这对数同时变号，全部处理后即得到目标数组，操作总数为 $3n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1523C",
+          "index": "C",
+          "slot": "C",
+          "title": "Compression and Expansion",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1523/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/91271",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "给出一份嵌套列表中每一行编号的末级数字，原编号由点分隔的层级数字组成。需要按原顺序恢复一份合法列表：每行表示新插入的列表项，输出其完整层级编号，使各行编号的末级数字与输入一致。",
+          "transformedStatement": "把每个完整编号视为一条由根到当前项的路径，并按输入顺序恢复路径：末级为 $1$ 表示向下进入新层，末级大于 $1$ 表示回到同层前一项的路径并转到下一个兄弟项。",
+          "keyObservations": [
+            "每个编号都对应一条从根节点到当前项的路径，路径上的数字就是各层子项编号，因此只需维护当前路径。",
+            "新编号为 $1$ 时，它表示进入当前项的下一层并创建第一个子项；把 $1$ 压入路径即可得到新编号。",
+            "新编号大于 $1$ 时，当前项应是某个兄弟项；删去路径末尾直到末项为 $a_i-1$，再将其改为 $a_i$，即可恢复对应的兄弟位置。"
+          ],
+          "solutionBrief": "用栈保存当前编号路径。读入 $a_i=1$ 时压入 $1$；读入 $a_i>1$ 时弹出末尾元素，直到末项为 $a_i-1$，再将末项加一。每步输出栈中路径以点分隔后的编号；输出总长度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1523D",
+          "index": "D",
+          "slot": "D",
+          "title": "Love-Hate",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1523/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/91271",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "dp",
+            "probabilities"
+          ],
+          "statementBrief": "给定 $n$ 位朋友对 $m$ 种货币的喜好，每位朋友最多喜欢 $p$ 种。要选出一个货币子集，使至少 $\\lceil n/2\\rceil$ 位朋友喜欢其中每一种货币，并让子集大小最大；输出任意一个最大子集。",
+          "transformedStatement": "把候选答案限制在某位朋友喜欢的货币集合内：答案必为至少一位达标支持者喜好集合的子集。固定这组基准货币后，问题转化为在至多 $p$ 位的掩码空间中，找支持人数达到门槛的最大子集，并通过随机抽样寻找合适基准集合。",
+          "keyObservations": [
+            "任意可行答案都必须是至少一位目标支持者所喜欢货币集合的子集，因此随机抽取朋友作为基准，反复尝试就有极高概率覆盖到含有最优答案的基准集合。",
+            "固定基准集合后，只需保留其他朋友在该集合内喜欢的货币；基准外的货币不可能进入该基准对应的候选答案，压缩后最多只有 $p$ 个位置。",
+            "统计每种压缩掩码的人数，再对每个子集累加所有包含它的掩码人数，就能直接判断该货币子集是否得到至少一半朋友支持。"
+          ],
+          "solutionBrief": "随机抽取若干朋友作为基准集合。对每个基准，将所有朋友的喜好压缩到基准所含货币上，统计各掩码及其子集的支持人数，选出支持人数至少为 $\\lceil n/2\\rceil$ 且规模最大的子集；重复尝试以提高命中最优答案的概率。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1523E",
+          "index": "E",
+          "slot": "E",
+          "title": "Crypto Lights",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1523/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/91271",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "一排有 $n$ 盏初始熄灭的灯。每轮从尚未点亮的灯中等概率选一盏点亮；若点亮后存在长度为 $k$ 的连续区间含有多于一盏亮灯，设备就停止。求停止时亮灯数量的期望，并对 $10^9+7$ 取模。",
+          "transformedStatement": "将随机过程看作随机排列的前缀：在停止前，已点亮位置必须满足任意长度为 $k$ 的区间至多包含一盏亮灯。对每种亮灯数量统计满足该限制的位置集合，并结合其到达概率累加期望。",
+          "keyObservations": [
+            "每个仍未停止的状态由已点亮灯的位置集合决定；固定已点亮数量后，任意一个可行集合被到达的概率相同，因此可按数量统计状态，而不必逐个模拟选择顺序。",
+            "未停止要求任意两盏亮灯之间至少相隔 $k$ 个位置；把位置间距作为分组空隙计数，可将可行状态数转成组合数，从而逐个已点亮数量累计其概率贡献。"
+          ],
+          "solutionBrief": "按已点亮数量累加期望：统计仍未触发停止条件的灯位集合数，并乘上到达任一此类集合的概率。题解将可行集合数转化为组合计数，最后在模 $10^9+7$ 下计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1523F",
+          "index": "F",
+          "slot": "F",
+          "title": "Favorite Game",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1523/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/91271",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp"
+          ],
+          "statementBrief": "William 可在任意格子出生，每回合可以原地不动或向上下左右移动一格；到达某座塔时会永久激活它，之后可瞬间传送到任意已激活的塔。每个任务只能在指定回合、到达其指定地点时完成，求最多能完成多少个任务。",
+          "transformedStatement": "把任务按指定回合排序，并用已激活塔的集合表示可用的传送网络。分别记录当前位于塔时达到各任务完成数的最早时间，以及当前位于某个任务地点时的最大已完成数，再比较步行与借助已激活塔到达下一目标的时间。",
+          "keyObservations": [
+            "任务只能在指定回合完成，因此按时间排序后，转移只需检查到达目标地点的最早时间是否不晚于任务时刻。",
+            "已激活的塔始终可用；从当前位置前往新地点时，可比较直接步行与先到已激活塔再步行的方案，从而用已访问塔集合概括快速旅行能力。",
+            "到达位置既可能是塔，也可能是任务地点，所以需要分别记录“当前在某个已访问塔”与“刚完成某个任务”两类状态，才能覆盖后续移动方式。",
+            "从任意地点均可选择出生，因此可以直接在任务地点等待其时刻完成任务，或在塔的位置出生并以时间零开始塔状态。"
+          ],
+          "solutionBrief": "将任务按时刻排序，使用两类 DP：$F(mask, done)$ 表示访问塔集合为 $mask$、已完成任务数为 $done$ 且当前位于某座塔时的最早时间；$G(mask,q)$ 表示在任务 $q$ 的时刻位于其地点时最多已完成的任务数。根据直接步行或经已激活塔移动的最短距离进行转移，答案取所有 $G$ 状态的最大值。复杂度为 $O(2^N M(N+M))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1523G",
+          "index": "G",
+          "slot": "G",
+          "title": "Try Booking",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1523/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/91271",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer"
+          ],
+          "statementBrief": "接下来 $n$ 天内有 $m$ 个按到达顺序给出的租约请求，每个请求覆盖闭区间 $[l_i,r_i]$。算法会按某个参数 $x$ 决定是否接受请求，题目要求对每个 $x=1,\u0000dots,n$ 计算最终被占用的天数；但题面中决定接受与否的两个条件缺失。",
+          "transformedStatement": "对固定的 $x$，将尚未占用的日期表示为若干连续空闲段，在每段内寻找最早到达且完全包含于该段、长度至少为 $x$ 的请求；接受后把该段分成左右子段继续处理。通过二维前缀最小值查询找到最早请求，并随 $x$ 递减逐步加入符合长度条件的区间。",
+          "keyObservations": [
+            "固定参数为 $i$ 时，只需考虑长度至少为 $i$ 的租约；在同一段尚未占用的连续日期中，最早到达且完全包含于该段的租约会先被处理，之后只需递归处理它左右两侧。",
+            "对固定 $i$，被接受的区间互不重叠且长度至少为 $i$，因此接受数量至多为 $n/i$；对所有 $i$ 求和的处理规模受调和级数控制。",
+            "查询的是左端点不大于右端点的二维前缀区域最小编号，因而可用二维前缀最小值结构寻找最早可用租约；按 $i$ 从大到小处理还能只插入新满足长度条件的区间。"
+          ],
+          "solutionBrief": "依次按 $i$ 从大到小加入长度至少为 $i$ 的租约。对每个 $i$，在尚空闲的日期段中用二维区间最小值结构找最早到达且完全落在其中的租约，接受后递归处理其左右两段，并累计占用天数。题面所述接受条件有缺失，具体实现细节无法从现有文字完整核实。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1523H",
+          "index": "H",
+          "slot": "H",
+          "title": "Hopping Around the Array ",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1523/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/91271",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定数组 $a$，从位置 $i$ 可以跳到当前位置至 $i+a_i$ 之间的任一位置。每次查询给出子数组 $[l,r]$ 和预算 $k$；开始前可以删除至多 $k$ 个格子，但不能删除首尾格子，删除后其余格子重新编号，要求求从首格到末格的最少跳数。",
+          "transformedStatement": "将删除后的跳跃过程映射回原数组坐标：从位置 $i$ 跳时，删除沿途格子会使可到达的原坐标上限增加。于是问题转化为在删除预算限制下组合多次跳跃，并寻找能到达查询终点前的位置的最小跳数。",
+          "keyObservations": [
+            "从原数组位置 $i$ 出发，若在可达范围内删除了 $x$ 个格子，最远可到达的原数组位置是 $i+a_i+x$；因此删除预算可以直接转化为原坐标上的额外前进距离。",
+            "在一次跳跃中，选择可达范围内使 $a_j+j$ 最大的位置，能最大化后续可达范围；这把跳跃选择归结为区间最大值查询。",
+            "把连续 $2^t$ 次跳跃及其删除预算合并保存，可用分层 DP 组合不同阶段的预算，并快速判断能否在指定跳数内越过查询右端点。",
+            "判断能否越过右端点时，当前状态不应直接执行会越界的整段跳跃；保留该状态并继续尝试较短跳跃，才能正确寻找最少跳数。"
+          ],
+          "solutionBrief": "先用区间最大值结构为每个位置确定最优下一跳，再建立按跳数的二进制分层 DP，记录不同删除预算下可到达的状态及最远原位置。回答查询时逐层尝试跳跃，同时避免越过右端点，最后用一次跳跃到达终点并取最小跳数。题解给出的预处理复杂度为 $O(nk^2\\log n)$，每次查询为 $O(k^2\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
