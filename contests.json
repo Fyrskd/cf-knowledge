@@ -1,5 +1,16 @@
 [
   {
+    "id": 1593,
+    "name": "Codeforces Round 748 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1634135700,
+    "relativeTimeSeconds": 156461124,
+    "date": "2021-10-13"
+  },
+  {
     "id": 1583,
     "name": "Technocup 2022 - Elimination Round 1",
     "type": "CF",
