@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3926,
+    "total_problems": 3932,
     "source_total_problems": 3932,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 3926,
-    "with_editorial_brief": 3589,
-    "with_solution_brief": 3591,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3932,
+    "with_editorial_brief": 3595,
+    "with_solution_brief": 3597,
     "missing_editorial_brief": 335,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2988,
+    "ai_override_count": 2994,
     "primary_topic_count": 13,
-    "contest_count": 608,
+    "contest_count": 609,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1275,
+    "构造与贪心": 1278,
+    "组合计数与概率": 302,
+    "动态规划与状态设计": 322,
+    "图论与网络流": 257,
     "字符串": 210,
-    "组合计数与概率": 301,
-    "动态规划与状态设计": 321,
     "数论与同余": 415,
-    "图论与网络流": 256,
     "数据结构": 374,
     "树结构": 184,
     "交互": 114,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2609,
+    "ai_generated_with_editorial": 2615,
     "missing_editorial": 335,
     "ai_generated_partial_editorial": 89,
     "low_confidence": 1,
@@ -120825,6 +120825,203 @@ window.CF_INSIGHTS_DATA = {
             "固定保留元素数量时，状态只需保存 LIS 端点的最优值：一侧维护最小可能值，另一侧维护最大可能值，从而把转移条件化为数值比较和位置范围查询。"
           ],
           "solutionBrief": "将过程逆序处理，并用两类 DP 状态记录保留元素数量及 LIS 端点的最优值。按排列位置逆序扫描时，用按元素值索引的线段树维护转移所需的最小值或最大值；题解给出的平均复杂度为 $O(n^{1.5}\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1550,
+      "name": "Educational Codeforces Round 111 (Rated for Div. 2)",
+      "date": "2021-07-14",
+      "url": "https://codeforces.com/contest/1550",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1550A",
+          "index": "A",
+          "slot": "A",
+          "title": "Find The Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1550/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/92864",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $s$，要构造一个正整数数组，使元素和为 $s$。数组中每个元素要么是 $1$，要么数组内必须存在比它小 $1$ 或小 $2$ 的数；求满足条件的数组最小长度。",
+          "transformedStatement": "将问题转为求给定长度 $n$ 时能够构造的最大总和：最大值为前 $n$ 个奇数之和 $n^2$。再证明每个不小于 $(d-1)^2$ 且不超过 $d^2$ 的目标和，都能用 $d=\\lceil\\sqrt{s}\\rceil$ 个元素补足实现。",
+          "keyObservations": [
+            "用 $n$ 个元素时，可构造的最大总和为 $1+3+\u001b[?]$，即前 $n$ 个奇数之和 $n^2$，因此元素个数至少为满足 $n^2\\ge s$ 的最小整数。",
+            "令 $d=\\lceil\\sqrt{s}\\rceil$，先取 $1,3,\\ldots,2d-3$，总和为 $(d-1)^2$；剩余量在 $1$ 到 $2d-1$ 之间，可作为最后一个元素补足。",
+            "补入的数若为偶数，其前一个奇数已在数组中；若为奇数，其前两个数之一对应的奇数已在数组中，因此补足后仍满足美丽数组条件。"
+          ],
+          "solutionBrief": "答案是最小的 $n$ 使 $n^2\\ge s$，即 $\\lceil\\sqrt{s}\\rceil$。下界来自 $n$ 个元素的最大可构造和为 $n^2$；按递增奇数构造并用最后一个数补足，即可达到该界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1550B",
+          "index": "B",
+          "slot": "B",
+          "title": "Maximum Cost Deletion",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1550/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/92864",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个只含 0 和 1 的字符串。每次选择一段连续且字符相同的子串删除，并将剩余两侧按原顺序拼接；删除长度为 $l$ 的子串可得 $al+b$ 分。必须删空字符串，求最多总分。",
+          "transformedStatement": "删除过程中所有被删子串的长度总和恒为 $n$，所以只需优化删除次数：当 $b$ 非负时尽可能多次操作，当 $b$ 为负时尽可能少次操作。后者可转为根据初始连续字符块数求最少操作数。",
+          "keyObservations": [
+            "所有删除长度之和固定为 $n$，因此总分可化为 $an+bk$；参数 $a$ 不影响策略，优化只取决于操作次数 $k$ 与 $b$ 的符号。",
+            "当 $b\\ge 0$ 时，每次多一次操作都不会降低得分，因此逐个删除字符、取 $k=n$ 最优。",
+            "当 $b<0$ 时应尽量减少操作；若字符串当前有 $m$ 个连续字符块，反复删除中间块可使两侧同字符块合并，每次将块数减少 $2$，最终最少操作数为 $\\lfloor m/2\\rfloor+1$。"
+          ],
+          "solutionBrief": "总分为 $an+bk$。若 $b\\ge0$，将每个字符单独删除；若 $b<0$，统计连续字符块数 $m$，用最少的 $\\lfloor m/2\\rfloor+1$ 次操作删除整串，并代入总分公式。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1550C",
+          "index": "C",
+          "slot": "C",
+          "title": "Manhattan Subarrays",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1550/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/92864",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "geometry",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定数组 $a$，把下标为 $i$ 的元素视为平面点 $(a_i,i)$；若三点中一个点到另外两点的曼哈顿距离之和等于两端点间距离，则这三点构成坏三元组。子数组若不含任何由三个不同下标构成的坏三元组，就称为好子数组；要求统计好子数组总数。",
+          "transformedStatement": "利用下标坐标严格递增这一事实，题目可转化为统计不含长度为 $3$ 的非降或非升子序列的连续区间。又因长度至少为 $5$ 的任意序列必含此类子序列，问题进一步缩减为检查长度至多为 $4$ 的区间。",
+          "keyObservations": [
+            "曼哈顿距离满足三点共线条件当且仅当中间点落在两端点的轴对齐包围盒内；由于点的纵坐标就是下标，坏三元组只需按下标递增检查。",
+            "对下标递增的三点，纵坐标条件自动成立，坏三元组等价于中间数组值位于两端值之间，也就是出现长度为 $3$ 的非降或非升子序列。",
+            "任意长度至少为 $5$ 的序列都含有长度为 $3$ 的非降或非升子序列，因此好子数组长度最多为 $4$，计数时只需检查这些短区间。"
+          ],
+          "solutionBrief": "将坏三元组转化为数组中长度为 $3$ 的非降或非升子序列。由于长度至少为 $5$ 的区间必然含有这种三元组，只需枚举每个起点、检查长度不超过 $4$ 的子数组并统计好区间，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1550D",
+          "index": "D",
+          "slot": "D",
+          "title": "Excellent Arrays",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1550/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/92864",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "combinatorics",
+            "constructive algorithms",
+            "implementation",
+            "math",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定 $n,l,r$，考虑长度为 $n$ 的整数数组，要求每个 $a_i$ 都在区间 $[l,r]$ 内且 $a_i\\ne i$。对数组统计满足 $i<j$ 且 $a_i+a_j=i+j$ 的位置对；题目要求统计能使该位置对数量达到最大值的数组个数，并对 $10^9+7$ 取模。",
+          "transformedStatement": "把每个数组元素写成 $a_i=i+k_i$，于是有效位置对恰好来自相反的偏移量 $k_i=-k_j$。最大化位置对等价于让所有位置采用同一个非零偏移量的正、负两种方向并尽量均分；在区间约束下，问题转为对每个偏移量计算可自由选择方向的位置数及所需选择数，再累加组合数。",
+          "keyObservations": [
+            "令 $a_i=i+k_i$，则一对位置满足 $a_i+a_j=i+j$ 当且仅当 $k_i=-k_j$，因此相同绝对偏移量的元素才会互相贡献。",
+            "若有 $m$ 个位置使用同一绝对偏移量，把它们尽量均分为正、负偏移两组可得到最多的配对；把全部位置放进同一偏移量组后，最大配对数为 $\\lfloor n/2\\rfloor\\lceil n/2\\rceil$。",
+            "达到最大值时数组由 $i+k$ 与 $i-k$ 两种形式组成，且两种形式的数量尽量相等；固定 $k$ 后，只需计算哪些位置被迫采用某一方向，再从其余位置中选够所需数量。",
+            "当 $k\\le\\min(1-l,r-n)$ 时所有位置的两个方向都合法，计数与 $k$ 无关；更大的 $k$ 只有有限个会产生非零计数，因此可按偏移量逐一累加。"
+          ],
+          "solutionBrief": "最大配对数由正负偏移量尽量均分得到。枚举正整数偏移量 $k$，根据区间端点确定被迫选正向或负向的位置，再用组合数统计剩余位置的选择；小偏移量可合并计算，阶乘与逆阶乘用于组合数取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1550E",
+          "index": "E",
+          "slot": "E",
+          "title": "Stringforces",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1550/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/92864",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "dp",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个由前 $k$ 个小写字母及问号组成的长度为 $n$ 的字符串，需要把每个问号替换成这 $k$ 个字母之一。对每种字母，取字符串中仅由该字母组成的最长连续子串长度，再取这些长度的最小值，要求最大化该值。",
+          "transformedStatement": "对候选值 $x$，问题等价于判断能否为每种字母各安排一个长度为 $x$ 的连续区段，使其符合原串中固定字符的限制。固定区段顺序并依次尽早放置后，可用已安排字母的子集和所需前缀长度描述状态。",
+          "keyObservations": [
+            "若每种字母都能形成长度为 $x$ 的连续段，就也能形成长度更短的连续段，因此可行性随 $x$ 单调，答案可以二分。",
+            "固定每种字母连续段的放置顺序后，总是把下一段放在前一段之后最靠左的位置不会损失可行性；因此只需判断是否存在一种字母顺序能放下全部区段。",
+            "用子集表示已放置的字母，并记录完成该子集所需的最短前缀，便把枚举字母排列转化为子集 DP。",
+            "下一段的最早放置位置只取决于当前前缀和目标字母，与已放字母的具体顺序无关；预处理前缀与字母对应的位置后，DP 转移可在常数时间完成。"
+          ],
+          "solutionBrief": "二分答案 $x$。对每种字母预处理从各前缀之后最早可放置长度为 $x$ 连续段的位置，再用子集 DP 记录放置一组字母所需的最短前缀；若全集状态不超过字符串长度，则 $x$ 可行。题解给出的总复杂度为 $O((nk+2^k k)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1550F",
+          "index": "F",
+          "slot": "F",
+          "title": "Jumping Around",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1550/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/92864",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "dsu",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "数轴上有按坐标递增排列的 $n$ 块石头，青蛙从第 $s$ 块出发，基础跳距为 $d$。每次可向任意方向跳到距离在 $[d-k,d+k]$ 内的石头，跳跃次数不限；对每个给定的石头编号 $i$ 和范围 $k$，判断能否到达该石头。",
+          "transformedStatement": "将石头视为图的顶点，并令任意两点间的边权表示让这次跳跃合法所需的最小 $k$。查询于是变成判断 $s$ 到 $i$ 的路径是否能使最大边权不超过 $k$，其最小可能阈值由最小生成树路径上的最大边权给出。",
+          "keyObservations": [
+            "把两块石头之间的跳跃所需的最小范围记为边权 $|d-|a_u-a_v||$；固定 $k$ 时可达性就等价于只沿边权不超过 $k$ 的边连通。",
+            "两点首次连通所需的最小阈值，等于最小生成树路径上的最大边权，因此只需构造一棵最小生成树，而不必为每个查询重新搜索。",
+            "Borůvka 每轮只需为每个连通块找一条通往其他块的最轻边；寻找候选时先从有序坐标集合中暂时移除当前块，便能避免选到块内边。",
+            "每个石头的最优出边只需考察最接近 $a_i-d$ 和 $a_i+d$ 的两侧候选；按坐标扫描并维护不同连通块的候选，可将每轮找边降至线性时间。"
+          ],
+          "solutionBrief": "为每对石头建立权值为 $|d-|a_u-a_v||$ 的边，构造该完全图的最小生成树。沿以起点 $s$ 为根的树遍历，求出到各点路径上的最大边权；查询给定 $k$ 时，比较该值是否不超过 $k$。最小生成树可用 Borůvka 构造，寻找各块候选边可用有序集合，或用扫描优化。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
