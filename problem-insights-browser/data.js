@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3498,
+    "total_problems": 3500,
     "source_total_problems": 3502,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3498,
-    "with_editorial_brief": 3199,
-    "with_solution_brief": 3201,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3500,
+    "with_editorial_brief": 3201,
+    "with_solution_brief": 3203,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2560,
+    "ai_override_count": 2562,
     "primary_topic_count": 13,
-    "contest_count": 539,
+    "contest_count": 540,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,8 +44,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1135,
     "基础实现与模拟": 219,
-    "构造与贪心": 1133,
     "数论与同余": 368,
     "图论与网络流": 229,
     "树结构": 169,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 106
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2238,
+    "ai_generated_with_editorial": 2240,
     "missing_editorial": 297,
     "ai_generated_partial_editorial": 70,
     "low_confidence": 1,
@@ -107909,6 +107909,67 @@ window.CF_INSIGHTS_DATA = {
             "对每个顶点取最深的两个子树分支，若其深度为 $a_v\\ge b_v$，则它们形成的跨分支路径长度为 $a_v+b_v-2\\cdot depth_v$，可在阈值 $b_v-1$ 处更新；再做后缀最大值即可得到所有 $F_A$。"
           ],
           "solutionBrief": "以 1 为根预处理深度，并用每个顶点最深的两个子树分支在线性时间构造所有阈值下的最大距离 $F_A$。固定 $x$ 后依据 $\\lceil F_A/2\\rceil+x\\le A$ 判定可行性，结合单调性求出各个 $f(x)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1631,
+      "name": "Codeforces Round 768 (Div. 2)",
+      "date": "2022-01-27",
+      "url": "https://codeforces.com/contest/1631",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1631A",
+          "index": "A",
+          "slot": "A",
+          "title": "Min Max Swap",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1631/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/99384",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的正整数数组。每次可选择同一位置交换 $a_i$ 与 $b_i$，操作次数任意；要求最小化操作后两个数组最大值的乘积。",
+          "transformedStatement": "把每个位置看成只能在两数组间选择归属的一对数。全局最大值固定，只需让不包含它的数组的最大值最小，因此每对数都应把较小者放入该数组。",
+          "keyObservations": [
+            "所有位置的元素总 multiset 不变，因此全局最大值 $m_1$ 无法改变；答案必为 $m_1$ 乘以不含它的那个数组的最大值。",
+            "固定全局最大值所在数组后，应让另一个数组尽可能小；对每个位置把较小值放入该数组，可使其每一项都不超过其他分配方式，从而最小化其最大值。",
+            "逐位交换所有满足 $a_i>b_i$ 的位置后有 $a_i\\le b_i$，因此全局最大值位于 $b$ 中，直接计算两个数组最大值的乘积即可。"
+          ],
+          "solutionBrief": "对每个位置比较 $a_i,b_i$，若 $a_i>b_i$ 就交换，使较小值始终进入数组 $a$。最后答案为两数组最大值之积，单组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1631B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fun with Even Subarrays",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1631/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/99384",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定数组，可反复选择一个长度为 $2k$ 的连续区间，并把其右半段复制到左半段，即对 $0\\le i<k$ 设置 $a_{l+i}=a_{l+k+i}$。求使所有元素相等所需的最少操作次数。",
+          "transformedStatement": "将数组反转后，操作等价为把偶数长度区间的左半段复制到右半段；反转数组的首元素不可改变，于是问题变成用最少次复制操作，让等于首元素的前缀扩展覆盖整个数组。",
+          "keyObservations": [
+            "原数组最后一个元素在任何操作中都不会被修改，因此最终所有元素只能统一为 $a_n$；反转后即转化为让整个数组等于首元素。",
+            "在反转数组中，设前缀 $[1,x]$ 已全部等于 $b_1$，则操作区间若不能覆盖 $b_{x+1}$ 就无法扩大已匹配前缀；取区间 $[1,2x]$ 可一次把已知前缀复制到后方，使 $x$ 至少翻倍。",
+            "当 $2x>n$ 时，直接选取覆盖末尾剩余部分的偶数长度区间，把已匹配前缀复制到整个后缀即可完成数组统一。",
+            "每次遇到下一个元素不等于 $b_1$ 就计一次操作并令 $x$ 翻倍，遇到相等元素只需推进 $x$；因此无需实际修改数组即可在线性时间得到答案。"
+          ],
+          "solutionBrief": "反转数组，维护首元素相等的最长前缀长度 $x$。顺序扫描：若下一个元素相等则 $x++$，否则计一次操作并令 $x\\leftarrow 2x$；直到 $x\\ge n$，计数即为答案，复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
