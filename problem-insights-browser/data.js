@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3954,
-    "source_total_problems": 3954,
+    "total_problems": 3960,
+    "source_total_problems": 3960,
     "filtered_out_problems": 0,
-    "with_statement_brief": 3954,
+    "with_statement_brief": 3960,
     "with_editorial_brief": 3616,
     "with_solution_brief": 3618,
-    "missing_editorial_brief": 336,
+    "missing_editorial_brief": 342,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 3016,
     "primary_topic_count": 13,
-    "contest_count": 613,
+    "contest_count": 614,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 418,
+    "数据结构": 377,
+    "数论与同余": 420,
+    "组合计数与概率": 308,
     "构造与贪心": 1285,
-    "组合计数与概率": 305,
     "交互": 116,
     "基础实现与模拟": 246,
     "字符串": 211,
     "动态规划与状态设计": 323,
     "图论与网络流": 258,
     "几何": 94,
-    "数据结构": 376,
     "树结构": 184,
     "博弈": 113,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "missing_editorial": 342,
     "ai_generated_with_editorial": 2633,
     "ai_generated_partial_editorial": 92,
-    "missing_editorial": 336,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -121692,6 +121692,167 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "先利用标准超立方体的二进制邻接结构，按编号递增恢复输入图到标准图的顶点映射。若 $n$ 不是 2 的幂则输出无解；否则按二进制位异或构造标准图着色，再通过映射还原到输入图。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1542,
+      "name": "Codeforces Round 729 (Div. 2)",
+      "date": "2021-07-03",
+      "url": "https://codeforces.com/contest/1542",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1542A",
+          "index": "A",
+          "slot": "A",
+          "title": "Odd Set",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Odd Set；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1542B",
+          "index": "B",
+          "slot": "B",
+          "title": "Plus and Multiply",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Plus and Multiply；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1542C",
+          "index": "C",
+          "slot": "C",
+          "title": "Strange Function",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "博弈",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Strange Function；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1542D",
+          "index": "D",
+          "slot": "D",
+          "title": "Priority Queue",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "implementation",
+            "math",
+            "ternary search"
+          ],
+          "statementBrief": "题面已抓取：Priority Queue；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1542E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Abnormal Permutation Pairs (easy version)",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Abnormal Permutation Pairs (easy version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1542E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Abnormal Permutation Pairs (hard version)",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1542/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/92492",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Abnormal Permutation Pairs (hard version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }
