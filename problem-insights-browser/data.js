@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3630,
+    "total_problems": 3638,
     "source_total_problems": 3640,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3630,
-    "with_editorial_brief": 3324,
-    "with_solution_brief": 3326,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3638,
+    "with_editorial_brief": 3332,
+    "with_solution_brief": 3334,
     "missing_editorial_brief": 304,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2692,
+    "ai_override_count": 2700,
     "primary_topic_count": 13,
-    "contest_count": 560,
+    "contest_count": 561,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 377,
+    "数论与同余": 379,
+    "字符串": 192,
+    "图论与网络流": 237,
+    "数据结构": 346,
+    "基础实现与模拟": 231,
     "构造与贪心": 1178,
-    "基础实现与模拟": 230,
     "动态规划与状态设计": 295,
     "博弈": 110,
     "组合计数与概率": 275,
-    "图论与网络流": 236,
     "几何": 89,
-    "字符串": 191,
-    "数据结构": 343,
     "树结构": 175,
     "交互": 106,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2359,
+    "ai_generated_with_editorial": 2366,
+    "ai_generated_partial_editorial": 75,
     "missing_editorial": 304,
-    "ai_generated_partial_editorial": 74,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -111957,6 +111957,256 @@ window.CF_INSIGHTS_DATA = {
             "将容斥所需的多项式乘积用分治合并并结合 FFT 计算，可将原本的二次背包降为 $O(n\\log^2 n)$。"
           ],
           "solutionBrief": "对父子约束使用容斥。恰好选取 $k$ 条违规边的方案数是多项式 $\\prod_i(1+d_i x)$ 的系数，贡献为 $(-1)^k(n-k)!$；用分治 FFT 求出全部系数后累加。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1609,
+      "name": "Deltix Round, Autumn 2021 (open for everyone, rated, Div. 1 + Div. 2)",
+      "date": "2021-11-28",
+      "url": "https://codeforces.com/contest/1609",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1609A",
+          "index": "A",
+          "slot": "A",
+          "title": "Divide and Multiply",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1609/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/97350",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个正整数数组。每次可选一个偶数除以 $2$，并把另一个元素乘以 $2$，可进行任意次；要求求出操作后数组元素总和的最大值。",
+          "transformedStatement": "将每个数拆成奇数部分与若干个因子 $2$，操作等价于在元素之间转移这些因子 $2$；最优策略是把全部因子集中到最大的奇数部分。",
+          "keyObservations": [
+            "每次操作只转移一个因子 $2$：偶数除以 $2$，另一个数乘以 $2$，因此总共能转移的因子数等于所有元素中 $2$ 的指数总和 $k$。",
+            "把所有元素中的因子 $2$ 全部除尽后，奇数部分保持不变；最终将全部 $2^k$ 集中乘到最大的奇数部分上，可使增量最大。",
+            "由于每次转移都会减少一个元素的偶数因子而增加目标元素的因子，先统一提取因子 $2$，再选择最大剩余值即可得到最优和。"
+          ],
+          "solutionBrief": "对每个数不断除以 $2$，统计总次数 $k$，得到其奇数部分；将 $2^k$ 乘到最大的奇数部分上，其余奇数部分相加，即为最大和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1609B",
+          "index": "B",
+          "slot": "B",
+          "title": "William the Vigilant",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1609/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/97350",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定只含 a、b、c 的字符串。每次查询先把指定位置改成给定字符，然后还可继续替换任意字符；输出使字符串不含子串“abc”所需替换的最少字符数。",
+          "transformedStatement": "把目标转化为维护字符串中长度为 $3$ 的窗口“abc”的数量；由于这些出现彼此不重叠，最少替换数等于该数量，而单点修改只会改变附近至多三个窗口。",
+          "keyObservations": [
+            "任意两个“abc”子串不能重叠，因此每个出现位置至少需要一次字符替换，且分别修改其中一个字符即可全部消除。",
+            "所以当前答案恰好等于字符串中“abc”子串的出现次数，不需要搜索具体的替换方案。",
+            "修改位置 $pos$ 只会影响起点为 $pos-2$、$pos-1$ 或 $pos$ 的长度为 $3$ 的子串，其他位置的计数保持不变。",
+            "每次修改前后重新检查这至多三个窗口并更新总数，即可将单次查询降为常数时间。"
+          ],
+          "solutionBrief": "先线性统计初始字符串中“abc”的数量。每次查询只检查受修改位置影响的至多三个长度为 $3$ 的窗口，先扣除旧字符形成的出现次数，再写入新字符并加回新出现次数；维护的计数就是答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1609C",
+          "index": "C",
+          "slot": "C",
+          "title": "Complex Market Analysis",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1609/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/97350",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "implementation",
+            "number theory",
+            "schedules",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的正整数数组和步长 $e$，选择形如 $i,i+e,\u0007ldots,i+(k-1)e$ 的连续等差下标段，使其中元素乘积为质数；需要统计满足条件的有序对 $(i,k)$ 数量。",
+          "transformedStatement": "把下标按模 $e$ 分成多条链，在每条链中寻找只含一个质数、其余元素均为 $1$ 的连续子段；合数或其他非 $1$ 元素会把链切断。每个质数独立贡献其左右连续 $1$ 所产生的端点选择数。",
+          "keyObservations": [
+            "一个乘积为质数，当且仅当所选项中恰有一个质数、其余项全为 $1$；因此非 $1$ 且非质数的元素会直接阻断合法区间。",
+            "固定步长 $e$ 后，数组会分成若干条同余下标链，题目等价于在每条链中统计只含一个质数、其余全为 $1$ 的连续子段。",
+            "若某个质数左侧连续有 $L$ 个 $1$、右侧连续有 $R$ 个 $1$，以它为唯一质数的方案数为 $(L+1)(R+1)$，分别表示左右端点可停在这些 $1$ 中的任意位置。",
+            "将连续的 $1$ 按质数分组后，只需处理相邻质数之间的两组大小及边界组；遇到合数等阻断元素就结束当前分组，从而避免枚举所有区间。"
+          ],
+          "solutionBrief": "先筛出不超过 $10^6$ 的质数。对每个起点模 $e$ 相同的下标链进行扫描，维护质数两侧连续 $1$ 的数量；每遇到一个质数，就累加 $(L+1)(R+1)$，遇到合数则清空当前链段。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1609D",
+          "index": "D",
+          "slot": "D",
+          "title": "Social Network",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1609/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/97350",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dsu",
+            "graphs",
+            "greedy",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "有 $n$ 个人，初始互不认识；每次可介绍一对此前不认识的人。对第 $i$ 个前缀，必须满足前 $i$ 条条件中每对指定的人已经通过认识关系连通，并且恰好完成 $i$ 次介绍；每个前缀独立计算，求最终某个人最多能认识多少人。",
+          "transformedStatement": "把前缀条件看成若干连通块：连接不同块的条件必须用于合并，连接同一块的条件则提供一条可自由延期的额外边。利用这些额外边，将最大的若干连通块组织成以同一人为中心的星形，最大化该中心的度数。",
+          "keyObservations": [
+            "前缀条件只要求端点连通，因此可用并查集维护当前条件形成的连通块；若新条件连接不同连通块，就必须消耗一次合并机会。",
+            "若新条件的两端已经连通，这次介绍不会改变连通块结构，相当于获得一条可延期使用的额外边，可用于优化最终构造。",
+            "在一个连通块内，把介绍安排成以同一人为中心的星形结构能让该人的熟人数达到块大小减一；因此使用额外边时，应优先把最大的若干连通块纳入同一颗星。",
+            "设当前有 $k$ 条可延期边，则最多可将大小最大的 $k+1$ 个连通块合并到目标中心，答案为这些块大小之和减一；不足或超过连通块数量时按实际数量截取。"
+          ],
+          "solutionBrief": "从空图开始用并查集处理每个条件：合并不同连通块，否则将可延期边数量加一。每次按连通块大小降序，取最大的 $k+1$ 个，答案为其大小之和减一。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1609E",
+          "index": "E",
+          "slot": "E",
+          "title": "William The Oblivious ",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1609/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/97350",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "dp",
+            "matrices"
+          ],
+          "statementBrief": "给定只含 $a,b,c$ 的字符串，查询会把指定位置改成给定字符。每次修改后，还可把任意字符替换为 $a,b,c$，要求输出使字符串不含子序列 $abc$ 所需替换的最少字符数。",
+          "transformedStatement": "把字符串划分为线段树区间，用 5 位掩码描述区间能产生的 $a,b,c,ab,bc$，并用 DP 记录达到每种描述的最少修改代价；区间合并负责处理跨边界形成的子序列。",
+          "keyObservations": [
+            "只需记录子串中是否出现单字符 $a,b,c$ 以及二元子序列 $ab,bc$；它们正是跨区间拼接时判断能否形成 $abc$ 所需的信息。",
+            "每个区间用一个 5 位掩码表示上述子序列的出现集合，并令对应 DP 值为达到该集合且不产生非法 $abc$ 子序列的最少修改数，从而把任意区间压缩成有限状态。",
+            "合并左右区间时，结果状态由两侧已有子序列及跨越分界线新形成的子序列共同决定；左右修改代价彼此独立，因此可以枚举两侧状态并累加最优代价。",
+            "单点更新只改变一个叶节点，重新合并其祖先即可；根节点所有合法状态中的最小代价就是当前答案。"
+          ],
+          "solutionBrief": "用线段树维护区间 DP。状态掩码记录 $a,b,c,ab,bc$ 是否出现，合并时加入跨边界形成的子序列并排除会产生 $abc$ 的状态；单点修改后重算路径，根节点取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1609F",
+          "index": "F",
+          "slot": "F",
+          "title": "Interesting Sections",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1609/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/97350",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "meet-in-the-middle",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个非负整数数组，若某个连续区间的最大值与最小值在二进制表示中包含相同数量的 $1$，则该区间通过检查。要求统计所有通过检查的区间数量；题面原文未直接给出这一定义，条件由题解内容补全。",
+          "transformedStatement": "将区间按分治中点分为完全在左、完全在右和跨越中点三类；跨界区间再按最大值、最小值分别落在哪一侧分类，把条件转化为比较极值的置位数，并通过单调边界与前缀最小值计数完成统计。",
+          "keyObservations": [
+            "跨越分治中点且最大值在左半边时，只需保留右侧最大值不超过左侧最大值的边界 $R_{max}$，从而排除不可能区间。",
+            "按左端点递减时，左侧最小值不会增大，因此右侧最小值越过它的边界 $R_{min}$ 单调移动，可将区间按最小值所在半边分段。",
+            "当最大值在左、最小值在右时，只需统计右侧前缀最小值的置位数；用 $cnt_x$ 维护各置位数出现次数即可快速计数。",
+            "最大值和最小值都在左半边的部分不能直接套前缀统计，需要逐段判断二进制置位数是否相等；最大值在右半边时对称处理。"
+          ],
+          "solutionBrief": "用分治统计左半、右半及跨中点区间。处理跨界区间时按最大值所在半边分类，双指针维护 $R_{max}$、$R_{min}$，并用 $cnt_x$ 统计右侧前缀最小值的二进制置位数，递归总复杂度为 $O(n\\log n+n\\log\\max a)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1609G",
+          "index": "G",
+          "slot": "G",
+          "title": "A Stroll Around the Matrix",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1609/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/97350",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定两个凸数组 $a$ 和 $b$，构造矩阵 $d_{i,j}=a_i+b_j$。从左上角只能向下或向右走到右下角，路径长度是经过所有单元格数值之和；每次数组发生一次给定修改后，求最短路径长度。",
+          "transformedStatement": "把矩阵路径看成在两个递增差分序列 $da_i=a_{i+1}-a_i$、$db_j=b_{j+1}-b_j$ 之间逐步选择较小增量；相对基准路径，答案等价于累加所有满足 $da_i>db_j$ 的差值贡献，并在线维护这些阈值统计。",
+          "keyObservations": [
+            "从单元格 $(i,j)$ 出发，只需比较向下和向右的增量：当 $da_i=a_{i+1}-a_i>db_j=b_{j+1}-b_j$ 时向右更优，否则向下更优，因此最短路可由局部贪心确定。",
+            "相对于固定基准路径，每次在 $(i,j)$ 向右转的收益可拆成所有满足 $da_i>db_j$ 的差值之和，从而把路径问题转化为统计差分数组中满足阈值的元素及其总和。",
+            "由于凸性，$da$ 与 $db$ 都是递增序列；对每个 $da_i$，只需找到最后一个小于它的 $db_j$，即可用前缀和计算对应贡献，避免显式模拟整条路径。",
+            "修改后只需维护较短的 $da$ 和较长的 $db$：前者可直接更新，后者用支持后缀加以及按阈值查询前缀计数、前缀和的数据结构维护，因此每次修改可在 $O(n\\\\log m)$ 内重新汇总答案。"
+          ],
+          "solutionBrief": "将路径选择转化为比较相邻差分 $da_i$ 与 $db_j$ 的贪心过程，并把向右转的收益转成统计所有 $da_i>db_j$ 的差值总和。显式维护 $da$，用支持后缀加和阈值前缀统计的线段树维护 $db$，每次按所有 $da_i$ 汇总答案。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1609H",
+          "index": "H",
+          "slot": "H",
+          "title": "Pushing Robots",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1609/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/97350",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [],
+          "statementBrief": "数轴上有 $n$ 个占据单位线段的机器人，每个机器人循环执行长度为 $k$ 的整数指令程序。每秒按当前指令和题面规定的分组、阻挡规则移动，程序执行完后重新从头循环；需要回答若干时刻指定机器人的位置。",
+          "transformedStatement": "把时间按每 $k$ 秒划分为连续时间段，只关注相邻机器人的距离在每段中的变化。距离持续减小的相邻对可按固定减少速度跨越多个无碰撞时间段，只有可能相遇或包含询问的段才需要显式模拟。",
+          "keyObservations": [
+            "相邻机器人的距离一旦在某个长度为 $k$ 的时间段内减小，之后会持续减小，直到某个时间段内相遇；因此可以把相邻对的变化视为具有单调性的事件。",
+            "若相邻机器人的距离在一个长度为 $k$ 的时间段内没有减小，则该相邻对暂时不会成为下一阶段的碰撞候选，可跳过其模拟。",
+            "设当前距离为 $d$、上一段减少了 $s$，且 $d>2k+1$，则接下来至多经过 $\\left\\lfloor\\frac{d-2k-1}{s}\\right\\rfloor$ 段仍以相同速度接近；这使得大量无事件时间段可以整体跳过。",
+            "每次只模拟最早可能发生变化的时间段，并额外覆盖包含询问时刻的时间段；相邻距离的有效减少次数总计为 $O(nk)$，从而把逐秒模拟压缩为有限次事件模拟。"
+          ],
+          "solutionBrief": "先用栈在线性时间内模拟一个指令周期，再按长度为 $k$ 的时间段维护相邻机器人距离。对持续接近且距离较大的相邻对，依据上一段的减少量直接跳过若干段；选择最早事件继续模拟，并覆盖询问时刻。总复杂度为 $O(nk(nk+q))$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
