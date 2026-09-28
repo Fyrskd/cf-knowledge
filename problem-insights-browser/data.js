@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3780,
+    "total_problems": 3786,
     "source_total_problems": 3788,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3780,
-    "with_editorial_brief": 3465,
-    "with_solution_brief": 3467,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3786,
+    "with_editorial_brief": 3471,
+    "with_solution_brief": 3473,
     "missing_editorial_brief": 313,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2842,
+    "ai_override_count": 2848,
     "primary_topic_count": 13,
-    "contest_count": 585,
+    "contest_count": 586,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1229,
+    "组合计数与概率": 289,
     "数论与同余": 401,
-    "构造与贪心": 1226,
     "数据结构": 360,
     "动态规划与状态设计": 308,
     "树结构": 182,
     "图论与网络流": 245,
-    "组合计数与概率": 286,
     "交互": 110,
     "字符串": 199,
     "基础实现与模拟": 236,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2491,
-    "ai_generated_partial_editorial": 83,
+    "ai_generated_with_editorial": 2496,
+    "ai_generated_partial_editorial": 84,
     "missing_editorial": 313,
     "low_confidence": 1,
     "manual_override": 891,
@@ -116485,6 +116485,198 @@ window.CF_INSIGHTS_DATA = {
             "处理完全部线段后，任意状态对应的覆盖长度就是 $l+r$，取最后一层的最小值即可得到答案。"
           ],
           "solutionBrief": "令 $dp_{i,l}$ 表示放置前 $i$ 段、端点到左边界距离为 $l$ 时到右边界的最小距离。按向左或向右放置进行转移，$l$ 的范围限制在 $[0,2L]$；最终取 $\\min_l(l+dp_{n,l})$，复杂度为 $O(nL)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1574,
+      "name": "Educational Codeforces Round 114 (Rated for Div. 2)",
+      "date": "2021-09-20",
+      "url": "https://codeforces.com/contest/1574",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1574A",
+          "index": "A",
+          "slot": "A",
+          "title": "Regular Bracket Sequences",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1574/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/95188",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定整数 $n$，需要构造恰好 $n$ 个互不相同的合法括号序列；每个序列只能含 `(` 和 `)`，长度必须为 $2n$。合法性要求括号序列可通过在括号间插入数字和加号组成正确算式。",
+          "transformedStatement": "把初始序列视为 $n$ 个独立的 `()`，依次将前 $k$ 对括号合并成一个嵌套块 `((...))`；对每个 $k=1,2,\\ldots,n$ 输出该嵌套块及剩余的独立括号对。",
+          "keyObservations": [
+            "将前 $2k$ 个字符构造成 $k$ 个连续左括号后接 $k$ 个连续右括号，再补上若干个 `()`，所得序列始终保持前缀平衡且最终平衡。",
+            "取 $k=1,2,\\ldots,n$ 可得到恰好 $n$ 个不同序列，因为第一个连续嵌套块的长度分别为 $2k$。",
+            "每个序列长度都是 $2n$，且只改变嵌套块与后续独立括号对的分界，因此构造无需搜索或判定。"
+          ],
+          "solutionBrief": "对每个 $k=1$ 到 $n$，输出 $k$ 个连续的 `(`、随后 $k$ 个连续的 `)`，再接上 $n-k$ 个 `()`。每个序列都是合法括号序列，长度为 $2n$，且彼此不同。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1574B",
+          "index": "B",
+          "slot": "B",
+          "title": "Combinatorics Homework",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1574/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/95188",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定三种字母 A、B、C 的数量 $a,b,c$，要求构造一个恰好包含这些字母数量的字符串，并使相邻且相同的字母对数量恰好为 $m$。判断是否存在这样的字符串。",
+          "transformedStatement": "问题等价于判断 $m$ 是否落在固定字母多重集能产生的相邻相同对数量区间内：求出最小值和最大值，并利用区间连续性进行判定。",
+          "keyObservations": [
+            "相邻相同字母对的最大值是在每种字母分别成块时取得，即 $M=(a-1)+(b-1)+(c-1)$，因为每个字母块内部贡献其数量减一。",
+            "设 $c$ 是三种字母中数量最多的一个；用其余字母填入相邻两个 $C$ 之间的空位，可避免重复相邻，若 $c>a+b+1$，多出的 $C$ 至少贡献 $c-1-a-b$ 对，因此最小值为 $L=\\max(0,c-1-a-b)$。",
+            "固定 $a,b,c$ 时，可达到的相邻相同对数量构成从 $L$ 到 $M$ 的完整区间；从目标值逐次移除最多的字母并同步减少目标，再先构造零对方案，最后把移除的字母贴回同类字母旁即可恢复每次贡献。"
+          ],
+          "solutionBrief": "先令 $c=\\max(a,b,c)$，计算最小值 $L=\\max(0,c-1-a-b)$ 和最大值 $M=a+b+c-3$。当且仅当 $L\\le m\\le M$ 时输出 YES；端点之间的所有数值都可通过移除并贴回最多的字母实现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1574C",
+          "index": "C",
+          "slot": "C",
+          "title": "Slay the Dragon",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1574/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/95188",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy",
+            "sortings",
+            "ternary search"
+          ],
+          "statementBrief": "有 $n$ 名英雄，每条龙有防御力 $x$ 和攻击力 $y$。必须选一名英雄提升至至少 $x$ 去击杀龙，其余英雄守城且总战力至少为 $y$；每提升任意英雄 1 点需 1 枚金币，求每条龙独立计算的最少金币数。",
+          "transformedStatement": "令英雄总战力为 $S$，枚举谁负责击杀：若其原战力已达 $x$，只需补足剩余英雄的守城战力；若其低于 $x$，还要支付提升至 $x$ 的费用。最优候选只可能是排序后 $x$ 左侧最大值和右侧最小值。",
+          "keyObservations": [
+            "若负责击杀的英雄本身已满足防御力要求，应选所有 $a_i\\ge x$ 中最弱者，因为这样能让守城英雄总战力最大；所需金币为 $\\max(0, y-(S-a_i))$。",
+            "若选择的英雄低于 $x$，应选小于 $x$ 的最大英雄，使提升击杀者所需的 $x-a_i$ 最少；守城部分仍需补足 $\\max(0, y-(S-a_i))$。",
+            "两种选择覆盖了“击杀者不提升”和“击杀者需要提升”两类最优方案；排序后只需定位 $x$ 两侧的候选英雄，分别计算费用取最小值。"
+          ],
+          "solutionBrief": "设英雄总战力为 $S$。排序后用二分找到第一个不小于 $x$ 的英雄，并分别检查它与其前驱：前者无需提升击杀者，后者需支付 $x-a_i$；两者都加上守城战力不足的补款，取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1574D",
+          "index": "D",
+          "slot": "D",
+          "title": "The Strongest Build",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1574/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/95188",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "greedy",
+            "hashing",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 个装备栏，每栏给出按强度递增排列的物品，必须每栏选一件；由各栏物品编号组成一个构筑，强度是所选物品增益之和。给定若干禁用构筑，要求输出强度最大的未禁用构筑。",
+          "transformedStatement": "把所有构筑看成多维下标网格，顶点是每栏都取最强物品。由于只需从禁用构筑向某一维退一档，就能覆盖所有可能的最优非顶点，因此答案只需在顶点和这些邻接候选中筛选。",
+          "keyObservations": [
+            "若全选各栏最强装备的构筑未被禁用，它不可能被更弱的构筑超过，因此可直接作为候选答案。",
+            "设最优构筑不是全选最强装备；把其中任意一个尚未到顶的装备换成更强的前一件，所得构筑必须被禁用，否则原构筑不最优。",
+            "因此每个非顶层最优解都能表示为某个禁用构筑向一个位置退一档；枚举每个禁用构筑的每个位置即可覆盖所有候选。",
+            "将禁用构筑编码后放入集合，可在枚举退档构筑时快速判断其是否未被禁用，并保留总强度最大的候选。"
+          ],
+          "solutionBrief": "先检查全选最强装备的构筑。再对每个禁用构筑逐位置换成前一件装备，若新构筑不在禁用集合中就计算强度并更新答案；集合查询下复杂度为 $O(mn)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1574E",
+          "index": "E",
+          "slot": "E",
+          "title": "Coloring",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1574/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/95188",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个初始全为空的 $n\\times m$ 矩阵，每次可清空一个格子，或把它改写为 $0$ 或 $1$。每次操作后，计算将所有空格填成 $0/1$ 后，使每个连续 $2\\times2$ 子矩阵恰好含两个 $0$ 和两个 $1$ 的方案数，结果对 $998244353$ 取模。",
+          "transformedStatement": "把 $0/1$ 看作黑白颜色，并以棋盘格染色为基准：局部平衡条件下，同色的相邻水平格会向上下扩展成竖向宽度为 $2$ 的条带，同色的相邻竖直格则生成横向条带；题目转化为维护这些条带及其反色行列的全局计数。",
+          "keyObservations": [
+            "同一行中，若两枚已着色且列距为奇数（中间有偶数个格子）并且颜色相同，就必然出现竖向宽度为 2 的条带；因此无需枚举条带内部格子，只需维护相关行。",
+            "同一列中存在满足对应条件的同色格子时，会生成横向宽度为 2 的条带；横向条带与竖向条带同时出现会互相矛盾，因此答案直接为 $0$。",
+            "一旦确定了竖向或横向条带，整个矩阵可视为棋盘格，并允许部分整列或整行反色；这把局部 $2\\times2$ 约束转化为行列集合的计数问题。",
+            "将矩阵先按棋盘格染色，可把“同色且间距符合条件”的判断转化为已着色单元与棋盘基色是否相同或相反，从而只需维护相关行、列及其已出现的颜色信息。"
+          ],
+          "solutionBrief": "用棋盘格作为基准颜色，维护每个已着色单元、产生竖向或横向条带的行列，以及出现过已着色单元的行列数。若两类条带同时存在则答案为 $0$；否则按对应条带结构统计空格填法，并在每次修改时更新这些信息。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1574F",
+          "index": "F",
+          "slot": "F",
+          "title": "Occurrences",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1574/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/95188",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "图论与网络流",
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "fft",
+            "graphs"
+          ],
+          "statementBrief": "给定若干整数数组，要构造一个长度为 $m$、元素范围为 $1..k$ 的数组。对每个给定数组，其在构造数组中的出现次数必须不少于它的每个非空连续子数组的出现次数，求满足条件的不同构造数。",
+          "transformedStatement": "把每个无重复给定数组转成相邻元素的双向唯一前后约束，并按弱连通分量分析。合法构造恰好是若干条可用有向链按顺序拼接而成，问题转化为按链长计数的序列型 DP。",
+          "keyObservations": [
+            "若某个给定数组含有重复元素，则它的任一出现都会让某个单元素子数组出现更多次，因此其中所有元素都不能出现在最终数组中。",
+            "对元素各不相同的给定数组建立相邻元素约束图；弱连通分量若含入度或出度至少为 $2$ 的点，或本身是环，就无法在有限数组中合法出现。",
+            "可用连通分量只能是链；一旦使用链中的任意元素，就必须按链的固定顺序使用整条链，因此最终数组等价于若干条链的串接，链可以重复或不使用。",
+            "设长度为 $j$ 的可用链有 $cnt_j$ 条，则长度计数满足 $dp_i=\\sum_j dp_{i-j}\\cdot cnt_j$；只遍历出现过的链长，利用不同链长数量为 $O(\\sqrt{k})$ 将复杂度降为 $O(m\\sqrt{k})$。"
+          ],
+          "solutionBrief": "先排除含重复元素的数组，再将其余数组转成元素间的有向相邻约束。保留既非分叉也非环的链式连通分量，按链长统计数量，用 $dp_i=\\sum_j dp_{i-j}cnt_j$ 计数长度为 $m$ 的链串接方案。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
