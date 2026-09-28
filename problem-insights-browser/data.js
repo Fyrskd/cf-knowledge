@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3960,
+    "total_problems": 3962,
     "source_total_problems": 3962,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 3960,
-    "with_editorial_brief": 3616,
-    "with_solution_brief": 3618,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3962,
+    "with_editorial_brief": 3618,
+    "with_solution_brief": 3620,
     "missing_editorial_brief": 342,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3022,
+    "ai_override_count": 3024,
     "primary_topic_count": 13,
-    "contest_count": 614,
+    "contest_count": 615,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,11 +44,11 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1286,
+    "构造与贪心": 1287,
+    "基础实现与模拟": 247,
     "数论与同余": 420,
     "组合计数与概率": 308,
     "交互": 116,
-    "基础实现与模拟": 246,
     "字符串": 211,
     "动态规划与状态设计": 323,
     "图论与网络流": 258,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2635,
     "missing_editorial": 342,
-    "ai_generated_with_editorial": 2633,
     "ai_generated_partial_editorial": 92,
     "low_confidence": 1,
     "manual_override": 891,
@@ -121838,6 +121838,73 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1541,
+      "name": "Codeforces Round 728 (Div. 2)",
+      "date": "2021-06-25",
+      "url": "https://codeforces.com/contest/1541",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1200,
+      "problems": [
+        {
+          "key": "1541A",
+          "index": "A",
+          "slot": "A",
+          "title": "Pretty Permutations",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1541/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/92199",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 只猫，初始时编号为 $i$ 的猫位于位置 $i$。需要重新排列它们，使每只猫都离开原位置，并在所有合法排列中最小化猫移动距离之和；输出任意一个达到最小值的排列。",
+          "transformedStatement": "这是一个无固定点排列的最小位移构造问题：先为每只猫至少移动一格得到总距离下界，再分别构造达到下界或奇数情形下最小可行上界的排列。",
+          "keyObservations": [
+            "每只猫都不能留在原位，因此每只猫至少移动 $1$ 格，总移动距离至少为 $n$；偶数长度时相邻两两交换恰好达到这个下界。",
+            "奇数长度不可能让总距离恰为 $n$，所以最小值至少为 $n+1$；先对前三只猫安排 $[3,1,2]$，再将其余猫两两交换即可达到该下界。"
+          ],
+          "solutionBrief": "若 $n$ 为偶数，将位置 $1,2$、$3,4$ 等相邻位置分别交换。若 $n$ 为奇数，先让前三只猫按 $[3,1,2]$ 排列，再交换后续相邻位置对；这两种构造分别达到对应的最小总移动距离。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1541B",
+          "index": "B",
+          "slot": "B",
+          "title": "Pleasant Pairs",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1541/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/92199",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个由互不相同正整数组成的长度为 $n$ 的数组，数组下标从 $1$ 开始。统计所有满足 $i<j$ 且 $a_i a_j=i+j$ 的下标对 $(i,j)$。",
+          "transformedStatement": "把待检查对象从下标对转为数值对：由于下标和不超过 $2n$，只需考虑乘积不超过 $2n$ 的数值对，再利用数组中数值唯一对应其下标来验证条件。",
+          "keyObservations": [
+            "因为合法下标满足 $i+j\\le 2n$，所以对应数值必须满足 $a_i a_j\\le 2n$；乘积超过这个上界的数值对无需检查。",
+            "固定一个数值 $x$ 后，可能配对的另一个数值至多有 $\\lfloor 2n/x\\rfloor$ 种，因此枚举候选数值对的总量由调和级数控制，为 $O(n\\log n)$。",
+            "数组元素互不相同，可先记录每个数值所在的位置；枚举数值对后，只需检查位置是否满足 $i<j$ 以及乘积是否等于下标和。"
+          ],
+          "solutionBrief": "记录每个数值对应的下标，只枚举乘积不超过 $2n$ 的数值对；若它们所在下标满足 $i<j$ 且乘积等于 $i+j$，答案加一。候选对总数为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }

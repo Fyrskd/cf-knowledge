@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T21:28:37+00:00",
+  "updated_at": "2026-09-28T21:33:18+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -90449,6 +90449,63 @@
         "quality_flags": [
           "missing_editorial"
         ]
+      }
+    },
+    "1541B": {
+      "problem_key": "1541B",
+      "title": "Pleasant Pairs",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1541/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/92199",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "2c95aa39d956f302dc7afb9aa1914297732eb69d4f22527a12fac3633b6551db",
+      "generated_at": "2026-09-28T21:33:07+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由互不相同正整数组成的长度为 $n$ 的数组，数组下标从 $1$ 开始。统计所有满足 $i<j$ 且 $a_i a_j=i+j$ 的下标对 $(i,j)$。",
+        "transformed_statement": "把待检查对象从下标对转为数值对：由于下标和不超过 $2n$，只需考虑乘积不超过 $2n$ 的数值对，再利用数组中数值唯一对应其下标来验证条件。",
+        "key_observations": [
+          "因为合法下标满足 $i+j\\le 2n$，所以对应数值必须满足 $a_i a_j\\le 2n$；乘积超过这个上界的数值对无需检查。",
+          "固定一个数值 $x$ 后，可能配对的另一个数值至多有 $\\lfloor 2n/x\\rfloor$ 种，因此枚举候选数值对的总量由调和级数控制，为 $O(n\\log n)$。",
+          "数组元素互不相同，可先记录每个数值所在的位置；枚举数值对后，只需检查位置是否满足 $i<j$ 以及乘积是否等于下标和。"
+        ],
+        "solution_brief": "记录每个数值对应的下标，只枚举乘积不超过 $2n$ 的数值对；若它们所在下标满足 $i<j$ 且乘积等于 $i+j$，答案加一。候选对总数为 $O(n\\log n)$。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，枚举范围与复杂度依据 editorial_text；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1541A": {
+      "problem_key": "1541A",
+      "title": "Pretty Permutations",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1541/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/92199",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "98918de8dae4d9c2f66e312838610ee7fe22afe6f200c0b9924aab3a2abb3419",
+      "generated_at": "2026-09-28T21:33:18+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 只猫，初始时编号为 $i$ 的猫位于位置 $i$。需要重新排列它们，使每只猫都离开原位置，并在所有合法排列中最小化猫移动距离之和；输出任意一个达到最小值的排列。",
+        "transformed_statement": "这是一个无固定点排列的最小位移构造问题：先为每只猫至少移动一格得到总距离下界，再分别构造达到下界或奇数情形下最小可行上界的排列。",
+        "key_observations": [
+          "每只猫都不能留在原位，因此每只猫至少移动 $1$ 格，总移动距离至少为 $n$；偶数长度时相邻两两交换恰好达到这个下界。",
+          "奇数长度不可能让总距离恰为 $n$，所以最小值至少为 $n+1$；先对前三只猫安排 $[3,1,2]$，再将其余猫两两交换即可达到该下界。"
+        ],
+        "solution_brief": "若 $n$ 为偶数，将位置 $1,2$、$3,4$ 等相邻位置分别交换。若 $n$ 为奇数，先让前三只猫按 $[3,1,2]$ 排列，再交换后续相邻位置对；这两种构造分别达到对应的最小总移动距离。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，构造与最优性依据 editorial_text；tags 仅作主题参考。",
+        "quality_flags": []
       }
     }
   }
