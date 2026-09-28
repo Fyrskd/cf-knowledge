@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T03:06:43+00:00",
+  "updated_at": "2026-09-28T03:12:27+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -70619,6 +70619,220 @@
         "source_provenance": "依据题面中的正负号交换示例、editorial_text 的核心判定，以及 tags 中的 greedy 和 implementation。",
         "quality_flags": [
           "statement_operation_text_truncated"
+        ]
+      }
+    },
+    "1675G": {
+      "problem_key": "1675G",
+      "title": "Sorting Pancakes",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1675/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/102550",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "203bcc355a72c6b830b3379b77a62aeafff412d9ff8d53f964219b9d88d84f42",
+      "generated_at": "2026-09-28T03:10:25+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个按左右顺序排列的盘子，第 $i$ 个盘子有 $a_i$ 个煎饼。每次可将一个煎饼从某盘移到相邻盘子，要求用最少移动次数使最终数量满足从左到右非递增。",
+        "transformed_statement": "把最终布局视为总煎饼数仍为 $m$ 的非递增高度序列；按盘子从左到右决定高度，并用煎饼所在位置的前缀和计算每个新高度带来的移动代价。",
+        "key_observations": [
+          "固定前缀长度、末盘高度和前缀煎饼总数后，前缀的最优代价就能独立表示为状态 $dp[i][last][sum]$。",
+          "若第 $i$ 盘最终有 $last$ 个煎饼，则前一盘必须为 $last+j$，因此转移只能来自 $dp[i-1][last+j][sum-last]$，直接编码非递增限制。",
+          "把所有煎饼按所在盘编号展开成位置数组并预处理前缀和后，调整当前盘到高度 $last$ 的新增移动代价只依赖 $last$ 与 $sum$，无需保留更早的布局细节。",
+          "转移中只需在所有允许的更大前一盘高度里取最小值，可用后缀最小值优化，整体状态处理规模为 $O(nm^2)$。"
+        ],
+        "solution_brief": "将煎饼按盘编号展开并预处理前缀和，用 $dp[i][last][sum]$ 表示前 $i$ 盘、末盘高度为 $last$ 且共有 $sum$ 个煎饼时的最小移动数。由前一盘高度不小于 $last$ 转移，并用后缀最小值优化取最优前态，复杂度为 $O(nm^2)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text 及 tags 中的 dp；相邻盘移动方向依据题面“closest one”和示例概括。",
+        "quality_flags": [
+          "statement_operation_list_truncated"
+        ]
+      }
+    },
+    "1675F": {
+      "problem_key": "1675F",
+      "title": "Vlad and Unfinished Business",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1675/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/102550",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "e77e9305dddca621785133504c0cffa2d6a82595271f74b75e40c382050ebbc8",
+      "generated_at": "2026-09-28T03:10:42+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "城市是一棵树，Vlad 从房屋 $x$ 出发，必须以任意顺序到达所有任务房屋 $a_i$，每次沿道路移动一条边，允许重复经过房屋，完成后到达 $y$。求所需的最少移动分钟数。",
+        "transformed_statement": "把问题改写为根在 $x$ 的树上选择必要边：连接到 $y$ 的方向只需单向走过，而通往不含 $y$ 的任务子树必须往返；通过子树标记判断每条边的贡献。",
+        "key_observations": [
+          "以 $x$ 为根后，边 $(parent,v)$ 是否必须经过，只取决于 $v$ 的子树中是否含有 $y$ 或某个任务点，从而无需枚举访问顺序。",
+          "若边的子树包含 $y$，最终前往 $y$ 的路线只需通过一次；否则若包含任务点，就必须进入并返回，该边贡献两次。",
+          "对每个子树汇总“是否含有 $y$”和“是否含有任务点”两个布尔量，后序 DFS 即可按边独立累加最小路程。"
+        ],
+        "solution_brief": "将树以 $x$ 为根进行 DFS，统计每个子树是否包含 $y$ 及任务点。包含 $y$ 的必要边计 $1$，仅因任务点而需要的边计 $2$，累加得到答案。",
+        "primary_topic": "树结构",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 trees、dfs and similar 标签。",
+        "quality_flags": []
+      }
+    },
+    "1675E": {
+      "problem_key": "1675E",
+      "title": "Replace With the Previous, Minimize",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1675/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/102550",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f5d88af48cfa73f16d598c125ffac3def3a9784c3e377c8e88f8c93fb0195b4a",
+      "generated_at": "2026-09-28T03:11:03+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由小写英文字母组成的字符串，以及最多可执行 `k` 次操作的限制。题面记录未包含“每次操作具体如何替换字符”的定义，因此目前只能确认目标是：在不超过 `k` 次操作后，求字典序最小的字符串。",
+        "transformed_statement": "题解将问题重述为从左到右逐字符确定结果，并维护一个阈值 `mx`：不超过该范围的字符可以被统一降低到 `a`。每处理一个新字符，就判断是用操作扩展这个可降范围，还是把剩余预算用于尽量降低当前字符。",
+        "key_observations": [
+          "将已经处理的字符维护为一个可统一降到 `a` 的前缀范围，并用 `mx` 表示该范围的最大字符；初始 `mx` 为 `a` 且不消耗操作，这把全局修改影响压缩成一个阈值。",
+          "从左到右处理字符串时，若当前字符能够在剩余操作内降到 `a`，就优先扩展可降范围；这保证字典序更小的位置先得到最优处理。",
+          "当无法直接把当前字符降到 `a` 时，应比较两种选择：保留已处理范围并最小化当前字符，或先用剩余操作继续降低前缀；这种决策只需围绕当前字符和 `mx` 维护。"
+        ],
+        "solution_brief": "按字典序从左到右贪心维护阈值 `mx`，表示哪些字符范围可被统一降为 `a`。遇到新字符时，在剩余操作允许的情况下扩展该范围，否则用剩余操作在“降低前缀”和“降低当前字符”之间选择更优结果；记录中的题面缺少具体操作定义，无法补全实现细节。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "字符串",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意目标来自 statement_text、标题与元数据；核心贪心来自 editorial_text；操作规则本身在给定 statement_text 中缺失。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "partial_editorial",
+          "statement_operation_definition_missing"
+        ]
+      }
+    },
+    "1675D": {
+      "problem_key": "1675D",
+      "title": "Vertical Paths",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1675/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/102550",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "888e3c78fe1495f0ef7a6fb8a71618dbe5e1429341ace0fa0ef094beb405c4a9",
+      "generated_at": "2026-09-28T03:11:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定由父节点数组表示的有根树，其中唯一满足 $p_i=i$ 的顶点是根。要求把所有顶点划分成若干条互不相交的竖直路径，每条路径沿树的父子边自顶向下排列，并使路径条数最少。",
+        "transformed_statement": "把问题看成从叶子向根收集未覆盖的祖先链：每个叶子启动一条路径，向上走到已访问顶点为止，再将收集结果反转为自顶向下的链。",
+        "key_observations": [
+          "每条竖直路径只能沿父子关系连接，因此一个叶子不能与另一个叶子出现在同一路径中；路径数至少等于叶子数。",
+          "从每个叶子向根上行，遇到已覆盖顶点就停止，能够把尚未覆盖的连续祖先链完整取出，且不同路径互不相交。",
+          "上行得到的是自底向上的顶点序列，反转后才符合题目要求的自顶向下路径顺序。",
+          "所有叶子各启动一次后，路径数恰好等于叶子数，从而达到最小值。"
+        ],
+        "solution_brief": "找出所有叶子，依次从叶子沿父指针向上走，直到遇到已访问顶点；记录这段链并反转。所有路径覆盖整棵树，数量等于叶子数且最小。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "图论与网络流",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的父节点数组、路径覆盖要求，以及 editorial 对叶子上行并反转构造的说明。",
+        "quality_flags": []
+      }
+    },
+    "1675C": {
+      "problem_key": "1675C",
+      "title": "Detective Task",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1675/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/102550",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9343d75c031e7ca1f32551a98df603b5b02ca9e98e332cfb663782f1fa1b3371",
+      "generated_at": "2026-09-28T03:12:01+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 位朋友依次单独进入房间，画作在某一时刻消失且之后不会回来。每人回答进入时是否看见画作（“0”或“1”），也可以回答“不记得”（“?”）；除盗窃者外都不会撒谎，求根据回答可能成为盗窃者的人数。",
+        "transformed_statement": "把每个位置视为画作从“仍在”切换到“已消失”的候选边界：所有正常的“1”必须在边界左侧，正常的“0”必须在边界右侧，唯一可任意回答的盗窃者覆盖边界所在区间。",
+        "key_observations": [
+          "画作状态至多发生一次从在场到消失的转变，因此正常回答中的最后一个“1”和第一个“0”夹住了可能的盗窃者位置。",
+          "盗窃者左侧不能出现“0”：否则该回答者必须撒谎或画作已提前消失；因此候选位置不能早于最后一个“1”。",
+          "盗窃者右侧不能出现“1”：否则画作已在此前消失而正常回答却称仍在；因此候选位置不能晚于第一个“0”。",
+          "“?”不限制画作状态，区间内的每个位置都可由该位置的人承担唯一一次撒谎，答案就是区间长度。"
+        ],
+        "solution_brief": "记录字符串中最后一个“1”的位置和第一个“0”的位置；若不存在则分别用首端和尾端替代。根据题目保证候选区间非空，输出两位置之差加一。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 中的回答规则；tags 仅用于主题判断。",
+        "quality_flags": []
+      }
+    },
+    "1675B": {
+      "problem_key": "1675B",
+      "title": "Make It Increasing",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1675/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/102550",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "52385f03dc3a669a9045642224276a7e17229b649da22759e4061b4ade3a85ba",
+      "generated_at": "2026-09-28T03:12:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，每次可选择一个元素并将其整除 $2$，元素不能交换。求使数组严格递增所需的最少操作次数；若无法实现则输出 $-1$。",
+        "transformed_statement": "将数组条件拆成相邻约束 $a_i<a_{i+1}$，从右端开始固定每个元素；对当前元素只需将其降到低于已确定的右邻元素，独立累计必要的整除次数。",
+        "key_observations": [
+          "从右向左处理能先固定右侧最终值；对每个 $a_i$ 反复整除 $2$，直到满足 $a_i<a_{i+1}$，所得操作数是该位置的最少代价。",
+          "元素只能减小且不能交换，因此处理完右侧后，左侧元素无法通过修改右侧来获得更宽松条件，局部尽量少除保证整体最优。",
+          "若处理某个位置时右邻元素为 $0$，则不可能让左邻元素严格小于它，因此应立即判定为 $-1$。"
+        ],
+        "solution_brief": "从数组末端向前扫描。对每个左侧元素不断整除 $2$，直到它严格小于已经处理好的右邻元素并累计次数；若右邻为 $0$，则答案为 $-1$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 中的目标条件、editorial_text 中的整除操作与逆序处理方法，并参考 tags。",
+        "quality_flags": [
+          "statement_operation_text_incomplete"
+        ]
+      }
+    },
+    "1675A": {
+      "problem_key": "1675A",
+      "title": "Food for Animals",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1675/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/102550",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "00cfd0e4f9a378c1b4d124b4a6f243c5c25c3c7cc9d0ae25b959616a50632248",
+      "generated_at": "2026-09-28T03:12:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "商店有 $a$ 包狗粮、$b$ 包猫粮和 $c$ 包可供狗猫使用的通用粮，顾客有 $x$ 只狗和 $y$ 只猫。每只动物必须得到一包适合自己的食物，问现有食物能否全部满足它们。",
+        "transformed_statement": "把专用粮优先分配给对应动物，问题转化为计算狗和猫分别还缺多少食物，再判断两类缺口之和是否能由通用粮补足。",
+        "key_observations": [
+          "先尽量使用犬粮和猫粮分别满足对应动物，因为专用粮不能替代另一类，而多用专用粮不会减少通用粮的可用量。",
+          "专用粮分配后，仍缺粮的狗和猫数量分别为 $\\max(0,x-a)$ 与 $\\max(0,y-b)$；两者合计就是通用粮的需求。",
+          "只要剩余动物数不超过 $c$，所有动物都能获得一包合适的食物，因此判定条件为 $\\max(0,x-a)+\\max(0,y-b)\\le c$。"
+        ],
+        "solution_brief": "对每组数据先用 $a$ 包狗粮满足狗、用 $b$ 包猫粮满足猫，计算两类动物的缺口；若缺口总数不超过 $c$ 包通用粮则输出 YES，否则输出 NO。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、editorial_text 以及 tags 提炼；题面未直接说明 $a,b,c$ 的粮食类型，相关含义由 editorial 补足。",
+        "quality_flags": [
+          "statement_inferred"
         ]
       }
     }
