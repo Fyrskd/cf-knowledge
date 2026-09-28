@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 310,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2730,
+    "ai_override_count": 2736,
     "primary_topic_count": 13,
     "contest_count": 566,
     "rating_min": 800,
@@ -44,17 +44,17 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "动态规划与状态设计": 299,
-    "构造与贪心": 1195,
+    "数论与同余": 382,
+    "构造与贪心": 1194,
     "交互": 107,
+    "博弈": 112,
+    "字符串": 193,
     "基础实现与模拟": 232,
-    "数论与同余": 381,
     "图论与网络流": 239,
     "组合计数与概率": 277,
     "数据结构": 350,
     "树结构": 177,
-    "博弈": 111,
-    "字符串": 192,
+    "动态规划与状态设计": 297,
     "几何": 89,
     "代数、矩阵与多项式": 25
   },
@@ -113120,14 +113120,12 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1589/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/96953",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "交互"
-          ],
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
           "originalTags": [
             "math"
           ],
-          "statementBrief": "题面已抓取：Mathematical Addition；本地暂无可用题解正文。",
+          "statementBrief": "给定正整数 $u,v$，需要输出整数 $x,y$，使 $\\frac{x}{u}+\\frac{y}{v}=\\frac{x+y}{u+v}$。每组数据可输出任意满足 $|x|,|y|\\le 10^{18}$ 且 $(x,y)\\ne(0,0)$ 的解。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -113143,15 +113141,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1589/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/96953",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "几何",
-            "动态规划与状态设计",
-            "图论与网络流"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Coloring Rectangles；本地暂无可用题解正文。",
+          "statementBrief": "给定一个 $n\\times m$ 的方格矩形，可以反复沿网格线把原矩形或已有矩形切成两块，但最终所有矩形块都不能是 $1\\times1$。随后将每块中的部分单元格涂蓝，使同一块内共边相邻单元格颜色不同，求最少需要涂蓝的单元格数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -113168,14 +113162,14 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/96953",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "动态规划与状态设计"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "greedy",
             "math",
             "sortings"
           ],
-          "statementBrief": "题面已抓取：Two Arrays；本地暂无可用题解正文。",
+          "statementBrief": "给定两个长度相同的整数数组。对数组 $a$ 进行一次变换时，可任选若干个不同位置各加 $1$，随后任意重排整个数组；判断是否能使结果恰好等于数组 $b$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -113191,18 +113185,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1589/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/96953",
           "primaryTopic": "交互",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "构造与贪心",
-            "动态规划与状态设计"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "combinatorics",
             "interactive",
             "math"
           ],
-          "statementBrief": "题面已抓取：Guess the Permutation；本地暂无可用题解正文。",
+          "statementBrief": "初始排列为 $1,2,\\ldots,n$，先选定 $i<j<k$ 且 $j-i>1$，再分别反转区间 $[i,j-1]$ 和 $[j,k]$。你只能询问任意子区间的逆序对数量，并需在不超过 40 次询问内找出这三个位置。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -113217,19 +113207,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/1589/problem/E",
           "editorialUrl": "https://codeforces.com/blog/entry/96953",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈",
-            "数据结构",
-            "组合计数与概率"
-          ],
+          "primaryTopic": "博弈",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "data structures",
             "games",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Game with Stones；本地暂无可用题解正文。",
+          "statementBrief": "给定一个非负整数数组，每次只能从一对原本相邻且都非空的石堆中各取走一颗；石堆变空后两侧不会重新相邻。统计所有能通过某种操作顺序把整个子段清空的连续子段数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -113244,18 +113230,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2600,
           "problemUrl": "https://codeforces.com/contest/1589/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/96953",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "字符串",
-            "图论与网络流"
-          ],
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
           "originalTags": [
             "bitmasks",
             "dp",
             "graphs",
             "strings"
           ],
-          "statementBrief": "题面已抓取：Strange LCS；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n$ 个仅含大小写英文字母的字符串，且每个字符在每个字符串中最多出现两次。可以从每个字符串中删除任意字符但保持剩余顺序，要求找出同时作为所有字符串子序列的最长字符串，并输出其长度和任意一个答案。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

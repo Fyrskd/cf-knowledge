@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T10:27:41+00:00",
+  "updated_at": "2026-09-28T10:33:28+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -81764,6 +81764,167 @@
         "quality_flags": [
           "ambiguous_solution",
           "partial_statement",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1589F": {
+      "problem_key": "1589F",
+      "title": "Strange LCS",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1589/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f8397dd8c0d5ed67cc34581ba11fa5baf64555bdcae6ed6e687a1c2b7d7df3a6",
+      "generated_at": "2026-09-28T10:31:51+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个仅含大小写英文字母的字符串，且每个字符在每个字符串中最多出现两次。可以从每个字符串中删除任意字符但保持剩余顺序，要求找出同时作为所有字符串子序列的最长字符串，并输出其长度和任意一个答案。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "字符串",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，仅提供题解链接。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1589E": {
+      "problem_key": "1589E",
+      "title": "Game with Stones",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1589/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "43916583ec07b3fc94f5f15e55b91f86554c17a80f72e16efb2fe785e8ffbcdf",
+      "generated_at": "2026-09-28T10:32:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个非负整数数组，每次只能从一对原本相邻且都非空的石堆中各取走一颗；石堆变空后两侧不会重新相邻。统计所有能通过某种操作顺序把整个子段清空的连续子段数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "博弈",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意与等价边使用次数模型依据 statement；editorial 仅提供 URL，tags 仅用于题目分类。",
+        "quality_flags": [
+          "editorial_url_only",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1589D": {
+      "problem_key": "1589D",
+      "title": "Guess the Permutation",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1589/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f3aee034c6c16f61e655590ada2b1e8ec4e3029586a3d4234a7e05c7346ba9b7",
+      "generated_at": "2026-09-28T10:32:43+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "初始排列为 $1,2,\\ldots,n$，先选定 $i<j<k$ 且 $j-i>1$，再分别反转区间 $[i,j-1]$ 和 $[j,k]$。你只能询问任意子区间的逆序对数量，并需在不超过 40 次询问内找出这三个位置。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "交互",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，仅有题解链接。",
+        "quality_flags": [
+          "interactive_problem",
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "1589C": {
+      "problem_key": "1589C",
+      "title": "Two Arrays",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1589/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "fb0d759c5186a327a8c476cb4c18ed1d4ad0311fc53f78fa08219307164ad1fb",
+      "generated_at": "2026-09-28T10:32:56+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度相同的整数数组。对数组 $a$ 进行一次变换时，可任选若干个不同位置各加 $1$，随后任意重排整个数组；判断是否能使结果恰好等于数组 $b$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面中的变换规则与 tags；editorial_url 仅提供链接，未给出题解正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1589B": {
+      "problem_key": "1589B",
+      "title": "Coloring Rectangles",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1589/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a01ecb15e3768e292e5430cd4fbbef9edc4c3fbbd4dfe41e239b1b9d9d95c21b",
+      "generated_at": "2026-09-28T10:33:11+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times m$ 的方格矩形，可以反复沿网格线把原矩形或已有矩形切成两块，但最终所有矩形块都不能是 $1\\times1$。随后将每块中的部分单元格涂蓝，使同一块内共边相邻单元格颜色不同，求最少需要涂蓝的单元格数。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 与 codeforces_tags；editorial_text 为空，仅提供 editorial_url。",
+        "quality_flags": [
+          "missing_editorial",
+          "solution_unavailable",
+          "statement_only"
+        ]
+      }
+    },
+    "1589A": {
+      "problem_key": "1589A",
+      "title": "Mathematical Addition",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1589/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/96953",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "8e2efcbfec8525c243df455ba5240ce841814da3df24cccc814b341de0af2251",
+      "generated_at": "2026-09-28T10:33:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数 $u,v$，需要输出整数 $x,y$，使 $\\frac{x}{u}+\\frac{y}{v}=\\frac{x+y}{u+v}$。每组数据可输出任意满足 $|x|,|y|\\le 10^{18}$ 且 $(x,y)\\ne(0,0)$ 的解。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 math 标签；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
           "statement_inferred"
         ]
       }
