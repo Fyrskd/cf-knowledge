@@ -15,19 +15,328 @@
     ]
   },
   "summary": {
-    "total_problems": 3757,
+    "total_problems": 3764,
     "source_total_problems": 3766,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3757,
-    "with_editorial_brief": 3442,
-    "with_solution_brief": 3444,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3764,
+    "with_editorial_brief": 3449,
+    "with_solution_brief": 3451,
     "missing_editorial_brief": 313,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2819,
+    "ai_override_count": 2826,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1592A",
+      "contest_id": 1592,
+      "title": "Gamer Hemose",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1592/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/95583",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "greedy",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "有 $n$ 把武器，第 $i$ 把每次造成 $a_i$ 点伤害；每次攻击可选择一把武器，但不能连续两次选择同一把。敌人初始生命值为 $H$，求使生命值降至不超过 $0$ 所需的最少攻击次数。",
+      "transformed_statement": "把连续攻击重组成由两把武器交替完成的攻击对：选择伤害最大的两把，令一对攻击造成 $x+y$ 点伤害，再根据剩余生命值判断需要一把还是两把武器收尾。",
+      "key_observations": [
+        "最优策略只需反复交替使用伤害最高的两把武器；更小伤害的武器无法在相同步数内提供更高总伤害。",
+        "设最高和次高伤害为 $x,y$，每两次攻击固定造成 $x+y$ 点伤害，因此先按完整攻击对计算，再处理剩余生命值。",
+        "令 $q=\\lfloor H/(x+y)\\rfloor$、$r=H\\bmod(x+y)$；余量为 $0$ 时需要 $2q$ 次，$0<r\\le x$ 时再攻击一次，否则需要再攻击两次。"
+      ],
+      "solution_brief": "取伤害最大的两把武器 $x,y$，交替攻击。每两次减少 $x+y$，计算完整循环数和余量：余量为零加 $0$ 次，不超过 $x$ 加 $1$ 次，否则加 $2$ 次。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:24:44+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1592B",
+      "contest_id": 1592,
+      "title": "Hemose Shopping",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1592/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/95583",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dsu",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组，每次只能交换下标距离至少为 $x$ 的两个元素，操作次数可以为零。判断能否通过这些交换把数组变为非递减序列。",
+      "transformed_statement": "把合法交换看成位置之间的可达关系：当 $n\\ge 2x$ 时所有位置可任意重排；否则只有中间区间 $[n-x+1,x]$ 被固定，问题转化为检查该区间是否已与排序目标一致。",
+      "key_observations": [
+        "当 $n\\ge 2x$ 时，允许交换形成的连通关系足以实现任意排列，因此数组一定可以被排好序。",
+        "当 $n<2x$ 时，中间区间 $[n-x+1,x]$ 中的每个位置无法与区间外交换，所以这些位置的元素必须已经等于排序后的目标值。",
+        "在 $n<2x$ 时，区间外的位置可以通过合法交换任意重排；因此只需检查中间固定区间，其他位置无需单独模拟交换过程。"
+      ],
+      "solution_brief": "复制数组并排序。若 $n\\ge 2x$ 直接输出 YES；否则检查区间 $[n-x+1,x]$ 中原数组与排序后数组是否逐项相同，全部相同则为 YES，否则为 NO。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:24:31+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1592C",
+      "contest_id": 1592,
+      "title": "Bakry and Partitioning",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1592/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/95583",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "dfs and similar",
+        "dp",
+        "graphs",
+        "trees"
+      ],
+      "statement_brief": "给定一棵带点权的树，可以删除至少一条、至多 $k-1$ 条边，使所有连通分量中的节点值按位异或结果完全相同。判断是否存在这样的删边方案。",
+      "transformed_statement": "把问题转化为寻找若干个异或值相同的连通块：全树异或为 $0$ 时构造两个块即可；否则寻找两条切边，将树分成三个异或均为全树异或的块。",
+      "key_observations": [
+        "若已有 $m$ 个异或值均为 $x$ 的相邻连通块，把任意三个合并后异或仍为 $x$，因此可将块数减少 $2$。",
+        "整棵树异或为 $0$ 时，删除任意一条边得到的两个连通块异或相同，答案必为 YES。",
+        "整棵树异或为非零值 $x$ 时，只需寻找三个异或均为 $x$ 的连通块；因为三个 $x$ 的异或仍为 $x$，且此时必须允许删除两条边，即 $k\\ne2$。",
+        "将树以节点 $1$ 为根，优先寻找最深的子树异或为 $x$ 并切断其父边，再在剩余结构中寻找第二条满足条件的切边，可构造三个目标连通块。"
+      ],
+      "solution_brief": "先求全树异或值。若为 $0$，删除任意一边即可；否则需在 $k\\ge3$ 时找两条边形成三个异或为全树异或的部分，按最深子树异或搜索并切边。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:24:14+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1592D",
+      "contest_id": 1592,
+      "title": "Hemose in ICPC ?",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1592/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/95583",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "树结构",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "binary search",
+        "dfs and similar",
+        "implementation",
+        "interactive",
+        "math",
+        "number theory",
+        "trees"
+      ],
+      "statement_brief": "给定一棵边权未知的树，任意两点的 Dist 是其路径上所有边权的最大公约数。每次可向设备提交一个至少含两个点的集合，设备返回集合内两点 Dist 的最大值；最多查询 12 次，要求找出 Dist 最大的一对不同节点。",
+      "transformed_statement": "由于单边路径的 Dist 等于边权，而任意多边路径的最大公约数不超过其中每条边权，目标等价于寻找全树最大权边。将边按欧拉遍历排列后，在满足连通性的连续边段上二分定位该边。",
+      "key_observations": [
+        "任意路径的边权最大公约数不超过路径上的每条边权，而单条边路径的 Dist 就是该边权，因此全体节点查询得到的最大值等于全树最大边权。",
+        "目标节点对必须是一条最大权边的两个端点，所以问题从寻找路径转化为定位一条边。",
+        "按欧拉遍历顺序排列边后，任意连续边段内部的节点由该段边保持连通，使设备查询能够支持对边序列进行二分定位。",
+        "先用全体节点查询确定最大边权，再在欧拉序边数组上二分寻找对应边，总查询次数为 $1+\\log(2(n-1))$。"
+      ],
+      "solution_brief": "先查询全部节点，得到全树路径 Dist 的最大值，也就是最大边权。将边按欧拉遍历排序，利用连续边段的连通性质对边序列二分，定位具有该权值的边并输出其两个端点；总查询次数为 $1+\\log(2(n-1))$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:23:57+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1592E",
+      "contest_id": 1592,
+      "title": "Bored Bakry",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1592/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/95583",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "greedy",
+        "math",
+        "two pointers"
+      ],
+      "statement_brief": "给定一个整数数组，子数组称为好数组，当其中所有元素的按位与严格大于它们的按位异或。求最长好子数组的长度；若不存在则输出 $0$。",
+      "transformed_statement": "将问题按按位与的最高置位 $k$ 分类：只需寻找偶数长度区间，使所有元素都含有第 $k$ 位，并且异或结果在所有高于 $k$ 的位上均为零。",
+      "key_observations": [
+        "奇数长度区间不可能满足条件，因为按位与中出现的每一位都会在异或中出现，所以按位与是异或的子掩码。",
+        "偶数长度区间中，按位与出现的每一位都会在异或中消失，因此只需比较按位与的最高位。",
+        "固定最高位 $k$ 后，合法区间必须满足所有元素都含有第 $k$ 位、区间长度为偶数，且异或的所有高于 $k$ 的位均为零。",
+        "对每个右端点寻找满足这些条件的最小左端点即可得到该右端点对应的最长区间，再对所有 $k$ 取最大值。"
+      ],
+      "solution_brief": "枚举按位与的最高位 $k$。对每个右端点，利用只保留高于 $k$ 位的前缀异或、元素是否含第 $k$ 位以及区间奇偶性，寻找最小合法左端点并更新答案；总复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:23:36+00:00",
+          "quality_flags": [
+            "题解对具体的候选位置维护方式说明较简略"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1592F1",
+      "contest_id": 1592,
+      "title": "Alice and Recoloring 1",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1592/problem/F1",
+      "editorial_url": "https://codeforces.com/blog/entry/95583",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy"
+      ],
+      "statement_brief": "给定一个初始全白的 $n\\times m$ 棋盘，允许翻转包含指定角点的任意子矩形：左上、左下、右上、右下四类操作费用分别为 $1,2,4,3$。要求把棋盘变成给定的黑白图案，并求最少花费。",
+      "transformed_statement": "将目标图案反向看作需要消除的颜色，并为每个位置记录相邻至多四个目标格的颜色奇偶性。左上操作对应修改一个辅助值，右下操作对应同时翻转四个边界相关辅助值，于是问题转化为用单点清除和一次四点操作消除辅助网格中的所有 $1$。",
+      "key_observations": [
+        "左下角和右上角操作都可分别拆成两次左上角操作，成本不增加或更低，因此最优解只需考虑左上角与右下角操作。",
+        "令每个位置记录其相邻且存在的至多四个目标格颜色异或值，则目标棋盘全白等价于该辅助网格全为 $0$。",
+        "左上角操作只会改变辅助网格中的一个位置，右下角操作会同时翻转四个特定位置，因此普通操作可独立清除单个 $1$。",
+        "右下角操作只有在四个对应位置全为 $1$ 时才有收益：用 $3$ 枚硬币代替清除四个 $1$ 的 $4$ 次单点操作，答案恰好减少 $1$。"
+      ],
+      "solution_brief": "先把目标棋盘转为全白，构造每个 $2\\times2$ 邻域颜色异或得到辅助网格。统计其中 $1$ 的数量；若存在一个内部位置使对应的四个辅助值全为 $1$，使用一次右下角操作并将答案减 $1$，整体复杂度为 $O(nm)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:22:38+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1592F2",
+      "contest_id": 1592,
+      "title": "Alice and Recoloring 2",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1592/problem/F2",
+      "editorial_url": "https://codeforces.com/blog/entry/95583",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心",
+        "数据结构"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "flows",
+        "graph matchings",
+        "greedy"
+      ],
+      "statement_brief": "给定一个初始全白的 $n\\times m$ 网格，目标是通过翻转包含指定角落的任意子矩形得到目标黑白染色；四个角落对应的操作费用分别为左上 $1$、左下 $3$、右上 $4$、右下 $2$。求达到目标染色所需的最小金币数。",
+      "transformed_statement": "题解把网格操作重述为改造网格上的基础翻转与配对翻转：配对操作由一个行点和一个列点确定，并同时翻转该行列交点、两个边界点及右下角；可同时执行的配对操作被建模为二分图匹配。",
+      "key_observations": [
+        "在题解的改造网格中，一次配对操作只会翻转 $(x,y)$、$(x,m)$、$(n,y)$ 和 $(n,m)$ 四格；相同 $x$ 或相同 $y$ 的两次操作可被第一类操作替代，因此有效操作必须两两不同端点。",
+        "除右下角外，配对操作涉及的三个格子都必须为黑色（记为 $1$）；否则操作后还需额外花费恢复，直接用第一类操作处理更优。",
+        "把行节点 $x$ 与列节点 $y$ 相连当且仅当 $a[x][y]=a[x][m]=a[n][y]=1$，则互不共享行列的可行操作恰好对应这个二分图中的匹配。",
+        "设最大匹配大小为 $K$，任意 $0\\le k\\le K$ 都能选出 $k$ 次配对操作；分别计算操作后剩余黑格数 $ones\\_left$，取 $ones\\_left+2k$ 的最小值即可。"
+      ],
+      "solution_brief": "将题目先化为改造网格上的两类操作：基础操作处理剩余黑格，配对操作花费 $2$ 并对应二分图中的一条边。求可行边的最大匹配，枚举匹配大小 $k$，计算剩余黑格数与 $2k$ 的总费用并取最小值。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:22:17+00:00",
+          "quality_flags": [
+            "editorial_references_first_version",
+            "partial_editorial"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 8,
       "problem_key": "1594A",
