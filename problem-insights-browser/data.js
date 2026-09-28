@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3833,
+    "total_problems": 3839,
     "source_total_problems": 3841,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3833,
-    "with_editorial_brief": 3516,
-    "with_solution_brief": 3518,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3839,
+    "with_editorial_brief": 3522,
+    "with_solution_brief": 3524,
     "missing_editorial_brief": 315,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2895,
+    "ai_override_count": 2901,
     "primary_topic_count": 13,
-    "contest_count": 594,
+    "contest_count": 595,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数论与同余": 406,
+    "动态规划与状态设计": 315,
+    "构造与贪心": 1245,
+    "组合计数与概率": 293,
+    "图论与网络流": 250,
+    "数据结构": 367,
     "基础实现与模拟": 241,
-    "构造与贪心": 1244,
-    "动态规划与状态设计": 314,
-    "数论与同余": 405,
-    "数据结构": 366,
     "交互": 112,
-    "组合计数与概率": 292,
-    "图论与网络流": 249,
     "字符串": 200,
     "树结构": 183,
     "几何": 90,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2538,
+    "ai_generated_with_editorial": 2544,
     "missing_editorial": 315,
     "ai_generated_partial_editorial": 87,
     "low_confidence": 1,
@@ -118113,6 +118113,190 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1558,
+      "name": "Codeforces Round 740 (Div. 1, based on VK Cup 2021 - Final (Engine))",
+      "date": "2021-08-24",
+      "url": "https://codeforces.com/contest/1558",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3300,
+      "problems": [
+        {
+          "key": "1558A",
+          "index": "A",
+          "slot": "A",
+          "title": "Charmed by the Game",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1558/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "网球比赛共进行 $a+b$ 局，双方交替发球，首局由谁发球未知；每局由发球方或接球方获胜，接球方获胜称为一次破发。已知 Alice 和 Borys 各赢了多少局，求所有可能的总破发次数 $k$。",
+          "transformedStatement": "固定首局由 Alice 发球，则她和 Borys 的发球局数分别为 $p=\\lceil(a+b)/2\\rceil$ 与 $q=\\lfloor(a+b)/2\\rfloor$；把两人的破发次数设为 $x,y$，用胜局方程刻画可行的 $(x,y)$，再合并两种首发情况。",
+          "keyObservations": [
+            "固定 Alice 先发时，设她与 Borys 分别发球 $p=\\lceil(a+b)/2\\rceil$、$q=\\lfloor(a+b)/2\\rfloor$ 局；两类破发次数 $x,y$ 满足 $a=(p-x)+y$，因此枚举一个变量即可确定另一个。",
+            "总破发数为 $x+y$，交换发球顺序只需再处理一次并合并结果；这覆盖了首局发球者未知的两种情况。",
+            "令 $d=\\lfloor|a-b|/2\\rfloor$，当 $a+b$ 为偶数时答案从 $d$ 到 $a+b-d$ 且与 $d$ 同奇偶；当总局数为奇数时区间内每个整数都可行。"
+          ],
+          "solutionBrief": "可按两种首发者分别计算，或直接使用闭式。令 $d=\\lfloor|a-b|/2\\rfloor$：总局数为偶数时输出 $d,d+2,\\ldots,a+b-d$；为奇数时输出完整区间 $d$ 到 $a+b-d$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1558B",
+          "index": "B",
+          "slot": "B",
+          "title": "Up the Strip",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1558/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "math",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "有一条编号为 $1$ 到 $n$ 的竖直条带，棋子从 $n$ 出发，每次可将当前位置 $x>1$ 减去任意 $y\\in[1,x-1]$，或移动到 $\\lfloor x/z\\rfloor$（$z\\in[2,x]$）。不同参数即使到达同一格也算不同方案，求到达 $1$ 的方案数模质数 $m$。",
+          "transformedStatement": "把问题改写为位置状态 DP：$f(x)$ 是从 $x$ 到 $1$ 的路径数，减法转移形成前缀和，除法转移形成按商分组的多重集和；再利用相邻位置多重集的差异维护全部转移贡献。",
+          "keyObservations": [
+            "设 $f(x)$ 为从位置 $x$ 到位置 $1$ 的方案数，则减法操作贡献前缀和，除法操作贡献 $\u001b[?]$ 不同整除结果的加权和，从而得到可递推的状态定义。",
+            "对固定 $x$，$\u001bfloor{x/z}\\rfloor$ 的取值只有 $O(\\sqrt{x})$ 种；相同商对应连续的 $z$ 区间，可按区间长度合并贡献，避免逐个枚举除数。",
+            "从 $S(x)$ 过渡到 $S(x+1)$ 时，除 $x$ 和 $1$ 的新增贡献外，每个 $x+1$ 的大于 $1$ 的因子都会把一个出现的 $i-1$ 替换为 $i$，因此可用 $f(i)-f(i-1)$ 增量维护转移和。",
+            "所有倍数更新的总次数为 $\\sum_{c=1}^{n}\\lfloor n/c\\rfloor=O(n\\log n)$，配合线性数组即可在内存限制下完成计算。"
+          ],
+          "solutionBrief": "令 $f(x)$ 表示从 $x$ 到 $1$ 的方案数，先写出减法前缀和与除法转移的递推。通过维护相邻位置转移多重集的增量，按每个 $c$ 更新其所有倍数，整体复杂度为 $O(n\\log n)$，空间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1558C",
+          "index": "C",
+          "slot": "C",
+          "title": "Bottom-Tier Reversals",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1558/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个长度为奇数的排列，每次只能选择一个奇数长度的前缀并将其反转。要求在不超过 $5n/2$ 次操作内将排列升序排序；若无法做到则输出 $-1$，否则输出任意合法的反转长度序列。",
+          "transformedStatement": "把操作看成只在同奇偶位置间移动元素：先验证元素值与位置的奇偶性，再从后往前贪心地固定最大值对 $(n,n-1)$、$(n-2,n-3)$ 等，每次用至多 5 次前缀反转缩短未处理区间。",
+          "keyObservations": [
+            "反转奇数长度前缀时，位置 $i$ 只会移到同奇偶的位置，因此元素的值与当前位置奇偶性不匹配时必然无解。",
+            "满足奇偶性条件后，当前末尾的两个目标值 $n-1,n$ 可通过至多 5 次特定前缀反转同时归位，从而把问题规模缩小 2。",
+            "令 $n$ 所在位置为奇数 $x$、$n-1$ 所在位置为偶数 $y$，依次反转 $x,y-1,y+1,3,n$，即可将它们送到末尾；已归位的后缀不会再被后续操作影响。",
+            "重复处理 $(n,n-1),(n-2,n-3),\u001b0dots$，最多执行 $5(n-1)/2$ 次反转，满足题目的操作上限。"
+          ],
+          "solutionBrief": "先检查每个位置与其中元素是否同奇偶；不满足则输出 $-1$。否则从后往前处理相邻的两个最大值，按 $x,y-1,y+1,3,n$ 的长度反转前缀将其归位，再缩小当前范围，最多使用 $5(n-1)/2$ 次操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1558D",
+          "index": "D",
+          "slot": "D",
+          "title": "Top-Notch Insertions",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1558/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures"
+          ],
+          "statementBrief": "给定长度为 $n$、元素均在 $1$ 到 $n$ 的整数序列，按插入排序从左到右处理每个位置：若当前元素小于已处理前缀中的元素，就把它插入到第一个严格更大的元素之前，并记录从原位置到新位置的插入。给出全部插入及其顺序，要求计算恰好产生这些插入的初始序列数量，结果模 $998244353$。",
+          "transformedStatement": "插入顺序唯一确定初始元素在最终非递减序列中的排列，因此只需统计最终序列。插入约束转化为若干相邻位置必须严格递增，其余位置允许相等，再按这些强制边界数进行组合计数。",
+          "keyObservations": [
+            "给定的插入序列唯一决定每个初始元素在最终有序序列中的位置，因此可以改为统计满足条件的最终序列。",
+            "若某元素曾被插入到另一元素之前，则最终有序序列中对应的相邻边界必须严格递增；其余相邻位置只需满足非递减。",
+            "设必须严格递增的边界数为 $c$，将所有非严格边界右侧的后缀整体加 $1$，可双射到从 $1$ 到 $2n-1-c$ 中选取 $n$ 个不同数的序列，答案为 $\\binom{2n-1-c}{n}$。",
+            "逆序处理插入 $(x_i,y_i)$，在尚未确定的位置集合中取第 $y_i$ 个位置 $p$ 及其后继 $q$；标记 $q$ 对应的边界并删除 $p$，即可用顺序统计结构求出 $c$。"
+          ],
+          "solutionBrief": "逆序维护最终序列中尚未填入的位置集合，用第 $y_i$ 个和第 $y_i+1$ 个位置还原每次插入，并统计必须严格递增的边界数 $c$。最后计算 $\\binom{2n-1-c}{n}$；用支持第 $k$ 小和删除的结构可在 $O(m\\log n)$ 内完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1558E",
+          "index": "E",
+          "slot": "E",
+          "title": "Down Below",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1558/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "dfs and similar",
+            "graphs",
+            "greedy",
+            "meet-in-the-middle",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个连通洞穴图，英雄从洞穴 1 出发；进入未访问洞穴时，只有当前能力值严格大于怪物强度 $a_i$ 才能获胜，并增加 $b_i$。每条隧道可双向使用，但不能连续两次沿同一条隧道原路返回；求击败所有怪物所需的最小初始能力值。",
+          "transformedStatement": "固定初始能力值 $p$，把已经击败怪物且能够在其内部通行的洞穴看成已处理集合；问题转化为不断寻找满足禁忌回退规则的增广路径，将新的洞穴安全并入该集合，并判定最终能否覆盖全图。",
+          "keyObservations": [
+            "已击败怪物的洞穴集合必须保持内部可达，否则即使新增洞穴成功，也可能因不能原路折返而无法继续行动。",
+            "一条从已处理集合出发、经过未处理洞穴并回到集合的路径，可以一次性把中间洞穴加入集合，从而保持后续行动的可达性。",
+            "若两条可行路线从集合通向同一个未处理洞穴，且其中一条抵达时能力值不低于另一条，就能沿较强路线进入，再反向接上较弱路线返回集合，形成合法扩展路径。",
+            "固定初始能力值后，可扩展的洞穴集合具有单调性；因此能否通关可作为判定条件，对初始能力值进行二分。"
+          ],
+          "solutionBrief": "二分初始能力值 $p$。固定 $p$ 后维护已击败洞穴集合，反复用 DFS/BFS 寻找回到集合或两条路径汇合的扩展路径；每次扩展至少加入一个洞穴，最多进行 $n$ 次，每次耗时 $O(m)$，总复杂度为 $O(nm\\log a_{max})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1558F",
+          "index": "F",
+          "slot": "F",
+          "title": "Strange Sort",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1558/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/94216",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "sortings"
+          ],
+          "statementBrief": "给定一个长度为奇数的排列，每轮按奇偶交替选择相邻位置：奇数轮处理 $(1,2),(3,4),\\ldots$，偶数轮处理 $(2,3),(4,5),\\ldots$；每对位置若左值更大就交换。求排列第一次变为升序所需的轮数，已升序则答案为 $0$。",
+          "transformedStatement": "把每个阈值 $x$ 生成的序列 $b_i=[a_i\\ge x]$ 看作一行 $0/1$ 网格；原排列排序等价于所有行同时变成前缀零、后缀一。于是问题转为维护每行中零向左移动到目标位置所需的最大轮数。",
+          "keyObservations": [
+            "把排列按阈值拆成二值序列 $b_i=[a_i\\ge x]$；交换相邻逆序对在每一行上完全等价，因此排列有序当且仅当所有二值行都已排成 $0$ 在前、$1$ 在后。",
+            "对一行二值序列，零的相对顺序不变；第 $i$ 个零最终要到位置 $i$，其完成时间满足 $s(i)=\\max(s(i-1)+1,\\ k_i+(p_i\\bmod 2))$，分别对应被前一个零阻塞和持续与左侧的一交换。",
+            "只需考虑初始并非已经就位的零，最终完成时间可化为 $\\max_{i=t+1}^{m}(k_i+(p_i\\bmod 2)+(m-i))$，其中 $t$ 是开头连续零的数量；这把逐轮模拟转成对位置贡献的最大值。",
+            "随阈值 $x$ 增大，二值序列每次只把一个位置从 $1$ 改成 $0$；维护各零的贡献值，并对受影响的后缀做区间加、全局取最大值，即可在所有阈值间复用信息。"
+          ],
+          "solutionBrief": "将排列转为所有阈值序列 $[a_i\\ge x]$，分别求奇偶交替相邻交换所需轮数。用零的位置、左侧一数和位置奇偶得到贡献公式；按 $x$ 扫描时单点翻转，在线段树上进行区间加与区间最大值维护，所有测试总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
