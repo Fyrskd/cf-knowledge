@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T10:42:46+00:00",
+  "updated_at": "2026-09-28T10:49:13+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -82167,6 +82167,195 @@
         "quality_flags": [
           "statement中的核心方程排版缺失，依据editorial补全"
         ]
+      }
+    },
+    "1605F": {
+      "problem_key": "1605F",
+      "title": "PalindORme",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/1605/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/96866",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a6b387687143777b501d8b6bdb0120df691d65fa610c7dccf351545d57a03ccf",
+      "generated_at": "2026-09-28T10:47:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的有序整数数组，每个元素在 $[0,2^k-1]$ 内。若能通过重排使任意前缀的按位或等于对应后缀的按位或，则称数组良好；要求统计所有良好有序数组的数量并对素数 $m$ 取模。",
+        "transformed_statement": "先把数组元素视为多重集合，按从外向内的顺序配对：当前按位或为 mask 时，配对元素必须满足 $mask|x=mask|y$。对无法继续配对的数组，提取唯一最佳良好子序列，并按其长度及总比特数进行计数 DP。",
+        "key_observations": [
+          "逐层从两端取元素时，只需维护已选元素的按位或值 mask；任取满足 mask | x = mask | y 的一对都不会影响后续可选配对。",
+          "对坏数组，该过程失败前得到的最长偶数长度良好子序列唯一；剩余元素中至多一个是 mask 的子掩码，可将其放入中心形成唯一的最佳子序列。",
+          "最佳子序列之外的每个元素都必须包含新引入的比特，且与 mask 按位或后的值两两不同；因此剩余部分可拆成新比特分配、正数排列和已有比特自由填入三部分计数。",
+          "最佳子序列长度为 n−1 且 n 为奇数时，构造出的数组实际是良好的特殊情形；计算坏数组时跳过这类转移即可避免重复计数。"
+        ],
+        "solution_brief": "按数组长度和总共出现的比特数建立 DP，利用唯一最佳子序列从较短良好数组转移计数。转移系数由位置选择、比特选择、带容斥的正数排列及已有比特填入组成，复杂度为 $O(n^4)$；总答案由总数组数减去坏数组数得到。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，计数模型、特殊情形与复杂度依据 editorial_text，题目分类参考 tags。",
+        "quality_flags": []
+      }
+    },
+    "1605E": {
+      "problem_key": "1605E",
+      "title": "Array Equalizer",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1605/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/96866",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "fedc49420a3b2cfe84e30af46ca0c6776a6cfb7c9563ae4111a671b038ce3c78",
+      "generated_at": "2026-09-28T10:47:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度为 $n$ 的数组，每次选择下标 $i$，可将位置 $i$ 及其所有倍数同时加一或减一，目标是用最少操作把数组 $a$ 变成数组 $b$。其中 $b_1$ 未知；对每个猜测值 $x$（将其作为 $b_1$）分别求最少操作数。",
+        "transformed_statement": "把每个位置的目标改写为差值 $B_i=b_i-a_i$，从全零数组出发，通过对下标及其倍数加减来构造 $B$。固定 $B_1=x$ 后，最优方案转化为依次确定各位置的净补充值，并求这些线性函数绝对值之和。",
+        "key_observations": [
+          "只需考虑差值 $B_i=b_i-a_i$，因此可把初始数组设为全零，目标改为差值数组 $B$，原数组的具体数值不再重要。",
+          "从小到大处理位置 $u$ 时，所有能影响 $u$ 的更小下标操作已经确定；此时只能在 $u$ 上执行若干次加减操作，把当前值精确补到 $B_u$，且该补充值的绝对值是此位置的最小代价。",
+          "令未知差值 $B_1=x$，每个位置所需执行的净操作次数都可写成 $c_u x+d_u$，所以总答案是若干绝对值线性函数之和。",
+          "将非零系数统一调整为正后，每项绝对值只会在一个断点 $x=-d_u/c_u$ 处改变符号；按断点排序并维护前后缀和，就能用二分回答每个查询。"
+        ],
+        "solution_brief": "先计算 $B_i=b_i-a_i$，对固定的 $B_1=x$ 按下标递推每个位置的净操作次数，得到 $|c_ix+d_i|$。预处理各项断点并排序，用前缀和、后缀和及二分快速计算每个查询；总复杂度为 $O(n\\log n+q\\log n)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟",
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 中的数组转换目标与查询定义，以及 editorial 中的差值建模、逐位置贪心和断点前缀和方法；操作含义由 editorial 补全。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1605D": {
+      "problem_key": "1605D",
+      "title": "Treelabeling",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1605/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/96866",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "ce8246b6c2ab7e700431ea6058e59607109e90a43aefa25ba34e187f217a7f96",
+      "generated_at": "2026-09-28T10:48:29+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵树，可以先任意重排节点编号；之后棋子从 Eikooc 首选的节点开始，轮流沿边移动到满足编号异或条件的相邻节点，无法移动者输。要求输出一种重标号，使 Eikooc 首回合可以选择并必胜的节点数最大。",
+        "transformed_statement": "把每个编号按二进制最高位分类：同类相邻边可移动，异类相邻边不可移动。因此目标等价于让树的每条边连接不同最高位类别，再用树的二分染色承载这些类别。",
+        "key_observations": [
+          "若相邻节点编号的最高位相同，则两数异或值小于当前编号，边可被走过；若最高位不同，则异或值大于两端编号，边完全不可走。",
+          "只要每条边两端的最高位不同，任意起点都没有可走的边，Sushi 无法行动，因此 Eikooc 的所有首选节点都获胜。",
+          "若存在最高位相同的相邻节点，这些节点组成的连通块是一棵树，取其中叶子后，其相邻节点可把棋子移到叶子并使 Eikooc 无路可走，因此至少存在一个失败起点。",
+          "将树二分染色，并让每个最高位对应的编号组完全归入同一种颜色；较小颜色类大小 $w$ 可写成若干不同幂 $2^i$ 之和，恰好用 $w$ 的二进制位选择这些编号组。"
+        ],
+        "solution_brief": "先对树做二分染色，设较小颜色类大小为 $w$。根据 $w$ 的二进制位，把编号 $1$ 到 $n$ 按最高位分组，并将选中的整组分配给较小颜色类、其余分给另一类；这样每条边两端最高位不同，所有节点都能作为必胜起点。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "博弈",
+          "树结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 的树上博弈与重标号要求、editorial 的最高位分析和二分构造，以及 tags 中的树、构造和博弈信息。",
+        "quality_flags": [
+          "statement_formula_missing，移动条件依据题解语义还原"
+        ]
+      }
+    },
+    "1605C": {
+      "problem_key": "1605C",
+      "title": "Dominant Character",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1605/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/96866",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "d7676be31f848b3609c963692aaf61aafd91504396cc7e2942c033d6496412af",
+      "generated_at": "2026-09-28T10:48:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定只含 `a`、`b`、`c` 的字符串，需选择一个长度至少为 $2$ 的连续子串，使其中 `a` 的出现次数严格多于 `b` 和 `c` 各自的出现次数；求满足条件的最短长度，不存在则输出 $-1$。",
+        "transformed_statement": "题解将问题转化为寻找一个长度不超过 $7$ 的局部证书：任何可行字符串都包含 `aa`、`aba`、`aca`、`abca`、`acba`、`abbacca`、`accabba` 等最小可行形态之一，因此只需检查所有短子串。",
+        "key_observations": [
+          "若存在两个字符 `a` 的下标距离不超过 $2$，则最短答案必为 `aa`、`aba` 或 `aca` 之一，长度至多为 $3$。",
+          "若相邻 `a` 的距离都至少为 $3$，则相邻两个 `a` 之间各有两个字符；出现 `bc` 或 `cb` 时，长度为 $4$ 的子串 `a??a` 已满足条件。",
+          "在剩余情形中，间隔块只能是 `bb` 或 `cc`，且必须同时出现两种块；相邻的 `bb,cc` 或 `cc,bb` 可构成 `abbacca` 或 `accabba`，因此答案至多为 $7$。",
+          "只要存在满足条件的子串，就一定存在长度不超过 $7$ 的最短子串，所以枚举所有长度 $2$ 到 $7$ 的子串并检查计数即可。"
+        ],
+        "solution_brief": "由结论可知答案若存在则不超过 $7$。对每个起点枚举长度 $2$ 至 $7$ 的子串，统计 `a`、`b`、`c` 次数，检查 `a` 是否同时严格多于 `b` 和 `c`，取最小长度；没有则输出 $-1$。总复杂度为 $O(7n)$。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的字符计数目标、editorial_text 的长度至多为 $7$ 的证明与枚举方案，并参考 tags。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1605B": {
+      "problem_key": "1605B",
+      "title": "Reverse Sort",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1605/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/96866",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "73eaa27c1eb3fdec3b95d08a1a296adcb9f9b30ff9b8d9898bafa26c9053ddd8",
+      "generated_at": "2026-09-28T10:49:00+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个只含 $0$ 和 $1$ 的字符串，每次可以选取一个子序列并将其中字符的顺序反转。要求求出把字符串按非递减顺序（所有 $0$ 在前、所有 $1$ 在后）排列所需的最少操作次数，并给出操作方案。",
+        "transformed_statement": "设 $cnt_0$ 为字符串中 $0$ 的数量，则目标被划分为前 $cnt_0$ 个位置和其余位置。问题等价于找出前段中的错位 $1$ 与后段中的错位 $0$，并判断是否能通过一次反转所选错位子序列完成交换。",
+        "key_observations": [
+          "排序后的目标串前 $cnt_0$ 位必须全为 $0$，其余位置全为 $1$，因此只需关注这两个区域中的错位字符。",
+          "前 $cnt_0$ 位中的每个错位 $1$ 都能与后 $cnt_1$ 位中的错位 $0$ 配对，且两类错位数量相等，使一次反转操作能够同时修正全部错位。",
+          "若字符串已经有序则无需操作；否则选出前 $cnt_0$ 位的所有 $1$ 和后 $cnt_1$ 位的所有 $0$，按原顺序组成子序列并反转，即可直接得到有序串。"
+        ],
+        "solution_brief": "统计 $0$ 的数量 $cnt_0$。检查前 $cnt_0$ 位中的 $1$ 与后方的 $0$；若无错位答案为 $0$，否则选出这些错位字符组成子序列并反转，答案为 $1$。扫描字符串即可完成。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text、题名和 tags；题面操作规则由题名、示例及题解补足。",
+        "quality_flags": [
+          "statement_inferred",
+          "statement_operation_missing"
+        ]
+      }
+    },
+    "1605A": {
+      "problem_key": "1605A",
+      "title": "A.M. Deviation",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1605/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/96866",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7c25040c5f6c4a694228a12b9ec8117418e996ec767aa2772dda26ef4dace881",
+      "generated_at": "2026-09-28T10:49:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定三个整数 $a_1,a_2,a_3$，每次可选两个不同位置，让其中一个数加 $1$、另一个数减 $1$，操作次数不限。目标是最小化 $|a_1+a_3-2a_2|$。",
+        "transformed_statement": "把三元组操作转化为研究表达式 $x=a_1+a_3-2a_2$ 的可达变化：它只能增加或减少 $3$，所以问题等价于求与初始 $x$ 同余于 $3$ 的整数的最小绝对值。",
+        "key_observations": [
+          "令 $x=a_1+a_3-2a_2$；对 $a_1,a_3$ 一增一减时，$x$ 不变，因此可直接忽略这类操作对目标表达式的影响。",
+          "将 $a_1$ 或 $a_3$ 增加 $1$、同时将 $a_2$ 减少 $1$，会使 $x$ 增加 $3$；反向操作则使其减少 $3$。",
+          "因此 $x$ 只能变化为与原值同余于 $3$ 的整数，最小绝对值由 $x\\bmod 3$ 决定：余数为 $0$ 时答案为 $0$，否则答案为 $1$。"
+        ],
+        "solution_brief": "计算 $x=a_1+a_3-2a_2$。操作只能让 $x$ 加减 $3$，所以保持其模 $3$ 的余数；若 $x$ 能被 $3$ 整除，答案为 $0$，否则为 $1$。每组只需常数次计算。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text，以及 math、number theory 标签。",
+        "quality_flags": []
       }
     }
   }
