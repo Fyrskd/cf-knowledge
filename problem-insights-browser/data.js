@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3418,
+    "total_problems": 3424,
     "source_total_problems": 3427,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3418,
-    "with_editorial_brief": 3119,
-    "with_solution_brief": 3121,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3424,
+    "with_editorial_brief": 3125,
+    "with_solution_brief": 3127,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2480,
+    "ai_override_count": 2486,
     "primary_topic_count": 13,
-    "contest_count": 525,
+    "contest_count": 526,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "基础实现与模拟": 213,
-    "构造与贪心": 1101,
+    "基础实现与模拟": 214,
+    "构造与贪心": 1103,
+    "图论与网络流": 222,
+    "数据结构": 324,
     "数论与同余": 363,
-    "数据结构": 323,
     "动态规划与状态设计": 281,
     "字符串": 181,
     "代数、矩阵与多项式": 24,
-    "图论与网络流": 220,
     "树结构": 166,
     "组合计数与概率": 258,
     "几何": 81,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "交互": 101
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2165,
     "missing_editorial": 297,
-    "ai_generated_with_editorial": 2159,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
     "manual_override": 891,
@@ -105443,6 +105443,188 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1651,
+      "name": "Educational Codeforces Round 124 (Rated for Div. 2)",
+      "date": "2022-03-10",
+      "url": "https://codeforces.com/contest/1651",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1651A",
+          "index": "A",
+          "slot": "A",
+          "title": "Playoff",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1651/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100796",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "有 $2^n$ 名按编号排列的选手进行固定淘汰赛，每轮将所有存活选手两两配对，败者出局、胜者晋级；配对方式和胜负规则按题面规定执行。给定 $n$，求最终冠军的编号。",
+          "transformedStatement": "将比赛拆成首轮和后续轮次：首轮奇数编号与偶数编号配对且奇数获胜，之后只剩奇数编号并在每场保留较大编号，因此问题转化为寻找最大奇数编号。",
+          "keyObservations": [
+            "第一轮每场都是奇数编号对偶数编号，且奇数编号更小，因此所有偶数选手会同时出局。",
+            "第一轮后剩下的选手编号全为奇数，之后每场比赛中编号更大的选手获胜，因此胜者始终是当前最大奇数编号。",
+            "全体选手中的最大奇数编号为 $2^n-1$，所以无需模拟比赛过程即可直接计算答案。"
+          ],
+          "solutionBrief": "由第一轮淘汰所有偶数编号选手，后续比赛在奇数编号之间进行且较大编号获胜，因此每组答案直接输出 $2^n-1$。用整数循环或位运算计算 $2^n$，避免浮点误差。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1651B",
+          "index": "B",
+          "slot": "B",
+          "title": "Prove Him Wrong",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1651/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100796",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的正整数数组，每次可任选两个位置，并把这两个位置的数都替换为它们差的绝对值。要求构造一个所有元素不超过 $10^9$ 的数组，使对任意一对位置执行一次操作后数组总和都不减少；若无法构造则输出 NO。",
+          "transformedStatement": "把条件转化为任意两数中较大者至少是较小者的 $3$ 倍。排序后只需检查相邻元素的三倍关系，因而可用增长最慢的几何序列 $1,3,3^2,\\ldots$ 进行构造并检查上界。",
+          "keyObservations": [
+            "一次操作后的总和为 $S-(a_i+a_j)+2|a_i-a_j|$，因此较大数至少是较小数的 $3$ 倍，操作才不会使总和下降。",
+            "将数组排序后，只需保证每个相邻元素满足 $a_{k+1}\\ge 3a_k$；这同时保证任意两元素的比值条件。",
+            "满足条件的最小构造是 $[1,3,9,\\ldots,3^{n-1}]$，因此只需检查 $3^{n-1}\\le 10^9$，即可判断是否存在答案。"
+          ],
+          "solutionBrief": "对每个测试用例检查 $3^{n-1}\\le10^9$。若成立，输出 $1,3,9,\\ldots,3^{n-1}$；否则输出 NO。该序列任意较大元素至少是较小元素的三倍，故任选两个位置操作后总和不会下降。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1651C",
+          "index": "C",
+          "slot": "C",
+          "title": "Fault-tolerant Network",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1651/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/100796",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "有两排各含 $n$ 台电脑，同行相邻电脑已连成两条链；可添加跨排连线，连接 $a_i$ 与 $b_j$ 的费用为 $|a_i-b_j|$。要求添加连线后，无论哪一台电脑失效网络仍保持连通，求最小总费用。",
+          "transformedStatement": "把容错条件等价化为四个行端点 $A_1,A_n,B_1,B_n$ 都必须接入另一排。只需为 $A$ 排两端选择三类代表连接，再为未覆盖的 $B$ 排端点补最近值连接，转化为 9 种方案取最小值。",
+          "keyObservations": [
+            "网络具备单点故障容错性，当且仅当四个端点 $A_1,A_n,B_1,B_n$ 都至少有一条跨行连边；否则端点相邻的唯一行内邻居失效后会与另一行断开。",
+            "若某个中间电脑失效，一行至多被分成左右两段，而两端都接入仍连通的另一行，因此四个端点接入即可保证整体连通。",
+            "对 $A_1$ 或 $A_n$，最优跨行连接只需考虑对方两个端点或与其数值最近的电脑，共 $3\\times3$ 种端点连接方案。",
+            "若某个 $B$ 行端点尚未被覆盖，补一条连接到 $A$ 行中数值最近的电脑即可；逐一计算这些补边后的总费用并取最小值。"
+          ],
+          "solutionBrief": "先枚举 $A_1,A_n$ 分别连接到 $B_1$、$B_n$ 或最近值电脑的 9 种方案；对未覆盖的 $B$ 行端点补最近值连接，计算并取最小总费用。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1651D",
+          "index": "D",
+          "slot": "D",
+          "title": "Nearest Excluded Points",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1651/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/100796",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定平面上的 $n$ 个互不相同的整点。对每个给定点，寻找一个不在这 $n$ 个点中的整点，使其曼哈顿距离最小；若有多个最近点可任选，并输出所选点。",
+          "transformedStatement": "把给定点视为网格图中的占用顶点，把不在集合中的相邻整点视为出口。先从所有连接出口的边界顶点同时向集合内部扩展，每个顶点继承最先到达的出口坐标。",
+          "keyObservations": [
+            "与给定点共享一条边的空网格点到该点的曼哈顿距离为 $1$，因此所有这类边界点都能立即确定答案。",
+            "若一个未确定点与已确定点相邻，则它的最近空点距离至少再增加 $1$；将已确定点保存的空点答案传给它，仍能得到一个最近空点。",
+            "按距离递增扩展所有边界点，相当于在给定点构成的网格图上进行多源 BFS；首次到达某点时，其层数就是最近空点距离，复制的出口坐标即为合法答案。"
+          ],
+          "solutionBrief": "用集合判断四个方向的邻点是否存在。先把所有邻接空点的给定点作为 BFS 源点并记录该空点，再逐层扩展到未确定的相邻给定点，直接复制父点的答案；整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1651E",
+          "index": "E",
+          "slot": "E",
+          "title": "Sum of Matchings",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1651/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/100796",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "constructive algorithms",
+            "dfs and similar",
+            "graph matchings",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个二分图，两侧各有 $n$ 个顶点且每个顶点度数均为 $2$。分别在两侧选一个非空连续下标区间，只保留落入区间的顶点及其间的边，求所有区间选择对应子图的最大匹配大小之和。",
+          "transformedStatement": "将每个区间选择得到的子图拆成路径和偶环：最大匹配的缺口只来自奇数顶点路径。于是枚举奇路径的中心与长度，转而统计它在多少组左右区间中恰好出现。",
+          "keyObservations": [
+            "把最大匹配改为统计被匹配覆盖的顶点数，最后除以 $2$；再从所有子图顶点总数中扣除未覆盖顶点，计数目标转为奇数顶点路径的数量。",
+            "子图的最大度数不超过 $2$，因此每个连通分量是路径或偶环；偶环和偶点路径可以覆盖全部顶点，只有奇点路径恰好产生一个未覆盖顶点。",
+            "固定奇数路径中心 $x$ 和半径 $k$ 后，只需保证距离不超过 $k$ 的顶点被选入、距离恰为 $k+1$ 的顶点被排除；两侧区间分别独立计数。",
+            "同一部分中必须包含的顶点只需保留最小和最大下标，区间会自动包含中间点；再统计覆盖这两个端点且避开被排除点的区间数，即可在 $O(1)$ 时间得到该部分贡献。"
+          ],
+          "solutionBrief": "先统计所有区间对包含的顶点总数，再枚举每个中心和奇数路径半径，维护两侧必须包含与必须排除的下标范围，乘上两部分合法区间数得到未匹配顶点数；总和扣除它后除以 $2$。每个中心枚举 $O(n)$ 个半径，整体为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1651F",
+          "index": "F",
+          "slot": "F",
+          "title": "Tower Defense",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1651/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/100796",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures"
+          ],
+          "statementBrief": "有 $n$ 座塔排成一列，第 $i$ 座容量为 $c_i$、每秒回复 $r_i$，初始满法力；怪物在指定时刻从第 1 点出现，每秒向右移动一格，经过每座塔时受到该塔当前法力的伤害并消耗等量法力。求所有怪物经过全部塔后剩余生命值之和。",
+          "transformedStatement": "把塔按最近一次被清空的时刻划分为连续段；对每个段，根据查询时刻与清空时刻的差值计算当前总法力，并模拟怪物逐段消耗前缀。恢复状态随经过时间单调变化，可用持久化版本表示。",
+          "keyObservations": [
+            "把最后一次被清空时间相同的连续塔压成一个段；怪物至多清空一个前缀并部分消耗下一座塔，因此每次只会删除、切分和新建常数个段。",
+            "被清空的塔经过时间 $d$ 后，若 $\\lceil c_i/r_i\\rceil\\le d$ 就已恢复为 $c_i$，否则法力为 $d r_i$；因此一段的总法力可拆成已恢复塔的容量和未恢复塔的回复率贡献。",
+            "按恢复时间建立持久化线段树版本：从“全部按容量计”开始，恢复事件把单点权值改为回复率，查询时按经过时间选择对应版本，从而得到任意段的法力和。",
+            "若整段法力超过怪物剩余生命，只需在线段树上定位法力前缀不超过该生命值的位置；被完全消耗的部分继续按段处理，部分消耗的塔单独保留。"
+          ],
+          "solutionBrief": "维护按最后清空时间分组的塔段，怪物到来时消耗塔的连续前缀并处理一个可能部分消耗的塔。用按恢复时间切换权值的持久化线段树查询段法力和及可消耗前缀，整体复杂度为 $O((n+q)\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
