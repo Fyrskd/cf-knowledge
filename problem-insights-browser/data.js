@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3434,
+    "total_problems": 3440,
     "source_total_problems": 3442,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3434,
-    "with_editorial_brief": 3136,
-    "with_solution_brief": 3138,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3440,
+    "with_editorial_brief": 3142,
+    "with_solution_brief": 3144,
     "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2496,
+    "ai_override_count": 2502,
     "primary_topic_count": 13,
-    "contest_count": 528,
+    "contest_count": 529,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "组合计数与概率": 261,
+    "数据结构": 326,
+    "图论与网络流": 225,
     "基础实现与模拟": 215,
     "构造与贪心": 1107,
     "字符串": 182,
     "数论与同余": 364,
     "动态规划与状态设计": 282,
-    "图论与网络流": 223,
-    "数据结构": 324,
     "代数、矩阵与多项式": 24,
     "树结构": 166,
-    "组合计数与概率": 259,
     "几何": 81,
     "博弈": 106,
     "交互": 101
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2176,
+    "ai_generated_with_editorial": 2182,
     "missing_editorial": 296,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
@@ -105931,6 +105931,203 @@ window.CF_INSIGHTS_DATA = {
             "当 $S=0$ 时没有任何传球，答案为 $0$；否则答案统一为 $\\max(1,2M-S)$。"
           ],
           "solutionBrief": "统计传球总数 $S$ 和最大值 $M$。若 $S=0$，答案为 $0$；否则输出 $\\max(1,2M-S)$。当最大传球次数不超过其余次数总和时可串成一条链，否则由无法衔接的剩余传球数决定球数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1648,
+      "name": "Codeforces Round 775 (Div. 1, based on Moscow Open Olympiad in Informatics)",
+      "date": "2022-03-06",
+      "url": "https://codeforces.com/contest/1648",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1648A",
+          "index": "A",
+          "slot": "A",
+          "title": "Weird Sum",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1648/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/100592",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "几何",
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "geometry",
+            "math",
+            "matrices",
+            "sortings"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 的颜色表，单元格可沿共边路径移动，路径不受颜色限制；任意两个同色单元格的距离是它们曼哈顿最短路长度。要求计算所有同色单元格无序对的距离总和。",
+          "transformedStatement": "按颜色分组后，把每组的二维曼哈顿距离总和转化为行坐标差值总和与列坐标差值总和；对每个维度排序坐标，用每个坐标在所有点对中的出现次数直接计算贡献。",
+          "keyObservations": [
+            "曼哈顿距离可拆成行差与列差两部分，因此每种颜色的贡献可以分别统计行坐标和列坐标的差值总和。",
+            "将同色单个坐标序列升序排列后，绝对值可去掉；排在位置 $i$ 的坐标对总答案的系数是 $2i+1-k$，其中 $k$ 是该颜色的出现次数。",
+            "每种颜色只需处理自己的坐标列表，统计各列表的贡献后求和，避免枚举同色单元格对；排序方案总复杂度为 $O(nm\\log(nm))$。"
+          ],
+          "solutionBrief": "按颜色收集所有单元格的行、列坐标。分别排序后，对位置 $i$ 的坐标累加 $(2i+1-k)s_i$，得到该维度所有无序点对的差值和，行列结果相加即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1648B",
+          "index": "B",
+          "slot": "B",
+          "title": "Integral Array",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1648/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/100592",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "给定一个由正整数组成的数组，要求任取数组中的 $x,y$（允许相同）且 $x\\ge y$，向下取整的商 $\\lfloor x/y\\rfloor$ 也必须出现在数组中。判断该数组是否满足这一条件。",
+          "transformedStatement": "把每个未出现在数组中的值 $r$ 看作禁止出现的商；对每个已出现的除数 $y$，检查数组中是否存在 $x\\in[ry,(r+1)y-1]$，因为这些 $x$ 恰好会产生商 $r$。",
+          "keyObservations": [
+            "若缺失值为 $r$，只需检查是否存在数组中的 $y$ 和 $x$ 满足 $r y\\le x<(r+1)y$；存在时商为 $r$，数组必不合法。",
+            "固定 $r,y$ 后，候选 $x$ 是一个连续整数区间，可用出现次数的前缀和在 $O(1)$ 时间判断区间内是否有数组元素。",
+            "按递增顺序枚举缺失的 $r$ 和数组中的 $y$；一旦 $r y>c$，后续更大的 $y$ 也不可能产生候选 $x$，因此可提前停止，整体复杂度为 $O(C\\log C)$。"
+          ],
+          "solutionBrief": "统计每个值是否出现，并建立出现次数前缀和。对每个缺失值 $r$ 与每个出现的 $y$，查询区间 $[ry,(r+1)y-1]$ 是否含有数组元素；若有则输出 No，否则输出 Yes。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1648C",
+          "index": "C",
+          "slot": "C",
+          "title": "Tyler and Strings",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1648/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/100592",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "给定整数串 $s$ 和 $t$，将 $s$ 的全部字符重新排列形成不同字符串。统计其中字典序严格小于 $t$ 的字符串数量，并对 $998244353$ 取模；当排列串较短且是 $t$ 的前缀时也算更小。",
+          "transformedStatement": "按与 $t$ 的最长公共前缀分情况：在第一个不同位置放入小于对应 $t_i$ 的剩余字母，后缀任意排列；将每种候选首字母的多重集合排列数维护为数组，并支持前缀求和与单点更新。",
+          "keyObservations": [
+            "固定已匹配前缀后，下一位选取小于 $t_i$ 的字母即可使结果串立刻更小，后续剩余字母可任意排列，因此贡献是这些字母对应排列数之和。",
+            "剩余计数为 $cnt$ 时，若当前位置放字母 $j$，后缀排列数为 $add_j=\\frac{(R-1)!}{cnt_j!\\cdots(cnt_j-1)!\\cdots}$；这把每种首字母的贡献转成可维护的单点值。",
+            "消耗 $t_i$ 后，除 $i$ 外的所有 $add_j$ 具有相同乘法变化，$add_i$ 只需额外乘以 $\\frac{cnt_i-1}{cnt_i}$，所以可用全局乘子和单点修正维护。",
+            "每一步只需查询 $add$ 在字母值小于 $t_i$ 的前缀和并修改一个位置，Fenwick 树将这两类操作降为 $O(\\log K)$；若所有字母恰好匹配且 $n<m$，还要额外计入这个较短前缀。"
+          ],
+          "solutionBrief": "预处理阶乘及逆元，用多重集合排列公式计算各首字母的后缀排列数。沿 $t$ 扫描并维护剩余计数，以全局乘子、单点修正和 Fenwick 树维护各字母贡献的前缀和；匹配结束后补上可能的短前缀情况。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1648D",
+          "index": "D",
+          "slot": "D",
+          "title": "Serious Business",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1648/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/100592",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "implementation",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个 $3\\times n$ 网格，第一、三行可通行，第二行初始不可用。Dima 从 $(1,1)$ 出发，只能向右或向下移动到 $(3,n)$；接受优惠可用代价 $k_i$ 解锁第二行区间 $[l_i,r_i]$，可重复使用优惠，目标是最大化经过格子数值之和减去优惠费用。",
+          "transformedStatement": "用前缀和表示从起点到第二行、再从第二行到终点的收益：若进入第二行列 $i$、离开列 $j$，基础收益为 $s[i]+f[j]$。问题转化为在 $i\\le j$ 时最大化该收益减去覆盖第二行区间 $[i,j]$ 的最小优惠费用。",
+          "keyObservations": [
+            "路径只由进入第二行的列 $i$ 和离开第二行的列 $j$ 决定，且 $i\\le j$；前后两段收益可拆为 $s[i]$ 与 $f[j]$，中间仅需覆盖区间 $[i,j]$。",
+            "多个优惠的作用等价于以最小费用覆盖第二行区间；固定最后使用的优惠后，之前状态只需保留在其左端点之前的最大收益。",
+            "对优惠区间 $[l,r]$，最终组合可写为在 $l\\le i\\le j\\le r$ 中最大化 $dp[i]+f[j]-k$，区间最大值查询因此能处理所有进入和离开位置。",
+            "只使用一个优惠时不能直接套用已有 $dp$，需额外计算区间内 $s[i]+f[j]-k$ 的最大值，以覆盖最优解只依赖单个优惠的情况。"
+          ],
+          "solutionBrief": "用前缀和将路径收益拆成 $s[i]+f[j]$，再把第二行所需可用区间转为最小费用覆盖。定义到达各位置的最大收益 $dp$，对每个优惠用线段树完成区间转移与区间取最大值，另处理只用一个优惠的情况，总复杂度为 $O(q\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1648E",
+          "index": "E",
+          "slot": "E",
+          "title": "Air Reform",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1648/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/100592",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "dsu",
+            "graphs",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "有一个连通的带权无向图，未直接相连的城市对由另一家航空公司补上航线。补图航线的价格等于原图中两城所有路径里最大边权的最小值；改革后还需按同样规则计算原图航线在补图中的新价格，并输出这些结果。",
+          "transformedStatement": "把问题转化为：先为原图补图的每条边赋予原图瓶颈距离，再求补图的最小生成树；原图边在改革后的权值等于该树上两端路径的最大边权。补图最小生成树通过按原图权值分层维护两类连通块构造。",
+          "keyObservations": [
+            "任意两点间的“路径代价最小值”是瓶颈距离，可由最小生成树上两点路径的最大边权表示，因此无需枚举所有路径。",
+            "补图中的边权由原图瓶颈距离决定；按原图边权递增合并连通块时，补图连通块只能在不同原图连通块合并后发生合并。",
+            "检查两个补图连通块能否合并时，失败尝试可由它们之间的原图边逐条承担，因此所有失败检查总量为 $O(m)$，成功合并总量为 $O(n)$。",
+            "补图最小生成树建立后，原图每条边的新权值就是补图树上对应路径的最大边权，可用倍增查询完成。"
+          ],
+          "solutionBrief": "将补图边权视为原图瓶颈距离，并用原图边权递增的类似 Kruskal 过程构造补图最小生成树；失败检查总量摊还为 $O(m)$。随后在两棵树上用倍增查询路径最大值，得到所有原图边的新权值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1648F",
+          "index": "F",
+          "slot": "F",
+          "title": "Two Avenues",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1648/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/100592",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "graphs"
+          ],
+          "statementBrief": "给定一个连通无向简单图和 $k$ 个出行需求，每个居民要从 $a_i$ 到 $b_i$。选择两条不同街道设为大道，经过每条大道一次收费 1，其余街道免费；居民会选择收费最少的路线，要求最大化所有居民支付总额并给出选择及总额。",
+          "transformedStatement": "将问题转为 DFS 树上的边对分析：树边的需求路径数表示其潜在收费贡献，非树边对树边的覆盖关系决定删边后的连通性；覆盖集合相同的树边组成嵌套簇，再在线维护簇内边对的最大收益。",
+          "keyObservations": [
+            "最优解至少包含一条 DFS 树边；若两条选中边都不是树边，删去它们后图仍连通，所有居民都可免费到达。",
+            "固定树边 e1 后，第二条边必须是在删去 e1 后成为桥的边；由此只需处理两条桥、单条桥、唯一覆盖边和覆盖集合相同四类情形。",
+            "对每条树边维护经过它的需求路径数 c、覆盖它的非树边数量 f 及哈希 h；前两类直接由 c 取最大值，f=1 时也可单独求解。",
+            "覆盖集合相同的树边在 DFS 树上形成嵌套的竖直簇；遍历第二条边时用区间加和区间最大值，只保留同簇候选，从而计算恰好经过两条边之一的需求数。"
+          ],
+          "solutionBrief": "先对图做 DFS，统计每条树边的需求路径数、非树边覆盖数和随机 64 位哈希。分别处理桥相关的前三类情况；对哈希相同的树边按 DFS 顺序分簇，用支持区间加与区间最大值的线段树维护候选答案，整体复杂度为 $O(m+(n+k)\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
