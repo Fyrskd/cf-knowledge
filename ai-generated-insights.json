@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T06:26:27+00:00",
+  "updated_at": "2026-09-28T06:37:14+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -75816,6 +75816,243 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面与 editorial 的提示、构造结论及复杂度说明，tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1637H": {
+      "problem_key": "1637H",
+      "title": "Minimize Inversions Number",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1637/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/99883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "db66973f8ce4f026de13a4afb66f6440b8fb67a3b034f137d6dc891809f6f72e",
+      "generated_at": "2026-09-28T06:34:07+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个排列，每次可选取保持原相对顺序的任意长度为 $k$ 的子序列，将它整体移到排列开头。对每个 $k=0,1,\\ldots,n$，求操作后能得到的最小逆序数。",
+        "transformed_statement": "把排列表示为点 $(i,p_i)$，将移动子序列对逆序数的影响转化为选择点权值 $c_i=i-2p_i+1$ 的收益；最优方案等价于取权值最大的前 $k$ 个点。",
+        "key_observations": [
+          "存在一个同长度且不增大逆序数的最优选择，使得选中点后，其右下方的所有点也都被选中，从而选择集合具有闭包结构。",
+          "对选中元素，移动后逆序数可写为 $inv-\\sum c_i-\\frac{k(k-1)}2$，其中 $c_i=i-2p_i+1$，复杂的选中元素内部关系被压缩进单点权值。",
+          "若点 $j$ 位于点 $i$ 的左下方，则 $c_j>c_i$；因此按 $c_i$ 取最大的 $k$ 个点天然满足上述闭包性质，并达到最优。",
+          "固定 $k$ 后只需使用权值降序排列的前缀和，所有答案即可由同一个排序结果统一得到。"
+        ],
+        "solution_brief": "先计算原排列逆序数，令每个位置的权值为 $c_i=i-2p_i+1$，将权值降序排序并求前缀和。长度为 $k$ 的答案是 $inv-prefix_k-\\frac{k(k-1)}2$，整体复杂度为 $O(n\\log n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 的点集建模、闭包引理、权值公式与排序结论，并结合 statement_text 和 tags。",
+        "quality_flags": []
+      }
+    },
+    "1637G": {
+      "problem_key": "1637G",
+      "title": "Birthday",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/1637/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/99883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "35b6650d7f120e3cb29cf004a95dc7b175c4ea8a4f0c6346d32e42cb8d787923",
+      "generated_at": "2026-09-28T06:34:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "初始有 $1,2,\\ldots,n$。每步选择两个数 $x,y$ 删除，并加入 $x+y$ 与 $|x-y|$；要求在不超过 $20n$ 步内让所有数相等，并使最终总和最小，无法做到时输出无解。",
+        "transformed_statement": "把目标公共值先抽象为一个数 $val$，通过逆向操作分析其因子性质，确定它必须是至少为 $n$ 的最小二次幂；随后将初始数列递归改造成若干二次幂，再借助零完成统一倍增。",
+        "key_observations": [
+          "反向操作会把两个数还原为 $(x+y)/2$ 与 $|x-y|/2$；若终态被奇数因子整除，该因子会一直保留到初始的 $1$，故终态只能是 $2$ 的幂。",
+          "正向操作不能让当前最大值低于原数组最大值，因此公共值至少为 $n$；最优公共值是“不小于 $n$ 的最小二次幂”。",
+          "令 $p$ 为不超过 $n$ 的最大二次幂，依次处理 $(p-k,p+k)$，可把数列拆成未变部分、$2,4,\\ldots,2(n-p)$ 和若干个 $2p$，从而递归处理更小规模。",
+          "得到若干个相同的小于目标值的二次幂后，将它们合并出 $0$，再用 $0$ 逐个把其他数翻倍到目标值，最后把剩余的 $0$ 变成目标值。"
+        ],
+        "solution_brief": "当 $n=2$ 时无解。否则目标是最小的、不小于 $n$ 的二次幂；递归把 $1\\ldots n$ 变成不超过目标值的二次幂，再利用重复值制造 $0$，用它逐步翻倍，最终所有数相等，步数不超过 $7n$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意来自 statement，目标值证明与递归构造来自完整 editorial，主题参考 tags。",
+        "quality_flags": []
+      }
+    },
+    "1637F": {
+      "problem_key": "1637F",
+      "title": "Towers",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1637/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/99883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "720bb92d71b399d8aed6554d134afc9f9959bf52ce283e38860db7546b3dc80b",
+      "generated_at": "2026-09-28T06:35:17+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵带高度 $h_v$ 的树，可在任意顶点放置任意数量的塔并为每座塔选择正效率，费用等于效率。若两个位于不同顶点的塔都至少达到 $h_x$，且顶点 $x$ 在它们路径上，则 $x$ 获得信号；求让所有顶点获信号的最小总费用。",
+        "transformed_statement": "把最高高度顶点作为根：要求每个根子树内都有一座效率不低于该顶点高度的塔，并额外保证根由不同子树方向的两座高塔覆盖；问题转为后序合并各子树的最高塔并计算提升费用。",
+        "key_observations": [
+          "取最高点作为根后，根要被覆盖，必须有两个效率至少为 $h_r$ 的不同塔从根的不同子树方向到达；若根只有一个孩子，则其中一个塔必须放在根上。",
+          "对任意非根顶点 $v$，其被覆盖等价于以 $v$ 为根的子树中存在效率至少为 $h_v$ 的塔，因为该塔可与另一根方向的高塔配对，路径必经 $v$。",
+          "子树内部的要求只由“子树最高塔效率”决定，因此先递归处理所有儿子，再把当前子树最高塔提升到 $h_v$（叶子直接放置效率为 $h_v$ 的塔）不会破坏其他约束。",
+          "根部需要的两座高塔应从不同子树中选取各自最高塔并提升到 $h_r$；这种局部提升正好满足根的约束，同时避免额外放塔。"
+        ],
+        "solution_brief": "以最大高度顶点为根，后序递归维护每个子树的最高塔及其最小成本：子树最高塔不足 $h_v$ 时补足差值。最后从不同根子树选两座最高塔提升到根高；若根仅有一个孩子，则在根放一座并提升另一座。整体可在线性时间实现。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text 及 trees/dp/greedy 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1637E": {
+      "problem_key": "1637E",
+      "title": "Best Pair",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1637/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/99883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "daa3da1ff4b323d4dbf1c5a4d440ced089063deb63ef5b41dce07471d94f670e",
+      "generated_at": "2026-09-28T06:35:42+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组中出现的不同整数及其频次，并给出若干不能同时选择的坏数对。选择两个不同且都在数组中出现、同时不构成坏对的数 $u,v$，最大化 $(cnt_u+cnt_v)(u+v)$。",
+        "transformed_statement": "把每个不同数按出现次数分组，组内按数值从大到小排列。固定一个数 $x$ 后，只需在频次不超过 $cnt_x$ 的各组中寻找最大的合法 $y$，因为频次和固定时目标值随 $x+y$ 增大而增大。",
+        "key_observations": [
+          "由于 $f(x,y)$ 对称，可令 $cnt_x\\ge cnt_y$，从而只需枚举不超过 $cnt_x$ 的频次数类，避免重复考虑同一对。",
+          "固定 $x$ 和 $cnt_y$ 后，$cnt_x+cnt_y$ 已确定，因此应按数值 $y$ 从大到小寻找第一个不等于 $x$ 且不在坏对集合中的候选。",
+          "将出现次数相同的数按数值降序分组，并用集合或有序坏对结构判断禁配关系；跳过坏对后得到的首个候选就是该频次数类下的最优 $y$。",
+          "只枚举频次数不超过 $cnt_x$ 的类别时，总体候选遍历规模可按各数的出现次数摊还为 $O(n)$，再加上禁配查询与排序开销即可满足限制。"
+        ],
+        "solution_brief": "统计每个不同数的出现次数，并按次数分组、组内按数值降序排列。固定 $x$ 后只枚举 $cnt_y\\le cnt_x$ 的组，在每组中跳过 $x$ 及坏对中的数，取第一个合法 $y$ 更新 $(cnt_x+cnt_y)(x+y)$；坏对用集合或排序后二分查询。总复杂度为 $O((n+m)\\log m+n\\log n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial_text 的主要算法与复杂度，以及 tags 中的实现提示。",
+        "quality_flags": []
+      }
+    },
+    "1637D": {
+      "problem_key": "1637D",
+      "title": "Yet Another Minimization Problem",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1637/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/99883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0580ef0191e0f171a95f909a9216abae69ffc0023d8ade45714ec248c088f890",
+      "generated_at": "2026-09-28T06:36:07+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度为 $n$ 的数组，每个位置都可以任意次交换该位置在两数组中的两个元素。操作后，分别计算两数组所有元素对的和的平方之和，要求最小化两者成本总和。",
+        "transformed_statement": "把每个位置视为二选一：决定哪个数放入数组 $a$。成本恒等转化后，除固定的元素平方和外，只需选择一种分配方式，使两个数组元素总和的平方和最小；可达的总和由差值子集和决定。",
+        "key_observations": [
+          "数组成本可恒等变形为 $(n-2)\\sum_i a_i^2+(\\sum_i a_i)^2$，两数组中每个位置的平方和总是固定，因此只需最小化两数组元素和的平方和。",
+          "每个位置交换与否只决定 $a_i$ 取 $a_i$ 或 $b_i$；以较小值为基准后，$a$ 的总和等于 $\\sum_i\\min(a_i,b_i)$ 加上若干个 $|a_i-b_i|$ 的子集和。",
+          "用布尔状态记录处理前 $i$ 个位置后数组 $a$ 的所有可达总和，便能同时得到 $b$ 的总和，并枚举可达总和计算目标值。"
+        ],
+        "solution_brief": "先将每个数组的成对平方和化为总和平方与元素平方和的组合，固定部分直接保留。随后对差值 $|a_i-b_i|$ 做子集和 DP，枚举数组 $a$ 的可达总和 $s$，用 $s^2+(S-s)^2$ 更新答案，其中 $S$ 是所有元素总和。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，结合 tags 中的 DP 与 math。",
+        "quality_flags": []
+      }
+    },
+    "1637C": {
+      "problem_key": "1637C",
+      "title": "Andrew and Stones",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1637/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/99883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "06c4dc083ed9df6b1946e0eb60033fd6d7dc6eee92fb17a7fe9632bc3583aaba",
+      "generated_at": "2026-09-28T06:36:30+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 堆石子，每次选择 $i<j<k$ 且第 $j$ 堆至少有两颗，取走其中两颗并分别放入第 $i$、$k$ 堆。求把所有石子最终移到第 $1$ 堆或第 $n$ 堆所需的最少操作数；无法完成时输出 $-1$。",
+        "transformed_statement": "把每个中间堆视为必须被清空的操作中心：一次操作消耗该堆两颗石子，并把一颗石子传给左右方向。偶数堆直接两颗一组消耗，奇数堆需先获得一颗补足，因此其操作贡献为 $\\lceil a_i/2\\rceil$。",
+        "key_observations": [
+          "若所有中间堆都为 $1$，没有任何堆能提供 $2$ 颗石子；当 $n=3$ 且 $a_2$ 为奇数时，中间堆的奇偶性不变，因此这两类情况必定无解。",
+          "对中间堆 $i$，每次以它为中心都会移走 $2$ 颗石子；初始为偶数时需操作 $a_i/2$ 次，初始为奇数时先补入 $1$ 颗再操作 $(a_i+1)/2$ 次。",
+          "处理非零偶数堆并把石子送向左右合适的奇数堆，可使中间奇数堆数量减少；若只剩奇数堆，则选择一个大于 $1$ 的奇数堆继续处理，从而保证除两类无解情况外都能完成。",
+          "每个初始奇数中间堆至少需要被补入 $1$ 颗石子，而上述过程恰好只补入一次；因此各堆操作次数下界均可达到，总答案为中间堆的 $\\sum_{i=2}^{n-1}\\lceil a_i/2\\rceil$。"
+        ],
+        "solution_brief": "先判断所有中间堆均为 $1$，或 $n=3$ 且 $a_2$ 为奇数，此时输出 $-1$；否则答案直接计算为 $\\sum_{i=2}^{n-1}\\lceil a_i/2\\rceil$，每组线性处理。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 greedy、implementation 标签。",
+        "quality_flags": []
+      }
+    },
+    "1637B": {
+      "problem_key": "1637B",
+      "title": "MEX and Array",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1637/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/99883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "37f9afcf5cbf090d9e49a7610d3418e9afb7d57bab521bba7696bd5ed7624649",
+      "generated_at": "2026-09-28T06:36:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "对数组的每个连续子段，允许将其划分为若干个连续且不重叠的段，成本为段数加各段 MEX 之和，并取所有划分中的最大值作为该子段价值。给定数组，求所有连续子段价值之和。",
+        "transformed_statement": "将每个子段的最优划分重述为全部切成单元素：单元素的 MEX 只由是否为 $0$ 决定，因此子段价值等于其长度加其中零的个数，再统计这些贡献覆盖的子段数量。",
+        "key_observations": [
+          "任意长度大于 $1$ 的分段拆成单元素段后，成本不会下降：不含 $0$ 时贡献由 $1$ 增至段长，含 $0$ 时原贡献至多为 $1+k$，拆分后至少为 $1+k$。",
+          "因此最优划分必可取为全部单元素段，数组价值等于长度加零元素个数，即每个非零元素贡献 $1$、每个零贡献 $2$。",
+          "所有子段长度之和为 $\\frac{n(n+1)(n+2)}{6}$；位置 $i$ 的零出现在 $i(n-i+1)$ 个子段中，可独立累加其额外贡献。"
+        ],
+        "solution_brief": "证明长分段拆成单元素段不会降低成本后，每个子段价值就是长度与零的数量之和。答案先加所有子段长度，再对每个位置的零加上其出现在 $i(n-i+1)$ 个子段中的贡献，整体可在线性时间计算。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "组合计数与概率"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1637A": {
+      "problem_key": "1637A",
+      "title": "Sorting Parts",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1637/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/99883",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a6c69a1f4ad34d741f3b6961558076576e5c4f5f816286b74dc9e4be4176d50f",
+      "generated_at": "2026-09-28T06:37:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组，必须恰好选择 $1\\le len<n$，分别将前 $len$ 个元素和剩余后缀独立排序，且两部分不能互相交换元素。判断是否存在某个 $len$，使操作后的整个数组不是非递减序列。",
+        "transformed_statement": "问题等价于判断原数组是否含有逆序对：若有，就把逆序对两端分到前缀和后缀，跨分界的大小关系无法被独立排序消除；若没有，任意分割排序都保持有序。",
+        "key_observations": [
+          "若原数组已非递减，分别排序任意前缀和后缀都不会改变数组，因此不可能得到未排序结果。",
+          "若存在逆序对 $i<j$ 且 $a_i>a_j$，取 $len=i$ 将两元素分到不同部分；排序后前缀最大值仍大于后缀最小值，边界必然递减。",
+          "数组存在逆序对当且仅当存在相邻位置满足 $a_k>a_{k+1}$，因此只需线性扫描相邻元素即可判定。"
+        ],
+        "solution_brief": "线性扫描数组，若发现相邻元素满足 $a_i>a_{i+1}$，说明数组存在逆序对，可选择合适的分界点使结果仍未排序，输出 YES；否则输出 NO。复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面操作规则与 editorial 的逆序对分析，结合 tags 中的排序信息。",
         "quality_flags": []
       }
     }
