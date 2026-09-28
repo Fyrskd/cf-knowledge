@@ -15,19 +15,452 @@
     ]
   },
   "summary": {
-    "total_problems": 3319,
+    "total_problems": 3329,
     "source_total_problems": 3332,
-    "filtered_out_problems": 13,
-    "with_statement_brief": 3319,
-    "with_editorial_brief": 3038,
-    "with_solution_brief": 3040,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3329,
+    "with_editorial_brief": 3048,
+    "with_solution_brief": 3050,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2381,
+    "ai_override_count": 2391,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1672A",
+      "contest_id": 1672,
+      "title": "Log Chopping",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1672/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/102172",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "games",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "有 $n$ 根整数长度的木棍，两名玩家轮流选择一根长度至少为 $2$ 的木棍，将其切成两根正整数长度且总长度不变的木棍，无法操作者输。双方最优行动，判断先手 errorgorn 还是后手 maomao90 获胜。",
+      "transformed_statement": "把每根长度为 $a_i$ 的木棍独立看作需要进行 $a_i-1$ 次切割才能全部变成长度 $1$ 的木棍；全局总回合数固定为这些次数之和，只需判断其奇偶性。",
+      "key_observations": [
+        "终局时所有木棍都必须长为 $1$，因为任何更长的整数木棍仍可继续切分；因此终局木棍总数固定为 $\\sum a_i$。",
+        "每次切割恰好使木棍数量增加 $1$，所以总步数固定为 $\\sum_{i=1}^{n}(a_i-1)$，与双方具体选择无关。",
+        "总步数为奇数时先手完成最后一步并获胜，为偶数时后手获胜，因此只需判断 $\\sum(a_i-1)$ 的奇偶性。"
+      ],
+      "solution_brief": "对每个测试用例计算 $\\sum_{i=1}^{n}(a_i-1)$。该值就是固定的总切割次数，奇数输出 errorgorn，偶数输出 maomao90。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:37:54+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1672B",
+      "contest_id": 1672,
+      "title": "I love AAAB",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1672/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/102172",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "implementation"
+      ],
+      "statement_brief": "从空字符串开始，每次可在任意位置插入一个形如 $A^kB$（$k\\ge1$）的好字符串。给定只含 $A、B$ 的目标字符串，判断经过任意次操作后能否恰好得到它。",
+      "transformed_statement": "将 $A$ 看作左括号、$B$ 看作右括号，目标串被重述为：最后一个字符必须是 $B$，且从左到右任意前缀的括号余额都不能为负；满足这两个条件即可通过反向删除连续的 $AB$ 还原。",
+      "key_observations": [
+        "每次插入的字符串形如 $A^kB$（$k\\ge1$），因此最终串的最后一个字符必须是 $B$，且任意前缀中 $A$ 的数量不能少于 $B$ 的数量。",
+        "把 $A$ 记为 $+1$、$B$ 记为 $-1$ 后，前缀条件等价于所有前缀和非负，从而可在线性扫描中直接判定。",
+        "上述两个条件也足够：反向反复删除最左侧的连续子串 $AB$，直到只剩一个 $B$；前缀和条件保证该过程可行，最终得到形如 $A^kB$ 的可直接插入字符串。"
+      ],
+      "solution_brief": "线性扫描字符串，检查最后是否为 $B$，并维护前缀平衡值：遇到 $A$ 加一、遇到 $B$ 减一；若任意时刻平衡值为负或末尾不是 $B$，则不可构造，否则可以构造。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:37:43+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1672C",
+      "contest_id": 1672,
+      "title": "Unequal Array",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1672/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/102172",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定数组，每次可选择一个位置并把该元素改成任意值。数组的 equality 是相邻相等的下标数量，要求求出使 equality 不超过 $1$ 所需的最少操作次数。",
+      "transformed_statement": "把问题压缩为相邻相等对的下标集合，只保留其中最左的 $l$ 和最右的 $r$；目标变成让这两端相等对合并或消除，使集合最终至多包含一个位置。",
+      "key_observations": [
+        "只需关注最左和最右的相邻相等位置；两者之间的距离决定必须消除的重复结构，数组其他部分不会影响答案。",
+        "若最左相等对与最右相等对相同，当前相等对不超过一个，无需操作；否则答案为 $\\max(1,r-l-1)$。",
+        "当两组相等对尚未靠拢时，每次有效修改至多使 $r-l$ 减少 $1$，因此至少需要 $r-l-1$ 次；距离为 $2$ 时一次修改可同时处理两组相等对。"
+      ],
+      "solution_brief": "扫描所有满足 $a_i=a_{i+1}$ 的位置，记录最左位置 $l$ 和最右位置 $r$。若不存在或只有一个相等对，答案为 $0$；否则输出 $\\max(1,r-l-1)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:36:48+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1672D",
+      "contest_id": 1672,
+      "title": "Cyclic Rotation",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1672/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/102172",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation",
+        "two pointers"
+      ],
+      "statement_brief": "给定数组 $a$ 以及由其重排得到的数组 $b$。每次可选两个位置 $l<r$ 且 $a_l=a_r$，将区间中前面的该元素移除并在位置 $r$ 补上相同元素；判断能否经过若干次操作把 $a$ 变成 $b$。",
+      "transformed_statement": "将过程反向考虑：从 $b$ 变回 $a$ 时，可把连续相同块中的一个多余元素取出，并插入到更左的位置。问题转化为从右向左匹配 $a$，同时维护已取出的相同元素储备。",
+      "key_observations": [
+        "原操作等价于选取相等的两个位置，删除前面的元素并在后面补一个相同元素；因此元素的相对顺序只会被相等元素的复制与移动改变。",
+        "逆向从 $b$ 变回 $a$ 时，只能把连续相同块中多余的元素取出，移动到更左侧作为后续匹配的储备。",
+        "从右向左匹配时，若当前 $a_i=b_j$ 就直接消耗两者；否则必须从储备中找到一个 $a_i$，找不到则说明该元素无法通过逆操作补回。"
+      ],
+      "solution_brief": "逆向把 $b$ 变为 $a$：从右向左扫描，先将 $b$ 末端连续相同块的多余元素放入计数储备。若 $a_i=b_j$ 则同时移动，否则从储备中消耗一个 $a_i$；无法消耗时输出 NO。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:36:32+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1672E",
+      "contest_id": 1672,
+      "title": "notepad.exe",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1672/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/102172",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "数论与同余",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "constructive algorithms",
+        "greedy",
+        "interactive"
+      ],
+      "statement_brief": "有 $n$ 个长度固定但隐藏的单词，给定编辑器宽度后，单词按原顺序分行，每行相邻单词间至少一个空格，并使行数最少；若宽度小于某个单词长度则无法显示。每次可询问一个宽度并得到行数，要求在限定询问次数内求所有可显示宽度中的最小面积 $w\\cdot h_w$。",
+      "transformed_statement": "把所有单词及必要空格看成总长度 $S=\\sum l_i+n-1$，再按行数 $h$ 分析由于每行末尾可省去空格而产生的面积区间。对每个可能的行数，只需询问该区间内唯一能表示为 $h\\cdot w$ 的面积对应的宽度。",
+      "key_observations": [
+        "宽度使所有单词恰好排在一行时，最小宽度是全部单词长度加上单词间空格数，即 $S=\\sum l_i+n-1$；该值可利用高度为 $1$ 的单调性二分得到。",
+        "若排成 $h$ 行且每行末尾没有多余空格，总字符数为 $S-h+1$；因此高度为 $h$ 时值得考虑的面积只会落在连续区间 $[S-h+1,S]$ 内。",
+        "上述区间恰有 $h$ 个整数，其中恰好一个能被 $h$ 整除；取宽度 $w=\\lfloor S/h\\rfloor$，即可用一次询问覆盖该高度对应的候选面积。",
+        "只需枚举 $h=1$ 到 $n$ 并取询问结果中的最小非零 $h_w\\cdot w$；面积超过 $S$ 不可能优于一行方案，因此无需考虑。"
+      ],
+      "solution_brief": "先对宽度二分，求出高度为 $1$ 的最小宽度 $S$。随后对每个 $h\\in[1,n]$ 询问 $w=\\lfloor S/h\\rfloor$，用返回高度与宽度的乘积更新答案；总询问次数为 $n+O(\\log(n\\cdot2000))$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:36:01+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1672F1",
+      "contest_id": 1672,
+      "title": "Array Shuffling",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1672/problem/F1",
+      "editorial_url": "https://codeforces.com/blog/entry/102172",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "graphs",
+        "greedy"
+      ],
+      "statement_brief": "给定数组 $a$，先将它任意重排得到数组 $b$。每次操作可交换 $b$ 中任意两个位置，sadness 是把 $b$ 变回原数组 $a$ 所需的最少交换次数；要求构造一个使 sadness 最大的 $b$。",
+      "transformed_statement": "把 $a_i$ 与 $b_i$ 视为映射边，交换次数转化为 $n$ 减去映射中的环数。问题等价于构造一个环数尽量少、且每个环都经过出现次数最多元素的值映射。",
+      "key_observations": [
+        "把位置映射表示为边 $a_i\\to b_i$，每个置换环长度为 $k$ 时可用 $k-1$ 次交换完成，因此总交换次数等于 $n-$环数。",
+        "设出现次数最多的数为 $X$，任何环都不能重复经过该数；否则可将该环拆成两个环而不改变数组，从而增加环数。因此环数至少为 $X$，最大 sadness 不超过 $n-X$。",
+        "若映射图中存在一个完全不含出现次数最多元素的环，就能额外拆出一个环，使交换次数严格小于 $n-X$；所以最优构造必须让每个环都经过该元素。",
+        "将数组排序后循环平移 $X$ 个位置，并按原数组中的数匹配平移后的数，可构造所有环都经过最多频元素的映射，从而达到上界 $n-X$。"
+      ],
+      "solution_brief": "统计出现次数最多的元素 $X$，将数组排序后循环平移 $X$ 位；对原数组的每个元素，从对应值的候选列表中取一个平移后的值作为答案。该构造达到最大 sadness $n-X$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:35:38+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1672F2",
+      "contest_id": 1672,
+      "title": "Checker for Array Shuffling",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/1672/problem/F2",
+      "editorial_url": "https://codeforces.com/blog/entry/102172",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "graphs"
+      ],
+      "statement_brief": "给定数组 $a$ 和由它重排得到的数组 $b$，一次操作可交换 $b$ 中任意两个位置。将 $b$ 变回 $a$ 所需的最少交换次数称为 sadness，判断当前 $b$ 是否在所有重排中使 sadness 最大。",
+      "transformed_statement": "把每个位置对应为一条有向边 $a_i\\to b_i$，将交换过程抽象为该多重图的置换环分解；最大 sadness 等价于无法在去掉最高频元素后找到有向环。",
+      "key_observations": [
+        "任意交换方案都可转化为若干个置换环，每个长度为 $k$ 的环需要 $k-1$ 次交换，因此最少交换次数等于 $n$ 减去可分解出的环数。",
+        "设 $X$ 为数组中出现次数最多的元素。若一个环重复经过该元素，就能把它拆成更多环，所以最优分解中每个该元素必须独占一个环，得到 sadness 的上界 $n-X$。",
+        "把每个位置建成有向边 $a_i\\to b_i$；若去掉某个出现次数最多的元素后仍存在有向环，就能增加环数，使 sadness 严格小于 $n-X$。",
+        "因此当前排列达到最大 sadness，当且仅当删除任一出现次数最多元素对应的顶点后，剩余有向图是 DAG；用 DFS 检测回边即可判定。"
+      ],
+      "solution_brief": "统计 $a$ 中出现次数最多的元素，在图中加入边 $a_i\\to b_i$，删除该元素对应顶点后用 DFS 检测是否有环；无环则输出 AC，否则输出 WA。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:35:19+00:00",
+          "quality_flags": [
+            "statement_operation_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 8,
+      "problem_key": "1672G",
+      "contest_id": 1672,
+      "title": "Cross Xor",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1672/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/102172",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "组合计数与概率",
+        "构造与贪心",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "graphs",
+        "math",
+        "matrices"
+      ],
+      "statement_brief": "给定一个初始全为 $0$ 的 $r\\times c$ 网格，每次选择一个中心格 $(x,y)$，将第 $x$ 行或第 $y$ 列中的所有格子翻转一次。输入网格含 $0、1、?$，要求统计把每个问号填成 $0/1$ 后、能够由这些操作得到的网格数量。",
+      "transformed_statement": "把每个网格看作二进制向量，十字操作生成一个异或线性空间；通过行异或和、列异或和刻画其不变量，再把奇数乘奇数情形的问号连接关系转化为二分图上的边赋值问题。",
+      "key_observations": [
+        "当 $r,c$ 都为偶数时，组合若干次十字翻转可以只翻转任意一个格子，因此所有 $0/1$ 网格都可达。",
+        "当恰有一个维度为偶数时，每次操作都会同时翻转所有行（或列）的异或值，所以这些异或值必须全相等；该条件也足以保证可达。",
+        "当 $r,c$ 都为奇数时，所有行异或值彼此相等且所有列异或值彼此相等；这两个条件不仅必要，而且足以刻画可达网格。",
+        "奇数乘奇数时，将问号看作行点与列点之间的边；每个连通分量只有一个顶点异或约束，非树边各提供一个独立自由度，贡献为 $2^{m-n+1}$。"
+      ],
+      "solution_brief": "按行列奇偶分三类计数。偶偶时答案为 $2^{\\#?}$；一奇一偶时分别统计所有行（或列）异或为 $0/1$ 的填法；奇奇时建立问号对应的二分图，逐连通分量检查初始顶点异或与目标公共值是否相容，并乘以非树边带来的自由度。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:34:55+00:00",
+          "quality_flags": [
+            "statement_operation_text_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 9,
+      "problem_key": "1672H",
+      "contest_id": 1672,
+      "title": "Zigu Zagu",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1672/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/102172",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "字符串"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "data structures",
+        "greedy"
+      ],
+      "statement_brief": "给定一个二进制字符串和多个区间，每次查询取出对应子串，并反复删除一个连续的交替子串，直到字符串为空；要求求出每个区间至少需要多少次删除。题解指出可只考虑删除极大的交替段，因为删除其中一部分不会更优。",
+      "transformed_statement": "将每个查询子串压缩成极大交替段序列：奇数长度段记为 $x$ 或 $x'$，偶数长度段记为 $y$ 或 $y'$。删除内部偶数段会合并左右相邻段，而删除其他段只减少一个压缩单元，因此问题变成根据余额和端点信息计算最终不可合并序列的长度。",
+      "key_observations": [
+        "把字符串划分为最少个极大交替段，并将每段编码为 $x,x',y,y'$；删除内部偶数长度段会使左右两段合并，答案的难点转化为最多执行这种“合并两段”的操作。",
+        "删除一个内部偶数段时，$x$ 与 $x'$ 的数量各减少一个，$y$ 与 $y'$ 的数量也各减少一个，因此两类段的差值保持不变，可用余额判断最终无法继续合并的形态。",
+        "不存在可合并段的序列只有 8 种端点模式；结合两类余额以及首字符在合并操作中不变的信息，即可确定最终剩余段数。",
+        "查询边界若处在同一交替段内部，扩展或收缩到该段边界不会改变答案；因此可用预处理的段计数与两类余额前缀和在 $O(1)$ 内回答。"
+      ],
+      "solution_brief": "先把原串划分为极大交替段，并编码为 $x,x',y,y'$。预处理每个位置对应的段边界、段数前缀和及两类余额；查询时扩展到完整段范围，再依据段数、余额绝对值和首字符修正最终剩余段数，单次 $O(1)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:34:34+00:00",
+          "quality_flags": [
+            "operation_details_reconstructed_from_editorial",
+            "statement_operation_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 10,
+      "problem_key": "1672I",
+      "contest_id": 1672,
+      "title": "PermutationForces",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/1672/problem/I",
+      "editorial_url": "https://codeforces.com/blog/entry/102172",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "data structures",
+        "greedy"
+      ],
+      "statement_brief": "给定排列 $p$，把元素表示为 $(x_i,y_i)=(p_i,i)$。每次选择满足 $|x_i-y_i|\\le s$ 的点并删除，同时将其右侧较大 $x$ 的值和较大 $y$ 的值各减一；求能把所有点删空所需的最小强度 $s$。",
+      "transformed_statement": "问题等价于不断从点集 $(x_i,y_i)$ 中删除当前曼哈顿差式代价 $c_i=|x_i-y_i|$ 不超过阈值的点；删除会对其右上方向的 $x$ 和 $y$ 坐标分别施加减一更新，目标是最小化整个删除过程中的最大 $c_i$。",
+      "key_observations": [
+        "固定强度 $s$ 时，合法删除不会让原本满足 $c_i\\le s$ 的元素失效，因此任意当前合法元素都可以优先删除。",
+        "交换论证表明，若存在可删除元素，最优删除序列都能把它移到最前面；所以反复删除任意 $c_i\\le s$ 的元素即可判定该 $s$ 是否可行。",
+        "非边界点若成为最小代价，其阻挡它的点具有更小代价，因此最小值只会出现在 good 点；两侧 good 点分别形成 $x,y$ 单调链。",
+        "删除一个点只对满足阈值的 $x$、$y$ 区间产生减一影响，可用树状数组恢复新点坐标、线段树维护候选代价和单调链，整体达到 $O(n\\log n)$。"
+      ],
+      "solution_brief": "令 $x_i=p_i,y_i=i,c_i=|x_i-y_i|$。贪心地持续删除当前代价最小的 good 点，并令答案为所删代价的最大值；用两条单调 good 链、树状数组和带区间加的线段树维护坐标及候选代价，复杂度 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T03:34:13+00:00",
+          "quality_flags": [
+            "statement_operation_rule_incomplete_but_editorial_defines_it"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 11,
       "problem_key": "1673A",
