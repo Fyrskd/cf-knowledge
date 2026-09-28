@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T23:02:10+00:00",
+  "updated_at": "2026-09-28T23:08:16+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -93592,6 +93592,186 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的逐块放置规则及官方题解正文；标签仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1519F": {
+      "problem_key": "1519F",
+      "title": "Chests and Keys",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1519/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/90212",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "074ef78afdbcdd1aff8f330f578fd18d62b4ac522157e8716a039e10961c4b57",
+      "generated_at": "2026-09-28T23:07:07+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "Alice 有若干宝箱，每个宝箱含有一定金币，并可花费指定费用给它加锁；每种锁只能用对应的钥匙打开。Bob 可自行决定购买哪些钥匙，并打开所有其钥匙齐全的宝箱，所得金币减去买钥匙的钱若严格大于零便获胜。求 Alice 是否能选择锁使 Bob 无论如何选择都不能获利，并在能做到时求最低锁费。",
+        "transformed_statement": "把宝箱和钥匙分别作为网络两侧的点，宝箱金币、钥匙价格分别作为源点边和汇点边容量，已放置的锁作为两侧之间的无限容量边。目标转化为选择这些边，使最大流饱和所有源点边，并使所选锁的总费用最低；由于源点边流量取值很小，可用流量状态 DP 搜索这种选择。",
+        "key_observations": [
+          "固定 Alice 放置的锁后，可用最小割表示 Bob 的最优收益：收益等于所有宝箱金币总和减去最小割，因此判断 Bob 是否能获利可转成检查最小割是否达到总金币数。",
+          "Bob 至少可以选择什么都不买、什么都不开并获得零收益；Alice 获胜的条件因此是最大流能够饱和源点连向所有宝箱的边。",
+          "每个宝箱的金币数最多为 $4$，使各源点边上的流量组合规模可控；把这些流量作为 DP 状态，可以在逐个考虑宝箱与钥匙间是否放锁时累计最低锁费。",
+          "一条锁对应宝箱到钥匙的无限容量边；只有选放该锁时，流才能沿这条边转移，因此 DP 可同时保证流量可行性并计入对应的锁费用。"
+        ],
+        "solution_brief": "对给定锁集合建立网络：源点到宝箱的容量为金币数，钥匙到汇点的容量为购买价格，放置的锁对应宝箱到钥匙的无限容量边。Alice 获胜当且仅当最大流饱和所有源点边；利用宝箱金币数上限，以各源点边流量为核心状态，按宝箱与钥匙逐项决定是否放锁，求最小总费用。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，建模与 DP 依据 editorial_text；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1519E": {
+      "problem_key": "1519E",
+      "title": "Off by One",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1519/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/90212",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "73732139ab851787aad9ad7cd0269a4d5016c6736674302c3c4f6c02eaf3a97c",
+      "generated_at": "2026-09-28T23:07:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "平面上给出 $n$ 个第一象限点。每次选两个尚未移除的点，各自将坐标改为 $(x+1,y)$ 或 $(x,y+1)$，且必须能选择移动方式使两点与原点共线；随后移除这两个点。要求构造最多的操作及对应点对。",
+        "transformed_statement": "每个点有两种可选的新位置，对应两种从原点出发的斜率；把所有不同斜率作为图顶点，每个点成为连接其两种斜率的边。问题于是变成：在图中尽可能多地两两配对共享端点的边，每条边最多使用一次，并输出配对方案对应的点对。",
+        "key_observations": [
+          "一次操作中，点可移到 $(x+1,y)$ 或 $(x,y+1)$；从原点连到新位置的直线斜率分别为 $y/(x+1)$ 和 $(y+1)/x$，因此两个点能配对当且仅当它们各自的两种斜率中存在相同值。",
+          "把每个斜率值作为图节点、每个点作为连接其两种斜率的边后，合法操作恰好对应配对两条共享端点的边，且每条边至多参与一次配对。",
+          "每个有 $m$ 条边的连通分量最多贡献 $\u001b[?]$ 对；更准确地，上界为 $\u001b[?]$。题解通过 DFS 逐层配对边，保证处理完一个子树后至多留下一个未配对边，且该边与子树根相接，从而达到该上界。"
+        ],
+        "solution_brief": "将斜率值离散为图节点、将点转成边。对每个连通分量做 DFS，在子树中配对共享端点的边，并让每个子树至多遗留一条与根相接的边；这样每个分量得到 $\u001b[?]$ 对，按配对边还原操作。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "几何",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意与操作规则依据 statement；斜率建图及 DFS 配对策略依据 editorial；主题参考 tags。",
+        "quality_flags": [
+          "statement_text_truncated"
+        ]
+      }
+    },
+    "1519D": {
+      "problem_key": "1519D",
+      "title": "Maximum Sum of Products",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1519/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/90212",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "2c4cdb5517f0d6f011ed58e8f8122f5271e44924c615d352c1dd6f92a7716c5c",
+      "generated_at": "2026-09-28T23:07:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度为 $n$ 的整数数组 $a$、$b$，可以至多一次选择 $a$ 的一个连续子数组并将其反转，$b$ 保持不变。要求使对应位置乘积之和 $\\sum_{i=1}^{n}a_i b_i$ 最大，并输出最大值。",
+        "transformed_statement": "把被反转的连续区间视为围绕奇数或偶数中心逐层扩展的区间；扩展一层时只需加入两端交叉配对的乘积贡献，区间外仍按原位置配对并可用前缀和取得。",
+        "key_observations": [
+          "反转区间后，区间外的配对关系完全不变，因此只需计算反转区间内部的乘积变化，并加上原数组的区间外贡献。",
+          "以反转区间的中心为起点向两侧各扩一格时，新纳入的两个元素交叉配对，增量恰为 $a_{l-1}b_{r+1}+a_{r+1}b_{l-1}$，无需重新计算整个区间。",
+          "区间外的原始贡献可由 $a_i b_i$ 的前缀和快速取得，因此枚举中心并逐层扩展即可评估所有反转区间。"
+        ],
+        "solution_brief": "先计算原始总和及 $a_i b_i$ 的前缀和。枚举每个奇数长度区间中心和每个偶数长度区间中心，逐步向外扩展并维护反转区间的贡献；结合区间外前缀和更新最大答案，同时允许不反转。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面操作规则及 editorial 中的中心扩展增量和乘积前缀和思路。",
+        "quality_flags": []
+      }
+    },
+    "1519C": {
+      "problem_key": "1519C",
+      "title": "Berland Regional",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1519/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/90212",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "cf957b3706c3a58b6ed4abe755907584201763ce1505b63064b601d8d9565737",
+      "generated_at": "2026-09-28T23:07:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "每名学生属于一所大学并有实力值。对每种队伍规模 $k$，每所大学按实力从高到低依次每 $k$ 人组成一队，剩余不足 $k$ 人的学生不计入；要求分别计算所有已组成队伍成员的实力总和。",
+        "transformed_statement": "将总实力拆成各大学的独立贡献：某校有 $x$ 人、队伍规模为 $k$ 时，贡献就是该校实力最高的前 $\\lfloor x/k \\rfloor k$ 名学生之和，因此可通过排序后的前缀和逐个计算。",
+        "key_observations": [
+          "每所大学对总实力的贡献彼此独立，因此可以分别计算各大学的贡献，再对每种队伍规模求和。",
+          "若某大学有 $x$ 名学生，队伍规模为 $k$ 时只能计入前 $\\lfloor x/k \\rfloor k$ 名学生；按实力从高到低排序后，这些学生恰好是前缀。",
+          "只需遍历 $k=1$ 到该校人数 $x$，人数更多的队伍规模对该校贡献恒为零；前缀和使每个 $k$ 的贡献可直接取得。"
+        ],
+        "solution_brief": "按大学分组，并将每组学生按实力从高到低排序、计算前缀和。对人数为 $x$ 的大学，遍历 $k=1$ 到 $x$，把前 $\\lfloor x/k \\rfloor k$ 名学生的实力和加入答案；整体复杂度为 $O(n\\log n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的分队规则及 editorial 的独立分组、可计入人数和前缀和方案；tags 仅作辅助。",
+        "quality_flags": []
+      }
+    },
+    "1519B": {
+      "problem_key": "1519B",
+      "title": "The Cake Is a Lie",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1519/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/90212",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "acf17c218950a5ad0a9c1a1f708de8f6aa858a6ba7b87c78759923b5ca70ed7d",
+      "generated_at": "2026-09-28T23:07:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times m$ 网格，从左上角出发，只能向右或向下移动到右下角；每次移动按题目规则花费金币。判断是否存在一条到达路径，使总花费恰好为 $k$。",
+        "transformed_statement": "把路径选择问题改写为目标格的固定总花费判定：无论如何到达坐标 $(n,m)$，累计花费均为 $n\\cdot m-1$，因此只需比较这个值与 $k$。",
+        "key_observations": [
+          "到达任意格子的总花费与路径无关：按最后一步归纳，分别从左侧或上方到达时，累计花费都等于该格行列坐标乘积减一。",
+          "因此无需枚举或比较路径，整题只需检查目标格的固定花费 $n\\cdot m-1$ 是否恰好等于 $k$。"
+        ],
+        "solution_brief": "无论选择哪条只向右或向下的路径，总花费都为 $n\\cdot m-1$。逐组判断 $k$ 是否等于该值，相等输出 YES，否则输出 NO。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；路径花费不变及公式依据 editorial_text；标签仅作辅助。",
+        "quality_flags": [
+          "statement_text_operation_cost_rule_truncated"
+        ]
+      }
+    },
+    "1519A": {
+      "problem_key": "1519A",
+      "title": "Red and Blue Beans",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1519/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/90212",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "471b7c963a4443767be1b169cf66b6169ff649cffb981523c1c2f8b1200d1fbf",
+      "generated_at": "2026-09-28T23:08:16+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $r$ 颗红豆、$b$ 颗蓝豆和上限 $d$，要把所有豆子分到若干个包中，使每个包内红豆数与蓝豆数之差的绝对值不超过 $d$。判断是否存在这样的分法。",
+        "transformed_statement": "把两种颜色中数量较少的记为 $x$、较多的记为 $y$；可行性归结为每颗较少颜色的豆至多承担 $d+1$ 颗较多颜色的豆，即判断 $y\\le x(d+1)$ 是否成立。",
+        "key_observations": [
+          "交换红豆和蓝豆的角色后可设较少的一种有 $r$ 颗；每个包都必须至少含一颗这种豆，因此包数最多为 $r$。",
+          "较多的一种豆在每个包中最多比另一种多 $d$ 颗，所以总数不能超过 $r(d+1)$；超过时无论如何分包都不可行。",
+          "若较多的一种豆不超过 $r(d+1)$，将较少的一种豆各放一颗到 $r$ 个包中，再把较多的一种豆分配到每包至多 $d+1$ 颗，即可满足限制。"
+        ],
+        "solution_brief": "令 $x=\\min(r,b)$、$y=\\max(r,b)$。若 $y>x(d+1)$，输出 NO；否则可以用 $x$ 个包，每包先放一颗较少颜色的豆，再分配较多颜色的豆，使每包至多有 $d+1$ 颗，输出 YES。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的分包规则与示例，以及 editorial 给出的必要条件和构造。",
         "quality_flags": []
       }
     }
