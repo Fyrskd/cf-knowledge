@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3710,
+    "total_problems": 3712,
     "source_total_problems": 3714,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 3710,
-    "with_editorial_brief": 3398,
-    "with_solution_brief": 3400,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3712,
+    "with_editorial_brief": 3400,
+    "with_solution_brief": 3402,
     "missing_editorial_brief": 310,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2772,
+    "ai_override_count": 2774,
     "primary_topic_count": 13,
-    "contest_count": 573,
+    "contest_count": 574,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1209,
+    "基础实现与模拟": 235,
     "字符串": 196,
-    "构造与贪心": 1208,
     "动态规划与状态设计": 300,
     "树结构": 178,
     "数论与同余": 387,
     "组合计数与概率": 280,
-    "基础实现与模拟": 234,
     "图论与网络流": 240,
     "交互": 108,
     "数据结构": 352,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2426,
+    "ai_generated_with_editorial": 2428,
     "ai_generated_partial_editorial": 81,
     "missing_editorial": 310,
     "low_confidence": 1,
@@ -114333,6 +114333,69 @@ window.CF_INSIGHTS_DATA = {
             "删除顶点的影响可能传递到已经被删除、后来成为祖先的顶点，因此不能只更新当前父亲；需要对原树中该顶点到当前父亲的整条路径做加法更新。"
           ],
           "solutionBrief": "用递推式计算子树决策，并为每个顶点求其最值得删除的参数阈值。按阈值逆序处理事件，用并查集维护当前父亲，用欧拉序上的树状数组或线段树完成路径加法，再同步回答查询。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1602,
+      "name": "Codeforces Round 751 (Div. 2)",
+      "date": "2021-10-25",
+      "url": "https://codeforces.com/contest/1602",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1602A",
+          "index": "A",
+          "slot": "A",
+          "title": "Two Subsequences",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1602/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/95865",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "字符串"
+          ],
+          "originalTags": [
+            "implementation"
+          ],
+          "statementBrief": "给定一个由小写字母组成的字符串 $s$，要把其中字符按原顺序分成两个非空子序列 $a$ 和 $b$，每个字符恰好归入其中一个子序列。要求输出满足条件且使 $a$ 字典序最小的一组结果。",
+          "transformedStatement": "把问题转化为选择一个字符单独组成 $a$，再将删除该字符后的全部字符组成 $b$；核心是决定应选择哪个位置作为 $a$。答案等价于选择 $s$ 中的最小字符。",
+          "keyObservations": [
+            "让 $a$ 只保留 $s$ 中的一个最小字符，可以使 $a$ 的首字符达到所有可行方案中的最小值；若其他方案更长且以该字符开头，单字符 $a$ 仍按字典序更小。",
+            "选定 $a$ 后，$b$ 就唯一确定为删除这一个字符后的其余字符，且仍保持原顺序，因此无需搜索两条子序列。",
+            "取最小字符的任意一个出现位置都能得到同样的最优 $a$；实现时跳过第一次遇到的该字符即可。"
+          ],
+          "solutionBrief": "扫描字符串找最小字符，将它单独作为 $a$，其余字符按原顺序组成 $b$。这样 $a$ 的首字符最小且长度最短，得到字典序最优的合法划分。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1602B",
+          "index": "B",
+          "slot": "B",
+          "title": "Divine Array",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1602/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/95865",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的整数数组。每一步开始时，数组中每个位置的值都同时替换为该值在当前数组中的出现次数；对每个查询 $(x,k)$，求第 $k$ 步变换后位置 $x$ 的值，其中 $k=0$ 表示初始数组。",
+          "transformedStatement": "把一次全局变换看成由当前频次数组定义的函数 $f$：每个元素 $v$ 统一转为 $f(v)$。反复生成整个数组状态，直到状态进入重复阶段，再据此回答任意大的步数查询。",
+          "keyObservations": [
+            "每一步都由当前数组的全局频次数组决定：若当前位置当前值为 $v$，下一步就变为 $v$ 在整数组中的出现次数，因此相同值的所有位置同步变化。",
+            "将一次变换抽象为映射 $f(v)= ext{当前数组中 }v ext{ 的出现次数}$，数组更新为 $a_j o f(a_j)$，无需逐个位置重新分析规则。",
+            "题解指出至多经过 $n$ 步、甚至至多 $\\\\log n$ 步后数组会进入重复状态，因此只需预处理前若干个状态，超大的 $k$ 可直接复用后续规律。"
+          ],
+          "solutionBrief": "逐步统计当前数组中各值的出现次数，并据此生成下一数组；预处理直到状态稳定或重复。查询时用 $k=0$ 的初始状态或预处理状态直接回答，超大步数复用重复后的状态。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
