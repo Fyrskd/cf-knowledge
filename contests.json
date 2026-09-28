@@ -1,5 +1,16 @@
 [
   {
+    "id": 1527,
+    "name": "Codeforces Round 721 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1621521300,
+    "relativeTimeSeconds": 169113569,
+    "date": "2021-05-20"
+  },
+  {
     "id": 1528,
     "name": "Codeforces Round 722 (Div. 1)",
     "type": "CF",
