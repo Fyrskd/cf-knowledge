@@ -15,19 +15,275 @@
     ]
   },
   "summary": {
-    "total_problems": 3391,
+    "total_problems": 3397,
     "source_total_problems": 3400,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3391,
-    "with_editorial_brief": 3105,
-    "with_solution_brief": 3107,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 3397,
+    "with_editorial_brief": 3111,
+    "with_solution_brief": 3113,
     "missing_editorial_brief": 284,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2453,
+    "ai_override_count": 2459,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1657A",
+      "contest_id": 1657,
+      "title": "Integer Moves",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1657/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/101161",
+      "editorial_quality": "complete",
+      "primary_topic": "几何",
+      "secondary_topics": [
+        "数论与同余",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "math"
+      ],
+      "statement_brief": "棋子初始位于平面上的 $(0,0)$。每次可将它移动到任意点，但起点与终点的欧氏距离必须是整数；要求把棋子移动到给定的 $(x,y)$，求最少操作次数。",
+      "transformed_statement": "先利用坐标轴上的中间点 $(x,0)$ 建立两步可达上界，再只需区分三种情况：目标为原点、原点到目标的距离为整数、以及距离不是整数。",
+      "key_observations": [
+        "任意目标点都能通过 $(0,0)\\rightarrow(x,0)\\rightarrow(x,y)$ 到达，因此答案最多为 $2$，无需搜索中间点。",
+        "若目标点就是 $(0,0)$，无需操作，答案为 $0$；这也是唯一的零步情况。",
+        "一次操作可行当且仅当原点到目标点的距离 $\\sqrt{x^2+y^2}$ 为整数，因此只需判断 $x^2+y^2$ 是否为完全平方数。"
+      ],
+      "solution_brief": "先判断 $(x,y)=(0,0)$，是则输出 $0$；否则检查 $x^2+y^2$ 是否为完全平方数，是则一步到达，否输出 $2$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:42:30+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1657B",
+      "contest_id": 1657,
+      "title": "XY Sequence",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1657/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/101161",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy"
+      ],
+      "statement_brief": "给定 $n,B,x,y$，从 $a_0=0$ 开始构造长度为 $n+1$ 的序列。每一步可加 $x$（但新值不能超过 $B$）或减去 $y$，要求所有元素不超过 $B$，最大化所有 $a_i$ 的总和。",
+      "transformed_statement": "把题目看成带上界的逐步移动：当前位置若还能向上移动 $x$ 就上移，否则被迫下移 $y$；目标是最大化这条路径经过各时刻位置的累计值。",
+      "key_observations": [
+        "只要当前位置满足 $a_{i-1}+x\\le B$，选择上升而不是下降会让当前值更大，且不会违反上界。",
+        "若最优序列在上升合法时仍选择 $-y$，可将后面第一次上升操作提前；中间各项变大、该次上升后的值不变，因此总和严格增加。",
+        "因此最优策略是逐步检查上升是否合法：合法就加 $x$，否则减 $y$，无需比较两种选择的长期收益。"
+      ],
+      "solution_brief": "从 $a_0=0$ 开始逐步构造：若 $a_{i-1}+x\\le B$，令 $a_i=a_{i-1}+x$；否则令 $a_i=a_{i-1}-y$。累加所有 $a_i$ 即为答案，交换论证保证该策略最优。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:42:18+00:00",
+          "quality_flags": [
+            "statement_operation_formatting_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1657C",
+      "contest_id": 1657,
+      "title": "Bracket Sequence Deletion",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1657/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/101161",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定一个由括号组成的字符串，每次删除从当前位置开始的最短前缀，只要该前缀是正规括号序列或回文串。无法再找到可删除前缀时停止，输出操作次数和剩余字符数。",
+      "transformed_statement": "将过程重述为从左到右贪心切分：以 `(` 开头时固定取两个字符；以 `)` 开头时取到下一个 `)` 为止。每个成功切分块对应一次操作，未完成的尾部就是最终剩余部分。",
+      "key_observations": [
+        "当前首字符为 `(` 时，前两个字符必然构成回文串 `((` 或正规括号串 `()`，因此只要长度足够，最短可删前缀就是这两个字符。",
+        "当前首字符为 `)` 时，最短可删前缀必须延伸到下一个 `)`，中间只能是若干个 `(`；找到该位置即可整体删除，否则无法继续操作。",
+        "每次删除后只需把指针移到被删前缀之后，剩余部分与原问题完全相同，因此可线性扫描并在找不到完整前缀时停止。"
+      ],
+      "solution_brief": "用指针从左到右处理字符串：遇到 `(` 就删除两个字符；遇到 `)` 就寻找下一个 `)` 并删除包含它的前缀。若所需字符不存在则停止，统计删除次数和指针后的剩余长度。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:42:02+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1657D",
+      "contest_id": 1657,
+      "title": "For Gamers. By Gamers.",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1657/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/101161",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构",
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "greedy",
+        "math",
+        "sortings"
+      ],
+      "statement_brief": "每场战斗开始时队伍为空，玩家只能选择一种单位并购买若干个，花费不超过 $C$；单位和怪物都持续攻击，只有队伍消灭怪物的时间严格短于怪物消灭一个单位的时间时才算获胜。对每个怪物，求能获胜的最少金币，若超过预算则输出 $-1$。",
+      "transformed_statement": "把一支由 $x$ 个同类单位组成、花费为 $c_ix$ 的队伍抽象为战斗力 $d_ih_ix$，把怪物抽象为威胁值 $D_jH_j$；问题转化为预处理每种预算下可达到的最大战斗力，并查询首个超过怪物威胁值的预算。",
+      "key_observations": [
+        "连续战斗时间比较可化为 $H_jD_j<d_ixh_i$，因此单位和怪物都只需关注攻击力与生命值的乘积。",
+        "同一单价下，单位的 $d_i h_i$ 越大则对任意购买数量都不劣，因此每种价格只保留乘积最大的单位类型。",
+        "固定单位价格 $c$ 后枚举购买数量 $x$，即可在总花费 $cx\\le C$ 时更新恰好花费 $cx$ 的最大战斗力，总枚举次数为 $O(C\\log C)$。",
+        "对恰好花费的最大战斗力取前缀最大值后得到不超过预算的最优值；该数组单调不降，所以可二分寻找首个严格大于 $D_jH_j$ 的花费。"
+      ],
+      "solution_brief": "先按单位价格保留最大的 $d_i h_i$，枚举价格和购买数量，求每个恰好花费的最大战斗力，再取前缀最大值。对每个怪物二分最小花费，使可获得战斗力严格大于 $D_jH_j$，找不到则输出 $-1$；总复杂度为 $O(n+(C+m)\\log C)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:41:33+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1657E",
+      "contest_id": 1657,
+      "title": "Star MST",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1657/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/101161",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "图论与网络流",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "graph matchings",
+        "math"
+      ],
+      "statement_brief": "给定一个有 $n$ 个顶点的完全无向图，每条边权为 $1$ 到 $k$。若顶点 1 的所有 incident 边权之和等于图的最小生成树权值，则称图美丽；要求计算美丽图的数量并对 $998244353$ 取模。",
+      "transformed_statement": "把条件改写为：任意两个非 1 顶点 $x,y$ 的边权都不能小于两条星边权中的较大值。于是只需按顶点 1 的边权分组，从小到大统计满足这些下界约束的其余边赋值。",
+      "key_observations": [
+        "美丽图必须满足任意两个非 1 顶点 $x,y$ 有 $w_{x,y}\\ge\\max(w_{1,x},w_{1,y})$；否则用 $(x,y)$ 替换星边会降低生成树权值。",
+        "上述条件也足够：按 $w_{1,i}$ 从小到大考虑，任意生成树连接后缀顶点所需的边权总和至少为 $\\sum_{i=2}^n w_{1,i}$，恰好等于星形生成树权值。",
+        "按星边权分层计数时，若已有 $i$ 个顶点接入顶点 $1$且当前最大权值为 $j$，再选 $t$ 个权值为 $j+1$ 的顶点，则选择方式为 $\\binom{n-1-i}{t}$。",
+        "新旧两组顶点之间共有 $it$ 条边，它们的权值可独立取 $[j+1,k]$ 中任意值，因此转移乘以 $(k-j)^{it}$，将图的计数压缩为二维 DP。"
+      ],
+      "solution_brief": "先证明美丽图等价于所有非 1 顶点对满足 $w_{x,y}\\ge\\max(w_{1,x},w_{1,y})$。再按星边权从小到大分层，用 $dp_{i,j}$ 记录已处理 $i$ 个顶点且最大权为 $j$ 的方案数，选择下一层顶点并计数跨层边，最终求总和。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:41:12+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1657F",
+      "contest_id": 1657,
+      "title": "Words on Tree",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1657/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/101161",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "树结构"
+      ],
+      "original_tags": [
+        "2-sat",
+        "dfs and similar",
+        "dsu",
+        "graphs",
+        "trees"
+      ],
+      "statement_brief": "给定一棵有 $n$ 个顶点的树和 $q$ 个三元组 $(x_j,y_j,s_j)$，其中字符串长度等于路径 $x_j$ 到 $y_j$ 上的顶点数。需要给每个顶点写一个小写字母，使每条路径上的字母序列等于 $s_j$ 正向排列或反向排列；输出任意可行赋值，否则输出 NO。",
+      "transformed_statement": "把每条字符串的正反放置看成一个布尔变量，再把每个被覆盖顶点的字符限制为某条覆盖约束带来的两个候选字符。顶点取值与路径方向之间的冲突转成二元子句，从而整体建模为 2-SAT。",
+      "key_observations": [
+        "每条约束的字符串只有两种放置方向：从 $x_j$ 到 $y_j$，或从 $y_j$ 到 $x_j$；因此每条约束天然对应一个二值方向变量。",
+        "对每个被路径覆盖的顶点，任选一条覆盖它的约束，合法字符必然是该字符串正向或反向对应位置的字符之一，因此顶点字符也只需用一个二值变量表示。",
+        "若某个顶点字符选择与某条约束的某个方向不匹配，就禁止这两个布尔取值组合，可直接转化为 2-SAT 子句；所有子句同时满足恰好等价于原问题存在合法赋值。",
+        "无需显式枚举约束之间的冲突对，只需逐条访问路径上的顶点；总访问次数为 $\\sum |s_j|$，因此约束数量和总复杂度都保持在线性规模。"
+      ],
+      "solution_brief": "沿每条树路径枚举顶点，确定每个顶点的两个候选字符，并为顶点取值与字符串方向的不匹配建立 2-SAT 子句。用 SCC 求解所有布尔变量，再还原顶点字符；路径可用 LCA 或按总路径长度逐步上移恢复，总复杂度为 $O(n+q+\\sum |s_j|)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T04:40:44+00:00",
+          "quality_flags": [
+            "statement_condition_formatting_incomplete"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 7,
       "problem_key": "1656A",
