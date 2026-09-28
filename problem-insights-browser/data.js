@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3203,
+    "total_problems": 3209,
     "source_total_problems": 3211,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3203,
-    "with_editorial_brief": 2922,
-    "with_solution_brief": 2924,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3209,
+    "with_editorial_brief": 2928,
+    "with_solution_brief": 2930,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2265,
+    "ai_override_count": 2271,
     "primary_topic_count": 13,
-    "contest_count": 490,
+    "contest_count": 491,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1023,
+    "字符串": 168,
+    "交互": 100,
+    "图论与网络流": 202,
     "基础实现与模拟": 196,
     "数论与同余": 342,
     "数据结构": 301,
-    "构造与贪心": 1021,
     "树结构": 159,
-    "图论与网络流": 200,
     "动态规划与状态设计": 271,
     "博弈": 101,
     "组合计数与概率": 247,
-    "交互": 99,
-    "字符串": 167,
     "几何": 77,
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1963,
+    "ai_generated_with_editorial": 1969,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -98921,6 +98921,198 @@ window.CF_INSIGHTS_DATA = {
             "所有候选值的出现位置总数为 $n$，增量修改和查询总量为 $O(n)$，因此整体复杂度为 $O(n\\log n)$。"
           ],
           "solutionBrief": "枚举数组中出现过的每个候选值，将其出现位置设为 $+1$、其他位置设为 $-1$，用线段树维护最大子段和。最大子段对应的左右端点与候选值 $a$ 即为答案，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1697,
+      "name": "Educational Codeforces Round 130 (Rated for Div. 2)",
+      "date": "2022-06-12",
+      "url": "https://codeforces.com/contest/1697",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1697A",
+          "index": "A",
+          "slot": "A",
+          "title": "Parkway Walk",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1697/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103835",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "公园中有 $n+1$ 张长椅，相邻长椅间距离为 $a_i$；从第 1 张走到第 $n+1$ 张时，每走 1 米消耗 1 点能量，初始有 $m$ 点。可在经过的长椅上坐下恢复任意整数点能量，求到达终点所需恢复的最少总能量。",
+          "transformedStatement": "把所有路段合并为总路程 $S=\\sum a_i$：行走必然消耗恰好 $S$ 点能量，而恢复位置只影响过程安排、不影响总缺口；由于起点也可恢复，直接补足缺口即可。",
+          "keyObservations": [
+            "总耗能固定为所有路段长度之和，在哪些长椅上恢复能量不会改变最终所需的总能量。",
+            "当初始能量不足以覆盖总路程时，在第一张长椅一次性恢复差额即可保证全程可行，因此最小恢复量就是总耗能减去初始能量。",
+            "恢复量不能为负；若初始能量已覆盖总路程，则无需坐下恢复，答案为 $0$。"
+          ],
+          "solutionBrief": "计算路段长度总和 $S$，答案为 $\\max(0,S-m)$。若需要恢复，可在起点长椅一次性补足差额；随后直接走完全程。时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1697B",
+          "index": "B",
+          "slot": "B",
+          "title": "Promo",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1697/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103835",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "商店有 $n$ 件商品，顾客一次购买至少 $x$ 件时，其中价格最低的 $y$ 件免费。对每个独立询问给定 $x,y$，求顾客通过选择购买商品所能获得的最大免费商品总价。",
+          "transformedStatement": "题目等价于：对每个 $(x,y)$，从所有价格中选择一个大小为 $x$ 的集合，使该集合中最小的 $y$ 个价格之和最大；最优集合是全体商品中价格最高的 $x$ 件。",
+          "keyObservations": [
+            "购买超过 $x$ 件时，去掉其中最便宜的一件不会降低免费部分总价，因此最优方案一定恰好购买 $x$ 件。",
+            "固定购买 $x$ 件后，应选择全体商品中最贵的 $x$ 件；用更贵的未选商品替换所选最便宜商品，免费部分总价不会下降。",
+            "将价格升序排列并建立前缀和后，第 $i$ 次询问的答案就是区间 $[n-x+1,n-x+y]$ 的价格和，可用两次前缀和查询得到。"
+          ],
+          "solutionBrief": "先将所有价格升序排序并计算前缀和。每次询问只需取最贵的 $x$ 件，其中最便宜的 $y$ 件免费，答案为对应连续区间的前缀和之差。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1697C",
+          "index": "C",
+          "slot": "C",
+          "title": "awoo's Favorite Problem",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1697/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/103835",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "implementation",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定两个只含 `a`、`b`、`c` 的等长字符串。允许执行任意次题目规定的移动，使 `a` 只能向右移动、`c` 只能向左移动而 `b` 保持不动，判断能否把字符串 $s$ 变成 $t$。",
+          "transformedStatement": "把 `b` 视为固定位置，把 `a` 和 `c` 视为保持相对次序的移动字符：先要求删去 `b` 后两串相同，再检查每个对应的 `a` 是否只向右、每个对应的 `c` 是否只向左。",
+          "keyObservations": [
+            "两串中三种字符的总数必须分别相同，否则无论如何移动都无法互相转换。",
+            "字符 `b` 不会移动，且 `a` 与 `c` 不能交换相对顺序；因此删去两串中的所有 `b` 后，剩余字符序列必须完全一致。",
+            "匹配相同字符的出现次序后，第 $i$ 个 `a` 在 $s$ 中的位置必须不超过其在 $t$ 中的位置，第 $i$ 个 `c` 在 $s$ 中的位置必须不小于其在 $t$ 中的位置，分别对应只能右移和只能左移。",
+            "上述条件满足时，可按位置从左到右逐个调整目标字符，因此这些必要条件也足以构造出变换过程。"
+          ],
+          "solutionBrief": "先检查三种字符数量及删去 `b` 后的序列是否相同，再按出现次序比较位置：所有 `a` 只能右移，所有 `c` 只能左移。全部满足则输出 YES，否则输出 NO；每组线性扫描。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1697D",
+          "index": "D",
+          "slot": "D",
+          "title": "Guess The String",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1697/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/103835",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "interactive"
+          ],
+          "statementBrief": "评测程序预先选定一个长度为 $n$ 的小写字母字符串。你可以查询某个位置的字符，或查询任意区间内不同字符的数量，并分别受 $26$ 次和 $6000$ 次查询限制，最终恢复整个字符串。",
+          "transformedStatement": "把每个位置视为判断“是否首次出现”或“对应哪个已见字符”的问题：首次出现直接询问字符，重复出现则在已见字符的最后出现位置中寻找其前一次出现点。",
+          "keyObservations": [
+            "从左到右恢复字符串：比较区间 $[1,i]$ 与 $[1,i-1]$ 的不同字符数，数量增加就说明 $s_i$ 是新字符，此时只需使用一次字符查询。",
+            "若 $s_i$ 已出现，设 $f(x,y)$ 为区间 $[x,y]$ 的不同字符数，则其上一次出现位置是满足 $f(j,i)=f(j,i-1)$ 的最大位置；该等式随 $j$ 增大从成立变为不成立，形成单调性。",
+            "上一次出现位置一定是某个已见字符的最后出现位置，因此只需在至多 $26$ 个候选位置中二分，而不是在整个前缀上二分。",
+            "判断候选位置时，$f(j,i-1)$ 可由已经恢复的前缀本地计算，只需查询 $f(j,i)$；每个位置至多约 $5$ 次二分查询，从而满足查询次数限制。"
+          ],
+          "solutionBrief": "先查询首字符并维护已见字符的最后位置。逐位比较前缀不同字符数：新字符用字符查询，否则在已见字符的最后位置中二分，利用区间不同字符数判断其上一次出现位置。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1697E",
+          "index": "E",
+          "slot": "E",
+          "title": "Coloring",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1697/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/103835",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "combinatorics",
+            "constructive algorithms",
+            "dp",
+            "geometry",
+            "graphs",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定平面上的 $n$ 个不同点，用 $1$ 到 $n$ 的颜色给每点着色。若三点同色，它们必须两两等距；若恰有两点同色，则这两点的距离必须小于它们到第三点的距离，求满足所有条件的着色方案数。",
+          "transformedStatement": "对每个点连接所有曼哈顿距离最近的点，得到有向图。非孤立点的同色关系必须覆盖其可达闭包；合法闭包要么整体为一个颜色类，要么其中每个点都独立，从而转化为统计可选颜色块数量的组合 DP。",
+          "keyObservations": [
+            "若一个点与其他点同色，则它必须与所有距离最近的点同色，且该颜色只能包含这些最近点；否则某个三点约束会被破坏。",
+            "建立“指向最近点”的有向图后，从点 $i$ 可达的所有点都必须与 $i$ 同色；若可达集合内部存在缺少有向边的点对，则 $i$ 只能单独着色。",
+            "只有当可达集合内部任意两点间都有对应有向边时，该集合才有两种选择：全部使用一个颜色，或每个点都作为孤立点使用不同颜色。",
+            "把每个可达集合视为一个不可区分颜色块，按块数做 DP；最后用从 $n$ 个有标号颜色中分配这些颜色块的排列数恢复实际着色方案。"
+          ],
+          "solutionBrief": "计算每个点的最近点并建有向图，找出满足内部完全连接条件的可达集合；每个集合贡献 1 个颜色块或其大小个颜色块，孤立点视为大小为 1 的块。用 DP 统计块数，再乘以从 $n$ 个颜色中分配有序颜色的排列数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1697F",
+          "index": "F",
+          "slot": "F",
+          "title": "Too Many Constraints",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1697/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/103835",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "2-sat",
+            "constructive algorithms",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "构造一个长度为 $n$ 的非递减整数数组，每个元素在 $1$ 到 $k$ 之间，并同时满足三类附加条件：禁止某位置取指定值，以及两个位置元素和的上界或下界约束。若存在合法数组输出任意一个，否则输出 $-1$。",
+          "transformedStatement": "将每个位置的取值改写为一组阈值布尔变量 $a_i>=x$；数组值由这些阈值的连续真前缀决定，所有原条件和非递减关系因此被转化为 2-SAT 中的二元蕴含约束。",
+          "keyObservations": [
+            "把布尔变量从“$a_i=x$”改为“$a_i>=x$”，每个位置的真值必然形成连续前缀，从而用二元子句表达取值范围和单调性。",
+            "非递减条件可直接转成蕴含：若 $a_i>=x$，则 $a_{i+1}>=x$，因此相邻位置的大小关系能由 2-SAT 边统一表示。",
+            "禁止 $a_i=x$ 等价于“$a_i<x$ 或 $a_i>=x+1$”；两项和的上下界也能按一个变量的阈值推出另一个变量的阈值真假，均可拆成二元蕴含。",
+            "为每个位置补充 $a_i>=0$ 到 $a_i>=k+1$ 的边界变量，并强制合法边界真值，可直接从 2-SAT 赋值恢复数组；图规模为 $O((n+m)k)$。"
+          ],
+          "solutionBrief": "以每个位置的阈值条件“$a_i>=x$”作为 2-SAT 变量，将非递减、禁止取值及两数和上下界转成蕴含边。求强连通分量判定可行性，再由阈值赋值恢复 $a_i$，总复杂度 $O((n+m)k)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
