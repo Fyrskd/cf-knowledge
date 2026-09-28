@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3871,
+    "total_problems": 3877,
     "source_total_problems": 3879,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3871,
-    "with_editorial_brief": 3543,
-    "with_solution_brief": 3545,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3877,
+    "with_editorial_brief": 3549,
+    "with_solution_brief": 3551,
     "missing_editorial_brief": 326,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2933,
+    "ai_override_count": 2939,
     "primary_topic_count": 13,
-    "contest_count": 601,
+    "contest_count": 602,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -38,29 +38,29 @@ window.CF_INSIGHTS_DATA = {
     "基础实现与模拟",
     "字符串",
     "树结构",
-    "交互",
     "博弈",
+    "交互",
     "几何",
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数论与同余": 412,
+    "几何": 93,
+    "博弈": 113,
+    "字符串": 203,
+    "数据结构": 372,
     "图论与网络流": 254,
-    "数论与同余": 411,
     "组合计数与概率": 296,
-    "几何": 92,
-    "数据结构": 370,
     "构造与贪心": 1253,
     "交互": 113,
     "基础实现与模拟": 244,
-    "字符串": 202,
     "动态规划与状态设计": 316,
     "树结构": 183,
-    "博弈": 112,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2571,
     "missing_editorial": 326,
-    "ai_generated_with_editorial": 2565,
     "ai_generated_partial_editorial": 87,
     "low_confidence": 1,
     "manual_override": 891,
@@ -119212,6 +119212,190 @@ window.CF_INSIGHTS_DATA = {
             "格子 $(i,j)$ 为代表当且仅当 $a_i+b_j\\le x$、$na_i+b_j>x$ 且 $a_i+nb_j>x$，于是二维连通性判定转成三组不等式计数。"
           ],
           "solutionBrief": "先用单调栈求各行、列的 $na,nb$，再按 $na_i-a_i$ 与 $nb_j-b_j$ 降序扫描。用两个树状数组维护已处理的 $a_i$ 或 $b_j$，查询区间 $(x-na_i,x-a_i]$ 等，从而统计满足三条不等式的代表格数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1555,
+      "name": "Educational Codeforces Round 112 (Rated for Div. 2)",
+      "date": "2021-07-30",
+      "url": "https://codeforces.com/contest/1555",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1555A",
+          "index": "A",
+          "slot": "A",
+          "title": "PizzaForces",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1555/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/93389",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "有三种披萨，分别含 $6$、$8$、$10$ 片，烘焙时间分别为 $15$、$20$、$25$ 分钟。需要购买若干张披萨，使总片数至少为 $n$，求所有披萨烘焙完成所需的最少总时间。",
+          "transformedStatement": "把问题转化为寻找不小于 $n$ 的最小可行总片数：由于每种披萨的单位片耗时都相同，且任意不小于 $6$ 的偶数都能由 $6$、$8$、$10$ 组合得到，答案等于该片数乘以 $2.5$。",
+          "keyObservations": [
+            "三种披萨每片的烘焙时间都为 $2.5$ 分钟，因此总耗时只由总片数决定，容量越小且满足需求的方案一定更优。",
+            "所有披萨片数都是偶数，所以需求为奇数时只需向上补到下一个偶数；当需求小于 $6$ 时，至少必须购买一张小披萨。",
+            "令目标片数为不小于需求的最小偶数且至少为 $6$，反复减去 $6$ 后最终只会剩下 $6$、$8$ 或 $10$，因此任意目标片数都能被三种披萨恰好凑出。"
+          ],
+          "solutionBrief": "先将 $n$ 调整为不小于它的最小偶数，并令其至少为 $6$。由于每片耗时相同且调整后的片数可由 $6$、$8$、$10$ 恰好构成，答案为 $n/2\\times5$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1555B",
+          "index": "B",
+          "slot": "B",
+          "title": "Two Tables",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1555/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/93389",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force"
+          ],
+          "statementBrief": "房间是大小为 $W\\times H$ 的矩形，已有一张轴对齐桌子，现要放入宽为 $w$、高为 $h$ 的第二张桌子。不能旋转桌子，但可以在房间内移动第一张桌子；桌子允许接触但不能相交，求使两桌都在房间内且不相交所需的最小移动距离，无法做到时输出 $-1$。",
+          "transformedStatement": "将“不相交”转化为两桌被竖直线或水平线分隔，只需分别求第一张桌子向左右或上下移动到房间边界附近、为第二张桌子腾出完整空间的最小代价。最终取四种单向移动方案中的最小值。",
+          "keyObservations": [
+            "两个轴对齐矩形不相交时，必能由一条竖线或横线将它们分隔，因此只需考虑左右分离或上下分离。",
+            "若移动后由竖线分隔，竖直移动不会增加可行性，故最优方案可设为只水平移动；水平分隔同理只需竖直移动。",
+            "水平分隔可行的必要条件是两张桌子的总宽度不超过房间宽度；向右或向左移动的最小距离分别由目标桌左侧或右侧所需空隙直接确定。",
+            "竖直方向完全 аналог地检查总高度，并取四种单向移动距离的最小值；若两个方向都无法容纳则无解。"
+          ],
+          "solutionBrief": "分别考虑水平和竖直分隔。水平时先判断两桌总宽度是否不超过 $W$，再计算向左、向右移动第一张桌子的最小距离；竖直方向同理。取所有可行距离的最小值，否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1555C",
+          "index": "C",
+          "slot": "C",
+          "title": "Coin Rows",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1555/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/93389",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $2\\times m$ 的硬币矩阵，Alice 从左上角出发，只能向右或向下走到右下角并收集经过的硬币；随后 Bob 走同样的路线，但不能收集 Alice 已收集的格子。Alice 最小化、Bob 最大化 Bob 收集的硬币数，求最优得分。",
+          "transformedStatement": "把 Alice 的整条路径压缩为她从第一行下移到第二行的列 $c$。她的路径将未收集区域分成第一行的右侧后缀和第二行的左侧前缀，Bob 只能选择其中一块，因此固定 $c$ 时答案是两块总和的最大值，再对 $c$ 取最小值。",
+          "keyObservations": [
+            "在只有两行的网格中，Alice 的路径由唯一的下移列决定；下移后，未被她经过的格子分成第一行右侧和第二行左侧两块。",
+            "Bob 不能同时经过这两块区域，因此对固定的下移列，他的最优得分是两块硬币总数中的较大值。",
+            "枚举 Alice 的每个下移列并计算对应的两段和，就能取出 Bob 得分的最小值；迭代维护两段和即可在线性时间完成。"
+          ],
+          "solutionBrief": "枚举 Alice 在第 $c$ 列从第一行下移到第二行。此时 Bob 的得分为第一行 $c+1$ 到 $m$ 列之和与第二行 $1$ 到 $c-1$ 列之和的较大值；维护两段和并取所有下移位置中的最小值，复杂度为 $O(m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1555D",
+          "index": "D",
+          "slot": "D",
+          "title": "Say No to Palindromes",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1555/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/93389",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dp",
+            "strings"
+          ],
+          "statementBrief": "给定一个只含 `a`、`b`、`c` 的字符串。一次操作可把任意字符改成这三个字母之一；对每个区间，求把该子串修改成不含长度至少为 $2$ 的回文子串所需的最少操作次数。",
+          "transformedStatement": "将每个查询区间看成与六个 `abcabc...` 周期模板比较的匹配问题：对每个模板统计区间内不相等的位置数，再取其中最小值作为答案。",
+          "keyObservations": [
+            "美丽串不能出现长度为 $2$ 或 $3$ 的回文，因此必须满足相邻字符不同且 $s_i\\ne s_{i-2}$；在仅有三种字符时，这进一步推出 $s_i=s_{i-3}$。",
+            "满足上述条件的目标串只能是六种字符排列之一的周期串，例如 `abcabc...`，因此任意区间的最优修改目标只需在六个模板中选择。",
+            "固定一个周期模板后，区间代价就是原串与模板不相等的位置数；预处理失配数组的前缀和即可用 $pr[r]-pr[l-1]$ 在 $O(1)$ 时间回答。"
+          ],
+          "solutionBrief": "枚举六种 `abc` 排列生成的周期模板。对每个模板记录各位置是否失配及其前缀和；每次查询取六个模板在区间 $[l,r]$ 的失配数最小值，即为最少修改次数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1555E",
+          "index": "E",
+          "slot": "E",
+          "title": "Boring Segments",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1555/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/93389",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "sortings",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "给定 $n$ 条带权线段，选出任意子集后，可通过一条被选线段在其覆盖的两个整数点之间移动。要求所选线段能从点 $1$ 到达点 $m$，并最小化所选权值的最大值与最小值之差。",
+          "transformedStatement": "把可达性改写为所选线段的并集覆盖整个 $[1,m]$，再将选择子集改写为按权值排序后选择一个连续权值窗口；目标是找覆盖完整时最短的权值区间。",
+          "keyObservations": [
+            "子集可达当且仅当其线段并集覆盖 $[1,m]$ 的每个小区间 $(i,i+1)$；这样可逐步从 $i$ 走到 $i+1$，反之存在缺口就无法跨越。",
+            "固定所选权值的最小值和最大值时，区间内所有线段都可加入且不会增加代价，因此问题等价于寻找按权值排序后的连续窗口，使其覆盖整个 $[1,m]$。",
+            "令 $f(x)$ 为最小权值上界，其中下界固定为 $x$；将 $x$ 加入更优解不会改变上界，所以 $f(x)$ 单调不减，可用双指针维护窗口。",
+            "在线段树叶子中维护每个 $(i,i+1)$ 的覆盖次数，加入或移除线段转为区间加减；全树最小值大于 $0$ 就表示覆盖完整，从而能快速判断窗口是否可行。"
+          ],
+          "solutionBrief": "按权值排序，用双指针维护最小权值到当前最大权值的窗口。线段树对每条线段覆盖的 $(l_i,r_i)$ 小区间做区间加减，并以全局最小覆盖次数判断是否覆盖 $[1,m]$，取所有可行窗口的最小权值差。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1555F",
+          "index": "F",
+          "slot": "F",
+          "title": "Good Graph",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1555/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/93389",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dsu",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "给定一个初始为空的带权无向图，依次尝试加入没有重边的边 $(u,v,x)$；只有加入后所有简单环的边权异或和仍为 $1$ 时才加入。对每次尝试输出该边是否被接受。",
+          "transformedStatement": "先把所有能连接不同连通分量的查询边视为生成森林边；其余边对应森林中两点间的一条闭环路径。问题转化为判断该路径是否未被其他环使用，以及路径异或值与边权异或后是否为 $1$。",
+          "keyObservations": [
+            "若所有简单环的异或和都为 $1$，任意一条边不能属于两个简单环；否则由两个环合并可构造异或和不为 $1$ 的环，因此已接受的环必须边不相交。",
+            "用 DSU 找出所有生成森林边；这些边不会产生新环，所以一定接受。每条非树边只会在森林中闭合一条树路径，其他潜在环可等价转化为包含已用树边的情形。",
+            "非树边 $(u,v,x)$ 只有在树路径未被其他环占用且 $xr[u]\\oplus xr[v]\\oplus x=1$ 时才能接受；前者保证环之间不共享边，后者保证新环满足条件。",
+            "树路径上的占用情况可转为边权和查询：每条树边至多被标记一次，用欧拉序 Fenwick 树维护根路径和，再通过 LCA 得到任意路径的占用总数。"
+          ],
+          "solutionBrief": "先用 DSU 按查询顺序提取生成森林，所有树边直接接受。对每条非树边，利用根到点异或值计算闭合环的异或和，并用 LCA 加 Fenwick 树判断其树路径是否已被其他环占用；两项都满足才接受并标记路径。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
