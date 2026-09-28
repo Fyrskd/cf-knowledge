@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3515,
+    "total_problems": 3521,
     "source_total_problems": 3523,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3515,
-    "with_editorial_brief": 3216,
-    "with_solution_brief": 3218,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3521,
+    "with_editorial_brief": 3222,
+    "with_solution_brief": 3224,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2577,
+    "ai_override_count": 2583,
     "primary_topic_count": 13,
-    "contest_count": 543,
+    "contest_count": 544,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1140,
+    "构造与贪心": 1144,
+    "树结构": 171,
+    "组合计数与概率": 266,
     "字符串": 184,
     "动态规划与状态设计": 289,
-    "树结构": 170,
     "几何": 84,
     "数论与同余": 369,
-    "组合计数与概率": 265,
     "图论与网络流": 230,
     "基础实现与模拟": 219,
     "数据结构": 333,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 106
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2254,
+    "ai_generated_with_editorial": 2260,
     "ai_generated_partial_editorial": 71,
     "missing_editorial": 297,
     "low_confidence": 1,
@@ -108452,6 +108452,197 @@ window.CF_INSIGHTS_DATA = {
             "固定起点后，线段到该起点的距离随射线角度形成两两至多相交的函数族，可用 Li Chao 树快速找出某个方向首先击中的线段。"
           ],
           "solutionBrief": "提取所有相关方向，按线段到目标的距离做方向可行性 DP。对每个起点建立 Li Chao 树，维护各线段随射线角度的距离函数，从而快速查询首个被击中的线段，整体复杂度为 $O((n+q)^2\\log(n+q))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1626,
+      "name": "Educational Codeforces Round 121 (Rated for Div. 2)",
+      "date": "2022-01-16",
+      "url": "https://codeforces.com/contest/1626",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1626A",
+          "index": "A",
+          "slot": "A",
+          "title": "Equidistant Letters",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1626/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/99136",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "sortings"
+          ],
+          "statementBrief": "给定一个只含小写字母的字符串，且每种字母最多出现两次。可以任意重排全部字母但不能增删，要求所有恰好出现两次的字母，其两次出现位置之间的距离都相同，输出任意一种合法排列。",
+          "transformedStatement": "不必匹配原字符串中的距离；直接把目标公共距离固定为 $1$，将每种字母集中排列成连续块，使所有重复字母自动相邻。按字母排序即可实现这种分块排列。",
+          "keyObservations": [
+            "可以把所有出现两次的字母的共同距离统一设为 $1$，这样每对重复字母只需相邻放置即可满足条件。",
+            "按字母排序会把相同字母集中成连续块，因此出现两次的字母距离必为 $1$，而只出现一次的字母不会产生约束。",
+            "排序只改变字母顺序，不改变任何字母的出现次数，所以得到的字符串始终是合法重排。"
+          ],
+          "solutionBrief": "将字符串按字母排序并直接输出。相同字母会相邻出现，因此所有出现两次的字母对距离都为 $1$；单次出现的字母无需比较。每组复杂度为 $O(|s|\\log |s|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1626B",
+          "index": "B",
+          "slot": "B",
+          "title": "Minor Reduction",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1626/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/99136",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个无前导零的十进制整数，必须恰好选择一对相邻数字，将它们替换为两位数字之和的十进制表示（和为 $0$ 时写作单个 $0$）。在所有一次操作后的结果中，输出数值最大的那个。",
+          "transformedStatement": "先按结果长度分层：相邻和至少为 $10$ 时长度不变，应优先于会缩短长度的操作；同一层内比较高位前缀，选择最右侧的可保持长度的位置，否则选择最左侧位置。",
+          "keyObservations": [
+            "相邻两位之和达到 $10$ 时，替换后数字长度不变；否则长度减少一位，因此只要存在前者就应优先选择。",
+            "在所有和至少为 $10$ 的位置中，替换会使数值变小；保留更长前缀能让结果更大，所以应选择最右侧的这类位置。",
+            "若所有相邻和都小于 $10$，每种操作都会删去一位；此时替换最左侧的第一、第二位可保留最大的高位前缀，结果最大。"
+          ],
+          "solutionBrief": "从右向左寻找首个相邻数字和至少为 $10$ 的位置并合并；若不存在，则合并最左侧两位。按原顺序拼接剩余数字即可，单个测试用例复杂度为 $O(|x|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1626C",
+          "index": "C",
+          "slot": "C",
+          "title": "Monsters And Spells",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1626/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/99136",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation",
+            "math",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 个怪物分别在时刻 $k_i$ 出现，生命值为 $h_i$。巫师只能在正整数秒施法：若上一秒未施法，伤害为 $1$；否则可将伤害加 $1$ 或重置为 $1$。每次施法消耗等于伤害值的魔法，并且必须在怪物出现的准确时刻造成至少 $h_i$ 点伤害；允许在没有怪物时施法。求击杀全部怪物的最小总耗魔。",
+          "transformedStatement": "把每个怪物改写为时间区间 $(k_i-h_i,k_i]$：在该区间连续施法，末秒伤害恰好可达到 $h_i$。相交区间必须共享同一段递增施法链，最终每个并集区间独立贡献其长度对应的三角数费用。",
+          "keyObservations": [
+            "单个生命值为 $h$、出现时刻为 $k$ 的怪物，必须在区间 $(k-h,k]$ 内连续施法，才能让末次伤害达到 $h$。",
+            "两个区间相交时，前一个法术的递增伤害必须延续到后一个怪物，否则后者没有足够时间重新蓄力，因此相交区间必须合并。",
+            "不相交的区间可以分别蓄力，互不共享伤害；所以只需按时间合并所有相交区间，并独立计算每个并集区间的费用。",
+            "长度为 $L$ 的连续施法区间产生伤害 $1,2,\\ldots,L$，耗魔为 $L(L+1)/2$，总答案是所有合并区间费用之和。"
+          ],
+          "solutionBrief": "将每个怪物转成区间 $(k_i-h_i,k_i]$。按出现时间扫描并合并相交区间；每个最终区间长度为 $L$ 时贡献 $L(L+1)/2$，累加即为最小耗魔。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1626D",
+          "index": "D",
+          "slot": "D",
+          "title": "Martial Arts Tournament",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1626/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/99136",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 名参赛者的重量，选择两个整数边界把他们按重量分成轻量级、中量级和重量级三段：小于 $x$、介于 $x$ 与 $y$ 之间、至少为 $y$。三段都必须非空且人数为二次幂；不能移除已有参赛者，只能向各段邀请新人，求最少需要邀请多少人。",
+          "transformedStatement": "将重量排序后，边界选择转化为把数组切成三个连续区间。只有相邻元素严格递增的位置才能作为可实现的切点；对每个区间长度，代价是补到下一个二次幂所需的人数。",
+          "keyObservations": [
+            "排序后，两个重量边界等价于把数组切成三个连续且非空的区间；相邻区间的分界只有在两侧元素不同，即 $a_i<a_{i+1}$ 时才可实现。",
+            "每个区间最终人数只需补到不小于当前人数的最小二次幂，因此固定区间实际长度后，补人数由其上取整到二次幂的结果唯一决定。",
+            "固定中间区间可容纳的二次幂大小和第一段长度后，第二段应取不超过该容量的最长可行区间；缩短它会同时增加中间段和第三段所需人数，不会带来更优答案。",
+            "枚举中间段容量这一组二次幂，并用预处理的最近可行分界快速确定第二段边界，即可在 $O(n\\log n)$ 内检查所有主要候选。"
+          ],
+          "solutionBrief": "先排序，将问题转为三个连续区间的切分。预处理每个位置左侧最近的合法分界，枚举中间段容量的二次幂和第一段长度，并贪心选取不超过容量的最长合法第二段；三段分别补到最近的二次幂，取最小补人数，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1626E",
+          "index": "E",
+          "slot": "E",
+          "title": "Black and White Tree",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1626/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/99136",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，部分顶点为黑色，其余为白色。棋子每次选择一个黑色顶点，并沿通往该顶点的路径移动一步；连续两次不能选择同一个黑点，棋子到达黑点后停止。对每个起点，判断是否存在有限操作序列使棋子到达某个黑点。",
+          "transformedStatement": "把一次不会因下一步选择限制而被迫返回的移动 $x\\to y$ 视为有向弧：若 $y$ 为黑点，或删去边 $xy$ 后 $y$ 一侧至少有两个黑点，则该弧可用。问题转化为找出有向图中能到达黑点的所有顶点。",
+          "keyObservations": [
+            "从当前点沿边 $x\\to y$ 移动后，若 $y$ 是黑点则立即结束；否则只有当删去该边后 $y$ 所在连通块含至少两个黑点，才可能选择不同黑点继续前进，避免被迫原路返回。",
+            "同一条无向边的两个方向可行性不同，因此应把每个可行移动视为有向弧，而不能用无向连通性直接判断。",
+            "以任意顶点为根后，可用子树黑点数判断朝子树方向的弧；反方向则由整棵树黑点总数减去该子树黑点数得到。",
+            "原点能到达黑点等价于它在反向图中能从某个黑点到达，因此从所有黑点同时搜索即可得到全部可行起点。"
+          ],
+          "solutionBrief": "将每个可行的单步移动建成有向弧：终点为黑点，或终点所在一侧含至少两个黑点。DFS 求各子树黑点数并建弧，再在反图中从所有黑点多源搜索；能被访问的点答案为 $1$，总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1626F",
+          "index": "F",
+          "slot": "F",
+          "title": "A Random Code Problem",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1626/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/99136",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "number theory",
+            "probabilities"
+          ],
+          "statementBrief": "给定一个由输入参数生成的长度为 $n$ 的数组和整数 $k$。连续进行 $k$ 轮：每轮随机等概率选择一个下标，将该元素向下取整为当前轮数的倍数，并把操作后的值加入 ans；求最终 ans 的期望值乘以 $n^k$，结果对 $998244353$ 取模。",
+          "transformedStatement": "把随机过程改成枚举每轮选择下标的全部 $n^k$ 条序列，并统计每个数组元素在各轮可能处于的数值。用 $L=\\operatorname{lcm}(1,\\ldots,k-1)$分离始终保留的倍数部分，余数部分通过按轮次转移的出现次数 DP 求贡献。",
+          "keyObservations": [
+            "把期望改写为所有 $n^k$ 个索引选择序列产生的 ans 总和，从而避免直接处理概率。",
+            "令 $L=\\operatorname{lcm}(1,2,\\ldots,k-1)$，每个数的 $\\lfloor a_i/L\\rfloor\\cdot L$ 部分在所有相关操作中都不会被削减，可直接贡献 $k n^{k-1}\\lfloor a_i/L\\rfloor L$。",
+            "定义 $dp_{v,j}$ 为前 $j$ 轮选择后值为 $v$ 的元素出现总次数；下一轮选中该元素时变为 $v-(v\\bmod(j+1))$，未选中时保持不变且方案数乘 $n-1$。",
+            "第 $j+1$ 轮对值 $v$ 的贡献为 $v\\cdot dp_{v,j}\\cdot n^{k-j-1}$；最后一轮后的变化无需维护，因此可使用 $\\operatorname{lcm}(1,\\ldots,k-1)$。"
+          ],
+          "solutionBrief": "将期望乘以 $n^k$，枚举所有索引选择序列。用 $L=\\operatorname{lcm}(1,\\ldots,k-1)$拆出不变的倍数部分，再在 $[0,L)$ 上做按轮次转移的计数 DP，并累计每轮贡献。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
