@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T11:37:48+00:00",
+  "updated_at": "2026-09-28T11:43:28+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -83495,6 +83495,37 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的歌曲分配规则和完整 editorial_text；tags 提供 math 分类。",
+        "quality_flags": []
+      }
+    },
+    "1586I": {
+      "problem_key": "1586I",
+      "title": "Omkar and Mosaic",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1586/problem/I",
+      "editorial_url": "https://codeforces.com/blog/entry/96072",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "7f2d8eccc7cd02ed2d98a2fcfbbd77ec50c88fdd38edc774dae514bb372c693f",
+      "generated_at": "2026-09-28T11:43:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个含 S、G 和空格的 $n\\times n$ 网格，需给空格填入两种颜色，使每个格子恰好与两个同色且共边的格子相邻。判断合法填法是不存在、唯一还是多于一种；若唯一还要输出完整网格。",
+        "transformed_statement": "合法网格可被压缩为左边界相邻两格组成的 $n/2$ 个二元选择：每组选定颜色后，利用对角线交替、主对角线对称和局部邻接约束唯一传播到全图；原有颜色变成对这些变量的约束。",
+        "key_observations": [
+          "若网格边长为奇数，两组必须交替的长对角线会在中间产生矛盾，因此不存在合法马赛克。",
+          "内部格子必须恰好邻接两个 S 和两个 G；结合角点、对角线交替关系，可推出合法网格关于两条主对角线对称。",
+          "所有相邻的成对对角线格子颜色相同，因此左侧边界按相邻两格分组后，每组任选一种颜色，就能唯一传播并确定整张网格。",
+          "已有 S/G 只会约束这些边界二元选择；若约束冲突则无解，若所有选择均被唯一确定则唯一，否则存在多个方案。"
+        ],
+        "solution_brief": "奇数边长直接判定无解。偶数边长时，将左边界相邻两格作为 $n/2$ 个二元变量，按对角线交替、对称及相邻成对格子的约束传播出整图；检查已给颜色，统计变量是否冲突或仍有自由度，并据此输出 NONE、UNIQUE 或 MULTIPLE。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "组合计数与概率",
+          "几何"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text 提炼，结合 statement_text 与 tags 校验题意和主题。",
         "quality_flags": []
       }
     }

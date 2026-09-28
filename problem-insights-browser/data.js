@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3726,
+    "total_problems": 3727,
     "source_total_problems": 3729,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 3726,
-    "with_editorial_brief": 3413,
-    "with_solution_brief": 3415,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3727,
+    "with_editorial_brief": 3414,
+    "with_solution_brief": 3416,
     "missing_editorial_brief": 311,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2788,
+    "ai_override_count": 2789,
     "primary_topic_count": 13,
-    "contest_count": 576,
+    "contest_count": 577,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1213,
     "数论与同余": 391,
     "组合计数与概率": 281,
     "字符串": 197,
-    "构造与贪心": 1212,
     "动态规划与状态设计": 303,
     "图论与网络流": 241,
     "数据结构": 353,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2441,
+    "ai_generated_with_editorial": 2442,
     "missing_editorial": 311,
     "ai_generated_partial_editorial": 81,
     "low_confidence": 1,
@@ -114824,6 +114824,47 @@ window.CF_INSIGHTS_DATA = {
             "固定左端点后，满足条件的右端点具有连续性，可在线段树上维护区间最小值并寻找最远右端点，也可用单调栈线性统计。"
           ],
           "solutionBrief": "将每个质数的因子指数转为括号余额，用质数出现位置的栈计算每个位置的 $nxt_i$；随后统计满足区间最小 $nxt_i\\ge l$ 的区间，可用线段树或单调栈完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1586,
+      "name": "Codeforces Round 749 (Div. 1 + Div. 2, based on Technocup 2022 Elimination Round 1)",
+      "date": "2021-10-17",
+      "url": "https://codeforces.com/contest/1586",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 1,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1586I",
+          "index": "I",
+          "slot": "I",
+          "title": "Omkar and Mosaic",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1586/problem/I",
+          "editorialUrl": "https://codeforces.com/blog/entry/96072",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "几何"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定一个含 S、G 和空格的 $n\\times n$ 网格，需给空格填入两种颜色，使每个格子恰好与两个同色且共边的格子相邻。判断合法填法是不存在、唯一还是多于一种；若唯一还要输出完整网格。",
+          "transformedStatement": "合法网格可被压缩为左边界相邻两格组成的 $n/2$ 个二元选择：每组选定颜色后，利用对角线交替、主对角线对称和局部邻接约束唯一传播到全图；原有颜色变成对这些变量的约束。",
+          "keyObservations": [
+            "若网格边长为奇数，两组必须交替的长对角线会在中间产生矛盾，因此不存在合法马赛克。",
+            "内部格子必须恰好邻接两个 S 和两个 G；结合角点、对角线交替关系，可推出合法网格关于两条主对角线对称。",
+            "所有相邻的成对对角线格子颜色相同，因此左侧边界按相邻两格分组后，每组任选一种颜色，就能唯一传播并确定整张网格。",
+            "已有 S/G 只会约束这些边界二元选择；若约束冲突则无解，若所有选择均被唯一确定则唯一，否则存在多个方案。"
+          ],
+          "solutionBrief": "奇数边长直接判定无解。偶数边长时，将左边界相邻两格作为 $n/2$ 个二元变量，按对角线交替、对称及相邻成对格子的约束传播出整图；检查已给颜色，统计变量是否冲突或仍有自由度，并据此输出 NONE、UNIQUE 或 MULTIPLE。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
