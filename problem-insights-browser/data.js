@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3433,
+    "total_problems": 3432,
     "source_total_problems": 3436,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 3433,
+    "filtered_out_problems": 4,
+    "with_statement_brief": 3432,
     "with_editorial_brief": 3134,
     "with_solution_brief": 3136,
-    "missing_editorial_brief": 297,
+    "missing_editorial_brief": 296,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2495,
+    "ai_override_count": 2494,
     "primary_topic_count": 13,
     "contest_count": 528,
     "rating_min": 800,
@@ -50,7 +50,7 @@ window.CF_INSIGHTS_DATA = {
     "数论与同余": 364,
     "动态规划与状态设计": 282,
     "图论与网络流": 223,
-    "数据结构": 324,
+    "数据结构": 323,
     "代数、矩阵与多项式": 24,
     "树结构": 166,
     "组合计数与概率": 258,
@@ -60,7 +60,7 @@ window.CF_INSIGHTS_DATA = {
   },
   "statusCounts": {
     "ai_generated_with_editorial": 2174,
-    "missing_editorial": 297,
+    "missing_editorial": 296,
     "ai_generated_partial_editorial": 69,
     "low_confidence": 1,
     "manual_override": 891,
@@ -334,7 +334,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-25",
       "url": "https://codeforces.com/contest/2267",
       "type": "Div. 2",
-      "problemCount": 8,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
         {
@@ -506,35 +506,6 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "反复生成所有两两异或值，排序后保留最小的 $n$ 个作为下一状态，同时记录每轮的最大值减最小值。由于最高位至多在两轮内消失且总轮数不超过 $9$，预处理所有状态后，查询超过终止轮数时直接输出 $0$；总复杂度为 $O(n^2\\log n\\log A)$。",
           "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2267F2",
-          "index": "F2",
-          "slot": "F",
-          "title": "XOR Transformations (Hard Version)",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2267/problem/F2",
-          "editorialUrl": "https://codeforces.com/blog/entry/157126",
-          "primaryTopic": "数据结构",
-          "secondaryTopics": [
-            "构造与贪心"
-          ],
-          "originalTags": [
-            "bitmasks",
-            "brute force",
-            "data structures",
-            "dfs and similar",
-            "greedy",
-            "sortings",
-            "strings",
-            "trees"
-          ],
-          "statementBrief": "给定非负整数数组。一次操作枚举所有下标对 $i<j$ 的异或值，取其中最小的 $n$ 个作为新数组；每个查询独立地从原数组开始执行 $x$ 次操作，要求最终数组的最大值减最小值。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
           "editorialQuality": "complete"
         },
         {
