@@ -8,6 +8,27 @@
     "raw_sha256": "5f3dd07045859f3e77507947bf858a5d2552c6ea0c89da1b94c474f8425c1786"
   },
   {
+    "url": "https://codeforces.com/blog/entry/94278",
+    "blog_entry_id": 94278,
+    "title": "Editorial of Codeforces Round 741 (Div. 2)",
+    "author": "Wind_Eagle",
+    "creation_time": "2021-08-26",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Editorial of Codeforces Round 741 (Div. 2)",
+    "section_count": 7,
+    "covered_problems": [
+      "1562A",
+      "1562B",
+      "1562C",
+      "1562D1",
+      "1562D2",
+      "1562E",
+      "1562F"
+    ],
+    "raw_sha256": "c5d964ee831543aa769cf4aacf4e5aeb8b931399805b5b42b47a9fe311b39613"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/94803",
     "blog_entry_id": 94803,
     "title": "Codeforces Global Round 16 Editorial",
