@@ -15,19 +15,282 @@
     ]
   },
   "summary": {
-    "total_problems": 3122,
+    "total_problems": 3128,
     "source_total_problems": 3130,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3122,
-    "with_editorial_brief": 2842,
-    "with_solution_brief": 2843,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3128,
+    "with_editorial_brief": 2848,
+    "with_solution_brief": 2849,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2184,
+    "ai_override_count": 2190,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1707A",
+      "contest_id": 1707,
+      "title": "Doremy's IQ",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1707/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/104930",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "constructive algorithms",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "有 $n$ 场按固定日期依次到来的比赛，第 $i$ 场只能在第 $i$ 天参加。每天可选择参加或跳过；只有当前 IQ 大于 $0$ 才能参加，若难度超过当前 IQ，参加后 IQ 减少 $1$，否则不变。请输出一个二进制串，使参加的比赛数量最大且始终满足 IQ 限制。",
+      "transformed_statement": "将问题反向处理，把 $Q$ 看作正向过程中已经消耗的 IQ 点数：反向遇到 $a_i\\le Q$ 的比赛可无代价保留，遇到更难的比赛则只有在尚未消耗满 $q$ 点时才能保留并增加 $Q$。其余比赛必须舍弃。",
+      "key_observations": [
+        "把 $a_i$ 大于当前 IQ 的比赛视为会消耗 1 点 IQ 的坏比赛，否则为好比赛；最优方案可整理为某个分界点前只参加好比赛，分界点后参加所有比赛。",
+        "反向处理时令 $Q$ 表示已在正向消耗的 IQ：若 $a_i\\le Q$，该比赛不会额外消耗 IQ，必应参加；若 $a_i>Q$ 且 $Q<q$，参加它相当于占用一点可消耗 IQ，并令 $Q$ 增加。",
+        "当反向扫描到 $a_i>Q$ 且 $Q=q$ 时，所有可消耗的 IQ 都已用尽，参加该比赛无法对应合法的正向方案，因此必须跳过。"
+      ],
+      "solution_brief": "从后往前扫描，维护已使用的 IQ 消耗数 $Q$。若 $a_i\\le Q$ 就选择该比赛；否则仅在 $Q<q$ 时选择并令 $Q++$，最终得到最大数量的二进制方案，复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:19:23+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1707B",
+      "contest_id": 1707,
+      "title": "Difference Array",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1707/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/104930",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "brute force",
+        "data structures",
+        "implementation",
+        "sortings"
+      ],
+      "statement_brief": "给定一个非降的非负整数数组。每次用相邻元素之差生成长度减一的新数组，再排序并替换原数组；重复 $n-1$ 次后输出剩下的唯一元素。",
+      "transformed_statement": "将数组拆成隐式维护的零和显式维护的正数；正数序列每轮变为其与前一项（首项与零）的差值并删除零，从而避免反复处理大量零。",
+      "key_observations": [
+        "相邻差的总和恒为原数组最大值减最小值，因此一次操作后总和不超过原最大值。",
+        "只保留正数即可模拟：若正数为 $x_1<\\cdots<x_m$，下一轮正数来自 $x_1,x_2-x_1,\\ldots,x_m-x_{m-1}$，其余元素都是零。",
+        "含 $m$ 个正数且最大值为 $x_m$ 时，总和至少为 $x_m+m-1$，所以正数规模可由当前总和控制。",
+        "每轮总和至少减少 $m-1$，因此各轮排序规模的总和受数值上界和初始长度共同限制，直接模拟可以通过。"
+      ],
+      "solution_brief": "忽略零并维护正数 multiset。每轮将正数改为相邻差（首项与零作差），删除新产生的零后排序；正数只剩一个时答案不再变化。利用总和递减证明总复杂度为 $O(A\\log A)$，其中 $A=\\max(n,a_n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:18:56+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1707C",
+      "contest_id": 1707,
+      "title": "DFS Trees",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1707/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/104930",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "树结构",
+        "数据结构"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "dsu",
+        "graphs",
+        "greedy",
+        "sortings",
+        "trees"
+      ],
+      "statement_brief": "给定一个连通无向图，第 $i$ 条输入边的权重为 $i$。对每个顶点 $x$ 运行一次题目给出的错误 MST 算法 findMST(x)，得到一棵生成树；需要判断它是否为最小生成树，并按起点顺序输出二进制串。",
+      "transformed_statement": "利用边权互不相同这一性质，把问题转化为唯一最小生成树上的起点集合筛选：每条非树边都会禁止一批会使它成为 DFS 跨边的根，只保留所有非树边约束的交集。",
+      "key_observations": [
+        "由于所有边权互不相同，图的最小生成树唯一；若某个起点得到该树，则 DFS 中不能出现非树边连接两个不同分支的情况。",
+        "对任意不属于最小生成树的边 $(u,v)$，只有两类起点可能避免它成为跨边：以 $v$ 为根时 $u$ 的子树，或以 $u$ 为根时 $v$ 的子树。",
+        "把每条非树边对应的可行起点集合取交集即可得到答案，因此无需分别模拟每个起点的 DFS；子树集合可用树上祖先和区间结构批量标记。"
+      ],
+      "solution_brief": "先求唯一的最小生成树。对每条非树边 $(u,v)$，在该树上分别以 $u$、$v$ 为根确定两侧可行子树，并排除其余会形成跨边的起点；通过树上倍增和树状数组完成子树标记，最终输出所有约束交集对应的二进制串。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:18:26+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1707D",
+      "contest_id": 1707,
+      "title": "Partial Virtual Trees",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/1707/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/104930",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "组合计数与概率",
+        "树结构"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dfs and similar",
+        "dp",
+        "math",
+        "trees"
+      ],
+      "statement_brief": "给定以 1 为根的树，初始顶点集为全部顶点。每次必须选择当前集合的真子集，且所选集合中任意两点的 LCA 也必须在集合内，并将当前集合替换为它；对每个操作次数 k，求最终变为仅含顶点 1 的不同操作序列数。",
+      "transformed_statement": "把每次集合替换视为同时删除若干顶点，并按子树递归统计删除时序；先放宽为允许保留整个当前集合，再用二项式反演扣除这些空操作，恢复严格真子集操作的答案。",
+      "key_observations": [
+        "剩余顶点集始终保持 LCA 闭包，可等价看成按时间删除各子树；删除节点 x 时至多一个孩子子树还能保留，否则两个分支的 LCA x 也必须保留。",
+        "定义 $dp_{x,i}$ 为清空 x 子树并使用恰好 $i$ 次操作的方案数；固定 x 被处理的时刻后，各孩子子树可独立贡献前缀方案数。",
+        "令 $S_{x,i}$ 表示 $dp_{x,0}$ 到 $dp_{x,i}$ 的前缀和，并令 $D_{x,i}$ 为所有孩子对应前缀和的乘积，转移中的时间求和可用前缀和合并，使总复杂度达到 $O(n^2)$。",
+        "先允许操作选择整个当前集合，得到 $dp_{1,i}$；无效的整集合操作可插入到真实方案的任意步骤之间，因此满足 $dp_{1,i}=\\sum_{j=0}^{i}\\binom{i}{j}Ans_j$，再用二项式反演求真实答案。"
+      ],
+      "solution_brief": "在树上做子树 DP，按节点处理时刻统计清空各子树的方案，并用前缀和将转移优化到 $O(n^2)$。先允许选择整个集合，再通过二项式反演去除这些无效操作。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:18:07+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1707E",
+      "contest_id": 1707,
+      "title": "Replace",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1707/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/104930",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "data structures"
+      ],
+      "statement_brief": "给定数组和替换函数：对区间 $[l,r]$，将其替换为该区间所有元素的最小值与最大值组成的区间。对每个查询，反复应用该函数，求最少多少次能得到 $[1,n]$，若永远无法得到则输出 $-1$。",
+      "transformed_statement": "将一个连续区间看成由相互重叠的局部区间组成，并研究这些局部区间经过若干次替换后的结果如何合并；随后用二进制幂次表示迭代次数，快速判断何时到达固定目标区间 $[1,n]$。",
+      "key_observations": [
+        "两个区间只要相交，它们经过一次替换后的区间仍相交，因此相邻重叠区间链的替换结果可以合并为各自结果的并集。",
+        "任意查询区间可拆成一串相互重叠的短区间，故整体的 $k$ 次替换结果能由这些局部区间的 $k$ 次结果合并得到。",
+        "预处理短区间经过 $2^t$ 次替换后的结果，再利用函数复合拼出任意次数和任意查询区间，从而把一次状态计算降为对数级。",
+        "若某次替换得到 $[1,n]$，则数组中已经出现过 $1$ 和 $n$，所以 $[1,n]$ 后续保持不变；因此可以二分搜索首次达到目标的次数。"
+      ],
+      "solution_brief": "利用相交区间替换后仍相交的性质，把查询区间拆成局部区间并合并其迭代结果。预处理局部区间的二进制幂次替换，用函数复合计算任意次数，再二分最小可达次数；总复杂度为 $O((n+q)\\log^2 n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:17:33+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1707F",
+      "contest_id": 1707,
+      "title": "Bugaboo",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/1707/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/104930",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "数论与同余",
+        "数据结构",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "dp",
+        "number theory"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组，单次变换把每个位置替换为该值与下一个位置值的按位异或（末位置与首位置相邻），重复 $t$ 次。部分结果数组位置已知、其余可任意填写；每次修改可改变位置是否已知或修改其值，要求在每次修改后统计所有可能且能由某个初始数组变换得到的结果数组数量，并按指定模数输出。",
+      "transformed_statement": "把“经过 $t$ 次环形相邻异或变换”改写为对二进制下标递归分治的异或约束：长度为 $2^h$ 时维护结果数组对应的总异或，奇偶步分别产生合并或相等条件；一般长度则按 $n=2^h o$ 将同余位置分组处理。",
+      "key_observations": [
+        "当长度为 $2^h$ 时，连续变换 $2^h$ 次必得到全零，因此 $t\\ge 2^h$ 时只需判断所有已确定位置能否为 $0$。",
+        "将变换次数按奇偶递归拆分：$t$ 为偶数时两组奇偶下标的贡献异或合并，为奇数时两组递归得到的总异或必须相等，从而可递归判定可行性。",
+        "对每个子问题按总异或值统计方案数，其分布始终是全体值等权、单一异或值等权或全为零三种形式，因此无需枚举 $2^w$ 个状态。",
+        "令 $n=2^h\\cdot o$ 且 $o$ 为奇数，把相差 $2^h$ 的位置组成一组即可复用递归；状态结构类似线段树，单点修改只影响 $O(\\log n)$ 个节点。"
+      ],
+      "solution_brief": "先在长度为 $2^h$ 的数组上递归计算总异或约束，并用三种压缩分布表示 DP。对一般 $n$ 按 $n=2^h o$ 分组处理，再以类似线段树的结构支持修改，初始计算 $O(n)$、每次修改 $O(\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T00:17:04+00:00",
+          "quality_flags": [
+            "statement_input_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 7,
       "problem_key": "1708A",

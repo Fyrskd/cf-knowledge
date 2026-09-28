@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3122,
+    "total_problems": 3128,
     "source_total_problems": 3130,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3122,
-    "with_editorial_brief": 2842,
-    "with_solution_brief": 2843,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3128,
+    "with_editorial_brief": 2848,
+    "with_solution_brief": 2849,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2184,
+    "ai_override_count": 2190,
     "primary_topic_count": 13,
-    "contest_count": 477,
+    "contest_count": 478,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 998,
+    "基础实现与模拟": 186,
+    "图论与网络流": 194,
+    "动态规划与状态设计": 266,
+    "数据结构": 293,
     "数论与同余": 335,
-    "构造与贪心": 997,
-    "动态规划与状态设计": 264,
-    "图论与网络流": 193,
-    "基础实现与模拟": 185,
-    "数据结构": 292,
     "字符串": 164,
     "树结构": 154,
     "几何": 77,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "交互": 97
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1885,
+    "ai_generated_with_editorial": 1891,
     "ai_generated_partial_editorial": 66,
     "missing_editorial": 279,
     "manual_override": 891,
@@ -96467,6 +96467,198 @@ window.CF_INSIGHTS_DATA = {
             "区间中最小的 $i$ 的倍数是 $\\left(\\left\\lfloor\\frac{l-1}{i}\\right\\rfloor+1\\right)i$；它超过 $r$ 时无解，否则直接将其作为 $a_i$ 即可。"
           ],
           "solutionBrief": "对每个 $i$，先由互异性推出必须满足 $\\gcd(i,a_i)=i$，再取区间 $[l,r]$ 内最小的 $i$ 的倍数作为 $a_i$。若该倍数超过 $r$，输出 NO；否则输出全部构造值。每组复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1707,
+      "name": "Codeforces Round 808 (Div. 1)",
+      "date": "2022-07-16",
+      "url": "https://codeforces.com/contest/1707",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1707A",
+          "index": "A",
+          "slot": "A",
+          "title": "Doremy's IQ",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1707/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/104930",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 场按固定日期依次到来的比赛，第 $i$ 场只能在第 $i$ 天参加。每天可选择参加或跳过；只有当前 IQ 大于 $0$ 才能参加，若难度超过当前 IQ，参加后 IQ 减少 $1$，否则不变。请输出一个二进制串，使参加的比赛数量最大且始终满足 IQ 限制。",
+          "transformedStatement": "将问题反向处理，把 $Q$ 看作正向过程中已经消耗的 IQ 点数：反向遇到 $a_i\\le Q$ 的比赛可无代价保留，遇到更难的比赛则只有在尚未消耗满 $q$ 点时才能保留并增加 $Q$。其余比赛必须舍弃。",
+          "keyObservations": [
+            "把 $a_i$ 大于当前 IQ 的比赛视为会消耗 1 点 IQ 的坏比赛，否则为好比赛；最优方案可整理为某个分界点前只参加好比赛，分界点后参加所有比赛。",
+            "反向处理时令 $Q$ 表示已在正向消耗的 IQ：若 $a_i\\le Q$，该比赛不会额外消耗 IQ，必应参加；若 $a_i>Q$ 且 $Q<q$，参加它相当于占用一点可消耗 IQ，并令 $Q$ 增加。",
+            "当反向扫描到 $a_i>Q$ 且 $Q=q$ 时，所有可消耗的 IQ 都已用尽，参加该比赛无法对应合法的正向方案，因此必须跳过。"
+          ],
+          "solutionBrief": "从后往前扫描，维护已使用的 IQ 消耗数 $Q$。若 $a_i\\le Q$ 就选择该比赛；否则仅在 $Q<q$ 时选择并令 $Q++$，最终得到最大数量的二进制方案，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1707B",
+          "index": "B",
+          "slot": "B",
+          "title": "Difference Array",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1707/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/104930",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一个非降的非负整数数组。每次用相邻元素之差生成长度减一的新数组，再排序并替换原数组；重复 $n-1$ 次后输出剩下的唯一元素。",
+          "transformedStatement": "将数组拆成隐式维护的零和显式维护的正数；正数序列每轮变为其与前一项（首项与零）的差值并删除零，从而避免反复处理大量零。",
+          "keyObservations": [
+            "相邻差的总和恒为原数组最大值减最小值，因此一次操作后总和不超过原最大值。",
+            "只保留正数即可模拟：若正数为 $x_1<\\cdots<x_m$，下一轮正数来自 $x_1,x_2-x_1,\\ldots,x_m-x_{m-1}$，其余元素都是零。",
+            "含 $m$ 个正数且最大值为 $x_m$ 时，总和至少为 $x_m+m-1$，所以正数规模可由当前总和控制。",
+            "每轮总和至少减少 $m-1$，因此各轮排序规模的总和受数值上界和初始长度共同限制，直接模拟可以通过。"
+          ],
+          "solutionBrief": "忽略零并维护正数 multiset。每轮将正数改为相邻差（首项与零作差），删除新产生的零后排序；正数只剩一个时答案不再变化。利用总和递减证明总复杂度为 $O(A\\log A)$，其中 $A=\\max(n,a_n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1707C",
+          "index": "C",
+          "slot": "C",
+          "title": "DFS Trees",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1707/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/104930",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定一个连通无向图，第 $i$ 条输入边的权重为 $i$。对每个顶点 $x$ 运行一次题目给出的错误 MST 算法 findMST(x)，得到一棵生成树；需要判断它是否为最小生成树，并按起点顺序输出二进制串。",
+          "transformedStatement": "利用边权互不相同这一性质，把问题转化为唯一最小生成树上的起点集合筛选：每条非树边都会禁止一批会使它成为 DFS 跨边的根，只保留所有非树边约束的交集。",
+          "keyObservations": [
+            "由于所有边权互不相同，图的最小生成树唯一；若某个起点得到该树，则 DFS 中不能出现非树边连接两个不同分支的情况。",
+            "对任意不属于最小生成树的边 $(u,v)$，只有两类起点可能避免它成为跨边：以 $v$ 为根时 $u$ 的子树，或以 $u$ 为根时 $v$ 的子树。",
+            "把每条非树边对应的可行起点集合取交集即可得到答案，因此无需分别模拟每个起点的 DFS；子树集合可用树上祖先和区间结构批量标记。"
+          ],
+          "solutionBrief": "先求唯一的最小生成树。对每条非树边 $(u,v)$，在该树上分别以 $u$、$v$ 为根确定两侧可行子树，并排除其余会形成跨边的起点；通过树上倍增和树状数组完成子树标记，最终输出所有约束交集对应的二进制串。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1707D",
+          "index": "D",
+          "slot": "D",
+          "title": "Partial Virtual Trees",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1707/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/104930",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "树结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定以 1 为根的树，初始顶点集为全部顶点。每次必须选择当前集合的真子集，且所选集合中任意两点的 LCA 也必须在集合内，并将当前集合替换为它；对每个操作次数 k，求最终变为仅含顶点 1 的不同操作序列数。",
+          "transformedStatement": "把每次集合替换视为同时删除若干顶点，并按子树递归统计删除时序；先放宽为允许保留整个当前集合，再用二项式反演扣除这些空操作，恢复严格真子集操作的答案。",
+          "keyObservations": [
+            "剩余顶点集始终保持 LCA 闭包，可等价看成按时间删除各子树；删除节点 x 时至多一个孩子子树还能保留，否则两个分支的 LCA x 也必须保留。",
+            "定义 $dp_{x,i}$ 为清空 x 子树并使用恰好 $i$ 次操作的方案数；固定 x 被处理的时刻后，各孩子子树可独立贡献前缀方案数。",
+            "令 $S_{x,i}$ 表示 $dp_{x,0}$ 到 $dp_{x,i}$ 的前缀和，并令 $D_{x,i}$ 为所有孩子对应前缀和的乘积，转移中的时间求和可用前缀和合并，使总复杂度达到 $O(n^2)$。",
+            "先允许操作选择整个当前集合，得到 $dp_{1,i}$；无效的整集合操作可插入到真实方案的任意步骤之间，因此满足 $dp_{1,i}=\\sum_{j=0}^{i}\\binom{i}{j}Ans_j$，再用二项式反演求真实答案。"
+          ],
+          "solutionBrief": "在树上做子树 DP，按节点处理时刻统计清空各子树的方案，并用前缀和将转移优化到 $O(n^2)$。先允许选择整个集合，再通过二项式反演去除这些无效操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1707E",
+          "index": "E",
+          "slot": "E",
+          "title": "Replace",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1707/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/104930",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "data structures"
+          ],
+          "statementBrief": "给定数组和替换函数：对区间 $[l,r]$，将其替换为该区间所有元素的最小值与最大值组成的区间。对每个查询，反复应用该函数，求最少多少次能得到 $[1,n]$，若永远无法得到则输出 $-1$。",
+          "transformedStatement": "将一个连续区间看成由相互重叠的局部区间组成，并研究这些局部区间经过若干次替换后的结果如何合并；随后用二进制幂次表示迭代次数，快速判断何时到达固定目标区间 $[1,n]$。",
+          "keyObservations": [
+            "两个区间只要相交，它们经过一次替换后的区间仍相交，因此相邻重叠区间链的替换结果可以合并为各自结果的并集。",
+            "任意查询区间可拆成一串相互重叠的短区间，故整体的 $k$ 次替换结果能由这些局部区间的 $k$ 次结果合并得到。",
+            "预处理短区间经过 $2^t$ 次替换后的结果，再利用函数复合拼出任意次数和任意查询区间，从而把一次状态计算降为对数级。",
+            "若某次替换得到 $[1,n]$，则数组中已经出现过 $1$ 和 $n$，所以 $[1,n]$ 后续保持不变；因此可以二分搜索首次达到目标的次数。"
+          ],
+          "solutionBrief": "利用相交区间替换后仍相交的性质，把查询区间拆成局部区间并合并其迭代结果。预处理局部区间的二进制幂次替换，用函数复合计算任意次数，再二分最小可达次数；总复杂度为 $O((n+q)\\log^2 n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1707F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bugaboo",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1707/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/104930",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "dp",
+            "number theory"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组，单次变换把每个位置替换为该值与下一个位置值的按位异或（末位置与首位置相邻），重复 $t$ 次。部分结果数组位置已知、其余可任意填写；每次修改可改变位置是否已知或修改其值，要求在每次修改后统计所有可能且能由某个初始数组变换得到的结果数组数量，并按指定模数输出。",
+          "transformedStatement": "把“经过 $t$ 次环形相邻异或变换”改写为对二进制下标递归分治的异或约束：长度为 $2^h$ 时维护结果数组对应的总异或，奇偶步分别产生合并或相等条件；一般长度则按 $n=2^h o$ 将同余位置分组处理。",
+          "keyObservations": [
+            "当长度为 $2^h$ 时，连续变换 $2^h$ 次必得到全零，因此 $t\\ge 2^h$ 时只需判断所有已确定位置能否为 $0$。",
+            "将变换次数按奇偶递归拆分：$t$ 为偶数时两组奇偶下标的贡献异或合并，为奇数时两组递归得到的总异或必须相等，从而可递归判定可行性。",
+            "对每个子问题按总异或值统计方案数，其分布始终是全体值等权、单一异或值等权或全为零三种形式，因此无需枚举 $2^w$ 个状态。",
+            "令 $n=2^h\\cdot o$ 且 $o$ 为奇数，把相差 $2^h$ 的位置组成一组即可复用递归；状态结构类似线段树，单点修改只影响 $O(\\log n)$ 个节点。"
+          ],
+          "solutionBrief": "先在长度为 $2^h$ 的数组上递归计算总异或约束，并用三种压缩分布表示 DP。对一般 $n$ 按 $n=2^h o$ 分组处理，再以类似线段树的结构支持修改，初始计算 $O(n)$、每次修改 $O(\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
