@@ -6,12 +6,12 @@ window.CF_INSIGHTS_DATA = {
     "source_total_problems": 4003,
     "filtered_out_problems": 0,
     "with_statement_brief": 4003,
-    "with_editorial_brief": 3652,
-    "with_solution_brief": 3654,
-    "missing_editorial_brief": 349,
+    "with_editorial_brief": 3658,
+    "with_solution_brief": 3660,
+    "missing_editorial_brief": 343,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3059,
+    "ai_override_count": 3065,
     "primary_topic_count": 13,
     "contest_count": 621,
     "rating_min": 800,
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1300,
+    "构造与贪心": 1299,
     "字符串": 215,
-    "数据结构": 380,
-    "图论与网络流": 265,
-    "博弈": 115,
+    "数据结构": 381,
+    "组合计数与概率": 312,
     "数论与同余": 422,
+    "图论与网络流": 264,
     "交互": 117,
     "动态规划与状态设计": 327,
     "树结构": 185,
-    "组合计数与概率": 310,
+    "博弈": 114,
     "代数、矩阵与多项式": 26,
     "基础实现与模拟": 247,
     "几何": 94
   },
   "statusCounts": {
-    "missing_editorial": 349,
-    "ai_generated_with_editorial": 2667,
-    "ai_generated_partial_editorial": 94,
+    "ai_generated_with_editorial": 2670,
+    "ai_generated_partial_editorial": 97,
+    "missing_editorial": 343,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -122995,18 +122995,19 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1536/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/91520",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "constructive algorithms"
           ],
-          "statementBrief": "题面已抓取：Omkar and Bad Story；本地暂无可用题解正文。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
+          "statementBrief": "给定一个由互不相同整数构成的数组，可以向其中添加整数，但不能删除原有元素；要求构造一个大小不超过 $300$ 的互异整数数组，使任意两个元素的绝对差都至少出现一次。对每组数据，判断是否可行；若可行，还需输出这样的数组。",
+          "transformedStatement": "问题等价于判断原数组能否包含在一个有限的差闭合集合中：集合中任意两数之差都必须仍在集合内。负数会迫使差值不断增大而无法有限闭合；非负输入则可直接嵌入 $[0,1,\\ldots,100]$。",
+          "keyObservations": [
+            "若原数组含负数，取最小值 $p<0$ 和任意另一元素 $q$，它们的差 $q-p$ 大于 $q$；若把该差加入数组，又会与 $p$ 产生更大的差，因此有限数组不可能满足闭合条件。",
+            "若所有原数都非负，且每个数不超过 $100$，把数组扩充为 $[0,1,\\ldots,100]$ 即可：任意两数之差仍在这个集合中，且原数组已包含在其中。"
+          ],
+          "solutionBrief": "若原数组含负数，输出 NO；否则输出 YES，并构造包含原数组的 $[0,1,\\ldots,100]$。该集合中任意两数之差仍属于集合，且大小为 $101$，符合输出限制。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "partial"
         },
         {
@@ -123017,22 +123018,23 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1200,
           "problemUrl": "https://codeforces.com/contest/1536/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/91520",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "字符串",
           "secondaryTopics": [
-            "字符串",
-            "图论与网络流",
-            "数论与同余"
+            "构造与贪心"
           ],
           "originalTags": [
             "brute force",
             "constructive algorithms",
             "strings"
           ],
-          "statementBrief": "题面已抓取：Prinzessin der Verurteilung；本地暂无可用题解正文。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
+          "statementBrief": "给定一个由小写英文字母组成的字符串，字符串的 MEX 是未作为连续子串出现的最短字符串；若有多个同样短的候选，取字典序最小者。求该字符串的 MEX，空串不允许作为答案。",
+          "transformedStatement": "将所有候选按长度优先、同长度按字典序排列，问题就变成寻找第一个不在输入串连续子串集合中的候选；鸽巢原理说明无需考虑长度大于 3 的候选。",
+          "keyObservations": [
+            "题目先比较字符串长度、再比较字典序，因此按长度递增、同长度按字典序枚举，首次缺失的候选串就是 MEX。",
+            "长度不超过 3 的候选串共有 $26+26^2+26^3=18278$ 个，而输入串中长度不超过 3 的子串至多有 $3n-3$ 个；在 $n\\le 1000$ 时不可能全部出现，所以只枚举到长度 3 就一定能找到答案。"
+          ],
+          "solutionBrief": "枚举长度为 1、2、3 的小写字符串，按长度递增、同长度按字典序检查是否为输入串的连续子串，输出第一个未出现的候选。鸽巢原理保证答案必在这三种长度内。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "partial"
         },
         {
@@ -123043,11 +123045,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1500,
           "problemUrl": "https://codeforces.com/contest/1536/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/91520",
-          "primaryTopic": "字符串",
+          "primaryTopic": "数据结构",
           "secondaryTopics": [
-            "数论与同余",
-            "动态规划与状态设计",
-            "数据结构"
+            "数论与同余"
           ],
           "originalTags": [
             "data structures",
@@ -123055,11 +123055,15 @@ window.CF_INSIGHTS_DATA = {
             "hashing",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Diluc and Kaeya；本地暂无可用题解正文。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
+          "statementBrief": "给定一个只含字符 $D$ 和 $K$ 的字符串，对每个前缀分别考虑把它切成若干个非空连续段，要求所有段中 $D$ 与 $K$ 的数量比例相同。对每个前缀，求最多能切出的段数。",
+          "transformedStatement": "把每个前缀表示为平面点 $(d,k)$，其中 $d$、$k$ 分别是其中 $D$、$K$ 的数量；比例相同的前缀对应原点出发的同一射线。于是答案转化为当前前缀所在射线上已出现的前缀点数，可通过统计约分后的 $(d,k)$ 数对得到。",
+          "keyObservations": [
+            "前缀中 $D$、$K$ 的计数约分后相同，当且仅当对应点落在从原点出发的同一条射线上；因此比例判断可转成规范化数对判等。",
+            "同一射线上的两个前缀计数点之差仍沿该射线，所以按这些前缀位置切分时，每段的 $D:K$ 比例都相同。",
+            "当前前缀能切出的最大段数，恰好是此前出现过的相同规范化数对次数加一；统计每种数对的出现次数即可逐前缀回答。"
+          ],
+          "solutionBrief": "从左到右统计前缀中的 $D$、$K$ 数量，并用它们的最大公约数约分得到规范化数对。用映射记录每种数对出现的次数，每读入一个字符就输出当前数对的累计次数；映射可用平衡树或哈希表实现。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "partial"
         },
         {
@@ -123079,11 +123083,15 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Omkar and Medians；本地暂无可用题解正文。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
+          "statementBrief": "给定数组 $b$，判断是否存在一个长度为 $2n-1$ 的数组 $a$，使得对每个 $i$，$b_i$ 都是 $a$ 的前 $2i-1$ 个元素的中位数。每一步是在原序列末尾加入两个元素，题目要求判断能否按此规则得到整个 $b$。",
+          "transformedStatement": "把构造过程看成逐步扩展前缀：从中位数 $b_i$ 转到 $b_{i+1}$ 时，检查此前出现过的取值中是否有数严格落在两者之间；该条件无冲突时，存在合适的新元素维持所需中位数。",
+          "keyObservations": [
+            "加入两个新元素后，新前缀的中位数只能落在旧中位数两侧相邻的可行区间内；旧序列中已出现的中位数会进一步限制该区间。",
+            "因此每步只需检查：此前出现过的数中，是否有值严格位于相邻中位数 $b_i$ 与 $b_{i+1}$ 之间；若有，则无法构造，否则可通过选择足够小或足够大的新元素实现。",
+            "重复值不构成严格夹在两端之间的障碍，所以维护此前不同取值的有序集合，只查询当前值的前驱和后继即可完成判定。"
+          ],
+          "solutionBrief": "从左到右处理相邻的中位数，维护此前出现过的不同值。若前驱或后继落在当前两值之间，则输出 NO；否则加入新值继续检查，全部通过则输出 YES。可用有序集合完成查询。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "partial"
         },
         {
@@ -123094,11 +123102,10 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2300,
           "problemUrl": "https://codeforces.com/contest/1536/problem/E",
           "editorialUrl": "https://codeforces.com/blog/entry/91520",
-          "primaryTopic": "图论与网络流",
+          "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
-            "组合计数与概率",
-            "数论与同余",
-            "几何"
+            "图论与网络流",
+            "数论与同余"
           ],
           "originalTags": [
             "combinatorics",
@@ -123106,11 +123113,15 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "shortest paths"
           ],
-          "statementBrief": "题面已抓取：Omkar and Forest；本地暂无可用题解正文。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
+          "statementBrief": "题目给出一个 $n\\times m$ 网格：标为 `0` 的格子必须取值为 $0$，标为 `#` 的格子可以取任意非负整数，并要求满足题目规定的网格特殊条件。需要统计不同合法赋值的数量，并对 $10^9+7$ 取模；现有题面文本未完整保留这些特殊条件。",
+          "transformedStatement": "将每个 `#` 格子是否取零作为二元选择；对任一选择，题解指出其余格子的合法值由到最近零格的距离唯一确定。因此问题转为统计零格选择，而不必枚举具体整数值；全为 `#` 时还需排除没有零格的选择。",
+          "keyObservations": [
+            "先决定哪些 `#` 格子取值为 $0$；对每个这样的选择，其余格子的合法取值由到最近零格的距离唯一确定，因此计数转化为统计零格选择方案。",
+            "把每个 `#` 独立选择为零或非零，共有 $2^k$ 种选择，其中 $k$ 是 `#` 的数量；这避免了直接枚举格子数值。",
+            "若整个网格都是 `#`，全选非零不满足配置必须含有零格的条件，因此从 $2^k$ 中减去这一种情况。"
+          ],
+          "solutionBrief": "令 $k$ 为 `#` 的数量，答案为 $2^k$；若没有固定为零的格子，即整张网格都是 `#`，则减去全非零的选择。对选定的零格，其余格子的值由到最近零格的距离唯一确定，结果对 $10^9+7$ 取模。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "partial"
         },
         {
@@ -123121,11 +123132,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2600,
           "problemUrl": "https://codeforces.com/contest/1536/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/91520",
-          "primaryTopic": "博弈",
+          "primaryTopic": "组合计数与概率",
           "secondaryTopics": [
-            "数论与同余",
-            "几何",
-            "组合计数与概率"
+            "博弈"
           ],
           "originalTags": [
             "chinese remainder theorem",
@@ -123138,11 +123147,16 @@ window.CF_INSIGHTS_DATA = {
             "meet-in-the-middle",
             "string suffix structures"
           ],
-          "statementBrief": "题面已抓取：Omkar and Akmar；本地暂无可用题解正文。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
+          "statementBrief": "在有 $n$ 个格子的环形棋盘上，Akmar 与 Omkar 轮流在空格放置 A 或 B，且不能放在与相同字母相邻的位置；轮到无合法落子者输。两人按最优策略行动，要求统计不同的完整对局数并对 $10^9+7$ 取模。",
+          "transformedStatement": "把对局按其终局的落子数和终局棋盘布局分类：终局必须由交替字母构成，字母之间的空格数受限；统计每种布局后，再计入形成该布局的落子顺序。由于后手必胜，最优性限制不再筛除任何对局。",
+          "keyObservations": [
+            "终局中相邻字母必须交替，且相邻字母之间最多留一个空格；否则仍存在合法落子，因此终局至少占用棋盘一半的格子。",
+            "所有终局的落子数都必须为偶数：偶数步结束时轮到先手却无棋可走，因此后手获胜；题解据此得到先手无论如何都无法获胜，最优对局计数可转为统计所有可能对局。",
+            "固定终局落子数 $x<n$ 后，环上空格只能分散在 $x$ 个字母间隙中；分别处理编号为 $1$ 的格子为空或不空，可得终局空格布局数为 $\\binom{x}{n-x}+\\binom{x-1}{n-x-1}$。",
+            "每个终局布局的 $x$ 个字母可以按任意顺序依次落下，故乘以 $x!$；再乘以 $2$ 选择交替序列的起始字母，并对所有符合范围的偶数 $x$ 求和。"
+          ],
+          "solutionBrief": "题解先证明后手总能获胜，因此最优对局数等于所有对局数。枚举偶数落子数 $x$，用组合数统计环形终局中的空格分布，再乘以 $2x!$ 计入起始字母和落子顺序，最后对 $\\lceil n/2\\rceil\\le x\\le n$ 求和，复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "partial"
         }
       ]
