@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3981,
+    "total_problems": 3990,
     "source_total_problems": 3990,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3981,
-    "with_editorial_brief": 3636,
-    "with_solution_brief": 3638,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3990,
+    "with_editorial_brief": 3645,
+    "with_solution_brief": 3647,
     "missing_editorial_brief": 343,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3043,
+    "ai_override_count": 3052,
     "primary_topic_count": 13,
-    "contest_count": 618,
+    "contest_count": 619,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1292,
+    "构造与贪心": 1294,
+    "图论与网络流": 264,
+    "交互": 117,
+    "动态规划与状态设计": 327,
+    "树结构": 185,
     "博弈": 114,
     "字符串": 213,
-    "图论与网络流": 260,
     "组合计数与概率": 310,
     "数据结构": 379,
-    "动态规划与状态设计": 326,
     "代数、矩阵与多项式": 26,
     "基础实现与模拟": 247,
     "数论与同余": 420,
-    "交互": 116,
-    "几何": 94,
-    "树结构": 184
+    "几何": 94
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2651,
+    "ai_generated_with_editorial": 2660,
     "ai_generated_partial_editorial": 94,
     "missing_editorial": 343,
     "low_confidence": 1,
@@ -122492,6 +122492,283 @@ window.CF_INSIGHTS_DATA = {
             "若图不是二分图，存在连接同色顶点的边；这使操作能够改变二分情形中受保护的颜色侧差值，从而在总和奇偶满足时可实现目标。"
           ],
           "solutionBrief": "先检查初始总和与目标总和的奇偶性。若不相同则无解；否则判断图是否二分：二分时计算两侧的目标值减初值之和，要求两者相等；非二分图则可行。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1534,
+      "name": "Codeforces LATOKEN Round 1 (Div. 1 + Div. 2)",
+      "date": "2021-06-13",
+      "url": "https://codeforces.com/contest/1534",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1534A",
+          "index": "A",
+          "slot": "A",
+          "title": "Colour the Flag",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1534/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/91760",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由红色、白色和空格组成的 $n\\times m$ 网格，相邻仅指共享边的格子。只能给空格填入红色或白色，不能改动已有颜色，并要求每个格子与所有相邻格异色；判断能否完成，若能则输出任意一种完整网格。",
+          "transformedStatement": "把网格视为二分棋盘染色：每个格子的颜色由其行列奇偶性和左上角颜色共同决定。因此只需检验左上角取两种颜色时得到的两个固定方案是否与已有格子兼容，并选择可行方案补全网格；两者都不兼容即无解。",
+          "keyObservations": [
+            "相邻格子必须异色，因此整个网格的颜色由左上角决定：左上角选定后，每个格子的颜色都由行列奇偶性唯一确定，候选网格只有两种。",
+            "原有颜色不能修改，所以只需检查每个已着色格子是否与两种候选网格之一对应；空格按匹配的候选方案补色即可。"
+          ],
+          "solutionBrief": "分别构造左上角为红色和白色的棋盘染色方案，检查所有非空格是否与候选方案一致。若两种方案都冲突则输出 NO；否则选择一种可行方案填满空格并输出，时间复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1534B",
+          "index": "B",
+          "slot": "B",
+          "title": "Histogram Ugliness",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1534/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/91760",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定各柱高度组成的直方图，可以反复降低柱子的高度，并为每次操作付出 $1$；目标是最小化轮廓竖直部分的总长度与操作次数之和。题面节选未完整显示降低操作的具体规则，题解说明每次将一根柱子降低一个单位。",
+          "transformedStatement": "把每次降低带来的轮廓变化单独计算：只有严格局部峰值的内部柱子能让轮廓长度减少 $2$，因此每次操作使目标值净减少 $1$；将这些峰值降至较高邻柱的高度即可确定最优操作量，各峰值的贡献互不影响。",
+          "keyObservations": [
+            "只有严格高于左右相邻柱子的内部柱顶才值得降低：每降低一次会让轮廓竖直长度减少 $2$，而操作次数只增加 $1$，净 ugliness 减少 $1$。",
+            "降低一个局部峰值不会改变其他柱子是否值得降低，因此各个局部峰值可以独立计算贡献，无须模拟操作顺序。",
+            "一个局部峰值最多降到较高的那个相邻柱子的高度；达到该高度后便不再严格高于两侧，继续降低不再有利。"
+          ],
+          "solutionBrief": "先计算原直方图轮廓的竖直长度。对每个严格高于两侧相邻柱子的内部柱子，将其高度降到较高邻柱的高度；每次降低都使总 ugliness 减少 $1$，所以答案可按各峰值的可降低次数直接计算，无须逐次操作。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1534C",
+          "index": "C",
+          "slot": "C",
+          "title": "Little Alawn's Puzzle",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1534/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/91760",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "dsu",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "给定一个 $2\\times n$ 的已解棋盘，两行分别是 $1$ 到 $n$ 的排列，且每行、每列中的数字互不相同。每次可以交换任意一列的两个数字；求从初始状态出发能够得到的不同已解状态数，答案对 $10^9+7$ 取模。",
+          "transformedStatement": "将每一列抽象为顶点，两个共享某个数字的列之间连边。每个连通分量构成一个环，而同一环内列的方向彼此约束，因此计数转化为求环的连通分量数并计算 $2^k$。",
+          "keyObservations": [
+            "把每一列视为一个点，并将共享数字的两列连边后，每个点的度数为 2，因此图由若干互不相交的环组成。",
+            "在同一个环中，确定任意一列的方向后，共享数字的约束会依次唯一确定其余列的方向；环结构保证传播不会产生矛盾，所以每个连通分量恰有 2 种合法方向方案。",
+            "不同连通分量之间互不影响，因此若图有 $k$ 个连通分量，所有可达的已解状态数就是 $2^k$。"
+          ],
+          "solutionBrief": "以列为顶点，按共享数字连边，统计图的连通分量数 $k$。每个分量有 2 种合法方向，答案为 $2^k \\bmod (10^9+7)$；可用 DFS 在线性时间内完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1534D",
+          "index": "D",
+          "slot": "D",
+          "title": "Lost Tree",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1534/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/91760",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "给定一棵节点编号为 $1$ 到 $n$ 的无权树，但边未知。每次可指定一个节点，交互器会返回它到所有节点的最短距离；最多查询 $\u001b[?]$ 次后，需输出这棵树的全部 $n-1$ 条边。",
+          "transformedStatement": "把一次查询视为同时检查所选节点的所有邻边：返回距离为 $1$ 的节点恰好是它的邻居。问题因此转为用不超过 $\u001b[?]$ 个查询点覆盖每条边，并利用树的奇偶层构成二分划分来选取查询点。",
+          "keyObservations": [
+            "查询一个节点就能得到它到所有节点的距离，因此所有距离为 $1$ 的节点与查询点之间的边都能直接确定；每条边只需保证至少查询过一个端点。",
+            "树是二分图，按距初始查询点的奇偶性划分后，每条边两端必属不同集合，因此只需查询较小的一侧即可覆盖所有边。",
+            "初始查询已经覆盖了与该点相连的边；从后续候选集合中排除初始点，再选较小侧，能避免重复计数并满足至多 $\\\\lceil n/2 \\\\rceil$ 次查询。"
+          ],
+          "solutionBrief": "先查询任意节点，记录其距离为 $1$ 的所有边，并按距离奇偶划分其余节点。初始点不再计入候选集合，随后查询较小的奇偶类；每次查询都可补出距离为 $1$ 的边，最终恢复整棵树，复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1534E",
+          "index": "E",
+          "slot": "E",
+          "title": "Lost Array",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1534/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/91760",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "交互"
+          ],
+          "originalTags": [
+            "graphs",
+            "greedy",
+            "interactive",
+            "shortest paths"
+          ],
+          "statementBrief": "给定长度为 $n$ 的固定数组和不可更改的查询大小 $k$，每次可指定 $k$ 个互不相同的下标，并获得这些位置元素的异或和。要求用最少次数的查询确定整个数组的异或和；若无论如何查询都无法确定，则报告不可恢复。",
+          "transformedStatement": "把查询结果继续异或，视为对某个元素子集的异或；目标是用最少次大小为 $k$ 的子集操作，使最终组合包含全部 $n$ 个元素。由于状态只需记录组合中的元素个数，问题转化为状态 $0$ 到 $n$ 之间的最短路。",
+          "keyObservations": [
+            "把多次查询结果再异或，等价于统计每个数组元素被选中的奇偶次数；因此只有所有元素最终都恰好以奇数次贡献时，才能得到整个数组的异或和。",
+            "对固定数组而言，查询组合的效果只取决于当前异或中包含多少个元素，而不取决于具体元素，因此最短查询数可压缩为从元素数 $0$ 到 $n$ 的最短路。",
+            "若当前包含 $i$ 个元素，一次查询选入其中 $j$ 个并选入其余元素 $k-j$ 个，元素数会变为 $i+k-2j$；枚举合法的 $j$ 就得到图中的转移，并可用 BFS 求最少查询次数。"
+          ],
+          "solutionBrief": "将每个状态设为当前异或组合包含的元素数 $i$。一次大小为 $k$ 的查询可通过选择 $j$ 个已包含元素和 $k-j$ 个未包含元素，转移到 $i+k-2j$；在这些状态上 BFS，若无法到达 $n$ 则报告不可恢复，否则所得距离就是最少查询次数，复杂度为 $O(nk)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1534F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Falling Sand (Easy Version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1534/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/91760",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "棋盘中有沙块，每列另有一个沙计数器；手动扰动任意一块沙子后，它会落到该列底部，途中会扰动相邻沙块，后者也会落下并继续引发连锁反应。给定每列需要计入计数器的沙块数，求使所有列都达到目标的最少手动扰动次数；本版本的目标数等于各列沙块总数。",
+          "transformedStatement": "把每块沙子视为有向图节点，若扰动一块沙子会连锁扰动另一块，就连一条有向边；问题转化为选最少起始节点，使图中每个节点都能从所选节点到达。缩点后只需选择 DAG 中所有入度为零的分量作为起点。",
+          "keyObservations": [
+            "一块沙子落下时会沿所在列向下，并扰动途中相邻的沙块；把这种连锁影响压缩成有向边后，从一个节点可达的沙块恰好就是手动扰动它最终带动的全部沙块。",
+            "同一强连通分量中的沙块彼此可通过连锁影响到达，因此将其缩成一个节点，不会改变最少手动扰动次数。",
+            "缩点后的图是 DAG，每个入度为零的节点都没有其他分量能够触发，必须手动启动；任意入度非零节点沿入边反向追溯，最终都能到达某个入度为零的节点，因此启动所有入度为零的分量也足够。"
+          ],
+          "solutionBrief": "将沙块建成有向图，边表示一个沙块被扰动后会连锁扰动另一个沙块。对图求强连通分量并缩点，统计缩点图中入度为零的节点数，即为最少操作数；复杂度为 $O(nm)$ 或 $O(nm\\log(nm))$，取决于实现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1534F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Falling Sand (Hard Version)",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1534/problem/F2",
+          "editorialUrl": "https://codeforces.com/blog/entry/91760",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "棋盘中有沙块，每列底部设有计数器。每次可扰动任意一个沙块；它向下落时会扰动沿途相邻的沙块，新落下的沙块也会继续触发连锁反应。每列至少需要有 $a_i$ 个沙块落入计数器，求达到所有列要求的最少扰动次数。",
+          "transformedStatement": "把沙块及其连锁触发关系表示为有向无环图，将每列所需落下的沙块压缩为一个特殊目标，并去除彼此可达关系造成的冗余目标。随后把每个可触发节点对应为目标序列上的一个连续区间，问题转成用最少区间覆盖全部目标。",
+          "keyObservations": [
+            "每列从底部数起的前 $a_i$ 个沙块都必须落下，但只需把其中第 $a_i$ 个作为该列的特殊目标：它落下时，下方沙块也会一并落下。",
+            "若一个特殊目标能从另一个特殊目标触发到达，前者便无需单独覆盖；删除这类冗余目标后，只需处理互不可达的特殊目标。",
+            "题解指出，任一图节点能到达的特殊目标在按列排序后构成连续区间，因此可用每个节点可达区间的左右端点概括其影响。",
+            "触发一个节点会覆盖它所能到达的特殊目标区间，所以原问题等价于用尽量少的区间覆盖全部目标；从左向右每次选取能延伸最远的可用区间即可得到最少数量。"
+          ],
+          "solutionBrief": "沿用简单版本建立的有向无环图。取每列底部起第 $a_i$ 个沙块作为目标，并删去可由其他目标到达的冗余目标。对图中每个节点计算其可达目标在排序序列中的左右端点，转化为区间覆盖，再用按最远右端点扩展的贪心求最少触发次数；复杂度为 $O(nm)$ 或 $O(nm\\log(nm))$，取决于实现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1534G",
+          "index": "G",
+          "slot": "G",
+          "title": "A New Beginning",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1534/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/91760",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "几何",
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "geometry",
+            "sortings"
+          ],
+          "statementBrief": "在无限二维平面上，从 $(0,0)$ 出发，每步只能向右或向上移动一个单位。土豆必须种在给定位置；在任意当前位置可一次种任意多个土豆，每种一个需支付当前位置与目标位置的切比雪夫距离，求种完所有土豆的最小总能量。",
+          "transformedStatement": "把平面旋转 45 度，使原来的反对角线成为竖直线；行走变为每步横坐标加一、纵坐标加一或减一。按有土豆的横坐标维护到达各纵坐标并完成此前种植的最小费用函数，在每列叠加该列土豆的种植费用。",
+          "keyObservations": [
+            "对任意待种位置，沿行走路径的切比雪夫距离在路径与该点反对角线的交点处最小，因此可以把种植安排限制在对应的对角线上。",
+            "将坐标旋转后，行走变成每步横坐标加一、纵坐标加一或减一；在与土豆横坐标相同的位置种植，只需支付纵坐标差的一半。",
+            "同一横坐标上的土豆费用可表示为若干函数 $|y-a|/2$ 之和；这使整段的种植成本成为分段线性函数，适合用 slope trick 维护。",
+            "相邻有土豆的横坐标间隔为 $d$ 时，状态函数先对纵坐标做半径 $d$ 的区间最小化，再叠加当前土豆的绝对值费用；用两侧优先队列偏移可高效实现。"
+          ],
+          "solutionBrief": "将坐标旋转 45 度后，在每个有土豆的横坐标维护关于纵坐标的最小费用函数。横坐标间隔为 $d$ 时先按区间半径 $d$ 扩展转移，再加入该列各土豆对应的 $|y-a|/2$ 费用；用 slope trick 的左右优先队列维护函数，最终取最小值，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1534H",
+          "index": "H",
+          "slot": "H",
+          "title": "Lost Nodes",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1534/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/91760",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "交互",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "graphs",
+            "interactive",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，隐藏节点 $a,b$（允许相同）以及路径 $a$ 到 $b$ 上的提示点 $f$。交互中可反复询问节点，目标是确定 $a,b$；题目要求先求出所有可能的 $a,b,f$ 中，采用最优策略时所需查询次数的最大值，随后按交互规则找出端点。",
+          "transformedStatement": "固定提示点 $f$ 并将树以它为根后，隐藏路径可视为从根伸出的两条链，问题转为定位两条链各自的端点。先计算每个子树定位单个端点的最坏查询代价，再合并根处两条链的代价，并通过换根计算所有 $f$ 的最大值。",
+          "keyObservations": [
+            "把提示点 $f$ 作为根后，$a$、$b$ 位于根向下的两条链上；查询节点若不在目标路径上，会返回它到路径的最近点，因此查询结果既能定位端点，也能排除某个子树。",
+            "单端点定位时，若先检查的子树不含端点，每次会浪费一次查询；因此应先检查所需查询数较大的子树，最坏代价成为按降序排列后各子树代价加其序号的最大值。",
+            "在根处同时寻找两条链时，第一条被确认含端点的子树不产生浪费，之后未命中的子树才计入浪费；故两条端点落在不同子树时，代价为 $dp[c_j]+dp[c_i]+i-1$（$j<i$），并可固定最大 $dp$ 项来线性扫描其余候选。",
+            "不同提示点的答案可通过沿树换根维护各邻接子树的 $dp[c_i]+i$ 最大值来计算；前缀、后缀最大值排除新根方向，避免每个根重新排序或枚举所有子树对。"
+          ],
+          "solutionBrief": "以提示点为根，树形 DP 计算定位单个链端点的最坏查询数：子树按 DP 值降序处理，答案为各子树 DP 值加处理序号的最大值。根处合并两条链的代价，并通过换根和前后缀最大值求出所有提示点中的最大值；交互阶段按这些结构逐步确定端点，并处理 DP 中略去的端点重合等特殊情况。总复杂度为 $O(n\\log n)$，空间复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
