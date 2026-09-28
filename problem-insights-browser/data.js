@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3974,
+    "total_problems": 3981,
     "source_total_problems": 3981,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 3974,
-    "with_editorial_brief": 3629,
-    "with_solution_brief": 3631,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3981,
+    "with_editorial_brief": 3636,
+    "with_solution_brief": 3638,
     "missing_editorial_brief": 343,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3036,
+    "ai_override_count": 3043,
     "primary_topic_count": 13,
-    "contest_count": 617,
+    "contest_count": 618,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1292,
+    "博弈": 114,
+    "字符串": 213,
+    "图论与网络流": 260,
     "组合计数与概率": 310,
     "数据结构": 379,
-    "构造与贪心": 1289,
     "动态规划与状态设计": 326,
-    "图论与网络流": 259,
     "代数、矩阵与多项式": 26,
     "基础实现与模拟": 247,
     "数论与同余": 420,
     "交互": 116,
-    "字符串": 211,
     "几何": 94,
-    "树结构": 184,
-    "博弈": 113
+    "树结构": 184
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2645,
+    "ai_generated_with_editorial": 2651,
+    "ai_generated_partial_editorial": 94,
     "missing_editorial": 343,
-    "ai_generated_partial_editorial": 93,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -122270,6 +122270,228 @@ window.CF_INSIGHTS_DATA = {
             "目标元素大于中位数的情况可用对称的计数公式处理，再与不大于中位数的情况取最大值，覆盖目标元素可能处于中位数任一侧的情况。"
           ],
           "solutionBrief": "按元素值排序处理每个位置，并分别计算目标元素位于中位数两侧时的最大距离。将计数目标拆成左右区间上的前缀和极值；随着当前值增大，把更小元素的标记由 $1$ 改为 $-1$，用支持区间加、区间最值的线段树维护，最终取两种情况的较大值。复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1537,
+      "name": "Codeforces Round 726 (Div. 2)",
+      "date": "2021-06-18",
+      "url": "https://codeforces.com/contest/1537",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1537A",
+          "index": "A",
+          "slot": "A",
+          "title": "Arithmetic Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1537/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/91381",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组，每次可以在末尾追加一个非负整数。求最少追加多少个数，使最终数组的算术平均值恰好为 $1$。",
+          "transformedStatement": "把平均值条件改写为最终元素总和等于最终长度。追加一个数会同时改变总和与长度，因此根据原总和相对 $n$ 的大小，分别用一个合适的正整数补足，或追加零来增加长度。",
+          "keyObservations": [
+            "数组平均值为 $1$ 等价于元素总和等于数组长度，因此只需比较原数组总和与 $n$。",
+            "若总和小于 $n$，追加一个整数 $n- ext{sum}+1$ 后，总和与长度同时达到相等，因此一次操作足够。",
+            "若总和大于 $n$，追加正整数不会消除总和与长度的差距；每次追加 $0$ 只增加长度，所以恰好追加 $ ext{sum}-n$ 个零。"
+          ],
+          "solutionBrief": "设原数组总和为 $ ext{sum}$。若 $ ext{sum}<n$，答案为 $1$；若 $ ext{sum}\u0000 ext{ge}n$，答案为 $ ext{sum}-n$，其中等号时答案为 $0$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1537B",
+          "index": "B",
+          "slot": "B",
+          "title": "Bad Boy",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1537/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/91381",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "房间是 $n\\times m$ 的网格，安东从 $(i,j)$ 出发；你要把两个悠悠球扔到任意格子（允许重合）。安东只能上下左右移动，必须经过并取回两个悠悠球后回到起点，要求构造两个落点使他的最短总路程最大。",
+          "transformedStatement": "把取回两个悠悠球所需的路线长度上界转化为网格上最大曼哈顿跨度的两倍，即 $2(n-1)+2(m-1)$；构造一对距离达到该跨度的格子即可达到最优值，不必依赖起点位置挑选落点。",
+          "keyObservations": [
+            "让两个悠悠球落在对角的角落时，安东必须走完房间的最大曼哈顿跨度；在一个角落取放后再到另一个角落并返回起点，路程为 $2(n-1)+2(m-1)$。",
+            "任意两点间的曼哈顿距离都不超过 $n-1+m-1$，因此往返经过两个落点的路程不可能超过 $2(n-1)+2(m-1)$；对角角落的布置恰好达到这个上界。"
+          ],
+          "solutionBrief": "每组数据都把两个悠悠球分别放在左上角 $(1,1)$ 和右下角 $(n,m)$。两角之间的曼哈顿距离达到全图最大值，因此安东取回悠悠球并返回起点的路程最大。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1537C",
+          "index": "C",
+          "slot": "C",
+          "title": "Challenging Cliffs",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1537/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/91381",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "几何"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 座山的高度，必须把所有山各使用一次排列成从左到右的路线。路线难度是相邻高度满足前一座不高于后一座的次数；先要求首尾高度差尽可能小，再在满足这一条件的排列中使难度最大。",
+          "transformedStatement": "先把高度排序，最小首尾差对应排序后某一对差值最小的相邻元素；题解据此固定两端，再将中间元素绕过排序数组的边界连接，以争取让尽可能多的相邻转移非下降。题解对这一构造的最优性论证存在未覆盖的情况，不能据此确认所有输入下的最优性结论。",
+          "keyObservations": [
+            "排序后，最优的首尾高度差可由一对相邻高度实现，因此只需检查排序数组中的相邻差并选取最小的一对。",
+            "把这对最小差值的山峰放在两端，并按题解给出的环绕顺序排列其余山峰，可使构造中的 $n-2$ 次相邻移动满足非下降条件。",
+            "题解认为达到 $n-1$ 次非下降移动要求构造整体非下降，因而首尾必须分别是最矮和最高的山峰；但它对该情况的排除论证不充分，尤其未处理高度相同的情况。"
+          ],
+          "solutionBrief": "将高度排序，找出差值最小的相邻山峰作为首尾，再按题解给出的顺序输出：先放较低端点，接着输出其后剩余部分、数组开头部分，最后放较高端点。题解声称该构造得到至少 $n-2$ 分，但其关于最优性的说明对高度重复等情形不充分。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1537D",
+          "index": "D",
+          "slot": "D",
+          "title": "Deleting Divisors",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1537/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/91381",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "games",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "Alice 和 Bob 从正整数 $n$ 开始轮流操作；每次从当前数中减去一个既不是 $1$ 也不是当前数本身的因数。无法操作者输，Alice 先手；双方都最优时，判断谁获胜。",
+          "transformedStatement": "将局面按当前数分为奇数、偶数但不是 2 的幂、以及 2 的幂三类：前两类的胜负可由奇因数减法联系起来，而 2 的幂局面在最优操作下会一路减半至 $2$，因此只需判断减半步数的奇偶性。",
+          "keyObservations": [
+            "奇数的所有真因数都是奇数，减去任一真因数后会得到偶数；且结果仍被该因数整除，因此不可能是 2 的幂。",
+            "偶数但不是 2 的幂时存在奇因数，减去该奇因数可把局面变成奇数；结合奇数局面必败，可据此形成胜负交替策略。",
+            "当 $n$ 是 2 的幂时，减去非二次幂的因数会把局面送给对手的必胜态，因此最优操作只能减半；最终到达 $2$，胜负由减半次数的奇偶决定。"
+          ],
+          "solutionBrief": "奇数必败，偶数且不是 2 的幂必胜。若 $n=2^k$，双方最优时只能连续减半直到 $2$，按 $k-1$ 次操作的奇偶判断先手胜负。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1537E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Erase and Extend (Easy Version)",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1537/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/91381",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "dp",
+            "greedy",
+            "hashing",
+            "implementation",
+            "string suffix structures",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的小写字母串 $s$，可以反复执行题面所述的删除末尾字符和复制字符串操作，要求得到长度恰为 $k$ 的字符串，并使结果的字典序最小。",
+          "transformedStatement": "将操作序列等价地压缩为选择 $s$ 的一个前缀，并不断重复该前缀，最后截取前 $k$ 个字符；问题因此变为比较所有前缀所生成的长度为 $k$ 的候选串。",
+          "keyObservations": [
+            "最优结果可由原串的某个前缀反复循环得到；因此不必考虑任意删除、复制操作序列，只需比较各个前缀生成的长度为 $k$ 的字符串。",
+            "把字符串长度放宽为无限长后，每个位置的最优选择唯一，过程会形成从开头开始的循环；其前 $k$ 个字符仍可通过先选前缀、重复再截断实现，因此放宽模型不会改变最优答案。"
+          ],
+          "solutionBrief": "枚举原串的每个前缀，将它重复拼接并截取前 $k$ 个字符，取字典序最小者。题解给出的复杂度为 $O(nk)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1537E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Erase and Extend (Hard Version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1537/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/91381",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "hashing",
+            "string suffix structures",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定长度为 $n$ 的小写字符串，可通过删除末尾字符和复制字符串来改变它，操作次数不限。要求得到长度恰为 $k$ 的字符串，并使结果的字典序最小；题解指出最终结果是原串某个前缀的重复。",
+          "transformedStatement": "把所有操作结果归约为“选择一个前缀作为周期并重复至长度 $k$”，问题因此转化为在所有前缀周期串中找字典序最小者。扫描前缀时维护当前最优候选，只需处理新前缀与候选在重复结构中的首次差异。",
+          "keyObservations": [
+            "任何可行结果都能表示为原串某个前缀的重复，因此只需比较各个前缀周期串的字典序，而不必枚举操作序列。",
+            "从左向右扫描时，若新位置字符大于当前候选周期串对应字符，则该位置及之后更长前缀都不可能改进答案，可以直接输出当前候选。",
+            "遇到相等字符时，新旧候选呈现由相同片段交错组成的周期串；比较片段次序首次不同的位置即可判定优劣，Z 函数能快速找到该位置。",
+            "当两个片段连接顺序不同但连接结果相同时，候选周期串实际等价，可以选较长前缀继续扫描而不改变答案。"
+          ],
+          "solutionBrief": "维护当前字典序最优的前缀长度，从左向右考察更长前缀，并比较其对应字符与当前周期串。相等时利用 Z 函数比较交错片段的首次差异；扫描结束后将最优前缀循环输出至长度 $k$。题解给出的总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1537F",
+          "index": "F",
+          "slot": "F",
+          "title": "Figure Fixing",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1537/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/91381",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dsu",
+            "graphs",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个连通无向图，每个顶点有初值和目标值。每次可任选一条边，并给边两端的数值同时加上任意整数（可为负数）；判断经过有限次操作后，能否使所有顶点都达到目标值。",
+          "transformedStatement": "把每个顶点的目标值减初值视为需要补上的量，把每次边操作视为同时向边的两个端点分配相同增量。问题转为判断这些补量能否由边的端点增量组合得到，其限制由总和奇偶性及图是否二分决定。",
+          "keyObservations": [
+            "每次操作使全图数值总和增加偶数，因此初始总和与目标总和必须同奇偶，这是所有图都适用的必要条件。",
+            "若图是二分图，每条边恰好连接两侧，操作会给两侧的差值和同时增加相同的整数；两侧差值和之差因而不变，且只有该差为零时才能都归零。",
+            "若图不是二分图，存在连接同色顶点的边；这使操作能够改变二分情形中受保护的颜色侧差值，从而在总和奇偶满足时可实现目标。"
+          ],
+          "solutionBrief": "先检查初始总和与目标总和的奇偶性。若不相同则无解；否则判断图是否二分：二分时计算两侧的目标值减初值之和，要求两者相等；非二分图则可行。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
