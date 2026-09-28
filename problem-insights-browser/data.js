@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3772,
+    "total_problems": 3780,
     "source_total_problems": 3782,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3772,
-    "with_editorial_brief": 3457,
-    "with_solution_brief": 3459,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3780,
+    "with_editorial_brief": 3465,
+    "with_solution_brief": 3467,
     "missing_editorial_brief": 313,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2834,
+    "ai_override_count": 2842,
     "primary_topic_count": 13,
-    "contest_count": 584,
+    "contest_count": 585,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数据结构": 359,
-    "动态规划与状态设计": 307,
+    "数论与同余": 401,
+    "构造与贪心": 1226,
+    "数据结构": 360,
+    "动态规划与状态设计": 308,
     "树结构": 182,
     "图论与网络流": 245,
     "组合计数与概率": 286,
-    "构造与贪心": 1222,
     "交互": 110,
-    "数论与同余": 399,
     "字符串": 199,
     "基础实现与模拟": 236,
     "几何": 90,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2483,
+    "ai_generated_with_editorial": 2491,
     "ai_generated_partial_editorial": 83,
     "missing_editorial": 313,
     "low_confidence": 1,
@@ -116254,6 +116254,237 @@ window.CF_INSIGHTS_DATA = {
             "每次将高值减去 $h$ 都把参数规模降至约 $m/2$；各层所需的多项式乘法和求逆用 NTT 完成，总复杂度为 $O(n\\log n\\log m)$。"
           ],
           "solutionBrief": "递归处理参数 $m$ 的二进制层次，按阈值 $\\lceil m/2\\rceil$ 将环分段，维护奇、偶段生成函数。根据 $m$ 的奇偶建立有理生成函数，使用多项式求逆和 NTT 求出所需系数并合并答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1579,
+      "name": "Codeforces Round 744 (Div. 3)",
+      "date": "2021-09-28",
+      "url": "https://codeforces.com/contest/1579",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": 2200,
+      "problems": [
+        {
+          "key": "1579A",
+          "index": "A",
+          "slot": "A",
+          "title": "Casimir's String Solitaire",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1579/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/95447",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定只含 `A`、`B`、`C` 的字符串。每次可删除一个 `B` 和一个 `A`，或删除一个 `B` 和一个 `C`；判断是否能经过若干次操作恰好删空整个字符串。",
+          "transformedStatement": "把每次操作视为消耗一个 `B` 和一个非 `B` 字符。问题等价于判断 `B` 的数量是否正好等于字符串长度的一半，从而让所有字符都能配成合法的删除对。",
+          "keyObservations": [
+            "每次操作必定删除恰好一个 `B` 和另一个非 `B` 字母，因此若最终清空，`B` 的数量必须等于操作次数。",
+            "每次操作删除两个字符，所以长度为奇数时不可能清空；长度为偶数时操作次数固定为 $n/2$。",
+            "当 `B` 的数量恰好为 $n/2$ 时，剩余的 `A` 和 `C` 总数也为 $n/2$；分别用操作配对每个 `A` 或 `C` 与一个 `B`，即可保证全部删除。"
+          ],
+          "solutionBrief": "统计字符串长度和 `B` 的数量。只有当 `B` 的数量等于长度的一半时答案为 YES，否则为 NO；该条件同时保证长度为偶数，并可将每个 `B` 与一个 `A` 或 `C` 配对删除。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1579B",
+          "index": "B",
+          "slot": "B",
+          "title": "Shifting Sort",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1579/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/95447",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定一个整数数组，每次可选取连续区间，将其中元素向左循环移动任意正偏移量后放回原处。要求使用不超过 $n$ 次操作把整个数组按非降序排列，并输出所有操作。",
+          "transformedStatement": "把操作看作从未处理后缀中取出一个元素并插入其左端：第 $i$ 轮找到后缀最小值的位置 $p$，左移区间 $[i,p]$ 将它放到位置 $i$，于是前缀逐步固定。",
+          "keyObservations": [
+            "若前缀 $[1,i-1]$ 已是排好序的最小元素，则位置 $i$ 应放后缀 $[i,n]$ 的最小值，从而问题可逐位确定。",
+            "设该最小值在位置 $p$，将区间 $[i,p]$ 左移 $p-i$ 位会把它移到 $i$，同时保持前缀不变。",
+            "当 $p=i$ 时目标元素已经就位，不能执行长度为 $1$ 的操作，因此跳过该轮；每轮至多一次操作，总次数不超过 $n$。"
+          ],
+          "solutionBrief": "从左到右维护已排序前缀，在未处理后缀中找最小值。若其位置为 $p>i$，输出操作 $(i,p,p-i)$ 将其移到第 $i$ 位；否则跳过。总复杂度为 $O(tn^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1579C",
+          "index": "C",
+          "slot": "C",
+          "title": "Ticks",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1579/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/95447",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由白格和黑格组成的 $n\\times m$ 网格。一次操作是在某个中心格上画一个尺寸为 $d$ 的倒置 V 形图案，包含中心及其左上、右上方向各 $d$ 层格子，且所有操作都满足 $d\\ge k$；判断能否通过任意次操作（包括零次）恰好得到给定网格。",
+          "transformedStatement": "把问题转化为覆盖检查：对每个黑格假设其为图案中心，找出仍完全由黑格组成的最大倒置 V 形；所有最大尺寸至少为 $k$ 的候选图案可同时绘制，判断它们的并集是否恰好覆盖全部黑格。",
+          "keyObservations": [
+            "一个黑格能作为某个合法图案的一部分，当且仅当它能作为中心向左上、右上同时延伸至少 $k$ 层；因此可逐个黑格求最大可延伸尺寸。",
+            "同一中心下，较小图案的格子一定包含于最大图案中，所以只需检查并标记最大尺寸的图案，无需枚举每个尺寸。",
+            "若每个黑格都被某个合法图案覆盖，则把这些图案全部画出不会覆盖白格，且会覆盖所有黑格，因此覆盖性检查同时保证了构造存在。"
+          ],
+          "solutionBrief": "枚举每个黑格作为中心，沿左上和右上对角线同步扩展，求能完全落在黑格内的最大尺寸。若最大尺寸至少为 $k$，就标记该图案覆盖的所有格子；最后检查是否仍有未标记的黑格，若有则为 NO，否则为 YES。复杂度为 $O(tn^2m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1579D",
+          "index": "D",
+          "slot": "D",
+          "title": "Productive Meeting",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1579/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/95447",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 个人，第 $i$ 个人最多参加 $a_i$ 次交谈；每次可任选两名尚未耗尽次数的人交谈，双方次数各减一，耗尽者不能再参加，且同一对可重复交谈。请构造交谈 pairs，使总交谈次数最大，并输出最大次数及全部安排。",
+          "transformedStatement": "将每个人的 $a_i$ 看作可消耗的资源单位，每次交谈就是从两个不同的人各取一个单位；问题转化为反复从剩余资源最多的两类中取单位并构造最多的配对。",
+          "keyObservations": [
+            "每次选择剩余社交值最大的两人配对并各减一；若仍存在可行配对，这种选择会优先消耗最紧缺的两类资源，且可继续重复执行。",
+            "若某人的剩余值满足 $a_i\\ge\\sum_{j\\ne i}a_j$，则他最多只能与其他人进行 $\\sum_{j\\ne i}a_j$ 次交谈，因此总次数上界为 $2\\sum_{j\\ne i}a_j$，并可通过让他与每个人配对达到。",
+            "若没有任何人占据不少于其余人的总社交值，则每次交谈消耗两点资源，答案上界为 $\\lfloor S/2\\rfloor$；最大值贪心结束时不会留下两个正值，因此能够达到该上界。",
+            "把剩余值与编号存入平衡树，每次取出最大的两个并更新后重新插入，就能直接维护下一次应选择的两人。"
+          ],
+          "solutionBrief": "维护每人的剩余社交值，反复取最大的两人配对并各减一，直到不足两人有正值。用平衡树维护最大值，复杂度为 $O(S\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1579E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Permutation Minimization by Deque",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1579/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/95447",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个排列，按原顺序依次处理每个元素；每次都可将当前元素加入双端队列的最前端或最后端。全部元素处理完后，要求得到所有可能结果中字典序最小的序列。",
+          "transformedStatement": "把每一步的两种选择视为“新元素位于当前队列之前或之后”的两种最终序列。由于后续选择可以保持一致，当前最前面的元素比较就决定优劣，只需维护队首并贪心决定新元素放置的位置。",
+          "keyObservations": [
+            "当前双端队列的首元素决定最终序列的第一处差异，因此新元素只需与队首比较，无需考虑完整队列。",
+            "若新元素小于队首，把它放到队首会立刻产生更小的首项；否则放到队尾，另一种选择不可能得到字典序最优结果。",
+            "两种放置方式后续都可采用相同的操作，因此后续决策不会改变当前首项比较带来的优劣，可逐个元素贪心确定位置。"
+          ],
+          "solutionBrief": "从左到右处理排列。第一个元素直接放入双端队列；之后若当前元素小于队首就放到队首，否则放到队尾。根据队首产生的首个差异，这一选择始终保留字典序最小答案，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1579E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Array Optimization by Deque",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1579/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/95447",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定数组，必须按原顺序逐个处理元素；每次可将当前元素加入双端队列的队首或队尾。全部元素加入后，要求最终队列中逆序对数量的最小可能值。",
+          "transformedStatement": "把每个新元素的选择视为一次独立的边际贡献比较：放队首只引入它与已有元素形成的特定逆序对，放队尾则引入另一类逆序对，后续选择对这两种方案的共同部分不造成差异。",
+          "keyObservations": [
+            "处理到 $a_i$ 时，后续元素无论如何加入，都会位于当前双端队列整体之外，因此比较两种放法时，未来产生的逆序对贡献完全相同。",
+            "将 $a_i$ 放到队首会新增当前队列中严格小于 $a_i$ 的元素数，放到队尾会新增严格大于 $a_i$ 的元素数；取二者较小值即可保证当前选择不劣。",
+            "只需维护已处理元素的大小计数，就能分别查询小于和大于 $a_i$ 的数量；使用支持顺序统计的结构可将每次决策降为 $O(\\log n)$。"
+          ],
+          "solutionBrief": "按数组顺序处理元素，统计已加入元素中严格小于或严格大于当前值的数量，分别对应放队首和队尾新增的逆序对，选择较小者并更新顺序统计结构。总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1579F",
+          "index": "F",
+          "slot": "F",
+          "title": "Array Stabilization (AND version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1579/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/95447",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "graphs",
+            "math",
+            "number theory",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个只含 $0$ 和 $1$ 的环形数组。每一步把每个位置的新值改为原位置与向左循环移动 $d$ 位位置的按位与，重复直到数组不再变化；判断最终能否全为零，若能输出首次全零所需步数，否则输出 $-1$。",
+          "transformedStatement": "把下标按步长 $d$ 的循环转移分成若干独立环；在每个环中，经过 $k$ 步的位置值是从当前位置向前取 $k+1$ 个元素的按位与，因此问题转化为寻找各环最长的循环连续 $1$ 段。",
+          "keyObservations": [
+            "第 $k$ 次更新后，位置 $i$ 的值等于原数组中 $a_i,a_{i-d},\\ldots,a_{i-kd}$ 的按位与；因此它何时变零只取决于沿步长 $d$ 方向遇到第一个零的位置。",
+            "按 $i\\mapsto(i-d)\\bmod n$ 的轨迹，所有下标会分成 $\\gcd(n,d)$ 个长度为 $n/\\gcd(n,d)$ 的环，各环可以独立处理。",
+            "若某个环全部为 $1$，其按位与永远为 $1$，数组不可能全零；否则该环所需步数就是其中循环连续一段 $1$ 的最大长度，整体答案取各环最大值。"
+          ],
+          "solutionBrief": "计算 $g=\\gcd(n,d)$，分别沿步长 $d$ 遍历每个环，统计循环连续 $1$ 段的最大长度；若某环全为 $1$ 则输出 $-1$，否则输出所有环最大值。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1579G",
+          "index": "G",
+          "slot": "G",
+          "title": "Minimal Coverage",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1579/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/95447",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定按顺序放置的 $n$ 条线段，第一条的一个端点固定在坐标 $0$；之后每条线段必须把起点接在上一条的终点，并可向左或向右延伸。求完成全部放置后，所有线段并集覆盖的坐标区间长度的最小值。",
+          "transformedStatement": "把过程抽象为当前端点在覆盖区间中的相对位置：状态记录端点到左边界的距离，并最小化到右边界的距离；每次选择向左或向右放置对应一次状态转移。答案是最终两侧距离之和的最小值。",
+          "keyObservations": [
+            "存在一种始终把端点拉回覆盖区间的放置策略：端点在正侧就向左放，否则向右放，因此所有端点都能限制在 $[-L,L]$ 内，其中 $L=\\max(a)$，状态范围是有限的。",
+            "只需记录当前端点到覆盖左边界的距离 $l$，并对每个 $(i,l)$ 保存到右边界的最小距离 $r$；两者之和正好是当前覆盖长度，避免记录绝对坐标。",
+            "向左放长度 $d$ 的线段后，左距离变为 $\\max(0,l-d)$，右距离必增加 $d$；向右放时，左距离增加 $d$，右距离变为 $\\max(0,r-d)$，因此转移只需更新一个距离并优化另一个距离。",
+            "处理完全部线段后，任意状态对应的覆盖长度就是 $l+r$，取最后一层的最小值即可得到答案。"
+          ],
+          "solutionBrief": "令 $dp_{i,l}$ 表示放置前 $i$ 段、端点到左边界距离为 $l$ 时到右边界的最小距离。按向左或向右放置进行转移，$l$ 的范围限制在 $[0,2L]$；最终取 $\\min_l(l+dp_{n,l})$，复杂度为 $O(nL)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
