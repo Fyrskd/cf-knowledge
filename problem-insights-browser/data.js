@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3584,
+    "total_problems": 3591,
     "source_total_problems": 3593,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3584,
-    "with_editorial_brief": 3285,
-    "with_solution_brief": 3287,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3591,
+    "with_editorial_brief": 3292,
+    "with_solution_brief": 3294,
     "missing_editorial_brief": 297,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2646,
+    "ai_override_count": 2653,
     "primary_topic_count": 13,
-    "contest_count": 553,
+    "contest_count": 554,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1167,
+    "几何": 88,
+    "数论与同余": 373,
+    "数据结构": 341,
+    "动态规划与状态设计": 294,
+    "组合计数与概率": 270,
     "字符串": 188,
     "基础实现与模拟": 225,
-    "构造与贪心": 1165,
     "图论与网络流": 235,
-    "数据结构": 340,
-    "数论与同余": 372,
     "博弈": 108,
-    "动态规划与状态设计": 293,
-    "几何": 87,
-    "组合计数与概率": 269,
     "代数、矩阵与多项式": 25,
     "交互": 104,
     "树结构": 173
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2321,
+    "ai_generated_with_editorial": 2328,
     "ai_generated_partial_editorial": 73,
     "missing_editorial": 297,
     "low_confidence": 1,
@@ -110598,6 +110598,219 @@ window.CF_INSIGHTS_DATA = {
             "每次查询只需结合块跳转与少量单步移动，更新也只涉及两条长度至多为 $Q$ 的逆链，从而将总复杂度控制在 $O((n+q)\\sqrt n)$。"
           ],
           "solutionBrief": "取 $Q\\approx\\sqrt n$，预处理 $a_i=p^Q(i)$和逆排列 $r$。查询 $p^k(i)$时先进行整块跳转，再做不足 $Q$ 步的直接移动；交换后只沿 $x,y$ 的逆排列链重算受影响的 $a$，总复杂度为 $O((n+q)\\sqrt n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1620,
+      "name": "Educational Codeforces Round 119 (Rated for Div. 2)",
+      "date": "2021-12-18",
+      "url": "https://codeforces.com/contest/1620",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1620A",
+          "index": "A",
+          "slot": "A",
+          "title": "Equal or Not Equal",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1620/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/98061",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dsu",
+            "implementation"
+          ],
+          "statementBrief": "给定一个长度为 n 的 E/N 字符串，表示圆环数组中每对相邻元素是相等（E）还是不等（N）。需要判断能否为数组赋予正整数，使所有相邻关系都与字符串一致。",
+          "transformedStatement": "把 E 边视为必须合并的连接，把 N 边视为必须切开的连接；问题转化为判断圆环上的这些连接是否能划分出若干个可赋不同值的块。",
+          "keyObservations": [
+            "连续的 E 边会把相邻位置归入同一连通块，因此每个 E 连通块内的所有数都必须相等。",
+            "若 N 的数量为 0，整圈只需赋相同值；若 N 的数量为 1，剩余 E 边仍把两端连成同一块，却要求这条 N 边两端不同，必然矛盾。",
+            "若 N 至少有 2 个，可将 N 边切开的各个块赋予不同正整数，从而同时满足所有 E 和 N 的限制。"
+          ],
+          "solutionBrief": "统计字符串中 N 的数量；当且仅当 N 的数量不等于 1 时输出 YES，否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1620B",
+          "index": "B",
+          "slot": "B",
+          "title": "Triangles on a Rectangle",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1620/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/98061",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "geometry",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个边平行于坐标轴、对角点为 $(0,0)$ 和 $(w,h)$ 的矩形，每条边上提供若干个不在顶点的格点。选择三个点，且恰有两个点在同一条边上，求所成三角形的最大面积的两倍。",
+          "transformedStatement": "把同一边上的两个点视为底边：水平边的候选值是端点横坐标差乘 $h$，竖直边的候选值是端点纵坐标差乘 $w$，答案为四类候选中的最大值。",
+          "keyObservations": [
+            "固定同侧的两点作为底边后，三角形的面积两倍等于底边长度乘以第三点到该边的垂直距离。",
+            "同一边上两点的最大底边只能由该边坐标最小值和最大值构成，因此只需保留每组坐标的首尾差。",
+            "底边在水平边上时，第三点取对侧可达到最大高 $h$；底边在竖直边上时，最大高为 $w$。",
+            "四条边分别产生一个候选值，取 $\u001b[0m\\max(\\Delta x_1h,\\Delta x_2h,\\Delta y_1w,\\Delta y_2w)$ 即得到答案。"
+          ],
+          "solutionBrief": "对上下两条边分别计算首尾横坐标差并乘以 $h$，对左右两条边计算首尾纵坐标差并乘以 $w$；四个候选值的最大值就是三角形面积的两倍。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1620C",
+          "index": "C",
+          "slot": "C",
+          "title": "BA-String",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1620/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/98061",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定只含 $a$ 和星号的字符串，每个星号可独立替换为 $0$ 到 $k$ 个连续的 $b$，拼接后得到一个 BA 字符串；不同结果按字符串本身去重并按字典序排列。要求输出其中第 $x$ 小的 BA 字符串。",
+          "transformedStatement": "把每个连续星号段压缩为一个变量，表示该段最终插入的 $b$ 总数；第 $i$ 段变量取值为 $0$ 到 $c_i k$，所有结果就对应这些变量组成的混合进制数，目标是解码编号 $x-1$。",
+          "keyObservations": [
+            "连续的 $c_i$ 个星号无论怎样分别替换，最终只由总共插入的 $b$ 数量决定，且总数可以取 $0$ 到 $c_i k$ 的任意值，因此每段可压缩成一个取值范围为 $[0,c_i k]$ 的变量。",
+            "按从左到右记录各星号段插入的 $b$ 数量后，两个结果字符串的字典序等价于比较这组数量序列的字典序，避免直接枚举具体字符串。",
+            "这些数量相当于混合进制的各位，第 $i$ 段的进制为 $c_i k+1$；因此将 $x-1$ 从最后一段开始反复取模并整除对应进制，就能直接得到第 $x$ 个结果。"
+          ],
+          "solutionBrief": "提取所有连续星号段及长度 $c_i$，将每段视为可插入 $0$ 到 $c_i k$ 个 $b$ 的一位混合进制。把 $x-1$ 从后往前按进制 $c_i k+1$ 解码，再按原字符串输出对应数量的 $b$ 和所有 $a$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1620D",
+          "index": "D",
+          "slot": "D",
+          "title": "Exact Change",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1620/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/98061",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "商店有若干种价格为 $a_i$ 的薯片，你可以携带面值为 $1$、$2$、$3$ 的硬币，但到店后才知道要买哪一种。要求用同一批硬币对任意一种薯片都能恰好付款，求所需硬币总数的最小值。",
+          "transformedStatement": "只需围绕最大价格 $m$ 判断下界 $r=\\lceil m/3\\rceil$ 是否可行：固定少量面值 $1$、$2$ 硬币后，用面值 $3$ 补到覆盖 $m$，并验证所有给定价格是否都能在这些硬币数量上限内精确表示。",
+          "keyObservations": [
+            "设最大价格为 $m$，每枚硬币最多贡献 $3$，因此购买它至少需要 $r=\\lceil m/3\\rceil$ 枚硬币，答案只可能是 $r$ 或 $r+1$。",
+            "无论 $m$ 对 $3$ 的余数是什么，都能按余数配置少量面值 $1$、$2$ 的硬币并用面值 $3$ 补足，使 $r+1$ 枚硬币覆盖所有不超过 $m$ 的价格。",
+            "判断 $r$ 枚是否足够时，面值 $1$ 和 $2$ 的硬币数量各无需超过 $3$ 枚；枚举数量 $c_1,c_2$ 后令 $c_3=\\lceil(m-c_1-2c_2)/3\\rceil$，再检查每个价格能否在这些数量上限内精确支付。"
+          ],
+          "solutionBrief": "令 $m=\\max a_i$、$r=\\lceil m/3\\rceil$。先枚举不超过 $3$ 枚的面值 $1$、$2$ 硬币，计算所需面值 $3$ 硬币数量，并检查所有价格能否精确支付；若可行答案为 $r$，否则由按 $m\\bmod3$ 的构造知答案为 $r+1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1620E",
+          "index": "E",
+          "slot": "E",
+          "title": "Replace the Numbers",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1620/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/98061",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dsu",
+            "implementation"
+          ],
+          "statementBrief": "有一个初始为空的数组，依次执行两类操作：把数字 $x$ 追加到数组末尾，或把数组中所有等于 $x$ 的数替换成 $y$。所有查询完成后，输出数组中的元素。",
+          "transformedStatement": "将问题从“不断修改数组”改为逆序计算每个被追加数字的最终归宿：维护映射 $p_x$，表示已处理替换下 $x$ 会变成的值；逆序遇到替换 $x\\to y$ 时只需令 $p_x=p_y$。",
+          "keyObservations": [
+            "逆序处理时，维护映射 $p_x$ 表示已经处理的替换会把数字 $x$ 变成什么，从而无需显式修改数组中的历史元素。",
+            "遇到加入数字 $x$ 的操作，只需把当前的 $p_x$ 加入答案；它代表该位置最终会留下的数。",
+            "逆序遇到将所有 $x$ 替换为 $y$ 时，直接令 $p_x=p_y$，因为这些 $x$ 之后经历的替换与原本的 $y$ 完全相同。",
+            "每个查询只进行常数次映射访问或赋值，因此总复杂度为 $O(q)$，避免了逐个寻找并修改数组元素。"
+          ],
+          "solutionBrief": "从后往前扫描查询，维护每个数字在后续替换后的最终值。加入 $x$ 时记录当前映射值，替换 $x\\to y$ 时令 $p_x=p_y$，最后按记录顺序输出，复杂度为 $O(q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1620F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bipartite Array",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1620/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/98061",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一个 $1$ 到 $n$ 的排列，需要对每个位置独立选择 $p_i$ 或 $-p_i$，得到数组 $a$。按题目定义的无向图判断该数组是否二分图，并输出任意可行数组；若不存在则输出 NO。",
+          "transformedStatement": "题解把目标改写为：选择每个元素的正负号，使数组中不存在长度为 $3$ 的递减子序列。随后按前缀维护长度为 $1$、$2$ 递减子序列的末元素边界，并将可达状态压缩为常数个。",
+          "keyObservations": [
+            "数组满足二分图条件，当且仅当其中不存在长度为 $3$ 的递减子序列，从图性质转化为序列约束。",
+            "处理前缀时，只需记录长度为 $1$ 和 $2$ 的递减子序列的最大末元素 $x,y$；若新数小于 $y$，就必然形成长度为 $3$ 的递减子序列。",
+            "固定 $i,x$ 时，较小的 $y$ 严格更优，因此同一状态只保留最小 $y$，将状态数从三维降至二维。",
+            "每次加入新元素后，$x$ 或 $y$ 必有一个变为当前的 $\u00177p_{i-1}$，因此只需记录其位置和符号，状态总数保持常数，整体可在线性时间转移。"
+          ],
+          "solutionBrief": "将二分图条件等价转为不存在长度为 $3$ 的递减子序列。对每个位置选择 $\u00177p_i$，维护长度为 $1$、$2$ 递减子序列的边界；固定边界时只保留更优的最小值，并利用其中一个边界必为上一个元素，将状态压缩到常数规模，在线性时间内判断并恢复答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1620G",
+          "index": "G",
+          "slot": "G",
+          "title": "Subsequences Galore",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1620/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/98061",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "dp"
+          ],
+          "statementBrief": "给定按字母非降序排列的 $n$ 个字符串。对原序列的每个子序列（即选择任意下标集合并保持顺序），统计至少是其中一个字符串子序列的不同字符串数量，包括空串；再乘以所选字符串数与下标和，对所有选择结果取模后求按位异或。",
+          "transformedStatement": "把每个可能的字符字符串按“它是哪些 $s_i$ 的子序列”分类成特征掩码。先统计每个选中集合中共同出现的子序列数，再通过子集莫比乌斯变换得到各特征掩码的精确数量，从而回答任意集合的并集计数。",
+          "keyObservations": [
+            "由于每个字符串按字母有序，任意子序列也按字母有序，并且只由各字母出现次数决定；对一组字符串取交集时，第 $j$ 个字母最多出现该组中的最小次数，因此共同子序列数为各最小次数加一的乘积。",
+            "按一个子字符串属于哪些 $s_i$ 定义特征掩码，设恰好具有掩码 $x$ 的字符串数为 $G(x)$；选中集合 $x$ 时，所需并集数量等于总数减去特征掩码与 $x$ 不相交的部分。",
+            "共同子序列计数满足 $H(x)=\\sum_{x\\subseteq y}G(y)$，将掩码取反后即可用逆 SOS DP 做子集莫比乌斯变换恢复所有 $G(x)$，避免逐个字符串统计。",
+            "得到所有 $G(x)$ 后，用 SOS DP 求每个选中掩码对应的并集数量，再乘以该集合大小与下标和，按题意对全部掩码结果取异或。"
+          ],
+          "solutionBrief": "先递推计算每个集合的共同子序列数 $H(x)$，再通过取反掩码和逆 SOS DP 从 $H$ 恢复特征掩码计数 $G$。利用子集和得到每个集合的并集计数，结合集合大小、下标和计算最终异或；复杂度为 $O(2^n(n+A))$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
