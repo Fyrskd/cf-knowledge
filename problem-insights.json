@@ -15,19 +15,306 @@
     ]
   },
   "summary": {
-    "total_problems": 3750,
+    "total_problems": 3757,
     "source_total_problems": 3759,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3750,
-    "with_editorial_brief": 3437,
-    "with_solution_brief": 3439,
-    "missing_editorial_brief": 311,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3757,
+    "with_editorial_brief": 3442,
+    "with_solution_brief": 3444,
+    "missing_editorial_brief": 313,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2812,
+    "ai_override_count": 2819,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1594A",
+      "contest_id": 1594,
+      "title": "Consecutive Sum Riddle",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1594/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/95525",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "math"
+      ],
+      "statement_brief": "给定正整数 $n$，需要选择两个整数 $l<r$，使连续整数 $l,l+1,\u001b[... omitted ...] ,r$ 的总和等于 $n$，且端点都在 $[-10^{18},10^{18}]$ 内。每个测试用例输出任意一组满足条件的 $l,r$，题目保证答案存在。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text (summary not ready; withheld)",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:17:56+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1594B",
+      "contest_id": 1594,
+      "title": "Special Numbers",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1594/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/95525",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "bitmasks",
+        "math"
+      ],
+      "statement_brief": "给定 $n$ 和正整数 $k$，特殊数是若干个互不相同的非负整数次幂 $n^i$ 之和。将所有特殊数按升序排列，求第 $k$ 个数，并对 $10^9+7$ 取模。",
+      "transformed_statement": "把特殊数重述为 $n$ 进制各位仅含 $0$、$1$ 的正整数；第 $k$ 个数的位模式等于 $k$ 的二进制表示，再把每个二进制位按位置替换成对应的 $n$ 次幂。",
+      "key_observations": [
+        "特殊数恰好是 $n$ 进制表示中每一位只能为 $0$ 或 $1$ 的正整数，因此不必枚举不同幂的组合。",
+        "这些数的位权序关系与对应二进制数的大小顺序一致，所以第 $k$ 个特殊数的选位模式就是 $k$ 的二进制位。",
+        "将 $k$ 的第 $i$ 位设为 $1$ 时贡献 $n^i$，逐位累加即可得到答案；幂和累加都可直接取模。"
+      ],
+      "solution_brief": "把 $k$ 写成二进制，并将其中每个为 $1$ 的 $2^i$ 替换为 $n^i$ 后求和。逐位计算 $n$ 的幂并取模，即得到第 $k$ 个特殊数。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:17:45+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1594C",
+      "contest_id": 1594,
+      "title": "Make Them Equal",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1594/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/95525",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "brute force",
+        "greedy",
+        "math",
+        "strings"
+      ],
+      "statement_brief": "给定长度为 $n$ 的字符串和目标字符 $c$。每次选择一个 $x$，把所有下标不能被 $x$ 整除的位置改成 $c$；要求用最少操作使整串都变为 $c$，并输出操作次数及所选的 $x$。",
+      "transformed_statement": "把一次操作看成只会保留下标为 $x$ 的倍数位置不变；因此一步完成的条件是某个 $x$ 的所有倍数位置已经都是 $c$。若不存在这样的 $x$，用 $n$、$n-1$ 构造两步方案。",
+      "key_observations": [
+        "若所有位置都已是 $c$，答案为 $0$，无需进行任何操作。",
+        "一次选择 $x$ 只能保留下标为 $x$ 的倍数的位置，因此当且仅当这些倍数位置原本全为 $c$ 时，选择该 $x$ 就能一步完成。",
+        "若不存在可一步完成的 $x$，先选 $x=n$ 会把前 $n-1$ 个位置变成 $c$；再选 $x=n-1$，因为 $n$ 不是 $n-1$ 的倍数，最后一个位置也会被修改为 $c$。"
+      ],
+      "solution_brief": "先判断字符串是否全为 $c$；否则枚举 $x$，检查其所有倍数位置是否都是 $c$，若存在则输出一次操作。若不存在，固定输出 $x=n$ 和 $x=n-1$ 两次操作即可完成。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:17:28+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1594D",
+      "contest_id": 1594,
+      "title": "The Number of Imposters",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1594/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/95525",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "dfs and similar",
+        "dp",
+        "dsu",
+        "graphs"
+      ],
+      "statement_brief": "有 $n$ 名玩家和 $m$ 条评论，每条评论表示玩家 $i$ 认为玩家 $j$ 是内鬼或船员。内鬼必说谎、船员必说真话；在为每名玩家确定唯一身份的前提下，求可能的最大内鬼数，若评论无法同时成立则输出 $-1$。",
+      "transformed_statement": "把玩家视为图节点，把身份编码为二值变量：称对方为船员表示两端异或值为 $0$，称对方为内鬼表示异或值为 $1$。问题转化为检查每个连通分量的奇偶约束是否一致，并在一致时选择更大的颜色类作为内鬼。",
+      "key_observations": [
+        "“称对方为船员”要求两人的身份相同，而“称对方为内鬼”要求两人的身份不同，因此每条评论都能转成一个二值关系约束。",
+        "在同一连通分量中任选一个点设定身份后，其余点的身份由路径上的关系唯一确定；若某条边要求的奇偶关系与已有着色冲突，则评论互相矛盾。",
+        "合法的连通分量有两种整体身份翻转方案，分别对应两种颜色类充当内鬼，因此应取两类人数的较大值；不连通分量可独立求和。"
+      ],
+      "solution_brief": "建立带奇偶关系的图：船员评论连边权 $0$，内鬼评论连边权 $1$，用 DFS 赋予节点二值颜色并检查 $u\\oplus v$ 是否等于边权。若发现冲突输出 $-1$；否则每个连通分量取两种颜色人数的较大值并累加。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:17:10+00:00",
+          "quality_flags": [
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1594E1",
+      "contest_id": 1594,
+      "title": "Rubik's Cube Coloring (easy version)",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1594/problem/E1",
+      "editorial_url": "https://codeforces.com/blog/entry/95525",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "math"
+      ],
+      "statement_brief": "给定一棵有 $k$ 层、共 $2^k-1$ 个节点的满二叉树，用魔方的 6 种颜色给每个节点染色。要求每条父子边两端的颜色都是魔方上相邻的面，求不同合法染色方案数并对 $10^9+7$ 取模。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text (summary not ready; withheld)",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:16:50+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_only"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1594E2",
+      "contest_id": 1594,
+      "title": "Rubik's Cube Coloring (hard version)",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1594/problem/E2",
+      "editorial_url": "https://codeforces.com/blog/entry/95525",
+      "editorial_quality": "complete",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "树结构",
+        "组合计数与概率",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "dp",
+        "implementation",
+        "math",
+        "trees"
+      ],
+      "statement_brief": "给定一个有 $2^k-1$ 个节点的满二叉树，使用魔方的 6 种颜色给所有节点染色；每条边两端必须是魔方上相邻的颜色，且部分节点已有指定颜色。求满足条件的不同染色数，结果对 $10^9+7$ 取模。",
+      "transformed_statement": "将所有包含预染色节点的祖先保留下来形成压缩树，在其上记录节点颜色并进行树形状态转移；压缩树外的每个节点只有相对于父节点的 4 种选择，因此单独乘上 $4$ 的幂。",
+      "key_observations": [
+        "每个节点若颜色已确定，其子节点各有恰好 $4$ 种相邻颜色，因此所有未标记节点可独立贡献因子 $4$。",
+        "只保留子树中含预染色节点的节点，这些标记节点是若干条从根出发的路径并集，数量至多为 $n k$。",
+        "在标记节点上做按颜色的树形 DP；预染色节点只能取指定颜色，父子状态仅在两色为相邻面时转移。",
+        "设标记节点数为 $t$，其余节点数为 $m=2^k-1-t$，完整答案等于标记部分 DP 结果乘以 $4^m$。"
+      ],
+      "solution_brief": "标记所有包含预染色节点的祖先，构成规模至多 $nk$ 的压缩树。对每个标记节点和 6 种颜色做树形 DP，限制预染色状态并按相邻面转移；未标记节点统一贡献 $4^m$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:16:33+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1594F",
+      "contest_id": 1594,
+      "title": "Ideal Farm",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1594/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/95525",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "有 $s$ 只动物和排成一行的 $n$ 个棚，每个棚必须放至少一只动物。若某种分配中存在一个非空连续棚段，动物总数恰好为 $k$，则该分配满足条件；要求判断是否所有分配方式都满足条件。",
+      "transformed_statement": "将每种分配重述为长度为 $n$、元素均为正整数且总和为 $s$ 的数组，问题变成判断每个这样的数组是否都存在和为 $k$ 的连续子数组。通过比较前缀和集合与其加 $k$ 后的集合，转化为能否避免两组值发生碰撞。",
+      "key_observations": [
+        "把一个分配方案表示为正整数数组，其前缀和严格递增；存在和为 $k$ 的连续子段，等价于某个前缀和与另一个前缀和加 $k$ 相等，或某个前缀和本身等于 $k$。",
+        "将前缀和集合与其整体加 $k$ 后的集合合并，若无法让对应的 $2n+1$ 个值全部不同，就必然出现上述相等关系，从而所有分配方案都含有目标子段。",
+        "可取值范围为 $1$ 到 $s+k$；在末尾区间 $[s-k+1,s]$ 中按模 $k$ 分组时，同一余数出现奇数次会造成至少一次重合，因此最大可区分值数为 $m=s+k-c$，其中 $c$ 是出现奇数次的余数类数量。",
+        "最终只需比较最大值数与所需的 $2n+1$ 个值：若 $m<2n+1$，则答案为 YES；此外 $s=k$ 必为 YES，$s<k$ 必为 NO。"
+      ],
+      "solution_brief": "把所有正整数分配看作长度为 $n$、总和为 $s$ 的数组。利用前缀和与其加 $k$ 后的集合，计算最多能保持多少个值互异：令 $c$ 为区间 $[s-k+1,s]$ 中出现奇数次的模 $k$ 余数类数，则 $m=s+k-c$；比较 $m$ 与 $2n+1$，并单独处理 $s\ne k$ 的显然边界。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T12:16:09+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 8,
       "problem_key": "1598A",

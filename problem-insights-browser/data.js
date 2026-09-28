@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3750,
+    "total_problems": 3757,
     "source_total_problems": 3759,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 3750,
-    "with_editorial_brief": 3437,
-    "with_solution_brief": 3439,
-    "missing_editorial_brief": 311,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3757,
+    "with_editorial_brief": 3442,
+    "with_solution_brief": 3444,
+    "missing_editorial_brief": 313,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2812,
+    "ai_override_count": 2819,
     "primary_topic_count": 13,
-    "contest_count": 580,
+    "contest_count": 581,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "图论与网络流": 242,
+    "数论与同余": 399,
+    "字符串": 199,
+    "图论与网络流": 243,
+    "组合计数与概率": 284,
+    "动态规划与状态设计": 306,
     "基础实现与模拟": 236,
-    "数论与同余": 396,
-    "组合计数与概率": 283,
-    "动态规划与状态设计": 305,
-    "字符串": 198,
     "构造与贪心": 1217,
     "树结构": 180,
     "数据结构": 357,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2464,
+    "missing_editorial": 313,
+    "ai_generated_with_editorial": 2469,
     "ai_generated_partial_editorial": 82,
-    "missing_editorial": 311,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -115565,6 +115565,204 @@ window.CF_INSIGHTS_DATA = {
             "对候选子串及其加法关系使用字符串哈希快速比较，避免直接处理长度可达 $2\\cdot10^5$ 的整数。"
           ],
           "solutionBrief": "按较大加数长度为 $|x|-1$ 或 $|x|$ 分类；第二类利用与 $x$ 的最长公共前缀确定较小加数的两种长度，再枚举前后顺序，用多模哈希验证候选和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1594,
+      "name": "Codeforces Round 747 (Div. 2)",
+      "date": "2021-10-08",
+      "url": "https://codeforces.com/contest/1594",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1594A",
+          "index": "A",
+          "slot": "A",
+          "title": "Consecutive Sum Riddle",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1594/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/95525",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n$，需要选择两个整数 $l<r$，使连续整数 $l,l+1,\u001b[... omitted ...] ,r$ 的总和等于 $n$，且端点都在 $[-10^{18},10^{18}]$ 内。每个测试用例输出任意一组满足条件的 $l,r$，题目保证答案存在。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1594B",
+          "index": "B",
+          "slot": "B",
+          "title": "Special Numbers",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1594/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/95525",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 和正整数 $k$，特殊数是若干个互不相同的非负整数次幂 $n^i$ 之和。将所有特殊数按升序排列，求第 $k$ 个数，并对 $10^9+7$ 取模。",
+          "transformedStatement": "把特殊数重述为 $n$ 进制各位仅含 $0$、$1$ 的正整数；第 $k$ 个数的位模式等于 $k$ 的二进制表示，再把每个二进制位按位置替换成对应的 $n$ 次幂。",
+          "keyObservations": [
+            "特殊数恰好是 $n$ 进制表示中每一位只能为 $0$ 或 $1$ 的正整数，因此不必枚举不同幂的组合。",
+            "这些数的位权序关系与对应二进制数的大小顺序一致，所以第 $k$ 个特殊数的选位模式就是 $k$ 的二进制位。",
+            "将 $k$ 的第 $i$ 位设为 $1$ 时贡献 $n^i$，逐位累加即可得到答案；幂和累加都可直接取模。"
+          ],
+          "solutionBrief": "把 $k$ 写成二进制，并将其中每个为 $1$ 的 $2^i$ 替换为 $n^i$ 后求和。逐位计算 $n$ 的幂并取模，即得到第 $k$ 个特殊数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1594C",
+          "index": "C",
+          "slot": "C",
+          "title": "Make Them Equal",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1594/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/95525",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的字符串和目标字符 $c$。每次选择一个 $x$，把所有下标不能被 $x$ 整除的位置改成 $c$；要求用最少操作使整串都变为 $c$，并输出操作次数及所选的 $x$。",
+          "transformedStatement": "把一次操作看成只会保留下标为 $x$ 的倍数位置不变；因此一步完成的条件是某个 $x$ 的所有倍数位置已经都是 $c$。若不存在这样的 $x$，用 $n$、$n-1$ 构造两步方案。",
+          "keyObservations": [
+            "若所有位置都已是 $c$，答案为 $0$，无需进行任何操作。",
+            "一次选择 $x$ 只能保留下标为 $x$ 的倍数的位置，因此当且仅当这些倍数位置原本全为 $c$ 时，选择该 $x$ 就能一步完成。",
+            "若不存在可一步完成的 $x$，先选 $x=n$ 会把前 $n-1$ 个位置变成 $c$；再选 $x=n-1$，因为 $n$ 不是 $n-1$ 的倍数，最后一个位置也会被修改为 $c$。"
+          ],
+          "solutionBrief": "先判断字符串是否全为 $c$；否则枚举 $x$，检查其所有倍数位置是否都是 $c$，若存在则输出一次操作。若不存在，固定输出 $x=n$ 和 $x=n-1$ 两次操作即可完成。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1594D",
+          "index": "D",
+          "slot": "D",
+          "title": "The Number of Imposters",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1594/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/95525",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "graphs"
+          ],
+          "statementBrief": "有 $n$ 名玩家和 $m$ 条评论，每条评论表示玩家 $i$ 认为玩家 $j$ 是内鬼或船员。内鬼必说谎、船员必说真话；在为每名玩家确定唯一身份的前提下，求可能的最大内鬼数，若评论无法同时成立则输出 $-1$。",
+          "transformedStatement": "把玩家视为图节点，把身份编码为二值变量：称对方为船员表示两端异或值为 $0$，称对方为内鬼表示异或值为 $1$。问题转化为检查每个连通分量的奇偶约束是否一致，并在一致时选择更大的颜色类作为内鬼。",
+          "keyObservations": [
+            "“称对方为船员”要求两人的身份相同，而“称对方为内鬼”要求两人的身份不同，因此每条评论都能转成一个二值关系约束。",
+            "在同一连通分量中任选一个点设定身份后，其余点的身份由路径上的关系唯一确定；若某条边要求的奇偶关系与已有着色冲突，则评论互相矛盾。",
+            "合法的连通分量有两种整体身份翻转方案，分别对应两种颜色类充当内鬼，因此应取两类人数的较大值；不连通分量可独立求和。"
+          ],
+          "solutionBrief": "建立带奇偶关系的图：船员评论连边权 $0$，内鬼评论连边权 $1$，用 DFS 赋予节点二值颜色并检查 $u\\oplus v$ 是否等于边权。若发现冲突输出 $-1$；否则每个连通分量取两种颜色人数的较大值并累加。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1594E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Rubik's Cube Coloring (easy version)",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1594/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/95525",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math"
+          ],
+          "statementBrief": "给定一棵有 $k$ 层、共 $2^k-1$ 个节点的满二叉树，用魔方的 6 种颜色给每个节点染色。要求每条父子边两端的颜色都是魔方上相邻的面，求不同合法染色方案数并对 $10^9+7$ 取模。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1594E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Rubik's Cube Coloring (hard version)",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1594/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/95525",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构",
+            "组合计数与概率",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "implementation",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一个有 $2^k-1$ 个节点的满二叉树，使用魔方的 6 种颜色给所有节点染色；每条边两端必须是魔方上相邻的颜色，且部分节点已有指定颜色。求满足条件的不同染色数，结果对 $10^9+7$ 取模。",
+          "transformedStatement": "将所有包含预染色节点的祖先保留下来形成压缩树，在其上记录节点颜色并进行树形状态转移；压缩树外的每个节点只有相对于父节点的 4 种选择，因此单独乘上 $4$ 的幂。",
+          "keyObservations": [
+            "每个节点若颜色已确定，其子节点各有恰好 $4$ 种相邻颜色，因此所有未标记节点可独立贡献因子 $4$。",
+            "只保留子树中含预染色节点的节点，这些标记节点是若干条从根出发的路径并集，数量至多为 $n k$。",
+            "在标记节点上做按颜色的树形 DP；预染色节点只能取指定颜色，父子状态仅在两色为相邻面时转移。",
+            "设标记节点数为 $t$，其余节点数为 $m=2^k-1-t$，完整答案等于标记部分 DP 结果乘以 $4^m$。"
+          ],
+          "solutionBrief": "标记所有包含预染色节点的祖先，构成规模至多 $nk$ 的压缩树。对每个标记节点和 6 种颜色做树形 DP，限制预染色状态并按相邻面转移；未标记节点统一贡献 $4^m$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1594F",
+          "index": "F",
+          "slot": "F",
+          "title": "Ideal Farm",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1594/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/95525",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "有 $s$ 只动物和排成一行的 $n$ 个棚，每个棚必须放至少一只动物。若某种分配中存在一个非空连续棚段，动物总数恰好为 $k$，则该分配满足条件；要求判断是否所有分配方式都满足条件。",
+          "transformedStatement": "将每种分配重述为长度为 $n$、元素均为正整数且总和为 $s$ 的数组，问题变成判断每个这样的数组是否都存在和为 $k$ 的连续子数组。通过比较前缀和集合与其加 $k$ 后的集合，转化为能否避免两组值发生碰撞。",
+          "keyObservations": [
+            "把一个分配方案表示为正整数数组，其前缀和严格递增；存在和为 $k$ 的连续子段，等价于某个前缀和与另一个前缀和加 $k$ 相等，或某个前缀和本身等于 $k$。",
+            "将前缀和集合与其整体加 $k$ 后的集合合并，若无法让对应的 $2n+1$ 个值全部不同，就必然出现上述相等关系，从而所有分配方案都含有目标子段。",
+            "可取值范围为 $1$ 到 $s+k$；在末尾区间 $[s-k+1,s]$ 中按模 $k$ 分组时，同一余数出现奇数次会造成至少一次重合，因此最大可区分值数为 $m=s+k-c$，其中 $c$ 是出现奇数次的余数类数量。",
+            "最终只需比较最大值数与所需的 $2n+1$ 个值：若 $m<2n+1$，则答案为 YES；此外 $s=k$ 必为 YES，$s<k$ 必为 NO。"
+          ],
+          "solutionBrief": "把所有正整数分配看作长度为 $n$、总和为 $s$ 的数组。利用前缀和与其加 $k$ 后的集合，计算最多能保持多少个值互异：令 $c$ 为区间 $[s-k+1,s]$ 中出现奇数次的模 $k$ 余数类数，则 $m=s+k-c$；比较 $m$ 与 $2n+1$，并单独处理 $s\ne k$ 的显然边界。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
