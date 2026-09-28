@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4003,
+    "total_problems": 4009,
     "source_total_problems": 4009,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4003,
-    "with_editorial_brief": 3658,
-    "with_solution_brief": 3660,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4009,
+    "with_editorial_brief": 3664,
+    "with_solution_brief": 3666,
     "missing_editorial_brief": 343,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3065,
+    "ai_override_count": 3071,
     "primary_topic_count": 13,
-    "contest_count": 621,
+    "contest_count": 622,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1299,
-    "字符串": 215,
-    "数据结构": 381,
+    "基础实现与模拟": 248,
+    "构造与贪心": 1300,
+    "字符串": 217,
+    "数据结构": 382,
+    "树结构": 186,
     "组合计数与概率": 312,
     "数论与同余": 422,
     "图论与网络流": 264,
     "交互": 117,
     "动态规划与状态设计": 327,
-    "树结构": 185,
     "博弈": 114,
     "代数、矩阵与多项式": 26,
-    "基础实现与模拟": 247,
     "几何": 94
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2670,
+    "ai_generated_with_editorial": 2676,
     "ai_generated_partial_editorial": 97,
     "missing_editorial": 343,
     "low_confidence": 1,
@@ -123158,6 +123158,197 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "题解先证明后手总能获胜，因此最优对局数等于所有对局数。枚举偶数落子数 $x$，用组合数统计环形终局中的空格分布，再乘以 $2x!$ 计入起始字母和落子顺序，最后对 $\\lceil n/2\\rceil\\le x\\le n$ 求和，复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "partial"
+        }
+      ]
+    },
+    {
+      "id": 1535,
+      "name": "Educational Codeforces Round 110 (Rated for Div. 2)",
+      "date": "2021-06-04",
+      "url": "https://codeforces.com/contest/1535",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1535A",
+          "index": "A",
+          "slot": "A",
+          "title": "Fair Playoff",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1535/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/91481",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "四名实力各不相同的选手按固定分组进行淘汰赛：第 1、2 人先比赛，第 3、4 人先比赛，两场胜者再打决赛。若全场实力最高的两人恰好在决赛相遇则称比赛公平，需判断每组对阵是否公平。",
+          "transformedStatement": "把两场半决赛看作两个实力组；决赛选手就是各组的最强者。问题转化为判断全场最强的两人是否分属不同组，也就是是否不存在一组的两人都强于另一组的两人。",
+          "keyObservations": [
+            "若一组两人的实力都高于另一组两人，则全场最强的两人会在同一场半决赛相遇，因而不可能在决赛相遇。",
+            "因此只需检查两组实力区间是否完全分离；若一组整体更强，答案为不公平，否则两位最强者分处两组并会晋级决赛。"
+          ],
+          "solutionBrief": "比较两场半决赛对应的实力范围：若一组的最弱者仍强于另一组的最强者，则最强两人同组，输出 NO；否则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1535B",
+          "index": "B",
+          "slot": "B",
+          "title": "Array Reodering",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1535/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/91481",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定一个整数数组，可以任意重排。若重排后位置满足 $i<j$ 且 $\\gcd(a_i,2a_j)>1$，则这对下标是好对；要求选择排列，使好对数量最大。",
+          "transformedStatement": "分别看前项的奇偶性：偶数作为前项时必然与任意后项构成好对；奇数与奇数之间则只由两数的最大公约数决定，且不受先后顺序影响。因此只需让偶数尽可能处在前面，固定奇数内部贡献。",
+          "keyObservations": [
+            "若前面的数是偶数，则它与任意后续数满足条件，因此把所有偶数放在数组前部，可以保证涉及偶数的每一对都计为好对。",
+            "两个数都为奇数时，$\\gcd(a_i,2a_j)=\\gcd(a_i,a_j)$，所以它们是否构成好对与排列顺序无关；奇数之间的贡献固定。"
+          ],
+          "solutionBrief": "将所有偶数排在奇数之前。这样每个偶数作为前项时，都能与后续元素形成好对；奇数之间的好对数不受排列影响。按该顺序统计所有满足条件的下标对即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1535C",
+          "index": "C",
+          "slot": "C",
+          "title": "Unstable String",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1535/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/91481",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "implementation",
+            "strings",
+            "two pointers"
+          ],
+          "statementBrief": "给定仅含 `0`、`1`、`?` 的字符串；对任意连续子串，可以把每个 `?` 独立替换为 `0` 或 `1`。统计能够补成相邻字符均不同的交替串的连续子串数量。",
+          "transformedStatement": "将每个右端点对应的合法子串起点视为一个区间：固定右端点后，最近一对违反交替规律的已确定字符划定区间左界。逐步维护按字符和位置奇偶分类的最近出现位置，即可计算该右端点贡献多少个合法子串。",
+          "keyObservations": [
+            "固定子串右端点后，已确定的字符若在奇数距离处相同，或在偶数距离处不同，就无法补全成相邻字符交替的串；因此只需找最近的冲突位置。",
+            "按位置奇偶分别记录 0 和 1 的最近出现位置，就能直接定位冲突边界；边界之后的每个起点都对应一个美丽子串。",
+            "遇到 `?` 时可把它选成 0 或 1，并取两种选择产生的较早冲突边界，因为这样保留的合法起点更多。"
+          ],
+          "solutionBrief": "从左到右枚举右端点，维护 0、1 在两种下标奇偶性下的最近出现位置。根据当前字符及上述位置求出最近冲突边界，并将边界之后可选的起点数加入答案；当前字符为 `?` 时取两种赋值中更有利的边界。整体只需线性扫描字符串。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1535D",
+          "index": "D",
+          "slot": "D",
+          "title": "Playoff Tournament",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1535/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/91481",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "有 $2^k$ 支队伍按固定配对顺序进行单败淘汰赛，每场由两场较早比赛的胜者对决。字符串中每个字符表示对应比赛的胜者方向：`0`、`1` 分别指定一侧胜出，`?` 表示两侧胜者都可能；每次查询修改一个字符，要求输出此时可能成为总冠军的队伍数。",
+          "transformedStatement": "把每场比赛视为二叉树节点，并记录该节点所代表的子树中有多少支队伍可能最终胜出。字符决定如何合并两个子节点的计数，查询则转化为修改一个节点后重算到根节点的路径。",
+          "keyObservations": [
+            "每场比赛能成为冠军的队伍只可能来自它的两个子比赛，因此该场的可胜队伍数可由子节点计数直接合并。",
+            "字符 `0` 或 `1` 会让该场比赛的可胜队伍数等于指定一侧子树的计数，而 `?` 会让两侧可能的冠军队伍都计入，故计数分别为左侧、右侧或两者之和。",
+            "修改某场比赛的结果只会影响从该场到决赛的祖先节点；这条路径最多有 $k$ 层，因此每次查询只需沿路径重新计算。"
+          ],
+          "solutionBrief": "将比赛组织成二叉树，并在每个节点维护该子树中可能成为胜者的队伍数。初始时自底向上计算；每次修改一个字符后，只更新该节点及其祖先，根节点的计数就是答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1535E",
+          "index": "E",
+          "slot": "E",
+          "title": "Gold Transfer",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1535/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/91481",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "题目给出一棵根为 0 的树，每个顶点有一定库存的黄金和每吨单价；查询可以新增带有指定库存、价格的子顶点，或要求从某顶点购买指定吨数。购买时黄金库存会相应减少，需对每个购买请求输出实际买到的吨数及最低花费。",
+          "transformedStatement": "把一次购买视为沿指定顶点到根的路径依单价从低到高消耗库存：每轮找到路径上最高的非空顶点并尽量从中购买。核心子问题因此变为动态维护树上路径的最近有货祖先，并支持顶点库存耗尽后的更新。",
+          "keyObservations": [
+            "每个新顶点的单价都高于其父亲，因此沿请求顶点到根的路径，离根越近越便宜；购买时应优先取路径上最高的有货顶点。",
+            "在一个顶点购买 $\\min(w,a_u)$ 吨后，要么需求 $w$ 已满足，要么该顶点库存归零；每个顶点至多耗尽一次，因此所有查询累计只会处理 $O(q)$ 次有货顶点。",
+            "从根到请求顶点的路径上，空库存顶点构成一个前缀；因此可用倍增跳过空节点，定位第一个有货顶点，而不是逐层向上扫描。",
+            "新顶点加入时即可由父节点递推其各级祖先，倍增信息无需重建整棵树。"
+          ],
+          "solutionBrief": "对每次购买请求，反复用倍增在请求顶点到根的路径上定位最高的有货顶点，并购买尽可能多的黄金。更新该点库存和剩余需求，直到需求满足或路径上无货；累计计算购买量与费用。总复杂度为 $O(q\\log q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1535F",
+          "index": "F",
+          "slot": "F",
+          "title": "String Distance",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1535/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/91481",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "hashing",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 个长度相同且两两不同的字符串。一次操作可以任选一个字符串中的连续子串，并将其中字符按非降序排序；对每一对字符串，求使它们变相同所需的最少操作数，若无法做到则记为 $1337$，最后输出所有字符串对的距离之和。",
+          "transformedStatement": "按字符多重集把字符串划分为等价类：跨类配对的距离固定为 $1337$，同类配对的距离只需判断能否通过一次排序变相同。一次操作判定可转化为检查较大字符串中、两端位于最长公共前后缀之间的区间排序后是否等于另一个字符串。",
+          "keyObservations": [
+            "排序操作不会改变字符多重集，因此字符多重集不同的字符串对必定不可达，答案为 $1337$；按字符多重集分组后，只需处理组内配对。",
+            "同组字符串最多用两次操作变相同：分别排序即可，所以组内距离只可能是 $1$ 或 $2$，统计一次操作可达的配对数就能确定组内总贡献。",
+            "若两个不同字符串只用一次操作变相同，操作应作用在字典序较大的字符串上；操作区间外必须与目标相同，区间内的目标子串必须已按非降序排列，因此只需检查最长公共前缀和后缀之间的部分。",
+            "字符串较短而数量较多时，可枚举每个字符串的待排序区间并查找排序后的结果；为避免同一结果被多个区间重复计数，只考虑排序会改变区间首尾字符的区间。"
+          ],
+          "solutionBrief": "先按字符多重集分组，不同组的配对贡献为 $1337$。组内配对贡献为 $1$ 或 $2$，通过统计一次操作可达的配对数来计算；对字符串较长的组逐对检查，对字符串较短且数量较多的组则枚举排序区间并查询结果是否存在。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
