@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T22:27:42+00:00",
+  "updated_at": "2026-09-28T22:33:13+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -92401,6 +92401,191 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的操作规则及提供的完整 editorial；标签仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1528F": {
+      "problem_key": "1528F",
+      "title": "AmShZ Farm",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/1528/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/91058",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "95acae48058134056540c98557477a69b0b6499c89d875b2a21a88903e91a2ef",
+      "generated_at": "2026-09-28T22:31:56+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "长度为 $n$ 的数组 $a$ 的元素取自 $1$ 到 $n$，并且可对每个元素分别加非负整数，使其成为 $1$ 到 $n$ 的一个排列。长度为 $k$ 的数组 $b$ 的每个元素都须在 $1$ 到 $n$ 内，且 $a$ 在 $b$ 各下标处的值必须相同；下标和值都允许重复，求满足条件的 $(a,b)$ 数量模 $998244353$。",
+        "transformed_statement": "将 $a$ 映射为长度为 $n$ 的停车请求序列，在 $n+1$ 个环形车位上依次停车，并按最终空位位置区分配置。对固定值出现次数 $c$ 的情况，兼容的 $b$ 有 $c^k$ 种，再将按 $c$ 汇总的计数用第二类斯特林数展开。",
+        "key_observations": [
+          "把数组元素视为停车请求：按顺序将车辆停到请求位置及其顺时针后方的第一个空位；停车后唯一空位的位置可用于区分与原题数组对应的循环配置。",
+          "循环停车配置中，空位位于最后一格的配置对应题目所需数组，其余配置可由这类配置循环平移得到；每个数组的兼容数组数量在平移下不变，因此可用所有配置的总数乘以相应比例还原。",
+          "固定某个值在数组中出现 $c$ 次时，所有兼容的长度为 $k$ 的数组共有 $c^k$ 种；按其余位置的取值计数，可将总数写成关于 $c$ 的二项式加权和。",
+          "利用幂的第二类斯特林数展开，可把上述加权和改写为含 $S(k,i)$、$i!$ 与组合数的求和；这些斯特林数可通过 FFT 在 $O(k\\log k)$ 时间内求出。"
+        ],
+        "solution_brief": "将数组计数转为循环停车配置计数，并利用循环平移关系修正比例。固定兼容值的出现次数后计数，再用第二类斯特林数展开求和；通过 FFT 计算所需斯特林数，整体复杂度为 $O(k\\log k)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "代数、矩阵与多项式",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，停车映射、计数变形及 FFT 复杂度依据 editorial_text；标签仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1528E": {
+      "problem_key": "1528E",
+      "title": "Mashtali and Hagh Trees",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/1528/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/91058",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "c006a63652304794bab0a0da644cea1298af05635a6805ec4637192f611074de",
+      "generated_at": "2026-09-28T22:32:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "题目要求统计给定参数 $n$ 下不同的无标号有向 Hagh 树数量；同构要求顶点映射保持边的方向。当前题面记录在“Hagh 树当且仅当……”之后缺少定义，因此无法从记录中完整还原树必须满足的结构规则。",
+        "transformed_statement": "题解把计数分成两类：边从某个根统一向外或向内的树，以及由一条路径连接的、方向相反的两棵根有两个孩子的树；再按各部分规模分别计数并处理同构导致的重复项。该模型来自题解，不能补足本地记录中缺失的 Hagh 树定义。",
+        "key_observations": [
+          "先统计所有能选出一个根、且边都从根向同一方向的树，并限制根最多有两个孩子；这部分可用按规模分类的 $dp_i$ 递推累计。",
+          "再令 $dp2_i=dp_i-dp_{i-1}$，便可提取根恰有两个孩子的情形，为后续拼接计数提供单独的一类。",
+          "其余树可拆成方向相反的两棵根有两个孩子的树，中间接一条长度按 $1$ 处理的路径；按两侧规模求和即可覆盖这些情况。",
+          "上下方向互换会产生两份计数，但单独一条路径在方向反转后仍同构，因此最终要乘二并减去一次重复计数。"
+        ],
+        "solution_brief": "按规模递推统计根最多有两个孩子、边方向一致的树数，并由此得到根恰有两个孩子的数量。先计算这类树及其补充组合，再将其他树拆为方向相反的两部分并按规模求和；计入上下方向后，减去方向反转仍同构的单路径重复项。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "组合计数与概率"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；分类、递推及计数方式依据 editorial_text；主题标签参考 codeforces_tags。",
+        "quality_flags": [
+          "statement_definition_missing",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1528D": {
+      "problem_key": "1528D",
+      "title": "It's a bird! No, it's a plane! No, it's AaParsa!",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1528/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/91058",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "72bad802976f583dd60695a68a394699bd0dcb0926c1094e8c0047fd985bb9f1",
+      "generated_at": "2026-09-28T22:32:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 座城市，位于城市 $a_i$ 的炮初始瞄准 $b_i$，之后每秒将目标沿城市编号环向前转一格；从该炮发射会在 $c_i$ 秒后到达发射时所瞄准的城市。求城市间使用这些炮旅行所需的最短时间。",
+        "transformed_statement": "把炮视为随发射时刻改变终点的带耗时边，并为每座城市加入通往下一座城市、耗时 $1$ 秒的固定边。固定边模拟炮弹落地后的等待时间，使问题转为带有“首边必须是炮边”限制的最短路问题。",
+        "key_observations": [
+          "等待会让所有炮口每秒同步转动，因此可以把“等待若干秒后发射”改写为“先发射，再沿固定环形边走相同秒数”，从而显式表示等待。",
+          "加入每条耗时为 $1$ 的固定边 $i\\to(i+1)\\bmod n$ 后，炮弹到达后的行走时间可以补足原本的等待时间，最短路便能统一处理等待与发射。",
+          "若一开始就走固定边，路径只是在模拟出发前等待；因此要求最短路的第一条边必须是炮边，才能保证这种建图与实际行程对应。"
+        ],
+        "solution_brief": "对每个起点运行适用于稠密图的 $O(n^2)$ Dijkstra：炮边的目标随当前时间变化，另加入耗时为 $1$ 的固定环形边表示到达后的等待。限制首边为炮边，总复杂度为 $O(n^3)$。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；建图、首边限制及复杂度依据 editorial_text；标签仅用于主题归类。",
+        "quality_flags": [
+          "statement_truncated"
+        ]
+      }
+    },
+    "1528C": {
+      "problem_key": "1528C",
+      "title": "Trees of Tranquillity",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1528/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/91058",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "be7c85d84c03201c8dc33a892bf0e6fb49e01cb0ed1c003b76acf70a0fac08f4",
+      "generated_at": "2026-09-28T22:32:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两棵都以顶点 $1$ 为根的标号树，在 $n$ 个顶点上建立图：两点相连当且仅当它们在第一棵树中祖先可比、在第二棵树中互不为祖先。求该图最大团的大小。",
+        "transformed_statement": "把最大团按第一棵树的祖先关系限制到某条根到叶路径；在这条路径上，合法团等价于第二棵树中的反链。于是可在第一棵树 DFS 的当前根路径上动态维护第二棵树的最大反链，并对各叶子取最大值。",
+        "key_observations": [
+          "团中任意两点在第一棵树里必须祖先可比，因此整团都落在某条根到叶路径上；只需在第一棵树 DFS 时维护当前根路径，并在每个叶子处检查答案。",
+          "固定第一棵树的一条根路径后，合法团恰好是第二棵树中的两两不可比较点集；于是问题转为动态维护当前路径顶点中的最大反链。",
+          "向反链加入顶点时，若其子树中已有反链顶点则不能加入；否则若已有反链祖先，就用新顶点替换该祖先。这样的贪心维护最大反链。",
+          "第二棵树的 DFS 序区间具有包含或不相交性质，借助有序集合即可检查候选点的子树内是否已有反链点、以及是否有反链祖先，从而支持维护操作。"
+        ],
+        "solution_brief": "在第一棵树上 DFS，并用插入、删除维护当前根路径对应的最大反链。第二棵树按 DFS 序给子树编码为区间，通过有序集合判断新点是否可加入；可加入时替换其反链祖先。遍历到第一棵树的叶子时更新最大反链大小，复杂度为 $O(n\\log n)$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "数据结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面和完整 editorial；题面中的边连接条件排版缺失，相关关系按 editorial 对团的性质进行概括。",
+        "quality_flags": []
+      }
+    },
+    "1528B": {
+      "problem_key": "1528B",
+      "title": "Kavi on Pairing Duty",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1528/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/91058",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "f320be93bb6c89dff935ad1f82c011b16621398fad119f59aec8d0a61544f2ce",
+      "generated_at": "2026-09-28T22:33:04+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定位于直线上的 $2n$ 个等间距点，要把它们两两配成 $n$ 对，并将每对连成线段。若任意两条线段中至少一条包含另一条，或两条线段等长，则配对是好的；求不同好配对的数量，答案对 $998244353$ 取模。",
+        "transformed_statement": "将所有方案按点 $1$ 配对到的位置 $x$ 分类：$x\\le n$ 时转化为等长线段的选择，$x>n$ 时剥去强制出现的外侧等长配对，将剩余连续区间归约到更小规模的好配对计数。",
+        "key_observations": [
+          "设点 $1$ 与点 $x$ 配对；对任意 $p>x$，它所在的线段不能被该配对线段包含，因此要满足好配对条件，只能与另一端组成等长线段。",
+          "当 $x>n$ 时，外侧点被等长配对后，剩余未配对点构成一个连续区间，且完全位于已有线段内部，因此剩余部分可独立计为较小规模的好配对数。",
+          "当 $x\\le n$ 时，配对条件迫使所有线段等长；可选长度必须整除 $n$，所以这一类方案数等于 $n$ 的正约数个数。",
+          "按点 $1$ 的配对对象分类后，以上两类分别贡献约数项和较小规模状态之和，从而得到递推；$dp_0$ 与 $dp_1$ 单独取值为 $1$。"
+        ],
+        "solution_brief": "令 $dp_i$ 表示 $2i$ 个点的好配对数。按点 $1$ 配对到的点分类：一类对应 $n$ 的约数个数，另一类归约为更小规模的连续区间，得到 $dp_n=D(n)+\\sum_{i=0}^{n-1}dp_i$，并取 $dp_0=dp_1=1$；按题意对 $998244353$ 取模。题解给出的复杂度为 $O(n\\log n)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；分类、递推和复杂度依据 editorial_text，主题参考 tags。",
+        "quality_flags": []
+      }
+    },
+    "1528A": {
+      "problem_key": "1528A",
+      "title": "Parsa's Humongous Tree",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1528/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/91058",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "cdd079ad8df4d0125d8b5c894ef03ea3d7e3a9b3ae60955ad6fba825b49b37f4",
+      "generated_at": "2026-09-28T22:33:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵树，每个顶点 $v$ 有整数区间 $[l_v,r_v]$，需要为每个顶点选择区间内的整数 $a_v$。树的美丽值是所有边两端取值差的绝对值之和，要求最大化该值。",
+        "transformed_statement": "将每个顶点的任意区间取值等价缩减为只选 $l_v$ 或 $r_v$，再以顶点取哪个端点作为两种状态，计算每种状态下整棵子树能获得的最大边差总和。",
+        "key_observations": [
+          "存在一个最优方案，使每个点取值都在区间端点 $l_v$ 或 $r_v$ 中；因此连续区间选择可以缩减为每点两种状态。",
+          "固定父节点取值后，各个子树之间没有共享限制，子树贡献可分别取最大值并相加，从而形成树形 DP。",
+          "父子边的贡献只由两端各自选择的端点决定，转移只需比较子节点两种状态对应的绝对差。"
+        ],
+        "solution_brief": "先利用端点性质，将每个点的候选值缩为 $l_v$、$r_v$。定义 $dp_{v,0}$、$dp_{v,1}$ 分别表示 $v$ 取两个端点时其子树的最大美丽值；逐个合并子节点，加入边差值与子树最优贡献，最终取根节点两种状态的较大值。复杂度为 $O(n)$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面给出的区间取值与树边目标，以及 editorial 中的端点性质、树形 DP 状态和转移。",
         "quality_flags": []
       }
     }
