@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 342,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3016,
+    "ai_override_count": 3022,
     "primary_topic_count": 13,
     "contest_count": 614,
     "rating_min": 800,
@@ -44,16 +44,16 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数据结构": 377,
+    "构造与贪心": 1286,
     "数论与同余": 420,
     "组合计数与概率": 308,
-    "构造与贪心": 1285,
     "交互": 116,
     "基础实现与模拟": 246,
     "字符串": 211,
     "动态规划与状态设计": 323,
     "图论与网络流": 258,
     "几何": 94,
+    "数据结构": 376,
     "树结构": 184,
     "博弈": 113,
     "代数、矩阵与多项式": 25
@@ -121712,12 +121712,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 800,
           "problemUrl": "https://codeforces.com/contest/1542/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/92492",
-          "primaryTopic": "数据结构",
-          "secondaryTopics": [],
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
           "originalTags": [
             "math"
           ],
-          "statementBrief": "题面已抓取：Odd Set；本地暂无可用题解正文。",
+          "statementBrief": "给定一个含 $2n$ 个整数的多重集，需要把每个数恰好使用一次，分成 $n$ 对；每对由两个数构成，要求这两个数的和为奇数。判断是否存在这样的配对。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -121733,16 +121735,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1542/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/92492",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "构造与贪心",
-            "数据结构"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Plus and Multiply；本地暂无可用题解正文。",
+          "statementBrief": "题目定义一个从初始元素开始、反复按给定规则乘以 $a$ 或加上 $b$ 生成的无限集合。给定正整数 $n,a,b$，需要判断 $n$ 是否属于该集合。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -121758,15 +121757,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1542/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/92492",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "博弈",
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Strange Function；本地暂无可用题解正文。",
+          "statementBrief": "对每个给定的正整数 $n$，定义 $f(i)$ 为最小的正整数 $x$，使得 $x$ 不是 $i$ 的因数。要求计算 $f(1)+f(2)+\\cdots+f(n)$，并对 $10^9+7$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -121782,10 +121778,7 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1542/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/92492",
           "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "数论与同余"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "combinatorics",
             "dp",
@@ -121793,7 +121786,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "ternary search"
           ],
-          "statementBrief": "题面已抓取：Priority Queue；本地暂无可用题解正文。",
+          "statementBrief": "给定一个由“+ x”和“-”组成的序列，考虑从原序列中删除任意数量元素且保持剩余顺序得到的所有子序列。题目定义了每个子序列的函数值 $f(B)$，要求计算所有子序列的 $f(B)$ 之和并对 $998244353$ 取模；但当前记录未给出 $f$ 的定义。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -121809,18 +121802,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1542/problem/E1",
           "editorialUrl": "https://codeforces.com/blog/entry/92492",
           "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "代数、矩阵与多项式",
-            "数论与同余"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "combinatorics",
             "dp",
             "fft",
             "math"
           ],
-          "statementBrief": "题面已抓取：Abnormal Permutation Pairs (easy version)；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n$，考虑所有由 $1$ 到 $n$ 各出现一次构成的排列对 $(p,q)$。题目要求统计满足题面条件的排列对数量，并对给定的模数取模；但当前题面文本未包含具体条件。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -121836,18 +121825,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1542/problem/E2",
           "editorialUrl": "https://codeforces.com/blog/entry/92492",
           "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "代数、矩阵与多项式",
-            "数论与同余"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "combinatorics",
             "dp",
             "fft",
             "math"
           ],
-          "statementBrief": "题面已抓取：Abnormal Permutation Pairs (hard version)；本地暂无可用题解正文。",
+          "statementBrief": "给定正整数 $n$，考虑所有由 $1$ 到 $n$ 各出现一次构成的排列对 $(p,q)$。题目要求统计满足题面所列条件的排列对数量，并对给定的模数取模；但当前提供的题面未显示具体条件。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

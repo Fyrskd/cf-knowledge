@@ -24,7 +24,7 @@
     "missing_editorial_brief": 342,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3016,
+    "ai_override_count": 3022,
     "primary_topic_count": 13
   },
   "records": [
@@ -37,12 +37,14 @@
       "problem_url": "https://codeforces.com/contest/1542/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/92492",
       "editorial_quality": "url_only",
-      "primary_topic": "数据结构",
-      "secondary_topics": [],
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
       "original_tags": [
         "math"
       ],
-      "statement_brief": "题面已抓取：Odd Set；本地暂无可用题解正文。",
+      "statement_brief": "给定一个含 $2n$ 个整数的多重集，需要把每个数恰好使用一次，分成 $n$ 对；每对由两个数构成，要求这两个数的和为奇数。判断是否存在这样的配对。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -50,9 +52,18 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T21:28:37+00:00",
+          "quality_flags": [
+            "missing_editorial"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 2,
@@ -64,16 +75,13 @@
       "editorial_url": "https://codeforces.com/blog/entry/92492",
       "editorial_quality": "url_only",
       "primary_topic": "数论与同余",
-      "secondary_topics": [
-        "构造与贪心",
-        "数据结构"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Plus and Multiply；本地暂无可用题解正文。",
+      "statement_brief": "题目定义一个从初始元素开始、反复按给定规则乘以 $a$ 或加上 $b$ 生成的无限集合。给定正整数 $n,a,b$，需要判断 $n$ 是否属于该集合。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -81,9 +89,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T21:28:27+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_incomplete"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 3,
@@ -95,15 +113,12 @@
       "editorial_url": "https://codeforces.com/blog/entry/92492",
       "editorial_quality": "url_only",
       "primary_topic": "数论与同余",
-      "secondary_topics": [
-        "博弈",
-        "构造与贪心"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "math",
         "number theory"
       ],
-      "statement_brief": "题面已抓取：Strange Function；本地暂无可用题解正文。",
+      "statement_brief": "对每个给定的正整数 $n$，定义 $f(i)$ 为最小的正整数 $x$，使得 $x$ 不是 $i$ 的因数。要求计算 $f(1)+f(2)+\\cdots+f(n)$，并对 $10^9+7$ 取模。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -111,9 +126,18 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T21:28:21+00:00",
+          "quality_flags": [
+            "missing_editorial"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 4,
@@ -125,10 +149,7 @@
       "editorial_url": "https://codeforces.com/blog/entry/92492",
       "editorial_quality": "url_only",
       "primary_topic": "组合计数与概率",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "数论与同余"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "combinatorics",
         "dp",
@@ -136,7 +157,7 @@
         "math",
         "ternary search"
       ],
-      "statement_brief": "题面已抓取：Priority Queue；本地暂无可用题解正文。",
+      "statement_brief": "给定一个由“+ x”和“-”组成的序列，考虑从原序列中删除任意数量元素且保持剩余顺序得到的所有子序列。题目定义了每个子序列的函数值 $f(B)$，要求计算所有子序列的 $f(B)$ 之和并对 $998244353$ 取模；但当前记录未给出 $f$ 的定义。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -144,9 +165,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T21:28:08+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_incomplete"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 5,
@@ -158,18 +189,14 @@
       "editorial_url": "https://codeforces.com/blog/entry/92492",
       "editorial_quality": "url_only",
       "primary_topic": "组合计数与概率",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "代数、矩阵与多项式",
-        "数论与同余"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "combinatorics",
         "dp",
         "fft",
         "math"
       ],
-      "statement_brief": "题面已抓取：Abnormal Permutation Pairs (easy version)；本地暂无可用题解正文。",
+      "statement_brief": "给定 $n$，考虑所有由 $1$ 到 $n$ 各出现一次构成的排列对 $(p,q)$。题目要求统计满足题面条件的排列对数量，并对给定的模数取模；但当前题面文本未包含具体条件。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -177,9 +204,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T21:28:01+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 6,
@@ -191,18 +228,14 @@
       "editorial_url": "https://codeforces.com/blog/entry/92492",
       "editorial_quality": "url_only",
       "primary_topic": "组合计数与概率",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "代数、矩阵与多项式",
-        "数论与同余"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "combinatorics",
         "dp",
         "fft",
         "math"
       ],
-      "statement_brief": "题面已抓取：Abnormal Permutation Pairs (hard version)；本地暂无可用题解正文。",
+      "statement_brief": "给定正整数 $n$，考虑所有由 $1$ 到 $n$ 各出现一次构成的排列对 $(p,q)$。题目要求统计满足题面所列条件的排列对数量，并对给定的模数取模；但当前提供的题面未显示具体条件。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -210,9 +243,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-28T21:27:53+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 7,

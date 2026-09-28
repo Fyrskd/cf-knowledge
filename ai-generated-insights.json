@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T21:23:56+00:00",
+  "updated_at": "2026-09-28T21:28:37+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -90292,6 +90292,162 @@
         "source_provenance": "题意依据 statement_text；不变量、最优值及最少步数依据 editorial_text。原题记录未包含两种操作的具体定义。",
         "quality_flags": [
           "statement_operation_rules_missing"
+        ]
+      }
+    },
+    "1542E2": {
+      "problem_key": "1542E2",
+      "title": "Abnormal Permutation Pairs (hard version)",
+      "rating": 2700,
+      "problem_url": "https://codeforces.com/contest/1542/problem/E2",
+      "editorial_url": "https://codeforces.com/blog/entry/92492",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "ea6d95b4c3c17a5e5e2b6321f486d80a3fb4aa9d6c38286eaa3ef953ab912233",
+      "generated_at": "2026-09-28T21:27:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数 $n$，考虑所有由 $1$ 到 $n$ 各出现一次构成的排列对 $(p,q)$。题目要求统计满足题面所列条件的排列对数量，并对给定的模数取模；但当前提供的题面未显示具体条件。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_text 为空，tags 仅用于辅助分类。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1542E1": {
+      "problem_key": "1542E1",
+      "title": "Abnormal Permutation Pairs (easy version)",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1542/problem/E1",
+      "editorial_url": "https://codeforces.com/blog/entry/92492",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "de4523ae9324fd6aeba3e8e48012103169ef886d41b1ace97b3f7aefb741b099",
+      "generated_at": "2026-09-28T21:28:01+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$，考虑所有由 $1$ 到 $n$ 各出现一次构成的排列对 $(p,q)$。题目要求统计满足题面条件的排列对数量，并对给定的模数取模；但当前题面文本未包含具体条件。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_url 仅提供链接，没有题解正文；tags 仅作分类参考。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1542D": {
+      "problem_key": "1542D",
+      "title": "Priority Queue",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1542/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/92492",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "22b5e4da2fb750cdef17ff12f622e8257e9e33c9a8dd10a4242f8db588d41158",
+      "generated_at": "2026-09-28T21:28:08+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由“+ x”和“-”组成的序列，考虑从原序列中删除任意数量元素且保持剩余顺序得到的所有子序列。题目定义了每个子序列的函数值 $f(B)$，要求计算所有子序列的 $f(B)$ 之和并对 $998244353$ 取模；但当前记录未给出 $f$ 的定义。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_url 仅提供链接，未包含题解正文。分类仅参考题目标签。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_incomplete"
+        ]
+      }
+    },
+    "1542C": {
+      "problem_key": "1542C",
+      "title": "Strange Function",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1542/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/92492",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "08759f1381834ebc8d04a171d8349239e1903ef4e3714be755f0a3df5c1962f5",
+      "generated_at": "2026-09-28T21:28:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "对每个给定的正整数 $n$，定义 $f(i)$ 为最小的正整数 $x$，使得 $x$ 不是 $i$ 的因数。要求计算 $f(1)+f(2)+\\cdots+f(n)$，并对 $10^9+7$ 取模。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；题目分类参考 tags。editorial_text 为空，editorial_url 仅提供链接。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "1542B": {
+      "problem_key": "1542B",
+      "title": "Plus and Multiply",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1542/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/92492",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "efb87cf254a3ddd43476386ef59e5acd561009727a4a29973a2e65d09e628cb1",
+      "generated_at": "2026-09-28T21:28:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "题目定义一个从初始元素开始、反复按给定规则乘以 $a$ 或加上 $b$ 生成的无限集合。给定正整数 $n,a,b$，需要判断 $n$ 是否属于该集合。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；题解正文为空，tags 仅用于辅助主题分类。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_incomplete"
+        ]
+      }
+    },
+    "1542A": {
+      "problem_key": "1542A",
+      "title": "Odd Set",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1542/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/92492",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "4ac26a7430c9749025f14e1f996b40cf7a32c858f9dade890ad431816dd1ad9c",
+      "generated_at": "2026-09-28T21:28:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个含 $2n$ 个整数的多重集，需要把每个数恰好使用一次，分成 $n$ 对；每对由两个数构成，要求这两个数的和为奇数。判断是否存在这样的配对。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意和判定依据来自 statement_text；editorial_text 为空，URL 未提供题解正文。",
+        "quality_flags": [
+          "missing_editorial"
         ]
       }
     }
