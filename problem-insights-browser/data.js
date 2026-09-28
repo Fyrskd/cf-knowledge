@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3727,
+    "total_problems": 3735,
     "source_total_problems": 3737,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3727,
-    "with_editorial_brief": 3414,
-    "with_solution_brief": 3416,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3735,
+    "with_editorial_brief": 3422,
+    "with_solution_brief": 3424,
     "missing_editorial_brief": 311,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2789,
+    "ai_override_count": 2797,
     "primary_topic_count": 13,
-    "contest_count": 577,
+    "contest_count": 578,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1213,
-    "数论与同余": 391,
+    "数论与同余": 392,
+    "构造与贪心": 1215,
+    "数据结构": 356,
+    "交互": 109,
+    "树结构": 179,
     "组合计数与概率": 281,
     "字符串": 197,
     "动态规划与状态设计": 303,
     "图论与网络流": 241,
-    "数据结构": 353,
     "基础实现与模拟": 235,
-    "树结构": 178,
-    "交互": 108,
     "几何": 90,
     "博弈": 112,
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2442,
+    "ai_generated_with_editorial": 2449,
+    "ai_generated_partial_editorial": 82,
     "missing_editorial": 311,
-    "ai_generated_partial_editorial": 81,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -114865,6 +114865,240 @@ window.CF_INSIGHTS_DATA = {
             "已有 S/G 只会约束这些边界二元选择；若约束冲突则无解，若所有选择均被唯一确定则唯一，否则存在多个方案。"
           ],
           "solutionBrief": "奇数边长直接判定无解。偶数边长时，将左边界相邻两格作为 $n/2$ 个二元变量，按对角线交替、对称及相邻成对格子的约束传播出整图；检查已给颜色，统计变量是否冲突或仍有自由度，并据此输出 NONE、UNIQUE 或 MULTIPLE。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1583,
+      "name": "Technocup 2022 - Elimination Round 1",
+      "date": "2021-10-17",
+      "url": "https://codeforces.com/contest/1583",
+      "type": "Others",
+      "problemCount": 8,
+      "maxRating": 3300,
+      "problems": [
+        {
+          "key": "1583A",
+          "index": "A",
+          "slot": "A",
+          "title": "Windblume Ode",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1583/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/96072",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定由 $n\\ge3$ 个互不相同的正整数构成的数组，可以任选一个子集，要求其元素和为合数，并最大化子集大小；输出最大大小及对应下标。",
+          "transformedStatement": "先把问题转化为判断全数组总和是否合数：若不是，则利用总和为奇质数，从数组中去掉一个奇数，使补集的和变成大于 $2$ 的偶数。",
+          "keyObservations": [
+            "若整个数组和 $s$ 为合数，选择全部 $n$ 个元素显然达到最大规模，无需删除元素。",
+            "若 $s$ 为质数，由于 $n\\ge 3$ 且数组元素为正整数，$s>2$ 且为奇数，因此数组中至少有一个奇数。",
+            "删除任意一个奇数 $x$ 后，剩余和 $s-x$ 为偶数；剩余至少包含两个不同的正整数，故其和大于 $2$，这个偶数必为合数，从而可得到规模为 $n-1$ 的最优子集。"
+          ],
+          "solutionBrief": "计算数组总和 $s$。若 $s$ 为合数则输出全部下标；否则找到任意一个奇数并删除，输出其余 $n-1$ 个下标，因为剩余和是大于 $2$ 的偶数，必为合数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1583B",
+          "index": "B",
+          "slot": "B",
+          "title": "Omkar and Heavenly Tree",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1583/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/96072",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "trees"
+          ],
+          "statementBrief": "对每组给定的 $n$ 个节点和 $m$ 条限制，每条限制 $(a,b,c)$ 要求节点 $b$ 不能位于节点 $a$ 与 $c$ 的唯一路径上。需要构造一棵包含全部节点的树并输出其 $n-1$ 条边，使所有限制同时满足。",
+          "transformedStatement": "将问题转化为寻找一个从未作为限制中间点出现的安全节点，并把它连接到所有其他节点，构造以该节点为中心的星形树；此时每条叶子间路径的内部节点只有中心。",
+          "keyObservations": [
+            "由于限制数量满足 $m<n$，至少存在一个节点从未作为任意限制中的中间点 $b_i$ 出现，可将其作为统一中心。",
+            "以该节点为中心构造星形树后，任意两个叶子之间的路径只经过中心；因为所有限制中的 $b_i$ 都不是中心且与端点不同，所以不会落在对应路径上。"
+          ],
+          "solutionBrief": "找出未在任何限制中作为 $b_i$ 出现的节点 $x$，将所有其他节点都与 $x$ 连边构成星形树。任意限制对应的两端点是叶子，路径只经过 $x$，而 $b_i\\ne x$，因此所有限制均满足。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1583C",
+          "index": "C",
+          "slot": "C",
+          "title": "Omkar and Determination",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1583/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/96072",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定由空格和填充格组成的网格，只能从格子向上或向左经过空格，能走出边界的格子称为可逃逸格。每次查询给出一个连续列区间，询问仅凭该子网格中哪些格子可逃逸，能否唯一确定所有格子的空格或填充状态。",
+          "transformedStatement": "可判定性等价于：子网格中每个格子的上方和左方不能同时是填充格；因此查询被转化为判断列区间内是否存在违规局部模式，即区间对应的违规计数是否为零。",
+          "keyObservations": [
+            "若某格的上方和左方都为填充格，则无论该格是否填充，它都无法逃逸，因此仅凭可逃逸信息无法区分，故这种局部模式必须不存在。",
+            "若每个格子的上方或左方至少有一个空格，则任意空格都能不断选择可走的方向并最终出界；再从边界向内推断不可逃逸格为填充格，可唯一还原整个网格。",
+            "对于查询得到的列区间，区间第一列没有左邻格，因此只需统计左邻格仍在区间内的违规位置；将每列违规数量做前缀和即可快速判断区间内是否为零。"
+          ],
+          "solutionBrief": "扫描网格，标记每个内部格是否同时存在上方和左方的填充格，并按列统计这些违规位置的数量。对每个查询用列前缀和求区间内违规总数；总数为 $0$ 输出 YES，否则输出 NO，复杂度为 $O(nm+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1583D",
+          "index": "D",
+          "slot": "D",
+          "title": "Omkar and the Meaning of Life",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1583/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/96072",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "interactive"
+          ],
+          "statementBrief": "隐藏数组 $p$ 是 $1$ 到 $n$ 的排列。每次可提交一个各元素在 $1$ 到 $n$ 间的数组 $a$，评测计算 $s_i=p_i+a_i$，返回 $s$ 中最早出现重复值的位置；若无重复则返回 $0$。最多查询 $2n$ 次，要求恢复整个排列 $p$。",
+          "transformedStatement": "不直接猜每个位置的数值，而是把排列抽象成按数值递增连接的位置链：先用查询确定哪些位置分别承载相邻数值，再从承载 $1$ 的起点沿链恢复排列。",
+          "keyObservations": [
+            "两类特制查询分别利用相邻值对的位置先后关系，使最早重复位置暴露一条相邻值链接；两类查询合起来覆盖链接的两种下标顺序。",
+            "对于每个值位置，只需建立它与值相邻位置的链接，而不必直接确定具体数值，从而把排列恢复转化为一条链的重建问题。",
+            "值为 $1$ 的位置没有前驱，因此它不会作为相邻值链接的终点出现；从该位置沿链接依次赋值 $1,2,\\ldots,n$ 即可恢复整个排列。",
+            "每个位置在两类查询中各参与一次，总查询数恰为 $2n$，满足交互次数限制。"
+          ],
+          "solutionBrief": "用两组特制数组查询相邻值的位置关系：一组处理较大值位置在后面的情况，另一组处理其在前面的情况，建立相邻值链接。找出没有前驱的位置作为值 $1$，沿链接递增赋值即可；最多使用 $2n$ 次查询。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1583E",
+          "index": "E",
+          "slot": "E",
+          "title": "Moment of Bloom",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1583/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/96072",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graph matchings",
+            "graphs",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一个连通无向图和若干端点对。对每个查询，必须选择一条连接其两个端点的简单路径，并将路径上的每条边权值加一；要求判断能否使所有边权为偶数，若不能，求至少增加多少个查询后才可以做到，并在可行时输出各查询所选路径。",
+          "transformedStatement": "只看边权奇偶性：把每个查询的贡献视为连接两个端点的路径。可行性的核心等价条件是每个顶点作为端点出现的次数均为偶数；满足后在任意生成树上使用端点间唯一树路径完成构造。",
+          "keyObservations": [
+            "每个查询路径在端点各贡献一次，因此顶点出现在查询端点中的次数必须为偶数；否则无论如何选路径，至少有一条相邻边会被奇数次经过。",
+            "所有端点出现次数均为偶数时，任取一棵生成树，并将每个查询固定为生成树上两端点之间的唯一路径，就能使所有树边以及原图中的非树边最终都具有偶数权重。",
+            "增加一个查询只会让其两个端点的出现次数各改变奇偶性，因此应配对当前出现次数为奇数的顶点；奇数顶点数决定所需额外查询的最小数量。"
+          ],
+          "solutionBrief": "统计每个顶点作为查询端点出现的次数。若存在奇数次顶点，则将它们两两配对作为额外查询，所需数量为奇数顶点数的一半；随后在任意生成树上为所有查询取唯一树路径，即可使所有边的经过次数为偶数。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1583F",
+          "index": "F",
+          "slot": "F",
+          "title": "Defender of Childhood Dreams",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1583/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/96072",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "divide and conquer"
+          ],
+          "statementBrief": "给定编号为 $1$ 到 $n$ 的顶点，任意 $a<b$ 都有有向边 $a\\to b$。为每条边染色，使每条长度至少为 $k$ 的路径都包含至少两种颜色；要求最小化颜色数并输出一种完整染色方案。",
+          "transformedStatement": "将顶点区间递归划分成至多 $k$ 个连续子段：当前层统一处理跨段边，子段内部继续递归。问题转化为控制每种颜色的单色路径长度，并证明 $c$ 种颜色最多支持 $k^c$ 个顶点。",
+          "keyObservations": [
+            "把顶点递归划分为至多 $k$ 个连续子段，并将跨子段边统一染当前颜色，可使同色路径最多经过 $k$ 个子段，因此长度不超过 $k-1$。",
+            "递归深度为 $⌈log_k n⌉$，每层使用一种新颜色，既保证所有长度至少为 $k$ 的路径含有不同颜色，也恰好只使用该数量的颜色。",
+            "对任意一种颜色，按只使用该颜色的最长入路径长度给顶点分层；层数至多为 $k$，且同层不存在该颜色的边，从而每层可递归看作少一种颜色的问题。",
+            "由上述分层归纳可得，使用 $c$ 种颜色时顶点数至多为 $k^c$，所以至少需要 $⌈log_k n⌉$ 种颜色。"
+          ],
+          "solutionBrief": "答案为 $⌈log_k n⌉$。递归将顶点划分为至多 $k$ 个近似等大的连续段，跨段边染当前颜色，再对每段递归并排除该颜色；同时用按单色最长入路径分层的归纳证明颜色数下界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1583G",
+          "index": "G",
+          "slot": "G",
+          "title": "Omkar and Time Travel",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1583/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/96072",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个任务，第 $k$ 个任务应在时间区间端点 $a_k<b_k$ 所对应的时刻完成，但只能在时间 $b_k$ 得知信息：若任务尚未在 $a_k$ 完成，就回到 $a_k$ 立即完成，并撤销所有在更晚时刻完成的任务。给定任务集合 $s$，求在所有任务同时包含于已完成集合之前发生的时间回溯次数，结果对 $10^9+7$ 取模。",
+          "transformedStatement": "把每个任务表示为区间 $[a_k,b_k]$，研究时间回溯过程中可能出现的完成任务集合。合法集合满足区间偏序闭包，并可用一条递归包含区间链表示；再按最大右端点的字典序统计排在目标集合 $s$ 之前的合法集合。",
+          "keyObservations": [
+            "若两个任务区间满足 $a<c$ 且 $b<d$，任何包含后者的可达完成集合都必须包含前者，从而把合法集合刻画为满足偏序闭包的集合。",
+            "每次回溯都会产生一个新的完成任务集合，因此答案等价于统计首次包含目标集合 $s$ 之前出现过的不同合法集合。",
+            "去掉合法集合中被其他任务区间蕴含的元素后，剩余区间必然形成递归包含链；按最大 $b$ 值逐层比较，可唯一确定合法集合出现的先后顺序。",
+            "按 $b$ 递增处理区间时，树状数组在各个 $a$ 位置维护递归包含链数量；对区间做范围求和即可得到以当前区间为最大区间的链数，并按目标链的公共后缀累加答案。"
+          ],
+          "solutionBrief": "将任务视为区间，先把目标集合 $s$ 压缩成递归包含链。按右端点 $b$ 递增处理区间，用树状数组统计以某区间为最大区间的包含链；在目标链的每个公共后缀处查询对应范围并累加，空集不计入而目标集合尚未计入，得到答案，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1583H",
+          "index": "H",
+          "slot": "H",
+          "title": "Omkar and Tours",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1583/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/96072",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "国家道路构成一棵树，每座城市有 enjoyment，每条道路有容量和 toll；从城市 $x$ 出发的 $v$ 辆车只能经过容量至少为 $v$ 的道路，沿到达城市的唯一路径支付其中最大 toll。对每个旅行团，求可到达城市中的最高 enjoyment，以及在最高值城市任选其一时仍能保证报销的每车金额。",
+          "transformedStatement": "把车辆数 $v$ 看成容量阈值：保留容量至少为 $v$ 的边后，查询所在连通块就是全部可达城市。离线递减阈值维护连通块，并为每块概括最高 enjoyment 城市及所有候选路径所需的最大 toll。",
+          "keyObservations": [
+            "固定车辆数后，只能使用容量至少为该数的道路；按车辆数降序加入道路时，DSU 连通块恰好表示每个查询可到达的城市集合。",
+            "当最高 enjoyment 不唯一时，任意候选点到起点的最大 toll，要么出现在起点到某个固定最高点的路径上，要么出现在两个最高点之间的路径上。",
+            "每个连通块维护最高 enjoyment、一个对应城市及最高点之间路径的最大 toll；合并同 enjoyment 的连通块时，用两代表点路径的最大边值更新该量。",
+            "查询答案的补偿金额可写成 $\\max(\\mathrm{maxEdge}(x,\\mathrm{代表点}),\\mathrm{tol}[u])$，其中前者处理起点到最高点的路径，后者覆盖最高点之间的路径。"
+          ],
+          "solutionBrief": "按车辆数降序离线处理查询，并加入容量足够的道路维护 DSU。每个连通块记录最高 enjoyment、代表点及最高点间路径最大 toll；用二进制提升求两点路径最大边，查询时取起点到代表点与块内 tol 的较大值，复杂度为 $O((n+q)\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
