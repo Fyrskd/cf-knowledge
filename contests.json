@@ -1,5 +1,16 @@
 [
   {
+    "id": 1695,
+    "name": "Codeforces Round 801 (Div. 2) and EPIC Institute of Technology Round",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1655562900,
+    "relativeTimeSeconds": 134994593,
+    "date": "2022-06-18"
+  },
+  {
     "id": 1700,
     "name": "Codeforces Round 802 (Div. 2)",
     "type": "CF",
