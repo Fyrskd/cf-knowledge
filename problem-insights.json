@@ -15,19 +15,356 @@
     ]
   },
   "summary": {
-    "total_problems": 3644,
+    "total_problems": 3652,
     "source_total_problems": 3654,
-    "filtered_out_problems": 10,
-    "with_statement_brief": 3644,
-    "with_editorial_brief": 3338,
-    "with_solution_brief": 3340,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3652,
+    "with_editorial_brief": 3346,
+    "with_solution_brief": 3348,
     "missing_editorial_brief": 304,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2706,
+    "ai_override_count": 2714,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1611A",
+      "contest_id": 1611,
+      "title": "Make Even",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1611/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/97288",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "给定一个不含数字 $0$ 的整数。每次可选择一个前缀并将其反转，目标是在最少操作次数内把整数变成偶数；若无法做到则输出 $-1$。",
+      "transformed_statement": "把问题转化为让某个偶数数字成为末位：前缀反转只能让当前首位直接到达末位，而整体反转可交换首末位，因此只需分类讨论首位和是否存在偶数位。",
+      "key_observations": [
+        "偶数性只由末位数字决定，因此目标等价于让某个偶数位数字移动到末位。",
+        "一次反转前缀时，只有当前首位能直接变成末位；反转整个数即可把首位移到末位。",
+        "若首位为偶数，反转整个数一次即可；若首位为奇数，先反转到第一个偶数位，使其成为首位，再整体反转，总共两次。",
+        "数字中没有偶数位时，任何操作都无法让偶数位出现在末位，因此答案为 $-1$。"
+      ],
+      "solution_brief": "先判断末位是否为偶数，是则答案为 $0$。否则若不存在偶数位则为 $-1$；若首位为偶数，整体反转一次；否则反转到第一个偶数位，再整体反转，答案为 $2$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:12:02+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1611B",
+      "contest_id": 1611,
+      "title": "Team Composition: Programmers and Mathematicians",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1611/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/97288",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "有 $a$ 名程序员和 $b$ 名数学家，每支队伍恰好 4 人，且至少包含 1 名程序员和 1 名数学家；每个人最多参加一队。求最多能组成多少支队伍。",
+      "transformed_statement": "把问题转化为同时满足两类资源限制的分组上界：每支队伍消耗 4 人，且至少消耗两类中的各 1 人；再按两类人数比例用 $(1,3)$ 或 $(2,2)$ 的队伍实现这个上界。",
+      "key_observations": [
+        "每队必须凑满 4 人，因此总人数至多形成 $\\lfloor(a+b)/4\\rfloor$ 队；同时每队至少需要一名两类成员，队数也不能超过人数较少的一类。",
+        "将人数较少的一类记为 $a$，若另一类至少是其 3 倍，可全部组成 $(1,3)$ 队，答案由 $a$ 限制。",
+        "若两类人数差距不足 3 倍，先用差额组成若干 $(1,3)$ 队以平衡人数，剩余成员再组成 $(2,2)$ 队，最终可达到总人数上限的整数部分。"
+      ],
+      "solution_brief": "先令 $a\\le b$，答案为 $\\min(a,\\lfloor(a+b)/4\\rfloor)$。这是因为队数同时受较少类别人数和总人数限制；按人数比例可用 $(1,3)$、$(2,2)$ 的组合达到该上界。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:11:49+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1611C",
+      "contest_id": 1611,
+      "title": "Polycarp Recovers the Permutation",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1611/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/97288",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms"
+      ],
+      "statement_brief": "给定一个由 $1$ 到 $n$ 组成的排列 $a$。初始排列 $p$ 经过 $n$ 次操作，每次按题面规则取出一个元素并把它加入结果数组 $a$ 的左端或右端；最后只剩一个元素时可任选一端。要求恢复任意可能的初始排列 $p$，若不存在则报告无解。",
+      "transformed_statement": "把过程看成不断向双端队列加入元素：最终数组的端点记录了最后加入元素的位置。由于最大值最后加入，先定位它并从端点逆向展开，即可将最终数组还原为一组合法的初始排列。",
+      "key_observations": [
+        "最大元素一定是最后一次加入结果数组的，因此它在最终数组中只能位于最左端或最右端；否则立即无解。",
+        "只要最大元素位于端点，就能把它放到对应端，再按逆序展开其余元素，说明端点条件不仅必要而且充分。",
+        "将最终数组视为双端加入过程的结果，从最大元素所在端开始逐层逆向展开，即可恢复一组合法的初始排列。"
+      ],
+      "solution_brief": "检查最大值 $n$ 是否位于数组两端；若不在则输出无解。否则按照最终双端加入过程逆向展开数组，构造并输出任意可行的初始排列 $p$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:11:32+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1611D",
+      "contest_id": 1611,
+      "title": "Weights Assignment For Tree Edges",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1611/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/97288",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "树结构"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "trees"
+      ],
+      "statement_brief": "给定一棵以数组 $b$ 表示的有根树和顶点排列 $p$，需要为每条边赋予正整数权重，使各顶点到根的距离严格按照 $p$ 中的顺序递增。若不存在这样的赋权则判定无解，否则输出任意一组边权。",
+      "transformed_statement": "将目标顺序转化为顶点距离的严格递增序列：先检查根是否位于首位、每个父亲是否先于子节点出现，再直接构造这些距离，并用父子距离之差恢复边权。",
+      "key_observations": [
+        "排列第一项必须是根，因为根的距离固定为 $0$，而所有非根顶点到根的路径都包含正权边，距离必为正。",
+        "每个顶点的父亲必须在排列中先出现；否则父亲距离无法小于子孙距离，给定顺序必不可能实现。",
+        "按排列顺序令当前顶点距离比前一个顶点大 $1$，即可保证所有相邻顶点距离严格递增；父亲已先处理时，边权由距离差得到且为正。",
+        "一旦构造出所有顶点距离，边权唯一按 $w_i=dist_i-dist_{b_i}$ 计算，因此问题转化为检查父子出现顺序并构造递增距离。"
+      ],
+      "solution_brief": "检查排列首项是否为根，并确认每个非根顶点的父亲已在其前面。令根距离为 $0$，依排列顺序令后一个顶点距离为前一个加 $1$，最后对每条父子边输出距离差作为边权。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:10:27+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1611E1",
+      "contest_id": 1611,
+      "title": "Escape The Maze (easy version)",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1611/problem/E1",
+      "editorial_url": "https://codeforces.com/blog/entry/97288",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "树结构"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "greedy",
+        "shortest paths",
+        "trees",
+        "two pointers"
+      ],
+      "statement_brief": "房间和双向走廊组成一棵树，Vlad 从房间 $1$ 出发，每单位时间沿一条走廊移动或停留，目标是到达除 $1$ 外度数为 $1$ 的房间。朋友分别从指定房间同时移动并可在相遇前拦截 Vlad；要求判断是否存在一种 Vlad 的移动方案，无论朋友如何行动都能到达出口。",
+      "transformed_statement": "把每个叶子出口看成一场竞速：比较 Vlad 从根到该叶子的距离与最近朋友到该叶子的距离。只有根距离严格更小的叶子，才是 Vlad 能保证抵达的出口。",
+      "key_observations": [
+        "对固定出口，若某个朋友到该出口的距离不大于 Vlad 从根到出口的距离，朋友可在两条路径汇合处提前占位并阻挡通路，因此该出口无法保证到达。",
+        "Vlad 能保证胜利当且仅当存在一个叶子，使根到它的距离严格小于所有朋友到它的最短距离；严格小于保证朋友无法在相遇前拦截。",
+        "从所有朋友同时出发进行多源 BFS，可得到每个房间到最近朋友的距离；再从房间 $1$ 出发计算根距离，逐个检查叶子即可。"
+      ],
+      "solution_brief": "将问题转化为根与最近朋友到各个叶子的到达竞速。用多源 BFS 求每点到朋友的最短距离，再从根 BFS 求根距离；若存在叶子满足根距小于朋友距，则 Vlad 必胜，否则不能保证逃脱。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:10:13+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1611E2",
+      "contest_id": 1611,
+      "title": "Escape The Maze (hard version)",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1611/problem/E2",
+      "editorial_url": "https://codeforces.com/blog/entry/97288",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "dp",
+        "greedy",
+        "shortest paths",
+        "trees"
+      ],
+      "statement_brief": "给定一棵以房间 $1$ 为起点的树，Vlad 每次沿一条走廊移动一步，朋友也可同时移动或停留；Vlad 到达任意叶子房间前，若与朋友在房间或走廊相遇则朋友获胜。需要判断朋友能否保证抓住 Vlad，并求所需朋友的最少人数。",
+      "transformed_statement": "将问题改写为根树上的子树封锁：对每个顶点判断一个最近朋友能否在 Vlad 到达该点时拦截，否则必须独立封锁其所有孩子子树，子树答案因此形成自底向上的递推。",
+      "key_observations": [
+        "将树根定为房间 $1$，若某子树内最近朋友到顶点 $v$ 的距离不超过 $v$ 的深度，则一个朋友即可在 $v$ 拦截 Vlad。",
+        "若顶点 $v$ 未被单个朋友封锁，Vlad 可以选择进入任意子树，因此每个孩子子树都必须分别存在拦截方案。",
+        "各孩子子树之间互不影响，且朋友不能跨子树复用，所以 $v$ 的最小人数等于所有孩子答案之和。",
+        "只要有一个孩子子树无法阻止 Vlad 到达出口，整个以 $v$ 为根的子树就无解。"
+      ],
+      "solution_brief": "把树根定为 $1$，自底向上计算每个子树的最小拦截人数。若子树内最近朋友能在 Vlad 到达顶点 $v$ 前或同时到达，则该子树答案为 $1$；否则递归处理所有孩子并求和，任一孩子无解则当前子树无解。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:09:53+00:00",
+          "quality_flags": [
+            "statement_tail_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1611F",
+      "contest_id": 1611,
+      "title": "ATM and Students",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/1611/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/97288",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "two pointers"
+      ],
+      "statement_brief": "给定初始余额 $s$ 和按队列排列的数组 $a$：$a_i>0$ 表示存入，$a_i<0$ 表示取出 $|a_i|$。可以跳过开头任意数量的学生，但开启 ATM 后必须连续按顺序服务；若某次取款时余额不足，服务立即停止。求能完整服务的最长连续学生区间，或报告无法服务任何人。",
+      "transformed_statement": "令 $p[i]$ 为数组前缀和。对每个起点 $l$，寻找第一个满足 $p[r]<p[l-1]-s$ 的位置；它表示余额首次变负，因此 $[l,r-1]$ 正好是该起点能服务的最长前缀。问题转化为在动态前缀和集合中快速定位每个阈值下的最早越界位置。",
+      "key_observations": [
+        "一个区间可行，当且仅当其任意前缀加上初始余额都非负；用前缀和后，区间 $[l,r]$ 首次失败等价于存在最小的 $r$ 使 $p[r]<p[l-1]-s$。",
+        "固定左端点 $l$ 后，只需找到第一个低于阈值 $p[l-1]-s$ 的前缀和位置；因此最长可行右端点就是该失败位置前一位。",
+        "依次处理左端点时，处理完 $l$ 后从结构中删除 $p[l]$，即可保证下一次查询只考虑位置不小于 $l+1$ 的前缀和，并保留首次失败位置的顺序信息。",
+        "线段树维护前缀和区间最小值，并在满足阈值的区间中递归定位最早位置；所有左端点得到的候选区间中取长度最大者，若没有正长度区间则输出无解。"
+      ],
+      "solution_brief": "计算前缀和并在线段树中维护区间最小值。对每个左端点 $l$，以 $p[l-1]-s$ 为阈值定位第一个更小的前缀和位置，候选右端点为其前一位；随后删除 $p[l]$，取最长候选区间，复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:09:33+00:00",
+          "quality_flags": [
+            "statement_output_section_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 8,
+      "problem_key": "1611G",
+      "contest_id": 1611,
+      "title": "Robot and Candies",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1611/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/97288",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心",
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "data structures",
+        "graph matchings",
+        "greedy"
+      ],
+      "statement_brief": "给定一个 $n\\times m$ 的网格，机器人每次只能从 $(x,y)$ 走到下一行的 $(x+1,y-1)$ 或 $(x+1,y+1)$，经过有糖果的格子就收集糖果。每次可重新把机器人放到顶行，求收集全部糖果所需的最少放置次数。",
+      "transformed_statement": "按 $x+y$ 的奇偶性把糖果拆成两个独立问题，再平移各行，将路径视为只能向下或向右下的移动；目标变为用尽量少的顶行起点覆盖所有糖果路径。",
+      "key_observations": [
+        "机器人每次移动都会保持 $x+y$ 的奇偶性，因此两种棋盘颜色上的糖果互不影响，答案可分别求和。",
+        "将每行平移后，可把两种移动等价改写为向下和向右下移动，使问题转化为按列处理的单向可达性问题。",
+        "处理某列时从下到上扫描糖果，并用当前集合中位于其上方且最近的机器人接手；这样既保持可达性，又使所需机器人数量最少。",
+        "若某颗糖果上方没有可接手的机器人，就必须新增一次从顶行放入机器人，并将其加入当前状态集合。"
+      ],
+      "solution_brief": "按 $x+y$ 奇偶性拆成两个独立子问题，并对行做平移，将移动改写为向下或向右下。逐列从下到上处理糖果，维护机器人位置集合；优先用上方最近位置接手，否则答案加一。集合实现为 $O(nm\\log n)$，向量双指针可达 $O(nm)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-5.6-luna",
+          "generated_at": "2026-09-28T10:09:11+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 9,
       "problem_key": "1614A",
