@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T03:45:26+00:00",
+  "updated_at": "2026-09-28T03:50:54+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -71715,6 +71715,237 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text 的可用片段及 editorial_text 的完整判定结论，结合 tags 中的 implementation。",
         "quality_flags": []
+      }
+    },
+    "1669H": {
+      "problem_key": "1669H",
+      "title": "Maximal AND",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1669/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/102101",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0313428b06f4150aed0dd549e72617f6a82937503548c9216dc03c959dddc23d",
+      "generated_at": "2026-09-28T03:49:11+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的非负整数数组和最多 $k$ 次操作；每次可选择一个元素，把它的某一位设置为 $1$。要求操作后数组所有元素的按位与最大，并输出最大值。",
+        "transformed_statement": "把答案拆成各个二进制位：某位能贡献到最终按位与，当且仅当需要付出代价将所有缺少该位的元素补齐；在总预算内优先购买权值更高的位。",
+        "key_observations": [
+          "最终按位与中某一位为 $1$ 的必要条件是所有元素该位都为 $1$，因此每一位都可独立计算补齐代价。",
+          "若当前第 $i$ 位已有 $c_i$ 个元素为 $1$，把它补成全 $1$ 只需 $n-c_i$ 次操作，且不会影响其他位的可行性。",
+          "按位权从高到低处理：只要剩余操作数足够就补齐该位，因为更高位的提升必然优先于任意低位收益。"
+        ],
+        "solution_brief": "统计每一位已有 $1$ 的元素数，从最高位到最低位计算补齐该位所需的 $n-c_i$ 次操作；若预算足够就扣除并将该位加入答案，否则跳过。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text 及 bitmasks/greedy/math 标签；题面中的具体操作类型由题解对“设置某位”的描述补全。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1669G": {
+      "problem_key": "1669G",
+      "title": "Fall Down",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1669/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/102101",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "206fd4c400eacbf3d03e697ebf9425c4653e8989671d6171d9d249e1b0c9bef5",
+      "generated_at": "2026-09-28T03:49:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定由空格、石头和障碍物组成的 $n\\times m$ 网格。每块石头只能竖直下落，直到碰到地面、障碍物或已经无法移动的石头；模拟全部石头落定后的网格。",
+        "transformed_statement": "将网格按列拆开处理：每列从底部向上维护当前可放置石头的边界，把地面视为最底部障碍物；石头依次填入该边界上方，障碍物则重新划分下落区间。",
+        "key_observations": [
+          "各列之间没有相互作用，因此可以独立处理每一列，避免模拟石块在二维网格中的移动过程。",
+          "从下向上扫描时，维护最近的障碍物或已放置石块位置；每遇到一块石头，就把它放到该位置正上方，从而直接确定最终位置。",
+          "把地面视为第 $n+1$ 行的障碍物，并在放置石头后更新落点边界，可统一处理落到底部和落在其他石头上的情况。"
+        ],
+        "solution_brief": "按列独立处理，并从底部向上扫描。用 `last` 表示最近障碍物或已落定石块的位置；遇到障碍物就更新它，遇到石头就放到 `last-1` 行并将 `last` 上移一格，整体复杂度为 $O(nm)$。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial 正文及 implementation 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "1669F": {
+      "problem_key": "1669F",
+      "title": "Eating Candies",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1669/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/102101",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a964c455fd60c9fd5d8fd8316d837045c1ae51d2476cc0c87eb62f186fe29b78",
+      "generated_at": "2026-09-28T03:49:42+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "桌上有一排带重量的糖果，Alice 只能连续吃左端前缀，Bob 只能连续吃右端后缀，且两人的糖果不能重叠。他们必须吃掉总重量相同的糖果，求满足条件时两人合计最多能吃多少颗。",
+        "transformed_statement": "把选择表示为一个左侧前缀和一个右侧后缀：枚举左前缀重量，并从右端逐步扩展后缀，寻找与其重量相等且尚未重叠的切分位置，从而最大化两段长度之和。",
+        "key_observations": [
+          "固定 Alice 吃掉的前缀后，Bob 只能从右端累加后缀；由于糖果重量为正，Bob 总重量随左移单调增加，因此只需找到第一个不小于 Alice 总重量的位置。",
+          "Alice 的前缀越长，所需的 Bob 总重量不会下降，所以 Bob 指针只需持续向左移动，不会回退；两指针总移动次数为 $O(n)$。",
+          "当两人的重量相等且指针尚未相遇时，当前吃掉的糖果数为两段长度之和，可用其更新最大值；指针相交表示两段已重叠，之后不再合法。"
+        ],
+        "solution_brief": "枚举 Alice 的左侧前缀，逐步增加其重量；同时将 Bob 的右指针左移至总重量首次达到 Alice 重量。若恰好相等且两段不重叠，就用两段长度更新答案，整体复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面规则与完整 editorial，结合 tags 中的双指针、贪心信息整理。",
+        "quality_flags": []
+      }
+    },
+    "1669E": {
+      "problem_key": "1669E",
+      "title": "2-Letter Strings",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1669/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/102101",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "2b4d148a2a042478b933aec33f81ea3f8b05bcf599b9e480fc4b34b95cdfe3e4",
+      "generated_at": "2026-09-28T03:49:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干个长度为 $2$、由指定小写字母组成的字符串，要求统计下标对 $(i,j)$（$i<j$）的数量，使第 $i$ 个和第 $j$ 个字符串恰好有一个位置的字符不同。",
+        "transformed_statement": "把每个字符串转化为所有“只改变一个字符”的邻居；从左到右处理时，当前字符串与此前邻居的匹配数，就是以当前下标为较大端点的合法配对数。",
+        "key_observations": [
+          "两个长度为 $2$ 的字符串恰好一位不同，当且仅当固定其中一位、替换另一位后能得到目标串，因此无需比较所有字符串对。",
+          "按输入顺序处理当前字符串时，只查询此前出现过的所有单位置变体，得到的每次匹配都对应唯一的 $i<j$，不会重复计数。",
+          "每个字符串只需生成两组单位置替换结果，候选数量是常数；用频次数组或字典记录已处理字符串即可在线累加答案。"
+        ],
+        "solution_brief": "维护已出现字符串的频次。处理当前串时，枚举替换第一个或第二个字符得到的所有字符串，并将其历史频次加入答案，随后把当前串频次加一；使用固定字母表的频次数组可达 $O(n)$，字典实现为 $O(n\\log n)$。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement 的配对条件，以及 editorial 提供的单位置变体枚举、频次统计和复杂度说明；结合 tags 中的字符串与数据结构。",
+        "quality_flags": []
+      }
+    },
+    "1669D": {
+      "problem_key": "1669D",
+      "title": "Colorful Stamp",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1669/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/102101",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "9f9b6415e32e384c1426e737fbecd6229c65faa9fb5416a8b5bf91a186ba85b9",
+      "generated_at": "2026-09-28T03:50:11+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定由 W、R、B 组成的目标字符串，初始所有格子为 W。每次可将一对相邻格子同时印成 RB 或 BR，且可重复覆盖；要求判断能否经过任意次操作得到目标字符串。",
+        "transformed_statement": "白色格子将字符串切成互不影响的连续非白色段。问题等价于判断每个段是否同时包含 R 和 B：单色段无法生成，而双色段可通过确定最后一次覆盖并从两端逐步构造。",
+        "key_observations": [
+          "白色单元格不可能被任何印章覆盖，因此被 W 分隔的连续非白色段彼此独立，可以分别判断。",
+          "每个非白色段的最后一次印刷必须覆盖相邻的 R、B；所以只含一种颜色的段必然无法形成。",
+          "只要一个非白色段同时含有 R 和 B，就能先确定一处 RB 或 BR 作为最后印刷，再从两端逐格覆盖其余位置，保证最终颜色正确。",
+          "印刷会覆盖两个相邻单元格，但通过后续印刷可以修正其中一个单元格，因此可在线性过程中构造任意同时含 R、B 的段。"
+        ],
+        "solution_brief": "按 W 拆分字符串，逐段检查是否同时出现 R 和 B；存在只含单色的非白段则输出 NO，否则输出 YES。依据是每段可选一处异色相邻位置作为最后印刷，并从两侧逐步构造，整体复杂度为 $O(n)$。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅用于主题辅助判断。",
+        "quality_flags": []
+      }
+    },
+    "1669C": {
+      "problem_key": "1669C",
+      "title": "Odd/Even Increments",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1669/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/102101",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "b5427881028950e73403421fac3282dce09625cc7391c822fc78698464cd0de6",
+      "generated_at": "2026-09-28T03:50:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数数组，每次可选择奇数下标或偶数下标，并将该组的所有元素同时加 $1$，两类操作可任意次数。判断能否经过若干次操作，使最终数组中的所有元素全部为偶数或全部为奇数。",
+        "transformed_statement": "只保留每个位置的奇偶性：两类操作分别翻转奇数下标组或偶数下标组，因此问题等价于判断这两组内部是否各自同奇偶，并能否通过翻转整组让两组统一。",
+        "key_observations": [
+          "同一种操作执行两次只会让对应位置加 $2$，因此对奇偶性而言每种操作只需考虑执行 $0$ 次或 $1$ 次。",
+          "奇数下标位置之间不会互相改变相对奇偶性，偶数下标位置也同理；若任一组内部奇偶性不同，操作无法修复，必为不可行。",
+          "当奇数下标组和偶数下标组各自保持统一奇偶性时，若两组不同，只需对其中一组执行一次操作即可对齐；若相同则无需操作。"
+        ],
+        "solution_brief": "分别检查奇数下标和偶数下标中的元素是否各自具有统一奇偶性。若两组都统一，则通过不操作或对其中一组整体加 $1$ 使两组奇偶性相同，答案为 YES；否则为 NO，复杂度为 $O(n)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 中的数组与操作示例、editorial_text 的奇偶性分析，以及 tags 中的 greedy、implementation、math。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1669B": {
+      "problem_key": "1669B",
+      "title": "Triple",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1669/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/102101",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "0a15194d859d794b272e452a7a32421732d318d215215375c2e5796991634f00",
+      "generated_at": "2026-09-28T03:50:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定多个整数数组，每组数组中要找出任意一个至少出现三次的数并输出；如果所有数的出现次数都少于三次，则输出 $-1$。",
+        "transformed_statement": "把数组问题转化为频次判定：为每个可能的值维护出现次数，检查是否存在频次不小于 $3$ 的值；也可以排序后寻找长度至少为 $3$ 的相同元素段。",
+        "key_observations": [
+          "只需判断每个值的出现次数是否达到 $3$，因为题目允许输出任意一个满足条件的值，不需要比较候选值的大小或位置。",
+          "由于每个元素满足 $1\\le a_i\\le n$，可用长度为 $n$ 的计数数组直接记录频次，从而在线性时间内完成判定。",
+          "若先排序，相同值会连续出现，因此检查相邻三个元素是否相等即可找到答案；这将问题转化为相邻位置判断。"
+        ],
+        "solution_brief": "对每组数组统计各值出现次数，找到频次至少为 $3$ 的值就输出；若不存在则输出 $-1$。利用值域不超过 $n$ 的限制可在线性时间完成，也可排序后检查连续三个相等元素。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面和完整 editorial；editorial 提供计数数组与排序两种方案。",
+        "quality_flags": []
+      }
+    },
+    "1669A": {
+      "problem_key": "1669A",
+      "title": "Division?",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1669/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/102101",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "86807a416bf328c92188e2d4d0cef02fd5b2c2b97290ce3734b1720fc6fb8e84",
+      "generated_at": "2026-09-28T03:50:54+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "题目给出多个用户 rating。对每个 rating，按照题目规定的四个 rating 区间判断其所属 Division 1 至 Division 4，并逐行输出对应的“Division X”；题面示例说明 $1399$ 属于第 4 部、$1400$ 属于第 3 部、$1679$ 属于第 2 部、$2300$ 属于第 1 部。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 tags；editorial_text 为空。",
+        "quality_flags": [
+          "incomplete_thresholds_in_statement",
+          "missing_editorial"
+        ]
       }
     }
   }
