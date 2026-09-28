@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3918,
+    "total_problems": 3926,
     "source_total_problems": 3926,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 3918,
-    "with_editorial_brief": 3581,
-    "with_solution_brief": 3583,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 3926,
+    "with_editorial_brief": 3589,
+    "with_solution_brief": 3591,
     "missing_editorial_brief": 335,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2980,
+    "ai_override_count": 2988,
     "primary_topic_count": 13,
-    "contest_count": 607,
+    "contest_count": 608,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1270,
-    "字符串": 209,
-    "组合计数与概率": 300,
-    "动态规划与状态设计": 320,
+    "构造与贪心": 1275,
+    "字符串": 210,
+    "组合计数与概率": 301,
+    "动态规划与状态设计": 321,
     "数论与同余": 415,
     "图论与网络流": 256,
     "数据结构": 374,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 25
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2609,
     "missing_editorial": 335,
-    "ai_generated_with_editorial": 2601,
     "ai_generated_partial_editorial": 89,
     "low_confidence": 1,
     "manual_override": 891,
@@ -120591,6 +120591,242 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1530,
+      "name": "Codeforces Round 733 (Div. 1 + Div. 2, based on VK Cup 2021 - Elimination (Engine))",
+      "date": "2021-07-17",
+      "url": "https://codeforces.com/contest/1530",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 8,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1530A",
+          "index": "A",
+          "slot": "A",
+          "title": "Binary Decimal",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1530/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n$，允许把它表示成若干个正整数之和，每个加数的十进制数位只能是 $0$ 或 $1$，且加数可以重复。求所需加数的最少个数。",
+          "transformedStatement": "把求和按十进制数位分别考虑：若使用 $k$ 个加数，每一位最多贡献 $k$ 个 $1$；同时，原数每一位的数字可以通过选择对应数量的加数来构造，且无需进位。因此最少项数由最大的数位决定。",
+          "keyObservations": [
+            "若只用 $k$ 个二进制十进制数相加，任意数位的和至多为 $k$；因此原数中最大的十进制数字为 $d$ 时，至少需要 $d$ 项。",
+            "可以构造恰好 $d$ 项：对原数的每个数位 $a_i$，在 $d$ 项中任选 $a_i$ 项，将这些项对应数位设为 $1$，其余设为 $0$，即可逐位得到原数且不产生进位。"
+          ],
+          "solutionBrief": "扫描 $n$ 的十进制数位，取最大数字 $d$。下界说明答案至少为 $d$，逐位将每个数字分配到 $d$ 个由 $0/1$ 数位组成的数中可构造出恰好 $d$ 项，因此输出 $d$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1530B",
+          "index": "B",
+          "slot": "B",
+          "title": "Putting Plates",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1530/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定高为 $h$、宽为 $w$ 的网格，只能在最外圈格子放盘子；任意两个盘子不能边相邻或角相邻。要求输出一种合法摆法，使盘子数量最多。",
+          "transformedStatement": "可将目标重述为：在边界格子上选取两两不处于八邻域的格子，并最大化选中数量。先固定四角均被选中，再把剩余选择拆成四条互不干扰的边分别处理。",
+          "keyObservations": [
+            "总存在一个最优摆法让四个角都放有盘子：若角上没有盘子但相邻格有盘子，可将相邻盘子移到角上而不破坏合法性；若相邻格也空，则放入角上盘子会增加数量，与最优性矛盾。",
+            "四角放满后，各条边上可放盘子的非角位置彼此不冲突，因此可以分别最大化每条边的摆放数量。",
+            "同一条边上相邻盘子之间至少要隔一个空格；边长为偶数时，末端可能还需多留一个空格，以满足角上的盘子也不相邻。"
+          ],
+          "solutionBrief": "先构造四个角均放盘子的最优方案，再分别处理四条边：沿边隔一个空格放置盘子，边长为偶数时在末端按需多留一个空格。按此规则输出网格即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1530C",
+          "index": "C",
+          "slot": "C",
+          "title": "Pursuit",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1530/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "已完成 $n$ 个赛段，每个赛段双方分别得到 $0$ 到 $100$ 分；总赛段数为 $k$ 时，双方各自只累计最高的 $k-\\lfloor k/4\\rfloor$ 个赛段分数。之后可以继续举行赛段，每个新赛段双方仍可独立得分；要求求出最少还需增加多少个赛段，才能使自己的总分至少达到对手的总分。",
+          "transformedStatement": "把每个新增赛段的得分固定为对自己最有利的 $100$ 分、对手最不利的 $0$ 分，问题就变成寻找最小的新增数量 $k$，使双方在总赛段数 $n+k$ 下各自最高的 $n+k-\\lfloor(n+k)/4\\rfloor$ 个分数之和满足己方不小于对手。",
+          "keyObservations": [
+            "为了尽快追平对手，每个新增赛段都应给自己记满分、给对手记零分；任何较低的己方分数或较高的对手分数都不会更有利。",
+            "答案不会超过已有赛段数 $n$：最坏情况下，给自己新增 $n$ 个满分赛段、给对手新增 $n$ 个零分赛段也足以抵消原有差距。",
+            "只有总赛段数变成 $4$ 的倍数时，计入总分的赛段数量才会减少；此时需从原计分范围中剔除最低分，因而新增赛段对总分的影响可按这一规则维护。",
+            "若新增 $k$ 个赛段后已经追平或反超，那么再增加赛段仍可采取己方满分、对手零分，因此可行性关于 $k$ 单调。"
+          ],
+          "solutionBrief": "依次考虑新增赛段数 $k=0,1,\u001fn$，每次假设自己得 $100$ 分、对手得 $0$ 分，并比较双方各自最高的 $t-\u001bfloor(t/4)\u001d$ 个分数之和，其中 $t=n+k$。可用分数计数统计或排序后维护被计入的最低分；也可利用可行性单调性二分最小的 $k$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1530D",
+          "index": "D",
+          "slot": "D",
+          "title": "Secret Santa",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1530/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "flows",
+            "graphs",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 名员工，每人希望送礼给指定的一名其他员工。需要为每人指定一名收礼对象，使每名员工恰好被指定一次、无人送给自己；可以有两人互送。请构造这样的分配，使实际送给许愿对象的员工人数最大，并输出最大人数和分配方案。",
+          "transformedStatement": "把员工视为顶点、许愿关系视为有向边，目标是在每个点恰有一条入边和一条出边、且没有自环的环图中，尽量保留原图边。不同许愿目标数给出保留边数的上界；删减到每个目标只保留一条边后，再连接路径即可达到该上界。",
+          "keyObservations": [
+            "每个被至少一人许愿的员工最多只能收到一份礼物，因此满足愿望数不超过许愿目标的不同人数；只要每个不同目标都保留一条对应边，就能达到这个上界。",
+            "对每个入度非零的员工只保留一条指向他的许愿边后，图中每个点的入度和出度都不超过 $1$，所以结构只可能是若干路径和环，环已满足互不重复且无人送给自己的要求。",
+            "将所有路径的末端依次连到下一条路径的起点，可以在不丢失已保留愿望的前提下把路径补成环；唯一需要额外处理的是只有一个孤立点构成的长度为 $1$ 的环。",
+            "若出现单个孤立点，可恢复该点原先指向目标的许愿边，并从该目标的入边中撤下一条边，再把撤下边的起点连向孤立点，从而避免自环且不减少已满足的愿望数。"
+          ],
+          "solutionBrief": "统计不同的许愿目标数 $m$，这既是满足愿望数的上界，也是可达到的最优值。对每个被许愿的目标保留一条对应边；随后把形成的路径首尾连接成环，若只剩一个孤立点导致自环，则按题解所述调整两条边，最终得到合法分配并满足恰好 $m$ 个愿望。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1530E",
+          "index": "E",
+          "slot": "E",
+          "title": "Minimax",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1530/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写字母组成的字符串，可以任意重排字符，但每种字符的数量必须保持不变。要求先使重排后字符串的前缀函数最大值尽可能小，再在所有达到该最小值的字符串中选字典序最小者。",
+          "transformedStatement": "将目标拆成两层：先判断能否通过让首字符仅出现一次，使所有前缀函数值为 $0$；若做不到，则在最大值为 $1$ 的字符串中，按字典序尽量选择开头，并安排剩余字符以避免长度至少为 $2$ 的重复前后缀。",
+          "keyObservations": [
+            "只要字符串不全由同一字符组成，若首字符在后面再次出现，某个前缀的最长真前后缀长度至少为 $1$；若首字符只出现一次，则可令整体最大值为 $0$。",
+            "若存在只出现一次的字符，选其中最小的放在开头，其余字符升序排列，既能达到最小值 $0$，也能得到满足条件的字典序最小串。",
+            "若每种字符都至少出现两次，最优值为 $1$；此时必须避免产生长度为 $2$ 的重复前后缀，因此开头能否取为 $aa$ 取决于最小字符的数量是否不超过 $|s|/2+1$。",
+            "若不能以 $aa$ 开头，则取最小两种字符组成前缀 $ab$，之后需避免再次出现 $ab$；剩余字符种类是否只有 $a,b$，决定了后续字符的排列方式。"
+          ],
+          "solutionBrief": "若所有字符相同，答案只能是原串。否则，先检查是否有字符只出现一次：有则将最小的此类字符置于开头，其余字符升序排列。若没有，最小可能的最大前缀函数值为 $1$，再按最小字符数量及剩余字符种类，构造字典序最小且不产生长度至少为 $2$ 的重复前后缀的字符串。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1530F",
+          "index": "F",
+          "slot": "F",
+          "title": "Bingo",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1530/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "dp",
+            "math",
+            "probabilities"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 表格，每格事件独立发生，发生概率为输入值乘以 $10^{-4}$。若至少有一整行、一整列、主对角线或副对角线上的事件全部发生，表格就算获胜；要求计算表格获胜的概率并对给定模数取值。",
+          "transformedStatement": "把获胜概率改为计算所有 $2n+2$ 条候选线都不完整的概率，再按两条对角线、竖线、横线的顺序逐类处理。对角线和竖线形成的条件只影响横线中哪些格子已被确定，因此最后可利用横线之间的独立性合并计算。",
+          "keyObservations": [
+            "先计算所有指定线都没有形成的概率，再用 $1-P(\\text{没有任何完整线})$ 得到获胜概率，避免直接处理多条线同时形成的重叠事件。",
+            "按两条对角线、$n$ 条竖线、$n$ 条横线的顺序处理；选定前面的线后，横线彼此独立，因此可以在递归末端直接将各横线未形成的概率相乘。",
+            "在已条件化为若干条线完整形成时，下一条线只需考虑尚未被这些线覆盖的格子；其条件形成概率就是这些格子事件概率的乘积。",
+            "横线所需的未覆盖格子乘积可通过按行预处理子集乘积，或在递归时维护并回滚行乘积来快速取得，从而避免每个状态重新扫描整个表格。"
+          ],
+          "solutionBrief": "递归计算按顺序处理的各条线均未形成的概率；每一步用全概率公式，减去当前线形成时后续线均未形成的条件概率。处理完两条对角线和竖线后，横线互相独立，可直接相乘计算。通过维护或预处理每行未覆盖格子的概率乘积，将复杂度降至 $O(2^n n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1530G",
+          "index": "G",
+          "slot": "G",
+          "title": "What a Reversal",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1530/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定两个等长的 0/1 字符串 $a,b$ 和整数 $k$。每步可选择 $a$ 的一个连续子串，要求其中恰有 $k$ 个 1，然后反转该子串；要求输出至多 $4n$ 步使 $a=b$ 的操作方案，或判定无法做到。",
+          "transformedStatement": "记录每个 1 之间以及字符串两端连续 0 的数量，将字符串表示为零块长度序列。操作对应于反转连续的 $k+1$ 个块并调整端块中的 0；根据 $k$ 的奇偶性，将序列化简到由不变量决定的规范形式，再比较两串是否可达同一形式。",
+          "keyObservations": [
+            "把字符串改写为各个 1 之间及两端连续 0 的块长序列 $p_0,\u001fp_1,\u001f\\ldots,\u001fp_c$；一次操作会反转连续的 $k+1$ 个块，并允许重新分配两端块中的 0，因此问题可转为整理这些块长。",
+            "当 $k$ 为奇数时，连续两次反转可使相关块序列循环移动两位，所有块都能轮流到达同一位置；借此可把所有 0 汇集到 $p_0$，形成唯一的规范表示。",
+            "当 $k$ 为偶数时，偶数下标块与奇数下标块始终分开作用，因此两类块长之和分别不变；规范表示将偶数下标块的总和放入 $p_0$，奇数下标块的总和放入 $p_{k+1}$。",
+            "操作可逆，所以只需分别把两字符串变换到规范表示并比较；若表示相同，反向执行第二个字符串的变换即可得到目标，总代价不超过 $4n$ 次。"
+          ],
+          "solutionBrief": "先检查两串的 1 的数量。若 $k=0$ 或 $k$ 大于 1 的总数，只能判断原串是否相等；若 $k$ 等于 1 的总数，检查两端 0 与中间部分在允许反转下能否匹配。其余情况分别按 $k$ 的奇偶构造规范块序列，比较两串的规范表示，并通过逆序执行变换得到不超过 $4n$ 次操作的方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1530H",
+          "index": "H",
+          "slot": "H",
+          "title": "Turing's Award",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1530/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/92951",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定一个排列，Alan 从位置 0 开始，按排列顺序逐个写数；写入每个数前可留在原格、向左或向右移动一格，若目标格已有数则覆盖旧数。全部写完后，忽略空格并从左到右读取数字，要求在最优移动策略下最大化该序列的最长递增子序列长度。",
+          "transformedStatement": "把写入顺序倒过来：先放入最后一个数，此后每个更早的数只在空格中落下。于是最终序列从两端扩展；问题转为选择哪些元素加入两端，并保证相邻入选元素之间留有足够步数供 Alan 移动，同时最大化所得序列的 LIS 长度。",
+          "keyObservations": [
+            "逆序看写入过程后，每个数只会在空格中落下而不会覆盖已有数，因此当前序列只会在两端增加元素，消除了覆盖操作带来的干扰。",
+            "相邻两个最终保留的数之间，Alan 只有有限步数可移动；若要切换到序列另一端，所需步数等于当前保留元素数，因此间隔必须足够长。",
+            "除最后写入的数外，若某个保留元素不属于最终序列的 LIS，删除它不会损害答案；因此只需考虑能参与 LIS 的保留元素。",
+            "固定保留元素数量时，状态只需保存 LIS 端点的最优值：一侧维护最小可能值，另一侧维护最大可能值，从而把转移条件化为数值比较和位置范围查询。"
+          ],
+          "solutionBrief": "将过程逆序处理，并用两类 DP 状态记录保留元素数量及 LIS 端点的最优值。按排列位置逆序扫描时，用按元素值索引的线段树维护转移所需的最小值或最大值；题解给出的平均复杂度为 $O(n^{1.5}\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
