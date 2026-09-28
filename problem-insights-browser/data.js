@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 3221,
+    "total_problems": 3224,
     "source_total_problems": 3226,
-    "filtered_out_problems": 5,
-    "with_statement_brief": 3221,
-    "with_editorial_brief": 2940,
-    "with_solution_brief": 2942,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 3224,
+    "with_editorial_brief": 2943,
+    "with_solution_brief": 2945,
     "missing_editorial_brief": 279,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 2283,
+    "ai_override_count": 2286,
     "primary_topic_count": 13,
-    "contest_count": 493,
+    "contest_count": 494,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1029,
-    "基础实现与模拟": 197,
+    "基础实现与模拟": 198,
+    "构造与贪心": 1030,
+    "字符串": 169,
     "图论与网络流": 204,
     "数据结构": 302,
     "动态规划与状态设计": 272,
     "几何": 78,
-    "字符串": 168,
     "交互": 100,
     "数论与同余": 342,
     "树结构": 159,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 22
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 1981,
+    "ai_generated_with_editorial": 1984,
     "ai_generated_partial_editorial": 68,
     "low_confidence": 1,
     "missing_editorial": 279,
@@ -99478,6 +99478,100 @@ window.CF_INSIGHTS_DATA = {
             "每次更新只会插入至多一个新起点，并删除连续的一段失效起点，因此用有序集合可在 $O(\\log n)$ 级别处理一次消息。"
           ],
           "solutionBrief": "把最终速度转化为前缀最小值，维护其严格下降位置的有序集合。更新 $a_k$ 后，从 $k$ 左侧最近的起点判断是否插入 $k$，再删除后方所有值大于新 $a_k$ 的起点；集合大小即答案，单次复杂度为 $O(\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1688,
+      "name": "Codeforces Round 796 (Div. 2)",
+      "date": "2022-06-03",
+      "url": "https://codeforces.com/contest/1688",
+      "type": "Div. 2",
+      "problemCount": 3,
+      "maxRating": 1700,
+      "problems": [
+        {
+          "key": "1688A",
+          "index": "A",
+          "slot": "A",
+          "title": "Cirno's Perfect Bitmasks Classroom",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1688/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/103493",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force"
+          ],
+          "statementBrief": "给定正整数 $x$，需要找最小的正整数 $y$，使得 $x$ 与 $y$ 的按位 AND 大于零，同时按位 XOR 也大于零；每个测试用例独立求解并输出该最小值。",
+          "transformedStatement": "把 $x,y$ 看成二进制位向量：至少要在一个 $x$ 的置位上让 $y$ 也置位，并且还要存在一位二者不同。先满足共同置位的最低成本，再处理 $x$ 只有一个置位时的差异要求。",
+          "keyObservations": [
+            "$x\\mathbin{\\&}y>0$ 等价于 $y$ 至少包含 $x$ 的一个置位，因而最小候选首先是 $x$ 的最低位 $lowbit(x)$。",
+            "若 $x$ 不止一个置位，取 $y=lowbit(x)$ 时必有某个更高位置不同，自动满足异或条件。",
+            "若 $x$ 是 $2^k$，取 $y=lowbit(x)$ 会使异或为零；此时还需加入 $x$ 的最低零位，得到最小可行的 $y$。"
+          ],
+          "solutionBrief": "先取 $x$ 的最低置位作为 $y$，保证按位与为正。若 $x$ 只有这一处置位，则再加入最低零位；否则该 $y$ 已与 $x$ 存在差异，直接输出即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1688B",
+          "index": "B",
+          "slot": "B",
+          "title": "Patchouli's Magical Talisman",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1688/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/103493",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一组正整数，允许通过题面定义的 Fusion 操作把一个数的贡献加到另一个数上，并通过 Reduction 操作不断降低单个数；目标是用最少操作把所有数变成奇数。题面中的具体操作描述有缺失，但示例体现了 Fusion 可用于让偶数借助奇数变奇，Reduction 可将偶数减半。",
+          "transformedStatement": "把每个数抽象为其二进制末尾零数量 $v_2(a_i)$：$v_2(a_i)>0$ 表示偶数，减半会降低该值，而已有奇数可以一次处理一个偶数；因此问题转化为统计偶数数量，并在全偶数时先支付最小的 $v_2$ 代价制造奇数。",
+          "keyObservations": [
+            "令 $g(x)=v_2(x)$，则 $g(x)>0$ 恰好表示该数为偶数，答案首先至少要处理所有偶数。",
+            "若已有奇数，可将同一个奇数加到每个偶数上，使其变奇，因此每个偶数各需一次操作。",
+            "若所有数都是偶数，先选择 $v_2$ 最小的数连续减半，花费 $\u001b[...]\u001b[0m$ 次得到奇数，再用它处理其余 $n-1$ 个数。",
+            "定义势能为偶数个数加上 $\u001b[...]\u001b[0m$，任意一次操作至多使其减少 $1$，而目标状态势能为 $0$，故构造达到最优。"
+          ],
+          "solutionBrief": "统计每个数的 $2$ 的幂次因子。若存在奇数，答案是偶数个数；若全为偶数，答案为 $n-1+\u001b[...]\u001b[0m$，其中 $m$ 是所有 $v_2(a_i)$ 的最小值。整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1688C",
+          "index": "C",
+          "slot": "C",
+          "title": "Manipulating History",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1688/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/103493",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "初始历史是一个长度为 $1$ 的字符串。按原顺序进行 $n$ 次操作：将当前串中一个出现的子串 $t_{2i-1}$ 替换为 $t_{2i}$；随后这 $2n$ 个操作串被打乱，只给出最终字符串，要求恢复初始字符串。",
+          "transformedStatement": "把每个字符串转化为各字符出现次数的向量，并在模 $2$ 下处理。每次替换的前后串与相邻中间状态相互抵消，因此所有操作串加上最终串的奇偶计数只保留初始的单字符。",
+          "keyObservations": [
+            "将每个字符的出现次数按 $2$ 取模后，所有替换前后的子串贡献会与中间状态逐步抵消，只剩初始串和最终串的差异。",
+            "把 $2n$ 个操作串与最终串中的字符全部统计后，奇数次出现的字符恰好是初始的唯一字符，因此无需恢复操作顺序或配对关系。",
+            "初始字符串长度为 $1$，所以统计结果中应只有一个字符具有奇数出现次数，这也保证了答案唯一。"
+          ],
+          "solutionBrief": "读取每个测试用例的 $2n$ 个操作串和最终串，统计所有字符出现次数的奇偶性。出现奇数次的唯一字符就是初始字符串；也可用字符异或直接实现。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
