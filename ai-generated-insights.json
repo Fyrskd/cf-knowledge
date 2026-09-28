@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-28T12:59:03+00:00",
+  "updated_at": "2026-09-28T13:06:24+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -85558,6 +85558,279 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据 statement_text、editorial_text 以及 tags 中的图论和 DP 信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "1566H": {
+      "problem_key": "1566H",
+      "title": "Xor-quiz",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1566/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/94803",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "3fc276119c3e978827d2c177c87a8437e0c53c7d71845538c103564934776025",
+      "generated_at": "2026-09-28T13:02:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $1$ 到 $c$ 中随机选出的 $n$ 个不同正整数。每次可查询一个 $x$，得到集合中所有与 $x$ 互质元素的按位异或和；所有查询必须先一次性提出，最多提出 $\\lceil0.65c\\rceil$ 次，最后输出任意一个与所有可能查询答案一致且大小为 $n$ 的集合。",
+        "transformed_statement": "把每个数抽象为其不同质因子的乘积，并将候选集合按这个值分组；交互答案先转化为各分组元素的异或目标，随后独立构造每组的满足异或约束的子集，再通过总大小约束组合各组。",
+        "key_observations": [
+          "两个数是否互质只取决于它们包含的不同质因子集合，因此可用 $f(x)$（不同质因子的乘积）把数分组，且只需查询每个非空分组对应的代表值。",
+          "令 $g(x)=ans(x)\\oplus ans(1)$，可得到集合中与 $x$ 不互质元素的异或和；对 $y$ 的所有大于 $1$ 的因子对应的 $g$ 做异或，可隔离出满足 $y\\mid f(x)$ 的元素异或和。",
+          "按倍数从大到小做异或容斥，就能从“$y\\mid f(x)$”的总异或恢复每个精确分组的目标异或值，避免逐个判断原集合元素。",
+          "每个分组内只需找出若干元素使异或等于目标值：高斯消元生成不同大小的可行子集，再用按分组的大小 DP 恰好凑出 $n$ 个元素。"
+        ],
+        "solution_brief": "按不同质因子集合分组，只查询非空分组代表；用异或容斥恢复各组目标异或。对每组通过高斯消元构造满足目标的候选子集，再用大小 DP 选出总数为 $n$ 的集合。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "交互",
+          "组合计数与概率",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 codeforces_tags 提炼；算法细节主要来自 Editorial。",
+        "quality_flags": []
+      }
+    },
+    "1566G": {
+      "problem_key": "1566G",
+      "title": "Four Vertices",
+      "rating": 3100,
+      "problem_url": "https://codeforces.com/contest/1566/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/94803",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "59516fe951be63fa9a54ca6284f802d62910f90a2d9517a8a752a61523c54b3d",
+      "generated_at": "2026-09-28T13:03:20+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定带正权无向图，初始及每次查询后都要选四个互不相同的顶点组成两对；每对顶点须连通，代价是两对之间最短路径长度之和。查询动态删除已有边或加入带权边，要求输出每个时刻的最小代价。",
+        "transformed_statement": "将两条最短路径的组合等价压缩为：同一中心连接三条边，或两条互不相交的边。于是问题只需动态维护各顶点前三小边，以及同时位于两端前三小边中的候选边。",
+        "key_observations": [
+          "由于边权为正，最优解只需考虑两种形态：一个端点共用三条边，或两条端点完全不相交的边；这把最短路问题压缩为局部边权组合。",
+          "共用端点的形态等价于某个顶点最小的三条 incident 边之和，因此每个顶点只需保留前三小边，并维护这些三边和的全局最小值。",
+          "不相交形态中，若某条候选边的一端存在至少三条更小的边，就能替换它且避开另一条边的两个端点；所以只需保留同时属于两端前三小边的边。",
+          "在保留后的图中每个顶点度数至多为 $3$：固定全局最小候选边时至多有 $6$ 条冲突边；若它不选，则只需枚举其两个端点各自的前三小边组合，候选数为常数。"
+        ],
+        "solution_brief": "每个顶点维护按权值排序的前三条 incident 边及其余边，动态加入或删除时交换边集并更新全局候选。答案取某点前三边之和，以及保留边中两条不相交边的最小和；后者只需枚举常数个候选。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "图论与网络流",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面目标、editorial 的三种关键观察与所给 C++ 实现中的增删维护方式提炼；查询具体操作由实现代码补充确认。",
+        "quality_flags": [
+          "statement_query_rules_partially_inferred_from_editorial_code"
+        ]
+      }
+    },
+    "1566F": {
+      "problem_key": "1566F",
+      "title": "Points Movement",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1566/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/94803",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "1cdc95cab789931733704c1eea5496349168f0c0b6c97baef93319a94eb80dfe",
+      "generated_at": "2026-09-28T13:03:43+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "数轴上有若干初始位置不同的点和线段。每次可将任一点向左或右移动一个单位并付出 1 的代价；要求通过移动使每条线段都曾被至少一个点经过，求所有移动的最小总成本。",
+        "transformed_statement": "先将目标压缩为未被初始点覆盖且不包含其他线段的极小线段，再按点的相邻区间分组。每组线段只能在相邻两点间按前缀交给左点、后缀交给右点，问题转化为跨点分配的 DP。",
+        "key_observations": [
+          "初始位置已落在某线段内的线段无需移动任何点即可覆盖，因此可以直接删除，不影响最优解。",
+          "若线段 $A$ 被线段 $B$ 包含，覆盖 $A$ 的路径必然经过 $B$；因此只保留不包含其他线段的极小线段，包含关系可用 Fenwick 树筛除。",
+          "若某点负责的左侧和右侧线段中最大距离分别为 $a,b$，则该点的最小移动代价是 $2*min(a,b)+max(a,b)$，因为需要往返较近侧并最终停在较远侧。",
+          "相邻点之间的极小线段按左右端点同时有序，分配给左点的必是前缀、右点的必是后缀；据此以相邻点负责的右侧线段数为状态，并用前后缀最小值优化转移。"
+        ],
+        "solution_brief": "先删除已被初始点覆盖的线段，再用包含关系筛出极小线段。将线段按相邻点分组，利用前缀/后缀分配性质建立 DP，并用前后缀最小值快速转移。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数据结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面、完整 Editorial 及 tags 中的 DP、数据结构和贪心信息提炼。",
+        "quality_flags": []
+      }
+    },
+    "1566E": {
+      "problem_key": "1566E",
+      "title": "Buds Re-hanging",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1566/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/94803",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "a018dd597322872577dae1a4329acf2687109d2f20d52eff1e34b1344ea50e4e",
+      "generated_at": "2026-09-28T13:04:16+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定以 1 为根的树，若一个 bud 的孩子都是叶子，可以把它连同这些孩子从原父亲处剪下并挂到任意非自身及其孩子的顶点上，孩子仍挂在 bud 下。可进行任意次操作，求最终可能得到的最少叶子数。",
+        "transformed_statement": "将所有可操作的 bud 逐步归并到根，问题转化为统计 bud 数量 $k$ 以及根是否存在直接相连的叶子；随后利用 bud 链式重挂带来的叶子数下降计算答案。",
+        "key_observations": [
+          "把一个 bud 重挂到叶子上恰好使叶子数减少 $1$；若先把 bud 重挂到根，则不会让最优答案变差，因而可先将所有 bud 集中到根。",
+          "设 bud 数为 $k$，集中后除根和 bud 外的顶点都可视为叶子，因此初始叶子数为 $n-k-1$。",
+          "若根直接连接叶子，可把 $k$ 个 bud 依次挂到叶子及前一个 bud 的叶子上，获得 $k$ 次下降；否则只能利用 $k-1$ 个 bud 叶子，获得 $k-1$ 次下降。",
+          "后序遍历中，若顶点拥有被归类为叶子的子节点就计为 bud，否则计为叶子类节点；同时检查根是否直接连接叶子，即可得到公式答案 $n-2k- ext{rootLeaf}$。"
+        ],
+        "solution_brief": "后序遍历统计 bud 数 $k$，并判断根是否有直接叶子子节点。按照该标记，答案为 $n-2k- ext{rootLeaf}$，其中存在根叶子时 $ ext{rootLeaf}=1$，否则为 $0$。",
+        "primary_topic": "树结构",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的树上重挂规则、editorial_text 的归一化与计数公式，以及 tags 中的树和贪心信息。",
+        "quality_flags": [
+          "statement中的bud定义和示例结尾不完整"
+        ]
+      }
+    },
+    "1566D2": {
+      "problem_key": "1566D2",
+      "title": "Seating Arrangements (hard version) ",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1566/problem/D2",
+      "editorial_url": "https://codeforces.com/blog/entry/94803",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "5ab1471684ee68f9203d39038ccd668d5210c3f0f23059b2c38520089cc62547",
+      "generated_at": "2026-09-28T13:04:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n\\times m$ 个按行编号的座位和每个人的视力等级，视力等级更低的人必须分配更小编号的座位。所有人按编号顺序入场，沿所在行从左走到自己的座位，并为经过的已占座位计一次不便；要求最小化总不便。",
+        "transformed_statement": "把座位按编号排成一条序列：视力等级决定各组人的连续座位区间，同等级组内部只需决定到场编号与这些座位的对应关系。将每组按到场编号从大到小放置后，答案转化为各行中左侧更早到场者数量的总和。",
+        "key_observations": [
+          "按座位编号从小到大看，视力等级必须非递减，因此同一等级的人必定占据一段连续座位，先按等级即可确定每组的座位区间。",
+          "一组座位跨越多行时，应先处理首行后缀、再处理完整行、最后处理末行前缀；每部分都从右向左安排，可避免更早入场者额外挡住右侧座位。",
+          "同一等级的人在各自可用座位中按到场编号递减从左到右安排，可使左侧尽量由晚到场者占据，从而减少后来者经过的已占座位数。",
+          "将人按 $(a_i,-i)$ 排序后，每连续 $m$ 人对应一行；在每行统计左侧到场编号更小的人的数量，所得逆序对总数就是总不便。"
+        ],
+        "solution_brief": "先按视力等级升序、同等级按到场编号降序排列，并按每行 $m$ 个座位分组。对每行从左到右统计左侧已先入场者数量，累加得到最小总不便。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial、题面规则及 tags 中的 greedy、sortings、implementation。",
+        "quality_flags": []
+      }
+    },
+    "1566D1": {
+      "problem_key": "1566D1",
+      "title": "Seating Arrangements (easy version) ",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1566/problem/D1",
+      "editorial_url": "https://codeforces.com/blog/entry/94803",
+      "editorial_quality": "url_only",
+      "model": "gpt-5.6-luna",
+      "input_hash": "480c80314e7904e02cfff87cb22041940751ec971e453c949a444d83feb3468b",
+      "generated_at": "2026-09-28T13:05:17+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "电影院只有一排 $m$ 个座位，给编号为 $1$ 到 $m$ 的每个人分配一个不同座位；视力水平较低的人必须坐在编号更小的座位。所有人按编号顺序入场并从本排最左侧走到自己的位置，不便值是途中经过的已占座位数，要求最小化总不便。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text；editorial_url 仅为链接且 editorial_text 为空，tags 仅用于题目分类。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "missing_editorial",
+          "statement_truncated"
+        ]
+      }
+    },
+    "1566C": {
+      "problem_key": "1566C",
+      "title": "MAX-MEX Cut",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1566/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/94803",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "4ebed2826814d68ab9a3cfa86c8ad956239ce3bea5c0d367ee82583cc31ff51d",
+      "generated_at": "2026-09-28T13:05:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定由两条等长二进制串组成的两行表格，必须按连续列切成若干子表，每列恰好属于一个子表。子表的 MEX 是其中未出现的最小数字 $0,1,2$，要求最大化所有子表 MEX 之和。",
+        "transformed_statement": "先将上下字符不同的列视为可独立取出的固定收益块；其余连续区域的两行完全相同，可转成一个二进制串。此时问题等价于以单个 0 的收益为基础，通过不重叠地合并相邻异值块来最大化额外收益。",
+        "key_observations": [
+          "含有一个 0 和一个 1 的列单独切出时 MEX 已为 2，再与其他列合并不会增加收益，因此可直接隔开并独立计分。",
+          "剩余列的两行相同，可压成一个二进制串；单列切分的初始得分等于其中 0 的数量。",
+          "在同质列对应的二进制串中，合并相邻的 0 段与 1 段恰好使得分增加 1，因此目标变为最大化不重叠的异值相邻合并数。",
+          "按顺序处理 0，优先与左侧未使用的 1 合并，否则与右侧 1 合并，并在成功合并后清空当前块；这种贪心最大化可进行的合并次数。"
+        ],
+        "solution_brief": "先把上下字符不同的列单独切出，每列贡献 2。对每个连续的同质列块压成二进制串，以 0 的数量为初始答案，再扫描并贪心配对相邻的 0 和 1；每次配对贡献额外 1，累加所有块的结果。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面、editorial 的第一种贪心解法及其代码；tags 仅用于主题辅助。",
+        "quality_flags": []
+      }
+    },
+    "1566B": {
+      "problem_key": "1566B",
+      "title": "MIN-MEX Cut",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1566/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/94803",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "f5bb557a2708bc393dcb581b551ae2f5f16b228475cc89074fde1a0da21e87dd",
+      "generated_at": "2026-09-28T13:05:57+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个只含 $0$ 和 $1$ 的字符串，可以按位置切成任意个连续非空子串，每个字符必须恰好属于一个子串。求所有子串 MEX 之和的最小值，其中 MEX 是 $0,1,2$ 中未出现在该子串里的最小数字。",
+        "transformed_statement": "问题只取决于字符串中的连续 $0$ 块数量：将没有 $0$、只有一块 $0$、至少两块 $0$ 三种情况分别对应最小代价 $0,1,2$。核心是判断两个 $0$ 之间是否存在 $1$。",
+        "key_observations": [
+          "整个二进制串作为一个片段时，MEX 至多为 $2$，因此最优答案不会超过 $2$。",
+          "串中没有 $0$ 时，所有片段都只含 $1$，每片 MEX 都为 $0$，所以答案为 $0$。",
+          "所有 $0$ 连成一个连续块时，可将该块单独切出，其 MEX 为 $1$，两侧全是 $1$ 的部分贡献为 $0$，因此答案为 $1$。",
+          "若 $0$ 被至少一个 $1$ 分隔，则包含这两个 $0$ 的片段要么同时包含该 $1$ 并贡献至少 $2$，要么分属不同片段且各贡献至少 $1$，故答案至少为 $2$；结合整体不切分可知答案为 $2$。"
+        ],
+        "solution_brief": "只需统计 $0$ 是否存在以及是否被 $1$ 分成多个连续块：没有 $0$ 答案为 $0$，只有一个 $0$ 块答案为 $1$，否则答案为 $2$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "字符串"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的 MEX 定义、切分规则和完整 editorial；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1566A": {
+      "problem_key": "1566A",
+      "title": "Median Maximization",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1566/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/94803",
+      "editorial_quality": "complete",
+      "model": "gpt-5.6-luna",
+      "input_hash": "2f876f185ab18d5d28068173b86416bdd63d4bbff8e9177889b04d756bf592b1",
+      "generated_at": "2026-09-28T13:06:24+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组长度 $n$ 和元素总和 $s$，需要构造一个由非负整数（可重复）组成的数组；数组排序后取第 $\\lceil n/2\\rceil$ 个元素作为中位数，要求最大化这个中位数。",
+        "transformed_statement": "将数组按非降序考虑：中位数位置及其右侧必须有 $m=\\lfloor n/2\\rfloor+1$ 个元素至少等于目标值，因此问题等价于在总预算 $s$ 下最大化这 $m$ 个元素的共同下界。",
+        "key_observations": [
+          "若中位数至少为 $M$，排序后从中位数位置到末尾共有 $m=\\lfloor n/2\\rfloor+1$ 个数，因此总和至少为 $mM$。",
+          "为最大化中位数，可将中位数之前的元素全部设为 $0$，把全部预算集中到后面的 $m$ 个元素，不会降低可行的中位数。",
+          "令后 $m$ 个元素先都取 $\\lfloor s/m\\rfloor$，再把余数加到最后一个元素，数组仍有序且总和为 $s$，所以该商就是最优答案。"
+        ],
+        "solution_brief": "设 $m=\\lfloor n/2\\rfloor+1$。中位数为 $M$ 至少需要 $m$ 个元素不小于 $M$，故有 $mM\\le s$；将其余元素设为 $0$，后 $m$ 个元素均分总和即可达到上界，答案为 $s/m$ 的整数商。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial 的贪心构造与可行性证明，并结合 statement 和 tags。",
         "quality_flags": []
       }
     }
