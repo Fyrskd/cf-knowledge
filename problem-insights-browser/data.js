@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4160,
+    "total_problems": 4167,
     "source_total_problems": 4167,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4160,
-    "with_editorial_brief": 3802,
-    "with_solution_brief": 3804,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4167,
+    "with_editorial_brief": 3809,
+    "with_solution_brief": 3811,
     "missing_editorial_brief": 356,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3222,
+    "ai_override_count": 3229,
     "primary_topic_count": 13,
-    "contest_count": 647,
+    "contest_count": 648,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1353,
-    "数论与同余": 437,
+    "构造与贪心": 1356,
+    "数论与同余": 438,
+    "动态规划与状态设计": 342,
+    "树结构": 194,
+    "图论与网络流": 281,
     "数据结构": 391,
-    "动态规划与状态设计": 341,
-    "图论与网络流": 280,
     "交互": 123,
     "字符串": 224,
     "博弈": 119,
     "组合计数与概率": 323,
     "基础实现与模拟": 254,
-    "树结构": 193,
     "几何": 96,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2800,
+    "ai_generated_with_editorial": 2807,
     "missing_editorial": 356,
     "ai_generated_partial_editorial": 111,
     "low_confidence": 1,
@@ -127834,6 +127834,219 @@ window.CF_INSIGHTS_DATA = {
             "Aho-Corasick 自动机的失败指针构成树，区间对应的候选后缀可沿失败指针路径表示；标记这些路径后，检查候选节点是否被标记即可筛掉不应计数的名字。"
           ],
           "solutionBrief": "对每个名字扫描其内部，利用 Aho-Corasick 找到各位置匹配的参赛者名字及覆盖区间。再在失败指针树上标记需要排除的路径，并检查候选名字是否落在已标记部分；按题解给出的做法，总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1499,
+      "name": "Educational Codeforces Round 106 (Rated for Div. 2)",
+      "date": "2021-03-18",
+      "url": "https://codeforces.com/contest/1499",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 3100,
+      "problems": [
+        {
+          "key": "1499A",
+          "index": "A",
+          "slot": "A",
+          "title": "Domino on Windowsill",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1499/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/88812",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "棋盘有两行、每行 $n$ 格；第一行前 $k_1$ 格和第二行前 $k_2$ 格为白色，其余为黑色。给定白、黑骨牌数量 $w,b$，每块骨牌覆盖相邻的两格（可横放或竖放），且覆盖格必须同色、未被占用；判断能否全部放下。",
+          "transformedStatement": "白色格与黑色格分开考虑：每块对应颜色的骨牌需要两个该色格子。题解证明，由于每行的同色格形成连续段，只要该颜色格子总数足够，就能通过逐步配对将骨牌实际摆入棋盘；因此问题化为分别检查两种颜色的容量条件。",
+          "keyObservations": [
+            "白格总数为 $k_1+k_2$；只要 $2w\\le k_1+k_2$，就总能放下 $w$ 块白骨牌：可反复从白格较多的一行末端取相邻两格，最后剩下的一格可与另一行的格子竖放配对。",
+            "黑格分别组成两行的连续后缀，黑格总数为 $(n-k_1)+(n-k_2)$；按相同方式从黑格较多的一行取相邻格，可知 $2b$ 不超过黑格总数就足以放下所有黑骨牌。",
+            "白骨牌和黑骨牌只能覆盖各自颜色的格子，二者不会争用格子；因此分别检查白格与黑格的总容量，就能判定两类骨牌能否同时全部放置。"
+          ],
+          "solutionBrief": "分别检查白格与黑格是否有足够的格子：当且仅当 $2w\\le k_1+k_2$ 且 $2b\\le(n-k_1)+(n-k_2)$ 时输出 YES。题解通过从较长的一行逐步配对，说明这些格子数量条件也保证了可实际放置。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1499B",
+          "index": "B",
+          "slot": "B",
+          "title": "Binary Removals",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1499/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/88812",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定只含 `0` 和 `1` 的字符串，可以选择一个非空位置序列删除对应字符，要求这些被删位置两两不相邻；剩余字符保持原顺序拼接。判断能否通过这样的删除，使剩余字符串按 `0` 在前、`1` 在后的顺序排列。",
+          "transformedStatement": "把目标串表示为由若干 `0` 后接若干 `1`，并考察原串中 `11` 与 `00` 的先后关系：若较早的 `11` 位于较晚的 `00` 之前，就形成无法靠删除消除的逆序冲突；否则存在可行分界。",
+          "keyObservations": [
+            "若原串中某个 `11` 出现在某个 `00` 之前，那么这两处各至少有一个字符不能同时删掉；保留下来的 `1` 会排在保留下来的 `0` 前面，因此无法得到有序串。",
+            "若不存在上述冲突，就可以在分界处保留前面的 `0` 和后面的 `1`：删除分界左侧的 `1`，再删除所得后缀中的 `0`；只要这两步不会要求删除相邻字符，就能构造出有序结果。"
+          ],
+          "solutionBrief": "检查最早出现的 `11` 与最晚出现的 `00`：若前者在后者之前则输出 `NO`，否则输出 `YES`。判断依据是冲突的两组字符各至少留下一个字符；无冲突时可按分界构造删除方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1499C",
+          "index": "C",
+          "slot": "C",
+          "title": "Minimum Grid Path",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1499/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/88812",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "从 $(0,0)$ 走到 $(n,n)$，只能沿两个坐标方向移动，路径由至多 $n$ 条正整数长度的水平、竖直线段交替组成。第 $i$ 段每单位长度的费用为 $c_i$；要求选择线段数和各段长度，使路径总费用最小。",
+          "transformedStatement": "固定使用 $k$ 段后，奇数段和偶数段分别承担两个坐标方向上总长为 $n$ 的路程。问题转化为对两类成本分别分配正整数长度，并最小化加权长度和，再枚举 $k$ 取最优结果。",
+          "keyObservations": [
+            "固定线段数 $k$ 后，奇数段与偶数段分别沿两个坐标方向前进，各自长度之和都必须为 $n$，所以两类线段的成本可以独立最小化。",
+            "对同一奇偶类，所有段长至少为 $1$；先给每段分配长度 $1$，再把剩余长度全部交给该类中单位成本最低的一段，就能得到该类的最小费用。",
+            "因此固定 $k$ 的最优费用只需该前缀奇、偶位置成本的总和、最小值以及位置数量；随着 $k$ 增加，这些量可增量维护。"
+          ],
+          "solutionBrief": "枚举线段数 $k=2,\u001fn$。分别维护前 $k$ 个成本中奇数位置和偶数位置的数量、总和与最小值；每类费用为成本总和加上最小成本乘以 $n$ 减该类段数，取两类费用之和的最小值。整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1499D",
+          "index": "D",
+          "slot": "D",
+          "title": "The Number of Pairs",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1499/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/88812",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $c,d,x$，要求统计所有正整数有序对 $(a,b)$ 的数量，使 $c\\cdot\\operatorname{lcm}(a,b)-d\\cdot\\gcd(a,b)=x$。每组数据独立计数，交换 $a,b$ 后的有序对也按不同方案计算。",
+          "transformedStatement": "把每个数拆成两数的最大公约数 $g$ 与互质部分 $A,B$，则原式等价于 $g(cAB-d)=x$。于是先选取 $x$ 的因子 $g$，再检查由它确定的乘积 $AB$，统计该乘积的质因子幂如何分配到两个互质部分。",
+          "keyObservations": [
+            "令 $g=\\gcd(a,b)$，并写成 $a=Ag,b=Bg$ 且 $\\gcd(A,B)=1$，则 $\\operatorname{lcm}(a,b)=ABg$，原等式化为 $g(cAB-d)=x$；因此 $g$ 必须是 $x$ 的正因子。",
+            "固定 $g$ 后，只有当 $x/g+d$ 能被 $c$ 整除时才可能有解，此时 $AB=k=(x/g+d)/c$，问题转为统计互质正整数对 $(A,B)$ 且乘积为 $k$。",
+            "对 $k$ 的每个不同质因子，其完整质因子幂必须分配给 $A$ 或 $B$ 的一方；互质条件禁止拆分到两边，因此恰有 $2^{\\omega(k)}$ 种有序分配。",
+            "预处理每个整数的不同质因子数后，每个候选因子的贡献可直接得到，避免逐个测试用例反复分解 $k$。"
+          ],
+          "solutionBrief": "枚举 $x$ 的正因子 $g$。若 $x/g+d$ 可被 $c$ 整除，令 $k=(x/g+d)/c$，将 $2^{\\omega(k)}$ 加入答案；其中 $\\omega(k)$ 是 $k$ 的不同质因子数，可用最小质因子预处理。每组枚举因子，复杂度为 $O(\\sqrt{x})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1499E",
+          "index": "E",
+          "slot": "E",
+          "title": "Chaotic Merge",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1499/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/88812",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "字符串",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math",
+            "strings"
+          ],
+          "statementBrief": "给定两个小写字符串，从各自选取一个非空连续子串，并按保持各自字符先后顺序的方式交错合并；相邻的合并字符必须不同。对所有子串对，统计满足条件的不同合并方式数并求和，答案对 $998244353$ 取模。",
+          "transformedStatement": "把每种合并视为在两个字符串位置构成的网格上行走：每步从其中一个字符串取下一个字符，状态记录末字符的来源以及两边是否都已取过字符。允许从任意位置开始、在任意位置结束，便可统一汇总所有子串对的合法合并数。",
+          "keyObservations": [
+            "合并过程中下一步是否合法，只取决于合并串的末字符；记录末字符来自哪一个原串，就能根据已取字符数确定它，并据此限制下一步，避免保存完整合并串。",
+            "将 DP 状态放在两个原串当前处理位置上，就能从任意位置开始转移，等价于枚举子串起点；把所有位置的有效状态累加，则同时覆盖所有子串终点。",
+            "题目要求两个子串都非空，因此状态还需记录是否分别取过两个串的字符；只有两个标记都为真时才计入答案。"
+          ],
+          "solutionBrief": "用二维位置、合并末字符来源及两个非空标记设计 DP。转移时从任一原串取下一个字符，仅当它与末字符不同才可加入；从任意位置开始并累加所有位置的有效状态，即统计所有子串对的答案。题解给出的总复杂度为 $O(|x||y|)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1499F",
+          "index": "F",
+          "slot": "F",
+          "title": "Diameter Cuts",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1499/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/88812",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵含 $n$ 个顶点的树和整数 $k$，可以选择若干条边删除，删除后树会分成若干连通块。要求每个连通块的直径都不超过 $k$，求满足条件的删边集合数量，并对 $998244353$ 取模。",
+          "transformedStatement": "将删边结果视为递归构造的各个连通块：在根树上逐个接入孩子子树，状态按当前连通块中从根顶点出发的最长路径长度分类。每次接入只需判断新旧两侧路径是否会拼成长度超过 $k$ 的路径，或选择切断连接边。",
+          "keyObservations": [
+            "一个连通块直径超过 $k$，当且仅当其中存在长度超过 $k$ 的简单路径；因此只需在合并子树时阻止跨子树路径超限。",
+            "处理完顶点 $v$ 的部分子树后，只需记录当前连通块中从 $v$ 出发的最长路径长度；加入新子树时，未切边会产生长度为 $i+j+2$ 的跨子树路径，切边则让两侧独立。",
+            "每次合并只枚举两侧各自可达的深度范围，范围不超过对应子树大小；任意一对顶点恰在其最近公共祖先处被跨侧检查一次，因此总复杂度为 $O(n^2)$。"
+          ],
+          "solutionBrief": "以顶点 $1$ 为根，令状态记录子树内满足直径限制的切边方案数，并按从根出发的最长连通路径长度分类。逐个合并孩子：可切断父子边，或在不切边时检查两侧最长路径拼接后是否不超过 $k$；只枚举子树实际可达到的深度，整体复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1499G",
+          "index": "G",
+          "slot": "G",
+          "title": "Graph Coloring",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1499/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/88812",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "graphs",
+            "interactive"
+          ],
+          "statementBrief": "给定一个二分图，要求把每条边染成红色或蓝色，使所有顶点的红边数与蓝边数之差的绝对值之和最小；还需在线处理查询并输出相应结果。已提供的题面只说明一种查询输出染色哈希，另一种查询格式及具体操作规则被截断。",
+          "transformedStatement": "将当前边集拆成互不重叠的路径和环，并让每个分量内部红蓝交替。在线加入边时维护这些分量，使顶点至多作为一条路径的端点，从而让每个顶点的红蓝度数差达到其由度数奇偶性决定的最小值；染色哈希则由红边的编号计算得到。",
+          "keyObservations": [
+            "把边划分为若干条路径和若干个环，并在每条路径或环上交替染色；二分图的环长度为偶数，因此环上红蓝边数相等。",
+            "若每个顶点至多是一个路径的端点，则其红蓝边数之差的绝对值达到下界：偶度顶点为 $0$，奇度顶点为 $1$。",
+            "新增边可先视为一条新路径，再在共享端点处合并路径；若一条路径与自身连接，就形成无需继续维护的环。",
+            "合并两条路径时，可能需要反转或整体换色才能保持交替染色；用较小路径承担这些调整，可将维护开销控制在对数级。"
+          ],
+          "solutionBrief": "在线维护边构成的路径与环，并保持每个顶点至多关联一条以其为端点的路径。加入边后尝试合并端点处的路径；合并时通过反转或换色维持交替染色，最终按红边编号计算哈希。题解给出隐式 Treap 或小并大双端队列两种维护方式。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
