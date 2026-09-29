@@ -1,5 +1,16 @@
 [
   {
+    "id": 1482,
+    "name": "Технокубок 2021 - Финал",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 10800,
+    "startTimeSeconds": 1616322000,
+    "relativeTimeSeconds": 174320896,
+    "date": "2021-03-21"
+  },
+  {
     "id": 1483,
     "name": "Codeforces Round 709 (Div. 1, based on Technocup 2021 Final Round)",
     "type": "CF",
