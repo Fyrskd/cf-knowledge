@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-29T01:37:11+00:00",
+  "updated_at": "2026-09-29T01:42:32+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -97418,6 +97418,186 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面给出的选择与子集和限制，以及 editorial 中的构造和最大性证明；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "1494F": {
+      "problem_key": "1494F",
+      "title": "Delete The Edges",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/1494/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/88344",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "8bf828f3fa5bb9d30c8a314aeb22c36105f68af7d1d3f1a9d17bb79be11f6257",
+      "generated_at": "2026-09-29T01:41:17+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个连通无向图，从任意顶点开始沿边行走；每经过一条边就删除它。行走中至多一次可在顶点处切换模式，切换后经过的边按先保留、再删除的顺序交替处理，不能切回原模式。要求判断能否删除所有边，并在可行时输出一串操作。",
+        "transformed_statement": "把被删除的边分成切换前的子图 $G_1$ 和切换后的子图 $G_2$：$G_1$ 必须存在以切换点为终点的欧拉路，而 $G_2$ 必须是以该点为中心的星形。于是问题转为枚举中心并调整其邻边归属，使 $G_1$ 满足欧拉路条件。",
+        "key_observations": [
+          "切换前走过并删除的边必须能组成一条以切换点为终点的欧拉路，因此其连通性和奇度点数决定了这部分能否连续走完。",
+          "切换后被删除的边必然构成以切换点为中心的星形：从后往前看，每条被删除边前后都要沿同一条边往返。",
+          "固定星形中心后，只需考虑中心的邻边如何分配；先让各邻点在切换前子图中的度数为偶数，再逐条翻转邻边状态检查，足以覆盖可行分配。",
+          "无需同时翻转两条邻边：若当前奇度点已不少于两个，翻转两条边不能改善条件；若为零，翻转后产生的奇点也无法让欧拉路以中心为终点。"
+        ],
+        "solution_brief": "枚举切换点作为星形中心，将其邻边划分到切换前后两部分。对切换前子图先使非中心邻点尽量为偶度，再逐条尝试翻转邻边，并检查是否存在以中心为终点的欧拉路；找到后按欧拉路和星形往返顺序构造操作。整体检查次数为 $O(n+m)$，总复杂度为 $O((n+m)^2)$ 或 $O((n+m)^2\\log n)$。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的行走、删边与至多一次模式切换规则，以及完整 editorial 的图划分、欧拉路条件和复杂度说明。",
+        "quality_flags": []
+      }
+    },
+    "1494E": {
+      "problem_key": "1494E",
+      "title": "A-Z Graph",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1494/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/88344",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "a574a71f92c0114ec3f000186d97b55005685beea916e162ef980d0aabe8f8f1",
+      "generated_at": "2026-09-29T01:41:35+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个初始为空的有向字符标记图，需要处理加入边、删除边和查询。每次查询给出 $k$，要求判断能否选出 $k$ 个顶点，使沿所选顺序行走与沿相反顺序行走得到的边标签字符串相同。",
+        "transformed_statement": "查询可化为检查图中是否存在一对双向边：$k$ 为奇数时任意标签组合均可，$k$ 为偶数时这对边的标签必须相同。于是无需搜索顶点序列，只需动态维护两类双向边对是否存在。",
+        "key_observations": [
+          "若正向序列与反向序列产生相同字符串，首段边必须有对应的反向边，因此任何可行序列都要求存在一对双向边。",
+          "当顶点数 $k$ 为奇数时，只要存在任意一对双向边，就能在这两个顶点间交替构造回文序列，使两方向产生相同字符串。",
+          "当 $k$ 为偶数时，中间边在反向路线中会与其反向边对应，二者标签必须相同；所以只有标签相同的双向边能构造可行序列。",
+          "每条有向边只属于一个无序顶点对，因此可以分别维护标签相同和不同的双向边集合，更新后按 $k$ 的奇偶检查对应集合是否非空。"
+        ],
+        "solution_brief": "维护双向边标签相同与不同的顶点对。插入或删除边时更新对应集合；查询 $k$ 为奇数时检查任一集合非空，为偶数时只检查标签相同集合非空。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "数据结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，判定条件与维护方法依据 editorial_text；tags 用于辅助归类。",
+        "quality_flags": []
+      }
+    },
+    "1494D": {
+      "problem_key": "1494D",
+      "title": "Dogeforces",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1494/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/88344",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "65849b3d2b563eef52008cd30c67884e534314cf17821228c746515480ab8efd",
+      "generated_at": "2026-09-29T01:41:54+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定公司中所有底层员工两两之间最近共同主管的工资，其中对角线给出员工自己的工资。公司结构是一棵主管树，每名主管至少有两名下属；需要输出一棵工资满足这些数据的公司树，包括所有员工工资、总主管以及每名员工的直接主管。",
+        "transformed_statement": "把底层员工视为树叶，并递归恢复每个叶子集合对应的子树：集合内最大的两两共管者工资确定该子树根，低于根工资的叶子对必须归入同一个根子树，从而得到分组并继续递归。",
+        "key_observations": [
+          "在当前子树的叶子集合中，最大两两共管者工资就是该子树根的工资：至少有两个子节点，因此存在一对叶子的最近共同主管正是这个根。",
+          "若一对叶子的已知共管者工资低于当前根工资，它们必在根的同一个子树中；据此可将叶子分组，作为根的各个子树。",
+          "递归处理每个分组即可恢复内部结构；分组只剩一个叶子时，该子树已经是原始员工，无需再创建主管。"
+        ],
+        "solution_brief": "从全部底层员工开始递归建树。每个叶子集合中取两两共管者工资的最大值作为新主管工资，再按低于该值的共管关系将叶子划分到不同子树；集合为单个叶子时直接停止。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "树结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的共管者工资定义及完整 editorial 的递归建树与分组方法。",
+        "quality_flags": []
+      }
+    },
+    "1494C": {
+      "problem_key": "1494C",
+      "title": "1D Sokoban",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1494/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/88344",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "f778b2eb468ba3b874440b6af195a2d4348e638674943488a66e19f56205bd41",
+      "generated_at": "2026-09-29T01:42:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "整数线上有若干箱子和特殊位置，箱子起始位置与特殊位置均互不相同且都不在原点；你从原点出发，每步向左或向右，遇到箱子只能沿推动方向推它，若前方还有箱子则连锁推动，不能穿过或拉动箱子。可移动任意步，要求最多让多少个箱子最终位于特殊位置。",
+        "transformed_statement": "由于箱子不能被拉过原点，左右两侧互不影响，目标可拆成两侧答案之和。单侧可抽象为选择最左箱子的对齐特殊位置；它与后续箱子形成的推挤堆覆盖一段特殊位置，堆后的箱子则按原本已对齐的数量计分。",
+        "key_observations": [
+          "只能推不能拉，因此负数位置的箱子无法到达正数位置，正负两侧互不影响，可以分别求解后相加。",
+          "在正数一侧，向左移动不会带来额外收益；最优情况可调整为让最左边的箱子落在某个特殊位置，从而只需枚举这类对齐位置。",
+          "把被连续推成一堆的箱子与其后的箱子分开后，堆中能覆盖的特殊位置数，加上堆后仍在特殊位置上的箱子数，就是该方案的得分。",
+          "随着对齐位置递增，堆的边界和堆下方特殊位置的边界都单调移动；用双指针维护这两处边界及后缀已有匹配数，便可在线性时间比较所有方案。"
+        ],
+        "solution_brief": "将正负两侧分开处理，并对正数侧枚举最左箱子最终对齐的特殊位置。维护被推成一堆的箱子数量、堆覆盖的特殊位置数量，以及堆后原本就在特殊位置上的箱子数，取各方案最大值；双指针使每侧处理为线性时间。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面操作规则及完整 editorial；标签仅作辅助。",
+        "quality_flags": []
+      }
+    },
+    "1494B": {
+      "problem_key": "1494B",
+      "title": "Berland Crossword",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1494/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/88344",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "05a338b32bc0448279285f9de6ef7f70029ce5917eaf4c58200768ee7adc4d94",
+      "generated_at": "2026-09-29T01:42:20+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定边长为 $n$ 的方格，初始所有格子为白色；可以把边界上的若干格子涂黑。题目要求检查是否能使上、右、下、左四条边各自恰有 $U,R,D,L$ 个黑格。",
+        "transformed_statement": "把四个角的颜色作为唯一需要联合考虑的选择：黑角同时给相邻两边贡献计数，剩下的非角边界格分别独立补足各边的需求。于是只需检查每种角状态下各边的剩余需求是否可由 $n-2$ 个格子实现。",
+        "key_observations": [
+          "角格若涂黑，会同时计入相邻的两条边；非角边界格则只影响所在的一条边，因此角格是各边计数之间唯一的耦合。",
+          "固定四个角的黑白状态后，每条边剩余必须由非角格提供的数量就确定了；只有该数量落在 $0$ 到 $n-2$ 之间时才可完成涂色。",
+          "四个角只有 $2^4$ 种状态，逐一检查即可覆盖所有可能方案，且其余边界格的选择彼此独立。"
+        ],
+        "solution_brief": "枚举四个角是否涂黑。对每种状态，从 $U,R,D,L$ 中分别减去相邻黑角的数量；若四个剩余需求都在 $[0,n-2]$ 内，则非角边界格可以补足，答案为 YES，否则继续枚举。每组复杂度为 $O(1)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面给出的边界涂色计数要求及 editorial 的四角枚举方案整理。",
+        "quality_flags": []
+      }
+    },
+    "1494A": {
+      "problem_key": "1494A",
+      "title": "ABC String",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1494/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/88344",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "e163f23329f0815873f1c6ac5fc47bc04955f0bb7d3c8a675b69b86c6f742103",
+      "generated_at": "2026-09-29T01:42:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由 A、B、C 组成且长度为偶数的字符串，需要为每个字母统一指定左括号或右括号，并将所有出现位置按此替换。判断能否得到合法括号序列，即任意前缀左括号不少于右括号，且总数相等。",
+        "transformed_statement": "把问题视为给三种字母各选定一种括号类型的映射问题：合法结果要求首字母对应左括号、末字母对应右括号，并且左右括号数量各为 $n/2$；确定映射后再验证前缀余额条件。",
+        "key_observations": [
+          "合法括号序列首字符必须映射为左括号、末字符必须映射为右括号，因此若原串首尾字母相同，就无法满足这两个必要条件。",
+          "合法括号序列左右括号数量各为 $n/2$；固定首尾字母的映射后，可用剩余字母的出现次数判断它应映射成哪类括号，避免枚举全部映射。",
+          "映射后的字符串只有在每个前缀左括号数不少于右括号数、且总数相等时才是合法括号序列，这将最终验证化为线性扫描。"
+        ],
+        "solution_brief": "先要求首尾字母分别映射为左、右括号，再利用各类字母的数量确定剩余字母的映射；若映射有歧义且剩余字母未出现，可任意指定。随后扫描生成的括号串，检查每个前缀余额非负且最终余额为零，时间复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的字母替换规则及 editorial 的必要条件、数量判断和括号序列验证方法。",
         "quality_flags": []
       }
     }

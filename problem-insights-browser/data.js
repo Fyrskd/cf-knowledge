@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4196,
+    "total_problems": 4202,
     "source_total_problems": 4202,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4196,
-    "with_editorial_brief": 3838,
-    "with_solution_brief": 3840,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4202,
+    "with_editorial_brief": 3844,
+    "with_solution_brief": 3846,
     "missing_editorial_brief": 356,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3258,
+    "ai_override_count": 3264,
     "primary_topic_count": 13,
-    "contest_count": 654,
+    "contest_count": 655,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1365,
+    "构造与贪心": 1369,
+    "图论与网络流": 284,
     "基础实现与模拟": 257,
     "字符串": 226,
     "数论与同余": 442,
     "交互": 124,
     "几何": 97,
     "博弈": 120,
-    "图论与网络流": 282,
     "树结构": 195,
     "数据结构": 394,
     "动态规划与状态设计": 345,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2834,
+    "ai_generated_with_editorial": 2840,
     "ai_generated_partial_editorial": 113,
     "missing_editorial": 356,
     "low_confidence": 1,
@@ -128948,6 +128948,202 @@ window.CF_INSIGHTS_DATA = {
             "判定尺寸 $r$ 时，只需从已知可行且能被 $r$ 整除的最小尺寸 $x$ 出发，检查由其划分出的 $x/r$ 个连续块是否相等；这避免重复检查所有矩形划分。"
           ],
           "solutionBrief": "先用分治式比较，在对数次查询内判断一串连续矩形块是否全相同。行、列分别按候选尺寸从大到小处理，借助可行尺寸的整除关系计算可行数量，最后将两方向的数量相乘；查询总数满足题目限制。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1494,
+      "name": "Educational Codeforces Round 105 (Rated for Div. 2)",
+      "date": "2021-03-02",
+      "url": "https://codeforces.com/contest/1494",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1494A",
+          "index": "A",
+          "slot": "A",
+          "title": "ABC String",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1494/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/88344",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由 A、B、C 组成且长度为偶数的字符串，需要为每个字母统一指定左括号或右括号，并将所有出现位置按此替换。判断能否得到合法括号序列，即任意前缀左括号不少于右括号，且总数相等。",
+          "transformedStatement": "把问题视为给三种字母各选定一种括号类型的映射问题：合法结果要求首字母对应左括号、末字母对应右括号，并且左右括号数量各为 $n/2$；确定映射后再验证前缀余额条件。",
+          "keyObservations": [
+            "合法括号序列首字符必须映射为左括号、末字符必须映射为右括号，因此若原串首尾字母相同，就无法满足这两个必要条件。",
+            "合法括号序列左右括号数量各为 $n/2$；固定首尾字母的映射后，可用剩余字母的出现次数判断它应映射成哪类括号，避免枚举全部映射。",
+            "映射后的字符串只有在每个前缀左括号数不少于右括号数、且总数相等时才是合法括号序列，这将最终验证化为线性扫描。"
+          ],
+          "solutionBrief": "先要求首尾字母分别映射为左、右括号，再利用各类字母的数量确定剩余字母的映射；若映射有歧义且剩余字母未出现，可任意指定。随后扫描生成的括号串，检查每个前缀余额非负且最终余额为零，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1494B",
+          "index": "B",
+          "slot": "B",
+          "title": "Berland Crossword",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1494/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/88344",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定边长为 $n$ 的方格，初始所有格子为白色；可以把边界上的若干格子涂黑。题目要求检查是否能使上、右、下、左四条边各自恰有 $U,R,D,L$ 个黑格。",
+          "transformedStatement": "把四个角的颜色作为唯一需要联合考虑的选择：黑角同时给相邻两边贡献计数，剩下的非角边界格分别独立补足各边的需求。于是只需检查每种角状态下各边的剩余需求是否可由 $n-2$ 个格子实现。",
+          "keyObservations": [
+            "角格若涂黑，会同时计入相邻的两条边；非角边界格则只影响所在的一条边，因此角格是各边计数之间唯一的耦合。",
+            "固定四个角的黑白状态后，每条边剩余必须由非角格提供的数量就确定了；只有该数量落在 $0$ 到 $n-2$ 之间时才可完成涂色。",
+            "四个角只有 $2^4$ 种状态，逐一检查即可覆盖所有可能方案，且其余边界格的选择彼此独立。"
+          ],
+          "solutionBrief": "枚举四个角是否涂黑。对每种状态，从 $U,R,D,L$ 中分别减去相邻黑角的数量；若四个剩余需求都在 $[0,n-2]$ 内，则非角边界格可以补足，答案为 YES，否则继续枚举。每组复杂度为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1494C",
+          "index": "C",
+          "slot": "C",
+          "title": "1D Sokoban",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1494/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/88344",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "整数线上有若干箱子和特殊位置，箱子起始位置与特殊位置均互不相同且都不在原点；你从原点出发，每步向左或向右，遇到箱子只能沿推动方向推它，若前方还有箱子则连锁推动，不能穿过或拉动箱子。可移动任意步，要求最多让多少个箱子最终位于特殊位置。",
+          "transformedStatement": "由于箱子不能被拉过原点，左右两侧互不影响，目标可拆成两侧答案之和。单侧可抽象为选择最左箱子的对齐特殊位置；它与后续箱子形成的推挤堆覆盖一段特殊位置，堆后的箱子则按原本已对齐的数量计分。",
+          "keyObservations": [
+            "只能推不能拉，因此负数位置的箱子无法到达正数位置，正负两侧互不影响，可以分别求解后相加。",
+            "在正数一侧，向左移动不会带来额外收益；最优情况可调整为让最左边的箱子落在某个特殊位置，从而只需枚举这类对齐位置。",
+            "把被连续推成一堆的箱子与其后的箱子分开后，堆中能覆盖的特殊位置数，加上堆后仍在特殊位置上的箱子数，就是该方案的得分。",
+            "随着对齐位置递增，堆的边界和堆下方特殊位置的边界都单调移动；用双指针维护这两处边界及后缀已有匹配数，便可在线性时间比较所有方案。"
+          ],
+          "solutionBrief": "将正负两侧分开处理，并对正数侧枚举最左箱子最终对齐的特殊位置。维护被推成一堆的箱子数量、堆覆盖的特殊位置数量，以及堆后原本就在特殊位置上的箱子数，取各方案最大值；双指针使每侧处理为线性时间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1494D",
+          "index": "D",
+          "slot": "D",
+          "title": "Dogeforces",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1494/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/88344",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dfs and similar",
+            "divide and conquer",
+            "dsu",
+            "greedy",
+            "sortings",
+            "trees"
+          ],
+          "statementBrief": "给定公司中所有底层员工两两之间最近共同主管的工资，其中对角线给出员工自己的工资。公司结构是一棵主管树，每名主管至少有两名下属；需要输出一棵工资满足这些数据的公司树，包括所有员工工资、总主管以及每名员工的直接主管。",
+          "transformedStatement": "把底层员工视为树叶，并递归恢复每个叶子集合对应的子树：集合内最大的两两共管者工资确定该子树根，低于根工资的叶子对必须归入同一个根子树，从而得到分组并继续递归。",
+          "keyObservations": [
+            "在当前子树的叶子集合中，最大两两共管者工资就是该子树根的工资：至少有两个子节点，因此存在一对叶子的最近共同主管正是这个根。",
+            "若一对叶子的已知共管者工资低于当前根工资，它们必在根的同一个子树中；据此可将叶子分组，作为根的各个子树。",
+            "递归处理每个分组即可恢复内部结构；分组只剩一个叶子时，该子树已经是原始员工，无需再创建主管。"
+          ],
+          "solutionBrief": "从全部底层员工开始递归建树。每个叶子集合中取两两共管者工资的最大值作为新主管工资，再按低于该值的共管关系将叶子划分到不同子树；集合为单个叶子时直接停止。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1494E",
+          "index": "E",
+          "slot": "E",
+          "title": "A-Z Graph",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1494/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/88344",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "graphs",
+            "hashing"
+          ],
+          "statementBrief": "给定一个初始为空的有向字符标记图，需要处理加入边、删除边和查询。每次查询给出 $k$，要求判断能否选出 $k$ 个顶点，使沿所选顺序行走与沿相反顺序行走得到的边标签字符串相同。",
+          "transformedStatement": "查询可化为检查图中是否存在一对双向边：$k$ 为奇数时任意标签组合均可，$k$ 为偶数时这对边的标签必须相同。于是无需搜索顶点序列，只需动态维护两类双向边对是否存在。",
+          "keyObservations": [
+            "若正向序列与反向序列产生相同字符串，首段边必须有对应的反向边，因此任何可行序列都要求存在一对双向边。",
+            "当顶点数 $k$ 为奇数时，只要存在任意一对双向边，就能在这两个顶点间交替构造回文序列，使两方向产生相同字符串。",
+            "当 $k$ 为偶数时，中间边在反向路线中会与其反向边对应，二者标签必须相同；所以只有标签相同的双向边能构造可行序列。",
+            "每条有向边只属于一个无序顶点对，因此可以分别维护标签相同和不同的双向边集合，更新后按 $k$ 的奇偶检查对应集合是否非空。"
+          ],
+          "solutionBrief": "维护双向边标签相同与不同的顶点对。插入或删除边时更新对应集合；查询 $k$ 为奇数时检查任一集合非空，为偶数时只检查标签相同集合非空。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1494F",
+          "index": "F",
+          "slot": "F",
+          "title": "Delete The Edges",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1494/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/88344",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "给定一个连通无向图，从任意顶点开始沿边行走；每经过一条边就删除它。行走中至多一次可在顶点处切换模式，切换后经过的边按先保留、再删除的顺序交替处理，不能切回原模式。要求判断能否删除所有边，并在可行时输出一串操作。",
+          "transformedStatement": "把被删除的边分成切换前的子图 $G_1$ 和切换后的子图 $G_2$：$G_1$ 必须存在以切换点为终点的欧拉路，而 $G_2$ 必须是以该点为中心的星形。于是问题转为枚举中心并调整其邻边归属，使 $G_1$ 满足欧拉路条件。",
+          "keyObservations": [
+            "切换前走过并删除的边必须能组成一条以切换点为终点的欧拉路，因此其连通性和奇度点数决定了这部分能否连续走完。",
+            "切换后被删除的边必然构成以切换点为中心的星形：从后往前看，每条被删除边前后都要沿同一条边往返。",
+            "固定星形中心后，只需考虑中心的邻边如何分配；先让各邻点在切换前子图中的度数为偶数，再逐条翻转邻边状态检查，足以覆盖可行分配。",
+            "无需同时翻转两条邻边：若当前奇度点已不少于两个，翻转两条边不能改善条件；若为零，翻转后产生的奇点也无法让欧拉路以中心为终点。"
+          ],
+          "solutionBrief": "枚举切换点作为星形中心，将其邻边划分到切换前后两部分。对切换前子图先使非中心邻点尽量为偶度，再逐条尝试翻转邻边，并检查是否存在以中心为终点的欧拉路；找到后按欧拉路和星形往返顺序构造操作。整体检查次数为 $O(n+m)$，总复杂度为 $O((n+m)^2)$ 或 $O((n+m)^2\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
