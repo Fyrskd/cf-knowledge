@@ -15,19 +15,303 @@
     ]
   },
   "summary": {
-    "total_problems": 4112,
+    "total_problems": 4119,
     "source_total_problems": 4119,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4112,
-    "with_editorial_brief": 3766,
-    "with_solution_brief": 3768,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4119,
+    "with_editorial_brief": 3773,
+    "with_solution_brief": 3775,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3174,
+    "ai_override_count": 3181,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1512A",
+      "contest_id": 1512,
+      "title": "Spy Detected!",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1512/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/89535",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "implementation"
+      ],
+      "statement_brief": "每组给定一个长度至少为 $3$ 的正整数数组，保证其中恰有一个元素与其他所有元素不同。数组下标从 $1$ 开始，要求输出这个不同元素的下标。",
+      "transformed_statement": "将问题转化为识别数组中出现次数为 $1$ 的数值，再返回该数值所在的位置；题解只需区分至多两个候选值并统计它们的频次。",
+      "key_observations": [
+        "题目保证只有一个元素与其余元素不同，因此数组中出现一次的那个值就是异常值；找到它后即可确定答案位置。",
+        "长度至少为 $3$，所以任选前三个元素就能找到至少两个相同的值，它们可作为多数值的候选，从而避免统计数组中所有不同值。",
+        "题解维护至多两个数值及其出现次数，最终选择出现次数为 $1$ 的数值，并输出它在数组中的位置。"
+      ],
+      "solution_brief": "遍历数组，统计至多两个不同数值的出现次数；找出出现一次的数值后，再定位它的下标并输出。由于题目保证只有一个异常元素，该值必然只出现一次。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:15:10+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1512B",
+      "contest_id": 1512,
+      "title": "Almost Rectangle",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1512/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/89535",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "implementation"
+      ],
+      "statement_brief": "给定一个 $n\\times n$ 方格，其中恰有两个格子已标记。需要再标记两个格子，使四个标记成为边平行于方格边的矩形四个顶点；保证总能完成，若有多种方案可输出任意一种。",
+      "transformed_statement": "将两个已标记格视为矩形的两个顶点：若它们同行或同列，就在另一条可用行或列上复制对应坐标；若行列都不同，则它们是对角顶点，另外两个顶点由行列坐标交叉确定。",
+      "key_observations": [
+        "若两个已标记格同行，只需选取另一行，并在两个原有列上补标，四个格便构成轴对齐矩形。",
+        "若两个已标记格同列，可对称地选取另一列，并在两个原有行上补标。",
+        "若两个已标记格既不同排也不同列，它们已是矩形的一组对角顶点，补上另外两个交叉位置即可。"
+      ],
+      "solution_brief": "找出两个已标记格的位置。同行时选另一行补上相同两列；同列时选另一列补上相同两行；否则补上两个位置坐标交叉形成的格子。输出补标后的方格。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:15:00+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1512C",
+      "contest_id": 1512,
+      "title": "A-B Palindrome",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1512/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/89535",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "implementation",
+        "strings"
+      ],
+      "statement_brief": "给定一个只含 0、1、? 的长度为 $a+b$ 的字符串，以及目标计数 $a$ 和 $b$。需要把每个问号独立替换为 0 或 1，使字符串成为回文，且恰有 $a$ 个 0、$b$ 个 1；任意输出一种可行替换，无解时报告无解。",
+      "transformed_statement": "把字符串按中心拆成对称位置：每一对最终必须是相同字符，已知字符决定对应问号的取值；完成这些约束后，只需判断剩余问号对能否恰好消耗剩余的 0、1 配额，并单独处理可能存在的中心位。",
+      "key_observations": [
+        "回文要求关于中心对称的位置字符相同，因此已知字符会直接确定对侧的问号；已知字符互不相同的对称位置则不可能修复。",
+        "处理已知字符后，剩余问号成对出现，只有奇数长度字符串的中心位置可能单独剩余；中心位必须使用数量为奇数的那种字符。",
+        "每填一对问号会同时消耗两个相同字符的配额，因此剩余的 0 和 1 数量都必须非负且为偶数，才能继续成对填充。"
+      ],
+      "solution_brief": "先按回文对称性复制已知字符，并检查对称已知字符是否冲突；再根据剩余配额确定中心问号。最后将成对问号按剩余的 0、1 配额填充，若配额无法满足成对填充则输出无解。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:14:51+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1512D",
+      "contest_id": 1512,
+      "title": "Corrupted Array",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1512/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/89535",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "data structures",
+        "greedy"
+      ],
+      "statement_brief": "给定 $n+2$ 个数，它们由原数组的 $n$ 个元素、原数组元素之和以及另一个额外数混合而成。要求找出任意一个可能的原数组；若不存在则报告无解。",
+      "transformed_statement": "将输入总和记为 $B$，若某个输入元素 $A$ 是原数组元素之和，则另一个额外数必为 $B-2A$。问题因此转化为枚举 $A$，检查这个差值是否也出现在输入中，并移除这两个数。",
+      "key_observations": [
+        "若把候选的数组和记为 $A$，则输入总和 $B$ 等于 $2A$ 加上另一个多出的数，因此另一个多出的数只能是 $B-2A$。",
+        "枚举哪个元素充当 $A$ 后，只需检查 $B-2A$ 是否也在数组中；两者都存在时，删除这两个元素，剩余元素就是候选原数组。"
+      ],
+      "solution_brief": "计算所有输入元素之和 $B$，逐个尝试将一个元素 $A$ 视为原数组元素之和，并检查 $B-2A$ 是否在输入中。若存在，就删除这两个多余元素并输出剩余元素；否则输出无解标记。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:14:40+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1512E",
+      "contest_id": 1512,
+      "title": "Permutation by Sum",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1512/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/89535",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "brute force",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定 $n,l,r,s$，要构造 $1$ 到 $n$ 的一个排列，使位置区间 $[l,r]$ 上的数之和为 $s$；若有多个答案可任意输出，没有可行排列则报告无解。",
+      "transformed_statement": "先不考虑这些数具体放在哪些位置，而是从 $1$ 到 $n$ 中选出恰好 $r-l+1$ 个互不相同的数，使其和为 $s$。选出的数填入区间后，未选数字再填入区间外即可。",
+      "key_observations": [
+        "长度为 $k$ 的不同正整数子集，最小和与最大和分别是 $1+\\cdots+k$ 和 $n-k+1+\\cdots+n$，两者之间的每个整数和都可实现，因此只需判断并构造区间位置上的数值集合。",
+        "从大到小考虑数字 $i$ 时，若选入后剩余的 $k-1$ 个数仍能达到剩余目标和，就可以安全选取；否则跳过 $i$，不会破坏后续可行性。",
+        "一旦选出恰好 $r-l+1$ 个数且总和为目标值，其余数字可任意填入其他位置，因为题目没有对区间外的排列顺序施加限制。"
+      ],
+      "solution_brief": "令区间长度为 $k=r-l+1$，按 $n$ 到 $1$ 检查数字。若选择当前数字后，剩余 $k-1$ 个数仍满足可达和的上下界，就将其加入目标集合并更新剩余数量与和；最后若恰好选够且剩余和为零，则把这些数放入 $[l,r]$，其余数填入其他位置，否则输出无解。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:14:26+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1512F",
+      "contest_id": 1512,
+      "title": "Education",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1512/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/89535",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "dp",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "Polycarp 从职位 1 开始，初始资金为 0；公司有 $n$ 个职位，第 $i$ 个职位的日薪为 $a_i$，并给出相邻职位间的参数 $b_i$。题目要求在职位晋升和工作攒钱的规则下，求他最早经过多少天能买下价格为 $c$ 的电脑；但所给题面没有完整写出每天可进行的操作及 $b_i$ 的具体含义。",
+      "transformed_statement": "不必枚举升职与工作的任意交错顺序：对每个可能的最终工作职位，采用尽早到达该职位的方案，再计算到达后攒够电脑费用所需的时间，并比较这些方案的总天数。",
+      "key_observations": [
+        "由于各职位的日薪不下降，越早升到某职位，之后累计收入就不会更少，因此只需考虑每个职位都尽早到达的方案。",
+        "把目标拆成“先升到某个职位，再在该职位工作到买得起电脑”，逐一计算各职位对应的总天数，最小值就是答案。"
+      ],
+      "solution_brief": "依次考虑最终工作的职位。利用尽早升职不劣的性质，计算到达该职位所需时间和资金，再计算以该职位日薪攒够电脑费用所需时间，取所有方案的最小总天数。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:14:14+00:00",
+          "quality_flags": [
+            "statement_inferred"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1512G",
+      "contest_id": 1512,
+      "title": "Short Task",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1512/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/89535",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "dp",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定多个正整数 $c$，其中 $d(n)$ 表示 $n$ 的所有正因数之和。对每个 $c$，求满足 $d(n)=c$ 的最小正整数 $n$；若不存在则报告无解。",
+      "transformed_statement": "由于 $n$ 是自身的因数，任何满足 $d(n)=c$ 的数都不超过 $c$，因此可把每个查询转化为查表：预处理范围内每个 $n$ 的因数和，并为每个可能的因数和保存最小的对应下标。",
+      "key_observations": [
+        "因为正整数 $n$ 本身就是 $d(n)$ 的一个因数，所以 $n\\le d(n)$；对所有可能的输入 $c\\le 10^7$，只需预处理 $n\\le 10^7$。",
+        "多个 $n$ 可能具有相同的因数和，因此预处理时对每个 $d(n)$ 记录最小的 $n$，即可直接回答查询并保证满足最小值要求。"
+      ],
+      "solution_brief": "预先计算所有 $1\\le n\\le 10^7$ 的因数和 $d(n)$，并为每个因数和记录对应的最小 $n$。可用筛法计算因数和；也可结合线性筛和 $d$ 的互乘性计算。查询时输出记录值，若没有对应值则输出题目要求的无解标记。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:13:59+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 8,
       "problem_key": "1513A",
