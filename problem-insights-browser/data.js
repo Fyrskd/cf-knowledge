@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4223,
+    "total_problems": 4230,
     "source_total_problems": 4230,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4223,
-    "with_editorial_brief": 3864,
-    "with_solution_brief": 3866,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4230,
+    "with_editorial_brief": 3871,
+    "with_solution_brief": 3873,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3285,
+    "ai_override_count": 3292,
     "primary_topic_count": 13,
-    "contest_count": 658,
+    "contest_count": 659,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1379,
+    "构造与贪心": 1384,
+    "数论与同余": 444,
+    "数据结构": 396,
     "几何": 98,
     "交互": 127,
     "图论与网络流": 285,
     "树结构": 197,
-    "数论与同余": 443,
     "字符串": 227,
     "基础实现与模拟": 258,
-    "数据结构": 395,
     "博弈": 120,
     "动态规划与状态设计": 345,
     "组合计数与概率": 323,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2859,
+    "ai_generated_with_editorial": 2866,
     "ai_generated_partial_editorial": 114,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -129768,6 +129768,210 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "将树定根，为每条给定路径求 LCA，并记录它从 LCA 延伸到的子树。分别统计相同 LCA 与不同 LCA 的交点对：前者用容斥排除共享子树的路径对，后者统计跨过固定 LCA 的路径并扣除进入相同子树的情况；所需计数可用小并大或子树动态规划维护。题解未完整展开边界计数细节。",
           "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1490,
+      "name": "Codeforces Round 702 (Div. 3)",
+      "date": "2021-02-16",
+      "url": "https://codeforces.com/contest/1490",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "1490A",
+          "index": "A",
+          "slot": "A",
+          "title": "Dense Array",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1490/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/87874",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个正整数数组，可以在数组任意位置插入正整数。要求最终每对相邻元素中，较大值不超过较小值的两倍，求使数组满足该条件所需插入的最少元素数。",
+          "transformedStatement": "把目标数组拆成各对原相邻元素之间的连接问题：插入只会影响所在间隙，因此总答案是每个间隙独立所需插入数之和；对每个间隙，从较小值开始逐次倍增直到能接上较大值。",
+          "keyObservations": [
+            "在原数组相邻两数之间插入元素，不会改变其他位置的相邻关系，因此每一对原相邻元素可以独立计算所需插入数。",
+            "对不满足条件的一对数，令较小值为 $x$、较大值为 $y$；每次把当前较小端扩大到两倍，直到它与 $y$ 的比值不超过 $2$，这些中间值就能形成合法连接。",
+            "每次插入都至多把当前较小端扩大一倍，所以逐次倍增得到的插入数量也是这对数所需的最少数量。"
+          ],
+          "solutionBrief": "逐对检查原数组中的相邻元素。若较大值超过较小值的两倍，就将较小值反复乘以 $2$，每次计入一个插入数，直到满足限制；累加所有相邻对的计数即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1490B",
+          "index": "B",
+          "slot": "B",
+          "title": "Balanced Remainders",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1490/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/87874",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$（且 $n$ 能被 $3$ 整除）的数组，每步可以任选一个元素并将其加 $1$，同一元素可以重复选择。求最少操作次数，使数组中除以 $3$ 余 $0、1、2$ 的元素数量相等。",
+          "transformedStatement": "将数组抽象为三个余数类的计数 $(c_0,c_1,c_2)$：一次操作就是把一个计数单位从第 $i$ 类循环转移到第 $(i+1)\\bmod 3$ 类，目标是使每类计数均为 $n/3$。",
+          "keyObservations": [
+            "具体的数组值不影响答案；一次操作只会让余数为 $i$ 的元素数量减 $1$，并让余数为 $(i+1)\\bmod 3$ 的数量加 $1$，因此只需跟踪三个余数的计数。",
+            "若某类余数数量超过目标 $n/3$，就把其中一个元素加 $1$，将它转入下一类；持续转移超额数量即可使三类计数相等，每次转移恰好对应一次操作。"
+          ],
+          "solutionBrief": "统计 $c_0,c_1,c_2$，目标是让每项变为 $n/3$。只要存在数量超过 $n/3$ 的余数类，就对该类中的一个元素加 $1$，并更新该类及下一类的计数；操作次数即为所需最少步数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1490C",
+          "index": "C",
+          "slot": "C",
+          "title": "Sum of Cubes",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1490/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/87874",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $x$，判断是否存在两个正整数 $a,b$，使得 $a^3+b^3=x$。每组数据只需回答能否找到这样的一对数。",
+          "transformedStatement": "枚举其中一个正整数 $a$ 后，问题等价于判断剩余值 $x-a^3$ 是否为正整数的立方；由 $a^3\\le x$，枚举范围可限制在 $1\\le a\\le\\sqrt[3]{x}$。",
+          "keyObservations": [
+            "因为 $a^3$ 和 $b^3$ 都是正数，必有 $a^3\\le x$，所以候选 $a$ 只需从 $1$ 枚举到 $\\sqrt[3]{x}$，范围很小。",
+            "固定 $a$ 后，剩余部分必须恰为 $b^3=x-a^3$；因此只需判断这个正数是否为某个正整数的立方，无须同时枚举 $a$ 和 $b$。"
+          ],
+          "solutionBrief": "对每个 $a=1$ 到 $\\lfloor\\sqrt[3]{x}\\rfloor$，计算 $x-a^3$，并检查它是否为正整数立方；若有一项满足则输出 YES，否则输出 NO。题解指出 $x\\le 10^{12}$，因此 $a\\le 10^4$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1490D",
+          "index": "D",
+          "slot": "D",
+          "title": "Permutation Transformation",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1490/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/87874",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dfs and similar",
+            "divide and conquer",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由 $1$ 到 $n$ 组成的排列：对每个连续区间，以其中最大值为根，并将最大值左、右两侧的子数组分别按同样规则建成左右子树。求最终树中每个排列位置对应节点的深度，根的深度为 $0$。",
+          "transformedStatement": "将建树过程表示为区间与当前深度组成的状态：每个区间的最大值位置就是该区间子树的根，其余元素归入根两侧的子区间，递归深度每次加一。",
+          "keyObservations": [
+            "每个子数组中的最大值必然是该子树的根，因此无需显式维护树结构，只需递归划分区间。",
+            "根的位置将区间分成左右两个互不相交的子数组；两侧子树的根深度都比当前根多 $1$，所以可直接在分治过程中填写各位置的深度。"
+          ],
+          "solutionBrief": "从整个数组开始，找到当前区间最大值，将其深度设为当前深度；再对它左右两侧的非空区间递归处理，深度各增加 $1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1490E",
+          "index": "E",
+          "slot": "E",
+          "title": "Accidental Victory",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1490/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/87874",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 名玩家，每人持有一定数量的筹码，整个锦标赛进行 $n-1$ 场比赛，随机决策彼此独立且等概率；最终仍有筹码的玩家获胜。要求找出所有获胜概率非零的玩家，并按输入顺序编号递增输出。",
+          "transformedStatement": "把玩家按筹码数排序后，问题可转化为寻找哪些玩家能够先连续击败所有更弱的玩家，再有机会成为最后的获胜者。题解指出，可行玩家在排序后构成一个后缀，边界可通过前缀筹码和检查并二分确定；但给定题面没有说明单场比赛的具体规则细节。",
+          "keyObservations": [
+            "候选玩家必须能参与所有比赛；否则若提前出局，就无法继续积累筹码来应对更强的对手。",
+            "将玩家按筹码数排序后，若某个玩家能击败排在他之前的所有人，那么筹码更多的相邻玩家也能做到；两者随后面对更强对手时可用的筹码总量相同，因此可行玩家构成排序后的一个后缀。",
+            "检查候选玩家时，可以先让他依次应对所有更弱玩家；排序后只需判断较弱玩家的筹码总和能否支撑他继续应对下一个玩家。"
+          ],
+          "solutionBrief": "按筹码数排序，并用前缀和检查候选玩家能否连续应对所有更弱玩家。可行性具有后缀单调性，因此可二分找到第一个可能获胜的位置，输出该位置及之后玩家的原编号。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1490F",
+          "index": "F",
+          "slot": "F",
+          "title": "Equalize the Array",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1490/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/87874",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组，可以删除任意元素。删除后，数组中每个数都必须出现 $0$ 次或同一个正整数 $C$ 次；求使数组满足这一条件的最少删除元素数。",
+          "transformedStatement": "把数组转为各个不同数的出现频次；问题变为选择一个目标频次 $C$，将小于 $C$ 的频次全部删掉、将不小于 $C$ 的频次削减到 $C$，并使总删除量最小。",
+          "keyObservations": [
+            "若某个频次没有任何数恰好达到它，就不必把它作为目标频次：选择它只会留下可进一步删除的元素，因此候选目标频次只需考虑数组中实际出现过的频次。",
+            "固定目标频次 $C$ 后，出现少于 $C$ 次的数必须全部删除，出现至少 $C$ 次的数则保留 $C$ 个；删除数因此是两部分之和：$\\sum_{cnt_x<C}cnt_x+\\sum_{cnt_x\\ge C}(cnt_x-C)$。",
+            "将所有数的出现频次排序并建立前缀和后，任一候选 $C$ 的两部分删除量都能通过分界位置和区间和计算，避免对每个候选值重新遍历全部频次。"
+          ],
+          "solutionBrief": "统计每个不同数的出现次数，只枚举这些频次作为目标 $C$。对每个 $C$，删除所有频次小于 $C$ 的数，并将其余频次削减到 $C$；排序频次并用前缀和计算各候选的删除总数，取最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1490G",
+          "index": "G",
+          "slot": "G",
+          "title": "Old Floppy Drive ",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1490/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/87874",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "math"
+          ],
+          "statementBrief": "磁盘上按顺序写有 $n$ 个整数，驱动器反复循环读取它们并累加；给定目标 $x$，询问累计和首次达到或超过 $x$ 时经过了多少秒。若累计和永远达不到目标，则报告无限运行。",
+          "transformedStatement": "把读取过程拆为完整循环和当前循环内的前缀：经过 $k$ 轮并读到位置 $i$ 时，累计和为 $kS+pref[i]$。于是每个询问先确定需要的完整轮数，再转化为在单轮前缀和中寻找第一个达到剩余目标的位置；无法达到的情形单独判为无限。",
+          "keyObservations": [
+            "经过完整的 $k$ 轮后，累计和等于 $kS$，其中 $S$ 是整轮总和；轮内第 $i$ 个位置的累计和因此是 $kS+pref[i]$，把循环过程拆成整轮贡献和轮内前缀贡献。",
+            "若所有轮内前缀和都小于目标且 $S\\le 0$，之后累计和也不可能首次达到目标，因此运行时间为无限；否则总和必须为正，答案存在。",
+            "当 $S>0$ 时，选取足够多的整轮，使目标降到最大前缀和可达到的范围内；再在轮内寻找第一个达标前缀即可，避免逐轮模拟。",
+            "轮内若某个前缀和不大于此前出现过的前缀和，它不可能比此前位置更早达标，因此可删去这类位置，使保留的前缀值递增并能二分查找。"
+          ],
+          "solutionBrief": "计算整轮总和及各位置前缀和。若最大前缀仍小于目标且整轮总和非正，答案为无限；否则利用正的整轮总和确定所需完整轮数，将目标换算到单轮内，再对去除被支配位置后的递增前缀和二分，得到首次达标时间。",
+          "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
       ]
