@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4202,
+    "total_problems": 4211,
     "source_total_problems": 4211,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 4202,
-    "with_editorial_brief": 3844,
-    "with_solution_brief": 3846,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4211,
+    "with_editorial_brief": 3853,
+    "with_solution_brief": 3855,
     "missing_editorial_brief": 356,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3264,
+    "ai_override_count": 3273,
     "primary_topic_count": 13,
-    "contest_count": 655,
+    "contest_count": 656,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1369,
+    "基础实现与模拟": 258,
+    "构造与贪心": 1374,
+    "树结构": 196,
+    "交互": 125,
+    "数据结构": 395,
     "图论与网络流": 284,
-    "基础实现与模拟": 257,
     "字符串": 226,
     "数论与同余": 442,
-    "交互": 124,
     "几何": 97,
     "博弈": 120,
-    "树结构": 195,
-    "数据结构": 394,
     "动态规划与状态设计": 345,
     "组合计数与概率": 323,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2840,
+    "ai_generated_with_editorial": 2849,
     "ai_generated_partial_editorial": 113,
     "missing_editorial": 356,
     "low_confidence": 1,
@@ -129144,6 +129144,273 @@ window.CF_INSIGHTS_DATA = {
             "无需同时翻转两条邻边：若当前奇度点已不少于两个，翻转两条边不能改善条件；若为零，翻转后产生的奇点也无法让欧拉路以中心为终点。"
           ],
           "solutionBrief": "枚举切换点作为星形中心，将其邻边划分到切换前后两部分。对切换前子图先使非中心邻点尽量为偶度，再逐条尝试翻转邻边，并检查是否存在以中心为终点的欧拉路；找到后按欧拉路和星形往返顺序构造操作。整体检查次数为 $O(n+m)$，总复杂度为 $O((n+m)^2)$ 或 $O((n+m)^2\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1491,
+      "name": "Codeforces Global Round 13",
+      "date": "2021-02-28",
+      "url": "https://codeforces.com/contest/1491",
+      "type": "Global",
+      "problemCount": 9,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1491A",
+          "index": "A",
+          "slot": "A",
+          "title": "K-th Largest Value",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1491/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/88248",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个只含 $0$ 和 $1$ 的数组，需要依次处理两类操作：把指定位置的元素在 $0$ 与 $1$ 之间切换，或询问当前数组的第 $k$ 大值。对每次询问输出该值。",
+          "transformedStatement": "由于所有元素只有 $0$ 和 $1$，数组排序后的第 $k$ 个元素只由 $1$ 的总数决定：前面至多有这些 $1$，所以判断其数量是否达到 $k$ 即可回答查询。整个过程可抽象为维护一个随切换操作变化的计数器，并据此回答阈值判断。",
+          "keyObservations": [
+            "数组元素只有 $0$ 和 $1$，因此第 $k$ 大元素只取决于数组中 $1$ 的总数，无需维护元素顺序。",
+            "若当前有至少 $k$ 个 $1$，第 $k$ 大值就是 $1$；否则就是 $0$，查询可直接由计数判断。",
+            "修改操作会把指定位置的值在 $0$ 与 $1$ 之间切换，因此只需根据原值增减 $1$ 的数量，并同步更新该位置。"
+          ],
+          "solutionBrief": "维护数组中 $1$ 的数量。收到修改时切换指定元素并相应调整计数；收到第 $k$ 大值查询时，若 $1$ 的数量不少于 $k$ 就输出 $1$，否则输出 $0$。总复杂度为 $O(n+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1491B",
+          "index": "B",
+          "slot": "B",
+          "title": "Minimal Cost",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1491/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/88248",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "网格有 $n$ 行，起点为第 $1$ 行第 $0$ 列，终点为第 $n$ 行第 $10^6+1$ 列；每行各有一个障碍，位于给定列 $a_i$。可以把障碍移动到相邻的空格，移动代价由方向决定（竖直为 $u$、水平为 $v$），要求求出使起点到终点存在不经过障碍的路径所需的最小总费用。",
+          "transformedStatement": "将通路是否受阻归结为相邻两行障碍列的距离：先检查是否已有至少两列的间隔可供绕行；若没有，再依据相邻障碍列差为 $0$ 或 $1$ 计算打通该处所需的最小费用，并取其中最小值。",
+          "keyObservations": [
+            "只需检查相邻两行障碍的列差：若差至少为 $2$，两行间已有绕行空间，因此无需移动障碍，费用为 $0$。",
+            "若相邻障碍列差为 $1$，通路只需在这两行间绕开一个障碍；移动障碍或横向调整的较低代价是 $\\min(u,v)$。",
+            "若所有相邻障碍都在同一列，最窄处必须先横向移开障碍，再付出一次较便宜的调整代价，因此总费用为 $v+\\min(u,v)$。"
+          ],
+          "solutionBrief": "遍历每对相邻行，根据障碍列差分别得到候选费用：差至少为 $2$ 时为 $0$，差为 $1$ 时为 $\\min(u,v)$，差为 $0$ 时为 $v+\\min(u,v)$；答案取所有候选费用的最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1491C",
+          "index": "C",
+          "slot": "C",
+          "title": "Pekora and Trampoline",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1491/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/88248",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "一排有 $n$ 个蹦床，第 $i$ 个强度为 $S_i$。每趟可任选一个位置起跳；踩到强度为 $S_i$ 的蹦床后，会跳到 $i+S_i$，并将该强度减至至少 $1$，之后必须继续跳，直到落在队列外。求把所有强度降为 $1$ 所需的最少趟数。",
+          "transformedStatement": "把每趟起点视为一项操作，并利用操作顺序可交换这一性质，将它们按位置递增处理。于是问题转为从左到右计算每个蹦床还需多少次踩踏，并把它造成的后续踩踏影响累加到对应位置。",
+          "keyObservations": [
+            "各趟经过的跳跃路径只取决于每个蹦床被踩的次数，与这些趟的执行顺序无关；因此可把起点按位置递增排列，逐个处理当前最靠左且仍需削弱的蹦床。",
+            "处理位置 $i$ 时，已有的 $C_i$ 次踩踏会使强度降低相同次数；若仍不足以降到 $1$，只需额外补足 $S_i-1-C_i$ 次，答案便是所有位置所需补次数之和。",
+            "当前蹦床每次被踩后，下一跳位置会随强度递减而向左移动：前若干次分别落到 $i+S_i-1,i+S_i-2,\\ldots$，剩余踩踏则落到 $i+1$；据此可以把这些影响批量记入后续位置的踩踏计数。"
+          ],
+          "solutionBrief": "按位置从左到右处理蹦床，维护每个位置已获得的踩踏次数。若当前次数不足以将强度降至 $1$，补足差额并计入答案；再依据每次跳跃落点随强度变化的规律，将踩踏影响累加到后续位置，整体用 $O(n^2)$ 时间模拟。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1491D",
+          "index": "D",
+          "slot": "D",
+          "title": "Zookeeper and The Infinite Zoo",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1491/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/88248",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "图的顶点是正整数；从 $u$ 可以沿有向边到 $u+v$，当且仅当 $u\\&v=v$。对每组给定的起点 $u$ 和终点 $v$，判断能否沿这些边从 $u$ 到达 $v$。",
+          "transformedStatement": "把一次边操作拆成只增加一个二进制位的操作后，问题等价于判断起点的置位能否一一匹配到目标的置位，且每个起点置位的位置不高于所匹配的目标位置；多余的置位可在进位过程中合并，同时要求起点数值不大于目标数值。",
+          "keyObservations": [
+            "任意一次合法加法都能拆成若干次只加单个 $2^k$ 的操作，因此只需研究单比特进位，而不必考虑一般的增量。",
+            "单比特操作会把二进制中的 $01\\ldots11$ 变成 $10\\ldots00$，所以比特只能向更高位移动，且多个比特可以在进位中合并。",
+            "目标数每个低位前缀中的 $1$ 数量不能超过起点对应前缀的数量；否则目标所需的某个比特无法由更低或相同位置的起点比特提供。",
+            "还需满足起点不大于目标；在此前提下，若目标的每个置位都能匹配到起点中不高于它的一个置位，就能通过移动和合并构造出目标。"
+          ],
+          "solutionBrief": "将合法边拆成只增加单个 $2^k$ 的操作，转化为二进制比特向高位移动或在进位中合并。对每组询问检查起点不大于目标，并从低位向高位扫描，确保起点累计置位数始终不少于目标；满足则可达。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1491E",
+          "index": "E",
+          "slot": "E",
+          "title": "Fib-tree",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1491/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/88248",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dfs and similar",
+            "divide and conquer",
+            "number theory",
+            "trees"
+          ],
+          "statementBrief": "给定一棵有 $n$ 个顶点的树。若顶点数是某个斐波那契数，且能反复切断一条边，将树分成两棵同样符合该定义的树，则称它为 Fib-tree；判断给定树是否为 Fib-tree。",
+          "transformedStatement": "把判定过程递归化：大小为 $F_i$ 的当前树必须通过一条边分成大小分别为 $F_{i-1}$ 和 $F_{i-2}$ 的两部分，再分别验证两部分；每次切分后的子树规模由斐波那契递推唯一确定。",
+          "keyObservations": [
+            "斐波那契数满足的拆分等式只有 $F_i=F_{i-1}+F_{i-2}$，因此每次合法切分都必须把当前树分成这两种大小。",
+            "若一条边能把大小为 $F_i$ 的 Fib-tree 分成 $F_{i-1}$ 和 $F_{i-2}$，切开后两侧仍可继续分解；题解用归纳说明，即使存在多个候选边，任选一条都不会破坏可行性。",
+            "当前树中一条边两侧的大小可通过以任意点为根计算子树大小来检查；找到大小为 $F_{i-1}$ 或 $F_{i-2}$ 的一侧，就确定了递归处理的两个子树及其目标规模。"
+          ],
+          "solutionBrief": "先检查 $n$ 是否为斐波那契数。对大小为 $F_i$ 的当前树，计算各子树大小并寻找能分出 $F_{i-1}$ 或 $F_{i-2}$ 的边；找不到则输出 NO，找到后切边并递归检查两侧。题解给出的复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1491F",
+          "index": "F",
+          "slot": "F",
+          "title": "Magnets",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1491/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/88248",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "interactive"
+          ],
+          "statementBrief": "有 $n$ 个磁铁，类型为 N、S 或退磁型“-”；每次可把互不重叠的若干磁铁分别放在机器左右两侧，机器返回两侧磁铁产生的有符号合力，绝对值超过 $n$ 会损坏机器。查询次数受限，需在不损坏机器的前提下找出所有退磁磁铁；保证至少有两个非退磁磁铁和一个退磁磁铁。",
+          "transformedStatement": "先利用逐步扩大的左侧集合找到一个能产生非零合力的磁铁作为非退磁参照；零回答还编码了此前集合的结构，使其中除参照外仅需再定位一个非退磁磁铁。于是问题化为参照磁铁的逐个判别加一次分组二分，而非对所有磁铁逐一探测。",
+          "keyObservations": [
+            "把一组磁铁放在机器一侧、单个磁铁放在另一侧时，若测得力为零，说明该单个磁铁与这一侧的合力无法区分；依次扩大左侧集合，可找到第一个产生非零力的磁铁作为非退磁参照。",
+            "找到参照磁铁时，此前查询均为零，因此它是已纳入左侧集合的第二个非退磁磁铁；此前集合中的磁铁除参照外均为退磁磁铁。",
+            "以参照磁铁逐个检测其后的磁铁可判断其是否退磁；而此前集合中只剩一个未知的非退磁磁铁，可用分组查询二分定位，从而避免逐个检测并满足查询上限。"
+          ],
+          "solutionBrief": "依次把已检查磁铁放在机器一侧、当前磁铁放在另一侧，直到得到非零力，确定一个非退磁参照。用它逐个检查后续磁铁；此前集合中唯一尚未确定的非退磁磁铁通过分组二分找出，其余未被判为非退磁者即为退磁磁铁。查询数不超过 $n-1+\\lceil\\log_2 n\\rceil$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1491G",
+          "index": "G",
+          "slot": "G",
+          "title": "Switch and Flip",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1491/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/88248",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 枚硬币，初始时位置 $i$ 上是硬币 $c_i$，且全部朝上。每次选择两个不同位置，交换其硬币并同时翻转这两枚硬币；请构造至多 $n+1$ 次操作，使每枚硬币 $i$ 最终位于位置 $i$ 且朝上。",
+          "transformedStatement": "把置换写成有向环：位置 $i$ 指向其目标位置 $c_i$，并以两种颜色表示硬币朝向。问题转为通过交换并翻转节点颜色，将这些环全部消解为正确的单点环，同时控制操作次数。",
+          "keyObservations": [
+            "把每个位置到其目标位置的关系看成置换环，并把朝向作为节点颜色后，操作可理解为交换两个节点并同时翻转其颜色，便于针对整环设计构造。",
+            "两个全朝上的环可以通过一次操作合并成含两个朝下节点的环；环中恰有两个朝下节点时，可反复缩短环并保留这两个节点，最终用一次操作解决。",
+            "将环两两配对处理时，配对环总规模为 $X$ 的部分至多使用 $X$ 次操作；若还剩一个环，可借助一个长度为 $1$ 的环，或在全图仅剩该环时先制造两个朝下节点，使其至多使用 $X+1$ 次操作。"
+          ],
+          "solutionBrief": "将置换拆成环并两两处理：先把两个全朝上环合并为一个含两个朝下硬币的环，再逐步缩短该环直至解决。若环数为奇数，则利用长度为 $1$ 的环配对；没有可用单点环时，先在剩余环中制造两个朝下硬币。总操作数不超过 $n+1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1491H",
+          "index": "H",
+          "slot": "H",
+          "title": "Yuezheng Ling and Dynamic Tree",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1491/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/88248",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根、节点父亲编号小于自身编号的树。每次操作可以把指定编号区间内所有节点的父亲编号改为 $\\max(a_i-x,1)$，或给出两个节点并要求输出它们当前的最近公共祖先。",
+          "transformedStatement": "把按编号连续的节点划分为若干块，并将每个节点到本块边界的连续父链压缩成一次块内跳转。区间修改转化为完整块延迟更新与边界块重算，LCA 查询则先跨块压缩路径，再处理最终相交位置附近的父边。",
+          "keyObservations": [
+            "在每个编号块内，为节点记录沿父边向上、直到父节点离开本块前能到达的最高祖先；这样一次查询可以跨过块内多条父边。",
+            "若块内每个节点的父节点都已在块外，整块更新只会让父编号更小，不会产生新的块内父边，因此块跳转信息无需重算。",
+            "整块更新会增大节点编号与父编号的差，某块只有有限次整块更新会触发重算；部分更新每次至多涉及两个边界块，因此重算总量可控。",
+            "两点向上跳转时，优先让所在块编号较大的节点跨块前进；到达同一块跳转位置后再逐边寻找交汇点，即可得到 LCA。"
+          ],
+          "solutionBrief": "将节点按编号分块，维护每个节点在本块内可跳到的最高祖先。区间修改对完整块使用延迟量；当块内存在父边仍留在本块时重算跳转信息。求 LCA 时先按块跳转缩短路径，再逐边找到两条路径的交点。题解给出的总复杂度为 $O(n\\sqrt n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1491I",
+          "index": "I",
+          "slot": "I",
+          "title": "Ruler Of The Zoo",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1491/problem/I",
+          "editorialUrl": "https://codeforces.com/blog/entry/88248",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures"
+          ],
+          "statementBrief": "有 $n$ 只动物排队，0 号最初为王，其余按编号排队。队首挑战国王，力量较大者成为国王，败者排到队尾；连续获胜次数决定国王使用 $B_i$ 或 $C_i$，非国王使用 $A_i$，最初的王第一次使用 $A_0$。连续赢三场的动物成为统治者，要求输出其编号和所需场数；若比赛永不结束则输出无解标记。",
+          "transformedStatement": "将队列等价表示为环：国王每场向前移动一格，胜利时与相邻动物交换位置，失败时位置不变。用红色标记可能被前一只动物压制的动物；红色只能消失而不能新生，因此把过程压缩为红色消失或比赛结束等事件之间的批量移动问题。",
+          "keyObservations": [
+            "把队列改写为环后，国王每次都沿环前进一步；交战胜负只需通过交换相邻动物来表示，便于追踪相对次序。",
+            "若动物 $i$ 满足前一只动物的 $B$ 大于 $A_i$，则将它标为红色；红色不会新生，只会被消除，因此需要处理的关键事件总数受动物数线性约束。",
+            "在两次事件之间，非红色动物的相对次序不变，红色动物可视为绕固定的非红色环逆向移动；每经过 $n-1$ 场，红色位置统一变化一次，从而能跳过大量无事件的对局。",
+            "红色被消除或比赛结束都可化为红色与环上特定非红色位置的强度不等式；利用单调结构可快速定位最早事件，避免逐场模拟。"
+          ],
+          "solutionBrief": "先直接模拟前 $2n$ 场以处理相邻红色等边界情况，再将队列转成环并标记红色及不同类型的非红色动物。利用红色只会减少的性质，按事件批量跳过无变化阶段；通过单调结构定位下一次红色消失或胜者诞生，若再无事件则判为永无结束。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
