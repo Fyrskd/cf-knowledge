@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4279,
+    "total_problems": 4285,
     "source_total_problems": 4286,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4279,
-    "with_editorial_brief": 3920,
-    "with_solution_brief": 3922,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4285,
+    "with_editorial_brief": 3926,
+    "with_solution_brief": 3928,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3341,
+    "ai_override_count": 3347,
     "primary_topic_count": 13,
-    "contest_count": 668,
+    "contest_count": 669,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 451,
+    "构造与贪心": 1403,
+    "数论与同余": 452,
+    "动态规划与状态设计": 355,
     "组合计数与概率": 328,
-    "构造与贪心": 1399,
-    "动态规划与状态设计": 354,
     "数据结构": 400,
     "几何": 99,
     "图论与网络流": 288,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 227
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2912,
+    "ai_generated_with_editorial": 2918,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -131478,6 +131478,190 @@ window.CF_INSIGHTS_DATA = {
             "相同数值之间总能满足整除条件，所以选中数值 $x$ 时应一次保留其全部 $cnt_x$ 个出现位置；答案就是数组长度减去最大 $dp(x)$。"
           ],
           "solutionBrief": "统计每个数 $x$ 的出现次数 $cnt_x$，按从小到大计算 $dp(x)=cnt_x+\\max_{y\\mid x,\\ y<x}dp(y)$。用筛法枚举各数的倍数以处理因数转移，最终用 $n-\\max_x dp(x)$ 得到最少删除数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1474,
+      "name": "Codeforces Round 696 (Div. 2)",
+      "date": "2021-01-19",
+      "url": "https://codeforces.com/contest/1474",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3000,
+      "problems": [
+        {
+          "key": "1474A",
+          "index": "A",
+          "slot": "A",
+          "title": "Puzzle From the Future",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1474/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/86933",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的二进制串 $b$，需要构造同长度的二进制串 $a$。按位将 $a_i+b_i$ 作为 $d$ 的第 $i$ 位（不进位），使所得整数 $d$ 尽可能大，并输出任意符合要求的 $a$。",
+          "transformedStatement": "将目标转化为构造位串 $d$：先保证首位非零以获得 $n$ 位数，再令相邻位的位和 $a_i+b_i$ 不同。逐位优先尝试选择 $a_i=1$，仅在会破坏相邻位不同的条件时改选 $0$。",
+          "keyObservations": [
+            "让 $d$ 的首位非零，就能避免它因前导零而少一位；首位可通过令 $a_1=1$ 实现。",
+            "在首位非零的前提下，位数更多的 $d$ 数值更大；让相邻位不同即可使 $d$ 保持 $n$ 位。",
+            "从左到右选择时，若令当前 $a_i=1$ 能使 $a_i+b_i$ 与前一位不同，就选 $1$；否则选 $0$，这样既维持相邻位不同，又优先增大当前位。"
+          ],
+          "solutionBrief": "令 $a_1=1$。之后从左到右处理每一位：若选 $a_i=1$ 后，$a_i+b_i$ 与前一位的和不同，就选 $1$；否则选 $0$。这样构造出的 $d$ 有 $n$ 位且相邻位不同，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1474B",
+          "index": "B",
+          "slot": "B",
+          "title": "Different Divisors",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1474/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/86933",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $d$，要找最小正整数 $a$，使它至少有 4 个正因子，且任意两个不同正因子的差都不小于 $d$。输出每组数据对应的最小 $a$。",
+          "transformedStatement": "把问题转化为寻找因子数恰为 4 的最小整数，因为更多因子的候选可缩减为更小且仍合格的数。随后只需在 $p^3$ 与 $pq$ 两种质因数结构中寻找满足因子间距限制的最小候选并比较大小。",
+          "keyObservations": [
+            "满足条件的最小整数只需考虑恰有 4 个因子的情况：若因子更多，可以去掉部分质因子得到更小且仍满足间距要求的数。",
+            "恰有 4 个因子的整数只能是 $p^3$ 或 $pq$（$p,q$ 为不同质数）；因此原问题可缩小为比较这两类候选数。",
+            "若 $a$ 的最小质因子为 $p$，因子 $1$ 与 $p$ 相差至少 $d$，所以必须有 $p\\ge d+1$；对 $pq$，还需令 $q-p\\ge d$。",
+            "删去质因子不会产生新的因子，因此从原数保留部分质因子后，原有因子间距条件仍成立。"
+          ],
+          "solutionBrief": "将答案限定为 $p^3$ 或 $pq$ 两种形式。分别寻找满足间距条件的最小候选：$p^3$ 中取不小于 $d+1$ 的最小质数 $p$；$pq$ 中取最小质数 $p\\ge d+1$，再取最小质数 $q\\ge p+d$，并比较候选值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1474C",
+          "index": "C",
+          "slot": "C",
+          "title": "Array Destruction",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1474/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/86933",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定 $2n$ 个正整数，先自行选择初始值 $x$；每次从数组中移除两个和为当前 $x$ 的数，并将 $x$ 更新为这两个数中的较大者。判断能否按此规则移除全部元素；若能，还需输出初始 $x$ 和每一步移除的数对。",
+          "transformedStatement": "把成功过程约束为每步都移除当前最大元素：否则它会因后续 $x$ 递减而无法再被移除。枚举第一步与最大元素配对的元素后，初始 $x$ 随之确定，其余步骤由“最大值及其与 $x$ 的差”唯一决定。",
+          "keyObservations": [
+            "每次移除和为当前 $x$ 的两个正整数后，新的 $x$ 是这两个数中的较大者，因此 $x$ 会严格减小。",
+            "每一步都必须移除当前最大的数组元素：若它留在数组中，由于之后的 $x$ 不会增大，便无法再用它组成所需的数对。",
+            "确定当前 $x$ 和最大元素后，另一个被移除的数只能是 $x-\\text{最大元素}$，所以后续过程无需分支，只需检查这个数是否仍存在。"
+          ],
+          "solutionBrief": "枚举初始操作中与最大元素配对的另一个元素，据此确定初始 $x$。之后用集合维护剩余元素，每次取最大值及其与当前 $x$ 的差；若差不存在则该尝试失败，否则移除这两个数并将 $x$ 更新为最大值。任一尝试成功即可输出操作序列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1474D",
+          "index": "D",
+          "slot": "D",
+          "title": "Cleaning",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1474/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/86933",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一列相邻的石堆，每次从一对相邻石堆中各取走一颗石子，空堆仍保留原位置，不会让两侧石堆变成相邻。可以至多一次交换一对相邻石堆，要求判断能否最终清空所有石堆。",
+          "transformedStatement": "不使用交换时，消除顺序由最左侧石堆唯一确定：每处理一堆，就把它的石子数从右邻堆中配平。分别记录从左、从右处理后的边界残量，再检查一次相邻交换能否把两侧过程接合起来。",
+          "keyObservations": [
+            "不使用特殊能力时，第一堆只能与第二堆配对消除，因此每一步的消除方式唯一；若相邻两堆无法配平，就不可能清空全部石子。",
+            "从左向右消除前缀后，只需记录当前堆剩余的石子数；从右向左同理记录后缀残量，这使每个位置的两侧状态都能在线性时间内预处理。",
+            "交换相邻两堆不会改变交换位置之前和之后已处理部分的消除过程，因此只需检查交换点两侧的残量能否与被交换的两堆衔接。",
+            "由于交换操作至多使用一次，枚举所有相邻交换位置并利用前后缀信息检查即可覆盖全部可能方案，无需对每种交换重新模拟整列。"
+          ],
+          "solutionBrief": "不交换时，按相邻堆依次配对消除，记录每个前缀和后缀处理后的残量。枚举一次相邻交换的位置，检查交换后的两堆能否与两侧残量衔接；存在可行位置则输出 YES，否则输出 NO。整体为线性时间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1474E",
+          "index": "E",
+          "slot": "E",
+          "title": "What Is It?",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1474/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/86933",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定排列长度 $n$，机器人通过合法交换逐步将排列变为单位排列；一次操作的耗时由交换位置间距决定，且操作须满足题目规定的排列条件。题目要求找出所有初始排列中的最大完成耗时，并输出达到该最大值的初始排列及一组合法操作。",
+          "transformedStatement": "题解反向构造：从单位排列出发，选择当前仍固定的位置 $i$ 与任意位置 $j$ 交换，耗时为 $(j-i)^2$，最后将这些交换倒序，得到原过程的合法实例。最大值问题于是转化为：在每个距离阈值下，最多能安排多少次操作，并构造同时达到这些次数的序列。",
+          "keyObservations": [
+            "每次合法操作至少会新增一个固定位置，因此总操作数不超过 $n-1$；这把总耗时限制为至多 $n-1$ 项。",
+            "耗时达到或超过 $(n-k)^2$ 的操作，其两个位置都落在最左侧或最右侧各 $k$ 个位置中；这类操作最多有 $2k-1$ 次，因为每次至少固定其中一个位置。",
+            "由上述各阈值的操作次数上界，可得最大总耗时为 $(n-1)^2+(n-2)^2+(n-2)^2+(n-3)^2+\u00131dots$，其中各平方项按题解给出的端点与奇偶情况取重数。",
+            "从单位排列出发，依次交换尚未固定的两端位置并倒序还原操作，可构造出达到上界的初始排列和合法操作序列，因此该上界确实可取到。"
+          ],
+          "solutionBrief": "先按操作耗时阈值计数，证明每个距离层的操作次数有上界，从而得到总耗时上界。再从单位排列出发，按两端向中间的顺序交换并倒序生成操作，构造出达到该上界的排列与操作序列。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1474F",
+          "index": "F",
+          "slot": "F",
+          "title": "1 2 3 4 ...",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1474/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/86933",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "代数、矩阵与多项式",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dp",
+            "math",
+            "matrices"
+          ],
+          "statementBrief": "给定初值 $x$ 和整数序列 $d$，从 $x$ 开始依次累加每个 $d_i$，得到包含初值在内的序列 $p$。求 $p$ 的最长严格递增子序列长度，以及这种子序列的数量；数量对 $998244353$ 取模。",
+          "transformedStatement": "减去初值 $x$ 不影响递增关系，因此只需处理由步长累计得到的相对高度。把路径压缩为端点和局部峰谷后，在连续整数高度间统计递增子序列，并将重复的高度转移视为矩阵幂运算。",
+          "keyObservations": [
+            "相邻项之间由整数步长形成的序列具有离散介值性质：若递增子序列跳过某个中间整数，就能在两项之间补入该整数，因此最长递增子序列覆盖连续整数区间。",
+            "最长递增子序列的首尾都可以限制在序列端点或局部极值处；保留这些峰谷即可压缩长的单调区段，而不丢失所需的首尾候选。",
+            "按数值从小到大计算计数时，值为 $v$ 的状态只依赖值为 $v-1$ 的状态；相邻峰谷之间大量重复的转移可用矩阵快速幂合并。",
+            "不同候选序列若首峰相同，可合并分组处理；各组的区段总数受原序列长度约束，从而避免逐个候选重复计算造成的额外高阶开销。"
+          ],
+          "solutionBrief": "将累计和序列压缩为端点及局部极值构成的峰谷序列，在连续整数值上建立最长递增子序列计数状态。对重复的相邻数值转移用矩阵快速幂加速，并按首峰分组；长度可能较大，计数对 $998244353$ 取模。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
