@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-29T01:31:44+00:00",
+  "updated_at": "2026-09-29T01:37:11+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -97243,6 +97243,181 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "题意依据 statement_text，配对性质与算法依据 editorial_text；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1493F": {
+      "problem_key": "1493F",
+      "title": "Enchanted Matrix",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1493/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/88422",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "65e8c2447849a6d13d4c9ee1f6eef243b3b60d59c6b6824eb09af3512376626a",
+      "generated_at": "2026-09-29T01:35:55+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个内容固定但不可见的 $n\\times m$ 矩阵，可通过查询两个不重叠、尺寸相同的子矩形是否相等来了解矩阵，每次查询后读取相等与否的反馈，且查询次数受限。要求统计所有满足 $r\\mid n$、$c\\mid m$ 的尺寸对 $(r,c)$，使矩阵能划分为若干个互不重叠的 $r\\times c$ 矩形且这些矩形两两相等。",
+        "transformed_statement": "把二维划分拆成独立的行条带与列条带问题：分别统计哪些高度和宽度能使对应连续块完全相等，再将两个可行尺寸集合的大小相乘。每个候选尺寸的检查转化为验证一串连续块是否全相同，并利用可行尺寸之间的整除关系减少检查与交互查询。",
+        "key_observations": [
+          "验证连续的 $x$ 个块是否全相等，可先比较前后两段各约一半的块；若前半段相等，再检查覆盖末尾的重叠后半段，因此只需 $O(\\log x)$ 次比较。",
+          "行方向和列方向可以独立判断：块高只决定各行条带是否相同，块宽只决定各列条带是否相同，最终答案是两方向可行尺寸数的乘积。",
+          "若尺寸 $r$ 可行，则其倍数也可行；若 $r$ 不可行，则其因数也不可行，且两个可行尺寸的最大公因数仍可行，因此可按尺寸从大到小利用已知可行的倍数判定较小尺寸。",
+          "判定尺寸 $r$ 时，只需从已知可行且能被 $r$ 整除的最小尺寸 $x$ 出发，检查由其划分出的 $x/r$ 个连续块是否相等；这避免重复检查所有矩形划分。"
+        ],
+        "solution_brief": "先用分治式比较，在对数次查询内判断一串连续矩形块是否全相同。行、列分别按候选尺寸从大到小处理，借助可行尺寸的整除关系计算可行数量，最后将两方向的数量相乘；查询总数满足题目限制。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "数论与同余",
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意与交互规则依据 statement_text；核心判定方法、整除关系和查询次数说明依据 editorial_text，主题参考 tags。",
+        "quality_flags": []
+      }
+    },
+    "1493E": {
+      "problem_key": "1493E",
+      "title": "Enormous XOR",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1493/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/88422",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "a73e8b4100525df64e058244450f307057d8ff3b084c68fa1c3d1a39a05f3be9",
+      "generated_at": "2026-09-29T01:36:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定同为 $n$ 位表示的整数 $l$ 和 $r$。可以任选满足 $l\\le x\\le y\\le r$ 的连续整数区间，计算其中所有整数的按位异或；要求输出这些区间异或值的最大值。",
+        "transformed_statement": "核心转化是先判断 $[l,r]$ 是否跨越最高位从 $0$ 变为 $1$ 的幂边界；若没有跨越，最大值只需由右端点 $r$ 的奇偶以及区间是否至少包含三个数决定。",
+        "key_observations": [
+          "若 $l$ 与 $r$ 的最高位不同，区间就跨过了一个 $2$ 的幂边界；取边界前连续全为 $1$ 的数到边界本身，其区间异或可达到 $n$ 位全 $1$，这是位数为 $n$ 时的最大值。",
+          "若 $l$ 与 $r$ 的最高位相同且 $r$ 为奇数，单点区间 $[r,r]$ 已得到 $r$；题解证明任何子区间的异或都不会更大，因此答案不受 $l$ 影响。",
+          "最高位相同且 $r$ 为偶数时，若区间至少包含三个数，区间 $[r-2,r]$ 可得到 $r+1$；若不足三个数则无法扩展到该值，答案只能是 $r$。"
+        ],
+        "solution_brief": "比较 $l$ 与 $r$ 的最高位：不同则输出 $n$ 位全 $1$。相同则看 $r$ 的奇偶；$r$ 为奇数时输出 $r$，$r$ 为偶数且 $l\\le r-2$ 时输出 $r+1$，否则输出 $r$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面定义及完整 editorial 中的结论和证明摘要；标签仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1493D": {
+      "problem_key": "1493D",
+      "title": "GCD of an Array",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1493/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/88422",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "96fa19138ef2b8c157f8ae90d4def7107bd7e89d24ff60ee748ecdb72c1453c5",
+      "generated_at": "2026-09-29T01:36:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的正整数数组，每次给出下标 $i$ 和正整数 $x$，将 $a_i$ 替换为 $a_i x$。每次操作后输出整个数组的最大公约数对 $10^9+7$ 取模的结果。",
+        "transformed_statement": "把数组的 GCD 拆成各质数的独立贡献：质数 $p$ 的贡献指数等于所有元素中 $p$ 的指数最小值。于是每次乘法只需更新乘数涉及的质数及其全数组最小指数。",
+        "key_observations": [
+          "整数的 GCD 可按质因数分别处理：每个质数在 GCD 中的指数，就是它在所有数组元素指数的最小值。",
+          "某质数只有在它出现在全部 $n$ 个元素中时才对答案有贡献；因此可用该质数对应的指数多重集合判断是否覆盖全数组，并取得最小指数。",
+          "一次乘法只会增加被修改元素中若干质数的指数，其他质数的最小指数不变；受影响质数的最小指数也不会下降，所以无需重算整个 GCD，只需补乘指数增量对应的质数幂。"
+        ],
+        "solution_brief": "维护每个数组元素的质因数指数，以及每个质数在所有元素中的指数多重集合。处理乘法时分解乘数，更新相关指数集合；若该质数已覆盖全部元素，就按最小指数的增加量更新答案，答案始终取模 $10^9+7$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面给出的逐次乘法与 GCD 查询要求，以及 editorial 中按质数维护指数多重集合并增量更新答案的方案。",
+        "quality_flags": []
+      }
+    },
+    "1493C": {
+      "problem_key": "1493C",
+      "title": "K-beautiful Strings",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1493/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/88422",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "f9fd9c1fa9f2b71e4194945b404e7de060460daa11459a0ecaf20eed766d8ce8",
+      "generated_at": "2026-09-29T01:36:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的小写字母串 $s$ 和整数 $k$，要找一个长度同为 $n$、且每种字母出现次数都是 $k$ 的倍数的字符串。答案必须按字典序不小于 $s$，并在所有符合条件的字符串中取字典序最小者；不存在时输出 -1。",
+        "transformed_statement": "将答案按与 $s$ 的最长公共前缀划分：在某一位置首次换成更大的字母，之后只需判断剩余长度能否补齐各字母的 $k$ 倍数计数，并构造最小后缀。依次从最靠右的变更位置向左检查，确保选到最小的可行答案。",
+        "key_observations": [
+          "若 $n$ 不是 $k$ 的倍数，所有字母出现次数都为 $k$ 的倍数不可能满足总长度；若 $s$ 已满足条件，它本身就是最小答案。",
+          "从右向左尝试确定答案与 $s$ 的最长公共前缀，并把当前位置改成严格大于原字符的字母，就能依次覆盖所有可能的首次变大位置，且保证字典序最小。",
+          "固定前缀和当前位置字符后，每个字母还需补足 $(-cnt_i)\\bmod k$ 次；这些需求总和不超过剩余长度，当且仅当存在可行后缀。",
+          "可行时，把多出的后缀长度全部分配给字母 a，再按字母顺序填满各字母的需求，便得到该前缀选择下字典序最小的后缀。"
+        ],
+        "solution_brief": "若 $n$ 不能被 $k$ 整除则输出 -1，否则从右向左尝试首次增大的位置，并递增尝试该位字符。计算前缀及该字符造成的各字母补足需求；需求总和不超过后缀长度时，将多余长度分给 a，按字母序构造后缀并输出。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面与完整 editorial；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1493B": {
+      "problem_key": "1493B",
+      "title": "Planet Lapituletti",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1493/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/88422",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "9cc1f2a828cc991f3d04505e8630984c543ca79c5efef50e860346ec6fb94cc3",
+      "generated_at": "2026-09-29T01:36:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "时钟以 $HH:MM$ 显示一天中的时间，小时范围为 $0$ 到 $h-1$，分钟范围为 $0$ 到 $m-1$。从给定时刻开始，按时间向未来寻找第一个镜像后的显示仍是合法时间的时刻；若起始时刻已合法则直接选它，答案也可以在次日。",
+        "transformed_statement": "把每个未来时刻视为待检候选：将显示数字按竖直镜像规则变换，再判断得到的时间是否处于合法小时和分钟范围内。目标就是找到按时间顺序第一个通过检查的候选时刻；若当天没有，则使用次日 $00:00$。",
+        "key_observations": [
+          "镜像后只有数字 $0,1,2,5,8$ 仍是有效数字，其中 $2$ 与 $5$ 互换、其余三个保持不变；出现其他数字的时刻可直接排除。",
+          "镜像时间是否有效只需检查反射后的小时和分钟是否分别落在合法范围内，因此无需推导最近时刻的公式，逐个检查即可。",
+          "若当前时刻已经满足条件，就应立即作为答案；若当天之后都没有满足条件的时刻，次日 $00:00$ 一定有效。"
+        ],
+        "solution_brief": "从给定时刻开始按时间顺序检查每个时刻：按镜面映射替换数字，并检查反射后显示的小时和分钟是否合法。找到第一个有效时刻即停止；若当天没有，则答案为次日 $00:00$。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的时钟与竖直镜像规则，以及 editorial 给出的逐时刻检查方法和数字映射。",
+        "quality_flags": []
+      }
+    },
+    "1493A": {
+      "problem_key": "1493A",
+      "title": "Anti-knapsack",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1493/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/88422",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "572a640b5fd0d90adc1df4dd2d8d10b5f57e2f2f7ac139d99e442727141bb914",
+      "generated_at": "2026-09-29T01:37:11+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数 $n$ 和 $k$，从 $1$ 到 $n$ 中选出尽可能多的互不相同的数，使所选数的任何子集（包括单元素子集）的和都不等于 $k$。输出所选数的数量及任意一组满足条件的数。",
+        "transformed_statement": "把候选数分成大于 $k$ 的部分、数 $k$ 本身和 $1$ 到 $k-1$ 的部分：前者可全部保留，数 $k$ 必须排除，后者按和为 $k$ 的互补数配对，每对至多选一个。最大规模因此由这些配对上界决定，并可用靠近 $k$ 的一半区间达到上界。",
+        "key_observations": [
+          "所有大于 $k$ 的数都可以选，因为它们自身已大于 $k$，加入其他正数后也不可能得到和为 $k$ 的子集。",
+          "在 $1$ 到 $k-1$ 中，每个数都与 $k$ 减去它的数配对；每对至多选一个，因此最多能选 $\\lfloor k/2 \\rfloor$ 个。",
+          "选择 $\\lceil k/2 \\rceil$ 到 $k-1$ 的数时，任意两个所选数之和都大于 $k$，且单个数不等于 $k$，所以这部分达到上述选取数量上限。",
+          "数 $k$ 不能选，而其余候选数最多为 $n-k+\\lfloor k/2 \\rfloor=n-\\lceil k/2 \\rceil$ 个；给出的构造恰好达到该上界，因此是最大解。"
+        ],
+        "solution_brief": "输出区间 $[\\lceil k/2\\rceil,k-1]$ 和 $[k+1,n]$ 中的所有数。前一区间任意两数之和大于 $k$，后一区间中的数本身已大于 $k$；配对上界证明任何合法集合都不可能更大。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面给出的选择与子集和限制，以及 editorial 中的构造和最大性证明；tags 仅用于主题归类。",
         "quality_flags": []
       }
     }
