@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4127,
+    "total_problems": 4133,
     "source_total_problems": 4133,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4127,
-    "with_editorial_brief": 3781,
-    "with_solution_brief": 3783,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4133,
+    "with_editorial_brief": 3787,
+    "with_solution_brief": 3789,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3189,
+    "ai_override_count": 3195,
     "primary_topic_count": 13,
-    "contest_count": 642,
+    "contest_count": 643,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1344,
-    "博弈": 118,
+    "数论与同余": 433,
+    "构造与贪心": 1345,
+    "动态规划与状态设计": 338,
+    "图论与网络流": 276,
+    "博弈": 119,
     "组合计数与概率": 323,
     "字符串": 220,
     "基础实现与模拟": 254,
-    "数论与同余": 432,
-    "动态规划与状态设计": 336,
-    "图论与网络流": 275,
     "数据结构": 389,
     "树结构": 193,
     "几何": 96,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_partial_editorial": 106,
-    "ai_generated_with_editorial": 2784,
+    "ai_generated_with_editorial": 2789,
+    "ai_generated_partial_editorial": 107,
     "missing_editorial": 344,
     "low_confidence": 1,
     "manual_override": 891,
@@ -126916,6 +126916,197 @@ window.CF_INSIGHTS_DATA = {
             "递归构造只需维护曲线中点的次序及左端点相邻的两个点；用双向链表可常数时间完成反转或插入，而从两端并行寻找拆分点使总复杂度达到 $O(n\\log n)$。"
           ],
           "solutionBrief": "将正面、背面的匹配关系转成上下两类边，分解出交替环并检查每环的方向数量是否为 $m+1$ 与 $m-1$。对通过检查的环，把方向序列编码成二进制串，递归应用三种构造操作；用双向链表维护曲线，并从两端寻找拆分点，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1498,
+      "name": "CodeCraft-21 and Codeforces Round 711 (Div. 2)",
+      "date": "2021-03-29",
+      "url": "https://codeforces.com/contest/1498",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1498A",
+          "index": "A",
+          "slot": "A",
+          "title": "GCD Sum",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1498/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/89137",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "math"
+          ],
+          "statementBrief": "对每个给定正整数 $n$，定义一个数的 gcd-sum 为它与自身数位和的最大公约数。要求找出不小于 $n$ 的最小整数 $x$，使得 $x$ 与其数位和的最大公约数大于 $1$。",
+          "transformedStatement": "无需在很大的整数范围内搜索：任取连续三个数，其中必有一个是 $3$ 的倍数，而该数与数位和都能被 $3$ 整除。因此只需按从小到大的顺序检查 $n$ 至 $n+2$。",
+          "keyObservations": [
+            "任何能被 $3$ 整除的整数，其数位和也能被 $3$ 整除，因此它的 gcd-sum 至少为 $3$，必定符合条件。",
+            "任意连续三个整数中都包含一个 $3$ 的倍数，所以答案必在 $n$、$n+1$、$n+2$ 中；依次检查即可保证找到最小答案。",
+            "不能只返回不小于 $n$ 的最小 $3$ 的倍数，因为其他整数也可能满足 gcd-sum 大于 $1$，例如题解提到的 $26$。"
+          ],
+          "solutionBrief": "逐个计算 $n$、$n+1$、$n+2$ 与各自数位和的最大公约数，输出第一个大于 $1$ 的数。由连续三个整数中必有一个 $3$ 的倍数可知，检查到 $n+2$ 一定能找到答案；输入范围需要使用 64 位整数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1498B",
+          "index": "B",
+          "slot": "B",
+          "title": "Box Fitting",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1498/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/89137",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定若干高度为 1、宽度为 2 的幂的矩形，以及宽度为 $W$ 的箱子；矩形不能旋转，彼此不能重叠，但箱内可以留空。要求把所有矩形放入箱中，并求所需的最小箱子高度。",
+          "transformedStatement": "把箱子按高度切成宽度均为 $W$ 的层，每个矩形占用一层中的一段宽度；问题转为安排这些矩形，使使用的层数最少。由于宽度是 2 的幂，每层优先放入当前能容纳的最大矩形不会损失最优性。",
+          "keyObservations": [
+            "矩形宽度都是 2 的幂，因此一串较小矩形在宽度总和达到某个较大矩形宽度时，必有一个前缀恰好达到该宽度；这使得把可放下的最大矩形优先放入当前层不会损失最优性。",
+            "将每层视为剩余宽度为当前容量的一维空间后，矩形不可旋转且高度均为 1，逐层填满即可把二维摆放问题化为计算所需层数。",
+            "对于固定高度，尺寸为 $2^i$ 的矩形既要有足够的直接容纳位置，也要考虑更大矩形占用空间后留下的余量；题解通过从大到小累加数量来统一检查这些限制。"
+          ],
+          "solutionBrief": "按宽度统计矩形数量。每层从剩余宽度中选择能放入的最大矩形，放不下任何矩形时开启新层；由于宽度是 2 的幂，该贪心可通过重排得到最优层数。题解另给出固定高度的可行性检查与二分方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1498C",
+          "index": "C",
+          "slot": "C",
+          "title": "Planar Reflections",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1498/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/89137",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "给定连续的 $n$ 块平面和一颗衰变年龄为 $k$ 的粒子。粒子穿过平面时会继续前进；若年龄大于 $1$，该平面还会产生一颗方向相反、年龄减 $1$ 的副本，年龄为 $1$ 时不产生副本。求过程结束后粒子多重集合的大小，答案对 $10^9+7$ 取模。",
+          "transformedStatement": "把过程拆成“粒子到达某块平面”的子问题，以平面位置、年龄和方向作为状态。每个状态由粒子继续前进的同龄子过程，以及反向副本的低一龄子过程共同组成，并处理边界处不存在的后续分支和重复计数。",
+          "keyObservations": [
+            "粒子到达某块平面时，后续过程只由平面位置、衰变年龄和运动方向决定，因此可把这三项作为 DP 状态复用相同子过程。",
+            "年龄大于 $1$ 时，粒子会继续前进并产生一个年龄减 $1$、方向相反的副本；这两条后续分支分别对应相邻平面上的状态。",
+            "合并分支时要扣除各子状态中已经计入的起始粒子，否则会重复统计；年龄为 $1$ 时没有副本，状态值直接为 $1$。"
+          ],
+          "solutionBrief": "设状态表示粒子到达指定平面、方向和年龄时最终产生的粒子数。年龄为 $1$ 时答案为 $1$；否则从当前粒子及其副本计数，并加上继续前进与反向副本对应的子状态贡献，同时扣除子状态已包含的起始粒子。按年龄和方向依赖顺序计算，复杂度为 $O(nk)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1498D",
+          "index": "D",
+          "slot": "D",
+          "title": "Bananas in a Microwave",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1498/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/89137",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "初始香蕉数为 $0$，共进行 $n$ 个时刻，每个时刻必须应用给定的一种操作：选取 $0\\le a_i\\le y_i$，将当前数量连续更新 $a_i$ 次；更新规则是每次加上 $x_i$ 后向上取整，或乘以 $x_i$ 后向上取整。对每个 $1$ 到 $m$ 的数量，求最早能在某个时刻结束操作后得到它的时刻，无法得到则输出 $-1$。",
+          "transformedStatement": "把每个不超过 $m$ 的香蕉数视为可达状态，每个时刻的操作从所有此前可达状态出发，沿对应的确定性状态序列向前扩展至多 $y_i$ 步；目标是记录各状态首次被扩展到的时刻。由于已在此前可达的状态会重新覆盖当前序列的剩余部分，搜索可在首次碰到这类状态时截断。",
+          "keyObservations": [
+            "同一时刻的操作可从每个此前可达的香蕉数出发，连续执行至多 $y_i$ 次；新到达的数量记为该时刻首次可达。",
+            "沿一次操作序列遇到本时刻开始前已可达的数量时，可以停止继续搜索：从该数量重新执行同一操作，会覆盖当前路径剩余的状态，并可能继续到达更多状态。",
+            "只有操作开始前已可达的状态能作为本时刻的起点，因此本时刻新发现的状态应暂存到下一轮，避免把同一时刻的操作误当成可重复起点。",
+            "每轮中每个状态至多被有效扩展常数次，故总搜索量可控制在 $O(nm)$；超过 $m$ 的状态无需继续处理。"
+          ],
+          "solutionBrief": "维护每个不超过 $m$ 的数量是否已在此前时刻可达，以及其首次可达时刻。对每个旧可达状态模拟当前操作最多 $y_i$ 次；到达已旧可达的状态就停止，遇到新状态则记录并暂存到本轮结束后。越界状态直接停止扩展，整体复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1498E",
+          "index": "E",
+          "slot": "E",
+          "title": "Two Houses",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1498/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/89137",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "交互",
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "graphs",
+            "greedy",
+            "interactive",
+            "sortings"
+          ],
+          "statementBrief": "城市中每对房屋之间恰有一条单向道路，已知每栋房屋的入度。可以询问任意两栋房屋之间是否可达，但一旦答案为“Yes”就不能继续询问；需要找出互相可达且入度差最大的房屋对，或报告不存在。",
+          "transformedStatement": "将道路图缩成强连通分量后，分量间形成唯一的拓扑顺序，且入度大小能确定不同分量的前后关系。于是每对入度不同的房屋都能预先确定一个方向可达，只需按入度差降序查询反方向是否也可达。",
+          "keyObservations": [
+            "缩点后的强连通分量之间仍构成每对分量都有方向边的图，因此其拓扑顺序唯一；分量顺序靠后的节点都能从靠前分量到达。",
+            "相邻强连通分量之间的边全部由前者指向后者，因此前一分量中任意节点的入度都小于后一分量中任意节点的入度。",
+            "若两点入度不同，入度较大者必在同一或更靠后的强连通分量，所以入度较小者一定能到达它；据此反向询问即可避免答案为“Yes”前无法继续查询的问题。",
+            "按入度差从大到小尝试候选对，第一次反向可达性查询得到“Yes”时，该对已实现最大入度差，无须再检查其他候选。"
+          ],
+          "solutionBrief": "枚举所有房屋对，按入度差从大到小排序，并将每对按入度从小到大记为起点和终点。利用入度性质可确定起点能到达终点，于是查询终点能否到达起点；首次得到“Yes”即输出该对，否则最终输出不存在符合条件的房屋对。题解给出的复杂度为 $O(n^2\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1498F",
+          "index": "F",
+          "slot": "F",
+          "title": "Christmas Game",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1498/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/89137",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "games",
+            "math",
+            "trees"
+          ],
+          "statementBrief": "给定一棵每个节点挂有 $a_i$ 个礼物的树以及整数 $K$，对树的每个可能根分别进行游戏并判断胜者。题面摘录未给出完整的回合操作规则；要求输出以每个节点为根时 Alice 是否获胜。",
+          "transformedStatement": "固定根后，将节点按深度每 $K$ 层分成一组；题解把游戏等价为只考虑组编号为奇数的节点权值的阶梯 Nim，其异或和非零时先手获胜。随后将相对深度的异或统计在所有根之间转移，以一次计算覆盖所有根的胜负判断。",
+          "keyObservations": [
+            "当 $K=1$ 时，偶数深度上的棋子可以被对手通过反向移动抵消；因此从奇数深度移到偶数深度等价于移除棋子，胜负只由奇数深度节点的异或和决定。",
+            "一般 $K$ 下，题解将深度划分为长度为 $K$ 的区段，只有区段编号为奇数的节点贡献胜负异或和，即统计满足 $\\lfloor d/K\\rfloor$ 为奇数的节点。",
+            "所有根的答案可由每个节点周围各相对深度的异或信息重根转移得到；记录长度 $2K$ 的深度异或数组，移动到子节点时循环平移并扣除该子树贡献。"
+          ],
+          "solutionBrief": "利用阶梯 Nim 结论，固定根时异或所有满足 $\\lfloor d/K\\rfloor$ 为奇数的节点权值来判断胜负。先用树形 DP 统计相对深度模 $2K$ 的异或值，再通过重根转移求出每个节点作为根时的结果。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

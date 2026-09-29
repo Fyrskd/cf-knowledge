@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-29T00:25:15+00:00",
+  "updated_at": "2026-09-29T00:30:37+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -95407,6 +95407,187 @@
         "quality_flags": [
           "partial_editorial"
         ]
+      }
+    },
+    "1498F": {
+      "problem_key": "1498F",
+      "title": "Christmas Game",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1498/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/89137",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "d9aeb3e668d42f856910c2b6296ae4ae40ec33fa1edc29d4603f853e7e3ee8fb",
+      "generated_at": "2026-09-29T00:29:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵每个节点挂有 $a_i$ 个礼物的树以及整数 $K$，对树的每个可能根分别进行游戏并判断胜者。题面摘录未给出完整的回合操作规则；要求输出以每个节点为根时 Alice 是否获胜。",
+        "transformed_statement": "固定根后，将节点按深度每 $K$ 层分成一组；题解把游戏等价为只考虑组编号为奇数的节点权值的阶梯 Nim，其异或和非零时先手获胜。随后将相对深度的异或统计在所有根之间转移，以一次计算覆盖所有根的胜负判断。",
+        "key_observations": [
+          "当 $K=1$ 时，偶数深度上的棋子可以被对手通过反向移动抵消；因此从奇数深度移到偶数深度等价于移除棋子，胜负只由奇数深度节点的异或和决定。",
+          "一般 $K$ 下，题解将深度划分为长度为 $K$ 的区段，只有区段编号为奇数的节点贡献胜负异或和，即统计满足 $\\lfloor d/K\\rfloor$ 为奇数的节点。",
+          "所有根的答案可由每个节点周围各相对深度的异或信息重根转移得到；记录长度 $2K$ 的深度异或数组，移动到子节点时循环平移并扣除该子树贡献。"
+        ],
+        "solution_brief": "利用阶梯 Nim 结论，固定根时异或所有满足 $\\lfloor d/K\\rfloor$ 为奇数的节点权值来判断胜负。先用树形 DP 统计相对深度模 $2K$ 的异或值，再通过重根转移求出每个节点作为根时的结果。",
+        "primary_topic": "博弈",
+        "secondary_topics": [
+          "树结构",
+          "数据结构",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；博弈结论、深度分组及重根计算依据 editorial_text，tags 仅用于主题索引。",
+        "quality_flags": []
+      }
+    },
+    "1498E": {
+      "problem_key": "1498E",
+      "title": "Two Houses",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1498/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/89137",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "51341ad06119351eeebb664e69bae74040a760cec07b4ea39fab82f322c7213a",
+      "generated_at": "2026-09-29T00:29:38+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "城市中每对房屋之间恰有一条单向道路，已知每栋房屋的入度。可以询问任意两栋房屋之间是否可达，但一旦答案为“Yes”就不能继续询问；需要找出互相可达且入度差最大的房屋对，或报告不存在。",
+        "transformed_statement": "将道路图缩成强连通分量后，分量间形成唯一的拓扑顺序，且入度大小能确定不同分量的前后关系。于是每对入度不同的房屋都能预先确定一个方向可达，只需按入度差降序查询反方向是否也可达。",
+        "key_observations": [
+          "缩点后的强连通分量之间仍构成每对分量都有方向边的图，因此其拓扑顺序唯一；分量顺序靠后的节点都能从靠前分量到达。",
+          "相邻强连通分量之间的边全部由前者指向后者，因此前一分量中任意节点的入度都小于后一分量中任意节点的入度。",
+          "若两点入度不同，入度较大者必在同一或更靠后的强连通分量，所以入度较小者一定能到达它；据此反向询问即可避免答案为“Yes”前无法继续查询的问题。",
+          "按入度差从大到小尝试候选对，第一次反向可达性查询得到“Yes”时，该对已实现最大入度差，无须再检查其他候选。"
+        ],
+        "solution_brief": "枚举所有房屋对，按入度差从大到小排序，并将每对按入度从小到大记为起点和终点。利用入度性质可确定起点能到达终点，于是查询终点能否到达起点；首次得到“Yes”即输出该对，否则最终输出不存在符合条件的房屋对。题解给出的复杂度为 $O(n^2\\log n)$。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "交互",
+          "构造与贪心",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的单向道路、入度和交互查询规则，以及题解对缩点顺序、入度性质和候选对排序的说明。",
+        "quality_flags": []
+      }
+    },
+    "1498D": {
+      "problem_key": "1498D",
+      "title": "Bananas in a Microwave",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1498/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/89137",
+      "editorial_quality": "partial",
+      "model": "gpt-6-luna",
+      "input_hash": "891f05cc67b1a3262166a41103153214ff84d4360001322ac485a5a6227adbed",
+      "generated_at": "2026-09-29T00:29:54+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "初始香蕉数为 $0$，共进行 $n$ 个时刻，每个时刻必须应用给定的一种操作：选取 $0\\le a_i\\le y_i$，将当前数量连续更新 $a_i$ 次；更新规则是每次加上 $x_i$ 后向上取整，或乘以 $x_i$ 后向上取整。对每个 $1$ 到 $m$ 的数量，求最早能在某个时刻结束操作后得到它的时刻，无法得到则输出 $-1$。",
+        "transformed_statement": "把每个不超过 $m$ 的香蕉数视为可达状态，每个时刻的操作从所有此前可达状态出发，沿对应的确定性状态序列向前扩展至多 $y_i$ 步；目标是记录各状态首次被扩展到的时刻。由于已在此前可达的状态会重新覆盖当前序列的剩余部分，搜索可在首次碰到这类状态时截断。",
+        "key_observations": [
+          "同一时刻的操作可从每个此前可达的香蕉数出发，连续执行至多 $y_i$ 次；新到达的数量记为该时刻首次可达。",
+          "沿一次操作序列遇到本时刻开始前已可达的数量时，可以停止继续搜索：从该数量重新执行同一操作，会覆盖当前路径剩余的状态，并可能继续到达更多状态。",
+          "只有操作开始前已可达的状态能作为本时刻的起点，因此本时刻新发现的状态应暂存到下一轮，避免把同一时刻的操作误当成可重复起点。",
+          "每轮中每个状态至多被有效扩展常数次，故总搜索量可控制在 $O(nm)$；超过 $m$ 的状态无需继续处理。"
+        ],
+        "solution_brief": "维护每个不超过 $m$ 的数量是否已在此前时刻可达，以及其首次可达时刻。对每个旧可达状态模拟当前操作最多 $y_i$ 次；到达已旧可达的状态就停止，遇到新状态则记录并暂存到本轮结束后。越界状态直接停止扩展，整体复杂度为 $O(nm)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面操作规则及 editorial 的剪枝论证、实现和复杂度说明；tags 仅作辅助。",
+        "quality_flags": []
+      }
+    },
+    "1498C": {
+      "problem_key": "1498C",
+      "title": "Planar Reflections",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1498/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/89137",
+      "editorial_quality": "partial",
+      "model": "gpt-6-luna",
+      "input_hash": "f97daec094488a45b756479c9c0bc4bab56a9f544698dd1410541431c61fd7b0",
+      "generated_at": "2026-09-29T00:30:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定连续的 $n$ 块平面和一颗衰变年龄为 $k$ 的粒子。粒子穿过平面时会继续前进；若年龄大于 $1$，该平面还会产生一颗方向相反、年龄减 $1$ 的副本，年龄为 $1$ 时不产生副本。求过程结束后粒子多重集合的大小，答案对 $10^9+7$ 取模。",
+        "transformed_statement": "把过程拆成“粒子到达某块平面”的子问题，以平面位置、年龄和方向作为状态。每个状态由粒子继续前进的同龄子过程，以及反向副本的低一龄子过程共同组成，并处理边界处不存在的后续分支和重复计数。",
+        "key_observations": [
+          "粒子到达某块平面时，后续过程只由平面位置、衰变年龄和运动方向决定，因此可把这三项作为 DP 状态复用相同子过程。",
+          "年龄大于 $1$ 时，粒子会继续前进并产生一个年龄减 $1$、方向相反的副本；这两条后续分支分别对应相邻平面上的状态。",
+          "合并分支时要扣除各子状态中已经计入的起始粒子，否则会重复统计；年龄为 $1$ 时没有副本，状态值直接为 $1$。"
+        ],
+        "solution_brief": "设状态表示粒子到达指定平面、方向和年龄时最终产生的粒子数。年龄为 $1$ 时答案为 $1$；否则从当前粒子及其副本计数，并加上继续前进与反向副本对应的子状态贡献，同时扣除子状态已包含的起始粒子。按年龄和方向依赖顺序计算，复杂度为 $O(nk)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意依据 statement_text；状态定义、转移思路和复杂度依据 editorial_text，题解标记为 partial。",
+        "quality_flags": [
+          "partial_editorial"
+        ]
+      }
+    },
+    "1498B": {
+      "problem_key": "1498B",
+      "title": "Box Fitting",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/1498/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/89137",
+      "editorial_quality": "partial",
+      "model": "gpt-6-luna",
+      "input_hash": "8bc1f0e2dc8850ed537a1776ceee68f72565dfdc8f2b1d23b1591bc620a25ad9",
+      "generated_at": "2026-09-29T00:30:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定若干高度为 1、宽度为 2 的幂的矩形，以及宽度为 $W$ 的箱子；矩形不能旋转，彼此不能重叠，但箱内可以留空。要求把所有矩形放入箱中，并求所需的最小箱子高度。",
+        "transformed_statement": "把箱子按高度切成宽度均为 $W$ 的层，每个矩形占用一层中的一段宽度；问题转为安排这些矩形，使使用的层数最少。由于宽度是 2 的幂，每层优先放入当前能容纳的最大矩形不会损失最优性。",
+        "key_observations": [
+          "矩形宽度都是 2 的幂，因此一串较小矩形在宽度总和达到某个较大矩形宽度时，必有一个前缀恰好达到该宽度；这使得把可放下的最大矩形优先放入当前层不会损失最优性。",
+          "将每层视为剩余宽度为当前容量的一维空间后，矩形不可旋转且高度均为 1，逐层填满即可把二维摆放问题化为计算所需层数。",
+          "对于固定高度，尺寸为 $2^i$ 的矩形既要有足够的直接容纳位置，也要考虑更大矩形占用空间后留下的余量；题解通过从大到小累加数量来统一检查这些限制。"
+        ],
+        "solution_brief": "按宽度统计矩形数量。每层从剩余宽度中选择能放入的最大矩形，放不下任何矩形时开启新层；由于宽度是 2 的幂，该贪心可通过重排得到最优层数。题解另给出固定高度的可行性检查与二分方案。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面及 editorial 的贪心提示、正确性说明和二分可行性检查；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1498A": {
+      "problem_key": "1498A",
+      "title": "GCD Sum",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1498/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/89137",
+      "editorial_quality": "partial",
+      "model": "gpt-6-luna",
+      "input_hash": "539aebdf5c4e58b3aaadb4b0bfc7e5d901a8c493459a74020d2b5f463bd44e4d",
+      "generated_at": "2026-09-29T00:30:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "对每个给定正整数 $n$，定义一个数的 gcd-sum 为它与自身数位和的最大公约数。要求找出不小于 $n$ 的最小整数 $x$，使得 $x$ 与其数位和的最大公约数大于 $1$。",
+        "transformed_statement": "无需在很大的整数范围内搜索：任取连续三个数，其中必有一个是 $3$ 的倍数，而该数与数位和都能被 $3$ 整除。因此只需按从小到大的顺序检查 $n$ 至 $n+2$。",
+        "key_observations": [
+          "任何能被 $3$ 整除的整数，其数位和也能被 $3$ 整除，因此它的 gcd-sum 至少为 $3$，必定符合条件。",
+          "任意连续三个整数中都包含一个 $3$ 的倍数，所以答案必在 $n$、$n+1$、$n+2$ 中；依次检查即可保证找到最小答案。",
+          "不能只返回不小于 $n$ 的最小 $3$ 的倍数，因为其他整数也可能满足 gcd-sum 大于 $1$，例如题解提到的 $26$。"
+        ],
+        "solution_brief": "逐个计算 $n$、$n+1$、$n+2$ 与各自数位和的最大公约数，输出第一个大于 $1$ 的数。由连续三个整数中必有一个 $3$ 的倍数可知，检查到 $n+2$ 一定能找到答案；输入范围需要使用 64 位整数。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；关键性质与检查范围依据 editorial_text；主题参考 codeforces_tags。",
+        "quality_flags": []
       }
     }
   }
