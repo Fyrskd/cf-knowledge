@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4311,
+    "total_problems": 4312,
     "source_total_problems": 4313,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4311,
-    "with_editorial_brief": 3952,
-    "with_solution_brief": 3954,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4312,
+    "with_editorial_brief": 3953,
+    "with_solution_brief": 3955,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3373,
+    "ai_override_count": 3374,
     "primary_topic_count": 13,
     "contest_count": 674,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1414,
+    "构造与贪心": 1415,
     "动态规划与状态设计": 357,
     "数据结构": 402,
     "图论与网络流": 292,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2943,
+    "ai_generated_with_editorial": 2944,
     "ai_generated_partial_editorial": 118,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -132037,9 +132037,37 @@ window.CF_INSIGHTS_DATA = {
       "date": "2021-01-05",
       "url": "https://codeforces.com/contest/1471",
       "type": "Div. 2",
-      "problemCount": 1,
+      "problemCount": 2,
       "maxRating": 1100,
       "problems": [
+        {
+          "key": "1471A",
+          "index": "A",
+          "slot": "A",
+          "title": "Strange Partition",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1471/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/86464",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数数组和整数 $x$，可以任意多次把一对相邻元素替换为它们的和，也可以不操作。数组美丽度是每个元素除以 $x$ 后向上取整的总和，要求求所有允许操作后美丽度的最小值和最大值。",
+          "transformedStatement": "把一次相邻合并视为将两个分项贡献替换成其和的单项贡献；由上取整的不等式可知合并只会让总贡献不增。因此极值分别对应完全不合并与将全数组合成一个元素。",
+          "keyObservations": [
+            "对任意正数 $a,b$，合并后的贡献满足 $\\lceil(a+b)/x\\rceil\\le \\lceil a/x\\rceil+\\lceil b/x\\rceil$，所以每次合并都不会增加美丽度。",
+            "反复合并相邻元素可以把整个数组合成一个元素，因此最小值由总和 $\\sum a_i$ 的单项数组取得。",
+            "由于任何合并都不会增加美丽度，不进行操作即可取得最大值，答案是原数组各项 $\\lceil a_i/x\\rceil$ 之和。"
+          ],
+          "solutionBrief": "最大美丽度为原数组各项上取整后求和；最小美丽度为 $\\lceil(\\sum a_i)/x\\rceil$，因为全部合并可达到该值，而每次合并只会使美丽度不增。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "1471B",
           "index": "B",

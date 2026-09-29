@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-29T03:35:41+00:00",
+  "updated_at": "2026-09-29T06:05:00+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -100829,6 +100829,35 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的切割规则，以及 editorial 对最大纸片数和宽、高独立处理的说明。",
+        "quality_flags": []
+      }
+    },
+    "1471A": {
+      "problem_key": "1471A",
+      "title": "Strange Partition",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1471/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/86464",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "5f511c68147535c302e2f0e6185d3ccb517c3e54e39eb3fed122379e790c8c0f",
+      "generated_at": "2026-09-29T06:05:00+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数数组和整数 $x$，可以任意多次把一对相邻元素替换为它们的和，也可以不操作。数组美丽度是每个元素除以 $x$ 后向上取整的总和，要求求所有允许操作后美丽度的最小值和最大值。",
+        "transformed_statement": "把一次相邻合并视为将两个分项贡献替换成其和的单项贡献；由上取整的不等式可知合并只会让总贡献不增。因此极值分别对应完全不合并与将全数组合成一个元素。",
+        "key_observations": [
+          "对任意正数 $a,b$，合并后的贡献满足 $\\lceil(a+b)/x\\rceil\\le \\lceil a/x\\rceil+\\lceil b/x\\rceil$，所以每次合并都不会增加美丽度。",
+          "反复合并相邻元素可以把整个数组合成一个元素，因此最小值由总和 $\\sum a_i$ 的单项数组取得。",
+          "由于任何合并都不会增加美丽度，不进行操作即可取得最大值，答案是原数组各项 $\\lceil a_i/x\\rceil$ 之和。"
+        ],
+        "solution_brief": "最大美丽度为原数组各项上取整后求和；最小美丽度为 $\\lceil(\\sum a_i)/x\\rceil$，因为全部合并可达到该值，而每次合并只会使美丽度不增。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的相邻元素求和操作与美丽度定义，以及 editorial 给出的合并不等式和两端取值方式。",
         "quality_flags": []
       }
     }
