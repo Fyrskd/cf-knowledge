@@ -1,5 +1,16 @@
 [
   {
+    "id": 1500,
+    "name": "Codeforces Round 707 (Div. 1, based on Moscow Open Olympiad in Informatics)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1615626300,
+    "relativeTimeSeconds": 175018204,
+    "date": "2021-03-13"
+  },
+  {
     "id": 1501,
     "name": "Codeforces Round 707 (Div. 2, based on Moscow Open Olympiad in Informatics)",
     "type": "CF",
