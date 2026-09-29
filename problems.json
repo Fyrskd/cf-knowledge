@@ -104,6 +104,7 @@
     "type": "PROGRAMMING",
     "points": 3000.0,
     "tags": [
+      "divide and conquer",
       "dp",
       "fft"
     ]
