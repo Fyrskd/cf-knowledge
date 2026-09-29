@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-29T00:36:28+00:00",
+  "updated_at": "2026-09-29T00:41:37+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -95800,6 +95800,158 @@
         "source_provenance": "依据题面给出的两种编号方式及 editorial 的坐标转换公式；editorial 的取模公式中符号疑似笔误，按题面行数使用 $n$。",
         "quality_flags": [
           "editorial_notation_typo"
+        ]
+      }
+    },
+    "1484F": {
+      "problem_key": "1484F",
+      "title": "Useful Edges",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1484/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "90f7cc2851d6fe964ff08073db6fece0c6a53033d44d79604a6942562f25d39e",
+      "generated_at": "2026-09-29T00:40:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个带正权边的无向图，以及若干互不相同的三元组 $(u,v,l)$。若存在一条连接 $u$ 和 $v$、总边权不超过 $l$ 且经过某条边的路径（允许重复经过顶点），则该边有用；要求统计有用边的数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_text 为空，tags 仅用于主题分类。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "1484E": {
+      "problem_key": "1484E",
+      "title": "Skyline Photo",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1484/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "0a05fcf88bcd1a4c8e773a2ab30e7fcb771e17403d23afabc51eadebaa2a8caf",
+      "generated_at": "2026-09-29T00:40:54+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一排高度互不相同、各自带有美值的建筑。需要把整排建筑划分成若干个非空连续区间，每栋建筑恰好属于一个区间；每段得分为其中最低建筑的美值，求总得分最大值。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_url 仅提供链接，editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "1484D": {
+      "problem_key": "1484D",
+      "title": "Playlist",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1484/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "147f49e724492c3bb853fc2447cf9db8446979dc2d3e6657b2b439bcd2cb0751",
+      "generated_at": "2026-09-29T00:41:01+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "歌单按环形顺序循环播放，每首歌有一个 genre。若刚听完的歌与此前最近听过的歌的 genre 最大公约数为 1，就删除刚听完的歌；删除后忘记此前的播放记录，继续跳过已删歌曲播放。求最终会删除哪些歌曲及其删除顺序。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_text 为空，tags 仅用于辅助主题分类。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1484C": {
+      "problem_key": "1484C",
+      "title": "Basic Diplomacy",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1484/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "9273fcfdf34b6fc849324447c65064475444689e7818a441b3bd46fcf49d2b61",
+      "generated_at": "2026-09-29T00:41:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 位朋友和 $m$ 天，每天给出当天可参与的朋友名单，必须从名单中选一人作为队友。要求安排每天的选择，使任何一位朋友被选中的次数都不超过 $\\lceil m/2\\rceil$；若做不到则报告无解。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；题解链接仅提供 URL，未提供 editorial 正文；tags 仅作主题参考。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "1484B": {
+      "problem_key": "1484B",
+      "title": "Restore Modulo",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1484/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "7834849ef8607be227c2e00963de56c03dee8ab81dcbbd17992361c74d70630a",
+      "generated_at": "2026-09-29T00:41:29+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "对每个整数数组，判断它能否由参数 $n,m,c,s$ 的生成器产生，其中 $n,m$ 为正数、$s$ 非负且 $0\\le c<m$；若能生成，则求可能的最大模数 $m$。题面给出的示例符合从初值开始每步加固定步长并对 $m$ 取模的规律，但生成规则正文缺失。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面、标题及标签；editorial_text 为空，editorial_url 仅提供链接。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1484A": {
+      "problem_key": "1484A",
+      "title": "Prison Break",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1484/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "1dc8bd4d5b668137d903feb1ad5e6503f9326028d0d4cbcda0e17e2e7067ccca",
+      "generated_at": "2026-09-29T00:41:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "监狱由 $a \\times b$ 个相邻方格组成，方格之间及方格与外界之间都有墙。可以预先打通若干面墙，要求无论囚犯被关在哪个方格，都能沿通路到达外界；求至少需要打通多少面墙。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_text 为空，题目标签仅提供构造类分类信息。",
+        "quality_flags": [
+          "missing_editorial"
         ]
       }
     }
