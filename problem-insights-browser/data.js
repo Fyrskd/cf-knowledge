@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4230,
+    "total_problems": 4236,
     "source_total_problems": 4237,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4230,
-    "with_editorial_brief": 3871,
-    "with_solution_brief": 3873,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4236,
+    "with_editorial_brief": 3877,
+    "with_solution_brief": 3879,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3292,
+    "ai_override_count": 3298,
     "primary_topic_count": 13,
-    "contest_count": 659,
+    "contest_count": 660,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,8 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1384,
-    "数论与同余": 444,
+    "构造与贪心": 1386,
+    "数论与同余": 445,
+    "动态规划与状态设计": 347,
+    "组合计数与概率": 324,
     "数据结构": 396,
     "几何": 98,
     "交互": 127,
@@ -54,12 +56,10 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 227,
     "基础实现与模拟": 258,
     "博弈": 120,
-    "动态规划与状态设计": 345,
-    "组合计数与概率": 323,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2866,
+    "ai_generated_with_editorial": 2872,
     "ai_generated_partial_editorial": 114,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -129971,6 +129971,193 @@ window.CF_INSIGHTS_DATA = {
             "轮内若某个前缀和不大于此前出现过的前缀和，它不可能比此前位置更早达标，因此可删去这类位置，使保留的前缀值递增并能二分查找。"
           ],
           "solutionBrief": "计算整轮总和及各位置前缀和。若最大前缀仍小于目标且整轮总和非正，答案为无限；否则利用正的整轮总和确定所需完整轮数，将目标换算到单轮内，再对去除被支配位置后的递增前缀和二分，得到首次达标时间。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1487,
+      "name": "Educational Codeforces Round 104 (Rated for Div. 2)",
+      "date": "2021-02-15",
+      "url": "https://codeforces.com/contest/1487",
+      "type": "Educational",
+      "problemCount": 6,
+      "maxRating": 2900,
+      "problems": [
+        {
+          "key": "1487A",
+          "index": "A",
+          "slot": "A",
+          "title": "Arena",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1487/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/87873",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "给定 $n$ 名英雄的初始等级。每分钟任意选两名不同英雄战斗：等级相同则无人获胜，等级不同则较高者获胜且等级加一；求存在某种战斗安排，使其先赢得至少 $100^{500}$ 场战斗的英雄人数。",
+          "transformedStatement": "无需构造整场比赛，只需判断每名英雄是否有一个等级更低的对手：有则可反复击败该对手并累积胜场，没有则无法获胜。问题因此转化为统计初始等级不等于全局最小值的英雄数。",
+          "keyObservations": [
+            "若某英雄没有等级更低的对手，他就无法赢下任何一场战斗，因此不可能成为最终赢家。",
+            "只要存在等级更低的对手，该英雄就可以反复挑战对方并获胜，等级还会持续增加，因此他能够赢得足够多的战斗。",
+            "所以可能赢家恰好是初始等级严格高于全局最小值的英雄，答案等于人数减去最小值的出现次数。"
+          ],
+          "solutionBrief": "统计数组最小值出现的次数，并用英雄总数减去该次数。最小等级的英雄没有更弱对手，不能获胜；其他英雄可反复击败最弱英雄，累积足够多的胜场。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1487C",
+          "index": "C",
+          "slot": "C",
+          "title": "Minimum Ties",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1487/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/87873",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "graphs",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 支队伍，每两队恰好比赛一次，胜者得 $3$ 分、平局双方各得 $1$ 分、负者得 $0$ 分。请为每场比赛指定胜负或平局，使所有队伍最终得分相同，并让平局场数尽可能少。",
+          "transformedStatement": "把每场无平局比赛看作向总分贡献 $3$ 分、每场平局看作贡献 $2$ 分，先用总分整除 $n$ 推出偶数队伍所需的最少平局数；再将队伍放在环上，以对称的胜负安排实现每队得分一致。",
+          "keyObservations": [
+            "没有平局时，每场比赛总共产生 $3$ 分；若所有 $n$ 队得分相同，总分必须被 $n$ 整除，这为偶数队数下的平局数给出下界。",
+            "当 $n$ 为偶数时，总分对 $n$ 的余数为 $n/2$，而每场平局会使总分减少 $1$ 分，因此至少需要 $n/2$ 场平局。",
+            "奇数队数可沿环排列队伍，让每队战胜顺时针方向的 $\u0000\\lfloor n/2\\rfloor$ 队、输给其余队伍；这样每队胜负场数相同，且无需平局。",
+            "偶数队数时让每队与环上正对面的队伍打平，并在两个方向各战胜连续的 $(n-2)/2$ 队；每队得分相等，且恰有 $n/2$ 场平局，达到下界。"
+          ],
+          "solutionBrief": "按队伍数量奇偶分别构造环形赛果。奇数时每队赢一半、输一半的对手；偶数时让对面的队伍打平，其余比赛沿环对称分配胜负。偶数情形至少需要 $n/2$ 场平局，构造恰好达到该下界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1487D",
+          "index": "D",
+          "slot": "D",
+          "title": "Pythagorean Triples",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1487/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/87873",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定上限 $n$，要统计整数三元组 $(a,b,c)$，满足 $1\\le a\\le b\\le c\\le n$，并且同时满足勾股关系 $a^2+b^2=c^2$ 和 Vasya 的公式 $c=a^2-b$。",
+          "transformedStatement": "把两条关于 $a,b,c$ 的等式相减，问题可化为寻找满足 $c=b+1$ 且 $a^2=2b+1$ 的整数三元组。因此只需数出使 $(a^2+1)/2\\le n$ 的奇数 $a>1$。",
+          "keyObservations": [
+            "两条平方关系相减后得到 $b(b+1)=c(c-1)$；结合 $b\\le c$，可推出 $c=b+1$，从而消去一个变量。",
+            "代入 $c=b+1$ 后得到 $a^2=2b+1$，因此 $a$ 必须是大于 $1$ 的奇数，且每个这样的 $a$ 唯一确定一组 $b,c$。",
+            "由 $c=(a^2+1)/2$ 可直接检查 $c\\le n$，答案就等于满足该上界的奇数 $a$ 的个数。"
+          ],
+          "solutionBrief": "将勾股等式与 Vasya 的错误公式相减，得到 $c=b+1$，再推出 $b=(a^2-1)/2$、$c=(a^2+1)/2$。遍历大于 $1$ 的奇数 $a$，统计对应的 $c$ 不超过 $n$ 的情况。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1487E",
+          "index": "E",
+          "slot": "E",
+          "title": "Cheap Dinner",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1487/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/87873",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "graphs",
+            "greedy",
+            "implementation",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "有四类菜品，分别是前菜、主菜、饮料和甜点；给出每道菜的价格，并给出相邻类别之间不能搭配的菜品对。必须依次各选一道且所有相邻菜品都能搭配，求最低总价套餐。",
+          "transformedStatement": "将问题建模为四层的有向无环结构，每道菜是一个点，允许搭配的相邻菜品之间连边；求从前菜层经过主菜层、饮料层到甜点层的最低价格路径。动态规划转移时，只需在上一层中寻找未被当前菜品禁配的最低状态值。",
+          "keyObservations": [
+            "把四类菜品按套餐顺序视为四层，某个菜品的状态值是以它结尾的可行前缀最低花费；这样套餐总花费可由相邻两层逐步转移得到。",
+            "转移只排除与当前菜品不相容的上一层菜品，因此无需枚举所有菜品对：临时移除被禁配菜品的状态值后，剩余状态的最小值就是最优前驱。",
+            "相同花费可能对应多个菜品，维护候选最小值时必须支持重复元素；处理完一个当前菜品后恢复临时移除的值，避免影响后续转移。"
+          ],
+          "solutionBrief": "按四层分别计算以每道菜结尾的最低前缀花费。对于每个当前菜品，临时从上一层的候选花费集合中移除所有与它禁配的菜品，取剩余最小值并加上当前菜品价格，再恢复移除项；重复三次后取甜点层的最小值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1487F",
+          "index": "F",
+          "slot": "F",
+          "title": "Ones",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1487/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/87873",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "shortest paths"
+          ],
+          "statementBrief": "给定正整数 $n$，要将它表示为若干个只由数字 1 组成的整数之和，允许使用负数项，例如 $11$ 或 $-111$。目标是最小化所有正、负项中数字 1 的总数，并输出这个最小值。",
+          "transformedStatement": "把表示中的每个数视为从低位开始连续贡献若干个带符号的 1；处理到某一位时，只需知道仍未结束的正项数、负项数和进位，再决定哪些项在该位结束。这样，寻找整体表示转化为逐位满足数字约束并最小化累计贡献的状态问题。",
+          "keyObservations": [
+            "从低位向高位处理时，尚未结束的正数和负数分别只需记录数量 $cp$、$cn$；它们在当前位的净贡献是 $cp-cn$，因此不必单独记录每个数。",
+            "在第 $i$ 位决定哪些数恰好到此结束后，当前位必须满足 $(cp-cn+carry)\\bmod 10=n_i$；匹配后将 $cp+cn$ 加入代价，因为每个仍有效的数都会在这一位贡献一个数字 1。",
+            "可以把状态范围限制在多项式大小：题解指出最多用 $5|n|$ 个数即可，因此 $cp,cn$ 不超过该界；进位绝对值也可限制为 $5|n|/9$，从而得到 $O(|n|^4)$ 的动态规划。"
+          ],
+          "solutionBrief": "按从低位到高位的顺序做动态规划，状态记录已处理位数、进位以及仍在使用的正数和负数数量。枚举在当前位结束的数，检查位值是否匹配，并以当前仍有效的数的数量累计 1 的总数；题解给出的复杂度为 $O(|n|^4)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1487G",
+          "index": "G",
+          "slot": "G",
+          "title": "String Counting",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1487/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/87873",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "字符串"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "给定长度 $n$ 和每种小写字母可使用的上限 $c_i$，要从这些字母中构造长度为 $n$ 的字符串；任何两个端点相同、长度为大于 1 的奇数的连续子串都不允许出现。求满足条件且每种字母使用次数不超过上限的不同字符串数。",
+          "transformedStatement": "将禁用的奇数回文条件改写为“不出现长度为 3 的回文”，再按超出使用上限的字母集合做容斥。由于超限字母最多有两种，计数只需覆盖零种、一种或两种字母超限的情况。",
+          "keyObservations": [
+            "任何长度大于 1 的奇数回文都包含长度为 3 的回文，因此只需保证字符串中不存在形如 $x?x$ 的连续子串，就能排除所有禁用回文。",
+            "每种字母的上限都大于 $n/3$，所以一条长度为 $n$ 的字符串至多有两种字母超限；据此只需对单种和两种字母超限分别做容斥。",
+            "固定关注一种或两种字母后，末两位只需记录它们属于哪一类，而不必区分具体字母；这将末尾状态压缩为常数种。",
+            "两种字母超限的计数依赖于字母上限，但动态规划可对字母对统一计算，再用二维前缀和按各对上限查询超限数量。"
+          ],
+          "solutionBrief": "先用记录末两位的 DP 统计不含长度为 3 回文的字符串，再通过容斥扣除一种字母超限的情况并加回两种字母同时超限的情况。固定关注字母类别后统一运行计数 DP，并用二维前缀和查询各字母对的超限数量；主要部分复杂度为 $O(n^3)$，但常数较大。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
