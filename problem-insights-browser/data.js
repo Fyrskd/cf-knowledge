@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4106,
+    "total_problems": 4112,
     "source_total_problems": 4112,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4106,
-    "with_editorial_brief": 3760,
-    "with_solution_brief": 3762,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4112,
+    "with_editorial_brief": 3766,
+    "with_solution_brief": 3768,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3168,
+    "ai_override_count": 3174,
     "primary_topic_count": 13,
-    "contest_count": 638,
+    "contest_count": 639,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1334,
+    "构造与贪心": 1336,
+    "数论与同余": 431,
+    "动态规划与状态设计": 336,
+    "图论与网络流": 275,
+    "组合计数与概率": 322,
     "数据结构": 389,
-    "组合计数与概率": 321,
     "字符串": 218,
     "博弈": 117,
-    "图论与网络流": 274,
     "树结构": 193,
-    "动态规划与状态设计": 335,
-    "数论与同余": 430,
     "几何": 96,
     "基础实现与模拟": 252,
     "交互": 121,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2764,
+    "ai_generated_with_editorial": 2770,
     "ai_generated_partial_editorial": 105,
     "missing_editorial": 344,
     "low_confidence": 1,
@@ -126274,6 +126274,190 @@ window.CF_INSIGHTS_DATA = {
             "高位部分随扫描位置变化时会在区间段内保持不变，因此可对这些段维护异或贡献；低位与高位采用不同方法，并通过选择 $K$ 平衡两部分的代价。"
           ],
           "solutionBrief": "由 Nim 的异或判定，先求每个区间内 $c_j-L$ 的异或和，再判断其是否为零。将区间查询拆为两个后缀查询；低 $K$ 位按模 $2^K$ 合并奇偶计数，高位用区间段数据结构维护，调节 $K$ 平衡开销，复杂度为 $O(N\\sqrt{N\\log N})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1513,
+      "name": "Divide by Zero 2021 and Codeforces Round 714 (Div. 2)",
+      "date": "2021-04-11",
+      "url": "https://codeforces.com/contest/1513",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1513A",
+          "index": "A",
+          "slot": "A",
+          "title": "Array and Peaks",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1513/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/89550",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定长度 $n$ 和目标峰数 $k$，需要排列 $1$ 到 $n$ 的所有整数。数组中仅内部位置可能成为峰，且该位置的数必须严格大于左右相邻数；要求构造恰有 $k$ 个峰的排列，无解时输出 $-1$。",
+          "transformedStatement": "将最大的 $k$ 个数指定为峰值，并在它们之间交替放置较小数；问题转化为检查最后一个峰值是否仍严格大于其右邻居，即能否满足 $2k<n$。",
+          "keyObservations": [
+            "把最大的 $k$ 个数安排为峰值，并在相邻峰之间放入较小数，就能让每个指定的大数都高于左右邻居。",
+            "构造中最后一个峰值是 $n-k+1$，它右侧的邻居是 $k+1$；要保证峰值严格更大，必须有 $n-k+1>k+1$，即 $2k<n$。",
+            "峰的位置必须互不相邻且不能位于数组端点，因此可实现的峰数也受数组长度限制；当 $2k\\ge n$ 时按题解给出的构造条件不可行。"
+          ],
+          "solutionBrief": "若 $2k\\ge n$，输出 $-1$。否则按 $1,n,2,n-1,\\ldots,k,n-k+1$ 排列，之后接上剩余的 $k+1,k+2,\\ldots,n-k$；这样恰有 $k$ 个峰。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1513B",
+          "index": "B",
+          "slot": "B",
+          "title": "AND Sequences",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1513/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/89550",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "combinatorics",
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定含 `n` 个非负整数的数组，可以任意排列这些元素。若每个位置切开后，左侧所有数的按位与都等于右侧所有数的按位与，则该排列称为好排列；求好排列的数量，结果对 `10^9+7` 取模。",
+          "transformedStatement": "把条件改写为：序列首尾必须等于全体元素的按位与，中间每个元素都必须是该按位与的超掩码。于是只需检查数组中是否有至少两个全体按位与值，并确认其他元素都包含其置位。",
+          "keyObservations": [
+            "好序列的每个前缀按位与都等于首元素；因此首尾必须是同一个全体按位与值，中间元素都必须包含这个值的所有置位。",
+            "若数组能重排成好序列，首尾元素只能取数组的全体按位与值；这等于数组最小值，且至少要有两个这样的元素。",
+            "满足可行条件后，只需从 `cnt` 个最小值中分别选首项和末项，其余元素任意排列，所以排列数为 `cnt·(cnt-1)·(n-2)!`。"
+          ],
+          "solutionBrief": "求数组最小值 `x` 及其出现次数 `cnt`。若 `cnt<2`，或存在元素不包含 `x` 的全部置位（即 `(a_i & x) != x`），答案为 0；否则首尾分别选一个最小值，中间任意排列，答案为 `cnt·(cnt-1)·(n-2)!`，对 `10^9+7` 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1513C",
+          "index": "C",
+          "slot": "C",
+          "title": "Add One",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1513/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/89550",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "matrices"
+          ],
+          "statementBrief": "给定一个十进制整数，每次操作都把当前数的每一位数字 `d` 替换成整数 `d+1` 的十进制表示；若变成两位数，两位都会参与后续操作。执行 `m` 次后，求所得数字的长度对 $10^9+7$ 取模。",
+          "transformedStatement": "不追踪整个不断增长的数字，而是分别计算原数每一位经过 `m` 次替换后产生的字符数，再将这些长度相加。用对数字 `10` 的展开长度作为统一 DP 状态，覆盖各个原始数字的后续展开。",
+          "keyObservations": [
+            "每个原始数字可以独立追踪其展开后的长度，最终总长度就是各位数字贡献长度之和，因此无需构造不断膨胀的整个数。",
+            "数字经过若干次操作后，只有遇到 9 才会变成两位数并产生分支；把这一过程平移到数字 0 的情形，可用 `10` 的展开长度统一表示。",
+            "`dp[i]` 表示对 `10` 操作 `i` 次后的长度：前 9 项为 2，第 9 项为 3，之后满足 `dp[i]=dp[i-9]+dp[i-10]`，对应两个新数字后续展开长度之和。"
+          ],
+          "solutionBrief": "预处理 `dp`，记录数字 `10` 操作指定次数后的长度。原数每位数字 `d` 在 `m` 次操作后的贡献为：若 `m+d<10` 则为 1，否则为 `dp[m+d-10]`；累加各位贡献并对 $10^9+7$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1513D",
+          "index": "D",
+          "slot": "D",
+          "title": "GCD and MST",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1513/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/89550",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dsu",
+            "graphs",
+            "greedy",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的正整数数组和参数 $p$，数组位置对应图的顶点，顶点间按题目规定的 gcd 条件或相邻关系添加带权边；目标是求该图的最小生成树总权重。题面记录未保留完整的连边条件，题解说明相邻边可用权重 $p$ 连接。",
+          "transformedStatement": "把候选低权边按其对应的数组值从小到大处理：固定值 $g$ 后，只需检查它左右连续且可被 $g$ 整除的位置，并将这些局部连接纳入生成树；值超过 $p$ 后改由相邻的权重 $p$ 边兜底。",
+          "keyObservations": [
+            "按数组值从小到大处理时，当前值 $g$ 是候选区间的最小值；只要相邻元素能被 $g$ 整除，区间整体的 gcd 就可能保持为 $g$，因此可用权重 $g$ 的边连接它们。",
+            "沿一个方向扩展时，若遇到已经有边连接的元素就可以停止：继续扩展只会在这段连续连接中形成环，不会再减少生成树代价。",
+            "当当前候选值 $g>p$ 时，继续寻找这类边不可能优于权重为 $p$ 的相邻边，因此剩余连通部分直接用相邻边连接即可。"
+          ],
+          "solutionBrief": "将位置按 $a_i$ 升序处理。对不超过 $p$ 的当前值 $g$，向左右扩展并连接可被 $g$ 整除的相邻位置，遇到已连接的位置或不满足条件时停止；之后用权重 $p$ 的相邻边补齐连通性。并查集可用于判断连通，题解指出此处可通过检查是否已有连接边来避免成环，排序使总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1513E",
+          "index": "E",
+          "slot": "E",
+          "title": "Cost Equilibrium",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1513/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/89550",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "constructive algorithms",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定一个非负整数数组，可以通过题面所述的转移把数组变成所有元素相同的数组；转移成本由元素与其位置的距离决定。若变成相同数组的最小成本等于最大成本，该排列称为 balanced；要求统计原数组元素的不同排列中有多少个 balanced。",
+          "transformedStatement": "先将最终统一值确定为数组平均数 $x$，再把大于 $x$ 的元素视为只能提供转移的源、小于 $x$ 的元素视为只能接收转移的汇。计数问题随之转化为判断源汇数量或它们在排列中的先后关系是否满足平衡条件，并对重复值按多重集计数。",
+          "keyObservations": [
+            "最终相同的值只能是数组平均数 $x$，因此总和必须能被 $n$ 整除；高于 $x$ 的元素只能作源，低于 $x$ 的元素只能作汇，等于 $x$ 的元素不参与转移。",
+            "最小成本等于最大成本的条件可归结为：源或汇的数量至多为 $1$，或排列中所有源都在所有汇之前或之后；这把成本比较转成了排列位置限制。",
+            "当源和汇都至少有两个时，只需分别排列源、汇，再安排其相对位置，并计入源在汇之前和之后两种情况；相同数值的元素须按多重集计数，避免重复排列。"
+          ],
+          "solutionBrief": "先检查总和能否整除 $n$，并以平均数划分源、汇和不参与转移的元素。若源或汇不超过一个，答案是原数组的不同排列数；否则按题解给出的两种源汇整体顺序计数，并用阶乘和重数消除重复。题解关于中性元素位置数的二项式公式存在不一致，需谨慎核对。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1513F",
+          "index": "F",
+          "slot": "F",
+          "title": "Swapping Problem",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1513/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/89550",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "data structures",
+            "sortings"
+          ],
+          "statementBrief": "给定两个长度为 $n$ 的数组 $a$ 和 $b$，可以至多一次交换 $b$ 中任意两个元素，也可以不交换。要求选择操作后，使对应位置差的绝对值之和 $\\sum_i |a_i-b_i|$ 最小，并输出该最小值。",
+          "transformedStatement": "把每个位置的两个数视为区间 $[\\min(a_i,b_i),\\max(a_i,b_i)]$，并按 $a_i<b_i$ 与 $a_i>b_i$ 分成两类。问题转化为寻找两类区间间可实现的最大交叠长度，因为一次有利交换所减少的总误差等于交叠长度的两倍。",
+          "keyObservations": [
+            "只有一项原本偏小、另一项原本偏大的两个位置互换，才可能降低总误差；把每个位置表示为端点为 $\\min(a_i,b_i)$、$\\max(a_i,b_i)$ 的区间后，还必须要求这两个区间相交。",
+            "对满足条件的两个区间，交换带来的误差减少量恰为区间交长度的两倍，因此只需寻找跨越两类位置的最大交叠长度。",
+            "固定一个区间后，另一类中左端点不超过它左端点的区间，只需保留其中最大的右端点；这将候选交叠查询化为前缀最大值查询。"
+          ],
+          "solutionBrief": "先计算不交换时的误差和，并按 $a_i<b_i$、$a_i>b_i$ 将位置分组。对每个区间查询另一组左端点不超过其左端点时的最大右端点，求出两种方向上的最大交叠长度；答案为原误差减去该长度的两倍。前缀最大值可用排序后扫描或数据结构维护，整体复杂度为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

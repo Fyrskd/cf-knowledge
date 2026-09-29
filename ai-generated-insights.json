@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-29T00:04:23+00:00",
+  "updated_at": "2026-09-29T00:09:57+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -94784,6 +94784,186 @@
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的服务器分配规则及 editorial 给出的构造与复杂度。",
+        "quality_flags": []
+      }
+    },
+    "1513F": {
+      "problem_key": "1513F",
+      "title": "Swapping Problem",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1513/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/89550",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "0819779f3f9de3a70806a64ab4663ef677f523904b31606eefc35f49b64b92c6",
+      "generated_at": "2026-09-29T00:08:48+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个长度为 $n$ 的数组 $a$ 和 $b$，可以至多一次交换 $b$ 中任意两个元素，也可以不交换。要求选择操作后，使对应位置差的绝对值之和 $\\sum_i |a_i-b_i|$ 最小，并输出该最小值。",
+        "transformed_statement": "把每个位置的两个数视为区间 $[\\min(a_i,b_i),\\max(a_i,b_i)]$，并按 $a_i<b_i$ 与 $a_i>b_i$ 分成两类。问题转化为寻找两类区间间可实现的最大交叠长度，因为一次有利交换所减少的总误差等于交叠长度的两倍。",
+        "key_observations": [
+          "只有一项原本偏小、另一项原本偏大的两个位置互换，才可能降低总误差；把每个位置表示为端点为 $\\min(a_i,b_i)$、$\\max(a_i,b_i)$ 的区间后，还必须要求这两个区间相交。",
+          "对满足条件的两个区间，交换带来的误差减少量恰为区间交长度的两倍，因此只需寻找跨越两类位置的最大交叠长度。",
+          "固定一个区间后，另一类中左端点不超过它左端点的区间，只需保留其中最大的右端点；这将候选交叠查询化为前缀最大值查询。"
+        ],
+        "solution_brief": "先计算不交换时的误差和，并按 $a_i<b_i$、$a_i>b_i$ 将位置分组。对每个区间查询另一组左端点不超过其左端点时的最大右端点，求出两种方向上的最大交叠长度；答案为原误差减去该长度的两倍。前缀最大值可用排序后扫描或数据结构维护，整体复杂度为 $O(n\\log n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构",
+          "几何"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的至多交换一次规则，以及所给 editorial 的区间建模、交叠收益和前缀最大值方案。",
+        "quality_flags": []
+      }
+    },
+    "1513E": {
+      "problem_key": "1513E",
+      "title": "Cost Equilibrium",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/1513/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/89550",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "8a88ba805584b1f1ed6037daaeffaaebf61851bc91665d57c3b4f458f0cc8be2",
+      "generated_at": "2026-09-29T00:09:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个非负整数数组，可以通过题面所述的转移把数组变成所有元素相同的数组；转移成本由元素与其位置的距离决定。若变成相同数组的最小成本等于最大成本，该排列称为 balanced；要求统计原数组元素的不同排列中有多少个 balanced。",
+        "transformed_statement": "先将最终统一值确定为数组平均数 $x$，再把大于 $x$ 的元素视为只能提供转移的源、小于 $x$ 的元素视为只能接收转移的汇。计数问题随之转化为判断源汇数量或它们在排列中的先后关系是否满足平衡条件，并对重复值按多重集计数。",
+        "key_observations": [
+          "最终相同的值只能是数组平均数 $x$，因此总和必须能被 $n$ 整除；高于 $x$ 的元素只能作源，低于 $x$ 的元素只能作汇，等于 $x$ 的元素不参与转移。",
+          "最小成本等于最大成本的条件可归结为：源或汇的数量至多为 $1$，或排列中所有源都在所有汇之前或之后；这把成本比较转成了排列位置限制。",
+          "当源和汇都至少有两个时，只需分别排列源、汇，再安排其相对位置，并计入源在汇之前和之后两种情况；相同数值的元素须按多重集计数，避免重复排列。"
+        ],
+        "solution_brief": "先检查总和能否整除 $n$，并以平均数划分源、汇和不参与转移的元素。若源或汇不超过一个，答案是原数组的不同排列数；否则按题解给出的两种源汇整体顺序计数，并用阶乘和重数消除重复。题解关于中性元素位置数的二项式公式存在不一致，需谨慎核对。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的平衡排列定义及 editorial 给出的平均值、源汇分类和计数条件；题面未完整呈现变换步骤，editorial 的位置计数公式前后不一致。",
+        "quality_flags": [
+          "editorial_formula_inconsistent",
+          "statement_operation_details_missing"
+        ]
+      }
+    },
+    "1513D": {
+      "problem_key": "1513D",
+      "title": "GCD and MST",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1513/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/89550",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "263dc0ec318396a9fcc727e3e0acbae9aafb94b69fc8452d557d1c6da7fc69d7",
+      "generated_at": "2026-09-29T00:09:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的正整数数组和参数 $p$，数组位置对应图的顶点，顶点间按题目规定的 gcd 条件或相邻关系添加带权边；目标是求该图的最小生成树总权重。题面记录未保留完整的连边条件，题解说明相邻边可用权重 $p$ 连接。",
+        "transformed_statement": "把候选低权边按其对应的数组值从小到大处理：固定值 $g$ 后，只需检查它左右连续且可被 $g$ 整除的位置，并将这些局部连接纳入生成树；值超过 $p$ 后改由相邻的权重 $p$ 边兜底。",
+        "key_observations": [
+          "按数组值从小到大处理时，当前值 $g$ 是候选区间的最小值；只要相邻元素能被 $g$ 整除，区间整体的 gcd 就可能保持为 $g$，因此可用权重 $g$ 的边连接它们。",
+          "沿一个方向扩展时，若遇到已经有边连接的元素就可以停止：继续扩展只会在这段连续连接中形成环，不会再减少生成树代价。",
+          "当当前候选值 $g>p$ 时，继续寻找这类边不可能优于权重为 $p$ 的相邻边，因此剩余连通部分直接用相邻边连接即可。"
+        ],
+        "solution_brief": "将位置按 $a_i$ 升序处理。对不超过 $p$ 的当前值 $g$，向左右扩展并连接可被 $g$ 整除的相邻位置，遇到已连接的位置或不满足条件时停止；之后用权重 $p$ 的相邻边补齐连通性。并查集可用于判断连通，题解指出此处可通过检查是否已有连接边来避免成环，排序使总复杂度为 $O(n\\log n)$。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "数据结构",
+          "构造与贪心",
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 editorial 的升序处理、区间扩展、停止条件及复杂度说明；题面原文中的具体连边规则缺失。",
+        "quality_flags": [
+          "statement_edge_rules_missing_in_source"
+        ]
+      }
+    },
+    "1513C": {
+      "problem_key": "1513C",
+      "title": "Add One",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1513/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/89550",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "30a2bbb7f43e4a882304479a9574f790cd8b2b0fc4834af5d6f2bd3549f9388e",
+      "generated_at": "2026-09-29T00:09:35+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个十进制整数，每次操作都把当前数的每一位数字 `d` 替换成整数 `d+1` 的十进制表示；若变成两位数，两位都会参与后续操作。执行 `m` 次后，求所得数字的长度对 $10^9+7$ 取模。",
+        "transformed_statement": "不追踪整个不断增长的数字，而是分别计算原数每一位经过 `m` 次替换后产生的字符数，再将这些长度相加。用对数字 `10` 的展开长度作为统一 DP 状态，覆盖各个原始数字的后续展开。",
+        "key_observations": [
+          "每个原始数字可以独立追踪其展开后的长度，最终总长度就是各位数字贡献长度之和，因此无需构造不断膨胀的整个数。",
+          "数字经过若干次操作后，只有遇到 9 才会变成两位数并产生分支；把这一过程平移到数字 0 的情形，可用 `10` 的展开长度统一表示。",
+          "`dp[i]` 表示对 `10` 操作 `i` 次后的长度：前 9 项为 2，第 9 项为 3，之后满足 `dp[i]=dp[i-9]+dp[i-10]`，对应两个新数字后续展开长度之和。"
+        ],
+        "solution_brief": "预处理 `dp`，记录数字 `10` 操作指定次数后的长度。原数每位数字 `d` 在 `m` 次操作后的贡献为：若 `m+d<10` 则为 1，否则为 `dp[m+d-10]`；累加各位贡献并对 $10^9+7$ 取模。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的逐位替换规则，以及 editorial 给出的 DP 定义、递推和按位求和公式。",
+        "quality_flags": []
+      }
+    },
+    "1513B": {
+      "problem_key": "1513B",
+      "title": "AND Sequences",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1513/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/89550",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "2586eeef279c14d021c45e3edcdd4c2c4cd69e844b33fafee4a14a7c71fb3664",
+      "generated_at": "2026-09-29T00:09:46+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定含 `n` 个非负整数的数组，可以任意排列这些元素。若每个位置切开后，左侧所有数的按位与都等于右侧所有数的按位与，则该排列称为好排列；求好排列的数量，结果对 `10^9+7` 取模。",
+        "transformed_statement": "把条件改写为：序列首尾必须等于全体元素的按位与，中间每个元素都必须是该按位与的超掩码。于是只需检查数组中是否有至少两个全体按位与值，并确认其他元素都包含其置位。",
+        "key_observations": [
+          "好序列的每个前缀按位与都等于首元素；因此首尾必须是同一个全体按位与值，中间元素都必须包含这个值的所有置位。",
+          "若数组能重排成好序列，首尾元素只能取数组的全体按位与值；这等于数组最小值，且至少要有两个这样的元素。",
+          "满足可行条件后，只需从 `cnt` 个最小值中分别选首项和末项，其余元素任意排列，所以排列数为 `cnt·(cnt-1)·(n-2)!`。"
+        ],
+        "solution_brief": "求数组最小值 `x` 及其出现次数 `cnt`。若 `cnt<2`，或存在元素不包含 `x` 的全部置位（即 `(a_i & x) != x`），答案为 0；否则首尾分别选一个最小值，中间任意排列，答案为 `cnt·(cnt-1)·(n-2)!`，对 `10^9+7` 取模。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "组合计数与概率"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面和完整 editorial；tags 仅作辅助。",
+        "quality_flags": []
+      }
+    },
+    "1513A": {
+      "problem_key": "1513A",
+      "title": "Array and Peaks",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1513/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/89550",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "6b547a91657b06cd33971de0f1c39bd4e8c8f97216c0485103fa2136c3b225e8",
+      "generated_at": "2026-09-29T00:09:57+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度 $n$ 和目标峰数 $k$，需要排列 $1$ 到 $n$ 的所有整数。数组中仅内部位置可能成为峰，且该位置的数必须严格大于左右相邻数；要求构造恰有 $k$ 个峰的排列，无解时输出 $-1$。",
+        "transformed_statement": "将最大的 $k$ 个数指定为峰值，并在它们之间交替放置较小数；问题转化为检查最后一个峰值是否仍严格大于其右邻居，即能否满足 $2k<n$。",
+        "key_observations": [
+          "把最大的 $k$ 个数安排为峰值，并在相邻峰之间放入较小数，就能让每个指定的大数都高于左右邻居。",
+          "构造中最后一个峰值是 $n-k+1$，它右侧的邻居是 $k+1$；要保证峰值严格更大，必须有 $n-k+1>k+1$，即 $2k<n$。",
+          "峰的位置必须互不相邻且不能位于数组端点，因此可实现的峰数也受数组长度限制；当 $2k\\ge n$ 时按题解给出的构造条件不可行。"
+        ],
+        "solution_brief": "若 $2k\\ge n$，输出 $-1$。否则按 $1,n,2,n-1,\\ldots,k,n-k+1$ 排列，之后接上剩余的 $k+1,k+2,\\ldots,n-k$；这样恰有 $k$ 个峰。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的峰定义与构造要求，以及完整 editorial 给出的构造和可行条件。",
         "quality_flags": []
       }
     }
