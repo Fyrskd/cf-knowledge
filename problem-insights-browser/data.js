@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4140,
-    "source_total_problems": 4140,
+    "total_problems": 4146,
+    "source_total_problems": 4146,
     "filtered_out_problems": 0,
-    "with_statement_brief": 4140,
+    "with_statement_brief": 4146,
     "with_editorial_brief": 3794,
     "with_solution_brief": 3796,
-    "missing_editorial_brief": 344,
+    "missing_editorial_brief": 350,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 3202,
     "primary_topic_count": 13,
-    "contest_count": 644,
+    "contest_count": 645,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1349,
+    "基础实现与模拟": 255,
+    "组合计数与概率": 324,
+    "图论与网络流": 279,
+    "动态规划与状态设计": 339,
     "数论与同余": 434,
-    "构造与贪心": 1348,
     "字符串": 222,
-    "图论与网络流": 277,
-    "动态规划与状态设计": 338,
     "博弈": 119,
-    "组合计数与概率": 323,
-    "基础实现与模拟": 254,
     "数据结构": 389,
     "树结构": 193,
     "几何": 96,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
+    "missing_editorial": 350,
     "ai_generated_with_editorial": 2792,
     "ai_generated_partial_editorial": 111,
-    "missing_editorial": 344,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -127313,6 +127313,165 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "从空串开始逐个构造结果。每轮按字符从大到小尝试尚未选过的字符，并用子序列位置及剩余后缀是否含有所有未选字符来检验可行性；选取最大的可行字符，直至原串中的每种字符都出现一次。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1484,
+      "name": "Codeforces Round 709 (Div. 2, based on Technocup 2021 Final Round)",
+      "date": "2021-03-21",
+      "url": "https://codeforces.com/contest/1484",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2400,
+      "problems": [
+        {
+          "key": "1484A",
+          "index": "A",
+          "slot": "A",
+          "title": "Prison Break",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "交互"
+          ],
+          "originalTags": [
+            "constructive algorithms"
+          ],
+          "statementBrief": "题面已抓取：Prison Break；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1484B",
+          "index": "B",
+          "slot": "B",
+          "title": "Restore Modulo",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Restore Modulo；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1484C",
+          "index": "C",
+          "slot": "C",
+          "title": "Basic Diplomacy",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "构造与贪心",
+            "图论与网络流",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "flows",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Basic Diplomacy；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1484D",
+          "index": "D",
+          "slot": "D",
+          "title": "Playlist",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dsu",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Playlist；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1484E",
+          "index": "E",
+          "slot": "E",
+          "title": "Skyline Photo",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "题面已抓取：Skyline Photo；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        },
+        {
+          "key": "1484F",
+          "index": "F",
+          "slot": "F",
+          "title": "Useful Edges",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1484/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计",
+            "几何"
+          ],
+          "originalTags": [
+            "brute force",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "题面已抓取：Useful Edges；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         }
       ]
     }

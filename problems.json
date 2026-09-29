@@ -142606,5 +142606,80 @@
     "tags": [
       "math"
     ]
+  },
+  {
+    "contestId": 1484,
+    "index": "A",
+    "name": "Prison Break",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "rating": 800,
+    "tags": [
+      "constructive algorithms"
+    ]
+  },
+  {
+    "contestId": 1484,
+    "index": "B",
+    "name": "Restore Modulo",
+    "type": "PROGRAMMING",
+    "points": 1250.0,
+    "rating": 1500,
+    "tags": [
+      "implementation",
+      "math"
+    ]
+  },
+  {
+    "contestId": 1484,
+    "index": "C",
+    "name": "Basic Diplomacy",
+    "type": "PROGRAMMING",
+    "points": 1500.0,
+    "rating": 1600,
+    "tags": [
+      "combinatorics",
+      "flows",
+      "greedy",
+      "implementation"
+    ]
+  },
+  {
+    "contestId": 1484,
+    "index": "D",
+    "name": "Playlist",
+    "type": "PROGRAMMING",
+    "points": 2000.0,
+    "rating": 1900,
+    "tags": [
+      "data structures",
+      "dsu",
+      "implementation"
+    ]
+  },
+  {
+    "contestId": 1484,
+    "index": "E",
+    "name": "Skyline Photo",
+    "type": "PROGRAMMING",
+    "points": 2500.0,
+    "rating": 2100,
+    "tags": [
+      "data structures",
+      "dp"
+    ]
+  },
+  {
+    "contestId": 1484,
+    "index": "F",
+    "name": "Useful Edges",
+    "type": "PROGRAMMING",
+    "points": 2750.0,
+    "rating": 2400,
+    "tags": [
+      "brute force",
+      "graphs",
+      "shortest paths"
+    ]
   }
 ]

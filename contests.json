@@ -1,5 +1,16 @@
 [
   {
+    "id": 1484,
+    "name": "Codeforces Round 709 (Div. 2, based on Technocup 2021 Final Round)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1616332800,
+    "relativeTimeSeconds": 174309478,
+    "date": "2021-03-21"
+  },
+  {
     "id": 1506,
     "name": "Codeforces Round 710 (Div. 3)",
     "type": "ICPC",

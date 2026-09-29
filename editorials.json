@@ -8,6 +8,28 @@
     "raw_sha256": "4b9e31e66b779a97ef1392fd9fa6a5a9316709e6e28642f46fd9a079153c3be5"
   },
   {
+    "url": "https://codeforces.com/blog/entry/88963",
+    "blog_entry_id": 88963,
+    "title": "Technocup 2021: Final Round and Codeforces Round #709 — tutorial",
+    "author": "KAN",
+    "creation_time": "2021-03-23",
+    "original_locale": "ru",
+    "source": "codeforces-blog",
+    "label": "Technocup 2021: Final Round and Codeforces Round #709 — tutorial",
+    "section_count": 8,
+    "covered_problems": [
+      "1482A",
+      "1482B",
+      "1482C",
+      "1482D",
+      "1482E",
+      "1482F",
+      "1482G",
+      "1482H"
+    ],
+    "raw_sha256": "4506250753588963444677f2cdc5412fea9bbb3f5adb042fd8a81c02c288a752"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/89007",
     "blog_entry_id": 89007,
     "title": "Codeforces Round #710 (Div. 3) Editorial",
