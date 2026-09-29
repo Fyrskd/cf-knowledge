@@ -1,5 +1,16 @@
 [
   {
+    "id": 1512,
+    "name": "Codeforces Round 713 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1618065300,
+    "relativeTimeSeconds": 172575371,
+    "date": "2021-04-10"
+  },
+  {
     "id": 1513,
     "name": "Divide by Zero 2021 and Codeforces Round 714 (Div. 2)",
     "type": "CF",
