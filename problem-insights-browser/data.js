@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4285,
+    "total_problems": 4292,
     "source_total_problems": 4293,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 4285,
-    "with_editorial_brief": 3926,
-    "with_solution_brief": 3928,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4292,
+    "with_editorial_brief": 3933,
+    "with_solution_brief": 3935,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3347,
+    "ai_override_count": 3354,
     "primary_topic_count": 13,
-    "contest_count": 669,
+    "contest_count": 670,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1403,
+    "构造与贪心": 1405,
+    "字符串": 228,
+    "数据结构": 401,
+    "图论与网络流": 290,
+    "组合计数与概率": 329,
     "数论与同余": 452,
     "动态规划与状态设计": 355,
-    "组合计数与概率": 328,
-    "数据结构": 400,
     "几何": 99,
-    "图论与网络流": 288,
     "基础实现与模拟": 259,
     "树结构": 198,
     "交互": 128,
     "代数、矩阵与多项式": 27,
-    "博弈": 121,
-    "字符串": 227
+    "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2918,
+    "ai_generated_with_editorial": 2925,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -131662,6 +131662,218 @@ window.CF_INSIGHTS_DATA = {
             "不同候选序列若首峰相同，可合并分组处理；各组的区段总数受原序列长度约束，从而避免逐个候选重复计算造成的额外高阶开销。"
           ],
           "solutionBrief": "将累计和序列压缩为端点及局部极值构成的峰谷序列，在连续整数值上建立最长递增子序列计数状态。对重复的相邻数值转移用矩阵快速幂加速，并按首峰分组；长度可能较大，计数对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1473,
+      "name": "Educational Codeforces Round 102 (Rated for Div. 2)",
+      "date": "2021-01-14",
+      "url": "https://codeforces.com/contest/1473",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2800,
+      "problems": [
+        {
+          "key": "1473A",
+          "index": "A",
+          "slot": "A",
+          "title": "Replacing Elements",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1473/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/86827",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定正整数数组，每步可选三个互不相同的下标，把其中一个位置的值改成另外两个位置当前值之和；可以操作任意次，也可以不操作。判断能否最终使所有元素都不超过 $d$。",
+          "transformedStatement": "正数相加会使结果大于任一加数，因此数组的两个最小值无法被操作降低。于是可行性可转化为检查：原数组是否已全部不超过 $d$，或者两个最小值之和是否不超过 $d$。",
+          "keyObservations": [
+            "由于所有元素为正，两个最小值是无法通过操作变小的：改写它们只会使其增大，改写其他元素得到的值也至少是两者之和。",
+            "因此，若数组中已有元素大于 $d$，要把它变小只能将它改写为两个最小值之和；这个和不超过 $d$ 时，所有过大的元素都能被改到合格范围。",
+            "若最大值本来就不超过 $d$，无需操作；结合上一条，可行性只需检查最大值是否不超过 $d$，或两个最小值之和是否不超过 $d$。"
+          ],
+          "solutionBrief": "将数组升序排列，若最大值不超过 $d$，或两个最小值之和不超过 $d$，输出 YES；否则输出 NO。排序后只需检查首两个元素与最后一个元素。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1473B",
+          "index": "B",
+          "slot": "B",
+          "title": "String LCM",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1473/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/86827",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "math",
+            "number theory",
+            "strings"
+          ],
+          "statementBrief": "给定两个字符串，字符串的整数倍定义为将它连续重复若干次。要求找出最短的非空字符串，使它同时是这两个字符串的整数倍；若不存在则输出 $-1$。",
+          "transformedStatement": "把问题拆成先确定结果长度、再验证字符内容：任何共同倍字符串的长度都是两个输入长度的公倍数，最短候选长度因此是它们的最小公倍数；检查两个输入重复到该长度后是否完全相同即可。",
+          "keyObservations": [
+            "若字符串 $x$ 是 $y$ 的整数份重复拼接，则 $|x|$ 必须是 $|y|$ 的倍数；因此公共倍字符串的长度必须是两者长度的公倍数。",
+            "要让结果字符串最短，其长度只能取 $|s|$ 与 $|t|$ 的最小公倍数，从而唯一确定需要重复拼接的份数。",
+            "分别将 $s$ 和 $t$ 重复到该最小公倍数长度后，只需比较两者是否相同；相同即为所求，不同则不存在同时可整除它们的字符串。"
+          ],
+          "solutionBrief": "令目标长度为 $|s|$ 和 $|t|$ 的最小公倍数，将两个字符串分别重复到该长度并比较；若一致则输出该串，否则输出 $-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1473C",
+          "index": "C",
+          "slot": "C",
+          "title": "No More Inversions",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1473/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/86827",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定 $k\\le n<2k$，序列 $a$ 为 $1,2,\\ldots,k$ 后接从 $k-1$ 开始递减的数列。选择一个包含 $1$ 到 $k$ 的排列 $p$，并令每项 $b[i]=p[a[i]]$；要求 $b$ 的逆序数不超过 $a$，同时使 $b$ 字典序最大。",
+          "transformedStatement": "令 $m=n-k$，把序列拆成长度为 $k-m-1$ 的递增前缀和一个先递增后递减的尾段。尾段的逆序数不受其互异赋值的影响，因而关键是让前缀及前缀与尾段之间都不产生逆序，再最大化尾段的字典序。",
+          "keyObservations": [
+            "令 $m=n-k$，序列中后半段对应一段先递增再递减的结构；对任意互异赋值，这段的逆序数恒为 $(m+1)^2$，因此可以在不改变其逆序数的前提下调整赋值。",
+            "原序列的前缀内部没有逆序，且前缀与后半段之间也没有逆序；为了不增加总逆序数，构造后的前缀及两段之间也必须保持这两项为零。",
+            "零逆序要求前 $k-m-1$ 个位置的赋值依次为 $1,2,\\ldots,k-m-1$；剩余数值可自由安排，于是将较大的值优先放到后半段靠前位置即可使整个序列字典序最大。"
+          ],
+          "solutionBrief": "设 $m=n-k$，输出排列 $p=(1,2,\\ldots,k-m-1,k,k-1,\\ldots,k-m)$。前缀保持原顺序以避免新增逆序；后半段的逆序数与具体赋值无关，因此将剩余数值按降序赋值可使生成序列字典序最大。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1473D",
+          "index": "D",
+          "slot": "D",
+          "title": "Program",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1473/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/86827",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "字符串"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "程序由 $n$ 条指令组成，初始 $x=0$，每条指令为加一或减一。对每个查询给出区间 $[l,r]$，忽略其中所有指令并按原顺序执行其余指令，求执行过程中 $x$ 取过多少种不同的值。",
+          "transformedStatement": "把一次查询后的执行过程看成原程序中区间前缀与后缀两段轨迹的拼接；分别求两段的取值范围，并将后缀轨迹平移到前缀执行后的起点，再合并两段范围计算不同取值数。",
+          "keyObservations": [
+            "每条指令只让 $x$ 变化 $1$，因此执行过程中经过的整数值不会有空缺；不同取值数等于最大值减最小值再加 $1$。",
+            "忽略区间 $[l,r]$ 后，轨迹由原程序的前缀和后缀拼接而成；前缀范围可预先记录，后缀范围则需整体平移到前缀结束时的 $x$ 值。",
+            "从初值 $0$ 执行某段后缀的轨迹，若初值改为 $1$，整条轨迹恰好上移 $1$；因此可以从短后缀向前递推其最小值和最大值。"
+          ],
+          "solutionBrief": "预处理每个前缀的累计值及最小、最大值，并从右向左递推每个后缀的最小、最大值。查询时合并区间前缀与后缀的范围，后缀整体加上前缀结束时的累计值；答案为合并范围的长度，即最大值减最小值加 $1$。总复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1473E",
+          "index": "E",
+          "slot": "E",
+          "title": "Minimum Path",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1473/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/86827",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定一个边权为正的连通无向图，路径的权值定义为路径上所有边权之和减去其中最大边权，再加上最小边权。对每个顶点 $i\\ge 2$，求从顶点 $1$ 到 $i$ 的最小路径权值。",
+          "transformedStatement": "将路径代价视为普通边权总和上，允许任选一条经过的边减去其权值、再任选一条经过的边加上其权值。把每个顶点扩展为记录这两种操作是否已使用的状态，在扩展图上求最短路；最优时减去最大边、加上最小边，因而与原目标等价。",
+          "keyObservations": [
+            "把路径代价改写为边权总和减去一条被减去的边权、再加上一条被加上的边权；这样只需追踪两种操作是否已经使用。",
+            "若被减去的边不是路径上的最大边，将它替换为最大边会进一步降低代价，因此最优方案必定减去最大边。",
+            "同理，若被加上的边不是路径上的最小边，换成最小边会降低代价，所以最优方案必定加上最小边。",
+            "将原图顶点扩展为“是否已减边、是否已加边”的状态后，修改后的路径问题可用非负边权最短路求解；其最优路径对应原题的目标代价。"
+          ],
+          "solutionBrief": "在每个原图顶点上附加两个标记，分别表示是否已执行减边和加边，得到至多四层的状态图。沿原图边转移时可选择正常计费、减去该边权或加上该边权，并用 Dijkstra 求各目标顶点在两种操作都已使用时的最短距离；最优性说明这两次操作分别落在最大边和最小边上。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1473F",
+          "index": "F",
+          "slot": "F",
+          "title": "Strange Set",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1473/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/86827",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "flows",
+            "math"
+          ],
+          "statementBrief": "给定序列 $a$ 和权值 $b$，从位置 $1$ 到 $n$ 中选出一个集合；若选了位置 $i$，则每个更早且 $a_j$ 整除 $a_i$ 的位置 $j$ 也必须被选。集合得分为所选位置的 $b_i$ 之和，要求最大化得分。",
+          "transformedStatement": "把可行集合表示为网络中源点一侧的点集：整除关系形成必须同时纳入的依赖，正权点未纳入和负权点被纳入分别计入割代价。于是最大得分等于正权总和减去满足依赖约束的最小割。",
+          "keyObservations": [
+            "若选择位置 $i$，就必须选择所有更早且对应 $a_j$ 能整除 $a_i$ 的位置；将这种依赖建成从 $i$ 指向 $j$ 的无限容量边，就能禁止违反依赖的割。",
+            "正权位置未被选会损失收益，负权位置被选会产生损失，因此可把最大收益转成常数项减最小割：答案为所有正权之和减去最小割。",
+            "同一数值在 $i$ 左侧出现多个时，只连向最近的一次即可：选择最近位置会沿其依赖继续强制选择更早的同值位置，故其他同值边冗余。",
+            "每个位置对每个 $a_i$ 的约数至多连接一条依赖边，边数因而受约数数量限制，避免直接构造可能达到 $O(n^2)$ 条的依赖边。"
+          ],
+          "solutionBrief": "建立最小割网络：正权点连源点，负权点连汇点，依赖边从被依赖的位置指向其前置依赖并设为无限容量。每个约数只连向左侧最近的对应位置以压缩边数，运行最大流后用正权总和减最小割得到答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1473G",
+          "index": "G",
+          "slot": "G",
+          "title": "Tiles",
+          "rating": 2800,
+          "problemUrl": "https://codeforces.com/contest/1473/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/86827",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "fft",
+            "math"
+          ],
+          "statementBrief": "道路由多行矩形砖块组成，首行只有一块；每组操作先让砖块数增加 $a_i$ 次，再减少 $b_i$ 次。每一步只能从当前砖块走到下一行中与它接触的砖块，要求计算从首行出发到达末行任意砖块的不同路径数，答案对 $998244353$ 取模。",
+          "transformedStatement": "把一组增加与减少操作对应的多行道路压成矩形网格的对角线，组内路径计数就变成网格单调路径计数。跨组更新可表示为上一组位置计数与二项式系数序列的卷积。",
+          "keyObservations": [
+            "把一组先增加 $a_i$ 次、再减少 $b_i$ 次的行变化展开后，可表示为矩形网格的对角线；原题中连续经过这些行的路径数，等于网格内对应起终点之间的路径数。",
+            "网格中每一步只向右或向下，因此从上一组各个末端位置到新末端位置的路径数由二项式系数给出，整组转移可写成对上一组计数的加权求和。",
+            "转移中的权重是连续的二项式系数，求和对上一组答案构成卷积；用 NTT 计算卷积即可避免逐对位置计算。"
+          ],
+          "solutionBrief": "按每组行变化维护各个位置的到达路径数。对于包含 $a_i$ 次增加和 $b_i$ 次减少的组，转移系数为相应的二项式系数；将转移改写为卷积，并用 NTT 加速，结果对 $998244353$ 取模。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
