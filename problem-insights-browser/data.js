@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4152,
+    "total_problems": 4160,
     "source_total_problems": 4160,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 4152,
-    "with_editorial_brief": 3794,
-    "with_solution_brief": 3796,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4160,
+    "with_editorial_brief": 3802,
+    "with_solution_brief": 3804,
     "missing_editorial_brief": 356,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3214,
+    "ai_override_count": 3222,
     "primary_topic_count": 13,
-    "contest_count": 646,
+    "contest_count": 647,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1351,
-    "数论与同余": 436,
-    "动态规划与状态设计": 340,
-    "图论与网络流": 279,
-    "交互": 122,
-    "字符串": 223,
-    "数据结构": 390,
+    "构造与贪心": 1353,
+    "数论与同余": 437,
+    "数据结构": 391,
+    "动态规划与状态设计": 341,
+    "图论与网络流": 280,
+    "交互": 123,
+    "字符串": 224,
     "博弈": 119,
     "组合计数与概率": 323,
     "基础实现与模拟": 254,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
+    "ai_generated_with_editorial": 2800,
     "missing_editorial": 356,
-    "ai_generated_with_editorial": 2792,
     "ai_generated_partial_editorial": 111,
     "low_confidence": 1,
     "manual_override": 891,
@@ -127602,6 +127602,240 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
+      "id": 1482,
+      "name": "Технокубок 2021 - Финал",
+      "date": "2021-03-21",
+      "url": "https://codeforces.com/contest/1482",
+      "type": "Others",
+      "problemCount": 8,
+      "maxRating": 3400,
+      "problems": [
+        {
+          "key": "1482A",
+          "index": "A",
+          "slot": "A",
+          "title": "Prison Break",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1482/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "监狱是由 $a\\times b$ 个单元格组成的矩形网格，可以预先打破单元格之间的墙或通向外部的边界墙。要求无论 Michael 被关在哪个单元格，都能沿着破墙形成的通路到达外部，并使打破的墙数最少。",
+          "transformedStatement": "将每个单元格和外部看作初始互不连通的区域，问题转化为用最少破墙操作把 $ab+1$ 个区域连成一个整体；每面墙最多合并两个区域，而每格打通一面外墙即可实现连通。",
+          "keyObservations": [
+            "初始时，监狱的 $ab$ 个单元格区域与外部共形成 $ab+1$ 个连通区域；每打破一面墙至多合并两个区域，因此至少需要打破 $ab$ 面墙。",
+            "打破每个单元格的一面上边界墙后，每个单元格都能直接通向外部，恰好使用 $ab$ 面墙，达到下界。"
+          ],
+          "solutionBrief": "把单元格和外部视为平面中的连通区域。每次打破一面墙最多减少一个区域，因此至少需要 $ab$ 次；在每个单元格的上边界各打破一面墙即可让所有单元格逃出，答案为 $ab$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1482B",
+          "index": "B",
+          "slot": "B",
+          "title": "Restore Modulo",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1482/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题目给出一个整数数组，要求判断它能否由生成器产生：生成器从初值开始，每步加上固定步长并对固定正模数取余。若能生成，求可能的最大模数；若不能则报告无解。",
+          "transformedStatement": "把生成过程改写为考察相邻元素的差：每一步要么增加固定步长 $c$，要么因取模回绕而减少 $m-c$。因此，数组能否生成取决于两类相邻差是否分别保持一致，以及由此得到的参数能否复现数组。",
+          "keyObservations": [
+            "相邻元素相等时，非零步长不可能产生该变化，因此只能是步长为零；此时数组必须全相等。",
+            "非零步长时，每次取模后的相邻差只能是正向增加量 $c$ 或回绕后的负向差 $-(m-c)$，所以所有正差必须相同、所有负差也必须相同。",
+            "若正差和负差都出现，它们的绝对值之和就是 $m$，因而模数和步长被唯一确定；若只出现一种方向，则模数可以任意增大。",
+            "由差值推得候选参数后，还需检查这些参数能否按生成规则得到整个数组，避免仅凭差值模式误判。"
+          ],
+          "solutionBrief": "先单独处理步长为零：数组全相等时模数可任意大，否则无解。非零步长时检查相邻差的正值是否全同、负值的绝对值是否全同；两种方向都出现时据此确定模数与步长，并验证生成结果。若只出现一种方向，则模数无上界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1482C",
+          "index": "C",
+          "slot": "C",
+          "title": "Basic Diplomacy",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1482/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 位朋友和 $m$ 天，每天只能从当天给出的可玩名单中选一人组队。要求构造每天的选择，使任何朋友被选中的次数都不超过 $\\lceil m/2\\rceil$；若无法做到则报告无解。",
+          "transformedStatement": "将问题看作给每一天分配一位名单内的朋友，并限制每人的总负载不超过 $\\lceil m/2\\rceil$。先任意分配，再只需处理唯一可能超载的人：在其可替换的日期把名额转给其他候选人。",
+          "keyObservations": [
+            "先在每天的可选名单中任意选一人，最多只有一位朋友会超过上限 $\\lceil m/2\\rceil$，因此只需针对这位朋友调整。",
+            "若该朋友被安排的次数超限，就把他在有其他可选朋友的日子换下；每次替换只会减少他的次数，不会让任何人超过上限。",
+            "某朋友若在超过 $\\lceil m/2\\rceil$ 天里是唯一可选者，则这些天无法更换，必然无解；否则对初始超限者进行替换即可把其次数降至上限。"
+          ],
+          "solutionBrief": "先逐日任意选一位可玩朋友，统计每人的次数。若有人超出 $\\lceil m/2\\rceil$，就在他被选中且当天还有其他候选人的日子改选他人；若可替换次数不足，则无解，否则输出调整后的安排。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1482D",
+          "index": "D",
+          "slot": "D",
+          "title": "Playlist",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1482/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "data structures",
+            "dsu",
+            "implementation",
+            "shortest paths"
+          ],
+          "statementBrief": "歌曲按给定顺序循环播放，歌手记住最近听到的两首；若它们的 genre 最大公约数为 $1$，就删除刚听完的后一首。删除后跳过已删除歌曲继续播放，并忘记此前听过的歌曲；求最终被删除歌曲的编号及删除顺序。",
+          "transformedStatement": "把播放列表看成循环链表，并把每对相邻且 genre 最大公约数为 $1$ 的歌曲视为候选删除关系，候选对的后一首是待删歌曲。删除一首歌只会改变其前驱与后继之间的相邻关系，因此可动态维护歌曲和候选对，并按播放顺序处理候选项。",
+          "keyObservations": [
+            "一次删除只会改变被删歌曲两侧的相邻关系，因此只需移除至多两条旧相邻关系，并检查是否新增一条跨越被删歌曲的关系。",
+            "当前能触发删除的歌曲，恰好是循环播放顺序中某对相邻歌曲里后听到的那首，且两者 genres 的最大公约数为 $1$；因此可直接维护所有这样的相邻对。",
+            "删除后继续从后续歌曲播放，而不是立刻重复检查刚形成的新相邻对；按循环顺序维护候选对，能保留题目的播放顺序与删除限制。"
+          ],
+          "solutionBrief": "用有序集合维护仍在播放列表中的歌曲，并用另一个有序集合维护 gcd 为 $1$ 的相邻歌曲对。每次取当前应处理的候选对并删除其后一首歌，再更新被删歌曲两侧的相邻关系；用欧几里得算法判断新相邻对是否满足条件。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1482E",
+          "index": "E",
+          "slot": "E",
+          "title": "Skyline Photo",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1482/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "divide and conquer",
+            "dp"
+          ],
+          "statementBrief": "给定一排高度互不相同的建筑及每栋建筑的美感值，可将整排建筑划分成若干张照片；每张照片必须覆盖一段连续建筑，且每栋建筑恰好出现在一张照片中。每张照片的美感等于其中最矮建筑的美感值，要求最大化所有照片美感之和。",
+          "transformedStatement": "把照片划分转化为前缀 DP：每一步确定覆盖前缀末端的最后一张照片，并依据该照片区间的最矮建筑计算贡献。对末端位置使用左侧最近更矮建筑划分起点范围，从而将转移化为前缀 DP 最大值查询及可复用的前缀最优结果。",
+          "keyObservations": [
+            "固定最右一张照片后，其美感由该连续区间中最矮建筑的美感值决定，因此枚举照片起点的朴素转移可写成区间最小值对应的 DP。",
+            "对位置 $i$ 找到左侧最近的更矮建筑 $j$ 后，$j$ 与 $i$ 之间的建筑都比 $h_i$ 高；若照片从这段范围内开始，最矮者就是 $i$，美感统一为 $b_i$。",
+            "左侧最近更矮位置把转移分成两类：照片与该建筑相连时可复用其左侧的最优前缀结果；照片在两者之间切开时，只需取相应前缀 DP 的最大值。"
+          ],
+          "solutionBrief": "令 $dp_i$ 表示前 $i$ 栋建筑的最大总美感。利用单调栈求每栋建筑左侧最近的更矮者，并按其划分最后一张照片的转移；转移中需要查询一段前缀 DP 的最大值，可用线段树实现，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1482F",
+          "index": "F",
+          "slot": "F",
+          "title": "Useful Edges",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1482/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
+          "originalTags": [
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定带正权的无向图和若干三元组 $(u,v,l)$。若存在一条从 $u$ 到 $v$、长度恰为 $l$ 的路径经过某条边（路径允许重复经过顶点），该边称为有用边；要求统计有用边的数量。",
+          "transformedStatement": "固定三元组的一端点 $v$ 后，边 $(a,b,w)$ 是否有用可转成检验 $dist(v,a)+w+dist(b,u_i)\\le l_i$ 是否对某个对应三元组成立。将三元组条件合并为带初始值 $-l_i$ 的最短路查询，即可逐边判定。",
+          "keyObservations": [
+            "对固定端点 $v$，边 $(a,b,w)$ 可用等价于存在三元组 $(v,u_i,l_i)$ 使 $dist(v,a)+w+dist(b,u_i)\\le l_i$，因此判断可拆成边相关项与三元组相关项。",
+            "移项后只需比较 $\\min_i(-l_i+dist(u_i,b))$ 与 $-w-dist(v,a)$；前者可通过以各 $u_i$ 的 $-l_i$ 为初始值进行多源最短路统一求出。",
+            "题目允许路径重复经过顶点，因此只需利用最短路距离拼接路径；若拼接长度不超过 $l_i$，便得到符合限制的路径。"
+          ],
+          "solutionBrief": "先用 Floyd 算法求所有点对最短距离。对每个固定端点 $v$，以对应三元组的另一端点 $u_i$ 为源、初始距离设为 $-l_i$，运行多源 Dijkstra；随后按移项后的不等式检查每条边，并统计至少对一个 $v$ 可用的边。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1482G",
+          "index": "G",
+          "slot": "G",
+          "title": "Vabank",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1482/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "interactive"
+          ],
+          "statementBrief": "经理初始账户有 $1$ 欧元，每次可选择一个整数金额 $X$，尝试从银行储备转入账户；超过未知整数阈值 $M$ 的操作会被发现，较小的操作不会被发现。需要在每组不超过 $10^5$ 次操作内确定 $M$，其中 $0\\le M\\le10^{14}$。",
+          "transformedStatement": "把确定阈值转化为逐步缩小候选区间，同时追踪余额足以支持后续查询的程度。搜索状态用区间左端点 $l$、右端点 $r$ 和整数 $y$ 概括，余额下界写作 $y\\cdot l+(r-l)$，再用动态规划计算剩余操作可覆盖的区间长度。",
+          "keyObservations": [
+            "连续尝试金额 $1,2,4,8,\u0000dots$，首次失败后即可把未知阈值限制在一个长度与左端点同阶的区间内，避免对 $10^{14}$ 的全范围直接搜索。",
+            "区间搜索时，当前余额可用 $y\\cdot l+(r-l)$ 这一形式概括；因此无需保留完整余额，只需维护整数状态 $y$ 和候选区间。",
+            "令 $dp[x][y]$ 表示在状态 $y$ 下、至多再用 $x$ 次操作可处理的最大区间长度，则有 $dp[x][y]=dp[x-1][y-1]+dp[x-1][y+1]$；其增长速度支持在约 $49$ 步内覆盖所需范围。",
+            "成功查询后，余额并不总能满足新区间对应的估计式；题解指出这种偏差累计至多需要额外补偿三份初始左端点，因此总操作数仍可控制在约 $100$ 次。"
+          ],
+          "solutionBrief": "先按倍增金额查询，找到阈值所在区间；随后以区间端点和余额状态 $y$ 进行搜索。用递推式预先计算各状态可覆盖的长度，并在成功查询造成余额估计偏差时补偿，题解给出的总查询次数约为 $100$ 次。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1482H",
+          "index": "H",
+          "slot": "H",
+          "title": "Exam",
+          "rating": 3400,
+          "problemUrl": "https://codeforces.com/contest/1482/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/88963",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "树结构",
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "string suffix structures",
+            "trees"
+          ],
+          "statementBrief": "给定若干互不相同的名字，若一个名字是另一个名字的子串，就可能形成一场比赛；但当较短名字的某次出现被其他参赛者名字的出现完全覆盖时，该配对不计入。求最终比赛场数。原始题面中的具体条件在记录里缺失，规则依据题解和示例概括。",
+          "transformedStatement": "对每个较长名字，先枚举其中出现的参赛者名字作为候选，再剔除那些出现位置被其他参赛者名字覆盖的候选；问题由子串配对计数转化为多模式匹配及失败指针树上的路径标记与查询。",
+          "keyObservations": [
+            "固定较长名字 $s$ 后，只需考虑它的子串中恰好也是参赛者名字的字符串，因此可把寻找候选对转成扫描 $s$ 的匹配问题。",
+            "若一个候选名字在 $s$ 中的某次出现被另一个参赛者名字的出现完全覆盖，它就应被排除；因此对每个右端点，考察其后更靠左的覆盖起点即可定位需要排除的后缀。",
+            "Aho-Corasick 自动机的失败指针构成树，区间对应的候选后缀可沿失败指针路径表示；标记这些路径后，检查候选节点是否被标记即可筛掉不应计数的名字。"
+          ],
+          "solutionBrief": "对每个名字扫描其内部，利用 Aho-Corasick 找到各位置匹配的参赛者名字及覆盖区间。再在失败指针树上标记需要排除的路径，并检查候选名字是否落在已标记部分；按题解给出的做法，总复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
         }
       ]
     }
