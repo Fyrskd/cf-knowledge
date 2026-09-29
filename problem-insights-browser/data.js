@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4304,
+    "total_problems": 4311,
     "source_total_problems": 4313,
-    "filtered_out_problems": 9,
-    "with_statement_brief": 4304,
-    "with_editorial_brief": 3945,
-    "with_solution_brief": 3947,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 4311,
+    "with_editorial_brief": 3952,
+    "with_solution_brief": 3954,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3366,
+    "ai_override_count": 3373,
     "primary_topic_count": 13,
-    "contest_count": 673,
+    "contest_count": 674,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1410,
+    "构造与贪心": 1414,
+    "动态规划与状态设计": 357,
+    "数据结构": 402,
+    "图论与网络流": 292,
     "数论与同余": 453,
     "交互": 129,
-    "图论与网络流": 291,
     "组合计数与概率": 330,
     "几何": 100,
-    "动态规划与状态设计": 356,
     "树结构": 199,
     "字符串": 228,
-    "数据结构": 401,
     "基础实现与模拟": 259,
     "代数、矩阵与多项式": 27,
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2937,
-    "ai_generated_partial_editorial": 117,
+    "ai_generated_with_editorial": 2943,
+    "ai_generated_partial_editorial": 118,
     "missing_editorial": 357,
     "low_confidence": 1,
     "manual_override": 891,
@@ -132263,6 +132263,215 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "按两个矩形的三种相对位置分别处理。互不相交时枚举水平或竖直分割线；十字形情形将面积改写为左右边界贡献之差并用线段树优化；第三类情形转化为线性函数最值查询，使用凸包技巧及离线区间维护。整体复杂度为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1472,
+      "name": "Codeforces Round 693 (Div. 3)",
+      "date": "2021-01-04",
+      "url": "https://codeforces.com/contest/1472",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2100,
+      "problems": [
+        {
+          "key": "1472A",
+          "index": "A",
+          "slot": "A",
+          "title": "Cards for Friends",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1472/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/86406",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一张尺寸为 $w\\times h$ 的纸；只有宽和高同时为偶数时，才能沿中线切成两张相同尺寸的纸片。可重复切割任意纸片，判断最终能否得到至少 $n$ 张纸片。",
+          "transformedStatement": "把每次切割视为将当前相同尺寸纸片数量翻倍，并将宽、高分别能对半的次数相加；问题等价于判断这些切割最多能产生的数量是否达到 $n$。",
+          "keyObservations": [
+            "每次合法切割都把某一条偶数边长对半，因此宽和高可以分别处理；一条边反复对半的次数只由它含有多少个因子 $2$ 决定。",
+            "同一时刻得到的纸片尺寸相同，若还能继续切一片，就可以把所有同尺寸纸片都切开，使纸片总数翻倍；因此最大数量由两条边可对半次数之和决定。"
+          ],
+          "solutionBrief": "分别统计 $w$、$h$ 能连续除以 $2$ 的次数，将次数相加为 $k$，最多可得到 $2^k$ 张纸片。判断 $2^k\\ge n$ 即可；若无需切割，初始的一张也计入数量。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1472B",
+          "index": "B",
+          "slot": "B",
+          "title": "Fair Division",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1472/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/86406",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定若干颗重量为 1 克或 2 克的糖果，必须把每颗完整分给 Alice 或 Bob，不能切开。判断能否让两人的糖果总重量相等。",
+          "transformedStatement": "把分糖问题转化为能否从糖果中选出总重量的一半；对重量仅为 1 或 2 的情形，可进一步按总重量奇偶及重量为 1 的糖果数量判断可行性，无须实际构造分法。",
+          "keyObservations": [
+            "总重量为奇数时不可能平分；总重量为偶数时，只需判断是否能选出总重量一半的糖果给一人。",
+            "若至少有两颗重量为 1 的糖果且总重量为偶数，就总能用重量为 2 的糖果凑到接近一半，再用重量为 1 的糖果补齐，因此无需枚举具体分法。",
+            "若没有重量为 1 的糖果，所有糖果重量相同，只有糖果数量为偶数时才能各分一半。"
+          ],
+          "solutionBrief": "统计总重量及重量为 1 的糖果数。总重量为奇数则输出 NO；否则若重量为 1 的糖果至少有两颗，输出 YES；若一颗也没有，则检查糖果总数是否为偶数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1472C",
+          "index": "C",
+          "slot": "C",
+          "title": "Long Jumps",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1472/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/86406",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "graphs"
+          ],
+          "statementBrief": "给定正整数数组，可以任选一个位置开始；每次获得当前位置的数值作为分数，并向右跳过这么多个位置，跳出数组后结束。求选择起点后能够获得的最大总分。",
+          "transformedStatement": "把每个位置视为一条确定的后继关系：位置 $i$ 的后继是 $i+a_i$，而该位置的总得分是自身贡献 $a_i$ 加上后继链的总贡献；越界时链在当前位置结束。",
+          "keyObservations": [
+            "从位置 $i$ 出发会先获得 $a_i$ 分，再跳到 $i+a_i$；若跳出数组，游戏结束，因此当前位置的最优总分等于 $a_i$ 加上后继位置的总分。",
+            "由于 $a_i\\ge 1$，后继位置总在更靠右处，按下标从右向左处理时，计算当前位置所需的后继答案已经确定。",
+            "每个起点对应一条唯一的向右跳跃路径，不需要比较不同后续选择；分别计算所有起点的总分后取最大值即可。"
+          ],
+          "solutionBrief": "令 $score_i$ 表示从位置 $i$ 出发能获得的总分。若 $i+a_i\\le n$，则 $score_i=a_i+score_{i+a_i}$；否则 $score_i=a_i$。从右向左计算所有 $score_i$，取最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1472D",
+          "index": "D",
+          "slot": "D",
+          "title": "Even-Odd Game",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1472/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/86406",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "博弈"
+          ],
+          "originalTags": [
+            "dp",
+            "games",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "Alice 和 Bob 轮流从给定整数数组中取走一个数，直到数组为空；Alice 先手。取到偶数时 Alice 得到该数的分数，取到奇数时 Bob 得到该数的分数。双方都最优行动，要求判断 Alice 获胜、Bob 获胜还是平局。",
+          "transformedStatement": "将 Alice 的得分减去 Bob 的得分视为全局分数：Alice 取偶数时增加其数值，Bob 取奇数时减少其数值。于是双方每回合都只需选择当前最大数，问题转为按降序交替处理并计算最终分数差。",
+          "keyObservations": [
+            "把双方分数差改写为一个全局分数：Alice 取偶数时加上该数，Bob 取奇数时减去该数，其余情况不改变结果；Alice 最大化、Bob 最小化这个分数与原胜负规则等价。",
+            "轮到 Alice 时，取偶数能获得其全部数值，取奇数则能避免把该数交给 Bob 造成的负贡献；因此无论奇偶，取该数都比让对手取更有利，取当前最大数最优。",
+            "对 Bob 作对称分析也得到每回合取当前最大数最优，因此只需按数值从大到小排列并交替模拟，无须搜索不同取数顺序。"
+          ],
+          "solutionBrief": "将分数差表示为 Alice 最大化、Bob 最小化的全局分数。两人每回合都应取剩余数中的最大值；按降序交替处理，并根据取数者和奇偶性更新对应分数，最后比较双方分数判定胜负或平局。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1472E",
+          "index": "E",
+          "slot": "E",
+          "title": "Correct Placement",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1472/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/86406",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定每位朋友的身高和宽度，每个人在照片中都可以站立或侧躺，使矩形的高、宽互换。对每位朋友分别寻找一位能站在其前方的人，要求前方者的矩形高度和宽度都严格更小；每位朋友的寻找相互独立。",
+          "transformedStatement": "把一次寻找固定为目标矩形的一种朝向后，问题转化为：在所有身高严格小于目标身高的人中，判断是否存在宽度严格小于目标宽度的人；这可由排序后的后缀最小宽度代表整个候选集合。再交换目标的高宽重复检查即可覆盖两种朝向。",
+          "keyObservations": [
+            "固定前景人物的摆放方向后，合格候选必须同时满足身高和宽度都严格更小；按身高排序后，候选范围因此变成身高严格更小的一段后缀。",
+            "在满足身高条件的候选中，只需找宽度最小者：若这个最小宽度仍不小于目标宽度，则其他人也都不合格。",
+            "每个人都可以横放或竖放，因此分别交换身高与宽度再检查一次，就覆盖了目标人物的两种摆放方向。"
+          ],
+          "solutionBrief": "分别处理原始尺寸和交换后的尺寸。对每种方向按身高降序排列，并预处理每个后缀中宽度最小的人；对每位目标人物定位身高严格更小的候选范围，若其中最小宽度也严格更小，就记录该候选，否则继续检查另一种方向。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1472F",
+          "index": "F",
+          "slot": "F",
+          "title": "New Year's Puzzle",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1472/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/86406",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "graph matchings",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一个有两行、n 列的网格，其中 m 个格子被堵住。允许用覆盖相邻两格的 2×1 或 1×2 骨牌铺满所有未堵格，要求判断是否存在完整铺法。",
+          "transformedStatement": "把问题改看成按列推进的强制连接过程：全空列和全堵列可以直接处理，部分堵塞列留下的单格空位则必须与后续空位通过横骨牌衔接，衔接条件可由棋盘颜色检查。",
+          "keyObservations": [
+            "全空列可先用竖骨牌覆盖，全堵列则可直接跳过；因此只需关注含有堵塞格的列。",
+            "只堵住一格的列会留下一个必须用横骨牌连接出去的空格，所以它会对后续列产生强制要求，而不是独立决定铺法。",
+            "横向延伸遇到下一处部分堵塞列时，能否继续取决于两处待连接空格的棋盘颜色；按列号排序后即可逐对检查这种约束。"
+          ],
+          "solutionBrief": "将含堵塞格的列按列号排序，跳过全堵列，并根据全空列与部分堵塞列的规则推进强制铺设过程。每当待连接的单格空位延伸到下一处部分堵塞列时，检查两者的棋盘颜色条件；任一处无法满足则输出 NO，否则输出 YES。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1472G",
+          "index": "G",
+          "slot": "G",
+          "title": "Moving to the Capital",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1472/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/86406",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "graphs",
+            "shortest paths"
+          ],
+          "statementBrief": "给定首都为 1 的单向道路图，以及每个城市到首都的最短距离。旅途中至多一次使用题目所述的特殊移动，其余移动受道路规则限制；对每个起点，求能够到达的城市中最小的到首都距离。",
+          "transformedStatement": "先把道路按最短距离是否严格增加分类：严格增加的道路组成无环图，特殊移动则作为至多一次的一步候选。对每个起点，答案转化为其在递增图中可达的各城市的一步候选值的最小值。",
+          "keyObservations": [
+            "只保留从较小 $d$ 指向较大 $d$ 的道路后，图中不可能有环，因为沿每条边 $d$ 都严格增加；这使得可达范围内的最优值可以按无环依赖计算。",
+            "至多一次的特殊移动可单独折算为某个城市的一步候选值：取自身的 $d$ 或沿一条不属于递增距离图的道路到达城市的 $d$，无需在 DP 状态中记录是否已使用特殊移动。",
+            "原图中从起点可经递增距离道路到达的城市，正是特殊移动之前或之后可继续经过的部分；因此答案是这些城市的一步候选值的最小值。"
+          ],
+          "solutionBrief": "先求各城市到首都的最短距离，并按距离严格递增的道路构造有向无环图。对每个城市计算自身或经一条非递增道路可达到的最小距离候选，再沿递增图汇总所有可达城市的最小候选值作为答案。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "complete"
         }
       ]
