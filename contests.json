@@ -1,5 +1,16 @@
 [
   {
+    "id": 1491,
+    "name": "Codeforces Global Round 13",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 10800,
+    "startTimeSeconds": 1614519300,
+    "relativeTimeSeconds": 176126933,
+    "date": "2021-02-28"
+  },
+  {
     "id": 1494,
     "name": "Educational Codeforces Round 105 (Rated for Div. 2)",
     "type": "ICPC",
