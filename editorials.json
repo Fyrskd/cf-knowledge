@@ -8,6 +8,27 @@
     "raw_sha256": "4b9e31e66b779a97ef1392fd9fa6a5a9316709e6e28642f46fd9a079153c3be5"
   },
   {
+    "url": "https://codeforces.com/blog/entry/89007",
+    "blog_entry_id": 89007,
+    "title": "Codeforces Round #710 (Div. 3) Editorial",
+    "author": "Stepavly",
+    "creation_time": "2021-03-25",
+    "original_locale": "ru",
+    "source": "codeforces-blog",
+    "label": "Editorial",
+    "section_count": 7,
+    "covered_problems": [
+      "1506A",
+      "1506B",
+      "1506C",
+      "1506D",
+      "1506E",
+      "1506F",
+      "1506G"
+    ],
+    "raw_sha256": "c173810b138d7e1f710c72f62a87379556fd60d9e3d98d791683fffdd128dc18"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/89137",
     "blog_entry_id": 89137,
     "title": "CodeCraft-21 and Codeforces Round #711 (Div. 2) Editorial",
