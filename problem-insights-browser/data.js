@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4242,
+    "total_problems": 4244,
     "source_total_problems": 4245,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 4242,
-    "with_editorial_brief": 3883,
-    "with_solution_brief": 3885,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4244,
+    "with_editorial_brief": 3885,
+    "with_solution_brief": 3887,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3304,
+    "ai_override_count": 3306,
     "primary_topic_count": 13,
-    "contest_count": 661,
+    "contest_count": 662,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,7 +44,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1388,
+    "博弈": 121,
+    "构造与贪心": 1389,
     "组合计数与概率": 325,
     "数论与同余": 446,
     "动态规划与状态设计": 349,
@@ -55,11 +56,10 @@ window.CF_INSIGHTS_DATA = {
     "树结构": 197,
     "字符串": 227,
     "基础实现与模拟": 258,
-    "博弈": 120,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2878,
+    "ai_generated_with_editorial": 2880,
     "ai_generated_partial_editorial": 114,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -130343,6 +130343,71 @@ window.CF_INSIGHTS_DATA = {
             "逐一维护所有前缀和状态会产生二次规模；每步只需对全部状态统一平移、求总数并修改一个状态，可用整体偏移的映射结构压缩处理。"
           ],
           "solutionBrief": "按前缀和建立计数 DP。加入$b_i$时，区分取$a_i=b_i$和令新前缀和为$b_i$两种情况，并在两者重合时避免重复计数。用整体偏移的映射维护状态，实现总复杂度$O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1480,
+      "name": "Codeforces Round 700 (Div. 2)",
+      "date": "2021-02-07",
+      "url": "https://codeforces.com/contest/1480",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 900,
+      "problems": [
+        {
+          "key": "1480A",
+          "index": "A",
+          "slot": "A",
+          "title": "Yet Another String Game",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1480/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/87598",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "字符串",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "games",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "Alice 和 Bob 轮流修改字符串中尚未被选过的位置，每次必须把该位置的字母改成另一个小写字母；Alice 先手，目标是让最终字符串尽量小，Bob 则希望尽量大。所有位置都被选过后游戏结束，要求输出双方最优操作下的最终字符串。",
+          "transformedStatement": "将博弈视为按字典序影响从高到低处理字符：双方依次选取最靠左的未处理位置，因此 Alice 负责奇数下标、Bob 负责偶数下标；每个位置只需独立选择在不能保持原字符前提下对自己最有利的字母。",
+          "keyObservations": [
+            "字典序由最靠左的差异位置决定，因此当前玩家应优先选择尚未处理的最靠左位置；这使 Alice 和 Bob 依次处理奇数、偶数下标。",
+            "轮到的位置必须改成不同于原字符的字母，所以 Alice 尽量改为 `a`，若原字符已是 `a` 则改为 `b`；Bob 尽量改为 `z`，若原字符已是 `z` 则改为 `y`。"
+          ],
+          "solutionBrief": "从左到右处理字符串下标，奇数位按 Alice 的策略改成 `a`，若原字符为 `a` 则改成 `b`；偶数位按 Bob 的策略改成 `z`，若原字符为 `z` 则改成 `y`。总时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1480B",
+          "index": "B",
+          "slot": "B",
+          "title": "The Great Hero",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1480/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/87598",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy",
+            "implementation",
+            "sortings"
+          ],
+          "statementBrief": "英雄有攻击力 $A$ 和初始生命值 $B$，面对 $n$ 只各有攻击力 $a_i$、生命值 $b_i$ 的怪物。英雄可以反复攻击同一只怪物；战斗持续到英雄死亡或怪物全部死亡，且英雄即使在杀死最后一只怪物后死亡也算成功，要求判断能否击败所有怪物。",
+          "transformedStatement": "把每只怪物击败前对英雄造成的伤害视为固定总量 $\\lceil b_i/A\\rceil a_i$，并只选择最后击败的怪物：其他怪物的伤害都需承受，而最后一击所受的伤害不影响能否成功完成击杀。",
+          "keyObservations": [
+            "击败怪物 $i$ 需要攻击 $\\lceil b_i/A\\rceil$ 次，因此它在被击败前对英雄造成的总伤害是 $\\lceil b_i/A\\rceil a_i$。",
+            "设怪物 $k$ 最后被击败，则最后一击之前英雄的生命值为 $B-\\sum_i\\lceil b_i/A\\rceil a_i+a_k$；最后一击造成的 $a_k$ 点伤害可以使英雄死亡，因此只需保证出手前仍存活。",
+            "最后击败哪只怪物是唯一影响存活判定的选择；其余怪物造成的伤害总量固定，所以只需检查上述生命值在所有 $k$ 中的最大值是否大于零。"
+          ],
+          "solutionBrief": "对每只怪物计算击败所需攻击次数及其造成的总伤害，并求所有怪物伤害之和。依次假设每只怪物是最后被击败的对象；若存在 $k$ 使 $B-\\sum_i\\lceil b_i/A\\rceil a_i+a_k>0$，则英雄能击败全部怪物，否则不能，时间复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-29T02:18:56+00:00",
+  "updated_at": "2026-09-29T02:23:33+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -98764,6 +98764,62 @@
         "quality_flags": [
           "statement_text 未完整列出两种操作的定义，按 editorial 补全"
         ]
+      }
+    },
+    "1480B": {
+      "problem_key": "1480B",
+      "title": "The Great Hero",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1480/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/87598",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "f662adbf12d534757abd1c772b587d6e6c5d83e72f8e452f03faa94084bfcdeb",
+      "generated_at": "2026-09-29T02:23:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "英雄有攻击力 $A$ 和初始生命值 $B$，面对 $n$ 只各有攻击力 $a_i$、生命值 $b_i$ 的怪物。英雄可以反复攻击同一只怪物；战斗持续到英雄死亡或怪物全部死亡，且英雄即使在杀死最后一只怪物后死亡也算成功，要求判断能否击败所有怪物。",
+        "transformed_statement": "把每只怪物击败前对英雄造成的伤害视为固定总量 $\\lceil b_i/A\\rceil a_i$，并只选择最后击败的怪物：其他怪物的伤害都需承受，而最后一击所受的伤害不影响能否成功完成击杀。",
+        "key_observations": [
+          "击败怪物 $i$ 需要攻击 $\\lceil b_i/A\\rceil$ 次，因此它在被击败前对英雄造成的总伤害是 $\\lceil b_i/A\\rceil a_i$。",
+          "设怪物 $k$ 最后被击败，则最后一击之前英雄的生命值为 $B-\\sum_i\\lceil b_i/A\\rceil a_i+a_k$；最后一击造成的 $a_k$ 点伤害可以使英雄死亡，因此只需保证出手前仍存活。",
+          "最后击败哪只怪物是唯一影响存活判定的选择；其余怪物造成的伤害总量固定，所以只需检查上述生命值在所有 $k$ 中的最大值是否大于零。"
+        ],
+        "solution_brief": "对每只怪物计算击败所需攻击次数及其造成的总伤害，并求所有怪物伤害之和。依次假设每只怪物是最后被击败的对象；若存在 $k$ 使 $B-\\sum_i\\lceil b_i/A\\rceil a_i+a_k>0$，则英雄能击败全部怪物，否则不能，时间复杂度为 $O(n)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的战斗与存活规则，以及 editorial 给出的伤害计算和最后一只怪物判定。",
+        "quality_flags": []
+      }
+    },
+    "1480A": {
+      "problem_key": "1480A",
+      "title": "Yet Another String Game",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1480/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/87598",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "2a66e261e3b7a7d3b8cd2e6b0654e3aaa44620bd7fe1f6e4770274c6a42654a7",
+      "generated_at": "2026-09-29T02:23:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "Alice 和 Bob 轮流修改字符串中尚未被选过的位置，每次必须把该位置的字母改成另一个小写字母；Alice 先手，目标是让最终字符串尽量小，Bob 则希望尽量大。所有位置都被选过后游戏结束，要求输出双方最优操作下的最终字符串。",
+        "transformed_statement": "将博弈视为按字典序影响从高到低处理字符：双方依次选取最靠左的未处理位置，因此 Alice 负责奇数下标、Bob 负责偶数下标；每个位置只需独立选择在不能保持原字符前提下对自己最有利的字母。",
+        "key_observations": [
+          "字典序由最靠左的差异位置决定，因此当前玩家应优先选择尚未处理的最靠左位置；这使 Alice 和 Bob 依次处理奇数、偶数下标。",
+          "轮到的位置必须改成不同于原字符的字母，所以 Alice 尽量改为 `a`，若原字符已是 `a` 则改为 `b`；Bob 尽量改为 `z`，若原字符已是 `z` 则改为 `y`。"
+        ],
+        "solution_brief": "从左到右处理字符串下标，奇数位按 Alice 的策略改成 `a`，若原字符为 `a` 则改成 `b`；偶数位按 Bob 的策略改成 `z`，若原字符为 `z` 则改成 `y`。总时间复杂度为 $O(n)$。",
+        "primary_topic": "博弈",
+        "secondary_topics": [
+          "字符串",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的轮流修改规则及 editorial 中关于字典序优先位置和双方改字符策略的说明。",
+        "quality_flags": []
       }
     }
   }
