@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4099,
+    "total_problems": 4106,
     "source_total_problems": 4106,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4099,
-    "with_editorial_brief": 3753,
-    "with_solution_brief": 3755,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4106,
+    "with_editorial_brief": 3760,
+    "with_solution_brief": 3762,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3161,
+    "ai_override_count": 3168,
     "primary_topic_count": 13,
-    "contest_count": 637,
+    "contest_count": 638,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1331,
+    "构造与贪心": 1334,
+    "数据结构": 389,
+    "组合计数与概率": 321,
+    "字符串": 218,
+    "博弈": 117,
     "图论与网络流": 274,
     "树结构": 193,
-    "数据结构": 388,
     "动态规划与状态设计": 335,
     "数论与同余": 430,
-    "组合计数与概率": 320,
     "几何": 96,
     "基础实现与模拟": 252,
     "交互": 121,
-    "博弈": 116,
-    "字符串": 217,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2757,
+    "ai_generated_with_editorial": 2764,
     "ai_generated_partial_editorial": 105,
     "missing_editorial": 344,
     "low_confidence": 1,
@@ -126057,6 +126057,223 @@ window.CF_INSIGHTS_DATA = {
             "用 Mo 算法移动区间端点时，候选边集合每次只发生常数级变化，故所有查询中出现过的候选边总数为 $O(n\\sqrt q)$。"
           ],
           "solutionBrief": "把每个查询区间诱导的偏序关系表示为 DAG，并只考虑排列值相邻的候选边。确定每条候选边的 destroyer 及其生效时间区间，再统计各时刻仍需保留的边数。题解给出的总复杂度为 $O(n\\sqrt q\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1511,
+      "name": "Educational Codeforces Round 107 (Rated for Div. 2)",
+      "date": "2021-04-12",
+      "url": "https://codeforces.com/contest/1511",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 2700,
+      "problems": [
+        {
+          "key": "1511A",
+          "index": "A",
+          "slot": "A",
+          "title": "Review Site",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1511/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/89634",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "有两台服务器，$n$ 名评审者按给定顺序进入，每人只投一次票；评审者分为三类，投票结果受所在服务器上的投票情况影响。你可以在每人进入时选择把他送到任意一台服务器，要求安排分配，使两台服务器收到的赞成票总数最大。",
+          "transformedStatement": "无需追踪两台服务器最终的完整投票过程，只需最大化第三类评审者中点赞的人数；通过把第一类与第三类分到一台、第二类分到另一台，可以让第一类和第三类都点赞，答案就是这两类人数之和。",
+          "keyObservations": [
+            "总赞数只取决于第三类评审者中有多少人获得赞成票，因此关键是让第三类评审者全部点赞。",
+            "把第一类评审者放到第一台服务器、第二类评审者放到第二台服务器，再把第三类评审者放到第一台服务器，就能保证第三类评审者所在服务器没有反对票，从而全部点赞。"
+          ],
+          "solutionBrief": "分别统计第一类和第三类评审者的数量并相加。将第一类和第三类送到第一台服务器、第二类送到第二台服务器，可使所有第一类与第三类评审者点赞，达到最大总赞数；每组时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1511B",
+          "index": "B",
+          "slot": "B",
+          "title": "GCD Length",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1511/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/89634",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定 $a,b,c$，需要输出两个正整数 $x,y$，使 $x$ 有 $a$ 位、$y$ 有 $b$ 位，且它们的最大公约数恰有 $c$ 位；若有多组答案，输出任意一组。",
+          "transformedStatement": "将目标转化为构造最大公约数恰为 $10^{c-1}$ 的两个数：让两数共享 $c-1$ 个末尾零，再选择互质的剩余前缀，同时满足各自的总位数。",
+          "keyObservations": [
+            "让两个数都以 $c-1$ 个零结尾，就能保证它们都被 $10^{c-1}$ 整除，从而把目标长度为 $c$ 的公因数嵌入构造中。",
+            "去掉公共的 $10^{c-1}$ 后，两个前缀分别为 $10^{a-c+1}$ 和由数字 $1$ 组成的 $b-c+1$ 位数；它们互质，因此两数的最大公约数恰为 $10^{c-1}$。"
+          ],
+          "solutionBrief": "构造 $x=10^{a-1}$，令 $y$ 的十进制表示由一个 $1$、$b-c$ 个连续的 $1$ 和 $c-1$ 个末尾零组成。两数的位数分别为 $a,b$，且最大公约数为 $10^{c-1}$，其位数正好为 $c$；每组构造用时 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1511C",
+          "index": "C",
+          "slot": "C",
+          "title": "Yet Another Card Deck",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1511/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/89634",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "implementation",
+            "trees"
+          ],
+          "statementBrief": "牌堆从上到下编号，每张牌有一种颜色；每次给出一种当前存在的颜色，取出牌堆中最靠上的该颜色牌并放到最顶部，其他牌保持相对顺序。对每次查询，输出被取出卡牌原来的位置。",
+          "transformedStatement": "不必追踪整副牌：只记录每种颜色当前最靠前的代表牌位置。一次操作只会让原位置在被取出牌之前的代表牌后移，并把被查询颜色的代表牌置顶，因此可以用这些位置模拟整个过程。",
+          "keyObservations": [
+            "同一种颜色每次被查询时，取出的都是当前最靠前的那张；因此只需记录每种颜色这张代表牌的位置，其他同色牌不会影响后续答案。",
+            "若代表牌原位置为 $p$，查询后它移到顶部，而原来排在它前面的牌都向后移动一格；所以答案可由查询前的位置直接得到，并据此更新其他颜色的位置。"
+          ],
+          "solutionBrief": "记录每种颜色当前最靠前卡牌的位置。查询颜色 $c$ 时输出其位置，并将位置小于它的其他颜色代表牌的位置加一，最后把 $c$ 的位置设为 $1$；复杂度为 $O(n+qk)$，其中 $k$ 是颜色种数且不超过 $50$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1511D",
+          "index": "D",
+          "slot": "D",
+          "title": "Min Cost String",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1511/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/89634",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "字符串"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定长度 $n$ 和字符范围 $a$ 到第 $k$ 个小写字母，需构造一个由这些字符组成的长度为 $n$ 的字符串。代价统计相邻字符对中内容相同的两处出现所形成的下标对数量，要求输出代价最小的字符串。",
+          "transformedStatement": "把每个长度为 $2$ 的相邻片段看作一种类型，目标等价于让 $n-1$ 个位置尽可能均匀地分配给 $k^2$ 种有向字符对；覆盖所有类型一次的序列可由完全有向图的欧拉回路生成，并循环扩展到所需长度。",
+          "keyObservations": [
+            "把字符串中每个相邻字符对视为一种类型后，代价就是各类型出现次数的两两配对总数；若两种类型的次数相差至少 $2$，把一次出现从较多者转给较少者会降低代价，因此最优时各类型次数尽量均衡。",
+            "若能让全部 $k^2$ 种有向字符对各出现一次，就达到均衡目标；把字符作为顶点、字符对作为有向边，欧拉回路恰好给出覆盖每条边一次的字符序列。",
+            "欧拉回路对应的字符序列可视为循环序列并重复，再截取到长度 $n$；这样相邻字符对按周期出现，适用于字符对总数多于或少于 $n-1$ 的情况。"
+          ],
+          "solutionBrief": "将相邻字符对按类型计数，代价是每种类型出现次数的组合数之和，因此最优要求各类型次数尽量均衡。构造包含所有有向字符对的欧拉回路得到周期串，重复并截断至长度 $n$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1511E",
+          "index": "E",
+          "slot": "E",
+          "title": "Colorings and Dominoes",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1511/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/89634",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个由黑格和白格组成的 $n\\times m$ 棋盘，每个白格都要独立涂成红色或蓝色。对每种涂色，求棋盘上最多能放置多少个骨牌，并把所有 $2^w$ 种涂色对应的最大数量相加，结果对 $998244353$ 取模。",
+          "transformedStatement": "不直接枚举涂色并求每次的最优放置，而是把总和写成 $2^w$ 乘以随机涂色下骨牌数的期望。再将期望拆为各相邻白格对被贪心覆盖的概率之和，并按其前方白格数量计算局部概率。",
+          "keyObservations": [
+            "对每种随机涂色，最大可放置骨牌数可按骨牌位置计数；因此总和可转为每个相邻格子对被选入贪心覆盖的概率之和，再乘以涂色总数。",
+            "固定一对相邻白格后，它们能配成骨牌，要求这两格同为红色，且其所在红色连续段中位于它们之前的格子数为偶数；这把覆盖事件化成局部颜色条件。",
+            "若目标格之前有 $k$ 个白格，目标骨牌被采用的概率是交错和 $P_k=\\frac14-\\frac18+\\cdots+(-1)^k\\frac{1}{2^{k+2}}$，所以只需维护之前白格数即可计算贡献。",
+            "对横向和纵向相邻白格分别累加概率，便得到期望骨牌数；线性期望不要求不同骨牌位置的事件相互独立。"
+          ],
+          "solutionBrief": "将白格独立等概率染成红或蓝，计算随机涂色下最大骨牌数的期望，再乘以 $2^w$。遍历横向、纵向相邻白格，根据目标格前的白格数用交错概率和计算该位置的贡献，累加后取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1511F",
+          "index": "F",
+          "slot": "F",
+          "title": "Chainword",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1511/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/89634",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "matrices",
+            "string suffix structures",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 个互不相同的单词和长度 $m$，要用这些单词分别将一行的 $m$ 个字母格划分为若干互不重叠且覆盖整行的连续段；上下两条提示可以采用不同的划分。统计所有不同的字母串及其上下提示组合数，按 $998244353$ 取模。",
+          "transformedStatement": "把每条提示表示为在字典 Trie 上逐字母匹配的过程：每读入一个字母，可以继续当前单词前缀，或在已匹配完整单词处结束该段并从根重新开始。于是问题转为统计长度为 $m$ 的共同字母序列在两条提示进度状态间产生的转移路径数。",
+          "keyObservations": [
+            "每条提示都可用字典 Trie 中当前匹配到的前缀表示；遇到某个词的终点时，既可结束该段并回到根，也可继续匹配更长的词，因此不能采用遇到终点就立即切段的贪心策略。",
+            "两条提示始终覆盖同一字母串，所以它们当前 Trie 路径对应的字符串必须存在后缀包含关系；这将笛卡尔积状态限制为路径可比较的顶点对。",
+            "交换上下两条提示不改变实例计数，因此可将状态对 $(v,u)$ 与 $(u,v)$ 合并为无序对，进一步缩小转移矩阵。",
+            "状态转移只取决于当前两条提示的 Trie 状态和下一个字母，故长度为 $m$ 的计数可转化为有限状态转移矩阵的 $m$ 次幂。"
+          ],
+          "solutionBrief": "将两条提示的匹配进度表示为 Trie 状态对；追加字母时分别处理继续匹配或在词尾结束当前段并回到根的选择。只保留可达状态，将交换两条提示的状态合并，再对转移矩阵快速幂，得到长度为 $m$ 的实例数并对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1511G",
+          "index": "G",
+          "slot": "G",
+          "title": "Chips on a Board",
+          "rating": 2700,
+          "problemUrl": "https://codeforces.com/contest/1511/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/89634",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "数据结构",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "dp",
+            "games",
+            "two pointers"
+          ],
+          "statementBrief": "棋盘每行有一个芯片，双方先独立选定保留列区间 $[L,R]$，区间外的列被切去。之后轮流将一个芯片向左移动任意正距离，不能移动者输；对每个给定区间，假设双方最优，判断谁获胜。",
+          "transformedStatement": "对固定左端点 $L$，只需考虑区间内各芯片到左边界的距离 $c_j-L$，将游戏胜负转化为这些距离的异或和是否为零。批量计算时，再把区间内的异或改写为两个按芯片位置截取的后缀异或查询，并分别处理低位与高位。",
+          "keyObservations": [
+            "把每个芯片在保留区间中的位置改写为相对左端点的距离 $c_j-L$；这些距离的异或和为 $0$ 时 Bob 获胜，否则 Alice 获胜。",
+            "区间查询可用两个后缀异或查询之差表示：令 $Q(x,y)$ 为所有满足 $c_j\\ge x$ 的 $c_j-y$ 的异或，则目标值是 $Q(L,L)\\mathbin{\\mathrm{xor}}Q(R+1,L)$，便于按 $x$ 扫描并集中处理查询。",
+            "只求异或值的低 $K$ 位时，芯片位置按模 $2^K$ 归并即可；扫过的位置中每类出现次数的奇偶性决定是否贡献，从而把每个查询的处理范围压到 $O(2^K)$ 类。",
+            "高位部分随扫描位置变化时会在区间段内保持不变，因此可对这些段维护异或贡献；低位与高位采用不同方法，并通过选择 $K$ 平衡两部分的代价。"
+          ],
+          "solutionBrief": "由 Nim 的异或判定，先求每个区间内 $c_j-L$ 的异或和，再判断其是否为零。将区间查询拆为两个后缀查询；低 $K$ 位按模 $2^K$ 合并奇偶计数，高位用区间段数据结构维护，调节 $K$ 平衡开销，复杂度为 $O(N\\sqrt{N\\log N})$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
