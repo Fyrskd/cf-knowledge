@@ -8,6 +8,26 @@
     "raw_sha256": "4b9e31e66b779a97ef1392fd9fa6a5a9316709e6e28642f46fd9a079153c3be5"
   },
   {
+    "url": "https://codeforces.com/blog/entry/86933",
+    "blog_entry_id": 86933,
+    "title": "Codeforces Round #696 Editorial",
+    "author": "IgorI",
+    "creation_time": "2021-01-18",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "Codeforces Round #696 Editorial",
+    "section_count": 6,
+    "covered_problems": [
+      "1474A",
+      "1474B",
+      "1474C",
+      "1474D",
+      "1474E",
+      "1474F"
+    ],
+    "raw_sha256": "853abbd8e1fa8bc8a892657aecaab7d485dba4e8e86357ca8c269ea7cafdfaa4"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/87356",
     "blog_entry_id": 87356,
     "title": "Educational Codeforces Round 103 Editorial",
