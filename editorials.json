@@ -8,6 +8,28 @@
     "raw_sha256": "4b9e31e66b779a97ef1392fd9fa6a5a9316709e6e28642f46fd9a079153c3be5"
   },
   {
+    "url": "https://codeforces.com/blog/entry/86464",
+    "blog_entry_id": 86464,
+    "title": "Codeforces Round #694 Editorial",
+    "author": "IgorI",
+    "creation_time": "2021-01-05",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "86464",
+    "section_count": 8,
+    "covered_problems": [
+      "1470A",
+      "1470B",
+      "1470C",
+      "1470D",
+      "1470E",
+      "1470F",
+      "1471A",
+      "1471B"
+    ],
+    "raw_sha256": "3a27710f6db1a01b49e3bbc3fe13e086dec48e32cc58d69b6f1aace9fa8c09b3"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/86933",
     "blog_entry_id": 86933,
     "title": "Codeforces Round #696 Editorial",
