@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-29T00:30:37+00:00",
+  "updated_at": "2026-09-29T00:36:28+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -95588,6 +95588,219 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "题意依据 statement_text；关键性质与检查范围依据 editorial_text；主题参考 codeforces_tags。",
         "quality_flags": []
+      }
+    },
+    "1506G": {
+      "problem_key": "1506G",
+      "title": "Maximize the Remaining String",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1506/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/89007",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "de47824b606c68ff47cd3af06bcad1e652228467ee79288a20c61343fa6e1092",
+      "generated_at": "2026-09-29T00:34:59+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由小写字母组成的字符串，每次可以删除一个当前至少出现两次的字符，直到所有字符各不相同。求所有可能结果中字典序最大的字符串。",
+        "transformed_statement": "最终串等价于原串的一个子序列，并且必须恰好保留原串的全部不同字符。构造时逐个确定字符顺序；对每个候选下一字符，检查匹配当前前缀后能否在后缀中保留所有尚未选的字符，从而判定该选择是否可完成。",
+        "key_observations": [
+          "每次只能删除仍有重复的字符，因此最终串必须是原串的子序列，且恰好包含原串出现过的所有不同字符。",
+          "判断前缀 t 后能否接字符 c，可先找到最早能完整匹配 t 的位置 i，再找其后的首个 c 位置 j；若 j 之后仍包含所有尚未放入 t+c 的字符，则该选择可行。",
+          "每一步选择仍未使用且可行的最大字符，能保证最终结果字典序最大；可行性检查同时保证剩余字符仍有机会出现在后续位置。"
+        ],
+        "solution_brief": "从空串开始逐个构造结果。每轮按字符从大到小尝试尚未选过的字符，并用子序列位置及剩余后缀是否含有所有未选字符来检验可行性；选取最大的可行字符，直至原串中的每种字符都出现一次。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面所述删除规则及 editorial 中的可行性判定和贪心构造；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1506F": {
+      "problem_key": "1506F",
+      "title": "Triangular Paths",
+      "rating": 2000,
+      "problem_url": "https://codeforces.com/contest/1506/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/89007",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "e0e3b70457eb8a649d6d68d2bc2e4fdbd19d765b4db6287e0f0469dc1f380ee3",
+      "generated_at": "2026-09-29T00:35:22+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定无限三角形中的 $n$ 个点，每个点位于第 $r$ 层、第 $c$ 个位置；相邻层之间的边只按题目给定的奇偶规则激活。需要从顶点 $(1,1)$ 出发，以任意顺序经过所有给定点，并求最小路径成本；但本地题面缺少每步允许的操作及成本定义。",
+        "transformed_statement": "题解将任务转化为按层数递增访问点，并把整条路径分解为相邻目标点之间的独立成本计算；每段再按 $r-c$ 是否相同分类，或平移起点至 $(1,1)$ 后用相对坐标与奇偶性求值。",
+        "key_observations": [
+          "由于所有边都从较小层指向较大层，必须按层数递增的顺序经过给定点；总成本因此可拆成相邻目标点之间路径成本之和。",
+          "计算两点间成本时，可将起点平移到 $(1,1)$，把问题化为计算相对坐标 $(r_2-r_1+1,c_2-c_1+1)$ 的路径成本。",
+          "当两点满足 $r_1-c_1=r_2-c_2$ 时，题解给出的成本只取决于起点的奇偶性：若 $r_1+c_1$ 为偶数则为 $r_2-r_1$，否则为 $0$。",
+          "平移后若两点不在同一条 $r-c$ 对角线上，成本由相对坐标之差的一半取整决定：起点奇偶性决定向下取整还是向上取整。"
+        ],
+        "solution_brief": "按层数递增排列目标点，将总成本拆成起点到首个目标点及相邻目标点之间的成本。对每一段先处理 $r-c$ 相同的情形；否则平移起点至 $(1,1)$，根据起点奇偶性对相对坐标差的一半向下或向上取整。题面中的具体操作规则缺失，无法补充成本含义。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "几何",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意依据 statement_text；路径排序与分段成本公式依据 editorial_text；tags 仅用于辅助主题归类。",
+        "quality_flags": [
+          "operation_rules_missing",
+          "partial_editorial",
+          "statement_truncated"
+        ]
+      }
+    },
+    "1506E": {
+      "problem_key": "1506E",
+      "title": "Restoring the Permutation",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1506/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/89007",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "a64b2c3824affbb56b552e0ec2b0bb96df4853e595cdc7b966afa95f331d8a69",
+      "generated_at": "2026-09-29T00:35:37+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个由排列生成的数组 $q$，其中 $q_i$ 表示原排列前 $i$ 个数的最大值。需要找出所有可能的原排列中字典序最小和字典序最大的排列。",
+        "transformed_statement": "将 $q$ 视为原排列的前缀最大值序列：每次前缀最大值增加时，当前位置的值被固定为新最大值；保持不变时，则需从尚未使用的数中选择一个不超过当前最大值的值。题解正文只给出了如何在后一类位置选最小值以构造字典序最小排列。",
+        "key_observations": [
+          "数组 $q$ 是原排列的前缀最大值序列，因此 $q_i>q_{i-1}$ 时该位置的排列值只能是 $q_i$，这些位置直接确定。",
+          "当 $q_i=q_{i-1}$ 时，当前位置不能产生新的前缀最大值；为了让排列字典序尽可能小，应放入尚未使用的最小数。"
+        ],
+        "solution_brief": "题解说明了字典序最小排列的构造：前缀最大值上升时放入该最大值，不上升时放入尚未使用的最小数。给出的题解正文没有说明字典序最大排列的构造，因此无法据此完整概述两种答案的求法。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意依据 statement_text，并结合 editorial_text 对 q 为前缀最大值序列的说明；算法依据 editorial_text。题解仅覆盖字典序最小排列。",
+        "quality_flags": [
+          "partial_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1506D": {
+      "problem_key": "1506D",
+      "title": "Epic Transformation",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/1506/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/89007",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "f55987be11bdca85b20d79bfbd2d3a05a4ed18f2c1e1c04cb67461c10c19de22",
+      "generated_at": "2026-09-29T00:35:50+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个整数数组，可以反复执行题目示例所展示的操作，目标是让操作后的数组尽可能短。题面正文中的操作步骤缺失，无法从现有文本准确还原每次操作允许如何选择和修改数组元素。",
+        "transformed_statement": "题解将数组元素按取值归类，只保留各类出现次数，并把一次操作抽象为两个非零频数各减一；最终只需最小化唯一可能剩下的非零频数。题面缺失的操作定义使这一抽象无法与原操作逐项核对。",
+        "key_observations": [
+          "数组中元素的具体取值无关紧要，只需统计每种数值的出现次数；一次操作等价于让两个非零频数各减一。",
+          "每次选取当前频数最大的两类并各减一，可避免某一类频数过早占据优势，从而逐步压低最终残留的最大频数。",
+          "当操作结束时，至多一种数值仍有剩余，因此最终数组长度就是该数值的剩余频数；题目目标可转化为最小化这个残留量。"
+        ],
+        "solution_brief": "统计每种数值的频数，每次取频数最大的两类并各减一，直至不足两类非零；最终剩余频数即为最小数组长度。题解正文只给出贪心策略，未提供完整证明。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意依据 statement_text；频数化与贪心策略依据 editorial_text，标签仅作辅助。",
+        "quality_flags": [
+          "partial_editorial"
+        ]
+      }
+    },
+    "1506C": {
+      "problem_key": "1506C",
+      "title": "Double-ended Strings",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1506/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/89007",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "5e4cb6982e126aff0fb08f6ec521d66fa9e37c72d3c463ff9467dc0f6319c55d",
+      "generated_at": "2026-09-29T00:36:02+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个由小写字母组成的字符串，每次操作可以从其中一个字符串的一端删除一个字符，且字符串可以变为空。求最少操作次数，使两个字符串完全相同，空串也视为相同。",
+        "transformed_statement": "每个字符串经过操作后只能留下原串的连续子串，因此问题可转化为寻找两串的最长公共子串；保留长度为 $k$ 的相同子串时，删除次数为 $|a|+|b|-2k$，故最大化 $k$ 即可。",
+        "key_observations": [
+          "从字符串两端删除后，保留下来的部分必定是一个连续子串，因此无需考虑任意字符子序列。",
+          "若两串保留相同的长度为 $k$ 的子串，各自删除其余字符即可；删除操作总数为 $|a|+|b|-2k$，所以只需找最长的共同子串。",
+          "题解指出约束较小时，可以枚举每个字符串从两端删除的字符数，检查留下的子串是否相同；正文仅提到另有 DP 快速做法，未给出细节。"
+        ],
+        "solution_brief": "两串最终相等时，保留下来的内容都是原串的连续子串。枚举两串从首尾删除的长度，比较留下的子串，并最小化删除总数；等价于寻找最长公共子串。题解提及 DP 快速方案但未展开。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意依据 statement_text；枚举删除长度及可选 DP 方案依据 editorial_text；标签辅助主题分类。",
+        "quality_flags": [
+          "partial_editorial"
+        ]
+      }
+    },
+    "1506B": {
+      "problem_key": "1506B",
+      "title": "Partial Replacement",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1506/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/89007",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "cb33e67c633f2f45cb69700cdd804d2ab6dbc7d191794a74e89d95d226631184",
+      "generated_at": "2026-09-29T00:36:13+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定只含点号和星号的字符串，以及距离上限 $k$。将若干星号替换成 $x$，使相邻保留为 $x$ 的位置间距不超过 $k$，且首尾星号位置也由替换位置覆盖；求最少需要替换多少个星号。",
+        "transformed_statement": "把需要替换的位置看作一条从首个星号到末个星号的路径：每次可从当前位置跳到距离不超过 $k$ 的后续星号，目标是用最少跳步覆盖这段星号序列。每个跳到的位置对应一次替换，因此路径长度就是答案。",
+        "key_observations": [
+          "从当前位置选择距离不超过 $k$ 的最右侧星号，可以让下一次选择尽可能靠后，因此不会增加到达最后一个星号所需的选择次数。",
+          "每个被选中的星号替换为 $x$，其余星号保留；于是最少替换数等于从首个星号到末个星号所需的最少跳步数。"
+        ],
+        "solution_brief": "从第一个星号开始，反复选择其后距离不超过 $k$ 的最右侧星号，直到到达最后一个星号。将选择的星号替换为 $x$，选择次数即为最少替换数。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，贪心策略依据 editorial_text；tags 仅作分类参考。",
+        "quality_flags": []
+      }
+    },
+    "1506A": {
+      "problem_key": "1506A",
+      "title": "Strange Table",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1506/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/89007",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "eba0d3bf3408cb03a6b497f690e1e295411e715543aa6d0b9bd58843c35e14b7",
+      "generated_at": "2026-09-29T00:36:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个有 $n$ 行、$m$ 列的表格，题面编号先按列从上到下、再从左到右。对于编号为 $x$ 的格子，求它在改为按行从左到右、再从上到下编号后对应的编号。",
+        "transformed_statement": "不直接逐格重排，而是先把按列编号 $x$ 还原为行列坐标，再用该坐标计算按行编号；问题因此拆成取模、整除取整和一次线性编号转换。",
+        "key_observations": [
+          "按列编号时，每列连续放置 $n$ 个数，因此 $x$ 所在行由 $(x-1)\\bmod n$ 决定，所在列由 $x$ 除以 $n$ 向上取整得到。",
+          "坐标确定后，按行编号时前面完整的行共占 $(r-1)m$ 个格子，再加上当前行中的列号 $c$，即可得到目标编号。"
+        ],
+        "solution_brief": "先按列编号反推出坐标：$r=(x-1)\\bmod n+1$，$c=\\lceil x/n\\rceil$；再将坐标转换为按行编号，答案为 $(r-1)m+c$。注意使用足够大的整数类型。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面给出的两种编号方式及 editorial 的坐标转换公式；editorial 的取模公式中符号疑似笔误，按题面行数使用 $n$。",
+        "quality_flags": [
+          "editorial_notation_typo"
+        ]
       }
     }
   }

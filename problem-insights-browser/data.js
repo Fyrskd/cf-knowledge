@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4133,
+    "total_problems": 4140,
     "source_total_problems": 4140,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4133,
-    "with_editorial_brief": 3787,
-    "with_solution_brief": 3789,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4140,
+    "with_editorial_brief": 3794,
+    "with_solution_brief": 3796,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3195,
+    "ai_override_count": 3202,
     "primary_topic_count": 13,
-    "contest_count": 643,
+    "contest_count": 644,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 433,
-    "构造与贪心": 1345,
+    "数论与同余": 434,
+    "构造与贪心": 1348,
+    "字符串": 222,
+    "图论与网络流": 277,
     "动态规划与状态设计": 338,
-    "图论与网络流": 276,
     "博弈": 119,
     "组合计数与概率": 323,
-    "字符串": 220,
     "基础实现与模拟": 254,
     "数据结构": 389,
     "树结构": 193,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2789,
-    "ai_generated_partial_editorial": 107,
+    "ai_generated_with_editorial": 2792,
+    "ai_generated_partial_editorial": 111,
     "missing_editorial": 344,
     "low_confidence": 1,
     "manual_override": 891,
@@ -127107,6 +127107,210 @@ window.CF_INSIGHTS_DATA = {
             "所有根的答案可由每个节点周围各相对深度的异或信息重根转移得到；记录长度 $2K$ 的深度异或数组，移动到子节点时循环平移并扣除该子树贡献。"
           ],
           "solutionBrief": "利用阶梯 Nim 结论，固定根时异或所有满足 $\\lfloor d/K\\rfloor$ 为奇数的节点权值来判断胜负。先用树形 DP 统计相对深度模 $2K$ 的异或值，再通过重根转移求出每个节点作为根时的结果。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1506,
+      "name": "Codeforces Round 710 (Div. 3)",
+      "date": "2021-03-25",
+      "url": "https://codeforces.com/contest/1506",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 2000,
+      "problems": [
+        {
+          "key": "1506A",
+          "index": "A",
+          "slot": "A",
+          "title": "Strange Table",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1506/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/89007",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定一个有 $n$ 行、$m$ 列的表格，题面编号先按列从上到下、再从左到右。对于编号为 $x$ 的格子，求它在改为按行从左到右、再从上到下编号后对应的编号。",
+          "transformedStatement": "不直接逐格重排，而是先把按列编号 $x$ 还原为行列坐标，再用该坐标计算按行编号；问题因此拆成取模、整除取整和一次线性编号转换。",
+          "keyObservations": [
+            "按列编号时，每列连续放置 $n$ 个数，因此 $x$ 所在行由 $(x-1)\\bmod n$ 决定，所在列由 $x$ 除以 $n$ 向上取整得到。",
+            "坐标确定后，按行编号时前面完整的行共占 $(r-1)m$ 个格子，再加上当前行中的列号 $c$，即可得到目标编号。"
+          ],
+          "solutionBrief": "先按列编号反推出坐标：$r=(x-1)\\bmod n+1$，$c=\\lceil x/n\\rceil$；再将坐标转换为按行编号，答案为 $(r-1)m+c$。注意使用足够大的整数类型。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1506B",
+          "index": "B",
+          "slot": "B",
+          "title": "Partial Replacement",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1506/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/89007",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定只含点号和星号的字符串，以及距离上限 $k$。将若干星号替换成 $x$，使相邻保留为 $x$ 的位置间距不超过 $k$，且首尾星号位置也由替换位置覆盖；求最少需要替换多少个星号。",
+          "transformedStatement": "把需要替换的位置看作一条从首个星号到末个星号的路径：每次可从当前位置跳到距离不超过 $k$ 的后续星号，目标是用最少跳步覆盖这段星号序列。每个跳到的位置对应一次替换，因此路径长度就是答案。",
+          "keyObservations": [
+            "从当前位置选择距离不超过 $k$ 的最右侧星号，可以让下一次选择尽可能靠后，因此不会增加到达最后一个星号所需的选择次数。",
+            "每个被选中的星号替换为 $x$，其余星号保留；于是最少替换数等于从首个星号到末个星号所需的最少跳步数。"
+          ],
+          "solutionBrief": "从第一个星号开始，反复选择其后距离不超过 $k$ 的最右侧星号，直到到达最后一个星号。将选择的星号替换为 $x$，选择次数即为最少替换数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1506C",
+          "index": "C",
+          "slot": "C",
+          "title": "Double-ended Strings",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1506/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/89007",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "给定两个由小写字母组成的字符串，每次操作可以从其中一个字符串的一端删除一个字符，且字符串可以变为空。求最少操作次数，使两个字符串完全相同，空串也视为相同。",
+          "transformedStatement": "每个字符串经过操作后只能留下原串的连续子串，因此问题可转化为寻找两串的最长公共子串；保留长度为 $k$ 的相同子串时，删除次数为 $|a|+|b|-2k$，故最大化 $k$ 即可。",
+          "keyObservations": [
+            "从字符串两端删除后，保留下来的部分必定是一个连续子串，因此无需考虑任意字符子序列。",
+            "若两串保留相同的长度为 $k$ 的子串，各自删除其余字符即可；删除操作总数为 $|a|+|b|-2k$，所以只需找最长的共同子串。",
+            "题解指出约束较小时，可以枚举每个字符串从两端删除的字符数，检查留下的子串是否相同；正文仅提到另有 DP 快速做法，未给出细节。"
+          ],
+          "solutionBrief": "两串最终相等时，保留下来的内容都是原串的连续子串。枚举两串从首尾删除的长度，比较留下的子串，并最小化删除总数；等价于寻找最长公共子串。题解提及 DP 快速方案但未展开。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1506D",
+          "index": "D",
+          "slot": "D",
+          "title": "Epic Transformation",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1506/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/89007",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定一个整数数组，可以反复执行题目示例所展示的操作，目标是让操作后的数组尽可能短。题面正文中的操作步骤缺失，无法从现有文本准确还原每次操作允许如何选择和修改数组元素。",
+          "transformedStatement": "题解将数组元素按取值归类，只保留各类出现次数，并把一次操作抽象为两个非零频数各减一；最终只需最小化唯一可能剩下的非零频数。题面缺失的操作定义使这一抽象无法与原操作逐项核对。",
+          "keyObservations": [
+            "数组中元素的具体取值无关紧要，只需统计每种数值的出现次数；一次操作等价于让两个非零频数各减一。",
+            "每次选取当前频数最大的两类并各减一，可避免某一类频数过早占据优势，从而逐步压低最终残留的最大频数。",
+            "当操作结束时，至多一种数值仍有剩余，因此最终数组长度就是该数值的剩余频数；题目目标可转化为最小化这个残留量。"
+          ],
+          "solutionBrief": "统计每种数值的频数，每次取频数最大的两类并各减一，直至不足两类非零；最终剩余频数即为最小数组长度。题解正文只给出贪心策略，未提供完整证明。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1506E",
+          "index": "E",
+          "slot": "E",
+          "title": "Restoring the Permutation",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1506/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/89007",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation"
+          ],
+          "statementBrief": "给定一个由排列生成的数组 $q$，其中 $q_i$ 表示原排列前 $i$ 个数的最大值。需要找出所有可能的原排列中字典序最小和字典序最大的排列。",
+          "transformedStatement": "将 $q$ 视为原排列的前缀最大值序列：每次前缀最大值增加时，当前位置的值被固定为新最大值；保持不变时，则需从尚未使用的数中选择一个不超过当前最大值的值。题解正文只给出了如何在后一类位置选最小值以构造字典序最小排列。",
+          "keyObservations": [
+            "数组 $q$ 是原排列的前缀最大值序列，因此 $q_i>q_{i-1}$ 时该位置的排列值只能是 $q_i$，这些位置直接确定。",
+            "当 $q_i=q_{i-1}$ 时，当前位置不能产生新的前缀最大值；为了让排列字典序尽可能小，应放入尚未使用的最小数。"
+          ],
+          "solutionBrief": "题解说明了字典序最小排列的构造：前缀最大值上升时放入该最大值，不上升时放入尚未使用的最小数。给出的题解正文没有说明字典序最大排列的构造，因此无法据此完整概述两种答案的求法。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1506F",
+          "index": "F",
+          "slot": "F",
+          "title": "Triangular Paths",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1506/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/89007",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "几何",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "math",
+            "shortest paths",
+            "sortings"
+          ],
+          "statementBrief": "给定无限三角形中的 $n$ 个点，每个点位于第 $r$ 层、第 $c$ 个位置；相邻层之间的边只按题目给定的奇偶规则激活。需要从顶点 $(1,1)$ 出发，以任意顺序经过所有给定点，并求最小路径成本；但本地题面缺少每步允许的操作及成本定义。",
+          "transformedStatement": "题解将任务转化为按层数递增访问点，并把整条路径分解为相邻目标点之间的独立成本计算；每段再按 $r-c$ 是否相同分类，或平移起点至 $(1,1)$ 后用相对坐标与奇偶性求值。",
+          "keyObservations": [
+            "由于所有边都从较小层指向较大层，必须按层数递增的顺序经过给定点；总成本因此可拆成相邻目标点之间路径成本之和。",
+            "计算两点间成本时，可将起点平移到 $(1,1)$，把问题化为计算相对坐标 $(r_2-r_1+1,c_2-c_1+1)$ 的路径成本。",
+            "当两点满足 $r_1-c_1=r_2-c_2$ 时，题解给出的成本只取决于起点的奇偶性：若 $r_1+c_1$ 为偶数则为 $r_2-r_1$，否则为 $0$。",
+            "平移后若两点不在同一条 $r-c$ 对角线上，成本由相对坐标之差的一半取整决定：起点奇偶性决定向下取整还是向上取整。"
+          ],
+          "solutionBrief": "按层数递增排列目标点，将总成本拆成起点到首个目标点及相邻目标点之间的成本。对每一段先处理 $r-c$ 相同的情形；否则平移起点至 $(1,1)$，根据起点奇偶性对相对坐标差的一半向下或向上取整。题面中的具体操作规则缺失，无法补充成本含义。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1506G",
+          "index": "G",
+          "slot": "G",
+          "title": "Maximize the Remaining String",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1506/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/89007",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "dp",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写字母组成的字符串，每次可以删除一个当前至少出现两次的字符，直到所有字符各不相同。求所有可能结果中字典序最大的字符串。",
+          "transformedStatement": "最终串等价于原串的一个子序列，并且必须恰好保留原串的全部不同字符。构造时逐个确定字符顺序；对每个候选下一字符，检查匹配当前前缀后能否在后缀中保留所有尚未选的字符，从而判定该选择是否可完成。",
+          "keyObservations": [
+            "每次只能删除仍有重复的字符，因此最终串必须是原串的子序列，且恰好包含原串出现过的所有不同字符。",
+            "判断前缀 t 后能否接字符 c，可先找到最早能完整匹配 t 的位置 i，再找其后的首个 c 位置 j；若 j 之后仍包含所有尚未放入 t+c 的字符，则该选择可行。",
+            "每一步选择仍未使用且可行的最大字符，能保证最终结果字典序最大；可行性检查同时保证剩余字符仍有机会出现在后续位置。"
+          ],
+          "solutionBrief": "从空串开始逐个构造结果。每轮按字符从大到小尝试尚未选过的字符，并用子序列位置及剩余后缀是否含有所有未选字符来检验可行性；选取最大的可行字符，直至原串中的每种字符都出现一次。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
