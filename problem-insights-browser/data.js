@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4250,
+    "total_problems": 4256,
     "source_total_problems": 4257,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4250,
-    "with_editorial_brief": 3891,
-    "with_solution_brief": 3893,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4256,
+    "with_editorial_brief": 3897,
+    "with_solution_brief": 3899,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3312,
+    "ai_override_count": 3318,
     "primary_topic_count": 13,
-    "contest_count": 663,
+    "contest_count": 664,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1395,
+    "基础实现与模拟": 259,
+    "动态规划与状态设计": 350,
+    "树结构": 198,
     "交互": 128,
-    "构造与贪心": 1392,
     "数据结构": 397,
     "代数、矩阵与多项式": 27,
     "博弈": 121,
     "组合计数与概率": 325,
     "数论与同余": 446,
-    "动态规划与状态设计": 349,
     "几何": 98,
     "图论与网络流": 285,
-    "树结构": 197,
-    "字符串": 227,
-    "基础实现与模拟": 258
+    "字符串": 227
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2886,
+    "ai_generated_with_editorial": 2892,
     "ai_generated_partial_editorial": 114,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -130601,6 +130601,188 @@ window.CF_INSIGHTS_DATA = {
             "前缀和中的线性函数乘积可按约 $\u001b[0m\\sqrt n\u001b[0m$ 长度分块；块内表达式是低次多项式，可用插值和多点求值批量计算，避免逐项计算所有乘积。"
           ],
           "solutionBrief": "以各俱乐部人数多重集定义势函数，通过鞅停时关系将所求期望写成初态与终态势函数之差。由势函数每步期望变化为 $-1$ 推出 $f$ 的差分递推，再用分块、插值及多点求值计算所需前缀和，并在模 $998244353$ 下求值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1481,
+      "name": "Codeforces Round 699 (Div. 2)",
+      "date": "2021-02-05",
+      "url": "https://codeforces.com/contest/1481",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 3100,
+      "problems": [
+        {
+          "key": "1481A",
+          "index": "A",
+          "slot": "A",
+          "title": "Space Navigation ",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1481/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/87523",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "飞船从 $(0,0)$ 出发，按字符串中的 U、D、L、R 指令移动；可以删除若干指令，但不能改变剩余指令的相对顺序。判断能否让执行完所有保留指令后，飞船到达 $(p_x,p_y)$。",
+          "transformedStatement": "把二维移动拆成横向与纵向两个独立问题：分别判断目标坐标能否由相应方向的指令实现。保留任意子序列时，纵向坐标范围为 $[-D,U]$，横向坐标范围为 $[-L,R]$。",
+          "keyObservations": [
+            "删除指令不会改变保留下来的移动方向，因此横向和纵向可以分别判断；二维到达条件由两个独立的一维条件组成。",
+            "纵向可达坐标恰好覆盖区间 $[-D,U]$，横向可达坐标恰好覆盖区间 $[-L,R]$，所以只需检查目标的两个坐标是否分别落在对应区间内。"
+          ],
+          "solutionBrief": "统计指令中 U、D、L、R 的数量。若 $p_y\\in[-D,U]$ 且 $p_x\\in[-L,R]$，输出 YES；否则输出 NO。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1481B",
+          "index": "B",
+          "slot": "B",
+          "title": "New Colony",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1481/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/87523",
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定 $n$ 座山的高度和要投放的石头数 $k$。每块石头从第一座山开始向右滚动；遇到右侧相邻山峰更低时，停在最左边这样的山峰上并使其高度加一，若不存在则落入收集系统。求第 $k$ 块石头停在哪座山，若落入收集系统则输出 $-1$。",
+          "transformedStatement": "把每块石头看成一次状态更新：扫描相邻山峰，找到最左侧的下降位置 $h_i>h_{i+1}$，并将右侧高度加一。整个过程只需执行到第 $k$ 次更新或首次不存在可更新位置。",
+          "keyObservations": [
+            "一块石头落入收集系统后，后续石头也都会落入，因此模拟到首次失败即可停止。",
+            "石头只能停在右侧相邻山峰更低的位置并使其高度加一；每座山最多被抬高到与左侧山峰齐平，所以成功停放的总次数不超过 $(n-1)(100-1)$。"
+          ],
+          "solutionBrief": "逐块模拟石头：从第一座山开始，寻找最左侧满足 $h_i>h_{i+1}$ 的位置，将 $h_{i+1}$ 加一，并记录位置。若找不到这样的位置，则该石头落入收集系统，答案为 $-1$；模拟至第 $k$ 块即可得到答案。成功停放次数有 $(n-1)(100-1)$ 的上界。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1481C",
+          "index": "C",
+          "slot": "C",
+          "title": "Fence Painting",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1481/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/87523",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "栅栏有 $n$ 块木板，初始颜色为 $a_i$，目标颜色为 $b_i$。第 $j$ 位画家按顺序到达，必须把恰好一块木板涂成颜色 $c_j$；需判断能否得到目标颜色，若能则给出每位画家涂哪块木板。",
+          "transformedStatement": "将最后一位画家负责的木板作为安全落点：它最终会被涂成 $c_m$，此前无法用于修正目标颜色的操作都可暂时落在这里。其余操作则尽量直接修正目标颜色与画家颜色匹配的错误木板，最终验证是否仍有未修正项即可判断方案可行性。",
+          "keyObservations": [
+            "最后一位画家的颜色必须出现在目标数组中；让他涂某个目标颜色为 $c_m$ 的木板，可把该板作为后续无用颜色的安全落点，因为最后一次操作会确定它的最终颜色。",
+            "若存在尚未完成且目标颜色为 $c_j$ 的木板，就让第 $j$ 位画家涂它；这样每次都能直接完成一个错误木板，而已经完成的木板无需被反复改色。",
+            "若当前画家的颜色无法用于完成错误木板，就让他涂预留的安全落点；最后检查所有木板是否已达到目标颜色，以确认未被覆盖的错误是否仍然存在。"
+          ],
+          "solutionBrief": "先选一块目标颜色为 $c_m$ 的木板作为安全落点，并保证最后一位画家涂它。对其余画家，优先安排到目标颜色匹配且当前颜色错误的木板；若没有这样的木板，则涂安全落点。最后检查数组是否与目标一致，据此输出方案或判定无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1481D",
+          "index": "D",
+          "slot": "D",
+          "title": "AB Graph",
+          "rating": 2000,
+          "problemUrl": "https://codeforces.com/contest/1481/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/87523",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个有向完全图，每对不同顶点之间都有双向边，每条边标记为 `a` 或 `b`，并允许路径重复经过顶点和边。要构造恰含 $m$ 条边的路径，使沿途边标签组成回文串；若无法构造则报告无解。",
+          "transformedStatement": "将问题转化为构造长度为 $m$ 的标签序列回文：先看两点往返能否产生相同标签；若不能，则利用奇数长度的交替串，或寻找三点路径中连续相同的标签并按长度奇偶拼成回文周期。",
+          "keyObservations": [
+            "若存在一对互指边标签相同的顶点，沿这两点来回走会得到全相同字符的回文串，因此可直接构造任意长度的路径。",
+            "若所有互指边标签都不同，任意两点往返的标签交替；长度为奇数时，交替串本身就是回文，故只需重复往返。",
+            "当长度为偶数且没有相同互指边时，若能找到连续两条同标签边 $x\\to y\\to z$，就能用三点往返构造回文；依据 $m/2$ 的奇偶性选择起始位置，使标签周期分别为 `aabbaabb...` 或 `abbaabba...`。",
+            "在 $n\\ge 3$ 且不存在相同互指边的情况下，逐一检查三点即可找到连续同标签边；若不存在，则任何可走出的标签都只能交替，偶数长度不可能成为回文。"
+          ],
+          "solutionBrief": "先检查是否有一对互指边标签相同，有则交替走这两点即可。否则，奇数长度仍可用两点往返构造；偶数长度需寻找连续同标签的三点路径，并按 $m/2$ 的奇偶性选择对应走法。若找不到则输出无解。总复杂度为 $O(n^2+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1481E",
+          "index": "E",
+          "slot": "E",
+          "title": "Sorting Books",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1481/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/87523",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定一排颜色各异的书，每次可以任选一本书，将它从当前位置取出并移到书架最右端。要求用最少操作使每种颜色的书都各自连续排列。",
+          "transformedStatement": "改为寻找最多能留在原位置的书：被选为保留的书必须能在最终书架上按颜色形成连续块。以位置为后缀状态，比较延续已有最优解、保留某颜色的后缀全部出现，或在其首次出现处保留该颜色完整区间的方案。",
+          "keyObservations": [
+            "最小移动次数等于总书数减去最多能原位保留的书数，因此可把目标改成最大化未移动书本数。",
+            "若从颜色首次出现的位置开始保留该颜色，就必须覆盖到它最后一次出现的位置；区间内部其他颜色需移动，随后可接上该区间之后的最优后缀。",
+            "若当前位置不是该颜色的首次出现，可以保留当前位置及其右侧该颜色的所有书，并移动其余书，因此候选值是后缀中该颜色的出现次数。",
+            "后缀最优值也可直接继承自下一位置，故每个位置只需比较继承值与对应的颜色保留方案。"
+          ],
+          "solutionBrief": "从右向左计算每个后缀最多可原位保留多少本书。当前位置可继承下一位置的答案；若是颜色首次出现，则考虑保留该色全部书并接上最后一次出现位置之后的最优后缀；否则考虑保留后缀中该色的所有书。答案为 $n-dp_1$，出现次数随扫描维护，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1481F",
+          "index": "F",
+          "slot": "F",
+          "title": "AB Tree",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1481/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/87523",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以节点 $1$ 为根的树，需要给每个节点赋字符 a 或 b，使 a 的总数恰为 $x$。每个节点对应从根到该节点、按路径顺序连接字符得到的字符串；要求输出一种赋值，使所有节点字符串中的不同字符串数量最少，并输出这个最小数量。",
+          "transformedStatement": "把目标改写为控制各深度产生多少种字符串：每层统一赋值时，该层只贡献一种字符串，因此先判断能否选取若干层，使这些层的节点总数恰为 $x$。若不能达到每层一种的下界，则通过在某层混用字符并约束非叶节点的赋值，将总种类数控制在下界多一。",
+          "keyObservations": [
+            "根到节点的字符串长度对应节点深度加一，因此最大深度为 $d$ 时，至少会出现 $d+1$ 种不同长度的字符串，答案下界是 $d+1$。",
+            "若每一层的节点都赋相同字符，该层所有节点的字符串就相同；要达到下界，只需判断各层节点数中能否选出若干层，使其总数为 $x$。",
+            "各层节点数总和为 $n$，不同层大小的种类数至多为 $O(\\sqrt n)$；把相同大小合并计数后，可用有界背包转移将子集和判定降至 $O(n\\sqrt n)$。",
+            "若无法让每层统一字符，则答案可达到 $d+2$：从浅到深处理，混用字符的层把所有非叶节点设为同一字符，避免不同前缀在后续层造成额外不同字符串。"
+          ],
+          "solutionBrief": "统计各深度的节点数，先用合并相同层大小的有界背包判断能否选出总数为 $x$ 的若干层，从而实现答案 $d+1$。若不可行，则按深度构造使答案为 $d+2$ 的赋值；总复杂度为 $O(n\\sqrt n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
