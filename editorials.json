@@ -8,6 +8,26 @@
     "raw_sha256": "4b9e31e66b779a97ef1392fd9fa6a5a9316709e6e28642f46fd9a079153c3be5"
   },
   {
+    "url": "https://codeforces.com/blog/entry/89137",
+    "blog_entry_id": 89137,
+    "title": "CodeCraft-21 and Codeforces Round #711 (Div. 2) Editorial",
+    "author": "ninja_28",
+    "creation_time": "2021-03-29",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "CodeCraft-21 and Codeforces Round #711 (Div. 2) Editorial",
+    "section_count": 6,
+    "covered_problems": [
+      "1498A",
+      "1498B",
+      "1498C",
+      "1498D",
+      "1498E",
+      "1498F"
+    ],
+    "raw_sha256": "da94e1da4208d05bde54025db818c430656fb3f096565f8596b38a083b4f1e93"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/91195",
     "blog_entry_id": 91195,
     "title": "Codeforces Round #723 (Div. 2) Editorial",
