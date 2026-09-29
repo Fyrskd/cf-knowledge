@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4236,
+    "total_problems": 4242,
     "source_total_problems": 4243,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4236,
-    "with_editorial_brief": 3877,
-    "with_solution_brief": 3879,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4242,
+    "with_editorial_brief": 3883,
+    "with_solution_brief": 3885,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3298,
+    "ai_override_count": 3304,
     "primary_topic_count": 13,
-    "contest_count": 660,
+    "contest_count": 661,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1386,
-    "数论与同余": 445,
-    "动态规划与状态设计": 347,
-    "组合计数与概率": 324,
+    "构造与贪心": 1388,
+    "组合计数与概率": 325,
+    "数论与同余": 446,
+    "动态规划与状态设计": 349,
     "数据结构": 396,
     "几何": 98,
     "交互": 127,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2872,
+    "ai_generated_with_editorial": 2878,
     "ai_generated_partial_editorial": 114,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -130158,6 +130158,191 @@ window.CF_INSIGHTS_DATA = {
             "两种字母超限的计数依赖于字母上限，但动态规划可对字母对统一计算，再用二维前缀和按各对上限查询超限数量。"
           ],
           "solutionBrief": "先用记录末两位的 DP 统计不含长度为 3 回文的字符串，再通过容斥扣除一种字母超限的情况并加回两种字母同时超限的情况。固定关注字母类别后统一运行计数 DP，并用二维前缀和查询各字母对的超限数量；主要部分复杂度为 $O(n^3)$，但常数较大。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1485,
+      "name": "Codeforces Round 701 (Div. 2)",
+      "date": "2021-02-12",
+      "url": "https://codeforces.com/contest/1485",
+      "type": "Div. 2",
+      "problemCount": 6,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1485A",
+          "index": "A",
+          "slot": "A",
+          "title": "Add and Divide",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1485/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/87470",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数 $a,b$，可以将 $b$ 增加 $1$，或将 $a$ 替换为 $\\lfloor a/b\\rfloor$。求使 $a$ 变为 $0$ 所需的最少操作次数。",
+          "transformedStatement": "把方案视为先将 $b$ 增加若干次，再固定这个除数反复缩小 $a$；问题转化为枚举增加次数，并计算对应的整除次数与总操作数。",
+          "keyObservations": [
+            "固定两种操作各自的次数后，先增加 $b$、再用当前 $b$ 除 $a$ 不会更差，因为除法后再增大除数不会让 $a$ 更小。",
+            "当 $b\\ge 2$ 时，每次令 $a=\\lfloor a/b\\rfloor$，最多约 $\\lfloor\\log_2 a\\rfloor$ 次就能使 $a=0$，因此只需枚举有限个增加 $b$ 的次数。",
+            "若初始 $b=1$，先增加一次使其至少为 $2$，之后除法次数有界；这保证枚举增加次数到 $30$ 足以覆盖最优方案。"
+          ],
+          "solutionBrief": "枚举增加 $b$ 的次数 $y$（从 $0$ 到 $30$），对每种情况模拟用当前 $b$ 不断整除 $a$，统计使 $a$ 变为 $0$ 所需的操作总数并取最小值。先增加再除的顺序足以覆盖最优方案；题解给出的复杂度为 $O(\\log^2 a)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1485B",
+          "index": "B",
+          "slot": "B",
+          "title": "Replace and Keep Sorted",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1485/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/87470",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个严格递增且元素介于 $1$ 到 $k$ 的数组。每次查询给出连续区间 $[l,r]$，统计有多少个数组能由该区间对应的子数组进行一次合法替换得到：选择区间内一个位置，将其值改为 $1$ 到 $k$ 之间的整数，并要求所得数组仍严格递增。",
+          "transformedStatement": "固定查询区间后，不必逐个枚举替换位置与结果数组，而是按替换值 $x$ 分类计数：区间外侧的值各对应一种结果，区间端点之间未出现过的值各对应两种结果，已出现的值无法产生合法替换。",
+          "keyObservations": [
+            "对固定查询，只需考虑替换值 $x$ 相对区间端点及原数组元素的位置；这样可将所有 $x$ 分成贡献为 $1$、$2$ 或 $0$ 的几类。",
+            "若 $x<a_l$ 或 $x>a_r$，只能替换对应端点且各产生一种数组；两侧分别有 $a_l-1$ 和 $k-a_r$ 个取值。",
+            "若 $a_l<x<a_r$ 且 $x$ 不等于区间内已有元素，可替换 $x$ 两侧相邻位置中的任意一处，产生两种数组；区间内已有元素对应的取值则贡献为零。",
+            "中间未被区间元素占据的整数有 $(a_r-a_l+1)-(r-l+1)$ 个，按每个贡献两种计数后可化为直接由端点和区间长度计算的公式。"
+          ],
+          "solutionBrief": "对每个查询 $[l,r]$，答案为 $(a_l-1)+(k-a_r)+2((a_r-a_l+1)-(r-l+1))$，化简为 $k+(a_r-a_l+1)-2(r-l+1)$。预处理或直接读取端点后即可在每次查询中计算，整体复杂度为 $O(n+q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1485C",
+          "index": "C",
+          "slot": "C",
+          "title": "Floor and Mod",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1485/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/87470",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定正整数上界 $x,y$，统计所有满足 $1\\le a\\le x$、$1\\le b\\le y$ 的有序正整数对 $(a,b)$，其中 $a$ 除以 $b$ 的整数商必须等于余数；输出这样的数对总数。",
+          "transformedStatement": "把商和余数视为同一个正整数 $k$，则 $a=kb+k$ 且 $b>k$。问题因此转化为枚举有限范围内的 $k$，并对每个 $k$ 统计同时满足上界约束的 $b$ 的个数。",
+          "keyObservations": [
+            "令商和余数都等于 $k$，则 $a=kb+k$，且余数条件要求 $b>k$；因此每个 $k$ 对应的 $a,b$ 唯一由 $b$ 决定。",
+            "由 $b>k$ 得 $a=k(b+1)>k^2$，而 $a\\le x$，所以只需枚举 $1\\le k\\le\\sqrt{x}$，把可能值压缩到平方根范围。",
+            "固定 $k$ 后，合法的 $b$ 同时满足 $k<b\\le y$ 和 $b\\le x/k-1$，故数量可直接写为 $\\max(0,\\min(y,\\lfloor x/k\\rfloor-1)-k)$。"
+          ],
+          "solutionBrief": "枚举商与余数共同的取值 $k$，其范围不超过 $\\sqrt{x}$。对每个 $k$，用 $b>k$、$b\\le y$ 和 $kb+k\\le x$ 得到合法 $b$ 的数量，累加即可，复杂度为 $O(\\sqrt{x})$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1485D",
+          "index": "D",
+          "slot": "D",
+          "title": "Multiples and Power Differences",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1485/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/87470",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个元素均在 $1$ 到 $16$ 之间的正整数矩阵 $a$，构造同尺寸正整数矩阵 $b$：每个 $b_{i,j}$ 必须是 $a_{i,j}$ 的倍数，且任意横向或纵向相邻两格的数值差的绝对值必须是某个整数的四次方。题目保证总能构造，要求输出任意一个符合条件的矩阵。",
+          "transformedStatement": "把格子按棋盘格分成两类：一类统一取某个能被所有可能输入值整除的公共基数，另一类在该基数上加本格输入值的四次方。由于相邻格必属不同类，局部相邻约束和逐格整除要求可由同一构造同时满足。",
+          "keyObservations": [
+            "相邻格子的棋盘格颜色相反，因此只需让两种颜色的数值相差一个四次幂，就能同时满足所有横向和纵向相邻约束。",
+            "令偶色格取公共基数、奇色格取公共基数加上 $a_{i,j}^4$，相邻两格的差就恰为其中一个格子的输入值的四次幂。",
+            "$720720$ 是 $1$ 到 $16$ 的最小公倍数，因此它以及它加上 $a_{i,j}^4$ 都能被对应的 $a_{i,j}$ 整除。"
+          ],
+          "solutionBrief": "按棋盘格交替赋值：$i+j$ 为偶数时令 $b_{i,j}=720720$，否则令 $b_{i,j}=720720+a_{i,j}^4$。公共基数是 $1$ 到 $16$ 的最小公倍数，保证整除条件；相邻格一奇一偶，差为对应输入值的四次幂，构造耗时 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1485E",
+          "index": "E",
+          "slot": "E",
+          "title": "Move and Swap",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1485/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/87470",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵以 1 为根、所有叶子深度相同的树，非根节点各有一个数值，根上放有红、蓝两枚硬币。两枚硬币每步按规则移动并可交换位置，共进行叶子深度那么多步；每步按两枚硬币所在节点数值之差获得分数，求最高总分。",
+          "transformedStatement": "把过程按根到当前节点的深度分层，状态压缩为该层结束时红币所在节点的最大累计得分；同层蓝币位置带来的差值可由极值处理，而交换导致的跨节点选择可转化为维护两种带符号的最大转移值。",
+          "keyObservations": [
+            "每次移动后两枚硬币都处于同一深度，因此可以按深度分层，并只从上一层的状态计算当前层。",
+            "固定红币的前一位置时，蓝币可在当前层任意移动；最大化两数差只需检查该层标号的最小值或最大值。",
+            "若交换后红币落在当前层节点 $i$，其前一位置可来自另一节点 $j$；将 $dp_{parent_j}+|a_j-a_i|$ 拆成两种符号方向，可分别维护 $dp_{parent_j}+a_j$ 与 $dp_{parent_j}-a_j$ 的最大值。"
+          ],
+          "solutionBrief": "按节点深度分组，令 $dp_i$ 表示进行到该深度且红币最终位于 $i$ 时的最大得分。分别处理交换后红币仍在目标位置、以及红币来自同层另一节点两种情况；后一种用两类最大值维护绝对值转移，最终取所有 $dp_i$ 的最大值。复杂度为 $O(n)$ 或 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1485F",
+          "index": "F",
+          "slot": "F",
+          "title": "Copy or Prefix Sum",
+          "rating": 2400,
+          "problemUrl": "https://codeforces.com/contest/1485/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/87470",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "dp",
+            "sortings"
+          ],
+          "statementBrief": "给定整数数组$b$，统计有多少整数数组$a$满足：对每个位置$i$，要么$a_i=b_i$，要么$a_i$等于$b_i$减去此前所有$a$的和。输出满足条件的数组数，对$10^9+7$取模。",
+          "transformedStatement": "把每种合法数组的构造过程看成前缀和状态的转移：每一步要么在当前前缀和上加$b_i$，要么把新前缀和设为$b_i$。相同前缀和的构造方式合并计数，并特别处理两种选择取值相同的情形。",
+          "keyObservations": [
+            "每个位置的合法值只有两种：$a_i=b_i$，或令当前前缀和等于$b_i$；因此可以按前缀和统计构造数。",
+            "当前缀和为$0$时，两种取值重合，若把它们当作两条独立转移就会重复计数，必须合并。",
+            "逐一维护所有前缀和状态会产生二次规模；每步只需对全部状态统一平移、求总数并修改一个状态，可用整体偏移的映射结构压缩处理。"
+          ],
+          "solutionBrief": "按前缀和建立计数 DP。加入$b_i$时，区分取$a_i=b_i$和令新前缀和为$b_i$两种情况，并在两者重合时避免重复计数。用整体偏移的映射维护状态，实现总复杂度$O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

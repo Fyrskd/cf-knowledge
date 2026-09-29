@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-29T02:13:19+00:00",
+  "updated_at": "2026-09-29T02:18:56+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -98583,6 +98583,187 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的战斗规则及 editorial 给出的可行性判定。",
         "quality_flags": []
+      }
+    },
+    "1485F": {
+      "problem_key": "1485F",
+      "title": "Copy or Prefix Sum",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1485/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/87470",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "843874af0abdfd3895d410ee59ad2ebdc901412888b8a7dd96af92d0f76e2e8e",
+      "generated_at": "2026-09-29T02:17:39+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定整数数组$b$，统计有多少整数数组$a$满足：对每个位置$i$，要么$a_i=b_i$，要么$a_i$等于$b_i$减去此前所有$a$的和。输出满足条件的数组数，对$10^9+7$取模。",
+        "transformed_statement": "把每种合法数组的构造过程看成前缀和状态的转移：每一步要么在当前前缀和上加$b_i$，要么把新前缀和设为$b_i$。相同前缀和的构造方式合并计数，并特别处理两种选择取值相同的情形。",
+        "key_observations": [
+          "每个位置的合法值只有两种：$a_i=b_i$，或令当前前缀和等于$b_i$；因此可以按前缀和统计构造数。",
+          "当前缀和为$0$时，两种取值重合，若把它们当作两条独立转移就会重复计数，必须合并。",
+          "逐一维护所有前缀和状态会产生二次规模；每步只需对全部状态统一平移、求总数并修改一个状态，可用整体偏移的映射结构压缩处理。"
+        ],
+        "solution_brief": "按前缀和建立计数 DP。加入$b_i$时，区分取$a_i=b_i$和令新前缀和为$b_i$两种情况，并在两者重合时避免重复计数。用整体偏移的映射维护状态，实现总复杂度$O(n\\log n)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数据结构",
+          "组合计数与概率"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面给出的数组计数目标，以及完整 editorial 中的两种取值、DP 转移和整体偏移优化。",
+        "quality_flags": []
+      }
+    },
+    "1485E": {
+      "problem_key": "1485E",
+      "title": "Move and Swap",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1485/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/87470",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "d5ec34c00a1468176925c23ebc680f29d5d34449d3f5fe6019e9dd185d9a77ce",
+      "generated_at": "2026-09-29T02:17:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵以 1 为根、所有叶子深度相同的树，非根节点各有一个数值，根上放有红、蓝两枚硬币。两枚硬币每步按规则移动并可交换位置，共进行叶子深度那么多步；每步按两枚硬币所在节点数值之差获得分数，求最高总分。",
+        "transformed_statement": "把过程按根到当前节点的深度分层，状态压缩为该层结束时红币所在节点的最大累计得分；同层蓝币位置带来的差值可由极值处理，而交换导致的跨节点选择可转化为维护两种带符号的最大转移值。",
+        "key_observations": [
+          "每次移动后两枚硬币都处于同一深度，因此可以按深度分层，并只从上一层的状态计算当前层。",
+          "固定红币的前一位置时，蓝币可在当前层任意移动；最大化两数差只需检查该层标号的最小值或最大值。",
+          "若交换后红币落在当前层节点 $i$，其前一位置可来自另一节点 $j$；将 $dp_{parent_j}+|a_j-a_i|$ 拆成两种符号方向，可分别维护 $dp_{parent_j}+a_j$ 与 $dp_{parent_j}-a_j$ 的最大值。"
+        ],
+        "solution_brief": "按节点深度分组，令 $dp_i$ 表示进行到该深度且红币最终位于 $i$ 时的最大得分。分别处理交换后红币仍在目标位置、以及红币来自同层另一节点两种情况；后一种用两类最大值维护绝对值转移，最终取所有 $dp_i$ 的最大值。复杂度为 $O(n)$ 或 $O(n\\log n)$。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "树结构",
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的硬币移动与得分规则，以及 editorial 的分层 DP、转移说明和复杂度。",
+        "quality_flags": []
+      }
+    },
+    "1485D": {
+      "problem_key": "1485D",
+      "title": "Multiples and Power Differences",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1485/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/87470",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "94b4caf55075df4e6272b9fe2f0a4de480dd0001807f495edea1dbc1b6b25c73",
+      "generated_at": "2026-09-29T02:18:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个元素均在 $1$ 到 $16$ 之间的正整数矩阵 $a$，构造同尺寸正整数矩阵 $b$：每个 $b_{i,j}$ 必须是 $a_{i,j}$ 的倍数，且任意横向或纵向相邻两格的数值差的绝对值必须是某个整数的四次方。题目保证总能构造，要求输出任意一个符合条件的矩阵。",
+        "transformed_statement": "把格子按棋盘格分成两类：一类统一取某个能被所有可能输入值整除的公共基数，另一类在该基数上加本格输入值的四次方。由于相邻格必属不同类，局部相邻约束和逐格整除要求可由同一构造同时满足。",
+        "key_observations": [
+          "相邻格子的棋盘格颜色相反，因此只需让两种颜色的数值相差一个四次幂，就能同时满足所有横向和纵向相邻约束。",
+          "令偶色格取公共基数、奇色格取公共基数加上 $a_{i,j}^4$，相邻两格的差就恰为其中一个格子的输入值的四次幂。",
+          "$720720$ 是 $1$ 到 $16$ 的最小公倍数，因此它以及它加上 $a_{i,j}^4$ 都能被对应的 $a_{i,j}$ 整除。"
+        ],
+        "solution_brief": "按棋盘格交替赋值：$i+j$ 为偶数时令 $b_{i,j}=720720$，否则令 $b_{i,j}=720720+a_{i,j}^4$。公共基数是 $1$ 到 $16$ 的最小公倍数，保证整除条件；相邻格一奇一偶，差为对应输入值的四次幂，构造耗时 $O(nm)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意的整除与相邻差条件根据 editorial 补全；构造方法、常数选择及复杂度依据 editorial。",
+        "quality_flags": [
+          "statement_inferred"
+        ]
+      }
+    },
+    "1485C": {
+      "problem_key": "1485C",
+      "title": "Floor and Mod",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/1485/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/87470",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "e2eeda3b5b9f73a9bcb1da6b8f671c07a3ea741aa59a6c946f57febe5d31dca5",
+      "generated_at": "2026-09-29T02:18:21+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数上界 $x,y$，统计所有满足 $1\\le a\\le x$、$1\\le b\\le y$ 的有序正整数对 $(a,b)$，其中 $a$ 除以 $b$ 的整数商必须等于余数；输出这样的数对总数。",
+        "transformed_statement": "把商和余数视为同一个正整数 $k$，则 $a=kb+k$ 且 $b>k$。问题因此转化为枚举有限范围内的 $k$，并对每个 $k$ 统计同时满足上界约束的 $b$ 的个数。",
+        "key_observations": [
+          "令商和余数都等于 $k$，则 $a=kb+k$，且余数条件要求 $b>k$；因此每个 $k$ 对应的 $a,b$ 唯一由 $b$ 决定。",
+          "由 $b>k$ 得 $a=k(b+1)>k^2$，而 $a\\le x$，所以只需枚举 $1\\le k\\le\\sqrt{x}$，把可能值压缩到平方根范围。",
+          "固定 $k$ 后，合法的 $b$ 同时满足 $k<b\\le y$ 和 $b\\le x/k-1$，故数量可直接写为 $\\max(0,\\min(y,\\lfloor x/k\\rfloor-1)-k)$。"
+        ],
+        "solution_brief": "枚举商与余数共同的取值 $k$，其范围不超过 $\\sqrt{x}$。对每个 $k$，用 $b>k$、$b\\le y$ 和 $kb+k\\le x$ 得到合法 $b$ 的数量，累加即可，复杂度为 $O(\\sqrt{x})$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的商等于余数定义及 editorial 的范围推导、固定 $k$ 计数公式。",
+        "quality_flags": []
+      }
+    },
+    "1485B": {
+      "problem_key": "1485B",
+      "title": "Replace and Keep Sorted",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1485/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/87470",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "0787b88180d3e50acfc765944dbe1160000bb1d4f090c275b455051c81b07ffe",
+      "generated_at": "2026-09-29T02:18:38+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个严格递增且元素介于 $1$ 到 $k$ 的数组。每次查询给出连续区间 $[l,r]$，统计有多少个数组能由该区间对应的子数组进行一次合法替换得到：选择区间内一个位置，将其值改为 $1$ 到 $k$ 之间的整数，并要求所得数组仍严格递增。",
+        "transformed_statement": "固定查询区间后，不必逐个枚举替换位置与结果数组，而是按替换值 $x$ 分类计数：区间外侧的值各对应一种结果，区间端点之间未出现过的值各对应两种结果，已出现的值无法产生合法替换。",
+        "key_observations": [
+          "对固定查询，只需考虑替换值 $x$ 相对区间端点及原数组元素的位置；这样可将所有 $x$ 分成贡献为 $1$、$2$ 或 $0$ 的几类。",
+          "若 $x<a_l$ 或 $x>a_r$，只能替换对应端点且各产生一种数组；两侧分别有 $a_l-1$ 和 $k-a_r$ 个取值。",
+          "若 $a_l<x<a_r$ 且 $x$ 不等于区间内已有元素，可替换 $x$ 两侧相邻位置中的任意一处，产生两种数组；区间内已有元素对应的取值则贡献为零。",
+          "中间未被区间元素占据的整数有 $(a_r-a_l+1)-(r-l+1)$ 个，按每个贡献两种计数后可化为直接由端点和区间长度计算的公式。"
+        ],
+        "solution_brief": "对每个查询 $[l,r]$，答案为 $(a_l-1)+(k-a_r)+2((a_r-a_l+1)-(r-l+1))$，化简为 $k+(a_r-a_l+1)-2(r-l+1)$。预处理或直接读取端点后即可在每次查询中计算，整体复杂度为 $O(n+q)$。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；计数分类、公式与复杂度依据 editorial_text；主题参考 tags。",
+        "quality_flags": [
+          "statement_text 中查询范围的符号存在排版损坏，结合上下文按 $1\\le l_i\\le r_i\\le n$ 理解"
+        ]
+      }
+    },
+    "1485A": {
+      "problem_key": "1485A",
+      "title": "Add and Divide",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/1485/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/87470",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "75bfafbaa7e3f8d3505c323fb917a9f908804514614f2c0eb98ebad0a3164cd2",
+      "generated_at": "2026-09-29T02:18:56+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定正整数 $a,b$，可以将 $b$ 增加 $1$，或将 $a$ 替换为 $\\lfloor a/b\\rfloor$。求使 $a$ 变为 $0$ 所需的最少操作次数。",
+        "transformed_statement": "把方案视为先将 $b$ 增加若干次，再固定这个除数反复缩小 $a$；问题转化为枚举增加次数，并计算对应的整除次数与总操作数。",
+        "key_observations": [
+          "固定两种操作各自的次数后，先增加 $b$、再用当前 $b$ 除 $a$ 不会更差，因为除法后再增大除数不会让 $a$ 更小。",
+          "当 $b\\ge 2$ 时，每次令 $a=\\lfloor a/b\\rfloor$，最多约 $\\lfloor\\log_2 a\\rfloor$ 次就能使 $a=0$，因此只需枚举有限个增加 $b$ 的次数。",
+          "若初始 $b=1$，先增加一次使其至少为 $2$，之后除法次数有界；这保证枚举增加次数到 $30$ 足以覆盖最优方案。"
+        ],
+        "solution_brief": "枚举增加 $b$ 的次数 $y$（从 $0$ 到 $30$），对每种情况模拟用当前 $b$ 不断整除 $a$，统计使 $a$ 变为 $0$ 所需的操作总数并取最小值。先增加再除的顺序足以覆盖最优方案；题解给出的复杂度为 $O(\\log^2 a)$。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意规则和操作顺序依据 editorial 补全；解法及复杂度依据 editorial，主题参考 tags。",
+        "quality_flags": [
+          "statement_text 未完整列出两种操作的定义，按 editorial 补全"
+        ]
       }
     }
   }
