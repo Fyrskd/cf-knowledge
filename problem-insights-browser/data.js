@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4263,
+    "total_problems": 4266,
     "source_total_problems": 4267,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 4263,
-    "with_editorial_brief": 3904,
-    "with_solution_brief": 3906,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4266,
+    "with_editorial_brief": 3907,
+    "with_solution_brief": 3909,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3325,
+    "ai_override_count": 3328,
     "primary_topic_count": 13,
-    "contest_count": 665,
+    "contest_count": 666,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,9 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 447,
-    "构造与贪心": 1396,
-    "动态规划与状态设计": 352,
+    "构造与贪心": 1397,
+    "动态规划与状态设计": 353,
+    "数论与同余": 448,
     "图论与网络流": 287,
     "数据结构": 398,
     "基础实现与模拟": 259,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 227
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2898,
+    "ai_generated_with_editorial": 2901,
     "ai_generated_partial_editorial": 115,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -131001,6 +131001,100 @@ window.CF_INSIGHTS_DATA = {
             "移动区间端点时，某个数值的出现次数只增减 $1$，因此可在有序次数序列中调整相邻的次数分组，而不必重新排序全部数值。"
           ],
           "solutionBrief": "按题解采用带修改的 Mo 算法维护当前区间中各数值的出现次数及其有序分布。查询时合并相同次数的分组，用双指针寻找包含至少 $k$ 个不同数值的最小次数跨度；题解给出的复杂度为 $O(n^{5/3}+m\\sqrt n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1478,
+      "name": "Codeforces Round 698 (Div. 2)",
+      "date": "2021-01-28",
+      "url": "https://codeforces.com/contest/1478",
+      "type": "Div. 2",
+      "problemCount": 3,
+      "maxRating": 1700,
+      "problems": [
+        {
+          "key": "1478A",
+          "index": "A",
+          "slot": "A",
+          "title": "Nezzar and Colorful Balls",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1478/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/87294",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "greedy"
+          ],
+          "statementBrief": "给定一个非递减整数序列，每个元素对应一个球。要给所有球染色，使任意一种颜色对应的球按原序列顺序取出的数值严格递增（长度不超过 $1$ 的序列也符合要求），求所需的最少颜色数。",
+          "transformedStatement": "把每种颜色看作原序列的一个严格递增子序列；相同数值的球不能进入同一子序列。问题等价于求最大重复次数，并判断能否用按每个数值的出现次序分层来达到这个下界。",
+          "keyObservations": [
+            "同一个数出现 $k$ 次时，这 $k$ 个球不能同色，因此颜色数至少为任意数值的最大出现次数。",
+            "按每个数值各自的出现顺序给球编号染色，即第 $i$ 次出现统一使用第 $i$ 种颜色；同色球的数值不会重复，而原序列非递减，所以同色子序列严格递增，构造达到下界。"
+          ],
+          "solutionBrief": "统计每个数值的出现次数，答案取最大值。可将每个数值的第 $i$ 次出现染成第 $i$ 种颜色：重复值被分到不同颜色，且每种颜色中的数值严格递增，因此该数量既是下界也是可行方案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1478B",
+          "index": "B",
+          "slot": "B",
+          "title": "Nezzar and Lucky Number",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1478/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/87294",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定数字 $d$ 和若干正整数；若一个正整数的十进制表示至少出现一次 $d$，它就是幸运数。对每个给定整数，判断它能否写成一个或多个幸运数之和。",
+          "transformedStatement": "把每个幸运数视为可用于构成目标和的加数，并利用阈值 $10d+9$ 将判断拆成有限范围 DP 与大数统一判定：超过阈值的目标都能通过减去若干个 $d$ 化到含有数字 $d$ 的区间内。",
+          "keyObservations": [
+            "区间 $[10d,10d+9]$ 中的每个数都含有数字 $d$；对更大的数反复减去 $d$，最终会落入这个区间，因此所有大于 $10d+9$ 的数都能表示为幸运数之和。",
+            "数字 $d$ 本身是幸运数，所以每次减去 $d$ 都对应从目标和中拿掉一个合法加数；这保证上述缩减不仅是数值变小，也保留了可表示性。",
+            "小于等于阈值的数可以按目标和递增计算：若存在已可表示的 $y<x$，使 $x-y$ 的十进制表示含有 $d$，则 $x$ 也可表示，从而只需处理有限范围。"
+          ],
+          "solutionBrief": "令 $k=10d+9$。对不超过 $k$ 的目标值做完全背包式 DP，转移为从已可表示的较小值加上一个含数字 $d$ 的正整数；所有大于 $k$ 的值均可通过反复减去 $d$ 落入含幸运数的区间，因此直接判为可表示。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1478C",
+          "index": "C",
+          "slot": "C",
+          "title": "Nezzar and Symmetric Array",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1478/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/87294",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "implementation",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "给定长度为 $2n$ 的数组 $d$，判断它是否能由一个含 $2n$ 个互不相同整数的对称数组 $a$ 生成。对称要求每个元素都能在数组中找到相反数，而 $d_i$ 是 $a_i$ 与数组所有元素的绝对差之和。",
+          "transformedStatement": "把对称数组表示成 $n$ 对 $\\pm a_i$，并令正数绝对值递增排列。排序后的 $d$ 按绝对值成对出现；逐次移除最大的正负数对，将其对其他元素的固定贡献扣除，从而把可行性判断转化为恢复相邻绝对值间隔并检查最小值是否合法。",
+          "keyObservations": [
+            "将正数绝对值按递增顺序记为 $a_1<\\cdots<a_n$，每个 $a_i$ 都与 $-a_i$ 配对；因此排序后的 $d$ 必须每个值连续出现两次，且相邻两组的值不同。",
+            "最大两组对应 $a_n$ 与 $a_{n-1}$，其差满足 $d_{2n}-d_{2n-2}=(2n-2)(a_n-a_{n-1})$，所以可以从相邻组的差恢复两个绝对值之间的间隔。",
+            "对任意尚未移除的数组元素，来自一对 $a_n,-a_n$ 的距离贡献之和恒为 $2a_n$；减去该贡献后即可移除这对元素，并继续恢复剩余间隔。",
+            "逐对移除后还需检查最小绝对值是否为正整数且能产生剩余的 $d$；这排除了仅满足间隔关系、却无法对应合法整数数组的情况。"
+          ],
+          "solutionBrief": "先排序并检查 $d$ 是否由两两相同且组间不同的值组成。由最大两组之差除以 $2n-2$ 求出最大的绝对值间隔，再利用每对正负数对其余元素的固定贡献 $2a_n$ 逐对移除并恢复间隔；最后检查最小绝对值能否为正整数并匹配剩余数据。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
