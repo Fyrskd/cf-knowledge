@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4244,
+    "total_problems": 4250,
     "source_total_problems": 4251,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4244,
-    "with_editorial_brief": 3885,
-    "with_solution_brief": 3887,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4250,
+    "with_editorial_brief": 3891,
+    "with_solution_brief": 3893,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3306,
+    "ai_override_count": 3312,
     "primary_topic_count": 13,
-    "contest_count": 662,
+    "contest_count": 663,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "交互": 128,
+    "构造与贪心": 1392,
+    "数据结构": 397,
+    "代数、矩阵与多项式": 27,
     "博弈": 121,
-    "构造与贪心": 1389,
     "组合计数与概率": 325,
     "数论与同余": 446,
     "动态规划与状态设计": 349,
-    "数据结构": 396,
     "几何": 98,
-    "交互": 127,
     "图论与网络流": 285,
     "树结构": 197,
     "字符串": 227,
-    "基础实现与模拟": 258,
-    "代数、矩阵与多项式": 26
+    "基础实现与模拟": 258
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2880,
+    "ai_generated_with_editorial": 2886,
     "ai_generated_partial_editorial": 114,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -130408,6 +130408,199 @@ window.CF_INSIGHTS_DATA = {
             "最后击败哪只怪物是唯一影响存活判定的选择；其余怪物造成的伤害总量固定，所以只需检查上述生命值在所有 $k$ 中的最大值是否大于零。"
           ],
           "solutionBrief": "对每只怪物计算击败所需攻击次数及其造成的总伤害，并求所有怪物伤害之和。依次假设每只怪物是最后被击败的对象；若存在 $k$ 使 $B-\\sum_i\\lceil b_i/A\\rceil a_i+a_k>0$，则英雄能击败全部怪物，否则不能，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1479,
+      "name": "Codeforces Round 700 (Div. 1)",
+      "date": "2021-02-07",
+      "url": "https://codeforces.com/contest/1479",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1479A",
+          "index": "A",
+          "slot": "A",
+          "title": "Searching Local Minimum",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1479/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/87598",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "interactive",
+            "ternary search"
+          ],
+          "statementBrief": "给定一个由 $1$ 到 $n$ 组成的排列，允许查询任意位置的数值，最多查询 $100$ 次。局部最小值要求该位置的数值小于左右相邻位置；数组两端之外视为正无穷，任务是找出任意一个局部最小值的位置。",
+          "transformedStatement": "把搜索范围视为一个始终保证含有局部最小值的区间，并维护其两侧边界值均高于区间端点。每次通过比较区间中点与其右邻居，判断应保留哪一半，以将目标位置搜索到单点。",
+          "keyObservations": [
+            "若区间左侧的值大于左端点、右侧的值大于右端点，则区间内必有局部最小值；这个边界条件让二分缩小区间时能保留解。",
+            "比较相邻位置 $a_m$ 与 $a_{m+1}$：若前者较小，保留左半段；若前者较大，保留右半段，因为跨过这条边时存在向下趋势，所选半段仍满足边界条件。"
+          ],
+          "solutionBrief": "维护一个保证含有局部最小值的区间，每轮查询中点及其右侧相邻位置，并根据两者大小关系保留一半。区间缩至单点时输出该位置；查询次数不超过 $2\\lceil\\log_2 n\\rceil$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1479B1",
+          "index": "B1",
+          "slot": "B",
+          "title": "Painting the Array I",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1479/problem/B1",
+          "editorialUrl": "https://codeforces.com/blog/entry/87598",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定整数数组，需要把每个元素染成白色或黑色，按原顺序分别形成两个子序列。每个子序列中相邻相等元素合并后得到的段数之和，要求通过选择染色方式使其最大。",
+          "transformedStatement": "把染色视为将数组在线分配到两个保持顺序的子序列；段数变化只由新元素与对应子序列末尾是否相等决定。于是每步的决策可压缩为两个末尾值，并结合它们的下一次出现位置选择分配方向。",
+          "keyObservations": [
+            "两个颜色对应把原数组拆成两个保持相对顺序的子序列；总段数只取决于每个子序列末尾值是否与新加入的值不同，因此扫描时只需记录两个末尾值。",
+            "若当前值等于某个子序列的末尾，把它放入另一个子序列不会增加前者的段数，并能保留后者未来可能获得的变化，因而这种安排不劣于放入相同末尾的子序列。",
+            "若当前值与两个末尾都不同，应放入末尾值下一次出现更早的那个子序列；保留另一个末尾，能在较早的重复值出现时避免损失段数。",
+            "题解将带初始末尾值的最优段数写成递推，并证明上述两类局部选择分别达到递推的最优分支，因此贪心扫描可得到全局最优。"
+          ],
+          "solutionBrief": "从左到右扫描数组，维护两个颜色子序列的末尾值，并预先记录各值的下一次出现位置。当前值命中某个末尾时放入另一个子序列；否则放入末尾值下一次出现更早的子序列。每次放置按规则更新对应末尾，累计得到最大总段数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1479B2",
+          "index": "B2",
+          "slot": "B",
+          "title": "Painting the Array II",
+          "rating": 2100,
+          "problemUrl": "https://codeforces.com/contest/1479/problem/B2",
+          "editorialUrl": "https://codeforces.com/blog/entry/87598",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定数组，每个元素需被染成白色或黑色；按原顺序分别取出两种颜色的元素，再将每个子序列中相邻且相等的元素合并。要求选择染色方案，使两个子序列合并后的段数总和最小。",
+          "transformedStatement": "把两个颜色子序列视为两个缓存寄存器，数组则是按顺序到来的访问请求；每次将请求分配到对应寄存器，只有请求值不在缓存中时才会新增一个段。于是问题转化为容量为二的缓存中，采用最优替换策略时的最少加载次数。",
+          "keyObservations": [
+            "给每个数组元素分配颜色，可视为把它分配到两个寄存器之一；同一寄存器中连续相同的值只对应一个段，因此新段恰好对应一次需要加载该值。",
+            "当当前值不在两个寄存器中时，淘汰下一次出现位置更远的值不会让它比淘汰另一个值更早再次缺失，从而得到最优的替换选择。",
+            "若当前值已在某个寄存器中，保留现有状态即可；只有缓存未命中时才产生新段，因此按最远未来位置替换并统计加载次数就是所求最小段数。"
+          ],
+          "solutionBrief": "将两个颜色序列看成容量为二的缓存，数组元素依次作为访问请求。命中时不增加段数；未命中时加载该值，并淘汰下一次出现位置更远的缓存值。预处理每个值的下次出现位置后，模拟并统计加载次数，即为最小总段数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1479C",
+          "index": "C",
+          "slot": "C",
+          "title": "Continuous City",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1479/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/87598",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms"
+          ],
+          "statementBrief": "需要构造一座至多有 32 个点的有向城市，边从编号较小的点连向编号较大的点，每条边有正长度。要求从指定起点到终点的路径长度恰好包含 $L$ 到 $R$ 的每个整数且各有一条路径；输出这样的城市，或在无法构造时输出否。",
+          "transformedStatement": "把目标转化为构造一张有向无环图，使起点到终点的路径长度集合恰为 $[L,R]$，并且每种长度对应唯一一条路径。先构造长度区间从 $1$ 开始的图，再通过增加末端边长整体平移区间。",
+          "keyObservations": [
+            "先构造从起点到各中间点的路径长度集合为连续的二次幂区间；新增点时让不同前驱贡献互不重叠的长度段，从而把覆盖范围翻倍且不产生重复长度。",
+            "将 $R-1$ 按二进制拆分后，只连接对应二进制位为 $1$ 的中间点，并为边设置相应长度，就能把这些互不重叠的长度段拼成从 $1$ 到 $R$ 的全部长度。",
+            "先构造覆盖 $1$ 到 $R-L+1$ 的路径长度，再在最后一条边上增加 $L-1$，会把所有长度整体平移到 $L$ 到 $R$，且路径的唯一性保持不变。"
+          ],
+          "solutionBrief": "按二进制位构造有向无环图，使起点到终点的路径长度恰好唯一覆盖 $1$ 到 $R-L+1$；再在终点前增加一条长度为 $L-1$ 的边，将所有长度平移至 $[L,R]$。题解指出构造最多使用 23 个点。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1479D",
+          "index": "D",
+          "slot": "D",
+          "title": "Odd Mineral Resource",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1479/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/87598",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "probabilities",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，每个城市有一种编号为 $a_i$ 的矿物。对每个查询给出城市 $u,v$ 和矿物编号区间 $[l,r]$，要求在从 $u$ 到 $v$ 的路径（含端点）上，找出一个编号位于区间内且出现次数为奇数的矿物；若不存在则报告无解。",
+          "transformedStatement": "把每种矿物映射为独立随机 64 位数，将路径上矿物权值的异或作为区间内奇数次出现情况的指纹。查询因此转化为计算路径在编号区间上的异或，并在异或非零时定位一个单点异或非零的编号。",
+          "keyObservations": [
+            "对每种矿物独立赋一个随机 64 位数，并将城市权值设为其矿物对应的数；路径上某矿物出现偶数次时异或抵消，因此区间异或为零可作为“没有奇数次矿物”的高概率指纹。",
+            "若查询区间的路径异或非零，就在值域线段树中逐层检查左右子区间的路径异或，进入非零的一侧，最终定位到一个出现奇数次的矿物。",
+            "根到节点的区间异或可由持久化线段树表示；两点路径的异或可通过两个端点、最近公共祖先及其父节点的根路径信息组合得到，从而避免逐点遍历路径。"
+          ],
+          "solutionBrief": "为每种矿物生成独立随机 64 位权值，并在以 1 为根的树上建立根路径权值的持久化线段树。利用最近公共祖先组合出查询路径在矿物区间上的异或；异或为零时报告不存在，非零时在值域树上递归定位一个单点异或非零的矿物。随机碰撞概率极低，所有查询成功的概率至少为 $1-q2^{-64}$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1479E",
+          "index": "E",
+          "slot": "E",
+          "title": "School Clubs",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1479/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/87598",
+          "primaryTopic": "代数、矩阵与多项式",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dp",
+            "fft",
+            "math",
+            "number theory",
+            "probabilities"
+          ],
+          "statementBrief": "有 $n$ 名学生分属 $m$ 个俱乐部，每天等概率选一名学生使其生气。若该生原在人数为 $a_i$ 的俱乐部，他以概率 $1/2$ 离开并新建俱乐部；否则以概率 $1/2$ 再按学生均匀选择去向，其中可留在原俱乐部或加入其他俱乐部。求所有学生首次同属一个俱乐部所需天数的期望，并对 $998244353$ 取模。",
+          "transformedStatement": "把过程状态抽象为俱乐部人数的多重集，并为每种人数赋予函数值，使全体俱乐部的函数值之和每一步的条件期望减少 $1$。这样可用停时关系求期望，而核心计算转为由差分递推生成的函数值及其前缀和。",
+          "keyObservations": [
+            "只需记录各俱乐部人数构成的多重集，因为俱乐部标签不影响转移；因此可将势函数设为各俱乐部人数函数值之和。",
+            "令每一步势函数的条件期望变化为 $-1$，则势函数加上经过天数构成鞅，停时的期望可化为初始势函数与终止势函数之差。",
+            "选取 $f(0)=0$、$f(1)=-2$ 后，势函数条件给出相邻差分递推 $(n-a)(f(a+1)-f(a))=(2n-a)(f(a)-f(a-1))$，把期望问题转成计算一串乘积项的前缀和。",
+            "前缀和中的线性函数乘积可按约 $\u001b[0m\\sqrt n\u001b[0m$ 长度分块；块内表达式是低次多项式，可用插值和多点求值批量计算，避免逐项计算所有乘积。"
+          ],
+          "solutionBrief": "以各俱乐部人数多重集定义势函数，通过鞅停时关系将所求期望写成初态与终态势函数之差。由势函数每步期望变化为 $-1$ 推出 $f$ 的差分递推，再用分块、插值及多点求值计算所需前缀和，并在模 $998244353$ 下求值。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
