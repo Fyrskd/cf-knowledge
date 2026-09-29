@@ -1,5 +1,16 @@
 [
   {
+    "id": 1513,
+    "name": "Divide by Zero 2021 and Codeforces Round 714 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1618151700,
+    "relativeTimeSeconds": 172488663,
+    "date": "2021-04-11"
+  },
+  {
     "id": 1511,
     "name": "Educational Codeforces Round 107 (Rated for Div. 2)",
     "type": "ICPC",
