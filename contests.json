@@ -1,5 +1,16 @@
 [
   {
+    "id": 1499,
+    "name": "Educational Codeforces Round 106 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1616079000,
+    "relativeTimeSeconds": 174564328,
+    "date": "2021-03-18"
+  },
+  {
     "id": 1482,
     "name": "Технокубок 2021 - Финал",
     "type": "CF",
