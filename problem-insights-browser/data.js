@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4184,
+    "total_problems": 4190,
     "source_total_problems": 4190,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4184,
-    "with_editorial_brief": 3826,
-    "with_solution_brief": 3828,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4190,
+    "with_editorial_brief": 3832,
+    "with_solution_brief": 3834,
     "missing_editorial_brief": 356,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3246,
+    "ai_override_count": 3252,
     "primary_topic_count": 13,
-    "contest_count": 652,
+    "contest_count": 653,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "几何": 97,
+    "博弈": 120,
+    "构造与贪心": 1363,
+    "图论与网络流": 282,
+    "树结构": 195,
     "字符串": 225,
-    "构造与贪心": 1361,
     "数据结构": 394,
     "数论与同余": 441,
     "动态规划与状态设计": 345,
     "基础实现与模拟": 256,
-    "树结构": 194,
-    "图论与网络流": 281,
     "交互": 123,
-    "博弈": 119,
     "组合计数与概率": 323,
-    "几何": 96,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2823,
-    "ai_generated_partial_editorial": 112,
+    "ai_generated_with_editorial": 2828,
+    "ai_generated_partial_editorial": 113,
     "missing_editorial": 356,
     "low_confidence": 1,
     "manual_override": 891,
@@ -128572,6 +128572,194 @@ window.CF_INSIGHTS_DATA = {
             "在第二种情况中，重复添加的数是否增加不同元素，只取决于它是否已在初始集合中，因此无需模拟全部 $k$ 次操作。"
           ],
           "solutionBrief": "若 $k=0$，答案为 $n$。否则计算最大值 $a$ 和 MEX $b$：若 $b=a+1$，答案为 $n+k$；若 $b<a$，令 $x=\\left\\lceil(a+b)/2\\right\\rceil$，答案为 $n$ 加上指示量 $[x\\notin S]$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1495,
+      "name": "Codeforces Round 706 (Div. 1)",
+      "date": "2021-03-10",
+      "url": "https://codeforces.com/contest/1495",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3300,
+      "problems": [
+        {
+          "key": "1495A",
+          "index": "A",
+          "slot": "A",
+          "title": "Diamond Miner",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1495/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/88533",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "geometry",
+            "greedy",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "平面上有 $n$ 名位于 $y$ 轴上的矿工和 $n$ 个位于 $x$ 轴上的矿脉，每名矿工必须恰好开采一个矿脉，且每个矿脉也只分配给一名矿工。开采消耗为两点间的欧氏距离，要求求出所有矿工总消耗的最小值。",
+          "transformedStatement": "把每个点映射到坐标轴正半轴，问题就变成将两组正数坐标一一配对，使配对距离平方和开方后的总和最小。最优配对可以限制为不交叉的配对，因而等价于两组分别排序后按相同次序配对。",
+          "keyObservations": [
+            "把坐标分别替换为绝对值不会改变任意矿工与矿脉间的距离，因此可只考虑第一象限两条坐标轴上的正坐标。",
+            "若两条配对线段相交，交换它们的配对可得到更短的总距离；所以最优配对中不会出现交叉。",
+            "不交叉配对要求两轴上的点保持相同的顺序，因此分别排序后按序一一配对即可达到最小总距离。"
+          ],
+          "solutionBrief": "将矿工和矿脉坐标取绝对值，分别收集两轴上的距离原点距离并排序，再按升序配对，累加每对的欧氏距离。每组数据耗时为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1495B",
+          "index": "B",
+          "slot": "B",
+          "title": "Let's Go Hiking",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1495/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/88533",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "games",
+            "greedy"
+          ],
+          "statementBrief": "给定一个排列，青山先选一个位置并告知丹尼尔，丹尼尔再选一个不同位置；之后两人交替移动各自的位置，不能移动者输。题目要求在双方最优策略下，统计青山能选出多少个初始位置以保证获胜；提供的题面片段没有说明具体移动规则。",
+          "transformedStatement": "题解将问题转化为排列中最长单调连续段的长度、数量及其相邻关系判定：获胜结构要求两条最长段共享峰顶，并由长度奇偶性决定胜负，最终只需线性检查这些结构条件及峰顶位置。",
+          "keyObservations": [
+            "若起点不是内部局部最大值，对手可选择相邻位置，使先手第一回合就无路可走，因此候选起点只能是内部峰顶。",
+            "把最长单调连续段长度记为 $l$、达到该长度的段数记为 $c$；若 $c>2$，对手总能找到足以抵消先手行动次数的段，先手无法获胜。",
+            "当 $c=1$ 时，最长段无论长度奇偶，对手都能选取合适起点并在交替移动中使先手先无路可走。",
+            "获胜只可能出现在恰有两条最长单调段、它们共享同一个峰顶且长度为奇数时；此时峰顶是唯一获胜的初始选择。"
+          ],
+          "solutionBrief": "线性扫描排列中的最长单调连续段及其数量。只有最长段恰有两条、它们在同一峰顶相接且长度为奇数时，答案为该峰顶对应的一个选择；其他情况答案为零。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1495C",
+          "index": "C",
+          "slot": "C",
+          "title": "Garden of the Sun",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1495/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/88533",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs"
+          ],
+          "statementBrief": "给定一个由空格和向日葵组成的 $n\\times m$ 网格，只能移除向日葵，不能重新种植。要求调整后空格之间按共边相邻形成的图连通且无环，并输出任意一种结果。",
+          "transformedStatement": "把每个空格看作顶点、共边相邻的空格连边，问题就转化为通过增加空格（移除向日葵）构造一棵覆盖所有空格的连通无环图；列方向上的间隔通道可作为构造骨架。",
+          "keyObservations": [
+            "把空格视为图的顶点、共边相邻视为边后，目标可理解为让空格构成一棵树；因此既要连通，也必须避免环。",
+            "每隔两列清空一整列（如第 $2,5,8,\\ldots$ 列），可形成便于连接的竖直空格通道，并为构造无环连通图提供骨架。",
+            "当列数为 $3k+1$ 时，从第 $1,4,7,\\ldots$ 列开始清空可避免最右侧多出一列而与主体断开；其他列数可采用从第 $2$ 列开始的方案。"
+          ],
+          "solutionBrief": "将空格建成网格图，按列数选择每隔两列清空一列，再连接这些通道及其间区域，使所有空格连通且不形成环。题解文字未保留具体连接位置的图示细节。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1495D",
+          "index": "D",
+          "slot": "D",
+          "title": "BFS Trees",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1495/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/88533",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dfs and similar",
+            "graphs",
+            "math",
+            "shortest paths",
+            "trees"
+          ],
+          "statementBrief": "给定一个连通无向图。对每一对顶点 $(i,j)$，要统计有多少棵生成树同时满足：以 $i$ 为根和以 $j$ 为根时，树中每个顶点到根的距离都等于原图中的最短距离；答案对 $998244353$ 取模。",
+          "transformedStatement": "固定根对 $(x,y)$ 后，将生成树拆成两部分：连接两根的最短路主干，以及主干外逐层接回主干的顶点。问题转化为统计每个非主干顶点可选的、同时向两根靠近一层的父节点数，并利用选择独立性求积。",
+          "keyObservations": [
+            "若一棵树同时是以 $x$、$y$ 为根的 BFS 树，则树上 $x$ 到 $y$ 的路径必须是图中的最短路；这条路径上的顶点因此被固定在两根之间的公共主干上。",
+            "对主干之外的顶点 $i$，其父节点必须是一个相邻顶点 $j$，且从 $x$、$y$ 到 $j$ 的距离都比到 $i$ 的距离少一层；因此只需统计符合条件的邻点。",
+            "这些父节点选择按层独立：选择 $i$ 的父节点不会改变它所在的层，也不会改变其他顶点可选的父节点数，所以各顶点的选择数可以相乘。"
+          ],
+          "solutionBrief": "枚举根对 $(x,y)$，确定两者之间的最短路主干。对主干外的每个顶点，统计能同时使其到两根的距离各减少一层的邻点数，将这些数量相乘得到该根对的答案。题解给出的总复杂度为 $O(n^2m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1495E",
+          "index": "E",
+          "slot": "E",
+          "title": "Qingshan and Daniel",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1495/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/88533",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "有 $n$ 个机器人分属两队，每个机器人初始持有一定数量的牌；机器人按游戏规则轮流丢牌，机器人间的先后关系按圆环方向定义。求每个机器人最终丢弃的牌数 $ans_i$，并输出所有 $((ans_i\\mathbin{\\mathrm{XOR}}i^2)+1)$ 的乘积模 $10^9+7$；题面片段未完整给出具体游戏规则。",
+          "transformedStatement": "把最终没有牌的一队视为操作发起方：其每丢弃一张牌，就对应另一队右侧最近机器人的一次减牌操作。题解将这些操作视为可任意重排的待处理计数，从而把交替游戏转化为环上的两遍线性扫描。",
+          "keyObservations": [
+            "游戏结束时至少有一队的牌已全部用完；该队每个机器人丢弃的牌数已知，难点只在于计算另一队的丢牌数。",
+            "两队丢牌过程交替进行，因此按时间看是两队轮流出现的序列；若序列从另一队先开始，只需先处理一次首步，便可归入从已耗尽队伍开始的情形。",
+            "每次已耗尽队伍中的机器人行动，都会让其右侧遇到的第一个另一队机器人丢一张牌；这些操作的先后次序不影响最终结果，所以可将尚未执行的操作数累计后在扫描中处理。",
+            "机器人位于环上，线性扫描一次可能遗漏跨越数组末尾的目标；扫描两遍即可覆盖环上的后续机器人。"
+          ],
+          "solutionBrief": "先确定最终耗尽牌的队伍，另一队的丢牌数通过环上扫描计算：耗尽队伍的牌数累加为待执行操作数，扫描到另一队时执行不超过其剩余牌数的操作。扫描两遍覆盖环形关系，最后按题目给出的异或乘积公式计算答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1495F",
+          "index": "F",
+          "slot": "F",
+          "title": "Squares",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1495/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/88533",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "dp",
+            "graphs",
+            "trees"
+          ],
+          "statementBrief": "地面上从左到右有 $n$ 个方格，每格标有排列值 $p_i$ 及费用 $a_i,b_i$。每轮从最左方格开始向右跳，并须经过当前必经集合中的所有方格；每轮将一个给定方格从集合中加入或移除，求每轮结束所需的最小费用。",
+          "transformedStatement": "将方格 $i$ 连到其左侧最近且排列值更大的方格，形成一棵树。选择费用为 $a_i$ 的跳法对应选中树节点，选择费用为 $b_i$ 的跳法对应略过其子树；于是每轮转化为满足祖先闭包限制的树上节点选择，并最小化改写后的节点费用总和。",
+          "keyObservations": [
+            "令节点 $i$ 的父节点为它左侧最近且 $p_j>p_i$ 的位置，得到一棵树；在位置 $i$ 选择费用为 $b_i$ 的跳法会略过其子树，而选择费用为 $a_i$ 的跳法会进入子树。",
+            "只有父节点已被选中的节点才有机会被选，因此可行选择必须包含根节点，并对祖先封闭；这把路径经过要求转成了树上的集合约束。",
+            "把每个节点选中时的费用与其未选中但父节点选中时的费用合并，可将总费用改写为节点权值之和加固定项：$c_i=a_i-b_i+\\sum_{j\\in\\operatorname{child}_i}b_j$，固定项为根的子节点对应的 $b_j$ 之和。"
+          ],
+          "solutionBrief": "按排列构造父节点为左侧最近更大值的树，将每轮翻转的必经方格要求转为树上选择约束，并用节点权值 $c_i$ 表示费用变化。题解指出可用树状数组维护动态答案，整体复杂度为 $O((n+q)\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
