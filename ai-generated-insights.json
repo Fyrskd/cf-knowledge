@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-29T00:41:37+00:00",
+  "updated_at": "2026-09-29T00:46:53+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -95952,6 +95952,167 @@
         "source_provenance": "题意依据 statement_text；editorial_text 为空，题目标签仅提供构造类分类信息。",
         "quality_flags": [
           "missing_editorial"
+        ]
+      }
+    },
+    "1483F": {
+      "problem_key": "1483F",
+      "title": "Exam",
+      "rating": 3400,
+      "problem_url": "https://codeforces.com/contest/1483/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "d762315e791b676220b5fc7b3cd9f0a8ee97dfa115b1607475b9a3a262b6aa79",
+      "generated_at": "2026-09-29T00:45:45+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个互不相同的非空小写字符串，每个字符串对应一名参赛者，题目要求统计最终会发生多少场两两交手。题面中的交手条件列表缺失；样例表明，若两名字存在子串关系且没有第三个名字位于两者之间的子串关系中，这一对会交手。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "字符串",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；交手条件根据样例推断。editorial_text 为空，tags 仅用于辅助选择主题。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1483E": {
+      "problem_key": "1483E",
+      "title": "Vabank",
+      "rating": 3200,
+      "problem_url": "https://codeforces.com/contest/1483/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "f2330cd3539f676b09e2e3f5edcd7d1a53ac7dd11fbc49a1cd23e3944ca8a815",
+      "generated_at": "2026-09-29T00:45:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "每组测试中，未知整数上限 $M$ 满足 $0\\le M\\le 10^{14}$，初始账户有 1 欧元。每次可查询一个 $1$ 到 $10^{14}$ 的整数金额 $X$ 并尝试转入账户，系统会对超过 $M$ 的操作触发检测；要求每组最多查询 $10^5$ 次后准确确定 $M$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "交互",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面与标签；题解链接只有 URL，未提供题解正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1483D": {
+      "problem_key": "1483D",
+      "title": "Useful Edges",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/1483/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "27eda5fdc2466e5b3237f4d926ae18421b88ba29690d3c2fa8cb16b2582ad5d1",
+      "generated_at": "2026-09-29T00:46:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个带正权边的无向图，以及若干由顶点 $u,v$ 和整数 $l$ 组成的三元组。若某条边能出现在至少一个三元组所对应的合规路径中，就称它有用；题面缺失了这些路径必须满足的具体条件，要求输出有用边的数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据残缺的 statement_text 与图论标签；editorial_text 为空，题解链接未提供正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_incomplete"
+        ]
+      }
+    },
+    "1483C": {
+      "problem_key": "1483C",
+      "title": "Skyline Photo",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1483/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "93ae600c754775a1d0090e13465fd0bd4da0e6562271f7eade4aefc099e043f3",
+      "generated_at": "2026-09-29T00:46:18+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定按顺序排列的 $n$ 幢高度各不相同的建筑及其美观值。需要把所有建筑恰好划分成若干个非空连续区间，每个区间拍一张照片，照片的美观值等于其中最低建筑的美观值；求所有照片美观值之和的最大值。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；题解正文为空。题目标签仅用于主题归类，未据此补写算法。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "1483B": {
+      "problem_key": "1483B",
+      "title": "Playlist",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1483/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "2ca4b03f6b7b113369a557420a9dc0051ae52f0c8dbf7bb7710e6f43739069ac",
+      "generated_at": "2026-09-29T00:46:35+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定按顺序排列、每首歌带有正整数流派编号的循环播放列表。Arkady 依次听歌；若刚听完流派为 $y$ 的歌，且前一首实际听到的歌流派为 $x$，满足 $\\gcd(x,y)=1$，就删除刚听完的歌，并忘记此前听过的歌曲；之后跳过已删除歌曲继续循环。求最终被删除歌曲的编号及删除顺序。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "数据结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；主题分类参考 tags。editorial_text 为空，未提供题解正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred",
+          "statement_truncated"
+        ]
+      }
+    },
+    "1483A": {
+      "problem_key": "1483A",
+      "title": "Basic Diplomacy",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1483/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/88963",
+      "editorial_quality": "url_only",
+      "model": "gpt-6-luna",
+      "input_hash": "df0f1133ea1f55ee04fed2b023678fb8404d308ca01b2fbd94b281e3c469a7aa",
+      "generated_at": "2026-09-29T00:46:53+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 位朋友和 $m$ 天，每天只有部分朋友可以参加。每天必须从当天可用的朋友中选一位，要求任何朋友被选中的次数都不超过 $\\lceil m/2\\rceil$；请构造这样的安排，或判断无解。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意与次数上限依据 statement_text；题解正文为空。主题分类参考 tags。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
         ]
       }
     }

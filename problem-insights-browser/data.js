@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 356,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3208,
+    "ai_override_count": 3214,
     "primary_topic_count": 13,
     "contest_count": 646,
     "rating_min": 800,
@@ -44,18 +44,18 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1353,
-    "图论与网络流": 280,
-    "树结构": 194,
-    "数论与同余": 435,
+    "构造与贪心": 1351,
+    "数论与同余": 436,
+    "动态规划与状态设计": 340,
+    "图论与网络流": 279,
+    "交互": 122,
+    "字符串": 223,
     "数据结构": 390,
-    "动态规划与状态设计": 339,
-    "字符串": 222,
     "博弈": 119,
     "组合计数与概率": 323,
     "基础实现与模拟": 254,
+    "树结构": 193,
     "几何": 96,
-    "交互": 121,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
@@ -127474,16 +127474,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1483/problem/A",
           "editorialUrl": "https://codeforces.com/blog/entry/88963",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "greedy",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Basic Diplomacy；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 位朋友和 $m$ 天，每天只有部分朋友可以参加。每天必须从当天可用的朋友中选一位，要求任何朋友被选中的次数都不超过 $\\lceil m/2\\rceil$；请构造这样的安排，或判断无解。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -127498,17 +127495,17 @@ window.CF_INSIGHTS_DATA = {
           "rating": 1900,
           "problemUrl": "https://codeforces.com/contest/1483/problem/B",
           "editorialUrl": "https://codeforces.com/blog/entry/88963",
-          "primaryTopic": "图论与网络流",
+          "primaryTopic": "数论与同余",
           "secondaryTopics": [
             "数据结构",
-            "数论与同余"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "data structures",
             "dsu",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Playlist；本地暂无可用题解正文。",
+          "statementBrief": "给定按顺序排列、每首歌带有正整数流派编号的循环播放列表。Arkady 依次听歌；若刚听完流派为 $y$ 的歌，且前一首实际听到的歌流派为 $x$，满足 $\\gcd(x,y)=1$，就删除刚听完的歌，并忘记此前听过的歌曲；之后跳过已删除歌曲继续循环。求最终被删除歌曲的编号及删除顺序。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -127523,19 +127520,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": 2100,
           "problemUrl": "https://codeforces.com/contest/1483/problem/C",
           "editorialUrl": "https://codeforces.com/blog/entry/88963",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构",
-            "动态规划与状态设计",
-            "图论与网络流"
-          ],
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "data structures",
             "dp",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Skyline Photo；本地暂无可用题解正文。",
+          "statementBrief": "给定按顺序排列的 $n$ 幢高度各不相同的建筑及其美观值。需要把所有建筑恰好划分成若干个非空连续区间，每个区间拍一张照片，照片的美观值等于其中最低建筑的美观值；求所有照片美观值之和的最大值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -127551,15 +127544,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/1483/problem/D",
           "editorialUrl": "https://codeforces.com/blog/entry/88963",
           "primaryTopic": "图论与网络流",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "dp",
             "graphs",
             "shortest paths"
           ],
-          "statementBrief": "题面已抓取：Useful Edges；本地暂无可用题解正文。",
+          "statementBrief": "给定一个带正权边的无向图，以及若干由顶点 $u,v$ 和整数 $l$ 组成的三元组。若某条边能出现在至少一个三元组所对应的合规路径中，就称它有用；题面缺失了这些路径必须满足的具体条件，要求输出有用边的数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -127574,18 +127565,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 3200,
           "problemUrl": "https://codeforces.com/contest/1483/problem/E",
           "editorialUrl": "https://codeforces.com/blog/entry/88963",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "交互",
-            "组合计数与概率"
-          ],
+          "primaryTopic": "交互",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "dp",
             "interactive"
           ],
-          "statementBrief": "题面已抓取：Vabank；本地暂无可用题解正文。",
+          "statementBrief": "每组测试中，未知整数上限 $M$ 满足 $0\\le M\\le 10^{14}$，初始账户有 1 欧元。每次可查询一个 $1$ 到 $10^{14}$ 的整数金额 $X$ 并尝试转入账户，系统会对超过 $M$ 的操作触发检测；要求每组最多查询 $10^5$ 次后准确确定 $M$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -127600,12 +127587,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": 3400,
           "problemUrl": "https://codeforces.com/contest/1483/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/88963",
-          "primaryTopic": "树结构",
-          "secondaryTopics": [
-            "字符串",
-            "图论与网络流",
-            "数据结构"
-          ],
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
           "originalTags": [
             "data structures",
             "dfs and similar",
@@ -127613,7 +127596,7 @@ window.CF_INSIGHTS_DATA = {
             "string suffix structures",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Exam；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n$ 个互不相同的非空小写字符串，每个字符串对应一名参赛者，题目要求统计最终会发生多少场两两交手。题面中的交手条件列表缺失；样例表明，若两名字存在子串关系且没有第三个名字位于两者之间的子串关系中，这一对会交手。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

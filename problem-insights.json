@@ -24,7 +24,7 @@
     "missing_editorial_brief": 356,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3208,
+    "ai_override_count": 3214,
     "primary_topic_count": 13
   },
   "records": [
@@ -38,16 +38,13 @@
       "editorial_url": "https://codeforces.com/blog/entry/88963",
       "editorial_quality": "url_only",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "组合计数与概率",
-        "博弈"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "constructive algorithms",
         "greedy",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Basic Diplomacy；本地暂无可用题解正文。",
+      "statement_brief": "有 $n$ 位朋友和 $m$ 天，每天只有部分朋友可以参加。每天必须从当天可用的朋友中选一位，要求任何朋友被选中的次数都不超过 $\\lceil m/2\\rceil$；请构造这样的安排，或判断无解。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -55,9 +52,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:46:53+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 2,
@@ -68,17 +75,17 @@
       "problem_url": "https://codeforces.com/contest/1483/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/88963",
       "editorial_quality": "url_only",
-      "primary_topic": "图论与网络流",
+      "primary_topic": "数论与同余",
       "secondary_topics": [
         "数据结构",
-        "数论与同余"
+        "基础实现与模拟"
       ],
       "original_tags": [
         "data structures",
         "dsu",
         "implementation"
       ],
-      "statement_brief": "题面已抓取：Playlist；本地暂无可用题解正文。",
+      "statement_brief": "给定按顺序排列、每首歌带有正整数流派编号的循环播放列表。Arkady 依次听歌；若刚听完流派为 $y$ 的歌，且前一首实际听到的歌流派为 $x$，满足 $\\gcd(x,y)=1$，就删除刚听完的歌，并忘记此前听过的歌曲；之后跳过已删除歌曲继续循环。求最终被删除歌曲的编号及删除顺序。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -86,9 +93,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:46:35+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred",
+            "statement_truncated"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 3,
@@ -99,19 +117,15 @@
       "problem_url": "https://codeforces.com/contest/1483/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/88963",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "数据结构",
-        "动态规划与状态设计",
-        "图论与网络流"
-      ],
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "data structures",
         "dp",
         "greedy"
       ],
-      "statement_brief": "题面已抓取：Skyline Photo；本地暂无可用题解正文。",
+      "statement_brief": "给定按顺序排列的 $n$ 幢高度各不相同的建筑及其美观值。需要把所有建筑恰好划分成若干个非空连续区间，每个区间拍一张照片，照片的美观值等于其中最低建筑的美观值；求所有照片美观值之和的最大值。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -119,9 +133,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:46:18+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 4,
@@ -133,15 +157,13 @@
       "editorial_url": "https://codeforces.com/blog/entry/88963",
       "editorial_quality": "url_only",
       "primary_topic": "图论与网络流",
-      "secondary_topics": [
-        "动态规划与状态设计"
-      ],
+      "secondary_topics": [],
       "original_tags": [
         "dp",
         "graphs",
         "shortest paths"
       ],
-      "statement_brief": "题面已抓取：Useful Edges；本地暂无可用题解正文。",
+      "statement_brief": "给定一个带正权边的无向图，以及若干由顶点 $u,v$ 和整数 $l$ 组成的三元组。若某条边能出现在至少一个三元组所对应的合规路径中，就称它有用；题面缺失了这些路径必须满足的具体条件，要求输出有用边的数量。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -149,9 +171,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:46:09+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_incomplete"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 5,
@@ -162,18 +194,14 @@
       "problem_url": "https://codeforces.com/contest/1483/problem/E",
       "editorial_url": "https://codeforces.com/blog/entry/88963",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "交互",
-        "组合计数与概率"
-      ],
+      "primary_topic": "交互",
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "dp",
         "interactive"
       ],
-      "statement_brief": "题面已抓取：Vabank；本地暂无可用题解正文。",
+      "statement_brief": "每组测试中，未知整数上限 $M$ 满足 $0\\le M\\le 10^{14}$，初始账户有 1 欧元。每次可查询一个 $1$ 到 $10^{14}$ 的整数金额 $X$ 并尝试转入账户，系统会对超过 $M$ 的操作触发检测；要求每组最多查询 $10^5$ 次后准确确定 $M$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -181,9 +209,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:45:53+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 6,
@@ -194,12 +232,8 @@
       "problem_url": "https://codeforces.com/contest/1483/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/88963",
       "editorial_quality": "url_only",
-      "primary_topic": "树结构",
-      "secondary_topics": [
-        "字符串",
-        "图论与网络流",
-        "数据结构"
-      ],
+      "primary_topic": "字符串",
+      "secondary_topics": [],
       "original_tags": [
         "data structures",
         "dfs and similar",
@@ -207,7 +241,7 @@
         "string suffix structures",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Exam；本地暂无可用题解正文。",
+      "statement_brief": "给定 $n$ 个互不相同的非空小写字符串，每个字符串对应一名参赛者，题目要求统计最终会发生多少场两两交手。题面中的交手条件列表缺失；样例表明，若两名字存在子串关系且没有第三个名字位于两者之间的子串关系中，这一对会交手。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -215,9 +249,20 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T00:45:45+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 7,
