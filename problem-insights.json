@@ -15,19 +15,312 @@
     ]
   },
   "summary": {
-    "total_problems": 4216,
+    "total_problems": 4223,
     "source_total_problems": 4223,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4216,
-    "with_editorial_brief": 3857,
-    "with_solution_brief": 3859,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4223,
+    "with_editorial_brief": 3864,
+    "with_solution_brief": 3866,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3278,
+    "ai_override_count": 3285,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1486A",
+      "contest_id": 1486,
+      "title": "Shifting Stacks",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1486/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/87849",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定 $n$ 个栈及各栈的方块数。每次可以从一个非空栈取出一个方块，放到它右侧相邻的栈中；判断能否经过若干次操作，使所有栈的高度从左到右严格递增。",
+      "transformed_statement": "对每个前缀分别考察其方块总数：要让前 $i$ 个栈严格递增，非负高度至少需要 $0,1,\\ldots,i-1$。问题等价于判断每个初始前缀是否都拥有达到这一最低总量的方块。",
+      "key_observations": [
+        "严格递增的非负整数序列前 $i$ 项至少是 $0,1,\\ldots,i-1$，因此这些位置至少需要 $\\frac{i(i-1)}{2}$ 个方块。",
+        "前 $i$ 个栈中的方块只能向右移出，不能从第 $i+1$ 个栈移入；所以初始前缀总数低于上述下界时，该前缀不可能达标。",
+        "若每个前缀都达到对应下界，就能把多余方块逐步向右传递，使各位置依次满足递增要求，因此这些前缀条件也足以保证可行。"
+      ],
+      "solution_brief": "计算每个前缀的方块总数，并检查其是否至少为 $i(i-1)/2$。任一前缀不足则输出 NO；所有前缀都满足则输出 YES，因为可以将方块向右传递构造出严格递增的高度序列。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T01:59:36+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1486B",
+      "contest_id": 1486,
+      "title": "Eastern Exhibition",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1486/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/87849",
+      "editorial_quality": "complete",
+      "primary_topic": "几何",
+      "secondary_topics": [],
+      "original_tags": [
+        "binary search",
+        "geometry",
+        "shortest paths",
+        "sortings"
+      ],
+      "statement_brief": "给定平面上 $n$ 个房屋的位置，可以把展览建在任意整数坐标点，包括房屋所在点。距离采用曼哈顿距离，要求统计使到所有房屋距离总和最小的展览位置数。",
+      "transformed_statement": "把每个展览位置拆成横、纵两个坐标选择：总距离分别是各横坐标距离之和与各纵坐标距离之和的相加。于是问题转为分别求两组数的一维最优中位数区间所含整数点数，再将两者相乘。",
+      "key_observations": [
+        "曼哈顿距离可按坐标拆成横坐标差与纵坐标差之和，因此两个坐标的最优选择互不影响，最终计数可以相乘。",
+        "一维数轴上使到所有房屋距离之和最小的位置，恰好是中位数区间内的整数点；偶数个坐标时区间可能包含多个点，奇数个时只有一个点。"
+      ],
+      "solution_brief": "分别对所有房屋的横坐标和纵坐标排序，取下标为 $\\lfloor(n+1)/2\\rfloor$ 与 $\\lfloor(n+2)/2\\rfloor$（按从 1 开始计数）的坐标作为中位数区间端点。每个方向的最优整数点数为端点差加一，两方向的数量相乘即为答案。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T01:59:20+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 3,
+      "problem_key": "1486C1",
+      "contest_id": 1486,
+      "title": "Guessing the Greatest (easy version)",
+      "rating": 1600,
+      "problem_url": "https://codeforces.com/contest/1486/problem/C1",
+      "editorial_url": "https://codeforces.com/blog/entry/87849",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "interactive"
+      ],
+      "statement_brief": "给定一个由互不相同数字组成、内容固定的数组，每次可以询问某个连续子段中第二大元素的位置，返回的是它在整个数组中的下标。要求在不超过 40 次询问内找出整个数组最大元素的位置。",
+      "transformed_statement": "把全数组中的最大值位置视为唯一候选目标，逐步维护一个包含它的区间。利用区间第二大值的位置，只查询包含该值的半区，就能判断最大值落在哪一侧，并将候选区间减半。",
+      "key_observations": [
+        "当前区间的第二大值所在位置可以指示应查询哪一半：只需查询包含该位置的半区，便能判断最大值是否也在其中。",
+        "若查询包含第二大值的半区后，返回位置仍是原第二大值的位置，则最大值也在该半区；否则原第二大值在半区内成为最大值，说明全局最大值在另一半。",
+        "每次判断都把候选区间缩小到原来的一半，因此区间长度降至 1 所需轮数为对数级；每轮至多两次查询，满足 40 次上限。"
+      ],
+      "solution_brief": "先查询当前区间的第二大值位置，再查询包含该位置的一半；根据返回位置是否相同，保留最大值所在的半区。不断缩小区间，最终得到最大值的位置。每轮至多两次查询，总查询数不超过 40。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T01:59:05+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4,
+      "problem_key": "1486C2",
+      "contest_id": 1486,
+      "title": "Guessing the Greatest (hard version)",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1486/problem/C2",
+      "editorial_url": "https://codeforces.com/blog/entry/87849",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "interactive"
+      ],
+      "statement_brief": "给定一个元素互不相同的固定数组，每次可询问区间 $[l,r]$ 中第二大元素在整个数组中的位置。要求在最多 $20$ 次询问内找出整个数组最大元素的位置。",
+      "transformed_statement": "先用全数组查询确定第二大元素的位置 $smax$，把目标转化为判断最大值位于 $smax$ 哪一侧；确定方向后，再找使相应区间查询返回 $smax$ 的最小边界，该边界就是最大值的位置。",
+      "key_observations": [
+        "查询整个数组可得到全局第二大元素的位置；最大值必在它的一侧，因此后续只需判断方向并在该侧定位。",
+        "查询区间 $[1,smax]$：若返回位置是 $smax$，说明最大值在其左侧；否则最大值在右侧。若 $smax=1$，最大值必在右侧。",
+        "假设最大值在第二大元素右侧，区间 $[smax,m]$ 的查询结果首次变为 $smax$ 时，$m$ 正好到达最大值位置；这个条件随 $m$ 单调，可二分定位，左侧情形对称处理。"
+      ],
+      "solution_brief": "先查询整个数组，得到第二大元素位置 $smax$，再判断最大值在其左侧还是右侧。根据方向对包含 $smax$ 的区间端点进行二分，定位查询结果首次为 $smax$ 的边界；题解给出的查询数为 $2+\\lceil\\log_2 10^5\\rceil=19$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T01:58:46+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 5,
+      "problem_key": "1486D",
+      "contest_id": 1486,
+      "title": "Max Median",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/1486/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/87849",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "dp"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组和下限 $k$，可以选择任意连续子数组，但长度必须至少为 $k$。子数组中位数按非降序排列后的第 $\\lfloor (m+1)/2\\rfloor$ 个元素定义，要求求出所有合规子数组中最大的中位数。",
+      "transformed_statement": "对每个候选值 $x$，将数组元素转成 $1$（不小于 $x$）或 $-1$（小于 $x$）；问题由此变为判断是否存在长度至少为 $k$ 的连续区间，其和为正，并据此寻找最大的可行 $x$。",
+      "key_observations": [
+        "固定候选中位数 $x$ 后，把不小于 $x$ 的元素记为 $1$、其余记为 $-1$；子数组中位数至少为 $x$ 等价于该子数组的和为正，因此数值中位数判定转成了正和区间判定。",
+        "对前缀和位置 $i$，只需比较它与位置不超过 $i-k$ 的最小前缀和；两者之差为正，就对应长度至少为 $k$ 的正和子数组。",
+        "候选中位数越大，满足条件的元素集合只会缩小，因此可行性具有单调性，能够二分最大可行值。"
+      ],
+      "solution_brief": "二分候选中位数 $x$。将数组按是否不小于 $x$ 转成 $1/-1$，用前缀和及前缀最小值在线性时间判断是否存在长度至少为 $k$ 的正和区间；整体复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T01:58:28+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 6,
+      "problem_key": "1486E",
+      "contest_id": 1486,
+      "title": "Paired Payment",
+      "rating": 2200,
+      "problem_url": "https://codeforces.com/contest/1486/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/87849",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "constructive algorithms",
+        "dp",
+        "flows",
+        "graphs",
+        "shortest paths"
+      ],
+      "statement_brief": "给定一个可能不连通的无向加权图，每次必须连续经过两条道路，从城市 $a$ 经 $b$ 到 $c$，并支付这两条道路权重之和的平方。对每个城市，求从城市 $1$ 出发、按此规则到达它的最小费用；无法到达则输出 $-1$。",
+      "transformed_statement": "将每次连续经过两条道路视为一次完整转移，并在图中加入表示“已经走过第一条边、当前边权为 $w$”的中间状态。第一条边对应零费用进入状态，第二条边完成转移并收取 $(w+w')^2$，于是原问题变成扩展图上的单源最短路。",
+      "key_observations": [
+        "到达一个城市后，下一步的费用只取决于刚走过的边权和接下来选择的边权；因此用“城市、上一条边的权重”记录中间状态，就足以保留计算费用所需的信息。",
+        "把走完一条边但尚未完成两边一组的过程表示为零费用转移，再在走完第二条边时收取两条边权之和的平方，便将成对通行规则转成普通非负边权最短路。",
+        "边权至多为 $50$，所以每个城市只需考虑 $50$ 种上一条边权状态；从每条入边状态连接该城市的出边，扩展图规模可控制在 $O(M\\cdot 50)$ 量级。"
+      ],
+      "solution_brief": "为每个城市及可能的上一条边权建立中间状态：从真实城市沿第一条边以零费用进入对应状态，再沿第二条边以两条边权之和的平方转移到下一真实城市。在扩展图上从城市 $1$ 运行 Dijkstra，得到所有城市的最小费用；不可达者输出 $-1$。题解给出的时间复杂度为 $O(M\\cdot 50\\log M)$ 或 $O(M\\cdot 50+M\\log M)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T01:58:17+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 7,
+      "problem_key": "1486F",
+      "contest_id": 1486,
+      "title": "Pairs of Paths",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/1486/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/87849",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "数据结构",
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "data structures",
+        "dfs and similar",
+        "dp",
+        "trees"
+      ],
+      "statement_brief": "给定一棵树和若干条路径，每条路径由两个端点确定，并包含两端点之间最短路上的所有顶点。要求统计路径对的数量，使得一对路径恰好共有一个顶点。",
+      "transformed_statement": "将树定根后，把每条路径表示为其 LCA 及从 LCA 通向端点的子树选择；目标转为分别统计交点是两条路径共同 LCA、或仅是一条路径 LCA 的两类路径对。",
+      "key_observations": [
+        "将树定根后，若两条路径恰好只交于顶点 $x$，那么 $x$ 必是至少一条路径两端点的最近公共祖先；否则两条路径会共享通向父亲的边，导致交点不止一个。",
+        "按交点是否同时为两条路径的最近公共祖先分类后，只需分别统计同一 LCA 和不同 LCA 的路径对，避免直接枚举所有路径对。",
+        "对具有相同 LCA 的路径，用它们从 LCA 进入的子树编号描述路径；交点恰好为 LCA 等价于两条路径对应的子树选择不重合，可用容斥从所有路径对中扣除共享子树的情况。",
+        "不同 LCA 的情形可转化为统计一条含固定 LCA 及其父亲的路径与其他路径的相交情况，再排除进入同一子树的路径；因此只需维护子树相关计数。"
+      ],
+      "solution_brief": "将树定根，为每条给定路径求 LCA，并记录它从 LCA 延伸到的子树。分别统计相同 LCA 与不同 LCA 的交点对：前者用容斥排除共享子树的路径对，后者统计跨过固定 LCA 的路径并扣除进入相同子树的情况；所需计数可用小并大或子树动态规划维护。题解未完整展开边界计数细节。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T01:57:59+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "partial_editorial"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 8,
       "problem_key": "1492A",
