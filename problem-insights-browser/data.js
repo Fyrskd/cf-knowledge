@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4292,
+    "total_problems": 4297,
     "source_total_problems": 4298,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4292,
-    "with_editorial_brief": 3933,
-    "with_solution_brief": 3935,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4297,
+    "with_editorial_brief": 3938,
+    "with_solution_brief": 3940,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3354,
+    "ai_override_count": 3359,
     "primary_topic_count": 13,
-    "contest_count": 670,
+    "contest_count": 671,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1405,
+    "构造与贪心": 1408,
+    "动态规划与状态设计": 356,
+    "树结构": 199,
     "字符串": 228,
     "数据结构": 401,
     "图论与网络流": 290,
     "组合计数与概率": 329,
     "数论与同余": 452,
-    "动态规划与状态设计": 355,
     "几何": 99,
     "基础实现与模拟": 259,
-    "树结构": 198,
     "交互": 128,
     "代数、矩阵与多项式": 27,
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2925,
+    "ai_generated_with_editorial": 2930,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -131874,6 +131874,158 @@ window.CF_INSIGHTS_DATA = {
             "转移中的权重是连续的二项式系数，求和对上一组答案构成卷积；用 NTT 计算卷积即可避免逐对位置计算。"
           ],
           "solutionBrief": "按每组行变化维护各个位置的到达路径数。对于包含 $a_i$ 次增加和 $b_i$ 次减少的组，转移系数为相应的二项式系数；将转移改写为卷积，并用 NTT 加速，结果对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1467,
+      "name": "Codeforces Round 695 (Div. 2)",
+      "date": "2021-01-08",
+      "url": "https://codeforces.com/contest/1467",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1467A",
+          "index": "A",
+          "slot": "A",
+          "title": "Wizard of Orz",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1467/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/86566",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 块排成一列的数字面板，初始均显示 $0$，每秒未暂停的面板数字加 $1$ 并按 $0$ 到 $9$ 循环。必须选择一块面板并决定暂停时刻；距它 $d$ 块的面板会在 $d$ 秒后暂停，最后按从左到右的顺序组成数字，求能得到的最大数字。",
+          "transformedStatement": "把选定面板的暂停时刻看作确定数字相位的选择，其余面板因暂停延迟而呈现按距离偏移的数字。题解将构造目标转为选定合适的位置和相位，使从左向右的数字序列尽可能大。",
+          "keyObservations": [
+            "暂停位置两侧的面板会按与该位置的距离依次暂停，因此各面板最终显示的数字由中心面板的暂停时刻和位置距离共同决定。",
+            "当面板数大于 $1$ 时，在从左数第二块面板显示 $8$ 时暂停，会得到 $9890123456\\ldots$ 的数字序列；题解指出该序列是最大可能结果。",
+            "只有一块面板时，可以等待它显示 $9$ 再暂停；由于数字只在 $0$ 到 $9$ 间循环，这已是单块面板能显示的最大数字。"
+          ],
+          "solutionBrief": "若 $n=1$，等待唯一面板显示 $9$ 后暂停。若 $n>1$，在从左数第二块面板显示 $8$ 时暂停，之后按距离依次暂停相邻面板，输出由此形成的 $9890123456\\ldots$ 前缀。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1467B",
+          "index": "B",
+          "slot": "B",
+          "title": "Hills And Valleys",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1467/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/86566",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation"
+          ],
+          "statementBrief": "给定整数数组，内部元素若严格大于左右邻居则是峰，严格小于左右邻居则是谷，数组的值为峰与谷的总数。可以将恰好一个元素改成任意整数，也可以不修改，要求使峰谷总数最小。",
+          "transformedStatement": "把答案视为原峰谷总数加上一次局部修改带来的变化。修改下标 $i$ 只影响 $i-1,i,i+1$，且对该位置只需检查将新值设为两个邻居之一的情形，从而将全局优化化为逐位置的常数次局部评估。",
+          "keyObservations": [
+            "修改位置 $i$ 的值只会改变 $i-1,i,i+1$ 这三个位置是否为峰或谷，因此无需重新检查整段数组。",
+            "对固定位置，若某个新值能使这三个位置的峰谷数最少，将其调整为左右邻居中较小或较大的值之一，不会让原本非峰谷的位置变成峰谷；所以只需尝试这两个邻居值。",
+            "两端位置缺少左右两个邻居，不可能成为峰或谷；枚举修改位置时只需考虑内部下标，并把保持数组不变作为候选。"
+          ],
+          "solutionBrief": "先统计原数组的峰谷总数。对每个内部位置，分别假设将其改成左邻值或右邻值，只重算它及相邻位置的峰谷贡献，并据此更新答案；同时保留不修改的方案。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1467C",
+          "index": "C",
+          "slot": "C",
+          "title": "Three Bags",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1467/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/86566",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定三个非空多重集，每次可选两个非空袋子各取一个数 $a,b$，删除第二个袋中的 $b$，并把第一个袋中的 $a$ 替换为 $a-b$。重复操作直到只有一个袋子剩一个数，求所有可能最终结果中的最大值。",
+          "transformedStatement": "将每个元素作为节点，每次操作对应一条跨袋子的有向边，最终形成以剩余元素为根的树。操作结果可写成深度为偶数的元素和减去深度为奇数的元素和，因此问题转为寻找满足树结构可行条件且元素和最小的奇数深度集合。",
+          "keyObservations": [
+            "把每次操作视为一条从被删除元素指向被修改元素的边，最终操作顺序形成以剩余元素为根的树；根深度为偶数的元素贡献正号，奇数深度的元素贡献负号。",
+            "树边只能连接来自不同袋子的元素，因此奇数深度上的元素必须来自至少两个袋子，或恰好包含某一个袋子的全部元素；这给出了可行负贡献集合的条件。",
+            "最终值等于所有元素总和减去奇数深度元素之和的两倍，所以只需在满足可行条件的集合中最小化元素和。",
+            "满足第一种条件时，取来自不同袋子的两个最小元素即可；满足第二种条件时，取元素总和最小的整袋，比较两种候选即可。"
+          ],
+          "solutionBrief": "将操作过程抽象为跨袋连边的有根树，最终值由深度奇偶决定。答案为总和减去两倍的最小可行奇数深度元素和；分别比较来自不同袋子的两个最小元素之和，以及总和最小的整袋之和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1467D",
+          "index": "D",
+          "slot": "D",
+          "title": "Sum of Paths",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1467/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/86566",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "有 $n$ 个从左到右排列的格子，机器人可从任意格子出发，恰好移动 $k$ 步；每步只能向相邻格子移动，且不能越界。路径价值是访问到的所有格子（包括起点和终点）的数值之和，要求对所有不同路径的价值求和，并在每次修改一个格子的数值后输出新总和。",
+          "transformedStatement": "把所有路径价值按格子拆分：为每个格子预先计算它在全部长度为 $k$ 的路径中出现的总次数 $cnt_i$，于是当前答案就是 $\\sum_i a_i cnt_i$。固定出现时刻后，经过格子 $i$ 的路径由一段到达 $i$ 的前缀和一段从 $i$ 出发的后缀组成，因此可由两段路径数相乘得到该时刻的出现次数。",
+          "keyObservations": [
+            "总答案可按每个格子的数值贡献拆分：格子 $i$ 的权重是它在所有合法路径中出现的总次数，因此更新一个 $a_i$ 只需调整该格子的加权贡献。",
+            "由于左右移动规则对称，从 $i$ 出发走 $j$ 步的路径数等于走 $j$ 步后到达 $i$ 的路径数；这使同一组 DP 结果可用于计算路径前缀和后缀。",
+            "固定格子 $i$ 和出现时刻 $j$，经过 $i$ 的完整路径可拆成一段以 $i$ 结束的 $j$ 步路径和一段从 $i$ 出发的 $k-j$ 步路径，故出现次数为 $dp_{i,j}dp_{i,k-j}$。",
+            "对所有时刻 $j=0,\u0000dots,k$ 累加上述乘积，就得到格子 $i$ 在全部路径中的总出现次数；这些系数与数组值无关，可预处理后用于所有更新。"
+          ],
+          "solutionBrief": "定义 $dp_{i,j}$ 为走 $j$ 步后位于格子 $i$ 的路径数，按相邻格子转移计算。格子 $i$ 的总出现次数为 $cnt_i=\\sum_{j=0}^{k}dp_{i,j}dp_{i,k-j}$，总答案为 $\\sum_i a_i cnt_i$；预处理各 $cnt_i$ 后，每次修改只需更新总和中对应格子的贡献。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1467E",
+          "index": "E",
+          "slot": "E",
+          "title": "Distinctive Roots in a Tree",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1467/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/86566",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dp",
+            "trees"
+          ],
+          "statementBrief": "给定一棵每个顶点带有数值的树，可以任选一个顶点作为根。若从该根到任意其他顶点的每条路径上，经过的数值都互不相同，则称该根为 distinctive root；求这样的根有多少个。",
+          "transformedStatement": "对每个顶点删点，考察各个连通块中是否出现与该顶点相同的数值；每个出现重复值的连通块都会限制合法根必须落在其中。于是原题转化为统计满足全部树边方向约束的顶点数，重复值的连通块可借助 DFS 序区间计数识别。",
+          "keyObservations": [
+            "若删去顶点 $v$ 后，某个连通块中存在与 $v$ 同值的顶点，那么合法根必须位于该连通块；否则根到那个同值顶点的路径会同时经过两个相同值。",
+            "把每个上述限制记为从 $v$ 指向对应连通块的邻接点的有向边后，合法根恰好是所有这些边都朝向它的顶点，因此可将路径上的重复值条件转成树上的方向约束。",
+            "任意选根并做先序遍历后，每种数值的出现位置可按 DFS 序排序；子树出现次数能用两个边界查找得到，进而判断删去某点后各连通块是否含有相同值。"
+          ],
+          "solutionBrief": "任意选根并按 DFS 序记录每种数值的出现位置，用区间计数判断删去每个顶点后哪些连通块含有与该顶点同值的点，并据此生成指向这些连通块的约束边。再用换根方法统计所有约束边都指向自身的顶点数。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
