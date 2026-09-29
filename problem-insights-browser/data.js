@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4182,
+    "total_problems": 4184,
     "source_total_problems": 4184,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4182,
-    "with_editorial_brief": 3824,
-    "with_solution_brief": 3826,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4184,
+    "with_editorial_brief": 3826,
+    "with_solution_brief": 3828,
     "missing_editorial_brief": 356,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3244,
+    "ai_override_count": 3246,
     "primary_topic_count": 13,
-    "contest_count": 651,
+    "contest_count": 652,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "字符串": 225,
+    "构造与贪心": 1361,
     "数据结构": 394,
     "数论与同余": 441,
-    "构造与贪心": 1360,
     "动态规划与状态设计": 345,
     "基础实现与模拟": 256,
     "树结构": 194,
     "图论与网络流": 281,
     "交互": 123,
-    "字符串": 224,
     "博弈": 119,
     "组合计数与概率": 323,
     "几何": 96,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2821,
+    "ai_generated_with_editorial": 2823,
     "ai_generated_partial_editorial": 112,
     "missing_editorial": 356,
     "low_confidence": 1,
@@ -128506,6 +128506,72 @@ window.CF_INSIGHTS_DATA = {
             "区间转移中的反转与平移对所有区间一致，可用统一变换参数惰性维护；裁剪只从区间端点发生，使总处理量保持线性。"
           ],
           "solutionBrief": "用相邻高度差建立 DP，按已处理的跨度序列记录可行的末差值。利用差值符号对称性只保留非负值，并将可行值压缩成区间集合；通过统一的反转、平移和端点裁剪在线性时间更新。若最终状态非空，沿转移反向选择差值并恢复符号，再累加差值构造高度。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1496,
+      "name": "Codeforces Round 706 (Div. 2)",
+      "date": "2021-03-10",
+      "url": "https://codeforces.com/contest/1496",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1496A",
+          "index": "A",
+          "slot": "A",
+          "title": "Split it!",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1496/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/88533",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "给定长度为 $n$ 的字符串 $s$ 和整数 $k$，需要判断能否把 $s$ 切成 $k+1$ 个非空连续片段 $a_1,\u0000a_2,\u0000\\ldots,\u0000a_{k+1}$，使整体依次为这些片段，再接上 $a_k,\u0000\\ldots,\u0000a_1$ 的逆序。注意中间片段不附加逆序部分，要求判断是否存在这样的切分。",
+          "transformedStatement": "只需关注字符串两端各 $k$ 个字符：它们按顺序拼接后必须构成回文；剩余部分对应中间片段，必须非空。因此问题等价于检查两端拼接串是否为回文且 $n>2k$，另需单独处理 $k=0$。",
+          "keyObservations": [
+            "前 $k$ 个字符和后 $k$ 个字符必须分别由外层片段及其逆序部分组成，因此将它们拼接后必须是回文；这把分段存在性转成了直接的回文检查。",
+            "中间的 $a_{k+1}$ 必须非空，所以字符串长度必须满足 $n>2k$；当 $n=2k$ 时，即使两侧字符匹配也无法完成分段。",
+            "当 $k=0$ 时无需拆出任何外层片段，整个字符串可直接作为唯一的非空片段，答案必为 YES。"
+          ],
+          "solutionBrief": "若 $k=0$，输出 YES；否则先检查 $n>2k$，再判断由字符串前 $k$ 个字符和后 $k$ 个字符拼成的字符串是否为回文。两项均满足时输出 YES，否则输出 NO，单组复杂度为 $O(n+k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1496B",
+          "index": "B",
+          "slot": "B",
+          "title": "Max and Mex",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1496/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/88533",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "给定由 $n$ 个互不相同非负整数构成的多重集 $S$。每次求当前的最大值和 MEX（最小的未出现非负整数），并向 $S$ 中加入它们平均值向上取整的数；重复 $k$ 次后，求 $S$ 中不同元素的个数。",
+          "transformedStatement": "只需关注初始集合的最大值与 MEX 的关系：若 MEX 恰为最大值加一，每次添加都会产生新元素；若 MEX 小于最大值，后续添加值固定，问题转为判断该值是否已存在。",
+          "keyObservations": [
+            "若当前 $\\operatorname{mex}(S)$ 大于最大值，则它必为最大值加一；添加它后，最大值与 MEX 的关系仍如此，因此每次都会新增一个不同元素。",
+            "若 $\\operatorname{mex}(S)$ 小于最大值，则 $\\left\\lceil(\\max(S)+\\operatorname{mex}(S))/2\\right\\rceil$ 严格大于 MEX；添加该数不会改变 MEX，后续操作便会重复添加同一个值。",
+            "在第二种情况中，重复添加的数是否增加不同元素，只取决于它是否已在初始集合中，因此无需模拟全部 $k$ 次操作。"
+          ],
+          "solutionBrief": "若 $k=0$，答案为 $n$。否则计算最大值 $a$ 和 MEX $b$：若 $b=a+1$，答案为 $n+k$；若 $b<a$，令 $x=\\left\\lceil(a+b)/2\\right\\rceil$，答案为 $n$ 加上指示量 $[x\\notin S]$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
