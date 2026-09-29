@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4298,
+    "total_problems": 4304,
     "source_total_problems": 4306,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 4298,
-    "with_editorial_brief": 3939,
-    "with_solution_brief": 3941,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 4304,
+    "with_editorial_brief": 3945,
+    "with_solution_brief": 3947,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3360,
+    "ai_override_count": 3366,
     "primary_topic_count": 13,
-    "contest_count": 672,
+    "contest_count": 673,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1409,
+    "构造与贪心": 1410,
+    "数论与同余": 453,
+    "交互": 129,
+    "图论与网络流": 291,
+    "组合计数与概率": 330,
+    "几何": 100,
     "动态规划与状态设计": 356,
     "树结构": 199,
     "字符串": 228,
     "数据结构": 401,
-    "图论与网络流": 290,
-    "组合计数与概率": 329,
-    "数论与同余": 452,
-    "几何": 99,
     "基础实现与模拟": 259,
-    "交互": 128,
     "代数、矩阵与多项式": 27,
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2931,
+    "ai_generated_with_editorial": 2937,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -132067,6 +132067,201 @@ window.CF_INSIGHTS_DATA = {
             "在停止前，每轮扩展都保持被处理元素的总值不变，所以主体贡献可按轮数乘初始数组总和计算，无须显式生成新增元素。"
           ],
           "solutionBrief": "对每个初始元素计算其被 $x$ 连续整除的次数，找到最小次数及其最早出现位置 $j$。答案为 $(b_j+1)$ 倍初始数组总和，再加上位置 $j$ 之前的初始元素和；复杂度为 $O(n\\log A)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1470,
+      "name": "Codeforces Round 694 (Div. 1)",
+      "date": "2021-01-05",
+      "url": "https://codeforces.com/contest/1470",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1470A",
+          "index": "A",
+          "slot": "A",
+          "title": "Strange Birthday Party",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1470/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/86464",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 位朋友和 $m$ 件价格递增的礼物，每件礼物最多购买一次。朋友 $i$ 可获得编号不超过 $k_i$ 的一件礼物，或直接领到 $c_{k_i}$ 美元；要求安排每位朋友的选择，使总花费最小。",
+          "transformedStatement": "把朋友按限制 $k_i$ 从大到小排列，并将礼物视为按价格递增的可用序列。问题转为依次决定是否把当前最便宜的未用礼物分给当前朋友，还是支付其现金金额 $c_{k_i}$。",
+          "keyObservations": [
+            "若两人的限制满足 $k_A\\ge k_B$，却让限制较大的 $A$ 拿更贵的礼物，可以交换礼物：$A$ 改拿便宜礼物，$B$ 拿原礼物或领取现金，花费不会增加。",
+            "因此应按 $k_i$ 从大到小处理朋友；此时依次分配最便宜的未用礼物，若它不比该朋友可领取的现金便宜，就直接给现金。",
+            "处理顺序递减保证当前最便宜的未用礼物不会超过当前 $k_i$；若它已不值得购买，更贵的礼物也不会更划算，因此可以停止分配礼物并给现金。"
+          ],
+          "solutionBrief": "将朋友按 $k_i$ 降序排列，并用指针维护最便宜的未使用礼物。若该礼物的价格低于 $c_{k_i}$，就买给当前朋友并移动指针；否则给其 $c_{k_i}$ 美元。累计所有花费即可得到最小总成本。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1470B",
+          "index": "B",
+          "slot": "B",
+          "title": "Strange Definition",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1470/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/86464",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "graphs",
+            "hashing",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定数组，每秒将每个元素替换为当前数组中所有与它相邻的元素之积；相邻定义为两数的最小公倍数除以最大公约数是完全平方数。对每个给定时间 $w$，求该时刻数组中某元素的相邻元素数量（包含自身）的最大值。",
+          "transformedStatement": "把数组元素映射为其平方自由核后，相邻关系等价于核值相同，因而演化可按核值分组分析：每组根据组大小奇偶性在第一次操作后变成 $1$ 或保持原类。",
+          "keyObservations": [
+            "由 $\\frac{\\operatorname{lcm}(x,y)}{\\gcd(x,y)}=\\frac{xy}{\\gcd(x,y)^2}$ 可知，两个数相邻当且仅当乘积是完全平方数。",
+            "只保留每个数质因数指数的奇偶性，得到其平方自由核；两个数相邻当且仅当平方自由核相同，因此原关系可压缩为按核值分组。",
+            "一组大小为偶数时，操作后该组元素变为 $1$；大小为奇数时该组保留原核值。此后各组不再改变，故只需区分初始时刻与至少操作一次后的状态。",
+            "操作后的最大相邻元素数是：所有偶数组元素总数与核值为 $1$ 的组大小中的较大者；查询 $w=0$ 则直接取初始最大组大小。"
+          ],
+          "solutionBrief": "将每个数化为平方自由核，并统计相同核的组大小。初始答案是最大组大小；对 $w>0$，答案为所有偶数组元素数与核值为 $1$ 的组大小的较大值，因为一次操作后数组进入稳定状态。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1470C",
+          "index": "C",
+          "slot": "C",
+          "title": "Strange Shuffle",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1470/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/86464",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "constructive algorithms",
+            "interactive"
+          ],
+          "statementBrief": "圆桌上有 $n$ 名玩家，每人起初有偶数 $k$ 张牌。每轮所有玩家同时把牌分给左右邻居，分别给左边 $\\lfloor x/2\\rfloor$ 张、右边 $\\lceil x/2\\rceil$ 张；未知骗子则把全部牌给右邻居。你可询问任意玩家当前的牌数，每次询问后都会进行一轮分牌，需在至多 $1000$ 次询问内确定骗子位置。",
+          "transformedStatement": "把圆周状态看作沿骗子位置展开的牌数序列：骗子始终有 $k$ 张，骗子右侧的牌数沿该方向不增加，而前半程中新超过 $k$ 的位置不断向外扩展。因此，问题转化为寻找超额连续区段并由其边界反推骗子位置。",
+          "keyObservations": [
+            "除骗子位置的相邻位置外，关于骗子对称的两名玩家始终合计持有 $2k$ 张牌；这由每轮左右分牌的取整项配对得到，也说明骗子本人始终有 $k$ 张牌。",
+            "沿着从骗子向右的方向，玩家手牌数不会增加；因此在骗子后方出现的超过 $k$ 的玩家形成连续区段，可利用区段边界定位骗子。",
+            "前 $n/2$ 轮中，超过 $k$ 张牌的玩家数量逐轮增加：若当前边界玩家有超过 $k$ 张牌，其右侧原有 $k$ 张的玩家下一轮就会超过 $k$，因为 $k$ 为偶数。",
+            "等待约 $\\sqrt n$ 轮后会出现长度至少为 $\\sqrt n$ 的连续超额区段；分块抽查可找到其中一点，再通过二分缩小区段边界，从而将询问数控制在约 $2\\sqrt n+\\log n$。"
+          ],
+          "solutionBrief": "先等待约 $\\sqrt n$ 轮，将圆周按约 $\\sqrt n$ 的块抽查，找到手牌数大于 $k$ 的位置；由超额玩家构成连续区段的性质，再二分定位骗子。总询问数约为 $2\\sqrt n+\\log n$，不超过限制。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1470D",
+          "index": "D",
+          "slot": "D",
+          "title": "Strange Housing",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1470/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/86464",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dfs and similar",
+            "graph matchings",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "给定一张由房屋和通道组成的无向简单图，需要选出一些房屋供教师居住，并输出所选房屋或判定无解。题面中的安全要求文本缺失；结合题解可知，所选房屋之间不能有通道相连，且每个未选房屋都必须与至少一个所选房屋相连。",
+          "transformedStatement": "将选房屋转化为寻找图的独立支配集：所选顶点两两不相邻，同时每个未选顶点至少有一个所选邻点。题解通过黑白染色直接构造这一集合，并利用图连通性保证所有顶点都能处理到。",
+          "keyObservations": [
+            "选出的黑色顶点彼此不相邻，因为每次染黑一个顶点时，会先把它的所有邻居染白；因此选出的集合是独立集。",
+            "每个白色顶点都是某个黑色顶点的邻居，所以黑色顶点组成的集合支配全图，覆盖所有未选顶点。",
+            "只从与白色顶点相连的未染色顶点中继续扩展，可保证处理过程沿图的连通区域推进；图连通时最终能覆盖全部顶点。"
+          ],
+          "solutionBrief": "若图不连通则输出 NO；若图连通，从任意顶点开始构造：染黑当前顶点并把其邻居染白，再从与白色顶点相邻的未染色顶点中继续，直到全部染色。输出黑色顶点；它们构成独立支配集。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1470E",
+          "index": "E",
+          "slot": "E",
+          "title": "Strange Permutation",
+          "rating": 3200,
+          "problemUrl": "https://codeforces.com/contest/1470/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/86464",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "combinatorics",
+            "data structures",
+            "dp",
+            "graphs",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个排列，可以选取若干互不重叠的连续区间并分别反转，所有区间的花费之和不超过 $c$，单个区间 $[l,r]$ 的花费为 $r-l$。将所有能得到的不同排列去重后按字典序排列；对每个查询，求第 $j$ 个排列的第 $i$ 个数。",
+          "transformedStatement": "将每个反转方案改写为相邻元素间隙的选择，再把字典序排列按后缀中最左侧的反转区间分块。每块大小可由剩余后缀和预算的组合计数得到，问题于是转为定位块及块内位置。",
+          "keyObservations": [
+            "把相邻元素间的间隙看作可选分隔线；连续选中的分隔线对应一个反转区间，因此总花费等于选中的分隔线数，预算内方案数可用组合数累加。",
+            "固定一个后缀时，按字典序排列的结果可按最左侧反转区间分段；区间 $[l,r]$ 对应的段长为 $ways(n-r,c-r+l)$，从而能定位查询落在哪一段。",
+            "向后缀前端加入一个元素不会改变旧分段的相对顺序，新产生的分段只会出现在序列两端，因此可用双端队列逐步维护排列构造。",
+            "查询可沿后缀层级转换为只询问完整长度的等价查询；按预算和排名离线处理，避免为每个原始查询单独构造排列。"
+          ],
+          "solutionBrief": "用间隙子集表示预算内的反转方案，并按最左反转区间划分字典序排列，利用组合数计算各段长度。逐步扩展后缀时用双端队列维护分段，再将查询离线转换到完整长度层级并定位答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1470F",
+          "index": "F",
+          "slot": "F",
+          "title": "Strange Covering",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1470/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/86464",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "divide and conquer"
+          ],
+          "statementBrief": "给定平面上互不相同的 $n$ 个点，可以选择两个轴对齐矩形，每个点必须至少落在一个矩形内或边界上，矩形允许退化。要求使两个矩形面积之和最小。",
+          "transformedStatement": "将解空间按两个矩形的相对位置拆成互不相交、相交成十字形、以及一方顶点落入另一方三类；再分别把面积最小化转成分割枚举、边界贡献优化或线性函数最值查询。",
+          "keyObservations": [
+            "最优的两个矩形只有三类相对位置：互不相交、相交成十字形，或一个矩形的顶点落在另一个矩形内；按这三类分别求最优值即可覆盖所有情况。",
+            "十字形情形中，固定竖直矩形的左右边界后，总面积可写成左右边界各自贡献之差；因此选择左边界可转化为区间内维护线性表达式的最优值。",
+            "第三类情形中，固定一个矩形的关键顶点后，另一个矩形即可确定；对候选顶点坐标的选择可归结为最小化固定系数的线性函数，并用凸包维护。",
+            "为保证第三类候选矩形确实相交，固定横坐标后只需在连续的一段纵坐标范围内查询；离线维护该范围内线性函数的最优值即可。"
+          ],
+          "solutionBrief": "按两个矩形的三种相对位置分别处理。互不相交时枚举水平或竖直分割线；十字形情形将面积改写为左右边界贡献之差并用线段树优化；第三类情形转化为线性函数最值查询，使用凸包技巧及离线区间维护。整体复杂度为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
