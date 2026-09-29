@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4272,
+    "total_problems": 4279,
     "source_total_problems": 4280,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 4272,
-    "with_editorial_brief": 3913,
-    "with_solution_brief": 3915,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4279,
+    "with_editorial_brief": 3920,
+    "with_solution_brief": 3922,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3334,
+    "ai_override_count": 3341,
     "primary_topic_count": 13,
-    "contest_count": 667,
+    "contest_count": 668,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "数论与同余": 449,
+    "数论与同余": 451,
+    "组合计数与概率": 328,
+    "构造与贪心": 1399,
+    "动态规划与状态设计": 354,
     "数据结构": 400,
     "几何": 99,
     "图论与网络流": 288,
-    "组合计数与概率": 326,
-    "构造与贪心": 1397,
-    "动态规划与状态设计": 353,
     "基础实现与模拟": 259,
     "树结构": 198,
     "交互": 128,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 227
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2905,
+    "ai_generated_with_editorial": 2912,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -131278,6 +131278,206 @@ window.CF_INSIGHTS_DATA = {
             "期望操作次数等于各轮结束后仍未完成的概率之和；把失败概率序列转成普通生成函数后，在 $x=1$ 处求值即可得到答案。"
           ],
           "solutionBrief": "对单根巧克力用容斥计算随机切点形成的所有间隔均不超过 $K$ 的概率；再按各根长度占比组合切点数，构造指数生成函数。利用题解给出的生成函数展开及 NTT 提取系数，最后将失败概率序列转成普通生成函数并在 $x=1$ 处求值，得到期望。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1475,
+      "name": "Codeforces Round 697 (Div. 3)",
+      "date": "2021-01-25",
+      "url": "https://codeforces.com/contest/1475",
+      "type": "Div. 3",
+      "problemCount": 7,
+      "maxRating": 1900,
+      "problems": [
+        {
+          "key": "1475A",
+          "index": "A",
+          "slot": "A",
+          "title": "Odd Divisor",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1475/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/87188",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定若干整数 $n$，对每个数判断是否存在一个大于 $1$ 的奇数因子；存在则输出 YES，否则输出 NO。",
+          "transformedStatement": "题目等价于判断 $n$ 是否含有奇素因子；由于唯一的偶素数是 $2$，不存在奇数因子恰好意味着 $n$ 是 $2$ 的幂。因此只需识别 $2$ 的幂即可完成判定。",
+          "keyObservations": [
+            "若 $n$ 有大于 $1$ 的奇数因子，那么该因子必含奇素因子，因此判断是否存在奇数因子可转化为判断 $n$ 是否含奇素因子。",
+            "唯一的偶素数是 $2$；若 $n$ 没有奇素因子，它只能是 $2$ 的幂，所以问题等价于判断 $n$ 是否为 $2$ 的幂。",
+            "反复除去 $n$ 中的因子 $2$ 后，结果为 $1$ 当且仅当 $n$ 是 $2$ 的幂；也可用 $n\\&(n-1)=0$ 检查这一性质。"
+          ],
+          "solutionBrief": "对每个 $n$，持续除以 $2$ 直到无法整除；若最终为 $1$，说明 $n$ 是 $2$ 的幂，没有大于 $1$ 的奇因子，输出 NO，否则输出 YES。也可用位运算判断是否为 $2$ 的幂。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1475B",
+          "index": "B",
+          "slot": "B",
+          "title": "New Year's Number",
+          "rating": 900,
+          "problemUrl": "https://codeforces.com/contest/1475/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/87188",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n$，可以选择任意个数的 $2020$ 和 $2021$（也可以不选其中一种），将它们相加。对每个 $n$，判断能否恰好得到该数。",
+          "transformedStatement": "设使用 $x$ 个 $2020$、$y$ 个 $2021$，则 $n=2020(x+y)+y$。因此 $y$ 必须等于 $n$ 除以 $2020$ 的余数，问题转为检查由此确定的 $x$ 是否非负。",
+          "keyObservations": [
+            "因为 $2021=2020+1$，若使用 $y$ 个 $2021$，总和可改写为 $2020(x+y)+y$，所以 $n-y$ 必须是 $2020$ 的倍数。",
+            "令 $y=n\\bmod 2020$ 后，$y$ 是唯一可能的 $2021$ 数量；再由等式算出 $x=\\frac{n-y}{2020}-y$，只需检查 $x\\ge 0$。"
+          ],
+          "solutionBrief": "对每个 $n$ 取 $y=n\\bmod 2020$，计算 $x=\\frac{n-y}{2020}-y$。若 $x\\ge 0$，则可以表示为 $x$ 个 $2020$ 与 $y$ 个 $2021$ 之和；否则不可以。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1475C",
+          "index": "C",
+          "slot": "C",
+          "title": "Ball in Berland",
+          "rating": 1400,
+          "problemUrl": "https://codeforces.com/contest/1475/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/87188",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "graphs",
+            "math"
+          ],
+          "statementBrief": "给定 $a$ 个男生、$b$ 个女生，以及 $k$ 个允许配对的男生—女生组合。需要从这 $k$ 个组合中选出两对，且每个人最多出现在一对中，求不同选法的数量。",
+          "transformedStatement": "将男生和女生分别作为二分图两侧的顶点，每个允许的配对作为一条边；问题转化为统计端点互不相同的两条边组成的无序边对数。",
+          "keyObservations": [
+            "把每个可跳舞的男女组合看作二分图的一条边；两对可以同时选择，当且仅当对应的边没有公共端点。",
+            "固定一条边 $(a,b)$ 后，与它冲突的边恰好是接在男生 $a$ 或女生 $b$ 上的边；该边自身被重复计入一次，因此冲突边数为 $\\deg(a)+\\deg(b)-1$。",
+            "固定边后，其余不冲突边都能与它组成合法方案，所以贡献为 $k-\\deg(a)-\\deg(b)+1$；逐边累计会把每组两条边算两次，最终需除以 $2$。"
+          ],
+          "solutionBrief": "统计每个男生和女生参与的可行组合数。对每条可行组合 $(a,b)$，累加 $k-\\deg(a)-\\deg(b)+1$，再除以 $2$，得到互不共享参与者的两对组合数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1475D",
+          "index": "D",
+          "slot": "D",
+          "title": "Cleaning the Phone",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1475/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/87188",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "dp",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "手机中有 $n$ 个应用，第 $i$ 个应用占用 $a_i$ 单位内存，卸载它会损失 $b_i$ 个便利点，其中 $b_i$ 为 1 或 2。选择一组应用卸载，使释放内存至少达到 $m$，并使损失的便利点总数最小；若无法达到则报告无解。",
+          "transformedStatement": "把卸载方案改写为分别从重要度为 1 和 2 的应用中选取若干个；每类只需考虑按内存占用从大到小排列后的前缀，从而在两类前缀之间寻找满足内存门槛且代价最小的组合。",
+          "keyObservations": [
+            "固定删除数量时，删除收益只由应用的内存占用总和决定，因此同一重要度类别中应优先选占用内存最大的应用。",
+            "重要度只有 1 和 2 两类；对每类按内存占用从大到小排列后，任意最优方案都可表示为两类各取一个前缀。",
+            "增加重要度为 1 的应用前缀后，为达到释放至少 $m$ 内存所需的重要度为 2 的应用数量不会增加，因此两个前缀长度具有单调关系，可用双指针检查组合。"
+          ],
+          "solutionBrief": "将应用按重要度分成两组，各自按内存占用从大到小排序并计算前缀和。枚举重要度为 1 的应用取多少个，用双指针确定重要度为 2 的应用所需数量，检查释放量是否达到 $m$ 并最小化损失；若总内存不足则无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1475E",
+          "index": "E",
+          "slot": "E",
+          "title": "Advertising Agency",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1475/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/87188",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "math",
+            "sortings"
+          ],
+          "statementBrief": "有 $n$ 位博主，第 $i$ 位有 $a_i$ 位关注者；需要签约恰好 $k$ 位不同博主，使这些博主的关注者总数最大。求能达到最大总数的不同选人方案数，对 $10^9+7$ 取模。",
+          "transformedStatement": "将博主按关注者数量从高到低排列，令第 $k$ 高的数量为临界值；高于临界值者全部选入，再从等于临界值的人中选足剩余名额，问题转为计算一个组合数。",
+          "keyObservations": [
+            "要使关注者总数最大，必然选择关注者数量排名最高的 $k$ 位博主；因此只需确定第 $k$ 高的关注者数量。",
+            "设临界数量为 $x$，所有关注者多于 $x$ 的博主都必须入选，剩余名额只能从关注者恰为 $x$ 的博主中补足。",
+            "关注者恰为 $x$ 的博主彼此可互换，选出所需人数的方案数就是对应的二项式系数。"
+          ],
+          "solutionBrief": "统计临界值 $x$ 以上的博主数量 $m$，答案为从关注者恰为 $x$ 的 $cnt[x]$ 位博主中选出 $k-m$ 位的方案数，即 $\\binom{cnt[x]}{k-m}$。可用模组合数公式或帕斯卡递推计算。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1475F",
+          "index": "F",
+          "slot": "F",
+          "title": "Unusual Matrix",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1475/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/87188",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "2-sat",
+            "brute force",
+            "constructive algorithms"
+          ],
+          "statementBrief": "给定两个 $n\\times n$ 的 0/1 矩阵，可以对矩阵中的整行或整列进行异或翻转，操作次数不限，且每次操作后矩阵都会更新。判断能否通过这些操作使第一个矩阵变成第二个矩阵。",
+          "transformedStatement": "为每行、每列分别设置是否翻转的二元选择；每个格子的变化由所在行和列的选择共同决定。问题转化为判断能否为这些选择赋值，使所有格子的最终值都与目标矩阵一致；题解通过固定第一行的选择来逐步确定其余选择并检查一致性。",
+          "keyObservations": [
+            "每次操作都是对一整行或一整列执行异或翻转，重复同一操作会抵消，因此只需决定每行、每列是否翻转。",
+            "固定第一行的行翻转选择后，第一行每个位置的差异就唯一确定对应列是否翻转；再由第一列确定其余行是否翻转，所有位置都能吻合当且仅当转换可行。"
+          ],
+          "solutionBrief": "把每行和每列是否翻转视为二元选择。尝试固定第一行是否翻转，据此从第一行确定各列操作，再从第一列确定其余行操作；检查这些选择是否能让整个矩阵变为目标矩阵。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1475G",
+          "index": "G",
+          "slot": "G",
+          "title": "Strange Beauty",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1475/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/87188",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "dp",
+            "math",
+            "number theory",
+            "sortings"
+          ],
+          "statementBrief": "给定一个正整数数组，要求删除尽可能少的元素，使任意两个保留元素中，一个都能整除另一个；求最少删除数量。相同数值可以同时保留，因为它们彼此满足整除关系。",
+          "transformedStatement": "把每个不同数值视为整除关系中的一个节点，并将其出现次数作为权重；问题等价于寻找权重和最大的整除链，即链上任意较小数都整除较大数。",
+          "keyObservations": [
+            "数组中保留的不同数值必须两两满足一个整除另一个，因此这些数值按整除关系构成链；最大保留数量可转化为最长整除链的元素总频次。",
+            "若最大保留值为 $x$，链中紧邻它的较小数值必须是 $x$ 的真因数；因此可由 $dp(x)=cnt_x+\\max_{y\\mid x,\\ y<x}dp(y)$ 递推。",
+            "相同数值之间总能满足整除条件，所以选中数值 $x$ 时应一次保留其全部 $cnt_x$ 个出现位置；答案就是数组长度减去最大 $dp(x)$。"
+          ],
+          "solutionBrief": "统计每个数 $x$ 的出现次数 $cnt_x$，按从小到大计算 $dp(x)=cnt_x+\\max_{y\\mid x,\\ y<x}dp(y)$。用筛法枚举各数的倍数以处理因数转移，最终用 $n-\\max_x dp(x)$ 得到最少删除数。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
