@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4167,
+    "total_problems": 4174,
     "source_total_problems": 4174,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4167,
-    "with_editorial_brief": 3809,
-    "with_solution_brief": 3811,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4174,
+    "with_editorial_brief": 3816,
+    "with_solution_brief": 3818,
     "missing_editorial_brief": 356,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3229,
+    "ai_override_count": 3236,
     "primary_topic_count": 13,
-    "contest_count": 648,
+    "contest_count": 649,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,9 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1356,
-    "数论与同余": 438,
-    "动态规划与状态设计": 342,
+    "构造与贪心": 1359,
+    "数论与同余": 440,
+    "动态规划与状态设计": 344,
     "树结构": 194,
     "图论与网络流": 281,
     "数据结构": 391,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2807,
+    "ai_generated_with_editorial": 2813,
+    "ai_generated_partial_editorial": 112,
     "missing_editorial": 356,
-    "ai_generated_partial_editorial": 111,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -128047,6 +128047,217 @@ window.CF_INSIGHTS_DATA = {
             "合并两条路径时，可能需要反转或整体换色才能保持交替染色；用较小路径承担这些调整，可将维护开销控制在对数级。"
           ],
           "solutionBrief": "在线维护边构成的路径与环，并保持每个顶点至多关联一条以其为端点的路径。加入边后尝试合并端点处的路径；合并时通过反转或换色维持交替染色，最终按红边编号计算哈希。题解给出隐式 Treap 或小并大双端队列两种维护方式。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1497,
+      "name": "Codeforces Round 708 (Div. 2)",
+      "date": "2021-03-17",
+      "url": "https://codeforces.com/contest/1497",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1497A",
+          "index": "A",
+          "slot": "A",
+          "title": "Meximization",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1497/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/88677",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "greedy",
+            "sortings"
+          ],
+          "statementBrief": "给定一个非负整数数组，可以任意重排元素，但不能增删元素。对重排后每个前缀计算 MEX，并要求输出一种使这些前缀 MEX 总和最大的排列。",
+          "transformedStatement": "把目标拆成两部分：尽早按递增顺序呈现各个不同数，以便逐步补齐从 $0$ 开始的整数；其余重复元素对 MEX 没有贡献，可延后放置。",
+          "keyObservations": [
+            "先放不同的数并按递增排列，可以尽早补齐从 $0$ 开始的连续整数，使前缀 MEX 随之逐步增大。",
+            "重复元素放在不同数之后不会改变已达到的 MEX，因此可以把它们统一放到末尾，且末尾顺序任意。",
+            "若在首次出现重复数前打乱不同数的递增顺序，会推迟某些连续整数出现，从而降低相应前缀的 MEX。"
+          ],
+          "solutionBrief": "将数组中的不同元素按递增顺序输出，再输出所有重复出现的元素；重复元素放在末尾不会改变此前已达到的 MEX。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1497B",
+          "index": "B",
+          "slot": "B",
+          "title": "M-arrays",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1497/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/88677",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $n$ 个正整数和正整数 $m$，要把所有数分成尽可能少的数组，并可任意安排每个数组中的顺序。每个数组中任意相邻两数之和都必须能被 $m$ 整除，单元素数组也合法；求最少数组数。",
+          "transformedStatement": "将每个数替换为其模 $m$ 的余数后，合法相邻关系只存在于余数 $x$ 与 $m-x$ 之间；问题转化为按互补余数对统计数量，并计算每对余数能组成的交替序列及剩余单元素所需的数组数。",
+          "keyObservations": [
+            "相邻元素之和能被 $m$ 整除，只取决于它们的余数是否互补，即余数为 $x$ 后必须接余数为 $m-x$，因此原数值可压缩为余数计数。",
+            "对于一对不同的互补余数，较少的一侧可以交替匹配较多的一侧；交替序列两侧数量最多相差 $1$，所以每对余数的数组数由两侧计数差决定。",
+            "余数为 $0$ 的元素彼此可以相邻，且不能与非零余数配对，因此只要存在就单独贡献一个数组。",
+            "当 $m$ 为偶数且余数为 $m/2$ 时，它与自身互补，所有这类元素可放入同一个数组。"
+          ],
+          "solutionBrief": "统计每种余数的出现次数。余数 $0$ 若出现则贡献一个数组；对每对不同的互补余数，只需一个交替数组，并为较多一侧超过另一侧的部分按需增加单元素数组，贡献为两侧计数差与 $1$ 的较大值。自互补余数若出现则贡献一个数组。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1497C1",
+          "index": "C1",
+          "slot": "C",
+          "title": "k-LCM (easy version)",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1497/problem/C1",
+          "editorialUrl": "https://codeforces.com/blog/entry/88677",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n$，需要构造三个正整数 $a_1,a_2,a_3$，使它们的和为 $n$，且它们的最小公倍数等于 $n$。对每组输入输出满足条件的三个数。",
+          "transformedStatement": "将问题视为按 $n$ 的奇偶性和 $4$ 的整除性分类的构造题：分别选取三数，使其总和为 $n$，并让最小公倍数条件随分类构造成立，而不需要枚举候选数或分解 $n$。",
+          "keyObservations": [
+            "只需按 $n$ 的奇偶性及是否为 $4$ 的倍数分类，就能选出三数之和为 $n$ 且满足题目条件的构造，避免搜索或分解 $n$。",
+            "当 $n$ 为奇数时，构造 $(1,\\lfloor n/2\\rfloor,\\lfloor n/2\\rfloor)$；当 $n$ 为偶数但不是 $4$ 的倍数时，构造 $(n/2-1,n/2-1,2)$。",
+            "当 $n$ 是 $4$ 的倍数时，构造 $(n/2,n/4,n/4)$；三种情形的构造都直接给出三个正整数。"
+          ],
+          "solutionBrief": "分三种情况直接构造：$n$ 为奇数时输出 $(1,\\lfloor n/2\\rfloor,\\lfloor n/2\\rfloor)$；$n$ 为偶数且非 $4$ 的倍数时输出 $(n/2-1,n/2-1,2)$；$n$ 为 $4$ 的倍数时输出 $(n/2,n/4,n/4)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1497C2",
+          "index": "C2",
+          "slot": "C",
+          "title": "k-LCM (hard version)",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1497/problem/C2",
+          "editorialUrl": "https://codeforces.com/blog/entry/88677",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n$ 和 $k$（$3\\le k\\le n$），要构造 $k$ 个正整数，使它们的和为 $n$，且最小公倍数不超过 $n/2$。每组测试输出一组满足条件的数。",
+          "transformedStatement": "先固定其中 $k-3$ 个数为 $1$，把问题转化为：对目标和 $n-k+3$ 构造三个正整数，并沿用简单版保证其最小公倍数满足限制的方案。所给正文未说明该三数方案如何构造。",
+          "keyObservations": [
+            "在答案中加入 $k-3$ 个 $1$，既不改变其余数的最小公倍数，也能把三数构造扩展为 $k$ 个数。",
+            "把剩余部分的目标和设为 $n-k+3$，即可使全部 $k$ 个正整数的和为 $n$；题解据此将困难版归约到 $k=3$ 的简单版。"
+          ],
+          "solutionBrief": "取 $k-3$ 个 $1$，再对 $n-k+3$ 使用简单版中 $k=3$ 的构造。这样总和满足要求，且整体最小公倍数等于后三个数的最小公倍数。给定正文没有包含简单版三数构造的具体方法。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1497D",
+          "index": "D",
+          "slot": "D",
+          "title": "Genius",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1497/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/88677",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "dp",
+            "graphs",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 道题，第 $i$ 题的复杂度为 $2^i$，并带有标签和分数。可以任意选择第一题；之后从当前题转到另一题，要求两题标签不同且当前 IQ 小于复杂度差，转移后 IQ 变为该差，并获得两题分数差的绝对值；题目可重复作答，求最多能获得多少分。",
+          "transformedStatement": "把每道题作为图上的顶点，在每对题之间连一条权为复杂度差的边；从任意顶点开始，沿标签不同的边走时，边权必须严格递增，每次获得边两端分数差的绝对值。目标是在这种递增边权路径中最大化收益。",
+          "keyObservations": [
+            "每次解题会把 IQ 设为所选问题对的复杂度差，因此后续使用的边权必须严格递增；题目可转化为按边权递增的加权图路径问题。",
+            "任意两题的复杂度差 $|2^i-2^j|$ 在二进制中恰好对应一段连续的置位区间，因此每对题目产生的边权互不相同，处理顺序不会遇到同权边的先后歧义。",
+            "处理一条异标签边时，路径可以从任一端转到另一端，收益都是分数差的绝对值；两端的 DP 更新必须都使用更新前的值，避免同一条边被连续使用。"
+          ],
+          "solutionBrief": "将问题建成以题目为点、复杂度差为边权的图。令 $dp_i$ 表示以题目 $i$ 结束时可获得的最高分，初值均为 $0$；按边权递增处理不同标签的题目对，用分数差绝对值尝试从边的一端转移到另一端，最终取所有 $dp_i$ 的最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1497E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Square-Free Division (easy version)",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1497/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/88677",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "math",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "给定正整数数组，不能修改元素（本版本 $k=0$），需要将数组划分为若干连续段。每段中任意两个不同位置的数的乘积都不能是完全平方数，求所需的最少段数。",
+          "transformedStatement": "把每个数映射为其质因数分解中指数奇数的质因数乘积；两个数的乘积为完全平方数等价于它们的映射值相同。于是问题转化为将数组划分为最少连续段，使每段内映射值互不重复。",
+          "keyObservations": [
+            "两个数的乘积是完全平方数，当且仅当它们的质因数奇数次幂部分相同；因此可用每个数的平方因子剔除后的部分作为标记，将乘积条件转成标记不能重复。",
+            "每段只需保证标记互不相同；从左向右扩展时，遇到当前段已有的标记就必须切段，因此在首次冲突处切开即可得到最少段数。"
+          ],
+          "solutionBrief": "将每个数替换为其质因数分解中指数为奇数的质因数乘积。再从左向右维护当前段出现过的标记，遇到重复标记便结束当前段并开启新段，统计段数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1497E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Square-Free Division (hard version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1497/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/88677",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "dp",
+            "greedy",
+            "math",
+            "number theory",
+            "two pointers"
+          ],
+          "statementBrief": "给定正整数数组，至多可将其中 $k$ 个数改成任意正整数，然后把数组划分为尽量少的连续段。每段中任意两个不同位置的数的乘积都不能是完全平方数，求最少段数。",
+          "transformedStatement": "先把每个数替换为其平方自由核，此时一段合法等价于该段内核值互不相同。问题转为在至多 $k$ 次修改下，将数组划分成最少个互异元素连续段，并按前缀位置和已用修改次数进行动态规划。",
+          "keyObservations": [
+            "两个数的乘积为完全平方数，当且仅当它们的平方自由核相同；因此先把每个数替换为平方自由核，区间合法性就等价于元素互不相同。",
+            "固定允许修改的次数后，右端点向右移动时，使区间元素互异所需的最小左端点不会左移，所以可用双指针预处理每个右端点和修改次数对应的最小左端点。",
+            "若最后一段使用 $x$ 次修改，其最小合法起点为 $left_{i,x}$；此前前缀使用剩余的 $j-x$ 次修改，因此枚举 $x$ 即得到前缀划分的状态转移。"
+          ],
+          "solutionBrief": "将每个数化为平方自由核，使目标变为把数组划分为元素各不相同的连续段。双指针预处理 $left_{i,j}$，再令 $dp_{i,j}$ 表示前缀 $1..i$ 使用恰好 $j$ 次修改时的最少段数；枚举最后一段的修改次数转移，复杂度为 $O(nk^2)$，另需完成平方自由核计算。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
