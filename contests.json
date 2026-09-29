@@ -1,5 +1,16 @@
 [
   {
+    "id": 1497,
+    "name": "Codeforces Round 708 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1615991700,
+    "relativeTimeSeconds": 174652182,
+    "date": "2021-03-17"
+  },
+  {
     "id": 1499,
     "name": "Educational Codeforces Round 106 (Rated for Div. 2)",
     "type": "ICPC",
