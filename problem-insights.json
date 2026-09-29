@@ -15,19 +15,96 @@
     ]
   },
   "summary": {
-    "total_problems": 4174,
+    "total_problems": 4176,
     "source_total_problems": 4176,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4174,
-    "with_editorial_brief": 3816,
-    "with_solution_brief": 3818,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4176,
+    "with_editorial_brief": 3818,
+    "with_solution_brief": 3820,
     "missing_editorial_brief": 356,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3236,
+    "ai_override_count": 3238,
     "primary_topic_count": 13
   },
   "records": [
+    {
+      "ordinal": 1,
+      "problem_key": "1501A",
+      "contest_id": 1501,
+      "title": "Alexey and Train",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1501/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/88591",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
+      "original_tags": [
+        "implementation"
+      ],
+      "statement_brief": "列车依次经过 $n$ 个车站，每站给出计划到达时刻 $a_i$、计划出发时刻 $b_i$，以及从上一站到本站额外耗时 $tm_i$。列车到站后不能早于计划出发时刻离站，且还须满足题面规定的停站时间限制；求列车实际到达第 $n$ 站的时刻。",
+      "transformed_statement": "将行程表示为逐站递推：用 $dep_{i-1}$ 计算 $ar_i$，再根据计划停站时长的一半确定本站实际出发时刻 $dep_i$。整个过程只需维护当前站的到达与出发时刻，最终取 $ar_n$。",
+      "key_observations": [
+        "实际到达第 $i$ 站的时刻由上一站实际出发时刻递推：$ar_i=dep_{i-1}+(a_i-b_{i-1})+tm_i$，因此延误会沿路线逐站传递。",
+        "列车在本站的实际停留时间至少是计划停留时间的一半向上取整；所以出发时刻是计划时刻与最早可出发时刻的较大值，即 $dep_i=\\max(b_i,ar_i+\\lceil(b_i-a_i)/2\\rceil)$。",
+        "只需保存上一站的实际出发时刻即可计算下一站，无须保留完整行程；最终答案是第 $n$ 站的实际到达时刻。"
+      ],
+      "solution_brief": "从终点前的初始时刻 $dep_0=0$ 开始，逐站计算实际到达时刻，再按“计划出发时刻”和“到达后至少停留半个计划停站时长”取较晚者作为实际出发时刻。输出最后一站的实际到达时刻。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T01:13:52+00:00",
+          "quality_flags": [
+            "statement_truncated"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 2,
+      "problem_key": "1501B",
+      "contest_id": 1501,
+      "title": "Napoleon Cake",
+      "rating": 900,
+      "problem_url": "https://codeforces.com/contest/1501/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/88591",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
+      "original_tags": [
+        "dp",
+        "implementation",
+        "sortings"
+      ],
+      "statement_brief": "蛋糕由 $n$ 层自底向上叠成；每加一层后倒入 $a_i$ 单位奶油，最上方至多 $a_i$ 层会被浸湿，若层数不足则全部浸湿，倒入 $0$ 则没有层被浸湿。求全部操作结束后每层是否曾被浸湿。",
+      "transformed_statement": "把第 $j$ 次倒奶视为覆盖区间 $[j-a_j+1,j]$（超出底部的部分忽略）；第 $i$ 层是否被覆盖，等价于是否存在 $j\\ge i$ 满足 $j-a_j<i$。因此可反向扫描，并用已处理位置的最小边界判断覆盖情况。",
+      "key_observations": [
+        "第 $j$ 次倒入的奶油会浸湿从底部编号 $j-a_j+1$ 到 $j$ 的层，因此第 $i$ 层被浸湿等价于存在 $j\\ge i$ 使 $j-a_j<i$。",
+        "从底层向上看不便判断哪些后续操作覆盖当前层；反向扫描时，只需维护已处理位置中 $j-a_j$ 的最小值，就能一次判断每层是否被覆盖。"
+      ],
+      "solution_brief": "从 $n$ 到 $1$ 扫描，维护已扫描位置的 $j-a_j$ 最小值；加入当前位置 $i$ 后，若最小值小于 $i$，则第 $i$ 层会被浸湿，否则不会。整体只需线性扫描。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-09-29T01:13:34+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
     {
       "ordinal": 3,
       "problem_key": "1497A",
