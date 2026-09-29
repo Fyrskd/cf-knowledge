@@ -1,5 +1,16 @@
 [
   {
+    "id": 1494,
+    "name": "Educational Codeforces Round 105 (Rated for Div. 2)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1614696300,
+    "relativeTimeSeconds": 175949615,
+    "date": "2021-03-02"
+  },
+  {
     "id": 1493,
     "name": "Codeforces Round 705 (Div. 2)",
     "type": "CF",
