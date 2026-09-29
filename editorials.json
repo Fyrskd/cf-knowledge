@@ -8,6 +8,27 @@
     "raw_sha256": "4b9e31e66b779a97ef1392fd9fa6a5a9316709e6e28642f46fd9a079153c3be5"
   },
   {
+    "url": "https://codeforces.com/blog/entry/87356",
+    "blog_entry_id": 87356,
+    "title": "Educational Codeforces Round 103 Editorial",
+    "author": "awoo",
+    "creation_time": "2021-01-30",
+    "original_locale": "ru",
+    "source": "codeforces-blog",
+    "label": "87356",
+    "section_count": 7,
+    "covered_problems": [
+      "1476A",
+      "1476B",
+      "1476C",
+      "1476D",
+      "1476E",
+      "1476F",
+      "1476G"
+    ],
+    "raw_sha256": "bb1e3fe44915988c70054a17cb7d1d5968b7a45e5e246d4a1c55edab568920f0"
+  },
+  {
     "url": "https://codeforces.com/blog/entry/87523",
     "blog_entry_id": 87523,
     "title": "Codeforces Round #699 (Div. 2) Editorial",
