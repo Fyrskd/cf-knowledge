@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4297,
+    "total_problems": 4298,
     "source_total_problems": 4300,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 4297,
-    "with_editorial_brief": 3938,
-    "with_solution_brief": 3940,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 4298,
+    "with_editorial_brief": 3939,
+    "with_solution_brief": 3941,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3359,
+    "ai_override_count": 3360,
     "primary_topic_count": 13,
-    "contest_count": 671,
+    "contest_count": 672,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1408,
+    "构造与贪心": 1409,
     "动态规划与状态设计": 356,
     "树结构": 199,
     "字符串": 228,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2930,
+    "ai_generated_with_editorial": 2931,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -132026,6 +132026,47 @@ window.CF_INSIGHTS_DATA = {
             "任意选根并做先序遍历后，每种数值的出现位置可按 DFS 序排序；子树出现次数能用两个边界查找得到，进而判断删去某点后各连通块是否含有相同值。"
           ],
           "solutionBrief": "任意选根并按 DFS 序记录每种数值的出现位置，用区间计数判断删去每个顶点后哪些连通块含有与该顶点同值的点，并据此生成指向这些连通块的约束边。再用换根方法统计所有约束边都指向自身的顶点数。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1471,
+      "name": "Codeforces Round 694 (Div. 2)",
+      "date": "2021-01-05",
+      "url": "https://codeforces.com/contest/1471",
+      "type": "Div. 2",
+      "problemCount": 1,
+      "maxRating": 1100,
+      "problems": [
+        {
+          "key": "1471B",
+          "index": "B",
+          "slot": "B",
+          "title": "Strange List",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1471/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/86464",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定数组和整数 $x$，机器人按数组顺序处理元素：若当前值能被 $x$ 整除，就在数组末尾追加 $x$ 个其商；新增元素之后也会被处理。遇到第一个不能被 $x$ 整除的元素时机器人停止，要求输出最终数组所有元素之和。",
+          "transformedStatement": "把每个初始元素能连续被 $x$ 整除的次数作为它的扩展层数；最小层数对应首次停止的位置。最终总和可由完整扩展轮次的初始总和，加上停止位置之前仍多贡献的一段前缀和得到。",
+          "keyObservations": [
+            "每个初始数能连续被 $x$ 整除的次数，决定它会触发多少轮扩展；最少的这个次数决定机器人首次遇到不可整除元素的时刻。",
+            "首次停止的元素之前的初始元素整除次数更多，因此它们在停止时仍会继续贡献一轮；这部分恰好是最小次数位置之前的初始前缀和。",
+            "在停止前，每轮扩展都保持被处理元素的总值不变，所以主体贡献可按轮数乘初始数组总和计算，无须显式生成新增元素。"
+          ],
+          "solutionBrief": "对每个初始元素计算其被 $x$ 连续整除的次数，找到最小次数及其最早出现位置 $j$。答案为 $(b_j+1)$ 倍初始数组总和，再加上位置 $j$ 之前的初始元素和；复杂度为 $O(n\\log A)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
