@@ -1,5 +1,16 @@
 [
   {
+    "id": 1472,
+    "name": "Codeforces Round 693 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 7200,
+    "startTimeSeconds": 1609770900,
+    "relativeTimeSeconds": 180881771,
+    "date": "2021-01-04"
+  },
+  {
     "id": 1470,
     "name": "Codeforces Round 694 (Div. 1)",
     "type": "CF",
