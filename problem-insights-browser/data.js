@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4121,
+    "total_problems": 4127,
     "source_total_problems": 4127,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4121,
-    "with_editorial_brief": 3775,
-    "with_solution_brief": 3777,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4127,
+    "with_editorial_brief": 3781,
+    "with_solution_brief": 3783,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3183,
+    "ai_override_count": 3189,
     "primary_topic_count": 13,
-    "contest_count": 641,
+    "contest_count": 642,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "构造与贪心": 1344,
+    "博弈": 118,
+    "组合计数与概率": 323,
     "字符串": 220,
-    "构造与贪心": 1340,
     "基础实现与模拟": 254,
     "数论与同余": 432,
     "动态规划与状态设计": 336,
     "图论与网络流": 275,
-    "组合计数与概率": 322,
     "数据结构": 389,
-    "博弈": 117,
     "树结构": 193,
     "几何": 96,
     "交互": 121,
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2779,
-    "ai_generated_partial_editorial": 105,
+    "ai_generated_partial_editorial": 106,
+    "ai_generated_with_editorial": 2784,
     "missing_editorial": 344,
     "low_confidence": 1,
     "manual_override": 891,
@@ -126724,6 +126724,198 @@ window.CF_INSIGHTS_DATA = {
             "按上述规则需要翻转的前缀长度由 $a$、$b$ 唯一确定，而合法性又不会被其他翻转改变，因此只需检查这些长度是否全是原串的合法前缀。"
           ],
           "solutionBrief": "先用前缀计数标记每个位置是否有相同数量的 $0$ 和 $1$。从右向左检查目标串与原串的匹配关系变化：每个必须翻转的前缀都须合法；若有一个不合法，则输出 NO，否则输出 YES。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1503,
+      "name": "Codeforces Round 712 (Div. 1)",
+      "date": "2021-04-03",
+      "url": "https://codeforces.com/contest/1503",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1503A",
+          "index": "A",
+          "slot": "A",
+          "title": "Balance the Bits",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1503/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/89319",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定一个长度为偶数的二进制串，要构造两条等长的括号序列，使每条都是合法括号序列，并且两串在 $s_i=1$ 的位置字符相同、在 $s_i=0$ 的位置字符不同；若无法构造则报告无解。",
+          "transformedStatement": "把每个位置的约束拆成两类：$1$ 位同时给两串放相同括号，$0$ 位给两串放相反括号。问题转为判断这些位置能否分配，使两串都从左到右保持括号余额非负并最终归零；关键条件是首尾为 $1$ 且 $0$ 的数量为偶数。",
+          "keyObservations": [
+            "合法括号序列首位必须是左括号、末位必须是右括号，因此两串这两位都相同，要求 $s_1=s_n=1$。",
+            "把所有 $s_i=1$ 的位置设为两串相同字符；每串在这些位置各有一半左括号、一半右括号，因而 $1$ 的个数必须为偶数。",
+            "在 $s_i=0$ 的位置，两串字符必须相反；让左括号在两串间交替分配，可使每串从这些位置获得相同数量的左右括号。",
+            "先在 $1$ 的位置安排共同的左括号前缀、再安排共同的右括号后缀，并交替分配 $0$ 的位置，可以保持两串的括号余额非负；因此在端点为 $1$ 且 $0$ 的个数为偶数时可构造解。"
+          ],
+          "solutionBrief": "先检查首尾是否为 $1$，并检查 $0$ 的个数是否为偶数；不满足则无解。满足时，将 $1$ 的位置前半设为两串共同的左括号、后半设为共同的右括号，再把 $0$ 的位置交替分配给两串作为左括号，另一串对应放右括号。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1503B",
+          "index": "B",
+          "slot": "B",
+          "title": "3-Coloring",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1503/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/89319",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "构造与贪心",
+            "交互"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "games",
+            "interactive"
+          ],
+          "statementBrief": "给定一个初始为空的 $n\\times n$ 棋盘，每回合 Alice 指定一种颜色，Bob 必须选另一种颜色并放入一个空格。共边相邻格不能出现同色棋子；要求 Bob 依次响应所有回合，使棋盘填满且始终没有冲突。",
+          "transformedStatement": "把棋盘按黑白格染色，并将两种棋子颜色分别分配给两侧，使同色棋子只能落在互不相邻的格子上；当 Alice 的选择阻止使用当前颜色时，转用另一侧上的备用颜色填格。",
+          "keyObservations": [
+            "同色格子组成的棋盘黑白染色中，任一颜色的一侧都没有共边相邻格，因此在黑格和白格分别使用不同颜色即可避免冲突。",
+            "Alice 禁止使用的颜色不同，Bob 可以优先选择另一种预留颜色；当对应棋盘一侧用尽时，另一侧仍有空格，可改用第三种颜色。",
+            "棋盘黑白格数量可能不同，但策略只要求先检查指定一侧是否还有空格；若已满，所有剩余空格都在另一侧，因此备用颜色总能放置。"
+          ],
+          "solutionBrief": "将棋盘按黑白格染色。Alice 选 1 时，优先在空黑格放 2，否则在空白格放 3；选 2 时，优先在空白格放 1，否则在空黑格放 3；选 3 时，优先在空白格放 1，否则在空黑格放 2。每次按要求读取并输出一步，直到填满棋盘。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1503C",
+          "index": "C",
+          "slot": "C",
+          "title": "Travelling Salesman Problem",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1503/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/89319",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy",
+            "shortest paths",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 座城市，每座城市有美丽值 $a_i$ 和出发底价 $c_i$。旅行者从城市 1 出发，恰好访问每座城市一次并回到城市 1；从 $i$ 飞往 $j$ 的费用为 $\\max(c_i,a_j-a_i)$，要求最小化总费用。",
+          "transformedStatement": "把城市按美丽值排序，并将每次出发的固定底价从费用中剥离，剩下的问题是从最小美丽值覆盖到最大美丽值所需的额外费用；此前城市 $j$ 可免费覆盖至 $a_j+c_j$，未覆盖的区间长度形成代价。",
+          "keyObservations": [
+            "将所有城市按美丽值递增排列后，行程可视为覆盖最小到最大美丽值的路径；由于降向较小美丽值的调整后费用为零，覆盖后的部分可以免费补成完整环。",
+            "每座城市恰好离开一次，因此每条航班费用中的出发城市底价 $c_i$ 总和固定；优化时只需最小化额外费用 $\\max(0,a_j-a_i-c_i)$。",
+            "按美丽值递增考虑城市 $i$ 时，之前某座城市 $j$ 能免费覆盖到的位置由 $a_j+c_j$ 决定；因此新增的最小费用是 $\\max(0,a_i-\\max_{j<i}(a_j+c_j))$。",
+            "逐个城市累加上述覆盖缺口即可得到最优调整后费用，再加上所有城市的底价总和，便得到完整行程的最小费用。"
+          ],
+          "solutionBrief": "按美丽值排序，累加每个城市相对此前最远免费覆盖位置的缺口，即 $\\max(0,a_i-\\max_{j<i}(a_j+c_j))$；最后加上 $\\sum_i c_i$。维护此前 $a_j+c_j$ 的最大值即可，整体复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1503D",
+          "index": "D",
+          "slot": "D",
+          "title": "Flip the Cards",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1503/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/89319",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "2-sat",
+            "constructive algorithms",
+            "data structures",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "有 $n$ 张牌，每张牌正反面各有一个数，$1$ 到 $2n$ 各出现一次。可以先翻转任意子集的牌（交换该牌两面的数），再任意排列所有牌；要求牌面正数严格递增、背面数字严格递减，求最少翻牌数，若无法做到则输出 $-1$。",
+          "transformedStatement": "把每张牌上的小数作为索引，记录与之配对的大数，得到按小数递增排列的序列。为整理牌堆，需要将该序列分成两条递减子序列，分别对应小数最终朝前或朝后；目标转为在合法分配中最小化翻牌数。",
+          "keyObservations": [
+            "整理后，较小的数只能出现在牌面序列的前缀、较大的数只能出现在后缀，因此每张牌必须各含一个小于等于 $n$ 的数和一个大于 $n$ 的数；若一张牌含有两个小数，就不可能完成整理。",
+            "按小数从小到大排列牌，并记录各自配对的大数，问题等价于把这列大数分成两条严格递减子序列；每条子序列对应一种牌面朝向。",
+            "若某个分界点左侧所有配对数都大于右侧所有配对数，两侧的递减子序列分配可以独立决定；每段只有两种整体交换的朝向，因此可分别选翻牌数较少的方案。"
+          ],
+          "solutionBrief": "先检查每张牌是否恰含一个小数和一个大数，再按小数递增得到配对大数序列。将序列拆成两条递减子序列，并在满足左右值域分离的位置切段；每段尝试两种整体分配方向，计入所需翻牌数并取较小值。若无法完成拆分则输出 $-1$。题解给出的复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1503E",
+          "index": "E",
+          "slot": "E",
+          "title": "2-Coloring",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1503/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/89319",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 网格，每格染成蓝色或黄色。要求每行至少有一个蓝格且蓝格连续成段，同时每列至少有一个黄格且黄格连续成段；求满足条件的不同着色数，答案对 $998244353$ 取模。",
+          "transformedStatement": "计数时先按是否存在贯穿左右的黄色路径分类；在不存在的情形下，黄色区域分成接触左右边界的两部分，着色可由分界附近的路径边界描述。固定边界端点后用单调路径数计数，再通过对称性合并各类情况。",
+          "keyObservations": [
+            "从左到右贯穿网格的黄色路径与从上到下贯穿网格的蓝色路径不可能同时存在，因为两条路径必相交，而交点不能同时染成两种颜色。",
+            "若不存在贯穿左右的黄色路径，黄色格会分属接触最左列和最右列的两部分；每列黄色格连续，迫使两部分之间存在分界列，从而把着色结构压缩为分界处的若干路径边界。",
+            "固定分界两侧黄色线段的端点后，边界由单调路径确定；路径步数给出的二项式系数可计数，因此对应着色数化为四个二项式系数的乘积。",
+            "对一个端点求和时，可用前缀和汇总另一端点的所有合法选择；再利用左右及行列对称扩展计数，并用严格间隔条件排除两类情形的重复计数。"
+          ],
+          "solutionBrief": "按是否存在贯穿网格的单色路径拆分结构，将着色表示为分界处的单调路径边界。用二项式系数乘积计数固定端点的方案，通过前缀和加速求和，并利用对称性补全，同时排除重复计数；答案对 $998244353$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1503F",
+          "index": "F",
+          "slot": "F",
+          "title": "Balance the Cards",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1503/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/89319",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数据结构"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "data structures",
+            "divide and conquer",
+            "geometry",
+            "graphs",
+            "implementation"
+          ],
+          "statementBrief": "有 $2n$ 张卡片，每张正面和背面各有一个带符号的数字，且从 $1,-1,\\ldots,n,-n$ 中每个数字在正面、背面各出现一次。可以任意重排卡片，但不能翻面；要求判断能否使正面数字序列和背面数字序列都成为同类型数字匹配、正负括号正确嵌套的平衡序列，若能则输出一种顺序。",
+          "transformedStatement": "把每张卡片当作一个顶点，将正面中互为匹配的数字连成上方边、背面中互为匹配的数字连成下方边；问题转化为检查这些边组成的交替环，并为每个环构造一条使两侧配对都不交叉的点序。",
+          "keyObservations": [
+            "把卡片视为点，按正面和背面的配对分别连边；每个点恰有两条边，因此图分解为若干交替的环，可将整体构造拆成各环独立处理。",
+            "沿一个环行进时，每条边对应顺时针或逆时针转向；若环有 $2m$ 条边，闭合曲线的总转向要求两种方向的数量分别为 $m+1$ 和 $m-1$，因此该计数条件是可行性的必要限制。",
+            "满足方向计数的环可编码成以 $1$ 开头、以 $1$ 结尾的二进制串；递归使用基本形 $11$、两种扩展操作和合并操作，就能构造对应的卡片顺序。",
+            "递归构造只需维护曲线中点的次序及左端点相邻的两个点；用双向链表可常数时间完成反转或插入，而从两端并行寻找拆分点使总复杂度达到 $O(n\\log n)$。"
+          ],
+          "solutionBrief": "将正面、背面的匹配关系转成上下两类边，分解出交替环并检查每环的方向数量是否为 $m+1$ 与 $m-1$。对通过检查的环，把方向序列编码成二进制串，递归应用三种构造操作；用双向链表维护曲线，并从两端寻找拆分点，整体复杂度为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
