@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4176,
+    "total_problems": 4182,
     "source_total_problems": 4182,
-    "filtered_out_problems": 6,
-    "with_statement_brief": 4176,
-    "with_editorial_brief": 3818,
-    "with_solution_brief": 3820,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4182,
+    "with_editorial_brief": 3824,
+    "with_solution_brief": 3826,
     "missing_editorial_brief": 356,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3238,
+    "ai_override_count": 3244,
     "primary_topic_count": 13,
-    "contest_count": 650,
+    "contest_count": 651,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,13 +44,13 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数据结构": 394,
+    "数论与同余": 441,
+    "构造与贪心": 1360,
+    "动态规划与状态设计": 345,
     "基础实现与模拟": 256,
-    "构造与贪心": 1359,
-    "数论与同余": 440,
-    "动态规划与状态设计": 344,
     "树结构": 194,
     "图论与网络流": 281,
-    "数据结构": 391,
     "交互": 123,
     "字符串": 224,
     "博弈": 119,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2815,
+    "ai_generated_with_editorial": 2821,
     "ai_generated_partial_editorial": 112,
     "missing_editorial": 356,
     "low_confidence": 1,
@@ -128318,6 +128318,194 @@ window.CF_INSIGHTS_DATA = {
             "从底层向上看不便判断哪些后续操作覆盖当前层；反向扫描时，只需维护已处理位置中 $j-a_j$ 的最小值，就能一次判断每层是否被覆盖。"
           ],
           "solutionBrief": "从 $n$ 到 $1$ 扫描，维护已扫描位置的 $j-a_j$ 最小值；加入当前位置 $i$ 后，若最小值小于 $i$，则第 $i$ 层会被浸湿，否则不会。整体只需线性扫描。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1500,
+      "name": "Codeforces Round 707 (Div. 1, based on Moscow Open Olympiad in Informatics)",
+      "date": "2021-03-13",
+      "url": "https://codeforces.com/contest/1500",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": 3500,
+      "problems": [
+        {
+          "key": "1500A",
+          "index": "A",
+          "slot": "A",
+          "title": "Going Home",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/1500/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/88591",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "hashing",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的整数数组，要求判断是否存在四个互不相同的下标 $x,y,z,w$，使得 $a_x+a_y=a_z+a_w$。若存在，输出任意一组这样的下标；否则输出 NO。",
+          "transformedStatement": "将每个下标对视为一条带有其元素和标签的边；目标是找到两条标签相同且端点互不相交的边。题解利用同一标签下积累四条边必能得到这样的边对，将寻找问题转成按和收集并检查下标对。",
+          "keyObservations": [
+            "把同一和对应的下标对看成图中的边；若已有至少四条边且任意顶点度数不超过二，就必有两条端点互不相交的边，可直接得到四个不同下标。",
+            "若某个下标出现在同和的多条下标对中，利用这些对的和相等可推出它们的另一个下标对应相同数组值，从而也能构造出两对互不重叠的下标。",
+            "因此，同一和只需保留并检查少量已出现的下标对；一旦找到四对，就必能选出端点互不相交的两对作为答案。"
+          ],
+          "solutionBrief": "枚举所有下标对并计算其元素和，按和保存已见的下标对。对每个新对检查是否能与同和的旧对组成四个不同下标；题解证明同一和累计到四对时一定能找到这样的组合，因此可立即输出，若枚举结束仍未找到则输出 NO。整体从至多 $O(n^2)$ 个下标对中寻找答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1500B",
+          "index": "B",
+          "slot": "B",
+          "title": "Two chandeliers",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1500/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/88591",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "chinese remainder theorem",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "两盏吊灯分别按长度为 $n$、$m$ 的颜色序列循环亮灯；从安装后的第 1 天起，每天比较两盏灯的颜色。求两灯颜色第 $k$ 次不同时对应的日期。",
+          "transformedStatement": "将每种两边共有的颜色对应到它在两个周期中的位置：该颜色同时出现的日期必须满足模 $n$、模 $m$ 的两条同余条件。统计前缀内符合这些条件的同色日期后，即可转化为单调的前缀计数问题。",
+          "keyObservations": [
+            "每种颜色在各自吊灯的周期内至多出现一次，因此固定一种两边共有的颜色后，亮色相同的日子恰好对应一组关于日期模 $n$、模 $m$ 的同余条件。",
+            "两组同余条件只有在余数对最大公约数同余时才有解；满足条件时，可用中国剩余定理确定相同颜色出现的日期周期。",
+            "统计前缀中颜色不同的天数具有单调性：前缀越长，累计次数不会减少，因此可二分第 $k$ 次不同色出现的日期。"
+          ],
+          "solutionBrief": "对共有颜色，根据它在两个周期中的位置建立日期同余方程，并处理 $n,m$ 不互质的情况。借助中国剩余定理确定相同色日期的周期，统计给定前缀中相同色的天数，从而得到不同色天数；对前缀长度二分，找出第 $k$ 次颜色不同时的日期。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1500C",
+          "index": "C",
+          "slot": "C",
+          "title": "Matrix Sorting",
+          "rating": 2600,
+          "problemUrl": "https://codeforces.com/contest/1500/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/88591",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定两个 $n\\times m$ 表格，每次可任选一列，按该列数值升序重排行，并在数值相同时保持原有相对次序。求能否通过零次或多次这样的稳定排序把表格 $A$ 变成 $B$；若能，输出一组列排序操作。",
+          "transformedStatement": "把目标行序中尚未被操作区分的相邻行视作同一连续块；对每列统计这些块内部与目标顺序冲突的逆序。冲突数为零的列可作为安全操作，操作后更新被切开的边界及剩余冲突数，从而逐步构造目标顺序或判定不可达。",
+          "keyObservations": [
+            "每列至多排序一次：再次按同一列稳定排序不会改变行序，因此构造时只需考虑每列是否已经使用。",
+            "从目标表的行序看，当前仍未区分的行形成连续块；相邻行一旦能被某列分开，就只需记录这条边界，后续无需重复处理。",
+            "若某列在所有尚未区分的块内都没有违背目标顺序的逆序，它就可以安全地排序；排序后新产生的边界只会减少该列尚未解决的逆序数。",
+            "始终处理当前可用的列即可；若最终仍无法形成目标行序，说明某些行在所有可用列上都无法按目标要求分开，因此不存在合法操作序列。"
+          ],
+          "solutionBrief": "按尚未区分的相邻行维护边界，并为每列统计这些行之间仍未解决的逆序数。逆序数为零的列可安全排序；处理后更新边界及受影响列的计数，并继续处理新可用列。最后检查目标表是否确实可由原表的行排列得到。题解给出的优化方案复杂度为 $O(nm)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1500D",
+          "index": "D",
+          "slot": "D",
+          "title": "Tiles for Bathroom",
+          "rating": 2900,
+          "problemUrl": "https://codeforces.com/contest/1500/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/88591",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 方格，每格有一种颜色，并给定上限 $q$。对每个边长 $k$，统计所有位置不同的 $k\\times k$ 子正方形中，颜色种类不超过 $q$ 的数量。",
+          "transformedStatement": "先为每个左上角位置求出其能容纳的最大合法正方形边长；再利用较小边长必然也合法的性质，将这些最大值转换成每种边长的答案。合法性判定则转化为寻找矩形中第 $q+1$ 种不同颜色最靠左的出现位置。",
+          "keyObservations": [
+            "对固定左上角，边长不超过最大合法边长的正方形也都合法，因此只需求每个起点的最大合法边长，再按边长做后缀计数。",
+            "相邻起点的最大合法边长满足向右移动一格后至少为原值减一，利用这一关系可逐行摊还地扩展候选正方形。",
+            "判断一个矩形宽度内是否超过 $q$ 种颜色，只需保留各行中最靠左的 $q+1$ 个不同颜色出现位置；合并这些摘要即可找到第 $q+1$ 种颜色的位置。",
+            "行摘要随正方形向下滑动时，只需加入一行并删除最上方一行；用双栈队列维护两侧摘要的合并结果，可避免每次从头处理所有行。"
+          ],
+          "solutionBrief": "为每个起点求最大合法边长，并利用合法性随边长缩小而保持成立来统计各边长答案。预处理每行、每个位置对应的前 $q+1$ 种最近颜色出现位置；滑动合并行摘要，用双栈队列维护当前窗口，得到最大合法宽度。整体复杂度为 $O(n^2q)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1500E",
+          "index": "E",
+          "slot": "E",
+          "title": "Subset Trick",
+          "rating": 3300,
+          "problemUrl": "https://codeforces.com/contest/1500/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/88591",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures"
+          ],
+          "statementBrief": "给定一个由互不相同正整数组成的集合。观众秘密选择一个子集，只告诉魔术师子集大小；魔术师需判断该子集元素和是否不超过给定阈值 $x$，题目称无法保证判断正确的正整数 $x$ 为不合适数。集合会按操作逐次变化，需要输出初始集合及每次变化后的不合适数个数；所给题面未保留两种变化操作的具体定义。",
+          "transformedStatement": "对每个可能的子集大小，考虑该大小的子集和范围所对应的阈值区间；数不重叠的好阈值数可由这些区间长度相加得到。再借助区间长度函数的对称与单调性质，把动态计数化为前半段的一次二分和加权前缀和查询。",
+          "keyObservations": [
+            "固定子集大小后，成功猜测等价于阈值落在该大小对应的连续和区间内，因此总好阈值数可转化为这些区间并集的长度。",
+            "不同大小对应的非空区间两两不相交，所以好阈值总数就是各区间长度之和，无需处理区间合并。",
+            "区间长度函数满足对称性 $f(k)=f(n-1-k)$，且在前半段单调不增；因此只需二分找出 $f(k)$ 首次不为正的位置，再求正值部分的和。",
+            "正值部分的区间长度之和可改写为按元素位置加权的前缀和；维护元素数量、元素值之和及位置乘元素值之和，便能支持动态查询。"
+          ],
+          "solutionBrief": "将好阈值数表示为各子集大小对应区间长度之和。利用长度函数的对称性和单调性，在前半段二分确定正值范围，并用前缀元素和及位置加权和计算总长度。将所有可能出现的数离散化，用线段树维护当前集合中的数量、数值和及位置加权和；每次变化后以 $O(\\log^2(n+q))$ 更新答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1500F",
+          "index": "F",
+          "slot": "F",
+          "title": "Cupboards Jumps",
+          "rating": 3500,
+          "problemUrl": "https://codeforces.com/contest/1500/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/88591",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp"
+          ],
+          "statementBrief": "给定长度为 $n-2$ 的数组 $w$，其中每个 $w_i$ 表示连续三个柜子高度的最大值与最小值之差。需要构造 $n$ 个非负高度，使所有连续三柜的高度跨度恰好等于对应的 $w_i$；若无法做到则报告无解。",
+          "transformedStatement": "把高度序列改写为相邻差值序列 $d_i=h_{i+1}-h_i$，每个给定跨度约束只涉及一对相邻差值。于是逐个处理约束，维护每一步可作为末差值的集合，并在可行时从差值恢复高度。",
+          "keyObservations": [
+            "令相邻高度差为 $d_i=h_{i+1}-h_i$，则每个三柜窗口的高度跨度只由 $|d_i|$、$|d_{i+1}|$ 和 $|d_i+d_{i+1}|$ 决定，从而可把高度重建转成相邻差值的可行性问题。",
+            "若某个差值序列可行，把一段前缀的差值符号整体反转仍能保持所有窗口跨度，因此每层只需记录非负末差值。",
+            "给定当前跨度 $w_i$，前一层末差值区间 $[l,r]$ 能转移到 $[\\max(w_i-r,0),w_i-l]$；所有可行值可用区间集合表示，且每层至多新增一个区间，因此无需枚举全部 $0$ 到 $C$ 的差值。",
+            "区间转移中的反转与平移对所有区间一致，可用统一变换参数惰性维护；裁剪只从区间端点发生，使总处理量保持线性。"
+          ],
+          "solutionBrief": "用相邻高度差建立 DP，按已处理的跨度序列记录可行的末差值。利用差值符号对称性只保留非负值，并将可行值压缩成区间集合；通过统一的反转、平移和端点裁剪在线性时间更新。若最终状态非空，沿转移反向选择差值并恢复符号，再累加差值构造高度。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
