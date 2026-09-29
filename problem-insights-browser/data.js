@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4256,
+    "total_problems": 4263,
     "source_total_problems": 4264,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 4256,
-    "with_editorial_brief": 3897,
-    "with_solution_brief": 3899,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4263,
+    "with_editorial_brief": 3904,
+    "with_solution_brief": 3906,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3318,
+    "ai_override_count": 3325,
     "primary_topic_count": 13,
-    "contest_count": 664,
+    "contest_count": 665,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1395,
+    "数论与同余": 447,
+    "构造与贪心": 1396,
+    "动态规划与状态设计": 352,
+    "图论与网络流": 287,
+    "数据结构": 398,
     "基础实现与模拟": 259,
-    "动态规划与状态设计": 350,
     "树结构": 198,
     "交互": 128,
-    "数据结构": 397,
     "代数、矩阵与多项式": 27,
     "博弈": 121,
     "组合计数与概率": 325,
-    "数论与同余": 446,
     "几何": 98,
-    "图论与网络流": 285,
     "字符串": 227
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2892,
-    "ai_generated_partial_editorial": 114,
+    "ai_generated_with_editorial": 2898,
+    "ai_generated_partial_editorial": 115,
     "missing_editorial": 357,
     "low_confidence": 1,
     "manual_override": 891,
@@ -130783,6 +130783,224 @@ window.CF_INSIGHTS_DATA = {
             "若无法让每层统一字符，则答案可达到 $d+2$：从浅到深处理，混用字符的层把所有非叶节点设为同一字符，避免不同前缀在后续层造成额外不同字符串。"
           ],
           "solutionBrief": "统计各深度的节点数，先用合并相同层大小的有界背包判断能否选出总数为 $x$ 的若干层，从而实现答案 $d+1$。若不可行，则按深度构造使答案为 $d+2$ 的赋值；总复杂度为 $O(n\\sqrt n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1476,
+      "name": "Educational Codeforces Round 103 (Rated for Div. 2)",
+      "date": "2021-01-29",
+      "url": "https://codeforces.com/contest/1476",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": 3100,
+      "problems": [
+        {
+          "key": "1476A",
+          "index": "A",
+          "slot": "A",
+          "title": "K-divisible Sum",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1476/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/87356",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定正整数 $n$ 和 $k$，需要构造一个含 $n$ 个正整数的数组，使数组元素之和能被 $k$ 整除。要求确定所有这类数组中，最大元素可能达到的最小值。",
+          "transformedStatement": "先把目标转为选择一个不小于 $n$ 的最小 $k$ 的倍数作为数组总和；随后对这个固定总和，求其分配到 $n$ 个正整数时所能达到的最小最大值。",
+          "keyObservations": [
+            "数组元素均为正数，所以总和至少为 $n$；可行总和必须是 $k$ 的倍数，因此最小可行总和是 $s=k\\left\\lceil\\frac{n}{k}\\right\\rceil$。",
+            "固定总和为 $s$ 时，最大元素至少为 $\\left\\lceil\\frac{s}{n}\\right\\rceil$；将总和尽量均匀地分给 $n$ 个正整数即可达到此下界。"
+          ],
+          "solutionBrief": "先取不小于 $n$ 的最小 $k$ 的倍数 $s=k\\left\\lceil\\frac{n}{k}\\right\\rceil$，再将它均匀分配给 $n$ 个正整数。答案为 $\\left\\lceil\\frac{s}{n}\\right\\rceil$，也可写成 $\\left\\lfloor\\frac{s+n-1}{n}\\right\\rfloor$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1476B",
+          "index": "B",
+          "slot": "B",
+          "title": "Inflation",
+          "rating": 1300,
+          "problemUrl": "https://codeforces.com/contest/1476/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/87356",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定初始价格 $p_0$ 和之后每月的价格增量 $p_i$，第 $i$ 个月的涨幅是 $p_i$ 除以该月开始时的价格。可以把若干增量增加非负整数，但不能减少；要求每月涨幅都不超过 $k\\%$，并使增加量总和最小。",
+          "transformedStatement": "把修改量集中到 $p_0$：它会同时扩大所有后续月份的分母而不提高任何月份的涨幅。于是问题转为求一个最小公共增加量 $x$，使每个月对应的不等式都成立；答案由各月份所需下界的最大值决定。",
+          "keyObservations": [
+            "增加某个 $p_i$ 会抬高第 $i$ 个月的涨幅分子，而增加 $p_0$ 只会增大之后各月的分母，因此总能把最优修改限制为只增加 $p_0$。",
+            "固定增加量 $x$ 后，每个月的约束都可独立改写为 $x\\ge\\left\\lceil\\frac{100p_j-kS_j}{k}\\right\\rceil$，其中 $S_j$ 是修改前第 $j$ 个月开始时的累计价格；满足全部月份只需取这些下界的最大值，并与零取最大值。"
+          ],
+          "solutionBrief": "最优方案只需增加初始价格 $p_0$。遍历后续月份并维护原数组前缀和，对每个月计算使涨幅不超过 $k\\%$ 所需的最小增加量，答案取所有需求的最大值与零的较大者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1476C",
+          "index": "C",
+          "slot": "C",
+          "title": "Longest Simple Cycle",
+          "rating": 1600,
+          "problemUrl": "https://codeforces.com/contest/1476/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/87356",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "graphs",
+            "greedy"
+          ],
+          "statementBrief": "题目给出 $n$ 条链，第 $i$ 条链有 $c_i$ 个顶点；除第一条外，每条链的两个端点分别与前一条链上编号为 $a_i$、$b_i$ 的顶点相连。要求求合并后图中顶点不重复的最长简单环的长度。",
+          "transformedStatement": "按简单环最右侧所在的链分组，定义 $len_i$ 为最右部分落在第 $i$ 条链上的最优长度；每次只需判断在前一条链上直接连接两个接点，还是延续此前的环结构并替换两接点间的部分。",
+          "keyObservations": [
+            "任意简单环在最右侧链上只取一段，因此按最右侧链编号维护最优长度，就能覆盖所有可能的环。",
+            "当 $a_i\\ne b_i$ 时，环在第 $i-1$ 条链上的部分有两种选择：直接取两连接点间的距离，或延续此前的最优结构并扣除这段距离；取较长者即可。",
+            "当 $a_i=b_i$ 时，两端连接到同一顶点，环只能由第 $i$ 条链闭合，长度为 $c_i+1$，不能继续延伸此前的环。"
+          ],
+          "solutionBrief": "从左到右维护以第 $i$ 条链为最右部分的最长简单环长度。若 $a_i=b_i$，答案候选为 $c_i+1$；否则比较直接闭合得到的 $c_i+1+|a_i-b_i|$ 与延续前一状态得到的 $c_i+1+len_{i-1}-|a_i-b_i|$，并记录所有状态的最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1476D",
+          "index": "D",
+          "slot": "D",
+          "title": "Journey",
+          "rating": 1700,
+          "problemUrl": "https://codeforces.com/contest/1476/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/87356",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "dsu",
+            "implementation"
+          ],
+          "statementBrief": "国家有 $n+1$ 座按顺序排列的城市，相邻城市间有一条初始方向由字符串 $L/R$ 指定的道路。旅行者从指定城市出发，每天沿当前方向可通行的道路移动一步；每走一步后所有道路方向立即反转，也可随时结束，要求对每个起点求一次旅程最多能访问多少座不同城市。",
+          "transformedStatement": "将状态扩展为“当前城市、移动次数奇偶性”，因为移动奇偶性决定当前道路方向；把合法状态间的移动视为图边。利用可立即原路返回和两步后方向复原，转而求对应状态的连通分量大小；也可等价地计算起点向左右能到达的边界。",
+          "keyObservations": [
+            "每走两步后道路方向恢复原样，因此道路状态只需按移动次数的奇偶区分，状态数从整段历史压缩为城市与奇偶性。",
+            "每次移动后都能沿刚走过的道路立即返回；结合两步恢复方向可知，可达关系是对称的，因而可用连通分量刻画可访问状态。",
+            "从固定起点出发时，可达状态对应不同城市的访问范围；也可分别求最左和最右可达城市，以连续区间长度得到答案。",
+            "求最左可达城市时，若能连续向左走两步，剩余问题等价于从左侧两格处继续求解，因此可复用对应位置的动态规划结果。"
+          ],
+          "solutionBrief": "把状态表示为城市和移动次数奇偶性，建立状态图；由可立即返回及两步后方向复原，可达关系对称，答案可由相应连通分量大小得到。另一种做法是分别动态规划左右可达边界，区间长度即答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1476E",
+          "index": "E",
+          "slot": "E",
+          "title": "Pattern Matching",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/1476/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/87356",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "字符串",
+            "数据结构"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "dfs and similar",
+            "graphs",
+            "hashing",
+            "sortings",
+            "strings"
+          ],
+          "statementBrief": "给定 $n$ 个由小写字母和下划线组成的模式，以及 $m$ 个长度为 $k$ 的小写字母串；模式与字符串在固定字母位置相同即算匹配。你可以任意重排模式，要求每个字符串遇到的第一个匹配模式恰好是其指定编号，判断能否做到，若能则输出一种顺序。",
+          "transformedStatement": "先为每个字符串找出全部匹配模式，并将其指定模式必须先于其他匹配模式的要求转成有向边。问题由此等价于判断这些先后约束能否形成无环图，并输出一个满足约束的拓扑序；匹配集合可通过枚举通配符位置生成候选模式来查找。",
+          "keyObservations": [
+            "对每个字符串，目标模式必须确实与它匹配；否则无论怎样排列，都不可能让该模式成为第一个匹配项。",
+            "若目标模式与某字符串匹配，那么所有也匹配该字符串的其他模式都必须排在目标模式之后；把这些先后限制汇总为有向边即可统一表示排列要求。",
+            "因为字符串长度 $k\\le 4$，枚举哪些位置替换为通配符，就能恰好生成所有可能匹配的模式，从而高效找出每个字符串的匹配集合。",
+            "所有先后限制同时成立，当且仅当对应有向图无环；因此拓扑序就是合法排列，出现环则无解。"
+          ],
+          "solutionBrief": "枚举每个字符串的 $2^k$ 种通配符替换形式，查表找出所有匹配模式，并检查指定目标是否在其中。对每个目标向其他匹配模式连边，若图无环则输出其拓扑序；否则输出无解。题解给出的复杂度为 $O(nk\\log n+mk\\cdot2^k\\log n)$，或使用 Trie 达到 $O(nk+m\\cdot2^k)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1476F",
+          "index": "F",
+          "slot": "F",
+          "title": "Lanterns",
+          "rating": 3000,
+          "problemUrl": "https://codeforces.com/contest/1476/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/87356",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp"
+          ],
+          "statementBrief": "一排有 $n$ 盏灯，第 $i$ 盏灯的照射范围由功率 $p_i$ 决定；每盏灯必须选择朝左或朝右，分别照亮自身左侧或右侧最多 $p_i$ 盏灯。要求给出一种方向分配，使每盏灯都至少被另一盏灯照亮；若不存在则报告无解。",
+          "transformedStatement": "把问题转化为逐步判断能够完全照亮的连续前缀：$dp_i$ 记录使用前 $i$ 盏灯时可覆盖的最远前缀。选灯朝左的转移变成寻找一个已覆盖到指定门槛的前缀，再计算其与该灯之间最多能延伸到哪里。",
+          "keyObservations": [
+            "把已完全照亮的连续前缀长度作为状态后，处理前若干盏灯的可行性可以压缩为一个最大前缀值，避免记录每盏灯的具体照亮情况。",
+            "若第 $i$ 盏灯朝左照亮前方未覆盖区域，先前状态必须至少覆盖到 $i-p_i-1$；满足条件的前缀中取最小下标即可，因为它能纳入最多的中间灯并扩大可覆盖前缀。",
+            "上述最小可行前缀可通过按 $dp_j$ 值组织下标的最小值线段树查询；转移还需查询中间区间的最大可覆盖前缀，因此可用区间最大值结构维护。"
+          ],
+          "solutionBrief": "令 $dp_i$ 表示使用前 $i$ 盏灯时能完全照亮的最远前缀。倒序考虑转移：选择第 $i$ 盏灯朝左时，查询满足覆盖门槛的最小前缀下标，并结合中间区间的最大状态更新；线段树用于加速查询。给出的题解节选未说明如何恢复具体方向串。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1476G",
+          "index": "G",
+          "slot": "G",
+          "title": "Minimum Difference",
+          "rating": 3100,
+          "problemUrl": "https://codeforces.com/contest/1476/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/87356",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "data structures",
+            "hashing",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定整数数组，需要处理两类查询：一类询问某个子数组中能否选出 $k$ 个不同数值，并求这些数值出现次数的最大值与最小值之差的最小可能值；另一类会修改数组元素。若无法选出 $k$ 个不同数值则输出 $-1$。具体查询参数格式未在所给题面中完整显示。",
+          "transformedStatement": "对每个查询区间，把不同数值映射为它们在区间内的出现次数；问题转为从这些次数中选出 $k$ 个，使最大值减最小值最小。维护次数的有序分组后，答案等价于寻找总数至少为 $k$ 的最窄连续分组窗口。",
+          "keyObservations": [
+            "对当前区间内每个不同数值，只需记录其出现次数；选择 $k$ 个不同数值后，目标就是让所选出现次数的最大值与最小值之差尽量小。",
+            "将所有出现次数按从小到大排列后，最优选择必能对应一个连续窗口；把相同次数合并为“次数、数值个数”后，可用双指针找到覆盖至少 $k$ 个数值的最窄次数区间。",
+            "移动区间端点时，某个数值的出现次数只增减 $1$，因此可在有序次数序列中调整相邻的次数分组，而不必重新排序全部数值。"
+          ],
+          "solutionBrief": "按题解采用带修改的 Mo 算法维护当前区间中各数值的出现次数及其有序分布。查询时合并相同次数的分组，用双指针寻找包含至少 $k$ 个不同数值的最小次数跨度；题解给出的复杂度为 $O(n^{5/3}+m\\sqrt n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
