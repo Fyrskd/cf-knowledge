@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4119,
+    "total_problems": 4121,
     "source_total_problems": 4121,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4119,
-    "with_editorial_brief": 3773,
-    "with_solution_brief": 3775,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4121,
+    "with_editorial_brief": 3775,
+    "with_solution_brief": 3777,
     "missing_editorial_brief": 344,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3181,
+    "ai_override_count": 3183,
     "primary_topic_count": 13,
-    "contest_count": 640,
+    "contest_count": 641,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,9 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "字符串": 220,
+    "构造与贪心": 1340,
     "基础实现与模拟": 254,
-    "字符串": 219,
-    "构造与贪心": 1339,
     "数论与同余": 432,
     "动态规划与状态设计": 336,
     "图论与网络流": 275,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2777,
+    "ai_generated_with_editorial": 2779,
     "ai_generated_partial_editorial": 105,
     "missing_editorial": 344,
     "low_confidence": 1,
@@ -126658,6 +126658,72 @@ window.CF_INSIGHTS_DATA = {
             "多个 $n$ 可能具有相同的因数和，因此预处理时对每个 $d(n)$ 记录最小的 $n$，即可直接回答查询并保证满足最小值要求。"
           ],
           "solutionBrief": "预先计算所有 $1\\le n\\le 10^7$ 的因数和 $d(n)$，并为每个因数和记录对应的最小 $n$。可用筛法计算因数和；也可结合线性筛和 $d$ 的互乘性计算。查询时输出记录值，若没有对应值则输出题目要求的无解标记。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1504,
+      "name": "Codeforces Round 712 (Div. 2)",
+      "date": "2021-04-03",
+      "url": "https://codeforces.com/contest/1504",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": 1200,
+      "problems": [
+        {
+          "key": "1504A",
+          "index": "A",
+          "slot": "A",
+          "title": " Déjà Vu",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1504/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/89319",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "strings"
+          ],
+          "statementBrief": "给定一个由小写英文字母组成的字符串，可以在任意位置恰好插入一个字符 `a`。判断能否得到非回文串；若可以，输出任意一个这样的结果，否则报告无解。",
+          "transformedStatement": "无需枚举所有插入位置，只需检查在原串两端分别添加 `a` 得到的两个候选串。题目因此转化为判断原串是否全为 `a`，并验证端点候选是否为回文。",
+          "keyObservations": [
+            "若原串全由字符 `a` 组成，插入一个 `a` 后仍全是 `a`，因此无论插在哪里都无法得到非回文串。",
+            "只需考察在原串最左侧或最右侧插入 `a`：若这两个结果都是回文串，逐层比较两端字符可推出原串的每个字符都是 `a`，所以只要原串并非全为 `a`，至少有一个候选串符合要求。"
+          ],
+          "solutionBrief": "若原串全为 `a`，输出无解；否则分别尝试在原串前、后插入一个 `a`，检查所得字符串是否为回文，并输出任意一个非回文候选。总复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1504B",
+          "index": "B",
+          "slot": "B",
+          "title": "Flip the Bits",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1504/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/89319",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定等长二进制串 $a$ 和 $b$，每次可任选一个含有相同数量 $0$ 与 $1$ 的前缀，并将其中每一位取反。判断能否经过有限次操作（也可以不操作）把 $a$ 变成 $b$。",
+          "transformedStatement": "把每个前缀长度视为一种可能的翻转操作，并利用其合法性在操作过程中保持不变这一事实。目标串要求翻转哪些前缀可由相邻位置的匹配关系变化确定，因此问题转为检查这些必需长度是否都是合法前缀。",
+          "keyObservations": [
+            "翻转长度为 $i$ 的合法前缀后，长度小于 $i$ 的前缀中 $0$、$1$ 数量只是互换，长度不小于 $i$ 的前缀则保持两者数量不变，因此所有前缀是否合法这一性质始终不变。",
+            "从右向左看时，若相邻位置的 $a$ 与 $b$ 是否相等状态发生变化，就必须翻转截至该位置的前缀；末位不同也要求翻转整个字符串。",
+            "按上述规则需要翻转的前缀长度由 $a$、$b$ 唯一确定，而合法性又不会被其他翻转改变，因此只需检查这些长度是否全是原串的合法前缀。"
+          ],
+          "solutionBrief": "先用前缀计数标记每个位置是否有相同数量的 $0$ 和 $1$。从右向左检查目标串与原串的匹配关系变化：每个必须翻转的前缀都须合法；若有一个不合法，则输出 NO，否则输出 YES。总复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
