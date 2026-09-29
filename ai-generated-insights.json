@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-29T01:48:50+00:00",
+  "updated_at": "2026-09-29T01:53:47+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -97862,6 +97862,145 @@
         "source_provenance": "题意依据 statement_text，并结合 editorial_text 补全两类查询的具体规则；解法与复杂度依据 editorial_text。",
         "quality_flags": [
           "statement_inferred"
+        ]
+      }
+    },
+    "1492E": {
+      "problem_key": "1492E",
+      "title": "Almost Fault-Tolerant Database",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/1492/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/87792",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "d4d752f6bedbd44bd6526546709dbd95ba43aebccfc842cb8c9be562f4c07dcc",
+      "generated_at": "2026-09-29T01:52:57+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "数据库有 $n$ 份长度为 $m$ 的数组副本，每份都可能被改动过至多两个元素。需要恢复一个长度为 $m$ 的数组，使它与每份现有副本都至多有两个位置不同；若有多个答案可任意输出，无解则报告无解。",
+        "transformed_statement": "把第一份副本作为锚点：任何答案都只能在它的至多两个位置上修改。于是问题转化为在这些有限修改方案中，寻找一个与每份副本的汉明距离都不超过二的候选数组。",
+        "key_observations": [
+          "任意合法答案与第一份副本最多相差两项，因此只需在第一份副本上修改至多两个位置，不必搜索整个数组空间。",
+          "若某份副本与当前候选相差三项或四项，任何合法修正都必须从这些不匹配位置中选出一项或两项改成该副本对应的值，因此分支数分别只有三种或六种。",
+          "若某份副本与第一份副本相差至少五项，即使把允许修改的两个位置都用于消除差异，仍至少相差三项，因此不可能存在答案。",
+          "每次选取一份仍与候选相差超过两项的副本并递归修正；候选最多改动两个位置，最终逐份检查即可确认是否满足所有距离限制。"
+        ],
+        "solution_brief": "以第一份副本为初始候选，只递归尝试修改至多两个位置。遇到距离为三或四的副本时，枚举必要的不匹配位置并改为该副本的值；若某副本距离至少五则直接判无解。候选通过全部副本的距离检查后输出。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；核心搜索策略与剪枝依据 editorial_text，tags 仅作辅助。",
+        "quality_flags": []
+      }
+    },
+    "1492D": {
+      "problem_key": "1492D",
+      "title": "Genius's Gambit",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/1492/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/87792",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "6dd5933bffbe0495e0a0af83cf9ff38d94e277b08eecd98d6bcfc86f0c81c6e3",
+      "generated_at": "2026-09-29T01:53:14+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $a$、$b$、$k$，要构造两个二进制整数 $x\\ge y$，使它们各含 $a$ 个 0 和 $b$ 个 1，并且差值 $x-y$ 的二进制表示恰有 $k$ 个 1；若无法构造则报告无解。",
+        "transformed_statement": "将构造目标转化为：固定 $x$ 为 1、0 分别成段的二进制数，只通过交换 $y$ 中 1 与 0 的位置来调整差值的二进制 1 的数量，并判断目标是否落在可达到的范围内。",
+        "key_observations": [
+          "先固定一个由连续的 $b$ 个 1 和连续的 $a$ 个 0 组成的数 $x$，再只调整 $y$ 中的 1 的位置，能在保持两数位数及 1、0 数量不变的同时控制差值的二进制 1 的个数。",
+          "把连续 1 段末尾的 1 向右移动，差值中 1 的个数会增加；先移动多格可一次增加相应数量，之后逐格移动即可补足目标 $k$。",
+          "题解给出的构造可覆盖 $k\\le a+b-2$；当 $k>a+b-2$ 时无解，因此构造范围同时给出了可行性边界。",
+          "当 $a=0$ 或 $b=1$ 时需单独处理，不能直接套用一般构造。"
+        ],
+        "solution_brief": "特殊情况单独判断。其余情况下令 $x$ 的 1 和 0 分别连续排列，通过把 $y$ 中连续 1 段末尾的 1 向右移动来调节 $x-y$ 的二进制 1 的数量；当 $k>a+b-2$ 时输出无解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，构造与可行性边界依据 editorial_text；tags 仅用于辅助分类。",
+        "quality_flags": []
+      }
+    },
+    "1492C": {
+      "problem_key": "1492C",
+      "title": "Maximum width",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/1492/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/87792",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "9c788dd5948dea99564dd0e5c478ca1a0fbc3098cee815bc09f7fe1128efcd7e",
+      "generated_at": "2026-09-29T01:53:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定字符串 $s$ 和 $t$，选择 $s$ 中递增的 $m$ 个位置，使这些位置上的字符依次组成 $t$。在所有这样的匹配中，求相邻所选位置差的最大值所能达到的最大值。",
+        "transformed_statement": "把目标改为分别考察 $t$ 的每一对相邻字符：预处理每个字符在合法匹配中的最早和最晚位置，再用后一字符的最晚位置减去前一字符的最早位置，取最大值即可。",
+        "key_observations": [
+          "固定相邻字符 $t_i,t_{i+1}$ 时，要让位置差最大，应让 $p_i$ 尽量靠左、$p_{i+1}$ 尽量靠右；因此该对的最大间距是 $right_{i+1}-left_i$。",
+          "所有合法匹配中，$t_i$ 最早可出现的位置可通过从前往后贪心匹配得到，最晚位置可通过反向贪心匹配得到，两次扫描即可覆盖所有相邻间距的候选值。"
+        ],
+        "solution_brief": "从左向右贪心匹配 $t$，记录各字符最早位置 $left_i$；再从右向左贪心匹配，记录最晚位置 $right_i$。答案为所有 $right_{i+1}-left_i$ 的最大值，时间复杂度为 $O(n+m)$。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text，算法与复杂度依据 editorial_text；tags 仅作辅助。",
+        "quality_flags": []
+      }
+    },
+    "1492B": {
+      "problem_key": "1492B",
+      "title": "Card Deck",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/1492/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/87792",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "972b41396f15ab758b1eb35d31671f413000ea8c561b1362a3eeec36c12c72cc",
+      "generated_at": "2026-09-29T01:53:39+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一叠值互不相同的牌，按从底到顶记为 $p_1$ 到 $p_n$。每次从原牌堆顶部取任意正数张牌，保持这段牌的顺序放到新牌堆顶，直到原牌堆为空；要求输出使顺序值最大的最终牌堆。",
+        "transformed_statement": "顺序值的比较等价于比较最终排列的字典序，因此问题可重述为：把原牌堆划分成若干个连续的顶部区段并按操作顺序搬运，使最终排列字典序最大。每轮优先确定当前剩余牌堆中的最大牌所在区段。",
+        "key_observations": [
+          "由于每张牌的值都在 $1$ 到 $n$ 之间，顺序值的高位权重足以压过所有低位贡献，因此顺序值较大的牌组恰好对应字典序较大的排列。",
+          "每次操作只能取原牌堆顶部的一段，并保持这段牌的顺序；要让新牌组字典序最大，就应先取到当前原牌堆中的最大牌，再递归处理它下方剩余的牌。"
+        ],
+        "solution_brief": "将目标转化为构造字典序最大的可达排列。反复找到当前剩余牌堆的最大值，把它上方的牌连同最大值作为一段依次放到新牌堆顶；重复处理剩余部分，最终输出新牌堆即可。题解给出的复杂度为 $O(n\\log n)$ 或 $O(n)$，取决于实现。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面操作规则与顺序值定义，以及 editorial 关于字典序最大化和每次选择当前最大牌的说明。",
+        "quality_flags": []
+      }
+    },
+    "1492A": {
+      "problem_key": "1492A",
+      "title": "Three swimmers",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/1492/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/87792",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "67ce6d076dd52c2de4fb71d8f4ce05d53e9c64f947a1178a673b3b6eded463df",
+      "generated_at": "2026-09-29T01:53:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "三名游泳者分别每隔 $a$、$b$、$c$ 分钟回到泳池左侧一次，回到时刻均为从开始后的周期整数倍。你在开始后第 $p$ 分钟到达，要求计算还需等待多久，直到任意一名游泳者到达左侧。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；tags 仅提供 math 标签，editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial"
         ]
       }
     }

@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4211,
+    "total_problems": 4216,
     "source_total_problems": 4216,
-    "filtered_out_problems": 5,
-    "with_statement_brief": 4211,
-    "with_editorial_brief": 3853,
-    "with_solution_brief": 3855,
-    "missing_editorial_brief": 356,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4216,
+    "with_editorial_brief": 3857,
+    "with_solution_brief": 3859,
+    "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3273,
+    "ai_override_count": 3278,
     "primary_topic_count": 13,
-    "contest_count": 656,
+    "contest_count": 657,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
+    "数论与同余": 443,
+    "构造与贪心": 1377,
+    "字符串": 227,
     "基础实现与模拟": 258,
-    "构造与贪心": 1374,
     "树结构": 196,
     "交互": 125,
     "数据结构": 395,
     "图论与网络流": 284,
-    "字符串": 226,
-    "数论与同余": 442,
     "几何": 97,
     "博弈": 120,
     "动态规划与状态设计": 345,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式": 26
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2849,
+    "missing_editorial": 357,
+    "ai_generated_with_editorial": 2853,
     "ai_generated_partial_editorial": 113,
-    "missing_editorial": 356,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -129411,6 +129411,152 @@ window.CF_INSIGHTS_DATA = {
             "红色被消除或比赛结束都可化为红色与环上特定非红色位置的强度不等式；利用单调结构可快速定位最早事件，避免逐场模拟。"
           ],
           "solutionBrief": "先直接模拟前 $2n$ 场以处理相邻红色等边界情况，再将队列转成环并标记红色及不同类型的非红色动物。利用红色只会减少的性质，按事件批量跳过无变化阶段；通过单调结构定位下一次红色消失或胜者诞生，若再无事件则判为永无结束。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 1492,
+      "name": "Codeforces Round 704 (Div. 2)",
+      "date": "2021-02-23",
+      "url": "https://codeforces.com/contest/1492",
+      "type": "Div. 2",
+      "problemCount": 5,
+      "maxRating": 2500,
+      "problems": [
+        {
+          "key": "1492A",
+          "index": "A",
+          "slot": "A",
+          "title": "Three swimmers",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1492/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/87792",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math"
+          ],
+          "statementBrief": "三名游泳者分别每隔 $a$、$b$、$c$ 分钟回到泳池左侧一次，回到时刻均为从开始后的周期整数倍。你在开始后第 $p$ 分钟到达，要求计算还需等待多久，直到任意一名游泳者到达左侧。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1492B",
+          "index": "B",
+          "slot": "B",
+          "title": "Card Deck",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/1492/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/87792",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "data structures",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一叠值互不相同的牌，按从底到顶记为 $p_1$ 到 $p_n$。每次从原牌堆顶部取任意正数张牌，保持这段牌的顺序放到新牌堆顶，直到原牌堆为空；要求输出使顺序值最大的最终牌堆。",
+          "transformedStatement": "顺序值的比较等价于比较最终排列的字典序，因此问题可重述为：把原牌堆划分成若干个连续的顶部区段并按操作顺序搬运，使最终排列字典序最大。每轮优先确定当前剩余牌堆中的最大牌所在区段。",
+          "keyObservations": [
+            "由于每张牌的值都在 $1$ 到 $n$ 之间，顺序值的高位权重足以压过所有低位贡献，因此顺序值较大的牌组恰好对应字典序较大的排列。",
+            "每次操作只能取原牌堆顶部的一段，并保持这段牌的顺序；要让新牌组字典序最大，就应先取到当前原牌堆中的最大牌，再递归处理它下方剩余的牌。"
+          ],
+          "solutionBrief": "将目标转化为构造字典序最大的可达排列。反复找到当前剩余牌堆的最大值，把它上方的牌连同最大值作为一段依次放到新牌堆顶；重复处理剩余部分，最终输出新牌堆即可。题解给出的复杂度为 $O(n\\log n)$ 或 $O(n)$，取决于实现。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1492C",
+          "index": "C",
+          "slot": "C",
+          "title": "Maximum width",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1492/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/87792",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dp",
+            "greedy",
+            "two pointers"
+          ],
+          "statementBrief": "给定字符串 $s$ 和 $t$，选择 $s$ 中递增的 $m$ 个位置，使这些位置上的字符依次组成 $t$。在所有这样的匹配中，求相邻所选位置差的最大值所能达到的最大值。",
+          "transformedStatement": "把目标改为分别考察 $t$ 的每一对相邻字符：预处理每个字符在合法匹配中的最早和最晚位置，再用后一字符的最晚位置减去前一字符的最早位置，取最大值即可。",
+          "keyObservations": [
+            "固定相邻字符 $t_i,t_{i+1}$ 时，要让位置差最大，应让 $p_i$ 尽量靠左、$p_{i+1}$ 尽量靠右；因此该对的最大间距是 $right_{i+1}-left_i$。",
+            "所有合法匹配中，$t_i$ 最早可出现的位置可通过从前往后贪心匹配得到，最晚位置可通过反向贪心匹配得到，两次扫描即可覆盖所有相邻间距的候选值。"
+          ],
+          "solutionBrief": "从左向右贪心匹配 $t$，记录各字符最早位置 $left_i$；再从右向左贪心匹配，记录最晚位置 $right_i$。答案为所有 $right_{i+1}-left_i$ 的最大值，时间复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1492D",
+          "index": "D",
+          "slot": "D",
+          "title": "Genius's Gambit",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1492/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/87792",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定 $a$、$b$、$k$，要构造两个二进制整数 $x\\ge y$，使它们各含 $a$ 个 0 和 $b$ 个 1，并且差值 $x-y$ 的二进制表示恰有 $k$ 个 1；若无法构造则报告无解。",
+          "transformedStatement": "将构造目标转化为：固定 $x$ 为 1、0 分别成段的二进制数，只通过交换 $y$ 中 1 与 0 的位置来调整差值的二进制 1 的数量，并判断目标是否落在可达到的范围内。",
+          "keyObservations": [
+            "先固定一个由连续的 $b$ 个 1 和连续的 $a$ 个 0 组成的数 $x$，再只调整 $y$ 中的 1 的位置，能在保持两数位数及 1、0 数量不变的同时控制差值的二进制 1 的个数。",
+            "把连续 1 段末尾的 1 向右移动，差值中 1 的个数会增加；先移动多格可一次增加相应数量，之后逐格移动即可补足目标 $k$。",
+            "题解给出的构造可覆盖 $k\\le a+b-2$；当 $k>a+b-2$ 时无解，因此构造范围同时给出了可行性边界。",
+            "当 $a=0$ 或 $b=1$ 时需单独处理，不能直接套用一般构造。"
+          ],
+          "solutionBrief": "特殊情况单独判断。其余情况下令 $x$ 的 1 和 0 分别连续排列，通过把 $y$ 中连续 1 段末尾的 1 向右移动来调节 $x-y$ 的二进制 1 的数量；当 $k>a+b-2$ 时输出无解。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1492E",
+          "index": "E",
+          "slot": "E",
+          "title": "Almost Fault-Tolerant Database",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1492/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/87792",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "constructive algorithms",
+            "dfs and similar",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "数据库有 $n$ 份长度为 $m$ 的数组副本，每份都可能被改动过至多两个元素。需要恢复一个长度为 $m$ 的数组，使它与每份现有副本都至多有两个位置不同；若有多个答案可任意输出，无解则报告无解。",
+          "transformedStatement": "把第一份副本作为锚点：任何答案都只能在它的至多两个位置上修改。于是问题转化为在这些有限修改方案中，寻找一个与每份副本的汉明距离都不超过二的候选数组。",
+          "keyObservations": [
+            "任意合法答案与第一份副本最多相差两项，因此只需在第一份副本上修改至多两个位置，不必搜索整个数组空间。",
+            "若某份副本与当前候选相差三项或四项，任何合法修正都必须从这些不匹配位置中选出一项或两项改成该副本对应的值，因此分支数分别只有三种或六种。",
+            "若某份副本与第一份副本相差至少五项，即使把允许修改的两个位置都用于消除差异，仍至少相差三项，因此不可能存在答案。",
+            "每次选取一份仍与候选相差超过两项的副本并递归修正；候选最多改动两个位置，最终逐份检查即可确认是否满足所有距离限制。"
+          ],
+          "solutionBrief": "以第一份副本为初始候选，只递归尝试修改至多两个位置。遇到距离为三或四的副本时，枚举必要的不匹配位置并改为该副本的值；若某副本距离至少五则直接判无解。候选通过全部副本的距离检查后输出。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
