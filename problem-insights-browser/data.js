@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4311,
+    "total_problems": 4312,
     "source_total_problems": 4313,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4311,
-    "with_editorial_brief": 3952,
-    "with_solution_brief": 3954,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4312,
+    "with_editorial_brief": 3953,
+    "with_solution_brief": 3955,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3373,
+    "ai_override_count": 3374,
     "primary_topic_count": 13,
     "contest_count": 674,
     "rating_min": 800,
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "构造与贪心": 1415,
-    "动态规划与状态设计": 356,
+    "动态规划与状态设计": 357,
     "数据结构": 402,
     "图论与网络流": 292,
     "数论与同余": 453,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2943,
+    "ai_generated_with_editorial": 2944,
     "ai_generated_partial_editorial": 118,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -336,7 +336,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-25",
       "url": "https://codeforces.com/contest/2267",
       "type": "Div. 2",
-      "problemCount": 7,
+      "problemCount": 8,
       "maxRating": null,
       "problems": [
         {
@@ -543,6 +543,33 @@ window.CF_INSIGHTS_DATA = {
             "题解将上述过程用于连续变换，并按值域位数预处理状态，整体复杂度控制在 $O(n\\log^2 A)$，其中单次变换为 $O(n\\log A)$。"
           ],
           "solutionBrief": "用二进制 Trie 查询每个元素的第 $k$ 小异或值，再通过维护各元素的排名指针进行多路归并。每次生成最小的 $2n$ 个有向异或值，取奇数位置得到下一数组；预处理连续状态后按查询的变换次数取答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2267G",
+          "index": "G",
+          "slot": "G",
+          "title": "New LRT",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2267/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/157126",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [],
+          "originalTags": [
+            "divide and conquer",
+            "dp",
+            "fft"
+          ],
+          "statementBrief": "给定目标位置 $n$、整数 $m$ 和费用数组 $c$。每一步可选择正整数 $x$，但必须满足 $m\\&x=x$，随后从当前位置前进 $x$ 并支付 $c_x$；要求对所有从 $0$ 到 $n$ 的有序移动序列，将各序列的总费用求和并对 $10^9+7$ 取模。",
+          "transformedStatement": "把每条行程视为总步长恰为 $n$、每个步长均为 $m$ 的子掩码的有序序列。答案可改为统计每种合法步长在所有行程中的出现次数，再乘以该步长费用；删除一次长度为 $x$ 的移动后，其出现次数对应长度 $n-x$ 的剩余路径及其可插入位置数。",
+          "keyObservations": [
+            "可达路径只取决于各步长度之和，且每步长度必须是 $m$ 的子掩码；因此按终点位置统计路径数时，可将所有合法步长对应的前驱路径数相加。",
+            "把小于 $2^j$ 的合法步长贡献汇总为 $st[i][j]$，加入 $2^j$ 时只需加上不使用它的项和使用它后的子问题贡献，从而把逐个枚举步长的转移压到 $O(n\\log n)$。",
+            "固定一段长度为 $x$ 的移动并删除它，剩余路径长度为 $n-x$；若剩余路径有 $p$ 步，这段移动可插入 $p+1$ 个位置，因此该移动对总费用的出现次数由所有剩余路径的 $p+1$ 之和给出。",
+            "维护路径数和“每条路径步数加一”的总和即可分别完成路径计数与移动出现次数统计，避免枚举移动前后的分割位置。"
+          ],
+          "solutionBrief": "用 $st[i][j]$ 按二进制位汇总合法步长的前驱路径数，计算各长度的路径数 $dp$。再维护 $cnt[i]$ 为长度 $i$ 的路径中“步数加一”的总和；对每个合法步长 $x$，将 $c_x\\cdot cnt[n-x]$ 加入答案。复杂度为 $O(n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
