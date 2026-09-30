@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-30",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4311,
+    "total_problems": 4312,
     "source_total_problems": 4313,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4311,
-    "with_editorial_brief": 3952,
-    "with_solution_brief": 3954,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4312,
+    "with_editorial_brief": 3953,
+    "with_solution_brief": 3955,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3373,
+    "ai_override_count": 3374,
     "primary_topic_count": 13,
     "contest_count": 674,
     "rating_min": 800,
@@ -46,7 +46,7 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "构造与贪心": 1415,
     "动态规划与状态设计": 357,
-    "数据结构": 401,
+    "数据结构": 402,
     "图论与网络流": 292,
     "数论与同余": 453,
     "交互": 129,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2943,
+    "ai_generated_with_editorial": 2944,
     "ai_generated_partial_editorial": 118,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -149,7 +149,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-26",
       "url": "https://codeforces.com/contest/2268",
       "type": "Div. 1",
-      "problemCount": 5,
+      "problemCount": 6,
       "maxRating": null,
       "problems": [
         {
@@ -205,6 +205,42 @@ window.CF_INSIGHTS_DATA = {
             "更新只改变一个元素的贡献，因此维护旧值和新值是否具有偶数 popcount 即可在 $O(1)$ 时间修正答案。"
           ],
           "solutionBrief": "维护数组中二进制 popcount 为偶数的元素数量。操作保持 popcount 奇偶性，且题解证明所有偶数 popcount 元素都能同时变为 All-Meat；每次更新删除旧贡献并加入新贡献。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2268C",
+          "index": "C",
+          "slot": "C",
+          "title": "KiaKio and Energy Intervals",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "dsu",
+            "greedy",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组，任选长度至少为 2 的连续区间，令区间最大值为 $m$，将区间每个元素分别与 $m$ 按位与后再全部按位异或。求所有区间中该结果的最大值。",
+          "transformedStatement": "用前缀异或把区间结果改写为 $(p_{l-1}\\oplus p_r)\\&m$；再用最大笛卡尔树按区间最大值分组，使每个区间由其 LCA 节点及左右两侧前缀端点表示。",
+          "keyObservations": [
+            "按位与对异或可分配，因此区间值等于前缀异或端点的异或再与区间最大值相与，即 $(p_{l-1}\\oplus p_r)\\&m$。",
+            "最大笛卡尔树中，区间 $[l,r]$ 的最大值对应节点是其端点位置的 LCA；固定节点后，合法区间端点被限制在该节点左右子树覆盖的两段前缀范围内。",
+            "从高位到低位贪心构造候选掩码 $M$；可行性等价于存在节点 $v$ 满足 $(a_v\\&M)=M$，且两端前缀异或为 $M$。",
+            "对每个节点保留较大侧的前缀异或频次，枚举较小侧寻找互补值；必须排除端点 $(v-1,v)$，否则会把禁止的单元素区间误判为合法。"
+          ],
+          "solutionBrief": "先用最大笛卡尔树确定区间最大值，再按位贪心尝试答案掩码。每次检查将数组按掩码取与，用前缀异或和小侧合并维护频次，判断互补端点是否存在并排除单元素区间；单次检查为 $O(n\\log n)$，总计 $O(18n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
