@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-09-30T05:52:14+00:00",
+  "updated_at": "2026-09-30T22:35:42+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -100859,6 +100859,33 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的相邻元素求和操作与美丽度定义，以及 editorial 给出的合并不等式和两端取值方式。",
+        "quality_flags": []
+      }
+    },
+    "1487B": {
+      "problem_key": "1487B",
+      "title": "Cat Cycle",
+      "rating": 1200,
+      "problem_url": "https://codeforces.com/contest/1487/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/87873",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "4219500872a1fbf122e900f24ecfc285fb462b48a33e28f136c9d6856ee84434",
+      "generated_at": "2026-09-30T22:35:42+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个按环形顺序排列的位置，甲猫初始在位置 $n$，乙猫初始在位置 $1$。每小时两猫都沿顺序前进；若它们要进入同一位置，甲猫占据该位置，乙猫跳过它并继续前进且不再返回，求第 $k$ 小时乙猫所在的位置。",
+        "transformed_statement": "把位置改为零起点编号后，偶数个位置时两猫不会相遇；奇数个位置时，乙猫每经过 $\\lfloor n/2\\rfloor$ 小时就因越过甲猫多前进一步。因此只需计算基础前进步数与额外步数之和，再对 $n$ 取模。",
+        "key_observations": [
+          "当 $n$ 为偶数时，两只猫每小时所在位置的奇偶性始终不同，因此永远不会相遇，乙猫只需按循环顺序前进 $k$ 步。",
+          "当 $n$ 为奇数时，两猫从相邻位置反向移动，经过 $f=\\lfloor n/2\\rfloor$ 步会相遇；乙猫越过甲猫后多走一步，又回到相邻且反向移动的局面。",
+          "奇数情况下，每经过 $f$ 小时，乙猫累计多走一步，因此从零开始编号时，其位置可直接写成 $(k+\\lfloor k/f\\rfloor)\\bmod n$，无需逐小时模拟。"
+        ],
+        "solution_brief": "偶数时答案是 $(k\\bmod n)+1$。奇数时令 $f=\\lfloor n/2\\rfloor$，答案是 $((k+\\lfloor k/f\\rfloor)\\bmod n)+1$；这里已将零起点位置换成题目要求的一起点编号。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据题面中的循环移动与相遇规则，以及题解给出的奇偶分类、相遇周期和零起点公式。",
         "quality_flags": []
       }
     }

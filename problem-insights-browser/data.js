@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-09-30",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4312,
+    "total_problems": 4313,
     "source_total_problems": 4313,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4312,
-    "with_editorial_brief": 3953,
-    "with_solution_brief": 3955,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4313,
+    "with_editorial_brief": 3954,
+    "with_solution_brief": 3956,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3374,
+    "ai_override_count": 3375,
     "primary_topic_count": 13,
     "contest_count": 674,
     "rating_min": 800,
@@ -48,7 +48,7 @@ window.CF_INSIGHTS_DATA = {
     "动态规划与状态设计": 357,
     "数据结构": 402,
     "图论与网络流": 292,
-    "数论与同余": 453,
+    "数论与同余": 454,
     "交互": 129,
     "组合计数与概率": 330,
     "几何": 100,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2944,
+    "ai_generated_with_editorial": 2945,
     "ai_generated_partial_editorial": 118,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -129985,7 +129985,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2021-02-15",
       "url": "https://codeforces.com/contest/1487",
       "type": "Educational",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": 2900,
       "problems": [
         {
@@ -130010,6 +130010,31 @@ window.CF_INSIGHTS_DATA = {
             "所以可能赢家恰好是初始等级严格高于全局最小值的英雄，答案等于人数减去最小值的出现次数。"
           ],
           "solutionBrief": "统计数组最小值出现的次数，并用英雄总数减去该次数。最小等级的英雄没有更弱对手，不能获胜；其他英雄可反复击败最弱英雄，累积足够多的胜场。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "1487B",
+          "index": "B",
+          "slot": "B",
+          "title": "Cat Cycle",
+          "rating": 1200,
+          "problemUrl": "https://codeforces.com/contest/1487/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/87873",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "有 $n$ 个按环形顺序排列的位置，甲猫初始在位置 $n$，乙猫初始在位置 $1$。每小时两猫都沿顺序前进；若它们要进入同一位置，甲猫占据该位置，乙猫跳过它并继续前进且不再返回，求第 $k$ 小时乙猫所在的位置。",
+          "transformedStatement": "把位置改为零起点编号后，偶数个位置时两猫不会相遇；奇数个位置时，乙猫每经过 $\\lfloor n/2\\rfloor$ 小时就因越过甲猫多前进一步。因此只需计算基础前进步数与额外步数之和，再对 $n$ 取模。",
+          "keyObservations": [
+            "当 $n$ 为偶数时，两只猫每小时所在位置的奇偶性始终不同，因此永远不会相遇，乙猫只需按循环顺序前进 $k$ 步。",
+            "当 $n$ 为奇数时，两猫从相邻位置反向移动，经过 $f=\\lfloor n/2\\rfloor$ 步会相遇；乙猫越过甲猫后多走一步，又回到相邻且反向移动的局面。",
+            "奇数情况下，每经过 $f$ 小时，乙猫累计多走一步，因此从零开始编号时，其位置可直接写成 $(k+\\lfloor k/f\\rfloor)\\bmod n$，无需逐小时模拟。"
+          ],
+          "solutionBrief": "偶数时答案是 $(k\\bmod n)+1$。奇数时令 $f=\\lfloor n/2\\rfloor$，答案是 $((k+\\lfloor k/f\\rfloor)\\bmod n)+1$；这里已将零起点位置换成题目要求的一起点编号。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
