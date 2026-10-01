@@ -5,6 +5,7 @@
     "name": "KiaKio and Squared Numbers",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1000,
     "tags": [
       "brute force",
       "implementation"
@@ -16,6 +17,7 @@
     "name": "SauSaGe Bank",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "greedy",
       "math"
@@ -27,6 +29,7 @@
     "name": "Deglado",
     "type": "PROGRAMMING",
     "points": 3250.0,
+    "rating": 3500,
     "tags": [
       "constructive algorithms"
     ]
@@ -37,6 +40,7 @@
     "name": "Kia Kio and Tree of Life",
     "type": "PROGRAMMING",
     "points": 2750.0,
+    "rating": 2700,
     "tags": [
       "data structures",
       "fft",
@@ -50,6 +54,7 @@
     "name": "AghaBalaSar and Hamed",
     "type": "PROGRAMMING",
     "points": 2250.0,
+    "rating": 2600,
     "tags": [
       "data structures",
       "dp",
@@ -62,6 +67,7 @@
     "name": "KiaKio and Energy Intervals",
     "type": "PROGRAMMING",
     "points": 1750.0,
+    "rating": 2300,
     "tags": [
       "binary search",
       "bitmasks",
@@ -80,6 +86,7 @@
     "name": "What a SauSaGe! It's All Meat",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1500,
     "tags": [
       "bitmasks",
       "brute force",
@@ -93,6 +100,7 @@
     "name": "K Is Important",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 1200,
     "tags": [
       "constructive algorithms",
       "greedy"
@@ -104,6 +112,7 @@
     "name": "New LRT",
     "type": "PROGRAMMING",
     "points": 3000.0,
+    "rating": 2600,
     "tags": [
       "divide and conquer",
       "dp",
@@ -116,6 +125,7 @@
     "name": "XOR Transformations (Hard Version)",
     "type": "PROGRAMMING",
     "points": 2000.0,
+    "rating": 2300,
     "tags": [
       "bitmasks",
       "brute force",
@@ -134,6 +144,7 @@
     "name": "XOR Transformations (Easy Version)",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1700,
     "tags": [
       "bitmasks",
       "brute force",
@@ -147,6 +158,7 @@
     "name": "Clean Substrings",
     "type": "PROGRAMMING",
     "points": 1750.0,
+    "rating": 2000,
     "tags": [
       "combinatorics",
       "data structures",
@@ -159,6 +171,7 @@
     "name": "Backrooms Hill",
     "type": "PROGRAMMING",
     "points": 1250.0,
+    "rating": 1400,
     "tags": [
       "constructive algorithms",
       "dp",
@@ -173,6 +186,7 @@
     "name": "GCD Treasury",
     "type": "PROGRAMMING",
     "points": 1000.0,
+    "rating": 1200,
     "tags": [
       "greedy",
       "math",
@@ -185,6 +199,7 @@
     "name": "Fashionable Array",
     "type": "PROGRAMMING",
     "points": 500.0,
+    "rating": 800,
     "tags": [
       "brute force",
       "constructive algorithms",
@@ -197,6 +212,7 @@
     "name": "Turn Into a Palindrome",
     "type": "PROGRAMMING",
     "points": 250.0,
+    "rating": 800,
     "tags": [
       "greedy",
       "strings"
@@ -207,6 +223,7 @@
     "index": "H",
     "name": "Deque Malfunction",
     "type": "PROGRAMMING",
+    "rating": 2400,
     "tags": [
       "binary search",
       "data structures",
@@ -219,6 +236,7 @@
     "index": "G",
     "name": "Modular Tree",
     "type": "PROGRAMMING",
+    "rating": 2200,
     "tags": [
       "dfs and similar",
       "dp",
@@ -233,6 +251,7 @@
     "index": "F",
     "name": "MEX Replacement",
     "type": "PROGRAMMING",
+    "rating": 2000,
     "tags": [
       "binary search",
       "brute force",
@@ -247,6 +266,7 @@
     "index": "E",
     "name": "Prime Destruction",
     "type": "PROGRAMMING",
+    "rating": 1400,
     "tags": [
       "brute force",
       "dp",
@@ -259,6 +279,7 @@
     "index": "D",
     "name": "Falling Concrete",
     "type": "PROGRAMMING",
+    "rating": 1400,
     "tags": [
       "constructive algorithms",
       "data structures",
@@ -271,6 +292,7 @@
     "index": "C",
     "name": "AND, OR, Sort!",
     "type": "PROGRAMMING",
+    "rating": 1000,
     "tags": [
       "greedy",
       "strings"
@@ -281,6 +303,7 @@
     "index": "B",
     "name": "Three Piles",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "games",
       "greedy",
@@ -292,6 +315,7 @@
     "index": "A",
     "name": "Good Contest",
     "type": "PROGRAMMING",
+    "rating": 800,
     "tags": [
       "greedy"
     ]
