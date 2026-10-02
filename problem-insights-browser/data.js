@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-02",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4312,
+    "total_problems": 4313,
     "source_total_problems": 4313,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4312,
-    "with_editorial_brief": 3953,
-    "with_solution_brief": 3955,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4313,
+    "with_editorial_brief": 3954,
+    "with_solution_brief": 3956,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3374,
+    "ai_override_count": 3375,
     "primary_topic_count": 13,
     "contest_count": 674,
     "rating_min": 800,
@@ -46,7 +46,7 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "构造与贪心": 1416,
     "动态规划与状态设计": 356,
-    "数据结构": 401,
+    "数据结构": 402,
     "图论与网络流": 293,
     "数论与同余": 451,
     "交互": 129,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2943,
+    "ai_generated_with_editorial": 2944,
     "ai_generated_partial_editorial": 119,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -148,7 +148,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-26",
       "url": "https://codeforces.com/contest/2268",
       "type": "Div. 1",
-      "problemCount": 5,
+      "problemCount": 6,
       "maxRating": 3500,
       "problems": [
         {
@@ -204,6 +204,42 @@ window.CF_INSIGHTS_DATA = {
             "因此最优答案恰好是当前数组中 popcount 为偶数的元素数，更新只需撤销旧值贡献并加入新值贡献。"
           ],
           "solutionBrief": "操作掩码保持每个数的 popcount 奇偶性，而奇数 popcount 元素无法成为 $3$ 的倍数。题解证明所有偶数 popcount 元素都能同时转成目标状态，所以答案是偶数 popcount 元素数；每次修改只需更新对应贡献，初始化与单次更新分别为 $O(n)$、$O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2268C",
+          "index": "C",
+          "slot": "C",
+          "title": "KiaKio and Energy Intervals",
+          "rating": 2300,
+          "problemUrl": "https://codeforces.com/contest/2268/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/157140",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "data structures",
+            "divide and conquer",
+            "dsu",
+            "greedy",
+            "trees",
+            "two pointers"
+          ],
+          "statementBrief": "给定数组，可选择任意满足 $l<r$ 的连续区间，令区间最大值为 $m$，将区间每个元素分别与 $m$ 按位 AND 后再全部按位 XOR。求所有合法区间中得到的最大能量值。",
+          "transformedStatement": "用前缀异或把区间能量表示为 $ (p_{l-1}\\oplus p_r)\\&m $，再用最大笛卡尔树把区间最大值归属到端点 LCA。对候选答案掩码 $M$，问题转为寻找同一树节点两侧的前缀端点，使其掩码前缀异或恰为 $M$。",
+          "keyObservations": [
+            "区间结果可化为 $ (p_{l-1}\\oplus p_r)\\&m $，因此逐元素 AND-XOR 被压缩成两个前缀异或与区间最大值的关系。",
+            "最大笛卡尔树中，区间 $[l,r]$ 的最大值对应其端点的 LCA，故可按树节点划分恰好以该节点为最大值的区间。",
+            "固定候选掩码 $M$ 后，令 $s_i$ 为 $a_i\\&M$ 的前缀异或；可行性等价于节点值包含 $M$ 且存在端点满足 $s_x\\oplus s_y=M$，从而转为频次查找。",
+            "对子树两侧采用小并大合并，每次扫描较小侧并查询互补值；同时排除 $(v-1,v)$ 对应的非法单元素区间，保证判定正确。"
+          ],
+          "solutionBrief": "先建最大笛卡尔树，再从高位到低位贪心尝试答案掩码。每次将数组按掩码取 AND 并求前缀异或，在树上用小并大维护频次，检查两侧是否存在异或为掩码的端点；单次判定为 $O(n\\log n)$，总复杂度为 $O(18n\\log n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
