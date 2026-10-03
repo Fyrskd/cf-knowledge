@@ -1,337 +1,336 @@
 {
   "version": 1,
-  "updated_at": "2026-10-02T12:49:50+00:00",
+  "updated_at": "2026-10-03T21:47:41+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
-      "title": "Deranged Calculator",
+      "title": "Калькулятор беспорядков",
       "rating": 2800,
       "problem_url": "https://codeforces.com/contest/2264/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/156680",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "684d822f197aff1a55811d907f0963830f0012a9e48c1f5beab6fd1b39d9d8ae",
-      "generated_at": "2026-10-01T06:17:26+00:00",
+      "input_hash": "8266e49dac4beb92d889d9250cbb47bda7c3ac46a54ed56b2fe343cd94ff7cc4",
+      "generated_at": "2026-10-03T21:39:23+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定正整数 $k$，要编写一行合法的 DC 表达式。表达式只能使用输入 $n$、括号、round 以及 $+$、$-$、$*$、$/$，不能写数字常量；对每个 $2\\le n\\le k$，它必须计算排列 $(1,2,\\ldots,n)$ 的错排数量。",
-        "transformed_statement": "把不能使用循环和常量的表达式编译成一组固定算术结构：用 round 产生关于输入 $n$ 的阈值开关，模拟只保留不超过 $n$ 的阶乘因子；最后将错排数视为 $n!/e$ 的最近整数，并把 $e$ 展开为可嵌套复用的有限表达式。",
+        "statement_brief": "DC 程序只能使用输入正整数 $n$、括号、round 和加减乘除，不能直接写数字；除法保持精确分数，round 在恰好 $0.5$ 时向上取整。给定 $k$，需构造一个表达式，使每个 $2\\le n\\le k$ 时输出 $1,\\ldots,n$ 的错排数。",
+        "transformed_statement": "把目标改写为无循环的表达式构造：先用 round 制造关于 $n$ 的阶跃指示器，按阈值拼出 $n!$，再利用错排数与阶乘的关系 $D_n=round(n!/e)$ 完成统一计算。借助嵌套阶乘倒数和表示 $e$，并优化常量表达式长度。",
         "key_observations": [
-          "利用 $\u0000round(n/(n+x))$ 构造阈值指示器：当 $n\\ge x$ 时结果为 $1$，否则为 $0$，因此可以在没有条件语句的情况下选择性启用乘法因子。",
-          "将 $n!$ 写成从 $2$ 到 $k$ 的条件乘积：第 $j$ 项在 $n\\ge j$ 时取 $j$，否则取 $1$，从而一个固定表达式即可得到当前输入的阶乘。",
-          "错排数满足 $D_n=round(n!/e)$，所以问题转化为构造阶乘和足够精确的 $e$ 近似，而无需直接模拟排列。",
-          "用 $e=\\sum_{i=0}^{\\infty}1/i!$ 的截断式，并改写成嵌套形式以复用阶乘中的常量；在目标范围内截到 $i=50$ 的误差足以保证最终四舍五入正确。"
+          "用 $round(n/(n+x))$ 构造阈值指示器：当 $n\\ge x$ 时为 $1$，否则为 $0$，从而在无循环条件下选择指定阶乘因子。",
+          "将每个整数常量表示为由 $n$、加减乘除构成的表达式，并用小型 DP 优化常量表达式长度，避免语言禁止直接写数字。",
+          "利用阈值指示器逐项筛选，乘积得到 $n!$；第 $j$ 项在 $n\\ge j$ 时贡献 $j$，否则贡献 $1$。",
+          "错排数满足 $D_n=round(n!/e)$，用 $e=\\sum_{k=0}^{50}1/k!$ 的嵌套形式近似，并通过最终 round 得到正确整数。"
         ],
-        "solution_brief": "先用 $round(n/(n+x))$ 构造 $n\\ge x$ 的指示器，拼出条件乘积得到 $n!$；再用嵌套形式近似 $e$，输出 $round(n!/e)$，即错排数。常量通过仅含 $n$ 的短表达式预先构造，并优化总字符数。",
+        "solution_brief": "先构造短表达式表示常量，再用 $round(n/(n+x))$ 实现阈值判断并拼出 $n!$。根据 $D_n=round(n!/e)$，用前 50 项阶乘倒数的嵌套和近似 $e$，最终输出对应表达式。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [
-          "代数、矩阵与多项式",
+          "组合计数与概率",
           "基础实现与模拟"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text 提取核心构造与公式，结合 statement_text 确认 DC 语法、运算规则和目标；tags 仅用于主题辅助判断。",
+        "source_provenance": "依据 statement_text 的 DC 语言规则、editorial_text 的完整构造方案，以及 tags 中的构造和实现标签。",
         "quality_flags": [
-          "statement_truncated"
+          "statement_text末尾截断"
         ]
       }
     },
     "2264E2": {
       "problem_key": "2264E2",
-      "title": "A Prime Flood (Hard Version)",
+      "title": "Простое наводнение (сложная версия)",
       "rating": 2700,
       "problem_url": "https://codeforces.com/contest/2264/problem/E2",
       "editorial_url": "https://codeforces.com/blog/entry/156680",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "5c9f0c7d22c2debbfd958205f3ddf069f4bdf8c855a832f5035650d72c0f6420",
-      "generated_at": "2026-10-01T06:17:52+00:00",
+      "input_hash": "0507172a623a9dd5c17ac149b629005749ae9b1ddcfdc5db2917386ba5950123",
+      "generated_at": "2026-10-03T21:39:39+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定数组，枚举每个非空下标子序列。每次可选一个质数，并同时将当前值能被该质数整除的所有元素减一，重复任意次后使所有元素相等；对该子序列取能达到的最大公共值，求所有子序列结果之和。",
-        "transformed_statement": "用最小端点 $x$ 和最大端点 $y$ 建立 DP；固定 $x$ 扫描 $y$ 时，只有 $y$ 的不同质因子乘积 $r(y)$ 整除 $x$ 才会改变状态。再把端点计数拆成只依赖 $x$ 与只依赖 $y$ 的因子，对 DP 行的常值断点区间统一求和。",
+        "statement_brief": "给定数组，任选一个非空子序列。每次可选质数 $p$，同时把当前能被 $p$ 整除的所有元素减一，重复操作后使所有元素相等；令可达到的最大公共值为 $f(b)$，求所有按下标区分的非空子序列的 $f(b)$ 之和。",
+        "transformed_statement": "把子序列按最小值 $x$ 和最大值 $y$ 分类，定义 $dp[x][y]$ 表示该端点对对应的最大公共值。固定 $x$ 后，只有满足不同质因子乘积 $r(y)\\mid x$ 的 $y$ 会改变状态，因此用断点压缩每行并聚合端点计数。",
         "key_observations": [
-          "令 $r(y)$ 为 $y$ 的不同质因子乘积，则端点 DP 只有在 $r(y)\\mid x$ 时才会从上一行转移，否则直接继承，因此每行只需关注少数变化位置。",
-          "固定 $y$，枚举 $r(y),2r(y),\\ldots<y$ 即可生成所有会被 $y$ 阻断的最小值 $x$，避免检查全部端点对。",
-          "按断点存储每行的常值区间；在阻断位置读取上一行的 $dp[x-1][y-1]$，且相邻值相同就合并，从而压缩二次大小的 DP 表。",
-          "端点为 $x<y$ 的子序列数可分解为 $L_xR_y$，其中 $L_x=C_x2^{-S(x)}$、$R_y=C_y2^{S(y-1)}$；因此每个压缩区间的贡献可用 $R_y$ 前缀和一次计算。"
+          "固定最小值 $x$ 后，$dp[x][y]$ 只有在 $r(y)\\mid x$ 时才可能变化，其中 $r(y)$ 是 $y$ 的不同质因子乘积；因此每行只需记录少量断点。",
+          "转移为 $dp[x][y]=dp[x-1][y-1]$ 或沿用 $dp[x][y-1]$，在断点处从上一行定位 $y-1$ 的值即可构建整行，避免存储完整二维表。",
+          "固定端点 $x<y$ 时，子序列数量可拆为 $L_xR_y$，其中 $L_x=C_x2^{-S(x)}$、$R_y=C_y2^{S(y-1)}$；所以每个断点区间可用 $R_y$ 前缀和一次性计数。",
+          "相同最小值和最大值的子序列单独贡献 $x(2^{c_x}-1)$，其余端点区间只需处理出现过的 $x$，从而避免遍历所有数值对。"
         ],
-        "solution_brief": "预处理每个数的质因子乘积并生成阻断位置，按断点递推并压缩端点 DP 各行。统计值频次后，将最小值与最大值的子序列数量拆成左右因子，用前缀和累加每个常值区间，另行处理 $x=y$。",
+        "solution_brief": "预处理每个 $y$ 的质因子乘积并生成断点，按最小值递增用断点压缩 DP 行；再将端点子序列数拆成左右权重，用前缀和统计各断点区间贡献，最后单独加入 $x=y$ 的贡献。",
         "primary_topic": "动态规划与状态设计",
         "secondary_topics": [
           "组合计数与概率",
           "数论与同余"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面规则、完整 editorial 的三条提示与正式解法；算法标签仅用于主题辅助。",
+        "source_provenance": "依据完整题面、editorial 的三条提示与完整解法代码；算法标签仅作辅助参考。",
         "quality_flags": []
       }
     },
     "2264E1": {
       "problem_key": "2264E1",
-      "title": "A Prime Flood (Easy Version)",
+      "title": "Простое наводнение (простая версия)",
       "rating": 2200,
       "problem_url": "https://codeforces.com/contest/2264/problem/E1",
       "editorial_url": "https://codeforces.com/blog/entry/156680",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "e5775a91e82dfbf5c628dc71163c9ef859c24cffa3911a84dfcc41bc108e08f4",
-      "generated_at": "2026-10-01T06:18:21+00:00",
+      "input_hash": "6a483a9c8dda086ea77ee3687aad3291c86e953b338100e0c6c14f0d5d9eaa65",
+      "generated_at": "2026-10-03T21:39:55+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定数组，分别考虑每个非空子序列。每次可选一个质数，并同时将当前能被该质数整除的所有元素减一；操作任意次后，求能让所有元素相等的最大公共值，并对所有按下标选择的子序列求和。",
-        "transformed_statement": "把每个子序列压缩为其最小值 $x$ 与最大值 $y$，定义 $dp[x][y]$ 为这对端点能达到的最大公共值；先预处理所有端点状态，再按数组中各值的出现次数统计具有指定最小值和最大值的子序列。",
+        "statement_brief": "给定数组，分别对每个非空子序列操作：任选质数 $p$，同时将当前能被 $p$ 整除的所有元素减一，重复任意次。求每个子序列最终能统一成的最大整数之和；不同下标选择分别计数，结果对 $998244353$ 取模。",
+        "transformed_statement": "把每个子序列压缩为其最小值和最大值，定义 $dp[x][y]$ 为区间端点 $x,y$ 能统一到的最大值；先预处理所有端点状态，再按数组频次统计具有给定最小、最大值的子序列。",
         "key_observations": [
-          "操作始终保持数值的相对顺序，因此一个子序列的最小值和最大值最终相等时，二者之间的所有值也必然同时相等；子序列贡献只由其最小值和最大值决定。",
-          "设当前端点为 $x<y$：若存在整除 $y$ 但不整除 $x$ 的质数，可先只降低上端点，转移到 $dp[x][y-1]$；否则降低 $y$ 的操作必然同时降低 $x$，转移到 $dp[x-1][y-1]$。",
-          "令 $need[y]$ 为 $y$ 的不同质因子乘积，则“$y$ 的所有质因子都整除 $x$”等价于 $x\\bmod need[y]=0$，从而可按端点差递增预处理全部状态。",
-          "固定最小值 $x$ 和最大值 $y$ 后，两端必须各选至少一个出现位置，中间值任意选；因此方案数为 $(2^{c_x}-1)(2^{c_y}-1)2^{\\sum_{x<v<y}c_v}$，可用频率前缀和计算。"
+          "任意操作都保持数值的相对顺序，因此最小值和最大值最终相等时，区间内所有值也必须相等，子序列贡献只取决于其最小值与最大值。",
+          "设端点状态为 $dp[x][y]$；若 $y$ 的某个质因子不整除 $x$，可先只将上端点变为 $y-1$，转移到 $dp[x][y-1]$。",
+          "若 $y$ 的每个质因子都整除 $x$，任何首次使 $y$ 降低的操作也会使下端点至少降到 $x-1$，故转移为 $dp[x-1][y-1]$，不会因改变操作顺序得到更优结果。",
+          "固定最小值 $x$ 和最大值 $y$ 后，两端必须各选非空子集，中间所有出现可任意选，方案数为 $(2^{c_x}-1)(2^{c_y}-1)2^{ ext{middle}}$，因此可按频次与前缀和计数。"
         ],
-        "solution_brief": "预处理不同质因子乘积和端点 DP：$dp[x][x]=x$，按质因子条件转移到 $dp[x][y-1]$ 或 $dp[x-1][y-1]$。再按最小值、最大值统计子序列数量并加权求和。",
+        "solution_brief": "预处理每个 $y$ 的不同质因子乘积，按区间长度计算 $dp[x][y]$。再统计每对最小值、最大值的子序列数量，乘以对应状态值并求和；预处理为 $O(M^2)$，单测计数为 $O(n^2)$。",
         "primary_topic": "动态规划与状态设计",
         "secondary_topics": [
-          "数论与同余",
-          "组合计数与概率"
+          "组合计数与概率",
+          "数论与同余"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面、editorial 的三条提示与递推证明，以及题解代码中的频率计数实现。",
+        "source_provenance": "依据完整题面、editorial 的 Hint 与 Solution，以及 tags 中的组合计数、DP 和数论分类。",
         "quality_flags": []
       }
     },
     "2264D": {
       "problem_key": "2264D",
-      "title": "Dr. Agos's Dark Mode",
+      "title": "Тёмная тема доктора Агоса",
       "rating": 1900,
       "problem_url": "https://codeforces.com/contest/2264/problem/D",
       "editorial_url": "https://codeforces.com/blog/entry/156680",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "76ce522a2d67d50304dfcd55f0bf144b9629cd62731d7a2b381ed2481c6cf8f9",
-      "generated_at": "2026-10-01T06:18:41+00:00",
+      "input_hash": "7c96800920d01cf21290f5c8071c3222cb831f9f2a19ce9c5b1605bddc8a83ce",
+      "generated_at": "2026-10-03T21:40:14+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定长度为 $n$ 的二进制字符串，允许选择任意至多三个位置放置 $1$，其余位置为 $0$。把每个连续子串视为二进制数，统计能被 $3$ 整除的子串数量，并构造使该数量最少的字符串。",
-        "transformed_statement": "将每个前缀映射为交错和模 $3$ 的余数；一个子串可整除 $3$ 等价于两端前缀余数相同。因此问题转化为用至多三个跳变把 $n+1$ 个前缀余数尽量均匀地分配到三个类别。",
+        "statement_brief": "给定长度为 $n$ 的二进制屏幕图案，允许使用至多三个字符 $1$，其余位置为 $0$。统计所有连续子串对应二进制数能被 $3$ 整除的数量，并构造使该数量最小的图案。",
+        "transformed_statement": "把每个位置前的状态表示为交错前缀和模 $3$ 的余数；原问题等价于让三种前缀余数的出现次数尽量均衡，因为每一对相同余数的前缀恰好对应一个可整除子串。",
         "key_observations": [
-          "由于 $2\\equiv-1\\pmod 3$，定义交错前缀和后，子串可被 $3$ 整除当且仅当其两端对应的前缀余数相同。",
-          "若三种前缀余数出现次数为 $c_0,c_1,c_2$，则答案是 $\\sum_{k=0}^{2}\\binom{c_k}{2}$；总数固定时，三者尽量均衡即可最小化答案。",
-          "字符串中的 $0$ 保持前缀余数不变，最多三个 $1$ 将前缀划分为四个常值块，因此把两个主要边界放在约 $n/3$ 和 $2n/3$ 处即可平衡余数。",
-          "枚举两个边界各自的上下取整位置，并枚举末尾是否放第三个 $1$，检查三种余数计数之差是否不超过 $1$，即可找到最优构造。"
+          "因为 $2\\equiv-1\\pmod 3$，定义交错前缀余数后，一个子串能被 $3$ 整除当且仅当其两端对应的前缀余数相同。",
+          "若三种前缀余数出现次数为 $c_0,c_1,c_2$，答案就是 $\\sum_{i=0}^{2}c_i(c_i-1)/2$；总数固定时，三者尽量均衡可使该值最小。",
+          "字符 $0$ 会重复当前余数，字符 $1$ 只改变余数，因此至多三个 $1$ 将前缀划分为四个常值块；把分界点放在约 $n/3$、$2n/3$ 和末尾即可构造均衡计数。",
+          "只需枚举两个分界点各自的上下取整位置，并枚举末尾是否放置第三个 $1$，检查三种余数计数是否相差至多一；$n=1,2$ 单独输出。"
         ],
-        "solution_brief": "维护交错前缀和的三种余数计数；相同余数的前缀两两对应一个可整除子串。枚举两个边界在 $n/3、2n/3$ 附近的位置及末尾是否放 $1$，输出余数计数均衡的候选；$n=1,2$ 特判。",
+        "solution_brief": "将子串整除性转化为交错前缀余数相等，目标变为均衡三种余数的出现次数。枚举约位于 $n/3$、$2n/3$ 的两个 $1$ 及末尾第三个 $1$，找到计数差至多一的字符串；$n=1,2$ 特判。",
         "primary_topic": "数论与同余",
         "secondary_topics": [
-          "构造与贪心",
-          "字符串"
+          "字符串",
+          "构造与贪心"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags 提炼；复杂度和构造范围来自题解正文。",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text、题目标签整理。",
         "quality_flags": []
       }
     },
     "2264C": {
       "problem_key": "2264C",
-      "title": "Madamant's Skating Dynasty",
+      "title": "Династия фигуристов Мадамант",
       "rating": 1400,
       "problem_url": "https://codeforces.com/contest/2264/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/156680",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "7a71278627c9060fb0a6c2884e4fda19cf0dcea40496709019c2660aac6aa771",
-      "generated_at": "2026-10-01T06:19:05+00:00",
+      "input_hash": "1428a684af7870d6a093f6203082d6ea67cd82062213759d13e5a00d45d9fc74",
+      "generated_at": "2026-10-03T21:40:32+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定评分互不相同的有标号滑手，需用他们构造一棵有根树，使每个非根节点的父亲评分严格更高。每棵合法树的代价是所有父子边的评分差之和，求所有合法树代价总和并对 $998244353$ 取模。",
-        "transformed_statement": "排序后把每个位置视为一个节点；除最大评分节点外，每个节点独立选择任意右侧节点作为父亲。这样所有选择自动形成以最大值为根的合法树，问题转为按边统计其在多少组选择中出现。",
+        "statement_brief": "给定评分互不相同且带编号的滑冰者，要组成一棵有根树；除根外，每人的父亲必须是评分更高者。每棵合法树的代价是所有父子评分差之和，求所有合法树代价总和对 $998244353$ 取模。",
+        "transformed_statement": "将评分排序为 $b_0<\\cdots<b_{n-1}$ 后，最大值必为根；每个位置 $i<n-1$ 独立选择任意 $j>i$ 作为父亲，因此问题转化为统计每条可能有向边在所有选择方案中的总代价贡献。",
         "key_observations": [
-          "排序后每个非根节点只能连接到右侧更大值，父指针必然不断右移，因此最大评分者必为根，且各节点独立选父亲即可构成合法树。",
-          "固定边 $i\\to j$ 后，其他位置 $k$ 仍有 $n-k-1$ 个父节点选择，因此该边出现在 $W_i=\\prod_{k\\ne i}(n-k-1)$ 棵树中，且与 $j$ 无关。",
-          "同一子节点 $i$ 的所有出边贡献可合并为 $W_i(\\sum_{j>i}b_j-(n-i-1)b_i)$，用后缀和计算边权总和。",
-          "用前缀积和后缀积求出每个 $W_i$，无需模逆；逐个位置累加即可避免枚举全部树和边。"
+          "按评分升序后，任意子节点的父亲都在其右侧，因此沿父子关系不断向右，最大评分者必为根，且任意右侧父亲选择都会构成合法树。",
+          "固定位置 $i$ 连接到某个右侧位置 $j$ 时，边代价为 $b_j-b_i$；其他位置的父亲选择数与 $j$ 无关，所以可以按边分别累计贡献。",
+          "固定子节点 $i$ 的某条边会出现在 $W_i=\\prod_{k\\ne i}(n-k-1)$ 棵树中，该权重与父亲位置无关，从而可先求右侧评分和，再乘以统一权重。",
+          "所有 $W_i$ 可用前缀积与后缀积相乘得到，避免模意义下除法；右侧评分和用后缀和维护，整体复杂度为 $O(n\\log n)$。"
         ],
-        "solution_brief": "将评分排序，最大值固定为根；每个位置独立选择右侧父节点。用后缀和计算其所有出边的总成本，再以前后缀积统计包含每条边的树数，累加并取模。复杂度为 $O(n\\log n)$。",
+        "solution_brief": "排序后最大评分者固定为根，每个其他位置独立选择右侧位置作父亲。枚举子节点位置，利用后缀和计算其所有出边代价总和，再乘以前后缀积得到的出现次数，累加取模。",
         "primary_topic": "组合计数与概率",
-        "secondary_topics": [
-          "数论与同余",
-          "构造与贪心"
-        ],
+        "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "题意规则来自 statement，建模、计数公式和复杂度来自 editorial，分类参考 tags。",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 tags 提炼；算法细节和复杂度来自 editorial。",
         "quality_flags": []
       }
     },
     "2264B": {
       "problem_key": "2264B",
-      "title": "Knife's Pill Farm",
+      "title": "Ферма пилюль Найфа",
       "rating": 1000,
       "problem_url": "https://codeforces.com/contest/2264/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/156680",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "5fd43c1cd675a8a2b8bcde206d1fa12878709cb47c0cee8082df5a6d6f4408fb",
-      "generated_at": "2026-10-01T06:19:29+00:00",
+      "input_hash": "8e13a34721129e90cad3e7e3f5eaa90e689361ff4f4ea39af02676a556173b4d",
+      "generated_at": "2026-10-03T21:40:43+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定长度为 $n$ 的评分数组，必须按原顺序恰好选出 $m$ 个元素组成子序列。选出的第 $i$ 个值为 $b_i$ 时，分数增加 $i(b_i-b_{i-1})$（$b_0=0$），允许分数为负，求最大最终分数。",
-        "transformed_statement": "把每个候选子序列按最后一个选中位置分类：得分等于末值乘 $m$ 减去其余 $m-1$ 个值之和。因此固定末位置后只需选此前最小的 $m-1$ 个元素，并在线维护这组元素。",
+        "statement_brief": "给定长度为 $n$ 的评分数组，必须按原顺序恰好选出 $m$ 个元素形成子序列。选出的第 $i$ 个值为 $b_i$ 时，分数增加 $i(b_i-b_{i-1})$（其中 $b_0=0$），求最终分数的最大值。",
+        "transformed_statement": "把相邻差分加权和改写为 $m b_m-\\sum_{i=1}^{m-1}b_i$：枚举最后选中的位置后，问题变成从此前元素中选取 $m-1$ 个最小值，并最大化该表达式。",
         "key_observations": [
-          "将相邻差分展开后，最终得分等价于 $m b_m-(b_1+b_2+\\cdots+b_{m-1})$，因此只有最后选中的元素具有正系数。",
-          "固定最后选中的位置 $j$ 后，前面的 $m-1$ 个元素应取 $a_1\\ldots a_{j-1}$ 中最小的值；它们按原位置排列天然构成合法子序列。",
-          "从左到右扫描时，维护此前元素中最小的 $m-1$ 个数及其和；用最大堆删除集合中的最大值即可保持该不变量，并计算每个可能结尾的最优得分。"
+          "将总分展开后可化为 $m b_m-\\\\sum_{i=1}^{m-1}b_i$，因此只有最后选中的元素系数为正，其余元素都应尽量小。",
+          "固定最后选中的位置 $j$ 后，只需从其前缀中选出 $m-1$ 个最小值；它们原本按位置出现，自动组成合法子序列。",
+          "从左到右扫描时，用大根堆维护此前 $m-1$ 个最小值及其和；堆满后删除最大值，就能在每个位置计算以该位置结尾的最优分数。"
         ],
-        "solution_brief": "把得分化为“末元素乘 $m$ 减此前元素之和”。枚举最后位置，用最大堆维护此前最小的 $m-1$ 个值及其和，取所有合法结尾得分的最大值；复杂度为 $O(n\\log(m+1))$。",
-        "primary_topic": "构造与贪心",
+        "solution_brief": "将分数化为 $m b_m-\\sum_{i=1}^{m-1}b_i$。枚举最后一个元素，用大根堆维护此前最小的 $m-1$ 个值及其和，取所有结尾方案的最大值；复杂度为 $O(n\\log(m+1))$。",
+        "primary_topic": "数据结构",
         "secondary_topics": [
-          "数据结构"
+          "构造与贪心",
+          "数论与同余"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据 statement_text 与完整 editorial_text 提炼，codeforces_tags 仅用于主题辅助。",
+        "source_provenance": "依据完整题面与 editorial；tags 辅助确认数据结构和贪心方向。",
         "quality_flags": []
       }
     },
     "2264A": {
       "problem_key": "2264A",
-      "title": "Rumb Needs a Hand",
+      "title": "Рамбу нужна рука",
       "rating": 800,
       "problem_url": "https://codeforces.com/contest/2264/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/156680",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "7caa26fe258559d3bcf23be71856d66833c726d9c645bee2e95183ebe9e3ab16",
-      "generated_at": "2026-10-01T06:19:45+00:00",
+      "input_hash": "e3411a35d17ad12fb73fdee3dab3224b8f34b95af7f6bf79657d4d5eda5eae05",
+      "generated_at": "2026-10-03T21:40:55+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个长度为 $n$ 的排列，必须恰好进行一次操作：选择任意递增下标序列，并将这些位置上的元素按序整体反转，未选位置不变。判断能否通过这一次操作把排列变为升序排列 $1,2,\\ldots,n$。",
-        "transformed_statement": "把操作对象缩减为所有当前不在目标位置的下标：它们必须全部参与反转，而正确位置无需参与。因此问题转化为检查这些错误位置上的元素，按对称配对反转后是否恰好回到各自目标值。",
+        "statement_brief": "给定一个 $1$ 到 $n$ 的排列，机器只能操作一次：选择任意递增下标序列，并将这些下标上的元素整体反转，未选元素不变。判断能否通过这一次操作把排列变成递增序列。",
+        "transformed_statement": "把问题转化为只关注错误位置：它们必须全部参与反转，而正确位置无需参与。反转错误位置后，首尾错误位置互换、再向中间配对，因此逐对验证它们是否交换成目标值即可。",
         "key_observations": [
-          "所有当前位置错误的元素都必须被选中，否则它不会移动，最终仍不可能归位。",
-          "当前位置正确的元素被选中也无法帮助排序；由于其值在排列中唯一，要保持正确只能作为反转序列的唯一中间元素，去掉它不影响结果。",
-          "因此只需按下标从左到右收集所有错误位置，反转后第一个与最后一个配对、第二个与倒数第二个配对；逐对检查元素是否正好满足目标值即可。"
+          "所有位置错误的元素都必须被选中，否则它们不会移动；因此可选集合至少包含全部错误位置。",
+          "位置已经正确的元素被选中后无法与其他值交换而仍保持正确，只能作为唯一的中间元素自配对，去掉它不影响结果。",
+          "按下标从左到右列出错误位置后，反转操作会将首尾、次首尾位置配对；因此只需检查每对位置上的值是否正好互为目标值。"
         ],
-        "solution_brief": "收集所有满足 $p_i\\ne i$ 的位置。若无错误位置，选任意一个元素完成操作；否则只反转这些位置，并检查对称位置上的值是否互换为目标值，全部满足则输出 YES。",
-        "primary_topic": "基础实现与模拟",
+        "solution_brief": "收集所有不满足 $p_i=i$ 的位置；若没有错误位置，选任意一个元素完成恰好一次操作。否则只反转这些位置，并检查第 $j$ 个错误位置的值是否等于对称位置应有的值；全部满足则输出 YES。",
+        "primary_topic": "构造与贪心",
         "secondary_topics": [
-          "构造与贪心"
+          "基础实现与模拟",
+          "数据结构"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 statement_text、editorial_text 及 implementation 标签提炼。",
+        "source_provenance": "依据题面操作规则、完整 editorial 及 implementation/sortings/two pointers 标签；核心结论来自 editorial。",
         "quality_flags": []
       }
     },
     "2263B": {
       "problem_key": "2263B",
-      "title": "Min Matrices",
+      "title": "Минимумы матриц",
       "rating": 900,
       "problem_url": "https://codeforces.com/contest/2263/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/156688",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "ea22de02207d24d8b127dfbd9abca3e2ec50928c936499341c762aa489e90b67",
-      "generated_at": "2026-10-01T06:20:12+00:00",
+      "input_hash": "2b6fe9b69372e36ecb48115043fe0ea070432341d0788cb5638d35251e858d56",
+      "generated_at": "2026-10-03T21:41:22+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个 $n\\times n$ 矩阵，必须恰好使用 $1$ 到 $n^2$ 各一次。取每行和每列的最小值并去重，要求所得集合大小为 $k$；若无法构造则输出 $-1$，否则输出任意满足条件的矩阵。",
-        "transformed_statement": "把问题转化为先选出 $1\\ldots k$ 作为行列最小值的见证数，并把它们放置到能覆盖全部行列的位置；只要所有空位填入更大的数，最小值集合就不会再增加。",
+        "statement_brief": "给定 $n$ 和 $k$，构造一个包含 $1$ 到 $n^2$ 且每个数恰好出现一次的 $n\\times n$ 矩阵。取所有行最小值和列最小值组成集合，要求该集合大小恰为 $k$；无法构造时输出 $-1$。",
+        "transformed_statement": "把问题转化为选择恰好 $k$ 个数字作为若干行列的最小值：先用小数字覆盖全部行和列，再将其余更大的数字填入空位，从而不影响这些最小值。",
         "key_observations": [
-          "每行的最小值彼此不同，因此至少需要 $n$ 个不同值；同一个数最多同时贡献一个行最小值和一个列最小值，且 $1$ 必然同时出现于某行列，所以最多只能有 $2n-1$ 个。",
-          "令 $x=k+1-n$，可将目标值划分为首行的 $1\\ldots x$、首列下方的 $x+1\\ldots 2x-1$，以及左上角方块外主对角线上的 $2x\\ldots k$。",
-          "这些已放置的小数恰好覆盖所有行和所有列，每个目标值都成为对应行或列的最小值；其余位置填入更大的 $k+1\\ldots n^2$，不会改变最小值集合。"
+          "每个数至多只能成为一行和一列的最小值，因此不同最小值至少包含全部 $n$ 个行最小值，必须满足 $k\\ge n$。",
+          "数字 $1$ 所在的行和列都必然以它为最小值，这两个位置共享一个数字，所以最多只能得到 $2n-1$ 个不同最小值。",
+          "对 $n\\le k\\le 2n-1$，令 $x=k+1-n$；把 $1\\ldots x$ 放在首行、$x+1\\ldots2x-1$ 放在首列其余位置、$2x\\ldots k$ 放在左上方块外的主对角线上，恰好覆盖所有行列并产生 $k$ 个不同最小值。",
+          "所有未使用位置填入 $k+1\\ldots n^2$ 后不会改变已指定的行列最小值，因为每个行列都已有一个更小的构造数字。"
         ],
-        "solution_brief": "当 $k<n$ 或 $k>2n-1$ 时输出 $-1$。否则令 $x=k+1-n$，按首行、首列和外部主对角线放置 $1\\ldots k$，其余位置任意填入 $k+1\\ldots n^2$。",
+        "solution_brief": "当 $k<n$ 或 $k>2n-1$ 时输出 $-1$。否则令 $x=k+1-n$，按首行、首列和块外主对角线放置 $1\\ldots k$，再任意填入剩余大数，即可保证恰有 $k$ 个不同的行列最小值。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text、题面规则及 constructive algorithms 标签提炼。",
+        "source_provenance": "依据完整 editorial_text 提炼构造与可行范围，并结合 statement_text 确认输出目标；tags 仅用于主题归类。",
         "quality_flags": []
       }
     },
     "2263A": {
       "problem_key": "2263A",
-      "title": "Min Max Game",
+      "title": "Игра минимумов и максимумов",
       "rating": 800,
       "problem_url": "https://codeforces.com/contest/2263/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/156688",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "eed1f8483c5a00710b90294518227592d398f7cda0f56a9ca50b5635b53a4ee3",
-      "generated_at": "2026-10-01T06:20:31+00:00",
+      "input_hash": "b4cda157c5d3a83c27374759dd3b2ade089fab81c2fdb9e5509ce919d936756b",
+      "generated_at": "2026-10-03T21:41:38+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个二进制数组，Bessie 先手，每次选择相邻两个数并用它们的最大值合并；Elsie 随后用最小值合并，数组长度每次减一，直到只剩一个数。若最终为 $1$ 则 Bessie 获胜，否则 Elsie 获胜，要求判断双方最优时的赢家。",
-        "transformed_statement": "把数组状态抽象为其中 $0$ 与 $1$ 的数量：存在两种数时必有相邻异值，Bessie 的有效操作可消去一个 $0$，Elsie 的有效操作可消去一个 $1$，因此胜负由初始数量关系决定。",
+        "statement_brief": "给定一个二进制数组，Bessie 先手；她每次选相邻两个数并用它们的最大值替换，Elsie 则用最小值替换，数组长度每次减一，直到只剩一个数。最后为 $1$ 则 Bessie 获胜，为 $0$ 则 Elsie 获胜，要求判断最优策略下的胜者。",
+        "transformed_statement": "把局面核心抽象为数组中 $1$ 与 $0$ 的数量：Bessie 在有异值相邻对时可消去一个 $0$，Elsie 可消去一个 $1$，因此胜负由先手开始时两种数的数量关系决定。",
         "key_observations": [
-          "只要数组中同时存在 $0$ 和 $1$，二进制数组必有一对相邻异值；因此 Bessie 可用 $\u0000max$ 消去一个 $0$，Elsie 可用 $\u0000min$ 消去一个 $1$。",
-          "若 $1$ 的数量不少于 $0$，Bessie 每回合都能维持这一数量关系，最终不会被 $0$ 主导，因此可以保证末值为 $1$。",
-          "若 $1$ 的数量少于 $0$，Bessie 的任意操作都无法扭转数量劣势；局面等价于轮到 Elsie 面对有利的多数 $0$，所以 Bessie 必败。",
-          "若数组只含一种数，所有操作都只能保留该数，胜负由唯一数值直接决定。"
+          "只要数组同时含有 $0$ 和 $1$，就一定存在相邻的异值对；Bessie 选择它可用最大值删除一个 $0$，Elsie 选择它可用最小值删除一个 $1$。",
+          "若 $1$ 的数量不少于 $0$，Bessie 每次都能优先消去一个 $0$，从而始终保持这一数量关系，最终保留的值为 $1$。",
+          "若 $1$ 的数量少于 $0$，Bessie 无法扭转数量劣势；她操作后会把同样的必胜局面交给 Elsie，最终值为 $0$。",
+          "数组全为同一数时，所有操作都只能保留该数，因此全为 $1$ 时 Bessie 必胜，全为 $0$ 时 Elsie 必胜；这也与数量比较结论一致。"
         ],
-        "solution_brief": "统计初始数组中 $0$ 和 $1$ 的数量。若全为一种数，直接判定；否则当 $1$ 的数量不少于 $0$ 时 Bessie 获胜，否则 Elsie 获胜。依据是混合数组必有相邻异值，双方可分别消去对自己不利的数。",
+        "solution_brief": "统计数组中 $1$ 和 $0$ 的数量：若 $1$ 的数量不少于 $0$，输出 Bessie；否则输出 Elsie。依据是双方在存在异值相邻对时，分别能删除对自己不利的数。",
         "primary_topic": "博弈",
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面中的操作与终局条件，以及 editorial_text 的计数策略；tags 仅用于确认博弈主题。",
+        "source_provenance": "依据题面中的相邻合并规则、胜负定义，以及 editorial 对数量关系和操作策略的说明；tags 提供了博弈分类。",
         "quality_flags": []
       }
     },
     "2262F": {
       "problem_key": "2262F",
-      "title": "Rank Removal",
+      "title": "Удаление ранга",
       "rating": 3500,
       "problem_url": "https://codeforces.com/contest/2262/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/156688",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "17ef3b7bb272c7c72e81ebb8da5a547917adda0547127e56422c89f07c2fb5ea",
-      "generated_at": "2026-10-01T06:21:04+00:00",
+      "input_hash": "736ee4225309cb798de0ca76f7669ba6e7d19543a53ca750637c6ea149a6c55c",
+      "generated_at": "2026-10-03T21:41:57+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个初始满秩的 $n\\times n$ 二进制矩阵，每步必须选择当前矩阵秩数量个仍为 $1$ 的位置并全部改为 $0$。要求将矩阵变成零矩阵，并输出所需的最少步数及任意合法操作序列。",
-        "transformed_statement": "把矩阵视为行点与列点构成的二分图，矩阵行列式是完美匹配数模 $2$；目标转化为每步尽量删除恰好 $n$ 条边并保持完美匹配奇偶性，最后处理秩下降的收尾步骤。",
+        "statement_brief": "给定一个秩为 $n$ 的 $n\\times n$ 二进制矩阵，每步必须选择当前秩个不同的 $1$ 并将其改为 $0$。要求输出把矩阵变为零矩阵所需的最少步数及一种合法操作序列。",
+        "transformed_statement": "把矩阵的 $1$ 看成行点与列点之间的边；满秩表示二分图完美匹配数为奇数。问题转化为每步删除指定数量的边，同时尽量保持满秩，直到最后清空。",
         "key_observations": [
-          "初始有 $X$ 个 $1$，每步最多删除 $n$ 个，因此至少需要 $\u0000ceil X/n\\u0000rceil$ 步；构造的核心是让前面的步骤始终保持满秩。",
-          "在 $\u0000mathbb{F}_2$ 上，满秩等价于行列式为 $1$，而行列式等于对应二分图完美匹配数的奇偶性，因此可用被删除边参与的匹配数判断行列式是否改变。",
-          "当当前 $1$ 的数量超过 $2n$ 时，某列至少有三条边；三条边的匹配贡献只有两种奇偶值，删除其中同值的两条不会改变行列式，从而可成对删除并保持满秩。",
-          "当 $X\\le 3n$ 时先选取一个完美匹配作为对角线，删除较少一侧的非对角元素使矩阵变成三角矩阵；若不足以完成本步，再删除对角元素，剩余元素可在下一步一次清空。"
+          "满秩等价于行列式为 $1$，而行列式正好是二分图完美匹配数的奇偶性；因此删边后只需保持完美匹配奇偶不变。",
+          "每步最多删除当前秩个 $1$，所以至少需要 $\u0000ceil X/n\u0000ceil$ 步；若始终保持秩为 $n$，即可每步删除恰好 $n$ 个并达到此下界。",
+          "当当前 $1$ 的数量超过 $3n$ 时，同一列的三个边中必有两个对完美匹配的贡献奇偶相同，删去这两个边不会改变行列式。",
+          "当 $n$ 为奇数且需要先删奇数个元素时，若单点删除均破坏行列式，可利用两个同一行边和另一列边组成的 L 形三边，按匹配计数证明存在可安全删除的三边。"
         ],
-        "solution_brief": "答案恰为 $\u0000ceil X/n\\u0000rceil$。大规模时通过保持行列式为 $1$ 的成对删除（奇数 $n$ 先用单边或 L 形三边删除），小规模时利用完美匹配构造三角矩阵；用高斯消元测试候选删除。",
-        "primary_topic": "代数、矩阵与多项式",
+        "solution_brief": "下界为 $\u0000ceil X/n\u0000ceil$。先找一个完美匹配；当 $X\\le3n$ 时删去较少一侧的非对角元并保持三角满秩。否则用安全删二边操作，奇数 $n$ 先删一边或 L 形三边，再补删成 $n$ 个；用高斯消元检验行列式。",
+        "primary_topic": "数论与同余",
         "secondary_topics": [
           "图论与网络流"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial、题面操作规则及 math 标签；图论建模来自 editorial。",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags；题解核心来自行列式、完美匹配奇偶性和安全删边构造。",
         "quality_flags": [
-          "statement_tail_truncated"
+          "statement_output_format_truncated"
         ]
       }
     },
     "2262E": {
       "problem_key": "2262E",
-      "title": "Paired Bracket Sequences",
+      "title": "Парные скобочные последовательности",
       "rating": 3100,
       "problem_url": "https://codeforces.com/contest/2262/problem/E",
       "editorial_url": "https://codeforces.com/blog/entry/156688",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "0d706a1bd7d80b2c168bd20f3e47099584b6172b6addf40f1a10e8d864801ccb",
-      "generated_at": "2026-10-01T06:21:35+00:00",
+      "input_hash": "c09b78cd440891d6dcceeb19b8521ecf1d62ae52dcb6337b01bd3bc2bb8df3d4",
+      "generated_at": "2026-10-03T21:42:17+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定两个长度均为 $2n$ 的平衡括号序列，将一对开括号和其匹配的闭括号视为一个配对。要求对每个 $k$，统计有恰好 $k$ 个相同配对的有序序列对数量，并对给定质数取模。",
-        "transformed_statement": "先不要求公共配对数量恰好为 $k$，而是选定 $k$ 个必须共享的配对，将其嵌套结构拆成 $k+1$ 个区域；统计这些区域的填充与排列，再通过二项式反演去除额外公共配对。",
+        "statement_brief": "给定两个长度均为 $2n$ 的平衡括号序列。若一对位置由左括号和右括号组成，且两者之间的子串平衡，则称其为配对；要求对每个 $k$，统计两个序列恰好拥有 $k$ 个相同配对的有序序列对数量，并对 $M$ 取模。",
+        "transformed_statement": "不直接比较两条序列，而是先选定 $k$ 个公共配对，将其组织成带子区域的嵌套森林；剩余字符形成 $k+1$ 个区域，各区域独立贡献 Catalan 数平方，再用插入位置和循环引理计数合法结构。",
         "key_observations": [
-          "选定的 $k$ 个公共配对把两序列分成 $k+1$ 个区域；区域大小为去除子配对后剩余字符数的一半，大小为 $r$ 的区域有 $C_r^2$ 种填法。",
-          "固定区域大小后，所有子区域可插入的槽位总数恒为 $2n-k+1$，用重集分配得到结构因子 $\\binom{2n}{k}$。",
-          "按深度优先顺序排列区域时，子区域数量序列满足循环引理，恰有 $1/(k+1)$ 的循环移位形成合法嵌套结构。",
-          "令 $B_k$ 统计选出 $k$ 个公共配对的方案，则 $B_k=\\sum_{j\\ge k}\\binom{j}{k}A_j$；从大到小反演即可得到恰有 $k$ 个公共配对的数量 $A_k$。"
+          "先固定选出的 $k$ 个公共配对，并把它们切分出的内容划为 $k+1$ 个区域；区域大小总和为 $n-k$，大小为 $r$ 的区域在两条序列中的填法贡献 $C_r^2$。",
+          "给定区域大小后，所有子区域可插入的位置总数为 $2n-k+1$，用多重集分配 $k$ 个子区域得到结构因子 $\\binom{2n}{k}$。",
+          "区域之间的父子关系不一定天然合法，但将区域按深度优先顺序循环旋转后，循环引理保证恰有一个旋转满足前缀子位置条件，因此合法结构占 $1/(k+1)$。",
+          "固定选出的公共配对数得到 $B_k$，而恰有 $j$ 个公共配对的序列对会被选中 $\\binom{j}{k}$ 次，所以可对二项式关系做降序反演得到精确计数。"
         ],
-        "solution_brief": "令 $P(x)=\\sum_r C_r^2x^r$，先用 $B_k=\\frac{1}{k+1}\\binom{2n}{k}[x^{n-k}]P(x)^{k+1}$ 统计选定公共配对的方案，再按 $A_k=B_k-\\sum_{j>k}\\binom{j}{k}A_j$ 反演。系数可逐次乘 $P$ 求得。",
+        "solution_brief": "令 $P(x)=\\sum C_r^2x^r$，先用 $B_k=\\frac{1}{k+1}\\binom{2n}{k}[x^{n-k}]P(x)^{k+1}$ 统计至少包含所选配对的方案，再按 $k$ 降序用二项式反演求精确答案。截断多项式乘法可用 $O(n^3)$ 完成。",
         "primary_topic": "组合计数与概率",
         "secondary_topics": [
-          "代数、矩阵与多项式",
-          "动态规划与状态设计"
+          "代数、矩阵与多项式"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text、题面中的配对定义，以及 tags 中的组合数学与数学分类。",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text、题目标签 combinatorics 和 math。",
         "quality_flags": []
       }
     },
@@ -369,119 +368,122 @@
     },
     "2262C": {
       "problem_key": "2262C",
-      "title": "Traveling the World",
+      "title": "Путешествие по миру",
       "rating": 2300,
       "problem_url": "https://codeforces.com/contest/2262/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/156688",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "a68b5d41d88d08e4ea037baed6e1598d31b9ea837629b3c11c821d7879533d76",
-      "generated_at": "2026-10-01T06:22:52+00:00",
+      "input_hash": "0c44d7e70659c9305933e7d35db6f47cdec9f1b0c9fe177563db0af433120647",
+      "generated_at": "2026-10-03T21:42:43+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定严格递增且含 $0$ 的岛屿值，将它们重排为数组 $b$。从位置 $i$ 可前往位置 $j$，当且仅当 $b_i+b_j$ 等于从 $i$ 到末尾的最大值；要求统计存在一条访问所有位置且不重复路径的重排数量。",
-        "transformed_statement": "将每个岛屿值视为有向图顶点：若其位置后缀最大值为 $s$，则唯一可能的出边是 $v\\to s-v$。问题转化为统计能形成覆盖全部顶点的简单有向路径的排列，并利用路径末端的交替结构确定排列分组。",
+        "statement_brief": "给定包含 $0$ 且严格递增的岛屿价值数组，将这些价值任意排列为 $b$。若当前位置 $i$ 可前往位置 $j$ 当且仅当 $b_i+b_j$ 等于从 $i$ 到末尾的最大值，要求统计存在一条不重复访问全部位置的合法路径的排列数。",
+        "transformed_statement": "将排列转化为有向图：节点是岛屿价值，每个节点根据所在位置的后缀最大值至多连向一个节点。题目等价于统计能形成覆盖全部节点的有向路径的排列，并据此刻画两段倍数序列的排列方式。",
         "key_observations": [
-          "每个位置对应的点至多有一条出边 $v\\to s-v$；若好排列只有一个后缀最大值会形成二环，超过两个则至少三条边指向 $0$，都不可能存在覆盖全部点的简单路径。",
-          "好排列恰有两个后缀最大值，即最大值 $M$ 与末项 $b_n$；$0$ 必须位于 $M$ 之前，且覆盖路径必以 $0\\to M$ 结束。",
-          "令 $x=M-b_n$，从路径末端反推得到交替序列 $M,0,M-x,x,M-2x,2x,\\ldots$，因此 $0,x,\\ldots,(k-1)x$ 必须在 $M$ 前，其他值在 $M$ 后。",
-          "只需尝试 $x=M-a_{n-1}$ 和 $x=M-a_{n-2}$；生成两组等差值并排序核对原数组，匹配时两组内部可任意排列，贡献为 $k!(n-k-2)!$。"
+          "把每个位置的岛值视为图节点；若其后缀最大值为 $s$，则它至多有一条出边，唯一可能是 $v\\to s-v$。",
+          "良好排列恰有两个后缀最大值，即 $M=a_n$ 与末项 $b_n$；否则会产生短环，或有过多指向 $0$ 的边而无法形成覆盖所有节点的路径。",
+          "令 $x=M-b_n$、$k=\\lfloor n/2\\rfloor$，从路径末端倒推得到交替序列；$0,x,\\ldots,(k-1)x$ 必须位于 $M$ 前，其余元素位于 $M$ 后。",
+          "只需尝试 $x=M-a_{n-1}$ 和 $x=M-a_{n-2}$；其他候选会迫使两个相邻大值成为不同倍数且差小于 $x$，矛盾。"
         ],
-        "solution_brief": "把排列转为每点至多一条出边的有向图，推导出参数 $x=M-b_n$ 后仅检查两个候选。生成并核对 $0,x,\\ldots,(k-1)x$ 与 $M,M-x,\\ldots$；通过两组内部排列数 $k!(n-k-2)!$ 计数。",
+        "solution_brief": "设 $M=a_n$，枚举两个候选 $x$，构造并排序集合 $0,x,\\ldots,(k-1)x$ 与 $M,M-x,\\ldots$，若恰好等于原数组，则贡献 $k!(n-k-2)!$；将所有有效候选贡献相加并取模。",
         "primary_topic": "组合计数与概率",
         "secondary_topics": [
           "图论与网络流",
-          "构造与贪心"
+          "构造与贪心",
+          "数论与同余"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text 的函数图、路径反推、候选缩减与计数结论，并结合 statement_text 和 tags。",
+        "source_provenance": "依据完整 editorial_text 与 statement_text；tags 仅用于主题分类。",
         "quality_flags": []
       }
     },
     "2262B": {
       "problem_key": "2262B",
-      "title": "Culling Game",
+      "title": "Игра на выбывание",
       "rating": 2000,
       "problem_url": "https://codeforces.com/contest/2262/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/156688",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "b2e51ab339e233658a3917668526f22f61ca10c455b15a706d11d7340eeb6a09",
-      "generated_at": "2026-10-01T06:25:43+00:00",
+      "input_hash": "9f848caa5411c07cc756dc54411495effaa6d921158186746caf2c654cafd6ed",
+      "generated_at": "2026-10-03T21:43:11+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有一排技能值为 $a_i$ 的法师进行擂台赛：最左剩余法师先当冠军，依次与右侧法师交手；若冠军技能小于对手就认输并由对手接替，否则获胜且技能变为两者之和。按给定排列依次删除法师，每个删除阶段都要求剩余队列比赛时发生的认输次数。",
-        "transformed_statement": "将逐步删除改为逆序逐个插入法师，并维护当前会击败冠军的下标集合。相邻认输点之间的活跃技能总和就是该段冠军交手前的技能，用它判断插入点及右侧旧认输点是否仍有效。",
+        "statement_brief": "给定按顺序排列、技能值为 $a_i$ 的选手。每场比赛从最左选手开始，依次挑战右侧选手：若当前冠军技能更低则弃权并由对方接替，否则获胜且技能变为两者之和。对每个 $i=0\u0000n-1$，先删除选手 $p_1,\u0000p_i$ 后进行比赛，求弃权次数。",
+        "transformed_statement": "把按顺序删除选手改为倒序插入选手。维护当前会击败冠军的下标集合，用相邻弃权点之间激活选手技能之和表示冠军状态，并在插入后修正右侧受影响的弃权点。",
         "key_observations": [
-          "把按顺序删除改为倒序插入；每次插入一个法师后，当前集合就对应某个删除阶段，从而可逆向恢复所有答案。",
-          "用集合 $S$ 维护当前比赛中会让冠军认输的下标；插入位置 $i$ 时，只需先检查 $i$ 左侧最近的 $S$ 中下标，区间内活跃法师技能和决定冠军是否输给 $a_i$。",
-          "若插入的法师击败了当前冠军，它会成为新的认输点并提升冠军技能；这个提升可能使右侧原有认输点不再成立，因此要依次检查并删除受影响的点。",
-          "区间技能和会随插入单点更新、查询，因此用树状数组或线段树维护活跃技能值，集合 $S$ 负责寻找相邻认输点。"
+          "将删除过程倒序处理为逐个插入，这样每一步都能从当前已激活的选手集合恢复对应答案。",
+          "只需维护会让冠军弃权的选手下标集合；插入下标 $i$ 时，其左侧最近的弃权点 $j$ 决定冠军对阵 $i$ 前的技能为区间 $[j,i-1]$ 内激活选手技能之和。",
+          "插入选手会提高其后的冠军技能，因此只需检查右侧已有弃权点是否仍满足弃权条件，并相应更新集合，而不必重放整场比赛。",
+          "区间技能和通过树状数组或线段树维护，结合有序集合寻找左右相邻弃权点即可快速完成每次插入。"
         ],
-        "solution_brief": "将删除过程倒放为插入过程，维护认输点集合 $S$。插入下标 $i$ 时用树状数组或线段树查询相邻区间技能和，判断新点是否成为认输点，并清理因冠军技能提升而失效的右侧认输点；每阶段答案为 $|S|$。",
+        "solution_brief": "倒序撤销删除，将其改为插入。维护弃权选手的有序下标集合，并用树状数组或线段树查询相邻弃权点间的激活技能和；插入后更新当前点及受影响的右侧弃权点，逆序记录答案。",
         "primary_topic": "数据结构",
         "secondary_topics": [
           "基础实现与模拟"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面中的比赛与删除规则，以及 editorial 中的倒序插入、认输点集合和区间和维护方法；tags 仅用于主题归类。",
-        "quality_flags": []
+        "source_provenance": "依据 statement_text、editorial_text，并参考 tags 中的数据结构相关信息。",
+        "quality_flags": [
+          "statement_tail_truncated"
+        ]
       }
     },
     "2262A2": {
       "problem_key": "2262A2",
-      "title": "Floor of MEX (Hard Version)",
+      "title": "Округление MEX вниз (сложная версия)",
       "rating": 1800,
       "problem_url": "https://codeforces.com/contest/2262/problem/A2",
       "editorial_url": "https://codeforces.com/blog/entry/156688",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "af2c3f42f813dc0417efc24e0c30e657b0db576807f5dad80b28bec3e27a34a2",
-      "generated_at": "2026-10-01T06:26:22+00:00",
+      "input_hash": "696b68fa991fdbeaf5c79b2cd59381ded4036520842ce8badfc59dd33ddeeb55",
+      "generated_at": "2026-10-03T21:43:28+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定数组 $a_k=f(A,k)$，其中 $f(S,x)$ 是集合中各个 $\\lfloor y/x\\rfloor$ 的最小未出现非负整数，原集合 $A$ 是 $\\{0,1,\\ldots,n-1\\}$ 的任意子集。需要统计有多少个子集 $B$（包括空集）满足对所有 $1\\le k\\le n$ 都有 $f(B,k)=a_k$，答案对 $10^9+7$ 取模。",
-        "transformed_statement": "题解把每个 $a_k$ 带来的条件抽象为若干 good 区间和 bad 区间：good 区间必须包含被选元素，bad 区间必须完全不含被选元素。于是问题变为统计满足这些区间约束的子集。",
+        "statement_brief": "给定数组 $a_k=f(A,k)$，其中 $f(S,k)$ 是集合中各数除以 $k$ 的下取整结果的最小未出现非负整数，且原集合取自 $\\{0,1,\\ldots,n-1\\}$。请统计所有集合 $B\\subseteq\\{0,1,\\ldots,n-1\\}$，使每个 $k=1,\\ldots,n$ 都满足 $f(B,k)=a_k$，答案对 $10^9+7$ 取模。",
+        "transformed_statement": "题解把每个 $a_k$ 带来的条件抽象为若干 good 区间（至少选入一个数）和 bad 区间（不能选入任何数）。问题转化为统计满足全部区间约束的子集，并按数值顺序用“最后满足的 good 区间”描述状态。",
         "key_observations": [
-          "将数组约束转化为若干区间条件：某些 good 区间内必须选至少一个数，某些 bad 区间内不能选数，从而把 MEX 条件变成子集约束。",
-          "若一个 good 区间完全包含另一个 good 区间，满足内层区间必然满足外层区间，因此可以删去外层区间，并保证剩余区间数量至多为 $n$。",
-          "按区间排序后，选择一个数会同时满足一段连续的 good 区间；枚举 $0$ 到 $n-1$ 时只需维护最后满足的区间，便可用 DP 统计所有合法子集。",
-          "bad 区间是否允许选数可用前缀和快速检查，DP 转移再用前缀和优化，整体复杂度为 $O(n\\log^2 n)$。"
+          "完全包含另一个 good 区间的区间可以删除，因为满足内层区间必然满足外层区间；保留后至多有 $n$ 个区间。",
+          "选入一个数会同时满足一段连续的 good 区间，因此按 $0$ 到 $n-1$ 处理元素时，只需记录最后满足到的区间位置。",
+          "bad 区间要求其中不能选入任何数，可用前缀和快速判断某个候选选择是否违反这些限制。",
+          "转移中需要统计一段连续状态的方案数，可用前缀和加速，使排序后的整体复杂度为 $O(n\\log^2 n)$。"
         ],
-        "solution_brief": "把约束转成 good 区间 hitting 与 bad 区间禁选问题。删去被包含的 good 区间后，按端点处理元素，用“最后满足的区间”做 DP，并用前缀和检查 bad 区间及优化转移，统计合法子集数。",
+        "solution_brief": "将由数组 $a$ 导出的限制转成必须命中至少一个数的 good 区间和完全不能选数的 bad 区间。删除被包含的 good 区间后排序，按数值递推并维护最后满足的区间；用前缀和检查 bad 区间并加速状态转移。",
         "primary_topic": "动态规划与状态设计",
-        "secondary_topics": [
-          "基础实现与模拟"
-        ],
+        "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面中的 $f$ 定义与计数目标，以及 editorial 中的 good/bad 区间、区间删减和 DP 方案；tags 仅用于辅助分类。",
+        "source_provenance": "题意来自 statement_text，区间约束建模、状态设计与复杂度来自 editorial_text，分类参考 codeforces_tags。",
         "quality_flags": []
       }
     },
     "2262A1": {
       "problem_key": "2262A1",
-      "title": "Floor of MEX (Easy Version)",
+      "title": "Округление MEX вниз (простая версия)",
       "rating": 1200,
       "problem_url": "https://codeforces.com/contest/2262/problem/A1",
       "editorial_url": "https://codeforces.com/blog/entry/156688",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "0aa594bc5be9648535623ec2867730d130b7a6874b2440a38d581139ebc608c7",
-      "generated_at": "2026-10-01T06:27:01+00:00",
+      "input_hash": "deb5d9cffaa3160430348514c01c2a84b81aea747d64e634ce2f50d89c84876e",
+      "generated_at": "2026-10-03T21:43:49+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定数组 $a$，其中 $a_k$ 是集合中各元素除以 $k$ 向下取整后所得集合的 MEX。请构造任意子集 $B\\subseteq\\{0,1,\\ldots,n-1\\}$，使对每个 $k=1\\ldots n$ 都有相同的 MEX 值。",
-        "transformed_statement": "把每个 $a_k=x$ 转化为区间约束：前 $x$ 个长度为 $k$ 的块中各需出现元素，而第 $x$ 个块必须为空；因此只需避开所有坏区间，并尽可能加入其余数字。",
+        "statement_brief": "给定数组 $a_1,\u001ba_2,\u001b\\ldots,a_n$，它来自某个集合 $A\\subseteq\\{0,1,\\ldots,n-1\\}$：对每个正整数 $k$，取集合中各元素除以 $k$ 的向下取整结果的 MEX，得到 $a_k$。要求构造任意集合 $B\\subseteq\\{0,1,\\ldots,n-1\\}$，使每个 $k$ 得到的 MEX 仍等于 $a_k$。",
+        "transformed_statement": "把每个给定值 $a_k=x$ 转化为区间约束：前 $x$ 个长度为 $k$ 的分段必须各有一个选中数，而下一段 $[kx,k(x+1)-1]$ 必须为空。于是只需避开所有坏区间，并保留原可行集合所需的覆盖。",
         "key_observations": [
-          "若 $a_k=x$，集合必须在区间 $[0,k-1],[k,2k-1],,[k(x-1),kx-1]$ 各含一个数，并且不能包含坏区间 $[kx,k(x+1)-1]$。",
-          "所有 $k$ 产生的坏区间可以叠加标记；用差分数组记录区间覆盖次数，前缀和为零的位置才允许加入 $B$。",
-          "把所有未被任何坏区间覆盖的数都加入不会破坏已有条件；由于题目保证存在可行集合，这个最大集合本身也一定可行。"
+          "若 $f(A,k)=x$，则 $A$ 必须在每个区间 $[jk,(j+1)k-1]$（$0\\le j<x$）中至少包含一个数，并且不能包含坏区间 $[kx,(x+1)k-1]$。",
+          "对所有 $k$ 的坏区间取并集后，任何落入并集的数都不能加入 $B$；用差分数组标记这些区间即可统一判断每个候选数是否可用。",
+          "将所有不在坏区间内的候选数都加入 $B$ 不会破坏已有的 MEX：原本可行的集合已保证各必需区间非空，而新增数不会落入对应的坏区间。"
         ],
-        "solution_brief": "对每个 $k$ 根据 $a_k$ 标记对应坏区间，用差分数组求每个候选数的覆盖次数；将所有未被覆盖的 $0\\ldots n-1$ 加入 $B$，输出该集合。",
+        "solution_brief": "对每个 $k$，把 $[ka_k,k(a_k+1)-1]$ 标为禁止区间，并用差分数组求其覆盖次数。遍历 $0$ 到 $n-1$，将未被任何禁止区间覆盖的数全部加入 $B$；由于输入保证存在可行集合，该构造保持所有给定的 MEX。",
         "primary_topic": "构造与贪心",
-        "secondary_topics": [],
+        "secondary_topics": [
+          "数据结构"
+        ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面与 editorial，tags 仅用于主题辅助判断。",
+        "source_provenance": "依据 statement_text 的函数定义、集合范围与构造要求，以及 editorial_text 的坏区间和差分标记方法；tags 提供了构造与贪心方向。",
         "quality_flags": []
       }
     },
@@ -21060,239 +21062,240 @@
     },
     "2266H": {
       "problem_key": "2266H",
-      "title": "Deque Malfunction",
+      "title": "Неисправность дека",
       "rating": 2400,
       "problem_url": "https://codeforces.com/contest/2266/problem/H",
       "editorial_url": "https://codeforces.com/blog/entry/156984",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "82efc748918ae8b5b5429b11282c3dcba71e2be81f004b3623561206e5614b8e",
-      "generated_at": "2026-10-01T23:02:38+00:00",
+      "input_hash": "0151ecba13cd537afaf57ee51e45dedc3e70d6e211e37d7ea8ecfb7f3c199f6e",
+      "generated_at": "2026-10-03T21:36:39+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定按顺序到达的数组元素，每次到达时可将该元素放到双端队列首尾、故障后插入任意位置，或删除队首/队尾元素。处理完全部到达事件后，队列必须恰好为 $1,2,\u00078,n$，求所需故障插入的最少次数；无法实现则输出 $-1$。",
-        "transformed_statement": "为每个值 $i$ 选择一个最终保留出现位置 $t_i$，其余出现全部视为可丢弃元素；不需故障的值恰好对应 $t_i$ 的前缀或后缀最小值，目标变为最大化这两类位置覆盖的值数。",
+        "statement_brief": "给定按顺序到达的数组元素，每次必须将当前元素放到双端队列首端或尾端、从首端或尾端删除，或让故障发生并把它插入任意位置。所有元素到达后，队列必须恰好为 $1,2,\\ldots,n$；求最少故障次数，无法实现则输出 $-1$。",
+        "transformed_statement": "只选择每个值的一个到达位置保留，其余元素均可加入后立即删除。问题转化为选择位置 $t_i$，最大化同时属于前缀最小值或后缀最小值的 $t_i$ 数量；这些值可免费正常插入，其余值各需一次故障。",
         "key_observations": [
-          "每个值只需保留一个最终出现，其他出现可在队首或队尾加入后立即移除，因此只需选择各值的代表位置。",
-          "代表位置为 $t_i$ 时，值 $i$ 能正常插入当且仅当它是 $t_1,\u00078,t_i$ 的前缀最小值或 $t_i,\u00078,t_n$ 的后缀最小值，从而把故障次数转成未被两类最小值覆盖的值数。",
-          "固定全局最小位置后，前缀最小值和后缀最小值的选择互不影响，只在全局最小处共享一个计数，因此可分别求最优值再合并。",
-          "按值处理时，以当前所选位置的最小值作为状态；新位置 $t$ 的转移取所有 $p>t$ 的最大值，而当前值的最晚出现位置之后的旧状态必须删除。"
+          "每个值只需保留一个到达实例，其余实例都能从同一端加入后立即删除；因此缺少某个值时必然无解。",
+          "选定值 $i$ 的到达位置 $t_i$ 后，它能从队首正常加入当且仅当 $t_i$ 是序列 $t_1,\u0002ldots,t_i$ 的前缀最小值，或从队尾加入当且仅当它是后缀最小值。",
+          "固定全局最小到达位置后，前缀最小值和后缀最小值的选择彼此独立，公共的全局最小值只需计算一次，因此免费保留数为 $L+R-1$。",
+          "按值递增维护“当前最小到达位置”为 $p$ 的最大前缀最小值数量；当前值处理完后，所有 $p$ 大于其最后出现位置的状态失效，可用区间最大值查询和批量清除维护。"
         ],
-        "solution_brief": "若有值未出现则答案为 $-1$。分别正序、逆序做前缀/后缀最小值 DP，用线段树维护区间最大值并删除失效状态；答案为 $n-\u0001max_p(L[p]+R[p]-1)$。",
+        "solution_brief": "为每个值选择一个保留位置，分别对值的正序和逆序做前缀最小值 DP，记录各全局最小位置的最优数量。用线段树维护状态最大值并清除失效位置，答案为 $n-\u0002max_p(L[p]+R[p]-1)$，总复杂度 $O(m\\log m)$。",
         "primary_topic": "动态规划与状态设计",
         "secondary_topics": [
-          "数据结构",
-          "构造与贪心"
+          "数据结构"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text 提炼，结合 statement_text 与 codeforces_tags 校验主题。",
+        "source_provenance": "依据完整 editorial_text 的 Hint、Solution 与实现说明，结合 statement_text 和 tags。",
         "quality_flags": []
       }
     },
     "2266G": {
       "problem_key": "2266G",
-      "title": "Modular Tree",
+      "title": "Модульное дерево",
       "rating": 2200,
       "problem_url": "https://codeforces.com/contest/2266/problem/G",
       "editorial_url": "https://codeforces.com/blog/entry/156984",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "870911cff2752a3c13a94e0f58ff74638eb2538b408b6867f9068eb052b53b47",
-      "generated_at": "2026-10-01T23:02:54+00:00",
+      "input_hash": "ebeaba7465e0d46fc0d2ce6d258d380b25754328d729ff0b291827612973d41e",
+      "generated_at": "2026-10-03T21:36:59+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一棵以 1 为根的树，每个节点有当前值 $x_i$ 和模数 $b_i$。每次可选一个节点，将它替换为“自身当前值加所有直接子节点当前值之和”对 $b_i$ 取模的结果；可操作任意次，求最终所有节点值之和的最大值。",
-        "transformed_statement": "把每个节点的状态抽象为一个可达同余类：其可达值由初值 $a_u$ 和步长 $g_u$ 决定。子树只需向父节点提供初始子节点和及若干可变步长，二者通过 gcd 合并，从而形成树上的自底向上状态转移。",
+        "statement_brief": "给定一棵以 1 为根的树，每个节点有初值 $a_i$ 和模数 $b_i$。可反复选择节点，将其值替换为“当前值加所有直接子节点当前值”对 $b_i$ 取模；求任意操作后所有节点值之和的最大值。",
+        "transformed_statement": "把每个节点子树对自身可达值的影响压缩为步长 $g_u$：节点值只能在模 $b_u$ 下沿 $g_u$ 的倍数变化。自底向上用子节点初值总和及可变子树的步长求这个最大公约数状态。",
         "key_observations": [
-          "对每个节点维护步长 $g_u$，其所有可达值恰为 $(a_u+g_ux)\\bmod b_u$；因此复杂的重复操作被压缩为一个同余类。",
-          "叶子没有子节点，只能保持原值，所以 $g_u=b_u$；对子节点为 $v$ 的节点，子树能让增量变化的公共步长来自各个非固定子节点的 $g_v$。",
-          "设子节点初值和为 $S_u$，则节点增量的可达步长为 $g_u=\\gcd(b_u,S_u,\\{g_v\\mid g_v\\ne b_v\\})$，可自底向上计算。",
-          "节点达到自身最大可达值后，再操作其严格子树不会改变该节点，因此所有节点的最大值可以同时取得，而非只能分别优化。"
+          "对每个节点用 $g_u$ 表示其可达值的步长，则所有可达值恰为 $(a_u+g_uk)\\bmod b_u$，从而把整棵子树压缩成一个整数状态。",
+          "若子节点 $v$ 满足 $g_v=b_v$，其值始终固定为 $a_v$；否则它对父节点子树和的可调增量是 $g_v$ 的倍数，因此 $g_u=\\gcd(b_u,S_u,g_v\\text{（所有非固定子节点）})$，其中 $S_u$ 是子节点初值之和。",
+          "节点 $u$ 的最大可达值为 $a_u+\\left\\lfloor\\frac{b_u-1-a_u}{g_u}\\right\\rfloor g_u$；先把节点调到该值，再只操作其子树，可保证所有节点的最大值同时实现。"
         ],
-        "solution_brief": "从叶子向根计算每个节点的可达步长 $g_u$：取 $b_u$、子节点初值和及所有非固定子节点步长的 gcd。节点最大值为 $a_u+\\lfloor(b_u-1-a_u)/g_u\\rfloor g_u$，最后求和，复杂度为 $O(n\\log 10^9)$。",
+        "solution_brief": "自底向上计算每个节点的 $g_u$：将子节点初值求和，并与 $b_u$ 及所有可变子节点的 $g_v$ 取最大公约数。随后把各节点的最大可达值相加，复杂度为 $O(n\\log 10^9)$。",
         "primary_topic": "树结构",
         "secondary_topics": [
           "数论与同余",
           "动态规划与状态设计"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial、题面操作规则以及 tags；代码也印证了自底向上的 gcd 计算。",
+        "source_provenance": "依据完整题面、editorial 正文与代码；tags 仅用于辅助主题归类。",
         "quality_flags": []
       }
     },
     "2266F": {
       "problem_key": "2266F",
-      "title": "MEX Replacement",
+      "title": "Замена MEX",
       "rating": 2000,
       "problem_url": "https://codeforces.com/contest/2266/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/156984",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "5ea6f2c3ed12eec13c3a1664114ab4023c1173885138eacb523204cb9f38d34e",
-      "generated_at": "2026-10-01T23:03:12+00:00",
+      "input_hash": "7275262963685370e0dbd236863cc9302dce917b6cf484beda1f2464f008f707",
+      "generated_at": "2026-10-03T21:37:19+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个用“数值—出现次数”压缩表示的非负整数多重集合。每次可任选非空元素集合，删除它们并加入一个等于所选集合 MEX 的元素；可操作任意次，求过程中可能出现的最大整数。",
-        "transformed_statement": "固定候选值 M，改为从最终出现的一份 M 逆向追溯：逐个处理更小的值，计算为补齐 MEX 所需结构必须拥有的副本数，并将无法直接提供的副本转化为对更小值的额外需求。",
+        "statement_brief": "给定非负整数多重集合的压缩表示。每次可任选一个非空元素集合，删除它们并加入一个等于所选元素 MEX 的数，可操作任意次；要求整个过程中曾出现在集合里的最大整数。",
+        "transformed_statement": "把“生成 $M$”倒推为满足从 $0$ 到 $M-1$ 的需求：从一个 $M$ 副本开始，按数值递减计算各层所需副本数，并将正数余量视为最终可制造的零。",
         "key_observations": [
-          "从目标值 M 逆推时，先要求各个小于 M 的值各有一份；因此问题转化为能否逐层补齐所需副本。",
-          "处理值 x 时若已有 c 份而需求为 q，缺少的 q-c 份每份都会额外消耗所有更小值，使需求变为 $q+\\max(0,q-c)$。",
-          "当前值多出的正数无法补救其他正数层级，但可单独取出并生成 0，因此应累计为最终可用的零数量。",
-          "若 M 可生成，则所有更小值也必然能在构造过程中出现，可行性具有单调性，因而可以对 M 二分。"
+          "倒推制造一个 $M$ 时，最初必须准备每个 $0$ 到 $M-1$ 的一个副本；缺少一个 $x$ 就必须用更小元素生成它，因此需求量按 $q\\leftarrow q+\\max(0,q-c)$ 更新。",
+          "连续缺失的 $d$ 个数值会让需求量连续翻倍，即直接乘以 $2^d$，无需逐个模拟缺失值。",
+          "处理正数时多出的副本都可单独变成 $0$，因此只需累计这些余量，并在处理到 $0$ 时检查初始零与余量总数是否满足需求。",
+          "若 $M$ 可以出现，则构造过程中必然出现所有更小的值，所以可行性关于 $M$ 单调，能够对答案二分。"
         ],
-        "solution_brief": "将数对按值降序处理，对候选 M 逆向维护所需副本数 q；缺失值使 q 翻倍，多余正数累计为可转成 0 的元素，最后检查零数是否满足需求。利用可行性的单调性二分最大 M。",
+        "solution_brief": "对候选值 $M$ 反向检查：从需求 $q=1$ 开始按值从大到小处理，缺少当前值就增加对所有更小值的需求，多余正数累计为可转成 $0$ 的元素。最后检查零的总供给是否足够；利用可行性的单调性二分最大 $M$。",
         "primary_topic": "构造与贪心",
-        "secondary_topics": [],
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags 中的二分、贪心和数学标签。",
+        "source_provenance": "依据完整 editorial_text、statement_text 及 tags 提炼。",
         "quality_flags": []
       }
     },
     "2266E": {
       "problem_key": "2266E",
-      "title": "Prime Destruction",
+      "title": "Разрушение простых",
       "rating": 1400,
       "problem_url": "https://codeforces.com/contest/2266/problem/E",
       "editorial_url": "https://codeforces.com/blog/entry/156984",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "677d45d24cda34cb012393a1240f7a4cd16f1b308cc03f54455c147b43177ca4",
-      "generated_at": "2026-10-01T23:03:27+00:00",
+      "input_hash": "5240f74dfebf454441600dd37d0670f042c04f4ec249bb53d7d11fcc163526bf",
+      "generated_at": "2026-10-03T21:37:34+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个包含 $n$ 个正整数的多重集合。每次可选取一个大于 $1$ 的数 $x$ 及其质因子 $p$，删除一个 $x$ 并加入 $p$ 个 $x/p$；求将所有数变为不超过 $k$ 所需的最少操作次数。",
-        "transformed_statement": "把每个初始整数独立建模为一个递归状态：状态 $i$ 选择质因子 $p$ 后付出一次操作，并产生 $p$ 个相同的子状态 $i/p$。令 $dp_i$ 表示该状态清除到阈值 $k$ 的最小代价，再将初始元素的代价求和。",
+        "statement_brief": "给定一个由正整数构成的多重集合。每次选择其中的 $x>1$ 和一个质因子 $p$，删除一个 $x$ 并加入 $p$ 个 $x/p$；求把所有元素变为不超过 $k$ 至少需要多少次操作。",
+        "transformed_statement": "将每个初始元素独立建模为一棵拆分树：状态 $dp_i$ 表示单个 $i$ 被递归拆分至所有叶子不超过 $k$ 的最小操作数，选择质因子 $p$ 后转移到 $p$ 个相同的子状态 $i/p$。",
         "key_observations": [
-          "单个数的变化与其他数无关，因此总操作次数等于各初始元素达到阈值所需操作数之和。",
-          "若对 $i$ 选择质因子 $p$，一次操作会生成 $p$ 个独立的 $i/p$，所以状态转移为 $dp_i=1+p\binom{}{}dp_{i/p}$，其中应理解为 $dp_i=1+p\\cdot dp_{i/p}$。",
-          "因为 $i/p<i$，按数值递增计算状态即可；预处理每个数的不同质因子后，能枚举所有可能的首次操作。"
+          "一次把 $i$ 按质因子 $p$ 拆成 $p$ 个 $i/p$，这 $p$ 个结果之后可独立处理，因此代价为 $1+p\\cdot dp_{i/p}$。",
+          "由于 $i/p<i$，状态只依赖更小的数，按数值递增计算即可保证转移已经求出。",
+          "当 $i\\le k$ 时无需操作，故设 $dp_i=0$；原多重集合中的每个元素互不影响，总答案是各自代价之和。",
+          "只需枚举每个数的不同质因子；用筛法预处理质因子列表后，可直接完成所有状态转移。"
         ],
-        "solution_brief": "定义 $dp_i$ 为把单个 $i$ 变成所有元素均不超过 $k$ 的最少操作数。$i\\le k$ 时为 $0$，否则枚举质因子 $p$，转移为 $1+p\\cdot dp_{i/p}$；递增计算后累加所有 $dp_{a_i}$。",
+        "solution_brief": "定义 $dp_i$ 为把单个 $i$ 拆到所有数不超过 $k$ 的最少操作数。初始化 $i\\le k$ 为 $0$，其余按 $dp_i=\\min_{p\\mid i}(1+p\\cdot dp_{i/p})$ 递推，最后累加所有 $dp_{a_i}$；质因子用筛法预处理。",
         "primary_topic": "动态规划与状态设计",
         "secondary_topics": [
           "数论与同余"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面规则、完整 editorial_text 中的 DP 转移与质因子筛法，以及 tags；未额外引入外部信息。",
+        "source_provenance": "依据完整题面、Editorial 中的 DP 递推与筛法说明，以及题目标签。",
         "quality_flags": []
       }
     },
     "2266D": {
       "problem_key": "2266D",
-      "title": "Falling Concrete",
+      "title": "Падающий бетон",
       "rating": 1400,
       "problem_url": "https://codeforces.com/contest/2266/problem/D",
       "editorial_url": "https://codeforces.com/blog/entry/156984",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "69621adafd944053da9033b7d76ea7b6f4d047b8d38439632b69238127a39db2",
-      "generated_at": "2026-10-01T23:03:46+00:00",
+      "input_hash": "cb2f6403fc681aefbd5fc9135ba58761270d0b3155843f1f659c7063ce519971",
+      "generated_at": "2026-10-03T21:37:48+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "道路由 $n$ 段组成，每次可选 $i<j$，把第 $j$ 段移到第 $i$ 段前；被越过的每段高度加 $1$，被移动段高度减去 $j-i$。可进行任意次操作，求最终连续且高度相同的路段的最大长度。",
-        "transformed_statement": "把每个初始路段标记为不变量 $b_i=a_i-i$。操作只改变路段顺序而不改变标记；问题等价于选出标记值连续的若干路段，并按标记递减顺序排列，使它们形成同高连续段。",
+        "statement_brief": "给定各路段的高度。每次可选择 $i<j$，把第 $j$ 段搬到第 $i$ 段前；它左移经过的每个位置会使经过的路段高度加 $1$，自身高度减少 $j-i$。可进行任意次操作，求最终连续且高度相同的路段的最大长度。",
+        "transformed_statement": "把每个初始位置 $i$ 的路段标记为不变量 $a_i-i$。操作不会改变这些标记，并且可以任意重排路段；于是问题等价于求不同标记中最长的连续整数集合。",
         "key_observations": [
-          "一次操作中每个路段的“高度减位置”保持不变，因此初始第 $i$ 段的恒定标识是 $a_i-i$。",
-          "通过从左到右不断把所需路段移到当前位置，可以实现任意路段排列，所以只需选择并安排合适的恒定标识。",
-          "若连续 $k$ 段位于位置 $p$ 到 $p+k-1$ 且高度相同，则它们的标识必须是连续递减的 $k$ 个整数；反过来，将标识连续的路段按递减顺序排列即可使高度相等。",
-          "因此答案等于所有不同标识 $a_i-i$ 中最长的连续整数段长度，排序后线性扫描即可得到。"
+          "一次操作中，被搬运区段右移的部分高度各增加 $1$，搬运区段左移的部分高度减少相同距离，因此每个区段的“高度−位置”始终不变。",
+          "可以从左到右逐个确定目标顺序，把所需区段移动到当前位置，所以区段的最终排列可以任意重排。",
+          "连续 $k$ 个等高区段对应的“高度−位置”恰好是 $k$ 个连续整数；反过来，将具有连续整数不变量的区段按递减顺序排列即可使它们等高。",
+          "因此答案转化为所有不同的 $a_i-i$ 中最长连续整数段的长度，去重后按升序扫描即可得到。"
         ],
-        "solution_brief": "计算每段的恒定值 $a_i-i$，去重后排序，扫描最长连续整数段。该长度就是可构造出的最长平坦路段，复杂度为 $O(n\\log n)$。",
+        "solution_brief": "为每个区段计算不变量 $a_i-i$。将这些值去重并排序，扫描最长的连续整数段；该长度就是可形成的最长平坦路段。复杂度为 $O(n\\log n)$。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [
           "数据结构",
-          "基础实现与模拟"
+          "代数、矩阵与多项式"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial、题面操作规则及 tags 中的构造、数据结构和排序信息。",
+        "source_provenance": "依据题面中的操作定义，以及完整 editorial 中关于不变量、任意重排和连续整数段的结论；tags 仅用于辅助分类。",
         "quality_flags": []
       }
     },
     "2266C": {
       "problem_key": "2266C",
-      "title": "AND, OR, Sort!",
+      "title": "И, ИЛИ, сортировка!",
       "rating": 1000,
       "problem_url": "https://codeforces.com/contest/2266/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/156984",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "7d163b92740999d9936bd8099554cdee4fbb29bef9f1e8f3c85c73faca48ca74",
-      "generated_at": "2026-10-01T23:04:28+00:00",
+      "input_hash": "acbf5ca26e35ea3a5914183a74e04ffcb13ce5db7ee7487168f0ab007e93e923",
+      "generated_at": "2026-10-03T21:38:29+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个只含 $0$ 和 $1$ 的字符串。每次可选择位置 $i$，把该位替换为前缀 $s_1 ext{ 到 }s_i$ 的按位与或按位或结果；要求用最少操作将字符串变成非递减有序串。",
-        "transformed_statement": "把最终字符串表示为一个分界点：分界点左侧全部为 $0$，右侧全部为 $1$。对每个分界点，代价等于左侧仍为 $1$ 的数量加上右侧仍为 $0$ 的数量，并取最小值；首位为 $1$ 时只能选择全为 $1$ 的目标串。",
+        "statement_brief": "给定一个只含 $0$ 和 $1$ 的字符串。每次可选位置 $i$，将 $s_i$ 替换为前缀 $s_1,\u0005,s_i$ 的按位与或按位或结果，目标是用最少操作把字符串变成非降序。",
+        "transformed_statement": "把最终的非降序二进制串表示为一个分界点：分界点左侧全为 $0$，右侧全为 $1$。对固定分界点，代价转化为左侧原有 $1$ 的数量与右侧原有 $0$ 的数量之和。",
         "key_observations": [
-          "若前缀同时含有 $0$ 和 $1$，其按位与为 $0$、按位或为 $1$，因此当前位置可以被改成任意目标值。",
-          "若 $s_1=1$，首位无法改变，而有序二进制串只能全为 $1$，所以答案就是原串中 $0$ 的数量。",
-          "当 $s_1=0$ 时，固定有序串中 $0$ 与 $1$ 的分界点后，只需修改分界点左侧的 $1$ 和右侧的 $0$，代价为两者数量之和。",
-          "分界点在初始连续零段内部不会更优，因此从左到右维护左侧 $1$ 数和右侧 $0$ 数即可求出最小代价。"
+          "只要某个前缀同时含有 $0$ 和 $1$，其按位与为 $0$、按位或为 $1$，因此该位置可以按需改成任意二进制值。",
+          "若首位是 $1$，它无法改变；非降序二进制串只能全为 $1$，所以答案就是原串中 $0$ 的数量。",
+          "若首位是 $0$，固定最终串的分界点后，左侧所有 $1$ 和右侧所有 $0$ 都必须修改，代价为左侧 $1$ 的数量加右侧 $0$ 的数量。",
+          "先用按位或修改右侧的 $0$，再用按位与修改左侧的 $1$，两类修改均可实现，因此枚举分界点并取最小代价是正确的。"
         ],
-        "solution_brief": "先统计总零数。若首位为 $1$，答案为总零数；否则枚举有序串的分界点，维护左侧 $1$ 数与右侧 $0$ 数，取二者和的最小值。每组复杂度为 $O(n)$。",
+        "solution_brief": "首位为 $1$ 时答案是全串 $0$ 的数量。否则枚举每个分界点，维护左侧 $1$ 的数量与右侧 $0$ 的数量，取两者之和的最小值，单组复杂度为 $O(n)$。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [
           "字符串"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面操作规则、完整题解正文及字符串与贪心标签整理。",
+        "source_provenance": "依据题面规则、完整题解正文及字符串与贪心标签整理。",
         "quality_flags": []
       }
     },
     "2266B": {
       "problem_key": "2266B",
-      "title": "Three Piles",
+      "title": "Три кучки",
       "rating": 800,
       "problem_url": "https://codeforces.com/contest/2266/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/156984",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "5a082ccf45e1891cad93235fcb0cbf5e5fc711146b9365e13aae70a85f1dc59b",
-      "generated_at": "2026-10-01T23:04:44+00:00",
+      "input_hash": "ce9e27fd5650a98df4ef36f70cdfef01e8fa12b2a338496ccf594d073fb11f53",
+      "generated_at": "2026-10-03T21:38:46+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 Alice、Bob 两堆石子和一堆公共石子，双方轮流从公共堆取任意数量（可取零）并加入自己的堆，Alice 先手；双方连续都取零时游戏结束。最终得分是两人石子数之差的绝对值，Alice 最大化、Bob 最小化该得分，求最优对局结果。",
-        "transformed_statement": "把整个轮流过程压缩为 Alice 的两个有效选择：始终不取，或在决定取时一次拿走公共堆全部石子；分别计算这两个端点产生的差值，再取 Alice 能达到的较大值。",
+        "statement_brief": "有三堆石子，Alice 和 Bob 轮流从第三堆取任意数量（可取零）并放入自己的堆，Alice 先手；双方连续都取零时游戏结束。Alice 最大化最终两人石子数之差，Bob 最小化，求最优对局下的分差。",
+        "transformed_statement": "把交替取石子的过程压缩为 Alice 的两种关键选择：完全不动第三堆，或一次拿走全部石子；再比较这两种终局分差，并根据初始领先关系确定 Bob 的最优应对。",
         "key_observations": [
-          "当 $a\\geq b$ 时，Alice 立即拿走全部 $c$，Bob 已无法利用第三堆缩小差距，因此得分为 $a+c-b$。",
-          "当 $a<b$ 且 Alice 不拿石子时，Bob 已领先，拿石子只会增大差距，所以双方都可以连续不拿，得分为 $b-a$。",
-          "若 Alice 决定拿石子，拿一部分的结果夹在拿零个和拿全部之间，不能优于两个端点，因此只需比较不拿与拿完全部。",
-          "拿完全部时得分为 $|a+c-b|$，综合两种选择后答案为 $\\max(|a-b|,a+c-b)$，每组数据可直接计算。"
+          "当 $a\\ge b$ 时，Alice 立即拿走第三堆全部石子可保持并扩大领先，Bob 已无石子可转移，结果为 $a+c-b$。",
+          "若 $a<b$ 且 Alice 不拿石子，Bob 也会选择不拿，直接得到分差 $b-a$；这说明“不操作”是 Alice 的一个可行基准方案。",
+          "Alice 若决定拿石子，拿走部分的结果不会优于“不拿”与“全部拿走”两种端点，因此只需比较拿 $0$ 个和拿完 $c$ 个。",
+          "综合两种选择，最优答案为 $\\max(|a-b|,a+c-b)$；每组数据只需常数次运算。"
         ],
-        "solution_brief": "分别考虑 Alice 初始不领先和领先的情况。最优策略只需比较不拿石子与一次拿完全部两种端点，答案为 $\\max(|a-b|,a+c-b)$，每组复杂度为 $O(1)$。",
+        "solution_brief": "将 Alice 的策略压缩为拿走 $0$ 个或全部 $c$ 个。分别计算不拿时的 $|a-b|$ 与拿完后的 $|a+c-b|$，结合 Bob 的最优应对，答案化为 $\\max(|a-b|,a+c-b)$，每组复杂度为 $O(1)$。",
         "primary_topic": "博弈",
         "secondary_topics": [
           "构造与贪心",
           "数论与同余"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面、editorial 中的两种情形分析与公式，以及 tags 中的 games、greedy、math。",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅用于主题归类。",
         "quality_flags": []
       }
     },
     "2266A": {
       "problem_key": "2266A",
-      "title": "Good Contest",
+      "title": "Хороший контест",
       "rating": 800,
       "problem_url": "https://codeforces.com/contest/2266/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/156984",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "0af6f617933715367a60af6a7b27104c0851e60ff19958ea0a529b25fff139e0",
-      "generated_at": "2026-10-01T23:04:55+00:00",
+      "input_hash": "b5cbd2bac08229256084c1b0152b0e01c0ef4854440a8dfeaead8d33ac66d2db",
+      "generated_at": "2026-10-03T21:39:02+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 $n$ 名参赛者和三道题，只知道每道题分别被多少人解决。需要在所有符合这些人数的成绩表中安排每人的解题集合，使未解决全部三题的弱者人数最少，并输出最小值。",
-        "transformed_statement": "把未知成绩表看成三组解题记录的重叠安排：为了减少弱者，只需最大化三组的共同交集，即让尽可能多的参赛者同时出现在三道题的解题者集合中。",
+        "statement_brief": "有 $n$ 名参与者和三道难度不同的问题，只知道每道题分别被多少人解决，而不知道具体对应关系。需要在所有满足这些人数的记分板中安排每人的解题集合，使未解决全部三题的弱者人数最少，并输出该最小值。",
+        "transformed_statement": "将问题转化为最大化三道题解题者集合的公共部分：公共部分人数就是同时解决三题的人数，而弱者人数等于 $n$ 减去该人数。三个集合的交集最多为三者大小的最小值，且可以通过重合这批参与者实现。",
         "key_observations": [
-          "能同时解决三题的参赛者数量不可能超过 $\\min(a_1,a_2,a_3)$，因为他们必须分别占用每道题的一次解题记录。",
-          "让同一批 $\\min(a_1,a_2,a_3)$ 名参赛者解决全部三题，再把各题剩余的解题记录任意分配，即可达到这个上界，因此该上界一定可行。",
-          "弱者人数等于总人数减去三题全解人数；最大化全解人数后，答案直接为 $n-\\min(a_1,a_2,a_3)$。"
+          "同时解决三题的参与者必须各消耗一道题的名额，因此其人数上限是 $\\min(a_1,a_2,a_3)$。",
+          "让同一批 $\\min(a_1,a_2,a_3)$ 名参与者解决全部三题，并将剩余解题名额任意分配，可以达到这个上限。",
+          "弱者人数等于总人数减去全题通过人数，因此答案为 $n-\\min(a_1,a_2,a_3)$。"
         ],
-        "solution_brief": "将问题转化为最大化三题全解人数。全解人数最多为 $\\min(a_1,a_2,a_3)$，且可通过让同一批参赛者全解三题实现，答案为 $n-\\min(a_1,a_2,a_3)$，每组测试 $O(1)$。",
+        "solution_brief": "最大化解决全部三题的人数。该人数不可能超过三项解题人数的最小值，并可通过让同一批参与者完成三题达到，因此输出 $n-\\min(a_1,a_2,a_3)$，每组复杂度为 $O(1)$。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面与 editorial，tags 仅用于辅助确认主题。",
+        "source_provenance": "依据完整题面与 editorial；tags 提供 greedy 标签。",
         "quality_flags": []
       }
     },
@@ -21927,834 +21930,834 @@
     },
     "2269B": {
       "problem_key": "2269B",
-      "title": "KiaKio and Squared Numbers",
+      "title": "Киа, Кио и числа-квадраты",
       "rating": 1000,
       "problem_url": "https://codeforces.com/contest/2269/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/157140",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "0eaa611b93d32f1006a93714a8c2badba10595a14be046acb597e2a4f3c7e1ea",
-      "generated_at": "2026-10-01T22:58:25+00:00",
+      "input_hash": "bda98a412bdcf0df25715ea76005e538d39c3de9ddb851b682b567e0c0adc55f",
+      "generated_at": "2026-10-03T21:31:39+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 $n$ 个灯塔，每个初始显示正整数；每过一夜，数字替换为其十进制各位数字平方和。若两个灯塔从某一夜起此后每夜显示的数字都完全相同，则称它们合拍，求合拍的灯塔对数。",
-        "transformed_statement": "将每个初始数映射到其最终周期上的长期行为签名：固定点 $1$ 使用单独签名，长度为 $8$ 的环按到达步数校正环上位置。原问题因此转化为统计相同签名的元素对数。",
+        "statement_brief": "有 $n$ 座灯塔，第 $i$ 座在第 $0$ 夜显示 $a_i$；之后每夜将当前数替换为其十进制各位数字平方和。若两座灯塔从某一夜起永远每夜显示相同的数，就称它们同步；求满足条件的无序灯塔对数。",
+        "transformed_statement": "把每个初值映射到数位平方和函数最终进入的循环，并用循环相位描述其后续序列：固定点 $1$ 单独成类，八元循环则按抵消了到达时间的相位 $(k-s)\\bmod 8$ 分组。原问题因此转化为统计相同签名的数对。",
         "key_observations": [
-          "一次变换后数值不超过 $729$，后续过程会进入有限状态；题解给出的最终周期只有固定点 $1$ 和长度为 $8$ 的环。",
-          "进入长度为 $8$ 的环时，仅比较最终落在哪个环元素还不够；必须把到达所需步数扣除，环上相位 $(k-s)\\bmod 8$ 才能判断两条序列之后是否逐夜相同。",
-          "所有进入固定点 $1$ 的序列最终都恒为 $1$，可统一归为一个签名；环上则按相位归类，因此同签名的初始值恰好构成互相 in tune 的组。"
+          "每个正整数反复应用数位平方和后，最终只会进入固定点 $1$ 或长度为 $8$ 的循环，因此无需比较无限长的后续序列。",
+          "进入长度为 $8$ 的循环时，若经过 $s$ 步到达循环位置 $k$，此后每一步的位置由 $(k+t-s)\\bmod 8$ 决定；所以只需比较 $(k-s)\\bmod 8$，即可判断两条序列是否从某时起逐夜相同。",
+          "所有到达固定点 $1$ 的数可归为同一类，而循环中的数按相位归类；同类灯塔两两符合条件，答案可由各类数量分别计算组合数。"
         ],
-        "solution_brief": "对每个初始值反复计算十进制各位平方和，直到到达 $1$ 或长度为 $8$ 的环。到达 $1$ 的签名设为 $8$；若经过 $s$ 步到达环上第 $k$ 个元素，签名设为 $(k-s)\\bmod 8$。统计各签名数量，并将每组的配对数相加。",
+        "solution_brief": "对每个初值反复计算数位平方和，直到到达 $1$ 或八元循环。到达 $1$ 的数赋予同一签名；到达循环位置 $k$ 且用了 $s$ 步的数，签名取 $(k-s)\\bmod 8$。统计各签名数量并累加 $cnt(cnt-1)/2$，每组用时 $O(n)$。",
         "primary_topic": "基础实现与模拟",
-        "secondary_topics": [
-          "构造与贪心"
-        ],
+        "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面中的逐夜变换规则及 editorial 给出的周期、相位签名和计数方法。",
+        "source_provenance": "依据题面中的逐夜更新规则，以及完整 editorial 给出的循环、相位签名和计数方法。",
         "quality_flags": []
       }
     },
     "2269A": {
       "problem_key": "2269A",
-      "title": "SauSaGe Bank",
+      "title": "Банк SauSaGe",
       "rating": 800,
       "problem_url": "https://codeforces.com/contest/2269/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/157140",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "56578685e6a00f8ea3f43a36d21ca55491c1b88ea4bd0fa1d1a69be8debf9ca4",
-      "generated_at": "2026-10-01T22:58:37+00:00",
+      "input_hash": "dad152f2809df64aedf46c0dc6c98c1b20f3ec16b1190c6bc10674d3bd64539a",
+      "generated_at": "2026-10-03T21:31:51+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "账户初始有 $1$ 美元，每天先将余额翻倍，夜间可选择取出全部余额并将账户重置为 $1$ 美元。银行营业 $n$ 天，必须恰好在 $k$ 个不同夜晚取款，求第 $n$ 天结束后卡中累计金额的最大值。",
-        "transformed_statement": "把每次取款间隔（含取款当天）记为一个正整数段长，全部段长之和为 $n$，且恰有 $k$ 段；长度为 $d$ 的一段对卡中金额贡献 $2^d$，于是问题等价于最大化这些幂之和。",
+        "statement_brief": "账户初始有 $1$ 美元，连续 $n$ 天每天早晨余额翻倍；每天晚上可以取出全部余额并把账户重置为 $1$，也可以不取。必须恰好选择 $k$ 天取款，求第 $n$ 天结束后银行卡上累计金额的最大值。",
+        "transformed_statement": "将连续两次取款之间的天数视为一个正整数间隔；每个间隔为总收益贡献 $2^{a_i}$，且 $k$ 个间隔之和为 $n$。因此问题等价于把 $n$ 拆成恰好 $k$ 个正整数，使其对应的 $2^{a_i}$ 之和最大化。",
         "key_observations": [
-          "每次取款前经过 $d$ 天，卡中增加额恰为 $2^d$，因此取款日期可转化为把总天数 $n$ 划分成 $k$ 个正整数段。",
-          "固定两段总长度时，把较短且大于 $1$ 的段再缩短一天、较长段加长一天，会严格增加 $2^a+2^b$，所以最优划分中至多一段长度大于 $1$。",
-          "因此最优段长为 $n-k+1,1,\u001b[1;1m\\ldots\u001b[0m,1$，最大金额为 $2^{n-k+1}+2(k-1)$。"
+          "若一次取款前连续等待 $d$ 天，账户余额会从重置后的 $1$ 增至 $2^d$，所以每次取款的收益只由两次取款之间的间隔决定。",
+          "把 $n$ 天分成 $k$ 个正整数间隔后，总收益为各间隔对应的 $2^{a_i}$ 之和；这将按天安排取款转成固定和的整数划分问题。",
+          "对两个间隔 $a\\le b$ 且 $a>1$，将一天从较短间隔移到较长间隔会使收益增加 $2^b-2^{a-1}>0$，因此最优时除一个间隔外，其余间隔都为 $1$。"
         ],
-        "solution_brief": "设相邻取款之间的天数为正整数段长，则各次取款分别贡献对应段长的 $2$ 次幂。将天数尽可能集中到一个段，其余 $k-1$ 段取长度 $1$，答案为 $2^{n-k+1}+2(k-1)$。",
+        "solution_brief": "设各次取款对应的间隔为 $a_1,\\ldots,a_k$，它们是和为 $n$ 的正整数，收益为 $\\sum 2^{a_i}$。根据将短间隔的一天转给长间隔能严格增加收益，最优间隔为 $n-k+1,1,\\ldots,1$，答案是 $2^{n-k+1}+2(k-1)$。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [
           "数论与同余"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面中的逐日翻倍、夜间取款规则，以及 editorial 给出的段长转化和交换证明；tags 仅作辅助。",
+        "source_provenance": "依据题面中的每日翻倍、夜间取款与重置规则，以及 editorial 给出的间隔转化和交换证明。",
         "quality_flags": []
       }
     },
     "2268F": {
       "problem_key": "2268F",
-      "title": "Deglado",
+      "title": "Дегладо",
       "rating": 3500,
       "problem_url": "https://codeforces.com/contest/2268/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/157140",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "a271abe4771e722bc2ba40db49cb582843524c327c918828af57828f30348614",
-      "generated_at": "2026-10-01T22:58:52+00:00",
+      "input_hash": "fea3bb9c72525d5666e2987dbd6f19627743752b683a74b65acffd1b0ac2ebf8",
+      "generated_at": "2026-10-03T21:32:06+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个 $2n\\times2n$ 网格，每列都是 $1$ 到 $2n$ 的排列。每次可选一个相邻的 $2\\times2$ 子网格，同时交换其中上、下两行对应位置的两个元素；要求在至多 $n\\binom{2n}{2}+9n$ 次操作内使每列从上到下递增，或判定无法做到。",
-        "transformed_statement": "把每次操作视为同时对两列各交换一对相邻行元素，先用总逆序数奇偶性筛除不可能实例。构造时逐个固定数值，并把列配成数对，将当前值在各数对中的出现情况整理成每对都含两个该值，使其整行归位后继续处理下一值。",
+        "statement_brief": "给定一个 $2n\\times2n$ 网格，每列都是 $1$ 到 $2n$ 的一个排列。每次选择相邻两行和相邻两列组成的 $2\\times2$ 子网格，将上行的两个数分别与下行对应的数交换；要求在不超过 $n\\binom{2n}{2}+9n$ 次操作内使每列从上到下递增，或判定无法做到。",
+        "transformed_statement": "把目标改写为按数值递增逐行归位：处理 $x$ 时，将所有值为 $x$ 的单元移入第 $x$ 行。将列两两配对后，任务成为消除各列对中 $x$ 的不平衡分布，同时保持已完成的行不被破坏；总逆序数奇偶性则给出必要的无解判据。",
         "key_observations": [
-          "一次操作会在两个列中各交换一对元素，因此总逆序数的奇偶性不变；目标状态的总逆序数为偶数，故初始总逆序数为奇数时必定无解。",
-          "按列两两配对后，固定处理值 $x$ 时，每对列在第 $x$ 行只需区分含有 $0$、$1$ 或 $2$ 个 $x$；把所有数对调整为含有两个 $x$，就能一次性将 $x$ 的全部副本放入正确行。",
-          "单独的 $x$ 分为位于左列和右列两种情形，分别从左向右、从右向左处理；相遇的左右类型可以配合归位，从而避免逐对搬运带来的额外操作。",
-          "先处理 $1$ 到 $2n-2$，最后再处理最大值；逐步把已归位行排除在后续操作之外，使构造总操作数不超过 $n\\binom{2n}{2}+9n$。"
+          "一次操作会分别交换两列中的一对元素，因此总逆序数的奇偶性不变；目标网格的逆序数为零，故初始总逆序数为奇数时必定无解。",
+          "按数值从小到大处理，并把列两两配对；处理数值 $x$ 时，只需把每对列第 $x$ 行中的 $x$ 逐步补齐，已处理好的行不会再受影响。",
+          "一对列中仅有一个 $x$ 时，可按其位于左列还是右列分成 $L$、$R$ 两类；从左向右处理 $L$、从右向左处理 $R$，相遇的异类可成对消解，从而避免额外操作扩散。",
+          "每个数值的主体操作次数可控制在 $n(2n-x)$，边界列对及最后一行只需少量额外操作，因此总数不超过 $n\\binom{2n}{2}+9n$。"
         ],
-        "solution_brief": "先计算所有列的总逆序数奇偶性，奇数则输出无解。否则按值递增处理：将列两两配对，利用相邻行交换把当前值的副本整理到对应行；左右方向处理单独副本，并对首尾列对作额外处理，最后归位最大值。题解给出的操作数满足规定上限。",
+        "solution_brief": "先计算所有列的逆序数总和，奇数则输出无解。否则按 $x=1,2,\\ldots,2n-1$ 依次归位：将列配对，依照每对中 $x$ 的分布消除单个副本并补齐整对；边界列对单独处理，最后整理末行。该构造满足操作次数上限。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面操作规则及完整 editorial 的奇偶性判定、按值构造和操作次数分析；标签为 constructive algorithms。",
+        "source_provenance": "依据题面操作规则及 editorial 的提示、构造步骤和操作数分析。",
         "quality_flags": []
       }
     },
     "2268E": {
       "problem_key": "2268E",
-      "title": "Kia Kio and Tree of Life",
+      "title": "Киа, Кио и Древо жизни",
       "rating": 2700,
       "problem_url": "https://codeforces.com/contest/2268/problem/E",
       "editorial_url": "https://codeforces.com/blog/entry/157140",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "d15069f8f87e066e011ea51c8bcde1e4269a5d2c414a04f90f8f32b100574205",
-      "generated_at": "2026-10-01T22:59:06+00:00",
+      "input_hash": "038004de10abf9e635a7ec7b80afa2c50ab4e656993e0aaa5e427b70316a58b6",
+      "generated_at": "2026-10-03T21:32:19+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定长度为 $n$ 的数组。对每个连续区间递归选择一个位置作根，并分别用其左、右两侧区间构造左右子树；对每棵生成的树，删除每条边，计算分成的两部分各自数组元素异或和的数值之和，再将所有边的贡献相加。要求对所有可能生成的树的上述总值求和，结果对 $998244353$ 取模。",
-        "transformed_statement": "把每棵树上的边对应到其子节点的子树：该子树顶点构成一个连续子段，固定长度为 $l$ 的子段以 $C_lC_{n-l}$ 种树形和位置组合出现。于是原问题化为按长度加权统计子段异或，并对每一位分别计数；难点归结为前缀异或序列自相关的加权和计算。",
+        "statement_brief": "给定长度为 $n$ 的数组，递归选择区间中的一个位置作为根，并以其左、右两侧区间递归构造左右子树，得到所有可能的二叉树。每棵树对每条边计算切断后两部分数组元素异或和的数值之和，再求所有树的该值总和并对 $998244353$ 取模。",
+        "transformed_statement": "把每棵树的每条边对应为其子树顶点组成的连续子数组；长度为 $l$ 的指定子数组在全部树中出现 $C_lC_{n-l}$ 次。于是总贡献化为所有真子数组的异或值与 Catalan 权重的加权和，再按位统计。",
         "key_observations": [
-          "固定一棵树中某条边下方的子树后，其顶点必为原数组的一个连续子段；长度为 $l$ 的固定子段恰好出现在 $C_lC_{n-l}$ 棵树中，因此可将对所有树和边求和转为对子段加权求和。",
-          "按位独立计算时，若总异或的该位为 $1$，切边两侧恰有一侧贡献该位，故该位总贡献可直接由树数和边数确定；若总异或该位为 $0$，两侧该位相同，只需统计子段异或该位为 $1$ 的数量。",
-          "前缀异或该位映射为 $\u00177$ 后，间隔 $l$ 的乘积和等于同位前缀对数减异位前缀对数，因此可由自相关值恢复长度为 $l$ 的异或为 $1$ 的子段数。",
-          "目标只需要自相关值与 Catalan 权重的加权和，无须恢复每个相关值；通过 Parseval 恒等式可在频域直接求和，从而避免逐位进行逆 NTT。"
+          "固定一条边下方的子树后，其顶点在中序序列中必为连续子数组；长度为 $l$ 的指定子数组恰出现在 $C_lC_{n-l}$ 棵树中，因此可按子数组加权计数，而不必逐棵枚举树。",
+          "逐位处理异或贡献时，若全数组异或该位为 $1$，切边后的两个部分恰有一个该位为 $1$，每条边的贡献固定；若该位为 $0$，则只需统计子数组异或该位为 $1$ 的数量。",
+          "把前缀异或的当前位映射为 $1$ 或 $-1$，相距 $l$ 的符号乘积之和 $R_l$ 满足 $D_l=(n+1-l-R_l)/2$，从而把子数组计数转成符号序列的自相关。",
+          "目标只需要自相关与 Catalan 权重的加权和，无须恢复每个 $R_l$；利用 Parseval 恒等式可直接在 NTT 频域求和，避免逐位进行逆变换。"
         ],
-        "solution_brief": "用 Catalan 数计算每个子段作为某条边下方子树的出现次数，再按位累加切边两侧异或值。总异或该位为 $0$ 时，以前缀异或符号序列的自相关统计各长度子段，并用 NTT 与 Parseval 恒等式直接计算所需加权和；复杂度为 $O(18n\\log n)$。",
-        "primary_topic": "数论与同余",
+        "solution_brief": "用 Catalan 数计算每个连续子数组作为子树的出现次数，再按位拆解切边两侧的异或和。全数组该位为零时，通过前缀异或符号序列的自相关统计符合条件的子数组，并用 NTT 与 Parseval 恒等式直接计算所需加权和；复杂度为 $O(18n\\log n)$。",
+        "primary_topic": "树结构",
         "secondary_topics": [
-          "树结构",
-          "数据结构"
+          "数论与同余",
+          "代数、矩阵与多项式"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面中的树构造与切边定义，以及 editorial 的 Catalan 计数、按位分析、自相关和 Parseval/NTT 推导；tags 仅作辅助参考。",
+        "source_provenance": "依据题面与完整 editorial；tags 仅用于辅助分类。",
         "quality_flags": []
       }
     },
     "2268D": {
       "problem_key": "2268D",
-      "title": "AghaBalaSar and Hamed",
+      "title": "AghaBalaSar и Хамед",
       "rating": 2600,
       "problem_url": "https://codeforces.com/contest/2268/problem/D",
       "editorial_url": "https://codeforces.com/blog/entry/157140",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "988ce42bc64143bd5d9c9807efcdf39df24655ddc6837268ca340cfe2704a84e",
-      "generated_at": "2026-10-01T22:59:20+00:00",
+      "input_hash": "5a928ab05e482515af8cf98ab4b9cf57df0b5b5c7b2431e24048382cc999b3b3",
+      "generated_at": "2026-10-03T21:32:32+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个长度为 $n$ 的排列，从位置 $i$ 每步可以移动到任意更靠左的位置，或移动到右侧第一个值严格大于当前位置值的位置（若存在）。对所有有序位置对 $(i,j)$，求从 $i$ 到 $j$ 的最少步数 $f(i,j)$ 之和。",
-        "transformed_statement": "把每个位置视为有向图顶点：向左连向所有位置，向右只连向下一个更大元素。按无法继续向右跨越的位置划分独立区块，再利用最短路先左后右的结构，为每个起点累计到所在区块各点的距离。",
+        "statement_brief": "给定一个长度为 $n$ 的排列，从位置 $i$ 每步可以移动到任意更靠左的位置；也可以移动到右侧第一个数值严格大于当前位置数值的位置（若存在）。令 $f(i,j)$ 为从 $i$ 到 $j$ 的最少步数，要求对所有有序位置对求距离总和。",
+        "transformed_statement": "把移动过程按“最短路中的向左、向右结构”分析，并以每个位置右侧最近的更大值 $R_i$ 划分互不影响的区块。对每个起点只需求区块内距离总和，再依据其两步可达的最右位置及距离为 $2$ 的点数递推计算。",
         "key_observations": [
-          "最短路可整理为“先至多向左走一步，之后连续向右走，最后至多向左走一步”的形状，因此固定起点后，向右可达范围能用少量转移刻画。",
-          "令 $R_i$ 为 $i$ 右侧第一个比 $p_i$ 大的位置；若不存在则记为 $n+1$。$R_i=n+1$ 的位置将序列切成互不向右可达的块，距离和可以分别计算。",
-          "若两步可达的最右位置恰为 $R_i$，那么去往 $R_i$ 右侧任意位置的最短路都可先走到 $R_i$，故距离和可由 $dp_{R_i}$ 加上块内位置差直接递推。",
-          "若两步可达的最右位置为 $x>R_i$，则 $x$ 右侧的距离等于 $2+f(x,j)$；区间 $(i,x]$ 中距离为 $2$ 或 $3$，只需统计距离为 $2$ 的位置数即可完成转移。"
+          "最短路可整理为至多一次向左、随后连续向右、最后至多一次向左的形态，因此从起点连续向右后，后续右移选择被唯一确定。",
+          "令 $R_i$ 为 $i$ 右侧最近的更大值位置；在 $R_i=n+1$ 的位置处分块，因为从该位置无法向右跨入后续块，块内距离和可独立计算。",
+          "从 $i$ 两步内可达的最右位置 $x$ 决定距离递推：若 $x=R_i$，与 $R_i$ 的距离和比较可得 $dp_i=dp_{R_i}+r-i-1$；若 $x>R_i$，超出 $x$ 的位置都可通过 $x$ 延伸，剩余部分只需统计距离为 $2$ 的位置数。",
+          "两步可达的右侧位置恰来自 $i<j<R_i$、$j=R_{R_i}$ 或 $R_k=j$ 且 $k\\le i$；维护满足后一条件的位置集合，即可确定 $x$ 并统计距离为 $2$ 的位置，避免逐对求距离。"
         ],
-        "solution_brief": "预处理每个位置的下一个更大元素 $R_i$，按 $R_i=n+1$ 划分区块，并从右向左计算各位置到本块所有位置的距离和。维护由 $L_j=\\min\\{k:R_k=j\\}$ 标记的两步可达位置，以取得最右可达点并统计距离为 $2$ 的位置数，最后汇总各起点的距离和；总复杂度为 $O(n)$。",
+        "solution_brief": "按 $R_i=n+1$ 将排列分块，并从右向左计算块内各点到所有点的距离和。利用最右两步可达位置分类递推；维护满足 $L_j\\le i$ 的位置集合，以确定该位置及两步可达点数，最终累加所有起点的距离和，整体复杂度为 $O(n)$。",
         "primary_topic": "图论与网络流",
         "secondary_topics": [
           "动态规划与状态设计",
           "数据结构"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面中的移动规则，以及 editorial 给出的最短路结构、区块划分、DP 转移与线性维护方法。",
+        "source_provenance": "依据题面中的单步移动规则及完整 editorial 的分块、距离递推和两步可达位置维护方法；tags 仅作辅助参考。",
         "quality_flags": []
       }
     },
     "2268C": {
       "problem_key": "2268C",
-      "title": "KiaKio and Energy Intervals",
+      "title": "Киа, Кио и энергетические отрезки",
       "rating": 2300,
       "problem_url": "https://codeforces.com/contest/2268/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/157140",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "92eb1835573821d135e76e59ae73f9c91e243429f403c74edf6eabe368876da7",
-      "generated_at": "2026-10-02T12:49:50+00:00",
+      "input_hash": "906f1f7c50e080101bef1a4a90497bc1797a416e7b62a0627e1dd32e0c1d4173",
+      "generated_at": "2026-10-03T21:32:53+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定数组，可选择任意满足 $l<r$ 的连续区间，令区间最大值为 $m$，将区间每个元素分别与 $m$ 按位 AND 后再全部按位 XOR。求所有合法区间中得到的最大能量值。",
-        "transformed_statement": "用前缀异或把区间能量表示为 $ (p_{l-1}\\oplus p_r)\\&m $，再用最大笛卡尔树把区间最大值归属到端点 LCA。对候选答案掩码 $M$，问题转为寻找同一树节点两侧的前缀端点，使其掩码前缀异或恰为 $M$。",
+        "statement_brief": "给定数组，每次选择至少包含两个元素的连续区间 $[l,r]$，令 $m$ 为区间最大值，并计算所有元素分别与 $m$ 按位与后的异或值。要求在所有合法区间中求这个能量值的最大值。",
+        "transformed_statement": "将区间能量重写为两个前缀异或的差异与区间最大值的按位与；再用最大笛卡尔树表示区间最大值，使问题转化为对每个树节点寻找两侧前缀端点的异或是否覆盖候选掩码。",
         "key_observations": [
-          "区间结果可化为 $ (p_{l-1}\\oplus p_r)\\&m $，因此逐元素 AND-XOR 被压缩成两个前缀异或与区间最大值的关系。",
-          "最大笛卡尔树中，区间 $[l,r]$ 的最大值对应其端点的 LCA，故可按树节点划分恰好以该节点为最大值的区间。",
-          "固定候选掩码 $M$ 后，令 $s_i$ 为 $a_i\\&M$ 的前缀异或；可行性等价于节点值包含 $M$ 且存在端点满足 $s_x\\oplus s_y=M$，从而转为频次查找。",
-          "对子树两侧采用小并大合并，每次扫描较小侧并查询互补值；同时排除 $(v-1,v)$ 对应的非法单元素区间，保证判定正确。"
+          "按位与对异或可分配，因此区间能量等于区间原数组异或值与区间最大值的按位与，即 $(p_{l-1}⊕p_r)\\&m$。",
+          "最大笛卡尔树中，区间端点 $l,r$ 的 LCA 对应区间最大值；于是可按树节点划分所有具有同一最大值的区间。",
+          "固定候选掩码 $M$ 后，只需令 $s_i$ 为 $(a_i\\&M)$ 的前缀异或，并寻找两端点满足 $s_x⊕s_y=M$，同时要求节点值包含 $M$ 的全部位。",
+          "在每个笛卡尔树子树中保留较大侧的前缀异或频次、枚举较小侧，可在合并时检查互补值；排除 $(v-1,v)$ 可避免把单元素区间误判为合法区间。"
         ],
-        "solution_brief": "先建最大笛卡尔树，再从高位到低位贪心尝试答案掩码。每次将数组按掩码取 AND 并求前缀异或，在树上用小并大维护频次，检查两侧是否存在异或为掩码的端点；单次判定为 $O(n\\log n)$，总复杂度为 $O(18n\\log n)$。",
+        "solution_brief": "从高位到低位贪心构造答案掩码。每次用最大笛卡尔树和小并大处理前缀异或，检查是否存在满足条件的区间；单次检查为 $O(n\\log n)$，总复杂度为 $O(18n\\log n)$。",
         "primary_topic": "数据结构",
         "secondary_topics": [
-          "树结构",
-          "构造与贪心",
-          "数论与同余"
+          "构造与贪心"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据 statement_text、完整 editorial_text 及 tags 提炼；算法细节主要来自 editorial。",
+        "source_provenance": "依据完整题面、editorial 的前缀异或与最大笛卡尔树建模、可行性检查及小并大处理；tags 仅作主题参考。",
         "quality_flags": []
       }
     },
     "2268B": {
       "problem_key": "2268B",
-      "title": "What a SauSaGe! It's All Meat",
+      "title": "Вот это SauSaGe! Сплошное мясо",
       "rating": 1500,
       "problem_url": "https://codeforces.com/contest/2268/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/157140",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "fa72ad79fe766779ba051e08c792fb92e0e6cb62acc62269b04ec94c5daa3419",
-      "generated_at": "2026-10-01T22:59:45+00:00",
+      "input_hash": "3b82c40664e31a0b87ae19d548fd5d9f00ced04293d270ebde96a92165980a5c",
+      "generated_at": "2026-10-03T21:33:14+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定 $n$ 个介于 $0$ 与 $15$ 之间的数量；每次可选一对相邻位置和 $k o[1,5]$，将两处都异或 $3k$。初始时及每次永久修改一个位置后，分别求经过任意次临时操作后，最多能有多少个数量是 $3$ 的倍数。",
-        "transformed_statement": "把每个数视为四位二进制串，操作是在两个位置上同时异或相同掩码。题目可转化为统计哪些位置的 popcount 奇偶性不变且能被构造为目标值；答案最终只由当前各元素的 popcount 奇偶性决定，与位置关系无关。",
+        "statement_brief": "给定 $n$ 个小于 $16$ 的数量，并进行若干次永久更新 $a_p:=x$。每次求在当前数组上任意多次选择相邻两个位置，并让它们同时异或某个 $3k$（$1\\le k\\le5$）后，最多能有多少个元素变成 $3$ 的倍数；这些操作不会影响后续更新。",
+        "transformed_statement": "把一次相邻操作推广为可对任意两个位置同时异或同一掩码，并观察到可用的掩码恰好保持 popcount 奇偶性。于是每次询问等价于统计 popcount 为偶数的元素数，更新只需维护这一类元素的数量。",
         "key_observations": [
-          "每次操作使用的异或掩码都有偶数个二进制位为 $1$，因此每个元素的 popcount 奇偶性不变；奇数 popcount 的元素不可能变成数量为 $3$ 的倍数。",
-          "沿相邻位置连续应用同一掩码时，中间元素被异或两次而抵消，所以等价于能对任意一对元素应用该掩码，进而可实现任意偶数 popcount 的四位掩码。",
-          "偶数 popcount 元素总能全部变成 All-Meat：若有奇数 popcount 元素，可用它作缓冲逐个将偶数元素异或为 $0$；若全为偶数，则先归零除一个外的元素，再处理剩余的 $5$ 或 $10$ 两种例外。",
-          "因此最优答案恰好是当前数组中 popcount 为偶数的元素数，更新只需撤销旧值贡献并加入新值贡献。"
+          "单次操作的掩码为 $3,6,9,12,15$，都含偶数个二进制 $1$，因此每个数的 popcount 奇偶性不变；奇数 popcount 的元素永远不能变成可被 $3$ 整除的值。",
+          "沿相邻路径对每一对相邻元素使用同一掩码，中间元素被异或两次而抵消，所以等价于对任意两个元素同时异或该掩码。",
+          "组合操作后，任意两个元素都能同时异或任意偶数 popcount 的四位掩码，因此可将每个偶数 popcount 元素变为 $0$，并保持其余可行性。",
+          "若所有元素的 popcount 都为偶数，先把除首元素外的数变为 $0$；首元素的异或和只可能额外出现 $5$ 或 $10$，分别用掩码 $3$ 处理即可，因此所有偶数 popcount 元素都能达成目标。"
         ],
-        "solution_brief": "操作掩码保持每个数的 popcount 奇偶性，而奇数 popcount 元素无法成为 $3$ 的倍数。题解证明所有偶数 popcount 元素都能同时转成目标状态，所以答案是偶数 popcount 元素数；每次修改只需更新对应贡献，初始化与单次更新分别为 $O(n)$、$O(1)$。",
-        "primary_topic": "构造与贪心",
+        "solution_brief": "答案恰好是数组中二进制 1 的个数为偶数的元素数量。维护这个计数，更新时减去旧值贡献并加上新值贡献，初始化 $O(n)$、单次更新 $O(1)$。",
+        "primary_topic": "数论与同余",
         "secondary_topics": [
-          "数论与同余",
           "数据结构"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面中的相邻元素异或操作与更新规则，以及 editorial 的不变量、构造证明和更新维护方法。",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 bitmasks、data structures、math 标签提炼。",
         "quality_flags": []
       }
     },
     "2268A": {
       "problem_key": "2268A",
-      "title": "K Is Important",
+      "title": "K имеет значение",
       "rating": 1200,
       "problem_url": "https://codeforces.com/contest/2268/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/157140",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "05518a70ad5f2f3797384b0134a45e63ce529e5b100464384e57d2f193f47a81",
-      "generated_at": "2026-10-01T22:59:54+00:00",
+      "input_hash": "63d7fd91a727f1623bb9052fb349ebef2b943de0b14be518730c95eee9359272",
+      "generated_at": "2026-10-03T21:33:30+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定正整数数组，每次数组长度至少为 $k$ 时，只能删除当前第 $k$ 个或从右数第 $k$ 个元素，并将其值加入得分；删除后其余元素保持相对顺序。求按任意合法顺序操作所能取得的最大总分。",
-        "transformed_statement": "把删除过程转化为元素的去留与两端对称配对：根据 $2k$ 和 $n$ 的大小确定哪些中间元素必删或必留，再对剩余对称位置分别选择一个元素贡献得分。",
+        "statement_brief": "给定正整数数组和参数 $k$。只要当前长度至少为 $k$，每次可删除从左数第 $k$ 个或从右数第 $k$ 个元素，并将其加入得分；长度小于 $k$ 后停止，求最大总得分。",
+        "transformed_statement": "把操作过程抽象为两端对称位置的竞争：根据 $2k$ 与 $n$ 的关系，部分元素必然被删除或必然保留；其余元素两两对称配对，每对最终只能贡献其中较大的一个。",
         "key_observations": [
-          "当 $2k\\le n$ 时，原数组下标从 $k$ 到 $n-k+1$ 的元素必会被删掉，因为它们最终会到达某一端数起第 $k$ 个的位置，因此可直接计入总分。",
-          "其余可删元素按两端对称下标配对；每对恰有一个会被删，选择较大者即可最大化该对贡献。",
-          "当 $2k>n$ 时，题解指出中间区间 $n-k+2$ 到 $k-1$ 在数组长度跌破 $k$ 前无法到达可删除位置，因此不会被删；剩余两端仍按对称位置配对取较大值。"
+          "当 $2k\\le n$ 时，原数组下标 $k$ 到 $n-k+1$ 的元素无论操作顺序如何都会被删去，因此可直接全部计入答案。",
+          "当 $2k>n$ 时，中间下标 $n-k+2$ 到 $k-1$ 的元素在数组长度降到 $k$ 以下前不会到达可删除位置，因此必然保留。",
+          "对称位置 $(a_i,a_{n-i+1})$ 中，每一对最终恰好删除一个；删除选择彼此独立，所以该对贡献为 $\\max(a_i,a_{n-i+1})$。",
+          "将必删的中段与两端对称元素分离后，只需从两端向内配对并累加较大值，整体可在线性时间完成。"
         ],
-        "solution_brief": "按 $2k$ 与 $n$ 的关系处理中间元素：若 $2k\\le n$，累加必删的中段；若 $2k>n$，中间元素不计入。剩余可删元素从两端配对，每对取较大值，整体可在线性时间完成。",
+        "solution_brief": "按 $2k$ 与 $n$ 的关系识别必删或必留的中段，再把两端对称元素配成对。每对恰好删一个，取较大值；扫描数组即可在 $O(n)$ 时间求和。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面操作规则及所给完整 editorial；tags 仅用于辅助分类。",
+        "source_provenance": "依据完整题面、editorial 的两种情况分析与给出的实现；tags 仅用于主题辅助。",
         "quality_flags": []
       }
     },
     "2267G": {
       "problem_key": "2267G",
-      "title": "New LRT",
+      "title": "Новый ЛРТ",
       "rating": 2600,
       "problem_url": "https://codeforces.com/contest/2267/problem/G",
       "editorial_url": "https://codeforces.com/blog/entry/157126",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "ce57fe9a36566892ce3014a599d11573f423c94cfeab437eb3853ff48f1a6d7c",
-      "generated_at": "2026-10-01T23:00:08+00:00",
+      "input_hash": "e83b5862648e066dd4a09adae8dd010c168f4ae8c863a123782738f46e78c995",
+      "generated_at": "2026-10-03T21:33:53+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "从位置 $0$ 出发，每次可选择正整数步长 $x$，但必须满足 $m\\&x=x$，随后前进 $x$ 并支付 $c_x$。要求统计所有到达位置 $n$ 的行程所支付费用的总和，并对 $10^9+7$ 取模。",
-        "transformed_statement": "把每条行程视为由合法步长组成、总和为 $n$ 的有序序列。目标转为统计每种合法步长在所有序列中的出现次数，再乘以对应费用；固定步长的出现次数可通过删除该步并统计插入位置来计算。",
+        "statement_brief": "给定起点 $0$、终点 $n$ 和费用数组 $c$。每次可选择正整数 $x$，但必须满足 $(m\\mathbin{\\&}x)=x$，乘车从当前位置前进 $x$，支付 $c_x$；求所有恰好到达 $n$ 的路径费用总和，并对 $10^9+7$ 取模。",
+        "transformed_statement": "将问题看成由允许步长集合 $I$ 组成的有向路径计数：$dp[i]$ 统计总长度为 $i$ 的路径，另设 $cnt[i]$ 统计这些路径的步数加一总和。利用二进制分层求出步长转移，并通过删除再插入一次移动来统计其费用贡献。",
         "key_observations": [
-          "合法步长是 $m$ 的正子掩码；按最高位递推可把所有合法步长的路径数汇总，避免对每个位置枚举全部步长。",
-          "固定步长 $x$ 后，含有这一步的行程删除该步即可得到一条长度为 $n-x$ 的行程；若删后有 $p$ 步，原步可插入 $p+1$ 个位置。",
-          "因此每个长度为 $x$ 的跳跃，对总费用的贡献等于 $c_x$ 乘以所有长度为 $n-x$ 的行程的插入位置数之和，可用累计跳数的 DP 一次汇总。"
+          "把允许的步长视为满足 $x\\subseteq m$ 的正整数；按二进制位分层维护小于 $2^j$ 的转移和，可将所有步长转移压到 $O(n\\log n)$。",
+          "固定一次长度为 $x$ 的移动，删除它后得到长度为 $n-x$ 的路径；若该路径有 $p$ 步，则原路径可在 $p+1$ 个位置插入该移动。",
+          "因此长度为 $x$ 的移动在所有路径中的总出现次数等于 $cnt[n-x]$，所有费用可直接累加为 $\\sum_x c_x\\cdot cnt[n-x]$，避免枚举路径中的每个位置。"
         ],
-        "solution_brief": "用辅助状态按二进制位汇总合法步长，计算各长度的路径数。再维护所有路径的“步数加一”之和；对每个合法步长 $x$，将 $c_x$ 乘以该状态在 $n-x$ 处的值并累加。复杂度为 $O(n\\log n)$。",
+        "solution_brief": "先用二进制分层数组 $st$ 计算每个位置的路径数 $dp$；再用相同转移维护所有路径的“步数加一”总和 $cnt$。长度为 $x$ 的移动总贡献为 $c_xcnt[n-x]$，累加所有允许步长，复杂度为 $O(n\\log n)$。",
         "primary_topic": "动态规划与状态设计",
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面中的移动规则及完整 editorial；tags 仅作参考。",
+        "source_provenance": "依据完整 statement_text、editorial_text，并参考 tags 中的 DP；未采用 tags 中未被题解正文支持的算法。",
         "quality_flags": []
       }
     },
     "2267F2": {
       "problem_key": "2267F2",
-      "title": "XOR Transformations (Hard Version)",
+      "title": "XOR трансформации (сложная версия)",
       "rating": 2300,
       "problem_url": "https://codeforces.com/contest/2267/problem/F2",
       "editorial_url": "https://codeforces.com/blog/entry/157126",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "3129081ecadcbe109a6dad54785f5f49730c1e7c5e60ffda6ad227356f2de1ce",
-      "generated_at": "2026-10-01T23:00:21+00:00",
+      "input_hash": "f1fea62f7333c8832392b411e0d716aba2cc4699203c884a75961db0f07a63e7",
+      "generated_at": "2026-10-03T21:34:18+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定非负整数数组；一次操作先计算所有下标对 $i<j$ 的异或值，取其中最小的 $n$ 个作为新数组。每个查询独立地从原数组出发，给定操作次数 $x$，要求输出操作后数组最大值与最小值之差。",
-        "transformed_statement": "单次变换可重述为：对每个数组元素 $a_i$，生成它与所有元素异或所得的有序值流，再合并这些流；由于每个无序下标对在流中出现两次，合并所得前 $2n$ 项的奇数位置恰好对应目标数组。给定题解未进一步给出多次变换查询的处理模型。",
+        "statement_brief": "给定一个含 $n$ 个非负整数的数组。一次变换先计算所有下标对 $i<j$ 的异或值，取其中最小的 $n$ 个组成新数组；每个查询独立地从原数组开始做 $x$ 次变换，并求最终数组的最大值减最小值。",
+        "transformed_statement": "一次变换可视为合并 $n$ 条序列：第 $i$ 条序列是 $a_i$ 与其他元素异或值的升序排列。由于每个无序对在两条序列中重复出现，合并后的前 $2n$ 项的奇数位置正好给出所需的 $n$ 项。",
         "key_observations": [
-          "固定一个数组元素 $a_i$ 后，将它与所有元素异或所得的值可按序视作一条有序序列；维护每条序列当前未取的最小值，就能避免显式枚举全部数对。",
-          "每个异或值 $a_i\\oplus a_j$ 在遍历所有起点时会出现两次，因此合并序列时取恰好 $2n$ 个值，再保留奇数位置，便得到原定义中的 $n$ 个最小数对异或值。"
+          "把一次变换产生的所有无序对异或值改看成每个基准元素对应的一条有序序列：第 $i$ 条序列包含 $a_i\\oplus a_j$（$j\\ne i$），每个无序对会在两条序列中出现一次。",
+          "用二进制 Trie 可以快速求某个 $a_i$ 与其他元素异或结果中的第 $k$ 小值，因此不必显式枚举全部 $O(n^2)$ 个数。",
+          "维护每条序列当前未取位置的最小值并进行多路归并；取出恰好 $2n$ 个有序结果后保留奇数位置，就得到原定义中最小的 $n$ 个无序对异或值，因为每个结果被两条序列重复贡献。",
+          "题解正文只说明了如何加速单次变换，未给出如何利用它回答可能很大的变换次数 $x$，因此不能据此补全多次变换的整体处理。"
         ],
-        "solution_brief": "题解给出的单次变换加速方法是用字典树查询每个 $a_i$ 与数组元素异或结果中的第 $k$ 小值，再维护各序列的当前候选并合并，取 $2n$ 项后保留奇数位置。题解没有说明如何处理任意 $x$ 次变换的查询，因此无法据此完整回答题目。",
+        "solution_brief": "单次变换中，用二进制 Trie 求每个元素的异或值有序序列，再对这些序列做多路归并。取前 $2n$ 个结果并保留奇数位即可生成下一数组；题解未覆盖多次变换查询的完整加速方法。",
         "primary_topic": "数据结构",
         "secondary_topics": [
-          "数论与同余"
+          "数论与同余",
+          "构造与贪心"
         ],
         "extraction_status": "ai_generated_partial_editorial",
-        "source_provenance": "题意依据 statement；单次变换的序列合并方法及复杂度依据 editorial。editorial 要求先阅读 F1 说明，但该内容未提供。",
+        "source_provenance": "题意与操作规则来自 statement_text；Trie、重复计数和归并方法及复杂度来自 editorial_text；标签仅用于辅助确定数据结构主题。",
         "quality_flags": [
-          "editorial_omits_query_handling",
-          "partial_editorial"
+          "partial_editorial",
+          "query_iteration_unexplained"
         ]
       }
     },
     "2267F1": {
       "problem_key": "2267F1",
-      "title": "XOR Transformations (Easy Version)",
+      "title": "XOR трансформации (простая версия)",
       "rating": 1700,
       "problem_url": "https://codeforces.com/contest/2267/problem/F1",
       "editorial_url": "https://codeforces.com/blog/entry/157126",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "eace35d55d29df348c1c6ba031b01e4a3677f95468f93ddc1b5caec57f85439c",
-      "generated_at": "2026-10-01T23:00:38+00:00",
+      "input_hash": "db277d821cde42c31c0062473bcf92549226409b545691fc911cffd437d0f62c",
+      "generated_at": "2026-10-03T21:34:38+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定含 $n$ 个非负整数的数组。一次变换要计算所有 $i<j$ 的两两异或值，取其中最小的 $n$ 个作为新数组；每个查询独立从原数组开始，要求经过 $x$ 次变换后数组最大值与最小值之差。",
-        "transformed_statement": "把题目视为一个由数组多重集合生成的有限状态序列：每轮对所有两两异或值取最小的 $n$ 个，并记录该状态的值域宽度。题解利用最高二进制位在至多两轮内消失、总轮数至多 $9$，从而预处理整条状态序列回答查询。",
+        "statement_brief": "给定含 $n$ 个非负整数的数组。一次变换要计算所有下标对 $i<j$ 的异或值，取其中最小的 $n$ 个作为新数组；每个查询独立地从原数组执行 $x$ 次变换，并求最终数组的最大值减最小值。",
+        "transformed_statement": "把题目视为一个确定的数组状态序列：每轮由当前数组生成全部两两异或值并截取最小的 $n$ 个。由于最高二进制位最多经过两轮、整体最多九轮便消失，可预处理各轮的范围值，将查询转化为按轮数查表。",
         "key_observations": [
-          "设最高位出现于 $c_1$ 个数中，其余为 $c_0$ 个；不含该位的异或对数为 $p=\\binom{c_0}{2}+\\binom{c_1}{2}$，它决定下一轮能否保留最高位。",
-          "当 $n\\ge6$ 时，任意划分都有 $p\\ge n$，因此取最小的 $n$ 个异或值时最高位必然消失；$n=5$ 时最多再做一轮即可消失。",
-          "最高位每轮快速消失，且全零数组会保持不变，因此最多进行 $9$ 轮就能得到稳定状态，所有更大的查询都直接返回 $0$。"
+          "设当前数组最高位出现次数为 $c_1$，未出现次数为 $c_0$，异或后不含该位的数对数为 $p=\\frac{c_0(c_0-1)}2+\\frac{c_1(c_1-1)}2$；当 $n\\ge 6$ 时 $p\\ge n$，因此一次变换后最高位必然消失。",
+          "当 $n=5$ 时，若最高位两类数量为 $2$ 和 $3$，下一次变换会使不含最高位的元素数变为 $4$；其他分布会在当前变换中直接消去最高位，所以最多两次即可消失。",
+          "最高位不断消失使数组数值范围快速缩小，整体变换次数不超过 $9$；因此可预先生成完整状态序列，所有查询只需读取对应轮次。",
+          "每次变换只需计算全部 $\\binom n2$ 个两两异或值、排序并保留最小的 $n$ 个，数组变为全零后后续答案恒为 $0$。"
         ],
-        "solution_brief": "逐轮枚举所有下标对的异或值，排序后保留最小的 $n$ 个，直到数组全为零或达到稳定轮数；记录每轮的最大值与最小值之差，按查询的 $x$ 输出对应结果，超出轮数则输出 $0$。",
-        "primary_topic": "数论与同余",
+        "solution_brief": "从原数组开始，反复计算所有两两异或值，排序后保留最小的 $n$ 个，记录每轮的最大值减最小值，直到数组全零。查询轮数超过预处理范围时直接输出 $0$；总复杂度为 $O(n^2\\log n\\log A)$。",
+        "primary_topic": "基础实现与模拟",
         "secondary_topics": [
-          "构造与贪心",
-          "基础实现与模拟",
-          "数据结构"
+          "构造与贪心"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 statement_text、editorial_text 及 codeforces_tags；算法细节主要来自 editorial。",
+        "source_provenance": "依据题面中的变换定义、独立查询规则，以及完整 editorial 对最高位消失性质、变换次数上界和复杂度的说明；tags 仅用于主题辅助判断。",
         "quality_flags": []
       }
     },
     "2267E": {
       "problem_key": "2267E",
-      "title": "Clean Substrings",
+      "title": "Чистые подстроки",
       "rating": 2000,
       "problem_url": "https://codeforces.com/contest/2267/problem/E",
       "editorial_url": "https://codeforces.com/blog/entry/157126",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "3f4004bc1baf13d7e7654df99adf6c73b91763ae3d9f6e1e302eef22a49e1244",
-      "generated_at": "2026-10-01T23:00:58+00:00",
+      "input_hash": "1bb49f090dd7656ba552f14774c2271d4f9f3aa1bbe8137aeeb47dc9b4ced58b",
+      "generated_at": "2026-10-03T21:35:02+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个二进制串，允许每次花费一枚硬币选择任意全相同的连续子串并翻转其中所有字符；beauty 是将字符串变成全相同串所需的最少硬币数。字符串的 power 是所有子串 beauty 之和，随后每次翻转指定位置的字符，并输出修改前及每次修改后的 power。",
-        "transformed_statement": "将字符串改写为相邻差分数组 $b_i=[s_i\\ne s_{i+1}]$：每个子串的 beauty 变为其差分和除以 $2$ 后向上取整，再通过边界被多少子串覆盖的贡献统计总和；单点翻转只造成两个差分位置变化。",
+        "statement_brief": "给定一个二进制串，干净串要求所有字符相同。每枚硬币可选择一个全由同一字符组成的子串并翻转其中所有字符；一个串的美丽值是变成干净串所需的最少硬币数，力量是所有子串美丽值之和。随后恰好翻转指定位置共 $q$ 次，输出初始及每次修改后的力量。",
+        "transformed_statement": "把原串改写为相邻字符是否不同的数组 $b$：操作目标变成消除所有变化点，力量则转化为所有区间中 $b$ 的和取上整除以 $2$ 的总和，再按每个变化点和区间端点奇偶性统计贡献。",
         "key_observations": [
-          "把相邻字符是否不同编码为数组 $b$；翻转一个全相同子串时，内部边界不变，只有两端边界可能翻转，因此一次操作最多消除两个 $1$，字符串的 beauty 恰为 $\\\\lceil\\\\sum b/2\\\\rceil$。",
-          "对每个子串，去掉向上取整后，奇数和额外贡献 $1$；而 $b$ 的区间和为奇数当且仅当该子串首尾字符不同，奇数子串数量等于原串中 $0$ 与 $1$ 的数量之积。",
-          "每个位置 $b_i=1$ 会被恰好 $i(n-i)$ 个子串包含，因此所有子串的 $b$ 和可按边界贡献加权求和，避免逐个枚举子串。",
-          "翻转 $s_i$ 只会影响 $b_{i-1}$ 和 $b_i$，同时只需更新原串中 $0、1$ 的计数，所以每次修改都能局部维护答案。"
+          "令 $b_i=[s_i\\ne s_{i+1}]$，翻转任意同字符子串只会改变边界处的至多两个 $b$，因此一次操作最多消去两个变化点，beauty 为 $\\lceil\\sum b_i/2\\rceil$。",
+          "子串中 $b$ 的和为奇数，当且仅当其首尾字符不同；奇数子串数量等于原串中 $0$ 与 $1$ 的位置对数，即 $cnt_0\\cdot cnt_1$。",
+          "每个变化点 $b_i=1$ 被恰好包含在 $i(n-i)$ 个原串子串中，因此所有 beauty 的分子部分可按变化点贡献加权求和。",
+          "翻转位置 $i$ 只可能改变 $b_{i-1}$ 和 $b_i$，同步修正它们的权值贡献及 $cnt_0,cnt_1$，即可在线维护答案。"
         ],
-        "solution_brief": "维护相邻差分数组 $b$、原串的 $0/1$ 数量，以及所有差分边界的加权和。答案由加权和与 $cnt_0cnt_1$ 共同得到；翻转一个字符时仅更新相邻两个边界，整体复杂度为 $O(n+q)$。",
+        "solution_brief": "维护相邻变化数组 $b$、变化点的加权和以及 $cnt_0,cnt_1$。答案为 $\\bigl(\\sum b_i i(n-i)+cnt_0cnt_1\\bigr)/2$；每次翻转只更新相邻两项，整体复杂度为 $O(n+q)$。",
         "primary_topic": "组合计数与概率",
         "secondary_topics": [
-          "数据结构",
-          "数论与同余"
+          "数据结构"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "题意规则来自 statement，核心推导、计数公式与更新方法来自 editorial，主题分类参考 tags。",
+        "source_provenance": "依据 statement_text 与完整 editorial_text 提炼，codeforces_tags 仅辅助确定主题。",
         "quality_flags": []
       }
     },
     "2267D": {
       "problem_key": "2267D",
-      "title": "Backrooms Hill",
+      "title": "Горка в закулисье",
       "rating": 1400,
       "problem_url": "https://codeforces.com/contest/2267/problem/D",
       "editorial_url": "https://codeforces.com/blog/entry/157126",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "5181f85fd50e0a5a7973d28ae048d7f330491f5701f67c3f8730323eab17ad41",
-      "generated_at": "2026-10-01T23:01:18+00:00",
+      "input_hash": "18007f75933e77b62ba226add90e13f85ae3caa34786df52895644334c6745ba",
+      "generated_at": "2026-10-03T21:35:27+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个由互不相同整数构成的数组，每次可以交换下标相差 $2$ 的两个元素，操作次数不限。判断能否将数组变成某个先严格递增、再严格递减的山形数组，并输出 YES 或 NO。",
-        "transformed_statement": "把数组改写为位置数组：令 $c_x$ 表示数值 $x$ 在原数组中的位置，只保留 $c_x$ 的奇偶性。题目等价于判断每个值域后缀 $[i,n]$ 的这些奇偶位置能否对应一个连续位置段。",
+        "statement_brief": "给定一个由 $1$ 到 $n$ 的不同整数构成的数组。每次可任选 $i$，交换位置 $i$ 和 $i+2$ 的元素，操作任意次；需要判断能否将数组变成某个前缀严格递增、后缀严格递减的山形数组。",
+        "transformed_statement": "把每个数只记录为其当前位置的奇偶性，因为操作不会改变这一属性。问题转化为：对每个数值后缀 $[i,n]$，这些数对应的奇偶位置能否组成一个连续位置区间，即两类计数之差是否始终不超过 $1$。",
         "key_observations": [
-          "交换相距 $2$ 的位置不会改变下标奇偶性，并且同一奇偶位置内的元素可以任意重排，因此只需关注每个数当前所在位置的奇偶性。",
-          "若数组能成为山形数组，则任意值域后缀 $[i,n]$ 在最终数组中的位置必须连续；否则这些较大数之间会夹出局部谷底，与山形结构矛盾。",
-          "长度为 $n-i+1$ 的连续位置段中，奇偶位置数量之差至多为 $1$，所以对位置数组的每个后缀检查两种奇偶性的计数差即可。",
-          "所有后缀都满足计数差至多为 $1$ 时，可以利用同奇偶位置的任意重排逐步形成所需的连续段，从而构造山形数组。"
+          "交换位置 $i$ 与 $i+2$ 只能在相同奇偶性的位置间进行，因此每个数所处位置的奇偶性是不可改变的，而同一奇偶类的位置可以任意重排。",
+          "在山形数组中，对任意阈值 $i$，数值集合 $[i,n]$ 的所有位置必须组成一个连续区间；否则较大的数之间夹着更小的数，会产生局部谷底。",
+          "连续区间中的奇偶位置数量之差至多为 $1$，所以原数组中每个后缀 $[i,n]$ 的位置奇偶计数差超过 $1$ 时一定无法构成山形。",
+          "上述每个后缀都满足奇偶计数差至多为 $1$ 时，可以按固定的位置奇偶性逐层安排这些连续区间，因此该条件同时也是充分条件。"
         ],
-        "solution_brief": "记录每个值 $x$ 在原数组中的位置，并将位置按奇偶转成二进制序列。从值域后缀 $[i,n]$ 向右扫描，维护两种奇偶性的数量；若任一后缀的计数差超过 $1$，输出 NO，否则输出 YES，复杂度为 $O(n)$。",
+        "solution_brief": "记录每个数的当前位置奇偶性，得到序列 $c_x=pos_x\\bmod 2$。从大到小扫描数值后缀，维护两种奇偶性的数量；若任一后缀的计数差超过 $1$，输出 NO，否则输出 YES。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据 statement_text 的操作与山形定义，以及 editorial_text 的奇偶位置重排、连续位置后缀判定和 $O(n)$ 检查。",
+        "source_provenance": "依据完整题面与 editorial，tags 仅用于主题归类。",
         "quality_flags": []
       }
     },
     "2267C": {
       "problem_key": "2267C",
-      "title": "GCD Treasury",
+      "title": "GCD сокровищница",
       "rating": 1200,
       "problem_url": "https://codeforces.com/contest/2267/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/157126",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "6e8adb364584f6666f068f4bdf95d152598627e4f1060d6fa7c3dd839dcb252a",
-      "generated_at": "2026-10-01T23:01:37+00:00",
+      "input_hash": "2067ac2fb798e918ca13f1f949926f5034d81b24b3e465e5292187dfdf1a6ec6",
+      "generated_at": "2026-10-03T21:35:47+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 $n$ 堆金币和整数 $x$。每次选择正数堆 $i$，要求 $gcd(a_i,x)>1$，偷走恰好 $gcd(a_i,x)$ 枚并将 $x$ 改为该值；无法继续时停止。求按最优选择顺序最多能偷走的金币总数。",
-        "transformed_statement": "题解将过程转化为选择若干整堆：所选堆与初始 $x$ 必须拥有某个大于 $1$ 的公共因子。对每个 $d|x$，统计所有 $d|a_i$ 的堆总金币，最大统计值就是答案。",
+        "statement_brief": "有 $n$ 个钱堆，第 $i$ 堆有 $a_i$ 枚金币，初始整数为 $x$。每次选择一个与当前 $x$ 的最大公约数大于 $1$ 的非空钱堆，偷走该最大公约数枚金币，并把 $x$ 更新为这个最大公约数；求最多能偷走的金币总数。",
+        "transformed_statement": "把一次操作序列看成选择若干钱堆并将其全部清空；这些钱堆与初始 $x$ 必须共享某个大于 $1$ 的因子。对每个 $x$ 的因子 $d$，计算所有被 $d$ 整除的钱堆总金币数并取最大。",
         "key_observations": [
-          "若开始偷某堆，当前 $g=gcd(a_i,x)$ 在连续操作该堆时保持不变，因此一次偷完该堆的全部金币不会变差。",
-          "选中的所有堆最终都必须与 $x$ 具有大于 $1$ 的公共因子；反过来，只要它们都被某个 $d>1$ 且 $d|x$ 整除，就能按任意顺序完成整堆偷取。",
-          "因此固定公共因子 $d$ 后，最优选择就是所有能被 $d$ 整除的堆，其收益为 $c_d=\\sum_{d|a_i}a_i$；答案是所有 $d>1,d|x$ 中最大的 $c_d$。"
+          "一旦选择某个钱堆，设当前最大公约数为 $g$，该堆的金币数始终是 $g$ 的倍数，因此可以连续操作直到清空它，不会损失可偷金币数。",
+          "连续选择的所有钱堆最终必须与初始 $x$ 具有一个大于 $1$ 的公共因子；反过来，只要若干钱堆都被某个 $x$ 的因子 $d>1$ 整除，就能按顺序全部清空它们。",
+          "固定公共因子 $d$ 后，所有能被 $d$ 整除的钱堆都应全部选择，因此该方案的收益就是这些钱堆金币数之和 $c_d$；答案变为枚举 $x$ 的大于 $1$ 的因子并取最大 $c_d$。"
         ],
-        "solution_brief": "把连续偷取同一堆等价为直接取走整堆，并将可选堆集合转化为与 $x$ 共享某个大于 $1$ 因子。计算每个因子 $d$ 的 $c_d$，在 $d|x$ 且 $d>1$ 时取最大值；可按题解用枚举因子或倍数统计，复杂度为 $O(n\\sqrt{maxA})$ 或 $O(n\\log(maxA))$。",
+        "solution_brief": "先把每个被选中的钱堆连续清空，再将过程等价为选择一组与 $x$ 共享因子 $d>1$ 的钱堆。统计每个 $x$ 的因子 $d$ 对应的总和 $c_d$，取最大值；若没有可行因子，答案为 $0$。",
         "primary_topic": "数论与同余",
         "secondary_topics": [
           "构造与贪心"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅用于主题辅助判断。",
+        "source_provenance": "依据题面中的操作规则、editorial_text 的公共因子转化与计数方案，并参考 tags。",
         "quality_flags": []
       }
     },
     "2267B": {
       "problem_key": "2267B",
-      "title": "Fashionable Array",
+      "title": "Модный массив",
       "rating": 800,
       "problem_url": "https://codeforces.com/contest/2267/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/157126",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "77f820f5a1bafde11a6b5e91912ba95dc57755d290570b6158a2a05bd407cfa2",
-      "generated_at": "2026-10-01T23:02:06+00:00",
+      "input_hash": "9cc26e8dc24adc681b0d38db63340f296bc1db507621b191e8f3bc908625ba5f",
+      "generated_at": "2026-10-03T21:36:07+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个整数数组，可以任意重排其元素。重排后，对每个前缀取出现次数最多的数；若并列则取数值较大的数，要求最大化所有前缀模式之和，并输出任意一种最优排列。",
-        "transformed_statement": "将每个数 $x$ 的频次 $c_x$ 看成柱高，按层次输出：第 $i$ 层收集所有 $c_x\\ge i$ 的数，并按数值降序排列。这样把前缀模式的优化转化为控制各频次层中元素的出现顺序。",
+        "statement_brief": "给定一个整数数组，可以任意重排所有元素。要求构造一个排列，使每个前缀中出现次数最多且数值最大的元素（众数）的总和最大；任意最优排列均可。",
+        "transformed_statement": "将每个数 $x$ 的出现次数 $c_x$ 拆成 $c_x$ 个频率层：第 $i$ 层收集所有 $c_x\\ge i$ 的数，并在层内按数值降序输出，形成所需排列。",
         "key_observations": [
-          "把每个数的出现次数看成高度为 $c_x$ 的柱子，第 $i$ 层包含所有满足 $c_x\\ge i$ 的数，因此每个元素恰好被输出一次。",
-          "按层从低到高输出，并在同一层按数值降序排列；进入第 $i$ 层后，新数的出现次数达到 $i$，而出现次数不足 $i$ 的更大数无法继续压过它。",
-          "同一层中较大的候选先出现，使并列最高频时模式取更大的数，从而让每个前缀的模式保持为该构造下允许的最大值。"
+          "把每个数的出现次数 $c_x$ 看成可输出的层数：第 $i$ 层包含所有满足 $c_x\\ge i$ 的数，因此按层输出恰好使用全部元素。",
+          "同一层内按数值降序输出；层内出现并列最高频率时，已输出的更大数优先成为众数，从而保证每个前缀的众数取值尽可能大。",
+          "逐层处理频率而不是逐个安排原数组位置，使构造直接对应“当前出现次数达到同一层”的状态，避免了对排列进行搜索。"
         ],
-        "solution_brief": "统计每个值的出现次数。对 $i=1$ 到 $n$，按降序输出所有出现次数至少为 $i$ 的值；这些分层序列正好使用全部元素，并使各前缀的模式贡献最大。可用计数数组实现，复杂度为 $O(n)$ 或 $O(n\\cdot maxA)$。",
+        "solution_brief": "统计每个值的出现次数。对 $i=1$ 到 $n$，按数值降序输出所有满足 $c_x\\ge i$ 的值；每个值恰好输出 $c_x$ 次，该排列最大化所有前缀众数之和。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [
           "基础实现与模拟",
           "数论与同余"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text 的分层构造与复杂度说明，并结合 statement_text 的模式定义、任意重排和前缀目标；tags 仅用于主题归类。",
+        "source_provenance": "依据完整题面与 editorial；tags 仅用于辅助主题判断。",
         "quality_flags": []
       }
     },
     "2267A": {
       "problem_key": "2267A",
-      "title": "Turn Into a Palindrome",
+      "title": "Превратить в палиндром",
       "rating": 800,
       "problem_url": "https://codeforces.com/contest/2267/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/157126",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "83840b85551d25f152c3cd0a779866ef50d77db926c678c634fa9f536993942a",
-      "generated_at": "2026-10-01T23:02:17+00:00",
+      "input_hash": "9efcb4b90516369a95e26ce09ffc9fe19a5911f86003a5019e0e33968a0f60cc",
+      "generated_at": "2026-10-03T21:36:18+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定长度为 $n$ 的小写字符串和字符 $c$，每枚硬币可任选一个位置并将该字符改为 $c$。求把字符串变成回文串所需的最少硬币数。",
-        "transformed_statement": "将字符串按首尾对称位置分成若干字符对；每对只需独立判断是否已经相等，或通过把一端、两端改为 $c$ 来满足回文要求，最终把所有对的最小代价相加。",
+        "statement_brief": "给定长度为 $n$ 的小写字母串 $s$ 和字符 $c$。每次可任选一个位置，把该字符替换为 $c$；求将 $s$ 变成回文串所需的最少替换次数。",
+        "transformed_statement": "将字符串按首尾对称位置分成若干对，目标转化为分别让每对字符相等；由于一次操作只能把字符改为 $c$，每对的最优代价只由两字符是否相同、是否包含 $c$ 决定。",
         "key_observations": [
-          "回文条件只约束对称位置对 $(s_i,s_{n-i+1})$，各对之间互不影响，因此可以分别计算代价后求和。",
+          "回文条件只约束对称位置对 $(s_i,s_{n-i+1})$，因此每一对可以独立计算修改代价，最后求和即可。",
           "若一对字符相同则无需修改；若恰有一个字符等于 $c$，只需把另一个改成 $c$，代价为 $1$。",
-          "若一对字符不同且都不等于 $c$，两者都必须改成 $c$，代价为 $2$，因此逐对取这三种情况即可得到最小值。"
+          "若一对字符都不等于 $c$ 且彼此不同，则两者都必须改成 $c$，代价为 $2$；按此规则处理所有对称位置即可得到最小值。"
         ],
-        "solution_brief": "遍历所有对称位置对：相等时贡献 $0$；仅一端为 $c$ 时贡献 $1$；两端都不是 $c$ 且不相等时贡献 $2$。累加各对贡献即为最小硬币数，时间复杂度为 $O(n)$。",
+        "solution_brief": "逐一检查字符串的对称位置对：相同记为 $0$，一方为 $c$ 记为 $1$，否则记为 $2$，累加所有代价。该过程为 $O(n)$ 时间。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [
           "字符串"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面与 editorial_text，tags 用于辅助确认字符串和贪心主题。",
+        "source_provenance": "依据完整题面与 editorial，tags 仅用于辅助归类。",
         "quality_flags": []
       }
     },
     "2260G": {
       "problem_key": "2260G",
-      "title": "Sortable Permutations",
+      "title": "Сортируемые перестановки",
       "rating": 2900,
       "problem_url": "https://codeforces.com/contest/2260/problem/G",
       "editorial_url": "https://codeforces.com/blog/entry/156529",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "e70ae422c920e886a7b3ffde94fccc77111b19de308b141db4a5ce54b2c45285",
-      "generated_at": "2026-10-01T06:27:38+00:00",
+      "input_hash": "1d254d4ce109de384d90ca499fde503204de6ebf459991d1b8c6e4ed5f6b733e",
+      "generated_at": "2026-10-03T21:44:10+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个 $1$ 到 $n$ 的排列，可以选择整数 $x\\ge2$，删除所有位置为 $x$ 的倍数的元素，且删除后保持原顺序的数组必须严格递增。要求统计满足至少一个这样的 $x$ 的排列数量，并对 $998244353$ 取模。",
-        "transformed_statement": "把“选择一个可行的 $x$”转化为多个事件的并集：对每个素数及其交集 $A_i$，研究哪些相邻大小关系会因删除位置而消失，再用 Möbius 反演统计这些事件的并集。",
+        "statement_brief": "给定一个 $1$ 到 $n$ 的排列。可选择整数 $x\\ge2$，删除所有位置为 $x$ 的倍数的元素且保持其余顺序；若剩余序列严格递增，则称排列可排序。求可排序排列的数量，结果对 $998244353$ 取模。",
+        "transformed_statement": "把所有可行的 $x$ 按素因子条件改写为集合并集，并用莫比乌斯容斥统计。对固定平方自由 $i$，将位置约束转化为相邻不等式、奇偶递增链及若干可独立计数的连续段。",
         "key_observations": [
-          "若某个合数 $x$ 可行，则它的任一素因子也可行，因此只需研究素数删除规则，并用 Möbius 反演合并这些事件。",
-          "在交集 $A_i$ 中，邻接条件 $a_j<a_{j+1}$ 不受约束，当且仅当 $i$ 的每个素因子都整除 $j(j+1)$；对平方自由 $i$，这等价于枚举 $j(j+1)$ 的平方自由因子。",
-          "对 $i>2$，所有下标同奇偶且不被 $i$ 整除的位置上的元素必然递增；因此原排列的复杂约束可压缩为若干由相邻未约束边组成的段。",
-          "不同段之间的元素整体按段次序递增，而同一段内奇、偶下标之间没有大小限制，段内贡献为 $\\frac{(c_0+c_1)!}{c_0!c_1!}$，从而可组合计数。"
+          "若复合数 $x$ 可行，则其任一素因子也可行，因为按素因子删除的位置更多；因此只需对素数条件做并集计数。",
+          "对平方自由的 $i$，相邻位置 $j,j+1$ 的大小关系在 $A_i$ 中不受约束，当且仅当 $i$ 是 $j(j+1)$ 的平方自由因子，从而可直接生成所有被放宽的相邻约束。",
+          "对固定 $i>2$，所有同奇偶且未被 $i$ 整除的位置上的元素必然递增，这把全局排列约束压缩成若干连续段内的局部计数。",
+          "固定 $i$ 时，被 $i$ 整除的位置可任意放置；其余位置按放宽的相邻边划分为段，段间元素整体递增，段内只需交错排列奇、偶位置，贡献为 $\\frac{(c_0+c_1)!}{c_0!c_1!}$。"
         ],
-        "solution_brief": "对每个平方自由 $i$ 计算交集 $A_i$：被 $i$ 整除的位置任意排列，其余位置按未约束邻边分段并用奇偶计数。最后以 $1-\\sum_{i\\ge2}|A_i|\\mu(i)$ 合并，枚举总量约为 $10^7$。",
+        "solution_brief": "将可排序排列按素数条件用容斥和莫比乌斯函数计数。对每个平方自由 $i$，生成未约束的相邻位置，划分段并计算段间递增、段内奇偶交错的方案数；总复杂度为 $O(m\\log m+n)$。",
         "primary_topic": "组合计数与概率",
         "secondary_topics": [
-          "数论与同余"
+          "数论与同余",
+          "构造与贪心"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面、editorial_text 以及数论和组合计数标签提炼。",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 tags 提炼。",
         "quality_flags": []
       }
     },
     "2260F": {
       "problem_key": "2260F",
-      "title": "Edge Three-Coloring",
+      "title": "Раскраска рёбер в три цвета",
       "rating": 2500,
       "problem_url": "https://codeforces.com/contest/2260/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/156529",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "63bccfbb97ec5fe1295f48b1a74e601ac2dea9e2a5b661ad48e1db51dfaa28fa",
-      "generated_at": "2026-10-01T06:28:03+00:00",
+      "input_hash": "95635b19719263eac929a06e83e53cb35efb76eb06894b0fe72614d9280b34e7",
+      "generated_at": "2026-10-03T21:44:33+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个连通无向图，要把每条边染成颜色 $1,2,3$，且三种颜色都必须出现。若两点能沿颜色 $i$ 的边连通且 $i<j$，则它们还必须沿颜色 $j$ 的边连通，判断是否存在满足条件的染色。",
-        "transformed_statement": "题目等价于寻找一个环，使删去该环后原图仍连通：环上一条边染成颜色 $1$，其余边染成颜色 $2$，环外边染成颜色 $3$。因此只需判断是否存在这样的可删环。",
+        "statement_brief": "给定一个连通无向图，每条边必须染成颜色 $1,2,3$，且每种颜色都至少出现一次。若两点能仅沿颜色 $i$ 的边相连，则对任意 $i<j$，它们也必须能仅沿颜色 $j$ 的边相连；判断是否存在满足条件的染色。",
+        "transformed_statement": "题目等价于寻找一个环，使删除环上的全部边后图仍连通：将环上一条边染为颜色1，其余环边染为颜色2，其他边染为颜色3。利用生成树把候选环转化为非树边子集的枚举。",
         "key_observations": [
-          "原图连通且任意原边都必须属于颜色 $3$ 的同一连通块，因此颜色 $3$ 子图必然连通。",
-          "颜色 $1$ 多于一条边不会更有利，可只保留一条；这条边的两个端点必须在颜色 $2$ 中连通，因此颜色 $1$ 与颜色 $2$ 的边至少组成一个环。",
-          "存在可删去且不使原图断开的环，当且仅当可以将该环的一条边染成颜色 $1$、其余边染成颜色 $2$、环外边染成颜色 $3$，从而满足全部连通性要求。",
-          "取生成树后，非树边数为 $k=m-n+1$；枚举非树边子集，并按各子树中选中端点数的奇偶性唯一确定树边，便能覆盖所有候选环，再检查删去所得边集后图是否连通。"
+          "原图连通且每条边的两个端点必须在颜色3中连通，因此颜色3的边必须形成连通图；颜色1可无损压缩为一条边。",
+          "颜色1边的两个端点必须由颜色2连通，所以颜色1与颜色2共同构成至少一个环；反之，删除某个环后图仍连通即可按一条颜色1、其余颜色2、环外颜色3着色。",
+          "取生成树后，非树边数量为 $k=m-n+1\\le 10$；枚举非树边子集，并按子树端点奇偶性唯一确定所需树边，即可生成所有候选环。",
+          "某个子集可能生成多个不相交环，但若删除这些环后图仍连通，则删除其中任一环也仍连通，因此无需额外验证候选是否恰为单环。"
         ],
-        "solution_brief": "将问题化为寻找删去后仍连通的环。选生成树，枚举 $k=m-n+1$ 条非树边的子集，用子树端点奇偶性确定对应树边，再用 DFS/BFS 检查删边后的连通性；复杂度为 $O(2^k k(n+m))$。",
+        "solution_brief": "先取生成树，枚举全部非树边子集。对每个子集用树上端点奇偶性确定候选环，再检查删除候选边后图是否连通；存在则输出 YES，否则输出 NO。总复杂度为 $O(2^k(m-n+1)(n+m))$，其中 $k=m-n+1$。",
         "primary_topic": "图论与网络流",
         "secondary_topics": [
           "树结构",
           "构造与贪心"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面与 editorial；tags 用于辅助确认图论和树相关主题。",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 graphs、trees、brute force 等标签整理。",
         "quality_flags": []
       }
     },
     "2260E": {
       "problem_key": "2260E",
-      "title": "Cyclic Balance",
+      "title": "Циклический баланс",
       "rating": 2000,
       "problem_url": "https://codeforces.com/contest/2260/problem/E",
       "editorial_url": "https://codeforces.com/blog/entry/156529",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "4162d567f25926319aac605f072bfca1a54c4b0624a08d9988a2f5a342f84176",
-      "generated_at": "2026-10-01T06:28:35+00:00",
+      "input_hash": "1ef342c9409f34a88ed1d1fac70cfaa453174bc266f60242a5e79ba7103e5de5",
+      "generated_at": "2026-10-03T21:44:54+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定二进制串，多次询问子串。允许在任意位置插入字符但不能删除或替换原字符；把首尾也视为相邻后，要求四类相邻对 $00,01,10,11$ 出现次数相等，求达到条件所需的最少插入数。",
-        "transformed_statement": "对查询子串视为二元有向环，设 $A,B,C$ 分别为 $00$、$11$、以及各自的 $01$ 和 $10$ 次数。若每类最终出现 $T$ 次，则需判断 $C+\\max(0,A-T)+\\max(0,B-T)\\le T$，并最小化 $T$。",
+        "statement_brief": "给定二进制串及多个区间，允许在区间串的任意位置插入 0 或 1，但不能删除或替换原字符。把区间串首尾相连后，要求 00、01、10、11 四类相邻字符对数量相等，求达到该条件所需插入字符的最少数目。",
+        "transformed_statement": "把目标环看成二元有向图上的欧拉环：若每种边出现 $T$ 次，目标长度为 $4T$。区间原有的 00、11、01、10 边只能通过插入拆分，因而问题转化为寻找满足 $C+\\max(0,A-T)+\\max(0,B-T)\\le T$ 的最小整数 $T$。",
         "key_observations": [
-          "在任意二进制环中，$01$ 与 $10$ 的出现次数必然相等，因此只需统计 $00$、$11$ 和其中一种转移的数量。",
-          "若最终每种二元相邻对都出现 $T$ 次，环长就是 $4T$，插入代价固定为 $4T-(r-l+1)$，所以问题转为最小化 $T$。",
-          "当 $00$ 或 $11$ 的数量超过 $T$ 时，必须将多出的边分别拆成 $010$ 或 $101$；因此可行性的充要条件是 $C+\\max(0,A-T)+\\max(0,B-T)\\le T$，剩余边可由欧拉环补齐。",
-          "该不等式关于 $T$ 单调；查询时用前缀和得到环上的转移数与 $1$ 的个数，再计算 $A,B,C$ 并二分最小可行的 $T$。"
+          "在任意二进制环中，01 与 10 的数量必然相等；设它们各为 $C$，00、11 数量分别为 $A,B$，即可用三个计数描述全部边类型。",
+          "若最终每种边都出现 $T$ 次，过多的 00 必须插入 1 变为 010，过多的 11 必须插入 0 变为 101，因此可行性的必要条件是 $C+\\max(0,A-T)+\\max(0,B-T)\\le T$。",
+          "上述不等式也充分：先拆分超出 $T$ 的同值边，再把缺少的边视为二元图中的边并补成欧拉环；条件具有单调性，所以最小 $T$ 可二分得到。",
+          "查询区间补上首尾边后，利用前缀和得到 1 的数量及相邻字符不同的位置数 $d$，从而 $C=d/2$、$A=(r-l+1-c_1)-C$、$B=c_1-C$，无需逐字符处理。"
         ],
-        "solution_brief": "对每个子串补上首尾相邻对，统计 $A=00$、$B=11$ 和 $C=01=10$。二分最小 $T$，用 $C+\\max(0,A-T)+\\max(0,B-T)\\le T$ 判定可行，答案为 $4T$ 减原长度；前缀和使单次统计为 $O(1)$，二分为 $O(\\log n)$。",
+        "solution_brief": "对每个区间统计环上的 $A,B,C$，二分最小的 $T$ 使 $C+\\max(0,A-T)+\\max(0,B-T)\\le T$；答案为 $4T-(r-l+1)$。用前缀和在 $O(1)$ 获取计数，每次二分耗时 $O(\\log n)$。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [
-          "图论与网络流"
+          "数据结构",
+          "基础实现与模拟"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面与 editorial；tags 仅用于辅助主题归类。",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，结合 tags 中的二分、构造和数学信息提炼。",
         "quality_flags": []
       }
     },
     "2260D": {
       "problem_key": "2260D",
-      "title": "Signs of Prefix Sums",
+      "title": "Знаки префиксных сумм",
       "rating": 1700,
       "problem_url": "https://codeforces.com/contest/2260/problem/D",
       "editorial_url": "https://codeforces.com/blog/entry/156529",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "3ffaff2f7d0868f5661d9f7b8849af995dc1c09eb436e4f5de5a71f356035417",
-      "generated_at": "2026-10-01T06:29:06+00:00",
+      "input_hash": "c27d247d5d6fcf3cffccdc73b0c983567a77288a25b0dc38d36b75dea2628c0e",
+      "generated_at": "2026-10-03T21:45:11+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定只含 `+`、`-`、`0` 的字符串，要求构造一个所有元素均非零的整数数组，使其每个前缀和分别具有字符串指定的正、负或零符号。目标是最小化数组元素绝对值的最大值；若无法构造则输出 $-1$。",
-        "transformed_statement": "将数组改写为前缀和序列 $p_0=0,p_1,\\dots,p_n$：相邻前缀和必须不同，$p_i$ 的符号受字符串约束，而目标变为最小化所有相邻差值 $|p_i-p_{i-1}|$ 的最大值。",
+        "statement_brief": "给定只含 `+`、`-`、`0` 的字符串，要求构造一个各元素非零的整数数组，使每个前缀和分别为正、负或零并匹配对应字符。数组代价是元素绝对值的最大值，求最小代价；若无法构造则输出 $-1$。",
+        "transformed_statement": "把数组改写为前缀和序列：相邻前缀和之差就是数组元素，必须非零，而每个位置的前缀和值域由字符串字符决定。利用最优序列可压缩到 $[-3,3]$，在这个有限状态图上寻找最小化最大边权的路径。",
         "key_observations": [
-          "把前缀和看成整数轴上的路径顶点：相邻顶点之差必须非零，且每个顶点的正负零属性由字符串对应字符固定。",
-          "令 $dp_{i,j}$ 表示前 $i$ 个前缀和结束于 $j$ 时的最小最大步长；从 $j$ 转到符合下一字符的 $k$ 时，代价更新为 $\\max(dp_{i,j},|k-j|)$。",
-          "存在不增大相邻差值的最优方案，使所有前缀和都落在 $[-3,3]$：过大的正值可按邻居情况下调，负值同理，因此状态数为常数。",
-          "转移必须排除 $k=j$，因为数组元素要求非零；最终答案是所有符合末字符的终点状态中的最小值。"
+          "把前缀和本身作为状态，若当前前缀和为 $j$、下一项为 $k$，则新增数组元素为 $k-j$，因此只需保证 $k\\ne j$ 且 $k$ 的符号符合对应字符。",
+          "任意最优前缀和序列都可在不增大相邻差值的前提下，将所有前缀和限制到 $[-3,3]$；过大的局部值可降至 $x-1$、$x-2$ 或 $x-3$，负侧同理。",
+          "状态 $dp_{i,j}$ 表示处理前 $i$ 个字符且第 $i$ 个前缀和为 $j$ 时的最小最大步长，转移代价取 $\\max(dp_{i-1,j},|j-k|)$，从而直接对应数组代价。"
         ],
-        "solution_brief": "将前缀和限制在 $[-3,3]$，建立位置与当前前缀和值的 DP。枚举相邻前缀和值 $j,k$，要求 $k$ 符合字符串符号且 $k\\ne j$，用 $|k-j|$ 更新最大步长；复杂度为 $O(nK^2)$，其中 $K=3$。",
+        "solution_brief": "将前缀和限制在 $[-3,3]$，建立位置与当前前缀和值的 DP。仅在新旧前缀和不同且新值符号符合字符时转移，并最小化所有相邻前缀和之差的最大值；最终取最后一层可行状态的最小值。",
         "primary_topic": "动态规划与状态设计",
         "secondary_topics": [
-          "构造与贪心"
+          "构造与贪心",
+          "基础实现与模拟"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据 statement_text 的前缀和定义与 editorial_text 的有限状态 DP 及值域压缩论证；tags 仅用于主题辅助。",
+        "source_provenance": "依据题面定义、完整 editorial 的 DP 与前缀和范围压缩论证，以及 tags 中的 DP 和构造相关信息。",
         "quality_flags": []
       }
     },
     "2260C": {
       "problem_key": "2260C",
-      "title": "Maximize XOR, Minimize Operations",
+      "title": "Максимизируй XOR, минимизируй операции",
       "rating": 1300,
       "problem_url": "https://codeforces.com/contest/2260/problem/C",
       "editorial_url": "https://codeforces.com/blog/entry/156529",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "1722201f5dac2bfebb6086c9fe7744d56783405174bfb2b585cb48ee92b06282",
-      "generated_at": "2026-10-01T06:29:34+00:00",
+      "input_hash": "eb1eda878ea505830933d2d1fd643763a3497ad0b22e55b2995765053af999e4",
+      "generated_at": "2026-10-03T21:45:30+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定非负整数 $x,y$，每次可将 $x$ 减少 $1$ 并将 $y$ 增加 $1$，且 $x=0$ 时不能继续操作。可操作任意次后，先最大化 $x\\oplus y$，再在达到最大值的方案中最小化操作次数。",
-        "transformed_statement": "操作始终保持总和 $s=x+y$ 不变。将最终的 $x$ 记为 $x'$，问题转化为：在 $0\\le x'\\le x$ 且 $x'$ 的置位都是 $s$ 的置位的条件下最大化 $x'$；最终异或值为 $s$，操作次数为 $x-x'$。",
+        "statement_brief": "给定非负整数 $x,y$，每次操作可将 $x$ 减一并将 $y$ 加一，且只有 $x>0$ 时才能操作。选择任意次数操作后，先最大化 $x\\oplus y$，再在达到最大值的方案中最小化操作次数。",
+        "transformed_statement": "设不变量总和为 $s=x+y$，把最终状态表示为 $(x',s-x')$。题目等价于先取最大异或值，再找不超过原 $x$ 的最大 $s$ 子掩码作为 $x'$，操作次数为 $x-x'$。",
         "key_observations": [
-          "始终有 $x\\oplus y\\le x+y$，并且把所有操作做完使 $x'=0、y'=x+y$ 时恰好达到上界，因此最大异或值就是初始和 $s=x+y$。",
-          "利用 $x\\oplus y=(x\\,\\mathrm{OR}\\,y)-(x\\,\\mathrm{AND}\\,y)$，要让异或等于 $s$，$s$ 的每个二进制位必须只出现在两个数之一；因此最终的 $x'$ 必须是 $s$ 的子掩码，且 $y'=s-x'$。",
-          "操作次数为 $x-x'$，所以应在所有不超过初始 $x$ 的 $s$ 的子掩码中选最大者；从高位到低位尝试加入 $s$ 中为 $1$ 的位且不超过 $x$，贪心地构造出该最大值。"
+          "每次操作保持总和 $s=x+y$ 不变，而任意两个非负整数的异或值不超过它们的和；将 $x$ 减到 $0$ 可达到 $x\\oplus y=s$，因此最大值就是 $s$。",
+          "要使最终异或等于 $s$，$s$ 的每一位必须恰好出现在两个数之一；因此最终的 $x'$ 必须是 $s$ 的子掩码，且满足 $x'\\le x$。",
+          "操作次数为 $x-x'$，所以问题转化为找不超过 $x$ 的最大 $s$ 子掩码；从高位到低位尝试加入 $s$ 中的每个置位，若不超过 $x$ 就加入，可保证高位优先得到最大值。"
         ],
-        "solution_brief": "令 $s=x+y$，最大异或值必为 $s$。从高位到低位贪心构造最大的 $s$ 子掩码 $x'\\le x$，再令 $y'=s-x'$；答案为 $s$ 和操作数 $x-x'$。",
+        "solution_brief": "令 $s=x+y$，最大异或值为 $s$。从高位到低位构造不超过原 $x$ 的最大 $s$ 子掩码 $x'$，答案为 $s$ 和操作次数 $x-x'$。",
         "primary_topic": "构造与贪心",
-        "secondary_topics": [],
+        "secondary_topics": [
+          "数论与同余"
+        ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面与 editorial_text，tags 仅用于主题辅助。",
+        "source_provenance": "依据完整 statement_text 与 editorial_text，tags 仅用于辅助主题归类。",
         "quality_flags": []
       }
     },
     "2260B": {
       "problem_key": "2260B",
-      "title": "Monocarp and Projects",
+      "title": "Монокарп и проекты",
       "rating": 900,
       "problem_url": "https://codeforces.com/contest/2260/problem/B",
       "editorial_url": "https://codeforces.com/blog/entry/156529",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "4b504da22a9128a7ab27763bf8f722c6bcd12900b670596cce5a196b165850dc",
-      "generated_at": "2026-10-01T06:29:57+00:00",
+      "input_hash": "9b6a0b3d749fece96a822d34bba760b1d291c04d3ccc7428c29a6c19083b9661",
+      "generated_at": "2026-10-03T21:45:44+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "接下来 $k$ 个月中，第 $i$ 个月有 $x+i$ 名员工和 $y+i$ 个项目。项目必须尽量平均分给员工，余下项目由 Monocarp 完成；求他在全部月份中完成的项目总数。",
-        "transformed_statement": "题目等价于计算 $\\sum_{i=0}^{k-1}((y+i)\\bmod(x+i))$。利用 $i\\ge y$ 后被除数小于除数的两倍，后缀每项都固定为 $y-x$，只需处理长度至多为 $y$ 的前缀。",
+        "statement_brief": "公司连续运营 $k$ 个月，第 $i$ 个月有 $x+i$ 名员工和 $y+i$ 个项目。项目必须尽量平均分给员工，每名员工得到相同数量且项目不能重复分配，剩余项目由 Monocarp 完成；求他在全部月份完成的项目总数。",
+        "transformed_statement": "把每个月的分配结果表示为余数 $(y+i)\\bmod(x+i)$，问题变成求这些余数的总和；从 $i\\ge y$ 起余数稳定为常数 $y-x$，因此只需处理有限前缀并计算后缀贡献。",
         "key_observations": [
-          "第 $i$ 个月 Monocarp 负责的项目数恰为 $(y+i)\\bmod(x+i)$，因此总答案可直接转化为一段取模值之和。",
-          "当 $i\\ge y$ 时，有 $y+i<2(x+i)$ 且 $y+i\\ge x+i$，所以余数恒为 $y-x$，无需继续逐月计算。",
-          "只需枚举 $i=0$ 到 $\\min(k-1,y-1)$，再为剩余的 $\\max(0,k-y)$ 个月补上 $(y-x)$，将 $k$ 很大时的计算压缩为 $O(y)$。"
+          "每个月 Monocarp 负责的项目数等于 $(y+i)\\bmod(x+i)$，因此总答案可直接转化为一段余数之和。",
+          "当 $i\\ge y$ 时，$x+i\\le y+i<2(x+i)$，所以余数恒为 $(y+i)-(x+i)=y-x$，后缀可以批量计算。",
+          "只需枚举前 $\\\\min(k,y)$ 个月；若 $k>y$，再加上 $(k-y)(y-x)$，将 $k$ 很大的情况降为 $O(y)$。"
         ],
-        "solution_brief": "按月份累加 $(y+i)\\bmod(x+i)$，但只枚举前 $\\min(k,y)$ 个月。由于从 $i\\ge y$ 起余数恒为 $y-x$，将剩余月份数乘以该值加入答案即可。",
+        "solution_brief": "枚举 $i=0$ 到 $\\min(k-1,y-1)$，累加 $(y+i)\\bmod(x+i)$。当 $k>y$ 时，剩余每个月的余数都为 $y-x$，批量加上 $(k-y)(y-x)$。",
         "primary_topic": "数论与同余",
         "secondary_topics": [
           "基础实现与模拟"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面中的逐月分配规则，以及 editorial 对余数稳定区间和枚举范围的说明；tags 提供数论与暴力提示。",
+        "source_provenance": "依据完整题面与 editorial_text，结合 tags 中的数学和数论信息提炼。",
         "quality_flags": []
       }
     },
     "2260A": {
       "problem_key": "2260A",
-      "title": "Monocarp's Contest",
+      "title": "Контест Монокарпа",
       "rating": 800,
       "problem_url": "https://codeforces.com/contest/2260/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/156529",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "21b409d94a0c192de38b28a9e3961e549025c14f38290128119124f2d8c0e04d",
-      "generated_at": "2026-10-01T06:30:23+00:00",
+      "input_hash": "7a4f9fc5d0af8333d413ec7e069cf14667b573be9ddce1fb81fa29074b23c04a",
+      "generated_at": "2026-10-03T21:45:54+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定由 `0/1` 表示简单题和困难题的数组，每次可以任选两道题交换位置。求至少需要多少次交换，使第一道和最后一道题都是简单题；若简单题不足两道则输出 $-1$。",
-        "transformed_statement": "将目标拆成两个端点位置：先判断数组中是否有至少两个 `0`，再分别计算首端和末端是否需要用简单题替换；每个错误端点对应一次交换。",
+        "statement_brief": "给定由 $0$ 和 $1$ 组成的题目序列，其中 $0$ 表示简单题、$1$ 表示难题。每次可任选两个位置交换题目，要求用最少操作使第一个和最后一个题目都为简单题；若无法做到则输出 $-1$。",
+        "transformed_statement": "问题等价于判断是否至少有两个 $0$，然后只修正两个端点：每个值为 $1$ 的端点需要用一个内部简单题交换，因此答案只由两个端点是否合格决定。",
         "key_observations": [
-          "若数组中 `0` 的数量少于 $2$，就没有足够的简单题同时放在首尾，因此答案必为 $-1$。",
-          "当简单题至少有两道时，每个为 `1` 的端点都能通过与某个简单题交换在一次操作内修正，两个端点的修正互不影响。",
-          "首尾若已经是 `0` 则无需操作；否则每个为 `1` 的端点至少需要一次交换，因此答案就是首尾中 `1` 的数量。"
+          "若数组中 $0$ 的数量少于 $2$，就没有足够的简单题同时放在首尾，答案必为 $-1$。",
+          "只需为两个端点各选择一个简单题；首元素为 $1$ 时必须交换一次，末元素为 $1$ 时也必须交换一次，因此答案等于两个端点是否为 $1$ 的数量之和。",
+          "端点都需要简单题时，可以分别从数组内部取出两个简单题完成交换；每个端点至多需要一次操作，且交换不会改变简单题总数。"
         ],
-        "solution_brief": "统计数组中的 `0`。若少于两个则输出 $-1$；否则答案等于首元素和末元素中 `1` 的个数，因为每个错误端点各需一次交换即可修正。",
+        "solution_brief": "统计数组中简单题（$0$）的数量。若少于两个则输出 $-1$；否则答案就是首元素和末元素中值为 $1$ 的个数，因为每个不合格端点各需一次交换。",
         "primary_topic": "基础实现与模拟",
         "secondary_topics": [
           "构造与贪心"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据题面中的交换规则与目标，并结合完整 editorial 对可行性和端点操作次数的说明提炼。",
+        "source_provenance": "依据完整题面与 editorial_text；tags 仅作为实现类题目的辅助信息。",
         "quality_flags": []
       }
     },
     "2259H": {
       "problem_key": "2259H",
-      "title": "Treasure Map Destruction (Counting Version)",
+      "title": "Разрушение карты сокровищ (версия подсчёта)",
       "rating": 2200,
       "problem_url": "https://codeforces.com/contest/2259/problem/H",
       "editorial_url": "https://codeforces.com/blog/entry/156457",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "de5ca46b16445b0b8b1401a988cc1ce4cbce12a503ba67dff5a4b1bad61f7d3d",
-      "generated_at": "2026-10-01T06:30:53+00:00",
+      "input_hash": "0853a29680d5158e456f05e340a0ccfc16add091455828453b9ac8a503284534",
+      "generated_at": "2026-10-03T21:46:13+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 $n$ 个排成一线的岛屿，宝藏埋在一个非空岛屿集合中；从每个岛出发，数组值表示到最近宝藏所需经过的最少相邻移动距离。给定其中部分被改成 $-1$ 的记录，要求计算所有可能宝藏集合的数量，并对 $10^9+7$ 取模。",
-        "transformed_statement": "将每个已知距离看作对宝藏位置的约束，先排除导致无解的索引，再把剩余位置拆成必选点、独立自由点和相邻选择受限的链；总方案数转化为这些局部方案数的乘积。",
+        "statement_brief": "有 $n$ 个排成一行的岛屿，宝藏位于至少一个岛屿。数组中的 $a_i$ 表示从岛屿 $i$ 出发到最近宝藏岛屿所需经过的最少距离；部分元素被损坏为 $-1$。给定数组 $b$，要求统计所有可能的宝藏岛屿集合，并对 $10^9+7$ 取模。",
+        "transformed_statement": "先把每个未损坏的距离值转化为对宝藏位置的限制并找出禁止位置，再只研究损坏位置的自由度：它们被拆成强制点、独立自由点和相邻耦合的链，答案是这些部分方案数的乘积。链约束等价于任意相邻位置不能同时为空。",
         "key_observations": [
-          "在排除不可能的索引后，每个未被破坏的位置只会落入“必有宝藏”“完全自由”或“链式约束”三类，从而可以分别计数再相乘。",
-          "自由位置不影响任何已知距离的可行性，因此各自有选或不选两种状态，贡献一个乘数 $2$。",
-          "链中的相邻位置至少有一个必须放置宝藏；当前位置不选时会强制下一位置选择，这种相邻约束的方案数按斐波那契递推。",
-          "若所有记录都为 $-1$，上述计数还包含空集合，必须额外减去 $1$；若约束本身无解则答案为 $0$。"
+          "先排除由已知距离导致不可能的岛屿；若存在矛盾，任何宝藏集合都无法满足数组，答案直接为 $0$。",
+          "每个未被禁止的被破坏位置可分为三类：被其他已知项强制放置、完全不影响约束，或与相邻位置形成必须覆盖的链。",
+          "完全不影响约束的位置可独立选择，因此每个位置贡献因子 $2$；强制位置没有自由度，贡献因子为 $1$。",
+          "在链中每一对相邻位置至少要有一个宝藏，逐个决定当前位置是否放置即可转移到下一位，方案数服从斐波那契递推；各独立部分的方案数相乘。"
         ],
-        "solution_brief": "先依据已知距离约束筛出不可能的索引；无解时输出 $0$。其余位置按必选、自由和链分类：自由点贡献 $2$，链按斐波那契递推计数，最后将各部分相乘；全为 $-1$ 时减去空集合。",
+        "solution_brief": "先依据已知距离判定禁止位置；无解则返回 $0$。其余位置按强制、自由和链分类，分别贡献 $1$、$2$ 或斐波那契方案数，最后将各部分相乘；全为 $-1$ 时再减去空集合。",
         "primary_topic": "组合计数与概率",
         "secondary_topics": [
           "动态规划与状态设计",
           "图论与网络流"
         ],
         "extraction_status": "ai_generated_partial_editorial",
-        "source_provenance": "题意来自 statement_text；分类、链式相邻约束、斐波那契计数及全未知时减一来自 editorial_text；tags 仅用于主题归类。",
+        "source_provenance": "依据 statement_text 的距离定义与损坏规则、editorial_text 的三类位置和链上斐波那契计数，并参考 tags。",
         "quality_flags": [
-          "forbidden_index_rule_references_unprovided_solution_E",
           "partial_editorial",
-          "statement_truncated"
+          "statement_text截断",
+          "题解依赖未提供的E题中禁止位置结论"
         ]
       }
     },
     "2259G": {
       "problem_key": "2259G",
-      "title": "Index Removal",
+      "title": "Убрали индекс",
       "rating": 1900,
       "problem_url": "https://codeforces.com/contest/2259/problem/G",
       "editorial_url": "https://codeforces.com/blog/entry/156457",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "a60859c929b51a1f7f1b41ac2948d54fe0f64be41bfb7ce4f1a267e2432425c8",
-      "generated_at": "2026-10-01T06:31:40+00:00",
+      "input_hash": "d9f48a1e8f18c667a21fdadb99a8113371e92b1f0906608ccf0f70cc30f9905f",
+      "generated_at": "2026-10-03T21:46:30+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个相邻元素满足非递减且差值不超过 $k$ 的数组。对每个位置分别删除该元素，然后允许多次把任意剩余元素减 $1$，求使数组重新满足上述条件所需的最少操作次数。",
-        "transformed_statement": "把一次内部删除看成从缺口开始的右向修复：若当前元素超过前一个元素加 $k$，就将其降至该上界，必要时继续修复右侧元素。受影响区间的目标值按步长 $k$ 递增，直到与未修改后缀重新衔接。",
+        "statement_brief": "给定一个满足相邻元素非递减且差值不超过 $k$ 的数组。分别删除每个位置的元素，之后每次可任选一个元素减 $1$，求使剩余数组重新满足上述条件所需的最少操作次数。",
+        "transformed_statement": "删除内部元素后，把问题看成从缺口向右修复的连续传播：受影响元素依次被压到前一个元素加 $k$，直到后续原值已经满足相邻限制；目标是确定这段传播的终点并计算所有下降量。",
         "key_observations": [
           "删除首尾元素不会增大任何相邻差值，因此这两种删除的答案必为 $0$。",
-          "删除内部元素后，若新的相邻对不满足上界，当前元素必须降到前一个元素加 $k$；该修改可能继续使右侧元素违规，从而形成连续向右传播。",
-          "若传播覆盖到原数组位置 $b$，被修改元素的目标值依次为 $a_{i-1}+k,a_{i-1}+2k,\\ldots$；检查下一个未修改元素是否满足相邻差值限制即可确定传播终点。",
-          "传播终点的可行性具有单调性，可用二分查找；所有修改量是原值减目标值之和，可用前缀和与等差数列公式快速计算。"
+          "删除内部位置后，从被删除位置开始，若当前元素违反与前项的上界，就必须将其降到前项加 $k$；这种调整会逐步向右传播，并形成连续受影响区间。",
+          "若受影响区间从新位置 $i$ 延伸到 $j$，其中第 $r$ 个元素被压到 $a_{i-1}+(r-i+1)k$，区间终点的可行性具有单调性，因此可定位最远受影响位置。",
+          "固定区间后，所需操作数是原值与目标值之差之和，可用前缀和及等差数列求和公式快速计算。"
         ],
-        "solution_brief": "对每个内部删除位置，模拟违规从缺口向右传播，并把受影响元素强制降到前值加 $k$ 的上界。用单调条件二分传播终点，再通过前缀和计算这段元素的总减少量；删除首尾答案为 $0$。",
+        "solution_brief": "首尾删除直接得到 $0$。对内部删除，贪心地从缺口右侧向后传播，将每个违规元素降至前项加 $k$；二分受影响区间终点，再用前缀和与等差数列公式计算总减少量。",
         "primary_topic": "数据结构",
         "secondary_topics": [
+          "数论与同余",
           "构造与贪心"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面、editorial_text 及题目标签提炼；算法细节主要来自 editorial。",
+        "source_provenance": "依据题面规则、完整 editorial_text，以及 tags 中的 binary search、data structures、math。",
         "quality_flags": []
       }
     },
     "2259F": {
       "problem_key": "2259F",
-      "title": "Binary Bubble Sort Inversions",
+      "title": "Инверсии бинарной пузырьковой сортировки",
       "rating": 1800,
       "problem_url": "https://codeforces.com/contest/2259/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/156457",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "8f90d7600ff2566085db0d18208f62802fd580635603d18e8be02494de07616e",
-      "generated_at": "2026-10-01T06:32:12+00:00",
+      "input_hash": "62e56320bf7d804b1a1132f528c31cdbc0a5174c9537f7dfa94a7e53e1d03f9d",
+      "generated_at": "2026-10-03T21:46:52+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个只含 0 和 1 的数组及长度相同的操作串。按顺序处理每个字符：字符为 1 时按从左到右、再从右到左检查相邻对并交换逆序对，字符为 0 时执行相反方向的 reverse bubble；要求输出初始状态及每次操作后的逆序对数量。",
-        "transformed_statement": "将一整轮相邻交换重述为元素移动：bubble 把第一个 1 移到数组末尾，reverse bubble 把最后一个 0 移到数组开头。只维护尚未被前缀 0 或后缀 1 排除的有效区间，并根据被移动元素跨过的异类元素数量更新逆序对。",
+        "statement_brief": "给定一个只含 $0$ 和 $1$ 的数组及长度同为 $n$ 的操作串。第 $i$ 次操作按 $s_i$ 选择正向冒泡（从左到右比较相邻元素并交换逆序对）或反向冒泡（从右到左执行同样交换），要求输出初始状态及每次操作后的逆序对数量。",
+        "transformed_statement": "在二进制数组中，正向冒泡可抽象为把最左侧的 $1$ 移到末尾，反向冒泡可抽象为把最右侧的 $0$ 移到开头；问题转化为维护这两种端点删除对逆序对数的影响。",
         "key_observations": [
-          "一次正向 bubble 等价于把数组中的第一个 1 移到末尾；反向 bubble 等价于把最后一个 0 移到开头，从而将整轮相邻交换压缩成一次元素移动。",
-          "把前缀中的 0 和后缀中的 1 从当前有效区间剥离后，正向操作只需移除有效区间首端的 1，逆序对减少量等于有效区间中仍存在的 0 的数量。",
-          "逆向操作只需移除有效区间末端的 0，逆序对减少量等于有效区间中仍存在的 1 的数量；每次剥离新产生的前缀 0 和后缀 1 后，区间只会缩短不会恢复。",
-          "初始逆序对可在线性扫描中统计；之后用有效区间的左右指针及其中 0、1 的计数即可更新每个状态，无需实际执行相邻交换。"
+          "对二进制数组执行一次正向冒泡，等价于把最左侧的 $1$ 移到数组末尾；反向冒泡则等价于把最右侧的 $0$ 移到数组开头，从而避免逐次模拟交换。",
+          "把最左侧的 $1$ 移到末尾时，逆序对减少它右侧的 $0$ 数量，即总 $0$ 数减去它之前的前缀 $0$ 数；反向操作同理，减少最后一个 $0$ 之前的 $1$ 数。",
+          "持续移除队首的前缀 $0$ 和队尾的后缀 $1$ 不会影响后续被移动元素及其逆序对变化，因此只需在剩余区间中维护 $0$、$1$ 数量。",
+          "剩余序列只会从两端被删除且不会重新加入元素，所以用左右指针即可替代双端队列，并在每次操作后立即更新逆序对数量。"
         ],
-        "solution_brief": "先线性统计初始逆序对，并用左右指针维护去除前缀 0、后缀 1 后的有效区间及其中 0、1 数量。遇到 1 时移除首个有效 1，答案减去有效区间内 0 的数目；遇到 0 时移除末个有效 0，答案减去有效区间内 1 的数目，再继续剥离边界无贡献元素。",
+        "solution_brief": "先用一次扫描计算初始逆序对数。将正向冒泡视为删除剩余区间左端的首个 $1$，反向冒泡视为删除右端的最后一个 $0$；通过左右指针跳过无效前缀 $0$、后缀 $1$，按其跨过的异类元素数量更新答案并输出。",
         "primary_topic": "数据结构",
         "secondary_topics": [
-          "数论与同余",
           "基础实现与模拟"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text，并结合 statement_text 中的操作定义与逆序对定义；tags 仅用于主题辅助判断。",
+        "source_provenance": "依据 statement_text、完整 editorial_text，并参考 tags 中的数据结构与双指针信息。",
         "quality_flags": []
       }
     },
     "2259E": {
       "problem_key": "2259E",
-      "title": "Treasure Map Destruction (Constructive Version)",
+      "title": "Разрушение  карты сокровищ (конструктивная версия)",
       "rating": 1500,
       "problem_url": "https://codeforces.com/contest/2259/problem/E",
       "editorial_url": "https://codeforces.com/blog/entry/156457",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "73e35d6da42ac964b3387c9c1b0378a2d7406e0030aed640dc49798554e0758f",
-      "generated_at": "2026-10-01T06:32:45+00:00",
+      "input_hash": "58b810331d61d24d66aac98ddd473d1c5853ac3f90a90dc78ce47ad60f7c718d",
+      "generated_at": "2026-10-03T21:47:13+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 $n$ 个排成一线的岛屿，宝藏埋在至少一个岛上；数组 $a_i$ 表示从岛屿 $i$ 出发到最近宝藏的距离。给出其中部分被改成 $-1$ 的数组 $b$，请构造任意符合所有已知距离的宝藏分布，并在不存在时报告无解。",
-        "transformed_statement": "每个已知值 $b_i=x$ 被转化为两类约束：半径小于 $x$ 的区间禁止放宝藏，而距离恰为 $x$ 的左右端点至少一端必须有宝藏。先满足所有禁区，再验证端点条件和实际距离。",
+        "statement_brief": "有 $n$ 个成一直线的岛屿，宝藏位于至少一个岛屿。数组中的 $a_i$ 表示从岛屿 $i$ 出发沿相邻岛屿行走到最近宝藏所需经过的最少岛屿数；现给出部分被删为 $-1$ 的数组 $b$，要求构造任意符合所有已知距离的宝藏位置集合，或判定无解。",
+        "transformed_statement": "把每个已知距离 $b_i=x$ 转成两类局部约束：距离 $i$ 小于 $x$ 的位置必须无宝藏，且距离恰为 $x$ 的左右边界至少一处有宝藏。先取所有未被禁止的位置，再统一验证这些约束。",
         "key_observations": [
-          "已知位置 $i$ 的距离为 $x$ 时，区间 $[\\max(1,i-x+1),\\min(n,i+x-1)]$ 内必须没有宝藏，否则最近距离会小于 $x$。",
-          "同一约束还要求 $i-x$ 或 $i+x$（在边界内）至少一个位置有宝藏，从而保证最近距离确实为 $x$。",
-          "先把所有不被任何禁区覆盖的位置都放置宝藏，可得到满足全部“禁止出现”条件的最大候选集合；再直接验证已知距离即可判断构造是否有效。",
-          "禁区覆盖可以用差分统计，避免逐个区间标记，使每个测试用例在线性时间内完成。"
+          "若已知位置 $i$ 的距离为 $x$，则距离小于 $x$ 的区间 $[\\max(1,i-x+1),\\min(n,i+x-1)]$ 内绝不能放宝藏，否则最近距离会变小。",
+          "同一约束还要求 $i-x$ 或 $i+x$ 中至少一个位置有宝藏；因此除了被禁止的位置外，其余位置全部放置宝藏可最大化满足这些见证条件。",
+          "按上述规则构造后重新计算每个已知位置的最近宝藏距离；若全部等于给定值，则构造有效，否则说明不存在可行方案。"
         ],
-        "solution_brief": "对每个已知 $b_i=x$ 标记其必须无宝藏的区间，并将所有未被禁区覆盖的位置设为有宝藏。计算该构造中每个位置到最近宝藏的距离，若与所有已知值一致则输出，否则报告无解。",
+        "solution_brief": "对每个非 $-1$ 的 $b_i=x$，用差分数组标记区间 $[\\max(1,i-x+1),\\min(n,i+x-1)]$ 为禁放区。将所有未被禁止的位置设为宝藏，再验证每个已知距离及其左右距离为 $x$ 的见证位置；验证失败则判无解。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据 statement_text、完整 editorial_text 及 tags；输出部分题面在给定文本中截断。",
+        "source_provenance": "依据完整 statement_text、editorial_text，并参考题目 tags；核心构造均来自 editorial。",
         "quality_flags": [
-          "statement_output_spec_truncated"
+          "statement_text在输出格式处截断，但核心目标和约束可由题解明确确定"
         ]
       }
     },
     "2259D": {
       "problem_key": "2259D",
-      "title": "MEX Multiset",
+      "title": "MEX мультимножеств",
       "rating": 1200,
       "problem_url": "https://codeforces.com/contest/2259/problem/D",
       "editorial_url": "https://codeforces.com/blog/entry/156457",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "22f49e1613cc5c7f0239b7c29b7004f78be1228b542550aebccc5040911151bd",
-      "generated_at": "2026-10-01T06:33:06+00:00",
+      "input_hash": "a26cff1a8926b45986240b15ae812bb2af49649a816de1c73bc6828ef19de9c8",
+      "generated_at": "2026-10-03T21:47:27+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定数组，必须把每个元素分别放入三个多重集合 $A,B,C$ 之一，不能遗漏或重复。要求判断能否使三个集合的 MEX 之和至少为最大 MEX 的两倍；若能，还需输出每个元素所属集合的构造。",
-        "transformed_statement": "问题可完全化为统计数组中 $0$ 的出现次数：零的数量决定是否可能，而可行时只需让两个集合各含有 $0$、第三个集合不含 $0$，其余元素的去向不再影响关键 MEX。",
+        "statement_brief": "给定数组，必须将每个元素分别放入三个初始为空的多重集合 $A、B、C$ 之一。要求构造一种分配，使三个集合的 MEX 之和至少是其中最大 MEX 的两倍；若存在则输出分配方案，否则输出 NO。",
+        "transformed_statement": "问题只取决于数组中 $0$ 的数量：没有 $0$ 时所有 MEX 都为 $0$，一个 $0$ 时无法让两个集合获得正 MEX，至少两个 $0$ 时可直接构造 MEX 为 $1,1,0$ 的分配。",
         "key_observations": [
-          "数组中没有 $0$ 时，三个多重集合的 MEX 都为 $0$，不等式自动成立，因此任意分配都可行。",
-          "数组中恰有一个 $0$ 时，只有包含它的集合能拥有正 MEX，另外两个集合的 MEX 为 $0$，于是总和小于 $2$ 倍最大值，必定无解。",
-          "当 $0$ 至少出现两次时，将一个 $0$ 放入 $A$、其余 $0$ 放入 $B$、所有非零元素放入 $C$，可固定得到 MEX 分别为 $1,1,0$，恰好满足条件。"
+          "数组中没有 $0$ 时，三个多重集合的 MEX 都为 $0$，因此条件自动成立。",
+          "数组中恰有一个 $0$ 时，只有包含它的集合可能拥有正 MEX，另外两个 MEX 为 $0$，故不满足总和至少为最大值两倍。",
+          "至少有两个 $0$ 时，将一个 $0$ 放入 $A$、其余 $0$ 放入 $B$、所有非零元素放入 $C$，可固定得到 MEX 分别为 $1,1,0$，恰好满足条件。"
         ],
-        "solution_brief": "只需统计数组中 $0$ 的数量：为 $1$ 时输出 NO；为 $0$ 时任意分配即可；至少为 $2$ 时按一个零进 $A$、其余零进 $B$、非零数进 $C$ 构造，输出对应标签。",
+        "solution_brief": "统计数组中 $0$ 的数量：为 $1$ 时输出 NO；为 $0$ 或至少为 $2$ 时输出 YES。构造时把首个 $0$ 放入 $A$，其他 $0$ 放入 $B$，非零元素放入 $C$，无 $0$ 时任意分配即可。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据 statement_text、完整 editorial_text 及 constructive algorithms/greedy 标签提炼。",
+        "source_provenance": "依据 statement_text 的分组与 MEX 定义，以及 editorial_text 的零元素分类构造；tags 用于主题归类。",
         "quality_flags": []
       }
     },
@@ -22815,24 +22818,24 @@
     },
     "2259A": {
       "problem_key": "2259A",
-      "title": "Moo Language School",
+      "title": "Школа языка Му",
       "rating": 800,
       "problem_url": "https://codeforces.com/contest/2259/problem/A",
       "editorial_url": "https://codeforces.com/blog/entry/156457",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "c172b4fd798597c7c6aa07e1721877dd91c084c3c96f034c7db7a8ceb5ab5587",
-      "generated_at": "2026-10-01T06:34:26+00:00",
+      "input_hash": "1029475ba0ffea1ae553fe5758d9a811bb83c28a39222f52f28444f9195245c4",
+      "generated_at": "2026-10-03T21:47:41+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 $n$ 个连续字段，每 $k$ 个字段组成一个农场。需要在任意字段建学校，使每个农场至少有一所学校，并最小化建在 Nhoj 所有字段（字符串中的 `1`）上的学校数量。",
+        "statement_brief": "有 $n$ 个连续字段，每 $k$ 个字段组成一个农场，且 $n$ 是 $k$ 的倍数。可以在任意字段建学校，但每个农场至少要有一所；若字段属于 Nhoj（字符串对应位置为 $1$），就在该处建校一次付费，要求最少付费次数。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "基础实现与模拟",
         "secondary_topics": [],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text；editorial_text 为空，未使用 tags 补充算法。",
+        "source_provenance": "仅依据 statement_text；editorial_text 为空，未使用 tags 推断算法。",
         "quality_flags": [
           "missing_editorial",
           "statement_inferred"
