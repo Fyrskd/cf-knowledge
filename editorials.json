@@ -5,7 +5,7 @@
     "label": "Tutorial",
     "section_count": 0,
     "covered_problems": [],
-    "raw_sha256": "4c40091c612746e23d0202cee7751ac9dbdabdf7a99e7a6956419437898036dc"
+    "raw_sha256": "d751b079a2ea3c000c14808d172b29ffa075c265c154a5a87981aad71eba0d1f"
   },
   {
     "url": "https://codeforces.com/blog/entry/86464",
@@ -237,8 +237,12 @@
     "original_locale": "en",
     "source": "codeforces-blog",
     "label": "Codeforces Round #732 Editorial",
-    "section_count": 8,
+    "section_count": 12,
     "covered_problems": [
+      "1545A",
+      "1545B",
+      "1545C",
+      "1545D",
       "1545E2",
       "1545F",
       "1546A",
@@ -790,8 +794,15 @@
     "original_locale": "en",
     "source": "codeforces-blog",
     "label": "Tutorial",
-    "section_count": 8,
+    "section_count": 15,
     "covered_problems": [
+      "1781A",
+      "1781B",
+      "1781C",
+      "1781D",
+      "1781E",
+      "1781F",
+      "1781G",
       "1782A",
       "1782B",
       "1782C",
@@ -931,8 +942,12 @@
     "original_locale": "ru",
     "source": "codeforces-blog",
     "label": "Codeforces Round #850 Editorial",
-    "section_count": 8,
+    "section_count": 12,
     "covered_problems": [
+      "1784B",
+      "1784D",
+      "1784E",
+      "1784F",
       "1785A",
       "1785B",
       "1785C",
