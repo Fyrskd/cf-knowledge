@@ -5,7 +5,7 @@
     "label": "Tutorial",
     "section_count": 0,
     "covered_problems": [],
-    "raw_sha256": "bc02de53625af2e65096576dbbe483c9ca57dbc86558f4f5eff764279fdf0d18"
+    "raw_sha256": "0c4ead7561590ba812e1efd6c04fe3f3d713d4996baf7909a2c900c147cc4ad4"
   },
   {
     "url": "https://codeforces.com/blog/entry/86464",
@@ -38,16 +38,15 @@
     "original_locale": "en",
     "source": "codeforces-blog",
     "label": "Codeforces Round #696 Editorial",
-    "section_count": 6,
+    "section_count": 5,
     "covered_problems": [
       "1474A",
       "1474B",
-      "1474C",
       "1474D",
       "1474E",
       "1474F"
     ],
-    "raw_sha256": "853abbd8e1fa8bc8a892657aecaab7d485dba4e8e86357ca8c269ea7cafdfaa4"
+    "raw_sha256": "e4f8d7452baf348e127a81b51460216ee0bdf5b1dec9e3d1230dee0cbeb24244"
   },
   {
     "url": "https://codeforces.com/blog/entry/87356",
