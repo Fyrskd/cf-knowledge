@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-07",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4320,
+    "total_problems": 4321,
     "source_total_problems": 4321,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4320,
-    "with_editorial_brief": 3953,
-    "with_solution_brief": 3955,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4321,
+    "with_editorial_brief": 3954,
+    "with_solution_brief": 3956,
     "missing_editorial_brief": 365,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3374,
+    "ai_override_count": 3383,
     "primary_topic_count": 13,
     "contest_count": 675,
     "rating_min": 800,
@@ -44,23 +44,23 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1419,
+    "构造与贪心": 1417,
     "动态规划与状态设计": 358,
-    "数据结构": 403,
-    "图论与网络流": 292,
+    "数据结构": 402,
+    "图论与网络流": 293,
     "数论与同余": 450,
     "交互": 129,
-    "组合计数与概率": 331,
+    "组合计数与概率": 332,
     "几何": 101,
     "树结构": 200,
     "字符串": 229,
-    "基础实现与模拟": 259,
+    "基础实现与模拟": 261,
     "代数、矩阵与多项式": 28,
     "博弈": 121
   },
   "statusCounts": {
     "ai_generated_with_editorial": 2943,
-    "ai_generated_partial_editorial": 119,
+    "ai_generated_partial_editorial": 120,
     "missing_editorial": 365,
     "low_confidence": 1,
     "manual_override": 891,
@@ -95,14 +95,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2275/problem/A",
           "editorialUrl": "",
           "primaryTopic": "几何",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "geometry",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：In Search of Convenience；本地暂无可用题解正文。",
+          "statementBrief": "给定路由器的整数坐标 $(x_0,y_0)$ 和覆盖半径 $R$，需要把电脑桌放在整数坐标点上，并且该点到路由器的距离必须恰好为 $R$。输出任意一个满足条件的坐标。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -117,15 +115,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2275/problem/B",
           "editorialUrl": "",
-          "primaryTopic": "数据结构",
+          "primaryTopic": "基础实现与模拟",
           "secondaryTopics": [
-            "动态规划与状态设计"
+            "数据结构"
           ],
           "originalTags": [
             "data structures",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Did Not Go to Print；本地暂无可用题解正文。",
+          "statementBrief": "有编号为 $1$ 到 $n$ 的文档，初始打印机内存为空，并按顺序执行 $n$ 条命令：命令 1 将当前文档放到内存顶端；命令 2 打印并移除顶端文档，若内存为空则打印当前文档；命令 3 直接打印当前文档。求所有最终没有被打印的文档编号。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -140,17 +138,13 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2275/problem/C",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构",
-            "组合计数与概率",
-            "动态规划与状态设计"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "data structures"
           ],
-          "statementBrief": "题面已抓取：Unrequited Love；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $n$ 的数组，每个三和弦由位置 $x,x+2,x+4$ 组成，其贡献为 $a_x+a_{x+2}-a_{x+4}$。要求选出两个起点不同且所用位置互不重叠的三和弦，并且两者贡献相等，统计这样的无序组合数。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -166,15 +160,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2275/problem/D",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "交互"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Precision Alignment；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 个实验室，每个实验室有按顺序区分的三个读数 $(a_i,b_i,c_i)$。每次可任选一个实验室，并按三种规定之一，将某个读数加上另外两个读数按指定顺序相减后的符号值；最多操作 $k$ 次，求操作后所有实验室读数和的最小值的最大可能值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -190,14 +181,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2275/problem/E",
           "editorialUrl": "",
           "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "dp",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Repentance Is Already on the Way；本地暂无可用题解正文。",
+          "statementBrief": "两排各有 $n$ 栋建筑，建筑 $a_i$ 与 $b_i$ 相连，且 $a_i$ 还与相邻列的 $b_{i-1}$、$b_{i+1}$ 相连（下标合法时）。从 $a_1$ 出发，沿这些双向道路恰好访问全部 $2n$ 栋建筑各一次，终点不限；同公司建筑间道路长 $2$，不同公司间长 $1$，要求路线总长度最大值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -213,17 +202,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2275/problem/F",
           "editorialUrl": "",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "字符串",
-            "组合计数与概率",
-            "动态规划与状态设计"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "hashing",
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Tea Blend；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n$ 个正整数强度。对每个有序对 $(i,j)$，把前 $j$ 包茶的强度相乘，再乘上第 $i$ 包的强度；若所得正整数的自然约数个数为奇数，则该对称为任性混合。要求统计这样的有序对数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -238,12 +223,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2275/problem/G",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "图论与网络流",
-            "数据结构",
-            "动态规划与状态设计"
-          ],
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "data structures",
@@ -252,7 +233,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "ternary search"
           ],
-          "statementBrief": "题面已抓取：Copper Squander；本地暂无可用题解正文。",
+          "statementBrief": "给定一张由建筑和双向电缆组成的图，可以先拆除任意一些电缆并按其价值回收铜材，再按每条 $x,2x,3x,\\ldots$ 的费用顺序新增任意建筑间的电缆。每种费用增量 $x$ 下，都要使最终网络连通，并求最大利润。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -267,18 +248,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2275/problem/H",
           "editorialUrl": "",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "组合计数与概率",
-            "数论与同余",
-            "图论与网络流"
-          ],
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [],
           "originalTags": [
             "combinatorics",
             "dp",
             "math"
           ],
-          "statementBrief": "题面已抓取：A Problem to Warm Up the Eyebrows；本地暂无可用题解正文。",
+          "statementBrief": "给定一个有 $n$ 行、$m$ 列的整数矩阵，对每个连续行列组成的子矩阵，设其元素和为 $S$、行数与列数之和为 $a+b$；若 $a+b$ 为偶数则计入 $S^2$，否则计入 $-S^2$。求所有子矩阵价格之和，并对 $10^9+7$ 取模。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -1321,7 +1298,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-12",
       "url": "https://codeforces.com/contest/2262",
       "type": "Div. 1",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": 3500,
       "problems": [
         {
@@ -1349,6 +1326,36 @@ window.CF_INSIGHTS_DATA = {
           ],
           "solutionBrief": "对每个 $k$，根据 $a_k$ 标记坏区间 $[ka_k,k(a_k+1)-1]$，用差分数组求所有坏区间的并集。遍历 $0$ 到 $n-1$，仅把未被标记的位置加入 $B$；由于输入保证存在合法集合，这个最大可行集合必然得到相同数组。",
           "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2262A2",
+          "index": "A2",
+          "slot": "A",
+          "title": "Floor of MEX (Hard Version)",
+          "rating": 1800,
+          "problemUrl": "https://codeforces.com/contest/2262/problem/A2",
+          "editorialUrl": "https://codeforces.com/blog/entry/156688",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数据结构"
+          ],
+          "originalTags": [
+            "dp",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组 $a$，它由某个 $A\\subseteq\\{0,1,\\ldots,n-1\\}$ 生成：对每个 $k=1,\\ldots,n$，$a_k$ 是集合中各数除以 $k$ 向下取整后所得数集的 MEX。要求统计所有能生成同一数组的集合 $B\\subseteq\\{0,1,\\ldots,n-1\\}$，并对 $10^9+7$ 取模。",
+          "transformedStatement": "对每个 $k$，要使 MEX 等于 $a_k$，就必须让每个小于 $a_k$ 的商值至少出现一次，同时让商值 $a_k$ 不出现。这分别转成若干必须命中的整数区间和禁止选数的区间，问题于是成为统计满足这些区间约束的子集数。",
+          "keyObservations": [
+            "条件 $f(B,k)=a_k$ 等价于对每个 $j<a_k$，集合 $B$ 至少在区间 $[jk,(j+1)k-1]$ 中选一个数，并且不能在区间 $[a_k k,(a_k+1)k-1]$ 中选数；因此 MEX 约束转化为区间命中与禁选约束。",
+            "若一个必须命中的区间完全包含另一个必须命中的区间，命中内层区间就必然命中外层区间，所以可以删去外层区间；剩下的区间至多有 $n$ 个。",
+            "按顺序扫描候选数时，一个被选数可能同时命中一段连续的必选区间，因此用“最后满足的区间”作为 DP 状态即可概括此前的命中进度。",
+            "禁选区间内的数不能加入集合，可用前缀和检查候选转移是否合法；DP 的前缀和则用于快速汇总转移，避免逐个枚举区间。"
+          ],
+          "solutionBrief": "将每个 $a_k$ 转成必须命中的区间和禁止选数的区间，删除被其他必须命中区间包含的冗余区间。按候选数递增做计数 DP，状态记录最后满足的必选区间，并用前缀和检查禁选约束、加速转移；答案对 $10^9+7$ 取模。题解给出的总复杂度为 $O(n\\log^2 n)$。",
+          "extractionStatus": "ai_generated_partial_editorial",
           "editorialQuality": "complete"
         },
         {

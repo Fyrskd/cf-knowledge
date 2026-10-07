@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-10-04T06:41:00+00:00",
+  "updated_at": "2026-10-07T23:23:37+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -432,28 +432,28 @@
       "editorial_url": "https://codeforces.com/blog/entry/156688",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "af2c3f42f813dc0417efc24e0c30e657b0db576807f5dad80b28bec3e27a34a2",
-      "generated_at": "2026-10-04T06:31:18+00:00",
+      "input_hash": "c17cd966ddf7f324b2a499c4e2d9672e293a8a49106b728e357131f48a38e853",
+      "generated_at": "2026-10-07T23:23:37+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定数组 $a_1,\u001ba_n$，它由某个集合 $A\\subseteq\\{0,\\ldots,n-1\\}$ 通过 $a_k=\\operatorname{mex}\\{\\lfloor y/k\\rfloor:y\\in A\\}$ 生成。要求统计所有集合 $B\\subseteq\\{0,\\ldots,n-1\\}$，使每个 $k$ 都满足相同的 $f(B,k)=a_k$，答案对 $10^9+7$ 取模。",
-        "transformed_statement": "题解将每个 $f(B,k)=a_k$ 的要求等价改写为若干 good 区间必须至少包含一个被选数、bad 区间必须完全不含被选数的问题；随后按数值加入元素，并用最后已满足的 good 区间描述状态。",
+        "statement_brief": "给定长度为 $n$ 的数组 $a$，它由某个 $A\\subseteq\\{0,1,\\ldots,n-1\\}$ 生成：对每个 $k=1,\\ldots,n$，$a_k$ 是集合中各数除以 $k$ 向下取整后所得数集的 MEX。要求统计所有能生成同一数组的集合 $B\\subseteq\\{0,1,\\ldots,n-1\\}$，并对 $10^9+7$ 取模。",
+        "transformed_statement": "对每个 $k$，要使 MEX 等于 $a_k$，就必须让每个小于 $a_k$ 的商值至少出现一次，同时让商值 $a_k$ 不出现。这分别转成若干必须命中的整数区间和禁止选数的区间，问题于是成为统计满足这些区间约束的子集数。",
         "key_observations": [
-          "每个 $f(B,k)=a_k$ 的约束都可转化为若干区间条件：某些 good 区间内至少选一个数，某些 bad 区间内不能选数，从而把 MEX 条件变成集合覆盖与禁选约束。",
-          "若一个 good 区间完全包含另一个 good 区间，满足内部区间必然满足外部区间，因此可以删除外部区间；剩余区间的右端点互不相同，数量至多为 $n$。",
-          "将保留的 good 区间排序后，选择一个数会同时满足其中一段连续区间，因此只需在处理数值 $0$ 到 $n-1$ 时维护最后满足的区间位置。",
-          "bad 区间只限制候选数能否被选入，可用前缀和快速判断；再用前缀和加速 DP 转移，排序、区间处理和转移共同得到 $O(n\\log^2 n)$ 的总复杂度。"
+          "条件 $f(B,k)=a_k$ 等价于对每个 $j<a_k$，集合 $B$ 至少在区间 $[jk,(j+1)k-1]$ 中选一个数，并且不能在区间 $[a_k k,(a_k+1)k-1]$ 中选数；因此 MEX 约束转化为区间命中与禁选约束。",
+          "若一个必须命中的区间完全包含另一个必须命中的区间，命中内层区间就必然命中外层区间，所以可以删去外层区间；剩下的区间至多有 $n$ 个。",
+          "按顺序扫描候选数时，一个被选数可能同时命中一段连续的必选区间，因此用“最后满足的区间”作为 DP 状态即可概括此前的命中进度。",
+          "禁选区间内的数不能加入集合，可用前缀和检查候选转移是否合法；DP 的前缀和则用于快速汇总转移，避免逐个枚举区间。"
         ],
-        "solution_brief": "先把数组条件转换成必须命中和禁止命中的区间约束，删除被其他 good 区间包含的冗余区间。按数值递推，状态记录最后满足的 good 区间，用前缀和排除 bad 区间并加速转移，统计所有合法集合。",
+        "solution_brief": "将每个 $a_k$ 转成必须命中的区间和禁止选数的区间，删除被其他必须命中区间包含的冗余区间。按候选数递增做计数 DP，状态记录最后满足的必选区间，并用前缀和检查禁选约束、加速转移；答案对 $10^9+7$ 取模。题解给出的总复杂度为 $O(n\\log^2 n)$。",
         "primary_topic": "动态规划与状态设计",
         "secondary_topics": [
-          "数据结构",
-          "基础实现与模拟"
+          "组合计数与概率",
+          "数据结构"
         ],
-        "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "题意来自 statement_text，区间约束、冗余删除、DP 状态与复杂度来自 editorial_text，tags 辅助确认 DP 与实现方向。",
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意依据 statement_text；区间约束、冗余区间删除及 DP 思路依据 editorial_text。题解引用了前一版本的细节，未提供完整转移说明。",
         "quality_flags": [
-          "statement_format_corruption"
+          "partial_editorial"
         ]
       }
     },
@@ -100905,6 +100905,211 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的循环移动与相遇规则，以及题解给出的奇偶分类、相遇周期和零起点公式。",
         "quality_flags": []
+      }
+    },
+    "2275H": {
+      "problem_key": "2275H",
+      "title": "A Problem to Warm Up the Eyebrows",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2275/problem/H",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "ea007e9cd951658a4a63efc2d60b6a5f0e14ac2772876c006b5b9495032176d6",
+      "generated_at": "2026-10-07T23:22:55+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个有 $n$ 行、$m$ 列的整数矩阵，对每个连续行列组成的子矩阵，设其元素和为 $S$、行数与列数之和为 $a+b$；若 $a+b$ 为偶数则计入 $S^2$，否则计入 $-S^2$。求所有子矩阵价格之和，并对 $10^9+7$ 取模。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面与 tags；未提供题解正文。",
+        "quality_flags": [
+          "missing_editorial",
+          "solution_not_inferred"
+        ]
+      }
+    },
+    "2275G": {
+      "problem_key": "2275G",
+      "title": "Copper Squander",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2275/problem/G",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "801bf6848c3d536dd4ba21e2fa50b85afdcb05f03e17f332aecdee93fff48cb8",
+      "generated_at": "2026-10-07T23:23:01+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一张由建筑和双向电缆组成的图，可以先拆除任意一些电缆并按其价值回收铜材，再按每条 $x,2x,3x,\\ldots$ 的费用顺序新增任意建筑间的电缆。每种费用增量 $x$ 下，都要使最终网络连通，并求最大利润。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面中的删线回收、递增安装费用及最终连通要求整理；题解正文缺失。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2275F": {
+      "problem_key": "2275F",
+      "title": "Tea Blend",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2275/problem/F",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "e55ac461c8d233850108d2694750a396205d6fc7ecd17ff3076b5a73aee0dac5",
+      "generated_at": "2026-10-07T23:23:06+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个正整数强度。对每个有序对 $(i,j)$，把前 $j$ 包茶的强度相乘，再乘上第 $i$ 包的强度；若所得正整数的自然约数个数为奇数，则该对称为任性混合。要求统计这样的有序对数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意与变量范围来自 statement_text；editorial_text 为空，tags 仅作主题参考。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "2275E": {
+      "problem_key": "2275E",
+      "title": "Repentance Is Already on the Way",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2275/problem/E",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "5cccc7f8be47e8ce5f0774f81de5dc4e903648892180174a01049dbbe88dce40",
+      "generated_at": "2026-10-07T23:23:11+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "两排各有 $n$ 栋建筑，建筑 $a_i$ 与 $b_i$ 相连，且 $a_i$ 还与相邻列的 $b_{i-1}$、$b_{i+1}$ 相连（下标合法时）。从 $a_1$ 出发，沿这些双向道路恰好访问全部 $2n$ 栋建筑各一次，终点不限；同公司建筑间道路长 $2$，不同公司间长 $1$，要求路线总长度最大值。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；题解正文缺失，tags 仅提供 dp 与 implementation。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2275D": {
+      "problem_key": "2275D",
+      "title": "Precision Alignment",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2275/problem/D",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "947c5645fc12de3cdcba99f66a9794fbb4a627255e9763797401ae2c16a4f9d9",
+      "generated_at": "2026-10-07T23:23:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个实验室，每个实验室有按顺序区分的三个读数 $(a_i,b_i,c_i)$。每次可任选一个实验室，并按三种规定之一，将某个读数加上另外两个读数按指定顺序相减后的符号值；最多操作 $k$ 次，求操作后所有实验室读数和的最小值的最大可能值。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；题目分类仅参考 codeforces_tags；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "2275C": {
+      "problem_key": "2275C",
+      "title": "Unrequited Love",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2275/problem/C",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "a7ebc56389009c122a0ee62fcf069d2259cefd891be0c0ada8122541f46599ef",
+      "generated_at": "2026-10-07T23:23:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定长度为 $n$ 的数组，每个三和弦由位置 $x,x+2,x+4$ 组成，其贡献为 $a_x+a_{x+2}-a_{x+4}$。要求选出两个起点不同且所用位置互不重叠的三和弦，并且两者贡献相等，统计这样的无序组合数。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意依据 statement_text；editorial_text 为空，tags 仅用于辅助分类。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "2275B": {
+      "problem_key": "2275B",
+      "title": "Did Not Go to Print",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2275/problem/B",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "c5c7ab857b0dadae191cafffd27975590eb4b0adb8d05a1d9c11373e9c1bee71",
+      "generated_at": "2026-10-07T23:23:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有编号为 $1$ 到 $n$ 的文档，初始打印机内存为空，并按顺序执行 $n$ 条命令：命令 1 将当前文档放到内存顶端；命令 2 打印并移除顶端文档，若内存为空则打印当前文档；命令 3 直接打印当前文档。求所有最终没有被打印的文档编号。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面和标签；未提供题解正文。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
+      }
+    },
+    "2275A": {
+      "problem_key": "2275A",
+      "title": "In Search of Convenience",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2275/problem/A",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "c5b70c9e016b287679db283b271ef6f5bb571f87b988e70a9048db7f52207ecb",
+      "generated_at": "2026-10-07T23:23:28+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定路由器的整数坐标 $(x_0,y_0)$ 和覆盖半径 $R$，需要把电脑桌放在整数坐标点上，并且该点到路由器的距离必须恰好为 $R$。输出任意一个满足条件的坐标。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "几何",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面中的距离定义、整数坐标限制和输入范围；未提供题解正文，标签仅用于主题索引。",
+        "quality_flags": [
+          "missing_editorial"
+        ]
       }
     }
   }
