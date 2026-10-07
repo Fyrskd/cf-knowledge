@@ -1,5 +1,91 @@
 [
   {
+    "contestId": 2275,
+    "index": "H",
+    "name": "A Problem to Warm Up the Eyebrows",
+    "type": "PROGRAMMING",
+    "tags": [
+      "combinatorics",
+      "dp",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2275,
+    "index": "G",
+    "name": "Copper Squander",
+    "type": "PROGRAMMING",
+    "tags": [
+      "binary search",
+      "data structures",
+      "dsu",
+      "graphs",
+      "greedy",
+      "ternary search"
+    ]
+  },
+  {
+    "contestId": 2275,
+    "index": "F",
+    "name": "Tea Blend",
+    "type": "PROGRAMMING",
+    "tags": [
+      "hashing",
+      "math",
+      "number theory"
+    ]
+  },
+  {
+    "contestId": 2275,
+    "index": "E",
+    "name": "Repentance Is Already on the Way",
+    "type": "PROGRAMMING",
+    "tags": [
+      "dp",
+      "implementation"
+    ]
+  },
+  {
+    "contestId": 2275,
+    "index": "D",
+    "name": "Precision Alignment",
+    "type": "PROGRAMMING",
+    "tags": [
+      "binary search",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2275,
+    "index": "C",
+    "name": "Unrequited Love",
+    "type": "PROGRAMMING",
+    "tags": [
+      "brute force",
+      "data structures"
+    ]
+  },
+  {
+    "contestId": 2275,
+    "index": "B",
+    "name": "Did Not Go to Print",
+    "type": "PROGRAMMING",
+    "tags": [
+      "data structures",
+      "implementation"
+    ]
+  },
+  {
+    "contestId": 2275,
+    "index": "A",
+    "name": "In Search of Convenience",
+    "type": "PROGRAMMING",
+    "tags": [
+      "geometry",
+      "implementation"
+    ]
+  },
+  {
     "contestId": 2269,
     "index": "B",
     "name": "KiaKio and Squared Numbers",

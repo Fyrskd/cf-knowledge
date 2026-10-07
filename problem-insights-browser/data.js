@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-07",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4313,
-    "source_total_problems": 4313,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4313,
-    "with_editorial_brief": 3954,
-    "with_solution_brief": 3956,
-    "missing_editorial_brief": 357,
+    "total_problems": 4320,
+    "source_total_problems": 4321,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4320,
+    "with_editorial_brief": 3953,
+    "with_solution_brief": 3955,
+    "missing_editorial_brief": 365,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3375,
+    "ai_override_count": 3374,
     "primary_topic_count": 13,
-    "contest_count": 674,
+    "contest_count": 675,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1416,
-    "动态规划与状态设计": 357,
-    "数据结构": 402,
+    "构造与贪心": 1419,
+    "动态规划与状态设计": 358,
+    "数据结构": 403,
     "图论与网络流": 292,
-    "数论与同余": 449,
+    "数论与同余": 450,
     "交互": 129,
     "组合计数与概率": 331,
-    "几何": 100,
+    "几何": 101,
     "树结构": 200,
     "字符串": 229,
     "基础实现与模拟": 259,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2944,
+    "ai_generated_with_editorial": 2943,
     "ai_generated_partial_editorial": 119,
-    "missing_editorial": 357,
+    "missing_editorial": 365,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -77,6 +77,216 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
+    {
+      "id": 2275,
+      "name": "Codeforces Round 1125 (Div. 3)",
+      "date": "2026-10-07",
+      "url": "https://codeforces.com/contest/2275",
+      "type": "Div. 3",
+      "problemCount": 8,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2275A",
+          "index": "A",
+          "slot": "A",
+          "title": "In Search of Convenience",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2275/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "geometry",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：In Search of Convenience；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2275B",
+          "index": "B",
+          "slot": "B",
+          "title": "Did Not Go to Print",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2275/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "data structures",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Did Not Go to Print；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2275C",
+          "index": "C",
+          "slot": "C",
+          "title": "Unrequited Love",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2275/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "组合计数与概率",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures"
+          ],
+          "statementBrief": "题面已抓取：Unrequited Love；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2275D",
+          "index": "D",
+          "slot": "D",
+          "title": "Precision Alignment",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2275/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "交互"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Precision Alignment；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2275E",
+          "index": "E",
+          "slot": "E",
+          "title": "Repentance Is Already on the Way",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2275/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "题面已抓取：Repentance Is Already on the Way；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2275F",
+          "index": "F",
+          "slot": "F",
+          "title": "Tea Blend",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2275/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "字符串",
+            "组合计数与概率",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "hashing",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Tea Blend；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2275G",
+          "index": "G",
+          "slot": "G",
+          "title": "Copper Squander",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2275/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数据结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "dsu",
+            "graphs",
+            "greedy",
+            "ternary search"
+          ],
+          "statementBrief": "题面已抓取：Copper Squander；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2275H",
+          "index": "H",
+          "slot": "H",
+          "title": "A Problem to Warm Up the Eyebrows",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2275/problem/H",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "数论与同余",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：A Problem to Warm Up the Eyebrows；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
     {
       "id": 2269,
       "name": "Codeforces Round 1124 (Div. 2)",
@@ -1111,7 +1321,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-09-12",
       "url": "https://codeforces.com/contest/2262",
       "type": "Div. 1",
-      "problemCount": 7,
+      "problemCount": 6,
       "maxRating": 3500,
       "problems": [
         {
@@ -1138,36 +1348,6 @@ window.CF_INSIGHTS_DATA = {
             "把所有不在任何坏区间中的数都加入 $B$ 是安全的：原本存在的合法集合本身不会落入坏区间，因此它包含在这个最大集合中，保证每个 $0,1,\\ldots,x-1$ 仍然出现，同时坏值 $x$ 不会出现。"
           ],
           "solutionBrief": "对每个 $k$，根据 $a_k$ 标记坏区间 $[ka_k,k(a_k+1)-1]$，用差分数组求所有坏区间的并集。遍历 $0$ 到 $n-1$，仅把未被标记的位置加入 $B$；由于输入保证存在合法集合，这个最大可行集合必然得到相同数组。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2262A2",
-          "index": "A2",
-          "slot": "A",
-          "title": "Floor of MEX (Hard Version)",
-          "rating": 1800,
-          "problemUrl": "https://codeforces.com/contest/2262/problem/A2",
-          "editorialUrl": "https://codeforces.com/blog/entry/156688",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "数据结构",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "dp",
-            "implementation",
-            "math"
-          ],
-          "statementBrief": "给定数组 $a_1,\u001ba_n$，它由某个集合 $A\\subseteq\\{0,\\ldots,n-1\\}$ 通过 $a_k=\\operatorname{mex}\\{\\lfloor y/k\\rfloor:y\\in A\\}$ 生成。要求统计所有集合 $B\\subseteq\\{0,\\ldots,n-1\\}$，使每个 $k$ 都满足相同的 $f(B,k)=a_k$，答案对 $10^9+7$ 取模。",
-          "transformedStatement": "题解将每个 $f(B,k)=a_k$ 的要求等价改写为若干 good 区间必须至少包含一个被选数、bad 区间必须完全不含被选数的问题；随后按数值加入元素，并用最后已满足的 good 区间描述状态。",
-          "keyObservations": [
-            "每个 $f(B,k)=a_k$ 的约束都可转化为若干区间条件：某些 good 区间内至少选一个数，某些 bad 区间内不能选数，从而把 MEX 条件变成集合覆盖与禁选约束。",
-            "若一个 good 区间完全包含另一个 good 区间，满足内部区间必然满足外部区间，因此可以删除外部区间；剩余区间的右端点互不相同，数量至多为 $n$。",
-            "将保留的 good 区间排序后，选择一个数会同时满足其中一段连续区间，因此只需在处理数值 $0$ 到 $n-1$ 时维护最后满足的区间位置。",
-            "bad 区间只限制候选数能否被选入，可用前缀和快速判断；再用前缀和加速 DP 转移，排序、区间处理和转移共同得到 $O(n\\log^2 n)$ 的总复杂度。"
-          ],
-          "solutionBrief": "先把数组条件转换成必须命中和禁止命中的区间约束，删除被其他 good 区间包含的冗余区间。按数值递推，状态记录最后满足的 good 区间，用前缀和排除 bad 区间并加速转移，统计所有合法集合。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },

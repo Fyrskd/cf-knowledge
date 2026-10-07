@@ -7333,7 +7333,7 @@
     "frozen": false,
     "durationSeconds": 7200,
     "startTimeSeconds": 1788878100,
-    "relativeTimeSeconds": 2501003,
+    "relativeTimeSeconds": 2536087,
     "date": "2026-09-08"
   },
   {
@@ -7344,7 +7344,7 @@
     "frozen": false,
     "durationSeconds": 10800,
     "startTimeSeconds": 1789223700,
-    "relativeTimeSeconds": 2155403,
+    "relativeTimeSeconds": 2190487,
     "date": "2026-09-12"
   },
   {
@@ -7355,7 +7355,7 @@
     "frozen": false,
     "durationSeconds": 10800,
     "startTimeSeconds": 1789223700,
-    "relativeTimeSeconds": 2155403,
+    "relativeTimeSeconds": 2190487,
     "date": "2026-09-12"
   },
   {
@@ -7366,7 +7366,7 @@
     "frozen": false,
     "durationSeconds": 7200,
     "startTimeSeconds": 1789319100,
-    "relativeTimeSeconds": 2060003,
+    "relativeTimeSeconds": 2095087,
     "date": "2026-09-13"
   },
   {
@@ -7377,7 +7377,7 @@
     "frozen": false,
     "durationSeconds": 9000,
     "startTimeSeconds": 1790001300,
-    "relativeTimeSeconds": 1377803,
+    "relativeTimeSeconds": 1412887,
     "date": "2026-09-21"
   },
   {
@@ -7388,7 +7388,7 @@
     "frozen": false,
     "durationSeconds": 8100,
     "startTimeSeconds": 1790346900,
-    "relativeTimeSeconds": 1032203,
+    "relativeTimeSeconds": 1067287,
     "date": "2026-09-25"
   },
   {
@@ -7399,7 +7399,7 @@
     "frozen": false,
     "durationSeconds": 9000,
     "startTimeSeconds": 1790433300,
-    "relativeTimeSeconds": 945803,
+    "relativeTimeSeconds": 980887,
     "date": "2026-09-26"
   },
   {
@@ -7410,7 +7410,18 @@
     "frozen": false,
     "durationSeconds": 9000,
     "startTimeSeconds": 1790433300,
-    "relativeTimeSeconds": 945803,
+    "relativeTimeSeconds": 980887,
     "date": "2026-09-26"
+  },
+  {
+    "id": 2275,
+    "name": "Codeforces Round 1125 (Div. 3)",
+    "type": "ICPC",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 9000,
+    "startTimeSeconds": 1791384300,
+    "relativeTimeSeconds": 29887,
+    "date": "2026-10-07"
   }
 ]
