@@ -1,5 +1,5 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-07",
+  "generatedAt": "2026-10-08",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4321,
@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 365,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3383,
+    "ai_override_count": 3381,
     "primary_topic_count": 13,
     "contest_count": 675,
     "rating_min": 800,
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1417,
+    "构造与贪心": 1418,
     "动态规划与状态设计": 358,
     "数据结构": 402,
-    "图论与网络流": 293,
+    "图论与网络流": 292,
     "数论与同余": 450,
     "交互": 129,
     "组合计数与概率": 332,
@@ -160,12 +160,17 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2275/problem/D",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "交互"
+          ],
           "originalTags": [
             "binary search",
-            "greedy"
+            "brute force",
+            "greedy",
+            "implementation"
           ],
-          "statementBrief": "有 $n$ 个实验室，每个实验室有按顺序区分的三个读数 $(a_i,b_i,c_i)$。每次可任选一个实验室，并按三种规定之一，将某个读数加上另外两个读数按指定顺序相减后的符号值；最多操作 $k$ 次，求操作后所有实验室读数和的最小值的最大可能值。",
+          "statementBrief": "题面已抓取：Precision Alignment；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -223,17 +228,23 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2275/problem/G",
           "editorialUrl": "",
-          "primaryTopic": "图论与网络流",
-          "secondaryTopics": [],
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "图论与网络流",
+            "数据结构",
+            "动态规划与状态设计"
+          ],
           "originalTags": [
             "binary search",
             "data structures",
             "dsu",
             "graphs",
             "greedy",
+            "math",
+            "sortings",
             "ternary search"
           ],
-          "statementBrief": "给定一张由建筑和双向电缆组成的图，可以先拆除任意一些电缆并按其价值回收铜材，再按每条 $x,2x,3x,\\ldots$ 的费用顺序新增任意建筑间的电缆。每种费用增量 $x$ 下，都要使最终网络连通，并求最大利润。",
+          "statementBrief": "题面已抓取：Copper Squander；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

@@ -21,6 +21,8 @@
       "dsu",
       "graphs",
       "greedy",
+      "math",
+      "sortings",
       "ternary search"
     ]
   },
@@ -52,7 +54,9 @@
     "type": "PROGRAMMING",
     "tags": [
       "binary search",
-      "greedy"
+      "brute force",
+      "greedy",
+      "implementation"
     ]
   },
   {

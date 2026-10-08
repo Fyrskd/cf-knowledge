@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-07",
+  "generated_at": "2026-10-08",
   "data_sources": [
     "records.json"
   ],
@@ -24,7 +24,7 @@
     "missing_editorial_brief": 365,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3383,
+    "ai_override_count": 3381,
     "primary_topic_count": 13
   },
   "records": [
@@ -178743,12 +178743,17 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "primary_topic": "构造与贪心",
-      "secondary_topics": [],
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "交互"
+      ],
       "original_tags": [
         "binary search",
-        "greedy"
+        "brute force",
+        "greedy",
+        "implementation"
       ],
-      "statement_brief": "有 $n$ 个实验室，每个实验室有按顺序区分的三个读数 $(a_i,b_i,c_i)$。每次可任选一个实验室，并按三种规定之一，将某个读数加上另外两个读数按指定顺序相减后的符号值；最多操作 $k$ 次，求操作后所有实验室读数和的最小值的最大可能值。",
+      "statement_brief": "题面已抓取：Precision Alignment；本地暂无可用题解正文。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -178756,18 +178761,9 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json",
-        "ai_override": {
-          "path": "ai-generated-insights.json",
-          "model": "gpt-6-luna",
-          "generated_at": "2026-10-07T23:23:15+00:00",
-          "quality_flags": [
-            "missing_editorial"
-          ]
-        }
+        "links_and_tags": "records.json"
       },
-      "manual_override": false,
-      "ai_override": true
+      "manual_override": false
     },
     {
       "ordinal": 4318,
@@ -178852,17 +178848,23 @@
       "problem_url": "https://codeforces.com/contest/2275/problem/G",
       "editorial_url": null,
       "editorial_quality": "missing_url",
-      "primary_topic": "图论与网络流",
-      "secondary_topics": [],
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "图论与网络流",
+        "数据结构",
+        "动态规划与状态设计"
+      ],
       "original_tags": [
         "binary search",
         "data structures",
         "dsu",
         "graphs",
         "greedy",
+        "math",
+        "sortings",
         "ternary search"
       ],
-      "statement_brief": "给定一张由建筑和双向电缆组成的图，可以先拆除任意一些电缆并按其价值回收铜材，再按每条 $x,2x,3x,\\ldots$ 的费用顺序新增任意建筑间的电缆。每种费用增量 $x$ 下，都要使最终网络连通，并求最大利润。",
+      "statement_brief": "题面已抓取：Copper Squander；本地暂无可用题解正文。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -178870,19 +178872,9 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json",
-        "ai_override": {
-          "path": "ai-generated-insights.json",
-          "model": "gpt-6-luna",
-          "generated_at": "2026-10-07T23:23:01+00:00",
-          "quality_flags": [
-            "missing_editorial",
-            "statement_inferred"
-          ]
-        }
+        "links_and_tags": "records.json"
       },
-      "manual_override": false,
-      "ai_override": true
+      "manual_override": false
     },
     {
       "ordinal": 4321,
