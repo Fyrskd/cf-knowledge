@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 365,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3381,
+    "ai_override_count": 3379,
     "primary_topic_count": 13,
     "contest_count": 675,
     "rating_min": 800,
@@ -186,12 +186,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2275/problem/E",
           "editorialUrl": "",
           "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "构造与贪心"
+          ],
           "originalTags": [
             "dp",
             "implementation"
           ],
-          "statementBrief": "两排各有 $n$ 栋建筑，建筑 $a_i$ 与 $b_i$ 相连，且 $a_i$ 还与相邻列的 $b_{i-1}$、$b_{i+1}$ 相连（下标合法时）。从 $a_1$ 出发，沿这些双向道路恰好访问全部 $2n$ 栋建筑各一次，终点不限；同公司建筑间道路长 $2$，不同公司间长 $1$，要求路线总长度最大值。",
+          "statementBrief": "题面已抓取：Repentance Is Already on the Way；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -207,13 +209,17 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2275/problem/F",
           "editorialUrl": "",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "字符串",
+            "组合计数与概率",
+            "动态规划与状态设计"
+          ],
           "originalTags": [
             "hashing",
             "math",
             "number theory"
           ],
-          "statementBrief": "给定 $n$ 个正整数强度。对每个有序对 $(i,j)$，把前 $j$ 包茶的强度相乘，再乘上第 $i$ 包的强度；若所得正整数的自然约数个数为奇数，则该对称为任性混合。要求统计这样的有序对数量。",
+          "statementBrief": "题面已抓取：Tea Blend；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
