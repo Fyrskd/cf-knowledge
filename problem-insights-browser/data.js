@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-08",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4321,
+    "total_problems": 4313,
     "source_total_problems": 4321,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4321,
+    "filtered_out_problems": 8,
+    "with_statement_brief": 4313,
     "with_editorial_brief": 3954,
     "with_solution_brief": 3956,
-    "missing_editorial_brief": 365,
+    "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3383,
+    "ai_override_count": 3375,
     "primary_topic_count": 13,
-    "contest_count": 675,
+    "contest_count": 674,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -47,21 +47,21 @@ window.CF_INSIGHTS_DATA = {
     "构造与贪心": 1416,
     "动态规划与状态设计": 357,
     "数据结构": 402,
-    "图论与网络流": 294,
-    "数论与同余": 450,
+    "图论与网络流": 292,
+    "数论与同余": 449,
     "交互": 129,
-    "组合计数与概率": 332,
-    "几何": 101,
+    "组合计数与概率": 331,
+    "几何": 100,
     "树结构": 200,
     "字符串": 229,
-    "基础实现与模拟": 262,
+    "基础实现与模拟": 259,
     "代数、矩阵与多项式": 28,
     "博弈": 121
   },
   "statusCounts": {
     "ai_generated_with_editorial": 2943,
     "ai_generated_partial_editorial": 120,
-    "missing_editorial": 365,
+    "missing_editorial": 357,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -77,200 +77,6 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
-    {
-      "id": 2275,
-      "name": "Codeforces Round 1125 (Div. 3)",
-      "date": "2026-10-07",
-      "url": "https://codeforces.com/contest/2275",
-      "type": "Div. 3",
-      "problemCount": 8,
-      "maxRating": null,
-      "problems": [
-        {
-          "key": "2275A",
-          "index": "A",
-          "slot": "A",
-          "title": "In Search of Convenience",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2275/problem/A",
-          "editorialUrl": "",
-          "primaryTopic": "几何",
-          "secondaryTopics": [],
-          "originalTags": [
-            "geometry",
-            "implementation"
-          ],
-          "statementBrief": "给定路由器的整数坐标 $(x_0,y_0)$ 和覆盖半径 $R$，需要把电脑桌放在整数坐标点上，并且该点到路由器的距离必须恰好为 $R$。输出任意一个满足条件的坐标。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2275B",
-          "index": "B",
-          "slot": "B",
-          "title": "Did Not Go to Print",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2275/problem/B",
-          "editorialUrl": "",
-          "primaryTopic": "基础实现与模拟",
-          "secondaryTopics": [
-            "数据结构"
-          ],
-          "originalTags": [
-            "data structures",
-            "implementation"
-          ],
-          "statementBrief": "有编号为 $1$ 到 $n$ 的文档，初始打印机内存为空，并按顺序执行 $n$ 条命令：命令 1 将当前文档放到内存顶端；命令 2 打印并移除顶端文档，若内存为空则打印当前文档；命令 3 直接打印当前文档。求所有最终没有被打印的文档编号。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2275C",
-          "index": "C",
-          "slot": "C",
-          "title": "Unrequited Love",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2275/problem/C",
-          "editorialUrl": "",
-          "primaryTopic": "基础实现与模拟",
-          "secondaryTopics": [],
-          "originalTags": [
-            "brute force",
-            "data structures"
-          ],
-          "statementBrief": "给定长度为 $n$ 的数组，每个三和弦由位置 $x,x+2,x+4$ 组成，其贡献为 $a_x+a_{x+2}-a_{x+4}$。要求选出两个起点不同且所用位置互不重叠的三和弦，并且两者贡献相等，统计这样的无序组合数。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2275D",
-          "index": "D",
-          "slot": "D",
-          "title": "Precision Alignment",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2275/problem/D",
-          "editorialUrl": "",
-          "primaryTopic": "基础实现与模拟",
-          "secondaryTopics": [],
-          "originalTags": [
-            "binary search",
-            "brute force",
-            "greedy",
-            "implementation"
-          ],
-          "statementBrief": "有 $n$ 个实验室，每个实验室有按顺序排列的三个读数 $(a_i,b_i,c_i)$。每次可选择一个实验室并执行三种调整之一：将某个读数加上另外两个读数按题面指定顺序作差后的符号值；总共至多操作 $k$ 次，求操作后所有实验室读数和的最小值最大能是多少。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2275E",
-          "index": "E",
-          "slot": "E",
-          "title": "Repentance Is Already on the Way",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2275/problem/E",
-          "editorialUrl": "",
-          "primaryTopic": "图论与网络流",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "dp",
-            "implementation"
-          ],
-          "statementBrief": "给定两排各有 $n$ 栋建筑，$a_i$ 与 $b_i$、$b_{i-1}$（若存在）、$b_{i+1}$（若存在）之间有双向道路。每次只能沿道路前往相邻建筑；同公司建筑之间的路长为 $2$，不同公司之间为 $1$，从 $a_1$ 出发且每栋楼恰好访问一次，可在任意建筑结束，求路线最大长度。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2275F",
-          "index": "F",
-          "slot": "F",
-          "title": "Tea Blend",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2275/problem/F",
-          "editorialUrl": "",
-          "primaryTopic": "数论与同余",
-          "secondaryTopics": [],
-          "originalTags": [
-            "hashing",
-            "math",
-            "number theory"
-          ],
-          "statementBrief": "给定正整数数组 $a$。对每个 $1\\le j\\le n$，先取数组前 $j$ 项，再额外取一份编号为 $i$ 的茶包，得到乘积 $a_i\\prod_{k=1}^{j}a_k$；统计所有 $1\\le i,j\\le n$ 中，使该乘积的正约数个数为奇数的配对数量。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2275G",
-          "index": "G",
-          "slot": "G",
-          "title": "Copper Squander",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2275/problem/G",
-          "editorialUrl": "",
-          "primaryTopic": "图论与网络流",
-          "secondaryTopics": [],
-          "originalTags": [
-            "binary search",
-            "data structures",
-            "dsu",
-            "graphs",
-            "greedy",
-            "math",
-            "sortings",
-            "ternary search"
-          ],
-          "statementBrief": "给定由 $n$ 栋建筑和若干双向电缆组成的网络，每条旧电缆含价值为 $d_i$ 的铜。重建时可先拆除任意旧电缆并回收其铜，再按新电缆安装次序支付 $x,2x,3x,$ 的费用，最后必须使网络连通；对每个给定的 $x$，求最大利润。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2275H",
-          "index": "H",
-          "slot": "H",
-          "title": "A Problem to Warm Up the Eyebrows",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2275/problem/H",
-          "editorialUrl": "",
-          "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [],
-          "originalTags": [
-            "combinatorics",
-            "dp",
-            "math"
-          ],
-          "statementBrief": "给定一个有 $n$ 行、$m$ 列的整数矩阵，对每个连续行列组成的子矩阵，设其元素和为 $S$、行数与列数之和为 $a+b$；若 $a+b$ 为偶数则计入 $S^2$，否则计入 $-S^2$。求所有子矩阵价格之和，并对 $10^9+7$ 取模。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        }
-      ]
-    },
     {
       "id": 2269,
       "name": "Codeforces Round 1124 (Div. 2)",
