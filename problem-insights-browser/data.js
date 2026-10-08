@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 365,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3379,
+    "ai_override_count": 3383,
     "primary_topic_count": 13,
     "contest_count": 675,
     "rating_min": 800,
@@ -44,17 +44,17 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1418,
-    "动态规划与状态设计": 358,
+    "构造与贪心": 1416,
+    "动态规划与状态设计": 357,
     "数据结构": 402,
-    "图论与网络流": 292,
+    "图论与网络流": 294,
     "数论与同余": 450,
     "交互": 129,
     "组合计数与概率": 332,
     "几何": 101,
     "树结构": 200,
     "字符串": 229,
-    "基础实现与模拟": 261,
+    "基础实现与模拟": 262,
     "代数、矩阵与多项式": 28,
     "博弈": 121
   },
@@ -159,18 +159,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2275/problem/D",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "交互"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "brute force",
             "greedy",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Precision Alignment；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 个实验室，每个实验室有按顺序排列的三个读数 $(a_i,b_i,c_i)$。每次可选择一个实验室并执行三种调整之一：将某个读数加上另外两个读数按题面指定顺序作差后的符号值；总共至多操作 $k$ 次，求操作后所有实验室读数和的最小值最大能是多少。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -185,15 +182,16 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2275/problem/E",
           "editorialUrl": "",
-          "primaryTopic": "动态规划与状态设计",
+          "primaryTopic": "图论与网络流",
           "secondaryTopics": [
-            "构造与贪心"
+            "动态规划与状态设计",
+            "基础实现与模拟"
           ],
           "originalTags": [
             "dp",
             "implementation"
           ],
-          "statementBrief": "题面已抓取：Repentance Is Already on the Way；本地暂无可用题解正文。",
+          "statementBrief": "给定两排各有 $n$ 栋建筑，$a_i$ 与 $b_i$、$b_{i-1}$（若存在）、$b_{i+1}$（若存在）之间有双向道路。每次只能沿道路前往相邻建筑；同公司建筑之间的路长为 $2$，不同公司之间为 $1$，从 $a_1$ 出发且每栋楼恰好访问一次，可在任意建筑结束，求路线最大长度。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -209,17 +207,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2275/problem/F",
           "editorialUrl": "",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "字符串",
-            "组合计数与概率",
-            "动态规划与状态设计"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "hashing",
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Tea Blend；本地暂无可用题解正文。",
+          "statementBrief": "给定正整数数组 $a$。对每个 $1\\le j\\le n$，先取数组前 $j$ 项，再额外取一份编号为 $i$ 的茶包，得到乘积 $a_i\\prod_{k=1}^{j}a_k$；统计所有 $1\\le i,j\\le n$ 中，使该乘积的正约数个数为奇数的配对数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -234,12 +228,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2275/problem/G",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "图论与网络流",
-            "数据结构",
-            "动态规划与状态设计"
-          ],
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "data structures",
@@ -250,7 +240,7 @@ window.CF_INSIGHTS_DATA = {
             "sortings",
             "ternary search"
           ],
-          "statementBrief": "题面已抓取：Copper Squander；本地暂无可用题解正文。",
+          "statementBrief": "给定由 $n$ 栋建筑和若干双向电缆组成的网络，每条旧电缆含价值为 $d_i$ 的铜。重建时可先拆除任意旧电缆并回收其铜，再按新电缆安装次序支付 $x,2x,3x,$ 的费用，最后必须使网络连通；对每个给定的 $x$，求最大利润。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
