@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-09",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4320,
+    "total_problems": 4321,
     "source_total_problems": 4321,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4320,
-    "with_editorial_brief": 3961,
-    "with_solution_brief": 3963,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4321,
+    "with_editorial_brief": 3962,
+    "with_solution_brief": 3964,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3382,
+    "ai_override_count": 3383,
     "primary_topic_count": 13,
     "contest_count": 675,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1417,
+    "构造与贪心": 1418,
     "动态规划与状态设计": 357,
     "数据结构": 404,
     "图论与网络流": 293,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2951,
+    "ai_generated_with_editorial": 2952,
     "ai_generated_partial_editorial": 119,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-07",
       "url": "https://codeforces.com/contest/2275",
       "type": "Div. 3",
-      "problemCount": 7,
+      "problemCount": 8,
       "maxRating": null,
       "problems": [
         {
@@ -191,6 +191,34 @@ window.CF_INSIGHTS_DATA = {
             "固定目标 $m$ 后，各实验室所需操作数可以独立求出并求和，所需总数随 $m$ 单调不减，因此可用预算判定目标是否可行并二分最大值。"
           ],
           "solutionBrief": "对每个实验室计算当前总和 $S$。若三项相等，提升总和不可行；若状态已可持续增加，达到 $m$ 需 $m-S$ 次；若 $a\\le b\\le c$ 且不全相等，则令 $e=\\min(b-a,c-b)+1$，所需次数为 $(m-S)+2e$。求和检查是否不超过 $k$，并二分最大可行的 $m$，同时受三项相等实验室的总和限制。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2275E",
+          "index": "E",
+          "slot": "E",
+          "title": "Repentance Is Already on the Way",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2275/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/157528",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "两排各有 $n$ 栋建筑，只有题面规定的同列或相邻列跨排道路可走；同公司建筑间的道路长 $2$ 公里，不同公司间长 $1$ 公里。司机从 $a_1$ 出发，必须恰好访问全部 $2n$ 栋建筑各一次，终点不限，要求路线的最大总长度。",
+          "transformedStatement": "将问题转为在所有从 $a_1$ 出发的合法哈密顿路线中，最大化同公司道路的数量，因为每条路线都走 $2n-1$ 条边。路线可由一个切换列 $k$ 唯一确定，故只需逐个评估这些候选路线，并利用相邻候选仅差一条边来增量计算长度。",
+          "keyObservations": [
+            "所有道路都连接两侧建筑，因此路线必定交替经过两侧，并恰好走过 $2n-1$ 条路；总长度等于 $2n-1$ 加上同公司道路的数量。",
+            "当路线按蛇形走到第 $k$ 列的 $a_k$ 时，若改走对角边到 $b_{k+1}$，$b_k$ 就只能成为路线端点，之后剩余部分被迫按固定顺序绕到末端再折返，因此所有合法路线由一个切换位置 $k$ 决定。",
+            "切换位置从 $k$ 移到 $k+1$ 时，路线只把边 $a_k-b_{k+1}$ 换成 $a_k-b_k$；因此可以从一个候选路线的长度出发，逐列常数时间更新并取最大值。"
+          ],
+          "solutionBrief": "道路长度可写成 $1+[x=y]$，其中 $x,y$ 是道路两端的公司编号。先计算切换位置为 $1$ 的路线长度，再依次将 $a_i-b_{i+1}$ 替换为 $a_i-b_i$，更新当前长度并取最大值；总时间复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },

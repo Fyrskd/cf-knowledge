@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 4320,
+    "total_problems": 4321,
     "source_total_problems": 4321,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4320,
-    "with_editorial_brief": 3961,
-    "with_solution_brief": 3963,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4321,
+    "with_editorial_brief": 3962,
+    "with_solution_brief": 3964,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3382,
+    "ai_override_count": 3383,
     "primary_topic_count": 13
   },
   "records": [
@@ -178775,6 +178775,47 @@
           "path": "ai-generated-insights.json",
           "model": "gpt-6-luna",
           "generated_at": "2026-10-08T23:38:31+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4318,
+      "problem_key": "2275E",
+      "contest_id": 2275,
+      "title": "Repentance Is Already on the Way",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2275/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/157528",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "dp",
+        "implementation"
+      ],
+      "statement_brief": "两排各有 $n$ 栋建筑，只有题面规定的同列或相邻列跨排道路可走；同公司建筑间的道路长 $2$ 公里，不同公司间长 $1$ 公里。司机从 $a_1$ 出发，必须恰好访问全部 $2n$ 栋建筑各一次，终点不限，要求路线的最大总长度。",
+      "transformed_statement": "将问题转为在所有从 $a_1$ 出发的合法哈密顿路线中，最大化同公司道路的数量，因为每条路线都走 $2n-1$ 条边。路线可由一个切换列 $k$ 唯一确定，故只需逐个评估这些候选路线，并利用相邻候选仅差一条边来增量计算长度。",
+      "key_observations": [
+        "所有道路都连接两侧建筑，因此路线必定交替经过两侧，并恰好走过 $2n-1$ 条路；总长度等于 $2n-1$ 加上同公司道路的数量。",
+        "当路线按蛇形走到第 $k$ 列的 $a_k$ 时，若改走对角边到 $b_{k+1}$，$b_k$ 就只能成为路线端点，之后剩余部分被迫按固定顺序绕到末端再折返，因此所有合法路线由一个切换位置 $k$ 决定。",
+        "切换位置从 $k$ 移到 $k+1$ 时，路线只把边 $a_k-b_{k+1}$ 换成 $a_k-b_k$；因此可以从一个候选路线的长度出发，逐列常数时间更新并取最大值。"
+      ],
+      "solution_brief": "道路长度可写成 $1+[x=y]$，其中 $x,y$ 是道路两端的公司编号。先计算切换位置为 $1$ 的路线长度，再依次将 $a_i-b_{i+1}$ 替换为 $a_i-b_i$，更新当前长度并取最大值；总时间复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-09T23:07:12+00:00",
           "quality_flags": []
         }
       },
