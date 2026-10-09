@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-09",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4321,
+    "total_problems": 4320,
     "source_total_problems": 4321,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4321,
-    "with_editorial_brief": 3962,
-    "with_solution_brief": 3964,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4320,
+    "with_editorial_brief": 3961,
+    "with_solution_brief": 3963,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3383,
+    "ai_override_count": 3382,
     "primary_topic_count": 13,
     "contest_count": 675,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1418,
+    "构造与贪心": 1417,
     "动态规划与状态设计": 357,
     "数据结构": 404,
     "图论与网络流": 293,
@@ -60,7 +60,7 @@ window.CF_INSIGHTS_DATA = {
   },
   "statusCounts": {
     "ai_generated_with_editorial": 2951,
-    "ai_generated_partial_editorial": 120,
+    "ai_generated_partial_editorial": 119,
     "missing_editorial": 357,
     "low_confidence": 1,
     "manual_override": 891,
@@ -67999,33 +67999,9 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-09-25",
       "url": "https://codeforces.com/contest/1882",
       "type": "Div. 2",
-      "problemCount": 6,
+      "problemCount": 5,
       "maxRating": 3100,
       "problems": [
-        {
-          "key": "1882A",
-          "index": "A",
-          "slot": "A",
-          "title": "Increasing Sequence",
-          "rating": 800,
-          "problemUrl": "https://codeforces.com/contest/1882/problem/A",
-          "editorialUrl": "https://codeforces.com/blog/entry/120792",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "greedy"
-          ],
-          "statementBrief": "给定整数序列 $a$，需要构造一个正的严格递增序列 $b$，其中每个位置的 $b_i$ 不能与对应的 $a_i$ 冲突。每一步都应尽量取当前允许的最小值，最后求所有合法序列中末项 $b_n$ 的最小值。",
-          "transformedStatement": "把问题视为逐位置选择最小合法值：当前 $b_i$ 至少比前一项大 $1$，若这个候选恰好等于 $a_i$，就再增加 $1$；因此无需回溯，末项由局部最小选择唯一确定。",
-          "keyObservations": [
-            "每个 $b_i$ 只需在保持严格递增的前提下避开对应的 $a_i$；因此当前值越小，后续构造的下界也越小。",
-            "首项从 $1$ 开始时，若 $a_1=1$ 必须改取 $2$，否则取 $1$，这是最小的合法起点。",
-            "对 $i\\ge2$，若 $a_i=b_{i-1}+1$，最小递增候选会冲突，必须跳到 $b_{i-1}+2$；否则直接取 $b_{i-1}+1$，逐步得到最小的 $b_n$。"
-          ],
-          "solutionBrief": "从左到右构造最小的严格递增序列 $b$：首项在 $1$ 与 $2$ 中避开 $a_1$；之后优先取 $b_{i-1}+1$，若它等于 $a_i$ 就取 $b_{i-1}+2$。最终输出 $b_n$，每组复杂度为 $O(n)$。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
-        },
         {
           "key": "1882B",
           "index": "B",
