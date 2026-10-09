@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 4321,
+    "total_problems": 4320,
     "source_total_problems": 4321,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4321,
-    "with_editorial_brief": 3962,
-    "with_solution_brief": 3964,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4320,
+    "with_editorial_brief": 3961,
+    "with_solution_brief": 3963,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3383,
+    "ai_override_count": 3382,
     "primary_topic_count": 13
   },
   "records": [
@@ -178775,47 +178775,6 @@
           "path": "ai-generated-insights.json",
           "model": "gpt-6-luna",
           "generated_at": "2026-10-08T23:38:31+00:00",
-          "quality_flags": []
-        }
-      },
-      "manual_override": false,
-      "ai_override": true
-    },
-    {
-      "ordinal": 4318,
-      "problem_key": "2275E",
-      "contest_id": 2275,
-      "title": "Repentance Is Already on the Way",
-      "rating": null,
-      "problem_url": "https://codeforces.com/contest/2275/problem/E",
-      "editorial_url": "https://codeforces.com/blog/entry/157528",
-      "editorial_quality": "complete",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "图论与网络流",
-        "动态规划与状态设计"
-      ],
-      "original_tags": [
-        "dp",
-        "implementation"
-      ],
-      "statement_brief": "两排各有 $n$ 栋楼，只有题目指定的同列或相邻列跨排道路可走；同公司楼之间的道路长 $2$ 公里，不同公司之间长 $1$ 公里。路线从 $a_1$ 出发，必须恰好访问全部 $2n$ 栋楼各一次，终点不限，要求最大化路线总长度。",
-      "transformed_statement": "把路线长度表示为固定的 $2n-1$ 加上路线中同公司道路的条数。所有合法路线可按唯一的转折列 $k$ 编号，问题转为在线性扫描中比较这 $n$ 种路线的长度。",
-      "key_observations": [
-        "道路只连接两侧楼房，因此访问路线必定在两侧间交替，并恰好经过 $2n-1$ 条路；每条路的长度可写成 $1+[x=y]$，所以只需最大化同公司道路的数量。",
-        "从左向右扫描时，若在第 $k$ 列选择斜向走到 $b_{k+1}$，会迫使 $b_k$ 成为路线端点，之后路线形状完全确定；因此所有合法路线仅由转折列 $k$ 决定，共有 $n$ 种。",
-        "转折列从 $k$ 移到 $k+1$ 时，路线只把道路 $a_k-b_{k+1}$ 换成 $a_k-b_k$；故每种路线的长度都能由前一种用常数时间更新。"
-      ],
-      "solution_brief": "将道路长度拆成基础长度 $1$ 与同公司额外增加的 $1$。先计算转折列为 $1$ 时的路线长度，再依次将 $a_k-b_{k+1}$ 替换为 $a_k-b_k$ 更新长度并取最大值，总复杂度为 $O(n)$。",
-      "extraction_status": "ai_generated_with_editorial",
-      "source_provenance": {
-        "statement": "records.json:statement_text",
-        "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json",
-        "ai_override": {
-          "path": "ai-generated-insights.json",
-          "model": "gpt-6-luna",
-          "generated_at": "2026-10-08T23:38:20+00:00",
           "quality_flags": []
         }
       },
