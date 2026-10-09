@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-09",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4320,
+    "total_problems": 4321,
     "source_total_problems": 4321,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4320,
-    "with_editorial_brief": 3961,
-    "with_solution_brief": 3963,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4321,
+    "with_editorial_brief": 3962,
+    "with_solution_brief": 3964,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3382,
+    "ai_override_count": 3383,
     "primary_topic_count": 13,
     "contest_count": 675,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1417,
+    "构造与贪心": 1418,
     "动态规划与状态设计": 357,
     "数据结构": 404,
     "图论与网络流": 293,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 121
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2951,
+    "ai_generated_with_editorial": 2952,
     "ai_generated_partial_editorial": 119,
     "missing_editorial": 357,
     "low_confidence": 1,
@@ -67999,9 +67999,33 @@ window.CF_INSIGHTS_DATA = {
       "date": "2023-09-25",
       "url": "https://codeforces.com/contest/1882",
       "type": "Div. 2",
-      "problemCount": 5,
+      "problemCount": 6,
       "maxRating": 3100,
       "problems": [
+        {
+          "key": "1882A",
+          "index": "A",
+          "slot": "A",
+          "title": "Increasing Sequence",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1882/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/120792",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定整数序列 $a$，要构造正整数序列 $b$，使其严格递增且每个位置满足 $b_i\\ne a_i$。对每组数据，求所有符合条件的序列中末项 $b_n$ 的最小值。",
+          "transformedStatement": "将每个 $a_i$ 看作位置 $i$ 的一个禁用值：在前一项确定后，只需从严格递增要求给出的最小候选 $b_{i-1}+1$ 开始，若撞上禁值便跳过它，逐项得到最小可行前缀。",
+          "keyObservations": [
+            "为了让最终的 $b_n$ 最小，每一项都应取满足严格递增且避开当前位置禁值的最小正整数；更大的选择只会让后续下界增大。",
+            "给定上一项 $b_{i-1}$ 后，下一项的最小候选是 $b_{i-1}+1$；只有它恰好等于 $a_i$ 时才需再加 $1$，因此每步只需检查一个候选值。",
+            "第一项同理取最小正整数 $1$，若 $a_1=1$ 则改取 $2$；按此规则构造出的每个前缀都尽可能小，故最终项达到最小值。"
+          ],
+          "solutionBrief": "从 $b_1=1$ 开始，若它等于 $a_1$ 就改为 $2$。之后依次令 $b_i=b_{i-1}+1$，若该值等于 $a_i$ 则再加 $1$；最终输出 $b_n$，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "partial"
+        },
         {
           "key": "1882B",
           "index": "B",
