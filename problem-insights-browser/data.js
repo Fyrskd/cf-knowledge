@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-10",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4321,
-    "source_total_problems": 4321,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4321,
-    "with_editorial_brief": 3962,
-    "with_solution_brief": 3964,
+    "total_problems": 4316,
+    "source_total_problems": 4330,
+    "filtered_out_problems": 14,
+    "with_statement_brief": 4316,
+    "with_editorial_brief": 3957,
+    "with_solution_brief": 3959,
     "missing_editorial_brief": 357,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3383,
+    "ai_override_count": 3377,
     "primary_topic_count": 13,
-    "contest_count": 675,
+    "contest_count": 676,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,9 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1417,
+    "构造与贪心": 1412,
     "动态规划与状态设计": 357,
-    "数据结构": 404,
+    "数据结构": 403,
     "图论与网络流": 293,
     "数论与同余": 451,
     "交互": 129,
@@ -56,11 +56,11 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 229,
     "基础实现与模拟": 259,
     "代数、矩阵与多项式": 28,
-    "博弈": 121
+    "博弈": 122
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2955,
-    "ai_generated_partial_editorial": 116,
+    "ai_generated_with_editorial": 2954,
+    "ai_generated_partial_editorial": 112,
     "missing_editorial": 357,
     "low_confidence": 1,
     "manual_override": 891,
@@ -78,12 +78,48 @@ window.CF_INSIGHTS_DATA = {
   ],
   "contests": [
     {
+      "id": 2271,
+      "name": "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)",
+      "date": "2026-10-10",
+      "url": "https://codeforces.com/contest/2271",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 1,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2271H1",
+          "index": "H1",
+          "slot": "H",
+          "title": "Personal Issues (Easy Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/H1",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "games",
+            "trees"
+          ],
+          "statementBrief": "题面已抓取：Personal Issues (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
+        }
+      ]
+    },
+    {
       "id": 2275,
       "name": "Codeforces Round 1125 (Div. 3)",
       "date": "2026-10-07",
       "url": "https://codeforces.com/contest/2275",
       "type": "Div. 3",
-      "problemCount": 8,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
         {
@@ -136,31 +172,6 @@ window.CF_INSIGHTS_DATA = {
             "命令 2 遇到空内存时会直接打印当前编号的文件，因此必须把它和从栈中取出文件的情况分别标记。"
           ],
           "solutionBrief": "从左到右模拟命令：命令 1 将当前编号压入栈，命令 2 弹出并标记栈顶文件，若栈空则标记当前文件，命令 3 直接标记当前文件。最后按编号输出未标记的文件，时间复杂度为 $O(n)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2275C",
-          "index": "C",
-          "slot": "C",
-          "title": "Unrequited Love",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2275/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/157528",
-          "primaryTopic": "数据结构",
-          "secondaryTopics": [],
-          "originalTags": [
-            "brute force",
-            "data structures"
-          ],
-          "statementBrief": "有 $n$ 个琴键，第 $x$ 个三和弦同时按下 $x,x+2,x+4$ 三个键，获得的音乐彩值为 $a_x+a_{x+2}-a_{x+4}$。每个琴键最多按一次，要求选择两个不共享琴键且音乐彩值相同的不同三和弦，求选择方案数。",
-          "transformedStatement": "把每个合法起点 $x$ 映射为数值 $f(x)=a_x+a_{x+2}-a_{x+4}$，统计所有 $f(x)=f(y)$ 的起点对，再排除起点距离为 $2$ 或 $4$ 的相交对；由于按起点递增处理，历史同值数量可在线累计。",
-          "keyObservations": [
-            "起点相差 $2$ 或 $4$ 时两个三和弦会共用琴键；其他不同起点的三和弦互不相交，因此只需排除这两种间距。",
-            "按起点从左向右处理时，当前三和弦的等值配对数就是此前出现过的相同音乐彩值数量，再单独扣除间距为 $2$ 或 $4$ 的冲突配对。",
-            "三和弦的音乐彩值可直接表示为 $f(x)=a_x+a_{x+2}-a_{x+4}$，于是问题转为统计数值相等且起点间距不为 $2$、$4$ 的无序位置对。"
-          ],
-          "solutionBrief": "逐个计算每个起点的三和弦音乐彩值，用映射统计此前各值出现次数并累加相等配对；若当前起点与此前起点相差 $2$ 或 $4$ 且值相同，则扣除该相交配对。时间复杂度为 $O(n\\log n)$，答案使用 64 位整数。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
@@ -48287,93 +48298,9 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-08-10",
       "url": "https://codeforces.com/contest/1998",
       "type": "Div. 2",
-      "problemCount": 6,
-      "maxRating": 2500,
+      "problemCount": 1,
+      "maxRating": 2100,
       "problems": [
-        {
-          "key": "1998A",
-          "index": "A",
-          "slot": "A",
-          "title": "Find K Distinct Points with Fixed Center",
-          "rating": 800,
-          "problemUrl": "https://codeforces.com/contest/1998/problem/A",
-          "editorialUrl": "https://codeforces.com/blog/entry/132512",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟",
-            "代数、矩阵与多项式"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "implementation",
-            "math"
-          ],
-          "statementBrief": "给定目标中心 $(x_c,y_c)$ 和数量 $k$，要求输出 $k$ 个坐标为整数且两两不同的平面点，使所有点坐标的平均值恰好为该中心；点坐标还必须处于指定范围内，任意合法方案均可。",
-          "transformedStatement": "由平均值条件改写为坐标总和条件：横坐标总和为 $k x_c$、纵坐标总和为 $k y_c$。题解进一步固定一个点为 $(k x_c,k y_c)$，把剩余构造转成横纵坐标分别零和的问题。",
-          "keyObservations": [
-            "中心条件等价于所有点的横坐标和为 $k x_c$、纵坐标和为 $k y_c$，因此只需控制两维坐标的总和。",
-            "将一个点取为 $(k x_c,k y_c)$ 后，其余点只需满足横纵坐标和都为 $0$，问题被转化为构造零和的互异整数点。",
-            "题解未说明如何具体构造其余点并保证它们与首点互异，因此构造细节和完整正确性依据不足。"
-          ],
-          "solutionBrief": "题解给出的核心做法是先取点 $(k x_c,k y_c)$，再构造若干个横纵坐标总和均为 $0$ 的互异点；但本地题解正文不足，未提供后续点的具体构造及去重保证。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
-        },
-        {
-          "key": "1998B",
-          "index": "B",
-          "slot": "B",
-          "title": "Minimize Equal Sum Subarrays",
-          "rating": 1000,
-          "problemUrl": "https://codeforces.com/contest/1998/problem/B",
-          "editorialUrl": "https://codeforces.com/blog/entry/132512",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数论与同余",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "math",
-            "number theory"
-          ],
-          "statementBrief": "给定一个长度为 $n$ 的排列 $p$，需要构造另一个排列 $q$。统计所有连续区间 $[i,j]$ 中两排列区间和相等的数量，并使这个数量最小。",
-          "transformedStatement": "把 $q$ 建模为 $p$ 的左循环移位：每个位置取原排列的下一个元素，末位取首元素。利用排列元素互不相同，排除所有非完整区间的等和情况，只保留总和必相等的完整区间。",
-          "keyObservations": [
-            "两种排列的所有元素总和必然相同，因此整个数组对应的区间一定计入，答案不可能小于 $1$。",
-            "将 $p$ 左循环移位得到 $q$：若比较的是非整段区间，两个区间和相等会在消去公共部分后推出两个位置的元素相等；由于 $p$ 是排列，这不可能发生。",
-            "循环移位后的 $q$ 仍是排列，且只有覆盖全部元素的区间满足等和，从而达到不可突破的下界 $1$。"
-          ],
-          "solutionBrief": "先观察答案至少为 $1$，因为两排列总和相同。令 $q_i=p_{i+1}$，并令 $q_n=p_1$，即将 $p$ 左循环移位；除整段数组外，其余等和区间都会推出排列中两个不同位置元素相等，因此计数恰为 $1$。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
-        },
-        {
-          "key": "1998C",
-          "index": "C",
-          "slot": "C",
-          "title": "Perform Operations to Maximize Score",
-          "rating": 1900,
-          "problemUrl": "https://codeforces.com/contest/1998/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/132512",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构"
-          ],
-          "originalTags": [
-            "binary search",
-            "brute force",
-            "constructive algorithms",
-            "greedy",
-            "implementation"
-          ],
-          "statementBrief": "给定数组 $a$、可操作标记数组 $b$ 和最多 $k$ 次操作；每次选择 $b_i=1$ 的位置并将 $a_i$ 增加 $1$。最终得分是所有 $i$ 的 $a_i$ 加上删除该元素后数组的中位数中的最大值，求最多操作后能达到的最大得分。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "partial"
-        },
         {
           "key": "1998D",
           "index": "D",
@@ -48400,68 +48327,6 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
-        },
-        {
-          "key": "1998E1",
-          "index": "E1",
-          "slot": "E",
-          "title": "Eliminating Balls With Merging (Easy Version)",
-          "rating": 2200,
-          "problemUrl": "https://codeforces.com/contest/1998/problem/E1",
-          "editorialUrl": "https://codeforces.com/blog/entry/132512",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
-          "originalTags": [
-            "binary search",
-            "brute force",
-            "data structures",
-            "divide and conquer",
-            "greedy"
-          ],
-          "statementBrief": "有 $n$ 个按顺序排列、带初始权值的球。对当前保留集合中的相邻球进行合并：较大权值的球保留并加上另一球权值，较小者被删除；权值相等时可任选一个删除。题面在定义 $f(i)$ 的位置截断，因此无法从给定内容确定最后要求统计的具体对象。",
-          "transformedStatement": "把每个存活球视为原数组某个连续区间的总和；题解进一步定义区间状态 $solve(L,R)$，判断区间总和能否通过合法相邻合并集中到一个球，并通过向左右寻找满足和约束的最小边界进行状态跳转。",
-          "keyObservations": [
-            "任意时刻留下的每个球都对应原数组中的一个连续子数组，因此合并后的数值始终是该区间元素和，状态可以用区间端点表示。",
-            "定义 $solve(L,R)$ 判断区间 $[L,R]$ 的总和能否通过合法合并，最终形成一个权值为该区间和的元素，从而把原过程转化为区间可达性判断。",
-            "固定当前区间 $[L,R]$ 后，向左寻找满足左侧连续区间和不超过当前区间和的最小起点，并直接跳到该新区间；这种贪心跳跃减少了逐次模拟合并的分支。",
-            "向右侧进行对称的贪心跳跃，并记忆化所有 $solve(L,R)$ 的结果，避免相同区间被重复判定。"
-          ],
-          "solutionBrief": "题解将合并过程抽象为连续区间和，并用 $solve(L,R)$ 判断区间能否合并成一个元素。固定区间后，利用两侧连续区间和的单调性贪心跳到最小可行边界，再对状态进行记忆化；但给定题面在定义 $f(i)$ 的位置截断，最终统计目标无法完整确认。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
-        },
-        {
-          "key": "1998E2",
-          "index": "E2",
-          "slot": "E",
-          "title": "Eliminating Balls With Merging (Hard Version)",
-          "rating": 2500,
-          "problemUrl": "https://codeforces.com/contest/1998/problem/E2",
-          "editorialUrl": "https://codeforces.com/blog/entry/132512",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构"
-          ],
-          "originalTags": [
-            "binary search",
-            "brute force",
-            "data structures",
-            "divide and conquer",
-            "greedy",
-            "implementation"
-          ],
-          "statementBrief": "有 $n$ 个按顺序排列、带权值的球。对当前保留的球，可选择相邻的两个保留位置合并：较小值并入较大值，值相等时任选其一删除，合并值为两者之和；题面截断在 $f(i)$ 的定义处，无法确认最终要求统计哪些前缀或输出形式。",
-          "transformedStatement": "题解把过程改写为：对每个原位置 $j$，研究它能否在某个前缀的反复合并后作为最后保留的元素，并记录所有可行前缀长度的区间 $[L_j,R_j]$；其中 $L_j$ 是它首次能代表前缀和的最小边界，$R_j$ 由向右最远可达范围推出。",
-          "keyObservations": [
-            "对固定元素 $j$，它能够作为合并后的最后元素保留下来的前缀长度构成区间 $[L_j,R_j]$，因此可行性不必逐个前缀独立判断。",
-            "题解将原先返回布尔可行性的 Solve 改为返回最小起点 $L_j$，并把“元素 $j$ 成为最后元素”重述为它最终代表前缀和 $A_1+A_2+\\cdots+A_{L_j}$。",
-            "每个位置 $i$ 预先计算其向右可到达的最远范围，再结合 $L_j$ 推出 $R_j$，从而把每个元素的可行前缀集合压缩为两个端点。"
-          ],
-          "solutionBrief": "根据题解提示，为每个元素求其可作为最后元素的最小前缀端点 $L_j$，并预处理各位置向右的最远可达范围以得到 $R_j$；随后利用区间 $[L_j,R_j]$ 统计题目要求的 $f(i)$。但给定题解未说明具体 Solve 实现及最终统计细节。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
         }
       ]
     },

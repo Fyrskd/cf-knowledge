@@ -5,7 +5,7 @@
     "label": "Tutorial",
     "section_count": 0,
     "covered_problems": [],
-    "raw_sha256": "32564622a28688557d44148337006829660f7e9ddff38d1305205214d27df531"
+    "raw_sha256": "4c3fb75c3d975f43d10b21fc3864f880703a04f46c683441b735622952b19592"
   },
   {
     "url": "https://codeforces.com/blog/entry/86464",
@@ -274,7 +274,7 @@
       "1530G",
       "1530H"
     ],
-    "raw_sha256": "bd3145523698cc3a5657410c5ab123b74d905e7ebde1256813e86e3074d3d844"
+    "raw_sha256": "f8f883b1f03754d6e628a7c248319312aad9115ca73fe74bb98ba79dce823bf6"
   },
   {
     "url": "https://codeforces.com/blog/entry/93149",
@@ -2667,7 +2667,7 @@
       "1998E1",
       "1998E2"
     ],
-    "raw_sha256": "8eab324b9979e4b41e1d49994a7473a2c1606df3547700e1366f62d5b6bf6039"
+    "raw_sha256": "c9f79ffa3800cd908b81cfce64f857a5c11912b8f63f7dba2c9aad546d2210c0"
   },
   {
     "url": "https://codeforces.com/blog/entry/132569",
@@ -5301,5 +5301,27 @@
       "2263F"
     ],
     "raw_sha256": "4accdf5ef8742735532838593b2b0cda1861ff24c363f96a17fd61d21bd50491"
+  },
+  {
+    "url": "https://codeforces.com/blog/entry/157590",
+    "blog_entry_id": 157590,
+    "title": "Editorial of DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)",
+    "author": "employed",
+    "creation_time": "2026-10-10",
+    "original_locale": "en",
+    "source": "codeforces-blog",
+    "label": "contest editorial (contest-page)",
+    "section_count": 8,
+    "covered_problems": [
+      "2271A",
+      "2271B",
+      "2271C",
+      "2271D",
+      "2271E",
+      "2271F",
+      "2271G",
+      "2271H2"
+    ],
+    "raw_sha256": "ffddd1866fc6b94f1bcdfe3cf4c2e9376a9dd33bea4b1380f8149c5caae22941"
   }
 ]

@@ -90,6 +90,107 @@
     ]
   },
   {
+    "contestId": 2271,
+    "index": "H2",
+    "name": "Personal Issues (Hard Version)",
+    "type": "PROGRAMMING",
+    "points": 2000.0,
+    "tags": [
+      "games",
+      "trees"
+    ]
+  },
+  {
+    "contestId": 2271,
+    "index": "H1",
+    "name": "Personal Issues (Easy Version)",
+    "type": "PROGRAMMING",
+    "points": 3000.0,
+    "tags": [
+      "games",
+      "trees"
+    ]
+  },
+  {
+    "contestId": 2271,
+    "index": "G",
+    "name": "Grid Filling",
+    "type": "PROGRAMMING",
+    "points": 3500.0,
+    "tags": [
+      "constructive algorithms",
+      "greedy",
+      "implementation"
+    ]
+  },
+  {
+    "contestId": 2271,
+    "index": "F",
+    "name": "Beautiful Pillers",
+    "type": "PROGRAMMING",
+    "points": 2500.0,
+    "tags": [
+      "constructive algorithms",
+      "dp",
+      "greedy",
+      "implementation"
+    ]
+  },
+  {
+    "contestId": 2271,
+    "index": "E",
+    "name": "Array Emptying",
+    "type": "PROGRAMMING",
+    "points": 2250.0,
+    "tags": [
+      "binary search",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2271,
+    "index": "D",
+    "name": "Target Infection",
+    "type": "PROGRAMMING",
+    "points": 1750.0,
+    "tags": [
+      "binary search",
+      "brute force"
+    ]
+  },
+  {
+    "contestId": 2271,
+    "index": "C",
+    "name": "XOR Problem",
+    "type": "PROGRAMMING",
+    "points": 1250.0,
+    "tags": [
+      "constructive algorithms",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2271,
+    "index": "B",
+    "name": "MEX Game",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "tags": [
+      "games"
+    ]
+  },
+  {
+    "contestId": 2271,
+    "index": "A",
+    "name": "Robot Odd Moves",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "tags": [
+      "constructive algorithms",
+      "math"
+    ]
+  },
+  {
     "contestId": 2269,
     "index": "B",
     "name": "KiaKio and Squared Numbers",
