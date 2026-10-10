@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-10",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4316,
+    "total_problems": 4330,
     "source_total_problems": 4330,
-    "filtered_out_problems": 14,
-    "with_statement_brief": 4316,
-    "with_editorial_brief": 3957,
-    "with_solution_brief": 3959,
-    "missing_editorial_brief": 357,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4330,
+    "with_editorial_brief": 3970,
+    "with_solution_brief": 3972,
+    "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3377,
+    "ai_override_count": 3392,
     "primary_topic_count": 13,
     "contest_count": 676,
     "rating_min": 800,
@@ -44,9 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1412,
+    "构造与贪心": 1423,
     "动态规划与状态设计": 357,
-    "数据结构": 403,
+    "数据结构": 404,
     "图论与网络流": 293,
     "数论与同余": 451,
     "交互": 129,
@@ -56,12 +56,12 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 229,
     "基础实现与模拟": 259,
     "代数、矩阵与多项式": 28,
-    "博弈": 122
+    "博弈": 124
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2954,
-    "ai_generated_partial_editorial": 112,
-    "missing_editorial": 357,
+    "ai_generated_with_editorial": 2962,
+    "ai_generated_partial_editorial": 117,
+    "missing_editorial": 358,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -83,9 +83,209 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-10",
       "url": "https://codeforces.com/contest/2271",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 1,
+      "problemCount": 9,
       "maxRating": null,
       "problems": [
+        {
+          "key": "2271A",
+          "index": "A",
+          "slot": "A",
+          "title": "Robot Odd Moves",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "机器人从 $(0,0)$ 出发，每次先上下移动一格，再向右移动一格；它也会访问每次操作中两步之间经过的点。对给定整数点 $(a,b)$，求机器人首次访问它所需的最少操作数，无法访问则输出 $-1$。",
+          "transformedStatement": "把操作次数视为横坐标：完成 $a$ 次操作必在第 $a$ 列，目标可在第 $a$ 次操作结束时或第 $a+1$ 次操作的竖直阶段被访问。于是只需判断 $b$ 是否超过 $a+1$，以及 $a,b$ 的奇偶性是否一致。",
+          "keyObservations": [
+            "完成 $z$ 次操作后横坐标必为 $z$，因此目标点若在操作结束后到达，操作次数被固定为 $a$；若在下一次操作的竖直移动中访问，则最多需要 $a+1$ 次。",
+            "每次操作结束时横纵坐标同奇偶，且前 $z$ 次操作最多完成 $z$ 次竖直移动，因此在第 $a$ 列访问的纵坐标不能超过 $a+1$。",
+            "当 $0\\le b\\le a$ 且 $a,b$ 同奇偶时，可先向上到达所需高度，再交替上下移动，恰好在 $a$ 次操作后到达 $(a,b)$。",
+            "当 $a,b$ 奇偶性不同且 $b\\le a+1$ 时，先在 $a$ 次操作后到达 $(a,b-1)$，再利用下一次操作的竖直阶段访问 $(a,b)$；若 $b>a+1$ 则不可能。"
+          ],
+          "solutionBrief": "答案按三种情况判定：若 $b>a+1$ 输出 $-1$；否则若 $a,b$ 同奇偶输出 $a$；否则输出 $a+1$。每组数据均为 $O(1)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2271B",
+          "index": "B",
+          "slot": "B",
+          "title": "MEX Game",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [],
+          "originalTags": [
+            "games"
+          ],
+          "statementBrief": "给定偶数张标有非负整数的牌，Alice 与 Bob 轮流各取一张直到牌取完；双方各得一半牌。定义 $\u0000mex_k$ 为出现次数少于 $k$ 次的最小非负整数，若双方的该值不同则 Alice 获胜，否则 Bob 获胜；判断最优策略下谁能获胜。",
+          "transformedStatement": "把分牌过程抽象为各数值在双方手中的出现次数。令 $x$ 为最小的 $cnt[x]<2k$ 的数：此前数值必被双方各拿至少 $k$ 张，而 $x$ 的总数决定双方能否同时跨过阈值 $k$。",
+          "keyObservations": [
+            "按数值从小到大找第一个满足 $cnt[x]<2k$ 的数；在它之前每个数都至少出现 $2k$ 次，因此无论如何分牌，双方都各得到至少 $k$ 张。",
+            "若首个不足 $2k$ 次的数恰好出现 $2k-1$ 次，则双方不可能对该数都拿到至少 $k$ 张，也不可能都少于 $k$ 张，因此双方的 $\u0000mex_k$ 不可能相同，Alice 必胜。",
+            "若该数出现次数至多为 $2k-2$，Bob 可将同值牌尽量配对并在 Alice 取牌后取其配对牌，使双方对每个数得到的牌数至多相差 $1$，从而该数及此前数的计数共同确定双方 $\u0000mex_k$ 相同。",
+            "因此只需统计频次并检查第一个 $cnt[x]<2k$ 的位置；其频次为 $2k-1$ 时输出 YES，否则输出 NO。"
+          ],
+          "solutionBrief": "统计每个数的出现次数，找到首个 $cnt[x]<2k$ 的 $x$。若 $cnt[x]=2k-1$，Alice 无论如何都能获胜；否则 Bob 可通过配对同值牌保证双方的 $\u0000mex_k$ 相同。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2271C",
+          "index": "C",
+          "slot": "C",
+          "title": "XOR Problem",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定上界 $n$，构造一个元素均在 $[0,n]$ 的数组。数组 beauty 定义为长度减去异或和为 $0$ 的非空连续子数组数量；要求先最大化 beauty，再在达到最大值的数组中最大化长度，任意输出一个即可。",
+          "transformedStatement": "把数组改写为前缀异或序列：相等的两个前缀值对应一个零异或子数组。问题转化为在相邻前缀异或不超过 $n$ 的条件下，控制各前缀值出现次数，使首次出现尽量多、重复次数尽量少，并在最优 beauty 下延长序列。",
+          "keyObservations": [
+            "用前缀异或 $p_i$ 表示数组状态，子数组异或为 $0$ 等价于两个端点前缀值相同，从而可按前缀值出现次数统计 $f(a)$。",
+            "某个前缀值首次出现时 beauty 增加 $1$，第二次出现时新增一个零异或子数组、beauty 不变，第三次及以后出现会使 beauty 下降。",
+            "令 $x$ 为不超过 $n$ 的最大二次幂，则所有前缀异或只可能属于 $[0,2x-1]$，因此 beauty 至多为 $2x-1$；要在达到上界时取得最长数组，应让每个前缀值恰好出现两次。",
+            "按 $0,1,\u001b[0m\\ldots,x-1,x-1,\\ldots,0,x,\\ldots,2x-1,2x-1,\\ldots,x$ 构造前缀异或，相邻值异或均不超过 $n$，且每个值出现两次，正好达到上界并得到最长长度。"
+          ],
+          "solutionBrief": "取不超过 $n$ 的最大二次幂 $x$，构造上述两段往返的前缀异或序列，再令 $a_i=p_{i-1}\\oplus p_i$。每个前缀值出现两次，数组长度为 $4x-1$，beauty 为 $2x-1$；按序生成即可。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2271D",
+          "index": "D",
+          "slot": "D",
+          "title": "Target Infection",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force"
+          ],
+          "statementBrief": "数轴上给出若干互不相邻的感染整数区间；$m$ 个人连续站在 $s,s+1,\\ldots,s+m-1$，站在感染位置的人数为 $f(s)$。请找一个整数起点 $s$ 使 $f(s)=k$，若不存在则输出 $-1$。",
+          "transformedStatement": "把问题视为在数轴上平移长度为 $m$ 的窗口，研究窗口覆盖感染区间的总长度；先在感染区间左端点中寻找最大覆盖值，再利用覆盖值相邻起点变化至多 $1$ 的离散连续性寻找目标值。",
+          "keyObservations": [
+            "将起点从 $s$ 移到 $s+1$ 只会移除 $s$、加入 $s+m$，所以 $|f(s+1)-f(s)|\\le 1$，这保证跨过阈值时一定能取到每个中间值。",
+            "任意起点都能不降低感染人数地移动到某个感染区间左端点：起点感染时向左移，起点未感染时向右移，因此最大值只需检查所有 $l_i$。",
+            "窗口与感染区间的交集长度可由区间总长度前缀和减去两端截去部分得到，从而直接计算任意 $f(s)$。",
+            "找到最大值位置 $pos$ 后，以 $f(pos)>k$ 和远处的 $f(10^{15}+1)=0\\le k$ 为边界；即使 $f$ 不单调，也能利用相邻位置变化至多 $1$ 的性质二分定位 $f(s)=k$。"
+          ],
+          "solutionBrief": "用区间长度前缀和计算任意窗口的感染人数，枚举各感染区间左端点取得最大值。若最大值不足 $k$ 则无解；否则在最大值位置与远端零值位置间维护一侧大于 $k$、一侧不超过 $k$，二分至相邻位置并输出后者。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2271E",
+          "index": "E",
+          "slot": "E",
+          "title": "Array Emptying",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "greedy"
+          ],
+          "statementBrief": "给定数组和初始整数 $k$。每次任选一个元素：若其值不超过 $k$ 就删除，否则将其替换为两个 $\\lceil x/2\\rceil$，随后令 $k$ 加一；求清空数组所需的最少操作次数。",
+          "transformedStatement": "先研究允许任意元素拆分的放宽问题，并固定拆分次数 $c$；将所有拆分移到删除前，再从最后一次删除逆序决定对当前最大元素进行删除还是拆分，从而判定 $c$ 是否可行。",
+          "keyObservations": [
+            "先放宽为任意元素都能拆分；固定拆分次数为 $c$ 时，元素最终需被删除 $n+c$ 次，因此总操作数必为 $n+2c$。",
+            "在放宽问题中，拆分可全部移到删除之前：交换相邻的“删除、拆分”不会破坏合法性，因为拆分无限制且 $k$ 只增加。",
+            "逆序处理删除时设当前末步阈值为 $S=k+n+2c-1$；若最大元素 $H>S$，只能拆分它，否则删除它，这一选择可由较大元素优先的交换论证保证最优。",
+            "逆序贪心实际只在 $H>S$ 时拆分，而此时原问题对应的 $k$ 不超过 $S$，所以放宽问题得到的拆分在原规则下也合法。"
+          ],
+          "solutionBrief": "二分拆分次数 $c$，用频次数组逆序模拟删除：维护最大剩余值 $H$ 与阈值 $S$，$H>S$ 就拆分，否则删除。最小可行 $c$ 后答案为 $n+2c$，单测复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2271F",
+          "index": "F",
+          "slot": "F",
+          "title": "Beautiful Pillers",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定数组，若两个相等端点之间没有不小于端点值的元素，则这对下标为好对，并覆盖其区间；数组美丽当且仅当每个位置都被至少一个好对覆盖。每次可把任意一个元素改成任意正整数，要求用最少操作使数组美丽，并输出操作。",
+          "transformedStatement": "将目标转为覆盖所有位置的好对区间判定：先用单调栈找出每个位置作为右端点时可形成的好对，再做区间覆盖检查；最优修改只需在三个最大值相关候选中寻找。",
+          "keyObservations": [
+            "把首尾都改为全局最大值后，首尾构成的好对覆盖整个数组，因此答案始终不超过 $2$。",
+            "若一次修改可行，则把修改位置限制为首端设为最大值、末端设为最大值，或把某个最大值改为 $1$；前两者覆盖对应一侧，后者可让好对跨过原最大值。",
+            "从左到右维护单调不增栈：弹出所有严格更小的值后，栈顶若与当前值相等，就得到一个好对，并用差分记录其覆盖区间。",
+            "所有区间覆盖数都为正即可判定美丽；因此先判定答案 $0$，再尝试上述三个一次修改，均失败时输出首尾改为最大值的两次操作。"
+          ],
+          "solutionBrief": "先用单调栈在线找出全部必要的好对并判定覆盖。若原数组不美丽，依次尝试首端或末端改为最大值、一个最大值改为 $1$；成功则答案为 $1$，否则将首尾都改为最大值，答案为 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2271G",
+          "index": "G",
+          "slot": "G",
+          "title": "Grid Filling",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个 $n\\times m$ 网格，以及贯穿全网格的水平、竖直切线；切线将网格分成若干矩形小块。需在每个单元格填正整数，使相邻单元格数字不同，且每个含 $x$ 个单元格的小块恰好包含 $1,2,\\ldots,x$ 各一次；输出任意填法或判定无解。",
+          "transformedStatement": "把问题视为为每个矩形小块选择一个排列，并协调相邻小块的边界数字。核心是先处理宽或高为 $1$ 的薄块，通过在足够长的薄块处改变排列方向来消除强制交替，再逐行补全其余区域。",
+          "keyObservations": [
+            "若同一行有两个 $1\\times1$ 小块，且它们之间全部是 $1\\times2$ 小块，则从两端的数字 $1$ 出发会强制交替排列，末端产生相邻的两个 $1$；列方向存在两个 $1\\times1$ 小块及全为 $2\\times1$ 的间隔时同理，因此这两类情况必不可能。",
+            "在两个 $1\\times1$ 小块之间选取第一个长度至少为 $3$ 的薄块作为转折点：转折点前各块降序、转折块排列为 $[y,1,2,\\ldots,y-1]$、之后各块升序，可同时满足块内取值完整和块间相邻不同。",
+            "先处理所有薄块并保持同一行中已填单元的边界值一致，再对已出现数字 $1$ 的行使用相同转折构造；这样水平冲突被消除，而竖直约束不会被破坏。",
+            "剩余未填行可独立处理：每个待填间隔的左右边界值相同，只需用升序、降序及必要的转折排列剩余数字，即可避免边界冲突。"
+          ],
+          "solutionBrief": "检查两类必败结构：同一行的两个 $1\\times1$ 小块之间全是 $1\\times2$ 小块，或列方向的对应情况。排除后先按转折点规则填薄块，再处理含已填 $1$ 的行，最后独立填完其余行。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "2271H1",
           "index": "H1",
@@ -96,20 +296,41 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/157590",
           "primaryTopic": "博弈",
           "secondaryTopics": [
-            "树结构",
-            "动态规划与状态设计",
-            "图论与网络流"
+            "树结构"
           ],
           "originalTags": [
             "games",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Personal Issues (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一棵树，两个指定顶点初始为 0，其余顶点为 1。Axial 先手，双方轮流把一个仍为 1 的顶点改为 0；若该顶点改动前恰有一个相邻零点，当前玩家得 1 分，否则不得分。所有顶点变为 0 后，求双方最优时 Axial 得分减去 Nife 得分的结果。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "2271H2",
+          "index": "H2",
+          "slot": "H",
+          "title": "Personal Issues (Hard Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/H2",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "games",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，初始只有不同的顶点 $x,y$ 为 $0$，其余顶点为 $1$。两名玩家轮流选择一个值为 $1$ 的顶点改为 $0$；若操作前它恰有一个归零邻居，操作者得 1 分，否则不得分。所有顶点归零后，求双方最优策略下的最终分差 $p-q$。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "complete"
         }
       ]
     },
@@ -119,7 +340,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-07",
       "url": "https://codeforces.com/contest/2275",
       "type": "Div. 3",
-      "problemCount": 7,
+      "problemCount": 8,
       "maxRating": null,
       "problems": [
         {
@@ -172,6 +393,32 @@ window.CF_INSIGHTS_DATA = {
             "命令 2 遇到空内存时会直接打印当前编号的文件，因此必须把它和从栈中取出文件的情况分别标记。"
           ],
           "solutionBrief": "从左到右模拟命令：命令 1 将当前编号压入栈，命令 2 弹出并标记栈顶文件，若栈空则标记当前文件，命令 3 直接标记当前文件。最后按编号输出未标记的文件，时间复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2275C",
+          "index": "C",
+          "slot": "C",
+          "title": "Unrequited Love",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2275/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/157528",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
+          "originalTags": [
+            "brute force",
+            "data structures"
+          ],
+          "statementBrief": "给定按顺序排列的 $n$ 个琴键及其爱意值。每次选择起点 $x$，可同时按下 $x,x+2,x+4$ 三个键，所得值为 $a_x+a_{x+2}-a_{x+4}$；要选出两个不共用琴键且所得值相同的不同三和弦，求无序选法数。",
+          "transformedStatement": "把每个合法起点映射为序列 $f(x)=a_x+a_{x+2}-a_{x+4}$，先统计该序列中相等值的起点对，再删除起点距离为 $2$ 或 $4$ 的配对，因为这正是三和弦相交的全部情形。",
+          "keyObservations": [
+            "令三和弦值为 $f(x)=a_x+a_{x+2}-a_{x+4}$，两个起点满足 $x<y$ 时仅在 $y-x\\\\in\\{2,4\\}$ 的情况下共用琴键，因此只需排除这两种距离。",
+            "先按值统计所有 $f(x)=f(y)$ 的起点对，再对每个新起点检查 $y-2$ 和 $y-4$，可直接扣除刚被计入但不合法的相交对。",
+            "从左到右处理起点时，已有相同三和弦值的数量恰好等于当前起点新增的等值配对数，因此无需枚举所有起点对。",
+            "答案规模可达约 $2\\cdot10^{10}$，计数变量必须使用 64 位整数。"
+          ],
+          "solutionBrief": "计算每个起点的三和弦值，用映射维护此前各值出现次数并累加等值对；若前两个或前四个起点的值相同，则分别扣除对应的相交三和弦对。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
@@ -48298,9 +48545,97 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-08-10",
       "url": "https://codeforces.com/contest/1998",
       "type": "Div. 2",
-      "problemCount": 1,
-      "maxRating": 2100,
+      "problemCount": 6,
+      "maxRating": 2500,
       "problems": [
+        {
+          "key": "1998A",
+          "index": "A",
+          "slot": "A",
+          "title": "Find K Distinct Points with Fixed Center",
+          "rating": 800,
+          "problemUrl": "https://codeforces.com/contest/1998/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/132512",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定中心坐标 $(x_c,y_c)$ 和整数 $k$，需要输出 $k$ 个两两不同的整数坐标点，且每个坐标在允许范围内。要求这些点的横纵坐标平均值分别等于 $(x_c,y_c)$，任意满足条件的构造均可。",
+          "transformedStatement": "把几何中心条件改写为坐标总和分别等于 $k x_c$ 和 $k y_c$；固定一个点为 $(k x_c,k y_c)$ 后，问题转为构造其余 $k-1$ 个互异点，使两维坐标和都为零。",
+          "keyObservations": [
+            "中心条件等价于所有点的横坐标和为 $k x_c$、纵坐标和为 $k y_c$，因此可把目标拆成控制总和的问题。",
+            "先选取点 $(k x_c,k y_c)$，其余 $k-1$ 个点只需让横坐标和、纵坐标和分别为 $0$，即可使整体中心回到 $(x_c,y_c)$。",
+            "剩余点还必须彼此不同且不能与首点重合；题解正文未说明满足这些限制的具体选点方式，因此实现细节无法从给定材料完整还原。"
+          ],
+          "solutionBrief": "利用中心定义转化为坐标总和约束：先输出 $(k x_c,k y_c)$，再构造 $k-1$ 个横纵坐标和均为 $0$ 的互异整数点。给定题解未提供避免重合及满足范围的具体构造，故只能保留这一核心方案。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1998B",
+          "index": "B",
+          "slot": "B",
+          "title": "Minimize Equal Sum Subarrays",
+          "rating": 1000,
+          "problemUrl": "https://codeforces.com/contest/1998/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/132512",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的排列 $p$，需要构造另一个排列 $q$。统计所有连续区间 $(i,j)$ 中两排列区间和相等的数量，并使这个数量最少。",
+          "transformedStatement": "将每个元素按数值循环后继映射：$1\\to2,2\\to3,\\ldots,n\\to1$。这样把区间和之差转化为“区间长度减去其中最大值出现次数乘以 $n$”，从而控制相等区间。",
+          "keyObservations": [
+            "两种排列的总和必然相等，因此整个区间 $(1,n)$ 至少计数一次，答案不可能为 $0$。",
+            "把每个值 $x$ 映射为 $x+1$，并把 $n$ 映射为 $1$；在任意区间中，$q$ 与 $p$ 的元素差之和为“区间长度减去 $n$ 乘以其中 $n$ 的个数”。",
+            "对于非空长度不超过 $n$ 的区间，上述差值只有在区间长度为 $n$ 且恰含一个 $n$ 时才为零，因此该构造仅让整个数组区间的和相等，达到下界。"
+          ],
+          "solutionBrief": "对每个位置独立构造 $q_i$：若 $p_i<n$ 则令 $q_i=p_i+1$，否则令 $q_i=1$。这是一个排列；其任意真子数组和都不同，只有整个数组必然相等，因此达到最小计数。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1998C",
+          "index": "C",
+          "slot": "C",
+          "title": "Perform Operations to Maximize Score",
+          "rating": 1900,
+          "problemUrl": "https://codeforces.com/contest/1998/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/132512",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定数组 $a$ 和只能在 $b_i=1$ 的位置执行的加一操作，最多执行 $k$ 次。对每个位置 $i$，删除 $a_i$ 后取剩余数组的中位数，并计算 $a_i$ 加该中位数；要求通过最优操作使这些值的最大值尽可能大。",
+          "transformedStatement": "把答案看成选择一个最终贡献位置 $i$，同时分配操作来提升该位置和删除它后的数组中位数。固定中位数阈值后，问题转化为判断剩余元素中是否有足够多的值能保持或通过合法加一操作达到该阈值。",
+          "keyObservations": [
+            "固定最终贡献位置 $i$ 后，目标可拆成提升 $a_i$ 本身与提升删除它后的数组中位数两部分，从而把全局最大值转化为枚举贡献位置并优化对应中位数。",
+            "判断某个中位数阈值是否可达时，只需比较剩余数组中已经超过阈值的元素数量，以及利用至多 $k$ 次合法加一操作后还能超过阈值的元素数量；这使中位数优化变成单调可行性判定。",
+            "中位数阈值具有单调性：若某个阈值可以达到，则更小的阈值也可以达到，因此可以对阈值进行二分，而不必直接枚举所有可能的中位数。"
+          ],
+          "solutionBrief": "对每个可能成为得分贡献者的位置，分别考虑把操作用于提升该位置或提升删除它后的数组中位数。中位数部分通过二分阈值，并统计已有及可用操作后能超过阈值的元素来判定可行性；题解还提示可用线段树加速相关计数，但正文未给出完整实现细节。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
         {
           "key": "1998D",
           "index": "D",
@@ -48327,6 +48662,69 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
+        },
+        {
+          "key": "1998E1",
+          "index": "E1",
+          "slot": "E",
+          "title": "Eliminating Balls With Merging (Easy Version)",
+          "rating": 2200,
+          "problemUrl": "https://codeforces.com/contest/1998/problem/E1",
+          "editorialUrl": "https://codeforces.com/blog/entry/132512",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "greedy"
+          ],
+          "statementBrief": "给定一排带有数值的球。对前缀中的当前元素集合，每次选择一个非末尾元素及其右侧相邻存活元素，将两者相加并删除较小者；数值相等时可任选一个删除。题面在定义 $f(i)$ 的位置截断，未提供最终要求。",
+          "transformedStatement": "题解将每个存活元素视为原数组某个连续区间的总和，把一次合并视为相邻区间的合并；核心变成判断区间 $[L,R]$ 能否通过按总和比较进行跳转，并从左右两端贪心扩展。",
+          "keyObservations": [
+            "任意时刻仍存在的元素都对应原数组中的一个连续子数组，因此合并过程可以用区间端点而不是逐个球表示。",
+            "将区间状态定义为 `solve(L,R)`，表示能否把区间 $[L,R]$ 的总和转化为题解所需的目标元素，从而把操作过程转成区间可达性判断。",
+            "固定左端点 $L$ 和当前右端点 $R$ 时，贪心寻找最小的 `nxtL`，使左侧区间 $[nxtL,L-1]$ 的和不超过当前区间和；满足后可直接跳到新的区间状态，避免逐次模拟合并。",
+            "右端点方向可以采用对称跳转，并对 `solve` 的区间状态记忆化，以复用重复子问题。"
+          ],
+          "solutionBrief": "题解把合并过程抽象为连续区间的和，并用 `solve(L,R)` 判断区间状态是否可达。对左右两侧分别贪心寻找可跳转的最小端点，再记忆化所有状态；但给定题解和题面均不完整，无法还原最终答案统计方式。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
+        },
+        {
+          "key": "1998E2",
+          "index": "E2",
+          "slot": "E",
+          "title": "Eliminating Balls With Merging (Hard Version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/1998/problem/E2",
+          "editorialUrl": "https://codeforces.com/blog/entry/132512",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "data structures",
+            "divide and conquer",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一排带正整数的球。对当前集合中相邻的两个球，较大的值吸收较小的值并保留两值之和，相等时可任选其一删除；对每个前缀，需要统计哪些位置的球可能成为最后剩下的球。原题面在目标条件处截断，以上目标依据题解提示推断。",
+          "transformedStatement": "把每个位置 $j$ 看作候选的最终剩余球，研究它能覆盖的前缀长度集合；题解指出该集合是连续区间 $[L_j,R_j]$，问题转化为求每个区间的左右端点并进行前缀统计。",
+          "keyObservations": [
+            "对每个位置 $j$，能够最终保留下来的前缀长度构成一个区间 $[L_j,R_j]$，因此无需逐种模拟合并顺序，只需确定两个边界。",
+            "最小边界 $L_j$ 可表述为：球 $j$ 能否通过合并成为包含 $A_1+\b+A_{L_j}$ 的最后球；将求可行性改为求最小 $L_j$，可以统一处理所有前缀。",
+            "先预处理每个位置向右最多能扩展到哪里，再结合已求出的 $L_j$ 推出 $R_j$，从而按区间统计各前缀中可作为最后剩余球的位置。"
+          ],
+          "solutionBrief": "题解把每个球能作为前缀最终剩余球的范围记为 $[L_j,R_j]$。通过 Solve 求出最小可行左边界，并预处理每个位置的最远右扩展范围以得到 $R_j$，再利用这些区间统计答案；但给定题解未提供完整实现与统计细节。",
+          "extractionStatus": "ai_generated_partial_editorial",
+          "editorialQuality": "partial"
         }
       ]
     },
