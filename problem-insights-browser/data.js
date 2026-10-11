@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-11",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4330,
-    "source_total_problems": 4330,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4330,
-    "with_editorial_brief": 3970,
-    "with_solution_brief": 3972,
-    "missing_editorial_brief": 358,
+    "total_problems": 4336,
+    "source_total_problems": 4338,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 4336,
+    "with_editorial_brief": 3968,
+    "with_solution_brief": 3970,
+    "missing_editorial_brief": 366,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3392,
+    "ai_override_count": 3390,
     "primary_topic_count": 13,
-    "contest_count": 676,
+    "contest_count": 678,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,14 +44,14 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1423,
+    "构造与贪心": 1425,
     "动态规划与状态设计": 357,
-    "数据结构": 404,
+    "数据结构": 405,
     "图论与网络流": 293,
     "数论与同余": 451,
-    "交互": 129,
+    "交互": 131,
     "组合计数与概率": 332,
-    "几何": 101,
+    "几何": 102,
     "树结构": 200,
     "字符串": 229,
     "基础实现与模拟": 259,
@@ -59,9 +59,9 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 124
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2962,
+    "ai_generated_with_editorial": 2960,
     "ai_generated_partial_editorial": 117,
-    "missing_editorial": 358,
+    "missing_editorial": 366,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -78,12 +78,235 @@ window.CF_INSIGHTS_DATA = {
   ],
   "contests": [
     {
+      "id": 2274,
+      "name": "Codeforces Round 1127 (Div. 2, Based on Mexican Olympiad in Informatics 2026)",
+      "date": "2026-10-11",
+      "url": "https://codeforces.com/contest/2274",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2274A",
+          "index": "A",
+          "slot": "A",
+          "title": "The Projections of Paco",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2274/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：The Projections of Paco；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2274B",
+          "index": "B",
+          "slot": "B",
+          "title": "Prefix",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2274/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "字符串"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Prefix；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
+      "id": 2273,
+      "name": "Codeforces Round 1127 (Div. 1, Based on Mexican Olympiad in Informatics 2026)",
+      "date": "2026-10-11",
+      "url": "https://codeforces.com/contest/2273",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2273A",
+          "index": "A",
+          "slot": "A",
+          "title": "Lavencia Oranges",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "博弈",
+            "几何"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "题面已抓取：Lavencia Oranges；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2273B",
+          "index": "B",
+          "slot": "B",
+          "title": "Robot Championship",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Robot Championship；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2273C",
+          "index": "C",
+          "slot": "C",
+          "title": "Matrix Puzzle",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "代数、矩阵与多项式",
+            "博弈",
+            "交互"
+          ],
+          "originalTags": [
+            "data structures",
+            "implementation",
+            "math",
+            "matrices"
+          ],
+          "statementBrief": "题面已抓取：Matrix Puzzle；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2273D",
+          "index": "D",
+          "slot": "D",
+          "title": "Aura Battle",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "构造与贪心",
+            "动态规划与状态设计",
+            "博弈"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Aura Battle；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2273E",
+          "index": "E",
+          "slot": "E",
+          "title": "Six-Seven Bags",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "树结构",
+            "博弈"
+          ],
+          "originalTags": [
+            "interactive"
+          ],
+          "statementBrief": "题面已抓取：Six-Seven Bags；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2273F",
+          "index": "F",
+          "slot": "F",
+          "title": "Pancho's Permutation",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "交互",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Pancho's Permutation；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
+    {
       "id": 2271,
       "name": "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)",
       "date": "2026-10-10",
       "url": "https://codeforces.com/contest/2271",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 9,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
         {
@@ -137,65 +360,6 @@ window.CF_INSIGHTS_DATA = {
             "因此只需统计频次并检查第一个 $cnt[x]<2k$ 的位置；其频次为 $2k-1$ 时输出 YES，否则输出 NO。"
           ],
           "solutionBrief": "统计每个数的出现次数，找到首个 $cnt[x]<2k$ 的 $x$。若 $cnt[x]=2k-1$，Alice 无论如何都能获胜；否则 Bob 可通过配对同值牌保证双方的 $\u0000mex_k$ 相同。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2271C",
-          "index": "C",
-          "slot": "C",
-          "title": "XOR Problem",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2271/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/157590",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数论与同余"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "greedy",
-            "math"
-          ],
-          "statementBrief": "给定整数 $n$，构造一个元素均在 $[0,n]$ 的数组。数组 beauty 定义为长度减去异或为 $0$ 的非空连续子数组数量；要求先最大化 beauty，再在达到最大值的数组中最大化长度，并输出任意满足条件的数组。",
-          "transformedStatement": "把数组改看成前缀异或序列：相同前缀值的一对位置对应一个零异或子数组。于是要让尽可能多的前缀值各出现两次，并在相邻前缀异或不超过 $n$ 的限制下构造最长序列。",
-          "keyObservations": [
-            "用前缀异或 $p_i$ 表示数组，零异或子数组恰好对应两个相等的前缀值，因此每次加入前缀值的贡献只取决于它此前出现次数。",
-            "某个前缀值第一次出现使 beauty 增加 $1$，第二次出现增加的零异或子数组抵消这次增益，第三次及以后会使 beauty 下降。",
-            "令 $x$ 为不超过 $n$ 的最大二次幂；所有元素不超过 $n<2x$，所以前缀异或只可能落在 $[0,2x-1]$，beauty 至多为 $2x-1$。",
-            "让 $0$ 到 $2x-1$ 的每个前缀值恰好出现两次，可得到 $4x-1$ 长数组且 beauty 为 $2x-1$；按两个区间分别正序、逆序访问时，相邻前缀异或不超过 $x\\le n$。"
-          ],
-          "solutionBrief": "取最大二次幂 $x\\le n$，构造前缀异或序列：$0..x-1$、$x-1..0$、$x..2x-1$、$2x-1..x$。输出相邻前缀的异或，数组长为 $4x-1$，达到最大 beauty 且长度最大。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2271D",
-          "index": "D",
-          "slot": "D",
-          "title": "Target Infection",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2271/problem/D",
-          "editorialUrl": "https://codeforces.com/blog/entry/157590",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "binary search",
-            "brute force",
-            "greedy",
-            "implementation"
-          ],
-          "statementBrief": "给定数轴上若干互不相邻的感染整数区间，以及连续站成一排的 $m$ 个人。选择第一人的整数位置 $s$，队伍占据 $[s,s+m-1]$；要求找出使感染人数恰好为 $k$ 的 $s$，不存在则输出 $-1$。",
-          "transformedStatement": "把问题视为长度固定为 $m$ 的滑动窗口在感染集合上移动，窗口覆盖感染点的数量为 $f(s)$。先在各感染区间左端寻找一个最大值窗口，再利用函数相邻点变化不超过 $1$，从高值窗口向右搜索穿过目标值 $k$ 的位置。",
-          "keyObservations": [
-            "将窗口起点从 $s$ 移到 $s+1$ 只会移除一个位置并加入一个位置，因此 $|f(s+1)-f(s)|\\le 1$；这保证跨过阈值 $k$ 时一定能遇到恰好等于 $k$ 的位置。",
-            "任意窗口若起点落在感染区间内部，可向左移动到该区间左端且答案不降；若起点未感染，可向右移动到下一个感染区间左端且答案不降，因此最大值只需检查所有 $l_i$。",
-            "找到最大值位置 $pos$ 后，若 $k< f(pos)$，而 $f(10^{15}+1)=0\\le k$，可维护一端函数值大于 $k$、另一端不大于 $k$ 的区间；即使 $f$ 不单调，区间缩至相邻位置时也能由单位变化性质得到答案。",
-            "用感染区间长度前缀和，并通过端点二分定位与窗口 $[s,s+m-1]$ 相交的首尾区间，即可在 $O(\\log n)$ 时间计算一次 $f(s)$。"
-          ],
-          "solutionBrief": "先计算每个区间左端作为起点时的感染人数，得到最大值位置。若最大值小于 $k$ 输出 $-1$；否则从该位置到 $10^{15}+1$ 维护一高一低的函数值边界并二分，利用相邻位置变化至多 $1$ 找到 $f(s)=k$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },

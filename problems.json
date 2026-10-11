@@ -90,6 +90,99 @@
     ]
   },
   {
+    "contestId": 2274,
+    "index": "B",
+    "name": "Prefix",
+    "type": "PROGRAMMING",
+    "points": 1250.0,
+    "tags": [
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2274,
+    "index": "A",
+    "name": "The Projections of Paco",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "tags": [
+      "implementation",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2273,
+    "index": "F",
+    "name": "Pancho's Permutation",
+    "type": "PROGRAMMING",
+    "points": 3500.0,
+    "tags": [
+      "constructive algorithms",
+      "dp",
+      "greedy",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2273,
+    "index": "E",
+    "name": "Six-Seven Bags",
+    "type": "PROGRAMMING",
+    "points": 2250.0,
+    "tags": [
+      "interactive"
+    ]
+  },
+  {
+    "contestId": 2273,
+    "index": "D",
+    "name": "Aura Battle",
+    "type": "PROGRAMMING",
+    "points": 2000.0,
+    "tags": [
+      "brute force",
+      "implementation",
+      "interactive",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2273,
+    "index": "C",
+    "name": "Matrix Puzzle",
+    "type": "PROGRAMMING",
+    "points": 1250.0,
+    "tags": [
+      "data structures",
+      "implementation",
+      "math",
+      "matrices"
+    ]
+  },
+  {
+    "contestId": 2273,
+    "index": "B",
+    "name": "Robot Championship",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "tags": [
+      "constructive algorithms",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2273,
+    "index": "A",
+    "name": "Lavencia Oranges",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "tags": [
+      "binary search",
+      "constructive algorithms",
+      "greedy"
+    ]
+  },
+  {
     "contestId": 2271,
     "index": "H2",
     "name": "Personal Issues (Hard Version)",
@@ -159,7 +252,8 @@
       "binary search",
       "brute force",
       "greedy",
-      "implementation"
+      "implementation",
+      "two pointers"
     ]
   },
   {
@@ -170,6 +264,7 @@
     "points": 1250.0,
     "tags": [
       "constructive algorithms",
+      "graphs",
       "greedy",
       "math"
     ]
