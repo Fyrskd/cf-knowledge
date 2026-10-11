@@ -107,6 +107,7 @@
     "type": "PROGRAMMING",
     "points": 3000.0,
     "tags": [
+      "dp",
       "games",
       "trees"
     ]
@@ -131,6 +132,7 @@
     "points": 2500.0,
     "tags": [
       "constructive algorithms",
+      "data structures",
       "dp",
       "greedy",
       "implementation"
@@ -155,7 +157,9 @@
     "points": 1750.0,
     "tags": [
       "binary search",
-      "brute force"
+      "brute force",
+      "greedy",
+      "implementation"
     ]
   },
   {
@@ -166,7 +170,8 @@
     "points": 1250.0,
     "tags": [
       "constructive algorithms",
-      "greedy"
+      "greedy",
+      "math"
     ]
   },
   {

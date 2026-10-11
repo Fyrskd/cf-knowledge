@@ -1,17 +1,17 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-10",
+  "generatedAt": "2026-10-11",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4330,
+    "total_problems": 4327,
     "source_total_problems": 4330,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4330,
-    "with_editorial_brief": 3970,
-    "with_solution_brief": 3972,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 4327,
+    "with_editorial_brief": 3967,
+    "with_solution_brief": 3969,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3392,
+    "ai_override_count": 3388,
     "primary_topic_count": 13,
     "contest_count": 676,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1423,
+    "构造与贪心": 1420,
     "动态规划与状态设计": 357,
     "数据结构": 404,
     "图论与网络流": 293,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 124
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2962,
+    "ai_generated_with_editorial": 2959,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-10",
       "url": "https://codeforces.com/contest/2271",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 9,
+      "problemCount": 6,
       "maxRating": null,
       "problems": [
         {
@@ -141,63 +141,6 @@ window.CF_INSIGHTS_DATA = {
           "editorialQuality": "complete"
         },
         {
-          "key": "2271C",
-          "index": "C",
-          "slot": "C",
-          "title": "XOR Problem",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2271/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/157590",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "greedy"
-          ],
-          "statementBrief": "给定上界 $n$，构造一个元素均在 $[0,n]$ 的数组。数组 beauty 定义为长度减去异或和为 $0$ 的非空连续子数组数量；要求先最大化 beauty，再在达到最大值的数组中最大化长度，任意输出一个即可。",
-          "transformedStatement": "把数组改写为前缀异或序列：相等的两个前缀值对应一个零异或子数组。问题转化为在相邻前缀异或不超过 $n$ 的条件下，控制各前缀值出现次数，使首次出现尽量多、重复次数尽量少，并在最优 beauty 下延长序列。",
-          "keyObservations": [
-            "用前缀异或 $p_i$ 表示数组状态，子数组异或为 $0$ 等价于两个端点前缀值相同，从而可按前缀值出现次数统计 $f(a)$。",
-            "某个前缀值首次出现时 beauty 增加 $1$，第二次出现时新增一个零异或子数组、beauty 不变，第三次及以后出现会使 beauty 下降。",
-            "令 $x$ 为不超过 $n$ 的最大二次幂，则所有前缀异或只可能属于 $[0,2x-1]$，因此 beauty 至多为 $2x-1$；要在达到上界时取得最长数组，应让每个前缀值恰好出现两次。",
-            "按 $0,1,\u001b[0m\\ldots,x-1,x-1,\\ldots,0,x,\\ldots,2x-1,2x-1,\\ldots,x$ 构造前缀异或，相邻值异或均不超过 $n$，且每个值出现两次，正好达到上界并得到最长长度。"
-          ],
-          "solutionBrief": "取不超过 $n$ 的最大二次幂 $x$，构造上述两段往返的前缀异或序列，再令 $a_i=p_{i-1}\\oplus p_i$。每个前缀值出现两次，数组长度为 $4x-1$，beauty 为 $2x-1$；按序生成即可。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2271D",
-          "index": "D",
-          "slot": "D",
-          "title": "Target Infection",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2271/problem/D",
-          "editorialUrl": "https://codeforces.com/blog/entry/157590",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟",
-            "数据结构"
-          ],
-          "originalTags": [
-            "binary search",
-            "brute force"
-          ],
-          "statementBrief": "数轴上给出若干互不相邻的感染整数区间；$m$ 个人连续站在 $s,s+1,\\ldots,s+m-1$，站在感染位置的人数为 $f(s)$。请找一个整数起点 $s$ 使 $f(s)=k$，若不存在则输出 $-1$。",
-          "transformedStatement": "把问题视为在数轴上平移长度为 $m$ 的窗口，研究窗口覆盖感染区间的总长度；先在感染区间左端点中寻找最大覆盖值，再利用覆盖值相邻起点变化至多 $1$ 的离散连续性寻找目标值。",
-          "keyObservations": [
-            "将起点从 $s$ 移到 $s+1$ 只会移除 $s$、加入 $s+m$，所以 $|f(s+1)-f(s)|\\le 1$，这保证跨过阈值时一定能取到每个中间值。",
-            "任意起点都能不降低感染人数地移动到某个感染区间左端点：起点感染时向左移，起点未感染时向右移，因此最大值只需检查所有 $l_i$。",
-            "窗口与感染区间的交集长度可由区间总长度前缀和减去两端截去部分得到，从而直接计算任意 $f(s)$。",
-            "找到最大值位置 $pos$ 后，以 $f(pos)>k$ 和远处的 $f(10^{15}+1)=0\\le k$ 为边界；即使 $f$ 不单调，也能利用相邻位置变化至多 $1$ 的性质二分定位 $f(s)=k$。"
-          ],
-          "solutionBrief": "用区间长度前缀和计算任意窗口的感染人数，枚举各感染区间左端点取得最大值。若最大值不足 $k$ 则无解；否则在最大值位置与远端零值位置间维护一侧大于 $k$、一侧不超过 $k$，二分至相邻位置并输出后者。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
           "key": "2271E",
           "index": "E",
           "slot": "E",
@@ -223,37 +166,6 @@ window.CF_INSIGHTS_DATA = {
             "逆序贪心实际只在 $H>S$ 时拆分，而此时原问题对应的 $k$ 不超过 $S$，所以放宽问题得到的拆分在原规则下也合法。"
           ],
           "solutionBrief": "二分拆分次数 $c$，用频次数组逆序模拟删除：维护最大剩余值 $H$ 与阈值 $S$，$H>S$ 就拆分，否则删除。最小可行 $c$ 后答案为 $n+2c$，单测复杂度为 $O(n\\log n)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2271F",
-          "index": "F",
-          "slot": "F",
-          "title": "Beautiful Pillers",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2271/problem/F",
-          "editorialUrl": "https://codeforces.com/blog/entry/157590",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "dp",
-            "greedy",
-            "implementation"
-          ],
-          "statementBrief": "给定数组，若两个相等端点之间没有不小于端点值的元素，则这对下标为好对，并覆盖其区间；数组美丽当且仅当每个位置都被至少一个好对覆盖。每次可把任意一个元素改成任意正整数，要求用最少操作使数组美丽，并输出操作。",
-          "transformedStatement": "将目标转为覆盖所有位置的好对区间判定：先用单调栈找出每个位置作为右端点时可形成的好对，再做区间覆盖检查；最优修改只需在三个最大值相关候选中寻找。",
-          "keyObservations": [
-            "把首尾都改为全局最大值后，首尾构成的好对覆盖整个数组，因此答案始终不超过 $2$。",
-            "若一次修改可行，则把修改位置限制为首端设为最大值、末端设为最大值，或把某个最大值改为 $1$；前两者覆盖对应一侧，后者可让好对跨过原最大值。",
-            "从左到右维护单调不增栈：弹出所有严格更小的值后，栈顶若与当前值相等，就得到一个好对，并用差分记录其覆盖区间。",
-            "所有区间覆盖数都为正即可判定美丽；因此先判定答案 $0$，再尝试上述三个一次修改，均失败时输出首尾改为最大值的两次操作。"
-          ],
-          "solutionBrief": "先用单调栈在线找出全部必要的好对并判定覆盖。若原数组不美丽，依次尝试首端或末端改为最大值、一个最大值改为 $1$；成功则答案为 $1$，否则将首尾都改为最大值，答案为 $2$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
@@ -296,13 +208,16 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "https://codeforces.com/blog/entry/157590",
           "primaryTopic": "博弈",
           "secondaryTopics": [
-            "树结构"
+            "动态规划与状态设计",
+            "树结构",
+            "图论与网络流"
           ],
           "originalTags": [
+            "dp",
             "games",
             "trees"
           ],
-          "statementBrief": "给定一棵树，两个指定顶点初始为 0，其余顶点为 1。Axial 先手，双方轮流把一个仍为 1 的顶点改为 0；若该顶点改动前恰有一个相邻零点，当前玩家得 1 分，否则不得分。所有顶点变为 0 后，求双方最优时 Axial 得分减去 Nife 得分的结果。",
+          "statementBrief": "题面已抓取：Personal Issues (Easy Version)；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
