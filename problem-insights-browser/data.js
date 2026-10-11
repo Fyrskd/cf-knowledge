@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-11",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4336,
+    "total_problems": 4338,
     "source_total_problems": 4338,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4336,
-    "with_editorial_brief": 3968,
-    "with_solution_brief": 3970,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4338,
+    "with_editorial_brief": 3970,
+    "with_solution_brief": 3972,
     "missing_editorial_brief": 366,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3390,
+    "ai_override_count": 3400,
     "primary_topic_count": 13,
     "contest_count": 678,
     "rating_min": 800,
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1425,
+    "构造与贪心": 1427,
     "动态规划与状态设计": 357,
     "数据结构": 405,
     "图论与网络流": 293,
     "数论与同余": 451,
     "交互": 131,
     "组合计数与概率": 332,
-    "几何": 102,
+    "几何": 101,
     "树结构": 200,
     "字符串": 229,
-    "基础实现与模拟": 259,
+    "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
     "博弈": 124
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2960,
+    "ai_generated_with_editorial": 2962,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 366,
     "low_confidence": 1,
@@ -94,16 +94,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2274/problem/A",
           "editorialUrl": "",
-          "primaryTopic": "几何",
+          "primaryTopic": "基础实现与模拟",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "构造与贪心"
+            "代数、矩阵与多项式"
           ],
           "originalTags": [
             "implementation",
             "math"
           ],
-          "statementBrief": "题面已抓取：The Projections of Paco；本地暂无可用题解正文。",
+          "statementBrief": "数轴上有一个从坐标 $0$ 出发的令牌。先选择整数 $p$，再按顺序将令牌依次关于坐标为 $p,a_1,a_2,\u0000dots,a_n$ 的点各反射一次，求使令牌最终回到坐标 $0$ 的 $p$；题目保证答案唯一。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -120,13 +119,12 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "字符串"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Prefix；本地暂无可用题解正文。",
+          "statementBrief": "给定数组，按从左到右处理每个 $i=2,\u0001ldots,n$：令 $s$ 为此前最终元素之和，并将 $a_i$ 替换为 $a_i-s$、$a_i$ 或 $a_i+s$ 之一。选择所有操作后，求最终数组中最大元素的最大可能值。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -153,17 +151,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2273/problem/A",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "博弈",
-            "几何"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "constructive algorithms",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：Lavencia Oranges；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n$ 个橙子和 $n$ 个袋子，将第 $i$ 个橙子放入编号为 $a_i$ 的袋子，其中 $1\\le a_i\\le n$。若某袋恰有 $s$ 个橙子，监管者可选择该数量并没收所有此类袋子；代价为所有 $s$ 中的最大值 $s\\cdot c_s$，要求构造数组使代价最小。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -180,13 +174,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "动态规划与状态设计"
+            "代数、矩阵与多项式"
           ],
           "originalTags": [
             "constructive algorithms",
             "math"
           ],
-          "statementBrief": "题面已抓取：Robot Championship；本地暂无可用题解正文。",
+          "statementBrief": "在一个 $n\\times n$ 棋盘上，机器人从任意格子出发且位置不可见。每秒先选择一条满足 $r+c=v$ 的对角线发射激光，随后机器人可合法地上移、右移或左下移；需要构造至多 $3n$ 条固定的对角线，使无论起点和移动方式如何都至少被命中一次。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -204,8 +198,7 @@ window.CF_INSIGHTS_DATA = {
           "primaryTopic": "数据结构",
           "secondaryTopics": [
             "代数、矩阵与多项式",
-            "博弈",
-            "交互"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "data structures",
@@ -213,7 +206,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "matrices"
           ],
-          "statementBrief": "题面已抓取：Matrix Puzzle；本地暂无可用题解正文。",
+          "statementBrief": "给定两个 $n\\times n$ 矩阵 $a,b$，更新操作可把一个矩形内所有元素同时加上常数。查询时可假设分别给该矩形的每行、每列加任意常数，判断能否将 $a$ 的子矩阵变成 $b$ 的对应子矩阵。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -230,9 +223,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "交互",
           "secondaryTopics": [
-            "构造与贪心",
-            "动态规划与状态设计",
-            "博弈"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "brute force",
@@ -240,7 +231,7 @@ window.CF_INSIGHTS_DATA = {
             "interactive",
             "math"
           ],
-          "statementBrief": "题面已抓取：Aura Battle；本地暂无可用题解正文。",
+          "statementBrief": "每场战斗有一个固定但未知的整数 $x\\in[1,10^4]$，共进行 10 轮。每轮选择两个整数 $a_i,b_i$，损失为 $\\min(|x-a_i|,|x-b_i|)$，并在下一轮前获得该损失；选择可依赖此前反馈。要求设计策略，使任意 $x$ 下十轮总损失不超过最小可保证值 $m$ 加 67（首个测试限制为 $10^5$）。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -256,15 +247,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2273/problem/E",
           "editorialUrl": "",
           "primaryTopic": "交互",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "树结构",
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "interactive"
           ],
-          "statementBrief": "题面已抓取：Six-Seven Bags；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 个袋子，第 $k$ 个袋子装有每枚重 6 克的硬币，其余袋子装有每枚重 7 克的硬币，且已知各袋硬币数量但未知 $k$。每次可从各袋选取任意不超过库存的硬币，读取总重量并将硬币放回，需在保证正确的查询次数内确定装有 6 克硬币的袋子；交互器可在不违背历史回答时调整隐藏袋。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -280,18 +267,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2273/problem/F",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "交互",
-            "数论与同余"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "dp",
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Pancho's Permutation；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为 $n$ 的部分排列，已知位置固定为指定数值，$-1$ 位置需要补入剩余数字。完整排列的每个非空非完整前缀都不能恰好由 $1$ 到其长度组成，每个非空非完整后缀也不能恰好由其下标到 $n$ 组成；要求输出满足条件的第 $k$ 个字典序排列，不足则输出 $-1$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -306,7 +289,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-10",
       "url": "https://codeforces.com/contest/2271",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 7,
+      "problemCount": 9,
       "maxRating": null,
       "problems": [
         {
@@ -360,6 +343,68 @@ window.CF_INSIGHTS_DATA = {
             "因此只需统计频次并检查第一个 $cnt[x]<2k$ 的位置；其频次为 $2k-1$ 时输出 YES，否则输出 NO。"
           ],
           "solutionBrief": "统计每个数的出现次数，找到首个 $cnt[x]<2k$ 的 $x$。若 $cnt[x]=2k-1$，Alice 无论如何都能获胜；否则 Bob 可通过配对同值牌保证双方的 $\u0000mex_k$ 相同。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2271C",
+          "index": "C",
+          "slot": "C",
+          "title": "XOR Problem",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定整数 $n$，构造一个元素均在 $0$ 到 $n$ 的数组。数组美丽度定义为长度减去异或和为零的非空连续子数组数量；要求先最大化美丽度，再在达到最大值的数组中最大化长度。",
+          "transformedStatement": "把数组改看成前缀异或序列 $p$：零异或子数组对应相等的两个前缀值。问题转为在相邻前缀异或不超过 $n$ 的条件下，让各前缀值出现次数尽量有利，并在最优美丽度下延长序列。",
+          "keyObservations": [
+            "子数组异或为零等价于两个边界前缀异或相同，因此某个前缀值第 $c$ 次出现会新增 $c-1$ 个零异或子数组。",
+            "新前缀值第一次出现使美丽度增加 $1$，第二次不变，第三次及以后下降；所以最大美丽度至多是可取前缀值数量减去已出现的 $p_0$，即 $2x-1$。",
+            "令 $x$ 为不超过 $n$ 的最大二次幂，让 $0$ 到 $2x-1$ 的每个前缀值恰好出现两次，就能达到最大美丽度并获得最长长度。",
+            "按两个区间分别递增再递减排列前缀值，区间内异或小于 $x$，唯一跨区间跳转为 $0\\oplus x=x$，因此还原出的数组元素均不超过 $n$。"
+          ],
+          "solutionBrief": "取最大二次幂 $x\\le n$，构造前缀异或序列：$[0,x-1]$ 递增递减，再将 $[x,2x-1]$ 递增递减。每个值恰出现两次，最后用 $a_i=p_{i-1}\\oplus p_i$ 还原数组，长度为 $4x-1$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2271D",
+          "index": "D",
+          "slot": "D",
+          "title": "Target Infection",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "greedy",
+            "implementation",
+            "two pointers"
+          ],
+          "statementBrief": "数轴上给出若干互不相邻的感染区间，长度为 $m$ 的人群从整数位置 $s$ 开始依次站在 $s$ 到 $s+m-1$，站在感染位置的人会被感染。要求找出一个起点，使感染人数恰好为 $k$；不存在则输出 $-1$。",
+          "transformedStatement": "把问题视为求长度固定的滑动窗口覆盖感染区间的总长度。先在各感染区间左端点中找出覆盖量最大的位置，再利用覆盖量沿起点移动时每步至多变化 $1$ 的性质，在非单调函数上进行夹逼二分。",
+          "keyObservations": [
+            "滑动起点右移一格只移出一个位置并加入一个位置，因此 $|f(s+1)-f(s)|\\le 1$，即使 $f$ 不单调也能利用相邻值不跳过整数。",
+            "$f(s)$ 的最大值一定能在某个感染区间左端点 $l_i$ 取得：起点在感染区间内部可左移，起点在未感染处可右移，移动都不会降低覆盖数。",
+            "找到最大值位置后，从 $f(pos)>k$ 到远端 $f(10^{15}+1)=0\\le k$ 保持两端夹住目标值；二分只需维护这个夹逼关系，最终相邻两点间必有 $f(s)=k$。",
+            "窗口与感染区间的交集长度可用区间端点的二分定位和感染长度前缀和计算，从而快速求出任意 $f(s)$。"
+          ],
+          "solutionBrief": "将窗口感染人数写成 $f(s)$，用感染长度前缀和快速计算。枚举所有 $l_i$ 找到最大值位置；若 $k$ 超过最大值则无解，否则从该位置到 $10^{15}+1$ 维护 $f>k$ 与 $f\\le k$ 的边界二分，利用相邻值最多变化 $1$ 找到答案。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-10-11T06:10:50+00:00",
+  "updated_at": "2026-10-11T22:22:49+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -101290,25 +101290,25 @@
       "editorial_url": "https://codeforces.com/blog/entry/157590",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "74e997ed269deee56212be9c2af2ff0cacb6880b060ad1ed3210bba5cd7a15ce",
-      "generated_at": "2026-10-11T06:09:06+00:00",
+      "input_hash": "e1d5efc2a913d2986daf1feb299a3c10940f5ad21345f4ce3404894279b18989",
+      "generated_at": "2026-10-11T22:22:34+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定数轴上若干互不相邻的感染整数区间，以及连续站成一排的 $m$ 个人。选择第一人的整数位置 $s$，队伍占据 $[s,s+m-1]$；要求找出使感染人数恰好为 $k$ 的 $s$，不存在则输出 $-1$。",
-        "transformed_statement": "把问题视为长度固定为 $m$ 的滑动窗口在感染集合上移动，窗口覆盖感染点的数量为 $f(s)$。先在各感染区间左端寻找一个最大值窗口，再利用函数相邻点变化不超过 $1$，从高值窗口向右搜索穿过目标值 $k$ 的位置。",
+        "statement_brief": "数轴上给出若干互不相邻的感染区间，长度为 $m$ 的人群从整数位置 $s$ 开始依次站在 $s$ 到 $s+m-1$，站在感染位置的人会被感染。要求找出一个起点，使感染人数恰好为 $k$；不存在则输出 $-1$。",
+        "transformed_statement": "把问题视为求长度固定的滑动窗口覆盖感染区间的总长度。先在各感染区间左端点中找出覆盖量最大的位置，再利用覆盖量沿起点移动时每步至多变化 $1$ 的性质，在非单调函数上进行夹逼二分。",
         "key_observations": [
-          "将窗口起点从 $s$ 移到 $s+1$ 只会移除一个位置并加入一个位置，因此 $|f(s+1)-f(s)|\\le 1$；这保证跨过阈值 $k$ 时一定能遇到恰好等于 $k$ 的位置。",
-          "任意窗口若起点落在感染区间内部，可向左移动到该区间左端且答案不降；若起点未感染，可向右移动到下一个感染区间左端且答案不降，因此最大值只需检查所有 $l_i$。",
-          "找到最大值位置 $pos$ 后，若 $k< f(pos)$，而 $f(10^{15}+1)=0\\le k$，可维护一端函数值大于 $k$、另一端不大于 $k$ 的区间；即使 $f$ 不单调，区间缩至相邻位置时也能由单位变化性质得到答案。",
-          "用感染区间长度前缀和，并通过端点二分定位与窗口 $[s,s+m-1]$ 相交的首尾区间，即可在 $O(\\log n)$ 时间计算一次 $f(s)$。"
+          "滑动起点右移一格只移出一个位置并加入一个位置，因此 $|f(s+1)-f(s)|\\le 1$，即使 $f$ 不单调也能利用相邻值不跳过整数。",
+          "$f(s)$ 的最大值一定能在某个感染区间左端点 $l_i$ 取得：起点在感染区间内部可左移，起点在未感染处可右移，移动都不会降低覆盖数。",
+          "找到最大值位置后，从 $f(pos)>k$ 到远端 $f(10^{15}+1)=0\\le k$ 保持两端夹住目标值；二分只需维护这个夹逼关系，最终相邻两点间必有 $f(s)=k$。",
+          "窗口与感染区间的交集长度可用区间端点的二分定位和感染长度前缀和计算，从而快速求出任意 $f(s)$。"
         ],
-        "solution_brief": "先计算每个区间左端作为起点时的感染人数，得到最大值位置。若最大值小于 $k$ 输出 $-1$；否则从该位置到 $10^{15}+1$ 维护一高一低的函数值边界并二分，利用相邻位置变化至多 $1$ 找到 $f(s)=k$。",
+        "solution_brief": "将窗口感染人数写成 $f(s)$，用感染长度前缀和快速计算。枚举所有 $l_i$ 找到最大值位置；若 $k$ 超过最大值则无解，否则从该位置到 $10^{15}+1$ 维护 $f>k$ 与 $f\\le k$ 的边界二分，利用相邻值最多变化 $1$ 找到答案。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [
           "基础实现与模拟"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text 的滑动窗口性质、最大值端点结论、非单调阈值搜索方法和区间交集计数实现，并结合 statement_text 的题意与约束。",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 tags 提炼；算法细节主要来自 editorial。",
         "quality_flags": []
       }
     },
@@ -101320,25 +101320,26 @@
       "editorial_url": "https://codeforces.com/blog/entry/157590",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "3a791c8aac9af6450fe6696e20ee937177635888c174c91b8b986e5ff2965d37",
-      "generated_at": "2026-10-11T06:10:50+00:00",
+      "input_hash": "981c307d84a1b63c17af894f641d1cab72c2bbf90c6842ca45fee1090f099b43",
+      "generated_at": "2026-10-11T22:22:49+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定整数 $n$，构造一个元素均在 $[0,n]$ 的数组。数组 beauty 定义为长度减去异或为 $0$ 的非空连续子数组数量；要求先最大化 beauty，再在达到最大值的数组中最大化长度，并输出任意满足条件的数组。",
-        "transformed_statement": "把数组改看成前缀异或序列：相同前缀值的一对位置对应一个零异或子数组。于是要让尽可能多的前缀值各出现两次，并在相邻前缀异或不超过 $n$ 的限制下构造最长序列。",
+        "statement_brief": "给定整数 $n$，构造一个元素均在 $0$ 到 $n$ 的数组。数组美丽度定义为长度减去异或和为零的非空连续子数组数量；要求先最大化美丽度，再在达到最大值的数组中最大化长度。",
+        "transformed_statement": "把数组改看成前缀异或序列 $p$：零异或子数组对应相等的两个前缀值。问题转为在相邻前缀异或不超过 $n$ 的条件下，让各前缀值出现次数尽量有利，并在最优美丽度下延长序列。",
         "key_observations": [
-          "用前缀异或 $p_i$ 表示数组，零异或子数组恰好对应两个相等的前缀值，因此每次加入前缀值的贡献只取决于它此前出现次数。",
-          "某个前缀值第一次出现使 beauty 增加 $1$，第二次出现增加的零异或子数组抵消这次增益，第三次及以后会使 beauty 下降。",
-          "令 $x$ 为不超过 $n$ 的最大二次幂；所有元素不超过 $n<2x$，所以前缀异或只可能落在 $[0,2x-1]$，beauty 至多为 $2x-1$。",
-          "让 $0$ 到 $2x-1$ 的每个前缀值恰好出现两次，可得到 $4x-1$ 长数组且 beauty 为 $2x-1$；按两个区间分别正序、逆序访问时，相邻前缀异或不超过 $x\\le n$。"
+          "子数组异或为零等价于两个边界前缀异或相同，因此某个前缀值第 $c$ 次出现会新增 $c-1$ 个零异或子数组。",
+          "新前缀值第一次出现使美丽度增加 $1$，第二次不变，第三次及以后下降；所以最大美丽度至多是可取前缀值数量减去已出现的 $p_0$，即 $2x-1$。",
+          "令 $x$ 为不超过 $n$ 的最大二次幂，让 $0$ 到 $2x-1$ 的每个前缀值恰好出现两次，就能达到最大美丽度并获得最长长度。",
+          "按两个区间分别递增再递减排列前缀值，区间内异或小于 $x$，唯一跨区间跳转为 $0\\oplus x=x$，因此还原出的数组元素均不超过 $n$。"
         ],
-        "solution_brief": "取最大二次幂 $x\\le n$，构造前缀异或序列：$0..x-1$、$x-1..0$、$x..2x-1$、$2x-1..x$。输出相邻前缀的异或，数组长为 $4x-1$，达到最大 beauty 且长度最大。",
+        "solution_brief": "取最大二次幂 $x\\le n$，构造前缀异或序列：$[0,x-1]$ 递增递减，再将 $[x,2x-1]$ 递增递减。每个值恰出现两次，最后用 $a_i=p_{i-1}\\oplus p_i$ 还原数组，长度为 $4x-1$。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [
-          "数论与同余"
+          "数论与同余",
+          "基础实现与模拟"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据 statement_text 的目标定义和 editorial_text 的前缀异或上界、构造及正确性分析；tags 仅用于主题归类。",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 constructive algorithms、graphs、greedy、math 标签提炼。",
         "quality_flags": []
       }
     },
@@ -101399,6 +101400,230 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面与 editorial；tags 仅用于辅助主题归类。",
         "quality_flags": []
+      }
+    },
+    "2274B": {
+      "problem_key": "2274B",
+      "title": "Prefix",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2274/problem/B",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "ae91da8836249cb4e9427cd9cefe8886cf85b4f25c5f8e7e4e9ea9578435b99b",
+      "generated_at": "2026-10-11T22:20:57+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组，按从左到右处理每个 $i=2,\u0001ldots,n$：令 $s$ 为此前最终元素之和，并将 $a_i$ 替换为 $a_i-s$、$a_i$ 或 $a_i+s$ 之一。选择所有操作后，求最终数组中最大元素的最大可能值。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 与 tags 提取；editorial_text 为空，未使用外部信息补充算法。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2274A": {
+      "problem_key": "2274A",
+      "title": "The Projections of Paco",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2274/problem/A",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "83ceb13a548a24ef2cf2c71539fe4341e77eee33ae0491f27deac1d55ae6dd2e",
+      "generated_at": "2026-10-11T22:21:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "数轴上有一个从坐标 $0$ 出发的令牌。先选择整数 $p$，再按顺序将令牌依次关于坐标为 $p,a_1,a_2,\u0000dots,a_n$ 的点各反射一次，求使令牌最终回到坐标 $0$ 的 $p$；题目保证答案唯一。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "代数、矩阵与多项式"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2273F": {
+      "problem_key": "2273F",
+      "title": "Pancho's Permutation",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2273/problem/F",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "59c96c1d55f6ad1d14cbebb77f01bb55490fc25c8a43b4b3b62f5d093099338b",
+      "generated_at": "2026-10-11T22:21:23+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $n$ 的部分排列，已知位置固定为指定数值，$-1$ 位置需要补入剩余数字。完整排列的每个非空非完整前缀都不能恰好由 $1$ 到其长度组成，每个非空非完整后缀也不能恰好由其下标到 $n$ 组成；要求输出满足条件的第 $k$ 个字典序排列，不足则输出 $-1$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，未使用外部题解。",
+        "quality_flags": [
+          "missing_editorial",
+          "solution_unavailable",
+          "statement_only"
+        ]
+      }
+    },
+    "2273E": {
+      "problem_key": "2273E",
+      "title": "Six-Seven Bags",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2273/problem/E",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "bfd60bc4fd9f35962f3781f64009d83084f9d995d10caaae01dca81100eac779",
+      "generated_at": "2026-10-11T22:21:36+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个袋子，第 $k$ 个袋子装有每枚重 6 克的硬币，其余袋子装有每枚重 7 克的硬币，且已知各袋硬币数量但未知 $k$。每次可从各袋选取任意不超过库存的硬币，读取总重量并将硬币放回，需在保证正确的查询次数内确定装有 6 克硬币的袋子；交互器可在不违背历史回答时调整隐藏袋。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "交互",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 中的查询规则、重量公式、交互器限制及 tags 中的 interactive；editorial_text 为空。",
+        "quality_flags": [
+          "adaptive_interactor",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2273D": {
+      "problem_key": "2273D",
+      "title": "Aura Battle",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2273/problem/D",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "e60ab840de0ff5c4fd5a2a7425dd4d5c09edeed47665003e05e55c01d7d0a31f",
+      "generated_at": "2026-10-11T22:21:47+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "每场战斗有一个固定但未知的整数 $x\\in[1,10^4]$，共进行 10 轮。每轮选择两个整数 $a_i,b_i$，损失为 $\\min(|x-a_i|,|x-b_i|)$，并在下一轮前获得该损失；选择可依赖此前反馈。要求设计策略，使任意 $x$ 下十轮总损失不超过最小可保证值 $m$ 加 67（首个测试限制为 $10^5$）。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 与 codeforces_tags；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "no_algorithm_evidence",
+          "statement_only"
+        ]
+      }
+    },
+    "2273C": {
+      "problem_key": "2273C",
+      "title": "Matrix Puzzle",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2273/problem/C",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "3d261445d8af1db22e0949faa7bd87f5ed487777a67eb08f451ca8513615db25",
+      "generated_at": "2026-10-11T22:21:58+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定两个 $n\\times n$ 矩阵 $a,b$，更新操作可把一个矩形内所有元素同时加上常数。查询时可假设分别给该矩形的每行、每列加任意常数，判断能否将 $a$ 的子矩阵变成 $b$ 的对应子矩阵。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "代数、矩阵与多项式",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，未补写算法或复杂度。",
+        "quality_flags": [
+          "missing_editorial",
+          "solution_not_inferred",
+          "statement_only"
+        ]
+      }
+    },
+    "2273B": {
+      "problem_key": "2273B",
+      "title": "Robot Championship",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2273/problem/B",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "a3a2d90465d36dc745118acc46a69d21a9efdb86d0b30202ad277d4ca1f84ed6",
+      "generated_at": "2026-10-11T22:22:09+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "在一个 $n\\times n$ 棋盘上，机器人从任意格子出发且位置不可见。每秒先选择一条满足 $r+c=v$ 的对角线发射激光，随后机器人可合法地上移、右移或左下移；需要构造至多 $3n$ 条固定的对角线，使无论起点和移动方式如何都至少被命中一次。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "代数、矩阵与多项式"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 提取题意与状态变化；primary_topic 和 secondary_topics 参考 codeforces_tags，未使用题解正文。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2273A": {
+      "problem_key": "2273A",
+      "title": "Lavencia Oranges",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2273/problem/A",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "16dbb8a153fa3f7fb8a6ccd6062238c32c65c3aa4de86b5583f728677adc96ca",
+      "generated_at": "2026-10-11T22:22:19+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个橙子和 $n$ 个袋子，将第 $i$ 个橙子放入编号为 $a_i$ 的袋子，其中 $1\\le a_i\\le n$。若某袋恰有 $s$ 个橙子，监管者可选择该数量并没收所有此类袋子；代价为所有 $s$ 中的最大值 $s\\cdot c_s$，要求构造数组使代价最小。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，未使用外部信息。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
       }
     }
   }
