@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-10-12T06:19:45+00:00",
+  "updated_at": "2026-10-12T15:44:07+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -101607,21 +101607,21 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "16dbb8a153fa3f7fb8a6ccd6062238c32c65c3aa4de86b5583f728677adc96ca",
-      "generated_at": "2026-10-11T22:22:19+00:00",
+      "input_hash": "0301bf4dea34098807083e16ebdd8417593e2a28ca43eab59f36cc9dbcabe8a5",
+      "generated_at": "2026-10-12T15:44:07+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定 $n$ 个橙子和 $n$ 个袋子，将第 $i$ 个橙子放入编号为 $a_i$ 的袋子，其中 $1\\le a_i\\le n$。若某袋恰有 $s$ 个橙子，监管者可选择该数量并没收所有此类袋子；代价为所有 $s$ 中的最大值 $s\\cdot c_s$，要求构造数组使代价最小。",
+        "statement_brief": "给定 $n$ 个橙子和 $n$ 个袋子，用数组 $a$ 指定每个橙子放入哪个袋子。监管者选择一个装橙子数量 $s$，没收所有恰好装有 $s$ 个橙子的袋子；要求构造 $a$，使所有可能的没收数量中的最大值最小。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，未使用外部信息。",
+        "source_provenance": "依据题面中的数组定义、袋子占用频次和代价公式；editorial_url 及 editorial_text 均为空，tags 仅用于主题判断。",
         "quality_flags": [
           "missing_editorial",
-          "statement_inferred"
+          "statement_only"
         ]
       }
     }
