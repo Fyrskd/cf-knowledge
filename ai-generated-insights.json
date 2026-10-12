@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-10-11T22:22:49+00:00",
+  "updated_at": "2026-10-12T06:19:45+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -101493,20 +101493,19 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "bfd60bc4fd9f35962f3781f64009d83084f9d995d10caaae01dca81100eac779",
-      "generated_at": "2026-10-11T22:21:36+00:00",
+      "input_hash": "87df5a46ea3707cdca27edb51b3a7332320b0b3a1c47ba7657bf7e9ffb0b3c84",
+      "generated_at": "2026-10-12T06:19:45+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 $n$ 个袋子，第 $k$ 个袋子装有每枚重 6 克的硬币，其余袋子装有每枚重 7 克的硬币，且已知各袋硬币数量但未知 $k$。每次可从各袋选取任意不超过库存的硬币，读取总重量并将硬币放回，需在保证正确的查询次数内确定装有 6 克硬币的袋子；交互器可在不违背历史回答时调整隐藏袋。",
+        "statement_brief": "有 $n$ 个袋子，第 $i$ 袋有 $a_i$ 枚硬币；恰有一袋装 6 克硬币，其余装 7 克硬币。每次可从每袋取任意不超过库存的数量并查询总重量，硬币随后放回；要求在最坏情况下用最少的查询确定 6 克硬币所在袋，并使用不超过 $f(a)$ 次查询。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "交互",
         "secondary_topics": [],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text 中的查询规则、重量公式、交互器限制及 tags 中的 interactive；editorial_text 为空。",
+        "source_provenance": "依据题面中的交互规则、重量公式和自适应交互说明；editorial_text 为空，未使用 tags 补写算法。",
         "quality_flags": [
-          "adaptive_interactor",
           "missing_editorial",
           "statement_inferred"
         ]

@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 366,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3399,
+    "ai_override_count": 3400,
     "primary_topic_count": 13,
     "contest_count": 678,
     "rating_min": 800,
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1428,
+    "构造与贪心": 1427,
     "动态规划与状态设计": 357,
     "数据结构": 405,
     "图论与网络流": 293,
     "数论与同余": 451,
-    "交互": 130,
+    "交互": 131,
     "组合计数与概率": 332,
     "几何": 101,
     "树结构": 200,
@@ -246,18 +246,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2273/problem/E",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "交互",
-            "动态规划与状态设计",
-            "树结构"
-          ],
+          "primaryTopic": "交互",
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "greedy",
             "interactive"
           ],
-          "statementBrief": "题面已抓取：Six-Seven Bags；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 个袋子，第 $i$ 袋有 $a_i$ 枚硬币；恰有一袋装 6 克硬币，其余装 7 克硬币。每次可从每袋取任意不超过库存的数量并查询总重量，硬币随后放回；要求在最坏情况下用最少的查询确定 6 克硬币所在袋，并使用不超过 $f(a)$ 次查询。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
