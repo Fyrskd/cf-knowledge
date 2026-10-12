@@ -1,5 +1,5 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-11",
+  "generatedAt": "2026-10-12",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4338,
@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 366,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3400,
+    "ai_override_count": 3399,
     "primary_topic_count": 13,
     "contest_count": 678,
     "rating_min": 800,
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1427,
+    "构造与贪心": 1428,
     "动态规划与状态设计": 357,
     "数据结构": 405,
     "图论与网络流": 293,
     "数论与同余": 451,
-    "交互": 131,
+    "交互": 130,
     "组合计数与概率": 332,
     "几何": 101,
     "树结构": 200,
@@ -246,12 +246,18 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2273/problem/E",
           "editorialUrl": "",
-          "primaryTopic": "交互",
-          "secondaryTopics": [],
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "交互",
+            "动态规划与状态设计",
+            "树结构"
+          ],
           "originalTags": [
+            "brute force",
+            "greedy",
             "interactive"
           ],
-          "statementBrief": "有 $n$ 个袋子，第 $k$ 个袋子装有每枚重 6 克的硬币，其余袋子装有每枚重 7 克的硬币，且已知各袋硬币数量但未知 $k$。每次可从各袋选取任意不超过库存的硬币，读取总重量并将硬币放回，需在保证正确的查询次数内确定装有 6 克硬币的袋子；交互器可在不违背历史回答时调整隐藏袋。",
+          "statementBrief": "题面已抓取：Six-Seven Bags；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

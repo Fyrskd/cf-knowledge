@@ -130,6 +130,8 @@
     "type": "PROGRAMMING",
     "points": 2250.0,
     "tags": [
+      "brute force",
+      "greedy",
       "interactive"
     ]
   },
