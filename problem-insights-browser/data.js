@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 366,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3400,
+    "ai_override_count": 3399,
     "primary_topic_count": 13,
     "contest_count": 678,
     "rating_min": 800,
@@ -151,13 +151,18 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2273/problem/A",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "博弈",
+            "几何"
+          ],
           "originalTags": [
             "binary search",
             "constructive algorithms",
+            "dp",
             "greedy"
           ],
-          "statementBrief": "给定 $n$ 个橙子和 $n$ 个袋子，将第 $i$ 个橙子放入编号为 $a_i$ 的袋子，其中 $1\\le a_i\\le n$。若某袋恰有 $s$ 个橙子，监管者可选择该数量并没收所有此类袋子；代价为所有 $s$ 中的最大值 $s\\cdot c_s$，要求构造数组使代价最小。",
+          "statementBrief": "题面已抓取：Lavencia Oranges；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
