@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-13",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4338,
+    "total_problems": 4336,
     "source_total_problems": 4338,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4338,
-    "with_editorial_brief": 3970,
-    "with_solution_brief": 3972,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 4336,
+    "with_editorial_brief": 3968,
+    "with_solution_brief": 3970,
     "missing_editorial_brief": 366,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3400,
+    "ai_override_count": 3398,
     "primary_topic_count": 13,
     "contest_count": 678,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1427,
+    "构造与贪心": 1425,
     "动态规划与状态设计": 357,
     "数据结构": 405,
     "图论与网络流": 293,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 124
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2962,
+    "ai_generated_with_editorial": 2960,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 366,
     "low_confidence": 1,
@@ -293,7 +293,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-10",
       "url": "https://codeforces.com/contest/2271",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 9,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
         {
@@ -413,35 +413,6 @@ window.CF_INSIGHTS_DATA = {
           "editorialQuality": "complete"
         },
         {
-          "key": "2271E",
-          "index": "E",
-          "slot": "E",
-          "title": "Array Emptying",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2271/problem/E",
-          "editorialUrl": "https://codeforces.com/blog/entry/157590",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟",
-            "数据结构"
-          ],
-          "originalTags": [
-            "binary search",
-            "greedy"
-          ],
-          "statementBrief": "给定数组和初始整数 $k$。每次任选一个元素：若其值不超过 $k$ 就删除，否则将其替换为两个 $\\lceil x/2\\rceil$，随后令 $k$ 加一；求清空数组所需的最少操作次数。",
-          "transformedStatement": "先研究允许任意元素拆分的放宽问题，并固定拆分次数 $c$；将所有拆分移到删除前，再从最后一次删除逆序决定对当前最大元素进行删除还是拆分，从而判定 $c$ 是否可行。",
-          "keyObservations": [
-            "先放宽为任意元素都能拆分；固定拆分次数为 $c$ 时，元素最终需被删除 $n+c$ 次，因此总操作数必为 $n+2c$。",
-            "在放宽问题中，拆分可全部移到删除之前：交换相邻的“删除、拆分”不会破坏合法性，因为拆分无限制且 $k$ 只增加。",
-            "逆序处理删除时设当前末步阈值为 $S=k+n+2c-1$；若最大元素 $H>S$，只能拆分它，否则删除它，这一选择可由较大元素优先的交换论证保证最优。",
-            "逆序贪心实际只在 $H>S$ 时拆分，而此时原问题对应的 $k$ 不超过 $S$，所以放宽问题得到的拆分在原规则下也合法。"
-          ],
-          "solutionBrief": "二分拆分次数 $c$，用频次数组逆序模拟删除：维护最大剩余值 $H$ 与阈值 $S$，$H>S$ 就拆分，否则删除。最小可行 $c$ 后答案为 $n+2c$，单测复杂度为 $O(n\\log n)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
           "key": "2271F",
           "index": "F",
           "slot": "F",
@@ -470,35 +441,6 @@ window.CF_INSIGHTS_DATA = {
             "每次候选修改后重新判定美丽性即可；候选数为常数，而单调栈判定为 $O(n)$，所以每个测试用例总复杂度仍为 $O(n)$。"
           ],
           "solutionBrief": "先用单调栈和差分判断原数组是否美丽。若不是，依次尝试将首位、末位改为最大值，或将一个最大值改为 $1$；任一成功则答案为 $1$，否则把首尾都改为最大值，答案为 $2$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2271G",
-          "index": "G",
-          "slot": "G",
-          "title": "Grid Filling",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2271/problem/G",
-          "editorialUrl": "https://codeforces.com/blog/entry/157590",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "greedy",
-            "implementation"
-          ],
-          "statementBrief": "给定一个 $n\\times m$ 网格，以及贯穿全网格的水平、竖直切线；切线将网格分成若干矩形小块。需在每个单元格填正整数，使相邻单元格数字不同，且每个含 $x$ 个单元格的小块恰好包含 $1,2,\\ldots,x$ 各一次；输出任意填法或判定无解。",
-          "transformedStatement": "把问题视为为每个矩形小块选择一个排列，并协调相邻小块的边界数字。核心是先处理宽或高为 $1$ 的薄块，通过在足够长的薄块处改变排列方向来消除强制交替，再逐行补全其余区域。",
-          "keyObservations": [
-            "若同一行有两个 $1\\times1$ 小块，且它们之间全部是 $1\\times2$ 小块，则从两端的数字 $1$ 出发会强制交替排列，末端产生相邻的两个 $1$；列方向存在两个 $1\\times1$ 小块及全为 $2\\times1$ 的间隔时同理，因此这两类情况必不可能。",
-            "在两个 $1\\times1$ 小块之间选取第一个长度至少为 $3$ 的薄块作为转折点：转折点前各块降序、转折块排列为 $[y,1,2,\\ldots,y-1]$、之后各块升序，可同时满足块内取值完整和块间相邻不同。",
-            "先处理所有薄块并保持同一行中已填单元的边界值一致，再对已出现数字 $1$ 的行使用相同转折构造；这样水平冲突被消除，而竖直约束不会被破坏。",
-            "剩余未填行可独立处理：每个待填间隔的左右边界值相同，只需用升序、降序及必要的转折排列剩余数字，即可避免边界冲突。"
-          ],
-          "solutionBrief": "检查两类必败结构：同一行的两个 $1\\times1$ 小块之间全是 $1\\times2$ 小块，或列方向的对应情况。排除后先按转折点规则填薄块，再处理含已填 $1$ 的行，最后独立填完其余行。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
