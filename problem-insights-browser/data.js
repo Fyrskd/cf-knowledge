@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-13",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4336,
+    "total_problems": 4338,
     "source_total_problems": 4338,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4336,
-    "with_editorial_brief": 3968,
-    "with_solution_brief": 3970,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4338,
+    "with_editorial_brief": 3970,
+    "with_solution_brief": 3972,
     "missing_editorial_brief": 366,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3398,
+    "ai_override_count": 3400,
     "primary_topic_count": 13,
     "contest_count": 678,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1425,
+    "构造与贪心": 1427,
     "动态规划与状态设计": 357,
     "数据结构": 405,
     "图论与网络流": 293,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 124
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2960,
+    "ai_generated_with_editorial": 2962,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 366,
     "low_confidence": 1,
@@ -293,7 +293,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-10",
       "url": "https://codeforces.com/contest/2271",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 7,
+      "problemCount": 9,
       "maxRating": null,
       "problems": [
         {
@@ -413,6 +413,35 @@ window.CF_INSIGHTS_DATA = {
           "editorialQuality": "complete"
         },
         {
+          "key": "2271E",
+          "index": "E",
+          "slot": "E",
+          "title": "Array Emptying",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "binary search",
+            "data structures",
+            "greedy"
+          ],
+          "statementBrief": "给定长度为 $n$ 的数组和初始整数 $k$。每次选择一个元素：若它不超过 $k$ 就删除，否则删除它并加入两个等于其一半向上取整的元素；无论哪种情况都令 $k$ 加一。求清空数组所需的最少操作数。",
+          "transformedStatement": "先研究允许任意元素分裂的放宽问题：若分裂 $c$ 次，就必须删除 $n+c$ 个元素，目标变成寻找最小可行的 $c$。将所有分裂集中到删除前，并逆序安排删除，依据当前最大元素与阈值的比较决定删除或继续分裂。",
+          "keyObservations": [
+            "进行恰好 $c$ 次分裂会增加 $c$ 个元素，因此需要 $n+c$ 次删除，总操作数固定为 $n+2c$，问题转为最小化可行的分裂次数。",
+            "在允许任意元素分裂的放宽问题中，可用交换操作将所有分裂移到删除之前，再从最后一次删除反向处理。",
+            "反向处理时令 $S$ 表示当前删除时的阈值：若最大元素 $H>S$，它不可能在更早时被删除，必须分裂；若 $H\\le S$，交换论证表明优先删除 $H$ 不会降低可行性。",
+            "放宽问题中只有在 $H>S$ 时才分裂，而此时该元素也大于实际操作时的 $k$，所以贪心构造的所有分裂在原问题中同样合法。"
+          ],
+          "solutionBrief": "把分裂次数 $c$ 二分。判定时从最后一次删除反向维护元素频次和阈值 $S=k+n+2c-1$：最大值不超过 $S$ 就删除，否则分裂并限制总次数不超过 $c$。最小可行 $c$ 的答案为 $n+2c$，复杂度为 $O(n\\log n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
           "key": "2271F",
           "index": "F",
           "slot": "F",
@@ -441,6 +470,35 @@ window.CF_INSIGHTS_DATA = {
             "每次候选修改后重新判定美丽性即可；候选数为常数，而单调栈判定为 $O(n)$，所以每个测试用例总复杂度仍为 $O(n)$。"
           ],
           "solutionBrief": "先用单调栈和差分判断原数组是否美丽。若不是，依次尝试将首位、末位改为最大值，或将一个最大值改为 $1$；任一成功则答案为 $1$，否则把首尾都改为最大值，答案为 $2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2271G",
+          "index": "G",
+          "slot": "G",
+          "title": "Grid Filling",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "给定一个被水平和垂直切线分成多个矩形小块的 $n\\times m$ 网格，在每个格子写正整数。每个小块若有 $x$ 格，必须恰好包含 $1$ 到 $x$ 各一次，且全网格中共享边的相邻格数字不同；请构造一种填法或判定无解。",
+          "transformedStatement": "将问题按是否含 $1\\times1$ 小块分类：无单格块时利用所有块至少在一个方向够宽的性质统一构造；有单格块时把单格强制为 $1$，将薄块排列转化为带边界约束的升降序与转折点填充问题。",
+          "keyObservations": [
+            "不存在 $1\\times1$ 小块时，所有小块不可能同时出现宽为 $1$ 和高为 $1$；转置后可假设每块宽度至少为 $2$，从而能统一构造。",
+            "若同一行的两个 $1\\times1$ 小块之间只有若干个 $1\\times2$ 小块，则两端都被迫为 $1$，交替传递后末端相邻位置同为 $1$，因此必定无解；竖直方向存在对应情况。",
+            "含 $1\\times1$ 小块的行中，以两端单格之间第一个宽度至少为 $3$ 的薄块为转折点，转折点前递减、后递增，转折块使用 $[y,1,2,\\ldots,y-1]$，即可避免边界冲突。",
+            "先固定薄块和包含已填数字 $1$ 的行，再独立填剩余行；由于竖直冲突已被前面的模式处理，剩余每个空段只需根据左右边界选择升序、降序或转折排列。"
+          ],
+          "solutionBrief": "先判断是否存在横向或纵向的必败链。无单格块时按块首行的奇偶用升降序并调整中间元素，再逐行填连续编号；有单格块时先填薄块，用转折点处理边界，最后独立补齐其余行。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
