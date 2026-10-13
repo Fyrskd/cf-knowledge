@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 366,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3400,
+    "ai_override_count": 3399,
     "primary_topic_count": 13,
     "contest_count": 678,
     "rating_min": 800,
@@ -198,16 +198,18 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "数据结构",
           "secondaryTopics": [
+            "构造与贪心",
             "代数、矩阵与多项式",
-            "基础实现与模拟"
+            "博弈"
           ],
           "originalTags": [
+            "brute force",
             "data structures",
             "implementation",
             "math",
             "matrices"
           ],
-          "statementBrief": "给定两个 $n\\times n$ 矩阵 $a,b$，更新操作可把一个矩形内所有元素同时加上常数。查询时可假设分别给该矩形的每行、每列加任意常数，判断能否将 $a$ 的子矩阵变成 $b$ 的对应子矩阵。",
+          "statementBrief": "题面已抓取：Matrix Puzzle；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

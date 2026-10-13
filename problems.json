@@ -155,6 +155,7 @@
     "type": "PROGRAMMING",
     "points": 1250.0,
     "tags": [
+      "brute force",
       "data structures",
       "implementation",
       "math",
