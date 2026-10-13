@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-10-12T15:44:07+00:00",
+  "updated_at": "2026-10-13T14:35:25+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -101548,24 +101548,24 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "3d261445d8af1db22e0949faa7bd87f5ed487777a67eb08f451ca8513615db25",
-      "generated_at": "2026-10-11T22:21:58+00:00",
+      "input_hash": "b8a30eeaf2d2b2cbc72206220ae228b6b9f6c5e81783c2615576c3362ee18e72",
+      "generated_at": "2026-10-13T14:35:25+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定两个 $n\\times n$ 矩阵 $a,b$，更新操作可把一个矩形内所有元素同时加上常数。查询时可假设分别给该矩形的每行、每列加任意常数，判断能否将 $a$ 的子矩阵变成 $b$ 的对应子矩阵。",
+        "statement_brief": "给定两个 $n\\times n$ 矩阵 $a,b$，对 $a$ 进行子矩阵加法更新；查询时可在指定子矩阵内分别给每行、每列加任意常数，判断能否使其等于 $b$ 的对应子矩阵。每次查询独立且不修改矩阵，要求输出 YES 或 NO。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "数据结构",
         "secondary_topics": [
-          "代数、矩阵与多项式",
+          "数论与同余",
           "基础实现与模拟"
         ],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，未补写算法或复杂度。",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，editorial_url 也未提供。",
         "quality_flags": [
+          "algorithm_unavailable",
           "missing_editorial",
-          "solution_not_inferred",
           "statement_only"
         ]
       }

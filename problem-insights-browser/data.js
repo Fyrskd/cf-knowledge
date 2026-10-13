@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 366,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3399,
+    "ai_override_count": 3400,
     "primary_topic_count": 13,
     "contest_count": 678,
     "rating_min": 800,
@@ -198,9 +198,8 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "数据结构",
           "secondaryTopics": [
-            "构造与贪心",
-            "代数、矩阵与多项式",
-            "博弈"
+            "数论与同余",
+            "基础实现与模拟"
           ],
           "originalTags": [
             "brute force",
@@ -209,7 +208,7 @@ window.CF_INSIGHTS_DATA = {
             "math",
             "matrices"
           ],
-          "statementBrief": "题面已抓取：Matrix Puzzle；本地暂无可用题解正文。",
+          "statementBrief": "给定两个 $n\\times n$ 矩阵 $a,b$，对 $a$ 进行子矩阵加法更新；查询时可在指定子矩阵内分别给每行、每列加任意常数，判断能否使其等于 $b$ 的对应子矩阵。每次查询独立且不修改矩阵，要求输出 YES 或 NO。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
