@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-14",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4330,
+    "total_problems": 4338,
     "source_total_problems": 4338,
-    "filtered_out_problems": 8,
-    "with_statement_brief": 4330,
-    "with_editorial_brief": 3970,
-    "with_solution_brief": 3972,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4338,
+    "with_editorial_brief": 3978,
+    "with_solution_brief": 3980,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3392,
+    "ai_override_count": 3400,
     "primary_topic_count": 13,
-    "contest_count": 676,
+    "contest_count": 678,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,12 +44,12 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1423,
+    "构造与贪心": 1427,
     "动态规划与状态设计": 357,
-    "数据结构": 404,
+    "数据结构": 405,
     "图论与网络流": 293,
-    "数论与同余": 451,
-    "交互": 129,
+    "数论与同余": 452,
+    "交互": 131,
     "组合计数与概率": 332,
     "几何": 101,
     "树结构": 200,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 124
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2962,
+    "ai_generated_with_editorial": 2970,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -77,6 +77,260 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
+    {
+      "id": 2274,
+      "name": "Codeforces Round 1127 (Div. 2, Based on Mexican Olympiad in Informatics 2026)",
+      "date": "2026-10-11",
+      "url": "https://codeforces.com/contest/2274",
+      "type": "Div. 2",
+      "problemCount": 2,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2274A",
+          "index": "A",
+          "slot": "A",
+          "title": "The Projections of Paco",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2274/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/157634",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "基础实现与模拟",
+            "代数、矩阵与多项式"
+          ],
+          "originalTags": [
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定数轴上的 $n$ 个整数点，令棋子从 $0$ 出发，依次关于先选的整数点 $p$、再关于 $a_1,\u001b...,a_n$ 各反射一次；关于点 $o$ 反射会到达其另一侧等距位置。求使最终坐标恰为 $0$ 的唯一整数 $p$。",
+          "transformedStatement": "把最后到达的 $0$ 作为已知终点，逆序撤销关于 $a_n$ 到 $a_1$ 的反射，求出第一次关于 $p$ 反射后必须到达的坐标 $x$；再利用 $0$ 关于 $p$ 反射到 $2p$，将问题化为求解 $2p=x$。",
+          "keyObservations": [
+            "关于点 $o$ 的反射把坐标 $x$ 变为 $2o-x$，再次关于同一点反射会恢复原位置，因此每次反射都可被同点操作撤销。",
+            "要撤销按 $a_1,a_2,\u001b...,a_n$ 进行的反射，必须从最终坐标 $0$ 开始，按 $a_n,a_{n-1},\u001b...,a_1$ 的逆序反射，得到加入 $p$ 后应处的坐标 $x$。",
+            "第一次关于 $p$ 的反射把起点 $0$ 变为 $2p$，所以只需令 $2p=x$；题目保证所得 $p$ 为整数且唯一。"
+          ],
+          "solutionBrief": "从最终坐标 $0$ 出发，逆序执行关于 $a_n,\u001b...,a_1$ 的反射，得到加入 $p$ 后的坐标 $x$。由于首次反射后位置为 $2p$，输出 $p=x/2$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2274B",
+          "index": "B",
+          "slot": "B",
+          "title": "Prefix",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2274/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/157634",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定数组，按下标从 $2$ 到 $n$ 依次处理每个元素；处理 $a_i$ 时令 $s$ 为当前前缀和，并将它替换为 $a_i-s$、$a_i$ 或 $a_i+s$ 之一。求所有选择完成后，数组最大元素所能达到的最大值。",
+          "transformedStatement": "不直接枚举全部修改方案，而是把已处理部分抽象为可达前缀和集合，只保留其最小值 $L$ 和最大值 $H$；固定当前位置时，目标转化为在前缀和两端取最大绝对值。",
+          "keyObservations": [
+            "固定最终位置 $i$ 后，其最大可能值等于 $a_i+|s|$，其中 $s$ 是前缀和，因此只需关注可达前缀和的最小值与最大值。",
+            "处理一个元素时，前缀和 $s$ 只能变为 $a_i$、$a_i+s$ 或 $a_i+2s$，所以极值可由当前最小值和最大值分别递推得到。",
+            "中间选项 $a_i+s$ 对最小值或最大值都不会优于端点选项，可直接舍弃；于是每个位置的答案是 $\u0001max(a_i+H,a_i-L)$，其中 $L,H$ 是此前缀和的极值。"
+          ],
+          "solutionBrief": "维护处理过的前缀和最小值 $L$ 与最大值 $H$。对每个 $a_i$，先用当前 $L,H$ 更新候选答案，再按 $L\\leftarrow\\min(a_i,a_i+2L)$、$H\\leftarrow\\max(a_i,a_i+2H)$ 更新极值；中间转移无需考虑。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
+    {
+      "id": 2273,
+      "name": "Codeforces Round 1127 (Div. 1, Based on Mexican Olympiad in Informatics 2026)",
+      "date": "2026-10-11",
+      "url": "https://codeforces.com/contest/2273",
+      "type": "Div. 1",
+      "problemCount": 6,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2273A",
+          "index": "A",
+          "slot": "A",
+          "title": "Lavencia Oranges",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/157634",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "有 $n$ 个橙子和 $n$ 个空袋子，第 $i$ 个橙子必须放入编号为 $a_i$ 的袋子。若恰有 $c_s$ 个袋子装了 $s$ 个橙子，费用为 $\\max_s s\\cdot c_s$；请构造一个数组，使费用最小。",
+          "transformedStatement": "把问题改写为给定费用上限 $x$，最多能放入多少个橙子：装有 $i$ 个橙子的袋子最多取 $\\floor{x/i}$ 个，因此最大容量是 $\\sum_{i=1}^{x}\\floor{x/i}\\cdot i$；判断该容量是否至少为 $n$。",
+          "keyObservations": [
+            "固定费用上限 $x$ 时，大小为 $i$ 的袋子最多只能有 $\floor{x/i}$ 个，否则该频次的贡献会超过 $x$。",
+            "要最大化可容纳的橙子数，应同时使用 $\floor{x/i}$ 个大小为 $i$ 的袋子，总容量为 $\\sum_{i=1}^{x}\\floor{x/i}\\cdot i$。",
+            "从上述最大配置中反复删去当前最少橙子袋的一只橙子不会使费用上升，因此总容量不少于 $n$ 就能截取得到恰好 $n$ 个橙子。",
+            "可行性随 $x$ 增大而单调：最大容量达到 $n$ 即表示存在费用不超过 $x$ 的数组，所以答案可用二分确定。"
+          ],
+          "solutionBrief": "二分费用上限 $x$，用 $\\sum_{i=1}^{x}\\floor{x/i}\\cdot i$ 判断最大容量是否达到 $n$。取每种大小 $i$ 的 $\\floor{x/i}$ 个袋子，再从最小袋子开始删减至恰好 $n$ 个橙子，输出各橙子所在袋子的编号。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2273B",
+          "index": "B",
+          "slot": "B",
+          "title": "Robot Championship",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/157634",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "math"
+          ],
+          "statementBrief": "在 $n\\times n$ 棋盘上，机器人可从任意格子出发；每秒先选择一个对角线 $r+c=v$ 发射激光，未击中时机器人可向上、向右或向左下移动（越界动作不能选）。要求构造至多 $3n$ 个按固定顺序发射的对角线，使任意初始位置和任意走法都必然被击中。",
+          "transformedStatement": "把状态压缩为机器人所在对角线编号 $d=r+c$ 及其模 $3$：每秒 $d$ 的模 $3$ 固定增加 $1$。针对每个初始模 $3$ 类别，用编号每秒减 $2$ 的激光序列从该类最大对角线扫到最小对角线。",
+          "keyObservations": [
+            "机器人对角线编号 $d=r+c$ 的变化与具体走法无关：向上或向右使其加 $1$，向左下使其减 $2$，因此每秒都有 $d o d+1\\pmod 3$。",
+            "按初始 $d_0\\pmod 3$ 将机器人分成三组；对某组连续射击时，让激光编号每秒减 $2$，其模 $3$ 变化同样为加 $1$，所以始终与该组机器人处于同一剩余类。",
+            "设机器人对角线与激光编号之差为 $g=d-v$，激光编号减 $2$ 时，$g$ 只会增加 $3$ 或保持不变，因此 $g$ 单调不减，机器人不会越过激光后重新回到激光上方。",
+            "每个区块从该剩余类的最大对角线射到最小对角线，开始时 $g\\le0$、结束时 $g\\ge0$；由于 $g$ 始终是 $3$ 的倍数且单调变化，必有某次 $g=0$，从而击中机器人。"
+          ],
+          "solutionBrief": "将激光分成三个连续区块，分别处理三种初始对角线模 $3$ 的机器人。每个区块从对应剩余类的最大编号开始，每秒将编号减 $2$ 直到最小编号；利用差值单调跨过 $0$ 保证击中，每块至多 $n$ 发。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2273C",
+          "index": "C",
+          "slot": "C",
+          "title": "Matrix Puzzle",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/157634",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "代数、矩阵与多项式",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "implementation",
+            "math",
+            "matrices"
+          ],
+          "statementBrief": "给定两个 $n\\times n$ 矩阵 $a,b$。查询一个子矩阵时，可反复选择其中一行或一列并给该范围内元素加任意常数，判断能否使它与 $b$ 的对应子矩阵相等；另有操作将 $a$ 的任意矩形整体加上 $x$，每次查询需输出 YES 或 NO。",
+          "transformedStatement": "令 $C=a-b$，将每个相邻 $2\\times2$ 块的交替和 $M$ 视为约束：查询矩形可匹配，当且仅当其内部所有 $M$ 均为零。再把非零 $M$ 看成障碍点，问题变为矩形内是否存在障碍，而更新只会改变至多四个障碍点。",
+          "keyObservations": [
+            "令 $C=A-B$ 后，原问题等价于判断子矩阵能否通过行、列加法变为全零；这进一步要求其元素可表示为 $C_{i,j}=X_i+Y_j$。",
+            "对每个 $2\\times2$ 块定义 $M_{i,j}=C_{i,j}+C_{i+1,j+1}-C_{i,j+1}-C_{i+1,j}$；子矩阵可匹配当且仅当其中所有对应的 $M$ 都为零，因为该条件能推出 $C_{i,j}=C_{i,b}+C_{a,j}-C_{a,b}$。",
+            "把 $M\\ne0$ 转成二值矩阵 $X$ 后，查询只需判断对应矩形的 $X$ 总和是否为零，从而将可匹配性转为静态障碍计数问题。",
+            "一次矩形加法对完全覆盖或仅穿过一条边的 $2\\times2$ 块贡献会抵消，只有矩形至多四个角上的块改变；因此每次更新只需修改至多四个 $M$，再用二维 Fenwick 树维护 $X$ 的矩形和。"
+          ],
+          "solutionBrief": "先维护差矩阵 $C=A-B$ 及其相邻 $2\\times2$ 混合差 $M$，将 $M\\ne0$ 标为 $1$。查询转为判断对应区域和是否为零；矩形更新只影响 $M$ 的至多四个角点，使用二维 Fenwick 树支持点修改与矩形求和，复杂度为 $O(n^2+q\\log^2 n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2273D",
+          "index": "D",
+          "slot": "D",
+          "title": "Aura Battle",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/157634",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "数论与同余",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "implementation",
+            "interactive",
+            "math"
+          ],
+          "statementBrief": "隐藏整数 $x\\in[1,10^4]$ 在整场战斗中固定，共进行 $10$ 轮；每轮自适应选择两个整数 $a_i,b_i$，损失为 $\\min(|x-a_i|,|x-b_i|)$，并立即获得反馈。要求设计策略，使任意 $x$ 下的总损失不超过规定上限。",
+          "transformedStatement": "把每轮反馈后的信息表示为隐藏值的候选集合：一次询问及损失 $p$ 至多留下四个形如端点加减 $p$ 的候选。目标转化为用后续询问尽快把候选数降到两个，并通过区间两侧余量与首轮间隔的平衡，最小化最坏总损失。",
+          "keyObservations": [
+            "首轮询问后，给定损失 $p_1$ 时，$x$ 只能是 $a_1\\pm p_1$ 或 $b_1\\pm p_1$ 中落在 $[1,10^4]$ 的值，因此候选数至多为 $4$。",
+            "候选数降到 $2$ 后，每轮同时询问这两个候选值即可使后续损失全为 $0$，所以只需处理首轮后有 $3$ 或 $4$ 个候选值的情况。",
+            "有 $4$ 个候选值时询问 $(a_1,b_1+1)$：不同候选会产生可区分的损失，若仍有歧义则只剩两个候选，总损失至多为 $2p_1+1$。",
+            "有 $3$ 个候选值时，可在区间中点与外侧候选间选择询问，使总损失至多为 $\\min(2p_1+1,g)$；首轮端点取约 $1/7$ 与 $5/7$ 处时，最坏损失达到约 $2\\cdot10^4/7$。"
+          ],
+          "solutionBrief": "首轮取 $a_1=1429,b_1=7143$。根据反馈枚举至多四个可能的 $x$，再用偏移询问区分候选；候选不超过两个后反复询问它们。区间分割分析表明最优最坏损失为 $2n/7+O(1)$，该构造满足 $m+67$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2273E",
+          "index": "E",
+          "slot": "E",
+          "title": "Six-Seven Bags",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/157634",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "greedy",
+            "interactive"
+          ],
+          "statementBrief": "有 $n$ 个袋子，第 $i$ 个含有 $a_i$ 枚同类硬币；恰有一个袋子中的硬币重 $6$ 克，其余重 $7$ 克。每次可从各袋子取任意不超过库存的硬币并询问总重量，硬币随后放回；要求在最少的保证查询次数内确定含 $6$ 克硬币的袋子。",
+          "transformedStatement": "把一次查询视为向每个袋子写入一个坐标，返回值可还原隐藏袋在该坐标上的取值。问题转化为：为第 $i$ 个袋子分配一个各坐标不超过 $a_i$ 且彼此不同的最短编码向量。",
+          "keyObservations": [
+            "一次查询的总重量等于 $7\\sum b_i-b_h$，因此答案只额外揭示隐藏袋在本次查询中取出的硬币数 $b_h$。",
+            "把每个袋子编码成 $k$ 维向量后，$k$ 次查询恰好读出隐藏袋的完整编码；只要所有编码互不相同，就能唯一定位它。",
+            "将袋子按 $a_i$ 非降序排列后，前 $i$ 个袋子的编码数最多为 $(a_i+1)^k$，故必须满足 $(a_i+1)^k\\ge i$，这给出最小查询数。",
+            "按向量最大坐标分层生成编码，第 $i$ 个向量的最大坐标不超过对应的 $a_i$；因此所有坐标均可作为合法取币数。"
+          ],
+          "solutionBrief": "将袋子按 $a_i$ 排序，取最小的 $k$ 使所有 $(a_i+1)^k\\ge i$。按最大坐标分层生成前 $n$ 个互异的 $k$ 维向量并分配给袋子，$k$ 次查询逐坐标读出隐藏袋编码；构造复杂度为 $O(nk)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2273F",
+          "index": "F",
+          "slot": "F",
+          "title": "Pancho's Permutation",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/157634",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个长度为 $n$ 的排列，其中部分位置已知、其余为 $-1$，要求补全为 $1$ 到 $n$ 的排列。补全后任何真前缀都不能恰好由 $1$ 到其长度组成，任何真后缀也不能满足同样条件；请输出符合条件的第 $k$ 个字典序排列，不存在则输出 $-1$。",
+          "transformedStatement": "将所有缺失位置按原位置排序、所有缺失值按数值排序，用排列 $q$ 描述二者匹配；问题转化为在禁止若干“前 $i$ 项包含排名 $1..i$”及其后缀对称条件的排列中，按字典序求第 $k$ 个。",
+          "keyObservations": [
+            "把缺失值和缺失位置分别排序，并用排列 $q$ 表示它们的匹配；该表示保持字典序，因此可以按位置逐个尝试未用排名并按合法 completions 数量跳过整块候选。",
+            "前缀违反条件等价于该前缀恰好拿到当前最小的一组缺失值，后缀同理；先扫描已知信息排除必然违规，再在线性时间标记可能触发的前缀和后缀条件。",
+            "对固定的 $m$ 个未知位置，令 $c_i$ 为前 $i$ 位中的自由位置数，用 $d_i=c_i!-$ 已更早违规的计数递推，得到所有前缀违规数 $B_P$；反转后得到 $B_S$，且前缀、后缀违规事件互斥，所以合法数为 $f!-B_P-B_S$。",
+            "当剩余未知数 $r\\ge20$ 时，所有违规条件的并集大小不足总排列数的一半以上，合法块必超过 $10^{18}$；因此可贪心取最小可行缺失值，直到未知数不超过 $20$，再用精确计数完成第 $k$ 个排列。"
+          ],
+          "solutionBrief": "将未知元素压缩为缺失值排名排列，先检查已知信息并标记可能违规的前后缀。未知数至少 $20$ 时贪心取最小值不会跳过 $k$，降至 $20$ 后用递推计数前后缀违规排列，按字典序分块定位答案；总复杂度为 $O(n+m^4)$，其中 $m\\le20$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
     {
       "id": 2271,
       "name": "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)",
