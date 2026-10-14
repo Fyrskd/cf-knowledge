@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-14",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4336,
+    "total_problems": 4338,
     "source_total_problems": 4338,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4336,
-    "with_editorial_brief": 3976,
-    "with_solution_brief": 3978,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4338,
+    "with_editorial_brief": 3978,
+    "with_solution_brief": 3980,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3398,
+    "ai_override_count": 3400,
     "primary_topic_count": 13,
     "contest_count": 678,
     "rating_min": 800,
@@ -44,9 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1426,
+    "构造与贪心": 1427,
     "动态规划与状态设计": 357,
-    "数据结构": 404,
+    "数据结构": 405,
     "图论与网络流": 293,
     "数论与同余": 452,
     "交互": 131,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 124
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2968,
+    "ai_generated_with_editorial": 2970,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -146,7 +146,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-11",
       "url": "https://codeforces.com/contest/2273",
       "type": "Div. 1",
-      "problemCount": 5,
+      "problemCount": 6,
       "maxRating": null,
       "problems": [
         {
@@ -202,6 +202,38 @@ window.CF_INSIGHTS_DATA = {
             "每个区块从该剩余类的最大对角线射到最小对角线，开始时 $g\\le0$、结束时 $g\\ge0$；由于 $g$ 始终是 $3$ 的倍数且单调变化，必有某次 $g=0$，从而击中机器人。"
           ],
           "solutionBrief": "将激光分成三个连续区块，分别处理三种初始对角线模 $3$ 的机器人。每个区块从对应剩余类的最大编号开始，每秒将编号减 $2$ 直到最小编号；利用差值单调跨过 $0$ 保证击中，每块至多 $n$ 发。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2273C",
+          "index": "C",
+          "slot": "C",
+          "title": "Matrix Puzzle",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2273/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/157634",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "代数、矩阵与多项式",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "data structures",
+            "implementation",
+            "math",
+            "matrices"
+          ],
+          "statementBrief": "给定两个 $n\\times n$ 矩阵 $A,B$。查询一个子矩阵时，可独立地给其中每行和每列加任意常数，判断能否使它与 $B$ 的对应子矩阵相同；更新操作则把 $A$ 的某个矩形全部加上指定值，且更新会影响后续查询。",
+          "transformedStatement": "将 $A-B$ 记为 $C$，再用每个相邻 $2\\times2$ 块的交错和 $M$ 表示不可消除的障碍。子矩阵可匹配等价于其覆盖的所有 $M$ 为零，而矩形更新只会改变 $M$ 的至多四个角点。",
+          "keyObservations": [
+            "令 $C=A-B$，子矩阵可匹配当且仅当其中每个元素能写成 $X_i+Y_j$；这把行列加法操作转成可检验的可分离形式。",
+            "对每个 $2\\times2$ 块定义 $M[i][j]=C[i][j]+C[i+1][j+1]-C[i][j+1]-C[i+1][j]$，行列操作对其贡献相互抵消，因此可匹配等价于查询范围内所有 $M$ 都为 $0$。",
+            "$M$ 全为零意味着相邻列差在所有行相同，沿行列路径累加可得 $C[i][j]=C[i][b]+C[a][j]-C[a][b]$，从而构造出行量与列量并保证充分性。",
+            "对原矩形加 $x$ 时，内部及跨边界的块都因正负贡献抵消，只有至多四个角落的 $M$ 改变；将非零 $M$ 转成 $0/1$ 后，问题变为动态矩形求和。"
+          ],
+          "solutionBrief": "预处理差矩阵 $C=A-B$ 及其二维交错差 $M$，维护 $X=[M\\ne0]$。每次矩形更新只检查并修改至多四个角点，查询转为判断对应 $X$ 矩形和是否为零，用二维 Fenwick 树维护。复杂度为 $O(n^2+q\\log^2 n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
@@ -305,7 +337,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-10",
       "url": "https://codeforces.com/contest/2271",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 8,
+      "problemCount": 9,
       "maxRating": null,
       "problems": [
         {
@@ -359,6 +391,37 @@ window.CF_INSIGHTS_DATA = {
             "因此只需统计频次并检查第一个 $cnt[x]<2k$ 的位置；其频次为 $2k-1$ 时输出 YES，否则输出 NO。"
           ],
           "solutionBrief": "统计每个数的出现次数，找到首个 $cnt[x]<2k$ 的 $x$。若 $cnt[x]=2k-1$，Alice 无论如何都能获胜；否则 Bob 可通过配对同值牌保证双方的 $\u0000mex_k$ 相同。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2271C",
+          "index": "C",
+          "slot": "C",
+          "title": "XOR Problem",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2271/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/157590",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "graphs",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定整数 $n$，构造一个元素都在 $[0,n]$ 内的数组。数组 beauty 等于长度减去异或为 $0$ 的非空连续子数组数量；要求先使 beauty 最大，再在其中使数组长度最大。",
+          "transformedStatement": "把数组改写为前缀异或序列 $p$：连续子数组异或为 $0$ 等价于两个端点前缀值相同。于是问题转为安排前缀值的出现次数，在每次相邻转移异或不超过 $n$ 的条件下最大化序列长度。",
+          "keyObservations": [
+            "令前缀异或值出现第 $m$ 次时，新增长度贡献 $1$、新增零异或子数组数为 $m-1$，因此第 1 次使 beauty 增加、第 2 次不变、第 3 次起下降。",
+            "令 $x$ 为不超过 $n$ 的最大二次幂，则所有元素小于 $2x$，所以前缀异或值只能落在 $[0,2x-1]$，beauty 至多为 $2x-1$。",
+            "要在达到最大 beauty 后继续延长数组，每个前缀异或值必须恰好出现两次；共有 $2x$ 个值，因此前缀长度为 $4x$、数组长度为 $4x-1$。",
+            "按两个区间分别构造升序再降序的前缀异或序列，区间内相邻值异或小于 $x$，唯一跨区间跳跃为 $0\\leftrightarrow x$，故恢复出的元素均不超过 $n$。"
+          ],
+          "solutionBrief": "取最大二次幂 $x\\le n$，构造前缀异或序列 $0\\ldots x-1\\ldots0$ 后接 $x\\ldots2x-1\\ldots x$，再令 $a_i=p_{i-1}\\oplus p_i$。每个前缀值恰好出现两次，得到长度 $4x-1$ 的最优数组。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
