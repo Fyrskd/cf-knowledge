@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-14",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4345,
+    "total_problems": 4338,
     "source_total_problems": 4345,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4345,
+    "filtered_out_problems": 7,
+    "with_statement_brief": 4338,
     "with_editorial_brief": 3978,
     "with_solution_brief": 3980,
-    "missing_editorial_brief": 365,
+    "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3407,
+    "ai_override_count": 3400,
     "primary_topic_count": 13,
-    "contest_count": 679,
+    "contest_count": 678,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1428,
+    "构造与贪心": 1427,
     "动态规划与状态设计": 357,
     "数据结构": 405,
-    "图论与网络流": 294,
-    "数论与同余": 453,
+    "图论与网络流": 293,
+    "数论与同余": 452,
     "交互": 131,
-    "组合计数与概率": 333,
+    "组合计数与概率": 332,
     "几何": 101,
     "树结构": 200,
-    "字符串": 231,
+    "字符串": 229,
     "基础实现与模拟": 259,
     "代数、矩阵与多项式": 28,
-    "博弈": 125
+    "博弈": 124
   },
   "statusCounts": {
     "ai_generated_with_editorial": 2970,
     "ai_generated_partial_editorial": 117,
-    "missing_editorial": 365,
+    "missing_editorial": 358,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -77,176 +77,6 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
-    {
-      "id": 2276,
-      "name": "Educational Codeforces Round 195 (Rated for Div. 2)",
-      "date": "2026-10-14",
-      "url": "https://codeforces.com/contest/2276",
-      "type": "Educational",
-      "problemCount": 7,
-      "maxRating": null,
-      "problems": [
-        {
-          "key": "2276A",
-          "index": "A",
-          "slot": "A",
-          "title": "Perfect Sandwiches",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2276/problem/A",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "greedy",
-            "math"
-          ],
-          "statementBrief": "给定 $a$ 片奶酪和 $b$ 片香肠，需要把它们全部且各使用一次分配到若干个三明治中。每个三明治至少含一片奶酪和一片香肠，且奶酪片数必须严格多于香肠片数；求最多能制作的三明治数量，无法完成则输出 $-1$。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2276B",
-          "index": "B",
-          "slot": "B",
-          "title": "Replace and Compress",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2276/problem/B",
-          "editorialUrl": "",
-          "primaryTopic": "字符串",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "implementation",
-            "strings"
-          ],
-          "statementBrief": "给定一个只含 0 和 1 的字符串。必须先至多翻转一个下标在 $2$ 到 $n-1$ 之间的字符（也可以不翻转，首尾不能改），再把每个极大连续相同字符块压缩为一个字符，求所有可能得到的不同字符串数量。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2276C",
-          "index": "C",
-          "slot": "C",
-          "title": "Subarrays",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2276/problem/C",
-          "editorialUrl": "",
-          "primaryTopic": "数论与同余",
-          "secondaryTopics": [],
-          "originalTags": [
-            "math",
-            "number theory"
-          ],
-          "statementBrief": "给定一个含正整数的数组和整数 $k$，每次考察一个连续子数组；只有当子数组元素和能被 $k$ 整除且长度严格大于 $k$ 时才算合格。要求统计所有合格子数组的数量。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2276D",
-          "index": "D",
-          "slot": "D",
-          "title": "Caveman",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2276/problem/D",
-          "editorialUrl": "",
-          "primaryTopic": "图论与网络流",
-          "secondaryTopics": [
-            "组合计数与概率"
-          ],
-          "originalTags": [
-            "combinatorics",
-            "graphs"
-          ],
-          "statementBrief": "给定一个无向图，要把每个顶点染成红色或蓝色，并保证每个顶点至少有一个相邻顶点使用相反颜色。需要统计合法染色方案数，并将结果分别输出为 1、2、Many（超过 2）或 Brain Melt（为 0）。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2276E",
-          "index": "E",
-          "slot": "E",
-          "title": "Good Substrings",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2276/problem/E",
-          "editorialUrl": "",
-          "primaryTopic": "字符串",
-          "secondaryTopics": [
-            "组合计数与概率"
-          ],
-          "originalTags": [
-            "combinatorics",
-            "data structures",
-            "dp",
-            "greedy",
-            "strings"
-          ],
-          "statementBrief": "给定一个只含数字的字符串，连续子串若包含子序列 2025 且不包含子序列 2026，则为坏子串，否则为好子串。对每个位置 $i$，统计所有包含该位置的好子串数量。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2276F",
-          "index": "F",
-          "slot": "F",
-          "title": "Permutation Coloring Game",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2276/problem/F",
-          "editorialUrl": "",
-          "primaryTopic": "博弈",
-          "secondaryTopics": [],
-          "originalTags": [
-            "dp",
-            "dsu",
-            "games",
-            "math"
-          ],
-          "statementBrief": "给定一个排列，所有元素初始为白色。Alice 和 Bob 轮流行动，每次选择 $1$ 到 $k$ 个白色元素并把它们全部染成红色或蓝色；全部染色后，若只交换同色元素就能将排列升序排列，则 Alice 获胜，否则 Bob 获胜。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2276G",
-          "index": "G",
-          "slot": "G",
-          "title": "Elimination of Players",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2276/problem/G",
-          "editorialUrl": "",
-          "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [],
-          "originalTags": [
-            "combinatorics",
-            "dp",
-            "math"
-          ],
-          "statementBrief": "有 $n$ 名强度互不相同的玩家，给定每轮被保护的玩家。共进行 $n-1$ 轮：若当前最弱者未受保护则淘汰他，否则淘汰当前第二弱者；要求统计每名玩家在每轮被淘汰的强度排列数，并按题目规定取模后加权 XOR。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        }
-      ]
-    },
     {
       "id": 2274,
       "name": "Codeforces Round 1127 (Div. 2, Based on Mexican Olympiad in Informatics 2026)",
