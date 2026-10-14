@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-10-14T12:15:59+00:00",
+  "updated_at": "2026-10-14T17:39:03+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -101637,6 +101637,197 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据题面中的频次费用定义，以及 editorial 中的容量构造、删减性质和二分判定；tags 仅用于辅助分类。",
         "quality_flags": []
+      }
+    },
+    "2276G": {
+      "problem_key": "2276G",
+      "title": "Elimination of Players",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/G",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "1a126404c8b2750b73b865890b00673032ef98daea91707c9a5a5ba40b95650c",
+      "generated_at": "2026-10-14T17:35:56+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 名强度互不相同的玩家，给定每轮被保护的玩家。共进行 $n-1$ 轮：若当前最弱者未受保护则淘汰他，否则淘汰当前第二弱者；要求统计每名玩家在每轮被淘汰的强度排列数，并按题目规定取模后加权 XOR。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意与规则来自 statement；主题分类参考 codeforces_tags；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2276F": {
+      "problem_key": "2276F",
+      "title": "Permutation Coloring Game",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/F",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "6a92fb4468e14bb5d0e4b50a9a696ef8b6c40e9cf57da8b9bdb9736b4bb1ca99",
+      "generated_at": "2026-10-14T17:36:39+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个排列，所有元素初始为白色。Alice 和 Bob 轮流行动，每次选择 $1$ 到 $k$ 个白色元素并把它们全部染成红色或蓝色；全部染色后，若只交换同色元素就能将排列升序排列，则 Alice 获胜，否则 Bob 获胜。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "博弈",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 提炼；editorial_text 为空，tags 仅用于主题归类。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2276E": {
+      "problem_key": "2276E",
+      "title": "Good Substrings",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/E",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "197d8db467687b9018bfd0a72f370ca54b661fd5cb109363b5a2091a12d5df69",
+      "generated_at": "2026-10-14T17:37:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个只含数字的字符串，连续子串若包含子序列 2025 且不包含子序列 2026，则为坏子串，否则为好子串。对每个位置 $i$，统计所有包含该位置的好子串数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "组合计数与概率"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "题意来自 statement_text；题型标签参考 codeforces_tags；editorial_text 为空且 editorial_url 缺失。",
+        "quality_flags": [
+          "missing_editorial",
+          "no_solution_details",
+          "statement_inferred",
+          "statement_only"
+        ]
+      }
+    },
+    "2276D": {
+      "problem_key": "2276D",
+      "title": "Caveman",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/D",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "e78d2a4bcf899965030600e579305dac777d8fb81836016c827539c5f2b9c940",
+      "generated_at": "2026-10-14T17:37:42+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个无向图，要把每个顶点染成红色或蓝色，并保证每个顶点至少有一个相邻顶点使用相反颜色。需要统计合法染色方案数，并将结果分别输出为 1、2、Many（超过 2）或 Brain Melt（为 0）。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "组合计数与概率"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 tags 提炼；editorial_text 为空，未使用外部题解。",
+        "quality_flags": [
+          "missing_editorial",
+          "solution_unavailable",
+          "statement_only"
+        ]
+      }
+    },
+    "2276C": {
+      "problem_key": "2276C",
+      "title": "Subarrays",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/C",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "c6c3f6c5a887f5e9a38aea893c950ab6dac3a320d2cf53ed5825cf2c07e7c105",
+      "generated_at": "2026-10-14T17:38:10+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个含正整数的数组和整数 $k$，每次考察一个连续子数组；只有当子数组元素和能被 $k$ 整除且长度严格大于 $k$ 时才算合格。要求统计所有合格子数组的数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和 codeforces_tags 提炼；editorial_text 为空，未使用外部信息。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2276B": {
+      "problem_key": "2276B",
+      "title": "Replace and Compress",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/B",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "e0460e34930ba5fda8e8927a052968ccf60008e953dfb36303e2776e771f8ea4",
+      "generated_at": "2026-10-14T17:38:32+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个只含 0 和 1 的字符串。必须先至多翻转一个下标在 $2$ 到 $n-1$ 之间的字符（也可以不翻转，首尾不能改），再把每个极大连续相同字符块压缩为一个字符，求所有可能得到的不同字符串数量。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "字符串",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 及题目标签 strings、implementation；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2276A": {
+      "problem_key": "2276A",
+      "title": "Perfect Sandwiches",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/A",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "ffc6a07d402f0bfb851d8290e96bb23de02ec944b19e0fb89902a6c2551bb336",
+      "generated_at": "2026-10-14T17:39:03+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $a$ 片奶酪和 $b$ 片香肠，需要把它们全部且各使用一次分配到若干个三明治中。每个三明治至少含一片奶酪和一片香肠，且奶酪片数必须严格多于香肠片数；求最多能制作的三明治数量，无法完成则输出 $-1$。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 提炼题意与等价分组模型，primary_topic 参考 codeforces_tags；editorial_text 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
       }
     }
   }

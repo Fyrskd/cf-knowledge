@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 365,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3400,
+    "ai_override_count": 3407,
     "primary_topic_count": 13,
     "contest_count": 679,
     "rating_min": 800,
@@ -95,14 +95,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2276/problem/A",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Perfect Sandwiches；本地暂无可用题解正文。",
+          "statementBrief": "给定 $a$ 片奶酪和 $b$ 片香肠，需要把它们全部且各使用一次分配到若干个三明治中。每个三明治至少含一片奶酪和一片香肠，且奶酪片数必须严格多于香肠片数；求最多能制作的三明治数量，无法完成则输出 $-1$。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -119,15 +117,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "字符串",
           "secondaryTopics": [
-            "组合计数与概率",
-            "动态规划与状态设计",
-            "图论与网络流"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "implementation",
             "strings"
           ],
-          "statementBrief": "题面已抓取：Replace and Compress；本地暂无可用题解正文。",
+          "statementBrief": "给定一个只含 0 和 1 的字符串。必须先至多翻转一个下标在 $2$ 到 $n-1$ 之间的字符（也可以不翻转，首尾不能改），再把每个极大连续相同字符块压缩为一个字符，求所有可能得到的不同字符串数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -143,15 +139,12 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2276/problem/C",
           "editorialUrl": "",
           "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "图论与网络流"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "math",
             "number theory"
           ],
-          "statementBrief": "题面已抓取：Subarrays；本地暂无可用题解正文。",
+          "statementBrief": "给定一个含正整数的数组和整数 $k$，每次考察一个连续子数组；只有当子数组元素和能被 $k$ 整除且长度严格大于 $k$ 时才算合格。要求统计所有合格子数组的数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -168,14 +161,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "图论与网络流",
           "secondaryTopics": [
-            "组合计数与概率",
-            "动态规划与状态设计"
+            "组合计数与概率"
           ],
           "originalTags": [
             "combinatorics",
             "graphs"
           ],
-          "statementBrief": "题面已抓取：Caveman；本地暂无可用题解正文。",
+          "statementBrief": "给定一个无向图，要把每个顶点染成红色或蓝色，并保证每个顶点至少有一个相邻顶点使用相反颜色。需要统计合法染色方案数，并将结果分别输出为 1、2、Many（超过 2）或 Brain Melt（为 0）。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -192,9 +184,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "字符串",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "组合计数与概率",
-            "数据结构"
+            "组合计数与概率"
           ],
           "originalTags": [
             "combinatorics",
@@ -203,7 +193,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "strings"
           ],
-          "statementBrief": "题面已抓取：Good Substrings；本地暂无可用题解正文。",
+          "statementBrief": "给定一个只含数字的字符串，连续子串若包含子序列 2025 且不包含子序列 2026，则为坏子串，否则为好子串。对每个位置 $i$，统计所有包含该位置的好子串数量。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -219,18 +209,14 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2276/problem/F",
           "editorialUrl": "",
           "primaryTopic": "博弈",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "图论与网络流",
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "dp",
             "dsu",
             "games",
             "math"
           ],
-          "statementBrief": "题面已抓取：Permutation Coloring Game；本地暂无可用题解正文。",
+          "statementBrief": "给定一个排列，所有元素初始为白色。Alice 和 Bob 轮流行动，每次选择 $1$ 到 $k$ 个白色元素并把它们全部染成红色或蓝色；全部染色后，若只交换同色元素就能将排列升序排列，则 Alice 获胜，否则 Bob 获胜。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -246,17 +232,13 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2276/problem/G",
           "editorialUrl": "",
           "primaryTopic": "组合计数与概率",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "博弈",
-            "构造与贪心"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "combinatorics",
             "dp",
             "math"
           ],
-          "statementBrief": "题面已抓取：Elimination of Players；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 名强度互不相同的玩家，给定每轮被保护的玩家。共进行 $n-1$ 轮：若当前最弱者未受保护则淘汰他，否则淘汰当前第二弱者；要求统计每名玩家在每轮被淘汰的强度排列数，并按题目规定取模后加权 XOR。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
