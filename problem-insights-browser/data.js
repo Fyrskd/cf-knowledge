@@ -1,19 +1,19 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-13",
+  "generatedAt": "2026-10-14",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4338,
+    "total_problems": 4330,
     "source_total_problems": 4338,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4338,
+    "filtered_out_problems": 8,
+    "with_statement_brief": 4330,
     "with_editorial_brief": 3970,
     "with_solution_brief": 3972,
-    "missing_editorial_brief": 366,
+    "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3400,
+    "ai_override_count": 3392,
     "primary_topic_count": 13,
-    "contest_count": 678,
+    "contest_count": 676,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1427,
+    "构造与贪心": 1423,
     "动态规划与状态设计": 357,
-    "数据结构": 405,
+    "数据结构": 404,
     "图论与网络流": 293,
     "数论与同余": 451,
-    "交互": 131,
+    "交互": 129,
     "组合计数与概率": 332,
     "几何": 101,
     "树结构": 200,
     "字符串": 229,
-    "基础实现与模拟": 260,
+    "基础实现与模拟": 259,
     "代数、矩阵与多项式": 28,
     "博弈": 124
   },
   "statusCounts": {
     "ai_generated_with_editorial": 2962,
     "ai_generated_partial_editorial": 117,
-    "missing_editorial": 366,
+    "missing_editorial": 358,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -77,216 +77,6 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
-    {
-      "id": 2274,
-      "name": "Codeforces Round 1127 (Div. 2, Based on Mexican Olympiad in Informatics 2026)",
-      "date": "2026-10-11",
-      "url": "https://codeforces.com/contest/2274",
-      "type": "Div. 2",
-      "problemCount": 2,
-      "maxRating": null,
-      "problems": [
-        {
-          "key": "2274A",
-          "index": "A",
-          "slot": "A",
-          "title": "The Projections of Paco",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2274/problem/A",
-          "editorialUrl": "",
-          "primaryTopic": "基础实现与模拟",
-          "secondaryTopics": [
-            "代数、矩阵与多项式"
-          ],
-          "originalTags": [
-            "implementation",
-            "math"
-          ],
-          "statementBrief": "数轴上有一个从坐标 $0$ 出发的令牌。先选择整数 $p$，再按顺序将令牌依次关于坐标为 $p,a_1,a_2,\u0000dots,a_n$ 的点各反射一次，求使令牌最终回到坐标 $0$ 的 $p$；题目保证答案唯一。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2274B",
-          "index": "B",
-          "slot": "B",
-          "title": "Prefix",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2274/problem/B",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "greedy"
-          ],
-          "statementBrief": "给定数组，按从左到右处理每个 $i=2,\u0001ldots,n$：令 $s$ 为此前最终元素之和，并将 $a_i$ 替换为 $a_i-s$、$a_i$ 或 $a_i+s$ 之一。选择所有操作后，求最终数组中最大元素的最大可能值。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        }
-      ]
-    },
-    {
-      "id": 2273,
-      "name": "Codeforces Round 1127 (Div. 1, Based on Mexican Olympiad in Informatics 2026)",
-      "date": "2026-10-11",
-      "url": "https://codeforces.com/contest/2273",
-      "type": "Div. 1",
-      "problemCount": 6,
-      "maxRating": null,
-      "problems": [
-        {
-          "key": "2273A",
-          "index": "A",
-          "slot": "A",
-          "title": "Lavencia Oranges",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2273/problem/A",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "binary search",
-            "constructive algorithms",
-            "dp",
-            "greedy"
-          ],
-          "statementBrief": "给定 $n$ 个橙子和 $n$ 个袋子，用数组 $a$ 指定每个橙子放入哪个袋子。监管者选择一个装橙子数量 $s$，没收所有恰好装有 $s$ 个橙子的袋子；要求构造 $a$，使所有可能的没收数量中的最大值最小。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2273B",
-          "index": "B",
-          "slot": "B",
-          "title": "Robot Championship",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2273/problem/B",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "代数、矩阵与多项式"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "math"
-          ],
-          "statementBrief": "在一个 $n\\times n$ 棋盘上，机器人从任意格子出发且位置不可见。每秒先选择一条满足 $r+c=v$ 的对角线发射激光，随后机器人可合法地上移、右移或左下移；需要构造至多 $3n$ 条固定的对角线，使无论起点和移动方式如何都至少被命中一次。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2273C",
-          "index": "C",
-          "slot": "C",
-          "title": "Matrix Puzzle",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2273/problem/C",
-          "editorialUrl": "",
-          "primaryTopic": "数据结构",
-          "secondaryTopics": [
-            "数论与同余",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "brute force",
-            "data structures",
-            "implementation",
-            "math",
-            "matrices"
-          ],
-          "statementBrief": "给定两个 $n\\times n$ 矩阵 $a,b$，对 $a$ 进行子矩阵加法更新；查询时可在指定子矩阵内分别给每行、每列加任意常数，判断能否使其等于 $b$ 的对应子矩阵。每次查询独立且不修改矩阵，要求输出 YES 或 NO。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2273D",
-          "index": "D",
-          "slot": "D",
-          "title": "Aura Battle",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2273/problem/D",
-          "editorialUrl": "",
-          "primaryTopic": "交互",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "brute force",
-            "implementation",
-            "interactive",
-            "math"
-          ],
-          "statementBrief": "每场战斗有一个固定但未知的整数 $x\\in[1,10^4]$，共进行 10 轮。每轮选择两个整数 $a_i,b_i$，损失为 $\\min(|x-a_i|,|x-b_i|)$，并在下一轮前获得该损失；选择可依赖此前反馈。要求设计策略，使任意 $x$ 下十轮总损失不超过最小可保证值 $m$ 加 67（首个测试限制为 $10^5$）。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2273E",
-          "index": "E",
-          "slot": "E",
-          "title": "Six-Seven Bags",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2273/problem/E",
-          "editorialUrl": "",
-          "primaryTopic": "交互",
-          "secondaryTopics": [],
-          "originalTags": [
-            "brute force",
-            "greedy",
-            "interactive"
-          ],
-          "statementBrief": "有 $n$ 个袋子，第 $i$ 袋有 $a_i$ 枚硬币；恰有一袋装 6 克硬币，其余装 7 克硬币。每次可从每袋取任意不超过库存的数量并查询总重量，硬币随后放回；要求在最坏情况下用最少的查询确定 6 克硬币所在袋，并使用不超过 $f(a)$ 次查询。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2273F",
-          "index": "F",
-          "slot": "F",
-          "title": "Pancho's Permutation",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2273/problem/F",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "constructive algorithms",
-            "dp",
-            "greedy",
-            "math"
-          ],
-          "statementBrief": "给定一个长度为 $n$ 的部分排列，已知位置固定为指定数值，$-1$ 位置需要补入剩余数字。完整排列的每个非空非完整前缀都不能恰好由 $1$ 到其长度组成，每个非空非完整后缀也不能恰好由其下标到 $n$ 组成；要求输出满足条件的第 $k$ 个字典序排列，不足则输出 $-1$。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        }
-      ]
-    },
     {
       "id": 2271,
       "name": "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)",
