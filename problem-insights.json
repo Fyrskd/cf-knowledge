@@ -15,13 +15,13 @@
     ]
   },
   "summary": {
-    "total_problems": 4338,
-    "source_total_problems": 4338,
+    "total_problems": 4345,
+    "source_total_problems": 4345,
     "filtered_out_problems": 0,
-    "with_statement_brief": 4338,
+    "with_statement_brief": 4345,
     "with_editorial_brief": 3978,
     "with_solution_brief": 3980,
-    "missing_editorial_brief": 358,
+    "missing_editorial_brief": 365,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 3400,
@@ -179659,6 +179659,225 @@
       },
       "manual_override": false,
       "ai_override": true
+    },
+    {
+      "ordinal": 4339,
+      "problem_key": "2276A",
+      "contest_id": 2276,
+      "title": "Perfect Sandwiches",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/A",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "动态规划与状态设计"
+      ],
+      "original_tags": [
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "题面已抓取：Perfect Sandwiches；本地暂无可用题解正文。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json"
+      },
+      "manual_override": false
+    },
+    {
+      "ordinal": 4340,
+      "problem_key": "2276B",
+      "contest_id": 2276,
+      "title": "Replace and Compress",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/B",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "组合计数与概率",
+        "动态规划与状态设计",
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "implementation",
+        "strings"
+      ],
+      "statement_brief": "题面已抓取：Replace and Compress；本地暂无可用题解正文。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json"
+      },
+      "manual_override": false
+    },
+    {
+      "ordinal": 4341,
+      "problem_key": "2276C",
+      "contest_id": 2276,
+      "title": "Subarrays",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/C",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "图论与网络流"
+      ],
+      "original_tags": [
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "题面已抓取：Subarrays；本地暂无可用题解正文。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json"
+      },
+      "manual_override": false
+    },
+    {
+      "ordinal": 4342,
+      "problem_key": "2276D",
+      "contest_id": 2276,
+      "title": "Caveman",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/D",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "组合计数与概率",
+        "动态规划与状态设计"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "graphs"
+      ],
+      "statement_brief": "题面已抓取：Caveman；本地暂无可用题解正文。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json"
+      },
+      "manual_override": false
+    },
+    {
+      "ordinal": 4343,
+      "problem_key": "2276E",
+      "contest_id": 2276,
+      "title": "Good Substrings",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/E",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "组合计数与概率",
+        "数据结构"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "data structures",
+        "dp",
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "题面已抓取：Good Substrings；本地暂无可用题解正文。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json"
+      },
+      "manual_override": false
+    },
+    {
+      "ordinal": 4344,
+      "problem_key": "2276F",
+      "contest_id": 2276,
+      "title": "Permutation Coloring Game",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/F",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "图论与网络流",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "dp",
+        "dsu",
+        "games",
+        "math"
+      ],
+      "statement_brief": "题面已抓取：Permutation Coloring Game；本地暂无可用题解正文。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json"
+      },
+      "manual_override": false
+    },
+    {
+      "ordinal": 4345,
+      "problem_key": "2276G",
+      "contest_id": 2276,
+      "title": "Elimination of Players",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2276/problem/G",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "博弈",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "题面已抓取：Elimination of Players；本地暂无可用题解正文。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json"
+      },
+      "manual_override": false
     }
   ]
 }

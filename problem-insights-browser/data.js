@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-14",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4338,
-    "source_total_problems": 4338,
+    "total_problems": 4345,
+    "source_total_problems": 4345,
     "filtered_out_problems": 0,
-    "with_statement_brief": 4338,
+    "with_statement_brief": 4345,
     "with_editorial_brief": 3978,
     "with_solution_brief": 3980,
-    "missing_editorial_brief": 358,
+    "missing_editorial_brief": 365,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 3400,
     "primary_topic_count": 13,
-    "contest_count": 678,
+    "contest_count": 679,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1427,
+    "构造与贪心": 1428,
     "动态规划与状态设计": 357,
     "数据结构": 405,
-    "图论与网络流": 293,
-    "数论与同余": 452,
+    "图论与网络流": 294,
+    "数论与同余": 453,
     "交互": 131,
-    "组合计数与概率": 332,
+    "组合计数与概率": 333,
     "几何": 101,
     "树结构": 200,
-    "字符串": 229,
+    "字符串": 231,
     "基础实现与模拟": 259,
     "代数、矩阵与多项式": 28,
-    "博弈": 124
+    "博弈": 125
   },
   "statusCounts": {
     "ai_generated_with_editorial": 2970,
     "ai_generated_partial_editorial": 117,
-    "missing_editorial": 358,
+    "missing_editorial": 365,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -77,6 +77,194 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
+    {
+      "id": 2276,
+      "name": "Educational Codeforces Round 195 (Rated for Div. 2)",
+      "date": "2026-10-14",
+      "url": "https://codeforces.com/contest/2276",
+      "type": "Educational",
+      "problemCount": 7,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2276A",
+          "index": "A",
+          "slot": "A",
+          "title": "Perfect Sandwiches",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2276/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Perfect Sandwiches；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2276B",
+          "index": "B",
+          "slot": "B",
+          "title": "Replace and Compress",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2276/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "implementation",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Replace and Compress；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2276C",
+          "index": "C",
+          "slot": "C",
+          "title": "Subarrays",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2276/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "数论与同余",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流"
+          ],
+          "originalTags": [
+            "math",
+            "number theory"
+          ],
+          "statementBrief": "题面已抓取：Subarrays；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2276D",
+          "index": "D",
+          "slot": "D",
+          "title": "Caveman",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2276/problem/D",
+          "editorialUrl": "",
+          "primaryTopic": "图论与网络流",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "graphs"
+          ],
+          "statementBrief": "题面已抓取：Caveman；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2276E",
+          "index": "E",
+          "slot": "E",
+          "title": "Good Substrings",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2276/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "字符串",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "组合计数与概率",
+            "数据结构"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "data structures",
+            "dp",
+            "greedy",
+            "strings"
+          ],
+          "statementBrief": "题面已抓取：Good Substrings；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2276F",
+          "index": "F",
+          "slot": "F",
+          "title": "Permutation Coloring Game",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2276/problem/F",
+          "editorialUrl": "",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dp",
+            "dsu",
+            "games",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Permutation Coloring Game；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2276G",
+          "index": "G",
+          "slot": "G",
+          "title": "Elimination of Players",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2276/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "组合计数与概率",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "博弈",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "combinatorics",
+            "dp",
+            "math"
+          ],
+          "statementBrief": "题面已抓取：Elimination of Players；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
     {
       "id": 2274,
       "name": "Codeforces Round 1127 (Div. 2, Based on Mexican Olympiad in Informatics 2026)",

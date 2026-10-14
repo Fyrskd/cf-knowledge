@@ -1,5 +1,81 @@
 [
   {
+    "contestId": 2276,
+    "index": "G",
+    "name": "Elimination of Players",
+    "type": "PROGRAMMING",
+    "tags": [
+      "combinatorics",
+      "dp",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2276,
+    "index": "F",
+    "name": "Permutation Coloring Game",
+    "type": "PROGRAMMING",
+    "tags": [
+      "dp",
+      "dsu",
+      "games",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2276,
+    "index": "E",
+    "name": "Good Substrings",
+    "type": "PROGRAMMING",
+    "tags": [
+      "combinatorics",
+      "data structures",
+      "dp",
+      "greedy",
+      "strings"
+    ]
+  },
+  {
+    "contestId": 2276,
+    "index": "D",
+    "name": "Caveman",
+    "type": "PROGRAMMING",
+    "tags": [
+      "combinatorics",
+      "graphs"
+    ]
+  },
+  {
+    "contestId": 2276,
+    "index": "C",
+    "name": "Subarrays",
+    "type": "PROGRAMMING",
+    "tags": [
+      "math",
+      "number theory"
+    ]
+  },
+  {
+    "contestId": 2276,
+    "index": "B",
+    "name": "Replace and Compress",
+    "type": "PROGRAMMING",
+    "tags": [
+      "implementation",
+      "strings"
+    ]
+  },
+  {
+    "contestId": 2276,
+    "index": "A",
+    "name": "Perfect Sandwiches",
+    "type": "PROGRAMMING",
+    "tags": [
+      "greedy",
+      "math"
+    ]
+  },
+  {
     "contestId": 2275,
     "index": "H",
     "name": "A Problem to Warm Up the Eyebrows",
