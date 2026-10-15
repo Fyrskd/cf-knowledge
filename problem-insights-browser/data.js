@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-15",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4345,
+    "total_problems": 4343,
     "source_total_problems": 4345,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4345,
-    "with_editorial_brief": 3985,
-    "with_solution_brief": 3987,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 4343,
+    "with_editorial_brief": 3983,
+    "with_solution_brief": 3985,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3407,
+    "ai_override_count": 3405,
     "primary_topic_count": 13,
     "contest_count": 679,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1428,
+    "构造与贪心": 1427,
     "动态规划与状态设计": 357,
     "数据结构": 405,
     "图论与网络流": 294,
@@ -56,10 +56,10 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 231,
     "基础实现与模拟": 259,
     "代数、矩阵与多项式": 28,
-    "博弈": 125
+    "博弈": 124
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2977,
+    "ai_generated_with_editorial": 2975,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-14",
       "url": "https://codeforces.com/contest/2276",
       "type": "Educational",
-      "problemCount": 7,
+      "problemCount": 6,
       "maxRating": null,
       "problems": [
         {
@@ -229,39 +229,6 @@ window.CF_INSIGHTS_DATA = {
           "editorialQuality": "complete"
         },
         {
-          "key": "2276F",
-          "index": "F",
-          "slot": "F",
-          "title": "Permutation Coloring Game",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2276/problem/F",
-          "editorialUrl": "https://codeforces.com/blog/entry/157752",
-          "primaryTopic": "博弈",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "构造与贪心",
-            "数论与同余"
-          ],
-          "originalTags": [
-            "dp",
-            "games",
-            "greedy",
-            "implementation",
-            "math"
-          ],
-          "statementBrief": "给定一个长度为 $n$ 的置换，所有位置初始为白色。Alice 与 Bob 轮流操作，每次选择 $1$ 到 $k$ 个白色位置并把它们全部染成同一种颜色；全部染色后，若能仅交换同色位置将置换升序排列则 Alice 获胜，否则 Bob 获胜，求最优策略下的胜者。",
-          "transformedStatement": "将位置 $i$ 视为指向 $p_i$ 的有向边，置换因此分解成若干环；问题转化为双方轮流给环中顶点染色，Alice 需保证每个环最终只有一种颜色。对环长进行分类后，剩余博弈可转化为首步选择若干整环，使任意至多 $k$ 个未完整处理的环都不再形成 Bob 的威胁。",
-          "keyObservations": [
-            "把置换视为若干有向环；当且仅当每个环内所有顶点同色时可排序，否则环内存在不同色相邻点导致无法完成排序。",
-            "当 $k\\ge2$ 时，存在长度至少 $k+2$ 的环，或至少两个长度为 $k+1$ 的环，Bob 都能在同一环中制造两种颜色。",
-            "恰有一个长度为 $k+1$ 的环时，Alice 首轮必须处理所有长度 $2$ 到 $k$ 的环；若其总长度为 $l$、单点环数模 $k+1$ 为 $c$，则当 $0<l+c\\le k$ 时可获胜。",
-            "所有环长不超过 $k$ 时，Bob 的威胁等价于选至多 $k$ 个环且总长度至少为 $d+k+1$；只需保留最长的至多 $2k$ 个环，并用状态记录 Alice 已处理环数和总长度来消除该威胁。"
-          ],
-          "solutionBrief": "先按置换环分解并判断同环同色条件。$k=1$ 需依据最长环长和 $n$ 的奇偶性单独判定；$k\\ge2$ 分析长环与 $k+1$ 环的必胜策略，剩余情况用保留最长环的 DP 判断 Alice 首步能否消除 Bob 的威胁。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
           "key": "2276G",
           "index": "G",
           "slot": "G",
@@ -361,7 +328,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-11",
       "url": "https://codeforces.com/contest/2273",
       "type": "Div. 1",
-      "problemCount": 6,
+      "problemCount": 5,
       "maxRating": null,
       "problems": [
         {
@@ -510,37 +477,6 @@ window.CF_INSIGHTS_DATA = {
             "按向量最大坐标分层生成编码，第 $i$ 个向量的最大坐标不超过对应的 $a_i$；因此所有坐标均可作为合法取币数。"
           ],
           "solutionBrief": "将袋子按 $a_i$ 排序，取最小的 $k$ 使所有 $(a_i+1)^k\\ge i$。按最大坐标分层生成前 $n$ 个互异的 $k$ 维向量并分配给袋子，$k$ 次查询逐坐标读出隐藏袋编码；构造复杂度为 $O(nk)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2273F",
-          "index": "F",
-          "slot": "F",
-          "title": "Pancho's Permutation",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2273/problem/F",
-          "editorialUrl": "https://codeforces.com/blog/entry/157634",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "组合计数与概率"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "dp",
-            "greedy",
-            "math"
-          ],
-          "statementBrief": "给定一个长度为 $n$ 的排列，其中部分位置已知、其余为 $-1$，要求补全为 $1$ 到 $n$ 的排列。补全后任何真前缀都不能恰好由 $1$ 到其长度组成，任何真后缀也不能满足同样条件；请输出符合条件的第 $k$ 个字典序排列，不存在则输出 $-1$。",
-          "transformedStatement": "将所有缺失位置按原位置排序、所有缺失值按数值排序，用排列 $q$ 描述二者匹配；问题转化为在禁止若干“前 $i$ 项包含排名 $1..i$”及其后缀对称条件的排列中，按字典序求第 $k$ 个。",
-          "keyObservations": [
-            "把缺失值和缺失位置分别排序，并用排列 $q$ 表示它们的匹配；该表示保持字典序，因此可以按位置逐个尝试未用排名并按合法 completions 数量跳过整块候选。",
-            "前缀违反条件等价于该前缀恰好拿到当前最小的一组缺失值，后缀同理；先扫描已知信息排除必然违规，再在线性时间标记可能触发的前缀和后缀条件。",
-            "对固定的 $m$ 个未知位置，令 $c_i$ 为前 $i$ 位中的自由位置数，用 $d_i=c_i!-$ 已更早违规的计数递推，得到所有前缀违规数 $B_P$；反转后得到 $B_S$，且前缀、后缀违规事件互斥，所以合法数为 $f!-B_P-B_S$。",
-            "当剩余未知数 $r\\ge20$ 时，所有违规条件的并集大小不足总排列数的一半以上，合法块必超过 $10^{18}$；因此可贪心取最小可行缺失值，直到未知数不超过 $20$，再用精确计数完成第 $k$ 个排列。"
-          ],
-          "solutionBrief": "将未知元素压缩为缺失值排名排列，先检查已知信息并标记可能违规的前后缀。未知数至少 $20$ 时贪心取最小值不会跳过 $k$，降至 $20$ 后用递推计数前后缀违规排列，按字典序分块定位答案；总复杂度为 $O(n+m^4)$，其中 $m\\le20$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
