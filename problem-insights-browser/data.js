@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-17",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4345,
-    "source_total_problems": 4345,
+    "total_problems": 4355,
+    "source_total_problems": 4355,
     "filtered_out_problems": 0,
-    "with_statement_brief": 4345,
+    "with_statement_brief": 4355,
     "with_editorial_brief": 3985,
     "with_solution_brief": 3987,
-    "missing_editorial_brief": 358,
+    "missing_editorial_brief": 368,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
     "ai_override_count": 3407,
     "primary_topic_count": 13,
-    "contest_count": 679,
+    "contest_count": 680,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1428,
-    "动态规划与状态设计": 357,
+    "构造与贪心": 1431,
+    "动态规划与状态设计": 360,
     "数据结构": 405,
     "图论与网络流": 294,
     "数论与同余": 453,
     "交互": 131,
     "组合计数与概率": 333,
-    "几何": 101,
-    "树结构": 200,
+    "几何": 102,
+    "树结构": 201,
     "字符串": 231,
     "基础实现与模拟": 259,
     "代数、矩阵与多项式": 28,
-    "博弈": 125
+    "博弈": 127
   },
   "statusCounts": {
     "ai_generated_with_editorial": 2976,
     "ai_generated_partial_editorial": 118,
-    "missing_editorial": 358,
+    "missing_editorial": 368,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -77,6 +77,235 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
+    {
+      "id": 2261,
+      "name": "WorldQuant Round 1 (Codeforces Round 1128, Div. 1 + Div. 2)",
+      "date": "2026-10-17",
+      "url": "https://codeforces.com/contest/2261",
+      "type": "Div. 1 + Div. 2",
+      "problemCount": 10,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2261A",
+          "index": "A",
+          "slot": "A",
+          "title": "Hey, It's Me, Souvlakity",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/A",
+          "editorialUrl": "",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "组合计数与概率",
+            "动态规划与状态设计",
+            "字符串"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：Hey, It's Me, Souvlakity；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2261B",
+          "index": "B",
+          "slot": "B",
+          "title": "What's the Capital of France?",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/B",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "几何"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：What's the Capital of France?；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2261C",
+          "index": "C",
+          "slot": "C",
+          "title": "I Know About a Million Things",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/C",
+          "editorialUrl": "",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "数据结构",
+            "构造与贪心"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：I Know About a Million Things；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2261D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Come Be My Friend, Don't Be So Scared (Easy Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/D1",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "博弈",
+            "构造与贪心"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：Come Be My Friend, Don't Be So Scared (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2261D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Come Be My Friend, Don't Be So Scared (Hard Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/D2",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "图论与网络流",
+            "博弈",
+            "构造与贪心"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：Come Be My Friend, Don't Be So Scared (Hard Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2261E",
+          "index": "E",
+          "slot": "E",
+          "title": "What Does the Cow Say?",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/E",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "图论与网络流",
+            "字符串"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：What Does the Cow Say?；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2261F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Plegma II: Ask Me Any Cell (Easy Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/F1",
+          "editorialUrl": "",
+          "primaryTopic": "几何",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "构造与贪心",
+            "交互"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：Plegma II: Ask Me Any Cell (Easy Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2261F2",
+          "index": "F2",
+          "slot": "F",
+          "title": "Plegma II: Ask Me Any Cell (Hard Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/F2",
+          "editorialUrl": "",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "几何",
+            "动态规划与状态设计",
+            "博弈"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：Plegma II: Ask Me Any Cell (Hard Version)；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2261G",
+          "index": "G",
+          "slot": "G",
+          "title": "1 2 3 and XOR, Where Did Everybody Go?",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/G",
+          "editorialUrl": "",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "博弈",
+            "构造与贪心"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：1 2 3 and XOR, Where Did Everybody Go?；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        },
+        {
+          "key": "2261H",
+          "index": "H",
+          "slot": "H",
+          "title": "Oh Tree Tree Tree, No Need to Leave",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/H",
+          "editorialUrl": "",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "字符串",
+            "博弈"
+          ],
+          "originalTags": [],
+          "statementBrief": "题面已抓取：Oh Tree Tree Tree, No Need to Leave；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "missing_url"
+        }
+      ]
+    },
     {
       "id": 2276,
       "name": "Educational Codeforces Round 195 (Rated for Div. 2)",
