@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-10-15T11:57:54+00:00",
+  "updated_at": "2026-10-17T16:06:55+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -101850,6 +101850,282 @@
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial_text 及 greedy/math 标签提炼。",
         "quality_flags": []
+      }
+    },
+    "2261H": {
+      "problem_key": "2261H",
+      "title": "Oh Tree Tree Tree, No Need to Leave",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2261/problem/H",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "1984f05475c24b6a42f44f542412785232eb45f5dfc0ea877a7a4b036a9aac32",
+      "generated_at": "2026-10-17T16:02:34+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "Isabel 要把长度为 $n$ 的二进制串写入一棵高度为 $h$ 的完整二叉树，每个节点填写一个比特后发送。破坏者选择一个节点翻转其比特，并在该节点非叶子时交换两个子节点后重新编号；Tara 只能看到变换后的树串，必须恢复原串。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和题目元数据；editorial_text 缺失，codeforces_tags 为空。",
+        "quality_flags": [
+          "low_confidence",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2261G": {
+      "problem_key": "2261G",
+      "title": "1 2 3 and XOR, Where Did Everybody Go?",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2261/problem/G",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "0d95c0b1a6aec250daad758f82c2b7dba67ed766bb4a3dc56b493d68e7a18c40",
+      "generated_at": "2026-10-17T16:03:00+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定非负整数序列。对每个连续子数组，必须恰好一次选择一个元素，并给它增加任意非负整数，然后取所得所有元素异或值的最小值；要求所有连续子数组对应最小值之和。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "仅依据 statement_text；editorial_text 为空，tags 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_only_no_algorithm"
+        ]
+      }
+    },
+    "2261F2": {
+      "problem_key": "2261F2",
+      "title": "Plegma II: Ask Me Any Cell (Hard Version)",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2261/problem/F2",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "7599028e6d5a5facd8fd4214417404fb0c0377295e70cc66bfcf25a068da3379",
+      "generated_at": "2026-10-17T16:03:27+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times n$ 网格，需为每个可能的目标单元格分别设置 0/1：1 表示放置信标，且每张网格至多含 $f(n)$ 个零。解码器从整张网格开始，恰好根据当前矩形内的信标数选择向内移动上、下、左或右边界共 $2n-2$ 次，最终必须唯一收缩到对应目标；同时输出所有目标网格和这套统一规则。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "交互"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text；editorial_text 为空，tags 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "no_tags",
+          "statement_only"
+        ]
+      }
+    },
+    "2261F1": {
+      "problem_key": "2261F1",
+      "title": "Plegma II: Ask Me Any Cell (Easy Version)",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2261/problem/F1",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "98fe3b755d68765e09b54d2fc79083fa54fa483a69d42715c5ac3768e2af7771",
+      "generated_at": "2026-10-17T16:03:55+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个 $n\\times n$ 网格，要为每个可能的目标单元格分别布置 0/1 信标，且每张网格至多有 $k$ 个零。机器人从整张网格开始，每次只看当前子网格中的信标数 $S$，按统一规则缩小上、下、左、右边界，恰好执行 $2n-2$ 次后必须定位到对应目标；需要输出全部网格和这套规则。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "交互",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text；editorial_text 缺失，tags 为空。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2261E": {
+      "problem_key": "2261E",
+      "title": "What Does the Cow Say?",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2261/problem/E",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "e688dfa20d2fd47b41c04e0c47a4122b9750d0b5016279ee53e7a51683e85a12",
+      "generated_at": "2026-10-17T16:04:25+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个长度为 $n$ 的正规括号序列。每次可选择相邻的“()”并删除，再在剩余字符串外包上一对括号，最多操作 $k$ 次；求最终字符串中连续左括号的最大可能长度。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 和题目元数据整理；editorial_text 为空，未使用 tags 推断算法。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "missing_editorial",
+          "statement_only"
+        ]
+      }
+    },
+    "2261D2": {
+      "problem_key": "2261D2",
+      "title": "Come Be My Friend, Don't Be So Scared (Hard Version)",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2261/problem/D2",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "e9b599ec66ccbd0ad90554984a420c043391e3d0a8600518dc77843f2b5a532f",
+      "generated_at": "2026-10-17T16:04:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个按顺序排列的位置，已有 $m$ 个同时启动的区间探测器；每个探测器只报告藏身位置是否落在其覆盖区间内。需要预先再安装尽量少的区间探测器，使所有位置得到的报告组合都不同，并输出一种安装方案。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text；editorial_text 为空，codeforces_tags 为空。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2261D1": {
+      "problem_key": "2261D1",
+      "title": "Come Be My Friend, Don't Be So Scared (Easy Version)",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2261/problem/D1",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "f7e38c5e35d3429e3cada745290c29654f8d159d35d287d6a942013f8c00180d",
+      "generated_at": "2026-10-17T16:05:40+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "有 $n$ 个按顺序排列的藏身位置，Lord Verity 可安装覆盖连续区间的探测器；所有区间必须在看到任何报告前确定，每个探测器只报告你是否位于其覆盖范围内。要求添加最少的探测器，使任意位置产生的全部报告都不同，并输出一种安装方案。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据题面中的探测器规则、唯一定位条件以及 $m=0$ 的版本限制；未提供 editorial_text。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2261C": {
+      "problem_key": "2261C",
+      "title": "I Know About a Million Things",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2261/problem/C",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "f34c71bd98ddd47e919262290c27fff2571d95e9e474d05f0e4ba391eb78b40a",
+      "generated_at": "2026-10-17T16:06:05+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个正整数数组，两名玩家轮流操作；每次可删除一个元素，或删除任意非空位置集合但要求被删元素之和为偶数。无法操作时输，需判断先手 Moggity 还是后手 Larpity 获胜。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "博弈",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text；editorial_text、tags 均未提供有效解法信息。",
+        "quality_flags": [
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2261B": {
+      "problem_key": "2261B",
+      "title": "What's the Capital of France?",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2261/problem/B",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "c40f9a6f8eaeca0b6ed2ec64152aa0da08a3d1e46b94c6abf45ecb526dc544cb",
+      "generated_at": "2026-10-17T16:06:25+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一条直线上 $n$ 家餐厅及其评分。每次可选择相邻两家：若评分不同，就把较低者增加 $1$；若相同则不变。可操作任意次，包括零次，求所有评分按位或的最大值。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [
+          "数论与同余"
+        ],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 提取；editorial_text 为空，tags 为空。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "missing_editorial",
+          "statement_inferred"
+        ]
+      }
+    },
+    "2261A": {
+      "problem_key": "2261A",
+      "title": "Hey, It's Me, Souvlakity",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2261/problem/A",
+      "editorial_url": null,
+      "editorial_quality": "missing_url",
+      "model": "gpt-6-luna",
+      "input_hash": "fcdbd37439b525c5b7c380963ba3f7f6339290867885f4b9da45ec3bfc1c584a",
+      "generated_at": "2026-10-17T16:06:55+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $1$ 到 $n$ 的整数，并用二进制串表示每个整数最初归谁所有。双方交替行动，Souvlakity 先手；每次行动者必须从自己拥有的整数中选一个交给对方，经过 $10^{100}$ 次后，Souvlakity 希望最大化、Kalamakity 希望最小化其最终持有整数集合的极差，即最大值减最小值。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "博弈",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 及其中的样例说明；editorial_text 为空，tags 未提供。",
+        "quality_flags": [
+          "ambiguous_solution",
+          "missing_editorial",
+          "statement_only"
+        ]
       }
     }
   }
