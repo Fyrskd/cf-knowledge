@@ -901,6 +901,131 @@
     ]
   },
   {
+    "contestId": 2261,
+    "index": "H",
+    "name": "Oh Tree Tree Tree, No Need to Leave",
+    "type": "PROGRAMMING",
+    "points": 4500.0,
+    "tags": [
+      "bitmasks",
+      "communication",
+      "dfs and similar",
+      "interactive",
+      "trees"
+    ]
+  },
+  {
+    "contestId": 2261,
+    "index": "G",
+    "name": "1 2 3 and XOR, Where Did Everybody Go?",
+    "type": "PROGRAMMING",
+    "points": 4000.0,
+    "tags": [
+      "bitmasks",
+      "data structures",
+      "divide and conquer",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2261,
+    "index": "F2",
+    "name": "Plegma II: Ask Me Any Cell (Hard Version)",
+    "type": "PROGRAMMING",
+    "points": 5000.0,
+    "tags": [
+      "constructive algorithms"
+    ]
+  },
+  {
+    "contestId": 2261,
+    "index": "F1",
+    "name": "Plegma II: Ask Me Any Cell (Easy Version)",
+    "type": "PROGRAMMING",
+    "points": 2500.0,
+    "tags": [
+      "brute force",
+      "communication",
+      "constructive algorithms",
+      "dp",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2261,
+    "index": "E",
+    "name": "What Does the Cow Say?",
+    "type": "PROGRAMMING",
+    "points": 2000.0,
+    "tags": [
+      "binary search",
+      "data structures",
+      "dfs and similar",
+      "greedy",
+      "trees"
+    ]
+  },
+  {
+    "contestId": 2261,
+    "index": "D2",
+    "name": "Come Be My Friend, Don't Be So Scared (Hard Version)",
+    "type": "PROGRAMMING",
+    "points": 2250.0,
+    "tags": [
+      "constructive algorithms",
+      "data structures",
+      "dsu",
+      "hashing",
+      "trees",
+      "two pointers"
+    ]
+  },
+  {
+    "contestId": 2261,
+    "index": "D1",
+    "name": "Come Be My Friend, Don't Be So Scared (Easy Version)",
+    "type": "PROGRAMMING",
+    "points": 1500.0,
+    "tags": [
+      "constructive algorithms",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2261,
+    "index": "C",
+    "name": "I Know About a Million Things",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "tags": [
+      "games",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2261,
+    "index": "B",
+    "name": "What's the Capital of France?",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "tags": [
+      "bitmasks",
+      "greedy",
+      "math"
+    ]
+  },
+  {
+    "contestId": 2261,
+    "index": "A",
+    "name": "Hey, It's Me, Souvlakity",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "tags": [
+      "games",
+      "math"
+    ]
+  },
+  {
     "contestId": 2260,
     "index": "G",
     "name": "Sortable Permutations",
@@ -143006,85 +143131,5 @@
     "tags": [
       "math"
     ]
-  },
-  {
-    "contestId": 2261,
-    "index": "A",
-    "name": "Hey, It's Me, Souvlakity",
-    "type": "PROGRAMMING",
-    "points": 500.0,
-    "tags": []
-  },
-  {
-    "contestId": 2261,
-    "index": "B",
-    "name": "What's the Capital of France?",
-    "type": "PROGRAMMING",
-    "points": 1000.0,
-    "tags": []
-  },
-  {
-    "contestId": 2261,
-    "index": "C",
-    "name": "I Know About a Million Things",
-    "type": "PROGRAMMING",
-    "points": 1000.0,
-    "tags": []
-  },
-  {
-    "contestId": 2261,
-    "index": "D1",
-    "name": "Come Be My Friend, Don't Be So Scared (Easy Version)",
-    "type": "PROGRAMMING",
-    "points": 1500.0,
-    "tags": []
-  },
-  {
-    "contestId": 2261,
-    "index": "D2",
-    "name": "Come Be My Friend, Don't Be So Scared (Hard Version)",
-    "type": "PROGRAMMING",
-    "points": 2250.0,
-    "tags": []
-  },
-  {
-    "contestId": 2261,
-    "index": "E",
-    "name": "What Does the Cow Say?",
-    "type": "PROGRAMMING",
-    "points": 2000.0,
-    "tags": []
-  },
-  {
-    "contestId": 2261,
-    "index": "F1",
-    "name": "Plegma II: Ask Me Any Cell (Easy Version)",
-    "type": "PROGRAMMING",
-    "points": 2500.0,
-    "tags": []
-  },
-  {
-    "contestId": 2261,
-    "index": "F2",
-    "name": "Plegma II: Ask Me Any Cell (Hard Version)",
-    "type": "PROGRAMMING",
-    "points": 5000.0,
-    "tags": []
-  },
-  {
-    "contestId": 2261,
-    "index": "G",
-    "name": "1 2 3 and XOR, Where Did Everybody Go?",
-    "type": "PROGRAMMING",
-    "points": 4000.0,
-    "tags": []
-  },
-  {
-    "contestId": 2261,
-    "index": "H",
-    "name": "Oh Tree Tree Tree, No Need to Leave",
-    "type": "PROGRAMMING",
-    "points": 4500.0,
-    "tags": []
   }
 ]
