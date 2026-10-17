@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 368,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3407,
+    "ai_override_count": 3417,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -44,17 +44,17 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1434,
-    "动态规划与状态设计": 358,
-    "数据结构": 405,
+    "构造与贪心": 1433,
+    "动态规划与状态设计": 357,
+    "数据结构": 406,
     "图论与网络流": 294,
     "数论与同余": 453,
-    "交互": 131,
+    "交互": 132,
     "组合计数与概率": 333,
     "几何": 101,
-    "树结构": 201,
+    "树结构": 200,
     "字符串": 231,
-    "基础实现与模拟": 259,
+    "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
     "博弈": 127
   },
@@ -96,15 +96,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "博弈",
           "secondaryTopics": [
-            "组合计数与概率",
-            "动态规划与状态设计",
-            "字符串"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "games",
             "math"
           ],
-          "statementBrief": "题面已抓取：Hey, It's Me, Souvlakity；本地暂无可用题解正文。",
+          "statementBrief": "给定长度为 $n$ 的二进制串表示两人对整数 $1$ 到 $n$ 的初始分配。进行 $10^{100}$ 次轮流操作，Souvlakity 先手且每次必须交出一个自己拥有的整数，对方随后交出一个自己拥有的整数；双方分别最大化、最小化 Souvlakity 终局持有整数集合的最大值与最小值之差。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -119,17 +117,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2261/problem/B",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "几何"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "bitmasks",
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：What's the Capital of France?；本地暂无可用题解正文。",
+          "statementBrief": "给定一排餐厅及评分。每次可选择相邻两家；若评分不同，就把较低者增加 $1$，若相同则不变。可操作任意次，要求所有最终评分的按位或最大。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -146,15 +141,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "博弈",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "数据结构",
-            "构造与贪心"
+            "数论与同余"
           ],
           "originalTags": [
             "games",
             "math"
           ],
-          "statementBrief": "题面已抓取：I Know About a Million Things；本地暂无可用题解正文。",
+          "statementBrief": "给定一个正整数数组，两名玩家轮流选择任意非空位置集合并删除对应元素；删除一个元素总是合法，删除多个元素则要求其元素和为偶数。无法操作时判负，求先手 Moggity 或后手 Larpity 获胜。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -171,15 +164,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "图论与网络流",
-            "博弈"
+            "组合计数与概率"
           ],
           "originalTags": [
             "constructive algorithms",
             "math"
           ],
-          "statementBrief": "题面已抓取：Come Be My Friend, Don't Be So Scared (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 个排成一行的位置，当前位置只能藏在其中一个。由于 $m=0$，需要预先安装若干覆盖连续区间的探测器；所有探测器同时报告是否覆盖藏身位置，要求用最少新增探测器唯一确定位置，并输出一种安装方案。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -195,11 +186,7 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2261/problem/D2",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "图论与网络流",
-            "树结构",
-            "字符串"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms",
             "data structures",
@@ -208,7 +195,7 @@ window.CF_INSIGHTS_DATA = {
             "trees",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Come Be My Friend, Don't Be So Scared (Hard Version)；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 个按顺序排列的位置，已有 $m$ 个区间探测器；每个探测器同时报告藏身位置是否落在其覆盖区间内。需要一次性新增尽可能少的区间探测器，使所有位置的报告组合互不相同，并输出这些新增区间。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -225,9 +212,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "树结构",
-            "数据结构",
-            "动态规划与状态设计"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "binary search",
@@ -236,7 +221,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "trees"
           ],
-          "statementBrief": "题面已抓取：What Does the Cow Say?；本地暂无可用题解正文。",
+          "statementBrief": "给定一个长度为 $n$ 的合法括号序列和整数 $k$。每次可选择相邻的 `()`，删除它们后在剩余字符串外层加上 `(` 和 `)`，最多操作 $k$ 次；要求最大化最终字符串中连续开括号的最长长度。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -252,11 +237,7 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2261/problem/F1",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "交互",
-            "几何"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "brute force",
             "communication",
@@ -264,7 +245,7 @@ window.CF_INSIGHTS_DATA = {
             "dp",
             "math"
           ],
-          "statementBrief": "题面已抓取：Plegma II: Ask Me Any Cell (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个 $n\\times n$ 网格，要为每个目标格分别设置 0/1 信标布局，且每个布局最多有 $k$ 个零。机器人从整张网格开始，连续执行 $2n-2$ 次动作；每次只能根据当前子矩形内的信标数选择缩小上、下、左或右边界，最终必须唯一剩下目标格，并输出所有布局及统一的计数到动作映射。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -280,15 +261,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2261/problem/F2",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "几何",
-            "动态规划与状态设计",
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms"
           ],
-          "statementBrief": "题面已抓取：Plegma II: Ask Me Any Cell (Hard Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n\\times n$ 网格中的任意目标单元，需要为每个目标分别布置信标，使零最多为 $k=f(n)$。机器人从整张网格开始，恰好进行 $2n-2$ 次操作；每次只能根据当前子网格内的信标数 $S$，按统一映射选择向上、下、左或右收缩一个边界，最终必须唯一到达目标单元。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -303,19 +280,15 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2261/problem/G",
           "editorialUrl": "",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "构造与贪心",
-            "数据结构",
-            "博弈"
-          ],
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [],
           "originalTags": [
             "bitmasks",
             "data structures",
             "divide and conquer",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：1 2 3 and XOR, Where Did Everybody Go?；本地暂无可用题解正文。",
+          "statementBrief": "给定非负整数序列。对每个连续子数组，必须恰好选择一个元素并给它加上任意非负整数，然后使整个子数组的按位异或值尽可能小；要求所有连续子数组的这些最小值之和。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -330,11 +303,11 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2261/problem/H",
           "editorialUrl": "",
-          "primaryTopic": "树结构",
+          "primaryTopic": "交互",
           "secondaryTopics": [
-            "交互",
-            "动态规划与状态设计",
-            "字符串"
+            "树结构",
+            "博弈",
+            "基础实现与模拟"
           ],
           "originalTags": [
             "bitmasks",
@@ -343,7 +316,7 @@ window.CF_INSIGHTS_DATA = {
             "interactive",
             "trees"
           ],
-          "statementBrief": "题面已抓取：Oh Tree Tree Tree, No Need to Leave；本地暂无可用题解正文。",
+          "statementBrief": "Isabel 要把长度为 $n$ 的二进制串编码到一棵高度为 $h$ 的完全二叉树各节点上。敌手选择一个节点翻转其值；若它不是叶子，还交换左右子树并按完全二叉树规则重新编号，Tara 只能看到处理后的树，必须恢复原串。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

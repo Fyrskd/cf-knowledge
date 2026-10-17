@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-10-17T16:06:55+00:00",
+  "updated_at": "2026-10-17T21:09:00+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -101860,24 +101860,26 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "1984f05475c24b6a42f44f542412785232eb45f5dfc0ea877a7a4b036a9aac32",
-      "generated_at": "2026-10-17T16:02:34+00:00",
+      "input_hash": "59948e172ee6400e732f0257b5bae3a3d01ac5c4d411006592e28d8351e5083b",
+      "generated_at": "2026-10-17T21:06:00+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "Isabel 要把长度为 $n$ 的二进制串写入一棵高度为 $h$ 的完整二叉树，每个节点填写一个比特后发送。破坏者选择一个节点翻转其比特，并在该节点非叶子时交换两个子节点后重新编号；Tara 只能看到变换后的树串，必须恢复原串。",
+        "statement_brief": "Isabel 要把长度为 $n$ 的二进制串编码到一棵高度为 $h$ 的完全二叉树各节点上。敌手选择一个节点翻转其值；若它不是叶子，还交换左右子树并按完全二叉树规则重新编号，Tara 只能看到处理后的树，必须恢复原串。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
-        "primary_topic": "构造与贪心",
+        "primary_topic": "交互",
         "secondary_topics": [
+          "树结构",
+          "博弈",
           "基础实现与模拟"
         ],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text 和题目元数据；editorial_text 缺失，codeforces_tags 为空。",
+        "source_provenance": "依据题面中的通信规则、树操作、双次运行说明及 tags；editorial_text 为空。",
         "quality_flags": [
-          "low_confidence",
+          "interactive_protocol_in_hacks_differs",
           "missing_editorial",
-          "statement_inferred"
+          "statement_only"
         ]
       }
     },
@@ -101889,23 +101891,21 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "0d95c0b1a6aec250daad758f82c2b7dba67ed766bb4a3dc56b493d68e7a18c40",
-      "generated_at": "2026-10-17T16:03:00+00:00",
+      "input_hash": "219397844c90f8e88a002e28a87d9b331835bd5387b3b8e13de835eba4004280",
+      "generated_at": "2026-10-17T21:06:17+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定非负整数序列。对每个连续子数组，必须恰好一次选择一个元素，并给它增加任意非负整数，然后取所得所有元素异或值的最小值；要求所有连续子数组对应最小值之和。",
+        "statement_brief": "给定非负整数序列。对每个连续子数组，必须恰好选择一个元素并给它加上任意非负整数，然后使整个子数组的按位异或值尽可能小；要求所有连续子数组的这些最小值之和。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
-        "primary_topic": "基础实现与模拟",
-        "secondary_topics": [
-          "数论与同余"
-        ],
+        "primary_topic": "数据结构",
+        "secondary_topics": [],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "仅依据 statement_text；editorial_text 为空，tags 为空。",
+        "source_provenance": "依据 statement_text 还原题意与等价表达，结合 codeforces_tags 判断主题；editorial_text 为空。",
         "quality_flags": [
-          "missing_editorial",
-          "statement_only_no_algorithm"
+          "low_confidence",
+          "missing_editorial"
         ]
       }
     },
@@ -101917,24 +101917,21 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "7599028e6d5a5facd8fd4214417404fb0c0377295e70cc66bfcf25a068da3379",
-      "generated_at": "2026-10-17T16:03:27+00:00",
+      "input_hash": "62a234e6379180ff6374d410134952d402d686ec2ecbcd30cd9e49ff59998941",
+      "generated_at": "2026-10-17T21:06:36+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个 $n\\times n$ 网格，需为每个可能的目标单元格分别设置 0/1：1 表示放置信标，且每张网格至多含 $f(n)$ 个零。解码器从整张网格开始，恰好根据当前矩形内的信标数选择向内移动上、下、左或右边界共 $2n-2$ 次，最终必须唯一收缩到对应目标；同时输出所有目标网格和这套统一规则。",
+        "statement_brief": "给定 $n\\times n$ 网格中的任意目标单元，需要为每个目标分别布置信标，使零最多为 $k=f(n)$。机器人从整张网格开始，恰好进行 $2n-2$ 次操作；每次只能根据当前子网格内的信标数 $S$，按统一映射选择向上、下、左或右收缩一个边界，最终必须唯一到达目标单元。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "构造与贪心",
-        "secondary_topics": [
-          "交互"
-        ],
+        "secondary_topics": [],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text；editorial_text 为空，tags 为空。",
+        "source_provenance": "依据题面与 constructive algorithms 标签；editorial_url 为空，未提供题解正文。",
         "quality_flags": [
           "missing_editorial",
-          "no_tags",
-          "statement_only"
+          "statement_inferred"
         ]
       }
     },
@@ -101946,22 +101943,19 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "98fe3b755d68765e09b54d2fc79083fa54fa483a69d42715c5ac3768e2af7771",
-      "generated_at": "2026-10-17T16:03:55+00:00",
+      "input_hash": "f8b27fa4ddf65c5ef130c747b911752546ced1e80730dcd510e0c1ff409c6bdc",
+      "generated_at": "2026-10-17T21:06:56+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个 $n\\times n$ 网格，要为每个可能的目标单元格分别布置 0/1 信标，且每张网格至多有 $k$ 个零。机器人从整张网格开始，每次只看当前子网格中的信标数 $S$，按统一规则缩小上、下、左、右边界，恰好执行 $2n-2$ 次后必须定位到对应目标；需要输出全部网格和这套规则。",
+        "statement_brief": "给定一个 $n\\times n$ 网格，要为每个目标格分别设置 0/1 信标布局，且每个布局最多有 $k$ 个零。机器人从整张网格开始，连续执行 $2n-2$ 次动作；每次只能根据当前子矩形内的信标数选择缩小上、下、左或右边界，最终必须唯一剩下目标格，并输出所有布局及统一的计数到动作映射。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
-        "primary_topic": "交互",
-        "secondary_topics": [
-          "构造与贪心"
-        ],
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text；editorial_text 缺失，tags 为空。",
+        "source_provenance": "依据题面提取；editorial_url 为空且 editorial_text 缺失，tags 仅用于辅助分类。",
         "quality_flags": [
-          "ambiguous_solution",
           "missing_editorial",
           "statement_inferred"
         ]
@@ -101975,22 +101969,24 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "e688dfa20d2fd47b41c04e0c47a4122b9750d0b5016279ee53e7a51683e85a12",
-      "generated_at": "2026-10-17T16:04:25+00:00",
+      "input_hash": "9ca2600f45f0261984bd61a52404fb50691cb8fcd3bf32e339edf7bf73449615",
+      "generated_at": "2026-10-17T21:07:11+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个长度为 $n$ 的正规括号序列。每次可选择相邻的“()”并删除，再在剩余字符串外包上一对括号，最多操作 $k$ 次；求最终字符串中连续左括号的最大可能长度。",
+        "statement_brief": "给定一个长度为 $n$ 的合法括号序列和整数 $k$。每次可选择相邻的 `()`，删除它们后在剩余字符串外层加上 `(` 和 `)`，最多操作 $k$ 次；要求最大化最终字符串中连续开括号的最长长度。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
-        "primary_topic": "基础实现与模拟",
-        "secondary_topics": [],
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text 和题目元数据整理；editorial_text 为空，未使用 tags 推断算法。",
+        "source_provenance": "内容仅依据 statement_text；editorial_text 为空，tags 未用于补写算法。",
         "quality_flags": [
           "ambiguous_solution",
           "missing_editorial",
-          "statement_only"
+          "statement_inferred"
         ]
       }
     },
@@ -102002,18 +101998,18 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "e9b599ec66ccbd0ad90554984a420c043391e3d0a8600518dc77843f2b5a532f",
-      "generated_at": "2026-10-17T16:04:44+00:00",
+      "input_hash": "b67314ead97370e00595a88d0dca484f00a9c7d332094d0061c3ab58e3c1ca6b",
+      "generated_at": "2026-10-17T21:07:27+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 $n$ 个按顺序排列的位置，已有 $m$ 个同时启动的区间探测器；每个探测器只报告藏身位置是否落在其覆盖区间内。需要预先再安装尽量少的区间探测器，使所有位置得到的报告组合都不同，并输出一种安装方案。",
+        "statement_brief": "有 $n$ 个按顺序排列的位置，已有 $m$ 个区间探测器；每个探测器同时报告藏身位置是否落在其覆盖区间内。需要一次性新增尽可能少的区间探测器，使所有位置的报告组合互不相同，并输出这些新增区间。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text；editorial_text 为空，codeforces_tags 为空。",
+        "source_provenance": "依据题面和 codeforces_tags；editorial_text 为空。",
         "quality_flags": [
           "missing_editorial",
           "statement_inferred"
@@ -102028,18 +102024,20 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "f7e38c5e35d3429e3cada745290c29654f8d159d35d287d6a942013f8c00180d",
-      "generated_at": "2026-10-17T16:05:40+00:00",
+      "input_hash": "3c25913af538c7b7576663f329ea93adf8b463ef9d64f04e676f387ee9f42cd4",
+      "generated_at": "2026-10-17T21:08:04+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 $n$ 个按顺序排列的藏身位置，Lord Verity 可安装覆盖连续区间的探测器；所有区间必须在看到任何报告前确定，每个探测器只报告你是否位于其覆盖范围内。要求添加最少的探测器，使任意位置产生的全部报告都不同，并输出一种安装方案。",
+        "statement_brief": "有 $n$ 个排成一行的位置，当前位置只能藏在其中一个。由于 $m=0$，需要预先安装若干覆盖连续区间的探测器；所有探测器同时报告是否覆盖藏身位置，要求用最少新增探测器唯一确定位置，并输出一种安装方案。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "构造与贪心",
-        "secondary_topics": [],
+        "secondary_topics": [
+          "组合计数与概率"
+        ],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据题面中的探测器规则、唯一定位条件以及 $m=0$ 的版本限制；未提供 editorial_text。",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，未使用外部信息。",
         "quality_flags": [
           "missing_editorial",
           "statement_inferred"
@@ -102054,21 +102052,23 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "f34c71bd98ddd47e919262290c27fff2571d95e9e474d05f0e4ba391eb78b40a",
-      "generated_at": "2026-10-17T16:06:05+00:00",
+      "input_hash": "f93ad6854b053d7ba6137fc22053cb5f885d57177355a01199db40afd0c0e2bb",
+      "generated_at": "2026-10-17T21:08:15+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个正整数数组，两名玩家轮流操作；每次可删除一个元素，或删除任意非空位置集合但要求被删元素之和为偶数。无法操作时输，需判断先手 Moggity 还是后手 Larpity 获胜。",
+        "statement_brief": "给定一个正整数数组，两名玩家轮流选择任意非空位置集合并删除对应元素；删除一个元素总是合法，删除多个元素则要求其元素和为偶数。无法操作时判负，求先手 Moggity 或后手 Larpity 获胜。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "博弈",
-        "secondary_topics": [],
+        "secondary_topics": [
+          "数论与同余"
+        ],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text；editorial_text、tags 均未提供有效解法信息。",
+        "source_provenance": "题意与操作规则来自 statement_text，题目分类来自 codeforces_tags；editorial_text 为空。",
         "quality_flags": [
           "missing_editorial",
-          "statement_inferred"
+          "statement_only"
         ]
       }
     },
@@ -102080,24 +102080,22 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "c40f9a6f8eaeca0b6ed2ec64152aa0da08a3d1e46b94c6abf45ecb526dc544cb",
-      "generated_at": "2026-10-17T16:06:25+00:00",
+      "input_hash": "b1eb6b2416c96d7d815903738a3e0a1b5976dc1def50a79af7ceadf732b7a151",
+      "generated_at": "2026-10-17T21:08:37+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一条直线上 $n$ 家餐厅及其评分。每次可选择相邻两家：若评分不同，就把较低者增加 $1$；若相同则不变。可操作任意次，包括零次，求所有评分按位或的最大值。",
+        "statement_brief": "给定一排餐厅及评分。每次可选择相邻两家；若评分不同，就把较低者增加 $1$，若相同则不变。可操作任意次，要求所有最终评分的按位或最大。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "基础实现与模拟",
-        "secondary_topics": [
-          "数论与同余"
-        ],
+        "secondary_topics": [],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text 提取；editorial_text 为空，tags 为空。",
+        "source_provenance": "仅依据 statement_text；editorial_text 为空，tags 仅用于主题归类。",
         "quality_flags": [
-          "ambiguous_solution",
           "missing_editorial",
-          "statement_inferred"
+          "solution_unavailable",
+          "statement_only"
         ]
       }
     },
@@ -102109,22 +102107,24 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "fcdbd37439b525c5b7c380963ba3f7f6339290867885f4b9da45ec3bfc1c584a",
-      "generated_at": "2026-10-17T16:06:55+00:00",
+      "input_hash": "54241045e0884379c744b0b892954b0c4f9f8dde21a4a2859329fb619e202d53",
+      "generated_at": "2026-10-17T21:09:00+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定 $1$ 到 $n$ 的整数，并用二进制串表示每个整数最初归谁所有。双方交替行动，Souvlakity 先手；每次行动者必须从自己拥有的整数中选一个交给对方，经过 $10^{100}$ 次后，Souvlakity 希望最大化、Kalamakity 希望最小化其最终持有整数集合的极差，即最大值减最小值。",
+        "statement_brief": "给定长度为 $n$ 的二进制串表示两人对整数 $1$ 到 $n$ 的初始分配。进行 $10^{100}$ 次轮流操作，Souvlakity 先手且每次必须交出一个自己拥有的整数，对方随后交出一个自己拥有的整数；双方分别最大化、最小化 Souvlakity 终局持有整数集合的最大值与最小值之差。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "博弈",
-        "secondary_topics": [],
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text 及其中的样例说明；editorial_text 为空，tags 未提供。",
+        "source_provenance": "依据 statement_text 及其中的样例说明；editorial_text 为空，tags 仅用于主题判断。",
         "quality_flags": [
           "ambiguous_solution",
           "missing_editorial",
-          "statement_only"
+          "statement_inferred"
         ]
       }
     }
