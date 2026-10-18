@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-10-18T05:02:59+00:00",
+  "updated_at": "2026-10-18T16:22:27+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -101891,21 +101891,23 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "219397844c90f8e88a002e28a87d9b331835bd5387b3b8e13de835eba4004280",
-      "generated_at": "2026-10-17T21:06:17+00:00",
+      "input_hash": "f3a9d92a09de3fd5ea4f28d12d14bee04c1cb1f5e85cb5bcf1d1f335a4fda9dc",
+      "generated_at": "2026-10-18T16:21:19+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定非负整数序列。对每个连续子数组，必须恰好选择一个元素并给它加上任意非负整数，然后使整个子数组的按位异或值尽可能小；要求所有连续子数组的这些最小值之和。",
+        "statement_brief": "给定非负整数数组。对每个连续子数组，必须恰好一次选择一个元素，并给它加上任意非负整数；定义操作后所有元素按位异或的最小值，要求计算所有连续子数组对应最小值之和。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
-        "primary_topic": "数据结构",
-        "secondary_topics": [],
+        "primary_topic": "数论与同余",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text 还原题意与等价表达，结合 codeforces_tags 判断主题；editorial_text 为空。",
+        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空。",
         "quality_flags": [
-          "low_confidence",
-          "missing_editorial"
+          "missing_editorial",
+          "statement_inferred"
         ]
       }
     },
@@ -101944,23 +101946,24 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "95487c4890f48cbb825de0f6c8de6c7ef3661668d6d58c82e36f7f56d3477624",
-      "generated_at": "2026-10-18T05:00:28+00:00",
+      "input_hash": "c00e1ae2be504258fd3bce2317b50ca9e7be869e681092bbded9ee9e6cc0d6de",
+      "generated_at": "2026-10-18T16:22:01+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个 $n\\times n$ 网格，需为每个目标单元格分别输出一个仅含 $0/1$ 的网格，且每个网格至多有 $k$ 个零。机器人从整张网格开始，恰好根据当前子网格中的 $1$ 数量，通过固定的 $S\\to U/D/L/R$ 规则逐步删去一行或一列，最终必须定位到对应目标；还需输出这套规则。",
+        "statement_brief": "给定 $n\\times n$ 网格中的任意目标单元格，需要为每个目标分别设置 0/1 网格，且每张网格至多有 $k$ 个零。解码器从整张网格开始，恰好进行 $2n-2$ 次：每次统计当前矩形内的 1 的数量 $S$，按照统一的查表动作执行 U/L/D/R，缩小一条边界，最终必须唯一剩下目标单元格。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [
-          "基础实现与模拟"
+          "基础实现与模拟",
+          "交互"
         ],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空，editorial_url 也未提供。",
+        "source_provenance": "依据题面和 codeforces_tags 中的构造、贪心、数学等标签；editorial_text 为空。",
         "quality_flags": [
           "missing_editorial",
-          "solution_unverified",
+          "solution_unavailable",
           "statement_only"
         ]
       }
@@ -102000,20 +102003,21 @@
       "editorial_url": null,
       "editorial_quality": "missing_url",
       "model": "gpt-6-luna",
-      "input_hash": "8177e6dbb79c3a86be15789502235a44df659fcb0cdd4e8bac9fa79d85244952",
-      "generated_at": "2026-10-18T05:01:18+00:00",
+      "input_hash": "3216bccaf9b8525f9a29a051c99f70b555291e96f4d06b27fdb5884bf49aecc1",
+      "generated_at": "2026-10-18T16:22:27+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 $n$ 个按顺序排列的藏身位置，已安装的每个探测器覆盖一个连续区间，并同时报告你是否在该区间内。需要再安装最少数量的区间探测器，使所有探测器的报告能够唯一确定位置，并输出一种安装方案。",
+        "statement_brief": "有 $n$ 个按顺序排列的位置，已有 $m$ 个区间探测器；所有探测器必须在获得任何报告前同时确定。你可以再安装覆盖任意连续区间的探测器，要求无论藏在哪个位置，全部报告都能唯一确定位置，并求最少新增数量及一种安装方案。",
         "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
         "key_observations": [],
         "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
         "primary_topic": "构造与贪心",
         "secondary_topics": [
-          "数据结构"
+          "数据结构",
+          "图论与网络流"
         ],
         "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text 和 codeforces_tags；editorial_text 为空。",
+        "source_provenance": "题意与等价特征向量模型来自 statement_text；主题分类参考 codeforces_tags，未使用外部题解。",
         "quality_flags": [
           "missing_editorial",
           "statement_inferred"

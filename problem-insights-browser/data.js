@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 368,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3414,
+    "ai_override_count": 3417,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -44,11 +44,11 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1431,
-    "动态规划与状态设计": 358,
+    "构造与贪心": 1432,
+    "动态规划与状态设计": 357,
     "数据结构": 405,
-    "图论与网络流": 295,
-    "数论与同余": 453,
+    "图论与网络流": 294,
+    "数论与同余": 454,
     "交互": 132,
     "组合计数与概率": 333,
     "几何": 101,
@@ -185,11 +185,10 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2261/problem/D2",
           "editorialUrl": "",
-          "primaryTopic": "图论与网络流",
+          "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "构造与贪心",
-            "树结构",
-            "字符串"
+            "数据结构",
+            "图论与网络流"
           ],
           "originalTags": [
             "constructive algorithms",
@@ -200,7 +199,7 @@ window.CF_INSIGHTS_DATA = {
             "trees",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Come Be My Friend, Don't Be So Scared (Hard Version)；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 个按顺序排列的位置，已有 $m$ 个区间探测器；所有探测器必须在获得任何报告前同时确定。你可以再安装覆盖任意连续区间的探测器，要求无论藏在哪个位置，全部报告都能唯一确定位置，并求最少新增数量及一种安装方案。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -241,8 +240,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "几何",
+            "基础实现与模拟",
             "交互"
           ],
           "originalTags": [
@@ -252,7 +250,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "math"
           ],
-          "statementBrief": "题面已抓取：Plegma II: Ask Me Any Cell (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定 $n\\times n$ 网格中的任意目标单元格，需要为每个目标分别设置 0/1 网格，且每张网格至多有 $k$ 个零。解码器从整张网格开始，恰好进行 $2n-2$ 次：每次统计当前矩形内的 1 的数量 $S$，按照统一的查表动作执行 U/L/D/R，缩小一条边界，最终必须唯一剩下目标单元格。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -287,11 +285,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2261/problem/G",
           "editorialUrl": "",
-          "primaryTopic": "动态规划与状态设计",
+          "primaryTopic": "数论与同余",
           "secondaryTopics": [
-            "构造与贪心",
-            "数据结构",
-            "博弈"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "bitmasks",
@@ -300,7 +296,7 @@ window.CF_INSIGHTS_DATA = {
             "dp",
             "greedy"
           ],
-          "statementBrief": "题面已抓取：1 2 3 and XOR, Where Did Everybody Go?；本地暂无可用题解正文。",
+          "statementBrief": "给定非负整数数组。对每个连续子数组，必须恰好一次选择一个元素，并给它加上任意非负整数；定义操作后所有元素按位异或的最小值，要求计算所有连续子数组对应最小值之和。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
