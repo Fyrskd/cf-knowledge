@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-18",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4355,
+    "total_problems": 4344,
     "source_total_problems": 4355,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4355,
-    "with_editorial_brief": 3985,
-    "with_solution_brief": 3987,
-    "missing_editorial_brief": 368,
+    "filtered_out_problems": 11,
+    "with_statement_brief": 4344,
+    "with_editorial_brief": 3984,
+    "with_solution_brief": 3986,
+    "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3417,
+    "ai_override_count": 3406,
     "primary_topic_count": 13,
-    "contest_count": 680,
+    "contest_count": 679,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,24 +44,24 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1432,
+    "构造与贪心": 1428,
     "动态规划与状态设计": 357,
     "数据结构": 405,
     "图论与网络流": 294,
-    "数论与同余": 454,
-    "交互": 132,
+    "数论与同余": 452,
+    "交互": 131,
     "组合计数与概率": 333,
     "几何": 101,
     "树结构": 200,
-    "字符串": 232,
-    "基础实现与模拟": 260,
+    "字符串": 231,
+    "基础实现与模拟": 259,
     "代数、矩阵与多项式": 28,
-    "博弈": 127
+    "博弈": 125
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2976,
+    "ai_generated_with_editorial": 2975,
     "ai_generated_partial_editorial": 118,
-    "missing_editorial": 368,
+    "missing_editorial": 358,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -77,262 +77,6 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
-    {
-      "id": 2261,
-      "name": "WorldQuant Round 1 (Codeforces Round 1128, Div. 1 + Div. 2)",
-      "date": "2026-10-17",
-      "url": "https://codeforces.com/contest/2261",
-      "type": "Div. 1 + Div. 2",
-      "problemCount": 10,
-      "maxRating": null,
-      "problems": [
-        {
-          "key": "2261A",
-          "index": "A",
-          "slot": "A",
-          "title": "Hey, It's Me, Souvlakity",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/A",
-          "editorialUrl": "",
-          "primaryTopic": "博弈",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "games",
-            "math"
-          ],
-          "statementBrief": "给定长度为 $n$ 的二进制串表示两人对整数 $1$ 到 $n$ 的初始分配。进行 $10^{100}$ 次轮流操作，Souvlakity 先手且每次必须交出一个自己拥有的整数，对方随后交出一个自己拥有的整数；双方分别最大化、最小化 Souvlakity 终局持有整数集合的最大值与最小值之差。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2261B",
-          "index": "B",
-          "slot": "B",
-          "title": "What's the Capital of France?",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/B",
-          "editorialUrl": "",
-          "primaryTopic": "基础实现与模拟",
-          "secondaryTopics": [],
-          "originalTags": [
-            "bitmasks",
-            "greedy",
-            "math"
-          ],
-          "statementBrief": "给定一排餐厅及评分。每次可选择相邻两家；若评分不同，就把较低者增加 $1$，若相同则不变。可操作任意次，要求所有最终评分的按位或最大。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2261C",
-          "index": "C",
-          "slot": "C",
-          "title": "I Know About a Million Things",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/C",
-          "editorialUrl": "",
-          "primaryTopic": "博弈",
-          "secondaryTopics": [
-            "数论与同余"
-          ],
-          "originalTags": [
-            "games",
-            "math"
-          ],
-          "statementBrief": "给定一个正整数数组，两名玩家轮流操作；每次可删除任意非空位置集合，但若删除多个元素，则这些元素之和必须为偶数，删除一个元素则始终允许。无法操作时失败，要求判断先手 Moggity 还是后手 Larpity 获胜。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2261D1",
-          "index": "D1",
-          "slot": "D",
-          "title": "Come Be My Friend, Don't Be So Scared (Easy Version)",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/D1",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "组合计数与概率"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "math"
-          ],
-          "statementBrief": "有一排编号为 $1$ 到 $n$ 的隐藏位置，当前没有探测器（易版本中 $m=0$）。每个新增探测器覆盖一个连续区间并报告你是否在其中；需预先同时安装最少的探测器，使任意位置都能由全部报告唯一识别，并输出一种安装方案。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2261D2",
-          "index": "D2",
-          "slot": "D",
-          "title": "Come Be My Friend, Don't Be So Scared (Hard Version)",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/D2",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构",
-            "图论与网络流"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "data structures",
-            "dsu",
-            "graphs",
-            "hashing",
-            "trees",
-            "two pointers"
-          ],
-          "statementBrief": "有 $n$ 个按顺序排列的位置，已有 $m$ 个区间探测器；所有探测器必须在获得任何报告前同时确定。你可以再安装覆盖任意连续区间的探测器，要求无论藏在哪个位置，全部报告都能唯一确定位置，并求最少新增数量及一种安装方案。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2261E",
-          "index": "E",
-          "slot": "E",
-          "title": "What Does the Cow Say?",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/E",
-          "editorialUrl": "",
-          "primaryTopic": "字符串",
-          "secondaryTopics": [],
-          "originalTags": [
-            "binary search",
-            "data structures",
-            "dfs and similar",
-            "greedy",
-            "trees"
-          ],
-          "statementBrief": "给定一个正规括号序列和整数 $k$。每次可选择当前相邻的 `()`，删除它们并在剩余字符串外包上一对括号，最多操作 $k$ 次；求最终序列中最长连续 `(` 的最大长度。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2261F1",
-          "index": "F1",
-          "slot": "F",
-          "title": "Plegma II: Ask Me Any Cell (Easy Version)",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/F1",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟",
-            "交互"
-          ],
-          "originalTags": [
-            "brute force",
-            "constructive algorithms",
-            "dp",
-            "greedy",
-            "math"
-          ],
-          "statementBrief": "给定 $n\\times n$ 网格中的任意目标单元格，需要为每个目标分别设置 0/1 网格，且每张网格至多有 $k$ 个零。解码器从整张网格开始，恰好进行 $2n-2$ 次：每次统计当前矩形内的 1 的数量 $S$，按照统一的查表动作执行 U/L/D/R，缩小一条边界，最终必须唯一剩下目标单元格。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2261F2",
-          "index": "F2",
-          "slot": "F",
-          "title": "Plegma II: Ask Me Any Cell (Hard Version)",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/F2",
-          "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "constructive algorithms"
-          ],
-          "statementBrief": "给定一个 $n\\times n$ 网格，需要为每个目标单元格分别构造一张 0/1 网格，且每张网格至多含 $k=f(n)$ 个零。机器人从整张网格开始，恰好进行 $2n-2$ 次操作；每次只能根据当前矩形内的 1 的数量 $S$，从上、下、左、右边界中删除一行或一列，最终必须唯一停在目标单元格；同时输出对所有 $S$ 的统一动作映射。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2261G",
-          "index": "G",
-          "slot": "G",
-          "title": "1 2 3 and XOR, Where Did Everybody Go?",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/G",
-          "editorialUrl": "",
-          "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "bitmasks",
-            "data structures",
-            "divide and conquer",
-            "dp",
-            "greedy"
-          ],
-          "statementBrief": "给定非负整数数组。对每个连续子数组，必须恰好一次选择一个元素，并给它加上任意非负整数；定义操作后所有元素按位异或的最小值，要求计算所有连续子数组对应最小值之和。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        },
-        {
-          "key": "2261H",
-          "index": "H",
-          "slot": "H",
-          "title": "Oh Tree Tree Tree, No Need to Leave",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/H",
-          "editorialUrl": "",
-          "primaryTopic": "交互",
-          "secondaryTopics": [
-            "树结构",
-            "博弈",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "bitmasks",
-            "communication",
-            "dfs and similar",
-            "interactive",
-            "trees"
-          ],
-          "statementBrief": "Isabel 要把长度为 $n$ 的二进制串编码到一棵高度为 $h$ 的完全二叉树各节点上。敌手选择一个节点翻转其值；若它不是叶子，还交换左右子树并按完全二叉树规则重新编号，Tara 只能看到处理后的树，必须恢复原串。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "missing_url"
-        }
-      ]
-    },
     {
       "id": 2276,
       "name": "Educational Codeforces Round 195 (Rated for Div. 2)",
@@ -555,37 +299,9 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-11",
       "url": "https://codeforces.com/contest/2274",
       "type": "Div. 2",
-      "problemCount": 2,
+      "problemCount": 1,
       "maxRating": null,
       "problems": [
-        {
-          "key": "2274A",
-          "index": "A",
-          "slot": "A",
-          "title": "The Projections of Paco",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2274/problem/A",
-          "editorialUrl": "https://codeforces.com/blog/entry/157634",
-          "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "基础实现与模拟",
-            "代数、矩阵与多项式"
-          ],
-          "originalTags": [
-            "implementation",
-            "math"
-          ],
-          "statementBrief": "给定数轴上的 $n$ 个整数点，令棋子从 $0$ 出发，依次关于先选的整数点 $p$、再关于 $a_1,\u001b...,a_n$ 各反射一次；关于点 $o$ 反射会到达其另一侧等距位置。求使最终坐标恰为 $0$ 的唯一整数 $p$。",
-          "transformedStatement": "把最后到达的 $0$ 作为已知终点，逆序撤销关于 $a_n$ 到 $a_1$ 的反射，求出第一次关于 $p$ 反射后必须到达的坐标 $x$；再利用 $0$ 关于 $p$ 反射到 $2p$，将问题化为求解 $2p=x$。",
-          "keyObservations": [
-            "关于点 $o$ 的反射把坐标 $x$ 变为 $2o-x$，再次关于同一点反射会恢复原位置，因此每次反射都可被同点操作撤销。",
-            "要撤销按 $a_1,a_2,\u001b...,a_n$ 进行的反射，必须从最终坐标 $0$ 开始，按 $a_n,a_{n-1},\u001b...,a_1$ 的逆序反射，得到加入 $p$ 后应处的坐标 $x$。",
-            "第一次关于 $p$ 的反射把起点 $0$ 变为 $2p$，所以只需令 $2p=x$；题目保证所得 $p$ 为整数且唯一。"
-          ],
-          "solutionBrief": "从最终坐标 $0$ 出发，逆序执行关于 $a_n,\u001b...,a_1$ 的反射，得到加入 $p$ 后的坐标 $x$。由于首次反射后位置为 $2p$，输出 $p=x/2$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
         {
           "key": "2274B",
           "index": "B",

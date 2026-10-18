@@ -184,6 +184,9 @@
     "type": "PROGRAMMING",
     "points": 500.0,
     "tags": [
+      "dfs and similar",
+      "dp",
+      "hashing",
       "implementation",
       "math"
     ]
