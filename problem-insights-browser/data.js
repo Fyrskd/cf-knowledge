@@ -1,5 +1,5 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-17",
+  "generatedAt": "2026-10-18",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4355,
@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 368,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3417,
+    "ai_override_count": 3411,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -141,13 +141,15 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "博弈",
           "secondaryTopics": [
-            "数论与同余"
+            "动态规划与状态设计",
+            "数据结构",
+            "构造与贪心"
           ],
           "originalTags": [
             "games",
             "math"
           ],
-          "statementBrief": "给定一个正整数数组，两名玩家轮流选择任意非空位置集合并删除对应元素；删除一个元素总是合法，删除多个元素则要求其元素和为偶数。无法操作时判负，求先手 Moggity 或后手 Larpity 获胜。",
+          "statementBrief": "题面已抓取：I Know About a Million Things；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -164,13 +166,15 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "组合计数与概率"
+            "动态规划与状态设计",
+            "图论与网络流",
+            "博弈"
           ],
           "originalTags": [
             "constructive algorithms",
             "math"
           ],
-          "statementBrief": "有 $n$ 个排成一行的位置，当前位置只能藏在其中一个。由于 $m=0$，需要预先安装若干覆盖连续区间的探测器；所有探测器同时报告是否覆盖藏身位置，要求用最少新增探测器唯一确定位置，并输出一种安装方案。",
+          "statementBrief": "题面已抓取：Come Be My Friend, Don't Be So Scared (Easy Version)；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -186,7 +190,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2261/problem/D2",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "图论与网络流",
+            "树结构",
+            "字符串"
+          ],
           "originalTags": [
             "constructive algorithms",
             "data structures",
@@ -195,7 +203,7 @@ window.CF_INSIGHTS_DATA = {
             "trees",
             "two pointers"
           ],
-          "statementBrief": "有 $n$ 个按顺序排列的位置，已有 $m$ 个区间探测器；每个探测器同时报告藏身位置是否落在其覆盖区间内。需要一次性新增尽可能少的区间探测器，使所有位置的报告组合互不相同，并输出这些新增区间。",
+          "statementBrief": "题面已抓取：Come Be My Friend, Don't Be So Scared (Hard Version)；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -212,7 +220,9 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "基础实现与模拟"
+            "树结构",
+            "数据结构",
+            "动态规划与状态设计"
           ],
           "originalTags": [
             "binary search",
@@ -221,7 +231,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "trees"
           ],
-          "statementBrief": "给定一个长度为 $n$ 的合法括号序列和整数 $k$。每次可选择相邻的 `()`，删除它们后在剩余字符串外层加上 `(` 和 `)`，最多操作 $k$ 次；要求最大化最终字符串中连续开括号的最长长度。",
+          "statementBrief": "题面已抓取：What Does the Cow Say?；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -237,15 +247,18 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2261/problem/F1",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "动态规划与状态设计",
+            "几何",
+            "交互"
+          ],
           "originalTags": [
             "brute force",
-            "communication",
             "constructive algorithms",
             "dp",
             "math"
           ],
-          "statementBrief": "给定一个 $n\\times n$ 网格，要为每个目标格分别设置 0/1 信标布局，且每个布局最多有 $k$ 个零。机器人从整张网格开始，连续执行 $2n-2$ 次动作；每次只能根据当前子矩形内的信标数选择缩小上、下、左或右边界，最终必须唯一剩下目标格，并输出所有布局及统一的计数到动作映射。",
+          "statementBrief": "题面已抓取：Plegma II: Ask Me Any Cell (Easy Version)；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -261,11 +274,15 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2261/problem/F2",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
+          "secondaryTopics": [
+            "几何",
+            "动态规划与状态设计",
+            "博弈"
+          ],
           "originalTags": [
             "constructive algorithms"
           ],
-          "statementBrief": "给定 $n\\times n$ 网格中的任意目标单元，需要为每个目标分别布置信标，使零最多为 $k=f(n)$。机器人从整张网格开始，恰好进行 $2n-2$ 次操作；每次只能根据当前子网格内的信标数 $S$，按统一映射选择向上、下、左或右收缩一个边界，最终必须唯一到达目标单元。",
+          "statementBrief": "题面已抓取：Plegma II: Ask Me Any Cell (Hard Version)；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
