@@ -924,6 +924,7 @@
       "bitmasks",
       "data structures",
       "divide and conquer",
+      "dp",
       "greedy"
     ]
   },
@@ -947,6 +948,7 @@
       "brute force",
       "constructive algorithms",
       "dp",
+      "greedy",
       "math"
     ]
   },
@@ -974,6 +976,7 @@
       "constructive algorithms",
       "data structures",
       "dsu",
+      "graphs",
       "hashing",
       "trees",
       "two pointers"

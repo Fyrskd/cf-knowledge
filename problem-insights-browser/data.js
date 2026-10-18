@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 368,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3417,
+    "ai_override_count": 3414,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -44,10 +44,10 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1432,
-    "动态规划与状态设计": 357,
-    "数据结构": 406,
-    "图论与网络流": 294,
+    "构造与贪心": 1431,
+    "动态规划与状态设计": 358,
+    "数据结构": 405,
+    "图论与网络流": 295,
     "数论与同余": 453,
     "交互": 132,
     "组合计数与概率": 333,
@@ -185,19 +185,22 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2261/problem/D2",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
+          "primaryTopic": "图论与网络流",
           "secondaryTopics": [
-            "数据结构"
+            "构造与贪心",
+            "树结构",
+            "字符串"
           ],
           "originalTags": [
             "constructive algorithms",
             "data structures",
             "dsu",
+            "graphs",
             "hashing",
             "trees",
             "two pointers"
           ],
-          "statementBrief": "有 $n$ 个按顺序排列的藏身位置，已安装的每个探测器覆盖一个连续区间，并同时报告你是否在该区间内。需要再安装最少数量的区间探测器，使所有探测器的报告能够唯一确定位置，并输出一种安装方案。",
+          "statementBrief": "题面已抓取：Come Be My Friend, Don't Be So Scared (Hard Version)；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -238,15 +241,18 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "基础实现与模拟"
+            "动态规划与状态设计",
+            "几何",
+            "交互"
           ],
           "originalTags": [
             "brute force",
             "constructive algorithms",
             "dp",
+            "greedy",
             "math"
           ],
-          "statementBrief": "给定一个 $n\\times n$ 网格，需为每个目标单元格分别输出一个仅含 $0/1$ 的网格，且每个网格至多有 $k$ 个零。机器人从整张网格开始，恰好根据当前子网格中的 $1$ 数量，通过固定的 $S\\to U/D/L/R$ 规则逐步删去一行或一列，最终必须定位到对应目标；还需输出这套规则。",
+          "statementBrief": "题面已抓取：Plegma II: Ask Me Any Cell (Easy Version)；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -281,15 +287,20 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2261/problem/G",
           "editorialUrl": "",
-          "primaryTopic": "数据结构",
-          "secondaryTopics": [],
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数据结构",
+            "博弈"
+          ],
           "originalTags": [
             "bitmasks",
             "data structures",
             "divide and conquer",
+            "dp",
             "greedy"
           ],
-          "statementBrief": "给定非负整数序列。对每个连续子数组，必须恰好选择一个元素并给它加上任意非负整数，然后使整个子数组的按位异或值尽可能小；要求所有连续子数组的这些最小值之和。",
+          "statementBrief": "题面已抓取：1 2 3 and XOR, Where Did Everybody Go?；本地暂无可用题解正文。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
