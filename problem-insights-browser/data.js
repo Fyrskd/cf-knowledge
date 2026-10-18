@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 368,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3411,
+    "ai_override_count": 3417,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1433,
+    "构造与贪心": 1432,
     "动态规划与状态设计": 357,
     "数据结构": 406,
     "图论与网络流": 294,
@@ -53,7 +53,7 @@ window.CF_INSIGHTS_DATA = {
     "组合计数与概率": 333,
     "几何": 101,
     "树结构": 200,
-    "字符串": 231,
+    "字符串": 232,
     "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
     "博弈": 127
@@ -141,15 +141,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "博弈",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "数据结构",
-            "构造与贪心"
+            "数论与同余"
           ],
           "originalTags": [
             "games",
             "math"
           ],
-          "statementBrief": "题面已抓取：I Know About a Million Things；本地暂无可用题解正文。",
+          "statementBrief": "给定一个正整数数组，两名玩家轮流操作；每次可删除任意非空位置集合，但若删除多个元素，则这些元素之和必须为偶数，删除一个元素则始终允许。无法操作时失败，要求判断先手 Moggity 还是后手 Larpity 获胜。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -166,15 +164,13 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "图论与网络流",
-            "博弈"
+            "组合计数与概率"
           ],
           "originalTags": [
             "constructive algorithms",
             "math"
           ],
-          "statementBrief": "题面已抓取：Come Be My Friend, Don't Be So Scared (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "有一排编号为 $1$ 到 $n$ 的隐藏位置，当前没有探测器（易版本中 $m=0$）。每个新增探测器覆盖一个连续区间并报告你是否在其中；需预先同时安装最少的探测器，使任意位置都能由全部报告唯一识别，并输出一种安装方案。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -191,9 +187,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "图论与网络流",
-            "树结构",
-            "字符串"
+            "数据结构"
           ],
           "originalTags": [
             "constructive algorithms",
@@ -203,7 +197,7 @@ window.CF_INSIGHTS_DATA = {
             "trees",
             "two pointers"
           ],
-          "statementBrief": "题面已抓取：Come Be My Friend, Don't Be So Scared (Hard Version)；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 个按顺序排列的藏身位置，已安装的每个探测器覆盖一个连续区间，并同时报告你是否在该区间内。需要再安装最少数量的区间探测器，使所有探测器的报告能够唯一确定位置，并输出一种安装方案。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -218,12 +212,8 @@ window.CF_INSIGHTS_DATA = {
           "rating": null,
           "problemUrl": "https://codeforces.com/contest/2261/problem/E",
           "editorialUrl": "",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "树结构",
-            "数据结构",
-            "动态规划与状态设计"
-          ],
+          "primaryTopic": "字符串",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "data structures",
@@ -231,7 +221,7 @@ window.CF_INSIGHTS_DATA = {
             "greedy",
             "trees"
           ],
-          "statementBrief": "题面已抓取：What Does the Cow Say?；本地暂无可用题解正文。",
+          "statementBrief": "给定一个正规括号序列和整数 $k$。每次可选择当前相邻的 `()`，删除它们并在剩余字符串外包上一对括号，最多操作 $k$ 次；求最终序列中最长连续 `(` 的最大长度。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -248,9 +238,7 @@ window.CF_INSIGHTS_DATA = {
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
           "secondaryTopics": [
-            "动态规划与状态设计",
-            "几何",
-            "交互"
+            "基础实现与模拟"
           ],
           "originalTags": [
             "brute force",
@@ -258,7 +246,7 @@ window.CF_INSIGHTS_DATA = {
             "dp",
             "math"
           ],
-          "statementBrief": "题面已抓取：Plegma II: Ask Me Any Cell (Easy Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个 $n\\times n$ 网格，需为每个目标单元格分别输出一个仅含 $0/1$ 的网格，且每个网格至多有 $k$ 个零。机器人从整张网格开始，恰好根据当前子网格中的 $1$ 数量，通过固定的 $S\\to U/D/L/R$ 规则逐步删去一行或一列，最终必须定位到对应目标；还需输出这套规则。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
@@ -274,15 +262,11 @@ window.CF_INSIGHTS_DATA = {
           "problemUrl": "https://codeforces.com/contest/2261/problem/F2",
           "editorialUrl": "",
           "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "几何",
-            "动态规划与状态设计",
-            "博弈"
-          ],
+          "secondaryTopics": [],
           "originalTags": [
             "constructive algorithms"
           ],
-          "statementBrief": "题面已抓取：Plegma II: Ask Me Any Cell (Hard Version)；本地暂无可用题解正文。",
+          "statementBrief": "给定一个 $n\\times n$ 网格，需要为每个目标单元格分别构造一张 0/1 网格，且每张网格至多含 $k=f(n)$ 个零。机器人从整张网格开始，恰好进行 $2n-2$ 次操作；每次只能根据当前矩形内的 1 的数量 $S$，从上、下、左、右边界中删除一行或一列，最终必须唯一停在目标单元格；同时输出对所有 $S$ 的统一动作映射。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",
