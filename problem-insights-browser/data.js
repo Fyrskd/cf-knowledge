@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-19",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4353,
+    "total_problems": 4355,
     "source_total_problems": 4355,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4353,
-    "with_editorial_brief": 3993,
-    "with_solution_brief": 3995,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4355,
+    "with_editorial_brief": 3995,
+    "with_solution_brief": 3997,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3415,
+    "ai_override_count": 3417,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -46,10 +46,10 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "构造与贪心": 1432,
     "动态规划与状态设计": 357,
-    "数据结构": 407,
+    "数据结构": 408,
     "图论与网络流": 294,
     "数论与同余": 452,
-    "交互": 131,
+    "交互": 132,
     "组合计数与概率": 333,
     "几何": 101,
     "树结构": 200,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2984,
+    "ai_generated_with_editorial": 2986,
     "ai_generated_partial_editorial": 118,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-17",
       "url": "https://codeforces.com/contest/2261",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 8,
+      "problemCount": 10,
       "maxRating": null,
       "problems": [
         {
@@ -315,6 +315,73 @@ window.CF_INSIGHTS_DATA = {
             "至多两个零时，四个角的末段执行会被迫共享相同的小 $S$ 动作；逐步约束 $A_1$ 到 $A_8$ 后，右下角必在某个 $2\\times4$、$3\\times3$ 或 $4\\times2$ 状态被错误删除，因此两零不可能覆盖所有目标。"
           ],
           "solutionBrief": "证明最优值为 $f(n)=3$。对每个目标先用三零和两零安排行，再用两零、一零安排列，最后处理 $3\\times1$；解码器按 $S$ 的区间指定方向。四角反证说明两零不足。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2261G",
+          "index": "G",
+          "slot": "G",
+          "title": "1 2 3 and XOR, Where Did Everybody Go?",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/157917",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "构造与贪心",
+            "数论与同余"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "data structures",
+            "divide and conquer",
+            "dp",
+            "greedy",
+            "sortings",
+            "two pointers"
+          ],
+          "statementBrief": "给定非负整数序列。对每个连续子数组，可以任选一个元素并给它增加任意非负整数，且必须恰好进行一次这样的操作；定义操作后所有元素异或值的最小可能值，要求所有子数组的该最小值之和。",
+          "transformedStatement": "令子数组的整体异或为 $X$、整体按位与为 $A$，先把一次增量后的最小异或值表示为 $g(X,A)$。随后固定右端点，把左端点按 $A$ 的不同连续取值分批，并对每批前缀异或值进行 Trie 统计。",
+          "keyObservations": [
+            "对固定数组，答案只由整体异或值 $X$ 和整体按位与值 $A$ 决定：从高位向低位找到首个满足 $X$ 为 $1$ 且 $A$ 为 $0$ 的位，该位及更低位都能被一次增量消掉，因此答案是更高位的 $X$ 贡献之和。",
+            "固定右端点并向左扩展时，子数组按按位与值相同划分为连续批次；按位与只会丢失位，因此批次数很少，每个批次可单独统计对应前缀异或值。",
+            "在批次的二进制 Trie 中，$A$ 为 $1$ 的位必须沿同一路径但需统计异或贡献，$A$ 为 $0$ 的位遇到与当前前缀异或不同的分支即可停止；因此每个批次的总贡献可沿一条根到叶路径求出。",
+            "右端点右移时，所有批次的与值先和新元素相与，变化批次重建、相邻同值批次合并，并用小并大限制 Trie 中前缀异或值的迁移次数。"
+          ],
+          "solutionBrief": "先用高位扫描将 $f$ 化为 $g(X,A)$，再按右端点维护按位与相同的左端点批次。每批次用适配 $A$ 的二进制 Trie 统计前缀异或值，批次变化时重建并小并大合并；总复杂度为 $O(n\\log A(\\log n+\\log A))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2261H",
+          "index": "H",
+          "slot": "H",
+          "title": "Oh Tree Tree Tree, No Need to Leave",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/H",
+          "editorialUrl": "https://codeforces.com/blog/entry/157917",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "communication",
+            "constructive algorithms",
+            "dfs and similar",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "Isabel 要把长度为 $n$ 的二进制串写入高度为 $h$ 的完全二叉树后交给 Tara。敌人选择一个节点翻转其值；若该节点非叶子，还交换两个子树并重新编号，Tara 只能看到变化后的树和值，必须恢复原字符串。",
+          "transformedStatement": "把树编码改写为一条由节点值决定左右子树访问顺序的 DFS 序列，使敌人的“翻转加换子树”只等价于序列中的一次比特翻转；再将该序列视为可纠正单错的汉明码。",
+          "keyObservations": [
+            "把编码序列作为树的 DFS 访问顺序，并让当前位决定优先访问左子树还是右子树；被翻转的节点同时交换子树后，接收方仍会沿原顺序访问。",
+            "因此 Tara 通过同样的规则恢复出的序列只可能有一个比特错误，树结构造成的未知重标号不会再产生额外错位。",
+            "将序列按汉明码布置到节点编号中，非 $2^j$ 位置存放原信息，第 $2^j$ 位保存对应校验；所有值为 $1$ 的位置编号异或可得到错误位置。",
+            "纠正汉明码定位出的单点错误后，读取非 $2^j$ 位置即可恢复 Isabel 要发送的字符串。"
+          ],
+          "solutionBrief": "Isabel 先用汉明码编码字符串，再按编码位进行自适应 DFS，把序列写入树。Tara 用收到的位执行相同 DFS，利用翻转与换子树的抵消恢复序列，再用汉明校验的异或综合定位并修正唯一错误，最后提取数据位。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
