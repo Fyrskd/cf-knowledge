@@ -177071,7 +177071,7 @@
     "editorial_kind": "official",
     "editorial_quality": "url_only",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "3746539bcd8db4112ada81949cb904da4a3916a463472313fb787c9c6d4f090b",
+    "editorial_raw_sha256": "5a9ca67584553c5804001220bec824e66c9bb10d8da5131e6181ceb94e6eeb9c",
     "knowledge_candidates": [
       {
         "name": "tag:brute force",
@@ -247186,7 +247186,7 @@
     "editorial_kind": "official",
     "editorial_quality": "url_only",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "10aeea19110c40c940cf32270032d71044d06fb84a91534a307b2f526b42905f",
+    "editorial_raw_sha256": "0542e852acfd1b119181a44c2e1e01ca2e8cacf22aa2b9ad5d9c1b2e1cd1105e",
     "knowledge_candidates": [
       {
         "name": "tag:math",
@@ -247273,7 +247273,7 @@
     "editorial_kind": "official",
     "editorial_quality": "url_only",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "10aeea19110c40c940cf32270032d71044d06fb84a91534a307b2f526b42905f",
+    "editorial_raw_sha256": "0542e852acfd1b119181a44c2e1e01ca2e8cacf22aa2b9ad5d9c1b2e1cd1105e",
     "knowledge_candidates": [
       {
         "name": "tag:constructive algorithms",
@@ -247361,7 +247361,7 @@
     "editorial_kind": "official",
     "editorial_quality": "url_only",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "10aeea19110c40c940cf32270032d71044d06fb84a91534a307b2f526b42905f",
+    "editorial_raw_sha256": "0542e852acfd1b119181a44c2e1e01ca2e8cacf22aa2b9ad5d9c1b2e1cd1105e",
     "knowledge_candidates": [
       {
         "name": "tag:binary search",
@@ -247457,7 +247457,7 @@
     "editorial_kind": "official",
     "editorial_quality": "url_only",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "10aeea19110c40c940cf32270032d71044d06fb84a91534a307b2f526b42905f",
+    "editorial_raw_sha256": "0542e852acfd1b119181a44c2e1e01ca2e8cacf22aa2b9ad5d9c1b2e1cd1105e",
     "knowledge_candidates": [
       {
         "name": "tag:graphs",
@@ -247563,7 +247563,7 @@
     "editorial_kind": "official",
     "editorial_quality": "url_only",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "10aeea19110c40c940cf32270032d71044d06fb84a91534a307b2f526b42905f",
+    "editorial_raw_sha256": "0542e852acfd1b119181a44c2e1e01ca2e8cacf22aa2b9ad5d9c1b2e1cd1105e",
     "knowledge_candidates": [
       {
         "name": "tag:constructive algorithms",
@@ -247687,7 +247687,7 @@
     "editorial_kind": "official",
     "editorial_quality": "url_only",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "10aeea19110c40c940cf32270032d71044d06fb84a91534a307b2f526b42905f",
+    "editorial_raw_sha256": "0542e852acfd1b119181a44c2e1e01ca2e8cacf22aa2b9ad5d9c1b2e1cd1105e",
     "knowledge_candidates": [
       {
         "name": "tag:bitmasks",
@@ -247788,7 +247788,7 @@
     "editorial_kind": "official",
     "editorial_quality": "url_only",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "10aeea19110c40c940cf32270032d71044d06fb84a91534a307b2f526b42905f",
+    "editorial_raw_sha256": "0542e852acfd1b119181a44c2e1e01ca2e8cacf22aa2b9ad5d9c1b2e1cd1105e",
     "knowledge_candidates": [
       {
         "name": "tag:constructive algorithms",
@@ -247875,7 +247875,7 @@
     "editorial_kind": "official",
     "editorial_quality": "url_only",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "10aeea19110c40c940cf32270032d71044d06fb84a91534a307b2f526b42905f",
+    "editorial_raw_sha256": "0542e852acfd1b119181a44c2e1e01ca2e8cacf22aa2b9ad5d9c1b2e1cd1105e",
     "knowledge_candidates": [
       {
         "name": "tag:dp",
@@ -2129631,7 +2129631,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "4f58ccca237e3eff33f54321f781122d220d371808bcb77d61bf7982c546f3c2",
+    "editorial_raw_sha256": "d2d3a3288cd4b1fdbaffc7774834bb6943eda3e906c5e1830907e9f057910376",
     "editorial_kind": "external",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2048",
@@ -2130452,7 +2130452,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "4f58ccca237e3eff33f54321f781122d220d371808bcb77d61bf7982c546f3c2",
+    "editorial_raw_sha256": "d2d3a3288cd4b1fdbaffc7774834bb6943eda3e906c5e1830907e9f057910376",
     "editorial_kind": "external",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2048",
@@ -2131313,7 +2131313,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "4f58ccca237e3eff33f54321f781122d220d371808bcb77d61bf7982c546f3c2",
+    "editorial_raw_sha256": "d2d3a3288cd4b1fdbaffc7774834bb6943eda3e906c5e1830907e9f057910376",
     "editorial_kind": "external",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2048",
@@ -2132038,7 +2132038,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "4f58ccca237e3eff33f54321f781122d220d371808bcb77d61bf7982c546f3c2",
+    "editorial_raw_sha256": "d2d3a3288cd4b1fdbaffc7774834bb6943eda3e906c5e1830907e9f057910376",
     "editorial_kind": "external",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2048",
@@ -2132531,7 +2132531,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "4f58ccca237e3eff33f54321f781122d220d371808bcb77d61bf7982c546f3c2",
+    "editorial_raw_sha256": "d2d3a3288cd4b1fdbaffc7774834bb6943eda3e906c5e1830907e9f057910376",
     "editorial_kind": "external",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2048",
@@ -2132952,7 +2132952,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "4f58ccca237e3eff33f54321f781122d220d371808bcb77d61bf7982c546f3c2",
+    "editorial_raw_sha256": "d2d3a3288cd4b1fdbaffc7774834bb6943eda3e906c5e1830907e9f057910376",
     "editorial_kind": "external",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2048",
@@ -2133325,7 +2133325,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "4f58ccca237e3eff33f54321f781122d220d371808bcb77d61bf7982c546f3c2",
+    "editorial_raw_sha256": "d2d3a3288cd4b1fdbaffc7774834bb6943eda3e906c5e1830907e9f057910376",
     "editorial_kind": "external",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2048",
@@ -2133626,7 +2133626,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "4f58ccca237e3eff33f54321f781122d220d371808bcb77d61bf7982c546f3c2",
+    "editorial_raw_sha256": "d2d3a3288cd4b1fdbaffc7774834bb6943eda3e906c5e1830907e9f057910376",
     "editorial_kind": "external",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2048",
@@ -2133839,7 +2133839,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "4f58ccca237e3eff33f54321f781122d220d371808bcb77d61bf7982c546f3c2",
+    "editorial_raw_sha256": "d2d3a3288cd4b1fdbaffc7774834bb6943eda3e906c5e1830907e9f057910376",
     "editorial_kind": "external",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2048",
@@ -2133988,7 +2133988,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "4f58ccca237e3eff33f54321f781122d220d371808bcb77d61bf7982c546f3c2",
+    "editorial_raw_sha256": "d2d3a3288cd4b1fdbaffc7774834bb6943eda3e906c5e1830907e9f057910376",
     "editorial_kind": "external",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2048",
@@ -2562352,7 +2562352,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "6bc88e14ea3032bf7a2068c618ffaf7b500e62c286276f77f75b49fa05c15717",
+    "editorial_raw_sha256": "89b31e04eb3a9be4cda402d386f57bdcf441782ede61f197bbc1969b84ca01c8",
     "editorial_kind": "official",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2174",
@@ -2563463,7 +2563463,7 @@
     },
     "editorial_text": "",
     "editorial_status": "url_only",
-    "editorial_raw_sha256": "6bc88e14ea3032bf7a2068c618ffaf7b500e62c286276f77f75b49fa05c15717",
+    "editorial_raw_sha256": "89b31e04eb3a9be4cda402d386f57bdcf441782ede61f197bbc1969b84ca01c8",
     "editorial_kind": "official",
     "editorial_quality": "url_only",
     "contest_url": "https://codeforces.com/contest/2174",
@@ -2882602,7 +2882602,7 @@
         "problems"
       ]
     ],
-    "statement_textsha256": "685b84b6c4dc78db386c436ec2bce986b79a5b0ee39ec24a47e39a9900041eec",
+    "statement_textsha256": "92c1384e2b0a499adebaece9e81cb1f55950b5938d59f266771b8b3e197695ec",
     "editorial_url": "https://codeforces.com/blog/entry/157528",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2883529,7 +2883529,7 @@
         "problems"
       ]
     ],
-    "statement_textsha256": "781cb37ad966240731db0abaebae5ce08050f80dc6228b0dbde117f4812fae3e",
+    "statement_textsha256": "fd0c611850bb7bf864c18a5e30ab4e3280c9d2d069c07af997c4f5ded82f9aab",
     "editorial_url": "https://codeforces.com/blog/entry/157528",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2884440,7 +2884440,7 @@
         "problems"
       ]
     ],
-    "statement_textsha256": "1e44442cfef71f868cd6d7eaf3aa011da45ee6bd943b0b37ca389de1424567dc",
+    "statement_textsha256": "812db459a72d05e168d2d3936c56411468b23cd9d5f3c954a4423566868681d0",
     "editorial_url": "https://codeforces.com/blog/entry/157528",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2885233,7 +2885233,7 @@
         "problems"
       ]
     ],
-    "statement_textsha256": "79460b4c7805cd97d6202a0f8584611a4f8e4928335f291ddcde9116c19fe02b",
+    "statement_textsha256": "9339444f88db78444db42d7f5e2930868ffaa2c7ef638d63661b9a35830f6553",
     "editorial_url": "https://codeforces.com/blog/entry/157528",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2885894,7 +2885894,7 @@
         "problems"
       ]
     ],
-    "statement_textsha256": "eb7054b8803fc05890c0092819d75bdfde32522a0e6948709e50ccf42dd828bd",
+    "statement_textsha256": "91b4a7703c4b19d7ab9b3836ebb4087403ddc4b6c5b6bb44821dba427821731c",
     "editorial_url": "https://codeforces.com/blog/entry/157528",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2886494,7 +2886494,7 @@
         "problems"
       ]
     ],
-    "statement_textsha256": "52207a9911d623575552848009663f5443d37d272f3db3a11c877f0e3698ed15",
+    "statement_textsha256": "d585e5e6a48a746d661b702f2763510b0818ed653b8392d0718a43150b38edf3",
     "editorial_url": "https://codeforces.com/blog/entry/157528",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2887082,7 +2887082,7 @@
         "problems"
       ]
     ],
-    "statement_textsha256": "c49b9bf1c2b750b60b1e5ffa5bcead9d3b4fe0cd54858ed510228d259e0289bc",
+    "statement_textsha256": "3c0073e1a7e40d03c66b5ee711f3bc233d9715b13839e4ad368e01c99e772ea7",
     "editorial_url": "https://codeforces.com/blog/entry/157528",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2887660,7 +2887660,7 @@
         "problems"
       ]
     ],
-    "statement_textsha256": "c2d8dcc0fb5d6630bef1c1b07ae7b784bc81685de09fc3a678abe93c724ebc86",
+    "statement_textsha256": "42f1dfe876b7d9c8a931f9d6e1b091026c85f3c9584df2da39486c90c90cacc5",
     "editorial_url": "https://codeforces.com/blog/entry/157528",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2887762,7 +2887762,7 @@
         "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)"
       ]
     ],
-    "statement_textsha256": "7c517ea5e9f0f9556ed48f15835fe6feef647a03640ae0655b323ca10dc302d1",
+    "statement_textsha256": "d5edf981a0d92897d62732b9622858c6264a28baf0d457ff7cbf9eb804370f4e",
     "editorial_url": "https://codeforces.com/blog/entry/157590",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2887856,7 +2887856,7 @@
         "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)"
       ]
     ],
-    "statement_textsha256": "90ff60ef53fe34cfe6cbabf80a11c475c1dbf369880facb5631369997b9f2b59",
+    "statement_textsha256": "7c5522d4bc7bd782494195869aff6aaad34d8bceb4e9302c130c321526b17392",
     "editorial_url": "https://codeforces.com/blog/entry/157590",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2887947,7 +2887947,7 @@
         "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)"
       ]
     ],
-    "statement_textsha256": "510ced06751ecf025691862cb515150061babfeac282a6157057cc1a4eeb789b",
+    "statement_textsha256": "7a46328368b04ea51b869397541edeb2e8ad0ee70b346a387c39b08ee3a8f1d2",
     "editorial_url": "https://codeforces.com/blog/entry/157590",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2888066,7 +2888066,7 @@
         "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)"
       ]
     ],
-    "statement_textsha256": "6934b9bd229f62755ad8f4c01cce639004186d115175226bab906223543fcb19",
+    "statement_textsha256": "32f118e53528e1de8910ee92eccb0b082deacc34d4d2119b776c6768c015a04b",
     "editorial_url": "https://codeforces.com/blog/entry/157590",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2888183,7 +2888183,7 @@
         "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)"
       ]
     ],
-    "statement_textsha256": "042ce3737c60480582aa10832dbc099d653dc66bd64217db22ff438cc8a69a9e",
+    "statement_textsha256": "61c0299de968e664701a7d349f441bcec1820acb7611a8c8ab592f027ea8fafa",
     "editorial_url": "https://codeforces.com/blog/entry/157590",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2888288,7 +2888288,7 @@
         "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)"
       ]
     ],
-    "statement_textsha256": "e74490eeffe393385884e8deebfa51924ac8ee779f74bf5a392a74bab8d8190f",
+    "statement_textsha256": "f9938fd6d06550ed85ac29e48bb70c06ea9278a36f90f6fe95746e12c8f6e6cf",
     "editorial_url": "https://codeforces.com/blog/entry/157590",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2888405,7 +2888405,7 @@
         "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)"
       ]
     ],
-    "statement_textsha256": "0dd424d592cc614a32afe8291dbe5fcb80f1d4b74dfef97416b27d83b31f92ab",
+    "statement_textsha256": "0d6bfecb68f8292a1322f92ec19a1c35a4cb18b055deaf7b278d143dbe7f21ab",
     "editorial_url": "https://codeforces.com/blog/entry/157590",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2888508,7 +2888508,7 @@
         "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)"
       ]
     ],
-    "statement_textsha256": "617d0fdf1d6f3902d12cc633c6be0c8db706d74dbb389f674720c1f8485aadee",
+    "statement_textsha256": "93e9883f3a0e8b4483e5c250c1d54435096d5246be930a4e123c14da29124489",
     "editorial_url": "https://codeforces.com/blog/entry/157590",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2888610,7 +2888610,7 @@
         "DeepInfra Round 1 (Codeforces Round 1126, Div. 1 + Div. 2)"
       ]
     ],
-    "statement_textsha256": "fd9cbef952866bb6c859972b677d20f8d9c4cad3b8f27afe0033bca88aa9d78f",
+    "statement_textsha256": "d3514262a8d2390949296466ca5109cf9cd28ffe4eff6a7635fc9983168b6d23",
     "editorial_url": "https://codeforces.com/blog/entry/157590",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2888681,7 +2888681,7 @@
     "statement_text": "A. Lavencia Oranges\ntime limit per test\n2 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\nRené is leaving Lavencia after two long, cold years, with $$$n$$$ Lavencia oranges and $$$n$$$ bags for the oranges (initially empty), both numbered from $$$1$$$ to $$$n$$$. René packs the oranges according to an array $$$a$$$: orange $$$i$$$ goes into bag $$$a_i$$$.\nLavencia has a regulatory process for exports. Jacqueline carries it out: she chooses an integer $$$s$$$ and confiscates all bags holding exactly $$$s$$$ oranges, picking whichever $$$s$$$ takes the most oranges from René. The cost of $$$a$$$ is the number of oranges Jacqueline confiscates.\nMore formally, for a given array $$$a$$$, let $$$c_i$$$ be the number of elements that appear exactly $$$i$$$ times in $$$a$$$. The cost of $$$a$$$ is: $$$$$$ \\max_{0 \\le i \\le n} i \\cdot c_i $$$$$$\nGiven $$$n$$$, find an array $$$a$$$ that minimizes the cost.\nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe only line of each test case contains a single integer $$$n$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$).\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.\nOutput\nFor each test case, output two lines.\nOn the first line, output a single integer — the minimum possible cost.\nOn the second line, output $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le n$$$) — any array that achieves this minimum.\nExample\nInput\n\n3\n4\n5\n8\nOutput\n\n2\n1 2 3 3\n3\n1 1 2 2 2\n3\n4 2 1 5 1 3 1 3\nNote\nIn the first test case, René places $$$1$$$, $$$1$$$, $$$2$$$, and $$$0$$$ oranges into the four bags, respectively. If Jacqueline picks size $$$1$$$, she confiscates bags $$$1$$$ and $$$2$$$, and René loses $$$2$$$ oranges. If she picks size $$$2$$$, she confiscates bag $$$3$$$, and he again loses $$$2$$$. Therefore, the cost is $$$2$$$. It can be proved that this is the minimum cost for this test case.\nIn the second test case, bag $$$1$$$ holds $$$2$$$ oranges, bag $$$2$$$ holds $$$3$$$, and the other bags are empty. Picking size $$$2$$$ costs René $$$2$$$ oranges, and picking size $$$3$$$ costs him $$$3$$$, so the cost is $$$3$$$. It can be proved that, in this case, $$$3$$$ is the minimum cost.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2273/problem/A",
-    "statement_textsha256": "dc92fb4554f1f5eafd05768f9f128094a66084f9cfd0ecaaa2b01fd5e6192489",
+    "statement_textsha256": "e51cc88d4807b98c5a01267653563ac74d50b7264ab2971189e5222fdfaf9c1e",
     "editorial_url": "https://codeforces.com/blog/entry/157634",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2888764,7 +2888764,7 @@
     "statement_text": "B. Robot Championship\ntime limit per test\n2 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\n\nFran and Sofia have become huge fans of robot aura fights, so they have decided to create their own robot aura tournament. Since Sofia is a great expert on robots, Fran will need your help to win the championship.\nA match of the tournament takes place on an $$$n \\times n$$$ board. The rows are numbered from bottom to top and the columns from left to right, so $$$(1, 1)$$$ is the bottom-left corner and $$$(n, n)$$$ is the top-right corner. The opponent's robot is hidden at some unknown cell $$$(i, j)$$$ and moves once every second, but you do not see it.\nAt the beginning of each second $$$s$$$, before the robot moves, you must choose an integer $$$v$$$ with $$$2 \\le v \\le 2n$$$ and shoot a laser along the diagonal\n$$$$$$\\{\\, (r, c) \\mid r + c = v \\,\\}.$$$$$$ The laser touches the robot if the robot is currently on a cell of that diagonal, in which case you win immediately. Otherwise, after your shot, suppose the robot is currently at $$$(r, c)$$$, the robot moves to one of the following cells, provided the move stays inside the board: \n\nup: $$$(r + 1, c)$$$; \nright: $$$(r, c + 1)$$$; \ndown-left: $$$(r - 1, c - 1)$$$. \nThe robot is at cell $$$(3,2)$$$ (its diagonal is $$$r+c=5$$$). The green laser is the diagonal $$$v=7$$$, which does not touch the robot. \nThe robot is adversarial: it may start on any cell, and it may choose any valid sequence of moves. You have to output a fixed sequence of at most $$$3n$$$ diagonals $$$v_1, v_2, \\ldots, v_k$$$ such that, no matter where the robot starts and no matter how it moves, at least one of the lasers is guaranteed to touch it at some second during the tournament. \nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 44$$$). The description of the test cases follows.\nThe only line of each test case contains a single integer $$$n$$$ ($$$2 \\le n \\le 100$$$) — the size of the board.\nIt is guaranteed that the sum of $$$n^3$$$ over all test cases does not exceed $$$10^6$$$.\nOutput\nFor each testcase, print two lines. The first line contains an integer $$$k$$$ ($$$1 \\le k \\le 3n$$$) — the number of lasers. \nThe second line contains $$$k$$$ integers $$$v_1, v_2, \\ldots, v_k$$$ ($$$2 \\le v_i \\le 2n$$$) — the diagonals in the order they are shot.\nYou may print any valid sequence.\nExample\nInput\n\n2\n2\n3\nOutput\n\n3\n3 3 3\n3\n4 4 4\nNote\nFor $$$n = 2$$$, the sequence $$$3, 3, 3$$$ works. The first laser $$$3$$$ removes the diagonal $$$r + c = 3$$$ (cells $$$(1, 2)$$$ and $$$(2, 1)$$$). Cell $$$(1, 1)$$$ must move onto that same diagonal on the next turn, and cell $$$(2, 2)$$$ is forced to follow the path $$$(2, 2) \\to (1, 1) \\to$$$ the same diagonal. The second and third lasers catch both.\nFor $$$n = 3$$$, the sequence $$$4, 4, 4$$$ works. A robot on the diagonal $$$r + c = 4$$$ is hit by the first laser. From the diagonal $$$r + c = 3$$$ or from cell $$$(3, 3)$$$, every move leads onto $$$r + c = 4$$$, so the second laser hits it. From cell $$$(1, 1)$$$ or from the diagonal $$$r + c = 5$$$, every move leads onto $$$r + c = 3$$$ or to cell $$$(3, 3)$$$, so the third laser hits it.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2273/problem/B",
-    "statement_textsha256": "21f652bb6b6d57523e1329088d1bdc54c3b04a8881b703358780b32b6594b3bc",
+    "statement_textsha256": "17d786bf84e0aeda7a7283d048edd4732a6bc3c0ef9ff1cb4adbdeca64f6fd63",
     "editorial_url": "https://codeforces.com/blog/entry/157634",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2888836,7 +2888836,7 @@
     "statement_text": "C. Matrix Puzzle\ntime limit per test\n2.5 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\n\nCamila and Daniel are the greatest puzzle rivals in Mexico. For years, they have challenged each other with the hardest number games in the country, and now they have turned their attention to you. You want to prove to them that you can compete at their level, and so they present you with the following problem.\nYou are given two square matrices $$$a$$$ and $$$b$$$ of size $$$n \\times n$$$. The submatrix $$$(r_1, c_1, r_2, c_2)$$$ of a matrix consists of the elements in rows $$$r_1$$$ to $$$r_2$$$ and columns $$$c_1$$$ to $$$c_2$$$. The rows are numbered from $$$1$$$ to $$$n$$$ from top to bottom and the columns are numbered from $$$1$$$ to $$$n$$$ from left to right.\nIn one move on a submatrix of $$$a$$$, you pick one of its rows or columns and add any constant (possibly negative) to every element of that row or column inside the submatrix. The submatrix $$$(r_1, c_1, r_2, c_2)$$$ of $$$a$$$ is matchable if some sequence of moves makes it equal to the same submatrix of $$$b$$$. In other words, it is matchable if and only if you can choose a value $$$h_i$$$ for each row $$$i$$$ and a value $$$w_j$$$ for each column $$$j$$$ such that $$$a_{i,j} + h_i + w_j = b_{i,j}$$$ for all $$$r_1 \\le i \\le r_2$$$ and $$$c_1 \\le j \\le c_2$$$.\nYou will be asked to perform $$$q$$$ operations.\nThe operations are of two types: \n\nU$$$\\;r_1\\;c_1\\;r_2\\;c_2\\;x$$$: Add a constant $$$x$$$ to every $$$a_{i,j}$$$ in the submatrix $$$(r_1, c_1, r_2, c_2)$$$. \nQ$$$\\;r_1\\;c_1\\;r_2\\;c_2$$$: Determine whether the submatrix $$$(r_1, c_1, r_2, c_2)$$$ of $$$a$$$ is matchable. \nQueries do not modify either matrix: the moves are hypothetical and are chosen independently for each query. Only update operations change $$$a$$$, and $$$b$$$ never changes.\nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$ and $$$q$$$ ($$$2 \\le n \\le 1000$$$, $$$1 \\le q \\le 2 \\cdot 10^4$$$) — the dimension of the matrices and the number of operations.\nThe next $$$n$$$ lines of each test case contain $$$n$$$ integers each ($$$-10^4 \\le a_{i,j} \\le 10^4$$$) — the initial state of matrix $$$a$$$.\nThe next $$$n$$$ lines of each test case contain $$$n$$$ integers each ($$$-10^4 \\le b_{i,j} \\le 10^4$$$) — the matrix $$$b$$$.\nThen $$$q$$$ lines follow for that test case. Each line starts with a character U or Q: \n\nU: then five integers $$$r_1$$$, $$$c_1$$$, $$$r_2$$$, $$$c_2$$$, $$$x$$$ ($$$1 \\le r_1 \\le r_2 \\le n$$$, $$$1 \\le c_1 \\le c_2 \\le n$$$, $$$-10^4 \\le x \\le 10^4$$$) — update the submatrix $$$(r_1, c_1, r_2, c_2)$$$ by adding $$$x$$$ to each of its elements. \nQ: then four integers $$$r_1$$$, $$$c_1$$$, $$$r_2$$$, $$$c_2$$$ ($$$1 \\le r_1 \\le r_2 \\le n$$$, $$$1 \\le c_1 \\le c_2 \\le n$$$) — query the submatrix $$$(r_1, c_1, r_2, c_2)$$$. \nIt is guaranteed that the sum of $$$n^2$$$ over all test cases does not exceed $$$10^6$$$.\nIt is guaranteed that the sum of $$$q$$$ over all test cases does not exceed $$$2 \\cdot 10^4$$$.\nOutput\nFor each query, output \"YES\" (without quotes) if the submatrix is matchable, and \"NO\" (without quotes) otherwise.\nYou can output the answer in any case (upper or lower). For example, the strings \"yEs\", \"yes\", \"Yes\", and \"YES\" will be recognized as positive responses.\nExample\nInput\n\n3\n2 2\n0 0\n0 -1\n1 2\n3 4\nU 1 1 1 1 1\nQ 1 1 2 2\n3 5\n1 1 1\n2 2 2\n3 3 3\n2 3 4\n6 7 8\n10 11 12\nQ 1 1 2 3\nU 1 1 1 1 5\nQ 1 1 2 3\nU 1 2 1 3 5\nQ 1 1 2 3\n5 6\n1 0 0 0 0\n2 0 0 0 0\n3 0 0 0 0\n4 0 0 0 0\n5 0 0 0 0\n2 2 3 4 5\n4 3 4 5 6\n6 4 5 6 7\n8 5 6 7 8\n10 6 7 8 9\nU 2 2 3 3 7\nU 2 4 4 5 -5\nQ 1 1 4 5\nQ 2 4 4 5\nQ 2 1 3 5\nQ 1 1 2 3\nOutput\n\nYes\nYes\nNo\nYes\nNo\nYes\nYes\nNo\nNote\nIn the first test case, after the update, $$$a$$$ becomes $$$$$$\\begin{bmatrix}1 & 0 \\\\ 0 & -1\\end{bmatrix}.$$$$$$ For the query, choosing $$$h_1=0$$$, $$$h_2=3$$$, $$$w_1=0$$$, and $$$w_2=2$$$ makes the submatrices match, so the answer is YES.\nIn the second test case, the first query has answer YES: choose $$$h_1=1$$$, $$$h_2=4$$$, $$$w_1=0$$$, $$$w_2=1$$$, and $$$w_3=2$$$. After the first update, the submatrices of $$$a$$$ and $$$b$$$ in the second query are $$$$$$\\begin{bmatrix}6 & 1 & 1 \\\\ 2 & 2 & 2\\end{bmatrix}, \\quad \\begin{bmatrix}2 & 3 & 4 \\\\ 6 & 7 & 8\\end{bmatrix},$$$$$$ and it can be proved that the answer is NO. After the second update, in the third query they are $$$$$$\\begin{bmatrix}6 & 6 & 6 \\\\ 2 & 2 & 2\\end{bmatrix}, \\quad \\begin{bmatrix}2 & 3 & 4 \\\\ 6 & 7 & 8\\end{bmatrix},$$$$$$ so choosing $$$h_1=-4$$$, $$$h_2=4$$$, $$$w_1=0$$$, $$$w_2=1$$$, and $$$w_3=2$$$ makes them match, and the answer is YES.\nIn the third test case, after both updates, the submatrices of $$$a$$$ and $$$b$$$ in the first query are $$$$$$\\begin{bmatrix}1 & 0 & 0 & 0 & 0 \\\\ 2 & 7 & 7 & -5 & -5 \\\\ 3 & 7 & 7 & -5 & -5 \\\\ 4 & 0 & 0 & -5 & -5\\end{bmatrix}, \\quad \\begin{bmatrix}2 & 2 & 3 & 4 & 5 \\\\ 4 & 3 & 4 & 5 & 6 \\\\ 6 & 4 & 5 & 6 & 7 \\\\ 8 & 5 & 6 & 7 & 8\\end{bmatrix},$$$$$$ and it can be proved that the answer is NO. In the second query, they are $$$$$$\\begin{bmatrix}-5 & -5 \\\\ -5 & -5 \\\\ -5 & -5\\end{bmatrix}, \\quad \\begin{bmatrix}5 & 6 \\\\ 6 & 7 \\\\ 7 & 8\\end{bmatrix},$$$$$$ so choosing $$$h_2=10$$$, $$$h_3=11$$$, $$$h_4=12$$$, $$$w_4=0$$$, and $$$w_5=1$$$ makes them match, and the answer is YES. In the third query, choosing $$$h_2=0$$$, $$$h_3=1$$$, $$$w_1=2$$$, $$$w_2=-4$$$, $$$w_3=-3$$$, $$$w_4=10$$$, and $$$w_5=11$$$ makes the submatrices match, so the answer is YES. It can be proved that the answer to the fourth query is NO.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2273/problem/C",
-    "statement_textsha256": "ef8d2c3287bd0ec822f4da052934855dfaad2878128159ac91692a8279675a9b",
+    "statement_textsha256": "8cb5992d4cd3a765c6af8afdc1728b6c106de176a2189e4365fa94f8145e4e16",
     "editorial_url": "https://codeforces.com/blog/entry/157634",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2888928,7 +2888928,7 @@
     "statement_text": "D. Aura Battle\ntime limit per test\n2 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\nThis is an interactive problem. Hacks are disabled.\nYou're in an aura battle in Pachuca, Mexico. Each battle consists of $$$10$$$ rounds. The judges have a hidden integer $$$x$$$ ($$$1 \\le x \\le 10^4$$$), which remains fixed throughout the battle.\nIn round $$$i$$$, you choose two integers $$$a_i$$$ and $$$b_i$$$ ($$$-10^9 \\le a_i, b_i \\le 10^9$$$). You then lose $$$$$$ \\min\\bigl(|x-a_i|,\\ |x-b_i|\\bigr) $$$$$$ aura and are told this amount before the next round begins. Your choices may depend on the results of all previous rounds. After the battle is over, your total aura loss is calculated as the sum of the aura lost in each of the $$$10$$$ rounds.\nLet $$$m$$$ be the smallest integer such that there exists a strategy guaranteeing a total aura loss of at most $$$m$$$, regardless of the hidden value of $$$x$$$. Your task is to guarantee a total aura loss not exceeding the limit, which is $$$10^5$$$ on the first test (the example) and $$$m+67$$$ on all other tests.\nInput\nThe first line of input contains a single integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of battles.\nInteraction\nThe $$$t$$$ battles are carried out one after another. In every battle, you repeat the following $$$10$$$ times:\n\nprint two integers $$$a_i$$$ and $$$b_i$$$ ($$$-10^9 \\le a_i, b_i \\le 10^9$$$) — the values you play for the $$$i$$$-th round; \nread one integer $$$p$$$ — the aura you lost this round, that is, $$$p = \\min(\\lvert x - a_i \\rvert, \\lvert x - b_i \\rvert)$$$, where $$$x$$$ is the hidden value of the current battle. \nYou must play all $$$10$$$ rounds of a battle.\nNothing is printed or read between battles: right after the $$$10$$$-th round of a battle, the next battle begins, and after the $$$10$$$-th round of the last battle your program must terminate without printing anything else.\nIf you print a value outside $$$[-10^9, 10^9]$$$, the interactor stops answering and you will get the verdict Wrong answer. Make sure your program exits immediately in that case, otherwise you may get an arbitrary verdict. You will also get the verdict Wrong answer if the total aura you lose in some battle exceeds the limit, which is $$$10^5$$$ on the first test (the example) and $$$m+67$$$ on all other tests.\nAfter printing a value, do not forget to output the end of line and to flush the output. Otherwise, you will get the verdict Idleness limit exceeded. To do this, use:\n\nfflush(stdout) or cout.flush() in C++; \nSystem.out.flush() in Java; \nflush(output) in Pascal; \nstdout.flush() in Python; \nsee the documentation for other languages. \nExample\nInput\n\n1\n\n13\n\n4\n\n2\n\n2\n\n4\n\n5\n\n9\n\n6\n\n9\n\n13\nOutput\n\n3 53\n\n36 49\n\n47 38\n\n1 38\n\n44 32\n\n35 35\n\n31 67\n\n33 46\n\n49 50\n\n20 27\nNote\nIn the example there is a single battle, and the hidden value $$$x$$$ is $$$40$$$.\nIn the first round, $$$a_1 = 3$$$ and $$$b_1 = 53$$$, so you lose $$$13 = \\min(\\lvert 3 - 40 \\rvert, \\lvert 53 - 40 \\rvert)$$$ aura. \nIn the second round, $$$a_2 = 36$$$ and $$$b_2 = 49$$$, so you lose $$$4 = \\min(\\lvert 36 - 40 \\rvert, \\lvert 49 - 40 \\rvert)$$$ aura. \nIn the third round, the amount of aura you lose is $$$2$$$. \nIn the following rounds, the amount of aura you lose is $$$2, 4, 5, 9, 6, 9, 13$$$ respectively.\nThe total amount of aura you lose is $$$67$$$. Note that this is an example of how the interaction works. To receive an accepted verdict, you must solve the problem without exceeding the aura limit outlined in the statement above.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2273/problem/D",
-    "statement_textsha256": "a4a599bfe22e7c9df3fe68b449ba3cb701218c8c7c5b289090ec79d6471f99d6",
+    "statement_textsha256": "56d550da7291af0c22660a6c5d5731ec1172370f668e5520d7ded200cc11c4f8",
     "editorial_url": "https://codeforces.com/blog/entry/157634",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889012,7 +2889012,7 @@
     "statement_text": "E. Six-Seven Bags\ntime limit per test\n2 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\n\nThis is an interactive problem.\nAle and Sofia want to win every aura battle in the city, so they are preparing a street-magic trick with bags of coins.\nThere are $$$n$$$ bags on a table. The $$$i$$$-th bag contains $$$a_i$$$ coins. In every bag, all coins are of the same type: either $$$6$$$-coins, which weigh $$$6$$$ grams each, or $$$7$$$-coins, which weigh $$$7$$$ grams each. Exactly one bag contains $$$6$$$-coins, and the other $$$n - 1$$$ bags contain $$$7$$$-coins. Ale and Sofia know the array $$$a$$$, but not which bag contains the $$$6$$$-coins.\nIn one query, they may select any number of coins from each bag (possibly zero) and learn their total weight. All selected coins are returned to their bags after each query.\nLet $$$f(a)$$$ be the minimum number of queries needed to guarantee finding the $$$6$$$-coin bag, regardless of which bag it is. Help Ale and Sofia find this bag using at most $$$f(a)$$$ queries.\nThe interactor is adaptive. The index of the $$$6$$$-coin bag may change during the interaction, as long as all previous answers remain consistent.\nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$2 \\le n \\le 10^5$$$) — the number of bags.\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le n$$$) — the number of coins in each bag.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$10^5$$$.\nInteraction\nFor each test case, first read $$$n$$$ and the array $$$a$$$. Then you may make queries.\nTo make a query, output a line in the following format: \n\n? $$$b_1\\; b_2\\; \\ldots\\; b_n$$$ ($$$0 \\le b_i \\le a_i$$$) — where $$$b_i$$$ is the number of coins selected from the $$$i$$$-th bag. \nAfter each query, read a single integer — the total weight of the selected coins, $$$\\sum_{i=1}^{n} b_i \\cdot w_i$$$, where $$$w_i = 6$$$ if the $$$i$$$-th bag contains $$$6$$$-coins and $$$w_i = 7$$$ otherwise. This weight may exceed the range of a $$$32$$$-bit integer.\nWhen you have determined the $$$6$$$-coin bag, output a line in the following format: \n\n! $$$i$$$ ($$$1 \\le i \\le n$$$) — where $$$i$$$ is the index of the bag with $$$6$$$-coins. \nThis line does not count toward the limit of $$$f(a)$$$ queries. After a correct answer, proceed to the next test case, or terminate your program if it was the last test case. The interactor does not send a confirmation value after a correct answer.\nIf you exceed the query limit or report an incorrect bag, the interactor will output -1, and you will receive a Wrong Answer verdict. Upon receiving -1 instead of any expected input, your program must terminate immediately. Otherwise, you may receive an arbitrary verdict because your program might try to read from a closed stream. Invalid output may also cause the interactor to terminate immediately.\nAfter printing a query or the answer, output a newline and flush the output. Otherwise, you may receive an Idleness Limit Exceeded verdict. To flush the output, use: \n\nfflush(stdout) or cout.flush() in C++; \nSystem.out.flush() in Java; \nsys.stdout.flush() in Python; \nstd::io::stdout().flush() in Rust; \nsee the documentation for other languages. \nHacks\nTo hack, use the following format.\nThe first line should contain the number of test cases $$$(1 \\le t \\le 5000)$$$. The description of the test cases follows.\nThe first line of each test case should contain an integer $$$n$$$ ($$$2 \\le n \\le 10^5$$$) — the number of bags — followed by the string manual, followed by an integer $$$k$$$ ($$$1 \\le k \\le n$$$) — the index of the $$$6$$$-coin bag.\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le n$$$) — the number of coins in each bag.\nThe sum of $$$n$$$ over all test cases should not exceed $$$10^5$$$.\nExample\nInput\n\n2\n5\n1 1 2 2 2\n\n34\n\n33\n\n4\n3 2 4 3\n\n47\n\nOutput\n\n? 1 0 1 2 1\n\n? 1 1 2 0 1\n\n! 3\n\n? 3 2 2 0\n\n! 2\nNote\nThe example interaction does not represent an optimal strategy and is only shown to demonstrate the input/output format.\nThe extra blank lines in the example are for readability only and are not part of the actual input or output.\nIn the first test case, $$$n = 5$$$ and $$$a = [1, 1, 2, 2, 2]$$$. The third bag contains $$$6$$$-coins. The displayed weights are calculated as follows: \n\n? 1 0 1 2 1: five coins are selected and $$$b_3 = 1$$$, giving $$$7 \\cdot (1 + 0 + 2 + 1) + 6 \\cdot 1 = 34$$$. \n? 1 1 2 0 1: five coins are selected and $$$b_3 = 2$$$, giving $$$7 \\cdot (1 + 1 + 0 + 1) + 6 \\cdot 2 = 33$$$. \nThe participant then outputs ! 3 to identify the third bag.\nIn the second test case, $$$n = 4$$$ and $$$a = [3, 2, 4, 3]$$$. The second bag contains $$$6$$$-coins. The query ? 3 2 2 0 selects seven coins, including two from the second bag, so the response is $$$7 \\cdot (3 + 2 + 0) + 6 \\cdot 2 = 47$$$.\nThe participant then outputs ! 2. This answer is correct for the illustrated choice of the hidden bag, but the query does not distinguish the second bag from the third bag.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2273/problem/E",
-    "statement_textsha256": "07b2132b20268a99f56bb3e4ac110472801bf129309a4271cfa95e765dd73b99",
+    "statement_textsha256": "f48ae1bfa078a7e123cc9c6661291026963b16a4633e2d97e92b838ffdcc5aff",
     "editorial_url": "https://codeforces.com/blog/entry/157634",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889090,7 +2889090,7 @@
     "statement_text": "F. Pancho's Permutation\ntime limit per test\n2 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\nPancho was given a permutation$$$^{\\text{∗}}$$$ $$$p_1, p_2, \\ldots, p_n$$$ as a gift when he was a child. He made many fond memories with his permutation, but the day he turned $$$18$$$, he realized to his horror that some of the elements of the permutation may have been erased. \nPancho was never great at remembering long sequences of numbers, but he recalls two of its properties:\nFor any $$$i$$$ ($$$1 \\le i \\le n-1$$$), $$$p_1, p_2, \\ldots, p_i$$$ was not a permutation of length $$$i$$$. \nFor any $$$j$$$ ($$$2 \\le j \\le n$$$), $$$p_j, p_{j+1}, \\ldots, p_n$$$ was not a permutation of length $$$n-j+1$$$.\nYour task is to help Pancho by outputting the $$$k$$$-th smallest permutation in lexicographical order$$$^{\\text{†}}$$$ that matches the information he remembers or reporting that there is no such permutation.\n$$$^{\\text{∗}}$$$A permutation of length $$$n$$$ is an array consisting of $$$n$$$ distinct integers from $$$1$$$ to $$$n$$$ in arbitrary order. For example, $$$[2,3,1,5,4]$$$ is a permutation, but $$$[1,2,2]$$$ is not a permutation ($$$2$$$ appears twice in the array), and $$$[1,3,4]$$$ is also not a permutation ($$$n=3$$$ but there is $$$4$$$ in the array).\n$$$^{\\text{†}}$$$An array $$$a$$$ is lexicographically smaller than an array $$$b$$$ if and only if one of the following holds:\n\n$$$a$$$ is a prefix of $$$b$$$, but $$$a \\neq b$$$; or \nin the first position where $$$a$$$ and $$$b$$$ differ, the array $$$a$$$ has a smaller element than the corresponding element in $$$b$$$. \nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\leq t \\leq 100$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$ and $$$k$$$ ($$$2 \\leq n \\leq 10^6$$$ and $$$1 \\leq k \\leq 10^{18}$$$) — the length of the permutation and the index of the one you must construct.\nThe second line of each test case contains $$$n$$$ integers $$$p_1,p_2,\\dots,p_n$$$ (if $$$p_i$$$ is known, then $$$1 \\leq p_i \\leq n$$$; otherwise, $$$p_i=-1$$$)  — the information provided about the original permutation.\nIt is guaranteed that the known values $$$p_i$$$ (those with $$$p_i \\neq -1$$$) are pairwise distinct.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$10^6$$$.\nOutput\nPrint a line for each test case. Print $$$-1$$$ if there are fewer than $$$k$$$ valid permutations. Otherwise, print $$$n$$$ integers representing the requested permutation.\nExample\nInput\n\n4\n5 1\n1 2 3 4 5\n6 69\n-1 -1 -1 -1 -1 -1\n4 2\n-1 -1 -1 -1\n10 10\n5 3 9 -1 -1 10 -1 2 -1 -1\nOutput\n\n-1\n3 4 1 6 2 5 \n3 1 4 2 \n5 3 9 1 6 10 7 2 8 4 \nNote\nIn the first test case, the first two elements of the given information are $$$1$$$ and $$$2$$$. Since these two numbers are precisely the elements of a permutation of length $$$2$$$, there are no valid permutations.\nIn the third test case, there are exactly $$$2$$$ valid permutations (listed in lexicographical order), $$$[2, 4, 1, 3]$$$ and $$$[3, 1, 4, 2]$$$.\nThe answer is the second one, as requested.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2273/problem/F",
-    "statement_textsha256": "293e3e3e30aa354e2f6ada20369a5618656f72991cecbfde4143f8c3229a814e",
+    "statement_textsha256": "41e2f3b8b7f8101822f5c5617a92a0888e2f79afd67675f6d57c34ad2355d110",
     "editorial_url": "https://codeforces.com/blog/entry/157634",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889176,7 +2889176,7 @@
     "statement_text": "A. The Projections of Paco\ntime limit per test\n1 second\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\n\nYou are given $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ representing points on a number line. Paco has a token that starts at coordinate $$$0$$$.\nReflecting the token about a point moves it to the other side of that point, keeping the same distance from it. If the token is already at that point, it stays there.\nPaco's token (blue) being reflected about a point (red). \nChoose an integer $$$p$$$. Paco's token is reflected about the points with coordinates $$$p, a_1, a_2, \\ldots, a_n$$$, in this order, exactly once each.\nHelp Paco find $$$p$$$ such that his token ends at exactly coordinate $$$0$$$. This is very important for him. It can be shown that exactly one such integer exists.\nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$1 \\le n \\le 10^5$$$).\nThe second line contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$-10^4 \\le a_i \\le 10^4$$$).\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$10^5$$$.\nOutput\nFor each test case, print the integer $$$p$$$.\nExample\nInput\n\n5\n1\n3\n2\n2 5\n3\n2 7 1\n4\n-3 0 -3 0\n1\n0\nOutput\n\n3\n-3\n-4\n-6\n0\nNote\nIn the first test case, choose $$$p=3$$$. Paco's token moves from $$$0$$$ to $$$6$$$ and then back to $$$0$$$.\nIn the second test case, choose $$$p=-3$$$. Paco's token visits coordinates $$$0 \\to -6 \\to 10 \\to 0$$$.\nIn the third test case, choose $$$p=-4$$$. Paco's token visits coordinates $$$0 \\to -8 \\to 12 \\to 2 \\to 0$$$.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2274/problem/A",
-    "statement_textsha256": "313fe63e7b538c522ab8587f4ff7aa7728fbf0153ae587f077fcc4bc4f6e3691",
+    "statement_textsha256": "ecf681538c828b2afc6f0bde8fb2c4b246aa70b06371380036d814fe9447b252",
     "editorial_url": "https://codeforces.com/blog/entry/157634",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889265,7 +2889265,7 @@
     "statement_text": "B. Prefix\ntime limit per test\n1 second\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\nYou are given an array $$$a_1, a_2, \\ldots, a_n$$$. \nFor each index $$$i = 2, 3, \\ldots, n$$$ in order, perform the following:\n\nDefine $$$s = a_1 + a_2 + \\ldots + a_{i-1}$$$. \nReplace $$$a_i$$$ with one of the following three values: $$$a_i - s$$$, $$$a_i$$$, or $$$a_i + s$$$. \nOver all possible choices, find the maximum value of $$$\\max(a_1, a_2, \\ldots, a_n)$$$ after the process described above.\nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$2 \\le n \\le 50$$$).\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$-50 \\le a_i \\le 50$$$).\nOutput\nFor each test case, output a single integer — the maximum achievable value of $$$\\max(a_1, a_2, \\ldots, a_n)$$$.\nPlease note that the answer for some test cases won't fit into a 32-bit integer type, so you should use at least a 64-bit integer type in your programming language (like long long in C++).\nExample\nInput\n\n4\n5\n3 -5 1 -4 2\n2\n-1 2\n3\n1 2 3\n3\n-2 -2 -2\nOutput\n\n24\n3\n7\n4\nNote\nIn the first test case, the final array can be made $$$[3, -8, -4, -13, 24]$$$, so the answer is $$$24$$$.\nIn the second test case, for $$$i = 2$$$, $$$s = a_1 = -1$$$. Replacing $$$a_2$$$ with $$$a_2 - s = 2 - (-1) = 3$$$ gives the answer $$$3$$$.\nIn the third test case, the final array can be made $$$[1, 3, 7]$$$, so the answer is $$$7$$$.\nIn the fourth test case, replacing $$$a_2$$$ with $$$a_2 + s = -4$$$ makes $$$s = -6$$$ for $$$i = 3$$$. Replacing $$$a_3$$$ with $$$a_3 - s = -2 - (-6) = 4$$$ gives the final array $$$[-2, -4, 4]$$$, so the answer is $$$4$$$.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2274/problem/B",
-    "statement_textsha256": "334eb0b99414b7077373e2295ea03b5fc74aee65b9f84578c1e0a751e033af53",
+    "statement_textsha256": "0e35a4ea2bd9a17f6e7cf3e068a560b36525fb481ea9f38332deb34c514e228a",
     "editorial_url": "https://codeforces.com/blog/entry/157634",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889327,7 +2889327,7 @@
     "statement_text": "A. Perfect Sandwiches\ntime limit per test\n1 second\nmemory limit per test\n512 megabytes\ninput\nstandard input\noutput\nstandard output\nMonocarp has $$$a$$$ slices of cheese and $$$b$$$ slices of sausage. He wants to make the maximum possible number of sandwiches for his friends from them.\nMonocarp is very thrifty, so he must use all $$$a$$$ slices of cheese and all $$$b$$$ slices of sausage without any leftovers to make the sandwiches. In addition, he has the following rules for making sandwiches:\n\neach sandwich must contain at least one slice of cheese and at least one slice of sausage; \neach of the $$$a$$$ slices of cheese and each of the $$$b$$$ slices of sausage must be placed on exactly one sandwich; \nfor each sandwich, the number of slices of cheese must be strictly greater than the number of slices of sausage. \nHelp Monocarp determine the maximum number of sandwiches he can make, or determine that it is impossible to distribute all slices according to these rules.\nInput\nThe first line contains an integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe only line of each test case contains two integers $$$a$$$ and $$$b$$$ ($$$1 \\le a, b \\le 100$$$) — the number of slices of cheese and sausage, respectively.\nOutput\nFor each test case, print one integer — the maximum number of sandwiches that can be made. If it is impossible to distribute all pieces according to the described rules, print $$$-1$$$ instead. \nExample\nInput\n\n3\n6 4\n5 1\n4 5\nOutput\n\n2\n1\n-1\nNote\nIn the first test case, it is possible to make $$$2$$$ sandwiches. For example, each of the two sandwiches can be made from three slices of cheese and two pieces of sausage.\nIn the second test case, it is possible to make $$$1$$$ sandwich from five slices of cheese and one slice of sausage.\nIn the third test case, it is impossible to make sandwiches while using all slices of cheese and sausage, so you have to print $$$-1$$$.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2276/problem/A",
-    "statement_textsha256": "a35eeaab4a311c6f58ed18dbe7f68f883c4291b0687b7ed5d3b22c7c21309f16",
+    "statement_textsha256": "318fd68da7323aa186e3445c2073ebab851581121e11167e67a66b0e8f7ab8fe",
     "editorial_url": "https://codeforces.com/blog/entry/157752",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889396,7 +2889396,7 @@
     "statement_text": "B. Replace and Compress\ntime limit per test\n2 seconds\nmemory limit per test\n512 megabytes\ninput\nstandard input\noutput\nstandard output\nYou are given a string $$$s$$$ of length $$$n$$$ consisting of the characters 0 and/or 1. You need to perform exactly one operation consisting of two steps:\n\nchoose at most one character with index from $$$2$$$ to $$$n-1$$$ inclusive and replace it with the opposite one: 0 to 1 or 1 to 0. You may choose not to change any character. The first and the last characters of the string cannot be changed; \nreplace each maximal block of consecutive equal characters with one such character. \nA block is called maximal if it cannot be extended to the left or to the right by adding the same character. For example, after the second step, the string 100111011 will become 10101.\nCount the number of different strings that can be obtained after performing this operation.\nInput\nThe first line contains an integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nEach test case consists of one line containing a string $$$s$$$ ($$$3 \\le |s| \\le 3 \\cdot 10^5$$$) consisting only of the characters 0 and 1.\nAdditional constraints on the input:\n\nthe sum of the lengths of strings $$$s$$$ over all test cases does not exceed $$$3 \\cdot 10^5$$$. \nOutput\nFor each test case, print one integer — the number of different strings that can be obtained after performing the operation.\nExample\nInput\n\n7\n001\n000\n010\n00010\n100111011\n001011010\n1111\nOutput\n\n1\n2\n2\n3\n3\n2\n2\nNote\nIn the first test case, you may choose not to change any character or replace the second character. Before compression, the resulting strings are 001 and 011, respectively. After compression, both strings become 01, so the answer is $$$1$$$.\nIn the fifth test case:\n\nif no character is changed, after compression we get 10101; \nif the second character is replaced, we get 110111011, and after compression — 10101; \nif the fifth character is replaced, we get 100101011, and after compression — 1010101; \nif the seventh character is replaced, we get 100111111, and after compression — 101. \nIn total, three different strings can be obtained: 101, 10101, and 1010101.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2276/problem/B",
-    "statement_textsha256": "4d12d92df4000cade6152b8cc80804e1a969b521c4e01c352db0e329ff72416a",
+    "statement_textsha256": "87ad12b38e98b620756837a69e107c823aa11fa1ed369fe43fdd3d6776418079",
     "editorial_url": "https://codeforces.com/blog/entry/157752",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889465,7 +2889465,7 @@
     "statement_text": "C. Subarrays\ntime limit per test\n2 seconds\nmemory limit per test\n512 megabytes\ninput\nstandard input\noutput\nstandard output\nMonocarp has an array $$$a$$$ consisting of $$$n$$$ positive integers. He also has a favorite integer $$$k$$$ ($$$k \\lt n$$$).\nA sequence of consecutive elements of the array with indices from $$$l$$$ to $$$r$$$ ($$$1 \\le l \\le r \\le n$$$) is called a subarray. Monocarp calls a subarray $$$k$$$-balanced if the following conditions hold:\n\nthe sum of all elements in the subarray from $$$l$$$ to $$$r$$$ inclusive is divisible by $$$k$$$; \nthe length of this subarray is strictly greater than $$$k$$$ (that is, $$$r - l + 1 \\gt k$$$). \nHelp Monocarp determine the total number of $$$k$$$-balanced subarrays in the array $$$a$$$.\nInput\nThe first line contains an integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe descriptions of the test cases follow.\nThe first line of each test case contains two integers $$$n$$$ and $$$k$$$ ($$$1 \\le k \\lt n \\le 2 \\cdot 10^5$$$) — the number of elements in the array $$$a$$$ and the number $$$k$$$.\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\dots, a_n$$$ ($$$1 \\le a_i \\le 10^9$$$) — the elements of the array $$$a$$$.\nAdditional constraints on the input:\n\nthe sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$. \nOutput\nFor each test case, print one integer — the number of $$$k$$$-balanced subarrays in the array $$$a$$$.\nExample\nInput\n\n3\n5 2\n2 1 3 1 4\n9 3\n1 1 1 1 1 1 1 1 1\n4 3\n2 8 5 7\nOutput\n\n2\n5\n0\nNote\nIn the first test case of the example, the suitable subarrays are:\n\n$$$[2, 1, 3]$$$ (the sum of all elements $$$2 + 1 + 3 = 6$$$ is divisible by $$$2$$$); \n$$$[3, 1, 4]$$$ (the sum of all elements $$$3 + 1 + 4 = 8$$$ is divisible by $$$2$$$). \nIn the second test case, all elements are equal to $$$1$$$, and $$$k = 3$$$. The suitable subarrays have lengths $$$6$$$ and $$$9$$$: there are four subarrays of length $$$6$$$ and one subarray of length $$$9$$$, so the answer is $$$5$$$.\nIn the third test case, the only subarray of length strictly greater than $$$3$$$ is the entire array. Its sum is $$$22$$$, which is not divisible by $$$3$$$, so the answer is $$$0$$$.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2276/problem/C",
-    "statement_textsha256": "42483ce59c64f59895d15b302962d1dea0206dcce8c770c3b86b4b21d330c947",
+    "statement_textsha256": "5e9a7975616bb2352e6da61cab8de5642a2cbe73ee7bb410a36a792377f0e91c",
     "editorial_url": "https://codeforces.com/blog/entry/157752",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889534,7 +2889534,7 @@
     "statement_text": "D. Caveman\ntime limit per test\n2 seconds\nmemory limit per test\n512 megabytes\ninput\nstandard input\noutput\nstandard output\nMonocarp drew an undirected graph with $$$n$$$ vertices and $$$m$$$ edges. He wants to color each vertex red or blue so that every vertex has at least one neighbor of the opposite color. He needs to calculate the number of colorings that suit him.\nMonocarp is a caveman: he knows only the numbers $$$1$$$, $$$2$$$, and \"many\" (any number greater than $$$2$$$). He does not know about zero, so if there are no valid colorings, his brain melts.\nHelp Monocarp count the valid colorings in his language. Two colorings are considered different if at least one vertex has a different color in them.\nInput\nThe first line contains an integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe first line of each test case contains two integers $$$n$$$ and $$$m$$$ ($$$3 \\le n \\le 3 \\cdot 10^5$$$; $$$0 \\le m \\le \\min\\left(\\frac{n(n-1)}{2}, 3 \\cdot 10^5\\right)$$$) — the number of vertices and edges.\nEach of the next $$$m$$$ lines contains two integers $$$u_i$$$ and $$$v_i$$$ ($$$1 \\le u_i, v_i \\le n$$$) — the numbers of the vertices connected by the $$$i$$$-th edge. The graph has no self-loops or multiple edges.\nAdditional constraints on the input:\n\nthe sum of $$$n$$$ over all test cases does not exceed $$$3 \\cdot 10^5$$$; also the sum of $$$m$$$ over all test cases does not exceed $$$3 \\cdot 10^5$$$. \nOutput\nFor each test case, print on a separate line:\n\n1 or 2, if the number of valid colorings is equal to $$$1$$$ or $$$2$$$ respectively; \nMany, if the number of valid colorings is greater than two; \nBrain Melt, if there are no valid colorings. \nExample\nInput\n\n4\n3 1\n1 2\n3 2\n1 2\n1 3\n3 3\n1 2\n2 3\n1 3\n4 3\n1 2\n2 3\n3 4\nOutput\n\nBrain Melt\n2\nMany\nMany",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2276/problem/D",
-    "statement_textsha256": "1e99613dcce9663738fb07eb7baf4a2426225f7fbc2bbfc0560f8f95d512e18a",
+    "statement_textsha256": "ea941efcb2b3a9af464d88855007d77d25afedfca0a37dacd22d335b857231f1",
     "editorial_url": "https://codeforces.com/blog/entry/157752",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889606,7 +2889606,7 @@
     "statement_text": "E. Good Substrings\ntime limit per test\n2 seconds\nmemory limit per test\n512 megabytes\ninput\nstandard input\noutput\nstandard output\nYou are given a string $$$s$$$ of length $$$n$$$, consisting only of digits.\nA substring of $$$s$$$ is a contiguous subsequence of its characters. A substring $$$s_{l \\dots r}$$$ is bad if it contains the string $$$2025$$$ as a subsequence and doesn't contain the string $$$2026$$$ as a subsequence. Otherwise, the substring is good. For example, the strings $$$2025$$$, $$$72707275$$$, $$$20625$$$ are bad, but the strings $$$20256$$$, $$$2026$$$, $$$777$$$, $$$1290723576$$$ are good.\nFor each index $$$i$$$ from $$$1$$$ to $$$n$$$, calculate the number of good substrings that contain it. In other words, for each index $$$i$$$ from $$$1$$$ to $$$n$$$, calculate the number of pairs of integers $$$l, r$$$ such that $$$1 \\le l \\le i \\le r \\le n$$$ and the substring $$$s_{l \\dots r}$$$ is good.\nInput\nThe first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nThe first line of each test case contains a single integer $$$n$$$ ($$$1 \\le n \\le 3 \\cdot 10^5$$$).\nThe second line contains a string $$$s$$$ of length $$$n$$$, consisting of digits.\nAdditional constraint on the input: the sum of $$$n$$$ across all test cases does not exceed $$$3 \\cdot 10^5$$$.\nOutput\nFor each test case, print $$$n$$$ integers. The $$$i$$$-th integer should be equal to the number of good substrings that contain index $$$i$$$.\nExample\nInput\n\n2\n6\n202516\n5\n20265\nOutput\n\n4 8 10 10 9 6 \n5 8 9 8 5",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2276/problem/E",
-    "statement_textsha256": "0fa00a242ca26ff4d39240371877f9472e5bff02b0c9f9672995fc1e7a829330",
+    "statement_textsha256": "259d91abd1d1b74b66d18ae7442e1cf34af0f7d12ed7a8df376e00aff0521198",
     "editorial_url": "https://codeforces.com/blog/entry/157752",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889700,7 +2889700,7 @@
     "statement_text": "F. Permutation Coloring Game\ntime limit per test\n3 seconds\nmemory limit per test\n512 megabytes\ninput\nstandard input\noutput\nstandard output\nAlice and Bob are playing a game. They have a permutation $$$p$$$ of length $$$n$$$ — an array of $$$n$$$ elements in which every integer from $$$1$$$ to $$$n$$$ occurs exactly once. Initially, every element of the permutation is colored white.\nThe players take turns; Alice goes first. On each turn, the current player chooses between $$$1$$$ and $$$k$$$ white elements and colors all of them either red or blue. All elements chosen on the same turn must receive the same color.\nThe game ends when there are no white elements left. If the resulting permutation can be sorted in increasing order by swapping elements of the same color, Alice wins. Otherwise, Bob wins. Any two elements may be swapped as long as they have the same color.\nDetermine who wins if both players play optimally.\nInput\nThe first line contains one integer $$$t$$$ ($$$1 \\le t \\le 10^4$$$) — the number of test cases.\nEach test case consists of two lines: \n\nthe first line contains two integers $$$n$$$ and $$$k$$$ ($$$2 \\le n \\le 2 \\cdot 10^5$$$; $$$1 \\le k \\le \\min(20, n)$$$) — the length of the permutation and the maximum number of elements that can be colored in one turn; \nthe second line contains $$$n$$$ pairwise distinct integers $$$p_1, p_2, \\ldots, p_n$$$ ($$$1 \\le p_i \\le n$$$). \nAdditional constraints on the input: \n\nthe sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$. \nOutput\nFor each test case, print Alice on a separate line if Alice wins, or Bob if Bob wins.\nExample\nInput\n\n10\n2 1\n1 2\n2 1\n2 1\n2 2\n2 1\n3 2\n2 3 1\n4 2\n2 3 1 4\n8 3\n2 3 1 5 6 4 8 7\n10 3\n2 3 1 5 6 4 8 7 10 9\n6 2\n1 2 3 5 6 4\n7 1\n4 5 6 1 2 3 7\n8 1\n4 5 6 1 2 3 7 8\nOutput\n\nAlice\nBob\nAlice\nBob\nAlice\nAlice\nBob\nBob\nAlice\nBob",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2276/problem/F",
-    "statement_textsha256": "94bd02d13178fdb81fc399c5ec136a3cd6c77cde080504be7682cc23a5605b10",
+    "statement_textsha256": "c321269109f67810550cbdf388a0a678ddf90c108612de7790b9fcb30d58bccd",
     "editorial_url": "https://codeforces.com/blog/entry/157752",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889798,7 +2889798,7 @@
     "statement_text": "G. Elimination of Players\ntime limit per test\n4 seconds\nmemory limit per test\n512 megabytes\ninput\nstandard input\noutput\nstandard output\nIn a certain game, there are $$$n$$$ players numbered from $$$1$$$ to $$$n$$$. Each player has a strength — an integer from $$$1$$$ to $$$n$$$. All players have distinct strengths. The distribution of strengths is given by a permutation $$$(s_1, s_2, \\ldots, s_n)$$$, where $$$s_j$$$ is the strength of player $$$j$$$.\nInitially, all players take part in the game. The game consists of $$$n-1$$$ rounds. In the $$$i$$$-th round, the player $$$a_i$$$ is protected. It is possible that the protected player was already eliminated.\nIn each round, exactly one player is eliminated. This player is chosen as follows:\n\nif the player with the minimum strength among the remaining players is not protected, that player is eliminated; \notherwise, the player with the second minimum strength among the remaining players is eliminated. \nAn eliminated player no longer takes part in the game. After the last round, exactly one player remains.\nYou are given the sequence $$$a_1, a_2, \\ldots, a_{n-1}$$$, but the distribution of strengths is unknown. For each player $$$j$$$ and each round $$$i$$$, find the number of permutations $$$(s_1, s_2, \\ldots, s_n)$$$ for which the player $$$j$$$ is eliminated in the $$$i$$$-th round.\nInput\nThe first line contains one integer $$$t$$$ ($$$1 \\le t \\le 2500$$$) — the number of test cases.\nEach test case consists of two lines:\n\nthe first line contains one integer $$$n$$$ ($$$2 \\le n \\le 5000$$$) — the number of players; \nthe second line contains $$$n-1$$$ integers $$$a_1, a_2, \\ldots, a_{n-1}$$$ ($$$1 \\le a_i \\le n$$$) — the numbers of the protected players in the corresponding rounds. The values $$$a_i$$$ may repeat. \nAdditional constraints on the input:\n\nthe sum of $$$n$$$ over all test cases does not exceed $$$5000$$$. \nOutput\nFor each test case, print the answer in the following way:\nLet $$$ans(i,j)$$$ denote the number of permutations $$$(s_1, s_2, \\ldots, s_n)$$$ for which player $$$i$$$ is eliminated in round $$$j$$$, taken modulo $$$998\\,244\\,353$$$. Print one integer equal to $$$\\oplus_{i=1}^{n} \\oplus_{j=1}^{n-1} (ans(i,j)\\cdot i\\cdot j)$$$, where $$$\\oplus$$$ denotes the bitwise exclusive OR (XOR) operation. Only the values $$$ans(i,j)$$$ are taken modulo $$$998\\,244\\,353$$$; the products $$$ans(i,j)\\cdot i\\cdot j$$$ and the final answer are not.\nExample\nInput\n\n7\n2\n2\n3\n1 2\n4\n1 1 1\n4\n1 4 1\n7\n2 2 2 7 7 7\n6\n3 1 3 6 3\n5\n5 1 4 2\nOutput\n\n2\n3\n96\n188\n2024\n4610\n69\nNote\nIn the first test case, there are two possible distributions of strengths: $$$(1,2)$$$ and $$$(2,1)$$$. In the only round, player $$$2$$$ is protected, so in both cases player $$$1$$$ is eliminated. Thus, $$$ans(1,1)=2$$$, $$$ans(2,1)=0$$$, and the answer is $$$$$$ (2\\cdot 1\\cdot 1)\\oplus(0\\cdot 2\\cdot 1)=2. $$$$$$\nIn the second test case, there are $$$6$$$ possible distributions of strengths. The values of $$$ans(i,j)$$$ are shown in the table: rows correspond to players, columns — to rounds. $$$$$$ \\begin{array}{c|cc} & j=1 & j=2 \\\\ \\hline i=1 & 0 & 5 \\\\ i=2 & 3 & 0 \\\\ i=3 & 3 & 1 \\end{array} $$$$$$ Player $$$1$$$ is protected in the first round, and player $$$2$$$ — in the second, so the corresponding values are zero. In the second round, player $$$1$$$ is eliminated for five strength distributions, and player $$$3$$$ — only for the distribution $$$(3,1,2)$$$. After multiplying the table values by the player and round numbers, we get the answer $$$$$$ 0\\oplus 10\\oplus 6\\oplus 0\\oplus 9\\oplus 6=3. $$$$$$\nIn the third test case, there are $$$24$$$ possible distributions of strengths. Player $$$1$$$ is protected in all rounds and is never eliminated. The other three players are symmetric, so each of them is eliminated in each round for $$$24/3=8$$$ strength distributions. The table of values $$$ans(i,j)$$$ is $$$$$$ \\begin{array}{c|ccc} & j=1 & j=2 & j=3 \\\\ \\hline i=1 & 0 & 0 & 0 \\\\ i=2 & 8 & 8 & 8 \\\\ i=3 & 8 & 8 & 8 \\\\ i=4 & 8 & 8 & 8 \\end{array} $$$$$$ The products for player $$$1$$$ are zero. The XOR of the products for the remaining players gives the answer $$$$$$ 16\\oplus 32\\oplus 48\\oplus 24\\oplus 48\\oplus 72\\oplus 32\\oplus 64\\oplus 96=96. $$$$$$",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2276/problem/G",
-    "statement_textsha256": "f385ca000c167d4c1643d631d0be5e2b394184c1cb068f2d948335125f2c625a",
+    "statement_textsha256": "c7c24a1883d193ef6d84a906c74db1d927ceb14dc63ac90efe161cc626ae3c65",
     "editorial_url": "https://codeforces.com/blog/entry/157752",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889874,7 +2889874,7 @@
     "statement_text": "A. Hey, It's Me, Souvlakity\ntime limit per test\n1 second\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\nSouvlakity and Kalamakity are playing yet another game.\nAll the integers from $$$1$$$ to $$$n$$$ have been distributed between the players. The distribution can be represented as a binary string $$$s$$$ of size $$$n$$$, where $$$s_i = 1$$$ if integer $$$i$$$ has been given to Souvlakity, and $$$s_i = 0$$$ if it has been given to Kalamakity. It is guaranteed that Souvlakity owns at least one integer initially (there exists a $$$1$$$ in $$$s$$$).\nThe game will go on for $$$10^{100}$$$ turns. The two players play in alternating turns, with Souvlakity playing first.\nWhen it is a player's turn, they must choose exactly one of their integers and give it to the other player. It can be shown that this is always possible under this game's constraints.\nAfter all $$$10^{100}$$$ turns are finished, Souvlakity calculates his score as the range of the integers he owns (that is, his score is $$$\\max(S) - \\min(S)$$$, where $$$S$$$ is the set of integers he owns). It can be shown that Souvlakity will own at least one integer at the end of the game.\nSouvlakity wants to maximize his score, and Kalamakity wants to minimize Souvlakity's score. What is Souvlakity's final score if both players act optimally?\nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 100$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$2 \\le n \\le 100$$$).\nThe second line of each test case contains a binary string $$$s$$$ of length $$$n$$$. It is guaranteed that there exists at least one $$$\\mathtt{1}$$$ in $$$s$$$.\nOutput\nFor each test case, on a separate line, output a single integer: Souvlakity's final score after the game ends, if both players act optimally.\nExample\nInput\n\n6\n2\n01\n3\n111\n4\n1100\n5\n11111\n6\n101010\n7\n1101001\nOutput\n\n0\n2\n1\n4\n4\n6\nNote\nIn the first test case, Souvlakity initially owns only the integer $$$2$$$. During each pair of consecutive turns (Souvlakity's turn and then Kalamakity's turn), Souvlakity gives away one integer and receives one integer, so after each of Kalamakity's turns he owns exactly as many integers as he owned initially. Since the number of turns is even, the last turn is Kalamakity's, so Souvlakity owns exactly one integer at the end of the game, and his score is $$$0$$$.\nIn the second test case, Souvlakity initially owns all three integers. By the same argument, he owns three integers at the end of the game, that is, all of them, so his score is $$$3 - 1 = 2$$$.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2261/problem/A",
-    "statement_textsha256": "844aec4819433ab7a9fec739f10529fd2487e4f8a2468651a1f6826fed8ae342",
+    "statement_textsha256": "068bfe2dd1b3d06ea091278501f9b4a1abaf6bfdf6965d23f69a9ac0ac85043b",
     "editorial_url": "https://codeforces.com/blog/entry/157917",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2889944,7 +2889944,7 @@
     "statement_text": "B. What's the Capital of France?\ntime limit per test\n1.5 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\n\nObesity might not know the capital of France, but he does know that France has lots of restaurants.\nThere are $$$n$$$ restaurants in a line. The $$$i$$$-th restaurant has rating $$$a_i$$$.\nObesity can alter the ratings of the restaurants with his special power. In one operation, Obesity chooses two adjacent restaurants. If they have the same rating, nothing happens. Otherwise, the rating of the lower side is increased by $$$1$$$.\nFormally, in one operation, he does the following: \n\nChoose an index $$$i$$$ ($$$1 \\le i \\lt n$$$). \nIf $$$a_i \\lt a_{i+1}$$$, increase $$$a_i$$$ by $$$1$$$. \nIf $$$a_i = a_{i+1}$$$, do nothing. \nIf $$$a_i \\gt a_{i+1}$$$, increase $$$a_{i+1}$$$ by $$$1$$$. \nThe delicacy of the restaurants is the value of the bitwise OR of the ratings of all restaurants.\nWhat is the maximum delicacy Obesity can achieve after performing zero or more operations?\nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe description of the test cases follows. The first line of each test case contains a single integer $$$n$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$).\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$0 \\le a_i \\le 10^9$$$).\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.\nOutput\nFor each test case, print one integer — the maximum delicacy of all restaurants.\nExample\nInput\n\n4\n1\n0\n2\n1 2\n2\n4 6\n3\n8 8 8\nOutput\n\n0\n3\n7\n8\nNote\nIn the first test case, Obesity cannot perform any operations.\nIn the second test case, it is optimal for Obesity to perform no operations: $$$1\\, |\\, 2 = 3$$$.\nIn the third test case, Obesity can choose $$$i=1$$$. Since $$$4 \\le 6$$$, he increases the rating of the first restaurant by $$$1$$$. The ratings are now $$$[5,6]$$$, which gives a delicacy of $$$7$$$. It can be shown that $$$7$$$ is the maximum delicacy no matter how many operations are performed.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2261/problem/B",
-    "statement_textsha256": "3bb4d48d6b385a513df9850b1eeb94519700a7821434761feedd298e06193d46",
+    "statement_textsha256": "cdafbe9577842db90dcaa47c9df4535de3ead10c4dca01ae52b0b60c2edc3091",
     "editorial_url": "https://codeforces.com/blog/entry/157917",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2890020,7 +2890020,7 @@
     "statement_text": "C. I Know About a Million Things\ntime limit per test\n2 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\n月葬 - 黒魔 × rintaro soma\nMoggity and Larpity are playing a game with an array $$$a_1, a_2, \\ldots, a_n$$$ of positive integers. Moggity moves first, and then the players alternate turns.\nOn their turn, a player chooses a non-empty set of positions of the array and removes the elements at these positions. Such a move is allowed only if at least one of the following conditions holds:\n\nexactly one element is removed; \nthe sum of the removed elements is even. \nA player who cannot make a move loses. In other words, the player who faces an empty array loses.\nDetermine which player has a winning strategy.\nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains a single integer $$$n$$$ ($$$1 \\le n \\le 1\\,000\\,000$$$) — the length of the array.\nThe second line of each test case contains $$$n$$$ integers $$$a_1, a_2, \\ldots, a_n$$$ ($$$1 \\le a_i \\le 1\\,000\\,000$$$) — the elements of the array.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$1\\,000\\,000$$$.\nOutput\nFor each test case, print \"Moggity\" if Moggity has a winning strategy, and \"Larpity\" otherwise.\nYou can output the answer in any case (upper or lower). For example, the strings \"MoggItY\", \"MOGGITY\", \"moggity\", and \"mOGGity\" will be recognized as a win for Moggity.\nExample\nInput\n\n3\n1\n7\n2\n2 3\n6\n1000000 999999 5 4 3 2\nOutput\n\nMoggity\nLarpity\nMoggity\nNote\nIn the first test case, Moggity removes the only element, and Larpity faces an empty array.\nIn the second test case, Moggity cannot remove both elements at once, because $$$2 + 3 = 5$$$ is odd. Whichever single element he removes, Larpity removes the remaining one, and then Moggity faces an empty array. Therefore, Larpity wins.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2261/problem/C",
-    "statement_textsha256": "44f6f6832a2be115c3faaaf63c614828b14002c2807c2abe945d9f19847fe668",
+    "statement_textsha256": "3fb6db3351699787642731769bbdb2b5ee81fa2e906689fdf23f673f48078acd",
     "editorial_url": "https://codeforces.com/blog/entry/157917",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2890089,7 +2890089,7 @@
     "statement_text": "D1. Come Be My Friend, Don't Be So Scared (Easy Version)\ntime limit per test\n2 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\nThis is the easy version of the problem. The difference between the versions is that in this version, $$$m = 0$$$. You can hack only if you solved all versions of this problem.\nYou are hiding from the formidable Lord Verity.\nThere are $$$n$$$ possible hiding spots in a row, numbered from $$$1$$$ to $$$n$$$ from left to right. You can hide in exactly one spot.\nIn order to find you, Lord Verity can install special detectors. Each detector covers a segment of consecutive spots and reports whether you are hiding in one of the spots in this segment. All detectors are activated simultaneously, so the segments of all detectors must be chosen before any report is known.\nLord Verity already has $$$m$$$ detectors; the $$$i$$$-th of them covers the spots from $$$l_i$$$ to $$$r_i$$$. Find the minimum number of additional detectors Lord Verity needs to install so that, wherever you hide, the reports of all detectors are enough to uniquely determine the spot that you are hiding in. You also need to find a way to install them.\nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$ and $$$m$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$, $$$m = 0$$$) — the number of hiding spots and the number of detectors Lord Verity already has.\nThe $$$i$$$-th of the next $$$m$$$ lines contains two integers $$$l_i$$$ and $$$r_i$$$ ($$$1 \\le l_i \\le r_i \\le n$$$) — the $$$i$$$-th detector covers the spots from $$$l_i$$$ to $$$r_i$$$.\nIt is guaranteed that no two given detectors cover the same range of hiding spots.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$.\nOutput\nFor each test case, first output a single integer $$$k$$$ — the minimum number of additional detectors.\nThen output $$$k$$$ lines. The $$$j$$$-th of them should contain two integers $$$u_j$$$ and $$$v_j$$$ ($$$1 \\le u_j \\le v_j \\le n$$$), meaning that the $$$j$$$-th additional detector covers the hiding spots from $$$u_j$$$ to $$$v_j$$$.\nIf there are multiple solutions, print any of them.\nExample\nInput\n\n3\n1 0\n2 0\n3 0\nOutput\n\n0\n1\n1 1\n2\n1 1\n2 2\nNote\nIn the first test case, since there is only one hiding spot, Lord Verity knows you must be hiding there. No detectors are required.\nIn the second test case, there are two possible hiding spots. Lord Verity can install one detector with $$$u=v=1$$$, which tells him if you are hiding in position $$$1$$$ or not. Therefore, he can uniquely determine whether you are hiding in position $$$1$$$ or $$$2$$$ depending on the result.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2261/problem/D1",
-    "statement_textsha256": "db4c1b68237075b5fb7c7c31e96d6f4447af95510f7c88ca22a303966d6eb3e1",
+    "statement_textsha256": "8bc0b3aa5ac64a93475a74acdb208f20ee635ef3efa3a878f39f85305fc32f5a",
     "editorial_url": "https://codeforces.com/blog/entry/157917",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2890163,7 +2890163,7 @@
     "statement_text": "D2. Come Be My Friend, Don't Be So Scared (Hard Version)\ntime limit per test\n2 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\nNote the unusual score distribution for D1 and D2. This problem is significantly more difficult than D1.\nThis is the hard version of the problem. The difference between the versions is that in this version, $$$0 \\le m \\le 2 \\cdot 10^5$$$. You can hack only if you solved all versions of this problem.\nYou are hiding from the formidable Lord Verity.\nThere are $$$n$$$ possible hiding spots in a row, numbered from $$$1$$$ to $$$n$$$ from left to right. You can hide in exactly one spot.\nIn order to find you, Lord Verity can install special detectors. Each detector covers a segment of consecutive spots and reports whether you are hiding in one of the spots in this segment. All detectors are activated simultaneously, so the segments of all detectors must be chosen before any report is known.\nLord Verity already has $$$m$$$ detectors; the $$$i$$$-th of them covers the spots from $$$l_i$$$ to $$$r_i$$$. Find the minimum number of additional detectors Lord Verity needs to install so that, wherever you hide, the reports of all detectors are enough to uniquely determine the spot that you are hiding in. You also need to find a way to install them.\nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$ and $$$m$$$ ($$$1 \\le n \\le 2 \\cdot 10^5$$$, $$$0 \\le m \\le 2\\cdot 10^5$$$) — the number of hiding spots and the number of detectors Lord Verity already has.\nThe $$$i$$$-th of the next $$$m$$$ lines contains two integers $$$l_i$$$ and $$$r_i$$$ ($$$1 \\le l_i \\le r_i \\le n$$$) — the $$$i$$$-th detector covers the spots from $$$l_i$$$ to $$$r_i$$$.\nIt is guaranteed that no two given detectors cover the same range of hiding spots.\nIt is guaranteed that the sum of $$$n$$$ over all test cases does not exceed $$$2 \\cdot 10^5$$$, and the sum of $$$m$$$ across all test cases does not exceed $$$2\\cdot 10^5$$$.\nOutput\nFor each test case, first output a single integer $$$k$$$ — the minimum number of additional detectors.\nThen output $$$k$$$ lines. The $$$j$$$-th of them should contain two integers $$$u_j$$$ and $$$v_j$$$ ($$$1 \\le u_j \\le v_j \\le n$$$), meaning that the $$$j$$$-th additional detector covers the hiding spots from $$$u_j$$$ to $$$v_j$$$.\nIf there are multiple solutions, print any of them.\nExample\nInput\n\n7\n1 0\n2 0\n3 0\n5 2\n2 2\n4 4\n8 7\n1 2\n2 3\n3 4\n4 5\n5 6\n6 7\n7 8\n5 2\n2 3\n1 5\n4 2\n1 2\n3 4\nOutput\n\n0\n1\n1 1\n2\n1 1\n2 2\n2\n1 3\n1 1\n0\n2\n1 4\n1 2\n1\n2 3\nNote\nIn the first test case, since there is only one hiding spot, Lord Verity knows you must be hiding there. No detectors are required.\nIn the second test case, there are two possible hiding spots. Lord Verity can install one detector with $$$u=v=1$$$, which tells him if you are hiding in position $$$1$$$ or not. Therefore, he can uniquely determine whether you are hiding in position $$$1$$$ or $$$2$$$ depending on the result.\nIn the fifth test case, we can show that Lord Verity can uniquely determine which hiding spot you are in with just the existing detectors.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2261/problem/D2",
-    "statement_textsha256": "30e79201fdf601e6240257406e40b6de61c745c3f8f2648ad2c5c09f6682508f",
+    "statement_textsha256": "b72560e1cff572f930ce22e446127a59633c65151b3b2d383cdfb6449cb23b5e",
     "editorial_url": "https://codeforces.com/blog/entry/157917",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2890270,7 +2890270,7 @@
     "statement_text": "E. What Does the Cow Say?\ntime limit per test\n2 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\nOh, Moo, Moo, Moo, I speak that normally!\n— Bessie the Cow\nBessie gives you a regular bracket sequence (RBS)$$$^{\\text{∗}}$$$ of length $$$n$$$ and an integer $$$k$$$.\nIn one operation, you can do the following: \n\nChoose an index $$$i$$$ ($$$1 \\le i \\lt n$$$) such that $$$s_i s_{i+1} = \\mathtt{()}$$$. \nLet $$$s'$$$ denote the string obtained after removing these two characters from $$$s$$$. \nSet $$$s := \\mathtt{(} + s' + \\mathtt{)}$$$. \nYou may perform this operation at most $$$k$$$ times (possibly zero). It can be shown that $$$s$$$ remains an RBS after every such operation.\nThe score of an RBS is defined as the maximum number of consecutive opening brackets '$$$\\texttt{(}$$$' in the string. For example, the score of the string \"$$$\\texttt{(())((())())}$$$\" is $$$3$$$.\nYour task is to find the maximum possible score you can obtain by performing at most $$$k$$$ operations on the given string.\n$$$^{\\text{∗}}$$$A regular bracket sequence is a bracket sequence that can be transformed into a correct arithmetic expression by inserting the characters $$$1$$$ and $$$+$$$ between the original characters of the sequence. For example:\n\nbracket sequences $$$\\texttt{()()}$$$ and $$$\\texttt{(())}$$$ are regular (the resulting expressions are: $$$\\texttt{(1)+(1)}$$$ and $$$\\texttt{((1+1)+1)}$$$); \nbracket sequences $$$\\texttt{)(}$$$, $$$\\texttt{(}$$$ and $$$\\texttt{)}$$$ are not. \nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$ and $$$k$$$ ($$$2\\le n \\le 4 \\cdot 10^5$$$, $$$0 \\le k \\le \\frac{n}{2}$$$) — the length of the RBS and the maximum number of operations you may perform.\nThe second line of each test case contains a string $$$s$$$ of length $$$n$$$ consisting of characters '$$$\\texttt{(}$$$' and '$$$\\texttt{)}$$$' — the given RBS.\nIt is guaranteed that $$$s$$$ is a regular bracket sequence, and that the sum of $$$n$$$ over all test cases does not exceed $$$4 \\cdot 10^5$$$.\nOutput\nFor each test case, print a single integer — the maximum score you can obtain by performing at most $$$k$$$ operations.\nExample\nInput\n\n9\n2 0\n()\n4 1\n(())\n6 2\n()()()\n8 1\n()((()))\n8 3\n(()())()\n12 4\n((()())())()\n16 1\n()(((()((())))))\n22 1\n((((()()(())((()))))))\n28 0\n(((()(((())()((())))())))())\nOutput\n\n1\n2\n3\n4\n4\n6\n6\n6\n4\nNote\nIn the first test case, we cannot perform any operations. The maximum number of consecutive opening brackets is $$$1$$$.\nIn the third test case, we can choose index $$$i = 1$$$, performing the operation gives us $$$s = $$$ \"$$$\\texttt{(()())}$$$\". Then, choosing index $$$i = 4$$$ gives us $$$s = $$$ \"$$$\\texttt{((()))}$$$\". We used $$$2$$$ operations and got a score of $$$3$$$, which is the maximum possible score.\nIn the seventh test case, we can choose index $$$i = 6$$$, performing the operation gives us $$$s = $$$ \"$$$\\texttt{(()(((((()))))))}$$$\", which has a score of $$$6$$$. It can be shown that $$$6$$$ is the maximum possible score achievable.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2261/problem/E",
-    "statement_textsha256": "8647d16088293ee907e2e235cfa139533a26d19fff7009e752c458737078236c",
+    "statement_textsha256": "acbd574c0e462977c5cb9411c70b0c5b06a478ac54078c1f49014977a6840186",
     "editorial_url": "https://codeforces.com/blog/entry/157917",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2890363,7 +2890363,7 @@
     "statement_text": "F1. Plegma II: Ask Me Any Cell (Easy Version)\ntime limit per test\n2 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\nThere is a visualizer available for this problem. You can view it using this link.\nHacks are disabled on this problem.\nThis is the Easy Version of the problem. The only difference between the two versions is the constraints on $$$n$$$ and $$$k$$$.\nVerity has a grid of $$$n$$$ rows and $$$n$$$ columns. The rows are numbered from $$$1$$$ to $$$n$$$ from top to bottom, and the columns are numbered from $$$1$$$ to $$$n$$$ from left to right. The cell on row $$$p$$$ and column $$$q$$$ is denoted by $$$(p, q)$$$.\nVerity also has a robot, Circuity, with extremely simple functionality. Verity must program Circuity so it can automatically locate specific cells on the grid, while ensuring these cells stay hidden from foreign robots.\nThere are two phases in this problem.\nPhase 1: Verity (Encoding)\nIn this phase, Verity tries to encode a given cell on the grid.\nVerity receives a target cell $$$(r, c)$$$, and he assigns a binary value ($$$0$$$ or $$$1$$$) to each cell of the grid. On cells with value $$$1$$$, beacons that broadcast signal will be placed, while cells with value $$$0$$$ remain empty.\nHowever, he believes that using too few beacons will make it easy for foreigners to also locate the target cell. Therefore, he has decided that it is safest to use at most $$$k$$$ zeros.\nPhase 2: Circuity (Decoding)\nIn this phase, Circuity tries to find the cell Verity encoded, based on the grid he created. However, Circuity is unable to process large grids efficiently.\nAt each moment of time, Circuity suspects that the target cell lies in the subgrid bounded by the two cells $$$(x_0, y_0)$$$ and $$$(x_1, y_1)$$$. Initially, $$$(x_0, y_0) = (1, 1)$$$ and $$$(x_1, y_1) = (n, n)$$$.\nCircuity locates the encoded cell by making exactly $$$2n-2$$$ decisions, one after another. Each decision works as follows.\nCircuity can sense the number of beacons in the current subgrid. Let this number be $$$S$$$. Formally, $$$S$$$ is the number of cells with value $$$1$$$ inside the subgrid bounded by the cells $$$(x_0, y_0)$$$ and $$$(x_1, y_1)$$$.\nBased solely on $$$S$$$, it will choose exactly one of the following actions:\n\nAction U: increase $$$x_0$$$ by $$$1$$$ \nAction L: increase $$$y_0$$$ by $$$1$$$ \nAction D: decrease $$$x_1$$$ by $$$1$$$ \nAction R: decrease $$$y_1$$$ by $$$1$$$ \nNote that this decision does not rely on previous decisions, and it cannot directly rely on the values of $$$x_0, x_1, y_0$$$ or $$$y_1$$$. Circuity is memoriless, and the only parameter when making a decision must be $$$S$$$ in the current moment. \nIf at any point $$$x_0 \\gt x_1$$$ or $$$y_0 \\gt y_1$$$, the program bugs out and Circuity is unsuccessful.\nThe cell Verity encoded in this grid was some cell $$$(r, c)$$$. After all $$$2n-2$$$ decisions, it must hold that $$$x_0 = x_1 = r$$$ and $$$y_0 = y_1 = c$$$.\nThere exist only two tests:\n\n$$$n = 3$$$ and $$$k = 9$$$; \n$$$n = 20$$$ and $$$k = \\color{red}{24}$$$. \nInput\nThe only input contains one integer $$$n$$$.\nIt is guaranteed that $$$n = 3$$$ in the example, and $$$n = 20$$$ in the only main test.\nOutput\n\nFor Phase $$$1$$$: \nOutput $$$n^2$$$ binary grids.\nThe $$$i$$$-th grid is the grid Verity should choose when the target is $$$(r, c)$$$, where $$$r = \\lfloor \\frac{i-1}{n} \\rfloor + 1$$$ and $$$c = ((i-1) \\bmod n) + 1$$$.\nIn other words, the first grid corresponds to target $$$(1,1)$$$, the second grid corresponds to target $$$(1,2)$$$, the $$$(n+1)$$$-th grid corresponds to target $$$(2,1)$$$, and so on.\nEach grid must contain at most $$$k$$$ zeros.\n\nFor Phase $$$2$$$: \nOutput a sequence of $$$n^2 + 1$$$ characters: $$$a_0, a_1, a_2, \\ldots, a_{n^2}$$$. Each character must be one of U, D, L, or R. The $$$i$$$-th character means that if $$$S=i$$$, then Circuity performs action $$$a_i$$$.\nExample\nInput\n\n3\nOutput\n\n111\n111\n001\n\n011\n111\n100\n\n110\n110\n110\n\n010\n111\n111\n\n111\n111\n111\n\n010\n111\n101\n\n111\n111\n110\n\n111\n011\n111\n\n011\n010\n111\n\nDURLDULRUU\nNote\nConsider the third grid as an example. The target cell is $$$(1,3)$$$.\nVerity chooses the following grid: \n110\n110\n110\nThe action sequence is: \nDURLDULRUU\nInitially, Circuity examines the subgrid bounded by $$$(1,1)$$$ and $$$(3,3)$$$.\nIt must locate cell $$$(1,3)$$$, so it will make $$$2 \\cdot 3 - 2 = 4$$$ decisions.\n\nDecision 1: there are $$$S=6$$$ ones in the current subgrid, so Circuity performs action $$$a_6=\\mathtt{L}$$$.\nThe new subgrid becomes $$$[(1,2),(3,3)]$$$.\n\nDecision 2: there are $$$S=3$$$ ones in the current subgrid, so Circuity performs action $$$a_3=\\mathtt{L}$$$.\nThe new subgrid becomes $$$[(1,3),(3,3)]$$$.\n\nDecision 3: there are $$$S=0$$$ ones in the current subgrid, so Circuity performs action $$$a_0=\\mathtt{D}$$$.\nThe new subgrid becomes $$$[(1,3),(2,3)]$$$.\n\nDecision 4: there are again $$$S=0$$$ ones in the current subgrid, so Circuity performs action $$$a_0=\\mathtt{D}$$$.\nThe new subgrid becomes $$$[(1,3),(1,3)]$$$. \nAfter all decisions, Circuity ends up at cell $$$(1,3)$$$, which is indeed the target cell.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2261/problem/F1",
-    "statement_textsha256": "68f0b63e69b40af07d3ac1d8df13662c2226d152b2e1d7c9c8e0fc71ff053837",
+    "statement_textsha256": "f1db7457393cad828108a48f2123deb129c610da86c1efbb8bd79ef7d702dcb3",
     "editorial_url": "https://codeforces.com/blog/entry/157917",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2890452,7 +2890452,7 @@
     "statement_text": "F2. Plegma II: Ask Me Any Cell (Hard Version)\ntime limit per test\n2 seconds\nmemory limit per test\n256 megabytes\ninput\nstandard input\noutput\nstandard output\nNote the unusual score distribution for F1 and F2. This problem is significantly more difficult than F1.\nThere is a visualizer available for this problem. You can view it using this link.\nHacks are disabled on this problem.\nThis is the Hard Version of the problem. The only difference between the two versions is the constraints on $$$n$$$ and $$$k$$$.\nVerity has a grid of $$$n$$$ rows and $$$n$$$ columns. The rows are numbered from $$$1$$$ to $$$n$$$ from top to bottom, and the columns are numbered from $$$1$$$ to $$$n$$$ from left to right. The cell on row $$$p$$$ and column $$$q$$$ is denoted by $$$(p, q)$$$.\nVerity also has a robot, Circuity, with extremely simple functionality. Verity must program Circuity so it can automatically locate specific cells on the grid, while ensuring these cells stay hidden from foreign robots.\nThere are two phases in this problem.\nPhase 1: Verity (Encoding)\nIn this phase, Verity tries to encode a given cell on the grid.\nVerity receives a target cell $$$(r, c)$$$, and he assigns a binary value ($$$0$$$ or $$$1$$$) to each cell of the grid. On cells with value $$$1$$$, beacons that broadcast signal will be placed, while cells with value $$$0$$$ remain empty.\nHowever, he believes that using too few beacons will make it easy for foreigners to also locate the target cell. Therefore, he has decided that it is safest to use at most $$$k$$$ zeros.\nPhase 2: Circuity (Decoding)\nIn this phase, Circuity tries to find the cell Verity encoded, based on the grid he created. However, Circuity is unable to process large grids efficiently.\nAt each moment of time, Circuity suspects that the target cell lies in the subgrid bounded by the two cells $$$(x_0, y_0)$$$ and $$$(x_1, y_1)$$$. Initially, $$$(x_0, y_0) = (1, 1)$$$ and $$$(x_1, y_1) = (n, n)$$$.\nCircuity locates the encoded cell by making exactly $$$2n-2$$$ decisions, one after another. Each decision works as follows.\nCircuity can sense the number of beacons in the current subgrid. Let this number be $$$S$$$. Formally, $$$S$$$ is the number of cells with value $$$1$$$ inside the subgrid bounded by the cells $$$(x_0, y_0)$$$ and $$$(x_1, y_1)$$$.\nBased solely on $$$S$$$, it will choose exactly one of the following actions:\n\nAction U: increase $$$x_0$$$ by $$$1$$$ \nAction L: increase $$$y_0$$$ by $$$1$$$ \nAction D: decrease $$$x_1$$$ by $$$1$$$ \nAction R: decrease $$$y_1$$$ by $$$1$$$ \nNote that this decision does not rely on previous decisions, and it cannot directly rely on the values of $$$x_0, x_1, y_0$$$ or $$$y_1$$$. Circuity is memoriless, and the only parameter when making a decision must be $$$S$$$ in the current moment. \nIf at any point $$$x_0 \\gt x_1$$$ or $$$y_0 \\gt y_1$$$, the program bugs out and Circuity is unsuccessful.\nThe cell Verity encoded in this grid was some cell $$$(r, c)$$$. After all $$$2n-2$$$ decisions, it must hold that $$$x_0 = x_1 = r$$$ and $$$y_0 = y_1 = c$$$.\nThere are exactly 32 tests:\n\nEach value $$$n = 3,10,11,\\ldots,40$$$ is used in exactly one test, in order. \nFor every allowed $$$n$$$, $$$k=f(n)$$$, where $$$f(n)$$$ is the minimum possible worst-case number of zeros needed to encode any cell of an $$$n \\times n$$$ grid. \nInput\nThe only input contains one integer $$$n$$$ ($$$n = 3$$$ or $$$10 \\le n \\le 40$$$).\nOutput\n\nFor Phase $$$1$$$: \nOutput $$$n^2$$$ binary grids.\nThe $$$i$$$-th grid is the grid Verity should choose when the target is $$$(r, c)$$$, where $$$r = \\lfloor \\frac{i-1}{n} \\rfloor + 1$$$ and $$$c = ((i-1) \\bmod n) + 1$$$.\nIn other words, the first grid corresponds to target $$$(1,1)$$$, the second grid corresponds to target $$$(1,2)$$$, the $$$(n+1)$$$-th grid corresponds to target $$$(2,1)$$$, and so on.\nEach grid must contain at most $$$k=f(n)$$$ zeros.\n\nFor Phase $$$2$$$: \nOutput a sequence of $$$n^2 + 1$$$ characters: $$$a_0, a_1, a_2, \\ldots, a_{n^2}$$$. Each character must be one of U, D, L, or R. The $$$i$$$-th character means that if $$$S=i$$$, then Circuity performs action $$$a_i$$$.\nExample\nInput\n\n3\nOutput\n\n111\n111\n001\n\n011\n111\n100\n\n110\n110\n110\n\n010\n111\n111\n\n111\n111\n111\n\n010\n111\n101\n\n111\n111\n110\n\n111\n011\n111\n\n011\n010\n111\n\nDURLDULRUU\nNote\nConsider the third grid as an example. The target cell is $$$(1,3)$$$.\nVerity chooses the following grid: \n110\n110\n110\nThe action sequence is: \nDURLDULRUU\nInitially, Circuity examines the subgrid bounded by $$$(1,1)$$$ and $$$(3,3)$$$.\nIt must locate cell $$$(1,3)$$$, so it will make $$$2 \\cdot 3 - 2 = 4$$$ decisions.\n\nDecision 1: there are $$$S=6$$$ ones in the current subgrid, so Circuity performs action $$$a_6=\\mathtt{L}$$$.\nThe new subgrid becomes $$$[(1,2),(3,3)]$$$.\n\nDecision 2: there are $$$S=3$$$ ones in the current subgrid, so Circuity performs action $$$a_3=\\mathtt{L}$$$.\nThe new subgrid becomes $$$[(1,3),(3,3)]$$$.\n\nDecision 3: there are $$$S=0$$$ ones in the current subgrid, so Circuity performs action $$$a_0=\\mathtt{D}$$$.\nThe new subgrid becomes $$$[(1,3),(2,3)]$$$.\n\nDecision 4: there are again $$$S=0$$$ ones in the current subgrid, so Circuity performs action $$$a_0=\\mathtt{D}$$$.\nThe new subgrid becomes $$$[(1,3),(1,3)]$$$. \nAfter all decisions, Circuity ends up at cell $$$(1,3)$$$, which is indeed the target cell.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2261/problem/F2",
-    "statement_textsha256": "dc5c90f052555bdada73ba4763ad4aed4fa2a6fba53f6d6e6df922eeca37337f",
+    "statement_textsha256": "b2be44e2677d68303d455d7b5a6eca9b035ce5bf5f8f6caf62558c9100c885fa",
     "editorial_url": "https://codeforces.com/blog/entry/157917",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2890492,7 +2890492,8 @@
       "divide and conquer",
       "dp",
       "greedy",
-      "sortings"
+      "sortings",
+      "two pointers"
     ],
     "problem_url": "https://codeforces.com/contest/2261/problem/G",
     "statement_url": "https://cf-problemset.herokuapp.com/contest/2261/G/",
@@ -2890518,7 +2890519,7 @@
     "statement_text": "G. 1 2 3 and XOR, Where Did Everybody Go?\ntime limit per test\n7 seconds\nmemory limit per test\n1024 megabytes\ninput\nstandard input\noutput\nstandard output\nYou are given a sequence $$$a$$$ consisting of $$$n$$$ non-negative integers.\nGiven a sequence $$$b$$$ consisting of $$$k$$$ non-negative integers, define a dot increment on $$$b$$$ as the following operation:\n\nSelect an index $$$i$$$ ($$$1 \\le i \\le k$$$), and add any non-negative integer of choice to $$$b_i$$$. \nThen, let $$$f(b)$$$ be the minimum value of $$$b_1 \\oplus b_2 \\oplus \\ldots \\oplus b_k$$$ after performing a dot increment on $$$b$$$ exactly once.$$$^{\\text{∗}}$$$\nPlease find the value of the following sum.\n$$$$$$\\sum_{1 \\le l \\le r \\le n}f([a_l,a_{l+1},\\ldots,a_r])$$$$$$\n$$$^{\\text{∗}}$$$Here, $$$\\oplus$$$ denotes the bitwise XOR operation.\nInput\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 10^4$$$). The description of the test cases follows.\nThe first line of each test case contains an integer $$$n$$$ ($$$1 \\le n \\le 4\\cdot 10^5$$$).\nThe second line of each test case contains integers $$$a_1,a_2,\\ldots,a_n$$$ ($$$0 \\le a_i \\lt 2^{25}$$$).\nIt is guaranteed that the sum of $$$n$$$ does not exceed $$$4\\cdot 10^5$$$ over all test cases.\nOutput\nFor each test case, output the answer to the problem on a separate line.\nExample\nInput\n\n4\n5\n5 4 6 7 5\n5\n3 3 2 2 3\n1\n67\n10\n1827481 5921082 14619611 643973 6718274 2948 244716 29 0 6717827\nOutput\n\n43\n21\n67\n36695941\nNote\nIn the first test case, for example, consider $$$f([5,4,6,7,5])$$$\nBy incrementing $$$b_2=4$$$ by $$$1$$$, $$$b$$$ becomes $$$[5,5,6,7,5]$$$, and $$$5 \\oplus 5 \\oplus 6 \\oplus 7 \\oplus 5 = 4$$$.\nIt can be shown that $$$b_1 \\oplus b_2 \\oplus b_3 \\oplus b_4 \\oplus b_5$$$ cannot be smaller than $$$4$$$ after one dot increment.\nThe sum of minimum values over all subarrays can be shown to be $$$43$$$.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2261/problem/G",
-    "statement_textsha256": "b623d1a5eb9a463afd96b60a063976cacfed4576f3ecbd042fe7eedba8abb488",
+    "statement_textsha256": "9a0270c67c8c55aaede593459637be8cbdbed12eb99255cc1595afe72cf793b1",
     "editorial_url": "https://codeforces.com/blog/entry/157917",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2890568,6 +2890569,13 @@
           "sortings"
         ],
         "source": "codeforces-tag"
+      },
+      {
+        "name": "tag:two pointers",
+        "evidence_terms": [
+          "two pointers"
+        ],
+        "source": "codeforces-tag"
       }
     ],
     "editorial_blog": {
@@ -2890590,6 +2890598,7 @@
     "tags": [
       "bitmasks",
       "communication",
+      "constructive algorithms",
       "dfs and similar",
       "interactive",
       "trees"
@@ -2890618,7 +2890627,7 @@
     "statement_text": "H. Oh Tree Tree Tree, No Need to Leave\ntime limit per test\n3 seconds\nmemory limit per test\n512 megabytes\ninput\nstandard input\noutput\nstandard output\nThis is a communication problem.\nThere are two players: Player A (Isabel) and Player B (Tara). The jury will first interact with player A. After player A ends their interaction, the jury will interact with player B. Note that player A and player B may not directly pass information to each other; both players are only able to send information or receive information from the jury, but they may agree on the strategy they will use to communicate.\nIsabel wants to send Tara a binary string $$$b$$$, which has size $$$n$$$. She can send information using a complete binary tree of exactly $$$2^h-1$$$ nodes, where $$$h$$$ is a given positive integer that represents the height of the tree. The nodes have been labelled with integers from $$$1$$$ to $$$2^h-1$$$, such that node $$$1$$$ is the root, and for any non-leaf node $$$v$$$ its left child is node $$$2v$$$ and its right child is node $$$2v+1$$$.\nIsabel writes a binary value (0 or 1) on each node of the tree. After she writes a value on each node, she sends the final tree to Tara.\nHowever, Lord Verity (their nemesis), will try to ruin their communication attempt. After Isabel sets the value of each node, Lord Verity will perform the following actions in the order they are listed, exactly once: \n1. He chooses some node $$$u$$$.\n2. He flips the value that Isabel wrote on node $$$u$$$. Specifically, if Isabel wrote 0 on node $$$u$$$, he flips it to 1, and vice versa.\n3. If node $$$u$$$ is a leaf, he does nothing else. Otherwise, he swaps node $$$u$$$'s child pointers. Specifically, $$$u$$$'s left child becomes its right and $$$u$$$'s right child becomes its left simultaneously. Then, all nodes are re-labelled such that node $$$1$$$ is the root and for any non-leaf node $$$v$$$, its left child has label $$$2v$$$ and its right child has label $$$2v+1$$$.\n\nNote that Lord Verity's actions may be adaptive. This means that the node he chooses to mess with is not fixed at the start, and may depend on what Isabel writes on her tree.\nAfter Lord Verity messes with the tree, Tara will receive the structure of the new binary tree, and the value written on each node. She does not know which node Lord Verity has messed with. Formally, she receives a new binary string $$$l$$$, where $$$l_u$$$ is the value written on node $$$u$$$ after all nodes were re-labelled. \nHer task is to compute the original string $$$b$$$.\nThere are only two possible combinations of $$$n$$$ and $$$h$$$:\n\n$$$n = 1, h = 2$$$\n$$$n = 2030, h = 11$$$ \nThe first combination will only be tested in the examples, for which a correct strategy is provided.\nInput\nYour code will be ran exactly two times on each test. On the first run, you will be Isabel, and on the second Tara.\nFirst Run Input\nThe first line of the input contains the string first. The purpose of this is so your program recognizes that this is its first run, and it should act as Isabel.\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 1024$$$). The description of the test cases follows.\nThe first line of each test case contains two integers $$$n$$$ and $$$h$$$ ($$$n = 1$$$ and $$$h = 2$$$, or $$$n = 2030$$$ and $$$h = 11$$$) – the size of the string $$$b$$$ and the height of the binary tree respectively. Note that the combination $$$n = 1$$$ and $$$h = 2$$$ only appears in the examples, and not in the main tests.\nThe next line contains a single binary string of size $$$n$$$, representing $$$b$$$.\nSecond Run Input\nThe first line of the input contains the string second. The purpose of this is so your program recognizes that this is its second run, and it should act as Tara.\nEach test contains multiple test cases. The first line contains the number of test cases $$$t$$$ ($$$1 \\le t \\le 1024$$$). The description of the test cases follows. Note that this number is equal to $$$t$$$ from the first run input.\nThe first line of each test case contains exactly two integers $$$n$$$ and $$$h$$$ — the size of the binary string $$$b$$$ and the height of the corresponding tree. The test cases may appear in a different order than in the first run.\nThe second line of each test case contains a binary string of length $$$2^h-1$$$, whose characters are $$$l_1, l_2, \\ldots, l_{2^h-1}$$$. Here, $$$l_i$$$ represents the value of the node with label $$$i$$$, which is determined according to both Isabel's and Lord Verity's actions. \nNote that after Lord Verity's actions, the labels will differ from the labels Isabel used.\nHacks\nTo make hacks, use the following format.\nThe first line contains a single integer $$$t$$$ ($$$1 \\le t \\le 1024$$$) — the number of test cases.\nThe first line of each test case contains three integers $$$n$$$, $$$h$$$ and $$$p$$$ ($$$n = 2030$$$, $$$h = 11$$$, $$$1 \\le p \\le 2^h-1$$$) — the size of the string $$$b$$$, the height of the tree, and the label of the node Lord Verity chooses. The label $$$p$$$ refers to the labelling of the tree as Isabel wrote it, before Lord Verity's actions.\nThe second line of each test case contains a binary string $$$b$$$ of size $$$n$$$ — the string Isabel has to send.\nNote that in hacks Lord Verity is not adaptive: he always chooses node $$$p$$$, regardless of what Isabel writes.\nOutput\nFirst Run Output\nFor each test case, output a binary string of length $$$2^h-1$$$, where the $$$i$$$-th character represents the value Isabel sets for node with label $$$i$$$.\nSecond Run Output\nFor each test case, output a binary string of size $$$n$$$, which is Tara's guess as to what $$$b$$$ is equal to.\nExamples\nInput\n\nfirst\n2\n1 2\n0\n1 2\n1\nOutput\n\n000\n101\nInput\n\nsecond\n2\n1 2\n010\n1 2\n001\nOutput\n\n1\n0\nNote\nWhen $$$n=1$$$, a correct strategy is the following. \nIsabel wants to send $$$1$$$ bit but she has $$$2^h-1=2^2-1=3$$$ nodes available. Since Lord Verity only flips the value written on a single node, a correct strategy is to write the same value $$$b_1$$$ on all nodes of the tree. Then, Tara outputs the most frequent value that appears in $$$l$$$.\nTake a look at the examples. Note that the order the test cases appear in the first run is not necessarily the same as the order they appear in the second run. Here, the two test cases have been swapped.\nIsabel and Tara use the aforementioned strategy only for the case $$$b = 0$$$: Isabel writes the value $$$0$$$ on all nodes of the tree, so she outputs $$$000$$$. Then, Lord Verity uses his operation on node with label $$$3$$$ and Tara receives $$$l = 001$$$. Since $$$0$$$ is the most frequent value in $$$l$$$, she outputs $$$0$$$.\nThe other case where $$$b = 1$$$ is used only to show how Lord Verity's action affects the tree. Specifically, Isabel chooses to write the value $$$0$$$ on node $$$2$$$ and the value $$$1$$$ on nodes $$$1$$$ and $$$3$$$. Then, Lord Verity chooses to use his operation on node $$$1$$$. First, the value written on node $$$1$$$ becomes $$$0$$$. Then, its two children are swapped, and they are re-labelled: node $$$2$$$ gets label $$$3$$$ and node $$$3$$$ gets label $$$2$$$. Therefore we get $$$l = 010$$$. Magically, Tara can correctly determine that $$$b = 1$$$.\nIMPORTANT NOTE: In these examples, Lord Verity chose to operate on nodes $$$1$$$ and $$$3$$$. However, when your code runs on the examples, it is not guaranteed that Lord Verity chooses the same nodes, and therefore using the same output as the examples is not guaranteed to be correct.",
     "statement_source": "codeforces-problem-page",
     "statement_source_url": "https://codeforces.com/contest/2261/problem/H",
-    "statement_textsha256": "a308f78ae48e6baba2250579e9a6ee5b410713dca157f84029428a1b7686d35b",
+    "statement_textsha256": "2d60fcca44882636e7be2210f634919ca87fa953e8ea05d666653f4e4a0bb240",
     "editorial_url": "https://codeforces.com/blog/entry/157917",
     "editorial_label": "contest editorial (contest-page)",
     "editorial_source": "codeforces-blog",
@@ -2890638,6 +2890647,13 @@
         "name": "tag:communication",
         "evidence_terms": [
           "communication"
+        ],
+        "source": "codeforces-tag"
+      },
+      {
+        "name": "tag:constructive algorithms",
+        "evidence_terms": [
+          "constructive algorithms"
         ],
         "source": "codeforces-tag"
       },

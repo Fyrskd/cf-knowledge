@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 4355,
+    "total_problems": 4353,
     "source_total_problems": 4355,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4355,
-    "with_editorial_brief": 3995,
-    "with_solution_brief": 3997,
+    "filtered_out_problems": 2,
+    "with_statement_brief": 4353,
+    "with_editorial_brief": 3993,
+    "with_solution_brief": 3995,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3417,
+    "ai_override_count": 3415,
     "primary_topic_count": 13
   },
   "records": [
@@ -180291,96 +180291,6 @@
           "path": "ai-generated-insights.json",
           "model": "gpt-6-luna",
           "generated_at": "2026-10-18T21:11:46+00:00",
-          "quality_flags": []
-        }
-      },
-      "manual_override": false,
-      "ai_override": true
-    },
-    {
-      "ordinal": 4354,
-      "problem_key": "2261G",
-      "contest_id": 2261,
-      "title": "1 2 3 and XOR, Where Did Everybody Go?",
-      "rating": null,
-      "problem_url": "https://codeforces.com/contest/2261/problem/G",
-      "editorial_url": "https://codeforces.com/blog/entry/157917",
-      "editorial_quality": "complete",
-      "primary_topic": "数据结构",
-      "secondary_topics": [
-        "构造与贪心",
-        "动态规划与状态设计"
-      ],
-      "original_tags": [
-        "bitmasks",
-        "data structures",
-        "divide and conquer",
-        "dp",
-        "greedy",
-        "sortings"
-      ],
-      "statement_brief": "给定非负整数数组。对任意子数组，必须选择一个位置并给该元素增加任意非负整数一次，使整个子数组元素的按位异或最小；要求所有连续子数组的这个最小值之和。",
-      "transformed_statement": "令前缀异或为 $P_i$，则子数组异或是 $P_r\\oplus P_{l-1}$；题解把每个子数组再用其按位与 $A(l,r)$ 表示，并按固定右端点时按位与相同的连续左端点划分为批次，批量求和。",
-      "key_observations": [
-        "设子数组异或为 $X$、按位与为 $A$，从高位向低位扫描；在遇到 $X$ 为 $1$ 且 $A$ 为 $0$ 的首个位后，答案只保留其更高位贡献，从而 $f$ 只由 $(X,A)$ 决定。",
-        "固定右端点并向左扩展时，子数组按位与只会丢失位，因此所有左端点至多形成 $O(25)$ 个连续批次，每个批次共享同一个 $A$。",
-        "对一个批次中的前缀异或值 $q$ 建立按位结构，可沿当前前缀异或 $P_r$ 的单一路径统计 $g(P_r\\oplus q,A)$ 的总和：$A$ 为 $1$ 的位直接计数，$A$ 为 $0$ 的位只保留匹配分支。",
-        "右端点右移时，批次的按位与统一更新并合并相邻同值批次；重建和合并采用小规模集合并入大规模集合，使总复杂度为 $O(n\\log A(\\log n+\\log A))$。"
-      ],
-      "solution_brief": "先用子数组异或与按位与计算 $f$。枚举右端点，把左端点按按位与分成少量批次；每批次维护前缀异或值的按位结构并查询贡献，批次更新时重建、合并，利用小规模合并控制复杂度。",
-      "extraction_status": "ai_generated_with_editorial",
-      "source_provenance": {
-        "statement": "records.json:statement_text",
-        "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json",
-        "ai_override": {
-          "path": "ai-generated-insights.json",
-          "model": "gpt-6-luna",
-          "generated_at": "2026-10-19T05:10:03+00:00",
-          "quality_flags": []
-        }
-      },
-      "manual_override": false,
-      "ai_override": true
-    },
-    {
-      "ordinal": 4355,
-      "problem_key": "2261H",
-      "contest_id": 2261,
-      "title": "Oh Tree Tree Tree, No Need to Leave",
-      "rating": null,
-      "problem_url": "https://codeforces.com/contest/2261/problem/H",
-      "editorial_url": "https://codeforces.com/blog/entry/157917",
-      "editorial_quality": "complete",
-      "primary_topic": "交互",
-      "secondary_topics": [
-        "树结构",
-        "字符串"
-      ],
-      "original_tags": [
-        "bitmasks",
-        "communication",
-        "dfs and similar",
-        "interactive",
-        "trees"
-      ],
-      "statement_brief": "Isabel 要把长度为 $n$ 的二进制串写入一棵高为 $h$ 的完全二叉树。随后敌人任选一个节点翻转其值，并在非叶节点交换两个子树后重新编号；Tara 只能看到新树上的值，必须还原原串。",
-      "transformed_statement": "把树上的写入和读取设计成同一套按节点比特决定访问子树的 DFS，使换子树影响被抵消，通信等价于传输一个至多含一个错误的二进制序列；再用汉明码完成纠错。",
-      "key_observations": [
-        "让每个节点的 DFS 子树访问顺序由该节点的比特决定；节点被翻转并交换子树后，Tara 按新比特选择的子树仍对应原来的访问顺序，因此恢复序列只会出现一次比特错误。",
-        "将原串放在所有非 $2^j$ 位置，把 $2^j$ 位置作为汉明校验位；每个校验位维护其覆盖位置上的数据异或，从而把通信错误转化为标准单比特纠错。",
-        "对恢复序列中所有值为 $1$ 的位置做下标异或，得到的综合值就是出错位置；翻转该位置后再取出非校验位即可还原原串。"
-      ],
-      "solution_brief": "先用汉明码编码原串，再按节点比特决定 DFS 的左右子树访问顺序。Tara 用相同规则遍历；敌人的翻转与换子树只造成一次比特错误，利用汉明综合定位并修正后，读取非 $2^j$ 位置得到答案。",
-      "extraction_status": "ai_generated_with_editorial",
-      "source_provenance": {
-        "statement": "records.json:statement_text",
-        "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json",
-        "ai_override": {
-          "path": "ai-generated-insights.json",
-          "model": "gpt-6-luna",
-          "generated_at": "2026-10-18T21:11:02+00:00",
           "quality_flags": []
         }
       },

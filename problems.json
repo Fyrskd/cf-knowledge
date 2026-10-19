@@ -912,6 +912,7 @@
     "tags": [
       "bitmasks",
       "communication",
+      "constructive algorithms",
       "dfs and similar",
       "interactive",
       "trees"
@@ -929,7 +930,8 @@
       "divide and conquer",
       "dp",
       "greedy",
-      "sortings"
+      "sortings",
+      "two pointers"
     ]
   },
   {
