@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-19",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4354,
+    "total_problems": 4355,
     "source_total_problems": 4355,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4354,
-    "with_editorial_brief": 3994,
-    "with_solution_brief": 3996,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4355,
+    "with_editorial_brief": 3995,
+    "with_solution_brief": 3997,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3416,
+    "ai_override_count": 3417,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -56,10 +56,10 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 231,
     "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
-    "博弈": 126
+    "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2986,
+    "ai_generated_with_editorial": 2987,
     "ai_generated_partial_editorial": 117,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -393,7 +393,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-14",
       "url": "https://codeforces.com/contest/2276",
       "type": "Educational",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
         {
@@ -535,6 +535,41 @@ window.CF_INSIGHTS_DATA = {
             "用 $nxt[i][d]$ 表示当前位置之后数字 $d$ 的最近位置，按子序列顺序跳转即可求出 $r25、r26$，避免为每个右端点重复匹配。"
           ],
           "solutionBrief": "预处理每个位置到各数字的最近出现位置，用跳转求固定左端点下的 $r25、r26$，据此把好右端点划成至多三段。每段对所有包含位置的子串贡献一个等差函数，使用线性函数差分数组汇总答案。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2276F",
+          "index": "F",
+          "slot": "F",
+          "title": "Permutation Coloring Game",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2276/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/157752",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "图论与网络流",
+            "动态规划与状态设计",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "brute force",
+            "dp",
+            "dsu",
+            "games",
+            "greedy",
+            "implementation",
+            "math"
+          ],
+          "statementBrief": "给定一个置换，所有位置初始为白色。Alice 与 Bob 轮流选择 $1$ 到 $k$ 个白色位置，并将本回合选中的位置全部染成同一种红色或蓝色；染完后，若仅交换同色位置即可把置换排成递增序列则 Alice 获胜，否则 Bob 获胜，求最优策略下的胜者。",
+          "transformedStatement": "把置换拆成若干有向环：最终可排序等价于每个环内部颜色统一。于是 Alice 要避免任何双色环，Bob 则要在回合限制下让某个环留下两种颜色；胜负进一步由各环长度及首回合能完整处理的环决定。",
+          "keyObservations": [
+            "把置换看成每个点出度、入度均为 $1$ 的有向图，因而分解为环；一个环可排序当且仅当其中所有点颜色相同，这把胜负条件转成“是否能染出双色环”。",
+            "当 $k\\ge2$ 时，存在长度至少为 $k+2$ 的环，Bob 总能在同一环中制造两种颜色；若长度为 $k+1$ 的环至少有两个，也能用两个环轮流制造未染点，因此 Bob 必胜。",
+            "恰有一个长度为 $k+1$ 的环时，Alice 首回合必须处理完所有长度 $2$ 到 $k$ 的环；设其总长度为 $l$，再按长度为 $1$ 的环数对 $k+1$ 取模得到 $c$，仅当 $0<l+c\\le k$ 时可用对称策略获胜。",
+            "所有环长不超过 $k$ 时，Bob 能获胜当且仅当其回合开始存在至多 $k$ 个环、总顶点数至少为 $d+k+1$；只需保留最长 $2k$ 个环，并用状态 $dp_{i,j,x}$ 选择 Alice 首回合染完整的环来消除这种集合。"
+          ],
+          "solutionBrief": "先分解置换为环并处理 $k=1$。对 $k\\ge2$，长环和多个 $k+1$ 环直接判 Bob；单个 $k+1$ 环用模 $k+1$ 的对称策略判定。其余情况保留最长 $2k$ 个环，做 $dp_{i,j,x}$ 检查 Alice 首步能否消除 Bob 的危险环集合，复杂度为 $O(\\min(n,k)k^2)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
