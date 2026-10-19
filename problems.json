@@ -16,6 +16,7 @@
     "name": "Permutation Coloring Game",
     "type": "PROGRAMMING",
     "tags": [
+      "brute force",
       "dp",
       "dsu",
       "games",
