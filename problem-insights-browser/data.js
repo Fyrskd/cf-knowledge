@@ -1,17 +1,17 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-18",
+  "generatedAt": "2026-10-19",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4355,
+    "total_problems": 4348,
     "source_total_problems": 4355,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4355,
-    "with_editorial_brief": 3995,
-    "with_solution_brief": 3997,
+    "filtered_out_problems": 7,
+    "with_statement_brief": 4348,
+    "with_editorial_brief": 3988,
+    "with_solution_brief": 3990,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3417,
+    "ai_override_count": 3410,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -44,9 +44,9 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1433,
+    "构造与贪心": 1427,
     "动态规划与状态设计": 357,
-    "数据结构": 407,
+    "数据结构": 406,
     "图论与网络流": 294,
     "数论与同余": 452,
     "交互": 132,
@@ -59,8 +59,8 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2986,
-    "ai_generated_partial_editorial": 118,
+    "ai_generated_with_editorial": 2985,
+    "ai_generated_partial_editorial": 112,
     "missing_editorial": 358,
     "low_confidence": 1,
     "manual_override": 891,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-17",
       "url": "https://codeforces.com/contest/2261",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 10,
+      "problemCount": 9,
       "maxRating": null,
       "problems": [
         {
@@ -315,35 +315,6 @@ window.CF_INSIGHTS_DATA = {
             "至多两个零时，四个角的末段执行会被迫共享相同的小 $S$ 动作；逐步约束 $A_1$ 到 $A_8$ 后，右下角必在某个 $2\\times4$、$3\\times3$ 或 $4\\times2$ 状态被错误删除，因此两零不可能覆盖所有目标。"
           ],
           "solutionBrief": "证明最优值为 $f(n)=3$。对每个目标先用三零和两零安排行，再用两零、一零安排列，最后处理 $3\\times1$；解码器按 $S$ 的区间指定方向。四角反证说明两零不足。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2261G",
-          "index": "G",
-          "slot": "G",
-          "title": "1 2 3 and XOR, Where Did Everybody Go?",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/G",
-          "editorialUrl": "https://codeforces.com/blog/entry/157917",
-          "primaryTopic": "数据结构",
-          "secondaryTopics": [],
-          "originalTags": [
-            "bitmasks",
-            "data structures",
-            "divide and conquer",
-            "dp",
-            "greedy"
-          ],
-          "statementBrief": "给定非负整数序列 $a$。对每个连续子数组，必须恰好选择一个元素并给它增加任意非负整数，令操作后整个子数组的按位异或最小值为 $f$；求所有连续子数组的 $f$ 之和。",
-          "transformedStatement": "令子数组异或为 $X$、按位与为 $A$，先把一次增加操作后的最小异或值化为函数 $g(X,A)$；再以右端点扫描，将左端点按相同的子数组按位与分成批次，并统计各批次的前缀异或贡献。",
-          "keyObservations": [
-            "对数组的异或值 $X$ 和按位与值 $A$，从高位向低位扫描时，遇到最高的“$X$ 为 $1$ 且 $A$ 为 $0$”的位即可停止；其下方异或位都能通过一次增加操作清零，因此 $f$ 只由 $(X,A)$ 决定。",
-            "固定右端点并向左扩展时，子数组按位与只会丢失位，因而所有左端点至多形成 $O(25)$ 个连续批次；每个批次共享同一个按位与值。",
-            "批次内令 $q$ 为前缀异或、$P_r$ 为当前前缀异或，则子数组异或为 $P_r\\oplus q$；专用二进制 Trie 在 $A$ 为 $1$ 的位统计异或贡献，在 $A$ 为 $0$ 的位只沿匹配分支继续，从而一次路径计算整个批次的总和。",
-            "右端点增加时将各批次的按位与和新元素相与，变化批次重建、相邻同值批次合并，并用小并大减少 Trie 中元素搬移次数。"
-          ],
-          "solutionBrief": "先用 $(X,A)$ 的高位扫描规则表示单个子数组答案，再按右端点维护按位与批次。每批次用带按位统计的二进制 Trie 汇总所有前缀异或，批次变化时重建并小并大合并，总复杂度为 $O(n\\log A(\\log n+\\log A))$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
@@ -49327,97 +49298,9 @@ window.CF_INSIGHTS_DATA = {
       "date": "2024-08-10",
       "url": "https://codeforces.com/contest/1998",
       "type": "Div. 2",
-      "problemCount": 6,
-      "maxRating": 2500,
+      "problemCount": 1,
+      "maxRating": 2100,
       "problems": [
-        {
-          "key": "1998A",
-          "index": "A",
-          "slot": "A",
-          "title": "Find K Distinct Points with Fixed Center",
-          "rating": 800,
-          "problemUrl": "https://codeforces.com/contest/1998/problem/A",
-          "editorialUrl": "https://codeforces.com/blog/entry/132512",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "几何",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "implementation",
-            "math"
-          ],
-          "statementBrief": "给定中心坐标 $(x_c,y_c)$ 和整数 $k$，需要输出 $k$ 个两两不同的整数坐标点，且每个坐标在允许范围内。要求这些点的横纵坐标平均值分别等于 $(x_c,y_c)$，任意满足条件的构造均可。",
-          "transformedStatement": "把几何中心条件改写为坐标总和分别等于 $k x_c$ 和 $k y_c$；固定一个点为 $(k x_c,k y_c)$ 后，问题转为构造其余 $k-1$ 个互异点，使两维坐标和都为零。",
-          "keyObservations": [
-            "中心条件等价于所有点的横坐标和为 $k x_c$、纵坐标和为 $k y_c$，因此可把目标拆成控制总和的问题。",
-            "先选取点 $(k x_c,k y_c)$，其余 $k-1$ 个点只需让横坐标和、纵坐标和分别为 $0$，即可使整体中心回到 $(x_c,y_c)$。",
-            "剩余点还必须彼此不同且不能与首点重合；题解正文未说明满足这些限制的具体选点方式，因此实现细节无法从给定材料完整还原。"
-          ],
-          "solutionBrief": "利用中心定义转化为坐标总和约束：先输出 $(k x_c,k y_c)$，再构造 $k-1$ 个横纵坐标和均为 $0$ 的互异整数点。给定题解未提供避免重合及满足范围的具体构造，故只能保留这一核心方案。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
-        },
-        {
-          "key": "1998B",
-          "index": "B",
-          "slot": "B",
-          "title": "Minimize Equal Sum Subarrays",
-          "rating": 1000,
-          "problemUrl": "https://codeforces.com/contest/1998/problem/B",
-          "editorialUrl": "https://codeforces.com/blog/entry/132512",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数论与同余",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "constructive algorithms",
-            "math",
-            "number theory"
-          ],
-          "statementBrief": "给定一个长度为 $n$ 的排列 $p$，需要构造另一个排列 $q$。统计所有连续区间 $(i,j)$ 中两排列区间和相等的数量，并使这个数量最少。",
-          "transformedStatement": "将每个元素按数值循环后继映射：$1\\to2,2\\to3,\\ldots,n\\to1$。这样把区间和之差转化为“区间长度减去其中最大值出现次数乘以 $n$”，从而控制相等区间。",
-          "keyObservations": [
-            "两种排列的总和必然相等，因此整个区间 $(1,n)$ 至少计数一次，答案不可能为 $0$。",
-            "把每个值 $x$ 映射为 $x+1$，并把 $n$ 映射为 $1$；在任意区间中，$q$ 与 $p$ 的元素差之和为“区间长度减去 $n$ 乘以其中 $n$ 的个数”。",
-            "对于非空长度不超过 $n$ 的区间，上述差值只有在区间长度为 $n$ 且恰含一个 $n$ 时才为零，因此该构造仅让整个数组区间的和相等，达到下界。"
-          ],
-          "solutionBrief": "对每个位置独立构造 $q_i$：若 $p_i<n$ 则令 $q_i=p_i+1$，否则令 $q_i=1$。这是一个排列；其任意真子数组和都不同，只有整个数组必然相等，因此达到最小计数。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
-        },
-        {
-          "key": "1998C",
-          "index": "C",
-          "slot": "C",
-          "title": "Perform Operations to Maximize Score",
-          "rating": 1900,
-          "problemUrl": "https://codeforces.com/contest/1998/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/132512",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构"
-          ],
-          "originalTags": [
-            "binary search",
-            "brute force",
-            "constructive algorithms",
-            "greedy",
-            "implementation"
-          ],
-          "statementBrief": "给定数组 $a$ 和只能在 $b_i=1$ 的位置执行的加一操作，最多执行 $k$ 次。对每个位置 $i$，删除 $a_i$ 后取剩余数组的中位数，并计算 $a_i$ 加该中位数；要求通过最优操作使这些值的最大值尽可能大。",
-          "transformedStatement": "把答案看成选择一个最终贡献位置 $i$，同时分配操作来提升该位置和删除它后的数组中位数。固定中位数阈值后，问题转化为判断剩余元素中是否有足够多的值能保持或通过合法加一操作达到该阈值。",
-          "keyObservations": [
-            "固定最终贡献位置 $i$ 后，目标可拆成提升 $a_i$ 本身与提升删除它后的数组中位数两部分，从而把全局最大值转化为枚举贡献位置并优化对应中位数。",
-            "判断某个中位数阈值是否可达时，只需比较剩余数组中已经超过阈值的元素数量，以及利用至多 $k$ 次合法加一操作后还能超过阈值的元素数量；这使中位数优化变成单调可行性判定。",
-            "中位数阈值具有单调性：若某个阈值可以达到，则更小的阈值也可以达到，因此可以对阈值进行二分，而不必直接枚举所有可能的中位数。"
-          ],
-          "solutionBrief": "对每个可能成为得分贡献者的位置，分别考虑把操作用于提升该位置或提升删除它后的数组中位数。中位数部分通过二分阈值，并统计已有及可用操作后能超过阈值的元素来判定可行性；题解还提示可用线段树加速相关计数，但正文未给出完整实现细节。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
-        },
         {
           "key": "1998D",
           "index": "D",
@@ -49444,69 +49327,6 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "",
           "extractionStatus": "missing_editorial",
           "editorialQuality": "url_only"
-        },
-        {
-          "key": "1998E1",
-          "index": "E1",
-          "slot": "E",
-          "title": "Eliminating Balls With Merging (Easy Version)",
-          "rating": 2200,
-          "problemUrl": "https://codeforces.com/contest/1998/problem/E1",
-          "editorialUrl": "https://codeforces.com/blog/entry/132512",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
-          "originalTags": [
-            "binary search",
-            "brute force",
-            "data structures",
-            "divide and conquer",
-            "greedy"
-          ],
-          "statementBrief": "给定一排带有数值的球。对前缀中的当前元素集合，每次选择一个非末尾元素及其右侧相邻存活元素，将两者相加并删除较小者；数值相等时可任选一个删除。题面在定义 $f(i)$ 的位置截断，未提供最终要求。",
-          "transformedStatement": "题解将每个存活元素视为原数组某个连续区间的总和，把一次合并视为相邻区间的合并；核心变成判断区间 $[L,R]$ 能否通过按总和比较进行跳转，并从左右两端贪心扩展。",
-          "keyObservations": [
-            "任意时刻仍存在的元素都对应原数组中的一个连续子数组，因此合并过程可以用区间端点而不是逐个球表示。",
-            "将区间状态定义为 `solve(L,R)`，表示能否把区间 $[L,R]$ 的总和转化为题解所需的目标元素，从而把操作过程转成区间可达性判断。",
-            "固定左端点 $L$ 和当前右端点 $R$ 时，贪心寻找最小的 `nxtL`，使左侧区间 $[nxtL,L-1]$ 的和不超过当前区间和；满足后可直接跳到新的区间状态，避免逐次模拟合并。",
-            "右端点方向可以采用对称跳转，并对 `solve` 的区间状态记忆化，以复用重复子问题。"
-          ],
-          "solutionBrief": "题解把合并过程抽象为连续区间的和，并用 `solve(L,R)` 判断区间状态是否可达。对左右两侧分别贪心寻找可跳转的最小端点，再记忆化所有状态；但给定题解和题面均不完整，无法还原最终答案统计方式。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
-        },
-        {
-          "key": "1998E2",
-          "index": "E2",
-          "slot": "E",
-          "title": "Eliminating Balls With Merging (Hard Version)",
-          "rating": 2500,
-          "problemUrl": "https://codeforces.com/contest/1998/problem/E2",
-          "editorialUrl": "https://codeforces.com/blog/entry/132512",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数据结构",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "binary search",
-            "brute force",
-            "data structures",
-            "divide and conquer",
-            "greedy",
-            "implementation"
-          ],
-          "statementBrief": "给定一排带正整数的球。对当前集合中相邻的两个球，较大的值吸收较小的值并保留两值之和，相等时可任选其一删除；对每个前缀，需要统计哪些位置的球可能成为最后剩下的球。原题面在目标条件处截断，以上目标依据题解提示推断。",
-          "transformedStatement": "把每个位置 $j$ 看作候选的最终剩余球，研究它能覆盖的前缀长度集合；题解指出该集合是连续区间 $[L_j,R_j]$，问题转化为求每个区间的左右端点并进行前缀统计。",
-          "keyObservations": [
-            "对每个位置 $j$，能够最终保留下来的前缀长度构成一个区间 $[L_j,R_j]$，因此无需逐种模拟合并顺序，只需确定两个边界。",
-            "最小边界 $L_j$ 可表述为：球 $j$ 能否通过合并成为包含 $A_1+\b+A_{L_j}$ 的最后球；将求可行性改为求最小 $L_j$，可以统一处理所有前缀。",
-            "先预处理每个位置向右最多能扩展到哪里，再结合已求出的 $L_j$ 推出 $R_j$，从而按区间统计各前缀中可作为最后剩余球的位置。"
-          ],
-          "solutionBrief": "题解把每个球能作为前缀最终剩余球的范围记为 $[L_j,R_j]$。通过 Solve 求出最小可行左边界，并预处理每个位置的最远右扩展范围以得到 $R_j$，再利用这些区间统计答案；但给定题解未提供完整实现与统计细节。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
         }
       ]
     },
@@ -95003,7 +94823,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2022-08-30",
       "url": "https://codeforces.com/contest/1722",
       "type": "Div. 4",
-      "problemCount": 7,
+      "problemCount": 6,
       "maxRating": 1700,
       "problems": [
         {
@@ -95161,34 +94981,6 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "扫描每个阴影格的四邻域：邻居超过两个或两个邻居相对则失败；恰有两个垂直邻居时标记该 L 形。检查标记重叠、阴影格是否全覆盖，并禁止不同编号对角相邻。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
-        },
-        {
-          "key": "1722G",
-          "index": "G",
-          "slot": "G",
-          "title": "Even-Odd XOR",
-          "rating": 1500,
-          "problemUrl": "https://codeforces.com/contest/1722/problem/G",
-          "editorialUrl": "https://codeforces.com/blog/entry/106478",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "数论与同余"
-          ],
-          "originalTags": [
-            "bitmasks",
-            "constructive algorithms",
-            "greedy"
-          ],
-          "statementBrief": "给定长度 $n$，构造一个包含 $n$ 个互不相同的非负整数的数组，所有数都小于 $2^{31}$。按 1 开始编号后，要求奇数下标元素的按位异或等于偶数下标元素的按位异或，输出任意满足条件的数组。",
-          "transformedStatement": "把奇数下标组与偶数下标组的异或分别记为 $a,b$，目标 $a=b$ 等价于整个数组的异或为 $0$；因此只需构造不同元素且总异或为零的数组。",
-          "keyObservations": [
-            "奇偶下标两组异或相等，当且仅当全数组异或为 $0$，因此可将问题转化为构造总异或为零的不同整数。",
-            "先选取 $n-2$ 个最高位为 $0$ 的不同数，再加入 $2^{30}$；最后一个数设为前面所有数的异或，可同时保证总异或为零且不会与前缀重复。",
-            "最后一个数与 $2^{30}$ 相等仅当前 $n-2$ 个数的异或为零；使用区间 $0,1,\u001b[...$ 或整体加一后的区间时，两种前缀异或相差 $n-2$，至少一种不会为零。"
-          ],
-          "solutionBrief": "将奇偶组异或相等转为全体异或为零。取两种候选前缀：$0..n-3$ 或 $1..n-2$，选择异或非零者，再追加 $2^{30}$ 和“前缀异或 $2^{30}$”，即可保证所有数不同且总异或为零。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
         }
       ]
     },
