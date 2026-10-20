@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 4314,
+    "total_problems": 4355,
     "source_total_problems": 4355,
-    "filtered_out_problems": 41,
-    "with_statement_brief": 4314,
-    "with_editorial_brief": 3955,
-    "with_solution_brief": 3957,
-    "missing_editorial_brief": 357,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4355,
+    "with_editorial_brief": 3995,
+    "with_solution_brief": 3997,
+    "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3375,
+    "ai_override_count": 3417,
     "primary_topic_count": 13
   },
   "records": [
@@ -178613,6 +178613,635 @@
       "ai_override": true
     },
     {
+      "ordinal": 4314,
+      "problem_key": "2275A",
+      "contest_id": 2275,
+      "title": "In Search of Convenience",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2275/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/157528",
+      "editorial_quality": "complete",
+      "primary_topic": "几何",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "geometry",
+        "implementation"
+      ],
+      "statement_brief": "给定整数坐标的路由器 $(x_0,y_0)$ 和半径 $R$，家具只能放在整数坐标点上。请找出任意一个整数点，使其到路由器的欧氏距离恰好为 $R$，即位于网络覆盖边界上。",
+      "transformed_statement": "不必搜索圆周上的格点，只取圆心正左方的水平交点：令 $x=x_0-R$、$y=y_0$，问题立即转化为验证位移平方为 $R^2$。",
+      "key_observations": [
+        "将圆心的横坐标减少 $R$、纵坐标保持不变后，位移为 $(R,0)$，因此两点距离恰好是 $R$。",
+        "点 $(x_0-R,y_0)$ 的坐标始终为整数，且代入距离平方公式得到 $(x_0-(x_0-R))^2+(y_0-y_0)^2=R^2$，无需搜索其他格点。"
+      ],
+      "solution_brief": "对每组数据直接输出 $(x_0-R,y_0)$。该点与路由器的水平距离为 $R$、竖直距离为 $0$，所以恰好位于覆盖圆周上。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T18:04:16+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4315,
+      "problem_key": "2275B",
+      "contest_id": 2275,
+      "title": "Did Not Go to Print",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2275/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/157528",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "data structures",
+        "implementation"
+      ],
+      "statement_brief": "按编号依次处理长度为 $n$ 的命令串：1 将当前文档放入记忆顶部，2 打印并移除记忆顶部（若为空则打印当前文档），3 直接打印当前文档。求所有最终未被打印的文档编号。",
+      "transformed_statement": "把打印机记忆抽象为后进先出的栈；同时维护每个文档是否已打印，扫描命令后输出所有仍未被标记的文档。",
+      "key_observations": [
+        "类型为“1”的命令只把当前文档压入记忆，类型为“2”时优先取栈顶文档；因此这两类操作完全等价于栈的入栈与出栈。",
+        "当类型为“2”的命令遇到空记忆时，打印的是当前文档本身；否则被打印文档的编号就是栈顶元素，按此规则标记即可准确记录所有已打印文档。",
+        "每份文档只会在被直接打印或从栈中弹出时变为已打印，最后扫描未标记编号即可得到答案，且整个过程只需线性处理。"
+      ],
+      "solution_brief": "用栈模拟记忆区，并用布尔数组标记已打印文档：1 入栈，2 弹栈并标记，栈空则标记当前文档，3 直接标记当前文档，最后输出未标记编号。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T18:03:48+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4316,
+      "problem_key": "2275C",
+      "contest_id": 2275,
+      "title": "Unrequited Love",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2275/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/157528",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "brute force",
+        "data structures"
+      ],
+      "statement_brief": "给定长度为 $n$ 的数组，起点为 $x$ 的三和弦同时按下第 $x、x+2、x+4$ 个按键，其价值为 $a_x+a_{x+2}-a_{x+4}$。需要选择两个不同且不共享按键的三和弦，并要求价值相同，统计所有无序选择的数量。",
+      "transformed_statement": "把每个合法起点映射为一个价值 $f(x)$；先统计所有满足 $f(x)=f(y)$ 的起点对，再删除起点距离为 $2$ 或 $4$ 的对，因为这两种情况恰好会共享按键。",
+      "key_observations": [
+        "设三和弦价值为 $f(x)=a_x+a_{x+2}-a_{x+4}$，题目就转化为统计价值相等的起点对。",
+        "对 $x<y$，两个三和弦只有在 $y-x=2$ 或 $4$ 时共享按键，因此先统计所有相等价值对，再排除这两种距离的冲突对。",
+        "从左到右处理起点 $y$ 时，已有相同 $f$ 值的数量正好是与 $y$ 形成相等价值对的新增贡献；冲突情况只需额外检查 $y-2$ 和 $y-4$。"
+      ],
+      "solution_brief": "计算每个起点的三和弦价值，用映射统计此前出现过的相同价值并加入答案；若起点差为 $2$ 或 $4$ 且价值相等，则分别减去该冲突对。使用 64 位整数，复杂度为 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T18:03:25+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4317,
+      "problem_key": "2275D",
+      "contest_id": 2275,
+      "title": "Precision Alignment",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2275/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/157528",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "有 $n$ 个按固定顺序排列的三元组 $(a_i,b_i,c_i)$，每次任选一个三元组，按其他两个数的有序差值将其中一个数加上 $-1$、$0$ 或 $1$；总共最多操作 $k$ 次。操作结束后最大化所有三元组元素和的最小值 $S=\\min_i(a_i+b_i+c_i)$。",
+      "transformed_statement": "把每个实验室独立转化为“达到目标总和 $m$ 的最小操作数”：非降序三元组先付出脱离僵局的固定代价，再按每增加一单位总和付出一次操作；全相等三元组则提供不可突破的上界。",
+      "key_observations": [
+        "若三数严格呈非降序但不全相等，必须先把状态推进到 $c=b-1$ 或 $b=a-1$，才能进入可持续增大总和的状态；脱离该状态的代价是 $2(\\min(b-a,c-b)+1)$ 次操作。",
+        "一旦三元组不再满足 $a\\le b\\le c$，就能持续增加其总和，因此达到目标 $m$ 的额外代价仅为 $m-(a+b+c)$，加上脱离非降序状态的固定代价。",
+        "当 $a=b=c$ 时三种操作都不会改变三元组，所以该实验室的总和是不可突破的上限；这类实验室可直接限制二分答案。",
+        "对固定目标 $m$，每个实验室的所需操作数可独立计算并求和，且目标越大所需代价不减，因此可用总预算 $k$ 判定可行性并二分最大答案。"
+      ],
+      "solution_brief": "对每个三元组计算初始和及脱离非降序状态的代价。判定目标 $m$ 时，初始和不足的实验室支付 $(m-S)+2e$；全相等者若不足则不可行。利用总代价单调性二分 $m$，复杂度为 $O(n\\log k)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T18:02:59+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4318,
+      "problem_key": "2275E",
+      "contest_id": 2275,
+      "title": "Repentance Is Already on the Way",
+      "rating": 1500,
+      "problem_url": "https://codeforces.com/contest/2275/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/157528",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "dp",
+        "implementation"
+      ],
+      "statement_brief": "有两排各 $n$ 栋建筑，第 $i$ 栋与另一排的同列及相邻列建筑相连，所有道路双向；同公司两端的道路长 $2$，不同公司长 $1$。路线从 $a_1$ 出发，恰好访问全部 $2n$ 栋建筑一次，可在任意建筑结束，求最大总长度。",
+      "transformed_statement": "把建筑视为两侧交替的二分图路径。所有合法路线由一个分界位置 $k$ 决定：先沿蛇形路线走到 $a_k$，再按唯一确定的交错结构走到末端并返回另一侧；只需比较这 $n$ 个候选路线的同公司道路数量。",
+      "key_observations": [
+        "道路只连接两侧建筑，因此任何完整路线都交替经过两侧并使用恰好 $2n-1$ 条道路；总长度等于 $2n-1$ 加上同公司道路的数量。",
+        "当路线到达 $a_k$ 且左侧已访问时，走向 $b_k$ 会继续唯一蛇形路线；走向 $b_{k+1}$ 则使 $b_k$ 成为端点，之后到终点再返回的路线也被完全确定，因此所有路线可由分界位置 $k$ 唯一表示。",
+        "从分界位置 $k$ 改为 $k+1$ 时，路线只将道路 $a_k-b_{k+1}$ 替换为 $a_k-b_k$，所以可用常数时间更新路线长度并遍历所有候选。"
+      ],
+      "solution_brief": "令 $f(x,y)=1+[x=y]$。先计算 $k=1$ 时两条交错链及末端道路的长度，再逐步把 $f(a_i,b_{i+1})$ 替换为 $f(a_i,b_i)$，维护最大值；每组复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T18:02:21+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4319,
+      "problem_key": "2275F",
+      "contest_id": 2275,
+      "title": "Tea Blend",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/2275/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/157528",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "hashing",
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定按顺序排列的 $n$ 个茶包强度。选择任意 $j$，先把前 $j$ 个茶包各取一份，再从编号为 $i$ 的茶包取一勺，所得强度为 $F(i,j)$；若它的正因数个数为奇数，则称该组合任性，求所有 $(i,j)$ 的数量。",
+      "transformed_statement": "把每个数替换为其指数为奇数的质因子集合，即平方自由核；前缀乘积对应这些集合的对称差，而 $F(i,j)$ 合法等价于第 $j$ 个前缀的集合等于 $a_i$ 的集合。",
+      "key_observations": [
+        "一个正整数的因数个数为各个质因子指数加一之积，因此因数个数为奇数当且仅当该数是完全平方数。",
+        "两个数相乘后为完全平方数，当且仅当它们指数为奇数的质因子集合相同，从而把乘积判平方转化为集合匹配。",
+        "前缀乘积的奇质因子集合可按出现次数奇偶逐项切换；统计与某个 $a_i$ 集合相同的前缀数，就能直接得到所有有效的 $(i,j)$。",
+        "若前缀集合含有超过 $7$ 个质因子，其这些质因子的乘积已大于 $10^6$，不可能与任意单个 $a_i$ 的奇质因子集合相同，因此可以忽略。"
+      ],
+      "solution_brief": "为每个 $a_i$ 提取指数为奇数的质因子集合，前缀集合用奇偶切换维护。将集合规模不超过 $7$ 的前缀计入映射，最后对每个 $a_i$ 查询相同集合的前缀数量并累加。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T18:01:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4320,
+      "problem_key": "2275G",
+      "contest_id": 2275,
+      "title": "Copper Squander",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2275/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/157528",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "构造与贪心",
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "dsu",
+        "graphs",
+        "greedy",
+        "math",
+        "sortings",
+        "ternary search"
+      ],
+      "statement_brief": "给定一张包含建筑和旧电缆的无向图，每条旧电缆有可回收价值。可以先删除任意旧电缆并出售铜材，再按每条依次为 $x,2x,3x,\\ldots$ 的费用铺设任意新电缆，最终必须让所有建筑连通；对每个给定的 $x$ 求最大利润。",
+      "transformed_statement": "把问题改写为选择一片保留的森林：保留 $r$ 条边就有 $n-r$ 个连通块，需铺设 $n-r-1$ 条新电缆。固定 $r$ 时保留最小生成森林按 Kruskal 排序的前 $r$ 条边，故每次询问只需确定最优前缀长度。",
+      "key_observations": [
+        "固定保留 $r$ 条旧电缆时，最优选择是按 Kruskal 顺序得到的最小生成森林前 $r$ 条边；任何成环边都不值得保留，因为它既不减少所需新电缆数，也会损失铜材收入。",
+        "设最小生成森林有 $c$ 个连通分量，则保留全部森林边时只需新增 $c-1$ 条电缆，安装费为 $x\\cdot\\frac{c(c-1)}{2}$；删除森林中的一条边会使所需新电缆数增加一条。",
+        "将森林边按权值从大到小考虑，删除第 $i$ 条边新增的安装费为 $x\\cdot(c+i-1)$，只有当该边价值更大时删除才有利；边价值递减而新增费用递增，因此有利删除边构成前缀。",
+        "用前缀和计算删除或保留某个分界点的总价值，并通过单调条件二分分界点，即可在每个询问中用 $O(\\log n)$ 求出最大利润。"
+      ],
+      "solution_brief": "先用 Kruskal 求原图的最小生成森林，并记录其边权前缀和。对每个 $x$，保留一段最便宜的森林边；二分第一个不值得保留的边，利用前缀和计算铜材总收入减去新增电缆费用。建森林耗时 $O(m\\log m)$，每次询问 $O(\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T18:00:54+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4321,
+      "problem_key": "2275H",
+      "contest_id": 2275,
+      "title": "A Problem to Warm Up the Eyebrows",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/2275/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/157528",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "给定一个 $n\\times m$ 整数矩阵。对每个连续矩形子矩阵，设元素和为 $S$、高宽为 $a,b$：当 $a+b$ 为偶数时贡献 $S^2$，否则贡献 $-S^2$；求所有子矩阵贡献之和并模 $10^9+7$ 输出。",
+      "transformed_statement": "将问题改写为所有单元格对 $(i,j),(x,y)$ 的加权乘积和：先计算这两个单元格共同出现在矩形中的边界数量及符号，再按行列端点奇偶性筛选有效单元格对。",
+      "key_observations": [
+        "把每个子矩阵的平方展开为两个单元格的有序对贡献，便可分别统计一对单元格同时被哪些矩形包含。",
+        "矩形边界的四重求和可以按行、列独立分解，且每个交替和只取决于最小值和最大值的奇偶性，从而转为若干奇偶条件。",
+        "不同单元格的贡献可按同一行与不同行处理；同一行维护偶数列元素和，不同行维护此前各行的列前缀、后缀和。",
+        "不同单元格只统计一次再乘二，单元格自身单独加入；所有贡献最后乘上由矩阵边界奇偶性决定的整体符号。"
+      ],
+      "solution_brief": "展开所有子矩阵的 $S^2$，按单元格对重排求和。利用边界交替和只依赖端点奇偶性，将贡献分为同一行和不同行；扫描矩阵维护列前缀、后缀和，整体复杂度为 $O(nm)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:59:58+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4322,
+      "problem_key": "2271A",
+      "contest_id": 2271,
+      "title": "Robot Odd Moves",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2271/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/157590",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "机器人从 $(0,0)$ 出发，每次先上下移动一格，再向右移动一格；可在操作前、两步之间或操作后访问经过的点。对给定点 $(a,b)$，求机器人最少执行多少次操作能访问它，无法访问则输出 $-1$。",
+      "transformed_statement": "把第 $a$ 列的访问分为完成前 $a$ 次操作后到达，或在第 $a+1$ 次操作的竖直阶段经过；完成操作后的坐标奇偶性相同，而竖直阶段可改变这一奇偶关系。",
+      "key_observations": [
+        "完成 $z$ 次操作后横坐标必为 $z$，因此目标在第 $a$ 列时通常对应前 $a$ 次操作，若在下一次操作的竖直移动中访问则最多涉及 $a+1$ 次竖直移动。",
+        "每次操作结束时横纵坐标的奇偶性同时改变，所以始终相同；这给出了完成 $a$ 次操作后可到达目标的必要条件。",
+        "当 $0\\le b\\le a$ 且 $a,b$ 同奇偶时，可先向上调整到 $b$，再交替上下移动，恰好在 $a$ 次操作后到达 $(a,b)$。",
+        "若 $a,b$ 奇偶性不同，可先在 $a$ 次操作后到达 $(a,b-1)$，再在下一次操作的竖直移动中访问 $(a,b)$；若 $b>a+1$，所需竖直移动次数超过上限，因而不可能。"
+      ],
+      "solution_brief": "先判断 $b>a+1$，此时答案为 $-1$；否则坐标同奇偶时答案为 $a$，不同奇偶时答案为 $a+1$。构造利用每次操作先竖直移动、再向右移动的顺序。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:58:53+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4323,
+      "problem_key": "2271B",
+      "contest_id": 2271,
+      "title": "MEX Game",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2271/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/157590",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [],
+      "original_tags": [
+        "games"
+      ],
+      "statement_brief": "给定偶数张带非负整数的牌，Alice 和 Bob 轮流从剩余牌中各取一张，直到双方各拿到 $n/2$ 张。定义集合的 $mex_k$ 为出现次数少于 $k$ 的最小非负整数；若双方最终的 $mex_k$ 不同则 Alice 获胜，需判断双方最优时 Alice 是否必胜。",
+      "transformed_statement": "只需统计每个数字的总出现次数，并找出第一个 $cnt[x]<2k$ 的数字。这个位置决定结果：出现 $2k-1$ 次时任何分配都无法让双方 MEX 相同，否则 Bob 可通过配对牌实现双方 MEX 均为 $x$。",
+      "key_observations": [
+        "设首个满足 $cnt[x]<2k$ 的数为 $x$；若双方的共同 MEX 小于 $x$，则双方都必须少于 $k$ 张该数字的牌，与总数至少为 $2k$ 矛盾。",
+        "当 $cnt[x]=2k-1$ 时，无论共同 MEX 小于、等于还是大于 $x$，都会分别与总数条件矛盾，因此双方不可能得到相同的 MEX。",
+        "当 $cnt[x]\\le 2k-2$ 时，Bob 将同值牌优先两两配对并对剩余牌任意配对；Alice取一张后Bob取其配对牌，使双方对每个数字的数量至多相差一。",
+        "上述配对下，所有 $y<x$ 都让双方至少各得 $k$ 张，而 $x$ 让双方都少于 $k$ 张，所以双方的 MEX 都是 $x$，Bob 必胜。"
+      ],
+      "solution_brief": "统计每个数字的出现次数，找到最小的 $x$ 使 $cnt[x]<2k$。若 $cnt[x]=2k-1$ 输出 YES，否则输出 NO；扫描和统计总复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:58:04+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4324,
+      "problem_key": "2271C",
+      "contest_id": 2271,
+      "title": "XOR Problem",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2271/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/157590",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "bitmasks",
+        "constructive algorithms",
+        "graphs",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定整数 $n$，构造一个元素均在 $[0,n]$ 内的数组。数组 beauty 等于长度减去异或为 $0$ 的非空连续子数组数量；要求先最大化 beauty，再在达到最大值的数组中最大化长度。",
+      "transformed_statement": "不直接选数组元素，而是选前缀异或序列 $p$，其中相等的前缀值贡献一个零异或子数组；目标转化为让每个可用前缀值出现两次，并保证相邻前缀异或不超过 $n$。",
+      "key_observations": [
+        "令前缀异或为 $p_i$，零异或子数组恰对应一对相等的前缀值，因此新前缀值第 $1$、$2$、$3$ 次出现对 beauty 的增量分别为 $1$、$0$、负数。",
+        "令 $x$ 为不超过 $n$ 的最大二次幂；所有元素均小于 $2x$，所以前缀异或只有 $2x$ 种取值，beauty 至多为 $2x-1$。",
+        "为在达到最大 beauty 后取得最长数组，应让每个前缀值恰好出现两次，共有 $4x$ 个前缀，从而数组长度为 $4x-1$。",
+        "按两个区间分别升序再降序排列前缀值，区间内相邻值异或小于 $x$，唯一跨区间跳转为 $0\\oplus x=x$，故恢复出的数组元素都不超过 $n$。"
+      ],
+      "solution_brief": "取 $x$ 为不超过 $n$ 的最大二次幂，构造前缀异或序列：$[0,x-1]$ 升降各一次，再对 $[x,2x-1]$ 升降各一次。每个值出现两次，转为相邻前缀异或即得答案，复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:57:22+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4325,
+      "problem_key": "2271D",
+      "contest_id": 2271,
+      "title": "Target Infection",
+      "rating": 1700,
+      "problem_url": "https://codeforces.com/contest/2271/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/157590",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "binary search",
+        "brute force",
+        "greedy",
+        "implementation",
+        "two pointers"
+      ],
+      "statement_brief": "数轴上给出若干互不相邻的感染整数区间，$m$ 个人从整数位置 $s$ 开始连续站成一排；要求找到一个合法的 $s$，使这排人中恰有 $k$ 人站在感染位置上，否则输出无解。",
+      "transformed_statement": "把问题视为长度固定为 $m$ 的滑动窗口覆盖函数 $f(s)$：窗口右移一格时覆盖数只改变至多 $1$。先在各感染区间左端点中找出最大覆盖值，再利用离散连续性从该位置向右定位目标值。",
+      "key_observations": [
+        "将起点从 $s$ 移到 $s+1$ 只会移除位置 $s$、加入位置 $s+m$，因此 $f$ 在相邻整数间的变化幅度至多为 $1$，可利用离散连续性寻找目标值。",
+        "任意起点若落在感染区间内部，可向左移至该区间左端且感染人数不降；若落在非感染位置，可向右移至下一个区间，因此最大值必在某个 $l_i$ 处取得。",
+        "用所有区间长度的前缀和计算窗口 $[s,s+m-1]$ 与感染区间的交集总长度，再通过端点二分定位交集范围，可快速求出 $f(s)$。",
+        "找到最大值位置 $pos$ 后，以 $f(pos)>k$ 和远处的 $f(10^{15}+1)=0\\le k$ 为边界；即使 $f$ 不单调，也能依靠相邻变化至多为 $1$，二分找到满足 $f(s)=k$ 的位置。"
+      ],
+      "solution_brief": "先计算各区间左端点处的感染人数，取最大值及其位置；若最大值小于 $k$ 则无解。否则从该位置到 $10^{15}+1$ 维护一侧大于 $k$、另一侧不大于 $k$ 的边界，利用 $f$ 的相邻差至多为 $1$ 二分答案；窗口交集用前缀和与二分计算。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:56:39+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4326,
+      "problem_key": "2271E",
+      "contest_id": 2271,
+      "title": "Array Emptying",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2271/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/157590",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "greedy"
+      ],
+      "statement_brief": "给定数组和初始整数 $k$。每次选择一个元素：若不超过 $k$ 就删除，否则删除它并加入两个值为 $\\lceil x/2\\rceil$ 的元素；操作后 $k$ 加一。求清空数组所需的最少操作次数。",
+      "transformed_statement": "先放宽规则，允许任何元素分裂，并把所有分裂安排在删除之前。固定分裂次数后，从最后一次删除反向处理剩余元素，用当前阈值比较最大值，决定删除或继续分裂。",
+      "key_observations": [
+        "若总共进行 $c$ 次分裂，元素数量增加 $c$，因此必须进行 $n+c$ 次删除，总操作数恰为 $n+2c$，问题转为最小化分裂次数。",
+        "在放宽“任意元素都可分裂”后，可用交换论证把所有分裂移到删除之前；随后从最后一次删除反向处理，便能按当前阈值判断每一步。",
+        "反向处理中设最大剩余元素为 $H$、当前可删除上界为 $S$：若 $H>S$ 就必须分裂，否则删除 $H$ 不劣于处理更小元素，交换操作即可保持可行性。",
+        "贪心只在 $H>S$ 时分裂，而此时 $S$ 不小于该时刻实际的 $k$，故 $H>k$；放宽模型得到的分裂序列也满足原题限制。"
+      ],
+      "solution_brief": "枚举分裂次数 $c$，用频次数组反向模拟：总阈值为 $k+n+2c-1$，优先处理最大元素；过大则分裂，否则删除。二分最小可行的 $c$，答案为 $n+2c$，复杂度 $O(n\\log n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:56:03+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4327,
+      "problem_key": "2271F",
+      "contest_id": 2271,
+      "title": "Beautiful Pillers",
+      "rating": 2300,
+      "problem_url": "https://codeforces.com/contest/2271/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/157590",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "data structures",
+        "dp",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定数组，若两个相等端点之间没有元素不小于端点值，则这两个位置组成好对，并覆盖其间所有位置；数组美丽当且仅当每个位置都被至少一对好对覆盖。每次可把任意一个元素改成任意正整数，要求用最少操作使数组美丽，并输出操作。",
+      "transformed_statement": "将目标转化为覆盖所有位置的好区间集合：单调栈找出每个位置产生的必要好对并检查区间并集。由于两端设为最大值即可保证至多两次修改，只需验证三个可能的一次修改方案。",
+      "key_observations": [
+        "把两端都改成全局最大值后，相邻最大值之间的区间都由一对最大值端点覆盖，因此答案至多为 $2$。",
+        "若只改一个位置，改左端或右端为最大值分别可覆盖对应一侧；若两者都失败，唯一可能是修改某个最大值以同时连接两侧。",
+        "若把最大值改为某个 $X$ 能成功，则把它进一步降为 $1$ 不会破坏跨过该位置的覆盖；两个局部配对还能合并成一个更大的好区间。",
+        "单调栈为每个位置寻找左侧最近的、不小于它的元素；若栈顶等于当前值，两者构成好对，并用差分统计所有好对的覆盖范围。"
+      ],
+      "solution_brief": "先用单调栈在线性时间判断数组是否已美丽。若不是，依次尝试把左端、右端改为最大值，以及把一个最大值改为 $1$；成功则答案为 $1$，否则把两端都改为最大值，答案为 $2$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:55:25+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4328,
+      "problem_key": "2271G",
+      "contest_id": 2271,
+      "title": "Grid Filling",
+      "rating": 3100,
+      "problem_url": "https://codeforces.com/contest/2271/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/157590",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy",
+        "implementation"
+      ],
+      "statement_brief": "给定一个被若干整行横切和整列竖切分成矩形小块的 $n\\times m$ 网格，每格填正整数；每个小块必须恰好包含 $1$ 到该小块格数的所有数，且共享边的相邻格不能相等。请构造任意合法填法，或判断无解。",
+      "transformed_statement": "把问题看成：每个矩形小块内部要排列一组固定的连续整数，同时满足小块边界和网格相邻关系。先按是否存在 $1\\times1$ 小块分治；前者直接设计局部排列，后者围绕强制为 $1$ 的单格检测矛盾并设置转折排列。",
+      "key_observations": [
+        "不存在 $1\\times1$ 小块时，不可能同时出现宽为 $1$ 和高为 $1$ 的小块，因此转置后可假设所有小块宽度至少为 $2$。",
+        "每个小块首行按所在全局行奇偶选择两种互不相同的位置模式；这同时解决首行的竖直冲突和相邻小块边界的水平冲突。",
+        "小块其余各行使用互不重叠的连续数段；若递增排列会与左邻格相同，就把该段最后一个数移到开头，从而在宽度至少为 $2$ 时消除水平冲突。",
+        "出现 $1\\times1$ 小块时，若同一行的两个此类小块之间全是 $1\\times2$ 小块，或同一列之间全是 $2\\times1$ 小块，则被迫形成两端相同的相邻 $1$；除此之外可用转折小块在递减与递增排列间切换完成构造。"
+      ],
+      "solution_brief": "先按是否存在 $1\\times1$ 小块分类。无此类小块时统一用首行模式和连续数段构造；有此类小块时先判定两种必败间隔，再以 $1\\times y$ 或 $y\\times1$ 小块为转折点安排递减、特殊转折、递增顺序，最后填完剩余区域。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:54:27+00:00",
+          "quality_flags": [
+            "editorial 对含 $1\\times1$ 小块时最后填充普通区域的实现细节描述较概括"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
       "ordinal": 4329,
       "problem_key": "2271H1",
       "contest_id": 2271,
@@ -178623,16 +179252,14 @@
       "editorial_quality": "url_only",
       "primary_topic": "博弈",
       "secondary_topics": [
-        "动态规划与状态设计",
-        "树结构",
-        "图论与网络流"
+        "树结构"
       ],
       "original_tags": [
         "dp",
         "games",
         "trees"
       ],
-      "statement_brief": "题面已抓取：Personal Issues (Easy Version)；本地暂无可用题解正文。",
+      "statement_brief": "给定一棵树，初始只有不同的两个顶点 $x,y$ 为 $0$，其余顶点为 $1$。两名玩家轮流选择一个值为 $1$ 的顶点改为 $0$；若该顶点改动前恰有一个 $0$ 邻居，当前玩家得一分，否则不得分，直到全部归零，求双方最优时的分差 $p-q$。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -178640,9 +179267,1125 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:53:46+00:00",
+          "quality_flags": [
+            "ambiguous_solution",
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4330,
+      "problem_key": "2271H2",
+      "contest_id": 2271,
+      "title": "Personal Issues (Hard Version)",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/2271/problem/H2",
+      "editorial_url": "https://codeforces.com/blog/entry/157590",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "树结构"
+      ],
+      "original_tags": [
+        "games",
+        "trees"
+      ],
+      "statement_brief": "给定一棵树，顶点初始只有 $x,y$ 为 $0$，其余为 $1$。双方轮流选择一个值为 $1$ 的顶点改成 $0$；若操作前它恰有一个相邻的 $0$ 顶点，操作者得一分，否则不得分。所有顶点变为 $0$ 后，先手最大化、后手最小化两人得分差 $p-q$。",
+      "transformed_statement": "",
+      "key_observations": [],
+      "solution_brief": "",
+      "extraction_status": "missing_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text (summary not ready; withheld)",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:53:09+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "solution_unavailable",
+            "statement_only"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4331,
+      "problem_key": "2273A",
+      "contest_id": 2273,
+      "title": "Lavencia Oranges",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2273/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/157634",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "动态规划与状态设计"
+      ],
+      "original_tags": [
+        "binary search",
+        "constructive algorithms",
+        "dp",
+        "greedy"
+      ],
+      "statement_brief": "有 $n$ 个橙子和 $n$ 个袋子，将每个橙子放入指定袋子形成数组。监管者可选择任意数量 $s$，没收所有恰好装有 $s$ 个橙子的袋子；要求构造分配，使对所有 $s$ 的最大没收橙子数最小。",
+      "transformed_statement": "把分配抽象为各袋子的装载量。对成本上限 $x$，先求最多能放入多少橙子：大小为 $i$ 的袋子至多有 $\\floor{x/i}$ 个；若最大容量达到 $n$，就能删减为恰好 $n$ 个橙子。",
+      "key_observations": [
+        "固定成本上限 $x$ 时，最优地为大小为 $i$ 的袋子安排 $\floor{x/i}$ 个；这样每种大小的损失均不超过 $x$，且总橙子数最大。",
+        "该构造最多容纳的橙子数为 $\\sum_{i=1}^{x}\\floor{x/i}\\cdot i$；若再向任意袋子放入橙子，就会使某种大小的损失超过 $x$。",
+        "从一个满足成本上限的分配中，反复从橙子最少的袋子取走一个橙子不会增加成本，因此只需判断最大构造能否容纳至少 $n$ 个橙子。",
+        "可行性随 $x$ 增大而单调，且 $n\\le 2\\cdot10^5$ 时上界可取约 $510$，所以能二分最小成本并截取前 $n$ 个橙子。"
+      ],
+      "solution_brief": "二分成本上限 $x$，计算 $\\sum_{i=1}^{x}\\floor{x/i}\\cdot i$ 判断能否容纳 $n$ 个橙子。取最小可行的 $x$，按各大小的袋子数量构造分配，再删去多余橙子即可；复杂度为 $O(n\\log\\sqrt n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:52:39+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4332,
+      "problem_key": "2273B",
+      "contest_id": 2273,
+      "title": "Robot Championship",
+      "rating": 1900,
+      "problem_url": "https://codeforces.com/contest/2273/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/157634",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "在 $n\\times n$ 棋盘上，机器人起点和每次移动都未知；每秒先选择一个 $r+c=v$ 的整条对角线射击，未命中后机器人可向上、向右或向左下移动（越界的移动不能选）。请构造至多 $3n$ 次射击的固定对角线序列，使所有可能的机器人轨迹都至少被击中一次。",
+      "transformed_statement": "把棋盘位置压缩为对角线编号 $d=r+c$：机器人每秒的编号模 $3$ 必定加一。于是按起始 $d_0$ 的三个模 $3$ 余数分组，并为每组同步扫过同余、每次减 $2$ 的对角线。",
+      "key_observations": [
+        "机器人每次移动后，$d=r+c$ 要么增加 $1$，要么减少 $2$；两者模 $3$ 都等价于增加 $1$，因此 $d$ 的模 $3$ 只由起始位置决定，并按秒固定推进。",
+        "针对同一初始余数类，连续射击的对角线取为 $V,V-2,V-4,\\ldots$，其模 $3$ 同样每秒增加 $1$，所以每一枪都与该组机器人当前所在的余数类对齐。",
+        "令 $g=d-v$，机器人向上或向右时 $g$ 增加 $3$，向左下时保持不变，因此 $g$ 单调不减；它从不大于 $0$ 变为不小于 $0$，且始终是 $3$ 的倍数，必有一刻等于 $0$。",
+        "每个余数类只需从不超过 $2n$ 的最大同类对角线扫到不小于 $2$ 的最小同类对角线，长度至多为 $n$，三个余数类合计不超过 $3n$ 枪。"
+      ],
+      "solution_brief": "利用 $d=r+c$ 每秒模 $3$ 固定加一的性质，将机器人按起始 $d_0\\bmod3$ 分成三组。每组安排一个连续射击区间，按 $V,V-2,V-4,\\ldots$ 扫过对应对角线；用差值 $g=d-v$ 的单调性证明该组必被击中，三组总长度不超过 $3n$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:51:54+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4333,
+      "problem_key": "2273C",
+      "contest_id": 2273,
+      "title": "Matrix Puzzle",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2273/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/157634",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "代数、矩阵与多项式",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "data structures",
+        "implementation",
+        "math",
+        "matrices"
+      ],
+      "statement_brief": "给定两个 $n\\times n$ 矩阵，更新操作会把矩形内所有元素加上同一个数；查询时可独立地给所选子矩阵的每行、每列再加任意常数，判断能否使其等于矩阵 $b$ 的对应子矩阵。对每次查询输出 YES 或 NO。",
+      "transformed_statement": "把 $A-B$ 记为差矩阵，目标变为用行加法和列加法将查询子矩阵变成全零。该条件等价于其中每个相邻 $2\\times2$ 块的混合差均为零，于是维护这些块的非零数量即可回答查询。",
+      "key_observations": [
+        "令差矩阵为 $C=A-B$，可匹配等价于存在行量 $X_i$ 和列量 $Y_j$ 使 $C_{i,j}=X_i+Y_j$，将操作可达性转为可分离性判定。",
+        "对每个 $2\\times2$ 块定义混合差 $M_{i,j}=C_{i,j}+C_{i+1,j+1}-C_{i,j+1}-C_{i+1,j}$；子矩阵可匹配当且仅当其中所有 $M$ 为零。",
+        "矩形更新对内部块和跨边界块的正负贡献都会抵消，只有矩形四个角附近至多四个 $M$ 位置可能改变，因此一次更新可转为至多四次单点状态修改。",
+        "令 $X_{i,j}=[M_{i,j}\\ne0]$ 后，查询就是判断对应块矩形的 $X$ 总和是否为零，可用二维 Fenwick 树同时维护单点变化和矩形求和。"
+      ],
+      "solution_brief": "先计算差矩阵及所有 $2\\times2$ 混合差，并以非零标记建立二维 Fenwick 树。矩形加法只检查并更新至多四个角部混合差；查询对应块区域的标记和是否为零，复杂度为 $O(n^2+q\\log^2 n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:50:59+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4334,
+      "problem_key": "2273D",
+      "contest_id": 2273,
+      "title": "Aura Battle",
+      "rating": 2600,
+      "problem_url": "https://codeforces.com/contest/2273/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/157634",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "brute force",
+        "implementation",
+        "interactive",
+        "math"
+      ],
+      "statement_brief": "每场战斗固定进行 $10$ 轮，隐藏整数 $x\u0000 ext{ 满足 }1\\le x\\le 10^4$ 且全程不变；每轮选择两个整数 $a_i,b_i$，损失为 $\u0000\\min(|x-a_i|,|x-b_i|)$，并可根据反馈决定下一轮。要求设计策略，使任意 $x$ 下的十轮总损失不超过最优保证值 $m$ 加上 $67$。",
+      "transformed_statement": "把每轮反馈视为对隐藏值的候选集合约束：首轮后候选至多四个，后续通过特制的两点询问区分或缩小候选。首轮两点的位置则转化为平衡左右边界距离与中间间隔的最坏损失优化。",
+      "key_observations": [
+        "第一轮反馈为 $p_1$ 后，隐藏值只能是 $a_1-p_1,a_1+p_1,b_1-p_1,b_1+p_1$ 中的合法值，因此候选数至多为 $4$。",
+        "当候选值不超过 $2$ 时，后续每轮同时询问这两个候选值即可获得零损失，问题只需处理候选数为 $3$ 或 $4$ 的情况。",
+        "候选数为 $4$ 时询问 $(a_1,b_1+1)$，反馈为 $p_1-1,p_1,p_1+1$ 可区分候选；若反馈为 $p_1$，则只剩两个候选，总损失至多为 $2p_1+1$。",
+        "候选数为 $3$ 时可在区间中点和一个外侧候选间选择询问，使总损失至多为 $\u0000min(2p_1+1,g)$$；令首轮两点约为 $n/7$ 与 $5n/7$，可把最坏损失压到约 $2n/7$。"
+      ],
+      "solution_brief": "首轮取 $a_1=1429,b_1=7143$，根据反馈枚举至多四个候选。候选不超过两个时反复同时询问；候选为三或四个时用第二轮的区分询问缩小范围。该构造在 $n=10^4$ 时最坏损失约为 $2857$，满足 $m+67$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:50:14+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4335,
+      "problem_key": "2273E",
+      "contest_id": 2273,
+      "title": "Six-Seven Bags",
+      "rating": 2900,
+      "problem_url": "https://codeforces.com/contest/2273/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/157634",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "构造与贪心",
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "brute force",
+        "greedy",
+        "interactive"
+      ],
+      "statement_brief": "有 $n$ 个袋子，第 $i$ 个袋子有 $a_i$ 枚同种硬币；恰有一个袋子的硬币重 6 克，其余重 7 克。每次可从各袋取任意不超过库存的硬币并询问总重量，硬币随后放回；要求在最少的最坏情况查询次数内确定 6 克硬币所在的袋子。",
+      "transformed_statement": "把每个袋子编码为一个向量，向量的每个坐标表示对应查询中从该袋取出的硬币数；查询结果直接揭示隐藏袋的该坐标。因此问题转化为：为容量受限的袋子分配互不相同的向量，并最小化向量维数。",
+      "key_observations": [
+        "一次查询的重量为 $7\\sum_i b_i-b_h$，因此已知总选取数后，答案等价于直接得到隐藏袋本次选取的硬币数 $b_h$。",
+        "用 $q$ 次查询给每个袋分配一个 $q$ 维选取向量；只有所有向量互不相同，才能根据回答唯一确定隐藏袋。",
+        "将袋按 $a_i$ 升序排列后，前 $i$ 个袋每次最多有 $a_i+1$ 种取值，故若 $(a_i+1)^q<i$，抽屉原理保证其中两个袋无法区分。",
+        "按向量最大坐标分层生成编码，第 $m$ 层新增 $(m+1)^k-m^k$ 个向量；若 $k$ 满足 $(a_i+1)^k\\ge i$，第 $i$ 个向量的每个坐标都不超过第 $i$ 个袋的容量。"
+      ],
+      "solution_brief": "将袋按 $a_i$ 升序排列，取最小的 $k$ 使所有 $i$ 都满足 $(a_i+1)^k\\ge i$。按最大坐标分层生成 $n$ 个互异的 $k$ 元组并分配给各袋，连续询问各坐标；得到的完整元组唯一对应隐藏袋。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:49:29+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4336,
+      "problem_key": "2273F",
+      "contest_id": 2273,
+      "title": "Pancho's Permutation",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/2273/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/157634",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "dp",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定一个长度为 $n$ 的排列，其中部分位置已知、其余位置被擦除；要求补全后，使每个真前缀都不恰好由 $1$ 到其长度组成、每个真后缀也不满足对应条件。请输出所有合法补全中字典序第 $k$ 小的排列，不足则输出 $-1$。",
+      "transformed_statement": "将缺失值升序编号为 $x_1,\u0005cldots,x_m$、未知位置升序编号为 $a_1,\u0005cldots,a_m$，用排列 $q$ 表示把 $x_{q_j}$ 放入 $a_j$。原条件转化为禁止 $q$ 的若干前缀或后缀恰好包含最小下标集合，并据此进行分支计数与字典序构造。",
+      "key_observations": [
+        "把未知位置按原顺序、缺失值按数值排序，补全等价为排列 $q$；前缀或后缀违规分别对应 $q$ 的某个前缀或后缀恰好含有最小的若干个下标。",
+        "若第 $i$ 个前缀条件是第一个被满足的禁条件，设其中有 $c_i$ 个自由位置，则其计数为 $d_i=c_i!-\\sum_{j<i}d_j(c_i-c_j)!$；对所有 $d_i$ 求和即可扣除前缀违规补全数。",
+        "前缀违规与后缀违规不可能同时发生：不相交时都必须包含最小值，相交覆盖全数组时都不能包含最大值，因此合法数为 $f!-B_P-B_S$。",
+        "当剩余未知数至少为 $20$ 时，容斥下界保证合法补全数超过 $10^{18}$；此时按字典序尝试最小值，若当前前缀被标记则改取第二小值，直到未知数降至 $20$ 再用计数定位。"
+      ],
+      "solution_brief": "先检查已知元素是否已强制造成违规，再标记可能触发的前缀、后缀条件。未知数多时用最小值或第二小值安全推进；剩余至多 $20$ 个未知位置后，用首次违规 DP 计算各候选分支数量并按 $k$ 定位。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:48:41+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4337,
+      "problem_key": "2274A",
+      "contest_id": 2274,
+      "title": "The Projections of Paco",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2274/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/157634",
+      "editorial_quality": "complete",
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [
+        "代数、矩阵与多项式"
+      ],
+      "original_tags": [
+        "dfs and similar",
+        "dp",
+        "hashing",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定数轴上的 $n$ 个整数点，令棋子从 $0$ 出发，依次关于未知整数点 $p$、再关于 $a_1,a_2,\\ldots,a_n$ 各反射一次；关于坐标 $o$ 反射会将位置 $x$ 变为 $2o-x$。求使最终位置恰好回到 $0$ 的唯一整数 $p$。",
+      "transformed_statement": "先把最终位置固定为 $0$，逆序撤销关于 $a_n$ 到 $a_1$ 的反射，求出在执行未知反射 $p$ 后必须处于的坐标 $x$；由于第一次反射把初始 $0$ 变为 $2p$，答案转化为求解 $x=2p$。",
+      "key_observations": [
+        "关于同一点的反射是自身逆操作，因为连续两次变换 $x\\to 2a-x$ 会回到 $x$，因此可以用同样的反射撤销操作。",
+        "要撤销按 $a_1,a_2,\\ldots,a_n$ 进行的反射，必须从终点 $0$ 出发，按 $a_n,a_{n-1},\\ldots,a_1$ 逆序反射；这样得到的是经过 $p$ 反射后的坐标 $x$。",
+        "初始位置是 $0$，第一次关于 $p$ 的反射后坐标必为 $2p$，所以只需令逆向计算得到的 $x=2p$，即可唯一确定答案。"
+      ],
+      "solution_brief": "从终点坐标 $0$ 开始，逆序对 $a_n$ 到 $a_1$ 进行反射，迭代更新 $x\\leftarrow 2a_i-x$。所得 $x$ 等于关于 $p$ 反射后的坐标，因此输出 $p=x/2$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:47:51+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4338,
+      "problem_key": "2274B",
+      "contest_id": 2274,
+      "title": "Prefix",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2274/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/157634",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "greedy"
+      ],
+      "statement_brief": "给定数组，按下标从 $2$ 到 $n$ 依次处理每个元素。处理 $a_i$ 时令 $s$ 为此前所有元素之和，并将 $a_i$ 改为 $a_i-s$、$a_i$ 或 $a_i+s$ 之一；求所有选择中最终数组最大元素的最大可能值。",
+      "transformed_statement": "把每个处理前的前缀和视为状态：当前元素的最优结果只依赖前缀和的最小值与最大值，而处理元素后前缀和从 $s$ 转移到 $a_i$、$a_i+s$ 或 $a_i+2s$，因此只需维护两个极值。",
+      "key_observations": [
+        "固定位置 $j$ 后，其最终值的最大值是 $a_j+|s|$；因此只需保留此前缀和中最小值和最大值，不必枚举所有前缀状态。",
+        "若当前前缀和为 $s$，处理 $a_i$ 后的新前缀和只能是 $a_i$、$a_i+s$ 或 $a_i+2s$，因为对应三种修改分别为 $a_i-s$、$a_i$ 和 $a_i+s$。",
+        "前缀和集合的最小值和最大值可独立更新为 $L\\leftarrow\\min(a_i,a_i+L,a_i+2L)$、$H\\leftarrow\\max(a_i,a_i+H,a_i+2H)$；中间选项不会进一步改善极值。",
+        "在处理位置 $i$ 前，利用当前极值即可得到该位置的最佳值 $\\max(a_i+H,a_i-L)$，遍历所有位置取最大值即可。"
+      ],
+      "solution_brief": "维护已处理前缀和的最小值 $L$ 与最大值 $H$。对每个位置先用 $\\max(a_i+H,a_i-L)$ 更新答案，再用三种前缀转移更新 $L,H$；中间转移对极值无贡献。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:47:23+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4339,
+      "problem_key": "2276A",
+      "contest_id": 2276,
+      "title": "Perfect Sandwiches",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2276/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/157752",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定 $a$ 片奶酪和 $b$ 片香肠，必须把所有食材恰好分到若干个三明治中；每个三明治至少含一片两类食材，且奶酪必须严格多于香肠。求最多能制作多少个，若无法满足则输出 $-1$。",
+      "transformed_statement": "把制作数量设为 $k$：每个三明治至少消耗一片香肠，并且总奶酪比总香肠至少多 $k$ 片，所以可行数量受 $k\\le b$ 与 $k\\le a-b$ 共同限制；再证明该上界可由统一的初始分配实现。",
+      "key_observations": [
+        "每个三明治的奶酪数至少比香肠数多一片，因此总奶酪数必须满足 $a>b$，否则无解。",
+        "若制作 $k$ 个三明治，每个至少用一片香肠，故 $k\\le b$；总奶酪至少比总香肠多 $k$ 片，故 $k\\le a-b$。",
+        "当 $a>b$ 时，取 $k=\\min(b,a-b)$，先给每个三明治分配 $2$ 片奶酪和 $1$ 片香肠即可达到上界。",
+        "初始分配后剩余量满足 $a'\\ge b'$，可将剩余材料成对加入同一三明治，或把多出的奶酪单独加入，因此上界一定可实现。"
+      ],
+      "solution_brief": "若 $a\\le b$ 输出 $-1$；否则答案为 $\\min(b,a-b)$。先为每个三明治分配 $2$ 片奶酪和 $1$ 片香肠，剩余材料可按一奶酪一香肠配对加入，余下奶酪单独加入。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:46:42+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4340,
+      "problem_key": "2276B",
+      "contest_id": 2276,
+      "title": "Replace and Compress",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2276/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/157752",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "implementation",
+        "strings"
+      ],
+      "statement_brief": "给定一个只含 $0$ 和 $1$ 的字符串，必须先至多翻转一个下标在 $2$ 到 $n-1$ 的字符（也可以不翻转），且首尾字符不能改动；随后把每个最长连续相同字符块压成一个字符。要求统计所有可能得到的不同压缩字符串数量。",
+      "transformed_statement": "不直接枚举翻转位置，而是研究相邻字符不同的对数，即压缩串长度减一。固定首尾后，压缩串是由首字符和长度唯一确定的交替序列，因此只需判断长度能否从原长度变为 $L-2$ 或 $L+2$。",
+      "key_observations": [
+        "压缩串的长度等于原串相邻不同字符对的数量加一；首尾字符固定后，每个可行长度唯一决定一个交替压缩串。",
+        "翻转一个内部字符最多改变两对相邻字符，因此压缩长度最多变化 $2$；首尾不变又保证长度奇偶性不变，所以不可能变化 $1$。",
+        "出现 $000$ 或 $111$ 时翻转中间字符会让压缩长度增加 $2$；出现 $010$ 或 $101$ 时会减少 $2$，每类模式只需判断是否存在。"
+      ],
+      "solution_brief": "先压缩原串得到长度 $L$，再扫描是否存在 $000/111$ 与 $010/101$。答案为 $1$，并分别在存在对应模式时计入长度 $L+2$ 和 $L-2$ 的结果；由于首尾固定，同一长度只对应一个压缩串。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:46:05+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4341,
+      "problem_key": "2276C",
+      "contest_id": 2276,
+      "title": "Subarrays",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2276/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/157752",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [],
+      "original_tags": [
+        "math",
+        "number theory"
+      ],
+      "statement_brief": "给定一个正整数数组和 $k$，连续子数组只有在元素和能被 $k$ 整除且长度严格大于 $k$ 时才算合格。请统计所有合格连续子数组的数量。",
+      "transformed_statement": "令 $p_i$ 为前 $i$ 个元素的和对 $k$ 取模，子数组对应前缀下标对 $(i,j)$。问题等价于统计满足 $p_i=p_j$ 且 $j-i>k$ 的下标对。",
+      "key_observations": [
+        "用前缀和余数表示区间和：区间对应的两个前缀下标余数相同，且下标差大于 $k$，从而转化为计数下标对。",
+        "固定右端前缀下标 $j$ 时，合法左端必须满足 $i\\le j-k-1$；随着 $j$ 增大，候选集合只新增元素，因此可以增量维护各余数出现次数。",
+        "扫描到 $j$ 时先加入下标 $j-k-1$ 的前缀余数，再将相同余数的已加入数量计入答案，恰好保证长度严格大于 $k$。"
+      ],
+      "solution_brief": "计算长度为 $n+1$ 的前缀和模 $k$ 数组。按右端前缀下标递增扫描，将下标 $j-k-1$ 的余数加入计数表，并把当前余数的计数加入答案，整体复杂度为 $O(n)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:45:26+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4342,
+      "problem_key": "2276D",
+      "contest_id": 2276,
+      "title": "Caveman",
+      "rating": 1400,
+      "problem_url": "https://codeforces.com/contest/2276/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/157752",
+      "editorial_quality": "complete",
+      "primary_topic": "图论与网络流",
+      "secondary_topics": [
+        "组合计数与概率"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "graphs"
+      ],
+      "statement_brief": "给定一个无向图，把每个顶点染成红色或蓝色，并要求每个顶点至少有一个邻居与它颜色相反。求合法染色方案数属于 $1$、$2$、Many（大于 $2$）还是不存在（Brain Melt）。",
+      "transformed_statement": "把计数问题转化为图结构分类：孤立点对应无解；星形树的中心颜色确定全部叶子颜色，恰有两种方案；其他非空结构都会产生超过两种方案。",
+      "key_observations": [
+        "存在孤立点时它没有邻居可取相反颜色，因此合法染色数为 $0$，答案是 Brain Melt。",
+        "颜色整体交换会把任意合法染色变成另一种，因此合法染色数必为偶数，不可能等于 $1$。",
+        "若图不连通且没有孤立点，各连通分量至少有两种染色，合法方案数按分量相乘，所以总数必为 Many。",
+        "连通图恰有两种染色当且仅当它是星形树；中心颜色确定后所有叶子颜色唯一，而含四点路径或环的图都能产生至少四种方案。"
+      ],
+      "solution_brief": "先检查孤立点；再判断图是否为星形树。孤立点输出 Brain Melt，星形树输出 2，其余情况输出 Many。星形树可通过检查最大度数是否为 $n-1$ 且其他顶点度数均为 $1$ 来验证。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:44:45+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4343,
+      "problem_key": "2276E",
+      "contest_id": 2276,
+      "title": "Good Substrings",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/2276/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/157752",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "组合计数与概率",
+        "字符串"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "data structures",
+        "dp",
+        "greedy",
+        "strings"
+      ],
+      "statement_brief": "给定只含数字的字符串，子串若包含子序列“2025”且不包含子序列“2026”则为坏子串，否则为好子串。对每个位置 $i$，求包含它的好子串数量。",
+      "transformed_statement": "把每个左端点 $l$ 的所有右端点按首次形成“2025”和“2026”的位置划分；好右端点至多分成前后两段，随后把这些区间对各包含位置的贡献转成分段线性更新。",
+      "key_observations": [
+        "对固定左端点 $l$，用各数字的下一个出现位置贪心追踪 $2,0,2,5$ 和 $2,0,2,6$，即可分别得到最早完成位置 $r25$、$r26$。",
+        "若 $r25\\ge r26$，任何右端点都不会形成坏子串；若 $r25<r26$，右端点区间按 $[l,r25-1]$、$[r25,r26-1]$、$[r26,n-1]$ 恰好分成好、坏、好三段。",
+        "固定 $l$ 后，一个连续右端点区间对各位置 $i$ 的贡献是随 $i$ 线性变化的等差函数，因此不必逐个枚举子串，只需进行分段线性加法。",
+        "从右向左预处理每个位置之后各数字的最近出现位置，再将每个 $l$ 产生的等差函数用差分数组、树状数组或线段树批量加入答案。"
+      ],
+      "solution_brief": "预处理每个位置到各数字最近出现位置；从右向左枚举左端点，贪心求出 $r25,r26$，将好右端点划成至多三段。每段对包含位置 $i$ 的子串数形成线性函数，用分段线性加法统一累加。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:43:48+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4344,
+      "problem_key": "2276F",
+      "contest_id": 2276,
+      "title": "Permutation Coloring Game",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/2276/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/157752",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "图论与网络流",
+        "动态规划与状态设计",
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "brute force",
+        "dp",
+        "dsu",
+        "games",
+        "greedy",
+        "implementation",
+        "math"
+      ],
+      "statement_brief": "给定一个置换，所有位置初始为白色。双方轮流选择$1$到$k$个白色位置，并在同一回合把它们全部染成同一种红色或蓝色；白色用尽后，若仅交换同色位置就能将置换升序排列则Alice获胜，否则Bob获胜。",
+      "transformed_statement": "把置换看成每个点$i$连向$p_i$的函数图，其连通部分都是环；最终可排序等价于每个环内所有点同色，因此博弈转化为Alice阻止任一环被染成混色，Bob则试图制造这样的环。",
+      "key_observations": [
+        "置换的每个环必须整体同色才可排序；一个环内出现两种颜色就存在无法通过同色交换归位的相邻冲突。",
+        "当存在长度至少为$k+2$的环，或存在至少两个长度为$k+1$的环时，Bob可在相邻回合分别染出两种颜色，必然制造混色环。",
+        "恰有一个$k+1$环时，Alice必须先处理所有长度$2$到$k$的环；若这些环总长为$l$、单点环数模$k+1$为$c$，则当$1\\le l+c\\le k$时可用对称策略获胜。",
+        "所有环长不超过$k$时，Bob的威胁等价于选至多$k$个环且总长至少为$d+k+1$；只需保留最长$2k$个环，并用三维DP选择Alice首回合染色的环以消除该威胁。"
+      ],
+      "solution_brief": "先将置换分解为环。$k=1$按最长环与$n$的奇偶性单独判断；$k\\ge2$时依次处理长环、唯一$k+1$环的模策略，剩余情况在最长$2k$个环上用三维DP检查Alice的首步选择。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:42:52+00:00",
+          "quality_flags": [
+            "k=1的具体判定式未在editorial_text中展开"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4345,
+      "problem_key": "2276G",
+      "contest_id": 2276,
+      "title": "Elimination of Players",
+      "rating": 2100,
+      "problem_url": "https://codeforces.com/contest/2276/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/157752",
+      "editorial_quality": "complete",
+      "primary_topic": "组合计数与概率",
+      "secondary_topics": [
+        "动态规划与状态设计",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "combinatorics",
+        "dp",
+        "math"
+      ],
+      "statement_brief": "有 $n$ 名强度互异的玩家，强度排列未知。每轮指定一名玩家受保护：若当前最弱者未受保护则淘汰他，否则淘汰当前第二弱者；共进行 $n-1$ 轮，求每名玩家在每轮被淘汰的强度排列数，并按题目规定加权异或。",
+      "transformed_statement": "不直接枚举强度排列，而是统计每轮保护是否真正生效，以及它导致哪名玩家被淘汰。连续相同的受保护玩家形成保护块，相关排列数可用块长度与阶乘的交错和表示，再据此恢复所有淘汰计数。",
+      "key_observations": [
+        "第 $i$ 轮非受保护者被淘汰时，要么其强度为 $i$，要么上一轮受保护而幸存；受保护导致的情况统一计入 $G_{i,j}$，从而可用 $G_{i,j}+(n-1)!-G_{i-1,j}$（必要时加 $F_{i-1}$）重建答案。",
+        "保护在第 $i$ 轮生效时，受保护玩家的强度只能来自此前连续相同保护块的长度；按从右向左回溯各块，得到交错的阶乘加权和，并在重复玩家出现时停止。",
+        "计算 $G_{i,j}$ 等价于在上述回溯中固定玩家 $j$ 的强度为 $i+1$，因此每项阶乘规模少一位，并在遇到包含 $j$ 的保护块时截断。",
+        "将块长度乘阶乘形成的交错项预处理前缀和，并记录每个玩家最近所在保护块，可在 $O(1)$ 求单个 $G_{i,j}$，总复杂度为 $O(n^2)$。"
+      ],
+      "solution_brief": "定义 $F_i$ 为第 $i$ 轮保护生效的排列数，$G_{i,j}$ 为其导致 $j$ 被淘汰的排列数。用保护块的交错阶乘和计算二者，再由上一轮状态重建每个淘汰计数；前缀和将总复杂度降至 $O(n^2)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:41:46+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4346,
+      "problem_key": "2261A",
+      "contest_id": 2261,
+      "title": "Hey, It's Me, Souvlakity",
+      "rating": 800,
+      "problem_url": "https://codeforces.com/contest/2261/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/157917",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "games",
+        "math"
+      ],
+      "statement_brief": "整数 $1$ 到 $n$ 被按二进制串分给两名玩家，Souvlakity 先手，双方轮流从自己手中选一个整数交给对方，进行固定的偶数次操作。结束后要求在双方最优策略下，Souvlakity 手中整数集合的最大值与最小值之差。",
+      "transformed_statement": "把超长对局按“双方各操作一次”成对观察：Souvlakity 持有数量不变；当持有数量分别为 $1$、$2$ 或至少 $3$ 时，端点能否被改变完全不同，从而答案只由持有数量及初始两端位置决定。",
+      "key_observations": [
+        "每一轮由两次交替操作组成：Souvlakity 先送出一个整数，随后收到一个整数，因此每轮结束时他拥有的整数个数保持不变。",
+        "若初始只有一个整数，最终仍只有一个，分数必为 $0$；若初始有两个，Kalamakity 可以始终送回与留下整数相邻的数，将分数限制为 $1$。",
+        "若初始至少有三个整数，Souvlakity 可以只送出介于当前最小值和最大值之间的整数，保持端点不变；Kalamakity 送回刚收到的整数也能阻止端点扩张，因此最终分数等于初始最大值减最小值。"
+      ],
+      "solution_brief": "统计字符串中 $1$ 的数量 $k$。若 $k\\le2$，答案为 $k-1$；否则答案是首个 $1$ 与末个 $1$ 的位置差，整体扫描即可在 $O(n)$ 内完成。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:41:08+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4347,
+      "problem_key": "2261B",
+      "contest_id": 2261,
+      "title": "What's the Capital of France?",
+      "rating": 1100,
+      "problem_url": "https://codeforces.com/contest/2261/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/157917",
+      "editorial_quality": "complete",
+      "primary_topic": "数论与同余",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "给定一排餐馆及评分。每次可选相邻两家：评分较低者增加 $1$，相等时不变；可进行任意次操作，要求最大化所有评分按位或的结果。",
+      "transformed_statement": "把数组压缩为最小值与最大值，按最高位从高到低比较二者；最高不同位以下的二进制位可以被操作补齐，而更高位和最大值本身保持不变。",
+      "key_observations": [
+        "每次操作只会把较小值向较大值靠近，因此数组最大值不会增加，最终答案的最高位必定等于初始最大值的最高位。",
+        "操作效果只由数组最小值和最大值决定；若最小值的最高位低于最大值对应位，就能逐步把某个元素提高到 $2^b-1$，从而补齐所有更低位。",
+        "设 $k$ 为最大值与最小值异或结果的最高位；高于 $k$ 的位无法改变，而低于或等于 $k$ 的位可以全部纳入答案，因此答案为 $ ext{max}\\,|\\,(2^{k+1}-1)$。",
+        "若所有元素相等，则不存在有效操作，答案就是这个共同值；否则最高不同位由 $ ext{max}\\oplus\\text{min}$ 直接确定。"
+      ],
+      "solution_brief": "只需记录数组最小值和最大值。若二者不同，令 $k=\\operatorname{msb}(\\text{max}\\oplus\\text{min})$，答案为 $\\text{max}\\,|\\,(2^{k+1}-1)$；若相等则直接输出该值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:40:37+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4348,
+      "problem_key": "2261C",
+      "contest_id": 2261,
+      "title": "I Know About a Million Things",
+      "rating": 1000,
+      "problem_url": "https://codeforces.com/contest/2261/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/157917",
+      "editorial_quality": "complete",
+      "primary_topic": "博弈",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "games",
+        "math"
+      ],
+      "statement_brief": "给定一个正整数数组，两名玩家轮流选择一个非空位置集合删除；若恰删一个元素，或所删元素之和为偶数，则操作合法。无法操作时失败，判断先手 Moggity 还是后手 Larpity 获胜。",
+      "transformed_statement": "把数组状态抽象为偶数个数 $E$ 和奇数个数 $O$；删除集合是否合法只取决于其中奇数元素的数量，从而将问题化为判断状态 $(E,O)$ 是否为两个先手必败状态。",
+      "key_observations": [
+        "数组元素的具体数值不影响合法性，只有奇数个数 $O$ 与偶数个数 $E$ 决定，因为被删元素和的奇偶性只由奇数数量决定。",
+        "状态 $(1,1)$ 中不能一次删除两个元素，只能删除一个；对手删除剩余元素即可获胜，因此该状态是先手必败。",
+        "状态 $(0,3)$ 中不能一次删除三个元素，先手删一个或两个后，后手都能删完剩余元素，因此该状态也是先手必败。",
+        "除上述两种状态外，先手都能直接删除整个偶数和数组，或删去部分元素把对手送入 $(1,1)$ 或 $(0,3)$，所以必胜。"
+      ],
+      "solution_brief": "统计奇数和偶数的数量。若 $(E,O)=(1,1)$ 或 $(0,3)$，输出 Larpity；其他情况先手均可获胜，输出 Moggity。扫描数组一次即可完成统计。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:39:52+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4349,
+      "problem_key": "2261D1",
+      "contest_id": 2261,
+      "title": "Come Be My Friend, Don't Be So Scared (Easy Version)",
+      "rating": 1300,
+      "problem_url": "https://codeforces.com/contest/2261/problem/D1",
+      "editorial_url": "https://codeforces.com/blog/entry/157917",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms",
+        "math"
+      ],
+      "statement_brief": "有 $n$ 个按顺序排列的位置，且当前没有探测器。可以同时新增若干个覆盖连续区间的探测器；根据所有探测器的真假报告，任意两个藏身位置都必须能被区分，求最少新增数量并输出一种方案。",
+      "transformed_statement": "把每个位置表示为由区间覆盖情况组成的二进制报告向量，要求这些向量两两不同。沿位置从左到右观察报告变化次数，用每个区间至多两次变化建立下界，再用长度为 $k$ 的滑动区间构造达到下界。",
+      "key_observations": [
+        "相邻位置必须至少有一个探测器报告不同，因此从左到右至少需要发生 $n-1$ 次报告变化；这是区分所有位置的必要条件。",
+        "一个区间探测器沿位置移动时最多只产生两次变化，而首尾位置不能同时得到全零报告，所以还需要额外一次端点变化，得到 $2k\\ge n$，即 $k\\ge\\lceil n/2\\rceil$。",
+        "取 $k=\\lceil n/2\\rceil$ 个区间 $[i,i+k-1]$；前 $k$ 个位置依次开启不同探测器，后续位置依次关闭不同探测器，因此报告向量两两不同。",
+        "当 $n$ 为偶数时，位置 $n$ 的报告全为零，且其他位置至少被一个区间覆盖，所以它也能与所有位置区分。"
+      ],
+      "solution_brief": "无已有探测器时，变化次数下界给出至少 $\\lceil n/2\\rceil$ 个区间。令 $k=\\lceil n/2\\rceil$，输出区间 $[i,i+k-1]$（$1\\le i\\le k$）；该构造恰好达到下界并能区分所有位置。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:39:26+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4350,
+      "problem_key": "2261D2",
+      "contest_id": 2261,
+      "title": "Come Be My Friend, Don't Be So Scared (Hard Version)",
+      "rating": 2400,
+      "problem_url": "https://codeforces.com/contest/2261/problem/D2",
+      "editorial_url": "https://codeforces.com/blog/entry/157917",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "data structures",
+        "dsu",
+        "graphs",
+        "hashing",
+        "trees",
+        "two pointers"
+      ],
+      "statement_brief": "有 $n$ 个排成一行的位置，已有探测器分别覆盖若干连续区间，并同时报告你是否位于各自区间内。需新增最少的连续区间探测器，使所有位置产生的报告组合都不同，并输出一种新增方案。",
+      "transformed_statement": "把每个位置抽象成已有探测器覆盖集合的报告类别；同类位置必须被新增区间的端点切开。问题转化为选择最少端点，再将端点两两配成区间，使每个报告类别中的位置最终分离。",
+      "key_observations": [
+        "用随机 XOR 哈希表示每个位置被哪些已有区间覆盖；相同哈希代表需要新增探测器来区分的位置集合。",
+        "对每个位置连接它之后第一次出现相同报告的位置，所得区间只能相离或嵌套；嵌套区间可删除，因为内层端点已满足外层的区分要求。",
+        "剩余的 $q$ 个互不相交区间各需至少一个内部端点，因此至少需要 $\u001b[1m\\lceil q/2\\rceil\u001b[0m$ 个探测器；若 $q$ 为偶数且首尾区域有相同旧报告，还必须再增加一个探测器。",
+        "将选出的端点排序后，前半端点与后半端点一一配对，构造区间 $[c_i+1,c_{i+k}]$；这样各区域的新报告不同，并覆盖所有必要的区分端点。"
+      ],
+      "solution_brief": "用 XOR 哈希求每个位置的已有报告，找出相邻同报告位置形成的嵌套/相离区间，保留极小区间并选端点。按端点顺序配对构造新增区间；根据首尾报告是否重复决定是否补充边界端点。整体期望复杂度为 $O(n+m)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:38:44+00:00",
+          "quality_flags": [
+            "randomized_hashing"
+          ]
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4351,
+      "problem_key": "2261E",
+      "contest_id": 2261,
+      "title": "What Does the Cow Say?",
+      "rating": 1800,
+      "problem_url": "https://codeforces.com/contest/2261/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/157917",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [
+        "构造与贪心"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "dfs and similar",
+        "greedy",
+        "trees"
+      ],
+      "statement_brief": "给定一个长度为 $n$ 的合法括号序列。每次可选择相邻的“()”，删除这两个括号，再在剩余串最前面加“(”、最后面加“)”；最多操作 $k$ 次，求最终连续左括号的最大长度。",
+      "transformed_statement": "将序列按每个右括号划分，用 $c[i]$ 表示其前方连续左括号数。最终最长左括号段只能是前缀或某个中间窗口，分别转化为前缀累加和及带长度约束的区间最大值问题。",
+      "key_observations": [
+        "把第 $i$ 个右括号前连续左括号数记为 $c[i]$；一次操作会删除一个右括号、合并其两侧左括号段，并把一个左括号移到最前端。",
+        "若目标连续段是前缀并在第 $i$ 个右括号处结束，先处理前 $i-1$ 个右括号可合并左括号段，答案为 $\\min(m,\\sum_{j=1}^{i}c[j]+k-i+1)$。",
+        "若目标段位于中间并覆盖第 $l$ 到 $r$ 个右括号，需要 $r-l$ 次操作，所得长度为 $\\sum_{j=l}^{r}(c[j]-1)+1$，因此无关位置的操作不会提升该段。",
+        "令 $\\mathrm{psum}[i]=\\sum_{j=1}^{i}(c[j]-1)$，固定右端点后只需在允许范围内找最小前缀和；滑动窗口单调队列即可在线性时间完成。"
+      ],
+      "solution_brief": "统计每个右括号前的左括号段。分别计算目标段为前缀和位于中间的最优值；中间情况转为前缀和区间最小值，用单调队列在线性时间维护，取两类方案最大值。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:38:04+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4352,
+      "problem_key": "2261F1",
+      "contest_id": 2261,
+      "title": "Plegma II: Ask Me Any Cell (Easy Version)",
+      "rating": 2500,
+      "problem_url": "https://codeforces.com/contest/2261/problem/F1",
+      "editorial_url": "https://codeforces.com/blog/entry/157917",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "基础实现与模拟",
+        "数论与同余"
+      ],
+      "original_tags": [
+        "brute force",
+        "constructive algorithms",
+        "dp",
+        "greedy",
+        "math"
+      ],
+      "statement_brief": "对每个目标格子分别构造一个 $n\\times n$ 的 0/1 网格，最多使用 $k$ 个零；解码器每次只能根据当前子网格中的信标数 $S$，从上、下、左、右删去一行或一列边界，共执行 $2n-2$ 次，最终子网格必须恰好缩成目标格。还需输出一套由 $S$ 决定动作的统一规则。",
+      "transformed_statement": "将定位拆成先确定目标行、再确定目标列的两个一维边界删除过程：用满信标行制造垂直阶段，用信标数奇偶传递方向；目标行只保留至多一个信标，使 $S$ 的大小同时标记阶段、奇偶同时决定方向。",
+      "key_observations": [
+        "一维时只需用 $S$ 的奇偶决定从左或右删去边界；目标左侧放一个信标即可让每次删去它后奇偶翻转，从而把目标位置编码进删除方向。",
+        "二维先定位行：除目标行外填满信标，使完整行的信标数为偶数；当 $S>1$ 时按奇偶决定删上行或下行，进入目标行后剩余信标数降为 $0$ 或 $1$，自然切换到一维过程。",
+        "目标行用至多一个信标表示列，并在相邻行首补少量零调整初始奇偶，使垂直删除方向恰好停在目标行；总零数至多为 $n+1$，满足 $n=20,k=24$。",
+        "动作表只依赖当前信标数：$S=0,1$ 使用水平动作，$S>1$ 使用垂直动作，并通过奇偶统一决定具体方向，因此无需记录历史或边界坐标。"
+      ],
+      "solution_brief": "把一维定位建立在信标数奇偶翻转上：目标左侧放一个信标，其余置零。二维中用满信标行区分垂直阶段，按奇偶删上行或下行；进入目标行后按 $S=0/1$ 执行一维定位，并用相邻行的零修正奇偶。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:37:13+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4353,
+      "problem_key": "2261F2",
+      "contest_id": 2261,
+      "title": "Plegma II: Ask Me Any Cell (Hard Version)",
+      "rating": 3300,
+      "problem_url": "https://codeforces.com/contest/2261/problem/F2",
+      "editorial_url": "https://codeforces.com/blog/entry/157917",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [],
+      "original_tags": [
+        "constructive algorithms"
+      ],
+      "statement_brief": "给定 $n\\times n$ 网格和最多 $k=f(n)$ 个零，需要为每个目标格构造一张 0/1 网格。机器人每次只能根据当前子矩形中的 1 的数量 $S$，无记忆地删除上、下、左或右边界，恰好执行 $2n-2$ 次后定位目标；同时输出统一的 $S\\mapsto$ 操作表，并使所用零数最少。",
+      "transformed_statement": "把执行过程重述为一条不断删去边界条带的路线：矩形尺寸变化由路线决定，而编码者只需安排每一步尚存的零数 $z$，让机器人通过 $S=hw-z$ 读出所需方向；任意非增的零数日程都能由被删除条带承载。",
+      "key_observations": [
+        "当前矩形为 $h\\times w$ 且含 $z$ 个零时只看到 $S=hw-z$，因此可把零的数量当作可按删除条带逐步降低的模式。",
+        "三枚零足够：先把高度固定到三行，再用三种不同余数的 $S$ 编码左右列操作，避免不同宽度的状态冲突。",
+        "进入最终 $3\\times1$ 列后，保留一枚或两枚零即可分别区分顶部、中部或底部目标，补足最后两步。",
+        "两枚零不足以覆盖四个角点；分析末端小矩形会依次限制 $A_1\\ldots A_8$，最终使右下角在某个 $S\\in\\{7,8\\}$ 时被错误删除。"
+      ],
+      "solution_brief": "证明最优值为 $f(n)=3$。解码器用 $S=0,1,2$ 处理末端，用 $3w-3,3w-2,3w-1$ 编码列操作，用 $nh-3,nh-2$ 编码行操作；每个目标按三行路线布置零。再以四角反证两枚零不可能。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:36:09+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4354,
+      "problem_key": "2261G",
+      "contest_id": 2261,
+      "title": "1 2 3 and XOR, Where Did Everybody Go?",
+      "rating": 2800,
+      "problem_url": "https://codeforces.com/contest/2261/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/157917",
+      "editorial_quality": "complete",
+      "primary_topic": "数据结构",
+      "secondary_topics": [],
+      "original_tags": [
+        "bitmasks",
+        "data structures",
+        "divide and conquer",
+        "dp",
+        "greedy",
+        "sortings",
+        "two pointers"
+      ],
+      "statement_brief": "给定非负整数序列。对每个连续子数组，必须任选一个元素并给它加上任意非负整数恰好一次，使所有元素的按位异或最小；要求输出所有子数组这些最小值之和。",
+      "transformed_statement": "把每个区间的贡献重写为 $g(X,A)$：其中 $X$ 是区间元素的异或、$A$ 是区间元素的按位与。固定右端点后按左端点分成若干个 $A$ 相同的批次，并在批次中统计前缀异或值。",
+      "key_observations": [
+        "对固定数组，最小值只由整体异或值 $X$ 和整体按位与值 $A$ 决定：从高位向下，遇到首个满足 $X$ 为 $1$ 且 $A$ 为 $0$ 的位即可停止。",
+        "固定右端点并向左扩展时，子数组按位与只会丢失位，因此所有左端点至多形成 $O(25)$ 个连续批次，每批共享同一个按位与值。",
+        "批次内的异或求和可用特化二进制 Trie：$A$ 为 $1$ 的位统计分支数量，$A$ 为 $0$ 的位只沿与查询值相同的分支继续，从而一次路径完成计数。",
+        "右端点右移时统一与新元素按位与；变化批次重建、相邻同值批次合并，并用小并大限制元素迁移次数，得到总复杂度 $O(n\\\\log A(\\\\log n+\\\\log A))$。"
+      ],
+      "solution_brief": "先用异或与按位与确定单个区间的贡献，再按右端点维护按位与批次。每批建立特化二进制 Trie，统计所有前缀异或值的贡献；批次变化时重建并小并大合并，整体复杂度为 $O(n\\\\log A(\\\\log n+\\\\log A))$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:35:31+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4355,
+      "problem_key": "2261H",
+      "contest_id": 2261,
+      "title": "Oh Tree Tree Tree, No Need to Leave",
+      "rating": 3500,
+      "problem_url": "https://codeforces.com/contest/2261/problem/H",
+      "editorial_url": "https://codeforces.com/blog/entry/157917",
+      "editorial_quality": "complete",
+      "primary_topic": "交互",
+      "secondary_topics": [
+        "构造与贪心",
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "communication",
+        "constructive algorithms",
+        "dfs and similar",
+        "interactive",
+        "trees"
+      ],
+      "statement_brief": "Isabel 要把长度为 $n$ 的二进制串写入高度为 $h$ 的完全二叉树。敌人选择一个节点翻转其值；若该节点非叶子，还交换它的左右子树并重新编号，Tara 只能看到修改后的树和值，需恢复原串。",
+      "transformed_statement": "把树上的值按“当前节点比特决定先走哪棵子树”的 DFS 顺序展开。敌人的翻转恰好配合子树交换，使展开序列只相当于原编码串发生至多一次比特错误，问题转为一次错误可纠正的汉明码解码。",
+      "key_observations": [
+        "让 Isabel 和 Tara 都按当前节点的比特决定先访问左子树还是右子树；由于敌人在翻转该节点后再交换子树，Tara 的遍历顺序仍与原遍历一致，收到的序列至多只有一个比特错误。",
+        "将遍历序列编码为汉明码：编号为 $2^k$ 的位置存放校验位，其余位置依次存放待传输比特，从而可同时定位并纠正一次翻转。",
+        "对收到的序列中所有值为 $1$ 的位置编号执行异或，所得结果就是错误位置；纠正后读取所有非 $2^k$ 位置即可恢复原字符串。"
+      ],
+      "solution_brief": "用树上 DFS 顺序承载汉明码。节点比特决定子树访问顺序，翻转与换子树相互抵消，使 Tara 得到至多一位错误的码字；利用校验位异或定位错误并恢复数据位。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-10-20T17:34:46+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
     }
   ]
 }
