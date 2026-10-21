@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-21",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4355,
+    "total_problems": 4354,
     "source_total_problems": 4355,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4355,
-    "with_editorial_brief": 3995,
-    "with_solution_brief": 3997,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4354,
+    "with_editorial_brief": 3994,
+    "with_solution_brief": 3996,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3417,
+    "ai_override_count": 3416,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1429,
+    "构造与贪心": 1428,
     "动态规划与状态设计": 357,
     "数据结构": 409,
     "图论与网络流": 295,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2986,
+    "ai_generated_with_editorial": 2985,
     "ai_generated_partial_editorial": 118,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-17",
       "url": "https://codeforces.com/contest/2261",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 10,
+      "problemCount": 9,
       "maxRating": 3500,
       "problems": [
         {
@@ -257,38 +257,6 @@ window.CF_INSIGHTS_DATA = {
             "令 $\\mathrm{psum}[i]=\\sum_{j=1}^{i}(c[j]-1)$，固定右端点后只需在允许范围内找最小前缀和；滑动窗口单调队列即可在线性时间完成。"
           ],
           "solutionBrief": "统计每个右括号前的左括号段。分别计算目标段为前缀和位于中间的最优值；中间情况转为前缀和区间最小值，用单调队列在线性时间维护，取两类方案最大值。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2261F1",
-          "index": "F1",
-          "slot": "F",
-          "title": "Plegma II: Ask Me Any Cell (Easy Version)",
-          "rating": 2500,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/F1",
-          "editorialUrl": "https://codeforces.com/blog/entry/157917",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟",
-            "数论与同余"
-          ],
-          "originalTags": [
-            "brute force",
-            "constructive algorithms",
-            "dp",
-            "greedy",
-            "math"
-          ],
-          "statementBrief": "对每个目标格子分别构造一个 $n\\times n$ 的 0/1 网格，最多使用 $k$ 个零；解码器每次只能根据当前子网格中的信标数 $S$，从上、下、左、右删去一行或一列边界，共执行 $2n-2$ 次，最终子网格必须恰好缩成目标格。还需输出一套由 $S$ 决定动作的统一规则。",
-          "transformedStatement": "将定位拆成先确定目标行、再确定目标列的两个一维边界删除过程：用满信标行制造垂直阶段，用信标数奇偶传递方向；目标行只保留至多一个信标，使 $S$ 的大小同时标记阶段、奇偶同时决定方向。",
-          "keyObservations": [
-            "一维时只需用 $S$ 的奇偶决定从左或右删去边界；目标左侧放一个信标即可让每次删去它后奇偶翻转，从而把目标位置编码进删除方向。",
-            "二维先定位行：除目标行外填满信标，使完整行的信标数为偶数；当 $S>1$ 时按奇偶决定删上行或下行，进入目标行后剩余信标数降为 $0$ 或 $1$，自然切换到一维过程。",
-            "目标行用至多一个信标表示列，并在相邻行首补少量零调整初始奇偶，使垂直删除方向恰好停在目标行；总零数至多为 $n+1$，满足 $n=20,k=24$。",
-            "动作表只依赖当前信标数：$S=0,1$ 使用水平动作，$S>1$ 使用垂直动作，并通过奇偶统一决定具体方向，因此无需记录历史或边界坐标。"
-          ],
-          "solutionBrief": "把一维定位建立在信标数奇偶翻转上：目标左侧放一个信标，其余置零。二维中用满信标行区分垂直阶段，按奇偶删上行或下行；进入目标行后按 $S=0/1$ 执行一维定位，并用相邻行的零修正奇偶。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },

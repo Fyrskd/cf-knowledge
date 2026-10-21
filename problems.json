@@ -988,9 +988,7 @@
     "points": 2500.0,
     "rating": 2500,
     "tags": [
-      "brute force",
       "constructive algorithms",
-      "dp",
       "greedy",
       "math"
     ]
