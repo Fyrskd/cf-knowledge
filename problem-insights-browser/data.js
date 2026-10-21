@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-21",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4354,
+    "total_problems": 4355,
     "source_total_problems": 4355,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4354,
-    "with_editorial_brief": 3994,
-    "with_solution_brief": 3996,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4355,
+    "with_editorial_brief": 3995,
+    "with_solution_brief": 3997,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3416,
+    "ai_override_count": 3417,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1428,
+    "构造与贪心": 1429,
     "动态规划与状态设计": 357,
     "数据结构": 409,
     "图论与网络流": 295,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2985,
+    "ai_generated_with_editorial": 2986,
     "ai_generated_partial_editorial": 118,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-17",
       "url": "https://codeforces.com/contest/2261",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 9,
+      "problemCount": 10,
       "maxRating": 3500,
       "problems": [
         {
@@ -257,6 +257,35 @@ window.CF_INSIGHTS_DATA = {
             "令 $\\mathrm{psum}[i]=\\sum_{j=1}^{i}(c[j]-1)$，固定右端点后只需在允许范围内找最小前缀和；滑动窗口单调队列即可在线性时间完成。"
           ],
           "solutionBrief": "统计每个右括号前的左括号段。分别计算目标段为前缀和位于中间的最优值；中间情况转为前缀和区间最小值，用单调队列在线性时间维护，取两类方案最大值。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2261F1",
+          "index": "F1",
+          "slot": "F",
+          "title": "Plegma II: Ask Me Any Cell (Easy Version)",
+          "rating": 2500,
+          "problemUrl": "https://codeforces.com/contest/2261/problem/F1",
+          "editorialUrl": "https://codeforces.com/blog/entry/157917",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数论与同余"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定一个 $n\\times n$ 网格，需为每个目标格分别构造一个仅含 0/1 的网格，并统一给出一个只依赖当前子网格内信标数量 $S$ 的动作表。机器人从整个网格开始，恰好执行 $2n-2$ 次上移边界、下移边界、左移边界或右移边界，最终必须唯一收缩到对应目标格，且每个网格至多含 $k$ 个零。",
+          "transformedStatement": "将二维定位拆成先定位目标行、再定位目标列的两个一维奇偶编码问题：$S>1$ 表示仍在删行，$S\\le1$ 表示已进入删列阶段；通过特殊零控制奇偶翻转，使无记忆动作表能决定应从哪一侧收缩。",
+          "keyObservations": [
+            "把行定位和列定位串成两个阶段：先利用 $S>1$ 时的动作删除整行，剩下一行后再用 $S=0/1$ 的动作删除列。",
+            "当 $n=20$ 时，完整行含有偶数个信标，因此删除完整行不改变 $S$ 的奇偶性；在目标行及其相邻行放置特殊零可以让奇偶性恰好在目标行边界翻转，从而改为从另一侧删除。",
+            "目标行除目标左侧可能放置一个信标外全部为零，所以行被确定后，$S$ 只有 $0$ 或 $1$，奇偶性会在删除该信标时翻转，最终把区间收缩到目标列。",
+            "每个目标网格最多使用 $n+1$ 个零：目标行贡献至多 $n$ 个零，必要时相邻行再增加一个零，因此满足主测试的 $k=24$ 限制。"
+          ],
+          "solutionBrief": "令 $S=0$ 时向右删、$S=1$ 时向左删；当 $S>1$ 时按奇偶向上或向下删行。每个目标网格把目标行设为稀疏编码，并用相邻行的一个零调整行阶段的奇偶性，随后自动完成列定位。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
