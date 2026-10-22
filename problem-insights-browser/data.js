@@ -1,17 +1,17 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-21",
+  "generatedAt": "2026-10-22",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4355,
+    "total_problems": 4354,
     "source_total_problems": 4355,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4355,
-    "with_editorial_brief": 3995,
-    "with_solution_brief": 3997,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4354,
+    "with_editorial_brief": 3994,
+    "with_solution_brief": 3996,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3417,
+    "ai_override_count": 3416,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1429,
+    "构造与贪心": 1428,
     "动态规划与状态设计": 357,
     "数据结构": 409,
     "图论与网络流": 295,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2986,
+    "ai_generated_with_editorial": 2985,
     "ai_generated_partial_editorial": 118,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-17",
       "url": "https://codeforces.com/contest/2261",
       "type": "Div. 1 + Div. 2",
-      "problemCount": 10,
+      "problemCount": 9,
       "maxRating": 3500,
       "problems": [
         {
@@ -167,32 +167,6 @@ window.CF_INSIGHTS_DATA = {
             "除上述两种状态外，先手都能直接删除整个偶数和数组，或删去部分元素把对手送入 $(1,1)$ 或 $(0,3)$，所以必胜。"
           ],
           "solutionBrief": "统计奇数和偶数的数量。若 $(E,O)=(1,1)$ 或 $(0,3)$，输出 Larpity；其他情况先手均可获胜，输出 Moggity。扫描数组一次即可完成统计。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2261D1",
-          "index": "D1",
-          "slot": "D",
-          "title": "Come Be My Friend, Don't Be So Scared (Easy Version)",
-          "rating": 1300,
-          "problemUrl": "https://codeforces.com/contest/2261/problem/D1",
-          "editorialUrl": "https://codeforces.com/blog/entry/157917",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "constructive algorithms",
-            "math"
-          ],
-          "statementBrief": "有 $n$ 个按顺序排列的位置，且当前没有探测器。可以同时新增若干个覆盖连续区间的探测器；根据所有探测器的真假报告，任意两个藏身位置都必须能被区分，求最少新增数量并输出一种方案。",
-          "transformedStatement": "把每个位置表示为由区间覆盖情况组成的二进制报告向量，要求这些向量两两不同。沿位置从左到右观察报告变化次数，用每个区间至多两次变化建立下界，再用长度为 $k$ 的滑动区间构造达到下界。",
-          "keyObservations": [
-            "相邻位置必须至少有一个探测器报告不同，因此从左到右至少需要发生 $n-1$ 次报告变化；这是区分所有位置的必要条件。",
-            "一个区间探测器沿位置移动时最多只产生两次变化，而首尾位置不能同时得到全零报告，所以还需要额外一次端点变化，得到 $2k\\ge n$，即 $k\\ge\\lceil n/2\\rceil$。",
-            "取 $k=\\lceil n/2\\rceil$ 个区间 $[i,i+k-1]$；前 $k$ 个位置依次开启不同探测器，后续位置依次关闭不同探测器，因此报告向量两两不同。",
-            "当 $n$ 为偶数时，位置 $n$ 的报告全为零，且其他位置至少被一个区间覆盖，所以它也能与所有位置区分。"
-          ],
-          "solutionBrief": "无已有探测器时，变化次数下界给出至少 $\\lceil n/2\\rceil$ 个区间。令 $k=\\lceil n/2\\rceil$，输出区间 $[i,i+k-1]$（$1\\le i\\le k$）；该构造恰好达到下界并能区分所有位置。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
