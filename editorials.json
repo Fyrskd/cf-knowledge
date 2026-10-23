@@ -5,7 +5,7 @@
     "label": "Tutorial",
     "section_count": 0,
     "covered_problems": [],
-    "raw_sha256": "562138dd92dba876f62d82a1a93ea99af22ff132deb417c5e613fff5d7ea53b2"
+    "raw_sha256": "7ba92be263691e47935e3ca9b8b67bdfb3e2c89a7bab61594a12599cbf9db96d"
   },
   {
     "url": "https://codeforces.com/blog/entry/86464",
@@ -172,7 +172,7 @@
       "1526E",
       "1526F"
     ],
-    "raw_sha256": "5a9ca67584553c5804001220bec824e66c9bb10d8da5131e6181ceb94e6eeb9c"
+    "raw_sha256": "3746539bcd8db4112ada81949cb904da4a3916a463472313fb787c9c6d4f090b"
   },
   {
     "url": "https://codeforces.com/blog/entry/91520",
@@ -274,7 +274,7 @@
       "1530G",
       "1530H"
     ],
-    "raw_sha256": "0542e852acfd1b119181a44c2e1e01ca2e8cacf22aa2b9ad5d9c1b2e1cd1105e"
+    "raw_sha256": "61f9379d6d7023506d19f73992cb6c8db197839a321715010fe92c443c013150"
   },
   {
     "url": "https://codeforces.com/blog/entry/93149",
@@ -359,7 +359,7 @@
       "1561A",
       "1561C"
     ],
-    "raw_sha256": "6fdd58d138d30fd11630acb0ed9bc5e10b05c87c7bf586cb31d3fc3c6395d716"
+    "raw_sha256": "47a0b4404f71c84e24fe1e2aaccef95c085d7f1c2079e8915e5b2af68500ad3e"
   },
   {
     "url": "https://codeforces.com/blog/entry/94278",
@@ -547,7 +547,7 @@
       "1632D",
       "1632E2"
     ],
-    "raw_sha256": "2134420dfb094bdb9f107f89ea21d601a46fe1a8fdf597e54cffec341d7eada6"
+    "raw_sha256": "b600e476213984ed1a126282e85f7d0e43491baf6fca598e521feb638d17a780"
   },
   {
     "url": "https://codeforces.com/blog/entry/100780",
@@ -602,7 +602,7 @@
       "1712E2",
       "1712F"
     ],
-    "raw_sha256": "82fc31992f61c94fc53fd00f36f02fea0f95efa3e10a26f387df1cb96d445134"
+    "raw_sha256": "6d916e9136b752cd451426186712745f32200312d0634b4a402c23009211e571"
   },
   {
     "url": "https://codeforces.com/blog/entry/106049",
@@ -646,7 +646,7 @@
       "1722F",
       "1722G"
     ],
-    "raw_sha256": "4e2cf8aec9049e3ca51eeb7354fb90f4d6fd2192f5bb8edfd968a470bc15e259"
+    "raw_sha256": "a2b0cad265121535d4141a284ddb8661079cd19a79c0aae4e5a83ef58ef1b545"
   },
   {
     "url": "https://codeforces.com/blog/entry/106553",
@@ -681,7 +681,7 @@
       "1761F2",
       "1761G"
     ],
-    "raw_sha256": "77fb46a0ec280765276239765e5a5977f014d597369e0e1995c767519a088952"
+    "raw_sha256": "dee06767b0f87aec21de870ee4b06193c536075c66ee387ffb275cc76332bace"
   },
   {
     "url": "https://codeforces.com/blog/entry/109468",
@@ -703,7 +703,7 @@
       "1764G3",
       "1764H"
     ],
-    "raw_sha256": "1751cdbe182287fe170dc11f58b6d89a1d53c1482794ea1fe187512fbefbd2e1"
+    "raw_sha256": "7e7fc685f658fe7a60c23e0cef0c6ac3b3a8ef6a8800834e39bf06a1e30aa090"
   },
   {
     "url": "https://codeforces.com/blog/entry/110629",
@@ -744,7 +744,7 @@
       "1768E",
       "1768F"
     ],
-    "raw_sha256": "199693a54588ab10faf4a6a6ce3a99b352e442d2c06417b558bd5bbd8f5e97b5"
+    "raw_sha256": "8b593f81af38fbf8f86628300f494aa60d8c714df7c688f0886f8bf8860a32c3"
   },
   {
     "url": "https://codeforces.com/blog/entry/111286",
@@ -794,13 +794,14 @@
     "original_locale": "en",
     "source": "codeforces-blog",
     "label": "Tutorial",
-    "section_count": 14,
+    "section_count": 15,
     "covered_problems": [
       "1781A",
       "1781B",
       "1781C",
       "1781D",
       "1781E",
+      "1781F",
       "1781G",
       "1782A",
       "1782B",
@@ -811,7 +812,7 @@
       "1782G",
       "1782H1"
     ],
-    "raw_sha256": "875a0523db9454b8b60cb0ba711b10e3a4d97f42b7598af81add1e6c4cfff9c4"
+    "raw_sha256": "7445f591cf78d28b570186bfb14f06ccb93cd2b1510635aff1a30dbb02b9ffbb"
   },
   {
     "url": "https://codeforces.com/blog/entry/111841",
@@ -997,7 +998,7 @@
       "1799G",
       "1799H"
     ],
-    "raw_sha256": "5868e38bd4f7b9a2f3675b70b991c08035a9582e39323572aa7084b4bfc39215"
+    "raw_sha256": "4c6c23ca3524772ee613ad7036ce04c81a90e039eef57d57cd798db2cf586e98"
   },
   {
     "url": "https://codeforces.com/blog/entry/113500",
@@ -1833,7 +1834,7 @@
       "1896G",
       "1896H2"
     ],
-    "raw_sha256": "5abb92ba1498834f6141b66207c7612b3246443f3fb71d3c559e7962cedf9bc9"
+    "raw_sha256": "382592aab09c9eb7b6f57cab2592c094132f677cddabdde61c13b0b88d96926e"
   },
   {
     "url": "https://codeforces.com/blog/entry/122560",
@@ -2136,7 +2137,7 @@
       "1937A",
       "1937B"
     ],
-    "raw_sha256": "2145f75e83245a6d83ceba09b999357ef1dd07aff9462771a8e459ce2fdf8c86"
+    "raw_sha256": "a5afe419ded4df29a6f7f2a971bb1e83214194c4947857f122a1e5d22f968a3a"
   },
   {
     "url": "https://codeforces.com/blog/entry/126662",
@@ -2178,7 +2179,7 @@
       "1942G",
       "1942H"
     ],
-    "raw_sha256": "f372a0fba0e5abf5d814aa0e8d28546d2dbf93138daa7f769739cf67fa811c6f"
+    "raw_sha256": "216cc1f1c08b8a1a8ed1746aeab7fe4e5c5a016af0164fa951af207e68315bc6"
   },
   {
     "url": "https://codeforces.com/blog/entry/127195",
@@ -2893,7 +2894,7 @@
       "2030G1",
       "2030G2"
     ],
-    "raw_sha256": "34987bec5f538b95b05f387534b07cfc9399fb685bb23b42b54460071977abbe"
+    "raw_sha256": "02ed6b6dd7309d6183ef02b1b41299563ed6aa6cb1a78c4b904796f1fc0cebc3"
   },
   {
     "url": "https://codeforces.com/blog/entry/135341",
@@ -3788,7 +3789,7 @@
       "2125E",
       "2125F"
     ],
-    "raw_sha256": "439d985fd54106274c726791a09e71fd43d3bb843584e37aa047d37e332a3066"
+    "raw_sha256": "16b579a0e7f74a85ad286bd124b2e02dd990dcd012d3db7ec8c2178866eb8a2b"
   },
   {
     "url": "https://codeforces.com/blog/entry/145080",
@@ -4296,7 +4297,7 @@
       "2158E",
       "2158F2"
     ],
-    "raw_sha256": "da98f05d62fd9ac7c4906d0bc3cd8537566601605e644f6a7a502426ca1eb112"
+    "raw_sha256": "468221ed4856bb0e3adbc8e1fd8af972bcaa5a8788e04ce214880ebd4cda37f2"
   },
   {
     "url": "https://codeforces.com/blog/entry/148981",
@@ -4648,7 +4649,7 @@
       "2207H2",
       "2207H3"
     ],
-    "raw_sha256": "1aa75065ba80a7b71546d494aa7cadad1874e0e5a783ec123e3cca933ced938c"
+    "raw_sha256": "400c0d1070cb0b6e0b69de344ce459cd03c42a4f78f15d37453f327f36eef54f"
   },
   {
     "url": "https://codeforces.com/blog/entry/152073",
@@ -4979,7 +4980,7 @@
       "2233E2",
       "2233F"
     ],
-    "raw_sha256": "c524e7fd1c29f389d8f98cce9db98ab911fcc2bb8251f3452c0de3d411c51a51"
+    "raw_sha256": "9be84015cc52a7aca7eead7576b23ede2c8a3c4507551a121f1241abd1949568"
   },
   {
     "url": "https://codeforces.com/blog/entry/154603",
@@ -5023,7 +5024,7 @@
       "2241F",
       "2241G"
     ],
-    "raw_sha256": "c880429b4b65d65e6483c90f25fc2bca3fbc14b73c792575299c44d4f8631d58"
+    "raw_sha256": "71cadf91f06009efdb889bd282273b7cf4edc98197eb8bf383f433854168979d"
   },
   {
     "url": "https://codeforces.com/blog/entry/154788",
@@ -5105,7 +5106,7 @@
       "2245G",
       "2245H"
     ],
-    "raw_sha256": "5f66c27a5daa508f54c36d4a5247c3998f29037ad3d45a0f7774af1d6d0590c2"
+    "raw_sha256": "e25eef049df28730488f0e423f4e706f16e15300dbe56904f185028a91d1e5a4"
   },
   {
     "url": "https://codeforces.com/blog/entry/155337",
