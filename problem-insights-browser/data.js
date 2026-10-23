@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-23",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4353,
+    "total_problems": 4355,
     "source_total_problems": 4355,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4353,
-    "with_editorial_brief": 3993,
-    "with_solution_brief": 3995,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4355,
+    "with_editorial_brief": 3995,
+    "with_solution_brief": 3997,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3415,
+    "ai_override_count": 3417,
     "primary_topic_count": 13,
     "contest_count": 680,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1427,
+    "构造与贪心": 1429,
     "动态规划与状态设计": 357,
     "数据结构": 409,
     "图论与网络流": 295,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2986,
+    "ai_generated_with_editorial": 2988,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -6060,7 +6060,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-06-30",
       "url": "https://codeforces.com/contest/2241",
       "type": "Div. 3",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": 2400,
       "problems": [
         {
@@ -6142,6 +6142,32 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "统计相邻字符不同的位置数 $c$。若 $c=1$，答案为 $2$；否则答案为 $1$。判定只需线性扫描字符串，复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        },
+        {
+          "key": "2241D",
+          "index": "D",
+          "slot": "D",
+          "title": "An Alternative Way",
+          "rating": 1100,
+          "problemUrl": "https://codeforces.com/contest/2241/problem/D",
+          "editorialUrl": "https://codeforces.com/blog/entry/154698",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "dp",
+            "greedy",
+            "math"
+          ],
+          "statementBrief": "给定等长数组 $a,b$，可反复选择区间 $[l,r]$，从左端开始交替对元素执行 $+1,-1,+1,-1,\\ldots$。要求判断能否通过这些操作把 $a$ 变成 $b$。",
+          "transformedStatement": "把数组变换改写为前缀和变换：每次操作只增加若干个前缀和且不减少任何一个；长度为 $2$ 的区间和长度为 $1$ 的区间还能分别独立增加指定前缀和，因此问题等价于逐个检查目标前缀和是否至少达到初始值。",
+          "keyObservations": [
+            "对前缀和而言，一次区间操作只会让部分前缀和增加 $1$，其余前缀和不变，因此任何前缀和都不可能减少。",
+            "区间 $[i,i+1]$ 只会使第 $i$ 个前缀和增加 $1$，而区间 $[n,n]$ 只影响第 $n$ 个前缀和，说明每个前缀和的增加可以独立实现。",
+            "因此目标数组可达当且仅当所有位置满足初始前缀和不超过目标前缀和，即对每个 $i$ 有 $p_i\\le q_i$；逐项比较即可完成判定。"
+          ],
+          "solutionBrief": "计算数组 $a,b$ 的前缀和 $p_i,q_i$，逐项检查是否存在 $p_i>q_i$。若所有 $p_i\\le q_i$，就能用长度为 $2$ 或 $1$ 的操作独立补足各个前缀和，输出 YES，否则输出 NO；复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "partial"
         },
         {
           "key": "2241E",
@@ -94977,7 +95003,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2022-08-30",
       "url": "https://codeforces.com/contest/1722",
       "type": "Div. 4",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": 1700,
       "problems": [
         {
@@ -95135,6 +95161,32 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "扫描每个阴影格的四邻域：邻居超过两个或两个邻居相对则失败；恰有两个垂直邻居时标记该 L 形。检查标记重叠、阴影格是否全覆盖，并禁止不同编号对角相邻。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
+        },
+        {
+          "key": "1722G",
+          "index": "G",
+          "slot": "G",
+          "title": "Even-Odd XOR",
+          "rating": 1500,
+          "problemUrl": "https://codeforces.com/contest/1722/problem/G",
+          "editorialUrl": "https://codeforces.com/blog/entry/106478",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "bitmasks",
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定整数 $n$，构造一个长度为 $n$ 的数组，所有元素互不相同且均为不超过 $2^{31}-1$ 的非负整数。要求数组奇数位置元素的按位异或等于偶数位置元素的按位异或，并输出任意可行数组。",
+          "transformedStatement": "把奇数位与偶数位异或相等改写为全数组异或为 $0$。因此只需先选 $n-2$ 个不含最高位的不同数，再利用一个带最高位的数和总异或补出最后两个元素。",
+          "keyObservations": [
+            "奇数位异或为 $a$、偶数位异或为 $b$ 时，全体异或为 $a\\oplus b$，因此目标等价于让数组总异或为 $0$。",
+            "先选 $n-2$ 个最高位为 $0$ 的不同数，再加入 $2^{30}$；最后一个数设为前面所有数的异或，可保证总异或为 $0$，且它带有最高位而不会与前 $n-2$ 个数重复。",
+            "最后两个数相同当且仅当前 $n-2$ 个数的异或为 $0$；用区间 $0\\ldots n-3$ 和 $1\\ldots n-2$ 两组候选替换，二者异或不同，至少一组可行。"
+          ],
+          "solutionBrief": "将奇偶位异或相等转化为全数组异或为 $0$。选取 $n-2$ 个低于 $2^{30}$ 的不同数，加入 $2^{30}$，再加入它们的总异或；若前缀异或为 $0$，改用另一组连续数即可避免重复。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "partial"
         }
       ]
     },
