@@ -7388,7 +7388,7 @@
     "frozen": false,
     "durationSeconds": 8100,
     "startTimeSeconds": 1790346900,
-    "relativeTimeSeconds": 2408330,
+    "relativeTimeSeconds": 2428100,
     "date": "2026-09-25"
   },
   {
@@ -7399,7 +7399,7 @@
     "frozen": false,
     "durationSeconds": 9000,
     "startTimeSeconds": 1790433300,
-    "relativeTimeSeconds": 2321930,
+    "relativeTimeSeconds": 2341700,
     "date": "2026-09-26"
   },
   {
@@ -7410,7 +7410,7 @@
     "frozen": false,
     "durationSeconds": 9000,
     "startTimeSeconds": 1790433300,
-    "relativeTimeSeconds": 2321930,
+    "relativeTimeSeconds": 2341700,
     "date": "2026-09-26"
   },
   {
@@ -7421,7 +7421,7 @@
     "frozen": false,
     "durationSeconds": 9000,
     "startTimeSeconds": 1791384300,
-    "relativeTimeSeconds": 1370930,
+    "relativeTimeSeconds": 1390700,
     "date": "2026-10-07"
   },
   {
@@ -7432,7 +7432,7 @@
     "frozen": false,
     "durationSeconds": 10800,
     "startTimeSeconds": 1791644700,
-    "relativeTimeSeconds": 1110530,
+    "relativeTimeSeconds": 1130300,
     "date": "2026-10-10"
   },
   {
@@ -7443,7 +7443,7 @@
     "frozen": false,
     "durationSeconds": 7200,
     "startTimeSeconds": 1791743700,
-    "relativeTimeSeconds": 1011530,
+    "relativeTimeSeconds": 1031300,
     "date": "2026-10-11"
   },
   {
@@ -7454,7 +7454,7 @@
     "frozen": false,
     "durationSeconds": 7200,
     "startTimeSeconds": 1791743700,
-    "relativeTimeSeconds": 1011530,
+    "relativeTimeSeconds": 1031300,
     "date": "2026-10-11"
   },
   {
@@ -7465,7 +7465,7 @@
     "frozen": false,
     "durationSeconds": 7200,
     "startTimeSeconds": 1791988500,
-    "relativeTimeSeconds": 766730,
+    "relativeTimeSeconds": 786498,
     "date": "2026-10-14"
   },
   {
@@ -7476,7 +7476,7 @@
     "frozen": false,
     "durationSeconds": 10800,
     "startTimeSeconds": 1792247700,
-    "relativeTimeSeconds": 507530,
+    "relativeTimeSeconds": 527300,
     "date": "2026-10-17"
   }
 ]
