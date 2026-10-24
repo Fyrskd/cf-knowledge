@@ -1,5 +1,85 @@
 [
   {
+    "contestId": 2277,
+    "index": "F",
+    "name": "Token Re-Moving",
+    "type": "PROGRAMMING",
+    "points": 3000.0,
+    "tags": [
+      "dfs and similar",
+      "dsu",
+      "trees"
+    ]
+  },
+  {
+    "contestId": 2277,
+    "index": "E",
+    "name": "Tree Guessing",
+    "type": "PROGRAMMING",
+    "points": 2750.0,
+    "tags": [
+      "interactive",
+      "trees"
+    ]
+  },
+  {
+    "contestId": 2277,
+    "index": "D2",
+    "name": "Number Operating (Hard Version)",
+    "type": "PROGRAMMING",
+    "points": 2250.0,
+    "tags": [
+      "brute force",
+      "divide and conquer",
+      "implementation"
+    ]
+  },
+  {
+    "contestId": 2277,
+    "index": "D1",
+    "name": "Number Operating (Easy Version)",
+    "type": "PROGRAMMING",
+    "points": 2000.0,
+    "tags": [
+      "binary search",
+      "brute force",
+      "dp",
+      "implementation"
+    ]
+  },
+  {
+    "contestId": 2277,
+    "index": "C",
+    "name": "Edge Addeleting",
+    "type": "PROGRAMMING",
+    "points": 1500.0,
+    "tags": [
+      "dfs and similar",
+      "graphs",
+      "greedy",
+      "trees"
+    ]
+  },
+  {
+    "contestId": 2277,
+    "index": "B",
+    "name": "Sequence Decreasing",
+    "type": "PROGRAMMING",
+    "points": 750.0,
+    "tags": [
+      "constructive algorithms",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2277,
+    "index": "A",
+    "name": "Subset Selecting",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "tags": []
+  },
+  {
     "contestId": 2276,
     "index": "G",
     "name": "Elimination of Players",
