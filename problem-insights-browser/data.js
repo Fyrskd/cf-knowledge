@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4361,
+    "total_problems": 4362,
     "source_total_problems": 4362,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4361,
-    "with_editorial_brief": 4001,
-    "with_solution_brief": 4003,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4362,
+    "with_editorial_brief": 4002,
+    "with_solution_brief": 4004,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3423,
+    "ai_override_count": 3424,
     "primary_topic_count": 13,
     "contest_count": 681,
     "rating_min": 800,
@@ -46,7 +46,7 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "构造与贪心": 1431,
     "动态规划与状态设计": 359,
-    "数据结构": 409,
+    "数据结构": 410,
     "图论与网络流": 295,
     "数论与同余": 454,
     "交互": 133,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2994,
+    "ai_generated_with_editorial": 2995,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-24",
       "url": "https://codeforces.com/contest/2277",
       "type": "Div. 2",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
         {
@@ -250,6 +250,36 @@ window.CF_INSIGHTS_DATA = {
             "已知部分的贡献关于父亲权值严格递增，因此查询结果能唯一确定父亲；前后两阶段各用 $n-1$ 次查询。"
           ],
           "solutionBrief": "以 $1$ 为根，先用 $n-1$ 次查询求出所有子树大小并排序。随后按降序加入顶点，设计权值使未处理部分贡献固定、已知部分贡献严格依赖父亲，从一次查询反推出父亲，总查询数为 $2n-2$，复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2277F",
+          "index": "F",
+          "slot": "F",
+          "title": "Token Re-Moving",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "数据结构",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "data structures",
+            "dfs and similar",
+            "dsu",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树、每个顶点的初始令牌数和一个固定排列。对每个顶点分别作为根，按排列顺序操作：选择顶点时把其当前子树内所有令牌移到该顶点，代价是移动后该点的令牌数；求所有根下的总代价。",
+          "transformedStatement": "固定根后，只有路径上没有更早操作祖先的顶点产生贡献。将排列逆序加入，用 DSU 维护连通块并构造重构树，使每个根的答案转化为重构树根到该点的路径权值和。",
+          "keyObservations": [
+            "对固定根 $r$，若 $u$ 的任何真祖先已先操作，$u$ 的子树令牌已被移走，代价为 $0$；否则代价等于 $u$ 初始子树令牌和，因而可转为判断祖先路径上的先后关系。",
+            "删除所有在 $u$ 前操作的顶点后，$u$ 恰好对其所在连通块中的根顶点产生贡献；按 $p_n,\bldots,p_1$ 加入顶点并用 DSU 合并相邻活动块，可构造出表示这些连通块包含关系的重构树。",
+            "若 $u\\ne r$，设 $v$ 是从 $u$ 通向 $r$ 的邻点，则 $u$ 的贡献为 $S-W(u,v)$，其中 $W(u,v)$ 是删边后含 $v$ 一侧的令牌和；该值只由出发方向决定，与具体根无关。",
+            "在重构树中，能对 $r$ 产生贡献的顶点正是 $r$ 到重构树根 $p_1$ 的祖先；把每次父子连接对应的贡献赋给子树后，答案就是根到 $r$ 的路径和再加 $S$。原树任意定根后用子树和即可在 $O(1)$ 时间求出每条边方向的 $W(u,v)$。"
+          ],
+          "solutionBrief": "先求原树子树令牌和，再逆序激活排列顶点，用 DSU 合并活动连通块并建立重构树。连接时按边方向加入 $S-W(u,v)$，最后在重构树上从 $p_1$ 做路径前缀和，得到所有根的答案。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }
