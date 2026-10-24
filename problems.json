@@ -6,6 +6,7 @@
     "type": "PROGRAMMING",
     "points": 3000.0,
     "tags": [
+      "data structures",
       "dfs and similar",
       "dsu",
       "trees"

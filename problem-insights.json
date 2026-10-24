@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 4362,
+    "total_problems": 4361,
     "source_total_problems": 4362,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4362,
-    "with_editorial_brief": 4002,
-    "with_solution_brief": 4004,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4361,
+    "with_editorial_brief": 4001,
+    "with_solution_brief": 4003,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3424,
+    "ai_override_count": 3423,
     "primary_topic_count": 13
   },
   "records": [
@@ -180624,48 +180624,6 @@
           "path": "ai-generated-insights.json",
           "model": "gpt-6-luna",
           "generated_at": "2026-10-24T16:29:51+00:00",
-          "quality_flags": []
-        }
-      },
-      "manual_override": false,
-      "ai_override": true
-    },
-    {
-      "ordinal": 4362,
-      "problem_key": "2277F",
-      "contest_id": 2277,
-      "title": "Token Re-Moving",
-      "rating": null,
-      "problem_url": "https://codeforces.com/contest/2277/problem/F",
-      "editorial_url": "https://codeforces.com/blog/entry/158113",
-      "editorial_quality": "complete",
-      "primary_topic": "树结构",
-      "secondary_topics": [
-        "数据结构"
-      ],
-      "original_tags": [
-        "dfs and similar",
-        "dsu",
-        "trees"
-      ],
-      "statement_brief": "给定一棵树和每个顶点的初始令牌数。固定根 $r$ 后，按排列 $p_1,p_2,\\ldots,p_n$ 依次操作：把当前顶点子树中的所有令牌移到该顶点，并支付移动后该顶点的令牌数；每个根都从初始状态独立执行，求总费用。",
-      "transformed_statement": "把一次操作是否产生费用转化为路径上的“更早操作”判定：逆序加入排列顶点，用 DSU 维护未被删除顶点形成的连通块，构造重构树，使每个根的答案成为重构树根到该顶点路径上的贡献值之和再加全树令牌总数。",
-      "key_observations": [
-        "若 $u$ 的真祖先已先被操作，$u$ 的子树令牌已被移走，代价为 $0$；否则代价等于初始子树令牌总数，因此贡献条件是从 $u$ 到根的路径上没有更早操作的顶点。",
-        "删除所有比 $u$ 更早操作的顶点后，$u$ 恰好对其所在连通分量中的根顶点产生贡献；逆序加入顶点并用 DSU 合并相邻活跃分量，可构造出这种分量关系。",
-        "当 $u\\ne r$ 时，贡献只取决于 $u$ 朝根方向的邻点 $v$：若该侧令牌和为 $W(u,v)$、全树令牌和为 $S$，贡献就是 $S-W(u,v)$，与具体根的位置无关。",
-        "重构树中对根 $r$ 有贡献的顶点正是从重构树根 $p_1$ 到 $r$ 的祖先链；给每条父子连接赋对应贡献后，答案是 $S$ 加上该链的前缀和。"
-      ],
-      "solution_brief": "先求原树子树令牌和。按 $p_n$ 到 $p_1$ 逆序激活顶点，用 DSU 合并活跃连通块并建立重构树；按边两侧令牌和给重构树边赋值，再从 $p_1$ DFS 累加路径值，得到所有根答案，复杂度为 $O(n\\alpha(n))$。",
-      "extraction_status": "ai_generated_with_editorial",
-      "source_provenance": {
-        "statement": "records.json:statement_text",
-        "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json",
-        "ai_override": {
-          "path": "ai-generated-insights.json",
-          "model": "gpt-6-luna",
-          "generated_at": "2026-10-24T16:29:16+00:00",
           "quality_flags": []
         }
       },
