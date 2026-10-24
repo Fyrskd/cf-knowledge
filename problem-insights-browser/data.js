@@ -2,18 +2,18 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-24",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4355,
+    "total_problems": 4362,
     "source_total_problems": 4362,
-    "filtered_out_problems": 7,
-    "with_statement_brief": 4355,
-    "with_editorial_brief": 3995,
-    "with_solution_brief": 3997,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4362,
+    "with_editorial_brief": 4002,
+    "with_solution_brief": 4004,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3417,
+    "ai_override_count": 3424,
     "primary_topic_count": 13,
-    "contest_count": 680,
+    "contest_count": 681,
     "rating_min": 800,
     "rating_max": 3500
   },
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1429,
-    "动态规划与状态设计": 357,
+    "构造与贪心": 1431,
+    "动态规划与状态设计": 359,
     "数据结构": 409,
     "图论与网络流": 295,
     "数论与同余": 454,
-    "交互": 132,
+    "交互": 133,
     "组合计数与概率": 333,
     "几何": 101,
-    "树结构": 200,
+    "树结构": 202,
     "字符串": 230,
     "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2988,
+    "ai_generated_with_editorial": 2995,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -77,6 +77,213 @@ window.CF_INSIGHTS_DATA = {
     "Others"
   ],
   "contests": [
+    {
+      "id": 2277,
+      "name": "Codeforces Round 1129 (Div. 2)",
+      "date": "2026-10-24",
+      "url": "https://codeforces.com/contest/2277",
+      "type": "Div. 2",
+      "problemCount": 7,
+      "maxRating": null,
+      "problems": [
+        {
+          "key": "2277A",
+          "index": "A",
+          "slot": "A",
+          "title": "Subset Selecting",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [],
+          "statementBrief": "给定数组和整数 $k$，可以把部分数组元素划分成若干互不重叠的组，每组至少含 $k$ 个元素，未使用元素可以舍弃。要求最大化所有分组最大值组成集合的 MEX。",
+          "transformedStatement": "将目标 MEX 转化为按升序依次构造最大值为 $0,1,2,\\ldots$ 的分组：每处理一个 $i$，消耗一个值为 $i$ 的元素和另外 $k-1$ 个不超过 $i$ 的可用元素；首次无法构造的位置就是答案。",
+          "keyObservations": [
+            "要让数值 $i$ 出现在所有分组最大值的集合中，必须消耗一个等于 $i$ 的元素，并再凑出 $k-1$ 个不超过 $i$ 的可用元素。",
+            "按 $i$ 从小到大处理时，之前未使用的元素仍可用于更大的最大值，因此只需维护当前不超过 $i$ 的剩余元素数。成功处理 $i$ 后，剩余数更新为 $s+c_i-k$。",
+            "第一个无法凑出大小为 $k$ 且最大值为 $i$ 的分组，就是最大值集合缺失的最小非负整数，因而直接确定答案为 $i$。"
+          ],
+          "solutionBrief": "统计各值出现次数，按 $i=0,1,\\ldots$ 递增检查。若没有 $i$ 或当前可用的不超过 $i$ 的元素少于 $k$，输出 $i$；否则组建一个最大值为 $i$ 的分组，并令剩余数减去 $k$。每组只消耗 $k$ 个元素，整体复杂度为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2277B",
+          "index": "B",
+          "slot": "B",
+          "title": "Sequence Decreasing",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/B",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "constructive algorithms",
+            "greedy"
+          ],
+          "statementBrief": "给定非负整数数组，可任选一个连续且全为正数的非空子数组，将其中每个数减一，再删除其中一个元素且保持其余顺序。要求找出最长的子序列，使其能经过若干次操作变成仍非空且全为零的数组；若不存在则输出 $0$。",
+          "transformedStatement": "先刻画长度为 $m$ 的序列：它良好当且仅当最小元素小于 $m$。因此原数组若最小值小于 $n$ 就整体取用，否则所有子序列都不满足条件。",
+          "keyObservations": [
+            "长度为 $m$ 的序列是否良好只由最小元素决定：当最小值为 $0$ 时可保留它并处理其他元素；否则必须用删除其他元素的操作把它降到 $0$。",
+            "每次操作都会删除一个元素，非空序列最多进行 $m-1$ 次删除，因此非零最小值能降到 $0$ 当且仅当最小值小于 $m$。",
+            "若原数组最小值小于 $n$，整个数组本身就是良好子序列；否则任意长度为 $m\\le n$ 的子序列都有最小值至少为 $n\\ge m$，不可能良好。"
+          ],
+          "solutionBrief": "先求数组最小值。若最小值小于数组长度，则答案为 $n$；否则不存在良好非空子序列，答案为 $0$。整体只需线性扫描。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2277C",
+          "index": "C",
+          "slot": "C",
+          "title": "Edge Addeleting",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "图论与网络流",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "graphs",
+            "greedy",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树和 $m$ 次操作。每次先加入边 $(1,v_i)$ 形成环，再从该环中删除任意一条边（新边也可以删），使图重新成为树；求全部操作后顶点 $1$ 与顶点 $n$ 的最大可能距离。",
+          "transformedStatement": "把每次操作视为是否保留一条连接 $1$ 与 $v_i$ 的候选边。最终目标路径至多使用一条候选边，因此答案转化为初始距离，或对满足原路径 $v_i\\to n$ 不经过 $1$ 的操作取 $1+\\operatorname{dist}(v_i,n)$ 的最大值。",
+          "keyObservations": [
+            "所有新增边都连接顶点 $1$，因此最终 $1$ 到 $n$ 的简单路径至多使用一条新增边，问题只需考虑一次操作带来的最优贡献。",
+            "若保留新增边 $(1,v_i)$，当且仅当原树中 $v_i$ 到 $n$ 的路径不经过 $1$ 时才可能增大答案；此时删除 $1$ 到 $n$ 原路径上的第一条边即可得到距离 $1+\\operatorname{dist}(v_i,n)$。",
+            "从 $n$ 出发且不继续扩展顶点 $1$，被到达的顶点恰好是其到 $n$ 的路径不经过 $1$ 的顶点，因此一次遍历即可筛出所有有效操作。",
+            "所有其他操作都可以删除新边，故答案是初始距离与所有有效候选值的最大值，操作出现次数只影响候选是否存在。"
+          ],
+          "solutionBrief": "从顶点 $n$ BFS，遇到顶点 $1$ 后停止扩展，记录所有可行的 $\\operatorname{dist}(v_i,n)$。扫描操作序列，取初始距离与 $d[v_i]+1$ 的最大值；每个测试用例复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2277D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Number Operating (Easy Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "brute force",
+            "dp",
+            "implementation"
+          ],
+          "statementBrief": "初始有 $x=0$。操作 1 连续执行时第 $k$ 次加上 $2^k$，操作 2 将 $x$ 减 $1$ 并重置连续计数；对每个 $n\\ge0$，求把 $x$ 变为 $n$ 的最少操作数 $f(n)$，并计算区间 $[l,r]$ 内所有 $f(n)$ 的和。",
+          "transformedStatement": "把连续的操作 1 及其后的操作 2 合并为一个单元：连续 $k$ 次操作 1 后接操作 2，代价为 $k+1$、净增量为 $2^k-2$。对 $n$ 按最高二进制位分解，只需比较首段长度为 $k$ 或 $k+1$ 的两种递推方案。",
+          "keyObservations": [
+            "连续执行 $k$ 次操作 1 后若还要继续操作，必须接一次操作 2；这一整段可视为花费 $k+1$、使 $x$ 增加 $2^k-2$ 的独立单元，且单元顺序不影响结果。",
+            "对满足 $2^k\\le n<2^{k+1}$ 的目标，最优方案的首段操作 1 次数只需考虑 $k$ 或 $k+1$；更少的次数不会更优，从而将选择压缩为两个分支。",
+            "执行 $k$ 次操作 1 再操作 2 后，剩余目标变为 $n-2^k+2$；执行 $k+1$ 次操作 1 后直接用操作 2 回退到 $n$，分别得到递归分支和直接结束分支。",
+            "递归分支中的目标值约减半，因此 $f(n)$ 可在 $O(\\log V)$ 时间内计算，区间答案再逐个累加即可满足 Easy 版范围。"
+          ],
+          "solutionBrief": "设 $f(0)=0,f(1)=1,f(2)=3,f(3)=2$。令 $k=\\lfloor\\log_2 n\\rfloor$，对 $n\\ge4$ 使用 $f(n)=\\min(f(n-2^k+2)+k+1,\\ 2^{k+1}-n+k)$，逐个计算区间内的 $f(n)$ 并取模求和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2277D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Number Operating (Hard Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "brute force",
+            "divide and conquer",
+            "implementation"
+          ],
+          "statementBrief": "有一个初始为 $0$ 的变量 $x$。每次可执行操作 1：若此前连续执行了 $k$ 次操作 1，就加上 $2^k$；或执行操作 2：减去 $1$，且两类操作可交替。令 $f(n)$ 为把 $x$ 变成非负整数 $n$ 所需的最少操作数，求区间 $[l,r]$ 中所有 $f(n)$ 之和，结果对 $998244353$ 取模。",
+          "transformedStatement": "把每个 $[2^k,2^{k+1})$ 看成一个二进制层：$f(n)$ 在层内由“连续加法块递推”和“直接减法”两种代价竞争，且只在一个切换点改变。于是用前缀和 $g$ 递归汇总整层，并把切换后的部分作为等差数列。",
+          "keyObservations": [
+            "在区间 $[2^k,2^{k+1})$ 内，最优方案只需比较递推分支 $f(n-2^k+2)+k+1$ 与直接减到目标的代价 $2^{k+1}-n+k$，从而把大数问题降到更小的最高位区间。",
+            "令 $h(n)=f(n)+n$，它单调不减，因此两种分支的优劣只会发生一次切换；前缀使用第一分支，后缀形成等差数列，后缀总长度可由阈值确定。",
+            "维护前缀和 $g(n)=\\sum_{i=0}^{n}f(i)$ 后，完整区间的贡献可转化为一个更小参数的 $g$、常数增量和后缀等差和；递归时最高位严格下降。",
+            "阈值位置可视为预算 $2^k+1$ 下能达到的最大值。不同长度的连续操作块不会重复，按长度从大到小选取可行块即可计算该位置。"
+          ],
+          "solutionBrief": "预处理每个二进制层的切换位置和 $g(2^k-1)$，用块贪心求阈值；查询时递归计算 $g(n)$，后缀用等差和处理，最终以 $g(r)-g(l-1)$ 得答案。总复杂度为 $O(\\log^2 V+t\\log V)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2277E",
+          "index": "E",
+          "slot": "E",
+          "title": "Tree Guessing",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "树结构"
+          ],
+          "originalTags": [
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "交互器隐藏一棵含 $n$ 个编号顶点的树。每次选择顶点 $x$ 和一个 $1$ 到 $n$ 的排列 $p$，返回所有顶点到 $x$ 的路径上权值最大值之和；最多查询 $2n-2$ 次后输出整棵树的边。",
+          "transformedStatement": "把树固定以顶点 $1$ 为根：先将查询结果转化为每个顶点的子树大小，再按子树大小降序逐点插入。对当前顶点设计权值，使查询答案扣除固定贡献后只编码其父亲。",
+          "keyObservations": [
+            "令根为 $1$，查询中仅把顶点 $i$ 的权值设为 $n$、根权值设为 $n-1$，返回值为 $n(n-1)+siz_i$，因此一次查询即可得到子树大小。",
+            "祖先的子树大小严格大于后代，所以按 $siz$ 降序处理时，新顶点的父亲一定已在前面处理过的顶点中。",
+            "加入顶点 $a_i$ 时令其权值为 $1$，已知顶点按深度递增赋值，未处理顶点赋值为自身序号；未处理部分贡献固定，已知部分只由父亲权值决定。",
+            "已知部分的贡献关于父亲权值严格递增，因此查询结果能唯一确定父亲；前后两阶段各用 $n-1$ 次查询。"
+          ],
+          "solutionBrief": "以 $1$ 为根，先用 $n-1$ 次查询求出所有子树大小并排序。随后按降序加入顶点，设计权值使未处理部分贡献固定、已知部分贡献严格依赖父亲，从一次查询反推出父亲，总查询数为 $2n-2$，复杂度为 $O(n^2)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2277F",
+          "index": "F",
+          "slot": "F",
+          "title": "Token Re-Moving",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "树结构",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dsu",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树和每个顶点的初始令牌数。固定根 $r$ 后，按排列 $p_1,p_2,\\ldots,p_n$ 依次操作：把当前顶点子树中的所有令牌移到该顶点，并支付移动后该顶点的令牌数；每个根都从初始状态独立执行，求总费用。",
+          "transformedStatement": "把一次操作是否产生费用转化为路径上的“更早操作”判定：逆序加入排列顶点，用 DSU 维护未被删除顶点形成的连通块，构造重构树，使每个根的答案成为重构树根到该顶点路径上的贡献值之和再加全树令牌总数。",
+          "keyObservations": [
+            "若 $u$ 的真祖先已先被操作，$u$ 的子树令牌已被移走，代价为 $0$；否则代价等于初始子树令牌总数，因此贡献条件是从 $u$ 到根的路径上没有更早操作的顶点。",
+            "删除所有比 $u$ 更早操作的顶点后，$u$ 恰好对其所在连通分量中的根顶点产生贡献；逆序加入顶点并用 DSU 合并相邻活跃分量，可构造出这种分量关系。",
+            "当 $u\\ne r$ 时，贡献只取决于 $u$ 朝根方向的邻点 $v$：若该侧令牌和为 $W(u,v)$、全树令牌和为 $S$，贡献就是 $S-W(u,v)$，与具体根的位置无关。",
+            "重构树中对根 $r$ 有贡献的顶点正是从重构树根 $p_1$ 到 $r$ 的祖先链；给每条父子连接赋对应贡献后，答案是 $S$ 加上该链的前缀和。"
+          ],
+          "solutionBrief": "先求原树子树令牌和。按 $p_n$ 到 $p_1$ 逆序激活顶点，用 DSU 合并活跃连通块并建立重构树；按边两侧令牌和给重构树边赋值，再从 $p_1$ DFS 累加路径值，得到所有根答案，复杂度为 $O(n\\alpha(n))$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        }
+      ]
+    },
     {
       "id": 2261,
       "name": "WorldQuant Round 1 (Codeforces Round 1128, Div. 1 + Div. 2)",
