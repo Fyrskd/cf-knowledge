@@ -30,6 +30,7 @@
     "type": "PROGRAMMING",
     "points": 2250.0,
     "tags": [
+      "bitmasks",
       "brute force",
       "divide and conquer",
       "implementation"
@@ -78,7 +79,9 @@
     "name": "Subset Selecting",
     "type": "PROGRAMMING",
     "points": 500.0,
-    "tags": []
+    "tags": [
+      "greedy"
+    ]
   },
   {
     "contestId": 2276,
