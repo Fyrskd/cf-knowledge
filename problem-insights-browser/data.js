@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-25",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4360,
+    "total_problems": 4362,
     "source_total_problems": 4362,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4360,
-    "with_editorial_brief": 4000,
-    "with_solution_brief": 4002,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4362,
+    "with_editorial_brief": 4002,
+    "with_solution_brief": 4004,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3422,
+    "ai_override_count": 3424,
     "primary_topic_count": 13,
     "contest_count": 681,
     "rating_min": 800,
@@ -44,8 +44,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1430,
-    "动态规划与状态设计": 358,
+    "构造与贪心": 1431,
+    "动态规划与状态设计": 359,
     "数据结构": 410,
     "图论与网络流": 295,
     "数论与同余": 454,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2993,
+    "ai_generated_with_editorial": 2995,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,9 +83,33 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-24",
       "url": "https://codeforces.com/contest/2277",
       "type": "Div. 2",
-      "problemCount": 5,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
+        {
+          "key": "2277A",
+          "index": "A",
+          "slot": "A",
+          "title": "Subset Selecting",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/A",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "给定数组和正整数 $k$，可以把任意元素分别放入若干互不重叠的分组，每组至少有 $k$ 个元素，未使用的元素可以舍弃。目标是最大化所有分组最大值构成集合的 MEX。",
+          "transformedStatement": "将目标转化为从 $0$ 开始依次构造每个整数作为某个分组的最大值：构造 $i$ 需要一个值为 $i$ 的元素和另外 $k-1$ 个不超过 $i$ 的可用元素；第一个无法构造的整数就是答案。",
+          "keyObservations": [
+            "要让整数 $i$ 成为某个分组的最大值，必须使用一个值为 $i$ 的元素，并再取 $k-1$ 个不超过 $i$ 的元素；因此只需判断当前累计可用元素是否达到 $k$。",
+            "按 $i=0,1,2,\u001b3,\u001bldots$ 递增处理时，未被当前分组消耗的元素仍可用于更大的最大值，所以只维护此前元素和当前值的剩余数量即可。",
+            "处理出一个可行的最大值 $i$ 后，消耗 $k$ 个元素并保留 $s+c_i-k$ 个可用元素；第一个无法构造的 $i$ 必然就是最大可能的 $\u001boperatorname{mex}$。"
+          ],
+          "solutionBrief": "统计每个值的出现次数，按值从小到大尝试让其成为某个分组最大值。若当前值不存在或累计可用元素不足 $k$ 个，立即输出该值；否则消耗一个分组并保留剩余元素，整体每个测试用例为 $O(n)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
         {
           "key": "2277B",
           "index": "B",
@@ -170,6 +194,37 @@ window.CF_INSIGHTS_DATA = {
             "递归分支中的目标值约减半，因此 $f(n)$ 可在 $O(\\log V)$ 时间内计算，区间答案再逐个累加即可满足 Easy 版范围。"
           ],
           "solutionBrief": "设 $f(0)=0,f(1)=1,f(2)=3,f(3)=2$。令 $k=\\lfloor\\log_2 n\\rfloor$，对 $n\\ge4$ 使用 $f(n)=\\min(f(n-2^k+2)+k+1,\\ 2^{k+1}-n+k)$，逐个计算区间内的 $f(n)$ 并取模求和。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2277D2",
+          "index": "D2",
+          "slot": "D",
+          "title": "Number Operating (Hard Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/D2",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "bitmasks",
+            "brute force",
+            "divide and conquer",
+            "implementation"
+          ],
+          "statementBrief": "有一个初始为 $0$ 的变量 $x$。每次可连续执行递增操作，连续次数为 $k$ 时加上 $2^k$，也可执行减一操作并重置连续计数；对每个非负整数 $n$，求把 $x$ 变为 $n$ 的最少操作数 $f(n)$，并计算区间 $[l,r]$ 内所有 $f(n)$ 之和。",
+          "transformedStatement": "把每个目标值按最高位划入区间 $[2^k,2^{k+1})$，将最短操作数写成“递推到更小值并支付 $k+1$”与“从下一个二进制边界连续减到目标”的较小者；再对 $f$ 建前缀和 $g$，把区间求和递归降到更低最高位。",
+          "keyObservations": [
+            "在区间 $[2^k,2^{k+1})$ 内，$f(n)$ 的两种选择分别对应递推到 $n-2^k+2$ 并增加 $k+1$，或直接从 $2^{k+1}$ 连减到 $n$；因此可比较两种明确代价。",
+            "先证明 $f(n)=O(\\log^2 V)$，即可用固定阈值截断每个二进制区间：只有末尾少量位置可能选择第二种方案，主体区间都能递推到更小最高位。",
+            "令 $g(n)=\\sum_{i=0}^{n}f(i)$，主体区间的总和可转化为更小参数的 $g$ 值加常数项；末尾区域通过预处理或等差数列直接求和。",
+            "利用 $h(n)=f(n)+n$ 单调，第一种方案最优的位置形成前缀，可按预算贪心选取不同长度的连续操作块，从而在 $O(\\log^2 V)$ 内预处理每个二进制层的分界点。"
+          ],
+          "solutionBrief": "预处理每个 $[2^k,2^{k+1})$ 的最优分界点及前缀和。查询 $g(n)$ 时将主体部分递归转为更小最高位的 $g$，末尾部分按等差数列求和，答案为 $g(r)-g(l-1)$；预处理 $O(\\log^2 V)$，单次查询 $O(\\log V)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
