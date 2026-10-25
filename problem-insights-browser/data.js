@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-25",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4362,
+    "total_problems": 4361,
     "source_total_problems": 4362,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4362,
-    "with_editorial_brief": 4002,
-    "with_solution_brief": 4004,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4361,
+    "with_editorial_brief": 4001,
+    "with_solution_brief": 4003,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3424,
+    "ai_override_count": 3423,
     "primary_topic_count": 13,
     "contest_count": 681,
     "rating_min": 800,
@@ -45,7 +45,7 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "构造与贪心": 1431,
-    "动态规划与状态设计": 359,
+    "动态规划与状态设计": 358,
     "数据结构": 410,
     "图论与网络流": 295,
     "数论与同余": 454,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2995,
+    "ai_generated_with_editorial": 2994,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-24",
       "url": "https://codeforces.com/contest/2277",
       "type": "Div. 2",
-      "problemCount": 7,
+      "problemCount": 6,
       "maxRating": null,
       "problems": [
         {
@@ -163,37 +163,6 @@ window.CF_INSIGHTS_DATA = {
             "所有其他操作都可以删除新边，故答案是初始距离与所有有效候选值的最大值，操作出现次数只影响候选是否存在。"
           ],
           "solutionBrief": "从顶点 $n$ BFS，遇到顶点 $1$ 后停止扩展，记录所有可行的 $\\operatorname{dist}(v_i,n)$。扫描操作序列，取初始距离与 $d[v_i]+1$ 的最大值；每个测试用例复杂度为 $O(n+m)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2277D1",
-          "index": "D1",
-          "slot": "D",
-          "title": "Number Operating (Easy Version)",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2277/problem/D1",
-          "editorialUrl": "https://codeforces.com/blog/entry/158113",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "构造与贪心",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "binary search",
-            "brute force",
-            "dp",
-            "implementation"
-          ],
-          "statementBrief": "初始有 $x=0$。操作 1 连续执行时第 $k$ 次加上 $2^k$，操作 2 将 $x$ 减 $1$ 并重置连续计数；对每个 $n\\ge0$，求把 $x$ 变为 $n$ 的最少操作数 $f(n)$，并计算区间 $[l,r]$ 内所有 $f(n)$ 的和。",
-          "transformedStatement": "把连续的操作 1 及其后的操作 2 合并为一个单元：连续 $k$ 次操作 1 后接操作 2，代价为 $k+1$、净增量为 $2^k-2$。对 $n$ 按最高二进制位分解，只需比较首段长度为 $k$ 或 $k+1$ 的两种递推方案。",
-          "keyObservations": [
-            "连续执行 $k$ 次操作 1 后若还要继续操作，必须接一次操作 2；这一整段可视为花费 $k+1$、使 $x$ 增加 $2^k-2$ 的独立单元，且单元顺序不影响结果。",
-            "对满足 $2^k\\le n<2^{k+1}$ 的目标，最优方案的首段操作 1 次数只需考虑 $k$ 或 $k+1$；更少的次数不会更优，从而将选择压缩为两个分支。",
-            "执行 $k$ 次操作 1 再操作 2 后，剩余目标变为 $n-2^k+2$；执行 $k+1$ 次操作 1 后直接用操作 2 回退到 $n$，分别得到递归分支和直接结束分支。",
-            "递归分支中的目标值约减半，因此 $f(n)$ 可在 $O(\\log V)$ 时间内计算，区间答案再逐个累加即可满足 Easy 版范围。"
-          ],
-          "solutionBrief": "设 $f(0)=0,f(1)=1,f(2)=3,f(3)=2$。令 $k=\\lfloor\\log_2 n\\rfloor$，对 $n\\ge4$ 使用 $f(n)=\\min(f(n-2^k+2)+k+1,\\ 2^{k+1}-n+k)$，逐个计算区间内的 $f(n)$ 并取模求和。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
