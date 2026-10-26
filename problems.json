@@ -19,6 +19,7 @@
     "type": "PROGRAMMING",
     "points": 2750.0,
     "tags": [
+      "constructive algorithms",
       "interactive",
       "trees"
     ]
@@ -44,6 +45,7 @@
     "points": 2000.0,
     "tags": [
       "binary search",
+      "bitmasks",
       "brute force",
       "dp",
       "greedy",
