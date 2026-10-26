@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-26",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4360,
+    "total_problems": 4362,
     "source_total_problems": 4362,
-    "filtered_out_problems": 2,
-    "with_statement_brief": 4360,
-    "with_editorial_brief": 4000,
-    "with_solution_brief": 4002,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4362,
+    "with_editorial_brief": 4002,
+    "with_solution_brief": 4004,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3422,
+    "ai_override_count": 3424,
     "primary_topic_count": 13,
     "contest_count": 681,
     "rating_min": 800,
@@ -45,11 +45,11 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "构造与贪心": 1431,
-    "动态规划与状态设计": 358,
+    "动态规划与状态设计": 359,
     "数据结构": 410,
     "图论与网络流": 295,
     "数论与同余": 454,
-    "交互": 132,
+    "交互": 133,
     "组合计数与概率": 333,
     "几何": 101,
     "树结构": 201,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2993,
+    "ai_generated_with_editorial": 2995,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-24",
       "url": "https://codeforces.com/contest/2277",
       "type": "Div. 2",
-      "problemCount": 5,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
         {
@@ -167,6 +167,39 @@ window.CF_INSIGHTS_DATA = {
           "editorialQuality": "complete"
         },
         {
+          "key": "2277D1",
+          "index": "D1",
+          "slot": "D",
+          "title": "Number Operating (Easy Version)",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/D1",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "动态规划与状态设计",
+          "secondaryTopics": [
+            "构造与贪心",
+            "基础实现与模拟"
+          ],
+          "originalTags": [
+            "binary search",
+            "bitmasks",
+            "brute force",
+            "dp",
+            "greedy",
+            "implementation"
+          ],
+          "statementBrief": "初始 $x=0$。操作1会加上 $2^k$，其中 $k$ 是此前连续执行操作1的次数；操作2将 $x$ 减一并重置连续次数。对每个非负整数 $n$，求把 $x$ 变为 $n$ 的最少操作数 $f(n)$，并计算区间 $[l,r]$ 内所有 $f(n)$ 的和。",
+          "transformedStatement": "把一段连续的操作1及其后的操作2视为一个独立单元：长度为 $k$ 的操作1段与一次操作2合计代价 $k+1$、净增 $2^k-2$。按 $n$ 所在的二进制区间，将首段长度归纳为 $k$ 或 $k+1$，得到递归求值模型。",
+          "keyObservations": [
+            "连续执行 $k$ 次操作1 后必须接操作2 才能继续，这个整体花费 $k+1$ 次、净增加 $2^k-2$，且操作2会重置连续计数，因此这些单元的先后顺序不影响结果。",
+            "若 $2^k\\le n<2^{k+1}$，最优方案的首个操作1区块只需考虑长度 $k$ 或 $k+1$；更短区块无法更优，从而把选择压缩为两种转移。",
+            "长度为 $k$ 的区块接一次操作2后递归处理 $n-2^k+2$，长度为 $k+1$ 的区块则直接从 $2^{k+1}-1$ 反向减到 $n$，得到两个候选代价。",
+            "递归参数每次大致减半，所以单个 $f(n)$ 只需 $O(\\log V)$；由于简单版本区间总长度受限，可逐个计算并累加。"
+          ],
+          "solutionBrief": "设 $f(0)=0,f(1)=1,f(2)=3,f(3)=2$。令 $k=\\lfloor\\log_2 n\\rfloor$，对 $n\\ge4$ 使用 $f(n)=\\min(f(n-2^k+2)+k+1,\\,2^{k+1}-n+k)$，逐个枚举区间内的 $n$ 求和并取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
           "key": "2277D2",
           "index": "D2",
           "slot": "D",
@@ -194,6 +227,36 @@ window.CF_INSIGHTS_DATA = {
             "利用 $h(n)=f(n)+n$ 单调，第一种方案最优的位置形成前缀，可按预算贪心选取不同长度的连续操作块，从而在 $O(\\log^2 V)$ 内预处理每个二进制层的分界点。"
           ],
           "solutionBrief": "预处理每个 $[2^k,2^{k+1})$ 的最优分界点及前缀和。查询 $g(n)$ 时将主体部分递归转为更小最高位的 $g$，末尾部分按等差数列求和，答案为 $g(r)-g(l-1)$；预处理 $O(\\log^2 V)$，单次查询 $O(\\log V)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2277E",
+          "index": "E",
+          "slot": "E",
+          "title": "Tree Guessing",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2277/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/158113",
+          "primaryTopic": "交互",
+          "secondaryTopics": [
+            "树结构",
+            "构造与贪心"
+          ],
+          "originalTags": [
+            "constructive algorithms",
+            "interactive",
+            "trees"
+          ],
+          "statementBrief": "交互器隐藏一棵含 $n$ 个编号顶点的树。每次选择顶点 $x$ 和一个 $1$ 到 $n$ 的排列，交互器返回所有顶点到 $x$ 的路径上排列值最大值之和；最多查询 $2n-2$ 次后输出这棵树的全部边。",
+          "transformedStatement": "将树固定根在顶点 $1$：先把查询答案转化为每个顶点的子树大小，再按子树大小降序逐个加入顶点，并设计权值使一次查询只暴露该顶点的父亲。",
+          "keyObservations": [
+            "对根为 $1$ 的树，查询 $x=1$ 且令 $p_1=n-1,p_i=n$ 时，答案为 $n(n-1)+siz_i$，因此一次查询即可得到每个顶点的子树大小。",
+            "祖先的子树大小严格大于后代，所以按子树大小降序处理时，新顶点的父亲必在已处理集合中，父子关系可以逐步确定。",
+            "加入顶点 $a_i$ 时令其权值为 $1$，把已知顶点按深度递增赋值，把未处理顶点 $a_j$ 赋值为 $j$；未处理部分贡献固定，而已知部分只由父亲的权值决定。",
+            "已知顶点到新顶点的路径最大值总是 $max(p_v,p_f)$，对应总和随父亲权值严格增加，因此单次查询即可唯一识别父亲。"
+          ],
+          "solutionBrief": "先用 $n-1$ 次查询求出所有子树大小，再按大小降序加入顶点。每次通过按深度编码已知树、固定未处理顶点贡献的查询，唯一反推出新顶点的父亲；总查询数为 $2n-2$，实现复杂度为 $O(n^2)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
