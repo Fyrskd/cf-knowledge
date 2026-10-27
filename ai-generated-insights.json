@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-10-27T05:41:10+00:00",
+  "updated_at": "2026-10-27T18:36:52+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -102214,26 +102214,25 @@
       "editorial_url": "https://codeforces.com/blog/entry/158113",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "c29e93690f1ae9dc30084a2345667c8eec3a3025e499ffbec9a0a74301e667eb",
-      "generated_at": "2026-10-25T11:56:26+00:00",
+      "input_hash": "b3485d6b182f7d5dfdfb33d9c691abce467c8048db5baf6f0dcdb75538b8240d",
+      "generated_at": "2026-10-27T18:35:54+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有一个初始为 $0$ 的变量 $x$。每次可连续执行递增操作，连续次数为 $k$ 时加上 $2^k$，也可执行减一操作并重置连续计数；对每个非负整数 $n$，求把 $x$ 变为 $n$ 的最少操作数 $f(n)$，并计算区间 $[l,r]$ 内所有 $f(n)$ 之和。",
-        "transformed_statement": "把每个目标值按最高位划入区间 $[2^k,2^{k+1})$，将最短操作数写成“递推到更小值并支付 $k+1$”与“从下一个二进制边界连续减到目标”的较小者；再对 $f$ 建前缀和 $g$，把区间求和递归降到更低最高位。",
+        "statement_brief": "有一个初始为 $0$ 的整数 $x$。每次可连续执行操作 1：按该连续段已执行次数增加相应的 $2^k$，或执行操作 2 将 $x$ 减 $1$；对每个 $n\\in[l,r]$，求把 $x$ 变为 $n$ 的最少操作数之和。",
+        "transformed_statement": "将单点最短操作数记为 $f(n)$，再求前缀和 $g(n)=\\sum_{i=0}^n f(i)$。在每个二进制区间 $[2^k,2^{k+1})$ 内，$f$ 由一个递归前缀和一个可直接求和的尾部组成。",
         "key_observations": [
-          "在区间 $[2^k,2^{k+1})$ 内，$f(n)$ 的两种选择分别对应递推到 $n-2^k+2$ 并增加 $k+1$，或直接从 $2^{k+1}$ 连减到 $n$；因此可比较两种明确代价。",
-          "先证明 $f(n)=O(\\log^2 V)$，即可用固定阈值截断每个二进制区间：只有末尾少量位置可能选择第二种方案，主体区间都能递推到更小最高位。",
-          "令 $g(n)=\\sum_{i=0}^{n}f(i)$，主体区间的总和可转化为更小参数的 $g$ 值加常数项；末尾区域通过预处理或等差数列直接求和。",
-          "利用 $h(n)=f(n)+n$ 单调，第一种方案最优的位置形成前缀，可按预算贪心选取不同长度的连续操作块，从而在 $O(\\log^2 V)$ 内预处理每个二进制层的分界点。"
+          "对 $n\\in[2^k,2^{k+1})$，最优方案只有两类：先延续一段操作 1，或从 $2^{k+1}$ 倒退；因此 $f(n)$ 可递归转成更小位置的 $f$ 与一个直接代价的最小值。",
+          "令 $h(n)=f(n)+n$，由 $f(n)\\le f(n+1)+1$ 可知 $h$ 单调不减，所以每个区间内采用第一类方案的 $n$ 构成前缀，可用边界 $\\mathrm{pos}_k$ 分割两种公式。",
+          "把达到 $n$ 的过程改看成预算最大化：长度为 $i$ 的连续操作 1 的收益和代价分别为 $2^i-1$、$2^i+i-1$；最优块长度互不相同，并可从大到小贪心确定 $\\mathrm{pos}_k$。",
+          "对前缀和 $g(n)=\\sum_{i=0}^n f(i)$，区间前缀部分通过 $f(i)=f(i-2^k+2)+k+1$ 映射到更小下标，尾部是等差数列，故每次查询只递归降低最高位。"
         ],
-        "solution_brief": "预处理每个 $[2^k,2^{k+1})$ 的最优分界点及前缀和。查询 $g(n)$ 时将主体部分递归转为更小最高位的 $g$，末尾部分按等差数列求和，答案为 $g(r)-g(l-1)$；预处理 $O(\\log^2 V)$，单次查询 $O(\\log V)$。",
+        "solution_brief": "预处理各二进制区间的分界点 $\\mathrm{pos}_k$，并计算 $g(2^k-1)$。查询 $g(n)$ 时将前缀映射到更小参数、尾部按等差数列求和，答案为 $g(r)-g(l-1)$；总复杂度 $O(\\log^2 V+t\\log V)$。",
         "primary_topic": "动态规划与状态设计",
         "secondary_topics": [
-          "构造与贪心",
-          "基础实现与模拟"
+          "构造与贪心"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text 的递推、前缀和、分界点贪心与复杂度分析，并结合 statement_text 的操作定义；tags 仅作主题参考。",
+        "source_provenance": "依据完整 editorial_text 的递推、前缀和、分界点贪心及复杂度，并结合 statement_text 的操作定义；tags 仅作主题参考。",
         "quality_flags": []
       }
     },
@@ -102245,26 +102244,25 @@
       "editorial_url": "https://codeforces.com/blog/entry/158113",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "aab8aed1528944ef0bcbcd9546ca87336661fbf1974c2290a339dcf9fed5c5a3",
-      "generated_at": "2026-10-26T05:16:31+00:00",
+      "input_hash": "2d4df2fe1d992ba72e192c82bf3d7ecebf3938685daed62dbd0e120995af7c03",
+      "generated_at": "2026-10-27T18:36:22+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "初始 $x=0$。操作1会加上 $2^k$，其中 $k$ 是此前连续执行操作1的次数；操作2将 $x$ 减一并重置连续次数。对每个非负整数 $n$，求把 $x$ 变为 $n$ 的最少操作数 $f(n)$，并计算区间 $[l,r]$ 内所有 $f(n)$ 的和。",
-        "transformed_statement": "把一段连续的操作1及其后的操作2视为一个独立单元：长度为 $k$ 的操作1段与一次操作2合计代价 $k+1$、净增 $2^k-2$。按 $n$ 所在的二进制区间，将首段长度归纳为 $k$ 或 $k+1$，得到递归求值模型。",
+        "statement_brief": "变量 $x$ 初始为 $0$。操作 1 连续执行时，第 $k$ 次加上 $2^k$，操作 2 将 $x$ 减 $1$ 且重置连续计数；对每个非负整数 $n$，求达到 $x=n$ 的最少操作数 $f(n)$，并计算区间 $[l,r]$ 内所有 $f(n)$ 之和。",
+        "transformed_statement": "把一段连续的操作 1 及其后的操作 2 抽象为一次代价为 $k+1$、增量为 $2^k-2$ 的单元；对 $2^k\\le n<2^{k+1}$，只需比较首段长度为 $k$ 或 $k+1$ 的两种递归转移。",
         "key_observations": [
-          "连续执行 $k$ 次操作1 后必须接操作2 才能继续，这个整体花费 $k+1$ 次、净增加 $2^k-2$，且操作2会重置连续计数，因此这些单元的先后顺序不影响结果。",
-          "若 $2^k\\le n<2^{k+1}$，最优方案的首个操作1区块只需考虑长度 $k$ 或 $k+1$；更短区块无法更优，从而把选择压缩为两种转移。",
-          "长度为 $k$ 的区块接一次操作2后递归处理 $n-2^k+2$，长度为 $k+1$ 的区块则直接从 $2^{k+1}-1$ 反向减到 $n$，得到两个候选代价。",
-          "递归参数每次大致减半，所以单个 $f(n)$ 只需 $O(\\log V)$；由于简单版本区间总长度受限，可逐个计算并累加。"
+          "连续进行 $k$ 次操作 1 后接一次操作 2，可视为代价 $k+1$、使 $x$ 增加 $2^k-2$ 的独立单元，操作单元的顺序不影响总结果。",
+          "若 $2^k\\le n<2^{k+1}$，最优方案的首个操作 1 区块只需取长度 $k$ 或 $k+1$；更短区块不会更优，从而将选择压缩为两种情况。",
+          "长度为 $k$ 的区块后接操作 2 会转移到 $n-2^k+2$，长度为 $k+1$ 的区块则直接减去多余值，因此得到递归 $f(n)=\\min(f(n-2^k+2)+k+1,\\ 2^{k+1}-n+k)$。",
+          "递归转移后的参数约减半，单个 $f(n)$ 只需 $O(\\log V)$；easy 版可直接枚举区间内每个 $n$ 并累加。"
         ],
-        "solution_brief": "设 $f(0)=0,f(1)=1,f(2)=3,f(3)=2$。令 $k=\\lfloor\\log_2 n\\rfloor$，对 $n\\ge4$ 使用 $f(n)=\\min(f(n-2^k+2)+k+1,\\,2^{k+1}-n+k)$，逐个枚举区间内的 $n$ 求和并取模。",
-        "primary_topic": "动态规划与状态设计",
+        "solution_brief": "将连续操作 1 与后续操作 2 合并成独立单元，按 $n$ 的最高二进制位只比较长度为 $k$、$k+1$ 的首块，递归计算 $f(n)$，再枚举区间求和并取模。",
+        "primary_topic": "构造与贪心",
         "secondary_topics": [
-          "构造与贪心",
-          "基础实现与模拟"
+          "动态规划与状态设计"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 statement_text 与 editorial_text；tags 仅用于辅助主题归类。",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 tags；核心递推和复杂度来自 editorial。",
         "quality_flags": []
       }
     },
@@ -102276,26 +102274,25 @@
       "editorial_url": "https://codeforces.com/blog/entry/158113",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "cf9db23ebe2952a01a3f018016a06205cde9c2bb52fa7155a06ef481f650733e",
-      "generated_at": "2026-10-24T16:31:52+00:00",
+      "input_hash": "cf269edddb0988892fd58510f3cc46291b9bf0df7b2c3c77db6e31ad512e0321",
+      "generated_at": "2026-10-27T18:36:52+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一棵树和 $m$ 次操作。每次先加入边 $(1,v_i)$ 形成环，再从该环中删除任意一条边（新边也可以删），使图重新成为树；求全部操作后顶点 $1$ 与顶点 $n$ 的最大可能距离。",
-        "transformed_statement": "把每次操作视为是否保留一条连接 $1$ 与 $v_i$ 的候选边。最终目标路径至多使用一条候选边，因此答案转化为初始距离，或对满足原路径 $v_i\\to n$ 不经过 $1$ 的操作取 $1+\\operatorname{dist}(v_i,n)$ 的最大值。",
+        "statement_brief": "给定一棵以 $1$ 到 $n$ 为目标的树，按顺序进行 $m$ 次操作：先添加边 $(1,v_i)$（允许出现平行边），再从形成的环中删除一条边，使图恢复为树。求所有删除选择完成后，顶点 $1$ 与 $n$ 的最大距离。",
+        "transformed_statement": "把每次操作视为是否让新增边成为最终路径从 $1$ 出发的第一条边；若 $v_i$ 到 $n$ 的原路径不经过 $1$，该选择贡献 $1+\\operatorname{dist}(v_i,n)$，否则只能保留原路径。最终只需在初始距离和这些候选值中取最大值。",
         "key_observations": [
-          "所有新增边都连接顶点 $1$，因此最终 $1$ 到 $n$ 的简单路径至多使用一条新增边，问题只需考虑一次操作带来的最优贡献。",
-          "若保留新增边 $(1,v_i)$，当且仅当原树中 $v_i$ 到 $n$ 的路径不经过 $1$ 时才可能增大答案；此时删除 $1$ 到 $n$ 原路径上的第一条边即可得到距离 $1+\\operatorname{dist}(v_i,n)$。",
-          "从 $n$ 出发且不继续扩展顶点 $1$，被到达的顶点恰好是其到 $n$ 的路径不经过 $1$ 的顶点，因此一次遍历即可筛出所有有效操作。",
-          "所有其他操作都可以删除新边，故答案是初始距离与所有有效候选值的最大值，操作出现次数只影响候选是否存在。"
+          "最终的 $1$ 到 $n$ 简单路径至多使用一条新增边，因为所有新增边都连接到 $1$，而简单路径离开 $1$ 后不能再次回到 $1$。",
+          "若原树中 $v_i$ 到 $n$ 的路径经过 $1$，新增边无法让路径变长；否则保留 $(1,v_i)$ 可将答案变为 $1+\\operatorname{dist}(v_i,n)$。",
+          "保留新增边时，删除其形成环上原本连接到 $1$ 的那条边即可维持树结构，因此一次操作就能实现该候选值，其余操作删除新增边不会造成额外损失。",
+          "从 $n$ 出发且不继续扩展顶点 $1$，恰好能得到所有不经过 $1$ 的到 $n$ 路径距离，从而直接筛选有效的操作点。"
         ],
-        "solution_brief": "从顶点 $n$ BFS，遇到顶点 $1$ 后停止扩展，记录所有可行的 $\\operatorname{dist}(v_i,n)$。扫描操作序列，取初始距离与 $d[v_i]+1$ 的最大值；每个测试用例复杂度为 $O(n+m)$。",
+        "solution_brief": "从 $n$ 出发遍历原树，但到达 $1$ 后停止扩展，得到所有可用于新增边的 $\\operatorname{dist}(v,n)$。答案取初始 $\\operatorname{dist}(1,n)$ 与每个操作的 $d[v_i]+1$ 最大值；无效点的距离为未访问值，不会贡献更优答案。",
         "primary_topic": "树结构",
         "secondary_topics": [
-          "图论与网络流",
           "构造与贪心"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面、editorial 的两个提示与 Tutorial，以及其给出的 BFS 实现和复杂度分析。",
+        "source_provenance": "依据完整题面、editorial_text 中的两个提示、Tutorial、代码与 tags 提炼。",
         "quality_flags": []
       }
     },
@@ -102390,25 +102387,26 @@
       "editorial_url": "https://codeforces.com/blog/entry/158188",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "aca4cc2e409049c64a3ae273998eb4468219e4ac24b58a78d32ae28344d01841",
-      "generated_at": "2026-10-27T05:37:14+00:00",
+      "input_hash": "60d60ba0e408f5444b97af986016ebed168a592b0973bac2e5eecbe72aa6135a",
+      "generated_at": "2026-10-27T18:34:55+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "Bob 先选择树的初始根，随后 Alice 与 Bob 轮流操作：从当前根选一个子节点，要么把它变成新根，要么删除该节点的整棵子树；每个顶点至多当一次根。无合法操作者输，需判断胜者，并在 Bob 能赢时输出所有必胜初始根。",
-        "transformed_statement": "将转根到子树 $v$ 看作保留该子树，并把根外部分的处理折算成一次额外 Pass。于是用 $f(u,p)$ 表示带一次 Pass、排除方向 $p$ 的状态，用 $g(u)$ 表示无 Pass 时以 $u$ 为根的状态，并通过换根 DP 同时求出全部状态。",
+        "statement_brief": "给定一棵树和当前根，轮流选择当前根的一个孩子：要么把该孩子设为新根，要么删除其整棵子树；每个顶点最多成为根一次，无合法操作者输。Bob 可先选择初始根，要求判断胜者并输出所有能让 Bob 获胜的初始根。",
+        "transformed_statement": "将“移根到孩子”视为进入该孩子对应的子问题，同时把根子树外的部分折算成对后续的一次额外 Pass。于是用带 Pass 的 $f(u,p)$ 和不带 Pass 的 $g(u)$ 描述局面，并通过换根 DP 同时求出所有初始根结果。",
         "key_observations": [
-          "把当前根转到子树 $v$ 的操作等价为只保留该子树，并在新状态中额外获得一次 Pass，从而可递归处理单个方向。",
-          "在带一次额外 Pass 的状态中，只要存在一个会让对手输的子方向即可获胜；若所有方向都让对手获胜，则胜负仅由可选方向数的奇偶决定。",
-          "固定临时根后，子树状态可由后序 DP 求出；利用父侧状态向下传递即可得到所有换根后的状态，避免为每个初始根重复计算。",
-          "无额外 Pass 的初始状态 $g(u)$ 在存在输的邻接方向或度数为奇数时获胜，因此所有满足 $g(u)=0$ 的顶点正是 Bob 的可选初始根。"
+          "把当前根移到某个孩子后，原孩子子树外的部分可等价看成下一回合一次性删除；因此转移到该孩子会给对手留下一个额外的 Pass 状态。",
+          "定义 $f(u,p)$ 表示从 $p$ 重根到 $u$ 且保留一次 Pass，定义 $g(u)$ 表示以 $u$ 为初始根且没有 Pass；这样所有根选择都能统一为两类状态。",
+          "在 $f$ 状态中，只要存在一个后继为必败状态即可获胜；若所有方向都胜，则结果只由可用方向数奇偶决定，从而得到子树 DP 转移。",
+          "固定临时根后，子方向信息由 down 表示，父方向信息由 up 表示；换根 DP 在一次自底向上和一次自顶向下遍历中求出所有 $g(u)$，避免为每个初始根重复计算。"
         ],
-        "solution_brief": "以 1 为临时根，后序计算子树状态和输方向数量，再前序进行换根 DP，得到每个顶点的父侧状态及初始状态 $g(u)$。若存在 $g(u)=0$，输出这些顶点，否则输出 Alice；总复杂度 $O(n)$。",
-        "primary_topic": "动态规划与状态设计",
+        "solution_brief": "先以 1 为临时根计算各子树的 down，再自顶向下计算父侧的 up，并结合每个顶点的必败方向数与度数奇偶得到 $g(u)$。所有 $g(u)=0$ 的顶点就是 Bob 的获胜初始根；总复杂度为 $O(n)$。",
+        "primary_topic": "博弈",
         "secondary_topics": [
-          "树结构"
+          "树结构",
+          "动态规划与状态设计"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text、statement_text 和 trees/dp 标签提炼。",
+        "source_provenance": "依据完整题面、editorial 中的状态转移与换根 DP，以及 tags。",
         "quality_flags": []
       }
     },
@@ -102538,25 +102536,23 @@
       "editorial_url": "https://codeforces.com/blog/entry/158188",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "2165753edd412cae40b0f25925c7965ffdccaf8f034323e10d55d2d36b8b93ac",
-      "generated_at": "2026-10-27T05:41:10+00:00",
+      "input_hash": "66b24c7d407c776cdb022f4c000345ace21accf27745193cdba088d527925037",
+      "generated_at": "2026-10-27T18:35:18+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一个由 $0$ 到 $n-1$ 组成的排列，最多交换一次两个不同位置的元素。计算每个前缀的 MEX，并选择交换位置，使这些 MEX 的第 $k$ 大值最大；若无需交换则输出 $-1$。",
-        "transformed_statement": "令目标前缀长度为 $p=n-k+1$，因为前缀 MEX 单调不减，第 $k$ 大的 MEX 就是前缀 $[1,p]$ 的 MEX。问题转化为至多交换一次，使这个固定前缀的 MEX 最大。",
+        "statement_brief": "给定一个恰好包含 $0$ 到 $n-1$ 的排列，至多一次选择两个不同下标交换元素。对每个前缀计算 MEX，要求选择交换位置，使这些 MEX 中第 $k$ 大的值最大；若无需交换则输出 $-1$。",
+        "transformed_statement": "由于前缀 MEX 单调不降，第 $k$ 大值等于第 $n-k+1$ 个前缀的 MEX。因此只需把数组划分为长度 $m=n-k+1$ 的目标前缀和其余后缀，通过一次跨区交换最大化目标前缀的 MEX。",
         "key_observations": [
-          "由于前缀包含的元素只会增加，$f_i$ 单调不减，因此第 $k$ 大的值等于 $f_{n-k+1}$，目标可改为最大化长度为 $n-k+1$ 的前缀 MEX。",
-          "设该前缀的 MEX 为 $v$；交换同一侧的两个位置不会改变目标前缀，跨侧交换时应把后缀中的 $v$ 换入前缀，并保证被换出的前缀值大于 $v$，才能使 MEX 增大。",
-          "前缀中最大值为 $x$、后缀中最小值为 $y$；由排列性质，$y=v$。当 $x>y$ 时交换它们即可提升目标，否则前缀已包含 $0$ 到 $v-1$，不交换才是最优。",
-          "当 $k=1$ 时目标是整个排列的 MEX，始终为 $n$，任何交换都无法提升，因此直接输出 $-1$。"
+          "前缀 MEX 单调不降，因此第 $k$ 大的值必为 $f_{n-k+1}$，目标转为最大化长度为 $n-k+1$ 的前缀 MEX。",
+          "设该前缀当前 MEX 为 $v$；同一前缀内或同一后缀内交换不会改变它，只有跨越前后缀交换才可能提升答案。",
+          "跨区交换时，应把后缀中的最小值与前缀中的最大值比较：若前缀最大值更大，交换它们可将缺失值补入前缀并提升 MEX；否则前缀已包含 $0$ 到当前 MEX 前的所有必要值，不交换最优。",
+          "当 $k=1$ 时目标是完整数组的 MEX，交换不改变完整排列的 MEX，故无需操作。"
         ],
-        "solution_brief": "利用前缀 MEX 单调性，把目标定位为第 $n-k+1$ 个前缀。取该前缀最大值和其后最小值；若前者更大则交换，否则输出 $-1$。$k=1$ 时直接无需交换。",
+        "solution_brief": "令 $m=n-k+1$，只需最大化前缀 $a_1 ext{..}a_m$ 的 MEX。取前缀最大值和后缀最小值；若前者更大则交换，否则输出 $-1$。$k=1$ 时直接输出 $-1$，总复杂度为 $O(n)$。",
         "primary_topic": "构造与贪心",
-        "secondary_topics": [
-          "基础实现与模拟"
-        ],
+        "secondary_topics": [],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 brute force 标签整理。",
+        "source_provenance": "依据完整 statement_text、editorial_text 及 tags 中的 greedy 信息提炼。",
         "quality_flags": []
       }
     }
