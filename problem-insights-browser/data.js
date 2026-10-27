@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4365,
+    "total_problems": 4364,
     "source_total_problems": 4369,
-    "filtered_out_problems": 4,
-    "with_statement_brief": 4365,
-    "with_editorial_brief": 4005,
-    "with_solution_brief": 4007,
+    "filtered_out_problems": 5,
+    "with_statement_brief": 4364,
+    "with_editorial_brief": 4004,
+    "with_solution_brief": 4006,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3427,
+    "ai_override_count": 3426,
     "primary_topic_count": 13,
     "contest_count": 682,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1435,
+    "构造与贪心": 1434,
     "动态规划与状态设计": 357,
     "数据结构": 412,
     "图论与网络流": 295,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 2998,
+    "ai_generated_with_editorial": 2997,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,36 +83,9 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-26",
       "url": "https://codeforces.com/contest/2272",
       "type": "Div. 2",
-      "problemCount": 6,
+      "problemCount": 5,
       "maxRating": null,
       "problems": [
-        {
-          "key": "2272A",
-          "index": "A",
-          "slot": "A",
-          "title": "Maximize One MEX",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2272/problem/A",
-          "editorialUrl": "https://codeforces.com/blog/entry/158188",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "brute force"
-          ],
-          "statementBrief": "给定一个由 $0$ 到 $n-1$ 组成的排列，最多交换一次两个不同位置的元素。计算每个前缀的 MEX，并选择交换位置，使这些 MEX 的第 $k$ 大值最大；若无需交换则输出 $-1$。",
-          "transformedStatement": "令目标前缀长度为 $p=n-k+1$，因为前缀 MEX 单调不减，第 $k$ 大的 MEX 就是前缀 $[1,p]$ 的 MEX。问题转化为至多交换一次，使这个固定前缀的 MEX 最大。",
-          "keyObservations": [
-            "由于前缀包含的元素只会增加，$f_i$ 单调不减，因此第 $k$ 大的值等于 $f_{n-k+1}$，目标可改为最大化长度为 $n-k+1$ 的前缀 MEX。",
-            "设该前缀的 MEX 为 $v$；交换同一侧的两个位置不会改变目标前缀，跨侧交换时应把后缀中的 $v$ 换入前缀，并保证被换出的前缀值大于 $v$，才能使 MEX 增大。",
-            "前缀中最大值为 $x$、后缀中最小值为 $y$；由排列性质，$y=v$。当 $x>y$ 时交换它们即可提升目标，否则前缀已包含 $0$ 到 $v-1$，不交换才是最优。",
-            "当 $k=1$ 时目标是整个排列的 MEX，始终为 $n$，任何交换都无法提升，因此直接输出 $-1$。"
-          ],
-          "solutionBrief": "利用前缀 MEX 单调性，把目标定位为第 $n-k+1$ 个前缀。取该前缀最大值和其后最小值；若前者更大则交换，否则输出 $-1$。$k=1$ 时直接无需交换。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
         {
           "key": "2272B",
           "index": "B",
