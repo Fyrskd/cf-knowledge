@@ -379,6 +379,86 @@
     ]
   },
   {
+    "contestId": 2272,
+    "index": "G",
+    "name": "Ranges",
+    "type": "PROGRAMMING",
+    "points": 2500.0,
+    "tags": [
+      "data structures",
+      "divide and conquer",
+      "dsu"
+    ]
+  },
+  {
+    "contestId": 2272,
+    "index": "F",
+    "name": "Tree Reduction Game",
+    "type": "PROGRAMMING",
+    "points": 2000.0,
+    "tags": [
+      "dfs and similar",
+      "dp",
+      "trees"
+    ]
+  },
+  {
+    "contestId": 2272,
+    "index": "E",
+    "name": "Memory Cell Interception",
+    "type": "PROGRAMMING",
+    "points": 1750.0,
+    "tags": [
+      "data structures",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2272,
+    "index": "D",
+    "name": "Connecting the Conflicts",
+    "type": "PROGRAMMING",
+    "points": 1250.0,
+    "tags": [
+      "brute force",
+      "constructive algorithms",
+      "dfs and similar",
+      "dp"
+    ]
+  },
+  {
+    "contestId": 2272,
+    "index": "C",
+    "name": "Yet Another Black Cell Problem",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "tags": [
+      "binary search",
+      "dp"
+    ]
+  },
+  {
+    "contestId": 2272,
+    "index": "B",
+    "name": "Frogs Jump",
+    "type": "PROGRAMMING",
+    "points": 1000.0,
+    "tags": [
+      "constructive algorithms",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2272,
+    "index": "A",
+    "name": "Maximize One MEX",
+    "type": "PROGRAMMING",
+    "points": 500.0,
+    "tags": [
+      "brute force"
+    ]
+  },
+  {
     "contestId": 2271,
     "index": "H2",
     "name": "Personal Issues (Hard Version)",

@@ -1,10 +1,10 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-26",
+  "generatedAt": "2026-10-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4362,
-    "source_total_problems": 4362,
-    "filtered_out_problems": 0,
+    "source_total_problems": 4369,
+    "filtered_out_problems": 7,
     "with_statement_brief": 4362,
     "with_editorial_brief": 4002,
     "with_solution_brief": 4004,

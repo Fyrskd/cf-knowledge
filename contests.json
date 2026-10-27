@@ -7421,7 +7421,7 @@
     "frozen": false,
     "durationSeconds": 9000,
     "startTimeSeconds": 1791384300,
-    "relativeTimeSeconds": 1635033,
+    "relativeTimeSeconds": 1692839,
     "date": "2026-10-07"
   },
   {
@@ -7432,7 +7432,7 @@
     "frozen": false,
     "durationSeconds": 10800,
     "startTimeSeconds": 1791644700,
-    "relativeTimeSeconds": 1374633,
+    "relativeTimeSeconds": 1432439,
     "date": "2026-10-10"
   },
   {
@@ -7443,7 +7443,7 @@
     "frozen": false,
     "durationSeconds": 7200,
     "startTimeSeconds": 1791743700,
-    "relativeTimeSeconds": 1275633,
+    "relativeTimeSeconds": 1333439,
     "date": "2026-10-11"
   },
   {
@@ -7454,7 +7454,7 @@
     "frozen": false,
     "durationSeconds": 7200,
     "startTimeSeconds": 1791743700,
-    "relativeTimeSeconds": 1275633,
+    "relativeTimeSeconds": 1333439,
     "date": "2026-10-11"
   },
   {
@@ -7465,7 +7465,7 @@
     "frozen": false,
     "durationSeconds": 7200,
     "startTimeSeconds": 1791988500,
-    "relativeTimeSeconds": 1030832,
+    "relativeTimeSeconds": 1088639,
     "date": "2026-10-14"
   },
   {
@@ -7476,7 +7476,7 @@
     "frozen": false,
     "durationSeconds": 10800,
     "startTimeSeconds": 1792247700,
-    "relativeTimeSeconds": 771633,
+    "relativeTimeSeconds": 829439,
     "date": "2026-10-17"
   },
   {
@@ -7487,7 +7487,18 @@
     "frozen": false,
     "durationSeconds": 8100,
     "startTimeSeconds": 1792839900,
-    "relativeTimeSeconds": 179433,
+    "relativeTimeSeconds": 237239,
     "date": "2026-10-24"
+  },
+  {
+    "id": 2272,
+    "name": "Codeforces Round 1130 (Div. 2)",
+    "type": "CF",
+    "phase": "FINISHED",
+    "frozen": false,
+    "durationSeconds": 8100,
+    "startTimeSeconds": 1793025300,
+    "relativeTimeSeconds": 51839,
+    "date": "2026-10-26"
   }
 ]
