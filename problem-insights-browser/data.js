@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-27",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4369,
+    "total_problems": 4365,
     "source_total_problems": 4369,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4369,
-    "with_editorial_brief": 4009,
-    "with_solution_brief": 4011,
+    "filtered_out_problems": 4,
+    "with_statement_brief": 4365,
+    "with_editorial_brief": 4005,
+    "with_solution_brief": 4007,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3431,
+    "ai_override_count": 3427,
     "primary_topic_count": 13,
     "contest_count": 682,
     "rating_min": 800,
@@ -45,21 +45,21 @@ window.CF_INSIGHTS_DATA = {
   ],
   "topicCounts": {
     "构造与贪心": 1435,
-    "动态规划与状态设计": 360,
+    "动态规划与状态设计": 357,
     "数据结构": 412,
     "图论与网络流": 295,
     "数论与同余": 454,
     "交互": 133,
     "组合计数与概率": 333,
     "几何": 101,
-    "树结构": 201,
+    "树结构": 200,
     "字符串": 230,
     "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
     "博弈": 127
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 3002,
+    "ai_generated_with_editorial": 2998,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-26",
       "url": "https://codeforces.com/contest/2272",
       "type": "Div. 2",
-      "problemCount": 7,
+      "problemCount": 6,
       "maxRating": null,
       "problems": [
         {
@@ -226,35 +226,6 @@ window.CF_INSIGHTS_DATA = {
           "editorialQuality": "complete"
         },
         {
-          "key": "2272F",
-          "index": "F",
-          "slot": "F",
-          "title": "Tree Reduction Game",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2272/problem/F",
-          "editorialUrl": "https://codeforces.com/blog/entry/158188",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "树结构"
-          ],
-          "originalTags": [
-            "dfs and similar",
-            "dp",
-            "trees"
-          ],
-          "statementBrief": "Bob 先选择树的初始根，随后 Alice 与 Bob 轮流操作：从当前根选一个子节点，要么把它变成新根，要么删除该节点的整棵子树；每个顶点至多当一次根。无合法操作者输，需判断胜者，并在 Bob 能赢时输出所有必胜初始根。",
-          "transformedStatement": "将转根到子树 $v$ 看作保留该子树，并把根外部分的处理折算成一次额外 Pass。于是用 $f(u,p)$ 表示带一次 Pass、排除方向 $p$ 的状态，用 $g(u)$ 表示无 Pass 时以 $u$ 为根的状态，并通过换根 DP 同时求出全部状态。",
-          "keyObservations": [
-            "把当前根转到子树 $v$ 的操作等价为只保留该子树，并在新状态中额外获得一次 Pass，从而可递归处理单个方向。",
-            "在带一次额外 Pass 的状态中，只要存在一个会让对手输的子方向即可获胜；若所有方向都让对手获胜，则胜负仅由可选方向数的奇偶决定。",
-            "固定临时根后，子树状态可由后序 DP 求出；利用父侧状态向下传递即可得到所有换根后的状态，避免为每个初始根重复计算。",
-            "无额外 Pass 的初始状态 $g(u)$ 在存在输的邻接方向或度数为奇数时获胜，因此所有满足 $g(u)=0$ 的顶点正是 Bob 的可选初始根。"
-          ],
-          "solutionBrief": "以 1 为临时根，后序计算子树状态和输方向数量，再前序进行换根 DP，得到每个顶点的父侧状态及初始状态 $g(u)$。若存在 $g(u)=0$，输出这些顶点，否则输出 Alice；总复杂度 $O(n)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
           "key": "2272G",
           "index": "G",
           "slot": "G",
@@ -290,7 +261,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-24",
       "url": "https://codeforces.com/contest/2277",
       "type": "Div. 2",
-      "problemCount": 7,
+      "problemCount": 4,
       "maxRating": null,
       "problems": [
         {
@@ -339,101 +310,6 @@ window.CF_INSIGHTS_DATA = {
             "若原数组最小值小于 $n$，整个数组本身就是良好子序列；否则任意长度为 $m\\le n$ 的子序列都有最小值至少为 $n\\ge m$，不可能良好。"
           ],
           "solutionBrief": "先求数组最小值。若最小值小于数组长度，则答案为 $n$；否则不存在良好非空子序列，答案为 $0$。整体只需线性扫描。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2277C",
-          "index": "C",
-          "slot": "C",
-          "title": "Edge Addeleting",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2277/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/158113",
-          "primaryTopic": "树结构",
-          "secondaryTopics": [
-            "图论与网络流",
-            "构造与贪心"
-          ],
-          "originalTags": [
-            "dfs and similar",
-            "graphs",
-            "greedy",
-            "trees"
-          ],
-          "statementBrief": "给定一棵树和 $m$ 次操作。每次先加入边 $(1,v_i)$ 形成环，再从该环中删除任意一条边（新边也可以删），使图重新成为树；求全部操作后顶点 $1$ 与顶点 $n$ 的最大可能距离。",
-          "transformedStatement": "把每次操作视为是否保留一条连接 $1$ 与 $v_i$ 的候选边。最终目标路径至多使用一条候选边，因此答案转化为初始距离，或对满足原路径 $v_i\\to n$ 不经过 $1$ 的操作取 $1+\\operatorname{dist}(v_i,n)$ 的最大值。",
-          "keyObservations": [
-            "所有新增边都连接顶点 $1$，因此最终 $1$ 到 $n$ 的简单路径至多使用一条新增边，问题只需考虑一次操作带来的最优贡献。",
-            "若保留新增边 $(1,v_i)$，当且仅当原树中 $v_i$ 到 $n$ 的路径不经过 $1$ 时才可能增大答案；此时删除 $1$ 到 $n$ 原路径上的第一条边即可得到距离 $1+\\operatorname{dist}(v_i,n)$。",
-            "从 $n$ 出发且不继续扩展顶点 $1$，被到达的顶点恰好是其到 $n$ 的路径不经过 $1$ 的顶点，因此一次遍历即可筛出所有有效操作。",
-            "所有其他操作都可以删除新边，故答案是初始距离与所有有效候选值的最大值，操作出现次数只影响候选是否存在。"
-          ],
-          "solutionBrief": "从顶点 $n$ BFS，遇到顶点 $1$ 后停止扩展，记录所有可行的 $\\operatorname{dist}(v_i,n)$。扫描操作序列，取初始距离与 $d[v_i]+1$ 的最大值；每个测试用例复杂度为 $O(n+m)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2277D1",
-          "index": "D1",
-          "slot": "D",
-          "title": "Number Operating (Easy Version)",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2277/problem/D1",
-          "editorialUrl": "https://codeforces.com/blog/entry/158113",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "构造与贪心",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "binary search",
-            "bitmasks",
-            "brute force",
-            "dp",
-            "greedy",
-            "implementation"
-          ],
-          "statementBrief": "初始 $x=0$。操作1会加上 $2^k$，其中 $k$ 是此前连续执行操作1的次数；操作2将 $x$ 减一并重置连续次数。对每个非负整数 $n$，求把 $x$ 变为 $n$ 的最少操作数 $f(n)$，并计算区间 $[l,r]$ 内所有 $f(n)$ 的和。",
-          "transformedStatement": "把一段连续的操作1及其后的操作2视为一个独立单元：长度为 $k$ 的操作1段与一次操作2合计代价 $k+1$、净增 $2^k-2$。按 $n$ 所在的二进制区间，将首段长度归纳为 $k$ 或 $k+1$，得到递归求值模型。",
-          "keyObservations": [
-            "连续执行 $k$ 次操作1 后必须接操作2 才能继续，这个整体花费 $k+1$ 次、净增加 $2^k-2$，且操作2会重置连续计数，因此这些单元的先后顺序不影响结果。",
-            "若 $2^k\\le n<2^{k+1}$，最优方案的首个操作1区块只需考虑长度 $k$ 或 $k+1$；更短区块无法更优，从而把选择压缩为两种转移。",
-            "长度为 $k$ 的区块接一次操作2后递归处理 $n-2^k+2$，长度为 $k+1$ 的区块则直接从 $2^{k+1}-1$ 反向减到 $n$，得到两个候选代价。",
-            "递归参数每次大致减半，所以单个 $f(n)$ 只需 $O(\\log V)$；由于简单版本区间总长度受限，可逐个计算并累加。"
-          ],
-          "solutionBrief": "设 $f(0)=0,f(1)=1,f(2)=3,f(3)=2$。令 $k=\\lfloor\\log_2 n\\rfloor$，对 $n\\ge4$ 使用 $f(n)=\\min(f(n-2^k+2)+k+1,\\,2^{k+1}-n+k)$，逐个枚举区间内的 $n$ 求和并取模。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2277D2",
-          "index": "D2",
-          "slot": "D",
-          "title": "Number Operating (Hard Version)",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2277/problem/D2",
-          "editorialUrl": "https://codeforces.com/blog/entry/158113",
-          "primaryTopic": "动态规划与状态设计",
-          "secondaryTopics": [
-            "构造与贪心",
-            "基础实现与模拟"
-          ],
-          "originalTags": [
-            "bitmasks",
-            "brute force",
-            "divide and conquer",
-            "implementation"
-          ],
-          "statementBrief": "有一个初始为 $0$ 的变量 $x$。每次可连续执行递增操作，连续次数为 $k$ 时加上 $2^k$，也可执行减一操作并重置连续计数；对每个非负整数 $n$，求把 $x$ 变为 $n$ 的最少操作数 $f(n)$，并计算区间 $[l,r]$ 内所有 $f(n)$ 之和。",
-          "transformedStatement": "把每个目标值按最高位划入区间 $[2^k,2^{k+1})$，将最短操作数写成“递推到更小值并支付 $k+1$”与“从下一个二进制边界连续减到目标”的较小者；再对 $f$ 建前缀和 $g$，把区间求和递归降到更低最高位。",
-          "keyObservations": [
-            "在区间 $[2^k,2^{k+1})$ 内，$f(n)$ 的两种选择分别对应递推到 $n-2^k+2$ 并增加 $k+1$，或直接从 $2^{k+1}$ 连减到 $n$；因此可比较两种明确代价。",
-            "先证明 $f(n)=O(\\log^2 V)$，即可用固定阈值截断每个二进制区间：只有末尾少量位置可能选择第二种方案，主体区间都能递推到更小最高位。",
-            "令 $g(n)=\\sum_{i=0}^{n}f(i)$，主体区间的总和可转化为更小参数的 $g$ 值加常数项；末尾区域通过预处理或等差数列直接求和。",
-            "利用 $h(n)=f(n)+n$ 单调，第一种方案最优的位置形成前缀，可按预算贪心选取不同长度的连续操作块，从而在 $O(\\log^2 V)$ 内预处理每个二进制层的分界点。"
-          ],
-          "solutionBrief": "预处理每个 $[2^k,2^{k+1})$ 的最优分界点及前缀和。查询 $g(n)$ 时将主体部分递归转为更小最高位的 $g$，末尾部分按等差数列求和，答案为 $g(r)-g(l-1)$；预处理 $O(\\log^2 V)$，单次查询 $O(\\log V)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },

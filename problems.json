@@ -34,7 +34,7 @@
       "bitmasks",
       "brute force",
       "divide and conquer",
-      "implementation"
+      "dp"
     ]
   },
   {
@@ -46,10 +46,7 @@
     "tags": [
       "binary search",
       "bitmasks",
-      "brute force",
-      "dp",
-      "greedy",
-      "implementation"
+      "greedy"
     ]
   },
   {
@@ -60,7 +57,6 @@
     "points": 1500.0,
     "tags": [
       "dfs and similar",
-      "graphs",
       "greedy",
       "trees"
     ]
@@ -399,6 +395,7 @@
     "tags": [
       "dfs and similar",
       "dp",
+      "games",
       "trees"
     ]
   },
