@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4368,
+    "total_problems": 4369,
     "source_total_problems": 4369,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4368,
-    "with_editorial_brief": 4008,
-    "with_solution_brief": 4010,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4369,
+    "with_editorial_brief": 4009,
+    "with_solution_brief": 4011,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3430,
+    "ai_override_count": 3431,
     "primary_topic_count": 13,
     "contest_count": 682,
     "rating_min": 800,
@@ -56,10 +56,10 @@ window.CF_INSIGHTS_DATA = {
     "字符串": 230,
     "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
-    "博弈": 127
+    "博弈": 128
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 3001,
+    "ai_generated_with_editorial": 3002,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-26",
       "url": "https://codeforces.com/contest/2272",
       "type": "Div. 2",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
         {
@@ -222,6 +222,37 @@ window.CF_INSIGHTS_DATA = {
             "分别把两条字符串作为目标串处理，并预处理另一串的 W 位置及相邻间隔，可将所有读操作的答案在线性总长度内求出。"
           ],
           "solutionBrief": "对每条字符串分别扫描。若 R 前已有本串 W，直接按最近 W、另一串长度及最后一个 W 的位置计算连续答案区间；否则维护另一串所有 W 产生的增长区间并集，利用相遇事件更新其大小，整体复杂度为 $O(n+m)$。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2272F",
+          "index": "F",
+          "slot": "F",
+          "title": "Tree Reduction Game",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2272/problem/F",
+          "editorialUrl": "https://codeforces.com/blog/entry/158188",
+          "primaryTopic": "博弈",
+          "secondaryTopics": [
+            "树结构",
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "dfs and similar",
+            "dp",
+            "games",
+            "trees"
+          ],
+          "statementBrief": "给定一棵树，Bob 先选择初始根，Alice 先行动；当前根为 $u$ 时，玩家必须选一个子节点，要么把它改为新根，要么删除其整棵子树，且每个顶点最多成为根一次。无合法操作者输，要求判断胜者，并在 Bob 能赢时输出所有必胜的初始根。",
+          "transformedStatement": "将改根操作抽象为只保留目标子树、同时给下一状态附加一次 Pass 的方向博弈；用 $f(u,p)$ 表示排除父方向且带 Pass 的状态，用 $g(u)$ 表示初始根状态，再通过换根 DP 求遍所有顶点。",
+          "keyObservations": [
+            "把改根到子节点等价为舍弃该子树外的部分，并额外产生一次 Pass；因此可将局面压缩为带或不带额外 Pass 的方向状态。",
+            "在带额外 Pass 的状态中，只要存在一个子方向是必败态就能获胜；否则胜负由可走方向数的奇偶决定，得到 $down[u]=1\\iff h(u)>0\\lor c\\bmod 2=0$。",
+            "计算 $up[v]$ 时只需排除方向 $v$，检查其余方向是否仍有必败态及剩余度数奇偶性，从而能在父节点信息确定后常数时间转移。",
+            "初始根状态没有额外 Pass，$g(u)$ 在存在必败邻接方向或度数为奇数时获胜；对所有顶点求出 $g$ 即可筛选 Bob 的胜利根。"
+          ],
+          "solutionBrief": "固定顶点 $1$ 临时定根，先自底向上计算各子树的 $down$ 与必败子方向数，再自顶向下计算排除某方向后的 $up$。据此用初始状态 $g(u)$ 判断每个根，输出所有 $g(u)=0$ 的顶点；总复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },

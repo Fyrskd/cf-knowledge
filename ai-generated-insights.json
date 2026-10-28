@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-10-28T13:26:36+00:00",
+  "updated_at": "2026-10-28T23:07:42+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -102387,26 +102387,26 @@
       "editorial_url": "https://codeforces.com/blog/entry/158188",
       "editorial_quality": "complete",
       "model": "gpt-6-luna",
-      "input_hash": "60d60ba0e408f5444b97af986016ebed168a592b0973bac2e5eecbe72aa6135a",
-      "generated_at": "2026-10-27T18:34:55+00:00",
+      "input_hash": "91d86d0353af61e9ba81ef8f05fe893f5de078690a29e3ed1e88168f5958bca7",
+      "generated_at": "2026-10-28T23:07:42+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "给定一棵树和当前根，轮流选择当前根的一个孩子：要么把该孩子设为新根，要么删除其整棵子树；每个顶点最多成为根一次，无合法操作者输。Bob 可先选择初始根，要求判断胜者并输出所有能让 Bob 获胜的初始根。",
-        "transformed_statement": "将“移根到孩子”视为进入该孩子对应的子问题，同时把根子树外的部分折算成对后续的一次额外 Pass。于是用带 Pass 的 $f(u,p)$ 和不带 Pass 的 $g(u)$ 描述局面，并通过换根 DP 同时求出所有初始根结果。",
+        "statement_brief": "给定一棵树，Bob 先选择初始根，Alice 先行动；当前根为 $u$ 时，玩家必须选一个子节点，要么把它改为新根，要么删除其整棵子树，且每个顶点最多成为根一次。无合法操作者输，要求判断胜者，并在 Bob 能赢时输出所有必胜的初始根。",
+        "transformed_statement": "将改根操作抽象为只保留目标子树、同时给下一状态附加一次 Pass 的方向博弈；用 $f(u,p)$ 表示排除父方向且带 Pass 的状态，用 $g(u)$ 表示初始根状态，再通过换根 DP 求遍所有顶点。",
         "key_observations": [
-          "把当前根移到某个孩子后，原孩子子树外的部分可等价看成下一回合一次性删除；因此转移到该孩子会给对手留下一个额外的 Pass 状态。",
-          "定义 $f(u,p)$ 表示从 $p$ 重根到 $u$ 且保留一次 Pass，定义 $g(u)$ 表示以 $u$ 为初始根且没有 Pass；这样所有根选择都能统一为两类状态。",
-          "在 $f$ 状态中，只要存在一个后继为必败状态即可获胜；若所有方向都胜，则结果只由可用方向数奇偶决定，从而得到子树 DP 转移。",
-          "固定临时根后，子方向信息由 down 表示，父方向信息由 up 表示；换根 DP 在一次自底向上和一次自顶向下遍历中求出所有 $g(u)$，避免为每个初始根重复计算。"
+          "把改根到子节点等价为舍弃该子树外的部分，并额外产生一次 Pass；因此可将局面压缩为带或不带额外 Pass 的方向状态。",
+          "在带额外 Pass 的状态中，只要存在一个子方向是必败态就能获胜；否则胜负由可走方向数的奇偶决定，得到 $down[u]=1\\iff h(u)>0\\lor c\\bmod 2=0$。",
+          "计算 $up[v]$ 时只需排除方向 $v$，检查其余方向是否仍有必败态及剩余度数奇偶性，从而能在父节点信息确定后常数时间转移。",
+          "初始根状态没有额外 Pass，$g(u)$ 在存在必败邻接方向或度数为奇数时获胜；对所有顶点求出 $g$ 即可筛选 Bob 的胜利根。"
         ],
-        "solution_brief": "先以 1 为临时根计算各子树的 down，再自顶向下计算父侧的 up，并结合每个顶点的必败方向数与度数奇偶得到 $g(u)$。所有 $g(u)=0$ 的顶点就是 Bob 的获胜初始根；总复杂度为 $O(n)$。",
+        "solution_brief": "固定顶点 $1$ 临时定根，先自底向上计算各子树的 $down$ 与必败子方向数，再自顶向下计算排除某方向后的 $up$。据此用初始状态 $g(u)$ 判断每个根，输出所有 $g(u)=0$ 的顶点；总复杂度为 $O(n)$。",
         "primary_topic": "博弈",
         "secondary_topics": [
           "树结构",
           "动态规划与状态设计"
         ],
         "extraction_status": "ai_generated_with_editorial",
-        "source_provenance": "依据完整题面、editorial 中的状态转移与换根 DP，以及 tags。",
+        "source_provenance": "依据完整 statement_text、editorial_text 及树、DP、博弈相关 tags 提炼。",
         "quality_flags": []
       }
     },
