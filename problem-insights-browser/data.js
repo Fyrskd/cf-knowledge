@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-28",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4369,
+    "total_problems": 4366,
     "source_total_problems": 4369,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4369,
-    "with_editorial_brief": 4009,
-    "with_solution_brief": 4011,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 4366,
+    "with_editorial_brief": 4006,
+    "with_solution_brief": 4008,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3431,
+    "ai_override_count": 3428,
     "primary_topic_count": 13,
     "contest_count": 682,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1436,
+    "构造与贪心": 1433,
     "动态规划与状态设计": 358,
     "数据结构": 412,
     "图论与网络流": 295,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 128
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 3002,
+    "ai_generated_with_editorial": 2999,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,35 +83,9 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-26",
       "url": "https://codeforces.com/contest/2272",
       "type": "Div. 2",
-      "problemCount": 7,
+      "problemCount": 5,
       "maxRating": null,
       "problems": [
-        {
-          "key": "2272A",
-          "index": "A",
-          "slot": "A",
-          "title": "Maximize One MEX",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2272/problem/A",
-          "editorialUrl": "https://codeforces.com/blog/entry/158188",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "brute force",
-            "greedy"
-          ],
-          "statementBrief": "给定一个恰好包含 $0$ 到 $n-1$ 的排列，至多一次选择两个不同下标交换元素。对每个前缀计算 MEX，要求选择交换位置，使这些 MEX 中第 $k$ 大的值最大；若无需交换则输出 $-1$。",
-          "transformedStatement": "由于前缀 MEX 单调不降，第 $k$ 大值等于第 $n-k+1$ 个前缀的 MEX。因此只需把数组划分为长度 $m=n-k+1$ 的目标前缀和其余后缀，通过一次跨区交换最大化目标前缀的 MEX。",
-          "keyObservations": [
-            "前缀 MEX 单调不降，因此第 $k$ 大的值必为 $f_{n-k+1}$，目标转为最大化长度为 $n-k+1$ 的前缀 MEX。",
-            "设该前缀当前 MEX 为 $v$；同一前缀内或同一后缀内交换不会改变它，只有跨越前后缀交换才可能提升答案。",
-            "跨区交换时，应把后缀中的最小值与前缀中的最大值比较：若前缀最大值更大，交换它们可将缺失值补入前缀并提升 MEX；否则前缀已包含 $0$ 到当前 MEX 前的所有必要值，不交换最优。",
-            "当 $k=1$ 时目标是完整数组的 MEX，交换不改变完整排列的 MEX，故无需操作。"
-          ],
-          "solutionBrief": "令 $m=n-k+1$，只需最大化前缀 $a_1 ext{..}a_m$ 的 MEX。取前缀最大值和后缀最小值；若前者更大则交换，否则输出 $-1$。$k=1$ 时直接输出 $-1$，总复杂度为 $O(n)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
         {
           "key": "2272B",
           "index": "B",
@@ -137,32 +111,6 @@ window.CF_INSIGHTS_DATA = {
             "因此总数为奇数时至少删除一只，而删除任意一只后总数变偶数且总能配对，答案就是青蛙总数的奇偶性。"
           ],
           "solutionBrief": "统计两行中字符 `f` 的总数。总数为偶数时可全部保留并配对跳跃；总数为奇数时删除一只即可，因此直接输出青蛙总数对 $2$ 取模。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2272C",
-          "index": "C",
-          "slot": "C",
-          "title": "Yet Another Black Cell Problem",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2272/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/158188",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "binary search",
-            "dp"
-          ],
-          "statementBrief": "给定递增的 $n$ 个必须染黑的格子，并允许额外选择至多 $x$ 个不在其中的格子染黑。每次操作可任选两个距离在 $1$ 到 $k$ 之间的格子并将它们染黑，要求最终只有这些格子为黑，求最小的 $k$。",
-          "transformedStatement": "固定 $k$ 后，把最终黑格看成一个集合：每个黑格都必须在距离 $k$ 内有黑色邻居，且集合只能比给定位置多至多 $x$ 个元素。原问题转化为用最少额外位置消除给定序列中的孤立点，再判断该数量是否不超过 $x$。",
-          "keyObservations": [
-            "固定 $k$ 后，最终黑色集合可行当且仅当包含所有给定位置、额外位置不超过 $x$，且其中每个黑格都能在距离 $k$ 内找到另一个黑格；这样每个黑格都可与邻居配成一次操作。",
-            "若 $a_i$ 两侧（端点只看一侧）的相邻间距都大于 $k$，则它是孤立的坏点，必须通过额外染黑的位置连接；其他给定点无需额外处理。",
-            "一个额外位置至多连接两个坏点，且这两个坏点必须相邻并满足间距不超过 $2k$；因此所需额外位置数等于坏点数减去可配对坏点对数。",
-            "坏点构成路径上的匹配，按从左到右遇到可配对的相邻坏点就配对即可得到最大匹配；该数量随 $k$ 增大单调不增，所以可二分最小可行 $k$。"
-          ],
-          "solutionBrief": "二分 $k$，在线性检查中标记相邻间距都大于 $k$ 的坏点。扫描坏点序列，若相邻坏点间距不超过 $2k$ 就贪心合并，否则单独使用一个额外位置；所需额外位置不超过 $x$ 即可行。总复杂度为 $O(n\\log 10^9)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
@@ -291,7 +239,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-24",
       "url": "https://codeforces.com/contest/2277",
       "type": "Div. 2",
-      "problemCount": 7,
+      "problemCount": 6,
       "maxRating": null,
       "problems": [
         {
@@ -369,35 +317,6 @@ window.CF_INSIGHTS_DATA = {
             "从 $n$ 出发且不继续扩展顶点 $1$，恰好能得到所有不经过 $1$ 的到 $n$ 路径距离，从而直接筛选有效的操作点。"
           ],
           "solutionBrief": "从 $n$ 出发遍历原树，但到达 $1$ 后停止扩展，得到所有可用于新增边的 $\\operatorname{dist}(v,n)$。答案取初始 $\\operatorname{dist}(1,n)$ 与每个操作的 $d[v_i]+1$ 最大值；无效点的距离为未访问值，不会贡献更优答案。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2277D1",
-          "index": "D1",
-          "slot": "D",
-          "title": "Number Operating (Easy Version)",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2277/problem/D1",
-          "editorialUrl": "https://codeforces.com/blog/entry/158113",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计"
-          ],
-          "originalTags": [
-            "binary search",
-            "bitmasks",
-            "greedy"
-          ],
-          "statementBrief": "变量 $x$ 初始为 $0$。操作 1 连续执行时，第 $k$ 次加上 $2^k$，操作 2 将 $x$ 减 $1$ 且重置连续计数；对每个非负整数 $n$，求达到 $x=n$ 的最少操作数 $f(n)$，并计算区间 $[l,r]$ 内所有 $f(n)$ 之和。",
-          "transformedStatement": "把一段连续的操作 1 及其后的操作 2 抽象为一次代价为 $k+1$、增量为 $2^k-2$ 的单元；对 $2^k\\le n<2^{k+1}$，只需比较首段长度为 $k$ 或 $k+1$ 的两种递归转移。",
-          "keyObservations": [
-            "连续进行 $k$ 次操作 1 后接一次操作 2，可视为代价 $k+1$、使 $x$ 增加 $2^k-2$ 的独立单元，操作单元的顺序不影响总结果。",
-            "若 $2^k\\le n<2^{k+1}$，最优方案的首个操作 1 区块只需取长度 $k$ 或 $k+1$；更短区块不会更优，从而将选择压缩为两种情况。",
-            "长度为 $k$ 的区块后接操作 2 会转移到 $n-2^k+2$，长度为 $k+1$ 的区块则直接减去多余值，因此得到递归 $f(n)=\\min(f(n-2^k+2)+k+1,\\ 2^{k+1}-n+k)$。",
-            "递归转移后的参数约减半，单个 $f(n)$ 只需 $O(\\log V)$；easy 版可直接枚举区间内每个 $n$ 并累加。"
-          ],
-          "solutionBrief": "将连续操作 1 与后续操作 2 合并成独立单元，按 $n$ 的最高二进制位只比较长度为 $k$、$k+1$ 的首块，递归计算 $f(n)$，再枚举区间求和并取模。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },

@@ -46,6 +46,7 @@
     "tags": [
       "binary search",
       "bitmasks",
+      "brute force",
       "greedy"
     ]
   },
@@ -431,6 +432,7 @@
     "points": 1000.0,
     "tags": [
       "binary search",
+      "constructive algorithms",
       "dp"
     ]
   },
@@ -453,6 +455,7 @@
     "points": 500.0,
     "tags": [
       "brute force",
+      "constructive algorithms",
       "greedy"
     ]
   },
