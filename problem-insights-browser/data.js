@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4369,
+    "total_problems": 4368,
     "source_total_problems": 4369,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4369,
-    "with_editorial_brief": 4009,
-    "with_solution_brief": 4011,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4368,
+    "with_editorial_brief": 4008,
+    "with_solution_brief": 4010,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3431,
+    "ai_override_count": 3430,
     "primary_topic_count": 13,
     "contest_count": 682,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1437,
+    "构造与贪心": 1436,
     "动态规划与状态设计": 358,
     "数据结构": 411,
     "图论与网络流": 295,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 128
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 3002,
+    "ai_generated_with_editorial": 3001,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-26",
       "url": "https://codeforces.com/contest/2272",
       "type": "Div. 2",
-      "problemCount": 7,
+      "problemCount": 6,
       "maxRating": null,
       "problems": [
         {
@@ -137,33 +137,6 @@ window.CF_INSIGHTS_DATA = {
             "因此总数为奇数时至少删除一只，而删除任意一只后总数变偶数且总能配对，答案就是青蛙总数的奇偶性。"
           ],
           "solutionBrief": "统计两行中字符 `f` 的总数。总数为偶数时可全部保留并配对跳跃；总数为奇数时删除一只即可，因此直接输出青蛙总数对 $2$ 取模。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2272C",
-          "index": "C",
-          "slot": "C",
-          "title": "Yet Another Black Cell Problem",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2272/problem/C",
-          "editorialUrl": "https://codeforces.com/blog/entry/158188",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [],
-          "originalTags": [
-            "binary search",
-            "constructive algorithms",
-            "dp"
-          ],
-          "statementBrief": "给定严格递增的必黑格子数组 $a$，还可预先选择至多 $x$ 个不在 $a$ 中的格子染黑。之后可反复选择两个距离在 $1$ 到 $k$ 之间的不同格子染黑，求最终只保留这些允许的黑格子时，$k$ 的最小可行值。",
-          "transformedStatement": "固定 $k$，把最终黑格子组成集合 $B$：它必须包含 $a$、大小不超过 $n+x$，且每个格子都要有距离不超过 $k$ 的黑邻居。只需处理在原数组中没有邻居的坏点，并将可由同一额外格子连接的相邻坏点配成不相交对。",
-          "keyObservations": [
-            "固定 $k$ 后，最终黑集合 $B$ 可行当且仅当 $B\\supseteq a$、$|B|\\le n+x$，且 $B$ 中每个格子都有距离不超过 $k$ 的黑邻居。",
-            "若某个 $a_i$ 的相邻给定间距都大于 $k$，它就是坏点，必须由额外格子连接；其余点已有给定邻居，无需额外配对。",
-            "一个额外格子最多连接两个坏点，且只有相邻坏点间距不超过 $2k$ 时才能共享；因此问题转为路径上最大化不相交坏点配对。",
-            "可行性随 $k$ 增大而单调，逐个检查坏点并贪心配对后，可二分得到最小可行的 $k$。"
-          ],
-          "solutionBrief": "二分 $k$。检查时标记两侧给定间距都大于 $k$ 的坏点，并从左到右贪心配对间距不超过 $2k$ 的相邻坏点；未被配对的坏点各需一个额外格子，若总数不超过 $x$ 则可行。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
