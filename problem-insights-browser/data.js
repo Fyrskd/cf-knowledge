@@ -1,17 +1,17 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-28",
+  "generatedAt": "2026-10-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4369,
+    "total_problems": 4368,
     "source_total_problems": 4369,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4369,
-    "with_editorial_brief": 4009,
-    "with_solution_brief": 4011,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4368,
+    "with_editorial_brief": 4008,
+    "with_solution_brief": 4010,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3431,
+    "ai_override_count": 3430,
     "primary_topic_count": 13,
     "contest_count": 682,
     "rating_min": 800,
@@ -46,7 +46,7 @@ window.CF_INSIGHTS_DATA = {
   "topicCounts": {
     "构造与贪心": 1436,
     "动态规划与状态设计": 358,
-    "数据结构": 412,
+    "数据结构": 411,
     "图论与网络流": 295,
     "数论与同余": 454,
     "交互": 133,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 128
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 3002,
+    "ai_generated_with_editorial": 3001,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-26",
       "url": "https://codeforces.com/contest/2272",
       "type": "Div. 2",
-      "problemCount": 7,
+      "problemCount": 6,
       "maxRating": null,
       "problems": [
         {
@@ -194,34 +194,6 @@ window.CF_INSIGHTS_DATA = {
             "若所有原树都是单点，任选一个点作为中心并连接其余所有点，构成星形树，其最大独立集包含全部非中心点，大小达到总点数减一。"
           ],
           "solutionBrief": "若存在非平凡树，找到一个叶子的邻点 $u$，将其他每棵树的任意顶点连接到 $u$；若所有树都是单点，则任选中心并连成星形。前者保留一个不含 $u$ 的最大独立集，且加边不会提高独立集上界，因此均为最优。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2272E",
-          "index": "E",
-          "slot": "E",
-          "title": "Memory Cell Interception",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2272/problem/E",
-          "editorialUrl": "https://codeforces.com/blog/entry/158188",
-          "primaryTopic": "数据结构",
-          "secondaryTopics": [
-            "构造与贪心"
-          ],
-          "originalTags": [
-            "data structures",
-            "greedy"
-          ],
-          "statementBrief": "有两条只含 R/W 的命令序列，必须分别保持各自顺序地任意交错执行；共享单元初值为 0，每次 W 将当前全局时间戳写入单元，R 读取当前值。对两条序列中的每个 R，分别求它在所有合法交错方式下可能读到的不同值数量。",
-          "transformedStatement": "固定某个 R 的位置，按它之前是否已有本串 W 分情况：已有时可达读值是一个连续时间戳区间；没有时，初值 0 之外的可达值等于另一串各个 W 产生的区间 $[j,j+i-1]$ 的并集。随后随 R 位置递增维护这些区间的并集。",
-          "keyObservations": [
-            "固定字符串中第 $i$ 个 R，若此前最近的 W 在位置 $j$，所有可读值恰好构成连续区间 $[j,\\max(j+m,i-1+k)]$，其中 $k$ 是另一串最后一个 W 的位置。",
-            "若第 $i$ 个 R 前没有本串 W，则初始值 $0$ 可达；另一串位置 $j$ 的 W 贡献区间 $[j,j+i-1]$，答案是这些区间并集大小再加上 $0$。",
-            "随着 $i$ 从左到右推进，区间左端点固定而右端点同步增长；维护相邻区间追上的时刻，就能在区间合并时移除旧贡献并在线更新并集大小。",
-            "分别把两条字符串作为目标串处理，并预处理另一串的 W 位置及相邻间隔，可将所有读操作的答案在线性总长度内求出。"
-          ],
-          "solutionBrief": "对每条字符串分别扫描。若 R 前已有本串 W，直接按最近 W、另一串长度及最后一个 W 的位置计算连续答案区间；否则维护另一串所有 W 产生的增长区间并集，利用相遇事件更新其大小，整体复杂度为 $O(n+m)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
