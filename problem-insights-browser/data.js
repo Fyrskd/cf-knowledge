@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4368,
+    "total_problems": 4369,
     "source_total_problems": 4369,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4368,
-    "with_editorial_brief": 4008,
-    "with_solution_brief": 4010,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4369,
+    "with_editorial_brief": 4009,
+    "with_solution_brief": 4011,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3430,
+    "ai_override_count": 3431,
     "primary_topic_count": 13,
     "contest_count": 682,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1436,
+    "构造与贪心": 1437,
     "动态规划与状态设计": 358,
     "数据结构": 411,
     "图论与网络流": 295,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 128
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 3001,
+    "ai_generated_with_editorial": 3002,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-26",
       "url": "https://codeforces.com/contest/2272",
       "type": "Div. 2",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
         {
@@ -137,6 +137,36 @@ window.CF_INSIGHTS_DATA = {
             "因此总数为奇数时至少删除一只，而删除任意一只后总数变偶数且总能配对，答案就是青蛙总数的奇偶性。"
           ],
           "solutionBrief": "统计两行中字符 `f` 的总数。总数为偶数时可全部保留并配对跳跃；总数为奇数时删除一只即可，因此直接输出青蛙总数对 $2$ 取模。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2272C",
+          "index": "C",
+          "slot": "C",
+          "title": "Yet Another Black Cell Problem",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2272/problem/C",
+          "editorialUrl": "https://codeforces.com/blog/entry/158188",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "动态规划与状态设计"
+          ],
+          "originalTags": [
+            "binary search",
+            "constructive algorithms",
+            "dp",
+            "greedy"
+          ],
+          "statementBrief": "给定严格递增的 $n$ 个细胞位置，必须把它们染黑，最多还可额外选择 $x$ 个不在给定列表中的细胞染黑。每次可选择两个距离在 $1$ 到 $k$ 之间的不同细胞并将其染黑，操作可重复；求使最终只有这些细胞变黑所需的最小 $k$。",
+          "transformedStatement": "固定 $k$ 后，把最终黑色细胞看成包含原数组的集合 $B$：每个 $B$ 中的点都必须有一个距离不超过 $k$ 的黑色邻点，而新增点数 $|B|-n$ 不得超过 $x$。原数组中没有近邻的坏点需要新增点覆盖，两个相邻且间距不超过 $2k$ 的坏点可由同一个新增点覆盖。",
+          "keyObservations": [
+            "固定 $k$ 后，最终黑色集合 $B$ 可行当且仅当包含全部给定点、大小不超过 $n+x$，且 $B$ 中每个点都能找到距离不超过 $k$ 的另一个点；这样每个点都可与邻点配对完成染色。",
+            "若给定点 $a_i$ 的所有相邻间距都大于 $k$，它就是坏点，必须用一个新增点连接；非坏点已有给定点邻居，无需额外点。",
+            "一个新增点最多服务两个坏点，且只有相邻坏点间距不超过 $2k$ 时才能共同服务；因此最少新增点数等于坏点数减去路径上可匹配的坏点对数。",
+            "坏点配对在从左到右遇到可配对的相邻坏点时立即配对即可得到最大匹配，且可行性随 $k$ 增大单调变化，所以可二分最小可行的 $k$。"
+          ],
+          "solutionBrief": "对固定 $k$ 标记所有坏点，贪心配对间距不超过 $2k$ 的相邻坏点，计算所需新增点数是否不超过 $x$。该判定为 $O(n)$ 且随 $k$ 单调，二分 $[1,10^9]$ 得到答案，总复杂度为 $O(n\\log 10^9)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
