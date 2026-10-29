@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-10-29",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4368,
+    "total_problems": 4369,
     "source_total_problems": 4369,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4368,
-    "with_editorial_brief": 4008,
-    "with_solution_brief": 4010,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4369,
+    "with_editorial_brief": 4009,
+    "with_solution_brief": 4011,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3430,
+    "ai_override_count": 3431,
     "primary_topic_count": 13,
     "contest_count": 682,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1436,
+    "构造与贪心": 1437,
     "动态规划与状态设计": 358,
     "数据结构": 411,
     "图论与网络流": 295,
@@ -59,7 +59,7 @@ window.CF_INSIGHTS_DATA = {
     "博弈": 128
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 3001,
+    "ai_generated_with_editorial": 3002,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,7 +83,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-26",
       "url": "https://codeforces.com/contest/2272",
       "type": "Div. 2",
-      "problemCount": 6,
+      "problemCount": 7,
       "maxRating": null,
       "problems": [
         {
@@ -194,6 +194,33 @@ window.CF_INSIGHTS_DATA = {
             "若所有原树都是单点，任选一个点作为中心并连接其余所有点，构成星形树，其最大独立集包含全部非中心点，大小达到总点数减一。"
           ],
           "solutionBrief": "若存在非平凡树，找到一个叶子的邻点 $u$，将其他每棵树的任意顶点连接到 $u$；若所有树都是单点，则任选中心并连成星形。前者保留一个不含 $u$ 的最大独立集，且加边不会提高独立集上界，因此均为最优。",
+          "extractionStatus": "ai_generated_with_editorial",
+          "editorialQuality": "complete"
+        },
+        {
+          "key": "2272E",
+          "index": "E",
+          "slot": "E",
+          "title": "Memory Cell Interception",
+          "rating": null,
+          "problemUrl": "https://codeforces.com/contest/2272/problem/E",
+          "editorialUrl": "https://codeforces.com/blog/entry/158188",
+          "primaryTopic": "构造与贪心",
+          "secondaryTopics": [
+            "数据结构"
+          ],
+          "originalTags": [
+            "greedy"
+          ],
+          "statementBrief": "有两条必须各自保持原顺序的 R/W 指令序列，可任意交错执行；W 在其执行时刻写入时间戳，R 读取当前存储值。对每条序列中的每个 R，求它在所有合法交错方式下可能读到的不同数值个数。",
+          "transformedStatement": "固定某个 R 的位置，按本线程此前是否出现 W 分情况：有前置 W 时，可达读值构成一个连续区间；无前置 W 时，问题转为统计另一线程所有 W 生成的区间并集，并额外考虑初始值 0。",
+          "keyObservations": [
+            "若该 R 前方最近的本线程 W 位于位置 $j$，设另一线程最后一个 W 位于位置 $k$，则可读到的值恰好覆盖区间 $[j,\\max(j+m,i-1+k)]$。",
+            "若该 R 前没有本线程 W，则初始值 $0$ 始终可读；另一线程每个位置为 $j$ 的 W 贡献区间 $[j,j+i-1]$，答案是这些区间并集大小再加 $1$。",
+            "随着 R 的位置 $i$ 从左到右推进，上述区间的右端点同步增长；维护相邻区间追上的时刻，区间被完全覆盖后即可移除其贡献。",
+            "对两条线程分别作为被查询序列处理同一套区间逻辑，即可在线性总长度内得到所有 R 的答案。"
+          ],
+          "solutionBrief": "分别处理两条线程。对每个 R，若本线程已有前置 W，直接用一个可达值区间求长度；否则合并另一线程各个 W 产生的区间并计入初始值 0。按位置同步推进区间端点，维护区间合并与淘汰，整体复杂度为 $O(n+m)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         },
