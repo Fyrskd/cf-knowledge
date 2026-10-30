@@ -9,6 +9,7 @@
   const STATUS_PAGE_SIZE = 10000;
   const ACCOUNT_AUTO_REFRESH_INTERVAL_MS = 30 * 60 * 1000;
   const state = {
+    problemSearch: "",
     topic: "all",
     minRating: "",
     maxRating: "",
@@ -25,6 +26,7 @@
   };
 
   const elements = {
+    problemSearchInput: document.getElementById("problemSearchInput"),
     topicSelect: document.getElementById("topicSelect"),
     minRatingInput: document.getElementById("minRatingInput"),
     maxRatingInput: document.getElementById("maxRatingInput"),
@@ -266,6 +268,8 @@
   }
 
   function problemMatches(problem) {
+    const query = state.problemSearch.toUpperCase().trim().replace(/^CF/, "").replace(/[\s/]+/g, "");
+    if (query && !problem.key.startsWith(query)) return false;
     if (state.topic !== "all" && problem.primaryTopic !== state.topic) return false;
     if (state.hasEditorial && !hasSolution(problem)) return false;
     if (state.unsolvedOnly && solvedHandlesFor(problem.key).length > 0) return false;
@@ -357,6 +361,7 @@
   }
 
   function renderControls() {
+    elements.problemSearchInput.value = state.problemSearch;
     elements.topicSelect.innerHTML = [
       '<option value="all">全部</option>',
       ...rawData.topics.map((topic) => `<option value="${escapeHtml(topic)}">${escapeHtml(topic)} (${escapeHtml(rawData.topicCounts[topic] || 0)})</option>`),
@@ -389,6 +394,7 @@
     elements.resultSubtitle.textContent = `Showing ${problemCount} of ${allProblems.length} problems in ${rows.length} contests`;
     elements.contestTable.style.display = "";
     if (!rows.length) {
+      state.selectedKey = "";
       elements.contestTable.innerHTML = '<tbody><tr><td class="empty-state">没有匹配的题目。</td></tr></tbody>';
       renderDetail();
       return;
@@ -438,7 +444,6 @@
       <div class="problem-stack">
         ${problems
           .map((problem) => {
-            const full = problemByKey.get(problem.key) || problem;
             const solvedHandles = solvedHandlesFor(problem.key);
             const solved = solvedHandles.length > 0;
             const solvedLabel = solvedHandles.length > 1 ? `已过 ${solvedHandles.length} 个账号` : "已通过";
@@ -447,7 +452,7 @@
                 type="button" data-problem-key="${escapeHtml(problem.key)}" title="${escapeHtml(problem.title)}">
                 <div class="chip-head"><span><span class="chip-index">${escapeHtml(problem.index)}</span> <span class="${ratingClass(problem.rating)}">${escapeHtml(problem.rating || "N/A")}</span></span>${solved ? `<span class="solved-badge">${escapeHtml(solvedLabel)}</span>` : ""}</div>
                 <div class="chip-title ${ratingClass(problem.rating)}">${escapeHtml(problem.title)}</div>
-                <div class="chip-meta"><span>${escapeHtml(full.primaryTopic)}</span><span>${escapeHtml(solutionStatusText(problem))}</span></div>
+                <div class="chip-meta"><span>${escapeHtml(solutionStatusText(problem))}</span></div>
               </button>
             `;
           })
@@ -469,6 +474,7 @@
       groups.get(problem.primaryTopic).push(problem);
     }
     if (!problems.length) {
+      state.selectedKey = "";
       elements.contestTable.innerHTML = '<tbody><tr><td class="empty-state">没有匹配的题目。</td></tr></tbody>';
       renderDetail();
       return;
@@ -561,7 +567,6 @@
           <a href="${escapeHtml(problem.contestUrl)}" target="_blank" rel="noreferrer">竞赛</a>
         </div>
         <div class="tag-row">
-          ${tags.map((tag, index) => `<span class="tag ${index === 0 ? "topic" : ""}">${escapeHtml(tag)}</span>`).join("")}
           <span class="tag ${hasSolution(problem) ? "" : "missing"}">${escapeHtml(solutionStatusText(problem))}</span>
           ${solvedHandles.length ? `<span class="tag solved-tag">${escapeHtml(solvedHandles.length > 1 ? `已通过 ${solvedHandles.length} 个账号` : `已通过 ${solvedHandles[0]}`)}</span>` : ""}
         </div>
@@ -572,10 +577,17 @@
         ${transformationHtml}
         ${observationHtml}
         ${solutionHtml}
-        <section class="detail-section">
-          <h3>原始标签</h3>
-          <p>${escapeHtml((problem.originalTags || []).join(", ") || "无")}</p>
-        </section>
+        <details class="detail-section detail-disclosure">
+          <summary>标签与分类</summary>
+          <div class="detail-section-body">
+            <h3>分类</h3>
+            <div class="tag-row">
+              ${tags.map((tag, index) => `<span class="tag ${index === 0 ? "topic" : ""}">${escapeHtml(tag)}</span>`).join("")}
+            </div>
+            <h3>原始标签</h3>
+            <p>${escapeHtml((problem.originalTags || []).join(", ") || "无")}</p>
+          </div>
+        </details>
       </article>
     `;
     renderMath(elements.detailPanel);
@@ -591,6 +603,10 @@
   }
 
   function bindEvents() {
+    elements.problemSearchInput.addEventListener("input", () => {
+      state.problemSearch = elements.problemSearchInput.value;
+      render();
+    });
     elements.topicSelect.addEventListener("change", () => {
       state.topic = elements.topicSelect.value;
       render();

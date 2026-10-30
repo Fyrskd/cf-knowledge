@@ -126,6 +126,7 @@ a:hover {
 }
 
 .filters {
+  flex-wrap: wrap;
   margin-bottom: 10px;
   padding: 2px 0 10px;
   border-bottom: 1px solid var(--line);
@@ -172,7 +173,8 @@ select {
   outline: none;
 }
 
-.filters input[type="number"] {
+.filters input[type="number"],
+.filters input[type="search"] {
   width: 104px;
   min-width: 104px;
   border-width: 0 0 1px;
@@ -180,8 +182,14 @@ select {
   background: transparent;
 }
 
+.filters input[type="search"] {
+  width: 200px;
+}
+
 .filters input[type="number"]:hover,
-.filters input[type="number"]:focus {
+.filters input[type="number"]:focus,
+.filters input[type="search"]:hover,
+.filters input[type="search"]:focus {
   border-bottom-color: var(--blue);
   outline: none;
 }
