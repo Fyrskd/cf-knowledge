@@ -1,5 +1,5 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-10-29",
+  "generatedAt": "2026-10-30",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4369,
