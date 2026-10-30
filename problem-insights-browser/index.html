@@ -51,8 +51,9 @@
 
       <section class="contest-types" id="contestTypes" aria-label="竞赛类型"></section>
 
-      <section class="content-grid">
-        <section class="table-panel">
+      <section class="content-grid" id="contentGrid">
+        <section class="table-panel" id="tablePanel">
+          <button id="collapseTableButton" class="panel-toggle collapse-table-button" type="button" aria-label="收起比赛栏" title="收起比赛栏" aria-controls="tablePanel" aria-expanded="true">&lt;&lt;</button>
           <div class="table-toolbar">
             <div>
               <div class="result-title" id="resultTitle">Contests</div>
@@ -73,7 +74,10 @@
           </div>
         </section>
 
-        <aside class="detail-panel" id="detailPanel" aria-label="题目详情"></aside>
+        <aside class="detail-panel" id="detailPanel" aria-label="题目详情">
+          <button id="expandTableButton" class="panel-toggle expand-table-button" type="button" aria-label="展开比赛栏" title="展开比赛栏" aria-controls="tablePanel" aria-expanded="false" hidden>&gt;&gt;</button>
+          <div id="detailContent"></div>
+        </aside>
       </section>
     </main>
 
@@ -99,6 +103,6 @@
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
     <script src="./data.js"></script>
-    <script src="./app.js?v=20261030-1"></script>
+    <script src="./app.js?v=20261031-1"></script>
   </body>
 </html>

@@ -38,7 +38,11 @@
     resultTitle: document.getElementById("resultTitle"),
     resultSubtitle: document.getElementById("resultSubtitle"),
     contestTable: document.getElementById("contestTable"),
-    detailPanel: document.getElementById("detailPanel"),
+    contentGrid: document.getElementById("contentGrid"),
+    tablePanel: document.getElementById("tablePanel"),
+    collapseTableButton: document.getElementById("collapseTableButton"),
+    expandTableButton: document.getElementById("expandTableButton"),
+    detailContent: document.getElementById("detailContent"),
     accountsButton: document.getElementById("accountsButton"),
     accountsDialog: document.getElementById("accountsDialog"),
     accountHandleInput: document.getElementById("accountHandleInput"),
@@ -510,7 +514,7 @@
   function renderDetail() {
     const problem = problemByKey.get(state.selectedKey);
     if (!problem) {
-      elements.detailPanel.innerHTML = '<div class="detail-empty">选择一道题查看题意、转换和关键观察。</div>';
+      elements.detailContent.innerHTML = '<div class="detail-empty">选择一道题查看题意、转换和关键观察。</div>';
       return;
     }
     const transformationHtml = problem.transformedStatement
@@ -552,7 +556,7 @@
       : "";
     const tags = [problem.primaryTopic, ...(problem.secondaryTopics || [])];
     const solvedHandles = solvedHandlesFor(problem.key);
-    elements.detailPanel.innerHTML = `
+    elements.detailContent.innerHTML = `
       <article class="detail-content">
         <div class="detail-top">
           <div>
@@ -590,7 +594,18 @@
         </details>
       </article>
     `;
-    renderMath(elements.detailPanel);
+    renderMath(elements.detailContent);
+  }
+
+  /** @param {boolean} collapsed */
+  function setTableCollapsed(collapsed) {
+    elements.tablePanel.hidden = collapsed;
+    elements.expandTableButton.hidden = !collapsed;
+    elements.contentGrid.classList.toggle("is-table-collapsed", collapsed);
+    elements.collapseTableButton.setAttribute("aria-expanded", String(!collapsed));
+    elements.expandTableButton.setAttribute("aria-expanded", String(!collapsed));
+    const activeButton = collapsed ? elements.expandTableButton : elements.collapseTableButton;
+    activeButton.focus({ preventScroll: true });
   }
 
   function render() {
@@ -603,6 +618,8 @@
   }
 
   function bindEvents() {
+    elements.collapseTableButton.addEventListener("click", () => setTableCollapsed(true));
+    elements.expandTableButton.addEventListener("click", () => setTableCollapsed(false));
     elements.problemSearchInput.addEventListener("input", () => {
       state.problemSearch = elements.problemSearchInput.value;
       render();

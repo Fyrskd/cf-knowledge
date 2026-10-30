@@ -258,6 +258,51 @@ select {
   align-items: start;
 }
 
+.content-grid.is-table-collapsed {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.content-grid.is-table-collapsed .detail-panel {
+  position: static;
+  max-height: none;
+}
+
+.table-panel {
+  position: relative;
+}
+
+.panel-toggle {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  color: var(--muted);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.panel-toggle:hover {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+.panel-toggle:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.collapse-table-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.expand-table-button {
+  margin: 8px 0 0 8px;
+}
+
 .table-panel,
 .detail-panel {
   background: var(--surface);
@@ -268,7 +313,7 @@ select {
 
 .table-toolbar {
   justify-content: space-between;
-  padding: 12px 14px;
+  padding: 12px 54px 12px 14px;
   border-bottom: 1px solid var(--line);
 }
 
