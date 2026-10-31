@@ -1,5 +1,74 @@
 [
   {
+    "contestId": 2278,
+    "index": "G",
+    "name": "0s and 1s",
+    "type": "PROGRAMMING",
+    "tags": [
+      "dp",
+      "hashing",
+      "number theory",
+      "trees"
+    ]
+  },
+  {
+    "contestId": 2278,
+    "index": "F",
+    "name": "Modulo and Counting",
+    "type": "PROGRAMMING",
+    "tags": [
+      "dp",
+      "math",
+      "number theory"
+    ]
+  },
+  {
+    "contestId": 2278,
+    "index": "E",
+    "name": "Swap and Negate",
+    "type": "PROGRAMMING",
+    "tags": [
+      "constructive algorithms",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2278,
+    "index": "D",
+    "name": "Lock and Unlock",
+    "type": "PROGRAMMING",
+    "tags": [
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2278,
+    "index": "C",
+    "name": "Math and Physics",
+    "type": "PROGRAMMING",
+    "tags": [
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2278,
+    "index": "B",
+    "name": "Stakes and Shapes",
+    "type": "PROGRAMMING",
+    "tags": [
+      "constructive algorithms"
+    ]
+  },
+  {
+    "contestId": 2278,
+    "index": "A",
+    "name": "Fraction and Six",
+    "type": "PROGRAMMING",
+    "tags": [
+      "implementation"
+    ]
+  },
+  {
     "contestId": 2277,
     "index": "F",
     "name": "Token Re-Moving",
@@ -407,7 +476,9 @@
     "type": "PROGRAMMING",
     "points": 1750.0,
     "tags": [
-      "greedy"
+      "binary search",
+      "greedy",
+      "two pointers"
     ]
   },
   {
