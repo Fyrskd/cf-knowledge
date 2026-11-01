@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 4373,
+    "total_problems": 4376,
     "source_total_problems": 4376,
-    "filtered_out_problems": 3,
-    "with_statement_brief": 4373,
-    "with_editorial_brief": 4013,
-    "with_solution_brief": 4015,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4376,
+    "with_editorial_brief": 4016,
+    "with_solution_brief": 4018,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3435,
+    "ai_override_count": 3438,
     "primary_topic_count": 13
   },
   "records": [
@@ -180967,6 +180967,86 @@
       "ai_override": true
     },
     {
+      "ordinal": 4370,
+      "problem_key": "2278A",
+      "contest_id": 2278,
+      "title": "Fraction and Six",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2278/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/158300",
+      "editorial_quality": "complete",
+      "primary_topic": "字符串",
+      "secondary_topics": [
+        "基础实现与模拟"
+      ],
+      "original_tags": [
+        "implementation",
+        "sortings",
+        "strings"
+      ],
+      "statement_brief": "给定分子字符串 $p$ 和分母字符串 $q$，可任意重排两边字符，并逐个消去分子、分母中相同的字符。判断能否消去全部分母字符，使分子剩余字符恰好重排成 `six`。",
+      "transformed_statement": "把消去过程转化为多重集合匹配：判断 $p$ 的字符集合是否恰好等于 $q$ 的字符集合加上 `s`、`i`、`x` 各一个，即比较两者的字母频率。",
+      "key_observations": [
+        "分母最终必须全部被约掉，因此分子字符的总多重集合必须恰好等于分母字符与 `six` 的合并集合。",
+        "字符顺序不影响交换与消去过程，所以只需比较分子与 `q` 拼接 `six` 后各字母的出现次数，避免显式模拟取消。"
+      ],
+      "solution_brief": "将 `six` 拼接到分母字符串后，统计分子和新字符串中每个字母的出现次数；两者频率完全相同则输出 YES，否则输出 NO，复杂度为 $O(n+m)$。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-11-01T13:56:12+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4371,
+      "problem_key": "2278B",
+      "contest_id": 2278,
+      "title": "Stakes and Shapes",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2278/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/158300",
+      "editorial_quality": "complete",
+      "primary_topic": "构造与贪心",
+      "secondary_topics": [
+        "博弈"
+      ],
+      "original_tags": [
+        "constructive algorithms",
+        "greedy"
+      ],
+      "statement_brief": "Alice 共进行 $x+y+z$ 局，出石头、剪刀、布的次数分别固定为 $x,y,z$，但 Bob 不知道她的出牌顺序。Bob 必须提前确定全部出牌，使任意顺序下自己的胜局数都不少于 Alice，输出任意满足条件的序列。",
+      "transformed_statement": "不必针对 Alice 的具体顺序安排出牌：令 Bob 全程使用同一种手势，并选择能击败 Alice 出现次数最多的手势。此时 Bob 的胜局数是最大频次，Alice 的胜局数只对应另一个频次。",
+      "key_observations": [
+        "让 Bob 全程使用同一种手势时，胜负只由 Alice 三种手势的出现次数决定，与具体顺序无关。",
+        "选择能击败 Alice 出现次数最多手势的反制手势，Bob 的胜局数等于三种次数的最大值。",
+        "Alice 能获胜的局数至多是另外一种手势的次数，而最大值不小于任一其他次数，因此 Bob 必然不败。"
+      ],
+      "solution_brief": "找出 $x,y,z$ 中的最大值，令 Bob 在全部 $x+y+z$ 局都使用能击败该手势的选择。这样胜负数量与 Alice 的出牌顺序无关，且 Bob 的胜局数不少于 Alice。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-11-01T13:55:42+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
       "ordinal": 4372,
       "problem_key": "2278C",
       "contest_id": 2278,
@@ -181116,6 +181196,51 @@
           "path": "ai-generated-insights.json",
           "model": "gpt-6-luna",
           "generated_at": "2026-10-31T22:07:49+00:00",
+          "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 4376,
+      "problem_key": "2278G",
+      "contest_id": 2278,
+      "title": "0s and 1s",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2278/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/158300",
+      "editorial_quality": "complete",
+      "primary_topic": "树结构",
+      "secondary_topics": [
+        "数论与同余"
+      ],
+      "original_tags": [
+        "bitmasks",
+        "dfs and similar",
+        "dp",
+        "hashing",
+        "number theory",
+        "trees"
+      ],
+      "statement_brief": "给定一棵以 1 为根的树，每个节点有初始二进制状态和目标状态。每次向根注入脉冲：遇到 0 就变 1 并停止，遇到 1 就变 0 并同时传给所有子节点；求使全树达到目标的最少脉冲数，无法做到则输出 $-1$，答案对 $998244353$ 取模。",
+      "transformed_statement": "把每条从根到节点的状态序列视为二进制整数，根为最低位；全局注入 $K$ 次等价于每条路径同时加上 $K$。于是按深度逐位确定 $K$，并沿树传播加法产生的进位。",
+      "key_observations": [
+        "沿根到节点的路径把状态看作二进制数，根是最低位；向根注入一次脉冲等价于所有路径上的数加一。",
+        "注入 $K$ 次后，深度为 $d$ 的节点状态等于对应路径数加 $K$ 的第 $d$ 位，因此同一深度的节点必须得到相同的 $k_d$。",
+        "对节点 $v$，所需位满足 $k_d=y_v\\oplus x_v\\oplus C_v$；若同层出现两种结果则无解，否则可据此计算各子节点的进位。",
+        "确定所有深度的 $k_d$ 后，最小脉冲数就是这些二进制位组成的唯一整数，按 $\\sum k_d2^d$ 计算并取模。"
+      ],
+      "solution_brief": "按深度处理节点，把每条根路径视为二进制加法。维护各节点收到的进位，计算本层必须统一的 $k_d$；若同层冲突则输出 $-1$，否则累加 $k_d2^d$ 并取模。",
+      "extraction_status": "ai_generated_with_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-11-01T13:55:00+00:00",
           "quality_flags": []
         }
       },
