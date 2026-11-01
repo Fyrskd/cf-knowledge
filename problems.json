@@ -5,6 +5,8 @@
     "name": "0s and 1s",
     "type": "PROGRAMMING",
     "tags": [
+      "bitmasks",
+      "dfs and similar",
       "dp",
       "hashing",
       "number theory",
@@ -65,7 +67,8 @@
     "name": "Fraction and Six",
     "type": "PROGRAMMING",
     "tags": [
-      "implementation"
+      "implementation",
+      "sortings"
     ]
   },
   {
