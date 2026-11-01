@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-11-01",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4376,
+    "total_problems": 4373,
     "source_total_problems": 4376,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4376,
-    "with_editorial_brief": 4016,
-    "with_solution_brief": 4018,
+    "filtered_out_problems": 3,
+    "with_statement_brief": 4373,
+    "with_editorial_brief": 4013,
+    "with_solution_brief": 4015,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3438,
+    "ai_override_count": 3435,
     "primary_topic_count": 13,
     "contest_count": 683,
     "rating_min": 800,
@@ -44,22 +44,22 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1441,
+    "构造与贪心": 1440,
     "动态规划与状态设计": 359,
     "数据结构": 411,
     "图论与网络流": 295,
-    "数论与同余": 455,
+    "数论与同余": 454,
     "交互": 133,
     "组合计数与概率": 333,
     "几何": 101,
     "树结构": 201,
     "字符串": 230,
-    "基础实现与模拟": 261,
+    "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
     "博弈": 128
   },
   "statusCounts": {
-    "ai_generated_with_editorial": 3009,
+    "ai_generated_with_editorial": 3006,
     "ai_generated_partial_editorial": 116,
     "missing_editorial": 358,
     "low_confidence": 1,
@@ -83,61 +83,9 @@ window.CF_INSIGHTS_DATA = {
       "date": "2026-10-31",
       "url": "https://codeforces.com/contest/2278",
       "type": "Div. 3",
-      "problemCount": 7,
+      "problemCount": 4,
       "maxRating": null,
       "problems": [
-        {
-          "key": "2278A",
-          "index": "A",
-          "slot": "A",
-          "title": "Fraction and Six",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2278/problem/A",
-          "editorialUrl": "https://codeforces.com/blog/entry/158300",
-          "primaryTopic": "基础实现与模拟",
-          "secondaryTopics": [
-            "字符串"
-          ],
-          "originalTags": [
-            "implementation"
-          ],
-          "statementBrief": "给定分子字符串 `p` 和分母字符串 `q`，可任意重排两边字符，并逐个抵消分子、分母中相同的字符。判断是否能抵消到分母为空，且分子恰好剩下可重排成 `six` 的三个字符。",
-          "transformedStatement": "把约分过程转化为字符多重集合判断：`p` 必须与 `q` 加上一个 `s`、一个 `i`、一个 `x` 完全相同，因此只需比较两者的字母频数。",
-          "keyObservations": [
-            "由于字符可以任意重排，分子最终留下的内容只由各字母出现次数决定，而不受原顺序影响。",
-            "要使分母全部消失并在分子留下 `six`，分子字符 multiset 必须恰好等于分母字符 multiset 与 `s`、`i`、`x` 各一个的合并。",
-            "将 `six` 追加到分母后比较两边的字符频数；频数完全相同当且仅当可以完成所需约分。"
-          ],
-          "solutionBrief": "统计分子 `p` 与字符串 `q+\"six\"` 中每个小写字母的出现次数，若两组频数完全相同则输出 YES，否则输出 NO。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2278B",
-          "index": "B",
-          "slot": "B",
-          "title": "Stakes and Shapes",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2278/problem/B",
-          "editorialUrl": "https://codeforces.com/blog/entry/158300",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "博弈"
-          ],
-          "originalTags": [
-            "constructive algorithms"
-          ],
-          "statementBrief": "Alice 按未知顺序进行恰好 $x+y+z$ 轮石头剪刀布，其中石头、剪刀、布分别出现 $x,y,z$ 次。Bob 必须在游戏开始前确定全部手势，使任意排列下 Bob 的胜场数都不少于 Alice，输出任意满足条件的序列。",
-          "transformedStatement": "将 Bob 的策略限制为全程使用同一种手势，此时每种结果的胜负只取决于 Alice 各手势的频次；选择克制最高频手势的手势即可把比较转化为最大频次与另一频次的比较。",
-          "keyObservations": [
-            "让 Bob 全程使用同一种手势后，胜负只由 Alice 三种手势的出现次数决定，与具体排列顺序无关。",
-            "选择能击败 Alice 出现次数最多手势的手势，Bob 的胜场数固定为最大频次。",
-            "Alice 能击败该固定手势的手势只对应另外两类之一，其次数不超过最大频次，因此 Bob 必胜场数不少于 Alice。"
-          ],
-          "solutionBrief": "统计 Alice 三种手势的次数，找出最大频次对应的手势，并让 Bob 全程使用它的克制手势。输出该手势重复 $x+y+z$ 次，复杂度为 $O(x+y+z)$。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
         {
           "key": "2278C",
           "index": "C",
@@ -239,37 +187,6 @@ window.CF_INSIGHTS_DATA = {
             "一旦前缀到达 $2$，剩余位置只能唯一补成 $1$；因此答案是所有长度 $i\\in[2,n]$ 到达 $2$ 的状态之和，并可用前缀和优化区间转移。"
           ],
           "solutionBrief": "先利用取模恒等式证明合法数组必以 $m+2$ 开始，在某处到达 $2$ 后全为 $1，之前相邻值满足 $a_{i+1}\\le a_i<2a_{i+1}$。设 DP 记录前缀末值，按区间 $[v,2v-1]$ 转移并用前缀和求和，累加到达 $2$ 的状态。",
-          "extractionStatus": "ai_generated_with_editorial",
-          "editorialQuality": "complete"
-        },
-        {
-          "key": "2278G",
-          "index": "G",
-          "slot": "G",
-          "title": "0s and 1s",
-          "rating": null,
-          "problemUrl": "https://codeforces.com/contest/2278/problem/G",
-          "editorialUrl": "https://codeforces.com/blog/entry/158300",
-          "primaryTopic": "数论与同余",
-          "secondaryTopics": [
-            "树结构",
-            "动态规划与状态设计"
-          ],
-          "originalTags": [
-            "dp",
-            "hashing",
-            "number theory",
-            "trees"
-          ],
-          "statementBrief": "给定一棵以 1 为根的树，每个节点有初始二进制状态和目标状态。每次向根注入脉冲：遇到 0 就变为 1 并停止，遇到 1 就变为 0 并向所有子节点继续发送；求能否达到所有目标状态，并求所需脉冲数的最小值。",
-          "transformedStatement": "把根到每个节点的状态序列看成根为最低位的二进制数；向根注入 $K$ 次等价于每条路径的数加上同一个 $K$，于是按树的深度逐位确定这个全局加数及各路径的进位。扁平化_codeforces_local_browser 不能。",
-          "keyObservations": [
-            "沿根到节点的路径把状态视为二进制数，向根注入一次脉冲等价于该路径上的数加一，因此注入 $K$ 次后节点状态是 $X_v+K$ 的对应位。",
-            "同一深度的所有节点共享 $K$ 的同一位；由当前节点状态、目标状态和父节点进位得到 $k_d=y_v\\oplus x_v\\oplus C_v$，若同层出现两种结果则无解。",
-            "确定第 $d$ 位后，可用 $x_v+k_d+C_v\\ge 2$ 判断各节点向下一层传出的进位，从而独立推进所有根到叶路径。",
-            "最小脉冲数就是满足约束的二进制数 $K$，因此每个确定为 $1$ 的深度贡献 $2^d$，按模数累加即可。"
-          ],
-          "solutionBrief": "按深度处理节点，将脉冲总数视为全局二进制数。由节点状态、目标状态和父进位确定该层的 $K$ 位；同层不一致则输出 $-1$，否则传播进位并累加对应的 $2^d$，总复杂度为 $O(n)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
         }

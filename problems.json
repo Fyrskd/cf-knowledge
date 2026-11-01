@@ -58,7 +58,8 @@
     "name": "Stakes and Shapes",
     "type": "PROGRAMMING",
     "tags": [
-      "constructive algorithms"
+      "constructive algorithms",
+      "greedy"
     ]
   },
   {
@@ -68,7 +69,8 @@
     "type": "PROGRAMMING",
     "tags": [
       "implementation",
-      "sortings"
+      "sortings",
+      "strings"
     ]
   },
   {
