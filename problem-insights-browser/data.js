@@ -2,16 +2,16 @@ window.CF_INSIGHTS_DATA = {
   "generatedAt": "2026-11-03",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
-    "total_problems": 4376,
+    "total_problems": 4375,
     "source_total_problems": 4376,
-    "filtered_out_problems": 0,
-    "with_statement_brief": 4376,
+    "filtered_out_problems": 1,
+    "with_statement_brief": 4375,
     "with_editorial_brief": 4015,
     "with_solution_brief": 4017,
-    "missing_editorial_brief": 359,
+    "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3438,
+    "ai_override_count": 3437,
     "primary_topic_count": 13,
     "contest_count": 683,
     "rating_min": 800,
@@ -54,14 +54,14 @@ window.CF_INSIGHTS_DATA = {
     "几何": 101,
     "树结构": 202,
     "字符串": 231,
-    "基础实现与模拟": 261,
+    "基础实现与模拟": 260,
     "代数、矩阵与多项式": 28,
     "博弈": 128
   },
   "statusCounts": {
     "ai_generated_with_editorial": 3009,
     "ai_generated_partial_editorial": 115,
-    "missing_editorial": 359,
+    "missing_editorial": 358,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -132734,7 +132734,7 @@ window.CF_INSIGHTS_DATA = {
       "date": "2021-01-29",
       "url": "https://codeforces.com/contest/1476",
       "type": "Educational",
-      "problemCount": 7,
+      "problemCount": 6,
       "maxRating": 3100,
       "problems": [
         {
@@ -132886,28 +132886,6 @@ window.CF_INSIGHTS_DATA = {
           "solutionBrief": "枚举每个字符串的 $2^k$ 种通配符替换形式，查表找出所有匹配模式，并检查指定目标是否在其中。对每个目标向其他匹配模式连边，若图无环则输出其拓扑序；否则输出无解。题解给出的复杂度为 $O(nk\\log n+mk\\cdot2^k\\log n)$，或使用 Trie 达到 $O(nk+m\\cdot2^k)$。",
           "extractionStatus": "ai_generated_with_editorial",
           "editorialQuality": "complete"
-        },
-        {
-          "key": "1476F",
-          "index": "F",
-          "slot": "F",
-          "title": "Lanterns",
-          "rating": 3000,
-          "problemUrl": "https://codeforces.com/contest/1476/problem/F",
-          "editorialUrl": "https://codeforces.com/blog/entry/87356",
-          "primaryTopic": "基础实现与模拟",
-          "secondaryTopics": [],
-          "originalTags": [
-            "binary search",
-            "data structures",
-            "dp"
-          ],
-          "statementBrief": "有 $n$ 盏灯按位置排成一行，第 $i$ 盏灯的照明范围为 $p_i$。每盏灯必须选择向左照亮相邻至多 $p_i$ 个位置，或向右照亮相邻至多 $p_i$ 个位置；要求为所有灯选择方向，使每盏灯都至少被另一盏灯照亮，并输出任意方案或判定无解。",
-          "transformedStatement": "",
-          "keyObservations": [],
-          "solutionBrief": "",
-          "extractionStatus": "missing_editorial",
-          "editorialQuality": "url_only"
         },
         {
           "key": "1476G",

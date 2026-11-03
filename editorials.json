@@ -5,7 +5,7 @@
     "label": "Tutorial",
     "section_count": 0,
     "covered_problems": [],
-    "raw_sha256": "1b617bc721468bb51f926733f9e8b64016252996c77c1edc275a7256bcc7072d"
+    "raw_sha256": "c71f0463136eab65dd0db9c00e32f3f0d5d7354c2579d8ccb657e82f85c8ce9e"
   },
   {
     "url": "https://codeforces.com/blog/entry/86464",
@@ -58,9 +58,17 @@
     "original_locale": "ru",
     "source": "codeforces-blog",
     "label": "87356",
-    "section_count": 0,
-    "covered_problems": [],
-    "raw_sha256": "6687784c80e460eb39ea4d7416ef94e2b5e4a876809dcf03832d152acfd2eeaa"
+    "section_count": 7,
+    "covered_problems": [
+      "1476A",
+      "1476B",
+      "1476C",
+      "1476D",
+      "1476E",
+      "1476F",
+      "1476G"
+    ],
+    "raw_sha256": "bb1e3fe44915988c70054a17cb7d1d5968b7a45e5e246d4a1c55edab568920f0"
   },
   {
     "url": "https://codeforces.com/blog/entry/87523",
