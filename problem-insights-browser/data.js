@@ -1,17 +1,17 @@
 window.CF_INSIGHTS_DATA = {
-  "generatedAt": "2026-11-02",
+  "generatedAt": "2026-11-03",
   "source": "problem-insights.json + contests.json + records.json",
   "summary": {
     "total_problems": 4376,
     "source_total_problems": 4376,
     "filtered_out_problems": 0,
     "with_statement_brief": 4376,
-    "with_editorial_brief": 4016,
-    "with_solution_brief": 4018,
-    "missing_editorial_brief": 358,
+    "with_editorial_brief": 4015,
+    "with_solution_brief": 4017,
+    "missing_editorial_brief": 359,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3438,
+    "ai_override_count": 3437,
     "primary_topic_count": 13,
     "contest_count": 683,
     "rating_min": 800,
@@ -44,8 +44,8 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1441,
-    "动态规划与状态设计": 359,
+    "构造与贪心": 1442,
+    "动态规划与状态设计": 358,
     "数据结构": 411,
     "图论与网络流": 295,
     "数论与同余": 454,
@@ -60,8 +60,8 @@ window.CF_INSIGHTS_DATA = {
   },
   "statusCounts": {
     "ai_generated_with_editorial": 3009,
-    "ai_generated_partial_editorial": 116,
-    "missing_editorial": 358,
+    "ai_generated_partial_editorial": 115,
+    "missing_editorial": 359,
     "low_confidence": 1,
     "manual_override": 891,
     "statement_derived": 1
@@ -132895,8 +132895,9 @@ window.CF_INSIGHTS_DATA = {
           "rating": 3000,
           "problemUrl": "https://codeforces.com/contest/1476/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/87356",
-          "primaryTopic": "动态规划与状态设计",
+          "primaryTopic": "构造与贪心",
           "secondaryTopics": [
+            "动态规划与状态设计",
             "数据结构"
           ],
           "originalTags": [
@@ -132904,16 +132905,12 @@ window.CF_INSIGHTS_DATA = {
             "data structures",
             "dp"
           ],
-          "statementBrief": "一排有 $n$ 盏灯，第 $i$ 盏灯的照射范围由功率 $p_i$ 决定；每盏灯必须选择朝左或朝右，分别照亮自身左侧或右侧最多 $p_i$ 盏灯。要求给出一种方向分配，使每盏灯都至少被另一盏灯照亮；若不存在则报告无解。",
-          "transformedStatement": "把问题转化为逐步判断能够完全照亮的连续前缀：$dp_i$ 记录使用前 $i$ 盏灯时可覆盖的最远前缀。选灯朝左的转移变成寻找一个已覆盖到指定门槛的前缀，再计算其与该灯之间最多能延伸到哪里。",
-          "keyObservations": [
-            "把已完全照亮的连续前缀长度作为状态后，处理前若干盏灯的可行性可以压缩为一个最大前缀值，避免记录每盏灯的具体照亮情况。",
-            "若第 $i$ 盏灯朝左照亮前方未覆盖区域，先前状态必须至少覆盖到 $i-p_i-1$；满足条件的前缀中取最小下标即可，因为它能纳入最多的中间灯并扩大可覆盖前缀。",
-            "上述最小可行前缀可通过按 $dp_j$ 值组织下标的最小值线段树查询；转移还需查询中间区间的最大可覆盖前缀，因此可用区间最大值结构维护。"
-          ],
-          "solutionBrief": "令 $dp_i$ 表示使用前 $i$ 盏灯时能完全照亮的最远前缀。倒序考虑转移：选择第 $i$ 盏灯朝左时，查询满足覆盖门槛的最小前缀下标，并结合中间区间的最大状态更新；线段树用于加速查询。给出的题解节选未说明如何恢复具体方向串。",
-          "extractionStatus": "ai_generated_partial_editorial",
-          "editorialQuality": "partial"
+          "statementBrief": "题面已抓取：Lanterns；本地暂无可用题解正文。",
+          "transformedStatement": "",
+          "keyObservations": [],
+          "solutionBrief": "",
+          "extractionStatus": "missing_editorial",
+          "editorialQuality": "url_only"
         },
         {
           "key": "1476G",
