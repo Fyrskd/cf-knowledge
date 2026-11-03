@@ -11,7 +11,7 @@ window.CF_INSIGHTS_DATA = {
     "missing_editorial_brief": 359,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3437,
+    "ai_override_count": 3438,
     "primary_topic_count": 13,
     "contest_count": 683,
     "rating_min": 800,
@@ -44,7 +44,7 @@ window.CF_INSIGHTS_DATA = {
     "代数、矩阵与多项式"
   ],
   "topicCounts": {
-    "构造与贪心": 1442,
+    "构造与贪心": 1441,
     "动态规划与状态设计": 358,
     "数据结构": 411,
     "图论与网络流": 295,
@@ -54,7 +54,7 @@ window.CF_INSIGHTS_DATA = {
     "几何": 101,
     "树结构": 202,
     "字符串": 231,
-    "基础实现与模拟": 260,
+    "基础实现与模拟": 261,
     "代数、矩阵与多项式": 28,
     "博弈": 128
   },
@@ -132895,17 +132895,14 @@ window.CF_INSIGHTS_DATA = {
           "rating": 3000,
           "problemUrl": "https://codeforces.com/contest/1476/problem/F",
           "editorialUrl": "https://codeforces.com/blog/entry/87356",
-          "primaryTopic": "构造与贪心",
-          "secondaryTopics": [
-            "动态规划与状态设计",
-            "数据结构"
-          ],
+          "primaryTopic": "基础实现与模拟",
+          "secondaryTopics": [],
           "originalTags": [
             "binary search",
             "data structures",
             "dp"
           ],
-          "statementBrief": "题面已抓取：Lanterns；本地暂无可用题解正文。",
+          "statementBrief": "有 $n$ 盏灯按位置排成一行，第 $i$ 盏灯的照明范围为 $p_i$。每盏灯必须选择向左照亮相邻至多 $p_i$ 个位置，或向右照亮相邻至多 $p_i$ 个位置；要求为所有灯选择方向，使每盏灯都至少被另一盏灯照亮，并输出任意方案或判定无解。",
           "transformedStatement": "",
           "keyObservations": [],
           "solutionBrief": "",

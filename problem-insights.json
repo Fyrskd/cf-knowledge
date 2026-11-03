@@ -24,7 +24,7 @@
     "missing_editorial_brief": 359,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3437,
+    "ai_override_count": 3438,
     "primary_topic_count": 13
   },
   "records": [
@@ -2323,17 +2323,14 @@
       "problem_url": "https://codeforces.com/contest/1476/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/87356",
       "editorial_quality": "url_only",
-      "primary_topic": "构造与贪心",
-      "secondary_topics": [
-        "动态规划与状态设计",
-        "数据结构"
-      ],
+      "primary_topic": "基础实现与模拟",
+      "secondary_topics": [],
       "original_tags": [
         "binary search",
         "data structures",
         "dp"
       ],
-      "statement_brief": "题面已抓取：Lanterns；本地暂无可用题解正文。",
+      "statement_brief": "有 $n$ 盏灯按位置排成一行，第 $i$ 盏灯的照明范围为 $p_i$。每盏灯必须选择向左照亮相邻至多 $p_i$ 个位置，或向右照亮相邻至多 $p_i$ 个位置；要求为所有灯选择方向，使每盏灯都至少被另一盏灯照亮，并输出任意方案或判定无解。",
       "transformed_statement": "",
       "key_observations": [],
       "solution_brief": "",
@@ -2341,9 +2338,19 @@
       "source_provenance": {
         "statement": "records.json:statement_text",
         "editorial": "records.json:editorial_text",
-        "links_and_tags": "records.json"
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-11-03T01:34:07+00:00",
+          "quality_flags": [
+            "missing_editorial",
+            "statement_inferred"
+          ]
+        }
       },
-      "manual_override": false
+      "manual_override": false,
+      "ai_override": true
     },
     {
       "ordinal": 56,

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-11-01T13:56:12+00:00",
+  "updated_at": "2026-11-03T01:34:07+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -99225,29 +99225,23 @@
       "rating": 3000,
       "problem_url": "https://codeforces.com/contest/1476/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/87356",
-      "editorial_quality": "partial",
+      "editorial_quality": "url_only",
       "model": "gpt-6-luna",
-      "input_hash": "f3f6c51712e1423b0eb6ef21b9a38cf0498501de1014a30c39678379856dea59",
-      "generated_at": "2026-09-29T02:40:19+00:00",
+      "input_hash": "f297375a9dab5d1f7d1e898eb7922118a7b5c628dbb8a0f31fc3e4dffc7dbc8e",
+      "generated_at": "2026-11-03T01:34:07+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "一排有 $n$ 盏灯，第 $i$ 盏灯的照射范围由功率 $p_i$ 决定；每盏灯必须选择朝左或朝右，分别照亮自身左侧或右侧最多 $p_i$ 盏灯。要求给出一种方向分配，使每盏灯都至少被另一盏灯照亮；若不存在则报告无解。",
-        "transformed_statement": "把问题转化为逐步判断能够完全照亮的连续前缀：$dp_i$ 记录使用前 $i$ 盏灯时可覆盖的最远前缀。选灯朝左的转移变成寻找一个已覆盖到指定门槛的前缀，再计算其与该灯之间最多能延伸到哪里。",
-        "key_observations": [
-          "把已完全照亮的连续前缀长度作为状态后，处理前若干盏灯的可行性可以压缩为一个最大前缀值，避免记录每盏灯的具体照亮情况。",
-          "若第 $i$ 盏灯朝左照亮前方未覆盖区域，先前状态必须至少覆盖到 $i-p_i-1$；满足条件的前缀中取最小下标即可，因为它能纳入最多的中间灯并扩大可覆盖前缀。",
-          "上述最小可行前缀可通过按 $dp_j$ 值组织下标的最小值线段树查询；转移还需查询中间区间的最大可覆盖前缀，因此可用区间最大值结构维护。"
-        ],
-        "solution_brief": "令 $dp_i$ 表示使用前 $i$ 盏灯时能完全照亮的最远前缀。倒序考虑转移：选择第 $i$ 盏灯朝左时，查询满足覆盖门槛的最小前缀下标，并结合中间区间的最大状态更新；线段树用于加速查询。给出的题解节选未说明如何恢复具体方向串。",
-        "primary_topic": "动态规划与状态设计",
-        "secondary_topics": [
-          "数据结构"
-        ],
-        "extraction_status": "ai_generated_partial_editorial",
-        "source_provenance": "题意依据 statement_text；状态定义、转移和线段树查询依据 editorial_text 节选；tags 仅用于辅助分类。",
+        "statement_brief": "有 $n$ 盏灯按位置排成一行，第 $i$ 盏灯的照明范围为 $p_i$。每盏灯必须选择向左照亮相邻至多 $p_i$ 个位置，或向右照亮相邻至多 $p_i$ 个位置；要求为所有灯选择方向，使每盏灯都至少被另一盏灯照亮，并输出任意方案或判定无解。",
+        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
+        "key_observations": [],
+        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
+        "primary_topic": "基础实现与模拟",
+        "secondary_topics": [],
+        "extraction_status": "statement_only_missing_editorial",
+        "source_provenance": "依据 statement_text 提炼；editorial_text 为空，tags 仅作元数据参考，未据此补写算法。",
         "quality_flags": [
-          "partial_editorial",
-          "reconstruction_details_missing"
+          "missing_editorial",
+          "statement_inferred"
         ]
       }
     },
