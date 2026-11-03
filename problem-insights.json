@@ -15,16 +15,16 @@
     ]
   },
   "summary": {
-    "total_problems": 4375,
+    "total_problems": 4376,
     "source_total_problems": 4376,
-    "filtered_out_problems": 1,
-    "with_statement_brief": 4375,
-    "with_editorial_brief": 4015,
-    "with_solution_brief": 4017,
+    "filtered_out_problems": 0,
+    "with_statement_brief": 4376,
+    "with_editorial_brief": 4016,
+    "with_solution_brief": 4018,
     "missing_editorial_brief": 358,
     "statement_derived_solution": 1,
     "manual_override_count": 938,
-    "ai_override_count": 3437,
+    "ai_override_count": 3438,
     "primary_topic_count": 13
   },
   "records": [
@@ -2309,6 +2309,50 @@
           "model": "gpt-6-luna",
           "generated_at": "2026-09-29T02:40:34+00:00",
           "quality_flags": []
+        }
+      },
+      "manual_override": false,
+      "ai_override": true
+    },
+    {
+      "ordinal": 55,
+      "problem_key": "1476F",
+      "contest_id": 1476,
+      "title": "Lanterns",
+      "rating": 3000,
+      "problem_url": "https://codeforces.com/contest/1476/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/87356",
+      "editorial_quality": "partial",
+      "primary_topic": "动态规划与状态设计",
+      "secondary_topics": [
+        "数据结构"
+      ],
+      "original_tags": [
+        "binary search",
+        "data structures",
+        "dp"
+      ],
+      "statement_brief": "有 $n$ 个按位置排列的灯，第 $i$ 个灯必须选择向左或向右；向左照亮距离不超过 $p_i$ 的左侧灯，向右则照亮对应右侧区间。要求为每个灯选择方向，使每个灯都至少被另一个灯照亮，并输出任意可行方向串或判定无解。",
+      "transformed_statement": "把方向选择转化为从左到右扩展“已完整照亮前缀”的问题。状态 $dp_i$ 记录使用前 $i$ 个灯时的最远完整前缀；处理向左的第 $i$ 个灯时，寻找一个已覆盖前缀与其照明区间相接，再合并中间灯向右产生的最大延伸。",
+      "key_observations": [
+        "用 $dp_i$ 表示只考虑前 $i$ 个灯时能够完整照亮的最远前缀；后续转移只需关注这个边界，而不必保留前缀内部的具体照明关系。",
+        "若让第 $i$ 个灯向左照明，它必须连接到某个已覆盖前缀 $j$，条件是 $dp_j\\ge i-p_i-1$；连接后可覆盖到至少 $i-1$，中间区间的最远覆盖还需通过区间最大值合并。",
+        "满足条件的前缀只需选择最小的 $j$，因为它能留下最长的区间 $[j+1,i-1]$ 供其他灯向右延伸，从而不劣于更大的连接位置。",
+        "将每个 $(i,dp_i)$ 按 $dp_i$ 作为位置、$i$ 作为值建立最小值结构，即可查询满足阈值的最小 $j$；另用区间最大值结构维护中间区间的覆盖结果。"
+      ],
+      "solution_brief": "以可覆盖前缀的最远位置为 DP 状态，反向处理每个向左的灯，利用最小值结构找到最早可连接前缀，再用区间最大值更新覆盖边界；记录转移以恢复方向串。",
+      "extraction_status": "ai_generated_partial_editorial",
+      "source_provenance": {
+        "statement": "records.json:statement_text",
+        "editorial": "records.json:editorial_text",
+        "links_and_tags": "records.json",
+        "ai_override": {
+          "path": "ai-generated-insights.json",
+          "model": "gpt-6-luna",
+          "generated_at": "2026-11-03T14:47:06+00:00",
+          "quality_flags": [
+            "partial_editorial"
+          ]
         }
       },
       "manual_override": false,

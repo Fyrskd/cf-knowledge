@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-11-03T01:34:07+00:00",
+  "updated_at": "2026-11-03T14:47:06+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -99225,23 +99225,29 @@
       "rating": 3000,
       "problem_url": "https://codeforces.com/contest/1476/problem/F",
       "editorial_url": "https://codeforces.com/blog/entry/87356",
-      "editorial_quality": "url_only",
+      "editorial_quality": "partial",
       "model": "gpt-6-luna",
-      "input_hash": "f297375a9dab5d1f7d1e898eb7922118a7b5c628dbb8a0f31fc3e4dffc7dbc8e",
-      "generated_at": "2026-11-03T01:34:07+00:00",
+      "input_hash": "f3f6c51712e1423b0eb6ef21b9a38cf0498501de1014a30c39678379856dea59",
+      "generated_at": "2026-11-03T14:47:06+00:00",
       "status": "ok",
       "insight": {
-        "statement_brief": "有 $n$ 盏灯按位置排成一行，第 $i$ 盏灯的照明范围为 $p_i$。每盏灯必须选择向左照亮相邻至多 $p_i$ 个位置，或向右照亮相邻至多 $p_i$ 个位置；要求为所有灯选择方向，使每盏灯都至少被另一盏灯照亮，并输出任意方案或判定无解。",
-        "transformed_statement": "本地题解正文不足，暂不推断完整算法。",
-        "key_observations": [],
-        "solution_brief": "本地题解正文不足；本条只保留中文题意、原题链接和题解链接，不根据宽标签补写题解。",
-        "primary_topic": "基础实现与模拟",
-        "secondary_topics": [],
-        "extraction_status": "statement_only_missing_editorial",
-        "source_provenance": "依据 statement_text 提炼；editorial_text 为空，tags 仅作元数据参考，未据此补写算法。",
+        "statement_brief": "有 $n$ 个按位置排列的灯，第 $i$ 个灯必须选择向左或向右；向左照亮距离不超过 $p_i$ 的左侧灯，向右则照亮对应右侧区间。要求为每个灯选择方向，使每个灯都至少被另一个灯照亮，并输出任意可行方向串或判定无解。",
+        "transformed_statement": "把方向选择转化为从左到右扩展“已完整照亮前缀”的问题。状态 $dp_i$ 记录使用前 $i$ 个灯时的最远完整前缀；处理向左的第 $i$ 个灯时，寻找一个已覆盖前缀与其照明区间相接，再合并中间灯向右产生的最大延伸。",
+        "key_observations": [
+          "用 $dp_i$ 表示只考虑前 $i$ 个灯时能够完整照亮的最远前缀；后续转移只需关注这个边界，而不必保留前缀内部的具体照明关系。",
+          "若让第 $i$ 个灯向左照明，它必须连接到某个已覆盖前缀 $j$，条件是 $dp_j\\ge i-p_i-1$；连接后可覆盖到至少 $i-1$，中间区间的最远覆盖还需通过区间最大值合并。",
+          "满足条件的前缀只需选择最小的 $j$，因为它能留下最长的区间 $[j+1,i-1]$ 供其他灯向右延伸，从而不劣于更大的连接位置。",
+          "将每个 $(i,dp_i)$ 按 $dp_i$ 作为位置、$i$ 作为值建立最小值结构，即可查询满足阈值的最小 $j$；另用区间最大值结构维护中间区间的覆盖结果。"
+        ],
+        "solution_brief": "以可覆盖前缀的最远位置为 DP 状态，反向处理每个向左的灯，利用最小值结构找到最早可连接前缀，再用区间最大值更新覆盖边界；记录转移以恢复方向串。",
+        "primary_topic": "动态规划与状态设计",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_partial_editorial",
+        "source_provenance": "题意来自 statement_text，核心 DP 与两类区间查询结构来自 editorial_text，标签用于辅助主题归类。",
         "quality_flags": [
-          "missing_editorial",
-          "statement_inferred"
+          "partial_editorial"
         ]
       }
     },
