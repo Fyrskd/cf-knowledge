@@ -17,3 +17,4 @@ problem-insights-by-topic.md
 problem-insights-quality-check.md
 __pycache__/
 tools/__pycache__/
+server-update.lock

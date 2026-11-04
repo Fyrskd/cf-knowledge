@@ -1,5 +1,7 @@
 # Codeforces 自动更新
 
+服务器部署入口为 `tools/cf_server_update.py`，负责备份、调用本文件描述的更新脚本、质量校验和原子发布。迁移目标是 `https://haduk1.top/extracker/`，配置与切换步骤见 [CF_SERVER_DEPLOY.md](CF_SERVER_DEPLOY.md)。以下 GitHub Actions 和批量派发说明保留用于旧部署回退；迁移验证通过后关闭旧定时工作流。
+
 `tools/cf_auto_update.py` 把现有抓取器和本地 AI 管理器串成一次增量更新：
 
 ```text

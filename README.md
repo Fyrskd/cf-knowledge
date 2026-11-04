@@ -6,6 +6,8 @@ CF补完计划把比赛题目整理成可复习的知识卡片，集中展示中
 
 **在线使用：** [fyrskd.github.io](https://fyrskd.github.io/)
 
+服务器迁移目标为 [haduk1.top/extracker/](https://haduk1.top/extracker/)，部署步骤和切换条件见 [服务器部署说明](tools/CF_SERVER_DEPLOY.md)。服务器承接网页、抓取和 AI 更新，GitHub 保留代码备份；公网与首次更新验证通过后关闭旧定时工作流。
+
 ## 能做什么
 
 - 按比赛或知识点浏览题目；

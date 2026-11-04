@@ -49,6 +49,10 @@
     "repo": "Fyrskd/cf-knowledge"
   },
   "deployment": {
+    "server_url": "https://haduk1.top/extracker/",
+    "server_web_root": "/var/www/cf-knowledge",
+    "server_backup_directory": "/srv/cf-knowledge-backups",
+    "server_backup_keep": 28,
     "pages_repository": "Fyrskd/Fyrskd.github.io",
     "pages_ref": "main"
   }

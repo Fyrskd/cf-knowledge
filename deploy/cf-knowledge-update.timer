@@ -1,0 +1,9 @@
+[Unit]
+Description=Update CF knowledge every six hours
+
+[Timer]
+OnCalendar=*-*-* 00,06,12,18:17:00 Asia/Shanghai
+Persistent=true
+
+[Install]
+WantedBy=timers.target

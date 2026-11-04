@@ -1,0 +1,17 @@
+[Unit]
+Description=CF knowledge crawler, AI summaries and static publication
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+User=haduki
+Group=haduki
+WorkingDirectory=/srv/cf-knowledge
+EnvironmentFile=/etc/cf-knowledge/ai.env
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 tools/cf_server_update.py
+TimeoutStartSec=12h
+UMask=0022
+NoNewPrivileges=true
+PrivateTmp=true
