@@ -1,5 +1,77 @@
 [
   {
+    "contestId": 2283,
+    "index": "G",
+    "name": "Order Statistics on the Graph",
+    "type": "PROGRAMMING",
+    "tags": [
+      "bitmasks",
+      "brute force",
+      "sortings"
+    ]
+  },
+  {
+    "contestId": 2283,
+    "index": "F",
+    "name": "Minimize the Graph",
+    "type": "PROGRAMMING",
+    "tags": [
+      "data structures",
+      "greedy"
+    ]
+  },
+  {
+    "contestId": 2283,
+    "index": "E",
+    "name": "Partition of a Binary String",
+    "type": "PROGRAMMING",
+    "tags": [
+      "combinatorics",
+      "dp"
+    ]
+  },
+  {
+    "contestId": 2283,
+    "index": "D",
+    "name": "Black, Gray and White",
+    "type": "PROGRAMMING",
+    "tags": [
+      "brute force",
+      "constructive algorithms",
+      "dfs and similar"
+    ]
+  },
+  {
+    "contestId": 2283,
+    "index": "C",
+    "name": "Big XOR",
+    "type": "PROGRAMMING",
+    "tags": [
+      "bitmasks",
+      "constructive algorithms"
+    ]
+  },
+  {
+    "contestId": 2283,
+    "index": "B",
+    "name": "Rhythmic String",
+    "type": "PROGRAMMING",
+    "tags": [
+      "brute force",
+      "number theory"
+    ]
+  },
+  {
+    "contestId": 2283,
+    "index": "A",
+    "name": "Numbers on the Board",
+    "type": "PROGRAMMING",
+    "tags": [
+      "brute force",
+      "greedy"
+    ]
+  },
+  {
     "contestId": 2278,
     "index": "G",
     "name": "0s and 1s",
