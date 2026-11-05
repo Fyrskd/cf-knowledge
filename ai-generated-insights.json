@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-11-03T14:47:06+00:00",
+  "updated_at": "2026-11-05T00:20:24+00:00",
   "records": {
     "2264F": {
       "problem_key": "2264F",
@@ -102753,6 +102753,213 @@
         ],
         "extraction_status": "ai_generated_with_editorial",
         "source_provenance": "依据完整题面、editorial_text，以及 tags 中的字符串和实现方向。",
+        "quality_flags": []
+      }
+    },
+    "2283G": {
+      "problem_key": "2283G",
+      "title": "Order Statistics on the Graph",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2283/problem/G",
+      "editorial_url": "https://codeforces.com/blog/entry/158495",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "835d5636bff6bb6d37dd82c508517f9ccc9d0037b8dac66357fde3e0e7207536",
+      "generated_at": "2026-11-05T00:17:52+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一个有向图及每个顶点的排名 $k_v$，每秒所有顶点同时更新：将其入邻居当前数值排序，取第 $k_v$ 小的数写回该顶点；有自环时也使用更新前的自身数值。对每个初始数组和时间 $t$，输出经过 $t$ 次同步更新后的所有顶点数值。",
+        "transformed_statement": "把数值数组拆成由初始不同数值划分出的多个阈值二进制数组；每个二进制数组在图上独立进行布尔秩统计更新，因而对应状态掩码在一个函数图中不断跳转，最后由各阈值状态重建数值。",
+        "key_observations": [
+          "对只含 $0/1$ 的数组，顶点的新值只由入邻居掩码与当前状态的交集中置位数决定，因此可预计算唯一转移 $h(mask)$。",
+          "任意数组可按不同初值构造至多 $n-1$ 个阈值二进制数组；序关系统计保持这些阈值上的比较结果，所有阈值演化后即可唯一还原最终数组。",
+          "全部 $2^n$ 个二进制状态构成每点出度为 $1$ 的函数图；每个连通块由一条环和指向环的树组成，使长度为 $t$ 的到达位置可按树深度与环上位置直接计算。",
+          "反向遍历函数图时维护递归栈：若 $t$ 不超过到环距离，答案在栈上回退；否则先到环，再按环长取模，从而把每个阈值查询降为 $O(1)$。"
+        ],
+        "solution_brief": "预计算每个二进制掩码的一步转移，建立函数图并分解环与入树。每个查询按初值的不同阈值拆成二进制状态，在函数图上用深度和环位置求出经过 $t$ 步的状态，再合并阈值结果还原答案；预处理约为 $O(2^n n)$，每询问约为 $O(n)$。",
+        "primary_topic": "图论与网络流",
+        "secondary_topics": [
+          "数据结构"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "题意依据 statement_text；核心建模、阈值分解、函数图处理与复杂度依据 editorial_text，并参考 tags 中的 bitmasks、brute force、sortings。",
+        "quality_flags": []
+      }
+    },
+    "2283F": {
+      "problem_key": "2283F",
+      "title": "Minimize the Graph",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2283/problem/F",
+      "editorial_url": "https://codeforces.com/blog/entry/158495",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "bc5aca6a8c7ba6e65dfeb3d532bba66298fb71bd8f740456b3ef57a1a6740f49",
+      "generated_at": "2026-11-05T00:18:15+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定 $n$ 个顶点的有向无环图：对每个 $i>1$，所有 $[l_i,r_i]$ 中的顶点都有边指向 $i$。要构造一个边数尽可能少的新图，使任意两点之间是否存在路径与原图完全一致。",
+        "transformed_statement": "按顶点编号逐个决定保留哪些入边：区间中的前驱若能先到达另一个前驱，其直连边就是冗余的。于是每个顶点的贡献变成统计 $[l_i,r_i]$ 内最早可达点编号 $f(v)$ 大于 $r_i$ 的位置数。",
+        "key_observations": [
+          "处理顶点 $i$ 时，若区间内的前驱 $v_a$ 能到达另一个前驱 $v_b$，则边 $v_a\\to i$ 可删除；其余边必须保留，因为到达 $i$ 的路径只能以对应前驱作为倒数第二个顶点。",
+          "定义 $f(v)$ 为从 $v$ 可到达的最小其他顶点编号；区间 $[l_i,r_i]$ 中的 $v$ 能通过其他前驱间接到达 $i$，当且仅当 $f(v)\\le r_i$。",
+          "从小到大处理顶点时，区间 $[l_i,r_i]$ 中尚未确定 $f$ 的点首次被移除，并赋值为 $i$，因此可用集合在线性扫描中求出所有 $f(v)$。",
+          "最终保留的入边数是区间内满足 $f(v)>r_i$ 的点数；按 $r_i$ 离线处理查询，并用树状数组维护这些点即可。"
+        ],
+        "solution_brief": "先按编号扫描，用集合求每个点最早能到达的其他顶点 $f(v)$。将每个区间转为统计其中 $f(v)>r_i$ 的位置，按 $r_i$ 离线更新树状数组并求区间和，总复杂度为 $O(n\\log n)$。",
+        "primary_topic": "数据结构",
+        "secondary_topics": [
+          "构造与贪心"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的区间入边与可达性要求，以及 editorial_text 的最小入边证明、$f(v)$ 扫描和离线树状数组方案；tags 仅用于主题归类。",
+        "quality_flags": []
+      }
+    },
+    "2283E": {
+      "problem_key": "2283E",
+      "title": "Partition of a Binary String",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2283/problem/E",
+      "editorial_url": "https://codeforces.com/blog/entry/158495",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "3bbd9a7d99a365da37799e3a9bfa13270c5fcf8dc0e25d4da5516aaa91a0ce28",
+      "generated_at": "2026-11-05T00:18:44+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定只含 0 和 1 的字符串，要把位置 $1$ 到 $n$ 划分成若干非空集合；同一集合中的任意两位置必须同字符，或位置相邻。集合代价为大小乘其中不同字符数，要求最大化所有集合代价之和，并统计达到最大值的划分数，结果对 $998244353$ 取模。",
+        "transformed_statement": "将总成本视为每个位置贡献其所在集合包含的字符种类数。于是问题转化为识别能同时容纳 0、1 的极大交替块：块内切成长度 $2/3$ 的段，块外按字符分别进行任意集合划分。",
+        "key_observations": [
+          "把集合代价改写为集合内每个元素贡献其集合包含的不同字符数，因此目标是尽可能让元素进入同时含 0 和 1 的集合。",
+          "若位置没有相邻的异字符位置，它不可能与异字符放入同一集合，贡献恒为 $1$；其余位置都能同时达到贡献 $2$。",
+          "每个极大交替块必须切成长度为 $2$ 或 $3$ 的连续段，才能让其中所有位置贡献 $2$；长度大于 $3$ 的交替段不能作为一个合法集合。",
+          "最优划分的计数可分解为各交替块的切分数与块外同字符元素的 Bell 数乘积，其中切分数满足 $dp_i=dp_{i-2}+dp_{i-3}$，Bell 数满足 $B_{i+1}=\\sum_{k=0}^{i}\binom{i}{k}B_{i-k}$。"
+        ],
+        "solution_brief": "扫描字符串找出长度至少为 $2$ 的极大交替块，最大代价为块内元素贡献 $2$、其余贡献 $1$。预处理 Bell 数和 $dp_i=dp_{i-2}+dp_{i-3}$，答案计数为块外 0、1 的 Bell 数与各块 $dp$ 值的乘积。",
+        "primary_topic": "组合计数与概率",
+        "secondary_topics": [
+          "动态规划与状态设计"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text、完整 editorial_text，以及 combinatorics、dp 标签整理。",
+        "quality_flags": []
+      }
+    },
+    "2283D": {
+      "problem_key": "2283D",
+      "title": "Black, Gray and White",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2283/problem/D",
+      "editorial_url": "https://codeforces.com/blog/entry/158495",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "56b32a3c86938a3f89ecbc6b09dace76030f80b3e903e6665bd451fe2db5461f",
+      "generated_at": "2026-11-05T00:19:12+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定一棵编号为 $1$ 到 $n$ 的树，先选一个 $1$ 到 $2n$ 的整数 $k$，再按 $i=1$ 到 $n$ 处理：若顶点 $k-i$ 存在且不同于 $i$，就将两端染黑，并把路径上仍为白色的点染灰。要求先最大化黑点数，再在此基础上最大化灰点数，输出任意最优的 $k$。",
+        "transformed_statement": "先只研究哪些 $k$ 能覆盖最多顶点并染黑：偶数 $n$ 有直接全覆盖方案，奇数 $n$ 只需保留三个各漏掉一个顶点的候选。随后把“漏掉的顶点变灰”转化为是否存在一条端点位于其不同子树的操作路径。",
+        "key_observations": [
+          "当 $n$ 为偶数时，取 $k=n+1$ 会把每个顶点与另一个不同顶点配对，因此所有顶点都变黑，黑点数达到最大。",
+          "当 $n$ 为奇数时，$k<n$ 至少漏掉顶点 $n,n-1$，$k>n+2$ 至少漏掉顶点 $1,2$，所以最大黑点数只需在 $k=n,n+1,n+2$ 中取得。",
+          "这三个候选值分别只漏掉一个顶点：$n$ 漏掉 $n$，$n+1$ 漏掉 $(n+1)/2$，$n+2$ 漏掉 $1$；因此只需判断该顶点能否变灰。",
+          "以漏掉的顶点为根后，路径经过它当且仅当两个端点属于根的不同子树；枚举所有操作即可判断漏掉顶点是否变灰。"
+        ],
+        "solution_brief": "偶数直接输出 $n+1$。奇数只检查 $n,n+1,n+2$；对每个候选以唯一非黑顶点为根，标记各点所属的根子树，若存在一条操作路径跨越不同子树，则该点会变灰，优先选择这种候选。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "树结构",
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的操作与目标、editorial_text 的候选值证明和树上路径判定，并参考 tags。",
+        "quality_flags": []
+      }
+    },
+    "2283C": {
+      "problem_key": "2283C",
+      "title": "Big XOR",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2283/problem/C",
+      "editorial_url": "https://codeforces.com/blog/entry/158495",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "0315d5caf215a7b875d6af00290e51f83d9d19c01851b8bd78c1cd2e8e92e3ec",
+      "generated_at": "2026-11-05T00:19:33+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组 $[1,2,\\ldots,n]$，每个元素最多可以独立翻倍一次，选择任意子集后得到数组 $b$。设原数组按位或为 $k$、新数组按位异或为 $m$，要求输出每个元素是否翻倍，使 $m\\ge 2k$。",
+        "transformed_statement": "不直接搜索翻倍子集，而是把初始异或视为位状态：先确定 $k$ 的最高位 $d$，再通过翻倍幂数，按从高到低的顺序把异或结果的第 $d+1$ 至第 $1$ 位补成 $1$。",
+        "key_observations": [
+          "令 $d$ 为 $k$ 的最高位，必有 $2^d\\le n$，因此可以利用数组中的幂 $2^d,2^{d-1},\\dots,2$ 逐位修正异或值。",
+          "把目标设为让异或结果的第 $d+1$ 到第 $1$ 位全部为 $1$；所得值至少为 $2^{d+1}+2^d+\\cdots+2=2^{d+2}-2\\ge 2k$。",
+          "将 $2^i$ 翻倍只会翻转第 $i$ 位和第 $i+1$ 位，因此从高位向低位处理时，后续操作不会改变已经固定的更高位。",
+          "若当前目标位为 $0$，就翻倍对应的幂 $2^{i-1}$；该操作恰好把当前位翻转为 $1$，并把影响留在下一处尚未处理的低位。"
+        ],
+        "solution_brief": "先求 $1\\oplus2\\oplus\\cdots\\oplus n$。令 $d$ 为 $k=1|2|\\cdots|n$ 的最高位，依次检查第 $d+1$ 至第 $1$ 位；若某位为 $0$，就把对应幂数翻倍，使该位变为 $1$，并记录该位置。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [
+          "基础实现与模拟"
+        ],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据 statement_text 的操作与目标，以及 editorial_text 中的逐位构造方法；tags 仅用于辅助主题归类。",
+        "quality_flags": []
+      }
+    },
+    "2283B": {
+      "problem_key": "2283B",
+      "title": "Rhythmic String",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2283/problem/B",
+      "editorial_url": "https://codeforces.com/blog/entry/158495",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "33537be41b8516d1c3a42609e9fad22197ee8ee057bef6295b8a3016d11ee1e8",
+      "generated_at": "2026-11-05T00:20:02+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "给定数组 $a$，初始无限长二进制串全为 0；保留数组元素后，每个元素 $a_i$ 会把所有下标为其倍数的位置改为 1。可先删除任意元素，要求最终字符串具有周期，且一个最小周期内恰好有一个 1，求最少删除元素数。",
+        "transformed_statement": "设最终字符串第一个 1 的位置为 $k$，题目等价于选择尽可能多的数组元素，使它们都能被保留集合中的最小元素 $k$ 整除；答案是总数减去最大可选集合大小。",
+        "key_observations": [
+          "设删除后字符串中第一个 1 的位置为 $k$，则 $k$ 必须是保留数组中的最小元素；否则更小位置会已有 1。",
+          "节奏串的最小周期不可能小于 $k$ 或不小于 $2k$，而当 $k<p<2k$ 时，周期性会迫使位置 $2k$ 为 0，与 $k$ 为最小保留元素导致位置 $2k$ 为 1 矛盾，因此周期必为 $k$。",
+          "周期为 $k$ 且首周期恰有一个 1 时，所有 1 恰好位于 $k,2k,3k,\u001b...$，所以每个保留元素都必须被 $k$ 整除；反之保留的元素全被 $k$ 整除即可满足条件。",
+          "因此固定候选最小元素 $k$ 后，最多能保留的元素数就是数组中能被 $k$ 整除的元素数；枚举每个数组元素并计数即可得到最少删除数。"
+        ],
+        "solution_brief": "枚举每个 $a_i$ 作为删除后的最小元素 $k$，统计数组中能被 $k$ 整除的元素数量，取最大值作为最多保留数，答案为 $n-$该最大值。总复杂度为 $O(n^2)$。",
+        "primary_topic": "数论与同余",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整 editorial_text，并结合 statement_text 与 number theory 标签提炼。",
+        "quality_flags": []
+      }
+    },
+    "2283A": {
+      "problem_key": "2283A",
+      "title": "Numbers on the Board",
+      "rating": null,
+      "problem_url": "https://codeforces.com/contest/2283/problem/A",
+      "editorial_url": "https://codeforces.com/blog/entry/158495",
+      "editorial_quality": "complete",
+      "model": "gpt-6-luna",
+      "input_hash": "e9f9ef8a0b5346d4010dad5adcf614ddd0639acdda3319fcd90633ab4c8c1dc3",
+      "generated_at": "2026-11-05T00:20:24+00:00",
+      "status": "ok",
+      "insight": {
+        "statement_brief": "黑板上有区间 $[l,r]$ 的每个整数各一次，可以任意擦除数字但至少保留一个。若某个保留数字等于所有保留数字之和，则称其美丽；求至少擦除多少个数字才能留下至少一个美丽数字。",
+        "transformed_statement": "美丽数字的条件等价于“除它以外的保留数字总和为 $0$”。因此先最大化可保留的零和子集：含 $0$ 时取对称区间 $[-m,m]$，其外至多再保留一个数字；不含 $0$ 时无法形成非空零和子集。",
+        "key_observations": [
+          "一个数美丽当且仅当其余保留数字之和为 $0$，因此问题转化为保留尽可能大的零和子集，并允许再保留一个美丽数字。",
+          "若区间不含 $0$，所有数字同号，非空子集不可能和为 $0$；只能保留一个数字，答案为 $r-l$。",
+          "若区间含 $0$，令 $m=\\min(r,-l)$，保留 $[-m,m]$ 可得到最大的对称零和子集；较长一侧多出的数字必须删除，因为它们绝对值最大且无法配平。",
+          "在最大零和子集之外最多还能保留一个数字作为美丽数字，所以含 $0$ 时答案为 $\\max(0,r-l-2m-1)$。"
+        ],
+        "solution_brief": "先判断区间是否含 $0$。不含时所有数同号，只能保留一个；含 $0$ 时保留对称区间 $[-m,m]$，再保留一侧至多一个额外数字，按公式计算需删除数量。",
+        "primary_topic": "构造与贪心",
+        "secondary_topics": [],
+        "extraction_status": "ai_generated_with_editorial",
+        "source_provenance": "依据完整题面与 editorial_text，算法结论与公式来自 editorial。",
         "quality_flags": []
       }
     }
