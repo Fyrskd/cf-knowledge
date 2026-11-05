@@ -1,6 +1,6 @@
 # Codeforces 自动更新
 
-服务器部署入口为 `tools/cf_server_update.py`，负责备份、调用本文件描述的更新脚本、质量校验和原子发布。迁移目标是 `https://haduk1.top/extracker/`，配置与切换步骤见 [CF_SERVER_DEPLOY.md](CF_SERVER_DEPLOY.md)。以下 GitHub Actions 和批量派发说明保留用于旧部署回退；迁移验证通过后关闭旧定时工作流。
+服务器部署入口为 `tools/cf_server_update.py`，负责备份、调用本文件描述的更新脚本、质量校验和原子发布。正式地址是 `https://haduk1.top/extracker/`，配置与维护方法见 [CF_SERVER_DEPLOY.md](CF_SERVER_DEPLOY.md)。服务器定时任务已启用，旧 GitHub 工作流已关闭；以下 GitHub Actions 和批量派发说明保留用于旧部署回退。
 
 `tools/cf_auto_update.py` 把现有抓取器和本地 AI 管理器串成一次增量更新：
 
@@ -9,11 +9,11 @@ Codeforces API / 题面镜像 / Tutorial
         -> cf_knowledge_index.py crawl
         -> enrich 非完整题解
         -> problem-insights 重建
-        -> 校验并提交抓取检查点
+        -> 保留服务器抓取检查点
         -> 所有待生成题目调用 AI
         -> AI 质量校验通过后重建 problem-insights
         -> 生成题面缺口与自动更新状态报告
-        -> GitHub Actions 提交源数据并更新 Fyrskd.github.io
+        -> 服务器入口校验并原子发布到 Nginx
 ```
 
 `cftracker.netlify.app/contests` 是浏览界面，不是稳定的数据接口。自动任务使用 Codeforces 官方 `contest.list`、`problemset.problems` 和已有的题面/Tutorial 抓取逻辑作为数据源，网页继续保留 CFTracker 链接作为入口。
@@ -26,7 +26,7 @@ Codeforces API / 题面镜像 / Tutorial
 - `crawler`：抓取间隔、重试次数、请求超时和断点保存频率；
 - `auto_update`：回看天数、AI 数量、是否强制 AI、是否重生成和是否跳过题解补抓；
 - `batch_upload`：日期范围、Action 轮询/重试、状态文件、工作流、分支和源仓库；
-- `deployment`：Pages 仓库和分支。
+- `deployment`：服务器地址、发布目录、备份目录和保留数，以及回退用的 Pages 仓库和分支。
 
 本机覆盖只需要写要调整的字段，并保持分组结构，例如：
 
@@ -89,7 +89,7 @@ python3 tools/cf_auto_update.py --lookback-days 30 --ai-limit 0 --skip-editorial
 
 需要自动生成摘要时，在当前 shell 设置 `OPENAI_API_KEY`；默认 API 地址、模型和请求参数见根目录 `config.json` 的 `ai` 分组。`--ai-limit -1` 表示处理全部待生成题目，`0` 只适合本地调试；`--refresh-ai` 表示重生成已有 AI 摘要。正式工作流使用 `--require-ai`：缺少 key 或本批次全部 AI 生成失败时阻止提交；单题 AI 调用失败、输出质量校验失败时只保留该题待重试，其他成功题目照常提交，避免一题失败阻塞整场比赛。题解抓取失败仍会保留已有数据并在下一轮重试。
 
-GitHub Actions 文件是 `.github/workflows/cf-auto-update.yml`，默认每 6 小时运行一次，也支持 `workflow_dispatch` 手动运行。需要在 `Fyrskd/cf-knowledge` 仓库配置两个 Secrets：
+旧 GitHub Actions 文件是 `.github/workflows/cf-auto-update.yml`，目前已关闭；重新启用后才会按原配置每 6 小时运行，并支持 `workflow_dispatch` 手动运行。回退前先停用服务器定时任务，并在 `Fyrskd/cf-knowledge` 仓库配置两个 Secrets：
 
 - `OPENAI_API_KEY`：必需；用于待生成题目的中文摘要。
 - `PAGES_DEPLOY_TOKEN`：必需；Fine-grained token，只给 `Fyrskd/Fyrskd.github.io` 的 Contents Read and write 权限。

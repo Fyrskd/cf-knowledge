@@ -4,9 +4,9 @@
 
 CF补完计划把比赛题目整理成可复习的知识卡片，集中展示中文题意、建模转换、关键观察和简要题解，帮助你按比赛、知识点和难度重新阅读做过的题。
 
-**在线使用：** [fyrskd.github.io](https://fyrskd.github.io/)
+**网站地址（公网备案待处理）：** [haduk1.top/extracker/](https://haduk1.top/extracker/)
 
-服务器迁移目标为 [haduk1.top/extracker/](https://haduk1.top/extracker/)，部署步骤和切换条件见 [服务器部署说明](tools/CF_SERVER_DEPLOY.md)。服务器承接网页、抓取和 AI 更新，GitHub 保留代码备份；公网与首次更新验证通过后关闭旧定时工作流。
+网页、抓取和 AI 更新已迁到服务器，GitHub 保留代码备份，旧 GitHub Actions 更新工作流已关闭。服务器每 6 小时更新一次，部署和维护方法见 [服务器部署说明](tools/CF_SERVER_DEPLOY.md)。当前 HTTP 请求受到阿里云 ICP 备案拦截，部分 HTTPS 客户端也出现握手重置；需要核对域名备案及接入状态后重新验证公网访问，暂不能视为稳定上线。
 
 ## 能做什么
 
@@ -68,7 +68,7 @@ cp config.json config.local.json
 }
 ```
 
-API 地址、模型、超时、抓取重试、自动更新窗口、批量上传参数和 Pages 仓库等都应该在配置文件中调整。API key 不写入公开配置：本地使用环境变量 `OPENAI_API_KEY`，GitHub Actions 使用同名 Secret；Pages 发布使用 `PAGES_DEPLOY_TOKEN` Secret。
+API 地址、模型、超时、抓取重试、自动更新窗口、服务器发布目录和备份参数都应该在配置文件中调整。API key 不写入公开配置：服务器由 `/etc/cf-knowledge/ai.env` 注入，本地使用环境变量 `OPENAI_API_KEY`。旧 Pages 配置与 GitHub Secrets 仅用于回退旧部署。
 
 配置文件合并优先级为：`config.local.json` > 旧版 `ai-config.local.json` > `config.json`；具体命令行参数再覆盖对应配置。`AI_BASE_URL`、`AI_MODEL` 和 `AI_TIMEOUT_SECONDS` 仍保留为兼容旧脚本的临时环境变量，但新配置应优先写入 `config.local.json`。旧版 `ai-config.local.json` 仍可读取，格式是平铺的旧 AI 配置；不要把它的内容直接改名为 `config.local.json`，新的本机文件必须使用 `{"ai": {...}}` 这样的嵌套结构。
 
@@ -89,15 +89,17 @@ python3 tools/cf_auto_update.py --lookback-days 30 --ai-limit -1 --require-ai
 
 - [`tools/CF_KNOWLEDGE_INDEX.md`](tools/CF_KNOWLEDGE_INDEX.md)
 - [`tools/CF_AUTO_UPDATE.md`](tools/CF_AUTO_UPDATE.md)
+- [`tools/CF_SERVER_DEPLOY.md`](tools/CF_SERVER_DEPLOY.md)
 
 提交修改前可以运行：
 
 ```bash
-python3 -m unittest tools/test_cf_config.py tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py
+python3 -m unittest tools/test_cf_config.py tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py tools/test_cf_server_update.py
 python3 -m py_compile \
   tools/cf_config.py \
   tools/cf_knowledge_index.py \
   tools/cf_auto_update.py \
+  tools/cf_server_update.py \
   tools/cf_ai_manager.py \
   build_problem_insights.py \
   build_problem_insights_browser_data.py
@@ -108,7 +110,7 @@ node --check problem-insights-browser/data.js
 ## 仓库关系
 
 - 源码、抓取快照和构建流程：[`Fyrskd/cf-knowledge`](https://github.com/Fyrskd/cf-knowledge)
-- GitHub Pages 发布镜像：[`Fyrskd/Fyrskd.github.io`](https://github.com/Fyrskd/Fyrskd.github.io)
-- 在线页面：[`fyrskd.github.io`](https://fyrskd.github.io/)
+- 旧 GitHub Pages 静态快照，不再自动更新：[`Fyrskd/Fyrskd.github.io`](https://github.com/Fyrskd/Fyrskd.github.io)
+- 服务器页面：[`haduk1.top/extracker/`](https://haduk1.top/extracker/)
 
 本项目目前没有声明开源许可证；如需基于项目再分发，请先联系仓库维护者。

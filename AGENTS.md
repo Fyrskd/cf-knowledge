@@ -8,17 +8,21 @@ CF补完计划是一个面向 Codeforces 题目复习的静态知识页面，负
 - 为可用题面和题解生成中文题意、建模转换和关键观察摘要；
 - 按比赛、知识点和难度浏览题目；
 - 在浏览器本地绑定 Codeforces 账号，并标记本地账号已经通过的题目；
-- 通过 GitHub Actions 定期增量更新源数据并发布 GitHub Pages。
+- 通过服务器 systemd 定时任务增量更新源数据，并由 Nginx 提供 HTTPS 静态页面。
 
-线上页面：<https://fyrskd.github.io/>
+线上页面：<https://haduk1.top/extracker/>
 
 源代码仓库：<https://github.com/Fyrskd/cf-knowledge>
 
-页面仓库：<https://github.com/Fyrskd/Fyrskd.github.io>
+旧页面仓库（回退用）：<https://github.com/Fyrskd/Fyrskd.github.io>
+
+生产运行于 SSH 别名 `aliyun` 对应的服务器，代码和数据在 `/srv/cf-knowledge`。GitHub 保留代码备份，旧更新工作流已关闭。维护方法见 `tools/CF_SERVER_DEPLOY.md`。服务器内部 HTTPS 正常，公网 HTTP 受到阿里云 ICP 备案拦截，部分 HTTPS 客户端也出现握手重置。域名备案或接入问题解决前，不能宣称公网稳定上线或自动续期验证通过。
 
 本文件只约束 CF补完计划。仓库中的其他目录不属于本项目的运行链路，修改时不要把它们混入 CF 发布提交。
 
 ## 2. 总体流程
+
+下图保留原 GitHub 发布流程供回退参考；当前生产由 `cf_server_update.py` 串联相同数据链路，并将静态文件原子发布到 Nginx。
 
 ```mermaid
 flowchart LR
@@ -50,12 +54,16 @@ tools/
   cf_config.py                 # 公共、本机和旧版配置合并
   cf_knowledge_index.py       # Codeforces 抓取、题面校验、题解补抓
   cf_auto_update.py           # 定时任务编排入口
+  cf_server_update.py         # 服务器备份、更新、校验和原子发布
   cf_ai_manager.py            # AI 摘要管理和本地管理页
   test_cf_config.py           # 配置合并测试
   test_cf_knowledge_index.py  # 抓取器测试
   test_cf_auto_update.py      # 发布门和自动更新测试
+  test_cf_server_update.py    # 服务器更新和发布测试
   CF_KNOWLEDGE_INDEX.md       # 抓取器使用说明
   CF_AUTO_UPDATE.md           # 自动更新和上线说明
+  CF_SERVER_DEPLOY.md         # 服务器部署和维护说明
+deploy/                      # Nginx、systemd 和证书续期配置
 .
   records.json                # 抓取器产生的题目事实和来源证据
   problems.json               # Codeforces 题目元数据
@@ -231,7 +239,11 @@ python3 tools/cf_ai_manager.py --host 127.0.0.1 --port 8787
 
 ## 9. 自动更新和上线
 
-工作流是 `.github/workflows/cf-auto-update.yml`：
+正式入口是 `tools/cf_server_update.py`，由 `cf-knowledge-update.timer` 按北京时间每天 `00:17`、`06:17`、`12:17`、`18:17` 运行。更新前备份数据，依次运行抓取与严格 AI 阶段，再执行构建、测试和发布门校验，最后原子切换 `/var/www/cf-knowledge/current`。失败不切换网页，也不回滚抓取检查点。服务器数据持续变化，更新代码时不能用旧本机 JSON 覆盖服务器数据。
+
+手动触发完整更新使用 `sudo systemctl start --no-block cf-knowledge-update.service`；只重建并发布已有数据，在服务器项目目录运行 `python3 tools/cf_server_update.py --publish-only`。密钥由 systemd 加载，不在命令中填写。
+
+以下 `.github/workflows/cf-auto-update.yml` 是已关闭的旧部署流程，仅供回退；恢复前必须先停用服务器定时任务：
 
 1. 默认每 6 小时运行一次，cron 为 `17 */6 * * *`；
 2. 支持 `workflow_dispatch` 手动运行；
@@ -269,7 +281,9 @@ python3 tools/cf_auto_update.py \
 
 ## 10. Secrets 和本地配置
 
-源仓库 GitHub Actions 需要：
+正式服务器通过 `/etc/cf-knowledge/ai.env` 注入 `OPENAI_API_KEY`，文件归 root 所有且权限为 `600`。不需要 Pages token，也不将密钥放入仓库或网站目录。
+
+旧 GitHub Actions 回退方式需要：
 
 - `OPENAI_API_KEY`：AI 摘要生成所需的 API key；
 - `PAGES_DEPLOY_TOKEN`：对 `Fyrskd/Fyrskd.github.io` 具有 Contents Read and write 权限的 fine-grained token。
@@ -292,11 +306,12 @@ AI 地址、模型、超时、抓取参数、自动更新参数、批量上传�
 修改抓取器、发布门、AI 管理器或前端后，在仓库根目录运行：
 
 ```bash
-python3 -m unittest tools/test_cf_config.py tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py
+python3 -m unittest tools/test_cf_config.py tools/test_cf_knowledge_index.py tools/test_cf_auto_update.py tools/test_cf_batch_upload.py tools/test_cf_server_update.py
 python3 -m py_compile \
   tools/cf_config.py \
   tools/cf_knowledge_index.py \
   tools/cf_auto_update.py \
+  tools/cf_server_update.py \
   tools/cf_ai_manager.py \
   build_problem_insights.py \
   build_problem_insights_browser_data.py

@@ -1,6 +1,10 @@
 # CF补完计划服务器部署
 
-目标地址：<https://haduk1.top/extracker/>。网页、抓取和 AI 摘要均在 `aliyun` 服务器运行，GitHub 保留代码备份。现有 GitHub Actions 工作流只用于必要时回退旧部署。
+部署地址：<https://haduk1.top/extracker/>。2026-11-05 已完成服务器 HTTPS 配置和定时任务切换；网页、抓取和 AI 摘要均在 `aliyun` 服务器运行，GitHub 保留代码备份。GitHub Actions 更新工作流已关闭，只用于必要时回退旧部署。服务器首次完整更新和 100 项测试已通过；域名公网访问仍需完成以下备案或接入处理后重新验证。
+
+公网 HTTPS 曾返回 200，但后续部分客户端出现 TLS 握手重置，另一种校验证书的 TLS 客户端仍返回 200，不能据此承诺稳定访问。纯 HTTP 请求被阿里云返回 `403`，响应页标题为 `Non-compliance ICP Filing`，需由域名所有者核对备案及接入状态。HTTP 拦截发生在到达 Nginx 前，服务器内部的 HTTPS 与跳转均正常。[阿里云备案阻断排查说明](https://help.aliyun.com/zh/icp-filing/basic-icp-service/support/web-site-suddenly-appeared-for-the-record-to-block-or-hang-and-so-on-and-so-forth)要求检查备案及接入状态；需解决后重新验证公网 HTTP、HTTPS 和证书续期。
+
+现有证书有效至 2027-02-03，`certbot.timer` 和续期后的 Nginx 重载钩子已配置。模拟续期的 HTTP 验证同样受到上述拦截并返回 403，因此自动续期尚未验证通过；解决域名备案或接入问题后，应重新执行下面的续期测试。
 
 ## 目录与依赖
 
@@ -58,7 +62,7 @@ cd /srv/cf-knowledge
 python3 tools/cf_server_update.py --publish-only
 
 # 验证证书续期
-sudo certbot renew --dry-run
+sudo certbot renew --dry-run --no-random-sleep-on-renew
 ```
 
 服务器发布路径和备份保留数配置在 `config.json` 的 `deployment.server_*` 字段中。服务器数据会持续变化，更新代码时只上传改动的代码和静态资源，再使用服务器入口重建；不要用旧本机 JSON 覆盖服务器的新数据，也不要直接覆盖 `current` 指向的发布文件。
